@@ -1,0 +1,43 @@
+{
+  "name": "lg",
+  "version": "1.0.0",
+  "license": "ISC",
+  "author": "Tigerspike",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "assemble": "^0.24.3",
+    "autoprefixer": "^7.1.1",
+    "browser-sync": "^2.24.4",
+    "cssnano": "^3.10.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-extname": "^0.2.2",
+    "gulp-file-include": "^2.0.1",
+    "gulp-jshint": "^2.1.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "jshint": "^2.9.6",
+    "jshint-stylish": "^2.2.1",
+    "merge-stream": "^1.0.1",
+    "postcss-clean": "^1.0.3",
+    "postcss-fixes": "^2.0.1",
+    "uglify-save-license": "^0.4.1"
+  },
+  "dependencies": {
+    "gulp-concat-multi": "^1.0.1",
+    "gulp-git": "^2.9.0",
+    "npm": "^6.4.1"
+  },
+  "browserslist": [
+    "last 2 version",
+    "ie 9-11"
+  ]
+}
