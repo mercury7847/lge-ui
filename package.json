@@ -1,43 +1,44 @@
 {
-  "name": "lg",
+  "name": "lge",
   "version": "1.0.0",
-  "license": "ISC",
-  "author": "Tigerspike",
-  "main": "index.js",
+  "description": "Starter \"pack\" to get basic HTML / CSS / JS sit up and running with a pattern library",
+  "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "test"
   },
+  "author": "Tina van Schelt",
+  "license": "ISC",
   "devDependencies": {
-    "assemble": "^0.24.3",
-    "autoprefixer": "^7.1.1",
-    "browser-sync": "^2.24.4",
-    "cssnano": "^3.10.0",
+    "browser-sync": "^2.26.12",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
     "gulp-clean-css": "^3.10.0",
     "gulp-concat": "^2.6.1",
-    "gulp-extname": "^0.2.2",
-    "gulp-file-include": "^2.0.1",
-    "gulp-jshint": "^2.1.0",
-    "gulp-plumber": "^1.2.0",
+    "gulp-connect-php": "1.0.1",
+    "gulp-data": "^1.3.1",
+    "gulp-file-include": "^2.2.2",
+    "gulp-if": "^3.0.0",
+    "gulp-load-plugins": "^2.0.4",
+    "gulp-minify-css": "^1.2.4",
     "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^4.0.1",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.1",
-    "jshint": "^2.9.6",
-    "jshint-stylish": "^2.2.1",
-    "merge-stream": "^1.0.1",
-    "postcss-clean": "^1.0.3",
-    "postcss-fixes": "^2.0.1",
-    "uglify-save-license": "^0.4.1"
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.3",
+    "gulp-stylelint": "^6.0.0",
+    "gulp-uglify": "^3.0.2",
+    "postcss-clean": "^1.0.3"
   },
   "dependencies": {
-    "gulp-concat-multi": "^1.0.1",
-    "gulp-git": "^2.9.0",
-    "npm": "^6.4.1"
-  },
-  "browserslist": [
-    "last 2 version",
-    "ie 9-11"
-  ]
+    "babel-eslint": "^8.2.2",
+    "del": "^5.1.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "gulp-eslint": "^4.0.2",
+    "gulp-sass-lint": "^1.4.0",
+    "node-sass": "^4.14.1"
+  }
 }

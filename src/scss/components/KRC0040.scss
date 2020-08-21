@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+@import "../app";
+
+.container {
+    background-color: #ffffff;
+}
+
+.component-wrap {
+    padding: 50px 0;
+
+    @include mobile {
+        padding: 40px 0;
+    }
+}
+
+.C0040 {
+
+    max-width: 1364px;
+    margin: 0 auto;
+    padding: 0 40px;
+   
+    @include mobile {
+        padding: 0 20px;
+    }
+
+    .pc-view,
+    .mobile-view {
+        display: none;
+    }
+    
+    @include pc {
+        .pc-view {
+            display: block;
+        }
+    }
+    @include mobile {
+        .mobile-view {
+            display: block;
+        }
+    }
+}
+    
+.information-title {
+    font-weight: 700;
+    line-height: 1;
+    
+    .icon-text {
+        margin-right: 8px;
+    }
+
+    @include mobile {
+        line-height: 24px;
+    }
+}
+
+
+$color-gray-1: #111;
+$bg-gray-1: #f4f4f4;
+$font-size-mo: 14px;
+$line-height-mo: 22px;
+
+.faq-wrap {
+    .inner {
+        .title-area {                
+            .title {
+                font-size: $font-x-large;
+                font-weight: 500;
+                line-height: 20px;
+                color: $color-gray-1;
+                
+                @include mobile {
+                    font-size: $font-size-mo;
+                    font-weight: 700;
+                    line-height: $line-height-mo;
+                }
+            }
+            .title-type2 {
+                padding: 16px 0 32px;
+                display:block;
+                font-size: $font-small ;
+                line-height: 20px;
+                color: $color-gray-1;
+
+                @include mobile {
+                    padding: 8px 0 24px;
+                    @include mobile {
+                        font-size: $font-size-mo;
+                        line-height: $line-height-mo;
+                    }
+                }
+            }
+        }
+
+        // faq-accordion
+        .card {                
+            border-top: 1px solid #ddd;
+            background: #fff;
+
+            &:last-child {
+                border-bottom: 1px solid #ddd;
+            }
+
+            .initial {
+                float: left;
+                font-size: $font-medium;
+                line-height: $font-medium;
+                color: $color-gray-1;
+
+                @include mobile {
+                    width: 20px;
+                    font-size: 14px;
+                    line-height: 22px;
+                }
+            }
+
+            .card-header {
+                @include clearfix;
+                @include textEllipsisClamp;
+                display: block;
+                padding: 24px 16px;
+                overflow: hidden;
+                cursor: pointer;
+
+                @include mobile {
+                    padding: 17px 20px;
+                    cursor: default;
+                }
+
+                .question {
+                    float:left;
+                    @include calc(width, 100%, 36px);
+                    padding-left: 4px;
+                    font-size: $font-medium;
+                    line-height: $font-medium;
+                    color: $color-gray-1;
+
+                    @include mobile {
+                        @include calc(width, 100%, 20px);
+                        padding-left: 0;
+                        font-size: $font-size-mo;
+                        line-height: $line-height-mo;
+                    }
+                }
+            }
+
+            .card-body {
+                @include clearfix;
+
+                .card-body-inner {
+                    padding: 0 24px 24px;
+
+                    @include mobile {
+                        padding: 0 20px 25px 40px;
+                    }
+                    
+                    .answer {
+                        font-size: $font-small;
+                        line-height: 26px;
+                        color: $color-gray-1;
+
+                        @include mobile {
+                            font-size: $font-size-mo;
+                            line-height: $line-height-mo;
+                        }
+                    }
+                }
+            }                
+
+            &.active {
+                background-color: $bg-gray-1;
+            }
+        }
+
+        .bottom-area {
+            margin-top: 16px;
+            text-align: right;
+
+            & .btn-faq-more {
+                font-size: $font-medium;
+                line-height: $font-medium;
+                color: $color-gray-1;
+
+                @include mobile {
+                    font-size: 13px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+}

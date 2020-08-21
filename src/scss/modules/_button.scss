@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+.btn-group {
+    font-size:0;
+    .btn {
+        margin-left:8px;
+        &:first-child {
+            margin-left:0;
+        }
+    }
+
+    @include mobile {
+        .btn {
+            width:calc((100% - 4px) / 2);
+            margin-left:4px;
+        }
+    }
+}
+
+.btn {
+    display:inline-block;
+    min-width:194px;
+    padding:16px 0;
+    background:#111;
+    border:1px solid transparent;
+    border-radius:4px;
+    color:#fff;
+    font-size:16px;
+    font-weight:700;
+    line-height:24px;
+    text-align:center;
+    vertical-align:top;
+
+    &.gray {
+        background:#bbb;
+    }
+
+    @include mobile {
+        min-width:auto;
+        padding:16px;
+        font-size:13px;
+        line-height:20px;
+    }
+}
+
+.txt-btn {
+    display:inline-block;
+    padding-bottom:2px;
+    border-bottom:1px solid #111;
+    color:#111;
+    font-size:16px;
+    line-height:1;
+    vertical-align:top;
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "componentID": "KRC0007"
+})
+<body>
+    <div class="wrap">    
+        <div class="container">
+            <!-- component KRC0007 -->
+            <div class="component-wrap">
+                <div class="component KRC0007">
+        
+                    <div class="plp-visual-area">
+                        <div class="plp-visual-inner">
+                            <h2>LG SIGNATURE OLED 8K</h2>
+                            <p>초고해상도도 역시, 차원이 다른 올레드.</p>
+                        </div>
+                    </div>
+        
+                    <div class="content plp-content">
+                        <div class="total-sort-area">
+                            <span class="total-num-product"><em>136</em>개 상품</span>
+                            <!-- 열렸을 때 .open, 위로 띄워야할 때 .up -->
+                            <div class="sort-product ui_dropdown" ui-modules="Dropdown">
+                                <!-- 대체텍스트 - 열기, 닫기 텍스트 변경 -->
+                                <a href="#" class="sort-button ui_dropdown_toggle">가격높은순<span class="blind">열기</span></a>
+                                <ul class="dropdown-list ui_dropdown_list">
+                                    <li><a href="#">추천순</a></li>
+                                    <li><a href="#">판매순</a></li>
+                                    <li><a href="#">신상품순</a></li>
+                                    <li class="selected"><a href="#">가격높은순</a></li>
+                                    <li><a href="#">가격낮은순</a></li>
+                                </ul>
+                            </div>
+                        </div>
+        
+                        <div class="plp-product-area">
+                            <button type="button" class="mobile-filter-button"><i class="icon-filter"></i><span class="blind">필터 펼치기</span></button>
+                            <dl class="filter-area-box">
+                                <dt>
+                                    <button type="button" class="active"><span>타입</span></button>
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li><button type="button" class="active"><span>전체</span></button></li>
+                                        <li><button type="button"><span>그램</span></button></li>
+                                        <li><button type="button"><span>울트라 기어</span></button></li>
+                                        <li><button type="button"><span>울트라PC</span></button></li>
+                                    </ul>
+                                </dd>
+                                <dt>
+                                    <button type="button"><span>OS</span></button>
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li><button type="button"><span>전체</span></button></li>
+                                        <li><button type="button"><span>그램</span></button></li>
+                                        <li><button type="button"><span>울트라 기어</span></button></li>
+                                        <li><button type="button"><span>울트라PC</span></button></li>
+                                    </ul>
+                                </dd>
+                                <dt>
+                                    <button type="button"><span>화면크기(단위/cm)</span></button>
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li><button type="button"><span>전체</span></button></li>
+                                        <li><button type="button"><span>그램</span></button></li>
+                                        <li><button type="button"><span>울트라 기어</span></button></li>
+                                        <li><button type="button"><span>울트라PC</span></button></li>
+                                    </ul>
+                                </dd>
+                                <dt>
+                                    <button type="button"><span>프로세스</span></button>
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li><button type="button"><span>전체</span></button></li>
+                                        <li><button type="button"><span>그램</span></button></li>
+                                        <li><button type="button"><span>울트라 기어</span></button></li>
+                                        <li><button type="button"><span>울트라PC</span></button></li>
+                                    </ul>
+                                </dd>
+                                <dt>
+                                    <button type="button"><span>메모리</span></button>
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li><button type="button"><span>전체</span></button></li>
+                                        <li><button type="button"><span>그램</span></button></li>
+                                        <li><button type="button"><span>울트라 기어</span></button></li>
+                                        <li><button type="button"><span>울트라PC</span></button></li>
+                                    </ul>
+                                </dd>
+                                <dt>
+                                    <button type="button"><span>저장장치</span></button>
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li><button type="button"><span>전체</span></button></li>
+                                        <li><button type="button"><span>그램</span></button></li>
+                                        <li><button type="button"><span>울트라 기어</span></button></li>
+                                        <li><button type="button"><span>울트라PC</span></button></li>
+                                    </ul>
+                                </dd>
+                                <dt>
+                                    <button type="button"><span>배터리용량</span></button>
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li><button type="button"><span>전체</span></button></li>
+                                        <li><button type="button"><span>그램</span></button></li>
+                                        <li><button type="button"><span>울트라 기어</span></button></li>
+                                        <li><button type="button"><span>울트라PC</span></button></li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        
+                            <ul class="row plp-item-list">        
+                                <li class="col-4"> 
+                                    <div class="item {%if item.selected == 'true' %}selected{% endif %}">
+                                        <span class="like-area {%if item.like == 'true' %}active{% endif %}">
+                                            <button type="button"><span class="blind">찜하기</span></button>
+                                        </span>
+        
+                                        <a href="#">
+                                            <span class="product-size">36.9cm</span>
+                                            <span class="product-images"><img src="/images/img-plp-product.png" alt=""></span>
+                                        </a>
+        
+                                        <div class="category">
+                                            <span>New</span>
+                                            <span>Best</span>
+                                            <span>케어솔루션</span>
+                                        </div>
+        
+                                        <div class="item-title">LG그램 17</div>
+                                        <div class="item-subtitle">17Z90N-VA79K</div>
+        
+                                        <ul class="spec">
+                                            <li>OS : Windows 10 Home</li>
+                                            <li>화면크기 : 36.9cm</li>
+                                            <li>프로세스 : 인텔 10세대 아이스레이크 i7</li> 
+                                            <li>메모리 : DDR4 16GB</li>
+                                            <li>저장장치 : SSD 512GB</li>
+                                            <li>배터리용량 : 80Wh</li>
+                                        </ul>
+                        
+                                            <div class="product-display">
+                                                <div class="sale">30% 할인</div>
+        
+                                                <div class="product-display-price">
+                                                    <span class="price"><em>1,800,000</em>원</span>
+                                                    <span class="original">
+                                                        <span class="blind">할인미적용가</span>
+                                                        <em>2,000,000</em>원
+                                                    </span>
+                                                </div>
+        
+                                                <div class="hashtag">
+                                                    <span>#기획</span>
+                                                    <span>#사은품</span>
+                                                    <span>#패키지</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-compare">
+                                                <button type="button" class="plus {%if item.compare == 'true' %}active{% endif %}"><span>비교담기</span></button>
+                                                <span class="unlock {%if item.compare == 'true' %}active{% endif %}"><span class="blind">장바구니 담기</span></span>
+                                            </div>
+        
+                                        <button type="button" class="details-button"><span>자세히 보기</span></button>
+        
+                                    </div>
+                                </li>
+                            </ul>
+        
+                            <div class="more-list-area">
+                                <button type="button"><span>더보기</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //component KRC0007 -->
+        </div>
+    </div>      
+</body>
+</html> 
