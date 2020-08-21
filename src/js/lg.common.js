@@ -3,7 +3,7 @@
 $(window).ready(function(){
     console.log("### ready ###");
 
-    vcui.require(['common/header', 'common/footer', 'ui/tab', 'ui/accordion', 'ui/carousel', 'ui/dropdown', 'ui/selectbox', 'ui/calendar', 'ui/textControl'], function () {
+    vcui.require(['common/header', 'common/footer', 'ui/tab', 'ui/accordion', 'ui/carousel', 'ui/dropdown', 'ui/selectbox', 'ui/calendar', 'ui/textControl', 'ui/scrollview'], function () {
         $('header').vcHeader(); //헤더 모듈 적용...
         $('footer').vcFooter(); //푸터모듈 적용...
 
@@ -15,5 +15,6 @@ $(window).ready(function(){
         $('body').find('.ui_selectbox').vcSelectbox();
         $('body').find('.ui_calendar').vcCalendar();
         $('body').find('.ui_textcontrol').vcTextControl();
+        $('body').find('.ui_scrollview').vcScrollview();
     });
 })

@@ -29,6 +29,10 @@ input, textarea {
         border-color:#111;
         outline:none;
     }
+
+    @include mobile {
+        border-radius:4px;
+    }
 }
 
 // input text, textarea
@@ -77,6 +81,10 @@ input, textarea {
         @include mobile {
             .cell {
                 padding:13px 15px 13px 0;
+                border-radius:0 4px 4px 0;
+            }
+            input, textarea {
+                border-radius:4px 0 0 4px;
             }
         }
     }
@@ -224,6 +232,7 @@ input, textarea {
         @include mobile {
             label {
                 padding:13px 15px 13px 47px;
+                border-radius:4px;
                 background-position-x:15px;
                 &::after {
                     content:'(전체 10mb, 최대 3개)';
@@ -280,6 +289,7 @@ input, textarea {
             @include mobile {
                 padding:16px;
                 padding-right:52px;
+                border-radius:4px;
                 .file-name {
                     font-size:14px;
                     line-height:20px;

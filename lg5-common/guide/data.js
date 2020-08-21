@@ -11,7 +11,8 @@ var res = {
 			"Select" : ["./wsg/guide_select.html","","검수완료"],
 			// "Form" : ["./wsg/guide_input_form.html","","검수완료"],
 			"버튼" : ["./wsg/guide_button.html","","검수완료"],
-			"탭" : ["./wsg/guide_tab.html","","검수완료"]
+			"탭" : ["./wsg/guide_tab.html","","검수완료"],
+			"스크롤뷰" : ["./wsg/guide_scrollview.html","","검수완료"]
 		}
 	},
 	"Front" : {
