@@ -152,14 +152,14 @@ $wide-screen: "(min-width: 1600px)";
 
 
 /*
-* textEllipsis 두 줄
+* textEllipsis 여러 줄
 * @include textEllipsisClamp;
 */
-@mixin textEllipsisClamp () {
+@mixin textEllipsisClamp ($line-clamp) {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: $line-clamp;
     -webkit-box-orient: vertical;
 }
 
@@ -168,11 +168,11 @@ $wide-screen: "(min-width: 1600px)";
 * textClip
 * @include textClip;
 */
-@mixin textClipClamp () {
+@mixin textClipClamp ($line-clamp) {
     overflow:hidden;
     text-overflow:clip;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: $line-clamp;
     -webkit-box-orient: vertical;
 }
 

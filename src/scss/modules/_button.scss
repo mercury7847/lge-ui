@@ -1,5 +1,74 @@
 @charset "UTF-8";
 
+.btn {
+    display: inline-block;
+    min-width:194px;
+    padding:16px 0;
+    border: 1px solid #212121;
+    border-radius: 4px;
+    background-color: #fff;
+    line-height: 24px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #111;
+    text-align: center;
+    vertical-align: top;
+    
+    &.gray {
+        border-color: #bbb;
+        background: #bbb;
+        color: #fff;
+    }
+
+    &.black {
+        border-color: #111;
+        background-color: #111;
+        color: #fff;
+    }
+
+    @include mobile {
+        min-width: auto;
+        padding: 16px;
+        font-size: 13px;
+        line-height: 20px;
+    }
+}
+
+.btn-text {
+    display:inline-block;
+    padding-bottom:2px;
+    border-bottom:1px solid #111;
+    color:#111;
+    font-size:16px;
+    line-height:1;
+    vertical-align:top;
+}
+
+.btn-link {
+    position: relative;
+    display: inline-block;
+    margin-right: 14px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #212121;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #111;
+    vertical-align: top;
+
+    &:after {
+        position: absolute;
+        @include calc(top, 50%, 6px);
+        right: -12px;
+        width: 8px;
+        height: 8px;
+        border: 2px solid #111;
+        border-width: 2px 2px 0 0;
+        transform: rotate(45deg);
+        content: '';
+    }
+}
+
 .btn-group {
     font-size:0;
     .btn {
@@ -17,38 +86,3 @@
     }
 }
 
-.btn {
-    display:inline-block;
-    min-width:194px;
-    padding:16px 0;
-    background:#111;
-    border:1px solid transparent;
-    border-radius:4px;
-    color:#fff;
-    font-size:16px;
-    font-weight:700;
-    line-height:24px;
-    text-align:center;
-    vertical-align:top;
-
-    &.gray {
-        background:#bbb;
-    }
-
-    @include mobile {
-        min-width:auto;
-        padding:16px;
-        font-size:13px;
-        line-height:20px;
-    }
-}
-
-.txt-btn {
-    display:inline-block;
-    padding-bottom:2px;
-    border-bottom:1px solid #111;
-    color:#111;
-    font-size:16px;
-    line-height:1;
-    vertical-align:top;
-}
