@@ -1,0 +1,91 @@
+.animation-box {
+	position:relative;
+
+	.play-animaion-btn {
+		position:absolute;
+		top:20px;
+		right:20px;
+		z-index:9; 
+		text-indent:-9999px;
+		width:36px;
+		height:36px;		
+		white-space:nowrap;
+		overflow:hidden;
+		&.acc-btn {
+			background:url('/images/icons/icon-AD-on.svg');
+			background-size:36px 36px;
+		}
+		&.ani-btn {
+			background:url('/images/icons/icon-AD-off.svg');
+			background-size:36px 36px;
+		}
+	}
+
+	.animation-area {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width:100%;
+		height:100%;
+		z-index: 1;
+		text-indent: -9999em;
+		video {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		// @include screen(custom, min, $min-md) {
+		// 	video.mobile {display:none;}
+		// }
+		// @include screen(custom, max, $max-sm) {
+		// 	video.pc {display:none;}
+		// }
+		.controller-wrap {
+			display: block;
+			position: absolute;
+			right: 24px;
+			bottom: 64px;
+			// @include screen(custom, max, $max-sm) {
+			// 	margin-bottom: 20px;
+			// }
+			button {
+				display: none;
+				text-indent: -9999em;
+				width: 40px;
+				height: 40px;
+				border: none;
+				background-color: rgba(0,0,0,0.75);
+				background-position: 50% 50%;
+				background-repeat: no-repeat;
+				border-radius: 50%;
+				cursor: pointer;
+				padding:0;
+				// @include screen(custom, max, $max-sm) {
+				// 	width:25px;
+				// 	height:25px;
+				// }
+				&.active {
+					display: block;
+				}
+				&.play {
+					background-image: url('/images/icons/btn-animation-play.svg');
+					background-size:40px 40px;
+				}
+				&.pause {
+					background-image: url('/images/icons/btn-animation-pause.svg');
+					background-size:40px 40px;
+				}
+				// @include screen(custom, max, $max-sm) {
+				// 	&.play {
+				// 		background-image: url('/lg5-common-gp/images/common/icons/btn-aniplay-m.svg');
+				// 		background-size:25px 25px;
+				// 	}
+				// 	&.pause {
+				// 		background-image: url('/lg5-common-gp/images/common/icons/btn-anipause-m.svg');
+				// 		background-size:25px 25px;
+				// 	}
+				// }
+			}
+		}
+	}
+}
