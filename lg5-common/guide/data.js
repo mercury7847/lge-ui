@@ -17,7 +17,7 @@ var res = {
 	},
 	"Front" : {
 		"Component" : {
-			"KRC0013" : ["/html/components/KRC0013.html","","진행중"]
+			"comp01" : ["./html/gr/M.GR-5L.html","","진행중"]
 		},
 		"Page" : {
 			"페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],

@@ -14,8 +14,8 @@ define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, core, 
     var BaseSelectbox = core.ui.View.extend({
         name: 'Selectbox',
         templates: {
-            notextOption: '<span class="ui-select-text"></span><span class="blind"></span><span class="ico"></span>',
-            labelOption: '<span class="ui-select-text">{{text}}</span><span class="blind">선택됨</span><span class="ico"></span>'
+            notextOption: '<span class="ui-select-text"></span><span class="hide"></span><span class="ico"></span>',
+            labelOption: '<span class="ui-select-text" _style="text-overflow: ellipsis;' + 'width: 100%;display: inline-block;overflow: hidden;">{{text}}</span><span class="hide">선택됨</span><span class="ico"></span>'
         },
         initialize: function initialize(el, options) {
             var self = this;
@@ -234,8 +234,7 @@ define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, core, 
             containerMargin: 2,
             where: 'inline',
             wrapClasses: '',
-            disabledClass: 'disabled',
-            widthClass: ' '
+            disabledClass: 'disabled'
         },
 
         templates: {
@@ -928,9 +927,6 @@ define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, core, 
     ///////////////////////////////////////////////////////////////////////////////////////
 
     var PickerSelectbox = core.ui('PickerSelectbox', BaseSelectbox, {
-        defaults: {
-            widthClass:' '
-        },
         templates: {
             label: '<div class="ui-selectbox-view"><a href="#0" class="ui-select-button" title="">{{#raw html}}</a></div>'
         },
@@ -976,8 +972,7 @@ define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, core, 
                 'width': '100%'
             });
             self.$selectbox.insertBefore(self.$el);
-            
-            self.$label = $(self.tmpl('label', {
+            self.$label = $(self.templated.label({
                 html: self._itemHTML(self.el.options[self.el.selectedIndex], 'label')
             })).appendTo(self.$selectbox);
 
