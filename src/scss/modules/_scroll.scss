@@ -1,0 +1,52 @@
+// scrollview
+.scrollview-wrap {
+    position:relative;
+    height:176px;
+    padding:24px;
+    padding-right:51px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    &::before {
+        content:' ';
+        display:none;
+        position:absolute;
+        top:24px;
+        right:26px;
+        bottom:24px;
+        width:1px;
+        background:#ddd;
+    }
+    &.strack::before {
+        display:block;
+    }
+    .ui_scrollarea {
+        overflow:hidden;
+        max-height:100%;
+    }
+    .ui_scrollbar {
+        position:absolute;
+        top:24px;
+        right:24px;
+        width:3px;
+        border-radius:0 2px 2px 0;
+        background:#111;
+        z-index:10;
+    }
+
+    @include mobile {
+        padding:16px;
+        padding-right:26px;
+        border-radius:4px;
+        &::before {
+            top:16px;
+            right:13px;
+            bottom:16px;
+        }
+        .ui_scrollbar {
+            top:16px;
+            right:12px;
+            width:2px;
+            border-radius:0 1px 1px 0;
+        }
+    }
+}
