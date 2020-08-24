@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        componentID: "KRC0009"
+    })
+<body>
+    <div class="wrap">
+        <div class="container">
+
+			<!-- component KRC0008 -->
+            <div class="component-wrap">
+                @@include('./components/common-note.html')                  
+                <section class="component KRC0009">                                
+                    <div class="unit-wrap">
+                        <div class="inner">             
+                            <!-- <div class="unit-title align-center"><h3>Exciting Offers Just For You</h3></div>                                                    -->
+                            <!-- <form action="/data-ajax/mkt/promotionList-C0028.json" novalidate>                                                                                 
+                                <input type="hidden" name="page" value="1">
+                                <input type="hidden" name="pagePosition">
+                            </form> -->                                       
+                            <div class="content-wrap ui_carousel_slider">                                     
+                                <!-- <template class="contents-template">
+                                    <li class="unit-box">
+                                        <div class="visual-area image">
+                                            <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
+                                                <img class="lazyload" data-src="*thumbnailImageAddr*" alt="*imageAltText*"/>
+                                                <p class="hidden">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="head-copy" id="title">*title*</p>
+                                        <p class="body-copy">*promotionStartDate* ~ *promotionEndDate*</p>
+                                        <div class="btn-box">
+                                            <span><a href="*promotionLinkUrl*" class="btn btn-primary" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">View Promotion</a></span>
+                                        </div>
+                                    </li>
+                                </template>                                                                         -->
+                                <!-- <div class="unit-list align-center">  -->
+                                <ul class="list-wrap ui_carousel_track"> 
+                                    <li class="promotions ui_carousel_slide">
+                                        <div class="visual">
+                                            <a href="#n">
+                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">	
+                                                <p class="blind">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="tit">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="date">2020.08.01 ~ 2020.08.31</p>
+                                        <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
+                                        <div class="bottom">
+                                            <span><a href="#n" class="btn-link">자세히 보기</a></span>
+                                        </div>
+                                    </li> 
+                                    <li class="promotions ui_carousel_slide">
+                                        <div class="visual">
+                                            <a href="#n">
+                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">	
+                                                <p class="blind">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="tit">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="date">2020.08.01 ~ 2020.08.31</p>
+                                        <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
+                                        <div class="bottom">
+                                            <span><a href="#n" class="btn-link">자세히 보기</a></span>
+                                        </div>
+                                    </li> 
+                                    <li class="promotions ui_carousel_slide">
+                                        <div class="visual">
+                                            <a href="#n">
+                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">	
+                                                <p class="blind">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="tit">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="date">2020.08.01 ~ 2020.08.31</p>
+                                        <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
+                                        <div class="bottom">
+                                            <span><a href="#n" class="btn-link">자세히 보기</a></span>
+                                        </div>
+                                    </li> 
+                                <!-- </div> -->                                  
+                                </ul>
+                            </div>                                          
+                        </div>
+                    </div>                               
+                </section>
+            </div>
+            
+		
+		</div>
+    </div> 
+    <script>
+        $(window).ready(function(){
+            vcui.require(['ui/carousel'], function () {
+                $('.ui_carousel_slider').vcCarousel({
+                    infinite: false,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    responsive: [{
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            dots: true
+                        }
+                    }]
+                });
+            });
+        })
+    </script>     
+</body>
+</html>
