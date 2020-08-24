@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+@import "../../support-common";
+
+.search-box {
+    max-width: 848px;
+    margin: 80px auto 0;
+}
+.input-wrap {
+    &.search {
+        position: relative;
+        input {
+            padding-left: 64px;
+        }
+        .search-btn {
+            width: 24px;
+            height: 24px;
+            background-color: #000;
+            position: absolute;
+            left: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
+.tooltip-btn {
+    width: 20px;
+    height: 20px;
+    background: url(/dist/images/icon-tooltip-btn.svg) no-repeat;
+}
