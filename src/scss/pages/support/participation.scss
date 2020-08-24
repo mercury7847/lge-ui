@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 @import "../../support-common";
 
 .search-box {
@@ -20,6 +19,7 @@
             left: 24px;
             top: 50%;
             transform: translateY(-50%);
+            @include clearfix;
         }
     }
 }
