@@ -62,13 +62,29 @@
 		top: 62px;		
 		width:36px;
 		height:36px;
-		background:url('/lg5-common/images/components/ico_close.png') no-repeat center center;			
-		background-size:36px 36px;				
+		background-size:36px 36px;
 		white-space:nowrap;
 		text-indent:200%;
 		border:0;
 		z-index: 1;
 		cursor: pointer;
+		&:before,
+		&:after {
+			display: inline-block;
+			position: absolute;
+			top: 3px;
+			@include calc(left, 50%, 2px);
+			width: 2px;
+			height: 30px;
+			background-color: #111;
+			content: '';
+		}
+		&:before {
+			transform: rotate(45deg);
+		}
+		&:after {
+			transform: rotate(-45deg);
+		}
 	}
 }
 
@@ -103,17 +119,4 @@
 			}
 		}
 	}
-	&.brightcove {
-		.video-asset {
-			@media screen and (max-aspect-ratio: 16/9) {
-				height: calc((100vw) * (9/16));
-			}
-		}
-	}
 }
-
-// #videoPlayerCode {
-// 	width:100%;height:100%;
-// 	.video-js {width:100%;height:100%;}
-// 	.vjs-poster {width:100%;height:100%;}
-// }
