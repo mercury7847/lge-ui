@@ -12,7 +12,8 @@ const gulp = require("gulp"),
         del = require('del');
 
 const src = "./src";
-const dist = './lg5-common';
+const dist = './dist';
+const sourceFolder = "/lg5-common";
 
 // Loads BrowserSync
 gulp.task("browser-sync", () => {
@@ -79,7 +80,7 @@ gulp.task("styles", () => gulp
     .pipe(cleanCSS({compatibility: 'ie9'}))
     .pipe(rename({suffix: ".min"}))
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest(dist + "/css/"))
+    .pipe(gulp.dest(dist + sourceFolder + "/css/"))
 );
 
 //자주 쓰는 vcui모듈 vcui.common-ui.js로 병합...
@@ -111,7 +112,7 @@ gulp.task("jsCompile", () => gulp
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
     .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest(dist + "/js/"))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/"))
 );
 gulp.task("jsCompile:common", () => gulp
     .src(src + "/js/common/*")
@@ -119,7 +120,7 @@ gulp.task("jsCompile:common", () => gulp
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
     .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest(dist + "/js/common/"))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/common/"))
 );
 gulp.task("jsCompile:components", () => gulp
     .src(src + "/js/components/*")
@@ -127,7 +128,7 @@ gulp.task("jsCompile:components", () => gulp
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
     .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest(dist + "/js/components/"))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/components/"))
 );
 gulp.task("jsCompile:helper", () => gulp
     .src(src + "/js/helper/*")
@@ -135,7 +136,7 @@ gulp.task("jsCompile:helper", () => gulp
     //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
     //.pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
     //.pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest(dist + "/js/helper/"))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/helper/"))
 );
 gulp.task("jsCompile:libs", () => gulp
     .src(src + "/js/libs/*")
@@ -143,7 +144,7 @@ gulp.task("jsCompile:libs", () => gulp
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
     .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest(dist + "/js/libs/"))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/libs/"))
 );
 gulp.task("jsCompile:ui", () => gulp
     .src(src + "/js/ui/*")
@@ -151,22 +152,13 @@ gulp.task("jsCompile:ui", () => gulp
     //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
     //.pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
     //.pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest(dist + "/js/ui/"))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/ui/"))
 );
 
 // fonts, images
-gulp.task("static", ["fonts", "images", "dummy"]);
-gulp.task("fonts", () => gulp
-    .src(src + "/fonts/**")
-    .pipe(gulp.dest(dist + "/fonts/"))
-);
-gulp.task("images", () => gulp
-    .src(src + "/images/**")
-    .pipe(gulp.dest(dist + "/images/"))
-);
-gulp.task("dummy", () => gulp
-    .src(src + "/data-dummy/**")
-    .pipe(gulp.dest(dist + "/data-dummy/"))
+gulp.task("static", () => gulp
+    .src("./lg5-common/**/*")
+    .pipe(gulp.dest(dist + sourceFolder))
 );
 
 
@@ -190,9 +182,6 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/guide/guide/js/**", ["guide:js"]).on('change', browserSync.reload);
     gulp.watch(src + "/guide/data.js", ["guide:data-js"]).on('change', browserSync.reload);
 
-    //images
-    gulp.watch(src + "/images/**", ["images"]).on('change', browserSync.reload);
-
     // Watch sass files
     gulp.watch(src + "/scss/**/*.scss", ["styles"]).on('change', browserSync.reload);
 
@@ -206,8 +195,8 @@ gulp.task("watch", ["browser-sync"], () => {
 });
 
 // Compile sass, concat and minify css + js
-gulp.task("build", ["clean"], () =>{
-    gulp.start(["styles", "scripts", "guide", "html", "static"]);
+gulp.task("build", ["clean", "static"], () =>{
+    gulp.start(["styles", "scripts", "guide", "html"]);
 });
 
 
