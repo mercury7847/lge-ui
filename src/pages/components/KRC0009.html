@@ -10,16 +10,16 @@
 			<!-- component KRC0008 -->
             <div class="component-wrap">
                 @@include('./components/common-note.html')                  
-                <section class="component KRC0009">                                
+                <section class="component KRC0009">
                     <div class="unit-wrap">
-                        <div class="inner">             
-                            <!-- <div class="unit-title align-center"><h3>Exciting Offers Just For You</h3></div>                                                    -->
-                            <!-- <form action="/data-ajax/mkt/promotionList-C0028.json" novalidate>                                                                                 
-                                <input type="hidden" name="page" value="1">
+                        <div class="inner">
+                            <!-- <div class="unit-title align-center"><h3>Exciting Offers Just For You</h3></div>  디자인 타이틀 미사용   -->
+                            <form action="/data-ajax/mkt/promotionList-C0028.json" novalidate>                                  
+                                <input type="hidden" name="page" value="1">               
                                 <input type="hidden" name="pagePosition">
-                            </form> -->                                       
-                            <div class="content-wrap ui_carousel_slider">                                     
-                                <!-- <template class="contents-template">
+                            </form>                       
+                            <div class="list-wrap ui_carousel_slider">                
+                                <template class="contents-template">
                                     <li class="unit-box">
                                         <div class="visual-area image">
                                             <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
@@ -33,79 +33,74 @@
                                             <span><a href="*promotionLinkUrl*" class="btn btn-primary" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">View Promotion</a></span>
                                         </div>
                                     </li>
-                                </template>                                                                         -->
-                                <!-- <div class="unit-list align-center">  -->
-                                <ul class="list-wrap ui_carousel_track"> 
-                                    <li class="promotions ui_carousel_slide">
-                                        <div class="visual">
-                                            <a href="#n">
-                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">	
-                                                <p class="blind">graphic description : </p>
+                                </template>
+                                <!-- 
+                                    div -> ul DOM 변경 
+                                    - 화면 반영 보기 위해 템플릿으로 불러오는 li DOM 내부에 붙혀 작업함
+                                -->
+                                <ul class="unit-list align-center ui_carousel_track">
+                                    <li class="unit-box ui_carousel_slide">
+                                        <div class="visual-area image">
+                                            <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
+                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">
+                                                <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="tit">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
-                                        <p class="date">2020.08.01 ~ 2020.08.31</p>
+                                        <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
+                                        <!-- 옵션 작업 시 추가될 내용 -->
                                         <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
-                                        <div class="bottom">
-                                            <span><a href="#n" class="btn-link">자세히 보기</a></span>
+                                        <!-- // 옵션 작업 시 추가될 내용 -->
+                                        <div class="btn-box">
+                                            <span>
+                                                <a href="*promotionLinkUrl*" class="btn-link" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">자세히 보기</a><!-- 기존 class 전체 삭제 후 변경 -->
+                                            </span>
                                         </div>
-                                    </li> 
-                                    <li class="promotions ui_carousel_slide">
-                                        <div class="visual">
-                                            <a href="#n">
-                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">	
-                                                <p class="blind">graphic description : </p>
+                                    </li>
+                                    <li class="unit-box ui_carousel_slide">
+                                        <div class="visual-area image">
+                                            <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
+                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">
+                                                <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="tit">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
-                                        <p class="date">2020.08.01 ~ 2020.08.31</p>
+                                        <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
+                                        <!-- 옵션 작업 시 추가될 내용 -->
                                         <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
-                                        <div class="bottom">
-                                            <span><a href="#n" class="btn-link">자세히 보기</a></span>
+                                        <!-- // 옵션 작업 시 추가될 내용 -->
+                                        <div class="btn-box">
+                                            <span>
+                                                <a href="*promotionLinkUrl*" class="btn-link" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">자세히 보기</a><!-- 기존 class 전체 삭제 후 변경 -->
+                                            </span>
                                         </div>
-                                    </li> 
-                                    <li class="promotions ui_carousel_slide">
-                                        <div class="visual">
-                                            <a href="#n">
-                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">	
-                                                <p class="blind">graphic description : </p>
+                                    </li>
+                                    <li class="unit-box ui_carousel_slide">
+                                        <div class="visual-area image">
+                                            <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
+                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">
+                                                <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="tit">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
-                                        <p class="date">2020.08.01 ~ 2020.08.31</p>
+                                        <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
+                                        <!-- 옵션 작업 시 추가될 내용 -->
                                         <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
-                                        <div class="bottom">
-                                            <span><a href="#n" class="btn-link">자세히 보기</a></span>
+                                        <!-- // 옵션 작업 시 추가될 내용 -->
+                                        <div class="btn-box">
+                                            <span>
+                                                <a href="*promotionLinkUrl*" class="btn-link" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">자세히 보기</a><!-- 기존 class 전체 삭제 후 변경 -->
+                                            </span>
                                         </div>
-                                    </li> 
-                                <!-- </div> -->                                  
+                                    </li>
                                 </ul>
-                            </div>                                          
+                                <!-- // div -> ul DOM 변경 -->
+                            </div>                                     
                         </div>
-                    </div>                               
+                    </div>                              
                 </section>
             </div>
-            
-		
 		</div>
-    </div> 
-    <script>
-        $(window).ready(function(){
-            vcui.require(['ui/carousel'], function () {
-                $('.ui_carousel_slider').vcCarousel({
-                    infinite: false,
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    responsive: [{
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 1,
-                            dots: true
-                        }
-                    }]
-                });
-            });
-        })
-    </script>     
+    </div>     
 </body>
 </html>
