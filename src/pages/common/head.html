@@ -4,12 +4,25 @@
     <title>lge</title>
     <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
     <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
-    <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/@@componentID.min.css" />
-
+    @@if (context.componentID) {
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/@@componentID.min.css" />
+    }
+    @@if (context.pageCSS) {
+        @@for (var i=0; i<context.pageCSS.length; i++) {
+            <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/`+pageCSS[i]+`.min.css" />
+        }
+    }
     <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
     <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
     <script src="/lg5-common/js/vcui.min.js"></script>
     <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
     <script src="/lg5-common/js/lg.common.min.js"></script>
-    <script src="/lg5-common/js/components/@@componentID.min.js"></script>
+    @@if (context.componentID) {
+        <script src="/lg5-common/js/components/@@componentID.min.js"></script>
+    }
+    @@if (context.pageJS) {
+        @@for (var i=0; i<context.pageJS.length; i++) {
+            <script src="/lg5-common/js/`+pageJS[i]+`.min.js"></script>
+        }
+    }
 </head>
