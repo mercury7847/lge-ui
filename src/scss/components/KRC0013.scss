@@ -14,8 +14,6 @@
 	padding: 50px 30px;
 	@include clearfix;
 	
-	
-
 	&.align-left {
 		text-align: left;
 	}
@@ -26,76 +24,6 @@
 		text-align: center;
 	}
 	
-	.visual-wrap {
-		.visual-area {
-			position: relative;
-			max-width: 100%;
-			margin-bottom: 14px;
-
-			.caption {
-				position: absolute;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				z-index: 5;
-				padding: 12px 24px;
-				height:44px;
-				background-color:rgba(0,0,0,0.35);
-				font-weight: 700;
-				font-size:14px;
-				line-height: 20px;
-				color: #fff;
-				text-align: left;
-				// @include screen(custom, max, $max-sm) {
-				// 	padding: 2px 0 0 10px;
-				// 	height:29px;
-				// }
-			}
-		}
-		img {
-			max-width: 100%;
-			width: 100%;
-		}
-		.desc {
-			font-size: 14px;
-			line-height: 20px;
-			color: #111;
-		}
-	}
-	
-	.text-wrap {
-		padding-top: 25px;
-		&.side-right-text {
-			vertical-align: middle;
-		}
-		&.side-left-text {
-			vertical-align: middle;
-		}
-
-		.title {
-			margin-bottom: 40px;
-			h1, h2, h3, h4, h5, h6 {
-				font-weight: 700;
-				font-size: 24px;
-				line-height: 34px;
-
-			}
-		}
-		.small-title {
-			display: block;
-			margin-bottom: 16px;
-			font-size: 16px;
-			line-height: 24px;
-			color: #616161;
-		}
-		.text {
-			margin-bottom: 48px;
-			font-size: 16px;
-			line-height: 24px;
-			color: #616161;
-		}
-	}
-
 	&.standard {
 		.visual-wrap {
 			@include grid-col(6);
@@ -121,50 +49,131 @@
 		}
 	}
 
-	// 버튼 간격
-	&.align-left {
-		.btn-type-box {
+	.visual-wrap {
+		.visual-area {
+			position: relative;
+			max-width: 100%;
+			margin-bottom: 14px;
+
+			.caption {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 5;
+				overflow: hidden;
+				padding: 12px 24px;
+				height: 44px;
+				background-color: rgba(0,0,0,0.5);
+				font-weight: 700;
+				font-size:14px;
+				line-height: 20px;
+				color: #fff;
+				text-align: left;
+				white-space: nowrap;
+			}
+		}
+		img {
+			max-width: 100%;
+			width: 100%;
+		}
+		.desc {
+			font-size: 14px;
+			line-height: 20px;
+			color: #111;
+		}
+
+		@include mobile {
+			&.image-align-left {
+				margin-bottom: 44px;
+			}
+			&.image-align-right {
+				margin-top: 44px;
+			}
+		}
+	}
+	
+	.text-wrap {
+		padding-top: 25px;
+		&.side-right-text {
+			vertical-align: middle;
+		}
+		&.side-left-text {
+			vertical-align: middle;
+		}
+
+		.title {
+			margin-bottom: 40px;
+			h1, h2, h3, h4, h5, h6 {
+				font-weight: 700;
+				font-size: 24px;
+				line-height: 34px;
+
+			}
+		}
+		.small-title {
+			display: block;
+			margin-bottom: 16px;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 24px;
+			color: #616161;
+		}
+		.text {
+			margin-bottom: 48px;
+			font-size: 16px;
+			line-height: 24px;
+			color: #616161;
+		}
+	}
+
+	.btn-type-box,
+	.btn-type-text {
+		font-size: 0;
+		span {
+			display: inline-block;
+		}
+		@include mobile {
 			span {
-				display: inline-block;
-				margin: 0 18px 10px 0;
-				font-size: 0;
+				display: block;
+			}
+			.btn {
+				min-width:194px;
+				padding:16px 0;
+				line-height: 24px;
+				font-size: 16px;
+			}
+		}
+	}
+
+	&.align-left {
+		.btn-type-box,
+		.btn-type-text {
+			span {
+				margin: 0 24px 12px 0;
 				&:last-child {
 					margin-right: 0;
 				}
 			}
 		}
-		.btn-type-text {
-			.link-text {
-				margin: 0 18px 11px 0;
-			}
-		}
 	}
 	&.align-right {
-		.btn-type-box {
-			.btn {
-				margin: 0 0 10px 18px;
-			}
-			span:first-child {
-				.btn {
+		.btn-type-box,
+		.btn-type-text {
+			span {
+				margin: 0 0 12px 24px;
+				&:first-child {
 					margin-left: 0;
 				}
 			}
 		}
-		.btn-type-text {
-			.link-text {
-				margin:0 0 11px 18px;
-			}
-		}
 	}
 	&.align-center {
-		.btn-type-box {
-			.btn {
-				margin: 0 9px 10px;
-			}
-		}
+		.btn-type-box,
 		.btn-type-text {
-			.link-text {
-				margin: 0 9px 11px;
+			margin: 0 -12px;
+			span {
+				margin: 0 12px 12px;
 			}
 		}
 	}
