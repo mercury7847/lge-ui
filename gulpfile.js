@@ -102,16 +102,17 @@ gulp.task("concat-js", () => gulp
 );
 
 // Compile JS
-gulp.task("scripts", ["concat-js"], () => {
-    gulp.src(src + "/js/*.js")
+gulp.task("scripts", () => {
+    gulp.start(["jsCompile", "jsCompile:common", "jsCompile:components", "jsCompile:helper", "jsCompile:libs", "jsCompile:ui"]);
+});
+gulp.task("jsCompile", () => gulp
+    .src(src + "/js/*.js")
     .pipe(sourcemaps.init())
     .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
     .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest(dist + "/js/"));
-
-    gulp.start(["jsCompile:common", "jsCompile:components", "jsCompile:helper", "jsCompile:libs", "jsCompile:ui"]);
-});
+    .pipe(gulp.dest(dist + "/js/"))
+);
 gulp.task("jsCompile:common", () => gulp
     .src(src + "/js/common/*")
     .pipe(sourcemaps.init())
@@ -154,7 +155,7 @@ gulp.task("jsCompile:ui", () => gulp
 );
 
 // fonts, images
-gulp.task("static", ["fonts", "images"]);
+gulp.task("static", ["fonts", "images", "dummy"]);
 gulp.task("fonts", () => gulp
     .src(src + "/fonts/**")
     .pipe(gulp.dest(dist + "/fonts/"))
@@ -162,6 +163,10 @@ gulp.task("fonts", () => gulp
 gulp.task("images", () => gulp
     .src(src + "/images/**")
     .pipe(gulp.dest(dist + "/images/"))
+);
+gulp.task("dummy", () => gulp
+    .src(src + "/data-dummy/**")
+    .pipe(gulp.dest(dist + "/data-dummy/"))
 );
 
 
@@ -192,13 +197,20 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/scss/**/*.scss", ["styles"]).on('change', browserSync.reload);
 
     // Watch js files
-    gulp.watch(src + "/js/**/*.js", ["scripts"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/*.js", ["jsCompile"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/common/*", ["jsCompile:common"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/components/*", ["jsCompile:components"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/helper/*", ["jsCompile:helper"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/libs/*", ["jsCompile:libs"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/ui/*", ["jsCompile:ui"]).on('change', browserSync.reload);
 });
 
 // Compile sass, concat and minify css + js
 gulp.task("build", ["clean"], () =>{
     gulp.start(["styles", "scripts", "guide", "html", "static"]);
-}); 
+});
+
+
 
 
 gulp.task("default", ["watch"]); // Default gulp task
