@@ -12,11 +12,11 @@
 		white-space:nowrap;
 		overflow:hidden;
 		&.acc-btn {
-			background:url('/images/icons/icon-AD-on.svg');
+			background:url('/lg5-common/images/icons/icon-AD-on.svg');
 			background-size:36px 36px;
 		}
 		&.ani-btn {
-			background:url('/images/icons/icon-AD-off.svg');
+			background:url('/lg5-common/images/icons/icon-AD-off.svg');
 			background-size:36px 36px;
 		}
 	}
@@ -68,11 +68,11 @@
 					display: block;
 				}
 				&.play {
-					background-image: url('/images/icons/btn-animation-play.svg');
+					background-image: url('/lg5-common/images/icons/btn-animation-play.svg');
 					background-size:40px 40px;
 				}
 				&.pause {
-					background-image: url('/images/icons/btn-animation-pause.svg');
+					background-image: url('/lg5-common/images/icons/btn-animation-pause.svg');
 					background-size:40px 40px;
 				}
 				// @include screen(custom, max, $max-sm) {
