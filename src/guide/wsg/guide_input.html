@@ -120,14 +120,14 @@
 <div class="guide_wrap">
     <span class="input-wrap count">
         <span class="box">
-            <input type="text" class="ui_textcontrol" placeholder="이름을 입력하세요." maxlength="40" data-count-target="#txt-count">
+            <input type="text" class="ui_textcontrol" placeholder="이름을 입력하세요." maxlength="40" data-limit="40" data-count-target="#txt-count">
             <span id="txt-count" class="cell total"><em>0</em> / 40</span>
         </span>
     </span>
     <br><br>
     <span class="input-wrap count error">
         <span class="box">
-            <input type="text" class="ui_textcontrol" placeholder="이름을 입력하세요." value="aw;oilejgrlk" maxlength="40" data-count-target="#txt-count2">
+            <input type="text" class="ui_textcontrol" placeholder="이름을 입력하세요." value="aw;oilejgrlk" maxlength="40" data-limit="40" data-count-target="#txt-count2">
             <span id="txt-count2" class="cell total"><em>0</em> / 40</span>
         </span>
         <p class="err-msg">올바른 이름을 입력해주세요.</p>
@@ -136,7 +136,7 @@
     <br>
     <span class="input-wrap count">
         <span class="box">
-            <textarea class="ui_textcontrol" placeholder="내용을 입력해 주세요." maxlength="1000" data-count-target="#txt-count3"></textarea>
+            <textarea class="ui_textcontrol" placeholder="내용을 입력해 주세요." maxlength="1000" data-limit="1000" data-count-target="#txt-count3"></textarea>
             <span id="txt-count3" class="cell total"><em>0</em> / 1000</span>
         </span>
     </span>
@@ -146,23 +146,23 @@
 <xmp class="prettyprint linenums javascript"><!-- input with count (display:table) -->
 <span class="input-wrap count">
     <span class="box">
-        <input type="text" placeholder="이름을 입력하세요." maxlength="40">
-        <span class="cell total"><em>0</em> / 40</span>
+        <input type="text" class="ui_textcontrol" placeholder="이름을 입력하세요." maxlength="40" data-limit="40" data-count-target="#txt-count">
+        <span id="txt-count" class="cell total"><em>0</em> / 40</span>
     </span>
 </span>
 
 <span class="input-wrap count error">
     <span class="box">
-        <input type="text" placeholder="이름을 입력하세요." maxlength="40">
-        <span class="cell total"><em>0</em> / 40</span>
+        <input type="text" class="ui_textcontrol" placeholder="이름을 입력하세요." value="aw;oilejgrlk" maxlength="40" data-limit="40" data-count-target="#txt-count2">
+        <span id="txt-count2" class="cell total"><em>0</em> / 40</span>
     </span>
     <p class="err-msg">올바른 이름을 입력해주세요.</p>
 </span>
 
 <span class="input-wrap count">
     <span class="box">
-        <textarea placeholder="내용을 입력해 주세요." maxlength="1000"></textarea>
-        <span class="cell total"><em>0</em> / 1000</span>
+        <textarea class="ui_textcontrol" placeholder="내용을 입력해 주세요." maxlength="1000" data-limit="1000" data-count-target="#txt-count3"></textarea>
+        <span id="txt-count3" class="cell total"><em>0</em> / 1000</span>
     </span>
 </span>
 <!-- input with count -->
