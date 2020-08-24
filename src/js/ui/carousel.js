@@ -145,7 +145,7 @@ define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             slidesToScroll: 1,
             speed: 500,
             swipe: true,
-            swipeToSlide: false,
+            swipeToSlide: true,
             touchMove: true,
             touchThreshold: 5,
             useCSS: true,
@@ -191,7 +191,7 @@ define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             self.originalSettings = self.options;
 
             self.$slider = $(element);
-            console.log(element)
+            // console.log(element)
 
             if (typeof document.mozHidden !== 'undefined') {
                 self.hidden = 'mozHidden';

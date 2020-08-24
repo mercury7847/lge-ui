@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html')
+<body>
+    <div class="wrap">
+        <div class="container">
+
+			<!-- component KRC0008 -->
+			<link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRC0008.min.css" />
+
+            <div class="component-wrap">
+	            @@include('./components/common.html')                                                                                                  
+                <div class="component KRC0008">  
+                    <div class="title-wrap">
+                        <div class="tit">
+                            <h2>인기 프로모션을 설명할 수 있는 텍스트 타이틀이 필요합니다</h2>
+                        </div>
+                        <div class="desc">
+                            올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다.222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다.
+                        </div>
+                        <a href="#n" class="btn black">모든 프로모션 보기</a>
+                    </div>
+                                              
+                    <div class="content-wrap ui_carousel_slider">                              
+                        <ul class="list-wrap ui_carousel_track">
+                            <li class="promotions ui_carousel_slide">
+                                <div class="visual">
+                                    <a href="#none">                             
+                                        <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">							
+                                    </a>
+                                </div>
+                                <h3 class="tit">LG WHISEN 사회공헌 캠페인 모두의 바람으로</h3>
+                                <p class="date">2020.08.01 ~ 2020.08.31 </p>
+                                <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
+                                <div class="bottom">
+                                    <span><a href="#n" class="btn-link">자세히 보기</a></span>
+                                </div>
+                            </li>
+                            <li class="promotions ui_carousel_slide">
+                                <div class="visual">
+                                    <a href="#none">                             
+                                        <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">							
+                                    </a>
+                                </div>
+                                <h3 class="tit">LG WHISEN 사회공헌 캠페인 모두의 바람으로</h3>
+                                <p class="date">2020.08.01 ~ 2020.08.31 </p>
+                                <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
+                                <div class="bottom">
+                                    <span><a href="#n" class="btn-link">자세히 보기</a></span>
+                                </div>
+                            </li>
+                            <li class="promotions ui_carousel_slide">
+                                <div class="visual">
+                                    <a href="#none">                             
+                                        <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">							
+                                    </a>
+                                </div>
+                                <h3 class="tit">LG WHISEN 사회공헌 캠페인 모두의 바람으로</h3>
+                                <p class="date">2020.08.01 ~ 2020.08.31 </p>
+                                <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
+                                <div class="bottom">
+                                    <span><a href="#n" class="btn-link">자세히 보기</a></span>
+                                </div>
+                            </li>
+                        </ul>                                    
+                    </div>                       
+                </div>
+            </div>
+            
+		
+		</div>
+    </div> 
+    <script>
+        $(window).ready(function(){
+            vcui.require(['ui/carousel'], function () {
+                $('.ui_carousel_slider').vcCarousel({
+                    infinite: false,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    responsive: [{
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            dots: true
+                        }
+                    }]
+                });
+            });
+        })
+    </script>     
+</body>
+</html>
