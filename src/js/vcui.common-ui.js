@@ -1251,7 +1251,7 @@ define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             if (opt.dots === true) {
 
                 self.$slider.addClass(_V.DOTS);
-
+                
                 if (opt.dotsSelector) {
                     dots = self.$slider.find(opt.dotsSelector).show().addClass('ui_static');
 

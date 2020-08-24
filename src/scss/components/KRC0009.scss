@@ -10,7 +10,9 @@
     @include mobile {
         padding:50px 24px;
     }
-    .content-wrap {
+    .hidden {position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;font-size:medium;line-height:normal;word-break:break-all}
+    .list-wrap {
+        position:relative;
         .ui_carousel_list {
             overflow:hidden;
             margin:0 -12px;
@@ -18,15 +20,16 @@
                 margin:0;
             }
         }
-        .list-wrap {
+        .unit-list {
             @include clearfix;
-            .promotions {
+            .unit-box {
                 float:left;
+                width:calc(100% / 3);
                 padding:0 12px;
                 @include mobile {
                     padding:0;
                 }
-                .visual {
+                .visual-area {
                     a {
                         display:block;
                         img {
@@ -36,7 +39,7 @@
                         }
                     }
                 }
-                .tit {
+                .head-copy {
                     margin-top:16px;
                     color:#111;
                     font-size:18px;
@@ -49,15 +52,43 @@
                     font-size:16px;
                     line-height:26px;
                 }
-                .date {
+                .body-copy {
                     margin-top:4px;
                     color:#616161;
                     font-size:14px;
                     line-height:26px;
                     font-weight:700;
                 }
-                .bottom {
+                .btn-box {
                     margin-top:24px;
+                }
+            }
+        }
+        .ui_carousel_dots {
+            display:none;
+            padding-top:28px;
+            font-size:0;
+            text-align:center;
+            @include mobile {
+                display:block;
+            }
+            li {
+                display:inline-block;
+                padding:0 3px;
+                vertical-align:top;
+                button {
+                    display:inline-block;
+                    width:6px;
+                    height:6px;
+                    border-radius:3px;
+                    background:rgba(#111, 0.2);
+                    font-size:0;
+                    line-height:0;
+                    vertical-align:top;
+                }
+                &.on button {
+                    width:18px;
+                    background:rgba(#111, 0.7);
                 }
             }
         }
