@@ -30,7 +30,7 @@
             position:relative;
             padding:0 16px;
             @include mobile {
-                padding:0 20px;
+                padding:0 0 34px;
             }
             .ui_carousel_list {
                 overflow:hidden;
@@ -189,9 +189,12 @@
                     display:none !important;
                 }
             }
-            .ui_carousel_dots {
+            .indicator {
                 display:none !important;
-                padding-top:44px;
+                position:absolute;
+                right:0;
+                left:0;
+                bottom:0;
                 font-size:0;
                 text-align:center;
                 @include mobile {
@@ -201,7 +204,7 @@
                     display:inline-block;
                     padding:0 3px;
                     vertical-align:top;
-                    button {
+                    .btn-indi {
                         display:inline-block;
                         width:6px;
                         height:6px;
@@ -209,7 +212,7 @@
                         background:rgba(#000, .2);
                         font-size:0;
                     }
-                    &.on button {
+                    &.on .btn-indi {
                         width:18px;
                         background:rgba(#000, .7);
                     }
@@ -221,7 +224,7 @@
                 padding:0;
                 max-width:(1144px + 24px);
                 @include mobile {
-                    padding:0;
+                    padding-bottom:34px;
                 }
                 .ui_carousel_list {
                     max-width:100%;

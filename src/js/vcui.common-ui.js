@@ -799,7 +799,7 @@ define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
         CENTER: prefixModule + 'center',
         VISIBLE: prefixModule + 'visible',
         CURRENT: prefixModule + 'current',
-        SRONLY: 'hide',
+        SRONLY: 'blind',
         PREV: prefixModule + 'prev',
         NEXT: prefixModule + 'next',
 
