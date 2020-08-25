@@ -396,3 +396,12 @@ legend {
         }
     }
 }
+
+[class^="btnarea"] {
+    margin-top:80px;
+}
+.btnarea {
+    &-r {
+        text-align: right;
+    }
+}
