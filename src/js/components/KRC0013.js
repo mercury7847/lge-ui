@@ -20,7 +20,7 @@ define('components/KRC0013', ['jquery', 'vcui', 'ui/modal'], function ($, core) 
 
     return KRC0013;
 });
-vcui.require(['components/KRC0013', 'ui/modal'], function () {
+vcui.require(['components/KRC0013'], function () {
     $('body').find('.KRC0013').vcKRC0013();
 });
 /*
