@@ -1,7 +1,7 @@
 /*!
- * @module vcui.ui.SmoothScroll
+ * @module vcui.ui.SmoothScroll // 바이널 UI 라이브러리
  * @license MIT License
- * @description SmoothScroll 컴포넌트
+ * @description SmoothScroll
  * @copyright VinylC UID Group
  */
 define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
@@ -163,6 +163,7 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             directionLockThreshold: 5,
             mouseWheelSpeed: 20,
             momentum: true,
+            autoCenterScroll: true,
             prevButton: '',
             nextButton: '',
 
@@ -192,31 +193,38 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
             self.$wrapper = self.$el.css('user-select', 'none');
             self.isBadAndroid = /Android /.test(window.navigator.appVersion) && !/Chrome\/\d/.test(window.navigator.appVersion);
-            self.translateZ = self.options.HWCompositing && browser.hasPerspective ? ' translateZ(0)' : '';
-            self.options.useTransition = browser.hasTransition && self.options.useTransition;
-            self.options.useTransform = browser.hasTransform && self.options.useTransform;
-            self.options.eventPassthrough = self.options.eventPassthrough === true ? 'vertical' : self.options.eventPassthrough;
-            self.options.preventDefault = !self.options.eventPassthrough && self.options.preventDefault;
-            self.options.scrollY = self.options.eventPassthrough == 'vertical' ? false : self.options.scrollY;
-            self.options.scrollX = self.options.eventPassthrough == 'horizontal' ? false : self.options.scrollX;
-            self.options.freeScroll = self.options.freeScroll && !self.options.eventPassthrough;
-            self.options.directionLockThreshold = self.options.eventPassthrough ? 0 : self.options.directionLockThreshold;
-            self.options.bounceEasing = typeof self.options.bounceEasing == 'string' ? easingType[self.options.bounceEasing] || easingType.circular : self.options.bounceEasing;
-            self.options.resizePolling = self.options.resizePolling === undefined ? 60 : self.options.resizePolling;
-            self.options.invertWheelDirection = self.options.invertWheelDirection ? -1 : 1;
+            self.translateZ = opts.HWCompositing && browser.hasPerspective ? ' translateZ(0)' : '';
+            opts.useTransition = browser.hasTransition && opts.useTransition;
+            opts.useTransform = browser.hasTransform && opts.useTransform;
+            opts.eventPassthrough = opts.eventPassthrough === true ? 'vertical' : opts.eventPassthrough;
+            opts.preventDefault = !opts.eventPassthrough && opts.preventDefault;
+            opts.scrollY = opts.eventPassthrough == 'vertical' ? false : opts.scrollY;
+            opts.scrollX = opts.eventPassthrough == 'horizontal' ? false : opts.scrollX;
+            opts.freeScroll = opts.freeScroll && !opts.eventPassthrough;
+            opts.directionLockThreshold = opts.eventPassthrough ? 0 : opts.directionLockThreshold;
+            opts.bounceEasing = typeof opts.bounceEasing == 'string' ? easingType[opts.bounceEasing] || easingType.circular : opts.bounceEasing;
+            opts.resizePolling = opts.resizePolling === undefined ? 60 : opts.resizePolling;
+            opts.invertWheelDirection = opts.invertWheelDirection ? -1 : 1;
 
             self.x = 0;
             self.y = 0;
             self.directionX = 0;
             self.directionY = 0;
 
-            this.scrollerStyle = this.$scroller[0].style;
+            self.$el.css('overflow', 'hidden');
+            self.scrollerStyle = self.$scroller[0].style;
 
             self._initEvents();
             self.refresh();
             self._activateButtons();
-            self.scrollTo(self.options.startX, self.options.startY);
+            //self.scrollTo(self.options.startX, self.options.startY);
             self.enable();
+
+            if (opts.autoCenterScroll) {
+                self.scrollToActive(true, false, 0);
+            } else {
+                self.scrollTo(opts.startX, opts.startY);
+            }
         },
 
         _calcScrollerWidth: function _calcScrollerWidth() {
@@ -225,13 +233,12 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
                 width = 0,
                 paddingWidth = self.$scroller.outerWidth() - self.$scroller.width();
 
-            if (!self.$items) {
-                self.$items = self.$scroller.children(); // 캐싱
-            }
+            self.$items = self.$scroller.children();
+
             self.$items.each(function () {
                 width += $(this).outerWidth(true);
             });
-            self.$scroller.css('width', width + paddingWidth + 3);
+            self.$scroller.css('width', width + paddingWidth);
         },
 
         _activateButtons: function _activateButtons() {
@@ -239,10 +246,21 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
             if (self.$prevButton) {
                 self.$prevButton.prop('disabled', self.x === 0);
+                if (self.x === 0) {
+                    self.$prevButton.addClass('disabled');
+                } else {
+                    self.$prevButton.removeClass('disabled');
+                }
             }
 
             if (self.$nextButton) {
                 self.$nextButton.prop('disabled', self.x === self.maxScrollX);
+
+                if (self.x === self.maxScrollX) {
+                    self.$nextButton.addClass('disabled');
+                } else {
+                    self.$nextButton.removeClass('disabled');
+                }
             }
         },
 
@@ -256,10 +274,12 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
             if (opt.prevButton && opt.nextButton) {
                 (self.$prevButton = $(opt.prevButton)).on('click' + self.eventNS, function (e) {
+                    e.preventDefault();
                     self.prevPage();
                 });
 
                 (self.$nextButton = $(opt.nextButton)).on('click' + self.eventNS, function (e) {
+                    e.preventDefault();
                     self.nextPage();
                 });
 
@@ -283,7 +303,7 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self._initWheel();
 
             if (self.options.resizeRefresh) {
-                $(window).on('resize', core.delayRun(function () {
+                self.winOn('resize', core.delayRun(function () {
                     self.refresh();
                 }, self.options.resizePolling));
             }
@@ -294,6 +314,14 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self._handle(self.$wrapper, 'wheel');
             self._handle(self.$wrapper, 'mousewheel');
             self._handle(self.$wrapper, 'DOMMouseScroll');
+        },
+
+        moveFirst: function moveFirst() {
+            this.scrollTo(0, 0, 200);
+        },
+
+        moveLast: function moveLast() {
+            this.scrollTo(this.maxScrollX, 0, 200);
         },
 
         _wheel: function _wheel(e) {
@@ -419,13 +447,13 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
         prevPage: function prevPage() {
             var self = this;
 
-            self.scrollTo(Math.min(0, self.x + self.wrapperWidth), 0, 100);
+            self.scrollTo(Math.min(0, self.x + self.wrapperWidth), 0, 200);
         },
 
         nextPage: function nextPage() {
             var self = this;
 
-            self.scrollTo(Math.max(self.maxScrollX, self.x - self.wrapperWidth), 0, 100);
+            self.scrollTo(Math.max(self.maxScrollX, self.x - self.wrapperWidth), 0, 200);
         },
 
         getPosition: function getPosition() {
@@ -508,15 +536,19 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
             if (self.options.useTransform) {
                 self.scrollerStyle[style.transform] = 'translate(' + x + 'px,' + y + 'px)' + self.translateZ;
+
             } else {
                 x = Math.round(x);
                 y = Math.round(y);
                 self.scrollerStyle.left = x + 'px';
                 self.scrollerStyle.top = y + 'px';
+
             }
 
             self.x = x;
             self.y = y;
+
+            
             self.triggerHandler('smoothscrollmove', { x: self.x, y: self.y });
         },
 
@@ -572,6 +604,7 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             }
 
             var $el = $(el);
+            var xy = core.dom.getTranslateXY(self.$scroller[0]);
             var pos = $el.position();
             var maxX = Math.abs(self.maxScrollX);
             var maxY = Math.abs(self.maxScrollY);
@@ -582,24 +615,34 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
 
+            pos.left += Math.abs(xy.x);
+            pos.top += Math.abs(xy.y);
+
             pos.left -= parseInt($el.parent().css('paddingLeft'), 10);
             pos.top -= parseInt($el.parent().css('paddingTop'), 10);
 
             if (offsetX === true) {
-                offsetX = Math.round(el.offsetWidth / 2 - self.$wrapper.offsetWidth / 2);
+                offsetX = Math.round(el.offsetWidth / 2 - self.$wrapper[0].offsetWidth / 2);
             }
             if (offsetY === true) {
-                offsetY = Math.round(el.offsetHeight / 2 - self.$wrapper.offsetHeight / 2);
+                offsetY = Math.round(el.offsetHeight / 2 - self.$wrapper[0].offsetHeight / 2);
             }
 
-            pos.left -= offsetX || 0;
-            pos.top -= offsetY || 0;
+            pos.left += offsetX || 0;
+            pos.top += offsetY || 0;
             pos.left = Math.min(maxX, pos.left < 0 ? 0 : pos.left);
             pos.top = Math.min(maxY, pos.top < 0 ? 0 : pos.top);
 
             time = time === undefined || time === null || time === 'auto' ? Math.max(Math.abs(self.x - pos.left), Math.abs(self.y - pos.top)) : time;
 
             self.scrollTo(-pos.left, -pos.top, time, easing);
+        },
+
+        scrollToActive: function scrollToActive(time, easing) {
+            var $item = this.$scroller.children().filter('.on');
+            if ($item.length) {
+                this.scrollToElement($item[0], time? time:200, this.options.center);
+            }
         },
 
         preventDefaultException: function preventDefaultException(el) {
@@ -644,7 +687,7 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
 
-            if (opt.preventDefault && !self.isBadAndroid && !self.preventDefaultException(e.target)) {
+            if ( /*!self.isBadAndroid && */self.preventDefaultException(e.target)) {
                 e.preventDefault();
             }
 
@@ -655,8 +698,8 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             /***if(!me._isDownable($(e.target).closest(':focusable').get(0))) {
                 e.preventDefault ? e.preventDefault() : e.returnValue = false;
             }***/
-            self._handle($doc, 'mousemove');
-            self._handle($doc, 'touchmove');
+            self._handle(self.$wrapper, 'mousemove');
+            self._handle(self.$wrapper, 'touchmove');
             self._handle($doc, 'touchend');
             self._handle($doc, 'mouseup');
             self._handle($doc, 'mousecancel');
@@ -672,11 +715,20 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
             self._transitionTime();
 
+            
+
             self.startTime = getTime();
             if (opt.useTransition && self.isInTransition) {
                 self.isInTransition = false;
                 pos = self.getPosition();
-                self._translate(Math.round(pos.x), Math.round(pos.y));
+
+                if(self.hasHorizontalScroll){
+                    self._translate(Math.round(pos.x), 0);
+                }else if(self.hasVerticalScroll){
+                    self._translate(0, Math.round(pos.y));
+                }
+                //self._translate(Math.round(pos.x), Math.round(pos.y));
+               
                 self.triggerHandler('smoothscrollend', {
                     x: self.x,
                     y: self.y,
@@ -885,6 +937,7 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var opt = self.options;
 
+
             self._calcScrollerWidth();
 
             self.wrapperWidth = opt.getWrapperWidth ? opt.getWrapperWidth.call(self) : self.$wrapper.innerWidth();
@@ -935,6 +988,13 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
                     isStart: this.x === 0,
                     isEnd: this.x === this.maxScrollX
                 });
+
+                // this.triggerHandler('smoothscrolltransnend', {
+                //     x: this.x,
+                //     y: this.y,
+                //     isStart: this.x === 0,
+                //     isEnd: this.x === this.maxScrollX
+                // });
             }
         },
 
@@ -946,6 +1006,7 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
         },
         destroy: function destroy() {
             var self = this;
+            var $doc = $(document);
 
             if (self.$prevButton) {
                 self.$prevButton.off(self.eventNS);
@@ -953,6 +1014,26 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             if (self.$nextButton) {
                 self.$nextButton.off(self.eventNS);
             }
+
+            self.$scroller[0].style.cssText = '';
+
+            self._handle($doc, 'mousemove', false);
+            self._handle($doc, 'touchmove', false);
+            self._handle($doc, 'touchend', false);
+            self._handle($doc, 'mouseup', false);
+            self._handle($doc, 'mousecancel', false);
+            self._handle($doc, 'tocuchcancel', false);
+            self._handle(self.$wrapper, 'mousedown', false);
+            self._handle(self.$wrapper, 'touchstart', false);
+            self._handle(self.$wrapper, 'selectstart', false);
+            self._handle(self.$wrapper, 'click', false);
+            self._handle(self.$scroller, 'transitionend', false);
+            self._handle(self.$scroller, 'webkitTransitionEnd', false);
+            self._handle(self.$scroller, 'oTransitionEnd', false);
+            self._handle(self.$scroller, 'MSTransitionEnd', false);
+            self._handle(self.$wrapper, 'wheel', false);
+            self._handle(self.$wrapper, 'mousewheel', false);
+            self._handle(self.$wrapper, 'DOMMouseScroll', false);
             this.supr();
         }
     });
