@@ -20,7 +20,7 @@ define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
         _templateLoad: function(){
             var self = this;
 
-            self.load("/lg")
+            
         }
     });
 
