@@ -291,6 +291,10 @@ legend {
         .search-btn {
             width: 24px;
             height: 24px;
+            width: 15px;
+            height: 15px;
+            background: url(/lg5-common/images/icons/icon-search.svg);
+            background-size: 100%;
             position: absolute;
             left: 24px;
             top: 50%;
@@ -298,6 +302,16 @@ legend {
             @include icon-search();
             background-repeat:no-repeat;
             background-size:100%;
+        }
+        &.type-A {
+            input {
+                padding-left: 24px;
+                padding-right: 64px;
+            }
+            .search-btn {
+                left: auto;
+                right: 24px;
+            }
         }
     }
 }
@@ -310,7 +324,7 @@ legend {
 .tooltip-btn {
     width: 20px;
     height: 20px;
-    background: url(/dist/images/icon-tooltip-btn.svg) no-repeat;
+    background: url(/lg5-common/images/icon-tooltip-btn.svg) no-repeat;
 }
 .tooltip-txt {
     float:right;
@@ -335,5 +349,62 @@ legend {
     }
     .tooltip-txt {
         margin-left: 22px;
+    }
+}
+
+.paging-comm {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    a {
+        color: #aaaaaa;
+        display: inline-block;
+        padding: 0 14px;
+        span {
+            font-size: 16px;
+            line-height: 1;
+            padding-bottom:  4px;
+            display: block;
+        }
+        &.on {
+            color: #111;
+            font-weight: bold;
+            span {
+                border-bottom: 2px solid #111;
+            }
+        }
+        &.btn_page {
+            width: 24px;
+            height: 24px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100%;
+            padding: 0;
+            &.prev {
+                background-image: url(/lg5-common/images/icons/icon-page-prev.svg);
+            }
+            &.next {
+                background-image: url(/lg5-common/images/icons/icon-page-next.svg);
+            }
+            &.on {
+                &.prev {
+                    background-image: url(/lg5-common/images/icons/icon-page-prev-on.svg);
+                }
+                &.next {
+                    background-image: url(/lg5-common/images/icons/icon-page-next-on.svg);
+                }
+            }
+        }
+    }
+}
+
+[class^="btnarea"] {
+    margin-top:80px;
+}
+.btnarea {
+    &-r {
+        text-align: right;
     }
 }

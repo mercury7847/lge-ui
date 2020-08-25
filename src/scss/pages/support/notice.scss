@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+@import "../../support-common";
+
+.notice-wrap {
+    .search-box {
+        margin-top: 0;
+    }
+    .ui_tab-notice {
+        margin-top: 48px;
+    }
+    .tabs-contents {
+        margin-top: 20px;
+    }
+    .notice-moveTo {
+        margin-top: 15px;
+    }
+}
+.ui_tab {
+    &-notice {
+        .tabs {
+            > li {
+                > a {
+                    font-size: 14px;
+                    color: #616161;
+                    padding-bottom: 4px;
+                }
+                &.on {
+                    border-bottom: 2px solid #111;
+                }
+            }
+        }
+    }
+}
+.notice-list {
+    background-color: #fff;
+    border-radius: 4px;
+    a {
+        display: block;
+        padding: 25.5px 76px 25.5px 56px;
+    }
+    li {
+        border-top: 1px solid #ddd;
+        position: relative;
+        &:first-child {
+            border-top: none;
+        }
+        &::after {
+            content: '';
+            width: 0px;
+            height: 0px;
+            border-top: 5px solid transparent;
+            border-left: 6px solid #111;
+            border-bottom: 5px solid transparent;
+            position: absolute;
+            right: 63px;
+            top: 46px;
+        }
+    }
+    &-title {
+        margin-top: 4px;
+        font-size: 16px;
+        line-height: normal;
+        color: #111111;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        word-wrap:normal;
+        overflow:hidden;
+    }
+}
+.notice-read {
+    padding-top: 60px;
+    background-color: #fff;
+    &-title {
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 1.29;
+        letter-spacing: -0.5px;
+        color: #111111;
+    }
+    &-content {
+        margin-top: 56px;
+        font-size: 16px;
+        color: #111;
+    }
+    .date {
+        &-box {
+            margin-top: 16px;
+        }
+        &-label,
+        &-time {
+            font-size: 14px;
+        }
+        &-label {
+            color: #616161;
+        }
+        &-time {
+            color: #111111;
+        }
+    }
+    .sns-box {
+        margin-top: 80px;
+    }
+    .notice-category {
+        margin-bottom: 8px;
+    }
+}
+.notice-moveTo {
+    [class^="notice-moveTo"] {
+        display: flex;
+        align-items: center;
+        height: 72px;
+        background-color: #fff;
+        border-radius: 8px;
+        padding-left: 52px;
+        margin-top: 4px;
+        &:first-child {
+            margin-top: 0;
+        }
+        [class^="part"] {
+            font-size: 16px;
+            letter-spacing: -0.4px;
+        }
+        .part1 {
+            color: #616161;
+            position: relative;
+            padding-right: 40px;
+            margin-right: 40px;
+            &::after {
+                content: '';
+                display: block;
+                width: 1px;
+                height: 16px;
+                background-color: #dddddd;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+        .part2 {
+            color: #111111;
+        }
+    }
+}
+.notice-category {
+    font-size: 12px;
+    line-height: 1;
+    color: #111111;
+    border-radius: 4px;
+    background-color: #f1f3f7;
+    padding: 6px 8px;
+    display: inline-block;
+}
+.sns {
+    &-box {
+        display: flex;
+    }
+    &-icon {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        margin-left: 8px;
+        &:first-child {
+            margin-left: 0;
+        }
+        &.sns1 {
+            background-image: url(/lg5-common/images/icons/icon-sns-kakaotalk.svg);
+        }
+        &.sns2 {
+            background-image: url(/lg5-common/images/icons/icon-sns-facebook.svg);
+        }
+        &.sns3 {
+            background-image: url(/lg5-common/images/icons/icon-sns-twiter.svg);
+        }
+    }
+}
