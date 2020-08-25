@@ -1,30 +1,55 @@
 @charset "UTF-8";
 @import "../../support-common";
 
-.search-box {
-    max-width: 848px;
-    margin: 80px auto 0;
-}
-.input-wrap {
-    &.search {
-        position: relative;
-        input {
-            padding-left: 64px;
+.status-bar {
+    background:#212121;
+    height:80px;
+    &-inner {
+        max-width:1364px;
+        margin:0 auto;
+        padding:32px 40px;
+        @include clearfix;
+    }
+    .status {
+        float:left;
+        &-title {
+            float:left;
+            color:#ddd;
         }
-        .search-btn {
-            width: 24px;
-            height: 24px;
-            background-color: #000;
-            position: absolute;
-            left: 24px;
-            top: 50%;
-            transform: translateY(-50%);
-            @include clearfix;
+        &-list {
+            float:left;
+            margin-left:14px;
+            li {
+                position:relative;
+                float:left;
+                color:#ddd;
+                & + li {
+                    margin-left:7px;
+                    padding-left:13px;
+                    &:before {
+                        content:'';
+                        position:absolute;
+                        left:-4px;
+                        top:50%;
+                        width:8px;
+                        height:8px;
+                        border-top:1px solid #ddd;
+                        border-right:1px solid #ddd;
+                        transform:translateY(-50%) rotate(45deg);
+                    }
+                }
+            }
         }
     }
-}
-.tooltip-btn {
-    width: 20px;
-    height: 20px;
-    background: url(/dist/images/icon-tooltip-btn.svg) no-repeat;
+    .guide {
+        float:right;
+        a {
+            float:left;
+            font-size:18px;
+            color:#fff;
+            & + a {
+                margin-left:24px;
+            }
+        }
+    }
 }
