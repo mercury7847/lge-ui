@@ -43,10 +43,11 @@ legend {
             }
             @include mobile {
                 &-title {
-                    font-size:18px;
+                    font-size:32px;
                 }
                 &-desc {
-                    font-size:13px;
+                    font-size:16px;
+                    padding: 0 88.5px;
                 }
             }
         }
@@ -315,11 +316,27 @@ legend {
             }
         }
     }
+    @include mobile {
+        &.search {
+            input {
+                font-size: 14px;
+            }
+            &.type-A {
+                input {
+                    padding-left: 20px;
+                    padding-right: 40px;
+                }
+                .search-btn {
+                    right: 20px;
+                }
+            }
+        }
+    }
 }
 .tooltip-tit {
     font-size: 16px;
     font-weight: bold;
-    color: #111111;
+    color: #111;
 }
 .tooltip-btn {
     width: 20px;
@@ -395,10 +412,20 @@ legend {
             }
         }
     }
+    @include mobile {
+        margin-top: 43px;
+    }
 }
 
 [class^="btnarea"] {
     margin-top:80px;
+    @include mobile {
+        margin-top: 40px;
+        padding: 0 24px;
+        .btn {
+            width: 100%;
+        }
+    }
 }
 .btnarea {
     &-r {
