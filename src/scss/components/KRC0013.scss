@@ -65,10 +65,20 @@
 	
 	&.standard {
 		.visual-wrap {
-			@include grid-col(6);
+			&.image-align-left {
+				@include grid-col(left,6);
+			}
+			&.image-align-right {
+				@include grid-col(right,6);
+			}
 		}
 		.text-wrap {
-			@include grid-col(6);
+			&.side-left-text {
+				@include grid-col(left,6);
+			}
+			&.side-right-text {
+				@include grid-col(right,6);
+			}
 			.title {
 				max-height: 68px;
 				@include textEllipsisClamp(2);
@@ -77,10 +87,20 @@
 	}
 	&.large {
 		.visual-wrap {
-			@include grid-col(8);
+			&.image-align-left {
+				@include grid-col(left,8);
+			}
+			&.image-align-right {
+				@include grid-col(right,8);
+			}
 		}
 		.text-wrap {
-			@include grid-col(4);
+			&.side-left-text {
+				@include grid-col(left,4);
+			}
+			&.side-right-text {
+				@include grid-col(right,4);
+			}
 			.title {
 				max-height: 102px;
 				@include textEllipsisClamp(3);
@@ -136,12 +156,6 @@
 	
 	.text-wrap {
 		padding-top: 25px;
-		&.side-right-text {
-			vertical-align: middle;
-		}
-		&.side-left-text {
-			vertical-align: middle;
-		}
 
 		.title {
 			margin-bottom: 40px;

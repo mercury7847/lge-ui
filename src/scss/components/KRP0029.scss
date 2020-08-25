@@ -126,7 +126,7 @@
     }
 
     .unit-box {
-        @include grid-col(4);
+        @include grid-col(left,4);
         margin-bottom: 50px;
         @include mobile {
             margin-bottom: 48px;
