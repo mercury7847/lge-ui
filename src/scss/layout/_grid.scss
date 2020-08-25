@@ -12,8 +12,8 @@
 	}
 }
 
-@mixin grid-col ($columns) {
-    float: left;
+@mixin grid-col ($align,$columns) {
+    float: $align;
     width: (100% / 12) * $columns;
     padding: 0 12px;
 

@@ -14,7 +14,7 @@
     .btn {
         display: inline-block;
         min-width:194px;
-        padding:16px 0;
+        padding:15px 0;
         border: 1px solid transparent;
         border-radius: 4px;
         background-color: #fff;
@@ -126,7 +126,7 @@
     }
 
     .unit-box {
-        @include grid-col(4);
+        @include grid-col(left,4);
         margin-bottom: 50px;
         @include mobile {
             margin-bottom: 48px;
@@ -264,13 +264,17 @@
                 }
             }
         }
+
+        @include mobile {
+            display: none;
+        }
     }
 
     .expander {
         display: none;
         @include mobile {
             display: block;
-            margin-top: 80px;
+            margin-top: 32px;
             text-align: center;
             .btn {
                 border-color: #111;

@@ -13,12 +13,17 @@
                 <section class="component KRC0009">
                     <div class="unit-wrap">
                         <div class="inner">
-                            <!-- <div class="unit-title align-center"><h3>Exciting Offers Just For You</h3></div>  디자인 타이틀 미사용   -->
+                            <div class="unit-title align-center"><h3>당신만을 위한 프로모션</h3></div> 
                             <form action="/data-ajax/mkt/promotionList-C0028.json" novalidate>                                  
                                 <input type="hidden" name="page" value="1">               
                                 <input type="hidden" name="pagePosition">
                             </form>                       
-                            <div class="list-wrap ui_carousel_slider">                
+                            <div class="list-wrap ui_carousel_slider">     
+                                <!-- [KR수정] indicator DOM 추가-->
+                                <ul class="indicator ui_carousel_dots">
+                                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                </ul>
+                                <!-- // [KR수정] indicator DOM 추가-->           
                                 <template class="contents-template">
                                     <li class="unit-box">
                                         <div class="visual-area image">
@@ -35,61 +40,53 @@
                                     </li>
                                 </template>
                                 <!-- 
+                                    [KR수정]
                                     div -> ul DOM 변경 
                                     - 화면 반영 보기 위해 템플릿으로 불러오는 li DOM 내부에 붙혀 작업함
                                 -->
-                                <ul class="unit-list align-center ui_carousel_track">
+                                <ul class="unit-list ui_carousel_track"><!-- [KR수정] .align-center class 삭제(기획서상 해당 영역 정렬옵션 지원하지 않음) -->
                                     <li class="unit-box ui_carousel_slide">
                                         <div class="visual-area image">
                                             <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
-                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">
+                                                <img class="lazyload" data-src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="" aria-hidden="true"/>
                                                 <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
                                         <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
-                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
-                                        <!-- 옵션 작업 시 추가될 내용 -->
-                                        <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
-                                        <!-- // 옵션 작업 시 추가될 내용 -->
+                                        <p class="body-copy">08/01 ~ 08/31/2020</p>
                                         <div class="btn-box">
                                             <span>
-                                                <a href="*promotionLinkUrl*" class="btn-link" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">자세히 보기</a><!-- 기존 class 전체 삭제 후 변경 -->
+                                                <a href="*promotionLinkUrl*" class="btn black" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">프로모션 보기</a><!-- [KR수정] .btn-primary 삭제 후 .black 추가 -->
                                             </span>
                                         </div>
                                     </li>
                                     <li class="unit-box ui_carousel_slide">
                                         <div class="visual-area image">
                                             <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
-                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">
+                                                <img class="lazyload" data-src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="" aria-hidden="true"/>
                                                 <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
                                         <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
-                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
-                                        <!-- 옵션 작업 시 추가될 내용 -->
-                                        <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
-                                        <!-- // 옵션 작업 시 추가될 내용 -->
+                                        <p class="body-copy">08/01 ~ 08/31/2020</p>
                                         <div class="btn-box">
                                             <span>
-                                                <a href="*promotionLinkUrl*" class="btn-link" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">자세히 보기</a><!-- 기존 class 전체 삭제 후 변경 -->
+                                                <a href="*promotionLinkUrl*" class="btn black" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">프로모션 보기</a><!-- [KR수정] .btn-primary 삭제 후 .black 추가 -->
                                             </span>
                                         </div>
                                     </li>
                                     <li class="unit-box ui_carousel_slide">
                                         <div class="visual-area image">
                                             <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
-                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">
+                                                <img class="lazyload" data-src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="" aria-hidden="true"/>
                                                 <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
                                         <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
-                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
-                                        <!-- 옵션 작업 시 추가될 내용 -->
-                                        <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
-                                        <!-- // 옵션 작업 시 추가될 내용 -->
+                                        <p class="body-copy">08/01 ~ 08/31/2020</p>
                                         <div class="btn-box">
                                             <span>
-                                                <a href="*promotionLinkUrl*" class="btn-link" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">자세히 보기</a><!-- 기존 class 전체 삭제 후 변경 -->
+                                                <a href="*promotionLinkUrl*" class="btn black" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">프로모션 보기</a><!-- [KR수정] .btn-primary 삭제 후 .black 추가 -->
                                             </span>
                                         </div>
                                     </li>

@@ -345,7 +345,7 @@ define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             self.layout();
             var defer = $.Deferred();
             if (opts.effect === 'fade') {
-                self.$el.hide().fadeIn('slow', function () {
+                self.$el.hide().fadeIn(250, function () {
                     defer.resolve();
                 });
             } else if (opts.effect === 'slide') {
@@ -419,7 +419,7 @@ define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             var defer = $.Deferred();
             self.isShown = false;
             if (self.options.effect === 'fade') {
-                self.$el.fadeOut('slow', function () {
+                self.$el.fadeOut(250, function () {
                     defer.resolve();
                 });
             } else if (self.options.effect === 'slide') {
