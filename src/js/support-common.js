@@ -1,7 +1,7 @@
 $(window).ready(function(){
     
     vcui.require(['ui/carousel', 'ui/modal'], function () {
-        $('.category-wrap').vcCarousel({
+        $('.category-select-carousel').vcCarousel({
             slidesToShow: 4,
             slidesToScroll: 4,
             dots: true,
