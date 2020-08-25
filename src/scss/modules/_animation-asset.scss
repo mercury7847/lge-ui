@@ -1,3 +1,7 @@
+@charset "UTF-8";
+
+@import "../utilities/mixins";
+
 .animation-box {
 	position:relative;
 
@@ -87,5 +91,23 @@
 				// }
 			}
 		}
+	}
+
+	.caption {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 5;
+		overflow: hidden;
+		padding: 12px 24px;
+		height: 44px;
+		background-color: rgba(0,0,0,0.5);
+		font-weight: 700;
+		font-size:14px;
+		line-height: 20px;
+		color: #fff;
+		text-align: left;
+		white-space: nowrap;
 	}
 }

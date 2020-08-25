@@ -8,6 +8,7 @@
 //@import './components/no-content';
 //@import './components/colorchip';
 
+
 // component container
 .iw_placeholder .iw_component {
     // don't remove
@@ -166,61 +167,61 @@
         }
     }
 
-    .video {
-        a {
-            display: block;
-
-            &:before {
-                content: '';
-                display: inline-block;
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                width: 48px;
-                height: 48px;
-                margin: -24px 0 0 -24px;
-                background: url('/lg5-common/images/components/btn-play.svg') no-repeat 0 0;
-                background-size: 100% 100%;
-                border-radius: 50% 50%;
-                background-color: rgba(0, 0, 0, 0.25);
-            }
-        }
-
-        .acc-video-content {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 36px;
-            height: 36px;
-            overflow: hidden;
-            z-index: 9;
-            text-indent: 2000%;
-            white-space: nowrap;
-            //@include screen(custom, max, $max-sm) {
-            //  width:29px;
-            //  height:29px;
-            //}
-            &:before {
-                content: '';
-                display: inline-block;
-                position: absolute;
-                top: 0;
-                right: 0;
-                left: inherit;
-                width: 36px;
-                height: 36px;
-                margin: 0;
-                background: url('/lg5-common/images/components/ico_AD-on.svg');
-                background-size: 36px 36px;
-                border-radius: inherit;
-                //@include screen(custom, max, $max-sm) {
-                //  width:29px;
-                //  height:29px;
-                //  background-size:29px 29px;
-                //}
-            }
-        }
-    }
+    //.video {
+    //    a {
+    //        display: block;
+    //
+    //        &:before {
+    //            content: '';
+    //            display: inline-block;
+    //            position: absolute;
+    //            left: 50%;
+    //            top: 50%;
+    //            width: 48px;
+    //            height: 48px;
+    //            margin: -24px 0 0 -24px;
+    //            background: url('/lg5-common/images/components/btn-play.svg') no-repeat 0 0;
+    //            background-size: 100% 100%;
+    //            border-radius: 50% 50%;
+    //            background-color: rgba(0, 0, 0, 0.25);
+    //        }
+    //    }
+    //
+    //    .acc-video-content {
+    //        position: absolute;
+    //        top: 20px;
+    //        right: 20px;
+    //        width: 36px;
+    //        height: 36px;
+    //        overflow: hidden;
+    //        z-index: 9;
+    //        text-indent: 2000%;
+    //        white-space: nowrap;
+    //        //@include screen(custom, max, $max-sm) {
+    //        //  width:29px;
+    //        //  height:29px;
+    //        //}
+    //        &:before {
+    //            content: '';
+    //            display: inline-block;
+    //            position: absolute;
+    //            top: 0;
+    //            right: 0;
+    //            left: inherit;
+    //            width: 36px;
+    //            height: 36px;
+    //            margin: 0;
+    //            background: url('/lg5-common/images/icons/icon-AD-on.svg');
+    //            background-size: 36px 36px;
+    //            border-radius: inherit;
+    //            //@include screen(custom, max, $max-sm) {
+    //            //  width:29px;
+    //            //  height:29px;
+    //            //  background-size:29px 29px;
+    //            //}
+    //        }
+    //    }
+    //}
 
     // font opion style
     .font-regular {

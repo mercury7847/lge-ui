@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 @import "../components-app";
-@import "./components";
 
 
 .KRC0013 {
@@ -64,16 +63,6 @@
 		}
 	}
 	
-	&.align-left {
-		text-align: left;
-	}
-	&.align-right {
-		text-align: right;
-	}
-	&.align-center {
-		text-align: center;
-	}
-	
 	&.standard {
 		.visual-wrap {
 			@include grid-col(6);
@@ -105,22 +94,24 @@
 			max-width: 100%;
 			margin-bottom: 14px;
 
-			.caption {
-				position: absolute;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				z-index: 5;
-				overflow: hidden;
-				padding: 12px 24px;
-				height: 44px;
-				background-color: rgba(0,0,0,0.5);
-				font-weight: 700;
-				font-size:14px;
-				line-height: 20px;
-				color: #fff;
-				text-align: left;
-				white-space: nowrap;
+			&.image {
+				.caption {
+					position: absolute;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					z-index: 5;
+					overflow: hidden;
+					padding: 12px 24px;
+					height: 44px;
+					background-color: rgba(0,0,0,0.5);
+					font-weight: 700;
+					font-size:14px;
+					line-height: 20px;
+					color: #fff;
+					text-align: left;
+					white-space: nowrap;
+				}
 			}
 		}
 		img {
