@@ -1,6 +1,6 @@
-<div class="category-section">    
+<div class="category-section"> 
+    <h2 class="category-tit">제품선택</h2>   
     <div class="category-wrap">
-        <h2 class="category-tit">제품선택</h2>
         <div class="ui_carousel_list">
             <div class="ui_carousel_track">
                 <div class="ui_carousel_slide">
@@ -115,25 +115,29 @@
             <ul class="ui_carousel_dots"></ul>
         </div>
     </div>
-
-    <div class="search-box">
-        <span class="input-wrap block search">
-            <input type="text" placeholder="(선택) 모델명을 입력하시면 정확한 서비스 제공에 도움이 됩니다. [3자 이상 입력 후 검색 가능]">
-            <button type="submit" class="search-btn">
-                <span class="blind">검색</span>
-            </button>
-        </span>
-        <div class="tooltip-msg">
-            <div class="tooltip-box">
-                <span class="tooltip-tit">모델명 확인방법</span>
-                <a href="#modal01" class="tooltip-btn"  data-control="modal">
-                    <span class="blind">도움말</span>
-                </a>
-                <div id="modal01" style="display: none;">
-                    test modal
+    <div class="search-wrap">
+        <form action="">
+            <legend>제품 모델명 입력</legend>
+            <fieldset>
+                <div class="input-wrap block search">
+                    <input type="text" placeholder="(선택) 모델명을 입력하시면 정확한 서비스 제공에 도움이 됩니다. [3자 이상 입력 후 검색 가능]">
+                    <button type="submit" class="search-btn">
+                        <span class="blind">검색</span>
+                    </button>
                 </div>
-            </div>
-            <p class="tooltip-txt">모델명 중 S 또는 F로 시작되는 모델명에 ˝-˝가 있으면 ˝-˝삭제하고 ˝N˝입력 후 검색   예시) F-Q166DN → FNQ166DN</p>
-        </div>
+                <div class="tooltip-msg">
+                    <div class="tooltip-box">
+                        <span class="tooltip-tit">모델명 확인방법</span>
+                        <a href="#modal01" class="tooltip-btn"  data-control="modal">
+                            <span class="blind">도움말</span>
+                        </a>
+                        <div id="modal01" style="display: none;">
+                            test modal
+                        </div>
+                    </div>
+                    <p class="tooltip-txt">모델명 중 S 또는 F로 시작되는 모델명에 ˝-˝가 있으면 ˝-˝삭제하고 ˝N˝입력 후 검색   예시) F-Q166DN → FNQ166DN</p>
+                </div>
+            </fieldset>
+        </form>
     </div>
 </div>
