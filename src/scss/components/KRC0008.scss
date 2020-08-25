@@ -94,12 +94,12 @@
             }
         }
         .ui_carousel_dots {
-            display:none;
+            display:none !important;
             padding-top:28px;
             font-size:0;
             text-align:center;
             @include mobile {
-                display:block;
+                display:block !important;
             }
             li {
                 display:inline-block;

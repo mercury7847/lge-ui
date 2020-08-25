@@ -10,96 +10,260 @@
 			<!-- component KRC0008 -->
             <div class="component-wrap">
                 @@include('./components/common-note.html')                  
-                <section class="component KRC0009">
-                    <div class="unit-wrap">
-                        <div class="inner">
-                            <!-- <div class="unit-title align-center"><h3>Exciting Offers Just For You</h3></div>  디자인 타이틀 미사용   -->
-                            <form action="/data-ajax/mkt/promotionList-C0028.json" novalidate>                                  
-                                <input type="hidden" name="page" value="1">               
-                                <input type="hidden" name="pagePosition">
-                            </form>                       
-                            <div class="list-wrap ui_carousel_slider">                
-                                <template class="contents-template">
-                                    <li class="unit-box">
-                                        <div class="visual-area image">
-                                            <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
-                                                <img class="lazyload" data-src="*thumbnailImageAddr*" alt="*imageAltText*"/>
-                                                <p class="hidden">graphic description : </p>
-                                            </a>
+                <section class="component KRP0008"> <!-- 화면용 class명 수정 -->
+                    <div class=" component-outer-box bundle-wrap">
+                        <h2 class="title">신상품</h2>
+                        <div class="product-type ui_carousel_slider">                                                                                                   
+                            <button type="button" class="package-prev">이전</button>
+                            <div class="items ui_carousel_track">
+                                <div class="item ui_carousel_slide">
+                                    <a href="#" class="visual" tabindex="-1">
+                                        <!-- <img data-src="/lg5-common/images/components/sample-200x200.jpg" class="lazyload pc" alt="" aria-hidden="true"/>
+                                        <img data-src="/lg5-common/images/components/category-sample01-180.jpg" class="lazyload mobile" alt="" aria-hidden="true"/> -->
+                                        <img src="/lg5-common/images/KRP0008/@thumb01.jpg" alt="">
+                                        <!-- [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                        <span class="flag-wrap">
+                                            <span class="flag">NEW</span>
+                                            <span class="flag">BEST</span>
+                                        </span>
+                                        <!-- // [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                    </a>
+                                    <div class="products-info">
+                                        <a href="#" class="model-name">LG TROMM 스타일러</a>
+                                                                                
+                                        <div class="sku">AGM73611305</div>
+                                                                                
+                                        <div class="rating" data-bv-show="inline_rating" data-bv-product-id="MD05913476" data-bv-redirect-url="/us/tvs/lg-OLED65W8PUA-signature-oled-4k-tv#reviews">별점</div>
+                                                                                
+                                        <div class="price-area">
+                                            <div class="purchase-price">
+                                                <div class="price">6,480,000원</div>
+                                            </div>
+                                            <div class="product-price">
+                                                <del class="price" aria-label="Previous price">10,550,000원</del>
+                                                <div class="legal">캐시백 800,000원</div>
+                                            </div>
                                         </div>
-                                        <p class="head-copy" id="title">*title*</p>
-                                        <p class="body-copy">*promotionStartDate* ~ *promotionEndDate*</p>
-                                        <div class="btn-box">
-                                            <span><a href="*promotionLinkUrl*" class="btn btn-primary" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">View Promotion</a></span>
+                                                                            
+                                        <div class="promotion">여름 시즌 세일</div>
+                                    </div>
+                                </div>
+                                <div class="item ui_carousel_slide">
+                                    <a href="#" class="visual" tabindex="-1">
+                                        <!-- <img data-src="/lg5-common/images/components/sample-200x200.jpg" class="lazyload pc" alt="" aria-hidden="true"/>
+                                        <img data-src="/lg5-common/images/components/category-sample01-180.jpg" class="lazyload mobile" alt="" aria-hidden="true"/> -->
+                                        <img src="/lg5-common/images/KRP0008/@thumb01.jpg" alt="">
+                                        <!-- [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                        <span class="flag-wrap">
+                                            <span class="flag">NEW</span>
+                                            <span class="flag">BEST</span>
+                                        </span>
+                                        <!-- // [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                    </a>
+                                    <div class="products-info">
+                                        <a href="#" class="model-name">LG TROMM 스타일러</a>
+                                                                                
+                                        <div class="sku">AGM73611305</div>
+                                                                                
+                                        <div class="rating" data-bv-show="inline_rating" data-bv-product-id="MD05913476" data-bv-redirect-url="/us/tvs/lg-OLED65W8PUA-signature-oled-4k-tv#reviews">별점</div>
+                                                                                
+                                        <div class="price-area">
+                                            <div class="purchase-price">
+                                                <div class="price">6,480,000원</div>
+                                            </div>
+                                            <div class="product-price">
+                                                <del class="price" aria-label="Previous price">10,550,000원</del>
+                                                <div class="legal">캐시백 800,000원</div>
+                                            </div>
                                         </div>
-                                    </li>
-                                </template>
-                                <!-- 
-                                    div -> ul DOM 변경 
-                                    - 화면 반영 보기 위해 템플릿으로 불러오는 li DOM 내부에 붙혀 작업함
-                                -->
-                                <ul class="unit-list align-center ui_carousel_track">
-                                    <li class="unit-box ui_carousel_slide">
-                                        <div class="visual-area image">
-                                            <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
-                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">
-                                                <p class="hidden">graphic description : </p>
-                                            </a>
+                                                                            
+                                        <div class="promotion">여름 시즌 세일</div>
+                                    </div>
+                                </div>
+                                <div class="item ui_carousel_slide">
+                                    <a href="#" class="visual" tabindex="-1">
+                                        <!-- <img data-src="/lg5-common/images/components/sample-200x200.jpg" class="lazyload pc" alt="" aria-hidden="true"/>
+                                        <img data-src="/lg5-common/images/components/category-sample01-180.jpg" class="lazyload mobile" alt="" aria-hidden="true"/> -->
+                                        <img src="/lg5-common/images/KRP0008/@thumb01.jpg" alt="">
+                                        <!-- [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                        <span class="flag-wrap">
+                                            <span class="flag">NEW</span>
+                                            <span class="flag">BEST</span>
+                                        </span>
+                                        <!-- // [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                    </a>
+                                    <div class="products-info">
+                                        <a href="#" class="model-name">LG TROMM 스타일러</a>
+                                                                                
+                                        <div class="sku">AGM73611305</div>
+                                                                                
+                                        <div class="rating" data-bv-show="inline_rating" data-bv-product-id="MD05913476" data-bv-redirect-url="/us/tvs/lg-OLED65W8PUA-signature-oled-4k-tv#reviews">별점</div>
+                                                                                
+                                        <div class="price-area">
+                                            <div class="purchase-price">
+                                                <div class="price">6,480,000원</div>
+                                            </div>
+                                            <div class="product-price">
+                                                <del class="price" aria-label="Previous price">10,550,000원</del>
+                                                <div class="legal">캐시백 800,000원</div>
+                                            </div>
                                         </div>
-                                        <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
-                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
-                                        <!-- 옵션 작업 시 추가될 내용 -->
-                                        <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
-                                        <!-- // 옵션 작업 시 추가될 내용 -->
-                                        <div class="btn-box">
-                                            <span>
-                                                <a href="*promotionLinkUrl*" class="btn-link" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">자세히 보기</a><!-- 기존 class 전체 삭제 후 변경 -->
-                                            </span>
+                                                                            
+                                        <div class="promotion">여름 시즌 세일</div>
+                                    </div>
+                                </div>
+                                <div class="item ui_carousel_slide">
+                                    <a href="#" class="visual" tabindex="-1">
+                                        <!-- <img data-src="/lg5-common/images/components/sample-200x200.jpg" class="lazyload pc" alt="" aria-hidden="true"/>
+                                        <img data-src="/lg5-common/images/components/category-sample01-180.jpg" class="lazyload mobile" alt="" aria-hidden="true"/> -->
+                                        <img src="/lg5-common/images/KRP0008/@thumb01.jpg" alt="">
+                                        <!-- [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                        <span class="flag-wrap">
+                                            <span class="flag">NEW</span>
+                                            <span class="flag">BEST</span>
+                                        </span>
+                                        <!-- // [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                    </a>
+                                    <div class="products-info">
+                                        <a href="#" class="model-name">LG TROMM 스타일러</a>
+                                                                                
+                                        <div class="sku">AGM73611305</div>
+                                                                                
+                                        <div class="rating" data-bv-show="inline_rating" data-bv-product-id="MD05913476" data-bv-redirect-url="/us/tvs/lg-OLED65W8PUA-signature-oled-4k-tv#reviews">별점</div>
+                                                                                
+                                        <div class="price-area">
+                                            <div class="purchase-price">
+                                                <div class="price">6,480,000원</div>
+                                            </div>
+                                            <div class="product-price">
+                                                <del class="price" aria-label="Previous price">10,550,000원</del>
+                                                <div class="legal">캐시백 800,000원</div>
+                                            </div>
                                         </div>
-                                    </li>
-                                    <li class="unit-box ui_carousel_slide">
-                                        <div class="visual-area image">
-                                            <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
-                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">
-                                                <p class="hidden">graphic description : </p>
-                                            </a>
+                                                                            
+                                        <div class="promotion">여름 시즌 세일</div>
+                                    </div>
+                                </div>
+                                <div class="item ui_carousel_slide">
+                                    <a href="#" class="visual" tabindex="-1">
+                                        <!-- <img data-src="/lg5-common/images/components/sample-200x200.jpg" class="lazyload pc" alt="" aria-hidden="true"/>
+                                        <img data-src="/lg5-common/images/components/category-sample01-180.jpg" class="lazyload mobile" alt="" aria-hidden="true"/> -->
+                                        <img src="/lg5-common/images/KRP0008/@thumb01.jpg" alt="">
+                                        <!-- [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                        <span class="flag-wrap">
+                                            <span class="flag">NEW</span>
+                                            <span class="flag">BEST</span>
+                                        </span>
+                                        <!-- // [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                    </a>
+                                    <div class="products-info">
+                                        <a href="#" class="model-name">LG TROMM 스타일러</a>
+                                                                                
+                                        <div class="sku">AGM73611305</div>
+                                                                                
+                                        <div class="rating" data-bv-show="inline_rating" data-bv-product-id="MD05913476" data-bv-redirect-url="/us/tvs/lg-OLED65W8PUA-signature-oled-4k-tv#reviews">별점</div>
+                                                                                
+                                        <div class="price-area">
+                                            <div class="purchase-price">
+                                                <div class="price">6,480,000원</div>
+                                            </div>
+                                            <div class="product-price">
+                                                <del class="price" aria-label="Previous price">10,550,000원</del>
+                                                <div class="legal">캐시백 800,000원</div>
+                                            </div>
                                         </div>
-                                        <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
-                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
-                                        <!-- 옵션 작업 시 추가될 내용 -->
-                                        <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
-                                        <!-- // 옵션 작업 시 추가될 내용 -->
-                                        <div class="btn-box">
-                                            <span>
-                                                <a href="*promotionLinkUrl*" class="btn-link" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">자세히 보기</a><!-- 기존 class 전체 삭제 후 변경 -->
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <li class="unit-box ui_carousel_slide">
-                                        <div class="visual-area image">
-                                            <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
-                                                <img src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="">
-                                                <p class="hidden">graphic description : </p>
-                                            </a>
-                                        </div>
-                                        <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
-                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
-                                        <!-- 옵션 작업 시 추가될 내용 -->
-                                        <p class="desc">휘센이 모두의 바람을 모아 전국의 지역아동센터에 깨끗한 바람을 선물합니다. 지금 SNS 기부 릴레이 챌린지로 함께 해요!</p>
-                                        <!-- // 옵션 작업 시 추가될 내용 -->
-                                        <div class="btn-box">
-                                            <span>
-                                                <a href="*promotionLinkUrl*" class="btn-link" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">자세히 보기</a><!-- 기존 class 전체 삭제 후 변경 -->
-                                            </span>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <!-- // div -> ul DOM 변경 -->
-                            </div>                                     
-                        </div>
-                    </div>                              
+                                                                            
+                                        <div class="promotion">여름 시즌 세일</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="package-next">다음</button>
+                        </div>                 
+                    </div>
                 </section>
             </div>
+
+            <div class="component-wrap">               
+                <section class="component KRP0008">
+                    <div class=" component-outer-box bundle-wrap">
+                        <h2 class="title">신상품</h2>
+                        <div class="product-type rowColumn ui_carousel_slider2">                                                                                                   
+                            <button type="button" class="package-prev">이전</button>
+                            <div class="items ui_carousel_track">
+                                <div class="item ui_carousel_slide">
+                                    <a  href="#" class="visual" tabindex="-1">
+                                        <!-- <img data-src="/lg5-common/images/components/sample-200x200.jpg" class="lazyload pc" alt="" aria-hidden="true"/>
+                                        <img data-src="/lg5-common/images/components/category-sample01-180.jpg" class="lazyload mobile" alt="" aria-hidden="true"/> -->
+                                        <img src="/lg5-common/images/KRP0008/@thumb01.jpg" alt="">
+                                        <!-- [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                        <span class="flag-wrap">
+                                            <span class="flag">NEW</span>
+                                            <span class="flag">BEST</span>
+                                        </span>
+                                        <!-- // [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                    </a>
+                                    <div class="products-info">
+                                        <a href="#" class="model-name">LG TROMM 스타일러</a>
+                                                                                
+                                        <div class="sku">AGM73611305</div>
+                                                                                
+                                        <div class="rating" data-bv-show="inline_rating" data-bv-product-id="MD05913476" data-bv-redirect-url="/us/tvs/lg-OLED65W8PUA-signature-oled-4k-tv#reviews">별점</div>
+                                                                                
+                                        <div class="price-area">
+                                            <div class="purchase-price">
+                                                <div class="price">6,480,000원</div>
+                                            </div>
+                                            <div class="product-price">
+                                                <del class="price" aria-label="Previous price">10,550,000원</del>
+                                                <div class="legal">캐시백 800,000원</div>
+                                            </div>
+                                        </div>  
+                                        
+                                        <div class="promotion">여름 시즌 세일</div>
+                                    </div>
+                                </div>
+                                <div class="item ui_carousel_slide">
+                                    <a  href="#" class="visual" tabindex="-1">
+                                        <!-- <img data-src="/lg5-common/images/components/sample-200x200.jpg" class="lazyload pc" alt="" aria-hidden="true"/>
+                                        <img data-src="/lg5-common/images/components/category-sample01-180.jpg" class="lazyload mobile" alt="" aria-hidden="true"/> -->
+                                        <img src="/lg5-common/images/KRP0008/@thumb01.jpg" alt="">
+                                        <!-- [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                        <span class="flag-wrap">
+                                            <span class="flag">NEW</span>
+                                            <span class="flag">BEST</span>
+                                        </span>
+                                        <!-- // [KR수정] 뱃지 추가(by.정준영) 기능 반영 DOM 추가 -->
+                                    </a>
+                                    <div class="products-info">
+                                        <a href="#" class="model-name">LG TROMM 스타일러</a>
+                                                                                
+                                        <div class="sku">AGM73611305</div>
+                                                                                
+                                        <div class="rating" data-bv-show="inline_rating" data-bv-product-id="MD05913476" data-bv-redirect-url="/us/tvs/lg-OLED65W8PUA-signature-oled-4k-tv#reviews">별점</div>
+                                                                                
+                                        <div class="price-area">
+                                            <div class="purchase-price">
+                                                <div class="price">6,480,000원</div>
+                                            </div>
+                                            <div class="product-price">
+                                                <del class="price" aria-label="Previous price">10,550,000원</del>
+                                                <div class="legal">캐시백 800,000원</div>
+                                            </div>
+                                        </div>  
+                                        
+                                        <div class="promotion">여름 시즌 세일</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="package-next">다음</button>	
+                        </div>
+                                                
+                    </div>
+                </section>	
+                                                    
+                                                        
+            </div>
+                
 		</div>
     </div>     
 </body>

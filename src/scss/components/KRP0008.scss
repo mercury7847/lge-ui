@@ -3,121 +3,247 @@
 @import "../components-app";
 
 
-.KRC0008 {
+.KRP0008 {
     max-width:(1284px + 60px);
     margin:0 auto;
     padding:50px 30px;
     @include mobile {
         padding:50px 24px;
     }
-    .heading-box {
-        max-width:848px;
+    .bundle-wrap {
+        max-width:1216px;
         margin:0 auto;
-        text-align:center;
-        .title h2 {
+        .title {
+            margin-bottom:32px;
+            padding:0 28px;
             color:#111;
-            font-size:24px;
-            line-height:34px;
-            font-weight:700;
-        }
-        .text {
-            margin-top:16px;
-            color:#616161;
-            font-size:16px;
-            line-height:24px;
-        }
-        a {
-            display:inline-block;
-            width:194px;
-            margin-top:40px;
-            border-radius:4px;
-            background:#111;
-            color:#fff;
-            font-size:16px;
-            line-height:56px;
+            font-size:18px;
+            line-height:28px;
             text-align:center;
             font-weight:700;
         }
-    }
-    .list-area {
-        position:relative;
-        margin-top:48px;
-        .ui_carousel_list {
-            overflow:hidden;
-            margin:0 -12px;
+        .product-type {
+            position:relative;
+            padding:0 16px;
             @include mobile {
-                margin:0;
+                padding:0 20px;
             }
-        }
-        .unit-list {
-            @include clearfix;
-            .unit-box {
-                float:left;
-                width:calc(100% / 3);
-                padding:0 12px;
-                @include mobile {
-                    padding:0;
-                }
-                .visual-area {
-                    a {
+            .ui_carousel_list {
+                overflow:hidden;
+                max-width:(1216px - 32px);
+            }
+            .items {
+                overflow:hidden;
+                @include clearfix;
+                .item {
+                    float:left;
+                    width:calc(100% / 4);
+                    padding:0 12px;
+                    @include mobile {
+                        padding:0;
+                    }
+                    .visual {
                         display:block;
+                        position:relative;
+                        max-width:272px;
+                        margin:0 auto;
                         img {
                             width:100%;
                             height:auto;
                             vertical-align:top;
                         }
+                        .flag-wrap {
+                            position:absolute;
+                            top:8px;
+                            left:6px;
+                            font-size:0;
+                            .flag {
+                                display:inline-block;
+                                margin:0 2px;
+                                padding:0 8px;
+                                border-radius:4px;
+                                background:#E9E9EA;
+                                color:#EC455A;
+                                font-size:12px;
+                                font-weight:700;
+                                line-height:20px;
+                                vertical-align:top;
+                            }
+                        }
+                    }
+                    .products-info {
+                        margin:0 auto;
+                        margin-top:16px;
+                        text-align:center;
+                        
+                        .model-name {
+                            display:block;
+                            color:#111;
+                            font-size:16px;
+                            line-height:24px;
+                            font-weight:700;
+                        }
+                        .sku {
+                            color:#111;
+                            font-size:16px;
+                            line-height:24px;
+                        }
+                        // 임시
+                        .rating {
+                            margin-top:12px;
+                            color:#111;
+                            font-size:16px;
+                            line-height:24px;
+                        }
+                        .price-area {
+                            display:table;
+                            width:100%;
+                            margin-top:16px;
+                            .purchase-price {
+                                display:table-cell;
+                                padding:0 4px;
+                                vertical-align:middle;
+                                text-align:right;
+                                .price {
+                                    color:#111;
+                                    font-size:20px;
+                                    line-height:30px;
+                                    font-weight:700;
+                                }
+                            }
+                            .product-price {
+                                display:table-cell;
+                                padding:0 4px;
+                                vertical-align:middle;
+                                text-align:left;
+                                .price {
+                                    display:inline-block;
+                                    color:#616161;
+                                    font-size:12px;
+                                    line-height:20px;
+                                }
+                                .legal {
+                                    display:block;
+                                    color:#212121;
+                                    font-size:14px;
+                                    line-height:20px;
+                                    font-size:500;
+                                }
+                            }
+                        }
+                        .promotion {
+                            margin-top:12px;
+                            color:#EC455A;
+                            font-size:12px;
+                            font-weight:700;
+                            line-height:16px;
+                            text-align:center;
+                        }
                     }
                 }
-                .head-copy {
-                    margin-top:16px;
-                    color:#111;
-                    font-size:18px;
-                    line-height:26px;
-                    font-weight:700;
+            }
+            > button {
+                position:absolute;
+                top:50%;
+                z-index:10;
+                width:56px;
+                height:56px;
+                margin-top:-28px;
+                border-radius:50%;
+                background:#fff;
+                box-shadow:0 4px 15px 0 rgba(187, 187, 187, 1);
+                font-size:0;
+                &::before {
+                    content:' '; 
+                    position:absolute;
+                    top:50%;
+                    left:50%;
+                    width:14px;
+                    height:14px;
+                    margin-top:-7px;
+                    border-right:4px solid #111;
+                    border-bottom:4px solid #111;
                 }
-                .desc {
-                    margin-top:16px;
-                    color:#616161;
-                    font-size:16px;
-                    line-height:26px;
+                &.disabled::before {
+                    border-color:rgba(#111, 0.3);
                 }
-                .body-copy {
-                    margin-top:4px;
-                    color:#616161;
-                    font-size:14px;
-                    line-height:26px;
-                    font-weight:700;
+                &.package-prev {
+                    left:0;
+                    &::before {
+                        margin-left:-4px;
+                        transform:rotate(135deg);
+                    }
                 }
-                .btn-box {
-                    margin-top:24px;
+                &.package-next {
+                    right:0;
+                    &::before {
+                        margin-left:-9px;
+                        transform:rotate(-45deg);
+                    }
+                }
+                @include mobile {
+                    display:none !important;
                 }
             }
-        }
-        .ui_carousel_dots {
-            display:none;
-            padding-top:28px;
-            font-size:0;
-            text-align:center;
-            @include mobile {
-                display:block;
-            }
-            li {
-                display:inline-block;
-                padding:0 3px;
-                vertical-align:top;
-                button {
+            .ui_carousel_dots {
+                display:none !important;
+                padding-top:44px;
+                font-size:0;
+                text-align:center;
+                @include mobile {
+                    display:block !important;
+                }
+                li {
                     display:inline-block;
-                    width:6px;
-                    height:6px;
-                    border-radius:3px;
-                    background:rgba(#111, 0.2);
-                    font-size:0;
-                    line-height:0;
+                    padding:0 3px;
                     vertical-align:top;
+                    button {
+                        display:inline-block;
+                        width:6px;
+                        height:6px;
+                        border-radius:3px;
+                        background:rgba(#000, .2);
+                        font-size:0;
+                    }
+                    &.on button {
+                        width:18px;
+                        background:rgba(#000, .7);
+                    }
                 }
-                &.on button {
-                    width:18px;
-                    background:rgba(#111, 0.7);
+            }
+
+            &.rowColumn {
+                margin:0 auto;
+                padding:0;
+                max-width:(1144px + 24px);
+                @include mobile {
+                    padding:0;
+                }
+                .ui_carousel_list {
+                    max-width:100%;
+                }
+                > button {
+                    display:none !important;
+                }
+                .items {
+                    .item {
+                        position:relative;
+                        width:50%;
+                    }
+                }
+                @media screen and (min-width:1200px) {
+                    .items {
+                        .item {
+                            .visual {
+                                float:left;
+                                margin:0;
+                            }
+                            .products-info {
+                                margin-top:52px;
+                                margin-left:(272px + 16px);
+                            }
+                        }
+                    }
                 }
             }
         }
