@@ -117,6 +117,7 @@ legend {
 // 폼 레이아웃
 .fieldset {
     &-row {
+        @include clearfix;
         & + .fieldset-row {
             margin-top:32px;
         }
@@ -129,31 +130,60 @@ legend {
             font-weight:400;
         }
     }
-    &-box {
-        font-size:0;
-        @include clearfix;
-        .input-wrap, .select-wrap {
-            width:calc(50% - 4px);
-            & + .input-wrap, & + .select-wrap {
-                margin-left:8px;
-            }
-            .title {
-                width:100%;
-                color:#111;
-                font-size:14px;
-                font-weight:400;
-            }
+    &-item {
+        float:left;
+        &:first-child:nth-last-child(1) {
+            width:100%;
         }
-        &.type-full {
-            .input-wrap {
-                width:100%;
-            }   
+        &:first-child:nth-last-child(2) {
+            width:calc(50% - 4px);
+        }
+        &:first-child:nth-last-child(2) ~ & {
+            width:calc(50% - 4px);
+            margin-left:8px;
         }
         &.type-check {
             display:table;
-            width:100%;
             .rdo-wrap, .chk-wrap {
                 display:table-cell;
+            }
+        }
+    }
+    .address-box {
+        .input-wrap {
+            display:flex;
+            width:100%;
+            input {
+                flex:1 1;
+                width:100%;
+            }
+            button {
+                min-width:111px;
+                margin-left:8px;
+                white-space:nowrap;
+                border-radius:8px;
+            }
+            & + .input-wrap {
+                margin-top:8px;
+            }
+        }
+    }
+    .dot-list {
+        margin-top:12px;
+        li {
+            position:relative;
+            padding-left:6px;
+            color:#616161;
+            font-size:14px;
+            line-height:1.71;
+            &:before {
+                content:'';
+                position:absolute;
+                left:0;
+                top:10px;
+                width:2px;
+                height:2px;
+                background-color:#bbb;
             }
         }
     }
