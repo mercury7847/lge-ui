@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0010 {
+    width: 100%;
+    max-width: (1284px + 60px);
+    margin: 0 auto;
+    // padding-right: 30px;
+    // padding-left: 30px;
+    padding: 0 30px;
+
+    .btn {
+        display: inline-block;
+        min-width:194px;
+        padding:15px 0;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #fff;
+        line-height: 24px;
+        font-weight: 700;
+        font-size: 16px;
+        color: #111;
+        text-align: center;
+        vertical-align: top;
+
+        &.btn-outline-primary {
+            border-color: #212121;
+            background-color: #fff;
+            color: #111;
+        }
+        &.btn-primary {
+            border-color: #111;
+            background-color: #111;
+            color: #fff;
+        }
+    }
+
+    .heading-box {
+        margin-bottom: 32px;
+        .title {
+            h1, h2, h3, h4, h5, h6 {
+                @include font-family($font-bold);
+                font-size: 28px;
+                line-height: 36px;
+                color: #111;
+            }
+        }
+    }
+
+    .banner-box {
+        position: relative;
+        margin-bottom: 62px;
+    }
+    .visual-area {
+        img {
+            max-width: 100%;
+        }
+    }
+    .content-block {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        .text-block {
+            padding: 64px 46px;
+        }
+        .text-wrap {
+            .text {
+                margin-bottom: 8px;
+                @include font-family($font-bold);
+                font-size: 24px;
+                line-height: 32px;
+                color: #111;
+            }
+            .body-copy {
+                margin-bottom: 16px;
+                @include font-family($font-bold);
+                font-size: 14px;
+                line-height: 26px;
+                color: #616161;
+            }
+            .sub-text {
+                margin-bottom: 48px;
+                font-size: 16px;
+                line-height: 26px;
+                color: #616161;
+            }
+        }
+    }
+
+    .unit-list {
+        @include grid-row;
+    }
+    .unit-box {
+        @include grid-col(left,6);
+
+        .visual-area {
+            margin-bottom: 16px;
+        }
+        .head-copy {
+            margin-bottom: 4px;
+            height: 52px;
+            @include font-family($font-bold);
+            font-size: 18px;
+            line-height: 26px;
+            color: #111;
+            @include textClipClamp(2);
+        }
+        .body-copy {
+            margin-bottom: 32px;
+            @include font-family($font-bold);
+            font-size: 14px;
+            line-height: 26px;
+            color: #616161;
+        }
+    }
+}
+
+.inside-component {
+    display: none;
+}
