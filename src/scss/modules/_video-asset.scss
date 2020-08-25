@@ -1,3 +1,7 @@
+@charset "UTF-8";
+
+@import "../utilities/mixins";
+
 .video-asset {
 	width: 100%;
 	height: 56.25vw;
@@ -40,8 +44,29 @@
 				background:url('/lg5-common/images/icons/video-play-button.svg') no-repeat 0 0;
 				background-size:100% 100%;
 				border-radius:50% 50%;
-			}			
+			}
+			&.acc-video-content {
+				display: none;
+			}
 		}
+	}
+
+	.caption {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 5;
+		overflow: hidden;
+		padding: 12px 24px;
+		height: 44px;
+		background-color: rgba(0,0,0,0.5);
+		font-weight: 700;
+		font-size:14px;
+		line-height: 20px;
+		color: #fff;
+		text-align: left;
+		white-space: nowrap;
 	}
 }
 
@@ -118,5 +143,11 @@
 				height: calc((100vw - 15px) * (9/16));
 			}
 		}
+	}
+}
+
+html {
+	&.modal-open {
+		overflow: hidden;
 	}
 }
