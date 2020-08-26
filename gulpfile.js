@@ -198,17 +198,19 @@ gulp.task("watch", ["browser-sync"], () => {
 
 // Compile sass, concat and minify css + js
 gulp.task("serverBuild", ["clean", "static", "concat-js"], () =>{
-    gulp.start(["styles", "scripts", "guide", "html"]);
+    git.revParse({args:'HEAD'}, function (err, hash) {
+        dist += ("/" + hash);
+        gulp.start(["styles", "scripts", "guide", "html"]);
+    });
 });
 
+/*
 gulp.task('build', function() {
     git.revParse({args:'HEAD'}, function (err, hash) {
         dist += ("/" + hash);
         gulp.start('serverBuild');
     });
 });
-
-
-
+*/
 
 gulp.task("default", ["watch"]); // Default gulp task
