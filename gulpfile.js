@@ -9,6 +9,7 @@ const gulp = require("gulp"),
         cleanCSS = require('gulp-clean-css'),
         gulpif = require('gulp-if'),
         fileinclude = require('gulp-file-include'),
+        git = require('gulp-git'),
         del = require('del');
 
 const src = "./src";
@@ -196,8 +197,15 @@ gulp.task("watch", ["browser-sync"], () => {
 });
 
 // Compile sass, concat and minify css + js
-gulp.task("build", ["clean", "static", "concat-js"], () =>{
+gulp.task("serverBuild", ["clean", "static", "concat-js"], () =>{
     gulp.start(["styles", "scripts", "guide", "html"]);
+});
+
+gulp.task('build', function() {
+    git.revParse({args:'HEAD'}, function (err, hash) {
+        dist += hash;
+        gulp.start('serverBuild');
+    });
 });
 
 
