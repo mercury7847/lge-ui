@@ -1,4 +1,54 @@
 @charset "UTF-8";
 
 @import "../../support-common";
+@import "../../components-app";
 
+.tabs-contents {
+    float: left;
+    width: calc(50% - 12px);
+    margin-left: 24px;
+    &:first-child {
+        margin-left: 0;
+    }
+    .results-stat {
+        margin-top: 12px;
+    }
+}
+
+.query-reset {
+    font-size: 14px;
+    line-height: 1.43;
+    font-weight: bold;
+    color: #111111;
+    margin-bottom: 16px;
+}
+
+.icon-queryReset {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+}
+.video {
+    &-box {
+        @include grid-row;
+        [class^="part"] {
+            @include grid-col(left,6);
+        }
+        .part1 {
+            iframe {
+                width: 100%;
+                height: 322px;
+            }
+        }
+        .ui_scrollview {
+            height: 322px;
+            .ui_content {
+                padding: 24px;
+                font-size: 14px;
+                line-height: 1.43;
+                color: #616161;
+            }
+        }
+    }
+}
