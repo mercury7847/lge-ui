@@ -9,11 +9,12 @@ const gulp = require("gulp"),
         cleanCSS = require('gulp-clean-css'),
         gulpif = require('gulp-if'),
         fileinclude = require('gulp-file-include'),
+        git = require('gulp-git'),
         del = require('del');
 
-const src = "./src";
-const dist = './dist';
-const sourceFolder = "/lg5-common";
+var src = "./src";
+var dist = './dist';
+var sourceFolder = "/lg5-common";
 
 // Loads BrowserSync
 gulp.task("browser-sync", () => {
@@ -166,7 +167,7 @@ gulp.task("static", () => gulp
 
 // dist 폴더 비움
 gulp.task('clean', function() {
-	return del.sync(dist);
+	return del.sync("./dist");
 });
 
 
@@ -198,6 +199,13 @@ gulp.task("watch", ["browser-sync"], () => {
 // Compile sass, concat and minify css + js
 gulp.task("build", ["clean", "static", "concat-js"], () =>{
     gulp.start(["styles", "scripts", "guide", "html"]);
+});
+
+gulp.task('server-build', function() {
+    git.revParse({args:'HEAD'}, function (err, hash) {
+        dist += ("/" + hash);
+        gulp.start('build');
+    });
 });
 
 
