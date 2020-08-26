@@ -167,7 +167,7 @@ gulp.task("static", () => gulp
 
 // dist 폴더 비움
 gulp.task('clean', function() {
-	return del.sync(dist);
+	return del.sync("./dist");
 });
 
 
@@ -197,18 +197,18 @@ gulp.task("watch", ["browser-sync"], () => {
 });
 
 // Compile sass, concat and minify css + js
-gulp.task("serverBuild", ["clean", "static", "concat-js"], () =>{
+gulp.task("build", ["clean", "static", "concat-js"], () =>{
+    gulp.start(["styles", "scripts", "guide", "html"]);
+});
+
+gulp.task('server-build', function() {
     git.revParse({args:'HEAD'}, function (err, hash) {
         dist += ("/" + hash);
-        gulp.start(["styles", "scripts", "guide", "html"]);
+        gulp.start('build');
     });
 });
 
-gulp.task('build', function() {
-    git.revParse({args:'HEAD'}, function (err, hash) {
-        dist += ("/" + hash);
-        gulp.start('serverBuild');
-    });
-});
+
+
 
 gulp.task("default", ["watch"]); // Default gulp task
