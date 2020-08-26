@@ -2,8 +2,8 @@ $(window).ready(function(){
     vcui.require(['ui/carousel'], function () {
         $('.ui_carousel_slider').vcCarousel({
             infinite: false,
-            prevArrow:'.package-prev',
-            nextArrow:'.package-next',
+            prevArrow:'.btn-arrow.prev',
+            nextArrow:'.btn-arrow.next',
             swipeToSlide: true,
             slidesToShow: 4,
             slidesToScroll: 1,

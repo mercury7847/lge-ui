@@ -17,6 +17,7 @@
             <li>버튼 2개이상 나열될 경우 .btn-group안에 나열, 버튼 2개가 default</li>
             <li>버튼그룹 3개 이상 케이스 발생할 경우 추가 class 생성예정</li>
             <li>hover, active 디자인 작업 후 반영 예정</li>
+            <li>Carousel 용 arrow 버튼 디자인만 반영, 위치 등 상세 옵션은 화면/디자인별 적용 필요</li>
         </ol>
     </dd>
 </dl>
@@ -87,6 +88,41 @@
     <a href="#n" class="btn-text">로그인하기</a>
     <a href="#n" class="btn-link">링크 버튼</a>
 <!-- // text button -->
+</xmp>
+</div>
+<!-- //가이드 내용 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">3. Carousel arrow button</h2>
+<div class="guide_wrap">
+    <button type="button" class="btn-arrow prev">이전</button>
+    <button type="button" class="btn-arrow next">다음</button>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- carousel arrow button -->
+<button type="button" class="btn-arrow prev">이전</button>
+<button type="button" class="btn-arrow next">다음</button>
+<!-- // carousel arrow button -->
+</xmp>
+</div>
+<!-- //가이드 내용 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">4. Carousel indicator button</h2>
+<div class="guide_wrap">
+    <ul class="indi-wrap ui_carousel_dots">
+        <li class="on"><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+    </ul>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- carousel indicator button -->
+<ul class="indi-wrap ui_carousel_dots">
+    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+</ul>
+<!-- // carousel indicator button -->
 </xmp>
 </div>
 <!-- //가이드 내용 -->

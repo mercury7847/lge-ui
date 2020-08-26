@@ -38,6 +38,7 @@
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
     "gulp-eslint": "^4.0.2",
+    "gulp-git": "^2.10.1",
     "gulp-sass-lint": "^1.4.0",
     "node-sass": "^4.14.1"
   }
