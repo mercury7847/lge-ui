@@ -18,7 +18,7 @@
             margin:0 auto;
             padding:64px 40px;
             @include mobile {
-                padding:0 24px;
+                padding:20px 24px;
             }
         }
         &-carousel {
@@ -150,7 +150,7 @@
             margin:0 auto;
             padding:0 40px;
             @include mobile {
-                padding:0 24px;
+                padding:40px 24px;
             }
         }
         .input-wrap {
