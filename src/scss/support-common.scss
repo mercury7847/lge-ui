@@ -191,6 +191,17 @@ textarea {
     }
 }
 
+.section {
+    width:100%;
+    padding:56px;
+    border-radius:4px;
+    background:#fff;
+    @include mobile {
+        padding:40px 24px;
+        border-radius:0;
+    }
+}
+
 .color-1 {
     color: #a50034;
 }
