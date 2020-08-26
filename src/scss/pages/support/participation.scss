@@ -1,0 +1,105 @@
+@charset "UTF-8";
+@import "../../support-common";
+@import "../../support/selectProduct";
+
+.status-bar {
+    background:#212121;
+    height:80px;
+    &-inner {
+        max-width:1364px;
+        margin:0 auto;
+        padding:32px 40px;
+        @include clearfix;
+    }
+    @include mobile {
+        height:52px;
+        &-inner {
+            position:relative;
+            padding:16px 24px;   
+        }
+    }
+    .status {
+        float:left;
+        &-title {
+            float:left;
+            color:#ddd;
+        }
+        &-list {
+            float:left;
+            margin-left:14px;
+            li {
+                position:relative;
+                float:left;
+                color:#ddd;
+                & + li {
+                    margin-left:7px;
+                    padding-left:13px;
+                    &:before {
+                        content:'';
+                        position:absolute;
+                        left:-4px;
+                        top:50%;
+                        width:8px;
+                        height:8px;
+                        border-top:1px solid #ddd;
+                        border-right:1px solid #ddd;
+                        transform:translateY(-50%) rotate(45deg);
+                    }
+                }
+            }
+        }
+        @include mobile {
+            float:none;
+            @include clearfix;
+            &-title {
+                float:left;
+                color:#fff;
+                font-size:12px;
+                line-height:20px;
+            }
+            &-list {
+                float:right;
+                li {
+                    color:#fff;
+                    font-size:12px;
+                    font-weight:700;
+                    line-height:20px;
+                }
+            }
+        }
+    }
+    .guide {
+        float:right;
+        a {
+            float:left;
+            font-size:18px;
+            color:#fff;
+            & + a {
+                margin-left:24px;
+            }
+        }
+        @include mobile {
+            position:absolute;
+            left:0;
+            top:100%;
+            float:none;
+            width:100%;
+            background:#ddd;
+            @include clearfix;
+            &-link {
+                float:left;
+                width:50%;
+                padding:11px 0;
+                text-align:center;
+                a {
+                    float:none;
+                    margin:0;
+                    color:#616161;
+                    font-size:12px;
+                    font-weight:700;
+                    line-height:18px;
+                }
+            }
+        }
+    }
+}

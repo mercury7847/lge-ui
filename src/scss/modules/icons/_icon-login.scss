@@ -1,0 +1,8 @@
+// .icon-login {
+//     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3e%3cg fill='none' fill-rule='evenodd'%3e%3cpath fill-rule='nonzero' d='M0 0H40V38.235H0z' transform='translate(-6 -5)'/%3e%3cg stroke='%23000' stroke-linecap='round' stroke-width='2.5' transform='translate(-6 -5) translate(8 6.691)'%3e%3cellipse cx='12' cy='6.691' rx='7' ry='6.691'/%3e%3cpath d='M24 24.853c0-6.335-5.373-11.47-12-11.47S0 18.517 0 24.852'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e");
+// }
+
+@mixin icon-login () {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3e%3cg fill='none' fill-rule='evenodd'%3e%3cpath fill-rule='nonzero' d='M0 0H28V28H0z' transform='translate(-4 -4)'/%3e%3cg stroke='%23000' stroke-linecap='round' stroke-width='1.8' transform='translate(-4 -4) translate(5 5)'%3e%3cellipse cx='8.64' cy='4.818' rx='5.04' ry='4.818'/%3e%3cpath d='M17.28 17.894c0-4.561-3.868-8.259-8.64-8.259S0 13.333 0 17.895'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e");
+    background-size: 20px 20px;
+}

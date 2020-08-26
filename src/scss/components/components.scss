@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+@import "../utilities/variables";
+@import "../modules/video-asset";
+@import "../modules/animation-asset";
+
+//@import './components/filter-default'; // filter default css (filter: GPC0007/GPC0026)
+//@import './components/no-content';
+//@import './components/colorchip';
+
+
+// component container
+.iw_placeholder .iw_component {
+    // don't remove
+    border-top: 1px solid transparent;
+    margin-top: -1px;
+}
+
+.component-wrap {
+    position: relative;
+    width: 100%;
+    clear: both;
+    @include clearfix;
+    max-width: 1600px;
+    margin: 50px auto; // 50px : component top bottom margin for desktop
+    //padding:0 30px;
+    //&.bg-whitesmoke {background-color:$bg-whitesmoke;}
+    //@include screen(custom, max, (1630)) {
+    //  margin-left: -15px;
+    //  margin-right: -15px;
+    //  padding: 0;
+    //  width: auto;
+    //}
+    //@include screen(custom, max, $max-sm) {
+    //  margin: 25px -15px; // 60px : component top bottom margin for mobile
+    //}
+
+    &.zero-top {
+        margin-top: 0;
+        // 상단 여백 없음 선택 시, 기본 여백 있는 경우 추가 처리
+        .component {
+
+        }
+    }
+
+    &.zero-btm {
+        margin-bottom: 0;
+        // 하단 여백 없음 선택 시, 기본 여백 있는 경우 추가 처리
+        .component {
+
+        }
+    }
+
+    .component {
+        position: relative;
+        margin: 0 auto;
+        // 좌우에 Slick 화살표가 들어가는 경우
+        &.component-outer-box,
+        .component-outer-box {
+            max-width: (1284px+160px);
+            margin: 0 auto;
+            padding-left: 80px;
+            padding-right: 80px;
+
+            .component-inner-box {
+                position: relative;
+                overflow: visible;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            //@include screen(custom, max, $max-sm) {
+            //  padding-left: 24px;
+            //  padding-right: 24px;
+            //}
+
+            .slick-prev,
+            .slick-next {
+                position: absolute;
+                top: 50%;
+                margin-top: -12px;
+                border: 0;
+                background: none;
+                padding: 0;
+                width: 23px;
+                height: 40px;
+                cursor: pointer;
+
+                svg {
+                    display: block;
+                }
+
+                //color: $color-gray;
+
+                &:not([disabled]):hover,
+                &:not([disabled]):focus {
+                    //color: $color-nightrider;
+                    //color: $color-black;
+                }
+
+                //@include screen(custom, max, $max-sm) {
+                //  display: none;
+                //}
+            }
+
+            .slick-prev {
+                left: -50px;
+
+                [dir="rtl"] & {
+                    left: auto;
+                    right: -50px;
+                    transform: rotate(180deg);
+                }
+            }
+
+            .slick-next {
+                right: -50px;
+
+                [dir="rtl"] & {
+                    right: auto;
+                    left: -50px;
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        // WA-Common-Slick
+        .slick-slider {
+            .slick-arrow.slick-disabled {
+                opacity: 0.3;
+            }
+        }
+    }
+
+    // img lazyload
+    img.lazyload,
+    img.lazyloaded {
+        //transition: opacity 0.1s;
+        &.mobile {display:none;}
+        //&.pc-md {display:none;}
+        @include tablet {
+            //&.pc-lg {display:none;}
+            //&.pc-md {display:inline-block;}
+        }
+        @include mobile {
+            &.pc {display:none;}
+            //&.pc-md {display:none;}
+            &.mobile {display:inline-block;}
+        }
+    }
+    img.lazyload {opacity:0;}
+    img.lazyloaded {opacity:1;}
+
+    // text-align
+    .align-left {
+        text-align: left;
+    }
+
+    .align-right {
+        text-align: right;
+    }
+
+    .align-center {
+        text-align: center;
+    }
+
+    // video title copy, play button
+    .video,
+    .animation-box,
+    .visual-area.image {
+        .caption {
+            width: 100%;
+            height: 39px;
+            background-color: rgba(0, 0, 0, 0.35);
+            color: #fff;
+            font-size: 14px;
+            line-height: 24px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 5;
+            padding: 7px 0 0 15px;
+            text-align: left;
+            box-sizing: border-box;
+        }
+    }
+
+    // font opion style
+    .font-regular {
+        @include font-family($font-regular);
+    }
+
+    .font-bold {
+        @include font-family($font-bold);
+    }
+
+    .font-regular-italic {
+        @include font-family($font-regular, italic);
+    }
+
+    .font-bold-italic {
+        @include font-family($font-bold, italic);
+    }
+
+    .font-underline {
+        text-decoration: underline;
+    }
+
+    // bv_star style custom
+    [data-bv-rating] .bv_main_container,
+    [data-bv-show=inline_rating] .bv_main_container {
+        display: inline-block !important;
+    }
+
+    [data-bv-rating] .bv_main_container .bv_averageRating_component_container,
+    [data-bv-rating] .bv_main_container .bv_numReviews_component_container,
+    [data-bv-show=inline_rating] .bv_main_container .bv_averageRating_component_container,
+    [data-bv-show=inline_rating] .bv_main_container .bv_numReviews_component_container,
+    .bv_stars_component_container {
+        display: inline-block !important;
+        vertical-align: middle !important;
+    }
+
+    .hidden {
+        position: absolute;
+        width: 0;
+        height: 0;
+        line-height: 1px;
+        left: -9999px;
+        top: auto;
+        overflow: hidden;
+        //&.mobile {display:none;}
+        //&.tablet {display:none;}
+        //@include screen(custom, max, $max-sm) {
+        //  &.pc {display:none;}
+        //  &.tablet {display:none;}
+        //  &.mobile {display:inline-block;}
+        //}
+        //@include screen(custom, min, $min-md) {
+        //  @include screen(custom, max, $max-lg) {
+        //    &.pc {display:none;}
+        //    &.tablet {display:inline-block;}
+        //    &.mobile {display:none;}
+        //  }
+        //}
+    }
+}

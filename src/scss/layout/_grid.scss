@@ -1,0 +1,26 @@
+@mixin grid-row () {
+    margin: 0 -12px;
+
+    &:after {
+        clear: both;
+        display: table;
+        content: '';
+    }
+
+    @media screen and (max-width: #{$tablet-s-width}) {
+        margin: 0 -6px;
+	}
+}
+
+@mixin grid-col ($align,$columns) {
+    float: $align;
+    width: (100% / 12) * $columns;
+    padding: 0 12px;
+
+    @media screen and (max-width: #{$tablet-s-width}) {
+        float: none;
+        width: 100%;
+        margin-bottom: 12px;
+        padding: 0 6px;
+	}
+}

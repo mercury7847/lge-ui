@@ -1,0 +1,86 @@
+// tab
+
+
+// btn tab
+
+
+// text tab
+.tabs-wrap {
+    display:block;
+    .tabs {
+        display:inline-block;
+        position:relative;
+        font-size:0;
+        vertical-align:top;
+        > li {
+            display:inline-block;
+            margin-left:24px;
+            vertical-align:top;
+            &:first-child {
+                margin-left:0;
+            }
+            > a {
+                display:block;
+                position:relative;
+                color:#aaa;
+                font-size:18px;
+                font-weight:700;
+                line-height:26px;
+            }
+            &.on > a {
+                color:#111;
+            }
+        }
+    }
+
+    &.btn-type {
+        .tabs {
+            display:inline-block;
+            font-size:0;
+            vertical-align:top;
+            > li {
+                display:inline-block;
+                margin-left:8px;
+                &:first-child {
+                    margin-left:0;
+                }
+                > a {
+                    display:block;
+                    padding:23px 39px;
+                    border:1px solid #ddd;
+                    border-radius:33px;
+                    color:#aaa;
+                    font-size:18px;
+                    font-weight:700;
+                    line-height:18px;
+
+                    @include mobile {
+                        padding:11px 15px;
+                        border-radius:24px;
+                        font-size:16px;
+                        line-height:24px;
+                    }
+                }
+                &.on > a {
+                    border-color:transparent;
+                    color:#111;
+                    box-shadow:0 4px 12px 0 rgba(0, 0, 0, .16);
+
+                    @include mobile {
+                        box-shadow:0 2px 6px 0 rgba(0, 0, 0, .16);
+                    }
+                }
+            }
+        }
+
+        @include mobile {
+            overflow-x:auto;
+            margin:-6px;
+            padding:6px;
+            .tabs {
+                width:auto;
+                white-space:nowrap;
+            }
+        }
+    }
+}

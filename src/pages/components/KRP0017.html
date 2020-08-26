@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    componentID: "KRP0017"
+})
+<body>
+    <div class="wrap">
+        <div class="container">
+
+			<!-- component KRP0017 -->
+            <div class="component-wrap">
+                <section class="component KRP0017">
+                    <div class="heading-box align-center">
+                        <div class="title"><h2>이달의 구매혜택을 비롯한 풍성한 혜택을 놓치지 마세요</h2></div>
+                        <a href="#" class="link-text bold ico-right view-page" data-link-area="promotion_list-link_text" data-link-name="view_all_promotions">전체 프로모션 보기</a>
+                    </div>
+                    <div class="tab-wrap js-tab-controll">
+                        <div class="tab-outer js-tab-guide-outer ui_tab"><!-- [KR수정] .ui_tab 추가 -->
+                            <ul class="tabs-type-liner tab-inner js-tab-guide-inner" role="tablist">
+                                <li><a href="#promotionl_list1" aria-controls="promotionl_list1" class="btn-tab" role="tab" aria-selected="true" data-link-area="promotion_list-tab" data-link-name="all">전체</a></li>
+                                <li><a href="#promotionl_list2" aria-controls="promotionl_list2" class="btn-tab" role="tab" aria-selected="false" data-link-area="promotion_list-tab" data-link-name="mobile">모바일</a></li>
+                                <li><a href="#promotionl_list3" aria-controls="promotionl_list3" class="btn-tab" role="tab" aria-selected="false" data-link-area="promotion_list-tab" data-link-name="">TV/AV</a></li>
+                                <li><a href="#promotionl_list3" aria-controls="promotionl_list4" class="btn-tab" role="tab" aria-selected="false" data-link-area="promotion_list-tab" data-link-name="">PC</a></li>
+                                <li><a href="#promotionl_list4" aria-controls="promotionl_list5" class="btn-tab" role="tab" aria-selected="false" data-link-area="promotion_list-tab" data-link-name="">주방가전</a></li>
+                                <li><a href="#promotionl_list5" aria-controls="promotionl_list6" class="btn-tab" role="tab" aria-selected="false" data-link-area="promotion_list-tab" data-link-name="">생활가전</a></li>
+                                <li><a href="#promotionl_list6" aria-controls="promotionl_list7" class="btn-tab" role="tab" aria-selected="false" data-link-area="promotion_list-tab" data-link-name="">에어컨/에어케어</a></li>
+                                <li><a href="#promotionl_list7" aria-controls="promotionl_list8" class="btn-tab" role="tab" aria-selected="false" data-link-area="promotion_list-tab" data-link-name="">뷰티</a></li>
+                                <li><a href="#promotionl_list7" aria-controls="promotionl_list9" class="btn-tab" role="tab" aria-selected="false" data-link-area="promotion_list-tab" data-link-name="">비지니스</a></li>
+                                <li><a href="#promotionl_list7" aria-controls="promotionl_list10" class="btn-tab" role="tab" aria-selected="false" data-link-area="promotion_list-tab" data-link-name="">베스트샵</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-scroll-controller">
+                            <button type="button" class="scroll-left"><span class="sr-only">Scroll Left</span></button><button type="button" class="scroll-right"><span class="sr-only">Scroll Right</span></button>
+                        </div>
+                    </div>
+                    <div id="promotionl_list1" class="promo-area contents-area align-left" aria-live="polite" role="tabpanel">
+                        <form action="/data-ajax/mkt/promotionList.json" novalidate>
+                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="pagePosition">
+                        </form>
+                        <div class="list-contents-wrap initialized">
+                            <div class="list-wrap">
+                                <template class="contents-template">
+                                    <li class="unit-box">
+                                        <div class="visual-area image">
+                                            <a href="*promotionLinkUrl*" data-link-area="promotion_list-promotion_list" data-link-name="*adobePromotionTitle*">
+                                                <img class="lazyload" data-src="*thumbnailImageAddr*" alt="*imageAltText*"/>
+                                                <p class="hidden">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="head-copy" id="title">*title*</p>
+                                        <p class="body-copy">*promotionStartDate* ~ *promotionEndDate*</p>
+                                        <div class="btn-box">
+                                            <span><a href="*promotionLinkUrl*" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">자세히 보기</a></span>
+                                        </div>
+                                    </li>
+                                </template>
+                                <ul class="unit-list">
+                                    <li class="unit-box">
+                                        <div class="visual-area image">
+                                            <a href="#noneUrl" data-link-area="promotion_list-promotion_list" data-link-name="{link text}">
+                                                <img class="lazyloaded" data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="image alt text">
+                                                <p class="hidden">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="head-copy" id="title01">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
+                                        <div class="btn-box">
+                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title01">자세히 보기</a></span>
+                                        </div>
+                                    </li>
+                                    <li class="unit-box">
+                                        <div class="visual-area image">
+                                            <a href="#noneUrl" data-link-area="promotion_list-promotion_list" data-link-name="{link text}">
+                                                <img class="lazyloaded" data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="image alt text">
+                                                <p class="hidden">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="head-copy" id="title02">LG WHISEN 사회공헌 캠페인 모두의 바람으로 LG WHISEN 사회공헌 캠페인 모두의 바람으로 LG WHISEN 사회공헌 캠페인 모두의 바람으로 LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
+                                        <div class="btn-box">
+                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title02">자세히 보기</a></span>
+                                        </div>
+                                    </li>
+                                    <li class="unit-box">
+                                        <div class="visual-area image">
+                                            <a href="#noneUrl" data-link-area="promotion_list-promotion_list" data-link-name="{link text}">
+                                                <img class="lazyloaded" data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="image alt text">
+                                                <p class="hidden">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="head-copy" id="title03">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
+                                        <div class="btn-box">
+                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title03">자세히 보기</a></span>
+                                        </div>
+                                    </li>
+                                    <li class="unit-box">
+                                        <div class="visual-area image">
+                                            <a href="#noneUrl" data-link-area="promotion_list-promotion_list" data-link-name="{link text}">
+                                                <img class="lazyloaded" data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="image alt text">
+                                                <p class="hidden">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="head-copy" id="title04">LG WHISEN 사회공헌 캠페인 모두의 바람으로 LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
+                                        <div class="btn-box">
+                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title04">자세히 보기</a></span>
+                                        </div>
+                                    </li>
+                                    <li class="unit-box">
+                                        <div class="visual-area image">
+                                            <a href="#noneUrl" data-link-area="promotion_list-promotion_list" data-link-name="{link text}">
+                                                <img class="lazyloaded" data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="image alt text">
+                                                <p class="hidden">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="head-copy" id="title05">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
+                                        <div class="btn-box">
+                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title05">자세히 보기</a></span>
+                                        </div>
+                                    </li>
+                                    <li class="unit-box">
+                                        <div class="visual-area image">
+                                            <a href="#noneUrl" data-link-area="promotion_list-promotion_list" data-link-name="{link text}">
+                                                <img class="lazyloaded" data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="image alt text">
+                                                <p class="hidden">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="head-copy" id="title06">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
+                                        <div class="btn-box">
+                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title06">자세히 보기</a></span>
+                                        </div>
+                                    </li>
+                                    <li class="unit-box">
+                                        <div class="visual-area image">
+                                            <a href="#noneUrl" data-link-area="promotion_list-promotion_list" data-link-name="{link text}">
+                                                <img class="lazyloaded" data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="image alt text">
+                                                <p class="hidden">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="head-copy" id="title07">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
+                                        <div class="btn-box">
+                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title07">자세히 보기</a></span>
+                                        </div>
+                                    </li>
+                                    <li class="unit-box">
+                                        <div class="visual-area image">
+                                            <a href="#noneUrl" data-link-area="promotion_list-promotion_list" data-link-name="{link text}">
+                                                <img class="lazyloaded" data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="image alt text">
+                                                <p class="hidden">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="head-copy" id="title08">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
+                                        <div class="btn-box">
+                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title08">자세히 보기</a></span>
+                                        </div>
+                                    </li>
+                                    <li class="unit-box">
+                                        <div class="visual-area image">
+                                            <a href="#noneUrl" data-link-area="promotion_list-promotion_list" data-link-name="{link text}">
+                                                <img class="lazyloaded" data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="image alt text">
+                                                <p class="hidden">graphic description : </p>
+                                            </a>
+                                        </div>
+                                        <p class="head-copy" id="title09">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
+                                        <div class="btn-box">
+                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title09">자세히 보기</a></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
+                                    <template id="paginationTemplate">
+                                        <li><button type="button" value=""></button></li>
+                                    </template>
+                                    <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
+                                    <ul>
+                                        <li><button type="button" value="1" aria-label="Page 1">1</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
+                                        <li><button type="button" value="3" aria-label="Page 3">3</button></li>
+                                        <li><button type="button" value="4" aria-label="Page 4">4</button></li>
+                                        <li><button type="button" value="5" aria-label="Page 5">5</button></li>
+                                        <li><button type="button" value="6" aria-label="Page 6">6</button></li>
+                                    </ul>
+                                    <button type="button" value="3" class="next" aria-label="Next page">Next</button>
+                                </div>
+                                <div class="expander">
+                                    <button type="button" class="btn" value="2">더보기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="promotionl_list2" class="promo-area contents-area align-center" aria-live="polite" role="tabpanel">
+                        <form action="/data-ajax/mkt/promotionList.json" novalidate>
+                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="pagePosition">
+                        </form>
+                        <div class="list-contents-wrap">
+                            <div class="list-wrap">
+                                <div class="unit-list"></div>
+                                <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
+                                    <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
+                                    <ul>
+                                        <li><button type="button" value="1" aria-label="Page 1">1</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
+                                        <li><button type="button" value="3" aria-label="Page 3">3</button></li>
+                                        <li><button type="button" value="4" aria-label="Page 4">4</button></li>
+                                        <li><button type="button" value="5" aria-label="Page 5">5</button></li>
+                                        <li><button type="button" value="6" aria-label="Page 6">6</button></li>
+                                    </ul>
+                                    <button type="button" value="3" class="next" aria-label="Next page">Next</button>
+                                </div>
+                                <div class="expander">
+                                    <button type="button" class="btn" value="2">더보기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="promotionl_list3" class="promo-area contents-area align-right" aria-live="polite" role="tabpanel">
+                        <form action="/data-ajax/mkt/promotionList.json" novalidate>
+                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="pagePosition">
+                        </form>
+                        <div class="list-contents-wrap">
+                            <div class="list-wrap">
+                                <div class="unit-list"></div>
+                                <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
+                                    <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
+                                    <ul>
+                                        <li><button type="button" value="1" aria-label="Page 1">1</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
+                                        <li><button type="button" value="3" aria-label="Page 3">3</button></li>
+                                        <li><button type="button" value="4" aria-label="Page 4">4</button></li>
+                                        <li><button type="button" value="5" aria-label="Page 5">5</button></li>
+                                        <li><button type="button" value="6" aria-label="Page 6">6</button></li>
+                                    </ul>
+                                    <button type="button" value="3" class="next" aria-label="Next page">Next</button>
+                                </div>
+                                <div class="expander">
+                                    <button type="button" class="btn" value="2">더보기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="promotionl_list4" class="promo-area contents-area align-left" aria-live="polite" role="tabpanel">
+                        <form action="/data-ajax/mkt/promotionList.json" novalidate>
+                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="pagePosition">
+                        </form>
+                        <div class="list-contents-wrap">
+                            <div class="list-wrap">
+                                <div class="unit-list"></div>
+                                <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
+                                    <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
+                                    <ul>
+                                        <li><button type="button" value="1" aria-label="Page 1">1</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
+                                        <li><button type="button" value="3" aria-label="Page 3">3</button></li>
+                                        <li><button type="button" value="4" aria-label="Page 4">4</button></li>
+                                        <li><button type="button" value="5" aria-label="Page 5">5</button></li>
+                                        <li><button type="button" value="6" aria-label="Page 6">6</button></li>
+                                    </ul>
+                                    <button type="button" value="3" class="next" aria-label="Next page">Next</button>
+                                </div>
+                                <div class="expander">
+                                    <button type="button" class="btn" value="2">더보기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="promotionl_list5" class="promo-area contents-area align-center" aria-live="polite" role="tabpanel">
+                        <form action="/data-ajax/mkt/promotionList.json" novalidate>
+                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="pagePosition">
+                        </form>
+                        <div class="list-contents-wrap">
+                            <div class="list-wrap">
+                                <div class="unit-list"></div>
+                                <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
+                                    <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
+                                    <ul>
+                                        <li><button type="button" value="1" aria-label="Page 1">1</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
+                                        <li><button type="button" value="3" aria-label="Page 3">3</button></li>
+                                        <li><button type="button" value="4" aria-label="Page 4">4</button></li>
+                                        <li><button type="button" value="5" aria-label="Page 5">5</button></li>
+                                        <li><button type="button" value="6" aria-label="Page 6">6</button></li>
+                                    </ul>
+                                    <button type="button" value="3" class="next" aria-label="Next page">Next</button>
+                                </div>
+                                <div class="expander">
+                                    <button type="button" class="btn" value="2">더보기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="promotionl_list6" class="promo-area contents-area align-right" aria-live="polite" role="tabpanel">
+                        <form action="/data-ajax/mkt/promotionList.json" novalidate>
+                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="pagePosition">
+                        </form>
+                        <div class="list-contents-wrap">
+                            <div class="list-wrap">
+                                <div class="unit-list"></div>
+                                <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
+                                    <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
+                                    <ul>
+                                        <li><button type="button" value="1" aria-label="Page 1">1</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
+                                        <li><button type="button" value="3" aria-label="Page 3">3</button></li>
+                                        <li><button type="button" value="4" aria-label="Page 4">4</button></li>
+                                        <li><button type="button" value="5" aria-label="Page 5">5</button></li>
+                                        <li><button type="button" value="6" aria-label="Page 6">6</button></li>
+                                    </ul>
+                                    <button type="button" value="3" class="next" aria-label="Next page">Next</button>
+                                </div>
+                                <div class="expander">
+                                    <button type="button" class="btn" value="2">더보기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="promotionl_list7" class="promo-area contents-area align-right" aria-live="polite" role="tabpanel">
+                        <form action="/data-ajax/mkt/promotionList.json" novalidate>
+                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="pagePosition">
+                        </form>
+                        <div class="list-contents-wrap">
+                            <div class="list-wrap">
+                                <div class="unit-list"></div>
+                                <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
+                                    <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
+                                    <ul>
+                                        <li><button type="button" value="1" aria-label="Page 1">1</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active" aria-current="page">2</button></li>
+                                        <li><button type="button" value="3" aria-label="Page 3">3</button></li>
+                                        <li><button type="button" value="4" aria-label="Page 4">4</button></li>
+                                        <li><button type="button" value="5" aria-label="Page 5">5</button></li>
+                                        <li><button type="button" value="6" aria-label="Page 6">6</button></li>
+                                    </ul>
+                                    <button type="button" value="3" class="next" aria-label="Next page">Next</button>
+                                </div>
+                                <div class="expander">
+                                    <button type="button" class="btn" value="2">더보기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="promotionl_list8" class="promo-area contents-area align-right" aria-live="polite" role="tabpanel">
+                        <form action="/data-ajax/mkt/promotionList.json" novalidate>
+                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="pagePosition">
+                        </form>
+                        <div class="list-contents-wrap">
+                            <div class="list-wrap">
+                                <div class="unit-list"></div>
+                                <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
+                                    <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
+                                    <ul>
+                                        <li><button type="button" value="1" aria-label="Page 1">1</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active" aria-current="page">2</button></li>
+                                        <li><button type="button" value="3" aria-label="Page 3">3</button></li>
+                                        <li><button type="button" value="4" aria-label="Page 4">4</button></li>
+                                        <li><button type="button" value="5" aria-label="Page 5">5</button></li>
+                                        <li><button type="button" value="6" aria-label="Page 6">6</button></li>
+                                    </ul>
+                                    <button type="button" value="3" class="next" aria-label="Next page">Next</button>
+                                </div>
+                                <div class="expander">
+                                    <button type="button" class="btn" value="2">더보기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="promotionl_list9" class="promo-area contents-area align-right" aria-live="polite" role="tabpanel">
+                        <form action="/data-ajax/mkt/promotionList.json" novalidate>
+                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="pagePosition">
+                        </form>
+                        <div class="list-contents-wrap">
+                            <div class="list-wrap">
+                                <div class="unit-list"></div>
+                                <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
+                                    <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
+                                    <ul>
+                                        <li><button type="button" value="1" aria-label="Page 1">1</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active" aria-current="page">2</button></li>
+                                        <li><button type="button" value="3" aria-label="Page 3">3</button></li>
+                                        <li><button type="button" value="4" aria-label="Page 4">4</button></li>
+                                        <li><button type="button" value="5" aria-label="Page 5">5</button></li>
+                                        <li><button type="button" value="6" aria-label="Page 6">6</button></li>
+                                    </ul>
+                                    <button type="button" value="3" class="next" aria-label="Next page">Next</button>
+                                </div>
+                                <div class="expander">
+                                    <button type="button" class="btn" value="2">더보기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="promotionl_list10" class="promo-area contents-area align-right" aria-live="polite" role="tabpanel">
+                        <form action="/data-ajax/mkt/promotionList.json" novalidate>
+                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="pagePosition">
+                        </form>
+                        <div class="list-contents-wrap">
+                            <div class="list-wrap">
+                                <div class="unit-list"></div>
+                                <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
+                                    <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
+                                    <ul>
+                                        <li><button type="button" value="1" aria-label="Page 1">1</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active" aria-current="page">2</button></li>
+                                        <li><button type="button" value="3" aria-label="Page 3">3</button></li>
+                                        <li><button type="button" value="4" aria-label="Page 4">4</button></li>
+                                        <li><button type="button" value="5" aria-label="Page 5">5</button></li>
+                                        <li><button type="button" value="6" aria-label="Page 6">6</button></li>
+                                    </ul>
+                                    <button type="button" value="3" class="next" aria-label="Next page">Next</button>
+                                </div>
+                                <div class="expander">
+                                    <button type="button" class="btn" value="2">더보기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- //component KRP0017 -->
+		
+		</div>
+    </div>      
+</body>
+</html>

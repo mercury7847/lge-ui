@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+@import "../utilities/mixins";
+
+.video-asset {
+	width: 100%;
+	height: 56.25vw;
+	position: relative;
+	overflow: hidden;
+	iframe {
+		border: none;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		// transform: translateY(-50%);
+	}
+}
+
+.visual-area {
+	&.video-box {
+		position: relative;
+		.see-video {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+		}
+	}
+
+	&.video {
+		.see-video {
+			display:block;
+			&:before {
+				content: '';
+				display: inline-block;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: 64px;
+				height: 64px;
+				margin: -32px 0 0 -32px;
+				background: url('/lg5-common/images/btn-video-play.svg') no-repeat 0 0;
+				background-size: 100% 100%;
+				border-radius: 50% 50%;
+				@include mobile {
+					width: 48px;
+					height: 48px;
+					margin: -24px 0 0 -24px;
+				}
+			}
+		}
+	}
+
+	.caption {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 5;
+		overflow: hidden;
+		padding: 12px 24px;
+		height: 44px;
+		background-color: rgba(0,0,0,0.5);
+		font-weight: 700;
+		font-size:14px;
+		line-height: 20px;
+		color: #fff;
+		text-align: left;
+		white-space: nowrap;
+	}
+}
+
+// video close common button
+.video-box-closeset {
+	&.video-modal {
+		button.close-video {
+			top: 20px; 			
+		}
+		button.change-video, button.acc-change-video {
+			top:63px;
+		}
+	}
+	button.close-video {
+		overflow:hidden;
+		position: absolute;
+		right: 20px;
+		top: 62px;		
+		width:36px;
+		height:36px;
+		background-size:36px 36px;
+		white-space:nowrap;
+		text-indent:200%;
+		border:0;
+		z-index: 1;
+		cursor: pointer;
+		&:before,
+		&:after {
+			display: inline-block;
+			position: absolute;
+			top: 3px;
+			@include calc(left, 50%, 2px);
+			width: 2px;
+			height: 30px;
+			background-color: #111;
+			content: '';
+		}
+		&:before {
+			transform: rotate(45deg);
+		}
+		&:after {
+			transform: rotate(-45deg);
+		}
+	}
+}
+
+.video-modal {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+	background-color: #fff;
+	.modal-video-asset {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		transform: translateY(-50%);
+		overflow: hidden;
+		.video-asset {
+			max-width: 1284px;
+			max-height: 722px;
+			margin: 0 auto;
+			@media screen and (min-aspect-ratio: 16/9) {
+				height: 100vh;
+			}
+		}
+	}
+	&.youtube {
+		.video-asset {
+			@media screen and (max-aspect-ratio: 16/9) {
+				height: calc((100vw - 15px) * (9/16));
+			}
+		}
+	}
+}
+
+html {
+	&.modal-open {
+		overflow: hidden;
+	}
+}

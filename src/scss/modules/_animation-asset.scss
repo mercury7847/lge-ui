@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+@import "../utilities/mixins";
+
+.animation-box {
+	position:relative;
+
+	.animation-area {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width:100%;
+		height:100%;
+		z-index: 1;
+		text-indent: -9999em;
+		video {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		.controller-wrap {
+			display: block;
+			position: absolute;
+			right: 24px;
+			bottom: 64px;
+			button {
+				display: none;
+				text-indent: -9999em;
+				width: 40px;
+				height: 40px;
+				border: none;
+				background-color: rgba(0,0,0,0.75);
+				background-position: 50% 50%;
+				background-repeat: no-repeat;
+				border-radius: 50%;
+				cursor: pointer;
+				padding:0;
+				&.active {
+					display: block;
+				}
+				&.play {
+					background-image: url('/lg5-common/images/btn-animation-play.svg');
+					background-size:40px 40px;
+				}
+				&.pause {
+					background-image: url('/lg5-common/images/btn-animation-pause.svg');
+					background-size:40px 40px;
+				}
+			}
+		}
+	}
+
+	.caption {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 5;
+		overflow: hidden;
+		padding: 12px 24px;
+		height: 44px;
+		background-color: rgba(0,0,0,0.5);
+		font-weight: 700;
+		font-size:14px;
+		line-height: 20px;
+		color: #fff;
+		text-align: left;
+		white-space: nowrap;
+	}
+}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('../include/head_wsg.html', {
+        "title": "Input 가이드"
+    })
+<body>
+<div id="wrap" class="coding_guide">
+    
+<h1 class="h1_guide">input 정의</h1>
+
+<!-- 주의사항 -->
+<dl class="notice">
+    <dt><strong class="t_modify">주의사항</strong></dt>
+    <dd>
+        <ol>
+            <li>가이드 페이지에서는 기본적으로 display:inline-block, vertical-align:top, width:auto값이 기본이며, 컨텐츠 및 디자인에 따라 필요 시 input-wrap에서 재정의 해주시면 됩니다.</li>
+            <li>count, file upload 등 input과 다른 요소가 함께 들어가는 경우 반응형 대응을 위해 .input-wrap > .box로 감싸 display:table로 작업 진행되었습니다.</li>
+        </ol>
+    </dd>
+</dl>
+<!-- //주의사항 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">1. Default input, textarea</h2>
+<div class="guide_wrap">
+    <span class="input-wrap">
+        <input type="text" placeholder="이름을 입력하세요.">
+    </span>
+    <span class="input-wrap">
+        <input type="text" value="읽기 전용" readonly>
+    </span>
+    <span class="input-wrap">
+        <input type="text" value="입력 불가" disabled>
+    </span>
+    <br>
+    <br>
+    <span class="input-wrap block">
+        <input type="text" placeholder="이름을 입력하세요.">
+    </span>
+    <br>
+    <span class="input-wrap">
+        <textarea placeholder="내용을 입력해 주세요."></textarea>
+    </span>
+    <br><br>
+    <span class="input-wrap block">
+        <textarea placeholder="내용을 입력해 주세요."></textarea>
+    </span>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- default -->
+<span class="input-wrap">
+    <input type="text" placeholder="이름을 입력하세요.">
+</span>
+<span class="input-wrap">
+    <textarea placeholder="내용을 입력해 주세요."></textarea>
+</span>
+<!-- // default -->
+
+<!-- readonly, disabled -->
+<span class="input-wrap">
+    <input type="text" value="읽기 전용" readonly>
+</span>
+<span class="input-wrap">
+    <input type="text" value="입력 불가" disabled>
+</span>
+<!-- // readonly, disabled -->
+
+<!-- display block : .block -->
+<span class="input-wrap block">
+    <input type="text" placeholder="이름을 입력하세요.">
+</span>
+<span class="input-wrap block">
+    <textarea placeholder="내용을 입력해 주세요."></textarea>
+</span>
+<!-- // display block : .block -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2. input error</h2>
+<div class="guide_wrap">
+    <span class="input-wrap error">
+        <input type="text" placeholder="이름을 입력하세요." value="ㅏㅣ;ㅇㄹ맫">
+        <p class="err-msg">올바른 이름을 입력해주세요.</p>
+    </span>
+    <br>
+    <br>
+    <span class="input-wrap block error">
+        <textarea placeholder="내용을 입력해 주세요."></textarea>
+        <p class="err-msg">올바른 이름을 입력해주세요.</p>
+    </span>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- error -->
+<span class="input-wrap error">
+    <input type="text" placeholder="이름을 입력하세요." value="ㅏㅣ;ㅇㄹ맫">
+    <p class="err-msg">올바른 이름을 입력해주세요.</p>
+</span>
+
+<span class="input-wrap block error">
+    <textarea placeholder="내용을 입력해 주세요."></textarea>
+    <p class="err-msg">올바른 이름을 입력해주세요.</p>
+</span>
+<!-- // error -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">3. input + count</h2>
+<div class="guide_wrap">
+    <span class="input-wrap count">
+        <span class="box">
+            <input type="text" class="ui_textcontrol" placeholder="이름을 입력하세요." maxlength="40" data-limit="40" data-count-target="#txt-count">
+            <span id="txt-count" class="cell total"><em>0</em> / 40</span>
+        </span>
+    </span>
+    <br><br>
+    <span class="input-wrap count error">
+        <span class="box">
+            <input type="text" class="ui_textcontrol" placeholder="이름을 입력하세요." value="aw;oilejgrlk" maxlength="40" data-limit="40" data-count-target="#txt-count2">
+            <span id="txt-count2" class="cell total"><em>0</em> / 40</span>
+        </span>
+        <p class="err-msg">올바른 이름을 입력해주세요.</p>
+    </span>
+    <br>
+    <br>
+    <span class="input-wrap count">
+        <span class="box">
+            <textarea class="ui_textcontrol" placeholder="내용을 입력해 주세요." maxlength="1000" data-limit="1000" data-count-target="#txt-count3"></textarea>
+            <span id="txt-count3" class="cell total"><em>0</em> / 1000</span>
+        </span>
+    </span>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- input with count (display:table) -->
+<span class="input-wrap count">
+    <span class="box">
+        <input type="text" class="ui_textcontrol" placeholder="이름을 입력하세요." maxlength="40" data-limit="40" data-count-target="#txt-count">
+        <span id="txt-count" class="cell total"><em>0</em> / 40</span>
+    </span>
+</span>
+
+<span class="input-wrap count error">
+    <span class="box">
+        <input type="text" class="ui_textcontrol" placeholder="이름을 입력하세요." value="aw;oilejgrlk" maxlength="40" data-limit="40" data-count-target="#txt-count2">
+        <span id="txt-count2" class="cell total"><em>0</em> / 40</span>
+    </span>
+    <p class="err-msg">올바른 이름을 입력해주세요.</p>
+</span>
+
+<span class="input-wrap count">
+    <span class="box">
+        <textarea class="ui_textcontrol" placeholder="내용을 입력해 주세요." maxlength="1000" data-limit="1000" data-count-target="#txt-count3"></textarea>
+        <span id="txt-count3" class="cell total"><em>0</em> / 1000</span>
+    </span>
+</span>
+<!-- input with count -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">4. file upload</h2>
+<div class="guide_wrap">
+    <div class="file-box">
+        <span class="file-input">
+            <label for="file-upload">첨부파일 선택</label>
+            <input type="file" id="file-upload">
+            <span class="blind">(전체 10mb, 최대 3개까지 등록 가능)</span>
+        </span>
+        <ul class="file-lists">
+            <li>
+                <span class="file-name">test_img_001.jpg</span>
+                <button type="button" class="btn-del"><span class="blind">삭제</span></button>
+            </li>
+            <li>
+                <span class="file-name">test_img_001.jpg</span>
+                <button type="button" class="btn-del"><span class="blind">삭제</span></button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- file upload -->
+<div class="file-box">
+    <span class="file-input">
+        <label for="file-upload">첨부파일 선택</label>
+        <input type="file" id="file-upload">
+        <span class="blind">(전체 10mb, 최대 3개까지 등록 가능)</span>
+    </span>
+    <ul class="file-lists">
+        <li>
+            <span class="file-name">test_img_001.jpg</span>
+            <button type="button" class="btn-del"><span class="blind">삭제</span></button>
+        </li>
+        <li>
+            <span class="file-name">test_img_001.jpg</span>
+            <button type="button" class="btn-del"><span class="blind">삭제</span></button>
+        </li>
+    </ul>
+</div>
+<!-- // file upload -->
+</xmp>
+</div>
+<!-- //가이드 내용 -->
+
+
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">5. Datepicker</h2>
+<div class="guide_wrap">
+    <span class="input-wrap datepicker">
+        <span class="box">
+            <input type="text" id="date-input" placeholder="날짜를 선택하세요" value="2020.08.17">
+            <span class="cell pic-btn">
+                <button type="button" class="ui_calendar" data-input-target="#date-input"><span class="blind">달력보기</span></button>
+            </span>
+        </span>
+    </span>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- datepicker -->
+<span class="input-wrap datepicker">
+    <span class="box">
+        <input type="text" id="date-input" placeholder="날짜를 선택하세요" value="2020.08.17">
+        <span class="cell pic-btn">
+            <button type="button" class="ui_calendar" data-input-target="#date-input"><span class="blind">달력보기</span></button>
+        </span>
+    </span>
+</span>
+<!-- // datepicker -->
+</xmp>
+</div>
+<!-- //가이드 내용 -->
+
+</div> 
+@@include('../include/loadscript_wsg.html')
+</body>
+</html> 

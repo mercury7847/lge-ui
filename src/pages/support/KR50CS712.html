@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/notice"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'title': '공지사항',
+                'desc': '고객님께 찾아가 필요로 하시는 서비스를 제공해 드립니다.',
+                'img': {
+                    pcSrc: '경로',
+                    mobileSrc: '경로',
+                    alt: '설명'
+                }
+            })
+
+            <div class="content">
+                <div class="cs-content">
+                    <div class="cs-content-inner type-A">
+                        <div class="notice-wrap">
+
+                            <article class="notice-read section-area">
+                                <span class="notice-category">고객지원</span>
+                                <h3 class="notice-read-title">시스템 점검에 따른 서비스 이용안내 공지사항</h3>
+                                <div class="date-box">
+                                    <span class="date-label">등록일</span>
+                                    <span class="date-time">2020-08-06</span>
+                                </div>
+                                <div class="notice-read-content">
+                                    LG전자 서비스 홈페이지를 이용해주시는 고객님께 감사드립니다. 더 나은 서비스 제공을 위해 하기 시간 동안 시스템 점검이 진행됩니다. 해당 시간 동안 서비스 홈페이지 메뉴 중 일부 메뉴 이용이 불가하오니 참고하시고, 점검 시간 이후 이용바랍니다.
+                                    <br><br>
+                                    1. 시스템 점검 일시
+                                    2020년 6월 30일 (화) 20시 ~ 2020년 7월 1일 (수) 00시
+                                    <br><br>
+                                    2. 이용 제한 메뉴 및 시간
+                                    고객지원메뉴 중 '채팅상담', '전화상담예약', '원격상담예약', '엔지니어출장 예약', '센터방문예약',
+                                     '설치/철거 예약', '예약 및 결과 조회’, 케어용품/소모품샵 메뉴 : 소모품 구매, 주문 조회/취소
+                                    <br><br>
+                                    *이용 제한 시간 :
+                                    1차 : 2020년 6월 30일 (화) 20:15 ~ 20:20
+                                    2차 : 2020년 6월 30일 (화) 23:30 ~ 00:00
+                                    <br><br>
+                                    점검 작업 : ‘업소용 스탠드형', ‘시스템에어컨’ 제품의 '엔지니어 출장 예약', '예약 및 결과 조회'
+                                    *이용 제한 시간 : 2020년 6월 30일 (화) 20:00 ~ 2020년 7월 1일 (수) 00:00
+                                    ※ 시스템 점검 시간 동안 '예약 및 결과 조회'가 원활하지 않을 수 있습니다.
+                                    <br><br><br>                                    
+                                    상기 메뉴 외 이메일문의, 이메일문의 확인, 다운로드 자료실, 센터/매장 안내, 고객의 소리 등 메뉴는
+                                    정상 이용 가능합니다. 보다 편리한 서비스를 제공할 수 있도록 최선을 다하겠습니다.
+                                    <br><br>
+                                    감사합니다.
+                                </div>
+                                <div class="sns-box">
+                                    <a href="" class="sns-icon sns1"><span class="blind">카카오톡</span></a>
+                                    <a href="" class="sns-icon sns2"><span class="blind">페이스북</span></a>
+                                    <a href="" class="sns-icon sns3"><span class="blind">트위터</span></a>
+                                </div>
+                            </article>
+                            
+                            <div class="notice-moveTo">
+                                <a href="" class="notice-moveTo-prev">
+                                    <span class="part1">이전글</span>
+                                    <h4 class="part2">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내</h4>
+                                </a>
+                                <a href="" class="notice-moveTo-next">
+                                    <span class="part1">다음글</span>
+                                    <h4 class="part2">LG전자 챗봇 개인정보 처리 방침 개정안내</h4>
+                                </a>
+                            </div>
+
+                            <div class="btnarea-r btn-group">
+                                <a href="#n" class="btn black"><span>목록</span></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+</body>
+</html> 
