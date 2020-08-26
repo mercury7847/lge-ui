@@ -5,7 +5,7 @@ define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
     var YoutubeBox = core.ui('youtubeBox', {
         bindjQuery: true,
         defaults: {
-            templateUrl: "/html/components/modal-template.html"
+            templateUrl: "/lg5-common/template/modal-template.html"
         },
         selectors: { 
             template: $('<div class="template"></div>')

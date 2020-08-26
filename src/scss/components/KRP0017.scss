@@ -48,13 +48,14 @@
         vertical-align: top;
 
         &.ico-right {
+            margin-right: 14px;
             &:after {
                 position: absolute;
                 @include calc(top, 50%, 6px);
                 right: -12px;
                 width: 8px;
                 height: 8px;
-                border: 2px solid #111;
+                border: solid #111;
                 border-width: 2px 2px 0 0;
                 transform: rotate(45deg);
                 content: '';
