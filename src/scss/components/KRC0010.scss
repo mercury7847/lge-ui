@@ -11,6 +11,11 @@
     // padding-left: 30px;
     padding: 0 30px;
 
+    @include mobile {
+        max-width: 100%;
+        padding: 0 24px;
+    }
+
     .btn {
         display: inline-block;
         min-width:194px;
@@ -52,6 +57,9 @@
     .banner-box {
         position: relative;
         margin-bottom: 62px;
+        @include mobile {
+            margin: 0 -24px 24px;
+        }
     }
     .visual-area {
         img {
@@ -97,6 +105,12 @@
     }
     .unit-box {
         @include grid-col(left,6);
+        @include mobile {
+            margin-bottom: 40px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
 
         .visual-area {
             margin-bottom: 16px;
