@@ -18,80 +18,70 @@
                                 <input type="hidden" name="page" value="1">               
                                 <input type="hidden" name="pagePosition">
                             </form>                       
-                            <div class="list-wrap ui_carousel_slider">     
+                            <div class="list-wrap ui_carousel_slider"><!-- [KR수정] .ui_carousel_slider class 추가 -->  
                                 <!-- [KR수정] indicator DOM 추가-->
                                 <ul class="indicator ui_carousel_dots">
                                     <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
                                 </ul>
                                 <!-- // [KR수정] indicator DOM 추가-->           
                                 <template class="contents-template">
-                                    <li class="unit-box">
+                                    <div class="unit-box">
                                         <div class="visual-area image">
                                             <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
                                                 <img class="lazyload" data-src="*thumbnailImageAddr*" alt="*imageAltText*"/>
-                                                <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title">*title*</p>
+                                        <p class="head-copy">*title*</p>
                                         <p class="body-copy">*promotionStartDate* ~ *promotionEndDate*</p>
                                         <div class="btn-box">
                                             <span><a href="*promotionLinkUrl*" class="btn btn-primary" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">View Promotion</a></span>
                                         </div>
-                                    </li>
+                                    </div>
                                 </template>
-                                <!-- 
-                                    [KR수정]
-                                    div -> ul DOM 변경 
-                                    - 화면 반영 보기 위해 템플릿으로 불러오는 li DOM 내부에 붙혀 작업함
-                                -->
-                                <ul class="unit-list ui_carousel_track"><!-- [KR수정] .align-center class 삭제(기획서상 해당 영역 정렬옵션 지원하지 않음) -->
-                                    <li class="unit-box ui_carousel_slide">
+                                <div class="unit-list ui_carousel_track"><!-- [KR수정] .align-center class 삭제(기획서상 해당 영역 정렬옵션 지원하지 않음) -->
+                                    <div class="unit-box ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide class 추가 -->
                                         <div class="visual-area image">
                                             <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
                                                 <img class="lazyload" data-src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="" aria-hidden="true"/>
-                                                <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="head-copy">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
                                         <p class="body-copy">08/01 ~ 08/31/2020</p>
                                         <div class="btn-box">
                                             <span>
                                                 <a href="*promotionLinkUrl*" class="btn black" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">프로모션 보기</a><!-- [KR수정] .btn-primary 삭제 후 .black 추가 -->
                                             </span>
                                         </div>
-                                    </li>
-                                    <li class="unit-box ui_carousel_slide">
+                                    </div>
+                                    <div class="unit-box ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide class 추가 -->
                                         <div class="visual-area image">
                                             <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
                                                 <img class="lazyload" data-src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="" aria-hidden="true"/>
-                                                <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="head-copy">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
                                         <p class="body-copy">08/01 ~ 08/31/2020</p>
                                         <div class="btn-box">
                                             <span>
                                                 <a href="*promotionLinkUrl*" class="btn black" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">프로모션 보기</a><!-- [KR수정] .btn-primary 삭제 후 .black 추가 -->
                                             </span>
                                         </div>
-                                    </li>
-                                    <li class="unit-box ui_carousel_slide">
+                                    </div>
+                                    <div class="unit-box ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide class 추가 -->
                                         <div class="visual-area image">
                                             <a href="*promotionLinkUrl*" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*">
                                                 <img class="lazyload" data-src="/lg5-common/images/KRC0008/@thumb01.jpg" alt="" aria-hidden="true"/>
-                                                <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <p class="head-copy">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
                                         <p class="body-copy">08/01 ~ 08/31/2020</p>
                                         <div class="btn-box">
                                             <span>
                                                 <a href="*promotionLinkUrl*" class="btn black" data-link-area="exciting_promotion_offers-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">프로모션 보기</a><!-- [KR수정] .btn-primary 삭제 후 .black 추가 -->
                                             </span>
                                         </div>
-                                    </li>
-                                </ul>
-                                <!-- // div -> ul DOM 변경 -->
+                                    </div>
+                                </div>
                             </div>                                     
                         </div>
                     </div>                              
