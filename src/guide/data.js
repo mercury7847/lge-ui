@@ -12,7 +12,8 @@ var res = {
 			// "Form" : ["./wsg/guide_input_form.html","","검수완료"],
 			"버튼" : ["./wsg/guide_button.html","","검수완료"],
 			"탭" : ["./wsg/guide_tab.html","","검수완료"],
-			"스크롤뷰" : ["./wsg/guide_scrollview.html","","검수완료"]
+			"스크롤뷰" : ["./wsg/guide_scrollview.html","","검수완료"],
+			"Pagination" : ["./wsg/guide_pagination.html","","검수완료"]
 		}
 	},
 	"Front" : {
@@ -23,7 +24,8 @@ var res = {
 			"KRC0013" : ["/html/components/KRC0013.html","","검수완료"],
 			"KRC0017" : ["/html/components/KRC0017.html","","진행중"],
 			"KRP0013" : ["/html/components/KRP0013.html","","진행중"],
-			"KRP0017" : ["/html/components/KRP0017.html","","진행중"]
+			"KRP0017" : ["/html/components/KRP0017.html","","진행중"],
+			"KRC0019" : ["/html/components/KRC0019.html","","진행중"]
 		},
 		"Page" : {
 			"페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
