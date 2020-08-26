@@ -18,7 +18,7 @@
     <script src="/lg5-common/js/vcui.min.js"></script>
     <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
     <script src="/lg5-common/js/lg.common.min.js"></script>
-    @@if (context.componentID) {
+    @@if (context.isJScompile && context.componentID) {
         <script src="/lg5-common/js/components/@@componentID.min.js"></script>
     }
     @@if (context.pageJS) {
