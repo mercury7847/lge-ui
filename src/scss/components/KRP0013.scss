@@ -148,9 +148,8 @@
             }
             .btn-arrow {
                 position:absolute;
-                top:50%;
+                top:108px;
                 z-index:10;
-                margin-top:-28px;
                 @include mobile {
                     display:none !important;
                 }
