@@ -63,18 +63,25 @@
 
     .text-area {
         max-width: (1284px + 60px);
-        margin: 0 auto;
-        padding: 0 30px 56px;
+        margin: 0 auto 56px;
+        padding: 0 30px;
         @at-root .KRC0019 {
             &.type-bottom {
                 .text-area {
-                    padding: 56px 30px 0;
+                    margin: 56px auto 0;
                 }
             }
         }
         .inner {
             max-width: (100% / 12) * 10;
             margin: 0 auto;
+        }
+        @include mobile {
+            max-width: 100%;
+            padding: 0 24px;
+            .inner {
+                max-width: 100%;
+            }
         }
         // 텍스트 가로정렬 및 버튼 사이 간격
         &.align-left {
