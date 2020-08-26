@@ -21,6 +21,7 @@ var res = {
 			"KRC0009" : ["/html/components/KRC0009.html","","진행중"],
 			"KRC0010" : ["/html/components/KRC0010.html","","진행중"],
 			"KRC0013" : ["/html/components/KRC0013.html","","검수완료"],
+			"KRC0017" : ["/html/components/KRC0017.html","","진행중"],
 			"KRP0013" : ["/html/components/KRP0013.html","","진행중"],
 			"KRP0029" : ["/html/components/KRP0029.html","","진행중"]
 		},
