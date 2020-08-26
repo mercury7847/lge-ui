@@ -168,9 +168,12 @@
                     border-right:4px solid #111;
                     border-bottom:4px solid #111;
                 }
-                &.disabled::before {
-                    border-color:rgba(#111, 0.3);
+                &.disabled {
+                    display:none !important;
                 }
+                // &.disabled::before {
+                //     border-color:rgba(#111, 0.3);
+                // }
                 &.package-prev {
                     left:0;
                     &::before {
