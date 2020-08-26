@@ -9,11 +9,12 @@ const gulp = require("gulp"),
         cleanCSS = require('gulp-clean-css'),
         gulpif = require('gulp-if'),
         fileinclude = require('gulp-file-include'),
+        git = require('gulp-git'),
         del = require('del');
 
-const src = "./src";
-const dist = './dist';
-const sourceFolder = "/lg5-common";
+var src = "./src";
+var dist = './dist';
+var sourceFolder = "/lg5-common";
 
 // Loads BrowserSync
 gulp.task("browser-sync", () => {
@@ -196,11 +197,18 @@ gulp.task("watch", ["browser-sync"], () => {
 });
 
 // Compile sass, concat and minify css + js
-gulp.task("build", ["clean", "static", "concat-js"], () =>{
-    gulp.start(["styles", "scripts", "guide", "html"]);
+gulp.task("serverBuild", ["clean", "static", "concat-js"], () =>{
+    git.revParse({args:'HEAD'}, function (err, hash) {
+        dist += ("/" + hash);
+        gulp.start(["styles", "scripts", "guide", "html"]);
+    });
 });
 
-
-
+gulp.task('build', function() {
+    git.revParse({args:'HEAD'}, function (err, hash) {
+        dist += ("/" + hash);
+        gulp.start('serverBuild');
+    });
+});
 
 gulp.task("default", ["watch"]); // Default gulp task
