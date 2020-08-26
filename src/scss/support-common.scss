@@ -14,6 +14,9 @@ legend {
     overflow: hidden;
     color: transparent;
 }
+textarea {
+    font-size:14px;
+}
 
 // 상단 타이틀
 .page-visual {
@@ -90,14 +93,6 @@ legend {
         @include mobile {
             padding:12px 0 90px;
         }
-    }
-}
-
-.btn-group {
-    margin-top:48px;
-    text-align:center;
-    &.align-right {
-        text-align:right;
     }
 }
 
