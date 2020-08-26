@@ -473,5 +473,10 @@ input, textarea {
                 }
             }
         }
+        &.disabled {
+            .ui-selectbox-list {
+                display:none;
+            }
+        }
     }
 }
