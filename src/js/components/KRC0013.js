@@ -5,6 +5,7 @@ define('components/KRC0013', ['jquery', 'vcui', 'ui/modal'], function ($, core) 
     var KRC0013 = core.ui('KRC0013', {
         bindjQuery: true,
         defaults: {
+            
         },
 
         initialize: function initialize(el, options) {

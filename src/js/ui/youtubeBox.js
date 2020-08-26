@@ -18,6 +18,12 @@ define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
                 return;
             };
 
+            self._setModalMode();
+        },
+
+        _setModalMode: function(){
+            var self = this;
+
             self.$modal = null;
 
             self.templateLoaded = false;
@@ -29,17 +35,19 @@ define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
                 self._completeTemplate(html)
             });
 
-            self._bindEvent();
+            self._bindModalEvent();
         },
 
         _completeTemplate: function(html){
             var self = this;
 
             self.templateLoaded = true;
-            $('head').append($(html));
+
+            var tmpltag = $('#tmpl-yt-full-modal');
+            if(!tmpltag.length) $('head').append($(html));
         },
 
-        _bindEvent: function(){
+        _bindModalEvent: function(){
             var self = this;
 
             self.$opener.on('click', function(e){
@@ -52,7 +60,7 @@ define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
         _addModal: function(){
             var self = this;
 
-            var modal = vcui.template($('#youtube-full-modal').html(), {youtube_url:self.$youtubeURL});
+            var modal = vcui.template($('#tmpl-yt-full-modal').html(), {youtube_url:self.$youtubeURL});
             self.$modal = $(modal).get(0);
             $(self.$modal).find(".close-video").on('click', function(e){
                 e.preventDefault();

@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRC0017 {
+    max-width:(1284px + 60px);
+    margin:0 auto;
+    padding:0 30px;
+    @include mobile {
+        padding:0 24px;
+    }
+
+    // page common
+    .visual-area {
+        a {
+            display:block;
+            position:relative;
+            img {
+                width:100%;
+                height:auto;
+                vertical-align:top;
+            }
+        }
+        &.video {
+            .see-video:before {
+                width:32px;
+                height:32px;
+                margin:-16px 0 0 -16px;
+            }
+        }
+    }
+    .caption {
+        margin-top:16px;
+        color:#616161;
+        font-size:16px;
+        line-height:24px;
+        text-align:center;
+    }
+    .bottom-btn {
+        margin-top:24px;
+        text-align:center;
+        .btn {
+            @include mobile {
+                min-width:100%;
+                padding:15px 0;
+                font-size:16px;
+                line-height:24px;
+            }
+        }
+    }
+
+    // Carousel Case
+    .carousel-box {
+        margin:0 -28px;
+        .list-box {
+            position:relative;
+            padding:0 16px;
+            @include mobile {
+                padding-bottom:34px;
+            }
+            .indi-wrap {
+                display:none !important;
+                position:absolute;
+                left:0;
+                right:0;
+                bottom:0;
+                @include mobile {
+                    display:block !important;
+                }
+            }
+            .btn-arrow {
+                display:none;
+                position:absolute;
+                top:69px;
+                z-index:10;
+                &.prev {
+                    left:0;
+                }
+                &.next {
+                    right:0;
+                }
+                @include mobile {
+                    display:none !important;
+                }
+            }
+            .ui_carousel_list {
+                overflow:hidden;
+            }
+            .items {
+                margin:0 auto;
+                @include clearfix;
+                .item {
+                    float:left;
+                    > div, > p {
+                        width:194px;
+                        margin-left:auto;
+                        margin-right:auto;
+                    }
+                }
+            }
+        }
+    }
+
+    // Non Carousel Case 
+    .non-carousel-box {
+        .items {
+            margin:0 auto;
+            font-size:0;
+            text-align:center;
+            .item {
+                display:inline-block;
+                width:194px;
+                margin:0 12px; 
+                vertical-align:top;
+            }
+        }
+        @for $i from 2 through 6 {
+            &.item#{$i} {
+                .items {
+                    max-width:(194px + 24px) * $i;
+                    @if $i == 6 {
+                        margin:0 -12px;
+                    }
+                }
+            }
+        }
+    }
+}
