@@ -204,13 +204,11 @@ gulp.task("serverBuild", ["clean", "static", "concat-js"], () =>{
     });
 });
 
-/*
 gulp.task('build', function() {
     git.revParse({args:'HEAD'}, function (err, hash) {
         dist += ("/" + hash);
         gulp.start('serverBuild');
     });
 });
-*/
 
 gulp.task("default", ["watch"]); // Default gulp task
