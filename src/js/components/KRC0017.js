@@ -8,6 +8,21 @@ $(window).ready(function(){
             slidesToShow: 6,
             slidesToScroll: 1,
             responsive: [{
+                breakpoint: 1270,
+                settings: {
+                    slidesToShow: 5
+                }
+            }, {
+                breakpoint: 1060,
+                settings: {
+                    slidesToShow: 4
+                }
+            }, {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 3
+                }
+            }, {
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 1
