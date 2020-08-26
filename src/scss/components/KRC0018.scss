@@ -2,3 +2,86 @@
 
 @import "../components-app";
 
+
+
+.KRC0018 {
+    padding:60px 0;
+    &.bg-lightgray {
+        background:#f4f4f4;
+    }
+    &.bg-dark {
+        background:#333;
+    }
+    &.bg-black {
+        background:#000;
+    }
+    &.bg-white {
+        background:#fff;
+    }
+
+    // common
+    .inner {
+        position:relative;
+        max-width:1600px;
+        margin:0 auto;
+        .visual-wrap {
+            a {
+                display:block;
+                position:relative;
+                img {
+                    width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+            }
+        }
+        .text-box-area {
+            position:relative;
+            max-width:1284px;
+            margin:0 auto;
+            .text-wrap {
+                position:absolute;
+                background:#fff;
+            }
+            .title * {
+                color:#111;
+                font-size:20px;
+                line-height:30px;
+                font-weight:700;
+            }
+            .text {
+                margin-top:16px;
+                color:#111;
+                font-size:16px;
+                line-height:24px;
+            }
+            .btn-type-box, .btn-type-text {
+                margin-top:40px;
+                font-size:0;
+                span {
+                    display:inline-block;
+                    vertical-align:top;
+                    margin-left:24px;
+                    &:first-child {
+                        margin-left:0;
+                    }
+                }
+            }
+        }
+    }
+
+    // full
+    &.full {
+        .visual-wrap {
+            padding-bottom:96px;
+        }
+        .text-box-area .text-wrap {
+            position:absolute;
+            right:0;
+            bottom:0;
+            min-width:630px;
+            padding:56px 32px; 
+        }
+    }
+    
+}

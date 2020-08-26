@@ -245,4 +245,9 @@
         //  }
         //}
     }
+
+    // full ver class 추가. 추후 max-width 1600 fix시 삭제
+    &.full {
+        max-width:100%;
+    }
 }
