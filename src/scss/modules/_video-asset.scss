@@ -33,17 +33,22 @@
 		.see-video {
 			display:block;
 			&:before {
-				content:'';
+				content: '';
 				display: inline-block;
 				position: absolute;
-				left:50%;
-				top:50%;
-				width:48px;
-				height:48px;
-				margin:-24px 0 0 -24px;
-				background:url('/lg5-common/images/icons/video-play-button.svg') no-repeat 0 0;
-				background-size:100% 100%;
-				border-radius:50% 50%;
+				left: 50%;
+				top: 50%;
+				width: 64px;
+				height: 64px;
+				margin: -32px 0 0 -32px;
+				background: url('/lg5-common/images/btn-video-play.svg') no-repeat 0 0;
+				background-size: 100% 100%;
+				border-radius: 50% 50%;
+				@include mobile {
+					width: 48px;
+					height: 48px;
+					margin: -24px 0 0 -24px;
+				}
 			}
 		}
 	}
