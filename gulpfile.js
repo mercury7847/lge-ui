@@ -12,9 +12,9 @@ const gulp = require("gulp"),
         git = require('gulp-git'),
         del = require('del');
 
-const src = "./src";
-const dist = './dist';
-const sourceFolder = "/lg5-common";
+var src = "./src";
+var dist = './dist';
+var sourceFolder = "/lg5-common";
 
 // Loads BrowserSync
 gulp.task("browser-sync", () => {
@@ -203,7 +203,7 @@ gulp.task("serverBuild", ["clean", "static", "concat-js"], () =>{
 
 gulp.task('build', function() {
     git.revParse({args:'HEAD'}, function (err, hash) {
-        dist += hash;
+        dist += ("/" + hash);
         gulp.start('serverBuild');
     });
 });
