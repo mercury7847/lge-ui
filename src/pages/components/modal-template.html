@@ -1,15 +1,14 @@
 
-<!-- youtube 풀창 플래이 모달 팝업-->
-<script type="text/x-jquery-tmpl" id="youtube_full_modal">
-    <!-- 비디오 모달 팝업 --> 
-    <!-- 모달 오픈 시 body 에 .modal-open 추가 -->
-    <div id="youtube_1" class="video-modal video-box-closeset youtube ui_modal">
+<!-- 비디오 모달 팝업 --> 
+<!-- 모달 오픈 시 body 에 .modal-open 추가 -->
+<script type="text/x-jquery-tmpl" id="youtube-full-modal">
+    <div class="video-modal video-box-closeset youtube">
         <div class="modal-video-asset">
             <div class="video-asset">
-                <iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="${youtube_url}"></iframe>
+                <iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{{youtube_url}}?autoplay=1"></iframe>
             </div>
         </div>
-        <button class="close-video ui_modal_close">동영상 닫기</button>
+        <button class="close-video">동영상 닫기</button>
     </div>
-    <!-- // 비디오 모달 팝업 -->
 </script>
+<!-- // 비디오 모달 팝업 -->
