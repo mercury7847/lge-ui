@@ -2,9 +2,11 @@ $(window).ready(function(){
     if(!document.querySelector('.KRC0019')) return false;
 
     var $targetDrag = $('.KRC0019 .drag-area');
+    /*
     $targetDrag.twentytwenty({
         no_overlay: true
     });
+    */
     $targetDrag.each(function(){
         var dragTitle = $(this).data('handle-title');
         $(this).find('.twentytwenty-handle').attr('title',dragTitle);
@@ -24,4 +26,10 @@ $(window).ready(function(){
             waNumber++;
         }
     });
-})
+});
+
+$(window).load(function(){
+    $('.KRC0019 .drag-area').twentytwenty({
+        no_overlay: true
+    });
+});
