@@ -54,48 +54,47 @@
                 }
             }
         }
-        .ui_carousel {
-            &_list {
-                overflow:hidden;
-                margin:0 -12px;
-                @include mobile {
-                    margin:0 -16px 0;
+        &-carousel {
+            .ui_carousel {
+                &_list {
+                    overflow:hidden;
+                    margin:0 -12px;
+                    @include mobile {
+                        margin:0 -16px 0;
+                    }
                 }
-            }
-            &_slide {
-                float:left;
-                text-align:center;
-                margin:0 12px;
-                @include mobile {
-                    margin:0 16px;
+                &_slide {
+                    float:left;
+                    text-align:center;
+                    margin:0 12px;
+                    @include mobile {
+                        margin:0 16px;
+                    }
                 }
-            }
-            &_paging {
-                @include mobile {
+                &_pagination {
                     display:none;
-                }
-                button {
-                    &.ui_carousel_prev, &.ui_carousel_next {
-                        position: absolute;
-                        top: 50%;
-                        transform: translateY(-50%);
-                    }
-                    &.ui_carousel_prev {
-                        left: -28px;
-                    }
-                    &.ui_carousel_next {
-                        right: -28px;
+                    @include mobile {
+                        display:block;
+                        margin-top:30px;
                     }
                 }
-            }
-            &_pagination {
-                display:none;
-                @include mobile {
-                    display:block;
-                    margin-top:30px;
+                &_prev, &_next {
+                    position: absolute;
+                    z-index:2;
+                    top:50%;
+                    transform:translateY(-50%);
+                    @include mobile {
+                        display:none;
+                    }
                 }
-            }
-        }  
+                &_prev {
+                    left: -28px;
+                }
+                &_next {
+                    right: -28px;
+                }
+            } 
+        } 
     }
     .product-select {
         &-inner {

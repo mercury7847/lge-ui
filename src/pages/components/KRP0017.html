@@ -2,7 +2,7 @@
 <html lang="ko">
 @@include('./common/head.html', {
     componentID: "KRP0017",
-    isJScompile: false
+    isJScompile: true
 })
 <body>
     <div class="wrap">
@@ -10,6 +10,7 @@
 
 			<!-- component KRP0017 -->
             <div class="component-wrap">
+                @@include('./components/common-note.html')
                 <section class="component KRP0017">
                     <div class="heading-box align-center">
                         <div class="title"><h2>이달의 구매혜택을 비롯한 풍성한 혜택을 놓치지 마세요</h2></div>
@@ -31,7 +32,7 @@
                             </ul>
                         </div>
                         <div class="tab-scroll-controller">
-                            <button type="button" class="scroll-left"><span class="sr-only">Scroll Left</span></button><button type="button" class="scroll-right"><span class="sr-only">Scroll Right</span></button>
+                            <button type="button" class="scroll-left"><span class="sr-only">왼쪽으로</span></button><button type="button" class="scroll-right"><span class="sr-only">오른쪽으로</span></button>
                         </div>
                     </div>
                     <div id="promotionl_list1" class="promo-area contents-area align-left" aria-live="polite" role="tabpanel">
