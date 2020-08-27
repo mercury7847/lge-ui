@@ -19,12 +19,21 @@
         background:#fff;
     }
 
-    // class, max-width(inner), max-width(img), max-width(text), padding-bottom(text area), bottom, min-width(text area), block(standard only)
-    $full:      (full,      1600px, 100%,   1284px, 96px,   0,      630px,  null,   -35px,  24px,  0);
-    $wide:      (wide,      1284px, 1066px, 100%,   86px,   0,      630px,  null,   -40px,  24px,  24px);
-    $standard:  (standard,  1066px, 740px,  100%,   132px,  0,      424px,  block,  -35px,  48px,  24px);
-    $high:      (high,      1066px, 630px,  100%,   0,      70px,   630px,  null,   -80px,  24px,  48px);
-    @each $class, $size, $imgW, $textW, $pb, $bottom, $minW, $block, $mt, $txtM, $imgM in $full, $wide, $standard, $high {
+    // $class : component size class
+    // $size : inner max-size
+    // $imgW : visual-wrap max-width
+    // $textW : text-box-area max-width
+    // $pb : text-box-area padding-bottom
+    // $bottom : text-wrap bottom position
+    // $minW :text-wrap width
+    // $block : button layout 'block'
+    // $mt : text-wrap mobile minus margin-top
+    $full:      (full,      1600px, 100%,   1284px, 96px,   0,      630px,  null,   -35px);
+    $wide:      (wide,      1284px, 1066px, 100%,   86px,   0,      630px,  null,   -40px);
+    $standard:  (standard,  1066px, 740px,  100%,   132px,  0,      424px,  block,  -35px);
+    $high:      (high,      1066px, 630px,  100%,   0,      70px,   630px,  null,   -80px);
+    @each $class, $size, $imgW, $textW, $pb, $bottom, $minW, $block, $mt in $full, $wide, $standard, $high {
+        // 사이즈별 스타일
         &.#{$class} {
             .inner {
                 position:relative;
@@ -110,6 +119,7 @@
                 }
             }
 
+            // left, right 옵션 별 스타일
             $pst: (left, right);
             @each $key in $pst {
                 .inner.large-align-#{$key} {
