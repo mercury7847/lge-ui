@@ -5,11 +5,8 @@ define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
     var YoutubeBox = core.ui('youtubeBox', {
         bindjQuery: true,
         defaults: {
-            templateUrl: "/lg5-common/template/modal-template.html"
+            templateID: "tmpl-yt-full-modal"
         },
-        selectors: { 
-            template: $('<div class="template"></div>')
-        }, 
 
         initialize: function initialize(el, options) {
             var self = this;
@@ -30,21 +27,16 @@ define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
 
             self.$opener = self.$el.find('a.see-video').css('display', 'block');
             self.$youtubeURL = self.$opener.attr("data-src");
-            
-            self.$template.load( self.options.templateUrl, function(html){
-                self._completeTemplate(html)
-            });
+
+            lgkorUI.getTemplate(self.options.templateID, self._completeTemplate.bind(self));
 
             self._bindModalEvent();
         },
 
-        _completeTemplate: function(html){
+        _completeTemplate: function(){
             var self = this;
 
             self.templateLoaded = true;
-
-            var tmpltag = $('#tmpl-yt-full-modal');
-            if(!tmpltag.length) $('head').append($(html));
         },
 
         _bindModalEvent: function(){
@@ -60,7 +52,7 @@ define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
         _addModal: function(){
             var self = this;
 
-            var modal = vcui.template($('#tmpl-yt-full-modal').html(), {youtube_url:self.$youtubeURL});
+            var modal = vcui.template($('#'+self.options.templateID).html(), {youtube_url:self.$youtubeURL});
             self.$modal = $(modal).get(0);
             $(self.$modal).find(".close-video").on('click', function(e){
                 e.preventDefault();
@@ -74,6 +66,7 @@ define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
         _removeModal: function(){
             var self = this;
 
+            $(self.$modal).find(".close-video").off('click');
             $(self.$modal).remove();
             self.$modal = null;
 
