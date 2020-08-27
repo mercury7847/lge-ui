@@ -22,6 +22,7 @@ var res = {
 			"KRC0009_Exciting Promotion Offers" : ["/html/components/KRC0009.html","","검수완료"],
 			"KRC0010_Recommended Promotions" : ["/html/components/KRC0010.html","","진행중"],
 			"KRC0013_Side Image - text" : ["/html/components/KRC0013.html","","검수완료"],
+			"KRC0016_Large Image - Large or 2 Small Image" : ["/html/components/KRC0016.html","","진행중"],
 			"KRC0017_Centered Image Block" : ["/html/components/KRC0017.html","","진행중"],
 			"KRC0018_Image - Layered Text" : ["/html/components/KRC0018.html","","진행중"],
 			"KRP0013_PDP Bundle" : ["/html/components/KRP0013.html","","검수완료"],
