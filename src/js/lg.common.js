@@ -17,6 +17,7 @@ $(window).ready(function(){
                         "ui/youtubeBox",
                         "ui/modal"
                     ], function () {
+        $('body').vcLazyLoader();
         $('header').vcHeader(); //헤더 모듈 적용...
         $('footer').vcFooter(); //푸터모듈 적용...
 
@@ -31,7 +32,5 @@ $(window).ready(function(){
         $('body').find('.ui_scrollview').vcScrollview();
         $('body').find('.animation-box').vcVideoBox();
         $('body').find('.youtube-box').vcYoutubeBox();
-
-        $('body').vcLazyLoader();
     });
 })
