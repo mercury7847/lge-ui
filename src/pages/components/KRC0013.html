@@ -8,13 +8,13 @@
     <div class="wrap">
         <div class="container">
 
-            <!-- //component KRC0013 -->
-            <!-- Standard 애니메이션 좌측형, 텍스트 좌측 정렬 -->
+            <!-- component KRC0013 -->
+            <!-- Standard 이미지 좌측형, 텍스트 좌측 정렬 -->
             <div class="component-wrap">
                 @@include('./components/common-note.html')
                 <section class="component KRC0013 align-left standard">
                     <div class="visual-wrap image-align-left">
-                        <!-- image : video 타입인 경우 -->
+                        <!-- 이미지 : 애니메이션 타입인 경우 -->
                         <div class="visual-area animation-box">
                             <img data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="" class="lazyloaded" data-loaded="true">
                             <div class="animation-area">
@@ -27,7 +27,7 @@
                             </div>
                             <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                         </div>
-                        <!-- image : video 타입인 경우 -->
+                        <!-- // 이미지 : 애니메이션 타입인 경우 -->
                         <div class="desc font-regular align-left">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
                     </div>
                     <div class="text-wrap side-right-text">
@@ -45,20 +45,22 @@
                     </div>
                 </section>
             </div>
-            <!-- // Standard 애니메이션 좌측형, 텍스트 좌측 정렬 -->
+            <!-- // Standard 이미지 좌측형, 텍스트 좌측 정렬 -->
 
 
-            <!-- Standard 동영상 좌측형, 텍스트 좌측 정렬 -->
+            <!-- Standard 이미지 좌측형, 텍스트 좌측 정렬 -->
             <div class="component-wrap">
                 @@include('./components/common-note.html')
                 <section class="component KRC0013 align-left standard">
                     <div class="visual-wrap image-align-left">
-                        <div class="visual-area video youtube-box">
+                        <!-- 이미지 : 동영상 타입인 경우 -->
+                        <div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box 추가 - 동영상 모달 클래스 -->
                              <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
                                 <img data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="" class="lazyloaded" data-loaded="true">
                                 <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                             </a>
                         </div>
+                        <!-- // 이미지 : 동영상 타입인 경우 -->
                         <div class="desc font-regular align-left">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
                     </div>
                     <div class="text-wrap side-right-text">
@@ -76,14 +78,15 @@
                     </div>
                 </section>
             </div>
-            <!-- // Standard 동영상 좌측형, 텍스트 좌측 정렬 -->
+            <!-- // Standard 이미지 좌측형, 텍스트 좌측 정렬 -->
 
 
-            <!-- Standard 동영상 좌측형, 텍스트 우측 정렬 -->
+            <!-- Standard 이미지 좌측형, 텍스트 우측 정렬 -->
             <div class="component-wrap">
                 @@include('./components/common-note.html')
                 <section class="component KRC0013 align-right standard">
                     <div class="visual-wrap image-align-left">
+                        <!-- 이미지 : 동영상 타입인 경우 -->
                         <div class="visual-area video youtube-box">
                             <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title03">
                                 <img data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="" class="lazyloaded" data-loaded="true">
@@ -91,6 +94,7 @@
                                 <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                             </a>
                         </div>
+                        <!-- // 이미지 : 동영상 타입인 경우 -->
                         <div class="desc font-regular align-right">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
                     </div>
                     <div class="text-wrap side-right-text">
@@ -108,20 +112,22 @@
                     </div>
                 </section>
             </div>
-            <!-- // Standard 동영상 좌측형, 텍스트 우측 정렬 -->
+            <!-- // Standard 이미지 좌측형, 텍스트 우측 정렬 -->
 
 
-            <!-- Standard 동영상 좌측형, 텍스트 중앙 정렬 -->
+            <!-- Standard 이미지 좌측형, 텍스트 중앙 정렬 -->
             <div class="component-wrap">
                 @@include('./components/common-note.html')
                 <section class="component KRC0013 align-center standard">
                     <div class="visual-wrap image-align-left">
+                        <!-- 이미지 : 동영상 타입인 경우 -->
                         <div class="visual-area video youtube-box">
                             <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title04">
                                 <img data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="" class="lazyload">
                                 <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                             </a>
                         </div>
+                        <!-- // 이미지 : 동영상 타입인 경우 -->
                         <div class="desc font-regular align-center">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
                     </div>
                     <div class="text-wrap side-right-text">
@@ -139,7 +145,7 @@
                     </div>
                 </section>
             </div>
-            <!-- // Standard 동영상 좌측형, 텍스트 중앙 정렬 -->
+            <!-- // Standard 이미지 좌측형, 텍스트 중앙 정렬 -->
 
 
             <!-- Standard 이미지 우측형, 텍스트 좌측 정렬 -->
@@ -232,17 +238,19 @@
             <!-- // Standard 이미지 우측형, 텍스트 중앙 정렬 -->
 
 
-            <!-- Large 동영상 좌측형, 텍스트 좌측 정렬 -->
+            <!-- Large 이미지 좌측형, 텍스트 좌측 정렬 -->
             <div class="component-wrap">
                 @@include('./components/common-note.html')
                 <section class="component KRC0013 align-left large">
                     <div class="visual-wrap image-align-left">
+                        <!-- 이미지 : 동영상 타입인 경우 -->
                         <div class="visual-area video youtube-box">
                             <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title08">
                                 <img data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="" class="lazyload">
                                 <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                             </a>
                         </div>
+                        <!-- // 이미지 : 동영상 타입인 경우 -->
                         <div class="desc font-regular align-left">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
                     </div>
                     <div class="text-wrap side-right-text">
@@ -263,17 +271,19 @@
             <!-- // Large 동영상 좌측형, 텍스트 좌측 정렬 -->
 
 
-            <!-- Large 동영상 좌측형, 텍스트 우측 정렬 -->
+            <!-- Large 이미지 좌측형, 텍스트 우측 정렬 -->
             <div class="component-wrap">
                 @@include('./components/common-note.html')
                 <section class="component KRC0013 align-right large">
                     <div class="visual-wrap image-align-left">
+                        <!-- 이미지 : 동영상 타입인 경우 -->
                         <div class="visual-area video youtube-box">
                             <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title09">
                                 <img data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="" class="lazyload">
                                 <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                             </a>
                         </div>
+                        <!-- // 이미지 : 동영상 타입인 경우 -->
                         <div class="desc font-regular align-right">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
                     </div>
                     <div class="text-wrap side-right-text">
@@ -291,20 +301,22 @@
                     </div>
                 </section>
             </div>
-            <!-- // Large 동영상 좌측형, 텍스트 우측 정렬 -->
+            <!-- // Large 이미지 좌측형, 텍스트 우측 정렬 -->
 
 
-            <!-- Large 동영상 좌측형, 텍스트 중앙 정렬 -->
+            <!-- Large 이미지 좌측형, 텍스트 중앙 정렬 -->
             <div class="component-wrap">
                 @@include('./components/common-note.html')
                 <section class="component KRC0013 align-center large">
                     <div class="visual-wrap image-align-left">
+                        <!-- 이미지 : 동영상 타입인 경우 -->
                         <div class="visual-area video youtube-box">
                             <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title10">
                                 <img data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="" class="lazyload">
                                 <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                             </a>
                         </div>
+                        <!-- // 이미지 : 동영상 타입인 경우 -->
                         <div class="desc font-regular align-center">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
                     </div>
                     <div class="text-wrap side-right-text">
@@ -322,7 +334,7 @@
                     </div>
                 </section>
             </div>
-            <!-- // Large 동영상 좌측형, 텍스트 중앙 정렬 -->
+            <!-- // Large 이미지 좌측형, 텍스트 중앙 정렬 -->
 
 
             <!-- Large 이미지 우측형, 텍스트 좌측 정렬 -->
