@@ -14,10 +14,12 @@
     }
     <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
     <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
+    <script src="/lg5-common/js/libs/jquery.event.move.min.js"></script>
+    <script src="/lg5-common/js/libs/jquery.twentytwenty.min.js"></script>
     <script src="/lg5-common/js/vcui.min.js"></script>
     <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
     <script src="/lg5-common/js/lg.common.min.js"></script>
-    @@if (context.componentID) {
+    @@if (context.isJScompile && context.componentID) {
         <script src="/lg5-common/js/components/@@componentID.min.js"></script>
     }
     @@if (context.pageJS) {

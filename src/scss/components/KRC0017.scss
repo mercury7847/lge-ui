@@ -113,6 +113,12 @@
                 margin:0 12px; 
                 vertical-align:top;
             }
+            @include mobile {
+                .item {
+                    width:calc((100% - 24px) / 2);
+                    margin:0 6px;
+                }
+            }
         }
         @for $i from 2 through 6 {
             &.item#{$i} {
@@ -120,6 +126,12 @@
                     max-width:(194px + 24px) * $i;
                     @if $i == 6 {
                         margin:0 -12px;
+                    }
+                }
+                @include mobile {
+                    .items {
+                        max-width:inherit;
+                        margin:0 -6px;
                     }
                 }
             }

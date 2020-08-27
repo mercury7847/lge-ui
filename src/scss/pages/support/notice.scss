@@ -15,37 +15,9 @@
     @include mobile {
         .search-box,
         .ui_tab-notice {
-            padding: 0 24px;
         }
         .search-box {
             margin-top: 84px;
-        }
-        .ui_tab-notice {
-            margin-top: 32px;
-            .tabs {
-                > li {
-                    margin-left: 20px;
-                    &:first-child {
-                        margin-left: 0;
-                    }
-                }
-            }
-        }
-    }
-}
-.ui_tab {
-    &-notice {
-        .tabs {
-            > li {
-                > a {
-                    font-size: 14px;
-                    color: #616161;
-                    padding-bottom: 4px;
-                }
-                &.on {
-                    border-bottom: 2px solid #111;
-                }
-            }
         }
     }
 }
@@ -53,64 +25,9 @@
 .notice-read {
     padding-top: 60px;
     background-color: #fff;
-    &-title {
-        font-size: 28px;
-        font-weight: bold;
-        line-height: 1.29;
-        letter-spacing: -0.5px;
-        color: #111111;
-    }
     &-content {
-        margin-top: 56px;
         font-size: 16px;
         color: #111;
         line-height: 1.75;
-    }
-    .date {
-        &-box {
-            margin-top: 16px;
-            display: flex;
-            align-items: center;
-        }
-        &-label,
-        &-time {
-            font-size: 14px;
-        }
-        &-label {
-            color: #616161;
-            margin-right: 16px;
-        }
-        &-time {
-            color: #111111;
-        }
-    }
-    .sns-box {
-        margin-top: 80px;
-    }
-    .notice-category {
-        margin-bottom: 8px;
-    }
-    @include mobile {
-        &-title {
-            font-size: 24px;
-            line-height: 1.5;
-        }
-        &-content {
-            margin-top: 32px;
-        }
-        .date {
-            &-box {
-                margin-top: 14px;
-            }
-            &-label {
-                margin-right: 12px;
-            }
-        }
-        .sns-box {
-            margin-top: 32px;
-        }
-        .notice-category {
-            margin-bottom: 4px;
-        }
     }
 }

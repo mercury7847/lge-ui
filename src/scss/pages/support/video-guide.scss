@@ -1,4 +1,70 @@
 @charset "UTF-8";
 
 @import "../../support-common";
+@import "../../components-app";
 
+.tabs-contents {
+    .results-stat {
+        border-top: 1px solid #ddd;
+    }
+    @at-root .pc-only & {
+        float: left;
+        width: calc(50% - 12px);
+        margin-left: 24px;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+    @include mobile {
+        margin-top: 16px;
+    }
+}
+
+.query-reset {
+    font-size: 14px;
+    line-height: 1.43;
+    font-weight: bold;
+    color: #111111;
+    margin-bottom: 16px;
+    @include mobile {
+        padding-left: 24px;
+    }
+}
+
+.icon-queryReset {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+}
+.video {
+    &-box {
+        @include grid-row;
+        [class^="part"] {
+            @include grid-col(left,6);
+        }
+        .part1 {
+            iframe {
+                width: 100%;
+                height: 322px;
+            }
+        }
+        .ui_scrollview {
+            height: 322px;
+            .ui_content {
+                padding: 24px;
+                font-size: 14px;
+                line-height: 1.43;
+                color: #616161;
+            }
+        }
+    }
+}
+
+.related-content {
+    margin-top: 112px;
+}
+
+.cs-content-inner {
+    padding-top: 84px;
+}
