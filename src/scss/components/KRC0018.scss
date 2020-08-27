@@ -19,69 +19,75 @@
         background:#fff;
     }
 
-    // common
-    .inner {
-        position:relative;
-        max-width:1600px;
-        margin:0 auto;
-        .visual-wrap {
-            a {
-                display:block;
+    // class, max-width(inner), max-width(img), max-width(text), padding-bottom(text area), bottom, min-width(text area), block(standard only)
+    $full:      (full, 1600px, 100%, 1284px, 96px, 0, 630px);
+    $wide:      (wide, 1284px, 1066px, 100%, 86px, 0, 630px);
+    $standard:  (standard, 1066px, 740px, 100%, 132px, 0, 424px, block);
+    $high:      (high, 1066px, 630px, 100%, 0, 70px, 630px);
+
+    @each $class, $size, $imgW, $textW, $pb, $bottom, $minW, $block in $full, $wide, $standard, $high {
+        &.#{$class} {
+            .inner {
                 position:relative;
-                img {
-                    width:100%;
-                    height:auto;
-                    vertical-align:top;
+                margin:0 auto;
+                max-width:#{$size};
+                .visual-wrap {
+                    max-width:$imgW;
+                    a {
+                        display:block;
+                        position:relative;
+                        img {
+                            width:100%;
+                            height:auto;
+                            vertical-align:top;
+                        }
+                    }
                 }
-            }
-        }
-        .text-box-area {
-            position:relative;
-            max-width:1284px;
-            margin:0 auto;
-            .text-wrap {
-                position:absolute;
-                background:#fff;
-            }
-            .title * {
-                color:#111;
-                font-size:20px;
-                line-height:30px;
-                font-weight:700;
-            }
-            .text {
-                margin-top:16px;
-                color:#111;
-                font-size:16px;
-                line-height:24px;
-            }
-            .btn-type-box, .btn-type-text {
-                margin-top:40px;
-                font-size:0;
-                span {
-                    display:inline-block;
-                    vertical-align:top;
-                    margin-left:24px;
-                    &:first-child {
-                        margin-left:0;
+                .text-box-area {
+                    position:relative;
+                    max-width:$textW;
+                    height:0;
+                    margin:0 auto;
+                    padding-bottom:$pb;
+                    .text-wrap {
+                        position:absolute;
+                        right:0; 
+                        bottom:$bottom;
+                        width:$minW;
+                        padding:56px 32px;
+                        background:#fff;
+                    }
+                    .title * {
+                        color:#111;
+                        font-size:20px;
+                        line-height:30px;
+                        font-weight:700;
+                    }
+                    .text {
+                        margin-top:16px;
+                        color:#111;
+                        font-size:16px;
+                        line-height:24px;
+                    }
+                    .btn-type-box, .btn-type-text {
+                        margin-top:28px;
+                        font-size:0;
+                        span {
+                            @if $block {
+                                display:$block;
+                            } @else {
+                                display:inline-block;
+                                vertical-align:top;
+                            }
+                            margin-top:12px;
+                            margin-right:24px;
+                            &:last-child {
+                                margin-left:0;
+                            }
+                        }
                     }
                 }
             }
         }
     }
-
-    // full
-    &.full {
-        .visual-wrap {
-            padding-bottom:96px;
-        }
-        .text-box-area .text-wrap {
-            position:absolute;
-            right:0;
-            bottom:0;
-            min-width:630px;
-            padding:56px 32px; 
-        }
-    }
-    
 }
