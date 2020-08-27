@@ -53,8 +53,6 @@
                     margin:0 auto;
                     padding-bottom:$pb;
                     .text-wrap {
-                        position:absolute;
-                        bottom:$bottom;
                         width:$minW;
                         padding:56px 32px;
                         background:#fff;
@@ -63,9 +61,6 @@
                         height:auto;
                         padding-bottom:0;
                         .text-wrap {
-                            position:relative;
-                            right:auto;
-                            bottom:auto;
                             width:auto;
                             margin-top:$mt;
                             padding:56px 12px;
@@ -124,13 +119,40 @@
                         } @else if $key == right {
                             margin-right:auto;
                         }
+                        @include mobile {
+                            @if $class == full {
+                                margin:auto;
+                            } @else if $class == wide {
+                                @if $key == left {
+                                    margin-left:24px;
+                                } @else if $key == right {
+                                    margin-right:24px;
+                                }
+                            } @else if $class == standard {
+                                @if $key == left {
+                                    margin-left:24px;
+                                } @else if $key == right {
+                                    margin-right:24px;
+                                }
+                            } @else if $class == high {
+                                @if $key == left {
+                                    margin-left:48px;
+                                } @else if $key == right {
+                                    margin-right:48px;
+                                }
+                            }
+                        }
                     }
                     .text-box-area {
                         .text-wrap {
-                            @if $key == left {
-                                left:0;
-                            } @else if $key == right {
-                                right:0;
+                            @media screen and (min-width:768px) {
+                                position:absolute;
+                                bottom:$bottom;
+                                @if $key == left {
+                                    left:0;
+                                } @else if $key == right {
+                                    right:0;
+                                }
                             }
                             @include mobile {
                                 @if $class == full {
