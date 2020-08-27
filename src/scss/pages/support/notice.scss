@@ -15,37 +15,9 @@
     @include mobile {
         .search-box,
         .ui_tab-notice {
-            padding: 0 24px;
         }
         .search-box {
             margin-top: 84px;
-        }
-        .ui_tab-notice {
-            margin-top: 32px;
-            .tabs {
-                > li {
-                    margin-left: 20px;
-                    &:first-child {
-                        margin-left: 0;
-                    }
-                }
-            }
-        }
-    }
-}
-.ui_tab {
-    &-notice {
-        .tabs {
-            > li {
-                > a {
-                    font-size: 14px;
-                    color: #616161;
-                    padding-bottom: 4px;
-                }
-                &.on {
-                    border-bottom: 2px solid #111;
-                }
-            }
         }
     }
 }

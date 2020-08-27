@@ -18,6 +18,9 @@ legend {
 textarea {
     font-size:14px;
 }
+.search-box {
+    padding: 0 24px;
+}
 
 // 상단 타이틀
 .page-visual {
@@ -185,9 +188,30 @@ textarea {
             }
         }
     }
+}
 
+.dummy {
+    background-color: rgba(255, 70, 70, 0.2);
+    font-size: 28.5px;
+    font-weight: bold;
+    line-height: 1.37;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.pc-only {
+    display: block;
     @include mobile {
         display: none;
+    }
+}
+.mo-only {
+    display: none;
+    @include mobile {
+        display: block;
     }
 }
 
@@ -214,6 +238,7 @@ textarea {
     font-size: 14px;
     line-height: 1.43;
     color: #616161;
+    padding-top: 12px;
     &.align-right {
         text-align: right;
     }
@@ -269,6 +294,9 @@ textarea {
     background-color: #f1f3f7;
     padding: 6px 8px;
     display: inline-block;
+    &-wrap {
+        @include textEllipsis;
+    }
     &-A {
         font-size: 14px;
         line-height: 1.43;
@@ -278,7 +306,6 @@ textarea {
         font-size: 14px;
         line-height: 1.43;
         color: #aaa;
-        @include textEllipsis;
     }
 }
 
@@ -330,8 +357,6 @@ textarea {
             padding-left: 50px;
         }
         li {
-            border-top: none;
-            border-bottom: 1px solid #ddd;
             &::after {
                 border:none;
                 width: 30px;
@@ -530,5 +555,35 @@ textarea {
         position: absolute;
         left: 0;
         top: 0.375em;
+    }
+}
+
+.ui_tab {
+    &-notice {
+        .tabs {
+            > li {
+                > a {
+                    font-size: 14px;
+                    color: #616161;
+                    padding-bottom: 4px;
+                }
+                &.on {
+                    border-bottom: 2px solid #111;
+                }
+            }
+        }
+    }
+    @include mobile {
+        &-notice {
+            padding: 0 24px;
+            .tabs {
+                > li {
+                    margin-left: 20px;
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
     }
 }
