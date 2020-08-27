@@ -32,6 +32,7 @@ textarea {
         top:126px;
         width:100%;
         max-width:1364px;
+        margin:0 auto;
         padding:0 40px;
         @include mobile {
             top:92px;
@@ -66,7 +67,7 @@ textarea {
         }
     }
     &-image {
-        height:280px;
+        height:280px; // 임시 사이즈
         @include mobile {
             height:200px;
         }
