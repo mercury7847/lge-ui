@@ -26,7 +26,8 @@ var res = {
 			"KRC0018" : ["/html/components/KRC0018.html","","진행중"],
 			"KRP0013" : ["/html/components/KRP0013.html","","검수완료"],
 			"KRP0017" : ["/html/components/KRP0017.html","","진행중"],
-			"KRC0019" : ["/html/components/KRC0019.html","","진행중"]
+			"KRC0019" : ["/html/components/KRC0019.html","","진행중"],
+			"KRC0020" : ["/html/components/KRC0020.html","","진행중"]
 		},
 		"Page" : {
 			"페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],

@@ -4,14 +4,19 @@
 @import "../../components-app";
 
 .tabs-contents {
-    float: left;
-    width: calc(50% - 12px);
-    margin-left: 24px;
-    &:first-child {
-        margin-left: 0;
-    }
     .results-stat {
-        margin-top: 12px;
+        border-top: 1px solid #ddd;
+    }
+    @at-root .pc-only & {
+        float: left;
+        width: calc(50% - 12px);
+        margin-left: 24px;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+    @include mobile {
+        margin-top: 16px;
     }
 }
 
@@ -21,6 +26,9 @@
     font-weight: bold;
     color: #111111;
     margin-bottom: 16px;
+    @include mobile {
+        padding-left: 24px;
+    }
 }
 
 .icon-queryReset {
@@ -51,4 +59,12 @@
             }
         }
     }
+}
+
+.related-content {
+    margin-top: 112px;
+}
+
+.cs-content-inner {
+    padding-top: 84px;
 }
