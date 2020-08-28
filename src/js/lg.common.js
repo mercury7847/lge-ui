@@ -82,6 +82,6 @@ var lgkorUI = {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+$(window).load(function(){
     lgkorUI.init();
-});
+})
