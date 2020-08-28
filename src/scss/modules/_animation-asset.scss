@@ -5,6 +5,26 @@
 .animation-box {
 	position:relative;
 
+	.play-animaion-btn {
+		position:absolute;
+		top:20px;
+		right:20px;
+		z-index:9;
+		text-indent:-9999px;
+		width:36px;
+		height:36px;
+		white-space:nowrap;
+		overflow:hidden;
+		&.acc-btn {
+			background:url('/lg5-common/images/btn-AD-on.svg');
+			background-size:36px 36px;
+		}
+		&.ani-btn {
+			background:url('/lg5-common/images/btn-AD-off.svg');
+			background-size:36px 36px;
+		}
+	}
+
 	.animation-area {
 		position: absolute;
 		top: 0;
