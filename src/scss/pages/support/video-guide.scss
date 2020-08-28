@@ -3,22 +3,55 @@
 @import "../../support-common";
 @import "../../components-app";
 
-.tabs-contents {
-    .results-stat {
-        border-top: 1px solid #ddd;
+
+.tabs-wrap {
+    @include pc {
+        display:none;
     }
-    @at-root .pc-only & {
+    .tabs {
+        > li {
+            > a {
+                font-size:14px;
+                font-weight:400;
+            }
+            &.on > a {
+                font-weight:700;
+            }
+        }
+    }
+}
+
+.tabs-contents {
+    @include pc {
+        display:block !important;
         float: left;
-        width: calc(50% - 12px);
-        margin-left: 24px;
+        @include calc('width', 50%, 12px);
+        margin-left:24px;
         &:first-child {
-            margin-left: 0;
+            margin-left:0;
         }
     }
     @include mobile {
         margin-top: 16px;
     }
 }
+
+.ui_tab {
+    @include mobile {
+        &-notice {
+            padding: 0 24px;
+            .tabs {
+                > li {
+                    margin-left:16px;
+                    &:first-child {
+                        margin-left:0;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 .query-reset {
     font-size: 14px;
@@ -68,9 +101,12 @@
 .cs-content-inner {
     padding-top: 84px;
 }
-
-.viedo-guide-wrap {
-    .ui_tab-notice {
-        margin-top: 68px;
+.category-tit {
+    @include mobile {
+        display:none;
     }
+}
+
+.pagination {
+    margin-top:40px;
 }

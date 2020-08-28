@@ -5,7 +5,8 @@
             "support/video-guide"
         ],
         "pageJS": [
-            "support-common"
+            "support-common",
+            "support/videoGuide"
         ]
     })
 <body>
@@ -32,16 +33,15 @@
 
                     <div class="cs-content-inner type-B">
                         <div class="video-guide-list-wrap">
-
-                            <div class="mo-only">
-                                <div class="query-reset"><em class="color-1">냉장고</em> 검색결과 입니다. <button type="button" class="icon-queryReset"><span class="blind">검색어 초기화</span></button></div>
-
-                                <div class="tabs-wrap ui_tab ui_tab-notice">
-                                    <ul class="tabs">
-                                        <li class="on"><a href="#tab1">인기 동영상 가이드<em class="blind">선택됨</em></a></li>
-                                        <li><a href="#tab2">최신 동영상 가이드</a></li>
-                                    </ul>
-                                </div>
+                            <div class="query-reset"><em class="color-1">냉장고</em> 검색결과 입니다. <button type="button" class="icon-queryReset"><span class="blind">검색어 초기화</span></button></div>
+                            
+                            <div class="tabs-wrap ui_tab ui_tab-notice">
+                                <ul class="tabs">
+                                    <li class="on"><a href="#tab1">인기 동영상 가이드<em class="blind">선택됨</em></a></li>
+                                    <li><a href="#tab2">최신 동영상 가이드</a></li>
+                                </ul>
+                            </div>
+                            <div class="clearFix">
                                 <div id="tab1" class="tabs-contents">
                                     <div class="section">
                                         <h3 class="category-tit">인기 동영상 가이드</h3>
@@ -93,21 +93,19 @@
                                             </li>
                                         </ul>
                                         <p class="results-stat align-right">검색결과 <em class="color-1">240</em>건</p>
-                                    </div>
-                                    <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
-                                        <template id="paginationTemplate">
-                                            <li><button type="button" value=""></button></li>
-                                        </template>
-                                        <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
-                                        <ul>
-                                            <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                            <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
-                                            <li><button type="button" value="3" aria-label="Page 3">3</button></li>
-                                            <li><button type="button" value="4" aria-label="Page 4">4</button></li>
-                                            <li><button type="button" value="5" aria-label="Page 5">5</button></li>
-                                            <li><button type="button" value="6" aria-label="Page 6">6</button></li>
-                                        </ul>
-                                        <button type="button" value="3" class="next" aria-label="Next page">Next</button>
+                                        <div class="pagination">
+                                            <a href="#" class="prev disabled"><span class="blind">이전 페이지 보기</span></a>
+                                            <span class="page_num">
+                                                <strong><span class="blind">현재 페이지</span>1</strong>
+                                                <a href="#" title="2페이지 보기">2</a>
+                                                <a href="#" title="3페이지 보기">3</a>
+                                                <a href="#" title="4페이지 보기">4</a>
+                                                <a href="#" title="4페이지 보기">5</a>
+                                                <span class="dot">...</span>
+                                                <a href="#" title="28페이지 보기">28</a>
+                                            </span>
+                                            <a href="#" class="next"><span class="blind">다음 페이지 보기</span></a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div id="tab2" class="tabs-contents">
@@ -161,167 +159,22 @@
                                             </li>
                                         </ul>
                                         <p class="results-stat align-right">검색결과 <em class="color-1">240</em>건</p>
-                                    </div>
-                                    <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
-                                        <template id="paginationTemplate">
-                                            <li><button type="button" value=""></button></li>
-                                        </template>
-                                        <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
-                                        <ul>
-                                            <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                            <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
-                                            <li><button type="button" value="3" aria-label="Page 3">3</button></li>
-                                            <li><button type="button" value="4" aria-label="Page 4">4</button></li>
-                                            <li><button type="button" value="5" aria-label="Page 5">5</button></li>
-                                            <li><button type="button" value="6" aria-label="Page 6">6</button></li>
-                                        </ul>
-                                        <button type="button" value="3" class="next" aria-label="Next page">Next</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pc-only">
-                                <div class="query-reset"><em class="color-1">냉장고</em> 검색결과 입니다. <button type="button" class="icon-queryReset"><span class="blind">검색어 초기화</span></button></div>
-                                <div class="clearFix">
-                                    <div id="tab1" class="tabs-contents">
-                                        <div class="section">
-                                            <h3 class="category-tit">인기 동영상 가이드</h3>
-                                            <ul class="notice-list type-A">
-                                                <li>
-                                                    <a href="">
-                                                        <p class="notice-category-wrap">
-                                                            <span class="notice-category-A">전원</span>
-                                                            <span class="notice-category-B">냉장/냉동고>양문형, 냉장/냉동고>일반형</span>
-                                                        </p>
-                                                        <h4 class="notice-list-title-A">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <p class="notice-category-wrap">
-                                                            <span class="notice-category-A">기능</span>
-                                                            <span class="notice-category-B">냉장/냉동고>양문형, 냉장/냉동고>일반형</span>
-                                                        </p>
-                                                        <h4 class="notice-list-title-A">냉장고 Wi Fi 제품등록 방법이 궁금하세요</h4>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <p class="notice-category-wrap">
-                                                            <span class="notice-category-A">전원</span>
-                                                            <span class="notice-category-B">냉장/냉동고>양문형, 냉장/냉동고>일반형</span>
-                                                        </p>
-                                                        <h4 class="notice-list-title-A">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <p class="notice-category-wrap">
-                                                            <span class="notice-category-A">기능</span>
-                                                            <span class="notice-category-B">냉장/냉동고>양문형, 냉장/냉동고>일반형</span>
-                                                        </p>
-                                                        <h4 class="notice-list-title-A">냉장고 Wi Fi 제품등록 방법이 궁금하세요</h4>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <p class="notice-category-wrap">
-                                                            <span class="notice-category-A">기능</span>
-                                                            <span class="notice-category-B">냉장/냉동고>양문형, 냉장/냉동고>일반형</span>
-                                                        </p>
-                                                        <h4 class="notice-list-title-A">냉장고 Wi Fi 제품등록 방법이 궁금하세요</h4>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <p class="results-stat align-right">검색결과 <em class="color-1">240</em>건</p>
-                                        </div>
-                                        <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
-                                            <template id="paginationTemplate">
-                                                <li><button type="button" value=""></button></li>
-                                            </template>
-                                            <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
-                                            <ul>
-                                                <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                                <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
-                                                <li><button type="button" value="3" aria-label="Page 3">3</button></li>
-                                                <li><button type="button" value="4" aria-label="Page 4">4</button></li>
-                                                <li><button type="button" value="5" aria-label="Page 5">5</button></li>
-                                                <li><button type="button" value="6" aria-label="Page 6">6</button></li>
-                                            </ul>
-                                            <button type="button" value="3" class="next" aria-label="Next page">Next</button>
-                                        </div>
-                                    </div>
-                                    <div id="tab2" class="tabs-contents">
-                                        <div class="section">
-                                            <h3 class="category-tit">최신 동영상 가이드</h3>
-                                            <ul class="notice-list type-A">
-                                                <li>
-                                                    <a href="">
-                                                        <p class="notice-category-wrap">
-                                                            <span class="notice-category-A">전원</span>
-                                                            <span class="notice-category-B">냉장/냉동고>양문형, 냉장/냉동고>일반형</span>
-                                                        </p>
-                                                        <h4 class="notice-list-title-A">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <p class="notice-category-wrap">
-                                                            <span class="notice-category-A">기능</span>
-                                                            <span class="notice-category-B">냉장/냉동고>양문형, 냉장/냉동고>일반형</span>
-                                                        </p>
-                                                        <h4 class="notice-list-title-A">냉장고 Wi Fi 제품등록 방법이 궁금하세요</h4>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <p class="notice-category-wrap">
-                                                            <span class="notice-category-A">전원</span>
-                                                            <span class="notice-category-B">냉장/냉동고>양문형, 냉장/냉동고>일반형</span>
-                                                        </p>
-                                                        <h4 class="notice-list-title-A">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <p class="notice-category-wrap">
-                                                            <span class="notice-category-A">기능</span>
-                                                            <span class="notice-category-B">냉장/냉동고>양문형, 냉장/냉동고>일반형</span>
-                                                        </p>
-                                                        <h4 class="notice-list-title-A">냉장고 Wi Fi 제품등록 방법이 궁금하세요</h4>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <p class="notice-category-wrap">
-                                                            <span class="notice-category-A">기능</span>
-                                                            <span class="notice-category-B">냉장/냉동고>양문형, 냉장/냉동고>일반형</span>
-                                                        </p>
-                                                        <h4 class="notice-list-title-A">냉장고 Wi Fi 제품등록 방법이 궁금하세요</h4>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <p class="results-stat align-right">검색결과 <em class="color-1">240</em>건</p>
-                                        </div>
-                                        <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
-                                            <template id="paginationTemplate">
-                                                <li><button type="button" value=""></button></li>
-                                            </template>
-                                            <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
-                                            <ul>
-                                                <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                                <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
-                                                <li><button type="button" value="3" aria-label="Page 3">3</button></li>
-                                                <li><button type="button" value="4" aria-label="Page 4">4</button></li>
-                                                <li><button type="button" value="5" aria-label="Page 5">5</button></li>
-                                                <li><button type="button" value="6" aria-label="Page 6">6</button></li>
-                                            </ul>
-                                            <button type="button" value="3" class="next" aria-label="Next page">Next</button>
+                                        <div class="pagination">
+                                            <a href="#" class="prev disabled"><span class="blind">이전 페이지 보기</span></a>
+                                            <span class="page_num">
+                                                <strong><span class="blind">현재 페이지</span>1</strong>
+                                                <a href="#" title="2페이지 보기">2</a>
+                                                <a href="#" title="3페이지 보기">3</a>
+                                                <a href="#" title="4페이지 보기">4</a>
+                                                <a href="#" title="5페이지 보기">5</a>
+                                                <span class="dot">...</span>
+                                                <a href="#" title="7페이지 보기">30</a>
+                                            </span>
+                                            <a href="#" class="next"><span class="blind">다음 페이지 보기</span></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
 

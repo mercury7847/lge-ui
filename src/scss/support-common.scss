@@ -101,93 +101,16 @@ textarea {
     }
 }
 
-// Pagination
 .pagination {
-    display: block;
-    overflow: hidden;
-    position: relative;
-    margin: 30px auto 0;
-    padding: 0 34px;
-    max-width: 260px;
-    height: 32px;
-    text-align: center;
-
-    .prev,
-    .next {
-        position: absolute;
-        bottom: 2px;
-        width: 26px;
-        height: 26px;
-        border: 1px solid #979797;
-        border-radius: 50%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-indent: 200%;
-        cursor: pointer;
-
-        &:after {
-            position: absolute;
-            @include calc(top, 50%, 4px);
-            width: 8px;
-            height: 8px;
-            border: 2px solid #bbb;
-            border-width: 2px 2px 0 0;
-            content: '';
-        }
-
-        &:disabled {
-            display: none;
-        }
+    .prev.disabled, .next.disabled {
+        display:none;
     }
-
-    .prev {
-        left: 0;
-
-        &:after {
-            left: 9px;
-            transform: rotate(-135deg);
-        }
-    }
-
-    .next {
-        right: 0;
-
-        &:after {
-            left: 7px;
-            transform: rotate(45deg);
-        }
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 1px;
-
-        a,
-        button {
-            //border: 1px solid $line-input;
-            width: 32px;
-            height: 32px;
-            font-size: 16px;
-            line-height: 24px;
-            color: #aaa;
-            cursor: pointer;
-
-            &.active {
-                position: relative;
-                font-weight: 700;
-                color: #111;
-
-                &:after {
-                    position: absolute;
-                    bottom: 0;
-                    @include calc(left, 50%, 5px);
-                    width: 10px;
-                    height: 2px;
-                    background-color: #111;
-                    content: '';
-                }
-            }
-        }
+    .dot {
+        display:inline-block;
+        width:32px;
+        font-size:16px;
+        line-height:24px;
+        color:#aaa;
     }
 }
 
@@ -376,6 +299,8 @@ textarea {
             padding-left: 50px;
         }
         li {
+            border-top:none;
+            border-bottom:1px solid #ddd;
             &::after {
                 border:none;
                 width: 30px;

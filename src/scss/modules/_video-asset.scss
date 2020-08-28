@@ -52,6 +52,31 @@
 					margin: -24px 0 0 -24px;
 				}
 			}
+			&.acc-video-content {
+				position:absolute;
+				top:20px;
+				right:20px;
+				width:36px;
+				height:36px;
+				overflow:hidden;
+				z-index:9;
+				text-indent:2000%;
+				white-space:nowrap;
+				&:before {
+					content:'';
+					display:inline-block;
+					position:absolute;
+					top:0;
+					right:0;
+					left:inherit;
+					width:36px;
+					height:36px;
+					margin:0;
+					background:url('/lg5-common/images/btn-AD-on.svg');
+					background-size:36px 36px;
+					border-radius:inherit;
+				}
+			}
 		}
 	}
 
