@@ -2,6 +2,7 @@ var lgkorUI = {
     template: $('<div class="template"></div>'),
     templateList: null,
     init: function(){
+        console.log("lgkorUI.init();")
         vcui.require([
             'common/header', 
             'common/footer', 
@@ -95,5 +96,6 @@ var lgkorUI = {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    console.log("DOMContentLoaded !!!")
     lgkorUI.init();
 });

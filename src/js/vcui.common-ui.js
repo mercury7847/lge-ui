@@ -7037,3 +7037,4 @@ define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
 
     return LazyLoader;
 });
+console.log("vcui-common-ui.js end")

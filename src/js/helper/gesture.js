@@ -23,6 +23,7 @@ define('helper/gesture', ['jquery', 'vcui'], function ($, core) {
             if (self.supr(el, options) === false) {
                 return;
             }
+            console.log("Helper~~")
 
             var direction = self.options.direction;
 
