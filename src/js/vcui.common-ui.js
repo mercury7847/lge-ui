@@ -6720,6 +6720,7 @@ define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) {
             if (self.supr(el, options) === false) {
                 return;
             }
+            console.log("vcui-common-ui.js tab!!!!!!!")
 
             var $hide = self.$('.blind:first');
             self.$srText = $hide.length ? $hide : $('<em class="blind">' + self.options.selectedText + '</em>');
@@ -6942,6 +6943,7 @@ define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) {
 
     return Tab;
 });
+console.log("vcui-common-ui.js tab")
 /*!
  * @module vcui.ui.LazyLoader
  * @license MIT License
