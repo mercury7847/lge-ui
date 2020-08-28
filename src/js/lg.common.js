@@ -15,10 +15,11 @@ var lgkorUI = {
                             'ui/calendar', 
                             'ui/textControl', 
                             'ui/scrollview', 
-                            'ui/lazyLoader',
+                            'ui/lazyLoader'
+                            /*,
                             "ui/videoBox",
                             "ui/youtubeBox",
-                            "ui/modal"
+                            "ui/modal"*/
                         ], function () {
             $('body').vcLazyLoader();
             $('header').vcHeader(); //헤더 모듈 적용...
@@ -33,9 +34,20 @@ var lgkorUI = {
             $('body').find('.ui_calendar').vcCalendar();
             $('body').find('.ui_textcontrol').vcTextControl();
             $('body').find('.ui_scrollview').vcScrollview();
-            $('body').find('.animation-box').vcVideoBox();
-            $('body').find('.youtube-box').vcYoutubeBox();
+            //$('body').find('.animation-box').vcVideoBox();
+            //$('body').find('.youtube-box').vcYoutubeBox();
+            console.log("succeass!!!!!!!!");
         });
+
+        vcui.require([
+            "ui/videoBox",
+            "ui/youtubeBox",
+            "ui/modal"
+        ], function () {
+$('body').find('.animation-box').vcVideoBox();
+$('body').find('.youtube-box').vcYoutubeBox();
+console.log("succeass???????????");
+});
     },
 
     //template html 리스트 파일 로드...
