@@ -1393,8 +1393,8 @@ if (!window.JSON) {
                     args = defQueue.shift();
                     console.log(args[0])
                     if (args[0] === null) {
-                        return onError(makeError('mismatch', 'Mismatched anonymous define() module: ' +
-                            args[args.length - 1]));
+                        //return onError(makeError('mismatch', 'Mismatched anonymous define() module: ' + args[args.length - 1]));
+                        console.log(args)
                     } else {
                         //args are id, deps, factory. Should be normalized by the
                         //define() function.
