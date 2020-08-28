@@ -2377,9 +2377,13 @@ if (!window.JSON) {
     define('jquery', function () {
         return window.$;
     });
-    define('vcui', function () {
-        return core;
-    });
+    try{
+        define('vcui', function () {
+            return core;
+        });
+    } catch(err){
+        console.log(err)
+    }
     // end require js config /////////////////////////////////////
 
     var root = global.document.documentElement,
