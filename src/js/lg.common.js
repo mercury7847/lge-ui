@@ -82,10 +82,6 @@ var lgkorUI = {
     }
 }
 
-$(window).load(function(){
-    console.log("lg.common start1");
-    setTimeout(function(){
-        console.log("lg.common start2");
-        lgkorUI.init();
-    }, 3000)
-})
+document.addEventListener('DOMContentLoaded', function () {
+    lgkorUI.init();
+});
