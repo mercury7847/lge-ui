@@ -16,9 +16,10 @@
                     <ul class="unit-list align-right large-align-left">
                         <li class="unit-box">
                             <!-- image : video 타입인 경우 -->
-                            <div class="visual-area video youtube-box">
+                            <div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box 추가 - 동영상 모달 클래스 -->
+                                <a href="#none" class="see-video acc-video-content" title="레이어 팝업 열림" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="large_image_large_or_2_small_image-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>
                                 <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
-                                    <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class="lazyload" />
+                                    <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class="lazyload" aria-hidden="true" />
                                     <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                                 </a>
                             </div>
@@ -38,12 +39,14 @@
                                 <li class="unit-box">
                                     <div class="visual-area image">
                                         <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class=" lazyload" />
+                                        <p class="hidden">graphic description : </p>
                                     </div>
                                     <p class="body-copy font-regular-italic">Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지 않도록 합니다.Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지... 않도록 합니다.</p>
                                 </li>
                                 <li class="unit-box">
                                     <div class="visual-area image">
                                         <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class=" lazyload" />
+                                        <p class="hidden">graphic description : </p>
                                     </div>
                                     <p class="body-copy">Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지 않도록 합니다.Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지... 않도록 합니다.</p>
                                 </li>
@@ -58,18 +61,19 @@
             <!-- Small 이미지 좌측, Large 이미지 우측형, 텍스트 중앙 정렬 -->
             <div class="component-wrap">
                 @@include('./components/common-note.html')
-                <div class="component KRC0016">
-                    <ul class="unit-list align-center large-align-right">
-                        <li class="unit-box">
+                <section class="component KRC0016">
+                    <div class="unit-list align-center large-align-right">
+                        <div class="unit-box">
                             <!-- image : video 타입인 경우 -->
                             <div class="visual-area video youtube-box">
-                                <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title03">
-                                    <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class="lazyload" />
+                                <a href="#none" class="see-video acc-video-content" title="레이어 팝업 열림" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="large_image_large_or_2_small_image-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>
+                                <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+                                    <img data-src="/lg5-common/images/components/sample-3-2.gif" alt="" class="lazyload" aria-hidden="true"/>
                                     <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                                 </a>
                             </div>
                             <!-- // image : video 타입인 경우 -->
-                            <p class="body-copy font-regular">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
+                            <p class="body-copy font-regular ">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
                             <div class="bottom-btn">
                                 <span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
                                 <span><a href="#none" class="btn btn-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
@@ -78,44 +82,44 @@
                                 <span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
                                 <span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
                             </div>
-                        </li>
-                        <li class="unit-small-wrap">
-                            <ul>
-                                <li class="unit-box">
-                                    <div class="visual-area image">
-                                        <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class=" lazyload" />
-                                    </div>
-                                    <p class="body-copy font-regular-italic">Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지 않도록 합니다.Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지... 않도록 합니다.</p>
-                                </li>
-                                <li class="unit-box">
-                                    <div class="visual-area image">
-                                        <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class=" lazyload" />
-                                    </div>
-                                    <p class="body-copy">Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지 않도록 합니다.Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지... 않도록 합니다.</p>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                        </div>
+                        <ul class="unit-small-wrap">
+                            <li class="unit-box">
+                                <div class="visual-area image">
+                                    <img data-src="/lg5-common/images/components/sample-3-2.gif" alt="" class=" lazyload"/>
+                                    <p class="hidden">graphic description : </p>
+                                </div>
+                                <p class="body-copy font-regular-italic">Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지 않도록 합니다.Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지... 않도록 합니다.</p>
+                            </li>
+                            <li class="unit-box">
+                                <div class="visual-area image">
+                                    <img data-src="/lg5-common/images/components/sample-3-2.gif" alt="" class=" lazyload"/>
+                                    <p class="hidden">graphic description : </p>
+                                </div>
+                                <p class="body-copy">Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지 않도록 합니다.Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지... 않도록 합니다.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
             </div>
             <!-- // Small 이미지 좌측, Large 이미지 우측형, 텍스트 중앙 정렬 -->
 
 
             <!-- Small 이미지 좌측, Large 이미지 우측형, 텍스트 좌측 정렬 -->
             <div class="component-wrap">
-                @@include('./components/common-note.html')
-                <div class="component KRC0016">
-                    <ul class="unit-list align-left large-align-right">
-                        <li class="unit-box">
+                <section class="component KRC0016">
+                    <div class="unit-list align-left large-align-right">
+                        <div class="unit-box">
                             <!-- image : video 타입인 경우 -->
                             <div class="visual-area video youtube-box">
-                                <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title04">
-                                    <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class="lazyload" />
+                                <a href="#none" class="see-video acc-video-content" title="레이어 팝업 열림" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="large_image_large_or_2_small_image-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>
+                                <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+                                    <img data-src="/lg5-common/images/components/sample-3-2.gif" alt="i" class="lazyload" aria-hidden="true"/>
                                     <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                                 </a>
                             </div>
                             <!-- // image : video 타입인 경우 -->
-                            <p class="body-copy font-regular">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
+                            <p class="body-copy font-regular ">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
                             <div class="bottom-btn">
                                 <span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
                                 <span><a href="#none" class="btn btn-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
@@ -124,39 +128,39 @@
                                 <span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
                                 <span><a href="#none" class="link-text bold ico-right" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
                             </div>
-                        </li>
-                        <li class="unit-small-wrap">
-                            <ul>
-                                <li class="unit-box">
-                                    <div class="visual-area image">
-                                        <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class=" lazyload" />
-                                    </div>
-                                    <p class="body-copy font-regular-italic">Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지 않도록 합니다.Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지... 않도록 합니다.</p>
-                                </li>
-                                <li class="unit-box">
-                                    <div class="visual-area image">
-                                        <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class=" lazyload" />
-                                    </div>
-                                    <p class="body-copy">Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지 않도록 합니다.Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지... 않도록 합니다.</p>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                        </div>
+                        <ul class="unit-small-wrap">
+                            <li class="unit-box">
+                                <div class="visual-area image">
+                                    <img data-src="/lg5-common/images/components/sample-3-2.gif" alt="" class=" lazyload"/>
+                                    <p class="hidden">graphic description : </p>
+                                </div>
+                                <p class="body-copy font-regular-italic">Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지 않도록 합니다.Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지... 않도록 합니다.</p>
+                            </li>
+                            <li class="unit-box">
+                                <div class="visual-area image">
+                                    <img data-src="/lg5-common/images/components/sample-3-2.gif" alt="" class=" lazyload"/>
+                                    <p class="hidden">graphic description : </p>
+                                </div>
+                                <p class="body-copy">Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지 않도록 합니다.Small sized의 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 6줄을 넘지... 않도록 합니다.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
             </div>
             <!-- // Small 이미지 좌측, Large 이미지 우측형, 텍스트 좌측 정렬 -->
 
 
             <!-- Large 이미지 양단형, 텍스트 좌측 정렬 -->
             <div class="component-wrap">
-                @@include('./components/common-note.html')
-                <div class="component KRC0016">
+                <section class="component KRC0016">
                     <ul class="unit-list align-left">
                         <li class="unit-box">
                             <!-- image : video 타입인 경우 -->
                             <div class="visual-area video youtube-box">
-                                <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title05">
-                                    <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class="lazyload" />
+                                <a href="#none" class="see-video acc-video-content" title="레이어 팝업 열림" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="large_image_large_or_2_small_image-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>
+                                <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+                                    <img data-src="/lg5-common/images/components/sample-3-2.gif" alt="" class="lazyload" aria-hidden="true"/>
                                     <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                                 </a>
                             </div>
@@ -174,10 +178,11 @@
                         <li class="unit-box">
                             <div class="visual-area image">
                                 <a href="#none" data-link-area="large_image_large_or_2_small_image-image" data-link-name="{Alt Text}">
-                                    <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class=" lazyload" />
+                                    <img data-src="/lg5-common/images/components/sample-3-2.gif" alt="" class=" lazyload"/>
                                 </a>
+                                <p class="hidden">graphic description : </p>
                             </div>
-                            <p class="body-copy font-regular">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
+                            <p class="body-copy font-regular ">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
                             <div class="bottom-btn">
                                 <span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
                                 <span><a href="#none" class="btn btn-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
@@ -188,26 +193,26 @@
                             </div>
                         </li>
                     </ul>
-                </div>
+                </section>
             </div>
             <!-- // Large 이미지 양단형, 텍스트 좌측 정렬 -->
 
 
             <!-- Large 이미지 양단형, 텍스트 중앙 정렬 -->
             <div class="component-wrap">
-                @@include('./components/common-note.html')
-                <div class="component KRC0016">
+                <section class="component KRC0016">
                     <ul class="unit-list align-center">
                         <li class="unit-box">
                             <!-- image : video 타입인 경우 -->
                             <div class="visual-area video youtube-box">
-                                <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title06">
-                                    <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class="lazyload" />
+                                <a href="#none" class="see-video acc-video-content" title="레이어 팝업 열림" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="large_image_large_or_2_small_image-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>
+                                <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+                                    <img data-src="/lg5-common/images/components/sample-3-2.gif" alt="" class="lazyload" aria-hidden="true"/>
                                     <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                                 </a>
                             </div>
                             <!-- // image : video 타입인 경우 -->
-                            <p class="body-copy font-regular">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
+                            <p class="body-copy font-regular ">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
                             <div class="bottom-btn">
                                 <span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
                                 <span><a href="#none" class="btn btn-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
@@ -220,10 +225,11 @@
                         <li class="unit-box">
                             <div class="visual-area image">
                                 <a href="#none" data-link-area="large_image_large_or_2_small_image-image" data-link-name="{Alt Text}">
-                                    <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class=" lazyload" />
+                                    <img data-src="/lg5-common/images/components/sample-3-2.gif" alt="" class=" lazyload"/>
                                 </a>
+                                <p class="hidden">graphic description : </p>
                             </div>
-                            <p class="body-copy font-regular">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
+                            <p class="body-copy font-regular ">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
                             <div class="bottom-btn">
                                 <span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
                                 <span><a href="#none" class="btn btn-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
@@ -234,26 +240,26 @@
                             </div>
                         </li>
                     </ul>
-                </div>
+                </section>
             </div>
             <!-- // Large 이미지 양단형, 텍스트 중앙 정렬 -->
 
 
             <!-- Large 이미지 양단형, 텍스트 우측 정렬 -->
             <div class="component-wrap">
-                @@include('./components/common-note.html')
-                <div class="component KRC0016">
+                <section class="component KRC0016">
                     <ul class="unit-list align-right">
                         <li class="unit-box">
                             <!-- image : video 타입인 경우 -->
                             <div class="visual-area video youtube-box">
-                                <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title07">
-                                    <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class="lazyload" />
+                                <a href="#none" class="see-video acc-video-content" title="레이어 팝업 열림" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="large_image_large_or_2_small_image-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>
+                                <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+                                    <img data-src="/lg5-common/images/components/sample-3-2.gif" alt="" class="lazyload" aria-hidden="true"/>
                                     <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                                 </a>
                             </div>
                             <!-- // image : video 타입인 경우 -->
-                            <p class="body-copy font-regular">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
+                            <p class="body-copy font-regular ">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
                             <div class="bottom-btn">
                                 <span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
                                 <span><a href="#none" class="btn btn-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
@@ -266,10 +272,11 @@
                         <li class="unit-box">
                             <div class="visual-area image">
                                 <a href="#none" data-link-area="large_image_large_or_2_small_image-image" data-link-name="{Alt Text}">
-                                    <img data-src="/lg5-common/images/dummy/sample-3-2.gif" alt="" class=" lazyload" />
+                                    <img data-src="/lg5-common/images/components/sample-3-2.gif" alt="" class=" lazyload"/>
                                 </a>
+                                <p class="hidden">graphic description : </p>
                             </div>
-                            <p class="body-copy font-regular">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
+                            <p class="body-copy font-regular ">최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합니다. 최대 Body Copy 텍스트는 본문 폰트 사이즈 16px/24px을 사용하고 PC기준 최대 출력 텍스트는 최대 4줄을 넘지 않도록 합…다.</p>
                             <div class="bottom-btn">
                                 <span><a href="#none" class="btn btn-outline-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
                                 <span><a href="#none" class="btn btn-primary" data-link-area="large_image_large_or_2_small_image-cta" data-link-name="{Link Text}">문의하기</a></span>
@@ -280,7 +287,7 @@
                             </div>
                         </li>
                     </ul>
-                </div>
+                </section>
             </div>
             <!-- // Large 이미지 양단형, 텍스트 우측 정렬 -->
             <!-- //component KRC0016 -->
