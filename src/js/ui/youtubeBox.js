@@ -1,4 +1,5 @@
 
+console.log("youtubeBox")
 define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
