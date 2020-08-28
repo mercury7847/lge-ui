@@ -159,9 +159,6 @@ textarea {
     padding:56px;
     border-radius:4px;
     background:#fff;
-    &.type-A {
-        background-color: transparent;
-    }
     @include mobile {
         padding:40px 24px;
         border-radius:0;
