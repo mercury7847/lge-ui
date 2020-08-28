@@ -4,6 +4,7 @@
  * @description LazyLoader 컴포넌트
  * @copyright VinylC UID Group
  */
+console.log("LazyLoader start!!!")
 define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
@@ -93,3 +94,5 @@ define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
 
     return LazyLoader;
 });
+
+console.log("LazyLoader!!! end")
