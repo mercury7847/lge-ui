@@ -6721,8 +6721,8 @@ define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) {
                 return;
             }
 
-            var $hide = self.$('.hide:first');
-            self.$srText = $hide.length ? $hide : $('<em class="hide">' + self.options.selectedText + '</em>');
+            var $hide = self.$('.blind:first');
+            self.$srText = $hide.length ? $hide : $('<em class="blind">' + self.options.selectedText + '</em>');
 
             var $child = self.$el.children().eq(0);
             if (!$child.is('ul')) {
@@ -6902,8 +6902,8 @@ define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) {
             }
         
 
-            if (($hide = $a.find('.hide')).length) {
-                self.$tabs.not(self.$tabs.eq(index)).find('>a .hide').text("");
+            if (($hide = $a.find('.blind')).length) {
+                self.$tabs.not(self.$tabs.eq(index)).find('>a .blind').text("");
                 $hide.text(self.options.selectedText);
             } else {
                 $a.append(self.$srText);
