@@ -97,5 +97,5 @@ var lgkorUI = {
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOMContentLoaded !!!")
-    lgkorUI.init();
+    //lgkorUI.init();
 });
