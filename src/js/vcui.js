@@ -2206,8 +2206,6 @@ if (!window.JSON) {
         define = function (name, deps, callback) {
             var node, context;
 
-            console.log(name + " / " + deps)
-
             //Allow for anonymous modules
             if (typeof name !== 'string') {
                 //Adjust args appropriately
@@ -2370,6 +2368,8 @@ if (!window.JSON) {
             }
         }
     };
+
+    console.log("requireConfig.baseUrl : " + requireConfig.baseUrl)
 
     require.config(requireConfig);
     core.require = require;
