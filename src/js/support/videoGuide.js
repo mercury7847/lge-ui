@@ -1,43 +1,55 @@
 $(window).ready(function() {
-
     var videoGuide = {
         form: document.querySelector('#form'),
+        templateID: "tmpl-video-guide",
         init: function() {
             CS.MD.setPagination($('.pagination'), {}, this.sumbitHandler);
             this.setEventListener();
+
+            lgkorUI.getTemplate(this.templateID);
         },
-        sumbitHandler: function() {
+        sumbitHandler: function(e) {
+            e && e.preventDefault();
+
+            var self = videoGuide,
+                data;
+
             $.ajax({
                 url: '/lg5-common/data-ajax/support/video-guide-list.json',        //form action
                 method: 'POST',     //post, get
                 dataType: 'json',   //json, html etc..
                 data: '',
-                beforeSend: function() {
-    
+                beforeSend: function(xhr) {
+                    // loading bar start
                 },
                 success: function(data) {
-                    var html = '';
-                    
-                    if (data.list) {
-                        data.list.each(function(item) {
-                            html += '<li><a href="'+ item.url +'">';
-                            html += '<p class="notice-category-wrap">';
-                            html += '<span class="notice-category-A">'+ item.type +'</span>';
-                            html += '<span class="notice-category-B">'+ item.category +'</span>';
-                            html += '</p>';
-                            html += '<h4 class="notice-list-title-A">'+ item.title +'</h4>';
-                            html += '</a>';
-                            html += '</li>';
+                    if (data.listModel) {
+                        $.each(data.listModel, function(index, value) {
+                            var html = '';
+                            var $section = $('#'+value.type);
+
+                            $.each(value.list, function(i, v) {
+                                var list = vcui.template($('#'+self.templateID).html(), {
+                                    type: v.type,
+                                    category: v.category,
+                                    title: v.title,
+                                    url: v.url
+                                });
+                                html += list;
+                            });
+
+                            $section.find('.notice-list').html($(html));
+                            $section.find('.results-stat em').html(value.total);
                         });
 
-                        $('.pagination').data('plugin_pagination').reset();
+                        // $('.pagination').data('plugin_pagination').reset();
                     }
                 },
-                error: function(request, status, error) {
-    
+                error: function(err){
+                    console.log(err);
                 },
                 complete: function() {
-    
+                    // loading bar end
                 }
             });
         },

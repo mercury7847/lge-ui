@@ -1,0 +1,26 @@
+<div class="pagination">
+    @@if (context.last) {
+        @@if(last === 'true') {
+            <a href="#" class="prev disabled"><span class="blind">이전 페이지 보기</span></a>
+        }
+
+        @@if(last === 'false') {
+            <a href="#" class="prev"><span class="blind">이전 페이지 보기</span></a>
+        }
+    }
+    <span class="page_num">
+        <strong><span class="blind">현재 페이지</span>1</strong>
+        @@if(context.count) {
+            @@for( var i = 2; i <= count; i++) {
+                <a href="#" title="`+i+`페이지 보기">`+i+`</a>
+            }
+        }
+        @@if (context.last) {
+            @@if(last === 'true') {
+                <span class="dot">...</span>
+                <a href="#" title="7페이지 보기">30</a>
+            }
+        }
+    </span>
+    <a href="#" class="next"><span class="blind">다음 페이지 보기</span></a>
+</div>
