@@ -1393,8 +1393,8 @@ if (!window.JSON) {
                     args = defQueue.shift();
                     console.log(args[0])
                     if (args[0] === null) {
-                        return onError(makeError('mismatch', 'Mismatched anonymous define() module: ' +
-                            args[args.length - 1]));
+                        //return onError(makeError('mismatch', 'Mismatched anonymous define() module: ' + args[args.length - 1]));
+                        console.log(args)
                     } else {
                         //args are id, deps, factory. Should be normalized by the
                         //define() function.
@@ -2377,9 +2377,13 @@ if (!window.JSON) {
     define('jquery', function () {
         return window.$;
     });
-    define('vcui', function () {
-        return core;
-    });
+    try{
+        define('vcui', function () {
+            return core;
+        });
+    } catch(err){
+        console.log(err)
+    }
     // end require js config /////////////////////////////////////
 
     var root = global.document.documentElement,
