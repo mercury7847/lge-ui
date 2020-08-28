@@ -2371,7 +2371,7 @@ if (!window.JSON) {
     };
 
     console.log("requireConfig.baseUrl : " + requireConfig.baseUrl)
-    requireConfig.baseUrl = "https://wwwdev50.lge.co.kr/lg5-common/js";
+    
     require.config(requireConfig);
     core.require = require;
     define('jquery', function () {
