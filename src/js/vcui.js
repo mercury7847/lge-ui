@@ -1391,6 +1391,7 @@ if (!window.JSON) {
                 //Make sure any remaining defQueue items get properly processed.
                 while (defQueue.length) {
                     args = defQueue.shift();
+                    console.log(args[0])
                     if (args[0] === null) {
                         return onError(makeError('mismatch', 'Mismatched anonymous define() module: ' +
                             args[args.length - 1]));
