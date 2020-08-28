@@ -38,7 +38,7 @@
                             <a href="#modal1" data-control="modal">요금 및 보증기간 안내</a>
                         </span>
                         <span class="guide-link">
-                            <a href="#modal2" data-control="modal">유상 서비스 적용 안내</a>
+                            <a href="#paidServiceModal" data-control="modal">유상 서비스 적용 안내</a>
                         </span>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                                                 </div>
                                                 <div class="field-group">
                                                     <div class="select-wrap">
-                                                        <select class="ui_selectbox" id="symptom">
+                                                        <select class="ui_selectbox" id="symptom" data-url="/lg5-common/data-ajax/support/detailed_symptoms.json" data-target="#detailedSymptom">
                                                             <option selected disabled>증상을 선택하세요.</option>
                                                             <option value="">부품/소모품</option>
                                                             <option value="">CD/DVD</option>
@@ -353,6 +353,8 @@
                     </div>
                 </div>
             </div>
+
+            @@include('./support/modal/KR50CS911.html')
         </div>
              
         @@include('./common/footer.html')

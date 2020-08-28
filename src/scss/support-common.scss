@@ -644,7 +644,7 @@ textarea {
 .list-sort {
     font-size: 14px;
     margin-bottom: 20px;
-    @include clearfix
+    @include clearfix;
     p {
         float: left;
         #totCnt {

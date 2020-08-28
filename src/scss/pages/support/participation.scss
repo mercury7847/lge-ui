@@ -116,7 +116,6 @@
         .btn-group {
             padding:48px 0 0;
             text-align:right;
-            font-size:0;
             @include mobile {
                 padding:56px 24px 0;
             }
@@ -160,6 +159,7 @@
 .field-wrap {
     .input-wrap, .select-wrap {
         width:100%;
+        max-width:none;
     }
     .row {
         margin:0 -4px;
