@@ -31,9 +31,9 @@
     // $block : button layout 'block'
     // $mt : text-wrap mobile minus margin-top
     $full:      (full,      1600px, 100%,   100%,   1284px, 96px,   150px,  0,      630px,  null,   -35px);
-    $wide:      (wide,      1284px, 1066px, 70%,  100%,   86px,   150px,  0,      630px,  null,   -40px);
-    $standard:  (standard,  1066px, 740px,  62%,  100%,   132px,  180px,  0,      424px,  block,  -35px);
-    $high:      (high,      1066px, 630px,  52%,  100%,   0,      150px,  70px,   630px,  null,   -80px);
+    $wide:      (wide,      1284px, 1066px, 70%,    100%,   86px,   150px,  0,      630px,  null,   -40px);
+    $standard:  (standard,  1066px, 740px,  62%,    100%,   132px,  180px,  0,      424px,  block,  -35px);
+    $high:      (high,      1066px, 630px,  52%,    100%,   0,      150px,  70px,   630px,  null,   -80px);
     @each $class, $size, $imgW, $imgWF, $textW, $pb, $pbF, $bottom, $minW, $block, $mt in $full, $wide, $standard, $high {
         // 사이즈별 스타일
         &.#{$class} {
