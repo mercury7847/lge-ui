@@ -5,7 +5,7 @@
 
 
 .tabs-wrap {
-    @include pc {
+    @media screen and (min-width: $tablet-l-width) {
         display:none;
     }
     .tabs {
@@ -22,15 +22,15 @@
 }
 
 .tabs-contents {
-    @include pc {
+    @media screen and (min-width: $tablet-l-width) {
         display:block !important;
-        float: left;
+		float: left;
         @include calc('width', 50%, 12px);
         margin-left:24px;
         &:first-child {
             margin-left:0;
         }
-    }
+	}
     @include mobile {
         margin-top: 16px;
     }
@@ -102,7 +102,7 @@
     padding-top: 84px;
 }
 .category-tit {
-    @include mobile {
+    @include tablet {
         display:none;
     }
 }
