@@ -1,7 +1,6 @@
 var lgkorUI = {
     template: $('<div class="template"></div>'),
     templateList: null,
-
     init: function(){
         vcui.require([
             'common/header', 
