@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+@import "../../support-common";
+@import "../../components-app";
+
+.KR50CS631 {
+    @include mobile {
+        .ui_tab-notice {
+            margin-top: 68px;
+        }
+    }
+    .scroll-x {
+        margin-bottom: 24px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

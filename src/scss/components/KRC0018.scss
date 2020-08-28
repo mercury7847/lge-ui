@@ -19,21 +19,33 @@
         background:#fff;
     }
 
-    // class, max-width(inner), max-width(img), max-width(text), padding-bottom(text area), bottom, min-width(text area), block(standard only)
-    $full:      (full, 1600px, 100%, 1284px, 96px, 0, 630px);
-    $wide:      (wide, 1284px, 1066px, 100%, 86px, 0, 630px);
-    $standard:  (standard, 1066px, 740px, 100%, 132px, 0, 424px, block);
-    $high:      (high, 1066px, 630px, 100%, 0, 70px, 630px);
-
-    @each $class, $size, $imgW, $textW, $pb, $bottom, $minW, $block in $full, $wide, $standard, $high {
+    // $class : component size class
+    // $size : inner max-size
+    // $imgW : visual-wrap max-width
+    // $textW : text-box-area max-width
+    // $pb : text-box-area padding-bottom
+    // $bottom : text-wrap bottom position
+    // $minW :text-wrap width
+    // $block : button layout 'block'
+    // $mt : text-wrap mobile minus margin-top
+    $full:      (full,      1600px, 100%,   1284px, 96px,   0,      630px,  null,   -35px);
+    $wide:      (wide,      1284px, 1066px, 100%,   86px,   0,      630px,  null,   -40px);
+    $standard:  (standard,  1066px, 740px,  100%,   132px,  0,      424px,  block,  -35px);
+    $high:      (high,      1066px, 630px,  100%,   0,      70px,   630px,  null,   -80px);
+    @each $class, $size, $imgW, $textW, $pb, $bottom, $minW, $block, $mt in $full, $wide, $standard, $high {
+        // 사이즈별 스타일
         &.#{$class} {
             .inner {
                 position:relative;
                 margin:0 auto;
-                max-width:#{$size};
+                max-width:$size;
+                
                 .visual-wrap {
                     max-width:$imgW;
-                    a {
+                    @include mobile {
+                        max-width:100%;
+                    }
+                    a.see-video:not(.acc-video-content) {
                         display:block;
                         position:relative;
                         img {
@@ -50,12 +62,18 @@
                     margin:0 auto;
                     padding-bottom:$pb;
                     .text-wrap {
-                        position:absolute;
-                        right:0; 
-                        bottom:$bottom;
                         width:$minW;
                         padding:56px 32px;
                         background:#fff;
+                    }
+                    @include mobile {
+                        height:auto;
+                        padding-bottom:0;
+                        .text-wrap {
+                            width:auto;
+                            margin-top:$mt;
+                            padding:56px 12px;
+                        }
                     }
                     .title * {
                         color:#111;
@@ -83,6 +101,92 @@
                             margin-right:24px;
                             &:last-child {
                                 margin-left:0;
+                            }
+                        }
+
+                        @include mobile {
+                            span {
+                                display:block;
+                            }
+                            .btn {
+                                min-width:194px;
+                                padding:15px 0;
+                                font-size:16px;
+                                line-height:24px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // left, right 옵션 별 스타일
+            $pst: (left, right);
+            @each $key in $pst {
+                .inner.large-align-#{$key} {
+                    .visual-wrap {
+                        @if $key == left {
+                            margin-left:auto;
+                        } @else if $key == right {
+                            margin-right:auto;
+                        }
+                        @include mobile {
+                            @if $class == full {
+                                margin:auto;
+                            } @else if $class == wide {
+                                @if $key == left {
+                                    margin-left:24px;
+                                } @else if $key == right {
+                                    margin-right:24px;
+                                }
+                            } @else if $class == standard {
+                                @if $key == left {
+                                    margin-left:24px;
+                                } @else if $key == right {
+                                    margin-right:24px;
+                                }
+                            } @else if $class == high {
+                                @if $key == left {
+                                    margin-left:48px;
+                                } @else if $key == right {
+                                    margin-right:48px;
+                                }
+                            }
+                        }
+                    }
+                    .text-box-area {
+                        .text-wrap {
+                            @media screen and (min-width:768px) {
+                                position:absolute;
+                                bottom:$bottom;
+                                @if $key == left {
+                                    left:0;
+                                } @else if $key == right {
+                                    right:0;
+                                }
+                            }
+                            @include mobile {
+                                @if $class == full {
+                                    margin-left:24px;
+                                    margin-right:24px;
+                                } @else if $class == wide {
+                                    @if $key == left {
+                                        margin-right:24px;
+                                    } @else if $key == right {
+                                        margin-left:24px;
+                                    }
+                                } @else if $class == standard {
+                                    @if $key == left {
+                                        margin-right:48px;
+                                    } @else if $key == right {
+                                        margin-left:48px;
+                                    }
+                                } @else if $class == high {
+                                    @if $key == left {
+                                        margin-right:48px;
+                                    } @else if $key == right {
+                                        margin-left:48px;
+                                    }
+                                }
                             }
                         }
                     }
