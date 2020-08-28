@@ -45,7 +45,7 @@
                     @include mobile {
                         max-width:100%;
                     }
-                    a {
+                    a.see-video:not(.acc-video-content) {
                         display:block;
                         position:relative;
                         img {

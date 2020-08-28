@@ -105,12 +105,14 @@
     .non-carousel-box {
         .items {
             margin:0 auto;
+            margin-bottom:-60px;
             font-size:0;
             text-align:center;
             .item {
                 display:inline-block;
                 width:194px;
-                margin:0 12px; 
+                margin:0 12px;
+                padding-bottom:60px; 
                 vertical-align:top;
             }
             @include mobile {
@@ -125,13 +127,13 @@
                 .items {
                     max-width:(194px + 24px) * $i;
                     @if $i == 6 {
-                        margin:0 -12px;
+                        margin:0 -12px -60px;
                     }
                 }
                 @include mobile {
                     .items {
                         max-width:inherit;
-                        margin:0 -6px;
+                        margin:0 -6px -60px;
                     }
                 }
             }
