@@ -506,6 +506,10 @@ textarea {
     li {
         position: relative;
         padding-left: 0.750em;
+        margin-top: 12px;
+        &:first-child {
+            margin-top: 0;
+        }
         &::before {
             content: '';
             display: block;
@@ -577,6 +581,7 @@ textarea {
 }
 
 [class^="h-tit"] {
+    word-break: keep-all;
     &[class*="-3"] {
         font-size: 24px;
         font-weight: bold;
@@ -691,6 +696,9 @@ textarea {
     padding: 24px;
     border: solid 1px #dddddd;
     margin-bottom: 24px;
+    @include mobile {
+        padding: 16px;
+    }
 }
 
 .paragraph {
@@ -704,4 +712,73 @@ textarea {
     &-3 {
         margin-top: 8px;
     }
+}
+
+.list {
+    li {
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    > li {
+        margin-top: 16px;
+        margin-left: 48px;
+        text-indent: -1.5em;
+        > ul:not(.bullet-list) {
+            > li {
+                margin-left: 24px;
+                text-indent: -24px;
+                > ul {
+                    > li {
+                        text-indent: 0;
+                    }
+                }
+            }
+            &.bullet-list {
+                li {
+                    text-indent: 0;
+                }
+            }
+        }
+        > ul {
+            margin-top: 10px;
+             li {
+                margin-top: 12px;
+            }
+        }
+        > .bullet-list {
+            text-indent: 0;
+        }
+    }
+    @include mobile {
+        > li {
+            margin-left: 16px;
+            text-indent: 0;
+            > ul:not(.bullet-list) {
+                > li {
+                    margin-left: 40px;
+                    text-indent: -24px;
+                }
+            }
+            > .bullet-list {
+                > li {
+                    margin-left: 16px;
+                    text-indent: 0;
+                }
+            }
+        }
+    }
+}
+
+// text-align
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center;
 }
