@@ -11,6 +11,11 @@
     // padding-left: 30px;
     padding: 0 30px;
 
+    @include mobile {
+        max-width: 100%;
+        padding: 0 24px;
+    }
+
     .btn {
         display: inline-block;
         min-width:194px;
@@ -81,6 +86,7 @@
     }
 
     .tab-wrap {
+        position: relative;
         margin-bottom: 18px;
         .tab-inner {
             overflow: hidden;
@@ -110,7 +116,45 @@
         }
 
         .tab-scroll-controller {
-            display: none;
+            .scroll-left,
+            .scroll-right {
+                position: absolute;
+                top: 0;
+                @include calc-mobile-size(width,56px);
+                @include calc-mobile-size(height,56px);
+                border-radius: 50%;
+                background: #fff;
+                box-shadow: 0 4px 15px 0 rgba(187, 187, 187, 1);
+                font-size: 0;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 8px;
+                    height: 8px;
+                    margin-top: -4px;
+                    border-right: 2px solid #111;
+                    border-bottom: 2px solid #111;
+                }
+                &:disabled {
+                    display: none;
+                }
+                &.scroll-left {
+                    left: -16px;
+                    &::before {
+                        margin-left:-2px;
+                        transform:rotate(135deg);
+                    }
+                }
+                &.scroll-right {
+                    right: -16px;
+                    &::before {
+                        margin-left:-5px;
+                        transform:rotate(-45deg);
+                    }
+                }
+            }
         }
     }
 
@@ -158,8 +202,7 @@
         @include textClipClamp(3);
 
         @include mobile {
-            min-height: auto;
-            -webkit-line-clamp: none;
+            height: auto;
         }
     }
 
@@ -265,16 +308,12 @@
                 }
             }
         }
-
-        @include mobile {
-            display: none;
-        }
     }
 
     .expander {
         display: none;
         @include mobile {
-            display: block;
+            display: none;
             margin-top: 32px;
             text-align: center;
             .btn {

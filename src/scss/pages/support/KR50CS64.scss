@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+@import "../../support-common";
+@import "../../components-app";
+
+.KR50CS64 {
+    @include mobile {
+        // margin-top: 28px;
+    }
+}

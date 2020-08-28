@@ -21,6 +21,9 @@ textarea {
 .search-box {
     padding: 0 24px;
 }
+* {
+    color: #111
+}
 
 // 상단 타이틀
 .page-visual {
@@ -101,93 +104,17 @@ textarea {
     }
 }
 
-// Pagination
 .pagination {
-    display: block;
-    overflow: hidden;
-    position: relative;
-    margin: 30px auto 0;
-    padding: 0 34px;
-    max-width: 260px;
-    height: 32px;
-    text-align: center;
-
-    .prev,
-    .next {
-        position: absolute;
-        bottom: 2px;
-        width: 26px;
-        height: 26px;
-        border: 1px solid #979797;
-        border-radius: 50%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-indent: 200%;
-        cursor: pointer;
-
-        &:after {
-            position: absolute;
-            @include calc(top, 50%, 4px);
-            width: 8px;
-            height: 8px;
-            border: 2px solid #bbb;
-            border-width: 2px 2px 0 0;
-            content: '';
-        }
-
-        &:disabled {
-            display: none;
-        }
+    margin-top: 40px;
+    .prev.disabled, .next.disabled {
+        display:none;
     }
-
-    .prev {
-        left: 0;
-
-        &:after {
-            left: 9px;
-            transform: rotate(-135deg);
-        }
-    }
-
-    .next {
-        right: 0;
-
-        &:after {
-            left: 7px;
-            transform: rotate(45deg);
-        }
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 1px;
-
-        a,
-        button {
-            //border: 1px solid $line-input;
-            width: 32px;
-            height: 32px;
-            font-size: 16px;
-            line-height: 24px;
-            color: #aaa;
-            cursor: pointer;
-
-            &.active {
-                position: relative;
-                font-weight: 700;
-                color: #111;
-
-                &:after {
-                    position: absolute;
-                    bottom: 0;
-                    @include calc(left, 50%, 5px);
-                    width: 10px;
-                    height: 2px;
-                    background-color: #111;
-                    content: '';
-                }
-            }
-        }
+    .dot {
+        display:inline-block;
+        width:32px;
+        font-size:16px;
+        line-height:24px;
+        color:#aaa;
     }
 }
 
@@ -232,6 +159,9 @@ textarea {
     padding:56px;
     border-radius:4px;
     background:#fff;
+    &.type-A {
+        background-color: transparent;
+    }
     @include mobile {
         padding:40px 24px;
         border-radius:0;
@@ -376,6 +306,8 @@ textarea {
             padding-left: 50px;
         }
         li {
+            border-top:none;
+            border-bottom:1px solid #ddd;
             &::after {
                 border:none;
                 width: 30px;
@@ -581,6 +513,11 @@ textarea {
     li {
         position: relative;
         padding-left: 0.750em;
+        margin-top: 12px;
+        line-height: 1.38;
+        &:first-child {
+            margin-top: 0;
+        }
         &::before {
             content: '';
             display: block;
@@ -652,6 +589,7 @@ textarea {
 }
 
 [class^="h-tit"] {
+    word-break: keep-all;
     &[class*="-3"] {
         font-size: 24px;
         font-weight: bold;
@@ -709,12 +647,26 @@ textarea {
     }
 }
 
+.list-sort {
+    font-size: 14px;
+    margin-bottom: 20px;
+    @include clearfix
+    p {
+        float: left;
+        #totCnt {
+            font-weight: bold;
+        }
+    }
+    .fwb {
+        float: right;
+    }
+}
 .tbl {
     border-collapse: collapse;
     border-spacing: 0;
     font-size: 16px;
     width: calc(100% - 1px);
-    min-width: 768px;
+    min-width: 700px;
     border-bottom: 2px solid #ddd;
     line-height: inherit;
     caption {
@@ -766,6 +718,9 @@ textarea {
     padding: 24px;
     border: solid 1px #dddddd;
     margin-bottom: 24px;
+    @include mobile {
+        padding: 16px;
+    }
 }
 
 .paragraph {
@@ -779,4 +734,73 @@ textarea {
     &-3 {
         margin-top: 8px;
     }
+}
+
+.list {
+    li {
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    > li {
+        margin-top: 16px;
+        margin-left: 48px;
+        text-indent: -1.5em;
+        > ul:not(.bullet-list) {
+            > li {
+                margin-left: 24px;
+                text-indent: -24px;
+                > ul {
+                    > li {
+                        text-indent: 0;
+                    }
+                }
+            }
+            &.bullet-list {
+                li {
+                    text-indent: 0;
+                }
+            }
+        }
+        > ul {
+            margin-top: 10px;
+             li {
+                margin-top: 12px;
+            }
+        }
+        > .bullet-list {
+            text-indent: 0;
+        }
+    }
+    @include mobile {
+        > li {
+            margin-left: 16px;
+            text-indent: 0;
+            > ul:not(.bullet-list) {
+                > li {
+                    margin-left: 40px;
+                    text-indent: -24px;
+                }
+            }
+            > .bullet-list {
+                > li {
+                    margin-left: 16px;
+                    text-indent: 0;
+                }
+            }
+        }
+    }
+}
+
+// text-align
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center;
 }

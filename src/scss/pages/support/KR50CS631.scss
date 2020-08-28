@@ -15,4 +15,29 @@
             margin-bottom: 0;
         }
     }
+    .sns-box {
+        position: absolute;
+        top: 56px;
+        right: 56px;
+        @include mobile {
+            top: auto;
+            bottom: 40px;
+            right: 24px;
+            // position: static;
+            // margin-top: 28px;
+        }
+    }
+    .section-area {
+        position: relative;
+        .section {
+            &:last-of-type {
+                padding-bottom: 108px;
+            }
+        }
+    }
+    .dl-list {
+        .bullet {
+            margin-left: 16px;
+        }
+    }
 }

@@ -2369,6 +2369,8 @@ if (!window.JSON) {
         }
     };
 
+    console.log("requireConfig.baseUrl : " + requireConfig.baseUrl)
+
     require.config(requireConfig);
     core.require = require;
     define('jquery', function () {

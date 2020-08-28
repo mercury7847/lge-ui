@@ -1,5 +1,8 @@
 {
     "tmpl-yt-full-modal" : {
         "url": "/lg5-common/template/modal-template.html"
+    },
+    "tmpl-video-guide" : {
+        "url": "/lg5-common/template/video-guide-template.html"
     }
 }
