@@ -32,8 +32,10 @@
                             </ul>
                         </div>
                         <div class="tab-scroll-controller">
-                            <button type="button" class="scroll-left"><span class="sr-only">이전으로</span></button>
-                            <button type="button" class="scroll-right"><span class="sr-only">다음으로</span></button>
+                            <!-- [KR수정] US 웹접근성 개선 2차 적용 -->
+                            <button type="button" class="scroll-left" aria-disabled="true"><span class="sr-only">이전으로</span></button>
+                            <button type="button" class="scroll-right" aria-disabled="false"><span class="sr-only">다음으로</span></button>
+                            <!-- // [KR수정] US 웹접근성 개선 2차 적용 -->
                         </div>
                     </div>
                     <div id="promotionl_list1" class="promo-area contents-area align-left" aria-live="polite" role="tabpanel">
@@ -51,10 +53,10 @@
                                                 <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title">*title*</p>
+                                        <h3 class="head-copy" id="title">*title*</h3>
                                         <p class="body-copy">*promotionStartDate* ~ *promotionEndDate*</p>
                                         <div class="btn-box">
-                                            <span><a href="*promotionLinkUrl*" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">자세히 보기</a></span>
+                                            <span><a href="*promotionLinkUrl*" class="btn btn-primary" role="button" data-link-area="promotion_list-promotion_list" data-link-name="*adobePromotionTitle*" aria-describedby="title">자세히 보기</a></span>
                                         </div>
                                     </li>
                                 </template>
@@ -66,10 +68,10 @@
                                                 <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title01">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <h3 class="head-copy" id="title01">LG WHISEN 사회공헌 캠페인 모두의 바람으로</h3><!-- [KR수정] US 웹접근성 개선 2차 적용 -->
                                         <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
                                         <div class="btn-box">
-                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title01">자세히 보기</a></span>
+                                            <span><a href="#noneUrl" class="btn btn-primary" role="button" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title01">자세히 보기</a></span><!-- [KR수정] US 웹접근성 개선 2차 적용 -->
                                         </div>
                                     </li>
                                     <li class="unit-box">
@@ -79,10 +81,10 @@
                                                 <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title02">LG WHISEN 사회공헌 캠페인 모두의 바람으로 LG WHISEN 사회공헌 캠페인 모두의 바람으로 LG WHISEN 사회공헌 캠페인 모두의 바람으로 LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <h3 class="head-copy" id="title02">LG WHISEN 사회공헌 캠페인 모두의 바람으로 LG WHISEN 사회공헌 캠페인 모두의 바람으로 LG WHISEN 사회공헌 캠페인 모두의 바람으로 LG WHISEN 사회공헌 캠페인 모두의 바람으로</h3>
                                         <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
                                         <div class="btn-box">
-                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title02">자세히 보기</a></span>
+                                            <span><a href="#noneUrl" class="btn btn-primary" role="button" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title02">자세히 보기</a></span>
                                         </div>
                                     </li>
                                     <li class="unit-box">
@@ -92,10 +94,10 @@
                                                 <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title03">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <h3 class="head-copy" id="title03">LG WHISEN 사회공헌 캠페인 모두의 바람으로</h3>
                                         <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
                                         <div class="btn-box">
-                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title03">자세히 보기</a></span>
+                                            <span><a href="#noneUrl" class="btn btn-primary" role="button" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title03">자세히 보기</a></span>
                                         </div>
                                     </li>
                                     <li class="unit-box">
@@ -105,10 +107,10 @@
                                                 <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title04">LG WHISEN 사회공헌 캠페인 모두의 바람으로 LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <h3 class="head-copy" id="title04">LG WHISEN 사회공헌 캠페인 모두의 바람으로 LG WHISEN 사회공헌 캠페인 모두의 바람으로</h3>
                                         <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
                                         <div class="btn-box">
-                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title04">자세히 보기</a></span>
+                                            <span><a href="#noneUrl" class="btn btn-primary" role="button" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title04">자세히 보기</a></span>
                                         </div>
                                     </li>
                                     <li class="unit-box">
@@ -118,10 +120,10 @@
                                                 <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title05">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <h3 class="head-copy" id="title05">LG WHISEN 사회공헌 캠페인 모두의 바람으로</h3>
                                         <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
                                         <div class="btn-box">
-                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title05">자세히 보기</a></span>
+                                            <span><a href="#noneUrl" class="btn btn-primary" role="button" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title05">자세히 보기</a></span>
                                         </div>
                                     </li>
                                     <li class="unit-box">
@@ -131,10 +133,10 @@
                                                 <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title06">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <h3 class="head-copy" id="title06">LG WHISEN 사회공헌 캠페인 모두의 바람으로</h3>
                                         <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
                                         <div class="btn-box">
-                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title06">자세히 보기</a></span>
+                                            <span><a href="#noneUrl" class="btn btn-primary" role="button" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title06">자세히 보기</a></span>
                                         </div>
                                     </li>
                                     <li class="unit-box">
@@ -144,10 +146,10 @@
                                                 <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title07">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <h3 class="head-copy" id="title07">LG WHISEN 사회공헌 캠페인 모두의 바람으로</h3>
                                         <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
                                         <div class="btn-box">
-                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title07">자세히 보기</a></span>
+                                            <span><a href="#noneUrl" class="btn btn-primary" role="button" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title07">자세히 보기</a></span>
                                         </div>
                                     </li>
                                     <li class="unit-box">
@@ -157,10 +159,10 @@
                                                 <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title08">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <h3 class="head-copy" id="title08">LG WHISEN 사회공헌 캠페인 모두의 바람으로</h3>
                                         <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
                                         <div class="btn-box">
-                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title08">자세히 보기</a></span>
+                                            <span><a href="#noneUrl" class="btn btn-primary" role="button" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title08">자세히 보기</a></span>
                                         </div>
                                     </li>
                                     <li class="unit-box">
@@ -170,10 +172,10 @@
                                                 <p class="hidden">graphic description : </p>
                                             </a>
                                         </div>
-                                        <p class="head-copy" id="title09">LG WHISEN 사회공헌 캠페인 모두의 바람으로</p>
+                                        <h3 class="head-copy" id="title09">LG WHISEN 사회공헌 캠페인 모두의 바람으로</h3>
                                         <p class="body-copy">2020.08.01 ~ 2020.08.31</p>
                                         <div class="btn-box">
-                                            <span><a href="#noneUrl" class="btn btn-primary" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title09">자세히 보기</a></span>
+                                            <span><a href="#noneUrl" class="btn btn-primary" role="button" data-link-area="promotion_list-promotion_list" data-link-name="{link text}" aria-describedby="title09">자세히 보기</a></span>
                                         </div>
                                     </li>
                                 </ul>
@@ -181,16 +183,16 @@
                                     <template id="paginationTemplate">
                                         <li><button type="button" value=""></button></li>
                                     </template>
-                                    <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
+                                    <button type="button" value="1" class="prev" aria-label="Previous page" aria-disabled="true">Previous</button><!-- [KR수정] US 웹접근성 개선 2차 적용 -->
                                     <ul>
                                         <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                        <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active" aria-current="page">2</button></li><!-- [KR수정] US 웹접근성 개선 2차 적용 -->
                                         <li><button type="button" value="3" aria-label="Page 3">3</button></li>
                                         <li><button type="button" value="4" aria-label="Page 4">4</button></li>
                                         <li><button type="button" value="5" aria-label="Page 5">5</button></li>
                                         <li><button type="button" value="6" aria-label="Page 6">6</button></li>
                                     </ul>
-                                    <button type="button" value="3" class="next" aria-label="Next page">Next</button>
+                                    <button type="button" value="3" class="next" aria-label="Next page" aria-disabled="false">Next</button><!-- [KR수정] US 웹접근성 개선 2차 적용 -->
                                 </div>
                                 <div class="expander">
                                     <button type="button" class="btn" value="2">더보기</button>
@@ -210,7 +212,7 @@
                                     <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
                                     <ul>
                                         <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                        <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active" aria-current="page">2</button></li>
                                         <li><button type="button" value="3" aria-label="Page 3">3</button></li>
                                         <li><button type="button" value="4" aria-label="Page 4">4</button></li>
                                         <li><button type="button" value="5" aria-label="Page 5">5</button></li>
@@ -236,7 +238,7 @@
                                     <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
                                     <ul>
                                         <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                        <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active" aria-current="page">2</button></li>
                                         <li><button type="button" value="3" aria-label="Page 3">3</button></li>
                                         <li><button type="button" value="4" aria-label="Page 4">4</button></li>
                                         <li><button type="button" value="5" aria-label="Page 5">5</button></li>
@@ -262,7 +264,7 @@
                                     <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
                                     <ul>
                                         <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                        <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active" aria-current="page">2</button></li>
                                         <li><button type="button" value="3" aria-label="Page 3">3</button></li>
                                         <li><button type="button" value="4" aria-label="Page 4">4</button></li>
                                         <li><button type="button" value="5" aria-label="Page 5">5</button></li>
@@ -288,7 +290,7 @@
                                     <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
                                     <ul>
                                         <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                        <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active" aria-current="page">2</button></li>
                                         <li><button type="button" value="3" aria-label="Page 3">3</button></li>
                                         <li><button type="button" value="4" aria-label="Page 4">4</button></li>
                                         <li><button type="button" value="5" aria-label="Page 5">5</button></li>
@@ -314,7 +316,7 @@
                                     <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
                                     <ul>
                                         <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                        <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
+                                        <li><button type="button" value="2" aria-label="Page 2" class="active" aria-current="page">2</button></li>
                                         <li><button type="button" value="3" aria-label="Page 3">3</button></li>
                                         <li><button type="button" value="4" aria-label="Page 4">4</button></li>
                                         <li><button type="button" value="5" aria-label="Page 5">5</button></li>
