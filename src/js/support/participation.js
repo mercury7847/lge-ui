@@ -1,5 +1,8 @@
-$(document).ready(function() { 
-    vcui.require(['ui/carousel', 'ui/modal'], function () {
+$(document).ready(function() {
+    CS.MD.drawOption();
+    $('[data-target]').drawOption();
+
+    vcui.require(['ui/carousel', 'ui/validation', 'ui/modal'], function () {
         $('.category-select-carousel').vcCarousel({
             slidesToShow: 4,
             slidesToScroll: 4,

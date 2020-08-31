@@ -21,9 +21,6 @@ textarea {
 .search-box {
     padding: 0 24px;
 }
-* {
-    color: #111
-}
 
 // 상단 타이틀
 .page-visual {
@@ -647,7 +644,7 @@ textarea {
 .list-sort {
     font-size: 14px;
     margin-bottom: 20px;
-    @include clearfix
+    @include clearfix;
     p {
         float: left;
         #totCnt {

@@ -3,7 +3,7 @@ $(window).ready(function() {
         form: document.querySelector('#form'),
         templateID: "tmpl-video-guide",
         init: function() {
-            CS.MD.setPagination($('.pagination'), {}, this.sumbitHandler);
+            $('.pagination').pagination({}, this.sumbitHandler);
             this.setEventListener();
 
             lgkorUI.getTemplate(this.templateID);
@@ -15,7 +15,7 @@ $(window).ready(function() {
                 data;
 
             $.ajax({
-                url: '/lg5-common/data-ajax/support/video-guide-list.json',        //form action
+                url: '/lg5-common/data-ajax/support/video_list.json',        //form action
                 method: 'POST',     //post, get
                 dataType: 'json',   //json, html etc..
                 data: '',
@@ -58,5 +58,7 @@ $(window).ready(function() {
         }
     }
 
+    CS.MD.setPagination();
+    
     videoGuide.init();
 });
