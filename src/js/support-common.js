@@ -1,20 +1,125 @@
 var CS = CS || {};
 CS.MD = CS.MD || {};
-CS.VARS = CS.VARS || {};
 CS.UI = CS.UI || {};
 
 CS.UI.elem = {};
-CS.VARS.MAXMOBILE = 767;
-CS.VARS.MAXTABLET = 1024;
+
+/*
+* 셀렉트박스 타겟
+* @option data-url
+* @option data-target
+* @option callback()
+* */
+CS.MD.drawOption = function() {
+
+    var pluginName = 'drawOption';
+
+    function Plugin(elem, opt) {
+        var _this = this;
+            element = this.element = elem;
+
+        var defaults = {};
+            
+        defaults = $.extend({}, $(element).data(), opt);
+    
+
+        function ajaxEventListener() {
+            var formData = $(element).serialize();
+
+            $.ajax({
+                url: defaults.url,
+                method: 'POST',
+                dataType: 'json',
+                data: formData,
+                beforeSend: function(xhr) {
+                    // loading bar start
+                },
+                success: function(data) {
+                    if (data) {
+                        drawEventListener(data);
+                        defaults.callback && defaults.callback(); 
+                    }
+                },
+                error: function(err){
+                    console.log(err);
+                },
+                complete: function() {
+                    // loading bar end
+                }
+            });
+        }   
+        function drawEventListener(data) {
+            var html = '';
+
+            for (var key in data) {
+                html += '<option value="'+ key +'">'+ data[key] +'</option>'
+            }
+
+            $(defaults.target).html(html);
+            $(defaults.target).vcSelectbox('update');
+        }
+        function setEventListener() {
+            $(element).on('change', ajaxEventListener);
+        }
+
+        setEventListener();
+    }
+
+    Plugin.prototype = {
+
+    };
+
+    $.fn[pluginName] = function(options) {
+        return this.each(function() {
+            if (!$.data(this, "plugin_" + pluginName)) {
+                $.data(this, "plugin_" + pluginName, new Plugin(this, options));
+            }
+        });
+    }
+}
+
+/*
+* 파일 다중 업로드
+* */
+CS.MD.uploadFile = function($target) {
+    
+    var pluginName = 'uploadFile';
+
+    function Plugin(elem) {
+        var _this = this;
+        
+        var _this = this,
+            element = this.element = elem,
+            $element = $(element);
+
+        var defaults = {
+            
+        };
+
+        defaults = $.extend({}, defaults, opt);
+    }
+
+    Plugin.prototype = {
+        
+    };
+
+    $.fn[pluginName] = function(options) {
+        return this.each(function() {
+            if (!$.data(this, "plugin_" + pluginName)) {
+                $.data(this, "plugin_" + pluginName, new Plugin(this, options));
+            }
+        });
+    }
+}
 
 /*
 * 페이징네이션
 * */
-CS.MD.setPagination = function($target, options, callback) {
+CS.MD.setPagination = function() {
 
     var pluginName = 'pagination';
 
-    function Plugin(elem, opt) {
+    function Plugin(elem, opt, callback) {
         var _this = this,
             element = this.element = elem,
             $element = $(element),
@@ -115,11 +220,13 @@ CS.MD.setPagination = function($target, options, callback) {
         },
     }
 
-    $target.each(function() {
-        if (!$.data(this, "plugin_" + pluginName)) {
-            $.data(this, "plugin_" + pluginName, new Plugin(this, options));
-        }
-    });
+    $.fn[pluginName] = function(options, callback) {
+        return this.each(function() {
+            if (!$.data(this, "plugin_" + pluginName)) {
+                $.data(this, "plugin_" + pluginName, new Plugin(this, options, callback));
+            }
+        });
+    }
 };
 
 
@@ -129,7 +236,6 @@ CS.MD.setPagination = function($target, options, callback) {
     CS.UI.elem.$html = $('html');
     CS.UI.elem.$body = $('body');
 
-    
     function commonInit(){
         
     }

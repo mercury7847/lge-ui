@@ -4,6 +4,7 @@
  * @description 달력 컴포넌트
  * @copyright VinylC UID Group
  */
+console.log("calendar")
 define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
