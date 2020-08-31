@@ -237,10 +237,12 @@ CS.MD.setPagination = function() {
     CS.UI.elem.$body = $('body');
 
     function setTableScrollbar() {
-        var $tableWrap = $(".tbl.scroll-x");
+        var $tableScroll = $(".tbl.scroll-x");
+
+        if (!$tableScroll.length) return false;
         
         function initScrollbar() {
-            $tableWrap.mCustomScrollbar({
+            $tableScroll.mCustomScrollbar({
                 axis:"x",
                 advanced:{
                     autoExpandHorizontalScroll:true
@@ -250,7 +252,7 @@ CS.MD.setPagination = function() {
         }
 
         function destroyScrollbar() {
-            $tableWrap.mCustomScrollbar('destroy');
+            $tableScroll.mCustomScrollbar('destroy');
         }
 
         CS.UI.elem.$win.on('breakpointchange', function (e, data) {
