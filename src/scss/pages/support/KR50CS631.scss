@@ -4,11 +4,6 @@
 @import "../../components-app";
 
 .KR50CS631 {
-    @include mobile {
-        .ui_tab-notice {
-            margin-top: 68px;
-        }
-    }
     .scroll-x {
         margin-bottom: 24px;
         &:last-child {
@@ -38,6 +33,15 @@
     .dl-list {
         .bullet {
             margin-left: 16px;
+        }
+    }
+    .ui_tab-notice {
+        margin-bottom: 24px;
+    }
+    @include mobile {
+        .ui_tab-notice {
+            margin-bottom: 16px;
+            margin-top: 68px;
         }
     }
 }
