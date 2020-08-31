@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+$color: (lightgray, dark, black, white);
+
+.KRC0021 {
+    padding:60px 0;
+    &.bg-lightgray {
+        background:#f4f4f4;
+    }
+    &.bg-dark {
+        background:#333;
+    }
+    &.bg-black {
+        background:#000;
+    }
+    &.bg-white {
+        background:#fff;
+    }
+
+    .component-box {
+        max-width:1284px;
+        margin:0 auto;
+        .items-group {
+            position:relative;
+            .items {
+                .item-box {
+                    @include clearfix;
+                    .visual-wrap {
+                        float:left;
+                        width:412px;
+                        .visual-area a {
+                            display:block;
+                            img {
+                                width:100%;
+                                height:auto;
+                                vertical-align:top;
+                            }
+                        }
+                    }
+                    .text-wrap {
+                        margin-left:(412px + 24px);
+                    }
+                }
+            }
+        }
+    }
+}
