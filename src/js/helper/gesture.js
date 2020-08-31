@@ -4,7 +4,6 @@
  * @description 제스처 헬퍼
  * @copyright VinylC UID Group
  */
-console.log("gesture !!")
 define('helper/gesture', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 

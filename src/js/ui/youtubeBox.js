@@ -1,5 +1,4 @@
 
-console.log("youtubeBox")
 define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
@@ -26,7 +25,7 @@ define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
 
             self.templateLoaded = false;
 
-            self.$opener = self.$el.find('a.see-video').css('display', 'block');
+            self.$opener = self.$el.find('a.see-video')
             self.$youtubeURL = self.$opener.attr("data-src");
 
             lgkorUI.getTemplate(self.options.templateID, self._completeTemplate.bind(self));
@@ -43,17 +42,22 @@ define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
         _bindModalEvent: function(){
             var self = this;
 
-            self.$opener.on('click', function(e){
-                e.preventDefault();
-                
-                if(self.templateLoaded) self._addModal();
-            })
+            self.$el.find("a.see-video").each(function(idx, item){
+                var youtube_url = $(item).attr("data-src");
+                var isAcc = $(item).hasClass('acc-video-content');
+
+                $(item).on('click', function(e){
+                    e.preventDefault();
+
+                    if(self.templateLoaded) self._addModal(youtube_url);
+                })
+            });
         },
 
-        _addModal: function(){
+        _addModal: function(youtube_url){
             var self = this;
 
-            var modal = vcui.template($('#'+self.options.templateID).html(), {youtube_url:self.$youtubeURL});
+            var modal = vcui.template($('#'+self.options.templateID).html(), {youtube_url:youtube_url});
             self.$modal = $(modal).get(0);
             $(self.$modal).find(".close-video").on('click', function(e){
                 e.preventDefault();
