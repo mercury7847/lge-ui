@@ -85,6 +85,7 @@ textarea {
 }
 .cs-content {
     background:#f4f4f4;
+    color: #111;
     &-inner {
         width:100%;
         margin:0 auto;
@@ -644,7 +645,7 @@ textarea {
 .list-sort {
     font-size: 14px;
     margin-bottom: 20px;
-    @include clearfix
+    @include clearfix;
     p {
         float: left;
         #totCnt {
@@ -704,8 +705,28 @@ textarea {
 }
 
 .scroll-x {
-    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
+    .mCSB_scrollTools {
+        &.mCSB_scrollTools_horizontal {
+            .mCSB_dragger {
+                .mCSB_dragger_bar {
+                    height: 2px;
+                    border-radius: 2px;
+                    background-color: #111;
+                }
+            }
+            .mCSB_draggerRail {
+                background-color: #ddd;
+            }
+        }
+    }
+}
+
+.scroll-content {
+    overflow: auto;
+    position: relative;
+    max-width: 100%;
 }
 
 .note-box {

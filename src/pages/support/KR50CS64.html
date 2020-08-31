@@ -2,7 +2,11 @@
 <html lang="ko">
     @@include('./common/head.html', {
         "pageCSS": [
-            "support/KR50CS64"
+            "support/KR50CS64",
+            "support/mCustomScrollbar"
+        ],
+        "pageJS": [
+            "support/mCustomScrollbar"
         ]
     })
 <body>
@@ -53,7 +57,7 @@
                                     <div class="fwb">단위 : 원</div>
                                 </div>
 
-                                <div class="scroll-x">
+                                <div class="scroll-content scroll-x">
                                     <table class="tbl type-A">
                                         <caption>가격안내</caption>
                                         <colgroup>
@@ -176,5 +180,13 @@
              
         @@include('./common/footer.html')
     </div>      
+    <script>
+        $(window).ready(function() {
+            $(".scroll-x").mCustomScrollbar({
+                axis:"x",
+                advanced:{autoExpandHorizontalScroll:true}
+            });
+        });
+    </script>
 </body>
 </html> 
