@@ -4,7 +4,12 @@
 
 .notice-wrap {
     .search-box {
-        margin-top: 0;
+        width:100%;
+        max-width:560px;
+        margin:0 auto;
+        @include mobile {
+            padding:0 24px;
+        }
     }
     .ui_tab-notice {
         margin-top: 48px;
@@ -29,5 +34,24 @@
         font-size: 16px;
         color: #111;
         line-height: 1.75;
+    }
+}
+
+
+.input-wrap {
+    &.search {
+        input {
+            border:none;
+        }
+        .cell {
+            vertical-align:top;
+            border:none;
+            background:#fff;
+        }
+        .btn-search {
+            width:24px;
+            height:24px;
+            @include icon-search;
+        }
     }
 }
