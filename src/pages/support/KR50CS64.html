@@ -153,19 +153,10 @@
                                     </table>
                                 </div>
 
-                                <div class="pagination">
-                                    <a href="#" class="prev"><span class="blind">이전 페이지 보기</span></a>
-                                    <span class="page_num">
-                                        <strong><span class="blind">현재 페이지</span>1</strong>
-                                        <a href="#" title="2페이지 보기">2</a>
-                                        <a href="#" title="3페이지 보기">3</a>
-                                        <a href="#" title="4페이지 보기">4</a>
-                                        <a href="#" title="5페이지 보기">5</a>
-                                        <a href="#" title="6페이지 보기">6</a>
-                                        <a href="#" title="7페이지 보기">7</a>
-                                    </span>
-                                    <a href="#" class="next"><span class="blind">다음 페이지 보기</span></a>
-                                </div>
+                                @@include('./common/support/pagination.html', {
+                                    'count': 5,
+                                    'last': 'false'
+                                })
                             </section>
                         </div>
                     </div>
