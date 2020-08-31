@@ -1,4 +1,6 @@
 @mixin icon-search () {
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='19' viewBox='0 0 20 19'%3e%3cg fill='none' fill-rule='evenodd'%3e%3cpath d='M0 0H28V28H0z' transform='translate(-4 -5)'/%3e%3cg stroke='%23000' stroke-width='1.8' transform='translate(-4 -5) translate(4 5)'%3e%3cellipse cx='7.2' cy='6.882' rx='6.3' ry='5.982'/%3e%3cpath stroke-linecap='round' d='M12.322 11.778L18.431 17.618'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e");
     background-size: 20px 19px;
+    background-repeat:no-repeat;
+    background-position:center;
 }

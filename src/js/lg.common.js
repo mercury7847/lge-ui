@@ -2,7 +2,6 @@ var lgkorUI = {
     template: $('<div class="template"></div>'),
     templateList: null,
     init: function(){
-        console.log("lgkorUI.init();")
         vcui.require([
             'common/header', 
             'common/footer', 
@@ -19,35 +18,21 @@ var lgkorUI = {
             "ui/youtubeBox",
             "ui/modal",
         ], function (header, footer, tab, accordion, carousel, dropdown, selectbox, calendar, textControl, scollview, lazyLoader, videoBox, youtubeBox, modal) {
-            console.log("loaded: ",lazyLoader);
             $('body').vcLazyLoader();
-            console.log("loaded: ", header);
             $('header').vcHeader(); //헤더 모듈 적용...
-            console.log("loaded: ", footer);
             $('footer').vcFooter(); //푸터모듈 적용...
 
             //공통 UI 모듈 적용...
-            console.log("loaded: ", tab);
             $('body').find('.ui_tab').vcTab();
-            console.log("loaded: ", accordion);
             $('body').find('.ui_accordion').vcAccordion();
-            console.log("loaded: ", carousel);
             $('body').find('.ui_carousel').vcCarousel();
-            console.log("loaded: ", dropdown);
             $('body').find('.ui_dropdown').vcDropdown();
-            console.log("loaded: ", selectbox);
             $('body').find('.ui_selectbox').vcSelectbox();
-            console.log("loaded: ", calendar);
             $('body').find('.ui_calendar').vcCalendar();
-            console.log("loaded: ", textControl);
             $('body').find('.ui_textcontrol').vcTextControl();
-            console.log("loaded: ", scollview);
             $('body').find('.ui_scrollview').vcScrollview();
-            console.log("loaded: ", videoBox);
             $('body').find('.animation-box').vcVideoBox();
-            console.log("loaded: ", youtubeBox);
             $('body').find('.youtube-box').vcYoutubeBox();
-            console.log("loaded: ", modal);
         });
     },
 
@@ -96,6 +81,5 @@ var lgkorUI = {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    console.log("DOMContentLoaded !!!")
     lgkorUI.init();
 });

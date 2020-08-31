@@ -1391,10 +1391,9 @@ if (!window.JSON) {
                 //Make sure any remaining defQueue items get properly processed.
                 while (defQueue.length) {
                     args = defQueue.shift();
-                    console.log(args[0])
                     if (args[0] === null) {
-                        //return onError(makeError('mismatch', 'Mismatched anonymous define() module: ' + args[args.length - 1]));
-                        console.log(args)
+                        return onError(makeError('mismatch', 'Mismatched anonymous define() module: ' +
+                            args[args.length - 1]));
                     } else {
                         //args are id, deps, factory. Should be normalized by the
                         //define() function.
@@ -2370,20 +2369,14 @@ if (!window.JSON) {
         }
     };
 
-    console.log("requireConfig.baseUrl : " + requireConfig.baseUrl)
-    requireConfig.baseUrl = "https://wwwdev50.lge.co.kr/lg5-common/js";
     require.config(requireConfig);
     core.require = require;
     define('jquery', function () {
         return window.$;
     });
-    try{
-        define('vcui', function () {
-            return core;
-        });
-    } catch(err){
-        console.log(err)
-    }
+    define('vcui', function () {
+        return core;
+    });
     // end require js config /////////////////////////////////////
 
     var root = global.document.documentElement,

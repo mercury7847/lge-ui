@@ -5,6 +5,19 @@
 @import "utilities/mixins";
 @import "modules/icons/index";
 
+// 임시
+.dummy {
+    background-color: rgba(255, 70, 70, 0.2);
+    font-size: 28.5px;
+    font-weight: bold;
+    line-height: 1.37;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 // common
 legend {
     position: absolute;
@@ -15,14 +28,20 @@ legend {
     overflow: hidden;
     color: transparent;
 }
-textarea {
-    font-size:14px;
+.pc-only {
+    display: block;
+    @include mobile {
+        display: none;
+    }
 }
-.search-box {
-    padding: 0 24px;
+.mo-only {
+    display: none;
+    @include mobile {
+        display: block;
+    }
 }
 
-// 상단 타이틀
+// page visual
 .page-visual {
     position:relative;
     &-heading {
@@ -83,8 +102,11 @@ textarea {
         }
     }
 }
+
+// layout
 .cs-content {
     background:#f4f4f4;
+    color: #111;
     &-inner {
         width:100%;
         margin:0 auto;
@@ -100,57 +122,6 @@ textarea {
         }
     }
 }
-
-.pagination {
-    margin-top: 40px;
-    .prev.disabled, .next.disabled {
-        display:none;
-    }
-    .dot {
-        display:inline-block;
-        width:32px;
-        font-size:16px;
-        line-height:24px;
-        color:#aaa;
-    }
-}
-
-.dummy {
-    background-color: rgba(255, 70, 70, 0.2);
-    font-size: 28.5px;
-    font-weight: bold;
-    line-height: 1.37;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.pc-only {
-    display: block;
-    @include mobile {
-        display: none;
-    }
-}
-.mo-only {
-    display: none;
-    @include mobile {
-        display: block;
-    }
-}
-
-.mt12 {
-    margin-top: 12px !important;
-}
-.mt16 {
-    margin-top: 16px !important;
-}
-
-.mb12 {
-    margin-bottom: 12px !important;
-}
-
 .section {
     width:100%;
     padding:56px;
@@ -166,6 +137,21 @@ textarea {
         +.section {
             margin-top: 27px;
         }
+    }
+}
+
+// pagination - 전체 공통에서 추가
+.pagination {
+    margin-top: 40px;
+    .prev.disabled, .next.disabled {
+        display:none;
+    }
+    .dot {
+        display:inline-block;
+        width:32px;
+        font-size:16px;
+        line-height:24px;
+        color:#aaa;
     }
 }
 
@@ -578,10 +564,6 @@ textarea {
     }
 }
 
-.tabs-contents {
-    margin-top: 24px;
-}
-
 [class^="h-tit"] {
     word-break: keep-all;
     &[class*="-3"] {
@@ -704,8 +686,22 @@ textarea {
 }
 
 .scroll-x {
-    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
+    .mCSB_scrollTools {
+        &.mCSB_scrollTools_horizontal {
+            .mCSB_dragger {
+                .mCSB_dragger_bar {
+                    height: 2px;
+                    border-radius: 2px;
+                    background-color: #111;
+                }
+            }
+            .mCSB_draggerRail {
+                background-color: #ddd;
+            }
+        }
+    }
 }
 
 .note-box {
@@ -727,6 +723,9 @@ textarea {
     }
     &-3 {
         margin-top: 8px;
+    }
+    &-4 {
+        margin-top: 16px;
     }
 }
 
