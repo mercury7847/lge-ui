@@ -155,17 +155,6 @@ legend {
     }
 }
 
-.mt12 {
-    margin-top: 12px !important;
-}
-.mt16 {
-    margin-top: 16px !important;
-}
-
-.mb12 {
-    margin-bottom: 12px !important;
-}
-
 .color-1 {
     color: #a50034;
 }
@@ -719,12 +708,6 @@ legend {
     }
 }
 
-.scroll-content {
-    overflow: auto;
-    position: relative;
-    max-width: 100%;
-}
-
 .note-box {
     padding: 24px;
     border: solid 1px #dddddd;
@@ -744,6 +727,9 @@ legend {
     }
     &-3 {
         margin-top: 8px;
+    }
+    &-4 {
+        margin-top: 16px;
     }
 }
 
