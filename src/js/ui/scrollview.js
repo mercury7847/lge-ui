@@ -4,7 +4,6 @@
  * @description 커스텀스크롤 컴포넌트
  * @copyright VinylC UID Group
  */
-console.log("scrollview")
 define('ui/scrollview', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 

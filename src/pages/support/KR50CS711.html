@@ -24,13 +24,18 @@
                 <div class="cs-content">
                     <div class="cs-content-inner type-A">
                         <div class="notice-wrap">
+
                             <div class="search-box">
-                                <span class="input-wrap block search type-A">
-                                    <input type="text" placeholder="검색어를 입력해주세요.">
-                                    <button type="submit" class="search-btn">
-                                        <span class="blind">검색</span>
-                                    </button>
-                                </span>
+                                <div class="input-wrap search">
+                                    <div class="box">   
+                                        <input type="text" placeholder="검색어를 입력해주세요.">
+                                        <div class="cell">
+                                            <button type="submit" class="btn-search">
+                                                <span class="blind">검색</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="tabs-wrap ui_tab ui_tab-notice">
@@ -82,21 +87,10 @@
                                             </a>
                                         </li>
                                     </ul>
-                                    <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
-                                        <template id="paginationTemplate">
-                                            <li><button type="button" value=""></button></li>
-                                        </template>
-                                        <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
-                                        <ul>
-                                            <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                            <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
-                                            <li><button type="button" value="3" aria-label="Page 3">3</button></li>
-                                            <li><button type="button" value="4" aria-label="Page 4">4</button></li>
-                                            <li><button type="button" value="5" aria-label="Page 5">5</button></li>
-                                            <li><button type="button" value="6" aria-label="Page 6">6</button></li>
-                                        </ul>
-                                        <button type="button" value="3" class="next" aria-label="Next page">Next</button>
-                                    </div>
+                                    @@include('./common/support/pagination.html', {
+                                        'count': 5,
+                                        'last': 'false'
+                                    })
                                 </div>
                                 <div id="tab2">
                                     <ul class="notice-list">
@@ -125,21 +119,10 @@
                                             </a>
                                         </li>
                                     </ul>
-                                    <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
-                                        <template id="paginationTemplate">
-                                            <li><button type="button" value=""></button></li>
-                                        </template>
-                                        <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
-                                        <ul>
-                                            <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                            <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
-                                            <li><button type="button" value="3" aria-label="Page 3">3</button></li>
-                                            <li><button type="button" value="4" aria-label="Page 4">4</button></li>
-                                            <li><button type="button" value="5" aria-label="Page 5">5</button></li>
-                                            <li><button type="button" value="6" aria-label="Page 6">6</button></li>
-                                        </ul>
-                                        <button type="button" value="3" class="next" aria-label="Next page">Next</button>
-                                    </div>
+                                    @@include('./common/support/pagination.html', {
+                                        'count': 5,
+                                        'last': 'false'
+                                    })
                                 </div>
                                 <div id="tab3">
                                     <ul class="notice-list">
@@ -168,21 +151,10 @@
                                             </a>
                                         </li>
                                     </ul>
-                                    <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
-                                        <template id="paginationTemplate">
-                                            <li><button type="button" value=""></button></li>
-                                        </template>
-                                        <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
-                                        <ul>
-                                            <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                            <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
-                                            <li><button type="button" value="3" aria-label="Page 3">3</button></li>
-                                            <li><button type="button" value="4" aria-label="Page 4">4</button></li>
-                                            <li><button type="button" value="5" aria-label="Page 5">5</button></li>
-                                            <li><button type="button" value="6" aria-label="Page 6">6</button></li>
-                                        </ul>
-                                        <button type="button" value="3" class="next" aria-label="Next page">Next</button>
-                                    </div>
+                                    @@include('./common/support/pagination.html', {
+                                        'count': 5,
+                                        'last': 'false'
+                                    })
                                 </div>
                                 <div id="tab4">
                                     <ul class="notice-list">
@@ -211,21 +183,10 @@
                                             </a>
                                         </li>
                                     </ul>
-                                    <div class="pagination" role="navigation" aria-label="Pagination" data-aria-pattern="Page #">
-                                        <template id="paginationTemplate">
-                                            <li><button type="button" value=""></button></li>
-                                        </template>
-                                        <button type="button" value="1" class="prev" aria-label="Previous page">Prev</button>
-                                        <ul>
-                                            <li><button type="button" value="1" aria-label="Page 1">1</button></li>
-                                            <li><button type="button" value="2" aria-label="Page 2" class="active">2</button></li>
-                                            <li><button type="button" value="3" aria-label="Page 3">3</button></li>
-                                            <li><button type="button" value="4" aria-label="Page 4">4</button></li>
-                                            <li><button type="button" value="5" aria-label="Page 5">5</button></li>
-                                            <li><button type="button" value="6" aria-label="Page 6">6</button></li>
-                                        </ul>
-                                        <button type="button" value="3" class="next" aria-label="Next page">Next</button>
-                                    </div>
+                                    @@include('./common/support/pagination.html', {
+                                        'count': 5,
+                                        'last': 'false'
+                                    })
                                 </div>
                             </div>
                         </div>

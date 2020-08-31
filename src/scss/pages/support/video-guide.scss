@@ -5,11 +5,17 @@
 
 
 .tabs-wrap {
+    margin-bottom:16px;
+    padding:0 24px;
     @media screen and (min-width: $tablet-l-width) {
         display:none;
     }
     .tabs {
         > li {
+            margin-left:16px;
+            &:first-child {
+                margin-left:0;
+            }
             > a {
                 font-size:14px;
                 font-weight:400;
@@ -31,28 +37,7 @@
             margin-left:0;
         }
 	}
-    @include mobile {
-        margin-top: 16px;
-    }
 }
-
-.ui_tab {
-    @include mobile {
-        &-notice {
-            padding: 0 24px;
-            .tabs {
-                > li {
-                    margin-left:16px;
-                    &:first-child {
-                        margin-left:0;
-                    }
-                }
-            }
-        }
-    }
-}
-
-
 .query-reset {
     font-size: 14px;
     line-height: 1.43;
@@ -60,15 +45,20 @@
     color: #111111;
     margin-bottom: 16px;
     @include mobile {
+        margin-bottom:28px;
         padding-left: 24px;
     }
 }
-
 .icon-queryReset {
     display: inline-block;
     width: 20px;
     height: 20px;
     background-color: #000;
+}
+.category-tit {
+    @include tablet {
+        display:none;
+    }
 }
 .video {
     &-box {
@@ -96,13 +86,7 @@
 
 .related-content {
     margin-top: 112px;
-}
-
-.cs-content-inner {
-    padding-top: 84px;
-}
-.category-tit {
-    @include tablet {
-        display:none;
+    @include mobile {
+        margin-top:56px;
     }
 }
