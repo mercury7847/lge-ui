@@ -5,7 +5,7 @@
             "support/KR50CS64",
             "support/mCustomScrollbar"
         ],
-        "mCustomScrollbar" : true
+        mCustomScrollbar : true
     })
 <body>
     <div class="wrap">
@@ -173,7 +173,8 @@
         $(window).ready(function() {
             $(".scroll-x").mCustomScrollbar({
                 axis:"x",
-                advanced:{autoExpandHorizontalScroll:true}
+                advanced:{autoExpandHorizontalScroll:true},
+                mouseWheel: true
             });
         });
     </script>
