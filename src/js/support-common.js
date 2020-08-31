@@ -236,9 +236,41 @@ CS.MD.setPagination = function() {
     CS.UI.elem.$html = $('html');
     CS.UI.elem.$body = $('body');
 
-    function commonInit(){
+    function setTableScrollbar() {
+        var $tableWrap = $(".tbl.scroll-x");
         
+        function initScrollbar() {
+            $tableWrap.mCustomScrollbar({
+                axis:"x",
+                advanced:{
+                    autoExpandHorizontalScroll:true
+                },
+                mouseWheel: true
+            });
+        }
+
+        function destroyScrollbar() {
+            $tableWrap.mCustomScrollbar('destroy');
+        }
+
+        CS.UI.elem.$win.on('breakpointchange', function (e, data) {
+            if (data) {
+                if (data.name === 'md' && $('.scroll-x').hasClass('mCustomScrollbar')) {
+                    destroyScrollbar();
+                } else if (data.name === 'sm' && !$('.scroll-x').hasClass('mCustomScrollbar')) {
+                    initScrollbar();
+                }
+            }                
+        });
+        vcui.require(['helper/breakpointDispatcher'], function(BreakpointDispatcher) { 
+            BreakpointDispatcher.start();
+        });
     }
 
-    CS.UI.elem.$doc.ready( commonInit );
+    function commonInit(){
+        setTableScrollbar();
+    }
+
+    // CS.UI.elem.$win.ready( commonInit );
+    document.addEventListener('DOMContentLoaded', commonInit);
 })(jQuery);

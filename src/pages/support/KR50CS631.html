@@ -2,10 +2,15 @@
 <html lang="ko">
     @@include('./common/head.html', {
         "pageCSS": [
-            "support/KR50CS631",
-            "support/mCustomScrollbar"
+            "support/mCustomScrollbar",
+            "support/KR50CS631"
         ],
-        mCustomScrollbar : true
+        "pageJS": [
+            "support-common"
+        ],
+        "libJS": [
+            "jquery.mCustomScrollbar"
+        ]
     })
 <body>
     <div class="wrap">
@@ -22,1107 +27,1106 @@
                 }
             })
 
-            <div class="content">
-                <div class="cs-content">
-                    <div class="cs-content-inner type-B">
-                        <div class="KR50CS631">
+           
+            <div class="cs-content">
+                <div class="cs-content-inner type-B">
+                    <div class="KR50CS631">
 
-                            <div class="tabs-wrap ui_tab ui_tab-notice type-A">
-                                <ul class="tabs">
-                                    <li class="on"><a href="#tab1">서비스 요금 안내</a></li>
-                                    <li><a href="#tab2">설치/철거 비용 안내</a></li>
-                                    <li><a href="#tab3">보증기간 안내</a></li>
-                                    <li><a href="#tab4">소비자분쟁해결기준</a></li>
-                                </ul>
+                        <div class="tabs-wrap ui_tab ui_tab-notice type-A">
+                            <ul class="tabs">
+                                <li class="on"><a href="#tab1">서비스 요금 안내</a></li>
+                                <li><a href="#tab2">설치/철거 비용 안내</a></li>
+                                <li><a href="#tab3">보증기간 안내</a></li>
+                                <li><a href="#tab4">소비자분쟁해결기준</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="tabs-contents">
+                            <div id="tab1">
+                                <div class="section-area">
+                                    <section class="section">
+                                        <h3 class="h-tit-3">1. 서비스 요금 안내</h3>
+                                        <dl class="dl-list">
+                                            <dt>1) 서비스 요금 산정 기준</dt>
+                                            <dd>
+                                                <p>서비스 요금은 정부에서 재정한 소비자 기본법을 기준으로 소정의 요금을 청구하고 있습니다.</p>
+                                                <p>서비스 요금은 부품비, 수리비의 합계액으로 구성되며 각 요금의 결정은 다음과 같습니다.</p>
+                                                <p class="color-1">단, 출장 처리시에는 수리비에 출장점검료를 추가합니다.</p>
+                                                <p class="color-1 paragraph-4">※ 단, 해외 직구TV는&nbsp;구매한 해당 국가의 서비스 기준을 적용함 (국내 서비스 기준을&nbsp;적용하지 않음)</p>
+                                                <p class="img_box pc-only"><img src="/lg5-common/images/img-sv-sum.png" alt="서비스요금은 부품비와 수리비(수리공수) 그리고 출장비(출장서비스) 합산입니다."></p>
+                                                <p class="img_box mo-only"><img src="/lg5-common/images/img-sv-sum-m.png" alt="서비스요금은 부품비와 수리비(수리공수) 그리고 출장비(출장서비스) 합산입니다."></p>
+                                            </dd>
+                                            <dt>2) 부품비</dt>
+                                            <dd>부품비는 제품을 수리하는데 부품교체를 할 경우 소요되는 부품 가격을 말합니다.</dd>
+                                            <dt>3) 수리비</dt>
+                                            <dd>수리비용은 제품을 수리하는 데 필요한 수리 난이도 (시간) 에 따른 순수 기술료를 말합니다.</dd>
+                                            <dt>4) 출장비</dt>
+                                            <dd>
+                                                <p>제품 수리와 상관없이 유상수리 대상에 대하여 출장 수리를 요구하는 경우에 적용됩니다.  당사의 출장비는 거리에 상관없이 동일하게 18,000원 청구됩니다.</p>
+                                                <p class="color-1">&lt;예외1&gt; 평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원 적용</p>
+                                            </dd>
+                                        </dl>
+                                    </section>
+
+                                    <section class="section">
+                                        <h3 class="h-tit-3">2. 무상수리</h3>
+                                        <h4 class="h-tit-4">보증기간 이내에 정상적으로 사용한 상태에서 발생된 고장 또는 결함 아래에 해당되는 재고장 발생시</h4>
+                                        <div class="tbl tbl-vertical scroll-x">
+                                            <table class="tbl-list">
+                                                <caption>보증기간 이내에 정상적으로 사용한 상태에서 발생된 고장 또는 결함 아래에 해당되는 재고장 발생시</caption>
+                                                <colgroup>
+                                                    <col style="width:22%;">
+                                                    <col style="width:22%;">
+                                                    <col style="width:auto;">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">구분</th>
+                                                        <th scope="col">보증기간</th>
+                                                        <th scope="col">비고</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>부품 미 사용</td>
+                                                        <td>2개월 <span class="color-1 vt">(동일 부위 / 동일 증상)</span></td>
+                                                        <td rowspan="2">보증기간 이내 유/무상으로 수리를 한 건 (수리일자 기준)</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>부품 사용</td>
+                                                        <td>1년 <span class="color-1 vt">(동일 부품)</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </section>
+
+                                    <section class="section">
+                                        <h3 class="h-tit-3">3. 유상수리</h3>
+                                        <h4 class="h-tit-4">유상수리 적용항목</h4>
+                                        <div class="tbl tbl-horizon scroll-x">
+                                            <table class="tbl-list">
+                                                <caption>유상수리 적용항목</caption>
+                                                <colgroup>
+                                                    <col style="width:12%;">
+                                                    <col style="width:auto;">
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">보증기간</th>
+                                                        <td>무상 보증 기간 경과된 제품</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">설치/철거</th>
+                                                        <td>
+                                                            이사나 가정내 제품 이동으로 재 설치 및 외부기기 연결 요청의 건<br>
+                                                            홈쇼핑, 인터넷등 자가 구매 후 제품 설치/연결 요청의 건
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">타사제품</th>
+                                                        <td>
+                                                            고객이 요청한 제품외 타 제품/ 연결기기 불량인 건<br>
+                                                            (공유기, 셋탑, 게임기, Cable/젠더/분배기류, 시중 배수펌프, 강화유리, 조립PC, 타사 소프트웨어등)
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">소모성</th>
+                                                        <td>
+                                                            소모성 부품 보증기간 경과 및 수명이 다한 경우 (배터리, 필터류, 램프류, 헤드, 토너, 드럼, 잉크 등)<br>
+                                                            당사에서 지정하지 않은 부품이나 옵션품으로 발생된 고장의 건
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">천재지변</th>
+                                                        <td>천재지변 (지진, 풍수해, 낙뢰, 해일 등)외 화재, 염해, 동파 , 가스피해 등으로 고장시</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">고객부주의</th>
+                                                        <td>
+                                                            <ul class="bullet-list">
+                                                                <li>사용자 과실로 인한 고장 발생 (소프트웨어, 동전/핀과 같은 이물질 투입 등)</li>
+                                                                <li>사용설명서 내의 주의사항을 지키지 않아 고장 발생시</li>
+                                                                <li>LG전자 서비스센터 외 임의 수리 (루팅), 개조로 인한 고장 발생시 </li>
+                                                                <li>제품 내부의 먼지, 필터 막힘으로 인한 서비스 요청하는 건</li>
+                                                                <li>차단기/콘센트/멀티탭 불량, 전원 오인가, 전원 코드 미삽입 등 사전 확인없이 서비스 요청하는 건 </li>
+                                                                <li>단수, 수도/가스 잠김등으로 인한 서비스 요청하는 건</li>
+                                                                <li>사외부 환경 문제로 인한 서비스 요청하는 건<br>(인터넷, 통신사, 안테나, 유선 신호, 제품 사용처 수압/하수구, 보일러 등의 문제)</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">기타</th>
+                                                        <td>
+                                                            제품고장이 아닌 고객 요청에 의한 제품 점검 (보증기간 이내라도 유상 수리)<br>
+                                                            - 예. 제품 이상유무 점검, 제품 필터 막힘 등에 의한 필터 청소 등
+                                                            <p class="color-1 paragraph-4">※ 제품 점검이나 간단조치 방법은 서비스 홈페이지를 활용하시면 도움이 됩니다.</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </section>
+
+                                    <section class="section">
+                                        <h3 class="h-tit-3">4. 대형제품 설치기준</h3>
+                                        <ul class="bullet-list">
+                                            <li>대형제품 및 특수제품의 설치비는 보증기간에 관계없이 유상 청구됩니다. (일반제품 및 에어컨 설치 등)</li>
+                                            <li>에어컨 설치비는 제품 용량별, 설치위치별, 추가 자재비에 따라 차등화 되어 있습니다.</li>
+                                        </ul>
+                                    </section>
+
+                                    <div class="sns-box">
+                                        <a href="" class="sns-icon sns1"><span class="blind">카카오톡</span></a>
+                                        <a href="" class="sns-icon sns2"><span class="blind">페이스북</span></a>
+                                        <a href="" class="sns-icon sns3"><span class="blind">트위터</span></a>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="tabs-contents">
-                                <div id="tab1">
-                                    <div class="section-area">
-                                        <section class="section">
-                                            <h3 class="h-tit-3">1. 서비스 요금 안내</h3>
-                                            <dl class="dl-list">
-                                                <dt>1) 서비스 요금 산정 기준</dt>
-                                                <dd>
-                                                    <p>서비스 요금은 정부에서 재정한 소비자 기본법을 기준으로 소정의 요금을 청구하고 있습니다.</p>
-                                                    <p>서비스 요금은 부품비, 수리비의 합계액으로 구성되며 각 요금의 결정은 다음과 같습니다.</p>
-                                                    <p class="color-1">단, 출장 처리시에는 수리비에 출장점검료를 추가합니다.</p>
-                                                    <p class="color-1 paragraph-4">※ 단, 해외 직구TV는&nbsp;구매한 해당 국가의 서비스 기준을 적용함 (국내 서비스 기준을&nbsp;적용하지 않음)</p>
-                                                    <p class="img_box pc-only"><img src="/lg5-common/images/img-sv-sum.png" alt="서비스요금은 부품비와 수리비(수리공수) 그리고 출장비(출장서비스) 합산입니다."></p>
-                                                    <p class="img_box mo-only"><img src="/lg5-common/images/img-sv-sum-m.png" alt="서비스요금은 부품비와 수리비(수리공수) 그리고 출장비(출장서비스) 합산입니다."></p>
-                                                </dd>
-                                                <dt>2) 부품비</dt>
-                                                <dd>부품비는 제품을 수리하는데 부품교체를 할 경우 소요되는 부품 가격을 말합니다.</dd>
-                                                <dt>3) 수리비</dt>
-                                                <dd>수리비용은 제품을 수리하는 데 필요한 수리 난이도 (시간) 에 따른 순수 기술료를 말합니다.</dd>
-                                                <dt>4) 출장비</dt>
-                                                <dd>
-                                                    <p>제품 수리와 상관없이 유상수리 대상에 대하여 출장 수리를 요구하는 경우에 적용됩니다.  당사의 출장비는 거리에 상관없이 동일하게 18,000원 청구됩니다.</p>
-                                                    <p class="color-1">&lt;예외1&gt; 평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원 적용</p>
-                                                </dd>
-                                            </dl>
-                                        </section>
-
-                                        <section class="section">
-                                            <h3 class="h-tit-3">2. 무상수리</h3>
-                                            <h4 class="h-tit-4">보증기간 이내에 정상적으로 사용한 상태에서 발생된 고장 또는 결함 아래에 해당되는 재고장 발생시</h4>
-                                            <div class="scroll-x">
-                                                <table class="tbl type-A">
-                                                    <caption>보증기간 이내에 정상적으로 사용한 상태에서 발생된 고장 또는 결함 아래에 해당되는 재고장 발생시</caption>
-                                                    <colgroup>
-                                                        <col style="width:22%;">
-                                                        <col style="width:22%;">
-                                                        <col style="width:auto;">
-                                                    </colgroup>
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">구분</th>
-                                                            <th scope="col">보증기간</th>
-                                                            <th scope="col">비고</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>부품 미 사용</td>
-                                                            <td>2개월 <span class="color-1 vt">(동일 부위 / 동일 증상)</span></td>
-                                                            <td rowspan="2">보증기간 이내 유/무상으로 수리를 한 건 (수리일자 기준)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>부품 사용</td>
-                                                            <td>1년 <span class="color-1 vt">(동일 부품)</span></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </section>
-
-                                        <section class="section">
-                                            <h3 class="h-tit-3">3. 유상수리</h3>
-                                            <h4 class="h-tit-4">유상수리 적용항목</h4>
-                                            <div class="scroll-x">
-                                                <table class="tbl type-B">
-                                                    <caption>유상수리 적용항목</caption>
-                                                    <colgroup>
-                                                        <col style="width:12%;">
-                                                        <col style="width:auto;">
-                                                    </colgroup>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row">보증기간</th>
-                                                            <td>무상 보증 기간 경과된 제품</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">설치/철거</th>
-                                                            <td>
-                                                                이사나 가정내 제품 이동으로 재 설치 및 외부기기 연결 요청의 건<br>
-                                                                홈쇼핑, 인터넷등 자가 구매 후 제품 설치/연결 요청의 건
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">타사제품</th>
-                                                            <td>
-                                                                고객이 요청한 제품외 타 제품/ 연결기기 불량인 건<br>
-                                                                (공유기, 셋탑, 게임기, Cable/젠더/분배기류, 시중 배수펌프, 강화유리, 조립PC, 타사 소프트웨어등)
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">소모성</th>
-                                                            <td>
-                                                                소모성 부품 보증기간 경과 및 수명이 다한 경우 (배터리, 필터류, 램프류, 헤드, 토너, 드럼, 잉크 등)<br>
-                                                                당사에서 지정하지 않은 부품이나 옵션품으로 발생된 고장의 건
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">천재지변</th>
-                                                            <td>천재지변 (지진, 풍수해, 낙뢰, 해일 등)외 화재, 염해, 동파 , 가스피해 등으로 고장시</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">고객부주의</th>
-                                                            <td>
-                                                                <ul class="bullet-list">
-                                                                    <li>사용자 과실로 인한 고장 발생 (소프트웨어, 동전/핀과 같은 이물질 투입 등)</li>
-                                                                    <li>사용설명서 내의 주의사항을 지키지 않아 고장 발생시</li>
-                                                                    <li>LG전자 서비스센터 외 임의 수리 (루팅), 개조로 인한 고장 발생시 </li>
-                                                                    <li>제품 내부의 먼지, 필터 막힘으로 인한 서비스 요청하는 건</li>
-                                                                    <li>차단기/콘센트/멀티탭 불량, 전원 오인가, 전원 코드 미삽입 등 사전 확인없이 서비스 요청하는 건 </li>
-                                                                    <li>단수, 수도/가스 잠김등으로 인한 서비스 요청하는 건</li>
-                                                                    <li>사외부 환경 문제로 인한 서비스 요청하는 건<br>(인터넷, 통신사, 안테나, 유선 신호, 제품 사용처 수압/하수구, 보일러 등의 문제)</li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">기타</th>
-                                                            <td>
-                                                                제품고장이 아닌 고객 요청에 의한 제품 점검 (보증기간 이내라도 유상 수리)<br>
-                                                                - 예. 제품 이상유무 점검, 제품 필터 막힘 등에 의한 필터 청소 등
-                                                                <p class="color-1 paragraph-4">※ 제품 점검이나 간단조치 방법은 서비스 홈페이지를 활용하시면 도움이 됩니다.</p>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </section>
-
-                                        <section class="section">
-                                            <h3 class="h-tit-3">4. 대형제품 설치기준</h3>
-                                            <ul class="bullet-list">
-                                                <li>대형제품 및 특수제품의 설치비는 보증기간에 관계없이 유상 청구됩니다. (일반제품 및 에어컨 설치 등)</li>
-                                                <li>에어컨 설치비는 제품 용량별, 설치위치별, 추가 자재비에 따라 차등화 되어 있습니다.</li>
-                                            </ul>
-                                        </section>
-
-                                        <div class="sns-box">
-                                            <a href="" class="sns-icon sns1"><span class="blind">카카오톡</span></a>
-                                            <a href="" class="sns-icon sns2"><span class="blind">페이스북</span></a>
-                                            <a href="" class="sns-icon sns3"><span class="blind">트위터</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="tab2">
-                                    <div class="section-area">
-                                        <section class="section">
-                                            <h3 class="h-tit-3">1. 이전설치 비용 안내</h3>
-                                            <dl class="dl-list">
-                                                <dt>1) 에어컨 설치/철거 비용</dt>
-                                                <dd>
-                                                    <div class="note-box">
-                                                        <h4 class="h-tit-4 color-1">주의사항</h4>
-                                                        <p>고객님의 설치 장소의 환경과 냉매(가스)주입 여부에 따라 비용이 추가될 수 있으며, 정확한 비용은 출장 엔지니어를 통해 안내 받으시기 바랍니다.</p>
-                                                        <p class="color-1">(서비스 센터는 화물운송 허가 업체가 아니라서 에어컨 운반 업무는 불가합니다.)</p>
-                                                        <p class="paragraph-1">예) 비용 추가항목</p>
-                                                        <ul class="bullet-list">
-                                                            <li>냉매(가스)추가 주입, 배관연장, 타공, 앵글 설치, 외부난간 실외기 연결작업, 매립배관 용접 등</li>
-                                                            <li><span class="color-1">업무시간 외 설치/철거</span>를 요구하는 경우 <span class="color-1">4,000원의 추가 비용이 발생</span>합니다. (평일 18시 이후, 토/일/공휴일 등)</li>
-                                                        </ul>
-                                                        <p>천장형 에어컨은 설치되는 장소 형태 및 인테리어 상태에 따라 추가 비용이 발생되며, 이에 따른 배관 비용도 별도 추가 될 수 있습니다.</p>
-                                                    </div>
-                                                </dd>
-
-                                                <dd>
-                                                    <div class="scroll-x">
-                                                        <table class="tbl type-A">
-                                                            <caption>에어컨 설치/철거 비용</caption>
-                                                            <colgroup>
-                                                                <col style="width:20%;">
-                                                                <col style="width:auto;">
-                                                                <col style="width:20%;">
-                                                                <col style="width:20%;">
-                                                            </colgroup>
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">타입</th>
-                                                                    <th scope="col">냉방용량</th>
-                                                                    <th scope="col">기본 철거비</th>
-                                                                    <th scope="col">기본 설치비<br>(냉매비용 별도)</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td><strong>창문형</strong></td>
-                                                                    <td><p>1~9평</p>
-                                                                        <p>9.1~12평</p>
-                                                                        <p>12.1평이상</p>
-                                                                    </td>
-                                                                    <td class="align-right"><p>35,000원</p>
-                                                                        <p>49,000원</p>
-                                                                        <p>51,500원</p>
-                                                                    </td>
-                                                                    <td class="align-right"><p>54,000원</p>
-                                                                        <p>80,500원</p>
-                                                                        <p>99,500원</p>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>벽걸이</strong></td>
-                                                                    <td><p>1~9평</p>
-                                                                        <p>9.1~12평</p>
-                                                                        <p>12.1평 이상</p>
-                                                                    </td>
-                                                                    <td class="align-right"><p>51,500원</p>
-                                                                        <p>61,000원</p>
-                                                                        <p>66,000원</p>
-                                                                    </td>
-                                                                    <td class="align-right"><p>99,500원</p>
-                                                                        <p>133,000원</p>
-                                                                        <p>133,000원</p>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <p><strong>스탠드</strong></p>
-                                                                        <p><strong>(슬림형)</strong></p>
-                                                                    </td>
-                                                                    <td><p>1~23평</p>
-                                                                        <p>23.1~40평</p>
-                                                                        <p>40.1~100평</p>
-                                                                        <p>101평 이상</p>
-                                                                    </td>
-                                                                    <td class="align-right"><p>80,500원</p>
-                                                                        <p>114,000원</p>
-                                                                        <p>157,000원</p>
-                                                                        <p>243,500원</p>
-                                                                    </td>
-                                                                    <td class="align-right"><p>167,000원</p>
-                                                                        <p>282,000원</p>
-                                                                        <p>349,000원</p>
-                                                                        <p>517,000원</p>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>2in1</strong></td>
-                                                                    <td>
-                                                                        <p>Set</p>
-                                                                    </td>
-                                                                    <td class="align-right"><p>99,500원</p></td>
-                                                                    <td class="align-right"><p>267,500원</p></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>3in1</strong></td>
-                                                                    <td><p>Set</p></td>
-                                                                    <td class="align-right"><p>133,000원</p></td>
-                                                                    <td class="align-right"><p>320,500원</p></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>천장형</strong></td>
-                                                                    <td><p>1~17평</p>
-                                                                        <p>17.1~25평</p>
-                                                                        <p>25.1~50평</p>
-                                                                        <p>50.1평 이상</p>
-                                                                    </td>
-                                                                    <td class="align-right"><p>205,000원</p>
-                                                                        <p>215,000원</p>
-                                                                        <p>229,000원</p>
-                                                                        <p>234,000원</p>
-                                                                    </td>
-                                                                    <td class="align-right"><p>407,000원</p>
-                                                                        <p>435,500원</p>
-                                                                        <p>498,000원</p>
-                                                                        <p>551,000원</p>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </dd>
-
-                                                <dd>
-                                                    <h4 class="h-tit-4 bullet">추가 배관 비용 (1m 기준)</h4>
-                                                    <div class="scroll-x">
-                                                        <table class="tbl type-A">
-                                                            <caption>에어컨 설치/철거 비용</caption>
-                                                            <colgroup>
-                                                                <col style="width:20%;">
-                                                                <col style="width:auto;">
-                                                                <col style="width:40%;">
-                                                            </colgroup>
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">구분</th>
-                                                                    <th scope="col">냉방용량</th>
-                                                                    <th scope="col">비용</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td><strong>벽걸이</strong></td>
-                                                                    <td><p>12평 이하</p>
-                                                                        <p>12.1평이상</p>
-                                                                    </td>
-                                                                    <td><p>13,000원</p>
-                                                                        <p>16,000원</p>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <p><strong>스탠드</strong></p>
-                                                                        <p><strong>(슬림형)</strong></p>
-                                                                        <p><strong>/ 천장형</strong></p>
-                                                                    </td>
-                                                                    <td><p>23평 이하</p>
-                                                                        <p>23.1 ~ 40평</p>
-                                                                        <p>40.1 ~ 112평</p>
-                                                                        <p>112.1평 이상</p>
-                                                                    </td>
-                                                                    <td><p>16,000원</p>
-                                                                        <p>21,000원</p>
-                                                                        <p>27,000원</p>
-                                                                        <p>30,000원</p>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <p>냉/난방 겸용 에어컨 설치 시 추가되는 특수보온재(EPDM)은 별도 비용 적용</p>
-                                                </dd>
-
-                                                <dd>
-                                                    <h4 class="h-tit-4 bullet">에어컨 설치 추가 비용</h4>
-                                                    <div class="scroll-x">
-                                                        <table class="tbl type-A">
-                                                            <caption>에어컨 설치 추가 비용</caption>
-                                                            <colgroup>
-                                                                <col style="width: 10%;">
-                                                                <col style="width: 10%;">
-                                                                <col style="width: 15%;">
-                                                                <col style="width: 15%;">
-                                                                <col>
-                                                            </colgroup>
-                                                            <thead>
-                                                                <tr>
-                                                                    <th colspan="3" scope="col">구분</th>
-                                                                    <th scope="col">금액</th>
-                                                                    <th scope="col">비고</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td rowspan="6" class="vt"><strong>앵글</strong></td>
-                                                                    <td rowspan="3">알루미늄</td>
-                                                                    <td>9평미만</td>
-                                                                    <td>100,000원</td>
-                                                                    <td rowspan="6" class="align-left">
-                                                                        <p>고객 보유 한 앵글설치 시</p>
-                                                                        <ul class="bullet-list">
-                                                                            <li>9평 미만 40,000원</li>
-                                                                            <li>9.1~24평 미만 50,000원</li>
-                                                                            <li>밴드 4개 포함</li>
-                                                                            <li>3층 이상</li>
-                                                                        </ul>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>24평미만</td>
-                                                                    <td>120,000원</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>24평이상</td>
-                                                                    <td>고객협의</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>함마톤</td>
-                                                                    <td>전체</td>
-                                                                    <td>180,000원</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>스테인레스</td>
-                                                                    <td>24평 미만</td>
-                                                                    <td>200,000원</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>기타 제작</td>
-                                                                    <td>전체</td>
-                                                                    <td>고객협의</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td rowspan="3" class="vt"><strong>배수펌프</strong></td>
-                                                                    <td rowspan="3">양정높이</td>
-                                                                    <td>4~6M</td>
-                                                                    <td>100,000원</td>
-                                                                    <td rowspan="3" class="align-left">
-                                                                        <p>펌프 호스 포함</p>
-                                                                        <p>배수펌프만 별도 설치요청시 출장비(18,000원) 추가 징구</p>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>8~12M</td>
-                                                                    <td>120,000원</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>12M이상</td>
-                                                                    <td>고객협의</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td rowspan="13" class="vt"><strong>기타</strong></td>
-                                                                    <td rowspan="2">외부작업</td>
-                                                                    <td>스카이차 외</td>
-                                                                    <td>고객실비</td>
-                                                                    <td class="align-left">설치 환경상 스카이차,사다리 차, 크레인 등 필요한 경우</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>외부작업</td>
-                                                                    <td>30,000원</td>
-                                                                    <td class="align-left">실외기 건물 외부에 설치 (3층 이상)</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td rowspan="2">타공</td>
-                                                                    <td>95Ø미만 1구당</td>
-                                                                    <td>10,000원</td>
-                                                                    <td class="align-left">95Ø 미만 단품 1구, 2in1 2구 무상 (추가 타공 1구당 유상)</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>95Ø이상 1구당</td>
-                                                                    <td>30,000원</td>
-                                                                    <td class="align-left">95Ø 이상은 처음 1구 부터 유상</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td rowspan="2">질소브로윙</td>
-                                                                    <td>실내기 / 대당</td>
-                                                                    <td>50,000원</td>
-                                                                    <td rowspan="2" class="align-left">매립배관 <span style="font-family: 굴림;">內</span> 이물질 제거를 위해 질소를 이용 브로윙(Blowing)하는 작업  </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>25평 이상</td>
-                                                                    <td>별도 협의</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>매립배관용접</td>
-                                                                    <td>실내기 / 대당</td>
-                                                                    <td>10,000원</td>
-                                                                    <td class="align-left">매립배관 박스 <span style="font-family: 굴림;">內</span> 용접 시 실내기 기준 적용</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>바람막이</td>
-                                                                    <td>25평 미만</td>
-                                                                    <td>40,000원</td>
-                                                                    <td class="align-left">별도 요청시 출장비(18,000원) 추가 징구</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>특수보온재</td>
-                                                                    <td>EPDM /1M</td>
-                                                                    <td>5,000원</td>
-                                                                    <td class="align-left">냉.난방기 설치 시 소요되는 특수보온재 (9평 미만 벽걸이3,000원) </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>특수배관</td>
-                                                                    <td>주름배관/1M</td>
-                                                                    <td>20,000원</td>
-                                                                    <td class="align-left">작업 난이도에 따라 사용되는 주름배관</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>드레인호스</td>
-                                                                    <td>1M</td>
-                                                                    <td>2,000원</td>
-                                                                    <td></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>통신선</td>
-                                                                    <td>1M</td>
-                                                                    <td>2,000원</td>
-                                                                    <td class="align-left">스텐드,벽걸이 24평 미만, 25평이상은 별도 협의</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>전원선</td>
-                                                                    <td>1M</td>
-                                                                    <td>4,000원</td>
-                                                                    <td class="align-left">스텐드,벽걸이 24평 미만, 25평이상은 별도 협의 </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                            <div id="tab2">
+                                <div class="section-area">
+                                    <section class="section">
+                                        <h3 class="h-tit-3">1. 이전설치 비용 안내</h3>
+                                        <dl class="dl-list">
+                                            <dt>1) 에어컨 설치/철거 비용</dt>
+                                            <dd>
+                                                <div class="note-box">
+                                                    <h4 class="h-tit-4 color-1">주의사항</h4>
+                                                    <p>고객님의 설치 장소의 환경과 냉매(가스)주입 여부에 따라 비용이 추가될 수 있으며, 정확한 비용은 출장 엔지니어를 통해 안내 받으시기 바랍니다.</p>
+                                                    <p class="color-1">(서비스 센터는 화물운송 허가 업체가 아니라서 에어컨 운반 업무는 불가합니다.)</p>
+                                                    <p class="paragraph-1">예) 비용 추가항목</p>
                                                     <ul class="bullet-list">
-                                                        <li>위 추가 비용은 기본 설치비와는 별도의 추가 작업으로 인한 추가 인건비 및 재료비이며, 고객 부담임 (스탠드,벽걸이 24평 미만 제품에 한함)</li>
-                                                        <li>기타 부자재 고객 협의</li>
-                                                        <li>에어컨 설치 추가비용은 소비자 부담이며, VAT 포함 단가임</li>
-                                                        <li>
-                                                            전원공사 : 3상3선용 (동력) 전원공사 필요 시 전기공사 전문업체 의뢰 (전기공사법 제8장42조) 
-                                                            <p style="margin-left:3.3rem;">전기공사 미 자격자의 시공 시 법에 저촉 됨</p>
-                                                        </li>
+                                                        <li>냉매(가스)추가 주입, 배관연장, 타공, 앵글 설치, 외부난간 실외기 연결작업, 매립배관 용접 등</li>
+                                                        <li><span class="color-1">업무시간 외 설치/철거</span>를 요구하는 경우 <span class="color-1">4,000원의 추가 비용이 발생</span>합니다. (평일 18시 이후, 토/일/공휴일 등)</li>
                                                     </ul>
-                                                </dd>
+                                                    <p>천장형 에어컨은 설치되는 장소 형태 및 인테리어 상태에 따라 추가 비용이 발생되며, 이에 따른 배관 비용도 별도 추가 될 수 있습니다.</p>
+                                                </div>
+                                            </dd>
+
+                                            <dd>
+                                                <div class="tbl tbl-vertical scroll-x">
+                                                    <table class="tbl-list">
+                                                        <caption>에어컨 설치/철거 비용</caption>
+                                                        <colgroup>
+                                                            <col style="width:20%;">
+                                                            <col style="width:auto;">
+                                                            <col style="width:20%;">
+                                                            <col style="width:20%;">
+                                                        </colgroup>
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">타입</th>
+                                                                <th scope="col">냉방용량</th>
+                                                                <th scope="col">기본 철거비</th>
+                                                                <th scope="col">기본 설치비<br>(냉매비용 별도)</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><strong>창문형</strong></td>
+                                                                <td><p>1~9평</p>
+                                                                    <p>9.1~12평</p>
+                                                                    <p>12.1평이상</p>
+                                                                </td>
+                                                                <td class="align-right"><p>35,000원</p>
+                                                                    <p>49,000원</p>
+                                                                    <p>51,500원</p>
+                                                                </td>
+                                                                <td class="align-right"><p>54,000원</p>
+                                                                    <p>80,500원</p>
+                                                                    <p>99,500원</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>벽걸이</strong></td>
+                                                                <td><p>1~9평</p>
+                                                                    <p>9.1~12평</p>
+                                                                    <p>12.1평 이상</p>
+                                                                </td>
+                                                                <td class="align-right"><p>51,500원</p>
+                                                                    <p>61,000원</p>
+                                                                    <p>66,000원</p>
+                                                                </td>
+                                                                <td class="align-right"><p>99,500원</p>
+                                                                    <p>133,000원</p>
+                                                                    <p>133,000원</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><strong>스탠드</strong></p>
+                                                                    <p><strong>(슬림형)</strong></p>
+                                                                </td>
+                                                                <td><p>1~23평</p>
+                                                                    <p>23.1~40평</p>
+                                                                    <p>40.1~100평</p>
+                                                                    <p>101평 이상</p>
+                                                                </td>
+                                                                <td class="align-right"><p>80,500원</p>
+                                                                    <p>114,000원</p>
+                                                                    <p>157,000원</p>
+                                                                    <p>243,500원</p>
+                                                                </td>
+                                                                <td class="align-right"><p>167,000원</p>
+                                                                    <p>282,000원</p>
+                                                                    <p>349,000원</p>
+                                                                    <p>517,000원</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>2in1</strong></td>
+                                                                <td>
+                                                                    <p>Set</p>
+                                                                </td>
+                                                                <td class="align-right"><p>99,500원</p></td>
+                                                                <td class="align-right"><p>267,500원</p></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>3in1</strong></td>
+                                                                <td><p>Set</p></td>
+                                                                <td class="align-right"><p>133,000원</p></td>
+                                                                <td class="align-right"><p>320,500원</p></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>천장형</strong></td>
+                                                                <td><p>1~17평</p>
+                                                                    <p>17.1~25평</p>
+                                                                    <p>25.1~50평</p>
+                                                                    <p>50.1평 이상</p>
+                                                                </td>
+                                                                <td class="align-right"><p>205,000원</p>
+                                                                    <p>215,000원</p>
+                                                                    <p>229,000원</p>
+                                                                    <p>234,000원</p>
+                                                                </td>
+                                                                <td class="align-right"><p>407,000원</p>
+                                                                    <p>435,500원</p>
+                                                                    <p>498,000원</p>
+                                                                    <p>551,000원</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </dd>
+
+                                            <dd>
+                                                <h4 class="h-tit-4 bullet">추가 배관 비용 (1m 기준)</h4>
+                                                <div class="tbl tbl-vertical scroll-x">
+                                                    <table class="tbl-list">
+                                                        <caption>에어컨 설치/철거 비용</caption>
+                                                        <colgroup>
+                                                            <col style="width:20%;">
+                                                            <col style="width:auto;">
+                                                            <col style="width:40%;">
+                                                        </colgroup>
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">구분</th>
+                                                                <th scope="col">냉방용량</th>
+                                                                <th scope="col">비용</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><strong>벽걸이</strong></td>
+                                                                <td><p>12평 이하</p>
+                                                                    <p>12.1평이상</p>
+                                                                </td>
+                                                                <td><p>13,000원</p>
+                                                                    <p>16,000원</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><strong>스탠드</strong></p>
+                                                                    <p><strong>(슬림형)</strong></p>
+                                                                    <p><strong>/ 천장형</strong></p>
+                                                                </td>
+                                                                <td><p>23평 이하</p>
+                                                                    <p>23.1 ~ 40평</p>
+                                                                    <p>40.1 ~ 112평</p>
+                                                                    <p>112.1평 이상</p>
+                                                                </td>
+                                                                <td><p>16,000원</p>
+                                                                    <p>21,000원</p>
+                                                                    <p>27,000원</p>
+                                                                    <p>30,000원</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <p>냉/난방 겸용 에어컨 설치 시 추가되는 특수보온재(EPDM)은 별도 비용 적용</p>
+                                            </dd>
+
+                                            <dd>
+                                                <h4 class="h-tit-4 bullet">에어컨 설치 추가 비용</h4>
+                                                <div class="tbl tbl-vertical scroll-x">
+                                                    <table class="tbl-list">
+                                                        <caption>에어컨 설치 추가 비용</caption>
+                                                        <colgroup>
+                                                            <col style="width: 10%;">
+                                                            <col style="width: 10%;">
+                                                            <col style="width: 15%;">
+                                                            <col style="width: 15%;">
+                                                            <col>
+                                                        </colgroup>
+                                                        <thead>
+                                                            <tr>
+                                                                <th colspan="3" scope="col">구분</th>
+                                                                <th scope="col">금액</th>
+                                                                <th scope="col">비고</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td rowspan="6" class="vt"><strong>앵글</strong></td>
+                                                                <td rowspan="3">알루미늄</td>
+                                                                <td>9평미만</td>
+                                                                <td>100,000원</td>
+                                                                <td rowspan="6" class="align-left">
+                                                                    <p>고객 보유 한 앵글설치 시</p>
+                                                                    <ul class="bullet-list">
+                                                                        <li>9평 미만 40,000원</li>
+                                                                        <li>9.1~24평 미만 50,000원</li>
+                                                                        <li>밴드 4개 포함</li>
+                                                                        <li>3층 이상</li>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>24평미만</td>
+                                                                <td>120,000원</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>24평이상</td>
+                                                                <td>고객협의</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>함마톤</td>
+                                                                <td>전체</td>
+                                                                <td>180,000원</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>스테인레스</td>
+                                                                <td>24평 미만</td>
+                                                                <td>200,000원</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>기타 제작</td>
+                                                                <td>전체</td>
+                                                                <td>고객협의</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="3" class="vt"><strong>배수펌프</strong></td>
+                                                                <td rowspan="3">양정높이</td>
+                                                                <td>4~6M</td>
+                                                                <td>100,000원</td>
+                                                                <td rowspan="3" class="align-left">
+                                                                    <p>펌프 호스 포함</p>
+                                                                    <p>배수펌프만 별도 설치요청시 출장비(18,000원) 추가 징구</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>8~12M</td>
+                                                                <td>120,000원</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>12M이상</td>
+                                                                <td>고객협의</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="13" class="vt"><strong>기타</strong></td>
+                                                                <td rowspan="2">외부작업</td>
+                                                                <td>스카이차 외</td>
+                                                                <td>고객실비</td>
+                                                                <td class="align-left">설치 환경상 스카이차,사다리 차, 크레인 등 필요한 경우</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>외부작업</td>
+                                                                <td>30,000원</td>
+                                                                <td class="align-left">실외기 건물 외부에 설치 (3층 이상)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="2">타공</td>
+                                                                <td>95Ø미만 1구당</td>
+                                                                <td>10,000원</td>
+                                                                <td class="align-left">95Ø 미만 단품 1구, 2in1 2구 무상 (추가 타공 1구당 유상)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>95Ø이상 1구당</td>
+                                                                <td>30,000원</td>
+                                                                <td class="align-left">95Ø 이상은 처음 1구 부터 유상</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="2">질소브로윙</td>
+                                                                <td>실내기 / 대당</td>
+                                                                <td>50,000원</td>
+                                                                <td rowspan="2" class="align-left">매립배관 <span style="font-family: 굴림;">內</span> 이물질 제거를 위해 질소를 이용 브로윙(Blowing)하는 작업  </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>25평 이상</td>
+                                                                <td>별도 협의</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>매립배관용접</td>
+                                                                <td>실내기 / 대당</td>
+                                                                <td>10,000원</td>
+                                                                <td class="align-left">매립배관 박스 <span style="font-family: 굴림;">內</span> 용접 시 실내기 기준 적용</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>바람막이</td>
+                                                                <td>25평 미만</td>
+                                                                <td>40,000원</td>
+                                                                <td class="align-left">별도 요청시 출장비(18,000원) 추가 징구</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>특수보온재</td>
+                                                                <td>EPDM /1M</td>
+                                                                <td>5,000원</td>
+                                                                <td class="align-left">냉.난방기 설치 시 소요되는 특수보온재 (9평 미만 벽걸이3,000원) </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>특수배관</td>
+                                                                <td>주름배관/1M</td>
+                                                                <td>20,000원</td>
+                                                                <td class="align-left">작업 난이도에 따라 사용되는 주름배관</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>드레인호스</td>
+                                                                <td>1M</td>
+                                                                <td>2,000원</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>통신선</td>
+                                                                <td>1M</td>
+                                                                <td>2,000원</td>
+                                                                <td class="align-left">스텐드,벽걸이 24평 미만, 25평이상은 별도 협의</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>전원선</td>
+                                                                <td>1M</td>
+                                                                <td>4,000원</td>
+                                                                <td class="align-left">스텐드,벽걸이 24평 미만, 25평이상은 별도 협의 </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <ul class="bullet-list">
+                                                    <li>위 추가 비용은 기본 설치비와는 별도의 추가 작업으로 인한 추가 인건비 및 재료비이며, 고객 부담임 (스탠드,벽걸이 24평 미만 제품에 한함)</li>
+                                                    <li>기타 부자재 고객 협의</li>
+                                                    <li>에어컨 설치 추가비용은 소비자 부담이며, VAT 포함 단가임</li>
+                                                    <li>
+                                                        전원공사 : 3상3선용 (동력) 전원공사 필요 시 전기공사 전문업체 의뢰 (전기공사법 제8장42조) 
+                                                        <p style="margin-left:3.3rem;">전기공사 미 자격자의 시공 시 법에 저촉 됨</p>
+                                                    </li>
+                                                </ul>
+                                            </dd>
+                                    </dl>
+                                    </section>
+
+                                    <section class="section">
+                                        <h3 class="h-tit-3">2. 일반제품 이전설치 비용</h3>
+                                        <p>일반제품 이전/설치 비용은 해당 서비스를 제공하는 판토스 홈페이지를 통해 확인하실 수 있습니다. <a href="http://www.pantos.com/kr/customer/lgapp.do" target="_blank" title="새창열림" style="text-decoration:underline;">바로가기</a></p>
+                                    </section>
+
+                                    <div class="sns-box">
+                                        <a href="" class="sns-icon sns1"><span class="blind">카카오톡</span></a>
+                                        <a href="" class="sns-icon sns2"><span class="blind">페이스북</span></a>
+                                        <a href="" class="sns-icon sns3"><span class="blind">트위터</span></a>
+                                    </div>
+                                </div>
+
+                                <div class="btnarea-r btn-group">
+                                    <a href="#n" class="btn black"><span>설치/철거 예약</span></a>
+                                </div>
+                            </div>
+
+                            <div id="tab3">
+                                <div class="section-area">
+                                    <section class="section">
+                                        <h3 class="h-tit-3">1. 보증기간 안내</h3>
+                                        <dl class="dl-list">
+                                            <dt>1) 보증기간 산정 기준</dt>
+                                            <dd class="bullet">저희 LG전자 서비스는 품목별 소비자 피해 보상규정에 의거 아래와 같이 제품에 대한 보증을 실시합니다.</dd>
+                                            <dt>2) 제품 산정 기준</dt>
+                                            <dd>
+                                                <p class="bullet">제품 보증기간이라 함은 제조사 또는 제품 판매자가 소비자에게 정상적인 상태에서 자연 발생한 품질 성능 기능 하자에 대하여 무료 수리해 주겠다고 약속한 기간을 말합니다.</p>
+                                                <p class="bullet">제품 보증기간은 구입일자를 기준으로 산정하며 구입일자의 확인은 제품보증서를 기준으로 합니다. 단 보증서가 없는 경우는 제조일(제조번호 검사필증)로부터 3개월이 경과한 날로부터 보증기간을 계산합니다.</p>
+                                            </dd>
+                                            <dd>
+                                                <div class="note-box">
+                                                    <h4 class="h-tit-4 color-1">다음의 경우는 보증기간이 정상적인 경우의 절반으로 단축 적용됩니다.</h4>
+                                                    <p>1. 가정용 세탁기를 영업용도로 사용하는 경우</p>
+                                                    <ul class="bullet-list">
+                                                        <li>세탁기 : 사우나,목욕탕,세탁소</li>
+                                                        <li>냉장고,밥솥,전자레인지:식당,편의점</li>
+                                                    </ul>
+                                                    <p>2. 차량,선박 등에 탑재하는 등 정상적인 사용환경이 아닌 곳에서 사용하는 경우</p>
+                                                    <p>3. VCR제품을 Video Shop에서 영업용으로 사용하는 경우와 유선방송 전문업체, 비디오방에서 사용하는 경우</p>
+                                                </div>
+                                            </dd>
+                                            <dd>
+                                                <p class="bullet">중고품(전파상 구입,모조품) 구입시 보증기간은 적용되지 않으며 수리 불가의 경우 피해보상을 책임지지 않습니다.</p>
+                                                <p class="bullet">당사와의 계약을 통해 납품되는 제품의 보증은 그 계약내용을 기준으로 합니다.</p>
+                                                <p class="bullet">제품별 보증기간</p>
+                                            </dd>
+                                            <dd>
+                                                <div class="tbl tbl-vertical scroll-x">
+                                                    <table class="tbl-list">
+                                                        <caption>제품별 보증기간</caption>
+                                                        <colgroup>
+                                                            <col style="width:20%;">
+                                                            <col style="width:15%;">
+                                                            <col style="width:auto;">
+                                                        </colgroup>
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">구분</th>
+                                                                <th scope="col">보증기간</th>
+                                                                <th scope="col">비고</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><strong>일반제품</strong></td>
+                                                                <td>1년</td>
+                                                                <td class="al"><p>휴대전화, TV<sup class="point2">주1)</sup>, 냉장고, 세탁기, 청소기, 주방기기, 가습기, PC, 모니터, 프린터 등</p>
+                                                                    <p class="point2 fs14 mt10">※ 휴대전화 : '20년 1월 1일 이후 구입분은 2년 적용 (단, 배터리/악세사리 1년)</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>계절성 상품</strong></td>
+                                                                <td>2년</td>
+                                                                <td class="al"><p>에어컨, 선풍기, 난방기, 히터 등</p>
+                                                                    <p class="point2 fs14 mt10">※ 시스템 에어컨 : '13년 6월 이전 설치분은 1년 적용 </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>LED 전구</strong></td>
+                                                                <td>6개월</td>
+                                                                <td class="al">&nbsp;</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <p class="color-1">주1) 단, 해외 직구TV는 구매한 해당 국가의 서비스 기준을 적용함 (국내 서비스 기준을 적용하지 않음)</p>
+                                            </dd>
+                                            <dt>
+                                                3) 부품 보증기간
+                                            </dt>
+                                            <dd>
+                                                <p class="bullet">부품 보증이라 함은 제품을 구성하는 각 부품에 대한 품질 보증을 말하며 기본적으로 제품 보증기간과 동일하게 적용합니다.</p>
+                                                <p class="bullet">단, 핵심부품으로 선정된 부품은 별도 기준에 의거 아래와 같이 보증기간을 적용합니다.</p>
+                                            </dd>
+                                            <dd>
+                                                <div class="tbl tbl-vertical scroll-x">
+                                                    <table class="tbl-list">
+                                                        <caption>부품 보증기간</caption>
+                                                        <colgroup>
+                                                            <col style="width:25%;">
+                                                            <col style="width:25%;">
+                                                            <col style="width:auto;">
+                                                            <col style="width:20%;">
+                                                        </colgroup>
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col" colspan="2">제품</th>
+                                                                <th scope="col">핵심부품</th>
+                                                                <th scope="col">보증기간</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td rowspan="4" class="vt"><strong>TV</strong></td>
+                                                                <td>울트라HD/OLED/LED</td>
+                                                                <td class="al" rowspan="3">패널<sup class="point2">주1</sup></td>
+                                                                <td rowspan="3">2년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>LCD</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>PDP</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>일반</td>
+                                                                <td class="al">CDT</td>
+                                                                <td>3년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="2" class="vt"><strong>모니터</strong></td>
+                                                                <td>일반</td>
+                                                                <td class="al">CDT<sup class="point2">주2</sup></td>
+                                                                <td>3년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>LCD</td>
+                                                                <td class="al">패널<sup class="point2">주3</sup></td>
+                                                                <td>2년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"><strong>PC</strong></td>
+                                                                <td class="al">메인보드</td>
+                                                                <td>2년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"><strong>LCD 모니터 본체 일체형 PC</strong></td>
+                                                                <td class="al">LCD 패널<sup class="point2">주4</sup>, 메인보드</td>
+                                                                <td>2년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"><strong>로터리/팬히터</strong></td>
+                                                                <td class="al">버너</td>
+                                                                <td>3년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" rowspan="2"><strong>전자레인지</strong></td>
+                                                                <td class="al">마그네트론</td>
+                                                                <td>3년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">인버터 마그네트론<br>('17년 3월 이후 생산 제품)</td>
+                                                                <td>10년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"><strong>광파오븐렌지</strong></td>
+                                                                <td class="al">인버터 마그네트론<br>('17년 3월 이후 생산 제품)</td>
+                                                                <td>10년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" rowspan="2"><strong>냉장고</strong></td>
+                                                                <td class="al">리니어 컴프레서<br>('09년 10월 이후 생산 제품)</td>
+                                                                <td>10년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">컴프레서</td>
+                                                                <td>3년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" rowspan="2"><strong>에어컨</strong></td>
+                                                                <td class="al">인버터 컴프레서<sup class="point2">주5</sup><br>('15년 1월 이후 생산 제품)</td>
+                                                                <td>10년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">컴프레서</td>
+                                                                <td>4년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" rowspan="2"><strong>세탁기</strong></td>
+                                                                <td class="al">DD모터<br>('08년 8월 이후 생산 제품)</td>
+                                                                <td>10년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">모터</td>
+                                                                <td>3년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" rowspan="2"><strong>건조기</strong></td>
+                                                                <td class="al">인버터 컴프레서<br>('16년 5월 이후 생산 제품)</td>
+                                                                <td>10년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">인버터 모터<br>('16년 5월 이후 생산 제품)</td>
+                                                                <td>10년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"><strong>식기세척기</strong></td>
+                                                                <td class="al">DD모터<sup class="point2">주6</sup><br>('10년 1월 이후 생산 제품)</td>
+                                                                <td>10년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" rowspan="2"><strong>제습기</strong></td>
+                                                                <td class="al">인버터 컴프레서<br>('15년 1월 이후 생산 제품)</td>
+                                                                <td>10년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">컴프레서<br>('14년 1월 이후 생산 제품)</td>
+                                                                <td>4년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"><strong>청소기</strong></td>
+                                                                <td class="al">인버터모터<br>('14년 12월 출시 '코드제로 싸이킹 전체')</td>
+                                                                <td>10년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"><strong>스타일러</strong></td>
+                                                                <td class="al">인버터 컴프레서<br>('15년 9월 이후 생산 제품)</td>
+                                                                <td>10년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"><strong>공기청정기</strong></td>
+                                                                <td class="al">인버터모터<br>('15년 9월 이후 생산 제품)</td>
+                                                                <td>10년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"><strong>가습기</strong></td>
+                                                                <td class="al">인버터모터<br>('15년 9월 이후 생산된 자연기화식 제품)</td>
+                                                                <td>10년</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </dd>
+                                            <dd>
+                                                <div class="note-box">
+                                                    <ul class="bullet-list">
+                                                        <li>핵심부품은 소비자 분쟁 해결 기준에서 정한 제품별 가장 중요한 부품을 말하며, 보증기간 내 핵심부품 교체 수리는 무상으로 처리함.</li>
+                                                        <li>
+                                                            핵심부품 보증기간 이내 핵심부품 수리 시 수리비 전액(부품대+수리비) 무상 적용함.
+                                                            <p><span class="color-1">주1)</span> LED/LCD/PDP 패널은 소비자가 확인 가능한 타이머가 부착된 제품으로 5,000시간을 초과한 경우에는 기간이 만료된 것으로 함. OLED 패널은 5,000시간을 적용하지 않고, 보증기간 2년을 적용함.</p>
+                                                            <p><span class="color-1">주2)</span> 단, 모니터용 CDT의 경우에는 소비자가 확인 가능한 타이머가 부착된 제품으로서 10,000시간을 초과한 경우에는 기간이 만료된 것으로 함.</p>
+                                                            <p><span class="color-1">주3)</span> 단, 노트북 LCD는 제외.</p>
+                                                            <p><span class="color-1">주4)</span> 단, '16년 10월 26일 이후 생산된 제품 부터 적용하며, 16년 10월 25일 이전 생산된 제품의 경우 TV 기능이 없는 일체형 PC 모델의 모듈은 1년을 적용함.</p>
+                                                            <p><span class="color-1">주5)</span> 천장형과 업소/상업용 스텐드 에어컨은 대상 아님.</p>
+                                                            <p><span class="color-1">주6)</span> 단, DD모터가 아닌 일반모터의 무상보증기간은 1년임.</p>
+                                                        </li>
+                                                        <li>전자레인지, 광파오븐레인지, 냉장고, 에어컨, 세탁기, 건조기, 식기세척기, 제습기, 청소기, 스타일러, 공기청정기, 가습기 중 인버터 마그네트론, 리니어/인버터 컴프레서,
+                                                            DD모터, 인버터 모터 적용 모델에 대해서 해당 모델의 핵심부품 보증기간을 준수하지 못함으로 인해 수리불가 등의 사유가 발행할 경우, 제품의 잔존가치는 
+                                                            「소비자분쟁해결기준」상 제품의 내용연수가 아닌 해당 부품의 보증기간을 기준으로 산정함.</li>
+                                                    </ul>
+                                                </div>
+                                            </dd>
                                         </dl>
-                                        </section>
+                                    </section>
 
-                                        <section class="section">
-                                            <h3 class="h-tit-3">2. 일반제품 이전설치 비용</h3>
-                                            <p>일반제품 이전/설치 비용은 해당 서비스를 제공하는 판토스 홈페이지를 통해 확인하실 수 있습니다. <a href="http://www.pantos.com/kr/customer/lgapp.do" target="_blank" title="새창열림" style="text-decoration:underline;">바로가기</a></p>
-                                        </section>
-
-                                        <div class="sns-box">
-                                            <a href="" class="sns-icon sns1"><span class="blind">카카오톡</span></a>
-                                            <a href="" class="sns-icon sns2"><span class="blind">페이스북</span></a>
-                                            <a href="" class="sns-icon sns3"><span class="blind">트위터</span></a>
-                                        </div>
-                                    </div>
-
-                                    <div class="btnarea-r btn-group">
-                                        <a href="#n" class="btn black"><span>설치/철거 예약</span></a>
+                                    <div class="sns-box">
+                                        <a href="" class="sns-icon sns1"><span class="blind">카카오톡</span></a>
+                                        <a href="" class="sns-icon sns2"><span class="blind">페이스북</span></a>
+                                        <a href="" class="sns-icon sns3"><span class="blind">트위터</span></a>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div id="tab3">
-                                    <div class="section-area">
-                                        <section class="section">
-                                            <h3 class="h-tit-3">1. 보증기간 안내</h3>
-                                            <dl class="dl-list">
-                                                <dt>1) 보증기간 산정 기준</dt>
-                                                <dd class="bullet">저희 LG전자 서비스는 품목별 소비자 피해 보상규정에 의거 아래와 같이 제품에 대한 보증을 실시합니다.</dd>
-                                                <dt>2) 제품 산정 기준</dt>
-                                                <dd>
-                                                    <p class="bullet">제품 보증기간이라 함은 제조사 또는 제품 판매자가 소비자에게 정상적인 상태에서 자연 발생한 품질 성능 기능 하자에 대하여 무료 수리해 주겠다고 약속한 기간을 말합니다.</p>
-                                                    <p class="bullet">제품 보증기간은 구입일자를 기준으로 산정하며 구입일자의 확인은 제품보증서를 기준으로 합니다. 단 보증서가 없는 경우는 제조일(제조번호 검사필증)로부터 3개월이 경과한 날로부터 보증기간을 계산합니다.</p>
-                                                </dd>
-                                                <dd>
-                                                    <div class="note-box">
-                                                        <h4 class="h-tit-4 color-1">다음의 경우는 보증기간이 정상적인 경우의 절반으로 단축 적용됩니다.</h4>
-                                                        <p>1. 가정용 세탁기를 영업용도로 사용하는 경우</p>
-                                                        <ul class="bullet-list">
-                                                            <li>세탁기 : 사우나,목욕탕,세탁소</li>
-                                                            <li>냉장고,밥솥,전자레인지:식당,편의점</li>
-                                                        </ul>
-                                                        <p>2. 차량,선박 등에 탑재하는 등 정상적인 사용환경이 아닌 곳에서 사용하는 경우</p>
-                                                        <p>3. VCR제품을 Video Shop에서 영업용으로 사용하는 경우와 유선방송 전문업체, 비디오방에서 사용하는 경우</p>
-                                                    </div>
-                                                </dd>
-                                                <dd>
-                                                    <p class="bullet">중고품(전파상 구입,모조품) 구입시 보증기간은 적용되지 않으며 수리 불가의 경우 피해보상을 책임지지 않습니다.</p>
-                                                    <p class="bullet">당사와의 계약을 통해 납품되는 제품의 보증은 그 계약내용을 기준으로 합니다.</p>
-                                                    <p class="bullet">제품별 보증기간</p>
-                                                </dd>
-                                                <dd>
-                                                    <div class="scroll-x">
-                                                        <table class="tbl type-A">
-                                                            <caption>제품별 보증기간</caption>
-                                                            <colgroup>
-                                                                <col style="width:20%;">
-                                                                <col style="width:15%;">
-                                                                <col style="width:auto;">
-                                                            </colgroup>
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">구분</th>
-                                                                    <th scope="col">보증기간</th>
-                                                                    <th scope="col">비고</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td><strong>일반제품</strong></td>
-                                                                    <td>1년</td>
-                                                                    <td class="al"><p>휴대전화, TV<sup class="point2">주1)</sup>, 냉장고, 세탁기, 청소기, 주방기기, 가습기, PC, 모니터, 프린터 등</p>
-                                                                        <p class="point2 fs14 mt10">※ 휴대전화 : '20년 1월 1일 이후 구입분은 2년 적용 (단, 배터리/악세사리 1년)</p>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>계절성 상품</strong></td>
-                                                                    <td>2년</td>
-                                                                    <td class="al"><p>에어컨, 선풍기, 난방기, 히터 등</p>
-                                                                        <p class="point2 fs14 mt10">※ 시스템 에어컨 : '13년 6월 이전 설치분은 1년 적용 </p>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><strong>LED 전구</strong></td>
-                                                                    <td>6개월</td>
-                                                                    <td class="al">&nbsp;</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <p class="color-1">주1) 단, 해외 직구TV는 구매한 해당 국가의 서비스 기준을 적용함 (국내 서비스 기준을 적용하지 않음)</p>
-                                                </dd>
-                                                <dt>
-                                                    3) 부품 보증기간
-                                                </dt>
-                                                <dd>
-                                                    <p class="bullet">부품 보증이라 함은 제품을 구성하는 각 부품에 대한 품질 보증을 말하며 기본적으로 제품 보증기간과 동일하게 적용합니다.</p>
-                                                    <p class="bullet">단, 핵심부품으로 선정된 부품은 별도 기준에 의거 아래와 같이 보증기간을 적용합니다.</p>
-                                                </dd>
-                                                <dd>
-                                                    <div class="scroll-x">
-                                                        <table class="tbl type-A">
-                                                            <caption>부품 보증기간</caption>
-                                                            <colgroup>
-                                                                <col style="width:25%;">
-                                                                <col style="width:25%;">
-                                                                <col style="width:auto;">
-                                                                <col style="width:20%;">
-                                                            </colgroup>
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col" colspan="2">제품</th>
-                                                                    <th scope="col">핵심부품</th>
-                                                                    <th scope="col">보증기간</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td rowspan="4" class="vt"><strong>TV</strong></td>
-                                                                    <td>울트라HD/OLED/LED</td>
-                                                                    <td class="al" rowspan="3">패널<sup class="point2">주1</sup></td>
-                                                                    <td rowspan="3">2년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>LCD</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>PDP</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>일반</td>
-                                                                    <td class="al">CDT</td>
-                                                                    <td>3년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td rowspan="2" class="vt"><strong>모니터</strong></td>
-                                                                    <td>일반</td>
-                                                                    <td class="al">CDT<sup class="point2">주2</sup></td>
-                                                                    <td>3년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>LCD</td>
-                                                                    <td class="al">패널<sup class="point2">주3</sup></td>
-                                                                    <td>2년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2"><strong>PC</strong></td>
-                                                                    <td class="al">메인보드</td>
-                                                                    <td>2년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2"><strong>LCD 모니터 본체 일체형 PC</strong></td>
-                                                                    <td class="al">LCD 패널<sup class="point2">주4</sup>, 메인보드</td>
-                                                                    <td>2년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2"><strong>로터리/팬히터</strong></td>
-                                                                    <td class="al">버너</td>
-                                                                    <td>3년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2" rowspan="2"><strong>전자레인지</strong></td>
-                                                                    <td class="al">마그네트론</td>
-                                                                    <td>3년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">인버터 마그네트론<br>('17년 3월 이후 생산 제품)</td>
-                                                                    <td>10년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2"><strong>광파오븐렌지</strong></td>
-                                                                    <td class="al">인버터 마그네트론<br>('17년 3월 이후 생산 제품)</td>
-                                                                    <td>10년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2" rowspan="2"><strong>냉장고</strong></td>
-                                                                    <td class="al">리니어 컴프레서<br>('09년 10월 이후 생산 제품)</td>
-                                                                    <td>10년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">컴프레서</td>
-                                                                    <td>3년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2" rowspan="2"><strong>에어컨</strong></td>
-                                                                    <td class="al">인버터 컴프레서<sup class="point2">주5</sup><br>('15년 1월 이후 생산 제품)</td>
-                                                                    <td>10년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">컴프레서</td>
-                                                                    <td>4년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2" rowspan="2"><strong>세탁기</strong></td>
-                                                                    <td class="al">DD모터<br>('08년 8월 이후 생산 제품)</td>
-                                                                    <td>10년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">모터</td>
-                                                                    <td>3년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2" rowspan="2"><strong>건조기</strong></td>
-                                                                    <td class="al">인버터 컴프레서<br>('16년 5월 이후 생산 제품)</td>
-                                                                    <td>10년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">인버터 모터<br>('16년 5월 이후 생산 제품)</td>
-                                                                    <td>10년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2"><strong>식기세척기</strong></td>
-                                                                    <td class="al">DD모터<sup class="point2">주6</sup><br>('10년 1월 이후 생산 제품)</td>
-                                                                    <td>10년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2" rowspan="2"><strong>제습기</strong></td>
-                                                                    <td class="al">인버터 컴프레서<br>('15년 1월 이후 생산 제품)</td>
-                                                                    <td>10년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">컴프레서<br>('14년 1월 이후 생산 제품)</td>
-                                                                    <td>4년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2"><strong>청소기</strong></td>
-                                                                    <td class="al">인버터모터<br>('14년 12월 출시 '코드제로 싸이킹 전체')</td>
-                                                                    <td>10년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2"><strong>스타일러</strong></td>
-                                                                    <td class="al">인버터 컴프레서<br>('15년 9월 이후 생산 제품)</td>
-                                                                    <td>10년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2"><strong>공기청정기</strong></td>
-                                                                    <td class="al">인버터모터<br>('15년 9월 이후 생산 제품)</td>
-                                                                    <td>10년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2"><strong>가습기</strong></td>
-                                                                    <td class="al">인버터모터<br>('15년 9월 이후 생산된 자연기화식 제품)</td>
-                                                                    <td>10년</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </dd>
-                                                <dd>
-                                                    <div class="note-box">
-                                                        <ul class="bullet-list">
-                                                            <li>핵심부품은 소비자 분쟁 해결 기준에서 정한 제품별 가장 중요한 부품을 말하며, 보증기간 내 핵심부품 교체 수리는 무상으로 처리함.</li>
+                            <div id="tab4">
+                                <div class="section-area">
+                                    <section class="section">
+                                        <h3 class="h-tit-3">소비자분쟁해결기준 (공정거래위원회 고시)</h3>
+                                        <dl class="dl-list">
+                                            <dt>제1조(목적)</dt>
+                                            <dd>이 고시는 소비자기본법 제16조 제2항과 같은 법 시행령 제8조 제3항의 규정에 의해 일반적 소비자분쟁해결기준에 따라 품목별 소비자분쟁해결기준을 정함으로써 소비자와 사업자(이하 “분쟁당사자”라 한다)간에 발생한 분쟁이 원활하게 해결될 수 있도록 구체적인 합의 또는 권고의 기준을 제시하는데 그 목적이 있다.</dd>
+                                            <dt>제2조(피해구제청구)</dt>
+                                            <dd>분쟁당사자간에 합의가 이루어지지 않을 경우 분쟁당사자는 중앙행정기관의 장, 시·도지사, 한국소비자원장 또는 소비자단체에게 그 피해구제를 청구할 수 있다.</dd>
+                                            <dt>제3조(품목 및 보상기준)</dt>
+                                            <dd>
+                                                <p>이 고시에서 정하는 대상품목, 품목별분쟁해결기준, 품목별 품질보증기간 및 부품보유기간, 품목별 내용연수표는 각각 별표 Ⅰ, 별표 Ⅱ, 별표 Ⅲ, 별표 Ⅳ와 같다.</p>
+                                                <p>※ 자사는 소비자분쟁해결기준을 준수하고 있으며, 기타 자세한 소비자 분쟁 해결 기준은 공정거래위원회 홈페이지 “위원회 소관 법령 상 소비자 기본법 소비자 분쟁 해결 기준” 참조</p>
+                                            </dd>
+                                            <dt>Ⅰ. 분쟁해결기준 (가전제품, TV/휴대폰)</dt>
+                                            <dd>
+                                                <h4 class="h-tit-4">1. 분쟁유형</h4>
+                                                <ul class="list">
+                                                    <li>
+                                                        (1) 구입 후 10일 이내에 정상적인 사용상태에서 발생한 성능·기능상의 하자로 중요한 수리를 요할 때<br>
+                                                        - 제품 교환 또는 구입가 환급
+                                                    </li>
+                                                    <li>
+                                                        (2) 구입 후 1개월 이내에 정상적인 사용상태에서 발생한 성능·기능상의 하자로 중요한 수리를 요할 때
+                                                        - 제품 교환 또는 무상수리
+                                                    </li>
+                                                    <li>
+                                                        (3) 품질보증기간 이내에 정상적인 사용상태에서 발생한 성능·기능상의 하자
+                                                        <ul>
                                                             <li>
-                                                                핵심부품 보증기간 이내 핵심부품 수리 시 수리비 전액(부품대+수리비) 무상 적용함.
-                                                                <p><span class="color-1">주1)</span> LED/LCD/PDP 패널은 소비자가 확인 가능한 타이머가 부착된 제품으로 5,000시간을 초과한 경우에는 기간이 만료된 것으로 함. OLED 패널은 5,000시간을 적용하지 않고, 보증기간 2년을 적용함.</p>
-                                                                <p><span class="color-1">주2)</span> 단, 모니터용 CDT의 경우에는 소비자가 확인 가능한 타이머가 부착된 제품으로서 10,000시간을 초과한 경우에는 기간이 만료된 것으로 함.</p>
-                                                                <p><span class="color-1">주3)</span> 단, 노트북 LCD는 제외.</p>
-                                                                <p><span class="color-1">주4)</span> 단, '16년 10월 26일 이후 생산된 제품 부터 적용하며, 16년 10월 25일 이전 생산된 제품의 경우 TV 기능이 없는 일체형 PC 모델의 모듈은 1년을 적용함.</p>
-                                                                <p><span class="color-1">주5)</span> 천장형과 업소/상업용 스텐드 에어컨은 대상 아님.</p>
-                                                                <p><span class="color-1">주6)</span> 단, DD모터가 아닌 일반모터의 무상보증기간은 1년임.</p>
+                                                                1) 하자 발생 시<br>
+                                                                - 무상수리
                                                             </li>
-                                                            <li>전자레인지, 광파오븐레인지, 냉장고, 에어컨, 세탁기, 건조기, 식기세척기, 제습기, 청소기, 스타일러, 공기청정기, 가습기 중 인버터 마그네트론, 리니어/인버터 컴프레서,
-                                                                DD모터, 인버터 모터 적용 모델에 대해서 해당 모델의 핵심부품 보증기간을 준수하지 못함으로 인해 수리불가 등의 사유가 발행할 경우, 제품의 잔존가치는 
-                                                                「소비자분쟁해결기준」상 제품의 내용연수가 아닌 해당 부품의 보증기간을 기준으로 산정함.</li>
+                                                            <li>
+                                                                2) 수리 불가능시<br>
+                                                                - 제품교환 또는 구입가 환급
+                                                            </li>
+                                                            <li>
+                                                                3) 교환 불가능시<br>
+                                                                - 구입가 환급
+                                                            </li>
+                                                            <li>
+                                                                4) 동일 하자에 대하여 3회차 수리시<br>
+                                                                - 교환 또는 구입가 환급
+                                                            </li>
+                                                            <li>
+                                                                5) 여러 부위의 고장으로 5회차 수리시<br>
+                                                                - 교환 또는 구입가 환급
+                                                            </li>
+                                                            <li>
+                                                                6) 교환된 제품이 1개월 이내에 중요한 수리를 요할 때<br>
+                                                                - 구입가 환급
+                                                            </li>
                                                         </ul>
-                                                    </div>
-                                                </dd>
-                                            </dl>
-                                        </section>
-
-                                        <div class="sns-box">
-                                            <a href="" class="sns-icon sns1"><span class="blind">카카오톡</span></a>
-                                            <a href="" class="sns-icon sns2"><span class="blind">페이스북</span></a>
-                                            <a href="" class="sns-icon sns3"><span class="blind">트위터</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="tab4">
-                                    <div class="section-area">
-                                        <section class="section">
-                                            <h3 class="h-tit-3">소비자분쟁해결기준 (공정거래위원회 고시)</h3>
-                                            <dl class="dl-list">
-                                                <dt>제1조(목적)</dt>
-                                                <dd>이 고시는 소비자기본법 제16조 제2항과 같은 법 시행령 제8조 제3항의 규정에 의해 일반적 소비자분쟁해결기준에 따라 품목별 소비자분쟁해결기준을 정함으로써 소비자와 사업자(이하 “분쟁당사자”라 한다)간에 발생한 분쟁이 원활하게 해결될 수 있도록 구체적인 합의 또는 권고의 기준을 제시하는데 그 목적이 있다.</dd>
-                                                <dt>제2조(피해구제청구)</dt>
-                                                <dd>분쟁당사자간에 합의가 이루어지지 않을 경우 분쟁당사자는 중앙행정기관의 장, 시·도지사, 한국소비자원장 또는 소비자단체에게 그 피해구제를 청구할 수 있다.</dd>
-                                                <dt>제3조(품목 및 보상기준)</dt>
-                                                <dd>
-                                                    <p>이 고시에서 정하는 대상품목, 품목별분쟁해결기준, 품목별 품질보증기간 및 부품보유기간, 품목별 내용연수표는 각각 별표 Ⅰ, 별표 Ⅱ, 별표 Ⅲ, 별표 Ⅳ와 같다.</p>
-                                                    <p>※ 자사는 소비자분쟁해결기준을 준수하고 있으며, 기타 자세한 소비자 분쟁 해결 기준은 공정거래위원회 홈페이지 “위원회 소관 법령 상 소비자 기본법 소비자 분쟁 해결 기준” 참조</p>
-                                                </dd>
-                                                <dt>Ⅰ. 분쟁해결기준 (가전제품, TV/휴대폰)</dt>
-                                                <dd>
-                                                    <h4 class="h-tit-4">1. 분쟁유형</h4>
-                                                    <ul class="list">
+                                                    </li>
+                                                    <li>
+                                                        (4) 소비자가 수리 의뢰한 제품을 사업자가 분실한 경우
+                                                        <ul class="bullet-list">
+                                                            <li>
+                                                                정상 사용 중 성능·기능상의 하자로 인해 발생된 경우<br>
+                                                                - 제품교환 또는 구입가 환급
+                                                            </li>
+                                                            <li>
+                                                                소비자의 고의·과실로 인한 고장인 경우<br>
+                                                                - 유상수리에 해당하는 금액 징수 후 제품교환
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        (5) 부품보유기간 이내에 수리용 부품을 보유하고 있지 않아 발생한 피해
+                                                        <ul>
+                                                            <li>
+                                                                1) 품질보증기간 이내
+                                                                <ul class="bullet-list">
+                                                                    <li>
+                                                                        정상 사용 중 성능·기능상의 하자로 인해 발생된 경우<br>
+                                                                        - 제품교환 또는 구입가 환급
+                                                                    </li>
+                                                                    <li>
+                                                                        소비자의 고의·과실로 인한 고장인 경우<br>
+                                                                        - 유상수리에 해당하는 금액 징수 후 제품교환
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                2) 품질보증기간 경과 후
+                                                                <ul class="bullet-list">
+                                                                    <li>
+                                                                        2011년 12월 28일 이전 구입 제품<br>
+                                                                        - 정액감가상각한 금액에 100분의 10을 더하여 환급
+                                                                    </li>
+                                                                    <li>
+                                                                        2011년 12월 28일 이후 구입 제품<br>
+                                                                        - 정액감가상각한 잔여 금액에 구입가의 5%를 가산하여 환급(감가상각한 잔여금액 &lt; 0 이면, 0으로 계산)
+                                                                    </li>
+                                                                    <li>
+                                                                        2016년 10월 26일 이후 구입 제품<br>
+                                                                        - 정액감가상각한 잔여 금액에 구입가의 5%를 가산하여 환급
+                                                                    </li>
+                                                                    <li>
+                                                                        2018년 2월 28일 이후 구입 제품<br>
+                                                                        - 정액감가상각한 잔여 금액에 구입가의 10%를 가산하여 환급
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        (6) 제품 구입시 운송과정에서 발생된 피해<br>
+                                                        - 제품 교환
+                                                    </li>
+                                                    <li>
+                                                        (7) 사업자가 제품 설치 중 발생된 피해<br>
+                                                        - 제품 교환
+                                                    </li>
+                                                </ul>
+                                            </dd>
+                                            <dd>
+                                                <h4 class="h-tit-4">2. 비고</h4>
+                                                <ul class="list">
+                                                    <li>
+                                                        (1) 가전제품, TV
+                                                        <ul class="bullet-list">
+                                                            <li>품질보증기간 이내에 동일하자에 대해 2회까지 수리하였으나, 하자가 재발하는 경우 또는 여러 부위 하자에 대해 4회까지 수리하였으나, 하자가 재발하는 경우는 수리 불가능한 것으로 봄.</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        (2) 휴대폰
+                                                        <ul class="bullet-list">
+                                                            <li>
+                                                                품질보증기간 중 최근 1년(수리접수일 기준) 이내의 동일 하자에 대해 2회까지 수리하였으나, 하자가 재발하는 경우 또는 여러 부위 하자에 대해 4회까지 수리하였으나, 하자가 재발하는 경우는 수리가 불가능한 경우로 봄.품질보증기간 이내에 동일하자에 대해 2회까지 수리하였으나, 하자가 재발하는 경우 또는 여러 부위 하자에 대해 4회까지 수리하였으나, 하자가 재발하는 경우는 수리 불가능한 것으로 봄.
+                                                                ※ 리퍼폰 교환은 무상 수리로 봄.
+                                                            </li>
+                                                            <li>
+                                                                품질보증기간 중 최근 1년(수리접수일 기준) 이내에 발생한 정상 사용에 따른 하자로 인해 동일인이 4회까지 리퍼폰으로 교환하였으나 또 다시 리퍼폰 교환 사유가 발생하는 경우는 수리 또는 리퍼폰 교환이 불가능한 경우로 봄.
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        (3) 공통
+                                                        <ul class="bullet-list">
+                                                            <li>
+                                                                감가상각방법은 정액법에 의하되 내용연수는 소비자분쟁해결기준 별표Ⅳ 내용연수(월할계산)를 적용<br>
+                                                                - 감가상각비 계산은 (사용연수 / 내용연수) × 구입가<br>
+                                                                - 감가상각 잔여금의 계산은 (구입가 – 감가상각비)
+                                                            </li>
+                                                            <li>
+                                                                제조사가 리퍼부품을 활용하여 수리한 경우, 수리한 날로부터 1년 이내에 소비자가 정상적으로 사용하는 과정에서 그 수리한 부분에 고장이 재발하면 무상으로 수리함.<br>
+                                                                ※ 리퍼부품 : 기존제품에서 회수된 부품으로서 일정한 가공 과정 등을 거침으로써 성능과 품질이 신부품과 동등한 상태로 개선된 부품
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </dd>
+                                            <dt>Ⅱ. 품목별 부품보유기간 및 내용연수</dt>
+                                            <dd>
+                                                <h4 class="h-tit-4">1. 2016년 10월 25일까지 제조된 제품</h4>
+                                                <div class="tbl tbl-vertical scroll-x">
+                                                    <table class="tbl-list">
+                                                        <caption>2016년 10월 25일까지 제조된 제품 중 품목별 품질보증기간, 부품보유기간 및 내용연수</caption>
+                                                        <colgroup>
+                                                            <col style="width:auto;">
+                                                            <col style="width:13%;">
+                                                            <col style="width:13%;">
+                                                            <col style="width:34%;">
+                                                        </colgroup>
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">품목</th>
+                                                                <th scope="col">품질보증기간</th>
+                                                                <th scope="col">부품보유기간</th>
+                                                                <th scope="col">내용연수</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="al">TV, 냉장고</td>
+                                                                <td>1년</td>
+                                                                <td>8년</td>
+                                                                <td>7년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">에어컨, 시스템 에어컨</td>
+                                                                <td>2년</td>
+                                                                <td>7년</td>
+                                                                <td>7년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">제/가습기, 냉온풍기, 스테레오, 전자렌지, 정수기, 청소기</td>
+                                                                <td>1년</td>
+                                                                <td>7년</td>
+                                                                <td>7년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">세탁기</td>
+                                                                <td>1년</td>
+                                                                <td>6년</td>
+                                                                <td>5년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">홈시어터, DVD레코더, 캠코더, 가스오븐, 유ㆍ무선전화기, 비디오, 밥솥</td>
+                                                                <td>1년</td>
+                                                                <td>6년</td>
+                                                                <td>6년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">히터, 선풍기, 식기세척기, 컴퓨터 주변기기, 팩시밀리, 셋탑박스, 스캐너, 고속레이저 복합기, 복사기, 에어크리너, 온풍기, 서버</td>
+                                                                <td>1년</td>
+                                                                <td>5년</td>
+                                                                <td>5년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">컴퓨터, 프린터, 복합기, 카세트, 모니터, MP3</td>
+                                                                <td>1년</td>
+                                                                <td>4년</td>
+                                                                <td>4년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">휴대전화, 스마트폰</td>
+                                                                <!-- 20200102 수정 <td>2년</td>-->
+                                                                <td>1년</td>
+                                                                <td>4년</td>
+                                                                <td>3년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">생활용품, 주방가전</td>
+                                                                <td>1년</td>
+                                                                <td>3년</td>
+                                                                <td>3년</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </dd>
+                                            <dd>
+                                                <h4 class="h-tit-4">1. 2016년 10월 25일까지 제조된 제품</h4>
+                                                <div class="tbl tbl-vertical scroll-x">
+                                                    <table class="tbl-list">
+                                                        <caption>2016년 10월 26일부터 제조된 제품 중 품목별 품질보증기간, 부품보유기간 및 내용연수</caption>
+                                                        <colgroup>
+                                                            <col style="width:auto;">
+                                                            <col style="width:13%;">
+                                                            <col style="width:13%;">
+                                                            <col style="width:34%;">
+                                                        </colgroup>
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">품목</th>
+                                                                <th scope="col">품질보증기간</th>
+                                                                <th scope="col">부품보유기간</th>
+                                                                <th scope="col">내용연수</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="al">TV, 냉장고</td>
+                                                                <td>1년</td>
+                                                                <td>9년</td>
+                                                                <td rowspan="9">사업자가 품질보증서에 표시한 부품 보유기간으로 함.</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">에어컨, 시스템 에어컨</td>
+                                                                <td>2년</td>
+                                                                <td>8년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">제/가습기, 냉온풍기, 스테레오, 전자렌지, 정수기, 청소기</td>
+                                                                <td>1년</td>
+                                                                <td>7년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">세탁기</td>
+                                                                <td>1년</td>
+                                                                <td>7년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">홈시어터, DVD레코더, 캠코더, 가스오븐, 유ㆍ무선전화기, 비디오, 밥솥</td>
+                                                                <td>1년</td>
+                                                                <td>6년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">히터, 선풍기, 식기세척기, 컴퓨터 주변기기, 팩시밀리, 셋탑박스, 스캐너, 고속레이저 복합기, 복사기, 에어크리너, 온풍기, 서버</td>
+                                                                <td>1년</td>
+                                                                <td>5년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">컴퓨터, 프린터, 복합기, 카세트, 모니터, MP3</td>
+                                                                <td>1년</td>
+                                                                <td>4년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">휴대전화, 스마트폰</td>
+                                                                <!-- <td>2년</td> -->
+                                                                <td>* 1년</td>
+                                                                <td>4년</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="al">생활용품, 주방가전</td>
+                                                                <td>1년</td>
+                                                                <td>3년</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </dd>
+                                            <dd>
+                                                <div class="note-box">
+                                                    <ul class="bullet-list">
                                                         <li>
-                                                            (1) 구입 후 10일 이내에 정상적인 사용상태에서 발생한 성능·기능상의 하자로 중요한 수리를 요할 때<br>
-                                                            - 제품 교환 또는 구입가 환급
+                                                            휴대폰/스마트폰의 품질보증기간은 2020년 1월 1일 이후 구입제품부터 2년 적용함. (단, 배터리/악세사리 1년)<br>
+                                                            (2019년 12월 31일까지 품질보증기간 1년임)
                                                         </li>
                                                         <li>
-                                                            (2) 구입 후 1개월 이내에 정상적인 사용상태에서 발생한 성능·기능상의 하자로 중요한 수리를 요할 때
-                                                            - 제품 교환 또는 무상수리
-                                                        </li>
-                                                        <li>
-                                                            (3) 품질보증기간 이내에 정상적인 사용상태에서 발생한 성능·기능상의 하자
-                                                            <ul>
-                                                                <li>
-                                                                    1) 하자 발생 시<br>
-                                                                    - 무상수리
-                                                                </li>
-                                                                <li>
-                                                                    2) 수리 불가능시<br>
-                                                                    - 제품교환 또는 구입가 환급
-                                                                </li>
-                                                                <li>
-                                                                    3) 교환 불가능시<br>
-                                                                    - 구입가 환급
-                                                                </li>
-                                                                <li>
-                                                                    4) 동일 하자에 대하여 3회차 수리시<br>
-                                                                    - 교환 또는 구입가 환급
-                                                                </li>
-                                                                <li>
-                                                                    5) 여러 부위의 고장으로 5회차 수리시<br>
-                                                                    - 교환 또는 구입가 환급
-                                                                </li>
-                                                                <li>
-                                                                    6) 교환된 제품이 1개월 이내에 중요한 수리를 요할 때<br>
-                                                                    - 구입가 환급
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            (4) 소비자가 수리 의뢰한 제품을 사업자가 분실한 경우
-                                                            <ul class="bullet-list">
-                                                                <li>
-                                                                    정상 사용 중 성능·기능상의 하자로 인해 발생된 경우<br>
-                                                                    - 제품교환 또는 구입가 환급
-                                                                </li>
-                                                                <li>
-                                                                    소비자의 고의·과실로 인한 고장인 경우<br>
-                                                                    - 유상수리에 해당하는 금액 징수 후 제품교환
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            (5) 부품보유기간 이내에 수리용 부품을 보유하고 있지 않아 발생한 피해
-                                                            <ul>
-                                                                <li>
-                                                                    1) 품질보증기간 이내
-                                                                    <ul class="bullet-list">
-                                                                        <li>
-                                                                            정상 사용 중 성능·기능상의 하자로 인해 발생된 경우<br>
-                                                                            - 제품교환 또는 구입가 환급
-                                                                        </li>
-                                                                        <li>
-                                                                            소비자의 고의·과실로 인한 고장인 경우<br>
-                                                                            - 유상수리에 해당하는 금액 징수 후 제품교환
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li>
-                                                                    2) 품질보증기간 경과 후
-                                                                    <ul class="bullet-list">
-                                                                        <li>
-                                                                            2011년 12월 28일 이전 구입 제품<br>
-                                                                            - 정액감가상각한 금액에 100분의 10을 더하여 환급
-                                                                        </li>
-                                                                        <li>
-                                                                            2011년 12월 28일 이후 구입 제품<br>
-                                                                            - 정액감가상각한 잔여 금액에 구입가의 5%를 가산하여 환급(감가상각한 잔여금액 &lt; 0 이면, 0으로 계산)
-                                                                        </li>
-                                                                        <li>
-                                                                            2016년 10월 26일 이후 구입 제품<br>
-                                                                            - 정액감가상각한 잔여 금액에 구입가의 5%를 가산하여 환급
-                                                                        </li>
-                                                                        <li>
-                                                                            2018년 2월 28일 이후 구입 제품<br>
-                                                                            - 정액감가상각한 잔여 금액에 구입가의 10%를 가산하여 환급
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            (6) 제품 구입시 운송과정에서 발생된 피해<br>
-                                                            - 제품 교환
-                                                        </li>
-                                                        <li>
-                                                            (7) 사업자가 제품 설치 중 발생된 피해<br>
-                                                            - 제품 교환
+                                                            부품보유기간의 기산점은 해당제품의 제조일자를 기산점으로 한다.<br>
+                                                            (제조연도 또는 제조연월일만 기재된 경우 제조연도 또는 제조월의 말일을 제조일자로 봄)
                                                         </li>
                                                     </ul>
-                                                </dd>
-                                                <dd>
-                                                    <h4 class="h-tit-4">2. 비고</h4>
-                                                    <ul class="list">
-                                                        <li>
-                                                            (1) 가전제품, TV
-                                                            <ul class="bullet-list">
-                                                                <li>품질보증기간 이내에 동일하자에 대해 2회까지 수리하였으나, 하자가 재발하는 경우 또는 여러 부위 하자에 대해 4회까지 수리하였으나, 하자가 재발하는 경우는 수리 불가능한 것으로 봄.</li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            (2) 휴대폰
-                                                            <ul class="bullet-list">
-                                                                <li>
-                                                                    품질보증기간 중 최근 1년(수리접수일 기준) 이내의 동일 하자에 대해 2회까지 수리하였으나, 하자가 재발하는 경우 또는 여러 부위 하자에 대해 4회까지 수리하였으나, 하자가 재발하는 경우는 수리가 불가능한 경우로 봄.품질보증기간 이내에 동일하자에 대해 2회까지 수리하였으나, 하자가 재발하는 경우 또는 여러 부위 하자에 대해 4회까지 수리하였으나, 하자가 재발하는 경우는 수리 불가능한 것으로 봄.
-                                                                    ※ 리퍼폰 교환은 무상 수리로 봄.
-                                                                </li>
-                                                                <li>
-                                                                    품질보증기간 중 최근 1년(수리접수일 기준) 이내에 발생한 정상 사용에 따른 하자로 인해 동일인이 4회까지 리퍼폰으로 교환하였으나 또 다시 리퍼폰 교환 사유가 발생하는 경우는 수리 또는 리퍼폰 교환이 불가능한 경우로 봄.
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            (3) 공통
-                                                            <ul class="bullet-list">
-                                                                <li>
-                                                                    감가상각방법은 정액법에 의하되 내용연수는 소비자분쟁해결기준 별표Ⅳ 내용연수(월할계산)를 적용<br>
-                                                                    - 감가상각비 계산은 (사용연수 / 내용연수) × 구입가<br>
-                                                                    - 감가상각 잔여금의 계산은 (구입가 – 감가상각비)
-                                                                </li>
-                                                                <li>
-                                                                    제조사가 리퍼부품을 활용하여 수리한 경우, 수리한 날로부터 1년 이내에 소비자가 정상적으로 사용하는 과정에서 그 수리한 부분에 고장이 재발하면 무상으로 수리함.<br>
-                                                                    ※ 리퍼부품 : 기존제품에서 회수된 부품으로서 일정한 가공 과정 등을 거침으로써 성능과 품질이 신부품과 동등한 상태로 개선된 부품
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </dd>
-                                                <dt>Ⅱ. 품목별 부품보유기간 및 내용연수</dt>
-                                                <dd>
-                                                    <h4 class="h-tit-4">1. 2016년 10월 25일까지 제조된 제품</h4>
-                                                    <div class="scroll-x">
-                                                        <table class="tbl type-A">
-                                                            <caption>2016년 10월 25일까지 제조된 제품 중 품목별 품질보증기간, 부품보유기간 및 내용연수</caption>
-                                                            <colgroup>
-                                                                <col style="width:auto;">
-                                                                <col style="width:13%;">
-                                                                <col style="width:13%;">
-                                                                <col style="width:34%;">
-                                                            </colgroup>
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">품목</th>
-                                                                    <th scope="col">품질보증기간</th>
-                                                                    <th scope="col">부품보유기간</th>
-                                                                    <th scope="col">내용연수</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="al">TV, 냉장고</td>
-                                                                    <td>1년</td>
-                                                                    <td>8년</td>
-                                                                    <td>7년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">에어컨, 시스템 에어컨</td>
-                                                                    <td>2년</td>
-                                                                    <td>7년</td>
-                                                                    <td>7년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">제/가습기, 냉온풍기, 스테레오, 전자렌지, 정수기, 청소기</td>
-                                                                    <td>1년</td>
-                                                                    <td>7년</td>
-                                                                    <td>7년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">세탁기</td>
-                                                                    <td>1년</td>
-                                                                    <td>6년</td>
-                                                                    <td>5년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">홈시어터, DVD레코더, 캠코더, 가스오븐, 유ㆍ무선전화기, 비디오, 밥솥</td>
-                                                                    <td>1년</td>
-                                                                    <td>6년</td>
-                                                                    <td>6년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">히터, 선풍기, 식기세척기, 컴퓨터 주변기기, 팩시밀리, 셋탑박스, 스캐너, 고속레이저 복합기, 복사기, 에어크리너, 온풍기, 서버</td>
-                                                                    <td>1년</td>
-                                                                    <td>5년</td>
-                                                                    <td>5년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">컴퓨터, 프린터, 복합기, 카세트, 모니터, MP3</td>
-                                                                    <td>1년</td>
-                                                                    <td>4년</td>
-                                                                    <td>4년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">휴대전화, 스마트폰</td>
-                                                                    <!-- 20200102 수정 <td>2년</td>-->
-                                                                    <td>1년</td>
-                                                                    <td>4년</td>
-                                                                    <td>3년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">생활용품, 주방가전</td>
-                                                                    <td>1년</td>
-                                                                    <td>3년</td>
-                                                                    <td>3년</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </dd>
-                                                <dd>
-                                                    <h4 class="h-tit-4">1. 2016년 10월 25일까지 제조된 제품</h4>
-                                                    <div class="scroll-x">
-                                                        <table class="tbl type-A">
-                                                            <caption>2016년 10월 26일부터 제조된 제품 중 품목별 품질보증기간, 부품보유기간 및 내용연수</caption>
-                                                            <colgroup>
-                                                                <col style="width:auto;">
-                                                                <col style="width:13%;">
-                                                                <col style="width:13%;">
-                                                                <col style="width:34%;">
-                                                            </colgroup>
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">품목</th>
-                                                                    <th scope="col">품질보증기간</th>
-                                                                    <th scope="col">부품보유기간</th>
-                                                                    <th scope="col">내용연수</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="al">TV, 냉장고</td>
-                                                                    <td>1년</td>
-                                                                    <td>9년</td>
-                                                                    <td rowspan="9">사업자가 품질보증서에 표시한 부품 보유기간으로 함.</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">에어컨, 시스템 에어컨</td>
-                                                                    <td>2년</td>
-                                                                    <td>8년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">제/가습기, 냉온풍기, 스테레오, 전자렌지, 정수기, 청소기</td>
-                                                                    <td>1년</td>
-                                                                    <td>7년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">세탁기</td>
-                                                                    <td>1년</td>
-                                                                    <td>7년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">홈시어터, DVD레코더, 캠코더, 가스오븐, 유ㆍ무선전화기, 비디오, 밥솥</td>
-                                                                    <td>1년</td>
-                                                                    <td>6년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">히터, 선풍기, 식기세척기, 컴퓨터 주변기기, 팩시밀리, 셋탑박스, 스캐너, 고속레이저 복합기, 복사기, 에어크리너, 온풍기, 서버</td>
-                                                                    <td>1년</td>
-                                                                    <td>5년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">컴퓨터, 프린터, 복합기, 카세트, 모니터, MP3</td>
-                                                                    <td>1년</td>
-                                                                    <td>4년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">휴대전화, 스마트폰</td>
-                                                                    <!-- <td>2년</td> -->
-                                                                    <td>* 1년</td>
-                                                                    <td>4년</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="al">생활용품, 주방가전</td>
-                                                                    <td>1년</td>
-                                                                    <td>3년</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </dd>
-                                                <dd>
-                                                    <div class="note-box">
-                                                        <ul class="bullet-list">
-                                                            <li>
-                                                                휴대폰/스마트폰의 품질보증기간은 2020년 1월 1일 이후 구입제품부터 2년 적용함. (단, 배터리/악세사리 1년)<br>
-                                                                (2019년 12월 31일까지 품질보증기간 1년임)
-                                                            </li>
-                                                            <li>
-                                                                부품보유기간의 기산점은 해당제품의 제조일자를 기산점으로 한다.<br>
-                                                                (제조연도 또는 제조연월일만 기재된 경우 제조연도 또는 제조월의 말일을 제조일자로 봄)
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </dd>
-                                            </dl>
-                                        </section>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </section>
 
-                                        <div class="sns-box">
-                                            <a href="" class="sns-icon sns1"><span class="blind">카카오톡</span></a>
-                                            <a href="" class="sns-icon sns2"><span class="blind">페이스북</span></a>
-                                            <a href="" class="sns-icon sns3"><span class="blind">트위터</span></a>
-                                        </div>
+                                    <div class="sns-box">
+                                        <a href="" class="sns-icon sns1"><span class="blind">카카오톡</span></a>
+                                        <a href="" class="sns-icon sns2"><span class="blind">페이스북</span></a>
+                                        <a href="" class="sns-icon sns3"><span class="blind">트위터</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -1130,19 +1134,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
              
         @@include('./common/footer.html')
     </div>
-    <script>
-        $(window).ready(function() {
-            $(".scroll-x").mCustomScrollbar({
-                axis:"x",
-                advanced:{autoExpandHorizontalScroll:true},
-                mouseWheel: true
-            });
-        });
-    </script>
 </body>
 </html> 
