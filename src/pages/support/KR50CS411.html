@@ -2,11 +2,15 @@
 <html lang="ko">
 @@include('./common/head.html', {
     "pageCSS": [
+        "support/mCustomScrollbar",
         "support/participation"
     ],
     "pageJS": [
         "support-common",
         "support/participation"
+    ],
+    "libJS": [
+        "jquery.mCustomScrollbar"
     ]
 })
 <body>
@@ -24,31 +28,30 @@
                 }
             })
             
-            <div class="status-bar">
-                <div class="status-bar-inner">
-                    <div class="status">
-                        <strong class="status-title">선택 제품</strong>
-                        <ul class="status-list">
-                            <li>에어컨</li>
-                            <li>3 in 1</li>
-                        </ul>
-                    </div>
-                    <div class="guide">
-                        <span class="guide-link">
-                            <a href="#modal1" data-control="modal">요금 및 보증기간 안내</a>
-                        </span>
-                        <span class="guide-link">
-                            <a href="#paidServiceModal" data-control="modal">유상 서비스 적용 안내</a>
-                        </span>
+            <div class="cs-content KR50CS411">
+                <div class="status-bar">
+                    <div class="status-bar-inner">
+                        <div class="status">
+                            <strong class="status-title">선택 제품</strong>
+                            <ul class="status-list">
+                                <li>에어컨</li>
+                                <li>3 in 1</li>
+                            </ul>
+                        </div>
+                        <div class="guide">
+                            <span class="guide-link">
+                                <a href="#modal1" data-control="modal">요금 및 보증기간 안내</a>
+                            </span>
+                            <span class="guide-link">
+                                <a href="#paidServiceModal" data-control="modal">유상 서비스 적용 안내</a>
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            @@include('./common/support/select-product.html')
-            
-            <div class="cs-content">
+    
+                @@include('./common/support/select-product.html')
+                
                 <div class="cs-content-inner type-A">
-
                     <div class="inquiry-content">
                         <form action="" data-action="">
                             <legend>출장서비스 예약</legend>
@@ -344,7 +347,7 @@
                                         <li>무상 보증 기간 경과 된 제품 또는 사용자 과실 등으로 인한 제품 고장의 서비스 신청 건은 유상으로 서비스 비용이 청구됩니다.<br>(자세한 내용은 '요금 및 보증기간 안내'를 참조하시기 바랍니다.)</li>
                                     </ul>
                                 </div>
-                                <div class="btn-group">
+                                <div class="btnarea-r btn-group">
                                     <button type="button" class="btn gray"><span>취소</span></button>
                                     <button type="button" class="btn black"><span>인증/예약</span></button>
                                 </div>

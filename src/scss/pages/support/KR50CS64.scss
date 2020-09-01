@@ -5,14 +5,9 @@
 
 .KR50CS64 {
     &-part-1 {
-        background-color: transparent;
-        margin-top: 40px;
         @include mobile {
             padding-left: 24px;
             padding-right: 24px;
         }
-    }
-    @include mobile {
-        // margin-top: 28px;
     }
 }

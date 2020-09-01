@@ -122,10 +122,7 @@
         }
     }
     &-item {
-        width:100%;
-        padding:56px;
-        border-radius:4px;
-        background:#fff;
+        @include backgroundSection;
         & + .inquiry-item {
             margin-top:24px;
         }

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/participation"
+    ],
+    "pageJS": [
+        "support-common"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'title': '원격 상담 예약',
+                'desc': '고객님의 제품에 직접 접속하여 고장 증상에 대해 빠르게 해결해 드립니다.',
+                'img': {
+                    pcSrc: '경로',
+                    mobileSrc: '경로',
+                    alt: '설명'
+                }
+            })
+            
+            <div class="cs-content">
+                <div class="cs-content-inner type-A">
+
+                    <div class="inquiry-content">
+                        <div class="section">
+                            <div class="">
+                                
+                            </div>
+                            <div class="">
+                                <h3>원격 상담 예약이 접수되었습니다.</h3>
+                                <p>신청하신 희망 일시에 상담원이 전화를 드려 원격 상담 방법 안내 및 상담을 진행합니다.</p>
+                            <div></div>
+                        </div>
+
+                        <div class="section">
+                            <div class="">
+                                <h3 class="">예약 정보</h3>
+                            </div>
+                            <div>
+                                <dl>
+                                    <dt>접수 번호</dt>
+                                    <dd>
+                                        <p><strong>K729401293RL</strong><button type="button"><span>복사하기</span></button></p>
+                                        <p>접수번호는 “예약 확인 및 취소” 또는 “서비스 결과” 이용 시 꼭 필요한 번호입니다. 휴대전화번호로 전송된 접수번호를 반드시 보관하시기 바랍니다.</p>
+                                    </dd>
+                                    <dt>접수 일시</dt>
+                                    <dd>2020년 07월 29일  14시 21분</dd>
+                                    <dt>선택 제품</dt>
+                                    <dd>가정용 스탠드형 ABC-DEFG</dd>
+                                    <dt>구입시기</dt>
+                                    <dd>1개월 이내</dd>
+                                    <dt>증상</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>스마트기능/스마트진단</li>
+                                            <li>LG ThinQ 등록실패 </li>
+                                        </ul>
+                                        <a href="#" class="" target="_blank" title="새창 열림"><span>간편해결</span></a>
+                                    </dd>
+                                    <dt>전달사항</dt>
+                                    <dd>
+                                        안녕하세요.<br>
+                                        ThinQ 등록 방법을 확인하고 메뉴얼 대로 시도해도 연결이 안됩니다.
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="">
+                                <h3 class="">작성자 정보</h3>
+                            </div>
+                            <div>
+                                <dl>
+                                    <dt>이름</dt>
+                                    <dd>홍*동</dd>
+                                    <dt>휴대 전화 </dt>
+                                    <dd>010****1234</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="">
+                                <h3 class="">소식지 수신 동의 (선택사항)</h3>
+                            </div>
+                            <div class="field-wrap">
+                                <div class="row">
+                                    <div class="field-item">
+                                        <div class="field-title">
+                                            <label for="name" class="tit">이메일 주소</label>
+                                        </div>
+                                        <div class="input-wrap">
+                                            <input type="text" id="name" name="name" required>
+                                            <p class="err-msg">이름을 입력해 주세요.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btnarea-r btn-group">
+                            <button type="submit" class="btn black"><span>확인</span></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+</body>
+</html> 
