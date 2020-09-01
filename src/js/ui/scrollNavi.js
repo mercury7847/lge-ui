@@ -7,7 +7,7 @@
 
  * 
  */
-define('ui/scrollNavi', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) {
+vcui.define('ui/scrollNavi', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) {
     "use strict";
 
     var $win = $(window)

@@ -4,7 +4,7 @@
  * @description 드래그 헬퍼
  * @copyright VinylC UID Group
  */
-define('helper/dragger', ['jquery', 'vcui'], function ($, core) {
+vcui.define('helper/dragger', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var context = window;

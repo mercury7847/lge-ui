@@ -14,7 +14,7 @@
 });
                             
  */
-define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var detect = core.detect,

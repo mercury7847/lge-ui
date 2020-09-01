@@ -4,7 +4,7 @@
  * @description 반응형 사이즈에 따라 실행해야 하는 스크립트가 있을 경우 사용함
  * @copyright VinylC UID Group
  */
-define('helper/responseRunner', ['jquery', 'vcui'], function ($, core) {
+vcui.define('helper/responseRunner', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var $win = $(global);

@@ -50,6 +50,6 @@ window.matchMedia || (window.matchMedia = function () {
     };
 }());
 
-define('helper/matchMedia', function () {
+vcui.define('helper/matchMedia', function () {
     return window.matchMedia;
 });

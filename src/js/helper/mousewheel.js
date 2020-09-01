@@ -5,7 +5,7 @@
  * Released under the MIT license
  * http://jquery.org/license
  */
-define('helper/mousewheel', ['jquery', 'vcui'], function ($, core) {
+vcui.define('helper/mousewheel', ['jquery', 'vcui'], function ($, core) {
 
     var toFix = ['wheel', 'mousewheel', 'DOMMouseScroll', 'MozMousePixelScroll'],
         toBind = 'onwheel' in document || document.documentMode >= 9 ? ['wheel'] : ['mousewheel', 'DomMouseScroll', 'MozMousePixelScroll'],

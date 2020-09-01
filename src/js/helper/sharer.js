@@ -4,7 +4,7 @@
  * @description Sharer 컴포넌트
  * @copyright VinylC UID Group
  */
-define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
+vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var detect = {
