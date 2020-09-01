@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+@import "../../support-common";
+
+.notice-wrap {
+    .search-box {
+        width:100%;
+        max-width:560px;
+        margin:0 auto;
+        margin-bottom: 48px;
+    }
+    .read-section {
+        @include backgroundSection;
+    }
+    @include mobile {
+        .search-box {
+            margin-top: 84px;
+            margin-bottom: 32px;
+        }
+    }
+}
+
+.notice-read {
+    padding-top: 60px;
+    background-color: #fff;
+    &-content {
+        font-size: 16px;
+        color: #111;
+        line-height: 1.75;
+    }
+}
+
+
+.input-wrap {
+    &.search {
+        input {
+            border:none;
+        }
+        .cell {
+            vertical-align:top;
+            border:none;
+            background:#fff;
+        }
+        .btn-search {
+            width:24px;
+            height:24px;
+            @include icon-search;
+        }
+    }
+}

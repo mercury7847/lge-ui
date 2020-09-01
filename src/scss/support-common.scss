@@ -330,7 +330,7 @@ legend, caption {
 
 [class^="btnarea"] {
     margin-top:80px;
-    &-r {
+    &[class*="-r"] {
         text-align: right;
     }
     @include mobile {
@@ -632,13 +632,13 @@ legend, caption {
 
 // text-align
 .align-left {
-    text-align: left;
+    text-align: left !important;
 }
 
 .align-right {
-    text-align: right;
+    text-align: right !important;
 }
 
 .align-center {
-    text-align: center;
+    text-align: center !important;
 }

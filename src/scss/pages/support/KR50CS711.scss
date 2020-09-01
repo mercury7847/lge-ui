@@ -7,22 +7,15 @@
         width:100%;
         max-width:560px;
         margin:0 auto;
-        @include mobile {
-            padding:0 24px;
-        }
-    }
-    .ui_tab-notice {
-        margin-top: 48px;
+        margin-bottom: 48px;
     }
     .tabs-contents {
         margin-top: 20px;
     }
     @include mobile {
-        .search-box,
-        .ui_tab-notice {
-        }
         .search-box {
             margin-top: 84px;
+            margin-bottom: 32px;
         }
     }
 }
