@@ -7,7 +7,6 @@
 .KR50CS221 {
     .tabs-wrap {
         margin-bottom:16px;
-        padding:0 24px;
         @media screen and (min-width: $tablet-l-width) {
             display:none;
         }
@@ -49,8 +48,8 @@
         color: #111111;
         margin-bottom: 16px;
         @include mobile {
+            margin-top:40px;
             margin-bottom:28px;
-            padding-left: 24px;
         }
     }
     .icon-queryReset {
