@@ -183,6 +183,7 @@ legend, caption {
 
 // modal
 .modal {
+    display:none;
     width:calc(100% - 80px);
     border-radius:4px;
     box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.16);
@@ -268,51 +269,12 @@ legend, caption {
 }
 
 .ui_tab {
-    &-notice {
-        .tabs {
-            > li {
-                > a {
-                    font-size: 14px;
-                    color: #616161;
-                    padding-bottom: 4px;
-                }
-                &.on {
-                    border-bottom: 2px solid #111;
-                }
-            }
-        }
-    }
-    &.type-A {
-        .tabs {
-            >li {
-                &.on {
-                    border-bottom: none;
-                    > a {
-                        color: #111;
-                    }
-                }
-                >a {
-                    color: #aaa;
-                    font-size: 18px;
-                    font-weight: bold;
-                    line-height: 1.44;
-                    padding-bottom: 0;
-                }
-            }
-        }
-    }
     @include mobile {
         &-notice {
             .tabs {
                 overflow-x: auto;
                 white-space: nowrap;
                 width: 100%;
-                > li {
-                    margin-left: 20px;
-                    &:first-child {
-                        margin-left: 0;
-                    }
-                }
             }
         }
     }
@@ -330,12 +292,11 @@ legend, caption {
 
 [class^="btnarea"] {
     margin-top:80px;
-    &-r {
+    &[class*="-r"] {
         text-align: right;
     }
     @include mobile {
         margin-top: 40px;
-        padding: 0 24px;
     }
 }
 
@@ -629,16 +590,31 @@ legend, caption {
 .clearFix {
     @include clearfix;
 }
+    
+.list-sort {
+    font-size: 14px;
+    margin-bottom: 20px;
+    @include clearfix;
+    p {
+        float: left;
+        #totCnt {
+            font-weight: bold;
+        }
+    }
+    .fwb {
+        float: right;
+    }
+}
 
 // text-align
 .align-left {
-    text-align: left;
+    text-align: left !important;
 }
 
 .align-right {
-    text-align: right;
+    text-align: right !important;
 }
 
 .align-center {
-    text-align: center;
+    text-align: center !important;
 }

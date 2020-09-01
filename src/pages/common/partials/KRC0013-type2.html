@@ -1,0 +1,85 @@
+<!-- components/partials/KRC0013-type2.html -->
+<div class="component-wrap">
+    <!--
+        ** 텍스트가 왼쪽, 이미지가 오른쪽인 경우의 마크업입니다.
+
+        [.component-wrap 옵션]
+        1. 여백
+        .zero-top : 상단여백 없음
+        .zero-btm : 하단여백 없음
+
+        [component 영역 옵션]
+        1. 이미지 넓이
+        .standard : 이미지 넓이가 640px
+        .large : 이미지가 넓이가 800px
+
+        2. 가로 정렬
+        .align-left : 왼쪽 정렬
+        .align-right : 오른쪽 정렬
+        .align-center : 중앙 정렬
+
+        [.desc 옵션]
+        1. 가로 정렬 :
+        .align-left : 왼쪽 정렬
+        .align-right : 오른쪽 정렬
+        .align-center : 중앙 정렬
+
+        2. 폰트 종류 :
+        .font-regular : 레귤러
+        .font-bold : 볼드
+        .font-regular-italic : 레귤러 이탤릭
+        .font-bold-italic : 볼드 이탤릭
+
+        3. 폰트 스타일:
+        기본은 언더라인 없음
+        .font-underline : 언더라인
+
+        [.text 옵션]
+        1. 폰트 종류 :
+        .font-regular : 레귤러
+        .font-bold : 볼드
+        .font-regular-italic : 레귤러 이탤릭
+        .font-bold-italic : 볼드 이탤릭
+
+        2. 폰트 스타일:
+        기본은 언더라인 없음
+        .font-underline : 언더라인
+    -->
+    <div class="component C0043 @@align-class1 @@img-size-type">
+        <div class="text-wrap side-left-text">
+            <!-- 4. eyebrow -->
+            <strong class="small-title">Lorem ipsum dolor sit amet, consectetuer</strong>
+            <!-- // 4. eyebrow -->
+            <!-- 5. headline -->
+            <div class="title">@@headline</div>
+            <!-- // 5. headline -->
+            <!-- 6. body copy -->
+            <div class="text @@font-class3">Body text can be up to 350 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo</div>
+            <!-- // 6. body copy -->
+            <!-- 7. cta -->
+            <div class="btn-type-box">
+                <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">Secondary Button</a></span>
+                <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">Secondary Button</a></span>
+            </div>
+            <div class="btn-type-text">
+                <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">learn more</a></span>
+                <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">learn more</a></span>
+            </div>
+            <!-- // 7. cta -->
+        </div>
+        <div class="visual-wrap image-align-right">
+            <!-- 1-1/1-2. image : image 타입인 경우 -->
+            <div class="visual-area image">
+                <!-- 링크가 있는 경우 예제 -->
+                <a href="#" target="_blank" data-link-area="side_image_text-image" data-link-name="{Alt Text}"><img data-src="@@img" alt="" class="lazyload"></a>
+                <!-- 20160813 caption -->
+                <div class="caption">Lorem ipsum dolor sit amet, consectetuer</div>
+                <!-- // 20160813 caption -->
+            </div>
+            <!-- // 1-1/1-2. image : image 타입인 경우 -->
+            <!-- 3. disclaimer -->
+            <div class="desc @@font-class1 @@align-class1">Disclaimer text can be up to 100 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing.</div>
+            <!-- // 3. disclaimer -->
+        </div>
+    </div>
+</div>
