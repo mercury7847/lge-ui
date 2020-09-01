@@ -2286,7 +2286,7 @@ if (!window.JSON) {
 
     window.vcuirequire = require;
     window.define = define;
-    window.requirejs = requirejs;
+    window.vcuirequirejs = requirejs;
 })();
 /*!
  * @author 바이널씨
