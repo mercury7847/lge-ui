@@ -1,0 +1,116 @@
+<!-- components/partials/KRC0019-tbottom.html -->
+<div class="component-wrap">
+    <!--
+        ** Text Placement 가 Bottom인 예제
+
+        [.component-wrap 옵션]
+        1. 여백
+        .zero-top : 상단여백 없음
+        .zero-btm : 하단여백 없음
+
+        [component 영역 옵션]
+        1. 배경 색상
+        .bg-white : #FFFFFF 색상 배경 (기본 - 클래스 생략 가능)
+        .bg-lightgray : #F8F8F8 색상 배경
+        .bg-dark : #333333 색상 배경
+        .bg-black : #000000 색상 배경
+
+        2. 텍스트 영역과 이미지 영역의 위치 (W/F의 Text Placement 항목)
+        기본 : 텍스트 영역이 상단
+        .type-bottom : 이미지 영역이 상단인 경우 (type-bottom 클래스도 추가 하고 마크업 순서로 바뀝니다)
+
+        [.text-area 옵션]
+        1. 텍스트 가로 정렬
+        .align-left : 왼쪽 정렬 (기본 - 클래스 생략 가능)
+        .align-right : 오른쪽 정렬
+        .align-center : 중앙 정렬
+
+        [.body-copy 옵션]
+        1. 폰트 종류
+        .font-regular : 레귤러
+        .font-bold : 볼드
+        .font-regular-italic : 레귤러 이탤릭
+        .font-bold-italic : 볼드 이탤릭
+
+        2. 폰트 스타일
+        기본은 언더라인 없음
+        .font-underline : 언더라인
+
+        [.disclaimer 옵션]
+        1. 폰트 종류
+        .font-regular : 레귤러
+        .font-bold : 볼드
+        .font-regular-italic : 레귤러 이탤릭
+        .font-bold-italic : 볼드 이탤릭
+
+        2. 폰트 스타일
+        기본은 언더라인 없음
+        .font-underline : 언더라인
+
+        3. 가로 정렬
+        .align-left : 왼쪽 정렬 (기본 - 클래스 생략 가능)
+        .align-right : 오른쪽 정렬
+        .align-center : 중앙 정렬
+    -->
+    <section class="component KRC0019 @@component.type-class @@component.bg-color">
+        <div class="drag-area desktop @@title-style" data-handle-title="Move the slider to see more!">
+            <!-- 4. image 1 (데스크탑용) -->
+            <img src="@@visual.img" alt="" />
+            <!-- <div class="title-area area-left">
+                <h1 class="title-text">title left</h1>
+            </div> -->
+            <p class="info-text @@text-position.pc-left pc"><span class="@@text-position.text-style">graphic description : graphic description : graphic description : graphic description : graphic description : </span></p>  <!-- //PJTWAUS-1 : 20191220 modify -->
+            <!-- // 4. image 1 -->
+            <!-- 5. image 2 (데스크탑용) -->
+            <img src="@@visual.img-cover" alt="" />
+            <!-- <div class="title-area area-right">
+                <h1 class="title-text">title right</h1>
+            </div> -->
+            <p class="info-text @@text-position.pc-right pc"><span class="@@text-position.text-style">graphic description : graphic description : graphic description : graphic description : graphic description : </span></p>  <!-- //PJTWAUS-1 : 20191220 modify -->
+            <!-- // 5. image 2 -->
+        </div>
+        <div class="drag-area mobile @@title-style" data-handle-title="Move the slider to see more!">
+            <!-- 4. image 1 (모바일용) -->
+            <img src="@@visual.img-mobile" alt="" />
+            <!-- <div class="title-area area-left">
+                <h1 class="title-text">title left</h1>
+            </div> -->
+            <p class="info-text @@text-position.m-left mobile"><span class="@@text-position.text-style">graphic description : graphic description : graphic description : graphic description : graphic description : </span></p>  <!-- //PJTWAUS-1 : 20191220 modify -->
+            <!-- // 4. image 1 -->
+            <!-- 5. image 2 (모바일용) -->
+            <img src="@@visual.img-cover-mobile" alt="" />
+            <!-- <div class="title-area area-right">
+                <h1 class="title-text">title right</h1>
+            </div> -->
+            <p class="info-text @@text-position.m-right mobile"><span class="@@text-position.text-style">graphic description : graphic description : graphic description : graphic description : graphic description : </span></p>  <!-- //PJTWAUS-1 : 20191220 modify -->
+            <!-- // 5. image 2 -->
+        </div>
+        <!-- 7. disclaimer -->
+        <div class="disclaimer @@disclaimer.font-class @@disclaimer.font-style @@disclaimer.align-class">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+        <!-- // 7. disclaimer -->
+        <div class="text-area @@text-area.align-class">
+            <div class="inner">
+                <!-- 1. headline -->
+                <div class="title">@@headline</div>
+                <!-- // 1. headline -->
+                <!-- 2. body copy -->
+                <div class="body-copy @@body-copy.font-class @@body-copy.font-style">
+                    어두운 밤하늘 위로 촘촘하게 빛나는 별 하나까지 또렷하게 표현하는 올레드만의 섬세한 빛 조절.<br>빛번짐 없이 픽셀 하나하나를 컨트롤 할 수 있는 올레드는 8K를 위한 최적의 디스플레이입니다.
+                </div>
+                <!-- // 2. body copy -->
+                <!-- 3. cta -->
+                <div class="cta">
+                    <div class="btn-type-box">
+                        <span><a href="#none" class="btn btn-outline-primary btn-lg" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        <span><a href="#none" class="btn btn-primary btn-lg" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                    </div>
+                    <div class="btn-type-text">
+                        <span><a href="#none" class="link-text bold ico-right" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        <span><a href="#none" class="link-text bold ico-right" data-link-area="slider_image_top_bottom_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                    </div>
+                </div>
+                <!-- // 3. cta -->
+            </div>
+        </div>
+    </section>
+</div>
