@@ -1,5 +1,5 @@
 
-define('common/header', ['jquery', 'vcui'], function ($, core) {
+vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var Header = core.ui('Header', {

@@ -2367,10 +2367,10 @@ if (!window.JSON) {
     vcuirequire.config(requireConfig);
     core.require = vcuirequire;
     core.define = vcuidefine;
-    define('jquery', function () {
+    vcuidefine('jquery', function () {
         return window.$;
     });
-    define('vcui', function () {
+    vcuidefine('vcui', function () {
         return core;
     });
     // end require js config /////////////////////////////////////
