@@ -6,7 +6,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * @description 지오로케이션 헬퍼
  * @copyright VinylC UID Group
  */
-define('helper/formValidator', ['jquery', 'vcui'], function ($, core) {
+vcui.define('helper/formValidator', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var messages = {

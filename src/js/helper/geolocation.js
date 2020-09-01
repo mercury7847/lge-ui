@@ -4,7 +4,7 @@
  * @description 지오로케이션 헬퍼
  * @copyright VinylC UID Group
  */
-define('ui/geolocation', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/geolocation', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var geo = navigator.geolocation;

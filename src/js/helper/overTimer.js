@@ -4,7 +4,7 @@
  * @description 제스처 헬퍼
  * @copyright VinylC UID Group
  */
-define('helper/overTimer', ['jquery', 'vcui'], function () {
+vcui.define('helper/overTimer', ['jquery', 'vcui'], function () {
 
     /**
      * 유저가 머무는 시간을 체크하기 위한 모듈

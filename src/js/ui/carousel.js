@@ -6,7 +6,7 @@ var _typeof3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
  * @description 캐로우셀 컴포넌트
  * @copyright VinylC UID Group.
  */
-define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
     "use strict";
     /*!
     Version: 1.7.1

@@ -1,5 +1,5 @@
 
-define('ui/lineIndicater', ['jquery', 'vcui', 'ui/svgProgress'], function ($, core) {
+vcui.define('ui/lineIndicater', ['jquery', 'vcui', 'ui/svgProgress'], function ($, core) {
     "use strict";
 
     var _DOMS = {

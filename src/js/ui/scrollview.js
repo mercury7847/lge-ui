@@ -4,7 +4,7 @@
  * @description 커스텀스크롤 컴포넌트
  * @copyright VinylC UID Group
  */
-define('ui/scrollview', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/scrollview', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     $.easing.smooth = function (x, t, b, c, d) {

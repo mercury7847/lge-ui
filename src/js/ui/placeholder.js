@@ -4,7 +4,7 @@
  * @description 플레이스홀더 컴포넌트
  * @copyright VinylC UID Group
  */
-define('ui/placeholder', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/placeholder', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var $doc = core.$doc,

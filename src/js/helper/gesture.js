@@ -4,7 +4,7 @@
  * @description 제스처 헬퍼
  * @copyright VinylC UID Group
  */
-define('helper/gesture', ['jquery', 'vcui'], function ($, core) {
+vcui.define('helper/gesture', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var Gesture = core.helper('Gesture', core.ui.View.extend({

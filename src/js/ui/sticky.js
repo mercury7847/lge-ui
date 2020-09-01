@@ -5,7 +5,7 @@
  * @copyright VinylC UID Group
  * 
  */
-define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
     "use strict";
     var $win = $(window);
 

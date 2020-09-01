@@ -4,7 +4,7 @@
  * @description 드롭다운 컴포넌트
  * @copyright VinylC UID Group
  */
-define('ui/dropdown', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/dropdown', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var $doc = $(document);

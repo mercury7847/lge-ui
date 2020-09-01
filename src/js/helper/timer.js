@@ -4,7 +4,7 @@
  * @description 타이머 헬퍼
  * @copyright VinylC UID Group
  */
-define('helper/timer', ['jquery', 'vcui'], function ($, core) {
+vcui.define('helper/timer', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     /**

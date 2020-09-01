@@ -4,7 +4,7 @@
  * @description 반응형 분기점을 지날때마다 이벤트를 발생시켜주는 헬퍼
  * @copyright VinylC UID Group
  */
-define('helper/breakpointDispatcher', ['jquery', 'vcui'], function ($, core) {
+vcui.define('helper/breakpointDispatcher', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var $win = $(window);

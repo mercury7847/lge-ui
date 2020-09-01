@@ -4,7 +4,7 @@
  * @description 탭 컴포넌트
  * @copyright VinylC UID Group
  */
-define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) {
+vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) {
     "use strict";
 
     var name = 'tab',
