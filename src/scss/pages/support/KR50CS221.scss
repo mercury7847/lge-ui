@@ -28,6 +28,9 @@
 }
 
 .tabs-contents {
+    > section {
+        @include backgroundSection
+    }
     @media screen and (min-width: $tablet-l-width) {
         display:block !important;
 		float: left;
