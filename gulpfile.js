@@ -29,7 +29,7 @@ gulp.task("browser-sync", () => {
 
 // html 파일 생성...
 gulp.task('html', () => gulp
-    .src(src + '/pages/**', {base:src + '/pages/'})
+    .src([src + '/pages/**/*', "!"+src+"/pages/common", "!"+src+'/pages/common/**'], {base:src + '/pages/'})
     .pipe(fileinclude({
         prefix: '@@',
         basepath: src + '/pages/'
