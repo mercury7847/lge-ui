@@ -297,7 +297,6 @@ legend, caption {
     }
     @include mobile {
         margin-top: 40px;
-        padding: 0 24px;
     }
 }
 
@@ -590,6 +589,21 @@ legend, caption {
 
 .clearFix {
     @include clearfix;
+}
+    
+.list-sort {
+    font-size: 14px;
+    margin-bottom: 20px;
+    @include clearfix;
+    p {
+        float: left;
+        #totCnt {
+            font-weight: bold;
+        }
+    }
+    .fwb {
+        float: right;
+    }
 }
 
 // text-align

@@ -164,22 +164,6 @@
         }
     }
     
-    .list-sort {
-        font-size: 14px;
-        margin-bottom: 20px;
-        @include clearfix;
-        p {
-            float: left;
-            #totCnt {
-                font-weight: bold;
-            }
-        }
-        .fwb {
-            float: right;
-        }
-    }
-    
-    
     .note-box {
         padding: 24px;
         border: solid 1px #dddddd;
