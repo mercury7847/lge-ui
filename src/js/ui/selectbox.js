@@ -4,7 +4,7 @@
  * @description 모달 컴포넌트
  * @copyright VinylC UID Group
  */
-define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, core, Gesture) {
+vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, core, Gesture) {
     "use strict";
 
     var $doc = $(document),

@@ -4,7 +4,7 @@
  * @description 반응형에 따라 해당이미지를 로드해주는 헬퍼
  * @copyright VinylC UID Group
  */
-define('helper/responsiveImage', ['jquery', 'vcui'], function ($, core) {
+vcui.define('helper/responsiveImage', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     /**

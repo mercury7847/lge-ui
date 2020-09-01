@@ -4,7 +4,7 @@
  * @description 아코디온 컴포넌트
  * @copyright VinylC UID Group
  */
-define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var ui = core.ui,

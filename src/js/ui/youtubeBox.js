@@ -1,5 +1,5 @@
 
-define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var YoutubeBox = core.ui('youtubeBox', {

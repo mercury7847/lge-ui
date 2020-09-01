@@ -1,5 +1,5 @@
 
-define('ui/svgProgress', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/svgProgress', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var SvgProgress = core.ui('SvgProgress', {

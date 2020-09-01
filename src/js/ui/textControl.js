@@ -4,7 +4,7 @@
  * @description 문자수 카운팅 텍스트컨트롤
  * @copyright VinylC UID Group
  */
-define('ui/textControl', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/textControl', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var detect = core.detect,

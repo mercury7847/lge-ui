@@ -2285,8 +2285,8 @@ if (!window.JSON) {
     }(this, (typeof setTimeout === 'undefined' ? undefined : setTimeout)));
 
     window.vcuirequire = require;
-    window.define = define;
-    window.vcuirequirejs = requirejs;
+    window.vcuidefine = define;
+    window.requirejs = requirejs;
 })();
 /*!
  * @author 바이널씨
@@ -2366,6 +2366,7 @@ if (!window.JSON) {
 
     vcuirequire.config(requireConfig);
     core.require = vcuirequire;
+    core.define = vcuidefine;
     define('jquery', function () {
         return window.$;
     });

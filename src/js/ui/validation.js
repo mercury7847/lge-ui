@@ -10,7 +10,7 @@
  * validation.getValues(true); 성공한 값만 반환
  * 
  */
-define('ui/validation', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     /**
