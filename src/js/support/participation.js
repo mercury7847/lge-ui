@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(window).ready(function() {
     CS.MD.drawOption();
     $('[data-target]').drawOption();
 
