@@ -1,0 +1,85 @@
+<div class="component-wrap">
+	<!--
+		[.component-wrap 옵션]
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+
+		2. 캐로젤 여부 
+		.non-carousel-box : 캐로젤 없음
+		.carousel-box : 캐로젤 적용 === [KR수정] .component-outer-box class 삭제
+
+		3. Column
+		.item2 : 2개
+		.item3 : 3개
+		.item4 : 4개
+		.item5 : 5개
+		.item6 : 6개
+	-->
+	<div class="component KRC0017">
+        @@if (context.carousel) {
+        <div class="carousel-box"><!-- [KR수정] .component-outer-box class 삭제 -->
+            <div class="list-box ui_carousel_slider">
+                <!-- [KR수정] indicator DOM 추가-->
+                <ul class="indi-wrap ui_carousel_dots">
+                    <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                </ul>
+                <!-- // [KR수정] indicator DOM 추가-->
+                <div class="items ui_carousel_track"><!-- [KR수정] .ui_carousel_track class 추가 -->
+        } 
+        @@if (!context.carousel) {
+        <div class="non-carousel-box @@column">
+            <div class="list-box">
+                <div class="items">
+        }
+                @@for (var i = 0; i < context.itemCount; i++) {
+                    @@if (context.carousel) {
+                    <div class="item ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide class 추가 -->
+                    }
+                    @@if (!context.carousel) {
+                    <div class="item">
+                    }
+                        @@if (context.imgType === "video") {
+                        <!-- 1. image -->
+						<div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box class 추가(youtube modal call) -->
+                            <!-- 1-1. video play button -->
+                            <!-- * youtube video modal은 아래의 방식으로 입력 -->
+                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="centered_image_block-video_play" data-link-name="{video id}">
+                                <img class="lazyload" data-src="/lg5-common/images/KRC0017/@thumb01.jpg" alt="">
+                            </a>
+                            <!-- // 1-1. video play button -->
+                        </div>
+                        <!-- // 1. image -->
+                        }
+                        @@if (context.imgType === "image") {
+                        <!-- 1. image -->
+						<div class="visual-area">
+                            <a href="#" data-link-area="centered_image_block-image" data-link-name="{Alt Text}"><img class="lazyload" data-src="/lg5-common/images/KRC0017/@thumb01.jpg" alt=""></a>
+                        </div>
+                        <!-- // 1. image -->
+                        }
+                        <!-- 2. caption -->
+                        <p class="caption font-regular">Caption텍스트는 본문 폰트사이즈 16px을 사용하고 최대 3줄 이하로 사용합니다.</p>
+                        <!-- // 2. caption -->
+                        <!-- 3. cta -->
+                        <div class="bottom-btn btn-type-box">
+                            <span><a href="#none" class="btn btn-outline-primary" data-link-area="centered_image_block-cta" data-link-name="{Link Text}">Button</a></span><!-- [KR수정] .btn-primary -> .btn-outline-primary 로 수정 -->
+                        </div>
+                        <div class="bottom-btn btn-type-text">	
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="centered_image_block-cta" data-link-name="{Link Text}">자세히 보기</a></span>
+                        </div>
+                        <!-- // 3. cta -->
+                    </div>
+                }
+                </div>
+                @@if (context.carousel) {
+                <!-- [KR수정] slider control button DOM 추가 -->
+                <button type="button" class="btn-arrow prev">이전</button>
+                <button type="button" class="btn-arrow next">다음</button>
+                <!-- // [KR수정] slider control button DOM 추가 -->
+                }
+            </div>
+            
+		</div>
+	</div>
+</div>
