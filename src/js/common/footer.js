@@ -1,5 +1,5 @@
 
-define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, core) {
+vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, core) {
     "use strict";
 
     var Footer = core.ui('Footer', {
