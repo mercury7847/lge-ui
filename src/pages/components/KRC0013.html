@@ -8,7 +8,631 @@
     <div class="wrap">
         <div class="container">
 
+            <!-- component Standard 이미지 우측형, 텍스트 중앙정렬 -->
+            @@include('./components/partials/KRC0013.html', {
+                "headline": "<h2>Heading can be up to 60 characters lorem ipsum dolor sit ame</h2>",
+                "align-class1": "align-center",
+                "font-class1": "font-regular",
+                "font-class2": "font-bold",
+                "font-class3": "font-regular",
+                "font-style1": "font-underline",
+                "img-size-type": "standard",
+                "img": "/lg5-common/images/components/sample-16-9.gif"
+            })
+            <!-- // component Standard 이미지 우측형, 텍스트 중앙정렬 -->
+
+
+
             <!-- component KRC0013 -->
+            <!-- component Standard 이미지 좌측형, 텍스트 왼쪽정렬 -->
+            <div class="component-wrap">
+                @@include('./components/common-note.html')
+                <div class="component KRC0013 align-left standard">
+                    <div class="visual-wrap image-align-left">
+                        <!-- animation 타입인 경우 animation-box 클래스 추가 -->
+                        <div class="visual-area animation-box">
+                            <img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload">
+                            <div class="animation-area">
+                                <video autoplay muted loop>
+                                    <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                    <!-- WEBM 동영상을 제공하는 경우
+                                    <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                    -->
+                                </video>
+                                <div class="controller-wrap">
+                                    <button class="pause active" name="pause">Pause Video</button>
+                                    <button class="play" name="play" data-link-area="side_image_text-animation_play" data-link-name="">Play Video</button>
+                                </div>
+                            </div>
+                            <!-- caption -->
+                            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                            <!-- // caption -->
+                        </div>
+                        <!-- 3. disclaimer -->
+                        <div class="desc font-regular align-left">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
+                        <!-- // 3. disclaimer -->
+                    </div>
+                    <div class="text-wrap side-right-text">
+                        <!-- 4. eyebrow -->
+                        <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                        <!-- // 4. eyebrow -->
+                        <!-- 5. headline -->
+                        <div class="title"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
+                        <!-- // 5. headline -->
+                        <!-- 6. body copy -->
+                        <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
+                        <!-- // 6. body copy -->
+                        <!-- 7. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        </div>
+                        <!-- // 7. cta -->
+                    </div>
+                </div>
+            </div>
+            <!-- // component Standard 이미지 좌측형, 텍스트 왼쪽정렬 -->
+
+
+            <!-- component Standard 이미지 좌측형, 텍스트 왼쪽정렬 -->
+            <div class="component-wrap">
+                <div class="component KRC0013 align-left standard">
+                    <div class="visual-wrap image-align-left">
+                        <!-- 1-1/1-2. image : video 타입인 경우 -->
+                        <div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box 추가 - 동영상 모달 클래스 -->
+                            <!-- 1-3 video play button -->
+                            <!-- * youtube video modal은 아래의 방식으로 입력 -->
+                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+                                <img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload">
+                                <!-- 2. video title copy -->
+                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                                <!-- // 2. video title copy -->
+                            </a>
+                            <!-- // 1-3 video play button -->
+                        </div>
+                        <!-- // 1-1/1-2. image : video 타입인 경우 -->
+                        <!-- 3. disclaimer -->
+                        <div class="desc font-regular align-left">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
+                        <!-- // 3. disclaimer -->
+                    </div>
+                    <div class="text-wrap side-right-text">
+                        <!-- 4. eyebrow -->
+                        <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                        <!-- // 4. eyebrow -->
+                        <!-- 5. headline -->
+                        <div class="title"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
+                        <!-- // 5. headline -->
+                        <!-- 6. body copy -->
+                        <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
+                        <!-- // 6. body copy -->
+                        <!-- 7. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        </div>
+                        <!-- // 7. cta -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- // component Standard 이미지 좌측형, 텍스트 왼쪽정렬 -->
+
+
+            <!-- component Standard 이미지 좌측형, 텍스트 오른쪽정렬 -->
+            <div class="component-wrap">
+                <div class="component KRC0013 align-right standard">
+                    <div class="visual-wrap image-align-left">
+                        <!-- 1-1/1-2. image : video 타입인 경우 -->
+                        <div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box 추가 - 동영상 모달 클래스 -->
+                            <!-- 1-3 video play button -->
+                            <!-- * youtube video modal은 아래의 방식으로 입력 -->
+                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+                                <img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload">
+                                <!-- 2. video title copy -->
+                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                                <!-- // 2. video title copy -->
+                            </a>
+                            <!-- // 1-3 video play button -->
+                        </div>
+                        <!-- // 1-1/1-2. image : video 타입인 경우 -->
+                        <!-- 3. disclaimer -->
+                        <div class="desc font-regular align-right">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
+                        <!-- // 3. disclaimer -->
+                    </div>
+                    <div class="text-wrap side-right-text">
+                        <!-- 4. eyebrow -->
+                        <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                        <!-- // 4. eyebrow -->
+                        <!-- 5. headline -->
+                        <div class="title"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
+                        <!-- // 5. headline -->
+                        <!-- 6. body copy -->
+                        <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
+                        <!-- // 6. body copy -->
+                        <!-- 7. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        </div>
+                        <!-- // 7. cta -->
+                    </div>
+                </div>
+            </div>
+
+            <!--// component Standard 이미지 좌측형, 텍스트 오른쪽정렬 -->
+
+
+            <!-- component Standard 이미지 좌측형, 텍스트 중앙정렬 -->
+            <div class="component-wrap">
+                <div class="component KRC0013 align-center standard">
+                    <div class="visual-wrap image-align-left">
+                        <!-- 1-1/1-2. image : video 타입인 경우 -->
+                        <div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box 추가 - 동영상 모달 클래스 -->
+                            <!-- 1-3 video play button -->
+                            <!-- * youtube video modal은 아래의 방식으로 입력 -->
+                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+                                <img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload">
+                                <!-- 2. video title copy -->
+                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                                <!-- // 2. video title copy -->
+                            </a>
+                            <!-- // 1-3 video play button -->
+                        </div>
+                        <!-- // 1-1/1-2. image : video 타입인 경우 -->
+                        <!-- 3. disclaimer -->
+                        <div class="desc font-regular align-center">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
+                        <!-- // 3. disclaimer -->
+                    </div>
+                    <div class="text-wrap side-right-text">
+                        <!-- 4. eyebrow -->
+                        <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                        <!-- // 4. eyebrow -->
+                        <!-- 5. headline -->
+                        <div class="title"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
+                        <!-- // 5. headline -->
+                        <!-- 6. body copy -->
+                        <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
+                        <!-- // 6. body copy -->
+                        <!-- 7. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        </div>
+                        <!-- // 7. cta -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- // component Standard 이미지 좌측형, 텍스트 중앙정렬 -->
+
+
+            <!-- component Standard 이미지 우측형, 텍스트 왼쪽정렬 -->
+            <div class="component-wrap">
+                <div class="component KRC0013 align-left standard">
+                    <div class="text-wrap side-left-text">
+                        <!-- 4. eyebrow -->
+                        <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                        <!-- // 4. eyebrow -->
+                        <!-- 5. headline -->
+                        <div class="title"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
+                        <!-- // 5. headline -->
+                        <!-- 6. body copy -->
+                        <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
+                        <!-- // 6. body copy -->
+                        <!-- 7. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        </div>
+                        <!-- // 7. cta -->
+                    </div>
+                    <div class="visual-wrap image-align-right">
+                        <!-- 1-1/1-2. image : image 타입인 경우 -->
+                        <div class="visual-area image">
+                            <!-- 링크가 있는 경우 예제 -->
+                            <a href="#" target="_blank" data-link-area="side_image_text-image" data-link-name="{Alt Text}"><img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload"></a>
+                            <!-- caption -->
+                            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                            <!-- // caption -->
+                        </div>
+                        <!-- // 1-1/1-2. image : image 타입인 경우 -->
+                        <!-- 3. disclaimer -->
+                        <div class="desc font-regular align-left">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
+                        <!-- // 3. disclaimer -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- // component Standard 이미지 우측형, 텍스트 왼쪽정렬 -->
+
+
+            <!-- component Standard 이미지 우측형, 텍스트 우측정렬 -->
+            <div class="component-wrap">
+                <div class="component KRC0013 align-right standard">
+                    <div class="text-wrap side-left-text">
+                        <!-- 4. eyebrow -->
+                        <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                        <!-- // 4. eyebrow -->
+                        <!-- 5. headline -->
+                        <div class="title"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
+                        <!-- // 5. headline -->
+                        <!-- 6. body copy -->
+                        <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
+                        <!-- // 6. body copy -->
+                        <!-- 7. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        </div>
+                        <!-- // 7. cta -->
+                    </div>
+                    <div class="visual-wrap image-align-right">
+                        <!-- 1-1/1-2. image : image 타입인 경우 -->
+                        <div class="visual-area image">
+                            <!-- 링크가 있는 경우 예제 -->
+                            <a href="#" target="_blank" data-link-area="side_image_text-image" data-link-name="{Alt Text}"><img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload"></a>
+                            <!-- caption -->
+                            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                            <!-- // caption -->
+                        </div>
+                        <!-- // 1-1/1-2. image : image 타입인 경우 -->
+                        <!-- 3. disclaimer -->
+                        <div class="desc font-regular align-right">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
+                        <!-- // 3. disclaimer -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- // component Standard 이미지 우측형, 텍스트 우측정렬 -->
+
+
+            <!-- component Standard 이미지 우측형, 텍스트 중앙정렬 -->
+            <div class="component-wrap">
+                <div class="component KRC0013 align-center standard">
+                    <div class="text-wrap side-left-text">
+                        <!-- 4. eyebrow -->
+                        <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                        <!-- // 4. eyebrow -->
+                        <!-- 5. headline -->
+                        <div class="title"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
+                        <!-- // 5. headline -->
+                        <!-- 6. body copy -->
+                        <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
+                        <!-- // 6. body copy -->
+                        <!-- 7. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        </div>
+                        <!-- // 7. cta -->
+                    </div>
+                    <div class="visual-wrap image-align-right">
+                        <!-- 1-1/1-2. image : image 타입인 경우 -->
+                        <div class="visual-area image">
+                            <!-- 링크가 있는 경우 예제 -->
+                            <a href="#" target="_blank" data-link-area="side_image_text-image" data-link-name="{Alt Text}"><img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload"></a>
+                            <!-- caption -->
+                            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                            <!-- // caption -->
+                        </div>
+                        <!-- // 1-1/1-2. image : image 타입인 경우 -->
+                        <!-- 3. disclaimer -->
+                        <div class="desc font-regular align-center">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
+                        <!-- // 3. disclaimer -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- // component Standard 이미지 우측형, 텍스트 중앙정렬 -->
+
+
+            <!-- component Standard 이미지 좌측형, 텍스트 왼쪽정렬 -->
+            <div class="component-wrap">
+                <div class="component KRC0013 align-left large">
+                    <div class="visual-wrap image-align-left">
+                        <!-- 1-1/1-2. image : video 타입인 경우 -->
+                        <div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box 추가 - 동영상 모달 클래스 -->
+                            <!-- 1-3 video play button -->
+                            <!-- * youtube video modal은 아래의 방식으로 입력 -->
+                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+                                <img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload">
+                                <!-- 2. video title copy -->
+                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                                <!-- // 2. video title copy -->
+                            </a>
+                            <!-- // 1-3 video play button -->
+                        </div>
+                        <!-- // 1-1/1-2. image : video 타입인 경우 -->
+                        <!-- 3. disclaimer -->
+                        <div class="desc font-regular align-left">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
+                        <!-- // 3. disclaimer -->
+                    </div>
+                    <div class="text-wrap side-right-text">
+                        <!-- 4. eyebrow -->
+                        <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                        <!-- // 4. eyebrow -->
+                        <!-- 5. headline -->
+                        <div class="title"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
+                        <!-- // 5. headline -->
+                        <!-- 6. body copy -->
+                        <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
+                        <!-- // 6. body copy -->
+                        <!-- 7. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        </div>
+                        <!-- // 7. cta -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- // component Standard 이미지 좌측형, 텍스트 왼쪽정렬 -->
+
+
+            <!-- component Standard 이미지 좌측형, 텍스트 오른쪽정렬 -->
+            <div class="component-wrap">
+                <div class="component KRC0013 align-right large">
+                    <div class="visual-wrap image-align-left">
+                        <!-- 1-1/1-2. image : video 타입인 경우 -->
+                        <div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box 추가 - 동영상 모달 클래스 -->
+                            <!-- 1-3 video play button -->
+                            <!-- * youtube video modal은 아래의 방식으로 입력 -->
+                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+                                <img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload">
+                                <!-- 2. video title copy -->
+                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                                <!-- // 2. video title copy -->
+                            </a>
+                            <!-- // 1-3 video play button -->
+                        </div>
+                        <!-- // 1-1/1-2. image : video 타입인 경우 -->
+                        <!-- 3. disclaimer -->
+                        <div class="desc font-regular align-right">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
+                        <!-- // 3. disclaimer -->
+                    </div>
+                    <div class="text-wrap side-right-text">
+                        <!-- 4. eyebrow -->
+                        <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                        <!-- // 4. eyebrow -->
+                        <!-- 5. headline -->
+                        <div class="title"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
+                        <!-- // 5. headline -->
+                        <!-- 6. body copy -->
+                        <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
+                        <!-- // 6. body copy -->
+                        <!-- 7. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        </div>
+                        <!-- // 7. cta -->
+                    </div>
+                </div>
+            </div>
+
+            <!--// component Standard 이미지 좌측형, 텍스트 오른쪽정렬 -->
+
+
+            <!-- component Standard 이미지 좌측형, 텍스트 중앙정렬 -->
+            <div class="component-wrap">
+                <div class="component KRC0013 align-center large">
+                    <div class="visual-wrap image-align-left">
+                        <!-- 1-1/1-2. image : video 타입인 경우 -->
+                        <div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box 추가 - 동영상 모달 클래스 -->
+                            <!-- 1-3 video play button -->
+                            <!-- * youtube video modal은 아래의 방식으로 입력 -->
+                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
+                                <img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload">
+                                <!-- 2. video title copy -->
+                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                                <!-- // 2. video title copy -->
+                            </a>
+                            <!-- // 1-3 video play button -->
+                        </div>
+                        <!-- // 1-1/1-2. image : video 타입인 경우 -->
+                        <!-- 3. disclaimer -->
+                        <div class="desc font-regular align-center">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
+                        <!-- // 3. disclaimer -->
+                    </div>
+                    <div class="text-wrap side-right-text">
+                        <!-- 4. eyebrow -->
+                        <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                        <!-- // 4. eyebrow -->
+                        <!-- 5. headline -->
+                        <div class="title"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
+                        <!-- // 5. headline -->
+                        <!-- 6. body copy -->
+                        <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
+                        <!-- // 6. body copy -->
+                        <!-- 7. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        </div>
+                        <!-- // 7. cta -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- // component Standard 이미지 좌측형, 텍스트 중앙정렬 -->
+
+
+            <!-- component Standard 이미지 우측형, 텍스트 왼쪽정렬 -->
+            <div class="component-wrap">
+                <div class="component KRC0013 align-left large">
+                    <div class="text-wrap side-left-text">
+                        <!-- 4. eyebrow -->
+                        <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                        <!-- // 4. eyebrow -->
+                        <!-- 5. headline -->
+                        <div class="title"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
+                        <!-- // 5. headline -->
+                        <!-- 6. body copy -->
+                        <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
+                        <!-- // 6. body copy -->
+                        <!-- 7. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        </div>
+                        <!-- // 7. cta -->
+                    </div>
+                    <div class="visual-wrap image-align-right">
+                        <!-- 1-1/1-2. image : image 타입인 경우 -->
+                        <div class="visual-area image">
+                            <!-- 링크가 있는 경우 예제 -->
+                            <a href="#" target="_blank" data-link-area="side_image_text-image" data-link-name="{Alt Text}"><img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload"></a>
+                            <!-- caption -->
+                            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                            <!-- // caption -->
+                        </div>
+                        <!-- // 1-1/1-2. image : image 타입인 경우 -->
+                        <!-- 3. disclaimer -->
+                        <div class="desc font-regular align-left">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
+                        <!-- // 3. disclaimer -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- // component Standard 이미지 우측형, 텍스트 왼쪽정렬 -->
+
+
+            <!-- component Standard 이미지 우측형, 텍스트 우측정렬 -->
+            <div class="component-wrap">
+                <div class="component KRC0013 align-right large">
+                    <div class="text-wrap side-left-text">
+                        <!-- 4. eyebrow -->
+                        <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                        <!-- // 4. eyebrow -->
+                        <!-- 5. headline -->
+                        <div class="title"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
+                        <!-- // 5. headline -->
+                        <!-- 6. body copy -->
+                        <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
+                        <!-- // 6. body copy -->
+                        <!-- 7. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        </div>
+                        <!-- // 7. cta -->
+                    </div>
+                    <div class="visual-wrap image-align-right">
+                        <!-- 1-1/1-2. image : image 타입인 경우 -->
+                        <div class="visual-area image">
+                            <!-- 링크가 있는 경우 예제 -->
+                            <a href="#" target="_blank" data-link-area="side_image_text-image" data-link-name="{Alt Text}"><img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload"></a>
+                            <!-- caption -->
+                            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                            <!-- // caption -->
+                        </div>
+                        <!-- // 1-1/1-2. image : image 타입인 경우 -->
+                        <!-- 3. disclaimer -->
+                        <div class="desc font-regular align-right">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
+                        <!-- // 3. disclaimer -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- // component Standard 이미지 우측형, 텍스트 우측정렬 -->
+
+
+            <!-- component Standard 이미지 우측형, 텍스트 중앙정렬 -->
+            <div class="component-wrap">
+                <div class="component KRC0013 align-center large">
+                    <div class="text-wrap side-left-text">
+                        <!-- 4. eyebrow -->
+                        <strong class="small-title">LG SIGNATURE OLED 8K</strong>
+                        <!-- // 4. eyebrow -->
+                        <!-- 5. headline -->
+                        <div class="title"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
+                        <!-- // 5. headline -->
+                        <!-- 6. body copy -->
+                        <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
+                        <!-- // 6. body copy -->
+                        <!-- 7. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                            <span><a href="#none" class="btn btn-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                            <span><a href="#none" class="link-text bold ico-right" data-link-area="side_image_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        </div>
+                        <!-- // 7. cta -->
+                    </div>
+                    <div class="visual-wrap image-align-right">
+                        <!-- 1-1/1-2. image : image 타입인 경우 -->
+                        <div class="visual-area image">
+                            <!-- 링크가 있는 경우 예제 -->
+                            <a href="#" target="_blank" data-link-area="side_image_text-image" data-link-name="{Alt Text}"><img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload"></a>
+                            <!-- caption -->
+                            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                            <!-- // caption -->
+                        </div>
+                        <!-- // 1-1/1-2. image : image 타입인 경우 -->
+                        <!-- 3. disclaimer -->
+                        <div class="desc font-regular align-center">세계 최초 초대형 리얼 8K 올레드 / 3세대 인공지능 알파9 / 인공지능 ThinQ / 시그니처 디자인</div>
+                        <!-- // 3. disclaimer -->
+                    </div>
+                </div>
+            </div>
+            <!-- // component Standard 이미지 우측형, 텍스트 중앙정렬 -->
+
+
+
+
+
+
             <!-- Standard 이미지 좌측형, 텍스트 좌측 정렬 -->
             <div class="component-wrap">
                 @@include('./components/common-note.html')
@@ -33,7 +657,7 @@
                     </div>
                     <div class="text-wrap side-right-text">
                         <strong class="small-title">LG SIGNATURE OLED 8K</strong>
-                        <div class="title" id="title01"><h2>Standard img 템플릿의 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는PC기준 최대 2줄까지 표시됩니다</h2></div>
+                        <div class="title" id="title01"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
                         <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
                         <div class="btn-type-box">
                             <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span><!-- [KR수정] as-is class .btn-primary -->
@@ -56,7 +680,7 @@
                     <div class="visual-wrap image-align-left">
                         <!-- 이미지 : 동영상 타입인 경우 -->
                         <div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box 추가 - 동영상 모달 클래스 -->
-                            <a href="#none" class="see-video acc-video-content" title="레이어 팝업 열림" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
+                            <a href="#none" class="see-video acc-video-content" title="opens in a new layer popup, plays video" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
                             <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
                                 <img data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="" class="lazyloaded" data-loaded="true">
                                 <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
@@ -67,7 +691,7 @@
                     </div>
                     <div class="text-wrap side-right-text">
                         <strong class="small-title">LG SIGNATURE OLED 8K</strong>
-                        <div class="title" id="title02"><h2>Standard img 템플릿의 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는PC기준 최대 2줄까지 표시됩니다</h2></div>
+                        <div class="title" id="title02"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
                         <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
                         <div class="btn-type-box">
                             <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02">문의하기</a></span>
@@ -90,7 +714,7 @@
                     <div class="visual-wrap image-align-left">
                         <!-- 이미지 : 동영상 타입인 경우 -->
                         <div class="visual-area video youtube-box">
-                            <a href="#none" class="see-video acc-video-content" title="레이어 팝업 열림" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
+                            <a href="#none" class="see-video acc-video-content" title="opens in a new layer popup, plays video" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
                             <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title03">
                                 <img data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="" class="lazyloaded" data-loaded="true">
 
@@ -102,7 +726,7 @@
                     </div>
                     <div class="text-wrap side-right-text">
                         <strong class="small-title">LG SIGNATURE OLED 8K</strong>
-                        <div class="title" id="title02"><h2>Standard img 템플릿의 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는PC기준 최대 2줄까지 표시됩니다</h2></div>
+                        <div class="title" id="title02"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
                         <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
                         <div class="btn-type-box">
                             <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02">문의하기</a></span>
@@ -125,7 +749,7 @@
                     <div class="visual-wrap image-align-left">
                         <!-- 이미지 : 동영상 타입인 경우 -->
                         <div class="visual-area video youtube-box">
-                            <a href="#none" class="see-video acc-video-content" title="레이어 팝업 열림" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
+                            <a href="#none" class="see-video acc-video-content" title="opens in a new layer popup, plays video" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
                             <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title04">
                                 <img data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="" class="lazyload">
                                 <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
@@ -136,7 +760,7 @@
                     </div>
                     <div class="text-wrap side-right-text">
                         <strong class="small-title">LG SIGNATURE OLED 8K</strong>
-                        <div class="title" id="title02"><h2>Standard img 템플릿의 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는PC기준 최대 2줄까지 표시됩니다</h2></div>
+                        <div class="title" id="title02"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
                         <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
                         <div class="btn-type-box">
                             <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02">문의하기</a></span>
@@ -158,7 +782,7 @@
                 <section class="component KRC0013 align-left standard">
                     <div class="text-wrap side-left-text">
                         <strong class="small-title">LG SIGNATURE OLED 8K</strong>
-                        <div class="title" id="title03"><h2>Standard img 템플릿의 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는PC기준 최대 2줄까지 표시됩니다</h2></div>
+                        <div class="title" id="title03"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
                         <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
                         <div class="btn-type-box">
                             <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03">문의하기</a></span>
@@ -188,7 +812,7 @@
                 <section class="component KRC0013 align-right standard">
                     <div class="text-wrap side-left-text">
                         <strong class="small-title">LG SIGNATURE OLED 8K</strong>
-                        <div class="title" id="title03"><h2>Standard img 템플릿의 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는PC기준 최대 2줄까지 표시됩니다</h2></div>
+                        <div class="title" id="title03"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
                         <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
                         <div class="btn-type-box">
                             <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03">문의하기</a></span>
@@ -218,7 +842,7 @@
                 <section class="component KRC0013 align-center standard">
                     <div class="text-wrap side-left-text">
                         <strong class="small-title">LG SIGNATURE OLED 8K</strong>
-                        <div class="title" id="title03"><h2>Standard img 템플릿의 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는PC기준 최대 2줄까지 표시됩니다</h2></div>
+                        <div class="title" id="title03"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
                         <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
                         <div class="btn-type-box">
                             <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03">문의하기</a></span>
@@ -249,7 +873,7 @@
                     <div class="visual-wrap image-align-left">
                         <!-- 이미지 : 동영상 타입인 경우 -->
                         <div class="visual-area video youtube-box">
-                            <a href="#none" class="see-video acc-video-content" title="레이어 팝업 열림" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
+                            <a href="#none" class="see-video acc-video-content" title="opens in a new layer popup, plays video" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
                             <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title08">
                                 <img data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="" class="lazyload">
                                 <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
@@ -260,7 +884,7 @@
                     </div>
                     <div class="text-wrap side-right-text">
                         <strong class="small-title">LG SIGNATURE OLED 8K</strong>
-                        <div class="title" id="title02"><h2>Standard img 템플릿의 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는PC기준 최대 2줄까지 표시됩니다</h2></div>
+                        <div class="title" id="title02"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
                         <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
                         <div class="btn-type-box">
                             <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02">문의하기</a></span>
@@ -283,7 +907,7 @@
                     <div class="visual-wrap image-align-left">
                         <!-- 이미지 : 동영상 타입인 경우 -->
                         <div class="visual-area video youtube-box">
-                            <a href="#none" class="see-video acc-video-content" title="레이어 팝업 열림" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
+                            <a href="#none" class="see-video acc-video-content" title="opens in a new layer popup, plays video" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
                             <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title09">
                                 <img data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="" class="lazyload">
                                 <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
@@ -294,7 +918,7 @@
                     </div>
                     <div class="text-wrap side-right-text">
                         <strong class="small-title">LG SIGNATURE OLED 8K</strong>
-                        <div class="title" id="title02"><h2>Standard img 템플릿의 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는PC기준 최대 2줄까지 표시됩니다</h2></div>
+                        <div class="title" id="title02"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
                         <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
                         <div class="btn-type-box">
                             <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02">문의하기</a></span>
@@ -317,7 +941,7 @@
                     <div class="visual-wrap image-align-left">
                         <!-- 이미지 : 동영상 타입인 경우 -->
                         <div class="visual-area video youtube-box">
-                            <a href="#none" class="see-video acc-video-content" title="레이어 팝업 열림" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
+                            <a href="#none" class="see-video acc-video-content" title="opens in a new layer popup, plays video" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
                             <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title10">
                                 <img data-src="/lg5-common/images/dummy/sample-16-9.gif" alt="" class="lazyload">
                                 <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
@@ -328,7 +952,7 @@
                     </div>
                     <div class="text-wrap side-right-text">
                         <strong class="small-title">LG SIGNATURE OLED 8K</strong>
-                        <div class="title" id="title02"><h2>Standard img 템플릿의 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는PC기준 최대 2줄까지 표시됩니다</h2></div>
+                        <div class="title" id="title02"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
                         <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
                         <div class="btn-type-box">
                             <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02">문의하기</a></span>
@@ -350,7 +974,7 @@
                 <section class="component KRC0013 align-left large">
                     <div class="text-wrap side-left-text">
                         <strong class="small-title">LG SIGNATURE OLED 8K</strong>
-                        <div class="title" id="title03"><h2>Standard img 템플릿의 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는PC기준 최대 2줄까지 표시됩니다</h2></div>
+                        <div class="title" id="title03"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
                         <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
                         <div class="btn-type-box">
                             <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03">문의하기</a></span>
@@ -380,7 +1004,7 @@
                 <section class="component KRC0013 align-right large">
                     <div class="text-wrap side-left-text">
                         <strong class="small-title">LG SIGNATURE OLED 8K</strong>
-                        <div class="title" id="title03"><h2>Standard img 템플릿의 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는PC기준 최대 2줄까지 표시됩니다</h2></div>
+                        <div class="title" id="title03"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
                         <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
                         <div class="btn-type-box">
                             <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03">문의하기</a></span>
@@ -410,7 +1034,7 @@
                 <section class="component KRC0013 align-center large">
                     <div class="text-wrap side-left-text">
                         <strong class="small-title">LG SIGNATURE OLED 8K</strong>
-                        <div class="title" id="title03"><h2>Standard img 템플릿의 타이틀 텍스트는 PC기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는PC기준 최대 2줄까지 표시됩니다</h2></div>
+                        <div class="title" id="title03"><h2>Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다 1 Standard img 템플릿의 타이틀 텍스트는 PC 기준 최대 2줄까지 표시됩니다</h2></div>
                         <div class="text font-regular">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.8K 올레드는 4K 해상도에 비해 약 4배 더 많은 1억 3천만개의 서브픽셀로 숨은 디테일까지 정확하게 재현해 초대형 화면을 위한 차원이 다른 화질을 선사합니다</div>
                         <div class="btn-type-box">
                             <span><a href="#none" class="btn btn-outline-primary" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title03">문의하기</a></span>
