@@ -1,0 +1,65 @@
+@charset "UTF-8";
+@import "../../support-common";
+@import "../../support/selectProduct";
+
+.KR50CS332 {
+    .inquiry {
+        &-item {
+            @include backgroundSection;
+            margin-top: 24px;
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+        &-list {
+            > li {
+                @include clearfix;
+                margin-top: 16px;
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+            .title {
+                font-size: 16px;
+                line-height: 1.38;
+                color: #616161;
+                width: 138px;
+                float: left;
+            }
+            .description {
+                font-size: 16px;
+                line-height: 1.38;
+                width: calc(100% - 138px);
+                float: left;
+            }
+        }
+    }
+    .reservation-title {
+        text-align: center;
+        &::before {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background-color: #000;
+        }
+        h3 {
+            font-size: 24px;
+            font-weight: normal;
+            line-height: 1.42;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.38;
+            margin-top: 16px;
+        }
+    }
+    [class^="h-tit"] {
+        &[class*="-3"] {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 35px;
+        }
+    }
+}
