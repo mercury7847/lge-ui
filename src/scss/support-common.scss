@@ -5,6 +5,40 @@
 @import "utilities/mixins";
 @import "modules/icons/index";
 
+@mixin backgroundSection {
+    width:100%;
+    padding:56px;
+    border-radius:4px;
+    background:#fff;
+    @include mobile {
+        width:calc(100% + 48px);
+        margin-left:-24px;
+        margin-right:-24px;
+        padding:40px 24px;
+        border-radius:0;
+    }
+}
+
+
+// layout
+.cs-content {
+    background:#f4f4f4;
+    &-inner {
+        width:100%;
+        margin:0 auto;
+        padding:80px 40px 144px;
+        &.type-A {
+            max-width:928px;
+        }
+        &.type-B {
+            max-width:1364px;
+        }
+        @include mobile {
+            padding:12px 24px 90px;
+        }
+    }
+}
+
 // 임시
 .dummy {
     background-color: rgba(255, 70, 70, 0.2);
@@ -103,47 +137,12 @@ legend, caption {
     }
 }
 
-// layout
-.cs-content {
-    background:#f4f4f4;
-    color: #111;
-    &-inner {
-        width:100%;
-        margin:0 auto;
-        padding:80px 40px 144px;
-        &.type-A {
-            max-width:928px;
-        }
-        &.type-B {
-            max-width:1364px;
-        }
-        @include mobile {
-            padding:12px 0 90px;
-        }
-    }
-}
-.section {
-    width:100%;
-    padding:56px;
-    border-radius:4px;
-    background:#fff;
-    @include mobile {
-        padding:40px 24px;
-        border-radius:0;
-    }
-    @at-root .section-area & {
-        color: #111;
-        line-height: 1.38;
-        +.section {
-            margin-top: 27px;
-        }
-    }
-}
-
+// table
 .tbl {
     width:100%;
     border-top:2px solid #ddd;
     &-list {
+        width:100%;
         border-collapse:collapse;
         border-spacing:0;
         table-layout:fixed;
@@ -182,8 +181,7 @@ legend, caption {
     }
 }
 
-
-
+// modal
 .modal {
     width:calc(100% - 80px);
     border-radius:4px;
@@ -269,12 +267,55 @@ legend, caption {
     }
 }
 
-.color-1 {
-    color: #a50034;
-}
-
-.clearFix {
-    @include clearfix;
+.ui_tab {
+    &-notice {
+        .tabs {
+            > li {
+                > a {
+                    font-size: 14px;
+                    color: #616161;
+                    padding-bottom: 4px;
+                }
+                &.on {
+                    border-bottom: 2px solid #111;
+                }
+            }
+        }
+    }
+    &.type-A {
+        .tabs {
+            >li {
+                &.on {
+                    border-bottom: none;
+                    > a {
+                        color: #111;
+                    }
+                }
+                >a {
+                    color: #aaa;
+                    font-size: 18px;
+                    font-weight: bold;
+                    line-height: 1.44;
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+    @include mobile {
+        &-notice {
+            .tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+                width: 100%;
+                > li {
+                    margin-left: 20px;
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .results-stat {
@@ -289,19 +330,15 @@ legend, caption {
 
 [class^="btnarea"] {
     margin-top:80px;
-    @include mobile {
-        margin-top: 40px;
-        padding: 0 24px;
-        .btn {
-            width: 100%;
-        }
-    }
-}
-.btnarea {
     &-r {
         text-align: right;
     }
+    @include mobile {
+        margin-top: 40px;
+        padding: 0 24px;
+    }
 }
+
 .sns {
     &-box {
         display: flex;
@@ -585,253 +622,12 @@ legend, caption {
     margin-top: 48px;
 }
     
-.bullet-title {
-    padding-left: 0.750em;
-    line-height: 1;
-    position: relative;
-    margin-bottom: 30px;
-    &::before {
-        content: '';
-        display: block;
-        width: 0.250em;
-        height: 0.250em;
-        border-radius: 50%;
-        background-color: #616161;
-        position: absolute;
-        left: 0;
-        top: 0.375em;
-    }
+.color-1 {
+    color: #a50034;
 }
 
-.bullet-list {
-    li {
-        position: relative;
-        padding-left: 0.750em;
-        margin-top: 12px;
-        line-height: 1.38;
-        &:first-child {
-            margin-top: 0;
-        }
-        &::before {
-            content: '';
-            display: block;
-            width: 0.250em;
-            height: 0.250em;
-            border-radius: 50%;
-            background-color: #616161;
-            position: absolute;
-            left: 0;
-            top: 0.563em;
-        }
-    }
-}
-
-.ui_tab {
-    &-notice {
-        .tabs {
-            > li {
-                > a {
-                    font-size: 14px;
-                    color: #616161;
-                    padding-bottom: 4px;
-                }
-                &.on {
-                    border-bottom: 2px solid #111;
-                }
-            }
-        }
-    }
-    &.type-A {
-        .tabs {
-            >li {
-                &.on {
-                    border-bottom: none;
-                    > a {
-                        color: #111;
-                    }
-                }
-                >a {
-                    color: #aaa;
-                    font-size: 18px;
-                    font-weight: bold;
-                    line-height: 1.44;
-                    padding-bottom: 0;
-                }
-            }
-        }
-    }
-    @include mobile {
-        &-notice {
-            padding: 0 24px;
-            .tabs {
-                overflow-x: auto;
-                white-space: nowrap;
-                width: 100%;
-                > li {
-                    margin-left: 20px;
-                    &:first-child {
-                        margin-left: 0;
-                    }
-                }
-            }
-        }
-    }
-}
-
-[class^="h-tit"] {
-    word-break: keep-all;
-    &[class*="-3"] {
-        font-size: 24px;
-        font-weight: bold;
-        line-height: 1.42;
-        margin-bottom: 32px;
-        @include mobile {
-            margin-bottom: 24px;
-        }
-    }
-    &[class*="-4"] {
-        font-size: 16px;
-        line-height: 1.38;
-        margin-bottom: 16px;
-    }
-}
-.bullet {
-    position: relative;
-    padding-left: .75em;
-    &::before {
-        content: '';
-        display: block;
-        width: .25em;
-        height: .25em;
-        border-radius: 50%;
-        background-color: #616161;
-        position: absolute;
-        left: 0;
-        top: .563em;
-    }
-}
-
-
-.dl-list {
-    dt {
-        font-size: 18px;
-        font-weight: bold;
-        line-height: 1.44;
-        margin-bottom: 14px;
-    }
-    dd {
-        font-size: 16px;
-        margin-bottom: 32px;
-        &:last-child {
-            margin-bottom: 0;
-        }
-        @include mobile {
-            margin-bottom: 24px;
-        }
-    }
-}
-.img_box {
-    margin-top: 14px;
-    img {
-        max-width: 100%;
-    }
-}
-
-.list-sort {
-    font-size: 14px;
-    margin-bottom: 20px;
+.clearFix {
     @include clearfix;
-    p {
-        float: left;
-        #totCnt {
-            font-weight: bold;
-        }
-    }
-    .fwb {
-        float: right;
-    }
-}
-
-
-.note-box {
-    padding: 24px;
-    border: solid 1px #dddddd;
-    margin-bottom: 24px;
-    @include mobile {
-        padding: 16px;
-    }
-}
-
-.paragraph {
-    &-1 {
-        margin-top: 12px;
-        margin-bottom: 12px;
-    }
-    &-2 {
-        margin-bottom: 22px;
-    }
-    &-3 {
-        margin-top: 8px;
-    }
-    &-4 {
-        margin-top: 16px;
-    }
-}
-
-.list {
-    li {
-        &:first-child {
-            margin-top: 0;
-        }
-    }
-    > li {
-        margin-top: 16px;
-        margin-left: 48px;
-        text-indent: -1.5em;
-        > ul:not(.bullet-list) {
-            > li {
-                margin-left: 24px;
-                text-indent: -24px;
-                > ul {
-                    > li {
-                        text-indent: 0;
-                    }
-                }
-            }
-            &.bullet-list {
-                li {
-                    text-indent: 0;
-                }
-            }
-        }
-        > ul {
-            margin-top: 10px;
-             li {
-                margin-top: 12px;
-            }
-        }
-        > .bullet-list {
-            text-indent: 0;
-        }
-    }
-    @include mobile {
-        > li {
-            margin-left: 16px;
-            text-indent: 0;
-            > ul:not(.bullet-list) {
-                > li {
-                    margin-left: 40px;
-                    text-indent: -24px;
-                }
-            }
-            > .bullet-list {
-                > li {
-                    margin-left: 16px;
-                    text-indent: 0;
-                }
-            }
-        }
-    }
 }
 
 // text-align
