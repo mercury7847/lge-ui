@@ -2285,8 +2285,8 @@ if (!window.JSON) {
     }(this, (typeof setTimeout === 'undefined' ? undefined : setTimeout)));
 
     window.vcuirequire = require;
-    window.define = define;
-    window.requirejs = requirejs;
+    window.defines = define;
+    window.requirejss = requirejs;
 })();
 /*!
  * @author 바이널씨
