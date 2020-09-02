@@ -66,18 +66,18 @@
 	&.standard {
 		.visual-wrap {
 			&.image-align-left {
-				@include grid-col(left,6);
+				@include grid-col(left,6,12);
 			}
 			&.image-align-right {
-				@include grid-col(right,6);
+				@include grid-col(right,6,12);
 			}
 		}
 		.text-wrap {
 			&.side-left-text {
-				@include grid-col(left,6);
+				@include grid-col(left,6,12);
 			}
 			&.side-right-text {
-				@include grid-col(right,6);
+				@include grid-col(right,6,12);
 			}
 			.title {
 				max-height: 68px;
@@ -88,18 +88,18 @@
 	&.large {
 		.visual-wrap {
 			&.image-align-left {
-				@include grid-col(left,8);
+				@include grid-col(left,8,12);
 			}
 			&.image-align-right {
-				@include grid-col(right,8);
+				@include grid-col(right,8,12);
 			}
 		}
 		.text-wrap {
 			&.side-left-text {
-				@include grid-col(left,4);
+				@include grid-col(left,4,12);
 			}
 			&.side-right-text {
-				@include grid-col(right,4);
+				@include grid-col(right,4,12);
 			}
 			.title {
 				max-height: 102px;
