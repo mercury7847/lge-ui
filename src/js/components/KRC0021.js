@@ -18,4 +18,18 @@ $(window).ready(function(){
         }
     }
     KRC0021.init();
+
+    function indiTop() {
+        var indi = $(".indi-wrap");
+        indi.each(function(){
+            var visualArea = $(this).parent(".items-group").find('.visual-wrap');
+            var iH = visualArea.outerHeight();
+
+            $(this).css('top', iH+24);
+        });
+    }
+    $(window).resize(function(){
+        indiTop();
+    });
+    indiTop();
 })
