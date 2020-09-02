@@ -6989,7 +6989,7 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
 
             setTimeout(function(){
                 self.$con.trigger('scroll' + self.eventNS);
-            }, 300);
+            }, 5000);
         },
 
         _getContainerSize: function _getContainerSize() {
@@ -7002,12 +7002,11 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
 
         _action: function _action() {
             var self = this;
-            console.log("_action1")
-
             var scrollValue = self._getScrollValue();
 
             if (scrollValue >= self.largestPosition) {
                 self.$items = $(self.options.selector + "[data-src]");
+                console.log(self.$items)
                 self.$items = self.$items.filter(function () {
                     var $el = $(this),
                         pos = $el.offset()[self.isVert ? 'top' : 'left'],
