@@ -1,4 +1,4 @@
-<!-- components/partials/KRC0020-visual-right.hbs -->
+<!-- components/partials/KRC0020-visual-right.html -->
 <div class="component-wrap">
     <!--
         ** Text Placement가 Left 인 예제입니다.
@@ -56,7 +56,7 @@
         <div class="inner">
             <div class="text-area @@text-area.align-class">
                 <!-- 5. headline -->
-                <div class="title">@@headline</div>
+                <div class="title" id="title02">@@headline</div>
                 <!-- // 5. headline -->
                 <!-- 6. body copy -->
                 <div class="body-copy @@body-copy.font-class @@body-copy.font-style">
@@ -66,12 +66,12 @@
                 <!-- 7. cta -->
                 <div class="cta">
                     <div class="btn-type-box">
-                        <span><a href="#none" class="btn btn-outline-primary" data-link-area="slider_image_left_right_text-cta" data-link-name="{Link Text}">문의하기</a></span>
-                        <span><a href="#none" class="btn btn-primary" data-link-area="slider_image_left_right_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        <span><a href="#none" class="btn btn-outline-primary" data-link-area="slider_image_left_right_text-cta" data-link-name="{Link Text}" aria-describedby="title02">문의하기</a></span>
+                        <span><a href="#none" class="btn btn-primary" data-link-area="slider_image_left_right_text-cta" data-link-name="{Link Text}" aria-describedby="title02">문의하기</a></span>
                     </div>
                     <div class="btn-type-text">
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="slider_image_left_right_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
-                        <span><a href="#none" class="link-text bold ico-right" data-link-area="slider_image_left_right_text-cta" data-link-name="{Link Text}">텍스트 링크 버튼</a></span>
+                        <span><a href="#none" class="link-text bold ico-right" data-link-area="slider_image_left_right_text-cta" data-link-name="{Link Text}" aria-describedby="title02">텍스트 링크 버튼</a></span>
+                        <span><a href="#none" class="link-text bold ico-right" data-link-area="slider_image_left_right_text-cta" data-link-name="{Link Text}" aria-describedby="title02">텍스트 링크 버튼</a></span>
                     </div>
                 </div>
                 <!-- // 7. cta -->
