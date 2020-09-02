@@ -1,9 +1,17 @@
 .container {
-    // > .content {
-    //     padding: 0 40px;
-
-    //     @include mobile {
-    //         padding: 0 20px;
-    //     }
-    // }
+    .page-header {
+        max-width:1284px;
+        margin:0 auto;
+        padding:72px 0 20px;
+        text-align:center;
+        .title {
+            color:#111;
+            font-size:28px;
+            line-height:36px;
+            font-weight:700;
+        }
+        .page-navi {
+            margin-top:23px;
+        }
+    }
 }

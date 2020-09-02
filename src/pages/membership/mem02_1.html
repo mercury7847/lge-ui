@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: "membership/membership"
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+
+            @@include('./common/page-header.html', {
+                "pageTitle": "멤버십 혜택",
+                "pageArr" : ["멤버십 혜택", "VIP 멤버십 혜택", "가입 안내"]
+            })
+
+            <!-- membership -->
+            <div class="contents membership">
+                <div class="section">
+                    <h3 class="sec-tit">LG전자 멤버십 혜택</h3>
+                    <div class="cont-box">
+                         <ul class="benefit-list">
+                             <li></li>
+                         </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="sec-tit">멤버십 운영매장</h3>
+                    <div class="cont-box">
+                        
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="sec-tit">무상서비스 안내</h3>
+                    <div class="cont-box">
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- // membership -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>

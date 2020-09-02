@@ -43,12 +43,13 @@ var res = {
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"]
 		},
 		"Page" : {
-			"멤버십" : {
-				"멤버십 메인" : ["/html/membership/mem01.html","","진행중"],
-				"멤버십 안내" : ["/html/membership/mem02.html","","진행중"],
-				"멤버십 혜택" : ["/html/membership/mem03.html","","진행중"],
-				"멤버십 가입" : ["/html/membership/mem04.html","","진행중"],
-				"포인트 조회" : ["/html/membership/mem05.html","","진행중"]
+			"이벤트/혜택" : {
+				"멤버십" : {
+					"멤버십 메인" : ["/html/membership/mem01.html","","진행중"],
+					"멤버십 혜택" : ["/html/membership/mem02_1.html","","진행중"],
+					"VIP 멤버십 혜택" : ["/html/membership/mem02_2.html","","진행중"],
+					"멤버십 가입안내" : ["/html/membership/mem03.html","","진행중"]
+				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
 			// "페이지2" : ["./html/gr/M.GR-6L.html","","검수요청"],
