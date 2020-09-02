@@ -51,10 +51,12 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
 
         _action: function _action() {
             var self = this;
+            console.log("_action1")
 
             var scrollValue = self._getScrollValue();
 
             if (scrollValue >= self.largestPosition) {
+                console.log("_action2" + scrollValue + " / " + self.largestPosition)
                 self.$items = self.$items.filter(function () {
                     var $el = $(this),
                         pos = $el.offset()[self.isVert ? 'top' : 'left'];
