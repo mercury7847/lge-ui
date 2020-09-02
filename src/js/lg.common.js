@@ -18,9 +18,9 @@ var lgkorUI = {
             "ui/youtubeBox",
             "ui/modal",
         ], function (header, footer, tab, accordion, carousel, dropdown, selectbox, calendar, textControl, scollview, lazyLoader, videoBox, youtubeBox, modal) {
-            $('body').vcLazyLoader();
             $('header').vcHeader(); //헤더 모듈 적용...
             $('footer').vcFooter(); //푸터모듈 적용...
+            $('body').vcLazyLoader();
 
             //공통 UI 모듈 적용...
             $('body').find('.ui_tab').vcTab();

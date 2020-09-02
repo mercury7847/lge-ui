@@ -6967,6 +6967,7 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
             if (self.supr(el, options) === false) {
                 return;
             }
+            console.log("LazyLoader initialize!!!");
 
             self.isVert = self.options.mode === 'vertical';
             self.largestPosition = 0;
@@ -7026,6 +7027,7 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
         },
         _loadImage: function _loadImage($img, cb) {
             var src = $img.attr('data-src');
+            console.log("LazyLoader _loadImage : " + src);
             $img.attr("src", src);
             if ($img[0].complete) {
                 cb.call($img);
