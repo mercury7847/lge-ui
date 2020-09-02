@@ -80,7 +80,7 @@ var lgkorUI = {
     }
 }
 
-$(window).load(function(){
+$(document).load(function(){
     lgkorUI.init();
 })
 
