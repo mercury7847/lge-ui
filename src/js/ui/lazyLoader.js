@@ -23,7 +23,7 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
             if (self.supr(el, options) === false) {
                 return;
             }
-            console.log("LazyLoader initialize!!!");
+            console.log("LazyLoader initialize!!!!");
 
             self.isVert = self.options.mode === 'vertical';
             self.largestPosition = 0;
