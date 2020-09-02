@@ -41,6 +41,10 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
             self.$con.on('scroll' + self.eventNS, function () {
                 self._action();
             }).trigger('scroll' + self.eventNS);
+
+            setTimeout(function(){
+                self.$con.trigger('scroll' + self.eventNS);
+            }, 5000);
         },
 
         _getContainerSize: function _getContainerSize() {
@@ -53,28 +57,27 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
 
         _action: function _action() {
             var self = this;
-            console.log("_action1")
-
             var scrollValue = self._getScrollValue();
 
             if (scrollValue >= self.largestPosition) {
-                console.log("_action2 : " + scrollValue + " / " + self.largestPosition)
-
                 self.$items = $(self.options.selector + "[data-src]");
+                console.log(self.$items)
                 self.$items = self.$items.filter(function () {
                     var $el = $(this),
                         pos = $el.offset()[self.isVert ? 'top' : 'left'],
                         chkpos = scrollValue + self.options.range + self._getContainerSize();
-                    console.log("_action3 : " + $el + " / " + pos + " / " + chkpos);
                     if (chkpos >= pos) {
-                        if (self.options.useFade) {
-                            $el.css('opacity', 0);
-                        }
-                        self._loadImage($el, function () {
+                        if($el.data("lazyloaded") == undefined || !$el.data("lazyloaded")){
                             if (self.options.useFade) {
-                                $el.stop().animate({ opacity: 1 });
+                                $el.css('opacity', 0);
                             }
-                        });
+                            self._loadImage($el, function () {
+                                if (self.options.useFade) {
+                                    $el.stop().animate({ opacity: 1 });
+                                }
+                            });
+                            $el.data("lazyloaded", true);
+                        }
                         return false;
                     }
                     return true;

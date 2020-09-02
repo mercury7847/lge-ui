@@ -269,8 +269,34 @@ CS.MD.setPagination = function() {
         });
     }
 
+    function checkPrivacy() {
+        var $privacyBox = $('.privacy-box');
+
+        if (!$privacyBox.length) return false;
+
+        function setEventListener() {
+            $('[type="checkbox"]').on('click', function(e) {
+                var $this = $(this);
+                
+                if ($this.is(':checked')) {
+                    e.preventDefault();
+                
+                    $('#privacyAgreeModal').vcModal();
+                }
+            });
+
+            $('#privacyAgreeModal').find('.btn.black').on('click', function() {
+                $privacyBox.find('[type="checkbox"]').prop('checked', true);
+                $('#privacyAgreeModal').vcModal('hide');
+            });
+        }
+
+        setEventListener();
+    }
+
     function commonInit(){
         setTableScrollbar();
+        checkPrivacy();
     }
 
     // CS.UI.elem.$win.ready( commonInit );
