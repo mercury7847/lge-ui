@@ -12,15 +12,19 @@
 	}
 }
 
-@mixin grid-col ($align,$columns) {
+@mixin grid-col ($align,$columns1,$columns2) {
     float: $align;
-    width: (100% / 12) * $columns;
+    width: (100% / 12) * $columns1;
     padding: 0 12px;
 
     @media screen and (max-width: #{$tablet-s-width}) {
-        float: none;
-        width: 100%;
-        //margin-bottom: 12px;
+        width: (100% / 12) * $columns2;
         padding: 0 6px;
-	}
+
+        @if($columns2 == "12") {
+            float: none;
+            width: 100%;
+        }
+
+    }
 }

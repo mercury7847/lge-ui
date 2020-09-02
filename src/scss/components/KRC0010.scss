@@ -104,7 +104,7 @@
         @include grid-row;
     }
     .unit-box {
-        @include grid-col(left,6);
+        @include grid-col(left,6,12);
         @include mobile {
             margin-bottom: 40px;
             &:last-child {

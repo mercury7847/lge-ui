@@ -60,27 +60,6 @@
 	}
 }
 
-@mixin font-family($font, $sytle:normal) {
-    @if ($font == $font-regular) or ($font == $font-bold) {
-        @if $sytle == italic {
-            font-style: italic;
-        } @else if $sytle == normal {
-            font-style: normal;
-        }
-    }
-
-    //font-weight:normal;
-    @if ($font == $font-regular) {
-        font-weight: 400;
-    } @else if ($font == $font-medium) {
-        font-weight: 500;
-    } @else if ($font == $font-bold) {
-        font-weight: 700;
-    } @else {
-        font-weight: 400;
-    }
-}
-
 /*
  * clearfix
  * @include clearfix;

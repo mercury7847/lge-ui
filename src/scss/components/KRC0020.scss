@@ -74,17 +74,17 @@
         @include grid-row;
     }
     .visual-area {
-        @include grid-col(left,8);
+        @include grid-col(left,8,12);
     }
     .text-area {
-        @include grid-col(right,4);
+        @include grid-col(right,4,12);
     }
     &.type-visual-right {
         .visual-area {
-            @include grid-col(right,8);
+            @include grid-col(right,8,12);
         }
         .text-area {
-            @include grid-col(left,4);
+            @include grid-col(left,4,12);
         }
     }
 

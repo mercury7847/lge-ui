@@ -16,14 +16,14 @@
     .unit-list {
         @include grid-row;
         .unit-box {
-            @include grid-col(left,6);
+            @include grid-col(left,6,12);
         }
     }
     .unit-small-wrap {
         ul {
             @include grid-row;
             .unit-box {
-                @include grid-col(left,6);
+                @include grid-col(left,6,12);
             }
         }
     }
@@ -31,14 +31,14 @@
         @include grid-row;
         .unit-box,
         .unit-small-wrap {
-            @include grid-col(left,6);
+            @include grid-col(left,6,12);
         }
     }
     .large-align-right {
         @include grid-row;
         .unit-box,
         .unit-small-wrap {
-            @include grid-col(right,6);
+            @include grid-col(right,6,12);
         }
     }
 

@@ -12,7 +12,7 @@
         &-box {
             @include grid-row;
             [class^="part"] {
-                @include grid-col(left,6);
+                @include grid-col(left,6,12);
             }
             .part1 {
                 iframe {
