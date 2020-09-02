@@ -43,6 +43,7 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
             }).trigger('scroll' + self.eventNS);
 
             setTimeout(function(){
+                console.log("setTimeout")
                 self.$con.trigger('scroll' + self.eventNS);
             }, 5000);
         },
