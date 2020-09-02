@@ -8,7 +8,7 @@
  * github: https://github.com/firstopinion/formatter.js
  * License: The MIT License (MIT) Copyright (c) 2013 First Opinion
  */
-define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     // {{9999}}-{{9999}}-{{9999}}

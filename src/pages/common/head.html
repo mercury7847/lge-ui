@@ -16,6 +16,11 @@
     <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
     <script src="/lg5-common/js/libs/jquery.event.move.min.js"></script>
     <script src="/lg5-common/js/libs/jquery.twentytwenty.min.js"></script>
+    @@if (context.libJS) {
+        @@for (var i=0; i<context.libJS.length; i++) {
+            <script src="/lg5-common/js/libs/`+libJS[i]+`.min.js"></script>
+        }
+    }
     <script src="/lg5-common/js/vcui.min.js"></script>
     <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
     <script src="/lg5-common/js/lg.common.min.js"></script>

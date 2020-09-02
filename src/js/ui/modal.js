@@ -4,7 +4,7 @@
  * @description 모달 컴포넌트
  * @copyright VinylC UID Group
  */
-define('ui/modal', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var $doc = $(document),

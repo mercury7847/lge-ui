@@ -1,7 +1,14 @@
 @charset "UTF-8";
 
+.KR50CS411 {
+    .cs-content-inner {
+        padding-top:80px;
+    }
+}
+
 .select-area {
     padding:80px 0 104px;
+    background:#fff;
     .select-title {
         font-size:18px;
         font-weight:bold;
@@ -63,12 +70,17 @@
                         margin:0 -16px 0;
                     }
                 }
+                &_track {
+                    @include clearfix;
+                }
                 &_slide {
                     float:left;
+                    width:25%;
                     text-align:center;
-                    margin:0 12px;
+                    padding:0 12px;
                     @include mobile {
-                        margin:0 16px;
+                        width:50%;
+                        padding:0 16px;
                     }
                 }
                 &_pagination {

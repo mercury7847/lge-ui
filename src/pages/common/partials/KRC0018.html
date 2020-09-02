@@ -1,0 +1,93 @@
+<div class="component-wrap full"><!-- [KR수정] .full class 추가 -->
+        <!--
+            ** 이미지가 왼쪽, 텍스트가 오른쪽인 경우의 마크업입니다. 
+    
+            [.component-wrap 옵션]
+            1. 여백
+            .zero-top : 상단여백 없음
+            .zero-btm : 하단여백 없음
+    
+            [component 영역 옵션]
+            1. 이미지 넓이
+            .full : 이미지 넓이가 1600px
+            .wide : 이미지가 넓이가 1066px
+            .standard : 이미지 넓이가 800px
+            .high : 이미지가 넓이가 546px
+    
+            2. 배경 색상 :
+            .bg-white : #FFFFFF 색상 배경
+            .bg-lightgray : #F8F8F8 색상 배경
+            .bg-dark : #333333 색상 배경
+            .bg-black : #000000 색상 배경
+    
+            [.text-wrap 옵션]
+            1. 텍스트 박스 위치
+            .left : 왼쪽 위치
+            .right : 오른쪽 위치
+    
+            2. 폰트 정렬
+            .align-left : 왼쪽 정렬
+            .align-right : 오른쪽 정렬
+            .align-center : 중앙 정렬
+    
+            [.text 옵션]
+            1. 폰트 종류 : 
+            .font-regular : 레귤러
+            .font-bold : 볼드
+            .font-regular-italic : 레귤러 이탤릭
+    
+            2. 폰트 스타일: 
+            기본은 언더라인 없음 
+            .font-underline : 언더라인
+        -->
+        <div class="component KRC0018 @@option-type.bg-color @@option-type.type">
+            <div class="inner @@place-class">
+                <div class="visual-area">
+                    <div class="visual-wrap">
+                        @@if (visualType === "video") {
+                        <!-- 1. image : video 타입인 경우 -->
+                        <div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
+                            <!-- 1-1 video play button -->
+                            <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="image_layered_text-video_play" data-link-name="{video id}">
+                                <img data-src="@@option-type.img.visual1" class="lazyload pc" alt="" />
+                                <img data-src="@@option-type.img.visual2" class="lazyload mobile" alt="" />
+                            </a>
+                            <!-- // 1-1 video play button -->
+                        </div>
+                        <!-- // 1. image : video 타입인 경우 -->
+                        }
+                        @@if (visualType === "image") {
+                        <!-- 1. image : img 타입인 경우 -->
+                        <div class="visual-area image">
+                            <img data-src="@@option-type.img.visual1" class="lazyload pc" alt="" />
+                            <img data-src="@@option-type.img.visual2" class="lazyload mobile" alt="" />
+                        </div>
+                        <!-- // 1. image : img 타입인 경우 -->
+                        }
+                    </div>
+                </div>
+                <div class="text-box-area">
+                    <div class="text-wrap @@align-class">
+                        <!-- 2. headline -->
+                        <div class="title"><h2>초 프리미엄 세탁기<br>LG SIGNATURE</h2></div>
+                        <!-- // 2. headline -->
+                        <!-- 3. body copy -->
+                        <div class="text @@option-type.font-class">세월이 흘러도 변하지 않는 타임리스 디자인.<br>순더더기 없는 라인, 프리미엄 소재로 변치 않는 아름다움과 내구성을 갖췄습니다.</div>
+                        <!-- // 3. body copy -->
+                        <!-- 4. cta -->
+                        <div class="btn-type-box">
+                            <span><a href="@@view-page-link.link-url1" target="@@view-page-link.link-target1" class="btn btn-outline-primary" data-link-area="image_layered_text-cta" data-link-name="{Link Text}">문의하기</a></span><!-- [KR수정] .btn-primary -> .btn-outline-primary로 수정 -->
+                            <span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="btn btn-primary" data-link-area="image_layered_text-cta" data-link-name="{Link Text}">문의하기</a></span>
+                        </div>
+                        <div class="btn-type-text">
+                            <span><a href="@@view-page-link.link-url1" target="@@view-page-link.link-target1" class="link-text bold ico-right" data-link-area="image_layered_text-cta" data-link-name="{Link Text}">자세히 보기</a></span>
+                            <span><a href="@@view-page-link.link-url2" target="@@view-page-link.link-target2" class="link-text bold ico-right" data-link-area="image_layered_text-cta" data-link-name="{Link Text}">자세히 보기</a></span>
+                        </div>
+                        <!-- // 4. cta -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    

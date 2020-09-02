@@ -1,6 +1,5 @@
 
-console.log("videoBox")
-define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var VideoBox = core.ui('VideoBox', {

@@ -6,7 +6,7 @@
  * 
  * <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5dddbd78e7c3f80dd289ec188acf536c&libraries=services"></script>
  */
-define('ui/storeMap', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/storeMap', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     /**

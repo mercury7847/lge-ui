@@ -116,6 +116,9 @@
         }
 
         .tab-scroll-controller {
+            @include pc {
+                display: none;
+            }
             .scroll-left,
             .scroll-right {
                 position: absolute;
@@ -137,9 +140,6 @@
                     border-right: 2px solid #111;
                     border-bottom: 2px solid #111;
                 }
-                &:disabled {
-                    display: none;
-                }
                 &.scroll-left {
                     left: -16px;
                     &::before {
@@ -153,6 +153,9 @@
                         margin-left:-5px;
                         transform:rotate(-45deg);
                     }
+                }
+                &[aria-disabled="true"] {
+                    display: none;
                 }
             }
         }

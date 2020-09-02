@@ -8,7 +8,7 @@
  */
   
 
-define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function ($, core) {
+vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function ($, core) {
     "use strict";
     var $win = $(window);
 

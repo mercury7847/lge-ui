@@ -1,0 +1,186 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+$color: (lightgray, dark, black, white);
+
+.KRC0021 {
+    padding:60px 0;
+    @each $bg in $color {
+        &.bg-#{$bg} {
+            @if $bg == lightgray {
+                background:#f4f4f4;
+            } @else if $bg == dark {
+                background:#333;
+            } @else if $bg == black {
+                background:#000;
+            } @else if $bg == white {
+                background:#fff;
+            }
+
+            .text-wrap {
+                .title * {
+                    @if $bg == lightgray {
+                        color:#111;
+                    } @else if $bg == white {
+                        color:#111;
+                    } @else if $bg == black {
+                        color:#fff;
+                    } @else if $bg == dark {
+                        color:#fff;
+                    }
+                }
+                .text {
+                    @if $bg == lightgray {
+                        color:#616161;
+                    } @else if $bg == white {
+                        color:#616161;
+                    } @else if $bg == black {
+                        color:#fff;
+                    } @else if $bg == dark {
+                        color:#fff;
+                    }
+                }
+                .btn-type-text {
+                    .link-text {
+                        @if $bg == black {
+                            color:#fff;
+                            border-color:#fff;
+                            &::after {
+                                border-color:#fff;
+                            }
+                        } @else if $bg == dark {
+                            color:#fff;
+                            border-color:#fff;
+                            &::after {
+                                border-color:#fff;
+                            }
+                        }
+                    }
+                }
+            }
+            .desc {
+                @if $bg == black {
+                    color:#fff;
+                } @else if $bg == dark {
+                    color:#fff;
+                }
+            }
+        }
+    }
+
+    .component-box {
+        max-width:1284px;
+        margin:0 auto;
+        .items-group {
+            position:relative;
+            padding:0 109px;
+            @include mobile {
+                padding:0;
+            }
+            .indi-wrap {
+                display:none !important;
+                @include mobile {
+                    display:block !important;
+                    position:absolute;
+                    left:0;
+                    right:0;
+                    top:0;
+                    height:0;
+                    padding-top:67%;
+                    z-index:1;
+                    button {
+                        position:relative;
+                        z-index:50;
+                    }
+                }
+            }
+            .ui_carousel_list {
+                overflow:hidden;
+            }
+            .items {
+                @include clearfix;
+                .item-box {
+                    @include clearfix;
+                    .visual-wrap {
+                        float:left;
+                        width:412px;
+                        .visual-area a {
+                            display:block;
+                            overflow:hidden;
+                            height:0;
+                            padding-bottom:75%;
+                            img {
+                                width:100%;
+                                height:auto;
+                                vertical-align:top;
+                            }
+                        }
+                        @include mobile {
+                            float:none;
+                            width:auto;
+                        }
+                    }
+                    .text-wrap {
+                        margin-left:(412px + 24px);
+                        .title * {
+                            font-size:18px;
+                            line-height:26px;
+                            font-weight:700;
+                        }
+                        .text {
+                            font-size:16px;
+                            line-height:24px;
+                            margin-top:22px;
+                        }
+                        .btn-type-box {
+                            margin:21px -10px 0;
+                            span {
+                                display:inline-block;
+                                margin:12px 10px 0;
+                                vertical-align:top;
+                            }
+                        }
+                        .btn-type-text {
+                            margin:26px -12px 0;
+                            span {
+                                display:inline-block;
+                                margin:24px 12px 0;
+                                vertical-align:top;
+                            }
+                        }
+                        @include mobile {
+                            margin-left:0;
+                            padding:24px 24px 0;
+                        }
+                    }
+                }
+            }
+            .btn-arrow {
+                position:absolute;
+                top:50%;
+                margin-top:-28px;
+                &.prev {
+                    left:0;
+                }
+                &.next {
+                    right:0;
+                }
+                @include mobile {
+                    display:none !important;
+                }
+            }
+        }
+        .desc {
+            margin:24px 109px 0;
+            padding:11px 23px;
+            border:1px solid #ddd;
+            font-size:14px;
+            line-height:20px;
+            @include mobile {
+                margin:24px 24px 0;
+            }
+        }
+    }
+}

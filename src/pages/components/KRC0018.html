@@ -7,143 +7,109 @@
 <body>
     <div class="wrap">
         <div class="container">
+            <!-- component -->
+            <!-- full / image align left / textbox align right / bg-lightgray type -->
+            @@include('./common/partials/KRC0018.html', {
+                 "align-class": "align-left",
+                 "place-class": "large-align-right",
+                 "visualType": "video",
+                 "view-page-link" : {
+                        "link-url1" : "#",
+                        "link-target1" : "_balck",
+                        "link-url2" : "#",
+                        "link-target2" : "_self"
+                 },
+                 "option-type": {
+                    "type": "full",
+                    "bg-color": "bg-lightgray",
+                    "font-class": "font-regular",
+                    "font-style": "font-underline",
+                    "img": {
+                        "visual1":"/lg5-common/images/KRC0018/@thumb01.jpg",
+                        "visual2":"/lg5-common/images/KRC0018/@thumb01_m.jpg"
+                    }
+                }
+            })
+            <!-- // full / image align left / textbox align right / bg-lightgray type -->
+            <!-- // component -->
 
-			<!-- component KRC0018 -->
-            <div class="component-wrap full"><!-- [KR수정] .full class 추가 -->
-                @@include('./components/common-note.html')
-                <div class="component KRC0018 bg-lightgray full"><!-- [KR수정] page class명 수정 -->
-                    <div class="inner large-align-right">
-                        <div class="visual-area">
-                            <div class="visual-wrap">
-                                <div class="visual-area video">
-                                    <a href="#none" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="image_layered_text-video_play_ad" data-link-name="{video title}" aria-describedby="title01">plays audio description video</a>
-                                    <a href="#" class="see-video" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="image_layered_text-video_play" data-link-name="{video id}" aria-describedby="title01">
-                                        <img data-src="/lg5-common/images/KRC0018/@thumb01.jpg" class="lazyload pc" alt="" aria-hidden="true"/>
-                                        <img data-src="/lg5-common/images/KRC0018/@thumb01_m.jpg" class="lazyload mobile" alt="" aria-hidden="true"/>                                                                                                                                                                                  
-                                        <p class="hidden pc">graphic description : </p>                                        
-                                    </a>
-                                </div>            
-                            </div>
-                        </div>
-                        <div class="text-box-area">
-                            <div class="text-wrap align-left">
-                                <div class="title" id="title01"><h2>초 프리미엄 세탁기<br>LG SIGNATURE</h2></div>
-                                <div class="text font-regular">세월이 흘러도 변하지 않는 타임리스 디자인.<br>순더더기 없는 라인, 프리미엄 소재로 변치 않는 아름다움과 내구성을 갖췄습니다.</div>
-                                <div class="btn-type-box">
-                                    <span><a href="#" target="_balck" class="btn btn-outline-primary" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span><!-- [KR수정] class 수정 -->
-                                    <span><a href="#" target="_self" class="btn btn-primary" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span>
-                                </div>
-                                <div class="btn-type-text" style="display:none;">
-                                    <span><a href="#" target="_balck" class="link-text bold ico-right" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">자세히 보기</a></span>
-                                    <span><a href="#" target="_self" class="link-text bold ico-right" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">자세히 보기</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- component -->
+            <!-- wide / image align right / textbox align left / bg-dark type -->
+            @@include('./common/partials/KRC0018.html', {
+                "align-class": "align-left",
+                "place-class": "large-align-left",
+                "visualType": "image",
+                "view-page-link" : {
+                       "link-url1" : "#",
+                       "link-target1" : "_balck",
+                       "link-url2" : "#",
+                       "link-target2" : "_self"
+                },
+                "option-type": {
+                   "type": "wide",
+                   "bg-color": "bg-dark",
+                   "font-class": "font-regular",
+                   "font-style": "font-underline",
+                   "img": {
+                       "visual1":"/lg5-common/images/KRC0018/@thumb02.jpg",
+                       "visual2":"/lg5-common/images/KRC0018/@thumb02_m.jpg"
+                    }
+                }
+            })
+            <!-- // wide / image align right / textbox align left / bg-dark type -->
+            <!-- // component -->
 
-            <div class="component-wrap full"><!-- [KR수정] .full class 추가 -->
-                @@include('./components/common-note.html')
-                <div class="component KRC0018 bg-dark wide"><!-- [KR수정] page class명 수정 -->
-                    <div class="inner large-align-left">
-                        <div class="visual-area">
-                            <div class="visual-wrap">             
-                                <div class="visual-area video">
-                                    <a href="#none" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="image_layered_text-video_play_ad" data-link-name="{video title}" aria-describedby="title01">plays audio description video</a>
-                                    <a href="#" class="see-video" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="image_layered_text-video_play" data-link-name="{video id}" aria-describedby="title01">
-                                        <img data-src="/lg5-common/images/KRC0018/@thumb02.jpg" class="lazyload pc" alt="" aria-hidden="true"/>
-                                        <img data-src="/lg5-common/images/KRC0018/@thumb02_m.jpg" class="lazyload mobile" alt="" aria-hidden="true"/>                                                                                                                                                                                  
-                                        <p class="hidden pc">graphic description : </p>                                        
-                                    </a>
-                                </div>                                  
-                            </div>
-                        </div>
-                        <div class="text-box-area">
-                            <div class="text-wrap align-center">
-                                <div class="title" id="title01"><h2>초 프리미엄 세탁기<br>LG SIGNATURE</h2></div>
-                                <div class="text font-regular">세월이 흘러도 변하지 않는 타임리스 디자인.<br>순더더기 없는 라인, 프리미엄 소재로 변치 않는 아름다움과 내구성을 갖췄습니다.</div>
-                                <div class="btn-type-box">
-                                    <span><a href="#" target="_balck" class="btn btn-outline-primary" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span><!-- [KR수정] class 수정 -->
-                                    <span><a href="#" target="_self" class="btn btn-primary" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span>
-                                </div>
-                                <div class="btn-type-text">
-                                    <span><a href="#" target="_balck" class="link-text bold ico-right" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">자세히 보기</a></span>
-                                    <span><a href="#" target="_self" class="link-text bold ico-right" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">자세히 보기</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- component -->
+            <!-- standard / image align right / textbox align left / bg-white type -->
+            @@include('./common/partials/KRC0018.html', {
+                "align-class": "align-left",
+                "place-class": "large-align-left",
+                "visualType": "video",
+                "view-page-link" : {
+                       "link-url1" : "#",
+                       "link-target1" : "_balck",
+                       "link-url2" : "#",
+                       "link-target2" : "_self"
+                },
+                "option-type": {
+                   "type": "standard",
+                   "bg-color": "bg-white",
+                   "font-class": "font-regular",
+                   "font-style": "font-underline",
+                   "img": {
+                       "visual1":"/lg5-common/images/KRC0018/@thumb03.jpg",
+                       "visual2":"/lg5-common/images/KRC0018/@thumb02_m.jpg"
+                    }
+                }
+            })
+           <!-- // standard / image align right / textbox align left / bg-white type -->
+           <!-- // component -->
 
-            <div class="component-wrap full"><!-- [KR수정] .full class 추가 -->
-                @@include('./components/common-note.html')
-                <div class="component KRC0018 bg-white standard"><!-- [KR수정] page class명 수정 -->
-                    <div class="inner large-align-left">
-                        <div class="visual-area">
-                            <div class="visual-wrap">
-                                <div class="visual-area video">
-                                    <a href="#none" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="image_layered_text-video_play_ad" data-link-name="{video title}" aria-describedby="title01">plays audio description video</a>
-                                    <a href="#" class="see-video" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="image_layered_text-video_play" data-link-name="{video id}" aria-describedby="title01">
-                                        <img data-src="/lg5-common/images/KRC0018/@thumb03.jpg" class="lazyload pc" alt="" aria-hidden="true"/>
-                                        <img data-src="/lg5-common/images/KRC0018/@thumb02_m.jpg" class="lazyload mobile" alt="" aria-hidden="true"/>                                                                                                                                                                                  
-                                        <p class="hidden pc">graphic description : </p>                                        
-                                    </a>
-                                </div>                                
-                            </div>
-                        </div>
-                        <div class="text-box-area">
-                            <div class="text-wrap align-left">
-                                <div class="title" id="title01"><h2>초 프리미엄 세탁기<br>LG SIGNATURE</h2></div>
-                                <div class="text font-regular">세월이 흘러도 변하지 않는 타임리스 디자인.<br>순더더기 없는 라인, 프리미엄 소재로 변치 않는 아름다움과 내구성을 갖췄습니다.</div>
-                                <div class="btn-type-box">
-                                    <span><a href="#" target="_balck" class="btn btn-outline-primary" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span><!-- [KR수정] class 수정 -->
-                                    <span><a href="#" target="_self" class="btn btn-primary" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span>
-                                </div>
-                                <div class="btn-type-text" style="display:none;">
-                                    <span><a href="#" target="_balck" class="link-text bold ico-right" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">자세히 보기</a></span>
-                                    <span><a href="#" target="_self" class="link-text bold ico-right" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">자세히 보기</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="component-wrap full"><!-- [KR수정] .full class 추가 -->
-                @@include('./components/common-note.html')
-                <div class="component KRC0018 bg-black high"><!-- [KR수정] page class명 수정 -->
-                    <div class="inner large-align-right">
-                        <div class="visual-area">
-                            <div class="visual-wrap">
-                                <div class="visual-area video">
-                                    <a href="#none" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="image_layered_text-video_play_ad" data-link-name="{video title}" aria-describedby="title01">plays audio description video</a>
-                                    <a href="#" class="see-video" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="image_layered_text-video_play" data-link-name="{video id}" aria-describedby="title01">
-                                        <img data-src="/lg5-common/images/KRC0018/@thumb04.jpg" class="lazyload pc" alt="" aria-hidden="true"/>
-                                        <img data-src="/lg5-common/images/KRC0018/@thumb04_m.jpg" class="lazyload mobile" alt="" aria-hidden="true"/>                                                                                                                                                                                  
-                                        <p class="hidden pc">graphic description : </p>                                        
-                                    </a>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="text-box-area">
-                            <div class="text-wrap align-left">
-                                <div class="title" id="title01"><h2>초 프리미엄 세탁기<br>LG SIGNATURE</h2></div>
-                                <div class="text font-regular">세월이 흘러도 변하지 않는 타임리스 디자인.<br>순더더기 없는 라인, 프리미엄 소재로 변치 않는 아름다움과 내구성을 갖췄습니다.</div>
-                                <div class="btn-type-box">
-                                    <span><a href="#" target="_balck" class="btn btn-outline-primary" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span><!-- [KR수정] class 수정 -->
-                                    <span><a href="#" target="_self" class="btn btn-primary" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">문의하기</a></span>
-                                </div>
-                                <div class="btn-type-text">
-                                    <span><a href="#" target="_balck" class="link-text bold ico-right" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">자세히 보기</a></span>
-                                    <span><a href="#" target="_self" class="link-text bold ico-right" data-link-area="image_layered_text-cta" data-link-name="{Link Text}" aria-describedby="title01">자세히 보기</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- component -->
+            <!-- high / image align left / textbox align center / bg-black type -->
+            @@include('./common/partials/KRC0018.html', {
+                "align-class": "align-center",
+                "place-class": "large-align-right",
+                "visualType": "video",
+                "view-page-link" : {
+                       "link-url1" : "#",
+                       "link-target1" : "_balck",
+                       "link-url2" : "#",
+                       "link-target2" : "_self"
+                },
+                "option-type": {
+                   "type": "high",
+                   "bg-color": "bg-black",
+                   "font-class": "font-regular",
+                   "font-style": "font-underline",
+                   "img": {
+                       "visual1":"/lg5-common/images/KRC0018/@thumb04.jpg",
+                       "visual2":"/lg5-common/images/KRC0018/@thumb04_m.jpg"
+                    }
+                }
+            })
+            <!-- // high / image align left / textbox align center / bg-black type -->
+            <!-- // component -->
 		</div>
     </div>     
 </body>

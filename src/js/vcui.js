@@ -134,11 +134,11 @@ if (!window.JSON) {
         return;
     }
 
+
     /** vim: et:ts=4:sw=4:sts=4
-     * @license RequireJS 2.3.5 Copyright jQuery Foundation and other contributors.
+     * @license RequireJS 2.3.6 Copyright jQuery Foundation and other contributors.
      * Released under MIT license, https://github.com/requirejs/requirejs/blob/master/LICENSE
      */
-
     //Not using strict: uneven strict support in browsers, #392, and causes
     //problems with requirejs.exec()/transpiler plugins that may not be strict.
     /*jslint regexp: true, nomen: true, sloppy: true */
@@ -148,7 +148,7 @@ if (!window.JSON) {
     (function (global, setTimeout) {
         var req, s, head, baseElement, dataMain, src,
             interactiveScript, currentlyAddingScript, mainScript, subPath,
-            version = '2.3.5',
+            version = '2.3.6',
             commentRegExp = /\/\*[\s\S]*?\*\/|([^:"'=]|^)\/\/.*$/mg,
             cjsRequireRegExp = /[^.]\s*require\s*\(\s*["']([^'"\s]+)["']\s*\)/g,
             jsSuffixRegExp = /\.js$/,
@@ -163,7 +163,7 @@ if (!window.JSON) {
             // then 'complete'. The UA check is unfortunate, but not sure how
             //to feature test w/o causing perf issues.
             readyRegExp = isBrowser && navigator.platform === 'PLAYSTATION 3' ?
-                /^complete$/ : /^(complete|loaded)$/,
+                        /^complete$/ : /^(complete|loaded)$/,
             defContextName = '_',
             //Oh the tragedy, detecting opera. See the usage of isOpera for reason.
             isOpera = typeof opera !== 'undefined' && opera.toString() === '[object Opera]',
@@ -302,7 +302,7 @@ if (!window.JSON) {
          * @returns {Error}
          */
         function makeError(id, msg, err, requireModules) {
-            var e = new Error(msg + '\nhttp://requirejs.org/docs/errors.html#' + id);
+            var e = new Error(msg + '\nhttps://requirejs.org/docs/errors.html#' + id);
             e.requireType = id;
             e.requireModules = requireModules;
             if (err) {
@@ -496,7 +496,7 @@ if (!window.JSON) {
                 if (isBrowser) {
                     each(scripts(), function (scriptNode) {
                         if (scriptNode.getAttribute('data-requiremodule') === name &&
-                            scriptNode.getAttribute('data-requirecontext') === context.contextName) {
+                                scriptNode.getAttribute('data-requirecontext') === context.contextName) {
                             scriptNode.parentNode.removeChild(scriptNode);
                             return true;
                         }
@@ -593,8 +593,8 @@ if (!window.JSON) {
                             // loading of a loader plugin. But for now, fixes the
                             // common uses. Details in #1131
                             normalizedName = name.indexOf('!') === -1 ?
-                                normalize(name, parentName, applyMap) :
-                                name;
+                                            normalize(name, parentName, applyMap) :
+                                            name;
                         }
                     } else {
                         //A regular module.
@@ -616,8 +616,8 @@ if (!window.JSON) {
                 //normalization, stamp it with a unique ID so two matching relative
                 //ids that may conflict can be separate.
                 suffix = prefix && !pluginModule && !isNormalized ?
-                    '_unnormalized' + (unnormalizedCounter += 1) :
-                    '';
+                        '_unnormalized' + (unnormalizedCounter += 1) :
+                        '';
 
                 return {
                     prefix: prefix,
@@ -628,8 +628,8 @@ if (!window.JSON) {
                     originalName: originalName,
                     isDefine: isDefine,
                     id: (prefix ?
-                        prefix + '!' + normalizedName :
-                        normalizedName) + suffix
+                            prefix + '!' + normalizedName :
+                            normalizedName) + suffix
                 };
             }
 
@@ -649,7 +649,7 @@ if (!window.JSON) {
                     mod = getOwn(registry, id);
 
                 if (hasProp(defined, id) &&
-                    (!mod || mod.defineEmitComplete)) {
+                        (!mod || mod.defineEmitComplete)) {
                     if (name === 'defined') {
                         fn(defined[id]);
                     }
@@ -695,7 +695,7 @@ if (!window.JSON) {
             function takeGlobalQueue() {
                 //Push all the globalDefQueue items into the context's defQueue
                 if (globalDefQueue.length) {
-                    each(globalDefQueue, function (queueItem) {
+                    each(globalDefQueue, function(queueItem) {
                         var id = queueItem[0];
                         if (typeof id === 'string') {
                             context.defQueueMap[id] = true;
@@ -872,8 +872,8 @@ if (!window.JSON) {
                 this.depCount = 0;
 
                 /* this.exports this.factory
-                   this.depMaps = [],
-                   this.enabled, this.fetched
+                this.depMaps = [],
+                this.enabled, this.fetched
                 */
             };
 
@@ -1111,14 +1111,12 @@ if (!window.JSON) {
                             //prefix and name should already be normalized, no need
                             //for applying map config again either.
                             normalizedMap = makeModuleMap(map.prefix + '!' + name,
-                                this.map.parentMap,
-                                true);
+                                                        this.map.parentMap,
+                                                        true);
                             on(normalizedMap,
                                 'defined', bind(this, function (value) {
                                     this.map.normalizedMap = normalizedMap;
-                                    this.init([], function () {
-                                        return value;
-                                    }, null, {
+                                    this.init([], function () { return value; }, null, {
                                         enabled: true,
                                         ignore: true
                                     });
@@ -1150,9 +1148,7 @@ if (!window.JSON) {
                         }
 
                         load = bind(this, function (value) {
-                            this.init([], function () {
-                                return value;
-                            }, null, {
+                            this.init([], function () { return value; }, null, {
                                 enabled: true
                             });
                         });
@@ -1208,10 +1204,10 @@ if (!window.JSON) {
                                 req.exec(text);
                             } catch (e) {
                                 return onError(makeError('fromtexteval',
-                                    'fromText eval for ' + id +
-                                    ' failed: ' + e,
-                                    e,
-                                    [id]));
+                                                'fromText eval for ' + id +
+                                                ' failed: ' + e,
+                                                e,
+                                                [id]));
                             }
 
                             if (hasInteractive) {
@@ -1258,9 +1254,9 @@ if (!window.JSON) {
                             //Dependency needs to be converted to a depMap
                             //and wired up to this module.
                             depMap = makeModuleMap(depMap,
-                                (this.map.isDefine ? this.map : this.map.parentMap),
-                                false,
-                                !this.skipMap);
+                                                (this.map.isDefine ? this.map : this.map.parentMap),
+                                                false,
+                                                !this.skipMap);
                             this.depMaps[i] = depMap;
 
                             handler = getOwn(handlers, depMap.id);
@@ -1286,7 +1282,7 @@ if (!window.JSON) {
                                 // No direct errback on this module, but something
                                 // else is listening for errors, so be sure to
                                 // propagate the error correctly.
-                                on(depMap, 'error', bind(this, function (err) {
+                                on(depMap, 'error', bind(this, function(err) {
                                     this.emit('error', err);
                                 }));
                             }
@@ -1391,9 +1387,11 @@ if (!window.JSON) {
                 //Make sure any remaining defQueue items get properly processed.
                 while (defQueue.length) {
                     args = defQueue.shift();
-                    console.log(args[0])
                     if (args[0] === null) {
-                        //return onError(makeError('mismatch', 'Mismatched anonymous define() module: ' + args[args.length - 1]));
+                        /*
+                        return onError(makeError('mismatch', 'Mismatched anonymous define() module: ' +
+                            args[args.length - 1]));
+                            */
                         console.log(args)
                     } else {
                         //args are id, deps, factory. Should be normalized by the
@@ -1432,7 +1430,7 @@ if (!window.JSON) {
                     // Convert old style urlArgs string to a function.
                     if (typeof cfg.urlArgs === 'string') {
                         var urlArgs = cfg.urlArgs;
-                        cfg.urlArgs = function (id, url) {
+                        cfg.urlArgs = function(id, url) {
                             return (url.indexOf('?') === -1 ? '?' : '&') + urlArgs;
                         };
                     }
@@ -1505,8 +1503,8 @@ if (!window.JSON) {
                             //envs have different conventions: some use a module name,
                             //some use a file name.
                             config.pkgs[name] = pkgObj.name + '/' + (pkgObj.main || 'main')
-                                .replace(currDirRegExp, '')
-                                .replace(jsSuffixRegExp, '');
+                                        .replace(currDirRegExp, '')
+                                        .replace(jsSuffixRegExp, '');
                         });
                     }
 
@@ -1538,7 +1536,6 @@ if (!window.JSON) {
                         }
                         return ret || (value.exports && getGlobal(value.exports));
                     }
-
                     return fn;
                 },
 
@@ -1577,10 +1574,10 @@ if (!window.JSON) {
 
                             if (!hasProp(defined, id)) {
                                 return onError(makeError('notloaded', 'Module name "' +
-                                    id +
-                                    '" has not been loaded yet for context: ' +
-                                    contextName +
-                                    (relMap ? '' : '. Use require([])')));
+                                            id +
+                                            '" has not been loaded yet for context: ' +
+                                            contextName +
+                                            (relMap ? '' : '. Use require([])')));
                             }
                             return defined[id];
                         }
@@ -1632,7 +1629,7 @@ if (!window.JSON) {
                             }
 
                             return context.nameToUrl(normalize(moduleNamePlusExt,
-                                relMap && relMap.id, true), ext, true);
+                                                    relMap && relMap.id, true), ext,  true);
                         },
 
                         defined: function (id) {
@@ -1665,7 +1662,7 @@ if (!window.JSON) {
                             //Clean queued defines too. Go backwards
                             //in array so that the splices do not
                             //mess up the iteration.
-                            eachReverse(defQueue, function (args, i) {
+                            eachReverse(defQueue, function(args, i) {
                                 if (args[0] === id) {
                                     defQueue.splice(i, 1);
                                 }
@@ -1744,9 +1741,9 @@ if (!window.JSON) {
                                 return;
                             } else {
                                 return onError(makeError('nodefine',
-                                    'No define call for ' + moduleName,
-                                    null,
-                                    [moduleName]));
+                                                'No define call for ' + moduleName,
+                                                null,
+                                                [moduleName]));
                             }
                         } else {
                             //A script that does not call define(), so just simulate
@@ -1850,7 +1847,7 @@ if (!window.JSON) {
                     //all old browsers will be supported, but this one was easy enough
                     //to support and still makes sense.
                     if (evt.type === 'load' ||
-                        (readyRegExp.test((evt.currentTarget || evt.srcElement).readyState))) {
+                            (readyRegExp.test((evt.currentTarget || evt.srcElement).readyState))) {
                         //Reset interactive script so a script node is not held onto for
                         //to long.
                         interactiveScript = null;
@@ -1868,9 +1865,9 @@ if (!window.JSON) {
                     var data = getScriptData(evt);
                     if (!hasPathFallback(data.id)) {
                         var parents = [];
-                        eachProp(registry, function (value, key) {
+                        eachProp(registry, function(value, key) {
                             if (key.indexOf('_@r') !== 0) {
-                                each(value.depMaps, function (depMap) {
+                                each(value.depMaps, function(depMap) {
                                     if (depMap.id === data.id) {
                                         parents.push(key);
                                         return true;
@@ -1879,9 +1876,9 @@ if (!window.JSON) {
                             }
                         });
                         return onError(makeError('scripterror', 'Script error for "' + data.id +
-                            (parents.length ?
-                                '", needed by: ' + parents.join(', ') :
-                                '"'), evt, [data.id]));
+                                                (parents.length ?
+                                                '", needed by: ' + parents.join(', ') :
+                                                '"'), evt, [data.id]));
                     }
                 }
             };
@@ -1956,9 +1953,7 @@ if (!window.JSON) {
          */
         req.nextTick = typeof setTimeout !== 'undefined' ? function (fn) {
             setTimeout(fn, 4);
-        } : function (fn) {
-            fn();
-        };
+        } : function (fn) { fn(); };
 
         /**
          * Export require as a global, but only if it does not already exist.
@@ -2019,8 +2014,8 @@ if (!window.JSON) {
          */
         req.createNode = function (config, moduleName, url) {
             var node = config.xhtml ?
-                document.createElementNS('http://www.w3.org/1999/xhtml', 'html:script') :
-                document.createElement('script');
+                    document.createElementNS('http://www.w3.org/1999/xhtml', 'html:script') :
+                    document.createElement('script');
             node.type = config.scriptType || 'text/javascript';
             node.charset = 'utf-8';
             node.async = true;
@@ -2055,15 +2050,15 @@ if (!window.JSON) {
                 //UNFORTUNATELY Opera implements attachEvent but does not follow the script
                 //script execution mode.
                 if (node.attachEvent &&
-                    //Check if node.attachEvent is artificially added by custom script or
-                    //natively supported by browser
-                    //read https://github.com/requirejs/requirejs/issues/187
-                    //if we can NOT find [native code] then it must NOT natively supported.
-                    //in IE8, node.attachEvent does not have toString()
-                    //Note the test for "[native code" with no closing brace, see:
-                    //https://github.com/requirejs/requirejs/issues/273
-                    !(node.attachEvent.toString && node.attachEvent.toString().indexOf('[native code') < 0) &&
-                    !isOpera) {
+                        //Check if node.attachEvent is artificially added by custom script or
+                        //natively supported by browser
+                        //read https://github.com/requirejs/requirejs/issues/187
+                        //if we can NOT find [native code] then it must NOT natively supported.
+                        //in IE8, node.attachEvent does not have toString()
+                        //Note the test for "[native code" with no closing brace, see:
+                        //https://github.com/requirejs/requirejs/issues/273
+                        !(node.attachEvent.toString && node.attachEvent.toString().indexOf('[native code') < 0) &&
+                        !isOpera) {
                     //Probably IE. IE (at least 6-8) do not fire
                     //script onload right after executing the script, so
                     //we cannot tie the anonymous define call to a name.
@@ -2120,18 +2115,17 @@ if (!window.JSON) {
                     // Post a task to the event loop to work around a bug in WebKit
                     // where the worker gets garbage-collected after calling
                     // importScripts(): https://webkit.org/b/153317
-                    setTimeout(function () {
-                    }, 0);
+                    setTimeout(function() {}, 0);
                     importScripts(url);
 
                     //Account for anonymous modules
                     context.completeLoad(moduleName);
                 } catch (e) {
                     context.onError(makeError('importscripts',
-                        'importScripts failed for ' +
-                        moduleName + ' at ' + url,
-                        e,
-                        [moduleName]));
+                                    'importScripts failed for ' +
+                                        moduleName + ' at ' + url,
+                                    e,
+                                    [moduleName]));
                 }
             }
         };
@@ -2175,7 +2169,7 @@ if (!window.JSON) {
                         //baseUrl.
                         src = mainScript.split('/');
                         mainScript = src.pop();
-                        subPath = src.length ? src.join('/') + '/' : './';
+                        subPath = src.length ? src.join('/')  + '/' : './';
 
                         cfg.baseUrl = subPath;
                     }
@@ -2290,8 +2284,8 @@ if (!window.JSON) {
         req(cfg);
     }(this, (typeof setTimeout === 'undefined' ? undefined : setTimeout)));
 
-    window.require = require;
-    window.define = define;
+    window.vcuirequire = require;
+    window.vcuidefine = define;
     window.requirejs = requirejs;
 })();
 /*!
@@ -2370,20 +2364,15 @@ if (!window.JSON) {
         }
     };
 
-    console.log("requireConfig.baseUrl : " + requireConfig.baseUrl)
-    requireConfig.baseUrl = "https://wwwdev50.lge.co.kr/lg5-common/js";
-    require.config(requireConfig);
-    core.require = require;
-    define('jquery', function () {
+    vcuirequire.config(requireConfig);
+    core.require = vcuirequire;
+    core.define = vcuidefine;
+    vcuidefine('jquery', function () {
         return window.$;
     });
-    try{
-        define('vcui', function () {
-            return core;
-        });
-    } catch(err){
-        console.log(err)
-    }
+    vcuidefine('vcui', function () {
+        return core;
+    });
     // end require js config /////////////////////////////////////
 
     var root = global.document.documentElement,

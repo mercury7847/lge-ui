@@ -4,7 +4,7 @@
  * @description SmoothScroll
  * @copyright VinylC UID Group
  */
-define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
     "use strict";
     /*! iScroll v5.1.2 ~ (c) 2008-2014 Matteo Spinelli ~ http://cubiq.org/license */
 

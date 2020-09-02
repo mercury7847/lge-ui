@@ -1,5 +1,5 @@
 
-define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, core) {
+vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, core) {
     "use strict";
 
     var Footer = core.ui('Footer', {
@@ -48,7 +48,7 @@ define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, core) {
     return Footer;
 });
 
-define('common/header', ['jquery', 'vcui'], function ($, core) {
+vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var Header = core.ui('Header', {
@@ -307,7 +307,7 @@ define('common/header', ['jquery', 'vcui'], function ($, core) {
  * @description 아코디온 컴포넌트
  * @copyright VinylC UID Group
  */
-define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var ui = core.ui,
@@ -756,7 +756,7 @@ var _typeof3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
  * @description 캐로우셀 컴포넌트
  * @copyright VinylC UID Group.
  */
-define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
     "use strict";
     /*!
     Version: 1.7.1
@@ -3651,7 +3651,7 @@ define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
  * @description 드롭다운 컴포넌트
  * @copyright VinylC UID Group
  */
-define('ui/dropdown', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/dropdown', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var $doc = $(document);
@@ -3806,7 +3806,7 @@ define('ui/dropdown', ['jquery', 'vcui'], function ($, core) {
  * @description 모달 컴포넌트
  * @copyright VinylC UID Group
  */
-define('ui/modal', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var $doc = $(document),
@@ -4566,7 +4566,7 @@ define('ui/modal', ['jquery', 'vcui'], function ($, core) {
  * @description 모달 컴포넌트
  * @copyright VinylC UID Group
  */
-define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, core, Gesture) {
+vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, core, Gesture) {
     "use strict";
 
     var $doc = $(document),
@@ -5635,7 +5635,7 @@ define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, core, 
  * @description SmoothScroll
  * @copyright VinylC UID Group
  */
-define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
     "use strict";
     /*! iScroll v5.1.2 ~ (c) 2008-2014 Matteo Spinelli ~ http://cubiq.org/license */
 
@@ -6677,7 +6677,7 @@ define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
  * @description 탭 컴포넌트
  * @copyright VinylC UID Group
  */
-define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) {
+vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) {
     "use strict";
 
     var name = 'tab',
@@ -6948,8 +6948,7 @@ define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) {
  * @description LazyLoader 컴포넌트
  * @copyright VinylC UID Group
  */
-console.log("LazyLoader start!!!")
-define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var LazyLoader = core.ui('LazyLoader', {
@@ -7038,5 +7037,3 @@ define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
 
     return LazyLoader;
 });
-
-console.log("LazyLoader!!! end")
