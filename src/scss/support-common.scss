@@ -668,6 +668,16 @@ legend, caption {
             float: left;
         }
     }
+    @include mobile {
+        &-list {
+            .title {
+                width: 104px;
+            }
+            .description {
+                width: calc(100% - 104px);
+            }
+        }
+    }
 }
 
 .bullet {

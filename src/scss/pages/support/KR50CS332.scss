@@ -30,4 +30,18 @@
     .type-privacy {
         width: 100%;
     }
+    @include mobile {
+        .reservation-title {
+            &::before {
+                width: 60px;
+                height: 60px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    }
 }
