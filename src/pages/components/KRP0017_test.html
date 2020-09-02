@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 @@include('./common/head.html', {
-    componentID: "KRP0017",
+    componentID: "KRP0017_test",
     isJScompile: true
 })
 <body>
@@ -17,7 +17,7 @@
                         <a href="#" class="link-text bold ico-right view-page" data-link-area="promotion_list-link_text" data-link-name="view_all_promotions">전체 프로모션 보기</a>
                     </div>
                     <div class="tab-wrap js-tab-controll">
-                        <div class="tab-outer js-tab-guide-outer ui_tab"><!-- [KR수정] .ui_tab 추가 -->
+                        <div class="tab-outer js-tab-guide-outer ui_tab" id="wrapper"><!-- [KR수정] .ui_tab 추가 -->
                             <ul class="tabs-type-liner tab-inner js-tab-guide-inner" role="tablist">
                                 <li><a href="#promotionl_list1" aria-controls="promotionl_list1" class="btn-tab" role="tab" aria-selected="true" data-link-area="promotion_list-tab" data-link-name="all">전체</a></li>
                                 <li><a href="#promotionl_list2" aria-controls="promotionl_list2" class="btn-tab" role="tab" aria-selected="false" data-link-area="promotion_list-tab" data-link-name="mobile">모바일</a></li>
@@ -36,6 +36,7 @@
                             <button type="button" class="scroll-right"><span class="sr-only">다음으로</span></button>
                         </div>
                     </div>
+                    <!-- 
                     <div id="promotionl_list1" class="promo-area contents-area align-left" aria-live="polite" role="tabpanel">
                         <form action="/data-ajax/mkt/promotionList.json" novalidate>
                             <input type="hidden" name="page" value="1">
@@ -432,6 +433,7 @@
                             </div>
                         </div>
                     </div>
+                    -->
                 </section>
             </div>
             <!-- //component KRP0017 -->
