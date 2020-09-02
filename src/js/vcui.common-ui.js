@@ -6974,6 +6974,8 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
             self.$items = $(self.options.selector);
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
 
+            console.log(self.$items)
+
             self._bindEvents();
         },
 
@@ -6995,15 +6997,18 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
 
         _action: function _action() {
             var self = this;
+            console.log("_action1")
 
             var scrollValue = self._getScrollValue();
 
             if (scrollValue >= self.largestPosition) {
+                console.log("_action2 : " + scrollValue + " / " + self.largestPosition)
                 self.$items = self.$items.filter(function () {
                     var $el = $(this),
-                        pos = $el.offset()[self.isVert ? 'top' : 'left'];
-
-                    if (scrollValue + self.options.range + self._getContainerSize() >= pos) {
+                        pos = $el.offset()[self.isVert ? 'top' : 'left'],
+                        chkpos = scrollValue + self.options.range + self._getContainerSize();
+                    console.log("_action3 : " + $el + " / " + pos + " / " + chkpos);
+                    if (chkpos >= pos) {
                         if (self.options.useFade) {
                             $el.css('opacity', 0);
                         }
@@ -7027,8 +7032,8 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
         },
         _loadImage: function _loadImage($img, cb) {
             var src = $img.attr('data-src');
-            console.log("LazyLoader _loadImage : " + src);
             $img.attr("src", src);
+            console.log("LazyLoader _loadImage : " + src);
             if ($img[0].complete) {
                 cb.call($img);
             } else {

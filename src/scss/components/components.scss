@@ -8,6 +8,26 @@
 //@import './components/no-content';
 //@import './components/colorchip';
 
+@mixin font-family($font, $sytle:normal) {
+    @if ($font == $font-regular) or ($font == $font-bold) {
+        @if $sytle == italic {
+            font-style: italic;
+        } @else if $sytle == normal {
+            font-style: normal;
+        }
+    }
+
+    //font-weight:normal;
+    @if ($font == $font-regular) {
+        font-weight: 400;
+    } @else if ($font == $font-medium) {
+        font-weight: 500;
+    } @else if ($font == $font-bold) {
+        font-weight: 700;
+    } @else {
+        font-weight: 400;
+    }
+}
 
 // component container
 .iw_placeholder .iw_component {
@@ -20,35 +40,24 @@
     position: relative;
     width: 100%;
     clear: both;
-    @include clearfix;
     max-width: 1600px;
-    margin: 50px auto; // 50px : component top bottom margin for desktop
-    //padding:0 30px;
-    //&.bg-whitesmoke {background-color:$bg-whitesmoke;}
-    //@include screen(custom, max, (1630)) {
-    //  margin-left: -15px;
-    //  margin-right: -15px;
-    //  padding: 0;
-    //  width: auto;
-    //}
-    //@include screen(custom, max, $max-sm) {
-    //  margin: 25px -15px; // 60px : component top bottom margin for mobile
-    //}
+    margin: 120px auto; // 120px : component top bottom margin for desktop
+    @include clearfix;
+
+    @include mobile {
+        margin: 60px auto; // 60px : component top bottom margin for mobile
+    }
 
     &.zero-top {
         margin-top: 0;
         // 상단 여백 없음 선택 시, 기본 여백 있는 경우 추가 처리
-        .component {
-
-        }
+        .component {}
     }
 
     &.zero-btm {
         margin-bottom: 0;
         // 하단 여백 없음 선택 시, 기본 여백 있는 경우 추가 처리
-        .component {
-
-        }
+        .component {}
     }
 
     .component {
@@ -70,11 +79,6 @@
                 margin: 0;
             }
 
-            //@include screen(custom, max, $max-sm) {
-            //  padding-left: 24px;
-            //  padding-right: 24px;
-            //}
-
             .slick-prev,
             .slick-next {
                 position: absolute;
@@ -91,17 +95,11 @@
                     display: block;
                 }
 
-                //color: $color-gray;
-
                 &:not([disabled]):hover,
                 &:not([disabled]):focus {
                     //color: $color-nightrider;
                     //color: $color-black;
                 }
-
-                //@include screen(custom, max, $max-sm) {
-                //  display: none;
-                //}
             }
 
             .slick-prev {
@@ -193,19 +191,15 @@
     .font-regular {
         @include font-family($font-regular);
     }
-
     .font-bold {
         @include font-family($font-bold);
     }
-
     .font-regular-italic {
         @include font-family($font-regular, italic);
     }
-
     .font-bold-italic {
         @include font-family($font-bold, italic);
     }
-
     .font-underline {
         text-decoration: underline;
     }
@@ -219,7 +213,7 @@
         border-radius: 4px;
         background-color: #fff;
         line-height: 24px;
-        font-weight: 700;
+        @include font-family($font-bold);
         font-size: 16px;
         color: #111;
         text-align: center;

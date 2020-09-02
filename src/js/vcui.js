@@ -2286,7 +2286,7 @@ if (!window.JSON) {
 
     window.vcuirequire = require;
     window.vcuidefine = define;
-    window.requirejs = requirejs;
+    window.vcuirequirejs = requirejs;
 })();
 /*!
  * @author 바이널씨
@@ -2367,10 +2367,10 @@ if (!window.JSON) {
     vcuirequire.config(requireConfig);
     core.require = vcuirequire;
     core.define = vcuidefine;
-    vcuidefine('jquery', function () {
+    core.define('jquery', function () {
         return window.$;
     });
-    vcuidefine('vcui', function () {
+    core.define('vcui', function () {
         return core;
     });
     // end require js config /////////////////////////////////////
