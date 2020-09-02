@@ -1,0 +1,111 @@
+{
+    "message":null,
+    "data": {
+        "promotionList":[
+            {
+                "promotionId":"PM05777527",
+                "categoryId":"CT00000317",
+                "title":"1_LG WHISEN 사회공헌 캠페인 모두의 바람으로",
+                "promotionLinkUrl":"#noneUrl",
+                "promotionStartDate":"2020.08.01",
+                "promotionEndDate":"2020.08.25",
+                "imageAltText":"image alt text",
+                "thumbnailImageAddr":"/lg5-common/images/dummy/sample-16-9.gif"
+            },
+            {
+                "promotionId":"PM05777528",
+                "categoryId":"CT00000317",
+                "title":"2_LG WHISEN 사회공헌 캠페인 모두의 바람으로",
+                "promotionLinkUrl":"#noneUrl",
+                "promotionStartDate":"2020.08.02",
+                "promotionEndDate":"2020.08.26",
+                "imageAltText":"image alt text",
+                "thumbnailImageAddr":"/lg5-common/images/dummy/sample-16-9.gif"
+            },
+            {
+                "promotionId":"PM05777529",
+                "categoryId":"CT00000317",
+                "title":"3_LG WHISEN 사회공헌 캠페인 모두의 바람으로",
+                "promotionLinkUrl":"#noneUrl",
+                "promotionStartDate":"2020.08.03",
+                "promotionEndDate":"2020.08.27",
+                "imageAltText":"image alt text",
+                "thumbnailImageAddr":"/lg5-common/images/dummy/sample-16-9.gif"
+            },
+            {
+                "promotionId":"PM05777530",
+                "categoryId":"CT00000317",
+                "title":"4_LG WHISEN 사회공헌 캠페인 모두의 바람으로",
+                "promotionLinkUrl":"#noneUrl",
+                "promotionStartDate":"2020.08.04",
+                "promotionEndDate":"2020.08.28",
+                "imageAltText":"image alt text",
+                "thumbnailImageAddr":"/lg5-common/images/dummy/sample-16-9.gif"
+            },
+            {
+                "promotionId":"PM05777531",
+                "categoryId":"CT00000317",
+                "title":"5_LG WHISEN 사회공헌 캠페인 모두의 바람으로",
+                "promotionLinkUrl":"#noneUrl",
+                "promotionStartDate":"2020.08.05",
+                "promotionEndDate":"2020.08.29",
+                "imageAltText":"image alt text",
+                "thumbnailImageAddr":"/lg5-common/images/dummy/sample-16-9.gif"
+            }
+        ],
+        "pageInfo":{
+            "view":"Y",
+            "page":1,
+            "loopStart":1,
+            "loopEnd":5,
+            "totalCount":59,
+            "rightPage":true,
+            "leftPage":true
+        },
+        "promoCategoryList":[
+            {
+                "categoryName":"전체",
+                "categoryId":"All"
+            },
+            {
+                "categoryName":"모바일",
+                "categoryId":"CT00000317"
+            },
+            {
+                "categoryName":"TV/AV",
+                "categoryId":"CT00000318"
+            },
+            {
+                "categoryName":"PC",
+                "categoryId":"CT00000319"
+            },
+            {
+                "categoryName":"주방가전",
+                "categoryId":"CT00000320"
+            },
+            {
+                "categoryName":"생활가전",
+                "categoryId":"CT00000321"
+            },
+            {
+                "categoryName":"에어컨/에어케어",
+                "categoryId":"CT00000322"
+            },
+            {
+                "categoryName":"뷰티",
+                "categoryId":"CT00000323"
+            },
+            {
+                "categoryName":"비지니스",
+                "categoryId":"CT00000324"
+            },
+            {
+                "categoryName":"베스트샵",
+                "categoryId":"CT00000325"
+            }
+        ],
+        "categoryId":"All",
+        "promotionListAjaxUrl":"/us/mkt/ajax/promotion/retrievePromotionList"
+    },
+    "status":"success"
+}

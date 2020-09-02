@@ -4,5 +4,8 @@
     },
     "tmpl-video-guide" : {
         "url": "/lg5-common/template/video-guide-template.html"
+    },
+    "tmpl-promotion-contents" : {
+        "url": "/lg5-common/template/promotion-contents-template.html"
     }
 }

@@ -157,18 +157,15 @@ $color: (lightgray, dark, black, white);
                     }
                 }
             }
-            .slide-controls {
-                position: static;
-                .btn-arrow {
-                    position:absolute;
-                    top:50%;
-                    margin-top:-28px;
-                    &.prev {
-                        left:0;
-                    }
-                    &.next {
-                        right:0;
-                    }
+            .btn-arrow {
+                position:absolute;
+                top:50%;
+                margin-top:-28px;
+                &.prev {
+                    left:0;
+                }
+                &.next {
+                    right:0;
                 }
                 @include mobile {
                     display:none !important;
