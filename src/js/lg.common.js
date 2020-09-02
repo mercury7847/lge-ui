@@ -81,5 +81,6 @@ var lgkorUI = {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    console.log("DOMContentLoaded : " + $('body').hasClass("iw-fullscreen-edit"))
     lgkorUI.init();
 });
