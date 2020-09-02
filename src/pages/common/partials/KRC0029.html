@@ -1,0 +1,65 @@
+<!-- components/partials/KRC0029.html -->
+<div class="component-wrap">
+    <!--
+        [.component-wrap 옵션]
+        1. 여백
+        .zero-top : 상단여백 없음
+        .zero-btm : 하단여백 없음
+
+        [.component 옵션]
+        1. 타입 1/2
+        .flow-left : 큰 이미지 영역이 왼쪽 (타입1)
+        .flow-right : 큰 이미지 영역이 오른쪽 (타입2)
+
+        [각 박스의 텍스트 영역(square) 옵션]
+        1. 폰트 컬러
+        .text-white : 화이트
+        .text-black : 블랙
+    -->
+
+    <div class="component KRC0029 @@flow-type">
+        <div class="component-inner">
+            <div class="square @@fisrt-square.class text-white">
+                <!-- 1. image -->
+                <!-- 링크가 없는 경우
+                    <a class="common-area" href="#"> ~ </a> 대신
+                    <div class="common-area"> ~ </div> 로 감싸 주세요.
+                -->
+                <a class="common-area" href="#" data-link-area="block_image_2_text_overlay-image" data-link-name="{alt text}">
+                    <div class="visual-area">
+                        <img class="pc lazyload" data-src="@@fisrt-square.img-src.@@fisrt-square.img-type" alt=""><!-- [KR수정] as-is .pc-lg -->
+                        <img class="mobile lazyload" data-src="@@fisrt-square.img-src-m.@@fisrt-square.img-type" alt="">
+                    </div>
+                    <div class="copy-boxing-area">
+                        <!-- 2. eyebrow -->
+                        <div class="category">Product Category Text</div>
+                        <!-- // 2. eyebrow -->
+                        <!-- 3. headline -->
+                        <div class="head">@@fisrt-square.head</div>
+                        <!-- // 3. headline -->
+                    </div>
+                </a>
+                <!-- // 1. image -->
+            </div>
+            <div class="square @@second-square.class text-black">
+                <!-- 4. image -->
+                <!-- * youtube video modal은 아래의 방식으로 입력 -->
+                <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="common-area case-of-video see-video" data-type="youtube" data-target="modal" data-link-area="block_image_2_text_overlay-video_play" data-link-name="{video id}">
+                    <div class="visual-area">
+                        <img class="pc lazyload" data-src="@@second-square.img-src.@@second-square.img-type" alt=""><!-- [KR수정] as-is .pc-lg -->
+                        <img class="mobile lazyload" data-src="@@second-square.img-src-m.@@second-square.img-type" alt="">
+                    </div>
+                    <div class="copy-boxing-area">
+                        <!-- 5. eyebrow -->
+                        <div class="category">Product Category Text</div>
+                        <!-- // 5. eyebrow -->
+                        <!-- 6. headline -->
+                        <div class="head">@@second-square.head</div>
+                        <!-- // 6. headline -->
+                    </div>
+                </a>
+                <!-- // 4. image -->
+            </div>
+        </div>
+    </div>
+</div>
