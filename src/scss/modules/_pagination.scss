@@ -19,6 +19,10 @@
         vertical-align: -7px;
         cursor: pointer;
 
+        &[aria-disabled=true] {
+            display:none;
+        }
+
         &:after {
             position: absolute;
             @include calc(top, 50%, 4px);
@@ -48,7 +52,8 @@
         font-size: 0;
         a,
         button,
-        strong {
+        strong,
+        span {
             display: inline-block;
             width: 32px;
             font-size: 16px;
@@ -70,6 +75,9 @@
                 background-color: #111;
                 content: '';
             }
+        }
+        span.dot {
+            cursor:auto;
         }
     }
 }

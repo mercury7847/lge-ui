@@ -178,8 +178,8 @@ CS.MD.setPagination = function() {
                 }
             }
 
-            firstPage === 1 ? $prev.addClass(defaults.disabledClass) : $prev.removeClass(defaults.disabledClass);
-            lastPage >= totalPage ? $next.addClass(defaults.disabledClass) : $next.removeClass(defaults.disabledClass);
+            firstPage === 1 ? $prev.attr('aria-disabled', true) : $prev.attr('aria-disabled', false);
+            lastPage >= totalPage ? $next.attr('aria-disabled', true) : $next.attr('aria-disabled', false);
 
             for (var i = firstPage; i <= lastPage; i++) {
                 if (currentPage === i) {
