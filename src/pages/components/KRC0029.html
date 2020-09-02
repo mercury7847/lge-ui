@@ -9,74 +9,46 @@
         <div class="container">
 
 			<!-- component KRC0029 -->
-            <div class="component-wrap">
-                <section class="component KRC0029 flow-left">
-                    <div class="component-inner">
-                        <div class="square main text-white">
-                            <a class="common-area" href="#" data-link-area="block_image_2_text_overlay-image" data-link-name="{alt text}">
-                                <div class="visual-area">
-                                    <img class="pc lazyload" data-src="/lg5-common/images/KRC0029/@sample-860x400.jpg" alt=""><!-- [KR수정] as-is .pc-lg -->
-                                    <img class="mobile lazyload" data-src="/lg5-common/images/KRC0029/@sample-720x600.jpg" alt="">
-                                    <p class="hidden pc">graphic description : </p>
-                                    <p class="hidden mobile">graphic description : </p>
-                                </div>
-                                <div class="copy-boxing-area">
-                                    <div class="category">Product Category Text</div>
-                                    <div class="head"><h2>더 작아진 바디, 한 손에 가볍게<br>LG Gram 17</h2></div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="square sub text-black youtube-box">
-                            <a href="http://www.naver.com" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="block_image_2_text_overlay-video_play_ad" data-link-name="video id" aria-describedby="title01">plays audio description video</a>
-                            <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
-                                <div class="visual-area">
-                                    <img class="pc lazyload" data-src="/lg5-common/images/KRC0029/@sample-424x400.jpg" alt="" aria-hidden="true">
-                                    <img class="mobile lazyload" data-src="/lg5-common/images/KRC0029/@sample-720x600.jpg" alt="" aria-hidden="true">
-                                </div>
-                                <div class="copy-boxing-area">
-                                    <div class="category">Product Category Text</div>
-                                    <div class="head" id="title01"><h2>더 작아진 바디, 한 손에 가볍게<br>LG Gram 17</h2></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-            </div>
+            <!-- component -->
+            @@include('./common/partials/KRC0029.html',{
+                "flow-type" : "flow-left",
+                "fisrt-square" : {
+                    "class" : "main",
+                    "head" : "<h2>더 작아진 바디, 한 손에 가볍게<br>LG Gram 17</h2>",
+                    "img-src" : "/lg5-common/images/KRC0029/@sample-860x400",
+                    "img-src-m" : "/lg5-common/images/KRC0029/@sample-720x600",
+                    "img-type" : "jpg"
+                },
+                "second-square" : {
+                    "class" : "sub",
+                    "head" : "<h2>더 작아진 바디, 한 손에 가볍게<br>LG Gram 17</h2>",
+                    "img-src" : "/lg5-common/images/KRC0029/@sample-424x400",
+                    "img-src-m" : "/lg5-common/images/KRC0029/@sample-720x600",
+                    "img-type" : "jpg"
+                }
+            })
+            <!-- // component -->
 
 
-            <div class="component-wrap">
-                <section class="component KRC0029 flow-right">
-                    <div class="component-inner">
-                        <div class="square sub text-white">
-                            <a class="common-area" href="#" data-link-area="block_image_2_text_overlay-image" data-link-name="{alt text}">
-                                <div class="visual-area">
-                                    <img class="pc lazyload" data-src="/lg5-common/images/KRC0029/@sample-424x400.jpg" alt="">
-                                    <img class="mobile lazyload" data-src="/lg5-common/images/KRC0029/@sample-720x600.jpg" alt="">
-                                    <p class="hidden pc">graphic description : </p>
-                                    <p class="hidden mobile">graphic description : </p>
-                                </div>
-                                <div class="copy-boxing-area">
-                                    <div class="category">Product Category Text</div>
-                                    <div class="head"><h2>더 작아진 바디, 한 손에 가볍게<br>LG Gram 17</h2></div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="square main text-black youtube-box">
-                            <a href="http://www.naver.com" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="block_image_2_text_overlay-video_play_ad" data-link-name="video id" aria-describedby="title01">plays audio description video</a>
-                            <a href="#" class="see-video" data-src="http://www.youtube.com/embed/PetoQo1eUww" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title02">
-                                <div class="visual-area">
-                                    <img class="pc lazyload" data-src="/lg5-common/images/KRC0029/@sample-860x400.jpg" alt="" aria-hidden="true">
-                                    <img class="mobile lazyload" data-src="/lg5-common/images/KRC0029/@sample-720x600.jpg" alt="" aria-hidden="true">
-                                </div>
-                                <div class="copy-boxing-area">
-                                    <div class="category">Product Category Text</div>
-                                    <div class="head" id="title01"><h2>더 작아진 바디, 한 손에 가볍게<br>LG Gram 17</h2></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-            </div>
+            <!-- component -->
+            @@include('./common/partials/KRC0029.html',{
+                "flow-type" : "flow-right",
+                "fisrt-square" : {
+                    "class" : "sub",
+                    "head" : "<h2>더 작아진 바디, 한 손에 가볍게<br>LG Gram 17</h2>",
+                    "img-src" : "/lg5-common/images/KRC0029/@sample-424x400",
+                    "img-src-m" : "/lg5-common/images/KRC0029/@sample-720x600",
+                    "img-type" : "jpg"
+                },
+                "second-square" : {
+                    "class" : "main",
+                    "head" : "<h2>더 작아진 바디, 한 손에 가볍게<br>LG Gram 17</h2>",
+                    "img-src" : "/lg5-common/images/KRC0029/@sample-860x400",
+                    "img-src-m" : "/lg5-common/images/KRC0029/@sample-720x600",
+                    "img-type" : "jpg"
+                }
+            })
+            <!-- // component -->
             <!-- //component KRC0029 -->
 		
 		</div>

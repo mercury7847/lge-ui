@@ -31,11 +31,14 @@
                             <div class="reservation-title">
                                 <h3>원격 상담 예약이 접수되었습니다.</h3>
                                 <p>신청하신 희망 일시에 상담원이 전화를 드려 원격 상담 방법 안내 및 상담을 진행합니다.</p>
+                                <button type="button" class="btn-md">앱 다운로드<span class="icon-download"><em class="blind">새 창에서 열기</em></span></button>
                             </div>
                         </div>
 
                         <div class="inquiry-item">
-                            <h3 class="h-tit-3">예약 정보</h3>
+                            <div class="inquiry-title">
+                                <h3 class="tit">예약 정보</h3>
+                            </div>
                             <div>
                                 <ul class="inquiry-list">
                                     <li>
@@ -60,8 +63,8 @@
                                     <li>
                                         <div class="title">증상</div>
                                         <div class="description">
-                                            스마트기능/스마트진단 LG ThinQ 등록실패
-                                            <a href="#" class="" target="_blank" title="새창 열림"><span>간편해결</span></a>
+                                            <p>스마트기능/스마트진단<span class="progress-item"></span>LG ThinQ 등록실패</p>
+                                            <a href="#" class="btn-text icon-type" target="_blank" title="새창 열림">간편해결<span class="icon-new-window"><em class="blind">새 창에서 열기</em></span></a>
                                         </div>
                                     </li>
                                     <li>
@@ -77,35 +80,74 @@
                             </div>
                         </div>
                         <div class="inquiry-item">
-                            <div class="">
-                                <h3 class="">작성자 정보</h3>
+                            <div class="inquiry-title">
+                                <h3 class="tit">작성자 정보</h3>
                             </div>
                             <div>
-                                <ul>
+                                <ul class="inquiry-list">
                                     <li>
-                                        <div>이름</div>
-                                        <div>홍*동</div>
+                                        <div class="title">이름</div>
+                                        <div class="description">홍*동</div>
                                     </li>
                                     <li>
-                                        <div>휴대 전화 </div>
-                                        <div>010****1234</div>
+                                        <div class="title">휴대 전화 </div>
+                                        <div class="description">010****1234</div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="inquiry-item">
-                            <div class="">
-                                <h3 class="">소식지 수신 동의 (선택사항)</h3>
+                            <div class="inquiry-title">
+                                <h3 class="tit">문의 내용을 입력해주세요 (필수)</h3>
                             </div>
                             <div class="field-wrap">
                                 <div class="row">
-                                    <div class="field-item">
+                                    <div class="field-item block">
                                         <div class="field-title">
-                                            <label for="name" class="tit">이메일 주소</label>
+                                            <label for="emailId" class="tit">이메일 주소</label>
+                                            <a href="#" class="icon-notice" data-js="tooltip">
+                                                <em class="blind"></em>
+                                                <div class="tooltip-content" data-tooltip="content">
+                                                    <p>첨부파일은 확장자 jpg, gif 파일만 업로드 가능합니다. 첨부파일의 이름은 특수기호(? ! , . & ^ ~ )를 제외해주세요.</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="email-box">
+                                            <div class="email-input">
+                                                <div class="input-wrap email-wrap">
+                                                    <input type="text" id="emailId" name="emailId" required>
+                                                </div>
+                                                <span class="at">@</span>
+                                                <div class="input-wrap">
+                                                    <input type="text" id="emailDomain1" name="emailDomain1" title="이메일 도메인" readonly required> <!-- 직접 입력 선택 시 readonly 삭제 -->
+                                                </div>
+                                                <div class="select-wrap">
+                                                    <select class="ui_selectbox" id="emailDomain2" name="emailDomain2"  title="이메일 도메인">
+                                                        <option value="">직접 입력</option>
+                                                        <option value="">직접 입력</option>
+                                                        <option value="">직접 입력</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <p class="err-msg">이메일 주소를 입력해 주세요.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="field-item block">
+                                        <div class="field-title">
+                                            <label for="" class="tit">개인정보 수집항목</label>
                                         </div>
                                         <div class="input-wrap">
-                                            <input type="text" id="name" name="name" required>
-                                            <p class="err-msg">이름을 입력해 주세요.</p>
+                                            <button type="button" class="btn type-privacy">개인정보 수집 및 이용 동의</button>
+                                        </div>
+                                        <div class="chk-wrap side-item">
+                                            <input type="checkbox" id="newsletter" name="newsletter">
+                                            <label for="newsletter">소식지 수신에 동의합니다.</label>
+                                        </div>
+                                        <p class="bullet-paragraph-1 side-item">소식지(서비스 신청 할인, 무상 점검, 이벤트 등 다양한 서비스 정보)를 받습니다.</p>
+                                        <div class="side-item align-right">
+                                            <a href="#n" class="btn-text gray">소식지수신하기</a>
                                         </div>
                                     </div>
                                 </div>
