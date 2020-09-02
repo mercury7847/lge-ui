@@ -27,7 +27,7 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
 
             self.isVert = self.options.mode === 'vertical';
             self.largestPosition = 0;
-            self.$items = $(self.options.selector);
+            self.$items = $(self.options.selector + "[data-src]");
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
 
             console.log(self.$items)
@@ -59,6 +59,8 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
 
             if (scrollValue >= self.largestPosition) {
                 console.log("_action2 : " + scrollValue + " / " + self.largestPosition)
+
+                self.$items = $(self.options.selector + "[data-src]");
                 self.$items = self.$items.filter(function () {
                     var $el = $(this),
                         pos = $el.offset()[self.isVert ? 'top' : 'left'],

@@ -121,7 +121,7 @@
                 @include font-family($font-bold);
                 font-size: 28px;
                 line-height: 40px;
-                @include mobile {
+                @include tablet {
                     font-size: 20px;
                     line-height: 30px;
                 }
