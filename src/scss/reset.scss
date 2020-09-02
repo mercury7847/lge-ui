@@ -19,7 +19,7 @@ a:focus,
 a:active {background-color:transparent; text-decoration:none;}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block;margin:0;padding:0;}
 
-.blind, legend, caption {position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;font-size:medium;line-height:normal;word-break:break-all}
+.blind {position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;font-size:medium;line-height:normal;word-break:break-all}
 .ios_no_acc{-webkit-overflow-scrolling:auto;}
 
 ::selection {
