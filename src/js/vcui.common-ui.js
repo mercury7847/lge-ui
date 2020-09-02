@@ -2150,6 +2150,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         'role': 'tab',
                         'id': _V.SLIDE + '-control' + self.instanceUid + i,
                         'aria-controls': _V.SLIDE + self.instanceUid + mappedSlideIndex,
+                        'aria-describedby': _V.SLIDE + self.instanceUid + mappedSlideIndex,
                         'aria-label': i + 1 + ' of ' + numDotGroups,
                         'aria-selected': null //,
                         //'tabindex': '-1'
