@@ -2,7 +2,6 @@
 
 @import "utilities/variables";
 @import "utilities/mixins";
-@import "utilities/mixins";
 @import "modules/icons/index";
 
 @mixin backgroundSection {
@@ -52,16 +51,6 @@
     text-align: center;
 }
 
-// common
-legend, caption {
-    position: absolute;
-    clip: rect(0 0 0 0);
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    color: transparent;
-}
 .pc-only {
     display: block;
     @include mobile {
@@ -82,10 +71,8 @@ legend, caption {
         position:absolute;
         left:0;
         right:0;
-        top:126px;
+        top:140px;
         width:100%;
-        max-width:1364px;
-        margin:0 auto;
         padding:0 40px;
         @include mobile {
             top:92px;
@@ -93,19 +80,21 @@ legend, caption {
         }
         .heading {
             &-area {
-                max-width:1920px;
+                width:100%;
+                max-width:1364px;
                 margin:0 auto;
                 text-align:center;
             }
             &-title {
-                color:#111;
                 font-size:28px;
                 font-weight:700;
-                line-height:1.5;
+                color:#111;
+                line-height:1;
             }
             &-desc {
-                margin-top:19px;
-                line-height:16px;
+                margin-top:16px;
+                color:#111;
+                line-height:1;
             }
             @include mobile {
                 &-title {
@@ -114,7 +103,7 @@ legend, caption {
                 &-desc {
                     margin-top:11px;
                     font-size:13px;
-                    line-height:19px;
+                    line-height:1.69px;
                 }
             }
         }
@@ -256,16 +245,6 @@ legend, caption {
 // pagination - 전체 공통에서 추가
 .pagination {
     margin-top: 40px;
-    .prev.disabled, .next.disabled {
-        display:none;
-    }
-    .dot {
-        display:inline-block;
-        width:32px;
-        font-size:16px;
-        line-height:24px;
-        color:#aaa;
-    }
 }
 
 .ui_tab {

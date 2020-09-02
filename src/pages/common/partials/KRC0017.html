@@ -15,11 +15,13 @@
 		.item4 : 4개
 		.item5 : 5개
 		.item6 : 6개
-	-->
+    -->
+
+
 	<div class="component KRC0017">
         @@if (context.carousel) {
         <div class="carousel-box"><!-- [KR수정] .component-outer-box class 삭제 -->
-            <div class="list-box ui_carousel_slider">
+            <div class="list-box ui_carousel_slider"><!-- [KR수정] .ui_carousel_slider class 추가 -->
                 <!-- [KR수정] indicator DOM 추가-->
                 <ul class="indi-wrap ui_carousel_dots">
                     <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
@@ -43,7 +45,6 @@
                         <!-- 1. image -->
 						<div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box class 추가(youtube modal call) -->
                             <!-- 1-1. video play button -->
-                            <!-- * youtube video modal은 아래의 방식으로 입력 -->
                             <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="centered_image_block-video_play" data-link-name="{video id}">
                                 <img class="lazyload" data-src="/lg5-common/images/KRC0017/@thumb01.jpg" alt="">
                             </a>
