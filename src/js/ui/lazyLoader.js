@@ -30,6 +30,8 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
             self.$items = $(self.options.selector);
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
 
+            console.log(self.$items)
+
             self._bindEvents();
         },
 
