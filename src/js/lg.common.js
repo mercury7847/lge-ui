@@ -112,7 +112,7 @@ var lgkorUI = {
                     console.log("iwBody DOMContentLoaded!!!");
                     lgkorUI.init();
                 });
-                $('body.iw-fullscreen-edit').on('load', function(){
+                $('.iw-fullscreen-edit').on('load', function(){
                     console.log("$('body.iw-fullscreen-edit').onLoad!!!");
                     console.log($('body.iw-fullscreen-edit'))
                     console.log($('.KRC0013'));
@@ -123,7 +123,7 @@ var lgkorUI = {
                     lgkorUI.init();
                 });
             }else {
-                console.log("None Edit Mode!!");
+                console.log("None Edit Mode!!!!");
                 $('body').buildCommonUI();
             }
 
