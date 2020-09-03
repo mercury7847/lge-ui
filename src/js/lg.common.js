@@ -1,38 +1,125 @@
+
+vcui.require.config({
+    paths: {
+        'jquery.transit': 'libs/jquery.transit'
+    },
+    waitSeconds: 15,
+    onNodeCreated: function (node) {
+        node.charset = 'euc-kr';
+    }
+});
+
+
+$.fn.buildCommonUI = function () {
+    vcui.require(['ui/accordion', 'ui/calendar', 'ui/tab','ui/selectbox', 'ui/carousel', 'ui/lazyloader', "ui/videoBox", "ui/youtubeBox"], function () {        
+        this.find('.ui_calender').vcCalendar();
+        this.find('.ui_accordion').vcAccordion();        
+        this.find('.ui_selectbox').vcSelectbox();
+        this.find('.ui_tab').vcTab();
+        this.find('.ui_carousel').vcCarousel();
+        this.find('.animation-box').vcVideoBox();
+        this.find('.youtube-box').vcYoutubeBox();
+        this.vcLazyLoader();
+
+    }.bind(this));
+    return this;
+};
+
+$.holdReady(true);
+
 var lgkorUI = {
     template: $('<div class="template"></div>'),
     templateList: null,
     init: function(){
-        vcui.require([
+        this._preloadComponents();
+    },
+
+    // 주요 컴포넌트를 미리 로드
+    _preloadComponents: function () {
+        vcui.require([  
             'common/header', 
-            'common/footer', 
-            'ui/tab', 
-            'ui/accordion', 
-            'ui/carousel', 
-            'ui/dropdown', 
-            'ui/selectbox', 
+            'common/footer',           
+            'ui/selectbox',
             'ui/calendar',
-            'ui/textControl',
-            'ui/scrollview', 
+            'ui/accordion',
+            'ui/carousel',
+            'ui/modal',
+            'ui/tab',       
             'ui/lazyLoader',
             "ui/videoBox",
-            "ui/youtubeBox",
-            "ui/modal",
-        ], function (header, footer, tab, accordion, carousel, dropdown, selectbox, calendar, textControl, scollview, lazyLoader, videoBox, youtubeBox, modal) {
+            "ui/youtubeBox"     
+        ], function () {
+            var $doc = $(document);          
+            
+
+            // 모달 기초작업 //////////////////////////////////////////////////////
+            // 모달 기본옵션 설정: 모달이 들때 아무런 모션도 없도록 한다.(기본은 fade)
+            vcui.ui.setDefaults('Modal', {
+                effect: 'fade',         // 모달이 뜰 때 사용할 효과
+                draggable: false,       // 모달을 드래그 할 수 있게 허용할 것인가..no
+                closeByEscape: false,   // esc키 누를 때 닫히게 할 것인가
+                closeByDimmed: false,   // dim 클릭시 닫히게 할 것인가
+                events: {
+                    modalshown: function (e) {
+                        // 모달이 뜨면 내부 컨텐츠 영역이 포커싱되도록 tabindex를 설정
+                        //this.$('.pop_contents').attr('tabindex', 0);
+                        //console.log(this);
+
+                        if(this.$('.ui_carousel')){
+                            this.$('.ui_carousel').vcCarousel('update');
+                        }
+                    }
+                }
+            });
+
+            // 아코디언의 기본설정을 멀티오픈으로 설정해놓는다,
+            vcui.ui.setDefaults('Accordion', {
+                singleOpen: false,
+                events: {
+                    accordionexpand: function (e, data) {
+                        data.content.attr('tabindex', '0');                                               
+                        if(data.content.find('.ui_carousel')) {
+                            data.content.find('.ui_carousel').vcCarousel('update');
+                        }
+                        
+                    }
+                }
+            });
+
+
+            // 탭의 기본설정을 설정해놓는다,
+            vcui.ui.setDefaults('Tab', {
+                events: {
+                    tabchange: function (e, data) {
+                        if(data && data.content.find('.ui_carousel')) {
+                            data.content.find('.ui_carousel').vcCarousel('update');
+                        }
+                    }
+                }
+            });
+
             $('header').vcHeader(); //헤더 모듈 적용...
             $('footer').vcFooter(); //푸터모듈 적용...
-            $('body').vcLazyLoader();
+            
+            $('body').buildCommonUI();
+            $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
+            console.log("$.holdReady(false);")
 
-            //공통 UI 모듈 적용...
-            $('body').find('.ui_tab').vcTab();
-            $('body').find('.ui_accordion').vcAccordion();
-            $('body').find('.ui_carousel').vcCarousel();
-            $('body').find('.ui_dropdown').vcDropdown();
-            $('body').find('.ui_selectbox').vcSelectbox();
-            $('body').find('.ui_calendar').vcCalendar();
-            $('body').find('.ui_textcontrol').vcTextControl();
-            $('body').find('.ui_scrollview').vcScrollview();
-            $('body').find('.animation-box').vcVideoBox();
-            $('body').find('.youtube-box').vcYoutubeBox();
+            // 모달이 열렸을 때 페이지 스크롤을 막기 위함 ////////////////////////////
+            $doc.on('modalfirstopen modallastclose', function (e) {
+
+            }).on('modalshown', function (e) {
+                // 모달이 뜰때 모달내부에 있는 공통 컴포넌트 빌드
+                $(e.target).buildCommonUI();
+            });
+            //////////////////////////////////////////////////////////////////////
+
+            // 아코디온이 펼쳐지거나 닫힐 때 레이아웃 사이즈가 변하기 때문에 resize이벤트를 강제로 발생시킨다.
+            $doc.on('accordionexpand accordioncollapse', vcui.delayRun(function (e) {
+                $(window).triggerHandler('resize');
+            }, 200));
+            ///////////////////////////////////////////////////////////////////////
+
         });
     },
 
@@ -84,7 +171,8 @@ var parentDocument = $(parent.document);
 console.log(parentDocument);
 var myDocument = $(document);
 console.log(myDocument);
-$(document).on("load", function(){
-    console.log("Document onLoad!!!");
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("DOMContentLoaded!!!");
     lgkorUI.init();
-})
+});
+
