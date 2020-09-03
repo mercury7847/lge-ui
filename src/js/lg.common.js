@@ -100,8 +100,13 @@ var lgkorUI = {
             $('header').vcHeader(); //헤더 모듈 적용...
             $('footer').vcFooter(); //푸터모듈 적용...
 
-            if($('body.iw-fullscreen-edit')) $('body.iw-fullscreen-edit').buildCommonUI();
-            else $('body').buildCommonUI();
+            if($('body.iw-fullscreen-edit')){
+                console.log("Edit Mode!!");
+                $('body.iw-fullscreen-edit').buildCommonUI();
+            }else {
+                console.log("None Edit Mode!!");
+                $('body').buildCommonUI();
+            }
 
             $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
 
