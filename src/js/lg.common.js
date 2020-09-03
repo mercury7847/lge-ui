@@ -24,7 +24,7 @@ $.fn.buildCommonUI = function () {
     return this;
 };
 
-cui.define('test', ['jquery', 'vcui'], function ($, core) {
+vcui.define('test', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var test = core.ui('Test', {
