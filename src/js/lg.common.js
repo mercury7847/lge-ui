@@ -108,6 +108,10 @@ var lgkorUI = {
                 $('body').buildCommonUI();
             }
 
+            $(document).ready(function(){
+                console.log("document ready 222 !!!")
+            });
+
             $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
 
             // 모달이 열렸을 때 페이지 스크롤을 막기 위함 ////////////////////////////
@@ -172,14 +176,13 @@ var lgkorUI = {
     }
 }
 
-var parentDocument = $(parent.document);
-console.log(parentDocument);
-var myDocument = $(document);
-console.log(myDocument);
-console.log(document)
-myDocument.find()
+console.log(document);
+$(document).ready(function(){
+    console.log("document ready!!!")
+});
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOMContentLoaded!!!");
     lgkorUI.init();
 });
+
 
