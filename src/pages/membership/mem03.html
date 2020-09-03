@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["membership/membership"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/page-header.html', {
+                "pageTitle": "가입 안내",
+                "pageArr" : [
+                    { "page" : "멤버십 혜택", "on" : "" },
+                    { "page" : "VIP 멤버십 혜택", "on": "" },
+                    { "page" : "가입 안내", "on": "on" }
+                ]
+            })
+            <!-- membership -->
+            <div class="contents membership">
+                <div class="cont-wrap">
+                    <div class="section">
+                        <h3 class="sec-tit">가입 안내</h3>
+                        <div class="cont-box">
+                            <div class="btn-tabs-wrap ui_tab">
+                                <ul class="tabs">
+                                    <li class="on"><a href="#tab1" class="internet">인터넷<em class="blind">선택됨</em></a></li>
+                                    <li><a href="#tab2" class="phone">스마트폰 앱</a></li>
+                                    <li><a href="#tab3" class="shop">매장 방문</a></li>
+                                </ul>
+                            </div>
+                            <div id="tab1" class="tabs-contents">
+                                @@include('./common/modules/mem-step.html', {
+                                    "stepArr" : [
+                                        {
+                                            "step" : "STEP1",
+                                            "tit" : "온라인 회원가입",
+                                            "desc" : "LG전자 홈페이지에서<br>멤버십 가입하기 버튼을<br>클릭하세요."
+                                        },
+                                        {
+                                            "step" : "STEP2",
+                                            "tit" : "신청서 작성",
+                                            "desc" : "본인인증을 완료한 후<br>가입에 필요한 정보를<br>입력합니다."
+                                        },
+                                        {
+                                            "step" : "STEP3",
+                                            "tit" : "가입 완료",
+                                            "desc" : "온라인으로 가입이<br>완료됩니다."
+                                        }
+                                    ]
+                                })
+
+                                <ul class="link-list">
+                                    <li><a href="#n" target="_blank" title="새창열림">구글플레이가기</a></li>
+                                    <li><a href="#n" target="_blank" title="새창열림">앱스토어가기</a></li>
+                                </ul>
+
+                                <ul class="qr-list">
+                                    <li>
+                                        <span class="img"><img src="/lg5-common/images/membership/img-qr1.jpg" alt="안드로이드 전용 LG전자 멤버십 앱 다운로드로 이동하는 QR코드 이미지입니다."></span>
+                                        <p>안드로이드</p>
+                                    </li>
+                                    <li>
+                                        <span class="img"><img src="/lg5-common/images/membership/img-qr2.jpg" alt="아이폰 전용 LG전자 멤버십 앱 다운로드로 이동하는 QR코드 이미지입니다."></span>
+                                        <p>아이폰</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="tab2" class="tabs-contents">
+                                @@include('./common/modules/mem-step.html', {
+                                    "stepArr" : [
+                                        {
+                                            "step" : "STEP1",
+                                            "tit" : "스마트폰 앱 다운",
+                                            "desc" : "구글플레이/앱스토어<br>에서 'LG전자 멤버십'<br>앱을 다운로드 받으세요."
+                                        },
+                                        {
+                                            "step" : "STEP2",
+                                            "tit" : "회원가입/로그인",
+                                            "desc" : "멤버십이 처음이면 회원<br>가입, 회원이라면<br>로그인을 진행하세요."
+                                        },
+                                        {
+                                            "step" : "STEP3",
+                                            "tit" : "가입 완료",
+                                            "desc" : "스마트폰 앱으로 가입이<br>완료됩니다."
+                                        }
+                                    ]
+                                })
+                            </div>
+                            <div id="tab3" class="tabs-contents">
+                                @@include('./common/modules/mem-step.html', {
+                                    "stepArr" : [
+                                        {
+                                            "step" : "STEP1",
+                                            "tit" : "매장 방문",
+                                            "desc" : "가까운 베스트샵 매장을<br>방문하세요."
+                                        },
+                                        {
+                                            "step" : "STEP2",
+                                            "tit" : "신청서 작성",
+                                            "desc" : "LG전자 멤버십 가입<br>신청서를 작성하세요."
+                                        },
+                                        {
+                                            "step" : "STEP3",
+                                            "tit" : "가입 완료",
+                                            "desc" : "베스트샵 매장방문으로<br>가입이 완료됩니다."
+                                        }
+                                    ]
+                                })
+                            </div>
+                            
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTit" : "유의사항",
+                                "bulletTxt" : [
+                                    "제품 구매처가 달라도 전국 BEST SHOP 매장에서 적립/사용이 가능합니다.",
+                                    "1포인트 이상 적립 시 현금처럼 사용 하실 수 있습니다. (1포인트 = 현금 1원과 동일)",
+                                    "LG전자 서비스 센터에서 수리 또는 렌탈 구매시 현금처럼 사용하실 수 있습니다.",
+                                    "멤버십 포인트의 유효기간은 BEST SHOP 홈페이지에 로그인 후, BEST SHOP > 멤버십 멤버십 포인트 조회에서 확인하실 수 있습니다."
+                                ]
+                            })
+                        </div>
+                    </div>
+
+                    <div class="btn-wrap right">
+                        <a href="#a" class="btn text-type pink">가까운 매장찾기</a>
+                        <a href="#a" class="btn pink">멤버십 가입하기</a>
+                    </div>
+                </div>
+            </div>
+            <!-- // membership -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>

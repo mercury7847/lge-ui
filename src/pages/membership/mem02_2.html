@@ -9,7 +9,7 @@
 
         <div class="container">
             @@include('./common/page-header.html', {
-                "pageTitle": "멤버십 혜택",
+                "pageTitle": "VIP 멤버십 혜택",
                 "pageArr" : [
                     { "page" : "멤버십 혜택", "on" : "" },
                     { "page" : "VIP 멤버십 혜택", "on": "on" },
@@ -56,32 +56,30 @@
                     <div class="section">
                         <h3 class="sec-tit">VIP 멤버십 선정과정</h3>
                         <div class="cont-box">
-                            <ol class="vip-step">
-                                <li>
-                                    <dl>
-                                        <dt><em>STEP1</em>제품 구입</dt>
-                                        <dd>베스트샵 매장 또는<br>제휴매장에서<br>제품 구입</dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl>
-                                        <dt><em>STEP2</em>일정금액구입</dt>
-                                        <dd>1년간 구매금액 기준<br>5백만원 이상</dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl>
-                                        <dt><em>STEP3</em>우수고객 지정</dt>
-                                        <dd>우수고객 지정</dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl>
-                                        <dt><em>STEP4</em>무상 A/S 혜택부여</dt>
-                                        <dd>무상 A/S 혜택부여</dd>
-                                    </dl>
-                                </li>
-                            </ol>
+                            @@include('./common/modules/mem-step.html', {
+                                "stepArr" : [
+                                    {
+                                        "step" : "STEP1",
+                                        "tit" : "제품 구입",
+                                        "desc" : "베스트샵 매장 또는<br>제휴매장에서<br>제품 구입"
+                                    },
+                                    {
+                                        "step" : "STEP2",
+                                        "tit" : "일정금액구입",
+                                        "desc" : "베스트샵 매장 또는<br>제휴매장에서<br>제품 구입"
+                                    },
+                                    {
+                                        "step" : "STEP3",
+                                        "tit" : "우수고객 지정",
+                                        "desc" : "우수고객 지정"
+                                    },
+                                    {
+                                        "step" : "STEP4",
+                                        "tit" : "무상 A/S 혜택부여",
+                                        "desc" : "무상 A/S 혜택부여"
+                                    }
+                                ]
+                            })
                         </div>
                     </div>
 
