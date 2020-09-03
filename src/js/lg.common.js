@@ -71,7 +71,8 @@ if(lgkorUI === undefined){
                 'ui/tab',       
                 'ui/lazyLoader',
                 "ui/videoBox",
-                "ui/youtubeBox"     
+                "ui/youtubeBox",
+                "test"
             ], function () {
                 var $doc = $(document);          
                 
@@ -146,6 +147,7 @@ if(lgkorUI === undefined){
                 }else {
                     console.log("None Edit Mode!!!!");
                     $('body').buildCommonUI();
+                    $('body').vcTest();
                 }
     
                 //$.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
