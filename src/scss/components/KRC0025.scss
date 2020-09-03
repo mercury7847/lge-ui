@@ -1,0 +1,216 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRC0025 {
+    width: 100%;
+    //max-width: (1284px + 60px);
+    margin: 0 auto;
+    //padding: 0 30px;
+
+    @include mobile {
+        max-width: 100%;
+        //padding: 0 24px;
+    }
+
+	.visual-info-set {
+		width:100%;
+		.text-info-set {
+			width:100%;
+			max-width:1344px;
+			margin:0 auto;
+			padding:60px 30px 48px;
+			@include mobile {
+				padding:60px 24px 48px;
+			}
+			.text-info-area {
+				max-width: 1066px;
+				margin: 0 auto;
+				.title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6 {
+					margin-bottom:24px;
+					font-size:24px;
+					line-height:34px;
+					color: #111;
+				}				
+				.desc-text {
+					margin-bottom: 40px;
+					font-size: 16px;
+					line-height: 24px;
+					color: #616161;
+				}
+			}
+			// button type
+			.cta {
+				max-width: 1066px;
+				margin: 0 auto;
+				.btn-type-box, 
+				.btn-type-text {
+					font-size: 0;
+					@include mobile {
+						max-width:100%;
+					}
+					span {
+						display: inline-block;
+						margin-bottom: 12px;
+					}
+					span + span {
+						margin-left: 24px;
+					}
+
+					@include mobile {
+						span {
+							display: block;
+						}
+						span + span {
+							margin-left: 0;
+							//margin-top: 24px;
+						}
+						.btn {
+							min-width:194px;
+							padding:16px 0;
+							line-height: 24px;
+							font-size: 16px;
+						}
+					}
+				}
+			}
+		}
+
+		.visual-area {
+			position:relative;
+			width:100%;
+			overflow:hidden;
+			img {
+				width:100%;
+				max-width:100%;
+			}
+			@include mobile {
+				width:100%;
+			}
+
+			.show-cut {
+				position:absolute;
+				left:50%;
+				top:50%;
+				z-index:5;
+				width:100%;
+				max-width:100%;
+				//max-height:100%;
+				text-align:center;
+				transition: transform 1s;
+				img {
+					width:auto;
+					max-width:100%;
+					&.mobile {
+						display:none;
+					}
+					@include mobile {
+						&.mobile,
+						&.pc {
+							display:inline;
+						}
+					}
+				}
+			}
+			&.show-cut-bt {
+				.show-cut {
+					transform:translate(-50%, 50%) !important;
+					&.center {
+						transform:translate(-50%, -50%) !important;
+					}
+				}
+			}
+			&.show-cut-rl {
+				.show-cut {
+					transform:translate(50%, -50%) !important;
+					&.center {
+						transform:translate(-50%, -50%) !important;
+					}
+				}
+			}
+		}
+
+	}
+
+	// bg, text color
+	$color: (lightgray, dark, black, white);
+	
+	@each $bg in $color {
+        &.bg-#{$bg} {
+            @if $bg == lightgray {
+                background:#f4f4f4;
+            } @else if $bg == dark {
+                background:#333;
+            } @else if $bg == black {
+                background:#000;
+            } @else if $bg == white {
+                background:#fff;
+			}
+			.visual-info-set .text-info-area {
+				.title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6 {
+					@if $bg == lightgray {
+						color:#111;
+					} @else if $bg == white {
+						color:#111;
+					} @else if $bg == black {
+						color:#fff;
+					} @else if $bg == dark {
+						color:#fff;
+					}
+				}
+				.desc-text {
+					@if $bg == lightgray {
+						color:#616161;
+					} @else if $bg == white {
+						color:#111;
+					} @else if $bg == black {
+						color:#fff;
+					} @else if $bg == dark {
+						color:#fff;
+					}
+				}
+			}	
+			
+			.btn-type-box {
+				.btn-outline-primary {
+					@if $bg == black {
+						border-color:#fff;
+						background:transparent;
+						color:#fff;
+					} @else if $bg == dark {
+						border-color:#fff;
+						background:transparent;
+						color:#fff;
+					} @else if $bg == lightgray {
+						background:transparent;
+					}
+				}
+				.btn-primary {
+					@if $bg == black {
+						border-color:#fff;
+						background:#fff;
+						color:#111;
+					}
+				}
+			}
+			.btn-type-text {
+				.link-text {
+					@if $bg == black {
+						color:#fff;
+						border-color:#fff;
+						&::after {
+							border-color:#fff;
+						}
+					} @else if $bg == dark {
+						color:#fff;
+						border-color:#fff;
+						&::after {
+							border-color:#fff;
+						}
+					}
+				}
+			}
+        }
+    }
+
+} 
