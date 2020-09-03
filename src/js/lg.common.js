@@ -20,7 +20,6 @@ $.fn.buildCommonUI = function () {
         this.find('.animation-box').vcVideoBox();
         this.find('.youtube-box').vcYoutubeBox();
         this.vcLazyLoader();
-
     }.bind(this));
     return this;
 };
@@ -100,10 +99,20 @@ var lgkorUI = {
 
             $('header').vcHeader(); //헤더 모듈 적용...
             $('footer').vcFooter(); //푸터모듈 적용...
-            
-            $('body').buildCommonUI();
+
+            if($('body.iw-fullscreen-edit').length){
+                console.log("Edit Mode!!");
+                $('body.iw-fullscreen-edit').buildCommonUI();
+            }else {
+                console.log("None Edit Mode!!");
+                $('body').buildCommonUI();
+            }
+
+            $(document).ready(function(){
+                console.log("document ready 222 !!!")
+            });
+
             $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
-            console.log("$.holdReady(false);")
 
             // 모달이 열렸을 때 페이지 스크롤을 막기 위함 ////////////////////////////
             $doc.on('modalfirstopen modallastclose', function (e) {
@@ -167,13 +176,13 @@ var lgkorUI = {
     }
 }
 
-var parentDocument = $(parent.document);
-console.log(parentDocument);
-var myDocument = $(document);
-console.log(myDocument);
-console.log(document)
+console.log(document);
+$(document).ready(function(){
+    console.log("document ready!!!")
+});
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOMContentLoaded!!!");
     lgkorUI.init();
 });
+
 

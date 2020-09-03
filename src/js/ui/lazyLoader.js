@@ -41,11 +41,6 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
             self.$con.on('scroll' + self.eventNS, function () {
                 self._action();
             }).trigger('scroll' + self.eventNS);
-
-            setTimeout(function(){
-                console.log("setTimeout();")
-                self._action();
-            }, 5000);
         },
 
         _getContainerSize: function _getContainerSize() {
