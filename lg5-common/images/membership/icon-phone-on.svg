@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_phone_on</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon_phone">
+            <rect id="Rectangle" x="0" y="0" width="48" height="48"></rect>
+            <path d="M29.8,6 L17.2,6 C14.8092308,6 13,7.83272727 13,10.2711864 L13,37.7288136 C13,40.1672727 14.8092308,42 17.2,42 L29.8,42 C32.1907692,42 34,40.1672727 34,37.7288136 L34,10.2711864 C34,7.83272727 32.1907692,6 29.8,6 Z M23.5,40 C22.1166667,40 21,38.8833333 21,37.5 C21,36.1166667 22.1166667,35 23.5,35 C24.8833333,35 26,36.1166667 26,37.5 C26,38.8833333 24.8833333,40 23.5,40 Z M30,34 L16,34 L16,11 L30,11 L30,34 Z" id="Shape" fill="#EC455A" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>
