@@ -10,7 +10,7 @@ vcui.require.config({
 });
 */
 
-if(!vcuirequire != undefined) return false;
+if (typeof vcuirequire !== 'undefined') return false;
 
 $.fn.buildCommonUI = function () {
     //vcui.require(['ui/accordion', 'ui/calendar', 'ui/tab','ui/selectbox', 'ui/carousel', 'ui/lazyLoader', "ui/videoBox", "ui/youtubeBox"], function () {        
