@@ -29,6 +29,8 @@
                     <div class="visual-area">
                         <img class="pc lazyload" data-src="@@fisrt-square.img-src.@@fisrt-square.img-type" alt=""><!-- [KR수정] as-is .pc-lg -->
                         <img class="mobile lazyload" data-src="@@fisrt-square.img-src-m.@@fisrt-square.img-type" alt="">
+                        <p class="hidden pc">graphic description : </p>
+                        <p class="hidden mobile">graphic description : </p>
                     </div>
                     <div class="copy-boxing-area">
                         <!-- 2. eyebrow -->
@@ -43,18 +45,23 @@
             </div>
             <div class="square @@second-square.class text-black">
                 <!-- 4. image -->
+                <a href="http://www.naver.com" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="block_image_2_text_overlay-video_play_ad" data-link-name="video id" aria-describedby="title01">plays audio description video</a>
                 <!-- * youtube video modal은 아래의 방식으로 입력 -->
-                <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="common-area case-of-video see-video" data-type="youtube" data-target="modal" data-link-area="block_image_2_text_overlay-video_play" data-link-name="{video id}">
+                <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="common-area case-of-video see-video" data-type="youtube" data-target="modal" data-link-area="block_image_2_text_overlay-video_play" data-link-name="{video id}" aria-describedby="title01">
                     <div class="visual-area">
                         <img class="pc lazyload" data-src="@@second-square.img-src.@@second-square.img-type" alt=""><!-- [KR수정] as-is .pc-lg -->
                         <img class="mobile lazyload" data-src="@@second-square.img-src-m.@@second-square.img-type" alt="">
+                        <!-- [KR수정] Image Accessibility Description 추가 -->
+                        <p class="hidden pc">graphic description : </p>
+                        <p class="hidden mobile">graphic description : </p>
+                        <!-- // [KR수정] Image Accessibility Description 추가 -->
                     </div>
                     <div class="copy-boxing-area">
                         <!-- 5. eyebrow -->
                         <div class="category">Product Category Text</div>
                         <!-- // 5. eyebrow -->
                         <!-- 6. headline -->
-                        <div class="head">@@second-square.head</div>
+                        <div class="head" id="title01">@@second-square.head</div>
                         <!-- // 6. headline -->
                     </div>
                 </a>

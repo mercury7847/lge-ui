@@ -718,6 +718,7 @@
         }
     }
 }
+
 .progress {
     &-item {
         display: inline-block;
@@ -725,6 +726,14 @@
         height: 10px;
         background: #000;
         margin: 0 8px;
+    }
+}
+
+.registration-wrap {
+    display: flex;
+    align-items: center;
+    [class^="btn"] {
+        margin-left: 9px;
     }
 }
 

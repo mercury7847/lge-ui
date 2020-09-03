@@ -80,7 +80,14 @@ var lgkorUI = {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    console.log("DOMContentLoaded : " + $('body').hasClass("iw-fullscreen-edit"))
-    lgkorUI.init();
-});
+var isEdit = $('body').hasClass("iw-fullscreen-edit");
+if(isEdit){
+    $('body.iw-fullscreen-edit').load(function(){
+        lgkorUI.init();
+    });
+} else{
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log("DOMContentLoaded : " + )
+        
+    });
+}
