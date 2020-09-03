@@ -87,16 +87,7 @@ gulp.task("styles", () => gulp
 //자주 쓰는 vcui모듈 vcui.common-ui.js로 병합...
 const concatNames = [
     src + "/js/common/footer.js",
-    src + "/js/common/header.js",
-    src + "/js/ui/accordion.js",
-    src + "/js/ui/carousel.js",
-    src + "/js/ui/dropdown.js",
-    src + "/js/ui/modal.js",
-    src + "/js/ui/selectbox.js",
-    src + "/js/ui/smoothScroll.js",
-    src + "/js/ui/tab.js",
-    src + "/js/ui/selectbox.js",
-    src + "/js/ui/lazyLoader.js"
+    src + "/js/common/header.js"
 ];
 gulp.task("concat-js", () => gulp
     .src(concatNames)
