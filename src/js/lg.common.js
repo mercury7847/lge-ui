@@ -1,4 +1,4 @@
-
+/*
 vcui.require.config({
     paths: {
         'jquery.transit': 'libs/jquery.transit'
@@ -8,11 +8,11 @@ vcui.require.config({
         node.charset = 'euc-kr';
     }
 });
-
+*/
 
 $.fn.buildCommonUI = function () {
     vcui.require(['ui/accordion', 'ui/calendar', 'ui/tab','ui/selectbox', 'ui/carousel', 'ui/lazyLoader', "ui/videoBox", "ui/youtubeBox"], function () {        
-        this.find('.ui_calender').vcCalendar();
+        //this.find('.ui_calender').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
         this.find('.ui_selectbox').vcSelectbox();
         this.find('.ui_tab').vcTab();
