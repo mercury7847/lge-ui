@@ -106,7 +106,7 @@ var lgkorUI = {
                 console.log($('.KRC0013'));
                 $('body.iw-fullscreen-edit').buildCommonUI();
 
-                var iwBody = document.getElementsByClassName('body.iw-fullscreen-edit');
+                var iwBody = document.getElementsByClassName('iw-fullscreen-edit');
                 console.log(iwBody);
                 iwBody.addEventListener('DOMContentLoaded', function () {
                     console.log("iwBody DOMContentLoaded!!!");
