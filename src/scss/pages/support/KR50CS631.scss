@@ -36,16 +36,17 @@
         }
     }
     .dl-list {
-        .bullet {
+        line-height: 1.38;
+        .support-bullet {
             margin-left: 16px;
         }
         > dd {
-            > p {
-                margin-top: 14px;
-                &:first-child {
-                    margin-top: 0;
-                }
-            }
+            // > p {
+            //     margin-top: 14px;
+            //     &:first-child {
+            //         margin-top: 0;
+            //     }
+            // }
         }
         @include mobile {
             > dd {
@@ -55,23 +56,35 @@
             }   
         }
     }
+    .paragraph {
+        &-1 {
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+        &-2 {
+            margin-bottom: 22px;
+        }
+        &-3 {
+            margin-top: 8px;
+        }
+        &-4 {
+            margin-top: 16px;
+        }
+    }
     .ui_tab-notice {
         margin-bottom: 24px;
-    }
-    @include mobile {
-        .ui_tab-notice {
+        @include mobile {
             margin-bottom: 16px;
             margin-top: 68px;
         }
     }
 
-
-    .bullet {
+    .support-bullet {
         &-title {
             margin-bottom: 30px;
         }
         &-list {
-            margin-top: 16px;
+            margin-top: 0;
         }
     }
     
@@ -93,24 +106,7 @@
             margin-bottom: 16px;
         }
     }
-    
-    .bullet {
-        position: relative;
-        padding-left: .75em;
-        &::before {
-            content: '';
-            display: block;
-            width: .25em;
-            height: .25em;
-            border-radius: 50%;
-            background-color: #616161;
-            position: absolute;
-            left: 0;
-            top: .563em;
-        }
-    }
-    
-    
+
     .dl-list {
         dt {
             font-size: 18px;
@@ -146,22 +142,6 @@
         }
     }
     
-    .paragraph {
-        &-1 {
-            margin-top: 12px;
-            margin-bottom: 12px;
-        }
-        &-2 {
-            margin-bottom: 22px;
-        }
-        &-3 {
-            margin-top: 8px;
-        }
-        &-4 {
-            margin-top: 16px;
-        }
-    }
-    
     .list {
         li {
             &:first-child {
@@ -172,7 +152,7 @@
             margin-top: 16px;
             margin-left: 48px;
             text-indent: -1.5em;
-            > ul:not(.bullet-list) {
+            > ul:not(.support-bullet-list) {
                 > li {
                     margin-left: 24px;
                     text-indent: -24px;
@@ -182,7 +162,7 @@
                         }
                     }
                 }
-                &.bullet-list {
+                &.support-bullet-list {
                     li {
                         text-indent: 0;
                     }
@@ -194,7 +174,7 @@
                     margin-top: 12px;
                 }
             }
-            > .bullet-list {
+            > .support-bullet-list {
                 text-indent: 0;
             }
         }
@@ -202,19 +182,26 @@
             > li {
                 margin-left: 16px;
                 text-indent: 0;
-                > ul:not(.bullet-list) {
+                > ul:not(.support-bullet-list) {
                     > li {
                         margin-left: 40px;
                         text-indent: -24px;
                     }
                 }
-                > .bullet-list {
+                > .support-bullet-list {
                     > li {
                         margin-left: 16px;
                         text-indent: 0;
                     }
                 }
             }
+        }
+    }
+
+    .text-space-1 {
+        padding-left: 4.3em;
+        @include mobile {
+            padding-left: 0;
         }
     }
 }
