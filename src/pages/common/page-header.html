@@ -4,10 +4,7 @@
     <div class="page-navi tabs-wrap">
         <ul class="tabs">
             @@for (var i=0; i < context.pageArr.length; i++) {
-                @@if ( context.pageArr === context.pageTitle ) {
-                    <li class="on"><a href="#n">`+pageArr[i]+`<em class="blind">선택됨</em></a></li>
-                }
-                <li><a href="#n">`+pageArr[i]+`</a></li>
+                <li class="`+pageArr[i].on+`"><a href="#n">`+pageArr[i].page+`</a></li>
             }
         </ul>
     </div>

@@ -193,7 +193,7 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/guide/data.js", ["guide:data-js"]).on('change', browserSync.reload);
 
     // Watch sass files
-    gulp.watch(src + "/scss/**/*.scss", ["styles"]).on('change', browserSync.reload);
+    gulp.watch(src + "/scss/**", ["styles"]).on('change', browserSync.reload);
 
     // Watch js files
     gulp.watch(src + "/js/*.js", ["jsCompile"]).on('change', browserSync.reload);

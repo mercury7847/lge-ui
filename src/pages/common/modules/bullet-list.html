@@ -1,0 +1,14 @@
+@@if ( context.bulletTit ) {
+    <dl class="bullet-list">
+        <dt class="b-tit">@@bulletTit</dt>
+        @@for (var i=0; i < context.bulletTxt.length; i++) {
+            <dd class="b-txt">`+bulletTxt[i]+`</dd>
+        }
+    </dl>
+} @@if ( !context.bulletTit ) {
+    <ul class="bullet-list">
+        @@for (var i=0; i < context.bulletTxt.length; i++) {
+            <li class="b-txt">`+bulletTxt[i]+`</li>
+        }
+    </ul>
+}
