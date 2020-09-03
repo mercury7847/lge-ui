@@ -102,15 +102,30 @@ var lgkorUI = {
 
             if($('body.iw-fullscreen-edit').length){
                 console.log("Edit Mode!!");
+                console.log($('body.iw-fullscreen-edit'));
+                console.log($('.KRC0013'));
                 $('body.iw-fullscreen-edit').buildCommonUI();
+
+                var iwBody = document.getElementsByClassName('iw-fullscreen-edit');
+                console.log(iwBody);
+                iwBody.addEventListener('DOMContentLoaded', function () {
+                    console.log("iwBody DOMContentLoaded!!!");
+                    lgkorUI.init();
+                });
+                $('body.iw-fullscreen-edit').on('load', function(){
+                    console.log("$('body.iw-fullscreen-edit').onLoad!!!");
+                    console.log($('body.iw-fullscreen-edit'))
+                    console.log($('.KRC0013'));
+                });
+
+                document.addEventListener('DOMContentLoaded', function () {
+                    console.log("DOMContentLoaded2!!!");
+                    lgkorUI.init();
+                });
             }else {
                 console.log("None Edit Mode!!");
                 $('body').buildCommonUI();
             }
-
-            $(document).ready(function(){
-                console.log("document ready 222 !!!")
-            });
 
             $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
 
