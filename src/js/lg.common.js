@@ -11,21 +11,21 @@ vcui.require.config({
 
 
 $.fn.buildCommonUI = function () {
-    vcui.require(['ui/accordion', 'ui/calendar', 'ui/tab','ui/selectbox', 'ui/carousel'], function () {        
+    vcui.require(['ui/accordion', 'ui/calendar', 'ui/tab','ui/selectbox', 'ui/carousel', 'ui/lazyloader', "ui/videoBox", "ui/youtubeBox"], function () {        
         this.find('.ui_calender').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
         this.find('.ui_selectbox').vcSelectbox();
         this.find('.ui_tab').vcTab();
         this.find('.ui_carousel').vcCarousel();
+        this.find('.animation-box').vcVideoBox();
+        this.find('.youtube-box').vcYoutubeBox();
+        this.vcLazyLoader();
 
     }.bind(this));
     return this;
 };
 
 $.holdReady(true);
-    
-
-// $.holdReady(true); // ready 실행을 잠시 멈춘다.
 
 var lgkorUI = {
     template: $('<div class="template"></div>'),
@@ -36,13 +36,18 @@ var lgkorUI = {
 
     // 주요 컴포넌트를 미리 로드
     _preloadComponents: function () {
-        vcui.require([            
+        vcui.require([  
+            'common/header', 
+            'common/footer',           
             'ui/selectbox',
             'ui/calendar',
             'ui/accordion',
             'ui/carousel',
             'ui/modal',
-            'ui/tab',            
+            'ui/tab',       
+            'ui/lazyLoader',
+            "ui/videoBox",
+            "ui/youtubeBox"     
         ], function () {
             var $doc = $(document);          
             
@@ -92,10 +97,13 @@ var lgkorUI = {
                     }
                 }
             });
+
+            $('header').vcHeader(); //헤더 모듈 적용...
+            $('footer').vcFooter(); //푸터모듈 적용...
             
             $('body').buildCommonUI();
             $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
-            
+            console.log("$.holdReady(false);")
 
             // 모달이 열렸을 때 페이지 스크롤을 막기 위함 ////////////////////////////
             $doc.on('modalfirstopen modallastclose', function (e) {
@@ -163,8 +171,8 @@ var parentDocument = $(parent.document);
 console.log(parentDocument);
 var myDocument = $(document);
 console.log(myDocument);
-$(document).on("load", function(){
-    console.log("Document onLoad!!!");
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("DOMContentLoaded!!!");
     lgkorUI.init();
 });
 
