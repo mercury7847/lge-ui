@@ -6,6 +6,8 @@
  * date : 2020.07.23
  */
 
+ if(window.vcuirequire == undefined){
+     
 var vinylcMessageStyle="font-size:18px; font-weight:200; letter-spacing:0.2em; line-height:1.4em; font-family:helvetica,arial; color:rgba(0,0,25,0.5);";
 console.log("%cVINYLC UI Library 1.1",vinylcMessageStyle);
 
@@ -9100,3 +9102,5 @@ console.log("vcui load!!!")
 
 
 })(jQuery, window[LIB_NAME]);
+
+ }
