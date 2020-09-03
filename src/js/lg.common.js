@@ -110,6 +110,10 @@ var lgkorUI = {
                     console.log($('body.iw-fullscreen-edit'))
                     console.log($('.KRC0013'));
                 });
+                document.addEventListener('DOMContentLoaded', function () {
+                    console.log("DOMContentLoaded2!!!");
+                    lgkorUI.init();
+                });
             }else {
                 console.log("None Edit Mode!!");
                 $('body').buildCommonUI();
