@@ -84,14 +84,7 @@ var parentDocument = $(parent.document);
 console.log(parentDocument);
 var myDocument = $(document);
 console.log(myDocument);
-var isEdit = $('body').hasClass("iw-fullscreen-edit");
-console.log("isEdit : " + isEdit);
-if(isEdit){
-    $('body.iw-fullscreen-edit').load(function(){
-        lgkorUI.init();
-    });
-} else{
-    document.addEventListener('DOMContentLoaded', function () {
-        lgkorUI.init();
-    });
-}
+$(document).on("load", function(){
+    console.log("Document onLoad!!!");
+    lgkorUI.init();
+})
