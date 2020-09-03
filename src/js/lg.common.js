@@ -9,24 +9,24 @@ vcui.require.config({
     }
 });
 */
+$.fn.buildCommonUI = function () {
+    vcui.require(['ui/accordion', 'ui/calendar', 'ui/tab','ui/selectbox', 'ui/carousel', 'ui/lazyLoader', "ui/videoBox", "ui/youtubeBox"], function () {
+        console.log(this);
+        this.find('.ui_calender').vcCalendar();
+        this.find('.ui_accordion').vcAccordion();        
+        this.find('.ui_selectbox').vcSelectbox();
+        this.find('.ui_tab').vcTab();
+        this.find('.ui_carousel').vcCarousel();
+        this.find('.animation-box').vcVideoBox();
+        this.find('.youtube-box').vcYoutubeBox();
+        this.vcLazyLoader();
+    }.bind(this));
+    return this;
+};
+
 
 if(lgkorUI == undefined){
     console.log("lgkorUI start!!!");
-    
-    $.fn.buildCommonUI = function () {
-        vcui.require(['ui/accordion', 'ui/calendar', 'ui/tab','ui/selectbox', 'ui/carousel', 'ui/lazyLoader', "ui/videoBox", "ui/youtubeBox"], function () {
-            console.log(this);
-            this.find('.ui_calender').vcCalendar();
-            this.find('.ui_accordion').vcAccordion();        
-            this.find('.ui_selectbox').vcSelectbox();
-            this.find('.ui_tab').vcTab();
-            this.find('.ui_carousel').vcCarousel();
-            this.find('.animation-box').vcVideoBox();
-            this.find('.youtube-box').vcYoutubeBox();
-            this.vcLazyLoader();
-        }.bind(this));
-        return this;
-    };
     
     $.holdReady(true);
     
