@@ -105,11 +105,19 @@ var lgkorUI = {
                 console.log($('body.iw-fullscreen-edit'));
                 console.log($('.KRC0013'));
                 $('body.iw-fullscreen-edit').buildCommonUI();
+
+                var iwBody = document.getElementsByClassName('body.iw-fullscreen-edit');
+                console.log(iwBody);
+                iwBody.addEventListener('DOMContentLoaded', function () {
+                    console.log("iwBody DOMContentLoaded!!!");
+                    lgkorUI.init();
+                });
                 $('body.iw-fullscreen-edit').on('load', function(){
                     console.log("$('body.iw-fullscreen-edit').onLoad!!!");
                     console.log($('body.iw-fullscreen-edit'))
                     console.log($('.KRC0013'));
                 });
+
                 document.addEventListener('DOMContentLoaded', function () {
                     console.log("DOMContentLoaded2!!!");
                     lgkorUI.init();
