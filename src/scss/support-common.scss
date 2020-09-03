@@ -135,6 +135,7 @@
         border-collapse:collapse;
         border-spacing:0;
         table-layout:fixed;
+        line-height: 1.38;
         th, td {
             padding:16px 24px;
             font-size:16px;
@@ -659,7 +660,20 @@
     }
 }
 
-.bullet {
+.support-bullet {
+    position: relative;
+    padding-left: .75em;
+    &::before {
+        content: '';
+        display: block;
+        width: .25em;
+        height: .25em;
+        border-radius: 50%;
+        background-color: #616161;
+        position: absolute;
+        left: 0;
+        top: .563em;
+    }
     &-title {
         padding-left: 0.750em;
         line-height: 1;
@@ -698,10 +712,12 @@
     }
     &-list {
         margin-top: 16px;
-        li {
+        > li {
             position: relative;
             margin-top: 12px;
             line-height: 1.38;
+            text-indent: -1em;
+            padding-left: 1em;
             &:first-child {
                 margin-top: 0;
             }

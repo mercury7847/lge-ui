@@ -33,6 +33,12 @@
         font-weight:500; // common 확인 필요 
     }
 
+    &.bd-pink {
+        border-color:#EC455A;
+        background:transparent;
+        color:#EC455A;
+    }
+
     &.type-privacy {
         font-size: 16px;
         font-weight: normal;
