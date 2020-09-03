@@ -24,6 +24,27 @@ $.fn.buildCommonUI = function () {
     return this;
 };
 
+cui.define('test', ['jquery', 'vcui'], function ($, core) {
+    "use strict";
+
+    var test = core.ui('Test', {
+        bindjQuery: true,
+        defaults: {
+        },
+
+        initialize: function initialize(el, options) {
+            var self = this;
+            
+            if (self.supr(el, options) === false) {
+                return;
+            };
+            
+            console.log("test ok!!")
+        }
+    });
+
+    return VideoBox;
+});
 
 if(lgkorUI === undefined){
     console.log("lgkorUI start!!!");
@@ -111,6 +132,7 @@ if(lgkorUI === undefined){
                         console.log($('body.iw-fullscreen-edit'));
                         console.log($('.KRC0013'));
                         //$('body.iw-fullscreen-edit').buildCommonUI();
+                        $('body.iw-fullscreen-edit').vcTest();
                     }, 5000);
                     $('body.iw-fullscreen-edit').find('.ui_calender').vcCalendar();
                     $('body.iw-fullscreen-edit').find('.ui_accordion').vcAccordion();        
@@ -120,6 +142,7 @@ if(lgkorUI === undefined){
                     $('body.iw-fullscreen-edit').find('.animation-box').vcVideoBox();
                     $('body.iw-fullscreen-edit').find('.youtube-box').vcYoutubeBox();
                     $('body.iw-fullscreen-edit').vcLazyLoader();
+                    $('body.iw-fullscreen-edit').vcTest();
                 }else {
                     console.log("None Edit Mode!!!!");
                     $('body').buildCommonUI();
