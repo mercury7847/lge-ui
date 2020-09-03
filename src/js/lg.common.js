@@ -80,7 +80,9 @@ var lgkorUI = {
     }
 }
 
-var myDocument = $(parent.document);
+var parentDocument = $(parent.document);
+console.log(parentDocument);
+var myDocument = $(document);
 console.log(myDocument);
 var isEdit = $('body').hasClass("iw-fullscreen-edit");
 console.log("isEdit : " + isEdit);
