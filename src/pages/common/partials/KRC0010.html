@@ -6,7 +6,7 @@
 		.zero-top : 상단여백 없음
 		.zero-btm : 하단여백 없음
 	-->
-	<div class="component KRC0010 @@bg @@textColor @@full">
+	<section class="component KRC0010 @@bg @@textColor @@full">
 		<!--
 			[heading-box 텍스트 정렬]
 			.align-left : 왼쪽 정렬
@@ -39,6 +39,7 @@
 					모바일로 접속시에는 위 이미지 2개 대신 아래 코드를 사용해 주세요.
 					<img data-src="@@visual2" class="mobile lazyload" alt="" />
 				-->
+				<p class="hidden pc">graphic description : </p>
 			</div>
 			<!-- // 2. image -->
 
@@ -76,11 +77,12 @@
 			.align-right : 오른쪽 정렬
 			.align-center : 중앙 정렬
 		-->
-		<div class="unit-list @@unit-line.align-class1">
-			<div class="unit-box">
+		<ul class="unit-list @@unit-line.align-class1">
+			<li class="unit-box">
 				<!-- 7. image -->
 				<div class="visual-area image">
 					<img class="lazyload" data-src="/lg5-common/images/KRC0010/@sample-630x315.jpg" alt=""/>
+					<p class="hidden pc">graphic description : </p>
 				</div>
 				<!-- // 7. image -->
 				<!-- 8. title -->
@@ -94,11 +96,12 @@
 					<span><a href="#none" class="btn btn-primary" data-link-area="recommended_promotions-promotion_list" data-link-name="{promotion title}">프로모션 보기</a></span>
 				</div>
 				<!-- // 10. cta -->
-			</div>
-			<div class="unit-box">
+			</li>
+			<li class="unit-box">
 				<!-- 11. image -->
 				<div class="visual-area image">
 					<img class="lazyload" data-src="/lg5-common/images/KRC0010/@sample-630x315.jpg" alt=""/>
+					<p class="hidden pc">graphic description : </p>
 				</div>
 				<!-- // 11. image -->
 				<!-- 12. title -->
@@ -112,7 +115,7 @@
 					<span><a href="#none" class="btn btn-primary" data-link-area="recommended_promotions-promotion_list" data-link-name="{promotion title}">프로모션 보기</a></span>
 				</div>
 				<!-- // 14. cta -->
-			</div>
-		</div>
-	</div>
+			</li>
+		</ul>
+	</section>
 </div>
