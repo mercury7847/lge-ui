@@ -25,7 +25,7 @@ $.fn.buildCommonUI = function () {
 };
 
 
-if(lgkorUI == undefined){
+if(lgkorUI === undefined){
     console.log("lgkorUI start!!!");
     
     $.holdReady(true);
