@@ -102,7 +102,6 @@ var lgkorUI = {
             $('header').vcHeader(); //헤더 모듈 적용...
             $('footer').vcFooter(); //푸터모듈 적용...
 
-            /*
             if($('body.iw-fullscreen-edit').length){
                 console.log("Edit Mode!!");
                 setTimeout(function(){
@@ -115,9 +114,6 @@ var lgkorUI = {
                 console.log("None Edit Mode!!!!");
                 $('body').buildCommonUI();
             }
-            */
-
-            $('body').buildCommonUI();
 
             //$.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
 
@@ -190,13 +186,6 @@ $(document).ready(function(){
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOMContentLoaded!!!");
     lgkorUI.init();
-    
-    setTimeout(function(){
-        console.log("setTimeout!!!")
-        console.log($('body.iw-fullscreen-edit'));
-        console.log($('.KRC0013'));
-        $('body.iw-fullscreen-edit').buildCommonUI();
-    }, 1500);
 });
 
 
