@@ -27,7 +27,7 @@ $.fn.buildCommonUI = function () {
 vcui.define('test', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
-    var test = core.ui('Test', {
+    var Test = core.ui('Test', {
         bindjQuery: true,
         defaults: {
         },
@@ -43,7 +43,7 @@ vcui.define('test', ['jquery', 'vcui'], function ($, core) {
         }
     });
 
-    return VideoBox;
+    return Test;
 });
 
 if(lgkorUI === undefined){
