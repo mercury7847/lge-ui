@@ -26,15 +26,17 @@
         [W/F상 contents size 정의]
         아래 마크업은 contents size 옵션이 Large 인 경우 마크업입니다.
     -->
-    <div class="component KRC0016">
+    <section class="component KRC0016">
         <div class="unit-list @@align-class1">
             <div class="unit-box">
                 <!-- 1. image -->
                 <div class="visual-area video youtube-box">
                     <!-- 1-1. video play button -->
+                    <a href="#none" role="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}">plays audio description video</a>
                     <!-- * youtube video modal은 아래의 방식으로 입력 -->
-                    <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="large_image_large_or_2_small_image-video_play" data-link-name="{video title / video id}">
+                    <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="large_image_large_or_2_small_image-video_play" data-link-name="{video title / video id}" title="opens in a new layer popup, plays video">
                         <img data-src="/lg5-common/images/dummy/@sample-3-2.gif" alt="" class="lazyload" />
+                        <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
                         <!-- 2. bideo title copy -->
                         <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
                         <!-- // 2. bideo title copy -->
@@ -62,6 +64,7 @@
                     <a href="#none" data-link-area="large_image_large_or_2_small_image-image" data-link-name="{Alt Text}">
                         <img data-src="/lg5-common/images/dummy/@sample-3-2.gif" alt="" class=" lazyload" />
                     </a>
+                    <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
                 </div>
                 <!-- // 5. image -->
                 <!-- 7. body copy -->
@@ -79,5 +82,5 @@
                 <!-- // 8. cta -->
             </div>
         </div>
-    </div>
+    </section>
 </div>

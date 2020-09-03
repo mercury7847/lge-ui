@@ -2150,6 +2150,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         'role': 'tab',
                         'id': _V.SLIDE + '-control' + self.instanceUid + i,
                         'aria-controls': _V.SLIDE + self.instanceUid + mappedSlideIndex,
+                        'aria-describedby': _V.SLIDE + self.instanceUid + mappedSlideIndex,
                         'aria-label': i + 1 + ' of ' + numDotGroups,
                         'aria-selected': null //,
                         //'tabindex': '-1'
@@ -6967,11 +6968,11 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
             if (self.supr(el, options) === false) {
                 return;
             }
-            console.log("LazyLoader initialize!!!");
+            console.log("LazyLoader initialize!!!!");
 
             self.isVert = self.options.mode === 'vertical';
             self.largestPosition = 0;
-            self.$items = $(self.options.selector);
+            self.$items = self.$el.find(self.options.selector + "[data-src]");
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
 
             console.log(self.$items)
@@ -6985,6 +6986,11 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
             self.$con.on('scroll' + self.eventNS, function () {
                 self._action();
             }).trigger('scroll' + self.eventNS);
+
+            setTimeout(function(){
+                console.log("setTimeout();")
+                self._action();
+            }, 5000);
         },
 
         _getContainerSize: function _getContainerSize() {
@@ -6997,26 +7003,27 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
 
         _action: function _action() {
             var self = this;
-            console.log("_action1")
-
             var scrollValue = self._getScrollValue();
 
             if (scrollValue >= self.largestPosition) {
-                console.log("_action2 : " + scrollValue + " / " + self.largestPosition)
+                self.$items = $(self.options.selector + "[data-src]");
+                console.log(self.$items)
                 self.$items = self.$items.filter(function () {
                     var $el = $(this),
                         pos = $el.offset()[self.isVert ? 'top' : 'left'],
                         chkpos = scrollValue + self.options.range + self._getContainerSize();
-                    console.log("_action3 : " + $el + " / " + pos + " / " + chkpos);
                     if (chkpos >= pos) {
-                        if (self.options.useFade) {
-                            $el.css('opacity', 0);
-                        }
-                        self._loadImage($el, function () {
+                        if($el.data("lazyloaded") == undefined || !$el.data("lazyloaded")){
                             if (self.options.useFade) {
-                                $el.stop().animate({ opacity: 1 });
+                                $el.css('opacity', 0);
                             }
-                        });
+                            self._loadImage($el, function () {
+                                if (self.options.useFade) {
+                                    $el.stop().animate({ opacity: 1 });
+                                }
+                            });
+                            $el.data("lazyloaded", true);
+                        }
                         return false;
                     }
                     return true;

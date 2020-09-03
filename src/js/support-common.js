@@ -178,8 +178,8 @@ CS.MD.setPagination = function() {
                 }
             }
 
-            firstPage === 1 ? $prev.addClass(defaults.disabledClass) : $prev.removeClass(defaults.disabledClass);
-            lastPage >= totalPage ? $next.addClass(defaults.disabledClass) : $next.removeClass(defaults.disabledClass);
+            firstPage === 1 ? $prev.attr('aria-disabled', true) : $prev.attr('aria-disabled', false);
+            lastPage >= totalPage ? $next.attr('aria-disabled', true) : $next.attr('aria-disabled', false);
 
             for (var i = firstPage; i <= lastPage; i++) {
                 if (currentPage === i) {
@@ -269,8 +269,34 @@ CS.MD.setPagination = function() {
         });
     }
 
+    function checkPrivacy() {
+        var $privacyBox = $('.privacy-box');
+
+        if (!$privacyBox.length) return false;
+
+        function setEventListener() {
+            $('[type="checkbox"]').on('click', function(e) {
+                var $this = $(this);
+                
+                if ($this.is(':checked')) {
+                    e.preventDefault();
+                
+                    $('#privacyAgreeModal').vcModal();
+                }
+            });
+
+            $('#privacyAgreeModal').find('.btn.black').on('click', function() {
+                $privacyBox.find('[type="checkbox"]').prop('checked', true);
+                $('#privacyAgreeModal').vcModal('hide');
+            });
+        }
+
+        setEventListener();
+    }
+
     function commonInit(){
         setTableScrollbar();
+        checkPrivacy();
     }
 
     // CS.UI.elem.$win.ready( commonInit );

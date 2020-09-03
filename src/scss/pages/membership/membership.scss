@@ -1,3 +1,198 @@
 @charset "UTF-8";
 
 @import "../../app";
+
+.membership {
+    padding:51px 0 93px;
+    background:#f4f4f4;
+    .cont-wrap {
+        max-width:1066px;
+        margin:0 auto;
+
+        // layout
+        .section {
+            margin-top:40px;
+            &:first-child {
+                margin-top:0;
+            }
+            .sec-tit {
+                margin-bottom:19px;
+                color:#111;
+                font-size:16px;
+                line-height:24px;
+                font-weight:700;
+            }
+            .cont-box {
+                padding:56px;
+                border-radius:4px;
+                background:#fff;
+            }
+            .tit-desc {
+                color:#111;
+                font-size:16px;
+                line-height:24px;
+                em {
+                    color:#EC455A;
+                }
+            }
+        }
+
+        //partials
+        .benefit-list {
+            font-size:0;
+            text-align:center;
+            li {
+                display:inline-block;
+                position:relative;
+                min-width:220px;
+                margin-left:80px;
+                padding:108px 0 32px;
+                vertical-align:top;
+                &:first-child {
+                    margin-left:0;
+                }
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:16px;
+                    left:50%;
+                    width:80px;
+                    height:80px;
+                    margin-left:-40px;
+                }
+                @each $num in bn01, bn02, bn03 {
+                    &.#{$num}::before {
+                        background:url('/lg5-common/images/membership/icon-#{$num}.jpg') center no-repeat;
+                        background-size:100%;
+                    }
+                }
+                dl {
+                    color:#111;
+                    font-size:16px;
+                    line-height:24px;
+                    text-align:center;
+                    dt {
+                        margin-bottom:2px;
+                        font-weight:700;
+                    }
+                }
+            }
+        }
+        .bullet-list {
+            margin-top:40px;
+            border-top:1px solid #ddd;
+            padding-top:32px;
+            color:#515151;
+            font-size:14px;
+            line-height:20px;
+            dt {
+                margin-bottom:8px;
+                font-weight:700;
+            }
+            dd {
+                position:relative;
+                margin-top:4px;
+                padding-left:10px;
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:9px;
+                    left:0;
+                    width:2px;
+                    height:2px;
+                    border-radius:50%;
+                    background:#777;
+                }
+            }
+        }
+        .membership-shops {
+            margin:0 -7px;
+            font-size:0;
+            li {
+                display:inline-block;
+                width:25%;
+                dl {
+                    height:144px;
+                    margin:0 7px;
+                    padding:32px 0;
+                    border-radius:4px;
+                    background:#f4f4f4;
+                    text-align:center;
+                    dt {
+                        max-width:164px;
+                        height:48px;
+                        margin:0 auto;
+                        font-size:0;
+                    }
+                    dd {
+                        margin-top:8px;
+                        font-size:0;
+                        .flag {
+                            display:inline-block;
+                            padding:3px 7px;
+                            border:1px solid #aaa;
+                            border-radius:4px;
+                            background:transparent;
+                            color:#616161;
+                            font-size:12px;
+                            line-height:16px;
+                        }
+                    }
+                }
+                @for $i from 1 through 16 {
+                    &.ci#{$i} dl dt {
+                        background:url('/lg5-common/images/membership/img-ci#{$i}.jpg') center no-repeat;
+                        background-size:100%;
+                    }
+                }
+            }
+        }
+        .svc-prod-list {
+            margin:8px -12px 0;
+            font-size:0;
+            li {
+                display:inline-block;
+                width:calc(100% / 3);
+                margin-top:24px;
+                vertical-align:top;
+                dl {
+                    height:400px;
+                    margin:0 12px;
+                    padding-top:16px;
+                    border-radius:4px;
+                    background:#f4f4f4;
+                    dt {
+                        margin-bottom:4px;
+                        padding:260px 40px 0;
+                        color:#111;
+                        font-size:16px;
+                        line-height:24px;
+                        font-weight:700;
+                    }
+                    dd {
+                        margin-top:1px;
+                        padding:0 40px;
+                        color:#111;
+                        font-size:14px;
+                        line-height:20px;
+                        &.ex {
+                            color:#616161;
+                        }
+                    }
+                }
+                @for $i from 1 through 5 {
+                    &.prod0#{$i} dl dt {
+                        background:url('/lg5-common/images/membership/img-prod0#{$i}.jpg') center 0 no-repeat;
+                        background-size:100%;
+                    }
+                }
+            }
+        }
+        .btn-wrap {
+            margin-top:32px;
+            &.right {
+                text-align:right;
+            }
+        }
+    }
+}

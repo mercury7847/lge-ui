@@ -1,0 +1,15 @@
+<!-- page header -->
+<div class="page-header">
+    <h2 class="title">@@pageTitle</h2>
+    <div class="page-navi tabs-wrap">
+        <ul class="tabs">
+            @@for (var i=0; i < context.pageArr.length; i++) {
+                @@if ( context.pageArr === context.pageTitle ) {
+                    <li class="on"><a href="#n">`+pageArr[i]+`<em class="blind">선택됨</em></a></li>
+                }
+                <li><a href="#n">`+pageArr[i]+`</a></li>
+            }
+        </ul>
+    </div>
+</div>
+<!-- // page header -->

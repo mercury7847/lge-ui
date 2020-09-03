@@ -159,7 +159,12 @@ var lgkorUI = {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+var parentDocument = $(parent.document);
+console.log(parentDocument);
+var myDocument = $(document);
+console.log(myDocument);
+$(document).on("load", function(){
+    console.log("Document onLoad!!!");
     lgkorUI.init();
 });
 
