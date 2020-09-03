@@ -130,7 +130,7 @@ if (!window.JSON) {
     };
 }
 ;(function () {
-    if (typeof require !== 'undefined') {
+    if (typeof vcuirequire !== 'undefined') {
         return;
     }
 
@@ -143,7 +143,7 @@ if (!window.JSON) {
     //problems with requirejs.exec()/transpiler plugins that may not be strict.
     /*jslint regexp: true, nomen: true, sloppy: true */
     /*global window, navigator, document, importScripts, setTimeout, opera */
-
+console.log("vcui load!!!")
     var requirejs, require, define;
     (function (global, setTimeout) {
         var req, s, head, baseElement, dataMain, src,

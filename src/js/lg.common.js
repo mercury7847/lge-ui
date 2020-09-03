@@ -1,4 +1,4 @@
-
+/*
 vcui.require.config({
     paths: {
         'jquery.transit': 'libs/jquery.transit'
@@ -8,10 +8,12 @@ vcui.require.config({
         node.charset = 'euc-kr';
     }
 });
+*/
 
 
 $.fn.buildCommonUI = function () {
-    vcui.require(['ui/accordion', 'ui/calendar', 'ui/tab','ui/selectbox', 'ui/carousel', 'ui/lazyLoader', "ui/videoBox", "ui/youtubeBox"], function () {        
+    vcui.require(['ui/accordion', 'ui/calendar', 'ui/tab','ui/selectbox', 'ui/carousel', 'ui/lazyLoader', "ui/videoBox", "ui/youtubeBox"], function () {
+        console.log(this);
         this.find('.ui_calender').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
         this.find('.ui_selectbox').vcSelectbox();
@@ -24,7 +26,7 @@ $.fn.buildCommonUI = function () {
     return this;
 };
 
-$.holdReady(true);
+//$.holdReady(true);
 
 var lgkorUI = {
     template: $('<div class="template"></div>'),
@@ -102,32 +104,18 @@ var lgkorUI = {
 
             if($('body.iw-fullscreen-edit').length){
                 console.log("Edit Mode!!");
-                console.log($('body.iw-fullscreen-edit'));
-                console.log($('.KRC0013'));
-                $('body.iw-fullscreen-edit').buildCommonUI();
-
-                var iwBody = document.getElementsByClassName('iw-fullscreen-edit');
-                console.log(iwBody);
-                iwBody.addEventListener('DOMContentLoaded', function () {
-                    console.log("iwBody DOMContentLoaded!!!");
-                    lgkorUI.init();
-                });
-                $('body.iw-fullscreen-edit').on('load', function(){
-                    console.log("$('body.iw-fullscreen-edit').onLoad!!!");
-                    console.log($('body.iw-fullscreen-edit'))
+                setTimeout(function(){
+                    console.log("setTimeout!!!")
+                    console.log($('body.iw-fullscreen-edit'));
                     console.log($('.KRC0013'));
-                });
-
-                document.addEventListener('DOMContentLoaded', function () {
-                    console.log("DOMContentLoaded2!!!");
-                    lgkorUI.init();
-                });
+                    $('body.iw-fullscreen-edit').buildCommonUI();
+                }, 1500);
             }else {
-                console.log("None Edit Mode!!");
+                console.log("None Edit Mode!!!!");
                 $('body').buildCommonUI();
             }
 
-            $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
+            //$.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
 
             // 모달이 열렸을 때 페이지 스크롤을 막기 위함 ////////////////////////////
             $doc.on('modalfirstopen modallastclose', function (e) {
