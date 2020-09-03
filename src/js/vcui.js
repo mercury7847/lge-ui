@@ -6,7 +6,6 @@
  * date : 2020.07.23
  */
 
- if(!vcuirequire != undefined) return false;
 
 var vinylcMessageStyle="font-size:18px; font-weight:200; letter-spacing:0.2em; line-height:1.4em; font-family:helvetica,arial; color:rgba(0,0,25,0.5);";
 console.log("%cVINYLC UI Library 1.1",vinylcMessageStyle);
@@ -132,7 +131,7 @@ if (!window.JSON) {
     };
 }
 ;(function () {
-    if (typeof require !== 'undefined') {
+    if (typeof vcuirequire !== 'undefined') {
         return;
     }
 
@@ -145,7 +144,7 @@ if (!window.JSON) {
     //problems with requirejs.exec()/transpiler plugins that may not be strict.
     /*jslint regexp: true, nomen: true, sloppy: true */
     /*global window, navigator, document, importScripts, setTimeout, opera */
-
+console.log("vcui load!!!")
     var requirejs, require, define;
     (function (global, setTimeout) {
         var req, s, head, baseElement, dataMain, src,
