@@ -171,6 +171,7 @@ var parentDocument = $(parent.document);
 console.log(parentDocument);
 var myDocument = $(document);
 console.log(myDocument);
+console.log(document)
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOMContentLoaded!!!");
     lgkorUI.init();
