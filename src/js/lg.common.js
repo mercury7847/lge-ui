@@ -102,18 +102,18 @@ var lgkorUI = {
 
             if($('body.iw-fullscreen-edit').length){
                 console.log("Edit Mode!!");
+                console.log($('body.iw-fullscreen-edit'));
+                console.log($('.KRC0013'));
                 $('body.iw-fullscreen-edit').buildCommonUI();
                 $('body.iw-fullscreen-edit').on('load', function(){
                     console.log("$('body.iw-fullscreen-edit').onLoad!!!");
                     console.log($('body.iw-fullscreen-edit'))
                     console.log($('.KRC0013'));
-                })
+                });
             }else {
                 console.log("None Edit Mode!!");
                 $('body').buildCommonUI();
             }
-            
-            console.log($('.KRC0013'));
 
             $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
 
