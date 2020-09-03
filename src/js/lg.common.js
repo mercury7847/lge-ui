@@ -111,7 +111,7 @@ if(lgkorUI == undefined){
                         console.log($('body.iw-fullscreen-edit'));
                         console.log($('.KRC0013'));
                         $('body.iw-fullscreen-edit').buildCommonUI();
-                    }, 1500);
+                    }, 5000);
                 }else {
                     console.log("None Edit Mode!!!!");
                     $('body').buildCommonUI();
