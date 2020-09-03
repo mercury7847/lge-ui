@@ -11,6 +11,7 @@ vcui.require.config({
 */
 
 if(lgkorUI == undefined){
+    console.log("lgkorUI start!!!");
     
     $.fn.buildCommonUI = function () {
         vcui.require(['ui/accordion', 'ui/calendar', 'ui/tab','ui/selectbox', 'ui/carousel', 'ui/lazyLoader', "ui/videoBox", "ui/youtubeBox"], function () {
@@ -27,7 +28,7 @@ if(lgkorUI == undefined){
         return this;
     };
     
-    //$.holdReady(true);
+    $.holdReady(true);
     
     var lgkorUI = {
         template: $('<div class="template"></div>'),
@@ -116,7 +117,7 @@ if(lgkorUI == undefined){
                     $('body').buildCommonUI();
                 }
     
-                //$.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
+                $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
     
                 // 모달이 열렸을 때 페이지 스크롤을 막기 위함 ////////////////////////////
                 $doc.on('modalfirstopen modallastclose', function (e) {
@@ -180,15 +181,8 @@ if(lgkorUI == undefined){
         }
     }
     
-    console.log(document);
-    $(document).ready(function(){
-        console.log("document ready!!!")
-    });
     document.addEventListener('DOMContentLoaded', function () {
         console.log("DOMContentLoaded!!!");
         lgkorUI.init();
     });
-    
-    
-    
 }
