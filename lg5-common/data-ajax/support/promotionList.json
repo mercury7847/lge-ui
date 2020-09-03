@@ -10,7 +10,7 @@
                 "promotionStartDate":"2020.08.01",
                 "promotionEndDate":"2020.08.25",
                 "imageAltText":"image alt text",
-                "thumbnailImageAddr":"/lg5-common/images/dummy/sample-16-9.gif"
+                "thumbnailImageAddr":"/lg5-common/images/dummy/@sample-16-9.gif"
             },
             {
                 "promotionId":"PM05777528",
@@ -20,7 +20,7 @@
                 "promotionStartDate":"2020.08.02",
                 "promotionEndDate":"2020.08.26",
                 "imageAltText":"image alt text",
-                "thumbnailImageAddr":"/lg5-common/images/dummy/sample-16-9.gif"
+                "thumbnailImageAddr":"/lg5-common/images/dummy/@sample-16-9.gif"
             },
             {
                 "promotionId":"PM05777529",
@@ -30,7 +30,7 @@
                 "promotionStartDate":"2020.08.03",
                 "promotionEndDate":"2020.08.27",
                 "imageAltText":"image alt text",
-                "thumbnailImageAddr":"/lg5-common/images/dummy/sample-16-9.gif"
+                "thumbnailImageAddr":"/lg5-common/images/dummy/@sample-16-9.gif"
             },
             {
                 "promotionId":"PM05777530",
@@ -40,7 +40,7 @@
                 "promotionStartDate":"2020.08.04",
                 "promotionEndDate":"2020.08.28",
                 "imageAltText":"image alt text",
-                "thumbnailImageAddr":"/lg5-common/images/dummy/sample-16-9.gif"
+                "thumbnailImageAddr":"/lg5-common/images/dummy/@sample-16-9.gif"
             },
             {
                 "promotionId":"PM05777531",
@@ -50,7 +50,7 @@
                 "promotionStartDate":"2020.08.05",
                 "promotionEndDate":"2020.08.29",
                 "imageAltText":"image alt text",
-                "thumbnailImageAddr":"/lg5-common/images/dummy/sample-16-9.gif"
+                "thumbnailImageAddr":"/lg5-common/images/dummy/@sample-16-9.gif"
             }
         ],
         "pageInfo":{
@@ -60,7 +60,7 @@
             "loopEnd":5,
             "totalCount":59,
             "rightPage":true,
-            "leftPage":true
+            "leftPage":false
         },
         "promoCategoryList":[
             {
