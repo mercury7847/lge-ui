@@ -1,0 +1,30 @@
+.bullet-list {
+    margin-top:40px;
+    border-top:1px solid #ddd;
+    padding-top:32px;
+    color:#515151;
+    font-size:14px;
+    line-height:20px;
+    .b-tit {
+        margin-bottom:8px;
+        font-weight:700;
+    }
+    .b-txt {
+        position:relative;
+        margin-top:4px;
+        padding-left:10px;
+        &::before {
+            content:' ';
+            position:absolute;
+            top:9px;
+            left:0;
+            width:2px;
+            height:2px;
+            border-radius:50%;
+            background:#777;
+        }
+        &:first-child {
+            margin-top:0;
+        }
+    }
+}

@@ -50,14 +50,16 @@
 
         //partials
         .benefit-list {
-            margin:0 -40px;
+            margin:56px -40px 0;
             font-size:0;
             text-align:center;
+            &:first-child {
+                margin-top:0;
+            }
             li {
                 display:inline-block;
                 position:relative;
                 width:33%;
-                max-width:(220px + 80px);
                 padding:108px 40px 32px;
                 vertical-align:top;
                 &::before {
@@ -84,6 +86,9 @@
                         margin-bottom:2px;
                         font-weight:700;
                     }
+                    dd {
+                        word-break:keep-all;
+                    }
                 }
             }
             @include mobile {
@@ -108,33 +113,6 @@
                             display:none;
                         }
                     }
-                }
-            }
-        }
-        .bullet-list {
-            margin-top:40px;
-            border-top:1px solid #ddd;
-            padding-top:32px;
-            color:#515151;
-            font-size:14px;
-            line-height:20px;
-            dt {
-                margin-bottom:8px;
-                font-weight:700;
-            }
-            dd {
-                position:relative;
-                margin-top:4px;
-                padding-left:10px;
-                &::before {
-                    content:' ';
-                    position:absolute;
-                    top:9px;
-                    left:0;
-                    width:2px;
-                    height:2px;
-                    border-radius:50%;
-                    background:#777;
                 }
             }
         }

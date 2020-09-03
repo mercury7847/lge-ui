@@ -11,8 +11,8 @@
             @@include('./common/page-header.html', {
                 "pageTitle": "멤버십 혜택",
                 "pageArr" : [
-                    { "page" : "멤버십 혜택", "on" : "on" },
-                    { "page" : "VIP 멤버십 혜택", "on": "" },
+                    { "page" : "멤버십 혜택", "on" : "" },
+                    { "page" : "VIP 멤버십 혜택", "on": "on" },
                     { "page" : "가입 안내", "on": "" }
                 ]
             })
@@ -20,35 +20,36 @@
             <div class="contents membership">
                 <div class="cont-wrap">
                     <div class="section">
-                        <h3 class="sec-tit">LG전자 멤버십 혜택</h3>
+                        <h3 class="sec-tit">멤버십 우수고객이란?</h3>
                         <div class="cont-box">
+                            <p class="tit-desc">LG전자 멤버십 제도가 운영되는 매장에서 1년간 구매 금액 기준 5백만원 이상 구매하신 고객은 우수 고객이 되며 우수고객 달성 시점으로부터 1년 전에 구매한 5가지 제품(TV, 냉장고, 에어컨, 세탁기, 김치냉장고)에 한해 <em>3년 동안 무상 A/S서비스</em>를 받으실 수 있습니다.</p>
                             <ul class="benefit-list">
                                 <li class="bn01">
                                     <dl>
-                                        <dt>베스트샵 매장</dt>
-                                        <dd>행사별 포인트 <br>적립 및 사용</dd>
+                                        <dt>우수고객 달성 조건</dt>
+                                        <dd>LG전자 멤버십 제도 <br>운영 매장에서 1년간 구매금액이<br> 5백만원 이상인 고객</dd>
                                     </dl>
                                 </li>
                                 <li class="bn02">
                                     <dl>
-                                        <dt>할인혜택</dt>
-                                        <dd>제휴카드 <br>할인</dd>
+                                        <dt>우수고객 혜택</dt>
+                                        <dd>우수고객 달성 시점부터 과거 1년 사이에 구매한 'TV, 냉장고, 에어컨, 세탁기, 김치냉장고'에 한해 3년 동안 무상 A/S서비스 혜택 제공</dd>
                                     </dl>
                                 </li>
                                 <li class="bn03">
                                     <dl>
-                                        <dt>멤버십 세일</dt>
-                                        <dd>세일 정보 <br>제공</dd>
+                                        <dt>우수고객 기간 자동 연장</dt>
+                                        <dd>멤버십 우수고객 기간 종료 후 추가 구매로 해당 시점부터 과거 1년 사이 구매금액이 5백만원 이상일 때 자동 연장</dd>
                                     </dl>
                                 </li>
                             </ul>
 
-                            <dl class="bullet-list">
-                                <dt>멤버십 포인트 제도 안내</dt>
-                                <dd>전국 BEST SHOP 매장에서 제품 구매시, 현금처럼 사용하실 수 있습니다. (1포인트=현금 1원)</dd>
-                                <dd>전국 BEST SHOP 매장에서 적립/사용이 가능합니다.</dd>
-                                <dd>포인트는 LG전자 서비스 센터에서 제품 수리시/ 렌탈 구매 시 현금처럼 사용하실 수 있습니다.</dd>
-                            </dl>
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTit" : "유의사항",
+                                "bulletTxt" : [
+                                    "구매제품의 수리사유가 발생 시에 한해 무상 A/S 서비스를 받으실 수 있으며 기타 교환/환불 발생 시에는 소비자 분쟁해결기준에 따라 교환/환불 처리됩니다."
+                                ]
+                            })
                         </div>
                     </div>
 
@@ -191,12 +192,15 @@
                                     </dl>
                                 </li>
                             </ul>
-                            <dl class="bullet-list">
-                                <dt>무상 서비스 적용기준</dt>
-                                <dd>무상 서비스 기간 : 설치 일자 기준 3년 적용</dd>
-                                <dd>VIP 고객 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리</dd>
-                                <dd>고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 몰 구매제품 제외</dd>
-                            </dl>
+
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTit" : "무상 서비스 적용기준",
+                                "bulletTxt" : [
+                                    "무상 서비스 기간 : 설치 일자 기준 3년 적용",
+                                    "VIP 고객 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리",
+                                    "고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 몰 구매제품 제외"
+                                ]
+                            })
                         </div>
                     </div>
 
