@@ -55,6 +55,9 @@
             text-align:center;
             &:first-child {
                 margin-top:0;
+                @include mobile {
+                    margin-top:-24px;
+                }
             }
             li {
                 display:inline-block;
@@ -92,19 +95,18 @@
                 }
             }
             @include mobile {
-                margin:-24px 0 0 12px;
+                margin-left:12px;
+                margin-right:0;
                 li {
                     display:block;
                     width:auto;
-                    max-width:300px;
                     margin:24px auto 0;
                     padding:10px 0 10px 72px;
                     &::before {
-                        top:50%;
+                        top:0;
                         left:0;
                         width:60px;
                         height:60px;
-                        margin-top:-30px;
                         margin-left:0;
                     }
                     dl {
@@ -153,7 +155,7 @@
                         }
                     }
                 }
-                @for $i from 1 through 12 {
+                @for $i from 1 through 13 {
                     &.ci#{$i} dl dt {
                         background:url('/lg5-common/images/membership/img-ci#{$i}.jpg') center no-repeat;
                         background-size:100%;
@@ -221,6 +223,7 @@
                         color:#111;
                         font-size:14px;
                         line-height:20px;
+                        word-break:keep-all;
                         &.ex {
                             color:#616161;
                         }
@@ -238,6 +241,63 @@
                     dl {
                         height:300px;
                         margin:0 6px;
+                    }
+                }
+            }
+        }
+        .vip-step {
+            margin:0 -56px;
+            padding:0 56px;
+            font-size:0;
+            overflow-x:auto;
+            white-space:nowrap;
+            @include mobile {
+                margin:0 -12px;
+                padding:0 12px;
+            }
+            li {
+                display:inline-block;
+                position:relative;
+                margin-left:24px;
+                padding-right:48px;
+                vertical-align:top;
+                &:first-child {
+                    margin-left:0;
+                }
+                &::after {
+                    content:' ';
+                    position:absolute;
+                    top:47px;
+                    right:0;
+                    width:24px;
+                    height:24px;
+                    background:url('/lg5-common/images/membership/icon-arrow.svg') center no-repeat;
+                    background-size:100%;
+                }
+                &:last-child {
+                    padding-right:0;
+                }
+                &:last-child::after {
+                    display:none;
+                }
+                dl {
+                    width:140px;
+                    dt {
+                        color:#111;
+                        font-size:16px;
+                        line-height:24px;
+                        em {
+                            display:block;
+                            color:#EC455A;
+                            font-size:14px;
+                            line-height:20px;
+                        }
+                    }
+                    dd {
+                        margin-top:12px;
+                        color:#515151;
+                        font-size:14px;
+                        line-height:20px;
                     }
                 }
             }
