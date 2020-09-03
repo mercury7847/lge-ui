@@ -102,26 +102,12 @@ var lgkorUI = {
 
             if($('body.iw-fullscreen-edit').length){
                 console.log("Edit Mode!!");
-                console.log($('body.iw-fullscreen-edit'));
-                console.log($('.KRC0013'));
-                $('body.iw-fullscreen-edit').buildCommonUI();
-
-                var iwBody = document.getElementsByClassName('iw-fullscreen-edit');
-                console.log(iwBody);
-                iwBody.addEventListener('DOMContentLoaded', function () {
-                    console.log("iwBody DOMContentLoaded!!!");
-                    lgkorUI.init();
-                });
-                $('.iw-fullscreen-edit').on('load', function(){
-                    console.log("$('body.iw-fullscreen-edit').onLoad!!!");
-                    console.log($('body.iw-fullscreen-edit'))
+                setTimeout(function(){
+                    console.log("setTimeout!!!")
+                    console.log($('body.iw-fullscreen-edit'));
                     console.log($('.KRC0013'));
-                });
-
-                document.addEventListener('DOMContentLoaded', function () {
-                    console.log("DOMContentLoaded2!!!");
-                    lgkorUI.init();
-                });
+                    $('body.iw-fullscreen-edit').buildCommonUI();
+                }, 1500);
             }else {
                 console.log("None Edit Mode!!!!");
                 $('body').buildCommonUI();
