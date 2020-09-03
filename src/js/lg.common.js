@@ -107,10 +107,8 @@ var lgkorUI = {
                 console.log("None Edit Mode!!");
                 $('body').buildCommonUI();
             }
-
-            $(document).ready(function(){
-                console.log("document ready 222 !!!")
-            });
+            
+            console.log($('.KRC0013'));
 
             $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
 
