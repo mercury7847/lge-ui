@@ -100,7 +100,7 @@ var lgkorUI = {
             $('header').vcHeader(); //헤더 모듈 적용...
             $('footer').vcFooter(); //푸터모듈 적용...
 
-            if($('body.iw-fullscreen-edit')){
+            if($('body.iw-fullscreen-edit').length){
                 console.log("Edit Mode!!");
                 $('body.iw-fullscreen-edit').buildCommonUI();
             }else {
