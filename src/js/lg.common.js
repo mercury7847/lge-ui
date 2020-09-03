@@ -110,7 +110,15 @@ if(lgkorUI === undefined){
                         console.log("setTimeout!!!")
                         console.log($('body.iw-fullscreen-edit'));
                         console.log($('.KRC0013'));
-                        $('body.iw-fullscreen-edit').buildCommonUI();
+                        //$('body.iw-fullscreen-edit').buildCommonUI();
+                        $('body.iw-fullscreen-edit').find('.ui_calender').vcCalendar();
+                        $('body.iw-fullscreen-edit').find('.ui_accordion').vcAccordion();        
+                        $('body.iw-fullscreen-edit').find('.ui_selectbox').vcSelectbox();
+                        $('body.iw-fullscreen-edit').find('.ui_tab').vcTab();
+                        $('body.iw-fullscreen-edit').find('.ui_carousel').vcCarousel();
+                        $('body.iw-fullscreen-edit').find('.animation-box').vcVideoBox();
+                        $('body.iw-fullscreen-edit').find('.youtube-box').vcYoutubeBox();
+                        $('body.iw-fullscreen-edit').vcLazyLoader();
                     }, 5000);
                 }else {
                     console.log("None Edit Mode!!!!");
