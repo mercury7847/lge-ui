@@ -20,7 +20,6 @@ $.fn.buildCommonUI = function () {
         this.find('.animation-box').vcVideoBox();
         this.find('.youtube-box').vcYoutubeBox();
         this.vcLazyLoader();
-
     }.bind(this));
     return this;
 };
@@ -100,7 +99,7 @@ var lgkorUI = {
 
             $('header').vcHeader(); //헤더 모듈 적용...
             $('footer').vcFooter(); //푸터모듈 적용...
-            
+            console.log($('body.iw-fullscreen-edit'))
             $('body').buildCommonUI();
             $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
             console.log("$.holdReady(false);")
@@ -172,6 +171,7 @@ console.log(parentDocument);
 var myDocument = $(document);
 console.log(myDocument);
 console.log(document)
+myDocument.find()
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOMContentLoaded!!!");
     lgkorUI.init();
