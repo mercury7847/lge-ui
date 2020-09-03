@@ -24,30 +24,31 @@ $.fn.buildCommonUI = function () {
     return this;
 };
 
-vcui.define('test', ['jquery', 'vcui'], function ($, core) {
-    "use strict";
-
-    var Test = core.ui('Test', {
-        bindjQuery: true,
-        defaults: {
-        },
-
-        initialize: function initialize(el, options) {
-            var self = this;
-            
-            if (self.supr(el, options) === false) {
-                return;
-            };
-            
-            console.log("test ok!!")
-        }
-    });
-
-    return Test;
-});
 
 if(lgkorUI === undefined){
     console.log("lgkorUI start!!!");
+    
+    vcui.define('test', ['jquery', 'vcui'], function ($, core) {
+        "use strict";
+    
+        var Test = core.ui('Test', {
+            bindjQuery: true,
+            defaults: {
+            },
+    
+            initialize: function initialize(el, options) {
+                var self = this;
+                
+                if (self.supr(el, options) === false) {
+                    return;
+                };
+                
+                console.log("test ok!!")
+            }
+        });
+    
+        return Test;
+    });
     
     //$.holdReady(true);
     
