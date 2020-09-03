@@ -1835,7 +1835,6 @@ console.log("vcui load!!!")
                  * @private
                  */
                 execCb: function (name, callback, args, exports) {
-                    console.log(callback)
                     return callback.apply(exports, args);
                 },
 
