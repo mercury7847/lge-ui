@@ -123,7 +123,7 @@ var lgkorUI = {
                     lgkorUI.init();
                 });
             }else {
-                console.log("None Edit Mode!!");
+                console.log("None Edit Mode!!!!");
                 $('body').buildCommonUI();
             }
 
