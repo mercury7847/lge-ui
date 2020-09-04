@@ -39,4 +39,10 @@
             margin-top:56px;
         }
     }
+    .guide-text {
+        margin-top: 32px;
+        @include mobile {
+            margin-top: 28px;
+        }
+    }
 }
