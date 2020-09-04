@@ -2202,7 +2202,7 @@ console.log("vcui load!!!")
          */
         define = function (name, deps, callback) {
             var node, context;
-
+            console.log(name)
             //Allow for anonymous modules
             if (typeof name !== 'string') {
                 //Adjust args appropriately
