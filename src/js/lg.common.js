@@ -128,11 +128,11 @@ if(lgkorUI === undefined){
                 $('footer').vcFooter(); //푸터모듈 적용...
     
                 if($('body.iw-fullscreen-edit').length){
-                    console.log("Edit Mode!!");
+                    console.log("Edit Mode one more!!");
                     $('body.iw-fullscreen-edit').buildCommonUI();
                     $('body.iw-fullscreen-edit').vcTest();
                 }else {
-                    console.log("None Edit Mode!!!!");
+                    console.log("None Edit Mode one more!!!!");
                     $('body').buildCommonUI();
                     $('body').vcTest();
                 }
