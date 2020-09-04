@@ -16,6 +16,7 @@
         }
     }
     .slide-content {
+        overflow:hidden;
         .slide-track {
             @include clearfix;
             overflow:hidden;

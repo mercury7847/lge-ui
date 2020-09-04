@@ -1,4 +1,3 @@
-<!-- visual slider -->
 <div class="slide-wrap ui_carousel_slider">
     <div class="indi-wrap">
         <ul class="indi-conts ui_carousel_dots">
@@ -14,11 +13,10 @@
                     <span class="bg" style="background-image:url('`+slideArr[i].pcBg+`');" data-pc-src="`+slideArr[i].pcBg+`" data-m-src="`+slideArr[i].mobBg+`" aria-hidden="hidden"></span>
                     <div class="slide-info-area">
                         <div class="boxs">
-                            <p class="desc" id="tit01"> 
-                                LG전자 멤버십 앱
-                                <strong>신규 설치 고객<br>경품 추천 이벤트</strong>
+                            <p class="desc" id="`+slideArr[i].titNum+`"> 
+                                `+slideArr[i].tit+`
                             </p>
-                            <a href="#n" class="btn" aria-labelledby="tit01">자세히 보기</a>
+                            <a href="#n" class="btn" aria-labelledby="`+slideArr[i].titNum+`">자세히 보기</a>
                         </div>
                     </div>
                 </div>
@@ -32,4 +30,3 @@
         <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
     </div>
 </div>
-<!-- // visual slider -->
