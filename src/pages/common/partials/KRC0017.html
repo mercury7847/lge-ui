@@ -47,6 +47,7 @@
                             <!-- 1-1. video play button -->
                             <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="centered_image_block-video_play" data-link-name="{video id}">
                                 <img class="lazyload" data-src="/lg5-common/images/KRC0017/@thumb01.jpg" alt="">
+                                <p class="hidden pc">graphic description : </p>
                             </a>
                             <!-- // 1-1. video play button -->
                         </div>
@@ -55,7 +56,10 @@
                         @@if (context.imgType === "image") {
                         <!-- 1. image -->
 						<div class="visual-area">
-                            <a href="#" data-link-area="centered_image_block-image" data-link-name="{Alt Text}"><img class="lazyload" data-src="/lg5-common/images/KRC0017/@thumb01.jpg" alt=""></a>
+                            <a href="#" data-link-area="centered_image_block-image" data-link-name="{Alt Text}">
+                                <img class="lazyload" data-src="/lg5-common/images/KRC0017/@thumb01.jpg" alt="">
+                                <p class="hidden pc">graphic description : </p>
+                            </a>
                         </div>
                         <!-- // 1. image -->
                         }
