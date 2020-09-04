@@ -139,7 +139,7 @@ console.log(self)
                         //$('body.iw-fullscreen-edit').buildCommonUI();
                         //$('body.iw-fullscreen-edit').vcTest();
                         self.firstEditModeUIsetting();
-                    }.bind(this), 5000);
+                    }.bind(self), 5000);
                     $('body.iw-fullscreen-edit').find('.ui_calender').vcCalendar();
                     $('body.iw-fullscreen-edit').find('.ui_accordion').vcAccordion();        
                     $('body.iw-fullscreen-edit').find('.ui_selectbox').vcSelectbox();
