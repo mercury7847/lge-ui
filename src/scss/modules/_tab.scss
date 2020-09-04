@@ -9,9 +9,12 @@
     display:block;
     .tabs {
         display:inline-block;
+        max-width:100%;
         position:relative;
         font-size:0;
         vertical-align:top;
+        white-space:nowrap;
+        overflow-x:auto;
         > li {
             display:inline-block;
             margin-left:24px;

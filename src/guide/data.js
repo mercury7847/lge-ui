@@ -14,7 +14,8 @@ var res = {
 			"탭" : ["./wsg/guide_tab.html","","검수완료"],
 			"스크롤뷰" : ["./wsg/guide_scrollview.html","","검수완료"],
 			"Pagination" : ["./wsg/guide_pagination.html","","검수완료"],
-			"블릿리스트" : ["./wsg/guide_bulletlist.html","","검수완료"]
+			"블릿리스트" : ["./wsg/guide_bulletlist.html","","검수완료"],
+			"carousel" : ["./wsg/guide_carousel.html","","검수완료"]
 		}
 	},
 	"Front" : {

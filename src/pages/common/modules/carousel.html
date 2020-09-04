@@ -1,23 +1,22 @@
-<!-- visual slider -->
 <div class="slide-wrap ui_carousel_slider">
     <div class="indi-wrap">
         <ul class="indi-conts ui_carousel_dots">
-            <li><button type="button" class="btn_indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
         </ul>
     </div>
     <div class="slide-content ui_carousel_list">
         <div class="slide-track ui_carousel_track">
-            @@if (context.fullbgJs) {
+            @@if (context.mainSlideType) {
                 @@for (var i=0; i < context.slideArr.length; i++) {
                 <!-- slide -->
-                <div class="slide-conts ui_carousel_slide ui_bg_switch" style="background:url('`+slideArr[i].pcBg+`') center no-repeat;" data-pc-src="`+slideArr[i].pcBg+`" data-m-src="`+slideArr[i].mobBg+`">
+                <div class="slide-conts ui_carousel_slide ui_bg_switch">
+                    <span class="bg" style="background-image:url('`+slideArr[i].pcBg+`');" data-pc-src="`+slideArr[i].pcBg+`" data-m-src="`+slideArr[i].mobBg+`" aria-hidden="hidden"></span>
                     <div class="slide-info-area">
                         <div class="boxs">
-                            <p class="desc" id="tit01"> 
-                                LG전자 멤버십 앱
-                                <strong>신규 설치 고객<br>경품 추천 이벤트</strong>
+                            <p class="desc" id="`+slideArr[i].titNum+`"> 
+                                `+slideArr[i].tit+`
                             </p>
-                            <a href="#n" class="btn" aria-labelledby="tit01">자세히 보기</a>
+                            <a href="#n" class="btn" aria-labelledby="`+slideArr[i].titNum+`">자세히 보기</a>
                         </div>
                     </div>
                 </div>
@@ -27,8 +26,7 @@
         </div>
     </div>
     <div class="slide-controls">
-        <button type="button" class="prev ui_carousel_prev"><span class="blind">이전</span></button>
-        <button type="button" class="next ui_carousel_next"><span class="blind">다음</span></button>
+        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
     </div>
 </div>
-<!-- // visual slider -->
