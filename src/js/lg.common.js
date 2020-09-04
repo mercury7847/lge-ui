@@ -21,7 +21,8 @@ $.fn.buildCommonUI = function () {
                         "ui/videoBox",
                         "ui/youtubeBox"
     ], function () {    
-        console.log("buildCommonUI!!!!")
+        console.log("buildCommonUI!!!!");
+        console.log(this)
 
         this.find('.ui_calender').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
