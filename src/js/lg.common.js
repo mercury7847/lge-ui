@@ -10,8 +10,25 @@ vcui.require.config({
 });
 */
 $.fn.buildCommonUI = function () {
-    vcui.require(['ui/accordion', 'ui/calendar', 'ui/tab','ui/selectbox', 'ui/carousel', 'ui/lazyLoader', "ui/videoBox", "ui/youtubeBox"], function () {
+    vcui.require([
+                        'common/header', 
+                        'common/footer',           
+                        'ui/selectbox',
+                        'ui/calendar',
+                        'ui/accordion',
+                        'ui/carousel',
+                        'ui/modal',
+                        'ui/tab',       
+                        'ui/lazyLoader',
+                        "ui/videoBox",
+                        "ui/youtubeBox",
+                        "test"
+    ], function () {
         console.log(this);
+    
+        $('header').vcHeader(); //헤더 모듈 적용...
+        $('footer').vcFooter(); //푸터모듈 적용...
+
         this.find('.ui_calender').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
         this.find('.ui_selectbox').vcSelectbox();
@@ -20,6 +37,7 @@ $.fn.buildCommonUI = function () {
         this.find('.animation-box').vcVideoBox();
         this.find('.youtube-box').vcYoutubeBox();
         this.vcLazyLoader();
+        this.vcTest();
     }.bind(this));
     return this;
 };
@@ -27,7 +45,7 @@ $.fn.buildCommonUI = function () {
 
 if(lgkorUI === undefined){
     console.log("lgkorUI start!!!");
-    
+
     vcui.define('test', ['jquery', 'vcui'], function ($, core) {
         "use strict";
     
@@ -124,32 +142,7 @@ if(lgkorUI === undefined){
                     }
                 });
     
-                $('header').vcHeader(); //헤더 모듈 적용...
-                $('footer').vcFooter(); //푸터모듈 적용...
-    
-                if($('body.iw-fullscreen-edit').length){
-                    console.log("Edit Mode!!");
-                    setTimeout(function(){
-                        console.log("setTimeout!!!")
-                        console.log($('body.iw-fullscreen-edit'));
-                        console.log($('.KRC0013'));
-                        //$('body.iw-fullscreen-edit').buildCommonUI();
-                        $('body.iw-fullscreen-edit').vcTest();
-                    }, 5000);
-                    $('body.iw-fullscreen-edit').find('.ui_calender').vcCalendar();
-                    $('body.iw-fullscreen-edit').find('.ui_accordion').vcAccordion();        
-                    $('body.iw-fullscreen-edit').find('.ui_selectbox').vcSelectbox();
-                    $('body.iw-fullscreen-edit').find('.ui_tab').vcTab();
-                    $('body.iw-fullscreen-edit').find('.ui_carousel').vcCarousel();
-                    $('body.iw-fullscreen-edit').find('.animation-box').vcVideoBox();
-                    $('body.iw-fullscreen-edit').find('.youtube-box').vcYoutubeBox();
-                    $('body.iw-fullscreen-edit').vcLazyLoader();
-                    $('body.iw-fullscreen-edit').vcTest();
-                }else {
-                    console.log("None Edit Mode!!!!");
-                    $('body').buildCommonUI();
-                    $('body').vcTest();
-                }
+                $('body').buildCommonUI();
     
                 //$.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
     
@@ -217,6 +210,15 @@ if(lgkorUI === undefined){
     
     document.addEventListener('DOMContentLoaded', function () {
         console.log("DOMContentLoaded!!!");
-        lgkorUI.init();
+        if($('body.iw-fullscreen-edit').length){
+            console.log("Edit Mode!!");
+            setTimeout(function(){
+                console.log("setTimeout!!!")
+                lgkorUI.init();
+            }.bind(self), 900);
+        }else {
+            console.log("None Edit Mode!!!!");
+            lgkorUI.init();
+        }
     });
 }

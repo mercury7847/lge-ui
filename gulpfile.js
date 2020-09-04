@@ -87,7 +87,16 @@ gulp.task("styles", () => gulp
 //자주 쓰는 vcui모듈 vcui.common-ui.js로 병합...
 const concatNames = [
     src + "/js/common/footer.js",
-    src + "/js/common/header.js"
+    src + "/js/common/header.js",
+    src + "/js/ui/accordion.js",
+    src + "/js/ui/carousel.js",
+    src + "/js/ui/dropdown.js",
+    src + "/js/ui/modal.js",
+    src + "/js/ui/selectbox.js",
+    src + "/js/ui/smoothScroll.js",
+    src + "/js/ui/tab.js",
+    src + "/js/ui/selectbox.js",
+    src + "/js/ui/lazyLoader.js"
 ];
 gulp.task("concat-js", () => gulp
     .src(concatNames)
@@ -109,10 +118,10 @@ gulp.task("jsCompile", () => gulp
 );
 gulp.task("jsCompile:common", () => gulp
     .src(src + "/js/common/*")
-    .pipe(sourcemaps.init())
-    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
-    .pipe(sourcemaps.write('./maps'))
+    //.pipe(sourcemaps.init())
+    //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    //.pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    //.pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/common/"))
 );
 gulp.task("jsCompile:components", () => gulp
@@ -197,7 +206,7 @@ gulp.task("watch", ["browser-sync"], () => {
 });
 
 // Compile sass, concat and minify css + js
-gulp.task("build", ["clean", "static", "concat-js"], () =>{
+gulp.task("build", ["clean", "static"], () =>{
     gulp.start(["styles", "scripts", "guide", "html"]);
 });
 
