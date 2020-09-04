@@ -10,8 +10,19 @@ vcui.require.config({
 });
 */
 $.fn.buildCommonUI = function () {
-    vcui.require(['ui/accordion', 'ui/calendar', 'ui/tab','ui/selectbox', 'ui/carousel', 'ui/lazyLoader', "ui/videoBox", "ui/youtubeBox"], function () {
-        console.log(this);
+    vcui.require([        
+                        'ui/selectbox',
+                        'ui/calendar',
+                        'ui/accordion',
+                        'ui/carousel',
+                        'ui/modal',
+                        'ui/tab',       
+                        'ui/lazyLoader',
+                        "ui/videoBox",
+                        "ui/youtubeBox"
+    ], function () {    
+        console.log("buildCommonUI!!!!")
+
         this.find('.ui_calender').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
         this.find('.ui_selectbox').vcSelectbox();
@@ -27,28 +38,6 @@ $.fn.buildCommonUI = function () {
 
 if(lgkorUI === undefined){
     console.log("lgkorUI start!!!");
-
-    vcui.define('test', ['jquery', 'vcui'], function ($, core) {
-        "use strict";
-    
-        var Test = core.ui('Test', {
-            bindjQuery: true,
-            defaults: {
-            },
-    
-            initialize: function initialize(el, options) {
-                var self = this;
-                
-                if (self.supr(el, options) === false) {
-                    return;
-                };
-                
-                console.log("test ok!!")
-            }
-        });
-    
-        return Test;
-    });
     
     //$.holdReady(true);
     
@@ -61,9 +50,6 @@ if(lgkorUI === undefined){
     
         // 주요 컴포넌트를 미리 로드
         _preloadComponents: function () {
-            var self = lgkorUI;
-console.log(this);
-console.log(self)
             vcui.require([  
                 'common/header', 
                 'common/footer',           
@@ -75,8 +61,7 @@ console.log(self)
                 'ui/tab',       
                 'ui/lazyLoader',
                 "ui/videoBox",
-                "ui/youtubeBox",
-                "test"
+                "ui/youtubeBox"
             ], function () {
                 var $doc = $(document);          
                 
@@ -129,31 +114,8 @@ console.log(self)
     
                 $('header').vcHeader(); //헤더 모듈 적용...
                 $('footer').vcFooter(); //푸터모듈 적용...
-    
-                if($('body.iw-fullscreen-edit').length){
-                    console.log("Edit Mode!!");
-                    setTimeout(function(){
-                        console.log("setTimeout!!!")
-                        console.log($('body.iw-fullscreen-edit'));
-                        console.log($('.KRC0013'));
-                        //$('body.iw-fullscreen-edit').buildCommonUI();
-                        //$('body.iw-fullscreen-edit').vcTest();
-                        self.firstEditModeUIsetting();
-                    }.bind(self), 5000);
-                    $('body.iw-fullscreen-edit').find('.ui_calender').vcCalendar();
-                    $('body.iw-fullscreen-edit').find('.ui_accordion').vcAccordion();        
-                    $('body.iw-fullscreen-edit').find('.ui_selectbox').vcSelectbox();
-                    $('body.iw-fullscreen-edit').find('.ui_tab').vcTab();
-                    $('body.iw-fullscreen-edit').find('.ui_carousel').vcCarousel();
-                    $('body.iw-fullscreen-edit').find('.animation-box').vcVideoBox();
-                    $('body.iw-fullscreen-edit').find('.youtube-box').vcYoutubeBox();
-                    $('body.iw-fullscreen-edit').vcLazyLoader();
-                    $('body.iw-fullscreen-edit').vcTest();
-                }else {
-                    console.log("None Edit Mode!!!!");
-                    $('body').buildCommonUI();
-                    $('body').vcTest();
-                }
+
+                $('body').buildCommonUI();
     
                 //$.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
     
@@ -173,11 +135,6 @@ console.log(self)
                 ///////////////////////////////////////////////////////////////////////
     
             });
-        },
-
-        firstEditModeUIsetting: function(){
-            console.log("firstEditModeUIsetting!!")
-            $('body.iw-fullscreen-edit').vcTest();
         },
     
         //template html 리스트 파일 로드...
@@ -227,5 +184,16 @@ console.log(self)
     document.addEventListener('DOMContentLoaded', function () {
         console.log("DOMContentLoaded!!!");
         lgkorUI.init();
+        /*
+        if($('body.iw-fullscreen-edit').length){
+            console.log("Edit Mode!!");
+            setTimeout(function(){
+                console.log("setTimeout!!!")
+                lgkorUI.init();
+            }.bind(self), 900);
+        }else {
+            console.log("None Edit Mode!!!!");
+        }
+        */
     });
 }

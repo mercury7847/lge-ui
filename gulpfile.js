@@ -118,10 +118,10 @@ gulp.task("jsCompile", () => gulp
 );
 gulp.task("jsCompile:common", () => gulp
     .src(src + "/js/common/*")
-    .pipe(sourcemaps.init())
-    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
-    .pipe(sourcemaps.write('./maps'))
+    //.pipe(sourcemaps.init())
+    //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    //.pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    //.pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/common/"))
 );
 gulp.task("jsCompile:components", () => gulp
@@ -206,7 +206,7 @@ gulp.task("watch", ["browser-sync"], () => {
 });
 
 // Compile sass, concat and minify css + js
-gulp.task("build", ["clean", "static", "concat-js"], () =>{
+gulp.task("build", ["clean", "static"], () =>{
     gulp.start(["styles", "scripts", "guide", "html"]);
 });
 
