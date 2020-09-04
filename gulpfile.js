@@ -168,7 +168,7 @@ gulp.task("jsCompile:ui", () => gulp
 // fonts, images
 gulp.task("static", () => gulp
     .src("./lg5-common/**/*")
-    .pipe(gulp.dest(dist + sourceFolder));
+    .pipe(gulp.dest(dist + sourceFolder))
 );
 
 
