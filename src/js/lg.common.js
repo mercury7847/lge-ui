@@ -210,8 +210,6 @@ if(lgkorUI === undefined){
     
     document.addEventListener('DOMContentLoaded', function () {
         console.log("DOMContentLoaded!!!");
-        lgkorUI.init();
-        /*
         if($('body.iw-fullscreen-edit').length){
             console.log("Edit Mode!!");
             setTimeout(function(){
@@ -222,6 +220,5 @@ if(lgkorUI === undefined){
             console.log("None Edit Mode!!!!");
             lgkorUI.init();
         }
-        */
     });
 }
