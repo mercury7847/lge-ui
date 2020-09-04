@@ -2,10 +2,12 @@
 <html lang="ko">
 @@include('./common/head.html', {
     "pageCSS": [
-        "support/KR50CS311"
+        "support/support",
+        "support/reservation"
     ],
     "pageJS": [
-        "support-common"
+        "support-common",
+        "support/selectCategory"
     ]
 })
 <body>
@@ -23,21 +25,20 @@
                 }
             })
             
-            <div class="status-bar">
-                <div class="status-bar-inner">
-                    <div class="status">
-                        <p>로그인 하시면 아래 개인 정보가 자동으로 입력됩니다. 비회원도 이메일 문의가 가능합니다.</p>
-                    </div>
-                    <div class="guide">
-                        <span class="guide-link">
-                            <a href="#">로그인하기</a>
-                        </span>
+            <div class="contents support KR50CS321">
+                <div class="status-bar">
+                    <div class="status-bar-inner">
+                        <div class="status">
+                            <p>로그인 하시면 아래 개인 정보가 자동으로 입력됩니다. 비회원도 이메일 문의가 가능합니다.</p>
+                        </div>
+                        <div class="guide">
+                            <span class="guide-link">
+                                <a href="#">로그인하기</a>
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="cs-content">
-                <div class="cs-content-inner type-A">
+                <div class="contents-inner type-A">
 
                     <div class="inquiry-content">
                         <form action="" data-action="">

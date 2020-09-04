@@ -4,7 +4,7 @@ $(window).ready(function() {
 
     vcui.require(['ui/carousel', 'ui/validation', 'ui/modal'], function () {
         $('.category-select-carousel').vcCarousel({
-            infinite: true,
+            infinite: false,
             swipeToSlide: true,
             slidesToShow: 4,
             slidesToScroll: 4,

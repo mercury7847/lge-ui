@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+@import "../../modules/index";
+@import "../../layout/index";
+
+@mixin globalBackground {
+    padding:56px;
+    border-radius:4px;
+    background:#fff;
+    @include mobile {
+        padding:40px 24px;
+        border-radius:0;
+    }
+}
+
+.support {
+    .input-wrap {
+        &.search {
+            input {
+                border:none;
+            }
+            .cell {
+                vertical-align:top;
+                border:none;
+                background:#fff;
+            }
+            .btn-search {
+                width:24px;
+                height:24px;
+                @include icon-search;
+            }
+        }
+    }
+}
+
+@import "../../support/pages/KR50CS64";
+@import "../../support/pages/KR50CS631";
+@import "../../support/pages/KR50CS711";

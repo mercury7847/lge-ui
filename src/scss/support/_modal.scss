@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+/* layer popup */
+.modal {
+    display:none;
+    width:calc(100% - 80px);
+    border-radius:4px;
+    box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.16);
+    background:#fff;
+
+    max-width:630px;
+
+    @include mobile {
+        max-width:none;
+        width:calc(100% - 32px);
+    }
+    &-header {
+        position:relative;
+        padding:56px 40px 40px;
+        @include mobile {
+            padding:28px 24px 24px;
+        }
+    }
+    &-title {
+        font-size:32px;
+        font-weight:700;
+        @include mobile {
+            font-size:24px;
+        }
+    }
+    &-close {
+        position:absolute;
+        top:60px;
+        right:40px;
+        width:25px;
+        height:25px;
+        padding:3px;
+        &:before, &:after {
+            content:'';
+            position:absolute;
+            top:50%;
+            left:50%;
+            width:22px;
+            height:2px;
+            margin-left:-11px;
+            margin-top:-1px;
+            background:#000;
+        }
+        &:before {
+            transform:rotate(45deg);
+        }
+        &:after {
+            transform:rotate(-45deg);
+        }
+        @include mobile {
+            top:30px;
+            right:28px;
+            width:20px;
+            height:20px;
+            padding:4px;
+            &:before, &:after {
+                width:16px;
+                margin-left:-8px;
+            }
+        }
+    }
+    &-body {
+        padding:0 40px 56px;
+        @include mobile {
+            padding:0 24px 28px;
+        }
+    }
+}

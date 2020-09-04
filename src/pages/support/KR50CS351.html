@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko">
-    @@include('./common/head.html', {
-        "pageCSS": [
-            "support-common",
-            "support/KR50CS311"
-        ],
-        "pageJS": [
-            "support-common",
-            "support/KR50CS311"
-        ]
-    })
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/reservation"
+    ],
+    "pageJS": [
+        "support-common",
+        "support/selectCategory"
+    ]
+})
 <body>
     <div class="wrap">
         @@include('./common/header.html')
@@ -25,7 +25,7 @@
                 }
             })
 
-            <div class="content KR50CS351">
+            <div class="contents support KR50CS351">
                 <div class="status-bar">
                     <div class="status-bar-inner">
                         <div class="status">
@@ -65,9 +65,9 @@
                     </div>
                 </div>
     
-                @@include('./common/support/select-product.html')
+                @@include('./common/support/select-category.html')
 
-                <div class="cs-content-inner type-A">
+                <div class="contents-inner type-A">
 
                     <div class="inquiry-content">
                         <form action="" data-action="">
@@ -253,6 +253,7 @@
 
                 </div>
             </div>
+
             @@include('./support/modal/KR50CS911.html')
             @@include('./support/modal/privacyAgreeModal.html')
         </div>

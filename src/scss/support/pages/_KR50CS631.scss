@@ -1,0 +1,208 @@
+@charset "UTF-8";
+
+.KR50CS631 {
+    .scroll-x {
+        margin-bottom: 24px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .sns-box {
+        position: absolute;
+        top: 56px;
+        right: 56px;
+        @include mobile {
+            top: auto;
+            bottom: 40px;
+            right: 24px;
+        }
+    }
+    .section-area {
+        position: relative;
+        .section {
+            @include globalBackground;
+            & + .section {
+                margin-top:24px;
+                @include mobile {
+                    margin-top:12px;
+                }
+            }
+            &:last-of-type {
+                padding-bottom: 108px;
+            }
+        }
+    }
+    .dl-list {
+        line-height: 1.38;
+        .support-bullet {
+            margin-left: 16px;
+        }
+        > dd {
+            // > p {
+            //     margin-top: 14px;
+            //     &:first-child {
+            //         margin-top: 0;
+            //     }
+            // }
+        }
+        @include mobile {
+            > dd {
+                > p {
+                    margin-top: 16px;
+                }
+            }   
+        }
+    }
+    .paragraph {
+        &-1 {
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+        &-2 {
+            margin-bottom: 22px;
+        }
+        &-3 {
+            margin-top: 8px;
+        }
+        &-4 {
+            margin-top: 16px;
+        }
+    }
+    .ui_tab-notice {
+        margin-bottom: 24px;
+        @include mobile {
+            margin-bottom: 16px;
+            margin-top: 68px;
+        }
+    }
+
+    .support-bullet {
+        &-title {
+            margin-bottom: 30px;
+        }
+        &-list {
+            margin-top: 0;
+        }
+    }
+    
+  
+    [class^="h-tit"] {
+        word-break: keep-all;
+        &[class*="-3"] {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1.42;
+            margin-bottom: 32px;
+            @include mobile {
+                margin-bottom: 24px;
+            }
+        }
+        &[class*="-4"] {
+            font-size: 16px;
+            line-height: 1.38;
+            margin-bottom: 16px;
+        }
+    }
+
+    .dl-list {
+        dt {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.44;
+            margin-bottom: 14px;
+        }
+        dd {
+            font-size: 16px;
+            margin-bottom: 32px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            @include mobile {
+                margin-bottom: 24px;
+            }
+        }
+    }
+    
+    .img_box {
+        margin-top: 14px;
+        img {
+            max-width: 100%;
+        }
+    }
+    
+    .note-box {
+        padding: 24px;
+        border: solid 1px #dddddd;
+        margin-bottom: 24px;
+        @include mobile {
+            padding: 16px;
+        }
+    }
+    
+    .list {
+        li {
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+        > li {
+            margin-top: 16px;
+            margin-left: 48px;
+            text-indent: -1.5em;
+            > ul:not(.support-bullet-list) {
+                > li {
+                    margin-left: 24px;
+                    text-indent: -24px;
+                    > ul {
+                        > li {
+                            text-indent: 0;
+                        }
+                    }
+                }
+                &.support-bullet-list {
+                    li {
+                        text-indent: 0;
+                    }
+                }
+            }
+            > ul {
+                margin-top: 10px;
+                 li {
+                    margin-top: 12px;
+                }
+            }
+            > .support-bullet-list {
+                text-indent: 0;
+            }
+        }
+        @include mobile {
+            > li {
+                margin-left: 16px;
+                text-indent: 0;
+                > ul:not(.support-bullet-list) {
+                    > li {
+                        margin-left: 40px;
+                        text-indent: -24px;
+                    }
+                }
+                > .support-bullet-list {
+                    > li {
+                        margin-left: 16px;
+                        text-indent: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .text-space-1 {
+        padding-left: 4.3em;
+        @include mobile {
+            padding-left: 0;
+        }
+    }
+
+    .color-1 {
+        color: #a50034;
+    }
+}

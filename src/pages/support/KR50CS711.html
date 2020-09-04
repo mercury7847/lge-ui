@@ -2,7 +2,8 @@
 <html lang="ko">
     @@include('./common/head.html', {
         "pageCSS": [
-            "support/KR50CS711"
+            "support/support",
+            "support/notice"
         ]
     })
 <body>
@@ -20,177 +21,176 @@
                 }
             })
 
-            <div class="content">
-                <div class="cs-content KR50CS711">
-                    <div class="cs-content-inner type-A">
-                        <div class="notice-wrap">
+            <div class="contents support KR50CS711">
+                <div class="contents-inner type-A">
 
-                            <div class="search-box">
-                                <div class="input-wrap search">
-                                    <div class="box">   
-                                        <input type="text" placeholder="검색어를 입력해주세요.">
-                                        <div class="cell">
-                                            <button type="submit" class="btn-search">
-                                                <span class="blind">검색</span>
-                                            </button>
-                                        </div>
+                    <div class="notice-wrap">
+                        <div class="search-box">
+                            <div class="input-wrap search">
+                                <div class="box">   
+                                    <input type="text" placeholder="검색어를 입력해주세요.">
+                                    <div class="cell">
+                                        <button type="submit" class="btn-search">
+                                            <span class="blind">검색</span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="tabs-wrap ui_tab ui_tab-notice">
-                                <ul class="tabs">
-                                    <li class="on"><a href="#tab1">전체 56</a></li>
-                                    <li><a href="#tab2">고객지원 12</a></li>
-                                    <li><a href="#tab3">케어솔루션 2</a></li>
-                                    <li><a href="#tab4">기타</a></li>
+                        <div class="tabs-wrap ui_tab ui_tab-notice">
+                            <ul class="tabs">
+                                <li class="on"><a href="#tab1">전체 56</a></li>
+                                <li><a href="#tab2">고객지원 12</a></li>
+                                <li><a href="#tab3">케어솔루션 2</a></li>
+                                <li><a href="#tab4">기타</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="tabs-contents">
+                            <div id="tab1">
+                                <ul class="notice-list">
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">기타</span>
+                                            <h3 class="notice-list-title">에어컨 필터 오총사 10% 할인</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">고객지원</span>
+                                            <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">기타</span>
+                                            <h3 class="notice-list-title">에어컨 필터 오총사 10% 할인</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">고객지원</span>
+                                            <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">기타</span>
+                                            <h3 class="notice-list-title">에어컨 필터 오총사 10% 할인</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">고객지원</span>
+                                            <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
+                                        </a>
+                                    </li>
                                 </ul>
+                                @@include('./common/support/pagination.html', {
+                                    'count': 5,
+                                    'last': 'false'
+                                })
                             </div>
-
-                            <div class="tabs-contents">
-                                <div id="tab1">
-                                    <ul class="notice-list">
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">기타</span>
-                                                <h3 class="notice-list-title">에어컨 필터 오총사 10% 할인</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">고객지원</span>
-                                                <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">기타</span>
-                                                <h3 class="notice-list-title">에어컨 필터 오총사 10% 할인</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">고객지원</span>
-                                                <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">기타</span>
-                                                <h3 class="notice-list-title">에어컨 필터 오총사 10% 할인</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">고객지원</span>
-                                                <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    @@include('./common/support/pagination.html', {
-                                        'count': 5,
-                                        'last': 'false'
-                                    })
-                                </div>
-                                <div id="tab2">
-                                    <ul class="notice-list">
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">고객지원</span>
-                                                <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">고객지원</span>
-                                                <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">고객지원</span>
-                                                <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">고객지원</span>
-                                                <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    @@include('./common/support/pagination.html', {
-                                        'count': 5,
-                                        'last': 'false'
-                                    })
-                                </div>
-                                <div id="tab3">
-                                    <ul class="notice-list">
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">케어솔루션</span>
-                                                <h3 class="notice-list-title">LG TROMM 워시타워 사용설명서, 자주 묻는 질문 및 답변</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">케어솔루션</span>
-                                                <h3 class="notice-list-title">LG TROMM 워시타워 사용설명서, 자주 묻는 질문 및 답변</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">케어솔루션</span>
-                                                <h3 class="notice-list-title">LG TROMM 워시타워 사용설명서, 자주 묻는 질문 및 답변</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">케어솔루션</span>
-                                                <h3 class="notice-list-title">LG TROMM 워시타워 사용설명서, 자주 묻는 질문 및 답변</h3>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    @@include('./common/support/pagination.html', {
-                                        'count': 5,
-                                        'last': 'false'
-                                    })
-                                </div>
-                                <div id="tab4">
-                                    <ul class="notice-list">
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">기타</span>
-                                                <h3 class="notice-list-title">7월, ThinQ앱 가전 신규 등록 이벤트!</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">기타</span>
-                                                <h3 class="notice-list-title">7월, ThinQ앱 가전 신규 등록 이벤트!</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">기타</span>
-                                                <h3 class="notice-list-title">7월, ThinQ앱 가전 신규 등록 이벤트!</h3>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="notice-category">기타</span>
-                                                <h3 class="notice-list-title">7월, ThinQ앱 가전 신규 등록 이벤트!</h3>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    @@include('./common/support/pagination.html', {
-                                        'count': 5,
-                                        'last': 'false'
-                                    })
-                                </div>
+                            <div id="tab2">
+                                <ul class="notice-list">
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">고객지원</span>
+                                            <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">고객지원</span>
+                                            <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">고객지원</span>
+                                            <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">고객지원</span>
+                                            <h3 class="notice-list-title">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내 (7월 31일 20시 이후)</h3>
+                                        </a>
+                                    </li>
+                                </ul>
+                                @@include('./common/support/pagination.html', {
+                                    'count': 5,
+                                    'last': 'false'
+                                })
+                            </div>
+                            <div id="tab3">
+                                <ul class="notice-list">
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">케어솔루션</span>
+                                            <h3 class="notice-list-title">LG TROMM 워시타워 사용설명서, 자주 묻는 질문 및 답변</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">케어솔루션</span>
+                                            <h3 class="notice-list-title">LG TROMM 워시타워 사용설명서, 자주 묻는 질문 및 답변</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">케어솔루션</span>
+                                            <h3 class="notice-list-title">LG TROMM 워시타워 사용설명서, 자주 묻는 질문 및 답변</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">케어솔루션</span>
+                                            <h3 class="notice-list-title">LG TROMM 워시타워 사용설명서, 자주 묻는 질문 및 답변</h3>
+                                        </a>
+                                    </li>
+                                </ul>
+                                @@include('./common/support/pagination.html', {
+                                    'count': 5,
+                                    'last': 'false'
+                                })
+                            </div>
+                            <div id="tab4">
+                                <ul class="notice-list">
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">기타</span>
+                                            <h3 class="notice-list-title">7월, ThinQ앱 가전 신규 등록 이벤트!</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">기타</span>
+                                            <h3 class="notice-list-title">7월, ThinQ앱 가전 신규 등록 이벤트!</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">기타</span>
+                                            <h3 class="notice-list-title">7월, ThinQ앱 가전 신규 등록 이벤트!</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="notice-category">기타</span>
+                                            <h3 class="notice-list-title">7월, ThinQ앱 가전 신규 등록 이벤트!</h3>
+                                        </a>
+                                    </li>
+                                </ul>
+                                @@include('./common/support/pagination.html', {
+                                    'count': 5,
+                                    'last': 'false'
+                                })
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 

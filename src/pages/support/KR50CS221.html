@@ -2,11 +2,12 @@
 <html lang="ko">
     @@include('./common/head.html', {
         "pageCSS": [
-            "support/KR50CS221"
+            "support/support",
+            "support/product-supports"
         ],
         "pageJS": [
             "support-common",
-            "support/KR50CS221"
+            "support/videoGuide"
         ]
     })
 <body>
@@ -24,12 +25,13 @@
                 }
             })
 
-            <div class="cs-content KR50CS221">
-                <div class="dummy" style="height: 389px;margin-top: 80px;">
-                    TBD(검색어를 입력해주세요)
-                </div>
+            <div class="contents support KR50CS221">
+                <div class="contents-inner type-B">
 
-                <div class="cs-content-inner type-B">
+                    <div class="dummy" style="height: 389px;margin-top: 80px;">
+                        TBD(검색어를 입력해주세요)
+                    </div>
+
                     <div class="video-guide-list-wrap">
                         <div class="query-reset"><em class="color-1">냉장고</em> 검색결과 입니다. <button type="button" class="icon-queryReset"><span class="blind">검색어 초기화</span></button></div>
                         
@@ -157,6 +159,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="dummy" style="height: 389px">
