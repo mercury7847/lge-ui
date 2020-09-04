@@ -62,7 +62,8 @@ if(lgkorUI === undefined){
         // 주요 컴포넌트를 미리 로드
         _preloadComponents: function () {
             var self = lgkorUI;
-
+console.log(this);
+console.log(self)
             vcui.require([  
                 'common/header', 
                 'common/footer',           
