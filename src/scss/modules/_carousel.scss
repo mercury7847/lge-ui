@@ -101,7 +101,7 @@
         width:100%;
         max-width:1600px;
         margin-top:-18px;
-        margin-left:-50%;
+        transform:translateX(-50%);
         z-index:10;
         button {
             position:absolute;
