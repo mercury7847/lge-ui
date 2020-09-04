@@ -27,7 +27,7 @@ $.fn.buildCommonUI = function () {
 
 if(lgkorUI === undefined){
     console.log("lgkorUI start!!!");
-    
+
     vcui.define('test', ['jquery', 'vcui'], function ($, core) {
         "use strict";
     
@@ -61,6 +61,8 @@ if(lgkorUI === undefined){
     
         // 주요 컴포넌트를 미리 로드
         _preloadComponents: function () {
+            var self = lgkorUI;
+
             vcui.require([  
                 'common/header', 
                 'common/footer',           
@@ -134,8 +136,9 @@ if(lgkorUI === undefined){
                         console.log($('body.iw-fullscreen-edit'));
                         console.log($('.KRC0013'));
                         //$('body.iw-fullscreen-edit').buildCommonUI();
-                        $('body.iw-fullscreen-edit').vcTest();
-                    }, 5000);
+                        //$('body.iw-fullscreen-edit').vcTest();
+                        self.firstEditModeUIsetting();
+                    }.bind(this), 5000);
                     $('body.iw-fullscreen-edit').find('.ui_calender').vcCalendar();
                     $('body.iw-fullscreen-edit').find('.ui_accordion').vcAccordion();        
                     $('body.iw-fullscreen-edit').find('.ui_selectbox').vcSelectbox();
@@ -169,6 +172,11 @@ if(lgkorUI === undefined){
                 ///////////////////////////////////////////////////////////////////////
     
             });
+        },
+
+        firstEditModeUIsetting: function(){
+            console.log("firstEditModeUIsetting!!")
+            $('body.iw-fullscreen-edit').vcTest();
         },
     
         //template html 리스트 파일 로드...
