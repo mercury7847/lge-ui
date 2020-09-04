@@ -10,9 +10,7 @@ vcui.require.config({
 });
 */
 $.fn.buildCommonUI = function () {
-    vcui.require([
-                        'common/header', 
-                        'common/footer',           
+    vcui.require([        
                         'ui/selectbox',
                         'ui/calendar',
                         'ui/accordion',
@@ -21,13 +19,9 @@ $.fn.buildCommonUI = function () {
                         'ui/tab',       
                         'ui/lazyLoader',
                         "ui/videoBox",
-                        "ui/youtubeBox",
-                        "test"
-    ], function () {
-        console.log(this);
-    
-        $('header').vcHeader(); //헤더 모듈 적용...
-        $('footer').vcFooter(); //푸터모듈 적용...
+                        "ui/youtubeBox"
+    ], function () {    
+        console.log("buildCommonUI!!!!")
 
         this.find('.ui_calender').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
@@ -37,7 +31,6 @@ $.fn.buildCommonUI = function () {
         this.find('.animation-box').vcVideoBox();
         this.find('.youtube-box').vcYoutubeBox();
         this.vcLazyLoader();
-        this.vcTest();
     }.bind(this));
     return this;
 };
@@ -45,28 +38,6 @@ $.fn.buildCommonUI = function () {
 
 if(lgkorUI === undefined){
     console.log("lgkorUI start!!!");
-
-    vcui.define('test', ['jquery', 'vcui'], function ($, core) {
-        "use strict";
-    
-        var Test = core.ui('Test', {
-            bindjQuery: true,
-            defaults: {
-            },
-    
-            initialize: function initialize(el, options) {
-                var self = this;
-                
-                if (self.supr(el, options) === false) {
-                    return;
-                };
-                
-                console.log("test ok!!")
-            }
-        });
-    
-        return Test;
-    });
     
     //$.holdReady(true);
     
@@ -90,8 +61,7 @@ if(lgkorUI === undefined){
                 'ui/tab',       
                 'ui/lazyLoader',
                 "ui/videoBox",
-                "ui/youtubeBox",
-                "test"
+                "ui/youtubeBox"
             ], function () {
                 var $doc = $(document);          
                 
@@ -142,6 +112,9 @@ if(lgkorUI === undefined){
                     }
                 });
     
+                $('header').vcHeader(); //헤더 모듈 적용...
+                $('footer').vcFooter(); //푸터모듈 적용...
+
                 $('body').buildCommonUI();
     
                 //$.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
@@ -210,6 +183,8 @@ if(lgkorUI === undefined){
     
     document.addEventListener('DOMContentLoaded', function () {
         console.log("DOMContentLoaded!!!");
+        lgkorUI.init();
+        /*
         if($('body.iw-fullscreen-edit').length){
             console.log("Edit Mode!!");
             setTimeout(function(){
@@ -218,7 +193,7 @@ if(lgkorUI === undefined){
             }.bind(self), 900);
         }else {
             console.log("None Edit Mode!!!!");
-            lgkorUI.init();
         }
+        */
     });
 }
