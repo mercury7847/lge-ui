@@ -9,8 +9,8 @@
             @@if (context.mainSlideType) {
                 @@for (var i=0; i < context.slideArr.length; i++) {
                 <!-- slide -->
-                <div class="slide-conts ui_carousel_slide ui_bg_switch">
-                    <span class="bg" style="background-image:url('`+slideArr[i].pcBg+`');" data-pc-src="`+slideArr[i].pcBg+`" data-m-src="`+slideArr[i].mobBg+`" aria-hidden="hidden"></span>
+                <div class="slide-conts ui_carousel_slide">
+                    <span class="bg ui_bg_switch" data-pc-src="`+slideArr[i].pcBg+`" data-m-src="`+slideArr[i].mobBg+`" aria-hidden="hidden"></span>
                     <div class="slide-info-area">
                         <div class="boxs">
                             <p class="desc" id="`+slideArr[i].titNum+`"> 

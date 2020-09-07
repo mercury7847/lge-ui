@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	if(!document.querySelector('.KRC0025')) return false;
 
+    $('.KRC0025').buildCommonUI();
+
 	var componentAnimateObj = $('.KRC0025');
 	
 	componentAnimateObj.each(function(){

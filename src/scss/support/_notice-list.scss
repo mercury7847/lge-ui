@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+/* notice list */
+.notice-list {
+    border-radius:4px;
+    background:#fff;
+    li {
+        border-top: 1px solid #ddd;
+        &:first-child {
+            border-top: none;
+        }
+        a {
+            display: block;
+            position: relative;
+            padding:24px 56px;
+            &::after {
+                content: '';
+                position: absolute;
+                right: 63px;
+                top: 50%;
+                width: 0px;
+                height: 0px;
+                border-top: 5px solid transparent;
+                border-left: 6px solid #111;
+                border-bottom: 5px solid transparent;
+                transform: translateY(-50%);
+            }
+        }
+        .notice-category {
+            font-size: 12px;
+            line-height: 1;
+            color: #111111;
+            border-radius: 4px;
+            background-color: #f1f3f7;
+            margin-bottom: 4px;
+            padding: 6px 8px;
+            display: inline-block;
+            &-wrap {
+                @include textEllipsis;
+            }
+            &-A {
+                font-size: 14px;
+                line-height: 1.43;
+                color: #a50034;
+            }
+            &-B {
+                font-size: 14px;
+                line-height: 1.43;
+                color: #aaa;
+            }
+        }
+    }
+    &-title {
+        font-size: 16px;
+        line-height: normal;
+        color: #111111;
+        @include textEllipsis;
+        &-A {
+            font-size: 18px;
+            font-weight: normal;
+            line-height: 1.44;
+            color: #111;
+            @include textEllipsis;
+        }
+    }
+    &.type-A {
+        a {
+            padding-right: 24px;
+            padding-left: 50px;
+        }
+        li {
+            border-top:none;
+            border-bottom:1px solid #ddd;
+            &::after {
+                border:none;
+                width: 30px;
+                height: 30px;
+                background-color: #000;
+                left: 0;
+                right: auto;
+            }
+        }
+        .notice-category-wrap {
+            margin-bottom: 11px;
+        }
+    }
+    @include mobile {
+        li {
+            &::after {
+                right: 20px;
+            }
+            a {
+                padding: 24px;
+                padding-right: 40px;
+            }
+            .notice-category {
+                margin-bottom: 6px;
+            }
+        }
+    }
+}
+
+.board-list {
+    ul {
+        li {
+            
+        }
+    }
+}

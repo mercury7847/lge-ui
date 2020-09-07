@@ -2,7 +2,8 @@
 <html lang="ko">
     @@include('./common/head.html', {
         "pageCSS": [
-            "support/KR50CS712"
+            "support/support",
+            "support/notice"
         ]
     })
 <body>
@@ -20,34 +21,26 @@
                 }
             })
 
-            <div class="content">
-                <div class="cs-content KR50CS712">
-                    <div class="cs-content-inner type-A">
-                        <div class="notice-wrap">
+            <div class="contents support KR50CS712">
+                <div class="contents-inner type-B">
 
-                            <div class="search-box pc-only">
-                                <div class="input-wrap search">
-                                    <div class="box">   
-                                        <input type="text" placeholder="검색어를 입력해주세요.">
-                                        <div class="cell">
-                                            <button type="submit" class="btn-search">
-                                                <span class="blind">검색</span>
-                                            </button>
-                                        </div>
-                                    </div>
+                    <div class="notice-wrap">
+                        
+                        <div class="board-view">
+                            <div class="board-view-head">
+                                <div class="head-category">
+                                    <span class="tag">고객지원</span>
                                 </div>
+                                <h3 class="head-title">시스템 점검에 따른 서비스 이용안내 공지사항</h3>
+                                <div class="head-info">
+                                    <div class="info">
+                                        <span class="info-label">등록일</span>
+                                        <span class="info-desc">2020-08-06</span>
+                                    </div>
+                                </div> 
                             </div>
-
-                            <article class="read-section section">
-                                <div class="read-headline">
-                                    <span class="read-category notice-category">고객지원</span>
-                                    <h3 class="read-title">시스템 점검에 따른 서비스 이용안내 공지사항</h3>
-                                    <div class="date-box">
-                                        <span class="date-label">등록일</span>
-                                        <span class="date-time">2020-08-06</span>
-                                    </div>
-                                </div>
-                                <div class="read-content notice-read-content">
+                            <div class="board-view-body">
+                                <div class="view-content" id="viewContent">
                                     LG전자 서비스 홈페이지를 이용해주시는 고객님께 감사드립니다. 더 나은 서비스 제공을 위해 하기 시간 동안 시스템 점검이 진행됩니다. 해당 시간 동안 서비스 홈페이지 메뉴 중 일부 메뉴 이용이 불가하오니 참고하시고, 점검 시간 이후 이용바랍니다.
                                     <br><br>
                                     1. 시스템 점검 일시
@@ -55,7 +48,7 @@
                                     <br><br>
                                     2. 이용 제한 메뉴 및 시간
                                     고객지원메뉴 중 '채팅상담', '전화상담예약', '원격상담예약', '엔지니어출장 예약', '센터방문예약',
-                                     '설치/철거 예약', '예약 및 결과 조회’, 케어용품/소모품샵 메뉴 : 소모품 구매, 주문 조회/취소
+                                        '설치/철거 예약', '예약 및 결과 조회’, 케어용품/소모품샵 메뉴 : 소모품 구매, 주문 조회/취소
                                     <br><br>
                                     *이용 제한 시간 :
                                     1차 : 2020년 6월 30일 (화) 20:15 ~ 20:20
@@ -71,29 +64,30 @@
                                     감사합니다.
                                 </div>
                                 <div class="sns-box">
-                                    <a href="" class="sns-icon sns1"><span class="blind">카카오톡</span></a>
-                                    <a href="" class="sns-icon sns2"><span class="blind">페이스북</span></a>
-                                    <a href="" class="sns-icon sns3"><span class="blind">트위터</span></a>
+                                    <a href="#" class="sns icon-kakaotalk"><span class="blind">카카오톡</span></a>
+                                    <a href="#" class="sns icon-facebook"><span class="blind">페이스북</span></a>
+                                    <a href="#" class="sns icon-twitter"><span class="blind">트위터</span></a>
                                 </div>
-                            </article>
-                            
-                            <div class="read-moveTo">
-                                <a href="" class="read-moveTo-prev">
-                                    <span class="part1">이전글</span>
-                                    <h4 class="part2">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내</h4>
-                                </a>
-                                <a href="" class="read-moveTo-next">
-                                    <span class="part1">다음글</span>
-                                    <h4 class="part2">LG전자 챗봇 개인정보 처리 방침 개정안내</h4>
-                                </a>
                             </div>
-
-                            <div class="btnarea-r btn-group">
-                                <a href="#n" class="btn black"><span>목록</span></a>
-                            </div>
-
                         </div>
+
+                        <div class="board-navi">
+                            <a href="#" class="navi">
+                                <span class="navi-label">이전글</span>
+                                <h4 class="navi-desc">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내</h4>
+                            </a>
+                            <a href="#" class="navi">
+                                <span class="navi-label">다음글</span>
+                                <h4 class="navi-desc">LG전자 챗봇 개인정보 처리 방침 개정안내</h4>
+                            </a>
+                        </div>
+
+                        <div class="btn-group right">
+                            <a href="#" class="btn black"><span>목록</span></a>
+                        </div>
+
                     </div>
+
                 </div>
             </div>
 

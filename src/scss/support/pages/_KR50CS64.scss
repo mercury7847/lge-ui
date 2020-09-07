@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.KR50CS64 {
+    .list-sort {
+        font-size: 14px;
+        margin-bottom: 20px;
+        @include clearfix;
+        p {
+            float: left;
+            #totCnt {
+                font-weight: bold;
+            }
+        }
+        .fwb {
+            float: right;
+        }
+    }
+
+    .section {
+        //@include globalBackground;
+        margin-top: 24px;
+        @include mobile {
+            margin-top: 12px;
+        }
+    }
+}

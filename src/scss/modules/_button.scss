@@ -2,8 +2,8 @@
 
 .btn {
     display: inline-block;
-    min-width:194px;
-    padding:15px 0;
+    min-width:124px;
+    padding:13px 32px;
     border: 1px solid #212121;
     border-radius: 4px;
     background-color: #fff;
@@ -45,20 +45,30 @@
         line-height: 1;
         color: #616161;
         text-align: left;
-        background-color: #f4f4f4;
-        border-color: transparent;
-        padding: 19px 32px 19px 24px;
+        border-color: #ddd;
+        padding: 15px 32px 15px 16px;
         position: relative;
+        margin-top: 8px;
+        &:first-child {
+            margin-top: 0;
+        }
         &::after {
             content: '';
             display: block;
-            width: 8px;
-            height: 14px;
-            background: #000;
+            width: 24px;
+            height: 24px;
+            background: url("/lg5-common/images/icons/icon-btn-arrow-right.svg") no-repeat;
             position: absolute;
-            right: 21px;
-            top: 50%;
-            transform: translateY(-50%);
+            right: 16px;
+            top: 16px;
+        }
+        .side-item {
+            font-size: 14px;
+            font-weight: normal;
+            color: #808080;
+            margin-top: 12px;
+            margin-left: 32px;
+            margin-bottom: 14px;
         }
     }
 
@@ -104,6 +114,10 @@
     &.gray {
         color: #aaa;
         border-bottom-color: #aaa;
+    }
+    &.red01 {
+        color: #ec455a;
+        border-bottom-color: #ec455a;
     }
     &.icon-type {
         position: relative;

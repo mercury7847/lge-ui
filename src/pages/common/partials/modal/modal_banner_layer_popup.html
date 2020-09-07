@@ -1,0 +1,107 @@
+<!-- components/partials/modal/modal_banner_layer_popup.html -->
+<div class="modal fade modal-fix show banner-layer" id="modal_banner_layer_popup@@modal-index" tabindex="-1" role="dialog" data-backdrop="true">
+	<div class="modal-dialog modal-more-contents-layer-popup" role="document">
+		<div class="modal-content">
+			<button type="button" class="modal-close" data-dismiss="modal">Close</button>
+			<div class="modal-body">
+				<!-- 
+					to 개발팀.
+					visual-box와 text-box의 갯수는 서로 같아야 합니다.
+					양자는 별도의 마크업으로, 서로 싱크하여 구동합니다.
+				-->
+				<!-- 1. image -->
+				<div class="visual-area ui_carousel_slider"><!-- [KR수정] .ui_carousel_slider 추가 -->
+					<!-- [KR수정] indicator DOM 추가 -->
+					<div class="indi-wrap">
+						<ul class="ui_carousel_dots">
+							<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+						</ul>
+						<span class="ui_carousel_play play">
+                        <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
+                    </span>
+					</div>
+					<!-- // [KR수정] indicator DOM 추가 -->
+					<div class="visual-box-belt ui_carousel_track"><!-- [KR수정] .ui_carousel_track 추가 -->
+						<div class="visual-box ui_carousel_slide"><!-- [KR수정] .ui_carousel_slide 추가 -->
+							<!-- box 컨텐츠가 video일 때 (youtube) -->
+							<div class="video-container video-box youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
+								<div class="thumnail">
+									<img class="pc lazyload" data-src="/lg5-common/images/KRC0026/@thumb-modal.jpg" alt="">
+									<img class="mobile lazyload" data-src="/lg5-common/images/KRC0026/@thumb-modal.jpg" alt="">
+									<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-link-area="" data-link-name="{video id}" aria-describedby="title01">plays audio description video</a>
+								</div>
+								<button type="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" title="opens in a new layer popup, plays video" aria-describedby="title01">영상 보기</button>
+								<!-- iframe loca -->
+							</div>
+						</div>
+						<div class="visual-box ui_carousel_slide" aria-describedby="title02"><!-- [KR수정] .ui_carousel_slide 추가 -->
+							<!-- box 컨텐츠가 image일 때 -->
+							<div class="image-container">
+								<img class="pc lazyload" data-src="/lg5-common/images/KRC0026/@thumb-modal.jpg" alt="">
+								<img class="mobile lazyload" data-src="/lg5-common/images/KRC0026/@thumb-modal.jpg" alt="">
+								<p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+							</div>
+						</div>
+						<div class="visual-box ui_carousel_slide" aria-describedby="title02"><!-- [KR수정] .ui_carousel_slide 추가 -->
+							<!-- box 컨텐츠가 image일 때 -->
+							<div class="image-container">
+								<img class="pc lazyload" data-src="/lg5-common/images/KRC0026/@thumb-modal.jpg" alt="">
+								<img class="mobile lazyload" data-src="/lg5-common/images/KRC0026/@thumb-modal.jpg" alt="">
+								<p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+							</div>
+						</div>
+						<div class="visual-box ui_carousel_slide" aria-describedby="title02"><!-- [KR수정] .ui_carousel_slide 추가 -->
+							<!-- box 컨텐츠가 image일 때 -->
+							<div class="image-container">
+								<img class="pc lazyload" data-src="/lg5-common/images/KRC0026/@thumb-modal.jpg" alt="">
+								<img class="mobile lazyload" data-src="/lg5-common/images/KRC0026/@thumb-modal.jpg" alt="">
+								<p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+							</div>
+						</div>
+					</div>
+					<!-- [KR수정] prev/next button DOM 추가 -->
+					<button type="button" class="btn-arrow prev">이전</button>
+					<button type="button" class="btn-arrow next">다음</button>
+					<!-- // [KR수정] prev/next button DOM 추가 -->
+				</div>
+				<!-- // 1. image -->
+				<div class="text-area ui_carousel_slider"><!-- [KR수정] .ui_carousel_slider 추가 -->
+					<div class="text-box-belt ui_carousel_track"><!-- [KR수정] .ui_carousel_track 추가 -->
+						<div class="text-box @@box1.text-align ui_carousel_slide"><!-- [KR수정] Image Accessibility Description 추가 -->
+							<!-- 2. headline -->
+							<div class="text-box-head" id="title01">@@box1.head</div>
+							<!-- // 2. headline -->
+							<!-- 3. body copy -->
+							<div class="text-box-desc @@box1.desc-style">LG SIGNATURE 냉장고가 건축 작품을 뛰어 넘을 수 있을까?<br>전통과 현대의 만남이 그대로 드러나는 안도 다다오의 건축과 함께 있어도 빛을 잃지 않는 스테인리스 디자인. 본태박물관이 보여주는 어떤 건축적 성과와 견줘도 손색없는 LG SIGNATURE 냉장고는 존재만으로도 가전 이상의 작품이 된다.</div>
+							<!-- // 3. body copy -->
+						</div>
+						<div class="text-box @@box2.text-align ui_carousel_slide"><!-- [KR수정] Image Accessibility Description 추가 -->
+							<!-- 2. headline -->
+							<div class="text-box-head" id="title02">@@box2.head</div>
+							<!-- // 2. headline -->
+							<!-- 3. body copy -->
+							<div class="text-box-desc @@box2.desc-style">LG SIGNATURE 냉장고가 건축 작품을 뛰어 넘을 수 있을까?<br>전통과 현대의 만남이 그대로 드러나는 안도 다다오의 건축과 함께 있어도 빛을 잃지 않는 스테인리스 디자인. 본태박물관이 보여주는 어떤 건축적 성과와 견줘도 손색없는 LG SIGNATURE 냉장고는 존재만으로도 가전 이상의 작품이 된다.</div>
+							<!-- // 3. body copy -->
+						</div>
+						<div class="text-box @@box3.text-align ui_carousel_slide"><!-- [KR수정] Image Accessibility Description 추가 -->
+							<!-- 2. headline -->
+							<div class="text-box-head" id="title03">@@box3.head</div>
+							<!-- // 2. headline -->
+							<!-- 3. body copy -->
+							<div class="text-box-desc @@box3.desc-style">LG SIGNATURE 냉장고가 건축 작품을 뛰어 넘을 수 있을까?<br>전통과 현대의 만남이 그대로 드러나는 안도 다다오의 건축과 함께 있어도 빛을 잃지 않는 스테인리스 디자인. 본태박물관이 보여주는 어떤 건축적 성과와 견줘도 손색없는 LG SIGNATURE 냉장고는 존재만으로도 가전 이상의 작품이 된다.</div>
+							<!-- // 3. body copy -->
+						</div>
+						<div class="text-box @@box4.text-align ui_carousel_slide"><!-- [KR수정] Image Accessibility Description 추가 -->
+							<!-- 2. headline -->
+							<div class="text-box-head" id="title04">@@box4.head</div>
+							<!-- // 2. headline -->
+							<!-- 3. body copy -->
+							<div class="text-box-desc @@box4.desc-style">LoremLG SIGNATURE 냉장고가 건축 작품을 뛰어 넘을 수 있을까?<br>전통과 현대의 만남이 그대로 드러나는 안도 다다오의 건축과 함께 있어도 빛을 잃지 않는 스테인리스 디자인. 본태박물관이 보여주는 어떤 건축적 성과와 견줘도 손색없는 LG SIGNATURE 냉장고는 존재만으로도 가전 이상의 작품이 된다.<br>LG SIGNATURE 냉장고가 건축 작품을 뛰어 넘을 수 있을까?<br>전통과 현대의 만남이 그대로 드러나는 안도 다다오의 건축과 함께 있어도 빛을 잃지 않는 스테인리스 디자인. 본태박물관이 보여주는 어떤 건축적 성과와 견줘도 손색없는 LG SIGNATURE 냉장고는 존재만으로도 가전 이상의 작품이 된다.</div>
+							<!-- // 3. body copy -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

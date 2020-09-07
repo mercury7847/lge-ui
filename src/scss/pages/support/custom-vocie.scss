@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+@import "../../modules/index";
+@import "../../layout/index";
+
+@mixin globalBackground {
+    padding:56px;
+    border-radius:4px;
+    background:#fff;
+    @include mobile {
+        padding:40px 24px;
+        border-radius:0;
+    }
+}
+
+.support {
+
+}
