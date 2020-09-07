@@ -114,13 +114,17 @@
 
     .animation-box {
         .animation-area {
+            //z-index: auto;
             .controller-wrap {
                 @include calc(right,50%,20px);
-                bottom: 48px;
+                bottom: 24px;
+                z-index: 10;
             }
         }
-        &.ui_carousel_slide .animation-area .controller-wrap {
-            bottom: 85px;
+        &.ui_carousel_slide {
+            .animation-area .controller-wrap {
+                bottom: 85px;
+            }
         }
     }
 
@@ -140,13 +144,18 @@
         right: 0;
         bottom: 0;
         left: 0;
-        padding: 56px 0;
+        padding: 125px 0;
+        //padding: 56px 0;
         .text-area {
             position: relative;
             z-index: 1;
-            max-width: 1284px + 60px;
-            margin: 0 auto;
-            padding: 0 30px;
+            .text-wrap {
+                width: 100%;
+                max-width: 1284px + 60px;
+                margin: 0 auto;
+                padding: 0 30px;
+
+            }
         }
     }
 
@@ -173,6 +182,7 @@
 
     .cta-button,
     .cta-link {
+        display: inline-block;
         font-size: 0;
         span {
             display: inline-block;
@@ -247,10 +257,14 @@
             @if $key == left {
                 &.type-wide {
                     .text-wrap {
-                        @include grid-row;
                         .inner {
-                            @include grid-col(left,6,12);
+                            float: left;
+                            width: 50%;
                             text-align: left;
+                            @include mobile {
+                                float: none;
+                                width: 100%;
+                            }
                         }
                     }
                 }
@@ -267,10 +281,14 @@
             @if $key == right {
                 &.type-wide {
                     .text-wrap {
-                        @include grid-row;
                         .inner {
-                            @include grid-col(right,6,12);
+                            float: right;
+                            width: 50%;
                             text-align: left;
+                            @include mobile {
+                                float: none;
+                                width: 100%;
+                            }
                         }
                     }
                 }
@@ -307,9 +325,11 @@
                     height: 100%;
                     .text-wrap {
                         position: absolute;
-                        top: 0;
+                        top: -69px;
                         right: 0;
                         left: 0;
+                        //padding-right: 30px;
+                        //padding-left: 30px;
                     }
                 }
             }
@@ -330,7 +350,7 @@
                     height: 100%;
                     .text-wrap {
                         position: absolute;
-                        bottom: 0;
+                        bottom: -69px;
                         right: 0;
                         left: 0;
                     }
@@ -362,6 +382,17 @@
     @each $text in $color {
         .text-#{$text} {
             @if $text == white {
+                .indi-wrap {
+                    li {
+                        .btn-indi {
+                            background-color: rgba(255, 255, 255, 0.5);
+                        }
+                        &.on .btn-indi {
+                            background-color: #fff;
+
+                        }
+                    }
+                }
                 .text-block {
                     .eyebrow {
                         color: #fff;
@@ -384,7 +415,7 @@
                 .btn {
                     &.btn-primary {
                         border-color: #fff;
-                        background-color: #111;
+                        background-color: transparent;
                         color: #fff;
                     }
                     &.btn-outline-secondary {
@@ -404,6 +435,16 @@
                 }
             }
             @if $text == black {
+                .indi-wrap {
+                    li {
+                        .btn-indi {
+                            background-color: #ddd;
+                        }
+                        &.on .btn-indi {
+                            background-color: #111;
+                        }
+                    }
+                }
                 .text-block {
                     .eyebrow {
                         color: #111;
