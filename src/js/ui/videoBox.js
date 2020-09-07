@@ -15,8 +15,10 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
             };
 
             self.$video = self.$el.find("video").get(0);
+            self.$defaultVname = self.$el.find("video").find('source').attr('src');
             self.$ctrler = self.$el.find('.controller-wrap button');
-
+            self.$acctrler = self.$el.find(".play-animaion-btn");
+            
             self._addEvent();
         },
 
@@ -30,6 +32,24 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
                     self.$video.pause();
                 } else if(name == "play"){
                     self.$video.play();
+                }
+            });
+
+            self.$acctrler.on('click', function(e){
+                e.preventDefault();
+                
+                if($(this).hasClass('acc-btn')){
+                    var aniText = $(this).data('ani-text');					    
+                    $(this).attr('aria-label', aniText).addClass('ani-btn').removeClass('acc-btn').text(aniText);
+                    
+                    self.$video.setAttribute('src', $(this).data('src'));
+                    self.$video.load();
+                }else{
+                    var accAniText = $(this).data('acc-ani-text');
+                    $(this).attr('aria-label', accAniText).addClass('acc-btn').removeClass('ani-btn').text(accAniText);
+                    
+                    self.$video.setAttribute('src', self.$defaultVname);
+                    self.$video.load();
                 }
             });
 
@@ -62,6 +82,12 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
                 .attr("aria-label", "Pause Video")
                 .text(self.$ctrler.data("pauseText"));
             }
+        },
+
+        pause: function(){
+            console.log("GGG");
+            console.log(self)
+            self.$video.pause();
         }
     });
 
