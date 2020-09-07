@@ -86,8 +86,8 @@
 					opacity:1;
 				}
 				.icon-text {
-					//color:$color-carmine;
-					text-decoration: underline; /* PJTWAUS-1 20200108 modify */
+					color:#ec455a;
+					text-decoration: underline;
 				}
 			}
 			.icon-text {
@@ -144,7 +144,7 @@
     .body-copy {
 		width:100%;
 		font-size: 14px;
-		max-width: 848px; // 408px
+		max-width: 848px;
 		line-height: 20px;
 		color: #616161;
 		margin:0 auto 40px;
@@ -218,7 +218,6 @@
 	}
 	&.bg-white {
 		background-color: #fff;
-		// padding-top:0;
     }
 	
 	.animation-box .animation-area .controller-wrap {
