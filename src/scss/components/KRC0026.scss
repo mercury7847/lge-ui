@@ -105,7 +105,7 @@
 			$flex-order-mobile : (1,5,2,6,3,4,7,8);
 
 			@media screen and  (min-width: 768px) {
-				padding-bottom:( (24*2 + 412 + 550 + 309) / 1284) * 100%;
+				padding-bottom:( (24*2 + 309*2 + 732) / 1284) * 100%;
 				@for $i from 1 through length($document-order) {
 					.content-box-cover:nth-child(#{$i}) {
 						order : nth($flex-order, $i);
@@ -595,9 +595,9 @@
 		}
 	}
 }
-/* PJTWAUS-1 20200312 add */
+
 html[hcx="3"], html[hcx="4"] {
-	.C0057 {
+	.KRC0026 {
 		.content-box {
 			.banner-content img{
 				visibility: hidden;
@@ -611,5 +611,4 @@ html[hcx="3"], html[hcx="4"] {
 		}
 	}
 }
-/* //PJTWAUS-1 20200312 add */
 
