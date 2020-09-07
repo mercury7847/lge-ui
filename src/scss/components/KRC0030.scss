@@ -4,8 +4,8 @@
 
 
 .KRC0030 {
-	display: flex;
-	flex-direction: column;
+	//display: flex;
+	//flex-direction: column;
     width: 100%;
     //max-width: (1284px + 60px);
     max-width: (1600px + 60px);
@@ -14,12 +14,11 @@
     @include mobile {
         max-width: 100%;
         padding: 60px 0;
-    }
+	}
+	clear: both;
 
-    .icon-area {
-		flex: 1;
+    .icon-area {	
 		width: 100%;
-		order: 2;
 		margin: 24px auto 0;
 		max-width: (486px + 60px);
         padding:0 30px;
@@ -115,8 +114,6 @@
     
     .text-area {
 		width: 100%;
-		flex: 1;
-		order: 1;
 		
 		.group {
 			display:none;
