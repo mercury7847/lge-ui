@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	if(!document.querySelector('.KRC0030')) return false;
 
+    $('.KRC0030').buildCommonUI();
+
 	var $obj = $('.KRC0030');
 	var $objIndex = $obj.attr('data-index','0');
 	var ani ={

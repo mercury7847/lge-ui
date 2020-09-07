@@ -1,6 +1,8 @@
 $(window).ready(function(){
     if(!document.querySelector('.KRC0009')) return false;
 
+    $('.KRC0009').buildCommonUI();
+
     vcui.require(['ui/carousel'], function () {
         $('.KRC0009').find('.ui_carousel_slider').vcCarousel({
             infinite: false,

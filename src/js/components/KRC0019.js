@@ -1,6 +1,8 @@
 $(window).ready(function(){
     if(!document.querySelector('.KRC0019')) return false;
 
+    $('.KRC0019').buildCommonUI();
+
     var $targetDrag = $('.KRC0019 .drag-area');
     $targetDrag.each(function(){
         var dragTitle = $(this).data('handle-title');

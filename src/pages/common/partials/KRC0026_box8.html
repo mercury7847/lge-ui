@@ -1,0 +1,411 @@
+
+<!-- /components/partials/KRC0026_box8.hbs -->
+<div class="component-wrap">
+	<!--
+		[.component-wrap 옵션]
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+
+		[.title 옵션 (1.headline) ]
+		1. 텍스트 정렬
+		.align-left : 왼쪽 정렬
+		.align-right : 오른쪽 정렬
+		.align-center : 중앙 정렬
+
+		[각 .banner-content 옵션]
+		1. 폰트 컬러 
+		.text-white : 화이트
+		.text-black : 블랙
+
+		[각 .desc-content 옵션]
+		1. 텍스트 정렬
+		.align-left : 왼쪽 정렬
+		.align-right : 오른쪽 정렬
+		.align-center : 중앙 정렬
+
+		[레이어 팝업의 .text-box 영역]
+		1. 텍스트 정렬
+		.align-left : 왼쪽 정렬
+		.align-right : 오른쪽 정렬
+		.align-center : 중앙 정렬
+
+		** 레이어 팝업의 ID값은 페이지 전체에서 유니크 하게 사용 해야 함.
+		** a 태그의 href 값은 클릭시 띄워야 할 레이어 팝업의 #ID 값과 동일하게 넣어 주세요.
+	-->
+
+	<div class="component KRC0026 @@component-class.margin">
+		<div class="inner">
+			<!-- 1. headline -->
+			<div class="title @@component-class.title-align">@@component-class.headline</div>
+			<!-- // 1. headline -->
+
+			<!-- Start : 2019-03-05 markup changed -->
+			<div class="contents division8">
+				<ul class="contents-container">
+					<li class="content-box-cover">
+						<!--
+						<a href="#modal_banner_layer_popup@@box1.modal-index" data-toggle="modal" class="content-box ratio-3-4" data-link-area="interactive_gallery_image-image" data-link-name="{Alt Text}">
+							<div class="banner-content @@box1.banner-color">
+								<img data-src="/lg5-common/images/KRC0026/sample-412x549.jpg" alt="" class="lazyload">
+								<div class="box-title">lorem ipsum 01</div>
+							</div>
+							<div class="desc-content @@box1.desc-align">
+								<p class="desc">"Quote can be up to 100 characters lorem ipsum dolor sit amet,consectetuer adipiscing"</p>
+							</div>
+						</a>
+						-->
+						<!-- body copy와 레이어 팝업을 등록하지 않은 경우 -->
+						<div class="content-box ratio-3-4">
+							<div class="banner-content @@box1.banner-color">
+								<!-- 2. image -->
+								<!-- Edit : 2019-03-11 attribute changed -->
+								<img data-src="/lg5-common/images/KRC0026/sample-412x549.jpg" alt="" class="lazyload">
+								<!-- // 2. image -->
+								<!-- 2-1. image title -->
+								<div class="box-title">lorem ipsum 01</div>
+								<!-- // 2-1. image title -->
+							</div>
+							<!-- 2-2. body copy -->
+							<!-- // 2-2. body copy -->
+						</div>
+					</li>
+					<li class="content-box-cover">
+						<!--
+						<a href="#modal_banner_layer_popup@@box2.modal-index" data-toggle="modal" class="content-box ratio-1-1" data-link-area="interactive_gallery_image-image" data-link-name="{Alt Text}">
+							<div class="banner-content @@box2.banner-color">
+								<img data-src="/lg5-common/images/KRC0026/sample-412x412.jpg" alt="" class="lazyload">
+								<div class="box-title">lorem ipsum 02</div>
+							</div>
+							<div class="desc-content @@box2.desc-align">
+								<p class="desc">"Quote can be up to 100 characters lorem ipsum dolor sit amet,consectetuer adipiscing"</p>
+							</div>
+						</a>
+						-->
+						<!-- body copy만 등록한 경우 -->
+						<div class="content-box ratio-1-1">
+							<div class="banner-content @@box2.banner-color">
+								<!-- 5. image -->
+								<img data-src="/lg5-common/images/KRC0026/sample-412x412.jpg" alt="" class="lazyload">
+								<!-- // 5. image -->
+								<!-- 5-1. image title -->
+								<div class="box-title">lorem ipsum 02</div>
+								<!-- // 5-1. image title -->
+							</div>
+							<!-- 5-2. body copy -->
+							<div class="desc-content @@box2.desc-align">
+								<p class="desc">"Quote can be up to 100 characters lorem ipsum dolor sit amet,consectetuer adipiscing"</p>
+							</div>
+							<!-- // 5-2. body copy -->
+						</div>
+					</li>
+					<li class="content-box-cover">
+						<!--
+						<a href="#modal_banner_layer_popup@@box3.modal-index" data-toggle="modal" class="content-box ratio-4-3" data-link-area="interactive_gallery_image-image" data-link-name="{Alt Text}">
+							<div class="banner-content @@box3.banner-color">
+								<img data-src="/lg5-common/images/KRC0026/sample-412x309.jpg" alt="" class="lazyload">
+								<div class="box-title">lorem ipsum 03</div>
+							</div>
+							<div class="desc-content @@box3.desc-align">
+								<p class="desc">"Quote can be up to 100 characters lorem ipsum dolor sit amet,consectetuer adipiscing"</p>
+							</div>
+						</a>
+						-->
+						<!-- 레이어 팝업 콘텐츠만 등록한 경우 -->
+						<a href="#modal_banner_layer_popup@@box3.modal-index" data-toggle="modal" class="content-box ratio-4-3" data-link-area="interactive_gallery_image-image" data-link-name="{Alt Text}">
+							<div class="banner-content @@box3.banner-color">
+								<!-- 3. image -->
+								<!-- Edit : 2019-03-11 attribute changed -->
+								<img data-src="/lg5-common/images/KRC0026/sample-412x309.jpg" alt="" class="lazyload">
+								<!-- // 3. image -->
+								<!-- 3-1. image title -->
+								<div class="box-title">lorem ipsum 03</div>
+								<!-- // 3-1. image title -->
+							</div>
+							<!-- 3-2. body copy -->
+							<!-- // 3-2. body copy -->
+						</a>
+					</li>
+					<li class="content-box-cover">
+						<a href="#modal_banner_layer_popup@@box4.modal-index" data-toggle="modal" class="content-box ratio-9-16" data-link-area="interactive_gallery_image-image" data-link-name="{Alt Text}">
+							<div class="banner-content @@box4.banner-color">
+								<!-- 6. image -->
+								<!-- Edit : 2019-03-11 attribute changed -->
+								<img data-src="/lg5-common/images/KRC0026/sample-412x732.jpg" alt="" class="lazyload">
+								<!-- // 6. image -->
+								<!-- 6-1. image title -->
+								<div class="box-title">lorem ipsum 04</div>
+								<!-- // 6-1. image title -->
+							</div>
+							<!-- 6-2. body copy -->
+							<div class="desc-content @@box4.desc-align">
+								<p class="desc">"Quote can be up to 100 characters lorem ipsum dolor sit amet,consectetuer adipiscing"</p>
+							</div>
+							<!-- // 6-2. body copy -->
+						</a>
+					</li>
+					<li class="content-box-cover">
+						<a href="#modal_banner_layer_popup@@box5.modal-index" data-toggle="modal" class="content-box ratio-1-1" data-link-area="interactive_gallery_image-image" data-link-name="{Alt Text}">
+							<div class="banner-content @@box5.banner-color">
+								<!-- 8. image -->
+								<!-- Edit : 2019-03-11 attribute changed -->
+								<img data-src="/lg5-common/images/KRC0026/sample-412x412.jpg" alt="" class="lazyload">
+								<!-- // 8. image -->
+								<!-- 8-1. image title -->
+								<div class="box-title">lorem ipsum 05</div>
+								<!-- // 8-1. image title -->
+							</div>
+							<!-- 8-2. body copy -->
+							<div class="desc-content @@box5.desc-align">
+								<p class="desc">"Quote can be up to 100 characters lorem ipsum dolor sit amet,consectetuer adipiscing"</p>
+							</div>
+							<!-- // 8-2. body copy -->
+						</a>
+					</li>
+					<li class="content-box-cover">
+						<a href="#modal_banner_layer_popup@@box6.modal-index" data-toggle="modal" class="content-box ratio-9-16" data-link-area="interactive_gallery_image-image" data-link-name="{Alt Text}">
+							<div class="banner-content @@box6.banner-color">
+								<!-- 4. image -->
+								<!-- Edit : 2019-03-11 attribute changed -->
+								<img data-src="/lg5-common/images/KRC0026/sample-412x732.jpg" alt="" class="lazyload">
+								<!-- // 4. image -->
+								<!-- 4-1. image title -->
+								<div class="box-title">lorem ipsum 06</div>
+								<!-- // 4-1. image title -->
+							</div>
+							<!-- 4-2. body copy -->
+							<div class="desc-content @@box6.desc-align">
+								<p class="desc">"Quote can be up to 100 characters lorem ipsum dolor sit amet,consectetuer adipiscing"</p>
+							</div>
+							<!-- // 4-2. body copy -->
+						</a>
+					</li>
+					<li class="content-box-cover">
+						<a href="#modal_banner_layer_popup@@box7.modal-index" data-toggle="modal" class="content-box ratio-4-3" data-link-area="interactive_gallery_image-image" data-link-name="{Alt Text}">
+							<div class="banner-content @@box7.banner-color">
+								<!-- 7. image -->
+								<!-- Edit : 2019-03-11 attribute changed -->
+								<img data-src="/lg5-common/images/KRC0026/sample-412x309.jpg" alt="" class="lazyload">
+								<!-- // 7. image -->
+								<!-- 7-1. image title -->
+								<div class="box-title">lorem ipsum 07</div>
+								<!-- // 7-1. image title -->
+							</div>
+							<!-- 7-2. body copy -->
+							<div class="desc-content @@box7.desc-align">
+								<p class="desc">"Quote can be up to 100 characters lorem ipsum dolor sit amet,consectetuer adipiscing"</p>
+							</div>
+							<!-- // 7-2. body copy -->
+						</a>
+					</li>
+					<li class="content-box-cover">
+						<a href="#modal_banner_layer_popup@@box8.modal-index" data-toggle="modal" class="content-box ratio-4-3" data-link-area="interactive_gallery_image-image" data-link-name="{Alt Text}">
+							<div class="banner-content @@box8.banner-color">
+								<!-- 9. image -->
+								<!-- Edit : 2019-03-11 attribute changed -->
+								<img data-src="/lg5-common/images/KRC0026/sample-412x309.jpg" alt="" class="lazyload">
+								<!-- // 9. image -->
+								<!-- 9-1. image title -->
+								<div class="box-title">lorem ipsum 08</div>
+								<!-- // 9-1. image title -->
+							</div>
+							<!-- 9-2. body copy -->
+							<div class="desc-content @@box8.desc-align">
+								<p class="desc">"Quote can be up to 100 characters lorem ipsum dolor sit amet,consectetuer adipiscing"</p>
+							</div>
+							<!-- // 9-2. body copy -->
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- End : 2019-03-05 markup changed -->
+		</div>
+
+		<div class="modal-layers">
+			@@include('./common/partials/modal/modal_banner_layer_popup.html', {
+				"modal-index" : "1",
+				"box1" : {
+					"text-align" : "align-center",
+					"head" : "<h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </h2>",
+					"desc-style" : "font-bold font-underline"
+				},
+				"box2" : {
+					"text-align" : "align-left",
+					"head" : "<h2>Lulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. </h2>",
+					"desc-style" : "font-regular"
+				},
+				"box3" : {
+					"text-align" : "align-center",
+					"head" : "<h2>consectetuer adipiscing elit. </h2>",
+					"desc-style" : "font-regular-italic  "
+				},
+				"box4" : {
+					"text-align" : "align-right",
+					"head" : "<h2>Sed consequat, leo eget faucibus bibendum sodales. </h2>",
+					"desc-style" : "font-bold-italic font-underline"
+				}
+			})
+			@@include('./common/partials/modal/modal_banner_layer_popup.html', {
+				"modal-index" : "2",
+				"box1" : {
+					"text-align" : "align-center",
+					"head" : "<h2>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. </h2>",
+					"desc-style" : "font-bold font-underline"
+				},
+				"box2" : {
+					"text-align" : "align-left",
+					"head" : "<h2> totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto. </h2>",
+					"desc-style" : "font-regular"
+				},
+				"box3" : {
+					"text-align" : "align-center",
+					"head" : "<h2>vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? </h2>",
+					"desc-style" : "font-regular-italic"
+				},
+				"box4" : {
+					"text-align" : "align-right",
+					"head" : "<h2>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit. </h2>",
+					"desc-style" : "font-bold-italic font-underline"
+				}
+			})
+			@@include('./common/partials/modal/modal_banner_layer_popup.html', {
+				"modal-index" : "3",
+				"box1" : {
+					"text-align" : "align-center",
+					"head" : "<h2>vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</h2>",
+					"desc-style" : "font-bold font-underline"
+				},
+				"box2" : {
+					"text-align" : "align-left",
+					"head" : "<h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </h2>",
+					"desc-style" : "font-regular"
+				},
+				"box3" : {
+					"text-align" : "align-center",
+					"head" : "<h2>Aenean commodo ligula eget dolor. </h2>",
+					"desc-style" : "font-regular-italic"
+				},
+				"box4" : {
+					"text-align" : "align-right",
+					"head" : "<h2>Expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere. </h2>",
+					"desc-style" : "font-bold-italic font-underline"
+				}
+			})
+			@@include('./common/partials/modal/modal_banner_layer_popup.html', {
+				"modal-index" : "4",
+				"box1" : {
+					"text-align" : "align-center",
+					"head" : "<h2>But I must explain to you how all this mistaken idea of denouncing pleasure. </h2>",
+					"desc-style" : "font-bold font-underline"
+				},
+				"box2" : {
+					"text-align" : "align-left",
+					"head" : "<h2>I will give you a complete account of the system, and expound the actual teachings of the great explorer. </h2>",
+					"desc-style" : "font-regular"
+				},
+				"box3" : {
+					"text-align" : "align-center",
+					"head" : "<h2>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? </h2>",
+					"desc-style" : "font-regular-italic"
+				},
+				"box4" : {
+					"text-align" : "align-right",
+					"head" : "<h2>But who has any right to find fault. </h2>",
+					"desc-style" : "font-bold-italic font-underline"
+				}
+			})
+			@@include('./common/partials/modal/modal_banner_layer_popup.html', {
+				"modal-index" : "5",
+				"box1" : {
+					"text-align" : "align-center",
+					"head" : "<h2>Far far away, behind the word mountains, far from the countries Vokalia. </h2>",
+					"desc-style" : "font-bold font-underline"
+				},
+				"box2" : {
+					"text-align" : "align-left",
+					"head" : "<h2>Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas. </h2>",
+					"desc-style" : "font-regular"
+				},
+				"box3" : {
+					"text-align" : "align-center",
+					"head" : "<h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</h2>",
+					"desc-style" : "font-regular-italic"
+				},
+				"box4" : {
+					"text-align" : "align-right",
+					"head" : "<h2>Pityful a rethoric question ran over her cheek. </h2>",
+					"desc-style" : "font-bold-italic font-underline"
+				}
+			})
+			@@include('./common/partials/modal/modal_banner_layer_popup.html', {
+				"modal-index" : "6",
+				"box1" : {
+					"text-align" : "align-center",
+					"head" : "<h2>For science, music, sport, etc, Europe uses the same vocabulary. </h2>",
+					"desc-style" : "font-bold font-underline"
+				},
+				"box2" : {
+					"text-align" : "align-left",
+					"head" : "<h2>Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. </h2>",
+					"desc-style" : "font-regular"
+				},
+				"box3" : {
+					"text-align" : "align-center",
+					"head" : "<h2>Occidental is.The European languages are members of the same family. </h2>",
+					"desc-style" : "font-regular-italic"
+				},
+				"box4" : {
+					"text-align" : "align-right",
+					"head" : "<h2>It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English. </h2>",
+					"desc-style" : "font-bold-italic font-underline"
+				}
+			})
+			@@include('./common/partials/modal/modal_banner_layer_popup.html', {
+				"modal-index" : "7",
+				"box1" : {
+					"text-align" : "align-center",
+					"head" : "<h2>Lone could refuse to pay expensive translators. </h2>",
+					"desc-style" : "font-bold font-underline"
+				},
+				"box2" : {
+					"text-align" : "align-left",
+					"head" : "<h2>The new common language will be more simple and regular than the existing European languages. </h2>",
+					"desc-style" : "font-regular"
+				},
+				"box3" : {
+					"text-align" : "align-center",
+					"head" : "<h2>Question Marks and devious Semikoli, but the Little Blind Text didn’t listen.</h2>",
+					"desc-style" : "font-regular-italic"
+				},
+				"box4" : {
+					"text-align" : "align-right",
+					"head" : "<h2>Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</h2>",
+					"desc-style" : "font-bold-italic font-underline"
+				}
+			})
+			@@include('./common/partials/modal/modal_banner_layer_popup.html', {
+				"modal-index" : "8",
+				"box1" : {
+					"text-align" : "align-center",
+					"head" : "<h2>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.</h2>",
+					"desc-style" : "font-bold font-underline"
+				},
+				"box2" : {
+					"text-align" : "align-left",
+					"head" : "<h2>It wasn't a dream. His room, a proper human room although a little too small. </h2>",
+					"desc-style" : "font-regular"
+				},
+				"box3" : {
+					"text-align" : "align-center",
+					"head" : "<h2>Samsa was a travelling salesman - and above it there hung a picture.</h2>",
+					"desc-style" : "font-regular-italic"
+				},
+				"box4" : {
+					"text-align" : "align-right",
+					"head" : "<h2>His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. </h2>",
+					"desc-style" : "font-bold-italic font-underline"
+				}
+			})
+		</div> 
+	</div>
+</div>

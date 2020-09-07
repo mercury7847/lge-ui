@@ -1,0 +1,83 @@
+
+<!-- partials/components/KRC0022.hbs -->
+<div class="component-wrap">
+	<!--
+		[component-wrap 옵션]
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+
+		[.visual-set 옵션 (Image Replacement)]
+		1. Large 이미지 정렬 : 
+		.large-align-left : 좌측형
+		.large-align-right : 우측형
+		
+		[하단 텍스트 영역 (text-set) 옵션]
+		1. 가로 정렬 : 
+		.align-left : 왼쪽 정렬
+		.align-right : 오른쪽 정렬
+		.align-center : 중앙 정렬
+		
+		[하단 텍스트 영역 (text-set) 의  body copy (.sub-text) 옵션]
+		1. 폰트 종류 : 
+		.font-regular : 레귤러
+		.font-bold : 볼드
+		.font-regular-italic : 레귤러 이탤릭
+		.font-bold-italic : 볼드 이탤릭
+
+		2. 폰트 스타일: 
+		기본은 언더라인 없음 
+		.font-underline : 언더라인
+	-->
+	<div class="component KRC0022 @@align-class1 @@size @@bg">
+		<div class="visual-set @@large-align">
+			<!-- 1. image -->
+			<!-- 첫번째 입력된 항목이 이미지인 경우 아래와 같이 출력 -->
+			<div class="visual-area">
+                <img data-src="/lg5-common/images/KRC0022/sample-01.jpg" alt="[alt text 1]" class="lazyload" />
+                <p class="hidden">graphic description : </p>          
+			</div>
+			<!-- // 1. image -->
+			<ul class="visual-thumbnail-set ui_tab" role="tablist">
+				<!-- 3. thumbnail image : image -->
+				<li class="thumb-obj">
+					<a href="#none" class="active" role="tab" aria-selected="true"><img data-src="/lg5-common/images/KRC0022/sample-thum-01.jpg" alt="[alt text 1]" class="lazyload" data-large="/lg5-common/images/KRC0022/sample-01.jpg" /></a>
+					<div class="text-set-default">
+						<div class="sub-title">@@headline2-1</div>
+						<div class="sub-text @@font-class2 @@font-style2">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient. Body text can be up to 200 characters.</div>
+					</div>
+				</li>
+				<!-- // 3. thumbnail image -->
+				<!-- 3. thumbnail image : brightcove -->
+				<li class="thumb-obj">
+                    <a href="#none" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-video-title="[video title 2]" data-adobe-video="{video title / video id}"><img data-src="/lg5-common/images/KRC0022/sample-thum-02.jpg" alt="[alt text 2]" class="lazyload" data-large="/lg5-common/images/KRC0022/sample-02.jpg" /></a>
+
+					<div class="text-set-default">
+						<div class="sub-title">@@headline2-2</div>
+						<div class="sub-text @@font-class2 @@font-style2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient. Body text can be up to 200 characters.</div>
+					</div>
+				</li>
+				<!-- // 3. thumbnail image -->
+				<!-- 3. thumbnail image : youtube -->
+				<li class="thumb-obj">
+
+					<a href="#none" data-type="youtube" data-video-id="PetoQo1eUww" data-video-title="[video title 3]" data-adobe-video="{video title / video id}"><img data-src="/lg5-common/images/KRC0022/sample-thum-03.jpg" alt="[alt text 3]" class="lazyload" data-large="/lg5-common/images/KRC0022/sample-03.jpg" /></a>
+
+					<div class="text-set-default">
+						<div class="sub-title">@@headline2-3</div>
+						<div class="sub-text @@font-class2 @@font-style2">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</div>
+					</div>
+				</li>
+				<!-- // 3. thumbnail image -->
+			</ul>
+		</div>
+		<div class="text-set">
+			<!-- 4. headline -->
+			<div class="sub-title">@@headline2-1</div>
+			<!-- // 4. headline -->
+			<!-- 5. body copy -->
+			<div class="sub-text @@font-class2 @@font-style2">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient. Body text can be up to 200 characters.</div>
+			<!-- // 5. body copy -->
+		</div>
+	</div>
+</div>

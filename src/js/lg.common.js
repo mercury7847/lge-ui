@@ -19,10 +19,10 @@ $.fn.buildCommonUI = function () {
                         'ui/tab',       
                         'ui/lazyLoader',
                         "ui/videoBox",
-                        "ui/youtubeBox"
+                        "ui/youtubeBox",
+                        "ui/imageSwitch"
     ], function () {    
         console.log("buildCommonUI!!!!");
-        console.log(this)
 
         this.find('.ui_calender').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
@@ -31,6 +31,7 @@ $.fn.buildCommonUI = function () {
         this.find('.ui_carousel').vcCarousel();
         this.find('.animation-box').vcVideoBox();
         this.find('.youtube-box').vcYoutubeBox();
+        this.find('.ui_bg_switch').vcImageSwitch();
         this.vcLazyLoader();
     }.bind(this));
     return this;
@@ -51,6 +52,8 @@ if(lgkorUI === undefined){
     
         // 주요 컴포넌트를 미리 로드
         _preloadComponents: function () {
+            var self = this;
+
             vcui.require([  
                 'common/header', 
                 'common/footer',           
@@ -62,7 +65,8 @@ if(lgkorUI === undefined){
                 'ui/tab',       
                 'ui/lazyLoader',
                 "ui/videoBox",
-                "ui/youtubeBox"
+                "ui/youtubeBox",
+                "ui/imageSwitch"
             ], function () {
                 var $doc = $(document);          
                 
@@ -134,7 +138,17 @@ if(lgkorUI === undefined){
                     $(window).triggerHandler('resize');
                 }, 200));
                 ///////////////////////////////////////////////////////////////////////
-    
+                
+
+                //resize 이벤트 발생 시 등록 된 이벤트 호출...
+                self.resizeCallbacks = [];
+                $(window).on("addResizeCallback", function(e, callback){
+                    self.resizeCallbacks.push(callback);
+                }).on('resize', function(e){
+                    for(var idx in self.resizeCallbacks){
+                        self.resizeCallbacks[idx].call()
+                    }
+                })
             });
         },
     
