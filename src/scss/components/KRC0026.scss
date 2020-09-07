@@ -199,12 +199,10 @@
 		padding-bottom: (2/3) * 100%;
 		// background-color:$bg-white;
 		margin-top:10px;
-		//LGEGMO-5525 add
 		&:focus {
 			box-shadow:0 0 0 0.1rem #7fbdff !important;
 			-webkit-box-shadow:0 0 0 0.1rem #7fbdff !important;
 		};
-		//LGEGMO-5525 add
 		@media screen and  (min-width: 768px) {
 			margin-top:((24/1284) / (412/1284)) * 100%;
 		}
