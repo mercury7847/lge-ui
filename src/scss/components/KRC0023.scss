@@ -3,3 +3,183 @@
 @import "../components-app";
 
 
+.KRC0023 {
+    max-width:(1284px + 24px + 60px);
+    margin:0 auto;
+    padding:0 30px;
+    @include mobile {
+        padding:0 24px;
+    }
+    img {
+        width:100%;
+        height:auto;
+        vertical-align:top;
+    }
+
+    .hidden-xs {
+        display:block !important;
+    }
+    .visible-xs {
+        display:none !important;
+    }
+    @include mobile {
+        .hidden-xs {
+            display:none !important;
+        }
+        .visible-xs {
+            display:block !important;
+        }
+    }
+
+    // common
+    .text-area, .text-m-area {
+        .title h2 {
+            color:#111;
+            font-size:18px;
+            line-height:26px;
+            font-weight:700;
+        }
+        .desc-text {
+            margin-top:24px;
+            color:#616161;
+            font-size:16px;
+            line-height:24px;
+        }
+    }
+
+    [class^="btn-type-"], [class^="btn-mtype-"] {
+        margin:0 -12px;
+        font-size:0;
+        span {
+            display:inline-block;
+            margin:0 12px;
+            vertical-align:top;
+        }
+    }
+    .btn-type-box, .btn-mtype-box {
+        margin-top:28px;
+        span {
+            margin-top:12px;
+        }
+    }
+    .btn-type-text, .btn-mtype-text {
+        margin-top:16px;
+        span {
+            margin-top:24px;
+        }
+    }
+
+    // PC
+    .visual-set {
+        &.large-align-left {
+            .hidden-xs {
+                .visual-area {
+                    float:left;
+                }
+                .text-thumb-area {
+                    float:right;
+                }
+            }
+        }
+        &.large-align-right {
+            .hidden-xs {
+                .visual-area {
+                    float:right;
+                }
+                .text-thumb-area {
+                    float:left;
+                }
+            }
+        }
+    }
+    .hidden-xs {
+        @include clearfix;
+        .visual-area {
+            width:50%;
+            padding:0 12px;
+            .caption {
+                width:auto;
+                left:12px;
+                right:12px;
+            }
+        }
+        .text-thumb-area {
+            width:50%;
+            padding:0 12px;
+        }
+
+        .thumbnail-area-box {
+            .text-area-default,
+            .button-box-default,
+            .button-text-default {
+                display:none !important;
+            }
+
+            margin-top:32px;
+            .thumbnail-area {
+                margin:0 -8px;
+                font-size:0;
+                .obj-thumb {
+                    display:inline-block;
+                    width:64px;
+                    height:64px;
+                    margin:0 8px;
+                    a {
+                        display:block;
+                        position:relative;
+                        height:0;
+                        padding-bottom:100%;
+                        overflow:hidden;
+                        img{
+                            width:100%;
+                            height:auto;
+                            vertical-align:top;
+                        }
+                    }
+                    &.on {
+                        a::after {
+                            content:' ';
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            right:0;
+                            bottom:0;
+                            border:4px solid #EC455A;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Mobile {
+    .visual-m-area {
+        position:relative;
+        width:100%;
+        .indi-wrap {
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            z-index:10;
+        }
+        .ui_carousel_list {
+            overflow:hidden;
+        }
+        .items {
+            @include clearfix;
+        }
+        .visual-m-box {
+            position:relative;
+            height:0;
+            padding-bottom:66.6%;
+            overflow:hidden;
+            a {
+                display:block;
+            }
+        }
+        .text-m-area {
+            margin-top:62px;
+        }
+    }
+}

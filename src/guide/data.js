@@ -20,6 +20,7 @@ var res = {
 	},
 	"Front" : {
 		"Component" : {
+			"KRC0003_Vertical Selector" : ["/html/components/KRC0003.html","","진행중"],
 			"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
 			"KRC0009_Exciting Promotion Offers" : ["/html/components/KRC0009.html","","검수완료"],
 			"KRC0010_Recommended Promotions" : ["/html/components/KRC0010.html","","검수완료"],
@@ -40,6 +41,9 @@ var res = {
 			"KRC0030_Feature Icon Tab" : ["/html/components/KRC0030.html","","진행중"],
 			"KRC0031_Block Image (2 to 3 - CTA)" : ["/html/components/KRC0031.html","","진행중"],
 			"KRC0032_Section Title" : ["/html/components/KRC0032.html","","진행중"],
+			"KRC0037_Carousel BG Image " : ["/html/components/KRC0037.html","","진행중"],
+			"KRC0038_Text" : ["/html/components/KRC0038.html","","진행중"],
+			"KRC0044_Hero Image (Thin)" : ["/html/components/KRC0044.html","","진행중"],
 			"KRC0045_Article List" : ["/html/components/KRC0045.html","","진행중"],
 			"KRP0013_PDP Bundle" : ["/html/components/KRP0013.html","","검수완료"],
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"]
