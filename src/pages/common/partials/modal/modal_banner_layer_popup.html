@@ -1,0 +1,100 @@
+
+<!-- partials/components/modal/modal_banner_layer_popup.hbs -->
+<div class="modal fade modal-fix show banner-layer" id="modal_banner_layer_popup@@modal-index" tabindex="-1" role="dialog" data-backdrop="true">
+	<div class="modal-dialog modal-more-contents-layer-popup" role="document">
+		<div class="modal-content">
+			<button type="button" class="modal-close" data-dismiss="modal">Close</button>
+			<div class="modal-body">
+				<!-- 
+					to 개발팀.
+					visual-box와 text-box의 갯수는 서로 같아야 합니다.
+					양자는 별도의 마크업으로, 서로 싱크하여 구동합니다.
+				-->
+				<!-- 1. image -->
+				<div class="visual-area">
+					<div class="visual-box-belt">
+						<div class="visual-box">
+							<!-- box 컨텐츠가 image일 때 
+								<div class="image-container">
+									<img class="pc lazyload" data-src="/lg5-common/images/components/component_57/sample-960x540.jpg" alt="">
+									<img class="mobile lazyload" data-src="/lg5-common/images/components/component_57/sample-688-387.jpg" alt="">
+								</div>
+							-->
+							<!-- box 컨텐츠가 video일 때 (youtube) -->
+							<div class="video-container video-box">
+								<div class="thumnail">
+									<img class="pc lazyload" data-src="/lg5-common/images/components/component_57/sample-960x540.jpg" alt="">
+									<img class="mobile lazyload" data-src="/lg5-common/images/components/component_57/sample-688-387.jpg" alt="">
+								</div>
+								<button type="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube">Watch the video</button>
+								<!-- iframe loca -->
+							</div>
+						</div>
+						<div class="visual-box">
+							<!-- box 컨텐츠가 video일 때 (brightcove) -->
+							<div class="video-container video-box">
+								<div class="thumnail">
+									<img class="pc lazyload" data-src="/lg5-common/images/components/component_57/sample-960x540.jpg" alt="">
+									<img class="mobile lazyload" data-src="/lg5-common/images/components/component_57/sample-688-387.jpg" alt="">
+								</div>
+								<button type="button" class="see-video" data-type="brightcove" data-video-id="4864675309001" data-account="1594709527001" data-player="fb5239d7-2315-41a1-aa0a-1249403bcab2">Watch the video</button>
+								<!-- iframe loca -->
+							</div>
+						</div>
+						<div class="visual-box">
+							<!-- box 컨텐츠가 image일 때 -->
+							<div class="image-container">
+								<img class="pc lazyload" data-src="/lg5-common/images/components/component_57/sample-960x540.jpg" alt="">
+								<img class="mobile lazyload" data-src="/lg5-common/images/components/component_57/sample-688-387.jpg" alt="">
+							</div>
+						</div>
+						<div class="visual-box">
+							<!-- box 컨텐츠가 image일 때 -->
+							<div class="image-container">
+								<img class="pc lazyload" data-src="/lg5-common/images/components/component_57/sample-960x540.jpg" alt="">
+								<img class="mobile lazyload" data-src="/lg5-common/images/components/component_57/sample-688-387.jpg" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- // 1. image -->
+				<div class="text-area">
+					<div class="text-box-belt">
+						<div class="text-box @@box1.text-align">
+							<!-- 2. headline -->
+							<div class="text-box-head">@@box1.head</div>
+							<!-- // 2. headline -->
+							<!-- 3. body copy -->
+							<div class="text-box-desc @@box1.desc-style">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo</div>
+							<!-- // 3. body copy -->
+						</div>
+						<div class="text-box @@box2.text-align">
+							<!-- 2. headline -->
+							<div class="text-box-head">@@box2.head</div>
+							<!-- // 2. headline -->
+							<!-- 3. body copy -->
+							<div class="text-box-desc @@box2.desc-style">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo</div>
+							<!-- // 3. body copy -->
+						</div>
+						<div class="text-box @@box3.text-align">
+							<!-- 2. headline -->
+							<div class="text-box-head">@@box3.head</div>
+							<!-- // 2. headline -->
+							<!-- 3. body copy -->
+							<div class="text-box-desc @@box3.desc-style">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo</div>
+							<!-- // 3. body copy -->
+						</div>
+						<div class="text-box @@box4.text-align">
+							<!-- 2. headline -->
+							<div class="text-box-head">@@box4.head</div>
+							<!-- // 2. headline -->
+							<!-- 3. body copy -->
+							<div class="text-box-desc @@box4.desc-style">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo</div>
+							<!-- // 3. body copy -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

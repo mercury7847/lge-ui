@@ -1,0 +1,98 @@
+
+<!-- partials/components/KRC0022-video.hbs -->
+<div class="component-wrap">
+	<!--
+		[component-wrap 옵션]
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+
+		[.visual-set 옵션 (Image Replacement)]
+		1. Large 이미지 정렬 : 
+		.large-align-left : 좌측형
+		.large-align-right : 우측형
+		
+		[하단 텍스트 영역 (text-set) 옵션]
+		1. 가로 정렬 : 
+		.align-left : 왼쪽 정렬
+		.align-right : 오른쪽 정렬
+		.align-center : 중앙 정렬
+		
+		[하단 텍스트 영역 (text-set) 의  body copy (.sub-text) 옵션]
+		1. 폰트 종류 : 
+		.font-regular : 레귤러
+		.font-bold : 볼드
+		.font-regular-italic : 레귤러 이탤릭
+		.font-bold-italic : 볼드 이탤릭
+
+		2. 폰트 스타일: 
+		기본은 언더라인 없음 
+		.font-underline : 언더라인
+	-->
+	<div class="component KRC0022 @@align-class1">
+		<div class="visual-set @@large-align">
+            
+            <!-- 1. image 비디오 타입인 경우 -->
+            <div class="visual-area video youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
+                <a href="#none" role="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title03">plays audio description video</a>
+                <!-- * youtube video modal은 아래의 방식으로 입력 -->
+                <!-- 11-2. video play button -->
+                <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="block_image_2to3_cta-video_play" data-link-name="{video title / video id}" aria-describedby="title03">
+                    <img class="lazyload" data-src="/lg5-common/images/KRC0022/@sample-16-9.jpg" alt=""/>
+                </a>
+                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                <!-- // 11-2. video play button -->
+                <!-- 11-3. video title copy -->
+                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                <!-- // 11-3. video title copy -->
+            </div>
+            <!-- // 1. image -->
+
+
+			<div class="visual-thumbnail-set">
+				<!-- 3. thumbnail image : brightcove -->
+				<div class="thumb-obj">
+
+					<a href="#none"  class="active" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-video-title="[video title 1]" data-adobe-video="{video title / video id}"><img data-src="/lg5-common/images/KRC0022/sample-thum-01.jpg" alt="[alt text 1]" class="lazyload" data-large="/lg5-common/images/KRC0022/sample-01.jpg" /></a>
+
+					<div class="text-set-default">
+						<div class="sub-title">@@headline2-1</div>
+						<div class="sub-text @@font-class2 @@font-style2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient. Body text can be up to 200 characters.</div>
+					</div>
+				</div>
+				<!-- // 3. thumbnail image -->
+				<!-- 3. thumbnail image : youtube -->
+				<div class="thumb-obj">
+					<!-- Start : 2019-02-08 data-src/data-large changed -->
+					<!-- Edit : 2019-03-11 add data-adobe-video attibute -->
+					<a href="#none" data-type="youtube" data-video-id="PetoQo1eUww" data-video-title="[video title 2]" data-adobe-video="{video title / video id}"><img data-src="/lg5-common/images/KRC0022/sample-thum-02.jpg" alt="[alt text 2]" class="lazyload" data-large="/lg5-common/images/KRC0022/sample-02.jpg" /></a>
+					<!-- End : 2019-02-08 data-src/data-large changed -->
+					<div class="text-set-default">
+						<div class="sub-title">@@headline2-2</div>
+						<div class="sub-text @@font-class2 @@font-style2">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</div>
+					</div>
+				</div>
+				<!-- // 3. thumbnail image -->
+				<!-- 3. thumbnail image : image -->
+				<div class="thumb-obj">
+					<!-- Start : 2019-02-08 data-src/data-large changed -->
+					<a href="#none"><img data-src="/lg5-common/images/KRC0022/sample-thum-03.jpg" alt="[alt text 3]" class="lazyload" data-large="/lg5-common/images/KRC0022/sample-03.jpg" /></a>
+					<!-- End : 2019-02-08 data-src/data-large changed -->
+					<div class="text-set-default">
+						<div class="sub-title">@@headline2-3</div>
+						<div class="sub-text @@font-class2 @@font-style2">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient. Body text can be up to 200 characters.</div>
+					</div>
+				</div>
+				<!-- // 3. thumbnail image -->
+			</div>
+		</div>
+		<div class="text-set">
+			<!-- 4. headline -->
+			<div class="sub-title">@@headline2-1</div>
+			<!-- // 4. headline -->
+			<!-- 5. body copy -->
+			<div class="sub-text @@font-class2 @@font-style2">Body text can be up to 200 characters. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient. Body text can be up to 200 characters.</div>
+			<!-- // 5. body copy -->
+		</div>
+	</div>
+</div>
