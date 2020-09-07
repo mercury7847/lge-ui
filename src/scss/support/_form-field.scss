@@ -72,6 +72,10 @@
                 margin-left:8px;
             }
         }
+        .field-btn-group {
+            text-align: center;
+            margin-top: 32px;
+        }
         @include mobile {
             float:none;
             width:100%;
