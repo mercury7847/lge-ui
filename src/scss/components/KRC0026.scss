@@ -7,40 +7,49 @@
     width: 100%;
     max-width: (1284px + 60px);
     margin: 0 auto;
-    // padding-right: 30px;
-    // padding-left: 30px;
-    padding: 0 30px;
+	padding-right: 30px;
+    padding-left: 30px;
 
     @include mobile {
         max-width: 100%;
-        padding: 0 24px;
+		padding-right: 24px;
+		padding-left: 24px;
 	}
 	
 	// variation
-	.align-right{margin-left: auto;}
-	.align-center{margin:auto;}
-	.text-white{color:#fff;}
-	.text-black{color:#111;}
+	.align-right {
+		margin-left: auto;
+	}
+	.align-center {
+		margin: auto;
+	}
+	.text-white {
+		color: #fff;
+	}
+	.text-black {
+		color: #111;
+	}
 
 	// component level
 	.inner {
 		position: relative;
-		max-width:1284px;
-		margin:auto;
+		max-width: 1284px;
+		margin: auto;
 		@include mobile {
 			margin: 0 -24px;
 		}
 	}
 
 	.title {
-		max-width:800px;
-		font-size:40px;
-		line-height:48px;
-		color:#111;
-		margin-bottom: 33px;
+		max-width:848px;
+		margin-bottom: 40px;
+		font-size: 24px;
+		line-height: 32px;
+		color: #111;
+		@include textClipClamp(2);
 		* {
-			font-size:inherit;
-			line-height:inherit;
+			font-size: inherit;
+			line-height: inherit;
 		}
 	}
 
@@ -50,7 +59,8 @@
 
 		.contents-container {
 			position: absolute;
-			top:0; left:0;
+			top: 0;
+			left: 0;
 			width:100%;
 			height:(100% + 1%); // 1% is responsive cap space
 			display:flex;
@@ -65,7 +75,9 @@
 				&:nth-child(1), 
 				&:nth-child(2), 
 				&:nth-child(3) {
-					.content-box {margin-top: 0;}
+					.content-box {
+						margin-top: 0;
+					}
 				}
 			}
 			@include mobile {
@@ -79,7 +91,9 @@
 
 				&:nth-child(1), 
 				&:nth-child(2) {
-					.content-box {margin-top: 0;}
+					.content-box {
+						margin-top: 0;
+					}
 				}
 			}
 		}
@@ -91,7 +105,7 @@
 			$flex-order-mobile : (1,5,2,6,3,4,7,8);
 
 			@media screen and  (min-width: 768px) {
-				padding-bottom:( (24*2 + 309*2 + 732) / 1284) * 100%;
+				padding-bottom:( (24*2 + 412 + 550 + 309) / 1284) * 100%;
 				@for $i from 1 through length($document-order) {
 					.content-box-cover:nth-child(#{$i}) {
 						order : nth($flex-order, $i);
@@ -163,17 +177,17 @@
 	.content-box[data-toggle="modal"] {
 		.banner-content {
 			&:after {
-				content:"";
-				position:absolute;
-				bottom:24px;
-				right:15px;
-				display:block;
-				width:24px;
-				height:24px;
-				background:url(/lg5-common/images/KRC0026/content-plus.svg) 50% 50% no-repeat;
-				background-size:100% 100%;
-				@include mobile {				
-					bottom:15px;
+				content: "";
+				position: absolute;
+				bottom: 24px;
+				right: 24px;
+				display: block;
+				width: 24px;
+				height: 24px;
+				background: url(/lg5-common/images/KRC0026/content-plus.svg) 50% 50% no-repeat;
+				background-size: 100% 100%;
+				@include mobile {
+					bottom: 15px;
 				}
 			}
 		}
@@ -210,11 +224,13 @@
 		.banner-content,
 		.desc-content{
 			position: absolute;
-			top:0; bottom:0; left:0; right:0;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
 			overflow: hidden;
 		}
 		.banner-content {
-			
 			img {
 				width:100%;
 				transition:transform 300ms ease;
@@ -223,38 +239,34 @@
 		.desc-content {
 			// background-color:rgba(51, 51, 51, 0.1);
 			//background-color:transparentize($color-nightrider, 0.9);
-			opacity:0;
-			z-index:-1;
+			opacity: 0;
+			z-index: -1;
 			//@include font-family($font-semibold);
-			font-size:24px;
-			line-height:32px;
+			font-size: 16px;
+			line-height: 24px;
 			color: #fff;
 			// margin:auto;
-			@media screen and  (min-width: 768px) {			
-				transition:opacity 100ms;
+			@media screen and  (min-width: 768px) {
+				transition: opacity 100ms;
 			}
 			.desc {
 				position: absolute;
-				top:50%; left:50%;
-				transform:translate(-50%, -50%);
-				width:100%; 
-				max-width:(330px + 30px);
-				padding:15px;
-				color:inherit;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 100%;
+				padding: 24px;
+				color: inherit;
 			}
 		}
 		.box-title {
 			position: absolute;
-			bottom:19px;
-			left:24px;
-			font-size:14px;
-			line-height: 20px;
-			@media screen and  (min-width: 768px) {				
-				bottom:10px;
-				left:15px;
-			}
+			bottom: 24px;
+			left: 24px;
+			font-size: 16px;
+			line-height: 24px;
 			@include mobile {
-				width:72px;
+				width: 72px;
 			}
 		}
 	}
@@ -275,6 +287,18 @@
 }
 
 // modal
+.modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1050;
+	display: none;
+	overflow: hidden;
+	outline: 0;
+}
+
 [id*="modal_banner_layer_popup"] {
 	@media screen and  (max-width: 1144px) {
 		&:before {
