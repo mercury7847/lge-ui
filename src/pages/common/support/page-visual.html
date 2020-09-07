@@ -1,14 +1,15 @@
 <div class="page-visual">
     <div class="page-visual-heading">
-        <div class="heading-area">
-            <h2 class="heading-title">@@title</h2>
+        <h2 class="heading-title">@@title</h2>
+        @@if (context.desc) {
             <p class="heading-desc">@@desc</p>
-        </div>
-    </div>
-    <div class="page-visual-image">
-        <div class="image-area">
-            <img class="" src="@@img.pcSrc" alt="@@img.alt">
-            <img class="" src="@@img.mobileSrc" alt="@@img.alt">
-        </div>
+        }
+        @@if (context.button) {
+            <div class="heading-btns">
+            @@for(var i = 0; i < context.button.length; i++) {
+                <a href="#" `+button[i].attr+`><span>`+button[i].text+`</span></a>
+            }
+            </div>
+        }
     </div>
 </div>

@@ -2,63 +2,46 @@
 
 /* page visual */
 .page-visual {
-    position:relative;
     &-heading {
-        position:absolute;
-        left:0;
-        right:0;
-        top:140px;
         width:100%;
+        max-width:1284px;
+        margin:0 auto;
+        padding:56px 40px 36px;
+        text-align:center;
         @include mobile {
-            top:92px;
+            padding:56px 20px 40px;
         }
-        .heading {
-            &-area {
-                width:100%;
-                max-width:1284px;
-                margin:0 auto;
-                padding:0 40px;
-                text-align:center;
-                @include mobile {
-                    padding:0 24px;
+    }
+    .heading {
+        &-title {
+            font-size:30px;
+            font-weight:700;
+            color:#111;
+            line-height:1.2;
+        }
+        &-desc {
+            margin-top:20px;
+            color:#515151;
+            line-height:1.5;
+        }
+        &-btns {
+            margin-top:12px;
+            a, button {
+                margin-left:8px;
+                &:first-child {
+                    margin-left:0;
                 }
             }
+        }
+        @include mobile {
             &-title {
-                font-size:28px;
-                font-weight:700;
-                color:#111;
-                line-height:1;
+                font-size:24px;
+                line-height:1.33;
             }
             &-desc {
                 margin-top:16px;
-                color:#111;
-                line-height:1;
-            }
-            @include mobile {
-                &-title {
-                    font-size:18px;
-                }
-                &-desc {
-                    margin-top:11px;
-                    font-size:13px;
-                    line-height:1.69px;
-                }
-            }
-        }
-    }
-    &-image {
-        height:280px; // 임시 사이즈
-        @include mobile {
-            height:200px;
-        }
-        .image {
-            &-area {
-                width:100%;
-                max-width:1920px;
-                overflow:hidden;
-                img {
-                    width:100%;
-                }
+                font-size:14px;
+                line-height:1.29px;
             }
         }
     }

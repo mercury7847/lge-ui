@@ -16,43 +16,29 @@
 
         <div class="container">
             @@include('./common/support/page-visual.html', {
-                'title': '출장서비스 예약',
-                'desc': '전문 엔지니어가 방문하여 고객님께 서비스를 제공해 드립니다.',
-                'img': {
-                    pcSrc: '경로',
-                    mobileSrc: '경로',
-                    alt: '설명'
-                }
+                'title': '출장 서비스 예약',
+                'desc': '전문 엔지니어가 고객님께 찾아가서 필요로 하시는 서비스를 제공해드립니다.',
+                'button': [
+                    {
+                        'text': '요금 및 보증기간 안내',
+                        'attr': 'class="btn" title="레이어 열림"'
+                    }, {
+                        'text': '유상서비스 적용 안내',
+                        'attr': 'class="btn" title="레이어 열림"'
+                    }
+                ]
             })
             
             <div class="contents support KR50CS411">
-                <div class="status-bar">
-                    <div class="status-bar-inner">
-                        <div class="status">
-                            <strong class="status-title">선택 제품</strong>
-                            <ul class="status-list">
-                                <li>에어컨</li>
-                                <li>3 in 1</li>
-                            </ul>
-                        </div>
-                        <div class="guide">
-                            <span class="guide-link">
-                                <a href="#modal1" data-control="modal">요금 및 보증기간 안내</a>
-                            </span>
-                            <span class="guide-link">
-                                <a href="#paidServiceModal" data-control="modal">유상 서비스 적용 안내</a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-    
-                @@include('./common/support/select-category.html')
-                <div class="contents-inner type-A">
-                    <div class="layout">
-                        <div class="layout-title">
+                <div class="contents-inner">
+                    
+                    @@include('./common/support/select-category.html')
+
+                    <div class="section">
+                        <div class="section-title">
                             <h3 class="tit">구입시기 및 증상선택</h3>        
                         </div>
-                        <div class="layout-content">
+                        <div class="section-content">
                             <div class="field-wrap">
                                 <div class="row">
                                     <div class="field-item block">
@@ -122,11 +108,11 @@
                         </div>
                     </div>
 
-                    <div class="layout">
-                        <div class="layout-title">
+                    <div class="section">
+                        <div class="section-title">
                             <h3 class="tit">기타정보(필수)</h3>        
                         </div>
-                        <div class="layout-content">
+                        <div class="section-content">
                             <div class="field-wrap">
                                 <div class="row">
                                     <div class="field-item block">
@@ -218,11 +204,11 @@
                         </div>
                     </div>
 
-                    <div class="layout">
-                        <div class="layout-title">
+                    <div class="section">
+                        <div class="section-title">
                             <h3 class="tit">신청자 정보 입력 (필수)</h3>        
                         </div>
-                        <div class="layout-content">
+                        <div class="section-content">
                             <div class="field-wrap">
                                 <div class="row">
                                     <div class="field-item">
@@ -264,11 +250,11 @@
                         </div>
                     </div>
 
-                    <div class="layout">
-                        <div class="layout-title">
+                    <div class="section">
+                        <div class="section-title">
                             <h3 class="tit">서비스 희망 일자 선택 (필수)</h3>        
                         </div>
-                        <div class="layout-content">
+                        <div class="section-content">
                             <div class="field-wrap">
                                 <div class="row">
                                     <div class="field-item block">
@@ -315,11 +301,11 @@
                         </div>
                     </div>
 
-                    <div class="layout">
-                        <div class="layout-title">
+                    <div class="section">
+                        <div class="section-title">
                             <h3 class="tit">개인정보 수집 및 이용동의 (필수)</h3>        
                         </div>
-                        <div class="layout-content">
+                        <div class="section-content">
                             <div class="field-wrap">
                                 <div class="row">
                                     <div class="field-item block">

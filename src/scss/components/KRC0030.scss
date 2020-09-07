@@ -4,8 +4,8 @@
 
 
 .KRC0030 {
-	display: flex;
-	flex-direction: column;
+	//display: flex;
+	//flex-direction: column;
     width: 100%;
     //max-width: (1284px + 60px);
     max-width: (1600px + 60px);
@@ -14,12 +14,11 @@
     @include mobile {
         max-width: 100%;
         padding: 60px 0;
-    }
+	}
+	clear: both;
 
-    .icon-area {
-		flex: 1;
+    .icon-area {	
 		width: 100%;
-		order: 2;
 		margin: 24px auto 0;
 		max-width: (486px + 60px);
         padding:0 30px;
@@ -80,14 +79,14 @@
 			&.hover,
 			&.slick-active {
 				.off {
-					opacity:0;
+					opacity:0 !important;
 				}
 				.on {
-					opacity:1;
+					opacity:1 !important;
 				}
 				.icon-text {
-					//color:$color-carmine;
-					text-decoration: underline; /* PJTWAUS-1 20200108 modify */
+					color:#ec455a;
+					text-decoration: underline;
 				}
 			}
 			.icon-text {
@@ -115,8 +114,6 @@
     
     .text-area {
 		width: 100%;
-		flex: 1;
-		order: 1;
 		
 		.group {
 			display:none;
@@ -144,7 +141,7 @@
     .body-copy {
 		width:100%;
 		font-size: 14px;
-		max-width: 848px; // 408px
+		max-width: 848px;
 		line-height: 20px;
 		color: #616161;
 		margin:0 auto 40px;
@@ -218,7 +215,6 @@
 	}
 	&.bg-white {
 		background-color: #fff;
-		// padding-top:0;
     }
 	
 	.animation-box .animation-area .controller-wrap {
