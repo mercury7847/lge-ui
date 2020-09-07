@@ -335,7 +335,7 @@
                         right: 0;
                         left: 0;
                         @include mobile {
-                            top: 0;
+                            top: -65px;
                         }
                     }
                 }
@@ -361,7 +361,7 @@
                         right: 0;
                         left: 0;
                         @include mobile {
-                            top: 0;
+                            top: -65px;
                             bottom: 0;
                         }
                     }
