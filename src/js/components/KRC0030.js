@@ -5,10 +5,21 @@ $(document).ready(function() {
 
 	var $obj = $('.KRC0030');
 	var $objIndex = $obj.attr('data-index','0');
+
+	$obj.each(function(){
+		if ($(this).hasClass('bg-dark') || $(this).hasClass('bg-black')){
+			$(this).find('.slider-nav .icon a').find('img.off').attr('src', '/lg5-common/images/KRC0030/@icon-white.png');
+		}	
+		else {
+			$(this).find('.slider-nav .icon a').find('img.off').attr('src', '/lg5-common/images/KRC0030/@icon-gray.png');
+		}
+	
+	});
+	
 	var ani ={
 		event: function(obj) {
 			var $icon = $obj.find('.slider-nav .icon a');
-			
+
 			$icon.hover(function(){
 				$(this).closest('.icon').addClass('hover');
 			}, function(){
