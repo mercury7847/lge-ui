@@ -153,8 +153,14 @@
                 width: 100%;
                 max-width: 1284px + 60px;
                 margin: 0 auto;
-                padding: 0 30px;
+                padding-right: 30px;
+                padding-left: 30px;
 
+                @include mobile {
+                    max-width: 100%;
+                    padding-right: 24px;
+                    padding-left: 24px;
+                }
             }
         }
     }
@@ -328,8 +334,9 @@
                         top: -69px;
                         right: 0;
                         left: 0;
-                        //padding-right: 30px;
-                        //padding-left: 30px;
+                        @include mobile {
+                            top: 0;
+                        }
                     }
                 }
             }
@@ -353,6 +360,10 @@
                         bottom: -69px;
                         right: 0;
                         left: 0;
+                        @include mobile {
+                            top: 0;
+                            bottom: 0;
+                        }
                     }
                 }
             }
@@ -373,15 +384,6 @@
                 background: #333;
             } @else if $bg == black {
                 background: #000;
-            } @else if $bg == white {
-                background: #fff;
-            }
-        }
-    }
-
-    @each $text in $color {
-        .text-#{$text} {
-            @if $text == white {
                 .indi-wrap {
                     li {
                         .btn-indi {
@@ -393,6 +395,25 @@
                         }
                     }
                 }
+            } @else if $bg == white {
+                background: #fff;
+                .indi-wrap {
+                    li {
+                        .btn-indi {
+                            background-color: #ddd;
+                        }
+                        &.on .btn-indi {
+                            background-color: #111;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @each $text in $color {
+        .text-#{$text} {
+            @if $text == white {
                 .text-block {
                     .eyebrow {
                         color: #fff;
@@ -435,16 +456,6 @@
                 }
             }
             @if $text == black {
-                .indi-wrap {
-                    li {
-                        .btn-indi {
-                            background-color: #ddd;
-                        }
-                        &.on .btn-indi {
-                            background-color: #111;
-                        }
-                    }
-                }
                 .text-block {
                     .eyebrow {
                         color: #111;
