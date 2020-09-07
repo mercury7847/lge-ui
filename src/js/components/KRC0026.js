@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	if(!document.querySelector('.KRC0026')) return false;
 
+    $('.KRC0026').buildCommonUI();
+
 	var modal = {
 		wrappers: document.querySelectorAll('.KRC0026 .modal-layers'),
 		wrapper: null,

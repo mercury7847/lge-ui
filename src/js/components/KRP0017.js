@@ -1,6 +1,8 @@
 $(window).ready(function(){
     if(!document.querySelector('.KRP0017')) return false;
 
+    $('.KRP0017').buildCommonUI();
+
     var KRP0017 = {
         tabmenu: null,
         init: function(){
