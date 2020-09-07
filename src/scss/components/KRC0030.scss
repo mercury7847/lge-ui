@@ -56,10 +56,10 @@
 					z-index:2;
 				}
 				.off {
-					opacity:1 !important;
+					opacity:1;
 				}
 				.on {
-					opacity:0 !important;
+					opacity:0;
 				}
 				a {
 					display:block;
@@ -80,10 +80,10 @@
 			&.hover,
 			&.slick-active {
 				.off {
-					opacity:0;
+					opacity:0 !important;
 				}
 				.on {
-					opacity:1;
+					opacity:1 !important;
 				}
 				.icon-text {
 					color:#ec455a;
