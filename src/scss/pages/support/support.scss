@@ -78,7 +78,8 @@
             background:#fff;
             &-title {
                 .tit {
-                    line-height:1.19
+                    line-height:1.19;
+                    font-size: 16px;
                 }
             }
             &-content {
@@ -99,6 +100,9 @@
         }
         @include mobile {
             margin-top:40px;
+            &.type-A {
+                margin-top: 0;
+            }
         }
     }
 
@@ -241,10 +245,6 @@
                 & + li {
                     margin-top:8px;
                 }
-                &:before {
-                    width:4px;
-                    height:4px;
-                }
             }
         }
     }
@@ -297,6 +297,10 @@
                 line-height: 1.38;
                 width: calc(100% - 138px);
                 float: left;
+                > [class^="btn"] {
+                    margin-left: 16px;
+                    vertical-align: middle;
+                }
             }
         }
         @include mobile {
@@ -306,6 +310,7 @@
                 }
                 .description {
                     width: calc(100% - 104px);
+                    font-weight: 500;
                 }
             }
         }
@@ -325,6 +330,18 @@
         }
         .chk-wrap {
             float: right;
+        }
+    }
+    .pc-only {
+        display: block;
+        @include mobile {
+            display: none;
+        }
+    }
+    .mo-only {
+        display: none;
+        @include mobile {
+            display: block;
         }
     }
 }

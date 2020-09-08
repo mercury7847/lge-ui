@@ -23,11 +23,16 @@
         .align-middle: 텍스트 영역이 중간
         .align-bottom: 텍스트 영역이 하단
 
-        3. 텍스트 영역 넓이
+        3. 모바일 이미지 텍스트 정렬 (PDP)  [KR수정] 새로운 이미지 텍스트 정렬 케이스
+        .mobile-text-block-left: 텍스트 영역이 모바일에서만 왼쪽
+        .mobile-text-block-right: 텍스트 영역이 모바일에서만 오른쪽
+        .mobile-text-block-center: 텍스트 영역이 모바일에서만 가운데
+
+        4. 텍스트 영역 넓이
         .type-wide : 넓음
         .type-narrow : 좁음
 
-        4. 폰트 컬러
+        5. 폰트 컬러
         .text-black : 검정색
         .text-white : 흰색
 
@@ -128,7 +133,7 @@
                     </div>
                     <!-- // contents-area -->
                 </div>
-                <div class="carousel-box video-box @@carousel.item.font-color">
+                <div class="carousel-box video-box @@carousel.item.font-color @@carousel.item.componentType">
                     <!-- 3. image -->
                     <div class="visual-area">
                         <img data-src="@@carousel.item.visual3" class="lazyload pc" alt="" />

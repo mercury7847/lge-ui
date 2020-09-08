@@ -196,18 +196,14 @@
     @include mobile {
         .email-input {
             .input-wrap {
-                &.email-wrap {
-                    display: block;
-                    width: 100%;
-                    input {
-                        width: 100%;
-                    }
-                }
+                width: calc((100% - 24px)/ 2);
             }
-            .at,
-            .select-wrap, 
-            .input-wrap {
-                display: none;
+            .select-wrap {
+                display: block;
+                width: 100%;
+                input {
+                    width: 100%;
+                }
             }
         }
     }
