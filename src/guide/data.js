@@ -20,9 +20,7 @@ var res = {
 	},
 	"Front" : {
 		"Component" : {
-			"KRP0001_GNB - B2C" : ["/html/components/KRC0001.html","","진행중"],
 			"KRC0002_Selective offering" : ["/html/components/KRC0002.html","","진행중"],
-			"KRP0003_Footer" : ["/html/components/KRC0003.html","","진행중"],
 			"KRC0003_Vertical Selector" : ["/html/components/KRC0003.html","","진행중"],
 			"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
 			"KRC0009_Exciting Promotion Offers" : ["/html/components/KRC0009.html","","검수완료"],
@@ -51,8 +49,10 @@ var res = {
 			"KRC0042_Slider Image / inside title - Left Right Text_Static" : ["/html/components/KRC0042.html","","진행중"],
 			"KRC0044_Hero Image (Thin)" : ["/html/components/KRC0044.html","","진행중"],
 			"KRC0045_Article List" : ["/html/components/KRC0045.html","","검수완료"],
+			"KRP0001_GNB - B2C" : ["/html/components/KRP0001.html","","진행중"],
+			"KRP0003_Footer" : ["/html/components/KRP0003.html","","진행중"],
 			"KRP0010_PDP Bundle" : ["/html/components/KRP0010.html","","검수완료"],
-			"KRP0013_PDP Support - B2C" : ["/html/components/KRP0013.html","","진행중"],
+			"KRP0016_PDP Support - B2C" : ["/html/components/KRP0016.html","","진행중"],
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"]
 		},
 		"Page" : {

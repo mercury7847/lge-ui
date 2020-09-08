@@ -237,24 +237,71 @@
         }
     }
 
-    .nugget-eyebrow {
-        margin-top: 32px;
-        .eyebrow-box {
-            margin-bottom: 4px;
+    .type-narrow {}
+
+    @include mobile {
+        .mobile-text-block-left,
+        .mobile-text-block-right,
+        .mobile-text-block-center {
+            .contents-area {
+                position: static;
+                padding: 0;
+                .align-top,
+                .align-middle,
+                .align-bottom {
+                    &.text-area {
+                        &.text-white {
+                            background-color: #000;
+                        }
+                        &.text-black {
+                            background-color: #fff;
+                        }
+                        .text-wrap {
+                            position: static;
+                            padding: 24px 24px 60px;
+                            transform: translateY(0);
+                        }
+                    }
+                }
+            }
+            &.carousel-box {
+                &:last-child {
+                    .contents-area {
+                        .align-top,
+                        .align-middle,
+                        .align-bottom {
+                            &.text-area {
+                                .text-wrap {
+                                    padding-bottom: 24px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-        .eyebrow,
-        .nugget {
-            display: inline-block;
-            margin-right: 12px;
-            font-size: 14px;
-            line-height: 20px;
+        .mobile-text-block-left {
+            .text-area {
+                .inner {
+                    text-align: left;
+                }
+            }
         }
-        .nugget {
-            @include font-family($font-bold);
+        .mobile-text-block-right {
+            .text-area {
+                .inner {
+                    text-align: right !important;
+                }
+            }
+        }
+        .mobile-text-block-center {
+            .text-area {
+                .inner {
+                    text-align: center !important;
+                }
+            }
         }
     }
-
-    .type-narrow {}
 
     // 텍스트 가로정렬 및 버튼 사이 간격
     $align: (left, right, center, top, middle, bottom);
@@ -322,6 +369,8 @@
                 .cta-link {
                     span {
                         display: block;
+                        margin-right: 0;
+                        margin-left: 0;
                     }
                 }
             }
@@ -427,12 +476,6 @@
                         color: #fff;
                     }
                 }
-                .nugget-eyebrow {
-                    .eyebrow,
-                    .nugget {
-                        color: #fff;
-                    }
-                }
                 .btn {
                     &.btn-primary {
                         border-color: #fff;
@@ -466,12 +509,6 @@
                         }
                     }
                     .copy {
-                        color: #111;
-                    }
-                }
-                .nugget-eyebrow {
-                    .eyebrow,
-                    .nugget {
                         color: #111;
                     }
                 }

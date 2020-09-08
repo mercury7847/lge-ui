@@ -43,6 +43,9 @@
                 }
             }
         }
+        &-text-link {
+            margin-top: 20px;
+        }
         @include mobile {
             &-title {
                 font-size:24px;

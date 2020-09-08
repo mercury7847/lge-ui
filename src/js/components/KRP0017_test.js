@@ -1,6 +1,8 @@
 $(window).ready(function(){
     if(!document.querySelector('.KRP0017')) return false;
 
+    $('.KRP0017').buildCommonUI();
+    
     vcui.require(["ui/tab","ui/smoothScroll",'ui/pagination'], function () {
         var ajaxUrl = '/lg5-common/data-ajax/support/promotionList.json';
         var tabItemTemplate =

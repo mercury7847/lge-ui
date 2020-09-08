@@ -1,12 +1,22 @@
 @@if ( context.bulletTit ) {
+    @@if ( context.topBorder ) {
+    <dl class="bullet-list top-border">
+    }
+    @@if ( !context.topBorder ) {
     <dl class="bullet-list">
+    }
         <dt class="b-tit">@@bulletTit</dt>
         @@for (var i=0; i < context.bulletTxt.length; i++) {
             <dd class="b-txt">`+bulletTxt[i]+`</dd>
         }
     </dl>
 } @@if ( !context.bulletTit ) {
+    @@if ( context.topBorder ) {
+    <ul class="bullet-list top-border">
+    }
+    @@if ( !context.topBorder ) {
     <ul class="bullet-list">
+    }
         @@for (var i=0; i < context.bulletTxt.length; i++) {
             <li class="b-txt">`+bulletTxt[i]+`</li>
         }

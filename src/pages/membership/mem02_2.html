@@ -8,7 +8,7 @@
         @@include('./common/header.html')
 
         <div class="container">
-            @@include('./common/page-header.html', {
+            @@include('./common/modules/page-header.html', {
                 "pageTitle": "VIP 멤버십 혜택",
                 "pageArr" : [
                     { "page" : "멤버십 혜택", "on" : "" },
@@ -45,6 +45,7 @@
                             </ul>
 
                             @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
                                 "bulletTit" : "유의사항",
                                 "bulletTxt" : [
                                     "구매제품의 수리사유가 발생 시에 한해 무상 A/S 서비스를 받으실 수 있으며 기타 교환/환불 발생 시에는 소비자 분쟁해결기준에 따라 교환/환불 처리됩니다."
@@ -223,6 +224,7 @@
                             </ul>
 
                             @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
                                 "bulletTit" : "무상 서비스 적용기준",
                                 "bulletTxt" : [
                                     "무상 서비스 기간 : 설치 일자 기준 3년 적용",
