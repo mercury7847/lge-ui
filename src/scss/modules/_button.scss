@@ -169,6 +169,12 @@
             width:calc((100% - 4px) / 2);
             margin-left:4px;
         }
+        @at-root .type-A &{
+            .btn {
+                width: 100%;
+                border-radius: 0;
+            }
+        }
     }
 }
 
