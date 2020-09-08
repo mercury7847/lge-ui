@@ -445,9 +445,9 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
 
             var self = this,
                 util = core.util,
-                calWidth = self.$calendar.width(),
+                calWidth = self.$calendar.outerWidth(),
                 calHalfWidth = Math.ceil(calWidth / 2),
-                calHeight = self.$calendar.height(),
+                calHeight = self.$calendar.outerHeight(),
                 calHalfHeight = Math.ceil(calHeight / 2),
                 inpWidth,
                 inpHalfWidth,
