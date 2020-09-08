@@ -237,23 +237,6 @@
         }
     }
 
-    .nugget-eyebrow {
-        margin-top: 32px;
-        .eyebrow-box {
-            margin-bottom: 4px;
-        }
-        .eyebrow,
-        .nugget {
-            display: inline-block;
-            margin-right: 12px;
-            font-size: 14px;
-            line-height: 20px;
-        }
-        .nugget {
-            @include font-family($font-bold);
-        }
-    }
-
     .type-narrow {}
 
     @include mobile {
@@ -493,12 +476,6 @@
                         color: #fff;
                     }
                 }
-                .nugget-eyebrow {
-                    .eyebrow,
-                    .nugget {
-                        color: #fff;
-                    }
-                }
                 .btn {
                     &.btn-primary {
                         border-color: #fff;
@@ -532,12 +509,6 @@
                         }
                     }
                     .copy {
-                        color: #111;
-                    }
-                }
-                .nugget-eyebrow {
-                    .eyebrow,
-                    .nugget {
                         color: #111;
                     }
                 }
