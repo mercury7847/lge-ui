@@ -1,7 +1,4 @@
 .bullet-list {
-    margin-top:40px;
-    border-top:1px solid #ddd;
-    padding-top:32px;
     color:#515151;
     font-size:14px;
     line-height:20px;
@@ -26,5 +23,11 @@
         &:first-child {
             margin-top:0;
         }
+    }
+
+    &.top-border {
+        margin-top:40px;
+        padding-top:32px;
+        border-top:1px solid #ddd;
     }
 }
