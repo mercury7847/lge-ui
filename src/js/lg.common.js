@@ -36,15 +36,14 @@ $.fn.buildCommonUI = function () {
     }.bind(this));
     return this;
 };
-;(function (global){
 
-    
 
-    if(global['lgkorUI']) return;
+if(lgkorUI === undefined){
+    console.log("lgkorUI start!!!");
     
-    $.holdReady(true);
+    //$.holdReady(true);
     
-    global['lgkorUI'] = {
+    var lgkorUI = {
         template: $('<div class="template"></div>'),
         templateList: null,
         init: function(){
@@ -123,7 +122,7 @@ $.fn.buildCommonUI = function () {
 
                 $('body').buildCommonUI();
     
-                $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
+                //$.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
     
                 // 모달이 열렸을 때 페이지 스크롤을 막기 위함 ////////////////////////////
                 $doc.on('modalfirstopen modallastclose', function (e) {
@@ -212,7 +211,4 @@ $.fn.buildCommonUI = function () {
         }
         */
     });
-
-
-})(window);
-
+}
