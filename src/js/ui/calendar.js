@@ -674,8 +674,8 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                     zIndex: 9999
                 });
                 if (self.options.where === 'body') {
-                    $('body').append(self.$calendar);
                     $('body').append(self.$dim);
+                    $('body').append(self.$calendar);
                 } else {
                     self.$el.parent().append(self.$calendar);
                 }
