@@ -43,11 +43,12 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
             today: new Date(), // 오늘 날짜
             isClickActive: true, // 인라인모드에서 클릭했을 때 active효과를 줄 것인가.
             showByInput: false, // 인풋박스에 의해서도 달력을 열 것인가
-            where: 'inline', // 달력 dom을 어디에 두고 열것인가 설정:(body(body 맨 하단, inline(버튼 바로 밑)
-            minDate: '-5y', // 날짜 하한값
+            where: 'body', // 달력 dom을 어디에 두고 열것인가 설정:(body(body 맨 하단, inline(버튼 바로 밑)
+            minDate: new Date(), // 날짜 하한값
             maxDate: '+5y', // 날짜 상한값
             template: {
-                header: '<div class="ui-calendar-header-first">' + '<a href="#" class="ui-calendar-set-today" title="현재일 보기"></a>' + '<select class="ui-calendar-sel-years" title="달력년도"></select>' + '<a href="#" class="ui-calendar-close"><span class="hide">닫기</span></a>' + '</div>' + '<div class="ui-calendar-header-second">' + '<a href="#" class="ui-calendar-prev">&lt;</a>' + '<span class="ui-calendar-now">01</span>' + '<a href="#" class="ui-calendar-next">&gt;</a>' + '</div>',
+                // header: '<div class="ui-calendar-header-first">' + '<a href="#" class="ui-calendar-set-today" title="현재일 보기"></a>' + '<select class="ui-calendar-sel-years" title="달력년도"></select>' + '<a href="#" class="ui-calendar-close"><span class="hide">닫기</span></a>' + '</div>' + '<div class="ui-calendar-header-second">' + '<a href="#" class="ui-calendar-prev">&lt;</a>' + '<span class="ui-calendar-now">01</span>' + '<a href="#" class="ui-calendar-next">&gt;</a>' + '</div>',
+                header: '<div class="ui-calendar-header-second">' + '<a href="#" class="ui-calendar-prev">&lt;</a>' + '<span class="ui-calendar-now">01</span>' + '<a href="#" class="ui-calendar-next">&gt;</a>' + '</div>',
                 label: '<span class="ui-calendar-day" title="{{title}}">{{day}}</span>',
                 button: '<button type="button" class="ui-calendar-day{{disabled?" disabled":""}}" title="{{title}}" {{disabled?"disabled=disabled style=cursor:default":""}}>{{day}}</button>'
             },
@@ -446,6 +447,8 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                 util = core.util,
                 calWidth = self.$calendar.width(),
                 calHalfWidth = Math.ceil(calWidth / 2),
+                calHeight = self.$calendar.height(),
+                calHalfHeight = Math.ceil(calHeight / 2),
                 inpWidth,
                 inpHalfWidth,
                 offset,
@@ -459,10 +462,19 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
             top = self.$input[self.options.where === 'body' ? 'offset' : 'position']().top + self.$input.outerHeight() + 10;
             left = inpHalfWidth - calHalfWidth;
 
-            self.$calendar.css({
-                left: left,
-                top: top
-            });
+            if (self.options.where === 'body') {
+                self.$calendar.css({
+                    top:'50%',
+                    left:'50%',
+                    marginLeft:-calHalfWidth,
+                    marginTop:-calHalfHeight
+                });
+            } else {
+                self.$calendar.css({
+                    left: left,
+                    top: top
+                });
+            }
             return self;
         },
 
@@ -609,6 +621,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                 //self.$selectboxYears.vcSelectbox('release');
                 self.$calendar.off();
                 self.$calendar.remove();
+                self.$dim.remove();
                 self.$calendar = null;
             }
 
@@ -622,6 +635,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
             var self = this,
                 opts = self.options,
                 timer,
+                dim,
                 tmpl;
 
             if (!dateUtil.isValid(self.currDate)) {
@@ -635,9 +649,11 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
             }
 
             tmpl = '<div class="ui-calendar-container"><div class="ui-select-day">' + (opts.header !== false ? opts.template.header : '') + '<div class="ui-calendar-date"></div></div></div>';
+            dim = '<div class="ui-calendar-dim">&nbsp;</div>'
 
             self._remove();
             self.$calendar = $(tmpl);
+            self.$dim = $(dim);
 
             if (opts.header) {
                 self.$calendar.on('change', '.ui-calendar-sel-years', function (e) {
@@ -654,12 +670,12 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
             } else {
                 // 모달
                 self.$calendar.css({
-                    position: 'absolute',
-                    backgroundColor: '#fff',
+                    position: 'fixed',
                     zIndex: 9999
                 });
                 if (self.options.where === 'body') {
                     $('body').append(self.$calendar);
+                    $('body').append(self.$dim);
                 } else {
                     self.$el.parent().append(self.$calendar);
                 }
@@ -780,15 +796,15 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
 
-            self.$calendar.find('.ui-calendar-header-first').css('z-index', 1);
-            self.$selectboxYears = self.$calendar.find('.ui-calendar-sel-years');
+            // self.$calendar.find('.ui-calendar-header-first').css('z-index', 1);
+            // self.$selectboxYears = self.$calendar.find('.ui-calendar-sel-years');
 
-            self.$selectboxYears.empty();
-            for (var i = self.minDate.getFullYear(); i <= self.maxDate.getFullYear(); i++) {
-                self.$selectboxYears[0].options.add(new Option(i, i));
-            }
+            // self.$selectboxYears.empty();
+            // for (var i = self.minDate.getFullYear(); i <= self.maxDate.getFullYear(); i++) {
+            //     self.$selectboxYears[0].options.add(new Option(i, i));
+            // }
 
-            self.$selectboxYears.val(self.currDate.getFullYear()).prop("selected", true); // default selectbox;
+            // self.$selectboxYears.val(self.currDate.getFullYear()).prop("selected", true); // default selectbox;
 
             // 일달력(.ui-calendar-header-first)의 년도 선택 버튼에 년도 설정
             //self.$selectboxYears.vcSelectbox('option', 'preventZindex', true);
@@ -804,7 +820,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
 
             currDate = core.date.calcDate(currDate, '-1M');
             $second.children().each(function (val, name) {
-                html = '<span class="hide">' + currDate.getFullYear() + '년</span>';
+                html = '<span class="year">' + currDate.getFullYear() + '<span class="hide">년</span></span>';
                 html += core.number.zeroPad(currDate.getMonth() + 1, 2);
                 if (val === 1) {
                     html += '<span class="hide">월이 선택됨</span>';

@@ -24,7 +24,7 @@ $.fn.buildCommonUI = function () {
     ], function () {    
         console.log("buildCommonUI!!!!");
 
-        this.find('.ui_calender').vcCalendar();
+        this.find('.ui_calendar').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
         this.find('.ui_selectbox').vcSelectbox();
         this.find('.ui_tab').vcTab();
