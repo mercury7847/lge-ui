@@ -60,7 +60,7 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
 
                     if (scrollValue + self.options.range + self._getContainerSize() >= pos) {
                         if (self.options.useFade) {
-                            $el.css('opacity', 0);
+                            //$el.css('opacity', 0);
                         }
                         self._loadImage($el, function () {
                             if (self.options.useFade) {
