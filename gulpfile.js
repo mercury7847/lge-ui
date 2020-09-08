@@ -95,7 +95,6 @@ const concatNames = [
     src + "/js/ui/selectbox.js",
     src + "/js/ui/smoothScroll.js",
     src + "/js/ui/tab.js",
-    src + "/js/ui/selectbox.js",
     src + "/js/ui/lazyLoader.js"
 ];
 gulp.task("concat-js", () => gulp
@@ -206,7 +205,7 @@ gulp.task("watch", ["browser-sync"], () => {
 });
 
 // Compile sass, concat and minify css + js
-gulp.task("build", ["clean", "static"], () =>{
+gulp.task("build", ["clean", "static", "concat-js"], () =>{
     gulp.start(["styles", "scripts", "guide", "html"]);
 });
 

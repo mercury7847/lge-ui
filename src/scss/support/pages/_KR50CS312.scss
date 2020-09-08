@@ -4,12 +4,4 @@
     .type-privacy {
         width: 100%;
     }
-    label {
-        .pc-only {
-            display: inline-block;
-            @include mobile {
-                display: none;
-            }
-        }
-    }
 }

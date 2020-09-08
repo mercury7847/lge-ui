@@ -69,7 +69,7 @@
             border-radius:4px;
             background:#fff;
             &:first-child {
-                padding:32px 56px;
+                // padding:32px 56px;
             }
         }
         @include mobile {
@@ -154,7 +154,6 @@
     .pagination {
         margin-top:40px;    
     }
-
 
     /* text list */
     .dot-list {
@@ -315,6 +314,88 @@
             }
         }
     }
+
+    .engineer {
+        &-profile {
+            @include clearfix;
+            display: flex;
+            align-items: center;
+        }
+        &-img {
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+            float: left;
+            img {
+                max-width: 100%;
+            }
+        }
+        &-desc {
+            float: left;
+            font-size: 20px;
+            line-height: 1.5;
+            text-align: center;
+            max-width: 710px;
+            margin-left: 80px;
+            height: 100%;
+        }
+        @include mobile {
+            &-img {
+                width: 90px;
+                height: 90px;
+            }
+            &-desc {
+                margin-left: 20px;
+                font-size: 14px;
+                text-align: left;
+                flex: 1;
+            }
+        }
+    }
+    .solution-btn-box {
+        margin-top: 32px;
+    }
+
+    .reservation-title {
+        text-align: center;
+        &::before {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background-color: #000;
+        }
+        h3 {
+            font-size: 24px;
+            font-weight: normal;
+            line-height: 1.42;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.38;
+            margin-top: 16px;
+        }
+        [class^="btn"] {
+            margin-top: 30px;
+        }
+        @include mobile {
+            &::before {
+                width: 60px;
+                height: 60px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
     .color-1 {
         color: #a50034;
     }
@@ -334,8 +415,14 @@
     }
     .pc-only {
         display: block;
+        &.ib {
+            display: inline-block;
+        }
         @include mobile {
             display: none;
+            &.ib {
+                display: none;
+            }
         }
     }
     .mo-only {

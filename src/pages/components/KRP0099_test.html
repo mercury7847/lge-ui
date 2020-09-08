@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    componentID: "KRP0099_test",
+    isJScompile: true
+})
+
+<body>
+    <div class="wrap">
+        <div class="container">
+			<!-- component KRP0017 -->
+            <div class="component-wrap">
+                <section class="component KRP0099">
+                    <div id="wrap" data-aaa-bbb='aaa' >	
+                        <div class="formdiv">
+                            <label> 이름 </label>
+                            <input type="text" name="name" data-value="두두2" data-required="true" data-error-msg="입력하세요" data-msg-target='.ui_msg'>
+                            <span class="ui_msg"></span>
+                        </div>
+                
+                        <div class="formdiv">
+                            <label> 패스워드 </label>
+                            <input type="text" name="pwd" data-required="true" data-msg-target='.ui_msg'>
+                            <span class="ui_msg"></span>
+                        </div>
+                        <div class="formdiv">
+                            <label> 이메일 </label>
+                            <input type="text" name="email" data-msg-target='.ui_msg'>
+                            <span class="ui_msg"></span>
+                        </div>
+                        <div class="formdiv">
+                            <label> 주민번호 </label>
+                            <input type="text" name="mynumber" data-msg-target='.ui_msg'>
+                            <span class="ui_msg"></span>
+                        </div>
+                        
+                        <div class="formdiv">			
+                            <label><input type="radio" name="sex" value='1' data-value="2" data-required="true" data-error-msg="성별을 선택하세요." data-msg-target='.ui_msg'>남성</label>
+                            <label><input type="radio" name="sex" value='2'>여성</label>
+                            <label><input type="radio" name="sex">선택안함</label>
+                            <span class="ui_msg"></span>
+                        </div>
+                
+                        <div class="formdiv">
+                            <label>년도</label>
+                            <select name="years" class="ui_selectbox" data-value="2020" data-required="true" data-msg-target='.ui_msg' style ="width:120px;">			
+                                <option value="">년도</option>
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                            </select>
+                            <span class="ui_msg"></span>
+                        </div>
+                
+                        <div class="formdiv">
+                            <input style="width:20px;height:20px;display: inline-block;" id='color1' type="radio" name="color" data-value="red" data-required="true" data-error-msg="색상을 선택하세요." data-msg-target='.ui_msg'/>
+                            <label for="color1"> Blue</label>
+                            <input style="width:20px;height:20px;display: inline-block;" id='color2' type="checkbox" class="checkbox" name="color" value="red"/>
+                            <label for="color2"> Red</label>
+                            <span class="ui_msg"></span>
+                        </div>
+                
+                        <button id="submit">submit</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
