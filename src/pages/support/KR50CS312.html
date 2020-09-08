@@ -17,12 +17,17 @@
         <div class="container">
             @@include('./common/support/page-visual.html', {
                 'title': '이메일 문의가 완료되었습니다.',
-                'desc': '이메일 문의 결과 확인',
                 'img': {
                     pcSrc: '경로',
                     mobileSrc: '경로',
                     alt: '설명'
-                }
+                },
+                'text_link': [
+                    {
+                        'text': '이메일 문의 결과 확인',
+                        'attr': 'class="btn-link" title="레이어 열림"'
+                    }
+                ]
             })
             
             <div class="contents support KR50CS312">

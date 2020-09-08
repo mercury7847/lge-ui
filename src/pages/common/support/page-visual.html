@@ -11,5 +11,12 @@
             }
             </div>
         }
+        @@if (context.text_link) {
+            <div class="heading-text-link">
+            @@for(var i = 0; i < context.text_link.length; i++) {
+                <a href="#" `+text_link[i].attr+`>`+text_link[i].text+`</a>
+            }
+            </div>
+        }
     </div>
 </div>
