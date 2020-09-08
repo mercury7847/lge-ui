@@ -5,17 +5,19 @@ $(window).ready(function(){
 
     var KRP0099 = {
         init: function(){
-            var self = KRP0099;
+            //var self = KRP0099;
 
             vcui.require(['ui/validation', 'ui/selectbox', 'ui/formatter'], function () {
-                $('input[name="email"').vcFormatter({
-					format:function(val){
-						return false;
-					}
-				});
+                // $('.KRP0099').find('input[name="email"]').vcFormatter({
+				// 	format:function(val){
+				// 		return false;
+				// 	}
+				// });
+
+				console.log('adfsdfsf');
 
 
-                $('.ui_selectbox').vcSelectbox();
+                $('.KRP0099').find('.ui_selectbox').vcSelectbox();
                 
                 var register = {
 					email:{
