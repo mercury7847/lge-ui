@@ -467,9 +467,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
             if (self.options.where === 'body') {
                 self.$calendar.css({
                     top:'50%',
-                    left:'50%',
-                    marginLeft:-calHalfWidth,
-                    marginTop:-calHalfHeight
+                    left:'50%'
                 });
             } else {
                 self.$calendar.css({
