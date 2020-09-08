@@ -71,7 +71,6 @@
             margin-bottom: 14px;
         }
     }
-
     &-sm {
         border-radius: 4px;
         border: solid 1px #aaa;
@@ -88,6 +87,25 @@
         padding: 12px 29px;
         display: inline-block;
         font-size: 14px;
+    }
+    &[class*="type-icon"] {
+        padding-left: 52px;
+        padding-right: 64px;
+        &[class$="-1"] {
+            border-color: #ec455a;
+            color: #ec455a;
+            background: url(/lg5-common/images/icons/icon-solution.svg) no-repeat left 16px top 13px, url(/lg5-common/images/icons/icon-arrow-right-red.svg) no-repeat right 16px top 13px;
+        }
+    }
+    @include mobile {
+        &[class*="type-icon"] {
+            padding-left: 52px;
+            padding-right: 12px;
+            text-align: left;
+            &[class$="-1"] {
+                background: url(/lg5-common/images/icons/icon-solution.svg) no-repeat left 16px top 16px,
+            }
+        }
     }
 
     // @include mobile {
