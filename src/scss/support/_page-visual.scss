@@ -26,8 +26,18 @@
         }
         &-btns {
             margin-top:12px;
+            font-size:0;
             a, button {
+                max-width:calc(50% - 4px);
+                min-width:auto;
                 margin-left:8px;
+                padding:8px 16px;
+                font-size:14px;
+                font-weight:500;
+                color:#515151;
+                line-height:1.43;
+                border:1px solid #808080;
+                border-radius:8px;
                 &:first-child {
                     margin-left:0;
                 }
@@ -44,7 +54,7 @@
             &-desc {
                 margin-top:16px;
                 font-size:14px;
-                line-height:1.29px;
+                line-height:1.29;
             }
         }
     }
