@@ -44,7 +44,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
             isClickActive: true, // 인라인모드에서 클릭했을 때 active효과를 줄 것인가.
             showByInput: false, // 인풋박스에 의해서도 달력을 열 것인가
             where: 'body', // 달력 dom을 어디에 두고 열것인가 설정:(body(body 맨 하단, inline(버튼 바로 밑)
-            minDate: new Date(), // 날짜 하한값
+            minDate: '-5y', // 날짜 하한값
             maxDate: '+5y', // 날짜 상한값
             template: {
                 // header: '<div class="ui-calendar-header-first">' + '<a href="#" class="ui-calendar-set-today" title="현재일 보기"></a>' + '<select class="ui-calendar-sel-years" title="달력년도"></select>' + '<a href="#" class="ui-calendar-close"><span class="hide">닫기</span></a>' + '</div>' + '<div class="ui-calendar-header-second">' + '<a href="#" class="ui-calendar-prev">&lt;</a>' + '<span class="ui-calendar-now">01</span>' + '<a href="#" class="ui-calendar-next">&gt;</a>' + '</div>',
