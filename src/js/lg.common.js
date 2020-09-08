@@ -24,7 +24,7 @@ $.fn.buildCommonUI = function () {
     ], function () {    
         console.log("buildCommonUI!!!!");
 
-        this.find('.ui_calender').vcCalendar();
+        this.find('.ui_calendar').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
         this.find('.ui_selectbox').vcSelectbox();
         this.find('.ui_tab').vcTab();
@@ -36,14 +36,15 @@ $.fn.buildCommonUI = function () {
     }.bind(this));
     return this;
 };
+;(function (global){
 
+    
 
-if(lgkorUI === undefined){
-    console.log("lgkorUI start!!!");
+    if(global['lgkorUI']) return;
     
-    //$.holdReady(true);
+    $.holdReady(true);
     
-    var lgkorUI = {
+    global['lgkorUI'] = {
         template: $('<div class="template"></div>'),
         templateList: null,
         init: function(){
@@ -122,7 +123,7 @@ if(lgkorUI === undefined){
 
                 $('body').buildCommonUI();
     
-                //$.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
+                $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
     
                 // 모달이 열렸을 때 페이지 스크롤을 막기 위함 ////////////////////////////
                 $doc.on('modalfirstopen modallastclose', function (e) {
@@ -211,4 +212,7 @@ if(lgkorUI === undefined){
         }
         */
     });
-}
+
+
+})(window);
+
