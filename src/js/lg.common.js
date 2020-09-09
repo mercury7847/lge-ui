@@ -101,8 +101,7 @@ $.fn.buildCommonUI = function () {
                             data.content.attr('tabindex', '0');                                               
                             if(data.content.find('.ui_carousel')) {
                                 data.content.find('.ui_carousel').vcCarousel('update');
-                            }
-                            
+                            }                            
                         }
                     }
                 });
@@ -131,7 +130,7 @@ $.fn.buildCommonUI = function () {
     
                 }).on('modalshown', function (e) {
                     // 모달이 뜰때 모달내부에 있는 공통 컴포넌트 빌드
-                    $(e.target).buildCommonUI();
+                    //$(e.target).buildCommonUI();
                 });
                 //////////////////////////////////////////////////////////////////////
     
