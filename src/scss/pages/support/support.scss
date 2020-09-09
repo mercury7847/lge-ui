@@ -89,6 +89,11 @@
         }
     }
 
+    //임시
+    .err-msg {
+        display:none;
+    }
+
     /* button area */
     .btn-group {
         margin-top:80px;
@@ -221,6 +226,11 @@
         border-top: 1px solid #ddd;
         margin-top: 40px;
         padding-top: 24px;
+        &.no-border {
+            margin-top: 12px;
+            padding-top: 0;
+            border: none;
+        }
         li {
             position:relative;
             padding-left:8px;
@@ -244,6 +254,11 @@
                 & + li {
                     margin-top:8px;
                 }
+            }
+        }
+        @include mobile {
+            &.no-border {
+                margin-top: 8px;
             }
         }
     }
