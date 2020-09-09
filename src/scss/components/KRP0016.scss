@@ -2,382 +2,189 @@
 
 @import "../components-app";
 
-
 .KRP0016 {
-    /*
-    width: 100%;
-    max-width: (1284px + 60px);
-    margin: 0 auto;
-    padding: 0 30px;
+	background-color: #f4f4f4;
 
-    @include mobile {
-        max-width: 100%;
-        padding: 0 24px;
-    }*/
+	@include mobile {
+		background-color: #fff;
+	}
 
     .support-box {
-		max-width:1600px;
-		margin:0 auto;
-		padding:82px 0 60px 0;
-		text-align:center;
-        background:#f8f8f8;
-        /*
-		@include screen(custom, max, $max-lg) {
-			padding-left:30px;
-			padding-right:30px;
-		}*/
-		@include mobile {
-			padding:43px 24px 9px 24px;
-		}
-		.title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6  {
-			//@include font-family($font-semibold);
-			font-size:40px;
-			margin-bottom:5px;
-            display:inline-block;
-            /*
-			@include screen(custom, max, $max-md) {
-				font-size:36px;
-				line-height:44px;
-			}*/
-			@include mobile {
-				font-size:28px;
-				line-height:32px;
-				margin-bottom:8px;
-			}
-		}
-		.sub-text{
-			font-size:20px;
-			color:#6b6b6b;
-			margin-bottom:52px;
-			.link-text{
-				font-size:20px;
-            }
-            /*
-			@include screen(custom, max, $max-md) {
-				font-size:14px;				
-				.link-text{
-					font-size:14px;
-				}
-			}*/
-			@include mobile {
-				margin-bottom:38px;
-			}
-			
-		}
-		.list-box{
-			max-width:1284px;
-			margin:0 auto;
-            vertical-align:top;
-            /*
-			@include screen(custom, min, $min-xl + 101) {
-				text-align:left;
-			}*/
-			@include mobile {
-				max-width:332px;
-			}
-			li{
-				display:inline-block;
-				width:294px;
-				min-height:209px;
-				margin:0 12px 0 12px;
-				padding-bottom:55px;
-				text-align:center;
-				vertical-align:top;
-			
-				@include mobile {
-					width:108px;
-					min-height:131px;
-					margin:0;
-					padding-bottom:20px;
-                }
-                @media screen and (max-width: 399px) {
-				//@include screen(custom, max, 399) {
-					width:100px;
-                }
-                @media screen and (max-width: 373px) {
-				//@include screen(custom, max, 373) {
-					width:82px;
-				}
-				a {display:block;}
-				.icon{
-					width:64px;
-					height:64px;					
-					margin:0 auto 10px auto;
-					@include mobile {
-						width:48px;
-						height:48px;
-						margin-bottom:8px;
-						img{
-							width:100%;
-						}
-					}
-				}
-				strong,span{
-					display:block;
-				}
-				strong{
-					margin-bottom:4px;
-					//@include font-family($font-semibold);
-					font-size:24px;
-					color:#333;
-					@include mobile {
-						font-size:14px;
-						line-height:20px;
-					}
-				}
-				span{
-					font-size:14px;
-					line-height:20px;
-					color:#6b6b6b; //PJTWAUS-1 : 20200311 modify
-					@include mobile {
-						display:none;
-					}
-				}
-				.inductive-text {
-                    position: relative;
-                    display: inline-block;
-                    margin-right: 14px;
-					text-transform:uppercase;
-					//@include font-family($font-bold);
-					// line-height: 24px;
-					color:#a50034;
-					margin-top:9px;
-					&:after {
-                        position: absolute;
-                        top: calc(50% - 6px);
-                        right: -12px;
-                        width: 8px;
-                        height: 8px;
-                        border: solid #a50034;
-                        border-width: 2px 2px 0 0;
-                        transform: rotate(45deg);
-                        content: '';
-                    }
-				}
-			}
-		}
-	}
-	.contactus-box + .contactus-box {
-		border-top:1px solid #e4e4e4
-	}
-	.contactus-box {
-		max-width:1600px;
-		margin:0 auto;
-		padding:84px 0 93px 0;
-        text-align:center;
-        /*
-		@include screen(custom, max, $max-lg) {
-			padding-left:30px;
-			padding-right:30px;
-		}*/	
-		@include mobile {
-			padding:43px 24px 27px 24px;
-		}
-		
-		.title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6  {
-			//@include font-family($font-semibold);
-			font-size:40px;
-			margin-bottom:53px;
-            display:inline-block;
-            /*
-			@include screen(custom, max, $max-md) {
-				font-size:36px;
-				line-height:44px;
-			}*/
-			@include mobile {
-				font-size:28px;
-				line-height:32px;
-				margin-bottom:21px;
-			}
-		}
-		.list-box{
-			@include clearfix;	
-			max-width:1187px; /* [LGEUS-349] edit */
-			width:100%;
-			margin:0 auto;
-			@include mobile {
-				padding:0;
-			}
-			li{
-				@include clearfix;
-				display:inline-block;
-				width:calc(20% - 4px); /* [LGEUS-349] edit */
-				min-height:203px;
-				padding:0 10px 0 10px;
-				text-align:center;
-				vertical-align:top;
-				border-right:1px solid #eee;
-				@include mobile {
-					width:100%;
-					min-height:auto;
-					padding:16px 0 16px 0;
-					border-right:none;
-					border-bottom:1px solid #eee;
-					text-align:left;
+		max-width: 1066px + 60px;
+		margin: 0 auto;
+		padding: 60px 30px;
 
-				}
-				a {
-					display:block;
-					@include clearfix;
-				}
-				&:last-child{
-					border:none;
-				}
-				.icon{
-					width:64px;
-					height:64px;
-					// padding:4px;
-					margin:0 auto 22px auto;
-					@include mobile {
-						float:left;
-						width:20px;
-						height:20px;
-						padding:2px;
-					}
-					img{
-						// width:56px;
-						// height:56px;
-						@include mobile {
-							// width:24px;
-							// height:24px;
-						}
-					}
-				}
-
-				@include mobile {
-					.text-box{
-						float:left;
-						width:calc(100% - 38px);
-						margin-left:14px;
-					}
-				}
-				strong,span{
-					display:block;
-					&.link-text {display:inline-block;}
-				}
-				strong{
-					margin-bottom:15px;
-					//@include font-family($font-semibold);
-					font-size:20px;
-					color:#000;
-					@include mobile {
-						font-size:16px;
-						margin-top:5px;
-						margin-bottom:3px;
-					}
-				}
-				.text{
-					//@include font-family($font-semibold);
-					font-size:16px;
-					line-height:24px;
-					color:#333;
-					margin-bottom:7px;
-					@include mobile {
-						font-size:16px;
-						line-height:24px;
-						margin-top:0;
-						margin-bottom:5px;
-						margin-left:0;
-                    }
-                    /*
-					.link-text {
-						@include screen(custom, min, $min-md) {
-							@include font-family($font-semibold);
-						}
-					}*/
-					.number{
-						color:#a50034;	
-						display:inline;
-					}
-					@include mobile {
-						br{ 
-							display:none;
-						}
-					}
-				}
-				.time{
-					font-size:16px;
-					// line-height:18px;
-					line-height: 24px;
-					color:#767676;
-					@include mobile {
-						font-size:14px;
-						line-height: 20px;
-					}
-				}
-				.link-text {
-					line-height: 24px;
-					@include mobile {
-						font-size:inherit;
-						line-height:inherit;
-					}
-				}
-			}
-			
-		}
-	}
-}
-.KRP0016.in-b2b {
-	.support-head-box {
-		text-align: center;
-		.title {
-			display:block;
-			//@include font-family($font-semibold);
-			font-size:40px;
-			line-height:48px;
-			margin-top: -12px;
-            margin-bottom:20px;
-            /*
-			@include screen(custom, max, $max-md) {
-				font-size:36px;
-				line-height:44px;
-			}*/
-			@include mobile {
-				font-size:28px;
-				line-height:36px;
-				margin-top: -10px;
-				margin-bottom:22px;
-			}
-		}
-	}
-	.contactus-box {
-		border-bottom:none;
-		padding-top:32px;
-		padding-bottom:67px;
 		@include mobile {
-			padding-top:15px;
-			padding-bottom:30px;
-		}
-		.list-box li .text .number {display:block;}
-	}
-	// item length 4+
-	.contactus-box.multi-rows {
-		.sub-title {
-			//@include font-family($font-semibold);
-			display:inline-block;
-			vertical-align: top;
-			font-size:24px;
-			color:#333;
-			margin-top: 8px;
-			margin-bottom: 40px;
-			@include mobile {
-				font-size:20px;
-				line-height:28px;
-				margin-bottom: 12px;
-			}
+			max-width: 100%;
+			padding: 40px 24px;
 		}
 	}
+
+	.title {
+		margin-bottom: 12px;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 24px;
+		color: #111;
+
+		@include mobile {
+			margin-bottom: 20px;
+			color: #222;
+		}
+	}
+
 	.list-box {
-		text-align: left;
-		max-width:1284px + 12px + 4px;
+		margin: 0 -4px -8px;
+		font-size: 0;
 		li {
-            @media screen and (min-width: 768px) {
-			//@include screen(custom, min, $min-md) {
-				// width:(100%/4);
-				min-height:227px;
-				margin-bottom: 51px;
+			display: inline-block;
+			width: 33.33%;
+			padding: 0 4px 8px;
+			vertical-align: top;
+
+			span,
+			strong {
+				display: block;
+			}
+			strong {
+				margin-bottom: 8px;
+				font-weight: 500;
+				font-size: 16px;
+				line-height: 24px;
+				color: #111;
+			}
+			span {
+				font-size: 14px;
+				line-height: 20px;
+				color: #808080;
+			}
+
+			a {
+				position: relative;
+				display: block;
+				height: 220px;
+				padding: 36px;
+				border-radius: 4px;
+				background-color: rgba(255,255,255,.8);
+
+				&:before {
+					position: absolute;
+					bottom: 36px;
+					left: 36px;
+					width: 24px;
+					height: 24px;
+					background: no-repeat 0 0;
+					background-size: 24px 24px;
+					content: '';
+				}
+				&.item-telephone {
+					&:before {
+						background-image: url("/lg5-common/images/icons/icon-telephone.svg");
+					}
+				}
+				&.item-live-chat {
+					&:before {
+						background-image: url("/lg5-common/images/icons/icon-live-chat.svg");
+					}
+				}
+				&.item-email {
+					&:before {
+						background-image: url("/lg5-common/images/icons/icon-email.svg");
+					}
+				}
+				&.item-manual {
+					&:before {
+						background-image: url("/lg5-common/images/icons/icon-manual.svg");
+					}
+				}
+				&.item-download {
+					&:before {
+						background-image: url("/lg5-common/images/icons/icon-download.svg");
+					}
+				}
+				&.item-location {
+					&:before {
+						background-image: url("/lg5-common/images/icons/icon-location.svg");
+					}
+				}
+
+				&:hover,
+				&:focus {
+					z-index: 1;
+					background-color: #fff;
+					box-shadow: 0 16px 20px 0 rgba(0,0,0,.16);
+					opacity: 1;
+
+					strong {
+						color: #ec455a;
+					}
+					span {
+						color: #111;
+					}
+
+					&.item-telephone {
+						&:before {
+							background-image: url("/lg5-common/images/icons/icon-telephone-on.svg");
+						}
+					}
+					&.item-live-chat {
+						&:before {
+							background-image: url("/lg5-common/images/icons/icon-live-chat-on.svg");
+						}
+					}
+					&.item-email {
+						&:before {
+							background-image: url("/lg5-common/images/icons/icon-email-on.svg");
+						}
+					}
+					&.item-manual {
+						&:before {
+							background-image: url("/lg5-common/images/icons/icon-manual-on.svg");
+						}
+					}
+					&.item-download {
+						&:before {
+							background-image: url("/lg5-common/images/icons/icon-download-on.svg");
+						}
+					}
+					&.item-location {
+						&:before {
+							background-image: url("/lg5-common/images/icons/icon-location-on.svg");
+						}
+					}
+				}
+			}
+
+			@include mobile {
+				width: 50%;
+				padding: 0 6px 12px;
+
+				strong {
+					line-height: 23px;
+				}
+				span {
+					line-height: 18px;
+					color: #979797;
+				}
+
+				a {
+					height: auto;
+					min-height: 194px;
+					padding: 16px 12px;
+					border: 1px solid #ddd;
+
+					&:before {
+						bottom: 16px;
+						left: 12px;
+					}
+
+					&:hover,
+					&:focus {
+						border: 1px solid #ec455a;
+						box-shadow: none;
+					}
+				}
 			}
 		}
-		li:nth-child(4n) {border-right:none;}
 	}
 }
