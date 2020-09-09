@@ -3,19 +3,33 @@ $(window).ready(function(){
 
     $('.KRP0099').buildCommonUI();
 
-    var KRP0099 = {
+	var KRP0099 = {
+		/*
+		frun_onchange : function(e, elem){
+  
+			console.log( e, elem );
+			
+			var pat = new RegExp( '\\B(?=(\d{3})+(?!\d))' , 'g');
+			console.log( pat );
+			alert( pat );
+			
+		},
+		*/
+
         init: function(){
-            var self = KRP0099;
+            //var self = KRP0099;
 
             vcui.require(['ui/validation', 'ui/selectbox', 'ui/formatter'], function () {
-                $('input[name="email"').vcFormatter({
-					format:function(val){
-						return false;
-					}
-				});
+                // $('.KRP0099').find('input[name="email"]').vcFormatter({
+				// 	format:function(val){
+				// 		return false;
+				// 	}
+				// });
+
+				console.log('adfsdfsf');
 
 
-                $('.ui_selectbox').vcSelectbox();
+                $('.KRP0099').find('.ui_selectbox').vcSelectbox();
                 
                 var register = {
 					email:{
@@ -63,6 +77,17 @@ $(window).ready(function(){
 				$('#submit').on('click', function(){
 					validation.validate(); // 체크					
 				});
+
+				  
+				$("#tst1").on("propertychange change keyup paste input",function(){
+					var cardMatchValue = $(this).val().replace(/(\d{4})(\d{4})(\d{4})(\d+)/gi,'$1-$2-$3-$4');
+					console.log(cardMatchValue);
+					/*
+					console.log($(this).val().replace(/([0-9]{3})([0-9]{4})([0-9]{4})/,'$1-$2-$3'));
+					$(this).val($(this).val().replace(/^[0-9]{3}[-]+[0-9]{4}[-]+[0-9]{4}$/g,''));
+					*/
+				});
+				  
             });
             
         }
