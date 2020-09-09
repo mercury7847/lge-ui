@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/product-support"
+        ],
+        "pageJS": [
+            "support-common",
+            "support/selectCategory"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'title': '다운로드 자료실',
+                'desc': '제품에 필요한 사용설명서, 소프트웨어, 드라이버를 지원해드립니다.'
+            })
+
+            <div class="contents support KR50CS23">
+                <div class="contents-inner">
+
+                    <div class="section">
+                        <div class="section-content">
+
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">Step01. 제품을 선택해주세요.</h3>
+                        </div>
+                        <div class="section-content">
+                            @@include('./common/support/select-category.html')
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">Step02. 제품 모델명을 선택해주세요. (필수)</h3>
+                        </div>
+                        <div class="section-content">
+
+                            <div class="table">
+                                <table class="table-list">
+                                    <colgroup>
+                                        <col style="width:208px">
+                                        <col    >
+                                        <col style="width:128px">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>제품 모델명</th>
+                                            <th>카테고리</th>
+                                            <th><span class="blind">선택</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="color-black">B80FV.AR9501</span>
+                                            </td>
+                                            <td>IT/모니터 > 데스크톱/일체형</td>
+                                            <td class="right">
+                                                <button type="button" class="btn pink"><span>선택하기</span></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="color-black">B80FV.AR9501</span>
+                                            </td>
+                                            <td>IT/모니터 > 데스크톱/일체형</td>
+                                            <td class="right">
+                                                <button type="button" class="btn pink"><span>선택하기</span></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            @@include('./common/support/pagination.html', {
+                                count: 5
+                            })
+                            @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
+                                "bulletTxt" : [
+                                    "2017년 6월 30일로 당사 CCM 인증이 만료되었습니다. 이전에 업로드된 제품 매뉴얼 등에 표기되어 있는 CCM 인증으로 인해 오해 없으시기 바랍니다."
+                                ]
+                            })
+
+                        </div>
+                    </div>
+
+                    <div class="btn-group right">
+                        <button type="submit" class="btn pink"><span>조회</span></button>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">제품사용 설명서 (<em class="count">3</em>건)</h3>
+                        </div>
+                        <div class="section-content">
+
+                            <div class="table">
+                                <table class="table-list">
+                                    <colgroup>
+                                        <col style="width:224px">
+                                        <col>
+                                        <col style="width:126px">
+                                        <col style="width:128px">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>설명서 유형</th>
+                                            <th>유형정보</th>
+                                            <th>등록일</th>
+                                            <th><span class="blind">다운로드</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="color-black">[한글] 제품사용설명서</span>
+                                            </td>
+                                            <td>Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</td>
+                                            <td>2020.02.27</td>
+                                            <td class="right middle">
+                                                <button type="button" class="btn pink"><span>ZIP</span></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="color-black">[한글] 제품사용설명서</span>
+                                            </td>
+                                            <td>Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</td>
+                                            <td>2020.02.27</td>
+                                            <td class="right middle">
+                                                <button type="button" class="btn pink"><span>ZIP</span></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            @@include('./common/support/pagination.html', {
+                                count: 5
+                            })
+                            @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
+                                "bulletTxt" : [
+                                    "참조zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다."
+                                ]
+                            })
+
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">드라이버/소프트웨어 (<em class="count">3</em>건)</h3>
+                        </div>
+                        <div class="section-content">
+
+                            <div class="field-wrap">
+                                <div class="row">
+                                    <div class="field-item">
+                                        <div class="field-title">
+                                            <label for="" class="tit">운영체제(OS) 선택</label>
+                                        </div>
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" id="select1">
+                                                <option value="">전체</option>
+                                                <option value="">Window XP</option>
+                                                <option value="">Window Vista</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="field-item">
+                                        <div class="field-title">
+                                            <label for="" class="tit">드라이버 분류</label>
+                                        </div>
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" id="select1">
+                                                <option value="">전체</option>
+                                                <option value="">통합 드라이버 설치 프로그램</option>
+                                                <option value="">바이오스/펌웨어</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion">
+                                <ul class="accordion-list">
+                                    <li class="active">
+                                        <div class="accordion-head">
+                                            <button type="button" class="accordion-head-anchor">랜 (<em class="count">1</em>건)</button>   
+                                        </div>
+                                        <div class="accordion-panel">
+                                            <div class="file-info">
+                                                <strong class="tit"><a href="#">[프로그램/Win10_64bit] LG Update Center</a></strong>
+                                                <p class="sub">울트라 HD</p>
+                                                <ul class="sub-list">
+                                                    <li>버전 1.0.1902.1901</li>
+                                                    <li>2020.02.27</li>
+                                                    <li>8.9mb</li>
+                                                </ul>
+                                                <a href="#" class=""><span>다운로드</span></a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="accordion-head">
+                                            <button type="button" class="accordion-head-anchor">통합 드라이버 설치 프로그램 (<em class="count">1</em>건)</button>   
+                                        </div>
+                                        <div class="accordion-panel">
+                                            <div class="file-info">
+                                                <strong class="tit"><a href="#">[프로그램/Win10_64bit] LG Update Center</a></strong>
+                                                <p class="sub">울트라 HD</p>
+                                                <ul class="sub-list">
+                                                    <li>버전 1.0.1902.1901</li>
+                                                    <li>2020.02.27</li>
+                                                    <li>8.9mb</li>
+                                                </ul>
+                                                <a href="#" class=""><span>다운로드</span></a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-content">
+                            <div class="satis-box">    
+                                <p class="txt">고객님이 선택하신 [A80FV] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
+                                <a href="#" class="btn pink"><span>평가하기</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+</body>
+</html> 
