@@ -335,12 +335,16 @@
         }
         &-desc {
             float: left;
+            flex: 1;
             font-size: 20px;
             line-height: 1.5;
             text-align: center;
             max-width: 710px;
             margin-left: 80px;
             height: 100%;
+        }
+        &-btn-group {
+            margin-top: 28px;
         }
         @include mobile {
             &-img {
@@ -352,6 +356,9 @@
                 font-size: 14px;
                 text-align: left;
                 flex: 1;
+            }
+            &-btn-group {
+                margin-top: 16px;
             }
         }
     }
