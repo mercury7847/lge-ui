@@ -4,6 +4,7 @@
  * @description 달력 컴포넌트
  * @copyright VinylC UID Group
  */
+
 vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
@@ -31,6 +32,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
     var Calendar = ui('Calendar', /** @lends scui.ui.Calendar# */{
         bindjQuery: 'calendar',
         defaults: {
+            mobileMode : false,
             weekNames: ['일', '월', '화', '수', '목', '금', '토'],
             monthNames: '1월,2월,3월,4월,5월,6월,7월,8월,9월,10월,11월,12월'.split(','),
             titleFormat: 'yyyy년 MM월 dd일',
@@ -114,7 +116,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                 self._render();
             } else {
 
-                if (detect.isMobile) {
+                if (detect.isMobile && self.options.mobileMode) {
                     self.currDate = d = dateUtil.parse(self.$input.val() || self.options.date), isNaN(d) ? new Date() : d;
                     self._renderMobileCalendar();
 
@@ -323,13 +325,13 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                 self._renderDate();
             }
 
-            if (detect.isMobile) {
-                self.$input.prop({ 'min': dateUtil.format(self.minDate, 'yyyy-MM-dd') });
+            if (detect.isMobile && self.options.mobileMode) {
+                if(self.$input) self.$input.prop({ 'min': dateUtil.format(self.minDate, 'yyyy-MM-dd') });
             }
 
             if (self.$input && dateUtil.isValid(self.$input.val()) && dateUtil.compare(self.minDate, self.$input.val()) === -1) {
 
-                if (detect.isMobile) {
+                if (detect.isMobile && self.options.mobileMode) {
                     self.$input.val(dateUtil.format(self.minDate, 'yyyy-MM-dd'));
                 } else {
                     self.$input.val(dateUtil.format(self.minDate));
@@ -378,12 +380,12 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                 self._renderDate();
             }
 
-            if (detect.isMobile) {
-                self.$input.prop({ 'max': dateUtil.format(self.maxDate, 'yyyy-MM-dd') });
+            if (detect.isMobile && self.options.mobileMode) {
+                if(self.$input) self.$input.prop({ 'max': dateUtil.format(self.maxDate, 'yyyy-MM-dd') });
             }
 
             if (self.$input && dateUtil.isValid(self.$input.val()) && dateUtil.compare(self.maxDate, self.$input.val()) === 1) {
-                if (detect.isMobile) {
+                if (detect.isMobile && self.options.mobileMode) {
                     self.$input.val(dateUtil.format(self.maxDate, 'yyyy-MM-dd'));
                 } else {
                     self.$input.val(dateUtil.format(self.maxDate));
@@ -465,9 +467,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
             if (self.options.where === 'body') {
                 self.$calendar.css({
                     top:'50%',
-                    left:'50%',
-                    marginLeft:-calHalfWidth,
-                    marginTop:-calHalfHeight
+                    left:'50%'
                 });
             } else {
                 self.$calendar.css({

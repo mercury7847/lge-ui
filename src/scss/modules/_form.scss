@@ -484,11 +484,14 @@ input, textarea {
 }
 .ui-calendar-container {
     background:#fff;
-    max-width:630px;
+    width:630px;
     padding:40px 56px 32px;
     border-radius:4px;
+    margin-left:-315px;
+    transform:translateY(-50%);
     @include mobile {
-        max-width:304px;
+        width:304px;
+        margin-left:-152px;
         padding:20px 12px 16px;
         border-radius:2px;
     }

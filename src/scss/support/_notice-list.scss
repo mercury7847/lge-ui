@@ -1,109 +1,80 @@
 @charset "UTF-8";
 
 /* notice list */
-.notice-list {
-    border-radius:4px;
-    background:#fff;
+.board-list {
     li {
-        border-top: 1px solid #ddd;
+        margin-top:8px;
+        border-radius:4px;
+        background:#fff;    
         &:first-child {
-            border-top: none;
-        }
-        a {
-            display: block;
-            position: relative;
-            padding:24px 56px;
-            &::after {
-                content: '';
-                position: absolute;
-                right: 63px;
-                top: 50%;
-                width: 0px;
-                height: 0px;
-                border-top: 5px solid transparent;
-                border-left: 6px solid #111;
-                border-bottom: 5px solid transparent;
-                transform: translateY(-50%);
-            }
-        }
-        .notice-category {
-            font-size: 12px;
-            line-height: 1;
-            color: #111111;
-            border-radius: 4px;
-            background-color: #f1f3f7;
-            margin-bottom: 4px;
-            padding: 6px 8px;
-            display: inline-block;
-            &-wrap {
-                @include textEllipsis;
-            }
-            &-A {
-                font-size: 14px;
-                line-height: 1.43;
-                color: #a50034;
-            }
-            &-B {
-                font-size: 14px;
-                line-height: 1.43;
-                color: #aaa;
-            }
+            margin-top:0;
         }
     }
-    &-title {
-        font-size: 16px;
-        line-height: normal;
-        color: #111111;
-        @include textEllipsis;
-        &-A {
-            font-size: 18px;
-            font-weight: normal;
-            line-height: 1.44;
+    &-head {
+        padding:32px 56px;
+        a {
+            display:block;
+            @include clearfix;
+        }
+    }
+    .head {
+        &-title {
+            float:left;
+            width:85%;
+            font-size:16px;
+            font-weight:400;
             color: #111;
+            line-height:1.5;
             @include textEllipsis;
-        }
-    }
-    &.type-A {
-        a {
-            padding-right: 24px;
-            padding-left: 50px;
-        }
-        li {
-            border-top:none;
-            border-bottom:1px solid #ddd;
-            &::after {
-                border:none;
-                width: 30px;
-                height: 30px;
-                background-color: #000;
-                left: 0;
-                right: auto;
+            .tit {
+                
+            }
+            .tag {
+                display:inline-block;
+                margin-right:12px;
+                padding:5px 8px;
+                font-size:12px;
+                line-height:1;
+                color:#ec455a;
+                border:1px solid #ec455a;
+                border-radius:4px;
             }
         }
-        .notice-category-wrap {
-            margin-bottom: 11px;
+        &-date {
+            float:right;
+            width:15%;
+            color:#515151;
+            line-height:1.5;
+            text-align:right;
         }
     }
     @include mobile {
         li {
-            &::after {
-                right: 20px;
-            }
-            a {
-                padding: 24px;
-                padding-right: 40px;
-            }
-            .notice-category {
-                margin-bottom: 6px;
-            }
+            margin-top:4px;
         }
-    }
-}
-
-.board-list {
-    ul {
-        li {
-            
+        &-head {
+            padding:24px 20px;
+        }
+        .head {
+            &-title {
+                float:none;
+                width:100%;
+                white-space:normal;
+                @include textEllipsisClamp(2);
+                .tit {
+                    display:block;
+                }
+                .tag {
+                    margin-bottom:8px;
+                }
+            }
+            &-date {
+                display:block;
+                float:none;
+                width:100%;
+                font-size:14px;
+                text-align:left;
+            }
         }
     }
 }
