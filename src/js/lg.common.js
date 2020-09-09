@@ -23,6 +23,9 @@ $.fn.buildCommonUI = function () {
                         "ui/imageSwitch"
     ], function () {    
         console.log("buildCommonUI!!!!");
+        
+        this.vcImageSwitch();
+        this.vcLazyLoader();
 
         this.find('.ui_calendar').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
@@ -31,8 +34,6 @@ $.fn.buildCommonUI = function () {
         this.find('.ui_carousel').vcCarousel();
         this.find('.animation-box').vcVideoBox();
         this.find('.youtube-box').vcYoutubeBox();
-        this.find('.ui_bg_switch').vcImageSwitch();
-        this.vcLazyLoader();
     }.bind(this));
     return this;
 };
