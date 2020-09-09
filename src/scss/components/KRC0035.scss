@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0035 {
+    width: 100%;
+
+    .visual-area {
+        img {
+            width: 100%;
+        }
+    }
+
+    .text-area {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        .text-wrap {
+            max-width: (1066px + 60px);
+            margin: 0 auto;
+            padding: 56px 30px;
+
+            @include mobile {
+                max-width: 100%;
+                padding: 56px 24px;
+            }
+        }
+
+        &.align-top,
+        &.align-middle,
+        &.align-bottom {
+            .text-wrap {
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+            }
+        }
+        &.align-middle {
+            .text-wrap {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+        &.align-bottom {
+            .text-wrap {
+                top: auto;
+                bottom: 0;
+            }
+        }
+    }
+
+    .text-block {
+        .title {
+            margin-bottom: 8px;
+            * {
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+        .date {
+            margin-bottom: 16px;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 26px;
+        }
+        .copy {
+            font-size: 16px;
+            line-height: 26px;
+        }
+    }
+
+    .text-black {
+        .text-block {
+            .title {
+                color: #111;
+            }
+            .date,
+            .copy {
+                color: #616161;
+            }
+        }
+    }
+    .text-white {
+        background-color: rgba(0,0,0,.5);
+        * {
+            color: #fff;
+        }
+    }
+}
