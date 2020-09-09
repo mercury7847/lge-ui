@@ -16,25 +16,91 @@
 }
 
 .support {
-    .input-wrap {
-        &.search {
+    .search-wrap {
+        max-width:848px;
+        margin:0 auto;
+        padding:48px 0 86px;
+        .search-box {
+            border:1px solid #ddd;
+            border-radius:26px;
+            background:#fff;
+            @include clearfix;
+        }
+        .select-wrap {
+            float:left;
+            width:172px;
+            .ui-selectbox-wrap .ui-select-button {
+                border:0 none;
+                border-radius:0;
+            }
+        }  
+        .input-wrap {
+            float:left;
+            width:calc(100% - 172px);
             input {
                 border:none;
             }
             .cell {
                 vertical-align:top;
                 border:none;
-                background:#fff;
             }
             .btn-search {
                 width:24px;
                 height:24px;
                 @include icon-search;
+                background-size:100%;
+                background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg%3E%3Cpath d='M0 0H24V24H0z' opacity='.065'/%3E%3Cg stroke='%23111' stroke-width='1.5' transform='translate(2.5 2.5)'%3E%3Ccircle cx='8.25' cy='8.25' r='7.5'/%3E%3Cpath stroke-linecap='round' d='M14.25 13.75L19.13 18.63'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             }
+        }
+        @include mobile {
+            padding:0 20px 32px;
+            background:#fff;
+            .search-box {
+                border:0 none;
+                border-radius:0;
+            }
+            .select-wrap {
+                float:none;
+                width:100%;
+                .ui-selectbox-wrap .ui-select-button {
+                    border:1px solid #ddd;
+                    border-radius:8px;
+                }
+            }
+            .input-wrap {
+                float:none;
+                width:100%;
+                margin-top:8px;
+                input {
+                    border:1px solid #ddd;
+                    border-right:0 none;
+                }
+                .cell {
+                    border:1px solid #ddd;
+                    border-left:0 none;
+                }
+            }
+        }
+    }
+    .sort-wrap {
+        margin-bottom:16px;
+        @include clearfix;
+        .total {
+            float:left;
+            font-size:14px;
+            font-weight:700;
+            color:#111;
+            line-height:1.5;
+        }
+        .tabs-wrap {
+            float:right;
+        }
+        @include mobile {
+            margin-bottom:0;
+            padding:40px 20px 20px;
         }
     }
 }
 
 @import "../../support/pages/KR50CS64";
 @import "../../support/pages/KR50CS631";
-@import "../../support/pages/KR50CS711";

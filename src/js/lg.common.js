@@ -23,6 +23,9 @@ $.fn.buildCommonUI = function () {
                         "ui/imageSwitch"
     ], function () {    
         console.log("buildCommonUI!!!!");
+        
+        this.vcImageSwitch();
+        this.vcLazyLoader();
 
         this.find('.ui_calendar').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
@@ -31,19 +34,18 @@ $.fn.buildCommonUI = function () {
         this.find('.ui_carousel').vcCarousel();
         this.find('.animation-box').vcVideoBox();
         this.find('.youtube-box').vcYoutubeBox();
-        this.find('.ui_bg_switch').vcImageSwitch();
-        this.vcLazyLoader();
     }.bind(this));
     return this;
 };
 
+;(function(global){
 
-if(lgkorUI === undefined){
+    if(global['lgkorUI']) return;
     console.log("lgkorUI start!!!");
     
-    //$.holdReady(true);
+    $.holdReady(true);
     
-    var lgkorUI = {
+    global['lgkorUI'] = {
         template: $('<div class="template"></div>'),
         templateList: null,
         init: function(){
@@ -99,8 +101,7 @@ if(lgkorUI === undefined){
                             data.content.attr('tabindex', '0');                                               
                             if(data.content.find('.ui_carousel')) {
                                 data.content.find('.ui_carousel').vcCarousel('update');
-                            }
-                            
+                            }                            
                         }
                     }
                 });
@@ -122,14 +123,14 @@ if(lgkorUI === undefined){
 
                 $('body').buildCommonUI();
     
-                //$.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
+                $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
     
                 // 모달이 열렸을 때 페이지 스크롤을 막기 위함 ////////////////////////////
                 $doc.on('modalfirstopen modallastclose', function (e) {
     
                 }).on('modalshown', function (e) {
                     // 모달이 뜰때 모달내부에 있는 공통 컴포넌트 빌드
-                    $(e.target).buildCommonUI();
+                    //$(e.target).buildCommonUI();
                 });
                 //////////////////////////////////////////////////////////////////////
     
@@ -199,16 +200,7 @@ if(lgkorUI === undefined){
     document.addEventListener('DOMContentLoaded', function () {
         console.log("DOMContentLoaded!!!");
         lgkorUI.init();
-        /*
-        if($('body.iw-fullscreen-edit').length){
-            console.log("Edit Mode!!");
-            setTimeout(function(){
-                console.log("setTimeout!!!")
-                lgkorUI.init();
-            }.bind(self), 900);
-        }else {
-            console.log("None Edit Mode!!!!");
-        }
-        */
     });
-}
+
+})(window);
+

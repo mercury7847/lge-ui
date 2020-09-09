@@ -6,6 +6,11 @@
 .KRC0044 {
     width: 100%;
 
+    .component-box {
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+
     img {
         &.mobile {
             display: none;
@@ -27,10 +32,40 @@
         font-size: 14px;
         line-height: 20px;
     }
-
-    .component-box {
-        max-width: 1920px;
-        margin: 0 auto;
+    .link-text {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .video-link {
+        margin-top: 20px;
+        .link-text {
+            position: relative;
+            padding-bottom: 0;
+            padding-left: 32px;
+            border-bottom: 0;
+            font-size: 14px;
+            &.ico-left {
+                &:before,
+                &:after {
+                    position: absolute;
+                    content: '';
+                }
+                &:before {
+                    left: 0;
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    background-color: #e9e9ea;
+                }
+                &:after {
+                    @include calc(top,50%,4px);
+                    left: 10px;
+                    border-left: 6px solid #111;
+                    border-top: 4px solid transparent;
+                    border-bottom: 4px solid transparent;
+                }
+            }
+        }
     }
 
     .btn-arrow {
@@ -48,6 +83,9 @@
         }
     }
 
+    .ui_carousel_list {
+        overflow: hidden;
+    }
     .indi-wrap {
         position: absolute;
         bottom: 0;
@@ -83,62 +121,59 @@
                 z-index: 50;
             }
         }
-    }
 
-    .ui_carousel_dots,
-    .ui_carousel_play {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    .ui_carousel_play {
-        .btn-play {
-            position: relative;
+        .ui_carousel_dots,
+        .ui_carousel_play {
             display: inline-block;
-            width: 16px;
-            height: 16px;
-            margin-left: 12px;
-            border-radius: 50%;
-            background-color: #fff;
-            font-size: 0;
+            vertical-align: middle;
         }
-        &.play {
+
+        .ui_carousel_play {
             .btn-play {
-                &:after {
-                    position: absolute;
-                    @include calc(top,50%,4px);
-                    @include calc(left,50%,3px);
-                    border-left: 7px solid #111;
-                    border-top: 4px solid transparent;
-                    border-bottom: 4px solid transparent;
-                    content: '';
+                position: relative;
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                margin-left: 12px;
+                border-radius: 50%;
+                background-color: #fff;
+                font-size: 0;
+            }
+            &.play {
+                .btn-play {
+                    &:after {
+                        position: absolute;
+                        @include calc(top,50%,4px);
+                        @include calc(left,50%,3px);
+                        border-left: 7px solid #111;
+                        border-top: 4px solid transparent;
+                        border-bottom: 4px solid transparent;
+                        content: '';
+                    }
                 }
             }
-        }
-        &.stop {
-            .btn-play {
-                &:before,
-                &:after {
-                    position: absolute;
-                    @include calc(top,50%,4px);
-                    width: 2px;
-                    height: 8px;
-                    background-color: #111;
-                    content: '';
-                }
-                &:before {
-                    @include calc(left,50%,3px);
-                }
-                &:after {
-                    @include calc(left,50%,-1px);
+            &.stop {
+                .btn-play {
+                    &:before,
+                    &:after {
+                        position: absolute;
+                        @include calc(top,50%,4px);
+                        width: 2px;
+                        height: 8px;
+                        background-color: #111;
+                        content: '';
+                    }
+                    &:before {
+                        @include calc(left,50%,3px);
+                    }
+                    &:after {
+                        @include calc(left,50%,-1px);
+                    }
                 }
             }
         }
     }
 
-    .ui_carousel_list {
-        overflow: hidden;
-    }
 
     .carousel-box {
         position: relative;
@@ -160,9 +195,19 @@
         }
     }
 
+    .visual-area {
+        position: relative;
+        overflow: hidden;
+        img {
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+    }
+
     .text-area {
         position: absolute;
-        top: 96px;
+        top: 56px;
         right: 0;
         bottom: 96px;
         left: 0;
@@ -196,6 +241,7 @@
             * {
                 font-weight: 700;
                 font-size: 28px;
+                line-height: 41px;
             }
         }
         .copy {
@@ -230,6 +276,18 @@
                 }
             }
         }
+        .video-link {
+            .link-text {
+                &.ico-left {
+                    &:before {
+                        background-color: #111;
+                    }
+                    &:after {
+                        border-left-color: #fff;
+                    }
+                }
+            }
+        }
     }
     .text-white {
         .text-block * {
@@ -256,16 +314,37 @@
                 }
             }
         }
+        .video-link {
+            .link-text {
+                &.ico-left {
+                    &:before {
+                        background-color: #e9e9ea;
+                    }
+                    &:after {
+                        border-left-color: #111;
+                    }
+                }
+            }
+        }
     }
 
-    $align: (left, right, center, top, middle, bottom);
+    .cta-button,
+    .cta-link {
+        display: inline-block;
+        font-size: 0;
+        span {
+            display: inline-block;
+        }
+    }
+
+    $align: (left, right, center);
     @each $key in $align {
         .align-#{$key} {
             @if $key == left {
                 .cta-button,
                 .cta-link {
                     span {
-                        margin: 0 24px 0 0;
+                        margin: 0 24px 12px 0;
                         &:last-child {
                             margin-right: 0;
                         }
@@ -276,7 +355,7 @@
                 .cta-button,
                 .cta-link {
                     span {
-                        margin: 0 0 0 24px;
+                        margin: 0 0 12px 24px;
                         &:first-child {
                             margin-left: 0;
                         }
@@ -288,52 +367,7 @@
                 .cta-link {
                     margin: 0 -12px;
                     span {
-                        margin: 0 12px 0;
-                    }
-                }
-            }
-            @include mobile {
-                .cta-button,
-                .cta-link {
-                    span {
-                        display: block;
-                        margin-right: 0;
-                        margin-left: 0;
-                    }
-                }
-            }
-
-            @if $key == top {
-                //&.text-area {
-                //    .text-wrap {
-                //        position: absolute;
-                //        top: -69px;
-                //        right: 0;
-                //        left: 0;
-                //        @include mobile {
-                //            top: -65px;
-                //        }
-                //    }
-                //}
-            }
-            @if $key == middle {
-                //&.text-area {
-                //    .text-wrap {
-                //        position: absolute;
-                //        top: 50%;
-                //        right: 0;
-                //        left: 0;
-                //        transform:translateY(-50%);
-                //    }
-                //}
-            }
-            @if $key == bottom {
-                &.text-area {
-                    .text-wrap {
-                        position: absolute;
-                        bottom: 0;
-                        right: 0;
-                        left: 0;
+                        margin: 0 12px 12px;
                     }
                 }
             }

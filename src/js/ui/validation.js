@@ -24,7 +24,7 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
         bindjQuery: 'validation',
         defaults: {   
             defaultErrorMsg : '입력하세요', 
-            register:null,
+            register : null,
             maxLength : 10000     
         },
         selectors: {
@@ -36,14 +36,66 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
             self.validItemObj = {};
-            self.register = self.options.register;
             self.nameArr = [];
+
+            var register = self.options.register || {};
+            var newObj = {};
+
             self.$el.find('[name]').each(function(index,item){
+
+                var required = $(item).data('required'); 
+                var msgTarget = $(item).data('msgTarget'); 
+                var errorMsg = $(item).data('errorMsg') || self.options.defaultErrorMsg; 
+
+                if(required && /true/i.test(required)){
+                    
+                    var value = $(item).data('value');
+                    var pattern = $(item).data('pattern');
+                    var minLength = $(item).data('minLength');
+                    var maxLength = $(item).data('maxLength');
+                    var validate = $(item).data('validate');
+
+                    if(validate && core.isFunction(window[validate])){
+                        validate = window[validate];
+                    }else{
+                        validate = null;
+                    }
+
+                    newObj[item.name] = {
+                        required : true,
+                        errorMsg : errorMsg
+                    }
+
+                    if(value) newObj[item.name]['value'] = value;
+                    if(pattern) newObj[item.name]['pattern'] = new RegExp(pattern);
+                    if(minLength) newObj[item.name]['minLength'] = minLength;
+                    if(maxLength) newObj[item.name]['maxLength'] = maxLength;
+                    if(validate) newObj[item.name]['validate'] = validate;
+                    if(msgTarget) newObj[item.name]['msgTarget'] = msgTarget;
+                    newObj[item.name] = $.extend(newObj[item.name], register[item.name] || {});                    
+
+                }else{
+
+                    if(msgTarget) {
+                        if(newObj[item.name]){                   
+                            newObj[item.name]['msgTarget'] = msgTarget;
+                        }else{
+                            newObj[item.name] = {
+                                msgTarget : msgTarget
+                            };
+                        }
+                        newObj[item.name] = $.extend(newObj[item.name], register[item.name] || {});
+                    }
+                }
+
                 self.nameArr.push(item.name);
             });
+
+            self.register = newObj;
+
             self.nameArr = vcui.array.unique(self.nameArr);
             self._build();
-            self._bindEvent();   
+            self._bindEvent();
             
         },
 
@@ -52,80 +104,78 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
             var nObj = {};
             var $target;
             var msg;
-            var defaultErrorMsg = self.options.defaultErrorMsg;
 
             for(var key in self.register){
                 var obj = self.register[key];
                 if(obj.value) nObj[key] = obj.value;
-
-                // errorMsg를 찾아서 입력한다.
+                if(obj.msgTarget) msg = obj.msgTarget;
                 $target = self.$el.find('[name='+ key +']');
-                msg = $target.data('msgTarget');
+
                 if(msg) {
                     if($target.siblings(msg).length > 0){
-                        $target.siblings(msg).text(obj.errorMsg || defaultErrorMsg);
+                        $target.siblings(msg).text(obj.errorMsg);
                     }else{
-                        $target.parent().siblings(msg).text(obj.errorMsg || defaultErrorMsg);
+                        $target.parent().siblings(msg).text(obj.errorMsg);
                     }
                 };
-                
             }
+
             self.setValues(nObj);
         },
 
         _defaultCheckFunc : function _defaultCheckFunc(val){
-            // console.log(val, !!(val && val.length > 0));
-            return !!(val && val.length > 0);
+            return val && val.length > 0;
         },
 
         _regexCheckFunc : function _regexCheckFunc(pattern, val){
-            return pattern.test(val);
+            return val && pattern.test(val);
         },
 
         _lenCheckFunc : function _regexCheckFunc(val, min, max){
-            return !!(val.length >= min && val.length <= max);
+            return val.length >= min && val.length <= max;
         },
 
         _checkValidate : function _checkValidate(key, obj, val, newObj, flag){
             var self = this;
             var rObj = newObj;
-            var isFalse = flag ? flag : false;
-            var defaultErrorMsg = self.options.defaultErrorMsg;
+            var isFalse = flag? flag : false;
 
             if(obj.validate){
                 if(obj.validate(val) == isFalse){
-                    rObj[key] = isFalse? val : obj.errorMsg || defaultErrorMsg;
+                    rObj[key] = isFalse? val : obj.errorMsg ;
                 }else{
                     delete rObj[key];
                 }            
             }else{       
                 if(obj.pattern){
                     if(self._regexCheckFunc(obj.pattern, val) == isFalse){  
-                        rObj[key] = isFalse? val : obj.errorMsg || defaultErrorMsg;
+                        rObj[key] = isFalse? val : obj.errorMsg;
                     }else{
                         delete rObj[key];
                     }
                 }else{
                     if(obj.minLength || obj.maxLength){
                         if(self._lenCheckFunc(val, obj.minLength? obj.minLength : 0 , obj.maxLength? obj.maxLength : self.options.maxLength) == isFalse){
-                            rObj[key] = isFalse? val : obj.errorMsg || defaultErrorMsg;
+                            rObj[key] = isFalse? val : obj.errorMsg;
                         }else{
                             delete rObj[key];
                         }
                     }else{
+
                         if(self._defaultCheckFunc(val) == isFalse){
-                            rObj[key] = isFalse? val : obj.errorMsg || defaultErrorMsg;
+                            rObj[key] = isFalse? val : obj.errorMsg;
                         }else{
                             delete rObj[key];
                         }
                     }
                 }
             } 
+
+            // console.log(rObj);
             return rObj;
         },
-        /*
 
-        */
+        
         // getValues('name'), getValues(['name','email']); -> result : {name:'', email:''}
         getValues : function getValues(str){
             var self = this;  
@@ -148,7 +198,20 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                         for(var key in self.register){
                             var obj = self.register[key];
                             if(obj.required){
-                                result[key] = self.$el.find('[name='+ key +']').val();
+                                var $target = self.$el.find('[name='+ key +']');
+                                var val;
+
+                                if($target.is(':checkbox') || $target.is(':radio')){    
+                                    var nArr = [];
+                                    $target.filter(':checked').each(function(idx, item){
+                                        nArr.push($(item).val())
+                                    });
+                                    val = $target.is(':radio')? nArr[0] : nArr;
+
+                                }else{
+                                    val = $target.val();
+                                }
+                                result[key] = val;                                
                             }
                         }
                     }
@@ -165,6 +228,7 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
             var $target;  
             for(var key in obj){
                 $target = self.$el.find('[name='+ key +']');
+                
                 if($target.is(':radio') || $target.is(':checkbox')){
                     $target.filter('[value='+ obj[key] +']').prop('checked', true);
                 }else{
@@ -174,7 +238,7 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
             }
             setTimeout(function(){
                 self.triggerHandler('update');
-            });
+            },0);
         },
 
         _setCheckValidate : function _setCheckValidate(flag){
@@ -189,8 +253,14 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                 if(obj && obj.required){
                     $target = self.$el.find('[name='+ key +']');
 
-                    if($target.is(':radio') || $target.is(':checkbox')){
-                        val = self.$el.find('[name='+ key +']:checked').val();
+                    if($target.is(':checkbox') || $target.is(':radio')){
+                        var nArr = [];
+                        $target.filter(':checked').each(function(idx, item){
+                            nArr.push($(item).val())
+                        });
+                        val = $target.is(':radio')? nArr[0] : nArr;
+                        if(val=='on') val = '';
+
                     }else{
                         val = $target.val();
                     }
@@ -230,7 +300,7 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                 self.triggerHandler('success');
             }else{
                 self._swicthErrorMsg(self.validItemObj);
-                self.triggerHandler('errors', [self.validItemObj]);
+                self.triggerHandler('validerror', [self.validItemObj]);
             }
             
         },
@@ -243,7 +313,7 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                 var nobj = self.register[key];
                 if(nobj.required){
                     $target = self.$el.find('[name='+ key +']');
-                    msg = $target.data('msgTarget');
+                    msg = nobj['msgTarget'];
                     if(msg) {
                         if($target.siblings(msg).length>0){
                             $target.siblings(msg).hide();
@@ -256,7 +326,7 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
             for(var prop in obj){
 
                 $target = self.$el.find('[name='+ prop +']');
-                msg = $target.data('msgTarget');
+                msg = nobj['msgTarget'];
                 if(msg){ 
                     if($target.siblings(msg).length>0){
                         $target.siblings(msg).show();
@@ -280,14 +350,23 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                 event = 'blur';
             }
 
-            $target.on(event, function(e){   
+            $target.on(event, function(e){  
+
                 var val; 
+
                 if($target.is(':radio') || $target.is(':checkbox')){
-                    val = self.$el.find('[name='+ key +']:checked').val();
+                    var nArr = [];
+                    $target.filter(':checked').each(function(idx, item){
+                        nArr.push($(item).val())
+                    });
+                    val = $target.is(':radio')? nArr[0] : nArr;
+                    if(val=='on') val = '';
+
                 }else{
                     val = e.currentTarget.value;
                 }
-                self.validItemObj = self._checkValidate(key, obj, val, self.validItemObj);
+                
+                self.validItemObj = self._checkValidate(key, obj, val, self.validItemObj);                
                 self._swicthErrorMsg(self.validItemObj);
                 if(!vcui.isEmpty(self.validItemObj)){                    
                     self.triggerHandler('errors', [self.validItemObj]);

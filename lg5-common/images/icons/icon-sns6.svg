@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-sns6</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-5" transform="translate(-160.000000, 0.000000)">
+            <g id="m_f_sns_naver" transform="translate(160.000000, 0.000000)">
+                <g id="Group-7">
+                    <rect id="Rectangle-9-Copy-2" fill-opacity="0" fill="#F5F5F5" x="0" y="0" width="24" height="24"></rect>
+                    <g id="m_f_sns_naverpost_ic" transform="translate(7.000000, 4.000000)" fill="#787878">
+                        <g id="Group-8">
+                            <path d="M10,0 L10,10.0756144 L0,10.0756144 L0,0 L10,0 Z M4.18581041,2.9489603 L2.68292683,2.9489603 L2.68292683,6.88090737 L4.18065533,6.88090737 L4.18065533,4.89700382 L5.57084662,6.88090737 L7.07317073,6.88090737 L7.07317073,2.9489603 L5.57572196,2.9489603 L5.57572196,4.93282479 L4.18581041,2.9489603 Z" id="Combined-Shape"></path>
+                            <path d="M7.083,14.4986011 L5,16.9565217 L2.917,14.4986011 L7.083,14.4986011 Z M10,11.0586011 L7.917,13.5156011 L2.083,13.5156011 L0,11.0586011 L10,11.0586011 Z" id="Combined-Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

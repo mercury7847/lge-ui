@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-sns3</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-5" transform="translate(-64.000000, 0.000000)">
+            <g id="m_f_sns_facebook" transform="translate(64.000000, 0.000000)">
+                <rect id="Rectangle-9-Copy-2" fill-opacity="0" fill="#F5F5F5" x="0" y="0" width="24" height="24"></rect>
+                <path d="M7.58822149,20 L10.6421398,20 L10.6421398,12.4359974 L12.7726889,12.4359974 L13,9.90383366 L10.6421398,9.90383366 L10.6421398,8.46133853 C10.6421398,7.86419753 10.763679,7.6280052 11.3470671,7.6280052 L13,7.6280052 L13,5 L10.8852182,5 C8.61276396,5 7.58822149,5.98960364 7.58822149,7.88466537 L7.58822149,9.90383366 L6,9.90383366 L6,12.4678363 L7.58822149,12.4678363 L7.58822149,20 Z" id="Fill-1" fill="#787878"></path>
+            </g>
+        </g>
+    </g>
+</svg>

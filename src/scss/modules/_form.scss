@@ -484,24 +484,35 @@ input, textarea {
 }
 .ui-calendar-container {
     background:#fff;
-    max-width:630px;
+    width:630px;
     padding:40px 56px 32px;
     border-radius:4px;
+    margin-left:-315px;
+    transform:translateY(-50%);
+    @include mobile {
+        width:304px;
+        margin-left:-152px;
+        padding:20px 12px 16px;
+        border-radius:2px;
+    }
     .ui-calendar-header-second {
         position:relative;
         margin:0 16px 40px;
         text-align:center;
+        @include mobile {
+            margin:0 8px 16px;
+        }
         > a {
             position:absolute;
             top:50%;
             margin-top:-16px;
-            padding:12px;
+            padding:10px;
             font-size:0;
             &::before {
                 content:' ';
                 display:block;
-                width:8px;
-                height:8px;
+                width:12px;
+                height:12px;
                 border:2px solid #111;
                 border-right:none;
                 border-bottom:none;
@@ -516,6 +527,20 @@ input, textarea {
                     transform:rotate(135deg);
                 }
             }
+            &.disabled {
+                cursor: default;
+                &::before {
+                    border-color:#adadad;
+                }
+            }
+            @include mobile {
+                margin-top:-12px;
+                padding:8px;
+                &::before {
+                    width:8px;
+                    height:8px;
+                }
+            }
         }
         .ui-calendar-now {
             color:#111;
@@ -525,6 +550,10 @@ input, textarea {
             .year::after {
                 content:'.';
                 display:inline-block;
+            }
+            @include mobile {
+                font-size:18px;
+                line-height:27px;
             }
         }
     }
@@ -541,9 +570,15 @@ input, textarea {
                 color:#515151;
                 font-weight:300;
             }
+            @include mobile {
+                font-size:14px;
+                line-height:18px;
+                th {
+                    padding:11px 0 19px;
+                }
+            }
             tbody {
                 .ui-calendar-cell {
-                    width:74px;
                     .ui-calendar-day {
                         display:inline-block;
                         width:74px;
@@ -563,6 +598,15 @@ input, textarea {
                             background:#e51346;
                             color:#fff;
                             font-weight:700;
+                        }
+                    }
+                    @include mobile {
+                        .ui-calendar-day {
+                            width:40px;
+                            height:40px;
+                            border-radius:4px;
+                            font-size:14px;
+                            line-height:40px;
                         }
                     }
                 }

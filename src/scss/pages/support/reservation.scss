@@ -16,11 +16,6 @@
 }
 
 .support {
-    //임시
-    .err-msg {
-        display:none;
-    }
-
     .dot-list {
         margin-top:12px;
         @include mobile {
@@ -364,3 +359,4 @@
 @import "../../support/pages/KR50CS312";
 @import "../../support/pages/KR50CS332";
 @import "../../support/pages/KR50CS332";
+@import "../../support/pages/KR50CS411";
