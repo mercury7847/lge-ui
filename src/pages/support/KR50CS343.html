@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/reservation"
+    ],
+    "pageJS": [
+        "support-common",
+        "support/selectCategory"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'title': '전화 상담 예약이 접수되었습니다.',
+                'desc': '신청하신 희망 일시에 상담원이 전화를 드려 원격 상담 방법 안내 및 상담을 진행합니다.'
+            })
+            
+            <div class="contents support KR50CS411">
+                <div class="contents-inner">
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">예약 정보</h3>
+                        </div>
+                        <div class="section-content">
+                            <ul class="inquiry-list">
+                                <li>
+                                    <div class="title">접수번호</div>
+                                    <div class="description">K729401293RL <button type="button" class="btn-text red01">복사하기</button></div>
+                                </li>
+                                <li>
+                                    <div class="title">접수일시</div>
+                                    <div class="description">2020년 07월 29일  14시 21분</div>
+                                </li>
+                                <li>
+                                    <div class="title">진행상태</div>
+                                    <div class="description">접수</div>
+                                </li>
+                                <li>
+                                    <div class="title">서비스 예정 일자</div>
+                                    <div class="description">2020년 07월 29일  14시 21분</div>
+                                </li>
+                                <li>
+                                    <div class="title">선택 제품</div>
+                                    <div class="description">가정용 스탠드형</div>
+                                </li>
+                                <li>
+                                    <div class="title">구입 시기</div>
+                                    <div class="description">1개월 이내</div>
+                                </li>
+                                <li>
+                                    <div class="title">증상</div>
+                                    <div class="description">스마트기능/스마트진단 &gt; LG ThinQ등록 실패</div>
+                                </li>
+                                <li>
+                                    <div class="title">전달사항</div>
+                                    <div class="description">안녕하세요.<br>ThinQ 등록 방법을 확인하고 메뉴얼 대로 시도해도 연결이 안됩니다.</div>
+                                </li>
+                            </ul>
+                            <div class="solution-btn-box"><a href="#" class="btn type-icon-1">선택하신 증상은 간편해결 방법을 통해서 해결이 가능합니다</a></div>
+                            <ul class="dot-list03">
+                                <li>접수번호는 “예약 확인 및 취소” 또는 “서비스 결과” 이용 시 꼭 필요한 번호입니다. 휴대전화번호로 전송된 접수번호를 반드시 보관하시기 바랍니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">서비스 받으실 분</h3>
+                        </div>
+                        <div class="section-content">
+                            <ul class="inquiry-list">
+                                <li>
+                                    <div class="title">이름</div>
+                                    <div class="description">홍*동</div>
+                                </li>
+                                <li>
+                                    <div class="title">휴대전화</div>
+                                    <div class="description">010****5678</div>
+                                </li>
+                            </ul>
+                            <ul class="dot-list03">
+                                <li>입력한 정보가 정확하지 않을 경우 예약하신 서비스가 취소 또는 지연될 수 있으니 확인 바랍니다.</li>
+                                <li>접수하신 사항에 대한 취소 및 확인은 예약 및 결과 조회에서 가능합니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="btn-group right type-A">
+                        <a href="" class="btn pink">확인</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+</body>
+</html> 
