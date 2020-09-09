@@ -11,10 +11,14 @@ footer {
         font-size:0;
         li {
             display:inline-block;
+            position:relative;
             margin-top:32px;
             margin-left:96px;
             vertical-align:top;
             dl {
+                display:inline-block;
+                position:relative;
+                margin:0 auto;
                 dt {
                     color:#616161;
                     font-size:14px;
@@ -22,10 +26,23 @@ footer {
                     font-weight:500;
                 }
                 dd {
+                    margin-top:2px;
                     color:#222;
                     font-size:18px;
                     line-height:26px;
                     font-weight:700;
+                    a {
+                        display:none;
+                        position:absolute;
+                        top:0;
+                        right:0;
+                        bottom:0;
+                        left:0;
+                        font-size:0;
+                        @include mobile {
+                            display:block;
+                        }
+                    }
                 }
             }
             &:first-child {
