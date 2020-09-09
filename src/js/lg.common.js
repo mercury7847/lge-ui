@@ -41,7 +41,7 @@ $.fn.buildCommonUI = function () {
 if(lgkorUI === undefined){
     console.log("lgkorUI start!!!");
     
-    //$.holdReady(true);
+    $.holdReady(true);
     
     var lgkorUI = {
         template: $('<div class="template"></div>'),
