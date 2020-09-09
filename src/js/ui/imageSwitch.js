@@ -17,7 +17,7 @@ vcui.define('ui/imageSwitch', ['jquery', 'vcui'], function ($, core) {
             };
             
             self.mode = "";
-
+            
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
@@ -27,23 +27,31 @@ vcui.define('ui/imageSwitch', ['jquery', 'vcui'], function ($, core) {
                 mode, winwidth;
 
             winwidth = $(window).outerWidth(true);
-            if(winwidth < 768) mode = self.options.mobile_prefix;
-            else mode = self.options.pc_prefix;
+            if(winwidth > 767) mode = self.options.pc_prefix;
+            else mode = self.options.mobile_prefix;
 
             if(self.mode != mode) self._changeImage(mode);
         },
 
         _changeImage: function(mode){
-            var self = this, imgsrc;
+            var self = this;
             
             self.mode = mode;
 
-            imgsrc = self.$el.attr("data-" + self.mode + "-src");
-            if(self.$el.hasClass('ui_bg_switch')){
-                self.$el.css({
+            self.$el.find('.ui_bg_switch').each(function(idx, item){
+                var imgsrc = $(item).attr("data-" + self.mode + "-src");
+                $(item).css({
                     'background-image': 'url(' + imgsrc + ')'
                 });
-            }
+            });
+
+            self.$el.find('img').each(function(idx, item){
+                var pcsrc = $(item).attr('data-pc-src');
+                if(pcsrc !== undefined){
+                    var imgsrc = $(item).attr("data-" + self.mode + "-src");
+                    $(item).attr('src', imgsrc);
+                }
+            })
         }
     });
 
