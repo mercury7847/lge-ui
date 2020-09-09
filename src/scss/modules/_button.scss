@@ -3,21 +3,21 @@
 .btn {
     display: inline-block;
     min-width:124px;
-    padding:13px 32px;
+    padding:14px 32px;
     border: 1px solid #212121;
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: #fff;
     line-height: 24px;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 16px;
     color: #111;
     text-align: center;
     vertical-align: top;
     
     &.gray {
-        border-color: #bbb;
-        background: #bbb;
-        color: #fff;
+        border-color: #ededed;
+        background: #ededed;
+        color: #ec455a;
     }
 
     &.black {
@@ -27,10 +27,9 @@
     }
 
     &.pink {
-        border-color:#EC455A;
-        background-color:#EC455A;
+        border-color:#ec455a;
+        background-color:#ec455a;
         color:#fff;
-        font-weight:500; // common 확인 필요 
     }
 
     &.bd-pink {
@@ -71,22 +70,12 @@
             margin-bottom: 14px;
         }
     }
-    &-sm {
-        border-radius: 4px;
-        border: solid 1px #aaa;
-        background-color: #fff;
-        line-height: 1;
-        padding: 1px 12px 3px;
-        display: inline-block;
-    }
-    &-md {
-        border-radius: 4px;
-        border: solid 1px #aaa;
-        background-color: #fff;
-        line-height: 1;
-        padding: 12px 29px;
-        display: inline-block;
+    
+    &.btn-md {
+        min-width:84px;
+        padding: 8px 16px;
         font-size: 14px;
+        line-height: 20px;
     }
     &[class*="type-icon"] {
         padding-left: 52px;
