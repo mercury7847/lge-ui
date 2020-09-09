@@ -24,7 +24,7 @@ $.fn.buildCommonUI = function () {
     ], function () {    
         console.log("buildCommonUI!!!!");
 
-        this.find('.ui_calender').vcCalendar();
+        this.find('.ui_calendar').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
         this.find('.ui_selectbox').vcSelectbox();
         this.find('.ui_tab').vcTab();
@@ -37,13 +37,14 @@ $.fn.buildCommonUI = function () {
     return this;
 };
 
+;(function(global){
 
-if(lgkorUI === undefined){
+    if(global['lgkorUI']) return;
     console.log("lgkorUI start!!!");
     
-    //$.holdReady(true);
+    $.holdReady(true);
     
-    var lgkorUI = {
+    global['lgkorUI'] = {
         template: $('<div class="template"></div>'),
         templateList: null,
         init: function(){
@@ -122,7 +123,7 @@ if(lgkorUI === undefined){
 
                 $('body').buildCommonUI();
     
-                //$.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
+                $.holdReady(false); // ready함수 실행을 허용(이전에 등록된건 실행해준다.)
     
                 // 모달이 열렸을 때 페이지 스크롤을 막기 위함 ////////////////////////////
                 $doc.on('modalfirstopen modallastclose', function (e) {
@@ -199,16 +200,7 @@ if(lgkorUI === undefined){
     document.addEventListener('DOMContentLoaded', function () {
         console.log("DOMContentLoaded!!!");
         lgkorUI.init();
-        /*
-        if($('body.iw-fullscreen-edit').length){
-            console.log("Edit Mode!!");
-            setTimeout(function(){
-                console.log("setTimeout!!!")
-                lgkorUI.init();
-            }.bind(self), 900);
-        }else {
-            console.log("None Edit Mode!!!!");
-        }
-        */
     });
-}
+
+})(window);
+

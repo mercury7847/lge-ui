@@ -1,0 +1,18 @@
+$(window).ready(function(){
+    if(!document.querySelector('.KRC0044')) return false;
+
+    $('.KRC0044').buildCommonUI();
+
+    vcui.require(['ui/carousel'], function () {
+        $('.KRC0044').find('.ui_carousel_slider').vcCarousel({
+            infinite: false,
+            autoplay: false,
+            swipeToSlide: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            prevArrow:'.btn-arrow.prev',
+            nextArrow:'.btn-arrow.next',
+            playSelector: '.btn-play.play'
+        });
+    });
+});

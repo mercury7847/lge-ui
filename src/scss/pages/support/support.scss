@@ -45,9 +45,9 @@
         width:100%;
         max-width:1146px; // 1066
         margin:0 auto;
-        padding:64px 40px 120px;
+        padding:0 40px 120px;
         @include mobile {
-            padding:12px 0 0;
+            padding:0;
         }
     }
 
@@ -154,7 +154,6 @@
     .pagination {
         margin-top:40px;    
     }
-
 
     /* text list */
     .dot-list {
@@ -358,6 +357,43 @@
     }
     .solution-btn-box {
         margin-top: 32px;
+    }
+
+    .reservation-title {
+        text-align: center;
+        &::before {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background-color: #000;
+        }
+        h3 {
+            font-size: 24px;
+            font-weight: normal;
+            line-height: 1.42;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.38;
+            margin-top: 16px;
+        }
+        [class^="btn"] {
+            margin-top: 30px;
+        }
+        @include mobile {
+            &::before {
+                width: 60px;
+                height: 60px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
     }
 
     .color-1 {
