@@ -165,9 +165,28 @@ gulp.task("jsCompile:ui", () => gulp
 );
 
 // fonts, images
-gulp.task("static", () => gulp
-    .src("./lg5-common/**/*")
-    .pipe(gulp.dest(dist + sourceFolder))
+gulp.task("static", () => {
+    gulp.start(["static:data-ajax", "static:fonts", "static:images", "static:template", "static:videos"]);
+});
+gulp.task("static:data-ajax", () => gulp
+    .src("./lg5-common/data-ajax/**")
+    .pipe(gulp.dest(dist + sourceFolder + "/data-ajax/"))
+);
+gulp.task("static:fonts", () => gulp
+    .src("./lg5-common/fonts/**")
+    .pipe(gulp.dest(dist + sourceFolder + "/fonts/"))
+);
+gulp.task("static:images", () => gulp
+    .src("./lg5-common/images/**")
+    .pipe(gulp.dest(dist + sourceFolder + "/images/"))
+);
+gulp.task("static:template", () => gulp
+    .src("./lg5-common/template/**")
+    .pipe(gulp.dest(dist + sourceFolder + "/template/"))
+);
+gulp.task("static:videos", () => gulp
+    .src("./lg5-common/videos/**")
+    .pipe(gulp.dest(dist + sourceFolder + "/videos/"))
 );
 
 
@@ -202,6 +221,13 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/helper/*", ["jsCompile:helper"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/libs/*", ["jsCompile:libs"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/ui/*", ["jsCompile:ui"]).on('change', browserSync.reload);
+
+    //static
+    gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);
+    gulp.watch("./lg5-common/fonts/**", ["static:fonts"]).on('change', browserSync.reload);
+    gulp.watch("./lg5-common/images/**", ["static:images"]).on('change', browserSync.reload);
+    gulp.watch("./lg5-common/template/**", ["static:template"]).on('change', browserSync.reload);
+    gulp.watch("./lg5-common/videos/**", ["static:videos"]).on('change', browserSync.reload);
 });
 
 // Compile sass, concat and minify css + js
@@ -215,8 +241,6 @@ gulp.task('server-build', function() {
         gulp.start('build');
     });
 });
-
-
 
 
 gulp.task("default", ["watch"]); // Default gulp task
