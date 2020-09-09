@@ -12,7 +12,7 @@ $(document).ready(function() {
 			var modal = $(item).attr("href");
 			$(modal).css('display', 'block');
 			$(modal).find(".ui_carousel_slider").vcCarousel();
-			$(modal).css('display', 'none');
+			//$(modal).css('display', 'none');
 
 			$(item).on('click', function(e){
 				e.preventDefault();
