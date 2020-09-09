@@ -6,7 +6,7 @@ $(window).ready(function(){
     vcui.require(['ui/carousel'], function () {
         $('.KRC0024').find('.ui_carousel_slider').vcCarousel({
             infinite: false,
-            autoplay: false,
+            autoplay: true,
             swipeToSlide: true,
             slidesToShow: 1,
             slidesToScroll: 1,
