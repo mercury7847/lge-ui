@@ -29,13 +29,13 @@
         <div class="cont-area">
             <ul class="link-wrap">
                 <!-- 제품 -->
-                <li class="depth1-li size2">
+                <li class="depth1-li size2 active"><!-- 열렸을 때 .active -->
                     <a href="#n" class="depth1">제품</a>
-                    <div class="depth2-wrap">
+                    <div class="depth2-wrap" style="display:block;">
                         <ul class="depth2">
-                            <li class="depth2-li">
+                            <li class="depth2-li active"><!-- 열렸을 때 .active -->
                                 <span class="depth2-tit">TV/AV</span>
-                                <ul class="depth3">
+                                <ul class="depth3" style="display:block;">
                                     <li><a href="#n">TV</a></li>
                                     <li><a href="#n">프로젝터</a></li>
                                     <li><a href="#n">AV</a></li>
@@ -108,12 +108,14 @@
                 <!-- 스토리 -->
                 <li class="depth1-li">
                     <a href="#n" class="depth1">스토리</a>
-                    <ul class="depth2 link-only">
-                        <li><a href="#n">매거진</a></li>
-                        <li><a href="#n">활용가이드</a></li>
-                        <li><a href="#n">뉴스룸</a></li>
-                        <li><a href="#n">e-카탈로그</a></li>
-                    </ul>
+                    <div class="depth2-wrap">
+                        <ul class="depth2 link-only">
+                            <li><a href="#n">매거진</a></li>
+                            <li><a href="#n">활용가이드</a></li>
+                            <li><a href="#n">뉴스룸</a></li>
+                            <li><a href="#n">e-카탈로그</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <!-- // 스토리 -->
                 <!-- 케어용품/소모품 -->
@@ -195,21 +197,25 @@
                 <!-- 케어솔루션 -->
                 <li class="depth1-li line2">
                     <a href="#n" class="depth1">케어솔루션</a>
-                    <ul class="depth2 link-only">
-                        <li><a href="#n">제품 안내</a></li>
-                        <li><a href="#n">케어솔루션 안내</a></li>
-                    </ul>
+                    <div class="depth2-wrap">
+                        <ul class="depth2 link-only">
+                            <li><a href="#n">제품 안내</a></li>
+                            <li><a href="#n">케어솔루션 안내</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <!-- // 케어솔루션 -->
                 <!-- 이벤트/멤버십 -->
                 <li class="depth1-li line2">
                     <a href="#n" class="depth1">이벤트/멤버십</a>
-                    <ul class="depth2 link-only">
-                        <li><a href="#n">이벤트</a></li>
-                        <li><a href="#n">기획전</a></li>
-                        <li><a href="#n">멤버십</a></li>
-                        <li><a href="#n">쿠폰</a></li>
-                    </ul>
+                    <div class="depth2-wrap">
+                        <ul class="depth2 link-only">
+                            <li><a href="#n">이벤트</a></li>
+                            <li><a href="#n">기획전</a></li>
+                            <li><a href="#n">멤버십</a></li>
+                            <li><a href="#n">쿠폰</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <!-- // 이벤트/멤버십 -->
                 <!-- 고객지원 -->
@@ -295,48 +301,57 @@
                 <!-- // 고객지원 -->
             </ul>
             <div class="foot-bottom">
-                <h6>LG전자</h6>
-                <ul class="bottom-link">
-                    <li><a href="#n">사이트맵</a></li>
-                    <li><a href="#n">개인정보처리방침</a></li>
-                    <li><a href="#n">이벤트</a></li>
-                    <li><a href="#n">이용약관</a></li>
-                    <li><a href="#n">이메일 무단수집거부</a></li>
-                    <li><a href="#n">소식지 신청</a></li>
-                    <li><a href="#n">정도경영 사이버 신문고</a></li>
-                </ul>
-                <ul class="sns-link">
-                    <li><a href="#n" class="sns1">LG전자 블로그</a></li>
-                    <li><a href="#n" class="sns2">LG전자 유투브</a></li>
-                    <li><a href="#n" class="sns3">LG전자 페이스북</a></li>
-                    <li><a href="#n" class="sns4">LG전자 인스타그램</a></li>
-                    <li><a href="#n" class="sns5">LG전자 트위터</a></li>
-                    <li><a href="#n" class="sns6">LG전자 네이버포스트</a></li>
-                </ul>
-                <div class="comp-info">
-                    <p class="info">
-                        <span>대표이사 : 조성진, 정도현</span>
-                        <span>사업자등록번호 : 107-86-14075</span>
-                        <span>통신판매업신고번호 : 제1997-00084호</span>
-                        <span>주소 : 서울시 영등포구 여의대로 128 LG트윈타워</span>
-                    </p>
-                    <p>본 사이트의 모든 콘텐츠는 저작권법의 보호를 받는 바, 무단 전재, 복사, 배포 등을 금합니다.</p>
-                    <p>Copyright © 2020 LG Electronics. All Rights Reserved.</p>
+                <div class="bottom-head">
+                    <h6>LG전자</h6>
+                    <ul class="bottom-link">
+                        <li><a href="#n">사이트맵</a></li>
+                        <li><a href="#n">개인정보처리방침</a></li>
+                        <li><a href="#n">이벤트</a></li>
+                        <li><a href="#n">이용약관</a></li>
+                        <li><a href="#n">이메일 무단수집거부</a></li>
+                        <li><a href="#n">소식지 신청</a></li>
+                        <li><a href="#n">정도경영 사이버 신문고</a></li>
+                    </ul>
+                    <ul class="sns-link">
+                        <li><a href="#n" class="sns1" target="_blank" title="새창열림">LG전자 블로그</a></li>
+                        <li><a href="#n" class="sns2" target="_blank" title="새창열림">LG전자 유투브</a></li>
+                        <li><a href="#n" class="sns3" target="_blank" title="새창열림">LG전자 페이스북</a></li>
+                        <li><a href="#n" class="sns4" target="_blank" title="새창열림">LG전자 인스타그램</a></li>
+                        <li><a href="#n" class="sns5" target="_blank" title="새창열림">LG전자 트위터</a></li>
+                        <li><a href="#n" class="sns6" target="_blank" title="새창열림">LG전자 네이버포스트</a></li>
+                    </ul>
                 </div>
-                <div class="foot-last">
-                    <div class="dropdowns ui_dropdown">
-                        <a href="#n" class="slt-btn ui_dropdown_toggle">한국/한국어<span class="blind sr-only">열기</span></a>
-                        <ul class="lists ui_dropdown_list">
-                            <li><a href="#n">한국/한국어</a></li>
-                        </ul>
+                <div class="bottom-body">
+                    <div class="comp-info">
+                        <p class="info">
+                            <span>대표이사 : 조성진, 정도현</span>
+                            <span>사업자등록번호 : 107-86-14075</span>
+                            <span>통신판매업신고번호 : 제1997-00084호</span>
+                            <span>주소 : 서울시 영등포구 여의대로 128 LG트윈타워</span>
+                        </p>
+                        <p>본 사이트의 모든 콘텐츠는 저작권법의 보호를 받는 바, 무단 전재, 복사, 배포 등을 금합니다.</p>
+                        <p>Copyright © 2020 LG Electronics. All Rights Reserved.</p>
                     </div>
-                    <div class="dropdowns ui_dropdown">
-                        <a href="#n" class="slt-btn ui_dropdown_toggle">패밀리 사이트<span class="blind sr-only">열기</span></a>
-                        <ul class="lists ui_dropdown_list">
-                            <li><a href="#n">패밀리 사이트1</a></li>
-                        </ul>
+                    <div class="foot-last">
+                        <div class="dropdown-wrap">
+                            <div class="dropdowns ui_dropdown">
+                                <a href="#n" class="slt-btn ui_dropdown_toggle">한국/한국어<span class="blind sr-only">열기</span></a>
+                                <ul class="lists ui_dropdown_list">
+                                    <li><a href="#n" class="selected">한국/한국어</a></li>
+                                    <li><a href="#n">영어</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdowns ui_dropdown">
+                                <a href="#n" class="slt-btn ui_dropdown_toggle">패밀리 사이트<span class="blind sr-only">열기</span></a>
+                                <ul class="lists ui_dropdown_list">
+                                    <li><a href="#n" target="_blank" title="새창열림">베스트샵</a></li>
+                                    <li><a href="#n" target="_blank" title="새창열림">LG Smartworld</a></li>
+                                    <li><a href="#n" target="_blank" title="새창열림">LG Mobile STORY</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a href="#n" class="ismsp" target="_blank" title="새창열림">개인정보 관리체계 인증</a>
                     </div>
-                    <a href="#n" class="ismsp">개인정보 관리체계 인증</a>
                 </div>
             </div>
         </div>
