@@ -4237,7 +4237,9 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             }
 
             defer.done(function () {
-                self.trigger('modalhidden');
+                self.trigger('modalhidden', {
+                    module: self
+                });
 
                 self.$el.removeClass('ui_modal_container'); // dom에 추가된 것들 제거
                 self._escape(); // esc 키이벤트 제거

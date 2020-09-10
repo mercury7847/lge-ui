@@ -18,7 +18,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
             marginTop: 0,
             marginBottom: 0,
             stickyFor: 0,
-            stickyClass: '',
+            stickyClass: 'fixed',
             stickyContainer: 'body',
         },
         selectors:{
