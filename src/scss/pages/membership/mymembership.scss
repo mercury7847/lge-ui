@@ -4,11 +4,10 @@
 
 .mypage {
     .point-use-list {
+        margin:30px 0 16px;
         padding:24px 0;
-        margin-bottom:16px;
         border-top:1px solid #616161;
         border-bottom:1px solid #616161;
-        color:111;
         line-height:24px;
         .lists {
             li {
@@ -56,6 +55,9 @@
         margin-top:32px;
         &:first-child {
             margin-top:0;
+        }
+        .tooltip-tit {
+            font-size:0;
         }
         .tit-txt {
             display:inline-block;
