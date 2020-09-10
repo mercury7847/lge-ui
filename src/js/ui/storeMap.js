@@ -6,7 +6,7 @@
  * 
  * <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5dddbd78e7c3f80dd289ec188acf536c&libraries=services"></script>
  */
-vcui.define('ui/storeMap', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/mapApi'], function ($, core) {
     "use strict";
 
     /**
@@ -19,12 +19,13 @@ vcui.define('ui/storeMap', ['jquery', 'vcui'], function ($, core) {
     var StoreMap = core.ui('StoreMap', /** @lends vcui.ui.StoreMap# */{
         bindjQuery: 'storeMap',
         defaults: { 
-            mapUrl:'//dapi.kakao.com/v2/maps/sdk.js?appkey=',
             appKey:'5dddbd78e7c3f80dd289ec188acf536c',
             baseUrl : '',
             storeDataUrl : '/data/bestShop.json',
-            latitude: 37.5235644, // 최초로딩위치-절대(강남점)
             longitude : 127.0395764,
+            latitude: 37.5235644, // 최초로딩위치-절대(강남점)            
+            x : 127.0395764,
+            y : 37.5235644,
             overlayName : 'ui_overlay_item',
             templates: {
                 customOverlay : null
@@ -41,13 +42,21 @@ vcui.define('ui/storeMap', ['jquery', 'vcui'], function ($, core) {
             if (self.supr(el, options) === false) {
                 return;
             }
-            self.latitude = self.options.latitude;
-            self.longitude = self.options.longitude;
+            self.latitude = parseFloat(self.options.y || self.options.latitude);
+            self.longitude = parseFloat(self.options.x || self.options.longitude);
+
             self.storeData = [];
             self.eventData = [];
             self.itemArr = [];
             self.isOverlay = self.options.templates.customOverlay; // overlay 형태일때
-            self._build();            
+
+            new core.helper.MapApi({
+                mapService:'kakao',
+                appKey : self.options.appKey
+            }).load(function(){
+                self._setting();
+            });
+
             
         },
 
@@ -91,33 +100,24 @@ vcui.define('ui/storeMap', ['jquery', 'vcui'], function ($, core) {
             }
         },
 
+        
 
-        _build: function _build() {
+        _setting : function _setting(){
             var self = this;
-            var script = document.createElement('script');
-            script.onload = function () {
-                kakao.maps.load(function(){
-
-                    var options = {
-                        center: new kakao.maps.LatLng(self.latitude, self.longitude),
-                        level: 5
-                   };
-                    self.map = new kakao.maps.Map(self.$el[0], options);                    
-                    
-                    // 지도 오른쪽에 줌 컨트롤이 표시되도록 지도에 컨트롤을 추가한다.
-                    // var zoomControl = new kakao.maps.ZoomControl();
-                    // self.map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-                    self._getCurrentLocation();
-                    self._requestStoreData();                    
-                });
+            var options = {
+                center: new kakao.maps.LatLng(self.latitude, self.longitude),
+                level: 3
             };
-            script.onerror = function(e){
-                self.triggerHandler('maperror',[{message:'api를 로드할수 없습니다.'}]);
-            }
-            script.src = self.options.mapUrl + self.options.appKey + '&libraries=services&autoload=false';
-            document.head.appendChild(script);            
+            self.map = new kakao.maps.Map(self.$el[0], options);                    
+            
+            // 지도 오른쪽에 줌 컨트롤이 표시되도록 지도에 컨트롤을 추가한다.
+            // var zoomControl = new kakao.maps.ZoomControl();
+            // self.map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+            self._getCurrentLocation();
+            self._requestStoreData();  
         },
+
 
 
         _bindEvent: function _bindEvent() {
@@ -166,12 +166,12 @@ vcui.define('ui/storeMap', ['jquery', 'vcui'], function ($, core) {
 
             self.latitude = position.coords.latitude;
             self.longitude = position.coords.longitude;
+
             self.map.setCenter(new kakao.maps.LatLng(self.latitude, self.longitude));
         },
         
         _onErrorGeolocation : function _onErrorGeolocation() {
             var self = this;
-            self._getCoord2Address(self.latitude, self.longitude);
         },
 
         _getNumberInArea : function _getNumberInArea(arr){
@@ -280,14 +280,10 @@ vcui.define('ui/storeMap', ['jquery', 'vcui'], function ($, core) {
             overlay.setContent(content);
         },
 
-
-
         _requestStoreData : function _requestStoreData(){
             var self = this;
             //전국 베스트샵 매장 가져오기
             var url = self.options.baseUrl + self.options.storeDataUrl;  //"/data/bestShop.json";
-
-            console.log(url);
 
             $.ajax({
                 type : "POST",
@@ -299,7 +295,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui'], function ($, core) {
                     
                     self.eventData = result[0].eventData;
                     self.storeData = vcui.array.map(result[0].storeData, function(item, index){
-                        item['id'] = item['agNum']; //info.agNum, agCode 둘중에 뭘로 해야지??
+                        item['id'] = item['agNum']; //info.agNum, agCode 둘중에 뭘로 해야지??                        
                         return item;
                     });
 
@@ -323,11 +319,11 @@ vcui.define('ui/storeMap', ['jquery', 'vcui'], function ($, core) {
             var self = this;       
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
-                    function(){
-                        self._onSuccessGeolocation();
+                    function(e){
+                        self._onSuccessGeolocation(e);
                     }, 
-                    function(){
-                        self._onErrorGeolocation();
+                    function(e){
+                        self._onErrorGeolocation(e);
                     }
                 );
             } else {
