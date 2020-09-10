@@ -1,4 +1,5 @@
 .container {
+    // Page Header
     .page-header {
         max-width:1284px;
         margin:0 auto;
@@ -15,7 +16,7 @@
         }
     }
 
-    // sub title + white box layout
+    // sub page common layout : title + white box layout
     .cont-wrap {
         padding:51px 40px 93px;
         background:#f4f4f4;
@@ -41,6 +42,9 @@
                 padding:56px;
                 border-radius:4px;
                 background:#fff; 
+                &.no-pd {
+                    padding:0;
+                }
             }
             .tit-desc {
                 color:#111;
