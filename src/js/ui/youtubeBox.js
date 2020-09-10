@@ -29,15 +29,14 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
 
         _completeTemplate: function(){
             var self = this;
-            
+
             self._bindEvent();
         },
 
         _bindEvent: function(){
             var self = this;
-            console.log(this)
 
-            self.$el.find("see-video").on('click', function(e){
+            self.$el.find(".see-video").on('click', function(e){
                 e.preventDefault();
 
                 self._addVideo($(this));
