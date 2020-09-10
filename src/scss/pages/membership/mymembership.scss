@@ -76,11 +76,22 @@
         }
         .tooltip-wrap {
             margin-left:4px;
+            .img_barcode {
+                max-width:214px;
+                margin-bottom:10px;
+                img {
+                    display:block;
+                    width:100%
+                }
+            }
         }
         .input-wrap {
             &.barcode {
                 position:relative;
                 width:465px;
+                input {
+                    padding-right:120px;
+                }
                 .btn-confirm {
                     position:absolute;
                     top:16px;
