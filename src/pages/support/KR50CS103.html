@@ -16,7 +16,7 @@
     <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
     <script src="/lg5-common/js/lg.common.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/support/imgUpload.min.js"></script>
+    <script src="/lg5-common/js/support/profileUpload.min.js"></script>
 </head>
 
 <body>
@@ -29,7 +29,9 @@
                         <div class="section-content">
                             <div class="profile-regist-box">
                                 <div class="profile-regist-wrap">
-                                    <div class="profile-regist-img"><img src="" alt="asdas"></div>
+                                    <div class="profile-regist-img">
+                                        <img src="/lg5-common/images/no-profile-image.png" alt="프로필 이미지">
+                                    </div>
                                     <p class="profile-regist-text">등록된 사진이 없습니다.</p>
                                 </div>
                             </div>
@@ -41,10 +43,12 @@
                                             <strong class="tit">파일 첨부</strong>
                                         </div>
                                         <div class="file-box">
-                                            <span class="file-input">
-                                                <label for="file-upload">첨부파일 선택</label>
-                                                <input type="file" id="file-upload" class="image_inputType_file" accept="image/*" required multiple>
-                                            </span>
+                                            <div class="file-input">
+                                                <form>
+                                                    <label for="profile-regist-file-upload" class="profile-regist-file-name">첨부파일 선택</label>
+                                                    <input type="file" id="profile-regist-file-upload" accept="image/*">
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                     <ul class="dot-list03 no-border">

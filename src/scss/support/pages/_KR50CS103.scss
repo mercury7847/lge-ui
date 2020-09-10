@@ -15,4 +15,13 @@
         width: 14px;
         height: 14px;
     }
+    .file-box {
+        .file-input {
+            label{
+                &::after {
+                    display: none;
+                }
+            }
+        }
+    }
 }
