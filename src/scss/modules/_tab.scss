@@ -49,13 +49,12 @@
                 }
                 > a {
                     display:block;
-                    padding:23px 39px;
-                    border:1px solid #ddd;
-                    border-radius:33px;
-                    color:#aaa;
-                    font-size:18px;
-                    font-weight:700;
-                    line-height:18px;
+                    padding:6px 12px;
+                    border-radius:18px;
+                    color:#515151;
+                    font-size:16px;
+                    font-weight:500;
+                    line-height:24px;
 
                     @include mobile {
                         padding:11px 15px;

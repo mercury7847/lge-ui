@@ -1,6 +1,6 @@
 <div class="form-wrap">
     <dl class="forms">
-        <dt class="tit">@@formTit</dt>
+        <dt class="tit">@@wrapTit</dt>
         <dd class="conts">
             <div class="box size2">
                 <span class="input-wrap datepicker">
@@ -21,18 +21,22 @@
                 </span>
             </div>
             <div class="box">
-                <span class="rdo-wrap">
-                    <input type="radio" id="rdo1-1" name="rdo1" checked>
-                    <label for="rdo1-1">전체</label>
-                </span>
-                <span class="rdo-wrap">
-                    <input type="radio" id="rdo1-2" name="rdo1">
-                    <label for="rdo1-2">구매</label>
-                </span>
-                <span class="rdo-wrap">
-                    <input type="radio" id="rdo1-3" name="rdo1">
-                    <label for="rdo1-3">취소</label>
-                </span>
+                @@if ( inputType == "radio") {
+                    @@for (var i=0; i < context.inputArr.length; i++) {
+                    <span class="rdo-wrap">
+                        <input type="radio" id="`+inputArr[i].id+`" name="`+inputArr[i].name+`" `+inputArr[i].checked+`>
+                        <label for="`+inputArr[i].id+`">`+inputArr[i].value+`</label>
+                    </span>
+                    }
+                }
+                @@if ( inputType == "checkbox" ) {
+                    @@for (var i=0; i < context.inputArr.length; i++) {
+                    <span class="chk-wrap">
+                        <input type="checkbox" id="`+inputArr[i].id+`" name="`+inputArr[i].name+`" `+inputArr[i].checked+`>
+                        <label for="`+inputArr[i].id+`">`+inputArr[i].value+`</label>
+                    </span>
+                    }
+                }
             </div>
         </dd>
     </dl>

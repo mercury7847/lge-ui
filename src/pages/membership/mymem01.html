@@ -111,7 +111,13 @@
                         <div class="cont-box">
                             <!-- filter -->
                             @@include('./common/modules/mem-filter.html', {
-                                "formTit" : "조회기간"
+                                "wrapTit" : "조회기간",
+                                "inputType" : "radio",
+                                "inputArr" : [
+                                    { "id" : "rdo1-1", "name" : "rdo1", "value" : "전체", "checked" : "checked" },
+                                    { "id" : "rdo1-2", "name" : "rdo1", "value" : "구매", "checked" : "" },
+                                    { "id" : "rdo1-3", "name" : "rdo1", "value" : "취소", "checked" : "" }
+                                ]
                             })
                             <!-- // filter -->
  
