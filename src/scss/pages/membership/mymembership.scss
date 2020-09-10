@@ -3,6 +3,66 @@
 @import "../../app";
 
 .mypage {
+    .point-use-list {
+        padding:24px 0;
+        margin-bottom:16px;
+        border-top:1px solid #616161;
+        border-bottom:1px solid #616161;
+        color:111;
+        line-height:24px;
+        .lists {
+            li {
+                display:table;
+                table-layout:fixed;
+                width:100%;
+                margin-top:4px;
+                padding:0 16px;
+                &:first-child {
+                    margin-top:0;
+                }
+                p {
+                    display:table-cell;
+                    vertical-align:middle;
+                    &.date {
+                        width:122px;
+                    }
+                    &.desc {
+                        width:auto;
+                        text-align:left;
+                    }
+                    &.num {
+                        min-width:112px;
+                        text-align:right;
+                    }
+                }
+    
+            }
+        }
+        dl.total {
+            @include clearfix;
+            padding:20px 16px 0;
+            dt, dd {
+                float:left;
+                width:50%;
+                font-weight:700;
+            }
+            dd {
+                text-align:right;
+            }
+        }
+    }
+
+    .select-form {
+        dt {
+            position:relative;
+            font-size:14px;
+            line-height:20px;
+        }
+        dd {
+            margin-top:8px;
+
+        }
+    }
     // 나의 멤버십 정보
     .mymem-lists {
         font-size:0;

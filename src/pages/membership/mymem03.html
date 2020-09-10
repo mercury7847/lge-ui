@@ -12,41 +12,27 @@
                 "pageTitle": "나의 멤버십",
                 "pageArr" : [
                     { "page" : "나의 멤버십 정보", "on" : "" },
-                    { "page" : "포인트 조회", "on": "on" },
-                    { "page" : "영수증 등록", "on": "" }
+                    { "page" : "포인트 조회", "on": "" },
+                    { "page" : "영수증 등록", "on": "on" }
                 ]
             })
             <!-- mypage -->
             <div class="contents mypage">
                 <div class="cont-wrap">
                     <div class="section">
-                        <h3 class="sec-tit">포인트 적립 / 사용내역</h3>
+                        <h3 class="sec-tit">영수증 등록</h3>
                         <div class="cont-box">
-                            @@include('./common/modules/mem-step.html', {
-                                "formTit" : "조회기간",
-                                "stepArr" : [
-                                    {
-                                        "step" : "STEP1",
-                                        "tit" : "제품 구입",
-                                        "desc" : "베스트샵 매장 또는<br>제휴매장에서<br>제품 구입"
-                                    },
-                                    {
-                                        "step" : "STEP2",
-                                        "tit" : "일정금액구입",
-                                        "desc" : "베스트샵 매장 또는<br>제휴매장에서<br>제품 구입"
-                                    },
-                                    {
-                                        "step" : "STEP3",
-                                        "tit" : "우수고객 지정",
-                                        "desc" : "우수고객 지정"
-                                    },
-                                    {
-                                        "step" : "STEP4",
-                                        "tit" : "무상 A/S 혜택부여",
-                                        "desc" : "무상 A/S 혜택부여"
-                                    }
-                                ]
-                            })
+                            <div class="select-form">
+                                <dt>지점선택</dt>
+                                <dd>
+                                    <div class="select-wrap">
+                                        <select class="ui_selectbox" id="select1" title="지점 선택">
+                                            <option value="">이마트</option>
+                                            <option value="" selected>홈플러스</option>
+                                        </select>
+                                    </div>
+                                </dd>
+                            </div>
 
                             <div class="point-use-list">
                                 <h4 class="blind">포인트 적립 / 사용내역 정보 리스트 </h4>
