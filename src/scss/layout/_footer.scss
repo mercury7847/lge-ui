@@ -85,7 +85,7 @@ footer {
                         font-size:14px;
                         line-height:18px;
                         font-weight:700;
-                        &::after {
+                        &::before {
                             content:' ';
                             position:absolute;
                             top:50%;
@@ -184,6 +184,19 @@ footer {
                             }
                         }
                     }
+                    &.m-only {
+                        .depth1::after {
+                            content:' ';
+                            display:inline-block;
+                            width:14px;
+                            height:14px;
+                            margin-top:2px;
+                            margin-left:4px;
+                            background:url('/lg5-common/images/icons/icon-blank-arr.svg') center no-repeat;
+                            background-size:100%;
+                            vertical-align:top;
+                        }
+                    }
                 }
             }
         }
@@ -277,6 +290,9 @@ footer {
                                 width:100%;
                             }
                         }
+                    }
+                    &.m-only {
+                        display:none;
                     }
                 }
                 @media screen and (max-width:1465px) {
@@ -380,7 +396,7 @@ footer {
                     padding:40px 24px 0;
                     background:#ededed;
                     .bottom-link {
-                        margin-top:10px;
+                        margin-top:18px;
                         li {
                             width:50%;
                             margin-top:10px;
@@ -388,20 +404,18 @@ footer {
                         }
                     }
                     .sns-link {
-                        display:flex;
-                        flex-wrap:nowrap;
-                        justify-content:space-between;
                         position:relative;
                         top:initial;
                         right:initial;
-                        margin-top:40px;
+                        margin-top:20px;
                         li {
-                            margin-left:0;
+                            margin-left:12px;
                         }
                     }
                 }
             }
             .bottom-body {
+                position:relative;
                 padding-left:117px;
                 .comp-info {
                     margin-top:12px;
@@ -433,11 +447,12 @@ footer {
                             margin-right:29px;
                             vertical-align:top;
                             .slt-btn {
-                                display:block;
+                                display:inline-block;
                                 color:#222;
                                 font-size:12px;
                                 line-height:20px;
                                 font-weight:500;
+                                vertical-align:top;
                                 &::after {
                                     content:' ';
                                     display:inline-block;
@@ -500,8 +515,17 @@ footer {
                     padding-left:0;
                 }
                 @include mobile {
-                    padding:40px 24px 60px;
+                    padding:73px 24px 40px;
                     background:#ededed;
+                    &::before {
+                        content:' ';
+                        position:absolute;
+                        top:40px;
+                        right:24px;
+                        left:24px;
+                        height:1px;
+                        background:#adadad;
+                    }
                     .comp-info {
                         margin-top:0;
                         p.info {
@@ -513,17 +537,19 @@ footer {
                         }
                     }
                     .foot-last {
-                        margin-top:16px;
+                        margin-top:20px;
                         .dropdown-wrap {
                             float:none;
+                            font-size:0;
                             .dropdowns {
-                                margin-right:40px;
+                                width:50%;
+                                margin-right:0;
                             }
                         }
                         .ismsp {
                             display:inline-block;
                             float:none;
-                            margin-top:32px;
+                            margin-top:40px;
                         }
                     }
                 }
