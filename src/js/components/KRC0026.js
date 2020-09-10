@@ -15,6 +15,7 @@ $(document).ready(function() {
 			], function () {
 				component.vcLazyLoader();
 				component.vcImageSwitch();
+				component.find('.youtube-box').vcYoutubeBox();
 		
 				component.find('a[data-control=custom_modal]').each(function(idx, item){		
 					$(item).on('click', function(e){
@@ -32,25 +33,21 @@ $(document).ready(function() {
 		},
 
 		modalShown: function(modal){
-			if(modal.$el.find(".ui_carousel_slider").attr('ui-modules') == undefined){
-				modal.$el.find(".ui_carousel_slider").vcCarousel({
-					infinite: false,
-					autoplay: false,
-					swipeToSlide: true,
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					prevArrow:'.btn-arrow.prev',
-					nextArrow:'.btn-arrow.next'
-				}).on('carouselbeforechange', function(e, slide, prev, next){
-					if($(slide.$slides.get(prev)).attr("ui-modules") == "VideoBox"){
-						$(slide.$slides.get(prev)).find("video").get(0).pause();
-					}            
-				}).on('carouselafterchange', function(e, slide, prev, next){
-					if($(slide.$slides.get(prev)).attr("ui-modules") == "VideoBox"){
-						$(slide.$slides.get(prev)).find("video").get(0).play();
-					}            
-				});
-			}
+			var self = this;
+
+			modal.$el.find(".ui_carousel_slider").vcCarousel({
+				infinite: false,
+				autoplay: false,
+				swipeToSlide: true,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				prevArrow:'.btn-arrow.prev',
+				nextArrow:'.btn-arrow.next'
+			}).off('carouselbeforechange')
+			.on('carouselbeforechange', function(e, slide, prev, next){
+				self.changeVisualContents(modal, prev, next);
+			});
+
 			var carousel = modal.$el.find(".ui_carousel_slider").vcCarousel('instance');
 			var slideID = carousel.currentSlide;
 			modal.$el.find('.visual-box-belt').css('opacity', 1)
@@ -58,8 +55,18 @@ $(document).ready(function() {
 				var opacity = slideID == idx ? 1 : 0;
 				$(item).css('opacity', opacity);
 			});
+		},
 
-			modal.$el.find('.youtube-box').vcYoutubeBox();
+		changeVisualContents: function(modal, prev, next){
+			var self = this,
+				visualBox;
+			
+			visualBox = modal.$el.find('.visual-box-belt .visual-box').eq(prev);
+			visualBox.find('.youtube-box').vcYoutubeBox('close');
+			visualBox.stop().css('opacity', 0);
+
+			visualBox = modal.$el.find('.visual-box-belt .visual-box').eq(next);
+			visualBox.stop().css('opacity', 0).animate({opacity:1}, 350);
 		}
 	}
 	KRC0026.init();
