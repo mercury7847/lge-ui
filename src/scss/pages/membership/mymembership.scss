@@ -52,15 +52,15 @@
         }
     }
 
-    .select-form {
-        dt {
-            position:relative;
+    .form-wrap {
+        .btn_receipt {
+            position:absolute;
+            top:0;
+            right:0;
+            color:#EC455A;
             font-size:14px;
             line-height:20px;
-        }
-        dd {
-            margin-top:8px;
-
+            font-weight:500;
         }
     }
     // 나의 멤버십 정보

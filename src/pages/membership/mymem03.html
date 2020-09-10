@@ -22,41 +22,41 @@
                     <div class="section">
                         <h3 class="sec-tit">영수증 등록</h3>
                         <div class="cont-box">
-                            <div class="select-form">
-                                <dt>지점선택</dt>
-                                <dd>
-                                    <div class="select-wrap">
-                                        <select class="ui_selectbox" id="select1" title="지점 선택">
-                                            <option value="">이마트</option>
-                                            <option value="" selected>홈플러스</option>
-                                        </select>
-                                    </div>
-                                </dd>
+                            <div class="form-wrap">
+                                <dl class="forms">
+                                    <dt class="tit">
+                                        지점선택
+                                        <a href="#n" class="btn_receipt">등록한 영수증 확인</a>
+                                    </dt>
+                                    <dd class="conts">
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" id="select1" title="지점 선택">
+                                                <option value="">이마트</option>
+                                                <option value="" selected>홈플러스</option>
+                                            </select>
+                                        </div>
+                                    </dd>
+                                </dl>
                             </div>
 
-                            <div class="point-use-list">
-                                <h4 class="blind">포인트 적립 / 사용내역 정보 리스트 </h4>
-                                <ul class="lists">
-                                    <li>
-                                        <p class="date">2017. 11. 01</p>
-                                        <p class="desc">LG BEST SHOP 서초점</p>
-                                        <p class="num">+ 2,000P 적립</p>
-                                    </li>
-                                    <li>
-                                        <p class="date">2019. 12. 29</p>
-                                        <p class="desc">LG BEST SHOP 서초점</p>
-                                        <p class="num">- 1,000P 사용</p>
-                                    </li>
-                                </ul>
-                                <dl class="total">
-                                    <dt>총 보유 포인트</dt>
-                                    <dd>1,000P</dd>
+                            <div class="form-wrap">
+                                <dl class="forms">
+                                    <dt class="tit">
+                                        영수증 번호 등록
+                                    </dt>
+                                    <dd class="conts">
+                                        
+                                    </dd>
                                 </dl>
                             </div>
 
                             @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true, 
+                                "bulletTit" : "영수증 등록 안내사항",
                                 "bulletTxt" : [
-                                    "적립된 포인트 사용기간은 적립일로부터 3년이며 고객님께서 3년 내에 사용하지 않은 적립 포인트는 자동 소멸됩니다."
+                                    "영수증 등록은 구매일 다음날부터 가능하며, 30일 이내에 등록해주셔야 적립됩니다.",
+                                    "영수증 등록은 할인점(홈플러스, 이마트)에서 구매하신 분들만 등록이 가능합니다.",
+                                    "멤버십 가입과 같은 날에 구매한 영수증의 등록은 가능하나 등록한 영수증 확인(구매이력조회)은 다음날부터 조회하실 수 있습니다."
                                 ]
                             })
                         </div>
