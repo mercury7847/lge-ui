@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["membership/mymembership"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "나의 멤버십",
+                "pageArr" : [
+                    { "page" : "나의 멤버십 정보", "on" : "" },
+                    { "page" : "포인트 조회", "on": "" },
+                    { "page" : "영수증 등록", "on": "on" }
+                ]
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="section">
+                        <h3 class="sec-tit">영수증 등록</h3>
+                        <div class="cont-box">
+                            <div class="form-wrap">
+                                <dl class="forms">
+                                    <dt class="tit">
+                                        <p class="tit-txt">지점선택</p>
+                                        <a href="#n" class="btn-receipt">등록한 영수증 확인</a>
+                                    </dt>
+                                    <dd class="conts">
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" id="select1" title="지점 선택">
+                                                <option value="">이마트</option>
+                                                <option value="" selected>홈플러스</option>
+                                            </select>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+
+                            <div class="form-wrap">
+                                <dl class="forms">
+                                    <dt class="tit">
+                                        <p class="tit-txt">영수증 번호 등록</p>
+                                        <div class="tooltip-wrap">
+                                            <span class="tooltip-icon">자세히 보기</span>
+                                            <span class="tooltip-box">
+                                                <p>1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다.</p>
+                                            </span>
+                                        </div>
+                                    </dt>
+                                    <dd class="conts">
+                                        <span class="input-wrap barcode">
+                                            <input type="text" placeholder="영수증 바코드 번호를 입력해주세요.">
+                                            <button type="button" class="cell btn-confirm"><span>등록하기</span></button>
+                                        </span>
+                                    </dd>
+                                </dl>
+                            </div>
+
+                            @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true, 
+                                "bulletTit" : "영수증 등록 안내사항",
+                                "bulletTxt" : [
+                                    "영수증 등록은 구매일 다음날부터 가능하며, 30일 이내에 등록해주셔야 적립됩니다.",
+                                    "영수증 등록은 할인점(홈플러스, 이마트)에서 구매하신 분들만 등록이 가능합니다.",
+                                    "멤버십 가입과 같은 날에 구매한 영수증의 등록은 가능하나 등록한 영수증 확인(구매이력조회)은 다음날부터 조회하실 수 있습니다."
+                                ]
+                            })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>

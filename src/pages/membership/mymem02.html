@@ -21,35 +21,58 @@
                 <div class="cont-wrap">
                     <div class="section">
                         <h3 class="sec-tit">포인트 적립 / 사용내역</h3>
-                        <div class="cont-box no-pd">
-                            <ul class="mymem-lists">
-                                <li>
-                                    <dl>
-                                        <dt><p>현재 보유 포인트</p></dt>
-                                        <dd>1,000 P</dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl>
-                                        <dt>
-                                            <p>VIP 멤버십 등급</p>
-                                            <div class="tooltip-wrap">
-                                                <span class="blind">자세히 보기</span>
-                                                <span class="tooltip-box">
-                                                    <p>1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다.</p>
-                                                </span>
-                                            </div>
-                                        </dt>
-                                        <dd>일반</dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl>
-                                        <dt><p>1년 구매금액 집계</p></dt>
-                                        <dd>1,700,000원</dd>
-                                    </dl>
-                                </li>
-                            </ul>
+                        <div class="cont-box">
+                            @@include('./common/modules/mem-filter.html', {
+                                "formTit" : "조회기간",
+                                "stepArr" : [
+                                    {
+                                        "step" : "STEP1",
+                                        "tit" : "제품 구입",
+                                        "desc" : "베스트샵 매장 또는<br>제휴매장에서<br>제품 구입"
+                                    },
+                                    {
+                                        "step" : "STEP2",
+                                        "tit" : "일정금액구입",
+                                        "desc" : "베스트샵 매장 또는<br>제휴매장에서<br>제품 구입"
+                                    },
+                                    {
+                                        "step" : "STEP3",
+                                        "tit" : "우수고객 지정",
+                                        "desc" : "우수고객 지정"
+                                    },
+                                    {
+                                        "step" : "STEP4",
+                                        "tit" : "무상 A/S 혜택부여",
+                                        "desc" : "무상 A/S 혜택부여"
+                                    }
+                                ]
+                            })
+
+                            <div class="point-use-list">
+                                <h4 class="blind">포인트 적립 / 사용내역 정보 리스트 </h4>
+                                <ul class="lists">
+                                    <li>
+                                        <p class="date">2017. 11. 01</p>
+                                        <p class="desc">LG BEST SHOP 서초점</p>
+                                        <p class="num">+ 2,000P 적립</p>
+                                    </li>
+                                    <li>
+                                        <p class="date">2019. 12. 29</p>
+                                        <p class="desc">LG BEST SHOP 서초점</p>
+                                        <p class="num">- 1,000P 사용</p>
+                                    </li>
+                                </ul>
+                                <dl class="total">
+                                    <dt>총 보유 포인트</dt>
+                                    <dd>1,000P</dd>
+                                </dl>
+                            </div>
+
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTxt" : [
+                                    "적립된 포인트 사용기간은 적립일로부터 3년이며 고객님께서 3년 내에 사용하지 않은 적립 포인트는 자동 소멸됩니다."
+                                ]
+                            })
                         </div>
                     </div>
                 </div>

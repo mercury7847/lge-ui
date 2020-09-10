@@ -3,6 +3,128 @@
 @import "../../app";
 
 .mypage {
+    .point-use-list {
+        padding:24px 0;
+        margin-bottom:16px;
+        border-top:1px solid #616161;
+        border-bottom:1px solid #616161;
+        color:111;
+        line-height:24px;
+        .lists {
+            li {
+                display:table;
+                table-layout:fixed;
+                width:100%;
+                margin-top:4px;
+                padding:0 16px;
+                &:first-child {
+                    margin-top:0;
+                }
+                p {
+                    display:table-cell;
+                    vertical-align:middle;
+                    &.date {
+                        width:122px;
+                    }
+                    &.desc {
+                        width:auto;
+                        text-align:left;
+                    }
+                    &.num {
+                        min-width:112px;
+                        text-align:right;
+                    }
+                }
+    
+            }
+        }
+        dl.total {
+            @include clearfix;
+            padding:20px 16px 0;
+            dt, dd {
+                float:left;
+                width:50%;
+                font-weight:700;
+            }
+            dd {
+                text-align:right;
+            }
+        }
+    }
+
+    .form-wrap {
+        margin-top:32px;
+        &:first-child {
+            margin-top:0;
+        }
+        .tit-txt {
+            display:inline-block;
+            font-size:14px;
+            line-height:20px;
+            vertical-align:top;
+        }
+        .btn-receipt {
+            position:absolute;
+            top:0;
+            right:0;
+            color:#EC455A;
+            font-size:14px;
+            line-height:20px;
+            font-weight:500;
+        }
+        .tooltip-wrap {
+            margin-left:4px;
+        }
+        .input-wrap {
+            &.barcode {
+                position:relative;
+                width:465px;
+                .btn-confirm {
+                    position:absolute;
+                    top:16px;
+                    right:44px;
+                    &:after {
+                        content:'';
+                        display:block;
+                        position:absolute;
+                        top:0;
+                        right:-28px;
+                        width:24px;
+                        height:24px;
+                        border:1px solid #EC455A;
+                        border-radius:50%;
+                    }
+                    span {
+                        position:relative;
+                        color:#EC455A;
+                        font-size:16px;
+                        line-height:24px;
+                        font-weight:500;
+                        &:before {
+                            content:'';
+                            display:block;
+                            position:absolute;
+                            top:7px;
+                            right:-16px;
+                            width:1px;
+                            height:11px;
+                            background:#EC455A;
+                        }
+                        &:after {
+                            content:'';
+                            display:block;
+                            position:absolute;
+                            top:12px;
+                            right:-21px;
+                            width:11px;
+                            height:1px;
+                            background:#EC455A;
+                        }
+                    }
+                }
+            }
+        }
+    }
     // 나의 멤버십 정보
     .mymem-lists {
         font-size:0;

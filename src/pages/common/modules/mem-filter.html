@@ -1,8 +1,8 @@
 <div class="form-wrap">
     <dl class="forms">
-        <dt class="tit">@@formTit</dt>
+        <dt class="tit">@@wrapTit</dt>
         <dd class="conts">
-            <div class="box size2">
+            <div class="input-box size2 btn-type">
                 <span class="input-wrap datepicker">
                     <span class="box">
                         <input type="text" id="date-input1" placeholder="날짜를 선택하세요" title="구매내역 조회기간 시작날짜 선택">
@@ -19,20 +19,25 @@
                         </span>
                     </span>
                 </span>
+                <button type="button" class="btn pink"><span>조회</span></button>
             </div>
-            <div class="box">
-                <span class="rdo-wrap">
-                    <input type="radio" id="rdo1-1" name="rdo1" checked>
-                    <label for="rdo1-1">전체</label>
-                </span>
-                <span class="rdo-wrap">
-                    <input type="radio" id="rdo1-2" name="rdo1">
-                    <label for="rdo1-2">구매</label>
-                </span>
-                <span class="rdo-wrap">
-                    <input type="radio" id="rdo1-3" name="rdo1">
-                    <label for="rdo1-3">취소</label>
-                </span>
+            <div class="input-box">
+                @@if ( inputType == "radio") {
+                    @@for (var i=0; i < context.inputArr.length; i++) {
+                    <span class="rdo-wrap">
+                        <input type="radio" id="`+inputArr[i].id+`" name="`+inputArr[i].name+`" `+inputArr[i].checked+`>
+                        <label for="`+inputArr[i].id+`">`+inputArr[i].value+`</label>
+                    </span>
+                    }
+                }
+                @@if ( inputType == "checkbox" ) {
+                    @@for (var i=0; i < context.inputArr.length; i++) {
+                    <span class="chk-wrap">
+                        <input type="checkbox" id="`+inputArr[i].id+`" name="`+inputArr[i].name+`" `+inputArr[i].checked+`>
+                        <label for="`+inputArr[i].id+`">`+inputArr[i].value+`</label>
+                    </span>
+                    }
+                }
             </div>
         </dd>
     </dl>
