@@ -3,16 +3,29 @@
     .page-header {
         max-width:1284px;
         margin:0 auto;
-        padding:72px 0 20px;
+        padding:56px 0 24px;
         text-align:center;
         .title {
             color:#111;
-            font-size:28px;
+            font-size:30px;
             line-height:36px;
             font-weight:700;
         }
-        .page-navi {
-            margin-top:23px;
+        .tabs-wrap {
+            margin-top:20px;
+        }
+        @include mobile {
+            padding:56px 0 0;
+            .title {
+                padding-bottom:40px;
+                font-size:24px;
+                line-height:32px;
+            }
+            .tabs-wrap {
+                margin-top:0;
+                padding-top:12px;
+                background:#f4f4f4;
+            }
         }
     }
 

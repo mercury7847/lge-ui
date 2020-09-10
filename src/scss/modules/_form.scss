@@ -9,7 +9,7 @@
             line-height:20px;
         }
         .conts {
-            .box {
+            .input-box {
                 margin-top:12px;
                 font-size:0;
                 &:first-child {
@@ -17,6 +17,9 @@
                 }
                 .rdo-wrap {
                     margin-left:64px;
+                    @include mobile {
+                        margin-left:24px;
+                    }
                     &:first-child {
                         margin-left:0;
                     }
@@ -26,6 +29,15 @@
                     .input-wrap {
                         width:50%;
                         padding:0 4px;
+                    }
+                }
+                &.btn-type {
+                    position:relative;
+                    padding-right:132px;
+                    .btn {
+                        position:absolute;
+                        top:0;
+                        right:4px;
                     }
                 }
             }
