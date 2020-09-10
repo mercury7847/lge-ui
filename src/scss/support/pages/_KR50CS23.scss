@@ -59,23 +59,48 @@
 
         @include mobile {
             thead {
-                display:none;
+                position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;font-size:medium;line-height:normal;word-break:break-all;
             }
             tr {
                 position:relative;
                 border-top:1px solid #ddd;
                 transform:scale(1);
-                :first-child {
-                    border-top:0;
+                &:first-child {
+                    border-top:0 none;
                 }
             }
             td {
                 display:block;
+                padding:24px 16px;
+                border:0 none;
+                &:first-child {
+                    padding-left:16px;
+                    padding-bottom:0;
+                    & + td {
+                        padding-top:0;
+                    }
+                }
                 &:last-child {
                     position:absolute;
                     right:0;
                     top:50%;
+                    padding-right:16px;
+                    border:0 none;
                     transform:translateY(-50%);
+                }
+            }
+            .download-list {
+                td {
+                    &:nth-child(3) {
+                        padding:0 16px 24px;
+                    }
+                    &:last-child {
+                        right:16px;
+                        top:auto;
+                        bottom:20px;
+                        padding:0;
+                        transform:translateY(0); 
+                    }    
                 }
             }
         }
@@ -191,9 +216,11 @@
         }
         @include mobile {
             .tit {
+                padding-right:96px;
                 line-height:1.25;
             }
             .sub {
+                padding-right:96px;
                 font-size:14px;
                 line-height:1.29;
             }
@@ -202,6 +229,9 @@
                     font-size:14px;
                     line-height:1.29;
                 }
+            }
+            > a {
+                top:40px;
             }
         }   
     }
