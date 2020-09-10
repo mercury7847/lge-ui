@@ -63,8 +63,20 @@
                             <span class="ui_msg"></span>
                         </div>
                 
-                        <input id="tst1" name="tst1"/>
->
+                        <div class="s_cal">
+                            <div class="input_s">
+                                <button type="button" class="ui_calendar input_cal" data-input-target="#startDate">시작일</button>
+                                <input type="text" class="input_txt" id="startDate" placeholder="YYYY.MM.DD" value="">
+                            </div>
+                            <span>~</span>
+                            <div class="input_s">
+                                <button type="button" class="ui_calendar ui_calendar_end input_cal" id="uiCalendarEnd"
+                                    data-input-target="#endDate">종료일</button>
+                                <input type="text" class="input_txt" id="endDate" placeholder="YYYY.MM.DD" value="">
+                            </div>
+                        </div>
+
+
                         <button id="submit">submit</button>
                     </div>
                 </section>

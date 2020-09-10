@@ -105,7 +105,7 @@ gulp.task("concat-js", () => gulp
 
 // Compile JS
 gulp.task("scripts", () => {
-    gulp.start(["jsCompile", "jsCompile:common", "jsCompile:components", "jsCompile:support", "jsCompile:helper", "jsCompile:libs", "jsCompile:ui"]);
+    gulp.start(["jsCompile", "jsCompile:common", "jsCompile:components", "jsCompile:support", "jsCompile:helper", "jsCompile:libs", "jsCompile:ui", "jsCompile:mypage"]);
 });
 gulp.task("jsCompile", () => gulp
     .src(src + "/js/*.js")
@@ -162,6 +162,14 @@ gulp.task("jsCompile:ui", () => gulp
     //.pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
     //.pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/ui/"))
+);
+gulp.task("jsCompile:mypage", () => gulp
+    .src(src + "/js/mypage/**/*")
+    //.pipe(sourcemaps.init())
+    //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    //.pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    //.pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/mypage/"))
 );
 
 // fonts, images
@@ -221,6 +229,7 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/helper/*", ["jsCompile:helper"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/libs/*", ["jsCompile:libs"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/ui/*", ["jsCompile:ui"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/mypage/**/*", ["jsCompile:mypage"]).on('change', browserSync.reload);
 
     //static
     gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);
