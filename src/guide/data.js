@@ -63,6 +63,13 @@ var res = {
 					"VIP 멤버십 혜택" : ["/html/membership/mem02_2.html","","검수요청"],
 					"멤버십 가입안내" : ["/html/membership/mem03.html","","검수요청"]
 				}
+			},
+			"마이페이지" : {
+				"멤버십 관리" : {
+					"멤버십 가입 정보" : ["/html/membership/mymem01.html","","진행중"],
+					"멤버십 포인트 조회" : ["/html/membership/mymem02.html","","진행중"],
+					"영수증 등록" : ["/html/membership/mymem03.html","","진행중"]
+				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
 			// "페이지2" : ["./html/gr/M.GR-6L.html","","검수요청"],

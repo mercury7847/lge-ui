@@ -361,8 +361,8 @@ footer {
                     }
                 }
                 @include mobile {
-                    padding:40px 24px;
-                    background:#fff;
+                    padding:40px 24px 0;
+                    background:#ededed;
                     .bottom-link {
                         margin-top:10px;
                         li {
@@ -455,7 +455,7 @@ footer {
                                         font-weight:500;
                                         &.selected, &:hover {
                                             background:#f4f4f4;
-                                            color:#EC455A;
+                                            color:#111;
                                         }
                                     }
                                 }
@@ -488,7 +488,6 @@ footer {
                     background:#ededed;
                     .comp-info {
                         margin-top:0;
-                        text-align:center;
                         p.info {
                             margin-top:-2px;
                             margin-bottom:12px;
@@ -499,11 +498,10 @@ footer {
                     }
                     .foot-last {
                         margin-top:16px;
-                        text-align:center;
                         .dropdown-wrap {
                             float:none;
                             .dropdowns {
-                                margin:0 20px;
+                                margin-right:40px;
                             }
                         }
                         .ismsp {
