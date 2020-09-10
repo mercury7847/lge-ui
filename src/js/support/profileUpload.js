@@ -1,5 +1,5 @@
 (function() {
-    function chk_file_type() {
+    function chk_file_type(e) {
         var obj = this;
         var file_kind = obj.value.lastIndexOf('.');
         var file_name = obj.value.substring(file_kind+1,obj.length);
@@ -10,8 +10,7 @@
     
         if(check_file_type.indexOf(file_type)==-1){
             alert('이미지 파일만 선택할 수 있습니다.');
-            var parent_Obj=obj.parentNode
-            var node=parent_Obj.replaceChild(obj.cloneNode(true),obj);
+            obj.value = '';
             return false;
         }
     }
@@ -30,6 +29,7 @@
                 newVal = valArray[valArray.length-1]
             if(newVal !== '') {
                 $('.profile-regist-file-name').text(newVal);
+                $(".profile-regist-text").hide();
             }
         };
         
@@ -50,7 +50,6 @@
     
         $("#profile-regist-file-upload").change(function(){
             readURL(this);
-            $(".profile-regist-text").hide();
         });
     });
 })();
