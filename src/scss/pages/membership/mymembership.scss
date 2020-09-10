@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import "../../app";
+@import "../utilities/mixins";
 
 .mypage {
     @include mobile {

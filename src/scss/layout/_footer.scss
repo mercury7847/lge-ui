@@ -67,7 +67,7 @@ footer {
             margin:0 auto;
         }
 
-        // link-wrap
+        // link-wrap - Mobile
         @media screen and (max-width:767px) {
             .link-wrap {
                 margin-top:12px;
@@ -106,7 +106,7 @@ footer {
                         }
                     }
                     .depth2-wrap {
-                        display:none;
+                        // display:none;
                         margin:0 24px;
                         padding:8px 0 16px;
                         border-top:1px solid #ddd;
@@ -164,6 +164,9 @@ footer {
                                         }
                                     }
                                 }
+                                &.case {
+                                    display:none !important;
+                                }
                             }
                             &.link-only {
                                 li {
@@ -184,6 +187,7 @@ footer {
                 }
             }
         }
+        // link-wrap - PC
         @media screen and (min-width:768px) {
             .link-wrap {
                 margin:0 auto;
@@ -230,6 +234,20 @@ footer {
                                     }
                                 }
                             }
+                            &.case {
+                                margin-top:32px;
+                                .depth1::after {
+                                    content:' ';
+                                    display:inline-block;
+                                    width:14px;
+                                    height:14px;
+                                    margin-top:1px;
+                                    margin-left:4px;
+                                    background:url('/lg5-common/images/icons/icon-blank-arr.svg') center no-repeat;
+                                    background-size:100%;
+                                    vertical-align:top;
+                                }
+                            }
                         }
                         &.link-only {
                             margin-top:16px;
@@ -265,16 +283,14 @@ footer {
                     width:1052px;
                 }
                 @media screen and (max-width:1113px) {
-                    width:896px;
+                    width:760px;
                     .depth1-li.last {
                         margin-left:-20px;
                     }
                 }
-                @media screen and (max-width:957px) {
-                    width:740px;
+                @media screen and (max-width:820px) {
                     padding-top:0;
                     .depth1-li.line2 {
-                        width:136px;
                         padding-right:0;
                     }
                     .depth1-li.last {
