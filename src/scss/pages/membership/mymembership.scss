@@ -53,7 +53,17 @@
     }
 
     .form-wrap {
-        .btn_receipt {
+        margin-top:32px;
+        &:first-child {
+            margin-top:0;
+        }
+        .tit-txt {
+            display:inline-block;
+            font-size:14px;
+            line-height:20px;
+            vertical-align:top;
+        }
+        .btn-receipt {
             position:absolute;
             top:0;
             right:0;
@@ -61,6 +71,58 @@
             font-size:14px;
             line-height:20px;
             font-weight:500;
+        }
+        .tooltip-wrap {
+            margin-left:4px;
+        }
+        .input-wrap {
+            &.barcode {
+                position:relative;
+                width:465px;
+                .btn-confirm {
+                    position:absolute;
+                    top:16px;
+                    right:44px;
+                    &:after {
+                        content:'';
+                        display:block;
+                        position:absolute;
+                        top:0;
+                        right:-28px;
+                        width:24px;
+                        height:24px;
+                        border:1px solid #EC455A;
+                        border-radius:50%;
+                    }
+                    span {
+                        position:relative;
+                        color:#EC455A;
+                        font-size:16px;
+                        line-height:24px;
+                        font-weight:500;
+                        &:before {
+                            content:'';
+                            display:block;
+                            position:absolute;
+                            top:7px;
+                            right:-16px;
+                            width:1px;
+                            height:11px;
+                            background:#EC455A;
+                        }
+                        &:after {
+                            content:'';
+                            display:block;
+                            position:absolute;
+                            top:12px;
+                            right:-21px;
+                            width:11px;
+                            height:1px;
+                            background:#EC455A;
+                        }
+                    }
+                }
+            }
         }
     }
     // 나의 멤버십 정보
