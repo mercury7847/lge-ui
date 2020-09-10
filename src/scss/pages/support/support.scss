@@ -444,6 +444,59 @@
             display: block;
         }
     }
+
+
+    &[class*="type-icon"] {
+        padding-left: 52px;
+        padding-right: 64px;
+        &[class$="-1"] {
+            border-color: #ec455a;
+            color: #ec455a;
+            background: url(/lg5-common/images/icons/icon-solution.svg) no-repeat left 16px top 13px, url(/lg5-common/images/icons/icon-arrow-right-red.svg) no-repeat right 16px top 13px;
+        }
+    }
+    @include mobile {
+        &[class*="type-icon"] {
+            padding-left: 52px;
+            padding-right: 12px;
+            text-align: left;
+            &[class$="-1"] {
+                background: url(/lg5-common/images/icons/icon-solution.svg) no-repeat left 16px top 16px,
+            }
+        }
+    }
+    &.type-privacy {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1;
+        color: #616161;
+        text-align: left;
+        border-color: #ddd;
+        padding: 15px 32px 15px 16px;
+        position: relative;
+        margin-top: 8px;
+        &:first-child {
+            margin-top: 0;
+        }
+        &::after {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 24px;
+            background: url("/lg5-common/images/icons/icon-btn-arrow-right.svg") no-repeat;
+            position: absolute;
+            right: 16px;
+            top: 16px;
+        }
+        .side-item {
+            font-size: 14px;
+            font-weight: normal;
+            color: #808080;
+            margin-top: 12px;
+            margin-left: 32px;
+            margin-bottom: 14px;
+        }
+    }
 }
 
 
