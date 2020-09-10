@@ -820,12 +820,12 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
 
             currDate = core.date.calcDate(currDate, '-1M');
             $second.children().each(function (val, name) {
-                html = '<span class="year">' + currDate.getFullYear() + '<span class="hide">년</span></span>';
+                html = '<span class="year">' + currDate.getFullYear() + '<span class="blind">년</span></span>';
                 html += core.number.zeroPad(currDate.getMonth() + 1, 2);
                 if (val === 1) {
-                    html += '<span class="hide">월이 선택됨</span>';
+                    html += '<span class="blind">월이 선택됨</span>';
                 } else {
-                    html += '<span class="hide">월로 이동</span>';
+                    html += '<span class="blind">월로 이동</span>';
                 }
                 $(this).html(html);
                 currDate = core.date.calcDate(currDate, '1M');
