@@ -340,5 +340,10 @@ vcui.define('ui/textControl', ['jquery', 'vcui'], function ($, core) {
 
     // TextControl.prototype.defaults.countText = '{{len}} / {{limit}}byte';
 
+    var TextMark = core.ui('TextMark', TextMark, {
+        $statics: {
+            ON_TEXT_CHANGE: 'textmark:change' // 글자가 변경되었을 때 발생
+        },
+    });
     return TextControl;
 });

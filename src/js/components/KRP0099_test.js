@@ -19,7 +19,7 @@ $(window).ready(function(){
         init: function(){
             //var self = KRP0099;
 
-            vcui.require(['ui/validation', 'ui/selectbox', 'ui/formatter'], function () {
+            vcui.require(['ui/validation', 'ui/selectbox', 'ui/formatter', 'ui/calendar'], function () {
                 // $('.KRP0099').find('input[name="email"]').vcFormatter({
 				// 	format:function(val){
 				// 		return false;
@@ -75,19 +75,28 @@ $(window).ready(function(){
 				});
 
 				$('#submit').on('click', function(){
-					validation.validate(); // 체크					
+					validation.validate(); // 체크
+					console.log('calendar3',$('#endDate').val(),$('#uiCalendarEnd').vcCalendar('getCurrentDate'));				
 				});
+				
+				$('.ui_calendar').vcCalendar({ 'holidays': ['2017-09-06', '2017-09-07', '2017-09-08'] }); // hoildays:휴일등록
 
-				  
+                $('#startDate').on('calendarinsertdate', function (e, data) {
+					console.log('calendar1',data.date,data.date.getMonth());
+                    $('#uiCalendarEnd').vcCalendar('setMinDate', data.date); //시작일을 선택시 종료일의 시작날짜를 변경한다.
+                });
+
+                $('#endDate').on('calendarinsertdate', function (e, data) {
+					//data.date 종료일의 값을 반환한다.
+					console.log('calendar2',data.date);
+				});
+				
+				/*
 				$("#tst1").on("propertychange change keyup paste input",function(){
 					var cardMatchValue = $(this).val().replace(/(\d{4})(\d{4})(\d{4})(\d+)/gi,'$1-$2-$3-$4');
 					console.log(cardMatchValue);
-					/*
-					console.log($(this).val().replace(/([0-9]{3})([0-9]{4})([0-9]{4})/,'$1-$2-$3'));
-					$(this).val($(this).val().replace(/^[0-9]{3}[-]+[0-9]{4}[-]+[0-9]{4}$/g,''));
-					*/
 				});
-				  
+				*/
             });
             
         }
