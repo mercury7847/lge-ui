@@ -21,32 +21,17 @@
                 <div class="cont-wrap">
                     <div class="section">
                         <h3 class="sec-tit">포인트 적립 / 사용내역</h3>
-                        <div class="cont-box">
+                        <div class="cont-box"><!-- filter -->
                             @@include('./common/modules/mem-filter.html', {
-                                "formTit" : "조회기간",
-                                "stepArr" : [
-                                    {
-                                        "step" : "STEP1",
-                                        "tit" : "제품 구입",
-                                        "desc" : "베스트샵 매장 또는<br>제휴매장에서<br>제품 구입"
-                                    },
-                                    {
-                                        "step" : "STEP2",
-                                        "tit" : "일정금액구입",
-                                        "desc" : "베스트샵 매장 또는<br>제휴매장에서<br>제품 구입"
-                                    },
-                                    {
-                                        "step" : "STEP3",
-                                        "tit" : "우수고객 지정",
-                                        "desc" : "우수고객 지정"
-                                    },
-                                    {
-                                        "step" : "STEP4",
-                                        "tit" : "무상 A/S 혜택부여",
-                                        "desc" : "무상 A/S 혜택부여"
-                                    }
+                                "wrapTit" : "조회기간",
+                                "inputType" : "radio",
+                                "inputArr" : [
+                                    { "id" : "rdo1-1", "name" : "rdo1", "value" : "전체", "checked" : "checked" },
+                                    { "id" : "rdo1-2", "name" : "rdo1", "value" : "적립", "checked" : "" },
+                                    { "id" : "rdo1-3", "name" : "rdo1", "value" : "사용", "checked" : "" }
                                 ]
                             })
+                            <!-- // filter -->
 
                             <div class="point-use-list">
                                 <h4 class="blind">포인트 적립 / 사용내역 정보 리스트 </h4>
