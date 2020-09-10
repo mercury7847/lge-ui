@@ -45,7 +45,7 @@
         width:100%;
         max-width:1146px; // 1066
         margin:0 auto;
-        padding:0 40px 120px;
+        padding:64px 40px 120px;
         @include mobile {
             padding:0;
         }
@@ -68,9 +68,6 @@
             padding:56px 56px;
             border-radius:4px;
             background:#fff;
-            &:first-child {
-                // padding:32px 56px;
-            }
         }
         @include mobile {
             margin-top:12px;
@@ -89,20 +86,19 @@
         }
     }
 
+    //임시
+    .err-msg {
+        display:none;
+    }
+
     /* button area */
     .btn-group {
-        margin-top:80px;
+        margin-top:40px;
         &.right {
             text-align:right;
         }
-        &.type-A {
-            margin-top: 40px;
-        }
         @include mobile {
-            margin-top:40px;
-            &.type-A {
-                margin-top: 0;
-            }
+            margin-top:0;
         }
     }
 
@@ -152,7 +148,7 @@
 
     /* pagination (_pagination.scss) */
     .pagination {
-        margin-top:40px;    
+        margin-top:24px;    
     }
 
     /* text list */
@@ -221,6 +217,11 @@
         border-top: 1px solid #ddd;
         margin-top: 40px;
         padding-top: 24px;
+        &.no-border {
+            margin-top: 12px;
+            padding-top: 0;
+            border: none;
+        }
         li {
             position:relative;
             padding-left:8px;
@@ -244,6 +245,11 @@
                 & + li {
                     margin-top:8px;
                 }
+            }
+        }
+        @include mobile {
+            &.no-border {
+                margin-top: 8px;
             }
         }
     }
