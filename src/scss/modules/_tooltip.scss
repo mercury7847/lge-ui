@@ -3,6 +3,7 @@
     position:relative;
     vertical-align:top;
     &::before {
+        display:none;
         content:' ';
         position:absolute;
         left:28px;
@@ -65,8 +66,13 @@
             }
         }
     }
+    &.active {
+        &::before {
+            display:block;
+        }
+    }
     .tooltip-box {
-        // display:none;
+        display:none;
         position:absolute;
         left:38px;
         bottom:0;
@@ -86,8 +92,13 @@
             left:20px;
             right:20px;
             bottom:initial;
-            margin-top:32px;
+            margin-top:16px;
             box-shadow:0 4px 10px 0 rgba(#111, .32);
+        }
+    }
+    &.active {
+        .tooltip-box {
+            display:block;
         }
     }
 }
