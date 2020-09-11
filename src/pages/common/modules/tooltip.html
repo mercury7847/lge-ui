@@ -1,0 +1,11 @@
+<div class="tooltip-wrap"><!-- 활성화시 active -->
+    <span class="tooltip-icon">자세히 보기</span>
+    <span class="tooltip-box">
+        @@if ( type == "text" ) {
+        <p>@@text</p>
+        }
+        @@if ( type == "include" ) {
+            @@include('./common/modules/@@page.html')
+        }
+    </span>
+</div>

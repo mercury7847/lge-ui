@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/etc"
+        ],
+        "pageJS": [
+            "support-common"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'title': '접수 제품 및 설치 환경 사진 등록',
+                'desc': '고장증상이나 설치 환경을 촬영하여 등록해주세요. 서비스 엔지니어가 더욱 빠르고 안전한 서비스를 제공합니다.'
+            })
+            
+            <div class="contents support KR50CS109">
+                <div class="contents-inner">
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">사진 등록 예시</h3>
+                        </div>
+                        <div class="section-content">
+                            <div class="field-wrap">
+                                <div class="row">
+                                    <div class="field-item block">
+                                        <div class="field-title">예시를 참조하여 사진을 등록해주세요.</div>
+                                        <div class="figure-list">
+                                            <figure class="">
+                                                <img src="/lg5-common/images/dummy-img-2.jpg" alt="예시 이미지">
+                                                <figcaption>TV화면</figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="/lg5-common/images/dummy-img-2.jpg" alt="예시 이미지">
+                                                <figcaption>에어컨 실외기 위치</figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="/lg5-common/images/dummy-img-2.jpg" alt="예시 이미지">
+                                                <figcaption>세탁기/건조기 2단</figcaption>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">사진 등록</h3>
+                        </div>
+                        <div class="section-content">
+                            <div class="field-wrap">
+                                <div class="row">
+                                    <div class="field-item block">
+                                        <div class="field-title">
+                                            <strong class="tit">접수 제품 및 증상 사진</strong>
+                                        </div>
+                                        <div class="file-box">
+                                            <span class="file-input type-A">
+                                                <label for="file-upload-1">사진을 업로드해주세요</label>
+                                                <input type="file" id="file-upload-1">
+                                            </span>
+                                            <ul class="file-lists">
+                                                <li>
+                                                    <span class="file-name">접수 제품 및 증상 사진.jpg</span>
+                                                    <button type="button" class="btn-del"><span class="blind">삭제</span></button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="field-item block">
+                                        <div class="field-title">
+                                            <strong class="tit">설치 환경사진</strong>
+                                        </div>
+                                        <div class="file-box">
+                                            <span class="file-input type-A">
+                                                <label for="file-upload-2">사진을 업로드해주세요</label>
+                                                <input type="file" id="file-upload-2">
+                                            </span>
+                                            <ul class="file-lists">
+                                                <li>
+                                                    <span class="file-name">설치 환경사진.jpg</span>
+                                                    <button type="button" class="btn-del"><span class="blind">삭제</span></button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <ul class="dot-list03">
+                                            <li>사진 등록은 최대 2개까지 가능하며 1개당 용량 4MB 까지 등록 가능합니다. </li>
+                                            <li>사진 파일의 특수 기호가 있는 경우 제외해주시기 바랍니다.</li>
+                                            <li>등록 가능한 파일 확장자는 png, jpg 입니다.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-group right type-A">
+                        <button type="submit" class="btn pink">등록 하기</button>
+                    </div>
+
+                    <div class="dummy" style="height:25px">하단 영역</div>
+
+                </div>
+            </div>
+
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+</body>
+</html> 
