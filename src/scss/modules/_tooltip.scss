@@ -2,72 +2,46 @@
     display:inline-block;
     position:relative;
     vertical-align:top;
-    &::before {
-        display:none;
-        content:' ';
-        position:absolute;
-        left:28px;
-        bottom:6px;
-        width:15px;
-        height:15px;
-        background:url('/lg5-common/images/bg-tooltip-left.svg') 0 no-repeat;
-        z-index:100;
-        @include mobile {
-            top:20px;
-            left:50%;
-            bottom:initial;
-            width:20px;
-            height:12px;
-            margin-left:-10px;
-            background:url('/lg5-common/images/bg-tooltip-top.svg') 0 no-repeat;
-            background-size:100%;
-        }
+    @include mobile {
+        position:static;
     }
     .tooltip-icon {
         display:inline-block;
         position:relative;
         width:20px;
         height:20px;
-        border-radius:50%;
-        background:#515151;
+        background:url('/lg5-common/images/icons/icon-tooltip.svg') center no-repeat;
+        background-size:100%;
         font-size:0;
         cursor:pointer;
         &::before {
+            display:none;
             content:' ';
             position:absolute;
-            top:5px;
-            left:50%;
-            width:2px;
-            height:2px;
-            margin-left:-1px;
-            border-radius:50%;
-            background:#f4f4f4;
-        }
-        &::after {
-            content:' ';
-            position:absolute;
-            bottom:4px;
-            left:50%;
-            width:2px;
-            height:8px;
-            margin-left:-1px;
-            border-radius:1px;
-            background:#f4f4f4;
+            left:28px;
+            bottom:6px;
+            width:15px;
+            height:15px;
+            background:url('/lg5-common/images/bg-tooltip-left.svg') 0 no-repeat;
+            z-index:100;
+            @include mobile {
+                top:20px;
+                left:50%;
+                bottom:initial;
+                width:20px;
+                height:12px;
+                margin-left:-10px;
+                background:url('/lg5-common/images/bg-tooltip-top.svg') 0 no-repeat;
+                background-size:100%;
+            }
         }
         @include mobile {
             width:16px;
             height:16px;
-            &::before {
-                top:4px;
-            }
-            &::after {
-                bottom:3px;
-                height:6px;
-            }
         }
     }
     &.active {
-        &::before {
+        .tooltip-icon::before {
             display:block;
         }
     }
@@ -88,9 +62,10 @@
             line-height:20px;
         }
         @include mobile {
-            position:fixed;
-            left:20px;
-            right:20px;
+            position:absolute;
+            left:0;
+            right:0;
+            top:initial;
             bottom:initial;
             margin-top:16px;
             box-shadow:0 4px 10px 0 rgba(#111, .32);
