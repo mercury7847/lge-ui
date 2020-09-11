@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('../include/head_wsg.html', {
-        "title": "bulletlist 가이드"
+        "title": "tooltip 가이드"
     })
 <body>
 <div id="wrap" class="coding_guide">
     
-<h1 class="h1_guide">bullet list 정의</h1>
+<h1 class="h1_guide">tooltip 정의</h1>
 
 <!-- 주의사항 -->
 <dl class="notice">
@@ -14,114 +14,76 @@
     <dd>
         <ol>
             <li>gulp-file-include 방식으로 작업 시, <strong style="color:red">(@@)include -> @@include로 적용</strong>해야함. xmp 내부에 include 되지 않도록 ()처리함.</li>
-            <li>.bullet-list > .b-tit(타이틀), .b-txt(리스트)</li>
-            <li>'bulletTit' context 유무 체크해서 DOM구조 다르게 build됨.</li>
-            <li>bullet list상단 border있을 경우 "topBorder" : true</li>
         </ol>
     </dd>
 </dl>
 <!-- //주의사항 -->
 
 <!-- 가이드 내용 -->
-<h2 class="h2_guide">1. bullet list(title+list)</h2>
+<h2 class="h2_guide">1. tooltip (컨텐츠가 한줄짜리 텍스트인 경우)</h2>
 <div class="guide_wrap">
-    <dl class="bullet-list">
-        <dt class="b-tit">무상 서비스 적용기준</dt>
-        <dd class="b-txt">무상 서비스 기간 : 설치 일자 기준 3년 적용</dd>
-        <dd class="b-txt">VIP 고객 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리</dd>
-        <dd class="b-txt">고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 몰 구매제품 제외</dd>
-    </dl>
+    <div class="tooltip-wrap"><!-- 활성화시 active -->
+        <span class="tooltip-icon">자세히 보기</span>
+        <span class="tooltip-box">
+            <p>1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다.</p>
+        </span>
+    </div>
 </div>
 
 <div class="d_desc code">
 <xmp class="prettyprint linenums javascript"><!-- DOM -->
-<dl class="bullet-list">
-    <dt class="b-tit">무상 서비스 적용기준</dt>
-    <dd class="b-txt">무상 서비스 기간 : 설치 일자 기준 3년 적용</dd>
-    <dd class="b-txt">VIP 고객 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리</dd>
-    <dd class="b-txt">고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 몰 구매제품 제외</dd>
-</dl> 
+<div class="tooltip-wrap"><!-- 활성화시 active -->
+    <span class="tooltip-icon">자세히 보기</span>
+    <span class="tooltip-box">
+        <p>1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다.</p>
+    </span>
+</div>
 <!-- // DOM -->  
 
 <!-- page 내 작업 방식 -->
 <!-- (@@)include ()삭제 후 사용 -->
-(@@)include('./common/modules/bullet-list.html', {
-    "bulletTit" : "무상 서비스 적용기준", <!-- 블릿 타이틀이 있을경우 true, 아닐경우 삭제 -->
-    "bulletTxt" : [
-        "무상 서비스 기간 : 설치 일자 기준 3년 적용",
-        "VIP 고객 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리",
-        "고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 몰 구매제품 제외"
-    ]
+(@@)include('./common/modules/tooltip.html', {
+    "type" : "text", <!-- 텍스트만 한줄 들어갈 경우 -->
+    "text" : "1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다." <!-- p태그 안에 들어갈 텍스트만 입력 -->
 })
 <!-- // page 내 작업 방식 -->
-
 </xmp>
 </div>
 <!-- // 가이드 내용 -->
 
 
 <!-- 가이드 내용 -->
-<h2 class="h2_guide">2. bullet list(list only)</h2>
+<h2 class="h2_guide">2. tooltip (컨텐츠가 p태그 하나 이상 디자인요소가 들어갈 경우)</h2>
 <div class="guide_wrap">
-    <ul class="bullet-list">
-        <li class="b-txt">무상 서비스 기간 : 설치 일자 기준 3년 적용</li>
-        <li class="b-txt">VIP 고객 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리</li>
-        <li class="b-txt">고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 몰 구매제품 제외</li>
-    </ul>
+    <div class="tooltip-wrap"><!-- 활성화시 active -->
+        <span class="tooltip-icon">자세히 보기</span>
+        <span class="tooltip-box">
+            <div class="img_barcode">
+                <img src="/lg5-common/images/membership/img-barcode.png" alt="">
+            </div>
+            <p>바코드 하단의 번호를 앞에서부터 입력해주세요.</p>
+        </span>
+    </div>
 </div>
 
 <div class="d_desc code">
 <xmp class="prettyprint linenums javascript"><!-- DOM -->
-<ul class="bullet-list">
-    <li class="b-txt">무상 서비스 기간 : 설치 일자 기준 3년 적용</li>
-    <li class="b-txt">VIP 고객 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리</li>
-    <li class="b-txt">고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 몰 구매제품 제외</li>
-</ul>
+<div class="tooltip-wrap"><!-- 활성화시 active -->
+    <span class="tooltip-icon">자세히 보기</span>
+    <span class="tooltip-box">
+        <div class="img_barcode">
+            <img src="/lg5-common/images/membership/img-barcode.png" alt="">
+        </div>
+        <p>바코드 하단의 번호를 앞에서부터 입력해주세요.</p>
+    </span>
+</div>
 <!-- // DOM -->  
 
 <!-- page 내 작업 방식 -->
 <!-- (@@)include ()삭제 후 사용 -->
-(@@)include('./common/modules/bullet-list.html', {
-    "bulletTxt" : [
-        "무상 서비스 기간 : 설치 일자 기준 3년 적용",
-        "VIP 고객 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리",
-        "고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 몰 구매제품 제외"
-    ]
-})
-<!-- // page 내 작업 방식 -->
-
-</xmp>
-</div>
-<!-- // 가이드 내용 -->
-
-<!-- 가이드 내용 -->
-<h2 class="h2_guide">3. bullet list(border-top case)</h2>
-<div class="guide_wrap">
-    <ul class="bullet-list top-border">
-        <li class="b-txt">무상 서비스 기간 : 설치 일자 기준 3년 적용</li>
-        <li class="b-txt">VIP 고객 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리</li>
-        <li class="b-txt">고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 몰 구매제품 제외</li>
-    </ul>
-</div>
-
-<div class="d_desc code">
-<xmp class="prettyprint linenums javascript"><!-- DOM -->
-<ul class="bullet-list top-border">
-    <li class="b-txt">무상 서비스 기간 : 설치 일자 기준 3년 적용</li>
-    <li class="b-txt">VIP 고객 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리</li>
-    <li class="b-txt">고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 몰 구매제품 제외</li>
-</ul>
-<!-- // DOM -->  
-
-<!-- page 내 작업 방식 -->
-<!-- (@@)include ()삭제 후 사용 -->
-(@@)include('./common/modules/bullet-list.html', {
-    "topBorder" : true,  <!-- top border 타입일 때 true, 아닐경우 삭제 -->
-    "bulletTxt" : [
-        "무상 서비스 기간 : 설치 일자 기준 3년 적용",
-        "VIP 고객 산정 : 멤버십 가입한 고객의 1년간 구매금액 합산 관리",
-        "고장성 불량에 한해서 적용(소비자 과실에 의한 서비스는 미 적용), 온라인 몰 구매제품 제외"
-    ]
+(@@)include('./common/modules/tooltip.html', {
+    "type" : "include", <!-- html 디자인 영역을 include 하는 타입 -->
+    "page" : "tooltip-mymem03" <!-- html include file 파일명 입력(저장은 동일하게 modules에) -->
 })
 <!-- // page 내 작업 방식 -->
 
