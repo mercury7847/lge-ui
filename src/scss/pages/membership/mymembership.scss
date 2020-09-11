@@ -46,13 +46,17 @@
                             span {
                                 float:left;
                                 width:50%;
-                                &.mo_txt {
-                                    color:#616161;
-                                    text-align:left;
-                                }
                                 .pc_txt {
                                     display:none;
                                 }
+                            }
+                        }
+                        .mo_txt {
+                            display:none;
+                            @include mobile {
+                                display:block;
+                                color:#616161;
+                                text-align:left;
                             }
                         }
                     }
