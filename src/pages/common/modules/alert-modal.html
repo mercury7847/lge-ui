@@ -1,0 +1,20 @@
+<!-- alert modal -->
+@@if ( context.typeVer ) {
+<article id="laypop" class="lay-wrap @@typeClass" style="display:block;">    
+}
+@@if ( !context.typeVer ) {
+<article id="laypop" class="lay-wrap" style="display:block;">
+}
+    <header class="lay-header">
+        <h1 class="tit"><span>@@alertTit</span></h1>
+    </header>
+    <section class="lay-conts">
+        @@for (var i=0; i < context.alertCont.length; i++) {
+            <p>`+alertCont[i].txt+`</p>
+        }
+    </section>
+    <div class="btn-wrap laypop">
+        <button type="button" class="btn-lay ui_modal_close"><span>확인</span></button>
+    </div>
+</article>
+<!-- alert modal -->
