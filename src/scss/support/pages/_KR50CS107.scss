@@ -4,7 +4,14 @@
     .contents-inner {
         min-height: calc(100vh - 308px);
     }
-    .section-content {
-        text-align: center;
+    .field-item {
+        &.block {
+            [class*="-wrap"] {
+                margin-top: 8px;
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+        }
     }
 }
