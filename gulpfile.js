@@ -210,6 +210,7 @@ gulp.task("watch", ["browser-sync"], () => {
 
     // Watch html files
     gulp.watch(src + "/pages/**/*.html", ["html"]).on('change', browserSync.reload);
+    gulp.watch(src + "/pages/**/**/*.html", ["html"]).on('change', browserSync.reload);
     
     // Watch guide files
     gulp.watch(src + '/guide/**/*.html', ["guide:html"]).on('change', browserSync.reload);
