@@ -26,11 +26,10 @@
         var receiptRegist = {
             init: function() {
 
-                console.log("asdasd?");
                 vcui.require(["ui/tooltipTarget"], function () {
                     $('.ui_tooltip-target').vcTooltipTarget({"tooltip":".tooltip-box"});
                 });
-
+                
                 $('#btn-confirm').on('click',function (e) {
                     var param = {
                         'purchaseType':$('input[name="rdo1"]:checked').val()
@@ -51,6 +50,7 @@
                         contentHtml += ('<option value="' + item.code +'">' + item.name + '</option>');
                     });
                     $('#select1').html(contentHtml);
+                    $('#select1').vcSelectbox('update');
                 });
 
                 //searchPurchaseHistory();
