@@ -13,34 +13,21 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
             if (self.supr(el, options) === false) {
                 return;
             };
-
-            self.$comInfo = self.$el.find('.comp-link');
-            var winwidth = $(window).outerWidth(true);
-            if(winwidth <= 768){
-                self.$comInfo.data('mode', 'normal');
-            } else{
-                self.$comInfo.data('mode', 'accordion');
-            }
             
-            if(self.$comInfo.hasClass('open')) self.$comInfo.removeClass('open');
-
-            self.$el.find('.comp-link').vcDropdown();
-            self.$comInfoAcc = self.$el.find('.comp-link').vcDropdown('instance');
-            
-
             self._resize();
-            $(window).on('resize', function(){
-                self._resize();
-            });
+            $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
 
         _resize: function(){
             var self = this,
-            winwidth;
+                winwidth;
 
             winwidth = $(window).outerWidth(true);
-            if(winwidth <= 768){
-
+            if(winwidth > 767){
+                self.$el.find('.ui_footer_accordion').vcAccordion('destory');
+            } else{
+                console.log("GGG")
+                self.$el.find('.ui_footer_accordion').vcAccordion();
             }
         }
     });
