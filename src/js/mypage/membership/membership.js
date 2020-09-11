@@ -39,13 +39,18 @@
 
             var data = d.data;
             var arr = data.purchaseItems instanceof Array ? data.purchaseItems : [];
-            arr.forEach(function(item, index) {
-                contentHtml += vcui.template(listItemTemplate, {
-                    ...item,
-                    "liClass": "prod" + ((index < 10 ? '0' : '') + index),
-                    "purchaseDate": yyyyMMddString(item.purchaseDate,' .')
+            if(arr.length > 0) {
+                $('.no-data').hide();
+                arr.forEach(function(item, index) {
+                    contentHtml += vcui.template(listItemTemplate, {
+                        ...item,
+                        "liClass": "prod" + ((index < 10 ? '0' : '') + index),
+                        "purchaseDate": yyyyMMddString(item.purchaseDate,' .')
+                    });
                 });
-            });
+            } else {
+                $('.no-data').show();
+            }
             $('.svc-prod-list').html(contentHtml);
         });
     }
