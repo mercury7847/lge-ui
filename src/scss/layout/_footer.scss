@@ -56,6 +56,16 @@ footer {
                 margin-left:0;
             }
         }
+        @include mobile {
+            padding:32px 30.5% 40px;
+            white-space:nowrap;
+            overflow-x:auto;
+            li {
+                width:auto;
+                margin-top:0;
+                margin-left:60px;
+            }
+        }
     }
     .foot-cont {
         padding:0 30px 32px;
