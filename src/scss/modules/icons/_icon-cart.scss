@@ -1,4 +1,19 @@
+.icon-cart {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("/lg5-common/images/icons/icon-cart.svg") no-repeat center center;
+    background-size: 100% 100%;
+
+    @include mobile {
+    }
+}
+
 @mixin icon-cart () {
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='25' height='20' viewBox='0 0 25 20'%3e%3cg fill='none' fill-rule='evenodd'%3e%3cpath fill-rule='nonzero' d='M0 0H28V28H0z' transform='translate(-1 -4)'/%3e%3cg transform='translate(-1 -4) translate(2 5)'%3e%3cpath stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.8' d='M4.32 2.753L22.32 2.753 20.88 10.324 6.341 10.324z'/%3e%3cpath stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.8' d='M20.88 13.076L6.97 13.076 3.6 0 0 0'/%3e%3cellipse cx='9' cy='16.862' fill='%23000' rx='1.8' ry='1.721'/%3e%3cellipse cx='18.36' cy='16.862' fill='%23000' rx='1.8' ry='1.721'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e");
-    background-size: 25px 20px;
+    background: url("/lg5-common/images/icons/icon-cart.svg") no-repeat center center;
+    background-size: 20px 20px;
+
+    @include mobile {
+        background-size: 24px 24px;
+    }
 }
