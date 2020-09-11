@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('../include/head_wsg.html', {
+        "title": "alert modal popup 가이드"
+    })
+<body>
+<div id="wrap" class="coding_guide">
+    
+<h1 class="h1_guide">alert modal popup 정의</h1>
+
+<!-- 주의사항 -->
+<dl class="notice">
+    <dt><strong class="t_modify">주의사항</strong></dt>
+    <dd>
+        <ol>
+            <li>gulp-file-include 방식으로 작업 시, <strong style="color:red">(@@)include -> @@include로 적용</strong>해야함. xmp 내부에 include 되지 않도록 ()처리함.</li>
+        </ol>
+    </dd>
+</dl>
+<!-- //주의사항 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">1. Basic type</h2>
+<div class="guide_wrap">
+    <article id="laypop" class="lay-wrap" style="display:block;">
+        <header class="lay-header">
+            <h1 class="tit"><span>영수증 등록이 완료되었습니다.</span></h1>
+        </header>
+        <section class="lay-conts">
+            <p>구매일자 : 2020. 06. 18</p>
+            <p>구매제품 : 얼음정수기냉장고</p>
+        </section>
+        <div class="btn-wrap laypop">
+            <button type="button" class="btn-lay ui_modal_close"><span>확인</span></button>
+        </div>
+    </article>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<article id="laypop" class="lay-wrap" style="display:block;">
+    <header class="lay-header">
+        <h1 class="tit"><span>영수증 등록이 완료되었습니다.</span></h1>
+    </header>
+    <section class="lay-conts">
+        <p>구매일자 : 2020. 06. 18</p>
+        <p>구매제품 : 얼음정수기냉장고</p>
+    </section>
+    <div class="btn-wrap laypop">
+        <button type="button" class="btn-lay ui_modal_close"><span>확인</span></button>
+    </div>
+</article>
+<!-- // DOM -->  
+
+<!-- page 내 작업 방식 -->
+<!-- (@@)include ()삭제 후 사용 -->
+(@@)include('./common/modules/alert-modal.html', {
+    "alertTit" : "영수증 등록이 완료되었습니다.",
+    "alertCont" : [
+        { "txt" : "구매일자 : 2020. 06. 18" },
+        { "txt" : "구매제품 : 얼음정수기냉장고" }
+    ]
+})
+<!-- // page 내 작업 방식 -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2. 디자인 적용을 위해 class 추가가 필요한 경우</h2>
+<div class="guide_wrap">
+    <article id="laypop" class="lay-wrap type1" style="display:block;"> <!-- ex) .type1 -->
+        <header class="lay-header">
+            <h1 class="tit"><span>영수증 등록이 완료되었습니다.</span></h1>
+        </header>
+        <section class="lay-conts">
+            <p>구매일자 : 2020. 06. 18</p>
+            <p>구매제품 : 얼음정수기냉장고</p>
+        </section>
+        <div class="btn-wrap laypop">
+            <button type="button" class="btn-lay ui_modal_close"><span>확인</span></button>
+        </div>
+    </article>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<article id="laypop" class="lay-wrap type1" style="display:block;">
+    <header class="lay-header">
+        <h1 class="tit"><span>영수증 등록이 완료되었습니다.</span></h1>
+    </header>
+    <section class="lay-conts">
+        <p>구매일자 : 2020. 06. 18</p>
+        <p>구매제품 : 얼음정수기냉장고</p>
+    </section>
+    <div class="btn-wrap laypop">
+        <button type="button" class="btn-lay ui_modal_close"><span>확인</span></button>
+    </div>
+</article>
+<!-- // DOM -->  
+
+<!-- page 내 작업 방식 -->
+<!-- (@@)include ()삭제 후 사용 -->
+(@@)include('./common/modules/alert-modal.html', {
+    "typeVer" : true, <!-- 디자인 반영을 위해 class 추가가 필요할 경우 'true', 아닐경우 삭제 -->
+    "typeClass" : "type1", <!-- typeVer:true 일 때 사용할 class명 -->
+    "alertTit" : "영수증 등록이 완료되었습니다.",
+    "alertCont" : [
+        { "txt" : "구매일자 : 2020. 06. 18" },
+        { "txt" : "구매제품 : 얼음정수기냉장고" }
+    ]
+})
+<!-- // page 내 작업 방식 -->
+
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+</div> 
+@@include('../include/loadscript_wsg.html')
+</body>
+</html> 
