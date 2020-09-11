@@ -18,7 +18,7 @@
             url: ajaxUrl,
             data: param
         }).done(function (d) {
-            var param = d.param;
+
         });
     }
 
@@ -26,16 +26,18 @@
         var receiptRegist = {
             init: function() {
 
-                vcui.require(["ui/tooltipTarget"], function () {
+                vcui.require(["ui/tooltipTarget","ui/formatter"], function () {
                     $('.ui_tooltip-target').vcTooltipTarget({"tooltip":".tooltip-box"});
+                    $('#input-receipt').vcFormatter({"format":"receipt","maxlength":17});
                 });
-                
+
                 $('#btn-confirm').on('click',function (e) {
                     var param = {
-                        'purchaseType':$('input[name="rdo1"]:checked').val()
+                        'shop': $('#select1').vcSelectbox('selectedOption').value,
+                        'receipt': $('#input-receipt').val().replace(/\D/g,'')
                     }
                     console.log(param);
-                    //searchPurchaseHistory(param);
+                    registrationReceipt(param);
                 });
 
                 var ajaxUrl = '/lg5-common/data-ajax/mypage/membership/shop_brand_list.json';
