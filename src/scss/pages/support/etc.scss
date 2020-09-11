@@ -72,6 +72,23 @@
     }
 }
 
+.figure-list {
+    @include clearfix;
+    figure {
+        width: calc((100% - 22px) / 3 );
+        float: left;
+        margin-left: 11px;
+        &:first-child {
+            margin-left: 0;
+        }
+        figcaption {
+            font-size-adjust: 14px;
+            text-align: center;
+            margin-top: 12px;
+        }
+    }
+}
+
 @include mobile {
     img {
         max-width: 100%;
