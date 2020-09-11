@@ -83,8 +83,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _setting: function(){
             var self = this;
 
-            console.log("ddddd")
-
             self.$naviWrapper = self.$el.find(".header-bottom");
             self.$prodWrapper = self.$naviWrapper.find('.nav-category-product');
             self.$product = self.$prodWrapper.find('.nav-item');
