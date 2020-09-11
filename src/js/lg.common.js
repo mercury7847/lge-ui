@@ -20,7 +20,8 @@ $.fn.buildCommonUI = function () {
                         'ui/lazyLoader',
                         "ui/videoBox",
                         "ui/youtubeBox",
-                        "ui/imageSwitch"
+                        "ui/imageSwitch",
+                        "ui/dropdown"
     ], function () {    
         console.log("buildCommonUI!!!!");
         
@@ -30,6 +31,7 @@ $.fn.buildCommonUI = function () {
         this.find('.ui_calendar').vcCalendar();
         this.find('.ui_accordion').vcAccordion();        
         this.find('.ui_selectbox').vcSelectbox();
+        this.find('.ui_dropdown').vcDropdown();
         this.find('.ui_tab').vcTab();
         this.find('.ui_carousel').vcCarousel();
         this.find('.animation-box').vcVideoBox();

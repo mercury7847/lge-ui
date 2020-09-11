@@ -16,22 +16,35 @@
     <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
     <script src="/lg5-common/js/lg.common.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/support/imgUpload.min.js"></script>
+    <!-- <script src="/lg5-common/js/support/profileUpload.min.js"></script> -->
 </head>
 
 <body>
     <section>
         <form id="form1" runat="server">
-            <div class="profile-regist-img">
-               <img src="http://placehold.it/350x350" alt="your image" />
-            </div>
-            <div class="right">
-                <span class="file-wrapper">
-                    <input type="file" name="photo" id="profile-regist-file-upload" />
-                    <span class="profile-regist-file-name">첨부파일 선택</span>
-                </span>
-            </div>
+            <input type="file" value="파일첨부1">
         </form>
+        <script>
+            $("input[type=file]").bind( 'change', function (e) {
+                if( !$(this).val() ) return;
+                
+                var f = this.files[0];
+                var size = f.size || f.fileSize;
+                
+                var limit = 20000;
+                                
+                //alert( id + ' / ' + limit );
+                            
+                if( size > limit )
+                {
+                    alert( '파일용량은 20kb 를 넘을수 없습니다.' );
+                    $(this).val('');
+                    return;
+                }
+                            
+                $(this).parent().find('input[type=text]').val( $(this).val() );
+            })
+        </script>
     </section>
 </body>
 </html> 

@@ -1,24 +1,36 @@
 (function() {
-    function chk_file_type(e) {
+    function chk_file_type() {
         var obj = this;
         var file_kind = obj.value.lastIndexOf('.');
         var file_name = obj.value.substring(file_kind+1,obj.length);
         var file_type = file_name.toLowerCase();
         var check_file_type=new Array();​
     
-        check_file_type=['jpg','gif','png','jpeg','bmp'];
+        check_file_type=['jpg','jpeg'];
     
         if(check_file_type.indexOf(file_type)==-1){
-            alert('이미지 파일만 선택할 수 있습니다.');
+            alert('jpg만 업로드 가능합니다.');
             obj.value = '';
             return false;
+        }
+
+        if( !$(this).val() ) return;
+        var f = this.files[0];
+        var size = f.size || f.fileSize;
+        var limit = 50000;
+                    
+        if( size > limit )
+        {
+            alert( '파일용량은 50kb 를 넘을수 없습니다.' );
+            $(this).val('');
+            return;
         }
     }
 
     $(window).ready(function() {
         $('input[type=file]').on('change', chk_file_type);
         /*----------------------------------------
-        Upload btn https://codepen.io/StephenScaff/pen/dPpxpL
+        profile Upload https://codepen.io/StephenScaff/pen/dPpxpL
         ------------------------------------------*/
         var SITE = SITE || {};
         

@@ -5,7 +5,8 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
     var YoutubeBox = core.ui('youtubeBox', {
         bindjQuery: true,
         defaults: {
-            templateID: "tmpl-yt-full-modal"
+            modalTemplate: "tmpl-yt-full-modal",
+            layerTemplate: "tmpl-yt-layer"
         },
 
         initialize: function initialize(el, options) {
@@ -15,67 +16,68 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
                 return;
             };
 
-            self._setModalMode();
+            self._loadTemplate();
         },
 
-        _setModalMode: function(){
+        _loadTemplate: function(){
             var self = this;
 
-            self.$modal = null;
+            self.$videoLayer = null;
 
-            self.templateLoaded = false;
-
-            self.$opener = self.$el.find('a.see-video')
-            self.$youtubeURL = self.$opener.attr("data-src");
-
-            lgkorUI.getTemplate(self.options.templateID, self._completeTemplate.bind(self));
-
-            self._bindModalEvent();
+            lgkorUI.getTemplate(self.options.modalTemplate, self._completeTemplate.bind(self));
         },
 
         _completeTemplate: function(){
             var self = this;
 
-            self.templateLoaded = true;
+            self._bindEvent();
         },
 
-        _bindModalEvent: function(){
+        _bindEvent: function(){
             var self = this;
 
-            self.$el.find("a.see-video").each(function(idx, item){
-                var youtube_url = $(item).attr("data-src");
-                var isAcc = $(item).hasClass('acc-video-content');
+            self.$el.find(".see-video").on('click', function(e){
+                e.preventDefault();
 
-                $(item).on('click', function(e){
-                    e.preventDefault();
-
-                    if(self.templateLoaded) self._addModal(youtube_url);
-                })
+                self._addVideo($(this));
             });
         },
 
-        _addModal: function(youtube_url){
-            var self = this;
+        _addVideo: function(item){
+            var self = this,
+                isModal, templateID, youtube_url, videoLayer;
 
-            var modal = vcui.template($('#'+self.options.templateID).html(), {youtube_url:youtube_url});
-            self.$modal = $(modal).get(0);
-            $(self.$modal).find(".close-video").on('click', function(e){
+            isModal = item.data('target') == "modal" ? true : false;
+
+            youtube_url = item.attr('data-src');
+            templateID = isModal ? '#'+self.options.modalTemplate : '#'+self.options.layerTemplate;
+            videoLayer = vcui.template($(templateID).html(), {youtube_url:youtube_url});
+
+            self.$videoLayer = $(videoLayer).get(0);
+            $(self.$videoLayer).find(".close-video").on('click', function(e){
                 e.preventDefault();
-                
-                self._removeModal();
-            })
 
-            $('body').addClass('modal-open').append(self.$modal);
+                self._removeVideoLayer();
+            });
+
+            if(isModal) $('body').addClass('modal-open').append(self.$videoLayer);
+            else self.$el.append(self.$videoLayer);
         },
 
-        _removeModal: function(){
+        _removeVideoLayer: function(){
             var self = this;
 
-            $(self.$modal).find(".close-video").off('click');
-            $(self.$modal).remove();
-            self.$modal = null;
+            $(self.$videoLayer).find(".close-video").off('click');
+            $(self.$videoLayer).remove();
+            self.$videoLayer = null;
 
             $('body').removeClass('modal-open');
+        },
+
+        close: function(){
+            var self = this;
+            
+            self._removeVideoLayer();
         }
     });
 

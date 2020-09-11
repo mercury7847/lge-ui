@@ -1,7 +1,7 @@
 /*!
  * @module vcui.ui.PinchZoom
  * @license MIT License
- * @description PinchZoom 而댄룷�뚰듃
+ * @description PinchZoom 컴포넌트
  * @copyright VinylC UID Group
  * https://github.com/manuelstofer/pinchzoom
  * 
@@ -15,8 +15,8 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
     var detectGestures = function (el, target) {
         var interaction = null,
             fingers = 0,
-            lastTouchStart = null,
-            lastMouseDown = null,
+            lastTouchStart = 0,
+            lastMouseDown = 0,
             startTouches = null,
             isDragging = null,
             firstMove = true;
@@ -90,6 +90,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
             }
 
             if (time - lastTouchStart < 300) {
+
                 cancelEvent(event);
                 target._handleDoubleTap(event);
                 switch (interaction) {
@@ -125,15 +126,16 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
 
         if(core.detect.isTouch){ // touch 
 
-            el.addEventListener('touchstart', function (event) {
+            $(el).on('touchstart.pinchzoom', function (event) {
                 if(target.enabled) {
                     firstMove = true;
                     fingers = event.touches.length;
-                    detectDoubleTap(event);    
+                    detectDoubleTap(event); 
+                       
                 }                
             });
 
-            el.addEventListener('touchmove', function (event) {
+            $(el).on('touchmove.pinchzoom', function (event) {
                 if(target.enabled && !target.isDoubleTap) {
                     if (firstMove) {
                         updateInteraction(event);
@@ -162,7 +164,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
                 }
             });
 
-            el.addEventListener('touchend', function (event) {
+            $(el).on('touchend.pinchzoom', function (event) {
                 if(target.enabled) {
                     fingers = event.touches.length;
                     updateInteraction(event);
@@ -171,7 +173,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
 
         }else{ // mouse
 
-            el.addEventListener('mousedown', function (event) {
+            $(el).on('mousedown.pinchzoom', function (event) {
                 if(target.enabled) {
                     firstMove = true;
                     if(checkDoubleTap()){
@@ -186,7 +188,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
                 }   
             });
 
-            el.addEventListener('mousemove', function (event) {   
+            $(el).on('mousemove.pinchzoom', function (event) {   
                 if(target.enabled){
                     if(isDragging) {
                         if (firstMove) {
@@ -200,7 +202,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
                 }
             });
 
-            window.addEventListener('mouseup', function (event) {
+            $(window).on('mouseup.pinchzoom', function (event) {
                 if(target.enabled){
                     if(isDragging){
                         isDragging = false;
@@ -257,7 +259,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
             self._setupMarkup();
             self._bindEvents();
 
-            // self.$el.find('img').onImgLoaded(function(e){
+            // self.$$(el).find('img').onImgLoaded(function(e){
             //     // self.update(true);
             // });
 
@@ -266,6 +268,17 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
 
         },
 
+
+        destroy:function destroy(){
+            // console.log('destroy');
+            this.$container.off('touchstart.pinchzoom');
+            this.$container.off('touchmove.pinchzoom');
+            this.$container.off('touchend.pinchzoom');
+            this.$container.off('mousedown.pinchzoom');
+            this.$container.off('mousemove.pinchzoom');
+            $(window).off('mouseup.pinchzoom');
+            this.supr();
+        },
 
 
         /**   
@@ -406,9 +419,12 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
                 minOffsetX = Math.min(maxX, 0) - this.options.horizontalPadding,
                 minOffsetY = Math.min(maxY, 0) - this.options.verticalPadding;
 
+            var xp = Math.min(Math.max(offset.x, minOffsetX), maxOffsetX);
+            var yp = Math.min(Math.max(offset.y, minOffsetY), maxOffsetY);
+
             return {
-                x: Math.min(Math.max(offset.x, minOffsetX), maxOffsetX),
-                y: Math.min(Math.max(offset.y, minOffsetY), maxOffsetY)
+                x: isNaN(xp)? 0 : xp,
+                y: isNaN(yp)? 0 : yp
             };
         },
 
@@ -520,11 +536,10 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
         _sanitize: function _sanitize() {
             if (this.zoomFactor < this.options.zoomOutFactor) {
                 this._zoomOutAnimation();
-                console.log('no Ani')
             } else if (this._isInsaneOffset(this.offset)) {
                 this._sanitizeOffsetAnimation();
-                console.log('nnnn')
             }
+            
         },
 
         /**
@@ -743,9 +758,6 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
             this.hasInteraction = false;
             if(!flag) this._sanitize();
             this.update();
-
-            console.log('end', flag);
-            console.log('----------------');
         },
 
         /**
@@ -772,14 +784,12 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
 
             var zoomFactor = self._getInitialZoomFactor() * self.zoomFactor,
                 offsetX = -self.offset.x / zoomFactor,
-                offsetY = -self.offset.y / zoomFactor,
-                transform3d =   'scale3d('     + zoomFactor + ', '  + zoomFactor + ',1) ' +
-                          'translate3d(' + offsetX    + 'px,' + offsetY    + 'px,0px)',
-                transform2d =   'scale('       + zoomFactor + ', '  + zoomFactor + ') ' +
-                          'translate('   + offsetX    + 'px,' + offsetY    + 'px)';
+                offsetY = -self.offset.y / zoomFactor;
+
+            var transform3d = 'scale3d('+ zoomFactor + ',' + zoomFactor + ',1) translate3d('+ offsetX + 'px,' + offsetY + 'px,0px)';
+            // var transform2d = 'scale('+ zoomFactor + ', '  + zoomFactor + ') translate('+ offsetX+ 'px,' + offsetY+ 'px)';
             
             self.$el.css('transform', transform3d);
-        //    self.$el.css('transform', transform2d);
                 
         },
 

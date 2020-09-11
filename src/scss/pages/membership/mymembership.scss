@@ -1,15 +1,21 @@
 @charset "UTF-8";
 
-@import "../../app";
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
 
 .mypage {
     .point-use-list {
+        margin:32px 0 0;
         padding:24px 0;
-        margin-bottom:16px;
         border-top:1px solid #616161;
         border-bottom:1px solid #616161;
-        color:111;
+        font-size:16px;
         line-height:24px;
+        font-weight:500;
+        @include mobile {
+            line-height:19px;
+            border-bottom-color:#ddd;
+        }
         .lists {
             li {
                 display:table;
@@ -17,6 +23,9 @@
                 width:100%;
                 margin-top:4px;
                 padding:0 16px;
+                @include mobile {
+                    margin-top:16px;
+                }
                 &:first-child {
                     margin-top:0;
                 }
@@ -30,9 +39,30 @@
                         width:auto;
                         text-align:left;
                     }
-                    &.num {
+                    &.point {
                         min-width:112px;
                         text-align:right;
+                        @include mobile {
+                            span {
+                                float:left;
+                                width:50%;
+                                &.mo_txt {
+                                    color:#616161;
+                                    text-align:left;
+                                }
+                                .pc_txt {
+                                    display:none;
+                                }
+                            }
+                        }
+                    }
+                    @include mobile {
+                        float:left;
+                        width:100% !important;
+                        margin-top:8px;
+                        &:first-child {
+                            margin-top:0;
+                        }
                     }
                 }
     
@@ -41,6 +71,9 @@
         dl.total {
             @include clearfix;
             padding:20px 16px 0;
+            @include mobile {
+                padding-top:32px;
+            }
             dt, dd {
                 float:left;
                 width:50%;
@@ -54,8 +87,14 @@
 
     .form-wrap {
         margin-top:32px;
+        @include mobile {
+            margin-top:24px;
+        }
         &:first-child {
             margin-top:0;
+        }
+        .tooltip-tit {
+            font-size:0;
         }
         .tit-txt {
             display:inline-block;
@@ -64,31 +103,59 @@
             vertical-align:top;
         }
         .btn-receipt {
-            position:absolute;
-            top:0;
-            right:0;
+            float:right;
             color:#EC455A;
             font-size:14px;
             line-height:20px;
             font-weight:500;
+            @include mobile {
+                position:absolute;
+                top:40px;
+                right:0;
+            }
         }
         .tooltip-wrap {
             margin-left:4px;
+            .img_barcode {
+                max-width:214px;
+                margin-bottom:10px;
+                img {
+                    display:block;
+                    width:100%
+                }
+            }
         }
         .input-wrap {
             &.barcode {
                 position:relative;
                 width:465px;
+                @include mobile {
+                    width:100%;
+                }
+                input {
+                    padding-right:120px;
+                    @include mobile {
+                        padding-right:15px;
+                    }
+                }
                 .btn-confirm {
                     position:absolute;
-                    top:16px;
-                    right:44px;
+                    top:15px;
+                    right:15px;
+                    padding-right:28px;
+                    @include mobile {
+                        position:relative;
+                        top:0;
+                        right:0;
+                        float:right;
+                        margin-top:8px;
+                    }
                     &:after {
                         content:'';
                         display:block;
                         position:absolute;
                         top:0;
-                        right:-28px;
+                        right:0;
                         width:24px;
                         height:24px;
                         border:1px solid #EC455A;
@@ -128,6 +195,12 @@
     // 나의 멤버십 정보
     .mymem-lists {
         font-size:0;
+        @include mobile {
+            padding:20px;
+            margin:32px 0 37px;
+            background:#f4f4f4;
+            border-radius:4px;
+        }
         li {
             display:inline-block;
             vertical-align:top;
@@ -135,24 +208,45 @@
             height:166px;
             padding:56px 0;
             border-left:1px solid #ddd;
+            @include mobile {
+                width:100%;
+                height:auto; 
+                padding:0;
+            }
             &:first-child {
                 border-left:none;
             }
             dl {
                 text-align:center;
+                @include mobile {
+                    text-align:left;
+                }
                 dt {
                     color:#111;
+                    @include mobile {
+                        display:inline-block;
+                        width:50%;
+                        vertical-align:middle;
+                    }
                     p {
                         display:inline-block;
                         font-size:14px;
                         line-height:20px;
                         vertical-align:top;
+                        @include mobile {
+                            
+                        }
                     }
                     .tooltip-wrap {
                         margin-left:5px;
                     }
                 }
                 dd {
+                    @include mobile {
+                        display:inline-block;
+                        width:50%;
+                        vertical-align:middle;
+                    }
                     margin-top:4px;
                     color:#EC455A;
                     font-size:20px;
