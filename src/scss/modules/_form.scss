@@ -28,15 +28,31 @@
                     .input-wrap {
                         width:50%;
                         padding:0 4px;
+                        @include mobile {
+                            width:100%;
+                            &:first-child {
+                                margin-bottom:10px;
+                            }
+                            &:nth-child(2) {
+                                padding-right:132px;
+                            }
+                        }
                     }
                 }
                 &.btn-type {
                     position:relative;
                     padding-right:132px;
+                    @include mobile {
+                        padding:0;
+                    }
                     .btn {
                         position:absolute;
                         top:0;
                         right:4px;
+                        @include mobile {
+                            top:auto;
+                            bottom:0;
+                        }
                     }
                 }
             }
