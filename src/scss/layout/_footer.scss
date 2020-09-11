@@ -482,6 +482,7 @@ footer {
                                 position:absolute;
                                 bottom:-8px;
                                 left:-8px;
+                                z-index:10;
                                 width:140px;
                                 padding:4px;
                                 border-radius:4px;
@@ -499,6 +500,11 @@ footer {
                                             color:#111;
                                         }
                                     }
+                                }
+                            }
+                            &.open {
+                                .lists {
+                                    display:block;
                                 }
                             }
                         }
