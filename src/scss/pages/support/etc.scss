@@ -54,6 +54,30 @@
     }
 }
 
+.appgate {
+    &-figure {
+        margin-bottom: 52px;
+        text-align: center;
+        &-img {
+            margin-bottom: 12px;
+        }
+        figcaption {
+            color: #222222;
+            font-size: 16px;
+            line-height: 1.44;
+            strong {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+@include mobile {
+    img {
+        max-width: 100%;
+    }
+}
+
 @import "../../support/pages/KR50CS103"; // 엔지니어 사진 등록
 @import "../../support/pages/KR50CS106"; // APP GATE
 @import "../../support/pages/KR50CS107"; // QR코드 랜딩 페이지

@@ -33,9 +33,20 @@
             border-radius:1px;
             background:#f4f4f4;
         }
+        @include mobile {
+            width:16px;
+            height:16px;
+            &::before {
+                top:4px;
+            }
+            &::after {
+                bottom:3px;
+                height:6px;
+            }
+        }
     }
     .tooltip-box {
-        display:none;
+        // display:none;
         position:absolute;
         left:38px;
         bottom:0;
@@ -59,6 +70,9 @@
         p {
             font-size:14px;
             line-height:20px;
+        }
+        @include mobile {
+            
         }
     }
 }
