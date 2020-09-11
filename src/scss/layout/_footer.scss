@@ -67,7 +67,7 @@ footer {
             margin:0 auto;
         }
 
-        // link-wrap
+        // link-wrap - Mobile
         @media screen and (max-width:767px) {
             .link-wrap {
                 margin-top:12px;
@@ -85,7 +85,7 @@ footer {
                         font-size:14px;
                         line-height:18px;
                         font-weight:700;
-                        &::after {
+                        &::before {
                             content:' ';
                             position:absolute;
                             top:50%;
@@ -106,7 +106,7 @@ footer {
                         }
                     }
                     .depth2-wrap {
-                        display:none;
+                        // display:none;
                         margin:0 24px;
                         padding:8px 0 16px;
                         border-top:1px solid #ddd;
@@ -164,6 +164,9 @@ footer {
                                         }
                                     }
                                 }
+                                &.case {
+                                    display:none !important;
+                                }
                             }
                             &.link-only {
                                 li {
@@ -181,9 +184,23 @@ footer {
                             }
                         }
                     }
+                    &.m-only {
+                        .depth1::after {
+                            content:' ';
+                            display:inline-block;
+                            width:14px;
+                            height:14px;
+                            margin-top:2px;
+                            margin-left:4px;
+                            background:url('/lg5-common/images/icons/icon-blank-arr.svg') center no-repeat;
+                            background-size:100%;
+                            vertical-align:top;
+                        }
+                    }
                 }
             }
         }
+        // link-wrap - PC
         @media screen and (min-width:768px) {
             .link-wrap {
                 margin:0 auto;
@@ -230,6 +247,20 @@ footer {
                                     }
                                 }
                             }
+                            &.case {
+                                margin-top:32px;
+                                .depth1::after {
+                                    content:' ';
+                                    display:inline-block;
+                                    width:14px;
+                                    height:14px;
+                                    margin-top:1px;
+                                    margin-left:4px;
+                                    background:url('/lg5-common/images/icons/icon-blank-arr.svg') center no-repeat;
+                                    background-size:100%;
+                                    vertical-align:top;
+                                }
+                            }
                         }
                         &.link-only {
                             margin-top:16px;
@@ -260,21 +291,22 @@ footer {
                             }
                         }
                     }
+                    &.m-only {
+                        display:none;
+                    }
                 }
                 @media screen and (max-width:1465px) {
                     width:1052px;
                 }
                 @media screen and (max-width:1113px) {
-                    width:896px;
+                    width:760px;
                     .depth1-li.last {
                         margin-left:-20px;
                     }
                 }
-                @media screen and (max-width:957px) {
-                    width:740px;
+                @media screen and (max-width:820px) {
                     padding-top:0;
                     .depth1-li.line2 {
-                        width:136px;
                         padding-right:0;
                     }
                     .depth1-li.last {
@@ -364,7 +396,7 @@ footer {
                     padding:40px 24px 0;
                     background:#ededed;
                     .bottom-link {
-                        margin-top:10px;
+                        margin-top:18px;
                         li {
                             width:50%;
                             margin-top:10px;
@@ -372,20 +404,18 @@ footer {
                         }
                     }
                     .sns-link {
-                        display:flex;
-                        flex-wrap:nowrap;
-                        justify-content:space-between;
                         position:relative;
                         top:initial;
                         right:initial;
-                        margin-top:40px;
+                        margin-top:20px;
                         li {
-                            margin-left:0;
+                            margin-left:12px;
                         }
                     }
                 }
             }
             .bottom-body {
+                position:relative;
                 padding-left:117px;
                 .comp-info {
                     margin-top:12px;
@@ -417,11 +447,12 @@ footer {
                             margin-right:29px;
                             vertical-align:top;
                             .slt-btn {
-                                display:block;
+                                display:inline-block;
                                 color:#222;
                                 font-size:12px;
                                 line-height:20px;
                                 font-weight:500;
+                                vertical-align:top;
                                 &::after {
                                     content:' ';
                                     display:inline-block;
@@ -484,8 +515,17 @@ footer {
                     padding-left:0;
                 }
                 @include mobile {
-                    padding:40px 24px 60px;
+                    padding:73px 24px 40px;
                     background:#ededed;
+                    &::before {
+                        content:' ';
+                        position:absolute;
+                        top:40px;
+                        right:24px;
+                        left:24px;
+                        height:1px;
+                        background:#adadad;
+                    }
                     .comp-info {
                         margin-top:0;
                         p.info {
@@ -497,17 +537,19 @@ footer {
                         }
                     }
                     .foot-last {
-                        margin-top:16px;
+                        margin-top:20px;
                         .dropdown-wrap {
                             float:none;
+                            font-size:0;
                             .dropdowns {
-                                margin-right:40px;
+                                width:50%;
+                                margin-right:0;
                             }
                         }
                         .ismsp {
                             display:inline-block;
                             float:none;
-                            margin-top:32px;
+                            margin-top:40px;
                         }
                     }
                 }

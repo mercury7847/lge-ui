@@ -142,6 +142,20 @@
 	}
 }
 
+// Video asset inside components
+.video-box {
+	position: relative;
+	.video-asset {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+		z-index: 1;
+	}
+}
+
 .video-modal {
 	position: fixed;
 	left: 0;

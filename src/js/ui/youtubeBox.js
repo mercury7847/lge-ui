@@ -29,15 +29,14 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
 
         _completeTemplate: function(){
             var self = this;
-            
+
             self._bindEvent();
         },
 
         _bindEvent: function(){
             var self = this;
-            console.log(this)
 
-            self.$el.find("see-video").on('click', function(e){
+            self.$el.find(".see-video").on('click', function(e){
                 e.preventDefault();
 
                 self._addVideo($(this));
@@ -57,7 +56,7 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             self.$videoLayer = $(videoLayer).get(0);
             $(self.$videoLayer).find(".close-video").on('click', function(e){
                 e.preventDefault();
-                console.log(this)
+
                 self._removeVideoLayer();
             });
 
@@ -73,6 +72,12 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             self.$videoLayer = null;
 
             $('body').removeClass('modal-open');
+        },
+
+        close: function(){
+            var self = this;
+            
+            self._removeVideoLayer();
         }
     });
 
