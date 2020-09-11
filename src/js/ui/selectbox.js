@@ -14,25 +14,20 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
     var BaseSelectbox = core.ui.View.extend({
         name: 'Selectbox',
         templates: {
-            notextOption: '<span class="ui-select-text"></span><span class="hide"></span><span class="ico"></span>',
-            descLabelOption: '<span class="ui-select-text">{{title}}</span><span class="detail">{{desc}}</span></span>',
-            descListLabelOption: '<div class="sug_head"><h3 class="tit">{{title}}</h3></div><div class="sug_body"><span class="plan_txt">{{desc}}</span></div>',  
-            labelOption: '<span class="ui-select-text" style="text-overflow: ellipsis;' + 'width: 100%;display: inline-block;overflow: hidden;">{{text}}</span><span class="hide">선택됨</span><span class="ico"></span>',
-            firstLabelOption: '<span class="ui-select-text {{index == 0 ? "first" : ""}}" style="text-overflow: ellipsis;' + 'width: 100%;display: inline-block;overflow: hidden;">{{text}}</span><span class="hide">선택됨</span><span class="ico"></span>'
+            notextOption: '<span class="ui-select-text"></span><span class="blind"></span><span class="ico"></span>',
+            labelOption: '<span class="ui-select-text">{{text}}</span><span class="blind">선택됨</span><span class="ico"></span>'
         },
         initialize: function initialize(el, options) {
             var self = this;
             if (self.supr(el, options) === false) {
                 return;
             }
+
             if (self.$el.attr('data-class') && self.$el.attr('data-class').indexOf('read') > -1) {
                 self.$el.prop('readonly', true);
             }
-            self.originalDisplay = self.$el.css('display');
-
         },
         _options: function _options(cb) {
-
             core.each(core.toArray(this.el.options), cb);
         },
 
@@ -55,24 +50,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 return self.tmpl('notextOption');
             }
             if (type === 'label') {
-
-                if(self.options.firstDim){
-                    return self.tmpl('firstLabelOption', option);
-                }else{
-                    return self.tmpl('labelOption', option);
-                }
-
-            } else if (type === 'descListLabel') {
-
-                if(!option.desc) option.desc = "";
-                
-                return self.tmpl('descListLabelOption', option);
-            
-            } else if (type === 'descLabel') {
-
-                if(!option.desc) option.desc = "";
-                return self.tmpl('descLabelOption', option);
-                     
+                return self.tmpl('labelOption', option);
             } else {
                 return option.text;
             }
@@ -136,22 +114,6 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             return this.el.options[this.el.selectedIndex];
         },
 
-        _changeLabelTxt:function _changeLabelTxt(obj){        
-            
-            var re = /{(.*)}/;
-            var str = obj.text;
-            var m = str.match(re);
-            var nObj = {};
-
-            if (m != null && m.length>1){
-                nObj.desc = m[1];
-                nObj.title = str.replace(re, '');
-                return nObj;
-            }
-            return obj;
-
-        },
-
         /**
          * 레이블 갱신
          * @param index
@@ -168,19 +130,13 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             if (index < 0 && self.el.options.length > 0) {
                 self.el.selectedIndex = index = 0;
             }
-
-            self.attrTitle = self.attrTitle? self.attrTitle : self.$el.attr('data-title') || self.$el.attr('title') || '셀렉트박스';
+            self.attrTitle = self.$el.attr('title') || self.$el.attr('data-title');
 
             self.$selectbox.toggleClass('read', isReadonly && !isDisabled).toggleClass('disabled', isDisabled).toggleClass('warn', self.$el.is('[data-class*=warn]'));
 
             $label.attr('title', self.attrTitle + ' 열기').find('.hide').text(isActive ? '선택됨' : '선택불가');
 
-            if( self.options.desc ){
-                $label.html(self._itemHTML(index < 0 ? null : self._changeLabelTxt(self.el.options[index]), 'descLabel'));
-            }else{
-                $label.html(self._itemHTML(index < 0 ? null : self.el.options[index], 'label'));
-            }
-
+            $label.html(self._itemHTML(index < 0 ? null : self.el.options[index], 'label'));
             if (isActive) {
                 $label.removeAttr('tabindex');
             } else {
@@ -201,15 +157,10 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 self.el.options.length = 0;
                 core.each(list, function (item, i) {
                     if ('text' in item) {
-                        var option = new Option(item.text || item.value, item.value);
-                        if (item.data) {
-                            $(option).attr('data-info', item.data);
-                        }
-                        self.el.options.add(option);
+                        self.el.options.add(new Option(item.text || item.value, item.value));
                     } else {
                         core.each(item, function (txt, val) {
-                            var option = new Option(txt, val);
-                            self.el.options.add(option);
+                            self.el.options.add(new Option(txt, val));
                             return false;
                         });
                     }
@@ -264,11 +215,16 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
         }
     });
 
+    //Selectbox////////////////////////////////////////////////////////////////////////////
     /**
-     * 커스텀 셀렉트박스
+     * 커스텀 셀렉트박스<br />
+     *
+     * @class
+     * @name vcui.ui.Selectbox
+     * @extends vcui.ui.View
      */
-    var CustomSelectbox = core.ui('CustomSelectbox', BaseSelectbox, {
-        bindjQuery: 'customSelectbox',
+    var CustomSelectbox = core.ui('CusomtSelectbox', BaseSelectbox, {
+        //bindjQuery: 'selectbox',
         $statics: {
             ON_CHANGED: 'selectboxchanged'
         },
@@ -276,20 +232,17 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             classSort: ['sup', 'cnum', 'cname'],
             allowScrollbar: true,
             containerMargin: 2,
-            margin:22,
-            firstDim:false,
             where: 'inline',
             wrapClasses: '',
-            disabledClass: 'disabled'
+            disabledClass: 'disabled',
+            widthClass: ' '
         },
 
         templates: {
-            label: '<div class="ui-selectbox-view"><a href="#0" class="ui-select-button" title="" role="button">{{#raw html}}</a></div>',
-            list: '<div class="ui-selectbox-list" id="{{cid}}_menu" role="listbox"><div class="ui-select-scrollarea"></div></div>',
-            scrollbar: '<div class="ui-select-scrolltrack" style="position:absolute;top:0;bottom:0;right:2px;"><div class="ui-select-scrollbar" style="position:absolute;"></div></div>',
-            option: '<li role="option" data-index="{{index}}" data-group="{{group}}"><a href="#{{num}}" data-value="{{value}}" data-text="{{text}}" title="{{attrTitle||text}}">{{#raw html}}</a></li>',
-            disabledOption: '<li role="option" data-index="{{index}}" data-group="{{group}}"><a href="#{{num}}" class="disabled" data-disabled="true" data-value="{{value}}" data-text="{{text}}" title="{{attrTitle||text}}">{{#raw html}}</a></li>',
-            optgroup:'<li class="ui-select-group-label">{{label}}</li>'
+            label: '<div class="ui-selectbox-view"><a href="#0" class="ui-select-button" title="">{{#raw html}}</a></div>',
+            list: '<div class="ui-selectbox-list" id="{{cid}}_menu"><div class="ui-select-scrollarea"></div></div>',
+            scrollbar: '<div class="ui-select-scroll" style="top: 0px;">' + '<span class="bg_top"></span><span class="bg_mid" style=""></span>' + '<span class="bg_btm"></span></div>',
+            option: '<li><a href="#{{num}}" data-value="{{value}}" data-text="{{text}}" title="{{attrTitle}}">{{#raw html}}</a></li>'
         },
         /**
          * 생성자
@@ -300,7 +253,6 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
          */
         initialize: function initialize(el, options) {
             var self = this;
-
             if (self.supr(el, options) === false) {
                 return;
             }
@@ -321,9 +273,8 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 cls = self.$el.attr('data-class') || 'ui-selectbox-wrap',
                 elId = !self.options.id ? '' : ' id="' + self.options.id + '"';
 
-
-            self.originalWidth = parseInt(self.$el.css('width'), 10) + self.options.margin;
-            self.attrTitle = self.options.title || self.$el.attr('data-title') || self.$el.attr('title') || '셀렉트박스';
+            self.originalWidth = parseInt(self.$el.css('width'), 10) + 22;
+            self.attrTitle = self.options.title || self.$el.attr('title') || '셀렉트박스';
             if (self.options.wrapClasses) {
                 cls = cls + ' ' + self.options.wrapClasses;
             }
@@ -336,16 +287,6 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 self.$selectbox.addClass(self.options.widthClass);
             }
             self.$selectbox.insertAfter(self.$el);
-            self.$selectbox.attr('role', 'selectbox').attr({
-                'aria-haspopup': 'true',
-                'aria-expanded': 'false',
-                'aria-controls': self.cid + '_menu',
-                'aria-labelledby': self.cid + '_button'
-            });
-
-            if (self.originalDisplay === 'none') {
-                self.$selectbox.hide();
-            }
 
             self._createLabel();
             self._createList();
@@ -359,7 +300,6 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
         _bindEvents: function _bindEvents() {
             var self = this;
             var timer;
-
             //
             self.on('selectboxopen selectboxclose', function (e) {
                 if (self._isDeactive()) {
@@ -392,14 +332,8 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                     clearTimeout(timer), timer = null;
                     $doc.off('.selectbox' + self.cid);
                 }
-
-                // console.log(self.isShown);
                 self.isShown = isOpen;
                 self.$label.find('.ui-select-button').attr('title', self.attrTitle + (isOpen ? ' 닫기' : ' 열기'));
-
-                // if(isOpen) self.triggerHandler('selectboxblur');
-                // console.log(e.type);
-
             });
 
             self.$el.on('change', function () {
@@ -424,78 +358,27 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                             }, 200);
                         }
                     }
-                }).on('keydown', 'a', function (e) {
+                }).on('keydown', function (e) {
+                    if (!self.isShown) {
+                        return;
+                    }
                     switch (e.keyCode) {
                         case core.keyCode.ESCAPE:
-                            e.preventDefault();
-                            e.stopPropagation();
                             self.close();
                             self.$label.find('a').focus();
                             break;
-                        case core.keyCode.LEFT:
-                        case core.keyCode.RIGHT:
-                            e.preventDefault();
-                            break;
-                        case core.keyCode.PAGE_DOWN:
-                            e.preventDefault();
-                            activeItem(5);
-                            break;
-                        case core.keyCode.PAGE_UP:
-                            e.preventDefault();
-                            activeItem(-5);
-                            break;
-                        case core.keyCode.DOWN:
-                            e.preventDefault();
-                            activeItem(1);
-                            break;
-                        case core.keyCode.UP:
-                            e.preventDefault();
-                            activeItem(-1);
-                            break;
-                        case core.keyCode.HOME:
-                        case core.keyCode.END:
-                            e.preventDefault();
-                            if (e.keyCode === core.keyCode.END) {
-                                activeItem(false);
-                            } else {
-                                activeItem(true);
-                            }
-                            break;
                     }
                 });
-
             }
 
-            function activeItem(i) {
-                if (!self.isShown) {
-                    self.open();
+            var changemediasizeCallback;
+            $(window).on('changemediasize.' + self.cid, changemediasizeCallback = function changemediasizeCallback(e, data) {
+                if (self.isShown) {
+                    self._refreshScroll();
                 }
-
-                var last = self.el.options.length - 1;
-
-                if (i === true) {
-                    i = 0;
-                } else if (i === false) {
-                    i = last;
-                } else {
-                    //var curr = self.$list.find('li a:focus').parent().index();
-                    var curr = self.$list.find('li[data-index] a:focus').parent().data('index');                    
-
-                    if (curr < 0) {
-                        i = 0;
-                    } else {
-                        i = curr + i;
-                        if (i < 0) {
-                            i = last;
-                        } else if (i > last) {
-                            i = 0;
-                        }
-                    }
-                }
-
-                self.$list.find('li[data-index] a').eq(i).focus();
-
-            }
+                self._updateLabel();
+            });
+            changemediasizeCallback();
 
             $(self.el.form).on('reset', function () {
                 setTimeout(function () {
@@ -532,16 +415,23 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                         return;
                     }
                     self.open();
-                    self.$list.find('li[data-index].on a').focus();
+                }
+            });
+            !isTouch && self.$selectbox.on('keydown', '.item_view a', function (e) {
+                if (self._isDeactive()) {
+                    return;
+                }
+                if (e.keyCode === 40) {
+                    // down
+                    if (!self.isShown) {
+                        self.open();
+                    }
+                    self.$list.find('li>a:eq(0)').focus();
+                    e.preventDefault();
                 }
             });
 
             self.$selectbox.append(self.$label);
-        },
-
-        focus: function() {
-            // console.log('focus');
-            this.$selectbox.find('.ui-select-button').focus();
         },
 
         /**
@@ -555,26 +445,44 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             self.$selectbox.append(self.$list);
             self.$listWrapper = self.$list.children();
 
-
             self.$selectbox.on('click', '.ui-selectbox-list', function (e) {
                 self.$list.focus();
-
-            }).on('click', '.ui-selectbox-list li[data-index]>a', function (e) {
+            }).on('click', '.ui-selectbox-list li>a', function (e) {
                 // 아이템을 클릭했을 때
                 e.preventDefault();
                 e.stopPropagation();
 
-                if($(this).data('disabled')) return;
-
-                self.selectedIndex($(this).parent().data('index'));
-                //self.selectedIndex($(this).parent().index());
-
+                self.selectedIndex($(this).parent().index());
                 self.close();
                 self.$label.find('a').focus();
             });
 
-            !isTouch && self.$selectbox.on('mousedown', '.ui-selectbox-list li[data-index]>a', function () {
+            !isTouch && self.$selectbox.on('mousedown', '.ui-selectbox-list li>a', function () {
                 this.focus();
+            }).on('keydown', '.ui-selectbox-list a', function (e) {
+                if (e.keyCode != 38 && e.keyCode != 40) {
+                    return;
+                }
+                if (!self.isShown) {
+                    return;
+                }
+                e.preventDefault();
+
+                // 키보드의 위/아래 키로 이동
+                var $links = self.$selectbox.find('a'),
+                    index = $links.index(this),
+                    count = $links.length;
+
+                switch (e.keyCode) {
+                    case 38:
+                        // up
+                        $links.eq(Math.max(0, index - 1)).focus();
+                        break;
+                    case 40:
+                        // down
+                        $links.eq(Math.min(count, index + 1)).focus();
+                        break;
+                }
             });
             self.maxHeight = parseInt(self.$listWrapper.css('max-height'), 10);
 
@@ -586,7 +494,6 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                     self.$scrollbar.toggleClass('active', self.isScrollbarDown || self.isScrollbarActive);
                 });
             }
-
             /* TODO
              if (!core.detect.isTouch) {
              self.$list.on('mouseenter mouseleave', function (e){
@@ -614,7 +521,6 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 var overflow = $(this).css('overflowY');
                 return overflow === 'hidden' || overflow === 'auto';
             });
-
             if ($scrollarea.length === 0) {
                 return;
             }
@@ -623,9 +529,9 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             scrollHeight = $scrollarea.prop('scrollHeight');
             selectHeight = self.$selectbox.innerHeight();
             offset = self.$selectbox.offset().top - $scrollarea.offset().top + scrollTop;
-            self.$list.css({'visibility': 'hidden', 'top': -1000}).show();
+            self.$list.css('visibility', 'hidden').show();
             listHeight = self.$listWrapper.innerHeight();
-            self.$list.css({'visibility': '', 'top': ''}).hide();
+            self.$list.css('visibility', '').hide();
 
             if (offset + listHeight + selectHeight > scrollHeight && offset - scrollTop > listHeight) {
                 self.$selectbox.addClass('up');
@@ -644,7 +550,6 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             var self = this;
             Selectbox.active && Selectbox.active.close();
 
-
             if (self.options.where === 'body') {
                 self.$list.css({
                     position: 'absolute',
@@ -654,7 +559,6 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 }).appendTo('body');
             }
 
-            self.$selectbox.attr('aria-expanded', 'true');
             /**
              * 셀렉트박스가 열릴 때 발생
              * @event vcui.ui.Selectbox#selectboxopen
@@ -669,13 +573,11 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
         close: function close() {
             var self = this;
 
-            self.$selectbox.attr('aria-expanded', 'false');
             /**
              * 셀렉트박스가 닫힐 때 발생
              * @event vcui.ui.Selectbox#selectboxclose
              */
             self.triggerHandler('selectboxclose');
-
 
             if (self.options.where === 'body') {
                 self.$label.after(self.$list.css({
@@ -701,26 +603,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             }
             //if (self._isDeactive()) { return; }
             self.supr.apply(self, core.toArray(arguments));
-            self.$list.find('li[data-index]').removeClass('on').eq(self.el.selectedIndex).addClass('on');
-        },
-
-        selectByIndex: function () {
-            return this.selectedIndex.apply(this, arguments);
-        },
-
-        selectByText: function (text, isTrigger) {
-            var self = this;
-
-            if (!arguments.length) {
-                return this.el.options[self.el.selectedIndex].text;
-            }
-
-            core.each(core.toArray(self.el.options), function (item, i) {
-                if (item.text === text) {
-                    self.selectByIndex(i, isTrigger);
-                    return false;
-                }
-            })
+            self.$list.find('li').removeClass('on').eq(self.el.selectedIndex).addClass('on');
         },
 
         /**
@@ -777,44 +660,17 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             }
 
             // select에 있는 options를 바탕으로 UI를 새로 생성한다.
-            var optgp, originOptgp;
-            var optgpArr = [];
-            var gpCode = 0;
-
             self._options(function (item, i) {
-
-                originOptgp = $(item).closest('optgroup').prop('label');
-                if(originOptgp != optgp){
-                    optgp = originOptgp;                    
-                    if(optgp){                        
-                        gpCode ++;
-                        optgpArr.push({code:'c'+gpCode, label:optgp});
-                    }                    
-                } 
-
-                html += self.tmpl($(item).prop('disabled')? 'disabledOption':'option', {
+                html += self.tmpl('option', {
                     num: num++,
                     value: item.value,
-                    index:i,
-                    group:originOptgp? 'c'+gpCode : '',
                     text: item.text,
                     attrTitle: self.attrTitle,
-                    html: self.options.desc? self._itemHTML(self._changeLabelTxt(item), 'descListLabel') : self._itemHTML(item)
+                    html: self._itemHTML(item)
                 });
-                
-            });     
-            
-            self.$listWrapper.empty().html('<ul class="ui-select-scrollarea-ul">' + html + '</ul>').find('li[data-index]:eq(' + self.el.selectedIndex + ')').addClass('on');
-            core.each(optgpArr, function (obj, i) {
-                self.$listWrapper.find('li[data-group="'+ obj.code +'"]').wrapAll('<ul class="ui-select-scrollarea-group" data-label="'+ obj.label +'"></ul>');                
             });
 
-            var $group = self.$listWrapper.find('.ui-select-scrollarea-group');
-            var optLabel ='';
-            $group.each(function(){
-                optLabel = $(this).data('label');
-                $(this).prepend(self.tmpl('optgroup', {label:optLabel}));
-            });            
+            self.$listWrapper.empty().html('<ul>' + html + '</ul>').find('li:eq(' + self.el.selectedIndex + ')').addClass('on');
 
             self.$selectbox.toggle(self.display);
         },
@@ -876,8 +732,8 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                                 switch (type) {
                                     case 'start':
                                         self.isScrollbarDown = true;
-                                        currY = parseInt(self.$scrollbar.children().css('top'), 10);
-                                        scrollbarHeight = self.$scrollbar.children().height();
+                                        currY = parseInt(self.$scrollbar.css('top'), 10);
+                                        scrollbarHeight = self.$scrollbar.height();
                                         wrapperHeight = self.$listWrapper.height();
                                         scrollHeight = self.$listWrapper.prop('scrollHeight');
                                         break;
@@ -949,7 +805,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             var self = this;
 
             self.isVisibleScrollbar = false;
-            self.$scrollbar.hide().children().css('height', 0);
+            self.$scrollbar.hide().css({ 'height': 0, 'top': 0 }).find('span.bg_mid').css('height', 0);
         },
 
         /**
@@ -978,10 +834,10 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 return;
             }
             top = Math.min(self.scrollHeight, Math.max(0, top));
-            self.$scrollbar.children().css({
+            self.$scrollbar.css({
                 'height': Math.ceil(self.scrollBarHeight),
                 'top': top
-            });
+            }).find('span.bg_mid').css('height', Math.ceil(self.scrollBarHeight) - 24);
             return top;
         },
 
@@ -1002,7 +858,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 selIndex = self.el.selectedIndex;
 
             if (selIndex > 0) {
-                var $option = self.$list.find('li[data-index]').eq(selIndex), /* optgroup 기능추가*/
+                var $option = self.$list.find('li').eq(selIndex),
                     scrollTop = self.$listWrapper.scrollTop(),
                     optionTop = $option.position().top + scrollTop,
                     wrapperHeight = self.$list.height(),
@@ -1026,8 +882,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
         _refreshScroll: function _refreshScroll() {
             var self = this;
 
-            self.scrollerHeight = self.$list.find('.ui-select-scrollarea-ul').height();
-
+            self.scrollerHeight = self.$list.find('ul').height();
             if (self.maxHeight > self.scrollerHeight) {
                 self._hideScroll();
                 return;
@@ -1057,7 +912,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
         /**
          * 소멸자
          */
-        destroy: function release() {
+        release: function release() {
             var self = this;
 
             $doc.off('.selectbox' + self.cid);
@@ -1070,15 +925,11 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             self.supr();
         }
     });
-   
+    ///////////////////////////////////////////////////////////////////////////////////////
 
-    /**
-     * 픽커형식 셀렉트박스
-     */
     var PickerSelectbox = core.ui('PickerSelectbox', BaseSelectbox, {
-
         defaults: {
-            margin:22
+            widthClass:' '
         },
         templates: {
             label: '<div class="ui-selectbox-view"><a href="#0" class="ui-select-button" title="">{{#raw html}}</a></div>'
@@ -1099,8 +950,8 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 cls = self.$el.attr('data-class') || 'ui-selectbox-wrap',
                 elId = !self.options.id ? '' : ' id="' + self.options.id + '"';
 
-            self.originalWidth = parseInt(self.$el.css('width'), 10) + self.options.margin;
-            self.attrTitle = self.options.title || self.$el.attr('data-title') || self.$el.attr('title') || '셀렉트박스';
+            self.originalWidth = parseInt(self.$el.css('width'), 10) + 22;
+            self.attrTitle = self.options.title || self.$el.attr('title') || '셀렉트박스';
             if (self.options.wrapClasses) {
                 cls = cls + ' ' + self.options.wrapClasses;
             }
@@ -1125,12 +976,11 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 'width': '100%'
             });
             self.$selectbox.insertBefore(self.$el);
-
             
             self.$label = $(self.tmpl('label', {
                 html: self._itemHTML(self.el.options[self.el.selectedIndex], 'label')
             })).appendTo(self.$selectbox);
-            
+
             self.$selectbox.prepend(self.$el);
             self.display = self.$el.css('display') !== 'none';
             self.$selectbox.toggle(self.display);
@@ -1160,574 +1010,10 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
         }
     });
 
-
-    var CustomPickerSelectbox = core.ui('CustomPickerSelectbox', BaseSelectbox, {
-        bindjQuery: 'customPickerSelectbox',
-        $statics: {
-            ON_CHANGED: 'selectboxchanged'
-        },
-        defaults: {
-            classSort: ['sup', 'cnum', 'cname'],
-            allowScrollbar: true,
-            containerMargin: 2,
-            margin: 22 ,
-            where: 'inline',
-            wrapClasses: '',
-            disabledClass: 'disabled'
-        },
-
-        templates: {
-            label: '<div class="ui-selectbox-view"><a href="#0" class="ui-select-button" title="" role="button">{{#raw html}}</a></div>',
-            list:'<div class="ui-dropdown" style="display:none;"><div class="ui-dropdown-box" id="{{cid}}_menu"><strong class="ui-dropdown-title"></strong><ul class="ui-dropdown-list"></ul><div class="btn_wrap"><button type="button" class="ui-dropdown-submit"><span>취소</span></button></div></div></div>',
-            option: '<li role="option" data-index="{{index}}" data-group="{{group}}"><a href="#{{num}}" data-value="{{value}}" data-text="{{text}}" title="{{attrTitle||text}}">{{#raw html}}</a></li>',
-            disabledOption: '<li role="option" data-index="{{index}}" data-group="{{group}}"><a href="#{{num}}" class="disabled" data-disabled="true" data-value="{{value}}" data-text="{{text}}" title="{{attrTitle||text}}">{{#raw html}}</a></li>',
-            optgroup:'<li class="ui-select-group-label">{{label}}</li>'
-        },
-    
-        /**
-         * 생성자
-         * @param {string|Element|jQuery} el 해당 엘리먼트(노드, id, jQuery 어떤 형식이든 상관없다)
-         * @param {Object} [options] 옵션값
-         * @param {string} [options.wrapClasses = ''] wrap 클래스명
-         * @param {string} [options.disabledClass = 'disabled'] disabled 클래스명
-         */
-        initialize: function initialize(el, options) {
-            var self = this;
-
-            if (self.supr(el, options) === false) {
-                return;
-            }
-
-
-            self.display = self.$el.css('display') !== 'none';
-            self.$el.hide();
-
-            self._create();
-            self.update();
-        },
-
-        /**
-         * select 컨트롤을 기반으로 UI DOM 생성
-         * @private
-         */
-        _create: function _create() {
-            var self = this,
-                cls = self.$el.attr('data-class') || 'ui-selectbox-wrap',
-                elId = !self.options.id ? '' : ' id="' + self.options.id + '"';
-
-            self.originalWidth = parseInt(self.$el.css('width'), 10) + self.options.margin;
-
-            self.attrTitle = self.options.title || self.$el.attr('data-title') || self.$el.attr('title') || '셀렉트박스';
-
-            if (self.options.wrapClasses) {
-                cls = cls + ' ' + self.options.wrapClasses;
-            }
-
-            // 셀렉트박스
-            self.$selectbox = $('<div class="' + cls + '" ' + elId + '></div>');
-            if (!self.options.widthClass) {
-                self.$selectbox.css('width', self.originalWidth);
-            } else {
-                self.$selectbox.addClass(self.options.widthClass);
-            }
-            self.$selectbox.insertAfter(self.$el);
-            self.$selectbox.attr('role', 'selectbox').attr({
-                'aria-haspopup': 'true',
-                'aria-expanded': 'false',
-                'aria-controls': self.cid + '_menu',
-                'aria-labelledby': self.cid + '_button'
-            });
-
-            if (self.originalDisplay === 'none') {
-                self.$selectbox.hide();
-            }
-
-            self._createLabel();
-            self._createList();
-            self._bindEvents();
-        },
-
-        /**
-         * 이벤트 바인딩
-         * @private
-         */
-        _bindEvents: function _bindEvents() {
-            var self = this;
-            var timer;
-
-            /*
-            $win.on('popstate.'+self.cid, function(e){                  
-                if(self.isShown){
-                    self.close();
-                }
-            });
-            */
-
-            self.on('selectboxopen selectboxclose', function (e) {
-                if (self._isDeactive()) {
-                    return;
-                }
-
-                var isOpen = e.type === 'selectboxopen';
-
-                self.$selectbox.toggleClass('on', isOpen);
-                self.$el.closest('div.select_wrap').toggleClass('on', isOpen);
-
-                if (isOpen) {
-                    
-                    self.$list.fadeIn(300);
-                    $doc.on('touchstart.selectbox' + self.cid + ' mousedown.selectbox' + self.cid, function (e) {
-                        if (!$.contains(self.$selectbox[0], e.target)) {
-                            clearTimeout(timer), timer = null;
-                            self.close();
-                        }
-                    });
-
-                    Selectbox.active = self;
-                } else {
-                    self.$list.fadeOut(100);
-                    Selectbox.active = null;
-                    clearTimeout(timer), timer = null;
-                    $doc.off('.selectbox' + self.cid);
-                }
-                self.isShown = isOpen;
-                self.$label.find('.ui-select-button').attr('title', self.attrTitle + (isOpen ? ' 닫기' : ' 열기'));
-                
-            });
-
-            self.$el.on('change', function () {
-                self._updateLabel(this.selectedIndex);
-            });
-
-            self.$selectbox.on('click', '.ui-dropdown-submit', function(e){
-                e.preventDefault();
-                self.close();
-            })
-
-            // 비터치 기반일 때에 대한 이벤트 처리
-            //if (!isTouch) {
-                // 셀렉트박스에서 포커스가 벗어날 경우 자동으로 닫히게
-                self.$selectbox.on('mouseenter.selectbox mouseleave.selectbox ' + 'focusin.selectbox focusout.selectbox', function (e) {
-                    clearTimeout(timer), timer = null;
-
-                    if (self.$el.prop('disabled')) {
-                        return;
-                    }
-                    if (e.type === 'mouseenter' || e.type === 'focusin') {
-                        self.$selectbox.addClass('active');
-                    } else if (e.type === 'mouseleave' || e.type === 'focusout') {
-                        self.$selectbox.removeClass('active');
-                        if (e.type === 'focusout' && self.$selectbox.hasClass('on')) {
-                            timer = setTimeout(function () {
-                                self.close();
-                            }, 200);
-                        }
-                    }
-                }).on('keydown', 'a', function (e) {
-                    switch (e.keyCode) {
-                        case core.keyCode.ESCAPE:
-                            e.preventDefault();
-                            e.stopPropagation();
-                            self.close();
-                            self.$label.find('a').focus();
-                            break;
-                        case core.keyCode.LEFT:
-                        case core.keyCode.RIGHT:
-                            e.preventDefault();
-                            break;
-                        case core.keyCode.PAGE_DOWN:
-                            e.preventDefault();
-                            activeItem(5);
-                            break;
-                        case core.keyCode.PAGE_UP:
-                            e.preventDefault();
-                            activeItem(-5);
-                            break;
-                        case core.keyCode.DOWN:
-                            e.preventDefault();
-                            activeItem(1);
-                            break;
-                        case core.keyCode.UP:
-                            e.preventDefault();
-                            activeItem(-1);
-                            break;
-                        case core.keyCode.HOME:
-                        case core.keyCode.END:
-                            e.preventDefault();
-                            if (e.keyCode === core.keyCode.END) {
-                                activeItem(false);
-                            } else {
-                                activeItem(true);
-                            }
-                            break;
-                    }
-                });
-
-            //}
-
-            function activeItem(i) {
-                if (!self.isShown) {
-                    self.open();
-                }
-
-                var last = self.el.options.length - 1;
-
-                if (i === true) {
-                    i = 0;
-                } else if (i === false) {
-                    i = last;
-                } else {
-                    //var curr = self.$list.find('li a:focus').parent().index();
-                    var curr = self.$list.find('li[data-index] a:focus').parent().data('index');                    
-
-                    if (curr < 0) {
-                        i = 0;
-                    } else {
-                        i = curr + i;
-                        if (i < 0) {
-                            i = last;
-                        } else if (i > last) {
-                            i = 0;
-                        }
-                    }
-                }
-
-                self.$list.find('li[data-index] a').eq(i).focus();
-            }
-
-            $(self.el.form).on('reset', function () {
-                setTimeout(function () {
-                    self.update();
-                });
-            });
-        },
-
-        /**
-         * 레이블 생성
-         * @private
-         */
-        _createLabel: function _createLabel() {
-            var self = this;
-        
-            self.$label = $(self.tmpl('label', {
-                html: self._itemHTML(self.el.selectedIndex >= 0 ? self.el.options[self.el.selectedIndex] : null, 'label')
-            }));
-
-            self.$label.attr({
-                'id': self.cid + '_button'
-            }).on('click', '.ui-select-button', function (e) {
-                e.preventDefault();
-                if (self === Selectbox.active) {
-                    self.close();
-                    return;
-                }
-
-                // 현재 셀렉트박스가 열려있으면 닫고, 닫혀있으면 열어준다.
-                if (self.$selectbox.hasClass('on')) {
-                    self.close();
-                } else {
-                    if (self._isDeactive()) {
-                        return;
-                    }
-                    self.open();
-                    self.$list.find('li[data-index].on a').focus();
-                }
-            });
-
-            self.$selectbox.append(self.$label);
-
-        },
-
-        focus: function() {
-            this.$selectbox.find('.ui-select-button').focus();
-        },
-
-
-        /**
-         * 리스트 생성
-         * @private
-         */
-        _createList: function _createList() {
-            var self = this;
-
-            self.$list = $(self.tmpl('list', { cid: self.cid }));
-            self.$selectbox.append(self.$list);
-            self.$listWrapper = self.$list.find('.ui-dropdown-list');
-
-
-            self.$selectbox.on('click', '.ui-dropdown-list', function (e) {
-                self.$list.focus();
-
-            }).on('click', '.ui-dropdown-list li[data-index]>a', function (e) {
-                // 아이템을 클릭했을 때
-                e.preventDefault();
-                e.stopPropagation();
-
-                if($(this).data('disabled')) return;
-
-                self.selectedIndex($(this).parent().data('index'));
-                //self.selectedIndex($(this).parent().index());
-
-                self.close();
-                self.$label.find('a').focus();
-            });
-
-            !isTouch && self.$selectbox.on('mousedown', '.ui-dropdown-list li[data-index]>a', function () {
-                this.focus();
-            });
-            //self.maxHeight = parseInt(self.$listWrapper.css('max-height'), 10);
-
-        },
-
-
-        /**
-         * 리스트 표시
-         * @fires vcui.ui.Selectbox#selectboxopen
-         */
-        open: function open() {
-            var self = this;
-            Selectbox.active && Selectbox.active.close();
-
-            if (self.options.where === 'body') {
-                self.$list.css({
-                    position: 'absolute',
-                    zIndex: 9000,
-                    top: self.$label.offset().top + self.$label.height(),
-                    left: self.$label.offset().left
-                }).appendTo('body');
-            }            
-
-            self.$selectbox.attr('aria-expanded', 'true');
-            $('html').addClass('dim');
-            
-            /**
-             * 셀렉트박스가 열릴 때 발생
-             * @event vcui.ui.Selectbox#selectboxopen
-             */ //self.$selectbox.triggerHandler('selectboxopen');
-            self.triggerHandler('selectboxopen');
-
-        },
-
-        /**
-         * 리스트 닫기
-         * @fires vcui.ui.Selectbox#selectboxclose
-         */
-        close: function close() {
-            var self = this;
-
-            $('html').removeClass('dim');
-            self.$selectbox.attr('aria-expanded', 'false');
-            /**
-             * 셀렉트박스가 닫힐 때 발생
-             * @event vcui.ui.Selectbox#selectboxclose
-             */
-            self.triggerHandler('selectboxclose');            
-
-            if (self.options.where === 'body') {
-                self.$label.after(self.$list.css({
-                    position: '',
-                    zIndex: '',
-                    top: '',
-                    left: ''
-                }));
-            }
-        },
-
-        /**
-         * index에 해당하는 option항목을 선택
-         *
-         * @param {number} index 선택하고자 하는 option의 인덱스
-         * @param {boolean} trigger change이벤트를 발생시킬 것인지 여부
-         */
-        selectedIndex: function selectedIndex(index, trigger) {
-            var self = this;
-
-            if (arguments.length === 0) {
-                return self.el.selectedIndex;
-            }
-            //if (self._isDeactive()) { return; }
-            self.supr.apply(self, core.toArray(arguments));
-            self.$list.find('li[data-index]').removeClass('on').eq(self.el.selectedIndex).addClass('on');
-        },
-
-        selectByIndex: function () {
-            return this.selectedIndex.apply(this, arguments);
-        },
-
-        selectByText: function (text, isTrigger) {
-            var self = this;
-
-            if (!arguments.length) {
-                return this.el.options[self.el.selectedIndex].text;
-            }
-
-            core.each(core.toArray(self.el.options), function (item, i) {
-                if (item.text === text) {
-                    self.selectByIndex(i, isTrigger);
-                    return false;
-                }
-            })
-        },
-
-        /**
-         * value 에 해당하는 option항목을 선택, 인자가 없을땐 현재 선택되어진 value를 반환
-         *
-         * @param {string} index 선택하고자 하는 option의 인덱스
-         * @param {boolean} trigger change이벤트를 발생시킬 것인지 여부
-         * @return {string}
-         * @example
-         * &lt;select id="sel">&lt;option value="1">1&lt;/option>&lt;option value="2">2&lt;/option>&lt;/select>
-         *
-         * $('#sel').vcSelectbox('value', 2);
-         * value = $('#sel').vcSelectbox('value'); // = $('#sel')[0].value 와 동일
-         */
-        value: function value(_value, trigger) {
-            var self = this;
-
-            if (arguments.length === 0) {
-                return self.el.options[self.el.selectedIndex].value;
-            } else {
-                //if (self._isDeactive()) { return; }
-                self.supr.apply(self, core.toArray(arguments));
-            }
-        },
-
-        /**
-         * 동적으로 select의 항목들이 변경되었을 때, UI에 반영
-         *
-         * @param {json} (optional) list 만약 option들을 새로 갱신하고자 할 경우
-         * @example
-         * &lt;select id="sel">&lt;option value="1">1&lt;/option>&lt;option value="2">2&lt;/option>&lt;/select>
-         *
-         * $('#sel')[0].options[2] = new Option(3, 3);
-         * $('#sel')[0].options[3] = new Option(4, 4);
-         * $('#sel').vcSelectbox('update');
-         */
-        update: function update(list, selectedValue) {
-            var self = this,
-                html = '',
-                text = '',
-                num = 1;
-
-            var isDisabled = self.$el.prop('disabled');
-            var isReadonly = self.$el.prop('readonly') === true;
-
-            self.close();
-            if (list) {
-                self.supr(list, selectedValue);
-            }
-
-            self._updateLabel();
-            if (isReadonly || isDisabled) {
-                return;
-            }
-
-            // select에 있는 options를 바탕으로 UI를 새로 생성한다.
-            var optgp, originOptgp;
-            var optgpArr = [];
-            var gpCode = 0;
-
-            self._options(function (item, i) {
-
-                originOptgp = $(item).closest('optgroup').prop('label');
-                if(originOptgp != optgp){
-                    optgp = originOptgp;                    
-                    if(optgp){                        
-                        gpCode ++;
-                        optgpArr.push({code:'c'+gpCode, label:optgp});
-                    }                    
-                } 
-
-
-                html += self.tmpl($(item).prop('disabled')? 'disabledOption':'option', {
-                    num: num++,
-                    value: item.value,
-                    index:i,
-                    group:originOptgp? 'c'+gpCode : '',
-                    text: item.text,
-                    attrTitle: self.attrTitle,
-                    html: self.options.desc? self._itemHTML(self._changeLabelTxt(item), 'descListLabel') : self._itemHTML(item)
-                    
-                });
-
-                
-
-                
-            });       
-            
-
-            
-            self.$listWrapper.empty().html(html).find('li[data-index]:eq(' + self.el.selectedIndex + ')').addClass('on');
-            core.each(optgpArr, function (obj, i) {
-                self.$listWrapper.find('li[data-group="'+ obj.code +'"]').wrapAll('<ul class="ui-select-scrollarea-group" data-label="'+ obj.label +'"></ul>');                
-            });
-
-            var $group = self.$listWrapper.find('.ui-select-scrollarea-group');
-            var optLabel ='';
-            $group.each(function(){
-                optLabel = $(this).data('label');
-                $(this).prepend(self.tmpl('optgroup', {label:optLabel}));
-            });           
-            
-            self.$selectbox.find('.ui-dropdown-title').html(self.attrTitle);
-            self.$selectbox.toggle(self.display);
-        },
-
-        setTitle: function setTitle(title) {
-            this.$listWrapper.find('a').attr('title', this.attrTitle = title);
-        },
-
-        /**
-         * readonly 모드로 변경
-         * @param flag
-         */
-        readonly: function readonly(flag) {
-            var self = this;
-
-            self.supr(flag);
-            self.close();
-            self.update();
-        },
-
-        /**
-         * disabled 모드로 변경
-         * @param flag
-         */
-        disabled: function disabled(flag) {
-            var self = this;
-
-            self.supr(flag);
-            self.close();
-            self.update();
-        },
-
-
-        /**
-         * 소멸자
-         */
-        destroy: function release() {
-            var self = this;
-
-            $doc.off('.selectbox' + self.cid);
-            $win.off('.' + self.cid);
-            self.$label.off().remove();
-            self.$list.off().remove();
-            self.$selectbox.off().remove();
-            self.$el.off('change.selectbox').show().unwrap('<div></div>');
-            self.supr();
-        }
-    });
-
-   
-
-    /**
-     * Wrapper
-     */
     var Selectbox = core.ui('Selectbox', /** @lends vcui.ui.Selectbox# */{
         bindjQuery: 'Selectbox',
         defaults: {
-            allowPicker: false,
-            desc:false
+            allowPicker: true
         },
         initialize: function initialize(el, options) {
             var self = this;
@@ -1738,23 +1024,21 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             delete self.options.on;
             delete self.options.events;
 
-
-            if (core.detect.isTouch && core.detect.isMobile || self.options.allowPicker !== false) {
-                // mobile picker
-                //self.sel = new PickerSelectbox(el, self.options);
-                // uplue mobile
-                self.sel = new CustomPickerSelectbox(el, self.options);
-
+            // 모바일에서 픽커가 아닌 커스텀셀렉트박스를 띄워야하는지 체크
+            if (self.$el.attr('data-width-class') === 'f_wd_one') {
+                self.options.allowPicker = false;
+            }
+            if (core.detect.isTouch && core.detect.isMobile && self.options.allowPicker !== false) {
+                // picker
+                self.sel = new PickerSelectbox(el, self.options);
             } else {
                 // custom (dom ui)
                 self.sel = new CustomSelectbox(el, self.options);
-
             }
 
             // puiblic 메소드를 외부에서 호출할 수 있도록 현재인스턴스에 추가
             self.$selectbox = self.sel.$selectbox;
-            core.each(['selectedIndex', 'value', 'text', 'selectedOption', 'update', 'hide', 'show', 'toggle', 'readonly', 'disabled','focus'], function (name) {
-
+            core.each(['selectedIndex', 'value', 'text', 'selectedOption', 'update', 'hide', 'show', 'toggle', 'readonly', 'disabled'], function (name) {
                 self[name] = function () {
                     return this.sel[name].apply(this.sel, [].slice.call(arguments, 0));
                 };
@@ -1762,6 +1046,24 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
         }
     });
 
+    core.ui.setDefaults('Selectbox', {
+        events: {
+            'selectboxopen': function selectboxopen(e) {
+                if (this.options.preventZindex) {
+                    return;
+                }
+                this.$el.parentsUntil('#wrap').filter(function (i) {
+                    return $(this).css('position') === 'relative';
+                }).addClass('zindex');
+            },
+            'selectboxclose': function selectboxclose(e) {
+                if (this.options.preventZindex) {
+                    return;
+                }
+                this.$el.parents('.zindex').removeClass('zindex');
+            }
+        }
+    });
 
     return Selectbox;
 });
