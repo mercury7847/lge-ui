@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/etc"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'desc': 'LG전자 제품을 이용해 주셔서 고맙습니다. <span class="color-1">상담 및 서비스가 필요하신 제품</span>을 선택해주세요.'
+            })
+            
+            <div class="contents support KR50CS106">
+                <div class="contents-inner">
+                    <section class="section">
+                        <div class="section-content">
+                            <div class="inquiry-title">
+                                <h2 class="tit">고객님 사용 제품에 문제가 있나요?</h2>
+                            </div>
+                            <figure class="appgate-figure">
+                                <img src="" alt="제품 사진">
+                                <figcaption>
+                                    모델명 : <strong class="color-3">LM-Q630N</strong>
+                                </figcaption>
+                            </figure>
+                            <div class="btn-group type-A">
+                                <a href="" class="btn bd-pink">문제 해결 바로 가기</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="section">
+                        <div class="section-content">
+                            <div class="inquiry-title">
+                                <h2 class="tit">다른 LG전자 제품에 문제가 있나요?</h2>
+                            </div>
+                            <figure class="appgate-figure">
+                                <img src="" alt="제품 사진">
+                            </figure>
+                            <div class="btn-group type-A">
+                                <a href="" class="btn bd-pink">문제 해결 바로 가기</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="dummy" style="height:160px">배너영역</div>
+
+                </div>
+            </div>
+
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+</body>
+</html> 

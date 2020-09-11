@@ -1,5 +1,4 @@
 (function() {
-
     function chk_file_type() {
         var obj = this;
         var file_kind = obj.value.lastIndexOf('.');

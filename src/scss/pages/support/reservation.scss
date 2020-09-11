@@ -22,46 +22,6 @@
             margin-top:8px;
         }
     }
-    .inquiry {
-        &-content {
-            .btn-group {
-                padding:48px 0 0;
-                text-align:right;
-                @include mobile {
-                    padding:56px 24px 0;
-                }
-            }
-        }
-        &-item {
-            @include globalBackground;
-            & + .inquiry-item {
-                margin-top:24px;
-            }
-            @include mobile {
-                padding:40px 24px;
-                border-radius:0;
-                & + .inquiry-item {
-                    margin-top:12px;
-                }
-            }
-        }
-        &-title {
-            margin-bottom:32px;
-            .tit {
-                color:#111;
-                font-size:16px;
-                font-weight:700;
-            }
-            @include mobile {
-                margin-bottom:28px;
-                .tit {  
-                    color:#212121;
-                    font-size:16px;
-                    line-height:28px;
-                }
-            }
-        }
-    }
 
     .banner-box {
         a {
