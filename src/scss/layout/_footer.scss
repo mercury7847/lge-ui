@@ -56,6 +56,16 @@ footer {
                 margin-left:0;
             }
         }
+        @include mobile {
+            padding:32px 30.5% 40px;
+            white-space:nowrap;
+            overflow-x:auto;
+            li {
+                width:auto;
+                margin-top:0;
+                margin-left:60px;
+            }
+        }
     }
     .foot-cont {
         padding:0 30px 32px;
@@ -106,7 +116,7 @@ footer {
                         }
                     }
                     .depth2-wrap {
-                        // display:none;
+                        display:none;
                         margin:0 24px;
                         padding:8px 0 16px;
                         border-top:1px solid #ddd;
@@ -472,6 +482,7 @@ footer {
                                 position:absolute;
                                 bottom:-8px;
                                 left:-8px;
+                                z-index:10;
                                 width:140px;
                                 padding:4px;
                                 border-radius:4px;
@@ -489,6 +500,11 @@ footer {
                                             color:#111;
                                         }
                                     }
+                                }
+                            }
+                            &.open {
+                                .lists {
+                                    display:block;
                                 }
                             }
                         }
