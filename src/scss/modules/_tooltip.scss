@@ -1,9 +1,11 @@
 .tooltip-wrap {
     display:inline-block;
     position:relative;
+    height:20px;
     vertical-align:top;
     @include mobile {
         position:static;
+        height:16px;
     }
     .tooltip-icon {
         display:inline-block;
