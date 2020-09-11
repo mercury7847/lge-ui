@@ -111,7 +111,7 @@ footer {
                             }
                         }
                     }
-                    &.active {
+                    &.on {
                         .depth1-wrap {
                             .acc-arrow {
                                 padding:24px 6px 18px 36px;
@@ -176,7 +176,7 @@ footer {
                                         }
                                     }
                                 }
-                                &.active {
+                                &.on {
                                     .depth2-wrap {
                                         .acc-arrow {
                                             &::before, &::after {
