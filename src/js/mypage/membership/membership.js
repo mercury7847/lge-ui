@@ -11,9 +11,6 @@
     function yyyyMMddString(str, seperator) {
         return str.replace(/(\d{4})(\d{2})(\d{2})/g, '$1' + seperator + '$2' + seperator + '$3');
     }
-    function yyyyMMdd(str) {
-        return str.replace(/(\d{4}).(\d{2}).(\d{2})/g, '$1$2$3');
-    }
 
     function searchPurchaseHistory(param) {
         var ajaxUrl = '/lg5-common/data-ajax/mypage/membership/my_purchase_history.json';
@@ -24,6 +21,8 @@
             var param = d.param;            
             $('#date-input-start').val(yyyyMMddString(param.startDate,'.'));
             $('#date-input-end').val(yyyyMMddString(param.endDate,'.'));
+            $('#date-input-end').vcCalendar('setMinDate', new Date(yyyyMMddString(param.startDate,'.')));
+
             $('input[name="rdo1"][value="'+param.purchaseType+'"]').prop('checked', true);
 
             var listItemTemplate =
