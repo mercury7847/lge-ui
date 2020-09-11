@@ -77,7 +77,6 @@ $.fn.buildCommonUI = function () {
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
                 self.resizeCallbacks = [];
                 $(window).on("addResizeCallback", function(e, callback){
-                    console.log(callback);
                     self.resizeCallbacks.push(callback);
                 }).on('resize', function(e){
                     for(var idx in self.resizeCallbacks){

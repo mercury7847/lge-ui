@@ -60,7 +60,13 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
 
             if (self.supr(el, options) === false) {
                 return;
-            }
+            }      
+            
+            self._setting();
+        },
+
+        _setting: function(){
+            var self = this;
 
             self._buildARIA();
             self._bindEvent();
@@ -83,7 +89,6 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
                     });
                 }
             }
-            
         },
 
         _buildARIA: function _buildARA() {
@@ -127,12 +132,25 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
         /**
          * 해제 메소드
          */
-        // destroy: function () {
-        //     var self = this;
-        //     self.off("click", o.itemSelector + o.toggleSelector);
-        //     self.off(eventBeforeExpand);
+        destroy: function () {
+            var self = this;
+            var o = self.options;
 
-        // },
+            self.off("click", o.itemSelector + o.toggleSelector);
+            self.off(eventBeforeExpand);
+
+            var tempOpt = self.options.singleOpen;
+            self.options.singleOpen = false;
+            self.expandAll();
+
+            self.options.singleOpen = tempOpt;
+        },
+
+        restart: function(){
+            var self = this;
+
+            self._setting();
+        },
 
         /**
          * 이벤트 바인딩
