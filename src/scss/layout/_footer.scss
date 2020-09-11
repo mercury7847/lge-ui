@@ -231,10 +231,14 @@ footer {
                     a.depth1 {
                         display:inline-block;
                         vertical-align:top;
+                        border-bottom:1px solid transparent;
                         color:#222;
                         font-size:14px;
-                        line-height:16px;
+                        line-height:15px;
                         font-weight:500;
+                        &:hover {
+                            border-color:#222;
+                        }
                     }
                     .depth2 {
                         font-size:12px;
@@ -253,7 +257,12 @@ footer {
                                     margin-top:4px;
                                     a {
                                         display:inline-block;
+                                        border-bottom:1px solid transparent;
                                         color:#616161;
+                                        line-height:15px;
+                                        &:hover {
+                                            border-bottom:1px solid #616161;
+                                        }
                                     }
                                 }
                             }
@@ -278,8 +287,12 @@ footer {
                                 margin-top:4px;
                                 a {
                                     display:inline-block;
+                                    border-bottom:1px solid transparent;
                                     color:#222;
-    
+                                    line-height:15px;
+                                    &:hover {
+                                        border-color:#222;
+                                    }
                                 }
                             }
                         }
@@ -358,10 +371,14 @@ footer {
                         }
                         a {
                             display:block;
+                            border-bottom:1px solid transparent;
                             color:#111;
                             font-size:12px;
-                            line-height:20px;
+                            line-height:19px;
                             font-weight:500;
+                            &:hover {
+                                border-color:#111;
+                            }
                         }
                     }
                 }

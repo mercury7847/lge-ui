@@ -122,6 +122,12 @@
                     font-weight:500;
                 }
             }
+
+            @include mobile {
+                margin:0 -20px;
+                padding:32px 20px 96px;
+                background:#f4f4f4;
+            }
         }
     }
 }
