@@ -87,74 +87,101 @@ footer {
                     &:first-child {
                         border-top:none;
                     }
+                    .depth1-wrap {
+                        position:relative;
+                        padding:0 76px 0 24px;
+                        .acc-arrow {
+                            position:absolute;
+                            right:24px;
+                            top:0;
+                            width:52px;
+                            height:52px;
+                            padding:19px 6px 23px 36px;
+                            font-size:0;
+                            cursor:pointer;
+                            &::before {
+                                content:' ';
+                                display:block;
+                                width:10px;
+                                height:10px;
+                                border:2px solid #111;
+                                border-top:none;
+                                border-left:none;
+                                transform:rotate(45deg);
+                            }
+                        }
+                    }
+                    &.active {
+                        .depth1-wrap {
+                            .acc-arrow {
+                                padding:24px 6px 18px 36px;
+                                &::before {
+                                    transform:rotate(225deg);
+                                }
+                            }
+                        }
+                    }
                     .depth1 {
                         display:block;
-                        position:relative;
-                        padding:17px 44px 16px 24px;
+                        padding:17px 0;
                         color:#111;
                         font-size:14px;
                         line-height:18px;
                         font-weight:700;
-                        &::before {
-                            content:' ';
-                            position:absolute;
-                            top:50%;
-                            right:31px;
-                            width:9px;
-                            height:9px;
-                            margin-top:-7px;
-                            border:2px solid #111;
-                            border-top:none;
-                            border-left:none;
-                            transform:rotate(45deg);
-                        }
                     }
-                    &.active {
-                        .depth1::after {
-                            margin-top:-3px;
-                            transform:rotate(225deg);
-                        }
-                    }
-                    .depth2-wrap {
+                    .depth2-container {
                         display:none;
                         margin:0 24px;
                         padding:8px 0 16px;
                         border-top:1px solid #ddd;
                         .depth2 {
                             .depth2-li {
-                                .depth2-tit {
-                                    display:block;
+                                .depth2-wrap {
                                     position:relative;
-                                    padding-right:22px;
-                                    color:#222;
-                                    font-size:14px;
-                                    line-height:40px;
-                                    &::before{
-                                        content:' ';
-                                        position:absolute;
-                                        top:50%;
-                                        right:5px;
-                                        width:11px;
-                                        height:1px;
-                                        border-radius:1px;
-                                        background:#222;
+                                    padding-right:40px;
+                                    .depth2-tit {
+                                        display:block;
+                                        color:#222;
+                                        font-size:14px;
+                                        line-height:40px;
                                     }
-                                    &::after {
-                                        content:' ';
+                                    .acc-arrow {
                                         position:absolute;
-                                        top:50%;
-                                        right:10px;
-                                        width:1px;
-                                        height:11px;
-                                        margin-top:-5px;
-                                        border-radius:1px;
-                                        background:#222;
+                                        top:0;
+                                        right:0;
+                                        width:40px;
+                                        height:40px;
+                                        font-size:0;
+                                        cursor:ponter;
+                                        &::before{
+                                            content:' ';
+                                            position:absolute;
+                                            top:50%;
+                                            right:5px;
+                                            width:11px;
+                                            height:1px;
+                                            border-radius:1px;
+                                            background:#222;
+                                        }
+                                        &::after {
+                                            content:' ';
+                                            position:absolute;
+                                            top:50%;
+                                            right:10px;
+                                            width:1px;
+                                            height:11px;
+                                            margin-top:-5px;
+                                            border-radius:1px;
+                                            background:#222;
+                                        }
                                     }
                                 }
                                 &.active {
-                                    .depth2-tit {
-                                        &::before, &::after {
-                                            transform:rotate(45deg);
+                                    .depth2-wrap {
+                                        .acc-arrow {
+                                            &::before, &::after {
+                                                transform:rotate(45deg);
+                                            }
                                         }
                                     }
                                 }
@@ -219,25 +246,28 @@ footer {
                 text-align:left;
                 .depth1-li {
                     display:inline-block;
-                    // width:11.6%;
                     width:156px;
                     margin-top:48px;
                     padding:0 30px;
                     vertical-align:top;
                     &.size2 {
-                        // width:21.7%;
                         width:292px;
                     }
-                    a.depth1 {
-                        display:inline-block;
-                        vertical-align:top;
-                        border-bottom:1px solid transparent;
-                        color:#222;
-                        font-size:14px;
-                        line-height:15px;
-                        font-weight:500;
-                        &:hover {
-                            border-color:#222;
+                    .depth1-wrap {
+                        a.depth1 {
+                            display:inline-block;
+                            vertical-align:top;
+                            border-bottom:1px solid transparent;
+                            color:#222;
+                            font-size:14px;
+                            line-height:15px;
+                            font-weight:500;
+                            &:hover {
+                                border-color:#222;
+                            }
+                        }
+                        .acc-arrow {
+                            display:none;
                         }
                     }
                     .depth2 {
@@ -249,8 +279,13 @@ footer {
                             .depth2-tit {
                                 display:inline-block;
                                 margin-bottom:6px;
+                                border-bottom:1px solid transparent;
                                 vertical-align:top;
                                 color:#111;
+                                line-height:15px;
+                                &:hover {
+                                    border-color:#111;
+                                }
                             }
                             .depth3 {
                                 li {
@@ -297,7 +332,7 @@ footer {
                             }
                         }
                     }
-                    .depth2-wrap {
+                    .depth2-container {
                         margin:0 -20px;
                         white-space:nowrap;
                         font-size:0;
@@ -311,6 +346,11 @@ footer {
                             }
                             &:only-child {
                                 width:100%;
+                            }
+                        }
+                        .depth2-wrap {
+                            .acc-arrow {
+                                display:none;
                             }
                         }
                     }
