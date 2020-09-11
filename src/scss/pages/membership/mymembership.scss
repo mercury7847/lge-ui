@@ -4,40 +4,6 @@
 @import "../../utilities/mixins";
 
 .mypage {
-    @include mobile {
-        .cont-wrap {
-            padding:0 20px;
-            background:#fff;
-            .section {
-                position:relative;
-                margin:0;
-                padding-top:50px;
-                &:before {
-                    content:'';
-                    display:block;
-                    position:absolute;
-                    top:0;
-                    left:-20px;
-                    right:-20px;
-                    height:12px;
-                    background:#f4f4f4;
-                }
-                &:first-child {
-                    padding-top:40px;
-                    &:before {
-                        display:none;
-                    }
-                }
-                .sec-tit {
-                    margin:0;
-                }
-                .cont-box {
-                    padding:32px 0 40px;
-                }
-            }  
-        }
-    }
-    
     .point-use-list {
         margin:32px 0 0;
         padding:24px 0;
@@ -229,6 +195,12 @@
     // 나의 멤버십 정보
     .mymem-lists {
         font-size:0;
+        @include mobile {
+            padding:20px;
+            margin:32px 0 37px;
+            background:#f4f4f4;
+            border-radius:4px;
+        }
         li {
             display:inline-block;
             vertical-align:top;
@@ -236,24 +208,45 @@
             height:166px;
             padding:56px 0;
             border-left:1px solid #ddd;
+            @include mobile {
+                width:100%;
+                height:auto; 
+                padding:0;
+            }
             &:first-child {
                 border-left:none;
             }
             dl {
                 text-align:center;
+                @include mobile {
+                    text-align:left;
+                }
                 dt {
                     color:#111;
+                    @include mobile {
+                        display:inline-block;
+                        width:50%;
+                        vertical-align:middle;
+                    }
                     p {
                         display:inline-block;
                         font-size:14px;
                         line-height:20px;
                         vertical-align:top;
+                        @include mobile {
+                            
+                        }
                     }
                     .tooltip-wrap {
                         margin-left:5px;
                     }
                 }
                 dd {
+                    @include mobile {
+                        display:inline-block;
+                        width:50%;
+                        vertical-align:middle;
+                    }
                     margin-top:4px;
                     color:#EC455A;
                     font-size:20px;
