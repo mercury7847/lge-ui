@@ -1,50 +1,38 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>lge</title>
-    <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
-    <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
-    <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/support/support.min.css">
-    <link type="text/css" rel="stylesheet" href="/lg5-common/css/pages/support/etc.min.css">
-    <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
-    <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
-    <script src="/lg5-common/js/libs/jquery.event.move.min.js"></script>
-    <script src="/lg5-common/js/libs/jquery.twentytwenty.min.js"></script>
-    <script src="/lg5-common/js/vcui.min.js"></script>
-    <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
-    <script src="/lg5-common/js/lg.common.min.js"></script>
-    <script src="/lg5-common/js/support-common.min.js"></script>
-    <!-- <script src="/lg5-common/js/support/profileUpload.min.js"></script> -->
+  <meta charset="UTF-8">
+  <title>CodePen - YouTube links to lightbox w/ thumbnail</title>
 </head>
-
 <body>
-    <section>
-        <form id="form1" runat="server">
-            <input type="file" value="파일첨부1">
-        </form>
-        <script>
-            $("input[type=file]").bind( 'change', function (e) {
-                if( !$(this).val() ) return;
-                
-                var f = this.files[0];
-                var size = f.size || f.fileSize;
-                
-                var limit = 20000;
-                                
-                //alert( id + ' / ' + limit );
-                            
-                if( size > limit )
-                {
-                    alert( '파일용량은 20kb 를 넘을수 없습니다.' );
-                    $(this).val('');
-                    return;
-                }
-                            
-                $(this).parent().find('input[type=text]').val( $(this).val() );
-            })
-        </script>
-    </section>
+<!-- partial:index.partial.html -->
+<h2>YouTube Thumbnail Example</h2>
+<div><a href="https://www.youtube.com/watch?v=hmYVuY7VDZc">Test</a></div>
+<div><a href="https://www.youtube.com/watch?v=ImOABnXP0mI">Test</a></div>
+<div><a href="https://www.youtube.com/watch?v=hx034LtweHg">Test</a></div>
+<div><a href="https://www.youtube.com/watch?v=Db2lnU5ZALs">Test</a></div>
+<!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script>
+        $(function () {
+
+        // Find Youtube links and embedded videos
+        $('[src*="youtube.com"], [href*="youtube.com"]').each(function () {
+            var url = $(this).attr('src') ? $(this).attr('src') : $(this).attr('href');
+            console.log('url: ' + url);
+            /* 
+            Extract id from know url formats:
+            https://www.youtube.com/watch?v=IwjAfVHoFAw
+            https://www.youtube.com/embed/IwjAfVHoFAw
+            */
+            var matchId = url.match(/(?:\/embed\/|\/watch\?v=)([a-z0-9]+)/i);
+            if (matchId) {
+                console.log('matched id: ' + matchId[1]);
+            $(this).replaceWith('<a href="//www.youtube.com/watch?v=' + matchId[1] + '" rel="lightbox" title="View Training Video"><img src="//img.youtube.com/vi/' + matchId[1] + '/0.jpg" alt="YouTube Video Link"  /></a>');
+            }
+        });
+        });
+    </script>
+
 </body>
-</html> 
+</html>
