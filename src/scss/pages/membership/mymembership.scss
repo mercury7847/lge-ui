@@ -39,11 +39,17 @@
     }
     
     .point-use-list {
-        margin:30px 0 0;
+        margin:32px 0 0;
         padding:24px 0;
         border-top:1px solid #616161;
         border-bottom:1px solid #616161;
+        font-size:16px;
         line-height:24px;
+        font-weight:500;
+        @include mobile {
+            line-height:19px;
+            border-bottom-color:#ddd;
+        }
         .lists {
             li {
                 display:table;
@@ -51,6 +57,9 @@
                 width:100%;
                 margin-top:4px;
                 padding:0 16px;
+                @include mobile {
+                    margin-top:16px;
+                }
                 &:first-child {
                     margin-top:0;
                 }
@@ -64,9 +73,30 @@
                         width:auto;
                         text-align:left;
                     }
-                    &.num {
+                    &.point {
                         min-width:112px;
                         text-align:right;
+                        @include mobile {
+                            span {
+                                float:left;
+                                width:50%;
+                                &.mo_txt {
+                                    color:#616161;
+                                    text-align:left;
+                                }
+                                .pc_txt {
+                                    display:none;
+                                }
+                            }
+                        }
+                    }
+                    @include mobile {
+                        float:left;
+                        width:100% !important;
+                        margin-top:8px;
+                        &:first-child {
+                            margin-top:0;
+                        }
                     }
                 }
     
@@ -75,6 +105,9 @@
         dl.total {
             @include clearfix;
             padding:20px 16px 0;
+            @include mobile {
+                padding-top:32px;
+            }
             dt, dd {
                 float:left;
                 width:50%;
@@ -109,6 +142,11 @@
             font-size:14px;
             line-height:20px;
             font-weight:500;
+            @include mobile {
+                position:absolute;
+                top:40px;
+                right:0;
+            }
         }
         .tooltip-wrap {
             margin-left:4px;
