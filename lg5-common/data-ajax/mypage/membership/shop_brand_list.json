@@ -1,0 +1,18 @@
+{
+    "status":"success",
+    "message":null,
+    "data": [
+        {
+            "code":"lgbest",
+            "name":"LG 베스트샵"
+        },
+        {
+            "code":"emart",
+            "name":"이마트"
+        },
+        {
+            "code":"homeplus",
+            "name":"홈플러스"
+        }
+    ]
+}
