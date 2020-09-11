@@ -58,8 +58,9 @@
     $(window).ready(function() {
         var myMembership = {
             init: function() {
-                vcui.require(["ui/tooltip"], function () {
-                    $('.ui_tooltip').vcTooltip();
+
+                vcui.require(["ui/tooltipTarget"], function () {
+                    $('.ui_tooltip-target').vcTooltipTarget({"tooltip":".tooltip-box"});
                 });
 
                 //$('.ui_calendar').vcCalendar({ 'holidays': ['2017-09-06', '2017-09-07', '2017-09-08'] }); // hoildays:휴일등록

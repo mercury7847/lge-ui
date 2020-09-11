@@ -14,15 +14,12 @@ vcui.define('ui/tooltip', ['jquery', 'vcui'], function ($, core) {
      * @extends vcui.ui.View
      */
 
-    console.log('tooltip');
-        
     var Tooltip = core.ui('Tooltip', /** @lends vcui.ui.Tooltip# */{
         $singleton: true,
         bindjQuery: 'tooltip',
         defaults: {
             interval: 200,
-            attrName: "title",
-            attrTarget: null,
+            attrName: "title"
         },
         templates: {
             tooltip: '<span class="ui-tooltip" role="tooltip" id="uiTooltip" style="z-index:100000;display:none;max-width:200px;height:auto;position:absolute;border:1px solid red;background:blue;" aria-hidden="true"></span>'
@@ -48,7 +45,6 @@ vcui.define('ui/tooltip', ['jquery', 'vcui'], function ($, core) {
             var attr = self.options.attrName;
 
             self.docOn('mouseenter mouseleave focusin focusout click', '[data-title]:not([disabled]), [' + attr + ']:not([disabled])', function (e) {
-                console.log(e);
 
                 switch (e.type) {
                     case 'mouseenter':
