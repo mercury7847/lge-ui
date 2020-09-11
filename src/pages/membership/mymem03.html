@@ -43,15 +43,10 @@
                                 <dl class="forms">
                                     <dt class="tit tooltip-tit">
                                         <p class="tit-txt">영수증 번호 등록</p>
-                                        <div class="tooltip-wrap">
-                                            <span class="tooltip-icon">자세히 보기</span>
-                                            <span class="tooltip-box">
-                                                <div class="img_barcode">
-                                                    <img src="/lg5-common/images/membership/img-barcode.png" alt="">
-                                                </div>
-                                                <p>바코드 하단의 번호를 앞에서부터 입력해주세요.</p>
-                                            </span>
-                                        </div>
+                                        @@include('./common/modules/tooltip.html', {
+                                            "type" : "include",
+                                            "page" : "tooltip-mymem03"
+                                        })
                                     </dt>
                                     <dd class="conts">
                                         <span class="input-wrap barcode">

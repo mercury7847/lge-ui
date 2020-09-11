@@ -2,6 +2,26 @@
     display:inline-block;
     position:relative;
     vertical-align:top;
+    &::before {
+        content:' ';
+        position:absolute;
+        left:28px;
+        bottom:6px;
+        width:15px;
+        height:15px;
+        background:url('/lg5-common/images/bg-tooltip-left.svg') 0 no-repeat;
+        z-index:100;
+        @include mobile {
+            top:20px;
+            left:50%;
+            bottom:initial;
+            width:20px;
+            height:12px;
+            margin-left:-10px;
+            background:url('/lg5-common/images/bg-tooltip-top.svg') 0 no-repeat;
+            background-size:100%;
+        }
+    }
     .tooltip-icon {
         display:inline-block;
         position:relative;
@@ -56,23 +76,18 @@
         background:#fff;
         text-align:left;
         box-shadow:0 5px 10px 0 rgba(#111, .32);
-        z-index:100;
-        &::before {
-            content:' ';
-            position:absolute;
-            left:-10px;
-            bottom:6px;
-            width:15px;
-            height:15px;
-            background:url('/lg5-common/images/bg-tooltip-left.svg') 0 no-repeat;
-            z-index:90;
-        }
+        z-index:90;
         p {
             font-size:14px;
             line-height:20px;
         }
         @include mobile {
-            
+            position:fixed;
+            left:20px;
+            right:20px;
+            bottom:initial;
+            margin-top:32px;
+            box-shadow:0 4px 10px 0 rgba(#111, .32);
         }
     }
 }
