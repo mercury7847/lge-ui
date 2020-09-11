@@ -56,7 +56,7 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             self.$videoLayer = $(videoLayer).get(0);
             $(self.$videoLayer).find(".close-video").on('click', function(e){
                 e.preventDefault();
-                console.log(this)
+
                 self._removeVideoLayer();
             });
 
@@ -72,6 +72,12 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             self.$videoLayer = null;
 
             $('body').removeClass('modal-open');
+        },
+
+        close: function(){
+            var self = this;
+            
+            self._removeVideoLayer();
         }
     });
 

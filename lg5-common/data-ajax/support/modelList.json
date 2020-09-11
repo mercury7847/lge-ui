@@ -1,0 +1,56 @@
+{
+    "status": true,
+    "message":null,
+    "data": {
+        "modelList":[
+            {
+                "modelName": "B80FV.AR9501",
+                "categoryName": "IT/모니터 > 데스크톱/일체형"
+            },
+            {
+                "modelName": "B80FV.AR9501",
+                "categoryName": "IT/모니터 > 데스크톱/일체형"
+            },
+            {
+                "modelName": "B80FV.AR9501",
+                "categoryName": "IT/모니터 > 데스크톱/일체형"
+            },
+            {
+                "modelName": "B80FV.AR9501",
+                "categoryName": "IT/모니터 > 데스크톱/일체형"
+            },{
+                "modelName": "B80FV.AR9501",
+                "categoryName": "IT/모니터 > 데스크톱/일체형"
+            }
+            ,{
+                "modelName": "B80FV.AR9501",
+                "categoryName": "IT/모니터 > 데스크톱/일체형"
+            }
+            ,{
+                "modelName": "B80FV.AR9501",
+                "categoryName": "IT/모니터 > 데스크톱/일체형"
+            }
+            ,{
+                "modelName": "B80FV.AR9501",
+                "categoryName": "IT/모니터 > 데스크톱/일체형"
+            }
+            ,{
+                "modelName": "B80FV.AR9501",
+                "categoryName": "IT/모니터 > 데스크톱/일체형"
+            }
+            ,{
+                "modelName": "B80FV.AR9501",
+                "categoryName": "IT/모니터 > 데스크톱/일체형"
+            }
+        ],
+        "pageInfo":{
+            "view":"Y",
+            "page":1,
+            "loopStart":1,
+            "loopEnd":5,
+            "totalCount":59,
+            "rightPage":true,
+            "leftPage":false
+        }
+    }
+}
