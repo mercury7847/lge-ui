@@ -21,7 +21,8 @@ vcui.define('ui/tooltip', ['jquery', 'vcui'], function ($, core) {
         bindjQuery: 'tooltip',
         defaults: {
             interval: 200,
-            attrName: "title"
+            attrName: "title",
+            attrTarget: null,
         },
         templates: {
             tooltip: '<span class="ui-tooltip" role="tooltip" id="uiTooltip" style="z-index:100000;display:none;max-width:200px;height:auto;position:absolute;border:1px solid red;background:blue;" aria-hidden="true"></span>'
