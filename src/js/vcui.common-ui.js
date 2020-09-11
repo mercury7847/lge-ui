@@ -83,8 +83,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _setting: function(){
             var self = this;
 
-            console.log("ddddd")
-
             self.$naviWrapper = self.$el.find(".header-bottom");
             self.$prodWrapper = self.$naviWrapper.find('.nav-category-product');
             self.$product = self.$prodWrapper.find('.nav-item');
@@ -4237,9 +4235,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             }
 
             defer.done(function () {
-                self.trigger('modalhidden', {
-                    module: self
-                });
+                self.trigger('modalhidden');
 
                 self.$el.removeClass('ui_modal_container'); // dom에 추가된 것들 제거
                 self._escape(); // esc 키이벤트 제거

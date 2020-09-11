@@ -4,46 +4,18 @@
 @import "../../utilities/mixins";
 
 .mypage {
-    @include mobile {
-        .cont-wrap {
-            padding:0 20px;
-            background:#fff;
-            .section {
-                position:relative;
-                margin:0;
-                padding-top:50px;
-                &:before {
-                    content:'';
-                    display:block;
-                    position:absolute;
-                    top:0;
-                    left:-20px;
-                    right:-20px;
-                    height:12px;
-                    background:#f4f4f4;
-                }
-                &:first-child {
-                    padding-top:40px;
-                    &:before {
-                        display:none;
-                    }
-                }
-                .sec-tit {
-                    margin:0;
-                }
-                .cont-box {
-                    padding:32px 0 40px;
-                }
-            }  
-        }
-    }
-    
     .point-use-list {
-        margin:30px 0 0;
+        margin:32px 0 0;
         padding:24px 0;
         border-top:1px solid #616161;
         border-bottom:1px solid #616161;
+        font-size:16px;
         line-height:24px;
+        font-weight:500;
+        @include mobile {
+            line-height:19px;
+            border-bottom-color:#ddd;
+        }
         .lists {
             li {
                 display:table;
@@ -51,6 +23,9 @@
                 width:100%;
                 margin-top:4px;
                 padding:0 16px;
+                @include mobile {
+                    margin-top:16px;
+                }
                 &:first-child {
                     margin-top:0;
                 }
@@ -64,9 +39,30 @@
                         width:auto;
                         text-align:left;
                     }
-                    &.num {
+                    &.point {
                         min-width:112px;
                         text-align:right;
+                        @include mobile {
+                            span {
+                                float:left;
+                                width:50%;
+                                &.mo_txt {
+                                    color:#616161;
+                                    text-align:left;
+                                }
+                                .pc_txt {
+                                    display:none;
+                                }
+                            }
+                        }
+                    }
+                    @include mobile {
+                        float:left;
+                        width:100% !important;
+                        margin-top:8px;
+                        &:first-child {
+                            margin-top:0;
+                        }
                     }
                 }
     
@@ -75,6 +71,9 @@
         dl.total {
             @include clearfix;
             padding:20px 16px 0;
+            @include mobile {
+                padding-top:32px;
+            }
             dt, dd {
                 float:left;
                 width:50%;
@@ -109,6 +108,11 @@
             font-size:14px;
             line-height:20px;
             font-weight:500;
+            @include mobile {
+                position:absolute;
+                top:40px;
+                right:0;
+            }
         }
         .tooltip-wrap {
             margin-left:4px;
@@ -191,6 +195,12 @@
     // 나의 멤버십 정보
     .mymem-lists {
         font-size:0;
+        @include mobile {
+            padding:20px;
+            margin:32px 0 37px;
+            background:#f4f4f4;
+            border-radius:4px;
+        }
         li {
             display:inline-block;
             vertical-align:top;
@@ -198,21 +208,44 @@
             height:166px;
             padding:56px 0;
             border-left:1px solid #ddd;
+            @include mobile {
+                width:100%;
+                height:auto; 
+                padding:0;
+                margin-top:16px;
+                &:first-child {
+                    margin-top:0;
+                }
+            }
             &:first-child {
                 border-left:none;
             }
             dl {
                 text-align:center;
+                @include mobile {
+                    text-align:left;
+                }
                 dt {
                     color:#111;
+                    @include mobile {
+                        display:inline-block;
+                        width:50%;
+                        vertical-align:middle;
+                    }
                     p {
                         display:inline-block;
                         font-size:14px;
                         line-height:20px;
                         vertical-align:top;
+                        @include mobile {
+                            line-height:18px;
+                        }
                     }
                     .tooltip-wrap {
                         margin-left:5px;
+                        @include mobile {
+                            margin-top:2px;
+                        }
                     }
                 }
                 dd {
@@ -221,6 +254,15 @@
                     font-size:20px;
                     line-height:20px;
                     font-weight:700;
+                    @include mobile {
+                        display:inline-block;
+                        width:50%;
+                        margin:0;
+                        vertical-align:middle;
+                        font-size:14px;
+                        line-height:18px;
+                        text-align:right;
+                    }
                 }
             }
         }
@@ -229,8 +271,14 @@
         @include clearfix;
         .lists {
             float:left;
+            @include mobile {
+                margin-top:-8px;
+            }
             li {
                 margin-top:8px;
+                @include mobile {
+                    margin-top:16px;
+                }
                 &:first-child {
                     margin-top:0;
                 }
@@ -242,10 +290,16 @@
                         float:left;
                         width:135px;
                         color:#616161;
+                        @include mobile {
+                            width:80px;
+                        }
                     }
                     dd {
                         margin-left:135px;
                         color:#111;
+                        @include mobile {
+                            margin-left:80px;
+                        }
                     }
                 }
             }
@@ -253,7 +307,14 @@
         .btn-text {
             float:right;
             border-color:transparent;
+            font-size:14px;
+            line-height:20px;
             font-weight:500;
+            @include mobile {
+                position:absolute;
+                top:50px;
+                right:0;
+            }
         }
     }
     .svc-prod-list {
