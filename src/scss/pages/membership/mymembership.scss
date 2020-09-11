@@ -4,6 +4,7 @@
 @import "../../utilities/mixins";
 
 .mypage {
+    //멤버십 포인트 조회
     .point-use-list {
         margin:32px 0 0;
         padding:24px 0;
@@ -89,6 +90,7 @@
         }
     }
 
+    // 영수증 등록
     .form-wrap {
         margin-top:32px;
         @include mobile {
@@ -193,6 +195,13 @@
                         }
                     }
                 }
+            }
+        }
+
+        .spot-select {
+            max-width:465px;
+            @include mobile {
+                max-width:100%;
             }
         }
     }
