@@ -60,7 +60,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
             caption: '캘린더입니다. 글은 일요일, 월요일, 화요일, 수요일, 목요일, 금요일, 토요일 순으로 나옵니다.',
             monthCaption: '월 선택 캘린더입니다. 1월부터 12월까지 순서대로 나옵니다.',
             colWidth: '32px', // 셀 너비
-            format: 'yyyy-MM-dd'
+            format: 'yyyy.MM.dd'
         },
 
         events: {},
@@ -82,7 +82,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
          * @param {string} [minDate="-5y"] 이전 몇년까지 표시할 것인가
          * @param {string} [minDate="+5y"] 이전 몇년까지 표시할 것인가
          * @param {string} [options.caption] 달력 캡션
-         * @param {string} [options.format="yyyy-MM-dd"] 표시할 날짜의 형식 ㅇ) 'yyyy-MM-dd'
+         * @param {string} [options.format="yyyy-MM-dd"] 표시할 날짜의 형식 ㅇ) self.format
          * @param {string} [options.colWidth="32px"] 컬럼너비
          * @param {string} [options.where="inline"] 달력 dom을 어디에 두고 열것인가 설정:(body(body 맨 하단, inline(버튼 바로 밑)
          * @param {boolean} [options.showByInput=false]
@@ -326,13 +326,13 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
             }
 
             if (detect.isMobile && self.options.mobileMode) {
-                if(self.$input) self.$input.prop({ 'min': dateUtil.format(self.minDate, 'yyyy-MM-dd') });
+                if(self.$input) self.$input.prop({ 'min': dateUtil.format(self.minDate, self.format) });
             }
 
             if (self.$input && dateUtil.isValid(self.$input.val()) && dateUtil.compare(self.minDate, self.$input.val()) === -1) {
 
                 if (detect.isMobile && self.options.mobileMode) {
-                    self.$input.val(dateUtil.format(self.minDate, 'yyyy-MM-dd'));
+                    self.$input.val(dateUtil.format(self.minDate, self.format));
                 } else {
                     self.$input.val(dateUtil.format(self.minDate));
                 }
@@ -381,12 +381,12 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
             }
 
             if (detect.isMobile && self.options.mobileMode) {
-                if(self.$input) self.$input.prop({ 'max': dateUtil.format(self.maxDate, 'yyyy-MM-dd') });
+                if(self.$input) self.$input.prop({ 'max': dateUtil.format(self.maxDate, self.format) });
             }
 
             if (self.$input && dateUtil.isValid(self.$input.val()) && dateUtil.compare(self.maxDate, self.$input.val()) === 1) {
                 if (detect.isMobile && self.options.mobileMode) {
-                    self.$input.val(dateUtil.format(self.maxDate, 'yyyy-MM-dd'));
+                    self.$input.val(dateUtil.format(self.maxDate, self.format));
                 } else {
                     self.$input.val(dateUtil.format(self.maxDate));
                 }
@@ -417,13 +417,13 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             self.oldTxt = "";
 
-            self.$input.val(dateUtil.format(self.$input.val(), 'yyyy-MM-dd')).attr({
+            self.$input.val(dateUtil.format(self.$input.val(), self.format)).attr({
                 'type': 'date',
                 'data-module': 'calendar'
             }).prop({
                 'readonly': false,
-                'min': dateUtil.format(self.minDate, 'yyyy-MM-dd'),
-                'max': dateUtil.format(self.maxDate, 'yyyy-MM-dd')
+                'min': dateUtil.format(self.minDate, self.format),
+                'max': dateUtil.format(self.maxDate, self.format)
             }).on('change', function (e) {
 
                 var newDate = $(e.currentTarget).val();
@@ -820,12 +820,12 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
 
             currDate = core.date.calcDate(currDate, '-1M');
             $second.children().each(function (val, name) {
-                html = '<span class="year">' + currDate.getFullYear() + '<span class="hide">년</span></span>';
+                html = '<span class="year">' + currDate.getFullYear() + '<span class="blind">년</span></span>';
                 html += core.number.zeroPad(currDate.getMonth() + 1, 2);
                 if (val === 1) {
-                    html += '<span class="hide">월이 선택됨</span>';
+                    html += '<span class="blind">월이 선택됨</span>';
                 } else {
-                    html += '<span class="hide">월로 이동</span>';
+                    html += '<span class="blind">월로 이동</span>';
                 }
                 $(this).html(html);
                 currDate = core.date.calcDate(currDate, '1M');
@@ -1087,15 +1087,19 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                 self._normalizeOptions();
             }
 
+            console.log('start?',date);
             try {
                 if (dateUtil.isValid(date)) {
                     self.activeDate = dateUtil.parse(date);
                 } else {
+                    console.log('valuid');
                     return;
                     //self.activeDate = new Date();
                 }
                 self.currDate = core.clone(self.activeDate);
+                console.log('ok1');
                 if (self.isShown) {
+                    console.log('okj2');
                     self.setCurrentDate(core.clone(self.currDate));
                 }
             } catch (e) {
@@ -1135,6 +1139,11 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
          */
         getCurrentDate: function getCurrentDate() {
             return this.currDate;
+        },
+
+        getyyyyMMdd: function getyyyyMMdd() {
+            var str = this.$input.val() ? this.$input.val().replace(/\D/g,'') : null;
+            return str; 
         },
 
         /**

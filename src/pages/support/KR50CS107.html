@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/etc"
+        ],
+        "pageJS": [
+            "support-common"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'desc': '제품에 대한 문제를 빠르게 진단하고 해결할 수 있도록 도와드리겠습니다.'
+            })
+            
+            <div class="contents support KR50CS107">
+                <div class="contents-inner">
+                    <section class="section">
+                        <div class="section-content">
+                            <figure class="appgate-figure">
+                                <!-- <img src="" alt="제품 사진"> -->
+                                <div class="dummy appgate-figure-img" style="height: 192px;">제품 이미지</div>
+                                <figcaption>
+                                    <strong>55LN5400.AKR</strong>
+                                </figcaption>
+                            </figure>
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" id="" title="전체 카테고리 선택">
+                                    <option value="">제품 서비스를 선택하세요</option>
+                                    <option value="">제품 사용 설명서</option>
+                                    <option value="">고객서비스  바로가기</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="section">
+                        <div class="inquiry-title">
+                            <h2 class="tit">검색을 통해 문제 해결 도움을 받으세요.</h2>
+                        </div>
+                        <div class="section-content">
+                            <div class="field-wrap">
+                                <div class="row">
+                                    <div class="field-item block">
+                                        <div class="field-title">
+                                            <label for="title" class="tit">증상</label>
+                                        </div>
+                                        <div class="select-wrap"> 
+                                            <select class="ui_selectbox" id="select1" title="전체 카테고리 선택">
+                                                <option value="">증상을 선택하세요.</option>
+                                                <option value="">옵션 1</option>
+                                                <option value="">옵션 2</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-wrap search">
+                                            <input type="text" class="" id="model" name="model" placeholder="검색어를 입력해주세요.">
+                                            <button type="button" class="icon-search"><span class="blind">검색</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="dummy" style="height:25px">하단 영역</div>
+
+                </div>
+            </div>
+
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+</body>
+</html> 

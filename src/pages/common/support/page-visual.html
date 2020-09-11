@@ -1,6 +1,8 @@
 <div class="page-visual">
     <div class="page-visual-heading">
-        <h2 class="heading-title">@@title</h2>
+        @@if (context.title) {
+            <h2 class="heading-title">@@title</h2>
+        }
         @@if (context.desc) {
             <p class="heading-desc">@@desc</p>
         }

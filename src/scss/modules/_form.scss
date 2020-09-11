@@ -1,4 +1,64 @@
 // Form
+.form-wrap {
+    .forms {
+        .tit {
+            margin-bottom:8px;
+            color:#111;
+            font-size:14px;
+            line-height:20px;
+        }
+        .conts {
+            .input-box {
+                margin-top:12px;
+                font-size:0;
+                &:first-child {
+                    margin-top:0;
+                }
+                .rdo-wrap {
+                    margin-left:64px;
+                    @include mobile {
+                        margin-left:24px;
+                    }
+                    &:first-child {
+                        margin-left:0;
+                    }
+                }
+                &.size2 {
+                    margin:0 -4px;
+                    .input-wrap {
+                        width:50%;
+                        padding:0 4px;
+                        @include mobile {
+                            width:100%;
+                            &:first-child {
+                                margin-bottom:10px;
+                            }
+                            &:nth-child(2) {
+                                padding-right:132px;
+                            }
+                        }
+                    }
+                }
+                &.btn-type {
+                    position:relative;
+                    padding-right:132px;
+                    @include mobile {
+                        padding:0;
+                    }
+                    .btn {
+                        position:absolute;
+                        top:0;
+                        right:4px;
+                        @include mobile {
+                            top:auto;
+                            bottom:0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 // input common
 input, textarea {
@@ -30,9 +90,9 @@ input, textarea {
         outline:none;
     }
 
-    @include mobile {
-        border-radius:4px;
-    }
+    // @include mobile {
+    //     border-radius:4px;
+    // }
 }
 
 // input text, textarea
@@ -46,14 +106,14 @@ input, textarea {
     textarea {
         padding:24px;
     }
-    @include mobile {
-        input {
-            padding:13px 15px;
-        }
-        textarea {
-            padding:15px;
-        }
-    }
+    // @include mobile {
+    //     input {
+    //         padding:13px 15px;
+    //     }
+    //     textarea {
+    //         padding:15px;
+    //     }
+    // }
 
     // input + other
     .box {
@@ -78,15 +138,15 @@ input, textarea {
             }
         }
 
-        @include mobile {
-            .cell {
-                padding:13px 15px 13px 0;
-                border-radius:0 4px 4px 0;
-            }
-            input, textarea {
-                border-radius:4px 0 0 4px;
-            }
-        }
+        // @include mobile {
+        //     .cell {
+        //         padding:13px 15px 13px 0;
+        //         border-radius:0 4px 4px 0;
+        //     }
+        //     input, textarea {
+        //         border-radius:4px 0 0 4px;
+        //     }
+        // }
     }
 
     &.block {
@@ -108,15 +168,15 @@ input, textarea {
             height:288px;
         }
 
-        @include mobile {
-            .total {
-                font-size:13px;
-                line-height:19px;
-            }
-            textarea {
-                height:220px;
-            }
-        }
+        // @include mobile {
+        //     .total {
+        //         font-size:13px;
+        //         line-height:19px;
+        //     }
+        //     textarea {
+        //         height:220px;
+        //     }
+        // }
     }
     &.error {
         .total {
@@ -145,14 +205,14 @@ input, textarea {
             }
         }
 
-        @include mobile {
-            .err-msg {
-                font-size:13px;
-                &::before {
-                    margin-right:4px;
-                }
-            }
-        }
+        // @include mobile {
+        //     .err-msg {
+        //         font-size:13px;
+        //         &::before {
+        //             margin-right:4px;
+        //         }
+        //     }
+        // }
     }
     &.datepicker {
         position:relative;
@@ -177,15 +237,15 @@ input, textarea {
             }
         }
 
-        @include mobile {
-            .pic-btn {
-                padding:13px 15px 13px 0;
-                button {
-                    width:24px;
-                    height:24px;
-                }
-            }
-        }
+        // @include mobile {
+        //     .pic-btn {
+        //         padding:13px 15px 13px 0;
+        //         button {
+        //             width:24px;
+        //             height:24px;
+        //         }
+        //     }
+        // }
 
         // calendar (디자인 나온 후 적용 예정)
         .ui-calendar-container {
@@ -231,9 +291,9 @@ input, textarea {
 
         @include mobile {
             label {
-                padding:13px 15px 13px 47px;
-                border-radius:4px;
-                background-position-x:15px;
+                // padding:13px 15px 13px 47px;
+                // border-radius:4px;
+                // background-position-x:15px;
                 &::after {
                     content:'(전체 10mb, 최대 3개)';
                 }
@@ -286,24 +346,24 @@ input, textarea {
                 }
             }
 
-            @include mobile {
-                padding:16px;
-                padding-right:52px;
-                border-radius:4px;
-                .file-name {
-                    font-size:14px;
-                    line-height:20px;
-                }
-                .btn-del {
-                    right:17px;
-                    width:18px;
-                    height:18px;
-                    &::before, &::after {
-                        width:10px;
-                        margin-left:-5px;
-                    }
-                }
-            }
+            // @include mobile {
+            //     padding:16px;
+            //     padding-right:52px;
+            //     border-radius:4px;
+            //     .file-name {
+            //         font-size:14px;
+            //         line-height:20px;
+            //     }
+            //     .btn-del {
+            //         right:17px;
+            //         width:18px;
+            //         height:18px;
+            //         &::before, &::after {
+            //             width:10px;
+            //             margin-left:-5px;
+            //         }
+            //     }
+            // }
         }
     }
 }

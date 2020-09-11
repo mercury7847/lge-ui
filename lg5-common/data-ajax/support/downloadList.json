@@ -1,0 +1,73 @@
+{
+    "status": true,
+    "message":null,
+    "data": {
+        "manualList":[
+            {
+                "manualType": "[한글] 제품사용설명서",
+                "manualInfo": "Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.",
+                "date": "2020.02.27",
+                "fileType": "ZIP"
+            },
+            {
+                "manualType": "[한글] 제품사용설명서",
+                "manualInfo": "Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.",
+                "date": "2020.02.27",
+                "fileType": "ZIP"
+            }
+            
+        ],
+        "driverList": [
+            {
+                "driverType": "랜",
+                "count": "1",
+                "list": [
+                    {
+                        "dirverName": "[프로그램/Win10_64bit] LG Update Center",
+                        "productName": "울트라 HD",
+                        "drvierVersion": "버전 1.0.1902.1901",
+                        "date": "2020.02.27",
+                        "size": "8.9mb"
+                    }
+                ]
+            },
+            {
+                "driverType": "랜",
+                "count": "2",
+                "list": [
+                    {
+                        "dirverName": "[프로그램/Win10_64bit] LG Update Center",
+                        "productName": "울트라 HD",
+                        "drvierVersion": "버전 1.0.1902.1901",
+                        "date": "2020.02.27",
+                        "size": "8.9mb"
+                    },
+                    {
+                        "dirverName": "[프로그램/Win10_64bit] LG Update Center",
+                        "productName": "울트라 HD",
+                        "drvierVersion": "버전 1.0.1902.1901",
+                        "date": "2020.02.27",
+                        "size": "8.9mb"
+                    }
+                ]
+            }
+        ],
+        "osOption": [
+            { "Window XP":"OS01"} ,
+            { "Window 2000":"OS02"}
+        ],
+        "driverOption": [
+            { "SW07":"통합 드라이버 설치 프로그램" },
+            { "SW10":"바이오스/펌웨어" }
+        ],
+        "pageInfo":{
+            "view":"Y",
+            "page":1,
+            "loopStart":1,
+            "loopEnd":5,
+            "totalCount":59,
+            "rightPage":true,
+            "leftPage":false
+        }
+    }
+}

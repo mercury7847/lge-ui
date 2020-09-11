@@ -15,6 +15,8 @@ var res = {
 			"스크롤뷰" : ["./wsg/guide_scrollview.html","","검수완료"],
 			"Pagination" : ["./wsg/guide_pagination.html","","검수완료"],
 			"블릿리스트" : ["./wsg/guide_bulletlist.html","","검수완료"],
+			"tooltip" : ["./wsg/guide_tooltip.html","","검수완료"],
+			"alert popup" : ["./wsg/guide_alert.html","","검수완료"],
 			"carousel" : ["./wsg/guide_carousel.html","","검수완료"]
 		}
 	},
@@ -62,6 +64,13 @@ var res = {
 					"멤버십 혜택" : ["/html/membership/mem02_1.html","","검수요청"],
 					"VIP 멤버십 혜택" : ["/html/membership/mem02_2.html","","검수요청"],
 					"멤버십 가입안내" : ["/html/membership/mem03.html","","검수요청"]
+				}
+			},
+			"마이페이지" : {
+				"멤버십 관리" : {
+					"멤버십 가입 정보" : ["/html/membership/mymem01.html","","진행중"],
+					"멤버십 포인트 조회" : ["/html/membership/mymem02.html","","진행중"],
+					"영수증 등록" : ["/html/membership/mymem03.html","","진행중"]
 				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],

@@ -1,7 +1,13 @@
 .bullet-list {
+    margin-top:16px;
     color:#515151;
     font-size:14px;
     line-height:20px;
+    @include mobile {
+        margin-top:12px;
+        color:#808080;
+        line-height:18px;
+    }
     .b-tit {
         margin-bottom:8px;
         font-weight:700;
@@ -10,6 +16,9 @@
         position:relative;
         margin-top:4px;
         padding-left:10px;
+        @include mobile {
+            margin-top:8px;
+        }
         &::before {
             content:' ';
             position:absolute;
@@ -29,5 +38,9 @@
         margin-top:40px;
         padding-top:32px;
         border-top:1px solid #ddd;
+        @include mobile {
+            margin-top:24px;
+            padding-top:12px;
+        }
     }
 }
