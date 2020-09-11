@@ -14,6 +14,8 @@ vcui.define('ui/tooltip', ['jquery', 'vcui'], function ($, core) {
      * @extends vcui.ui.View
      */
 
+    console.log('tooltip');
+        
     var Tooltip = core.ui('Tooltip', /** @lends vcui.ui.Tooltip# */{
         $singleton: true,
         bindjQuery: 'tooltip',
@@ -45,6 +47,7 @@ vcui.define('ui/tooltip', ['jquery', 'vcui'], function ($, core) {
             var attr = self.options.attrName;
 
             self.docOn('mouseenter mouseleave focusin focusout click', '[data-title]:not([disabled]), [' + attr + ']:not([disabled])', function (e) {
+                console.log(e);
 
                 switch (e.type) {
                     case 'mouseenter':

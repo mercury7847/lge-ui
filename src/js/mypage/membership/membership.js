@@ -53,6 +53,10 @@
     $(window).ready(function() {
         var myMembership = {
             init: function() {
+                vcui.require(["ui/tooltip"], function () {
+                    $('.ui_tooltip').vcTooltip();
+                });
+
                 //$('.ui_calendar').vcCalendar({ 'holidays': ['2017-09-06', '2017-09-07', '2017-09-08'] }); // hoildays:휴일등록
                 $('#date-input-start').on('calendarinsertdate', function (e, data) {
                     //시작일을 선택시 종료일의 시작날짜를 변경한다.
