@@ -511,6 +511,22 @@
         }
     }
 
+    .input-wrap {
+        &.search {
+            position:relative;
+            input {
+                padding-left:64px;
+            }
+            button {
+                position:absolute;
+                left:24px;
+                top:16px;
+                width:24px;
+                height:24px;
+            }
+        }
+    }
+
     .color-1 {
         color: #a50034;
     }
