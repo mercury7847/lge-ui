@@ -72,6 +72,12 @@
     }
 }
 
+@include mobile {
+    img {
+        max-width: 100%;
+    }
+}
+
 @import "../../support/pages/KR50CS103"; // 엔지니어 사진 등록
 @import "../../support/pages/KR50CS106"; // APP GATE
 @import "../../support/pages/KR50CS107"; // QR코드 랜딩 페이지
