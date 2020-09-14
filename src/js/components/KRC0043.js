@@ -28,7 +28,7 @@ $(window).ready(function(){
             slidesToShow: 5,
             slidesToScroll: 1,
             focusOnSelect:true,
-            focusOnChange:true
+            focusOnChange:true,
             asNavFor:'.ui_carousel_slider'
         });
     });
