@@ -2,19 +2,21 @@
     display:inline-block;
     position:relative;
     height:20px;
+    line-height:20px;
     vertical-align:top;
     @include mobile {
         position:static;
         height:16px;
     }
     .tooltip-icon {
-        display:inline-block;
+        display:block;
         position:relative;
         width:20px;
         height:20px;
         background:url('/lg5-common/images/icons/icon-tooltip.svg') center no-repeat;
         background-size:100%;
         font-size:0;
+        line-height:20px;
         cursor:pointer;
         &::before {
             display:none;
@@ -40,6 +42,7 @@
         @include mobile {
             width:16px;
             height:16px;
+            line-height:16px;
         }
     }
     &.active {
@@ -69,7 +72,7 @@
             right:0;
             top:initial;
             bottom:initial;
-            margin-top:16px;
+            margin-top:15px;
             box-shadow:0 4px 10px 0 rgba(#111, .32);
         }
     }
