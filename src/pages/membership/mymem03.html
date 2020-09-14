@@ -29,7 +29,7 @@
                                         <a href="#n" class="btn-receipt">등록한 영수증 확인</a>
                                     </dt>
                                     <dd class="conts">
-                                        <div class="select-wrap">
+                                        <div class="select-wrap spot-select">
                                             <select class="ui_selectbox" id="select1" title="지점 선택">
                                                 <option value="">이마트</option>
                                                 <option value="" selected>홈플러스</option>
@@ -43,20 +43,15 @@
                                 <dl class="forms">
                                     <dt class="tit tooltip-tit">
                                         <p class="tit-txt">영수증 번호 등록</p>
-                                        <div class="tooltip-wrap">
-                                            <span class="tooltip-icon">자세히 보기</span>
-                                            <span class="tooltip-box">
-                                                <div class="img_barcode">
-                                                    <img src="/lg5-common/images/membership/img-barcode.png" alt="">
-                                                </div>
-                                                <p>바코드 하단의 번호를 앞에서부터 입력해주세요.</p>
-                                            </span>
-                                        </div>
+                                        @@include('./common/modules/tooltip.html', {
+                                            "type" : "include",
+                                            "page" : "tooltip-mymem03"
+                                        })
                                     </dt>
                                     <dd class="conts">
                                         <span class="input-wrap barcode">
-                                            <input type="text" placeholder="영수증 바코드 번호를 입력해주세요.">
-                                            <button type="button" class="cell btn-confirm"><span>등록하기</span></button>
+                                            <input type="text" id="input-receipt" placeholder="영수증 바코드 번호를 입력해주세요.">
+                                            <button type="button" id="btn-confirm" class="cell btn-confirm"><span>등록하기</span></button>
                                         </span>
                                     </dd>
                                 </dl>
@@ -79,6 +74,17 @@
         </div>
         
         @@include('./common/footer.html')
-    </div>     
+        <script src="/lg5-common/js/mypage/membership/receiptRegistration.js""></script>
+    </div>    
+    
+    @@include('./common/modules/alert-modal.html', {
+        "typeVer" : true,
+        "typeClass" : "type1",
+        "alertTit" : "영수증 등록이 완료되었습니다.",
+        "alertCont" : [
+            { "txt" : "구매일자 : 2020. 06. 18" },
+            { "txt" : "구매제품 : 얼음정수기냉장고" }
+        ]
+    })
 </body>
 </html>

@@ -54,6 +54,47 @@
     }
 }
 
+.appgate {
+    &-figure {
+        margin-bottom: 52px;
+        text-align: center;
+        &-img {
+            margin-bottom: 12px;
+        }
+        figcaption {
+            color: #222222;
+            font-size: 16px;
+            line-height: 1.44;
+            strong {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.figure-list {
+    @include clearfix;
+    figure {
+        width: calc((100% - 22px) / 3 );
+        float: left;
+        margin-left: 11px;
+        &:first-child {
+            margin-left: 0;
+        }
+        figcaption {
+            font-size-adjust: 14px;
+            text-align: center;
+            margin-top: 12px;
+        }
+    }
+}
+
+@include mobile {
+    img {
+        max-width: 100%;
+    }
+}
+
 @import "../../support/pages/KR50CS103"; // 엔지니어 사진 등록
 @import "../../support/pages/KR50CS106"; // APP GATE
 @import "../../support/pages/KR50CS107"; // QR코드 랜딩 페이지

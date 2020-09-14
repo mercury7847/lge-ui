@@ -34,7 +34,8 @@
         padding:51px 40px 93px;
         background:#f4f4f4;
         @include mobile {
-            padding:48px 12px 96px;
+            padding:0 20px;
+            background:#fff;
         }
 
         // layout
@@ -68,11 +69,30 @@
                 }
             }
             @include mobile {
+                position:relative;
+                margin:0;
+                padding-top:50px;
+                &:before {
+                    content:'';
+                    display:block;
+                    position:absolute;
+                    top:0;
+                    left:-20px;
+                    right:-20px;
+                    height:12px;
+                    background:#f4f4f4;
+                }
+                &:first-child {
+                    padding-top:40px;
+                    &:before {
+                        display:none;
+                    }
+                }
                 .sec-tit {
-                    margin-bottom:12px;
+                    margin:0;
                 }
                 .cont-box {
-                    padding:56px 12px;
+                    padding:32px 0 40px;
                 }
             }
         }
@@ -102,6 +122,22 @@
                     font-weight:500;
                 }
             }
+
+            @include mobile {
+                margin:0 -20px;
+                padding:32px 20px 96px;
+                background:#f4f4f4;
+            }
         }
+    }
+}
+
+// no-data
+.no-data {
+    padding:150px 0;
+    text-align:center;
+    p {
+        font-size:16px;
+        line-height:24px;
     }
 }

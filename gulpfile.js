@@ -210,6 +210,7 @@ gulp.task("watch", ["browser-sync"], () => {
 
     // Watch html files
     gulp.watch(src + "/pages/**/*.html", ["html"]).on('change', browserSync.reload);
+    gulp.watch(src + "/pages/**/**/*.html", ["html"]).on('change', browserSync.reload);
     
     // Watch guide files
     gulp.watch(src + '/guide/**/*.html', ["guide:html"]).on('change', browserSync.reload);
@@ -240,11 +241,11 @@ gulp.task("watch", ["browser-sync"], () => {
 });
 
 // Compile sass, concat and minify css + js
-gulp.task("build", ["clean", "static", "concat-js"], () =>{
+gulp.task("build", ["clean", "static"], () =>{
     gulp.start(["styles", "scripts", "guide", "html"]);
 });
 
-gulp.task('server-build', function() {
+gulp.task('server-build', ["concat-js"], function() {
     git.revParse({args:'HEAD'}, function (err, hash) {
         dist += ("/" + hash);
         gulp.start('build');

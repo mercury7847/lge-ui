@@ -105,7 +105,9 @@ vcui.define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
                 // 날짜
                 date: { format: '0000.00.00' },
                 // 영문
-                eng: { format: 'S' }
+                eng: { format: 'S' },
+                // 영수증
+                receipt: { format: '00000000-00000000' },
             }
         },
         bindjQuery: 'formatter',
@@ -173,6 +175,7 @@ vcui.define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
             if (val) {
                 self.$el.val(this._getMasked());
             }
+            console.log(val);
         },
 
         /**

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('../include/head_wsg.html', {
+        "title": "tooltip 가이드"
+    })
+<body>
+<div id="wrap" class="coding_guide">
+    
+<h1 class="h1_guide">tooltip 정의</h1>
+
+<!-- 주의사항 -->
+<dl class="notice">
+    <dt><strong class="t_modify">주의사항</strong></dt>
+    <dd>
+        <ol>
+            <li>gulp-file-include 방식으로 작업 시, <strong style="color:red">(@@)include -> @@include로 적용</strong>해야함. xmp 내부에 include 되지 않도록 ()처리함.</li>
+        </ol>
+    </dd>
+</dl>
+<!-- //주의사항 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">1. tooltip (컨텐츠가 한줄짜리 텍스트인 경우)</h2>
+<div class="guide_wrap">
+    <div class="tooltip-wrap"><!-- 활성화시 active -->
+        <span class="tooltip-icon">자세히 보기</span>
+        <span class="tooltip-box">
+            <p>1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다.</p>
+        </span>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="tooltip-wrap"><!-- 활성화시 active -->
+    <span class="tooltip-icon">자세히 보기</span>
+    <span class="tooltip-box">
+        <p>1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다.</p>
+    </span>
+</div>
+<!-- // DOM -->  
+
+<!-- page 내 작업 방식 -->
+<!-- (@@)include ()삭제 후 사용 -->
+(@@)include('./common/modules/tooltip.html', {
+    "type" : "text", <!-- 텍스트만 한줄 들어갈 경우 -->
+    "text" : "1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다." <!-- p태그 안에 들어갈 텍스트만 입력 -->
+})
+<!-- // page 내 작업 방식 -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2. tooltip (컨텐츠가 p태그 하나 이상 디자인요소가 들어갈 경우)</h2>
+<div class="guide_wrap">
+    <div class="tooltip-wrap"><!-- 활성화시 active -->
+        <span class="tooltip-icon">자세히 보기</span>
+        <span class="tooltip-box">
+            <div class="img_barcode">
+                <img src="/lg5-common/images/membership/img-barcode.png" alt="">
+            </div>
+            <p>바코드 하단의 번호를 앞에서부터 입력해주세요.</p>
+        </span>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="tooltip-wrap"><!-- 활성화시 active -->
+    <span class="tooltip-icon">자세히 보기</span>
+    <span class="tooltip-box">
+        <div class="img_barcode">
+            <img src="/lg5-common/images/membership/img-barcode.png" alt="">
+        </div>
+        <p>바코드 하단의 번호를 앞에서부터 입력해주세요.</p>
+    </span>
+</div>
+<!-- // DOM -->  
+
+<!-- page 내 작업 방식 -->
+<!-- (@@)include ()삭제 후 사용 -->
+(@@)include('./common/modules/tooltip.html', {
+    "type" : "include", <!-- html 디자인 영역을 include 하는 타입 -->
+    "page" : "tooltip-mymem03" <!-- html include file 파일명 입력(저장은 동일하게 modules에) -->
+})
+<!-- // page 내 작업 방식 -->
+
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+</div> 
+@@include('../include/loadscript_wsg.html')
+</body>
+</html> 

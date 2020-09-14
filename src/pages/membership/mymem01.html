@@ -33,12 +33,10 @@
                                     <dl>
                                         <dt>
                                             <p>VIP 멤버십 등급</p>
-                                            <div class="tooltip-wrap">
-                                                <span class="tooltip-icon">자세히 보기</span>
-                                                <span class="tooltip-box">
-                                                    <p>1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다.</p>
-                                                </span>
-                                            </div>
+                                            @@include('./common/modules/tooltip.html', {
+                                                "type" : "text",
+                                                "text" : "1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다."
+                                            })
                                         </dt>
                                         <dd id="membership_level">일반</dd>
                                     </dl>
@@ -114,13 +112,14 @@
                                 "wrapTit" : "조회기간",
                                 "inputType" : "radio",
                                 "inputArr" : [
-                                    { "id" : "rdo1-1", "name" : "rdo1", "value" : "전체", "checked" : "checked" },
-                                    { "id" : "rdo1-2", "name" : "rdo1", "value" : "구매", "checked" : "" },
-                                    { "id" : "rdo1-3", "name" : "rdo1", "value" : "취소", "checked" : "" }
+                                    { "id" : "rdo1-1", "name" : "rdo1", "label" : "전체", "value" : "all", "checked" : "checked" },
+                                    { "id" : "rdo1-2", "name" : "rdo1", "label" : "구매", "value" : "buy", "checked" : "" },
+                                    { "id" : "rdo1-3", "name" : "rdo1", "label" : "취소", "value" : "cancel", "checked" : "" }
                                 ]
                             })
                             <!-- // filter -->
  
+                            <!-- 결과값 있을 때 -->
                             <ul class="svc-prod-list">
                                 <li class="prod01">
                                     <dl>
@@ -159,6 +158,13 @@
                                     </dl> 
                                 </li>
                             </ul>
+                            <!-- // 결과값 있을 때 -->
+
+                            <!-- 결과값 없을 때 -->
+                            <div class="no-data">
+                                <p>조회기간 내 결과가 없습니다.</p>
+                            </div>
+                            <!-- // 결과값 없을 때 -->
 
                             @@include('./common/modules/bullet-list.html', {
                                 "bulletTxt" : [
