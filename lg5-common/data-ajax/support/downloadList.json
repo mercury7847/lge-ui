@@ -25,7 +25,7 @@
                     {
                         "dirverName": "[프로그램/Win10_64bit] LG Update Center",
                         "productName": "울트라 HD",
-                        "drvierVersion": "버전 1.0.1902.1901",
+                        "driverVersion": "버전 1.0.1902.1901",
                         "date": "2020.02.27",
                         "size": "8.9mb"
                     }
@@ -38,14 +38,14 @@
                     {
                         "dirverName": "[프로그램/Win10_64bit] LG Update Center",
                         "productName": "울트라 HD",
-                        "drvierVersion": "버전 1.0.1902.1901",
+                        "driverVersion": "버전 1.0.1902.1901",
                         "date": "2020.02.27",
                         "size": "8.9mb"
                     },
                     {
                         "dirverName": "[프로그램/Win10_64bit] LG Update Center",
                         "productName": "울트라 HD",
-                        "drvierVersion": "버전 1.0.1902.1901",
+                        "driverVersion": "버전 1.0.1902.1901",
                         "date": "2020.02.27",
                         "size": "8.9mb"
                     }
@@ -53,12 +53,32 @@
             }
         ],
         "osOption": [
-            { "Window XP":"OS01"} ,
-            { "Window 2000":"OS02"}
+            {
+                "option": "전체",
+                "value": ""
+            },
+            {
+                "option": "Window XP",
+                "value": "OS01"
+            },
+            {
+                "option": "Window 2000",
+                "value": "OS02"
+            }
         ],
         "driverOption": [
-            { "SW07":"통합 드라이버 설치 프로그램" },
-            { "SW10":"바이오스/펌웨어" }
+            {
+                "option": "전체",
+                "value": ""
+            },
+            {
+                "option": "통합 드라이버 설치 프로그램",
+                "value": "SW07"
+            },
+            {
+                "option": "바이오스/펌웨어",
+                "value": "SW10"
+            }
         ],
         "pageInfo":{
             "view":"Y",

@@ -136,7 +136,7 @@ CS.MD.setPagination = function() {
 
         defaults = $.extend({}, defaults, opt);
 
-        function init() {
+        function initialize() {
             $pageList = $element.find('.page_num'),
             $prev = $element.find(defaults.prevClass),
             $next = $element.find(defaults.nextClass),
@@ -208,7 +208,7 @@ CS.MD.setPagination = function() {
             $pageList.on('click.page', 'a', drawPagination);
         }
 
-        init();
+        initialize();
         setEventListener();
     }
 
