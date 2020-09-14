@@ -1,5 +1,5 @@
 
-<!-- partials/components/KRC0012-full.html -->
+<!-- partials/components/KRC0012-full-ani.html -->
 <div class="component-wrap">
 	<!--
 		[component-wrap 옵션]
@@ -50,14 +50,18 @@
 		Folding Area 가 사용되는 예제입니다.
 	-->
 	<section class="component KRC0012 full-size txt-img @@fixarea.bgcolor">
-		<div class="cpt-wrap"><!-- [KR수정] 클래스명 수청 -->
+		<!--
+			animation과 more-content가 모두 등록된 경우, 
+			.animation-box에 line-adjust class를 추가해주세요.
+		-->
+		<div class="cpt-wrap animation-box line-adjust"><!-- [KR수정] 클래스명 수청 -->
 			<div class="cont-head @@fixarea.head-align">
 				<div class="text-area">
 					<!-- 1. eyebrow -->
 					<div class="eyebrow">LG SIGNITURE OLED TV</div>
 					<!-- // 1. eyebrow -->
 					<!-- 2. headline -->
-					<div class="title" id="title01">@@fixarea.headline</div>
+					<div class="title" id="title05">@@fixarea.headline</div>
 					<!-- // 2. headline -->
 					<!-- 3. interviewee name -->
 					<div class="interviewee-name font-bold">“패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게<br>빛을 조절하여 자연색 그대로의 색감을 표현합니다.”</div>
@@ -71,31 +75,43 @@
 					<!-- 6. cta : cta는 아래 2가지 중 한가지 버튼을 최대 2개까지 사용합니다. -->
 					<div class="btn-area-wrap">
 						<div class="btn-area only-button">
-							<span><a href="#none" class="btn btn-outline-primary btn-lg" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title01">자세히보기</a></span><!--
-							--><span><a href="#none" class="btn btn-outline-primary btn-lg" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title01">자세히보기</a></span>
+							<span><a href="#none" class="btn btn btn-outline-primary btn-lg" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title05">자세히 보기</a></span><!--
+							--><span><a href="#none" class="btn btn btn-outline-primary btn-lg" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title05">자세히 보기</a></span>
 						</div>
 						<div class="btn-area only-link">
-							<span><a href="#none" class="link-text bold ico-right btn-more" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title01">텍스트 링크 버튼 1</a></span><!--
-							--><span><a href="#none" class="link-text bold ico-right btn-more" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title01">텍스트 링크 버튼 2</a></span>
+							<span><a href="#none" class="link-text bold ico-right btn-more" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title05">텍스트 링크 버튼 1</a></span><!--
+							--><span><a href="#none" class="link-text bold ico-right btn-more" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title05">텍스트 링크 버튼 2</a></span>
 						</div>
 					</div>
 					<!-- 6. cta -->
 				</div>
 			</div>
-			<!-- 7. Image  : 이미지만 있는 예제가 없었어서 예제 변경 했습니다. -->
+			<!-- 7. Image -->
 			<div class="visual-area">
-				<!-- 링크없을 경우 <a> 태그 삭제 해주세요. -->
-				<a href="#none" data-link-area="image_text_folding_feature-image" data-link-name="{Alt Text}">
-					<img data-src="@@fixarea.img" class="lazyload pc" alt="" />
-					<img data-src="@@fixarea.img-mobile" class="lazyload mobile" alt="" />
-				</a>
+				<img data-src="@@fixarea.img" class="lazyload pc" alt="" aria-hidden="true" />
+				<img data-src="@@fixarea.img-mobile" class="lazyload mobile" alt="" aria-hidden="true" />
+				<!-- 7-2. animation play/pause -->
+				<div class="animation-area">
+					<a href="#none" role="button" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video">changes a audio description video</a>
+					<video autoplay muted loop>
+						<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+						<!-- WEBM 동영상을 제공하는 경우
+						<source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+						-->
+					</video>
+					<div class="controller-wrap wa-btn"">
+						<button class="pause active" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="">Pause Video</button>
+						<button class="play" name="play" data-link-area="image_text_folding_feature-animation_play" data-link-name="">Play Video</button>
+					</div>
+				</div>
+				<!-- // 7-2. animation play/pause -->		
 			</div>
 			<!-- // 7. Image -->
 			<!-- 9. open button -->
 			<div class="list-btn-area">
-				<a href="#none" class="btns more" role="button" aria-expended="false">                                                       
-					<span class="tooltip-text" role="tooltip">더보기</span>
-				</a>
+				<a href="#none" class="btns more" role="button" aria-expended="false">
+                    <span class="tooltip-text" role="tooltip">더보기</span>
+                </a>
 			</div>
 			<!-- // 9. open button -->
 			<!-- 
@@ -111,86 +127,71 @@
 			<div class="more-content">
 				<!-- 10. close button -->
 				<div class="in-list-btn-area top">
-					<a href="#none" class="in-close" role="button" aria-expanded="true">간략히보기</a>
+					<a href="#none" class="in-close" role="button" aria-expanded="true">간략히 보기</a>
 				</div>
 				<!-- // 10. close button -->
 				<div class="list-container">
 					<div class="list  @@foldarea.content-align">
 						<div class="text-area">
 							<!-- 11. headline -->
-							<div class="title" id="title02">@@foldarea.list1-headline</div>
+							<div class="title" id="title06">@@foldarea.list1-headline</div>
 							<!-- // 11. headline -->
 							<!-- 12. body copy -->
 							<div class="text">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
 							<!-- // 12. body copy -->
 						</div>
 						<!-- 13. cta -->
-						<div class="btn-area"><span><a href="#" class="btn btn-outline-primary" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title02">선택하기</a></span></div>
+						<div class="btn-area"><span><a href="#" class="btn btn-outline-primary" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title06">선택하기</a></span></div>
 						<!-- // 13. cta -->
 						<!-- 14. image -->
 						<div class="visual-area">
-							<img src="@@foldarea.list1-img" class="lazyload" alt="" />
-							<p class="hidden">graphic description : </p>
+                            <img src="@@foldarea.list1-img" class="lazyload" alt="" />
+                            <p class="hidden">graphic description : </p>
 						</div>
 						<!-- // 14. image -->
 					</div>
 					<div class="list  @@foldarea.content-align">
 						<div class="text-area">
 							<!-- 15. headline -->
-							<div class="title" id="title03">@@foldarea.list2-headline</div>
+							<div class="title" id="title07">@@foldarea.list2-headline</div>
 							<!-- // 15. headline -->
 							<!-- 16. body copy -->
 							<div class="text">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
 							<!-- // 16. body copy -->
 						</div>
 						<!-- 17. cta -->
-						<div class="btn-area"><span><a href="#" class="btn btn-outline-primary" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title03">선택하기</a></span></div>
+						<div class="btn-area"><span><a href="#" class="btn btn-outline-primary" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title07">선택하기</a></span></div>
 						<!-- // 17. cta -->
 						<!-- 18. image -->
-						<div class="visual-area video">
-							<a href="#none" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="large_image_vertical_pickers-video_play_ad" data-link-name="{video id}">plays audio description video</a>
-
+						<div class="visual-area">
 							<img src="@@foldarea.list1-img" class="lazyload" alt="" />
-							<div class="video-link">
-								<!-- * brightcove video modal은 아래의 방식으로 입력 -->
-								<a href="#" class="see-video" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="carousel_block_image_text-video_play" data-link-name="{video id}">Watch the Full Movie</a>
-								<!-- * youtube video는 아래의 방식으로 입력
-								<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="image_text_folding_feature-video_play" data-link-name="{video id}">Watch the Full Movie</a>
-								-->
-							</div>
+							<p class="hidden">graphic description : </p>
 						</div>
 						<!-- // 18. image -->
 					</div>
-					<div class="list  align-left">
+					<div class="list align-left">
 						<div class="text-area">
 							<!-- 19. headline -->
-							<div class="title" id="title04">@@foldarea.list2-headline</div>
+							<div class="title" id="title08">@@foldarea.list2-headline</div>
 							<!-- // 19. headline -->
 							<!-- 20. body copy -->
 							<div class="text">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
 							<!-- // 20. body copy -->
 						</div>
 						<!-- 21. cta -->
-						<div class="btn-area"><span><a href="#" class="btn btn-outline-primary" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title04">선택하기</a></span></div>
+						<div class="btn-area"><span><a href="#" class="btn btn-outline-primary" data-link-area="image_text_folding_feature-cta" data-link-name="{link text}" aria-describedby="title08">선택하기</a></span></div>
 						<!-- // 21. cta -->
 						<!-- 22. image -->
-						<div class="visual-area video">
-							<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="image_text_folding_feature-video_play_ad" data-link-name="{video id}">plays audio description video</a>
-
+						<div class="visual-area">
 							<img src="@@foldarea.list1-img" class="lazyload" alt="" />
-							<div class="video-link">
-								<!-- * brightcove video modal은 아래의 방식으로 입력
-								<a href="#" class="see-video" data-type="brightcove" data-video-id="1766152406001" data-account="1665893145001" data-player="default" data-target="modal" data-link-area="carousel_block_image_text-video_play" data-link-name="{video id}">Watch the Full Movie</a> -->
-								<!-- * youtube video는 아래의 방식으로 입력 -->
-								<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="image_text_folding_feature-video_play" data-link-name="{video id}">Watch the Full Movie</a>
-							</div>
+							<p class="hidden">graphic description : </p>
 						</div>
 						<!-- // 22. image -->
 					</div>
 				</div>
 				<!-- 10. close button -->
 				<div class="in-list-btn-area">
-					<a href="#none" class="in-close" role="button" aria-expanded="true">간략히보기</a>
+					<a href="#none" class="in-close" role="button" aria-expanded="true">간략히 보기</a>
 				</div>
 				<!-- // 10. close button -->
 			</div>
@@ -200,3 +201,4 @@
 		<!-- // 8. disclaimer -->
 	</section>
 </div>
+

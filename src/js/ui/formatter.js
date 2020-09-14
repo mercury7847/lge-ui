@@ -175,7 +175,6 @@ vcui.define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
             if (val) {
                 self.$el.val(this._getMasked());
             }
-            console.log(val);
         },
 
         /**
@@ -427,7 +426,7 @@ vcui.define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
                     newValL = newVal.length,
                     maskDif = self._getMCharsBeforeCount(newValL - 1) - self._getMCharsBeforeCount(currValL - 1);
 
-                self.$el.val(newVal);
+                self.$el.val(newVal).change();
 
                 // change caret but avoid CTRL+A
                 if (changeCaret && !(keyCode === 65 && e.ctrlKey)) {
