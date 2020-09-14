@@ -241,3 +241,24 @@
         margin-top:12px;
     }
 }
+
+.file-box {
+    .file-input {
+        &.type-A {
+            label{
+                color: #adadad;
+                padding-left: 10px;
+                background: url(/lg5-common/images/icons/icon-file-red.png) right 18px center no-repeat;
+                background-size: 20px;
+                &::after {
+                    content: '업로드';
+                    color: #ec455a;
+                    position: absolute;
+                    right: 44px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+}

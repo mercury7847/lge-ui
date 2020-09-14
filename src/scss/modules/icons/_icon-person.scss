@@ -1,0 +1,19 @@
+.icon-person {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("/lg5-common/images/icons/icon-person.svg") no-repeat center center;
+    background-size: 100% 100%;
+
+    @include mobile {
+    }
+}
+
+@mixin icon-person () {
+    background: url("/lg5-common/images/icons/icon-person.svg") no-repeat center center;
+    background-size: 20px 20px;
+
+    @include mobile {
+        background-size: 24px 24px;
+    }
+}
