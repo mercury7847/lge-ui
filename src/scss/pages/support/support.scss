@@ -42,19 +42,21 @@
     background:#f4f4f4;
 
     .contents-inner {
-        width:100%;
-        max-width:1146px; // 1066
-        margin:0 auto;
-        padding:64px 40px 120px;
+        padding:64px 0 120px;
         @include mobile {
             padding:0;
         }
     }
 
     .section {
-        margin-top:48px;
+        max-width:1146px;
+        margin:48px auto 0;
+        padding:0 40px;
         &:first-child {
             margin-top:0;
+        }
+        @include mobile {
+            padding:0;
         }
         &-title {
             margin-bottom:16px;
@@ -148,17 +150,20 @@
 
     /* button area */
     .btn-group {
-        margin-top:40px;
+        max-width:1146px;
+        margin:40px auto 0;
+        padding:0 40px;
         &.right {
             text-align:right;
         }
         @include mobile {
             margin-top:0;
-            &.type-A {
-                .btn {
-                    width: 100%;
-                    border-radius: 0;
-                }
+            padding:0;
+        }
+        &.type-A {
+            .btn {
+                width: 100%;
+                border-radius: 0;
             }
         }
     }
