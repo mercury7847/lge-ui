@@ -24,10 +24,11 @@ $(window).ready(function(){
             infinite: false,
             prevArrow:'.btn-arrow.prev',
             nextArrow:'.btn-arrow.next',
-            swipeToSlide: true,
+            swipeToSlide: false,
             slidesToShow: 5,
             slidesToScroll: 1,
             focusOnSelect:true,
+            focusOnChange:true
             asNavFor:'.ui_carousel_slider'
         });
     });
