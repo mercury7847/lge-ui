@@ -1,6 +1,19 @@
 .icon-search {
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg%3E%3Cpath d='M0 0H24V24H0z' opacity='.065'/%3E%3Cg stroke='%23111' stroke-width='1.5' transform='translate(2.5 2.5)'%3E%3Ccircle cx='8.25' cy='8.25' r='7.5'/%3E%3Cpath stroke-linecap='round' d='M14.25 13.75L19.13 18.63'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    background-size:100%;
-    background-repeat:no-repeat;
-    background-position:center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("/lg5-common/images/icons/icon-search.svg") no-repeat center center;
+    background-size: 100% 100%;
+
+    @include mobile {
+    }
+}
+
+@mixin icon-search () {
+    background: url("/lg5-common/images/icons/icon-search.svg") no-repeat center center;
+    background-size: 20px 20px;
+
+    @include mobile {
+        background-size: 24px 24px;
+    }
 }
