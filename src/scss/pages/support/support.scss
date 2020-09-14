@@ -30,6 +30,9 @@
     align-items:center;
     text-align:center;
 }
+.err-msg {
+    display:none;
+}
 
 .support {
     // @import "support/layout";
@@ -86,11 +89,6 @@
                 border-radius:0;
             }
         }
-    }
-
-    //임시
-    .err-msg {
-        display:none;
     }
 
     /* button */
@@ -157,35 +155,9 @@
             text-align:right;
         }
         @include mobile {
+            width:100%;
             margin-top:0;
             padding:0;
-        }
-        &.type-A {
-            .btn {
-                width: 100%;
-                border-radius: 0;
-            }
-        }
-    }
-
-    .file-box {
-        .file-input {
-            &.type-A {
-                label{
-                    color: #adadad;
-                    padding-left: 10px;
-                    background: url(/lg5-common/images/icons/icon-file-red.png) right 18px center no-repeat;
-                    background-size: 20px;
-                    &::after {
-                        content: '업로드';
-                        color: #ec455a;
-                        position: absolute;
-                        right: 44px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                    }
-                }
-            }
         }
     }
 
@@ -233,7 +205,7 @@
         }
     }
 
-    /* pagination (_pagination.scss) */
+    /* pagination */
     .pagination {
         margin-top:24px;    
     }
@@ -408,151 +380,6 @@
         }
     }
 
-    .engineer {
-        &-profile {
-            @include clearfix;
-            display: flex;
-            align-items: center;
-        }
-        &-img {
-            width: 140px;
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #000;
-            float: left;
-            img {
-                max-width: 100%;
-            }
-        }
-        &-desc {
-            float: left;
-            flex: 1;
-            font-size: 20px;
-            line-height: 1.5;
-            text-align: center;
-            max-width: 710px;
-            margin-left: 80px;
-            height: 100%;
-        }
-        &-btn-group {
-            margin-top: 28px;
-        }
-        @include mobile {
-            &-img {
-                width: 90px;
-                height: 90px;
-            }
-            &-desc {
-                margin-left: 20px;
-                font-size: 14px;
-                text-align: left;
-                flex: 1;
-            }
-            &-btn-group {
-                margin-top: 16px;
-            }
-        }
-    }
-    .solution-btn-box {
-        margin-top: 32px;
-    }
-
-    .reservation-title {
-        text-align: center;
-        &::before {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 24px;
-            background-color: #000;
-        }
-        h3 {
-            font-size: 24px;
-            font-weight: normal;
-            line-height: 1.42;
-        }
-        p {
-            font-size: 16px;
-            line-height: 1.38;
-            margin-top: 16px;
-        }
-        [class^="btn"] {
-            margin-top: 30px;
-        }
-        @include mobile {
-            &::before {
-                width: 60px;
-                height: 60px;
-            }
-            h3 {
-                font-size: 18px;
-            }
-            p {
-                font-size: 14px;
-            }
-        }
-    }
-
-    .inquiry {
-        &-content {
-            .btn-group {
-                padding:48px 0 0;
-                text-align:right;
-                @include mobile {
-                    padding:56px 24px 0;
-                }
-            }
-        }
-        &-item {
-            @include globalBackground;
-            & + .inquiry-item {
-                margin-top:24px;
-            }
-            @include mobile {
-                padding:40px 24px;
-                border-radius:0;
-                & + .inquiry-item {
-                    margin-top:12px;
-                }
-            }
-        }
-        &-title {
-            margin-bottom:32px;
-            .tit {
-                color:#111;
-                font-size:16px;
-                font-weight:700;
-            }
-            @include mobile {
-                margin-bottom:28px;
-                .tit {  
-                    color:#212121;
-                    font-size:16px;
-                    line-height:28px;
-                }
-            }
-        }
-    }
-
-    .input-wrap {
-        &.search {
-            position:relative;
-            input {
-                padding-left:64px;
-            }
-            button {
-                position:absolute;
-                left:24px;
-                top:16px;
-                width:24px;
-                height:24px;
-            }
-        }
-    }
-
     .color-1 {
         color: #a50034;
     }
@@ -561,17 +388,6 @@
     }
     .color-3 {
         color: #ec455a;
-    }
-
-    .field-title {
-        @include clearfix;
-
-        .tit {
-            float: left;
-        }
-        .chk-wrap {
-            float: right;
-        }
     }
     .pc-only {
         display: block;
