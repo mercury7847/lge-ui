@@ -113,6 +113,7 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
 
                 if(msg) {
                     if($target.siblings(msg).length > 0){
+                        $target.siblings(msg).hide();
                         $target.siblings(msg).text(obj.errorMsg);
                     }else{
                         $target.parent().siblings(msg).text(obj.errorMsg);
