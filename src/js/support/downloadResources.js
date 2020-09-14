@@ -16,13 +16,13 @@
             '</td>' +
             '<td>{{manualInfo}}</td>' +
             '<td>{{date}}</td>' +
-            '<td class="right middle">' +
+            '<td class="right">' +
                 '<button type="button" class="btn pink btn-small btn-border"><span>{{fileType}}</span></button>' +
             '</td>' +
         '</tr>';
     var driverListTemplate = 
         '<li class="ui_accord_item">' +
-            '<div class="accordion-head ui_accord_head">' +
+            '<div class="accordion-head head">' +
                 '<button type="button" class="accordion-head-anchor ui_accord_toggle">{{driverType}} (<em class="count">{{count}}</em>건)</button>   ' +
                 '<span class="blind ui_accord_text">열기</span>' +
             '</div>' +
@@ -44,18 +44,16 @@
                 '<a href="#" class="btn pink btn-small btn-border"><span>다운로드</span></a>' +
             '</div>' +
         '</li>';
-
     var optionTemplate =  '<option value="{{value}}">{{option}}</option>'; 
-
 
     $(window).ready(function() {
         var downloadResources = {
             initialize: function() {
                 var self = this;
 
-                self.$selectStep = $('#selectStep');
-                self.$searchStep = $('#searchStep');
-                self.$resultStep = $('#resultStep');
+                self.$stepCategory = $('#stepCategory');
+                self.$stepModel = $('#stepModel');
+                self.$stepResult = $('#stepResult');
 
                 self._setEventListener();
             },
@@ -83,8 +81,8 @@
                             $('#superCategory').text(formData.superCategory);
                             $('#category').text(formData.category);
 
-                            $('#searchStep').show();
-                            $('#selectStep').hide();
+                            $('#stepModel').show();
+                            $('#stepCategory').hide();
                         }
                     },
                     error: function(err){
@@ -95,7 +93,7 @@
                         var offsetTop = $('.contents').get(0).offsetTop;
                         
                         $(window).scrollTop(offsetTop);
-                        $('.sticky-nav').addClass('show');
+                        $('.model-nav').addClass('show');
                     }
                 });
             },
@@ -104,7 +102,7 @@
                     url: '/lg5-common/data-ajax/support/downloadList.json',
                     method: 'POST',
                     dataType: 'json',
-                    data: '',
+                    data: formData,
                     beforeSend: function(xhr) {
                         // loading bar start
                     },
@@ -116,7 +114,7 @@
                         manualArr.forEach(function(item) {
                             manualList += vcui.template(manualListTemplate, item);
                         });
-                        $('.download-list tbody').html(manualList);
+                        $('.result-table.download tbody').html(manualList);
     
     
                         var driverArr = data.driverList instanceof Array ? data.driverList : [];
@@ -136,10 +134,6 @@
                             $(this).find('ul').html(driverList);
                         });
                                 
-                            
-    
-    
-    
                         var osArr = data.osOption instanceof Array ? data.osOption : [];
                         var osOption = "";
                         osArr.forEach(function(item) {
@@ -156,7 +150,7 @@
                         $('#driverSelect').html(driverOption);
                         $('#driverSelect').vcSelectbox('update');
     
-                        $('#resultStep').show();
+                        $('#stepResult').show();
     
                         $('.accordion').vcAccordion();
                     },
@@ -165,7 +159,7 @@
                     },
                     complete: function() {
                         // loading bar end
-                        var test = $('#resultStep').get(0).offsetTop - 48  - $('.sticky-nav').outerHeight();
+                        var test = $('#stepResult').get(0).offsetTop - 48  - $('.model-nav').outerHeight();
                         $('html, body').animate({scrollTop: test}, 500);
                     }
                 });
@@ -178,7 +172,6 @@
 
                 $('.category-carousel').find('button').on('click', function() {
                     var data = $(this).data();
-
                     self.searchModelList(data);
                 });
 
@@ -188,6 +181,7 @@
                         data = $el.data('model');
 
                     $item.addClass('is-active').siblings().removeClass('is-active');
+                    $('#btnSearch').data('model', data);
                     $('#modelName').text(data);
                     $('#modelName').css('display','inline-block');
                     $('.guide').hide();
@@ -199,26 +193,26 @@
                     }, 500);
                 });
 
-                $('#trigger').on('click', function() {
+                $('#btnSearch').on('click', function() {
                     var data = $(this).data();
                     
                     self.searchFileList(data);
                 });
 
-                $('.sticky-nav').find('.btn-text').on('click', function() {
+                $('#btnReset').on('click', function() {
                     $('#modelContent').html('');
                     $('#superCategory').text('');
                     $('#category').text('');
                     $('#modelName').css('display', 'none').text('');
                     $('.guide').show();
 
-                    $('#resultStep').hide();
-                    $('#searchStep').hide();
-                    $('#selectStep').show();
+                    $('#stepResult').hide();
+                    $('#stepModel').hide();
+                    $('#stepCategory').show();
 
                     $('.category-carousel').vcCarousel('setPosition');
                     
-                    $('.sticky-nav').removeClass('show');
+                    $('.model-nav').removeClass('show');
 
                     var offsetTop = $('.contents').get(0).offsetTop;
                     $(window).scrollTop(offsetTop);
@@ -227,10 +221,10 @@
                 $(window).on('scroll resize', function () {
                     _scrollTop = $(window).scrollTop();
             
-                    if (_scrollTop >= $('.sticky-nav').get(0).offsetTop) {
-                        $('.sticky-nav').addClass('sticky')
+                    if (_scrollTop >= $('.model-nav').get(0).offsetTop) {
+                        $('.model-nav').addClass('sticky')
                     } else {
-                        $('.sticky-nav').removeClass('sticky')
+                        $('.model-nav').removeClass('sticky')
                     }
                 });
             }
