@@ -5,8 +5,9 @@
 
 .KRC0015 {
 	width: 100%;
-	max-width: 1284px;
-	margin: 0 auto;
+	max-width: 1284px + 60px;
+	padding-right: 30px;
+	padding-left: 30px;
 
 	@include mobile {
 		max-width: 100%;
@@ -103,6 +104,7 @@
 			.title {
 				display: table-cell;
 				padding-left: 12px;
+				vertical-align: middle;
 			}
 		}
 
