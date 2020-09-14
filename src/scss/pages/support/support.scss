@@ -380,6 +380,50 @@
         }
     }
 
+    .related-info {
+        color: #111;
+        &-wrap {
+            background-color: #f4f4f4;
+            padding-top: 80px;
+            padding-bottom: 120px;
+        }
+        &-title {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        &-content {
+            max-width: 1284px;
+            margin: 0 auto;
+        }
+        &-figure {
+            @include clearfix;
+            // padding-right: 24px;
+        }
+        &-img,
+        &-figcap {
+            float: left;
+            height: 128px;
+        }
+        &-img {
+            width: 194px;
+            img {
+                max-width: 100%;
+            }
+        }
+        &-figcap {
+            width: calc(100% - 194px);
+            padding: 44px 24px;
+            font-size: 14px;
+            line-height: 1.43;
+            background-color: #fff;
+        }
+        .ui_carousel_slide {
+            margin-right: 24px;
+        }
+    }
+
     .color-1 {
         color: #a50034;
     }
