@@ -59,6 +59,11 @@
                                     <dd id="my_totalpoint">1,000P</dd>
                                 </dl>
                             </div>
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTxt" : [
+                                    "적립된 포인트 사용기간은 적립일로부터 3년이며 고객님께서 3년 내에 사용하지 않은 적립 포인트는 자동 소멸됩니다."
+                                ]
+                            })
                             <!-- //결과값 있을 때 -->
 
                             <!-- 결과값 없을 때 -->
@@ -66,12 +71,6 @@
                                 <p>조회기간 내 결과가 없습니다.</p>
                             </div>
                             <!-- // 결과값 없을 때 -->
-
-                            @@include('./common/modules/bullet-list.html', {
-                                "bulletTxt" : [
-                                    "적립된 포인트 사용기간은 적립일로부터 3년이며 고객님께서 3년 내에 사용하지 않은 적립 포인트는 자동 소멸됩니다."
-                                ]
-                            })
                         </div>
                     </div>
                 </div>
