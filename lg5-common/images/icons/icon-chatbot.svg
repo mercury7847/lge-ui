@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="71px" height="72px" viewBox="0 0 71 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="(z)@KRP0005_Sticky-chat_Static" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="KRP0005_Sticky-chat_Static_PC" transform="translate(-1749.000000, -112.000000)">
+            <g id="Chatbot" transform="translate(1749.000000, 112.000000)">
+                <g id="Group">
+                    <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="71" height="72" rx="25"></rect>
+                    <g id="chat_icon" transform="translate(20.000000, 12.000000)">
+                        <rect id="Rectangle" x="0" y="0" width="32" height="32"></rect>
+                        <path d="M3,28 L4.87630456,22.4011352 C1.5222188,17.46697 2.81796423,11.0996217 7.90692258,7.50854886 C12.9958809,3.91747607 20.3056303,4.21227361 25.0036899,8.1980506 C29.7017495,12.1838276 30.33648,18.6290308 26.4882606,23.2727316 C22.6400413,27.9164324 15.4979218,29.3237876 9.78356264,26.5643936 L3,28" id="Path" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </g>
+                    <text id="챗봇" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo" font-size="12" font-weight="normal" line-spacing="16" fill="#000000">
+                        <tspan x="25.62" y="55">챗봇</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
