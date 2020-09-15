@@ -419,6 +419,10 @@
 
     .related-info {
         color: #111;
+        .slide-content {
+            margin-left: -12px;
+            margin-right: -12px;
+        }
         &-wrap {
             background-color: #f4f4f4;
             padding-top: 80px;
@@ -436,7 +440,7 @@
         }
         &-figure {
             @include clearfix;
-            // padding-right: 24px;
+            margin: 0 12px;
         }
         &-img,
         &-figcap {
@@ -455,9 +459,29 @@
             font-size: 14px;
             line-height: 1.43;
             background-color: #fff;
+            a {
+                @include textEllipsisClamp(2)
+            }
         }
-        .ui_carousel_slide {
-            margin-right: 24px;
+        @include mobile {
+            .slide-content {
+                margin-left: 12px;
+                margin-right: 0;
+            }
+            &-figure {
+                width: 200px;
+                margin-left: 8px;
+                margin-right: 0;
+            }
+            &-img,
+            &-figcap {
+                float: none;
+                height: auto;
+                width: 100%;
+            }
+            &-figcap {
+                padding: 40px 16px;
+            }
         }
     }
 
