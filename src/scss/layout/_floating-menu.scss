@@ -78,19 +78,4 @@
         }
 	}
 
-	@include mobile {
-		&.call-yet {
-			transform:translateX(98px);
-		}
-		&.top{
-			// right:13px;
-			bottom:15px;
-			transform:translateX(7px);
-		}
-		&.chat {
-			// right:13px;
-			bottom:(15px+45px+15px);
-			transform:translateX(7px);
-		}
-	}
 }
