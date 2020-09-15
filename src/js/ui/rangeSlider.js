@@ -181,8 +181,6 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
                     self.$el.removeAttr('aria-labelledby');
                 }                
             }
-
-            
             
         },
 
@@ -269,6 +267,8 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
                 self._move(self._getX(e));
                 self._snapMove();
                 self._syncInput();
+
+                console.log(e);
 
                 self.triggerHandler('rangesliderchanged', [self._checkOriginValue(self._getValue())]);
             });
@@ -485,8 +485,11 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
 
                 if(!self.mode){
 
-                    if(self.maxValue < sMax) sMax = self.maxValue;
-                    if(self.minValue > sMin) sMin = self.minValue; 
+                    // if(self.maxValue < sMax) sMax = self.maxValue;
+                    // if(self.minValue > sMin) sMin = self.minValue; 
+                    if(Math.abs(self.maxValue - sMax) < roundUnit/2) sMax = self.maxValue;
+                    if(Math.abs(self.minValue - sMin) < roundUnit/2) sMin = self.minValue;  
+                    if(sMax < sMin) sMin = sMax;
 
                 }else{
                     var btnWidth = (self.maxValue - self.minValue) / self.rangeWidth * self.btnSize/2;
@@ -639,8 +642,10 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
             var sMax = Math.round(maxVal/roundUnit)*roundUnit; 
                             
             if(!self.mode){
-                if(self.maxValue < sMax) sMax = self.maxValue;
-                if(self.minValue > sMin) sMin = self.minValue;   
+                if(Math.abs(self.maxValue - sMax) < roundUnit/2) sMax = self.maxValue;
+                if(Math.abs(self.minValue - sMin) < roundUnit/2) sMin = self.minValue;  
+                if(sMax < sMin) sMin = sMax;
+
             }else{
                 var btnWidth = (self.maxValue - self.minValue) / self.rangeWidth * self.btnSize/2;
                 if(self.originMaxValue+btnWidth <= sMax) sMax = self.maxValue;
