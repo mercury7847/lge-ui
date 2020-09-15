@@ -60,45 +60,45 @@
     }
 }
 
-// input common
-input, textarea {
-    display:inline-block;
-    width:100%;
-    border:1px solid #ddd;
-    border-radius:8px;
-    color:#111;
-    font-size:16px;
-    line-height:24px;
-    vertical-align:top;
-    resize:none;
-
-    &::-webkit-input-placeholder,
-    &::-moz-placeholder,
-    &:-ms-input-placeholder,
-    &::placeholder {
-        color:#616161;
-    }
-
-    &:disabled, &:read-only {
-        background:#f4f4f4;
-        border-color:transparent;
-        color:#ccc;
-    }
-
-    &:focus {
-        border-color:#111;
-        outline:none;
-    }
-
-    // @include mobile {
-    //     border-radius:4px;
-    // }
-}
-
 // input text, textarea
 .input-wrap {
     display:inline-block;
     vertical-align:top;
+
+    // input common
+    input, textarea {
+        display:inline-block;
+        width:100%;
+        border:1px solid #ddd;
+        border-radius:8px;
+        color:#111;
+        font-size:16px;
+        line-height:24px;
+        vertical-align:top;
+        resize:none;
+
+        &::-webkit-input-placeholder,
+        &::-moz-placeholder,
+        &:-ms-input-placeholder,
+        &::placeholder {
+            color:#616161;
+        }
+
+        &:disabled, &:read-only {
+            background:#f4f4f4;
+            border-color:transparent;
+            color:#ccc;
+        }
+
+        &:focus {
+            border-color:#111;
+            outline:none;
+        }
+
+        // @include mobile {
+        //     border-radius:4px;
+        // }
+    }
 
     input {
         padding:15px 24px;
