@@ -125,10 +125,9 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
             var inputArr = opts.input? opts.input.toString().split(separator) : ['',''];
 
             self.startValue = (inputArr[0]!=='' && inputArr[0]!=='Min')? inputArr[0] : self.mode? self.minValue : self.originMinValue;
-            self.endValue = (inputArr[1]!=='' && inputArr[1]!=='Max')? inputArr[1] : self.mode? self.maxValue : self.originMaxValue;              
+            self.endValue = (inputArr[1]!=='' && inputArr[1]!=='Max')? inputArr[1] : self.mode? self.maxValue : self.originMaxValue;        
 
-
-            var isOne = rangeArr.length < 2 ? true : false;
+            var isOne = inputArr.length < 2 ? true : false;
             if (isOne) self.endValue = self.startValue;
 
             if (!core.isNumber(parseFloat(self.startValue)) && !core.isNumber(parseFloat(self.endValue))) {
@@ -147,7 +146,10 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
                 }
             }
 
-            if (self.endValue - self.startValue < 0) self.endValue = self.mode? self.maxValue : self.originMaxValue;                 
+            if (self.endValue - self.startValue < 0) self.endValue = self.mode? self.maxValue : self.originMaxValue;      
+
+            self.triggerHandler('rangesliderchanged', [{minValue:self.startValue, maxValue:self.endValue}]);
+
 
             if(!self.$el.hasClass('ui-range-slider')) {
 
@@ -179,6 +181,8 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
                     self.$el.removeAttr('aria-labelledby');
                 }                
             }
+
+            
             
         },
 
@@ -274,6 +278,7 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
                 self.originValue = self._getValue();
                 self._resize();
             });
+
 
             var prevValue = void 0,
                 newValue = void 0;

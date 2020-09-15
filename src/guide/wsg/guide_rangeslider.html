@@ -37,7 +37,10 @@
 <!-- 가이드 내용 -->
 <h2 class="h2_guide">2. 멀티 슬라이더 type1</h2>
 <div class="guide_wrap">
-    <div class="ui_slider" data-input="2000,3000" data-range="999,9999" data-min-label="minLabel" data-max-label="maxLabel"></div>
+    <div class="ui_desc" data-input="2000,3000" data-range="999,9999" data-min-label="minLabel" data-max-label="maxLabel"></div>
+    <p class="min"></p>
+    <p class="max"></p>
+
 </div>
 
 <div class="d_desc code">
@@ -91,9 +94,20 @@
     $(function () {
         vcui.require(['ui/rangeSlider'], function () {
 
+            $('.ui_desc').on('rangesliderchanged', function (e, data) {
+                console.log(data);
+
+                $('.min').text(data.minValue);
+                $('.max').text(data.maxValue);
+
+            }).vcRangeSlider({priceUnit:'$', roundUnit:10});
+
             $('.ui_slider').vcRangeSlider({priceUnit:'$', roundUnit:10}).on('rangesliderchanged', function (e, data) {
                 console.log(data);
+
             });
+
+            
         });
 
     });
