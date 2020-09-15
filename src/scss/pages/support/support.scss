@@ -582,6 +582,70 @@
         }
     }
 
+    .app-accodian {
+        @include mobile {
+            border-radius: 4px;
+            border: solid 2px #dddddd;
+            background-color: #fff;
+            font-size: 16px;
+            color: #222;
+            .head {
+                padding: 17px 12px;
+                background-color: #f4f4f4;
+                position: relative;
+            }
+            .ui_accord_text {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 16px;
+                display: block;
+                width: 0;
+                height: 0;
+                border-top: 8px solid #111;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                font-size: 0;
+                @at-root .btn_close & {
+                    border-bottom: 8px solid #111;
+                    border-left: 5px solid transparent;
+                    border-right: 5px solid transparent;
+                }
+            }
+            .txt_list {
+                font-weight: 500;
+                padding: 20px 0;
+                li {
+                    > a {
+                        padding: 12px 16px;
+                        display: flex;
+                        align-items: center;
+
+                        &::after {
+                            content: '';
+                            display: inline-block;
+                            width: 14px;
+                            height: 24px;
+                            background: url(/lg5-common/images/icons/icon-btn-arrow-right2.svg) no-repeat center;
+                            background-size: 150%;
+                            margin-left: 8px;
+                        }
+                    }
+                    &:first-child {
+                        > a {
+                            padding-top: 0;
+                        }
+                    }
+                    &:last-child {
+                        > a {
+                            padding-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .color-1 {
         color: #a50034;
     }
