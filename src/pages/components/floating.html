@@ -1,7 +1,11 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-    @@include('./common/head.html')
+    @@include('./common/head.html', {
+        "pageJS": [
+            "support/scrollTop"
+        ]
+    })
 <body>
     <div class="wrap">
         @@include('./common/header.html')
@@ -23,6 +27,6 @@
 		
             </div>
         </div>
-    </div>     
+    </div>
 </body>
 </html>
