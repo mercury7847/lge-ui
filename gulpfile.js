@@ -23,9 +23,17 @@ gulp.task("browser-sync", () => {
             baseDir: dist
         },
         port: 3010,
-        startPath: "./guide/"
+        startPath: "./guide/",
+        middleware: function (req, res, next) {
+            if (/\.json|\.txt|\.html/.test(req.url) && req.method.toUpperCase() == 'POST') {
+                console.log('[POST => GET] : ' + req.url);
+                req.method = 'GET';
+            }
+            next();
+        }
     });
 });
+
 
 // html 파일 생성...
 gulp.task('html', () => gulp
@@ -203,6 +211,8 @@ gulp.task("static:videos", () => gulp
 gulp.task('clean', function() {
 	return del.sync("./dist");
 });
+
+
 
 
 // Gulp tasks
