@@ -62,7 +62,7 @@ var res = {
 			"KRP0001_GNB - B2C" : ["/html/components/KRP0001.html","","검수완료"],
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","진행중"],
-			"KRP0005_Sticky chat_Static" : ["/html/components/KRP0005.html","","진행중"],
+			"KRP0005_Sticky chat_Static" : ["/html/components/floating.html","","진행중"],
 			"KRP0010_PDP Bundle" : ["/html/components/KRP0010.html","","검수완료"],
 			"KRP0016_PDP Support - B2C" : ["/html/components/KRP0016.html","","검수완료"],
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"],
