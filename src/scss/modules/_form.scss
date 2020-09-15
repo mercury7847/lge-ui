@@ -76,7 +76,7 @@ input, textarea {
     &::-moz-placeholder,
     &:-ms-input-placeholder,
     &::placeholder {
-        color:#616161;
+        color:#adadad;
     }
 
     &:disabled, &:read-only {
@@ -154,10 +154,12 @@ input, textarea {
     }
     &.count {
         .total {
-            color:#aaa;
+            display:block;
+            margin-top:4px;
+            color:#616161;
             font-size:14px;
-            line-height:24px;
-            vertical-align:bottom;
+            line-height:20px;
+            text-align:right;
             em {
                 color:inherit;
                 font-size:inherit;
@@ -165,7 +167,7 @@ input, textarea {
             }
         }
         textarea {
-            height:288px;
+            height:160px;
         }
 
         // @include mobile {
