@@ -1,0 +1,269 @@
+$(function () {
+    if(!document.querySelector('.KRP0009')) return false;
+
+    ;(function($, _$){   
+        
+        
+        vcui.require(['ui/rangeSlider', 'ui/selectbox'], function () {
+
+            // local storage 
+            var Storage = {
+                set : function(key, value){
+                    var storage = localStorage.getItem(key);
+                    var storageData = storage? JSON.parse(storage) : {};        
+                    storageData = Object.assign(storageData, value);
+                    localStorage.setItem(key, JSON.stringify(storageData));        
+                    return storageData;
+                },
+
+                get :function(key, name){							
+                    var storage = localStorage.getItem(key); 
+                    if(name){							
+                        var storageData = storage? JSON.parse(storage) : {}; 						
+                        return storageData[name];
+                    }else{
+                        return storage? JSON.parse(storage) : {};
+                    }   
+                },
+
+                remove:function(key, name){    
+                    if(name){
+                        var storage = localStorage.getItem(key);
+                        var storageData = storage? JSON.parse(storage) : {}; 						
+                        delete storageData[name];						
+                        localStorage.setItem(key, JSON.stringify(storageData)); 
+                        return storageData;
+                    }else{
+                        localStorage.removeItem(key);
+                        return null;
+                    }						
+                }
+            }
+
+
+            // 
+            var locationObj = vcui.uri.parseUrl(window.location);
+            var storageName = encodeURIComponent(locationObj.path)+'_lgeProductFilter';
+            var storageNameExpire = encodeURIComponent(locationObj.path)+'_lgeProductFilter_expire'; // 만료일 
+            var expire = Storage.get(storageNameExpire);				
+
+            if(expire && expire.expireDate < new Date().getTime()){
+                Storage.remove(storageName);
+                Storage.remove(storageNameExpire);
+            }
+
+            Storage.set(storageNameExpire, {'expireDate' : new Date().getTime() + (10*1000)});	//24*3600000 // 10초로 테스트중 만료일 설정 
+            var storageFilters = Storage.get(storageName);	
+
+
+            // 컴포넌트 설정
+            $('.ui_filter_selectbox').vcSelectbox().on('change', function(e,data){
+                storageFilters['sortBy'] = data.selectedIndex;
+                Storage.set(storageName, storageFilters);
+                setApplyFilter(storageFilters);
+            });				
+            
+            $('.ui_price_slider').vcRangeSlider({
+                mode:true,
+            }).on('rangesliderchanged', function (e, data) {				
+                var id = $(e.currentTarget).data('id');
+                setSliderData(id, data);
+            }); 
+
+            $('.ui_size_slider').vcRangeSlider({
+                mode:true,
+            }).on('rangesliderchanged', function (e, data) {
+                var id = $(e.currentTarget).data('id');
+                setSliderData(id, data);
+            });
+
+            //
+
+            
+            // 이벤트 바인딩
+            $('input[type="checkbox"]').on('change', function(e){
+                var id = e.target.id;
+                if(e.target.checked){
+                    storageFilters[id] = e.target.value;
+                    Storage.set(storageName, storageFilters);
+                }else{
+                    delete storageFilters[id];
+                    Storage.remove(storageName, id);
+                }
+                setApplyFilter(storageFilters);
+            });
+
+            $('.apply_filters').on('click', 'a', function(e){
+                e.preventDefault();
+                var id = $(e.currentTarget).parent().data('id');
+                reset(id);
+            });
+
+            $('#clearFilterBtn').on('click', function(){
+                reset();
+            })
+
+            //이벤트 바인딩 end
+
+            // range slider  
+            function setSliderData(id, data){
+                var inputStr = ''
+                for(var key in data) inputStr += data[key]+',';
+                inputStr = inputStr.replace(/,$/,'');
+                storageFilters[id] = inputStr;
+                Storage.set(storageName, storageFilters);
+                setApplyFilter(storageFilters);
+            }
+
+
+
+            function setApplyFilter(obj){		
+                
+                $('.apply_filters').empty();
+                var tmpl='<div data-id="{{key}}">{{txt}} <a href="#">X</a></div>';
+                var htmlStr = "";
+                var txt = "";
+
+                for(var key in obj){		
+                    $('input[type="checkbox"][id="'+ key +'"]').prop('checked', true);
+
+                    if($('[data-id="'+ key +'"]').data('ui_selectbox')){
+                        $('[data-id="'+ key +'"]').vcSelectbox('selectedIndex', obj[key] , false);
+                        continue;
+                    }
+                    if($('[data-id="'+ key +'"]').data('ui_rangeSlider')){
+                        $('[data-id="'+ key +'"]').vcRangeSlider('option',{input:obj[key]}).vcRangeSlider('reset', false);
+
+                        txt = obj[key] && obj[key].replace(',',' - ');
+                        htmlStr = vcui.template(tmpl, { key:key,txt:key+' : '+txt});
+                    }else{
+                        txt = $('input[type="checkbox"][id="'+ key +'"]').parent().text();
+                        htmlStr = vcui.template(tmpl, { key : key,txt : txt});
+                    }
+
+                    var $target = $('.apply_filters').find('[data-id="'+ key +'"]');
+                    if($target.length > 0){
+                        $target.html(htmlStr);
+                    }else{
+                        $('.apply_filters').append(htmlStr);
+                    }							
+                }
+                requestData(obj);
+            }
+            
+
+            function reset(id){
+
+                var obj = Storage.get(storageName);	
+                for(var key in obj){
+                    if(!id || id==key){						
+                        $('input[type="checkbox"][id="'+key+'"]').prop('checked', false);
+                        var $target = $('.apply_filters').find('[data-id="'+ key +'"]');
+                        if($target.length > 0) $target.remove();
+                        
+                        if($('[data-id="'+ key +'"]').data('ui_rangeSlider')){
+                            $('[data-id="'+ key +'"]').vcRangeSlider('option',{input:null}).vcRangeSlider('reset', false);
+                        }
+                        if($('[data-id="'+ key +'"]').data('ui_selectbox')){
+                            $('[data-id="'+ key +'"]').vcSelectbox('selectedIndex', null , false);
+                        }
+                    }
+                }
+                if(!id){
+                    Storage.remove(storageName);
+                    storageFilters = {};	
+                }else{
+                    delete storageFilters[id];
+                    Storage.remove(storageName, id);
+                }					
+                requestData(Storage.get(storageName));
+            }
+
+
+            function requestData(obj){
+                console.log('request ', obj);
+
+                var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList.json';
+
+                _$.ajax({
+                    type : "POST",
+                    url : ajaxUrl,
+                    dataType : "json",
+                    data : {id:"테스트"}
+
+                }).done(function(result) {
+
+                    //filterEnableList
+                    var enableList = result.data && result.data[0].filterEnableList;
+
+                    // console.log(enableList);
+
+                    var arr = result.data && result.data[0].filterList;
+
+                    var filterObj = vcui.array.reduce(arr, function (prev, cur) {
+                        if(prev[cur['filterId']]){
+                            prev[cur['filterId']].push(cur);
+                        }else{
+                            prev[cur['filterId']] = [cur];
+                        }
+                        return prev;
+                    }, {}); 
+
+                    //console.log(filterObj);
+
+                    for(var key in filterObj){
+
+                        var filterValues = vcui.array.map(filterObj[key], function(item, index) {	
+
+                            var filters = vcui.array.filter(enableList, function(target, idx) {
+                                return target['filterId'] === item['filterValueId'];
+                            });
+                            var obj = {
+                                'filterName':item['filterName'], 
+                                'label' : item['filterValueName'], 
+                                'value':item['filterValueId'], 
+                                'count':item['countModel']
+                            } 
+
+                            //console.log(filters);
+
+                            if(filters.length>0){
+                                obj['value2'] = filters[0]['facetValueId'];
+                            }
+
+                            return obj;
+                        }); 
+
+
+                        filterValues = vcui.array.reduce(filterValues, function(prev, cur){
+                            var items = vcui.array.filter(prev, function(item, index) {
+                                return item['value'] === cur['value'];
+                            });
+                            if(items.length===0){
+                                prev.push(cur);
+                            }		  
+                            return prev;
+                        },[]); 
+
+                        console.log(key, filterValues);
+
+                    }
+
+                }).fail(function(error) {
+                    // console.error(error);
+                });
+
+
+            }
+
+            setApplyFilter(storageFilters);
+            
+
+        });           
+        
+    })(
+        function (selector){
+            return $('.KRP0009').find(selector); 
+        }, $
+    );
+});

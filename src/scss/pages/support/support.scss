@@ -25,10 +25,15 @@
     font-weight:bold;
     line-height:1.37;
     color:#ffffff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     text-align:center;
+    p {
+        font-size:20px;
+        color:#fff;
+        line-height:30px;
+        & + p {
+            border-top:1px solid #fff;
+        }
+    }
 }
 .err-msg {
     display:none;
@@ -47,7 +52,7 @@
     .contents-inner {
         padding:64px 0 120px;
         @include mobile {
-            padding:0;
+            padding:12px 0 0;
         }
     }
 
@@ -63,9 +68,10 @@
         &-title {
             margin-bottom:16px;
             .tit {
+                font-size:16px;
                 font-weight:700;
-                color:#111;
-                line-height:1.5;
+                color:#222;
+                line-height:24px;
             }
         }
         &-content {
@@ -248,12 +254,21 @@
 
     /* text list */
     .dot-list {
+        &.top-border {
+            border-top:1px solid #ddd;
+            margin-top:40px;
+            padding-top:24px;
+        }
         li {
             position:relative;
-            padding-left:6px;
+            margin-top:4px;
+            padding-left:8px;
             font-size:14px;
             color:#616161;
-            line-height:1.71;
+            line-height:20px;
+            &:first-child {
+                margin-top:0;
+            }
             &:before {
                 content:'';
                 position:absolute;
@@ -261,53 +276,17 @@
                 top:10px;
                 width:2px;
                 height:2px;
-                background-color:#bbb;
-            }
-            @include mobile {
-                padding-left:7px;
-                font-size:12px;
-                line-height:18px;
-                &:before {
-                    width:3px;
-                    height:3px;
-                }
-            }
-        }
-    }
-    .dot-list02 {
-        li {
-            position:relative;
-            padding-left:12px;
-            font-size:16px;
-            color:#111;
-            line-height:1.38;
-            & + li {
-                margin-top:10px;
-            }
-            &:before {
-                content:'';
-                position:absolute;
-                left:0;
-                top:10px;
-                width:4px;
-                height:4px;
                 border-radius:50%;
                 background-color:#616161;
             }
             @include mobile {
-                padding-left:10px;
-                font-size:14px;
-                line-height:1.57;
-                & + li {
-                    margin-top:8px;
-                }
-                &:before {
-                    width:4px;
-                    height:4px;
-                }
+                padding-left:8px;
+                font-size:12px;
+                line-height:18px;
             }
         }
     }
+        
     .dot-list03 {
         border-top: 1px solid #ddd;
         margin-top: 43px;

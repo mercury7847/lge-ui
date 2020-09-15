@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRP0009 {
+    margin:0 auto;
+    background:#f4f4f4;
+    @include clearfix;
+
+    .cate-wrap {
+        padding:9px 0;
+        height:56px;
+        background:#fff;
+        .cate-list {
+            @include clearfix;
+            max-width:1284px;
+            margin:0 auto;
+
+            .chk-cate {
+                float:left;
+                padding-right:100px;
+                font-size:0;
+                .chk-wrap {
+                    margin:0 8px;
+                    &:first-child {
+                        margin-left:0;
+                    }
+                }
+                .chk-wrap input:checked+label {
+                    color:#222;
+                    font-weight:500;
+                    background:#f4f4f4;
+                    border-radius:19px;
+                    white-space:nowrap;
+                    overflow:hidden;
+                }
+                .chk-wrap input+label {
+                    padding:0 12px;
+                    color:#979797;
+                    font-size:14px;
+                    line-height:38px;
+                    &:before {
+                        display:none;
+                    }
+                    &:after {
+                        display:none;
+                    }
+                }
+            }
+
+            .btn-compare {
+                float:right;
+            }
+        } 
+    }
+
+    .plp-list-wrap {
+        max-width:1508px;
+        margin:0 auto;
+
+        .filter-wrap {
+            float:left;
+            width:200px;
+            margin-top:70px;
+
+            .list_acco {
+                ul {
+                    li {
+                        background-color:#fff;
+                        border-radius:4px;
+                        margin-top:2px;
+                        overflow:hidden;
+                        &:first-child {
+                            margin-top:0;
+                        }
+                        .head {
+                            position:relative;
+                            a {
+                                display:block;
+                                padding:0 45px 0 20px;
+                                &:before {
+                                    content:'';
+                                    display:block;
+                                    position:absolute;
+                                    top:50%;
+                                    right:5px;
+                                    width:10px;
+                                    height:10px;
+                                    margin-top:-9px;
+                                    border:1.2px solid #222;
+                                    border-top:none; 
+                                    border-left:none; 
+                                    -webkit-transform:rotate(45deg); 
+                                    transform:rotate(45deg);
+                                }
+                            }
+                            .tit {
+                                display:block; 
+                                padding:24px 0 32px;  
+                                color:#222;
+                                font-size:16px;
+                                line-height:24px;
+                                font-weight:500; 
+                                word-break:break-all;
+                                span {
+                                    word-break:break-all;
+                                }
+                            }
+                        }
+                        .desc {
+                            display:none; 
+                            padding:10px 6px 28px 0; 
+                            color:#666; 
+                            line-height:22px;
+                        }
+                        .cont {
+                            word-break:break-all;
+                            p {
+                                word-break:break-all;
+                            }
+                        }
+                        &.on .head a:before {
+                            top:50%;margin-top:-4px;border:1.2px solid #222; border-top:none; border-left:none; -webkit-transform:rotate(-136deg); transform:rotate(-136deg);
+                        }
+                    }
+                }
+                
+            }
+
+        }
+        .all-list {
+            margin-left:224px;
+        }
+    }
+
+    
+    
+}

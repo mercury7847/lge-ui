@@ -60,45 +60,45 @@
     }
 }
 
-// input common
-input, textarea {
-    display:inline-block;
-    width:100%;
-    border:1px solid #ddd;
-    border-radius:8px;
-    color:#111;
-    font-size:16px;
-    line-height:24px;
-    vertical-align:top;
-    resize:none;
-
-    &::-webkit-input-placeholder,
-    &::-moz-placeholder,
-    &:-ms-input-placeholder,
-    &::placeholder {
-        color:#616161;
-    }
-
-    &:disabled, &:read-only {
-        background:#f4f4f4;
-        border-color:transparent;
-        color:#ccc;
-    }
-
-    &:focus {
-        border-color:#111;
-        outline:none;
-    }
-
-    // @include mobile {
-    //     border-radius:4px;
-    // }
-}
-
 // input text, textarea
 .input-wrap {
     display:inline-block;
     vertical-align:top;
+
+    // input common
+    input, textarea {
+        display:inline-block;
+        width:100%;
+        border:1px solid #ddd;
+        border-radius:8px;
+        color:#111;
+        font-size:16px;
+        line-height:24px;
+        vertical-align:top;
+        resize:none;
+
+        &::-webkit-input-placeholder,
+        &::-moz-placeholder,
+        &:-ms-input-placeholder,
+        &::placeholder {
+            color:#bcbcbc;
+        }
+
+        &:disabled, &:read-only {
+            background:#f4f4f4;
+            border-color:transparent;
+            color:#ccc;
+        }
+
+        &:focus {
+            border-color:#111;
+            outline:none;
+        }
+
+        // @include mobile {
+        //     border-radius:4px;
+        // }
+    }
 
     input {
         padding:15px 24px;
@@ -154,10 +154,12 @@ input, textarea {
     }
     &.count {
         .total {
-            color:#aaa;
+            display:block;
+            margin-top:4px;
+            color:#616161;
             font-size:14px;
-            line-height:24px;
-            vertical-align:bottom;
+            line-height:20px;
+            text-align:right;
             em {
                 color:inherit;
                 font-size:inherit;
@@ -165,7 +167,7 @@ input, textarea {
             }
         }
         textarea {
-            height:288px;
+            height:160px;
         }
 
         // @include mobile {
@@ -261,22 +263,41 @@ input, textarea {
     .file-input {
         display:block;
         position:relative;
-        label {
+        width:calc(50% - 4px);
+        .file-label {
             display:block;
-            padding:15px 23px 15px 63px;
+            padding:15px 90px 15px 24px;
             border:1px solid #ddd;
             border-radius:8px;
-            background:url("/lg5-common/images/icons/icon-file.svg") 23px no-repeat;
             font-size:16px;
             line-height:24px;
-            color:#616161;
-            &::after {
-                content:'(전체 10mb, 최대 3개까지 등록 가능)';
-                display:inline-block;
-                font-size:inherit;
-                line-height:inherit;
-                vertical-align:top;
+            color:#adadad;
+        }
+        label {
+            position:absolute;
+            top:15px;
+            right:15px;
+            padding-right:28px;
+            font-size:16px;
+            color:#ec455a;
+            line-height:1.5;
+            cursor:pointer;
+            &:after {
+                content:'';
+                position:absolute;
+                right:0;
+                top:0;
+                width:24px;
+                height:24px;
+                background:center/100% url('/lg5-common/images/icons/icon-upload.svg') no-repeat;
             }
+            // &::after {
+            //     content:'(전체 10mb, 최대 3개까지 등록 가능)';
+            //     display:inline-block;
+            //     font-size:inherit;
+            //     line-height:inherit;
+            //     vertical-align:top;
+            // }
         }
         input[type=file] {
             position:absolute;
@@ -290,13 +311,14 @@ input, textarea {
         }
 
         @include mobile {
+            width:100%;
             label {
                 // padding:13px 15px 13px 47px;
                 // border-radius:4px;
                 // background-position-x:15px;
-                &::after {
-                    content:'(전체 10mb, 최대 3개)';
-                }
+                // &::after {
+                //     content:'(전체 10mb, 최대 3개)';
+                // }
             }
         }
     }
@@ -307,7 +329,7 @@ input, textarea {
             padding:16px 24px;
             padding-right:72px;
             border-radius:8px;
-            background:#fafafa;
+            background:#f4f4f4;
             .file-name {
                 display:block;
                 overflow:hidden;
