@@ -17,19 +17,18 @@
         }
     }
     .field-title {
-        margin-bottom:12px;
+        margin-bottom:8px;
         .tit {
-            color:#111;
+            display:inline-block;
+            color:#616161;
             font-size:14px;
             font-weight:400;
-            vertical-align:middle;
+            line-height:20px;
+            vertical-align:top;
         }
         @include mobile {
-            margin-bottom:8px;
             .tit {
-                color:#616161;
-                font-size:13px;
-                line-height:19px;
+                line-height:18px;
             }
         }
     }
@@ -60,17 +59,6 @@
             float:none;
             width:100%;
         }
-        .field-title {
-            margin-bottom:8px;
-            font-size:14px;
-            .tit {
-                display:inline-block;
-                line-height:20px;
-            }
-            .icon-notice {
-                margin-left:8px;
-            }
-        }
         .field-btn-group {
             text-align: center;
             margin-top: 32px;
@@ -81,25 +69,6 @@
             & + .field-item {
                 margin-top:28px;
             }
-            .field-title {
-                .tit {
-                    font-size:13px;
-                    line-height:19px;
-                }
-                .icon-notice {
-                    margin-left:4px;
-                }
-            }
-        }
-    }
-    .desc {
-        margin-top:12px;
-        color:#616161;
-        font-size:14px;
-        @include mobile {
-            margin-top:8px;
-            font-size:12px;
-            line-height:18px;
         }
     }
 }

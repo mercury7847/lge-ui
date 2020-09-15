@@ -81,7 +81,7 @@
         &::-moz-placeholder,
         &:-ms-input-placeholder,
         &::placeholder {
-            color:#616161;
+            color:#bcbcbc;
         }
 
         &:disabled, &:read-only {
@@ -263,22 +263,41 @@
     .file-input {
         display:block;
         position:relative;
-        label {
+        width:calc(50% - 4px);
+        .file-label {
             display:block;
-            padding:15px 23px 15px 63px;
+            padding:15px 90px 15px 24px;
             border:1px solid #ddd;
             border-radius:8px;
-            background:url("/lg5-common/images/icons/icon-file.svg") 23px no-repeat;
             font-size:16px;
             line-height:24px;
-            color:#616161;
-            &::after {
-                content:'(전체 10mb, 최대 3개까지 등록 가능)';
-                display:inline-block;
-                font-size:inherit;
-                line-height:inherit;
-                vertical-align:top;
+            color:#adadad;
+        }
+        label {
+            position:absolute;
+            top:15px;
+            right:15px;
+            padding-right:28px;
+            font-size:16px;
+            color:#ec455a;
+            line-height:1.5;
+            cursor:pointer;
+            &:after {
+                content:'';
+                position:absolute;
+                right:0;
+                top:0;
+                width:24px;
+                height:24px;
+                background:center/100% url('/lg5-common/images/icons/icon-upload.svg') no-repeat;
             }
+            // &::after {
+            //     content:'(전체 10mb, 최대 3개까지 등록 가능)';
+            //     display:inline-block;
+            //     font-size:inherit;
+            //     line-height:inherit;
+            //     vertical-align:top;
+            // }
         }
         input[type=file] {
             position:absolute;
@@ -292,13 +311,14 @@
         }
 
         @include mobile {
+            width:100%;
             label {
                 // padding:13px 15px 13px 47px;
                 // border-radius:4px;
                 // background-position-x:15px;
-                &::after {
-                    content:'(전체 10mb, 최대 3개)';
-                }
+                // &::after {
+                //     content:'(전체 10mb, 최대 3개)';
+                // }
             }
         }
     }
@@ -309,7 +329,7 @@
             padding:16px 24px;
             padding-right:72px;
             border-radius:8px;
-            background:#fafafa;
+            background:#f4f4f4;
             .file-name {
                 display:block;
                 overflow:hidden;
@@ -676,18 +696,3 @@
         }
     }
 }
-
-
-
-
-/*RangeSlider */
-
-.ui-range-slider {position: relative; text-align: left; height: 30px; width: 100%; margin: 20px 0px;}
-.ui-range-slider .hide {display:inline-block;position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;opacity:0 !important;filter:alpha(opacity=0);-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(opacity=0)';font-size:medium;line-height:normal;word-break:break-all;}
-
-.ui-range-slider .ui-range-slider-bg {position: absolute; background-color: #97a0a7; height: 4px;}
-.ui-range-slider .ui-range-slider-range { position: absolute; background-color: #0283de; height: 4px;}
-.ui-range-slider .ui-range-slider-handler {position: absolute; height: 26px; width: 26px; background:url('../images/img_main_process_product.png') 0 0 no-repeat;}
-.ui-range-slider .ui-range-slider-value{margin:0; padding:0; top:7px;}
-.ui-range-slider .ui-range-slider-value li{list-style-type: none; cursor: pointer; height: 16px; width: 16px; margin:0;	padding:0; background:url('../images/img_main_process_product.png') 0 -50px no-repeat;}
-
