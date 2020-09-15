@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+$size: (img2, img3, img4);
+@each $col in $size {
+    .KRC0036.#{$col} {
+        img {
+            width:100%;
+            height:auto;
+            vertical-align:top;
+        }
+        max-width:(1284px + 60px);
+        margin:-60px auto 0;
+        padding:0 18px;
+        font-size:0;
+        @include mobile {
+            padding:0 24px;
+        }
+        .unit-box {
+            display:inline-block;
+            margin-top:60px;
+            padding:0 12px;
+            vertical-align:top;
+            @if ( $col == img2 ) {
+                width:50%
+            } @else if ( $col == img3 ) {
+                width:calc(100% / 3);
+            } @else if ( $col == img4 ) {
+                width:25%;
+            }
+            .title p {
+                max-height:68px;
+                margin-top:24px;
+                color:#111;
+                font-size:24px;
+                line-height:34px;
+                font-weight:700;
+                @include textEllipsisClamp(2);
+            }
+            .body-copy {
+                margin-top:16px;
+                color:#616161;
+                font-size:16px;
+                line-height:24px;
+            }
+            .bottom-btn {
+                margin:0 -12px;
+                font-size:0;
+                span {
+                    display:inline-block;
+                    margin:0 12px;
+                    vertical-align:top;
+                }
+                &.btn-type-box {
+                    margin-top:28px;
+                    span {
+                        margin-top:12px;
+                    }
+                }
+                &.btn-type-text {
+                    margin-top:24px;
+                    span {
+                        margin-top:16px;
+                    }
+                }
+            }
+
+            @media screen and (max-width:991px) {
+                @if ( $col == img4 ) {
+                    width:50%;
+                }
+            }
+
+            @include mobile {
+                width:100%;
+                padding:0;
+            }
+        }
+    }
+}

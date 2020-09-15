@@ -30,6 +30,9 @@
     align-items:center;
     text-align:center;
 }
+.err-msg {
+    display:none;
+}
 
 .support {
     // @import "support/layout";
@@ -42,19 +45,21 @@
     background:#f4f4f4;
 
     .contents-inner {
-        width:100%;
-        max-width:1146px; // 1066
-        margin:0 auto;
-        padding:64px 40px 120px;
+        padding:64px 0 120px;
         @include mobile {
             padding:0;
         }
     }
 
     .section {
-        margin-top:48px;
+        max-width:1146px;
+        margin:48px auto 0;
+        padding:0 40px;
         &:first-child {
             margin-top:0;
+        }
+        @include mobile {
+            padding:0;
         }
         &-title {
             margin-bottom:16px;
@@ -86,14 +91,37 @@
         }
     }
 
-    //임시
-    .err-msg {
-        display:none;
-    }
-
     /* button */
     .btn {
+        &.btn-icon {
+            position:relative;
+            padding-left:52px;
+            padding-right:64px;
+            text-align:left;
+            background:url(/lg5-common/images/icons/icon-arrow-right-red.svg) no-repeat right 16px top 16px;
+            &:before {
+                content:'';
+                position:absolute;
+                left:16px;
+                top:16px;
+                width:24px;
+                height:24px;
+                background-repeat:no-repeat;
+                background-size:100%;
+            }
+            &.icon-solution:before {
+                background-image: url(/lg5-common/images/icons/icon-solution.svg);
+            }
+            &.icon-driver:before {
+                background-image: url(/lg5-common/images/icons/icon-driver.svg);
+            }
+            @include mobile {
+                padding-right:12px;
+                background:none;
+            }
+        }
         &[class*="type-icon"] {
+            width:100%;
             padding-left: 52px;
             padding-right: 64px;
             &[class$="-1"] {
@@ -146,39 +174,25 @@
         }
     }
 
+
     /* button area */
     .btn-group {
-        margin-top:40px;
+        max-width:1146px;
+        margin:40px auto 0;
+        padding:0 40px;
         &.right {
             text-align:right;
         }
         @include mobile {
             margin-top:0;
-            &.type-A {
-                .btn {
-                    width: 100%;
-                    border-radius: 0;
-                }
-            }
-        }
-    }
-
-    .file-box {
-        .file-input {
-            &.type-A {
-                label{
-                    color: #adadad;
-                    padding-left: 10px;
-                    background: url(/lg5-common/images/icons/icon-file-red.png) right 18px center no-repeat;
-                    background-size: 20px;
-                    &::after {
-                        content: '업로드';
-                        color: #ec455a;
-                        position: absolute;
-                        right: 44px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                    }
+            padding:0;
+            .btn {
+                width:100%;
+                border-radius:0;
+                &:first-child:nth-last-child(2), 
+                &:first-child:nth-last-child(2) ~ .btn {
+                    width:50%;
+                    margin:0;
                 }
             }
         }
@@ -228,7 +242,7 @@
         }
     }
 
-    /* pagination (_pagination.scss) */
+    /* pagination */
     .pagination {
         margin-top:24px;    
     }
@@ -403,147 +417,72 @@
         }
     }
 
-    .engineer {
-        &-profile {
+    .related-info {
+        color: #111;
+        .slide-content {
+            margin-left: -12px;
+            margin-right: -12px;
+        }
+        &-wrap {
+            background-color: #f4f4f4;
+            padding-top: 80px;
+            padding-bottom: 120px;
+        }
+        &-title {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        &-content {
+            max-width: 1284px;
+            margin: 0 auto;
+        }
+        &-figure {
             @include clearfix;
-            display: flex;
-            align-items: center;
+            margin: 0 12px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        &-img,
+        &-figcap {
+            float: left;
+            height: 128px;
         }
         &-img {
-            width: 140px;
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #000;
-            float: left;
+            width: 194px;
             img {
                 max-width: 100%;
             }
         }
-        &-desc {
-            float: left;
-            flex: 1;
-            font-size: 20px;
-            line-height: 1.5;
-            text-align: center;
-            max-width: 710px;
-            margin-left: 80px;
-            height: 100%;
-        }
-        &-btn-group {
-            margin-top: 28px;
+        &-figcap {
+            width: calc(100% - 194px);
+            padding: 44px 24px;
+            font-size: 14px;
+            line-height: 1.43;
+            background-color: #fff;
+            a {
+                @include textEllipsisClamp(2)
+            }
         }
         @include mobile {
-            &-img {
-                width: 90px;
-                height: 90px;
+            .slide-content {
+                margin-left: 12px;
+                margin-right: 0;
             }
-            &-desc {
-                margin-left: 20px;
-                font-size: 14px;
-                text-align: left;
-                flex: 1;
+            &-figure {
+                width: 200px;
+                margin-left: 8px;
+                margin-right: 0;
             }
-            &-btn-group {
-                margin-top: 16px;
+            &-img,
+            &-figcap {
+                float: none;
+                height: auto;
+                width: 100%;
             }
-        }
-    }
-    .solution-btn-box {
-        margin-top: 32px;
-    }
-
-    .reservation-title {
-        text-align: center;
-        &::before {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 24px;
-            background-color: #000;
-        }
-        h3 {
-            font-size: 24px;
-            font-weight: normal;
-            line-height: 1.42;
-        }
-        p {
-            font-size: 16px;
-            line-height: 1.38;
-            margin-top: 16px;
-        }
-        [class^="btn"] {
-            margin-top: 30px;
-        }
-        @include mobile {
-            &::before {
-                width: 60px;
-                height: 60px;
-            }
-            h3 {
-                font-size: 18px;
-            }
-            p {
-                font-size: 14px;
-            }
-        }
-    }
-
-    .inquiry {
-        &-content {
-            .btn-group {
-                padding:48px 0 0;
-                text-align:right;
-                @include mobile {
-                    padding:56px 24px 0;
-                }
-            }
-        }
-        &-item {
-            @include globalBackground;
-            & + .inquiry-item {
-                margin-top:24px;
-            }
-            @include mobile {
-                padding:40px 24px;
-                border-radius:0;
-                & + .inquiry-item {
-                    margin-top:12px;
-                }
-            }
-        }
-        &-title {
-            margin-bottom:32px;
-            .tit {
-                color:#111;
-                font-size:16px;
-                font-weight:700;
-            }
-            @include mobile {
-                margin-bottom:28px;
-                .tit {  
-                    color:#212121;
-                    font-size:16px;
-                    line-height:28px;
-                }
-            }
-        }
-    }
-
-    .input-wrap {
-        &.search {
-            position:relative;
-            input {
-                padding-left:64px;
-            }
-            button {
-                position:absolute;
-                left:24px;
-                top:16px;
-                width:24px;
-                height:24px;
+            &-figcap {
+                padding: 40px 16px;
             }
         }
     }
@@ -556,17 +495,6 @@
     }
     .color-3 {
         color: #ec455a;
-    }
-
-    .field-title {
-        @include clearfix;
-
-        .tit {
-            float: left;
-        }
-        .chk-wrap {
-            float: right;
-        }
     }
     .pc-only {
         display: block;

@@ -1,49 +1,65 @@
-/*
-vcui.require.config({
-    paths: {
-        'jquery.transit': 'libs/jquery.transit'
-    },
-    waitSeconds: 15,
-    onNodeCreated: function (node) {
-        node.charset = 'euc-kr';
-    }
-});
-*/
-$.fn.buildCommonUI = function () {
-    vcui.require([        
-                        'ui/selectbox',
-                        'ui/calendar',
-                        'ui/accordion',
-                        'ui/carousel',
-                        'ui/modal',
-                        'ui/tab',       
-                        'ui/lazyLoader',
-                        "ui/videoBox",
-                        "ui/youtubeBox",
-                        "ui/imageSwitch",
-                        "ui/dropdown"
-    ], function () {    
-        console.log("buildCommonUI!!!!");
-        
-        this.vcImageSwitch();
-        this.vcLazyLoader();
-
-        this.find('.ui_calendar').vcCalendar();
-        this.find('.ui_accordion').vcAccordion();        
-        this.find('.ui_selectbox').vcSelectbox();
-        this.find('.ui_dropdown').vcDropdown();
-        this.find('.ui_tab').vcTab();
-        this.find('.ui_carousel').vcCarousel();
-        this.find('.animation-box').vcVideoBox();
-        this.find('.youtube-box').vcYoutubeBox();
-    }.bind(this));
-    return this;
-};
-
 ;(function(global){
 
     if(global['lgkorUI']) return;
     console.log("lgkorUI start!!!");
+
+    $.fn.buildCommonUI = function () {
+        vcui.require([        
+                            'ui/selectbox',
+                            'ui/calendar',
+                            'ui/accordion',
+                            'ui/carousel',
+                            'ui/modal',
+                            'ui/tab',       
+                            'ui/lazyLoader',
+                            "ui/videoBox",
+                            "ui/youtubeBox",
+                            "ui/imageSwitch",
+                            "ui/dropdown"
+        ], function () {    
+            console.log("buildCommonUI!!!!");
+            
+            this.vcImageSwitch();
+            this.vcLazyLoader();
+    
+            this.find('.ui_calendar').vcCalendar();
+            this.find('.ui_accordion').vcAccordion();        
+            this.find('.ui_selectbox').vcSelectbox();
+            this.find('.ui_dropdown').vcDropdown();
+            this.find('.ui_tab').vcTab();
+            this.find('.ui_carousel').vcCarousel();
+            this.find('.animation-box').vcVideoBox();
+            this.find('.youtube-box').vcYoutubeBox();
+        }.bind(this));
+        return this;
+    };
+
+    /* 
+    vcui.require.config({
+        paths: {
+            'jquery.transit': 'libs/jquery.transit'
+        },
+        waitSeconds: 15,
+        onNodeCreated: function (node) {
+            node.charset = 'euc-kr';
+        }
+    });
+
+    // ajax 로 통신할때는 기본 케릭터셑이 utf-8 로 되어있음.
+    // 따라서, euc-kr 로 설정된 서버에서 ajax 를 이용하여 한글로된 데이터를 전달하게 되면 글씨가 깨짐.
+    // 이때는 아래와 같이 캐릭터셑을 euc-kr 로 설정해 주면 해결이 됩니다
+
+    var pathname = location.pathname;
+    if (pathname.indexOf('/html/') > -1) {
+        console.log(pathname);
+        $.ajaxSetup({
+            contentType: 'application/x-www-form-urlencoded;charset=euc-kr',
+            beforeSend: function (xhr) {
+                xhr.overrideMimeType('application/x-www-form-urlencoded;charset=euc-kr');
+            }
+        });
+    } 
+    */
     
     $.holdReady(true);
     

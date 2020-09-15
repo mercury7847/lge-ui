@@ -100,6 +100,7 @@
             margin-top:0;
         }
         .tooltip-tit {
+            position:relative;
             font-size:0;
         }
         .tit-txt {
@@ -107,6 +108,9 @@
             font-size:14px;
             line-height:20px;
             vertical-align:top;
+            @include mobile {
+                line-height:18px;
+            }
         }
         .btn-receipt {
             float:right;
@@ -122,6 +126,10 @@
         }
         .tooltip-wrap {
             margin-left:4px;
+            vertical-align:top;
+            @include mobile {
+                margin-top:1px;
+            }
             .img_barcode {
                 max-width:214px;
                 margin-bottom:10px;
@@ -235,6 +243,7 @@
                 border-left:none;
             }
             dl {
+                position:relative;
                 text-align:center;
                 @include mobile {
                     text-align:left;
@@ -258,7 +267,7 @@
                     .tooltip-wrap {
                         margin-left:5px;
                         @include mobile {
-                            margin-top:2px;
+                            margin-top:1px;
                         }
                     }
                 }
