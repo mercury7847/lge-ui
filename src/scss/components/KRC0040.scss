@@ -13,7 +13,7 @@ $block: (block1, block2, block3);
     }
     .KRC0040.#{$i} {
         max-width:(1284px + 60px);
-        margin:0 auto;
+        margin:-60px auto 0;
         padding:0 18px;
         @include mobile {
             padding:0 24px;
@@ -22,6 +22,7 @@ $block: (block1, block2, block3);
             font-size:0;
             .unit-box {
                 display:inline-block;
+                margin-top:60px;
                 padding:0 12px;
                 vertical-align:top;
                 @if ( $i == block1 ) {
@@ -79,10 +80,10 @@ $block: (block1, block2, block3);
             }
             .visual-box {
                 position:relative;
-                margin-top:40px;
                 .cta-box {
                     position:absolute;
-                    left:12px;
+                    left:24px;
+                    right:24px;
                     bottom:24px;
                     z-index:10;
                 }
@@ -127,6 +128,17 @@ $block: (block1, block2, block3);
                         margin-right:-20px;
                     }
                 }
+            }
+        }
+
+        &.align-top {
+            .visual-box {
+                margin-top:40px;
+            }
+        }
+        &.align-bottom {
+            .visual-box {
+                margin-bottom:40px;
             }
         }
     }

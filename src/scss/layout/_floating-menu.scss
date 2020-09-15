@@ -4,9 +4,13 @@
 	transition:opacity 0.8s ease-out, transform 0.5s ease-out;
 	z-index:100;
 	&.call-yet {
-		// opacity:0;
-		// z-index:-100;
-		// transform: translateX(171px);
+		opacity:0;
+		z-index:-100;
+        transform: translateX(171px);
+        
+        @include mobile {
+            transform: translateX(77.5px);
+        }
 	}
 	&.top {
         right:100px;
@@ -41,19 +45,28 @@
 			cursor:pointer;
 		}
 	}
-	&.chat {right:100px;bottom:(112px+72px+12px)}
+	&.chat {
+        right:100px;
+        bottom:(112px+72px+12px);
+
+        @include mobile {
+            right:24px;
+            bottom:(56px+54px+9px);
+        }
+    }
 	.chatbot-linker {
 		width:71px;
         height:72px;
 		background:url('/lg5-common/images/icons/icon-chatbot.svg') no-repeat;
 		background-size:71px 72px;
-		border-radius:50%;
+		border-radius:25px;
         box-shadow: 7px 7px 18px 0 rgba(0, 0, 0, 0.12);
 
         @include mobile {
             width:53.5px;
             height:54px;
             background-size:53.5px 54px;
+            border-radius:18.75px;
             box-shadow: 11px 11px 27px 0 rgba(0, 0, 0, 0.12);
         }
 
@@ -65,19 +78,4 @@
         }
 	}
 
-	@include mobile {
-		&.call-yet {
-			transform:translateX(98px);
-		}
-		&.top{
-			// right:13px;
-			bottom:15px;
-			transform:translateX(7px);
-		}
-		&.chat {
-			// right:13px;
-			bottom:(15px+45px+15px);
-			transform:translateX(7px);
-		}
-	}
 }

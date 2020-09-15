@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('../include/head_wsg.html', {
+        "title": "rangeslider 가이드"
+    })
+<body>
+<div id="wrap" class="coding_guide">
+    
+<h1 class="h1_guide">rangeslider 정의</h1>
+
+<!-- 주의사항 -->
+<dl class="notice">
+    <dt><strong class="t_modify">주의사항</strong></dt>
+    <dd>
+        <ol>
+            <li></li>
+        </ol>
+    </dd>
+</dl>
+<!-- //주의사항 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">1. 싱글 슬라이더</h2>
+<div class="guide_wrap">
+    <div class="ui_slider" data-input="50" data-range="0,199" aria-labelledby="singleSlider"></div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="ui_slider" data-input="50" data-range="0,199" aria-labelledby="singleSlider"></div>
+<!-- // DOM -->  
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2. 멀티 슬라이더 type1</h2>
+<div class="guide_wrap">
+    <div class="ui_slider" data-input="2000,3000" data-range="999,9999" data-min-label="minLabel" data-max-label="maxLabel"></div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="ui_slider" data-input="2000,3000" data-range="999,9999" data-min-label="minLabel" data-max-label="maxLabel"></div>
+<!-- // DOM -->  
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2. 멀티 슬라이더 type2</h2>
+<div class="guide_wrap">
+    <div class="ui_slider" data-input="50,60" data-range="0,100" data-values='[{"value":"0","title":"0"},{"value":"25","title":"25"},{"value":"50","title":"50"},{"value":"75","title":"75"},{"value":"100","title":"100"}]'></div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="ui_slider" data-input="50,60" data-range="0,100" data-values='[{"value":"0","title":"0"},{"value":"25","title":"25"},{"value":"50","title":"50"},{"value":"75","title":"75"},{"value":"100","title":"100"}]'></div>
+<!-- // DOM -->  
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2. 멀티 슬라이더 type3</h2>
+<div class="guide_wrap">
+    <div class="ui_slider" data-input="#startInput,#endInput" data-range="0,100">
+        <input type="hidden" id="startInput" value="0">
+        <input type="hidden" id="endInput" value="60">
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="ui_slider" data-input="#startInput,#endInput" data-range="0,100">
+    <input type="hidden" id="startInput" value="0">
+    <input type="hidden" id="endInput" value="60">
+</div>
+<!-- // DOM -->  
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+</div> 
+@@include('../include/loadscript_wsg.html')
+<script type='text/javascript'>
+    $(function () {
+        vcui.require(['ui/rangeSlider'], function () {
+
+            $('.ui_slider').vcRangeSlider({priceUnit:'$', roundUnit:10}).on('rangesliderchanged', function (e, data) {
+                console.log(data);
+            });
+        });
+
+    });
+</script>
+</body>
+</html> 
