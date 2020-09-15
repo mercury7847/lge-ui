@@ -34,14 +34,21 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _setting: function(){
             var self = this;
 
+            self.$mypage = self.$el.find('.header-top .shortcut .mypage');
+
             self.$naviWrapper = self.$el.find(".header-bottom");
+            self.$navItems = self.$el.find('.nav-wrap .nav > li');
+            
+
+
+
             self.$prodWrapper = self.$naviWrapper.find('.nav-category-product');
             self.$product = self.$prodWrapper.find('.nav-item');
             self.$categoryWrapper = self.$prodWrapper.find('.nav-category-container');
             self.$category = self.$categoryWrapper.find('> ul');
             self.$categoryItems = self.$category.children();
 
-            self.$menuOpener = self.$el.find('.mobile-nav-button');
+            self.$hamburger = self.$el.find('.mobile-nav-button');
 
             self.prodWidth = self.$categoryWrapper.width();
         },
@@ -49,49 +56,29 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _resize: function(){
             var self = this;
             var winwidth = $(window).outerWidth(true);
-            if(winwidth > 1130){
-                self._menuToggleDisabled();
+            if(winwidth > 767){
                 self.gnbMode = "pc";
+
+                self._hamburgerDisabled();
+                self._addGnbEvents();
             } else{
-                self._gnbInit();
                 self.gnbMode = "m"; 
+
+                self._gnbInit();
+                self._removeGnbEvents();
             }
         },
 
         _bindEvents: function(){
             var self = this;
 
-            self.$el.on('mouseover', function(){
-                if(self.isHover){
-                    self._setOver();
-                }
-            }).on('mouseout', function(){
-                if(self.isHover){
-                    self._setOutTimer();
-                }
+            self.$mypage.find('> a').on('click', function(e){
+                e.preventDefault();
+
+                self._mypageToggle(e.target);
             });
 
-            self.$prodWrapper.on('mouseover', function(){
-                self._setOver();
-            });
-
-            self.$product.on('click', function(e){
-                if(self.gnbMode == "m"){
-                    e.preventDefault();
-
-                    self._setProductActiveToggle(!self.$product.hasClass('active'));
-                }
-            });
-
-            self.$categoryItems.each(function(idx, item){
-                $(item).on('mouseover', function(){
-                    if(!self.isCategoryHover) self._setCategoryOver(idx);
-                }).on('mouseout', function(){
-                    if(self.isCategoryHover) self._setCategoryOut(idx);
-                });
-            });
-
-            self.$menuOpener.on('click', function(e){
+            self.$hamburger.on('click', function(e){
                 e.preventDefault();
 
                 self._menuToggle();
@@ -102,39 +89,104 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             });
         },
 
+        _addGnbEvents: function(){
+            var self = this;
+
+            self.$navItems.each(function(idx, item){
+                var itemHeight = $(item).outerHeight(true);
+                var wid = 0;
+                
+                /******************************/
+                $(item).find('> .nav-category-container').css('display', 'inline-block');
+                $(item).find('> .nav-category-container > ul > li').each(function(cdx, child){
+                    var pos = wid;
+                    var childwidth = $(child).outerWidth(true);
+                    wid += childwidth;
+                    $(child).css({
+                        //position: 'relative',
+                        //left: pos
+                    });                    
+                });
+                $(item).find('> .nav-category-container').css({
+                    position: 'relative',
+                    overflow: 'hidden',
+                    'vertical-align': 'top',
+                    width: 0,
+                    display: 'none'
+                    
+                    //height: itemHeight
+                });
+                $(item).find('> .nav-category-container > ul').css({
+                    position: 'relative',
+                    'vertical-align': 'top',
+                    width: '100%'
+                });
+                $(item).find('> a').css('vertical-align', 'top');
+
+                $(item).css({'vertical-align':  'top'});
+
+                $(item).data('subwidth', wid);
+                $(item).on('mouseover', function(e){
+                    self._setOver(this);
+                }).on('mouseout', function(e){    
+                    self._setOutTimer(this);
+                });
+            });
+        },
+
+        _removeGnbEvents: function(){
+            var self = this;
+
+            self.$navItems.off('mouseover mouseout');
+        },
+
+        _mypageToggle: function(target){
+            var self = this;
+
+            var mypageLayer = self.$mypage.find('.mypage-layer');
+            mypageLayer.toggle();
+            
+            if(mypageLayer.css('display') === 'block'){
+                $(window).on('click.headerMypage scroll.headerMypage', function(e){
+                    if(e.target !== target) {
+                        console.log(e.target + " / " + target);
+                        self._mypageToggle();
+                    }
+                })
+            } else{
+                $(window).off('click.headerMypage scroll.headerMypage');
+            }
+        },
+
         _menuToggle: function(){
             var self = this,
             active, replaceText;
 
-            replaceText = self.$menuOpener.find('.blind');
-            active = self.$menuOpener.hasClass('active');
+            replaceText = self.$hamburger.find('.blind');
+            active = self.$hamburger.hasClass('active');
 
             if(active){
-                self.$menuOpener.removeClass('active');
+                self.$hamburger.removeClass('active');
                 replaceText.text("메뉴 열기");
 
                 if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
             } else{
-                self.$menuOpener.addClass('active');
+                self.$hamburger.addClass('active');
                 replaceText.text("메뉴 닫기");
 
                 if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
             }
         },
 
-        _menuToggleDisabled: function(){
+        _hamburgerDisabled: function(){
             var self = this;
 
-            var replaceText = self.$menuOpener.find('.blind');
+            var replaceText = self.$hamburger.find('.blind');
             replaceText.text("메뉴 열기");
 
-            self.$menuOpener.removeClass('active');
+            self.$hamburger.removeClass('active');
 
             if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
-        },
-
-        _menuToggleTansition: function(){
-
         },
 
         _gnbInit: function(){
@@ -191,27 +243,23 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             }
         },
 
-        _setOver: function(){
-            var self = this,
-            navItem;
-
-            if(self.gnbMode == "pc"){
-                self._removeOutTimer();
-    
-                self.isHover = true;
-    
-                self._setProductActiveToggle(true);
-            }
-        },
-
-        _setOutTimer: function(){
+        _setOver: function(item){
             var self = this;
 
-            if(self.gnbMode == "pc"){
-                self.outTimer = setTimeout(function(){
-                    self._setOut();
-                }, 128);
-            }
+            var subwidth = $(item).data('subwidth');
+
+            $(item).find('> a').addClass('active');
+    
+            $(item).find('> .nav-category-container').stop().css('display', 'inline-block').animate({width:subwidth}, 200);
+        },
+
+        _setOutTimer: function(item){
+            var self = this;
+
+            $(item).find('> .nav-category-container').stop().animate({width:0}, 150, function(){
+                $(item).find('> a').removeClass('active');
+                $(item).find('> .nav-category-container').css('display', 'none');
+            });
         },
 
         _removeOutTimer: function(){
