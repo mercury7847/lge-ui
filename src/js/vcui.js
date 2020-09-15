@@ -2,14 +2,17 @@
  * VinylC Core Library 
  * description VinylC Core Library 
  * author VinylC UID Group 
- * version 1.1
- * date : 2020.07.23
+ * version 1.1.1
+ * date : 2020.09.10
+ * 1.1.1  
+ * $('...').tabs('option', {startIndex : 2}); 옵션추가시 오프젝트도 받을수 있도록 수정.
+ * vcui.date.equalsYMD each => core.each 오류수정 * 
  */
 
- if(window.vcuirequire === undefined){
-     
+
 var vinylcMessageStyle="font-size:18px; font-weight:200; letter-spacing:0.2em; line-height:1.4em; font-family:helvetica,arial; color:rgba(0,0,25,0.5);";
-console.log("%cVINYLC UI Library 1.1",vinylcMessageStyle);
+var vcuiVersion = '1.1.1';
+console.log("%cVINYLC UI Library "+vcuiVersion, vinylcMessageStyle);
 
 
 if (!window.console) {
@@ -131,6 +134,7 @@ if (!window.JSON) {
         })()
     };
 }
+
 ;(function () {
     if (typeof vcuirequire !== 'undefined') {
         return;
@@ -145,7 +149,7 @@ if (!window.JSON) {
     //problems with requirejs.exec()/transpiler plugins that may not be strict.
     /*jslint regexp: true, nomen: true, sloppy: true */
     /*global window, navigator, document, importScripts, setTimeout, opera */
-console.log("vcui load!!!")
+
     var requirejs, require, define;
     (function (global, setTimeout) {
         var req, s, head, baseElement, dataMain, src,
@@ -1390,11 +1394,8 @@ console.log("vcui load!!!")
                 while (defQueue.length) {
                     args = defQueue.shift();
                     if (args[0] === null) {
-                        /*
                         return onError(makeError('mismatch', 'Mismatched anonymous define() module: ' +
                             args[args.length - 1]));
-                            */
-                        console.log(args)
                     } else {
                         //args are id, deps, factory. Should be normalized by the
                         //define() function.
@@ -2202,6 +2203,7 @@ console.log("vcui load!!!")
          */
         define = function (name, deps, callback) {
             var node, context;
+
             //Allow for anonymous modules
             if (typeof name !== 'string') {
                 //Adjust args appropriately
@@ -2320,6 +2322,7 @@ console.log("vcui load!!!")
         throw new Error("This library requires jQuery");
     }
 
+
     var _configs = typeof vcuiConfigs === 'undefined' ? {} : vcuiConfigs;
 
     window.LIB_NAME = _configs.name || 'vcui';
@@ -2330,6 +2333,9 @@ console.log("vcui load!!!")
     if (global[LIB_NAME]) {
         return;
     }
+
+    
+
 
     /**
      * @namespace
@@ -2367,8 +2373,10 @@ console.log("vcui load!!!")
 
     vcuirequire.config(requireConfig);
     core.require = vcuirequire;
+    core.requirejs = vcuirequirejs;
     core.define = vcuidefine;
-    core.define('jquery', function () {
+
+    core.define('jquery', function () {        
         return window.$;
     });
     core.define('vcui', function () {
@@ -2633,7 +2641,7 @@ console.log("vcui load!!!")
 
     extend(core, {
         name: LIB_NAME,             // 프렘웍 이름
-        version: '0.0.7',           // 버전
+        version: vcuiVersion,       // 버전
         debug: false,               // 디버깅 여부
         noop: function () {
         },
@@ -4686,7 +4694,7 @@ console.log("vcui load!!!")
                 if (!b.getDate) {
                     b = this.parse(b);
                 }
-                each(['getFullYear', 'getMonth', 'getDate'], function (fn) {
+                core.each(['getFullYear', 'getMonth', 'getDate'], function (fn) {
                     ret = ret && (a[fn]() === b[fn]());
                     if (!ret) {
                         return false;
@@ -5464,7 +5472,7 @@ console.log("vcui load!!!")
          * alert(vcui.uri.getHost());
          */
         getHost: function () {
-            var loc = doc.location;
+            var loc = document.location;
             return loc.protocol + '//' + loc.host;
         },
         /**
@@ -5474,7 +5482,7 @@ console.log("vcui load!!!")
          * alert(vcui.uri.getPageUrl());
          */
         getPageUrl: function () {
-            var loc = doc.location;
+            var loc = document.location;
             return loc.protocol + '//' + loc.host + loc.pathname;
         },
 
@@ -5863,6 +5871,7 @@ console.log("vcui load!!!")
 
 
 ;(function (core, global, undefined) {
+
     /**
      * 루트클래스로서, vcui.BaseClass나 vcui.Class를 이용해서 클래스를 구현할 경우 vcui.BaseClass를 상속받게 된다.
      * @class
@@ -7790,6 +7799,8 @@ console.log("vcui load!!!")
     var $doc = $(doc);
     var $win = $(global);
 
+    
+
 // obj가 객체가 아닌 함수형일 때 함수를 실행한 값을 반환
     var execObject = function (obj, ctx) {
         return core.type(obj, 'function') ? obj.call(ctx) : obj;
@@ -8127,11 +8138,17 @@ console.log("vcui load!!!")
          * @return {*}
          * @example
          * $('...').tabs('option', 'startIndex', 2); // set
+         * $('...').tabs('option', {startIndex : 2}); // set object
          * $('...').tabs('option', 'startIndex'); // get // 2
          */
         option: function (name, value) {
             if (arguments.length === 1) {
-                return this.getOption(name);
+                if(vcui.isObject(name)){
+                    this.options = vcui.extend(this.options, name);
+                    this.triggerHandler('optionchange', name);
+                }else{
+                    return this.getOption(name);
+                }                
             } else {
                 this.setOption(name, value);
             }
@@ -8761,8 +8778,6 @@ console.log("vcui load!!!")
     core.i18n.locale(navigator.language || navigator.userLanguage || 'ko');
 })(jQuery, window[LIB_NAME]);
 
-
-
 /**
  * jQuery 확장
  */
@@ -9101,5 +9116,3 @@ console.log("vcui load!!!")
 
 
 })(jQuery, window[LIB_NAME]);
-
- }

@@ -60,45 +60,45 @@
     }
 }
 
-// input common
-input, textarea {
-    display:inline-block;
-    width:100%;
-    border:1px solid #ddd;
-    border-radius:8px;
-    color:#111;
-    font-size:16px;
-    line-height:24px;
-    vertical-align:top;
-    resize:none;
-
-    &::-webkit-input-placeholder,
-    &::-moz-placeholder,
-    &:-ms-input-placeholder,
-    &::placeholder {
-        color:#616161;
-    }
-
-    &:disabled, &:read-only {
-        background:#f4f4f4;
-        border-color:transparent;
-        color:#ccc;
-    }
-
-    &:focus {
-        border-color:#111;
-        outline:none;
-    }
-
-    // @include mobile {
-    //     border-radius:4px;
-    // }
-}
-
 // input text, textarea
 .input-wrap {
     display:inline-block;
     vertical-align:top;
+
+    // input common
+    input, textarea {
+        display:inline-block;
+        width:100%;
+        border:1px solid #ddd;
+        border-radius:8px;
+        color:#111;
+        font-size:16px;
+        line-height:24px;
+        vertical-align:top;
+        resize:none;
+
+        &::-webkit-input-placeholder,
+        &::-moz-placeholder,
+        &:-ms-input-placeholder,
+        &::placeholder {
+            color:#616161;
+        }
+
+        &:disabled, &:read-only {
+            background:#f4f4f4;
+            border-color:transparent;
+            color:#ccc;
+        }
+
+        &:focus {
+            border-color:#111;
+            outline:none;
+        }
+
+        // @include mobile {
+        //     border-radius:4px;
+        // }
+    }
 
     input {
         padding:15px 24px;
@@ -154,10 +154,12 @@ input, textarea {
     }
     &.count {
         .total {
-            color:#aaa;
+            display:block;
+            margin-top:4px;
+            color:#616161;
             font-size:14px;
-            line-height:24px;
-            vertical-align:bottom;
+            line-height:20px;
+            text-align:right;
             em {
                 color:inherit;
                 font-size:inherit;
@@ -165,7 +167,7 @@ input, textarea {
             }
         }
         textarea {
-            height:288px;
+            height:160px;
         }
 
         // @include mobile {
@@ -674,3 +676,18 @@ input, textarea {
         }
     }
 }
+
+
+
+
+/*RangeSlider */
+
+.ui-range-slider {position: relative; text-align: left; height: 30px; width: 100%; margin: 20px 0px;}
+.ui-range-slider .hide {display:inline-block;position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;opacity:0 !important;filter:alpha(opacity=0);-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(opacity=0)';font-size:medium;line-height:normal;word-break:break-all;}
+
+.ui-range-slider .ui-range-slider-bg {position: absolute; background-color: #97a0a7; height: 4px;}
+.ui-range-slider .ui-range-slider-range { position: absolute; background-color: #0283de; height: 4px;}
+.ui-range-slider .ui-range-slider-handler {position: absolute; height: 26px; width: 26px; background:url('../images/img_main_process_product.png') 0 0 no-repeat;}
+.ui-range-slider .ui-range-slider-value{margin:0; padding:0; top:7px;}
+.ui-range-slider .ui-range-slider-value li{list-style-type: none; cursor: pointer; height: 16px; width: 16px; margin:0;	padding:0; background:url('../images/img_main_process_product.png') 0 -50px no-repeat;}
+

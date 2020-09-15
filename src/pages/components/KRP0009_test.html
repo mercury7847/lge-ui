@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    componentID: "KRP0009",
+    isJScompile: true
+})
+
+
+<style type="text/css">
+    html,body {margin: 0; padding: 0; }
+
+    img{
+        width:100%;
+    }
+
+    .box{
+
+        position :relative;
+        width: 300px;
+        height: 300px;
+        top : 0px;
+        left : 0px;
+        background-color: red;
+
+    }
+
+    input {
+        -webkit-appearance: auto;
+        appearance: auto;
+    }
+
+    #wrap{
+        position: relative;
+        height: 500px;
+        overflow: auto;
+        border : 1px solid red;
+    }
+
+    .filter_box{
+        width: 50%;
+        margin : 10px;
+        padding : 10px;
+    }
+    .apply_filters {
+        margin : 10px;
+        padding : 10px;
+    }
+
+
+</style>
+
+<body>
+    <div class="wrap">
+        <div class="container">
+            <div class="KRP0009">		
+
+                <div class="filter_box">
+                    <select data-id="sortBy" class="ui_filter_selectbox" data-title="Sort">
+                        <option>Sort By</option>
+                        <option value="1">LG Picks</option>
+                        <option value="2">Newest</option>
+                        <option value="3">Most Popular</option>
+                        <option value="4">Price: Lowest to Highest</option>
+                        <option value="5">Consumer Rating</option>
+                    </select>
+        
+                    <button id='clearFilterBtn'>clear filter</button>
+                </div>	
+                
+                <div class="filter_box">
+                    <div id="productPrice">가격</div>
+                    <div class="ui_price_slider" data-id="price" data-range="100000,10000000" data-round-unit="100000" data-unit-label="원" data-id="price" data-min-label="price range minimum" data-max-label="price range maximum"></div>
+                </div>
+        
+                <div class="filter_box">
+                    <div id="productSize">스크린 사이즈</div>
+                    <div class="ui_size_slider" data-id="size" data-range="0,200" data-round-unit="1" data-unit-label="cm" data-min-label="size range minimum" data-max-label="size range maximum"></div>
+                </div>
+        
+                <div class="filter_box">
+                    <div id="c1">색상</div>
+                    <label><input id="color0" type="checkbox" name="color" value="blue"> Blue</label>
+                    <label><input id="color1" type="checkbox" name="color" value="red"> Red</label>			
+                    <label><input id="color2" type="checkbox" name="color" value="yellow"> Yellow</label>			
+                </div>
+        
+                <div class="filter_box">
+                    <div id="c1">타입</div>
+                    <label><input id="type0" type="checkbox" name="type" value="c1"> LG SIGNATURE</label>
+                    <label><input id="type1" type="checkbox" name="type" value="c2"> OLED TVs</label>			
+                    <label><input id="type2" type="checkbox" name="type" value="c3"> NanoCell TVs</label>			
+                </div>
+                    
+        
+                <div class="apply_filters">
+                </div>
+                
+                
+            </div>
+		</div>
+    </div>      
+</body>
+</html>
