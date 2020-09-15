@@ -189,7 +189,7 @@ $(function () {
                     type : "POST",
                     url : ajaxUrl,
                     dataType : "json",
-                    data:{id:"테스트"}
+                    data : {id:"테스트"}
 
                 }).done(function(result) {
 
