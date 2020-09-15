@@ -154,10 +154,12 @@
     }
     &.count {
         .total {
-            color:#aaa;
+            display:block;
+            margin-top:4px;
+            color:#616161;
             font-size:14px;
-            line-height:24px;
-            vertical-align:bottom;
+            line-height:20px;
+            text-align:right;
             em {
                 color:inherit;
                 font-size:inherit;
@@ -165,7 +167,7 @@
             }
         }
         textarea {
-            height:288px;
+            height:160px;
         }
 
         // @include mobile {

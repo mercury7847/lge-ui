@@ -188,14 +188,14 @@
 					<td></td>
 					<td>문자상담 문의</td>
 					<td>신청</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/KR50CS321.html</td>
 				</tr>
 				<tr>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>완료</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/KR50CS322.html</td>
 				</tr>
 				<tr>
 					<td></td>
@@ -636,7 +636,9 @@ $('table tbody tr td').each(function() {
 				//}
 				//console.log(localeArr !== null);
 				for(var i=0; i<linkArr.length; i++){
-					htmlStr += '<a href="'+$.trim(linkArr[i])+'" target="_blank">'+ (localeArr !== null ? localeArr[i].toString() : 'view')+'</a>';
+					var test = linkArr[i].split("/");
+					var test1 = test[test.length - 1].split('.')[0];
+					htmlStr += '<a href="'+$.trim(linkArr[i])+'" target="_blank">'+ (localeArr !== null ? localeArr[i].toString() : test1)+'</a>';
 				}
 				obj.html(htmlStr);
 			}
