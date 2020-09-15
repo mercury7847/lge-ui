@@ -43,6 +43,7 @@
             .cell {
                 vertical-align:top;
                 border:none;
+                padding: 15px 24px 15px 0;
             }
             .btn-search {
                 width:24px;
@@ -99,6 +100,11 @@
             margin-bottom:0;
             padding:40px 20px 20px;
         }
+    }
+    .notice-wrap {
+        max-width: 1066px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 

@@ -68,6 +68,7 @@
         templateList: null,
         init: function(){
             this._preloadComponents();
+            this._addTopButtonCtrl();
         },
     
         // 주요 컴포넌트를 미리 로드
@@ -168,6 +169,24 @@
                 ///////////////////////////////////////////////////////////////////////
             });
         },
+
+        //top 버튼 컨틀롤...
+        _addTopButtonCtrl: function(){
+            $(window).scroll(function(){
+                if ($(this).scrollTop() > 100) {
+                    $('.floating-menu.top').removeClass('call-yet');
+                } else {
+                    $('.floating-menu.top').addClass('call-yet');
+                }
+            });
+            
+            $('.back-to-top button').on('click', function (e) {
+                e.preventDefault();
+                $('html, body').stop().animate({
+                    scrollTop: 0
+                }, 400);
+            });
+        },
     
         //template html 리스트 파일 로드...
         loadTemplateList: function(tmplID, callback){
@@ -210,7 +229,7 @@
                     });
                 }
             }
-        }
+        },
     }
     
     document.addEventListener('DOMContentLoaded', function () {
