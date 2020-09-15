@@ -441,6 +441,8 @@
         &-figure {
             @include clearfix;
             margin: 0 12px;
+            border-radius: 4px;
+            overflow: hidden;
         }
         &-img,
         &-figcap {
