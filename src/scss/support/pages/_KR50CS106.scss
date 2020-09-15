@@ -4,6 +4,20 @@
     .contents-inner {
         min-height: calc(100vh - 308px);
     }
+    .inquiry-title {
+        .tit {
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+    }
+    .btn-group {
+        .btn {
+            border-radius: 4px;
+        }
+    }
+    .section {
+        padding-bottom: 56px;
+    }
     .section-content {
         text-align: center;
     }

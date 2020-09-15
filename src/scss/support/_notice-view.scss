@@ -7,15 +7,16 @@
         .head {
             &-category {
                 font-size:0;
+                margin-bottom: 8px;
                 @include textEllipsis;
                 .tag {
-                    display: inline-block;
-                    padding: 6px 8px;
-                    font-size: 12px;
-                    line-height: 1;
-                    color: #111111;
-                    border-radius: 4px;
-                    background-color: #f1f3f7;
+                    display:inline-block;
+                    padding:5px 8px;
+                    font-size:12px;
+                    line-height:1;
+                    color:#ec455a;
+                    border:1px solid #ec455a;
+                    border-radius:4px;
                 }
                 span:not(.tag) {
                     display:inline-block;
@@ -35,13 +36,13 @@
                 }
             }
             &-title {
-                font-size: 28px;
+                font-size: 20px;
                 font-weight: bold;
                 line-height: 1.29;
                 color: #111111;
             }
             &-info {
-                margin-top:8px;
+                margin-top:12px;
                 font-size:0;
                 .info {
                     display:inline-block;
@@ -84,14 +85,14 @@
         @include mobile {
             .head {
                 &-category {
-                    margin-bottom: 4px;
+                    margin-bottom: 16px;
                 }
                 &-title {
                     font-size: 24px;
                     line-height: 1.5;
                 }
                 &-info {
-                    margin-top:14px;
+                    margin-top:4px;
                     .info-label {
                         margin-right:12px;
                     }
@@ -100,19 +101,25 @@
         }
     }
     &-body {
-        margin-top: 56px;
+        margin-top: 32px;
         font-size: 16px;
         color: #111;
         line-height: 1.75;
         .sns-box {
-            margin-top: 80px;
+            margin-top: 48px;
+        }
+        .view-content {
+            color: #515151;
         }
         @include mobile {
-            margin-top: 32px;
+            margin-top: 40px;
             .sns-box {
-                margin-top: 32px;
+                margin-top: 40px;
             }
         }
+    }
+    @include mobile {
+        padding: 32px 20px 56px;
     }
 }
 
@@ -121,7 +128,7 @@
     .navi {
         display:block;
         margin-top: 4px;
-        padding:24px 56px;
+        padding:25px 56px;
         font-size:0;
         border-radius: 4px;
         background-color: #fff;
@@ -136,8 +143,8 @@
         }
         &-label {
             position: relative;
-            margin-right: 40px;
-            padding-right: 41px;
+            margin-right: 24px;
+            padding-right: 24px;
             color: #aaa;
             &::after {
                 content: '';
@@ -161,9 +168,9 @@
         margin-top:12px;
         .navi {
             margin-top: 8px;
-            padding-left: 24px;
-            padding-right: 24px;
+            padding: 24px;
             border-radius: 0;
+            display: flex;
             &-label, &-desc {
                 font-size: 14px;
                 line-height:1.75;
