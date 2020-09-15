@@ -135,6 +135,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
         mousedown: 2,
         mousemove: 2,
         mouseup: 2,
+        mouseleave: 2,
 
         pointerdown: 3,
         pointermove: 3,
@@ -142,7 +143,8 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
 
         MSPointerDown: 3,
         MSPointerMove: 3,
-        MSPointerUp: 3
+        MSPointerUp: 3,
+
     };
 
     var style = {
@@ -289,6 +291,9 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             }
 
             self._handle(self.$wrapper, 'mousedown');
+            self._handle(self.$wrapper, 'mouseleave');
+            self._handle(self.$wrapper, 'mouseup');
+            self._handle(self.$wrapper, 'mousecancel');
             self._handle(self.$wrapper, 'touchstart');
             self._handle(self.$wrapper, 'selectstart');
             self._handle(self.$wrapper, 'click');
@@ -421,8 +426,15 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
                 case 'touchmove':
                     self._move(e);
                     break;
-                case 'mouseup':
-                case 'mousecancel':
+                case 'mouseup':  
+                    self._end(e);
+                    break;                   
+                case 'mouseleave':
+                    self._end(e);
+                    break; 
+                case 'mousecancel':   
+                    self._end(e);
+                    break;                                     
                 case 'touchend':
                 case 'touchcancel':
                     self._end(e);
@@ -704,6 +716,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             self._handle($doc, 'mouseup');
             self._handle($doc, 'mousecancel');
             self._handle($doc, 'tocuchcancel');
+
 
             self.initiated = eventType[e.type];
             self.moved = false;
