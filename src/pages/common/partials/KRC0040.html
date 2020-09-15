@@ -42,10 +42,11 @@
 		.font-underline : 언더라인
     -->
     <!-- [KR수정] div -> section DOM 수정 -->
-	<section class="component KRC0040 @@align-class1 @@align-class3 @@blockClass">
+	<section class="component KRC0040 @@align-class1 @@alignClass3 @@blockClass">
         @@if ( blockClass === "block1" ) {
         <div class="unit-list">
             <div class="unit-box">
+                @@if ( alignClass3 === "align-top" ) {
                 <!-- 1. headline -->
                 <div id="@@titleNum" class="title">@@headline</div>
                 <!-- // 1. headline -->
@@ -68,6 +69,7 @@
                     <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum">자세히 보기</a></span>
                 </div>
                 <!-- // 5. cta #2 -->
+                }
                 @@if ( contType === "animation" ) {
                 <!-- animation 타입인 경우 animation-box 클래스 추가 -->
                 <div class="visual-box @@align-class2 text-white animation-box">
@@ -88,10 +90,10 @@
                         </div>
                     </div>
                     <!-- 5. cta #2 -->
-                    <div class="cta-box hidden-xs">
+                    <!-- <div class="cta-box hidden-xs"> 기획서상 애니메이션/동영상 케이스에 CTA2 overlay type 사용 안함으로 삭제
                         <span><a href="#none" class="btn btn-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum">문의하기</a></span>
                         <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum">자세히 보기</a></span>
-                    </div>
+                    </div> -->
                     <!-- // 5. cta #2 -->
                 </div>
                 }
@@ -111,12 +113,37 @@
                     <!-- // 5. cta #2 -->
                 </div>
                 }
+                @@if ( alignClass3 === "align-bottom" ) {
+                <!-- 1. headline -->
+                <div id="@@titleNum" class="title">@@headline</div>
+                <!-- // 1. headline -->
+                <!-- 2. body copy -->
+                <div class="text @@font-class @@font-style">패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게<br>빛을 조절하여 자연색 그대로의 색감을 표현합니다.</div>
+                <!-- // 2. body copy -->
+                <!-- 3. cta #1 -->
+                <div class="cta-box">
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum">자세히 보기</a></span>
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum">자세히 보기</a></span>
+                </div>
+                <div class="cta-box">
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum">문의하기</a></span><!-- [KR수정] class 수정 -->
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum">문의하기</a></span><!-- [KR수정] class 수정 -->
+                </div>
+                <!-- // 3. cta #1 -->
+                <!-- 5. cta #2 -->
+                <div class="cta-box visible-xs">
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum">문의하기</a></span><!-- [KR수정] class 수정 -->
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum">자세히 보기</a></span>
+                </div>
+                <!-- // 5. cta #2 -->
+                }
             </div>
         </div>	
         }
-        @@if ( blockClass === "!block1" ) {
+        @@if ( blockClass === "block2" ) {
         <ul class="unit-list">
             <li class="unit-box">
+                @@if ( alignClass3 === "align-top" ) {
                 <!-- 1. headline -->
                 <div id="@@titleNum1" class="title">@@headline</div>
                 <!-- // 1. headline -->
@@ -139,6 +166,7 @@
                     <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1">자세히 보기</a></span>
                 </div>
                 <!-- // 5. cta #2 -->
+                }
                 <div class="visual-box @@align-class2 text-white">
                     <!-- 4. image -->
                     <div class="visual-area video youtube-box"><!-- [KR수정] class 추가 -->
@@ -156,8 +184,33 @@
                     </div>
                     -->
                 </div>
+                @@if ( alignClass3 === "align-bottom" ) {
+                <!-- 1. headline -->
+                <div id="@@titleNum1" class="title">@@headline</div>
+                <!-- // 1. headline -->
+                <!-- 2. body copy -->
+                <div class="text @@font-class @@font-style">패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게<br>빛을 조절하여 자연색 그대로의 색감을 표현합니다.</div>
+                <!-- // 2. body copy -->
+                <!-- 3. cta #1 -->
+                <div class="cta-box">
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1">자세히 보기</a></span>
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1">자세히 보기</a></span>
+                </div>
+                <div class="cta-box">
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1">문의하기</a></span><!-- [KR수정] class 수정 -->
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1">문의하기</a></span><!-- [KR수정] class 수정 -->
+                </div>
+                <!-- // 3. cta #1 -->
+                <!-- 5. cta #2 -->
+                <div class="cta-box visible-xs">
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1">문의하기</a></span><!-- [KR수정] class 수정 -->
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum1">자세히 보기</a></span>
+                </div>
+                <!-- // 5. cta #2 -->  
+                }
             </li>
             <li class="unit-box">
+                @@if ( alignClass3 === "align-top" ) {
                 <!-- 1. headline -->
                 <div id="@@titleNum2" class="title">@@headline</div>
                 <!-- // 1. headline -->
@@ -180,6 +233,7 @@
                     <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2">자세히 보기</a></span>
                 </div>
                 <!-- // 5. cta #2 -->
+                }
                 <div class="visual-box @@align-class2 text-black">
                     <!-- 4. image -->
                     <img data-src="/lg5-common/images/KRC0040/@thumb01.jpg" class="lazyload" alt="" />
@@ -192,9 +246,117 @@
                     </div>
                     <!-- // 5. cta #2 -->
                 </div>
+                @@if ( alignClass3 === "align-bottom" ) {
+                <!-- 1. headline -->
+                <div id="@@titleNum2" class="title">@@headline</div>
+                <!-- // 1. headline -->
+                <!-- 2. body copy -->
+                <div class="text @@font-class @@font-style">패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게<br>빛을 조절하여 자연색 그대로의 색감을 표현합니다.</div>
+                <!-- // 2. body copy -->
+                <!-- 3. cta #1 -->
+                <div class="cta-box">
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2">자세히 보기</a></span>
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2">자세히 보기</a></span>
+                </div>
+                <div class="cta-box">
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2">문의하기</a></span><!-- [KR수정] class 수정 -->
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2">문의하기</a></span><!-- [KR수정] class 수정 -->
+                </div>
+                <!-- // 3. cta #1 -->
+                <!-- 5. cta #2 -->
+                <div class="cta-box visible-xs">
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2">문의하기</a></span><!-- [KR수정] class 수정 -->
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="@@titleNum2">자세히 보기</a></span>
+                </div>
+                <!-- // 5. cta #2 -->
+                }
             </li>
         </ul>
         }	
+        @@if ( blockClass === "block3" ) {
+        <ul class="unit-list">
+            @@if ( alignClass3 === "align-top" ) {
+            @@for ( var i=0; i < context.blockArr.length; i++ ) {
+            <li class="unit-box">
+                <!-- 1. headline -->
+                <div id="`+blockArr[i].titleNum+`" class="title">`+blockArr[i].headline+`</div>
+                <!-- // 1. headline -->
+                <!-- 2. body copy -->
+                <div class="text `+blockArr[i].fontClass+` `+blockArr[i].fontStyle+`">패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게 빛을 조절하여 자연색 그대로의 색감을 표현합니다.</div>
+                <!-- // 2. body copy -->
+                <!-- 3. cta #1 -->
+                <div class="cta-box">
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">자세히 보기</a></span>
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">자세히 보기</a></span>
+                </div>
+                <div class="cta-box">
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">문의하기</a></span><!-- [KR수정] class 수정 -->
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">문의하기</a></span><!-- [KR수정] class 수정 -->
+                </div>
+                <!-- // 3. cta #1 -->
+                <!-- 5. cta #2 -->
+                <div class="cta-box visible-xs">
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">문의하기</a></span><!-- [KR수정] class 수정 -->
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">자세히 보기</a></span>
+                </div>
+                <!-- // 5. cta #2 -->
+                <div class="visual-box `+blockArr[i].alignClass2+` `+blockArr[i].ctaColor+`">
+                    <!-- 4. image -->
+                    <img data-src="/lg5-common/images/KRC0040/@thumb01.jpg" class="lazyload" alt="" />
+                    <p class="hidden">graphic description : </p>
+                    <!-- // 4. image -->
+                    <!-- 5. cta #2 -->
+                    <div class="cta-box hidden-xs">
+                        <span><a href="#none" class="btn btn-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">문의하기</a></span>
+                        <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">자세히 보기</a></span>
+                    </div>
+                    <!-- // 5. cta #2 -->
+                </div>
+            </li>
+            }
+            }
+            @@if ( alignClass3 === "align-bottom" ) {
+            @@for ( var i=0; i < context.blockArr.length; i++ ) {
+            <li class="unit-box">
+                <div class="visual-box `+blockArr[i].alignClass2+` `+blockArr[i].ctaColor+`">
+                    <!-- 4. image -->
+                    <img data-src="/lg5-common/images/KRC0040/@thumb01.jpg" class="lazyload" alt="" />
+                    <p class="hidden">graphic description : </p>
+                    <!-- // 4. image -->
+                    <!-- 5. cta #2 -->
+                    <div class="cta-box hidden-xs">
+                        <span><a href="#none" class="btn btn-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">문의하기</a></span>
+                        <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">자세히 보기</a></span>
+                    </div>
+                    <!-- // 5. cta #2 -->
+                </div>
+                <!-- 1. headline -->
+                <div id="`+blockArr[i].titleNum+`" class="title">`+blockArr[i].headline+`</div>
+                <!-- // 1. headline -->
+                <!-- 2. body copy -->
+                <div class="text `+blockArr[i].fontClass+` `+blockArr[i].fontStyle+`">패널이 스스로 빛나는 올레드 TV는 픽셀 하나하나가 섬세하게 빛을 조절하여 자연색 그대로의 색감을 표현합니다.</div>
+                <!-- // 2. body copy -->
+                <!-- 3. cta #1 -->
+                <div class="cta-box">
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">자세히 보기</a></span>
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">자세히 보기</a></span>
+                </div>
+                <div class="cta-box">
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">문의하기</a></span><!-- [KR수정] class 수정 -->
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">문의하기</a></span><!-- [KR수정] class 수정 -->
+                </div>
+                <!-- // 3. cta #1 -->
+                <!-- 5. cta #2 -->
+                <div class="cta-box visible-xs">
+                    <span><a href="#none" class="btn btn-outline-primary" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">문의하기</a></span><!-- [KR수정] class 수정 -->
+                    <span><a href="#none" class="link-text bold ico-right" data-link-area="image_1to3_cta_overlay-cta" data-link-name="{link text}" aria-describedby="`+blockArr[i].titleNum+`">자세히 보기</a></span>
+                </div>
+                <!-- // 5. cta #2 -->
+            </li>
+            }
+            }
+        </ul> 
+        }
     </section>
     <!-- // [KR수정] div -> section DOM 수정 -->
 </div>
