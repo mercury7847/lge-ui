@@ -397,7 +397,10 @@
         bottom:0;
 		width:100%;
 		padding-bottom:32px;
-		text-align: center;
+        text-align: center;
+        @include mobile {
+            padding-bottom:16px;
+        }
 		// dimed
 		&:before {
 			content:"";
@@ -408,6 +411,9 @@
 			width:100%;
             height: 180px;
             background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
+            @include mobile {
+                height:50px;
+            }
 		}
 		.btns {
 			color:transparent;
@@ -543,7 +549,7 @@
         color:#fff;
 		font-size: 14px;
         line-height:20px;
-        background:#111;
+        background:rgba(0, 0, 0, .5);
 	}
 }
 

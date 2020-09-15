@@ -31,7 +31,6 @@
             var arr = data.pointHistory instanceof Array ? data.pointHistory : [];
             if(arr.length > 0) {
                 $('.no-data').hide();
-                $('.no-data').show();
                 arr.forEach(function(item, index) {
                     contentHtml += vcui.template(listItemTemplate, {
                         ...item,
@@ -42,7 +41,6 @@
             } else {
                 $('.no-data').show();
             }
-            var contentHtml = "";
             $('.point-use-list').find('.lists').html(contentHtml);
             $('#my_totalpoint').text(comma(data.totalPoint)+" P");
         });

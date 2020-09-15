@@ -50,7 +50,12 @@ $(window).ready(function(){
 						required: true,
 						pattern : /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/,
 						errorMsg:'영문,숫자,특수문자 조합 8-16자리'
-					}
+					},
+					inputreceipt:{
+                        required: true,
+                        pattern : /^(\d{8})-(\d{8})$/,
+						errorMsg:'영수증 등록에 실패했습니다.'
+                    }
                 }
 
                 var validation = new vcui.ui.Validation('#wrap',{register:register});
