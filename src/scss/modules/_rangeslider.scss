@@ -1,0 +1,57 @@
+/*RangeSlider */
+.ui-range-slider {
+    position: relative; 
+    width: 100%; 
+    height: 16px; 
+    text-align: left; 
+    .hide {
+        display:inline-block;
+        position:absolute;
+        z-index:-10;
+        width:0 !important;
+        height:0 !important;
+        overflow:hidden !important;
+        opacity:0 !important;
+        filter:alpha(opacity=0);
+        -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(opacity=0)';
+        font-size:medium;
+        line-height:normal;
+        word-break:break-all;
+    }
+    .ui-range-slider-bg {
+        position: absolute;
+        height: 16px;
+        background-color: #ededed; 
+        border-radius:8px;
+    }
+    .ui-range-slider-range { 
+        position: absolute; 
+        background-color: #ec455a; 
+        height: 16px;
+        border-radius:8px;
+    }
+    .ui-range-slider-handler {
+        position: absolute; 
+        height: 16px; 
+        width: 16px; 
+        border-radius:50%;
+        background:#fff;
+        box-shadow:0 2px 4px 0 rgba(0, 0, 0, .25);
+    }
+    .ui-range-slider-value {
+        margin:0; 
+        padding:0; 
+        top:0;
+        li {
+            list-style-type: none; 
+            cursor: pointer; 
+            height: 16px; 
+            width: 16px; 
+            margin:0;	
+            padding:0;
+            border:1px solid #ddd;
+            border-radius:8px;
+            background:#fff;
+        }
+    }
+}
