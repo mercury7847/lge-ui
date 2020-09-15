@@ -13,7 +13,9 @@
             margin-top:32px;
         }
         @include mobile() {
-            margin-top:28px;
+            & + .row {
+                margin-top:20px;
+            }
         }
     }
     .field-title {
