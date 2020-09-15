@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+
+$block: (block1, block2, block3);
+@each $i in $block {
+    img {
+        width:100%;
+        height:auto;
+        vertical-align:top;
+    }
+    .KRC0040.#{$i} {
+        max-width:(1284px + 60px);
+        margin:0 auto;
+        padding:0 18px;
+        @include mobile {
+            padding:0 24px;
+        }
+        .unit-list {
+            font-size:0;
+            .unit-box {
+                display:inline-block;
+                padding:0 12px;
+                vertical-align:top;
+                @if ( $i == block1 ) {
+                    width:100%;
+                } @else if ( $i == block2 ) {
+                    width:50%;
+                } @else if ( $i == block3 ) {
+                    width:calc(100% / 3);
+                }
+                @include mobile {
+                    @if ( $i == block1 ) {
+                        padding:0;
+                    } @else if ( $i == block2 ) {
+                        width:100%;
+                        padding:0;
+                    } @else if ( $i == block3 ) {
+                        width:100%;
+                        padding:0;
+                    }
+                }
+            }
+
+            .title * {
+                color:#111;
+                font-size:24px;
+                line-height:32px;
+                font-weight:700;
+            }
+            .text {
+                margin-top:16px;
+                color:#111;
+                font-size:16px;
+                line-height:24px;
+            }
+            .cta-box {
+                margin:12px -12px 0;
+                font-size:0;
+                span {
+                    display:inline-block;
+                    vertical-align:bottom;
+                    margin:12px 12px 0;
+                }
+                &.visible-xs {
+                    display:none;
+                    @include mobile {
+                        display:block;
+                    }
+                }
+                &.hidden-xs {
+                    display:block;
+                    @include mobile {
+                        display:none;
+                    }
+                }
+            }
+            .visual-box {
+                position:relative;
+                margin-top:40px;
+                .cta-box {
+                    position:absolute;
+                    left:12px;
+                    bottom:24px;
+                    z-index:10;
+                }
+                &.text-white {
+                    .cta-box {
+                        .link-text {
+                            color:#fff;
+                            border-color:#fff;
+                            &::after {
+                                border-color:#fff;
+                            }
+                        }
+                        .btn.btn-primary {
+                            border-color:#fff;
+                            background:#fff;
+                            color:#111;
+                        }
+                    }
+                }
+                &.text-black {
+                    .cta-box {
+                        .link-text {
+                            color:#111;
+                            border-color:#111;
+                            &::after {
+                                border-color:#111;
+                            }
+                        }
+                        .btn.btn-primary {
+                            border-color:#111;
+                            background:#111;
+                            color:#fff;
+                        }
+                    }
+                }
+            }
+            .animation-box {
+                .animation-area {
+                    .controller-wrap {
+                        right:50%;
+                        bottom:24px;
+                        margin-right:-20px;
+                    }
+                }
+            }
+        }
+    }
+}
