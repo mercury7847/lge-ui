@@ -15,7 +15,10 @@
                             "ui/videoBox",
                             "ui/youtubeBox",
                             "ui/imageSwitch",
-                            "ui/dropdown"
+                            "ui/dropdown",
+                            "ui/textControl",
+                            "ui/scrollview",
+                            "ui/fileInput"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
@@ -30,6 +33,9 @@
             this.find('.ui_carousel').vcCarousel();
             this.find('.animation-box').vcVideoBox();
             this.find('.youtube-box').vcYoutubeBox();
+            this.find('.ui_textcontrol').vcTextcontrol();
+            this.find('.ui_scrollview').vcScrollview();
+            this.find('.ui_fileinput').vcFileinput();
         }.bind(this));
         return this;
     };
