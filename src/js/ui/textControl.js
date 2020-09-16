@@ -4,7 +4,8 @@
  * @description 문자수 카운팅 텍스트컨트롤
  * @copyright VinylC UID Group
  */
-vcui.define('ui/textControl', ['jquery', 'vcui'], function ($, core) {
+
+ vcui.define('ui/textControl', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var detect = core.detect,
@@ -23,6 +24,7 @@ vcui.define('ui/textControl', ['jquery', 'vcui'], function ($, core) {
      * $('input.d_textcounter').textCounter({});
      */
     var TextCounter = core.ui('TextCounter', /** @lends vcui.ui.TextCounter# */{
+        bindjQuery: 'textcounter',
         $statics: {
             ON_TEXTCOUNT_CHANGE: 'textcounter:change' // 글자수가 변경되었을 때 발생
         },
@@ -203,7 +205,7 @@ vcui.define('ui/textControl', ['jquery', 'vcui'], function ($, core) {
             ON_INIT: 'init',
             ON_CHANGE: 'textcontrol:change'
         },
-        bindjQuery: 'textControl',
+        bindjQuery: 'textcontrol',
         defaults: {
             limit: 100,
             checkCount: true,
@@ -340,10 +342,5 @@ vcui.define('ui/textControl', ['jquery', 'vcui'], function ($, core) {
 
     // TextControl.prototype.defaults.countText = '{{len}} / {{limit}}byte';
 
-    var TextMark = core.ui('TextMark', TextMark, {
-        $statics: {
-            ON_TEXT_CHANGE: 'textmark:change' // 글자가 변경되었을 때 발생
-        },
-    });
     return TextControl;
 });

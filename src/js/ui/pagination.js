@@ -104,7 +104,7 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
                         break;
                 }
             })
-      },
+        },
     });
 
     return Pagination;
