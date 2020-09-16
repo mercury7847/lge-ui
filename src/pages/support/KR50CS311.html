@@ -17,175 +17,168 @@
         <div class="container">
             @@include('./common/support/page-visual.html', {
                 'title': '이메일 문의',
-                'desc': 'LG전자 대해 궁금한 점이 있으시면 무엇이든 물어보세요',
-                'img': {
-                    pcSrc: '경로',
-                    mobileSrc: '경로',
-                    alt: '설명'
-                }
+                'desc': '궁금한 점이 있으시면 무엇이든 물어보세요.',
             })
             
             <div class="contents support KR50CS311">
-                <div class="status-bar">
-                    <div class="status-bar-inner">
-                        <div class="status">
-                            <p>로그인 하시면 아래 개인 정보가 자동으로 입력됩니다. 비회원도 이메일 문의가 가능합니다.</p>
-                        </div>
-                        <div class="guide">
-                            <span class="guide-link">
-                                <a href="#">로그인하기</a>
-                            </span>
-                        </div>
+                <div class="login-wrap">
+                    <div class="inner">
+                        <p class="text">이메일을 보내기 위해 계정이 필요하지는 않지만, 로그인을 하시면 고객님의 세부 정보가 자동으로 입력됩니다.</p>
+                        <a href="#" class="btn-text">로그인하기</a>
                     </div>
                 </div>
+
                 <div class="contents-inner">
-                    
-                    <div class="inquiry-content">
-                        <form action="" data-action="">
-                            <legend>이메일 문의</legend>
-                            <fieldset>
-                                <div class="dummy" style="height:524px;margin-bottom:24px;">
-                                    <p>TBD</p>
-                                </div>
-                                <div class="inquiry-item">
-                                    <div class="inquiry-title">
-                                        <h3 class="tit">문의 내용을 입력해주세요 (필수)</h3>
+
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">Step01. 제품을 선택해주세요. (필수)</h3>
+                        </div>
+                        <div class="section-content">
+                            @@include('./common/support/select-category.html')
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">Step02. 제품 모델명을 선택해주세요. (선택)</h3>
+                        </div>
+                        <div class="section-content">
+                            
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">Step 03. 제품 문의 유형을 선택해주세요. (필수)</h3>
+                        </div>
+                        <div class="section-content">
+                            <div class="rdo-wrap">
+                                <input type="radio" name="type" id="radio-type01">
+                                <label for="radio-type01">제품 정보</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">Step 04. 이메일 받으실 분의 정보를 입력해주세요. (필수)</h3>
+                        </div>
+                        <div class="section-content">
+                            <div class="field">
+                                <div class="row">
+                                    <div class="field-item block">
+                                        <div class="field-title">
+                                            <label for="input-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
+                                        </div>
+                                        <div class="input-wrap count">
+                                            <input type="text" name="title" id="input-name" placeholder="이름을 입력해주세요.">
+                                            <p class="err-msg">이름을 입력해주세요.</p>
+                                        </div>
                                     </div>
-                                    <div class="field-wrap">
-                                        <div class="row">
-                                            <div class="field-item">
-                                                <div class="field-title">
-                                                    <label for="name" class="tit">이름</label>
-                                                </div>
+                                    <div class="field-item block">
+                                        <div class="field-title">
+                                            <label for="input-email" class="tit">이메일 주소<span class="require">*<span class="blind">필수항목</span></span></label>
+                                        </div>
+                                        <div class="email-box">
+                                            <div class="email-input">
                                                 <div class="input-wrap">
-                                                    <input type="text" id="name" name="name" required>
-                                                    <p class="err-msg">이름을 입력해 주세요.</p>
+                                                    <input type="text" name="email" id="input-email" placeholder="이메일 주소를 입력해주세요." required>
+                                                </div>
+                                                <span class="at">@</span>
+                                                <div class="input-wrap">
+                                                    <input type="text" name="domain" id="input-domain" placeholder="직접 입력" title="이메일 도메인 입력" required> <!-- 직접 입력 선택 시 readonly 삭제 -->
+                                                </div>
+                                                <div class="select-wrap">
+                                                    <select class="ui_selectbox" name="domain" id="select-domain" title="이메일 도메인 선택">
+                                                        <option value="" selected disabled>선택</option>
+                                                        <option value="">naver.com</option>
+                                                        <option value="">gmail.com</option>
+                                                    </select>
                                                 </div>
                                             </div>
+                                            <p class="err-msg">이메일 주소를 입력해 주세요.</p>
                                         </div>
-                                        <div class="row">
-                                            <div class="field-item block">
-                                                <div class="field-title">
-                                                    <label for="emailId" class="tit">이메일 주소</label>
-                                                    <a href="#" class="icon-notice" data-js="tooltip">
-                                                        <em class="blind"></em>
-                                                        <div class="tooltip-content" data-tooltip="content">
-                                                            <p>첨부파일은 확장자 jpg, gif 파일만 업로드 가능합니다. 첨부파일의 이름은 특수기호(? ! , . & ^ ~ )를 제외해주세요.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="email-box">
-                                                    <div class="email-input">
-                                                        <div class="input-wrap email-wrap">
-                                                            <input type="text" id="emailId" name="emailId" required>
-                                                        </div>
-                                                        <span class="at">@</span>
-                                                        <div class="input-wrap">
-                                                            <input type="text" id="emailDomain1" name="emailDomain1" title="이메일 도메인" readonly required> <!-- 직접 입력 선택 시 readonly 삭제 -->
-                                                        </div>
-                                                        <div class="select-wrap">
-                                                            <select class="ui_selectbox" id="emailDomain2" name="emailDomain2"  title="이메일 도메인">
-                                                                <option value="">직접 입력</option>
-                                                                <option value="">직접 입력</option>
-                                                                <option value="">직접 입력</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <p class="err-msg">이메일 주소를 입력해 주세요.</p>
-                                                </div>
-                                            </div>
+                                    </div>     
+                                </div>
+                            </div>
+                            <ul class="dot-list top-border">
+                                <li>참조일부 이메일(gmail.com, hotmail.com, live.co.kr, outlook.com, nate.com, dreamwiz.com, empal.com등)은 답변 메일 수신이 원활하지 않을 수 있습니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">Step 05. 문의내용을 입력해주세요. (필수)</h3>
+                        </div>
+                        <div class="section-content">
+                            <div class="field-wrap">
+                                <div class="row">
+                                    <div class="field-item block">
+                                        <div class="field-title">
+                                            <label for="input-title" class="tit">제목<span class="require">*<span class="blind">필수항목</span></span></label>
                                         </div>
-                                        <div class="row">
-                                            <div class="field-item block">
-                                                <div class="field-title">
-                                                    <label for="title" class="tit">제목</label>
-                                                </div>
-                                                <div class="input-wrap count">
-                                                    <div class="box">
-                                                        <input type="text" class="ui_textcontrol" id="title" name="title" placeholder="문의하실 내용을 간략하게 적어주세요." maxlength="40" data-limit="40" data-count-target="#title-count">
-                                                        <span class="cell total" id="title-count"><em>0</em> / 40</span>
-                                                    </div> 
-                                                    <p class="err-msg">제목을 입력해 주세요.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="field-item block">
-                                                <div class="field-title">
-                                                    <label for="content" class="tit">내용</label>
-                                                </div>
-                                                <div class="input-wrap count">
-                                                    <div class="box">
-                                                        <textarea class="ui_textcontrol" id="content" name="content" placeholder="평일 근무 상담사가 내용을 확인한 후 신속하게 답변을 드리고 있습니다. (주말 및 공휴일 답변 불가)&#13;&#10;답변은 이메일 문의 확인 페이지를 통해 가능합니다. (단, 답변일로부터 1개월간, 접수번호 필요)&#13;&#10;&#13;&#10;개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와&#13;&#10;같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#content-count"></textarea>
-                                                        <span class="cell total" id="content-count"><em>0</em> / 1000</span>
-                                                    </div> 
-                                                    <p class="err-msg">내용을 입력해 주세요.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="field-item block">
-                                                <div class="field-title">
-                                                    <strong class="tit">파일 첨부(선택사항)</strong>
-                                                    <a href="#" class="icon-notice"><em class="blind"></em></a>
-                                                </div>
-                                                <div class="file-box">
-                                                    <span class="file-input">
-                                                        <label for="file-upload">첨부파일 선택 (전체 10mb, 최대 3개까지 등록 가능)</label>
-                                                        <input type="file" id="file-upload">
-                                                        <span class="blind">(전체 10mb, 최대 3개까지 등록 가능)</span>
-                                                    </span>
-                                                    <ul class="file-lists">
-                                                        <li>
-                                                            <span class="file-name">test_img_001.jpg</span>
-                                                            <button type="button" class="btn-del"><span class="blind">삭제</span></button>
-                                                        </li>
-                                                        <li>
-                                                            <span class="file-name">test_img_001.jpg</span>
-                                                            <button type="button" class="btn-del"><span class="blind">삭제</span></button>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                        <div class="input-wrap count">
+                                            <input type="text" class="ui_textcontrol" name="title" id="input-title" placeholder="제목을 입력해주세요." required maxlength="40" data-limit="40" data-count-target="#txt-count">
+                                            <span id="txt-count" class="total"><em>0</em> / 40</span>
+                                            <p class="err-msg">제목을 입력해주세요.</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="inquiry-item">
-                                    <div class="inquiry-title">
-                                        <h3 class="tit">개인정보 수집 및 이용동의 (필수)</h3>
-                                    </div>
-                                    <div class="privacy-box">
-                                        <div class="scrollview-wrap ui_scrollview">
-                                            <div class="ui_scrollarea">
-                                                <div class="ui_content">
-                                                    <div class="privacy-text">
-                                                        <p><strong>1. 개인정보의 수집 항목</strong></p>
-                                                        <br>
-                                                        <p>LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.</p>
-                                                        <p>1) 필수 : 이름, 이메일 주소, 상담 문의 내용 (제목, 내용)</p>
-                                                        <p>2) 선택 : 상담문의 내용 내 모델명 기재, 첨부 파일</p>
-                                                        <br>
-                                                        <p><strong>2. 개인정보 이용목적</strong></p>
-                                                        <br>
-                                                        <p>“회사”는 수집한 개인정보를 아래와 같은 목적을 위해 활용합니다.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <div class="row">
+                                    <div class="field-item block">
+                                        <div class="field-title">
+                                            <label for="input-content" class="tit">내용<span class="require">*<span class="blind">필수항목</span></span></label>
                                         </div>
-                                        <div class="privacy-check">
-                                            <div class="rdo-wrap">
-                                                <input type="radio" id="privacy" name="privacy">
-                                                <label for="privacy">개인정보 수집 및 이용에 동의합니다.</label>
-                                            </div>
+                                        <div class="input-wrap count">
+                                            <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" required data-limit="1000" data-count-target="#txt-count2"></textarea>
+                                            <span id="txt-count2" class="cell total"><em>0</em> / 1000</span>
+                                            <p class="err-msg">내용을 입력해주세요.</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="btn-group">
-                                    <button type="button" class="btn gray"><span>취소</span></button>
-                                    <button type="submit" class="btn black"><span>문의</span></button>
+                                <div class="row">
+                                    <div class="field-item block">
+                                        <div class="field-title">
+                                            <strong class="tit">첨부 파일</strong>
+                                        </div>
+                                        <div class="file-box ui_file_upload">
+                                            <span class="file-input">
+                                                <span class="file-label">사진을 업로드해주세요.</span>       
+                                                <label for="file-upload">업로드</label>
+                                                <input type="file" class="ui_file_input" id="file-upload" data-format="jpg|jpeg|gif" data-size="10MB">
+                                            </span>
+                                            <ul class="file-lists ui_file_list">   
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </fieldset>
-                        </form>
+                            </div>
+                            <ul class="dot-list top-border">
+                                <li>참조첨부파일은 최대 3개까지 가능하며, 전체 용량은 10MB 이하까지 업로드 가능합니다.</li>
+                                <li>첨부파일 이름은 특수기호(? ! , . & ^ ~ )를 제외해주세요.(첨부 가능 확장자 jpg, gif)</li>
+                                <li>참조답변은 서비스 홈페이지 이메일 상담 조회 메뉴를 통해 가능합니다. (단, 답변일로부터 1개월간, 접수번호 필요)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">
+                            <h3 class="tit">Step06. 개인정보 수집 및 이용동의 (필수)</h3>
+                        </div>
+                        <div class="section-content">
+                            <div class="privacy">
+                                <div class="privacy-item">
+                                    <input type="checkbox" name="newsletter01" id="newsletter01">
+                                    <label for="newsletter01"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-grou">
+                        <button type="button" class="btn pink"><span>문의하기</span></button>
                     </div>
 
                 </div>
