@@ -33,8 +33,8 @@
             })
             
             <div class="contents support KR50CS411">
-                <div class="login">
-                    <div class="login-inner">
+                <div class=".login-wrap">
+                    <div class="inner">
                         <p class="text">이메일을 보내기 위해 계정이 필요하지는 않지만, 로그인을 하시면 고객님의 세부 정보가 자동으로 입력됩니다.</p>
                         <a href="#" class="btn-text">로그인하기</a>
                     </div>
@@ -327,7 +327,26 @@
                                 <div class="row">
                                     <div class="field-item block">
                                         <div class="field-title">
-                                            <label for="name" class="tit">주소</label>
+                                            <label for="input-address" class="tit">주소<span class="require">*<span class="blind">필수항목</span></span></label>
+                                        </div>
+                                        <div class="address-box">
+                                            <div class="input-wrap">
+                                                <div class="box">
+                                                    <input type="text" name="address" id="input-address" placeholcer="" required>
+                                                    <div class="cell">
+                                                        <button type="button">주소찾기</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input-wrap">
+                                                <input type="text" name="address2" id="input-address2" placeholcer="" readonly required>
+                                            </div>
+                                            <div class="default-address">
+                                                <div class="chk-wrap">
+                                                    <input type="checkbox" name="defaultAdress" id="defaultAddreess">
+                                                    <label for="">기본 주소로 저장</label>      
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -341,7 +360,7 @@
 
                     <div class="section">
                         <div class="section-title">
-                            <h3 class="tit">Step06. 서비스 희망 날짜와 엔지니어를 선택해주세요.</h3>        
+                            <h3 class="tit">Step06. 서비스 희망 일시를 선택해주세요.</h3>        
                         </div>
                         <div class="section-content">
                             <h4 class="cont-tit">서비스를 받으실 날짜를 선택해주세요.</h4>
@@ -378,47 +397,91 @@
                                 </div>
                             </div>
                             <h4 class="cont-tit">방문할 엔지니어를 선택해주세요</h4>
-                            <div class="">
-                                <ol>
-                                    <li>1. 평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.</li>
-                                    <li>2. [인증/예약]버튼 클릭 시 휴대전화 인증이 진행되며, 그 후에 예약이 완료됩니다.</li>
-                                </ol>
-                                <div class="ui_carousel">
-                                    <div class="ui_carousel_list">
-                                        <div class="ui_carousel_track">
-                                            <div class="ui_carousel_slide">
-                                                <div>
-                                                    <input type="radio" name="" id="" value="">
-                                                    <label for="" class="">
-
-                                                    </label>
-                                                </div>  
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    <div class="indi-wrap">
-                                        <ul class="indi-conts ui_carousel_dots"></ul>
-                                    </div>
+                            <div class="engineer-carousel">
+                                <div class="engineer-carousel-list ui_carousel_list">
+                                    <div class="engineer-carousel-track ui_carousel_track">
+                                        <div class="engineer-carousel-slide ui_carousel_slide">
+                                            <div class="engineer-box">
+                                                <input type="radio" name="engineer" id="engineer-1" value="">
+                                                <label for="engineer-1">
+                                                    <div class="engineer-image">
+                                                        <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
+                                                    </div>
+                                                    <p class="tit">박두신</p>
+                                                    <p class="desc">모란지역지원센터</p>
+                                                </label>
+                                            </div>  
+                                        </div>
+                                        <div class="engineer-carousel-slide ui_carousel_slide">
+                                            <div class="engineer-box">
+                                                <input type="radio" name="engineer" id="engineer-2" value="">
+                                                <label for="engineer-2">
+                                                    <div class="engineer-image">
+                                                        <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
+                                                    </div>
+                                                    <p class="tit">박두신</p>
+                                                    <p class="desc">모란지역지원센터</p>
+                                                </label>
+                                            </div>  
+                                        </div>
+                                        <div class="engineer-carousel-slide ui_carousel_slide">
+                                            <div class="engineer-box">
+                                                <input type="radio" name="engineer" id="engineer-3" value="">
+                                                <label for="engineer-3">
+                                                    <div class="engineer-image">
+                                                        <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
+                                                    </div>
+                                                    <p class="tit">박두신</p>
+                                                    <p class="desc">모란지역지원센터</p>
+                                                </label>
+                                            </div>  
+                                        </div>
+                                        <div class="engineer-carousel-slide ui_carousel_slide">
+                                            <div class="engineer-box">
+                                                <input type="radio" name="engineer" id="engineer-4" value="">
+                                                <label for="engineer-4">
+                                                    <div class="engineer-image">
+                                                        <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
+                                                    </div>
+                                                    <p class="tit">박두신</p>
+                                                    <p class="desc">모란지역지원센터</p>
+                                                </label>
+                                            </div>  
+                                        </div>
+                                        <div class="engineer-carousel-slide ui_carousel_slide">
+                                            <div class="engineer-box">
+                                                <input type="radio" name="engineer" id="engineer-5" value="">
+                                                <label for="engineer-5">
+                                                    <div class="engineer-image">
+                                                        <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
+                                                    </div>
+                                                    <p class="tit">박두신</p>
+                                                    <p class="desc">모란지역지원센터</p>
+                                                </label>
+                                            </div>  
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="indi-wrap">
+                                    <ul class="indi-conts ui_carousel_dots"></ul>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title">
-                            <h3 class="tit">개인정보 수집 및 이용동의 (필수)</h3>        
-                        </div>
-                        <div class="section-content">
-                            
-                            <ul class="dot-list">
-                                <li>3건 이상의 제품에 대해 서비스 접수하실 경우, 콜센터(1544-7777)를 이용하시면 1명의 서비스 기사로 접수를 할 수 있습니다.</li>
-                                <li>무상 보증 기간 경과 된 제품 또는 사용자 과실 등으로 인한 제품 고장의 서비스 신청 건은 유상으로 서비스 비용이 청구됩니다. (자세한 내용은 '요금 및 보증기간 안내'를 참조하시기 바랍니다.)</li>
+                            <ul class="dot-list top-border">
+                                <li>평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.</li>
+                                <li>[인증/예약]버튼 클릭 시 휴대전화 인증이 진행되며, 그 후에 예약이 완료됩니다.</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div>
-                        
+                    <div class="section">
+                        <div class="section-content">
+                            <p class="result-text"><strong id="resultDate">2020.07.01 13:30</strong>에 엔지니어 <strong id="resultName">박두신님</strong>이 방문하여 <strong>설치</strong>를 진행할 예정입니다. 예약하시겠습니까?</p>
+                        </div>
+                    </div>
+
+                    <div class="btn-group right">
+                        <a href="#" class="btn gray"><span>취소</span></a>
+                        <button type="button" class="btn pink">인증/예약</button>
                     </div>
 
                 </div>
