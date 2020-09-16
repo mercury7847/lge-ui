@@ -34,7 +34,7 @@
         padding:51px 40px 93px;
         background:#f4f4f4;
         @include mobile {
-            padding:0 20px;
+            padding:0;
             background:#fff;
         }
 
@@ -71,14 +71,14 @@
             @include mobile {
                 position:relative;
                 margin:0;
-                padding-top:50px;
+                padding:50px 20px 0;
                 &:before {
                     content:'';
                     display:block;
                     position:absolute;
                     top:0;
-                    left:-20px;
-                    right:-20px;
+                    left:0;
+                    right:0;
                     height:12px;
                     background:#f4f4f4;
                 }
@@ -124,7 +124,7 @@
             }
 
             @include mobile {
-                margin:0 -20px;
+                margin:0;
                 padding:32px 20px 96px;
                 background:#f4f4f4;
             }
