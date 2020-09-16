@@ -55,7 +55,7 @@
             width:100%;
             border-collapse:collapse;
             border-spacing:0;
-            table-layout:fixed;
+            // table-layout:fixed;
             th, td {
                 padding:16px 24px;
                 font-size:16px;
@@ -131,6 +131,40 @@
         }
     }
         
+    .dot-list02 {
+        li {
+            position:relative;
+            margin-top:10px;
+            padding-left:12px;
+            font-size:16px;
+            color:#222;
+            line-height:1.5;
+            &:first-child {
+                margin-top:0;
+            }
+            &:before {
+                content:'';
+                position:absolute;
+                left:0;
+                top:11px;
+                width:4px;
+                height:4px;
+                border-radius:50%;
+                background-color:#616161;
+            }
+            @include mobile {
+                padding-left:10px;
+                font-size:12px;
+                line-height:18px;
+                margin-top: 10px;
+                &:before {
+                    top:8px;
+                }
+    
+            }
+        }
+    }
+
     .dot-list03 {
         border-top: 1px solid #ddd;
         margin-top: 43px;
@@ -446,14 +480,18 @@
                 display: block;
                 width: 0;
                 height: 0;
-                border-top: 8px solid #111;
                 border-left: 5px solid transparent;
                 border-right: 5px solid transparent;
                 font-size: 0;
-                @at-root .btn_close & {
+            }
+            .btn_open {
+                .ui_accord_text {
+                    border-top: 8px solid #111;
+                }
+            }
+            .btn_close {
+                .ui_accord_text {
                     border-bottom: 8px solid #111;
-                    border-left: 5px solid transparent;
-                    border-right: 5px solid transparent;
                 }
             }
             .txt_list {
@@ -516,6 +554,19 @@
         @include mobile {
             display: block;
         }
+    }
+
+    // text-align
+    .align-left {
+        text-align: left !important;
+    }
+
+    .align-right {
+        text-align: right !important;
+    }
+
+    .align-center {
+        text-align: center !important;
     }
 }
 
