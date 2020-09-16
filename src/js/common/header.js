@@ -14,84 +14,45 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 return;
             };
 
-            self.isTrans = false;
-
-            self.isHover = false;
-            self.outTimer = null;
-
-            self.isCategoryHover = false;
-            self.categoryOutTimer = null;
-
-            self.gnbMode = "pc";
-
-            self.prodWidth = 0;
-            
-            self._setting();
-            self._bindEvents();
-            self._resize();
+            vcui.require(['ui/carousel', 'ui/smoothScroll'], function () {            
+                self._setting();
+                self._bindEvents();
+                self._resize();
+            });
         },
 
         _setting: function(){
             var self = this;
 
+            self.$mypage = self.$el.find('.header-top .shortcut .mypage');
+
             self.$naviWrapper = self.$el.find(".header-bottom");
-            self.$prodWrapper = self.$naviWrapper.find('.nav-category-product');
-            self.$product = self.$prodWrapper.find('.nav-item');
-            self.$categoryWrapper = self.$prodWrapper.find('.nav-category-container');
-            self.$category = self.$categoryWrapper.find('> ul');
-            self.$categoryItems = self.$category.children();
-
-            self.$menuOpener = self.$el.find('.mobile-nav-button');
-
-            self.prodWidth = self.$categoryWrapper.width();
+            self.$navItems = self.$el.find('.nav-wrap .nav > li');
+            
+            self.$hamburger = self.$el.find('.mobile-nav-button');
         },
 
         _resize: function(){
             var self = this;
             var winwidth = $(window).outerWidth(true);
-            if(winwidth > 1130){
-                self._menuToggleDisabled();
-                self.gnbMode = "pc";
+            if(winwidth > 767){
+                self._hamburgerDisabled();
+                self._addGnbEvents();
             } else{
-                self._gnbInit();
-                self.gnbMode = "m"; 
+                self._removeGnbEvents();
             }
         },
 
         _bindEvents: function(){
             var self = this;
 
-            self.$el.on('mouseover', function(){
-                if(self.isHover){
-                    self._setOver();
-                }
-            }).on('mouseout', function(){
-                if(self.isHover){
-                    self._setOutTimer();
-                }
+            self.$mypage.find('> a').on('click', function(e){
+                e.preventDefault();
+
+                self._mypageToggle(e.target);
             });
 
-            self.$prodWrapper.on('mouseover', function(){
-                self._setOver();
-            });
-
-            self.$product.on('click', function(e){
-                if(self.gnbMode == "m"){
-                    e.preventDefault();
-
-                    self._setProductActiveToggle(!self.$product.hasClass('active'));
-                }
-            });
-
-            self.$categoryItems.each(function(idx, item){
-                $(item).on('mouseover', function(){
-                    if(!self.isCategoryHover) self._setCategoryOver(idx);
-                }).on('mouseout', function(){
-                    if(self.isCategoryHover) self._setCategoryOut(idx);
-                });
-            });
-
-            self.$menuOpener.on('click', function(e){
+            self.$hamburger.on('click', function(e){
                 e.preventDefault();
 
                 self._menuToggle();
@@ -100,150 +61,152 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             $(window).on('resize', function(){
                 self._resize();
             });
+
+            $('.mobile-category-container .category').vcSmoothScroll();
+
+            $('.mobile-nav-category.is-depth > a').on('click', function(e){
+                e.preventDefault();
+
+                $(this).parent().find('.nav-category-container').toggle();
+            });
+        },
+
+        _addGnbEvents: function(){
+            var self = this;
+
+            self.$navItems.each(function(idx, item){              
+                $(item).find('> .nav-category-container').css('display', 'inline-block');
+                var categorywidth = $(item).find('> .nav-category-container').outerWidth(true);
+                $(item).find('> .nav-category-container').css({
+                    overflow: 'hidden',
+                    'vertical-align': 'top',
+                    width: 0,
+                    display: 'none'
+                });
+                $(item).find('> .nav-category-container > ul').css({
+                    'vertical-align': 'top',
+                    width: '100%'
+                });
+                $(item).find('> a').css('vertical-align', 'top');
+
+                $(item).css({'vertical-align':  'top'});
+
+                $(item).data('subwidth', categorywidth);
+                $(item).on('mouseover', function(e){
+                    self._setOver(this);
+                }).on('mouseout', function(e){    
+                    self._setOut(this);
+                });
+
+                $(item).find('> .nav-category-container > ul >li').each(function(cdx, child){
+                    $(child).on('mouseover', function(e){
+                        self._setOver(this);
+                    }).on('mouseout', function(){
+                        self._setOut(this);
+                    })
+                });
+            });
+        },
+
+        _removeGnbEvents: function(){
+            var self = this;
+
+            self.$navItems.each(function(idx, item){              
+                $(item).find('> .nav-category-container').removeAttr('style');
+                $(item).find('> .nav-category-container > ul').removeAttr('style');
+                $(item).find('> a').removeAttr('style');
+                $(item).removeAttr('style');
+
+                $(item).off('mouseover mouseout');
+                $(item).find('> .nav-category-container > ul >li').each(function(cdx, child){
+                    $(child).off('mouseover mouseout');
+                });
+            });
+        },
+
+        _mypageToggle: function(target){
+            var self = this;
+
+            var mypageLayer = self.$mypage.find('.mypage-layer');
+            mypageLayer.toggle();
+            
+            if(mypageLayer.css('display') === 'block'){
+                $(window).on('click.headerMypage scroll.headerMypage', function(e){
+                    if(e.target !== target) {
+                        console.log(e.target + " / " + target);
+                        self._mypageToggle();
+                    }
+                })
+            } else{
+                $(window).off('click.headerMypage scroll.headerMypage');
+            }
         },
 
         _menuToggle: function(){
             var self = this,
             active, replaceText;
 
-            replaceText = self.$menuOpener.find('.blind');
-            active = self.$menuOpener.hasClass('active');
+            replaceText = self.$hamburger.find('.blind');
+            active = self.$hamburger.hasClass('active');
 
             if(active){
-                self.$menuOpener.removeClass('active');
+                self.$hamburger.removeClass('active');
                 replaceText.text("메뉴 열기");
 
                 if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
             } else{
-                self.$menuOpener.addClass('active');
+                self.$hamburger.addClass('active');
                 replaceText.text("메뉴 닫기");
 
                 if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
             }
         },
 
-        _menuToggleDisabled: function(){
+        _hamburgerDisabled: function(){
             var self = this;
 
-            var replaceText = self.$menuOpener.find('.blind');
+            var replaceText = self.$hamburger.find('.blind');
             replaceText.text("메뉴 열기");
 
-            self.$menuOpener.removeClass('active');
+            self.$hamburger.removeClass('active');
 
             if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
         },
 
-        _menuToggleTansition: function(){
-
-        },
-
-        _gnbInit: function(){
+        _setOver: function(item){
             var self = this;
 
-            self._removeOutTimer();
-            self._setOut();
-            
-            self._setRemoveCategoryOutTimer();
-            self._setCategoryOut();
-        },
+            $(item).find('> a').addClass('active'); 
 
-        _setCategoryOver: function(idx){
-            var self = this;
+            var catecontainer = $(item).find('> .nav-category-container');
+            if(catecontainer.length){
+                var subwidth = $(item).data('subwidth');           
+                $(item).find('> .nav-category-container').stop().css('display', 'inline-block').animate({width:subwidth}, 200);
+            }
 
-            if(self.gnbMode == "pc"){
-                self.isCategoryHover = true;
-    
-                var categoryItem = self.$categoryItems.eq(idx);
-                var categoryAtag = categoryItem.find('.super-category-item');
-                if(!categoryAtag.hasClass('active')) categoryAtag.addClass('active');
+            var categoryLayer = $(item).find('> .nav-category-layer');
+            if(categoryLayer.length){
+                categoryLayer.find('.ui_carousel_slider').vcCarousel({
+                    infinite: false,
+                    swipeToSlide: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                });
+                categoryLayer.find('.ui_carousel_list').css('overflow', 'hidden');
             }
         },
 
-        _setCategoryOutTimer: function(idx){
+        _setOut: function(item){
             var self = this;
 
-            if(self.gnbMode == "pc"){
-                self.categoryOutTimer = setTimeout(function(){
-                    self._setCategoryOut(idx);
-                }, 128);
-            }
-        },
-
-        _setRemoveCategoryOutTimer: function(){
-            var self = this;
-
-            if(self.categoryOutTimer != null){
-                clearTimeout(self.categoryOutTimer);
-
-                self.categoryOutTimer = null;
-            }
-        },
-
-        _setCategoryOut: function(idx){
-            var self = this;
-
-            self.isCategoryHover = false;
-
-            if(self.gnbMode == "pc"){
-                var categoryItem = self.$categoryItems.eq(idx);
-                var categoryAtag = categoryItem.find('.super-category-item');
-                if(categoryAtag.hasClass('active')) categoryAtag.removeClass('active');
-            }
-        },
-
-        _setOver: function(){
-            var self = this,
-            navItem;
-
-            if(self.gnbMode == "pc"){
-                self._removeOutTimer();
-    
-                self.isHover = true;
-    
-                self._setProductActiveToggle(true);
-            }
-        },
-
-        _setOutTimer: function(){
-            var self = this;
-
-            if(self.gnbMode == "pc"){
-                self.outTimer = setTimeout(function(){
-                    self._setOut();
-                }, 128);
-            }
-        },
-
-        _removeOutTimer: function(){
-            var self = this;
-
-            if(self.gnbMode == "pc" && self.outTimer != null){
-                clearTimeout(self.outTimer);
-
-                self.outTimer = null;
-            }
-        },
-
-        _setOut: function(){
-            var self = this;
-            
-            self.isHover = false;
-
-            if(self.gnbMode == "pc"){
-                self._setProductActiveToggle(false);
-            }
-        },
-
-        _setProductActiveToggle: function(active){
-            var self = this;
-
-            var replaceText = self.$product.find('.blind');
-            if(active){
-                if(!self.$product.hasClass('active')) self.$product.addClass('active');
-                replaceText.text('제품 메뉴 닫기');
+            var catecontainer = $(item).find('> .nav-category-container');
+            if(catecontainer.length){
+                catecontainer.stop().animate({width:0}, 150, function(){
+                    $(item).find('> a').removeClass('active');
+                    $(item).find('> .nav-category-container').css('display', 'none');
+                });
             } else{
-                if(self.$product.hasClass('active')) self.$product.removeClass('active');
-                replaceText.text('제품 메뉴 열기');
+                $(item).find('> a').removeClass('active');
             }
         }
     });

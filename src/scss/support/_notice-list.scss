@@ -25,10 +25,8 @@
             font-weight:400;
             color: #111;
             line-height:1.5;
-            @include textEllipsis;
-            .tit {
-                
-            }
+            display: flex;
+            align-items: flex-start;
             .tag {
                 display:inline-block;
                 margin-right:12px;
@@ -38,6 +36,9 @@
                 color:#ec455a;
                 border:1px solid #ec455a;
                 border-radius:4px;
+            }
+            .tit {
+                @include textEllipsisClamp(2);
             }
         }
         &-date {

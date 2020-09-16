@@ -5,6 +5,7 @@
 
 .profile-regist {
     position: relative;
+    margin: 48px auto 0;
     &-box {
         width: calc(50% - 12px);
         height: 310px;
@@ -35,7 +36,7 @@
         margin-top: 16px;
     }
     &-file {
-        margin-top: 32px;
+        margin-top: 40px;
     }
     &-filed {
         position: absolute;
@@ -44,19 +45,23 @@
         width: calc(50% - 68px);
     }
     @include mobile {
+        .section-content {
+            padding: 40px 20px 58px;
+        }
         &-filed {
             position: static;
         }
         &-box,
         &-filed {
             width: 100%;
+            margin-top: 40px;
         }
     }
 }
 
 .appgate {
     &-figure {
-        margin-bottom: 52px;
+        margin-bottom: 28px;
         text-align: center;
         &-img {
             margin-bottom: 12px;
@@ -78,11 +83,14 @@
         width: calc((100% - 22px) / 3 );
         float: left;
         margin-left: 11px;
+        img {
+            border-radius: 1.1111vw;
+        }
         &:first-child {
             margin-left: 0;
         }
         figcaption {
-            font-size-adjust: 14px;
+            font-size: 14px;
             text-align: center;
             margin-top: 12px;
         }

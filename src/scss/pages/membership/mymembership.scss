@@ -202,6 +202,17 @@
                             background:#EC455A;
                         }
                     }
+                    &:disabled {
+                        &::after {
+                            border-color:#ccc;
+                        }
+                        span {
+                            color:#ccc;
+                            &::before, &::after {
+                                background:#ccc;
+                            }
+                        }
+                    }
                 }
             }
         }

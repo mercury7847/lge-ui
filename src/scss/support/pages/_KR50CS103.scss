@@ -10,11 +10,18 @@
     .contents-inner {
         min-height: 100vh;
         max-width: 848px;
+        margin: 0 auto;
         padding: 80px 0 100px;
     }
     .icon-download {
         width: 14px;
         height: 14px;
+        &-btn {
+            font-size: 14px;
+            color: #222;
+            display: inline-block;
+            margin-top: 17px;
+        }
     }
     .file-box {
         .file-input {
@@ -24,5 +31,8 @@
                 }
             }
         }
+    }
+    .btn-group {
+        padding: 0;
     }
 }
