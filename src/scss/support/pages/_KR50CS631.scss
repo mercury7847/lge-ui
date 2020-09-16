@@ -1,11 +1,6 @@
 @charset "UTF-8";
 
 .KR50CS631 {
-    .tab-wrap {
-        max-width: 1066px;
-        position: relative;
-        margin: 0 auto;
-    }
     .scroll-x {
         margin-bottom: 24px;
         &:last-child {
@@ -79,6 +74,9 @@
     }
 
     .ui_tab-notice {
+        max-width: 1066px;
+        position: relative;
+        margin: 0 auto;
         margin-bottom: 24px;
         @include mobile {
             margin-bottom: 16px;
