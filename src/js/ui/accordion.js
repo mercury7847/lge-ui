@@ -162,7 +162,7 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
             // 토글버튼 클릭됐을 때
 
             self.on("click", o.itemSelector + o.toggleSelector, function (e) {
-                e.preventDefault();
+                
 
                 //self.updateSelectors();
                 var $item = $(this).closest(o.itemClosest),
@@ -170,10 +170,19 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
                     index = $items.index($item);
 
                 if ($item.hasClass(o.selectedClass)) {
+                    var href = $item.find(o.toggleSelector).find('> a').attr('href');
+                    if(href != "#n" && href != "" && href != "#"){
+                        //location.href = href;
+                    } else{
+                        e.preventDefault();
+                    }
+
                     self.collapse(index, self.options.useAnimate, function () {
                         $item.addClass(o.activeClass);
                     });
                 } else {
+                    e.preventDefault();
+
                     self.expand(index, self.options.useAnimate);
                 }
             });
