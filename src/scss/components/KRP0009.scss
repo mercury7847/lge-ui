@@ -318,7 +318,8 @@ $color: (type01, type02, type03);
                 top: 23px;
                 left: 24px;
                 .badge {
-                    display: inline-block;
+                    display: block;
+                    margin-top: 4px;
                     padding: 4px 8px;
                     border-radius: 4px;
                     font-weight: 500;
@@ -327,6 +328,7 @@ $color: (type01, type02, type03);
                     color: #fff;
                     text-align: center;
                     &:nth-child(1) {
+                        margin-top: 0;
                         background-color: #ec455a;
                     }
                     &:nth-child(2) {
