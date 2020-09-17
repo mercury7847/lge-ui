@@ -148,7 +148,7 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
 
             if (self.endValue - self.startValue < 0) self.endValue = self.mode? self.maxValue : self.originMaxValue;      
 
-            self.triggerHandler('rangesliderchanged', [{minValue:self.startValue, maxValue:self.endValue}]);
+            
 
 
             if(!self.$el.hasClass('ui-range-slider')) {
@@ -181,6 +181,8 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
                     self.$el.removeAttr('aria-labelledby');
                 }                
             }
+
+            self.triggerHandler('rangesliderinit', [{minValue:self.startValue, maxValue:self.endValue}]);
             
         },
 

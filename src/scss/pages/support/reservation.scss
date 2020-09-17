@@ -6,77 +6,33 @@
 @import "../../layout/index";
 
 .support {
-    .banner-box {
-        a {
-            display:block;
-            position:relative;
-            padding:20px 48px 20px 24px;
-            border-radius:4px;
-
-            background:#f4f4f4;
-            .banner-heading {
-                .desc {
-                    font-size:16px;
-                    color:#616161;
-                }
-            }
-            &:after {
-                content:'';
-                position:absolute;
-                right:24px;
-                top:50%;
-                width:24px;
-                height:24px;
-                background-color: rgba(255, 70, 70, 0.2);
-                transform:translateY(-50%);
-            }
+    .login-wrap {
+        border-top:1px solid #ddd;
+        background:#fff;
+        .inner {
+            max-width:1146px;
+            margin:0 auto;
+            padding:20px 40px;
+            @include clearfix;
         }
-
-        &.icon {
-            a {
-                
-                &:before {
-                    content:'';
-                    display:inline-block;
-                    width:52px;
-                    height:52px;
-                    vertical-align:middle;
-                    background-color: rgba(255, 70, 70, 0.2);
-                }
-                .banner-heading {
-                    display:inline-block;
-                    margin-left:24px;
-                    vertical-align:middle;
-                    .tit {
-                        font-size:16px;
-                        font-weight:400;
-                        color:#a50034;
-                    }
-                    .desc {
-                        margin-top:8px;
-                        font-size:14px;
-                    }
-                }
+        .text {
+            float:left;
+            color:#515151;
+            line-height:1.5;
+        }
+        .btn-text {
+            float:right;
+        }
+        @include mobile {
+            .inner {
+                padding:20px;
             }
-            @include mobile {
-                a {
-                    padding:28px;
-                    &:before {
-                        display:block;
-                        margin:0 auto;
-                    }
-                    &:after {
-                        display:none;
-                    }
-                    .banner-heading {
-                        display:block;
-                        margin:16px 0 0;
-                        text-align:center;
-                        .desc {
-                            line-height:22px;
-                        }
-                    }
-                }
+            .text {
+                float:none;
+                margin-bottom:12px;
+                font-size:14px;
+                color:#808080;
+                line-height:1.29;
             }
         }
     }
@@ -181,118 +137,6 @@
                         line-height:18px;
                     }
                 }
-            }
-        }
-    }
-
-    .guide-wrap {
-        &-inner {
-            max-width:1148px;
-            margin:0 auto;
-            padding:56px 40px;
-            @include clearfix;
-        }
-        .column {
-            float:left;
-            width:50%;
-            padding:0 11% 0 0;
-            & + .column {
-                position:relative;
-                padding:0 0 0 11%;
-                &:before {
-                    content:'';
-                    position:absolute;
-                    left:0;
-                    top:0;
-                    width:1px;
-                    height:100%;
-                    background:#ddd;
-                }
-            }
-            .tit {
-                font-size:16px;
-                font-weight:700;
-                color:#111;
-                line-height:1.5;
-            }
-            .cont {
-                position:relative;;
-                margin-top:9px;
-                padding-right:148px;
-            }
-            .desc {
-                font-size:14px;
-                color:#616161;
-                line-height:1.43;
-                word-break:keep-all;
-            }
-        }
-        .btn {
-            position:absolute;
-            right:0;
-            top:0;
-            min-width:148px;
-            padding:9px 0 10px;
-            font-size:14px;
-            font-weight:400;
-            background:#f4f4f4;
-            &.icon {
-                span {
-                    position:relative;
-                    padding-right:20px;
-                    &:after {
-                        content:'';
-                        position:absolute;
-                        top:50%;
-                        right:0;
-                        background-repeat:no-repeat;
-                        background-size:100%;
-                        transform:translateY(-50%);
-                    }
-                }
-                &-link span:after {
-                    width:7px;
-                    height:11px;
-                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11'%3E%3Cpath fill='%23111' fill-rule='evenodd' d='M.76 10.923l5.266-4.936L.769.94l-.735.803 4.41 4.235-4.41 4.133.726.812z'/%3E%3C/svg%3E");
-                }
-                &-download span:after {
-                    width:12px;
-                    height:12px;
-                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath fill='%23111' fill-rule='evenodd' d='M0 12V6.47h1.159v4.39h9.682V6.47H12V12H0zm2.897-6.58l.814-.859 1.706 1.807V0h1.157v6.377l1.718-1.806.811.863L5.994 8.7 2.897 5.42z'/%3E%3C/svg%3E");
-                }
-            }
-        }
-        @include mobile {
-            &-inner {
-                padding:0 24px;
-            }
-            .column {
-                float:none;
-                width:100%;
-                padding:40px;
-                text-align:center;
-                & + .column {
-                    padding:40px;
-                    &:before {
-                        width:100%;
-                        height:1px;
-                        transform:translateX(0);
-                    }
-                }
-                .tit {
-                    line-height:1.75;
-                }
-                .cont {
-                    padding:0;
-                }
-                .desc {
-                    line-height:1.57;
-                }
-            }
-            .btn {
-                position:static;
-                margin-top:24px;
-                max-width:324px;
             }
         }
     }
