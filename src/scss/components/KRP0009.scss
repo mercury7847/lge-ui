@@ -284,8 +284,19 @@ $color: (type01, type02, type03);
             .items-top {
                 @include clearfix;
                 padding: 29px 0 18px;
+                .btn-filter {
+                    float:left;
+                    width:24px;
+                    height:24px;
+                    margin:0 24px 0 8px;
+                    background:url("/lg5-common/images/KRP0009/btn-filter.svg") no-repeat 0 0;
+                    background-size:24px 24px;
+                }
                 .sort-area {
                     float: right;
+                    @media screen and (max-width: 1780px) {
+                        display:none;
+                    }
                     .sort-button {
                         font-weight: 500;
                         font-size: 16px;
@@ -310,6 +321,17 @@ $color: (type01, type02, type03);
                     font-size: 16px;
                     line-height: 24px;
                     color: #111;
+                }
+                .btn-compare {
+                    float:right;
+                    button {
+                        padding:0 16px;
+                        color:#616161;
+                        font-size:14px;
+                        line-height:36px;
+                        border:1px solid #979797;
+                        border-radius:8px;
+                    }
                 }
             }
 
