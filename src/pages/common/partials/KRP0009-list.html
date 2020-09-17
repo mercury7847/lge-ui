@@ -2,6 +2,36 @@
 
 <div class="product-items-wrap">
     <div class="items-top">
+        <div class="cate-area">
+            <div class="cate-list">
+                <a href="#n"> <!-- 클릭 시 active 클래스 추가 -->
+                    2개 선택
+                    <span class="ico"></span>
+                </a>
+                <div class="cate-sel">
+                    <div class="chk-wrap">
+                        <input type="checkbox" id="all_chk01" checked>
+                        <label for="all_chk01">전체</label>
+                    </div>
+                    <div class="chk-wrap">
+                        <input type="checkbox" id="chk01">
+                        <label for="chk01">항목1</label>
+                    </div>
+                    <div class="chk-wrap">
+                        <input type="checkbox" id="chk02">
+                        <label for="chk02">항목2</label>
+                    </div>
+                    <div class="chk-wrap" >
+                        <input type="checkbox" id="chk03">
+                        <label for="chk03">항목3</label>
+                    </div>
+                    <div class="chk-wrap">
+                        <input type="checkbox" id="chk04">
+                        <label for="chk04">항목4</label>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="btn-filter">
             <a href="#n" class=""><span class="blind">옵션필터</span></a>
         </div>
@@ -33,72 +63,74 @@
                             <img data-src="`+items1[i].visual+`" alt="" class="lazyload">
                         </a>
                     </div>
-                    <div class="color-option">
-                        <div class="inner" role="radiogroup">
-                            <a href="#" class="option active" role="radio" aria-describedby="{제품ID}" title="옵션1">옵션1</a>
-                            <a href="#" class="option" role="radio" aria-describedby="{제품ID}" title="옵션2">옵션2</a>
-                            <a href="#" class="option" role="radio" aria-describedby="{제품ID}" title="옵션3">옵션3</a>
-                        </div>
-                    </div>
-                    <div class="badge-product">
-                        <span class="badge">NEW</span>
-                        <span class="badge">BEST</span>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">
-                            <a href="#" id="{제품ID}">LG DIOS 노크온 매직스페이스</a>
-                        </div>
-                        <div class="sku">S833MC85Q</div>
-                        <div class="review-info">
-                            <a href="#">
-                                <div class="star `+items1[i].review+`"><span class="blind">리뷰있음</span></div>
-                                <div class="average-rating"><span class="blind">평점</span>`+items1[i].average+`</div>
-                                <div class="review-count"><span class="blind">리뷰 수</span>(`+items1[i].reviewCount+`)</div>
-                            </a>
-                        </div>
-                        <ul class="spec-info">
-                            <li>용량 : 840L</li>
-                            <li>전체크기(WxHxD) : 912 x 1,790 x 927 mm</li>
-                            <li>형태 : 노크온 매직스페이스</li>
-                            <li>패턴 :  미드나잇</li>
-                            <li><span class="care-option">케어십 가능</span></li>
-                        </ul>
-                    </div>
-                    <div class="price-area">
-                        <div class="purchase-price">
-                            <em class="blind">판매가격</em>
-                            <span class="price">5,200,000<em>원</em></span>
-                        </div>
-                        <div class="product-price">
-                            <div class="reduced-price">
-                                <em class="blind">최대 혜택가격</em>
-                                <span class="price">360,000<em>원</em></span>
-                            </div>
-                            <div class="discount-rate">
-                                <em class="blind">할인율</em>
-                                <span class="price">15<em>%</em></span>
+                    <div class="product-contents">
+                        <div class="color-option">
+                            <div class="inner" role="radiogroup">
+                                <a href="#" class="option active" role="radio" aria-describedby="{제품ID}" title="옵션1">옵션1</a>
+                                <a href="#" class="option" role="radio" aria-describedby="{제품ID}" title="옵션2">옵션2</a>
+                                <a href="#" class="option" role="radio" aria-describedby="{제품ID}" title="옵션3">옵션3</a>
                             </div>
                         </div>
+                        <div class="badge-product">
+                            <span class="badge">NEW</span>
+                            <span class="badge">BEST</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">
+                                <a href="#" id="{제품ID}">LG DIOS 노크온 매직스페이스</a>
+                            </div>
+                            <div class="sku">S833MC85Q</div>
+                            <div class="review-info">
+                                <a href="#">
+                                    <div class="star `+items1[i].review+`"><span class="blind">리뷰있음</span></div>
+                                    <div class="average-rating"><span class="blind">평점</span>`+items1[i].average+`</div>
+                                    <div class="review-count"><span class="blind">리뷰 수</span>(`+items1[i].reviewCount+`)</div>
+                                </a>
+                            </div>
+                            <ul class="spec-info">
+                                <li>용량 : 840L</li>
+                                <li>전체크기(WxHxD) : 912 x 1,790 x 927 mm</li>
+                                <li>형태 : 노크온 매직스페이스</li>
+                                <li>패턴 : 미드나잇</li>
+                                <li><span class="care-option">케어십 가능</span></li>
+                            </ul>
+                        </div>
+                        <div class="price-area">
+                            <div class="purchase-price">
+                                <em class="blind">판매가격</em>
+                                <span class="price">5,200,000<em>원</em></span>
+                            </div>
+                            <div class="product-price">
+                                <div class="reduced-price">
+                                    <em class="blind">최대 혜택가격</em>
+                                    <span class="price">360,000<em>원</em></span>
+                                </div>
+                                <div class="discount-rate">
+                                    <em class="blind">할인율</em>
+                                    <span class="price">15<em>%</em></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="badge-benefit">
+                            <span class="text">3%할인</span>
+                            <span class="text">사은품</span>
+                            <span class="text">캐시백</span>
+                        </div>
                     </div>
-                    <div class="badge-benefit">
-                        <span class="text">3%할인</span>
-                        <span class="text">사은품</span>
-                        <span class="text">캐시백</span>
+                    <div class="product-wish `+items1[i].wish.class+`">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="`+items1[i].wish.id+`" name="`+items1[i].wish.name+`" `+items1[i].wish.checked+`>
+                            <label for="`+items1[i].wish.id+`"><span class="blind">찜하기</span></label>
+                        </span>
+                            </div>
+                            <div class="product-compare `+items1[i].compare.class+`">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="`+items1[i].compare.id+`" name="`+items1[i].compare.name+`" `+items1[i].compare.checked+`>
+                            <label for="`+items1[i].compare.id+`"><span class="blind">비교하기</span></label>
+                        </span>
                     </div>
                     <div class="product-button">
                         <a href="#n" class="btn">`+items1[i].button+`</a>
-                    </div>
-                    <div class="product-wish `+items1[i].wish.class+`">
-                <span class="chk-wrap">
-                    <input type="checkbox" id="`+items1[i].wish.id+`" name="`+items1[i].wish.name+`" `+items1[i].wish.checked+`>
-                    <label for="`+items1[i].wish.id+`"><span class="blind">찜하기</span></label>
-                </span>
-                    </div>
-                    <div class="product-compare `+items1[i].compare.class+`">
-                <span class="chk-wrap">
-                    <input type="checkbox" id="`+items1[i].compare.id+`" name="`+items1[i].compare.name+`" `+items1[i].compare.checked+`>
-                    <label for="`+items1[i].compare.id+`"><span class="blind">비교하기</span></label>
-                </span>
                     </div>
                 </div>
             </li>
@@ -108,10 +140,12 @@
                 <div class="item">
                     <div class="product-image">
                         <a href="#">
-                            <img data-src="`+banner[i].visual+`" alt="" class="lazyload">
+                            <img data-src="`+banner[i].visual1+`" alt="" class="lazyload pc">
+                            <img data-src="`+banner[i].visual2+`" alt="" class="lazyload tablet">
+                            <img data-src="`+banner[i].visual3+`" alt="" class="lazyload mobile">
                         </a>
                     </div>
-                    <div class="banner-contents `+banner[i].textColor+`">
+                    <div class="banner-contents">
                         <div class="inner">
                             <div class="banner-flag">
                                 <span class="flag">얼음정수기냉장고</span>
@@ -130,73 +164,81 @@
         }
         @@for (var i = 0; i < context.items2.length; i++) {
             <li class="`+items2[i].moduleType+`">
-                <div class="item `+items2[i].selected+`">
+                <div class="item">
                     `+items2[i].badgeType+`
                     <div class="product-image">
                         <a href="#">
                             <img data-src="`+items2[i].visual+`" alt="" class="lazyload">
                         </a>
                     </div>
-                    <div class="color-option">
-                        <div class="inner" role="radiogroup">
-                            <a href="#" class="option active" role="radio" aria-describedby="{제품ID}" title="옵션1">옵션1</a>
-                            <a href="#" class="option" role="radio" aria-describedby="{제품ID}" title="옵션2">옵션2</a>
-                            <a href="#" class="option" role="radio" aria-describedby="{제품ID}" title="옵션3">옵션3</a>
-                        </div>
-                    </div>
-                    <div class="badge-product">
-                        <span class="badge">NEW</span>
-                        <span class="badge">BEST</span>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">
-                            <a href="#" id="{제품ID}">LG DIOS 노크온 매직스페이스</a>
-                        </div>
-                        <div class="sku">S833MC85Q</div>
-                        <div class="rating"></div>
-                        <ul class="spec-info">
-                            <li>용량 : 840L</li>
-                            <li>전체크기(WxHxD) : 912 x 1,790 x 927 mm</li>
-                            <li>형태 : 노크온 매직스페이스</li>
-                            <li>패턴 :  미드나잇</li>
-                            <li><span class="care-option">케어십 가능</span></li>
-                        </ul>
-                    </div>
-                    <div class="price-area">
-                        <div class="purchase-price">
-                            <em class="blind">판매가격</em>
-                            <span class="price">5,200,000<em>원</em></span>
-                        </div>
-                        <div class="product-price">
-                            <div class="reduced-price">
-                                <em class="blind">최대 혜택가격</em>
-                                <span class="price">360,000<em>원</em></span>
-                            </div>
-                            <div class="discount-rate">
-                                <em class="blind">할인율</em>
-                                <span class="price">15<em>%</em></span>
+                    <div class="product-contents">
+                        <div class="color-option">
+                            <div class="inner" role="radiogroup">
+                                <a href="#" class="option active" role="radio" aria-describedby="{제품ID}" title="옵션1">옵션1</a>
+                                <a href="#" class="option" role="radio" aria-describedby="{제품ID}" title="옵션2">옵션2</a>
+                                <a href="#" class="option" role="radio" aria-describedby="{제품ID}" title="옵션3">옵션3</a>
                             </div>
                         </div>
+                        <div class="badge-product">
+                            <span class="badge">NEW</span>
+                            <span class="badge">BEST</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">
+                                <a href="#" id="{제품ID}">LG DIOS 노크온 매직스페이스</a>
+                            </div>
+                            <div class="sku">S833MC85Q</div>
+                            <div class="review-info">
+                                <a href="#">
+                                    <div class="star `+items2[i].review+`"><span class="blind">리뷰있음</span></div>
+                                    <div class="average-rating"><span class="blind">평점</span>`+items2[i].average+`</div>
+                                    <div class="review-count"><span class="blind">리뷰 수</span>(`+items2[i].reviewCount+`)</div>
+                                </a>
+                            </div>
+                            <ul class="spec-info">
+                                <li>용량 : 840L</li>
+                                <li>전체크기(WxHxD) : 912 x 1,790 x 927 mm</li>
+                                <li>형태 : 노크온 매직스페이스</li>
+                                <li>패턴 :  미드나잇</li>
+                                <li><span class="care-option">케어십 가능</span></li>
+                            </ul>
+                        </div>
+                        <div class="price-area">
+                            <div class="purchase-price">
+                                <em class="blind">판매가격</em>
+                                <span class="price">5,200,000<em>원</em></span>
+                            </div>
+                            <div class="product-price">
+                                <div class="reduced-price">
+                                    <em class="blind">최대 혜택가격</em>
+                                    <span class="price">360,000<em>원</em></span>
+                                </div>
+                                <div class="discount-rate">
+                                    <em class="blind">할인율</em>
+                                    <span class="price">15<em>%</em></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="badge-benefit">
+                            <span class="text">3%할인</span>
+                            <span class="text">사은품</span>
+                            <span class="text">캐시백</span>
+                        </div>
                     </div>
-                    <div class="badge-benefit">
-                        <span class="text">3%할인</span>
-                        <span class="text">사은품</span>
-                        <span class="text">캐시백</span>
+                    <div class="product-wish `+items2[i].wish.class+`">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="`+items2[i].wish.id+`" name="`+items2[i].wish.name+`" `+items2[i].wish.checked+`>
+                            <label for="`+items2[i].wish.id+`"><span class="blind">찜하기</span></label>
+                        </span>
+                            </div>
+                            <div class="product-compare `+items2[i].compare.class+`">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="`+items2[i].compare.id+`" name="`+items2[i].compare.name+`" `+items2[i].compare.checked+`>
+                            <label for="`+items2[i].compare.id+`"><span class="blind">비교하기</span></label>
+                        </span>
                     </div>
                     <div class="product-button">
                         <a href="#n" class="btn">`+items2[i].button+`</a>
-                    </div>
-                    <div class="product-wish `+items2[i].wish.class+`">
-                <span class="chk-wrap">
-                    <input type="checkbox" id="`+items2[i].wish.id+`" name="`+items2[i].wish.name+`" `+items2[i].wish.checked+`>
-                    <label for="`+items2[i].wish.id+`"><span class="blind">찜하기</span></label>
-                </span>
-                    </div>
-                    <div class="product-compare `+items2[i].compare.class+`">
-                <span class="chk-wrap">
-                    <input type="checkbox" id="`+items2[i].compare.id+`" name="`+items2[i].compare.name+`" `+items2[i].compare.checked+`>
-                    <label for="`+items2[i].compare.id+`"><span class="blind">비교하기</span></label>
-                </span>
                     </div>
                 </div>
             </li>

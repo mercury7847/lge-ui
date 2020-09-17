@@ -13,9 +13,74 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
             if (self.supr(el, options) === false) {
                 return;
             };
+
+            self.$mobileLinks = null;
+            self.$pcLinkes = self.$el.find('.cont-area .link-wrap');
             
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
+        },
+
+        _addMobileLinks: function(){
+            var self = this;
+
+            if(self.$mobileLinks == null){
+                var toggleList = [];
+                var itemList = [];
+                self.$el.find('.link-wrap .link-section h5').each(function(idx, item){
+                    if(!$(item).hasClass('hidden')){
+                        toggleList.push($(item).clone());
+                        itemList.push([]);
+                    }
+                });
+
+                self.$el.find('.link-wrap .link-section .dep2-wrap').each(function(idx, item){
+                    var id = $(item).data('groupId').split('-')[1]-1;
+                    $(item).find('> li').each(function(cdx, child){
+                        itemList[id].push($(child).clone());
+                    });
+                });
+
+
+                var elements = "";
+                elements += '<ul class="link-wrap ui_footer_accordion">';
+
+                for(var i=0;i<toggleList.length;i++){
+                    elements += '   <li class="link-section">';
+                    elements += '       <ul role="tree" class="dep2-wrap ui_accord_content" aria-labelledby="depth1-' + (i+1) + '-1">';
+                    elements += '       </ul>';
+                    elements += '   </li>';
+                }
+
+                elements += '</ul>';
+
+                $('.cont-area').prepend(elements);
+
+                $('.link-wrap.ui_footer_accordion > li').each(function(idx, item){
+                    $(toggleList[idx]).addClass('ui_accord_toggle');
+                    $(item).prepend($(toggleList[idx]));
+
+                    var itemlistleng = $(itemList[idx][0]).find('ul').length;
+                    if(itemlistleng) $(item).find('> ul').addClass('ui_footer_accordion');
+
+                    for(var cdx in itemList[idx]){
+                        if(itemlistleng){
+                            $(itemList[idx][cdx]).find('> .dep2').addClass('ui_accord_toggle');
+                            $(itemList[idx][cdx]).find('> ul').addClass('ui_accord_content');
+                        }
+
+                        $(item).find('> ul').append($(itemList[idx][cdx]));
+                    }
+                });
+
+                self.$mobileLinks = self.$el.find('.link-wrap.ui_footer_accordion');
+
+                $('.ui_footer_accordion').vcAccordion({
+                    singleOpen: true,
+                    itemSelector: "> li",
+                    toggleSelector: "> .ui_accord_toggle"
+                });
+            }
         },
 
         _resize: function(){
@@ -24,30 +89,17 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
             winwidth = $(window).outerWidth(true);
             if(winwidth > 767){
-                self.$el.find('.ui_footer_accordion').each(function(idx, item){
-                    var isModules = $(item).attr("ui-modules");
-                    var isActAccord = $(item).data("act-accord");
-                    if(isModules !== undefined){
-                        if(isActAccord){
-                            $(item).data('act-accord', false);
-                            $(item).vcAccordion("destroy");
-                        }
-                    }
-                });
+                if(self.$mobileLinks != null){
+                    $('.ui_footer_accordion').vcAccordion('collapseAll');
+                    self.$mobileLinks.hide();
+                }
+
+                self.$pcLinkes.show();
             } else{
-                self.$el.find('.ui_footer_accordion').each(function(idx, item){
-                    var isModules = $(item).attr("ui-modules");
-                    var isActAccord = $(item).data("act-accord");
-                    if(isModules !== undefined){
-                        if(!isActAccord){
-                            $(item).data('act-accord', true);
-                            $(item).vcAccordion("restart");
-                        }
-                    } else{
-                        $(item).data('act-accord', true);
-                        $(item).vcAccordion();
-                    }
-                });
+                self.$pcLinkes.hide();
+
+                self._addMobileLinks();
+                self.$mobileLinks.show();
             }
         }
     });
