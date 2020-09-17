@@ -6,15 +6,16 @@
             <a href="#n" class=""><span class="blind">옵션필터</span></a>
         </div>
         <div class="sort-area">
-            <div class="sort-product ui_dropdown">
-                <a href="#" class="sort-button ui_dropdown_toggle">인기순<span class="blind">열기</span></a>
-                <ul class="dropdown-list ui_dropdown_list">
-                    <li class="selected"><a href="#">인기순</a></li>
-                    <li><a href="#">최신순</a></li>
-                    <li><a href="#">가격 높은순</a></li>
-                    <li><a href="#">가격 낮은순</a></li>
-                    <li><a href="#">리뷰 많은순</a></li>
-                </ul>
+            <div class="sort-list">
+                <div class="select-wrap">
+                    <select class="ui_selectbox" id="select1" title="리스트 정렬 순서 선택">
+                        <option value="">인기순</option>
+                        <option value="">최신순</option>
+                        <option value="">가격 높은순</option>
+                        <option value="">가격 낮은순</option>
+                        <option value="">리뷰 많은순</option>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="list-count">총 48개</div>
@@ -25,7 +26,7 @@
     <ul class="items-list">
         @@for (var i = 0; i < context.items1.length; i++) {
             <li class="`+items1[i].moduleType+`">
-                <div class="item `+items1[i].selected+`">
+                <div class="item">
                     `+items1[i].badgeType+`
                     <div class="product-image">
                         <a href="#">
@@ -48,7 +49,13 @@
                             <a href="#" id="{제품ID}">LG DIOS 노크온 매직스페이스</a>
                         </div>
                         <div class="sku">S833MC85Q</div>
-                        <div class="rating"></div>
+                        <div class="review-info">
+                            <a href="#">
+                                <div class="star `+items1[i].review+`"><span class="blind">리뷰있음</span></div>
+                                <div class="average-rating"><span class="blind">평점</span>`+items1[i].average+`</div>
+                                <div class="review-count"><span class="blind">리뷰 수</span>(`+items1[i].reviewCount+`)</div>
+                            </a>
+                        </div>
                         <ul class="spec-info">
                             <li>용량 : 840L</li>
                             <li>전체크기(WxHxD) : 912 x 1,790 x 927 mm</li>
