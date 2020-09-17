@@ -1,10 +1,6 @@
 (function() {
-    function yyyyMMddString(str, seperator) {
-        return str.replace(/(\d{4})(\d{2})(\d{2})/g, '$1' + seperator + '$2' + seperator + '$3');
-    }
-
     function registrationReceipt(param) {
-        var ajaxUrl = '/lg5-common/data-ajax/mypage/membership/registration_receipt.json';
+        var ajaxUrl = self.$contBox.data('url');
         $.ajax({
             url: ajaxUrl,
             data: param
@@ -14,7 +10,7 @@
     }
 
     function registrationReceiptSuccessModal(data, message) {
-        var content = "<p>" + "구매일자 : " + yyyyMMddString(data.date,". ") + "</p>";
+        var content = "<p>" + "구매일자 : " + vcui.date.format(data.date,'yyyy. MM. dd') + "</p>";
         content += "<p>" + "구매제품 : " + data.product + "</p>";
 
         $('#laypop .tit span').text(message);
@@ -27,6 +23,7 @@
 
         var receiptRegist = {
             init: function() {
+                self.$contBox = $('.cont-box');
 
                 vcui.require(["ui/tooltipTarget","ui/formatter"], function () {
                     $('.ui_tooltip-target').vcTooltipTarget({"tooltip":".tooltip-box"});
@@ -47,6 +44,7 @@
                     $("#btn-confirm").attr("disabled", !(/^(\d{8})-(\d{8})/.test(val)));
                 });
 
+                /*
                 var ajaxUrl = '/lg5-common/data-ajax/mypage/membership/shop_brand_list.json';
                 $.ajax({
                     url: ajaxUrl
@@ -60,6 +58,7 @@
                     $('#select1').html(contentHtml);
                     $('#select1').vcSelectbox('update');
                 });
+                */
             }
         }
         receiptRegist.init();                
