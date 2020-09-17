@@ -138,13 +138,15 @@
 
 /* button area */
 .btn-group {
-    max-width:1066px;
+    max-width:1146px;
     margin:40px auto 0;
+    padding:0 40px;
     &.right {
         text-align:right;
     }
     @include mobile {
         margin-top:0;
+        padding:0;
     }
 }
 
