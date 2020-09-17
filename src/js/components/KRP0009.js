@@ -4,7 +4,7 @@ $(function () {
     ;(function($, _$){   
         
         
-        vcui.require(['ui/rangeSlider', 'ui/selectbox'], function () {
+        vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
 
             // local storage 
             var Storage = {
@@ -60,7 +60,7 @@ $(function () {
 
             
 
-            $('.ui_desc').on('rangesliderchanged', function (e, data) {
+            $('.ui_desc').on('rangesliderinit rangesliderchanged', function (e, data) {
                 console.log(data);
 
                 $('.min').text(data.minValue);
@@ -175,61 +175,120 @@ $(function () {
                 requestData(Storage.get(storageName));
             }
 
+            var sliderTmpl = 
+            '<li><div class="head">'+
+                '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
+                    '<div class="tit">{{title}}</div>'+
+                    '<span class="blind ui_accord_text">내용 열기</span>'+
+                '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
+                '<div class="cont">'+
+                    '<div class="ui_filter_slider {{uiName}}" data-range="{{range}}" data-min-label="minLabel" data-max-label="maxLabel"></div>'+
+                    '<p class="min"></p><p class="max"></p>'+
+            '</div></div></li>';
+
+            var checkboxTmpl = 
+            '<li><div class="head">'+
+                '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
+                    '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span>{{count}}</span></div>'+
+                    '<span class="blind ui_accord_text">내용 열기</span>'+
+                '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
+                '<div class="cont">'+
+                '{{#each (item, index) in list}}'+
+                '<div class="chk-wrap"><input type="checkbox" value={{item.value}} id="chk_{{index+1}}" {{item.enable}}><label for="chk_{{index+1}}">{{item.title}} ({{item.modelCount}})</label></div>'+
+                '{{/each}}' +
+            '</div></div></li>';
 
             function render(arr){
-            /* 
-
-            <div class="head">
-                    <a href="#head01" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                        <div class="tit">
-                            서비스 구분
-                        </div>
-                        <span class="blind ui_accord_text">내용 열기</span>
-                    </a>
-                </div>
-                <div class="desc ui_accord_content" id="head01">
-                    <div class="cont">
-                        <div class="rdo-wrap">
-                            <input type="radio" id="rdo01" name="opt" checked>
-                            <label for="rdo01">전체</label>
-                        </div>
-                        <div class="rdo-wrap">
-                            <input type="radio" id="rdo02" name="opt">
-                            <label for="rdo02">일반제품</label>
-                        </div>
-                        <div class="rdo-wrap">
-                            <input type="radio" id="rdo03" name="opt" disabled>
-                            <label for="rdo03">케어십 가능 제품</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="filter_box">
-                    <div id="productPrice">가격</div>
-                    <div class="ui_price_slider" data-id="price" data-range="100000,10000000" data-round-unit="100000" data-unit-label="원" data-id="price" data-min-label="price range minimum" data-max-label="price range maximum"></div>
-                </div>
-        
-                <div class="filter_box">
-                    <div id="productSize">스크린 사이즈</div>
-                    <div class="ui_size_slider" data-id="size" data-range="0,200" data-round-unit="1" data-unit-label="cm" data-min-label="size range minimum" data-max-label="size range maximum"></div>
-                </div>
-        
-                <div class="filter_box">
-                    <div id="c1">색상</div>
-                    <label><input id="color0" type="checkbox" name="color" value="blue"> Blue</label>
-                    <label><input id="color1" type="checkbox" name="color" value="red"> Red</label>			
-                    <label><input id="color2" type="checkbox" name="color" value="yellow"> Yellow</label>			
-                </div>
-        
-                <div class="filter_box">
-                    <div id="c1">타입</div>
-                    <label><input id="type0" type="checkbox" name="type" value="c1"> LG SIGNATURE</label>
-                    <label><input id="type1" type="checkbox" name="type" value="c2"> OLED TVs</label>			
-                    <label><input id="type2" type="checkbox" name="type" value="c3"> NanoCell TVs</label>			
-                </div> */
+           
                 for(var i=0; i<arr.length; i++){
 
+                    var item = arr[i];
+                    if(item.filterTypeCode=='00'){
+
+
+
+                        var uArr = item.data.sort(function(a, b) { 
+                            return parseInt(a.filterValueName) < parseInt(b.filterValueName) ? -1 : parseInt(a.filterValueName) > parseInt(b.filterValueName) ? 1 : 0;
+                        });
+
+                        var rStr = uArr[0]['filterValueName']+','+uArr[uArr.length-1]['filterValueName'];
+
+                        console.log(rStr);
+
+
+                        html = vcui.template(sliderTmpl,{
+                            headId : 'headId_'+i,
+                            title : item['filterName'],
+                            count : item['modelCount'],
+                            uiName : 'ui_'+item['filterName'].toLowerCase(),
+                            // input : '',
+                            range : rStr
+                            
+                        });
+                    }else{
+
+                        var dArr = vcui.array.map(item.data, function(dItem, idx){
+                            return {
+                                title:dItem['filterValueName'], 
+                                value:dItem['filterValueId'], 
+                                modelCount:dItem['modelCount'], 
+                                enable:dItem['enable'] == 'N'? 'disabled' : '',
+                            }
+                        });
+
+                        // console.log(dArr);
+
+
+
+                        // enable: "Y"
+                        // facetSourceCode: "CTGR"
+                        // facetValueId: "FV60004667"
+                        // filterName: "Types"
+                        // filterOrderNo: "1"
+                        // filterTypeCode: "99"
+                        // filterValueId: "FV60004667"
+                        // filterValueName: "French Door"
+                        // modelCount: 16
+
+
+                        html = vcui.template(checkboxTmpl,{
+                            headId : 'headId_'+i,
+                            title : item['filterName'],
+                            count : item['modelCount'],
+                            list : dArr
+                        });
+
+                    }
+
+                    $('.ui_filter_accordion ul').append(html);
+
+                    
+
                 }
+
+                // $('.ui_filter_slider').vcRangeSlider({mode:true});
+
+                $('.ui_filter_slider').on('rangesliderinit rangesliderchanged', function (e, data) {
+                    
+                    console.log(data);
+    
+                    $('.min').text(data.minValue);
+                    $('.max').text(data.maxValue);
+    
+                }).vcRangeSlider({mode:true, roundUnit:10000});
+
+
+                $('.ui_filter_accordion').on('accordionexpand', function(e,data){
+
+                    if(data.content.find('.ui_filter_slider')) {
+                        data.content.find('.ui_filter_slider').vcRangeSlider('update');
+                    }   
+
+                }).vcAccordion();
+
+                
+
+
 
                 // 컴포넌트 설정
                 /* 
