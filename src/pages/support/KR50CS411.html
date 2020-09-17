@@ -24,16 +24,16 @@
                 'button': [
                     {
                         'text': '요금 및 보증기간 안내',
-                        'attr': 'class="btn gray btn-border btn-small" title="레이어 열림"'
+                        'attr': 'class="btn bd-gray btn-small" title="레이어 열림"'
                     }, {
                         'text': '유상서비스 적용 안내',
-                        'attr': 'class="btn gray btn-border btn-small" title="레이어 열림"'
+                        'attr': 'class="btn bd-gray btn-small" title="레이어 열림"'
                     }
                 ]
             })
             
             <div class="contents support KR50CS411">
-                <div class=".login-wrap">
+                <div class="login-wrap">
                     <div class="inner">
                         <p class="text">이메일을 보내기 위해 계정이 필요하지는 않지만, 로그인을 하시면 고객님의 세부 정보가 자동으로 입력됩니다.</p>
                         <a href="#" class="btn-text">로그인하기</a>
@@ -52,11 +52,11 @@
                                             <div class="model-search">
                                                 <div class="input-wrap block">
                                                     <input type="text" class="" id="model" name="model" placeholder="모델명을 검색해주세요.">
-                                                    <button type="submit" class="icon-search"><span class="blind">검색</span></button>
+                                                    <button type="button"><span class="blind">검색</span></button>
                                                 </div>
-                                                <div>
-                                                    <a href="#" class=""><span>내 제품 선택</span></a>
-                                                    <a href="#" class="btn-text red01">모델명 확인방법</a>
+                                                <div class="model-util">
+                                                    <a href="#" class="btn-banner"><span class="icon-plus">내 제품 선택</span></a>
+                                                    <a href="#" class="btn-text pink">모델명 확인방법</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -327,24 +327,25 @@
                                     <div class="row">
                                         <div class="field-item block">
                                             <div class="field-title">
-                                                <label for="input-address" class="tit">주소<span class="require">*<span class="blind">필수항목</span></span></label>
+                                                <label for="input-zipcode" class="tit">주소<span class="require">*<span class="blind">필수항목</span></span></label>
                                             </div>
                                             <div class="address-box">
                                                 <div class="input-wrap">
-                                                    <div class="box">
-                                                        <input type="text" name="address" id="input-address" placeholcer="" required>
-                                                        <div class="cell">
+                                                    <span class="box">
+                                                        <input type="text" id="input-zipcode" placeholcer="" required>
+                                                        <span class="cell">
                                                             <button type="button">주소찾기</button>
-                                                        </div>
-                                                    </div>
+                                                        </span>
+                                                    </span>
                                                 </div>
-                                                <div class="input-wrap">
-                                                    <input type="text" name="address2" id="input-address2" placeholcer="" readonly required>
+                                                <div class="address-detail">
+                                                    <span class="address"></span>
+                                                    <input type="hidden" id="input-address" value="">
                                                 </div>
-                                                <div class="default-address">
+                                                <div class="address-default">
                                                     <div class="chk-wrap">
-                                                        <input type="checkbox" name="defaultAdress" id="defaultAddreess">
-                                                        <label for="">기본 주소로 저장</label>      
+                                                        <input type="checkbox" id="defaultAdress">
+                                                        <label for="defaultAdress">기본 주소로 저장</label>      
                                                     </div>
                                                 </div>
                                             </div>
