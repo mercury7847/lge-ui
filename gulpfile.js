@@ -26,7 +26,7 @@ gulp.task("browser-sync", () => {
         startPath: "./guide/",
         middleware: function (req, res, next) {
             if (/\.json|\.txt|\.html/.test(req.url) && req.method.toUpperCase() == 'POST') {
-                console.log('[POST => GET] : ' + req.url);
+                // console.log('[POST => GET] : ' + req.url);
                 req.method = 'GET';
             }
             next();
