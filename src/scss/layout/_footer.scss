@@ -86,7 +86,7 @@ footer {
                     .dep1 {
                         position:relative;
                         border-top:4px solid #f4f4f4;
-                        padding:0 24px;
+                        padding:0 64px 0 24px;
                         &::after {
                             content:' ';
                             position:absolute;
@@ -109,14 +109,32 @@ footer {
                             line-height:18px;
                             font-weight:700;
                         }
+                        a[target="_blank"] {
+                            white-space:nowrap;
+                            &::after {
+                                content:' ';
+                                display:inline-block;
+                                width:14px;
+                                height:18px;
+                                margin-left:2px;
+                                background:url('/lg5-common/images/icons/icon-blank-arr.svg') center no-repeat;
+                                background-size:100%;
+                                vertical-align:top;
+                            }
+                        }
                         &.hidden {
                             display:none !important;
                         }
-
-                        &.active::after {
+                    }
+                    &.active {
+                        .dep1::after {
                             transform:rotate(-45deg);
                             margin-top:-2px;
                         }
+                        .dep1 
+                            a {
+                                text-decoration:underline;
+                            }
                     }
                     &:first-child {
                         .dep1 {
@@ -132,10 +150,7 @@ footer {
                             .dep2 {
                                 display:block;
                                 position:relative;
-                                padding:11px 20px 11px 0;
-                                color:#111;
-                                font-size:14px;
-                                line-height:18px;
+                                padding-right:20px;
                                 &::before {
                                     content:' ';
                                     position:absolute;
@@ -167,6 +182,26 @@ footer {
                                         display:none;
                                     }
                                 }
+                                a {
+                                    display:block;
+                                    padding:11px 0;
+                                    color:#111;
+                                    font-size:14px;
+                                    line-height:18px;
+                                    &[target="_blank"] {
+                                        white-space:nowrap;
+                                        &::after {
+                                            content:' ';
+                                            display:inline-block;
+                                            width:14px;
+                                            height:18px;
+                                            margin-left:2px;
+                                            background:url('/lg5-common/images/icons/icon-blank-arr2.svg') center no-repeat;
+                                            background-size:100%;
+                                            vertical-align:top;
+                                        }
+                                    }
+                                }
                             }
                             &.active {
                                 .dep2 {
@@ -175,6 +210,9 @@ footer {
                                     }
                                     &::after {
                                         transform:rotate(45deg);
+                                    }
+                                    a {
+                                        text-decoration:underline;
                                     }
                                 }
                             }
@@ -186,7 +224,6 @@ footer {
                     }
 
                     .dep3-wrap {
-                        display:none;
                         padding:6px 0 10px;
                         .dep3 {
                             display:block;
@@ -194,6 +231,19 @@ footer {
                             color:#616161;
                             font-size:12px;
                             line-height:16px;
+                            &[target="_blank"] {
+                                white-space:nowrap;
+                                &::after {
+                                    content:' ';
+                                    display:inline-block;
+                                    width:14px;
+                                    height:18px;
+                                    margin-left:2px;
+                                    background:url('/lg5-common/images/icons/icon-blank-arr3.svg') center no-repeat;
+                                    background-size:100%;
+                                    vertical-align:top;
+                                }
+                            }
                         }
                     }
                 }
@@ -226,6 +276,19 @@ footer {
                             font-weight:500;
                             vertical-align:top;
                         }
+                        a[target="_blank"] {
+                            white-space:nowrap;
+                            &::after {
+                                content:' ';
+                                display:inline-block;
+                                width:14px;
+                                height:16px;
+                                margin-left:2px;
+                                background:url('/lg5-common/images/icons/icon-blank-arr.svg') center no-repeat;
+                                background-size:100%;
+                                vertical-align:top;
+                            }
+                        }
                         &.hidden {
                             a, span {
                                 width:0;
@@ -236,23 +299,6 @@ footer {
                         }
                         &:first-child {
                             margin-top:0;
-                        }
-                        &.new {
-                            a {
-                                position:relative;
-                                padding-right:16px;
-                                &::after {
-                                    content:' ';
-                                    position:absolute;
-                                    top:50%;
-                                    right:0;
-                                    width:14px;
-                                    height:14px;
-                                    margin-top:-7px;
-                                    background:url('/lg5-common/images/icons/icon-blank-arr.svg') center no-repeat;
-                                    background-size:100%;
-                                }
-                            }
                         }
                     }
                     .dep2-wrap {
@@ -267,6 +313,19 @@ footer {
                                 font-size:12px;
                                 line-height:16px;
                                 vertical-align:top;
+                                &[target="_blank"] {
+                                    white-space:nowrap;
+                                    &::after {
+                                        content:' ';
+                                        display:inline-block;
+                                        width:12px;
+                                        height:16px;
+                                        margin-left:2px;
+                                        background:url('/lg5-common/images/icons/icon-blank-arr2.svg') center no-repeat;
+                                        background-size:100%;
+                                        vertical-align:top;
+                                    }
+                                }
                             }
                         }
                     }
@@ -284,6 +343,19 @@ footer {
                             font-size:12px;
                             line-height:16px;
                             vertical-align:top;
+                            &[target="_blank"] {
+                                white-space:nowrap;
+                                &::after {
+                                    content:' ';
+                                    display:inline-block;
+                                    width:12px;
+                                    height:16px;
+                                    margin-left:2px;
+                                    background:url('/lg5-common/images/icons/icon-blank-arr3.svg') center no-repeat;
+                                    background-size:100%;
+                                    vertical-align:top;
+                                }
+                            }
                         }
                     }
                 }
