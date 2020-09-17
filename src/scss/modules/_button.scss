@@ -3,150 +3,165 @@
 .btn {
     display: inline-block;
     min-width:124px;
-    padding:14px 32px;
-    border: 1px solid #212121;
-    border-radius: 8px;
-    background-color: #fff;
-    line-height: 26px;
+    padding:13px 32px;
+    line-height: 24px;
     font-weight: 500;
     font-size: 16px;
-    color: #111;
     text-align: center;
     vertical-align: top;
+    border: 1px solid #111;
+    border-radius: 8px;
+    background-color:transparent;
     &.gray {
         border-color: #ededed;
         background: #ededed;
         color: #ec455a;
-        &:hover {
-            box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.06);
+        &:hover, &:active {
+            border-color:#ddd;
+            background-color:#ddd;
         }
-        &:active {
-            background-color:#e51346;
+        &:disabled, &.disabled, &[aria-disabled=true] {
+            color:#ccc;
+            border-color:#ededed;
+            background-color:#ededed;
         }
     }
     &.pink {
         border-color:#ec455a;
         background-color:#ec455a;
         color:#fff;
-        &:hover {
-            box-shadow: 2px 4px 12px 0 rgba(234, 69, 90, 0.3), 2px 4px 12px 0 rgba(0, 0, 0, 0.06);
-        }
-        &:active {
-            color:#fff;
-            background-color:#e51346;
-        }
-    }
-    &:disabled, &.disabled, &[aria-disabled=true] {
-        color:#adadad;
-        border-color:#ededed;
-        background:#ededed;
-    }
-
-    &.btn-border {
-        background:#fff;
-        &.gray {
-            color:#616161;
-            border-color:#616161;
-            &:hover {
-                box-shadow: 2px 4px 10px 0 rgba(0, 0, 0, 0.16);
-            }
-            &:active {
-                border-color:#616161;
-                background-color: #ededed;            
-            }
-        }
-        &.pink {
-            color:#ec455a;
-            border-color:#ec455a;
-            &:hover {
-                box-shadow: 2px 4px 10px 0 rgba(0, 0, 0, 0.16);
-            }
-            &:active {
-                color:#e51346;
-                border-color:#e51346;
-                background-color:#f4f4f4;
-            }
+        &:hover, &:active {
+            background-color: #e51346;
         }
         &:disabled, &.disabled, &[aria-disabled=true] {
-            color:#adadad;
-            border-color:#ddd;
+            border-color:#ccc;
+            background-color:#ccc;
         }
     }
-
+    &.bd-pink {
+        color:#ec455a;
+        border-color:#ec455a;
+        &:hover, &:active {
+            color:#e51346;
+            border-color:#e51346;
+            background-color:#f4f4f4;
+        }
+        &:disabled, &.disabled, &[aria-disabled=true] {
+            color:#ccc;
+            border-color:#ccc;
+            background:#fff;
+        }
+    }
+    &.bd-gray {
+        color:#616161;
+        border-color:#979797;
+        &:hover, &:active {
+            border-color:#979797;
+            background-color: #f4f4f4;   
+        }
+        &:disabled, &.disabled, &[aria-disabled=true] {
+            color:#ccc;
+            border-color:#ccc;
+            background:#fff;
+        }
+    }
     &.btn-small {
         min-width:84px;
-        padding: 8px 16px;
+        padding: 7px 15px;
         font-size: 14px;
         line-height: 20px;
-    }
-
-    &.bd-pink {
-        border-color:#EC455A;
-        background:transparent;
-        color:#EC455A;
-    }
-    // @include mobile {
-    //     min-width: auto;
-    //     padding: 16px;
-    //     font-size: 13px;
-    //     line-height: 20px;
-    // }
-}
-[class^="btn"] {
-    [class^="icon-"] {
-        margin-left: 8px;
     }
 }
 
 .btn-text {
     display:inline-block;
-    padding-bottom:2px;
-    border-bottom:1px solid #111;
-    color:#111;
     font-size:16px;
-    line-height:1;
+    font-weight:500;
+    line-height:24px;
     vertical-align:top;
-    &.gray {
-        color: #aaa;
-        border-bottom-color: #aaa;
+    &.pink {
+        color:#ec455a;
+    }
+    &.black {
+        color:#222;
     }
     &.red01 {
         color: #ec455a;
         border-bottom-color: #ec455a;
     }
-    &.icon-type {
-        position: relative;
-        [class^="icon-"] {
-            position: absolute;
-            right: -16px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
+    &:hover {
+        text-decoration:underline;
+    }
+    &:disabled, &.disabled, &[aria-disabled=true] {
+        color:#ccc;
+        text-decoration:underline;
+    }
+    @include mobile {
+        font-size:14px;
+        line-height:18px;
+        text-decoration:underline;
     }
 }
 
 .btn-link {
     position: relative;
     display: inline-block;
-    margin-right: 14px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid #212121;
-    font-weight: 700;
+    padding-right: 23px;
+    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color: #111;
+    color: #222;
     vertical-align: top;
-
     &:after {
         position: absolute;
-        @include calc(top, 50%, 6px);
-        right: -12px;
+        @include calc(top, 50%, 3px);
+        right: 9px;
         width: 8px;
         height: 8px;
-        border: 2px solid #111;
+        border: 2px solid #222;
         border-width: 2px 2px 0 0;
         transform: rotate(45deg);
         content: '';
+    }
+    @include mobile {
+        font-size:14px;
+        line-height:18px;
+    }
+}
+
+.btn-banner {
+    display:inline-block;
+    position:relative;
+    padding:15px 72px 15px 16px;
+    color:#ec455a;
+    font-size:16px;
+    line-height:24px;
+    vertical-align:top;
+    border:1px solid #ec455a;
+    border-radius:8px;
+    background:url(/lg5-common/images/icons/icon-arrow-right-red.svg) no-repeat right 16px top 16px;
+    [class^=icon-] {
+        display:block;
+        padding-left:36px;
+        background-repeat:no-repeat;
+        background-size:24px;
+        &.icon-solution {
+            background-image:url(/lg5-common/images/icons/icon-solution.svg);
+        }
+        &.icon-driver {
+            background-image:url(/lg5-common/images/icons/icon-driver.svg);
+        }
+        &.icon-plus {
+            background-image:url(/lg5-common/images/icons/icon-plus.svg); 
+        }
+    }
+    @include mobile {
+        width:100%;
+        padding:14px 12px;
+        background:none;
+        [class^=icon-] {
+            padding-left:32px;
+        }
     }
 }
 
@@ -158,11 +173,15 @@
             margin-left:0;
         }
     }
-
     @include mobile {
         .btn {
-            width:calc((100% - 4px) / 2);
-            margin-left:4px;
+            width:100%;
+            margin:0;
+            border-radius:0;
+            &:first-child:nth-last-child(2), 
+            &:first-child:nth-last-child(2) ~ .btn {
+                width:50%;
+            }
         }
     }
 }

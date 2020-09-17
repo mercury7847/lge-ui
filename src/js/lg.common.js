@@ -173,9 +173,9 @@
                 //////////////////////////////////////////////////////////////////////
     
                 // 아코디온이 펼쳐지거나 닫힐 때 레이아웃 사이즈가 변하기 때문에 resize이벤트를 강제로 발생시킨다.
-                $doc.on('accordionexpand accordioncollapse', vcui.delayRun(function (e) {
-                    $(window).triggerHandler('resize');
-                }, 200));
+                // $doc.on('accordionexpand accordioncollapse', vcui.delayRun(function (e) {
+                //     $(window).triggerHandler('resize');
+                // }, 200));
                 ///////////////////////////////////////////////////////////////////////
             });
         },

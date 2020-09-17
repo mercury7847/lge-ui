@@ -6,7 +6,7 @@
             '</td>' +
             '<td>{{categoryName}}</td>' +
             '<td class="right">' +
-                '<button type="button" class="btn pink btn-small btn-border" data-model="{{modelName}}"><span>선택하기</span></button>' +
+                '<button type="button" class="btn bd-pink btn-small" data-model="{{modelName}}"><span>선택하기</span></button>' +
             '</td>' +
         '</tr>';
     var manualListTemplate = 
@@ -17,7 +17,7 @@
             '<td>{{manualInfo}}</td>' +
             '<td>{{date}}</td>' +
             '<td class="right">' +
-                '<button type="button" class="btn pink btn-small btn-border"><span>{{fileType}}</span></button>' +
+                '<button type="button" class="btn bd-pink btn-small"><span>{{fileType}}</span></button>' +
             '</td>' +
         '</tr>';
     var driverListTemplate = 
@@ -41,7 +41,7 @@
                     '<li>{{date}}</li>' +
                     '<li>{{size}}</li>' +
                 '</ul>' +
-                '<a href="#" class="btn pink btn-small btn-border"><span>다운로드</span></a>' +
+                '<a href="#" class="btn bd-pink btn-small"><span>다운로드</span></a>' +
             '</div>' +
         '</li>';
     var optionTemplate =  '<option value="{{value}}">{{option}}</option>'; 

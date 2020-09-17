@@ -505,7 +505,7 @@
                 border-right:5px solid transparent;
             }
             @include mobile {
-                border-radius:4px;
+                border-radius:8px;
                 padding:15px;
                 padding-right:55px;
                 .ui-select-text {
@@ -692,6 +692,59 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+// address search
+.address-box {
+    .input-wrap {
+        width:calc(50% - 4px);
+        .box {
+            .cell {
+                font-size:0;
+                padding:15px 16px 15px 0;
+                button {
+                    padding-right:28px;
+                    color:#ec455a;
+                    font-size:16px;
+                    font-weight:500;
+                    line-height:24px;
+                    vertical-align:top;
+                    background:url('/lg5-common/images/icons/icon-search2-on.svg') no-repeat;
+                    background-position:right top;
+                    background-size:24px;
+                }
+            }
+        }
+    }
+    .address-detail {
+        position:relative;
+        margin-top:8px;
+        padding: 16px 24px;
+        border-radius: 8px;
+        background: #f4f4f4;
+        .address {
+            display:block;
+            height:24px;
+            font-size:16px;
+            line-height:24px;
+            color:#111;
+            word-wrap:break-word;
+        }
+    }
+    .address-default {
+        margin-top:12px;
+    }
+    @include mobile {
+        .input-wrap {
+            width:100%;
+        }
+        .address-detail {
+            .address {
+                height:auto;
+                min-height:24px;
             }
         }
     }

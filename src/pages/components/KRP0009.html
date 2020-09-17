@@ -27,8 +27,11 @@
                                 {
                                     "id": 0,
                                     "moduleType": "",
+                                    "badgeType": "",
                                     "visual": "/lg5-common/images/dummy/@img-product.jpg",
-                                    "selected": "selected",
+                                    "review": "is-review",
+                                    "average": "4.0",
+                                    "reviewCount": "48",
                                     "button": "장바구니에 담기",
                                     "wish": {
                                         "class": "",
@@ -46,8 +49,11 @@
                                 {
                                     "id": 1,
                                     "moduleType": "",
+                                    "badgeType": "<div class='promotion-badge'><span class='badge'>코리아세일페스파</span><span class='badge'>으뜸효율 10%</span></div>",
                                     "visual": "/lg5-common/images/dummy/@img-product.jpg",
-                                    "selected": "",
+                                    "review": "",
+                                    "average": "0",
+                                    "reviewCount": "0",
                                     "button": "장바구니에 담기",
                                     "wish": {
                                         "class": "",
@@ -65,8 +71,11 @@
                                 {
                                     "id": 2,
                                     "moduleType": "",
+                                    "badgeType": "<div class='promotion-badge large'><span class='badge'>으뜸효율<em>10%</em></span></div>",
                                     "visual": "/lg5-common/images/dummy/@img-product.jpg",
-                                    "selected": "",
+                                    "review": "is-review",
+                                    "average": "4.0",
+                                    "reviewCount": "48",
                                     "button": "자세히 보기",
                                     "wish": {
                                         "class": "",
@@ -84,8 +93,11 @@
                                 {
                                     "id": 3,
                                     "moduleType": "",
+                                    "badgeType": "",
                                     "visual": "/lg5-common/images/dummy/@img-product.jpg",
-                                    "selected": "",
+                                    "review": "is-review",
+                                    "average": "4.0",
+                                    "reviewCount": "48",
                                     "button": "자세히 보기",
                                     "wish": {
                                         "class": "",
@@ -103,8 +115,11 @@
                                 {
                                     "id": 4,
                                     "moduleType": "",
+                                    "badgeType": "",
                                     "visual": "/lg5-common/images/dummy/@img-product.jpg",
-                                    "selected": "",
+                                    "review": "",
+                                    "average": "0",
+                                    "reviewCount": "0",
                                     "button": "자세히 보기",
                                     "wish": {
                                         "class": "",
@@ -124,28 +139,33 @@
                                 {
                                     "id": 1,
                                     "moduleType": "",
-                                    "visual": "/lg5-common/images/dummy/@img-product-banner.jpg",
+                                    "visual1": "/lg5-common/images/dummy/@img-product-banner.jpg",
+                                    "visual2": "/lg5-common/images/dummy/@img-product-banner.jpg",
+                                    "visual3": "/lg5-common/images/dummy/@img-product-banner.jpg",
                                     "title": "정제된 아름다움",
                                     "copy": "외관부터 내부까지 고급스러움이 더해진<br>LG SIGNATURE 냉장고만의 프리미엄 디자인",
-                                    "button": "자세히 보기",
-                                    "textColor": "text-white"
+                                    "button": "자세히 보기"
                                 },
                                 {
                                     "id": 2,
                                     "moduleType": "large",
-                                    "visual": "/lg5-common/images/dummy/@img-product-banner-lg.jpg",
+                                    "visual1": "/lg5-common/images/dummy/@img-product-banner-lg.jpg",
+                                    "visual2": "/lg5-common/images/dummy/@img-product-banner.jpg",
+                                    "visual3": "/lg5-common/images/dummy/@img-product-banner-lg.jpg",
                                     "title": "신선함을 위한 작품의 완성 LG SIGNATURE 냉장고",
                                     "copy": "외관부터 내부까지 고급스러움이 더해진 LG SIGNATURE<br>냉장고만의 프리미엄 디자인",
-                                    "button": "자세히 보기",
-                                    "textColor": "text-black"
+                                    "button": "자세히 보기"
                                 }
                             ],
                             "items2": [
                                 {
                                     "id": 0,
-                                    "moduleType": "general",
+                                    "moduleType": "",
+                                    "badgeType": "",
                                     "visual": "/lg5-common/images/dummy/@img-product.jpg",
-                                    "selected": "selected",
+                                    "review": "",
+                                    "average": "0",
+                                    "reviewCount": "0",
                                     "button": "장바구니에 담기",
                                     "wish": {
                                         "class": "",
@@ -162,9 +182,12 @@
                                 },
                                 {
                                     "id": 1,
-                                    "moduleType": "general",
+                                    "moduleType": "",
+                                    "badgeType": "",
                                     "visual": "/lg5-common/images/dummy/@img-product.jpg",
-                                    "selected": "",
+                                    "review": "is-review",
+                                    "average": "4.0",
+                                    "reviewCount": "48",
                                     "button": "장바구니에 담기",
                                     "wish": {
                                         "class": "",
@@ -181,9 +204,12 @@
                                 },
                                 {
                                     "id": 2,
-                                    "moduleType": "general",
+                                    "moduleType": "",
+                                    "badgeType": "",
                                     "visual": "/lg5-common/images/dummy/@img-product.jpg",
-                                    "selected": "",
+                                    "review": "",
+                                    "average": "0",
+                                    "reviewCount": "0",
                                     "button": "자세히 보기",
                                     "wish": {
                                         "class": "",
@@ -208,5 +234,25 @@
         </div>
 <!--        @@include('./common/footer.html')-->
     </div>
+
+    <!-- Filter POPUP DOM -->
+    <article id="filter_popup" class="lay-wrap full">
+        <header class="lay-header">
+            <h1><span>상세 필터</span></h1>
+        </header>
+        <section class="lay-conts">
+            <!-- component -->
+            @@include('./common/partials/KRP0009-filter.html')
+            <!-- // component -->
+        </section>
+        <div class="btn-wrap laypop double">
+            <button type="button" class="btn-lay"><span>초기화</span></button>
+            <button type="button" class="btn-lay ui_modal_close"><span>확인</span></button>
+        </div>
+        <div class="close">
+            <button type="button" class="ico btn-close ui_modal_close"><span class="blind">닫기</span></button>
+        </div>
+        </article>
+    <!-- //Filter POPUP DOM -->
 </body>
 </html>
