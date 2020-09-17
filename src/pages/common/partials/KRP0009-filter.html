@@ -3,26 +3,35 @@
     <div class="btn-reset">
         <button type="button"><span>초기화</span></button>
     </div>
-    <div class="opt-slider">
-        <p class="tit">판매가</p>
-        <div class="cont">
-            <div class="ui_desc" data-input="1000000,8000000" data-range="0,10000000" data-min-label="minLabel" data-max-label="maxLabel"></div>
-            <p class="min"></p> <!-- 최소 데이터 -->
-            <p class="max"></p> <!-- 최대 데이터 -->
-        </div>
-    </div>
-    <div class="list-acco ui_accordion" data-accord-group="info" data-single-open="true" data-open-index="0">
+    <div class="list-acco ui_accordion" data-accord-group="info" data-single-open="false" data-open-index="0">
         <ul>
             <li>
                 <div class="head">
                     <a href="#head01" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                        <div class="tit">
+                            판매가
+                        </div>
+                        <span class="blind ui_accord_text">내용 열기</span>
+                    </a>
+                </div>
+                <div class="desc ui_accord_content" id="head01">
+                    <div class="cont">
+                        <div class="ui_desc" data-input="1000000,8000000" data-range="0,10000000" data-min-label="minLabel" data-max-label="maxLabel"></div>
+                        <p class="min"></p> <!-- 최소 데이터 -->
+                        <p class="max"></p> <!-- 최대 데이터 -->
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="head">
+                    <a href="#head02" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
                         <div class="tit">
                             서비스 구분
                         </div>
                         <span class="blind ui_accord_text">내용 열기</span>
                     </a>
                 </div>
-                <div class="desc ui_accord_content" id="head01">
+                <div class="desc ui_accord_content" id="head02">
                     <div class="cont">
                         <div class="rdo-wrap">
                             <input type="radio" id="rdo01" name="opt" checked>
@@ -41,23 +50,26 @@
             </li>
             <li>
                 <div class="head">
-                    <a href="#head02" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                        <div class="tit">색상 <span class="sel_num">(1)</span>
+                    <a href="#head03" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                        <div class="tit">색상
+                            <span class="sel_num">
+                                <span class="blind">총 선택 갯수</span>(1)
+                            </span>
                         </div>
                         <span class="blind ui_accord_text">내용 열기</span>
                     </a>
                 </div>
-                <div class="desc ui_accord_content" id="head02">
+                <div class="desc ui_accord_content" id="head03">
                     <div class="cont">
-                        <div class="chk-wrap color type01">
+                        <div class="chk-wrap color">
                             <input type="checkbox" id="color01" checked>
                             <label for="color01">샤이니 유니버스</label>
                         </div>
-                        <div class="chk-wrap color type02">
+                        <div class="chk-wrap color">
                             <input type="checkbox" id="color02">
                             <label for="color02">샤이니 퓨어</label>
                         </div>
-                        <div class="chk-wrap color type03">
+                        <div class="chk-wrap color">
                             <input type="checkbox" id="color03">
                             <label for="color03">맨하튼 미드나잇</label>
                         </div>
@@ -67,7 +79,10 @@
             <li>
                 <div class="head">
                     <a href="#head03" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                        <div class="tit">도어재질 <span class="sel_num">(2)</span>
+                        <div class="tit">도어재질
+                            <span class="sel_num">
+                                <span class="blind">총 선택 갯수</span>(2)
+                            </span>
                         </div>
                         <span class="blind ui_accord_text">내용 열기</span>
                     </a>
