@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn_filter_24</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PC_PLP_Refrigerator_Medium(960)" transform="translate(-64.000000, -676.000000)">
+            <g id="Sorting" transform="translate(62.000000, 666.000000)">
+                <g id="btn_filter_24" transform="translate(0.000000, 8.000000)">
+                    <g>
+                        <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                        <g id="ic" transform="translate(2.000000, 2.000000)" fill="#212121">
+                            <rect id="Rectangle" x="1.25" y="1.11842105" width="18.75" height="1.97368421"></rect>
+                            <rect id="Rectangle" x="0" y="9.01315789" width="18.75" height="1.97368421"></rect>
+                            <rect id="Rectangle" x="0" y="0.131578947" width="3.75" height="3.94736842"></rect>
+                            <rect id="Rectangle" x="16.25" y="8.02631579" width="3.75" height="3.94736842"></rect>
+                            <rect id="Rectangle" x="7.5" y="15.9210526" width="3.75" height="3.94736842"></rect>
+                            <rect id="Rectangle" x="0" y="16.9078947" width="20" height="1.97368421"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

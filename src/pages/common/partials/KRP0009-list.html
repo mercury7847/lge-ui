@@ -1,6 +1,6 @@
 <!-- components/partials/KRP0009-list.html -->
 
-<div class="items-wrap">
+<div class="product-items-wrap">
     <div class="items-top">
         <div class="sort-area">
             <div class="sort-product ui_dropdown">
@@ -20,10 +20,7 @@
         @@for (var i = 0; i < context.items1.length; i++) {
             <li class="`+items1[i].moduleType+`">
                 <div class="item `+items1[i].selected+`">
-                    <div class="promotion-badge">
-                        <span class="accent"></span>
-                        <span class="general"></span>
-                    </div>
+                    `+items1[i].badgeType+`
                     <div class="product-image">
                         <a href="#">
                             <img data-src="`+items1[i].visual+`" alt="" class="lazyload">
@@ -121,10 +118,7 @@
         @@for (var i = 0; i < context.items2.length; i++) {
             <li class="`+items2[i].moduleType+`">
                 <div class="item `+items2[i].selected+`">
-                    <div class="promotion-badge">
-                        <span class="accent"></span>
-                        <span class="general"></span>
-                    </div>
+                    `+items2[i].badgeType+`
                     <div class="product-image">
                         <a href="#">
                             <img data-src="`+items2[i].visual+`" alt="" class="lazyload">
