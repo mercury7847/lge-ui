@@ -10,18 +10,18 @@
         "totalPoint":"1000",
         "pointHistory":[
             {
-                "date":"20171101",
+                "date":"20171102",
                 "shop":"LG BEST SHOP 서초점",
                 "increase":"+",
-                "point":"2000",
+                "point":"3000",
                 "purpose":"적립",
                 "description":"포인트적립"
             },
             {
-                "date":"20191229",
+                "date":"20191228",
                 "shop":"LG BEST SHOP 서초점",
                 "increase":"-",
-                "point":"1000",
+                "point":"2000",
                 "purpose":"사용",
                 "description":"포인트사용"
             }

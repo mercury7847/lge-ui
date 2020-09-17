@@ -9,25 +9,12 @@
             font-weight:700;
         }
     }
-    .address-box {
-        .input-wrap {
-            width:calc(50% - 4px);
-            & + .input-wrap {
-                width:100%;
-                margin-top:8px;
-            }
-        }
-        .default-address {
-            margin-top:12px;
-        }
-    }
     .engineer-carousel {
         &-list {
             padding-bottom:24px;
             overflow:hidden;
         }
         &-track {
-            overflow:hidden;
             margin:0 -7px;
         }
         &-slide {
@@ -80,6 +67,41 @@
                 &:checked + label {
                     box-shadow: 2px 3.5px 8px 0 rgba(0, 0, 0, 0.12);
                 }
+            }
+        }
+    }
+    .thumnail-check {
+        margin:-32px -7px 0;
+        @include clearfix;
+        .item {
+            float:left;
+            width:25%;
+            padding:32px 7px 0;
+            &.block {
+                width:100%;
+                .input-wrap {
+                    margin-top:12px;
+                } 
+            }
+        }
+        .rdo-wrap {
+            .rdo-image {
+                display:block;
+                overflow:hidden;
+                width:100%;
+                margin-bottom:12px;
+                border-radius:8px;
+                img {
+                    width:100%;
+                    height:auto;
+                }
+            }
+        }
+        @include mobile {
+            margin:-16px -6px 0;
+            .rdo-wrap {
+                width:50%;
+                padding:16px 6px 0;
             }
         }
     }
