@@ -2,34 +2,235 @@
 <html lang="ko">
     @@include('./common/head.html', {
         componentID: "KRP0009",
-        isJScompile: false
+        isJScompile: true
     })
 <body>
     <div class="wrap">
-        @@include('./common/header.html')
+<!--        @@include('./common/header.html')-->
         <div class="container">
 
-            <div class="component-wrap">
+            <div class="component-wrap full">
                 <!-- component KRC0009 -->
-                <section class="component KRP0009">
+                <section class="component KRP0009" aria-label="{category명} product list">
                     <!-- component -->
-                    @@include('./common/partials/KRP0009-cate.html')
+                   @@include('./common/partials/KRP0009-cate.html')
                     <!-- // component -->
 
                     <div class="plp-list-wrap">
                         <!-- component -->
-                        @@include('./common/partials/KRP0009-filter.html')
+                       @@include('./common/partials/KRP0009-filter.html')
                         <!-- // component -->
 
                         <!-- component -->
-                        @@include('./common/partials/KRP0009-list.html')
+                        @@include('./common/partials/KRP0009-list.html', {
+                            "items1": [
+                                {
+                                    "id": 0,
+                                    "moduleType": "",
+                                    "badgeType": "",
+                                    "visual": "/lg5-common/images/dummy/@img-product.jpg",
+                                    "review": "is-review",
+                                    "average": "4.0",
+                                    "reviewCount": "48",
+                                    "button": "장바구니에 담기",
+                                    "wish": {
+                                        "class": "",
+                                        "id" : "wish-chk1",
+                                        "name" : "wish-chk1",
+                                        "checked" : ""
+                                    },
+                                    "compare": {
+                                        "class": "",
+                                        "id" : "compare-chk1",
+                                        "name" : "compare-chk1",
+                                        "checked" : ""
+                                    }
+                                },
+                                {
+                                    "id": 1,
+                                    "moduleType": "",
+                                    "badgeType": "<div class='promotion-badge'><span class='badge'>코리아세일페스파</span><span class='badge'>으뜸효율 10%</span></div>",
+                                    "visual": "/lg5-common/images/dummy/@img-product.jpg",
+                                    "review": "",
+                                    "average": "0",
+                                    "reviewCount": "0",
+                                    "button": "장바구니에 담기",
+                                    "wish": {
+                                        "class": "",
+                                        "id" : "wish-chk2",
+                                        "name" : "wish-chk2",
+                                        "checked" : ""
+                                    },
+                                    "compare": {
+                                        "class": "",
+                                        "id" : "compare-chk2",
+                                        "name" : "compare-chk2",
+                                        "checked" : "checked"
+                                    }
+                                },
+                                {
+                                    "id": 2,
+                                    "moduleType": "",
+                                    "badgeType": "<div class='promotion-badge large'><span class='badge'>으뜸효율<em>10%</em></span></div>",
+                                    "visual": "/lg5-common/images/dummy/@img-product.jpg",
+                                    "review": "is-review",
+                                    "average": "4.0",
+                                    "reviewCount": "48",
+                                    "button": "자세히 보기",
+                                    "wish": {
+                                        "class": "",
+                                        "id" : "wish-chk3",
+                                        "name" : "wish-chk3",
+                                        "checked" : "checked"
+                                    },
+                                    "compare": {
+                                        "class": "",
+                                        "id" : "compare-chk3",
+                                        "name" : "compare-chk3",
+                                        "checked" : ""
+                                    }
+                                },
+                                {
+                                    "id": 3,
+                                    "moduleType": "",
+                                    "badgeType": "",
+                                    "visual": "/lg5-common/images/dummy/@img-product.jpg",
+                                    "review": "is-review",
+                                    "average": "4.0",
+                                    "reviewCount": "48",
+                                    "button": "자세히 보기",
+                                    "wish": {
+                                        "class": "",
+                                        "id" : "wish-chk4",
+                                        "name" : "wish-chk4",
+                                        "checked" : "checked"
+                                    },
+                                    "compare": {
+                                        "class": "",
+                                        "id" : "compare-chk4",
+                                        "name" : "compare-chk4",
+                                        "checked" : ""
+                                    }
+                                },
+                                {
+                                    "id": 4,
+                                    "moduleType": "",
+                                    "badgeType": "",
+                                    "visual": "/lg5-common/images/dummy/@img-product.jpg",
+                                    "review": "",
+                                    "average": "0",
+                                    "reviewCount": "0",
+                                    "button": "자세히 보기",
+                                    "wish": {
+                                        "class": "",
+                                        "id" : "wish-chk5",
+                                        "name" : "wish-chk5",
+                                        "checked" : "checked"
+                                    },
+                                    "compare": {
+                                        "class": "",
+                                        "id" : "compare-chk5",
+                                        "name" : "compare-chk5",
+                                        "checked" : ""
+                                    }
+                                }
+                            ],
+                            "banner": [
+                                {
+                                    "id": 1,
+                                    "moduleType": "",
+                                    "visual": "/lg5-common/images/dummy/@img-product-banner.jpg",
+                                    "title": "정제된 아름다움",
+                                    "copy": "외관부터 내부까지 고급스러움이 더해진<br>LG SIGNATURE 냉장고만의 프리미엄 디자인",
+                                    "button": "자세히 보기",
+                                    "textColor": "text-white"
+                                },
+                                {
+                                    "id": 2,
+                                    "moduleType": "large",
+                                    "visual": "/lg5-common/images/dummy/@img-product-banner-lg.jpg",
+                                    "title": "신선함을 위한 작품의 완성 LG SIGNATURE 냉장고",
+                                    "copy": "외관부터 내부까지 고급스러움이 더해진 LG SIGNATURE<br>냉장고만의 프리미엄 디자인",
+                                    "button": "자세히 보기",
+                                    "textColor": "text-black"
+                                }
+                            ],
+                            "items2": [
+                                {
+                                    "id": 0,
+                                    "moduleType": "",
+                                    "badgeType": "",
+                                    "visual": "/lg5-common/images/dummy/@img-product.jpg",
+                                    "review": "",
+                                    "average": "0",
+                                    "reviewCount": "0",
+                                    "button": "장바구니에 담기",
+                                    "wish": {
+                                        "class": "",
+                                        "id" : "wish-chk8",
+                                        "name" : "wish-chk8",
+                                        "checked" : ""
+                                    },
+                                    "compare": {
+                                        "class": "",
+                                        "id" : "compare-chk8",
+                                        "name" : "compare-chk8",
+                                        "checked" : ""
+                                    }
+                                },
+                                {
+                                    "id": 1,
+                                    "moduleType": "",
+                                    "badgeType": "",
+                                    "visual": "/lg5-common/images/dummy/@img-product.jpg",
+                                    "review": "is-review",
+                                    "average": "4.0",
+                                    "reviewCount": "48",
+                                    "button": "장바구니에 담기",
+                                    "wish": {
+                                        "class": "",
+                                        "id" : "wish-chk9",
+                                        "name" : "wish-chk9",
+                                        "checked" : ""
+                                    },
+                                    "compare": {
+                                        "class": "",
+                                        "id" : "compare-chk9",
+                                        "name" : "compare-chk9",
+                                        "checked" : "checked"
+                                    }
+                                },
+                                {
+                                    "id": 2,
+                                    "moduleType": "",
+                                    "badgeType": "",
+                                    "visual": "/lg5-common/images/dummy/@img-product.jpg",
+                                    "review": "",
+                                    "average": "0",
+                                    "reviewCount": "0",
+                                    "button": "자세히 보기",
+                                    "wish": {
+                                        "class": "",
+                                        "id" : "wish-chk10",
+                                        "name" : "wish-chk10",
+                                        "checked" : "checked"
+                                    },
+                                    "compare": {
+                                        "class": "",
+                                        "id" : "compare-chk10",
+                                        "name" : "compare-chk10",
+                                        "checked" : ""
+                                    }
+                                }
+                            ]
+                        })
                         <!-- // component -->
                     </div>
                 </section>
                 <!-- //component KRC0009 -->
             </div>
         </div>
-        @@include('./common/footer.html')
+<!--        @@include('./common/footer.html')-->
     </div>
 </body>
 </html>

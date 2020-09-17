@@ -1,11 +1,42 @@
 @charset "UTF-8";
 
+/* input, select */
+.input-wrap, .select-wrap {
+    width:100%;
+    max-width:none;
+}
+
+/* radio */
+.rdo-wrap {
+    input {
+        & + label {
+            &:before {
+                border-color:#ddd;
+            }
+            &:after {
+                top:7px;
+                left:7px;
+                width:10px;
+                height:10px;
+                border:0 none;
+                border-radius:50%;
+                background:#ddd;
+            }
+        }
+        &:checked + label {
+            &:before {
+                border-color:#ec455a;
+                background-color:#ec455a;
+            }
+            &:after {
+                background-color:#fff;
+            }
+        }
+    }
+}
+
 /* form field */
 .field-wrap {
-    .input-wrap, .select-wrap {
-        width:100%;
-        max-width:none;
-    }
     .row {
         margin:32px -4px 0;
         &:first-child {
@@ -69,62 +100,7 @@
         }
     }
 }
-.thumnail-check {
-    margin:-32px -7px 0;
-    @include clearfix;
-    .item {
-        float:left;
-        width:25%;
-        padding:32px 7px 0;
-        &.block {
-            width:100%;
-            .input-wrap {
-                margin-top:12px;
-            } 
-        }
-    }
-    .rdo-wrap {
-        .rdo-image {
-            display:block;
-            overflow:hidden;
-            width:100%;
-            margin-bottom:12px;
-            border-radius:8px;
-            img {
-                width:100%;
-                height:auto;
-            }
-        }
-    }
-    @include mobile {
-        margin:-16px -6px 0;
-        .rdo-wrap {
-            width:50%;
-            padding:16px 6px 0;
-        }
-    }
-}
-.input-wrap.button {
-    width:100%;
-    input {
-        display:table-cell;
-        width:100%;
-    }
-    a, button {
-        min-width:auto;
-        margin-left:8px;
-        padding:15px 24px;
-        border-radius:8px;
-    }
-    & + .input-wrap {
-        margin-top:8px;
-    }
-    @include mobile {
-        button {
-            padding:16px;
-        }
-    }
-}
+
 .email-box {
     .email-input {
         margin:0 -4px;
@@ -168,48 +144,10 @@
     }
     @include mobile {
         margin-top:0;
-        padding:0;
-        .btn {
-            width:100%;
-            border-radius:0;
-            &:first-child:nth-last-child(2), 
-            &:first-child:nth-last-child(2) ~ .btn {
-                width:50%;
-                margin:0;
-            }
-        }
     }
 }
 
 /* button */
-
-.btn-banner {
-    display:inline-block;
-    position:relative;
-    padding:15px 40px 15px 16px;
-    color:#ec455a;
-    font-size:16px;
-    line-height:24px;
-    border:1px solid #ec455a;
-    border-radius:8px;
-    background:url(/lg5-common/images/icons/icon-arrow-right-red.svg) no-repeat right 16px top 16px;
-    [class^=icon-] {
-        display:block;
-        padding:0 32px 0 36px;
-        background-repeat:no-repeat;
-        background-size:24px;
-        &.icon-solution {
-            background-image:url(/lg5-common/images/icons/icon-solution.svg);
-        }
-        &.icon-driver {
-            background-image:url(/lg5-common/images/icons/icon-driver.svg);
-        }
-        &.icon-plus {
-            background-image:url(/lg5-common/images/icons/icon-plus.svg); 
-        }
-    }
-}
-
 .btn {
     &.btn-icon {
         position:relative;

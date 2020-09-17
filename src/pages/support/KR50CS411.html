@@ -24,373 +24,440 @@
                 'button': [
                     {
                         'text': '요금 및 보증기간 안내',
-                        'attr': 'class="btn gray btn-border btn-small" title="레이어 열림"'
+                        'attr': 'class="btn bd-gray btn-small" title="레이어 열림"'
                     }, {
                         'text': '유상서비스 적용 안내',
-                        'attr': 'class="btn gray btn-border btn-small" title="레이어 열림"'
+                        'attr': 'class="btn bd-gray btn-small" title="레이어 열림"'
                     }
                 ]
             })
             
             <div class="contents support KR50CS411">
-                <div class="login">
-                    <div class="login-inner">
+                <div class="login-wrap">
+                    <div class="inner">
                         <p class="text">이메일을 보내기 위해 계정이 필요하지는 않지만, 로그인을 하시면 고객님의 세부 정보가 자동으로 입력됩니다.</p>
                         <a href="#" class="btn-text">로그인하기</a>
                     </div>
                 </div>
                 <div class="contents-inner">
-                    
-                    <div class="section">
-                        <div class="section-content">
-                            <div class="field-wrap">
-                                <div class="row">
-                                    <div class="field-item block">
-                                        <div class="field-title">
-                                            <label for="model" class="tit">모델명 검색</label>
-                                        </div>
-                                        <div class="model-search">
-                                            <div class="input-wrap block">
-                                                <input type="text" class="" id="model" name="model" placeholder="모델명을 검색해주세요.">
-                                                <button type="submit" class="icon-search"><span class="blind">검색</span></button>
+                    <form action="/html/support/KR50CS412.html" id="submitForm" autocomplete="off">
+                        <div class="section">
+                            <div class="section-content">
+                                <div class="field-wrap">
+                                    <div class="row">
+                                        <div class="field-item block">
+                                            <div class="field-title">
+                                                <label for="model" class="tit">모델명 검색</label>
                                             </div>
-                                            <div>
-                                                <a href="#" class=""><span>내 제품 선택</span></a>
-                                                <a href="#" class="btn-text red01">모델명 확인방법</a>
+                                            <div class="model-search">
+                                                <div class="input-wrap block">
+                                                    <input type="text" class="" id="model" name="model" placeholder="모델명을 검색해주세요.">
+                                                    <button type="button"><span class="blind">검색</span></button>
+                                                </div>
+                                                <div class="model-util">
+                                                    <a href="#" class="btn-banner"><span class="icon-plus">내 제품 선택</span></a>
+                                                    <a href="#" class="btn-text pink">모델명 확인방법</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="dot-list top-border">
+                                    <li>3건 이상의 제품에 대해 서비스 접수하실 경우, 콜센터(1544-7777)를 이용하시면 1명의 서비스 기사로 접수를 할 수 있습니다.</li>
+                                    <li>무상 보증 기간 경과 된 제품 또는 사용자 과실 등으로 인한 제품 고장의 서비스 신청 건은 유상으로 서비스 비용이 청구됩니다. (자세한 내용은 '요금 및 보증기간 안내'를 참조하시기 바랍니다.)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="section-title">
+                                <h3 class="tit">Step01. 제품을 선택해주세요.</h3>
+                            </div>
+                            <div class="section-content">
+                                @@include('./common/support/select-category.html')
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="section-title">
+                                <h3 class="tit">Step03. 증상을 선택해주세요.</h3>        
+                            </div>
+                            <div class="section-content">
+                                <div class="field-wrap">
+                                    <div class="row">
+                                        <div class="field-box">
+                                            <div class="field-item">
+                                                <div class="field-title">
+                                                    <label for="select-symptom" class="tit">증상<span class="require">*<span class="blind">필수항목</span></span></label>
+                                                </div>
+                                                <div class="select-wrap">
+                                                    <select class="ui_selectbox" name="symptom" id="select-symptom" required>
+                                                        <option selected disabled>증상을 선택해주세요.</option>
+                                                        <option value="">증상</option>
+                                                        <option value="">증상</option>
+                                                        <option value="">증상</option>
+                                                    </select>
+                                                    <p class="err-msg">증상을 선택해주세요.</p>
+                                                </div>
+                                            </div>
+                                            <div class="field-item">
+                                                <div class="field-title">
+                                                    <label for="select-symptom2" class="tit">세부 증상<span class="require">*<span class="blind">필수항목</span></span></label>
+                                                </div>
+                                                <div class="select-wrap">
+                                                    <select class="ui_selectbox" name="symptom2" id="select-symptom" required>
+                                                        <option selected disabled>세부 증상을 선택해주세요.</option>
+                                                        <option value="">세부 증상</option>
+                                                        <option value="">세부 증상</option>
+                                                        <option value="">세부 증상</option>
+                                                    </select>
+                                                    <p class="err-msg">세부 증상을 선택해주세요.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field-box">
+                                            <a href="#" class="btn-banner"><span class="icon-solution">선택하신 증상은 간편해결 방법을 통해서 해결이 가능합니다</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="field-item block">
+                                            <div class="field-title">
+                                                <strong class="tit">구입시기</strong>
+                                            </div>
+                                            <div class="check-list">
+                                                <div class="rdo-wrap">
+                                                    <input type="radio" name="period" id="period-1" value="1개월 이내">
+                                                    <label for="period-1">1개월 이내</label>
+                                                </div>
+                                                <div class="rdo-wrap">
+                                                    <input type="radio" name="period" id="period-2" value="1년 이내">
+                                                    <label for="period-2">1년 이내</label>
+                                                </div>
+                                                <div class="rdo-wrap">
+                                                    <input type="radio" name="period" id="period-3" value="1년 ~ 2년 이내">
+                                                    <label for="period-3">1년 ~ 2년 이내</label>
+                                                </div>
+                                                <div class="rdo-wrap">
+                                                    <input type="radio" name="period" id="period-4" value="2년 이상">
+                                                    <label for="period-4">2년 이상</label>
+                                                </div>
+                                                <div class="rdo-wrap">
+                                                    <input type="radio" name="period" id="period-5" value="기억안남">
+                                                    <label for="period-5">기억안남</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="field-item block">
+                                            <div class="field-title">
+                                                <label for="input-content" class="tit">전달사항</label>
+                                            </div>
+                                            <div class="input-wrap count">
+                                                <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="100" required data-limit="100" data-count-target="#txt-count1"></textarea>
+                                                <span id="txt-count1" class="cell total"><em>0</em> / 100</span>
+                                                <p class="err-msg">전달사항을 입력해주세요.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <ul class="dot-list top-border">
-                                <li>3건 이상의 제품에 대해 서비스 접수하실 경우, 콜센터(1544-7777)를 이용하시면 1명의 서비스 기사로 접수를 할 수 있습니다.</li>
-                                <li>무상 보증 기간 경과 된 제품 또는 사용자 과실 등으로 인한 제품 고장의 서비스 신청 건은 유상으로 서비스 비용이 청구됩니다. (자세한 내용은 '요금 및 보증기간 안내'를 참조하시기 바랍니다.)</li>
-                            </ul>
                         </div>
-                    </div>
 
-                    <div class="section">
-                        <div class="section-title">
-                            <h3 class="tit">Step01. 제품을 선택해주세요.</h3>
-                        </div>
-                        <div class="section-content">
-                            @@include('./common/support/select-category.html')
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title">
-                            <h3 class="tit">Step03. 증상을 선택해주세요.</h3>        
-                        </div>
-                        <div class="section-content">
-                            <div class="field-wrap">
-                                <div class="row">
-                                    <div class="field-box">
-                                        <div class="field-item">
+                        <div class="section">
+                            <div class="section-title">
+                                <h3 class="tit">Step04. 실외기 위치를 선택해주세요</h3>        
+                            </div>
+                            <div class="section-content">
+                                <div class="field-wrap">
+                                    <div class="row">
+                                        <div class="field-item block">
+                                            <div class="thumnail-check">
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <input type="radio" id="position-1" name="position" checked>
+                                                        <label for="position-1">
+                                                            <span class="rdo-image">
+                                                                <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
+                                                            </span>    
+                                                            <span class="rdo-text">베란다 난간</span>    
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <input type="radio" id="position-2" name="position">
+                                                        <label for="position-2">
+                                                            <span class="rdo-image">
+                                                                <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
+                                                            </span>
+                                                            <span class="rdo-text">건물 외벽 앵글</span>    
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <input type="radio" id="position-3" name="position">
+                                                        <label for="position-3">
+                                                            <span class="rdo-image">
+                                                                <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
+                                                            </span>
+                                                            <span class="rdo-text">건물 밖 실외기실</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <input type="radio" id="position-4" name="position">
+                                                        <label for="position-4">
+                                                            <span class="rdo-image">
+                                                                <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
+                                                            </span>
+                                                            <span class="rdo-text">옥상</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <input type="radio" id="position-5" name="position">
+                                                        <label for="position-5">
+                                                            <span class="rdo-image">
+                                                                <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
+                                                            </span>
+                                                            <span class="rdo-text">베란다 내부</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <input type="radio" id="position-6" name="position">
+                                                        <label for="position-6">
+                                                            <span class="rdo-image">
+                                                                <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
+                                                            </span>
+                                                            <span class="rdo-text">실내 실외기실</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <input type="radio" id="position-7" name="position">
+                                                        <label for="position-7">
+                                                            <span class="rdo-image">
+                                                                <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
+                                                            </span>
+                                                            <span class="rdo-text">1층 또는 지면</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="rdo-wrap">
+                                                        <input type="radio" id="position-8" name="position">
+                                                        <label for="position-8">
+                                                            <span class="rdo-image">
+                                                                <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
+                                                            </span>
+                                                            <span class="rdo-text">2단 설치</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="item block">
+                                                    <div class="rdo-wrap">
+                                                        <input type="radio" id="position-9" name="position">
+                                                        <label for="position-9"><span class="rdo-text">기타/모름</span></label>
+                                                    </div>
+                                                    <div class="input-wrap">
+                                                        <input type="text" maxlength="10" placeholder="최대 10글자 입력 가능">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="field-item block">
                                             <div class="field-title">
-                                                <label for="select-symptom" class="tit">증상<span class="require">*<span class="blind">필수항목</span></span></label>
+                                                <strong class="tit">실외기 위치 - 추가정보</strong>
                                             </div>
-                                            <div class="select-wrap">
-                                                <select class="ui_selectbox" name="symptom" id="select-symptom" required>
-                                                    <option selected disabled>증상을 선택해주세요.</option>
-                                                    <option value="">증상</option>
-                                                    <option value="">증상</option>
-                                                    <option value="">증상</option>
-                                                </select>
-                                                <p class="err-msg">증상을 선택해주세요.</p>
+                                            <div class="check-list">
+                                                <div class="rdo-wrap">
+                                                    <input type="radio" id="addPosition-1" name="addPosition">
+                                                    <label for="addPosition-1">베란다 또는 외벽 1층 설치</label>
+                                                </div>
+                                                <div class="rdo-wrap">
+                                                    <input type="radio" id="addPosition-2" name="addPosition">
+                                                    <label for="addPosition-2">베란다 또는 외벽 2층 설치</label>
+                                                </div>
+                                                <div class="rdo-wrap">
+                                                    <input type="radio" id="addPosition-3" name="addPosition">
+                                                    <label for="addPosition-3">베란다 또는 외벽 3층 이상 설치</label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="field-item">
-                                            <div class="field-title">
-                                                <label for="select-symptom2" class="tit">세부 증상<span class="require">*<span class="blind">필수항목</span></span></label>
-                                            </div>
-                                            <div class="select-wrap">
-                                                <select class="ui_selectbox" name="symptom2" id="select-symptom" required>
-                                                    <option selected disabled>세부 증상을 선택해주세요.</option>
-                                                    <option value="">세부 증상</option>
-                                                    <option value="">세부 증상</option>
-                                                    <option value="">세부 증상</option>
-                                                </select>
-                                                <p class="err-msg">세부 증상을 선택해주세요.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="field-box">
-                                        <a href="#" class="btn-banner"><span class="icon-solution">선택하신 증상은 간편해결 방법을 통해서 해결이 가능합니다</span></a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="field-item block">
-                                        <div class="field-title">
-                                            <strong class="tit">구입시기</strong>
-                                        </div>
-                                        <div class="check-list">
-                                            <div class="rdo-wrap">
-                                                <input type="radio" name="period" id="period-1" value="1개월 이내">
-                                                <label for="period-1">1개월 이내</label>
-                                            </div>
-                                            <div class="rdo-wrap">
-                                                <input type="radio" name="period" id="period-2" value="1년 이내">
-                                                <label for="period-2">1년 이내</label>
-                                            </div>
-                                            <div class="rdo-wrap">
-                                                <input type="radio" name="period" id="period-3" value="1년 ~ 2년 이내">
-                                                <label for="period-3">1년 ~ 2년 이내</label>
-                                            </div>
-                                            <div class="rdo-wrap">
-                                                <input type="radio" name="period" id="period-4" value="2년 이상">
-                                                <label for="period-4">2년 이상</label>
-                                            </div>
-                                            <div class="rdo-wrap">
-                                                <input type="radio" name="period" id="period-5" value="기억안남">
-                                                <label for="period-5">기억안남</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="field-item block">
-                                        <div class="field-title">
-                                            <label for="input-content" class="tit">전달사항</label>
-                                        </div>
-                                        <div class="input-wrap count">
-                                            <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="100" required data-limit="100" data-count-target="#txt-count1"></textarea>
-                                            <span id="txt-count1" class="cell total"><em>0</em> / 100</span>
-                                            <p class="err-msg">전달사항을 입력해주세요.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="section">
-                        <div class="section-title">
-                            <h3 class="tit">Step04. 실외기 위치를 선택해주세요</h3>        
-                        </div>
-                        <div class="section-content">
-                            <div class="field-wrap">
-                                <div class="row">
-                                    <div class="field-item block">
-                                        <div class="thumnail-check">
-                                            <div class="item">
-                                                <div class="rdo-wrap">
-                                                    <input type="radio" id="position-1" name="position" checked>
-                                                    <label for="position-1">
-                                                        <span class="rdo-image">
-                                                            <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
-                                                        </span>    
-                                                        <span class="rdo-text">베란다 난간</span>    
-                                                    </label>
-                                                </div>
+                        <div class="section">
+                            <div class="section-title">
+                                <h3 class="tit">Step05. 신청자 정보를 입력해주세요</h3>        
+                            </div>
+                            <div class="section-content">
+                                <div class="field-wrap">
+                                    <div class="row">
+                                        <div class="field-item">
+                                            <div class="field-title">
+                                                <label for="input-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
                                             </div>
-                                            <div class="item">
-                                                <div class="rdo-wrap">
-                                                    <input type="radio" id="position-2" name="position">
-                                                    <label for="position-2">
-                                                        <span class="rdo-image">
-                                                            <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
-                                                        </span>
-                                                        <span class="rdo-text">건물 외벽 앵글</span>    
-                                                    </label>
-                                                </div>
+                                            <div class="input-wrap">
+                                                <input type="text" name="name" id="input-name" placeholder="성함을 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
+                                                <p class="err-msg">이름을 입력해주세요.</p>
                                             </div>
-                                            <div class="item">
-                                                <div class="rdo-wrap">
-                                                    <input type="radio" id="position-3" name="position">
-                                                    <label for="position-3">
-                                                        <span class="rdo-image">
-                                                            <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
-                                                        </span>
-                                                        <span class="rdo-text">건물 밖 실외기실</span>
-                                                    </label>
-                                                </div>
+                                        </div>
+                                        <div class="field-item">
+                                            <div class="field-title">
+                                                <label for="phoneNumber" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
                                             </div>
-                                            <div class="item">
-                                                <div class="rdo-wrap">
-                                                    <input type="radio" id="position-4" name="position">
-                                                    <label for="position-4">
-                                                        <span class="rdo-image">
-                                                            <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
-                                                        </span>
-                                                        <span class="rdo-text">옥상</span>
-                                                    </label>
-                                                </div>
+                                            <div class="input-wrap">
+                                                <input type="text" name="phoneNumber" id="input-phoneNumber" placeholder="휴대 전화를 입력해주세요." maxlength="11" required>
+                                                <p class="err-msg">휴대 전화를 입력해주세요.</p>
                                             </div>
-                                            <div class="item">
-                                                <div class="rdo-wrap">
-                                                    <input type="radio" id="position-5" name="position">
-                                                    <label for="position-5">
-                                                        <span class="rdo-image">
-                                                            <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
-                                                        </span>
-                                                        <span class="rdo-text">베란다 내부</span>
-                                                    </label>
-                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="field-item block">
+                                            <div class="field-title">
+                                                <label for="input-zipcode" class="tit">주소<span class="require">*<span class="blind">필수항목</span></span></label>
                                             </div>
-                                            <div class="item">
-                                                <div class="rdo-wrap">
-                                                    <input type="radio" id="position-6" name="position">
-                                                    <label for="position-6">
-                                                        <span class="rdo-image">
-                                                            <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
-                                                        </span>
-                                                        <span class="rdo-text">실내 실외기실</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="rdo-wrap">
-                                                    <input type="radio" id="position-7" name="position">
-                                                    <label for="position-7">
-                                                        <span class="rdo-image">
-                                                            <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
-                                                        </span>
-                                                        <span class="rdo-text">1층 또는 지면</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="rdo-wrap">
-                                                    <input type="radio" id="position-8" name="position">
-                                                    <label for="position-8">
-                                                        <span class="rdo-image">
-                                                            <img src="/lg5-common/images/dummy/@install-location.jpg" alt="">
-                                                        </span>
-                                                        <span class="rdo-text">2단 설치</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="item block">
-                                                <div class="rdo-wrap">
-                                                    <input type="radio" id="position-9" name="position">
-                                                    <label for="position-9"><span class="rdo-text">기타/모름</span></label>
-                                                </div>
+                                            <div class="address-box">
                                                 <div class="input-wrap">
-                                                    <input type="text" maxlength="10" placeholder="최대 10글자 입력 가능">
+                                                    <span class="box">
+                                                        <input type="text" id="input-zipcode" placeholcer="" required>
+                                                        <span class="cell">
+                                                            <button type="button">주소찾기</button>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                                <div class="address-detail">
+                                                    <span class="address"></span>
+                                                    <input type="hidden" id="input-address" value="">
+                                                </div>
+                                                <div class="address-default">
+                                                    <div class="chk-wrap">
+                                                        <input type="checkbox" id="defaultAdress">
+                                                        <label for="defaultAdress">기본 주소로 저장</label>      
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="field-item block">
-                                        <div class="field-title">
-                                            <strong class="tit">실외기 위치 - 추가정보</strong>
-                                        </div>
-                                        <div class="check-list">
-                                            <div class="rdo-wrap">
-                                                <input type="radio" id="addPosition-1" name="addPosition">
-                                                <label for="addPosition-1">베란다 또는 외벽 1층 설치</label>
-                                            </div>
-                                            <div class="rdo-wrap">
-                                                <input type="radio" id="addPosition-2" name="addPosition">
-                                                <label for="addPosition-2">베란다 또는 외벽 2층 설치</label>
-                                            </div>
-                                            <div class="rdo-wrap">
-                                                <input type="radio" id="addPosition-3" name="addPosition">
-                                                <label for="addPosition-3">베란다 또는 외벽 3층 이상 설치</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <ul class="dot-list top-border">
+                                    <li>휴대전화 인증 가능한 정보로 입력해주시기 바랍니다.</li>
+                                    <li>입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다.</li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="section">
-                        <div class="section-title">
-                            <h3 class="tit">Step05. 신청자 정보를 입력해주세요</h3>        
-                        </div>
-                        <div class="section-content">
-                            <div class="field-wrap">
-                                <div class="row">
-                                    <div class="field-item">
-                                        <div class="field-title">
-                                            <label for="input-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
-                                        </div>
-                                        <div class="input-wrap">
-                                            <input type="text" name="name" id="input-name" placeholder="성함을 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
-                                            <p class="err-msg">이름을 입력해주세요.</p>
-                                        </div>
-                                    </div>
-                                    <div class="field-item">
-                                        <div class="field-title">
-                                            <label for="phoneNumber" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
-                                        </div>
-                                        <div class="input-wrap">
-                                            <input type="text" name="phoneNumber" id="input-phoneNumber" placeholder="휴대 전화를 입력해주세요." maxlength="11" required>
-                                            <p class="err-msg">휴대 전화를 입력해주세요.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="field-item block">
-                                        <div class="field-title">
-                                            <label for="name" class="tit">주소</label>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="section">
+                            <div class="section-title">
+                                <h3 class="tit">Step06. 서비스 희망 일시를 선택해주세요.</h3>        
                             </div>
-                            <ul class="dot-list top-border">
-                                <li>휴대전화 인증 가능한 정보로 입력해주시기 바랍니다.</li>
-                                <li>입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-title">
-                            <h3 class="tit">Step06. 서비스 희망 날짜와 엔지니어를 선택해주세요.</h3>        
-                        </div>
-                        <div class="section-content">
-                            <h4 class="cont-tit">서비스를 받으실 날짜를 선택해주세요.</h4>
-                            <div class="field-wrap">
-                                <div class="row">
-                                    <div class="field-item">
-                                        <div class="field-title">
-                                            <label for="input-date" class="tit">날짜 선택<span class="require">*<span class="blind">필수항목</span></span></label>
-                                        </div>
-                                        <span class="input-wrap datepicker">
-                                            <span class="box">
-                                                <input type="text" name="date" id="input-date" placeholder="날짜를 선택하세요" required>
-                                                <span class="cell pic-btn">
-                                                    <button type="button" class="ui_calendar" data-input-target="#input-date"><span class="blind">달력보기</span></button>
+                            <div class="section-content">
+                                <h4 class="cont-tit">서비스를 받으실 날짜를 선택해주세요.</h4>
+                                <div class="field-wrap">
+                                    <div class="row">
+                                        <div class="field-item">
+                                            <div class="field-title">
+                                                <label for="input-date" class="tit">날짜 선택<span class="require">*<span class="blind">필수항목</span></span></label>
+                                            </div>
+                                            <span class="input-wrap datepicker">
+                                                <span class="box">
+                                                    <input type="text" name="date" id="input-date" placeholder="날짜를 선택하세요" required>
+                                                    <span class="cell pic-btn">
+                                                        <button type="button" class="ui_calendar" data-input-target="#input-date"><span class="blind">달력보기</span></button>
+                                                    </span>
                                                 </span>
+                                                <p class="err-msg">날짜를 선택해주세요.</p>
                                             </span>
-                                            <p class="err-msg">날짜를 선택해주세요.</p>
-                                        </span>
-                                    </div>
-                                    <div class="field-item">
-                                        <div class="field-title">
-                                            <label for="input-time" class="tit">시간 선택<span class="require">*<span class="blind">필수항목</span></span></label>
                                         </div>
-                                        <span class="input-wrap datepicker">
-                                            <span class="box">
-                                                <input type="text" name="time" id="input-time" placeholder="시간을 선택하세요" required>
-                                                <span class="cell pic-btn">
-                                                    <button type="button" class="ui_calendar" data-input-target="#input-time"><span class="blind">시간보기</span></button>
+                                        <div class="field-item">
+                                            <div class="field-title">
+                                                <label for="input-time" class="tit">시간 선택<span class="require">*<span class="blind">필수항목</span></span></label>
+                                            </div>
+                                            <span class="input-wrap datepicker">
+                                                <span class="box">
+                                                    <input type="text" name="time" id="input-time" placeholder="시간을 선택하세요" required>
+                                                    <span class="cell pic-btn">
+                                                        <button type="button" class="ui_calendar" data-input-target="#input-time"><span class="blind">시간보기</span></button>
+                                                    </span>
                                                 </span>
+                                                <p class="err-msg">시간을 선택해주세요.</p>
                                             </span>
-                                            <p class="err-msg">시간을 선택해주세요.</p>
-                                        </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <h4 class="cont-tit">방문할 엔지니어를 선택해주세요</h4>
-                            <div class="">
-                                <ol>
-                                    <li>1. 평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.</li>
-                                    <li>2. [인증/예약]버튼 클릭 시 휴대전화 인증이 진행되며, 그 후에 예약이 완료됩니다.</li>
-                                </ol>
-                                <div class="ui_carousel">
-                                    <div class="ui_carousel_list">
-                                        <div class="ui_carousel_track">
-                                            <div class="ui_carousel_slide">
-                                                <div>
-                                                    <input type="radio" name="" id="" value="">
-                                                    <label for="" class="">
-
+                                <h4 class="cont-tit">방문할 엔지니어를 선택해주세요</h4>
+                                <div class="engineer-carousel">
+                                    <div class="engineer-carousel-list ui_carousel_list">
+                                        <div class="engineer-carousel-track ui_carousel_track">
+                                            <div class="engineer-carousel-slide ui_carousel_slide">
+                                                <div class="engineer-box">
+                                                    <input type="radio" name="engineer" id="engineer-1" value="">
+                                                    <label for="engineer-1">
+                                                        <div class="engineer-image">
+                                                            <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
+                                                        </div>
+                                                        <p class="tit">박두신</p>
+                                                        <p class="desc">모란지역지원센터</p>
+                                                    </label>
+                                                </div>  
+                                            </div>
+                                            <div class="engineer-carousel-slide ui_carousel_slide">
+                                                <div class="engineer-box">
+                                                    <input type="radio" name="engineer" id="engineer-2" value="">
+                                                    <label for="engineer-2">
+                                                        <div class="engineer-image">
+                                                            <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
+                                                        </div>
+                                                        <p class="tit">박두신</p>
+                                                        <p class="desc">모란지역지원센터</p>
+                                                    </label>
+                                                </div>  
+                                            </div>
+                                            <div class="engineer-carousel-slide ui_carousel_slide">
+                                                <div class="engineer-box">
+                                                    <input type="radio" name="engineer" id="engineer-3" value="">
+                                                    <label for="engineer-3">
+                                                        <div class="engineer-image">
+                                                            <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
+                                                        </div>
+                                                        <p class="tit">박두신</p>
+                                                        <p class="desc">모란지역지원센터</p>
+                                                    </label>
+                                                </div>  
+                                            </div>
+                                            <div class="engineer-carousel-slide ui_carousel_slide">
+                                                <div class="engineer-box">
+                                                    <input type="radio" name="engineer" id="engineer-4" value="">
+                                                    <label for="engineer-4">
+                                                        <div class="engineer-image">
+                                                            <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
+                                                        </div>
+                                                        <p class="tit">박두신</p>
+                                                        <p class="desc">모란지역지원센터</p>
+                                                    </label>
+                                                </div>  
+                                            </div>
+                                            <div class="engineer-carousel-slide ui_carousel_slide">
+                                                <div class="engineer-box">
+                                                    <input type="radio" name="engineer" id="engineer-5" value="">
+                                                    <label for="engineer-5">
+                                                        <div class="engineer-image">
+                                                            <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
+                                                        </div>
+                                                        <p class="tit">박두신</p>
+                                                        <p class="desc">모란지역지원센터</p>
                                                     </label>
                                                 </div>  
                                             </div>
@@ -400,27 +467,24 @@
                                         <ul class="indi-conts ui_carousel_dots"></ul>
                                     </div>
                                 </div>
+                                <ul class="dot-list top-border">
+                                    <li>평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.</li>
+                                    <li>[인증/예약]버튼 클릭 시 휴대전화 인증이 진행되며, 그 후에 예약이 완료됩니다.</li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="section">
-                        <div class="section-title">
-                            <h3 class="tit">개인정보 수집 및 이용동의 (필수)</h3>        
+                        <div class="section">
+                            <div class="section-content">
+                                <p class="result-text"><strong id="resultDate">2020.07.01 13:30</strong>에 엔지니어 <strong id="resultName">박두신님</strong>이 방문하여 <strong>설치</strong>를 진행할 예정입니다. 예약하시겠습니까?</p>
+                            </div>
                         </div>
-                        <div class="section-content">
-                            
-                            <ul class="dot-list">
-                                <li>3건 이상의 제품에 대해 서비스 접수하실 경우, 콜센터(1544-7777)를 이용하시면 1명의 서비스 기사로 접수를 할 수 있습니다.</li>
-                                <li>무상 보증 기간 경과 된 제품 또는 사용자 과실 등으로 인한 제품 고장의 서비스 신청 건은 유상으로 서비스 비용이 청구됩니다. (자세한 내용은 '요금 및 보증기간 안내'를 참조하시기 바랍니다.)</li>
-                            </ul>
+
+                        <div class="btn-group right">
+                            <a href="#" class="btn gray"><span>취소</span></a>
+                            <button type="button" class="btn pink">인증/예약</button>
                         </div>
-                    </div>
-
-                    <div>
-                        
-                    </div>
-
+                    </form>
                 </div>
             </div>
         </div>

@@ -60,6 +60,19 @@ $(function () {
 
             
 
+            $('.ui_desc').on('rangesliderchanged', function (e, data) {
+                console.log(data);
+
+                $('.min').text(data.minValue);
+                $('.max').text(data.maxValue);
+
+            }).vcRangeSlider({priceUnit:'$', roundUnit:10});
+
+            $('.ui_slider').vcRangeSlider({priceUnit:'$', roundUnit:10}).on('rangesliderchanged', function (e, data) {
+                console.log(data);
+
+            });
+
             //
 
             
@@ -220,7 +233,7 @@ $(function () {
 
             function requestData(obj){
 
-                var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList.json';
+                var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList1.json';
 
                 _$.ajax({
                     type : "POST",
@@ -306,9 +319,9 @@ $(function () {
                         return parseInt(a.order) < parseInt(b.order) ? -1 : parseInt(a.order) > parseInt(b.order) ? 1 : 0;
                     });
 
-                    //console.log(newFilterArr);
+                    console.log(newFilterArr);
 
-                   render(newFilterArr);
+                   //render(newFilterArr);
 
                 }).fail(function(error) {
                     // console.error(error);
