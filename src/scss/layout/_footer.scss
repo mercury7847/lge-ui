@@ -99,6 +99,7 @@ footer {
                             border-bottom:none;
                             border-left:none;
                             transform:rotate(135deg);
+                            transition:all .3s;
                         }
                         a, span {
                             display:block;
@@ -146,6 +147,7 @@ footer {
                                     border-radius:1px;
                                     background:#111;
                                     transform:rotate(0deg);
+                                    transition:all .3s;
                                 }
                                 &::after {
                                     content:' ';
@@ -158,6 +160,7 @@ footer {
                                     border-radius:1px;
                                     background:#111;
                                     transform:rotate(-90deg);
+                                    transition:all .3s;
                                 }
                                 &:only-child {
                                     &::before, &::after {
@@ -168,10 +171,10 @@ footer {
                             &.active {
                                 .dep2 {
                                     &::before {
-                                        transform:rotate(45deg);
+                                        transform:rotate(135deg);
                                     }
                                     &::after {
-                                        transform:rotate(-45deg);
+                                        transform:rotate(45deg);
                                     }
                                 }
                             }
