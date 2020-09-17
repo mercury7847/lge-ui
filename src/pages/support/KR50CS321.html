@@ -29,134 +29,136 @@
                     <p>제품 선택 영역</p>
                 </div>
                 <div class="contents-inner">
-                    <div class="section">
-                        <div class="section-title">
-                            <h3 class="tit">Step 02. 문의 유형을 선택해주세요.</h3>
-                        </div>
-                        <div class="section-content">
-                            <div class="field-wrap">
-                                <div class="row">
-                                    <div class="field-item">
-                                        <div class="field-title">
-                                            <label for="select-type" class="tit">문의 유형<span class="require">*<span class="blind">필수항목</span></span></label>
+                    <form action="/html/support/KR50CS322.html" id="submitForm" autocomplete="off">
+                        <div class="section">
+                            <div class="section-title">
+                                <h3 class="tit">Step 02. 문의 유형을 선택해주세요.</h3>
+                            </div>
+                            <div class="section-content">
+                                <div class="field-wrap">
+                                    <div class="row">
+                                        <div class="field-item">
+                                            <div class="field-title">
+                                                <label for="select-type" class="tit">문의 유형<span class="require">*<span class="blind">필수항목</span></span></label>
+                                            </div>
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" name="inquiryType" id="select-type" required>
+                                                    <option selected disabled>유형을 선택해주세요.</option>
+                                                    <option value="">유형</option>
+                                                    <option value="">유형</option>
+                                                    <option value="">유형</option>
+                                                </select>
+                                                <p class="err-msg">문의 유형을 선택해주세요.</p>
+                                            </div>
                                         </div>
-                                        <div class="select-wrap">
-                                            <select class="ui_selectbox" name="inquiryType" id="select-type" required>
-                                                <option selected disabled>유형을 선택해주세요.</option>
-                                                <option value="">유형</option>
-                                                <option value="">유형</option>
-                                                <option value="">유형</option>
-                                            </select>
-                                        </div>
-                                        <p class="err-msg">문의 유형을 선택해 주세요.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="section">
-                        <div class="section-title">
-                            <h3 class="tit">Step 03. 개인 정보를 입력해주세요.</h3>
-                        </div>
-                        <div class="section-content">
-                            <div class="field-wrap">
-                                <div class="row">
-                                    <div class="field-item">
-                                        <div class="field-title">
-                                            <label for="input-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
+                        <div class="section">
+                            <div class="section-title">
+                                <h3 class="tit">Step 03. 개인 정보를 입력해주세요.</h3>
+                            </div>
+                            <div class="section-content">
+                                <div class="field-wrap">
+                                    <div class="row">
+                                        <div class="field-item">
+                                            <div class="field-title">
+                                                <label for="input-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
+                                            </div>
+                                            <div class="input-wrap">
+                                                <input type="text" name="name" id="input-name" placeholder="성함을 입력해주세요." required data-msg-target=".err-msg" data-required="true">
+                                                <p class="err-msg">이름을 입력해주세요.</p>
+                                            </div>
                                         </div>
-                                        <div class="input-wrap">
-                                            <input type="text" name="name" id="input-name" placeholder="성함을 입력해주세요." required>
+                                        <div class="field-item">
+                                            <div class="field-title">
+                                                <label for="phoneNumber" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
+                                            </div>
+                                            <div class="input-wrap">
+                                                <input type="text" name="phoneNumber" id="input-phoneNumber" placeholder="휴대 전화를 입력해주세요." maxlength="11" required>
+                                                <p class="err-msg">휴대 전화를 입력해주세요.</p>
+                                            </div>
                                         </div>
-                                        <p class="err-msg">이름을 입력해 주세요.</p>
-                                    </div>
-                                    <div class="field-item">
-                                        <div class="field-title">
-                                            <label for="phoneNumber" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
-                                        </div>
-                                        <div class="input-wrap">
-                                            <input type="text" name="phoneNumber" id="input-phoneNumber" placeholder="휴대 전화를 입력해주세요." required>
-                                        </div>
-                                        <p class="err-msg">휴대 전화를 입력해 주세요.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="section">
-                        <div class="section-title">
-                            <h3 class="tit">Step 04. 문의내용을 입력해주세요.</h3>
-                        </div>
-                        <div class="section-content">
-                            <div class="field-wrap">
-                                <div class="row">
-                                    <div class="field-item block">
-                                        <div class="field-title">
-                                            <label for="input-title" class="tit">제목<span class="require">*<span class="blind">필수항목</span></span></label>
-                                        </div>
-                                        <div class="input-wrap count">
-                                            <input type="text" class="ui_textcontrol" name="title" id="input-title" placeholder="제목을 입력해주세요." required maxlength="40" data-limit="40" data-count-target="#txt-count">
-                                            <span id="txt-count" class="total"><em>0</em> / 40</span>
-                                        </div>
-                                        <p class="err-msg">제목을 입력해 주세요.</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="field-item block">
-                                        <div class="field-title">
-                                            <label for="input-content" class="tit">내용<span class="require">*<span class="blind">필수항목</span></span></label>
-                                        </div>
-                                        <div class="input-wrap count">
-                                            <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" required data-limit="1000" data-count-target="#txt-count2"></textarea>
-                                            <span id="txt-count2" class="cell total"><em>0</em> / 1000</span>
-                                        </div>
-                                        <p class="err-msg">내용을 입력해 주세요.</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="field-item block">
-                                        <div class="field-title">
-                                            <strong class="tit">첨부 파일</strong>
-                                        </div>
-                                        <div class="file-box">
-                                            <span class="file-input">
-                                                <span class="file-label">사진을 업로드해주세요.</span>       
-                                                <label for="file-upload">업로드</label>
-                                                <input type="file" id="file-upload">
-                                            </span>
-                                            <ul class="file-lists">
-                                                <li>
-                                                    <span class="file-name">test_img_001.jpg</span>
-                                                    <button type="button" class="btn-del"><span class="blind">삭제</span></button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="section">
+                            <div class="section-title">
+                                <h3 class="tit">Step 04. 문의내용을 입력해주세요.</h3>
                             </div>
-                            <ul class="dot-list top-border">
-                                <li>참조첨부파일은 최대 3개까지 가능하며, 전체 용량은 10MB 이하까지 업로드 가능합니다.</li>
-                                <li>첨부파일 이름은 특수기호(? ! , . & ^ ~ )를 제외해주세요.(첨부 가능 확장자 jpg, gif)</li>
-                                <li>[인증/예약] 버튼 클릭 시 휴대전화 인증이 진행되며, 그 후 문의가 완료됩니다.</li>
-                            </ul>
+                            <div class="section-content">
+                                <div class="field-wrap">
+                                    <div class="row">
+                                        <div class="field-item block">
+                                            <div class="field-title">
+                                                <label for="input-title" class="tit">제목<span class="require">*<span class="blind">필수항목</span></span></label>
+                                            </div>
+                                            <div class="input-wrap count">
+                                                <input type="text" class="ui_textcontrol" name="title" id="input-title" placeholder="제목을 입력해주세요." required maxlength="40" data-limit="40" data-count-target="#txt-count">
+                                                <span id="txt-count" class="total"><em>0</em> / 40</span>
+                                                <p class="err-msg">제목을 입력해주세요.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="field-item block">
+                                            <div class="field-title">
+                                                <label for="input-content" class="tit">내용<span class="require">*<span class="blind">필수항목</span></span></label>
+                                            </div>
+                                            <div class="input-wrap count">
+                                                <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" required data-limit="1000" data-count-target="#txt-count2"></textarea>
+                                                <span id="txt-count2" class="cell total"><em>0</em> / 1000</span>
+                                                <p class="err-msg">내용을 입력해주세요.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="field-item block">
+                                            <div class="field-title">
+                                                <strong class="tit">첨부 파일</strong>
+                                            </div>
+                                            <div class="file-box">
+                                                <span class="file-input">
+                                                    <span class="file-label">사진을 업로드해주세요.</span>       
+                                                    <label for="file-upload">업로드</label>
+                                                    <input type="file" class="ui_fileinput" id="file-upload" data-format="jpg|jpeg|gif" data-size="10MB">
+                                                </span>
+                                                <ul class="file-lists">   
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="dot-list top-border">
+                                    <li>참조첨부파일은 최대 3개까지 가능하며, 전체 용량은 10MB 이하까지 업로드 가능합니다.</li>
+                                    <li>첨부파일 이름은 특수기호(? ! , . & ^ ~ )를 제외해주세요.(첨부 가능 확장자 jpg, gif)</li>
+                                    <li>[인증/예약] 버튼 클릭 시 휴대전화 인증이 진행되며, 그 후 문의가 완료됩니다.</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="btn-group right">
-                        <a href="#" class="btn gray"><span>취소</span></a>
-                        <!-- 비회원 접근 시 (휴대 전화 인증 팝업) -->
-                        <!-- <button type="button" class="btn pink"><span>인증/문의</span></button> -->
-                        <!-- 회원 접근 시 (컨펌 팝업) -->
-                        <button type="button" class="btn pink"><span>인증</span></button>
-                    </div>
-
+                        <div class="btn-group right">
+                            <a href="#" class="btn gray"><span>취소</span></a>
+                            <!-- 비회원 접근 시 (휴대 전화 인증 팝업) -->
+                            <!-- <button type="button" class="btn pink" id="btn-certification"><span>인증/문의</span></button> -->
+                            <!-- 회원 접근 시 (컨펌 팝업) -->
+                            <button type="button" class="btn pink" id="btn-confirm"><span>인증</span></button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
              
         @@include('./common/footer.html')
-    </div>      
+    </div>     
+    
+    <!-- include('./common/modules/alert-modal.html', {
+        "alertTit" : "문자 상담 문의를 접수하시겠습니까?",
+        "confirmType": true
+    }) -->
 </body>
 </html> 

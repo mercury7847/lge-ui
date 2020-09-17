@@ -81,36 +81,94 @@ CS.MD.drawOption = function() {
 /*
 * 파일 다중 업로드
 * */
-CS.MD.uploadFile = function($target) {
+// CS.MD.uploadFile = function($target) {
     
-    var pluginName = 'uploadFile';
+//     var pluginName = 'uploadFile';
 
-    function Plugin(elem) {
-        var _this = this;
+//     function Plugin(elem, opt) {
+//         var _this = this;
         
-        var _this = this,
-            element = this.element = elem,
-            $element = $(element);
+//         var _this = this,
+//             element = this.element = elem,
+//             $element = $(element);
 
-        var defaults = {
+//         var defaults = {
             
-        };
+//         };
 
-        defaults = $.extend({}, defaults, opt);
-    }
+//         defaults = $.extend({}, defaults, opt);
+    
+//         function validation(el) {
+//             var maxSize = $(el).data('size'),
+//                 format = $(el).data('format'),
+//                 formatList = format.split('|'),
+//                 size = $(el).data('size'),
+//                 fileSize = 0,
+//                 ext,
+//                 fileExtension;
 
-    Plugin.prototype = {
+//             if (size.indexOf('MB')!=-1) {
+//                 size = parseInt(size.split('MB')[0])*1024*1024;
+//             }
+
+//             if (window.FileReader){
+//                 var fileSize = $(el)[0].files[0].size;
+//                 ext = $(el)[0].files[0].name;
+//             } else {
+//                 var fileobj = new ActiveXObject("Scripting.FileSystemObject");
+//                 fileSize = fileobj.getFile( file.value ).size;
+//                 ext = $(el).val().split('/').pop().split('\\').pop();
+//             }
+
+//             // Check file size
+//             if (fileSize > maxSize) {
+//                 if(!opt.onlyBoolean) check.$errorMsg.find('.size').show();
+//                 if(opt.trigger) $(el).trigger('invalid.file');
+//                 return false;
+//             }
+
+//             // Check file extension
+//             fileExtension = ext.split('.')[ext.split('.').length-1].toLowerCase();
+            
+//             if($.inArray(fileExtension, formatList) == -1) {
+//                 return false;
+//             }
+
+//             return true;
+//         }
+//         function setEventListener() {
+//             $('.ui_file_input').on('change', function() {
+//                 var el = this,
+//                     $el = $(el),
+//                     file = el.files[0];
+
+//                 var html = '<li><input type="hidden" name="file-hidden" id="file-hidden"><span class="file-name">'+ file.name +'</span><button type="button" class="btn-del"><span class="blind>삭제</span></button></li>'
+                
+//                 console.log(validation(el));
+
+//                 if (validation(el)) {
+//                     $('.ui_file_list').append(html);
+//                     $('#file-hidden').val(file);
+//                 }
+//                 $el.val('');
+//             });
+//         }
+
+//         setEventListener();
+//     }
+
+//     Plugin.prototype = {
         
-    };
+//     };
 
-    $.fn[pluginName] = function(options) {
-        return this.each(function() {
-            if (!$.data(this, "plugin_" + pluginName)) {
-                $.data(this, "plugin_" + pluginName, new Plugin(this, options));
-            }
-        });
-    }
-}
+//     $.fn[pluginName] = function(options) {
+//         return this.each(function() {
+//             if (!$.data(this, "plugin_" + pluginName)) {
+//                 $.data(this, "plugin_" + pluginName, new Plugin(this, options));
+//             }
+//         });
+//     }
+// }
 
 /*
 * 페이징네이션
@@ -297,6 +355,27 @@ CS.MD.setPagination = function() {
     function commonInit(){
         setTableScrollbar();
         checkPrivacy();
+
+        
+
+        vcui.require(['ui/carousel'], function () {
+            $('.engineer-carousel').vcCarousel({
+                swipeToSlide: true,
+                slidesToShow: 4,
+                arrows:false,
+                customPaging: function(carousel, i) {
+                    var $button = $('<button type="button" class="btn-indi"><span class="blind">'+(i+1)+'번 내용 보기'+'</span></button>');
+                    return $button;
+                },
+                responsive: [{
+                    breakpoint:768,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                }]
+            });
+        });
     }
 
     // CS.UI.elem.$win.ready( commonInit );

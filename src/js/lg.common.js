@@ -15,7 +15,10 @@
                             "ui/videoBox",
                             "ui/youtubeBox",
                             "ui/imageSwitch",
-                            "ui/dropdown"
+                            "ui/dropdown",
+                            "ui/textControl",
+                            "ui/scrollview",
+                            "ui/fileInput"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
@@ -30,11 +33,17 @@
             this.find('.ui_carousel').vcCarousel();
             this.find('.animation-box').vcVideoBox();
             this.find('.youtube-box').vcYoutubeBox();
+            this.find('.ui_textcontrol').vcTextcontrol();
+            this.find('.ui_scrollview').vcScrollview();
+            this.find('.ui_fileinput').vcFileinput();
         }.bind(this));
         return this;
     };
 
+    
+
     /* 
+
     vcui.require.config({
         paths: {
             'jquery.transit': 'libs/jquery.transit'
@@ -44,6 +53,7 @@
             node.charset = 'euc-kr';
         }
     });
+    
 
     // ajax 로 통신할때는 기본 케릭터셑이 utf-8 로 되어있음.
     // 따라서, euc-kr 로 설정된 서버에서 ajax 를 이용하여 한글로된 데이터를 전달하게 되면 글씨가 깨짐.

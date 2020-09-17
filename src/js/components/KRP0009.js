@@ -50,31 +50,27 @@ $(function () {
             if(expire && expire.expireDate < new Date().getTime()){
                 Storage.remove(storageName);
                 Storage.remove(storageNameExpire);
+
+                console.log('remove expire')
             }
 
             Storage.set(storageNameExpire, {'expireDate' : new Date().getTime() + (10*1000)});	//24*3600000 // 10초로 테스트중 만료일 설정 
             var storageFilters = Storage.get(storageName);	
 
 
-            // 컴포넌트 설정
-            $('.ui_filter_selectbox').vcSelectbox().on('change', function(e,data){
-                storageFilters['sortBy'] = data.selectedIndex;
-                Storage.set(storageName, storageFilters);
-                setApplyFilter(storageFilters);
-            });				
             
-            $('.ui_price_slider').vcRangeSlider({
-                mode:true,
-            }).on('rangesliderchanged', function (e, data) {				
-                var id = $(e.currentTarget).data('id');
-                setSliderData(id, data);
-            }); 
 
-            $('.ui_size_slider').vcRangeSlider({
-                mode:true,
-            }).on('rangesliderchanged', function (e, data) {
-                var id = $(e.currentTarget).data('id');
-                setSliderData(id, data);
+            $('.ui_desc').on('rangesliderchanged', function (e, data) {
+                console.log(data);
+
+                $('.min').text(data.minValue);
+                $('.max').text(data.maxValue);
+
+            }).vcRangeSlider({priceUnit:'$', roundUnit:10});
+
+            $('.ui_slider').vcRangeSlider({priceUnit:'$', roundUnit:10}).on('rangesliderchanged', function (e, data) {
+                console.log(data);
+
             });
 
             //
@@ -180,10 +176,64 @@ $(function () {
             }
 
 
-            function requestData(obj){
-                console.log('request ', obj);
+            function render(arr){
+/* 
+                <div class="filter_box">
+                    <div id="productPrice">가격</div>
+                    <div class="ui_price_slider" data-id="price" data-range="100000,10000000" data-round-unit="100000" data-unit-label="원" data-id="price" data-min-label="price range minimum" data-max-label="price range maximum"></div>
+                </div>
+        
+                <div class="filter_box">
+                    <div id="productSize">스크린 사이즈</div>
+                    <div class="ui_size_slider" data-id="size" data-range="0,200" data-round-unit="1" data-unit-label="cm" data-min-label="size range minimum" data-max-label="size range maximum"></div>
+                </div>
+        
+                <div class="filter_box">
+                    <div id="c1">색상</div>
+                    <label><input id="color0" type="checkbox" name="color" value="blue"> Blue</label>
+                    <label><input id="color1" type="checkbox" name="color" value="red"> Red</label>			
+                    <label><input id="color2" type="checkbox" name="color" value="yellow"> Yellow</label>			
+                </div>
+        
+                <div class="filter_box">
+                    <div id="c1">타입</div>
+                    <label><input id="type0" type="checkbox" name="type" value="c1"> LG SIGNATURE</label>
+                    <label><input id="type1" type="checkbox" name="type" value="c2"> OLED TVs</label>			
+                    <label><input id="type2" type="checkbox" name="type" value="c3"> NanoCell TVs</label>			
+                </div> */
+                for(var i=0; i<arr.length; i++){
 
-                var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList.json';
+                }
+
+                // 컴포넌트 설정
+                /* 
+                $('.ui_filter_selectbox').vcSelectbox().on('change', function(e,data){
+                    storageFilters['sortBy'] = data.selectedIndex;
+                    Storage.set(storageName, storageFilters);
+                    setApplyFilter(storageFilters);
+                });				
+                
+                $('.ui_price_slider').vcRangeSlider({
+                    mode:true,
+                }).on('rangesliderchanged', function (e, data) {				
+                    var id = $(e.currentTarget).data('id');
+                    setSliderData(id, data);
+                }); 
+
+                $('.ui_size_slider').vcRangeSlider({
+                    mode:true,
+                }).on('rangesliderchanged', function (e, data) {
+                    var id = $(e.currentTarget).data('id');
+                    setSliderData(id, data);
+                }); */
+
+
+            }
+
+
+            function requestData(obj){
+
+                //var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList.json';
 
                 _$.ajax({
                     type : "POST",
@@ -193,70 +243,94 @@ $(function () {
 
                 }).done(function(result) {
 
-                    //filterEnableList
                     var enableList = result.data && result.data[0].filterEnableList;
-
-                    // console.log(enableList);
-
                     var arr = result.data && result.data[0].filterList;
 
                     var filterObj = vcui.array.reduce(arr, function (prev, cur) {
-                        if(prev[cur['filterId']]){
-                            prev[cur['filterId']].push(cur);
-                        }else{
-                            prev[cur['filterId']] = [cur];
-                        }
+                        if(prev[cur['filterId']]) prev[cur['filterId']].push(cur);
+                        else prev[cur['filterId']] = [cur];
                         return prev;
                     }, {}); 
 
-                    //console.log(filterObj);
+                    var newFilterArr = [];
 
                     for(var key in filterObj){
 
                         var filterValues = vcui.array.map(filterObj[key], function(item, index) {	
-
-                            var filters = vcui.array.filter(enableList, function(target, idx) {
-                                return target['filterId'] === item['filterValueId'];
+                            
+                            var enableArr = vcui.array.filter(enableList, function(target){
+                                if(target['filterId'] == item['filterId']){
+                                    return vcui.array.filter(item['facetValueId'].split(','), function(fItem){
+                                        return target['facetValueId'] == item['facetValueId'];
+                                    });
+                                }else{
+                                    return false;
+                                }
                             });
+
                             var obj = {
-                                'filterName':item['filterName'], 
+                                'filterName' : item['filterName'], 
                                 'label' : item['filterValueName'], 
-                                'value':item['filterValueId'], 
-                                'count':item['countModel']
+                                'value' : item['filterValueId'], 
+                                'facetValueId' : item['facetValueId'], 
+                                'modelCount' : item['countModel'],
+                                'filterTypeCode' : item['filterTypeCode'], //99
+                                'rangePointStyle' : item['rangePointStyle'],
+                                'facetSourceCode': item['facetSourceCode'], //COLR
+                                'filterOrderNo': item['filterOrderNo'],
                             } 
 
-                            //console.log(filters);
+                            if(enableArr.length>0){ 
 
-                            if(filters.length>0){
-                                obj['value2'] = filters[0]['facetValueId'];
-                            }
-
+                                var eArr = vcui.array.filter(enableArr, function(eItem){
+                                    return eItem['facetValueId'] == obj['facetValueId'];
+                                });
+                                if(eArr.length>0){
+                                    obj['modelCount'] = eArr[0]['modelCount'];
+                                    obj['enable'] = eArr[0]['enable'];
+                                }
+                            };
+                            
                             return obj;
                         }); 
 
-
+                        
                         filterValues = vcui.array.reduce(filterValues, function(prev, cur){
                             var items = vcui.array.filter(prev, function(item, index) {
                                 return item['value'] === cur['value'];
                             });
-                            if(items.length===0){
-                                prev.push(cur);
-                            }		  
+                            if(items.length===0) prev.push(cur);	  
                             return prev;
                         },[]); 
 
-                        console.log(key, filterValues);
-
+                        if(filterValues.length>0){
+                            newFilterArr.push({ 
+                                id : key,
+                                type : filterValues[0]['filterTypeCode'],
+                                scode : filterValues[0]['facetSourceCode'],
+                                name : filterValues[0]['filterName'],
+                                order : filterValues[0]['filterOrderNo'],
+                                data : filterValues, 
+                            });
+                        }
                     }
+                    
+                    newFilterArr.sort(function(a, b) { 
+                        return parseInt(a.order) < parseInt(b.order) ? -1 : parseInt(a.order) > parseInt(b.order) ? 1 : 0;
+                    });
+
+                    //console.log(newFilterArr);
+
+                   render(newFilterArr);
 
                 }).fail(function(error) {
                     // console.error(error);
-                });
-
-
+                })
             }
 
-            setApplyFilter(storageFilters);
+            //setApplyFilter(storageFilters);
+
+            requestData(Storage.get(storageName));
             
 
         });           
