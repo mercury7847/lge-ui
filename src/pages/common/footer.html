@@ -26,374 +26,411 @@
         </li>
     </ul>
     <div class="foot-cont">
-        <div class="cont-area ui_footer_accordion" data-toggle-selector="> .depth1-wrap > .ui_accord_toggle" data-single-open="true">
+        <div class="cont-area">
             <ul class="link-wrap">
-                <!-- 제품 -->
-                <li class="depth1-li size2"><!-- 열렸을 때 .active -->
-                    <div class="depth1-wrap">
-                        <a href="#n" class="depth1">제품</a>
-                        <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                    </div>
-                    <div class="depth2-container ui_accord_content ui_footer_accordion" data-toggle-selector="> .depth2-wrap > .ui_accord_toggle" data-single-open="true">
-                        <ul class="depth2">
-                            <li class="depth2-li"><!-- 열렸을 때 .active -->
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">TV/AV</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content" style="display:block;">
-                                    <li><a href="#n">TV</a></li>
-                                    <li><a href="#n">프로젝터</a></li>
-                                    <li><a href="#n">AV</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">IT</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">노트북</a></li>
-                                    <li><a href="#n">일체형 PC</a></li>
-                                    <li><a href="#n">데스크탑</a></li>
-                                    <li><a href="#n">모니터</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">주방가전</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">냉장고</a></li>
-                                    <li><a href="#n">김치냉장고</a></li>
-                                    <li><a href="#n">전자레인지/오븐</a></li>
-                                    <li><a href="#n">전기레인지</a></li>
-                                    <li><a href="#n">식기세척기</a></li>
-                                    <li><a href="#n">정수기</a></li>
-                                    <li><a href="#n">맥주제조기</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="depth2">
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">생활가전</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">워시타워</a></li>
-                                    <li><a href="#n">세탁기</a></li>
-                                    <li><a href="#n">청소기</a></li>
-                                    <li><a href="#n">의류건조기</a></li>
-                                    <li><a href="#n">스타일러</a></li>
-                                    <li><a href="#n">안마의자</a></li>
-                                    <li><a href="#n">뷰티 디바이스</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">에어컨/에어케어</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">에어컨</a></li>
-                                    <li><a href="#n">공기 청정기</a></li>
-                                    <li><a href="#n">제습기</a></li>
-                                    <li><a href="#n">가습기</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">모바일</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">스마트폰</a></li>
-                                    <li><a href="#n">피처폰</a></li>
-                                    <li><a href="#n">스마트 디바이스</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">브랜드관</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">LG SIGNATURE</a></li>
-                                    <li><a href="#n">LG ThinQ</a></li>
-                                    <li><a href="#n">LG Objet 컬렉션</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                <!-- section1 -->
+                <li class="link-section">
+                    <!-- depth1 -->
+                    <h5 id="depth1-1-1" class="dep1 active"><a href="#n">제품</a><!-- <span>제품</span> --></h5><!-- 활성화시 .active -->
+                    <!-- // depth1 -->
+                    <!-- depth2 -->
+                    <ul role="tree" class="dep2-wrap" aria-labelledby="depth1-1-1">
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">TV/AV</a><!-- <span class="dep2">TV/AV</span> -->
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">TV</a><!-- <span role="treeitem" aria-level="2" class="dep3">TV</span> --></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">프로젝터</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">AV</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">IT</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">노트북</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">일체형PC</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">데스크탑</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">모니터</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">주방가전</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">냉장고</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">김치냉장고</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">전자레인지/오븐</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">전기레인지</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">식기세척기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">정수기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">맥주제조기</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+                    </ul>
+                    <!-- // depth2 -->
                 </li>
-                <!-- // 제품 -->
-                <!-- 케어솔루션 -->
-                <li class="depth1-li">
-                    <div class="depth1-wrap">
-                        <a href="#n" class="depth1">케어솔루션</a>
-                        <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                    </div>
-                    <div class="depth2-container ui_accord_content">
-                        <ul class="depth2 link-only">
-                            <li><a href="#n">제품 안내</a></li>
-                            <li><a href="#n">케어솔루션 안내</a></li>
-                        </ul>
-                    </div>
+                <!-- // section1 -->
+
+                <!-- section2 -->
+                <li class="link-section">
+                    <!-- depth1 -->
+                    <h5 id="depth1-1-2" class="dep1 hidden" aria-hidden="true"><span>제품</span><!-- <a href="#n">제품</a> --></h5>
+                    <!-- // depth1 -->
+                    <!-- depth2 -->
+                    <ul role="tree" class="dep2-wrap" aria-labelledby="depth1-1-2">
+                        <li role="treeitem" aria-level="1" class="dep2-list active"><!-- 활성화시 .active -->
+                            <a href="#n" class="dep2">생활가전</a><!-- <span class="dep2">생활가전</span> -->
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">워시타워</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">세탁기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">청소기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">의류건조기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">스타일러</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">안마의자</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">뷰티 디바이스</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">에어컨/에어케어</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">에어컨</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">공기청정기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">제습기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">가습기</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">모바일</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">스마트폰</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">피쳐폰</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">스마트 디바이스</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">브랜드관</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">LG SIGNATURE</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">LG ThinQ</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">LG Objet 컬렉션</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+                    </ul>
+                    <!-- // depth2 -->
                 </li>
-                <!-- // 케어솔루션 -->
-                <!-- 이벤트/멤버십 -->
-                <li class="depth1-li">
-                    <div class="depth1-wrap">
-                        <a href="#n" class="depth1">이벤트/멤버십</a>
-                        <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                    </div>
-                    <div class="depth2-container ui_accord_content">
-                        <ul class="depth2 link-only">
-                            <li><a href="#n">이벤트</a></li>
-                            <li><a href="#n">기획전</a></li>
-                            <li><a href="#n">멤버십</a></li>
-                            <li><a href="#n">쿠폰</a></li>
-                        </ul>
-                    </div>
+                <!-- // section2 -->
+
+                <!-- section3 -->
+                <li class="link-section">
+                    <!-- depth1 -->
+                    <h5 id="depth1-2" class="dep1"><a href="#n">케어솔루션</a><!-- <span>케어솔루션</span> --></h5>
+                    <!-- // depth1 -->
+                    <!-- depth2 -->
+                    <ul role="tree" class="dep2-wrap" aria-labelledby="depth1-2">
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">제품 안내</a><!-- <span class="dep2">제품 안내</span> -->
+                        </li>
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">케어솔루션 안내</a>
+                        </li>
+                    </ul>
+                    <!-- // depth2 -->
+
+                    <!-- depth1 -->
+                    <h5 id="depth1-3" class="dep1"><a href="#n">이벤트/멤버십</a><!-- <span>이벤트/멤버십</span> --></h5>
+                    <!-- // depth1 -->
+                    <!-- depth2 -->
+                    <ul role="tree" class="dep2-wrap" aria-labelledby="depth1-3">
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">이벤트</a><!-- <span class="dep2">이벤트</span> -->
+                        </li>
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">기획전</a>
+                        </li>
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">멤버십</a>
+                        </li>
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">쿠폰</a>
+                        </li>
+                    </ul>
+                    <!-- // depth2 -->
                 </li>
-                <!-- // 이벤트/멤버십 -->
-                <!-- 스토리 -->
-                <li class="depth1-li">
-                    <div class="depth1-wrap">
-                        <a href="#n" class="depth1">스토리</a>
-                        <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                    </div>
-                    <div class="depth2-container ui_accord_content">
-                        <ul class="depth2 link-only">
-                            <li><a href="#n">매거진</a></li>
-                            <li><a href="#n">활용가이드</a></li>
-                            <li><a href="#n">뉴스룸</a></li>
-                            <li><a href="#n">e-카탈로그</a></li>
-                        </ul>
-                    </div>
+                <!-- // section3 -->
+
+                <!-- section4 -->
+                <li class="link-section">
+                    <!-- depth1 -->
+                    <h5 id="depth1-4" class="dep1"><a href="#n">스토리</a><!-- <span>스토리</span> --></h5>
+                    <!-- // depth1 -->
+                    <!-- depth2 -->
+                    <ul role="tree" class="dep2-wrap" aria-labelledby="depth1-4">
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">매거진</a><!-- <span class="dep2">매거진</span> -->
+                        </li>
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">활용가이드</a>
+                        </li>
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">뉴스룸</a>
+                        </li>
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">e-카탈로그</a>
+                        </li>
+                    </ul>
+                    <!-- // depth2 -->
                 </li>
-                <!-- // 스토리 -->
-                <!-- 케어용품/소모품 -->
-                <li class="depth1-li size2">
-                    <div class="depth1-wrap">
-                        <a href="#n" class="depth1">케어용품/소모품</a>
-                        <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                    </div>
-                    <div class="depth2-container ui_accord_content ui_footer_accordion" data-toggle-selector="> .ui_accord_toggle" data-single-open="true">
-                        <ul class="depth2">
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">TV/AV</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">TV</a></li>
-                                    <li><a href="#n">프로젝터</a></li>
-                                    <li><a href="#n">AV</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">IT</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">노트북</a></li>
-                                    <li><a href="#n">일체형 PC</a></li>
-                                    <li><a href="#n">데스크탑</a></li>
-                                    <li><a href="#n">모니터</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">주방가전</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">냉장고</a></li>
-                                    <li><a href="#n">김치냉장고</a></li>
-                                    <li><a href="#n">전자레인지/오븐</a></li>
-                                    <li><a href="#n">전기레인지</a></li>
-                                    <li><a href="#n">식기세척기</a></li>
-                                    <li><a href="#n">정수기</a></li>
-                                    <li><a href="#n">맥주제조기</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="depth2">
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">생활가전</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">워시타워</a></li>
-                                    <li><a href="#n">세탁기</a></li>
-                                    <li><a href="#n">청소기</a></li>
-                                    <li><a href="#n">의류건조기</a></li>
-                                    <li><a href="#n">스타일러</a></li>
-                                    <li><a href="#n">안마의자</a></li>
-                                    <li><a href="#n">뷰티 디바이스</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">에어컨/에어케어</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">에어컨</a></li>
-                                    <li><a href="#n">공기 청정기</a></li>
-                                    <li><a href="#n">제습기</a></li>
-                                    <li><a href="#n">가습기</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">모바일</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">스마트폰</a></li>
-                                    <li><a href="#n">태블릿</a></li>
-                                    <li><a href="#n">일반폰</a></li>
-                                    <li><a href="#n">G워치</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">뷰티</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">뷰티 디바이스</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                <!-- // section4 -->
+
+                <!-- section5 -->
+                <li class="link-section">
+                    <!-- depth1 -->
+                    <h5 id="depth1-5-1" class="dep1"><a href="#n">케어용품/소모품</a><!-- <span>케어용품/소모품</span> --></h5>
+                    <!-- // depth1 -->
+                    <!-- depth2 -->
+                    <ul role="tree" class="dep2-wrap" aria-labelledby="depth1-5-1">
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">TV/AV</a><!-- <span class="dep2">TV/AV</span> -->
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">TV</a><!-- <span role="treeitem" aria-level="2" class="dep3">TV</span> --></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">프로젝터</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">AV</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">IT</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">노트북</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">일체형PC</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">데스크탑</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">모니터</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">주방가전</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">냉장고</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">김치냉장고</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">전자레인지/오븐</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">전기레인지</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">식기세척기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">정수기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">맥주제조기</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+                    </ul>
+                    <!-- // depth2 -->
                 </li>
-                <!-- // 케어용품/소모품 -->
-                <!-- 고객지원 -->
-                <li class="depth1-li size2 last">
-                    <div class="depth1-wrap">
-                        <a href="#n" class="depth1">고객지원</a>
-                        <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                    </div>
-                    <div class="depth2-container ui_accord_content ui_footer_accordion" data-toggle-selector="> .ui_accord_toggle" data-single-open="true">
-                        <ul class="depth2">
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">제품 사용 지원</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">제품 문제 해결</a></li>
-                                    <li><a href="#n">동영상 가이드</a></li>
-                                    <li><a href="#n">사용 설명서</a></li>
-                                    <li><a href="#n">드라이버/SW</a></li>
-                                    <li><a href="#n">카드뉴스</a></li>
-                                    <li><a href="#n">가전제품 생활의 팁</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">서비스 상담</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">이메일 문의</a></li>
-                                    <li><a href="#n">문자상담 문의</a></li>
-                                    <li><a href="#n">원격상담 예약</a></li>
-                                    <li><a href="#n">전화상담 예약</a></li>
-                                    <li><a href="#n">영상상담 예약</a></li>
-                                    <li><a href="#n">상담결과 조회/변경</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">서비스 예약</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">출장 서비스 예약</a></li>
-                                    <li><a href="#n">제품설치/철거 예약</a></li>
-                                    <li><a href="#n">예약결과 조회/변경</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <a href="#n" class="depth2-tit ui_accord_toggle">센터/매장 찾기</a>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">센터 찾기</a></li>
-                                    <li><a href="#n">센터 방문 예약</a></li>
-                                    <li><a href="#n">매장 찾기</a></li>
-                                    <li><a href="#n">매장 방문 예약</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="depth2">
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">고객의 소리</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">칭찬합니다</a></li>
-                                    <li><a href="#n">개선해 주세요</a></li>
-                                    <li><a href="#n">나의 글 보기</a></li>
-                                    <li><a href="#n">칭찬 글 보기</a></li>
-                                    <li><a href="#n">경영진에게 제안</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li">
-                                <div class="depth2-wrap">
-                                    <a href="#n" class="depth2-tit ui_accord_toggle">공지사항</a>
-                                    <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                                </div>
-                                <ul class="depth3 ui_accord_content">
-                                    <li><a href="#n">서비스 뉴스</a></li>
-                                    <li><a href="#n">공지사항</a></li>
-                                    <li><a href="#n">요금/보증 안내</a></li>
-                                    <li><a href="#n">재생부품 가격 공지</a></li>
-                                    <li><a href="#n">이용가이드/FAQ</a></li>
-                                </ul>
-                            </li>
-                            <li class="depth2-li case">
-                                <a href="#n" class="depth1">회사소개</a>
-                                <div class="depth2-container">
-                                    <ul class="depth2 link-only">
-                                        <li><a href="#n">기업정보</a></li>
-                                        <li><a href="#n">인재채용</a></li>
-                                        <li><a href="#n">투자자 정보</a></li>
-                                        <li><a href="#n">지속가능경영</a></li>
-                                        <li><a href="#n">뉴스</a></li>
-                                        <li><a href="#n">열린구매</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                <!-- // section5 -->
+
+                <!-- section6 -->
+                <li class="link-section">
+                    <!-- depth1 -->
+                    <h5 id="depth1-5-2" class="dep1 hidden"><span>케어용품/소모품</span><!-- <a href="#n">케어용품/소모품</a> --></h5>
+                    <!-- // depth1 -->
+                    <!-- depth2 -->
+                    <ul role="tree" class="dep2-wrap" aria-labelledby="depth1-5-2">
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">생활가전</a><!-- <span class="dep2">생활가전</span> -->
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">워시타워</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">세탁기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">청소기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">의류건조기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">스타일러</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">안마의자</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">뷰티 디바이스</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">에어컨/에어케어</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">에어컨</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">공기청정기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">제습기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">가습기</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">모바일</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">스마트폰</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">피쳐폰</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">일반폰</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">G워치</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">뷰티</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">뷰티 디바이스</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+                    </ul>
+                    <!-- // depth2 -->
                 </li>
-                <!-- // 고객지원 -->
-                <!-- 회사소개 : 모바일 디자인 대응 -->
-                <li class="depth1-li m-only">
-                    <div class="depth1-wrap">
-                        <a href="#n" class="depth1">회사소개</a>
-                        <span class="acc-arrow ui_accord_toggle">하위메뉴 열기</span>
-                    </div>
-                    <div class="depth2-container ui_accord_content">
-                        <ul class="depth2 link-only">
-                            <li><a href="#n">기업정보</a></li>
-                            <li><a href="#n">인재채용</a></li>
-                            <li><a href="#n">투자자 정보</a></li>
-                            <li><a href="#n">지속가능경영</a></li>
-                            <li><a href="#n">뉴스</a></li>
-                            <li><a href="#n">열린구매</a></li>
-                        </ul>
-                    </div>
+                <!-- // section6 -->
+
+                <!-- section7 -->
+                <li class="link-section">
+                    <!-- depth1 -->
+                    <h5 id="depth1-6-1" class="dep1"><a href="#n">고객지원</a><!-- <span>고객지원</span> --></h5>
+                    <!-- // depth1 -->
+                    <!-- depth2 -->
+                    <ul role="tree" class="dep2-wrap" aria-labelledby="depth1-6-1">
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">제품 사용 지원</a><!-- <span class="dep2">제품 사용 지원</span> -->
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">제품 문제 해결</a><!-- <span role="treeitem" aria-level="2" class="dep3">제품 문제 해결</span> --></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">동영상 가이드</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">사용 설명서</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">드라이버/SW</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">카드뉴스</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">가전제품 생활의 팁</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">서비스 상담</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">이메일 문의</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">문자상담 문의</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">원격상담 예약</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">전화상담 예약</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">영상상담 예약</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">상담결과 조회/변경</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">서비스 예약</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">출장 서비스 예약</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">제품설치/철거 예약</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">예약결과 조회/변경</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">센터/매장 찾기</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">센터 찾기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">센터 방문 예약</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">매장 찾기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">매장 방문 예약</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+                    </ul>
+                    <!-- // depth2 -->
                 </li>
-                <!-- // 회사소개 : 모바일 디자인 대응 -->
+                <!-- // section7 -->
+
+                <!-- section8 -->
+                <li class="link-section">
+                    <!-- depth1 -->
+                    <h5 id="depth1-6-2" class="dep1 hidden"><span>케어용품/소모품</span><!-- <a href="#n">케어용품/소모품</a> --></h5>
+                    <!-- // depth1 -->
+                    <!-- depth2 -->
+                    <ul role="tree" class="dep2-wrap" aria-labelledby="depth1-6-2">
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">고객의 소리</a><!-- <span class="dep2">고객의 소리</span> -->
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">칭찬합니다</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">개선해 주세요</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">나의 글 보기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">칭찬 글 보기</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">경영진에게 제안</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">공지사항</a>
+                            <!-- depth3 -->
+                            <ul class="dep3-wrap">
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">서비스 뉴스</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">공지사항</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">요금/보증 안내</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">재생부품 가격 공지</a></li>
+                                <li role="none"><a href="#n" role="treeitem" aria-level="2" class="dep3">이용가이드/FAQ</a></li>
+                            </ul>
+                            <!-- // depth3 -->
+                        </li>
+                    </ul>
+                    <!-- // depth2 -->
+
+                    <!-- depth1 -->
+                    <h5 id="depth1-7" class="dep1 new"><a href="#n" target="_blank">회사소개</a></h5><!-- 새창 옵션 선택 시 .new -->
+                    <!-- // depth1 -->
+                    <!-- depth2 -->
+                    <ul role="tree" class="dep2-wrap" aria-labelledby="depth1-7">
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">기업정보</a><!-- <span class="dep2">기업정보</span> -->
+                        </li>
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">인재채용</a>
+                        </li>
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">투자자 정보</a>
+                        </li>
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">지속가능경영</a>
+                        </li>
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">뉴스</a>
+                        </li>
+                        <li role="treeitem" aria-level="1" class="dep2-list">
+                            <a href="#n" class="dep2">열린구매</a>
+                        </li>
+                    </ul>
+                    <!-- // depth2 -->
+                </li>
+                <!-- // section8 -->
             </ul>
             <div class="foot-bottom">
                 <div class="bottom-head">
