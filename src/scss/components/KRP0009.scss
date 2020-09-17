@@ -74,9 +74,9 @@ $color: (type01, type02, type03);
             float:left;
             width:200px;
             margin-left:-224px;
-            // @media screen and (max-width: 1780px) {
-            //     display:none;
-            // }
+            @media screen and (max-width: 1780px) {
+                display:none;
+            }
             .btn-reset {
                 margin:23px 0 12px;
                 text-align:center;
