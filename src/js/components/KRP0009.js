@@ -60,6 +60,19 @@ $(function () {
 
             
 
+            $('.ui_desc').on('rangesliderchanged', function (e, data) {
+                console.log(data);
+
+                $('.min').text(data.minValue);
+                $('.max').text(data.maxValue);
+
+            }).vcRangeSlider({priceUnit:'$', roundUnit:10});
+
+            $('.ui_slider').vcRangeSlider({priceUnit:'$', roundUnit:10}).on('rangesliderchanged', function (e, data) {
+                console.log(data);
+
+            });
+
             //
 
             

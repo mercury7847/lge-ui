@@ -101,7 +101,7 @@ $color: (type01, type02, type03);
                 }
             }
 
-            .price-opt {
+            .opt-slider {
                 padding:24px 20px 28px;
                 background-color:#fff;
                 border-radius:4px;
@@ -238,6 +238,15 @@ $color: (type01, type02, type03);
                                         &:before {
                                             border:none;
                                             background-color:#ddd;
+                                            @each $type in $color {
+                                                @if $type == type01 {
+                                                    background:#414141;
+                                                } @else if $type == type02 {
+                                                    background:#3a202d;
+                                                } @else if $type == type03 {
+                                                    background:#000;
+                                                }
+                                            }
                                         }
                                         &:after {
                                             display:none;
@@ -249,19 +258,19 @@ $color: (type01, type02, type03);
                                         }
                                     }
                                     
-                                    & input:checked + label {
-                                        &:before {
-                                            @each $type in $color {
-                                                @if $type == type01 {
-                                                    background:#414141;
-                                                } @else if $type == type02 {
-                                                    background:#3a202d;
-                                                } @else if $type == type03 {
-                                                    background:#000;
-                                                }
-                                            }
-                                        }
-                                    }
+                                    // & input:checked + label {
+                                    //     &:before {
+                                    //         @each $type in $color {
+                                    //             @if $type == type01 {
+                                    //                 background:#414141;
+                                    //             } @else if $type == type02 {
+                                    //                 background:#3a202d;
+                                    //             } @else if $type == type03 {
+                                    //                 background:#000;
+                                    //             }
+                                    //         }
+                                    //     }
+                                    // }
                                    
                                 }
                             }

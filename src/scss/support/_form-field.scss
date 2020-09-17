@@ -1,5 +1,34 @@
 @charset "UTF-8";
 
+/* radio */
+.rdo-wrap {
+    input {
+        & + label {
+            &:before {
+                border-color:#ddd;
+            }
+            &:after {
+                top:7px;
+                left:7px;
+                width:10px;
+                height:10px;
+                border:0 none;
+                border-radius:50%;
+                background:#ddd;
+            }
+        }
+        &:checked + label {
+            &:before {
+                border-color:#ec455a;
+                background-color:#ec455a;
+            }
+            &:after {
+                background-color:#fff;
+            }
+        }
+    }
+}
+
 /* form field */
 .field-wrap {
     .input-wrap, .select-wrap {

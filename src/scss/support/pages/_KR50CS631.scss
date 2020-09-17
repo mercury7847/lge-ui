@@ -1,6 +1,16 @@
 @charset "UTF-8";
 
 .KR50CS631 {
+    .tab-wrap {
+        max-width: 1066px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .tbl {
+        &-list {
+            max-width: 953px;
+        }
+    }
     .scroll-x {
         margin-bottom: 24px;
         &:last-child {
@@ -146,6 +156,10 @@
             font-size: 16px;
             font-weight: bold;
             line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        .in-note-box {
+            margin-top: 16px;
             margin-bottom: 16px;
         }
         @include mobile {
