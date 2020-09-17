@@ -16,6 +16,15 @@
         }
     }
 
+    .bullet-list {
+        color: #616161;
+        .b-txt {
+            &::before {
+                background-color: #616161;
+            }
+        }
+    }
+
     .section {
         //@include globalBackground;
         margin-top: 24px;

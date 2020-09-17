@@ -1,101 +1,84 @@
 @charset "UTF-8";
 
 .KR50CS411 {
-    .rdo-wrap {
-        label {
-            &:before {
-                
-            }
-        }
-        .rdo-image {
-            
-        }
-        .rdo-text {
-            &:before {
-
-            }
+    .result-text {
+        color:#222;
+        font-size:16px;
+        line-height:24px;
+        strong {
+            font-weight:700;
         }
     }
-}
-
-
-.rdo-box {
-    position:relative;
-    display:inline-block;
-    input {
-        position:absolute;
-        overflow:hidden;
-        width:1px;
-        height:1px;
-        margin:-1px;
-        padding:0;
-        border:none;
-        clip:rect(0,0,0,0);
-        &+label {
-            display:inline-block;
-            vertical-align:top;
-            cursor:pointer;
-            -webkit-user-select:none;
-            -moz-user-select:none;
-            -ms-user-select:none;
-            .rdo-text {
-                display:block;
-                position:relative;
-                padding-left:32px;
-                color:#111;
-                font-size:16px;
-                line-height:24px;
-                &::before {
-                    content:' ';
-                    position:absolute;
-                    top:0;
-                    left:0;
-                    width:24px;
-                    height:24px;
-                    border:1px solid #bcbcbc;
-                    border-radius:50%;
-                }
-                &::after {
-                    content:' ';
-                    position:absolute;
-                    top:8px;
-                    left:6px;
-                    width:12px;
-                    height:6px;
-                    border:2px solid #bcbcbc;
-                    border-top:none;
-                    border-right:none;
-                    transform:rotate(-45deg);
-                }
-            }
-            .rdo-image {
-                display:block;
+    .address-box {
+        .input-wrap {
+            width:calc(50% - 4px);
+            & + .input-wrap {
                 width:100%;
-                margin-bottom:12px;
+                margin-top:8px;
+            }
+        }
+        .default-address {
+            margin-top:12px;
+        }
+    }
+    .engineer-carousel {
+        &-list {
+            padding-bottom:24px;
+            overflow:hidden;
+        }
+        &-track {
+            overflow:hidden;
+            margin:0 -7px;
+        }
+        &-slide {
+            float:left;
+            padding:0 7px;
+        }
+        .engineer-box {
+            input {
+                position:absolute;
                 overflow:hidden;
-                img {
-                    width:100%;
-                    height:auto;
+                width:1px;
+                height:1px;
+                margin:-1px;
+                padding:0;
+                border:none;
+                clip:rect(0,0,0,0);
+                & + label {
+                    display:block;
+                    padding:24px 24px 35px;
+                    text-align:center;
+                    border:1px solid #ddd;
+                    border-radius:8px;
+                    cursor:pointer;
+                    -webkit-user-select:none;
+                    -moz-user-select:none;
+                    -ms-user-select:none;
+                    .engineer-image {
+                        position:relative;
+                        height:0;
+                        margin-bottom:20px;
+                        padding-bottom:100%;
+                        img {
+                            position:absolute;
+                            left:50%;
+                            top:50%;
+                            max-width:100%;
+                            transform:translate(-50%, -50%);
+                        }
+                    }
+                    .tit {
+                        margin-bottom:7px;
+                        color:#222;
+                        font-size:16px;
+                    }
+                    .desc {
+                        color:#616161;
+                        font-size:14px;
+                    }
                 }
-            }
-        }
-        &:checked+label {
-            .rdo-text {
-                &::before {
-                    border-color:transparent;
-                    background:#ec455a;
-                }
-                &::after {
-                    border-color:#fff;
-                }
-            }
-        }
-        &:disabled+label {
-            .rdo-text {
-                color:#aaa;
-                &::before {
-                    background:#aaa;
-                    border-color:transparent;
+                &:checked + label {
+                    box-shadow: 2px 3.5px 8px 0 rgba(0, 0, 0, 0.12);
                 }
             }
         }

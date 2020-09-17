@@ -1,10 +1,13 @@
 @charset "UTF-8";
 
+@import "mCustomScrollbar";
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 @import "../../modules/index";
 @import "../../layout/index";
+@import "../../support/page-visual";
 
+/* 삭제 예정 */
 @mixin globalBackground {
     padding:56px;
     border-radius:4px;
@@ -14,11 +17,6 @@
         border-radius:0;
     }
 }
-
-@import "mCustomScrollbar";
-@import "../../support/page-visual";
-
-/* 삭제 예정 */
 .dummy {
     background-color:rgba(255, 70, 70, 0.2);
     font-size:28.5px;
@@ -40,7 +38,7 @@
 }
 
 .support {
-    // @import "support/layout";
+    @import "../../support/layout";
     @import "../../support/notice-list";
     @import "../../support/notice-view";
     @import "../../support/form-field";
@@ -49,169 +47,16 @@
 
     background:#f4f4f4;
 
-    .contents-inner {
-        padding:64px 0 120px;
-        @include mobile {
-            padding:12px 0 0;
-        }
-    }
-
-    .section {
-        max-width:1146px;
-        margin:48px auto 0;
-        &:first-child {
-            margin-top:0;
-        }
-        @include mobile {
-            padding:0;
-        }
-        &-title {
-            margin-bottom:16px;
-            .tit {
-                font-size:16px;
-                font-weight:700;
-                color:#222;
-                line-height:24px;
-            }
-        }
-        &-content {
-            padding:56px 56px;
-            border-radius:4px;
-            background:#fff;
-        }
-        @include mobile {
-            margin-top:12px;
-            padding:40px 20px;
-            background:#fff;
-            &-title {
-                .tit {
-                    line-height:1.19;
-                    font-size: 16px;
-                }
-            }
-            &-content {
-                padding:0;
-                border-radius:0;
-            }
-        }
-    }
-
-    /* button */
-    .btn {
-        &.btn-icon {
-            position:relative;
-            padding-left:52px;
-            padding-right:64px;
-            text-align:left;
-            background:url(/lg5-common/images/icons/icon-arrow-right-red.svg) no-repeat right 16px top 16px;
-            &:before {
-                content:'';
-                position:absolute;
-                left:16px;
-                top:16px;
-                width:24px;
-                height:24px;
-                background-repeat:no-repeat;
-                background-size:100%;
-            }
-            &.icon-solution:before {
-                background-image: url(/lg5-common/images/icons/icon-solution.svg);
-            }
-            &.icon-driver:before {
-                background-image: url(/lg5-common/images/icons/icon-driver.svg);
-            }
-            @include mobile {
-                padding-right:12px;
-                background:none;
-            }
-        }
-        &[class*="type-icon"] {
-            width:100%;
-            padding-left: 52px;
-            padding-right: 64px;
-            &[class$="-1"] {
-                border-color: #ec455a;
-                color: #ec455a;
-                background: url(/lg5-common/images/icons/icon-solution.svg) no-repeat left 16px top 13px, url(/lg5-common/images/icons/icon-arrow-right-red.svg) no-repeat right 16px top 13px;
-            }
-        }
-        &.type-privacy {
-            font-size: 16px;
-            font-weight: normal;
-            line-height: 1;
-            color: #616161;
-            text-align: left;
-            border-color: #ddd;
-            padding: 15px 32px 15px 16px;
-            position: relative;
-            margin-top: 8px;
-            &:first-child {
-                margin-top: 0;
-            }
-            &::after {
-                content: '';
-                display: block;
-                width: 24px;
-                height: 24px;
-                background: url("/lg5-common/images/icons/icon-btn-arrow-right.svg") no-repeat;
-                position: absolute;
-                right: 16px;
-                top: 16px;
-            }
-            .side-item {
-                font-size: 14px;
-                font-weight: normal;
-                color: #808080;
-                margin-top: 12px;
-                margin-left: 32px;
-                margin-bottom: 14px;
-            }
-        }
-        @include mobile {
-            &[class*="type-icon"] {
-                padding-left: 52px;
-                padding-right: 12px;
-                text-align: left;
-                &[class$="-1"] {
-                    background: url(/lg5-common/images/icons/icon-solution.svg) no-repeat left 16px top 16px,
-                }
-            }
-        }
-    }
-
-
-    /* button area */
-    .btn-group {
-        max-width:1146px;
-        margin:40px auto 0;
-        padding:0 40px;
-        &.right {
-            text-align:right;
-        }
-        @include mobile {
-            margin-top:0;
-            padding:0;
-            .btn {
-                width:100%;
-                border-radius:0;
-                &:first-child:nth-last-child(2), 
-                &:first-child:nth-last-child(2) ~ .btn {
-                    width:50%;
-                    margin:0;
-                }
-            }
-        }
-    }
-
     /* table */
     .tbl {
         width:100%;
         border-top:2px solid #ddd;
         &-list {
             width:100%;
+            max-width:100%;
             border-collapse:collapse;
             border-spacing:0;
-            table-layout:fixed;
+            // table-layout:fixed;
             th, td {
                 padding:16px 24px;
                 font-size:16px;
@@ -287,6 +132,40 @@
         }
     }
         
+    .dot-list02 {
+        li {
+            position:relative;
+            margin-top:10px;
+            padding-left:12px;
+            font-size:16px;
+            color:#222;
+            line-height:1.5;
+            &:first-child {
+                margin-top:0;
+            }
+            &:before {
+                content:'';
+                position:absolute;
+                left:0;
+                top:11px;
+                width:4px;
+                height:4px;
+                border-radius:50%;
+                background-color:#616161;
+            }
+            @include mobile {
+                padding-left:10px;
+                font-size:12px;
+                line-height:18px;
+                margin-top: 10px;
+                &:before {
+                    top:8px;
+                }
+    
+            }
+        }
+    }
+
     .dot-list03 {
         border-top: 1px solid #ddd;
         margin-top: 43px;
@@ -483,44 +362,44 @@
         }
     }
 
-    .input-wrap {
-        .box {
-            input {
-                padding-left: 12px;
-                &::placeholder {
-                    color: #adadad;
-                    font-size: 16px;
-                }
-            }
-            .cell {
-                padding: 0 24px 0 0;
-                button {
-                    width: 24px;
-                    height: 24px;
-                }
-            }
-        }
-        @include mobile {
-            .box {
-                input {
-                    border-radius: 4px 0 0 4px;
-                }
-                .cell {
-                    border-radius: 0 4px 4px 0;
-                    padding-right: 12px;
-                }
-            }
-            &.search {
-                .box {
-                    .cell {
-                        width: 20px;
-                        height: 20px;
-                        padding-right: 12px;
-                    }
-                }
-            }
-        }
-    }
+    // .input-wrap {
+    //     .box {
+    //         input {
+    //             padding-left: 12px;
+    //             &::placeholder {
+    //                 color: #adadad;
+    //                 font-size: 16px;
+    //             }
+    //         }
+    //         .cell {
+    //             padding: 0 24px 0 0;
+    //             button {
+    //                 width: 24px;
+    //                 height: 24px;
+    //             }
+    //         }
+    //     }
+    //     @include mobile {
+    //         .box {
+    //             input {
+    //                 border-radius: 4px 0 0 4px;
+    //             }
+    //             .cell {
+    //                 border-radius: 0 4px 4px 0;
+    //                 padding-right: 12px;
+    //             }
+    //         }
+    //         &.search {
+    //             .box {
+    //                 .cell {
+    //                     width: 20px;
+    //                     height: 20px;
+    //                     padding-right: 12px;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     .select-wrap {
         .ui-selectbox-wrap {
@@ -602,14 +481,18 @@
                 display: block;
                 width: 0;
                 height: 0;
-                border-top: 8px solid #111;
                 border-left: 5px solid transparent;
                 border-right: 5px solid transparent;
                 font-size: 0;
-                @at-root .btn_close & {
+            }
+            .btn_open {
+                .ui_accord_text {
+                    border-top: 8px solid #111;
+                }
+            }
+            .btn_close {
+                .ui_accord_text {
                     border-bottom: 8px solid #111;
-                    border-left: 5px solid transparent;
-                    border-right: 5px solid transparent;
                 }
             }
             .txt_list {
@@ -672,6 +555,19 @@
         @include mobile {
             display: block;
         }
+    }
+
+    // text-align
+    .align-left {
+        text-align: left !important;
+    }
+
+    .align-right {
+        text-align: right !important;
+    }
+
+    .align-center {
+        text-align: center !important;
     }
 }
 
