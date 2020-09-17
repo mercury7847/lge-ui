@@ -158,6 +158,10 @@
             line-height: 1.5;
             margin-bottom: 16px;
         }
+        .in-note-box {
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
         @include mobile {
             padding: 16px;
         }
