@@ -96,7 +96,7 @@
     $(function () {
         vcui.require(['ui/rangeSlider'], function () {
 
-            $('.ui_desc').on('rangesliderchanged', function (e, data) {
+            $('.ui_desc').on('rangesliderchanged rangesliderinit', function (e, data) {
                 console.log(data);
 
                 $('.min').text(data.minValue);

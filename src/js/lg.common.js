@@ -40,7 +40,10 @@
         return this;
     };
 
+    
+
     /* 
+
     vcui.require.config({
         paths: {
             'jquery.transit': 'libs/jquery.transit'
@@ -50,6 +53,7 @@
             node.charset = 'euc-kr';
         }
     });
+    
 
     // ajax 로 통신할때는 기본 케릭터셑이 utf-8 로 되어있음.
     // 따라서, euc-kr 로 설정된 서버에서 ajax 를 이용하여 한글로된 데이터를 전달하게 되면 글씨가 깨짐.

@@ -1,6 +1,16 @@
 @charset "UTF-8";
 
 .KR50CS631 {
+    .tab-wrap {
+        max-width: 1066px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .tbl {
+        &-list {
+            max-width: 953px;
+        }
+    }
     .scroll-x {
         margin-bottom: 24px;
         &:last-child {

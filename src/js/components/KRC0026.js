@@ -53,7 +53,12 @@ $(document).ready(function() {
 			modal.$el.find('.visual-box-belt').css('opacity', 1)
 			modal.$el.find('.visual-box-belt .visual-box').each(function(idx, item){
 				var opacity = slideID == idx ? 1 : 0;
-				$(item).css('opacity', opacity);
+				//$(item).css('opacity', opacity);
+				if(opacity) {
+					$(item).show();
+				} else {
+					$(item).hide();
+				}
 			});
 		},
 
@@ -63,10 +68,12 @@ $(document).ready(function() {
 			
 			visualBox = modal.$el.find('.visual-box-belt .visual-box').eq(prev);
 			visualBox.find('.youtube-box').vcYoutubeBox('close');
-			visualBox.stop().css('opacity', 0);
+			//visualBox.stop().css('opacity', 0);
+			visualBox.stop().hide();
 
 			visualBox = modal.$el.find('.visual-box-belt .visual-box').eq(next);
-			visualBox.stop().css('opacity', 0).animate({opacity:1}, 350);
+			//visualBox.stop().css('opacity', 0).animate({opacity:1}, 350);
+			visualBox.stop().fadeIn(400);
 		}
 	}
 	KRC0026.init();
