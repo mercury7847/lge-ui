@@ -66,17 +66,19 @@ $color: (type01, type02, type03);
     }
 
     .plp-list-wrap {
-        max-width:1284px;
+        // max-width:1284px;
+        max-width:960px;
         margin:0 auto;
         @include clearfix;
 
         .filter-wrap {
             float:left;
             width:200px;
-            margin-left:-224px;
-            @media screen and (max-width: 1780px) {
-                display:none;
-            }
+            // margin-left:-224px;
+            margin-left:-24px;
+            // @media screen and (max-width: 1780px) {
+            //     display:none;
+            // }
             .btn-reset {
                 margin:23px 0 12px;
                 text-align:center;
@@ -251,7 +253,8 @@ $color: (type01, type02, type03);
 
         .product-items-wrap {
             float: left;
-            max-width: (420px * 3) + 24px;
+            // max-width: (420px * 3) + 24px;
+            max-width:960px;
             margin: 0 auto;
             .items-list {
                 @include clearfix;
