@@ -177,7 +177,33 @@ $(function () {
 
 
             function render(arr){
-/* 
+            /* 
+
+            <div class="head">
+                    <a href="#head01" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                        <div class="tit">
+                            서비스 구분
+                        </div>
+                        <span class="blind ui_accord_text">내용 열기</span>
+                    </a>
+                </div>
+                <div class="desc ui_accord_content" id="head01">
+                    <div class="cont">
+                        <div class="rdo-wrap">
+                            <input type="radio" id="rdo01" name="opt" checked>
+                            <label for="rdo01">전체</label>
+                        </div>
+                        <div class="rdo-wrap">
+                            <input type="radio" id="rdo02" name="opt">
+                            <label for="rdo02">일반제품</label>
+                        </div>
+                        <div class="rdo-wrap">
+                            <input type="radio" id="rdo03" name="opt" disabled>
+                            <label for="rdo03">케어십 가능 제품</label>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="filter_box">
                     <div id="productPrice">가격</div>
                     <div class="ui_price_slider" data-id="price" data-range="100000,10000000" data-round-unit="100000" data-unit-label="원" data-id="price" data-min-label="price range minimum" data-max-label="price range maximum"></div>
@@ -245,6 +271,7 @@ $(function () {
 
                     var enableList = result.data && result.data[0].filterEnableList;
                     var arr = result.data && result.data[0].filterList;
+                    console.log(result);
 
                     var filterObj = vcui.array.reduce(arr, function (prev, cur) {
                         if(prev[cur['filterId']]) prev[cur['filterId']].push(cur);
@@ -252,13 +279,16 @@ $(function () {
                         return prev;
                     }, {}); 
 
+                   // console.log(filterObj);
+
                     var newFilterArr = [];
 
                     for(var key in filterObj){
 
                         var filterValues = vcui.array.map(filterObj[key], function(item, index) {	
-                            
                             var enableArr = vcui.array.filter(enableList, function(target){
+                                //facetValueId->filterValueId facetValueId 삭제됨. filterValueId로 대체되어야함.
+
                                 if(target['filterId'] == item['filterId']){
                                     return vcui.array.filter(item['facetValueId'].split(','), function(fItem){
                                         return target['facetValueId'] == item['facetValueId'];
@@ -266,12 +296,18 @@ $(function () {
                                 }else{
                                     return false;
                                 }
+                                /*
+                                if(target['filterId'] == item['filterId'] && target['filterValueId'] == item['filterValueId']){
+                                    return true;
+                                }else{
+                                    return false;
+                                }*/
                             });
 
                             var obj = {
                                 'filterName' : item['filterName'], 
-                                'label' : item['filterValueName'], 
-                                'value' : item['filterValueId'], 
+                                'filterValueName' : item['filterValueName'], 
+                                'filterValueId' : item['filterValueId'], 
                                 'facetValueId' : item['facetValueId'], 
                                 'modelCount' : item['countModel'],
                                 'filterTypeCode' : item['filterTypeCode'], //99
@@ -292,36 +328,40 @@ $(function () {
                             };
                             
                             return obj;
-                        }); 
-
+                        });
                         
+
                         filterValues = vcui.array.reduce(filterValues, function(prev, cur){
                             var items = vcui.array.filter(prev, function(item, index) {
-                                return item['value'] === cur['value'];
+                                return item['filterValueId'] === cur['filterValueId'];
                             });
-                            if(items.length===0) prev.push(cur);	  
+                            if(items.length===0){ 
+                                prev.push(cur);
+                            }else{
+                                //facetValueId 삭제되면 주석처리 필요.
+                                prev[prev.length-1]['facetValueId'] = prev[prev.length-1]['facetValueId'] +','+ cur['facetValueId'];
+                            }	  
                             return prev;
                         },[]); 
 
+
                         if(filterValues.length>0){
                             newFilterArr.push({ 
-                                id : key,
-                                type : filterValues[0]['filterTypeCode'],
-                                scode : filterValues[0]['facetSourceCode'],
-                                name : filterValues[0]['filterName'],
-                                order : filterValues[0]['filterOrderNo'],
+                                filterId : key,
+                                filterTypeCode : filterValues[0]['filterTypeCode'],
+                                facetSourceCode : filterValues[0]['facetSourceCode'],
+                                filterName : filterValues[0]['filterName'],
+                                filterOrderNo : filterValues[0]['filterOrderNo'],
                                 data : filterValues, 
                             });
                         }
                     }
                     
                     newFilterArr.sort(function(a, b) { 
-                        return parseInt(a.order) < parseInt(b.order) ? -1 : parseInt(a.order) > parseInt(b.order) ? 1 : 0;
+                        return parseInt(a.filterOrderNo) < parseInt(b.filterOrderNo) ? -1 : parseInt(a.filterOrderNo) > parseInt(b.filterOrderNo) ? 1 : 0;
                     });
 
-                    console.log(newFilterArr);
-
-                   //render(newFilterArr);
+                   render(newFilterArr);
 
                 }).fail(function(error) {
                     // console.error(error);
