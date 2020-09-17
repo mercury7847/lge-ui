@@ -293,11 +293,300 @@ $color: (type01, type02, type03);
             }
         }
 
-        .all-list {
-            width:1284px;
-            background:palegreen;
-            margin:0 auto;
-            height:600px;
+        .items-wrap {
+            max-width: (420px * 3) + 24px;
+            margin: 0 auto;
+            .items-list {
+                @include clearfix;
+                margin: 0 -6px;
+                > li {
+                    float: left;
+                    width: 33.333333%;
+                    padding: 0 6px 12px;
+                    &.item-banner {
+                        &.large {
+                            width: 66.666667%;
+                        }
+                        .item {
+                            padding: 0;
+                        }
+                    }
+                }
+                .item {
+                    position: relative;
+                    padding: 0 54px 36px;
+                    border-radius: 4px;
+                    background-color: #fff;
+    
+                    @include pc {
+                        max-height: 672px;
+                    }
+                }
+            }
+    
+            .items-top {
+                @include clearfix;
+                padding: 29px 0 18px;
+                .sort-area {
+                    float: right;
+                    .sort-button {
+                        font-weight: 500;
+                        font-size: 16px;
+                        color: #000;
+                        &:after {
+                            display: inline-block;
+                            margin-left: 10px;
+                            border-top: 8px solid #111;
+                            border-right: 4px solid transparent;
+                            border-left: 4px solid transparent;
+                            vertical-align: 2px;
+                            content: '';
+                        }
+                    }
+                    .dropdown-list {
+                        display: none;
+                    }
+                }
+                .list-count {
+                    float: left;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #111;
+                }
+            }
+        
+            .product-image {
+                margin-bottom: 6px;
+                padding: 0 6px;
+                a {
+                    display: block;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+            .color-option {
+                position: absolute;
+                top: 270px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .badge-product {
+                margin-bottom: 8px;
+                .badge {
+                    display: inline-block;
+                    padding: 3px 8px;
+                    border: 1px solid #ec455a;
+                    border-radius: 4px;
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 1;
+                    color: #ec455a;
+                }
+            }
+            .product-info {
+                .product-name {
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #222;
+                }
+                .sku {}
+                .rating {}
+                .spec-info {
+                    margin-top: 12px;
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: #616161;
+                    .care-option {
+                        font-weight: 500;
+                        color: #222;
+                    }
+                }
+            }
+            .price-area {
+                margin-top: 14px;
+                font-size: 0;
+                * {
+                    display: inline-block;
+                }
+                .purchase-price {
+                    font-size: 24px;
+                    font-weight: bold;
+                    line-height: 1.33;
+                    color: #222222;
+                }
+                .product-price {
+                }
+                .reduced-price {
+                    margin: 0 4px 0 8px;
+                    font-size: 14px;
+                    line-height: 1.43;
+                    color: #616161;
+                }
+                .discount-rate {
+                    font-size: 16px;
+                    font-weight: bold;
+                    line-height: 1.5;
+                    color: #ec455a;
+                }
+            }
+            .badge-benefit {
+                clear: both;
+                font-size: 0;
+                .text {
+                    display: inline-block;
+                    margin-right: 8px;
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: #222;
+                }
+            }
+            .product-button {
+                margin-top: 24px;
+                .btn {
+                    width: 100%;
+                    min-width: auto;
+                    border: 1px solid #979797;
+                }
+            }
+            .product-wish {
+                position: absolute;
+                top: 24px;
+                right: 24px;
+                input {
+                    & + label {
+                        &:before {
+                            width: 25px;
+                            border: 0;
+                            border-radius: 0;
+                            background: url("/lg5-common/images/KRP0009/btn-wish-off.svg") no-repeat 0 0;
+                            background-size: 25px 24px;
+                        }
+                        &:after {
+                            display: none;
+                        }
+                    }
+                    &:checked + label {
+                        &:before {
+                            background-image: url("/lg5-common/images/KRP0009/btn-wish-on.svg");
+                        }
+                        &:after {
+                            border-color:#fff;
+                        }
+                    }
+                }
+            }
+            .product-compare {
+                position: absolute;
+                top: 24px;
+                right: 64px;
+            }
+        
+            .item-banner {
+                .product-image {
+                    margin-bottom: 0;
+                    padding: 0;
+                }
+                .banner-contents {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    padding: 36px 54px;
+                    .banner-flag {
+                        margin-bottom: 4px;
+                        .flag {
+                            display: inline-block;
+                            border-radius: 4px;
+                            border: 1px solid;
+                            padding: 3px 8px;
+                            font-weight: 500;
+                            font-size: 12px;
+                            line-height: 1;
+                        }
+                    }
+                    .banner-info {
+                        .title {
+                            margin-bottom: 16px;
+                            font-weight: 700;
+                            font-size: 20px;
+                            line-height: 29px;
+                            color: #111;
+                            @include textClipClamp(2);
+                        }
+                        .sub-copy {
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 20px;
+                            color: #222;
+                            @include textClipClamp(2);
+                        }
+                    }
+                }
+                &.large {
+                    .banner-contents {
+                        position: static;
+                        display: table;
+                        width: 100%;
+                        height: 212px;
+                        padding: 0 54px;
+                        .inner {
+                            position: relative;
+                            display: table-cell;
+                            padding-right: 148px;
+                            vertical-align: middle;
+                        }
+                        .banner-flag {
+                            margin-bottom: 8px;
+                        }
+                        .banner-info {
+                            .title {
+                                margin-bottom: 16px;
+                                font-size: 20px;
+                                line-height: 29px;
+                                color: #111;
+                                @include textClipClamp(2);
+                            }
+                            .sub-copy {
+                                font-weight: 500;
+                                font-size: 14px;
+                                line-height: 20px;
+                                color: #222;
+                                @include textClipClamp(2);
+                            }
+                        }
+                        .banner-button {
+                            position: absolute;
+                            top: 50%;
+                            right: 0;
+                            transform: translateY(-50%);
+                            .btn {
+                                min-width: 124px;
+                                border: 1px solid #979797;
+                            }
+                        }
+                    }
+        
+                }
+        
+                .text-white {
+                    .banner-flag {
+                        .flag {
+                            border-color: #fff;
+                            color: #fff;
+                        }
+                    }
+                }
+                .text-black {
+                    .banner-flag {
+                        .flag {
+                            border-color: #222;
+                            color: #222;
+                        }
+                    }
+                }
+            }
         }
     }
 
