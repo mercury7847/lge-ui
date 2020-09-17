@@ -66,13 +66,17 @@ $color: (type01, type02, type03);
     }
 
     .plp-list-wrap {
-        max-width:1508px;
+        max-width:1284px;
         margin:0 auto;
+        @include clearfix;
 
         .filter-wrap {
             float:left;
             width:200px;
-
+            margin-left:-224px;
+            @media screen and (max-width: 1780px) {
+                display:none;
+            }
             .btn-reset {
                 margin:23px 0 12px;
                 text-align:center;
@@ -290,7 +294,10 @@ $color: (type01, type02, type03);
         }
 
         .all-list {
-            margin-left:224px;
+            width:1284px;
+            background:palegreen;
+            margin:0 auto;
+            height:600px;
         }
     }
 
