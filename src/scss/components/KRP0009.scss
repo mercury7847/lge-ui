@@ -250,6 +250,7 @@ $color: (type01, type02, type03);
         }
 
         .product-items-wrap {
+            float: left;
             max-width: (420px * 3) + 24px;
             margin: 0 auto;
             .items-list {
@@ -311,7 +312,46 @@ $color: (type01, type02, type03);
                     color: #111;
                 }
             }
-        
+
+            .promotion-badge {
+                position: absolute;
+                top: 23px;
+                left: 24px;
+                .badge {
+                    display: inline-block;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 1;
+                    color: #fff;
+                    text-align: center;
+                    &:nth-child(1) {
+                        background-color: #ec455a;
+                    }
+                    &:nth-child(2) {
+                        background-color: #65c467;
+                    }
+                }
+                &.large {
+                    top: 0;
+                    left: 0;
+                    .badge {
+                        padding: 8px 3px 12px;
+                        background-color: #65c467 !important;
+                        font-size: 11px;
+                        line-height: 20px;
+                        letter-spacing: 2px;
+                        em {
+                            display: block;
+                            font-weight: 700;
+                            font-size: 16px;
+                            line-height: 1;
+                        }
+                    }
+                }
+            }
+
             .product-image {
                 margin-bottom: 6px;
                 padding: 0 6px;
@@ -463,20 +503,25 @@ $color: (type01, type02, type03);
                         }
                     }
                     .banner-info {
+                        margin-bottom: 32px;
                         .title {
                             margin-bottom: 16px;
                             font-weight: 700;
                             font-size: 20px;
                             line-height: 29px;
-                            color: #111;
                             @include textClipClamp(2);
                         }
                         .sub-copy {
                             font-weight: 500;
                             font-size: 14px;
                             line-height: 20px;
-                            color: #222;
                             @include textClipClamp(2);
+                        }
+                    }
+                    .banner-button {
+                        .btn {
+                            min-width: 124px;
+                            border: 1px solid;
                         }
                     }
                 }
@@ -497,55 +542,51 @@ $color: (type01, type02, type03);
                             margin-bottom: 8px;
                         }
                         .banner-info {
-                            .title {
-                                margin-bottom: 16px;
-                                font-size: 20px;
-                                line-height: 29px;
-                                color: #111;
-                                @include textClipClamp(2);
-                            }
-                            .sub-copy {
-                                font-weight: 500;
-                                font-size: 14px;
-                                line-height: 20px;
-                                color: #222;
-                                @include textClipClamp(2);
-                            }
+                            margin-bottom: 0;
                         }
                         .banner-button {
                             position: absolute;
                             top: 50%;
                             right: 0;
                             transform: translateY(-50%);
-                            .btn {
-                                min-width: 124px;
-                                border: 1px solid #979797;
-                            }
                         }
                     }
         
                 }
         
                 .text-white {
+                    * {
+                        color: #fff;
+
+                    }
                     .banner-flag {
                         .flag {
                             border-color: #fff;
-                            color: #fff;
+                        }
+                    }
+                    .banner-button {
+                        .btn {
+                            border-color: #fff;
+                            background-color: transparent;
                         }
                     }
                 }
                 .text-black {
+                    * {
+                        color: #222;
+                    }
                     .banner-flag {
                         .flag {
                             border-color: #222;
-                            color: #222;
+                        }
+                    }
+                    .banner-button {
+                        .btn {
+                            border-color: #979797;
                         }
                     }
                 }
             }
         }
     }
-
-    
-    
 }
