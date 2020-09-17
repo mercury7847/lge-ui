@@ -111,6 +111,60 @@ $color: (type01, type02, type03);
             .items-top {
                 @include clearfix;
                 padding: 29px 0 18px;
+                .cate-area {
+                    float:right;
+                    position:relative;
+                    margin-left:24px;
+
+                    @media screen and (min-width: 1780px) {
+                        display:none;
+                    }
+                    .cate-list {
+                        padding-right:18px;
+                        line-height:36px;
+                        .ico {
+                            position:absolute;
+                            top:50%;
+                            right:0;
+                            width:0;
+                            height:0;
+                            margin-top:-4px;
+                            border-top:8px solid #111;
+                            border-left:5px solid transparent;
+                            border-right:5px solid transparent;
+                        }
+                        .cate-sel {
+                            display:none;
+                            position:absolute;
+                            top:50px;
+                            right:0;
+                            min-width:223px;
+                            padding:12px 0;
+                            background:#fff;
+                            box-shadow:0 4px 12px 0 rgba(0,0,0,.15);
+                            z-index:1;
+                            .chk-wrap {
+                                display:block;
+                                padding:16px 24px;
+                                label {
+                                    display: block;
+                                    overflow: hidden;
+                                    color: #222;
+                                    font-size: 16px;
+                                    line-height: 24px;
+                                    white-space: nowrap;
+                                    word-break: break-all;
+                                    text-overflow: ellipsis;
+                                }
+                            }
+                        }
+                    }
+                    &.active {
+                        .cate-sel {
+                        display:block;
+                        }
+                    }
+                }
                 .btn-filter {
                     float:left;
                     width:24px;
