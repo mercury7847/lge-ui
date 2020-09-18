@@ -60,14 +60,6 @@ $(function () {
             console.log(storageFilters);
 
 
-            //
-
-            
-            // 이벤트 바인딩
-
-
-           
-
 
             $('#filterResetBtn').on('click', function(){
                 reset();
@@ -89,19 +81,16 @@ $(function () {
 
             function setApplyFilter(obj){		
 
-
-
                 for(var key in obj){		
 
                     var $parent = $('[data-id="'+ key +'"]');
-
                     var values = obj[key].split(',');
                     for(var i=0; i<values.length; i++){
                         $parent.find('input[id="'+ values[i] +'"]').prop('checked', true);
                     }
 
                     if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
-                        $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('option',{input:obj[key]}).vcRangeSlider('reset', false);
+                        $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', obj[key]);
                     }
 						
                 }
@@ -112,25 +101,23 @@ $(function () {
             function reset(id){
 
                 var obj = Storage.get(storageName);	
-                for(var key in obj){
-                    if(!id || id==key){		
+
+                for(var key in obj){	
                         
-                        var $parent = $('[data-id="'+ key +'"]');
-                        $parent.find('input[name="'+key+'"]').prop('checked', false);
-                        
-                        if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
-                            //console.log($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider'));
-                            $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('option',{input:null}).vcRangeSlider('reset', false);
-                        }
+                    var $parent = $('[data-id="'+ key +'"]');
+                    $parent.find('input[name="'+key+'"]').prop('checked', false);
+                    
+                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                       $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', 'Min,Max');
                     }
                 }
-                if(!id){
-                    Storage.remove(storageName);
-                    storageFilters = {};	
-                }else{
-                    delete storageFilters[id];
-                    Storage.remove(storageName, id);
-                }					
+
+                var str = obj['sorting'];
+                storageFilters = {sorting : str};
+                Storage.remove(storageName);
+                Storage.set(storageName, storageFilters);	
+                console.log(storageFilters, Storage.get(storageName));
+                				
                 //requestData(Storage.get(storageName));
             }
 
@@ -141,8 +128,8 @@ $(function () {
                     '<span class="blind ui_accord_text">내용 열기</span>'+
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
-                    '<div data-filter-id={{filterId}} class="ui_filter_slider {{uiName}}" data-input={{input}} data-range="{{range}}" data-min-label="minLabel" data-max-label="maxLabel"></div>'+
-                    '<p class="min range-num"></p><p class="max range-num"></p>'+
+                    '<div class="range-wrap"><div data-filter-id={{filterId}} class="ui_filter_slider {{uiName}}" data-input={{input}} data-range="{{range}}" data-min-label="minLabel" data-max-label="maxLabel"></div>'+
+                    '<p class="min range-num"></p><p class="max range-num"></p></div>'+
             '</div></div></li>';
 
             var checkboxTmpl = 
@@ -344,7 +331,7 @@ $(function () {
             function requestData(obj, idx){
 
                 var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList'+ idx +'.json';
-                console.log(ajaxUrl);
+                
 
                 _$.ajax({
                     type : "POST",

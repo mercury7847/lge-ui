@@ -134,8 +134,6 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
             self.startValue = (inputArr[0]!=='' && inputArr[0]!=='Min')? inputArr[0] : self.mode? self.minValue : self.originMinValue;
             self.endValue = (inputArr[1]!=='' && inputArr[1]!=='Max')? inputArr[1] : self.mode? self.maxValue : self.originMaxValue; 
 
-            
-
             var isOne = inputArr.length < 2 ? true : false;
             if (isOne) self.endValue = self.startValue;
 
@@ -696,8 +694,25 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
         getValue: function getValue() {          
             return this.nowValue;
         },
-        reset: function reset(trigger){
-            this.update(!trigger);
+        reset: function reset(obj){
+            var self = this;
+            var nObj;
+
+            if(core.isString(obj)){
+                var sArr = obj.split(',');
+                if(sArr[0]=='Min') sArr[0] = self.mode? self.minValue : self.originMinValue;
+                if(sArr[1]=='Max') sArr[1] = self.mode? self.maxValue : self.originMaxValue;
+                nObj = {minValue:sArr[0], maxValue:sArr[1]}
+            }else{
+
+                nObj = obj;
+
+                if(nObj.minValue=='Min') nObj.minValue = self.mode? self.minValue : self.originMinValue;
+                if(nObj.maxValue=='Max') nObj.maxValue = self.mode? self.maxValue : self.originMaxValue;
+            }
+            self.nowValue = nObj;
+
+            this.update(true);
         },
 
         
