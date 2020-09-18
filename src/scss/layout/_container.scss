@@ -1,15 +1,19 @@
 .container {
     // Page Header
     .page-header {
-        max-width:1284px;
-        margin:0 auto;
         padding:56px 0 24px;
         text-align:center;
         .title {
+            max-width:1280px;
+            margin:0 auto;
             color:#111;
             font-size:30px;
             line-height:36px;
             font-weight:700;
+        }
+        .tabs-wrap {
+            max-width:1280px;
+            margin:0 auto;
         }
         .tabs-wrap.btn-type {
             margin-top:20px;
@@ -25,11 +29,15 @@
                 margin-top:28px;
             }
         }
+        &.no-title {
+            padding:48px 0 24px;
+            background:#f4f4f4;
+        }
     }
 
     // sub page common layout : title + white box layout
     .cont-wrap {
-        padding:51px 40px 93px;
+        padding:48px 40px 120px;
         background:#f4f4f4;
         @include mobile {
             padding:0;
