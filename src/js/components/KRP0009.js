@@ -5,9 +5,9 @@ $(function () {
         
         vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
 
-
-            // local storage 
+            // localStorage 
             var Storage = {
+
                 set : function(key, value){
                     var storage = localStorage.getItem(key);
                     var storageData = storage? JSON.parse(storage) : {};        
@@ -76,9 +76,173 @@ $(function () {
                 '<div class="chk-wrap-colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}} ({{item.modelCount}})</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
+/* 
+            addToCartFlag: "N"
+            bizType: "B2C"
+            buName1: "HA"
+            bundlePlpDisplayFlag: "Y"
+            bundlesTotalCount: 0
+            categoryId: "CT10000021"
+            categoryName: "Refrigerators"
+            defaultProductTag: "COMING SOON"
+            defaultSiblingModelFlag: "Y"
+            discountedRate: "33"
+            ecommerceFlag: "N"
+            findTheDealerFlag: "N"
+            findTheDealerUrl: null
+            imageAltText: "Front "
+            inchCode: ""
+            inquiryToBuyFlag: "N"
+            inquiryToBuyUrl: null
+            mediumImageAddr: "/us/images/refrigerators/md07514557/350.jpg"
+            modelId: "MD07514557"
+            modelName: "LRFCS25D3S"
+            modelRollingImgList: "/us/images/refrigerators/md07514557/350.jpg,/us/images/refrigerators/md07514557/thumbnail/3501.jpg,/us/images/refrigerators/md07514557/thumbnail/3502.jpg,/us/images/refrigerators/md07514557/thumbnail/3503.jpg,/us/images/refrigerators/md07514557/thumbnail/3504.jpg,/us/images/refrigerators/md07514557/thumbnail/3505.jpg"
+            modelStatusCode: "ACTIVE"
+            modelType: "G"
+            modelUrlPath: "/us/refrigerators/lg-lrfcs25d3s-french-3-door-refrigerator"
+            msrp: 1799.99
+            obsCurrency: null
+            obsInventoryFlag: null
+            obsOriginalPrice: 0
+            obsProductCount: 0
+            obsProductUrl: ""
+            obsSellFlag: null
+            obsSellingPrice: 0
+            obsTotalCount: 15
+            plpHighlightModelFlag: "Y"
+            productTag1: "COMING SOON"
+            productTag2: ""
+            promotionPrice: 1199.99
+            promotionText: "Refrigerator Deals"
+            promotionTotalCount: 5
+            rDiscountedPrice: "600"
+            rDiscountedPriceCent: "00"
+            rPrice: "1799"
+            rPriceCent: "99"
+            rPromoPrice: "1199"
+            rPromoPriceCent: "99"
+            retailerPricingFlag: "N"
+            retailerPricingText: "See Retailer for Pricing"
+            reviewRating: "0"
+            reviewRatingPercent: "0"
+            reviewRatingStar: "0"
+            reviewRatingStar2: "0.0"
+            salesModelCode: "LRFCS25D3S"
+            salesSuffixCode: "ASTCNA0"
+            siblingCode: "Print-Proof-Stainless-Steel"
+            siblingGroupCode: "LRFCS25D3"
+            siblingLocalValue: "Print Proof Stainless Steel"
+            siblingModels: [{…}]
+            siblingType: "COLOR"
+            smallImageAddr: "/us/images/refrigerators/md07514557/260.jpg"
+            smallModelRollingImgList: "/us/images/refrigerators/md07514557/260.jpg,/us/images/refrigerators/md07514557/thumbnail/2601.jpg,/us/images/refrigerators/md07514557/thumbnail/2602.jpg,/us/images/refrigerators/md07514557/thumbnail/2603.jpg,/us/images/refrigerators/md07514557/thumbnail/2604.jpg,/us/images/refrigerators/md07514557/thumbnail/2605.jpg"
+            sortBy: null
+            target: "NEW"
+            thinqTotalCount: 35
+            totalCount: 60
+            totalSize: 41
+            userFriendlyName: "25 cu. ft. French Door Refrigerator"
+            whereToBuyFlag: "Y"
+            whereToBuyUrl: "/us/refrigerators/lg-lrfcs25d3s-french-3-door-refrigerator#pdp_where"
+            wtbExternalLinkName: ""
+            wtbExternalLinkSelfFlag: ""
+            wtbExternalLinkUrl: ""
+            wtbExternalLinkUseFlag: "N"
+            wtbUseFlag: "Y"
+ */
+
+            var productItemTmpl = 
+            '<li class="">'+
+                '<div class="item">'+
+                    '<div class="promotion-badge">'+
+                        '<span class="badge">코리아세일페스파</span>'+
+                        '<span class="badge">으뜸효율 10%</span>'+
+                    '</div>'+
+                    '<div class="product-image">'+
+                        '<a href="#">'+
+                            '<img data-src={{productImage}} alt="" class="lazyload">'+
+                        '</a>'+
+                    '</div>'+
+                '<div class="product-contents">'+
+                    '{{#if defaultSiblingModelFlag}}'+
+                        '<div class="option-color">'+
+                            '<div class="color-list" role="radiogroup">'+
+                                '{{#each (item, index) in list}}'+  
+                                    '<div role="radio" class="chk-wrap-colorchip {{item.siblingCode}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
+                                        '<input type="radio" data-category-id={{categoryId}} id="product-{{item.modelName}}" name="{{siblingType}}" value="{{item.modelId}}">'+
+                                        '<label for="product-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
+                                    '</div>'+
+                                '{{/each}}' +
+                            '</div>'+
+                        '</div>'+
+                    '{{/if}}'+ 
+                    '<div class="badge-product">'+
+                        '<span class="badge">NEW</span>'+
+                        '<span class="badge">BEST</span>'+
+                    '</div>'+
+                    '<div class="product-info">'+
+                        '<div class="product-name">'+
+                            '<a href="#" id="{{modelId}}">{{userFriendlyName}}</a>'+
+                        '</div>'+
+                        '<div class="sku">{{modelName}}</div>'+
+                        '<div class="review-info">'+
+                            ' <a href="#">'+
+                                '<div class="star is-review"><span class="blind">리뷰있음</span></div>'+
+                                '<div class="average-rating"><span class="blind">평점</span>4.0</div>'+
+                                '<div class="review-count"><span class="blind">리뷰 수</span>(48)</div>'+
+                            ' </a>'+
+                        '</div>'+
+                        '<ul class="spec-info">'+
+                            '<li>용량 : 840L</li>'+
+                            '<li>전체크기(WxHxD) : 912 x 1,790 x 927 mm</li>'+
+                            '<li>형태 : 노크온 매직스페이스</li>'+
+                            '<li>패턴 : 미드나잇</li>'+
+                            '<li><span class="care-option">케어십 가능</span></li>'+
+                        '</ul>'+
+                        '</div>'+
+                        '<div class="price-area">'+
+                            '<div class="purchase-price">'+
+                                '<em class="blind">판매가격</em>'+
+                                '<span class="price">5,200,000<em>원</em></span>'+
+                            '</div>'+
+                            '<div class="product-price">'+
+                                '<div class="reduced-price">'+
+                                    '<em class="blind">최대 혜택가격</em>'+
+                                    '<span class="price">360,000<em>원</em></span>'+
+                                '</div>'+
+                                '<div class="discount-rate">'+
+                                    '<em class="blind">할인율</em>'+
+                                    '<span class="price">15<em>%</em></span>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="badge-benefit">'+
+                            '<span class="text">3%할인</span>'+
+                            '<span class="text">사은품</span>'+
+                            '<span class="text">캐시백</span>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="product-wish ">'+
+                        '<span class="chk-wrap">'+
+                            '<input type="checkbox" id="wish-chk4" name="wish-chk4" checked="">'+
+                            '<label for="wish-chk4"><span class="blind">찜하기</span></label>'+
+                        '</span>'+
+                    '</div>'+
+                    '<div class="product-compare">'+
+                        '<span class="chk-wrap">'+
+                            '<input type="checkbox" id="compare-chk4" name="compare-chk4">'+
+                            '<label for="compare-chk4"><span class="blind">비교하기</span></label>'+
+                        '</span>'+
+                    '</div>'+
+                    '<div class="product-button">'+
+                        '<a href="#n" class="btn">자세히 보기</a>'+
+                    '</div>'+
+                '</div>'+
+            '</li>'
+
 
             var isRender = false;
-
 
 
             // 
@@ -97,6 +261,8 @@ $(function () {
             var storageFilters = Storage.get(storageName);	
 
             //console.log(storageFilters);
+
+
 
             // range slider  
             function setSliderData(id, data){
@@ -158,6 +324,17 @@ $(function () {
                         $parent.find('input[value="'+ itemArr[j]['filterValueId']+'"]').prop('disabled', itemArr[j]['enable']=='N');
                         $parent.find('label[for="'+ itemArr[j]['filterValueId']+'"]').text(itemArr[j]['filterValueName'] +' ('+ itemArr[j]['modelCount']+')');
                     }
+                }
+            }
+
+            function renderProdList(arr){
+
+                //console.log($('.product-items-wrap .items-list'));
+                ///lg5-common/images/dummy/@img-product.jpg
+                
+                for(var i=0; i<arr.length; i++){
+                    console.log(arr[i]);
+                    // console.log(arr[i]['siblingModels']);
                 }
             }
 
@@ -266,7 +443,6 @@ $(function () {
 
             
             $('.ui_filter_accordion').on('change', 'input', function(e){
-
                 var name = e.target.name;
                 var valueStr = "";
                 $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
@@ -347,9 +523,15 @@ $(function () {
                 }).done(function(result) {
 
                     var enableList = result.data && result.data[0].filterEnableList;
-                    var arr = result.data && result.data[0].filterList;
+                    var filterList = result.data && result.data[0].filterList;
+                    var totalCount = result.data && result.data[0].totalCount;
+                    
 
-                    var filterObj = vcui.array.reduce(arr, function (prev, cur) {
+                    var productList = result.data && result.data[0].productList;
+
+                    console.log(productList);
+
+                    var filterObj = vcui.array.reduce(filterList, function (prev, cur) {
                         if(prev[cur['filterId']]) prev[cur['filterId']].push(cur);
                         else prev[cur['filterId']] = [cur];
                         return prev;
@@ -436,6 +618,7 @@ $(function () {
                     });
 
                    renderFilter(newFilterArr);
+                   renderProdList(productList);
 
                 }).fail(function(error) {
                     // console.error(error);
