@@ -26,7 +26,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.$mypage = self.$el.find('.header-top .shortcut .mypage');
 
-            self.$naviWrapper = self.$el.find(".header-bottom");
+            self.$naviWrapper = self.$el.find(".nav-wrap .nav");
             self.$navItems = self.$el.find('.nav-wrap .nav > li');
             
             self.$hamburger = self.$el.find('.mobile-nav-button');
@@ -37,9 +37,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var winwidth = $(window).outerWidth(true);
             if(winwidth > 767){
                 self._hamburgerDisabled();
-                self._addGnbEvents();
+
+                self._removeMobileEvents();
+                self._addPcEvents();
             } else{
-                self._removeGnbEvents();
+                self._removePcEvents();
+                self._addMobildEvents();
             }
         },
 
@@ -71,7 +74,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             });
         },
 
-        _addGnbEvents: function(){
+        _addPcEvents: function(){
             var self = this;
 
             self.$navItems.each(function(idx, item){              
@@ -79,12 +82,10 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 var categorywidth = $(item).find('> .nav-category-container').outerWidth(true);
                 $(item).find('> .nav-category-container').css({
                     overflow: 'hidden',
-                    'vertical-align': 'top',
                     width: 0,
                     display: 'none'
                 });
                 $(item).find('> .nav-category-container > ul').css({
-                    'vertical-align': 'top',
                     width: '100%'
                 });
                 $(item).find('> a').css('vertical-align', 'top');
@@ -108,7 +109,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             });
         },
 
-        _removeGnbEvents: function(){
+        _removePcEvents: function(){
             var self = this;
 
             self.$navItems.each(function(idx, item){              
@@ -122,6 +123,38 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     $(child).off('mouseover mouseout');
                 });
             });
+        },
+
+        _addMobildEvents: function(){
+            var self = this;
+
+            self.$naviWrapper.addClass("ui_gnb_accordion");
+            self.$navItems.find('> a').addClass("ui_accord_toggle");
+            self.$navItems.find('> .nav-category-layer, > .nav-category-container').addClass("ui_accord_content");
+            self.$navItems.find('> .nav-category-container > ul').addClass('ui_gnb_accordion');
+            self.$navItems.find('> .nav-category-container > ul > li > a').addClass('ui_accord_toggle');
+            self.$navItems.find('> .nav-category-container > ul > li > .nav-category-layer').addClass('ui_accord_content');
+
+            var gid = 0;
+            self.$navItems.find('> .nav-category-layer > .nav-category-inner').each(function(idx, item){
+                $(item).find('.column > .category').addClass("ui_gnb_accordion");
+                $(item).find('.column > .category').attr("data-accord-group", "group_"+gid);
+                $(item).find('.column > .category > li > a').addClass("ui_accord_toggle");
+                $(item).find('.column > .category > li > .sub-category').addClass("ui_accord_content");
+
+                gid++;
+            })
+
+            $('.ui_gnb_accordion').vcAccordion({
+                singleOpen: true,
+                parentClass: '.ui_gnb_accordion',
+                itemSelector: "> li",
+                toggleSelector: "> .ui_accord_toggle"
+            });
+        },
+
+        _removeMobileEvents: function(){
+
         },
 
         _mypageToggle: function(target){
