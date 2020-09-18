@@ -312,6 +312,9 @@
                     @include pc {
                         max-height: 672px;
                     }
+                    @include mobile {
+                        padding: 0 28px 32px;
+                    }
                 }
             }
     
