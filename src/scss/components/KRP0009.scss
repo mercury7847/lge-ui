@@ -366,13 +366,16 @@
                 }
                 .btn-filter {
                     float:left;
-                    width:24px;
-                    height:24px;
-                    margin:0 24px 0 8px;
-                    background:url("/lg5-common/images/KRP0009/btn-filter.svg") no-repeat 0 0;
-                    background-size:24px 24px;
-                    @media screen and (min-width: 1780px) {
-                        display:none;
+                    .ico-filter {
+                        display:inline-block;
+                        width:24px;
+                        height:24px;
+                        margin:0 24px 0 8px;
+                        background:url("/lg5-common/images/KRP0009/btn-filter.svg") no-repeat 0 0;
+                        background-size:24px 24px;
+                        @media screen and (min-width: 1780px) {
+                            display:none;
+                        }
                     }
                 }
                 .sort-area {
@@ -895,12 +898,20 @@
                         word-break:break-all;
                     }
 
+                    .rdo_wrap,
+                        .chk-wrap,
+                            .chk-wrap-colorchip {
+                                display:block;
+                                margin-top:16px;
+                                &:first-child {
+                                    margin-top:0;
+                                }
+                                & input + label {
+                                    word-break:break-all;
+                                }
+                            }
+
                     .rdo-wrap {
-                        display:block;
-                        margin-top:16px;
-                        &:first-child {
-                            margin-top:0;
-                        }
                         & input + label {
                             &:before {
                                 border-color:#979797;
@@ -936,12 +947,6 @@
                     }
 
                     .chk-wrap-colorchip {
-                        display:block;
-                        margin-top:16px;
-                        &:first-child {
-                            margin-top:0;
-                        }
-
                         & input:disabled + label {
                             color:#adadad;
                             &:before {
