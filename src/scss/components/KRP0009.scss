@@ -935,7 +935,7 @@
                         }
                     }
 
-                    .chk-wrap {
+                    .chk-wrap-colorchip {
                         display:block;
                         margin-top:16px;
                         &:first-child {
@@ -949,43 +949,6 @@
                                 background:#f4f4f4;
                             }
                         }
-
-                        // &.colorchip {
-                        //     & input + label {
-                        //         &:before {
-                        //             top:4px;
-                        //             left:4px;
-                        //             width:16px;
-                        //             height:16px;
-                        //             border-color:#979797;
-                        //         }
-                        //         &:after {
-                        //             display:none;
-                        //         }
-                        //     }
-                        //     & input:checked + label {
-                        //         &:before {
-                        //             border-color:#ccc;
-                        //         }
-                        //         &:after {
-                        //             display:block;
-                        //             top:0;
-                        //             left:0;
-                        //             width:24px;
-                        //             height:24px;
-                        //             border:1px solid #ccc;
-                        //             border-radius:50%;
-                        //             transform:inherit;
-                        //         }
-                        //     }
-                        //     & input:disabled + label {
-                        //         color:#adadad;
-                        //         &:before {
-                        //             border-color:#ccc;
-                        //             background:#f4f4f4;
-                        //         }
-                        //     }
-                        // }
                     }
                 }
                 &.on .head a:before {
