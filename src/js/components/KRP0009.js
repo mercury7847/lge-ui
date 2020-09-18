@@ -139,9 +139,6 @@ $(function () {
                         if($('[data-id="'+ key +'"]').data('ui_rangeSlider')){
                             $('[data-id="'+ key +'"]').vcRangeSlider('option',{input:null}).vcRangeSlider('reset', false);
                         }
-                        if($('[data-id="'+ key +'"]').data('ui_selectbox')){
-                            $('[data-id="'+ key +'"]').vcSelectbox('selectedIndex', null , false);
-                        }
                     }
                 }
                 if(!id){
@@ -318,7 +315,7 @@ $(function () {
             });
 
             _$(window).on('breakpointchange', function(e){
-
+                console.log(e);
             });
 
 

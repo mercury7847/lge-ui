@@ -102,7 +102,7 @@
             ], function (BreakpointDispatcher) {
 
                 
-                var breakpoint = {
+                window.breakpoint = {
                     mobile: 768,
                     pc: 10000000
                 }
@@ -147,7 +147,7 @@
                     }
                 }).start();       
 
-                
+
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
