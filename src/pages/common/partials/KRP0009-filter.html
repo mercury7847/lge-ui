@@ -5,7 +5,7 @@
     </div>
 
     <!-- 정렬기준 -->
-     <div class="list-acco ui_accordion" data-accord-group="filter" data-single-open="false" data-open-index="0">
+     <div class="list-acco ui_order_accordion" data-accord-group="filter" data-single-open="false" data-open-index="0">
         <ul>
             <li>
                 <div class="head">
@@ -18,16 +18,16 @@
                 </div>
                 <div class="desc ui_accord_content" id="head01">
                     <div class="cont">
-                        <div class="chk-wrap">
-                            <input type="checkbox" id="sort01" name="sorting" checked>
+                        <div class="rdo-wrap">
+                            <input type="radio" id="sort01" name="sorting" value="1">
                             <label for="sort01">인기순</label>
                         </div>
-                        <div class="chk-wrap">
-                            <input type="checkbox" name="sorting" id="sort02">
+                        <div class="rdo-wrap">
+                            <input type="radio" name="sorting" id="sort02" value="2">
                             <label for="sort02">최신순</label>
                         </div>
-                        <div class="chk-wrap">
-                            <input type="checkbox" id="sort03" name="sorting" disabled>
+                        <div class="rdo-wrap">
+                            <input type="radio" id="sort03" name="sorting" value="3">
                             <label for="sort03">리뷰순</label>
                         </div>
                     </div>
