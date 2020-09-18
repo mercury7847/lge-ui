@@ -314,8 +314,8 @@ $(function () {
                 setApplyFilter(storageFilters);
             });
 
-            _$(window).on('breakpointchange', function(e){
-                console.log(e);
+            _$(window).on('breakpointchange', function(e, data){
+                console.log(data.name);
             });
 
 
