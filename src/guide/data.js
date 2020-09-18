@@ -71,19 +71,18 @@ var res = {
 			"KRP0020_Sitemap_Dynamic" : ["/html/components/KRP0020.html","","진행중"]
 		},
 		"Page" : {
-			"이벤트/혜택" : {
+			"이벤트/멤버십(BMC)" : {
 				"멤버십" : {
-					"멤버십 메인" : ["/html/membership/mem01.html","","검수요청"],
-					"멤버십 혜택" : ["/html/membership/mem02_1.html","","검수요청"],
-					"VIP 멤버십 혜택" : ["/html/membership/mem02_2.html","","검수요청"],
-					"멤버십 가입안내" : ["/html/membership/mem03.html","","검수요청"]
+					"멤버십 메인" : ["/html/BMC/ACC4001.html","","검수요청"],
+					"멤버십 혜택" : ["/html/BMC/ACC4004.html","","검수요청"],
+					"VIP 멤버십 혜택" : ["/html/BMC/ACC4005.html","","검수요청"],
+					"멤버십 가입안내" : ["/html/BMC/ACC4002.html","","검수요청"]
 				}
 			},
-			"마이페이지" : {
+			"마이페이지(MYC)" : {
 				"멤버십 관리" : {
-					"멤버십 가입 정보" : ["/html/membership/mymem01.html","","진행중"],
-					"멤버십 포인트 조회" : ["/html/membership/mymem02.html","","진행중"],
-					"영수증 등록" : ["/html/membership/mymem03.html","","진행중"]
+					"멤버십 가입 정보" : ["/html/MYC/ACCF7039.html","","진행중"],
+					"멤버십 포인트 조회" : ["/html/MYC/ACCF7052.html","","진행중"]
 				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
