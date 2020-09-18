@@ -3,7 +3,6 @@ $(function () {
 
     ;(function($, _$){   
         
-        
         vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
 
             // local storage 
@@ -58,36 +57,13 @@ $(function () {
             var storageFilters = Storage.get(storageName);	
 
 
-            
-
-            $('.ui_desc').on('rangesliderinit rangesliderchanged', function (e, data) {
-                console.log(data);
-
-                $('.min').text(data.minValue);
-                $('.max').text(data.maxValue);
-
-            }).vcRangeSlider({priceUnit:'$', roundUnit:10});
-
-            $('.ui_slider').vcRangeSlider({priceUnit:'$', roundUnit:10}).on('rangesliderchanged', function (e, data) {
-                console.log(data);
-
-            });
-
             //
 
             
             // 이벤트 바인딩
-            $('input[type="checkbox"]').on('change', function(e){
-                var id = e.target.id;
-                if(e.target.checked){
-                    storageFilters[id] = e.target.value;
-                    Storage.set(storageName, storageFilters);
-                }else{
-                    delete storageFilters[id];
-                    Storage.remove(storageName, id);
-                }
-                setApplyFilter(storageFilters);
-            });
+
+
+           
 
             $('.apply_filters').on('click', 'a', function(e){
                 e.preventDefault();
@@ -114,30 +90,29 @@ $(function () {
 
 
             function setApplyFilter(obj){		
+
+
+                return;
                 
-                $('.apply_filters').empty();
-                var tmpl='<div data-id="{{key}}">{{txt}} <a href="#">X</a></div>';
+                //$('.apply_filters').empty();
+                //var tmpl='<div data-filter-id="{{key}}">{{txt}} <a href="#">X</a></div>';
                 var htmlStr = "";
                 var txt = "";
 
                 for(var key in obj){		
                     $('input[type="checkbox"][id="'+ key +'"]').prop('checked', true);
 
-                    if($('[data-id="'+ key +'"]').data('ui_selectbox')){
-                        $('[data-id="'+ key +'"]').vcSelectbox('selectedIndex', obj[key] , false);
-                        continue;
-                    }
-                    if($('[data-id="'+ key +'"]').data('ui_rangeSlider')){
-                        $('[data-id="'+ key +'"]').vcRangeSlider('option',{input:obj[key]}).vcRangeSlider('reset', false);
+                    if($('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                        $('[data-filter-id="'+ key +'"]').vcRangeSlider('option',{input:obj[key]}).vcRangeSlider('reset', false);
 
                         txt = obj[key] && obj[key].replace(',',' - ');
                         htmlStr = vcui.template(tmpl, { key:key,txt:key+' : '+txt});
                     }else{
-                        txt = $('input[type="checkbox"][id="'+ key +'"]').parent().text();
-                        htmlStr = vcui.template(tmpl, { key : key,txt : txt});
+                        //txt = $('input[type="checkbox"][id="'+ key +'"]').parent().text();
+                        //htmlStr = vcui.template(tmpl, { key : key,txt : txt});
                     }
 
-                    var $target = $('.apply_filters').find('[data-id="'+ key +'"]');
+                    var $target = $('.apply_filters').find('[data-filter-id="'+ key +'"]');
                     if($target.length > 0){
                         $target.html(htmlStr);
                     }else{
@@ -182,7 +157,7 @@ $(function () {
                     '<span class="blind ui_accord_text">내용 열기</span>'+
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
-                    '<div class="ui_filter_slider {{uiName}}" data-range="{{range}}" data-min-label="minLabel" data-max-label="maxLabel"></div>'+
+                    '<div data-filter-id={{filterId}} class="ui_filter_slider {{uiName}}" data-input={{input}} data-range="{{range}}" data-min-label="minLabel" data-max-label="maxLabel"></div>'+
                     '<p class="min"></p><p class="max"></p>'+
             '</div></div></li>';
 
@@ -194,18 +169,31 @@ $(function () {
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
                 '{{#each (item, index) in list}}'+
-                '<div class="chk-wrap"><input type="checkbox" value={{item.value}} id="chk_{{index+1}}" {{item.enable}}><label for="chk_{{index+1}}">{{item.title}} ({{item.modelCount}})</label></div>'+
+                '<div class="chk-wrap"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{filterId}}_chk_{{index+1}}" {{item.enable}}><label for="{{filterId}}_chk_{{index+1}}">{{item.title}} ({{item.modelCount}})</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
+
+            var colorChipTmpl = 
+            '<li><div class="head">'+
+                '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
+                    '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span>{{count}}</span></div>'+
+                    '<span class="blind ui_accord_text">내용 열기</span>'+
+                '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
+                '<div class="cont">'+
+                '{{#each (item, index) in list}}'+
+                '<div class="chk-wrap colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{filterId}}_chk_{{index+1}}" {{item.enable}}><label for="{{filterId}}_chk_{{index+1}}">{{item.title}} ({{item.modelCount}})</label></div>'+
+                '{{/each}}' +
+            '</div></div></li>';
+
 
             function render(arr){
            
                 for(var i=0; i<arr.length; i++){
 
                     var item = arr[i];
+
+
                     if(item.filterTypeCode=='00'){
-
-
 
                         var uArr = item.data.sort(function(a, b) { 
                             return parseInt(a.filterValueName) < parseInt(b.filterValueName) ? -1 : parseInt(a.filterValueName) > parseInt(b.filterValueName) ? 1 : 0;
@@ -213,104 +201,114 @@ $(function () {
 
                         var rStr = uArr[0]['filterValueName']+','+uArr[uArr.length-1]['filterValueName'];
 
-                        console.log(rStr);
-
-
                         html = vcui.template(sliderTmpl,{
+                            filterId : item['filterId'],
                             headId : 'headId_'+i,
                             title : item['filterName'],
                             count : item['modelCount'],
-                            uiName : 'ui_'+item['filterName'].toLowerCase(),
-                            // input : '',
-                            range : rStr
+                            uiName : 'ui_'+item['filterName'].toLowerCase()+'_slider',
+                            input : ',',
+                            range : rStr,
+                            roundUnit : 1,
                             
                         });
                     }else{
 
-                        var dArr = vcui.array.map(item.data, function(dItem, idx){
-                            return {
-                                title:dItem['filterValueName'], 
-                                value:dItem['filterValueId'], 
-                                modelCount:dItem['modelCount'], 
-                                enable:dItem['enable'] == 'N'? 'disabled' : '',
-                            }
-                        });
 
-                        // console.log(dArr);
+                        if(item.facetSourceCode=='COLR'){
 
+                            var dArr = vcui.array.map(item.data, function(dItem, idx){
+                                return {
+                                    title:dItem['rangePointStyle'], 
+                                    filterName : dItem['filterValueName'],
+                                    value:dItem['filterValueId'], 
+                                    modelCount : String(dItem['modelCount']), 
+                                    enable:dItem['enable'] == 'N'? 'disabled' : '',
+                                }
+                            });
 
+                            html = vcui.template(colorChipTmpl,{
+                                filterId : item['filterId'],
+                                headId : 'headId_'+i,
+                                title : item['filterName'],
+                                count : '',//item['modelCount'],
+                                list : dArr
+                            });
 
-                        // enable: "Y"
-                        // facetSourceCode: "CTGR"
-                        // facetValueId: "FV60004667"
-                        // filterName: "Types"
-                        // filterOrderNo: "1"
-                        // filterTypeCode: "99"
-                        // filterValueId: "FV60004667"
-                        // filterValueName: "French Door"
-                        // modelCount: 16
+                        }else{
 
+                            var dArr = vcui.array.map(item.data, function(dItem, idx){
+                                return {
+                                    title:dItem['filterValueName'], 
+                                    filterName : dItem['filterValueName'],
+                                    value:dItem['filterValueId'], 
+                                    modelCount:String(dItem['modelCount']), 
+                                    enable:dItem['enable'] == 'N'? 'disabled' : '',
+                                }
+                            });
+    
+                            html = vcui.template(checkboxTmpl,{
+                                filterId : item['filterId'],
+                                headId : 'headId_'+i,
+                                title : item['filterName'],
+                                count : '',//item['modelCount'],
+                                list : dArr
+                            });
 
-                        html = vcui.template(checkboxTmpl,{
-                            headId : 'headId_'+i,
-                            title : item['filterName'],
-                            count : item['modelCount'],
-                            list : dArr
-                        });
+                        }
+                        
 
                     }
 
                     $('.ui_filter_accordion ul').append(html);
 
-                    
-
                 }
 
-                // $('.ui_filter_slider').vcRangeSlider({mode:true});
 
                 $('.ui_filter_slider').on('rangesliderinit rangesliderchanged', function (e, data) {
                     
-                    console.log(data);
+
+                    $(e.currentTarget).siblings('.min').text(data.minValue);
+                    $(e.currentTarget).siblings('.max').text(data.maxValue);
+
+                    if(e.type=='rangesliderchanged'){
+                        var filterId = $(e.currentTarget).data('filterId');
+                        setSliderData(filterId, data);
+                    }
+                    
+
     
-                    $('.min').text(data.minValue);
-                    $('.max').text(data.maxValue);
-    
-                }).vcRangeSlider({mode:true, roundUnit:10000});
+                }).vcRangeSlider({mode:true});
 
 
                 $('.ui_filter_accordion').on('accordionexpand', function(e,data){
 
                     if(data.content.find('.ui_filter_slider')) {
-                        data.content.find('.ui_filter_slider').vcRangeSlider('update');
+                        data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
                     }   
 
                 }).vcAccordion();
 
                 
+                $('.ui_filter_accordion').on('change', 'input[type="checkbox"]', function(e){
 
-
-
-                // 컴포넌트 설정
-                /* 
-                $('.ui_filter_selectbox').vcSelectbox().on('change', function(e,data){
-                    storageFilters['sortBy'] = data.selectedIndex;
-                    Storage.set(storageName, storageFilters);
+                    var name = e.target.name;
+                    var valueStr = "";
+                    $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
+                        valueStr = valueStr + item.value+','
+                    });
+                    valueStr = valueStr.replace(/,$/,'');
+                    
+                    if(valueStr==''){
+                        delete storageFilters[name];
+                        Storage.remove(storageName, name);
+                    }else{
+                        storageFilters[name] = valueStr;
+                        Storage.set(storageName, storageFilters);
+                    }
                     setApplyFilter(storageFilters);
-                });				
-                
-                $('.ui_price_slider').vcRangeSlider({
-                    mode:true,
-                }).on('rangesliderchanged', function (e, data) {				
-                    var id = $(e.currentTarget).data('id');
-                    setSliderData(id, data);
-                }); 
+                });
 
-                $('.ui_size_slider').vcRangeSlider({
-                    mode:true,
-                }).on('rangesliderchanged', function (e, data) {
-                    var id = $(e.currentTarget).data('id');
-                    setSliderData(id, data);
-                }); */
 
 
             }
@@ -330,7 +328,6 @@ $(function () {
 
                     var enableList = result.data && result.data[0].filterEnableList;
                     var arr = result.data && result.data[0].filterList;
-                    console.log(result);
 
                     var filterObj = vcui.array.reduce(arr, function (prev, cur) {
                         if(prev[cur['filterId']]) prev[cur['filterId']].push(cur);
