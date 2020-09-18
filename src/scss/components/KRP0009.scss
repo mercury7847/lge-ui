@@ -503,12 +503,15 @@
             .product-contents {
                 position: relative;
             }
-            .color-option {
+            .option-color {
                 position: absolute;
-                top: -32px;
+                top: -38px;
                 left: 0;
                 width: 100%;
                 text-align: center;
+                .color-list {
+                    font-size: 0;
+                }
             }
             .badge-product {
                 margin-bottom: 8px;
