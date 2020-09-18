@@ -102,10 +102,12 @@
             ], function (BreakpointDispatcher) {
 
                 
-                window.breakpoint = {
+                var breakpoint = {
                     mobile: 768,
                     pc: 10000000
                 }
+
+                //1780
     
                 new BreakpointDispatcher({
                     matches: {
@@ -137,6 +139,19 @@
                             window.breakpoint = data;
                             $(window).data('breakpoint', data).trigger('breakpointchange', data);
                         },
+                        '(min-width : 1780px)' : function(mq){
+                            var data;
+                            if(mq.matches){
+                                data = {
+                                    name: 'hiddenfilter'
+                                };
+                            }else{
+                                data = {
+                                    name: 'showfilter'
+                                };
+                            }
+                            $(window).data('breakpoint', data).trigger('breakpointchange', data);
+                        }
     
                         /* 
                         '(min-width : 769px) and (max-width : 1599px)' : function(mq){
