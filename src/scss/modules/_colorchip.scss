@@ -1,674 +1,1167 @@
-.colorchip{
-	background-image:url('/lg5-common/images/colorchip.jpg');
-	background-size:400px;
+.chk-wrap-colorchip {
+	& input + label:before {
+		background-image:url('/lg5-common/images/colorchip.jpg');
+		background-size:400px;
+	}
 	&.large{
-		background-size:800px;
+		& input + label:before {
+			background-size:800px;
+		}
 	}
 	&.Platinum,
 	&.smooth-white {
-		background:#fff; color:#000000 !important;
+		& input + label:before {
+			background:#fff; color:#000000 !important;
+		}
 	}
 	&.wild-cherry-redd,
 	&.wild-cherry-red,
 	&.blackcherry,
 	&.cherry,
 	&.Burgundy-Red{
-		background:#a41a2d; color:#ffffff !important;
+		& input + label:before {
+			background:#a41a2d; color:#ffffff !important;
+		}
 	}
 	&.smooth-black,
 	&.black,
 	&.black-stainless-steel,
 	&.BlackLeather	{
-		background-position:0 0; color: #000000 !important;
+		& input + label:before {
+			background-position:0 0; color: #000000 !important;
+		}
 	}
 	&.red,
 	&.Red{
-		background:#890002; color:#ffffff !important;
+		& input + label:before {
+			background:#890002; color:#ffffff !important;
+		}
 	}
 	&.Metallic-Red {
-		background:#9B1516; color:#ffffff !important;
+		& input + label:before {
+			background:#9B1516; color:#ffffff !important;
+		}
 	}
 	&.Metallic-Blue {
-		background:#2D456B; color:#ffffff !important;
+		& input + label:before {	
+			background:#2D456B; color:#ffffff !important;
+		}
 	}
 	&.Matte-Blue {
-		background:#414E71; color:#ffffff !important;
+		& input + label:before {
+			background:#414E71; color:#ffffff !important;
+		}
 	}
 	&.bahama-blue{
-		background:#98c8ce; color:#000000 !important;
+		& input + label:before {
+			background:#98c8ce; color:#000000 !important;
+		}
 	}
 	&.BlueSteel{
-		background-position:-20px 0; color: #000000 !important;
+		& input + label:before {
+			background-position:-20px 0; color: #000000 !important;
+		}
 		&+.large{
-			background-position:-40px 0;
+			& input + label:before {
+				background-position:-40px 0;
+			}
 		} 
 	}
 	&.midnight-blue{
-		background:#334d71; color: #ffffff !important;
+		& input + label:before {
+			background:#334d71; color: #ffffff !important;
+		}
 	}
 	&.pure-silver{
-		background:#cecdd3; color:#000000 !important; border-color:#6e6e6e !important;
+		& input + label:before {
+			background:#cecdd3; color:#000000 !important; border-color:#6e6e6e !important;
+		}
 	}
 	&.Platinum-Ice {
-		background:#A8B1BA; color:#000000 !important;
+		& input + label:before {
+			background:#A8B1BA; color:#000000 !important;
+		}
 	}
 	&.Print-Proof-Stainless-Steel,
 	&.stainless-steel,
 	&.titanium,
 	&.MetallicGray{
-		background-position:-40px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-40px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-80px 0;
-		} 
+			& input + label:before {
+				background-position:-80px 0;
+			}
+		}
 	}
 	&.silver{
-		background:#c4c4c4; color:#000000 !important;
+		& input + label:before {
+			background:#c4c4c4; color:#000000 !important;
+		}
 	}
 	&.bluemint{
-		background:#4f5386; color:#ffffff !important;
+		& input + label:before {
+			background:#4f5386; color:#ffffff !important;
+		}
 	}
 	&.pink,
 	&.strawberry{
-		background:#e6b2c9; color:#000000 !important;
+		& input + label:before {
+			background:#e6b2c9; color:#000000 !important;
+		}
 	}
 	&.purple {
-		background:#948dc1; color:#000000 !important;
+		& input + label:before {
+			background:#948dc1; color:#000000 !important;
+		}
 	}
 	&.blueice{
-		background:#91bed0; color:#000000 !important;
+		& input + label:before {
+			background:#91bed0; color:#000000 !important;
+		}
 	}
 	&.turquoise{
-		background:#70b5c9; color:#000000 !important;
+		& input + label:before {
+			background:#70b5c9; color:#000000 !important;
+		}
 	}
 	&.Gold,
 	&.Shine-Gold,
 	&.ShinyGold{
-		background:#c6b3ad; color:#000000 !important;
+		& input + label:before {
+			background:#c6b3ad; color:#000000 !important;
+		}
 	}
 	&.Espresso {
-		background:#36251D; color:#ffffff !important;
+		& input + label:before {
+			background:#36251D; color:#ffffff !important;
+		}
 	}
 	&.Astro-Black {
-		background:#000000; color:#ffffff !important;
+		& input + label:before {
+			background:#000000; color:#ffffff !important;
+		}
 	}
 	&.Metallic-Black{
-		background:#717173; color:#ffffff !important;
+		& input + label:before {
+			background:#717173; color:#ffffff !important;
+		}
 	}
 	&.DarkGraphite {
-		background:#777673; color:#ffffff !important;
+		& input + label:before {
+			background:#777673; color:#ffffff !important;
+		}
 	}
 	&.Silver,
 	&.platinum-silver{
-		background:#4d4e50; color:#ffffff !important;
+		& input + label:before {
+			background:#4d4e50; color:#ffffff !important;
+		}
 	}
 	&.Blazing-Red,
 	&.VolcanoRed{
-		background:#a21623; color:#ffffff !important;
+		& input + label:before {
+			background:#a21623; color:#ffffff !important;
+		}
 	}
 	&.chocolate-brown {
-		background:#221411; color:#ffffff !important;
+		& input + label:before {
+			background:#221411; color:#ffffff !important;
+		}
 	}
 	&.BrownLeather{
-		background:#ac5a2a; color:#ffffff !important;
+		& input + label:before {
+			background:#ac5a2a; color:#ffffff !important;
+		}
 	}
 	&.Burgundy{
-		background:#714056; color:#ffffff !important;
+		& input + label:before {
+			background:#714056; color:#ffffff !important;
+		}
 	}
 	&.shine-brushed-steel{
-		background-position:-60px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-60px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-120px 0;
+			& input + label:before {
+				background-position:-120px 0;
+			}
 		} 
 	}
 	&.graphite-steel{
-		background-position:-80px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-80px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-160px 0;
+			& input + label:before {
+				background-position:-160px 0;
+			}
 		} 
 	}
 	&.chardonnay{
-		background:#b39f7a; color:#000000 !important;
+		& input + label:before {
+			background:#b39f7a; color:#000000 !important;
+		}
 	}
 	&.blue{
-		background:#85abd8; color:#000000 !important;
+		& input + label:before {
+			background:#85abd8; color:#000000 !important;	
+		}
 	}
 	&.navy{
-		background:#132d52; color:#ffffff !important;
+		& input + label:before {
+			background:#132d52; color:#ffffff !important;
+		}
 	}
 	&.emerald-green{
-		background:#1a8b6a; color:#000 !important;border-color:#2e2e2e !important;
+		& input + label:before {
+			background:#1a8b6a; color:#000 !important;border-color:#2e2e2e !important;
+		}
 	}
 	&.green{
-		background:#026429; color:#ffffff !important;
+		& input + label:before {
+			background:#026429; color:#ffffff !important;
+		}
 	}
 	&.pearl-gray{
-		background:#cccccc; color:#000000 !important;
+		& input + label:before {
+			background:#cccccc; color:#000000 !important;
+		}
 	}
 	&.gray{
-		background:#b5b5b5; color:#000000 !important;
+		& input + label:before {
+			background:#b5b5b5; color:#000000 !important;
+		}
 	}
 	&.stainless{
-		background-position:-100px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-100px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-200px 0;
+			& input + label:before {
+				background-position:-200px 0;
+			}
 		} 
 	}
 	&.lavender{
-		background:#8e64a8; color:#ffffff !important;
+		& input + label:before {
+			background:#8e64a8; color:#ffffff !important;
+		}
 	}
 	&.limegreen{
-		background:#79b43e; color:#000000 !important;
+		& input + label:before {	
+			background:#79b43e; color:#000000 !important;
+		}
 	}
 	&.maroon{
-		background:#5b1024; color:#ffffff !important;
+		& input + label:before {
+			background:#5b1024; color:#ffffff !important;
+		}
 	}
 	&.plum{
-		background:#601b51; color:#ffffff !important;
+		& input + label:before {
+			background:#601b51; color:#ffffff !important;
+		}
 	}
 	&.citrus{
-		background:#dc7043; color:#000000 !important;
+		& input + label:before {
+			background:#dc7043; color:#000000 !important;
+		}
 	}
 	&.orange{
-		background:#f59241; color:#000000 !important;
+		& input + label:before {
+			background:#f59241; color:#000000 !important;
+		}
 	}
 	&.slate{
-		background-position:-120px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-120px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-240px 0;
+			& input + label:before {
+				background-position:-240px 0;
+			}
 		} 
 	}
 	&.mint{
-		background:#96d0b8; color:#000000 !important;
+		& input + label:before {
+			background:#96d0b8; color:#000000 !important;
+		}
 	}
 	&.Moon-Violet{
-		background:#895685; color:#ffffff !important;
+		& input + label:before {
+			background:#895685; color:#ffffff !important;
+		}
 	}
 	&.riviera-blue{
-		background:#399dda; color:#000000 !important;
+		& input + label:before {
+			background:#399dda; color:#000000 !important;
+		}
 	}
 	&.stainless-aluminum{
-		background-position:-140px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-140px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-280px 0;
+			& input + label:before {
+				background-position:-280px 0;
+			}
 		} 
 	}
 	&.white-black{
-		background-position:-160px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-160px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-320px 0;
+			& input + label:before {
+				background-position:-320px 0;
+			}
 		} 
 	}
 	&.fvdfbdfb,
 	&.stainless-vcm{
-		background-position:-180px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-180px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-360px 0;
+			& input + label:before {
+				background-position:-360px 0;
+			}
 		} 
 	}
 	&.Black-Stainless-Steel{
-		background-position:-200px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-200px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-400px 0;
+			& input + label:before {
+				background-position:-400px 0;
+			}
 		} 
 	}
 	&.LeatherYellow{
-		background:#f1bf0a; color:#000000 !important;
+		& input + label:before {
+			background:#f1bf0a; color:#000000 !important;
+		}
 	}
 	&.LeatherSkyBlue{
-		background:#94a8ae; color:#000000 !important;
+		& input + label:before {
+			background:#94a8ae; color:#000000 !important;
+		}
 	}
 	&.Aqua.Blue	{
-		background:#4c92c6; color:#000000 !important;
+		& input + label:before {
+			background:#4c92c6; color:#000000 !important;
+		}
 	}
 	&.Grey{
-		background:#65656b; color:#ffffff !important;
+		& input + label:before {
+			background:#65656b; color:#ffffff !important;
+		}
 	}
 	&.PlatinumSilver{
-		background:#828282; color:#000000 !important;
+		& input + label:before {
+			background:#828282; color:#000000 !important;
+		}
 	}
 	&.DeepBlue{
-		background:#1e3851; color:#ffffff !important;
+		& input + label:before {
+			background:#1e3851; color:#ffffff !important;
+		}
 	}
 	&.Violet{
-		background:#76678e; color:#ffffff !important;
+		& input + label:before {
+			background:#76678e; color:#ffffff !important;
+		}
 	}
 	&.Chrome{
-		background-position:-220px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-220px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-440px 0;
+			& input + label:before {
+				background-position:-440px 0;
+			}
 		} 
 	}
 	&.Space_Black{
-		background:#000; color:#ffffff !important;
+		& input + label:before {
+			background:#000; color:#ffffff !important;
+		}
 	}
 	&.Luxe_White{
-		background:#f9f9f9; color:#000000 !important;
+		& input + label:before {
+			background:#f9f9f9; color:#000000 !important;
+		}
 	}
 	&.Opal_Blue{
-		background:#abc5c3; color:#000000 !important;
+		& input + label:before {
+			background:#abc5c3; color:#000000 !important;
+		}
 	}
 	&.Carbon{
-		background:#3e3e40; color:#ffffff !important;
+		& input + label:before {
+			background:#3e3e40; color:#ffffff !important;
+		}
 	}
 	&.Quartz{
-		background:#d9d9f3; color:#000000 !important;
+		& input + label:before {
+			background:#d9d9f3; color:#000000 !important;
+		}
 	}
 	&.Ice{
-		background:#e1ffff; color:#000000 !important;
+		& input + label:before {
+			background:#e1ffff; color:#000000 !important;
+		}
 	}
 	&.PowderBlue{
-		background:#8aaed9; color:#000000 !important;
+		& input + label:before {
+			background:#8aaed9; color:#000000 !important;
+		}
 	}
 	&.Wood{
-		background-position:-240px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-240px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-480px 0;
+			& input + label:before {
+				background-position:-480px 0;
+			}
 		} 
 	}
 	&.Strap{
-		background-position:-260px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-260px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-520px 0;
+			& input + label:before {
+				background-position:-520px 0;
+			}
 		} 
 	}
 	&.titan{
-		background:#474745; color:#ffffff !important;
+		& input + label:before {
+			background:#474745; color:#ffffff !important;
+		}
 	}
 	&.Rose-Gold{
-		background:#daada8; color:#000000 !important;
+		& input + label:before {
+			background:#daada8; color:#000000 !important;
+		}
 	}
 	&.Metallic-Gold{
-		background:#a58c78; color:#000000 !important;
+		& input + label:before {
+			background:#a58c78; color:#000000 !important;
+		}
 	}
 	&.Blue-Black{
-		background:#23233b; color:#ffffff !important;
+		& input + label:before {
+			background:#23233b; color:#ffffff !important;
+		}
 	}
 	&.Black-Gray{
-		background:#1d1d1d; color:#ffffff !important;
+		& input + label:before {
+			background:#1d1d1d; color:#ffffff !important;
+		}
 	}
 	&.Dark-Gray-Blue{
-		background:#5a5b5f; color:#ffffff !important;
+		& input + label:before {
+			background:#5a5b5f; color:#ffffff !important;
+		}
 	}
-
 
 	&.MC_G6_Astro_Black{
-		background:#000; color:#ffffff !important;
+		& input + label:before {
+			background:#000; color:#ffffff !important;
+		}
 	}
 	&.MC_G6_Ice_Platinum{
-		background:#7f8897; color:#000000 !important;
+		& input + label:before {
+			background:#7f8897; color:#000000 !important;
+		}
 	}
 	&.MC_G6_Mystic_White{
-		background:#f9f9f9; color:#000000 !important;
+		& input + label:before {
+			background:#f9f9f9; color:#000000 !important;
+		}
 	}
 	&.MC_G6_Marine_Blue{
-		background:#7187b6; color:#000000 !important;
+		& input + label:before {
+			background:#7187b6; color:#000000 !important;
+		}
 	}
 	&.MC_G6_Terra_Gold{
-		background:#b5948b; color:#000000 !important;
+		& input + label:before {
+			background:#b5948b; color:#000000 !important;
+		}
 	}
 	&.MC_G6_Plus_Marine_Blue{
-		background:#7187b6; color:#000000 !important;
+		& input + label:before {
+			background:#7187b6; color:#000000 !important;
+		}
 	}
 	&.MC_G6_Plus_Optical_Black{
-		background:#000; color:#ffffff !important;
+		& input + label:before {
+			background:#000; color:#ffffff !important;
+		}
 	}
 	&.MC_G6_Plus_Terra_Gold{
-		background:#b4938a; color:#000000 !important;
+		& input + label:before {
+			background:#b4938a; color:#000000 !important;
+		}
 	}
 	&.MC_Q6_Alpha_Astro_Black{
-		background:#000; color:#ffffff !important;
+		& input + label:before {
+			background:#000; color:#ffffff !important;
+		}
 	}
 	&.MC_Q6_Alpha_Ice_Platinum{
-		background:#85a1af; color:#000000 !important;
+		& input + label:before {
+			background:#85a1af; color:#000000 !important;
+		}
 	}
 	&.MC_Q6_Alpha_Terra_Gold{
-		background:#c19a6f; color:#000000 !important;
+		& input + label:before {
+			background:#c19a6f; color:#000000 !important;
+		}
 	}
 	&.MC_Q6_Astro_Black{
-		background:#000; color:#ffffff !important;
+		& input + label:before {
+			background:#000; color:#ffffff !important;
+		}
 	}
 	&.MC_Q6_Ice_Platinum{
-		background:#84a1af; color:#000000 !important;
+		& input + label:before {
+			background:#84a1af; color:#000000 !important;
+		}
 	}
 	&.MC_Q6_Mystic_White{
-		background:#f9f9f9; color:#000000 !important;
+		& input + label:before {
+			background:#f9f9f9; color:#000000 !important;
+		}
 	}
 	&.MC_Q6_Terra_Gold{
-		background:#bf9974; color:#000000 !important;
+		& input + label:before {
+			background:#bf9974; color:#000000 !important;
+		}
 	}
 	&.MC_Q6_Plus_Astro_Black{
-		background:#000; color:#ffffff !important;
+		& input + label:before {
+			background:#000; color:#ffffff !important;
+		}
 	}
 
 	&.MC_Q6_Plus_Ice_Platinum{
-		background:#84a1af; color:#000000 !important;
+		& input + label:before {
+			background:#84a1af; color:#000000 !important;
+		}
 	}
 	&.MC_Q6_Plus_Marine_Blue{
-		background:#7187b6; color:#000000 !important;
+		& input + label:before {
+			background:#7187b6; color:#000000 !important;
+		}
 	}
-	&.MC_V20_Pink	{
-		background:#e2b8ba; color:#000000 !important;
+	&.MC_V20_Pink{
+		& input + label:before {
+			background:#e2b8ba; color:#000000 !important;
+		}
 	}
 	&.MC_V20_Silver{
-		background:#b9b9bb; color:#000000 !important;
+		& input + label:before {
+			background:#b9b9bb; color:#000000 !important;
+		}
 	}
 	&.MC_V20_Titan{
-		background:#4d4d4d; color:#ffffff !important;
+		& input + label:before {
+			background:#4d4d4d; color:#ffffff !important;
+		}
 	}
 	&.MC_V30_Aurora_Black{
-		background:#000; color:#ffffff !important;
+		& input + label:before {
+			background:#000; color:#ffffff !important;
+		}
 	}
 	&.MC_V30_Cloud_Silver{
-		background:#aeaeae; color:#000000 !important;
+		& input + label:before {
+			background:#aeaeae; color:#000000 !important;
+		}
 	}
 	&.MC_G6_LavenderViolet,
 	&.MC_Q6_LavenderViolet,
 	&.MC_V30_Lavender_Violet{
-		background:#afa3b9; color:#000000 !important;
+		& input + label:before {
+			background:#afa3b9; color:#000000 !important;
+		}
 	}
 	&.MC_G6_MorocanBlue,
 	&.MC_Q6_MoroccanBlue,
 	&.MC_V30_Moroccan_Blue{
-		background:#1f3b53; color:#ffffff !important;
+		& input + label:before {
+			background:#1f3b53; color:#ffffff !important;
+		}
 	}
 	&.MC_X_Power2_Qualcomm_Black_Titan{
-		background:#000002; color:#ffffff !important;
-	}
-	/* 20190918 : LGEGMO-5422 add */  
+		& input + label:before {
+			background:#000002; color:#ffffff !important;
+		}
+	} 
 	&.MC_G8XThinQ_AuroraBlack,  
 	&.MC_DualScreen_AuroraBlack {  
-		background:#000; color:#ffffff !important;
+		& input + label:before {
+			background:#000; color:#ffffff !important;
+		}
 	}  
-	/* //20190918 : LGEGMO-5422 add */  
-	/* 20190903 : LGEGMO-5392 add */
 	&.MC_K40S_NewAuroraBlack,
 	&.MC_K50S_NewAuroraBlack{
-		background:#000; color:#ffffff !important;
+		& input + label:before {
+			background:#000; color:#ffffff !important;
+		}
 	}
 	&.MC_K40S_NewMoroccanBlue,
 	&.MC_K50S_NewMoroccanBlue{
-		background:#01456a; color:#ffffff !important;
+		& input + label:before {
+			background:#01456a; color:#ffffff !important;
+		}
 	}
-	/* //20190903 : LGEGMO-5392 add */
 	&.MC_X_Power2_Shiny_Blue{
-		background:#262932; color:#ffffff !important;
+		& input + label:before {
+			background:#262932; color:#ffffff !important;
+		}
 	}
 	&.MC_X_Power2_Shiny_Gold{
-		background:#b1997f; color:#000000 !important;
+		& input + label:before {
+			background:#b1997f; color:#000000 !important;
+		}
 	}
 	&.MC_X_Power2_Shiny_Titan{
-		background:#8f8f8f; color:#000000 !important;
+		& input + label:before {
+			background:#8f8f8f; color:#000000 !important;
+		}
 	}
 	&.MC_X_Venture_Black{
-		background:#000; color:#ffffff !important;
+		& input + label:before {
+			background:#000; color:#ffffff !important;
+		}
 	}
 	&.HA_CookingAppliance_Matte_Black_Stainless_Steel,
 	&.HA_DW_Matte_Black_Stainless_Steel,
 	&.HA_MWO_Matte_Black_Stainless_Steel,
 	&.HA_Oven_Matte_Black_Stainless_Steel,
 	&.HA_REF_Matte_Black_Stainless_Steel{
-		background-position:-280px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-280px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-560px 0;
+			& input + label:before {
+				background-position:-560px 0;
+			}
 		} 
 	}
 	&.MC_X_Cam_Pink_Gold{
-		background:#cfb3af; color:#000000 !important;
+		& input + label:before {	
+			background:#cfb3af; color:#000000 !important;
+		}
 	}
 	&.MC_Watch_Sport_Titanium_Silver{
-		background:#716e75; color:#ffffff !important;
+		& input + label:before {
+			background:#716e75; color:#ffffff !important;
+		}
 	}
 	&.MC_G6_RaspberryRose,
 	&.MC_V30_Raspberry_Rose{
-		background:#a5405e; color:#ffffff !important;
+		& input + label:before {
+			background:#a5405e; color:#ffffff !important;
+		}
 	}
 	&.HA_REF_SIGNATURE_Textured_Steel{
-		background-position:-300px 0; color:#000000 !important;	
+		& input + label:before {
+			background-position:-300px 0; color:#000000 !important;
+		}	
 		&+.large{
-			background-position:-600px 0;
+			& input + label:before {
+				background-position:-600px 0;
+			}
 		} 
 	}
 	&.MC_K8_MoroccanBlue{
-		background:#04344a; color:#ffffff !important;
+		& input + label:before {
+			background:#04344a; color:#ffffff !important;
+		}
 	}
 	&.MC_Fortune2_TitanBlack{
-		background:#2d2d2d; color:#ffffff !important;
+		& input + label:before {
+			background:#2d2d2d; color:#ffffff !important;
+		}
 	}
 	&.MC_G7_NewPlatinumGray{
-		background:#9397a0; color:#000000 !important;
+		& input + label:before {
+			background:#9397a0; color:#000000 !important;
+		}
 	}
 	&.MC_G7_NewMoroccanBlue{
-		background:#004b6b; color:#ffffff !important;
+		& input + label:before {
+			background:#004b6b; color:#ffffff !important;
+		}
 	}
 	&.MC_G7_NewAuroraBlack{
-		background:#141c31; color:#ffffff !important;
+		& input + label:before {
+			background:#141c31; color:#ffffff !important;
+		}
 	}
 	&.MC_G7_RaspberryRose{
-		background:#c33e69;	color:#ffffff !important;
+		& input + label:before {
+			background:#c33e69;	color:#ffffff !important;
+		}
 	}
 	&.MC_V30S_ThinQ_NewMoroccanBlue{
-		background:#0c5f7f; color:#ffffff !important;
+		& input + label:before {
+			background:#0c5f7f; color:#ffffff !important;
+		}
 	}	
 	&.MC_V30S_ThinQ_NewPlatinumGray{
-		background:#8b8e93; color:#000000 !important;
+		& input + label:before {
+			background:#8b8e93; color:#000000 !important;
+		}
 	}
 	&.MC_Q7_Plus_AuroraBlack{
-		background:#131b30; color:#ffffff !important;
+		& input + label:before {
+			background:#131b30; color:#ffffff !important;
+		}
 	}
 	&.MC_Q7_Plus_MoroccanBlue_Hair{
-		background:#004768; color:#ffffff !important;
+		& input + label:before {
+			background:#004768; color:#ffffff !important;
+		}
 	}
 	&.MC_Q7_Plus_MoroccanBlue_Wave{
-		background:#014a6b; color:#ffffff !important;
+		& input + label:before {
+			background:#014a6b; color:#ffffff !important;
+		}
 	}
 	&.MC_Q7_Plus_LavenderViolet{
-		background:#958bad; color:#000000 !important;
+		& input + label:before {
+			background:#958bad; color:#000000 !important;
+		}
 	}
 	&.MC_Q7_Prime_AuroraBlack{
-		background:#151d32; color:#ffffff !important;
+		& input + label:before {
+			background:#151d32; color:#ffffff !important;
+		}
 	}
 	&.MC_Q7_Prime_MoroccanBlue{
-		background:#014a6a; color:#ffffff !important;
+		& input + label:before {
+			background:#014a6a; color:#ffffff !important;
+		}
 	}
 	&.MC_Q7_Prime_LavenderViolet{
-		background:#968bad; color:#000000 !important;
+		& input + label:before {
+			background:#968bad; color:#000000 !important;
+		}
 	}
 	&.MC_Q7_Alpha_MoroccanBlue{
-		background:#014a6a; color:#ffffff !important;
+		& input + label:before {
+			background:#014a6a; color:#ffffff !important;
+		}
 	}
 	&.MC_K9_Moroccan_Blue{
-		background:#5f83a5; color:#000000 !important; border-color:#c8c8c8 !important;
+		& input + label:before {
+			background:#5f83a5; color:#000000 !important; border-color:#c8c8c8 !important;
+		}
 	}
 	&.MC_K9_Terra_Gold{
-		background:#C7AB83; color:#000000 !important;
+		& input + label:before {
+			background:#C7AB83; color:#000000 !important;
+		}
 	}
 	&.MC_K9_Aurora_Black{
-		background:#000; color:#ffffff !important;
+		& input + label:before {
+			background:#000; color:#ffffff !important;
+		}
 	}
 	&.MC_K11_Moroccan_Blue{
-		background:#014A6B; color:#ffffff !important;
+		& input + label:before {
+			background:#014A6B; color:#ffffff !important;
+		}
 	}
 	&.MC_K11_Terra_Gold{
-		background:#d5baa9; color:#000000 !important;
+		& input + label:before {
+			background:#d5baa9; color:#000000 !important;
+		}
 	}
 	&.MC_K11_Aurora_Black{
-		background:#000; color:#ffffff !important;
+		& input + label:before {
+			background:#000; color:#ffffff !important;
+		}
 	}
 	&.MC_Qstylus_AuroraBlack{
-		background:#000; color:#ffffff !important;
+		& input + label:before {
+			background:#000; color:#ffffff !important;
+		}
 	}
 	&.MC_Qstylus_MoroccanBlue{
-		background:#014a6b; color:#ffffff !important;
+		& input + label:before {
+			background:#014a6b; color:#ffffff !important;
+		}
 	}
 	&.MC_XPower3_MoroccanBlue{
-		background:#014a6b; color:#ffffff !important;
+		& input + label:before {
+			background:#014a6b; color:#ffffff !important;
+		}
 	}
 	&.HA_REF_Beige{
-		background:#e5dfcf; color:#000000 !important; 
+		& input + label:before {
+			background:#e5dfcf; color:#000000 !important; 
+		}
 	}
 	&.HA_REF_Beige_Dancing_Flower_Wine_Red{
-		background:#7c262f; color:#ffffff !important;
+		& input + label:before {
+			background:#7c262f; color:#ffffff !important;
+		}
 	}
 	&.HA_REF_Beige_Dancing_Flower_Silver{
-		background:#b1b1b9; color:#000000 !important;
+		& input + label:before {
+			background:#b1b1b9; color:#000000 !important;
+		}
 	}
 	&.HA_REF_Black_Mirror{
-		background:#2b292a; color:#ffffff !important;
+		& input + label:before {
+			background:#2b292a; color:#ffffff !important;
+		}
 	}
 	&.HA_REF_Skin_Beige{
-		background:#e0dac4; color:#000000 !important;
+		& input + label:before {
+			background:#e0dac4; color:#000000 !important;
+		}
 	}
 	&.HA_VCC_Matte_Red{
-		background-position:-320px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-320px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-640px 0;
+			& input + label:before {
+				background-position:-640px 0;
+			}
 		} 
 	}
 	&.HA_VCC_Matte_Silver{
-		background-position:-340px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-340px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-680px 0;
+			& input + label:before {
+				background-position:-680px 0;
+			}
 		} 
 	}
 	&.MC_G7_Fit_Aurora_Black{
-		background:#141c31; color:#ffffff !important;
+		& input + label:before {
+			background:#141c31; color:#ffffff !important;
+		}
 	}
 	&.MC_G7_Fit_Platinum_Gray{
-		background:#9397a0; color:#000000 !important;
+		& input + label:before {
+			background:#9397a0; color:#000000 !important;
+		}
 	}
 	&.Black_Red {
-		background-position:-360px 0; color:#000000 !important;	
+		& input + label:before {
+			background-position:-360px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-720px 0;
+			& input + label:before {
+				background-position:-720px 0;
+			}
 		}
 	}
-	&.MC_G5_Speed_Gold {background:#c7b293; color:#000000 !important;}
-	&.MC_G5_Speed_Pink {background:#e6b0c7; color:#000000 !important;}
+	&.MC_G5_Speed_Gold {
+		& input + label:before {
+			background:#c7b293; color:#000000 !important;
+		}
+	}
+	&.MC_G5_Speed_Pink {
+		& input + label:before {
+			background:#e6b0c7; color:#000000 !important;
+		}
+	}
 	&.MC_G5_Speed_Silver {
-		background-position:-380px 0; color:#000000 !important;
+		& input + label:before {
+			background-position:-380px 0; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-760px 0;
+			& input + label:before {
+				background-position:-760px 0;
+			}
 		}
 	}
-	&.MC_K10_2017_Shiny_Black {background:#000000; color:#fff !important;border-color:#0f0f0f !important;}
+	&.MC_K10_2017_Shiny_Black {
+		& input + label:before {
+			background:#000000; color:#fff !important;border-color:#0f0f0f !important;
+		}
+	}
 	&.MC_K10_2017_Shiny_Gold {
-		background-position:0 -20px;
+		& input + label:before {
+			background-position:0 -20px;
+		}
 		&+.large{
-			background-position:0 -40px;
+			& input + label:before {
+				background-position:0 -40px;
+			}
 		}
 	}
 	&.MC_K10_2017_Shiny_Titan {
-		background-position:-20px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-20px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-40px -40px;
+			& input + label:before {
+				background-position:-40px -40px;
+			}
 		}
 	}
-	&.MC_K4_2017_Brown {background:#c6b192; color:#000000 !important;}
+	&.MC_K4_2017_Brown {
+		& input + label:before {
+			background:#c6b192; color:#000000 !important;
+		}
+	}
 	&.MC_K4_2017_Titan {
-		background-position:-40px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-40px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-80px -40px;
+			& input + label:before {
+				background-position:-80px -40px;
+			}
 		}
 	}
-	&.MC_K8_2017_Dark_Blue {background:#262932; color:#ffffff !important;}
+	&.MC_K8_2017_Dark_Blue {
+		& input + label:before {
+			background:#262932; color:#ffffff !important;
+		}
+	}
 	&.MC_K8_2017_Gold {
-		background-position:-60px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-60px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-120px -40px;
+			& input + label:before {
+				background-position:-120px -40px;
+			}
 		}
 	}
-	&.MC_Stylus2_Black {background:#000000; color:#ffffff !important;}
+	&.MC_Stylus2_Black {
+		& input + label:before {
+			background:#000000; color:#ffffff !important;
+		}
+	}
 	&.MC_Stylus2_Brown {
-		background-position:-80px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-80px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-160px -40px;
+			& input + label:before {
+				background-position:-160px -40px;
+			}
 		}
 	}
 	&.MC_Stylus2_Gold {
-		background-position:-100px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-100px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-200px -40px;
+			& input + label:before {
+				background-position:-200px -40px;
+			}
 		}
 	}
-	&.MC_Stylus3_Gold {background:#c8b396; color:#000000 !important;}
+	&.MC_Stylus3_Gold {
+		& input + label:before {
+			background:#c8b396; color:#000000 !important;
+		}
+	}
 	&.MC_Stylus3_Rose_Gold {
-		background-position:-120px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-120px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-240px -40px;
+			& input + label:before {
+				background-position:-240px -40px;
+			}
 		}
 	}
 	&.MC_Stylus3_Titan {
-		background-position:-140px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-140px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-280px -40px;
+			& input + label:before {
+				background-position:-280px -40px;
+			}
 		}
 	}
-	&.MC_Watch_Sport_Dark_Blue {background:#262932; color:#ffffff !important;}
+	&.MC_Watch_Sport_Dark_Blue {
+		& input + label:before {
+			background:#262932; color:#ffffff !important;
+		}
+	}
 	&.MC_Watch_Style_Rose_Gold {
-		background-position:-160px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-160px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-320px -40px;
+			& input + label:before {
+				background-position:-320px -40px;
+			}
 		}
 	}
 	&.MC_Watch_Style_Silver {
-		background-position:-180px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-180px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-360px -40px;
+			& input + label:before {
+				background-position:-360px -40px;
+			}
 		}
 	}
 	&.MC_Watch_Style_Titanium {
-		background-position:-200px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-200px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-400px -40px;
+			& input + label:before {
+				background-position:-400px -40px;
+			}
 		}
 	}
 	&.MC_X_Mach_Titan {
-		background-position:-220px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-220px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-440px -40px;
+			& input + label:before {
+				background-position:-440px -40px;
+			}
 		}
 	}
-	&.MC_X_Mach_White {background:#ffffff; color:#000000 !important;}
-	&.MC_X_Power_Gold {background:#c4af90; color:#000000 !important;}
-	&.MC_X_Power_Indigo {background:#262932; color:#fff !important;border-color:#a6a6a6 !important;}
-	&.MC_X_Power_White {background:#ffffff; color:#000000 !important;}
-	&.MC_X_Style_Gold {background:#c6b192; color:#000000 !important;}
+	&.MC_X_Mach_White {
+		& input + label:before {
+			background:#ffffff; color:#000000 !important;
+		}
+	}
+	&.MC_X_Power_Gold {
+		& input + label:before {
+			background:#c4af90; color:#000000 !important;
+		}
+	}
+	&.MC_X_Power_Indigo {
+		& input + label:before {
+			background:#262932; color:#fff !important;border-color:#a6a6a6 !important;
+		}
+	}
+	&.MC_X_Power_White {
+		& input + label:before {
+			background:#ffffff; color:#000000 !important;
+		}
+	}
+	&.MC_X_Style_Gold {
+		& input + label:before {
+			background:#c6b192; color:#000000 !important;
+		}
+	}
 	&.MC_X_Style_Titan {
-		background-position:-240px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-240px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-480px -40px;
+			& input + label:before {
+				background-position:-480px -40px;
+			}
 		}
 	}
-	&.MC_X_Style_White {background:#ffffff; color:#000000 !important;}
-	&.MC_K40_NewAuroraBlack {background:#000000; color:#ffffff !important;}
-	&.HA_VCC_HOMBOT_Ocean_Black {background:#0e0e10; color:#ffffff !important;}
-	&.MC_V40_ThinQ_NewPlatinumGray {background:#676765; color:#ffffff !important;}
+	&.MC_X_Style_White {
+		& input + label:before {
+			background:#ffffff; color:#000000 !important;
+		}
+	}
+	&.MC_K40_NewAuroraBlack {
+		& input + label:before {
+			background:#000000; color:#ffffff !important;
+		}
+	}
+	&.HA_VCC_HOMBOT_Ocean_Black {
+		& input + label:before {
+			background:#0e0e10; color:#ffffff !important;
+		}
+	}
+	&.MC_V40_ThinQ_NewPlatinumGray {
+		& input + label:before {
+			background:#676765; color:#ffffff !important;
+		}
+	}
 	&.HA_VCC_HOMBOT_Ruby_Red {
-		background-position:-260px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-260px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-520px -40px;
+			& input + label:before {
+				background-position:-520px -40px;
+			}
 		}
 	}
-	&.MC_V40_ThinQ_CarmineRed {background:#7e193b; color:#ffffff !important;}
-	&.MC_V40_ThinQ_NewMoroccanBlue {background:#01456a; color:#ffffff !important;}
-	&.MC_K40_NewPlatinumGray {background:#666664; color:#ffffff !important;}
-	&.MC_K40_NewMoroccanBlue {background:#01456a; color:#ffffff !important;}
+	&.MC_V40_ThinQ_CarmineRed {
+		& input + label:before {
+			background:#7e193b; color:#ffffff !important;
+		}
+	}
+	&.MC_V40_ThinQ_NewMoroccanBlue {
+		& input + label:before {
+			background:#01456a; color:#ffffff !important;
+		}
+	}
+	&.MC_K40_NewPlatinumGray {
+		& input + label:before {
+			background:#666664; color:#ffffff !important;
+		}
+	}
+	&.MC_K40_NewMoroccanBlue {
+		& input + label:before {
+			background:#01456a; color:#ffffff !important;
+		}
+	}
 	&.HA_VCC_Matte_Grey {
-		background-position:-300px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-300px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-600px -40px;
+			& input + label:before {
+				background-position:-600px -40px;
+			}
 		}
 	}
 	&.HA_Styler_Mirror {
-		background-position:-320px -20px; color:#000000 !important;
+		& input + label:before {
+			background-position:-320px -20px; color:#000000 !important;
+		}
 		&+.large{
-			background-position:-640px -40px;
+			& input + label:before {
+				background-position:-640px -40px;
+			}
 		}
 	}
-	&.MC_Q60_NewMoroccanBlue {background:#004469; color:#ffffff !important;}
+	&.MC_Q60_NewMoroccanBlue {
+		& input + label:before {
+			background:#004469; color:#ffffff !important;
+		}
+	}
 	&.MC_V50ThinQ_AstroBlack,
 	&.MC_DualScreen_NewAuroraBlack,
-	&.MC_Q60_NewAuroraBlack {background:#000000; color:#ffffff !important;}
+	&.MC_Q60_NewAuroraBlack {
+		& input + label:before {
+			background:#000000; color:#ffffff !important;
+		}
+	}
 
 	&.white,
 	&.Orange,
@@ -691,74 +1184,222 @@
 	&.Silk-White,
 	&.CeramicWhite,
 	&.PowderBlueTest {
-		background:#f9f9f9; color:#000000 !important;
+		& input + label:before {
+			background:#f9f9f9; color:#000000 !important;
+		}
 	}
 
-	&.MC_Stylo5_SilveryWhite {background:#d0d2d1; color:#000000 !important;}
-	&.MC_Stylo5_BlondeRose {background:#dea6a5; color:#000000 !important;}
-	&.MC_Stylo5_NewPlatinumGray {background:#9397a0; color:#000000 !important;}
+	&.MC_Stylo5_SilveryWhite {
+		& input + label:before {
+			background:#d0d2d1; color:#000000 !important;
+		}
+	}
+	&.MC_Stylo5_BlondeRose {
+		& input + label:before {
+			background:#dea6a5; color:#000000 !important;
+		}
+	}
+	&.MC_Stylo5_NewPlatinumGray {
+		& input + label:before {
+			background:#9397a0; color:#000000 !important;
+		}
+	}
 
-	/* LGEUS-680 : 20200623 add */
-	&.MC_Stylo6_HolographicBlue {background:#63B0D6; color:#000000 !important;}
-	&.MC_Stylo6_TitanGray {background:#575757; color:#ffffff !important;}
-	/* //LGEUS-680 : 20200623 add */
+	&.MC_Stylo6_HolographicBlue {
+		& input + label:before {
+			background:#63B0D6; color:#000000 !important;
+		}
+	}
+	&.MC_Stylo6_TitanGray {
+		& input + label:before {
+			background:#575757; color:#ffffff !important;
+		}
+	}
 
-	&.MC_K30_AuroraBlack {background:#000000; color:#ffffff !important;}
-	&.MC_K30_MoroccanBlue {background:#01456A; color:#ffffff !important;border-color:#c8c8c8 !important;}
-	&.MC-K41S-Black {background:#000000; color:#ffffff !important;}
-	&.MC-K41S-Titan {background:#474c50; color:#ffffff !important;}
-	&.MC-K51S-Pink {background:#703a47; color:#ffffff !important;}
-	&.MC-K51S-Titan {background:#474c50; color:#ffffff !important;}
-	&.MC-K61-White {background:#f4f5f7; color:#000000 !important;}
-	&.MC-K61-Titan {background:#474c50; color:#ffffff !important;}
-	&.MC_Stylo5_NewAuroraBlack {background:#000000; color:#ffffff !important;}
+	&.MC_K30_AuroraBlack {
+		& input + label:before {
+			background:#000000; color:#ffffff !important;
+		}
+	}
+	&.MC_K30_MoroccanBlue {
+		& input + label:before {
+			background:#01456A; color:#ffffff !important;border-color:#c8c8c8 !important;
+		}
+	}
+	&.MC-K41S-Black {
+		& input + label:before {
+			background:#000000; color:#ffffff !important;
+		}
+	}
+	&.MC-K41S-Titan {
+		& input + label:before {
+			background:#474c50; color:#ffffff !important;
+		}
+	}
+	&.MC-K51S-Pink {
+		& input + label:before {
+			background:#703a47; color:#ffffff !important;
+		}
+	}
+	&.MC-K51S-Titan {
+		& input + label:before {
+			background:#474c50; color:#ffffff !important;
+		}
+	}
+	&.MC-K61-White {
+		& input + label:before {
+			background:#f4f5f7; color:#000000 !important;
+		}
+	}
+	&.MC-K61-Titan {
+		& input + label:before {
+			background:#474c50; color:#ffffff !important;
+		}
+	}
+	&.MC_Stylo5_NewAuroraBlack {
+		& input + label:before {
+			background:#000000; color:#ffffff !important;
+		}
+	}
 	
-	&.MC_V60_ClassyBlue {background:#1d264d; color:#ffffff !important;}
-	&.MC_V60_ClassyWhite {background:#ffffff; color:#000000 !important;}
-	&.MC_V60_TheBlack {background:#000000; color:#ffffff !important;}
+	&.MC_V60_ClassyBlue {
+		& input + label:before {
+			background:#1d264d; color:#ffffff !important;
+		}
+	}
+	&.MC_V60_ClassyWhite {
+		& input + label:before {
+			background:#ffffff; color:#000000 !important;
+		}
+	}
+	&.MC_V60_TheBlack {
+		& input + label:before {
+			background:#000000; color:#ffffff !important;
+		}
+	}
 
-	/* LGEGMC-128 : 20200428 add */
-	&.MC_Velvet_AuroraGreen {background:#01514e; color:#ffffff !important;}
-	&.MC_Velvet_AuroraGrey {background:#46474b; color:#ffffff !important;}
-	&.MC_Velvet_AuroraSilver {background:#dad9d7; color:#000000 !important;}
-	&.MC_Velvet_IllusionSunset {background:#d61969; color:#ffffff !important;}
-	&.MC_Velvet_AuroraWhite {background:#ffffff; color:#000000 !important;}
-	&.MC_Velvet_NewBlack {background:#040001; color:#ffffff !important;}
-	/*//LGEGMC-128 : 20200428 add */
-	/* LGEUS-917 : 20200818 add */
-	&.MC_Velvet_AuroraRed {background:#c20430; color:#ffffff !important;}
-	&.MC_Velvet_PinkWhite {background:#f0ecf5; color:#000000 !important;}	
-	/* //LGEUS-917 : 20200818 add */
-	
-	/* LGEGMC-310 : 20200529 add */
-	&.HE_TWS_ModernWhite {background:#ffffff; color:#000000 !important;}
-	&.HE_TWS_StylishBlack {background:#1a1915; color:#ffffff !important;}
-	/* //LGEGMC-310 : 20200529 add */
+	&.MC_Velvet_AuroraGreen {
+		& input + label:before {
+			background:#01514e; color:#ffffff !important;
+		}
+	}
+	&.MC_Velvet_AuroraGrey {
+		& input + label:before {
+			background:#46474b; color:#ffffff !important;
+		}
+	}
+	&.MC_Velvet_AuroraSilver {
+		& input + label:before {
+			background:#dad9d7; color:#000000 !important;
+		}
+	}
+	&.MC_Velvet_IllusionSunset {
+		& input + label:before {
+			background:#d61969; color:#ffffff !important;
+		}
+	}
+	&.MC_Velvet_AuroraWhite {
+		& input + label:before {	
+			background:#ffffff; color:#000000 !important;
+		}
+	}
+	&.MC_Velvet_NewBlack {
+		& input + label:before {
+			background:#040001; color:#ffffff !important;
+		}
+	}
+	&.MC_Velvet_AuroraRed {
+		& input + label:before {
+			background:#c20430; color:#ffffff !important;
+		}
+	}
+	&.MC_Velvet_PinkWhite {
+		& input + label:before {
+			background:#f0ecf5; color:#000000 !important;
+		}
+	}	
+	&.HE_TWS_ModernWhite {
+		& input + label:before {
+			background:#ffffff; color:#000000 !important;
+		}
+	}
+	&.HE_TWS_StylishBlack {
+		& input + label:before {
+			background:#1a1915; color:#ffffff !important;
+		}
+	}
 
-	/* LGEGMC-373 : 20200624 add */
-	&.MC_K22_Titan {background:#7f8084; color:#000000 !important;}
-	&.MC_K22_Blue {background:#36159a; color:#ffffff !important;}
-	&.MC_K22_Red {background:#ae2738; color:#ffffff !important;}
-	/* //LGEGMC-373 : 20200624 add */
+	&.MC_K22_Titan {
+		& input + label:before {
+			background:#7f8084; color:#000000 !important;
+		}
+	}
+	&.MC_K22_Blue {
+		& input + label:before {
+			background:#36159a; color:#ffffff !important;
+		}
+	}
+	&.MC_K22_Red {
+		& input + label:before {
+			background:#ae2738; color:#ffffff !important;
+		}
+	}
 
-	/* LGEGMC-510 : 20200724 add */
-	&.MC-K71-HoloTitan {background:#585f69; color:#ffffff !important;}
-	&.MC-K71-HoloWhite {background:#e8f5fd; color:#000000 !important;}	
-	/* //LGEGMC-510 : 20200724 add  */
+	&.MC-K71-HoloTitan {
+		& input + label:before {
+			background:#585f69; color:#ffffff !important;
+		}
+	}
+	&.MC-K71-HoloWhite {
+		& input + label:before {	
+			background:#e8f5fd; color:#000000 !important;
+		}
+	}	
 
-	/* LGEGMC-546 20200729 */
-	&.MC_K42_Green{background:#3f4a28;color:#ffffff !important;}
-	&.MC_K42_Grey{background:#747474;color:#ffffff !important;}
-	&.MC_K42_Red{background:#861b39;color:#ffffff !important;}
-	&.MC_K42_SkyBlue{background:#a4d3d9;color:#000000 !important;}
-	/* // LGEGMC-546 20200729 */
+	&.MC_K42_Green{
+		& input + label:before {
+			background:#3f4a28;color:#ffffff !important;
+		}
+	}
+	&.MC_K42_Grey{
+		& input + label:before {
+			background:#747474;color:#ffffff !important;
+		}
+	}
+	&.MC_K42_Red{
+		& input + label:before {
+			background:#861b39;color:#ffffff !important;
+		}
+	}
+	&.MC_K42_SkyBlue{
+		& input + label:before {
+			background:#a4d3d9;color:#000000 !important;
+		}
+	}
 
-	/* LGEGMC-560 20200811 */
-	&.MC_K52_White {background: #ffffff; color:#000000 !important;}
-	&.MC_K52_Blue {background: #211758; color:#ffffff !important;}
-	&.MC_K52_Red {background: #872521; color:#ffffff !important;}
-	&.MC_K62_White {background: #ffffff; color:#000000 !important;}
-	&.MC_K62_SkyBlue {background: #c7d1ea; color:#000000 !important;}
-	/* // LGEGMC-560 20200811 */
-
+	&.MC_K52_White {
+		& input + label:before {
+			background: #ffffff; color:#000000 !important;
+		}
+	}
+	&.MC_K52_Blue {
+		& input + label:before {
+			background: #211758; color:#ffffff !important;
+		}
+	}
+	&.MC_K52_Red {
+		& input + label:before {
+			background: #872521; color:#ffffff !important;
+		}
+	}
+	&.MC_K62_White {
+		& input + label:before {
+			background: #ffffff; color:#000000 !important;
+		}
+	}
+	&.MC_K62_SkyBlue {
+		& input + label:before {
+			background: #c7d1ea; color:#000000 !important;
+		}
+	}
 }

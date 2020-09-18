@@ -1,108 +1,155 @@
 /*!
  * @module vcui.helper.BreakpointDispatcher
+ * @bechmark https://github.com/paulirish/matchMedia.js
  * @license MIT License
  * @description 반응형 분기점을 지날때마다 이벤트를 발생시켜주는 헬퍼
  * @copyright VinylC UID Group
  */
-vcui.define('helper/breakpointDispatcher', ['jquery', 'vcui'], function ($, core) {
+
+
+vcui.define('helper/breakpointDispatcher', ['jquery', 'vcui'], function($, core) {
     "use strict";
 
-    var $win = $(window);
+    window.matchMedia || (window.matchMedia = function() {
+        "use strict";
 
-    function generate(breakpoints) {}
+        var styleMedia = (window.styleMedia || window.media);
+        if (!styleMedia) {
+            var style = document.createElement('style'),
+                script = document.getElementsByTagName('script')[0],
+                info = null;
 
-    /*
-    [{
-        mode: "xs",
-        min: 0,
-        max: 375
-    }, {
-        mode: "sm",
-        min: 376,
-        max: 767
-    }, {
-        mode: "md",
-        min: 768,
-        max: 1023
-    }, {
-        mode: "lg",
-        min: 1024,
-        max: 1279
-    }, {
-        mode: "xl",
-        min: 1280,
-        max: 1000000
-    }]
-     */
-    /**
-     * @namespace
-     * @name vcui.helper.BreakpointDispatcher
-     */
-    var BreakpointDispatcher = core.helper.BreakpointDispatcher = /** @lends  vcui.helper.BreakpointDispatcher */{
-        breakpoints: [{
-            name: 'xs',
-            breakpoint: 375
-        }, {
-            name: 'sm',
-            breakpoint: 768
-        }, {
-            name: 'md',
-            breakpoint: 1024
-        }, {
-            name: 'lg',
-            breakpoint: 1280
-        }, {
-            name: 'xl',
-            breakpoint: 100000
-        }],
-        config: function config(breakpoints) {
-            this.breakpoints = breakpoints;
-        },
-        /**
-         * breakpoint
-         * @param breakpoints
-         */
-        start: function start(breakpoints) {
-            var self = this,
-                currentName = '',
-                fn;
+            style.type = 'text/css';
+            style.id = 'matchmediajs-test';
 
-            if (breakpoints) {
-                self.config(breakpoints);
+            if (!script) {
+                document.head.appendChild(style);
+            } else {
+                script.parentNode.insertBefore(style, script);
             }
 
-            $win.on('resize.breakpoint orientationchange.breakpoint load.breakpoint', fn = function fn() {
-                var width = $win.width(),
-                    min = 0,
-                    data;
+            info = ('getComputedStyle' in window) && window.getComputedStyle(style, null) || style.currentStyle;
 
-                for (var i = 0, item; item = self.breakpoints[i]; i++) {
-                    if (i > 0) {
-                        min = self.breakpoints[i - 1].breakpoint + 1;
+            styleMedia = {
+                matchMedium: function(media) {
+                    var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }';
+
+                    if (style.styleSheet) {
+                        style.styleSheet.cssText = text;
+                    } else {
+                        style.textContent = text;
                     }
 
-                    if (width > min && width <= item.breakpoint && currentName != item.name) {
-                        data = {
-                            name: item.name,
-                            min: min,
-                            max: item.breakpoint,
-                            prev: $win.data('breakpoint') || {}
-                        };
-                        $win.data('breakpoint', data).trigger('breakpointchange', data);
-                        currentName = item.name;
-                    }
+                    return info.width === '1px';
                 }
-            });
-
-            fn();
-
-            /*$win.on('breakpointchange', function (e, data) {
-                if (!data) {
-                    $win.trigger('breakpointchange', $win.data('breakpoint'));
-                }
-            });*/
+            };
         }
-    };
+
+        return function(media) {
+            return {
+                matches: styleMedia.matchMedium(media || 'all'),
+                media: media || 'all'
+            };
+        };
+    }());
+
+    (function() {
+        if (window.matchMedia && window.matchMedia('all').addListener) {
+            return false;
+        }
+
+        var localMatchMedia = window.matchMedia,
+            hasMediaQueries = localMatchMedia('only all').matches,
+            isListening = false,
+            timeoutID = 0, // setTimeout for debouncing 'handleChange'
+            queries = [], // Contains each 'mql' and associated 'listeners' if 'addListener' is used
+            handleChange = function(evt) {
+                // Debounce
+                clearTimeout(timeoutID);
+
+                timeoutID = setTimeout(function() {
+                    for (var i = 0, il = queries.length; i < il; i++) {
+                        var mql = queries[i].mql,
+                            listeners = queries[i].listeners || [],
+                            matches = localMatchMedia(mql.media).matches;
+
+                        if (matches !== mql.matches) {
+                            mql.matches = matches;
+
+                            for (var j = 0, jl = listeners.length; j < jl; j++) {
+                                listeners[j].call(window, mql);
+                            }
+                        }
+                    }
+                }, 30);
+            };
+
+        window.matchMedia = function(media) {
+            var mql = localMatchMedia(media),
+                listeners = [],
+                index = 0;
+
+            mql.addListener = function(listener) {
+
+                if (!hasMediaQueries) {
+                    return;
+                }
+
+                if (!isListening) {
+                    isListening = true;
+                    window.addEventListener('resize', handleChange, true);
+                }
+
+                if (index === 0) {
+                    index = queries.push({
+                        mql: mql,
+                        listeners: listeners
+                    });
+                }
+
+                listeners.push(listener);
+            };
+
+            mql.removeListener = function(listener) {
+                for (var i = 0, il = listeners.length; i < il; i++) {
+                    if (listeners[i] === listener) {
+                        listeners.splice(i, 1);
+                    }
+                }
+            };
+
+            return mql;
+        };
+    }());
+
+    /**
+     * @class
+     * @name vcui.helper.BreakpointDispatcher
+     */
+    var BreakpointDispatcher = core.helper.BreakpointDispatcher = /** @lends  vcui.helper.BreakpointDispatcher */ vcui.BaseClass.extend({
+        $singleton: true,
+        initialize: function(options) {
+            var self = this;
+
+            self.options = core.extend({
+                matches: {}
+            }, options);
+        },
+        /**
+         *
+         */
+        start: function() {
+            var self = this,
+                data;
+
+            core.each(self.options.matches, function(item, key) {
+                var mq = window.matchMedia(key);
+
+                mq.addListener(item);
+                item(mq);
+            });
+        }
+    });
 
     return BreakpointDispatcher;
 });
