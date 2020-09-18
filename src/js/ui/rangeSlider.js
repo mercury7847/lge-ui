@@ -198,7 +198,13 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
 
             self.nowValue = {minValue:self.startValue, maxValue:self.endValue};
 
-            self.triggerHandler('rangesliderinit', [{minValue:self.startValue, maxValue:self.endValue}]);
+            var initValue = {
+                minValue:self.nowValue.minValue < self.originMinValue? 'Min': self.nowValue.minValue >= self.originMaxValue? self.originMaxValue : self.nowValue.minValue, 
+                maxValue:self.nowValue.maxValue > self.originMaxValue? 'Max': self.nowValue.maxValue <= self.originMinValue? self.originMinValue : self.nowValue.maxValue
+            };
+
+
+            self.triggerHandler('rangesliderinit', [initValue]);
             
         },
 
