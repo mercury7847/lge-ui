@@ -20,23 +20,24 @@
 		}
 		.text,
 		.bullet-text li {
-			color:#f8f8f8;
+			color:#fff;
 			&:before{
 				background:#f8f8f8;
 			}
 		}
 		.btn-box {
 			.link-text {
-				color:#f8f8f8;
-			}
-			.ico-right{
-				&:after {
-					background: url('/lg5-common/images/common/icons/link-right-light-gray.svg') no-repeat 0 1px;
-				}
+                color:#fff;
+                &:after {
+                    border-color:#fff;
+                }
 			}
 		}
 		.quote-writer-box {
-			color:#fff;
+            color:#fff;
+            .writer {
+                color:#fff;
+            }
 		}
 	}
 	&.bg-dark-gray {
@@ -46,23 +47,24 @@
 		}
 		.text,
 		.bullet-text li {
-			color:#f8f8f8;
+			color:#fff;
 			&:before{
-				background:#f8f8f8;
+				background:#fff;
 			}
 		}
 		.btn-box {
 			.link-text {
-				color:#f8f8f8;
-			}
-			.ico-right{
-				&:after {
-					background: url('/lg5-common/images/common/icons/link-right-light-gray.svg') no-repeat 0 1px;
-				}
+                color:#fff;
+                &:after {
+                    border-color:#fff;
+                }
 			}
 		}
 		.quote-writer-box {
-			color:#fff;
+            color:#fff;
+            .writer {
+                color:#fff;
+            }
 		}
 	}
 	&.bg-gray {
@@ -74,6 +76,7 @@
 	/* // bg, color 추가 */
 
     .unit-list {
+        padding:60px 0;
         @include clearfix;
         &.block1 {
             .unit-box {
