@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <!-- h3 tabs -->
+                    <div class="tabs-wrap border-type ui_tab">
+                        <ul class="tabs">
+                            <li class="on"><a href="#n">전체<em class="blind">선택됨</em></a></li>
+                            <li><a href="#n">결제</a></li>
+                            <li><a href="#n">쿠폰</a></li>
+                            <li><a href="#n">케어솔루션</a></li>
+                            <li><a href="#n">이벤트</a></li>
+                        </ul>
+                    </div>
+                    <!-- // h3 tabs -->
+                    
+                    <!-- tab contents : filtering results -->
+                    <div class="tab-contents notice-contents">
+                        <ul class="setting-btns">
+                            <li><button type="button" class="btn-text"><span>설정</span></button></li>
+                            <li><button type="button" class="btn-text"><span>전체삭제</span></button></li>
+                        </ul>
+                        
+                        <!-- 알림 리스트 -->
+                        <div class="notice-list-wrap">
+                            <ul class="notice-lists">
+                                <li class="list">
+                                    <div class="notice-box">
+                                        <span class="icons">알림 확인 상태 : <em class="on">안읽음</em></span>
+                                        <p class="date"><span class="blind">알림 도착 날짜 및 시간</span>2020.08.03 12:00</p>
+                                        <div class="box">
+                                            <span class="blind">알림 메시지</span>
+                                            <p class="tit">케어솔루션이 곧 종료됩니다.</p>
+                                            <p class="desc">차원이 다른 전문가의 케어서비스가 아쉽게도 일주일 남았어요.<br>좀 더 체험해보시는건 어떠세요?</p>
+                                            <div class="more-view">
+                                                <p class="name"><span class="blind">제품명</span>LG TROMM 스타일러 플러스</p>
+                                                <ul class="info">
+                                                    <li>
+                                                        <dl>
+                                                            <dt>시작일</dt>
+                                                            <dd>2018.08.03</dd>
+                                                        </dl>
+                                                    </li>
+                                                    <li>
+                                                        <dl>
+                                                            <dt>종료일</dt>
+                                                            <dd>2020.08.03</dd>
+                                                        </dl>
+                                                    </li>
+                                                    <li>
+                                                        <dl>
+                                                            <dt>남은일자</dt>
+                                                            <dd>7일</dd>
+                                                        </dl>
+                                                    </li>
+                                                </ul>
+                                                <div class="btns">
+                                                    <a href="#n" class="btn"><span>관련 제품 둘러보기</span></a>
+                                                </div>
+                                            </div>
+                                            <div class="bottom-btn">
+                                                <a href="#n" class="btn-link">케어솔루션 내역 보기</a>
+                                            </div>
+                                            <button type="button" class="btn-del"><span>알림 삭제</span></button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <p class="notice-txt">최근 <em>15일</em>의 알림을 확인할 수 있습니다.</p>
+                        </div>
+                        <!-- // 알림 리스트 -->
+                    </div>
+                    <!-- tab contents : filtering results -->
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+        <script src="/lg5-common/js/mypage/membership/point.js"></script>
+    </div>     
+</body>
+</html>
