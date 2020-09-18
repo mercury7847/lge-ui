@@ -6,20 +6,20 @@
         </div>
         <div class="plp-filter-wrap">
             <div class="btn-reset">
-                <button type="button"><span>초기화</span></button>
+                <button id="filterResetBtn" type="button"><span>초기화</span></button>
             </div>
             <div class="list-acco ui_order_accordion" data-accord-group="filter" data-single-open="false" data-open-index="0">
                 <ul>
                     <li>
                         <div class="head">
-                            <a href="#head01" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                            <a href="#headId_0" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
                                 <div class="tit">
                                     정렬기준
                                 </div>
                                 <span class="blind ui_accord_text">내용 열기</span>
                             </a>
                         </div>
-                        <div class="desc ui_accord_content" id="head01">
+                        <div class="desc ui_accord_content" id="headId_0">
                             <div class="cont">
                                 <div class="rdo-wrap">
                                     <input type="radio" name="sorting" id="sort01" value="1">
@@ -50,54 +50,28 @@
             <!-- 필터항목 -->
             <div class="list-acco ui_filter_accordion" data-accord-group="filter" data-single-open="false" data-open-index="[0,1]">
                 <ul>
-                    <!-- <li>
+                    <!-- <li data-id="RG00001041">
                         <div class="head">
-                            <a href="#head02" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                            <a href="#headId_1" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
                                 <div class="tit">
                                     판매가
                                 </div>
                                 <span class="blind ui_accord_text">내용 열기</span>
                             </a>
                         </div>
-                        <div class="desc ui_accord_content" id="head02">
+                        <div class="desc ui_accord_content" id="headId_1">
                             <div class="cont">
                                 <div class="range-wrap">
-                                    <div class="ui_desc" data-input="1000000,8000000" data-range="0,10000000" data-min-label="minLabel" data-max-label="maxLabel"></div>
-                                    <p class="min"></p>
-                                    <p class="max"></p>
+                                    <div data-filter-id="RG00001041" class="ui_filter_slider ui_screen size_slider ui-range-slider" data-input="," data-range="55,88" data-min-label="minLabel" data-max-label="maxLabel" ui-modules="RangeSlider"></div>
+                                    <p class="min range-num">Min</p>
+                                    <p class="max range-num">Max</p>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <li data-id="FT05033892"> 
                         <div class="head">
-                            <a href="#head03" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                <div class="tit">
-                                    서비스 구분
-                                </div>
-                                <span class="blind ui_accord_text">내용 열기</span>
-                            </a>
-                        </div>
-                        <div class="desc ui_accord_content" id="head03">
-                            <div class="cont">
-                                <div class="rdo-wrap">
-                                    <input type="radio" id="rdo01" name="opt" checked>
-                                    <label for="rdo01">전체</label>
-                                </div>
-                                <div class="rdo-wrap">
-                                    <input type="radio" id="rdo02" name="opt">
-                                    <label for="rdo02">일반제품</label>
-                                </div>
-                                <div class="rdo-wrap">
-                                    <input type="radio" id="rdo03" name="opt" disabled>
-                                    <label for="rdo03">케어십 가능 제품</label>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="head">
-                            <a href="#head04" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                            <a href="#headId_2" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
                                 <div class="tit">색상
                                     <span class="sel_num">
                                         <span class="blind">총 선택 갯수</span>(1)
@@ -106,26 +80,38 @@
                                 <span class="blind ui_accord_text">내용 열기</span>
                             </a>
                         </div>
-                        <div class="desc ui_accord_content" id="head04">
+                        <div class="desc ui_accord_content" id="headId_2">
                             <div class="cont">
-                                <div class="chk-wrap-colorchip stainless-steel">
-                                    <input type="checkbox" id="color01" checked>
-                                    <label for="color01">샤이니 유니버스</label>
+                                <div class="chk-wrap-colorchip HA_REF_Matte_Black_Stainless_Steel">
+                                    <input type="checkbox" name="FT05033892" value="FV60005320" id="FV60005320">
+                                    <label for="FV60005320">Matte Black Stainless Steel (1)</label>
                                 </div>
                                 <div class="chk-wrap-colorchip Black-Stainless-Steel">
-                                    <input type="checkbox" id="color02">
-                                    <label for="color02">샤이니 퓨어</label>
+                                    <input type="checkbox" name="FT05033892" value="FV60005318" id="FV60005318">
+                                    <label for="FV60005318">Black Stainless Steel (23)</label>
                                 </div>
-                                <div class="chk-wrap-colorchip MC_K62_SkyBlue">
-                                    <input type="checkbox" id="color03" disabled>
-                                    <label for="color03">맨하튼 미드나잇</label>
+                                <div class="chk-wrap-colorchip stainless-steel">
+                                    <input type="checkbox" name="FT05033892" value="FV60005327" id="FV60005327">
+                                    <label for="FV60005327">Stainless Steel (41)</label>
+                                </div>
+                                <div class="chk-wrap-colorchip smooth-white">
+                                    <input type="checkbox" name="FT05033892" value="FV60005326" id="FV60005326">
+                                    <label for="FV60005326">Smooth White (2)</label>
+                                </div>
+                                <div class="chk-wrap-colorchip HA_REF_SIGNATURE_Textured_Steel">
+                                    <input type="checkbox" name="FT05033892" value="FV60005321" id="FV60005321">
+                                    <label for="FV60005321">LG SIGNATURE Textured Steel™ (3)</label>
+                                </div>
+                                <div class="chk-wrap-colorchip PlatinumSilver">
+                                    <input type="checkbox" name="FT05033892" value="FTV0001334" id="FTV0001334">
+                                    <label for="FTV0001334">Platinum Silver (8)</label>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <li data-id="FT05036186">
                         <div class="head">
-                            <a href="#head05" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                            <a href="#headId_3" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
                                 <div class="tit">도어재질
                                     <span class="sel_num">
                                         <span class="blind">총 선택 갯수</span>(2)
@@ -134,24 +120,35 @@
                                 <span class="blind ui_accord_text">내용 열기</span>
                             </a>
                         </div>
-                        <div class="desc ui_accord_content" id="head05">
+                        <div class="desc ui_accord_content" id="headId_3">
                             <div class="cont">
                                 <div class="chk-wrap">
-                                    <input type="checkbox" id="chk01" checked>
-                                    <label for="chk01">리얼 스테인리스</label>
+                                    <input type="checkbox" name="FT05036186" value="FV60008114" id="FV60008114">
+                                    <label for="FV60008114">LG SIGNATURE (6)</label>
                                 </div>
                                 <div class="chk-wrap">
-                                    <input type="checkbox" id="chk02"  checked>
-                                    <label for="chk02">일반 메탈</label>
+                                    <input type="checkbox" name="FT05036186" value="FV60008111" id="FV60008111">
+                                    <label for="FV60008111">OLED TVs (34)</label>
                                 </div>
                                 <div class="chk-wrap">
-                                    <input type="checkbox" id="chk03" disabled>
-                                    <label for="chk03">스테인리스</label>
+                                    <input type="checkbox" name="FT05036186" value="FV60008115" id="FV60008115">
+                                    <label for="FV60008115">8K TVs (3)</label>
+                                </div>
+                                <div class="chk-wrap">
+                                    <input type="checkbox" name="FT05036186" value="FV60008110" id="FV60008110">
+                                    <label for="FV60008110">4K Ultra HD TVs (23)</label>
+                                </div>
+                                <div class="chk-wrap">
+                                    <input type="checkbox" name="FT05036186" value="FV60008113" id="FV60008113">
+                                    <label for="FV60008113">HDR TVs (17)</label>
+                                </div>
+                                <div class="chk-wrap">
+                                    <input type="checkbox" name="FT05036186" value="FV60008108" id="FV60008108">
+                                    <label for="FV60008108">Smart TVs (19)</label>
                                 </div>
                             </div>
                         </div>
-                    </li>
-                -->
+                    </li> -->
                 </ul>
             </div>
 
