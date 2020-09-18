@@ -63,19 +63,7 @@ $(function () {
             // 이벤트 바인딩
 
 
-            $('.ui_filter_accordion').on('change', 'input[type="checkbox"]', function(e){
-
-                console.log(e);
-                var id = e.target.id;
-                if(e.target.checked){
-                    storageFilters[id] = e.target.value;
-                    //Storage.set(storageName, storageFilters);
-                }else{
-                    //delete storageFilters[id];
-                    //Storage.remove(storageName, id);
-                }
-                //setApplyFilter(storageFilters);
-            });
+           
 
             $('.apply_filters').on('click', 'a', function(e){
                 e.preventDefault();
@@ -102,30 +90,29 @@ $(function () {
 
 
             function setApplyFilter(obj){		
+
+
+                return;
                 
-                $('.apply_filters').empty();
-                var tmpl='<div data-id="{{key}}">{{txt}} <a href="#">X</a></div>';
+                //$('.apply_filters').empty();
+                //var tmpl='<div data-filter-id="{{key}}">{{txt}} <a href="#">X</a></div>';
                 var htmlStr = "";
                 var txt = "";
 
                 for(var key in obj){		
                     $('input[type="checkbox"][id="'+ key +'"]').prop('checked', true);
 
-                    if($('[data-id="'+ key +'"]').data('ui_selectbox')){
-                        $('[data-id="'+ key +'"]').vcSelectbox('selectedIndex', obj[key] , false);
-                        continue;
-                    }
-                    if($('[data-id="'+ key +'"]').data('ui_rangeSlider')){
-                        $('[data-id="'+ key +'"]').vcRangeSlider('option',{input:obj[key]}).vcRangeSlider('reset', false);
+                    if($('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                        $('[data-filter-id="'+ key +'"]').vcRangeSlider('option',{input:obj[key]}).vcRangeSlider('reset', false);
 
                         txt = obj[key] && obj[key].replace(',',' - ');
                         htmlStr = vcui.template(tmpl, { key:key,txt:key+' : '+txt});
                     }else{
-                        txt = $('input[type="checkbox"][id="'+ key +'"]').parent().text();
-                        htmlStr = vcui.template(tmpl, { key : key,txt : txt});
+                        //txt = $('input[type="checkbox"][id="'+ key +'"]').parent().text();
+                        //htmlStr = vcui.template(tmpl, { key : key,txt : txt});
                     }
 
-                    var $target = $('.apply_filters').find('[data-id="'+ key +'"]');
+                    var $target = $('.apply_filters').find('[data-filter-id="'+ key +'"]');
                     if($target.length > 0){
                         $target.html(htmlStr);
                     }else{
@@ -170,7 +157,7 @@ $(function () {
                     '<span class="blind ui_accord_text">내용 열기</span>'+
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
-                    '<div data-id={{filterId}} class="ui_filter_slider {{uiName}}" data-input={{input}} data-range="{{range}}" data-min-label="minLabel" data-max-label="maxLabel"></div>'+
+                    '<div data-filter-id={{filterId}} class="ui_filter_slider {{uiName}}" data-input={{input}} data-range="{{range}}" data-min-label="minLabel" data-max-label="maxLabel"></div>'+
                     '<p class="min"></p><p class="max"></p>'+
             '</div></div></li>';
 
@@ -194,10 +181,9 @@ $(function () {
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
                 '{{#each (item, index) in list}}'+
-                '<div class="chk-wrap color"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{filterId}}_chk_{{index+1}}" {{item.enable}}><label for="{{filterId}}_chk_{{index+1}}">{{item.title}}</label></div>'+
+                '<div class="chk-wrap colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{filterId}}_chk_{{index+1}}" {{item.enable}}><label for="{{filterId}}_chk_{{index+1}}">{{item.title}} ({{item.modelCount}})</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
-
 
 
             function render(arr){
@@ -205,11 +191,6 @@ $(function () {
                 for(var i=0; i<arr.length; i++){
 
                     var item = arr[i];
-
-                    console.log(item);
-                    //console.log(item['filterValueId']);
-
-                    //item['facetSourceCode'], //COLR
 
 
                     if(item.filterTypeCode=='00'){
@@ -233,17 +214,18 @@ $(function () {
                         });
                     }else{
 
-                        var dArr = vcui.array.map(item.data, function(dItem, idx){
-                            return {
-                                title:dItem['filterValueName'], 
-                                value:dItem['filterValueId'], 
-                                modelCount:dItem['modelCount'], 
-                                enable:dItem['enable'] == 'N'? 'disabled' : '',
-                            }
-                        });
-
 
                         if(item.facetSourceCode=='COLR'){
+
+                            var dArr = vcui.array.map(item.data, function(dItem, idx){
+                                return {
+                                    title:dItem['rangePointStyle'], 
+                                    filterName : dItem['filterValueName'],
+                                    value:dItem['filterValueId'], 
+                                    modelCount : String(dItem['modelCount']), 
+                                    enable:dItem['enable'] == 'N'? 'disabled' : '',
+                                }
+                            });
 
                             html = vcui.template(colorChipTmpl,{
                                 filterId : item['filterId'],
@@ -254,6 +236,16 @@ $(function () {
                             });
 
                         }else{
+
+                            var dArr = vcui.array.map(item.data, function(dItem, idx){
+                                return {
+                                    title:dItem['filterValueName'], 
+                                    filterName : dItem['filterValueName'],
+                                    value:dItem['filterValueId'], 
+                                    modelCount:String(dItem['modelCount']), 
+                                    enable:dItem['enable'] == 'N'? 'disabled' : '',
+                                }
+                            });
     
                             html = vcui.template(checkboxTmpl,{
                                 filterId : item['filterId'],
@@ -275,12 +267,15 @@ $(function () {
 
                 $('.ui_filter_slider').on('rangesliderinit rangesliderchanged', function (e, data) {
                     
+
                     $(e.currentTarget).siblings('.min').text(data.minValue);
                     $(e.currentTarget).siblings('.max').text(data.maxValue);
 
-                    // var id = $(e.currentTarget).data('id');
-                    // console.log(id);
-                    // setSliderData(id, data);
+                    if(e.type=='rangesliderchanged'){
+                        var filterId = $(e.currentTarget).data('filterId');
+                        setSliderData(filterId, data);
+                    }
+                    
 
     
                 }).vcRangeSlider({mode:true});
@@ -289,10 +284,31 @@ $(function () {
                 $('.ui_filter_accordion').on('accordionexpand', function(e,data){
 
                     if(data.content.find('.ui_filter_slider')) {
-                        data.content.find('.ui_filter_slider').vcRangeSlider('update');
+                        data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
                     }   
 
                 }).vcAccordion();
+
+                
+                $('.ui_filter_accordion').on('change', 'input[type="checkbox"]', function(e){
+
+                    var name = e.target.name;
+                    var valueStr = "";
+                    $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
+                        valueStr = valueStr + item.value+','
+                    });
+                    valueStr = valueStr.replace(/,$/,'');
+                    
+                    if(valueStr==''){
+                        delete storageFilters[name];
+                        Storage.remove(storageName, name);
+                    }else{
+                        storageFilters[name] = valueStr;
+                        Storage.set(storageName, storageFilters);
+                    }
+                    setApplyFilter(storageFilters);
+                });
+
 
 
             }
