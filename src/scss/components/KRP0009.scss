@@ -72,8 +72,8 @@ $color: (type01, type02, type03);
     }
 
     .plp-list-wrap {
-        //max-width:1284px + (54px * 2);
-        max-width:960px;
+        max-width:1284px + (54px * 2);
+        // max-width:960px;
         margin:0 auto;
         padding: 0 54px;
         @include clearfix;
@@ -266,8 +266,8 @@ $color: (type01, type02, type03);
 
         .product-items-wrap {
             float: left;
-            //max-width: (420px * 3) + 24px;
-            max-width:960px;
+            max-width: (420px * 3) + 24px;
+            // max-width:960px;
             margin: 0 auto;
             .items-list {
                 @include clearfix;
