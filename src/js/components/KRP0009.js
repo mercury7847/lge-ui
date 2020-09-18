@@ -93,9 +93,9 @@ $(function () {
 
             function setApplyFilter(obj){		
 
-                console.log(obj);
+                // console.log(obj);
 
-                requestData(obj);
+                requestData(obj, 1);
                 return;
                 
                 //$('.apply_filters').empty();
@@ -152,7 +152,7 @@ $(function () {
             }
 
             var sliderTmpl = 
-            '<li><div class="head">'+
+            '<li data-id={{filterId}}><div class="head">'+
                 '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
                     '<div class="tit">{{title}}</div>'+
                     '<span class="blind ui_accord_text">내용 열기</span>'+
@@ -163,36 +163,58 @@ $(function () {
             '</div></div></li>';
 
             var checkboxTmpl = 
-            '<li><div class="head">'+
+            '<li data-id={{filterId}}><div class="head">'+
                 '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
                     '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span>{{count}}</span></div>'+
                     '<span class="blind ui_accord_text">내용 열기</span>'+
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
                 '{{#each (item, index) in list}}'+
-                '<div class="chk-wrap"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{filterId}}_chk_{{index+1}}" {{item.enable}}><label for="{{filterId}}_chk_{{index+1}}">{{item.title}} ({{item.modelCount}})</label></div>'+
+                '<div class="chk-wrap"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}} ({{item.modelCount}})</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
 
             var colorChipTmpl = 
-            '<li><div class="head">'+
+            '<li data-id={{filterId}}><div class="head">'+
                 '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
                     '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span>{{count}}</span></div>'+
                     '<span class="blind ui_accord_text">내용 열기</span>'+
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
                 '{{#each (item, index) in list}}'+
-                '<div class="chk-wrap-colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{filterId}}_chk_{{index+1}}" {{item.enable}}><label for="{{filterId}}_chk_{{index+1}}">{{item.title}} ({{item.modelCount}})</label></div>'+
+                '<div class="chk-wrap-colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}} ({{item.modelCount}})</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
 
+            var isRender = false;
+
+            function update(arr){
+
+                for(var i=0; i<arr.length; i++){
+
+                    var item = arr[i];
+                    var itemArr = item.data;
+                    var $parent = $('[data-id="'+ item['filterId'] +'"]');
+
+                    for(var j=0; j<itemArr.length; j++){
+                        $parent.find('input[value="'+ itemArr[j]['filterValueId']+'"]').prop('disabled', itemArr[j]['enable']=='N');
+                        $parent.find('label[for="'+ itemArr[j]['filterValueId']+'"]').text(itemArr[j]['filterValueName'] +' ('+ itemArr[j]['modelCount']+')');
+                    }
+
+                }
+            }
+
 
             function render(arr){
+
+                if(isRender) {
+                    update(arr);
+                    return;
+                }
            
                 for(var i=0; i<arr.length; i++){
 
                     var item = arr[i];
-
 
                     if(item.filterTypeCode=='00'){
 
@@ -211,8 +233,8 @@ $(function () {
                             input : ',',
                             range : rStr,
                             roundUnit : 1,
-                            
                         });
+                        
                     }else{
 
 
@@ -255,36 +277,32 @@ $(function () {
                                 count : '',//item['modelCount'],
                                 list : dArr
                             });
-
                         }
-                        
 
                     }
 
                     $('.ui_filter_accordion ul').append(html);
+                    isRender = true;
 
                 }
 
-                
-                $('.ui_filter_slider').vcRangeSlider({mode:true});
+                $('.ui_filter_slider').on('rangesliderinit rangesliderchanged',function (e, data) {
+
+                    $(e.currentTarget).siblings('.min').text(data.minValue);
+                    $(e.currentTarget).siblings('.max').text(data.maxValue);
+
+                    if(e.type=='rangesliderchanged'){
+                        var filterId = $(e.currentTarget).data('filterId');
+                        setSliderData(filterId, data);
+                    }
+    
+                }).vcRangeSlider({mode:true});
+
                 $('.ui_order_accordion').vcAccordion();
                 $('.ui_filter_accordion').vcAccordion();
 
 
             }
-
-            
-            $('.ui_filter_slider').on('rangesliderinit rangesliderchanged', function (e, data) {
-
-                $(e.currentTarget).siblings('.min').text(data.minValue);
-                $(e.currentTarget).siblings('.max').text(data.maxValue);
-
-                if(e.type=='rangesliderchanged'){
-                    var filterId = $(e.currentTarget).data('filterId');
-                    setSliderData(filterId, data);
-                }
-
-            })
 
             $('.ui_filter_accordion').on('accordionexpand', function(e,data){
 
@@ -314,19 +332,36 @@ $(function () {
                 setApplyFilter(storageFilters);
             });
 
+            /*
             _$(window).on('resizeend', function(e){
 
-                //console.log(data.name);
-                //_$('#modal-filter-list').append($('.plp-filter-wrap'));
+                if(_$(window).width() > 1780){
+
+                    _$('.ui_modal_container').vcModal('close'); 
+
+                    var ck = _$('#filterWrap').find('.plp-filter-wrap');
+                    if(ck.length==0){
+                        _$('#filterWrap').append(_$('.plp-filter-wrap'));
+                    }
+                   
+                }else{
+                    var ck = _$('#modalFilterList').find('.plp-filter-wrap');
+                    if(ck.length==0){
+                        _$('#modalFilterList').append(_$('.plp-filter-wrap'));
+                    }
+                }
+
             });
 
+            _$(window).trigger('resizeend');
+            */
 
 
 
+            function requestData(obj, idx){
 
-            function requestData(obj){
-
-                var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList1.json';
+                var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList'+ idx +'.json';
+                console.log(ajaxUrl);
 
                 _$.ajax({
                     type : "POST",
@@ -436,7 +471,7 @@ $(function () {
 
             //setApplyFilter(storageFilters);
 
-            requestData(Storage.get(storageName));
+            requestData(Storage.get(storageName), 0);
             
 
         });           
