@@ -260,7 +260,7 @@
                     text-align:left;
                 }
                 dt {
-                    color:#111;
+                    color:$color-1;
                     @include mobile {
                         display:inline-block;
                         width:50%;
@@ -330,7 +330,7 @@
                     }
                     dd {
                         margin-left:135px;
-                        color:#111;
+                        color:$color-1;
                         @include mobile {
                             margin-left:80px;
                         }
@@ -368,7 +368,7 @@
                     position:relative;
                     margin-bottom:4px;
                     padding-top:16px;
-                    color:#111;
+                    color:$color-1;
                     font-size:16px;
                     line-height:24px;
                     font-weight:700;
@@ -402,7 +402,7 @@
                 }
                 dd {
                     padding:0 40px;
-                    color:#111;
+                    color:$color-1;
                     font-size:14px;
                     line-height:20px;
                     word-break:keep-all;
@@ -423,6 +423,194 @@
                 dl {
                     height:300px;
                     margin:0 6px;
+                }
+            }
+        }
+    }
+
+    // 알림
+    @mixin nFont {
+        color:$color-1;
+        font-size:14px;
+        line-height:20px;
+    }
+    .notice-contents {
+        width:1066px;
+        margin:0 auto;
+        padding-top:24px;
+        .setting-btns {
+            text-align:right;
+            font-size:0;
+            li {
+                display:inline-block;
+                margin-left:24px;
+                vertical-align:top;
+                &:first-child {
+                    margin-left:0;
+                }
+            }
+        }
+        .notice-list-wrap {
+            margin-top:16px;
+            .notice-lists {
+                position:relative;
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:0px;
+                    bottom:0;
+                    left:23px;
+                    width:2px;
+                    background:#ddd;
+                }
+                .list {
+                    position:relative;
+                    .notice-box {
+                        position:relative;
+                        padding-left:60px;
+                        .icons {
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            width:48px;
+                            height:48px;
+                            border-radius:50%;
+                            background:#fff url('/lg5-common/images/icons/icon-notice.svg') center no-repeat;
+                            font-size:0;
+                            em {
+                                position:absolute;
+                                top:0;
+                                right:0;
+                                width:10px;
+                                height:10px;
+                                border-radius:50%;
+                                background:#F04E3E;
+                            }
+                        }
+                        .date {
+                            margin-bottom:8px;
+                            color:$color-1;
+                            font-size:16px;
+                            line-height:24px;
+                        }
+                        .box {
+                            display:inline-block;
+                            position:relative;
+                            width:auto;
+                            max-width:100%;
+                            padding:40px;
+                            border-radius:4px;
+                            background:#fff;
+                            .tit {
+                                padding-right:16px;
+                                color:$color-1;
+                                font-size:16px;
+                                line-height:24px;
+                                font-weight:700;
+                            }
+                            .desc {
+                                margin-top:4px;
+                                color:$color-1;
+                                font-size:16px;
+                                line-height:24px;
+                            }
+                            .more-view {
+                                margin-top:32px;
+                                padding:24px;
+                                border-radius:8px;
+                                background:#f4f4f4;
+                                .name {
+                                    color:$color-1;
+                                    font-size:14px;
+                                    line-height:20px;
+                                    font-weight:700;
+                                }
+                                .info {
+                                    font-size:0;
+                                    li {
+                                        display:inline-block;
+                                        position:relative;
+                                        margin-right:12px;
+                                        padding-right:13px;
+                                        vertical-align:top;
+                                        &::after {
+                                            content:' ';
+                                            position:absolute;
+                                            top:50%;
+                                            right:0;
+                                            width:1px;
+                                            height:12px;
+                                            margin-top:-6px;
+                                            background:#ddd;
+                                        }
+                                        &:last-child {
+                                            margin-right:0;
+                                            padding-right:0;
+                                            &::after {
+                                                display:none;
+                                            }
+                                        }
+                                        dl {
+                                            white-space:nowrap;
+                                            font-size:0;
+                                            dt, dd {
+                                                display:inline-block;
+                                                vertical-align:top;
+                                                @include nFont;
+                                            }
+                                            dt {
+                                                margin-right:2px;
+                                                &::after {
+                                                    content:' :';
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .btns {
+                                    margin-top:20px;
+                                    .btn {
+                                        min-width:auto;
+                                        padding:7px 15px;
+                                        border-color:#EC455A;
+                                        color:#EC455A;
+                                        font-size:14px;
+                                        line-height:20px;
+                                    }
+                                }
+                            }
+                            .bottom-btn {
+                                margin-top:12px;
+                                text-align:right;
+                            }
+                            .btn-del {
+                                position:absolute;
+                                top:24px;
+                                right:24px;
+                                width:32px;
+                                height:32px;
+                                font-size:0;
+                                &::before, &::after {
+                                    content:' ';
+                                    position:absolute;
+                                    top:50%;
+                                    left:50%;
+                                    width:2px;
+                                    height:24px;
+                                    margin-top:-12px;
+                                    margin-left:-1px;
+                                    border-radius:2px;
+                                    background:#222;
+                                }
+                                &::before {
+                                    transform:rotate(45deg);
+                                }
+                                &::after {
+                                    transform:rotate(-45deg);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
