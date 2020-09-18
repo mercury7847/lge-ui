@@ -1,156 +1,158 @@
 <!-- components/partials/KRP0009-fliter.html -->
-<div class="plp-filter-wrap">
-    <div class="btn-reset">
-        <button type="button"><span>초기화</span></button>
-    </div>
-    <div class="list-acco ui_order_accordion" data-accord-group="filter" data-single-open="false" data-open-index="0">
-        <ul>
-            <li>
-                <div class="head">
-                    <a href="#head01" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                        <div class="tit">
-                            정렬기준
-                        </div>
-                        <span class="blind ui_accord_text">내용 열기</span>
-                    </a>
-                </div>
-                <div class="desc ui_accord_content" id="head01">
-                    <div class="cont">
-                        <div class="rdo-wrap">
-                            <input type="radio" name="sorting" id="sort01" value="1">
-                            <label for="sort01">인기순</label>
-                        </div>
-                        <div class="rdo-wrap">
-                            <input type="radio" name="sorting" id="sort02" value="2">
-                            <label for="sort02">최신순</label>
-                        </div>
-                        <div class="rdo-wrap">
-                            <input type="radio" name="sorting" id="sort03" value="3">
-                            <label for="sort03">가격 높은순</label>
-                        </div>
-                        <div class="rdo-wrap">
-                            <input type="radio" name="sorting" id="sort04" value="4">
-                            <label for="sort04">가격 낮은순</label>
-                        </div>
-                        <div class="rdo-wrap">
-                            <input type="radio" name="sorting" id="sort05" value="5">
-                            <label for="sort05">리뷰 많은순</label>
+<div id="filterWrap">
+    <div class="plp-filter-wrap">
+        <div class="btn-reset">
+            <button type="button"><span>초기화</span></button>
+        </div>
+        <div class="list-acco ui_order_accordion" data-accord-group="filter" data-single-open="false" data-open-index="0">
+            <ul>
+                <li>
+                    <div class="head">
+                        <a href="#head01" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                            <div class="tit">
+                                정렬기준
+                            </div>
+                            <span class="blind ui_accord_text">내용 열기</span>
+                        </a>
+                    </div>
+                    <div class="desc ui_accord_content" id="head01">
+                        <div class="cont">
+                            <div class="rdo-wrap">
+                                <input type="radio" name="sorting" id="sort01" value="1">
+                                <label for="sort01">인기순</label>
+                            </div>
+                            <div class="rdo-wrap">
+                                <input type="radio" name="sorting" id="sort02" value="2">
+                                <label for="sort02">최신순</label>
+                            </div>
+                            <div class="rdo-wrap">
+                                <input type="radio" name="sorting" id="sort03" value="3">
+                                <label for="sort03">가격 높은순</label>
+                            </div>
+                            <div class="rdo-wrap">
+                                <input type="radio" name="sorting" id="sort04" value="4">
+                                <label for="sort04">가격 낮은순</label>
+                            </div>
+                            <div class="rdo-wrap">
+                                <input type="radio" name="sorting" id="sort05" value="5">
+                                <label for="sort05">리뷰 많은순</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-        </ul>
-    </div>
+                </li>
+            </ul>
+        </div>
 
-    <!-- 필터항목 -->
-    <div class="list-acco ui_filter_accordion" data-accord-group="filter" data-single-open="false" data-open-index="[0,1]">
-        <ul>
-            <!-- <li>
-                <div class="head">
-                    <a href="#head02" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                        <div class="tit">
-                            판매가
-                        </div>
-                        <span class="blind ui_accord_text">내용 열기</span>
-                    </a>
-                </div>
-                <div class="desc ui_accord_content" id="head02">
-                    <div class="cont">
-                        <div class="range-wrap">
-                            <div class="ui_desc" data-input="1000000,8000000" data-range="0,10000000" data-min-label="minLabel" data-max-label="maxLabel"></div>
-                            <p class="min"></p>
-                            <p class="max"></p>
+        <!-- 필터항목 -->
+        <div class="list-acco ui_filter_accordion" data-accord-group="filter" data-single-open="false" data-open-index="[0,1]">
+            <ul>
+                <!-- <li>
+                    <div class="head">
+                        <a href="#head02" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                            <div class="tit">
+                                판매가
+                            </div>
+                            <span class="blind ui_accord_text">내용 열기</span>
+                        </a>
+                    </div>
+                    <div class="desc ui_accord_content" id="head02">
+                        <div class="cont">
+                            <div class="range-wrap">
+                                <div class="ui_desc" data-input="1000000,8000000" data-range="0,10000000" data-min-label="minLabel" data-max-label="maxLabel"></div>
+                                <p class="min"></p>
+                                <p class="max"></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-            <li>
-                <div class="head">
-                    <a href="#head03" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                        <div class="tit">
-                            서비스 구분
-                        </div>
-                        <span class="blind ui_accord_text">내용 열기</span>
-                    </a>
-                </div>
-                <div class="desc ui_accord_content" id="head03">
-                    <div class="cont">
-                        <div class="rdo-wrap">
-                            <input type="radio" id="rdo01" name="opt" checked>
-                            <label for="rdo01">전체</label>
-                        </div>
-                        <div class="rdo-wrap">
-                            <input type="radio" id="rdo02" name="opt">
-                            <label for="rdo02">일반제품</label>
-                        </div>
-                        <div class="rdo-wrap">
-                            <input type="radio" id="rdo03" name="opt" disabled>
-                            <label for="rdo03">케어십 가능 제품</label>
+                </li>
+                <li>
+                    <div class="head">
+                        <a href="#head03" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                            <div class="tit">
+                                서비스 구분
+                            </div>
+                            <span class="blind ui_accord_text">내용 열기</span>
+                        </a>
+                    </div>
+                    <div class="desc ui_accord_content" id="head03">
+                        <div class="cont">
+                            <div class="rdo-wrap">
+                                <input type="radio" id="rdo01" name="opt" checked>
+                                <label for="rdo01">전체</label>
+                            </div>
+                            <div class="rdo-wrap">
+                                <input type="radio" id="rdo02" name="opt">
+                                <label for="rdo02">일반제품</label>
+                            </div>
+                            <div class="rdo-wrap">
+                                <input type="radio" id="rdo03" name="opt" disabled>
+                                <label for="rdo03">케어십 가능 제품</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-            <li>
-                <div class="head">
-                    <a href="#head04" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                        <div class="tit">색상
-                            <span class="sel_num">
-                                <span class="blind">총 선택 갯수</span>(1)
-                            </span>
-                        </div>
-                        <span class="blind ui_accord_text">내용 열기</span>
-                    </a>
-                </div>
-                <div class="desc ui_accord_content" id="head04">
-                    <div class="cont">
-                        <div class="chk-wrap-colorchip stainless-steel">
-                            <input type="checkbox" id="color01" checked>
-                            <label for="color01">샤이니 유니버스</label>
-                        </div>
-                        <div class="chk-wrap-colorchip Black-Stainless-Steel">
-                            <input type="checkbox" id="color02">
-                            <label for="color02">샤이니 퓨어</label>
-                        </div>
-                        <div class="chk-wrap-colorchip MC_K62_SkyBlue">
-                            <input type="checkbox" id="color03" disabled>
-                            <label for="color03">맨하튼 미드나잇</label>
+                </li>
+                <li>
+                    <div class="head">
+                        <a href="#head04" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                            <div class="tit">색상
+                                <span class="sel_num">
+                                    <span class="blind">총 선택 갯수</span>(1)
+                                </span>
+                            </div>
+                            <span class="blind ui_accord_text">내용 열기</span>
+                        </a>
+                    </div>
+                    <div class="desc ui_accord_content" id="head04">
+                        <div class="cont">
+                            <div class="chk-wrap-colorchip stainless-steel">
+                                <input type="checkbox" id="color01" checked>
+                                <label for="color01">샤이니 유니버스</label>
+                            </div>
+                            <div class="chk-wrap-colorchip Black-Stainless-Steel">
+                                <input type="checkbox" id="color02">
+                                <label for="color02">샤이니 퓨어</label>
+                            </div>
+                            <div class="chk-wrap-colorchip MC_K62_SkyBlue">
+                                <input type="checkbox" id="color03" disabled>
+                                <label for="color03">맨하튼 미드나잇</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-            <li>
-                <div class="head">
-                    <a href="#head05" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                        <div class="tit">도어재질
-                            <span class="sel_num">
-                                <span class="blind">총 선택 갯수</span>(2)
-                            </span>
-                        </div>
-                        <span class="blind ui_accord_text">내용 열기</span>
-                    </a>
-                </div>
-                <div class="desc ui_accord_content" id="head05">
-                    <div class="cont">
-                        <div class="chk-wrap">
-                            <input type="checkbox" id="chk01" checked>
-                            <label for="chk01">리얼 스테인리스</label>
-                        </div>
-                        <div class="chk-wrap">
-                            <input type="checkbox" id="chk02"  checked>
-                            <label for="chk02">일반 메탈</label>
-                        </div>
-                        <div class="chk-wrap">
-                            <input type="checkbox" id="chk03" disabled>
-                            <label for="chk03">스테인리스</label>
+                </li>
+                <li>
+                    <div class="head">
+                        <a href="#head05" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                            <div class="tit">도어재질
+                                <span class="sel_num">
+                                    <span class="blind">총 선택 갯수</span>(2)
+                                </span>
+                            </div>
+                            <span class="blind ui_accord_text">내용 열기</span>
+                        </a>
+                    </div>
+                    <div class="desc ui_accord_content" id="head05">
+                        <div class="cont">
+                            <div class="chk-wrap">
+                                <input type="checkbox" id="chk01" checked>
+                                <label for="chk01">리얼 스테인리스</label>
+                            </div>
+                            <div class="chk-wrap">
+                                <input type="checkbox" id="chk02"  checked>
+                                <label for="chk02">일반 메탈</label>
+                            </div>
+                            <div class="chk-wrap">
+                                <input type="checkbox" id="chk03" disabled>
+                                <label for="chk03">스테인리스</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-        -->
-        </ul>
-    </div>
+                </li>
+            -->
+            </ul>
+        </div>
 
-    <div class="btn-visit">
-        <a href="#n" class="btn-text">매장 방문 예약</a>
+        <div class="btn-visit">
+            <a href="#n" class="btn-text">매장 방문 예약</a>
+        </div>
     </div>
 </div>
