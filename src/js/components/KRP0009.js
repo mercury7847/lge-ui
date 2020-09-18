@@ -3,9 +3,8 @@ $(function () {
 
     ;(function($, _$){   
         
-        vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion', 'ui/dropdown'], function () {
+        vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
 
-            $('.ui_order_dropdown').vcDropdown();
 
             // local storage 
             var Storage = {
@@ -159,7 +158,7 @@ $(function () {
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
                     '<div data-filter-id={{filterId}} class="ui_filter_slider {{uiName}}" data-input={{input}} data-range="{{range}}" data-min-label="minLabel" data-max-label="maxLabel"></div>'+
-                    '<p class="min"></p><p class="max"></p>'+
+                    '<p class="min range-num"></p><p class="max range-num"></p>'+
             '</div></div></li>';
 
             var checkboxTmpl = 
@@ -234,7 +233,7 @@ $(function () {
                             range : rStr,
                             roundUnit : 1,
                         });
-                        
+
                     }else{
 
 
