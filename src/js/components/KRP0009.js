@@ -57,6 +57,8 @@ $(function () {
             Storage.set(storageNameExpire, {'expireDate' : new Date().getTime() + (10*1000)});	//24*3600000 // 10초로 테스트중 만료일 설정 
             var storageFilters = Storage.get(storageName);	
 
+            console.log(storageFilters);
+
 
             //
 
@@ -66,13 +68,8 @@ $(function () {
 
            
 
-            $('.apply_filters').on('click', 'a', function(e){
-                e.preventDefault();
-                var id = $(e.currentTarget).parent().data('id');
-                reset(id);
-            });
 
-            $('#clearFilterBtn').on('click', function(){
+            $('#filterResetBtn').on('click', function(){
                 reset();
             })
 
@@ -92,37 +89,23 @@ $(function () {
 
             function setApplyFilter(obj){		
 
-                // console.log(obj);
 
-                requestData(obj, 1);
-                return;
-                
-                //$('.apply_filters').empty();
-                //var tmpl='<div data-filter-id="{{key}}">{{txt}} <a href="#">X</a></div>';
-                var htmlStr = "";
-                var txt = "";
 
                 for(var key in obj){		
-                    $('input[type="checkbox"][id="'+ key +'"]').prop('checked', true);
 
-                    if($('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
-                        $('[data-filter-id="'+ key +'"]').vcRangeSlider('option',{input:obj[key]}).vcRangeSlider('reset', false);
+                    var $parent = $('[data-id="'+ key +'"]');
 
-                        txt = obj[key] && obj[key].replace(',',' - ');
-                        htmlStr = vcui.template(tmpl, { key:key,txt:key+' : '+txt});
-                    }else{
-                        //txt = $('input[type="checkbox"][id="'+ key +'"]').parent().text();
-                        //htmlStr = vcui.template(tmpl, { key : key,txt : txt});
+                    var values = obj[key].split(',');
+                    for(var i=0; i<values.length; i++){
+                        $parent.find('input[id="'+ values[i] +'"]').prop('checked', true);
                     }
 
-                    var $target = $('.apply_filters').find('[data-filter-id="'+ key +'"]');
-                    if($target.length > 0){
-                        $target.html(htmlStr);
-                    }else{
-                        $('.apply_filters').append(htmlStr);
-                    }							
+                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                        $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('option',{input:obj[key]}).vcRangeSlider('reset', false);
+                    }
+						
                 }
-                requestData(obj);
+                requestData(obj,1);
             }
             
 
@@ -130,13 +113,14 @@ $(function () {
 
                 var obj = Storage.get(storageName);	
                 for(var key in obj){
-                    if(!id || id==key){						
-                        $('input[type="checkbox"][id="'+key+'"]').prop('checked', false);
-                        var $target = $('.apply_filters').find('[data-id="'+ key +'"]');
-                        if($target.length > 0) $target.remove();
+                    if(!id || id==key){		
                         
-                        if($('[data-id="'+ key +'"]').data('ui_rangeSlider')){
-                            $('[data-id="'+ key +'"]').vcRangeSlider('option',{input:null}).vcRangeSlider('reset', false);
+                        var $parent = $('[data-id="'+ key +'"]');
+                        $parent.find('input[name="'+key+'"]').prop('checked', false);
+                        
+                        if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                            //console.log($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider'));
+                            $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('option',{input:null}).vcRangeSlider('reset', false);
                         }
                     }
                 }
@@ -147,7 +131,7 @@ $(function () {
                     delete storageFilters[id];
                     Storage.remove(storageName, id);
                 }					
-                requestData(Storage.get(storageName));
+                //requestData(Storage.get(storageName));
             }
 
             var sliderTmpl = 
