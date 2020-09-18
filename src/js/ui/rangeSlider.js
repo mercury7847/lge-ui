@@ -122,7 +122,6 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
                     self.rangeWidth = self.$el.width() - self.btnSize;
                 }
                
-                
 
                 var wd = (self.maxValue - self.minValue) / self.rangeWidth * self.btnSize; 
                 self.minValue = self.minValue - wd;
