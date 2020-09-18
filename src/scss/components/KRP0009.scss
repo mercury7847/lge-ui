@@ -70,89 +70,164 @@
     .plp-list-wrap {
         max-width:1284px + (54px * 2);
         margin:0 auto;
-        padding: 0 54px;
+        padding: 0 54px 82px;
         @include clearfix;
 
         @include mobile {
             max-width: 100%;
-            padding: 0 20px;
+            padding: 0 20px 50px;
 
         }
 
-        .filter-wrap {
+        .lay-filter {
             float:left;
             width:200px;
-             margin-left:-224px;
-
-            .btn-reset {
-                margin:23px 0 12px;
-                text-align:center;
-                button {
-                    padding:0 16px;
-                    color:#616161;
-                    font-size:14px;
-                    line-height:36px;
-                    border:1px solid #979797;
-                    border-radius:8px;
-                    span {
-                        position:relative;
-                        padding-right:20px;
-                        &:after {
-                            content:'';
-                            display:block;
-                            position:absolute;
-                            top:50%;
-                            right:0;
-                            width:16px;
-                            height:16px;
-                            margin-top:-8px;
-                            background:url('/lg5-common/images/KRP0009/icon-reset.svg') no-repeat;
-                        }
-                    }
+            margin-left:-224px;
+            @media screen and (max-width: 1780px) {
+                display:none;
+                position:fixed;
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+                width:100%;
+                height:100%;
+                margin:0;
+                backface-visibility:hidden;
+                transform:translateZ(0);
+                z-index:9000;
+                background:#fff;
+                overflow: hidden;
+            }
+        
+            .lay-fliter-con {
+                @media screen and (max-width: 1780px) {
+                    position:absolute;
+                    top:0;
+                    width:100%;
+                    height:100%;
+                    overflow-y:auto;
+                    z-index:9000;
                 }
             }
-
-            .list-acco {
-                ul {
-                    li {
-                        background-color:#fff;
-                        border-radius:4px;
-                        margin-top:2px;
-                        overflow:hidden;
-                        .head {
+            .fiter-head {
+                position:relative; 
+                width:auto;
+                text-align:center;
+                height:75px;
+                border-bottom:1px solid #ededed;
+                z-index:20;
+                .tit {
+                    font-size:18px;
+                    padding-top:24px; 
+                    line-height:27px; 
+                    font-weight:700;
+                    font-weight:700;
+                }
+                @media screen and (min-width: 1780px) {
+                    display:none;
+                }
+            }
+        
+            .plp-filter-wrap {
+                @media screen and (max-width: 1780px) {
+                    padding:40px 20px 115px;
+                }
+            
+                .btn-reset {
+                    margin:23px 0 12px;
+                    text-align:center;
+                    button {
+                        padding:0 16px;
+                        color:#616161;
+                        font-size:14px;
+                        line-height:36px;
+                        border:1px solid #979797;
+                        border-radius:8px;
+                        span {
                             position:relative;
-                            .link-acco {
+                            padding-right:20px;
+                            &:after {
+                                content:'';
                                 display:block;
-                                padding:0 45px 0 20px;
-                                &:before {
-                                    content:'';
-                                    display:block;
-                                    position:absolute;
-                                    top:24px;
-                                    right:16px;
-                                    width:24px;
-                                    height:24px;
-                                    background:url('/lg5-common/images/KRP0009/icon-acco-off.svg') no-repeat;
-                                }
-                            }
-                            .tit {
-                                display:block; 
-                                padding:24px 0 32px;  
-                                color:#222;
-                                font-size:16px;
-                                line-height:24px;
-                                font-weight:500; 
-                                word-break:break-all;
-                                span {
-                                    word-break:break-all;
-                                }
+                                position:absolute;
+                                top:50%;
+                                right:0;
+                                width:16px;
+                                height:16px;
+                                margin-top:-8px;
+                                background:url('/lg5-common/images/KRP0009/icon-reset.svg') no-repeat;
                             }
                         }
-                        .desc {
-                            display:none; 
-                            margin-top:-12px;
-                            padding:0 20px 32px;
-
+                    }
+                    @media screen and (max-width: 1780px) {
+                        display:none;
+                    }
+                }
+            
+                .list-acco {
+                    ul {
+                        li {
+                            background-color:#fff;
+                            border-radius:4px;
+                            margin-top:2px;
+                            overflow:hidden;
+                            @media screen and (max-width: 1780px) {
+                                margin:0;
+                                border-radius:inherit;
+                            }
+                            .head {
+                                position:relative;
+                                @media screen and (max-width: 1780px) {
+                                    border-bottom:1px solid #ededed;
+                                }
+                                .link-acco {
+                                    display:block;
+                                    padding:0 45px 0 20px;
+                                    @media screen and (max-width: 1780px) {
+                                        display:block;
+                                        padding:0 45px 0 20px;
+                                    }
+                                    &:before {
+                                        content:'';
+                                        display:block;
+                                        position:absolute;
+                                        top:24px;
+                                        right:16px;
+                                        width:24px;
+                                        height:24px;
+                                        background:url('/lg5-common/images/KRP0009/icon-acco-off.svg') no-repeat;
+                                        @media screen and (max-width: 1780px) {
+                                            top:32px;
+                                            right:0;
+                                        }
+                                    }
+                                }
+                                .tit {
+                                    display:block;
+                                    padding:24px 0 32px;
+                                    color:#222;
+                                    font-size:16px;
+                                    line-height:24px;
+                                    font-weight:500;
+                                    word-break:break-all;
+                                    span {
+                                        word-break:break-all;
+                                    }
+                                    @media screen and (max-width: 1780px) {
+                                        padding:32px 0 16px;
+                                    }
+                                }
+                            }
+                            .desc {
+                                display:none;
+                                margin-top:-12px;
+                                padding:0 20px 32px;
+                                @media screen and (max-width: 1780px) {
+                                    margin:0;
+                                    padding:20px 8px 32px;
+                                }
+                            }
                             .cont {
                                 position:relative;
                                 word-break:break-all;
@@ -160,25 +235,37 @@
                                 p {
                                     word-break:break-all;
                                 }
-    
+
                                 .range-wrap {
                                     font-size:0;
-                                    p {
+                                    .range-num {
                                         display:inline-block;
                                         width:50%;
                                         vertical-align:middle;
-                                    }
-                                    &.max {
-                                        text-align:right;
+                                        text-align:left;
+                                        color:#222;
+                                        font-size:14px;
+                                        line-height:20px;
+                                        &.max {
+                                            text-align:right;
+                                        }
                                     }
                                 }
-    
+                                
+                                .rdo-wrap,
+                                    .chk-wrap,
+                                        .chk-wrap-colorchip {
+                                            display:block;
+                                            margin-top:16px;
+                                            &:first-child {
+                                                margin-top:0;
+                                            }
+                                            & input + label {
+                                                word-break:break-all;
+                                            }
+                                        }
+            
                                 .rdo-wrap {
-                                    display:block;
-                                    margin-top:16px;
-                                    &:first-child {
-                                        margin-top:0;
-                                    }
                                     & input + label {
                                         &:before {
                                             border-color:#979797;
@@ -212,14 +299,8 @@
                                         }
                                     }
                                 }
-                                
-                                .chk-wrap {
-                                    display:block;
-                                    margin-top:16px;
-                                    &:first-child {
-                                        margin-top:0;
-                                    }
-    
+            
+                                .chk-wrap-colorchip {
                                     & input:disabled + label {
                                         color:#adadad;
                                         &:before {
@@ -229,20 +310,100 @@
                                     }
                                 }
                             }
-                        }
-                        
-                        &.on .head a:before {
-                            background:url('/lg5-common/images/KRP0009/icon-acco-on.svg') no-repeat;
+                            &.on .head a:before {
+                                background:url('/lg5-common/images/KRP0009/icon-acco-on.svg') no-repeat;
+                            }
                         }
                     }
+            
                 }
-                
+            
+                .btn-visit {
+                    margin-top:16px;
+                    text-align:center;
+                    .btn-text {
+                        text-decoration:underline;
+                    }
+                    @media screen and (max-width: 1780px) {
+                        display:none;
+                    }
+                }
+        
+                .filter-btn-wrap {
+                    position:fixed;
+                    left:0;
+                    bottom:0;
+                    width:100%;
+                    padding:0;
+                    text-align:center;
+                    font-size:0;
+                    .btn {
+                        display:inline-block;
+                        width:50% !important;
+                        vertical-align:middle;
+                        height:59px;
+                        width:100%;
+                        color:#fff;
+                        font-size:16px;
+                        font-weight:500;
+                        background-color: #EC455A;
+                        border-radius:0;
+                        @include mobile {
+                            width:100%;
+                            height:48px;
+                            font-size:14px;
+                            border-radius:0;
+                        }
+                        &:first-child {
+                            background:#ededed;
+                            color:#EC455A;
+                        }
+                    }
+                    @media screen and (min-width: 1780px) {
+                        display:none;
+                    }
+                }
+        
+                .filter-close {
+                    position:absolute;
+                    top:24px;
+                    right:24px;
+                    width:24px;
+                    height:24px;
+                    z-index:20;
+                    .btn-close {
+                        position:relative;
+                        width:24px;
+                        height:24px;
+                        &:before {
+                            content: '';
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            margin:3.25px 0 0 11.25px;
+                            height: 18px;
+                            border:solid #222;
+                            border-width: 0 1.5px 0px 0;
+                            transform: rotate(45deg);
+                        }
+                        &:after {
+                            content: '';
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            height: 18px;
+                            margin:3.25px 0 0 11.25px;
+                            border:solid #222;
+                            border-width: 0 1.5px 0px 0;
+                            transform: rotate(-45deg);
+                        }
+                    }
+                    @media screen and (min-width: 1780px) {
+                        display:none;
+                    }
+                }
             }
-
-            .btn-wrap {
-                margin-top:16px;
-                text-align:center;
-            }
+            
         }
 
         .product-items-wrap {
@@ -503,12 +664,15 @@
             .product-contents {
                 position: relative;
             }
-            .color-option {
+            .option-color {
                 position: absolute;
-                top: -32px;
+                top: -38px;
                 left: 0;
                 width: 100%;
                 text-align: center;
+                .color-list {
+                    font-size: 0;
+                }
             }
             .badge-product {
                 margin-bottom: 8px;
@@ -810,197 +974,3 @@
     }
 }
 
-.plp-filter-wrap {
-    float:left;
-    width:200px;
-    margin-left:-224px;
-
-    .btn-reset {
-        margin:23px 0 12px;
-        text-align:center;
-        button {
-            padding:0 16px;
-            color:#616161;
-            font-size:14px;
-            line-height:36px;
-            border:1px solid #979797;
-            border-radius:8px;
-            span {
-                position:relative;
-                padding-right:20px;
-                &:after {
-                    content:'';
-                    display:block;
-                    position:absolute;
-                    top:50%;
-                    right:0;
-                    width:16px;
-                    height:16px;
-                    margin-top:-8px;
-                    background:url('/lg5-common/images/KRP0009/icon-reset.svg') no-repeat;
-                }
-            }
-        }
-    }
-
-    .list-acco {
-        ul {
-            li {
-                background-color:#fff;
-                border-radius:4px;
-                margin-top:2px;
-                overflow:hidden;
-                .head {
-                    position:relative;
-                    .link-acco {
-                        display:block;
-                        padding:0 45px 0 20px;
-                        &:before {
-                            content:'';
-                            display:block;
-                            position:absolute;
-                            top:24px;
-                            right:16px;
-                            width:24px;
-                            height:24px;
-                            background:url('/lg5-common/images/KRP0009/icon-acco-off.svg') no-repeat;
-                        }
-                    }
-                    .tit {
-                        display:block;
-                        padding:24px 0 32px;
-                        color:#222;
-                        font-size:16px;
-                        line-height:24px;
-                        font-weight:500;
-                        word-break:break-all;
-                        span {
-                            word-break:break-all;
-                        }
-                    }
-                }
-                .desc {
-                    display:none;
-                    margin-top:-12px;
-                    padding:0 20px 32px;
-                }
-                .cont {
-                    position:relative;
-                    word-break:break-all;
-                    z-index:1;
-                    p {
-                        word-break:break-all;
-                    }
-
-                    .rdo_wrap,
-                        .chk-wrap,
-                            .chk-wrap-colorchip {
-                                display:block;
-                                margin-top:16px;
-                                &:first-child {
-                                    margin-top:0;
-                                }
-                                & input + label {
-                                    word-break:break-all;
-                                }
-                            }
-
-                    .rdo-wrap {
-                        & input + label {
-                            &:before {
-                                border-color:#979797;
-                            }
-                            &:after {
-                                display:none;
-                            }
-                        }
-                        & input:checked + label {
-                            &:before {
-                                border-color:#EC455A;
-                                background:#fff;
-                            }
-                            &:after {
-                                display:block;
-                                top:4px;
-                                left:4px;
-                                width:16px;
-                                height:16px;
-                                background:#EC455A;
-                                border-radius:50%;
-                                transform:inherit;
-                                border:0;
-                            }
-                        }
-                        & input:disabled + label {
-                            color:#adadad;
-                            &:before {
-                                border-color:#ccc;
-                                background:#f4f4f4;
-                            }
-                        }
-                    }
-
-                    .chk-wrap-colorchip {
-                        & input:disabled + label {
-                            color:#adadad;
-                            &:before {
-                                border-color:#ccc;
-                                background:#f4f4f4;
-                            }
-                        }
-                    }
-                }
-                &.on .head a:before {
-                    background:url('/lg5-common/images/KRP0009/icon-acco-on.svg') no-repeat;
-                }
-            }
-        }
-
-    }
-
-    .btn-visit {
-        margin-top:16px;
-        text-align:center;
-        .btn-text {
-            text-decoration:underline;
-        }
-    }  
-}
-
-.lay-wrap {
-    .plp-filter-wrap {
-        float:none;
-        display:block;
-        width:100%;
-        margin:0;
-        .btn-reset, .btn-visit {
-            display:none;
-        }
-        .list-acco {
-            ul {
-                li {
-                    margin:0;
-                    border-radius:inherit;
-                    .head {
-                        border-bottom:1px solid #ededed;
-                        .link-acco {
-                            display:block;
-                            padding:0 45px 0 20px;
-                            &:before {
-                                top:32px;
-                                right:0;
-                            }
-                        }
-                        .tit {
-                            padding:32px 0 16px;
-                        }
-                    }
-                    .desc {
-                        margin:0;
-                        padding:20px 8px 32px;
-                    }
-                }
-            }
-        }
-    }
-}

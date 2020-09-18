@@ -3,9 +3,8 @@ $(function () {
 
     ;(function($, _$){   
         
-        vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion', 'ui/dropdown'], function () {
+        vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
 
-            $('.ui_order_dropdown').vcDropdown();
 
             // local storage 
             var Storage = {
@@ -58,22 +57,11 @@ $(function () {
             Storage.set(storageNameExpire, {'expireDate' : new Date().getTime() + (10*1000)});	//24*3600000 // 10초로 테스트중 만료일 설정 
             var storageFilters = Storage.get(storageName);	
 
-
-            //
-
-            
-            // 이벤트 바인딩
+            console.log(storageFilters);
 
 
-           
 
-            $('.apply_filters').on('click', 'a', function(e){
-                e.preventDefault();
-                var id = $(e.currentTarget).parent().data('id');
-                reset(id);
-            });
-
-            $('#clearFilterBtn').on('click', function(){
+            $('#filterResetBtn').on('click', function(){
                 reset();
             })
 
@@ -93,106 +81,110 @@ $(function () {
 
             function setApplyFilter(obj){		
 
-                console.log(obj);
-
-                requestData(obj);
-                return;
-                
-                //$('.apply_filters').empty();
-                //var tmpl='<div data-filter-id="{{key}}">{{txt}} <a href="#">X</a></div>';
-                var htmlStr = "";
-                var txt = "";
-
                 for(var key in obj){		
-                    $('input[type="checkbox"][id="'+ key +'"]').prop('checked', true);
 
-                    if($('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
-                        $('[data-filter-id="'+ key +'"]').vcRangeSlider('option',{input:obj[key]}).vcRangeSlider('reset', false);
-
-                        txt = obj[key] && obj[key].replace(',',' - ');
-                        htmlStr = vcui.template(tmpl, { key:key,txt:key+' : '+txt});
-                    }else{
-                        //txt = $('input[type="checkbox"][id="'+ key +'"]').parent().text();
-                        //htmlStr = vcui.template(tmpl, { key : key,txt : txt});
+                    var $parent = $('[data-id="'+ key +'"]');
+                    var values = obj[key].split(',');
+                    for(var i=0; i<values.length; i++){
+                        $parent.find('input[id="'+ values[i] +'"]').prop('checked', true);
                     }
 
-                    var $target = $('.apply_filters').find('[data-filter-id="'+ key +'"]');
-                    if($target.length > 0){
-                        $target.html(htmlStr);
-                    }else{
-                        $('.apply_filters').append(htmlStr);
-                    }							
+                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                        $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', obj[key]);
+                    }
+						
                 }
-                requestData(obj);
+                requestData(obj,1);
             }
             
 
             function reset(id){
 
                 var obj = Storage.get(storageName);	
-                for(var key in obj){
-                    if(!id || id==key){						
-                        $('input[type="checkbox"][id="'+key+'"]').prop('checked', false);
-                        var $target = $('.apply_filters').find('[data-id="'+ key +'"]');
-                        if($target.length > 0) $target.remove();
+
+                for(var key in obj){	
                         
-                        if($('[data-id="'+ key +'"]').data('ui_rangeSlider')){
-                            $('[data-id="'+ key +'"]').vcRangeSlider('option',{input:null}).vcRangeSlider('reset', false);
-                        }
+                    var $parent = $('[data-id="'+ key +'"]');
+                    $parent.find('input[name="'+key+'"]').prop('checked', false);
+                    
+                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                       $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', 'Min,Max');
                     }
                 }
-                if(!id){
-                    Storage.remove(storageName);
-                    storageFilters = {};	
-                }else{
-                    delete storageFilters[id];
-                    Storage.remove(storageName, id);
-                }					
-                requestData(Storage.get(storageName));
+
+                var str = obj['sorting'];
+                storageFilters = {sorting : str};
+                Storage.remove(storageName);
+                Storage.set(storageName, storageFilters);	
+                console.log(storageFilters, Storage.get(storageName));
+                				
+                //requestData(Storage.get(storageName));
             }
 
             var sliderTmpl = 
-            '<li><div class="head">'+
+            '<li data-id={{filterId}}><div class="head">'+
                 '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
                     '<div class="tit">{{title}}</div>'+
                     '<span class="blind ui_accord_text">내용 열기</span>'+
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
-                    '<div data-filter-id={{filterId}} class="ui_filter_slider {{uiName}}" data-input={{input}} data-range="{{range}}" data-min-label="minLabel" data-max-label="maxLabel"></div>'+
-                    '<p class="min"></p><p class="max"></p>'+
+                    '<div class="range-wrap"><div data-filter-id={{filterId}} class="ui_filter_slider {{uiName}}" data-input={{input}} data-range="{{range}}" data-min-label="minLabel" data-max-label="maxLabel"></div>'+
+                    '<p class="min range-num"></p><p class="max range-num"></p></div>'+
             '</div></div></li>';
 
             var checkboxTmpl = 
-            '<li><div class="head">'+
+            '<li data-id={{filterId}}><div class="head">'+
                 '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
                     '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span>{{count}}</span></div>'+
                     '<span class="blind ui_accord_text">내용 열기</span>'+
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
                 '{{#each (item, index) in list}}'+
-                '<div class="chk-wrap"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{filterId}}_chk_{{index+1}}" {{item.enable}}><label for="{{filterId}}_chk_{{index+1}}">{{item.title}} ({{item.modelCount}})</label></div>'+
+                '<div class="chk-wrap"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}} ({{item.modelCount}})</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
 
             var colorChipTmpl = 
-            '<li><div class="head">'+
+            '<li data-id={{filterId}}><div class="head">'+
                 '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
                     '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span>{{count}}</span></div>'+
                     '<span class="blind ui_accord_text">내용 열기</span>'+
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
                 '{{#each (item, index) in list}}'+
-                '<div class="chk-wrap-colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{filterId}}_chk_{{index+1}}" {{item.enable}}><label for="{{filterId}}_chk_{{index+1}}">{{item.title}} ({{item.modelCount}})</label></div>'+
+                '<div class="chk-wrap-colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}} ({{item.modelCount}})</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
 
+            var isRender = false;
+
+            function update(arr){
+
+                for(var i=0; i<arr.length; i++){
+
+                    var item = arr[i];
+                    var itemArr = item.data;
+                    var $parent = $('[data-id="'+ item['filterId'] +'"]');
+
+                    for(var j=0; j<itemArr.length; j++){
+                        $parent.find('input[value="'+ itemArr[j]['filterValueId']+'"]').prop('disabled', itemArr[j]['enable']=='N');
+                        $parent.find('label[for="'+ itemArr[j]['filterValueId']+'"]').text(itemArr[j]['filterValueName'] +' ('+ itemArr[j]['modelCount']+')');
+                    }
+
+                }
+            }
+
 
             function render(arr){
+
+                if(isRender) {
+                    update(arr);
+                    return;
+                }
            
                 for(var i=0; i<arr.length; i++){
 
                     var item = arr[i];
-
 
                     if(item.filterTypeCode=='00'){
 
@@ -211,8 +203,8 @@ $(function () {
                             input : ',',
                             range : rStr,
                             roundUnit : 1,
-                            
                         });
+
                     }else{
 
 
@@ -255,36 +247,32 @@ $(function () {
                                 count : '',//item['modelCount'],
                                 list : dArr
                             });
-
                         }
-                        
 
                     }
 
                     $('.ui_filter_accordion ul').append(html);
+                    isRender = true;
 
                 }
 
-                
-                $('.ui_filter_slider').vcRangeSlider({mode:true});
+                $('.ui_filter_slider').on('rangesliderinit rangesliderchanged',function (e, data) {
+
+                    $(e.currentTarget).siblings('.min').text(data.minValue);
+                    $(e.currentTarget).siblings('.max').text(data.maxValue);
+
+                    if(e.type=='rangesliderchanged'){
+                        var filterId = $(e.currentTarget).data('filterId');
+                        setSliderData(filterId, data);
+                    }
+    
+                }).vcRangeSlider({mode:true});
+
                 $('.ui_order_accordion').vcAccordion();
                 $('.ui_filter_accordion').vcAccordion();
 
 
             }
-
-            
-            $('.ui_filter_slider').on('rangesliderinit rangesliderchanged', function (e, data) {
-
-                $(e.currentTarget).siblings('.min').text(data.minValue);
-                $(e.currentTarget).siblings('.max').text(data.maxValue);
-
-                if(e.type=='rangesliderchanged'){
-                    var filterId = $(e.currentTarget).data('filterId');
-                    setSliderData(filterId, data);
-                }
-
-            })
 
             $('.ui_filter_accordion').on('accordionexpand', function(e,data){
 
@@ -314,19 +302,36 @@ $(function () {
                 setApplyFilter(storageFilters);
             });
 
+            /*
             _$(window).on('resizeend', function(e){
 
-                //console.log(data.name);
-                //_$('#modal-filter-list').append($('.plp-filter-wrap'));
+                if(_$(window).width() > 1780){
+
+                    _$('.ui_modal_container').vcModal('close'); 
+
+                    var ck = _$('#filterWrap').find('.plp-filter-wrap');
+                    if(ck.length==0){
+                        _$('#filterWrap').append(_$('.plp-filter-wrap'));
+                    }
+                   
+                }else{
+                    var ck = _$('#modalFilterList').find('.plp-filter-wrap');
+                    if(ck.length==0){
+                        _$('#modalFilterList').append(_$('.plp-filter-wrap'));
+                    }
+                }
+
             });
 
+            _$(window).trigger('resizeend');
+            */
 
 
 
+            function requestData(obj, idx){
 
-            function requestData(obj){
-
-                var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList1.json';
+                var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList'+ idx +'.json';
+                
 
                 _$.ajax({
                     type : "POST",
@@ -436,7 +441,7 @@ $(function () {
 
             //setApplyFilter(storageFilters);
 
-            requestData(Storage.get(storageName));
+            requestData(Storage.get(storageName), 0);
             
 
         });           
