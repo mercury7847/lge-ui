@@ -3,7 +3,9 @@ $(function () {
 
     ;(function($, _$){   
         
-        vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
+        vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion', 'ui/dropdown'], function () {
+
+            $('.ui_order_dropdown').vcDropdown();
 
             // local storage 
             var Storage = {
@@ -314,6 +316,13 @@ $(function () {
                 }
                 setApplyFilter(storageFilters);
             });
+
+            _$(window).on('breakpointchange', function(e){
+
+            });
+
+
+
 
 
             function requestData(obj){
