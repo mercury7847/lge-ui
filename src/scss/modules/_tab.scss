@@ -77,6 +77,21 @@
 
     // H3 
     &.border-type {
-        
+        .tabs {
+            > li {
+                > a {
+                    padding-bottom:4px;
+                    border-bottom:3px solid transparent;
+                    font-size:17px;
+                    @include mobile {
+                        font-size:14px;
+                        line-height:18px;
+                    }
+                }
+                &.on > a {
+                    border-color:#111;
+                }
+            }
+        }
     }
 }
