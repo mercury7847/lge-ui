@@ -709,7 +709,6 @@
                         }
                     }
                     .banner-info {
-                        margin-bottom: 32px;
                         .title {
                             margin-bottom: 16px;
                             font-weight: 700;
@@ -727,6 +726,7 @@
                         }
                     }
                     .banner-button {
+                        margin-top: 32px;
                         .btn {
                             min-width: 124px;
                             border: 1px solid #fff;
@@ -734,11 +734,16 @@
                             color: #fff;
                         }
                     }
+                    @include mobile {
+                        padding: 32px 24px;
+                        .banner-flag,
+                        .banner-button {
+                            display: none;
+                        }
+                    }
                 }
                 &.large {
                     .banner-contents {
-                        .inner {
-                        }
                         .banner-flag {
                             margin-bottom: 8px;
                             .flag {
@@ -747,13 +752,13 @@
                             }
                         }
                         .banner-info {
-                            margin-bottom: 0;
                             .title,
                             .sub-copy {
                                 color: #222;
                             }
                         }
                         .banner-button {
+                            margin-top: 0;
                             .btn {
                                 border-color: #979797;
                                 color: #222;
@@ -803,8 +808,8 @@
                             position: static;
                             width: 100%;
                             padding: 36px 28px;
-                            .banner-button {
-                                display: none;
+                            .banner-flag {
+                                display: block;
                             }
                         }
                     }
