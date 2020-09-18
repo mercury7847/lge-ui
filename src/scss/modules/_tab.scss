@@ -1,12 +1,7 @@
-// tab
-
-
-// btn tab
-
-
-// text tab
+//tab
 .tabs-wrap {
     display:block;
+    text-align:center;
     .tabs {
         display:inline-block;
         max-width:100%;
@@ -15,6 +10,7 @@
         vertical-align:top;
         white-space:nowrap;
         overflow-x:auto;
+        -webkit-overflow-scrolling: touch;
         > li {
             display:inline-block;
             margin-left:24px;
@@ -35,7 +31,12 @@
             }
         }
     }
+    @include mobile {
+        padding:0 20px;
+        text-align:left;
+    }
 
+    // H2
     &.btn-type {
         .tabs {
             display:inline-block;
@@ -58,31 +59,24 @@
                 }
                 &.on > a {
                     color:#111;
+                    font-weight:700;
                     background-color:#f4f4f4;
                 }
             }
-        }
-        @include mobile {
-            text-align:left;
-            .tabs {
-                padding:0 20px;
-                li {
-                    margin-left:16px;
+            @include mobile {
+                >li {
+                    margin-left:0;
                     > a {
-                        padding:16px 0 13px;
-                        border-bottom:3px solid transparent;
-                        border-radius:0;
-                        color:#bcbcbc;
-                        font-size:14px;
-                        line-height:18px;
-                    }
-                    &.on > a {
-                        background:transparent;
-                        border-color:#111;
-                        color:#111;
+                        padding:8px 18px;
+                        border-radius:20px;
                     }
                 }
             }
         }
+    }
+
+    // H3 
+    &.border-type {
+        
     }
 }
