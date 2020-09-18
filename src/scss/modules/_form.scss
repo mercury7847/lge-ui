@@ -458,6 +458,8 @@
 }
 
 .chk-wrap-colorchip {
+    position:relative;
+    display:inline-block;
     input {
         position:absolute;
         overflow:hidden;
