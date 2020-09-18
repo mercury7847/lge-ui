@@ -9,6 +9,15 @@
     @include clearfix;
 
     .cate-wrap {
+
+        @media screen and (max-width: 1780px) {
+            display:none;
+        }
+
+        @media screen and (min-width: 1780px) {
+            display:block;
+        }
+
         padding:9px 0;
         height:56px;
         background:#fff;
@@ -78,7 +87,6 @@
             padding: 0 20px 50px;
 
         }
-
         .lay-filter {
             float:left;
             width:200px;
@@ -98,6 +106,10 @@
                 z-index:9000;
                 background:#fff;
                 overflow: hidden;
+                &.open{
+                    display:block;
+                }
+
             }
         
             .lay-fliter-con {
@@ -161,6 +173,14 @@
                         }
                     }
                     @media screen and (max-width: 1780px) {
+                        display:none;
+                    }
+                }
+                .list-acco-sorting{
+                    @media screen and (max-width: 1780px) {
+                        display:block;
+                    }
+                    @media screen and (min-width: 1780px) {
                         display:none;
                     }
                 }

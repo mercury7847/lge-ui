@@ -706,12 +706,10 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
             }else{
 
                 nObj = obj;
-
                 if(nObj.minValue=='Min') nObj.minValue = self.mode? self.minValue : self.originMinValue;
                 if(nObj.maxValue=='Max') nObj.maxValue = self.mode? self.maxValue : self.originMaxValue;
             }
             self.nowValue = nObj;
-
             this.update(true);
         },
 
