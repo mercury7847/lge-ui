@@ -15,7 +15,7 @@ vcui.define('ui/dropdown', ['jquery', 'vcui'], function ($, core) {
         defaults: {
             appendToBody: false,
             disabled: false,
-            autoHideClicked: true,
+            autoHideClicked: false,
             autoHideFocusout: true,
             toggleSelector: '.ui_dropdown_toggle',
             listSelector: '.ui_dropdown_list'

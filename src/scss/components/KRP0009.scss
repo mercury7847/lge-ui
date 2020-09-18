@@ -12,9 +12,7 @@
         padding:9px 0;
         height:56px;
         background:#fff;
-        @media screen and (max-width: 1780px) {
-            display:none;
-        }
+
         .cate-list {
             @include clearfix;
             max-width:1284px;
@@ -85,9 +83,7 @@
             float:left;
             width:200px;
              margin-left:-224px;
-             @media screen and (max-width: 1780px) {
-                 display:none;
-             }
+
             .btn-reset {
                 margin:23px 0 12px;
                 text-align:center;
@@ -358,7 +354,7 @@
                             }
                         }
                     }
-                    &.active {
+                    &.open {
                         .cate-sel {
                         display:block;
                         }
@@ -818,9 +814,7 @@
     float:left;
     width:200px;
     margin-left:-224px;
-    @media screen and (max-width: 1780px) {
-        display:none;
-    }
+
     .btn-reset {
         margin:23px 0 12px;
         text-align:center;
