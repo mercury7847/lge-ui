@@ -441,7 +441,7 @@
         &:checked+label {
             &::before {
                 border-color:transparent;
-                background-color:#ec455a;
+                background:#ec455a;
             }
             &::after {
                 border-color:#fff;
@@ -455,45 +455,64 @@
             }
         }
     }
+}
 
-    &.colorchip {
-        & input + label {
-            &:before {
+.chk-wrap-colorchip {
+    input {
+        position:absolute;
+        overflow:hidden;
+        width:1px;
+        height:1px;
+        margin:-1px;
+        padding:0;
+        border:none;
+        clip:rect(0,0,0,0);
+        &+label {
+            position:relative;
+            display:inline-block;
+            padding-left:32px;
+            color:#111;
+            font-size:16px;
+            line-height:24px;
+            vertical-align:top;
+            cursor:pointer;
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            &::before {
+                content:' ';
+                position:absolute;
                 top:4px;
                 left:4px;
                 width:16px;
                 height:16px;
-                border-color:#979797;
+                border:1px solid #979797;
+                border-radius:50%;
             }
-            &:after {
-                display:none;
-            }
-        }
-        & input:checked + label {
-            &:before {
-                border-color:#ccc;
-                background-color:transparent;
-            }
-            &:after {
-                display:block;
+            &::after {
+                content:' ';
+                position:absolute;
                 top:0;
                 left:0;
                 width:24px;
                 height:24px;
-                border:1px solid #ccc;
+                border:1px solid #fff;
                 border-radius:50%;
-                transform:inherit;
             }
         }
-        & input:disabled + label {
-            color:#adadad;
-            &:before {
+        &:checked+label {
+            &::after {
                 border-color:#ccc;
-                background:#f4f4f4;
+            }
+        }
+        &:disabled+label {
+            color:#aaa;
+            &::before {
+                background:#aaa;
+                border-color:transparent;
             }
         }
     }
-
 }
 
 // selectbox
