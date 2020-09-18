@@ -11,6 +11,67 @@
     @include mobile {
         padding:0 24px;
     }
+    
+    /* bg, color 추가 */
+	&.bg-black {
+		background-color: #000;
+		.title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6 {
+			color:#fff;
+		}
+		.text,
+		.bullet-text li {
+			color:#f8f8f8;
+			&:before{
+				background:#f8f8f8;
+			}
+		}
+		.btn-box {
+			.link-text {
+				color:#f8f8f8;
+			}
+			.ico-right{
+				&:after {
+					background: url('/lg5-common/images/common/icons/link-right-light-gray.svg') no-repeat 0 1px;
+				}
+			}
+		}
+		.quote-writer-box {
+			color:#fff;
+		}
+	}
+	&.bg-dark-gray {
+		background-color: #333;
+		.title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6 {
+			color:#fff;
+		}
+		.text,
+		.bullet-text li {
+			color:#f8f8f8;
+			&:before{
+				background:#f8f8f8;
+			}
+		}
+		.btn-box {
+			.link-text {
+				color:#f8f8f8;
+			}
+			.ico-right{
+				&:after {
+					background: url('/lg5-common/images/common/icons/link-right-light-gray.svg') no-repeat 0 1px;
+				}
+			}
+		}
+		.quote-writer-box {
+			color:#fff;
+		}
+	}
+	&.bg-gray {
+		background-color: #f8f8f8;
+	}
+	&.bg-white {
+		background-color: #fff;
+	}
+	/* // bg, color 추가 */
 
     .unit-list {
         @include clearfix;

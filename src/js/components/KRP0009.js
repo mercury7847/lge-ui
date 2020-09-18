@@ -3,7 +3,9 @@ $(function () {
 
     ;(function($, _$){   
         
-        vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
+        vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion', 'ui/dropdown'], function () {
+
+            $('.ui_order_dropdown').vcDropdown();
 
             // local storage 
             var Storage = {
@@ -91,7 +93,9 @@ $(function () {
 
             function setApplyFilter(obj){		
 
+                console.log(obj);
 
+                requestData(obj);
                 return;
                 
                 //$('.apply_filters').empty();
@@ -134,9 +138,6 @@ $(function () {
                         
                         if($('[data-id="'+ key +'"]').data('ui_rangeSlider')){
                             $('[data-id="'+ key +'"]').vcRangeSlider('option',{input:null}).vcRangeSlider('reset', false);
-                        }
-                        if($('[data-id="'+ key +'"]').data('ui_selectbox')){
-                            $('[data-id="'+ key +'"]').vcSelectbox('selectedIndex', null , false);
                         }
                     }
                 }
@@ -181,7 +182,7 @@ $(function () {
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
                 '{{#each (item, index) in list}}'+
-                '<div class="chk-wrap colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{filterId}}_chk_{{index+1}}" {{item.enable}}><label for="{{filterId}}_chk_{{index+1}}">{{item.title}} ({{item.modelCount}})</label></div>'+
+                '<div class="chk-wrap-colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{filterId}}_chk_{{index+1}}" {{item.enable}}><label for="{{filterId}}_chk_{{index+1}}">{{item.title}} ({{item.modelCount}})</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
 
@@ -264,54 +265,61 @@ $(function () {
 
                 }
 
-
-                $('.ui_filter_slider').on('rangesliderinit rangesliderchanged', function (e, data) {
-                    
-
-                    $(e.currentTarget).siblings('.min').text(data.minValue);
-                    $(e.currentTarget).siblings('.max').text(data.maxValue);
-
-                    if(e.type=='rangesliderchanged'){
-                        var filterId = $(e.currentTarget).data('filterId');
-                        setSliderData(filterId, data);
-                    }
-                    
-
-    
-                }).vcRangeSlider({mode:true});
-
-
-                $('.ui_filter_accordion').on('accordionexpand', function(e,data){
-
-                    if(data.content.find('.ui_filter_slider')) {
-                        data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
-                    }   
-
-                }).vcAccordion();
-
                 
-                $('.ui_filter_accordion').on('change', 'input[type="checkbox"]', function(e){
-
-                    var name = e.target.name;
-                    var valueStr = "";
-                    $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
-                        valueStr = valueStr + item.value+','
-                    });
-                    valueStr = valueStr.replace(/,$/,'');
-                    
-                    if(valueStr==''){
-                        delete storageFilters[name];
-                        Storage.remove(storageName, name);
-                    }else{
-                        storageFilters[name] = valueStr;
-                        Storage.set(storageName, storageFilters);
-                    }
-                    setApplyFilter(storageFilters);
-                });
-
+                $('.ui_filter_slider').vcRangeSlider({mode:true});
+                $('.ui_order_accordion').vcAccordion();
+                $('.ui_filter_accordion').vcAccordion();
 
 
             }
+
+            
+            $('.ui_filter_slider').on('rangesliderinit rangesliderchanged', function (e, data) {
+
+                $(e.currentTarget).siblings('.min').text(data.minValue);
+                $(e.currentTarget).siblings('.max').text(data.maxValue);
+
+                if(e.type=='rangesliderchanged'){
+                    var filterId = $(e.currentTarget).data('filterId');
+                    setSliderData(filterId, data);
+                }
+
+            })
+
+            $('.ui_filter_accordion').on('accordionexpand', function(e,data){
+
+                if(data.content.find('.ui_filter_slider')) {
+                    data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
+                }   
+
+            })
+
+            
+            $('.plp-filter-wrap').on('change', 'input', function(e){
+
+                var name = e.target.name;
+                var valueStr = "";
+                $('.plp-filter-wrap').find('input[name="'+ name +'"]:checked').each(function(idx, item){
+                    valueStr = valueStr + item.value+','
+                });
+                valueStr = valueStr.replace(/,$/,'');
+                
+                if(valueStr==''){
+                    delete storageFilters[name];
+                    Storage.remove(storageName, name);
+                }else{
+                    storageFilters[name] = valueStr;
+                    Storage.set(storageName, storageFilters);
+                }
+                setApplyFilter(storageFilters);
+            });
+
+            _$(window).on('breakpointchange', function(e, data){
+                console.log(data.name);
+            });
+
+
+
 
 
             function requestData(obj){
