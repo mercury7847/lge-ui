@@ -441,7 +441,7 @@
         &:checked+label {
             &::before {
                 border-color:transparent;
-                background:#ec455a;
+                background-color:#ec455a;
             }
             &::after {
                 border-color:#fff;
@@ -455,6 +455,45 @@
             }
         }
     }
+
+    &.colorchip {
+        & input + label {
+            &:before {
+                top:4px;
+                left:4px;
+                width:16px;
+                height:16px;
+                border-color:#979797;
+            }
+            &:after {
+                display:none;
+            }
+        }
+        & input:checked + label {
+            &:before {
+                border-color:#ccc;
+                background-color:transparent;
+            }
+            &:after {
+                display:block;
+                top:0;
+                left:0;
+                width:24px;
+                height:24px;
+                border:1px solid #ccc;
+                border-radius:50%;
+                transform:inherit;
+            }
+        }
+        & input:disabled + label {
+            color:#adadad;
+            &:before {
+                border-color:#ccc;
+                background:#f4f4f4;
+            }
+        }
+    }
+
 }
 
 // selectbox
@@ -505,7 +544,7 @@
                 border-right:5px solid transparent;
             }
             @include mobile {
-                border-radius:4px;
+                border-radius:8px;
                 padding:15px;
                 padding-right:55px;
                 .ui-select-text {
