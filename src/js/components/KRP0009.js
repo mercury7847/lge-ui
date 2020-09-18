@@ -41,86 +41,7 @@ $(function () {
             }
 
 
-            // 
-            var locationObj = vcui.uri.parseUrl(window.location);
-            var storageName = encodeURIComponent(locationObj.path)+'_lgeProductFilter';
-            var storageNameExpire = encodeURIComponent(locationObj.path)+'_lgeProductFilter_expire'; // 만료일 
-            var expire = Storage.get(storageNameExpire);				
-
-            if(expire && expire.expireDate < new Date().getTime()){
-                Storage.remove(storageName);
-                Storage.remove(storageNameExpire);
-
-                console.log('remove expire')
-            }
-
-            Storage.set(storageNameExpire, {'expireDate' : new Date().getTime() + (10*1000)});	//24*3600000 // 10초로 테스트중 만료일 설정 
-            var storageFilters = Storage.get(storageName);	
-
-            console.log(storageFilters);
-
-
-
-            $('#filterResetBtn').on('click', function(){
-                reset();
-            })
-
-            //이벤트 바인딩 end
-
-            // range slider  
-            function setSliderData(id, data){
-                var inputStr = ''
-                for(var key in data) inputStr += data[key]+',';
-                inputStr = inputStr.replace(/,$/,'');
-                storageFilters[id] = inputStr;
-                Storage.set(storageName, storageFilters);
-                setApplyFilter(storageFilters);
-            }
-
-
-
-            function setApplyFilter(obj){		
-
-                for(var key in obj){		
-
-                    var $parent = $('[data-id="'+ key +'"]');
-                    var values = obj[key].split(',');
-                    for(var i=0; i<values.length; i++){
-                        $parent.find('input[id="'+ values[i] +'"]').prop('checked', true);
-                    }
-
-                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
-                        $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', obj[key]);
-                    }
-						
-                }
-                requestData(obj,1);
-            }
             
-
-            function reset(id){
-
-                var obj = Storage.get(storageName);	
-
-                for(var key in obj){	
-                        
-                    var $parent = $('[data-id="'+ key +'"]');
-                    $parent.find('input[name="'+key+'"]').prop('checked', false);
-                    
-                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
-                       $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', 'Min,Max');
-                    }
-                }
-
-                var str = obj['sorting'];
-                storageFilters = {sorting : str};
-                Storage.remove(storageName);
-                Storage.set(storageName, storageFilters);	
-                console.log(storageFilters, Storage.get(storageName));
-                				
-                //requestData(Storage.get(storageName));
-            }
-
             var sliderTmpl = 
             '<li data-id={{filterId}}><div class="head">'+
                 '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
@@ -158,10 +79,77 @@ $(function () {
 
             var isRender = false;
 
-            function update(arr){
+
+
+            // 
+            var locationObj = vcui.uri.parseUrl(window.location);
+            var storageName = encodeURIComponent(locationObj.path)+'_lgeProductFilter';
+            var storageNameExpire = encodeURIComponent(locationObj.path)+'_lgeProductFilter_expire'; // 만료일 
+            var expire = Storage.get(storageNameExpire);				
+
+            if(expire && expire.expireDate < new Date().getTime()){
+                Storage.remove(storageName);
+                Storage.remove(storageNameExpire);
+                console.log('remove expire')
+            }
+
+            Storage.set(storageNameExpire, {'expireDate' : new Date().getTime() + (20*1000)});	//24*3600000 // 20초로 테스트중 만료일 설정 
+            var storageFilters = Storage.get(storageName);	
+
+            //console.log(storageFilters);
+
+            // range slider  
+            function setSliderData(id, data){
+                var inputStr = ''
+                for(var key in data) inputStr += data[key]+',';
+                inputStr = inputStr.replace(/,$/,'');
+                storageFilters[id] = inputStr;
+                Storage.set(storageName, storageFilters);
+                setApplyFilter(storageFilters);
+            }
+
+
+            function setApplyFilter(obj, noRequest){		
+
+                for(var key in obj){		
+                    var $parent = $('[data-id="'+ key +'"]');
+                    var values = obj[key].split(',');
+                    for(var i=0; i<values.length; i++){
+                        $parent.find('input[id="'+ values[i] +'"]').prop('checked', true);
+                    }
+
+                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                        $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', obj[key]);
+                    }	
+                }
+                if(!noRequest) requestData(obj);
+            }
+            
+
+            function reset(id){
+
+                var obj = Storage.get(storageName);	
+
+                for(var key in obj){	
+                        
+                    var $parent = $('[data-id="'+ key +'"]');
+                    $parent.find('input[name="'+key+'"]').prop('checked', false);
+                    
+                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                       $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', 'Min,Max');
+                    }
+                }
+
+                storageFilters = {};
+                Storage.remove(storageName);
+                				
+                requestData({});
+            }
+
+
+            function updateFilter(arr){
 
                 for(var i=0; i<arr.length; i++){
-
                     var item = arr[i];
                     var itemArr = item.data;
                     var $parent = $('[data-id="'+ item['filterId'] +'"]');
@@ -170,30 +158,24 @@ $(function () {
                         $parent.find('input[value="'+ itemArr[j]['filterValueId']+'"]').prop('disabled', itemArr[j]['enable']=='N');
                         $parent.find('label[for="'+ itemArr[j]['filterValueId']+'"]').text(itemArr[j]['filterValueName'] +' ('+ itemArr[j]['modelCount']+')');
                     }
-
                 }
             }
 
-
-            function render(arr){
+            function renderFilter(arr){
 
                 if(isRender) {
-                    update(arr);
+                    updateFilter(arr);
                     return;
                 }
            
                 for(var i=0; i<arr.length; i++){
-
                     var item = arr[i];
-
                     if(item.filterTypeCode=='00'){
-
                         var uArr = item.data.sort(function(a, b) { 
                             return parseInt(a.filterValueName) < parseInt(b.filterValueName) ? -1 : parseInt(a.filterValueName) > parseInt(b.filterValueName) ? 1 : 0;
                         });
 
                         var rStr = uArr[0]['filterValueName']+','+uArr[uArr.length-1]['filterValueName'];
-
                         html = vcui.template(sliderTmpl,{
                             filterId : item['filterId'],
                             headId : 'headId_'+i,
@@ -206,10 +188,7 @@ $(function () {
                         });
 
                     }else{
-
-
                         if(item.facetSourceCode=='COLR'){
-
                             var dArr = vcui.array.map(item.data, function(dItem, idx){
                                 return {
                                     title:dItem['rangePointStyle'], 
@@ -229,7 +208,6 @@ $(function () {
                             });
 
                         }else{
-
                             var dArr = vcui.array.map(item.data, function(dItem, idx){
                                 return {
                                     title:dItem['filterValueName'], 
@@ -253,10 +231,11 @@ $(function () {
 
                     $('.ui_filter_accordion ul').append(html);
                     isRender = true;
+                    
 
                 }
 
-                $('.ui_filter_slider').on('rangesliderinit rangesliderchanged',function (e, data) {
+                $('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged',function (e, data) {
 
                     $(e.currentTarget).siblings('.min').text(data.minValue);
                     $(e.currentTarget).siblings('.max').text(data.maxValue);
@@ -271,23 +250,26 @@ $(function () {
                 $('.ui_order_accordion').vcAccordion();
                 $('.ui_filter_accordion').vcAccordion();
 
+                setApplyFilter(storageFilters, true);
 
             }
+
+
+            //이벤트 바인딩
 
             $('.ui_filter_accordion').on('accordionexpand', function(e,data){
 
                 if(data.content.find('.ui_filter_slider')) {
                     data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
                 }   
-
-            })
+            });
 
             
-            $('.plp-filter-wrap').on('change', 'input', function(e){
+            $('.ui_filter_accordion').on('change', 'input', function(e){
 
                 var name = e.target.name;
                 var valueStr = "";
-                $('.plp-filter-wrap').find('input[name="'+ name +'"]:checked').each(function(idx, item){
+                $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
                     valueStr = valueStr + item.value+','
                 });
                 valueStr = valueStr.replace(/,$/,'');
@@ -302,42 +284,65 @@ $(function () {
                 setApplyFilter(storageFilters);
             });
 
-            /*
-            _$(window).on('resizeend', function(e){
-
-                if(_$(window).width() > 1780){
-
-                    _$('.ui_modal_container').vcModal('close'); 
-
-                    var ck = _$('#filterWrap').find('.plp-filter-wrap');
-                    if(ck.length==0){
-                        _$('#filterWrap').append(_$('.plp-filter-wrap'));
-                    }
-                   
-                }else{
-                    var ck = _$('#modalFilterList').find('.plp-filter-wrap');
-                    if(ck.length==0){
-                        _$('#modalFilterList').append(_$('.plp-filter-wrap'));
-                    }
-                }
-
+            $('#filterModalLink').on('click', function(e){
+                e.preventDefault();
+                $('.lay-filter').addClass('open');
             });
 
-            _$(window).trigger('resizeend');
-            */
+            $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
+                e.preventDefault();
+                $('.lay-filter').removeClass('open');
+            });
+
+            $('input[name="sorting"]').on('change', function(e){
+                e.preventDefault();
+                var idx = $('input[name="sorting"]').index(this);
+                $('.ui_sorting_selectbox').vcSelectbox('selectedIndex', idx, false);
+                setApplyFilter(storageFilters);
+            });
+            
+            $('#filterResetBtn').on('click', function(){
+                reset();
+            });
+
+            $('.ui_sorting_selectbox').on('change', function(e,data){
+                var value = e.target.value;
+                $('input[name="sorting"][value="'+ value +'"]').prop('checked', true).change();
+            }).vcSelectbox();
+
+            $('input[name="categoryCheckbox"]').on('change', function(e){
+
+                if($('input[name="categoryCheckbox"]:checked').length < 2){
+                    $(e.currentTarget).prop('checked', true);
+                }else{
+                    $('input[name="categoryCheckbox"][value="'+ e.target.value +'"]').prop('checked', e.target.checked);
+                }
+                
+                var len = $('input[name="categoryCheckbox"]:checked').length/2;
+                $('#categoryCnt').text(len + '개 선택');
+            });
+
+
+            $('input[name="categoryCheckbox"]:checked').change();
+
+            //이벤트 바인딩 end
 
 
 
-            function requestData(obj, idx){
+            function requestData(obj){
 
-                var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList'+ idx +'.json';
+                var nObj = vcui.extend(obj,{sorting:$('input[name="sorting"]:checked').val()});
+                console.log(nObj);
+
+                var idx = Math.random() > 0.5? 1 : 0;
+                var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList'+idx+'.json'; // 테스트용
                 
 
                 _$.ajax({
                     type : "POST",
                     url : ajaxUrl,
                     dataType : "json",
-                    data : {id:"테스트"}
+                    data : nObj
 
                 }).done(function(result) {
 
@@ -349,8 +354,6 @@ $(function () {
                         else prev[cur['filterId']] = [cur];
                         return prev;
                     }, {}); 
-
-                   // console.log(filterObj);
 
                     var newFilterArr = [];
 
@@ -432,17 +435,15 @@ $(function () {
                         return parseInt(a.filterOrderNo) < parseInt(b.filterOrderNo) ? -1 : parseInt(a.filterOrderNo) > parseInt(b.filterOrderNo) ? 1 : 0;
                     });
 
-                   render(newFilterArr);
+                   renderFilter(newFilterArr);
 
                 }).fail(function(error) {
                     // console.error(error);
                 })
             }
 
-            //setApplyFilter(storageFilters);
+            setApplyFilter(storageFilters);
 
-            requestData(Storage.get(storageName), 0);
-            
 
         });           
         
