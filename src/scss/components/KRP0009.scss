@@ -3,8 +3,6 @@
 @import "../components-app";
 
 
-$color: (type01, type02, type03);
-
 .KRP0009 {
     margin:0 auto;
     background:#f4f4f4;
@@ -73,7 +71,6 @@ $color: (type01, type02, type03);
 
     .plp-list-wrap {
         max-width:1284px + (54px * 2);
-        // max-width:960px;
         margin:0 auto;
         padding: 0 54px;
         @include clearfix;
@@ -88,7 +85,6 @@ $color: (type01, type02, type03);
             float:left;
             width:200px;
              margin-left:-224px;
-            //margin-left:-24px;
              @media screen and (max-width: 1780px) {
                  display:none;
              }
@@ -267,7 +263,6 @@ $color: (type01, type02, type03);
         .product-items-wrap {
             float: left;
             max-width: (420px * 3) + 24px;
-            // max-width:960px;
             margin: 0 auto;
             .items-list {
                 @include clearfix;
@@ -995,9 +990,11 @@ $color: (type01, type02, type03);
     .btn-visit {
         margin-top:16px;
         text-align:center;
-    }
+    }  
+}
 
-    &.mo-filter {
+.lay-wrap {
+    .plp-filter-wrap {
         float:none;
         display:block;
         width:100%;
