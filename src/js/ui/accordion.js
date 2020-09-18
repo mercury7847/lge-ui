@@ -36,6 +36,7 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
             scrollTopOffset: 0,
             activeClass: "active",
             selectedClass: 'on',
+            parentClass: '.ui_accordion',
             itemClosest: 'li',
             itemSelector: '>ul>li',
             toggleSelector: ">.head>.ui_accord_toggle",
@@ -191,7 +192,7 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
                 // 아코디언 요소가 따로 떨어져 있는 것을 data-accord-group속성을 묶고,
                 // 하나가 열리면 그룹으로 묶여진 다른 아코디언에 열려진게 있으면 닫아준다.
                 self.on(eventBeforeExpand, function (e) {
-                    $('.ui_accordion[data-accord-group=' + o.accordGroup + '], ' + '.ui_accordion_list[data-accord-group=' + o.accordGroup + ']').not(self.$el).vcAccordion('collapse').find(o.itemSelector).removeClass(o.selectedClass);
+                    $(o.parentClass + '[data-accord-group=' + o.accordGroup + '], ' + '.ui_accordion_list[data-accord-group=' + o.accordGroup + ']').not(self.$el).vcAccordion('collapse').find(o.itemSelector).removeClass(o.selectedClass);
                 });
             }
         },
@@ -272,6 +273,9 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
                 index = oldIndex;
             }
 
+
+            //console.log($items.eq(oldIndex).find(opts.parentClass))
+            //data.header.find(opts.parentClass).vcAccordion('collapse').find(opts.itemSelector).removeClass(opts.selectedClass);
 
             if (index < 0) {
                 return;
