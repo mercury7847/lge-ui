@@ -3,8 +3,6 @@
 @import "../components-app";
 
 
-$color: (type01, type02, type03);
-
 .KRP0009 {
     margin:0 auto;
     background:#f4f4f4;
@@ -73,7 +71,6 @@ $color: (type01, type02, type03);
 
     .plp-list-wrap {
         max-width:1284px + (54px * 2);
-        // max-width:960px;
         margin:0 auto;
         padding: 0 54px;
         @include clearfix;
@@ -88,7 +85,6 @@ $color: (type01, type02, type03);
             float:left;
             width:200px;
              margin-left:-224px;
-            //margin-left:-24px;
              @media screen and (max-width: 1780px) {
                  display:none;
              }
@@ -267,7 +263,6 @@ $color: (type01, type02, type03);
         .product-items-wrap {
             float: left;
             max-width: (420px * 3) + 24px;
-            // max-width:960px;
             margin: 0 auto;
             .items-list {
                 @include clearfix;
@@ -316,6 +311,9 @@ $color: (type01, type02, type03);
     
                     @include pc {
                         max-height: 672px;
+                    }
+                    @include mobile {
+                        padding: 0 28px 32px;
                     }
                 }
             }
@@ -714,7 +712,6 @@ $color: (type01, type02, type03);
                         }
                     }
                     .banner-info {
-                        margin-bottom: 32px;
                         .title {
                             margin-bottom: 16px;
                             font-weight: 700;
@@ -732,6 +729,7 @@ $color: (type01, type02, type03);
                         }
                     }
                     .banner-button {
+                        margin-top: 32px;
                         .btn {
                             min-width: 124px;
                             border: 1px solid #fff;
@@ -739,11 +737,16 @@ $color: (type01, type02, type03);
                             color: #fff;
                         }
                     }
+                    @include mobile {
+                        padding: 32px 24px;
+                        .banner-flag,
+                        .banner-button {
+                            display: none;
+                        }
+                    }
                 }
                 &.large {
                     .banner-contents {
-                        .inner {
-                        }
                         .banner-flag {
                             margin-bottom: 8px;
                             .flag {
@@ -752,13 +755,13 @@ $color: (type01, type02, type03);
                             }
                         }
                         .banner-info {
-                            margin-bottom: 0;
                             .title,
                             .sub-copy {
                                 color: #222;
                             }
                         }
                         .banner-button {
+                            margin-top: 0;
                             .btn {
                                 border-color: #979797;
                                 color: #222;
@@ -808,8 +811,8 @@ $color: (type01, type02, type03);
                             position: static;
                             width: 100%;
                             padding: 36px 28px;
-                            .banner-button {
-                                display: none;
+                            .banner-flag {
+                                display: block;
                             }
                         }
                     }
@@ -995,9 +998,11 @@ $color: (type01, type02, type03);
     .btn-visit {
         margin-top:16px;
         text-align:center;
-    }
+    }  
+}
 
-    &.mo-filter {
+.lay-wrap {
+    .plp-filter-wrap {
         float:none;
         display:block;
         width:100%;
