@@ -138,19 +138,6 @@
     
                             window.breakpoint = data;
                             $(window).data('breakpoint', data).trigger('breakpointchange', data);
-                        },
-                        '(min-width : 1780px)' : function(mq){
-                            var data;
-                            if(mq.matches){
-                                data = {
-                                    name: 'showfilter'
-                                };
-                            }else{
-                                data = {
-                                    name: 'hiddenfilter'
-                                };
-                            }
-                            $(window).data('breakpoint', data).trigger('breakpointchange', data);
                         }
     
                         /* 
