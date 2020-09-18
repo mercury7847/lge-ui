@@ -236,8 +236,22 @@
                                     word-break:break-all;
                                 }
 
+                                .range-wrap {
+                                    font-size:0;
+                                    .range-num {
+                                        display:inline-block;
+                                        width:50%;
+                                        vertical-align:middle;
+                                        text-align:left;
+                                        color:#222;
+                                        font-size:14px;
+                                        line-height:20px;
+                                        &.max {
+                                            text-align:right;
+                                        }
+                                    }
+                                }
                                 
-            
                                 .rdo-wrap,
                                     .chk-wrap,
                                         .chk-wrap-colorchip {
