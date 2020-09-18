@@ -86,6 +86,7 @@
             var self = this;
 
             vcui.require([  
+                'helper/breakpointDispatcher',
                 'common/header', 
                 'common/footer',           
                 'ui/selectbox',
@@ -98,7 +99,55 @@
                 "ui/videoBox",
                 "ui/youtubeBox",
                 "ui/imageSwitch"
-            ], function () {
+            ], function (BreakpointDispatcher) {
+
+                
+                var breakpoint = {
+                    mobile: 768,
+                    pc: 10000000
+                }
+    
+                new BreakpointDispatcher({
+                    matches: {
+                        '(min-width: 768px)' : function(mq) {
+                            var data;
+                            if (mq.matches) {
+                                // pc
+                                data = {
+                                    name: 'pc',
+                                    min: 768,
+                                    max: 999999,
+                                    isMobile: false,
+                                    isPc: true,
+                                    prev: window.breakpoint || {}
+                                };
+                                
+                            } else {
+                                // mobile
+                                data = {
+                                    name: 'mobile',
+                                    min: 0,
+                                    max: 767,
+                                    isMobile: true,
+                                    isPc: false,
+                                    prev: window.breakpoint || {}
+                                };
+                            }
+    
+                            window.breakpoint = data;
+                            $(window).data('breakpoint', data).trigger('breakpointchange', data);
+                        },
+    
+                        /* 
+                        '(min-width : 769px) and (max-width : 1599px)' : function(mq){
+                        },
+                        '(min-width : 1600px)' : function(mq){
+                        } 
+                        */
+                    }
+                }).start();       
+
+                
                 var $doc = $(document);                       
 
                 //resize 이벤트 발생 시 등록 된 이벤트 호출...
