@@ -143,11 +143,11 @@
                             var data;
                             if(mq.matches){
                                 data = {
-                                    name: 'hiddenfilter'
+                                    name: 'showfilter'
                                 };
                             }else{
                                 data = {
-                                    name: 'showfilter'
+                                    name: 'hiddenfilter'
                                 };
                             }
                             $(window).data('breakpoint', data).trigger('breakpointchange', data);

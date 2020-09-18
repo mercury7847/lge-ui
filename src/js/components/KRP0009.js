@@ -314,8 +314,10 @@ $(function () {
                 setApplyFilter(storageFilters);
             });
 
-            _$(window).on('breakpointchange', function(e, data){
-                console.log(data.name);
+            _$(window).on('resizeend', function(e){
+
+                //console.log(data.name);
+                //_$('#modal-filter-list').append($('.plp-filter-wrap'));
             });
 
 
