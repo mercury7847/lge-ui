@@ -1,0 +1,343 @@
+.notice-contents {
+    max-width:1066px;
+    margin:0 auto;
+    padding:24px 0 60px;
+    @include mobile {
+        background:#f4f4f4;
+        padding:20px 20px 60px;
+    }
+    .setting-btns {
+        text-align:right;
+        font-size:0;
+        li {
+            display:inline-block;
+            margin-left:24px;
+            vertical-align:top;
+            @include mobile {
+                margin-left:20px;
+            }
+            &:first-child {
+                margin-left:0;
+            }
+        }
+    }
+    .notice-list-wrap {
+        margin-top:16px;
+        @include mobile {
+            margin-top:20px;
+        }
+        .notice-lists {
+            position:relative;
+            &::before {
+                content:' ';
+                position:absolute;
+                top:0px;
+                bottom:0;
+                left:23px;
+                width:2px;
+                border-radius:1px;
+                background:#ddd;
+                @include mobile {
+                    left:19px;
+                }
+            }
+            .list {
+                position:relative;
+                margin-top:40px;
+                &:first-child {
+                    margin-top:0;
+                }
+                .notice-box {
+                    position:relative;
+                    padding-left:60px;
+                    @include mobile {
+                        padding-left:48px;
+                    }
+                    .icons {
+                        position:absolute;
+                        top:0;
+                        left:0;
+                        width:48px;
+                        height:48px;
+                        border-radius:50%;
+                        background:#fff url('/lg5-common/images/icons/icon-notice.svg') center no-repeat;
+                        font-size:0;
+                        em {
+                            position:absolute;
+                            top:0;
+                            right:0;
+                            width:10px;
+                            height:10px;
+                            border-radius:50%;
+                            &.on {
+                                background:#F04E3E;
+                            }
+                            &.off {
+                                background:#ccc;
+                            }
+                        }
+                        @include mobile {
+                            width:40px;
+                            height:40px;
+                            background-size:20px;
+                            em {
+                                width:9px;
+                                height:9px;
+                            }
+                        }
+                    }
+                    .date {
+                        margin-bottom:8px;
+                        color:$color-1;
+                        font-size:16px;
+                        line-height:24px;
+                        @include mobile {
+                            font-size:14px;
+                            line-height:18px;
+                        }
+                    }
+                    .box {
+                        display:inline-block;
+                        position:relative;
+                        width:auto;
+                        max-width:100%;
+                        padding:40px;
+                        border-radius:4px;
+                        background:#fff;
+                        @include mobile {
+                            display:block;
+                            padding:40px 16px;
+                        }
+                        .flag-wrap {
+                            margin-bottom:4px;
+                            font-size:0;
+                            .flag {
+                                display:inline-block;
+                                margin-left:4px;
+                                padding:0 8px;
+                                border-radius:4px;
+                                background:#E9E9EA;
+                                color:#EC455A;
+                                font-size:12px;
+                                line-height:20px;
+                                font-weight:500;
+                                vertical-align:top;
+                                &:first-child {
+                                    margin-left:0;
+                                }
+                                @include mobile {
+                                    line-height:24px;
+                                }
+                            }
+                        }
+                        .tit {
+                            padding-right:16px;
+                            color:$color-1;
+                            font-size:16px;
+                            line-height:24px;
+                            font-weight:700;
+                            @include mobile {
+                                padding-right:0;
+                            }
+                        }
+                        .desc {
+                            margin-top:4px;
+                            color:$color-1;
+                            font-size:16px;
+                            line-height:24px;
+                            @include mobile {
+                                margin-top:6px;
+                            }
+                        }
+                        .img {
+                            margin-top:12px;
+                            margin-bottom:40px;
+                            img {
+                                max-width:100%;
+                                height:auto;
+                                vertical-align:top;
+                            }
+                            &.coupon {
+                                max-width:180px;
+                            }
+                            @include mobile {
+                                margin-bottom:20px;
+                            }
+                        }
+                        .more-view {
+                            margin-top:32px;
+                            padding:24px;
+                            border-radius:8px;
+                            background:#f4f4f4;
+                            @include mobile {
+                                margin-top:20px;
+                                padding:20px 12px;
+                                border-radius:4px;
+                            }
+                            .name {
+                                color:$color-1;
+                                font-size:14px;
+                                line-height:20px;
+                                font-weight:700;
+                                @include mobile {
+                                    line-height:18px;
+                                }
+                            }
+                            .info {
+                                margin-top:4px;
+                                font-size:0;
+                                @include mobile {
+                                    margin-top:12px;
+                                }
+                                li {
+                                    display:inline-block;
+                                    position:relative;
+                                    margin-right:12px;
+                                    padding-right:13px;
+                                    vertical-align:top;
+                                    &::after {
+                                        content:' ';
+                                        position:absolute;
+                                        top:50%;
+                                        right:0;
+                                        width:1px;
+                                        height:12px;
+                                        margin-top:-6px;
+                                        background:#ddd;
+                                    }
+                                    &:last-child {
+                                        margin-right:0;
+                                        padding-right:0;
+                                        &::after {
+                                            display:none;
+                                        }
+                                    }
+                                    @include mobile {
+                                        display:block;
+                                        margin-right:0;
+                                        padding-right:0;
+                                        &::after {
+                                            display:none;
+                                        }
+                                    }
+                                    dl {
+                                        font-size:0;
+                                        dt, dd {
+                                            display:inline-block;
+                                            vertical-align:top;
+                                            color:$color-1;
+                                            font-size:14px;
+                                            line-height:20px;
+                                            @include mobile {
+                                                line-height:18px;
+                                            }
+                                        }
+                                        dt {
+                                            margin-right:2px;
+                                            &::after {
+                                                content:' :';
+                                            }
+                                        }
+                                        i {
+                                            margin:0 4px;
+                                        }
+                                    }
+                                }
+                            }
+                            .btns {
+                                margin-top:20px;
+                                .btn {
+                                    min-width:auto;
+                                    padding:7px 15px;
+                                    border-color:#EC455A;
+                                    color:#EC455A;
+                                    font-size:14px;
+                                    line-height:20px;
+                                }
+                                @include mobile {
+                                    margin-top:12px;
+                                    .btn {
+                                        min-width:100%;
+                                        padding:10px 26px;
+                                    }
+                                }
+                            }
+                        }
+                        .bottom-btn {
+                            margin-top:12px;
+                            text-align:right;
+                            @include mobile {
+                                margin-top:15px;
+                            }
+                        }
+                        .btn-del {
+                            position:absolute;
+                            top:24px;
+                            right:24px;
+                            width:32px;
+                            height:32px;
+                            font-size:0;
+                            &::before, &::after {
+                                content:' ';
+                                position:absolute;
+                                top:50%;
+                                left:50%;
+                                width:2px;
+                                height:24px;
+                                margin-top:-12px;
+                                margin-left:-1px;
+                                border-radius:2px;
+                                background:#222;
+                            }
+                            &::before {
+                                transform:rotate(45deg);
+                            }
+                            &::after {
+                                transform:rotate(-45deg);
+                            }
+                            @include mobile {
+                                top:12px;
+                                right:12px;
+                                width:24px;
+                                height:24px;
+                                &::before, &::after {
+                                    height:18px;
+                                    margin-top:-9px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .notice-txt {
+            margin-top:40px;
+            padding-left:60px;
+            color:$color-1;
+            font-size:16px;
+            line-height:24px;
+            em {
+                font-weight:700;
+            }
+            @include mobile {
+                margin-top:20px;
+                padding-left:48px;
+            }
+        }
+        .nodata {
+            padding:250px 0;
+            color:#979797;
+            font-size:16px;
+            text-align:center;
+            line-height:24px;
+            &::before {
+                content:' ';
+                display:block;
+                height:64px;
+                margin-bottom:16px;
+                background:url('/lg5-common/images/bg-bell.svg') center no-repeat;
+                background:auto 100%;
+            }
+        }
+    }
+}
