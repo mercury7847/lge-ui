@@ -6,90 +6,35 @@
 <title>LG 5.0 HTML List</title>
 <style type="text/css">
 	body{-webkit-text-size-adjust: none;-moz-text-size-adjust: none;-ms-text-size-adjust: none;font-family:'Malgun Gothic', verdana;}
+	h1 {text-align:center;font-family:verdana;font-size:30px;margin:0;padding:0;}
+	h2 {text-align:center;font-family:verdana;font-size:20px;margin:0;padding:20px 0 10px;}
+
 	/* tables */
 	table {table-layout:fixed;font-family:arial;margin:10px 0 15px;font-size: 14px;width: 100%;text-align: left;border-collapse: collapse;border:1px solid #cdcdcd;}
 	table thead tr th, table tfoot tr th {background-color: #e7ecf8;border: 1px solid #fff;font-size: 11px;padding:4px;border:1px solid #cdcdcd;text-align:center;}
 	table thead tr .header {background-repeat: no-repeat;background-position: center right;cursor: pointer;}
 	table tbody td {color: #3d3d3d;padding: 4px;background-color: #fff;vertical-align: top;border:1px solid #cdcdcd;}
-	table tbody tr.odd td {background-color:#f0f0f6;}
-	h1 {text-align:center;font-family:verdana;font-size:30px;margin:0;padding:0;}
-	h2 {text-align:center;font-family:verdana;font-size:20px;margin:0;padding:20px 0 10px;}
+	table tbody tr:hover td {background-color:yellow}
 	table thead tr th, 
 	table tbody tr td {padding:5px 6px;}
+	table tbody tr td {line-height:150%;}
+	table tbody tr td:first-child,
+	table tbody tr td:last-child {font-weight:bold; text-align:center;}
+	table tbody tr td a {color:#000;}
+
+	.wrap {margin:0 auto;padding:30px 0;}
 	.box {position:relative;width:1066px;margin:0 auto;padding:10px 0 0 0;font-size:11px;}
 	.box a {color:#000;display:inline-block;padding:0 10px;margin-top:5px;border:2px solid #ddd;text-decoration:none;}
-	#count {text-align:center;}
-	.tab {padding:10px 0;border:1px solid #ddd;border-radius:10px;margin-top:20px;}
-	.tab ul {list-style:none;margin:0;padding:0;width:100%;text-align:center;}
-	.tab ul li {display:inline;margin:0;padding:0;}
-	.tab ul li a {font-size:13px;padding:0 5px;color:#000;text-decoration:none;letter-spacing:-1px;}
-	.tab ul li.on a {font-weight:bold;font-size:15px;}
-	.wrap {margin:0 auto;padding:30px 0;}
-	.desc {text-align:center;padding:10px 0 0 0;font-size:13px;}
-	table tbody tr td {line-height:150%;}
-	table tbody tr td a {color:#000;}
-	tr.none td {background-color:#eee;}
-	tr.discover td {background-color:#d9ead3;}
-	td.plan,
-	td.plan + td,
-	td.plan + td + td {text-align:center;}
-	td.batch {text-align:center;font-weight:bold;}
+	
 	td.links {font-size:0;color:#fff;text-align:center;overflow:hidden;}
 	td.links a {font-size:10px;line-height:150%;color:#000;display:inline-block;width:58px;padding:0;margin:2px;border:0;background:#eee;text-decoration:none;text-align:center;overflow:hidden;}
-	td.links a.not {opacity:0.8;}
-	td.links a.uxpin {opacity:0.8;}
-	td.links a.new {background-color:#d9ead3;}
-	td.links a.done {background-color:orange;}
-	td.links.done a {background-color:orange;}
-	td.links.done.per25 a {background-image: linear-gradient(to right, orange 25%, #eee 0%);}
-	td.links.done.per50 a {background-image: linear-gradient(to right, orange 50%, #eee 0%);}
-	td.links.done.per75 a {background-image: linear-gradient(to right, orange 75%, #eee 0%);}
-	td.date {text-align:center;font-size:8px;}
-	td.no-bottom {position:relative;border-bottom:0;}
-	td.no-bottom .abs {position:absolute;left:10px;top:5px;display:block;}
-	td.no-both {border-bottom:0;border-top:0;}
 
-	tr td.opt1 {text-align:center;}
-	/* tr td.productFlag {color:lightcoral;} */
-	tr td > button {margin-left:10px;}
-	tr td > button + .locale {margin:0;padding:0;list-style:none;width:100%;padding-top:5px;display:none;}
-	tr td > button + .locale.show {display:block;}
-	tr td > button + .locale > li {display:inline-block;vertical-align:top;padding:2px 0;}
-	tr td > button + .locale > li > a {display:inline-block;margin:0;padding:2px 10px;}
-	tr td > .edit {display:block; color:#767676;}
-	tr td > .edit:before {content:'- ';}
-	tr td > .edit.scheduled {}
-	tr td > .edit.scheduled.end {opacity:0.3;}
-	tr td > .edit.scheduled.end:after {content:' (완료)';}
-	tr td > .edit.scheduled b {text-decoration: underline;}
-	tr td > .edit.scheduled.after {color:green;}
-	tr td > .edit.scheduled.after:after {content:' (완료 후 수정)';}
-	tr td > .edit.common-done {color:green;}
-
-	table.new thead tr th {background-color: #d9ead3;}
-	table.new tr td.links a {background-color:#d9ead3;}
-	table.new tr td {vertical-align:middle;}
-
-	tr.wa td.links a {background-color:pink;}
-	.minicon {display:inline-block;padding:0 8px;height:16px;line-height:16px;font-size:8px;text-align:center;border-radius:8px;vertical-align:middle;}
-	.minicon.pardot {background:#d9ffde;}
-	.minicon.sample {background:lightyellow;}
-	table tbody td.old {color: #dddddd}
-
-	.icon-date {
-		opacity:0.3;
-		float:right;padding:0 8px;height:16px;line-height:16px;font-size:9px;text-align:center;vertical-align:middle;
-		background:lightyellow;border-radius:8px;;color:#000;
-	}
-	.icon-date.data-done {opacity:1;}
-	.icon-date.data-0000 {opacity:0.3;}
-	.icon-date.data-0000:before {content:'미정';}
-
-	.sitelist {}
-	.sitelist ul {list-style:none;margin:0;padding:0;width:100%;}
-	.sitelist ul li {width:150px;display:inline-block;}
-	.sitelist ul li a {display:block;border-color:#ffffff;}
-	.sitelist ul li a:hover {border-color:#ffffff;}
+	tr td > .edit {display:block;color:#767676;}
+	tr td > .edit:after {content: '작업 중'}
+	tr td > .edit.end {color:red}
+	tr td > .edit.end:after {content:'완료';}
+	tr td > .edit.after {color:green;}
+	tr td > .edit.after:after {content:'완료 후 수정';}
 </style>
 </head>
 <body>
@@ -98,485 +43,621 @@
 	
 	<div class="box">
 		<h2>CS</h2>
-		<div id="count" style="display:none;"></div>
 		<table>
 			<colgroup>
-				<col width="" />
-				<col width="" />
+				<col width="100px" />
+				<col width="100px" />
+				<col width="150px" />
 				<col width="" />
 				<col />
-				<col width="" />
+				<col width="100px" />
+				<col width="100px" />
 			</colgroup>
 			<thead>
 				<tr>
+					<th>ID</th>
 					<th>Depth1</th>
 					<th>Depth2</th>
 					<th>Depth3</th>
 					<th>Depth4</th>
 					<th>Page</th>
+					<th>status</th>
 				</tr>
 			</thead>
 			<tbody>
+				<!-- 
+					span.edit 작업중
+					span.edit.end 완료
+					span.edit.after 완료 후 수정
+				 -->
 				<tr>
-					<td class="no-bottom"><span class="abs">고객지원</span></td>
+					<td>CSTF1000</td>
+					<td>고객지원</td>
 					<td>메인</td>
 					<td></td>
 					<td></td>
-					<td class="links">/html/support/CSRF6001.html</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>통합검색결과</td>
-					<td></td>
-					<td></td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF1000.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<!-- 제품 지원 -->
 				<tr>
+					<td>CSTF2000</td>
 					<td></td>
-					<td>제품 지원</td>
-					<td>제품지원상세(PSP)</td>
-					<td>제품 카테고리</td>
-					<td class="links">/html/support/KR50CS211.html</td>
+					<td>제품 사용 지원</td>
+					<td>제품 문제 해결</td>
+					<td>목록</td>
+					<td class="links">/html/support/CSTF2000.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF2010</td>
 					<td></td>
 					<td></td>
-					<td>간편해결</td>
-					<td>제품 카테고리</td>
-					<td class="links">/html/support/KR50CS211.html</td>
+					<td></td>
+					<td>상세</td>
+					<td class="links">/html/support/CSTF2010.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>카테고리 키워드 검색</td>
-					<td class="links">/html/support/KR50CS212.html</td>
-				</tr>
-				<tr>
+					<td>CSTF2100</td>
 					<td></td>
 					<td></td>
 					<td>동영상 가이드</td>
 					<td>목록</td>
-					<td class="links">/html/support/KR50CS221.html</td>
+					<td class="links">/html/support/CSTF2100.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF2110</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>상세</td>
-					<td class="links">/html/support/KR50CS222.html</td>
+					<td class="links">/html/support/CSTF2110.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF2300</td>
 					<td></td>
 					<td></td>
 					<td>제품사용 설명서</td>
 					<td></td>
-					<td class="links">/html/support/KR50CS23.html</td>
+					<td class="links">/html/support/CSTF2300.html</td>
+					<td><span class="edit"></span></td>
 				</tr>
 				<tr>
+					<td>CSTF2400</td>
 					<td></td>
 					<td></td>
 					<td>드라이버/소프트웨어</td>
 					<td></td>
-					<td class="links">/html/support/KR50CS23.html</td>
+					<td class="links">/html/support/CSTF2300.html</td>
+					<td><span class="edit"></span></td>
 				</tr>
 				<tr>
+					<td>CSTF2500</td>
 					<td></td>
 					<td></td>
 					<td>카드뉴스</td>
 					<td>목록</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF2500.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF2510</td>
 					<td></td>
 					<td></td>
 					<td>카드뉴스</td>
 					<td>상세</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF2510.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF2600</td>
 					<td></td>
 					<td></td>
 					<td>가전제품 생활의 팁</td>
 					<td>목록</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF2600.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF2610</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>상세</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF2610.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<!-- // 제품 지원 -->
 				<!-- 제품 상담/문의 -->
 				<tr>
+					<td>CSTF3000</td>
 					<td></td>
-					<td>제품 상담/문의</td>
+					<td>서비스 상담</td>
 					<td>이메일 문의</td>
 					<td>신청</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF3000.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3010</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>완료</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF3010.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3100</td>
 					<td></td>
 					<td></td>
 					<td>문자상담 문의</td>
 					<td>신청</td>
-					<td class="links">/html/support/KR50CS321.html</td>
+					<td class="links">/html/support/CSTF3100.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3110</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>완료</td>
-					<td class="links">/html/support/KR50CS322.html</td>
+					<td class="links">/html/support/CSTF3110.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3200</td>
 					<td></td>
 					<td></td>
 					<td>원격상담 예약</td>
 					<td>신청</td>
-					<td class="links">/html/support/KR50CS331.html</td>
+					<td class="links">/html/support/CSTF3200.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3210</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>완료</td>
-					<td class="links">/html/support/KR50CS332.html</td>
+					<td class="links">/html/support/CSTF3210.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3300</td>
 					<td></td>
 					<td></td>
 					<td>전화상담 예약</td>
 					<td>신청</td>
-					<td class="links">/html/support/KR50CS342.html</td>
+					<td class="links">/html/support/CSTF3300.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3310</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>완료</td>
-					<td class="links">/html/support/KR50CS343.html</td>
+					<td class="links">/html/support/CSTF3310.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3400</td>
 					<td></td>
 					<td></td>
 					<td>영상상담 예약</td>
 					<td>신청</td>
-					<td class="links">/html/support/KR50CS351.html</td>
+					<td class="links">/html/support/CSTF3400.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3410</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>완료</td>
-					<td class="links">/html/support/KR50CS352.html</td>
+					<td class="links">/html/support/CSTF3410.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3500</td>
 					<td></td>
 					<td></td>
-					<td>문의/예약 결과 조회</td>
+					<td>상담결과 조회/변경</td>
 					<td>접수번호/휴대폰번호 입력</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF3500.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3510</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>이메일 접수 결과 조회 (단건)</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF3510.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3520</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>서비스 접수 결과 조회 (단건)</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF3520.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3530</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>서비스 접수 결과 조회 (복수)</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF3530.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF3540</td>
 					<td></td>
 					<td></td>
 					<td></td>
-					<td>서비스 접수 결과 취소</td>
-					<td class="links">/html/support/.html</td>
+					<td>예약 접수 결과 취소(POPUP)</td>
+					<td class="links">/html/support/CSTF3540.html</td>
+					<td><span class=""></span></td>
+				</tr>
+				<tr>
+					<td>CSTF3550</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>예약 접수 결과 예약일 변경</td>
+					<td class="links">/html/support/CSTF3550.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<!-- // 제품 상담/문의 -->
 				<!-- 서비스 예약 -->
 				<tr>
+					<td>CSTF4000</td>
 					<td></td>
 					<td>서비스 예약</td>
-					<td>출장 예약</td>
+					<td>출장 서비스 예약</td>
 					<td>신청</td>
-					<td class="links">/html/support/KR50CS411.html</td>
+					<td class="links">/html/support/CSTF4000.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF4010</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>완료</td>
-					<td class="links">/html/support/KR50CS412.html</td>
+					<td class="links">/html/support/CSTF4010.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF4100</td>
 					<td></td>
 					<td></td>
-					<td>설치/철거 예약</td>
+					<td>제품 설치/철거 예약</td>
 					<td>신청</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF4100.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF4110</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>완료</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF4110.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<!-- // 서비스 예약 -->
 				<!-- 센터/매장 찾기 -->
 				<tr>
+					<td>CSTF5000</td>
 					<td></td>
 					<td>센터/매장 찾기</td>
 					<td>센터찾기</td>
 					<td>검색/결과</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF5000.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF5310</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>서비스센터 상세</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF5310.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF5100</td>
 					<td></td>
 					<td></td>
 					<td>센터찾기 (스마일전용)</td>
 					<td>검색/결과</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF5100.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF5110</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>서비스센터 상세</td>
+					<td class="links">/html/support/CSTF5110.html</td>
+					<td><span class=""></span></td>
+				</tr>
+				<tr>
+					<td>CSTF5200</td>
 					<td></td>
 					<td></td>
 					<td>센터방문 예약</td>
 					<td>신청</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF5200.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF5210</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>완료</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF5210.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<!-- // 센터/매장 찾기 -->
 				<!-- 고객의견 -->
 				<tr>
+					<td>CSTF6000</td>
 					<td></td>
 					<td>고객의 소리</td>
-					<td>칭찬합니다. </td>
+					<td>칭찬합니다</td>
 					<td>작성</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF6000.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF6010</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>완료</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF6010.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF6100</td>
 					<td></td>
 					<td></td>
 					<td>개선해주세요</td>
 					<td>작성</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF6100.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF6110</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>완료</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF6110.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td></td>
-					<td>경영진에게 제안</td>
-					<td>작성</td>
-					<td class="links">/html/support/.html</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>완료</td>
-					<td class="links">/html/support/.html</td>
-				</tr>
-				<tr>
+					<td>CSTF6200</td>
 					<td></td>
 					<td></td>
 					<td>나의 글 보기</td>
 					<td>접수번호/휴대폰번호 입력</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF6200.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF6210</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>목록</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF6210.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF6220</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>상세</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF6220.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF6300</td>
 					<td></td>
 					<td></td>
 					<td>칭찬 글 보기</td>
 					<td>목록</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF6300.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF6310</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>상세</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF6310.html</td>
+					<td><span class=""></span></td>
+				</tr>
+				<tr>
+					<td>CSTF6400</td>
+					<td></td>
+					<td></td>
+					<td>경영진에게 제안</td>
+					<td>작성</td>
+					<td class="links">/html/support/CSTF6400.html</td>
+					<td><span class=""></span></td>
+				</tr>
+				<tr>
+					<td>CSTF6410</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>완료</td>
+					<td class="links">/html/support/CSTF6410.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<!-- // 고객의견 -->
 				<!-- 서비스 안내 -->
 				<tr>
+					<td>CSTF7000</td>
 					<td></td>
 					<td>공지사항</td>
-					<td>FAQ</td>
+					<td>서비스 뉴스</td>
 					<td>목록</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF7000.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF7010</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>상세</td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF7010.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF7100</td>
 					<td></td>
 					<td></td>
 					<td>공지사항</td>
 					<td>목록</td>
-					<td class="links">/html/support/KR50CS711.html</td>
+					<td class="links">/html/support/CSTF7100.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF7110</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>상세</td>
-					<td class="links">/html/support/KR50CS712.html</td>
+					<td class="links">/html/support/CSTF7110.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF7200</td>
 					<td></td>
 					<td></td>
 					<td>요금/보증기간 안내</td>
 					<td></td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF7200.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF7300</td>
 					<td></td>
 					<td></td>
 					<td>재생부품 가격 공지</td>
 					<td></td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF7300.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<!-- // 서비스 안내 -->
 				<!-- 기타 -->
 				<tr>
+					<td>CSTF8000</td>
 					<td></td>
 					<td>기타</td>
-					<td>콘텐츠만족도조사</td>
-					<td></td>
-					<td class="links">/html/support/.html</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td>공기청정필터신청</td>
-					<td></td>
-					<td class="links">/html/support/.html</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td>엔지니어 사진 등록 (스마일 전용)</td>
-					<td></td>
-					<td class="links">/html/support/.html</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td>SNS 공유 (카카오/페이스북/트위터)</td>
-					<td></td>
-					<td class="links">/html/support/.html</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
 					<td>App Gate (Mobile 전용)</td>
 					<td></td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF8000.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF8100</td>
 					<td></td>
 					<td></td>
 					<td>QR코드 랜딩 페이지 (Mobile 정용)</td>
 					<td></td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF8100.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF8200</td>
 					<td></td>
 					<td></td>
 					<td>접수 제품 및 증상 / 설치 환경 등록 (mobile 전용)</td>
 					<td></td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF8200.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF8300</td>
 					<td></td>
 					<td></td>
 					<td>접수 만족도 설문 참여 (mobile 전용)</td>
 					<td></td>
-					<td class="links">/html/support/.html</td>
+					<td class="links">/html/support/CSTF8300.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td>CSTF8400</td>
+					<td></td>
+					<td></td>
+					<td>콘텐츠만족도조사</td>
+					<td></td>
+					<td class="links">/html/support/CSTF8400.html</td>
+					<td><span class=""></span></td>
+				</tr>
+				<tr>
+					<td>CSTF8500</td>
+					<td></td>
+					<td></td>
+					<td>엔지니어 사진 등록 (스마일 전용)</td>
+					<td></td>
+					<td class="links">/html/support/CSTF8500.html</td>
+					<td><span class=""></span></td>
+				</tr>
+				<tr>
+					<td>CSTF8800</td>
+					<td></td>
+					<td></td>
+					<td>공기청정필터신청</td>
+					<td></td>
+					<td class="links">/html/support/CSTF8800.html</td>
+					<td><span class=""></span></td>
+				</tr>
+				<tr>
+					<td></td>
 					<td></td>
 					<td></td>
 					<td>엔지니어 정보 확인 (mobile 전용)</td>
 					<td></td>
 					<td class="links">/html/support/.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<tr>
+					<td></td>
 					<td></td>
 					<td></td>
 					<td>메일 템플릿</td>
 					<td></td>
 					<td class="links">/html/support/.html</td>
+					<td><span class=""></span></td>
+				</tr>
+				<tr>
+					<td>CSTF8900</td>
+					<td></td>
+					<td></td>
+					<td>제품지원상세(PSP)</td>
+					<td>제품 카테고리</td>
+					<td class="links">/html/support/CSTF8900.html</td>
+					<td><span class=""></span></td>
 				</tr>
 				<!-- // 기타 -->
 			</tbody>
@@ -592,9 +673,6 @@ $('table tbody tr td').each(function() {
 	// 링크 걸어 주기
 	if(obj.hasClass('links') || obj.hasClass('uxpin')) {
 		var txt = obj.text();
-		// if (location.port != "3000") { // dev server
-		// 	txt = txt.replace(/\/html\//gi, '\/lg5-common-gp\/html\/');
-		// }
 		if(txt!='') {
 			var linkArr = txt.split("|");
 			var localeArr = obj.data("locale") ? obj.data("locale").toString().split("|") : null;
@@ -605,11 +683,6 @@ $('table tbody tr td').each(function() {
 				}
 				obj.html(htmlStr);
 			} else {
-				// links
-				//if(!obj.next().hasClass('drop7')) {
-					//obj.html('<a href="'+txt+'" target="_blank">View</a>');
-				//}
-				//console.log(localeArr !== null);
 				for(var i=0; i<linkArr.length; i++){
 					var test = linkArr[i].split("/");
 					var test1 = test[test.length - 1].split('.')[0];

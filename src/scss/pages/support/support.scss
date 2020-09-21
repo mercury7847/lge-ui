@@ -37,6 +37,7 @@
     display:none;
 }
 
+
 .support {
     @import "../../support/layout";
     @import "../../support/notice-list";
@@ -205,22 +206,6 @@
             padding-top: 22px;
             &.no-border {
                 margin-top: 10px;
-            }
-        }
-    }
-
-    /* tabs */
-    .tabs-wrap {
-        .tabs {
-            > li{
-                > a {
-                    font-size: 14px;
-                }
-                &.on {
-                    > a {
-                        border-bottom: 2px solid #111;
-                    }
-                }
             }
         }
     }
