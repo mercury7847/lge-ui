@@ -26,16 +26,19 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
             if(self.$mobileLinks == null){
                 var toggleList = [];
-                var itemList = [];
+                var itemList = {};
                 self.$el.find('.link-wrap .link-section h5').each(function(idx, item){
                     if(!$(item).hasClass('hidden')){
                         toggleList.push($(item).clone());
-                        itemList.push([]);
+
+                        var id = $(item).attr("id");
+                        itemList[id] = [];
                     }
                 });
 
                 self.$el.find('.link-wrap .link-section .dep2-wrap').each(function(idx, item){
-                    var id = $(item).data('groupId').split('-')[1]-1;
+                    var id = $(item).data('groupId');
+                    console.log(id)
                     $(item).find('> li').each(function(cdx, child){
                         itemList[id].push($(child).clone());
                     });
@@ -59,17 +62,19 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
                 $('.link-wrap.ui_footer_accordion > li').each(function(idx, item){
                     $(toggleList[idx]).addClass('ui_accord_toggle');
                     $(item).prepend($(toggleList[idx]));
+                    
+                    var id = $(toggleList[idx]).attr("id");
 
-                    var itemlistleng = $(itemList[idx][0]).find('ul').length;
+                    var itemlistleng = $(itemList[id][0]).find('ul').length;
                     if(itemlistleng) $(item).find('> ul').addClass('ui_footer_accordion');
 
-                    for(var cdx in itemList[idx]){
+                    for(var cdx in itemList[id]){
                         if(itemlistleng){
-                            $(itemList[idx][cdx]).find('> .dep2').addClass('ui_accord_toggle');
-                            $(itemList[idx][cdx]).find('> ul').addClass('ui_accord_content');
+                            $(itemList[id][cdx]).find('> .dep2').addClass('ui_accord_toggle');
+                            $(itemList[id][cdx]).find('> ul').addClass('ui_accord_content');
                         }
 
-                        $(item).find('> ul').append($(itemList[idx][cdx]));
+                        $(item).find('> ul').append($(itemList[id][cdx]));
                     }
                 });
 
