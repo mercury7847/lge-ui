@@ -915,9 +915,6 @@
                     }
                 }
                 &.large {
-                    //.product-image {
-                    //    padding: 0 0 54.388%;
-                    //}
                     .banner-contents {
                         .banner-flag {
                             margin-bottom: 8px;
@@ -963,9 +960,6 @@
                         }
                     }
                     @media screen and (max-width: 1284px) {
-                        //.product-image {
-                        //    padding: 0 0 164.954%;
-                        //}
                         .banner-contents {
                             .banner-flag,
                             .banner-button {
@@ -981,16 +975,6 @@
                             }
                         }
                     }
-                    //@include mobile {
-                    //    .banner-contents {
-                    //        position: static;
-                    //        width: 100%;
-                    //        padding: 36px 28px;
-                    //        .banner-flag {
-                    //            display: block;
-                    //        }
-                    //    }
-                    //}
                 }
             }
 
@@ -1011,6 +995,19 @@
                         transform: rotate(45deg);
                         vertical-align: 4px;
                         content: '';
+                    }
+
+                    @include mobile {
+                        position: relative;
+                        &:before {
+                            position: absolute;
+                            bottom: -2px;
+                            left: 0;
+                            right: 15px;
+                            height: 1px;
+                            background-color: #222;
+                            content: '';
+                        }
                     }
                 }
             }
