@@ -430,58 +430,9 @@
             float: left;
             max-width: (420px * 3) + 24px;
             margin: 0 auto;
-            .items-list {
-                @include clearfix;
-                margin: 0 -6px;
-                > li {
-                    float: left;
-                    width: 33.333333%;
-                    padding: 0 6px 12px;
-                    &.item-banner {
-                        &.large {
-                            width: 66.666667%;
-                        }
-                        .item {
-                            overflow: hidden;
-                            padding: 0;
-                        }
-                    }
-                    @media screen and (max-width: 1284px) {
-                        width: 50%;
-                        &.item-banner {
-                            &.large {
-                                width: 50%;
-                            }
-                        }
-                        &:nth-child(odd) {
-                            clear: left;
-                        }
-                    }
-                    @include mobile {
-                        width: 100%;
-                        &.item-banner {
-                            &.large {
-                                width: 100%;
-                            }
-                        }
-                        &:nth-child(odd) {
-                            clear: none;
-                        }
-                    }
-                }
-                .item {
-                    position: relative;
-                    padding: 0 54px 36px;
-                    border-radius: 4px;
-                    background-color: #fff;
-    
-                    @include pc {
-                        max-height: 672px;
-                    }
-                    @include mobile {
-                        padding: 0 28px 32px;
-                    }
-                }
+            @media screen and (max-width: 1284px) {
+                float: none;
+                max-width: 100%;
             }
     
             .items-top {
@@ -627,6 +578,60 @@
                 }
             }
 
+            .items-list {
+                @include clearfix;
+                margin: 0 -6px;
+                > li {
+                    //position: relative;
+                    float: left;
+                    width: 33.333333%;
+                    padding: 0 6px 12px;
+                    &.item-banner {
+                        &.large {
+                            width: 66.666667%;
+                        }
+                        .item {
+                            overflow: hidden;
+                            padding: 0;
+                        }
+                    }
+                    @media screen and (max-width: 1284px) {
+                        width: 50%;
+                        &.item-banner {
+                            &.large {
+                                width: 50%;
+                            }
+                        }
+                        &:nth-child(odd) {
+                            clear: left;
+                        }
+                    }
+                    @include mobile {
+                        width: 100%;
+                        &.item-banner {
+                            &.large {
+                                width: 100%;
+                            }
+                        }
+                        &:nth-child(odd) {
+                            clear: none;
+                        }
+                    }
+                }
+                .item {
+                    position: relative;
+                    padding: 0 47px 36px;
+                    border-radius: 4px;
+                    background-color: #fff;
+
+                    @include pc {
+                        max-height: 672px;
+                    }
+                    @include mobile {
+                        padding: 0 28px 32px;
+                    }
+                }
+            }
             .promotion-badge {
                 position: absolute;
                 top: 23px;
@@ -743,6 +748,9 @@
                     font-size: 14px;
                     line-height: 20px;
                     color: #616161;
+                    li {
+                        @include textClipClamp(1);
+                    }
                     .care-option {
                         font-weight: 500;
                         color: #222;
@@ -840,28 +848,17 @@
         
             .item-banner {
                 .product-image {
+                    //position: relative;
+                    overflow: hidden;
+                    //width: 100%;
                     margin-bottom: 0;
+                    //padding: 0 0 160%;
                     padding: 0;
                     img {
-                        max-width: 100%;
-                        @media screen and (min-width: 1285px) {
-                            &.tablet,
-                            &.mobile {
-                                display: none;
-                            }
-                        }
-                        @media screen and (min-width: 768px) and (max-width: 1284px) {
-                            &.pc,
-                            &.mobile {
-                                display: none;
-                            }
-                        }
-                        @include mobile {
-                            &.pc,
-                            &.tablet {
-                                display: none;
-                            }
-                        }
+                        max-width: none;
+                        //height: 100%;
+                        //width: auto;
+                        //max-height: 672px;
                     }
                 }
                 .banner-contents {
@@ -962,7 +959,7 @@
                             }
                         }
                     }
-                    @media screen and (min-width: 768px) and (max-width: 1284px) {
+                    @media screen and (max-width: 1284px) {
                         .banner-contents {
                             .banner-flag,
                             .banner-button {
@@ -978,14 +975,38 @@
                             }
                         }
                     }
+                }
+            }
+
+            .read-more-area {
+                padding-top: 36px;
+                text-align: center;
+                .read-more {
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: #222;
+                    &:after {
+                        display: inline-block;
+                        width: 8px;
+                        height: 8px;
+                        margin-left: 6px;
+                        border-right: 1px solid #222;
+                        border-bottom: 1px solid #222;
+                        transform: rotate(45deg);
+                        vertical-align: 4px;
+                        content: '';
+                    }
+
                     @include mobile {
-                        .banner-contents {
-                            position: static;
-                            width: 100%;
-                            padding: 36px 28px;
-                            .banner-flag {
-                                display: block;
-                            }
+                        position: relative;
+                        &:before {
+                            position: absolute;
+                            bottom: -2px;
+                            left: 0;
+                            right: 15px;
+                            height: 1px;
+                            background-color: #222;
+                            content: '';
                         }
                     }
                 }

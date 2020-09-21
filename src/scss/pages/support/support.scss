@@ -37,6 +37,7 @@
     display:none;
 }
 
+
 .support {
     @import "../../support/layout";
     @import "../../support/notice-list";
@@ -205,22 +206,6 @@
             padding-top: 22px;
             &.no-border {
                 margin-top: 10px;
-            }
-        }
-    }
-
-    /* tabs */
-    .tabs-wrap {
-        .tabs {
-            > li{
-                > a {
-                    font-size: 14px;
-                }
-                &.on {
-                    > a {
-                        border-bottom: 2px solid #111;
-                    }
-                }
             }
         }
     }
@@ -426,6 +411,43 @@
                     &:last-child {
                         > a {
                             padding-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .tabs-wrap {
+        &.type-A {
+            .tabs {
+                max-width: 1066px;
+                width: 100%;
+                margin: 0 auto;
+                text-align: left;
+                margin-bottom: 16px;
+            }
+        }
+    }
+
+    .btn-text {
+        &.underline {
+            text-decoration: underline;
+        }
+    }
+
+    .forms {
+        position: relative;
+        .input-wrap {
+            @include mobile {
+                .box {
+                    .cell {
+                        &.text-btn {
+                            button {
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                            }
                         }
                     }
                 }

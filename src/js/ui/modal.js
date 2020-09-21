@@ -21,7 +21,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             modal: '<div class="ui_modal ui_modal_ajax" style="display:none"></div>'
         },
         options: {
-            opacity: 0.2
+            opacity: 0.7
         },
         init: function init(options) {
             var self = this;

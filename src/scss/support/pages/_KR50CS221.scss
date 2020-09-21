@@ -25,7 +25,7 @@
 
     .tabs-contents {
         > .section {
-            @include globalBackground;
+            // include globalBackground;
         }
         @media screen and (min-width: $tablet-l-width) {
             display:block !important;

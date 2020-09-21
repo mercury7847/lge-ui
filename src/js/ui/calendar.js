@@ -1087,21 +1087,31 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                 self._normalizeOptions();
             }
 
-            console.log('start?',date);
+            //console.log('setdate:',date);
             try {
                 if (dateUtil.isValid(date)) {
                     self.activeDate = dateUtil.parse(date);
                 } else {
-                    console.log('valuid');
                     return;
                     //self.activeDate = new Date();
                 }
                 self.currDate = core.clone(self.activeDate);
-                console.log('ok1');
                 if (self.isShown) {
-                    console.log('okj2');
                     self.setCurrentDate(core.clone(self.currDate));
                 }
+
+                //console.log(self.options.inputTarget)
+                if (self.options.inputTarget) {
+                    self.$input.val(dateUtil.format(date, self.options.format));
+                    var e = $.Event('calendarinsertdate');
+                    e.target = e.currentTarget = this;
+                    var evtData = {
+                        target: e.currentTarget,
+                        date: date
+                    };
+                    self.$input[self.options.isBubble ? 'trigger' : 'triggerHandler'](e, evtData);
+                }
+
             } catch (e) {
                 throw new Error('Calendar#setDate(): 날짜 형식이 잘못 되었습니다.');
             }
