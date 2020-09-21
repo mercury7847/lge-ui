@@ -32,8 +32,10 @@
         }
     }
     @include mobile {
-        padding:0 20px;
         text-align:left;
+        .tabs {
+            padding:0 20px;
+        }
     }
 
     // H2
