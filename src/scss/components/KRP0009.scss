@@ -430,6 +430,10 @@
             float: left;
             max-width: (420px * 3) + 24px;
             margin: 0 auto;
+            @media screen and (max-width: 1284px) {
+                float: none;
+                max-width: 100%;
+            }
             .items-list {
                 @include clearfix;
                 margin: 0 -6px;
@@ -840,28 +844,17 @@
         
             .item-banner {
                 .product-image {
+                    //position: relative;
+                    overflow: hidden;
+                    //width: 100%;
                     margin-bottom: 0;
+                    //padding: 0 0 160%;
                     padding: 0;
                     img {
-                        max-width: 100%;
-                        @media screen and (min-width: 1285px) {
-                            &.tablet,
-                            &.mobile {
-                                display: none;
-                            }
-                        }
-                        @media screen and (min-width: 768px) and (max-width: 1284px) {
-                            &.pc,
-                            &.mobile {
-                                display: none;
-                            }
-                        }
-                        @include mobile {
-                            &.pc,
-                            &.tablet {
-                                display: none;
-                            }
-                        }
+                        max-width: none;
+                        //height: 100%;
+                        //width: auto;
+                        //max-height: 672px;
                     }
                 }
                 .banner-contents {
@@ -918,6 +911,9 @@
                     }
                 }
                 &.large {
+                    //.product-image {
+                    //    padding: 0 0 54.388%;
+                    //}
                     .banner-contents {
                         .banner-flag {
                             margin-bottom: 8px;
@@ -962,7 +958,10 @@
                             }
                         }
                     }
-                    @media screen and (min-width: 768px) and (max-width: 1284px) {
+                    @media screen and (max-width: 1284px) {
+                        //.product-image {
+                        //    padding: 0 0 164.954%;
+                        //}
                         .banner-contents {
                             .banner-flag,
                             .banner-button {
@@ -978,16 +977,16 @@
                             }
                         }
                     }
-                    @include mobile {
-                        .banner-contents {
-                            position: static;
-                            width: 100%;
-                            padding: 36px 28px;
-                            .banner-flag {
-                                display: block;
-                            }
-                        }
-                    }
+                    //@include mobile {
+                    //    .banner-contents {
+                    //        position: static;
+                    //        width: 100%;
+                    //        padding: 36px 28px;
+                    //        .banner-flag {
+                    //            display: block;
+                    //        }
+                    //    }
+                    //}
                 }
             }
         }
