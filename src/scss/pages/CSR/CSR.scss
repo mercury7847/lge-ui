@@ -4,9 +4,11 @@
 @import "../../utilities/mixins";
 
 // FAQ
-@import "CSRF6043"
+//@import "CSRF6043"
 
 .find-store {
+    @import "CSRF6043";
+
     .cont-wrap {
         padding:0;
     }
