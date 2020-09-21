@@ -1,0 +1,196 @@
+.benefit-list {
+    margin:56px -40px 0;
+    font-size:0;
+    text-align:center;
+    &:first-child {
+        margin-top:0;
+        @include mobile {
+            margin-top:-24px;
+        }
+    }
+    li {
+        display:inline-block;
+        position:relative;
+        width:33%;
+        padding:108px 40px 32px;
+        vertical-align:top;
+        &::before {
+            content:' ';
+            position:absolute;
+            top:16px;
+            left:50%;
+            width:80px;
+            height:80px;
+            margin-left:-40px;
+        }
+        @each $num in bn01, bn02, bn03 {
+            &.#{$num}::before {
+                background:url('/lg5-common/images/membership/icon-#{$num}.jpg') center no-repeat;
+                background-size:100%;
+            }
+        }
+        dl {
+            color:#111;
+            font-size:16px;
+            line-height:24px;
+            text-align:center;
+            dt {
+                margin-bottom:2px;
+                font-weight:700;
+            }
+            dd {
+                word-break:keep-all;
+            }
+        }
+    }
+    @include mobile {
+        margin-left:12px;
+        margin-right:0;
+        li {
+            display:block;
+            width:auto;
+            margin:24px auto 0;
+            padding:10px 0 10px 72px;
+            &::before {
+                top:0;
+                left:0;
+                width:60px;
+                height:60px;
+                margin-left:0;
+            }
+            dl {
+                text-align:left;
+                dd br {
+                    display:none;
+                }
+            }
+        }
+    }
+}
+.membership-shops {
+    margin:-14px -7px 0;
+    font-size:0;
+    li {
+        display:inline-block;
+        width:25%;
+        margin-top:14px;
+        vertical-align:top;
+        dl {
+            height:144px;
+            margin:0 7px;
+            padding:32px 0;
+            border-radius:4px;
+            background:#f4f4f4;
+            text-align:center;
+            dt {
+                max-width:164px;
+                height:48px;
+                margin:0 auto;
+                font-size:0;
+            }
+            dd {
+                margin-top:8px;
+                font-size:0;
+                .flag {
+                    display:inline-block;
+                    margin:0 2px;
+                    padding:3px 7px;
+                    border:1px solid #aaa;
+                    border-radius:4px;
+                    background:transparent;
+                    color:#616161;
+                    font-size:12px;
+                    line-height:16px;
+                }
+            }
+        }
+        @for $i from 1 through 13 {
+            &.ci#{$i} dl dt {
+                background:url('/lg5-common/images/membership/img-ci#{$i}.jpg') center no-repeat;
+                background-size:100%;
+            }
+        }
+    }
+    @media screen and (max-width:991px) {
+        li {
+            width:50%;
+        }
+    }
+    @include mobile {
+        li {
+            width:100%;
+        }
+    }
+}
+.svc-prod-list {
+    margin:8px -12px 0;
+    font-size:0;
+    li {
+        display:inline-block;
+        width:calc(100% / 3);
+        margin-top:24px;
+        vertical-align:top;
+        dl {
+            height:400px;
+            margin:0 12px;
+            border-radius:4px;
+            background:#f4f4f4;
+            dt {
+                position:relative;
+                margin-bottom:4px;
+                padding-top:16px;
+                color:#111;
+                font-size:16px;
+                line-height:24px;
+                font-weight:700;
+                .img {
+                    display:block;
+                    margin-bottom:32px;
+                    text-align:center;
+                    img {
+                        width:100%;
+                        height:auto;
+                        vertical-align:top;
+                    }
+                    @include mobile {
+                        margin-bottom:16px;
+                        img {
+                            max-width:190px;
+                        }
+                    }
+                }
+                p {
+                    padding:0 40px;
+                    @include mobile {
+                        padding:0 12px;
+                    }
+                }
+            }
+            dd {
+                margin-top:1px;
+                padding:0 40px;
+                color:#111;
+                font-size:14px;
+                line-height:20px;
+                word-break:keep-all;
+                &.ex {
+                    color:#616161;
+                }
+                @include mobile {
+                    padding:0 12px;
+                }
+            }
+        }
+    }
+    @include mobile {
+        margin:20px -6px 0;
+        li {
+            width:50%;
+            margin-top:12px;
+            dl {
+                height:300px;
+                margin:0 6px;
+            }
+        }
+    }
+}

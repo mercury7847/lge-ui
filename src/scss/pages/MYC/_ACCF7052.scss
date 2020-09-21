@@ -1,0 +1,84 @@
+.point-use-list {
+    margin:32px 0 0;
+    padding:24px 0;
+    border-top:1px solid #616161;
+    border-bottom:1px solid #616161;
+    font-size:16px;
+    line-height:24px;
+    font-weight:500;
+    @include mobile {
+        line-height:19px;
+        border-bottom-color:#ddd;
+    }
+    .lists {
+        li {
+            display:table;
+            table-layout:fixed;
+            width:100%;
+            margin-top:4px;
+            padding:0 16px;
+            @include mobile {
+                margin-top:16px;
+            }
+            &:first-child {
+                margin-top:0;
+            }
+            p {
+                display:table-cell;
+                vertical-align:middle;
+                &.date {
+                    width:122px;
+                }
+                &.desc {
+                    width:auto;
+                    text-align:left;
+                }
+                &.point {
+                    min-width:112px;
+                    text-align:right;
+                    @include mobile {
+                        span {
+                            float:left;
+                            width:50%;
+                            .pc_txt {
+                                display:none;
+                            }
+                        }
+                    }
+                    .mo_txt {
+                        display:none;
+                        @include mobile {
+                            display:block;
+                            color:#616161;
+                            text-align:left;
+                        }
+                    }
+                }
+                @include mobile {
+                    float:left;
+                    width:100% !important;
+                    margin-top:8px;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                }
+            }
+
+        }
+    }
+    dl.total {
+        @include clearfix;
+        padding:20px 16px 0;
+        @include mobile {
+            padding-top:32px;
+        }
+        dt, dd {
+            float:left;
+            width:50%;
+            font-weight:700;
+        }
+        dd {
+            text-align:right;
+        }
+    }
+}
