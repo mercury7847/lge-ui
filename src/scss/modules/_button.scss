@@ -12,11 +12,17 @@
     border: 1px solid #111;
     border-radius: 8px;
     background-color:transparent;
+    &:hover {
+        box-shadow:2px 4px 10px 0 rgba(0, 0, 0, .16);
+    }
+    &:active {
+        background-color:#f4f4f4;
+    }
     &.gray {
         border-color: #ededed;
         background: #ededed;
         color: #ec455a;
-        &:hover, &:active {
+        &:active {
             border-color:#ddd;
             background-color:#ddd;
         }
@@ -30,8 +36,11 @@
         border-color:#ec455a;
         background-color:#ec455a;
         color:#fff;
-        &:hover, &:active {
+        &:active {
             background-color: #e51346;
+        }
+        &:hover {
+            box-shadow:2px 4px 10px 0 rgba(0, 0, 0, .16), 2px 4px 12px 0 rgba(234, 69, 90, .3);
         }
         &:disabled, &.disabled, &[aria-disabled=true] {
             border-color:#ccc;
@@ -41,10 +50,13 @@
     &.bd-pink {
         color:#ec455a;
         border-color:#ec455a;
-        &:hover, &:active {
+        &:active {
             color:#e51346;
             border-color:#e51346;
             background-color:#f4f4f4;
+        }
+        &:hover {
+            box-shadow:2px 4px 10px 0 rgba(0, 0, 0, .16), 2px 4px 12px 0 rgba(234, 69, 90, .3);
         }
         &:disabled, &.disabled, &[aria-disabled=true] {
             color:#ccc;
@@ -55,7 +67,7 @@
     &.bd-gray {
         color:#616161;
         border-color:#979797;
-        &:hover, &:active {
+        &:active {
             border-color:#979797;
             background-color: #f4f4f4;   
         }
@@ -94,7 +106,9 @@
     }
     &:disabled, &.disabled, &[aria-disabled=true] {
         color:#ccc;
-        text-decoration:underline;
+        &:hover {
+            text-decoration:none;
+        }
     }
     @include mobile {
         font-size:14px;

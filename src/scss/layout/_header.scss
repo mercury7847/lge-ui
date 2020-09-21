@@ -846,7 +846,10 @@
     .sub-category,
     .category-service,
     .category-hashtag,
-    .category-banner {
+    .category-banner,
+    .category-image,
+    .category-content,
+    .brand-category {
         display: none;
     }
 
@@ -885,7 +888,7 @@
 
                     &:hover {
                         font-weight: inherit;
-                        color: inherit;
+                        color: #979797;
                     }
                     &:focus,
                     &.active {
@@ -928,6 +931,48 @@
                                 font-weight: inherit;
                                 text-decoration: underline;
                             }
+                        }
+                    }
+                }
+            }
+        }
+        .category-image-box {
+            .column {
+                width: 100%;
+            }
+            .category {
+                > li {
+                    .category-item {
+                        margin-bottom: 0;
+                        &.active {
+                            & ~ .category-content {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+            .category-content {
+                padding: 0 20px;
+                li {
+                    margin-bottom: 0;
+                    background-color: #f4f4f4;
+                    &:nth-child(1) {
+                        padding-top: 6px;
+                    }
+                    &:nth-last-child(1) {
+                        padding-bottom: 6px;
+                    }
+                    a {
+                        display: block;
+                        margin-top: 0;
+                        padding: 6px 16px;
+                        line-height: 22px;
+                        color: #222;
+                        &:focus,
+                        &.active {
+                            font-weight: inherit;
+                            text-decoration: underline;
                         }
                     }
                 }
@@ -1002,6 +1047,9 @@
                     &.active {
                         font-weight: inherit;
                         text-decoration: underline;
+                    }
+                    &:hover {
+                        color: #222;
                     }
                 }
             }
@@ -1118,18 +1166,86 @@
         font-weight: 700;
         font-size: 18px;
         line-height: 22px;
-        color: #111;
-        .text {
-            color: #ec455a;
+    }
+    .login-membership-info {
+        margin-top: 20px;
+        padding: 20px 0;
+        border-radius: 4px;
+        background-color: #f4eae7;
+        @include clearfix;
+        li {
+            position: relative;
+            float: left;
+            width: 33.33%;
+            text-align: center;
+            .title {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 500;
+                font-size: 11px;
+                line-height: 16px;
+                color: #616161;
+            }
+            .text {
+                font-weight: 700;
+                font-size: 17px;
+                line-height: 23px;
+                color: #111;
+                .number {
+                    color: #ec455a;
+                }
+            }
         }
     }
     .logout {
         margin-top: 68px;
         padding: 25px 20px;
         .login-info {
+            color: #222;
             .text {
-                padding-bottom: 1px;
-                border-bottom: 1px solid #212121;
+                position: relative;
+                &:after {
+                    position: absolute;
+                    bottom: 2px;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: #222;
+                    content: '';
+                }
+            }
+        }
+        .login-membership-info {
+            margin-top: 20px;
+            padding: 20px 0;
+            border-radius: 4px;
+            background-color: #f4eae7;
+            @include clearfix;
+            li {
+                a {
+                    span {
+                        font-weight: 500;
+                        font-size: 11px;
+                        line-height: 16px;
+                        text-align: center;
+                        color: #616161;
+                        &:after {
+                            display: inline-block;
+                            width: 7px;
+                            height: 7px;
+                            margin-left: 2px;
+                            border-top: 1px solid #222;
+                            border-right: 1px solid #222;
+                            transform: rotate(45deg);
+                            content: '';
+                        }
+                        &.title {
+                            &:after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -1140,6 +1256,7 @@
         .login-info {
             position: relative;
             display: inline-block;
+            color: #111;
             &:after {
                 position: absolute;
                 top: 7px;
@@ -1148,40 +1265,11 @@
                 height: 9px;
                 border-top: 2px solid #212121;
                 border-right: 2px solid #212121;
+                transform: rotate(45deg);
                 content: '';
             }
-            &:after {
-                transform: rotate(45deg);
-            }
-        }
-        .login-membership-info {
-            margin-top: 20px;
-            padding: 20px 0;
-            border-radius: 4px;
-            background-color: #f4eae7;
-            @include clearfix;
-            li {
-                position: relative;
-                float: left;
-                width: 33.33%;
-                text-align: center;
-                .title {
-                    display: block;
-                    margin-bottom: 5px;
-                    font-weight: 500;
-                    font-size: 11px;
-                    line-height: 16px;
-                    color: #616161;
-                }
-                .text {
-                    font-weight: 700;
-                    font-size: 17px;
-                    line-height: 23px;
-                    color: #111;
-                    .number {
-                        color: #ec455a;
-                    }
-                }
+            .text {
+                color: #ec455a;
             }
         }
     }
