@@ -21,13 +21,13 @@
             > a {
                 display:block;
                 position:relative;
-                color:#aaa;
+                color:#ccc;
                 font-size:18px;
                 font-weight:700;
                 line-height:26px;
             }
             &.on > a {
-                color:#111;
+                color:#222;
             }
         }
     }
@@ -54,13 +54,12 @@
                     display:block;
                     padding:6px 12px;
                     border-radius:18px;
-                    color:#515151;
                     font-size:16px;
                     font-weight:500;
                     line-height:24px;
                 }
                 &.on > a {
-                    color:#111;
+                    color:#222;
                     font-weight:700;
                     background-color:#f4f4f4;
                 }
@@ -91,7 +90,7 @@
                     }
                 }
                 &.on > a {
-                    border-color:#111;
+                    border-color:#222;
                 }
             }
         }

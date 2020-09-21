@@ -432,9 +432,10 @@
     .notice-contents {
         max-width:1066px;
         margin:0 auto;
-        padding-top:24px;
+        padding:24px 0 60px;
         @include mobile {
             background:#f4f4f4;
+            padding:20px 20px 60px;
         }
         .setting-btns {
             text-align:right;
@@ -443,6 +444,9 @@
                 display:inline-block;
                 margin-left:24px;
                 vertical-align:top;
+                @include mobile {
+                    margin-left:20px;
+                }
                 &:first-child {
                     margin-left:0;
                 }
@@ -450,6 +454,9 @@
         }
         .notice-list-wrap {
             margin-top:16px;
+            @include mobile {
+                margin-top:20px;
+            }
             .notice-lists {
                 position:relative;
                 &::before {
@@ -459,7 +466,11 @@
                     bottom:0;
                     left:23px;
                     width:2px;
+                    border-radius:1px;
                     background:#ddd;
+                    @include mobile {
+                        left:19px;
+                    }
                 }
                 .list {
                     position:relative;
@@ -470,6 +481,9 @@
                     .notice-box {
                         position:relative;
                         padding-left:60px;
+                        @include mobile {
+                            padding-left:48px;
+                        }
                         .icons {
                             position:absolute;
                             top:0;
@@ -493,12 +507,25 @@
                                     background:#ccc;
                                 }
                             }
+                            @include mobile {
+                                width:40px;
+                                height:40px;
+                                background-size:20px;
+                                em {
+                                    width:9px;
+                                    height:9px;
+                                }
+                            }
                         }
                         .date {
                             margin-bottom:8px;
                             color:$color-1;
                             font-size:16px;
                             line-height:24px;
+                            @include mobile {
+                                font-size:14px;
+                                line-height:18px;
+                            }
                         }
                         .box {
                             display:inline-block;
@@ -508,6 +535,10 @@
                             padding:40px;
                             border-radius:4px;
                             background:#fff;
+                            @include mobile {
+                                display:block;
+                                padding:40px 16px;
+                            }
                             .tit {
                                 padding-right:16px;
                                 color:$color-1;
@@ -520,9 +551,13 @@
                                 color:$color-1;
                                 font-size:16px;
                                 line-height:24px;
+                                @include mobile {
+                                    margin-top:6px;
+                                }
                             }
                             .img {
                                 margin-top:12px;
+                                margin-bottom:40px;
                                 img {
                                     max-width:100%;
                                     height:auto;
@@ -537,6 +572,11 @@
                                 padding:24px;
                                 border-radius:8px;
                                 background:#f4f4f4;
+                                @include mobile {
+                                    margin-top:20px;
+                                    padding:20px 12px;
+                                    border-radius:4px;
+                                }
                                 .name {
                                     color:$color-1;
                                     font-size:14px;
@@ -544,7 +584,11 @@
                                     font-weight:700;
                                 }
                                 .info {
+                                    margin-top:4px;
                                     font-size:0;
+                                    @include mobile {
+                                        margin-top:12px;
+                                    }
                                     li {
                                         display:inline-block;
                                         position:relative;
@@ -562,6 +606,14 @@
                                             background:#ddd;
                                         }
                                         &:last-child {
+                                            margin-right:0;
+                                            padding-right:0;
+                                            &::after {
+                                                display:none;
+                                            }
+                                        }
+                                        @include mobile {
+                                            display:block;
                                             margin-right:0;
                                             padding-right:0;
                                             &::after {
