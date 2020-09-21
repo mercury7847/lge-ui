@@ -32,7 +32,7 @@
 
     .related-content {
         margin-top: 112px;
-        @include globalBackground;
+        //include globalBackground;
         @include mobile {
             margin-top:56px;
         }
