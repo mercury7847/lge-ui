@@ -993,6 +993,27 @@
                     //}
                 }
             }
+
+            .read-more-area {
+                padding-top: 36px;
+                text-align: center;
+                .read-more {
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: #222;
+                    &:after {
+                        display: inline-block;
+                        width: 8px;
+                        height: 8px;
+                        margin-left: 6px;
+                        border-right: 1px solid #222;
+                        border-bottom: 1px solid #222;
+                        transform: rotate(45deg);
+                        vertical-align: 4px;
+                        content: '';
+                    }
+                }
+            }
         }
     }
 }
