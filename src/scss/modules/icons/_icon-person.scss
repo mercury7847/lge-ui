@@ -17,3 +17,12 @@
         background-size: 24px 24px;
     }
 }
+
+@mixin icon-person-on () {
+    background: url("/lg5-common/images/icons/icon-person-on.svg") no-repeat center center;
+    background-size: 20px 20px;
+
+    @include mobile {
+        background-size: 24px 24px;
+    }
+}
