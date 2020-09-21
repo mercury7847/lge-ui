@@ -263,6 +263,24 @@
             float: right;
         }
     }
+
+    .form-wrap {
+        @include mobile {
+            .forms {
+                .conts {
+                    .input-box {
+                        &.size2 {
+                            .input-wrap {
+                                &:nth-child(2) {
+                                    padding-right: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 @import "../../support/pages/KR50CS311";
