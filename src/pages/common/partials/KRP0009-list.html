@@ -2,48 +2,48 @@
 
 <div class="product-items-wrap">
     <div class="items-top">
-        <div class="cate-area ui_order_dropdown">
+        <div class="cate-area ui_dropdown">
             <div class="cate-list">
                 <a href="#n" class="ui_dropdown_toggle"> <!-- 클릭 시 active 클래스 추가 -->
-                    2개 선택
+                    <span id="categoryCnt">0개 선택</span>
                     <span class="ico"></span>
                 </a>
                 <div class="cate-sel ui_dropdown_list">
                     <div class="chk-wrap">
-                        <input type="checkbox" id="all_chk01" checked>
+                        <input type="checkbox" name="categoryCheckbox" id="all_chk01" value="1">
                         <label for="all_chk01">전체</label>
                     </div>
                     <div class="chk-wrap">
-                        <input type="checkbox" id="chk01">
-                        <label for="chk01">항목1</label>
+                        <input type="checkbox" name="categoryCheckbox" id="chk01" value="2">
+                        <label for="chk01">카테고리1</label>
                     </div>
                     <div class="chk-wrap">
-                        <input type="checkbox" id="chk02">
-                        <label for="chk02">항목2</label>
+                        <input type="checkbox" name="categoryCheckbox" id="chk02" value="3">
+                        <label for="chk02">카테고리2</label>
                     </div>
                     <div class="chk-wrap" >
-                        <input type="checkbox" id="chk03">
-                        <label for="chk03">항목3</label>
+                        <input type="checkbox" name="categoryCheckbox" id="chk03" value="4">
+                        <label for="chk03">카테고리3</label>
                     </div>
                     <div class="chk-wrap">
-                        <input type="checkbox" id="chk04">
-                        <label for="chk04">항목4</label>
+                        <input type="checkbox" name="categoryCheckbox" id="chk04" value="5">
+                        <label for="chk04">카테고리4</label>
                     </div>
                 </div>
             </div>
         </div>
         <div class="btn-filter">
-            <a href="##n" data-control="modal" class="ico-filter"><span class="blind">옵션필터</span></a>
+            <a href="##n" id="filterModalLink" class="ico-filter"><span class="blind">옵션필터</span></a>
         </div>
         <div class="sort-area">
             <div class="sort-list">
                 <div class="select-wrap">
-                    <select class="ui_selectbox" id="select1" title="리스트 정렬 순서 선택">
-                        <option value="">인기순</option>
-                        <option value="">최신순</option>
-                        <option value="">가격 높은순</option>
-                        <option value="">가격 낮은순</option>
-                        <option value="">리뷰 많은순</option>
+                    <select class="ui_sorting_selectbox" id="select1" title="리스트 정렬 순서 선택">
+                        <option value="1">인기순</option>
+                        <option value="2">최신순</option>
+                        <option value="3">가격 높은순</option>
+                        <option value="4">가격 낮은순</option>
+                        <option value="5">리뷰 많은순</option>
                     </select>
                 </div>
             </div>

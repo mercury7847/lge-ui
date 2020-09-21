@@ -62,6 +62,7 @@ vcui.define('ui/dropdown', ['jquery', 'vcui'], function ($, core) {
             });
 
             self.on('click', prefixClass + 'list', self._unhandleClick = function (e) {
+
                 if (!opt.autoHideFocusout) {
                     return;
                 }
@@ -94,11 +95,12 @@ vcui.define('ui/dropdown', ['jquery', 'vcui'], function ($, core) {
             }, 10);
 
             self.docOn("focusin focusout", '.ui_dropdown_list', self._unhandleFocus = function (e) {
+
                 clearTimeout(self.focusTimer), self.focusTimer = null;
 
                 if ("focusout" === e.type && self.$el.hasClass("open")) {
                     self.focusTimer = setTimeout(function () {
-                        self.close();
+                        //self.close();
                     }, 10);
                 }
             });
