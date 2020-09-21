@@ -545,6 +545,9 @@
                                 font-size:16px;
                                 line-height:24px;
                                 font-weight:700;
+                                @include mobile {
+                                    padding-right:0;
+                                }
                             }
                             .desc {
                                 margin-top:4px;
@@ -566,6 +569,9 @@
                                 &.coupon {
                                     max-width:180px;
                                 }
+                                @include mobile {
+                                    margin-bottom:20px;
+                                }
                             }
                             .more-view {
                                 margin-top:32px;
@@ -582,6 +588,9 @@
                                     font-size:14px;
                                     line-height:20px;
                                     font-weight:700;
+                                    @include mobile {
+                                        line-height:18px;
+                                    }
                                 }
                                 .info {
                                     margin-top:4px;
@@ -621,7 +630,6 @@
                                             }
                                         }
                                         dl {
-                                            white-space:nowrap;
                                             font-size:0;
                                             dt, dd {
                                                 display:inline-block;
@@ -629,6 +637,9 @@
                                                 color:$color-1;
                                                 font-size:14px;
                                                 line-height:20px;
+                                                @include mobile {
+                                                    line-height:18px;
+                                                }
                                             }
                                             dt {
                                                 margin-right:2px;
@@ -652,11 +663,21 @@
                                         font-size:14px;
                                         line-height:20px;
                                     }
+                                    @include mobile {
+                                        margin-top:12px;
+                                        .btn {
+                                            min-width:100%;
+                                            padding:10px 26px;
+                                        }
+                                    }
                                 }
                             }
                             .bottom-btn {
                                 margin-top:12px;
                                 text-align:right;
+                                @include mobile {
+                                    margin-top:15px;
+                                }
                             }
                             .btn-del {
                                 position:absolute;
@@ -683,6 +704,16 @@
                                 &::after {
                                     transform:rotate(-45deg);
                                 }
+                                @include mobile {
+                                    top:12px;
+                                    right:12px;
+                                    width:24px;
+                                    height:24px;
+                                    &::before, &::after {
+                                        height:18px;
+                                        margin-top:-9px;
+                                    }
+                                }
                             }
                         }
                     }
@@ -696,6 +727,10 @@
                 line-height:24px;
                 em {
                     font-weight:700;
+                }
+                @include mobile {
+                    margin-top:20px;
+                    padding-left:48px;
                 }
             }
             .nodata {

@@ -5,6 +5,7 @@
 @@if ( !context.typeVer ) {
 <article id="laypop" class="lay-wrap">
 }
+    @@if ( !context.msgOnly ) {
     <header class="lay-header">
         <h1 class="tit"><span>@@alertTit</span></h1>
     </header>
@@ -13,8 +14,22 @@
             <p>`+alertCont[i].txt+`</p>
         }
     </section>
+    }
+    @@if ( context.msgOnly ) {
+    <section class="lay-conts">
+        <h6>@@msg</h6>
+    </section>
+    }
+    @@if ( !context.twobtn ) {
     <div class="btn-wrap laypop">
-        <button type="button" class="btn-lay ui_modal_close"><span>확인</span></button>
+        <button type="button" class="btn pink ui_modal_close"><span>확인</span></button>
     </div>
+    }
+    @@if ( context.twobtn ) {
+    <div class="btn-wrap laypop">
+        <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+        <button type="button" class="btn pink"><span>확인</span></button>
+    </div>   
+    }
 </article>
 <!-- alert modal -->
