@@ -8,24 +8,229 @@
         @@include('./common/header.html')
 
         <div class="container">
-            <!-- @@include('./common/modules/page-header.html', {
-                "pageTitle": "나의 멤버십",
-                "pageArr" : [
-                    { "page" : "나의 멤버십 정보", "on" : "on" },
-                    { "page" : "포인트 조회", "on": "" }
-                ]
-            }) -->
-            <!-- membership -->
-            <div class="contents mypage">
+            <!-- 메장찾기 -->
+            <div class="contents find-store">
                 <div class="cont-wrap">
-                    
+                    <div class="map-container">
+                        <div class="store-list-wrap">
+                            <h2 class="tit">매장찾기</h2>
+                            <button type="button" class="btn-fold"><span class="blind">리스트 열기</span></button>
+                            <div class="store-list-box">
+
+                                <!-- search -->
+                                <div class="sch-box">
+                                    <div class="tabs-wrap ui_tab">
+                                        <ul class="tabs">
+                                            <li class="on"><a href="#tab1">매장명<em class="blind">선택됨</em></a></li>
+                                            <li><a href="#tab2">지역</a></li>
+                                            <li><a href="#tab3">도로명</a></li>
+                                            <li><a href="#tab4">지하철</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div id="tab1" class="tabs-contents">
+                                        <div class="sch-input-wrap">
+                                            <div class="input-sch">
+                                                <input type="text" placeholder="매장명 혹은 지역을 입력해주세요." class="txt">
+                                                <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                            </div>
+                                        </div>
+                                        <p class="desc">지역이나 매장명을 검색하여 근처 매장을 찾아보세요.</p>
+                                    </div>
+
+                                    <div id="tab2" class="tabs-contents">
+                                        <div class="sch-input-wrap select">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="select1" title="시/도 선택">
+                                                    <option value="">시/도 선택</option>
+                                                    <option value="">option</option>
+                                                    <option value="">option</option>
+                                                </select>
+                                            </div>
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="select2" title="구/군 선택">
+                                                    <option value="">구/군 선택</option>
+                                                    <option value="">option</option>
+                                                    <option value="">option</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <p class="desc">지역을 선택하시고 근처 LG전자 매장을 찾아보세요.</p>
+                                    </div>
+
+                                    <div id="tab3" class="tabs-contents">
+                                        <div class="sch-input-wrap">
+                                            <div class="input-sch">
+                                                <input type="text" placeholder="주소를 입력해주세요." class="txt">
+                                                <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                            </div>
+                                        </div>
+                                        <p class="desc">도로명 주소를 입력하고 근처 LG전자 매장을 찾아보세요.</p>
+                                    </div>
+
+                                    <div id="tab4" class="tabs-contents">
+                                        <div class="sch-input-wrap select">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="select1" title="지역 선택">
+                                                    <option value="">지역 선택</option>
+                                                    <option value="">option</option>
+                                                    <option value="">option</option>
+                                                </select>
+                                            </div>
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="select2" title="호선 선택">
+                                                    <option value="">호선 선택</option>
+                                                    <option value="">option</option>
+                                                    <option value="">option</option>
+                                                </select>
+                                            </div>
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="select3" title="역 선택">
+                                                    <option value="">역 선택</option>
+                                                    <option value="">option</option>
+                                                    <option value="">option</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <p class="desc">지하철 역을 선택하고 근처 LG전자 매장을 찾아보세요.</p>
+                                    </div>
+                                </div>
+                                <!-- //search -->
+
+                                <!-- list -->
+                                <div class="sch-list">
+                                    <div class="scroll-wrap">
+                                        <strong class="blind">결과리스트</strong>
+                                        <ul class="list-item">
+                                            <!-- loop -->
+                                            <li>
+                                                <div class="store-info-list">
+                                                    <div class="point-wrap on"><!-- 선택된 포인트에 on 클래스 추가 -->
+                                                        <div class="point">
+                                                            <span class="num">1</span>
+                                                            <span class="blind">선택됨</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info-wrap">
+                                                        <div class="tit-wrap">
+                                                            <p class="name">강남본점 BESTSHOP</p>
+                                                            <span class="flag">NEW</span>
+                                                            <span class="flag">이벤트</span>
+                                                        </div>
+                                                        <p class="addr">서울특별시 강남구 청담동 86-1 LG 청담빌딩 1층 두줄 테스트 두줄 테스트 두줄 테스트 두줄 테스트 두줄 테스트 두줄 테스트</p>
+                                                        <div class="etc-info">
+                                                            <span class="tel">02-3448-5191</span>
+                                                            <a href="#n" class="btn-detail">상세보기</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <!-- //loop -->
+                                            <li>
+                                                <div class="store-info-list">
+                                                    <div class="point-wrap"><!-- 선택된 포인트에 on 클래스 추가 -->
+                                                        <div class="point">
+                                                            <span class="num">2</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info-wrap">
+                                                        <div class="tit-wrap">
+                                                            <p class="name">논현역점 BESTSHOP</p>
+                                                        </div>
+                                                        <p class="addr">서울특별시 강남구 논현동 50-3 스카이저축은행 빌딩 2층</p>
+                                                        <div class="etc-info">
+                                                            <span class="tel">02-517-7447</span>
+                                                            <a href="#n" class="btn-detail">상세보기</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="store-info-list">
+                                                    <div class="point-wrap"><!-- 선택된 포인트에 on 클래스 추가 -->
+                                                        <div class="point">
+                                                            <span class="num">3</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info-wrap">
+                                                        <div class="tit-wrap">
+                                                            <p class="name">갤러리아 명품관 WEST점 BESTSHOP</p>
+                                                            <span class="flag">이벤트</span>
+                                                        </div>
+                                                        <p class="addr">서울특별시 강서구 압구정동 494 5층</p>
+                                                        <div class="etc-info">
+                                                            <span class="tel">02-517-7447</span>
+                                                            <a href="#n" class="btn-detail">상세보기</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="store-info-list">
+                                                    <div class="point-wrap"><!-- 선택된 포인트에 on 클래스 추가 -->
+                                                        <div class="point">
+                                                            <span class="num">4</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info-wrap">
+                                                        <div class="tit-wrap">
+                                                            <p class="name">대치본점 BESTSHOP</p>
+                                                            <span class="flag">이벤트</span>
+                                                        </div>
+                                                        <p class="addr">서울특별시 강남구 대치동 50-8 1층 서울특별시 강남구 대치동 50-8 1층</p>
+                                                        <div class="etc-info">
+                                                            <span class="tel">02-569-8001</span>
+                                                            <a href="#n" class="btn-detail">상세보기</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="store-info-list">
+                                                    <div class="point-wrap"><!-- 선택된 포인트에 on 클래스 추가 -->
+                                                        <div class="point">
+                                                            <span class="num">5</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info-wrap">
+                                                        <div class="tit-wrap">
+                                                            <p class="name">대치본점 BESTSHOP</p>
+                                                            <span class="flag">이벤트</span>
+                                                        </div>
+                                                        <p class="addr">서울특별시 강남구 대치동 50-8 1층 서울특별시 강남구 대치동 50-8 1층</p>
+                                                        <div class="etc-info">
+                                                            <span class="tel">02-569-8001</span>
+                                                            <a href="#n" class="btn-detail">상세보기</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- // list -->
+
+                                <!-- option -->
+                                <div class="opt-cont">
+                                    <button type="button" class="btn-sel"><span>옵션 선택</span></button>
+                                    <div class="opt-layer">
+
+                                    </div>
+                                </div>
+                                <!-- //option -->
+                            </div>
+                        </div>
+
+                        <div class="map-cont">
+                            <img src="/lg5-common/images/dummy/@img-map.jpg" alt="">
+                        </div>
+                    </div>
 
                 </div>
             </div>
-            <!-- // membership -->
+            <!-- // 메장찾기 -->
         </div>
-        
-        @@include('./common/footer.html')
+
     </div>     
 </body>
 </html>

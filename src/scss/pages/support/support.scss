@@ -418,6 +418,43 @@
         }
     }
 
+    .tabs-wrap {
+        &.type-A {
+            .tabs {
+                max-width: 1066px;
+                width: 100%;
+                margin: 0 auto;
+                text-align: left;
+                margin-bottom: 16px;
+            }
+        }
+    }
+
+    .btn-text {
+        &.underline {
+            text-decoration: underline;
+        }
+    }
+
+    .forms {
+        position: relative;
+        .input-wrap {
+            @include mobile {
+                .box {
+                    .cell {
+                        &.text-btn {
+                            button {
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .color-1 {
         color: #a50034;
     }

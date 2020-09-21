@@ -27,7 +27,8 @@
                     <div class="tab-contents notice-contents">
                         <ul class="setting-btns">
                             <li><button type="button" class="btn-text"><span>설정</span></button></li>
-                            <li><button type="button" class="btn-text"><span>전체삭제</span></button></li>
+                            <li><button type="button" class="btn-text" data-href="#laypop" data-control="modal"><span>전체삭제</span></button></li>
+                            <li><button type="button" class="btn-text" data-href="#laypop" data-control="modal" disabled><span>전체삭제</span></button></li> 알림이 없을 때 disabled
                         </ul>
                         
                         <!-- 알림 리스트 -->
@@ -71,7 +72,7 @@
                                             <div class="bottom-btn">
                                                 <a href="#n" class="btn-link">케어솔루션 내역 보기</a>
                                             </div>
-                                            <button type="button" class="btn-del" data-href="#laypop" data-control="modal"><span>알림 삭제</span></button>
+                                            <button type="button" class="btn-del"><span>알림 삭제</span></button>
                                         </div>
                                     </div>
                                 </li>
@@ -221,7 +222,7 @@
     </div>   
     @@include('./common/modules/alert-modal.html', {
         "msgOnly" : true,
-        "msg" : "이메일 문의를<br>등록하시겠습니까?",
+        "msg" : "받은 알림을 전체삭제<br>하시겠습니까?",
         "twobtn" : true
     })
     <script src="/lg5-common/js/mypage/alarm/alarm.js"></script>

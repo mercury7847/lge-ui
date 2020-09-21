@@ -295,7 +295,7 @@
     .shortcut {
         display: inline-block;
         vertical-align: middle;
-        li {
+        > li {
             float: left;
             width: 30px;
             height: 30px;
@@ -308,15 +308,84 @@
                 @include icon-search;
             }
             &.mypage {
+                position: relative;
                 @include icon-person;
+                &:focus,
+                .on {
+                    @include icon-person-on;
+                }
                 .mypage-layer {
                     display: none;
+                    position: absolute;
+                    top: 38px;
+                    left: 50%;
+                    z-index: 100;
+                    transform: translateX(-50%);
+                    border-radius: 8px;
+                    background-color: #fff;
+                    box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.16);
+                    .mypage-layer-inner {
+                        min-width: 185px;
+                        padding: 16px 24px 24px;
+                        &:before {
+                            position: absolute;
+                            top: -8px;
+                            @include calc(left,50%,4px);
+                            border-bottom: 8px solid #fff;
+                            border-right: 4px solid transparent;
+                            border-left: 4px solid transparent;
+                            content: '';
+                        }
+                        span {
+                            display: block;
+                            padding-bottom: 8px;
+                            border-bottom: 1px solid #ddd;
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 20px;
+                            color: #222;
+                        }
+                        li {
+                            position: relative;
+                            margin-top: 8px;
+                            &:after {
+                                position: absolute;
+                                @include calc(top,50%,4px);
+                                right: 2px;
+                                width: 8px;
+                                height: 8px;
+                                border-top: 1px solid #212121;
+                                border-right: 1px solid #212121;
+                                transform: rotate(45deg);
+                                content: '';
+                            }
+                            a {
+                                display: block;
+                                font-size: 14px;
+                                line-height: 20px;
+                                color: #222;
+                            }
+                        }
+                    }
                 }
             }
             &.cart {
+                position: relative;
                 @include icon-cart;
                 .cart-count {
-                    display: none;
+                    position: absolute;
+                    right: 3px;
+                    bottom: 2px;
+                    display: block;
+                    width: 13px;
+                    height: 13px;
+                    border-radius: 50%;
+                    background-color: #ec455a;
+                    font-weight: 500;
+                    font-size: 10px;
+                    line-height: 12px;
+                    color: #fff;
+                    text-align: center;
                 }
             }
         }
@@ -412,7 +481,7 @@
 }
 
 .header-bottom {
-    border-bottom: 1px solid #ddd;
+    //border-bottom: 1px solid #ddd;
 }
 .nav-wrap {
     overflow: hidden;
@@ -671,10 +740,19 @@
         .nav-category-wrap {
             @include clearfix;
             position: relative;
-            max-width: 1504px;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 39px 16px 32px;
+            padding: 39px 64px 32px;
             background-color: #fff;
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 48px;
+                left: 48px;
+                height: 1px;
+                background-color: #ddd;
+            }
         }
         .category-title {
             margin-bottom: 24px;

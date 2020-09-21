@@ -6,8 +6,8 @@
     &-head {
         .head {
             &-category {
+                margin-bottom:8px;
                 font-size:0;
-                margin-bottom: 8px;
                 @include textEllipsis;
                 .tag {
                     display:inline-block;
@@ -21,38 +21,46 @@
                 span:not(.tag) {
                     display:inline-block;
                     font-size:14px;
-                    line-height:1.43;
+                    line-height:20px;
                     &.topic {
-                        font-size: 14px;
-                        line-height: 1.43;
-                        color: #a50034;
+                        color: #ec455a;
                     }
                     &.category {
+                        position:relative;
                         margin-left:8px;
-                        font-size: 14px;
-                        line-height: 1.43;
-                        color: #aaa;
+                        padding-left:8px;
+                        color: #616161;
+                        &:before {
+                            content:'';
+                            position:absolute;
+                            left:0;
+                            top:50%;
+                            width:1px;
+                            height:12px;
+                            background-color:#ddd;
+                            transform:translateY(-50%);
+                        }
                     }
                 }
             }
             &-title {
-                font-size: 20px;
-                font-weight: bold;
-                line-height: 1.29;
-                color: #111111;
+                font-size:20px;
+                font-weight:bold;
+                color:#222;
+                line-height:24px;
             }
             &-info {
-                margin-top:12px;
+                margin-top:8px;
                 font-size:0;
                 .info {
                     display:inline-block;
-                    position: relative;
-                    margin-left: 25px;
-                    padding-left: 24px;
+                    position:relative;
+                    margin-left:24px;
+                    padding-left:25px;
                     vertical-align:middle;
                     &:first-child {
-                        padding-left: 0;
-                        margin-left: 0;
+                        margin-left:0;
+                        padding-left:0;
                         &::after {
                             display: none;
                         }
@@ -63,7 +71,7 @@
                         left: 0;
                         top: 50%;
                         width: 1px;
-                        height: 13px;
+                        height: 12px;
                         background-color: #ddd;
                         transform: translateY(-50%);
                     }
@@ -73,82 +81,94 @@
                         vertical-align:middle;
                     }
                     &-label {
-                        margin-right: 12px;
+                        margin-right:12px;
                         color: #616161;
                     }
                     &-desc {
-                        color: #111111;
+                        color: #222;
                     }
                 }
             }
         }
         @include mobile {
             .head {
-                &-category {
-                    margin-bottom: 16px;
-                }
                 &-title {
-                    font-size: 24px;
-                    line-height: 1.5;
+                    line-height:28px;
                 }
                 &-info {
-                    margin-top:4px;
-                    .info-label {
-                        margin-right:12px;
+                    .info {
+                        margin-left:16px;
+                        padding-left:17px;
                     }
                 }
             }
         }
     }
     &-body {
-        margin-top: 32px;
-        font-size: 16px;
-        color: #111;
-        line-height: 1.75;
-        .sns-box {
-            margin-top: 48px;
-        }
+        margin-top:48px;
         .view-content {
-            color: #515151;
+            p {
+                font-size:16px;
+                color:#515151;
+                line-height:24px;
+            }
+        }
+        .sns-box {
+            margin-top:48px;
         }
         @include mobile {
-            margin-top: 40px;
+            margin-top:40px;
             .sns-box {
-                margin-top: 40px;
+                margin-top:40px;
+            }
+        }
+    }
+    &-footer {
+        margin-top:56px;
+        padding-top:56px;
+        border-top:1px solid #ddd;
+        .review-box {
+            border:1px solid #ddd;
+            border-radius:4px;
+        }
+        @include mobile {
+            padding-top:40px;
+            .review-box {
+                border:0 none;
             }
         }
     }
     @include mobile {
-        padding: 32px 20px 56px;
+        padding:40px 20px 56px;
     }
 }
 
 .board-navi {
-    margin-top:16px;
+    margin-top:36px;
     .navi {
         display:block;
-        margin-top: 4px;
+        margin-top:8px;
         padding:25px 56px;
         font-size:0;
-        border-radius: 4px;
+        border-radius:4px;
         background-color: #fff;
+        @include clearfix;
         &:first-child {
             margin-top: 0;
         }
         &-label, &-desc {
-            display:inline-block;
+            float:left;
             font-size:16px;
             line-height:1.38;
             vertical-align:middle;
         }
         &-label {
             position: relative;
-            margin-right: 24px;
-            padding-right: 24px;
-            color: #aaa;
+            margin-right:40px;
+            padding-right:40px;
+            color: #616161;
             &::after {
                 content: '';
-                display: block;
                 position: absolute;
                 right: 0;
                 top: 50%;
@@ -159,28 +179,24 @@
             }
         }
         &-desc {
+            color:#222;
             font-weight:normal;
-            color: #111;
             @include textEllipsis;
         }   
     }
     @include mobile {
         margin-top:12px;
         .navi {
-            margin-top: 8px;
-            padding: 24px;
+            margin-top:4px;
+            padding:24px;
             border-radius: 0;
-            display: flex;
             &-label, &-desc {
                 font-size: 14px;
                 line-height:1.75;
             }
             &-label {
-                margin-right: 20px;
-                padding-right: 0;
-                &::after {
-                    display: none;
-                }
+                margin-right:16px;
+                padding-right:16px;
             }
         }
     }

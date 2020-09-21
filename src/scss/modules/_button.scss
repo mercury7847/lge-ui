@@ -106,7 +106,9 @@
     }
     &:disabled, &.disabled, &[aria-disabled=true] {
         color:#ccc;
-        text-decoration:underline;
+        &:hover {
+            text-decoration:none;
+        }
     }
     @include mobile {
         font-size:14px;
