@@ -36,33 +36,6 @@
             }
         }
     }
-    .model-search {
-        .input-wrap {
-            position:relative;
-            input {
-                padding-left:64px;
-            }
-            button {
-                position:absolute;
-                top:16px;
-                left:24px;
-                width:24px;
-                height:24px;
-                background:url('/lg5-common/images/icons/icon-search2.svg') no-repeat;
-                background-size:100%;
-            }
-        }
-        .model-util {
-            margin-top:8px;
-            @include clearfix;
-            .btn-banner {
-                float:left;
-            }
-            .btn-text {
-                float:right;
-            }
-        }
-    }
 
     .status-bar {
         background:#212121;
@@ -261,6 +234,24 @@
         }
         .chk-wrap {
             float: right;
+        }
+    }
+
+    .form-wrap {
+        @include mobile {
+            .forms {
+                .conts {
+                    .input-box {
+                        &.size2 {
+                            .input-wrap {
+                                &:nth-child(2) {
+                                    padding-right: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
