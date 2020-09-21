@@ -434,59 +434,6 @@
                 float: none;
                 max-width: 100%;
             }
-            .items-list {
-                @include clearfix;
-                margin: 0 -6px;
-                > li {
-                    float: left;
-                    width: 33.333333%;
-                    padding: 0 6px 12px;
-                    &.item-banner {
-                        &.large {
-                            width: 66.666667%;
-                        }
-                        .item {
-                            overflow: hidden;
-                            padding: 0;
-                        }
-                    }
-                    @media screen and (max-width: 1284px) {
-                        width: 50%;
-                        &.item-banner {
-                            &.large {
-                                width: 50%;
-                            }
-                        }
-                        &:nth-child(odd) {
-                            clear: left;
-                        }
-                    }
-                    @include mobile {
-                        width: 100%;
-                        &.item-banner {
-                            &.large {
-                                width: 100%;
-                            }
-                        }
-                        &:nth-child(odd) {
-                            clear: none;
-                        }
-                    }
-                }
-                .item {
-                    position: relative;
-                    padding: 0 54px 36px;
-                    border-radius: 4px;
-                    background-color: #fff;
-    
-                    @include pc {
-                        max-height: 672px;
-                    }
-                    @include mobile {
-                        padding: 0 28px 32px;
-                    }
-                }
-            }
     
             .items-top {
                 @include clearfix;
@@ -631,6 +578,60 @@
                 }
             }
 
+            .items-list {
+                @include clearfix;
+                margin: 0 -6px;
+                > li {
+                    //position: relative;
+                    float: left;
+                    width: 33.333333%;
+                    padding: 0 6px 12px;
+                    &.item-banner {
+                        &.large {
+                            width: 66.666667%;
+                        }
+                        .item {
+                            overflow: hidden;
+                            padding: 0;
+                        }
+                    }
+                    @media screen and (max-width: 1284px) {
+                        width: 50%;
+                        &.item-banner {
+                            &.large {
+                                width: 50%;
+                            }
+                        }
+                        &:nth-child(odd) {
+                            clear: left;
+                        }
+                    }
+                    @include mobile {
+                        width: 100%;
+                        &.item-banner {
+                            &.large {
+                                width: 100%;
+                            }
+                        }
+                        &:nth-child(odd) {
+                            clear: none;
+                        }
+                    }
+                }
+                .item {
+                    position: relative;
+                    padding: 0 47px 36px;
+                    border-radius: 4px;
+                    background-color: #fff;
+
+                    @include pc {
+                        max-height: 672px;
+                    }
+                    @include mobile {
+                        padding: 0 28px 32px;
+                    }
+                }
+            }
             .promotion-badge {
                 position: absolute;
                 top: 23px;
@@ -747,6 +748,9 @@
                     font-size: 14px;
                     line-height: 20px;
                     color: #616161;
+                    li {
+                        @include textClipClamp(1);
+                    }
                     .care-option {
                         font-weight: 500;
                         color: #222;
