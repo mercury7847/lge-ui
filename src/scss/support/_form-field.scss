@@ -232,3 +232,32 @@
         }
     }
 }
+
+/* 모델명 검색 영역 */
+.model-search {
+    .input-wrap {
+        position:relative;
+        input {
+            padding-left:64px;
+        }
+        button {
+            position:absolute;
+            top:16px;
+            left:24px;
+            width:24px;
+            height:24px;
+            background:url('/lg5-common/images/icons/icon-search2.svg') no-repeat;
+            background-size:100%;
+        }
+    }
+    .model-util {
+        margin-top:8px;
+        @include clearfix;
+        .btn-banner {
+            float:left;
+        }
+        .btn-text {
+            float:right;
+        }
+    }
+}
