@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_filter_48</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="[MO]-CS_매장찾기_04_지하철역_v0.8_200909" transform="translate(-40.000000, -1459.000000)">
+            <g id="02-Contents" transform="translate(0.000000, 136.000000)">
+                <g id="dropdown_filter" transform="translate(0.000000, 1270.000000)">
+                    <g id="group" transform="translate(40.000000, 53.000000)">
+                        <g id="icon_filter_48">
+                            <rect id="Rectangle" x="0" y="0" width="48" height="48"></rect>
+                            <g id="Group-9" transform="translate(0.000000, 4.000000)" stroke="#222222">
+                                <g id="Group-7" transform="translate(0.000000, 4.000000)" fill="#222222" stroke-width="2">
+                                    <rect id="Rectangle" x="1" y="1" width="46" height="2"></rect>
+                                    <rect id="Rectangle" x="1" y="15" width="46" height="2"></rect>
+                                    <rect id="Rectangle" x="1" y="29" width="46" height="2"></rect>
+                                </g>
+                                <g id="Group" transform="translate(6.000000, 0.000000)" fill="#FFFFFF" stroke-width="4">
+                                    <rect id="Rectangle" x="2" y="2" width="8" height="8" rx="4"></rect>
+                                    <rect id="Rectangle" x="6" y="30" width="8" height="8" rx="4"></rect>
+                                    <rect id="Rectangle" x="24" y="16" width="8" height="8" rx="4"></rect>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
