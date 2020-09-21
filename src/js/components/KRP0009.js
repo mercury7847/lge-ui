@@ -515,7 +515,7 @@ $(function () {
                 
 
                 _$.ajax({
-                    type : "POST",
+                    type : "GET",
                     url : ajaxUrl,
                     dataType : "json",
                     data : nObj
