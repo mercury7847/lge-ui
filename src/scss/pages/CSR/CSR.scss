@@ -3,4 +3,311 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+// FAQ
+@import "CSRF6043"
 
+.find-store {
+    .cont-wrap {
+        padding:0;
+    }
+
+    .map-container {
+        position:relative;
+        height:calc(100vh - 127px);
+        overflow:hidden;
+        .store-list-wrap {
+            position:absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            width:460px;
+            background:#fff;
+            box-shadow:0 2px 20px 0 rgba(0,0,0,.2);
+            &.active {
+                position:relative;
+                height:100%;
+                width:24px;
+                &:after {
+                    content:'';
+                    display:block;
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
+                    background:#fff;
+                    z-index:1;
+                }
+            }
+
+            h2.tit {
+                padding:40px 40px 0;
+                color:#222;
+                font-size:32px;
+                line-height:38px;
+            }
+
+            .btn-fold {
+                position:absolute;
+                right:-40px;
+                top:50%;
+                width:40px;
+                height:60px;
+                margin-top:-30px;
+                background:#fff;
+                border-radius:0 8px 8px 0;
+                // box-shadow:0 2px 20px 0 rgba(0,0,0,.2);
+                &:after {
+                    content:' ';
+                        position:absolute;
+                        right:15px;
+                        top:50%;
+                        width:10px;
+                        height:10px;
+                        margin-top:-5px;
+                        border:2px solid #111;
+                        border-top:none;
+                        border-right:none;
+                        transform:rotate(45deg);
+                }
+            }
+
+            .store-list-box {
+                position:relative;
+                overflow:hidden;
+            }
+
+            .sch-box {
+                margin:0 40px;
+                .tabs-wrap {
+                    margin-top:20px;
+                    text-align:left;
+                }
+                .sch-input-wrap {
+                    padding-bottom:32px;
+                    border-bottom:1px solid #ddd;
+                    &.select {
+                        font-size:0;
+                        .select-wrap {
+                            display:inline-block;
+                            width:calc((100% - 12px) / 2);
+                            vertical-align:middle;
+                            margin:12px 0 0 12px;
+                            &:nth-child(odd) {
+                                margin-left:0;
+                            }
+                        }
+                       
+                    }
+                    .input-sch {
+                        position:relative;
+                        margin-top:12px;
+                        input.txt {
+                            width:100%; 
+                            height:56px; 
+                            padding:0 70px 0 16px;
+                            border:1px solid #ddd; 
+                            background-color:#fff;
+                            color:#222;
+                            font-size:16px;
+                            line-height:normal;
+                            border-radius:4px;
+                            &::-webkit-input-placeholder {color:#616161;}
+                            &::-moz-placeholder {color:#616161;}
+                            &:-ms-input-placeholder {color:#616161;}
+                        }
+                        .btn-search {
+                            position:absolute; 
+                            top:50%; 
+                            right:0; 
+                            width:56px; 
+                            height:56px; 
+                            margin-top:-28px;
+                            &::after {
+                                content:'';
+                                display:block;
+                                margin-left:12px;
+                                width:24px;
+                                height:24px;
+                                background:url('/lg5-common/images/icons/icon-search.svg') no-repeat;  
+                                background-size:24px 24px;
+                            }
+                        }
+                    }
+
+                }
+                .desc {
+                    margin-top:24px;
+                    color:#222;
+                    font-size:16px;
+                    line-height:24px;
+                }
+            }
+
+            .sch-list {
+                padding:24px 8px 0 40px;
+                overflow:hidden;
+                .scroll-wrap {
+                    height:658px;
+                    overflow-y:scroll;
+                }
+                ul {
+                    margin-bottom:180px;
+                }
+                li {
+                    position:relative;
+                    margin:40px 40px 0 0;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                    .store-info-list {
+                        display:table;
+                        table-layout:fixed;
+                        .point-wrap {
+                            display:table-cell;
+                            width:50px;
+                            vertical-align:top;
+                            .point {
+                                position:relative;
+                                width:34px;
+                                height:48px;
+                                background:url('/lg5-common/images/icons/icon-point-off.svg') no-repeat;
+                                background-size:34px 48px;
+                                text-align:center;
+                                .num {
+                                    display:inline-block;
+                                    margin-top:8px;
+                                    color:#979797;
+                                    font-size:12px;
+                                    line-height:16px;
+                                    font-weight:700;
+                                }
+                            }
+                            &.on {
+                                .point {
+                                    background:url('/lg5-common/images/icons/icon-point-on.svg') no-repeat;
+                                    background-size:34px 48px;
+                                }
+                                .num {
+                                    color:#EC455A;
+                                }
+                            }
+                        }
+                        .info-wrap {
+                            display:table-cell;
+                            vertical-align:middle;
+                            margin-left:50px;
+                            .tit-wrap {
+                                font-size:0;
+                                .name {
+                                    display:inline-block;
+                                    margin-right:8px;
+                                    color:#222;
+                                    font-size:16px;
+                                    line-height:24px;
+                                    font-weight:700;
+                                    vertical-align:middle;
+                                    & +.flag {
+                                        margin-left:0;
+                                    }
+                                }
+                                .flag {
+                                    display:inline-block;
+                                    margin-left:4px;
+                                    padding:0 8px;
+                                    color:#EC455A;
+                                    font-size:12px;
+                                    line-height:20px;
+                                    background:#E9E9EA;
+                                    font-weight:500;
+                                    border-radius:4px;
+                                    vertical-align:middle;
+                                }
+                            }
+                            
+                            .addr {
+                                margin-top:16px;
+                                color:#616161;
+                                font-size:16px;
+                                line-height:24px;
+                                overflow:hidden; 
+                                max-height:48px;
+                                text-overflow:ellipsis;
+                                word-break:break-all;
+                                -moz-line-clamp:2;
+                                -ms-line-clamp:2;
+                                -webkit-line-clamp:2;
+                            }
+                            .etc-info {
+                                margin-top:2px;
+                                font-size:0;
+                                .tel {
+                                    color:#616161;
+                                    font-size:16px;
+                                    line-height:24px;
+                                }
+                                .btn-detail {
+                                    margin-left:12px;
+                                    color:#222;
+                                    font-size:16px;
+                                    line-height:24px;
+                                    font-weight:700;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .opt-cont {
+                position:fixed;
+                left:0;
+                bottom:0;
+                width:460px;
+                z-index:1;
+                background:#fff;
+                .btn-sel {
+                    position:relative;
+                    display:inline-block;
+                    width:100%;
+                    height:105px;
+                    text-align:left;
+                    border-top:1px solid #f4f4f4;
+                    background:#fff;
+                    line-height:1;
+                    span {
+                        display:inline-block;
+                        padding-left:40px;
+                        color:#222;
+                        font-weight:700;
+                        vertical-align:middle;
+                        &::before {
+                            content:'';
+                            display:inline-block;
+                            margin-right:12px;
+                            width:24px;
+                            height:24px;
+                            background:url('/lg5-common/images/icons/icon-filter.svg') no-repeat;
+                            background-size:24px 24px;
+                            vertical-align:middle;
+                        }
+                    }
+                    &:after {
+                        content:' ';
+                        position:absolute;
+                        right:34px;
+                        top:50%;
+                        width:10px;
+                        height:10px;
+                        margin-top:-5px;
+                        border:2px solid #111;
+                        border-top:none;
+                        border-right:none;
+                        transform:rotate(135deg);
+                        transition:all .3s;
+                    }
+                }
+            }
+        }
+    }
+}

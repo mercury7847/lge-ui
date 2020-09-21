@@ -1,6 +1,10 @@
 <!-- page header -->
 <div class="page-header">
     <h2 class="title">@@pageTitle</h2>
+    @@if ( context.pageDesc ) {
+    <p class="desc">@@pageDesc</p>
+    }
+    @@if ( context.pageArr ) {
     <div class="tabs-wrap btn-type">
         <ul class="tabs">
             @@for (var i=0; i < context.pageArr.length; i++) {
@@ -8,5 +12,6 @@
             }
         </ul>
     </div>
+    }
 </div>
 <!-- // page header -->
