@@ -1,10 +1,10 @@
 $(window).ready(function(){
-    if(!document.querySelector('.KRP0010')) return false;
+    if(!document.querySelector('.KRP0013')) return false;
 
-    $('.KRP0010').buildCommonUI();
+    $('.KRP0013').buildCommonUI();
 
     vcui.require(['ui/carousel'], function () {
-        $('.KRP0010').find(".ui_carousel_slider").each(function(cdx, slide){
+        $('.KRP0013').find(".ui_carousel_slider").each(function(cdx, slide){
             if($(slide).hasClass("rowColumn")){
                 $(slide).vcCarousel({
                     infinite: false,

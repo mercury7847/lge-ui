@@ -1,23 +1,16 @@
 @charset "UTF-8";
 
 .faq {
-
     .search-wrap {
         max-width:848px;
         margin:0 auto;
         .search-box {
-            border:1px solid #ddd;
-            border-radius:26px;
             background:#fff;
             @include clearfix;
         }
         .select-wrap {
             float:left;
             width:172px;
-            .ui-selectbox-wrap .ui-select-button {
-                border:0 none;
-                border-radius:0;
-            }
         }  
         .input-wrap {
             float:left;
@@ -66,6 +59,15 @@
                     border-left:0 none;
                 }
             }
+        }
+    }
+
+    .result-wrap {
+        max-width:1066px;
+        margin:0 auto;
+        padding-top:80px;
+        .accordion-wrap {
+            margin-top:16px;
         }
     }
 }
