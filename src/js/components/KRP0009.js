@@ -3,7 +3,7 @@ $(function () {
 
     ;(function($, _$){   
         
-        vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
+        vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion', 'ui/carousel'], function () {
 
             // localStorage 
             var Storage = {
@@ -40,6 +40,7 @@ $(function () {
                 }
             }
 
+            
 
             
             var sliderTmpl = 
@@ -76,98 +77,98 @@ $(function () {
                 '<div class="chk-wrap-colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}} ({{item.modelCount}})</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
-/* 
-           
+            /* 
+                    
 
-    "modelId": "MD07501035",
-    "modelName": "OLED65GXPUA",
-    "categoryId": "CT10000018",
-    "wtbUseFlag": "Y",
-    "whereToBuyUrl": "/us/tvs/lg-oled65gxpua-oled-4k-tv#pdp_where",
-    "findTheDealerUrl": null,
-    "inquiryToBuyUrl": null,
-    "retailerPricingFlag": "N",
-    "retailerPricingText": "See Retailer for Pricing",
-    "wtbExternalLinkUseFlag": "N",
-    "wtbExternalLinkName": "",
-    "wtbExternalLinkUrl": "",
-    "wtbExternalLinkSelfFlag": "",
-    "inquiryToBuyFlag": "N",
-    "modelRollingImgList": "/us/images/tvs/md07501035/350.jpg",
-    "addToCartFlag": "Y",
-    "whereToBuyFlag": "Y",
-    "findTheDealerFlag": "N",
-    "modelUrlPath": "/us/tvs/lg-oled65gxpua-oled-4k-tv",
-    "categoryName": "TVs",
-    "reviewRating": "22",
-    "reviewRatingStar": "5",
-    "reviewRatingStar2": "4.6",
-    "reviewRatingPercent": "91",
-    "modelStatusCode": "ACTIVE",
-    "bizType": "B2C",
-    "rPrice": "3499",
-    "rPriceCent": "99",
-    "rPromoPrice": "2799",
-    "rPromoPriceCent": "99",
-    "rDiscountedPrice": "700",
-    "rDiscountedPriceCent": "00",
-    "discountedRate": "20",
-    "userFriendlyName": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
-    "mediumImageAddr": "/us/images/tvs/md07501035/350.jpg",
-    "smallImageAddr": "/us/images/tvs/md07501035/260.jpg",
-    "imageAltText": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
-    "defaultProductTag": "NEW",
-    "productTag1": "NEW",
-    "productTag2": "BEST",
-    "siblingLocalValue": "65\"",
-    "siblingCode": "65",
-    "siblingType": "INCH",
-    "siblingModels": [{
+                "modelId": "MD07501035",
+                "modelName": "OLED65GXPUA",
+                "categoryId": "CT10000018",
+                "wtbUseFlag": "Y",
+                "whereToBuyUrl": "/us/tvs/lg-oled65gxpua-oled-4k-tv#pdp_where",
+                "findTheDealerUrl": null,
+                "inquiryToBuyUrl": null,
+                "retailerPricingFlag": "N",
+                "retailerPricingText": "See Retailer for Pricing",
+                "wtbExternalLinkUseFlag": "N",
+                "wtbExternalLinkName": "",
+                "wtbExternalLinkUrl": "",
+                "wtbExternalLinkSelfFlag": "",
+                "inquiryToBuyFlag": "N",
+                "modelRollingImgList": "/us/images/tvs/md07501035/350.jpg",
+                "addToCartFlag": "Y",
+                "whereToBuyFlag": "Y",
+                "findTheDealerFlag": "N",
+                "modelUrlPath": "/us/tvs/lg-oled65gxpua-oled-4k-tv",
+                "categoryName": "TVs",
+                "reviewRating": "22",
+                "reviewRatingStar": "5",
+                "reviewRatingStar2": "4.6",
+                "reviewRatingPercent": "91",
+                "modelStatusCode": "ACTIVE",
+                "bizType": "B2C",
+                "rPrice": "3499",
+                "rPriceCent": "99",
+                "rPromoPrice": "2799",
+                "rPromoPriceCent": "99",
+                "rDiscountedPrice": "700",
+                "rDiscountedPriceCent": "00",
+                "discountedRate": "20",
+                "userFriendlyName": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
+                "mediumImageAddr": "/us/images/tvs/md07501035/350.jpg",
+                "smallImageAddr": "/us/images/tvs/md07501035/260.jpg",
+                "imageAltText": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
+                "defaultProductTag": "NEW",
+                "productTag1": "NEW",
+                "productTag2": "BEST",
+                "siblingLocalValue": "65\"",
+                "siblingCode": "65",
+                "siblingType": "INCH",
+                "siblingModels": [{
 
-        "modelName": "OLED77GXPUA",
-        "siblingCode": "77",
-        "siblingValue": "77\"",
-        "modelId": "MD07500034"
+                    "modelName": "OLED77GXPUA",
+                    "siblingCode": "77",
+                    "siblingValue": "77\"",
+                    "modelId": "MD07500034"
 
-    }, {
+                }, {
 
-        "modelName": "OLED65GXPUA",
-        "siblingCode": "65",
-        "siblingValue": "65\"",
-        "modelId": "MD07501035"
+                    "modelName": "OLED65GXPUA",
+                    "siblingCode": "65",
+                    "siblingValue": "65\"",
+                    "modelId": "MD07501035"
 
-    }, {
+                }, {
 
-        "modelName": "OLED55GXPUA",
-        "siblingCode": "55",
-        "siblingValue": "55\"",
-        "modelId": "MD07501036"
+                    "modelName": "OLED55GXPUA",
+                    "siblingCode": "55",
+                    "siblingValue": "55\"",
+                    "modelId": "MD07501036"
 
-    }],
+                }],
 
-    "specInfos": [{
+                "specInfos": [{
 
-        "specName": "Operating System",
-        "specInfo": "webOS"
+                    "specName": "Operating System",
+                    "specInfo": "webOS"
 
-    }, {
+                }, {
 
-        "specName": "Speaker System",
-        "specInfo": "4.2 Channel"
+                    "specName": "Speaker System",
+                    "specInfo": "4.2 Channel"
 
-    }, {
+                }, {
 
-        "specName": "Dolby Atmos",
-        "specInfo": "Yes"
-    }],
+                    "specName": "Dolby Atmos",
+                    "specInfo": "Yes"
+                }],
 
-    
-    "promotionInfo1": "OLED TV Deals",
-    "promotionInfo2": "OLED TV Deals",
-    "promotionInfo": "OLED TV Deals",
-    "salesModelCode": "OLED65GXPUA",
-    ""
- */
+                
+                "promotionInfo1": "OLED TV Deals",
+                "promotionInfo2": "OLED TV Deals",
+                "promotionInfo": "OLED TV Deals",
+                "salesModelCode": "OLED65GXPUA",
+                ""
+            */
 
             var productItemTmpl = 
             '<li class="">'+
@@ -175,26 +176,47 @@ $(function () {
                     '{{#if isPromotion}}'+ 
                             '<div class="promotion-badge">'+
                                 '<span class="badge">{{promotionInfo1}}</span>'+
-                                '<span class="badge">{{promotionInfo2}} 10%</span>'+
+                                '<span class="badge">{{promotionInfo2}}</span>'+
                             '</div>'+
                     '{{/if}}'+
-                    '<div class="product-image">'+
-                        '<a href="#">'+
-                            '<img data-src={{mediumImageAddr}} alt="" class="lazyload">'+
-                        '</a>'+
+                '<div class="product-image slide-wrap ui_plp_carousel">'+
+                    '<div class="indi-wrap">'+
+                        '<ul class="indi-conts ui_carousel_dots">'+
+                        '</ul>'+
                     '</div>'+
+                    '<div class="slide-content ui_carousel_list">'+
+                        '<div class="slide-track ui_carousel_track">'+
+                            '{{#each item in sliderImages}}'+  
+                                '<div class="slide-conts ui_carousel_slide">'+
+                                    '<a href="#">'+
+                                        '<img src="{{item}}" alt="">'+
+                                    '</a>'+
+                                '</div>'+
+                            '{{/each}}' +
+                        '</div>'+
+                    '</div>'+
+                    '<div class="slide-controls">'+
+                        '<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>'+
+                        '<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>'+
+                    '</div>'+
+                '</div>'+
                 '<div class="product-contents">'+
                     '{{#if defaultSiblingModelFlag}}'+
-                        '<div class="option-color">'+
-                            '<div class="color-list" role="radiogroup">'+
-                                '{{#each (item, index) in siblingModels}}'+  
-                                    '<div role="radio" class="chk-wrap-colorchip {{item.siblingCode}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
+                        '<div class="product-option {{siblingType}}">'+
+                            '<div class="option-list" role="radiogroup">'+
+                                '{{#each item in siblingModels}}'+  
+                                    '<div role="radio" class="{{#if siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
                                         '<input type="radio" data-category-id={{categoryId}} id="product-{{item.modelName}}" name="{{siblingType}}" value="{{item.modelId}}">'+
-                                        '<label for="product-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
+                                        '{{#if siblingType=="color"}}'+
+                                            '<label for="product-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
+                                        '{{#else}}' +
+                                            '<label for="product-{{item.modelName}}">{{item.siblingValue}}</label>'+
+                                        '{{/if}}'+
                                     '</div>'+
                                 '{{/each}}' +
                             '</div>'+
                         '</div>'+
+
                     '{{/if}}'+ 
                     '{{#if isBadge}}'+ 
                         '<div class="badge-product">'+
@@ -244,7 +266,7 @@ $(function () {
                                     '<span class="price">{{rPrice}}<em>원</em></span>'+
                                 '</div>'+
                             '{{/if}}'+
-                            '{{#if rPromoPrice && discountedRate}}'+ 
+                            '{{#if isPrice}}'+ 
                                 '<div class="product-price">'+
                                     '<div class="reduced-price">'+
                                         '<em class="blind">최대 혜택가격</em>'+
@@ -282,8 +304,7 @@ $(function () {
                             '<a href="#n" class="btn">장바구니에 담기</a>'+
                         '{{#else}}' +
                             '<a href="#n" class="btn">자세히 보기</a>'+
-                        '{{/if}}'+ 
-                        
+                        '{{/if}}'+                         
                     '</div>'+
                 '</div>'+
             '</li>'
@@ -368,15 +389,46 @@ $(function () {
 
                 //console.log($('.product-items-wrap .items-list'));
                 ///lg5-common/images/dummy/@img-product.jpg
+
+                var images = '/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg'
                 
                 for(var i=0; i<arr.length; i++){
-                    console.log(arr[i]);
+                    var data = arr[i];
 
-                    var obj = _$.extend(arr[i],{isPromotion:false, isBadge:false, isSpecInfo:false, isBenefit:false, isCareShip:false});                    
+                    var siblingType = data.siblingType? data.siblingType.toLowerCase():'';
+                    siblingType = siblingType=="color"? "color" : "text"
+
+
+                    var sliderImages = images.split(',');
+                    // var sliderImages = data.modelRollingImgList.split(',');
+
+
+                    var isPrice = data.rPromoPrice && data.discountedRate;
+                    var isPromotion = data.promotionInfo1 || data.promotionInfo2 || false;
+                    var isBadge = data.productTag1 || data.productTag2;
+                    var isSpecInfo = data.specInfos || false;
+                    var isBenefit = data.benefitInfos || false;
+                    var isCareShip = data.isCareShip || false;
+
+                    var obj = _$.extend(arr[i],{sliderImages : sliderImages, siblingType: siblingType, isPrice:isPrice, isPromotion:isPromotion, isBadge:isBadge, isSpecInfo:isSpecInfo, isBenefit:isBenefit, isCareShip:isCareShip});   
                     var html = vcui.template(productItemTmpl,obj);
 
                     $('.product-items-wrap .items-list').append(html);
                 }
+
+                $('.ui_plp_carousel').vcCarousel({fade:true, infinite:true, autoplaySpeed:600, speed:0, easing:'easeInOutQuad'}).on('mouseover mouseout mouseleave', function(e){
+                    if($(e.currentTarget).data('ui_carousel')){
+                        if(e.type == 'mouseover'){
+                            $(e.currentTarget).vcCarousel('play');
+                        }else{
+                            $(e.currentTarget).vcCarousel('stop');
+                            setTimeout(function(){
+                                $(e.currentTarget).vcCarousel('goTo', 0);
+                            }, 600);
+                        }
+                    }
+                });
+
             }
 
             function renderFilter(arr){
@@ -552,7 +604,8 @@ $(function () {
                 console.log(nObj);
 
                 var idx = Math.random() > 0.5? 1 : 0;
-                var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList'+idx+'.json'; // 테스트용
+                //var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList'+idx+'.json'; // 테스트용
+                var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList.json'; // 테스트용
                 
 
                 _$.ajax({
@@ -566,11 +619,7 @@ $(function () {
                     var enableList = result.data && result.data[0].filterEnableList;
                     var filterList = result.data && result.data[0].filterList;
                     var totalCount = result.data && result.data[0].totalCount;
-                    
-
                     var productList = result.data && result.data[0].productList;
-
-                    console.log(productList);
 
                     var filterObj = vcui.array.reduce(filterList, function (prev, cur) {
                         if(prev[cur['filterId']]) prev[cur['filterId']].push(cur);
