@@ -8,12 +8,34 @@
         @@include('./common/header.html')
 
         <div class="container">
-            
+            @@include('./common/modules/page-header.html', {
+                "pageTitle" : "FAQ",
+                "pageDesc" : "LG전자 고객님들이 가장 많이 물어보시는 질문들입니다."
+            })
             <!-- FAQ -->
             <div class="contents faq">
                 <div class="cont-wrap">
-                    
-
+                    <div class="search-wrap">
+                        <div class="search-box">
+                            <div class="select-wrap">
+                                <select class="ui_selectbox">
+                                    <option value="">제목</option>
+                                    <option value="">내용</option>
+                                    <option value="">제목 + 내용</option>
+                                </select>
+                            </div>
+                            <div class="input-wrap">
+                                <div class="box">   
+                                    <input type="text" placeholder="검색어를 입력해주세요.">
+                                    <div class="cell">
+                                        <button type="submit" class="btn-search">
+                                            <span class="blind">검색</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- // FAQ -->

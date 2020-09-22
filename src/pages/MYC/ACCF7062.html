@@ -9,16 +9,16 @@
 
         <div class="container">
             <!-- mypage -->
-            <div class="contents mypage">
+            <div class="contents mypage" data-url='/lg5-common/data-ajax/mypage/alarm/my_alarm.json' data-deleteurl='/lg5-common/data-ajax/mypage/alarm/delete_alarm.json' data-type='all'>
                 <div class="cont-wrap">
                     <!-- h3 tabs -->
                     <div class="tabs-wrap border-type ui_tab">
                         <ul class="tabs">
-                            <li class="on"><a href="#n">전체<em class="blind">선택됨</em></a></li>
-                            <li><a href="#n">결제</a></li>
-                            <li><a href="#n">쿠폰</a></li>
-                            <li><a href="#n">케어솔루션</a></li>
-                            <li><a href="#n">이벤트</a></li>
+                            <li class="on"><a href="#all">전체<em class="blind">선택됨</em></a></li>
+                            <li><a href="#payment">결제</a></li>
+                            <li><a href="#coupon">쿠폰</a></li>
+                            <li><a href="#care">케어솔루션</a></li>
+                            <li><a href="#event">이벤트</a></li>
                         </ul>
                     </div>
                     <!-- // h3 tabs -->
@@ -224,6 +224,7 @@
         "msgOnly" : true,
         "msg" : "받은 알림을 전체삭제<br>하시겠습니까?",
         "twobtn" : true
-    })  
+    })
+    <script src="/lg5-common/js/mypage/alarm/alarm.js"></script>
 </body>
 </html>
