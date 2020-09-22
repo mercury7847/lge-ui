@@ -58,25 +58,30 @@
             <li class="`+items1[i].moduleType+`">
                 <div class="item">
                     `+items1[i].badgeType+`
-                    <div class="product-image">
-                        <a href="#">
-                            <img data-src="`+items1[i].visual+`" alt="" class="lazyload">
-                        </a>
-                    </div>
+                    @@include('./common/partials/KRP0009-carousel.html', {
+                        "slideArr" : [
+                            {
+                                "visual" : "/lg5-common/images/dummy/@img-product.jpg"
+                            },
+                            {
+                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg"
+                            }
+                        ]
+                    })
                     <div class="product-contents">
-                        <div class="option-color">
-                            <div class="color-list" role="radiogroup">
-                                <div role="radio" class="chk-wrap-colorchip `+items1[i].colorChip1.color+`" aria-describedby="product1ID" title="`+items1[i].colorChip1.title+`">
-                                    <input type="radio" id="`+items1[i].colorChip1.id+`" name="`+items1[i].colorChip1.name+`" `+items1[i].colorChip1.checked+`>
-                                    <label for="`+items1[i].colorChip1.id+`"><span class="blind">`+items1[i].colorChip1.title+`</span></label>
+                        <div class="product-option color">
+                            <div class="option-list" role="radiogroup">
+                                <div role="radio" class="chk-wrap-colorchip `+items1[i].option1.color+`" aria-describedby="product1ID" title="`+items1[i].option1.title+`">
+                                    <input type="radio" id="`+items1[i].option1.id+`" name="`+items1[i].option1.name+`" `+items1[i].option1.checked+`>
+                                    <label for="`+items1[i].option1.id+`"><span class="blind">`+items1[i].option1.title+`</span></label>
                                 </div>
-                                <div role="radio" class="chk-wrap-colorchip `+items1[i].colorChip2.color+`" aria-describedby="product1ID" title="`+items1[i].colorChip2.title+`">
-                                    <input type="radio" id="`+items1[i].colorChip2.id+`" name="`+items1[i].colorChip2.name+`" `+items1[i].colorChip2.checked+`>
-                                    <label for="`+items1[i].colorChip2.id+`"><span class="blind">`+items1[i].colorChip2.title+`</span></label>
+                                <div role="radio" class="chk-wrap-colorchip `+items1[i].option2.color+`" aria-describedby="product1ID" title="`+items1[i].option2.title+`">
+                                    <input type="radio" id="`+items1[i].option2.id+`" name="`+items1[i].option2.name+`" `+items1[i].option2.checked+`>
+                                    <label for="`+items1[i].option2.id+`"><span class="blind">`+items1[i].option2.title+`</span></label>
                                 </div>
-                                <div role="radio" class="chk-wrap-colorchip `+items1[i].colorChip3.color+`" aria-describedby="product1ID" title="`+items1[i].colorChip3.title+`">
-                                    <input type="radio" id="`+items1[i].colorChip3.id+`" name="`+items1[i].colorChip3.name+`" `+items1[i].colorChip3.checked+`>
-                                    <label for="`+items1[i].colorChip3.id+`"><span class="blind">`+items1[i].colorChip3.title+`</span></label>
+                                <div role="radio" class="chk-wrap-colorchip `+items1[i].option3.color+`" aria-describedby="product1ID" title="`+items1[i].option3.title+`">
+                                    <input type="radio" id="`+items1[i].option3.id+`" name="`+items1[i].option3.name+`" `+items1[i].option3.checked+`>
+                                    <label for="`+items1[i].option3.id+`"><span class="blind">`+items1[i].option3.title+`</span></label>
                                 </div>
                             </div>
                         </div>
@@ -179,19 +184,19 @@
                         </a>
                     </div>
                     <div class="product-contents">
-                        <div class="option-color">
-                            <div class="color-list" role="radiogroup">
-                                <div role="radio" class="chk-wrap-colorchip `+items2[i].colorChip1.color+`" aria-describedby="product2ID" title="`+items2[i].colorChip1.title+`">
-                                    <input type="radio" id="`+items2[i].colorChip1.id+`" name="`+items2[i].colorChip1.name+`" `+items2[i].colorChip1.checked+`>
-                                    <label for="`+items2[i].colorChip1.id+`"><span class="blind">`+items2[i].colorChip1.title+`</span></label>
+                        <div class="product-option text">
+                            <div class="option-list" role="radiogroup">
+                                <div role="radio" class="rdo-wrap" aria-describedby="product2ID" title="`+items2[i].option1.title+`">
+                                    <input type="radio" id="`+items2[i].option1.id+`" name="`+items2[i].option1.name+`" `+items2[i].option1.checked+`>
+                                    <label for="`+items2[i].option1.id+`">`+items2[i].option1.title+`</label>
                                 </div>
-                                <div role="radio" class="chk-wrap-colorchip `+items2[i].colorChip2.color+`" aria-describedby="product2ID" title="`+items2[i].colorChip2.title+`">
-                                    <input type="radio" id="`+items2[i].colorChip2.id+`" name="`+items2[i].colorChip2.name+`" `+items2[i].colorChip2.checked+`>
-                                    <label for="`+items2[i].colorChip2.id+`"><span class="blind">`+items2[i].colorChip2.title+`</span></label>
+                                <div role="radio" class="rdo-wrap" aria-describedby="product2ID" title="`+items2[i].option2.title+`">
+                                    <input type="radio" id="`+items2[i].option2.id+`" name="`+items2[i].option2.name+`" `+items2[i].option2.checked+`>
+                                    <label for="`+items2[i].option2.id+`">`+items2[i].option2.title+`</label>
                                 </div>
-                                <div role="radio" class="chk-wrap-colorchip `+items2[i].colorChip3.color+`" aria-describedby="product2ID" title="`+items2[i].colorChip3.title+`">
-                                    <input type="radio" id="`+items2[i].colorChip3.id+`" name="`+items2[i].colorChip3.name+`" `+items2[i].colorChip3.checked+`>
-                                    <label for="`+items2[i].colorChip3.id+`"><span class="blind">`+items2[i].colorChip3.title+`</span></label>
+                                <div role="radio" class="rdo-wrap" aria-describedby="product2ID" title="`+items2[i].option3.title+`">
+                                    <input type="radio" id="`+items2[i].option3.id+`" name="`+items2[i].option3.name+`" `+items2[i].option3.checked+`>
+                                    <label for="`+items2[i].option3.id+`">`+items2[i].option3.title+`</label>
                                 </div>
                             </div>
                         </div>
@@ -260,7 +265,20 @@
             </li>
         }
     </ul>
-    <div class="read-more-area">
-        <button type="button" class="read-more">더보기</button>
+<!--    <div class="read-more-area">-->
+<!--        <button type="button" class="read-more">더보기</button>-->
+<!--    </div>-->
+    <div class="pagination">
+        <a href="#" class="prev"><span class="blind">이전 페이지 보기</span></a>
+        <span class="page_num">
+            <strong><span class="blind">현재 페이지</span>1</strong>
+            <a href="#" title="2페이지 보기">2</a>
+            <a href="#" title="3페이지 보기">3</a>
+            <a href="#" title="4페이지 보기">4</a>
+            <a href="#" title="5페이지 보기">5</a>
+            <a href="#" title="6페이지 보기">6</a>
+            <a href="#" title="7페이지 보기">7</a>
+        </span>
+        <a href="#" class="next"><span class="blind">다음 페이지 보기</span></a>
     </div>
 </div>
