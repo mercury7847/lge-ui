@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRP0010 {
+    width: 100%;
+    max-width: (1284px + 60px);
+    min-height:579px;
+    margin: 0 auto;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom:30px;
+
+    @include mobile {
+        max-width: 100%;
+        padding-right: 24px;
+        padding-left: 24px;
+        padding-bottom:25px;
+    }
+
+    .pdp-visual-area {
+		float:left;
+		width:calc(100% - 460px);
+		margin-top:33px;
+        padding-left:30px;
+        /*
+		@include screen(custom, max, $max-lg) {
+			width:calc(100% - 351px);
+		}*/
+		@include mobile {
+			float:none;width:100%;margin-top:25px;padding-left:0;
+		}
+	}        
+    
+}
