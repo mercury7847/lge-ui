@@ -3,6 +3,8 @@
  * @license MIT License
  * @description 모달 컴포넌트
  * @copyright VinylC UID Group
+ * ver 1.1
+ * placeholder 추가
  */
 vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, core, Gesture) {
     "use strict";
@@ -26,6 +28,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             if (self.$el.attr('data-class') && self.$el.attr('data-class').indexOf('read') > -1) {
                 self.$el.prop('readonly', true);
             }
+
         },
         _options: function _options(cb) {
             core.each(core.toArray(this.el.options), cb);
@@ -136,6 +139,12 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
 
             $label.attr('title', self.attrTitle + ' 열기').find('.hide').text(isActive ? '선택됨' : '선택불가');
 
+            if($(self.el.options[index]).hasClass('placeholder')){
+                $label.addClass('placeholder');
+            }else{
+                $label.removeClass('placeholder');
+            }
+
             $label.html(self._itemHTML(index < 0 ? null : self.el.options[index], 'label'));
             if (isActive) {
                 $label.removeAttr('tabindex');
@@ -156,6 +165,8 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 // list 값이 있으면 select를 갱신시킨다.
                 self.el.options.length = 0;
                 core.each(list, function (item, i) {
+
+                    
                     if ('text' in item) {
                         self.el.options.add(new Option(item.text || item.value, item.value));
                     } else {
@@ -241,7 +252,9 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
         templates: {
             label: '<div class="ui-selectbox-view"><a href="#0" class="ui-select-button" title="">{{#raw html}}</a></div>',
             list: '<div class="ui-selectbox-list" id="{{cid}}_menu"><div class="ui-select-scrollarea"></div></div>',
-            scrollbar: '<div class="ui-select-scroll" style="top: 0px;">' + '<span class="bg_top"></span><span class="bg_mid" style=""></span>' + '<span class="bg_btm"></span></div>',
+            scrollbar: '<div class="ui-select-scroll" style="top: 0px;">' + 
+            '<span class="bg_top"></span><span class="bg_mid" style=""></span>' + 
+            '<span class="bg_btm"></span></div>',
             option: '<li><a href="#{{num}}" data-value="{{value}}" data-text="{{text}}" title="{{attrTitle}}">{{#raw html}}</a></li>'
         },
         /**
@@ -442,6 +455,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             var self = this;
 
             self.$list = $(self.tmpl('list', { cid: self.cid }));
+
             self.$selectbox.append(self.$list);
             self.$listWrapper = self.$list.children();
 

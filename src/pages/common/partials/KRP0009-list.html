@@ -10,7 +10,7 @@
                 </a>
                 <div class="cate-sel ui_dropdown_list">
                     <div class="chk-wrap">
-                        <input type="checkbox" name="categoryCheckbox" id="all_chk01" value="1">
+                        <input type="checkbox" name="categoryCheckbox" id="all_chk01" value="1" checked>
                         <label for="all_chk01">전체</label>
                     </div>
                     <div class="chk-wrap">
@@ -54,6 +54,7 @@
         </div>
     </div>
     <ul class="items-list">
+        
         @@for (var i = 0; i < context.items1.length; i++) {
             <li class="`+items1[i].moduleType+`">
                 <div class="item">
