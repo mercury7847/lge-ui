@@ -77,98 +77,117 @@ $(function () {
                 '{{/each}}' +
             '</div></div></li>';
 /* 
-            addToCartFlag: "N"
-            bizType: "B2C"
-            buName1: "HA"
-            bundlePlpDisplayFlag: "Y"
-            bundlesTotalCount: 0
-            categoryId: "CT10000021"
-            categoryName: "Refrigerators"
-            defaultProductTag: "COMING SOON"
-            defaultSiblingModelFlag: "Y"
-            discountedRate: "33"
-            ecommerceFlag: "N"
-            findTheDealerFlag: "N"
-            findTheDealerUrl: null
-            imageAltText: "Front "
-            inchCode: ""
-            inquiryToBuyFlag: "N"
-            inquiryToBuyUrl: null
-            mediumImageAddr: "/us/images/refrigerators/md07514557/350.jpg"
-            modelId: "MD07514557"
-            modelName: "LRFCS25D3S"
-            modelRollingImgList: "/us/images/refrigerators/md07514557/350.jpg,/us/images/refrigerators/md07514557/thumbnail/3501.jpg,/us/images/refrigerators/md07514557/thumbnail/3502.jpg,/us/images/refrigerators/md07514557/thumbnail/3503.jpg,/us/images/refrigerators/md07514557/thumbnail/3504.jpg,/us/images/refrigerators/md07514557/thumbnail/3505.jpg"
-            modelStatusCode: "ACTIVE"
-            modelType: "G"
-            modelUrlPath: "/us/refrigerators/lg-lrfcs25d3s-french-3-door-refrigerator"
-            msrp: 1799.99
-            obsCurrency: null
-            obsInventoryFlag: null
-            obsOriginalPrice: 0
-            obsProductCount: 0
-            obsProductUrl: ""
-            obsSellFlag: null
-            obsSellingPrice: 0
-            obsTotalCount: 15
-            plpHighlightModelFlag: "Y"
-            productTag1: "COMING SOON"
-            productTag2: ""
-            promotionPrice: 1199.99
-            promotionText: "Refrigerator Deals"
-            promotionTotalCount: 5
-            rDiscountedPrice: "600"
-            rDiscountedPriceCent: "00"
-            rPrice: "1799"
-            rPriceCent: "99"
-            rPromoPrice: "1199"
-            rPromoPriceCent: "99"
-            retailerPricingFlag: "N"
-            retailerPricingText: "See Retailer for Pricing"
-            reviewRating: "0"
-            reviewRatingPercent: "0"
-            reviewRatingStar: "0"
-            reviewRatingStar2: "0.0"
-            salesModelCode: "LRFCS25D3S"
-            salesSuffixCode: "ASTCNA0"
-            siblingCode: "Print-Proof-Stainless-Steel"
-            siblingGroupCode: "LRFCS25D3"
-            siblingLocalValue: "Print Proof Stainless Steel"
-            siblingModels: [{…}]
-            siblingType: "COLOR"
-            smallImageAddr: "/us/images/refrigerators/md07514557/260.jpg"
-            smallModelRollingImgList: "/us/images/refrigerators/md07514557/260.jpg,/us/images/refrigerators/md07514557/thumbnail/2601.jpg,/us/images/refrigerators/md07514557/thumbnail/2602.jpg,/us/images/refrigerators/md07514557/thumbnail/2603.jpg,/us/images/refrigerators/md07514557/thumbnail/2604.jpg,/us/images/refrigerators/md07514557/thumbnail/2605.jpg"
-            sortBy: null
-            target: "NEW"
-            thinqTotalCount: 35
-            totalCount: 60
-            totalSize: 41
-            userFriendlyName: "25 cu. ft. French Door Refrigerator"
-            whereToBuyFlag: "Y"
-            whereToBuyUrl: "/us/refrigerators/lg-lrfcs25d3s-french-3-door-refrigerator#pdp_where"
-            wtbExternalLinkName: ""
-            wtbExternalLinkSelfFlag: ""
-            wtbExternalLinkUrl: ""
-            wtbExternalLinkUseFlag: "N"
-            wtbUseFlag: "Y"
+           
+
+    "modelId": "MD07501035",
+    "modelName": "OLED65GXPUA",
+    "categoryId": "CT10000018",
+    "wtbUseFlag": "Y",
+    "whereToBuyUrl": "/us/tvs/lg-oled65gxpua-oled-4k-tv#pdp_where",
+    "findTheDealerUrl": null,
+    "inquiryToBuyUrl": null,
+    "retailerPricingFlag": "N",
+    "retailerPricingText": "See Retailer for Pricing",
+    "wtbExternalLinkUseFlag": "N",
+    "wtbExternalLinkName": "",
+    "wtbExternalLinkUrl": "",
+    "wtbExternalLinkSelfFlag": "",
+    "inquiryToBuyFlag": "N",
+    "modelRollingImgList": "/us/images/tvs/md07501035/350.jpg",
+    "addToCartFlag": "Y",
+    "whereToBuyFlag": "Y",
+    "findTheDealerFlag": "N",
+    "modelUrlPath": "/us/tvs/lg-oled65gxpua-oled-4k-tv",
+    "categoryName": "TVs",
+    "reviewRating": "22",
+    "reviewRatingStar": "5",
+    "reviewRatingStar2": "4.6",
+    "reviewRatingPercent": "91",
+    "modelStatusCode": "ACTIVE",
+    "bizType": "B2C",
+    "rPrice": "3499",
+    "rPriceCent": "99",
+    "rPromoPrice": "2799",
+    "rPromoPriceCent": "99",
+    "rDiscountedPrice": "700",
+    "rDiscountedPriceCent": "00",
+    "discountedRate": "20",
+    "userFriendlyName": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
+    "mediumImageAddr": "/us/images/tvs/md07501035/350.jpg",
+    "smallImageAddr": "/us/images/tvs/md07501035/260.jpg",
+    "imageAltText": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
+    "defaultProductTag": "NEW",
+    "productTag1": "NEW",
+    "productTag2": "BEST",
+    "siblingLocalValue": "65\"",
+    "siblingCode": "65",
+    "siblingType": "INCH",
+    "siblingModels": [{
+
+        "modelName": "OLED77GXPUA",
+        "siblingCode": "77",
+        "siblingValue": "77\"",
+        "modelId": "MD07500034"
+
+    }, {
+
+        "modelName": "OLED65GXPUA",
+        "siblingCode": "65",
+        "siblingValue": "65\"",
+        "modelId": "MD07501035"
+
+    }, {
+
+        "modelName": "OLED55GXPUA",
+        "siblingCode": "55",
+        "siblingValue": "55\"",
+        "modelId": "MD07501036"
+
+    }],
+
+    "specInfos": [{
+
+        "specName": "Operating System",
+        "specInfo": "webOS"
+
+    }, {
+
+        "specName": "Speaker System",
+        "specInfo": "4.2 Channel"
+
+    }, {
+
+        "specName": "Dolby Atmos",
+        "specInfo": "Yes"
+    }],
+
+    
+    "promotionInfo1": "OLED TV Deals",
+    "promotionInfo2": "OLED TV Deals",
+    "promotionInfo": "OLED TV Deals",
+    "salesModelCode": "OLED65GXPUA",
+    ""
  */
 
             var productItemTmpl = 
             '<li class="">'+
                 '<div class="item">'+
-                    '<div class="promotion-badge">'+
-                        '<span class="badge">코리아세일페스파</span>'+
-                        '<span class="badge">으뜸효율 10%</span>'+
-                    '</div>'+
+                    '{{#if isPromotion}}'+ 
+                            '<div class="promotion-badge">'+
+                                '<span class="badge">{{promotionInfo1}}</span>'+
+                                '<span class="badge">{{promotionInfo2}} 10%</span>'+
+                            '</div>'+
+                    '{{/if}}'+
                     '<div class="product-image">'+
                         '<a href="#">'+
-                            '<img data-src={{productImage}} alt="" class="lazyload">'+
+                            '<img data-src={{mediumImageAddr}} alt="" class="lazyload">'+
                         '</a>'+
                     '</div>'+
                 '<div class="product-contents">'+
                     '{{#if defaultSiblingModelFlag}}'+
                         '<div class="option-color">'+
                             '<div class="color-list" role="radiogroup">'+
-                                '{{#each (item, index) in list}}'+  
+                                '{{#each (item, index) in siblingModels}}'+  
                                     '<div role="radio" class="chk-wrap-colorchip {{item.siblingCode}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
                                         '<input type="radio" data-category-id={{categoryId}} id="product-{{item.modelName}}" name="{{siblingType}}" value="{{item.modelId}}">'+
                                         '<label for="product-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
@@ -177,10 +196,16 @@ $(function () {
                             '</div>'+
                         '</div>'+
                     '{{/if}}'+ 
-                    '<div class="badge-product">'+
-                        '<span class="badge">NEW</span>'+
-                        '<span class="badge">BEST</span>'+
-                    '</div>'+
+                    '{{#if isBadge}}'+ 
+                        '<div class="badge-product">'+
+                            '{{#if productTag1}}'+ 
+                                '<span class="badge">{{productTag1}}</span>'+
+                            '{{/if}}'+ 
+                            '{{#if productTag2}}'+ 
+                                '<span class="badge">{{productTag2}}</span>'+
+                            '{{/if}}'+ 
+                        '</div>'+
+                    '{{/if}}'+ 
                     '<div class="product-info">'+
                         '<div class="product-name">'+
                             '<a href="#" id="{{modelId}}">{{userFriendlyName}}</a>'+
@@ -188,44 +213,61 @@ $(function () {
                         '<div class="sku">{{modelName}}</div>'+
                         '<div class="review-info">'+
                             ' <a href="#">'+
-                                '<div class="star is-review"><span class="blind">리뷰있음</span></div>'+
-                                '<div class="average-rating"><span class="blind">평점</span>4.0</div>'+
-                                '<div class="review-count"><span class="blind">리뷰 수</span>(48)</div>'+
+                                '{{#if reviewRating>0}}'+ 
+                                    '<div class="star is-review">'+
+                                        '<span class="blind">리뷰있음</span>'+
+                                    '</div>'+
+                                '{{#else}}' +
+                                    '<div class="star">'+
+                                        '<span class="blind">리뷰없음</span>'+
+                                    '</div>'+
+                                '{{/if}}'+
+                                '<div class="average-rating"><span class="blind">평점</span>{{reviewRatingStar2}}</div>'+
+                                '<div class="review-count"><span class="blind">리뷰 수</span>({{reviewRating}})</div>'+
                             ' </a>'+
                         '</div>'+
                         '<ul class="spec-info">'+
-                            '<li>용량 : 840L</li>'+
-                            '<li>전체크기(WxHxD) : 912 x 1,790 x 927 mm</li>'+
-                            '<li>형태 : 노크온 매직스페이스</li>'+
-                            '<li>패턴 : 미드나잇</li>'+
-                            '<li><span class="care-option">케어십 가능</span></li>'+
+                            '{{#if isSpecInfo}}'+ 
+                                '{{#each item in specInfos}}'+  
+                                    '<li>{{item.specName}} : {{item.specInfo}}</li>'+
+                                '{{/each}}' +  
+                            '{{/if}}'+    
+                            '{{#if isCareShip}}'+                        
+                                '<li><span class="care-option">케어십 가능</span></li>'+
+                            '{{/if}}'+  
                         '</ul>'+
                         '</div>'+
                         '<div class="price-area">'+
-                            '<div class="purchase-price">'+
-                                '<em class="blind">판매가격</em>'+
-                                '<span class="price">5,200,000<em>원</em></span>'+
-                            '</div>'+
-                            '<div class="product-price">'+
-                                '<div class="reduced-price">'+
-                                    '<em class="blind">최대 혜택가격</em>'+
-                                    '<span class="price">360,000<em>원</em></span>'+
+                            '{{#if rPrice}}'+
+                                '<div class="purchase-price">'+
+                                    '<em class="blind">판매가격</em>'+
+                                    '<span class="price">{{rPrice}}<em>원</em></span>'+
                                 '</div>'+
-                                '<div class="discount-rate">'+
-                                    '<em class="blind">할인율</em>'+
-                                    '<span class="price">15<em>%</em></span>'+
+                            '{{/if}}'+
+                            '{{#if rPromoPrice && discountedRate}}'+ 
+                                '<div class="product-price">'+
+                                    '<div class="reduced-price">'+
+                                        '<em class="blind">최대 혜택가격</em>'+
+                                        '<span class="price">{{rPromoPrice}}<em>원</em></span>'+
+                                    '</div>'+
+                                    '<div class="discount-rate">'+
+                                        '<em class="blind">할인율</em>'+
+                                        '<span class="price">{{discountedRate}}<em>%</em></span>'+
+                                    '</div>'+
                                 '</div>'+
+                            '{{/if}}'+
+                        '</div>'+
+                        '{{#if isBenefit}}'+ 
+                            '<div class="badge-benefit">'+
+                            '{{#each item in benefitInfos}}'+  
+                                '<span class="text">{{}}</span>'+
+                            '{{/each}}' +  
                             '</div>'+
-                        '</div>'+
-                        '<div class="badge-benefit">'+
-                            '<span class="text">3%할인</span>'+
-                            '<span class="text">사은품</span>'+
-                            '<span class="text">캐시백</span>'+
-                        '</div>'+
+                        '{{/if}}'+ 
                     '</div>'+
-                    '<div class="product-wish ">'+
+                    '<div class="product-wish">'+
                         '<span class="chk-wrap">'+
-                            '<input type="checkbox" id="wish-chk4" name="wish-chk4" checked="">'+
+                            '<input type="checkbox" id="wish-chk4" name="wish-chk4">'+
                             '<label for="wish-chk4"><span class="blind">찜하기</span></label>'+
                         '</span>'+
                     '</div>'+
@@ -236,16 +278,18 @@ $(function () {
                         '</span>'+
                     '</div>'+
                     '<div class="product-button">'+
-                        '<a href="#n" class="btn">자세히 보기</a>'+
+                        '{{#if addToCartFlag=="Y"}}'+ 
+                            '<a href="#n" class="btn">장바구니에 담기</a>'+
+                        '{{#else}}' +
+                            '<a href="#n" class="btn">자세히 보기</a>'+
+                        '{{/if}}'+ 
+                        
                     '</div>'+
                 '</div>'+
             '</li>'
 
 
             var isRender = false;
-
-
-            // 
             var locationObj = vcui.uri.parseUrl(window.location);
             var storageName = encodeURIComponent(locationObj.path)+'_lgeProductFilter';
             var storageNameExpire = encodeURIComponent(locationObj.path)+'_lgeProductFilter_expire'; // 만료일 
@@ -259,8 +303,6 @@ $(function () {
 
             Storage.set(storageNameExpire, {'expireDate' : new Date().getTime() + (20*1000)});	//24*3600000 // 20초로 테스트중 만료일 설정 
             var storageFilters = Storage.get(storageName);	
-
-            //console.log(storageFilters);
 
 
 
@@ -295,20 +337,15 @@ $(function () {
             function reset(id){
 
                 var obj = Storage.get(storageName);	
-
-                for(var key in obj){	
-                        
+                for(var key in obj){	                        
                     var $parent = $('[data-id="'+ key +'"]');
-                    $parent.find('input[name="'+key+'"]').prop('checked', false);
-                    
+                    $parent.find('input[name="'+key+'"]').prop('checked', false);                    
                     if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
                        $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', 'Min,Max');
                     }
                 }
-
                 storageFilters = {};
-                Storage.remove(storageName);
-                				
+                Storage.remove(storageName);                				
                 requestData({});
             }
 
@@ -334,7 +371,11 @@ $(function () {
                 
                 for(var i=0; i<arr.length; i++){
                     console.log(arr[i]);
-                    // console.log(arr[i]['siblingModels']);
+
+                    var obj = _$.extend(arr[i],{isPromotion:false, isBadge:false, isSpecInfo:false, isBenefit:false, isCareShip:false});                    
+                    var html = vcui.template(productItemTmpl,obj);
+
+                    $('.product-items-wrap .items-list').append(html);
                 }
             }
 
