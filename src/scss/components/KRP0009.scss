@@ -816,10 +816,10 @@
                         width: 16px;
                         height: 16px;
                         margin-right: 2px;
-                        background: url("/lg5-common/images/KRP0009/icon-star-off.svg") no-repeat 0 0;
+                        background: url("/lg5-common/images/icons/icon-star-off.svg") no-repeat 0 0;
                         background-size: 16px 16px;
                         &.is-review {
-                            background-image: url("/lg5-common/images/KRP0009/icon-star-on.svg");
+                            background-image: url("/lg5-common/images/icons/icon-star-on.svg");
                         }
                     }
                 }
@@ -913,7 +913,7 @@
                             width: 25px;
                             border: 0;
                             border-radius: 0;
-                            background: url("/lg5-common/images/KRP0009/btn-wish-off.svg") no-repeat 0 0;
+                            background: url("/lg5-common/images/icons/icon-heart-off.svg") no-repeat 0 0;
                             background-size: 25px 24px;
                         }
                         &:after {
@@ -922,7 +922,7 @@
                     }
                     &:checked + label {
                         &:before {
-                            background-image: url("/lg5-common/images/KRP0009/btn-wish-on.svg");
+                            background-image: url("/lg5-common/images/icons/icon-heart-on.svg");
                         }
                         &:after {
                             border-color:#fff;
