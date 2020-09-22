@@ -537,15 +537,15 @@
         .ui-select-button {
             display:block;
             position:relative;
-            padding:15px 23px;
-            padding-right:47px;
+            padding:15px;
+            padding-right:63px;
             border:1px solid #ddd;
             border-radius:8px;
             .ui-select-text {
                 display:inline-block;
                 overflow:hidden;
                 max-width:100%;
-                color:#111;
+                color:#222;
                 font-size:16px;
                 line-height:24px;
                 text-overflow:ellipsis;
@@ -553,16 +553,20 @@
                 word-break:break-all;
                 vertical-align:top;
             }
+            &.placeholder .ui-select-text {
+                color:#808080;
+            }
             .ico {
                 position:absolute;
                 top:50%;
-                right:18px;
+                right:24px;
                 width:0;
                 height:0;
                 margin-top:-4px;
-                border-top:8px solid #111;
+                border-top:6px solid #222;
                 border-left:5px solid transparent;
                 border-right:5px solid transparent;
+                transition:all 0.3s;
             }
             @include mobile {
                 border-radius:8px;
@@ -577,32 +581,48 @@
                 }
             }
         }
+        &.on {
+            .ui-select-button {
+                border-bottom:none;
+                border-radius:8px 8px 0 0;
+                border-color:#222;
+                .ico {
+                    transform:rotate(180deg);
+                }
+            }
+        }
         .ui-selectbox-list {
             position:absolute;
-            top:0;
+            top:54px;
             right:0;
             left:0;
-            padding:8px 0;
+            overflow:hidden;
+            border:1px solid #222;
+            border-top:none;
+            border-radius:0 0 8px 8px;
             background:#fff;
-            box-shadow:0 4px 12px 0 rgba(0, 0, 0, .15);
             z-index: 1;
             ul {
                 li {
                     a {
                         display:block;
                         overflow:hidden;
-                        padding:16px 24px;
-                        color:#111;
+                        padding:16px 15px;
+                        color:#808080;
                         font-size:16px;
                         line-height:24px;
                         white-space:nowrap;
                         word-break:break-all;
                         text-overflow:ellipsis;
+                        &:hover {
+                            background:#f4f4f4;
+                        }
                     }
-                    &.on a, a:hover {
-                        background:#f4f4f4;
+                    &.on a {
+                        color:#222;
                         font-weight:700;
                     }
+
                 }
             }
         }
