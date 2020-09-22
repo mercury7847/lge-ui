@@ -636,6 +636,7 @@
                 position: absolute;
                 top: 23px;
                 left: 24px;
+                z-index: 1;
                 .badge {
                     display: block;
                     margin-top: 4px;
@@ -681,10 +682,42 @@
                 padding: 0 6px;
                 text-align: center;
                 a {
-                    display: block;
+                    display: inline-block;
+                    width: 300px;
+                    height: 300px;
+                    @include mobile {
+                        width: 250px;
+                        height: 250px;
+                    }
                     img {
                         width: 100%;
                         max-width: 300px;
+                    }
+                }
+                .indi-wrap {
+                    display: none;
+                }
+                .slide-conts {
+                    height: auto;
+                }
+                @include pc {
+                    .slide-controls {
+                        display: none;
+                    }
+                }
+                @include mobile {
+                    .slide-controls {
+                        display: block;
+                        .btn-arrow {
+                            border-radius: 0;
+                            box-shadow: none;
+                            &.prev {
+                                left: 0;
+                            }
+                            &.next {
+                                right: 0;
+                            }
+                        }
                     }
                 }
             }
@@ -692,14 +725,50 @@
             .product-contents {
                 position: relative;
             }
-            .option-color {
+            .product-option {
                 position: absolute;
                 top: -38px;
                 left: 0;
                 width: 100%;
                 text-align: center;
-                .color-list {
+                .option-list {
                     font-size: 0;
+                }
+
+                &.text {
+                    .rdo-wrap {
+                        margin: 0 3px;
+                        input {
+                            & + label {
+                                padding: 4px 8px;
+                                border: 1px solid #ddd;
+                                border-radius: 4px;
+                                font-size: 12px;
+                                line-height: 1;
+                                &:before,
+                                &:after {
+                                    display: none;
+                                }
+                            }
+                            &:checked {
+                                & + label {
+                                    &:after {
+                                        display: block;
+                                        position: absolute;
+                                        top: -1px;
+                                        right: -1px;
+                                        bottom: -1px;
+                                        left: -1px;
+                                        width: auto;
+                                        height: auto;
+                                        border: 2px solid #222;
+                                        border-radius: 4px;
+                                        transform: rotate(0);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
             .badge-product {
@@ -857,6 +926,10 @@
                     margin-bottom: 0;
                     //padding: 0 0 160%;
                     padding: 0;
+                    a {
+                        width: 100%;
+                        height: auto;
+                    }
                     img {
                         max-width: none;
                         //height: 100%;
@@ -981,6 +1054,9 @@
                 }
             }
 
+            .pagination {
+                padding-top: 36px;
+            }
             .read-more-area {
                 padding-top: 36px;
                 text-align: center;
