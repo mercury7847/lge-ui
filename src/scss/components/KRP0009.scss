@@ -823,6 +823,9 @@
                     }
                 }
                 .spec-info {
+                    @include pc {
+                        height: 100px;
+                    }
                     margin-top: 12px;
                     font-size: 14px;
                     line-height: 20px;
