@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 .faq {
-
     .search-wrap {
         max-width:848px;
         margin:0 auto;
@@ -67,5 +66,10 @@
                 }
             }
         }
+    }
+
+    .result-wrap {
+        max-width:1066px;
+        margin:0 auto;
     }
 }

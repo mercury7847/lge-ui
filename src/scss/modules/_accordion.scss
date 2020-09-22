@@ -1,0 +1,73 @@
+// Accordion
+.accordion-wrap {
+    > ul 
+        > .lists {
+            margin-top:8px;
+            border-radius:4px;
+            background:#fff;
+            &:first-child {
+                margin-top:0;
+            }
+            .head {
+                .accord-btn {
+                    display:flex;
+                    position:relative;
+                    padding:32px 136px 32px 56px;
+                    font-size:0;
+                    &::after {
+                        content:' ';
+                        position:absolute;
+                        top:50%;
+                        right:62px;
+                        width:0;
+                        height:0;
+                        margin-top:-4px;
+                        border-top:6px solid #979797;
+                        border-left:5px solid transparent;
+                        border-right:5px solid transparent;
+                        transition:all .3s;
+                    }
+                    .flag {
+                        display:inline-block;
+                        height:24px;
+                        margin-right:12px;
+                        padding:0 7px;
+                        border:1px solid #EC455A;
+                        border-radius:4px;
+                        color:#EC455A;
+                        font-size:12px;
+                        line-height:22px;
+                        white-space:nowrap;
+                        vertical-align:top;
+                    }
+                    .title {
+                        display:inline-block;
+                        color:#222;
+                        font-size:16px;
+                        line-height:24px;
+
+                        @for $i from 1 through 5 {
+                            &.line#{$i} {
+                                max-height:calc(24px * #{$i});
+                                @include textEllipsisClamp($i);
+                            }
+                        }
+                    }
+                }
+            }
+            .accord-cont {
+                padding:0 136px 32px 56px;
+                color:#616161;
+                font-size:16px;
+                line-height:24px;
+            }
+
+            &.on {
+                box-shadow:2px 4px 12px 0 rgba(0, 0, 0, .16);
+                .accord-btn:after {
+                    border-top-color:#222;
+                    transform:rotate(180deg);
+                }
+            }
+        }
+}

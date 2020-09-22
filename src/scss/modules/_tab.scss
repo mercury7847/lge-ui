@@ -3,6 +3,9 @@
 .tabs-wrap {
     display:block;
     text-align:center;
+    &.left {
+        text-align:left;
+    }
     .tabs {
         display:inline-block;
         max-width:100%;
