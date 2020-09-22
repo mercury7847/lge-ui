@@ -2,61 +2,98 @@
 
 .faq {
     .search-wrap {
+        position:relative;
         max-width:848px;
         margin:0 auto;
-        .search-box {
-            background:#fff;
-            @include clearfix;
+        &::before {
+            content:' ';
+            position:absolute;
+            top:0;
+            left:10px;
+            right:10px;
+            height:1px;
+            background:#ddd;
+            z-index:1;
         }
-        .select-wrap {
-            float:left;
-            width:172px;
-        }  
-        .input-wrap {
-            float:left;
-            width:calc(100% - 172px);
-            input {
-                border:none;
-            }
-            .cell {
-                vertical-align:top;
-                border:none;
-                padding: 15px 24px 15px 0;
-            }
-            .btn-search {
-                width:24px;
-                height:24px;
-                //include icon-search;
-                background-size:100%;
-                background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg%3E%3Cpath d='M0 0H24V24H0z' opacity='.065'/%3E%3Cg stroke='%23111' stroke-width='1.5' transform='translate(2.5 2.5)'%3E%3Ccircle cx='8.25' cy='8.25' r='7.5'/%3E%3Cpath stroke-linecap='round' d='M14.25 13.75L19.13 18.63'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            }
+        &::after {
+            content:' ';
+            position:absolute;
+            bottom:0;
+            left:10px;
+            right:10px;
+            height:1px;
+            background:#ddd;
+            z-index:1;
         }
         @include mobile {
             padding:0 20px 32px;
             background:#fff;
-            .search-box {
-                border:0 none;
+            &::before, &::after {
+                display:none;
+            }
+        }
+        .select-wrap {
+            position:relative;
+            float:left;
+            width:188px;
+            z-index:10;
+            .ui-selectbox-wrap {
+                .ui-select-button {
+                    border-radius:8px 0 0 8px;
+                    border-right-color:transparent;
+                    background:#fff;
+                }
+                &.on {
+                    .ui-select-button {
+                        border-radius:8px 8px 0 0;
+                        border-right-color:#222;
+                    }
+                }
+                @include mobile {
+                    .ui-select-button {
+                        border-radius:8px;
+                        border-right-color:#ddd;
+                    }
+                }
+            }
+            @include mobile {
+                float:none;
+                width:100%;
+            }
+        }
+        .input-wrap {
+            display:block;
+            margin-left:188px;
+            .box input {
+                padding-left:8px;
                 border-radius:0;
-            }
-            .select-wrap {
-                float:none;
-                width:100%;
-                .ui-selectbox-wrap .ui-select-button {
-                    border:1px solid #ddd;
-                    border-radius:8px;
+                border-left-color:transparent;
+                &:focus {
+                    box-shadow:none;
                 }
             }
-            .input-wrap {
-                float:none;
-                width:100%;
+            @include mobile {
                 margin-top:8px;
-                input {
-                    border:1px solid #ddd;
-                    border-right:0 none;
+                margin-left:0;
+                .box input {
+                    border-radius:8px 0 0 8px;
+                    border-left-color:#ddd;
+                    padding-left:23px;
                 }
-                .cell {
-                    border:1px solid #ddd;
-                    border-left:0 none;
+            }
+            .cell {
+                background:#fff;
+                vertical-align:top;
+            }
+            .btn-search {
+                display:block;
+                &::after {
+                    content:' ';
+                    display:block;
+                    width:24px;
+                    height:24px;
+                    background:url('/lg5-common/images/icons/icon-search.svg') center no-repeat;
+                    background-size:100%;
                 }
             }
         }
@@ -68,6 +105,12 @@
         padding-top:80px;
         .accordion-wrap {
             margin-top:16px;
+        }
+        @include mobile {
+            padding-top:40px;
+            .accordion-wrap {
+                margin-top:20px;
+            }
         }
     }
 }

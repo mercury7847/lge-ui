@@ -625,7 +625,7 @@
                     background-color: #fff;
 
                     @include pc {
-                        max-height: 672px;
+                        height: 672px;
                     }
                     @include mobile {
                         padding: 0 28px 32px;
@@ -678,6 +678,8 @@
             }
 
             .product-image {
+                overflow: hidden;
+                max-height: 300px;
                 margin-bottom: 6px;
                 padding: 0 6px;
                 text-align: center;
@@ -685,13 +687,16 @@
                     display: inline-block;
                     width: 300px;
                     height: 300px;
-                    @include mobile {
-                        width: 250px;
-                        height: 250px;
-                    }
                     img {
                         width: 100%;
                         max-width: 300px;
+                    }
+                }
+                @include mobile {
+                    max-height: 250px;
+                    a {
+                        width: 250px;
+                        height: 250px;
                     }
                 }
                 .indi-wrap {
@@ -740,6 +745,7 @@
                         margin: 0 3px;
                         input {
                             & + label {
+                                width: 55px;
                                 padding: 4px 8px;
                                 border: 1px solid #ddd;
                                 border-radius: 4px;
@@ -763,6 +769,7 @@
                                         height: auto;
                                         border: 2px solid #222;
                                         border-radius: 4px;
+                                        background-color: transparent;
                                         transform: rotate(0);
                                     }
                                 }
@@ -790,6 +797,7 @@
                     font-size: 16px;
                     line-height: 24px;
                     color: #222;
+                    @include textClipClamp(1);
                 }
                 .sku {
                     display: inline-block;
@@ -808,14 +816,17 @@
                         width: 16px;
                         height: 16px;
                         margin-right: 2px;
-                        background: url("/lg5-common/images/KRP0009/icon-star-off.svg") no-repeat 0 0;
+                        background: url("/lg5-common/images/icons/icon-star-off.svg") no-repeat 0 0;
                         background-size: 16px 16px;
                         &.is-review {
-                            background-image: url("/lg5-common/images/KRP0009/icon-star-on.svg");
+                            background-image: url("/lg5-common/images/icons/icon-star-on.svg");
                         }
                     }
                 }
                 .spec-info {
+                    @include pc {
+                        height: 100px;
+                    }
                     margin-top: 12px;
                     font-size: 14px;
                     line-height: 20px;
@@ -835,7 +846,7 @@
                 * {
                     display: inline-block;
                 }
-                .purchase-price {
+                .reduced-price {
                     font-size: 24px;
                     font-weight: bold;
                     line-height: 1.33;
@@ -843,7 +854,7 @@
                 }
                 .product-price {
                 }
-                .reduced-price {
+                .purchase-price {
                     position: relative;
                     margin: 0 4px 0 8px;
                     font-size: 14px;
@@ -878,6 +889,13 @@
                 }
             }
             .product-button {
+                @include pc {
+                    position: absolute;
+                    right: 47px;
+                    bottom: 36px;
+                    left: 47px;
+
+                }
                 margin-top: 27px;
                 .btn {
                     width: 100%;
@@ -895,7 +913,7 @@
                             width: 25px;
                             border: 0;
                             border-radius: 0;
-                            background: url("/lg5-common/images/KRP0009/btn-wish-off.svg") no-repeat 0 0;
+                            background: url("/lg5-common/images/icons/icon-heart-off.svg") no-repeat 0 0;
                             background-size: 25px 24px;
                         }
                         &:after {
@@ -904,7 +922,7 @@
                     }
                     &:checked + label {
                         &:before {
-                            background-image: url("/lg5-common/images/KRP0009/btn-wish-on.svg");
+                            background-image: url("/lg5-common/images/icons/icon-heart-on.svg");
                         }
                         &:after {
                             border-color:#fff;
@@ -921,8 +939,9 @@
             .item-banner {
                 .product-image {
                     //position: relative;
-                    overflow: hidden;
+                    //overflow: hidden;
                     //width: 100%;
+                    max-height: none;
                     margin-bottom: 0;
                     //padding: 0 0 160%;
                     padding: 0;

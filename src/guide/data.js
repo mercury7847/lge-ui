@@ -92,7 +92,7 @@ var res = {
 				"센터/매장찾기" : {
 					"매장칮기 검색/결과 " : ["/html/CSR/CSRF6040.html","","진행중"],
 					"매장 상세" : ["/html/CSR/CSRF6041.html","","진행중"],
-					"매장상담 신청" : ["/html/CSR/CSRF6042.html","","진행중"]
+					//"매장상담 신청" : ["/html/CSR/CSRF6042.html","","진행중"]
 				},
 				"서비스 안내" : {
 					"FAQ" : ["/html/CSR/CSRF6043.html","","진행중"]

@@ -1,0 +1,27 @@
+<!-- components/partials/CSRF6040-list-module.html -->
+
+@@for (var i = 0; i < context.list.length; i++) {
+<li>
+    <div class="store-info-list" role="button">
+        <div class="point-wrap">
+            <div class="point `+list[i].selected+`"><!-- 선택된 포인트에 on 클래스 추가 -->
+                <span class="num">`+list[i].id+`</span>
+                <span class="blind">`+list[i].blindTxt+`</span>
+            </div>
+        </div>
+        <div class="info-wrap">
+            <div class="tit-wrap">
+                <p class="name">`+list[i].name+`</p>
+                <span class="flag">NEW</span>
+                <span class="flag">이벤트</span>
+            </div>
+            <p class="addr">`+list[i].address+`</p>
+            <div class="etc-info">
+                <span class="tel">`+list[i].tel+`</span>
+                <a href="#n" class="btn-detail">상세보기</a>
+            </div>
+        </div>
+    </div>
+</li>
+}
+    
