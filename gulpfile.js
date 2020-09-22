@@ -79,10 +79,17 @@ var scssOptions = {
     indentType : "tab",
     indentWidth : 1,
     precision: 6,
-    sourceComments: true
+    sourceComments: false
 };
 // Compile Sass
 gulp.task("styles", () => gulp
+    .src(src + "/scss/**/*.scss")
+    .pipe(sass(scssOptions).on('error', sass.logError))
+    .pipe(rename({suffix: ".min"}))
+    .pipe(gulp.dest(dist + sourceFolder + "/css/"))
+    .pipe(browserSync.reload({stream:true}))
+);
+gulp.task("styles:server", () => gulp
     .src(src + "/scss/**/*.scss")
     .pipe(sourcemaps.init())
     .pipe(sass(scssOptions).on('error', sass.logError))
@@ -91,6 +98,7 @@ gulp.task("styles", () => gulp
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/css/"))
 );
+
 
 //자주 쓰는 vcui모듈 vcui.common-ui.js로 병합...
 const concatNames = [
@@ -230,7 +238,7 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/guide/data.js", ["guide:data-js"]).on('change', browserSync.reload);
 
     // Watch sass files
-    gulp.watch(src + "/scss/**", ["styles"]).on('change', browserSync.reload);
+    gulp.watch(src + "/scss/**", ["styles"]);
 
     // Watch js files
     gulp.watch(src + "/js/*.js", ["jsCompile"]).on('change', browserSync.reload);
@@ -254,11 +262,14 @@ gulp.task("watch", ["browser-sync"], () => {
 gulp.task("build", ["clean", "static"], () =>{
     gulp.start(["styles", "scripts", "guide", "html"]);
 });
+gulp.task("build:server", ["clean", "static"], () =>{
+    gulp.start(["styles:server", "scripts", "guide", "html"]);
+});
 
 gulp.task('server-build', ["concat-js"], function() {
     git.revParse({args:'HEAD'}, function (err, hash) {
         dist += ("/" + hash);
-        gulp.start('build');
+        gulp.start('build:server');
     });
 });
 

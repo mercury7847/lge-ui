@@ -1,4 +1,6 @@
 (function() {
+    var firstLoad = true;
+
     var paymentTemplate =
                 '<li class="list"><div class="notice-box">'+
                 '<span class="icons">알림 확인 상태 : <em class="{{read}}">{{readDescription}}</em></span>'+
@@ -11,7 +13,7 @@
                 '<li><dl><dt>구매매장</dt><dd>{{purchaseStore}}</dd></dl></li>'+
                 '<li><dl><dt>구매일자</dt><dd>{{purchaseDate}}</dd></dl></li></ul></div>'+
                 '<div class="bottom-btn"><a href="{{linkUrl}}" class="btn-link">결제내역 자세히보기</a></div>'+
-                '<button type="button" class="btn-del" data-id="#{{id}}"><span>알림 삭제</span></button>'+
+                '<button type="button" class="btn-del" data-id="{{id}}"><span>알림 삭제</span></button>'+
                 '</div></div></li>';
     
     var couponTemplate =
@@ -26,7 +28,7 @@
                 '<li><dl><dt>유효기간</dt><dd>{{endDate}} 까지</dd></dl></li></ul>'+
                 '<div class="btns"><a href="{{moreUrl}}" class="btn"><span>관련 제품 둘러보기</span></a></div></div>'+
                 '<div class="bottom-btn"><a href="{{linkUrl}}" class="btn-link">보유 쿠폰 보기</a></div>'+
-                '<button type="button" class="btn-del" data-id="#{{id}}"><span>알림 삭제</span></button>'+
+                '<button type="button" class="btn-del" data-id="{{id}}"><span>알림 삭제</span></button>'+
                 '</div></div></li>';
 
     var careTemplate =
@@ -41,7 +43,7 @@
                 '<li><dl><dt>남은일자</dt><dd>{{remainDate}}일</dd></dl></li></ul>'+
                 '<div class="btns"><a href="{{moreUrl}}" class="btn"><span>관련 제품 둘러보기</span></a></div></div>'+
                 '<div class="bottom-btn"><a href="{{linkUrl}}" class="btn-link">케어솔루션 내역 보기</a></div>'+
-                '<button type="button" class="btn-del" data-id="#{{id}}"><span>알림 삭제</span></button>'+
+                '<button type="button" class="btn-del" data-id="{{id}}"><span>알림 삭제</span></button>'+
                 '</div></div></li>';
     
     var eventTemplate =
@@ -55,7 +57,7 @@
                 '<ul class="info"><li><dl><dt>기간</dt><dd>{{startDate}} ~ {{endDate}}</dd></dl></li>'+
                 '<li><dl><dt class="blind">참여 방법</dt><dd>{{moreDescription}}</dd></dl></li></ul></div>'+
                 '<div class="bottom-btn"><a href="{{linkUrl}}" class="btn-link">이벤트 참여하기</a></div>'+
-                '<button type="button" class="btn-del" data-id="#{{id}}"><span>알림 삭제</span></button>'+
+                '<button type="button" class="btn-del" data-id="{{id}}"><span>알림 삭제</span></button>'+
                 '</div></div></li>';
 
     function makeItemData(data) {
@@ -69,11 +71,11 @@
     function noData(visible) {
         if(visible) {
             self.$mypage.find('.notice-list-wrap .nodata').show();
-            self.$mypage.find('.cont-wrap .tab-contents .setting-btns').hide();
             self.$mypage.find('p.notice-txt').hide();
+            self.$removeAll.attr("disabled", true);
         } else {
             self.$mypage.find('.notice-list-wrap .nodata').hide();
-            self.$mypage.find('.cont-wrap .tab-contents .setting-btns').show();
+            self.$removeAll.removeAttr("disabled");
             self.$mypage.find('p.notice-txt').show();
         }
     }
@@ -99,6 +101,7 @@
 
             var data = d.data;
             var arr = data instanceof Array ? data : [];
+
             if(arr.length > 0) {
                 noData(false);
 
@@ -122,18 +125,19 @@
                 noData(true);
             }
             self.$mypage.find('ul.notice-lists').html(contentHtml);
-
+            
             self.$mypage.find('ul.notice-lists').find('li.list div.notice-box button.btn-del').on('click',function(e){
                 e.preventDefault();
                 var _id = $(this).data('id');
-                requestDeleteData({'id': _id});
-            })
+                requestDeleteData({'id': [_id]});
+            });
 
         }).fail(function(d){
             alert(d.status + '\n' + d.statusText);
         });
     }
 
+    //지울려고 하는 알람id는 array로 전달
     function requestDeleteData(param) {
         var ajaxUrl = self.$mypage.data('deleteurl');
 
@@ -156,13 +160,45 @@
         var myAlarm = {
             init: function() {
                 self.$mypage = $('.contents.mypage');
-                self.$mypage.find('.tabs li a').on('click',function(e){
-                    e.preventDefault();
-                    var href = $(this).attr('href');
-                    requestData({'type': href.replace("#", "")});
-                })
+                self.$removeAll = self.$mypage.find('#alarm-removeall');
+                self.$setting = self.$mypage.find('#alarm-setting');
+
+                this.bindEvents();
 
                 //requestData();
+            },
+
+            bindEvents: function() {
+                //탭 이벤트
+                self.$mypage.find('.ui_tab').on('tabchange', function(e, data) {
+                    if(firstLoad) {
+                        //처음 변경되는 탭을 무시한다 화면에 최초 진입시
+                        //탭을 통한 데이타 갱신이 아니라 따로 데이타를 전달할 경우 사용
+                        firstLoad = false;
+                        return;
+                    }
+                    var href = $(data.button).attr('href');
+                    requestData({'type': href.replace("#", "")});
+                });
+
+                //모달팝업 버튼
+                $('#laypop .btn-wrap button:not(.ui_modal_close)').on('click',function(e){
+                    $(e.currentTarget).closest('#laypop').vcModal('hide');
+                    //모두 삭제
+                    var removeItems = [];
+                    self.$mypage.find('ul.notice-lists').find('li.list div.notice-box button.btn-del').each(
+                        function () {
+                            removeItems.push($(this).data('id'))
+                        }
+                    );
+                    requestDeleteData({'id': removeItems});
+                });
+
+                self.$setting.on('click',function(e){
+                    //설정
+                    e.preventDefault();
+                });
+
             }
         };
 
