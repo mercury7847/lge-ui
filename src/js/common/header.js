@@ -14,6 +14,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 return;
             };
 
+            self.displayMode = "";
+
             vcui.require(['ui/carousel', 'ui/smoothScroll'], function () {            
                 self._setting();
                 self._bindEvents();
@@ -26,24 +28,14 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.$mypage = self.$el.find('.header-top .shortcut .mypage');
 
-            self.$naviWrapper = self.$el.find(".nav-wrap .nav");
-            self.$navItems = self.$el.find('.nav-wrap .nav > li');
+            self.$pcNaviWrapper = self.$el.find(".nav-wrap .nav");
+            self.$pcNavItems = self.$el.find('.nav-wrap .nav > li');
+
+            self.$mobileNaviWrapper = $(self.$pcNaviWrapper.clone()).width('100%');
+            self.$mobileNaviItems = self.$mobileNaviWrapper.find('> li');
+            self.$pcNaviWrapper.parent().append(self.$mobileNaviWrapper);
             
             self.$hamburger = self.$el.find('.mobile-nav-button');
-        },
-
-        _resize: function(){
-            var self = this;
-            var winwidth = $(window).outerWidth(true);
-            if(winwidth > 767){
-                self._hamburgerDisabled();
-
-                self._removeMobileEvents();
-                self._addPcEvents();
-            } else{
-                self._removePcEvents();
-                self._addMobildEvents();
-            }
         },
 
         _bindEvents: function(){
@@ -72,12 +64,39 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 $(this).parent().find('.nav-category-container').toggle();
             });
+
+            self._pcSetting();
+            self._mobileSetting();
         },
 
-        _addPcEvents: function(){
+        _resize: function(){
+            var self = this;
+            var winwidth = $(window).outerWidth(true);
+            if(winwidth > 767){
+                if(self.displayMode != "pc"){
+                    self._hamburgerDisabled();
+                    
+                    self.$pcNaviWrapper.css('display', 'inline-block');
+
+                    $('.ui_gnb_accordion').vcAccordion("collapseAll");
+                    self.$mobileNaviWrapper.hide();
+
+                    self.displayMode = "pc";
+                }
+            } else{
+                if(self.displayMode != "m"){                    
+                    self.$pcNaviWrapper.css('display', 'none');
+                    self.$mobileNaviWrapper.show();
+
+                    self.displayMode = "m";
+                }
+            }
+        },
+
+        _pcSetting: function(){
             var self = this;
 
-            self.$navItems.each(function(idx, item){              
+            self.$pcNavItems.each(function(idx, item){              
                 $(item).find('> .nav-category-container').css('display', 'inline-block');
                 var categorywidth = $(item).find('> .nav-category-container').outerWidth(true);
                 $(item).find('> .nav-category-container').css({
@@ -109,52 +128,48 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             });
         },
 
-        _removePcEvents: function(){
+        _mobileSetting: function(){
             var self = this;
 
-            self.$navItems.each(function(idx, item){              
-                $(item).find('> .nav-category-container').removeAttr('style');
-                $(item).find('> .nav-category-container > ul').removeAttr('style');
-                $(item).find('> a').removeAttr('style');
-                $(item).removeAttr('style');
-
-                $(item).off('mouseover mouseout');
-                $(item).find('> .nav-category-container > ul >li').each(function(cdx, child){
-                    $(child).off('mouseover mouseout');
-                });
-            });
-        },
-
-        _addMobildEvents: function(){
-            var self = this;
-
-            self.$naviWrapper.addClass("ui_gnb_accordion");
-            self.$navItems.find('> a').addClass("ui_accord_toggle");
-            self.$navItems.find('> .nav-category-layer, > .nav-category-container').addClass("ui_accord_content");
-            self.$navItems.find('> .nav-category-container > ul').addClass('ui_gnb_accordion');
-            self.$navItems.find('> .nav-category-container > ul > li > a').addClass('ui_accord_toggle');
-            self.$navItems.find('> .nav-category-container > ul > li > .nav-category-layer').addClass('ui_accord_content');
+            self.$mobileNaviWrapper.addClass("ui_gnb_accordion");
+            self.$mobileNaviWrapper.find('img').remove();
+            self.$mobileNaviItems.find('> a').addClass("ui_accord_toggle");
+            self.$mobileNaviItems.find('> .nav-category-layer, > .nav-category-container').addClass("ui_accord_content");
+            self.$mobileNaviItems.find('> .nav-category-container > ul').addClass('ui_gnb_accordion');
+            self.$mobileNaviItems.find('> .nav-category-container > ul > li > a').addClass('ui_accord_toggle');
+            self.$mobileNaviItems.find('> .nav-category-container > ul > li > .nav-category-layer').addClass('ui_accord_content');
 
             var gid = 0;
-            self.$navItems.find('> .nav-category-layer > .nav-category-inner').each(function(idx, item){
+            self.$mobileNaviItems.find('> .nav-category-layer > .nav-category-inner').each(function(idx, item){
                 $(item).find('.column > .category').addClass("ui_gnb_accordion");
                 $(item).find('.column > .category').attr("data-accord-group", "group_"+gid);
-                $(item).find('.column > .category > li > a').addClass("ui_accord_toggle");
-                $(item).find('.column > .category > li > .sub-category').addClass("ui_accord_content");
+
+                $(item).find('.column > .category > li').each(function(cdx, child){
+                    var toggle = $(child).find('> a');
+                    var subcategory = $(child).find('> .sub-category');
+                    var categorycontent = $(child).find('> .category-content');
+                    if(!subcategory.length && !categorycontent.length){
+                        toggle.addClass("none-toggle");
+                    } else{
+                        toggle.addClass("ui_accord_toggle");
+                        subcategory.addClass("ui_accord_content");
+                        categorycontent.addClass("ui_accord_content");
+                    }
+                });
 
                 gid++;
-            })
+            });
 
             $('.ui_gnb_accordion').vcAccordion({
                 singleOpen: true,
                 parentClass: '.ui_gnb_accordion',
                 itemSelector: "> li",
                 toggleSelector: "> .ui_accord_toggle"
+            }).on('accordionbeforeexpand', function(e, data){
+                $(data.oldContent).find('.ui_gnb_accordion').vcAccordion("collapseAll");
+            }).on('accordioncollapse', function(e, data){
+                $(data.content).find('.ui_gnb_accordion').vcAccordion("collapseAll");
             });
-        },
-
-        _removeMobileEvents: function(){
-
         },
 
         _mypageToggle: function(target){
@@ -164,13 +179,14 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             mypageLayer.toggle();
             
             if(mypageLayer.css('display') === 'block'){
+                if(!self.$mypage.find('> a').hasClass('on')) self.$mypage.find('> a').addClass("on");
                 $(window).on('click.headerMypage scroll.headerMypage', function(e){
                     if(e.target !== target) {
-                        console.log(e.target + " / " + target);
                         self._mypageToggle();
                     }
                 })
             } else{
+                self.$mypage.find('> a').removeClass("on");
                 $(window).off('click.headerMypage scroll.headerMypage');
             }
         },
@@ -185,6 +201,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             if(active){
                 self.$hamburger.removeClass('active');
                 replaceText.text("메뉴 열기");
+
+                $('.ui_gnb_accordion').vcAccordion("collapseAll");
 
                 if($('html').hasClass('scroll-fixed')) $('html').removeClass('scroll-fixed');
             } else{

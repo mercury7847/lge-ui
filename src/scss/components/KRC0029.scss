@@ -22,6 +22,7 @@
             display: table;
             .square.main {
                 display: table-cell;
+                vertical-align:top;
             }
             .square.sub {
             }

@@ -4,9 +4,6 @@
     text-align:center;
     &:first-child {
         margin-top:0;
-        @include mobile {
-            margin-top:-24px;
-        }
     }
     li {
         display:inline-block;

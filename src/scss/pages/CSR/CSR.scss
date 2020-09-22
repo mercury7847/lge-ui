@@ -3,12 +3,10 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
-// FAQ
-//@import "CSRF6043"
+//FAQ
+@import "CSRF6043";
 
 .find-store {
-    @import "CSRF6043";
-
     .cont-wrap {
         padding:0;
     }

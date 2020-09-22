@@ -1,7 +1,7 @@
 .container {
     // Page Header
     .page-header {
-        padding:56px 0 24px;
+        padding:56px 40px 24px;
         text-align:center;
         .title {
             max-width:1280px;
@@ -17,6 +17,9 @@
             color:#616161;
             font-size:16px;
             line-height:24px;
+            br {
+                display:none;
+            }
         }
         .tabs-wrap {
             max-width:1280px;
@@ -26,14 +29,19 @@
             margin-top:20px;
         }
         @include mobile {
-            padding:56px 0px 20px;
-            border-bottom:12px solid #f4f4f4;
+            padding:56px 20px 20px;
             .title {
                 font-size:24px;
                 line-height:32px;
             }
             .tabs-wrap.btn-type {
                 margin-top:28px;
+            }
+            .desc {
+                padding-bottom:20px;
+                br {
+                    display:block;
+                }
             }
         }
         &.no-title {
@@ -44,29 +52,36 @@
 
     // sub page common layout : title + white box layout
     .cont-wrap {
-        padding:48px 40px 120px;
+        padding:64px 40px 120px;
         background:#f4f4f4;
         @include mobile {
             padding:0;
-            background:#fff;
+            padding-bottom:60px;
+            border-top:12px solid #f4f4f4;
+        }
+        &.no-bd {
+            @include mobile {
+                border-top:none;
+            }
         }
 
         // layout
-        .tabs-wrap.border-type {
+        .tabs-wrap.cont-tab {
             @include mobile {
-                padding-top:40px;
+                padding-top:32px;
+                padding-bottom:10px;
             }
         }
 
         .section {
             max-width:1066px;
-            margin:40px auto 0;
+            margin:48px auto 0;
             &:first-child {
                 margin-top:0;
             }
             .sec-tit {
-                margin-bottom:19px;
-                color:#111;
+                margin-bottom:16px;
+                color:#222;
                 font-size:16px;
                 line-height:24px;
                 font-weight:700;
@@ -80,7 +95,7 @@
                 }
             }
             .tit-desc {
-                color:#111;
+                color:#222;
                 font-size:16px;
                 line-height:24px;
                 em {
@@ -90,7 +105,8 @@
             @include mobile {
                 position:relative;
                 margin:0;
-                padding:50px 20px 0;
+                padding:40px 20px 56px;
+                background:#fff;
                 &:before {
                     content:'';
                     display:block;
@@ -108,10 +124,10 @@
                     }
                 }
                 .sec-tit {
-                    margin:0;
+                    margin-bottom:32px;
                 }
                 .cont-box {
-                    padding:32px 0 40px;
+                    padding:0;
                 }
             }
         }
@@ -144,7 +160,7 @@
 
             @include mobile {
                 margin:0;
-                padding:32px 20px 96px;
+                padding:32px 20px 0;
                 background:#f4f4f4;
             }
         }
