@@ -3,6 +3,9 @@
     .forms {
         position:relative;
         margin-top:32px;
+        @include mobile {
+            margin-top:40px;
+        }
         &:first-child {
             margin-top:0;
         }
@@ -71,6 +74,11 @@
                         }
                     }
                 }
+            }
+            .btn-text.pst {
+                position:absolute;
+                top:0;
+                right:0;
             }
         }
     }
@@ -170,6 +178,13 @@
                     background:#fff;
                     z-index:10;
                 }
+                .btn-search {
+                    display:inline-block;
+                    width:24px;
+                    height:24px;
+                    background:url('/lg5-common/images/icons/icon-search2.svg') center no-repeat;
+                    background-size:24px;
+                }
             }
             input, textarea {
                 position:relative;
@@ -177,9 +192,11 @@
                 z-index:1;
                 &:#{$p}-child {
                     @if ( $p == last ) {
+                        padding-left:16px;
                         border-left:none;
                         border-radius:0 8px 8px 0;
                     } @else if ( $p == first) {
+                        padding-right:16px;
                         border-right:none;
                         border-radius:8px 0 0 8px;
                     }
@@ -540,6 +557,21 @@ $input: (chk, rdo);
                     }
                 }
             }
+        }
+    }
+}
+.chkrdo-list {
+    font-size:0;
+    > li {
+        display:inline-block;
+        vertical-align:top;
+        margin-left:64px;
+        &:first-child {
+            margin-left:0;
+        }
+        @include mobile {
+            width:50%;
+            margin-left:0;
         }
     }
 }
