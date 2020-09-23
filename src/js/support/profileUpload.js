@@ -40,13 +40,13 @@
                 valArray = $val.split('\\'),
                 newVal = valArray[valArray.length-1]
             if(newVal !== '') {
-                $('.profile-regist-file-name').text(newVal);
+                // $('.profile-regist-file-name').text(newVal);
                 $(".profile-regist-text").hide();
             }
         };
         
     
-        $('#profile-regist-file-upload').bind('change focus click', SITE.fileInputs);
+        $('.profile-regist-file-upload').bind('change focus click', SITE.fileInputs);
     
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -60,7 +60,7 @@
             }
         }
     
-        $("#profile-regist-file-upload").change(function(){
+        $(".profile-regist-file-upload").change(function(){
             readURL(this);
         });
     });

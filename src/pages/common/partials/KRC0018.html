@@ -58,6 +58,30 @@
                         </div>
                         <!-- // 1. image : video 타입인 경우 -->
                         }
+                        @@if (visualType === "animation") {
+                            <!-- 2020.09.21 animation type 추가 -->
+                            <!-- 1. animation 타입인 경우 animation-box 클래스 추가 -->
+                            <div class="visual-area animation-box">
+                                <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
+                                <img data-src="/lg5-common/images/dummy/@sample-3-2.gif" alt="" class="lazyload" />
+                                <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                                <div class="animation-area">
+                                    <video autoplay muted loop>
+                                        <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                        <!-- WEBM 동영상을 제공하는 경우
+                                        <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                        -->
+                                    </video>
+                                    <div class="controller-wrap wa-btn">
+                                        <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                                    </div>
+                                </div>
+                                <!-- caption -->
+                                <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                                <!-- // caption -->
+                            </div>
+                            <!-- // 1. animation 타입인 경우 -->
+                        }
                         @@if (visualType === "image") {
                         <!-- 1. image : img 타입인 경우 -->
                         <div class="visual-area image">

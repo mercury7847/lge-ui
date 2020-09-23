@@ -1,2 +1,116 @@
 @charset "UTF-8";
 
+.faq {
+    .search-wrap {
+        position:relative;
+        max-width:848px;
+        margin:0 auto;
+        &::before {
+            content:' ';
+            position:absolute;
+            top:0;
+            left:10px;
+            right:10px;
+            height:1px;
+            background:#ddd;
+            z-index:1;
+        }
+        &::after {
+            content:' ';
+            position:absolute;
+            bottom:0;
+            left:10px;
+            right:10px;
+            height:1px;
+            background:#ddd;
+            z-index:1;
+        }
+        @include mobile {
+            padding:0 20px 32px;
+            background:#fff;
+            &::before, &::after {
+                display:none;
+            }
+        }
+        .select-wrap {
+            position:relative;
+            float:left;
+            width:188px;
+            z-index:10;
+            .ui-selectbox-wrap {
+                .ui-select-button {
+                    border-radius:8px 0 0 8px;
+                    border-right-color:transparent;
+                    background:#fff;
+                }
+                &.on {
+                    .ui-select-button {
+                        border-radius:8px 8px 0 0;
+                        border-right-color:#222;
+                    }
+                }
+                @include mobile {
+                    .ui-select-button {
+                        border-radius:8px;
+                        border-right-color:#ddd;
+                    }
+                }
+            }
+            @include mobile {
+                float:none;
+                width:100%;
+            }
+        }
+        .input-wrap {
+            display:block;
+            margin-left:188px;
+            .box input {
+                padding-left:8px;
+                border-radius:0;
+                border-left-color:transparent;
+                &:focus {
+                    box-shadow:none;
+                }
+            }
+            @include mobile {
+                margin-top:8px;
+                margin-left:0;
+                .box input {
+                    border-radius:8px 0 0 8px;
+                    border-left-color:#ddd;
+                    padding-left:23px;
+                }
+            }
+            .cell {
+                background:#fff;
+                vertical-align:top;
+            }
+            .btn-search {
+                display:block;
+                &::after {
+                    content:' ';
+                    display:block;
+                    width:24px;
+                    height:24px;
+                    background:url('/lg5-common/images/icons/icon-search.svg') center no-repeat;
+                    background-size:100%;
+                }
+            }
+        }
+    }
+
+    .result-wrap {
+        max-width:1066px;
+        margin:0 auto;
+        padding-top:80px;
+        .accordion-wrap {
+            margin-top:16px;
+        }
+        @include mobile {
+            padding-top:40px;
+            .accordion-wrap {
+                margin-top:20px;
+            }
+        }
+    }
+}

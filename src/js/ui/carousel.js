@@ -129,7 +129,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             buildDots: true,
             dotsClass: _V.DOTS,             // 인디케이터 css 클래스
             draggable: true,                // 마우스로 슬라이드가 되도록 허용할 것인가
-            easing: 'linear',               // slide easing 타입
+            easing: 'linear',               // slide easing 타입 easeInOutQuad
             edgeFriction: 0.35,             // infinite:false일 때 끝에 다다랐을 때의 바운싱 효과 크기
             fade: false,                    // 슬라이딩이 아닌 fade in/out으로 할 것인가
             focusOnSelect: false,           // 선택한 요소에 포커싱 사용
@@ -454,6 +454,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 opt = self.options,
                 slideTo = self.currentSlide + opt.slidesToScroll;
 
+
             if (!self.paused && !self.interrupted && !self.focussed) {
 
                 if (opt.infinite === false) {
@@ -472,6 +473,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
                 self.slideHandler(slideTo);
             }
+
         },
         buildArrows: function buildArrows() {
 

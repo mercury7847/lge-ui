@@ -22,7 +22,7 @@
 <body>
     <div class="wrap">
         <div class="container">
-            <div class="contents support KR50CS103">
+            <div class="contents support CSTF8500">
                 <div class="contents-inner">
                     <form>
                         <h2 class="heading-title">엔지니어 사진 등록</h2>
@@ -43,12 +43,18 @@
                                             <div class="field-title">
                                                 <strong class="tit">파일 첨부</strong>
                                             </div>
+
+
                                             <div class="file-box">
-                                                <div class="file-input">
-                                                    <label for="profile-regist-file-upload" class="profile-regist-file-name">첨부파일 선택</label>
-                                                    <input type="file" id="profile-regist-file-upload" accept="image/*" required>
-                                                </div>
+                                                <span class="file-input">
+                                                    <span class="file-label">사진을 업로드해주세요.</span>
+                                                    <label for="file-upload">업로드</label>
+                                                    <input class="ui_fileinput profile-regist-file-upload" type="file" id="file-upload" accept="image/*">
+                                                </span>
+                                                <ul class="file-lists">
+                                                </ul>
                                             </div>
+
                                         </div>
                                         <ul class="dot-list03 no-border">
                                             <li>파일명은 필히 대문자 사번, 확장자는 소문자 jpg으로 변경하시기 바랍니다. (파일명 예시: AKQ037.jpg)</li>

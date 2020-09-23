@@ -91,6 +91,16 @@
                 }
             }
         }
+        .animation-box {
+            img {
+                width: 100%;
+                height:auto;
+                vertical-align:top;
+            }
+            .animation-area {
+                padding: 0 12px;
+            }
+        }
     }
     .hidden-xs {
         @include clearfix;

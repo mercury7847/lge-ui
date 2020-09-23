@@ -1,46 +1,5 @@
 @charset "UTF-8";
 
 .KR50CS222 {
-    .video-box {
-        height: 322px;
-        @include grid-row;
-        .column {
-            height:100%;
-            @include grid-col(left,6,12);
-            iframe {
-                width: 100%;
-                height:100%,   
-            }
-            .ui_scrollview {
-                height: 322px;
-                .ui_content {
-                    padding: 24px;
-                    font-size: 14px;
-                    line-height: 1.43;
-                    color: #616161;
-                }
-            }
-        }
-    }
-    .view-content {
-        margin-top:44px;
-        @include mobile {
-            margin-top:25px;
-        }
-    }
-
-
-    .related-content {
-        margin-top: 112px;
-        //include globalBackground;
-        @include mobile {
-            margin-top:56px;
-        }
-    }
-    .guide-text {
-        margin-top: 32px;
-        @include mobile {
-            margin-top: 28px;
-        }
-    }
+    
 }

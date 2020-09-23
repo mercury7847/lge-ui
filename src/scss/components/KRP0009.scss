@@ -625,7 +625,7 @@
                     background-color: #fff;
 
                     @include pc {
-                        max-height: 672px;
+                        height: 672px;
                     }
                     @include mobile {
                         padding: 0 28px 32px;
@@ -636,6 +636,7 @@
                 position: absolute;
                 top: 23px;
                 left: 24px;
+                z-index: 1;
                 .badge {
                     display: block;
                     margin-top: 4px;
@@ -657,31 +658,71 @@
                 &.large {
                     top: 0;
                     left: 0;
-                    .badge {
-                        padding: 8px 4px 12px;
-                        background-color: #65c467 !important;
-                        font-size: 11px;
-                        line-height: 20px;
-                        letter-spacing: 2px;
-                        em {
-                            display: block;
-                            font-weight: 700;
-                            font-size: 16px;
-                            line-height: 1;
-                        }
+                    //.badge {
+                    //    padding: 8px 4px 12px;
+                    //    background-color: #65c467 !important;
+                    //    font-size: 11px;
+                    //    line-height: 20px;
+                    //    letter-spacing: 2px;
+                    //    em {
+                    //        display: block;
+                    //        font-weight: 700;
+                    //        font-size: 16px;
+                    //        line-height: 1;
+                    //    }
+                    //}
+                    img {
+                        border-radius: 4px 0;
                     }
                 }
             }
 
             .product-image {
+                overflow: hidden;
+                max-height: 300px;
                 margin-bottom: 6px;
                 padding: 0 6px;
                 text-align: center;
                 a {
-                    display: block;
+                    display: inline-block;
+                    width: 300px;
+                    height: 300px;
                     img {
                         width: 100%;
                         max-width: 300px;
+                    }
+                }
+                @include mobile {
+                    max-height: 250px;
+                    a {
+                        width: 250px;
+                        height: 250px;
+                    }
+                }
+                .indi-wrap {
+                    display: none;
+                }
+                .slide-conts {
+                    height: auto;
+                }
+                @include pc {
+                    .slide-controls {
+                        display: none;
+                    }
+                }
+                @include mobile {
+                    .slide-controls {
+                        display: block;
+                        .btn-arrow {
+                            border-radius: 0;
+                            box-shadow: none;
+                            &.prev {
+                                left: 0;
+                            }
+                            &.next {
+                                right: 0;
+                            }
+                        }
                     }
                 }
             }
@@ -689,14 +730,52 @@
             .product-contents {
                 position: relative;
             }
-            .option-color {
+            .product-option {
                 position: absolute;
                 top: -38px;
                 left: 0;
                 width: 100%;
                 text-align: center;
-                .color-list {
+                .option-list {
                     font-size: 0;
+                }
+
+                &.text {
+                    .rdo-wrap {
+                        margin: 0 3px;
+                        input {
+                            & + label {
+                                width: 55px;
+                                padding: 4px 8px;
+                                border: 1px solid #ddd;
+                                border-radius: 4px;
+                                font-size: 12px;
+                                line-height: 1;
+                                &:before,
+                                &:after {
+                                    display: none;
+                                }
+                            }
+                            &:checked {
+                                & + label {
+                                    &:after {
+                                        display: block;
+                                        position: absolute;
+                                        top: -1px;
+                                        right: -1px;
+                                        bottom: -1px;
+                                        left: -1px;
+                                        width: auto;
+                                        height: auto;
+                                        border: 2px solid #222;
+                                        border-radius: 4px;
+                                        background-color: transparent;
+                                        transform: rotate(0);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
             .badge-product {
@@ -718,6 +797,7 @@
                     font-size: 16px;
                     line-height: 24px;
                     color: #222;
+                    @include textClipClamp(1);
                 }
                 .sku {
                     display: inline-block;
@@ -736,14 +816,17 @@
                         width: 16px;
                         height: 16px;
                         margin-right: 2px;
-                        background: url("/lg5-common/images/KRP0009/icon-star-off.svg") no-repeat 0 0;
+                        background: url("/lg5-common/images/icons/icon-star-off.svg") no-repeat 0 0;
                         background-size: 16px 16px;
                         &.is-review {
-                            background-image: url("/lg5-common/images/KRP0009/icon-star-on.svg");
+                            background-image: url("/lg5-common/images/icons/icon-star-on.svg");
                         }
                     }
                 }
                 .spec-info {
+                    @include pc {
+                        height: 100px;
+                    }
                     margin-top: 12px;
                     font-size: 14px;
                     line-height: 20px;
@@ -763,7 +846,7 @@
                 * {
                     display: inline-block;
                 }
-                .purchase-price {
+                .reduced-price {
                     font-size: 24px;
                     font-weight: bold;
                     line-height: 1.33;
@@ -771,7 +854,7 @@
                 }
                 .product-price {
                 }
-                .reduced-price {
+                .purchase-price {
                     position: relative;
                     margin: 0 4px 0 8px;
                     font-size: 14px;
@@ -806,6 +889,13 @@
                 }
             }
             .product-button {
+                @include pc {
+                    position: absolute;
+                    right: 47px;
+                    bottom: 36px;
+                    left: 47px;
+
+                }
                 margin-top: 27px;
                 .btn {
                     width: 100%;
@@ -823,7 +913,7 @@
                             width: 25px;
                             border: 0;
                             border-radius: 0;
-                            background: url("/lg5-common/images/KRP0009/btn-wish-off.svg") no-repeat 0 0;
+                            background: url("/lg5-common/images/icons/icon-heart-off.svg") no-repeat 0 0;
                             background-size: 25px 24px;
                         }
                         &:after {
@@ -832,7 +922,7 @@
                     }
                     &:checked + label {
                         &:before {
-                            background-image: url("/lg5-common/images/KRP0009/btn-wish-on.svg");
+                            background-image: url("/lg5-common/images/icons/icon-heart-on.svg");
                         }
                         &:after {
                             border-color:#fff;
@@ -849,11 +939,16 @@
             .item-banner {
                 .product-image {
                     //position: relative;
-                    overflow: hidden;
+                    //overflow: hidden;
                     //width: 100%;
+                    max-height: none;
                     margin-bottom: 0;
                     //padding: 0 0 160%;
                     padding: 0;
+                    a {
+                        width: 100%;
+                        height: auto;
+                    }
                     img {
                         max-width: none;
                         //height: 100%;
@@ -915,9 +1010,6 @@
                     }
                 }
                 &.large {
-                    //.product-image {
-                    //    padding: 0 0 54.388%;
-                    //}
                     .banner-contents {
                         .banner-flag {
                             margin-bottom: 8px;
@@ -963,9 +1055,6 @@
                         }
                     }
                     @media screen and (max-width: 1284px) {
-                        //.product-image {
-                        //    padding: 0 0 164.954%;
-                        //}
                         .banner-contents {
                             .banner-flag,
                             .banner-button {
@@ -981,19 +1070,12 @@
                             }
                         }
                     }
-                    //@include mobile {
-                    //    .banner-contents {
-                    //        position: static;
-                    //        width: 100%;
-                    //        padding: 36px 28px;
-                    //        .banner-flag {
-                    //            display: block;
-                    //        }
-                    //    }
-                    //}
                 }
             }
 
+            .pagination {
+                padding-top: 36px;
+            }
             .read-more-area {
                 padding-top: 36px;
                 text-align: center;
@@ -1011,6 +1093,19 @@
                         transform: rotate(45deg);
                         vertical-align: 4px;
                         content: '';
+                    }
+
+                    @include mobile {
+                        position: relative;
+                        &:before {
+                            position: absolute;
+                            bottom: -2px;
+                            left: 0;
+                            right: 15px;
+                            height: 1px;
+                            background-color: #222;
+                            content: '';
+                        }
                     }
                 }
             }

@@ -18,6 +18,7 @@ var res = {
 			"tooltip" : ["./wsg/guide_tooltip.html","","검수완료"],
 			"alert popup" : ["./wsg/guide_alert.html","","검수완료"],
 			"carousel" : ["./wsg/guide_carousel.html","","검수완료"],
+			"Accordion" : ["./wsg/guide_accordion.html","","검수완료"],
 			"rangeslider" : ["./wsg/guide_rangeslider.html","","검수완료"]
 		}
 	},
@@ -65,7 +66,8 @@ var res = {
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","진행중"],
 			"KRP0005_Sticky chat_Static" : ["/html/components/floating.html","","진행중"],
 			"KRP0009_Product List Products List : No Filter" : ["/html/components/KRP0009.html","","진행중"],
-			"KRP0010_PDP Bundle" : ["/html/components/KRP0010.html","","검수완료"],
+			"KRP0010_Product Summary Product Summary (no-img)" : ["/html/components/KRP0010.html","","진행중"],
+			"KRP0013_PDP Bundle" : ["/html/components/KRP0013.html","","검수완료"],
 			"KRP0016_PDP Support - B2C" : ["/html/components/KRP0016.html","","검수완료"],
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"],
 			"KRP0020_Sitemap_Dynamic" : ["/html/components/KRP0020.html","","진행중"]
@@ -80,6 +82,11 @@ var res = {
 				}
 			},
 			"마이페이지(MYC)" : {
+				"제품 관리" : {
+					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","진행중"],
+					"제품/영수증 등록(제품 탭)" : ["/html/MYC/ACCF7036.html","","진행중"],
+					"제품/영수증 등록(영수증 탭)" : ["/html/MYC/ACCF7037.html","","진행중"]
+				},
 				"멤버십 관리" : {
 					"멤버십 가입 정보" : ["/html/MYC/ACCF7039.html","","검수요청"],
 					"멤버십 포인트 조회" : ["/html/MYC/ACCF7052.html","","검수요청"]
@@ -90,7 +97,7 @@ var res = {
 				"센터/매장찾기" : {
 					"매장칮기 검색/결과 " : ["/html/CSR/CSRF6040.html","","진행중"],
 					"매장 상세" : ["/html/CSR/CSRF6041.html","","진행중"],
-					"매장상담 신청" : ["/html/CSR/CSRF6042.html","","진행중"]
+					//"매장상담 신청" : ["/html/CSR/CSRF6042.html","","진행중"]
 				},
 				"서비스 안내" : {
 					"FAQ" : ["/html/CSR/CSRF6043.html","","진행중"]
