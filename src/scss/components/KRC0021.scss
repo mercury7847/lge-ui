@@ -53,6 +53,17 @@ $color: (lightgray, dark, black, white);
                                 vertical-align:top;
                             }
                         }
+                        .visual-area.animation-box {
+                            .play-animaion-btn {
+                                height: 36px;
+                                padding-bottom: 0;
+                            }
+                            img {
+                                width:100%;
+                                height:auto;
+                                vertical-align:top;
+                            }
+                        }
                         @include mobile {
                             float:none;
                             width:auto;
