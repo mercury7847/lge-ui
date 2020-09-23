@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.KR50CS103 {
+.CSTF8500 {
     .heading-title {
         font-size: 32px;
         font-weight: bold;
@@ -25,11 +25,7 @@
     }
     .file-box {
         .file-input {
-            label{
-                &::after {
-                    display: none;
-                }
-            }
+            width: 100%;
         }
     }
     .btn-group {
