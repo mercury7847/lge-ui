@@ -13,20 +13,43 @@
     <dt><strong class="t_modify">주의사항</strong></dt>
     <dd>
         <ol>
+            <li>width 630px 기준, 다른 width case 나올 경우 분기처리 필요.</li>
         </ol>
     </dd>
 </dl>
 <!-- //주의사항 -->
 
 <!-- 가이드 내용 -->
-<h2 class="h2_guide">1. Basic type</h2>
+<h2 class="h2_guide">1. Basic type(header+contents+button footer)</h2>
 <div class="guide_wrap" style="background:rgba(0, 0, 0, .7); padding:10px;">
     <article id="popup" class="popup-wrap" style="display:block; position:relative;">
         <header class="pop-header">
             <h1 class="tit"><span>제품등록</span></h1>
         </header>
         <section class="pop-conts">
-            내용
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
         </section>
         <footer class="pop-footer">
             <button type="button" class="btn pink"><span>등록</span></button>
@@ -42,6 +65,62 @@
         <h1 class="tit"><span>제품등록</span></h1>
     </header>
     <section class="pop-conts">
+        내용
+    </section>
+    <footer class="pop-footer">
+        <button type="button" class="btn pink"><span>등록</span></button>
+    </footer>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
+<!-- // DOM -->  
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2. header+contents(no button footer)</h2>
+<div class="guide_wrap" style="background:rgba(0, 0, 0, .7); padding:10px;">
+    <article id="popup" class="popup-wrap" style="display:block; position:relative;">
+        <header class="pop-header">
+            <h1 class="tit"><span>제품등록</span></h1>
+        </header>
+        <section class="pop-conts no-footer">
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<article id="popup" class="popup-wrap">
+    <header class="pop-header">
+        <h1 class="tit"><span>제품등록</span></h1>
+    </header>
+    <section class="pop-conts no-footer"><!-- footer 없을 때 .no-footer(max-height 다름) -->
         내용
     </section>
     <footer class="pop-footer">
