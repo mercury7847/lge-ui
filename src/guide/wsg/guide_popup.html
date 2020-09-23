@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('../include/head_wsg.html', {
+        "title": "modal popup 가이드"
+    })
+<body>
+<div id="wrap" class="coding_guide">
+    
+<h1 class="h1_guide">modal popup 정의</h1>
+
+<!-- 주의사항 -->
+<dl class="notice">
+    <dt><strong class="t_modify">주의사항</strong></dt>
+    <dd>
+        <ol>
+            <li>width 630px 기준, 다른 width case 나올 경우 분기처리 필요.</li>
+        </ol>
+    </dd>
+</dl>
+<!-- //주의사항 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">1. Basic type(header+contents+button footer)</h2>
+<div class="guide_wrap" style="background:rgba(0, 0, 0, .7); padding:10px;">
+    <article id="popup" class="popup-wrap" style="display:block; position:relative;">
+        <header class="pop-header">
+            <h1 class="tit"><span>제품등록</span></h1>
+        </header>
+        <section class="pop-conts">
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+        </section>
+        <footer class="pop-footer">
+            <button type="button" class="btn pink"><span>등록</span></button>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<article id="popup" class="popup-wrap">
+    <header class="pop-header">
+        <h1 class="tit"><span>제품등록</span></h1>
+    </header>
+    <section class="pop-conts">
+        내용
+    </section>
+    <footer class="pop-footer">
+        <button type="button" class="btn pink"><span>등록</span></button>
+    </footer>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
+<!-- // DOM -->  
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2. header+contents(no button footer)</h2>
+<div class="guide_wrap" style="background:rgba(0, 0, 0, .7); padding:10px;">
+    <article id="popup" class="popup-wrap" style="display:block; position:relative;">
+        <header class="pop-header">
+            <h1 class="tit"><span>제품등록</span></h1>
+        </header>
+        <section class="pop-conts no-footer">
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<article id="popup" class="popup-wrap">
+    <header class="pop-header">
+        <h1 class="tit"><span>제품등록</span></h1>
+    </header>
+    <section class="pop-conts no-footer"><!-- footer 없을 때 .no-footer(max-height 다름) -->
+        내용
+    </section>
+    <footer class="pop-footer">
+        <button type="button" class="btn pink"><span>등록</span></button>
+    </footer>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
+<!-- // DOM -->  
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">3. contents 제일 상단 tab으로 시작되는 케이스</h2>
+<div class="guide_wrap" style="background:rgba(0, 0, 0, .7); padding:10px;">
+    <article id="popup" class="popup-wrap" style="display:block; position:relative;">
+        <header class="pop-header">
+            <h1 class="tit"><span>제품등록</span></h1>
+        </header>
+        <section class="pop-conts">
+            <div class="tabs-wrap ui_tab left">
+                <ul class="tabs">
+                    <li class="on"><a href="#n">시리얼번호<em class="blind">선택됨</em></a></li>
+                    <li><a href="#n">바코드</a></li>
+                </ul>
+            </div>
+            <div class="tabs-contents">
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+                내용<br><br>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<article id="popup" class="popup-wrap">
+    <header class="pop-header">
+        <h1 class="tit"><span>제품등록</span></h1>
+    </header>
+    <section class="pop-conts">
+        <div class="tabs-wrap ui_tab left">
+            <ul class="tabs">
+                <li class="on"><a href="#n">시리얼번호<em class="blind">선택됨</em></a></li>
+                <li><a href="#n">바코드</a></li>
+            </ul>
+        </div>
+        <div class="tabs-contents">
+            내용
+        </div>
+    </section>
+    <footer class="pop-footer">
+        <button type="button" class="btn pink"><span>등록</span></button>
+    </footer>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
+<!-- // DOM -->  
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+</div> 
+@@include('../include/loadscript_wsg.html')
+</body>
+</html> 

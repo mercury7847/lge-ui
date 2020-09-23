@@ -5,19 +5,19 @@
 
 .KRP0010 {
     width: 100%;
-    //max-width: (1284px + 60px);
-    max-width: (1344px + 60px);
-    min-height:579px;
+    max-width: (1284px + 60px);
     margin: 0 auto;
     padding-right: 30px;
     padding-left: 30px;
-    padding-bottom:30px;
 
     @include mobile {
         max-width: 100%;
         padding-right: 24px;
         padding-left: 24px;
-        padding-bottom:25px;
+    }
+
+    .pdp-wrap {
+        @include clearfix;
     }
 
     .pdp-visual-area {
@@ -250,6 +250,268 @@
             display: block !important;
         } 
     }
-     
-    
+
+
+    .pdp-info-area {
+        float: right;
+        width: 412px;
+        .product-detail-info {
+            .promotion-badge {
+                font-size: 0;
+                .badge {
+                    display: inline-block;
+                    margin-right: 4px;
+                    padding: 4px 6px;
+                    border-radius: 3px;
+                    border: 1px solid #ec455a;
+                    font-weight: 700;
+                    font-size: 10px;
+                    color: #ec455a;
+                    &.full {
+                        border: 1px solid #f04e3e;
+                        background-color: #f04e3e;
+                        color: #fff;
+                    }
+                }
+            }
+            .product-name {
+                .name {
+                    font-weight: 700;
+                    font-size: 26px;
+                    line-height: 36px;
+                    color: #222;
+                }
+            }
+            .sku {
+                display: inline-block;
+                font-size: 16px;
+                line-height: 24px;
+                color: #222;
+                vertical-align: middle;
+            }
+            .review-info {
+                display: inline-block;
+                margin-left: 6px;
+                &:before {
+                    display: inline-block;
+                    width: 1px;
+                    height: 12px;
+                    margin: 0 8px 0 3px;
+                    background-color: #616161;
+                    vertical-align: -3px;
+                    content: '';
+                }
+                .star,
+                .average-rating,
+                .review-count {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                .star {
+                    width: 16px;
+                    height: 16px;
+                    margin-right: 2px;
+                    background: url("/lg5-common/images/icons/icon-star-off.svg") no-repeat 0 0;
+                    background-size: 16px 16px;
+                    &.is-review {
+                        background-image: url("/lg5-common/images/icons/icon-star-on.svg");
+                    }
+                }
+            }
+
+        }
+        .product-detail-option {
+            padding: 32px;
+            border: solid 1px #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 13px 0 rgba(0,0,0,.26);
+            .price-area {
+                .product-price {
+                    .discount-rate {
+                        display: inline-block;
+                        vertical-align: top;
+
+                        .price {
+                            font-weight: 700;
+                            font-size: 16px;
+                            line-height: 24px;
+                            color: #ec455a;
+                        }
+                    }
+                    .purchase-price {
+                        display: inline-block;
+                        .price {
+                            position: relative;
+                            font-size: 16px;
+                            line-height: 24px;
+                            color: #616161;
+                            &:after {
+                                position: absolute;
+                                @include calc(top,50%,-1px);
+                                left: 0;
+                                width: 100%;
+                                height: 1px;
+                                background-color: #616161;
+                                content: '';
+                            }
+                        }
+                    }
+                }
+                .reduced-price {
+                    .price {
+                        font-weight: 700;
+                        font-size: 24px;
+                        line-height: 32px;
+                        color: #222;
+                    }
+                }
+            }
+            .product-benefit {
+                font-size: 14px;
+                line-height: 20px;
+                color: #222;
+                .title {
+                    display: inline-block;
+                    width: 116px;
+                    .btn-modal {
+                        position: relative;
+                        display: inline-block;
+                        width: 16px;
+                        height: 16px;
+                        margin-left: 2px;
+                        border: 1px solid #ec455a;
+                        vertical-align: -2px;
+                        &:before,
+                        &:after {
+                            position: absolute;
+                            @include calc(top,50%,4px);
+                            @include calc(left,50%,1px);
+                            width: 1px;
+                            height: 8px;
+                            background-color: #ec455a;
+                            content: '';
+                        }
+                        &:after {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+                ul {
+                    display: inline-block;
+                    vertical-align: top;
+                    li {
+                        em {
+                            color: #ec455a;
+                        }
+                    }
+                }
+            }
+            .sibling-info {
+                border-top: 1px solid #ddd;
+                .text {
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: #222;
+                }
+                .select-option {
+                    &.color {
+                        .chk-wrap-colorchip {
+                            input {
+                                & + label {
+                                    &:before {
+                                        top: 0;
+                                        left: 0;
+                                        width: 24px;
+                                        height: 24px;
+                                        border: 0;
+                                        background-size: 500px;
+                                    }
+                                    &:after {
+                                        border: 0;
+                                    }
+                                }
+                                &:checked {
+                                    & + label {
+                                        &:after {
+                                            top: 8px;
+                                            left: 7px;
+                                            width: 10px;
+                                            height: 6px;
+                                            border: 2px solid #fff;
+                                            border-top: none;
+                                            border-right: none;
+                                            border-radius: 0;
+                                            transform: rotate(-45deg);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.service {
+                        .option-list {
+
+                            .rdo-wrap {
+                                width: 50%;
+                            }
+                        }
+                        .rdo-wrap {
+                            input {
+                                & + label {
+                                    display: block;
+                                    border: 1px solid #ddd;
+                                    &:after {
+                                        content: '';
+                                        position: absolute;
+                                        top: 8px;
+                                        left: 6px;
+                                        width: 12px;
+                                        height: 6px;
+                                        border: 2px solid #808080;
+                                        border-top: none;
+                                        border-right: none;
+                                        border-radius: 0;
+                                        transform: rotate(-45deg);
+                                    }
+                                }
+                                &:checked {
+                                    & + label {
+                                        &:before {
+                                            border-color: transparent;
+                                            background: #ec455a;
+                                        }
+                                        &:after {
+                                            border-color:#fff;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .sibling-service {
+                    .service-desc {
+                        font-size: 14px;
+                        line-height: 20px;
+                        color: #f04e3e;
+                    }
+                }
+            }
+        }
+        .additional-purchase {
+            .select-wrap {
+                .select-button {
+                }
+                .selectbox-list {
+                    display: none;
+                }
+                &.open {
+                    .selectbox-list {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
 }

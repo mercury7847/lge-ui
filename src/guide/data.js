@@ -17,6 +17,7 @@ var res = {
 			"블릿리스트" : ["./wsg/guide_bulletlist.html","","검수완료"],
 			"tooltip" : ["./wsg/guide_tooltip.html","","검수완료"],
 			"alert popup" : ["./wsg/guide_alert.html","","검수완료"],
+			"modal popup" : ["./wsg/guide_popup.html","","검수완료"],
 			"carousel" : ["./wsg/guide_carousel.html","","검수완료"],
 			"Accordion" : ["./wsg/guide_accordion.html","","검수완료"],
 			"rangeslider" : ["./wsg/guide_rangeslider.html","","검수완료"]
@@ -85,7 +86,8 @@ var res = {
 				"제품 관리" : {
 					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","진행중"],
 					"제품/영수증 등록(제품 탭)" : ["/html/MYC/ACCF7036.html","","진행중"],
-					"제품/영수증 등록(영수증 탭)" : ["/html/MYC/ACCF7037.html","","진행중"]
+					"제품/영수증 등록(영수증 탭)" : ["/html/MYC/ACCF7037.html","","진행중"],
+					"등록완료" : ["/html/MYC/ACCF7064.html","","진행중"]
 				},
 				"멤버십 관리" : {
 					"멤버십 가입 정보" : ["/html/MYC/ACCF7039.html","","검수요청"],

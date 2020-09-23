@@ -32,8 +32,9 @@
             margin-top:20px;
         }
         @include mobile {
-            padding:56px 20px 20px;
+            padding:56px 0 20px;
             .title {
+                padding:0 20px;
                 font-size:24px;
                 line-height:32px;
             }
@@ -41,6 +42,7 @@
                 margin-top:28px;
             }
             .desc {
+                padding:0 20px;
                 padding-bottom:20px;
             }
         }
@@ -107,6 +109,9 @@
                 margin:0;
                 padding:40px 20px 56px;
                 background:#fff;
+                &:last-child {
+                    margin-bottom:-60px;
+                }
                 &:before {
                     content:'';
                     display:block;
