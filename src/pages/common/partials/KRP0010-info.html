@@ -1,5 +1,451 @@
 <!-- components/partials/KRP0010-info.html -->
 
-<div class="">
+<div class="pdp-info-area">
+    <div class="product-detail-info">
+        <div class="info-top">
+            <div class="product-wish">
+                <span class="chk-wrap">
+                    <input type="checkbox" id="wish-chk" name="wish-chk" checked>
+                    <label for="wish-chk"><span class="blind">찜하기</span></label>
+                </span>
+            </div>
+            <div class="product-share">
+                <a href="#" class="share"><span class="blind">제품 공유하기</span></a>
+            </div>
+        </div>
+        <div class="promotion-badge">
+            <span class="badge">NEW</span>
+            <span class="badge">BEST</span>
+            <span class="badge full">CASH-BACK</span>
+        </div>
+        <div class="product-name">
+            <h2 class="name">LG 올레드 갤러리 TV</h2>
+        </div>
+        <div class="sku">OLED77GXKNA</div>
+        <div class="review-info">
+            <a href="#">
+                <!-- [D] 리뷰 있을 경우
+                    .is-review 추가, "리뷰있음" 텍스트 변경
+                 -->
+                <div class="star"><span class="blind">리뷰없음</span></div>
+                <div class="average-rating"><span class="blind">평점</span>4.0</div>
+                <div class="review-count"><span class="blind">리뷰 수</span>(452개)</div>
+            </a>
+        </div>
+        <div class="product-detail-option">
+            <!-- 일반제품 -->
+            <div class="price-info">
+                <div class="price-area">
+                    <div class="product-price">
+                        <div class="discount-rate">
+                            <em class="blind">할인율</em>
+                            <span class="price">7<em>%</em></span>
+                        </div>
+                        <div class="purchase-price">
+                            <em class="blind">판매가격</em>
+                            <span class="price">1,990,000<em>원</em></span>
+                        </div>
+                    </div>
+                    <div class="reduced-price">
+                        <em class="blind">최대 혜택가격</em>
+                        <span class="price">1,853,090<em>원</em></span>
+                    </div>
+                </div>
+                <div class="product-benefit">
+                    <div class="title">할인혜택</div>
+                    <ul>
+                        <li>회원 할인 <em>3%</em> -59,700원</li>
+                        <li>즉시 할인 <em>4%</em> -77,210원</li>
+                    </ul>
+                </div>
+                <div class="product-benefit">
+                    <div class="title">
+                        <span>추가혜택</span>
+                        <a href="#" class="btn-modal"><span class="blind">추가혜택 팝업 열림</span></a>
+                    </div>
+                    <ul>
+                        <li>포인트 64,000p</li>
+                        <li>캐시백 500,000원</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sibling-info">
+                <div class="sibling-color">
+                    <div class="text">색상 : 그레이</div>
+                    <div class="select-option radio color">
+                        <div class="option-list" role="radiogroup">
+                            <div role="radio" class="chk-wrap-colorchip gray" title="그레이">
+                                <input type="radio" id="rdo1" name="rdo1" checked>
+                                <label for="rdo1"><span class="blind">그레이</span></label>
+                            </div>
+                            <div role="radio" class="chk-wrap-colorchip black" title="블랙">
+                                <input type="radio" id="rdo2" name="rdo1" checked>
+                                <label for="rdo2"><span class="blind">블랙</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sibling-size">
+                    <div class="text">화면크기 : 193cm</div>
+                    <div class="select-option select size">
+                        <div class="select-wrap">
+                            <select class="ui_selectbox" id="select1" title="사이즈 선택">
+                                <option value="" class="placeholder">193cm</option>
+                                <option value="">193cm</option>
+                                <option value="">163cm</option>
+                                <option value="">138cm</option>
+                                <option value="">100cm</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="sibling-service">
+                    <div class="text">
+                        <span>케어십 서비스</span>
+                        @@include('./common/modules/tooltip.html', {
+                            "type" : "include",
+                            "page" : "tooltip-careship"
+                        })
+                    </div>
+                    <div class="select-option radio service">
+                        <div class="option-list" role="radiogroup">
+                            <div role="radio" class="rdo-wrap">
+                                <input type="radio" id="rdo3" name="rdo2" checked>
+                                <label for="rdo3">신청</label>
+                            </div>
+                            <div role="radio" class="rdo-wrap">
+                                <input type="radio" id="rdo4" name="rdo2">
+                                <label for="rdo4">미신청</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-desc">정수기, 정수기형 냉장고 제품은 정수 수질과 관련된 제품으로 케어십신청이 필수 선택입니다.</div>
+                </div>
+                <!-- 구성품을 포함하는 경우 -->
+                <div class="is-kit">
+                    <div class="text">구성품</div>
+                    <ul class="kit-list">
+                        <li>FQ23LADRBN(스탠드 실외기)</li>
+                        <li>FQ30ADAU(실외기)</li>
+                        <li>SQ07LAJWAJ(조합 벽걸이)</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 일반제품 - 전시제품(구매불가) -->
+            <div class="display-product desc">
+                <span>온라인에서 구매할 수 없는 제품입니다.</span>
+            </div>
 
+            <!-- 일반제품 + 렌탈 -->
+            <div class="option-tabs">
+                <div class="tabs-wrap btn-type ui_tab">
+                    <ul class="tabs">
+                        <li class="on"><a href="#tab1">구매혜택<em class="blind">선택됨</em></a></li>
+                        <li><a href="#tab2">렌탈 (케어솔루션)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="option-contents" id="tab1">
+                <div class="price-info">
+                    <div class="price-area">
+                        <div class="product-price">
+                            <div class="discount-rate">
+                                <em class="blind">할인율</em>
+                                <span class="price">7<em>%</em></span>
+                            </div>
+                            <div class="purchase-price">
+                                <em class="blind">판매가격</em>
+                                <span class="price">1,990,000<em>원</em></span>
+                            </div>
+                        </div>
+                        <div class="reduced-price">
+                            <em class="blind">최대 혜택가격</em>
+                            <span class="price">1,853,090<em>원</em></span>
+                        </div>
+                    </div>
+                    <div class="product-benefit">
+                        <div class="title">할인혜택</div>
+                        <ul>
+                            <li>회원 할인 <em>3%</em> -59,700원</li>
+                            <li>즉시 할인 <em>4%</em> -77,210원</li>
+                        </ul>
+                    </div>
+                    <div class="product-benefit">
+                        <div class="title">
+                            <span>추가혜택</span>
+                            <a href="#" class="btn-modal"><span class="blind">추가혜택 팝업 열림</span></a>
+                        </div>
+                        <ul>
+                            <li>포인트 64,000p</li>
+                            <li>캐시백 500,000원</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sibling-info">
+                    <div class="sibling-color">
+                        <div class="text">색상 : 그레이</div>
+                        <div class="select-option radio color">
+                            <div class="option-list" role="radiogroup">
+                                <div role="radio" class="chk-wrap-colorchip gray" title="그레이">
+                                    <input type="radio" id="rdo5" name="rdo3" checked>
+                                    <label for="rdo5"><span class="blind">그레이</span></label>
+                                </div>
+                                <div role="radio" class="chk-wrap-colorchip black" title="블랙">
+                                    <input type="radio" id="rdo6" name="rdo3" checked>
+                                    <label for="rdo6"><span class="blind">블랙</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sibling-size">
+                        <div class="text">화면크기 : 193cm</div>
+                        <div class="select-option select size">
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" id="select2" title="사이즈 선택">
+                                    <option value="" class="placeholder">193cm</option>
+                                    <option value="">193cm</option>
+                                    <option value="">163cm</option>
+                                    <option value="">138cm</option>
+                                    <option value="">100cm</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sibling-service">
+                        <div class="text">
+                            <span>케어십 서비스</span>
+                            @@include('./common/modules/tooltip.html', {
+                                "type" : "include",
+                                "page" : "tooltip-careship"
+                            })
+                        </div>
+                        <div class="select-option radio service">
+                            <div class="option-list" role="radiogroup">
+                                <div role="radio" class="rdo-wrap">
+                                    <input type="radio" id="rdo7" name="rdo4" checked>
+                                    <label for="rdo7">신청</label>
+                                </div>
+                                <div role="radio" class="rdo-wrap">
+                                    <input type="radio" id="rdo8" name="rdo4">
+                                    <label for="rdo8">미신청</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 구성품을 포함하는 경우 -->
+                    <div class="is-kit">
+                        <div class="text">구성품</div>
+                        <ul class="kit-list">
+                            <li>FQ23LADRBN(스탠드 실외기)</li>
+                            <li>FQ30ADAU(실외기)</li>
+                            <li>SQ07LAJWAJ(조합 벽걸이)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="option-contents rental" id="tab2">
+                <div class="monthly-payment">
+                    <div class="text">
+                        <span>월 납부금액</span>
+                        <a href="#" class="btn-modal"><span class="blind">월 납부금액 팝업 열림</span></a>
+                    </div>
+                    <div class="payment-info">
+                        <div class="price">13,900원<span>무상할인(2개월)</span></div>
+                        <ul class="info-list">
+                            <li>1-3년 36,900원</li>
+                            <li>4-5년 13,900원</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn bd-pink btn-small">결합하여 더 많은 할인 받기</a>
+                </div>
+                <div class="sibling-info">
+                    <div class="sibling-color">
+                        <div class="text">색상 : 그레이</div>
+                        <div class="select-option radio color">
+                            <div class="option-list" role="radiogroup">
+                                <div role="radio" class="chk-wrap-colorchip gray" title="그레이">
+                                    <input type="radio" id="rdo9" name="rdo5" checked>
+                                    <label for="rdo9"><span class="blind">그레이</span></label>
+                                </div>
+                                <div role="radio" class="chk-wrap-colorchip black" title="블랙">
+                                    <input type="radio" id="rdo10" name="rdo5" checked>
+                                    <label for="rdo10"><span class="blind">블랙</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sibling-select">
+                        <div class="text">화면크기 : 193cm</div>
+                        <div class="select-option select size">
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" id="select3" title="사이즈 선택">
+                                    <option value="" class="placeholder">193cm</option>
+                                    <option value="">193cm</option>
+                                    <option value="">163cm</option>
+                                    <option value="">138cm</option>
+                                    <option value="">100cm</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sibling-text">
+                        <div class="text">할인등록비</div>
+                        <div class="price">200,000원</div>
+                    </div>
+                    <div class="sibling-select">
+                        <div class="text">가입비(선납) : 100,000원</div>
+                        <div class="select-option select membership">
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" id="select4" title="가입비 선택">
+                                    <option value="" class="placeholder">100,000원</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sibling-text">
+                        <div class="text">의무사용기간</div>
+                        <div class="select-option radio use-period">
+                            <div class="option-list" role="radiogroup">
+                                <div class="rdo-wrap">
+                                    <input type="radio" id="rdo11" name="rdo6" checked>
+                                    <label for="rdo11">5년</label>
+                                </div>
+                                <div class="rdo-wrap">
+                                    <input type="radio" id="rdo12" name="rdo6">
+                                    <label for="rdo12">4년</label>
+                                </div>
+                                <div class="rdo-wrap">
+                                    <input type="radio" id="rdo13" name="rdo6">
+                                    <label for="rdo13">1~3년</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sibling-select">
+                        <div class="text">제휴카드</div>
+                        <div class="select-option select card">
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" id="select5" title="제휴카드 선택">
+                                    <option value="" class="placeholder">최대 23,000원 할인</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="additional-purchase">
+            <div class="select-wrap ui_dropdown">
+                <a href="#" class="select-button ui_dropdown_toggle">액세서리/소모품 함께 구매 하기</a>
+                <div class="selectbox-list ui_dropdown_list">
+                    <ul class="select-list">
+                        <li>
+                            <a href="#">
+                                <span><img src="/lg5-common/images/KRP0010/@thumb1.jpg" alt="" ></span>
+                                <dl>
+                                    <dt>인공지능 리모컨</dt>
+                                    <dd>50,000원</dd>
+                                </dl>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span><img src="/lg5-common/images/KRP0010/@thumb1.jpg" alt="" ></span>
+                                <dl>
+                                    <dt>스탠드</dt>
+                                    <dd>100,000원</dd>
+                                </dl>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span><img src="/lg5-common/images/KRP0010/@thumb1.jpg" alt="" ></span>
+                                <dl>
+                                    <dt>블루투스 스피커</dt>
+                                    <dd>70,000원</dd>
+                                </dl>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span><img src="/lg5-common/images/KRP0010/@thumb1.jpg" alt="" ></span>
+                                <dl>
+                                    <dt>LED 램프</dt>
+                                    <dd>90,000원</dd>
+                                </dl>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="payment-amount-info">
+            <div class="quantity-wrap">
+                <div class="select-quantity">
+                    <div class="inner">
+                        <button type="button" class="minus"><span class="blind">뺴기</span></button>
+                        <input type="number" class="quantity" title="수량 입력" value="1">
+                        <button type="button" class="plus"><span class="blind">더하기</span></button>
+                    </div>
+                </div>
+                <div class="payment">
+                    <span class="price">1,853,090원</span>
+                </div>
+            </div>
+            <div class="additional-payment">
+                <ul class="additional-list">
+                    <li>
+                        <span class="text">스탠드</span>
+                        <span class="quantity">1개</span>
+                        <span class="price">100,000원</span>
+                        <button type="button" class="btn-delete"><span>삭제</span></button>
+                    </li>
+                    <li>
+                        <span class="text">인공지능 리모컨</span>
+                        <span class="quantity">1개</span>
+                        <span class="price">50,000원</span>
+                        <button type="button" class="btn-delete"><span>삭제</span></button>
+                    </li>
+                </ul>
+                <div class="shipping-charge">
+                    <span class="text">배송비</span>
+                    <span class="price">2,500원</span>
+                </div>
+            </div>
+            <div class="total-payment-amount">
+                <span class="text">총 구매금액</span>
+                <span class="price">2,005,590원</span>
+            </div>
+        </div>
+        <!-- 일반제품 -->
+        <div class="purchase-button">
+            <div class="btn-group">
+                <a href="#n" class="btn cart"><span class="blind">장바구니 담기</span></a>
+                <a href="#n" class="btn pink"><span>바로구매</span></a>
+            </div>
+        </div>
+        <!-- 일반제품 - 사전예약 -->
+        <div class="purchase-button pre-order">
+            <a href="#n" class="btn black"><span>사전예약하기</span></a>
+        </div>
+        <!-- 일반제품 - 전시제품(구매불가) -->
+        <div class="purchase-button display-product">
+            <div class="btn-group">
+                <a href="#n" class="btn bd-black">전시매장 찾기</a>
+                <a href="#n" class="btn bd-black"><span>매장방문예약</span></a>
+            </div>
+        </div>
+        <!-- 일반제품 + 렌탈 -->
+        <div class="purchase-button rental">
+            <div class="btn-group">
+                <a href="#n" class="btn cart"><span class="blind">장바구니 담기</span></a>
+                <a href="#n" class="btn pink"><span>렌탈신청</span></a>
+            </div>
+        </div>
+        <div class="link-area">
+            <a href="#">비교하기</a>
+            <a href="#">매장 상담 신청</a>
+            <a href="#">전시 매장 찾기</a>
+        </div>
+    </div>
 </div>

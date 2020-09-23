@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            
+            <button type="button" data-href="#popup" data-control="modal"><span>제품등록 시리얼번호</span></button>
+
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+
+
+    <article id="popup" class="popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit"><span>제품등록</span></h1>
+        </header>
+        <section class="pop-conts">
+            <!-- 제품등록 -->
+            <div class="tabs-wrap ui_tab left">
+                <ul class="tabs">
+                    <li class="on"><a href="#n">시리얼번호<em class="blind">선택됨</em></a></li>
+                    <li><a href="#n">바코드</a></li>
+                </ul>
+            </div>
+            <!-- 시리얼번호 등록 -->
+            <div class="tabs-contents">
+                <div class="form-wrap">
+                    <dl class="forms">
+                        <dt class="tit">
+                            <label for="" class="req">모델명</label>
+                        </dt>
+                        <dd class="conts">
+                            <span class="input-wrap">
+                                <span class="box">
+                                    <input type="text" placeholder="모델명을 직접 입력하거나 검색해주세요.">
+                                    <span class="cell">
+                                        <button type="button" class="btn-search"><span class="blind">제품명 검색</button>
+                                    </span>
+                                </span>
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"></dt>
+                        <dd class="conts"></dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"></dt>
+                        <dd class="conts"></dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"></dt>
+                        <dd class="conts"></dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"></dt>
+                        <dd class="conts"></dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"></dt>
+                        <dd class="conts"></dd>
+                    </dl>
+                </div>
+            </div>
+            <!-- // 시리얼번호 등록 -->
+            <!-- // 제품등록 -->
+        </section>
+        <footer class="pop-footer">
+            <button type="button" class="btn pink"><span>등록</span></button>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+
+    <script src="/lg5-common/js/mypage/alarm/alarm.js"></script>
+</body>
+</html>

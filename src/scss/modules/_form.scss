@@ -1,11 +1,27 @@
 // Form
 .form-wrap {
     .forms {
+        position:relative;
+        margin-top:32px;
+        &:first-child {
+            margin-top:0;
+        }
         .tit {
-            margin-bottom:8px;
+            margin-bottom:12px;
             color:#222;
             font-size:14px;
             line-height:20px;
+            .req {
+                &::after {
+                    content:'*';
+                    display:inline-block;
+                    margin-left:1px;
+                    color:inherit;
+                    font-size:inherit;
+                    line-height:inherit;
+                    vertical-align:top;
+                }
+            }
         }
         .conts {
             .input-box {
@@ -97,17 +113,13 @@
                 box-shadow:none;
             }
         }
-
-        // @include mobile {
-        //     border-radius:4px;
-        // }
     }
 
     input {
-        padding:15px 24px;
+        padding:15px 23px;
     }
     textarea {
-        padding:24px;
+        padding:23px;
     }
     // @include mobile {
     //     input {
@@ -120,22 +132,62 @@
 
     // input + other
     .box {
+        position:relative;
         display:table;
         width:100%;
-        .cell {
-            display:table-cell;
-            width:1%;
-            padding:15px 24px 15px 0;
-            border:1px solid #ddd;
-            border-left:none;
-            border-radius:0 8px 8px 0;
-            word-break:keep-all;
-            white-space:nowrap;
-        }
-        input, textarea {
-            display:table-cell;
-            border-right:none;
-            border-radius:8px 0 0 8px;
+        z-index:1;
+
+        $child: (last, first);
+        @each $p in $child {
+            .cell {
+                display:table-cell;
+                position:relative;
+                width:1%;
+                border:1px solid #ddd;
+                word-break:keep-all;
+                white-space:nowrap;
+                vertical-align:middle;
+                z-index:5;
+                &:#{$p}-child {
+                    @if ( $p == last ) {
+                        padding:0 23px 0 0;
+                        border-left:none;
+                        border-radius:0 8px 8px 0;
+                    } @else if ( $p == first) {
+                        padding:0 0 0 23px;
+                        border-right:none;
+                        border-radius:8px 0 0 8px;
+                    }
+                }
+                &::after {
+                    content:' ';
+                    position:absolute;
+                    top:0;
+                    left:-12px;
+                    right:0;
+                    bottom:0;
+                    width:12px;
+                    background:#fff;
+                    z-index:10;
+                }
+            }
+            input, textarea {
+                position:relative;
+                display:table-cell;
+                z-index:1;
+                &:#{$p}-child {
+                    @if ( $p == last ) {
+                        border-left:none;
+                        border-radius:0 8px 8px 0;
+                    } @else if ( $p == first) {
+                        border-right:none;
+                        border-radius:8px 0 0 8px;
+                    }
+                }
+                &:focus {
+                    box-shadow:none;
+                }
+            }
         }
 
         // @include mobile {
@@ -225,7 +277,6 @@
         }
         .pic-btn {
             padding:11px 11px 11px 0;
-            vertical-align:top;
             > button {
                 display:inline-block;
                 width:32px;
