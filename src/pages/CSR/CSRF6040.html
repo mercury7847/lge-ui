@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["CSR/CSR"]
+        pageCSS: ["CSR/CSR"],
+        pageJS: ["customer/searchShop"]
     })
 <body>
     <div class="wrap">
@@ -13,7 +14,7 @@
             <!-- 메장찾기 -->
             <div class="contents find-store">
                 <div class="cont-wrap">
-                    <div class="map-container">
+                    <div class="map-container" data-bestshop="/lg5-common/data-ajax/searchshop/bestShop.json">
                         <div class="store-list-wrap">
                             <h2 class="tit">매장찾기</h2>
                             <button type="button" class="btn-fold"><span class="blind">매장찾기 리스트 닫기</span></button> <!-- 클릭 시 .store-list-wrap에 close 클래스 추가 -->
