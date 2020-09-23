@@ -368,7 +368,44 @@
                 }
             }
             .product-benefit {
-                .title {}
+                font-size: 14px;
+                line-height: 20px;
+                color: #222;
+                .title {
+                    display: inline-block;
+                    width: 116px;
+                    .btn-modal {
+                        position: relative;
+                        display: inline-block;
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 50%;
+                        background-color: #ec455a;
+                        vertical-align: -2px;
+                        &:before,
+                        &:after {
+                            position: absolute;
+                            @include calc(top,50%,4px);
+                            @include calc(left,50%,1px);
+                            width: 1px;
+                            height: 8px;
+                            background-color: #fff;
+                            content: '';
+                        }
+                        &:after {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+                ul {
+                    display: inline-block;
+                    vertical-align: top;
+                    li {
+                        em {
+                            color: #ec455a;
+                        }
+                    }
+                }
             }
         }
         .additional-purchase {
