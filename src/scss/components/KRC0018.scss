@@ -59,7 +59,8 @@
                             vertical-align:top;
                         }
                     }
-                    .visual-area.image {
+                    .visual-area.image,
+                    .visual-area.animation-box {
                         img {
                             width:100%;
                             height:auto;
@@ -73,6 +74,7 @@
                     height:0;
                     margin:0 auto;
                     padding-bottom:$pb;
+                    z-index: 6;
                     .text-wrap {
                         width:$minW;
                         padding:56px 32px;
@@ -141,8 +143,20 @@
                     .visual-wrap {
                         @if $key == left {
                             margin-left:auto;
+                            .animation-box .caption {
+                                text-align: right;
+                                @include mobile {
+                                    text-align: left;
+                                }
+                            }
                         } @else if $key == right {
                             margin-right:auto;
+                            .animation-box .caption {
+                                text-align: left;
+                                @include mobile {
+                                    text-align: left;
+                                }
+                            }
                         }
                         @include mobile {
                             @if $class == full {
