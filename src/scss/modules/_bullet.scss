@@ -27,7 +27,7 @@
             width:2px;
             height:2px;
             border-radius:50%;
-            background:#777;
+            background:#808080;
         }
         &:first-child {
             margin-top:0;
@@ -36,7 +36,7 @@
 
     &.top-border {
         margin-top:40px;
-        padding-top:32px;
+        padding-top:16px;
         border-top:1px solid #ddd;
         @include mobile {
             margin-top:24px;

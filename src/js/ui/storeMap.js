@@ -28,12 +28,13 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/mapApi'], function ($, cor
             y : 37.5235644,
             overlayName : 'ui_overlay_item',
             templates: {
-                customOverlay : null
-                    // '<div class="customoverlay">' +
-                    // '  <a href="#" class={{classname}} data-id={{id}}>' +
-                    // '    <span class="title">{{title}}</span>' +
-                    // '  </a>' +
-                    // '</div>'
+                customOverlay :
+                    '<div title="{{title}}" data-id="{{id}}">'+
+                    '   <div class="point">'+
+                    '       <span class="num">{{num}}</span>'+
+                    '       <span class="blind">선택안됨</span>'+
+                    '   </div>'+
+                    '</div>'
             }
         },
 
@@ -272,9 +273,9 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/mapApi'], function ($, cor
             var content = vcui.template(
                 self.options.templates.customOverlay,
                 {
-                    classname : self.options.overlayName, 
                     id : info.id, 
-                    title : idx<5? "("+(idx+1)+") "+ info.agName : info.agName
+                    num : idx<10 ? idx+1 : "",
+                    title: info.agName
                 }
             );	
             overlay.setContent(content);
@@ -283,19 +284,17 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/mapApi'], function ($, cor
         _requestStoreData : function _requestStoreData(){
             var self = this;
             //전국 베스트샵 매장 가져오기
-            var url = self.options.baseUrl + self.options.storeDataUrl;  //"/data/bestShop.json";
+            var url = self.options.baseUrl + self.options.storeDataUrl;
 
             $.ajax({
                 type : "POST",
                 url : url,
                 dataType : "json",
             }).done(function(result) {
-
-                if(result.length > 0){
-                    
+                if(result.length > 0){                    
                     self.eventData = result[0].eventData;
                     self.storeData = vcui.array.map(result[0].storeData, function(item, index){
-                        item['id'] = item['agNum']; //info.agNum, agCode 둘중에 뭘로 해야지??                        
+                        item['id'] = item['agNum']; //info.agNum || agCode                   
                         return item;
                     });
 
@@ -303,7 +302,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/mapApi'], function ($, cor
                     self._bindEvent();
                     self.triggerHandler('mapinit', [result[0]]);
 
-                    var arr = self._getNumberInArea();                
+                    var arr = self._getNumberInArea();     
                     self.triggerHandler('mapchanged', [arr]);
                 }else{
                     self.triggerHandler('maperror', [{message:'매장정보가 없습니다.'}]);
