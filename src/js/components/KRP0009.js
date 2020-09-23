@@ -62,7 +62,7 @@ $(function () {
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
                 '{{#each (item, index) in list}}'+
-                '<div class="chk-wrap"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}} ({{item.modelCount}})</label></div>'+
+                '<div class="chk-wrap"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}}</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
 
@@ -74,7 +74,7 @@ $(function () {
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
                 '{{#each (item, index) in list}}'+
-                '<div class="chk-wrap-colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}} ({{item.modelCount}})</label></div>'+
+                '<div class="chk-wrap-colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}}</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
             /* 
@@ -146,26 +146,15 @@ $(function () {
 
                 }],
 
-                "specInfos": [{
+"specInfos": [{
+    "specName": "Operating System",
+    "specInfo": "webOS"
+}],
+"promotionText1": "OLED TV Deals1",
+"promotionText2": "OLED TV Deals2",
+"bigPromotionText" : "Big Sale",
+"bigPromotionImage": "/lg5-common/images/dummy/@img-promotion-badge.png",
 
-                    "specName": "Operating System",
-                    "specInfo": "webOS"
-
-                }, {
-
-                    "specName": "Speaker System",
-                    "specInfo": "4.2 Channel"
-
-                }, {
-
-                    "specName": "Dolby Atmos",
-                    "specInfo": "Yes"
-                }],
-
-                
-                "promotionInfo1": "OLED TV Deals",
-                "promotionInfo2": "OLED TV Deals",
-                "promotionInfo": "OLED TV Deals",
                 "salesModelCode": "OLED65GXPUA",
                 ""
             */
@@ -173,15 +162,20 @@ $(function () {
             var productItemTmpl = 
             '<li class="">'+
                 '<div class="item">'+
-                    '{{#if isPromotion}}'+ 
-                            '<div class="promotion-badge">'+
-                                '<span class="badge">{{promotionInfo1}}</span>'+
-                                '<span class="badge">{{promotionInfo2}}</span>'+
-                            '</div>'+
+                    '{{#if isBigPromotion}}'+ 
+                        '<div class="promotion-badge large">'+
+                            '<img src="{{bigPromotionImage}}" alt="{{bigPromotionText}}">'+
+                        '</div>'+
+                    '{{#elsif isPromotion}}'+                        
+                        '<div class="promotion-badge">'+
+                            '<span class="badge">{{promotionText1}}</span>'+
+                            '<span class="badge">{{promotionText2}}</span>'+
+                        '</div>'+
                     '{{/if}}'+
                 '<div class="product-image slide-wrap ui_plp_carousel">'+
                     '<div class="indi-wrap">'+
                         '<ul class="indi-conts ui_carousel_dots">'+
+                        '<li><button type="button" class="btn-indi"><span class="blind">##no##번 내용 보기</span></button></li>'+
                         '</ul>'+
                     '</div>'+
                     '<div class="slide-content ui_carousel_list">'+
@@ -189,7 +183,7 @@ $(function () {
                             '{{#each item in sliderImages}}'+  
                                 '<div class="slide-conts ui_carousel_slide">'+
                                     '<a href="#">'+
-                                        '<img src="{{item}}" alt="">'+
+                                        '<img src="{{item}}" alt="{{userFriendlyName}}">'+
                                     '</a>'+
                                 '</div>'+
                             '{{/each}}' +
@@ -206,7 +200,7 @@ $(function () {
                             '<div class="option-list" role="radiogroup">'+
                                 '{{#each item in siblingModels}}'+  
                                     '<div role="radio" class="{{#if siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
-                                        '<input type="radio" data-category-id={{categoryId}} id="product-{{item.modelName}}" name="{{siblingType}}" value="{{item.modelId}}">'+
+                                        '<input type="radio" data-category-id={{categoryId}} id="product-{{item.modelName}}" name="nm_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
                                         '{{#if siblingType=="color"}}'+
                                             '<label for="product-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
                                         '{{#else}}' +
@@ -216,7 +210,6 @@ $(function () {
                                 '{{/each}}' +
                             '</div>'+
                         '</div>'+
-
                     '{{/if}}'+ 
                     '{{#if isBadge}}'+ 
                         '<div class="badge-product">'+
@@ -260,17 +253,17 @@ $(function () {
                         '</ul>'+
                         '</div>'+
                         '<div class="price-area">'+
-                            '{{#if rPrice}}'+
-                                '<div class="purchase-price">'+
-                                    '<em class="blind">판매가격</em>'+
-                                    '<span class="price">{{rPrice}}<em>원</em></span>'+
+                            '{{#if rPromoPrice}}'+
+                                '<div class="reduced-price">'+
+                                    '<em class="blind">최대 혜택가격</em>'+
+                                    '<span class="price">{{rPromoPrice}}<em>원</em></span>'+
                                 '</div>'+
                             '{{/if}}'+
                             '{{#if isPrice}}'+ 
                                 '<div class="product-price">'+
-                                    '<div class="reduced-price">'+
-                                        '<em class="blind">최대 혜택가격</em>'+
-                                        '<span class="price">{{rPromoPrice}}<em>원</em></span>'+
+                                    '<div class="purchase-price">'+
+                                        '<em class="blind">판매가격</em>'+
+                                        '<span class="price">{{rPrice}}<em>원</em></span>'+
                                     '</div>'+
                                     '<div class="discount-rate">'+
                                         '<em class="blind">할인율</em>'+
@@ -289,25 +282,65 @@ $(function () {
                     '</div>'+
                     '<div class="product-wish">'+
                         '<span class="chk-wrap">'+
-                            '<input type="checkbox" id="wish-chk4" name="wish-chk4">'+
-                            '<label for="wish-chk4"><span class="blind">찜하기</span></label>'+
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}">'+
+                            '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>'+
                         '</span>'+
                     '</div>'+
                     '<div class="product-compare">'+
                         '<span class="chk-wrap">'+
-                            '<input type="checkbox" id="compare-chk4" name="compare-chk4">'+
-                            '<label for="compare-chk4"><span class="blind">비교하기</span></label>'+
+                            '<input type="checkbox" id="compare-{{modelId}}" name="compare-{{modelId}}">'+
+                            '<label for="compare-{{modelId}}"><span class="blind">비교하기</span></label>'+
                         '</span>'+
                     '</div>'+
                     '<div class="product-button">'+
                         '{{#if addToCartFlag=="Y"}}'+ 
-                            '<a href="#n" class="btn">장바구니에 담기</a>'+
+                            '<a href="#n" data-id="{{modelId}}" class="btn">장바구니에 담기</a>'+
                         '{{#else}}' +
-                            '<a href="#n" class="btn">자세히 보기</a>'+
+                            '<a href="#n" data-id="{{modelId}}" class="btn">자세히 보기</a>'+
                         '{{/if}}'+                         
                     '</div>'+
                 '</div>'+
-            '</li>'
+            '</li>';
+
+            
+
+            var bannerTmpl = 
+            '<li class="item-banner {{isLarge}}">' + 
+                '<div class="item">' +
+                    '<div class="product-image">' +
+                        '<a href="#">' +
+                            '<img data-pc-src="{{bannerImage}}" data-m-src="{{bannerMobileImage}}" alt="">' +
+                        '</a>'+
+                    '</div>'+
+                    '<div class="banner-contents">'+
+                        '<div class="inner">'+
+                            '<div class="banner-flag">'+
+                                '<span class="flag">{{bannerTitle}}</span>'+
+                            '</div>'+
+                            '<div class="banner-info">'+
+                                '<div class="title">{{bannerCopy}}</div>'+
+                                '<div class="sub-copy">{{bannerSubCopy}}</div>'+
+                            '</div>'+
+                            '<div class="banner-button">'+
+                                '<a href="#" data-id={{}} class="btn">자세히 보기</a>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+            '</li>';
+
+            var paginationTmpl =             
+            '<a href="#" data-id="{{prevNo}}" class="prev {{#if !leftPage}}disabled{{/if}}"><span class="blind">이전 페이지 보기</span></a>' +            
+            '<span class="page_num">'+
+                '{{#each item in list}}'+
+                    '{{#if item.select}}' +
+                        '<strong><span class="blind">현재 페이지</span>{{item.no}}</strong>'+
+                    '{{#else}}'+
+                        '<a href="#" data-id={{item.no}} title="{{item.no}}페이지 보기">{{item.no}}</a>'+
+                    '{{/if}}'+
+                '{{/each}}'+
+            '</span>'+
+            '<a href="#" data-id="{{nextNo}}" class="next {{#if !rightPage}}disabled{{/if}}"><span class="blind">다음 페이지 보기</span></a>'      
 
 
             var isRender = false;
@@ -352,8 +385,7 @@ $(function () {
                     }	
                 }
                 if(!noRequest) requestData(obj);
-            }
-            
+            }            
 
             function reset(id){
 
@@ -370,7 +402,6 @@ $(function () {
                 requestData({});
             }
 
-
             function updateFilter(arr){
 
                 for(var i=0; i<arr.length; i++){
@@ -380,73 +411,132 @@ $(function () {
 
                     for(var j=0; j<itemArr.length; j++){
                         $parent.find('input[value="'+ itemArr[j]['filterValueId']+'"]').prop('disabled', itemArr[j]['enable']=='N');
-                        $parent.find('label[for="'+ itemArr[j]['filterValueId']+'"]').text(itemArr[j]['filterValueName'] +' ('+ itemArr[j]['modelCount']+')');
+                        // $parent.find('label[for="'+ itemArr[j]['filterValueId']+'"]').text(itemArr[j]['filterValueName'] +' ('+ itemArr[j]['modelCount']+')');
+                        $parent.find('label[for="'+ itemArr[j]['filterValueId']+'"]').text(itemArr[j]['filterValueName']);
                     }
                 }
             }
 
+
+
+            /////////////////////////////////////////////////////////////////////////////////////
+
+            function fnRollingImage(e){                
+                if($(e.currentTarget).data('ui_carousel')){
+                    if(e.type == 'mouseover'){
+                        $(e.currentTarget).vcCarousel('play');
+                        
+                    }else{
+                       $(e.currentTarget).vcCarousel('stop');
+                        setTimeout(function(){
+                            $(e.currentTarget).vcCarousel('goTo', 0);
+                        }, 500);
+                    }
+                }
+            }
+
+            // 브레이크포인터 처리
+            function fnBreakPoint(){
+                var name = window.breakpoint.name;
+                $('.ui_plp_carousel').off('mouseover mouseout mouseleave');
+                if(name=="mobile"){
+                    $('.ui_plp_carousel').off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
+
+                }else if(name=="pc"){
+                    $('.ui_plp_carousel').vcCarousel("setOption", {'speed':0}, true ).on('mouseover mouseout mouseleave', fnRollingImage);
+                }   
+            }
+
+
             function renderProdList(arr){
 
-                //console.log($('.product-items-wrap .items-list'));
-                ///lg5-common/images/dummy/@img-product.jpg
+                _$(window).off('breakpointchange.filter');
+                // $('.product-items-wrap .items-list').empty();
 
-                var images = '/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg'
+                var images = '/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg';
+                //var images = '/lg5-common/images/dummy/@img-product.jpg';
                 
                 for(var i=0; i<arr.length; i++){
                     var data = arr[i];
 
                     var siblingType = data.siblingType? data.siblingType.toLowerCase():'';
-                    siblingType = siblingType=="color"? "color" : "text"
-
-
+                    siblingType = siblingType=="color"? "color" : "text";
                     var sliderImages = images.split(',');
                     // var sliderImages = data.modelRollingImgList.split(',');
 
+                    if(data.rPrice) data.rPrice = vcui.number.addComma(data.rPrice);
+                    if(data.rPromoPrice) data.rPromoPrice = vcui.number.addComma(data.rPromoPrice);
 
-                    var isPrice = data.rPromoPrice && data.discountedRate;
-                    var isPromotion = data.promotionInfo1 || data.promotionInfo2 || false;
+                    var isBigPromotion = data.bigPromotionText && data.bigPromotionImage || false;
+                    var isPrice = data.rPrice && data.discountedRate || false;
+                    var isPromotion = data.promotionText1 || data.promotionText2 || false;
                     var isBadge = data.productTag1 || data.productTag2;
                     var isSpecInfo = data.specInfos || false;
                     var isBenefit = data.benefitInfos || false;
                     var isCareShip = data.isCareShip || false;
 
-                    var obj = _$.extend(arr[i],{sliderImages : sliderImages, siblingType: siblingType, isPrice:isPrice, isPromotion:isPromotion, isBadge:isBadge, isSpecInfo:isSpecInfo, isBenefit:isBenefit, isCareShip:isCareShip});   
+                    var obj = vcui.extend(arr[i],{
+                        isBigPromotion : isBigPromotion, 
+                        sliderImages : sliderImages, 
+                        siblingType: siblingType, 
+                        isPrice : isPrice, 
+                        isPromotion : isPromotion, 
+                        isBadge : isBadge, 
+                        isSpecInfo : isSpecInfo, 
+                        isBenefit : isBenefit, 
+                        isCareShip : isCareShip
+                    });   
                     var html = vcui.template(productItemTmpl,obj);
 
                     $('.product-items-wrap .items-list').append(html);
                 }
 
-                $('.ui_plp_carousel').vcCarousel({fade:true, infinite:true, autoplaySpeed:600, speed:0, easing:'easeInOutQuad'}).on('mouseover mouseout mouseleave', function(e){
-                    if($(e.currentTarget).data('ui_carousel')){
-                        if(e.type == 'mouseover'){
-                            $(e.currentTarget).vcCarousel('play');
-                        }else{
-                            $(e.currentTarget).vcCarousel('stop');
-                            setTimeout(function(){
-                                $(e.currentTarget).vcCarousel('goTo', 0);
-                            }, 600);
-                        }
-                    }
+                $('.ui_plp_carousel').vcCarousel({
+
+                    indicatorNoSeparator:/##no##/,
+                    infinite:true, 
+                    autoplaySpeed:500, 
+                    speed:0, 
+                    easing:'easeInOutQuad',                    
+
                 });
 
+                _$(window).on('breakpointchange.filter', function(e,data){
+                    fnBreakPoint();
+                });
+
+                fnBreakPoint();
+
+            }
+            
+            
+            function renderPagination(obj){
+                var listArr = [];
+                for(var i=obj.loopStart; i<=obj.loopEnd; i++){
+                    var nObj = {no:i, select:obj.page==i? true : false};
+                    listArr.push(nObj);
+                }
+
+                var html = vcui.template(paginationTmpl, vcui.extend(obj,{ prevNo:parseInt(obj.page)-1, nextNo:parseInt(obj.page)+1, list : listArr}));
+                $('.pagination').html(html);
             }
 
             function renderFilter(arr){
-
                 if(isRender) {
                     updateFilter(arr);
                     return;
-                }
-           
+                }     
+                
+                var html = '';
+
                 for(var i=0; i<arr.length; i++){
                     var item = arr[i];
                     if(item.filterTypeCode=='00'){
                         var uArr = item.data.sort(function(a, b) { 
                             return parseInt(a.filterValueName) < parseInt(b.filterValueName) ? -1 : parseInt(a.filterValueName) > parseInt(b.filterValueName) ? 1 : 0;
                         });
-
                         var rStr = uArr[0]['filterValueName']+','+uArr[uArr.length-1]['filterValueName'];
-                        html = vcui.template(sliderTmpl,{
+                        html += vcui.template(sliderTmpl,{
                             filterId : item['filterId'],
                             headId : 'headId_'+i,
                             title : item['filterName'],
@@ -464,12 +554,12 @@ $(function () {
                                     title:dItem['rangePointStyle'], 
                                     filterName : dItem['filterValueName'],
                                     value:dItem['filterValueId'], 
-                                    modelCount : String(dItem['modelCount']), 
+                                    // modelCount : String(dItem['modelCount']), 
                                     enable:dItem['enable'] == 'N'? 'disabled' : '',
                                 }
                             });
 
-                            html = vcui.template(colorChipTmpl,{
+                            html += vcui.template(colorChipTmpl,{
                                 filterId : item['filterId'],
                                 headId : 'headId_'+i,
                                 title : item['filterName'],
@@ -483,12 +573,12 @@ $(function () {
                                     title:dItem['filterValueName'], 
                                     filterName : dItem['filterValueName'],
                                     value:dItem['filterValueId'], 
-                                    modelCount:String(dItem['modelCount']), 
+                                    // modelCount:String(dItem['modelCount']), 
                                     enable:dItem['enable'] == 'N'? 'disabled' : '',
                                 }
                             });
     
-                            html = vcui.template(checkboxTmpl,{
+                            html += vcui.template(checkboxTmpl,{
                                 filterId : item['filterId'],
                                 headId : 'headId_'+i,
                                 title : item['filterName'],
@@ -496,36 +586,54 @@ $(function () {
                                 list : dArr
                             });
                         }
-
                     }
-
-                    $('.ui_filter_accordion ul').append(html);
-                    isRender = true;
                     
-
                 }
 
+                $('.ui_filter_accordion ul').append(html);
+                isRender = true;
+
+                /*
                 $('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged',function (e, data) {
 
-                    $(e.currentTarget).siblings('.min').text(data.minValue);
-                    $(e.currentTarget).siblings('.max').text(data.maxValue);
-
+                    $(e.currentTarget).siblings('.min').text(vcui.number.addComma(data.minValue));
+                    $(e.currentTarget).siblings('.max').text(vcui.number.addComma(data.maxValue));
+    
                     if(e.type=='rangesliderchanged'){
                         var filterId = $(e.currentTarget).data('filterId');
                         setSliderData(filterId, data);
                     }
     
                 }).vcRangeSlider({mode:true});
-
+    
                 $('.ui_order_accordion').vcAccordion();
                 $('.ui_filter_accordion').vcAccordion();
+                */
+
 
                 setApplyFilter(storageFilters, true);
-
             }
 
 
             //이벤트 바인딩
+
+            isRender = true;
+
+
+            $('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged',function (e, data) {
+
+                $(e.currentTarget).siblings('.min').text(vcui.number.addComma(data.minValue));
+                $(e.currentTarget).siblings('.max').text(vcui.number.addComma(data.maxValue));
+
+                if(e.type=='rangesliderchanged'){
+                    var filterId = $(e.currentTarget).data('filterId');
+                    setSliderData(filterId, data);
+                }
+
+            }).vcRangeSlider({mode:true});
+
+            $('.ui_order_accordion').vcAccordion();
+            $('.ui_filter_accordion').vcAccordion();
 
             $('.ui_filter_accordion').on('accordionexpand', function(e,data){
 
@@ -591,11 +699,8 @@ $(function () {
                 $('#categoryCnt').text(len + '개 선택');
             });
 
-
             $('input[name="categoryCheckbox"]:checked').change();
-
             //이벤트 바인딩 end
-
 
 
             function requestData(obj){
@@ -620,6 +725,7 @@ $(function () {
                     var filterList = result.data && result.data[0].filterList;
                     var totalCount = result.data && result.data[0].totalCount;
                     var productList = result.data && result.data[0].productList;
+                    var pageInfo = result.data && result.data[0].pageInfo;
 
                     var filterObj = vcui.array.reduce(filterList, function (prev, cur) {
                         if(prev[cur['filterId']]) prev[cur['filterId']].push(cur);
@@ -709,14 +815,14 @@ $(function () {
 
                    renderFilter(newFilterArr);
                    renderProdList(productList);
+                   renderPagination(pageInfo);
 
                 }).fail(function(error) {
                     // console.error(error);
                 })
             }
 
-            setApplyFilter(storageFilters);
-
+            setApplyFilter(storageFilters, true);
 
         });           
         

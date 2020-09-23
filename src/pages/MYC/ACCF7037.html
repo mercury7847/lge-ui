@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>제품등록 바코드 팝업 열기</span></button>
+    </div>
+
+
+    <article id="popup" class="popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit"><span>제품등록</span></h1>
+        </header>
+        <section class="pop-conts">
+            <!-- 제품등록 -->
+            <div class="tabs-wrap ui_tab left">
+                <ul class="tabs">
+                    <li><a href="#n">시리얼번호</a></li>
+                    <li class="on"><a href="#n">바코드<em class="blind">선택됨</em></a></li>
+                </ul>
+            </div>
+            <!-- 바코드 등록 -->
+            <div class="tabs-contents">
+                <div class="form-wrap">
+                    <dl class="forms">
+                        <dt class="tit">
+                            <label for="slt01" class="req">구매처<span class="blind">필수입력</span></label>
+                        </dt>
+                        <dd class="conts">
+                            <div class="select-wrap block">
+                                <select class="ui_selectbox" id="slt01" title="구매처 선택">
+                                    <option value="" class="placeholder">선택</option>
+                                    <option value="">홈플러스</option>
+                                    <option value="">이마트</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit">
+                            <label for="ipt01" class="req">영수증 바코드 번호<span class="blind">필수입력</span></label>
+                        </dt>
+                        <dd class="conts">
+                            <span class="input-wrap block">
+                                <input type="text" id="ipt01" placeholder="영수증 바코드 번호" value="">
+                            </span>
+                            <div class="add-box">
+                                <div class="barcode-info">
+                                    <p>영수증 바코드 번호 예시</p>
+                                    <img src="/lg5-common/images/MYC/img-barcode.jpg" alt="영수증 바코드 하단 번호 위치가 표시됨">
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "topBorder" : true,
+                    "bulletTit" : "영수증 바코드 제품등록 안내사항",
+                    "bulletTxt" : [
+                        "영수증 등록은 구매일 다음날부터 가능하며, 30일 이내에 등록해주셔야 적립됩니다.",
+                        "영수등 등록은 할인점(홈플러스, 이마트)에서 구매하신분들만 등록이 가능합니다.",
+                        "멤버십 가입과 같은 날에 구매한 영수증의 등록은 가능하나 등록한 영수증 확인(구매이력조회)은 다음날 부터 조회하실 수 있습니다."
+                    ]
+                })
+            </div>
+            <!-- // 바코드 등록 -->
+            <!-- // 제품등록 -->
+        </section>
+        <footer class="pop-footer">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>등록</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+
+    <script src="/lg5-common/js/mypage/alarm/alarm.js"></script>
+</body>
+</html>
