@@ -6,7 +6,12 @@
     <div class="header-wrap">
         <!-- [D] 스크롤 시 .mobile-sticky-on 추가 -->
         <!-- [D] Depth 케이스 .mobile-category-depth 추가 -->
+        @@if (context.mobileCase === undefined || context.mobileCase === "all" || context.mobileCase === "main" || context.mobileCase === "subStore" || context.mobileCase === "subStory" || context.mobileCase === "subCS") {
         <div class="header-top">
+        }
+        @@if (context.mobileCase === "isDepth" || context.mobileCase === "noneDepth") {
+        <div class="header-top mobile-category-depth">
+        }
             <div class="logo"><a href="#"><em class="blind">LG전자</em></a></div>
             <div class="utility">
                 <ul class="shortcut">
@@ -48,6 +53,7 @@
                 </ul>
             </div>
 
+            @@if (context.mobileCase === undefined || context.mobileCase === "all" || context.mobileCase === "main") {
             <!-- Mobile 메인 메뉴 -->
             <div class="mobile-nav-category mobile-main-nav">
                 <a href="#none" class="nav-item">홈</a>
@@ -59,10 +65,11 @@
                     </ul>
                 </div>
             </div>
+            }
 
+            @@if (context.mobileCase === "all" || context.mobileCase === "subStore") {
             <!-- Mobile 서브메뉴 스토어 메인 -->
-            <!-- [D] style="display:none" 은 개발시 삭제 -->
-            <div class="mobile-nav-category mobile-main-nav is-sub" style="display:none">
+            <div class="mobile-nav-category mobile-main-nav is-sub">
                 <a href="#none" class="nav-item">스토어</a>
                 <div class="mobile-category-container">
                     <ul>
@@ -83,10 +90,11 @@
                     </ul>
                 </div>
             </div>
+            }
 
+            @@if (context.mobileCase === "all" || context.mobileCase === "subStory") {
             <!-- Mobile 서브메뉴 스토리 메인 -->
-            <!-- [D] style="display:none" 은 개발시 삭제 -->
-            <div class="mobile-nav-category mobile-main-nav is-sub" style="display:none">
+            <div class="mobile-nav-category mobile-main-nav is-sub">
                 <a href="#none" class="nav-item">스토리</a>
                 <div class="mobile-category-container">
                     <ul>
@@ -108,10 +116,11 @@
                     </ul>
                 </div>
             </div>
+            }
 
+            @@if (context.mobileCase === "all" || context.mobileCase === "subCS") {
             <!-- Mobile 서브메뉴 고객지원 메인 -->
-            <!-- [D] style="display:none" 은 개발시 삭제 -->
-            <div class="mobile-nav-category mobile-main-nav" style="display:none">
+            <div class="mobile-nav-category mobile-main-nav">
                 <a href="#none" class="nav-item">고객지원</a>
                 <div class="mobile-category-container">
                     <ul>
@@ -121,10 +130,11 @@
                     </ul>
                 </div>
             </div>
+            }
 
+            @@if (context.mobileCase === "all" || context.mobileCase === "isDepth") {
             <!-- Mobile Depth (동일메뉴 존재) -->
-            <!-- [D] style="display:none" 은 개발시 삭제 -->
-            <div class="mobile-nav-category is-depth" style="display:none">
+            <div class="mobile-nav-category is-depth">
                 <a href="#none" class="nav-item active">청소기</a>
                 <div class="nav-category-container">
                     <ul>
@@ -136,12 +146,15 @@
                     </ul>
                 </div>
             </div>
+            }
 
+            @@if (context.mobileCase === "all" || context.mobileCase === "noneDepth") {
             <!-- Mobile Depth (동일메뉴, 하위메뉴 미존재) -->
-            <!-- [D] style="display:none" 은 개발시 삭제 -->
-            <div class="mobile-nav-category" style="display:none">
-                <a href="#none" class="nav-item">코드제로 A9</a>
+            <div class="mobile-nav-category">
+                <a href="#" class="btn-back"><span class="blind">뒤로가기</span></a>
+                <span class="nav-item">코드제로 A9</span>
             </div>
+            }
         </div>
 
         <!--
