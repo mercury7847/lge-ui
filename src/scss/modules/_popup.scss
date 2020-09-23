@@ -268,12 +268,14 @@
         &.no-footer {
             max-height:616px;
             @include mobile {
+                height:calc(100% - 75px);
                 max-height:calc(100% - 75px);
             }
         }
         @include mobile {
             padding:16px 20px 56px;
-            max-height:calc(100% - 52px - 75px);
+            height:calc(100% - 127px);
+            max-height:calc(100% - 127px);
         }
         .tabs-wrap {
             &:first-child {

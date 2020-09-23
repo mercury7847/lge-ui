@@ -5,7 +5,7 @@
     })
 <body>
     <div class="wrap">
-        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>제품등록 시리얼번호 팝업 열기</span></button>
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>제품등록 바코드 팝업 열기</span></button>
     </div>
 
 
@@ -17,109 +17,55 @@
             <!-- 제품등록 -->
             <div class="tabs-wrap ui_tab left">
                 <ul class="tabs">
-                    <li class="on"><a href="#n">시리얼번호<em class="blind">선택됨</em></a></li>
-                    <li><a href="#n">바코드</a></li>
+                    <li><a href="#n">시리얼번호</a></li>
+                    <li class="on"><a href="#n">바코드<em class="blind">선택됨</em></a></li>
                 </ul>
             </div>
-            <!-- 시리얼번호 등록 -->
+            <!-- 바코드 등록 -->
             <div class="tabs-contents">
                 <div class="form-wrap">
                     <dl class="forms">
                         <dt class="tit">
-                            <label for="inp01" class="req">모델명<span class="blind">필수입력</span></label>
+                            <label for="slt01" class="req">구매처<span class="blind">필수입력</span></label>
                         </dt>
                         <dd class="conts">
-                            <span class="input-wrap">
-                                <span class="box">
-                                    <input type="text" id="inp01" value="" placeholder="모델명 직접입력">
-                                    <span class="cell">
-                                        <button type="button" class="btn-search"><span class="blind">제품명 검색</span></button>
-                                    </span>
-                                </span>
-                            </span>
-                            <a href="#n" class="btn-text pink pst"><span>모델명 확인방법</span></a>
+                            <div class="select-wrap block">
+                                <select class="ui_selectbox" id="slt01" title="구매처 선택">
+                                    <option value="" class="placeholder">선택</option>
+                                    <option value="">홈플러스</option>
+                                    <option value="">이마트</option>
+                                </select>
+                            </div>
                         </dd>
                     </dl>
                     <dl class="forms">
                         <dt class="tit">
-                            <label for="inp02">제품</label>
+                            <label for="ipt01" class="req">영수증 바코드 번호<span class="blind">필수입력</span></label>
                         </dt>
                         <dd class="conts">
                             <span class="input-wrap block">
-                                <input type="text" id="inp02" value="모델명을 입력하면 제품 카테고리 정보가 노출됩니다." readonly>
+                                <input type="text" id="ipt01" placeholder="영수증 바코드 번호" value="">
                             </span>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit">
-                            <label for="inp03">제조번호 (Serial number)</label>
-                        </dt>
-                        <dd class="conts">
-                            <span class="input-wrap block">
-                                <input type="text" id="inp02" value="" placeholder="제조번호 입력">
-                            </span>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit">
-                            <label for="inp04" class="req">구매시기<span class="blind">필수입력</span></label>
-                        </dt>
-                        <dd class="conts">
-                            <span class="input-wrap datepicker">
-                                <span class="box">
-                                    <input type="text" id="inp04" placeholder="구매일자 선택">
-                                    <span class="cell pic-btn">
-                                        <button type="button" class="ui_calendar" data-input-target="#inp04"><span class="blind">달력보기</span></button>
-                                    </span>
-                                </span>
-                            </span>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit">
-                            <label for="inp05">구매처</label>
-                        </dt>
-                        <dd class="conts">
-                            <span class="input-wrap">
-                                <span class="box">
-                                    <input type="text" id="inp05" value="" placeholder="매장명 직접입력">
-                                    <span class="cell">
-                                        <button type="button" class="btn-text pink"><span>매장검색</span></button>
-                                    </span>
-                                </span>
-                            </span>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit">제품구분</dt>
-                        <dd class="conts">
-                            <ul class="chkrdo-list">
-                                <li>
-                                    <span class="rdo-wrap">
-                                        <input type="radio" id="rdo1-1" name="rdo1" checked>
-                                        <label for="rdo1-1">구매</label>
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="rdo-wrap">
-                                        <input type="radio" id="rdo1-2" name="rdo1">
-                                        <label for="rdo1-2">케어솔루션</label>
-                                    </span>
-                                </li>
-                            </ul>
+                            <div class="add-box">
+                                <div class="barcode-info">
+                                    <p>영수증 바코드 번호 예시</p>
+                                    <img src="/lg5-common/images/MYC/img-barcode.jpg" alt="영수증 바코드 하단 번호 위치가 표시됨">
+                                </div>
+                            </div>
                         </dd>
                     </dl>
                 </div>
                 @@include('./common/modules/bullet-list.html', {
                     "topBorder" : true,
-                    "bulletTit" : "시리얼번호 제품등록 안내사항",
+                    "bulletTit" : "영수증 바코드 제품등록 안내사항",
                     "bulletTxt" : [
-                        "구매한 다음날부터 등록이 가능합니다.",
-                        "중고로 구매한 제품도 등록이 가능하나 구매시기는 제품 출고일을 기준으로 등록해주세요."
+                        "영수증 등록은 구매일 다음날부터 가능하며, 30일 이내에 등록해주셔야 적립됩니다.",
+                        "영수등 등록은 할인점(홈플러스, 이마트)에서 구매하신분들만 등록이 가능합니다.",
+                        "멤버십 가입과 같은 날에 구매한 영수증의 등록은 가능하나 등록한 영수증 확인(구매이력조회)은 다음날 부터 조회하실 수 있습니다."
                     ]
                 })
             </div>
-            <!-- // 시리얼번호 등록 -->
+            <!-- // 바코드 등록 -->
             <!-- // 제품등록 -->
         </section>
         <footer class="pop-footer">

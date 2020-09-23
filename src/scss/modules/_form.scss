@@ -75,6 +75,9 @@
                     }
                 }
             }
+            .add-box {
+                margin-top:16px;
+            }
             .btn-text.pst {
                 position:absolute;
                 top:0;
@@ -642,6 +645,10 @@ $input: (chk, rdo);
     position:relative;
     width:100%;
     max-width:364px;
+    &.block {
+        display:block;
+        max-width:100%;
+    }
     select {
         position:absolute;
         z-index:10;
@@ -726,7 +733,7 @@ $input: (chk, rdo);
                     a {
                         display:block;
                         overflow:hidden;
-                        padding:16px 15px;
+                        padding:16px 23px;
                         color:#808080;
                         font-size:16px;
                         line-height:24px;
