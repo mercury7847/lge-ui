@@ -506,17 +506,11 @@
 
             a {
                 display: block;
-                background: no-repeat 0 0;
-                background-size: 100% 100%;
-                &.signature {
-                    width: 114px;
-                    height: 20px;
-                    background-image: url('/lg5-common/images/logo-signature.svg');
-                }
-                &.thinq {
-                    width: 65px;
-                    height: 20px;
-                    background-image: url('/lg5-common/images/logo-thinq.png');
+                span {
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: #222;
                 }
             }
         }
