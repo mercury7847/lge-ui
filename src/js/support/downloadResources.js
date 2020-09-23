@@ -1,22 +1,18 @@
 (function() {
     var modelListTemplate = 
         '<tr>' +
-            '<td>' +
-                '<span class="color-black">{{modelName}}</span>' +
-            '</td>' +
+            '<td>{{modelName}}</td>' +
             '<td>{{categoryName}}</td>' +
-            '<td class="right">' +
+            '<td>' +
                 '<button type="button" class="btn bd-pink btn-small" data-model="{{modelName}}"><span>선택하기</span></button>' +
             '</td>' +
         '</tr>';
     var manualListTemplate = 
         '<tr>' +
-            '<td>' +
-                '<span class="color-black">{{manualType}}</span>' +
-            '</td>' +
+            '<td>{{manualType}}</td>' +
             '<td>{{manualInfo}}</td>' +
             '<td>{{date}}</td>' +
-            '<td class="right">' +
+            '<td>' +
                 '<button type="button" class="btn bd-pink btn-small"><span>{{fileType}}</span></button>' +
             '</td>' +
         '</tr>';
@@ -114,7 +110,7 @@
                         manualArr.forEach(function(item) {
                             manualList += vcui.template(manualListTemplate, item);
                         });
-                        $('.result-table.download tbody').html(manualList);
+                        $('#fileContent').html(manualList);
     
     
                         var driverArr = data.driverList instanceof Array ? data.driverList : [];

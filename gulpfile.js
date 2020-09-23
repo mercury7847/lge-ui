@@ -121,7 +121,16 @@ gulp.task("concat-js", () => gulp
 
 // Compile JS
 gulp.task("scripts", () => {
-    gulp.start(["jsCompile", "jsCompile:common", "jsCompile:components", "jsCompile:support", "jsCompile:helper", "jsCompile:libs", "jsCompile:ui", "jsCompile:mypage"]);
+    gulp.start(["jsCompile",
+                    "jsCompile:common", 
+                    "jsCompile:components", 
+                    "jsCompile:support", 
+                    "jsCompile:helper", 
+                    "jsCompile:libs", 
+                    "jsCompile:ui", 
+                    "jsCompile:mypage", 
+                    "jsCompile:customer"
+    ]);
 });
 gulp.task("jsCompile", () => gulp
     .src(src + "/js/*.js")
@@ -187,6 +196,14 @@ gulp.task("jsCompile:mypage", () => gulp
     //.pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/mypage/"))
 );
+gulp.task("jsCompile:customer", () => gulp
+    .src(src + "/js/customer/**/*")
+    .pipe(sourcemaps.init())
+    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/customer/"))
+);
 
 // fonts, images
 gulp.task("static", () => {
@@ -249,6 +266,7 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/libs/*", ["jsCompile:libs"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/ui/*", ["jsCompile:ui"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/mypage/**/*", ["jsCompile:mypage"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/customer/**/*", ["jsCompile:customer"]).on('change', browserSync.reload);
 
     //static
     gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);

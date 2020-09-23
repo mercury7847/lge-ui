@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["CSR/CSR"]
+        pageCSS: ["CSR/CSR"],
+        pageJS: ["customer/searchShop"]
     })
 <body>
     <div class="wrap">
-        @@include('./common/header.html')
+        @@include('./common/header.html', {
+            "mobileCase": "noneDepth"
+        })
 
         <div class="container">
             <!-- 메장찾기 -->
             <div class="contents find-store">
                 <div class="cont-wrap">
-                    <div class="map-container">
+                    <div class="map-container" data-bestshop="/lg5-common/data-ajax/searchshop/bestShop.json">
                         <div class="store-list-wrap">
                             <h2 class="tit">매장찾기</h2>
                             <button type="button" class="btn-fold"><span class="blind">매장찾기 리스트 닫기</span></button> <!-- 클릭 시 .store-list-wrap에 close 클래스 추가 -->
@@ -24,7 +27,7 @@
                                             <li class="on"><a href="#tab1">검색<em class="blind">선택됨</em></a></li>
                                             <li><a href="#tab2">지역</a></li>
                                             <li><a href="#tab3">도로명</a></li>
-                                            <li><a href="#tab4">지하철</a></li>
+                                            <li><a href="#tab4">지하철역</a></li>
                                         </ul>
                                     </div>
 
@@ -94,6 +97,11 @@
                                         </div>
                                         <p class="desc">지하철 역을 선택하고 근처 LG전자 매장을 찾아보세요.</p>
                                     </div>
+
+                                    <div class="view-info-btn">
+                                        <button type="button" class="btn-view map"><span>지도보기</span></button>
+                                        <!-- <button type="button" class="btn-view list"><span>리스트보기</span></button> -->
+                                    </div>
                                 </div>
                                 <!-- //search -->
 
@@ -116,10 +124,16 @@
                                     @@include('./common/partials/CSRF6040-list.html')
                                 </div>
                                 <!-- // list -->
+
+                                <!-- mobile map -->
+                                <div class="mobile-map" style="display:none;"><!-- 높이값 계산 : [브라우저 높이 - eader - h2.tit - .sch-box - .btn-sel] -->
+                                    @@include('./common/partials/CSRF6040-map.html')
+                                </div>
+                                <!-- //mobile map -->
                             </div>
 
                             <!-- option -->
-                            <div class="opt-cont">
+                            <div class="opt-cont"><!-- 열렸을 때 높이값 계산 : [브라우저 높이 - header - .btn-sel - .opt-btn-wrap] -->
                                 <button type="button" class="btn-sel"><span>옵션 선택 <span class="blind">열기</span></span></button><!-- 클릭시 .opt-cont에 open클래스 추가 -->
                                 <div class="opt-layer">
                                     <div class="scroll-wrap">
@@ -162,7 +176,7 @@
                                                     </span>
                                                 </dt>
                                                 <dd>
-                                                    <dl>
+                                                    <dl class="item">
                                                         <dt class="tit">입점 형태</dt>
                                                         <dd>
                                                             <span class="chk-wrap">
@@ -179,7 +193,7 @@
                                                             </span>
                                                         </dd>
                                                     </dl>
-                                                    <dl>
+                                                    <dl class="item">
                                                         <dt class="tit">타입/서비스 형태</dt>
                                                         <dd>
                                                             <span class="chk-wrap">
@@ -200,7 +214,7 @@
                                                             </span>
                                                         </dd>
                                                     </dl>
-                                                    <dl>
+                                                    <dl class="item">
                                                         <dt class="tit">기타</dt>
                                                         <dd>
                                                             <span class="chk-wrap">
@@ -216,8 +230,8 @@
 
                                     <div class="opt-btn-wrap">
                                         <div class="btn-group"">
-                                            <button type="button" class="btn gray"><span>취소</span></button>
-                                            <button type="button" class="btn pink"><span>확인</span></button>
+                                            <button type="button" class="btn gray"><span>초기화</span></button>
+                                            <button type="button" class="btn pink"><span>적용</span></button>
                                         </div>
                                     </div>
                                     
@@ -226,51 +240,11 @@
                             <!-- //option -->
                         </div>
 
+                        <!-- pc map -->
                         <div class="store-map-con">
-                            <div class="map-area">
-                                <img src="/lg5-common/images/dummy/@img-map.jpg" alt="">
-                                <div title="강남본점" style="position:absolute; top:50%; left:50%; cursor:pointer;">
-                                    <div class="point on"><!-- 선택된 포인트에 on 클래스 추가 -->
-                                        <span class="num">1</span>
-                                        <span class="blind">선택됨</span>
-                                    </div>
-                                </div>
-                                <div class="info-overlaybox" style="position:absolute; top:24%; left:41.5%;">
-                                    <div class="inner">
-                                        <p class="name">강남본점 BESTSHOP</p>
-                                        <p class="adress">서울특별시 강남구 청담동 86-1 LG 청담빌딩 1층</p>
-                                        <div class="store-info">
-                                            <dl>
-                                                <dt>전화</dt>
-                                                <dd>02-3448-5191</dd>
-                                            </dl>
-                                            <dl>
-                                                <dt>팩스</dt>
-                                                <dd>02-3448-5190</dd>
-                                            </dl>
-                                        </div>
-                                        <div class="hour-info">
-                                            <dl>
-                                                <dt>평&nbsp;&nbsp;일</dt>
-                                                <dd>10:30 ~ 20:30</dd>
-                                            </dl>
-                                            <dl>
-                                                <dt>토요일</dt>
-                                                <dd>10:30 ~ 20:30</dd>
-                                            </dl>
-                                            <dl>
-                                                <dt>일요일</dt>
-                                                <dd>11:00 ~ 20:30</dd>
-                                            </dl>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="#n" class="btn">매장 상담 신청</a>
-                                            <a href="#n" class="btn">상세 정보</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @@include('./common/partials/CSRF6040-map.html')
                         </div>
+                        <!-- //pc map -->
                     </div>
 
                 </div>

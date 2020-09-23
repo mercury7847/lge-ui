@@ -21,24 +21,26 @@
                 </span>
                 <button type="button" id="button-calendar-search" class="btn pink"><span>조회</span></button>
             </div>
-            <div class="input-box">
-                @@if ( inputType == "radio") {
-                    @@for (var i=0; i < context.inputArr.length; i++) {
-                    <span class="rdo-wrap">
-                        <input type="radio" id="`+inputArr[i].id+`" name="`+inputArr[i].name+`" `+inputArr[i].checked+` value="`+inputArr[i].value+`">
-                        <label for="`+inputArr[i].id+`">`+inputArr[i].label+`</label>
-                    </span>
+            @@if ( context.inputArr ) {
+                <div class="input-box">
+                    @@if ( inputType == "radio") {
+                        @@for (var i=0; i < context.inputArr.length; i++) {
+                        <span class="rdo-wrap">
+                            <input type="radio" id="`+inputArr[i].id+`" name="`+inputArr[i].name+`" `+inputArr[i].checked+` value="`+inputArr[i].value+`">
+                            <label for="`+inputArr[i].id+`">`+inputArr[i].label+`</label>
+                        </span>
+                        }
                     }
-                }
-                @@if ( inputType == "checkbox" ) {
-                    @@for (var i=0; i < context.inputArr.length; i++) {
-                    <span class="chk-wrap">
-                        <input type="checkbox" id="`+inputArr[i].id+`" name="`+inputArr[i].name+`" `+inputArr[i].checked+`>
-                        <label for="`+inputArr[i].id+`">`+inputArr[i].label+`</label>
-                    </span>
+                    @@if ( inputType == "checkbox" ) {
+                        @@for (var i=0; i < context.inputArr.length; i++) {
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="`+inputArr[i].id+`" name="`+inputArr[i].name+`" `+inputArr[i].checked+`>
+                            <label for="`+inputArr[i].id+`">`+inputArr[i].label+`</label>
+                        </span>
+                        }
                     }
-                }
-            </div>
+                </div>
+            }
         </dd>
     </dl>
 </div>

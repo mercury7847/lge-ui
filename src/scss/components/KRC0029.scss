@@ -12,10 +12,10 @@
 
     @include mobile {
         max-width: 100%;
-        padding-right: 24px;
-        padding-left: 24px;
+        padding-right: 0;
+        padding-left: 0;
     }
-
+/*
     &.flow-left,
     &.flow-right {
         .component-inner {
@@ -35,7 +35,19 @@
         }
 
     }
-
+*/  
+    &.flow-left,
+    &.flow-right {
+        .component-inner {
+            display: flex;
+            flex: 1;
+        }
+        @include mobile {
+            .component-inner {
+                display: block;
+            }
+        }
+    } 
     .square {
         position: relative;
 
@@ -109,6 +121,8 @@
     .visual-area {
         img {
             width: 100%;
+            height: auto;
+            vertical-align: top;
         }
     }
 

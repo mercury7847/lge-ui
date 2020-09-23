@@ -147,4 +147,26 @@
 
     // 알림
     @import "ACCF7062";
+
+    // 보유제품등록
+    @import "ACCF7036";
+}
+
+// 제품 영수증 등록
+.barcode-info {
+    display:inline-block;
+    padding:24px;
+    border-radius:4px;
+    background:#f4f4f4;
+    p {
+        margin-bottom:12px;
+        color:#616161;
+        font-size:14px;
+        line-height:20px;
+    }
+    img {
+        max-width:214px;
+        height:auto;
+        vertical-align:top;
+    }
 }
