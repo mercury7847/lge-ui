@@ -421,6 +421,7 @@
         position: absolute;
         top: 9px;
         right: 47px;
+        z-index: 1;
         .shortcut {
             li {
                 margin-right: 10px;
@@ -511,6 +512,18 @@
     overflow: hidden;
     font-size: 0;
     white-space: nowrap;
+
+    .dimmed {
+        display: none;
+        position: fixed;
+        top: 126px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 3;
+        background-color: rgba(0,0,0,.56);
+        content: '';
+    }
 }
 .nav-brand-gate {
     display: inline-block;
@@ -750,16 +763,16 @@
     display: none;
 
     @include pc {
-        &:before {
-            position: fixed;
-            top: 126px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 3;
-            background-color: rgba(0,0,0,.56);
-            content: '';
-        }
+        //&:before {
+        //    position: fixed;
+        //    top: 126px;
+        //    left: 0;
+        //    right: 0;
+        //    bottom: 0;
+        //    z-index: 3;
+        //    background-color: rgba(0,0,0,.56);
+        //    content: '';
+        //}
 
         .nav-category-inner {
             position: absolute;
