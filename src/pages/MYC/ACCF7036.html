@@ -8,225 +8,28 @@
         @@include('./common/header.html')
 
         <div class="container">
-            <!-- mypage -->
-            <div class="contents mypage" data-url='/lg5-common/data-ajax/mypage/alarm/my_alarm.json' data-deleteurl='/lg5-common/data-ajax/mypage/alarm/delete_alarm.json' data-type='all'>
-                <div class="cont-wrap no-bd">
-                    <!-- h3 tabs -->
-                    <div class="tabs-wrap cont-tab ui_tab">
-                        <ul class="tabs">
-                            <li class="on"><a href="#all">전체<em class="blind">선택됨</em></a></li>
-                            <li><a href="#payment">결제</a></li>
-                            <li><a href="#coupon">쿠폰</a></li>
-                            <li><a href="#care">케어솔루션</a></li>
-                            <li><a href="#event">이벤트</a></li>
-                        </ul>
-                    </div>
-                    <!-- // h3 tabs -->
-                    
-                    <!-- tab contents : filtering results -->
-                    <div class="tab-contents notice-contents">
-                        <ul class="setting-btns">
-                            <li><button type="button" id="alarm-setting" class="btn-text"><span>설정</span></button></li>
-                            <li><button type="button" id="alarm-removeall" class="btn-text" data-href="#laypop" data-control="modal"><span>전체삭제</span></button></li>
-                            <!--
-                            <li><button type="button" id="alarm-removeall" class="btn-text" data-href="#laypop" data-control="modal" disabled><span>전체삭제</span></button></li> 알림이 없을 때 disabled
-                            -->
-                        </ul>
-                        
-                        <!-- 알림 리스트 -->
-                        <div class="notice-list-wrap">
-                            <ul class="notice-lists">
-                                <!-- 케어솔루션 알림 -->
-                                <li class="list">
-                                    <div class="notice-box">
-                                        <span class="icons">알림 확인 상태 : <em class="on">안읽음</em></span>
-                                        <p class="date"><span class="blind">알림 도착 날짜 및 시간</span>2020.08.03 12:00</p>
-                                        <div class="box">
-                                            <span class="blind">알림 내용</span>
-                                            <p class="tit">케어솔루션이 곧 종료됩니다.</p>
-                                            <p class="desc">차원이 다른 전문가의 케어서비스가 아쉽게도 일주일 남았어요.<br>좀 더 체험해보시는건 어떠세요?</p>
-                                            <div class="more-view">
-                                                <p class="name"><span class="blind">제품명</span>LG TROMM 스타일러 플러스</p>
-                                                <ul class="info">
-                                                    <li>
-                                                        <dl>
-                                                            <dt>시작일</dt>
-                                                            <dd>2018.08.03</dd>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <dl>
-                                                            <dt>종료일</dt>
-                                                            <dd>2020.08.03</dd>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <dl>
-                                                            <dt>남은일자</dt>
-                                                            <dd>7일</dd>
-                                                        </dl>
-                                                    </li>
-                                                </ul>
-                                                <div class="btns">
-                                                    <a href="#n" class="btn"><span>관련 제품 둘러보기</span></a>
-                                                </div>
-                                            </div>
-                                            <div class="bottom-btn">
-                                                <a href="#n" class="btn-link">케어솔루션 내역 보기</a>
-                                            </div>
-                                            <button type="button" class="btn-del"><span>알림 삭제</span></button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- // 케어솔루션 알림 -->
-                                <!-- 결제완료 알림 -->
-                                <li class="list">
-                                    <div class="notice-box">
-                                        <span class="icons">알림 확인 상태 : <em class="off">읽음</em></span>
-                                        <p class="date"><span class="blind">알림 도착 날짜 및 시간</span>2020.08.03 11:00</p>
-                                        <div class="box">
-                                            <span class="blind">알림 내용</span>
-                                            <p class="tit">결제를 완료했어요.</p>
-                                            <p class="desc">주문하신 제품이 2020년 8월 6일 집으로 안전하게 배송될 예정이에요.</p>
-                                            <div class="more-view">
-                                                <p class="name"><span class="blind">제품명</span>코드제로 A9</p>
-                                                <ul class="info">
-                                                    <li>
-                                                        <dl>
-                                                            <dt>제품코드</dt>
-                                                            <dd>A9579I<i aria-hidden="true">&bull;</i>청소기</dd>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <dl>
-                                                            <dt>구매수량</dt>
-                                                            <dd>2</dd>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <dl>
-                                                            <dt>구매매장</dt>
-                                                            <dd>LG BESTSHOP 서초점</dd>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <dl>
-                                                            <dt>구매일자</dt>
-                                                            <dd>2020.12.29</dd>
-                                                        </dl>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="bottom-btn">
-                                                <a href="#n" class="btn-link">결제내역 자세히보기</a>
-                                            </div>
-                                            <button type="button" class="btn-del"><span>알림 삭제</span></button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- // 결제완료 알림 -->
-                                <!-- 쿠폰 알림 -->
-                                <li class="list">
-                                    <div class="notice-box">
-                                        <span class="icons">알림 확인 상태 : <em class="off">읽음</em></span>
-                                        <p class="date"><span class="blind">알림 도착 날짜 및 시간</span>2020.08.03 10:00</p>
-                                        <div class="box">
-                                            <span class="blind">알림 내용</span>
-                                            <p class="tit">새 쿠폰이 도착했어요.</p>
-                                            <p class="desc">입학시즌 기념 노트북 15% 할인쿠폰</p>
-                                            <div class="img coupon">
-                                                <img src="/lg5-common/images/img-coupon01.jpg" alt="15% 할인쿠폰">
-                                            </div>
-                                            <div class="more-view">
-                                                <p class="name">쿠폰안내</p>
-                                                <ul class="info">
-                                                    <li>
-                                                        <dl>
-                                                            <dt>발급일</dt>
-                                                            <dd>2020.06.27</dd>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <dl>
-                                                            <dt>유효기간</dt>
-                                                            <dd>2020.07.27 까지</dd>
-                                                        </dl>
-                                                    </li>
-                                                </ul>
-                                                <div class="btns">
-                                                    <a href="#n" class="btn"><span>관련 제품 둘러보기</span></a>
-                                                </div>
-                                            </div>
-                                            <div class="bottom-btn">
-                                                <a href="#n" class="btn-link">보유 쿠폰 보기</a>
-                                            </div>
-                                            <button type="button" class="btn-del"><span>알림 삭제</span></button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- // 쿠폰 알림 -->
-                                <!-- 이벤트 알림 -->
-                                <li class="list">
-                                    <div class="notice-box">
-                                        <span class="icons">알림 확인 상태 : <em class="off">읽음</em></span>
-                                        <p class="date"><span class="blind">알림 도착 날짜 및 시간</span>2020.08.03 09:00</p>
-                                        <div class="box">
-                                            <span class="blind">알림 내용</span>
-                                            <div class="flag-wrap">
-                                                <span class="flag">이벤트</span>
-                                            </div>
-                                            <p class="tit">신학기 gram 페스티벌</p>
-                                            <p class="desc">새마음 새출발 gram과 함께! 신학기 노트북을 마련하세요!</p>
-                                            <div class="img event">
-                                                <img src="/lg5-common/images/img-banner01.jpg" alt="새마음 새출발 gram과 함께. 신학기 gram 페스티벌. 10세대 인텔코어 프로세서 탑재 지급 구입하세요.">
-                                            </div>
-                                            <div class="more-view">
-                                                <p class="name">이벤트안내</p>
-                                                <ul class="info">
-                                                    <li>
-                                                        <dl>
-                                                            <dt>기간</dt>
-                                                            <dd>2020.09.04 ~ 2020.09.30</dd>
-                                                        </dl>
-                                                    </li>
-                                                    <li>
-                                                        <dl>
-                                                            <dt class="blind">참여 방법</dt>
-                                                            <dd>LG전자 회원 로그인 및 시리얼 번호 입력 후 사은품 신청이 가능합니다.</dd>
-                                                        </dl>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="bottom-btn">
-                                                <a href="#n" class="btn-link">이벤트 참여하기</a>
-                                            </div>
-                                            <button type="button" class="btn-del"><span>알림 삭제</span></button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- // 이벤트 알림 -->
-                            </ul>
-                            <p class="notice-txt">최근 <em>15일</em>의 알림을 확인할 수 있습니다.</p>
-                        </div>
-                        <!-- // 알림 리스트 -->
+            
+            <button type="button" data-href="#popup" data-control="modal"><span>제품등록 시리얼번호</span></button>
 
-                        <div class="notice-list-wrap">
-                            <p class="nodata" style="display: none;">새로운 알림이 없습니다.</p>
-                        </div>
-                    </div>
-                    <!-- tab contents : filtering results -->
-                </div>
-            </div>
-            <!-- // mypage -->
         </div>
         
         @@include('./common/footer.html')
-    </div>   
-    @@include('./common/modules/alert-modal.html', {
-        "msgOnly" : true,
-        "msg" : "받은 알림을 전체삭제<br>하시겠습니까?",
-        "twobtn" : true
-    })
+    </div>
+
+
+    <article id="popup" class="popup-wrap" style="display:none;">
+        <header class="pop-header">
+            <h1 class="tit"><span>제품등록</span></h1>
+        </header>
+        <section class="pop-conts">
+            내용
+        </section>
+        <footer class="pop-footer">
+            <button type="button" class="btn pink"><span>등록</span></button>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+
     <script src="/lg5-common/js/mypage/alarm/alarm.js"></script>
 </body>
 </html>
