@@ -32,5 +32,140 @@
 			float:none;width:100%;margin-top:25px;padding-left:0;
 		}
 	}        
-    
+
+
+
+    .pdp-info-area {
+        width: 412px;
+        .product-detail-info {
+            .promotion-badge {
+                font-size: 0;
+                .badge {
+                    display: inline-block;
+                    margin-right: 4px;
+                    padding: 4px 6px;
+                    border-radius: 3px;
+                    border: 1px solid #ec455a;
+                    font-weight: 700;
+                    font-size: 10px;
+                    color: #ec455a;
+                    &.full {
+                        border: 1px solid #f04e3e;
+                        background-color: #f04e3e;
+                        color: #fff;
+                    }
+                }
+            }
+            .product-name {
+                .name {
+                    font-weight: 700;
+                    font-size: 26px;
+                    line-height: 36px;
+                    color: #222;
+                }
+            }
+            .sku {
+                display: inline-block;
+                font-size: 16px;
+                line-height: 24px;
+                color: #222;
+                vertical-align: middle;
+            }
+            .review-info {
+                display: inline-block;
+                margin-left: 6px;
+                &:before {
+                    display: inline-block;
+                    width: 1px;
+                    height: 12px;
+                    margin: 0 8px 0 3px;
+                    background-color: #616161;
+                    vertical-align: -3px;
+                    content: '';
+                }
+                .star,
+                .average-rating,
+                .review-count {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                .star {
+                    width: 16px;
+                    height: 16px;
+                    margin-right: 2px;
+                    background: url("/lg5-common/images/icons/icon-star-off.svg") no-repeat 0 0;
+                    background-size: 16px 16px;
+                    &.is-review {
+                        background-image: url("/lg5-common/images/icons/icon-star-on.svg");
+                    }
+                }
+            }
+
+        }
+        .product-detail-option {
+            padding: 32px;
+            border: solid 1px #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 13px 0 rgba(0,0,0,.26);
+            .price-area {
+                .product-price {
+                    .discount-rate {
+                        display: inline-block;
+                        vertical-align: top;
+
+                        .price {
+                            font-weight: 700;
+                            font-size: 16px;
+                            line-height: 24px;
+                            color: #ec455a;
+                        }
+                    }
+                    .purchase-price {
+                        display: inline-block;
+                        .price {
+                            position: relative;
+                            font-size: 16px;
+                            line-height: 24px;
+                            color: #616161;
+                            &:after {
+                                position: absolute;
+                                @include calc(top,50%,-1px);
+                                left: 0;
+                                width: 100%;
+                                height: 1px;
+                                background-color: #616161;
+                                content: '';
+                            }
+                        }
+                    }
+                }
+                .reduced-price {
+                    .price {
+                        font-weight: 700;
+                        font-size: 24px;
+                        line-height: 32px;
+                        color: #222;
+                    }
+                }
+            }
+            .product-benefit {
+                .title {}
+            }
+        }
+        .additional-purchase {
+            .select-wrap {
+                .select-button {
+                }
+                .selectbox-list {
+                    display: none;
+                }
+                &.open {
+                    .selectbox-list {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
 }
