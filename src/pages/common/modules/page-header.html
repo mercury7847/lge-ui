@@ -4,6 +4,13 @@
     @@if ( context.pageDesc ) {
     <p class="desc">@@pageDesc</p>
     }
+    @@if ( context.pageBtn ) {
+        <div class="btn-desc">
+        @@for (var i=0; i < context.pageBtn.length; i++) {
+            <button class="btn bd-black btn-small"><span>`+pageBtn[i].btn+`</span></button>
+        }
+        </div>
+    }
     @@if ( context.pageArr ) {
     <div class="tabs-wrap btn-type">
         <ul class="tabs">

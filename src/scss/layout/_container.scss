@@ -17,8 +17,11 @@
             color:#616161;
             font-size:16px;
             line-height:24px;
-            br {
-                display:none;
+        }
+        .btn-desc {
+            font-size:0;
+            .btn {
+                margin:0 4px;
             }
         }
         .tabs-wrap {
@@ -39,9 +42,6 @@
             }
             .desc {
                 padding-bottom:20px;
-                br {
-                    display:block;
-                }
             }
         }
         &.no-title {
