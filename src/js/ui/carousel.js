@@ -107,6 +107,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             dotsSelector: '.' + _V.DOTS,    // 인디케이터 셀렉터
             playSelector: '.' + _V.PLAY,    // 재생 버튼 셀렉터
             carouselTitle: '',              // 제목
+            indicatorNoSeparator : /{{no}}/,
 
             accessibility: true,            // 접근성 속성(aria-)들을 붙일것인가
             adaptiveHeight: false,          // 높이를 유동적으로 할것인가
@@ -544,7 +545,10 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         }
                         for (i = 0; i <= self.getDotCount(); i += 1) {
                             dots.append(cloned = dot.clone().removeClass(opt.activeClass));
-                            cloned.find('.' + _V.SRONLY).text(opt.carouselTitle.replace(/{{no}}/, i + 1));
+                           
+                            cloned.find('.' + _V.SRONLY).text(opt.carouselTitle.replace(opt.indicatorNoSeparator, i + 1));                           
+                            // cloned.find('.' + _V.SRONLY).text(opt.carouselTitle.replace(/{{no}}/, i + 1));
+                           
                         }
                         dot = null;
                     } else {
@@ -2332,9 +2336,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 opt[option] = value;
             } else if (type === 'multiple') {
 
-                $.each(option, function (opt, val) {
-
-                    opt[opt] = val;
+                $.each(option, function (item, val) {
+                    opt[item] = val;
                 });
             } else if (type === 'responsive') {
 

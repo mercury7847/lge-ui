@@ -28,8 +28,8 @@
                     .is-review 추가, "리뷰있음" 텍스트 변경
                  -->
                 <div class="star"><span class="blind">리뷰없음</span></div>
-                <div class="average-rating"><span class="blind">평점</span>4.0</div>
-                <div class="review-count"><span class="blind">리뷰 수</span>(452개)</div>
+                <div class="average-rating"><span class="blind">평점</span>0</div>
+                <div class="review-count"><span class="blind">리뷰 수</span>(0개)</div>
             </a>
         </div>
         <div class="product-detail-option">
@@ -69,7 +69,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="sibling-info">
+            <div class="sibling-info" data-url-detail="/lg5-common/data-ajax/pdp/product_detail.json">
                 <div class="sibling-color">
                     <div class="text">색상 : 그레이</div>
                     <div class="select-option radio color">
@@ -231,15 +231,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- 구성품을 포함하는 경우 -->
-                    <div class="is-kit">
-                        <div class="text">구성품</div>
-                        <ul class="kit-list">
-                            <li>FQ23LADRBN(스탠드 실외기)</li>
-                            <li>FQ30ADAU(실외기)</li>
-                            <li>SQ07LAJWAJ(조합 벽걸이)</li>
-                        </ul>
+                        <div class="service-desc">정수기, 정수기형 냉장고 제품은 정수 수질과 관련된 제품으로 케어십신청이 필수 선택입니다.</div>
                     </div>
                 </div>
             </div>
@@ -449,3 +441,8 @@
         </div>
     </div>
 </div>
+
+@@include('./common/partials/modal/KRP0010-benefit-info.html')
+@@include('./common/partials/modal/KRP0010-pre-order-info.html')
+@@include('./common/partials/modal/KRP0010-careship-info.html')
+@@include('./common/partials/modal/KRP0010-monthly-payment-info.html')

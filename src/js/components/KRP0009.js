@@ -5,6 +5,8 @@ $(function () {
         
         vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion', 'ui/carousel'], function () {
 
+
+
             // localStorage 
             var Storage = {
 
@@ -40,8 +42,24 @@ $(function () {
                 }
             }
 
-            
 
+            var locationObj = vcui.uri.parseUrl(window.location);
+            var storageName = encodeURIComponent(locationObj.path)+'_lgeProductFilter';
+            var storageNameExpire = encodeURIComponent(locationObj.path)+'_lgeProductFilter_expire'; // 만료일 
+            var expire = Storage.get(storageNameExpire);				
+
+            if(expire && expire.expireDate < new Date().getTime()){
+                Storage.remove(storageName);
+                Storage.remove(storageNameExpire);
+                console.log('remove expire')
+            }
+
+            Storage.set(storageNameExpire, {'expireDate' : new Date().getTime() + (20*1000)});	//24*3600000 // 20초로 테스트중 만료일 설정 
+            var storageFilters = Storage.get(storageName);	
+
+
+
+            //template     
             
             var sliderTmpl = 
             '<li data-id={{filterId}}><div class="head">'+
@@ -57,131 +75,44 @@ $(function () {
             var checkboxTmpl = 
             '<li data-id={{filterId}}><div class="head">'+
                 '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
-                    '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span>{{count}}</span></div>'+
+                    '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span> (0)</span></div>'+
                     '<span class="blind ui_accord_text">내용 열기</span>'+
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
                 '{{#each (item, index) in list}}'+
-                '<div class="chk-wrap"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}} ({{item.modelCount}})</label></div>'+
+                '<div class="chk-wrap"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}}</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
 
             var colorChipTmpl = 
             '<li data-id={{filterId}}><div class="head">'+
                 '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
-                    '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span>{{count}}</span></div>'+
+                    '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span> (0)</span></div>'+
                     '<span class="blind ui_accord_text">내용 열기</span>'+
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
                 '{{#each (item, index) in list}}'+
-                '<div class="chk-wrap-colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}} ({{item.modelCount}})</label></div>'+
+                '<div class="chk-wrap-colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}}</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
-            /* 
-                    
-
-                "modelId": "MD07501035",
-                "modelName": "OLED65GXPUA",
-                "categoryId": "CT10000018",
-                "wtbUseFlag": "Y",
-                "whereToBuyUrl": "/us/tvs/lg-oled65gxpua-oled-4k-tv#pdp_where",
-                "findTheDealerUrl": null,
-                "inquiryToBuyUrl": null,
-                "retailerPricingFlag": "N",
-                "retailerPricingText": "See Retailer for Pricing",
-                "wtbExternalLinkUseFlag": "N",
-                "wtbExternalLinkName": "",
-                "wtbExternalLinkUrl": "",
-                "wtbExternalLinkSelfFlag": "",
-                "inquiryToBuyFlag": "N",
-                "modelRollingImgList": "/us/images/tvs/md07501035/350.jpg",
-                "addToCartFlag": "Y",
-                "whereToBuyFlag": "Y",
-                "findTheDealerFlag": "N",
-                "modelUrlPath": "/us/tvs/lg-oled65gxpua-oled-4k-tv",
-                "categoryName": "TVs",
-                "reviewRating": "22",
-                "reviewRatingStar": "5",
-                "reviewRatingStar2": "4.6",
-                "reviewRatingPercent": "91",
-                "modelStatusCode": "ACTIVE",
-                "bizType": "B2C",
-                "rPrice": "3499",
-                "rPriceCent": "99",
-                "rPromoPrice": "2799",
-                "rPromoPriceCent": "99",
-                "rDiscountedPrice": "700",
-                "rDiscountedPriceCent": "00",
-                "discountedRate": "20",
-                "userFriendlyName": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
-                "mediumImageAddr": "/us/images/tvs/md07501035/350.jpg",
-                "smallImageAddr": "/us/images/tvs/md07501035/260.jpg",
-                "imageAltText": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
-                "defaultProductTag": "NEW",
-                "productTag1": "NEW",
-                "productTag2": "BEST",
-                "siblingLocalValue": "65\"",
-                "siblingCode": "65",
-                "siblingType": "INCH",
-                "siblingModels": [{
-
-                    "modelName": "OLED77GXPUA",
-                    "siblingCode": "77",
-                    "siblingValue": "77\"",
-                    "modelId": "MD07500034"
-
-                }, {
-
-                    "modelName": "OLED65GXPUA",
-                    "siblingCode": "65",
-                    "siblingValue": "65\"",
-                    "modelId": "MD07501035"
-
-                }, {
-
-                    "modelName": "OLED55GXPUA",
-                    "siblingCode": "55",
-                    "siblingValue": "55\"",
-                    "modelId": "MD07501036"
-
-                }],
-
-                "specInfos": [{
-
-                    "specName": "Operating System",
-                    "specInfo": "webOS"
-
-                }, {
-
-                    "specName": "Speaker System",
-                    "specInfo": "4.2 Channel"
-
-                }, {
-
-                    "specName": "Dolby Atmos",
-                    "specInfo": "Yes"
-                }],
-
-                
-                "promotionInfo1": "OLED TV Deals",
-                "promotionInfo2": "OLED TV Deals",
-                "promotionInfo": "OLED TV Deals",
-                "salesModelCode": "OLED65GXPUA",
-                ""
-            */
 
             var productItemTmpl = 
             '<li class="">'+
                 '<div class="item">'+
-                    '{{#if isPromotion}}'+ 
-                            '<div class="promotion-badge">'+
-                                '<span class="badge">{{promotionInfo1}}</span>'+
-                                '<span class="badge">{{promotionInfo2}}</span>'+
-                            '</div>'+
+                    '{{#if isBigPromotion}}'+ 
+                        '<div class="promotion-badge large">'+
+                            '<img src="{{bigPromotionImage}}" alt="{{bigPromotionText}}">'+
+                        '</div>'+
+                    '{{#elsif isPromotion}}'+                        
+                        '<div class="promotion-badge">'+
+                            '<span class="badge">{{promotionText1}}</span>'+
+                            '<span class="badge">{{promotionText2}}</span>'+
+                        '</div>'+
                     '{{/if}}'+
                 '<div class="product-image slide-wrap ui_plp_carousel">'+
                     '<div class="indi-wrap">'+
                         '<ul class="indi-conts ui_carousel_dots">'+
+                        '<li><button type="button" class="btn-indi"><span class="blind">##no##번 내용 보기</span></button></li>'+
                         '</ul>'+
                     '</div>'+
                     '<div class="slide-content ui_carousel_list">'+
@@ -189,7 +120,7 @@ $(function () {
                             '{{#each item in sliderImages}}'+  
                                 '<div class="slide-conts ui_carousel_slide">'+
                                     '<a href="#">'+
-                                        '<img src="{{item}}" alt="">'+
+                                        '<img src="{{item}}" alt="{{userFriendlyName}}">'+
                                     '</a>'+
                                 '</div>'+
                             '{{/each}}' +
@@ -206,7 +137,7 @@ $(function () {
                             '<div class="option-list" role="radiogroup">'+
                                 '{{#each item in siblingModels}}'+  
                                     '<div role="radio" class="{{#if siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
-                                        '<input type="radio" data-category-id={{categoryId}} id="product-{{item.modelName}}" name="{{siblingType}}" value="{{item.modelId}}">'+
+                                        '<input type="radio" data-category-id={{categoryId}} id="product-{{item.modelName}}" name="nm_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
                                         '{{#if siblingType=="color"}}'+
                                             '<label for="product-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
                                         '{{#else}}' +
@@ -216,7 +147,6 @@ $(function () {
                                 '{{/each}}' +
                             '</div>'+
                         '</div>'+
-
                     '{{/if}}'+ 
                     '{{#if isBadge}}'+ 
                         '<div class="badge-product">'+
@@ -260,17 +190,17 @@ $(function () {
                         '</ul>'+
                         '</div>'+
                         '<div class="price-area">'+
-                            '{{#if rPrice}}'+
-                                '<div class="purchase-price">'+
-                                    '<em class="blind">판매가격</em>'+
-                                    '<span class="price">{{rPrice}}<em>원</em></span>'+
+                            '{{#if rPromoPrice}}'+
+                                '<div class="reduced-price">'+
+                                    '<em class="blind">최대 혜택가격</em>'+
+                                    '<span class="price">{{rPromoPrice}}<em>원</em></span>'+
                                 '</div>'+
                             '{{/if}}'+
                             '{{#if isPrice}}'+ 
                                 '<div class="product-price">'+
-                                    '<div class="reduced-price">'+
-                                        '<em class="blind">최대 혜택가격</em>'+
-                                        '<span class="price">{{rPromoPrice}}<em>원</em></span>'+
+                                    '<div class="purchase-price">'+
+                                        '<em class="blind">판매가격</em>'+
+                                        '<span class="price">{{rPrice}}<em>원</em></span>'+
                                     '</div>'+
                                     '<div class="discount-rate">'+
                                         '<em class="blind">할인율</em>'+
@@ -289,74 +219,46 @@ $(function () {
                     '</div>'+
                     '<div class="product-wish">'+
                         '<span class="chk-wrap">'+
-                            '<input type="checkbox" id="wish-chk4" name="wish-chk4">'+
-                            '<label for="wish-chk4"><span class="blind">찜하기</span></label>'+
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}">'+
+                            '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>'+
                         '</span>'+
                     '</div>'+
                     '<div class="product-compare">'+
                         '<span class="chk-wrap">'+
-                            '<input type="checkbox" id="compare-chk4" name="compare-chk4">'+
-                            '<label for="compare-chk4"><span class="blind">비교하기</span></label>'+
+                            '<input type="checkbox" id="compare-{{modelId}}" name="compare-{{modelId}}">'+
+                            '<label for="compare-{{modelId}}"><span class="blind">비교하기</span></label>'+
                         '</span>'+
                     '</div>'+
                     '<div class="product-button">'+
                         '{{#if addToCartFlag=="Y"}}'+ 
-                            '<a href="#n" class="btn">장바구니에 담기</a>'+
+                            '<a href="#n" data-id="{{modelId}}" class="btn">장바구니에 담기</a>'+
                         '{{#else}}' +
-                            '<a href="#n" class="btn">자세히 보기</a>'+
+                            '<a href="#n" data-id="{{modelId}}" class="btn">자세히 보기</a>'+
                         '{{/if}}'+                         
                     '</div>'+
                 '</div>'+
-            '</li>'
+            '</li>';     
 
+            var paginationTmpl =             
+            '<a href="#" data-id="{{prevNo}}" class="prev {{#if !leftPage}}disabled{{/if}}"><span class="blind">이전 페이지 보기</span></a>' +            
+            '<span class="page_num">'+
+                '{{#each item in list}}'+
+                    '{{#if item.select}}' +
+                        '<strong><span class="blind">현재 페이지</span>{{item.no}}</strong>'+
+                    '{{#else}}'+
+                        '<a href="#" data-id={{item.no}} title="{{item.no}}페이지 보기">{{item.no}}</a>'+
+                    '{{/if}}'+
+                '{{/each}}'+
+            '</span>'+
+            '<a href="#" data-id="{{nextNo}}" class="next {{#if !rightPage}}disabled{{/if}}"><span class="blind">다음 페이지 보기</span></a>'      
 
-            var isRender = false;
-            var locationObj = vcui.uri.parseUrl(window.location);
-            var storageName = encodeURIComponent(locationObj.path)+'_lgeProductFilter';
-            var storageNameExpire = encodeURIComponent(locationObj.path)+'_lgeProductFilter_expire'; // 만료일 
-            var expire = Storage.get(storageNameExpire);				
-
-            if(expire && expire.expireDate < new Date().getTime()){
-                Storage.remove(storageName);
-                Storage.remove(storageNameExpire);
-                console.log('remove expire')
-            }
-
-            Storage.set(storageNameExpire, {'expireDate' : new Date().getTime() + (20*1000)});	//24*3600000 // 20초로 테스트중 만료일 설정 
-            var storageFilters = Storage.get(storageName);	
-
-
-
-            // range slider  
-            function setSliderData(id, data){
-                var inputStr = ''
-                for(var key in data) inputStr += data[key]+',';
-                inputStr = inputStr.replace(/,$/,'');
-                storageFilters[id] = inputStr;
-                Storage.set(storageName, storageFilters);
-                setApplyFilter(storageFilters);
-            }
-
-
-            function setApplyFilter(obj, noRequest){		
-
-                for(var key in obj){		
-                    var $parent = $('[data-id="'+ key +'"]');
-                    var values = obj[key].split(',');
-                    for(var i=0; i<values.length; i++){
-                        $parent.find('input[id="'+ values[i] +'"]').prop('checked', true);
-                    }
-
-                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
-                        $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', obj[key]);
-                    }	
-                }
-                if(!noRequest) requestData(obj);
-            }
             
 
-            function reset(id){
 
+
+
+            // filter/storage reset
+            function reset(id){
                 var obj = Storage.get(storageName);	
                 for(var key in obj){	                        
                     var $parent = $('[data-id="'+ key +'"]');
@@ -371,6 +273,35 @@ $(function () {
             }
 
 
+            // range slider  
+            function setSliderData(id, data){
+                var inputStr = ''
+                for(var key in data) inputStr += data[key]+',';
+                inputStr = inputStr.replace(/,$/,'');
+                storageFilters[id] = inputStr;
+                Storage.set(storageName, storageFilters);
+                setApplyFilter(storageFilters);
+            }
+
+
+            function setApplyFilter(obj, noRequest){	
+
+                for(var key in obj){		
+                    var $parent = $('[data-id="'+ key +'"]');
+                    var values = obj[key].split(',');
+                    for(var i=0; i<values.length; i++){
+                        $parent.find('input[id="'+ values[i] +'"]').prop('checked', true);
+                    }
+
+                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                        $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', obj[key]);
+                    }	
+                }
+                if(!noRequest) requestData(obj);
+            }            
+
+            
+
             function updateFilter(arr){
 
                 for(var i=0; i<arr.length; i++){
@@ -380,73 +311,129 @@ $(function () {
 
                     for(var j=0; j<itemArr.length; j++){
                         $parent.find('input[value="'+ itemArr[j]['filterValueId']+'"]').prop('disabled', itemArr[j]['enable']=='N');
-                        $parent.find('label[for="'+ itemArr[j]['filterValueId']+'"]').text(itemArr[j]['filterValueName'] +' ('+ itemArr[j]['modelCount']+')');
+                        // $parent.find('label[for="'+ itemArr[j]['filterValueId']+'"]').text(itemArr[j]['filterValueName'] +' ('+ itemArr[j]['modelCount']+')');
+                        //$parent.find('label[for="'+ itemArr[j]['filterValueId']+'"]').text(itemArr[j]['rangePointStyle'] || itemArr[j]['filterValueName']);
+                    }
+
+                    var len = $parent.find('input:checked').length;
+                    $parent.find('.sel_num').html('<span class="blind">총 선택 갯수</span> ('+ len +')</span>');
+
+                }
+            }
+
+            /////////////////////////////////////////////////////////////////////////////////////
+
+            function fnRollingImage(e){                
+                if($(e.currentTarget).data('ui_carousel')){
+                    if(e.type == 'mouseover'){
+                        $(e.currentTarget).vcCarousel('play');
+                        
+                    }else{
+                       $(e.currentTarget).vcCarousel('stop');
+                        setTimeout(function(){
+                            $(e.currentTarget).vcCarousel('goTo', 0);
+                        }, 500);
                     }
                 }
             }
 
-            function renderProdList(arr){
+            // 브레이크포인터 처리
+            function fnBreakPoint(){
+                var name = window.breakpoint.name;
+                $('.ui_plp_carousel').off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
+                if(name=="mobile"){
+                    $('.ui_plp_carousel').off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
 
-                //console.log($('.product-items-wrap .items-list'));
-                ///lg5-common/images/dummy/@img-product.jpg
+                }else if(name=="pc"){
+                    $('.ui_plp_carousel').vcCarousel("setOption", {'speed':0}, true ).on('mouseover mouseout mouseleave', fnRollingImage);
+                }   
+            }
 
-                var images = '/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg'
+
+            function renderProdList(arr, totalCnt){
+
+                _$(window).off('breakpointchange.filter');
+                $('.product-items-wrap .items-list').empty();
+                $('#totalCount').text('총 '+totalCnt+'개');
+
+                var images = '/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg';
+                //var images = '/lg5-common/images/dummy/@img-product.jpg';
+
+                var html = '';
                 
                 for(var i=0; i<arr.length; i++){
                     var data = arr[i];
 
                     var siblingType = data.siblingType? data.siblingType.toLowerCase():'';
-                    siblingType = siblingType=="color"? "color" : "text"
-
-
+                    siblingType = siblingType=="color"? "color" : "text";
                     var sliderImages = images.split(',');
                     // var sliderImages = data.modelRollingImgList.split(',');
 
+                    if(data.rPrice) data.rPrice = vcui.number.addComma(data.rPrice);
+                    if(data.rPromoPrice) data.rPromoPrice = vcui.number.addComma(data.rPromoPrice);
 
-                    var isPrice = data.rPromoPrice && data.discountedRate;
-                    var isPromotion = data.promotionInfo1 || data.promotionInfo2 || false;
+                    var isBigPromotion = data.bigPromotionText && data.bigPromotionImage || false;
+                    var isPrice = data.rPrice && data.discountedRate || false;
+                    var isPromotion = data.promotionText1 || data.promotionText2 || false;
                     var isBadge = data.productTag1 || data.productTag2;
                     var isSpecInfo = data.specInfos || false;
                     var isBenefit = data.benefitInfos || false;
                     var isCareShip = data.isCareShip || false;
 
-                    var obj = _$.extend(arr[i],{sliderImages : sliderImages, siblingType: siblingType, isPrice:isPrice, isPromotion:isPromotion, isBadge:isBadge, isSpecInfo:isSpecInfo, isBenefit:isBenefit, isCareShip:isCareShip});   
-                    var html = vcui.template(productItemTmpl,obj);
-
-                    $('.product-items-wrap .items-list').append(html);
+                    var obj = vcui.extend(arr[i],{
+                        isBigPromotion : isBigPromotion, 
+                        sliderImages : sliderImages, 
+                        siblingType: siblingType, 
+                        isPrice : isPrice, 
+                        isPromotion : isPromotion, 
+                        isBadge : isBadge, 
+                        isSpecInfo : isSpecInfo, 
+                        isBenefit : isBenefit, 
+                        isCareShip : isCareShip
+                    });   
+                    html += vcui.template(productItemTmpl,obj);                    
                 }
 
-                $('.ui_plp_carousel').vcCarousel({fade:true, infinite:true, autoplaySpeed:600, speed:0, easing:'easeInOutQuad'}).on('mouseover mouseout mouseleave', function(e){
-                    if($(e.currentTarget).data('ui_carousel')){
-                        if(e.type == 'mouseover'){
-                            $(e.currentTarget).vcCarousel('play');
-                        }else{
-                            $(e.currentTarget).vcCarousel('stop');
-                            setTimeout(function(){
-                                $(e.currentTarget).vcCarousel('goTo', 0);
-                            }, 600);
-                        }
-                    }
+                $('.product-items-wrap .items-list').html(html);
+
+                $('.ui_plp_carousel').vcCarousel('destroy').vcCarousel({
+                    indicatorNoSeparator:/##no##/,
+                    infinite:true, 
+                    autoplaySpeed:500, 
+                    speed:0, 
+                    easing:'easeInOutQuad'
                 });
 
+                _$(window).on('breakpointchange.filter', function(e,data){
+                    fnBreakPoint();
+                });
+
+                fnBreakPoint();
+            }
+            
+            
+            function renderPagination(obj){
+                var listArr = [];
+                for(var i=obj.loopStart; i<=obj.loopEnd; i++){
+                    var nObj = {no:i, select:obj.page==i? true : false};
+                    listArr.push(nObj);
+                }
+
+                var html = vcui.template(paginationTmpl, vcui.extend(obj,{ prevNo:parseInt(obj.page)-1, nextNo:parseInt(obj.page)+1, list : listArr}));
+                $('.pagination').html(html);
             }
 
             function renderFilter(arr){
+                var html = '';
 
-                if(isRender) {
-                    updateFilter(arr);
-                    return;
-                }
-           
                 for(var i=0; i<arr.length; i++){
                     var item = arr[i];
                     if(item.filterTypeCode=='00'){
                         var uArr = item.data.sort(function(a, b) { 
                             return parseInt(a.filterValueName) < parseInt(b.filterValueName) ? -1 : parseInt(a.filterValueName) > parseInt(b.filterValueName) ? 1 : 0;
                         });
-
                         var rStr = uArr[0]['filterValueName']+','+uArr[uArr.length-1]['filterValueName'];
-                        html = vcui.template(sliderTmpl,{
+                        html += vcui.template(sliderTmpl,{
                             filterId : item['filterId'],
                             headId : 'headId_'+i,
                             title : item['filterName'],
@@ -464,16 +451,14 @@ $(function () {
                                     title:dItem['rangePointStyle'], 
                                     filterName : dItem['filterValueName'],
                                     value:dItem['filterValueId'], 
-                                    modelCount : String(dItem['modelCount']), 
                                     enable:dItem['enable'] == 'N'? 'disabled' : '',
                                 }
                             });
 
-                            html = vcui.template(colorChipTmpl,{
+                            html += vcui.template(colorChipTmpl,{
                                 filterId : item['filterId'],
                                 headId : 'headId_'+i,
                                 title : item['filterName'],
-                                count : '',//item['modelCount'],
                                 list : dArr
                             });
 
@@ -483,125 +468,168 @@ $(function () {
                                     title:dItem['filterValueName'], 
                                     filterName : dItem['filterValueName'],
                                     value:dItem['filterValueId'], 
-                                    modelCount:String(dItem['modelCount']), 
                                     enable:dItem['enable'] == 'N'? 'disabled' : '',
                                 }
                             });
     
-                            html = vcui.template(checkboxTmpl,{
+                            html += vcui.template(checkboxTmpl,{
                                 filterId : item['filterId'],
                                 headId : 'headId_'+i,
                                 title : item['filterName'],
-                                count : '',//item['modelCount'],
                                 list : dArr
                             });
                         }
-
-                    }
-
-                    $('.ui_filter_accordion ul').append(html);
-                    isRender = true;
-                    
-
+                    }                    
                 }
 
+                $('.ui_filter_accordion ul').html(html);
+                
                 $('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged',function (e, data) {
 
-                    $(e.currentTarget).siblings('.min').text(data.minValue);
-                    $(e.currentTarget).siblings('.max').text(data.maxValue);
-
+                    $(e.currentTarget).siblings('.min').text(vcui.number.addComma(data.minValue));
+                    $(e.currentTarget).siblings('.max').text(vcui.number.addComma(data.maxValue));
+    
                     if(e.type=='rangesliderchanged'){
                         var filterId = $(e.currentTarget).data('filterId');
                         setSliderData(filterId, data);
                     }
     
                 }).vcRangeSlider({mode:true});
+    
+                $('.ui_order_accordion').vcAccordion('destroy').vcAccordion();
+                $('.ui_filter_accordion').vcAccordion('destroy').vcAccordion();
+                
+                setApplyFilter(storageFilters, true);
+            }
+
+
+            function init(){
+
+                //이벤트 바인딩
+
+               $('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged',function (e, data) {
+
+                    $(e.currentTarget).siblings('.min').text(vcui.number.addComma(data.minValue));
+                    $(e.currentTarget).siblings('.max').text(vcui.number.addComma(data.maxValue));
+
+                    if(e.type=='rangesliderchanged'){
+                        var filterId = $(e.currentTarget).data('filterId');
+                        setSliderData(filterId, data);
+                    }
+
+                }).vcRangeSlider({mode:true});
 
                 $('.ui_order_accordion').vcAccordion();
                 $('.ui_filter_accordion').vcAccordion();
 
-                setApplyFilter(storageFilters, true);
+                $('.ui_filter_accordion').on('accordionexpand', function(e,data){
+                    if(data.content.find('.ui_filter_slider').length > 0) {
+                        data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
+                    }   
+                });
 
+                
+                $('.ui_filter_accordion').on('change', 'input', function(e){
+
+                    var name = e.target.name;
+                    var valueStr = "";
+                    $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
+                        valueStr = valueStr + item.value+','
+                    });
+                    valueStr = valueStr.replace(/,$/,'');
+                    
+                    if(valueStr==''){
+                        delete storageFilters[name];
+                        Storage.remove(storageName, name);
+                    }else{
+                        storageFilters[name] = valueStr;
+                        Storage.set(storageName, storageFilters);
+                    }
+                    setApplyFilter(storageFilters);
+                });
+
+                $('#filterModalLink').on('click', function(e){
+                    e.preventDefault();
+                    $('.lay-filter').addClass('open');
+                });
+
+                $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
+                    e.preventDefault();
+                    $('.lay-filter').removeClass('open');
+                });
+
+                $('input[name="sorting"]').on('change', function(e){
+                    e.preventDefault();
+                    var idx = $('input[name="sorting"]').index(this);
+                    $('.ui_sorting_selectbox').vcSelectbox('selectedIndex', idx, false);
+                    setApplyFilter(storageFilters);
+                });
+                
+                // 초기화버튼
+                $('#filterResetBtn').on('click', function(){
+                    reset();
+                });
+
+                $('.ui_reset_btn').on('click', function(){
+                    reset();
+                });
+
+                
+
+                $('.ui_sorting_selectbox').on('change', function(e,data){
+                    var value = e.target.value;
+                    $('input[name="sorting"][value="'+ value +'"]').prop('checked', true).change();
+                }).vcSelectbox();
+
+                $('input[name="categoryCheckbox"]').on('change', function(e){
+
+                    if($('input[name="categoryCheckbox"]:checked').length < 2){
+                        $(e.currentTarget).prop('checked', true);
+                    }else{
+                        $('input[name="categoryCheckbox"][value="'+ e.target.value +'"]').prop('checked', e.target.checked);
+                    }
+                    
+                    var len = $('input[name="categoryCheckbox"]:checked').length/2;
+                    $('#categoryCnt').text(len + '개 선택');
+                });
+
+                $('.ui_plp_carousel').vcCarousel({
+
+                    indicatorNoSeparator:/##no##/,
+                    infinite:true, 
+                    autoplaySpeed:500, 
+                    speed:0, 
+                    easing:'easeInOutQuad',                    
+
+                });
+
+
+                _$(window).on('breakpointchange.filter', function(e,data){
+                    fnBreakPoint();
+                });
+                //이벤트 바인딩 end
+
+                $('input[name="categoryCheckbox"]:checked').change();
+                fnBreakPoint();
+
+                if(!vcui.isEmpty(storageFilters)){
+                    setApplyFilter(storageFilters);
+                }
             }
 
+            function convertPostData(obj){
+                var nObj = {};
 
-            //이벤트 바인딩
-
-            $('.ui_filter_accordion').on('accordionexpand', function(e,data){
-
-                if(data.content.find('.ui_filter_slider')) {
-                    data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
-                }   
-            });
-
-            
-            $('.ui_filter_accordion').on('change', 'input', function(e){
-                var name = e.target.name;
-                var valueStr = "";
-                $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
-                    valueStr = valueStr + item.value+','
-                });
-                valueStr = valueStr.replace(/,$/,'');
-                
-                if(valueStr==''){
-                    delete storageFilters[name];
-                    Storage.remove(storageName, name);
-                }else{
-                    storageFilters[name] = valueStr;
-                    Storage.set(storageName, storageFilters);
-                }
-                setApplyFilter(storageFilters);
-            });
-
-            $('#filterModalLink').on('click', function(e){
-                e.preventDefault();
-                $('.lay-filter').addClass('open');
-            });
-
-            $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
-                e.preventDefault();
-                $('.lay-filter').removeClass('open');
-            });
-
-            $('input[name="sorting"]').on('change', function(e){
-                e.preventDefault();
-                var idx = $('input[name="sorting"]').index(this);
-                $('.ui_sorting_selectbox').vcSelectbox('selectedIndex', idx, false);
-                setApplyFilter(storageFilters);
-            });
-            
-            $('#filterResetBtn').on('click', function(){
-                reset();
-            });
-
-            $('.ui_sorting_selectbox').on('change', function(e,data){
-                var value = e.target.value;
-                $('input[name="sorting"][value="'+ value +'"]').prop('checked', true).change();
-            }).vcSelectbox();
-
-            $('input[name="categoryCheckbox"]').on('change', function(e){
-
-                if($('input[name="categoryCheckbox"]:checked').length < 2){
-                    $(e.currentTarget).prop('checked', true);
-                }else{
-                    $('input[name="categoryCheckbox"][value="'+ e.target.value +'"]').prop('checked', e.target.checked);
-                }
-                
-                var len = $('input[name="categoryCheckbox"]:checked').length/2;
-                $('#categoryCnt').text(len + '개 선택');
-            });
-
-
-            $('input[name="categoryCheckbox"]:checked').change();
-
-            //이벤트 바인딩 end
-
+                return nObj;
+            }
 
 
             function requestData(obj){
 
+                lgkorUI.showLoading();
+
                 var nObj = vcui.extend(obj,{sorting:$('input[name="sorting"]:checked').val()});
-                console.log(nObj);
+                console.log('requestData: ', convertPostData(nObj));
 
                 var idx = Math.random() > 0.5? 1 : 0;
                 //var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList'+idx+'.json'; // 테스트용
@@ -620,6 +648,7 @@ $(function () {
                     var filterList = result.data && result.data[0].filterList;
                     var totalCount = result.data && result.data[0].totalCount;
                     var productList = result.data && result.data[0].productList;
+                    var pageInfo = result.data && result.data[0].pageInfo;
 
                     var filterObj = vcui.array.reduce(filterList, function (prev, cur) {
                         if(prev[cur['filterId']]) prev[cur['filterId']].push(cur);
@@ -707,16 +736,22 @@ $(function () {
                         return parseInt(a.filterOrderNo) < parseInt(b.filterOrderNo) ? -1 : parseInt(a.filterOrderNo) > parseInt(b.filterOrderNo) ? 1 : 0;
                     });
 
-                   renderFilter(newFilterArr);
-                   renderProdList(productList);
+                   //renderFilter(newFilterArr);
+                   updateFilter(newFilterArr);
+                   renderProdList(productList, totalCount);
+                   renderPagination(pageInfo);
+
+                   lgkorUI.hideLoading();
+                   
 
                 }).fail(function(error) {
-                    // console.error(error);
+                    console.error(error);
+                    lgkorUI.hideLoading();
                 })
             }
 
-            setApplyFilter(storageFilters);
-
+            init();
+            
 
         });           
         
@@ -726,3 +761,82 @@ $(function () {
         }, $
     );
 });
+
+/*     
+"modelId": "MD07501035",
+"modelName": "OLED65GXPUA",
+"categoryId": "CT10000018",
+"wtbUseFlag": "Y",
+"whereToBuyUrl": "/us/tvs/lg-oled65gxpua-oled-4k-tv#pdp_where",
+"findTheDealerUrl": null,
+"inquiryToBuyUrl": null,
+"retailerPricingFlag": "N",
+"retailerPricingText": "See Retailer for Pricing",
+"wtbExternalLinkUseFlag": "N",
+"wtbExternalLinkName": "",
+"wtbExternalLinkUrl": "",
+"wtbExternalLinkSelfFlag": "",
+"inquiryToBuyFlag": "N",
+"modelRollingImgList": "/us/images/tvs/md07501035/350.jpg",
+"addToCartFlag": "Y",
+"whereToBuyFlag": "Y",
+"findTheDealerFlag": "N",
+"modelUrlPath": "/us/tvs/lg-oled65gxpua-oled-4k-tv",
+"categoryName": "TVs",
+"reviewRating": "22",
+"reviewRatingStar": "5",
+"reviewRatingStar2": "4.6",
+"reviewRatingPercent": "91",
+"modelStatusCode": "ACTIVE",
+"bizType": "B2C",
+"rPrice": "3499",
+"rPriceCent": "99",
+"rPromoPrice": "2799",
+"rPromoPriceCent": "99",
+"rDiscountedPrice": "700",
+"rDiscountedPriceCent": "00",
+"discountedRate": "20",
+"userFriendlyName": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
+"mediumImageAddr": "/us/images/tvs/md07501035/350.jpg",
+"smallImageAddr": "/us/images/tvs/md07501035/260.jpg",
+"imageAltText": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
+"defaultProductTag": "NEW",
+"productTag1": "NEW",
+"productTag2": "BEST",
+"siblingLocalValue": "65\"",
+"siblingCode": "65",
+"siblingType": "INCH",
+"siblingModels": [{
+
+    "modelName": "OLED77GXPUA",
+    "siblingCode": "77",
+    "siblingValue": "77\"",
+    "modelId": "MD07500034"
+
+}, {
+
+    "modelName": "OLED65GXPUA",
+    "siblingCode": "65",
+    "siblingValue": "65\"",
+    "modelId": "MD07501035"
+
+}, {
+
+    "modelName": "OLED55GXPUA",
+    "siblingCode": "55",
+    "siblingValue": "55\"",
+    "modelId": "MD07501036"
+
+}],
+
+"specInfos": [{
+    "specName": "Operating System",
+    "specInfo": "webOS"
+}],
+"promotionText1": "OLED TV Deals1",
+"promotionText2": "OLED TV Deals2",
+"bigPromotionText" : "Big Sale",
+"bigPromotionImage": "/lg5-common/images/dummy/@img-promotion-badge.png",
+
+"salesModelCode": "OLED65GXPUA"
+*/
