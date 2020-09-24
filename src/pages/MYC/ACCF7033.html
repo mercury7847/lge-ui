@@ -211,18 +211,29 @@
         <script>
             $(function(){
                 vcui.require(['ui/carousel'], function () {
+
+                    console.log('asdfdsa');
                     $('.ui_carousel_slider').vcCarousel({
                         infinite: false,
                         autoplay: false,
-                        slidesToShow: 4,
                         slidesToScroll: 4,
-                        responsive: [{
-                            breakpoint: 768,
-                            settings: {
-                                slidesToShow: 1,
-                                slideToScroll: 1
+                        slidesToShow: 4,
+                        responsive: [
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToScroll: 1,
+                                    slidesToShow: 1,
+                                }
+                            },
+                            {
+                                breakpoint: 769,
+                                settings: {
+                                    slidesToScroll: 4,
+                                    slidesToShow: 4,
+                                }
                             }
-                        }]
+                        ]
                     });
                 });
             });
