@@ -49,11 +49,9 @@
                         padding:0 4px;
                         @include mobile {
                             width:100%;
+                            padding:0;
                             &:first-child {
                                 margin-bottom:10px;
-                            }
-                            &:nth-child(2) {
-                                padding-right:132px;
                             }
                         }
                     }
@@ -69,8 +67,11 @@
                         top:0;
                         right:4px;
                         @include mobile {
-                            top:auto;
-                            bottom:0;
+                            position:relative;
+                            display:block;
+                            right:auto;
+                            width:100%;
+                            margin-top:20px;
                         }
                     }
                 }
@@ -694,18 +695,6 @@ $input: (chk, rdo);
                 border-right:5px solid transparent;
                 transition:all 0.3s;
             }
-            // @include mobile {
-            //     border-radius:8px;
-            //     padding:15px;
-            //     padding-right:55px;
-            //     .ui-select-text {
-            //         font-size:14px;
-            //         line-height:20px;
-            //     }
-            //     .ico {
-            //         right:22px;
-            //     }
-            // }
         }
         &.on {
             .ui-select-button {
@@ -747,6 +736,103 @@ $input: (chk, rdo);
                     &.on a {
                         color:#222;
                         font-weight:700;
+                    }
+
+                }
+            }
+        }
+        &.disabled {
+            .ui-selectbox-list {
+                display:none;
+            }
+        }
+    }
+}
+.sort-select-wrap {
+    display:inline-block;
+    position:relative;
+    width:auto;
+    &.block {
+        display:block;
+        max-width:100%;
+    }
+    select {
+        position:absolute;
+        z-index:10;
+    }
+    .ui-selectbox-wrap {
+        display:block;
+        position:relative;
+        text-align:left;
+        .ui-select-button {
+            display:block;
+            position:relative;
+            padding:0 48px 0 24px;
+            .ui-select-text {
+                display:inline-block;
+                overflow:hidden;
+                max-width:100%;
+                color:#222;
+                font-size:16px;
+                line-height:24px;
+                font-weight:500;
+                text-overflow:ellipsis;
+                white-space:nowrap;
+                word-break:break-all;
+                vertical-align:top;
+            }
+            &.placeholder .ui-select-text {
+                color:#808080;
+            }
+            .ico {
+                position:absolute;
+                top:50%;
+                right:7px;
+                width:0;
+                height:0;
+                margin-top:-3px;
+                border-top:6px solid #222;
+                border-left:5px solid transparent;
+                border-right:5px solid transparent;
+                transition:all 0.3s;
+            }
+        }
+        &.on {
+            .ui-select-button {
+                .ico {
+                    transform:rotate(180deg);
+                }
+            }
+        }
+        .ui-selectbox-list {
+            position:absolute;
+            top:36px;
+            left:0;
+            overflow:hidden;
+            padding:12px 0;
+            border-radius:4px;
+            background:#fff;
+            box-shadow:0 4px 12px 0 rgba(0, 0, 0, .15);
+            z-index: 1;
+            @include mobile {
+                left:auto;
+                right:0;
+            }
+            ul {
+                li {
+                    a {
+                        display:block;
+                        overflow:hidden;
+                        padding:16px 48px 16px 24px;
+                        color:#222;
+                        font-size:16px;
+                        line-height:24px;
+                        white-space:nowrap;
+                        word-break:break-all;
+                        text-overflow:ellipsis;
+                    }
+                    &.on a {
+                        color:#808080;
                     }
 
                 }

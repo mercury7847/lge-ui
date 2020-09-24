@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="50px" height="48px" viewBox="0 0 50 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Artboard</title>
-    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3.92051072,24.44415 C-1.27150834,17.9255333 0.459164682,8.14760833 9.11252977,4.8883 C17.7658949,1.62899166 22.9579139,8.14760833 24.6885869,11.4069167 C26.41926,8.14760833 33.341952,1.62899166 41.9953171,4.8883 C50.6486822,8.14760833 50.6486822,17.9255333 45.4566632,24.44415 C40.2646441,30.9627667 24.6885869,44 24.6885869,44 C24.6885869,44 9.11252977,30.9627667 3.92051072,24.44415 Z" id="Icon-Path" stroke="#EC455A" stroke-width="2" fill="#EC455A"></path>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-ht-on</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="btn_wish_24_on">
+            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+            <g id="ic" transform="translate(0.000000, 2.000000)" fill="#EC455A">
+                <path d="M1.46025536,10.222075 C-1.13575417,6.96276667 -0.270417659,2.07380416 4.05626489,0.444149998 C8.38294743,-1.18550417 10.978957,2.07380416 11.8442935,3.70345833 C12.70963,2.07380416 16.170976,-1.18550417 20.4976586,0.444149998 C24.8243411,2.07380416 24.8243411,6.96276667 22.2283316,10.222075 C19.6323221,13.4813833 11.8442935,20 11.8442935,20 C11.8442935,20 4.05626489,13.4813833 1.46025536,10.222075 Z" id="Icon-Path"></path>
+            </g>
+        </g>
     </g>
 </svg>

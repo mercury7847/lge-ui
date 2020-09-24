@@ -148,8 +148,8 @@
     // 알림
     @import "ACCF7062";
 
-    // 보유제품등록
-    @import "ACCF7036";
+    // 보유제품 리스트
+    @import "ACCF7033";
 }
 
 
@@ -199,19 +199,19 @@
     }
     .comp-prod-info {
         margin-top:24px;
-        padding:24px;
+        padding:0 24px 28px;
         border-radius:4px;
         background:#f4f4f4;
         text-align:center;
         @include mobile {
-            padding:28px 33px;
+            padding:0 20px 20px;
         }
         .img {
             display:block;
-            max-width:156px;
+            max-width:initial;
             margin:0 auto 16px;
             @include mobile {
-                margin-bottom:20px;
+                margin:0 -20px 8px;
             }
             img {
                 width:100%;
@@ -288,60 +288,6 @@
         text-align:center;
         @include mobile {
             margin-top:32px;
-        }
-    }
-    .link-lists {
-        margin-top:16px;
-        font-size:0;
-        text-align:center;
-        @include mobile {
-            margin-top:32px;
-        }
-        li {
-            display:inline-block;
-            margin:8px 4px 0;
-            vertical-align:top;
-            @include mobile {
-                display:block;
-                margin:8px 0 0;
-            }
-            a {
-                display:block;
-                position:relative;
-                padding:7px 53px 7px 15px;
-                border:1px solid #616161;
-                border-radius:8px;
-                color:#616161;
-                font-size:14px;
-                line-height:20px;
-                font-weight:500;
-                text-align:left;
-                @include mobile {
-                    padding:15px 43px 15px 19px;
-                    font-size:16px;
-                    line-height:24px;
-                }
-                &::after {
-                    content:' ';
-                    position:absolute;
-                    top:50%;
-                    right:13px;
-                    width:6px;
-                    height:6px;
-                    margin-top:-3px;
-                    border:1px solid #616161;
-                    border-left:none;
-                    border-bottom:none;
-                    transform:rotate(45deg);
-                    @include mobile {
-                        width:9px;
-                        height:9px;
-                        right:32px;
-                        border-width:2px;
-                        margin-top:-4px;
-                    }
-                }
-            }
         }
     }
 }

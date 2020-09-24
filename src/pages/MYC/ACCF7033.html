@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "이*지 님이 보유한 제품",
+                "pageDesc" : "고객님의 전화번호를 기준으로 A/S 발생시 수집된 정보이며, 사실과 다를 수 있습니다.<br>만일 사실과 다른 경우 삭제기능을 이용해주세요.",
+                "pageBtn" : [
+                    { "btn" : "시리얼번호로 등록" },
+                    { "btn" : "영수증 바코드로 등록" }
+                ]
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <!-- 보유제품 -->
+                    <!-- 보유제품 있을 때 -->
+                    <div class="section">
+                        <h3 class="sec-tit">보유 제품</h3>
+                        <div class="cont-box">
+                            <!-- filter -->
+                            @@include('./common/modules/mem-filter.html', {
+                                "url" : "/lg5-common/data-ajax/mypage/membership/my_purchase_history.json",
+                                "wrapTit" : "조회기간"
+                            })
+                            <!-- // filter -->
+ 
+                            <div class="result-sorting-box">
+                                <p class="total">전체 30건</p>
+                                <div class="sort-select-wrap">
+                                    <select class="ui_selectbox" id="select1" title="결과리스트 정렬 기준 선택">
+                                        <option value="">전체</option>
+                                        <option value="">구매</option>
+                                        <option value="">케어솔루션</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- 검색결과/소팅결과 있을 때 -->
+                            <div class="product-list-wrap">
+                                <ul class="product-lists">
+                                    @@loop('./common/modules/product-list-loop.html', [
+                                        {
+                                            "img" : "/lg5-common/images/MYC/@thumb.png",
+                                            "name" : "LG Q92 5G",
+                                            "proNum" : "A9579I",
+                                            "info" : [
+                                                "출고가 100,000,000원",
+                                                "2020.02.10 구매",
+                                                "<span class='blind'>구매처</span>홈플러스 금천점"
+                                            ],
+                                            "close" : true
+                                        }, {
+                                            "img" : "/lg5-common/images/MYC/@thumb02.png",
+                                            "name" : "NEW LG 퓨리케어 ALL 직수 상하좌우 냉온정수기",
+                                            "proNum" : "WD503AS",
+                                            "info" : [
+                                                "2020.02.10",
+                                                "월 13,900원/5년",
+                                                "<span class='blind'>구매처</span>LG 케어솔루션 온라인몰"
+                                            ],
+                                            "close" : true
+                                        }, {
+                                            "img" : "/lg5-common/images/MYC/@thumb03.png",
+                                            "name" : "LG 올레드 AI ThinQ TV",
+                                            "proNum" : "OLED65B9CNA",
+                                            "info" : [
+                                                "출고가 100,000,000원",
+                                                "2020.02.10 구매",
+                                                "<span class='blind'>구매처</span>LG BEST SHOP 서초점"
+                                            ],
+                                            "close" : true
+                                        }, {
+                                            "img" : "/lg5-common/images/MYC/@thumb02.png",
+                                            "name" : "NEW LG 퓨리케어 ALL 직수 상하좌우 냉온정수기",
+                                            "proNum" : "WD503AS",
+                                            "info" : [
+                                                "2020.02.10",
+                                                "월 13,900원/5년",
+                                                "<span class='blind'>구매처</span>LG 케어솔루션 온라인몰"
+                                            ],
+                                            "close" : true
+                                        }, {
+                                            "img" : "/lg5-common/images/MYC/@thumb03.png",
+                                            "name" : "LG 올레드 AI ThinQ TV",
+                                            "proNum" : "OLED65B9CNA",
+                                            "info" : [
+                                                "출고가 100,000,000원",
+                                                "2020.02.10 구매",
+                                                "<span class='blind'>구매처</span>LG BEST SHOP 서초점"
+                                            ],
+                                            "close" : true
+                                        }, {
+                                            "img" : "/lg5-common/images/MYC/@thumb.png",
+                                            "name" : "LG Q92 5G",
+                                            "proNum" : "A9579I",
+                                            "info" : [
+                                                "출고가 100,000,000원",
+                                                "2020.02.10 구매",
+                                                "<span class='blind'>구매처</span>홈플러스 금천점"
+                                            ],
+                                            "close" : true
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                            <div class="pagination">
+                                <a href="#" class="prev"><span class="blind">이전 페이지 보기</span></a>
+                                <span class="page_num">
+                                    <strong><span class="blind">현재 페이지</span>1</strong>
+                                    <a href="#" title="2페이지 보기">2</a>
+                                    <a href="#" title="3페이지 보기">3</a>
+                                    <a href="#" title="4페이지 보기">4</a>
+                                    <a href="#" title="5페이지 보기">5</a>
+                                    <a href="#" title="6페이지 보기">6</a>
+                                    <a href="#" title="7페이지 보기">7</a>
+                                </span>
+                                <a href="#" class="next"><span class="blind">다음 페이지 보기</span></a>
+                            </div>
+                            <!-- // 검색결과/소팅결과 있을 때 -->
+                            <!-- 소팅 결과 없을 때 -->
+                            <div class="no-data">
+                                <p>보유하신 제품이 없습니다.<br>보유 제품을 추가하시고 체계적으로 관리해보세요.</p>
+                            </div>
+                            <!-- // 소팅 결과 없을 때 -->
+                            <!-- // result -->
+                        </div>
+                    </div>
+                    <!-- // 보유제품 있을 때 -->
+                    <!-- 보유제품 없을 때 -->
+                    <div class="section">
+                        <h3 class="sec-tit">보유 제품</h3>
+                        <div class="cont-box">
+                            <div class="no-data full">
+                                <p>보유하신 제품이 없습니다.<br>보유 제품을 추가하시고 체계적으로 관리해보세요.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // 보유제품 없을 때 -->
+                    <!-- // 보유제품 -->
+                </div>
+                <!-- 이렇게 활용해보세요 -->
+                <div class="smart-guide-wrap">
+                    <p class="tit">고객님의 소중한 제품을 더 스마트하게!<br>이럴 땐 이렇게 활용해보세요.</p>
+                    <ul class="link-btn-lists">
+                        <li><a href="#n"><span>스토리</span></a></li>
+                        <li><a href="#n"><span>카드뉴스</span></a></li>
+                        <li><a href="#n"><span>생활의 팁</span></a></li>
+                    </ul>
+                    @@include('./common/modules/carousel.html', {
+                        "carousel" : true,
+                        "slideArr" : [
+                            { 
+                                "flag" : "생활의 팁",
+                                "img" : "/lg5-common/images/MYC/img-carousel01.jpg",
+                                "hashtag" : "<span class='hash'>#식기세척기</span><span class='hash'>#건조</span>",
+                                "tit" : "여름철 위생적인 식기세척기 건조 꿀팁",
+                                "desc" : " ",
+                                "btnLike" : "btn-like"
+                            }, { 
+                                "flag" : "카드뉴스",
+                                "img" : "/lg5-common/images/MYC/img-carousel02.jpg",
+                                "hashtag" : "<span class='hash'>#ThinQ</span><span class='hash'>#스마트폰</span>",
+                                "tit" : "LG ThinQ 앱 이라서 가능한 편리한 일상",
+                                "desc" : "<p class='desc'>ThinQ 앱 제품등록 방법</p>",
+                                "btnLike" : "btn-like on"
+                            }, { 
+                                "flag" : "스토리",
+                                "img" : "/lg5-common/images/MYC/img-carousel03.jpg",
+                                "hashtag" : "<span class='hash'>#배터리</span><span class='hash'>#스마트폰</span>",
+                                "tit" : "스마트폰 사용시 배터리 사용 시간이 짧다고 느끼셨나요?",
+                                "desc" : "<p class='desc'>휴대폰에서 배터리 소모를 최소화 하는 방법</p>",
+                                "btnLike" : "btn-like"
+                            }, { 
+                                "flag" : "스토리",
+                                "img" : "/lg5-common/images/MYC/img-carousel04.jpg",
+                                "hashtag" : "<span class='hash'>#설거지옥</span><span class='hash'>#필수가전</span>",
+                                "tit" : "설거지옥 탈출 위한 필수가전",
+                                "desc" : "<p class='desc'>설거지 깨끗하고 빠르게 하는 방법</p>",
+                                "btnLike" : "btn-like"
+                            }, { 
+                                "flag" : "스토리",
+                                "img" : "/lg5-common/images/MYC/img-carousel03.jpg",
+                                "hashtag" : "<span class='hash'>#배터리</span><span class='hash'>#스마트폰</span>",
+                                "tit" : "스마트폰 사용시 배터리 사용 시간이 짧다고 느끼셨나요?",
+                                "desc" : "<p class='desc'>휴대폰에서 배터리 소모를 최소화 하는 방법</p>",
+                                "btnLike" : "btn-like"
+                            }, { 
+                                "flag" : "스토리",
+                                "img" : "/lg5-common/images/MYC/img-carousel04.jpg",
+                                "hashtag" : "<span class='hash'>#설거지옥</span><span class='hash'>#필수가전</span>",
+                                "tit" : "설거지옥 탈출 위한 필수가전",
+                                "desc" : "<p class='desc'>설거지 깨끗하고 빠르게 하는 방법</p>",
+                                "btnLike" : "btn-like"
+                            }
+                        ]
+                    })
+                </div>
+                <!-- // 이렇게 활용해보세요 -->
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+        <script src="/lg5-common/js/mypage/membership/membership.js"></script>
+        <script>
+            $(function(){
+                vcui.require(['ui/carousel'], function () {
+                    $('.ui_carousel_slider').vcCarousel({
+                        infinite: false,
+                        autoplay: false,
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        responsive: [{
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 1,
+                                slideToScroll: 1
+                            }
+                        }]
+                    });
+                });
+            });
+        </script>
+    </div>  
+    @@include('./common/modules/alert-modal.html', {
+        "msgOnly" : true,
+        "msg" : "해당 제품을<br>삭제하시겠습니까?",
+        "twobtn" : true
+    })
+</body>
+</html>
