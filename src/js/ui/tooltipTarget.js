@@ -7,7 +7,8 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
         defaults: {
             interval: 200,
             tooltip: null,
-            type : 'over' //click, over
+            type : 'over', //click, over
+            closeButtonClass : '.btn-close'
         },
         initialize: function initialize(el, options) {
             var self = this;
@@ -51,7 +52,7 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
                 });
             }            
 
-            self.$tooltip.on('click','> .ui_close_btn', function () {
+            self.$tooltip.on('click','> '+self.options.closeButtonClass, function () {
                 self._close();
             });
 
