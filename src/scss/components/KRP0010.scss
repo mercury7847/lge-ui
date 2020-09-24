@@ -298,9 +298,10 @@
         &.pop-pdp-visual {
             width: 1284px;
             //min-height: 848px;
-            min-height: 800px;
+            min-height: 848px;
             background: #fff;
             z-index: 1000;
+            //border:3px solid red;
             @include mobile {
                 position: fixed;
                 width: 100%;
@@ -308,16 +309,23 @@
                 height: auto;
             }
             .pop-conts {
+                display: flex;
+                height: 100%;
                 max-height: none;
-                .pop-pdp-visual-image {
-                    display: flex;
+                min-height: 848px;
+                vertical-align: middle;
+                align-items: center;
+                justify-content: center;
+                .default {
                     position: relative;
                     width: 100%;
                     height: 100%;
-                    padding: 113px 170px;
-                    vertical-align: middle;
-                    align-items: center;
-                    justify-content: center;
+                    padding: 100px 170px;
+                    text-align: center;
+
+                    li {
+                        float: left; 
+                    }
                     @include mobile {
                         height: 460px;
                         padding: 48px 20px 0;
