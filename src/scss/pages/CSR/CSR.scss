@@ -891,13 +891,17 @@
             position:relative;
             margin-top:56px;
             .tit-info {
-                padding-right:300px;
-                .name {
+                padding:7px 300px 0 0;
+                font-size:0;
+                h2.name {
                     display:inline-block;
                     font-size:32px;
                     line-height:30px;
                     font-weight:700;
                     vertical-align:middle;
+                    & + .flag {
+                        margin-left:8px;
+                    }
                 }
                 .flag {
                     display: inline-block;
@@ -912,6 +916,200 @@
                     vertical-align: middle;
                 }
                 
+            }
+            .link-btn-wrap {
+                position:absolute;
+                top:0;
+                right:0;
+                font-size:0;
+                .btn {
+                    margin-left:8px;
+                }
+            }
+        }
+        .detail-info-wrap {
+            @include clearfix;
+            margin-top:39px;
+            .left-box {
+                float:left;
+                width:246px;
+                .manager-info {
+                    padding:24px 32px 36px;
+                    border:1px solid #ddd;
+                    border-radius:4px;
+                    text-align:center;
+                    .img-wrap {
+                        position: relative;
+                        width:180px;
+                        height:180px;
+                        overflow:hidden;
+                        img {
+                            display:block;
+                            position:absolute;
+                            width:180px;
+                            top:50%;
+                            left:0;
+                            -webkit-transform:translateY(-50%);
+                            transform:translateY(-50%);
+                        }
+                    }
+                    .txt-wrap {
+                        margin-top:16px;
+                        .name {
+                            display:block;
+                            font-size:16px;
+                            line-height:24px;
+                            font-weight:500;
+                        }
+                        .area {
+                            display:block;
+                            color:#979797;
+                            font-size:14px;
+                            line-height:20px;
+                        }
+                        .txt {
+                            margin-top:20px;
+                            font-size:14px;
+                            line-height:20px;
+                        }
+                    }
+                }
+                .sns-list {
+                    @include clearfix;
+                    margin-top:16px;
+                    li {
+                        float:left;
+                        margin-left:8px;
+                        &:first-child {
+                            margin-left:0;
+                        }
+                        .ico-btn {
+                            display:block;
+                            width:32px;
+                            height:32px;
+                            &.url {
+                                background:url('/lg5-common/images/icons/icon-url.svg') no-repeat;
+                                background-size:32px 32px;
+                            }
+                            &.kk {
+                                background:url('/lg5-common/images/icons/icon-kakao.svg') no-repeat;
+                                background-size:32px 32px;
+                            }
+                            &.fb {
+                                background:url('/lg5-common/images/icons/icon-facebook.svg') no-repeat;
+                                background-size:32px 32px;
+                            }
+                            &.tw {
+                                background:url('/lg5-common/images/icons/icon-twitter.svg') no-repeat;
+                                background-size:32px 32px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right-box {
+                width:657px;
+                float:right;
+                .info-list {
+                    margin-top:56px;
+                    padding-bottom:56px;
+                    border-bottom:1px solid #ddd;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                    .h3-tit {
+                        position:relative;
+                        font-size:16px;
+                        line-height:24px;
+                        font-weight:700;
+                        .btn-text {
+                            float:right;
+                            color:#EC455A;
+                            text-decoration:underline;
+                        }
+                    }
+                    dl {
+                        padding-top:32px;
+                        &:first-child {
+                            padding-top:24px;
+                        }
+                        dt {
+                            color:616161;
+                            font-size:14px;
+                            line-height:20px;
+                        }
+                        dd {
+                            padding-top:16px;
+                            .item {
+                                @include clearfix;
+                                li {
+                                    float:left;
+                                    margin-left:16px;
+                                    color:#111;
+                                    font-size:16px;
+                                    line-height:24px;
+                                    &:first-child {
+                                        margin-left:0;
+                                    }
+                                    .value {
+                                        padding-left:8px;
+                                    }
+                                }
+                            }
+                            .bullet-list {
+                                margin:0;
+                            }
+                            .addr {
+                                margin-top:4px;
+                                font-size:16px;
+                                line-height:24px;
+                                &:first-child {
+                                    margin-top:0;
+                                }
+                            }
+                        }
+                    }
+                    .map {
+                        width:100%;
+                        height:320px;
+                        margin-top:16px;
+                        overflow:hidden;
+                    }
+                    .tabs-wrap {
+                        margin-top:16px;
+                        text-align:left;
+                    }
+                }
+            }
+
+            .slide-wrap {
+                padding-bottom:34px;
+                .indi-wrap {
+                    bottom:0;
+                }
+                margin-top:16px;
+                .slide-content {
+                    margin:0 -8px;
+                    .slide-conts {
+                        height:190px;
+                        .img {
+                            position:relative;
+                            height:190px;
+                            border-radius:4px;
+                            margin:0 8px;
+                            overflow:hidden;
+                            img {
+                                display:block;
+                                position:absolute;
+                                top:50%;
+                                left:50%;
+                                -webkit-transform:translate(-50%, -50%);
+                                transform:translate(-50%, -50%);
+                            }
+                        }
+                    }
+                }
             }
         }
     }

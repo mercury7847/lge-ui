@@ -6,7 +6,8 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
         bindjQuery: 'tooltipTarget',
         defaults: {
             interval: 200,
-            tooltip: null
+            tooltip: null,
+            type : 'over' //click, over
         },
         initialize: function initialize(el, options) {
             var self = this;
@@ -22,7 +23,8 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             self.$tooltip = self.$el.siblings(self.options.tooltip);
 
-            self.on('mouseenter mouseleave focusin focusout click', function (e) {
+            var eventEnter = self.options.type=='over'? 'mouseenter mouseleave focusin focusout click' : 'click';
+            self.on(eventEnter, function (e) {
 
                 switch (e.type) {
                     case 'mouseenter':
@@ -41,9 +43,19 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
                         self._close();
                         break;
                 }
-            }).on('mousedown', function () {
+            });
+
+            if(self.options.type=='over'){
+                self.on('mousedown', function () {
+                    self._close();
+                });
+            }            
+
+            self.$tooltip.on('click','> .ui_close_btn', function () {
                 self._close();
             });
+
+
         },
         _close: function _close(effect) {
             var self = this;

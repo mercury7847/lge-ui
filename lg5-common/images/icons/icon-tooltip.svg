@@ -1,10 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon-tooltip</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="@tooltip">
-            <circle id="Oval-Copy" fill="#515151" cx="10" cy="10" r="10"></circle>
-            <path d="M11,12 L11,6 C11,5.44771525 10.5522847,5 10,5 C9.44771525,5 9,5.44771525 9,6 L9,12 C9,12.5522847 9.44771525,13 10,13 C10.5522847,13 11,12.5522847 11,12 Z M9.99453552,16 C10.5628415,16 11,15.5625 11,15 C11,14.4375 10.5628415,14 9.99453552,14 C9.42622951,14 9,14.4375 9,15 C9,15.5625 9.42622951,16 9.99453552,16 Z" id="!-copy-2" fill="#F4F4F4" fill-rule="nonzero" transform="translate(10.000000, 10.500000) rotate(-180.000000) translate(-10.000000, -10.500000) "></path>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <path d="M0 0H16V16H0z" transform="translate(-632 -232) translate(613 157) translate(19 75)"/>
+                    <g transform="translate(-632 -232) translate(613 157) translate(19 75) translate(.333 .333)">
+                        <circle cx="7.667" cy="7.667" r="7" fill="#616161"/>
+                        <path fill="#F4F4F4" fill-rule="nonzero" d="M8.455 9.09V4.728c0-.401-.326-.727-.728-.727C7.326 4 7 4.326 7 4.727v4.364c0 .402.326.727.727.727.402 0 .728-.325.728-.727zM7.723 12c.414 0 .732-.318.732-.727 0-.41-.318-.728-.732-.728-.413 0-.723.319-.723.728s.31.727.723.727z" transform="rotate(-180 7.727 8)"/>
+                    </g>
+                </g>
+            </g>
         </g>
     </g>
 </svg>

@@ -2,6 +2,7 @@
     display:inline-block;
     position:relative;
     height:20px;
+    padding-top:2px;
     line-height:20px;
     vertical-align:top;
     @include mobile {
@@ -11,8 +12,8 @@
     .tooltip-icon {
         display:block;
         position:relative;
-        width:20px;
-        height:20px;
+        width:16px;
+        height:16px;
         background:url('/lg5-common/images/icons/icon-tooltip.svg') center no-repeat;
         background-size:100%;
         font-size:0;

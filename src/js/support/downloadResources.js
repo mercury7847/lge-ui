@@ -47,6 +47,8 @@
             initialize: function() {
                 var self = this;
 
+                CS.MD.setPagination();
+
                 self.$stepCategory = $('#stepCategory');
                 self.$stepModel = $('#stepModel');
                 self.$stepResult = $('#stepResult');
@@ -74,11 +76,7 @@
                             });
 
                             $('#modelContent').html(html);
-                            $('#superCategory').text(formData.superCategory);
-                            $('#category').text(formData.category);
-
-                            $('#stepModel').show();
-                            $('#stepCategory').hide();
+                            $('.pagination').data('plugin_pagination').update(data.pageInfo);
                         }
                     },
                     error: function(err){
@@ -86,10 +84,6 @@
                     },
                     complete: function() {
                         // loading bar end
-                        var offsetTop = $('.contents').get(0).offsetTop;
-                        
-                        $(window).scrollTop(offsetTop);
-                        $('.model-nav').addClass('show');
                     }
                 });
             },
@@ -168,7 +162,20 @@
 
                 $('.category-carousel').find('button').on('click', function() {
                     var data = $(this).data();
+
+                    $('#superCategory').text(data.superCategory);
+                    $('#category').text(data.category);
+
+                    $('#stepModel').show();
+                    $('#stepCategory').hide();
+
+                    $('.pagination').pagination();
                     self.searchModelList(data);
+                   
+                    var offsetTop = $('.contents').get(0).offsetTop;
+                        
+                    $(window).scrollTop(offsetTop);
+                    $('.model-nav').addClass('show');
                 });
 
                 $('#modelContent').on('click', 'button', function() {
@@ -187,6 +194,11 @@
                     $('html, body').animate({
                         scrollTop: offsetTop
                     }, 500);
+                });
+
+                self.$stepModel.find('.pagination').on('click', 'a', function(e) {
+                    e.preventDefault();
+                    self.searchModelList();
                 });
 
                 $('#btnSearch').on('click', function() {
