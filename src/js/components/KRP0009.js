@@ -426,9 +426,13 @@ $(function () {
             }
 
             function renderFilter(arr){
-                var html = '';
 
-                console.log('renderFilter');
+                if(firstRender){
+                    updateFilter(arr);
+                    return;
+                }
+
+                var html = '';
 
                 for(var i=0; i<arr.length; i++){
                     var item = arr[i];
@@ -621,21 +625,14 @@ $(function () {
 
                 _$(window).on('breakpointchange.filter', function(e,data){
                     fnBreakPoint();
-                });
-                //이벤트 바인딩 end
-
-                
-
-                
+                });     
             }
 
-            
 
             function getSlideFilterValueId(arr, value){
 
                 var returnStr='';
                 var num = parseInt(value);
-
                 for(var i=0; i<arr.length; i++){
                     var value1 = parseInt(arr[i]['filterValueName']);
                     var value2 = parseInt(arr[i+1] && arr[i+1]['filterValueName']);
@@ -648,9 +645,7 @@ $(function () {
                         break;
                     }
                 }
-
                 return returnStr;
-
             }
 
             function convertPostData(obj){
@@ -666,7 +661,6 @@ $(function () {
                         if(filterName == 'price' || filterName == 'size'){
                             var values = fArr[0]['data'];
                             var sArr = obj[key].split(',');
-
                             if(sArr.length>1){
                                 if(vcui.isNumber(parseInt(sArr[0]))){
                                     nObj[filterName+'Min'] = getSlideFilterValueId(values, sArr[0]);
@@ -679,14 +673,12 @@ $(function () {
                                     nObj[filterName+'Max'] = '';
                                 }
                             }
-
                             delete obj[key];
                         }
                     }
                 }
 
                 nObj = vcui.extend(obj, nObj);
-
                 return nObj;
             }
 
@@ -708,7 +700,7 @@ $(function () {
                     type : "GET",
                     url : ajaxUrl,
                     dataType : "json",
-                    data : nObj
+                    data : convertPostData(nObj)
 
                 }).done(function(result) {
 
@@ -806,13 +798,10 @@ $(function () {
 
                     savedFilterArr = newFilterArr;
                     
+                    firstRender = true; //
                     renderFilter(newFilterArr);
-
-                    //updateFilter(newFilterArr);
-
                     renderProdList(productList, totalCount);
                     renderPagination(pageInfo);
-
                     firstRender = true;
 
                     lgkorUI.hideLoading();
