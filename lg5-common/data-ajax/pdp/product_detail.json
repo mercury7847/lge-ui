@@ -5,11 +5,12 @@
         "produt_id":"EPRD.348027",
         "product_title":"LG 올레드 갤러리 TV!",
         "product_name":"OLED88ZXKNA?",
-        "product_master_price":"1990000",
-        "product_sales_count":"7",
-        "product_price":"1853090",
+        "product_master_price":"1990001",
+        "product_sales_count":"7.1",
+        "product_price":"1853091",
         "product_ratio":"4.7",
         "product_review_count":"1294",
+        "product_notice_description":"온라인에서 구매할 수 없는 제품입니다.",
         "product_badge":[
             {
                 "imageUrl":"/lg5-common/images/dummy/@img-promotion-badge.png",
@@ -34,7 +35,7 @@
                 "class":"badge"
             }
         ],
-        "price-info":[
+        "price_info":[
             {
                 "type":"product-benefit-none",
                 "type_name":null,
@@ -51,7 +52,7 @@
                 "type_name":null,
                 "type_text":"추가혜택",
                 "type_popup_text":"추가혜택 팝업 열림",
-                "type_popup_url":"",
+                "type_popup_url":"http://www.naver.com",
                 "type_option":[
                     "포인트 64,000p",
                     "캐시백 500,000원"
@@ -60,10 +61,11 @@
         ],
         "sibling_info":[
             {
-                "type":"sibling-radio",
+                "type":"sibling-color",
                 "type_name":"sibling-info-color",
                 "type_text":"색상",
                 "type_popup_text":null,
+                "type_popup_html":null,
                 "type_popup_url":null,
                 "type_option":[
                     {
@@ -81,32 +83,33 @@
                 ]
             },
             {
-                "type":"sibling-select",
+                "type":"sibling-size",
                 "type_name":"sibling-info-size",
                 "type_text":"화면크기",
                 "type_popup_text":null,
+                "type_popup_html":null,
                 "type_popup_url":null,
                 "type_option":[
                     {
-                        "text":"193cm",
+                        "text":"1931cm",
                         "class":"placeholder",
                         "value":"193",
                         "checked":true
                     },
                     {
-                        "text":"163cm",
+                        "text":"1631cm",
                         "class":null,
                         "value":"163",
                         "checked":false
                     },
                     {
-                        "text":"138cm",
+                        "text":"1381cm",
                         "class":null,
                         "value":"138",
                         "checked":false
                     },
                     {
-                        "text":"100cm",
+                        "text":"1001cm",
                         "class":null,
                         "value":"100",
                         "checked":false
@@ -117,28 +120,30 @@
                 "type":"sibling-service",
                 "type_name":"sibling-info-service",
                 "type_text":"케어십 서비스",
-                "type_popup_text":null,
-                "type_popup_url":null,
+                "type_popup_text":"정수기, 정수기형 냉장고 제품은 정수 수질과 관련된 제품으로 케어십 신청이 필수 선택입니다.",
+                "type_popup_html":"<span>케어십이란?</span><p>케어십을 신청하시면 케어솔루션 매니저의 전문적인 점검 서비스와 무상 필터 교환 등 다양한 혜택을 받으실 수 있습니다.</p><ul><li>계약기간 : 12 개월</li><li>케어십 비용 : 제품 모델 및 방문주기에 따라 다름.</li></ul><dl><dt>케어십 서비스 내용</dt><dd>필터무상교체</dd><dd>살균서비스</dd><dd>클리닝 서비스</dd></dl><a href=\"#\">보유제품 케어십 확인하기</a>",
+                "type_popup_url":"",
                 "type_option":[
                     {
                         "text":"신청",
                         "class":null,
-                        "value":true,
+                        "value":"true",
                         "checked":true
                     },
                     {
                         "text":"미신청",
                         "class":null,
-                        "value":false,
+                        "value":"false",
                         "checked":false
                     }
-                ]         
+                ]
             },
             {
-                "type":"sibling-text-list",
-                "type_name":"sibling-text-list",
+                "type":"is-kit",
+                "type_name":"is-kit-list",
                 "type_text":"구성품",
                 "type_popup_text":null,
+                "type_popup_html":null,
                 "type_popup_url":null,
                 "type_option":[
                     {
