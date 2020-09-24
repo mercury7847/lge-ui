@@ -84,14 +84,18 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
                     singleOpen: true,
                     itemSelector: "> li",
                     toggleSelector: "> .ui_accord_toggle"
-                    
-                }).on('accordionbeforecollapse', function(e,data){
-                    
-                    
-                    console.log(e.currentTarget);
 
+                });
 
+                $('.ui_footer_accordion').on('click', '.ui_accord_toggle a', function(e){
+                    var isLink = $(e.currentTarget).closest('.on').length > 0;
+                    if(isLink){
+                        var href = $(e.currentTarget).attr('href');
+                        location.href =href;
+                    }
                 })
+
+
             }
         },
 
