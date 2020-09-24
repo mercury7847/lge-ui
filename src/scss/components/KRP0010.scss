@@ -40,13 +40,42 @@
             padding-left:0;
 		}
     }
+    .pdp-visual-area {
+        position: relative;
+
+
+        .badge {
+            //display: flex;
+            position: absolute;
+            top: 56px;
+            left: 56px;
+            
+            z-index: 9;
+            @include mobile {
+                top: 18px;
+                left: 18px;
+            }
+            img {
+                width: 56px;
+                height: 56px;
+                margin-right: 10px;
+                @include mobile {
+                    width: 44px;
+                    height: 44px;
+                }
+            }
+
+        }
+    }
     .pdp-visual {
+        position: relative;
 		@include clearfix;
 		a {display:block;}
 		img {
             max-width:100%;
             margin:0 auto;
         }
+        
 		.default {
 			position:relative;
 			//float:right;
@@ -64,11 +93,7 @@
 			&.video {
 				a:before {width:64px;height:64px;margin:-32px 0 0 -32px;}
             }
-            .badge {
-                position: absolute;
-                top: 50px;
-                left: 50px;
-            }
+            
         }
         .pdp-more-info {
             width: 100%;
@@ -80,14 +105,19 @@
                 position: relative;
                 @include clearfix;
                 .text-info {
+                    position: relative;
                     float: left;
+                    min-height: 36px;;
+                    padding-top: 6px;
+                    padding-left: 60px;
                     font-size: 16px;
                     color: #222;
                     .img-area {
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
                         width: 48px;
-                    }
-                    img + .text {
-                        margin-left: 12px;
+                        transform: translate(0, -50%);
                     }
                 }
                 .view-more {
@@ -243,8 +273,10 @@
         }
     }
     // mobile visual
-    .pdp-visual-wrap {
+    .pdp-visual-area.visible-sm {
         overflow: hidden;
+        margin-bottom: 28px;
+        padding-bottom: 34px;
         .pdp-visual-list {
             position: relative;
             @include clearfix;
@@ -257,15 +289,19 @@
                 height: auto;
             }
         }
+        .indi-wrap {
+            bottom: -22px;
+        }
     }
  
     .popup-wrap {
         &.pop-pdp-visual {
             width: 1284px;
             //min-height: 848px;
-            min-height: 800px;
-            background: gray;
+            min-height: 848px;
+            background: #fff;
             z-index: 1000;
+            //border:3px solid red;
             @include mobile {
                 position: fixed;
                 width: 100%;
@@ -273,16 +309,24 @@
                 height: auto;
             }
             .pop-conts {
+                display: flex;
+                height: 100%;
                 max-height: none;
-                .pop-pdp-visual-image {
-                    display: flex;
+                min-height: 848px;
+                padding: 0;
+                vertical-align: middle;
+                align-items: center;
+                justify-content: center;
+                .default {
                     position: relative;
                     width: 100%;
                     height: 100%;
-                    padding: 113px 170px;
-                    vertical-align: middle;
-                    align-items: center;
-                    justify-content: center;
+                    padding: 0 218px;
+                    text-align: center;
+                    overflow: hidden;
+                    li {
+                        float: left; 
+                    }
                     @include mobile {
                         height: 460px;
                         padding: 48px 20px 0;
@@ -389,62 +433,20 @@
             }
         }
     }
-    .modal {
-        &.pdp-layer {
-            
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #fff;
-            @include mobile {
-                min-height: 672px;
-                top: 0;
-                left: 0;
-                bottom: auto;
-                transform: translate(0, 0);
-            }
-            @media screen and (max-width: 1284px) {
-                width: 100%;
-            }
-            .modal-close {
-                top: 12px;
-                left: auto;
-                right: 12px;
-                width: 32px;
-                height: 32px;
-                @include mobile {
-                    width: 24px;
-                    height: 24px;
-                }
-            }
-            .modal-more-contents-layer-popup {
-                width: 100%;
-                height: 100%;
-                
-            }
-            .modal-content {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                .modal-body {
-                    padding: 0;
-                    width: 100%;
-                    height: 100%;
-                    @include mobile {
-                        padding-bottom: 60px;
-                    }
-                }
-                
-                
-            }
-            
-            
-        }
-    } 
 
     // 수상내역
+    .popup-wrap {
+        .pop-award,
+        .pop-pdp-visual {
+            height: auto;
+            z-index: 1000;
+        }
+    }
     .awards-list {
         margin-top: 24px; 
+        height: auto;
+        background: #fff;
+        z-index: 1000;
         li {
             position: relative;
             min-height: 48px;

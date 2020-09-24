@@ -1,0 +1,16 @@
+<li class="lists">
+    <dl>
+        <dt>
+            <span class="img"><img src="@@img" alt="@@alt"></span>
+            <p><span class="blind">제품명</span>@@name</p>
+            <p class="num"><span class="blind">제품번호</span>@@proNum</p>
+        </dt>
+        <dd>
+            <ul class="infos">
+                @@for ( var i=0; i < info.length; i++ ) {
+                <li>`+info[i]+`</li>
+                }
+            </ul>
+        </dd>
+    </dl> 
+</li>

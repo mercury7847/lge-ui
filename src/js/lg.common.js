@@ -88,7 +88,8 @@
             vcui.require([  
                 'helper/breakpointDispatcher',
                 'common/header', 
-                'common/footer',           
+                'common/footer',  
+                'ui/spinner',         
                 'ui/selectbox',
                 'ui/calendar',
                 'ui/accordion',
@@ -100,13 +101,11 @@
                 "ui/youtubeBox",
                 "ui/imageSwitch"
             ], function (BreakpointDispatcher) {
-
                 
-                var breakpoint = {
-                    mobile: 768,
-                    pc: 10000000
-                }
-
+                // var breakpoint = {
+                //     mobile: 768,
+                //     pc: 10000000
+                // }
                 //1780
     
                 new BreakpointDispatcher({
@@ -175,7 +174,7 @@
                             //this.$('.pop_contents').attr('tabindex', 0);
                             //console.log(this);
     
-                            if(this.$('.ui_carousel')){
+                            if(this.$('.ui_carousel').length>0){
                                 this.$('.ui_carousel').vcCarousel('update');
                             }
                         }
@@ -187,8 +186,11 @@
                     singleOpen: false,
                     events: {
                         accordionexpand: function (e, data) {
-                            data.content.attr('tabindex', '0');                                               
-                            if(data.content.find('.ui_carousel')) {
+                            data.content.attr('tabindex', '0');    
+                            
+                            // console.log(data.content.find('.ui_carousel'));
+                            if(data.content.find('.ui_carousel').length>0) {
+                                console.log(e);
                                 data.content.find('.ui_carousel').vcCarousel('update');
                             }                            
                         }
@@ -200,7 +202,7 @@
                 vcui.ui.setDefaults('Tab', {
                     events: {
                         tabchange: function (e, data) {
-                            if(data && data.content.find('.ui_carousel')) {
+                            if(data && data.content.find('.ui_carousel').length > 0) {
                                 data.content.find('.ui_carousel').vcCarousel('update');
                             }
                         }
@@ -290,6 +292,19 @@
                     });
                 }
             }
+        },
+
+        showLoading:function(msg){
+            var str = msg? msg : '데이터를 불러오는 중입니다.';
+            $('html').addClass('dim');
+            $('body').vcSpinner({msg:str});
+            $('body').vcSpinner('spin', str);
+    
+        },
+    
+        hideLoading:function(){
+            $('html').removeClass('dim');
+            $('body').vcSpinner('stop');
         },
     }
     

@@ -103,6 +103,9 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
         ];
     }
 
+    var $doc = $(document),
+        detect = core.detect
+
     /**
      * @class
      * @description 
@@ -130,13 +133,15 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
             msgClassName: 'ui-spinner-msg', // The CSS class to assign to the spinner message
             top: '50%',     // Top position relative to parent
             left: '50%',    // Left position relative to parent
-            shadow: '0 0 2px 2px #00000030', // Box-shadow for the lines
-            position: 'absolute',           // Element positioning
+            shadow: '0 0 2px 2px #000000', // Box-shadow for the lines
+            position: 'fixed',           // Element positioning
             msg:'' // message
+            
         },
         
         initialize: function initialize(el, options) {
             var self = this;
+
             if (self.supr(el, options) === false) {
                 return;
             }
@@ -144,7 +149,7 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
             self.spin();
         },
 
-        spin: function spin() {
+        spin: function spin(msg) {
             var self = this;
             var opts = self.options;
 
@@ -164,7 +169,9 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
             });
 
             if(opts.className) self.$contents.addClass(opts.className);
-            self.$el.append(self.$contents);            
+            self.$el.append(self.$contents);      
+            
+            if(msg) opts.msg = msg;
             self._build();
         },
 
@@ -224,7 +231,7 @@ vcui.define('ui/spinner', ['jquery', 'vcui'], function ($, core) {
                     position: 'absolute',
                     top: (opts.radius + opts.length + opts.width),
                     left: -200,//-(opts.radius + opts.length + opts.width),
-                    width: 400,//(opts.radius + opts.length + opts.width)*2,                    
+                    width: 400,//(opts.radius + opts.length + opts.width)*2,
                     color:getColor(opts.color, 0)
                 });
                 
