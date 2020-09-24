@@ -152,6 +152,8 @@
     @import "ACCF7036";
 }
 
+
+// MYC layer popup contents
 // 제품 영수증 등록
 .barcode-info {
     display:inline-block;
@@ -168,5 +170,178 @@
         max-width:214px;
         height:auto;
         vertical-align:top;
+    }
+}
+
+// 제품등록 완료
+.complete-msg {
+    .comp-tit {
+        position:relative;
+        padding-top:28px;
+        color:$color-1;
+        font-size:16px;
+        line-height:24px;
+        text-align:center;
+        font-weight:500;
+        &::before {
+            content:' ';
+            position:absolute;
+            top:0;
+            left:50%;
+            width:24px;
+            height:24px;
+            margin-left:-12px;
+            background:url('/lg5-common/images/MYC/icon-ck.svg') center no-repeat;
+        }
+        @include mobile {
+            color:#616161;
+        }
+    }
+    .comp-prod-info {
+        margin-top:24px;
+        padding:24px;
+        border-radius:4px;
+        background:#f4f4f4;
+        text-align:center;
+        @include mobile {
+            padding:28px 33px;
+        }
+        .img {
+            display:block;
+            max-width:156px;
+            margin:0 auto 16px;
+            @include mobile {
+                margin-bottom:20px;
+            }
+            img {
+                width:100%;
+                height:auto;
+                vertical-align:top;
+            }
+        }
+        .tit {
+            color:$color-1;
+            font-size:16px;
+            line-height:24px;
+            font-weight:700;
+        }
+        .desc {
+            margin-top:4px;
+            font-size:0;
+            text-align:center;
+            li {
+                display:inline-block;
+                position:relative;
+                padding-left:12px;
+                color:$color-1;
+                font-size:14px;
+                line-height:20px;
+                vertical-align:top;
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:50%;
+                    left:4px;
+                    width:4px;
+                    height:4px;
+                    margin-top:-2px;
+                    border-radius:2px;
+                    background:$color-1;
+                }
+                &:first-child {
+                    padding-left:0;
+                    &::before {
+                        display:none;
+                    }
+                }
+            }
+        }
+        .purchase-info {
+            margin-top:16px;
+            @include mobile {
+                margin-top:20px;
+            }
+            dl {
+                font-size:0;
+                dt, dd {
+                    display:inline-block;
+                    color:$color-1;
+                    font-size:14px;
+                    line-height:20px;
+                }
+                dt::after {
+                    content:':';
+                    display:inline-block;
+                    margin-left:2px;
+                    margin-right:2px;
+                    vertical-align:top;
+                }
+            }
+        }
+    }
+    .more-txt {
+        margin-top:48px;
+        color:$color-1;
+        font-size:16px;
+        line-height:24px;
+        font-weight:700;
+        text-align:center;
+        @include mobile {
+            margin-top:32px;
+        }
+    }
+    .link-lists {
+        margin-top:16px;
+        font-size:0;
+        text-align:center;
+        @include mobile {
+            margin-top:32px;
+        }
+        li {
+            display:inline-block;
+            margin:8px 4px 0;
+            vertical-align:top;
+            @include mobile {
+                display:block;
+                margin:8px 0 0;
+            }
+            a {
+                display:block;
+                position:relative;
+                padding:7px 53px 7px 15px;
+                border:1px solid #616161;
+                border-radius:8px;
+                color:#616161;
+                font-size:14px;
+                line-height:20px;
+                font-weight:500;
+                text-align:left;
+                @include mobile {
+                    padding:15px 43px 15px 19px;
+                    font-size:16px;
+                    line-height:24px;
+                }
+                &::after {
+                    content:' ';
+                    position:absolute;
+                    top:50%;
+                    right:13px;
+                    width:6px;
+                    height:6px;
+                    margin-top:-3px;
+                    border:1px solid #616161;
+                    border-left:none;
+                    border-bottom:none;
+                    transform:rotate(45deg);
+                    @include mobile {
+                        width:9px;
+                        height:9px;
+                        right:32px;
+                        border-width:2px;
+                        margin-top:-4px;
+                    }
+                }
+            }
+        }
     }
 }
