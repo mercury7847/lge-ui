@@ -289,6 +289,19 @@
             padding-top:32px;
         }
     }
+    .pop-input {
+        background-color: #f4f4f4;
+        padding: 8px 56px;
+        padding-right: 0;
+        input {
+            + label {
+                font-size: 14px;
+            }
+        }
+        @include mobile {
+            padding-left: 24px;
+        }
+    }
     .pop-footer {
         padding:32px 56px 40px;
         background:transparent;

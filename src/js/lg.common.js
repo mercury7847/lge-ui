@@ -186,11 +186,8 @@
                     singleOpen: false,
                     events: {
                         accordionexpand: function (e, data) {
-                            data.content.attr('tabindex', '0');    
-                            
-                            // console.log(data.content.find('.ui_carousel'));
-                            if(data.content.find('.ui_carousel').length>0) {
-                                console.log(e);
+                            data.content.attr('tabindex', '0');                  
+                            if(data.content.find('.ui_carousel').length>0) {                                
                                 data.content.find('.ui_carousel').vcCarousel('update');
                             }                            
                         }
