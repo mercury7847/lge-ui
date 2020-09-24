@@ -58,6 +58,8 @@ $(function () {
             var storageFilters = Storage.get(storageName);	
 
 
+            var savedFilterArr = [];
+            var firstRender = false;
 
             //template     
             
@@ -426,6 +428,8 @@ $(function () {
             function renderFilter(arr){
                 var html = '';
 
+                console.log('renderFilter');
+
                 for(var i=0; i<arr.length; i++){
                     var item = arr[i];
                     if(item.filterTypeCode=='00'){
@@ -496,16 +500,27 @@ $(function () {
     
                 }).vcRangeSlider({mode:true});
     
-                $('.ui_order_accordion').vcAccordion('destroy').vcAccordion();
-                $('.ui_filter_accordion').vcAccordion('destroy').vcAccordion();
+                $('.ui_order_accordion').vcAccordion();
+                $('.ui_filter_accordion').vcAccordion();
                 
                 setApplyFilter(storageFilters, true);
             }
 
-
             function init(){
 
-                //이벤트 바인딩
+                bindEvent();
+                $('input[name="categoryCheckbox"]:checked').change(); // 이벤트 초기실행
+                fnBreakPoint(); // breackpoint 이벤트 초기실행
+
+                //if(!vcui.isEmpty(storageFilters)){
+                    setApplyFilter(storageFilters);
+                //}
+
+
+            }
+
+            //이벤트 바인딩
+            function bindEvent(){
 
                $('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged',function (e, data) {
 
@@ -575,7 +590,7 @@ $(function () {
                 });
 
                 
-
+                // sorting dls
                 $('.ui_sorting_selectbox').on('change', function(e,data){
                     var value = e.target.value;
                     $('input[name="sorting"][value="'+ value +'"]').prop('checked', true).change();
@@ -609,20 +624,73 @@ $(function () {
                 });
                 //이벤트 바인딩 end
 
-                $('input[name="categoryCheckbox"]:checked').change();
-                fnBreakPoint();
+                
 
-                if(!vcui.isEmpty(storageFilters)){
-                    setApplyFilter(storageFilters);
+                
+            }
+
+            
+
+            function getSlideFilterValueId(arr, value){
+
+                var returnStr='';
+                var num = parseInt(value);
+
+                for(var i=0; i<arr.length; i++){
+                    var value1 = parseInt(arr[i]['filterValueName']);
+                    var value2 = parseInt(arr[i+1] && arr[i+1]['filterValueName']);
+                    if(value1 <= num && value2 >= num ){
+                        if(Math.abs(value1-num) > Math.abs(value2-num)){
+                            returnStr = arr[i]['filterValueId'];
+                        }else{
+                            returnStr = arr[i+1]['filterValueId'];
+                        }
+                        break;
+                    }
                 }
+
+                return returnStr;
+
             }
 
             function convertPostData(obj){
                 var nObj = {};
 
+                for(var key in obj){
+                    var fArr = vcui.array.filter(savedFilterArr, function(item){
+                        return item.filterId == key && item.filterTypeCode=='00';
+                    });
+
+                    if(fArr.length>0){
+                        var filterName = fArr[0]['filterName'].toLowerCase();
+                        if(filterName == 'price' || filterName == 'size'){
+                            var values = fArr[0]['data'];
+                            var sArr = obj[key].split(',');
+
+                            if(sArr.length>1){
+                                if(vcui.isNumber(parseInt(sArr[0]))){
+                                    nObj[filterName+'Min'] = getSlideFilterValueId(values, sArr[0]);
+                                }else{
+                                    nObj[filterName+'Min'] = '';
+                                }
+                                if(vcui.isNumber(parseInt(sArr[1]))){
+                                    nObj[filterName+'Max'] = getSlideFilterValueId(values, sArr[1]);
+                                }else{
+                                    nObj[filterName+'Max'] = '';
+                                }
+                            }
+
+                            delete obj[key];
+                        }
+                    }
+                }
+
+                nObj = vcui.extend(obj, nObj);
+
                 return nObj;
             }
 
+            
 
             function requestData(obj){
 
@@ -736,12 +804,18 @@ $(function () {
                         return parseInt(a.filterOrderNo) < parseInt(b.filterOrderNo) ? -1 : parseInt(a.filterOrderNo) > parseInt(b.filterOrderNo) ? 1 : 0;
                     });
 
-                   //renderFilter(newFilterArr);
-                   updateFilter(newFilterArr);
-                   renderProdList(productList, totalCount);
-                   renderPagination(pageInfo);
+                    savedFilterArr = newFilterArr;
+                    
+                    renderFilter(newFilterArr);
 
-                   lgkorUI.hideLoading();
+                    //updateFilter(newFilterArr);
+
+                    renderProdList(productList, totalCount);
+                    renderPagination(pageInfo);
+
+                    firstRender = true;
+
+                    lgkorUI.hideLoading();
                    
 
                 }).fail(function(error) {
@@ -751,7 +825,6 @@ $(function () {
             }
 
             init();
-            
 
         });           
         
