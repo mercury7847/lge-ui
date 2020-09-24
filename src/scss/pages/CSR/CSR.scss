@@ -1084,16 +1084,20 @@
             }
 
             .slide-wrap {
+                padding-bottom:34px;
+                .indi-wrap {
+                    bottom:0;
+                }
                 margin-top:16px;
-                .slide-track {
-                    // margin:-16px;
+                .slide-content {
+                    margin:0 -8px;
                     .slide-conts {
                         height:190px;
                         .img {
                             position:relative;
                             height:190px;
                             border-radius:4px;
-                            margin:8px;
+                            margin:0 8px;
                             overflow:hidden;
                             img {
                                 display:block;
