@@ -79,6 +79,7 @@
                     border:2px solid #111;
                     border-top:none;
                     border-right:none;
+                    -webkit-transform:rotate(45deg);
                     transform:rotate(45deg);
                 }
                 @include csmobile {
@@ -384,6 +385,7 @@
                                 border:2px solid #111;
                                 border-top:none;
                                 border-right:none;
+                                -webkit-transform:rotate(45deg);
                                 transform:rotate(45deg);
                             }
                         }
@@ -490,6 +492,7 @@
                         border:2px solid #111;
                         border-top:none;
                         border-right:none;
+                        -webkit-transform:rotate(135deg);
                         transform:rotate(135deg);
                         transition:all .3s;
                     }
@@ -911,8 +914,14 @@
                     border-radius: 1px;
                     background: #222;
              }
-             &:before {transform: rotate(45deg);}
-             &:after {transform: rotate(-45deg);}
+             &:before {
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+             &:after {
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
         }
         .tit-wrap {
             position:relative;
@@ -1144,8 +1153,10 @@
                     }
                     .btn {
                         position:absolute;
-                        top:32px;
+                        top:50%;
                         right:24px;
+                        -webkit-transform:translateY(-50%);
+                        transform:translateY(-50%);
                     }
                 }
             }
