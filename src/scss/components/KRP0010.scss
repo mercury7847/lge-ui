@@ -365,12 +365,17 @@
                             flex-direction: row;
                             padding: 0 15px;
                             //justify-content: center;
-                        }
+                        }                           
                         li {
                             width: 56px;
                             height: 56px;
                             margin-right: 7px;
                             margin-bottom: 7px;
+                            border: 1px solid #e4e4e4;
+                            border-radius: 10px;
+                            &.active {
+                                border-color: #a50034;
+                            }
                             @include mobile {
                                 width: 20%;
                                 height: 100%;
