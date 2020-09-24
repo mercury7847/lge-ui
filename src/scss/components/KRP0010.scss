@@ -45,11 +45,24 @@
 
 
         .badge {
+            //display: flex;
             position: absolute;
-            top: 50px;
-            left: 50px;
+            top: 56px;
+            left: 56px;
+            
+            z-index: 9;
+            @include mobile {
+                top: 18px;
+                left: 18px;
+            }
             img {
+                width: 56px;
+                height: 56px;
                 margin-right: 10px;
+                @include mobile {
+                    width: 44px;
+                    height: 44px;
+                }
             }
 
         }
@@ -262,7 +275,8 @@
     // mobile visual
     .pdp-visual-area.visible-sm {
         overflow: hidden;
-        margin-bottom: 40px;
+        margin-bottom: 28px;
+        padding-bottom: 34px;
         .pdp-visual-list {
             position: relative;
             @include clearfix;
@@ -274,6 +288,9 @@
                 text-align: center;
                 height: auto;
             }
+        }
+        .indi-wrap {
+            bottom: -22px;
         }
     }
  
