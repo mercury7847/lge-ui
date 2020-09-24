@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["CSR/CSR"],
-        pageJS: ["customer/searchShop"]
+        pageCSS: ["CSR/CSR"]
     })
 <body>
     <div class="wrap">
@@ -12,13 +11,14 @@
 
         <div class="container">
             <!-- 메장찾기 -->
-            <div class="contents find-store">
+            <div class="contents find-store-wrap">
                 <div class="cont-wrap">
                     <div class="map-container" data-bestshop="/lg5-common/data-ajax/searchshop/bestShop.json">
                         <div class="store-list-wrap">
                             <h2 class="tit">매장찾기</h2>
                             <button type="button" class="btn-fold"><span class="blind">매장찾기 리스트 닫기</span></button> <!-- 클릭 시 .store-list-wrap에 close 클래스 추가 -->
 
+                            <!-- filter -->
                             <div class="store-list-box">
                                 <!-- search -->
                                 <div class="sch-box">
@@ -74,21 +74,21 @@
                                     <div id="tab4" class="tabs-contents">
                                         <div class="sch-input-wrap select">
                                             <div class="select-wrap">
-                                                <select class="ui_selectbox" id="select1" title="지역 선택">
+                                                <select class="ui_selectbox" id="select3" title="지역 선택">
                                                     <option value="">지역 선택</option>
                                                     <option value="">option</option>
                                                     <option value="">option</option>
                                                 </select>
                                             </div>
                                             <div class="select-wrap">
-                                                <select class="ui_selectbox" id="select2" title="호선 선택">
+                                                <select class="ui_selectbox" id="select4" title="호선 선택">
                                                     <option value="">호선 선택</option>
                                                     <option value="">option</option>
                                                     <option value="">option</option>
                                                 </select>
                                             </div>
                                             <div class="select-wrap">
-                                                <select class="ui_selectbox" id="select3" title="역 선택">
+                                                <select class="ui_selectbox" id="select5" title="역 선택">
                                                     <option value="">역 선택</option>
                                                     <option value="">option</option>
                                                     <option value="">option</option>
@@ -125,128 +125,121 @@
                                 </div>
                                 <!-- // list -->
 
-                                <!-- mobile map -->
-                                <div class="mobile-map" style="display:none;"><!-- 높이값 계산 : [브라우저 높이 - eader - h2.tit - .sch-box - .btn-sel] -->
-                                    @@include('./common/partials/CSRF6040-map.html')
-                                </div>
-                                <!-- //mobile map -->
-                            </div>
+                                <!-- option -->
+                                <div class="opt-cont"><!-- 열렸을 때 높이값 계산 : [브라우저 높이 - header - .btn-sel - .opt-btn-wrap] -->
+                                    <button type="button" class="btn-sel"><span>옵션 선택 <span class="blind">열기</span></span></button><!-- 클릭시 .opt-cont에 open클래스 추가 -->
+                                    <div class="opt-layer">
+                                        <div class="scroll-wrap">
+                                            <div class="list-item">
+                                                <dl>
+                                                    <dt>매장 종류 형태</dt>
+                                                    <dd>
+                                                        <span class="rdo-wrap">
+                                                            <input type="radio" id="rdo1-1" name="rdo1" checked>
+                                                            <label for="rdo1-1">BESTSHOP</label>
+                                                        </span>
+                                                        <span class="rdo-wrap">
+                                                            <input type="radio" id="rdo1-2" name="rdo1">
+                                                            <label for="rdo1-2">냉난방시스템</label>
+                                                        </span>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>서비스센터 입점 형태</dt>
+                                                    <dd>
+                                                        <span class="rdo-wrap">
+                                                            <input type="radio" id="rdo2-1" name="rdo2" checked>
+                                                            <label for="rdo2-1">전 제품 접수 가능</label>
+                                                        </span>
+                                                        <span class="rdo-wrap">
+                                                            <input type="radio" id="rdo2-2" name="rdo2">
+                                                            <label for="rdo2-2">휴대폰 + PC제품 접수 가능</label>
+                                                        </span>
+                                                        <span class="rdo-wrap">
+                                                            <input type="radio" id="rdo2-3" name="rdo2">
+                                                            <label for="rdo2-3">휴대폰 + PC제품 접수 가능</label>
+                                                        </span>
+                                                    </dd>
+                                                </dl>
+                                                <dl class="all-chk">
+                                                    <dt>
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="all-chk" name="allChk" checked>
+                                                            <label for="all-chk">전체선택</label>
+                                                        </span>
+                                                    </dt>
+                                                    <dd>
+                                                        <dl class="item">
+                                                            <dt class="tit">입점 형태</dt>
+                                                            <dd>
+                                                                <span class="chk-wrap">
+                                                                    <input type="checkbox" id="chk1-1" name="chk1" checked>
+                                                                    <label for="chk1-1">베스트샵 단독 매장</label>
+                                                                </span>
+                                                                <span class="chk-wrap">
+                                                                    <input type="checkbox" id="chk1-2" name="chk1">
+                                                                    <label for="chk1-2">백화점 입점 매장</label>
+                                                                </span>
+                                                                <span class="chk-wrap">
+                                                                    <input type="checkbox" id="chk1-3" name="chk1">
+                                                                    <label for="chk1-3">홈플러스 입점 매장</label>
+                                                                </span>
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="item">
+                                                            <dt class="tit">타입/서비스 형태</dt>
+                                                            <dd>
+                                                                <span class="chk-wrap">
+                                                                    <input type="checkbox" id="chk2-1" name="chk2" checked>
+                                                                    <label for="chk2-1">LG지인 몰 입점 매장</label>
+                                                                </span>
+                                                                <span class="chk-wrap">
+                                                                    <input type="checkbox" id="chk2-2" name="chk2">
+                                                                    <label for="chk2-2">휴대폰 판매 가능 매장</label>
+                                                                </span>
+                                                                <span class="chk-wrap">
+                                                                    <input type="checkbox" id="chk2-3" name="chk2">
+                                                                    <label for="chk2-3">뷰티마스터 입점 매장</label>
+                                                                </span>
+                                                                <span class="chk-wrap">
+                                                                    <input type="checkbox" id="chk2-4" name="chk2">
+                                                                    <label for="chk2-4">시그니처 전용관 입점 매장</label>
+                                                                </span>
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="item">
+                                                            <dt class="tit">기타</dt>
+                                                            <dd>
+                                                                <span class="chk-wrap">
+                                                                    <input type="checkbox" id="chk3-1" name="chk3" checked>
+                                                                    <label for="chk3-1">LN 신규 오픈 행사 지점</label>
+                                                                </span>
+                                                            </dd>
+                                                        </dl>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
 
-                            <!-- option -->
-                            <div class="opt-cont"><!-- 열렸을 때 높이값 계산 : [브라우저 높이 - header - .btn-sel - .opt-btn-wrap] -->
-                                <button type="button" class="btn-sel"><span>옵션 선택 <span class="blind">열기</span></span></button><!-- 클릭시 .opt-cont에 open클래스 추가 -->
-                                <div class="opt-layer">
-                                    <div class="scroll-wrap">
-                                        <div class="list-item">
-                                            <dl>
-                                                <dt>매장 종류 형태</dt>
-                                                <dd>
-                                                    <span class="rdo-wrap">
-                                                        <input type="radio" id="rdo1-1" name="rdo1" checked>
-                                                        <label for="rdo1-1">BESTSHOP</label>
-                                                    </span>
-                                                    <span class="rdo-wrap">
-                                                        <input type="radio" id="rdo1-2" name="rdo1">
-                                                        <label for="rdo1-2">냉난방시스템</label>
-                                                    </span>
-                                                </dd>
-                                            </dl>
-                                            <dl>
-                                                <dt>서비스센터 입점 형태</dt>
-                                                <dd>
-                                                    <span class="rdo-wrap">
-                                                        <input type="radio" id="rdo2-1" name="rdo2" checked>
-                                                        <label for="rdo2-1">전 제품 접수 가능</label>
-                                                    </span>
-                                                    <span class="rdo-wrap">
-                                                        <input type="radio" id="rdo2-2" name="rdo2">
-                                                        <label for="rdo2-2">휴대폰 + PC제품 접수 가능</label>
-                                                    </span>
-                                                    <span class="rdo-wrap">
-                                                        <input type="radio" id="rdo2-3" name="rdo2">
-                                                        <label for="rdo2-3">휴대폰 + PC제품 접수 가능</label>
-                                                    </span>
-                                                </dd>
-                                            </dl>
-                                            <dl class="all-chk">
-                                                <dt>
-                                                    <span class="chk-wrap">
-                                                        <input type="checkbox" id="all-chk" name="allChk" checked>
-                                                        <label for="all-chk">전체선택</label>
-                                                    </span>
-                                                </dt>
-                                                <dd>
-                                                    <dl class="item">
-                                                        <dt class="tit">입점 형태</dt>
-                                                        <dd>
-                                                            <span class="chk-wrap">
-                                                                <input type="checkbox" id="chk1-1" name="chk1" checked>
-                                                                <label for="chk1-1">베스트샵 단독 매장</label>
-                                                            </span>
-                                                            <span class="chk-wrap">
-                                                                <input type="checkbox" id="chk1-2" name="chk1">
-                                                                <label for="chk1-2">백화점 입점 매장</label>
-                                                            </span>
-                                                            <span class="chk-wrap">
-                                                                <input type="checkbox" id="chk1-3" name="chk1">
-                                                                <label for="chk1-3">홈플러스 입점 매장</label>
-                                                            </span>
-                                                        </dd>
-                                                    </dl>
-                                                    <dl class="item">
-                                                        <dt class="tit">타입/서비스 형태</dt>
-                                                        <dd>
-                                                            <span class="chk-wrap">
-                                                                <input type="checkbox" id="chk2-1" name="chk2" checked>
-                                                                <label for="chk2-1">LG지인 몰 입점 매장</label>
-                                                            </span>
-                                                            <span class="chk-wrap">
-                                                                <input type="checkbox" id="chk2-2" name="chk2">
-                                                                <label for="chk2-2">휴대폰 판매 가능 매장</label>
-                                                            </span>
-                                                            <span class="chk-wrap">
-                                                                <input type="checkbox" id="chk2-3" name="chk2">
-                                                                <label for="chk2-3">뷰티마스터 입점 매장</label>
-                                                            </span>
-                                                            <span class="chk-wrap">
-                                                                <input type="checkbox" id="chk2-4" name="chk2">
-                                                                <label for="chk2-4">시그니처 전용관 입점 매장</label>
-                                                            </span>
-                                                        </dd>
-                                                    </dl>
-                                                    <dl class="item">
-                                                        <dt class="tit">기타</dt>
-                                                        <dd>
-                                                            <span class="chk-wrap">
-                                                                <input type="checkbox" id="chk3-1" name="chk3" checked>
-                                                                <label for="chk3-1">LN 신규 오픈 행사 지점</label>
-                                                            </span>
-                                                        </dd>
-                                                    </dl>
-                                                </dd>
-                                            </dl>
+                                        <div class="opt-btn-wrap">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn gray"><span>초기화</span></button>
+                                                <button type="button" class="btn pink"><span>적용</span></button>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="opt-btn-wrap">
-                                        <div class="btn-group"">
-                                            <button type="button" class="btn gray"><span>초기화</span></button>
-                                            <button type="button" class="btn pink"><span>적용</span></button>
-                                        </div>
-                                    </div>
-                                    
                                 </div>
+                                <!-- //option -->
                             </div>
-                            <!-- //option -->
+                            <!-- //filter -->
                         </div>
 
-                        <!-- pc map -->
-                        <div class="store-map-con">
+                        <!-- map -->
+                        <div class="store-map-con"><!-- 모바일일 때 높이값 계산 : [브라우저 높이 - header - h2.tit - .sch-box - .btn-sel] -->
                             @@include('./common/partials/CSRF6040-map.html')
                         </div>
-                        <!-- //pc map -->
+                        <!-- //map -->
                     </div>
-
                 </div>
             </div>
             <!-- // 메장찾기 -->
