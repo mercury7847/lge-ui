@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-share</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon_PDP_share_24">
+            <g id="ic" transform="translate(3.000000, 1.000000)">
+                <ellipse id="Oval" fill="#979797" cx="15.026087" cy="2.86956522" rx="2.8173913" ry="2.86956522"></ellipse>
+                <ellipse id="Oval-Copy-3" fill="#979797" cx="2.8173913" cy="11.4782609" rx="2.8173913" ry="2.86956522"></ellipse>
+                <ellipse id="Oval-Copy-2" fill="#979797" cx="15.026087" cy="19.1304348" rx="2.8173913" ry="2.86956522"></ellipse>
+                <path d="M13.0617378,4.25468318 L4.75900057,10.1091774 M4.84383639,12.8039077 L12.8384131,17.7711697" id="Shape" stroke="#979797" stroke-width="1.04347826" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>
