@@ -246,18 +246,139 @@
 			} */
         }
     }
-    .pdp-visual-pagination {
-        padding:15px 0;
-        font-size:14px;
-        line-height:20px;
-        color: #6b6b6b;
-        text-align:center;
-    }
-
-    .modal {
-        &.pdp-layer {
+ 
+    .popup-wrap {
+        &.pop-pdp-visual {
+            position: fixed;
             width: 1284px;
             min-height: 848px;
+            background: gray;
+            z-index: 1000;
+            @include mobile {
+                width: 100%;
+                min-height: auto;
+                height: auto;
+            }
+            .pop-conts {
+                max-height: none;
+                .pop-pdp-visual-image {
+                    display: flex;
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    padding: 113px 170px;
+                    vertical-align: middle;
+                    align-items: center;
+                    justify-content: center;
+                    @include mobile {
+                        height: 460px;
+                        padding: 48px 20px 0;
+                        &:after {
+                            display: block;
+                            content: '';
+                            width: calc(100% - 40px);
+                            height: 1px;
+                            position: absolute;
+                            bottom: 0;
+                            left: 20px;
+                            background: #ddd;
+
+                        }
+                    }
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+                }
+                .pop-pdp-thumbnail-nav {
+                    position: absolute;
+                    top: 113px;
+                    left: 48px;
+                    @include mobile {
+                        position: static;
+                        padding: 0;
+                    }
+                    .pop-thumbnail-list {
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: wrap;
+                        height: 623px;
+                        @include mobile {
+                            height: auto;
+                            flex-direction: row;
+                            padding: 0 15px;
+                            //justify-content: center;
+                        }
+                        li {
+                            width: 56px;
+                            height: 56px;
+                            margin-right: 7px;
+                            margin-bottom: 7px;
+                            @include mobile {
+                                width: 20%;
+                                height: 100%;
+                                margin: 0 0 5px 0;
+                                a {
+                                    display: inline-block;
+                                    width: calc(100% - 10px);
+                                    height: 100%;
+                                    margin: 0 5px 0;
+                                }
+                            }
+                            img {
+                                width: 100%;
+                                border-radius: 8px;
+                            }
+                        }
+                    }
+                }
+                .zoom-btn-area {
+                    position: absolute;
+                    right: 30px;
+                    top: 50%;
+                    width: 30px;
+                    margin-top: -45px;
+                    padding-left: 1px;
+                    @include mobile {
+                        position: static;
+                        display: flex;
+                        width: 100%;
+                        margin: 18px 0 40px 0;
+                        padding: 0;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .zoom-btn {
+                        display: block;
+                        width: 28px;
+                        height: 28px;
+                        margin-bottom: 35px;
+                        text-indent: -9999em;
+                        border: none;
+                        @include mobile {
+                            display: inline-block;
+                            width: 24px;
+                            height: 24px;
+                            margin: 0;
+                        }
+                        &.zoom-plus {
+                            background: url(/lg5-common/images/KRP0010/zoomin.svg) center no-repeat;
+                        }
+                        &.zoom-minus {
+                            background: url(/lg5-common/images/KRP0010/zoomout.svg) center no-repeat; 
+                            @include mobile {
+                                margin-left: 16px;
+                            }
+                        }
+                    }
+                } 
+
+            }
+        }
+    }
+    .modal {
+        &.pdp-layer {
+            
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -300,222 +421,51 @@
                         padding-bottom: 60px;
                     }
                 }
-                .modal-pdp-visual-image {
-                    display: flex;
-                    position: relative;
-                    width: 100%;
-                    height: 100%;
-                    padding: 113px 170px;
-                    vertical-align: middle;
-                    align-items: center;
-                    justify-content: center;
-                    @include mobile {
-                        height: 460px;
-                        padding: 48px 20px 0;
-                        &:after {
-                            display: block;
-                            content: '';
-                            width: calc(100% - 40px);
-                            height: 1px;
-                            position: absolute;
-                            bottom: 0;
-                            left: 20px;
-                            background: #ddd;
-
-                        }
-                    }
-                    img {
-                        max-width: 100%;
-                        height: auto;
-                    }
-                }
+                
                 
             }
-            .modal-pdp-thumbnail-nav {
-                position: absolute;
-                top: 113px;
-                left: 48px;
-                @include mobile {
-                    position: static;
-                    padding: 0;
-                }
-                .modal-thumbnail-list {
-                    display: flex;
-                    flex-direction: column;
-                    flex-wrap: wrap;
-                    height: 623px;
-                    @include mobile {
-                        height: auto;
-                        flex-direction: row;
-                        padding: 0 15px;
-                        //justify-content: center;
-                    }
-                    li {
-                        width: 56px;
-                        height: 56px;
-                        margin-right: 7px;
-                        margin-bottom: 7px;
-                        @include mobile {
-                            width: 20%;
-                            height: 100%;
-                            margin: 0 0 5px 0;
-                            a {
-                                display: inline-block;
-                                width: calc(100% - 10px);
-                                height: 100%;
-                                margin: 0 5px 0;
-                            }
-                        }
-                        img {
-                            width: 100%;
-                            border-radius: 8px;
-                        }
-                    }
-                }
-            }
-            .zoom-btn-area {
-                position: absolute;
-                right: 30px;
-                top: 50%;
-                width: 30px;
-                margin-top: -45px;
-                padding-left: 1px;
-                @include mobile {
-                    position: static;
-                    display: flex;
-                    width: 100%;
-                    margin: 18px 0 40px 0;
-                    padding: 0;
-                    justify-content: center;
-                    align-items: center;
-                }
-                .zoom-btn {
-                    display: block;
-                    width: 28px;
-                    height: 28px;
-                    margin-bottom: 35px;
-                    text-indent: -9999em;
-                    border: none;
-                    @include mobile {
-                        display: inline-block;
-                        width: 24px;
-                        height: 24px;
-                        margin: 0;
-                    }
-                    &.zoom-plus {
-                        background: url(/lg5-common/images/KRP0010/zoomin.svg) center no-repeat;
-                    }
-                    &.zoom-minus {
-                        background: url(/lg5-common/images/KRP0010/zoomout.svg) center no-repeat; 
-                        @include mobile {
-                            margin-left: 16px;
-                        }
-                    }
-                }
-            } 
+            
+            
         }
     } 
-    .modal.award-layer {
-        width: 630px;
-        top: 50%;
-        left: 50%;
-        bottom: auto;
-        transform: translate(-50%, -50%);
-        background: gray;
-        @include mobile {
-            width: calc(100% - 56px);
-            left: 28px;
-            right: 28px;
-            transform: translate(0, -50%);
-        }
-        .modal-dialog {
-            width: 100%;
-            height: 100%;
-            .modal-content {
-                width: 100%;
-                height: 100%;
-                .modal-close {
-                    top: 40px;
-                    left: auto;
-                    right: 56px;
-                    width: 32px;
-                    height: 32px;
-                    @include mobile {
-                        width: 24px;
-                        height: 24px;
-                    }
-                }
-                .modal-body {
-                    padding: 40px 56px 32px;
-                    @include mobile {
-                        padding: 24px;
-                    }
-                    .modal-header {
-                        margin: 0;
-                        padding: 0 0 32px 0;
 
-                        .modal-title {
-                            color: #222;
-                            font-size: 24px;
-                            font-weight: 700;
-                            line-height: 32px;
-                            @include mobile {
-                                text-align: center;
-                            }
-                        }
-                    }
-                    .awards-list {
-                        margin-top: 24px; 
-                        li {
-                            position: relative;
-                            min-height: 48px;
-                            margin-bottom: 10px;
-                            padding: 0 0 0 80px;
-                            font-size: 16px;
-                            line-height: 24px;
-                            color: #616161;
-                            @include mobile {
-                                padding: 0 0 0 44px;
-                            }
-                            span {
-                                display: inline-block;
-                                padding: 12px 0; 
-                                @include mobile {
-                                    padding: 17px 0; 
-                                }
-                            }
-                            .icon-area {
-                                position: absolute;
-                                display: inline-block;
-                                left: 0;
-                                top: 50%;
-                                transform: translate(0, -50%);
-                                width: 64px;
-                                height: 48px;  
-                                margin-right: 16px;    
-                                border-radius: 6px;
-                                @include mobile {
-                                    width: 32px;
-                                    height: 24px;
-                                }   
-                            }
-                        }       
-                    }
-                    .modal-btn-area {
-                        &.align-right {
-                            text-align: right;
-                            @include mobile {
-                                text-align: center;
-                                .btn {
-                                    width: 100%;
-                                }
-                            }
-                        }
-
-                    }
+    // 수상내역
+    .awards-list {
+        margin-top: 24px; 
+        li {
+            position: relative;
+            min-height: 48px;
+            margin-bottom: 10px;
+            padding: 0 0 0 80px;
+            font-size: 16px;
+            line-height: 24px;
+            color: #616161;
+            @include mobile {
+                padding: 0 0 0 44px;
+            }
+            span {
+                display: inline-block;
+                padding: 12px 0; 
+                @include mobile {
+                    padding: 17px 0; 
                 }
             }
-        }
+            .icon-area {
+                position: absolute;
+                display: inline-block;
+                left: 0;
+                top: 50%;
+                transform: translate(0, -50%);
+                width: 64px;
+                height: 48px;  
+                margin-right: 16px;    
+                border-radius: 6px;
+                @include mobile {
+                    width: 32px;
+                    height: 24px;
+                }   
+            }
+        }       
     }
     
     
