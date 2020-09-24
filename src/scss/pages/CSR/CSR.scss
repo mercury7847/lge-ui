@@ -79,6 +79,7 @@
                     border:2px solid #111;
                     border-top:none;
                     border-right:none;
+                    -webkit-transform:rotate(45deg);
                     transform:rotate(45deg);
                 }
                 @include csmobile {
@@ -384,6 +385,7 @@
                                 border:2px solid #111;
                                 border-top:none;
                                 border-right:none;
+                                -webkit-transform:rotate(45deg);
                                 transform:rotate(45deg);
                             }
                         }
@@ -490,6 +492,7 @@
                         border:2px solid #111;
                         border-top:none;
                         border-right:none;
+                        -webkit-transform:rotate(135deg);
                         transform:rotate(135deg);
                         transition:all .3s;
                     }
@@ -880,12 +883,45 @@
 // 매장정보
 .store-info-wrap {
     .cont-wrap {
+        position:relative;
         padding:40px 56px 56px;
         background:#fff;
         h1.h1-tit {
             font-size:24px;
             line-height:32px;
             font-weight:700;
+        }
+        .btn-close {
+            position: absolute;
+            top: 40px;
+            right: 56px;
+            width: 24px;
+            height: 24px;
+            @include mobile {
+                top: 24px;
+                right: 24px;
+            }
+            &:before,
+                &:after {
+                    content: ' ';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 2px;
+                    height: 24px;
+                    margin-top: -12px;
+                    margin-left: -1px;
+                    border-radius: 1px;
+                    background: #222;
+             }
+             &:before {
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+             &:after {
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
         }
         .tit-wrap {
             position:relative;
@@ -928,11 +964,17 @@
             }
         }
         .detail-info-wrap {
-            @include clearfix;
+            display:table;
+            table-layout:fixed;
+            width:100%;
             margin-top:39px;
+            
             .left-box {
-                float:left;
+                display:table-cell;
+                vertical-align:top;
                 width:246px;
+                // float:left;
+                
                 .manager-info {
                     padding:24px 32px 36px;
                     border:1px solid #ddd;
@@ -1009,15 +1051,16 @@
             }
 
             .right-box {
-                width:657px;
-                float:right;
+                display:table-cell;
+                width:100%;
+                padding-left:56px;
+                vertical-align:middle;
+                // width:657px;
+                // float:right;
                 .info-list {
-                    margin-top:56px;
+                    margin-bottom:56px;
                     padding-bottom:56px;
                     border-bottom:1px solid #ddd;
-                    &:first-child {
-                        margin-top:0;
-                    }
                     .h3-tit {
                         position:relative;
                         font-size:16px;
@@ -1081,6 +1124,41 @@
                         text-align:left;
                     }
                 }
+
+                .notice-info {
+                    position:relative;
+                    padding:34px 24px;
+                    border:1px solid #ddd;
+                    border-radius:4px;
+                    .txt {
+                        position:relative;
+                        display:inline-block;
+                        padding:0 145px 0 40px;
+                        font-size:16px;
+                        line-height:24px;
+                        vertical-align:middle;
+                        &:before {
+                            content:'';
+                            display:block;
+                            position:absolute;
+                            top:50%;
+                            left:0;
+                            width:24px;
+                            height:24px;
+                            -webkit-transform:translateY(-50%);
+                            transform:translateY(-50%);
+                            background:url('/lg5-common/images/CS/icon-evaluation.svg') no-repeat;
+                            background-size:24px 24px;
+                        }
+                    }
+                    .btn {
+                        position:absolute;
+                        top:50%;
+                        right:24px;
+                        -webkit-transform:translateY(-50%);
+                        transform:translateY(-50%);
+                    }
+                }
             }
 
             .slide-wrap {
@@ -1092,7 +1170,7 @@
                 .slide-content {
                     margin:0 -8px;
                     .slide-conts {
-                        height:190px;
+                        height:auto;
                         .img {
                             position:relative;
                             height:190px;
@@ -1106,6 +1184,19 @@
                                 left:50%;
                                 -webkit-transform:translate(-50%, -50%);
                                 transform:translate(-50%, -50%);
+                            }
+                        }
+                        .desc {
+                            margin:8px 8px 0;
+                            .subject {
+                                font-size:16px;
+                                line-height:24px;
+                                font-weight:500;
+                            }
+                            .date {
+                                color:#515151;
+                                font-size:14px;
+                                line-height:20px;
                             }
                         }
                     }
