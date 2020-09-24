@@ -52,12 +52,12 @@
         }
     }
     .tooltip-box {
-        display:none;
+        //display:none;
         position:absolute;
         left:38px;
         bottom:0;
         min-width:262px;
-        padding:24px;
+        padding:24px 38px 24px 24px;
         border-radius:16px;
         background:#fff;
         text-align:left;
@@ -80,6 +80,31 @@
     &.active {
         .tooltip-box {
             display:block;
+        }
+    }
+    .btn-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        background-color: #616161;
+        &:before,
+        &:after {
+            position: absolute;
+            @include calc(top,50%,5px);
+            left: 50%;
+            width: 1px;
+            height: 10px;
+            background-color: #fff;
+            content: '';
+        }
+        &:before {
+            transform: rotate(-45deg);
+        }
+        &:after {
+            transform: rotate(45deg);
         }
     }
 }
