@@ -174,11 +174,34 @@
 
 // no-data
 .no-data {
-    margin-top:60px;
-    text-align:left;
+    // margin-top:60px;
+    // text-align:left;
+    // p {
+    //     color:#616161;
+    //     font-size:16px;
+    //     line-height:24px;
+    // }
+    margin:0;
+    padding:140px 0;
+    text-align:center;
     p {
-        color:#616161;
+        position:relative;
+        padding-top:72px;
+        color:#808080;
         font-size:16px;
         line-height:24px;
+        &::before {
+            content:' ';
+            position:absolute;
+            top:0;
+            left:50%;
+            margin-left:-28px;
+            width:56px;
+            height:56px;
+            background:url('/lg5-common/images/icons/icon-nodata.svg') center no-repeat;
+        }
+    }
+    &.full {
+        padding:(140px - 56px) 0;
     }
 }

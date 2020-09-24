@@ -1,0 +1,16 @@
+// 검색결과 sorting filter
+.result-sorting-box {
+    margin-bottom:16px;
+    padding-top:40px;
+    @include clearfix;
+    .total {
+        float:left;
+        color:#222;
+        font-size:16px;
+        line-height:24px;
+        font-weight:700;
+    }
+    .sort-select-wrap {
+        float:right;
+    }
+}

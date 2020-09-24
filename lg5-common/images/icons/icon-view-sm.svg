@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-view-sm</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon_view_12">
+            <g>
+                <polygon id="Rectangle" points="0 0 16 0 16 16 0 16"></polygon>
+                <g id="ic" transform="translate(0.000000, 3.000000)" stroke="#616161">
+                    <path d="M8,0.5 C6.40638333,0.5 4.8787966,0.952263186 3.59456727,1.87880612 C2.44500048,2.70819302 1.49306216,3.91597497 0.855555785,5.50762915 C1.59557512,6.71087133 2.61560638,7.68897233 3.80520738,8.37590293 C5.05830643,9.09950026 6.49957591,9.5 8,9.5 C9.58021188,9.5 11.0951014,9.05530401 12.3918581,8.17999325 C13.5755616,7.38099336 14.5759078,6.22426412 15.2836215,4.72694187 C14.558809,3.45807576 13.5294011,2.42348803 12.3160477,1.69547601 C11.0350643,0.926885969 9.54905847,0.5 8,0.5 Z" id="Combined-Shape"></path>
+                    <rect id="Rectangle" x="5.5" y="2.5" width="5" height="5" rx="2.5"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
