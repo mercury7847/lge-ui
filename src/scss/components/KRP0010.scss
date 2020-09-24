@@ -59,7 +59,7 @@
 			text-align:center;
 			a {
 				text-align:center;
-				cursor: url('/lg5-common/images/components/zoomin_cursor.png'), url('/lg5-common/images/components/zoomin_cursor.cur'), pointer !important;
+				cursor: url('/lg5-common/images/KRP0010/zoomin_cursor.png'), url('/lg5-common/images/KRP0010/zoomin_cursor.cur'), pointer !important;
 			}
 			&.video {
 				a:before {width:64px;height:64px;margin:-32px 0 0 -32px;}
@@ -92,10 +92,6 @@
                 }
                 .view-more {
                     float: right;
-                    /*
-                    position: absolute;
-                    top: 4px;
-                    right: 0;*/
                     color: #ec455a;
                     line-height: 24px;
                     margin-top: 4px;
@@ -246,15 +242,32 @@
 			} */
         }
     }
+    // mobile visual
+    .pdp-visual-wrap {
+        overflow: hidden;
+        .pdp-visual-list {
+            position: relative;
+            @include clearfix;
+            
+            li {
+                display: block;
+                position: relative;
+                float: left;
+                text-align: center;
+                height: auto;
+            }
+        }
+    }
  
     .popup-wrap {
         &.pop-pdp-visual {
-            position: fixed;
             width: 1284px;
-            min-height: 848px;
+            //min-height: 848px;
+            min-height: 800px;
             background: gray;
             z-index: 1000;
             @include mobile {
+                position: fixed;
                 width: 100%;
                 min-height: auto;
                 height: auto;
