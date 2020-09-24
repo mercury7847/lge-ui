@@ -12,7 +12,8 @@
 	}
 }
 
-.find-store {
+// 매장찾기
+.find-store-wrap {
     .cont-wrap {
         padding:0;
         @include csmobile {
@@ -39,11 +40,12 @@
             box-shadow:0 2px 20px 0 rgba(0,0,0,.2);
             -webkit-transition:0.26s cubic-bezier(0.25,0.1,0.25,1); 
             transition:0.26s cubic-bezier(0.25,0.1,0.25,1);
-            z-index:2;
+            z-index:10;
 
             @include csmobile {
                 position:static;
                 width:100%;
+                box-shadow:none;
             }
             h2.tit {
                 padding:40px 40px 20px;
@@ -436,11 +438,12 @@
                 left:0;
                 right:0;
                 bottom:0;
-                // width:460px;
+                width:460px;
                 z-index:10;
                 background:#fff;
                 @include csmobile {
                     position:fixed;
+                    width:100%;
                 }
                 .btn-sel {
                     position:relative;
@@ -464,7 +467,7 @@
                         @include csmobile {
                             padding-left:20px;
                         }
-
+    
                         &::before {
                             content:'';
                             display:inline-block;
@@ -501,7 +504,7 @@
                         @include csmobile {
                             height:calc(100vh - 135px);
                         }
-
+    
                         .list-item {
                             padding:0 40px 34px;
                             @include csmobile {
@@ -516,7 +519,7 @@
                                 padding-top:29px;
                             }
                         }
-
+    
                         dt {
                             font-size:16px;
                             line-height:24px;
@@ -527,7 +530,7 @@
                             @include csmobile {
                                 margin-top:16px;
                             }
-
+    
                             .chk-wrap, .rdo-wrap {
                                 display:block;
                                 margin-top:8px;
@@ -535,41 +538,6 @@
                                     margin-top:16px;
                                 }
                             }
-
-                            // .rdo-wrap {
-                            //     & input + label {
-                            //         &:before {
-                            //             border-color:#979797;
-                            //         }
-                            //         &:after {
-                            //             display:none;
-                            //         }
-                            //     }
-                            //     & input:checked + label {
-                            //         &:before {
-                            //             border-color:#EC455A;
-                            //             background:#fff;
-                            //         }
-                            //         &:after {
-                            //             display:block;
-                            //             top:4px;
-                            //             left:4px;
-                            //             width:16px;
-                            //             height:16px;
-                            //             background:#EC455A;
-                            //             border-radius:50%;
-                            //             transform:inherit;
-                            //             border:0;
-                            //         }
-                            //     }
-                            //     & input:disabled + label {
-                            //         color:#adadad;
-                            //         &:before {
-                            //             border-color:#ccc;
-                            //             background:#f4f4f4;
-                            //         }
-                            //     }
-                            // }
                         }
                         &.all-chk {
                             margin-top:40px;
@@ -578,7 +546,7 @@
                             @include csmobile {
                                 margin-top:56px;
                             }
-
+    
                             dd {
                                 margin:0;
                                 .item {
@@ -598,7 +566,7 @@
                                     dd {
                                         margin-top:4px;
                                         font-size:0;
-
+    
                                         .chk-wrap {
                                             display:inline-block;
                                             margin-right:8px;
@@ -606,7 +574,7 @@
                                             @include csmobile {
                                                 margin-top:8px;
                                             }
-
+    
                                             input {
                                                 &+label {
                                                     padding:12px 20px;
@@ -632,7 +600,7 @@
                         }
                     }
                 }
-
+    
                 &.open {
                     top:0;
                     .opt-layer {
@@ -647,7 +615,7 @@
                             border-left:none;
                         }
                     }
-
+    
                     .opt-btn-wrap {
                         position:absolute;
                         left:0;
@@ -694,8 +662,16 @@
                         border-left:none;
                     }
                 }
-                .store-list-box {
-                    display:none;
+                .store-list-box,
+                    .opt-cont {
+                        display:none;
+                }
+                @include csmobile {
+                    left:0;
+                    .store-list-box,
+                        .opt-cont {
+                            display:block;
+                    }
                 }
             }
         }
@@ -747,13 +723,7 @@
             z-index:1;
             @include csmobile {
                 display:none;
-            }
-        }
-
-        .mobile-map {
-            display:none;
-            @include csmobile {
-                display:block;
+                position:static;
                 height:calc(100vh - 126px - 60px - 217px - 76px);
                 overflow:hidden;
             }
@@ -766,10 +736,6 @@
             right:0;
             bottom:0;
             height:100vh;
-            @include csmobile {
-                position:relative;
-                height:calc(100vh - 324px;)
-            }
 
             .point-wrap {
                 display:block;
@@ -906,6 +872,46 @@
                         background:url('/lg5-common/images/icons/icon-map-bubble.svg') no-repeat;
                     }
                 }
+            }
+        }
+    }
+}
+
+// 매장정보
+.store-info-wrap {
+    .cont-wrap {
+        padding:40px 56px 56px;
+        background:#fff;
+        h1.h1-tit {
+            font-size:24px;
+            line-height:32px;
+            font-weight:700;
+        }
+        .tit-wrap {
+            position:relative;
+            margin-top:56px;
+            .tit-info {
+                padding-right:300px;
+                .name {
+                    display:inline-block;
+                    font-size:32px;
+                    line-height:30px;
+                    font-weight:700;
+                    vertical-align:middle;
+                }
+                .flag {
+                    display: inline-block;
+                    margin-left: 4px;
+                    padding: 0 8px;
+                    color: #EC455A;
+                    font-size: 12px;
+                    line-height: 20px;
+                    background: #E9E9EA;
+                    font-weight: 500;
+                    border-radius: 4px;
+                    vertical-align: middle;
+                }
+                
             }
         }
     }
