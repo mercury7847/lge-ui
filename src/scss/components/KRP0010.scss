@@ -759,10 +759,10 @@
                     color: #222;
                 }
                 .select-option {
+                    .option-list {
+                        font-size: 0;
+                    }
                     &.color {
-                        .option-list {
-                            font-size: 0;
-                        }
                         .chk-wrap-colorchip {
                             height: 24px;
                             input {
@@ -800,7 +800,6 @@
                     &.service {
                         .option-list {
                             margin: 0 -4px;
-                            font-size: 0;
                             .rdo-wrap {
                                 width: 50%;
                                 padding: 0 4px;
@@ -840,6 +839,46 @@
                                         }
                                         &:after {
                                             border-color:#fff;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.use-period {
+                        .rdo-wrap {
+                            margin-left: 4px;
+                            &:first-child {
+                                margin-left: 0;
+                            }
+                            input {
+                                & + label {
+                                    position: relative;
+                                    width: 78px;
+                                    padding: 12px 0;
+                                    border-radius: 8px;
+                                    border: solid 1px #ddd;
+                                    text-align: center;
+                                    &:before {
+                                        display: none;
+                                    }
+                                    &:after {
+                                        position: absolute;
+                                        top: -1px;
+                                        right: -1px;
+                                        bottom: -1px;
+                                        left: -1px;
+                                        width: auto;
+                                        height: auto;
+                                        border: solid 1px #ddd;
+                                        border-radius: 8px;
+                                    }
+                                }
+                                &:checked {
+                                    & + label {
+                                        &:after {
+                                            border: solid 2px #ec455a;
+                                            background-color: transparent;
                                         }
                                     }
                                 }
@@ -1287,6 +1326,31 @@
                 .btn {
                     display: inline-block;
                     width: calc(50% - 4px);
+                }
+            }
+        }
+
+        .link-area {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #ddd;
+            a {
+                font-size: 14px;
+                line-height: 20px;
+                color: #616161;
+                &:before {
+                    display: inline-block;
+                    width: 1px;
+                    height: 13px;
+                    margin: 0 12px;
+                    background-color: #616161;
+                    vertical-align: -1px;
+                    content: '';
+                }
+                &:first-child {
+                    &:before {
+                        display: none;
+                    }
                 }
             }
         }
