@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "이*지 님이 보유한 제품",
+                "pageDesc" : "고객님의 전화번호를 기준으로 A/S 발생시 수집된 정보이며, 사실과 다를 수 있습니다.<br>만일 사실과 다른 경우 삭제기능을 이용해주세요.",
+                "pageBtn" : [
+                    { "btn" : "시리얼번호로 등록" },
+                    { "btn" : "영수증 바코드로 등록" }
+                ]
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="section">
+                        <h3 class="sec-tit">보유 제품</h3>
+                        <div class="cont-box">
+                            <!-- filter -->
+                            @@include('./common/modules/mem-filter.html', {
+                                "url" : "/lg5-common/data-ajax/mypage/membership/my_purchase_history.json",
+                                "wrapTit" : "조회기간"
+                            })
+                            <!-- // filter -->
+ 
+                            <!-- 결과값 있을 때 -->
+                            <ul class="svc-prod-list">
+                                <li class="prod01">
+                                    <dl>
+                                        <dt>
+                                            <span class="img"><img src="/lg5-common/images/membership/img-prod01.jpg" alt=""></span>
+                                            <p><span class="blind">제품명</span>LG TROMM ThinQ</p>
+                                            <p class="num"><span class="blind">제품번호</span>A9579I</p>
+                                        </dt>
+                                        <dd>구매수량 : 1</dd>
+                                        <dd><span class="blind">구매처</span>LG BEST SHOP 서초점</dd>
+                                        <dd><span class="blind">구매일</span>2019. 07. 29 구매</dd>
+                                    </dl> 
+                                </li>
+                                <li class="prod02">
+                                    <dl>
+                                        <dt>
+                                            <span class="img"><img src="/lg5-common/images/membership/img-prod02.jpg" alt=""></span>
+                                            <p><span class="blind">제품명</span>LG SIGNATURE 트윈워시</p>
+                                            <p class="num"><span class="blind">제품번호</span>F12WHTS</p>
+                                        </dt>
+                                        <dd>구매수량 : 2</dd>
+                                        <dd><span class="blind">구매처</span>LG BEST SHOP 서초점</dd>
+                                        <dd><span class="blind">구매일</span>2019. 12. 29 구매</dd>
+                                    </dl> 
+                                </li>
+                                <li class="prod03">
+                                    <dl>
+                                        <dt>
+                                            <span class="img"><img src="/lg5-common/images/membership/img-prod03.jpg" alt=""></span>
+                                            <p><span class="blind">제품명</span>LG 올레드 AI ThinQ TV</p>
+                                            <p class="num"><span class="blind">제품번호</span>A9579I</p>
+                                        </dt>
+                                        <dd>구매수량 : 2</dd>
+                                        <dd><span class="blind">구매처</span>LG BEST SHOP 서초점</dd>
+                                        <dd><span class="blind">구매일</span>2019. 11. 29 구매</dd>
+                                    </dl> 
+                                </li>
+                            </ul>
+                            <!-- // 결과값 있을 때 -->
+
+                            <!-- 결과값 없을 때 -->
+                            <div class="no-data">
+                                <p>조회기간 내 결과가 없습니다.</p>
+                            </div>
+                            <!-- // 결과값 없을 때 -->
+
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTxt" : [
+                                    "홈플러스, 이마트에서 구매 후 영수증을 등록한 제품은 다음날 반영됩니다.",
+                                    "VIP 우수 고객의 경우 3년 무상 서비스혜택을 받으실 수 있습니다."
+                                ]
+                            })
+                            <!-- // result -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+        <script src="/lg5-common/js/mypage/membership/membership.js"></script>
+    </div>     
+</body>
+</html>

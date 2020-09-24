@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>제품등록 완료 팝업 열기</span></button>
+    </div>
+
+
+    <article id="popup" class="popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit"><span>제품등록</span></h1>
+        </header>
+        <section class="pop-conts">
+            <!-- 제품등록 완료 -->
+            <div class="complete-msg">
+                <p class="comp-tit">제품등록이 완료되었습니다.</p>
+                <div class="comp-prod-info">
+                    <span class="img"><img src="/lg5-common/images/MYC/@thumb.png" alt="NEW LG 퓨리케어 ALL직수 상하좌우 냉온정수기"></span>
+                    <div class="infos">
+                        <p class="tit">NEW LG 퓨리케어 ALL직수 상하좌우 냉온정수기</p>
+                        <ul class="desc">
+                            <li><span class="blind">제품</span>정수기</li>
+                            <li><span class="blind">제품색상</span>메탈실버</li>
+                            <li><span class="blind">제품번호</span>WD503AS</li>
+                        </ul>
+                        <ul class="purchase-info">
+                            <li>
+                                <dl>
+                                    <dt>구매일자</dt>
+                                    <dd>2020.01.31</dd>
+                                </dl>
+                            </li>
+                            <!-- 구매일 때 -->
+                            <li>
+                                <dl>
+                                    <dt>구매금액</dt>
+                                    <dd>2,068,000원</dd>
+                                </dl>
+                            </li>
+                            <!-- // 구매일 때 -->
+                            <!-- 케어솔루션일 때 -->
+                            <li>
+                                <dl>
+                                    <dt>계약금액</dt>
+                                    <dd>월 13,900원/5년</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>잔여보증기간</dt>
+                                    <dd>2022.01.30 (1년 10개월)</dd>
+                                </dl>
+                            </li>
+                            <!-- // 케어솔루션일 때 -->
+                            <li>
+                                <dl>
+                                    <dt>구매장소</dt>
+                                    <dd>LG전자 온라인몰</dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="more-txt">사용중인 제품에 문제가 있다면!</p>
+                <ul class="link-lists">
+                    <li><a href="#n"><span>제품문제해결</span></a></li>
+                    <li><a href="#n"><span>설명서&middot;SW</span></a></li>
+                    <li><a href="#n"><span>상담문의</span></a></li>
+                    <li><a href="#n"><span>출장서비스예약</span></a></li>
+                    <li><a href="#n"><span>센터방문예약</span></a></li>
+                </ul>
+            </div>
+            <!-- // 제품등록 완료 -->
+        </section>
+        <footer class="pop-footer">
+            <div class="btn-group">
+                <button type="button" class="btn pink ui_modal_close"><span>확인</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+
+    <script src="/lg5-common/js/mypage/alarm/alarm.js"></script>
+</body>
+</html>
