@@ -171,17 +171,6 @@
                         border-radius:8px 0 0 8px;
                     }
                 }
-                &::after {
-                    content:' ';
-                    position:absolute;
-                    top:0;
-                    left:-12px;
-                    right:0;
-                    bottom:0;
-                    width:12px;
-                    background:#fff;
-                    z-index:10;
-                }
                 .btn-search {
                     display:inline-block;
                     width:24px;
@@ -716,7 +705,7 @@ $input: (chk, rdo);
             border-top:none;
             border-radius:0 0 8px 8px;
             background:#fff;
-            z-index: 1;
+            z-index: 2;
             ul {
                 li {
                     a {

@@ -109,55 +109,57 @@
                             <!-- filter -->
                             @@include('./common/modules/mem-filter.html', {
                                 "url" : "/lg5-common/data-ajax/mypage/membership/my_purchase_history.json",
-                                "wrapTit" : "조회기간",
-                                "inputType" : "radio",
-                                "inputArr" : [
-                                    { "id" : "rdo1-1", "name" : "rdo1", "label" : "전체", "value" : "all", "checked" : "checked" },
-                                    { "id" : "rdo1-2", "name" : "rdo1", "label" : "구매", "value" : "buy", "checked" : "" },
-                                    { "id" : "rdo1-3", "name" : "rdo1", "label" : "취소", "value" : "cancel", "checked" : "" }
-                                ]
+                                "wrapTit" : "조회기간"
                             })
                             <!-- // filter -->
  
                             <!-- 결과값 있을 때 -->
-                            <ul class="svc-prod-list">
-                                <li class="prod01">
-                                    <dl>
-                                        <dt>
-                                            <span class="img"><img src="/lg5-common/images/membership/img-prod01.jpg" alt=""></span>
-                                            <p><span class="blind">제품명</span>LG TROMM ThinQ</p>
-                                            <p class="num"><span class="blind">제품번호</span>A9579I</p>
-                                        </dt>
-                                        <dd>구매수량 : 1</dd>
-                                        <dd><span class="blind">구매처</span>LG BEST SHOP 서초점</dd>
-                                        <dd><span class="blind">구매일</span>2019. 07. 29 구매</dd>
-                                    </dl> 
-                                </li>
-                                <li class="prod02">
-                                    <dl>
-                                        <dt>
-                                            <span class="img"><img src="/lg5-common/images/membership/img-prod02.jpg" alt=""></span>
-                                            <p><span class="blind">제품명</span>LG SIGNATURE 트윈워시</p>
-                                            <p class="num"><span class="blind">제품번호</span>F12WHTS</p>
-                                        </dt>
-                                        <dd>구매수량 : 2</dd>
-                                        <dd><span class="blind">구매처</span>LG BEST SHOP 서초점</dd>
-                                        <dd><span class="blind">구매일</span>2019. 12. 29 구매</dd>
-                                    </dl> 
-                                </li>
-                                <li class="prod03">
-                                    <dl>
-                                        <dt>
-                                            <span class="img"><img src="/lg5-common/images/membership/img-prod03.jpg" alt=""></span>
-                                            <p><span class="blind">제품명</span>LG 올레드 AI ThinQ TV</p>
-                                            <p class="num"><span class="blind">제품번호</span>A9579I</p>
-                                        </dt>
-                                        <dd>구매수량 : 2</dd>
-                                        <dd><span class="blind">구매처</span>LG BEST SHOP 서초점</dd>
-                                        <dd><span class="blind">구매일</span>2019. 11. 29 구매</dd>
-                                    </dl> 
-                                </li>
-                            </ul>
+                            <div class="result-sorting-box">
+                                <div class="sort-select-wrap">
+                                    <select class="ui_selectbox" id="select1" title="결과리스트 정렬 기준 선택">
+                                        <option value="">전체</option>
+                                        <option value="">구매</option>
+                                        <option value="">취소</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="product-list-wrap">
+                                <ul class="product-lists ui_flexible_height">
+                                    @@loop('./common/modules/product-list-loop.html', [
+                                        {
+                                            "liNum" : "prod01",
+                                            "img" : "/lg5-common/images/membership/img-prod01.jpg",
+                                            "name" : "LG TROMM ThinQ",
+                                            "proNum" : "A9579I",
+                                            "info" : [
+                                                "구매수량 : 1",
+                                                "<span class='blind'>구매처</span>LG BEST SHOP 서초점",
+                                                "2019. 07. 30 구매"
+                                            ]
+                                        }, {
+                                            "liNum" : "prod02",
+                                            "img" : "/lg5-common/images/membership/img-prod02.jpg",
+                                            "name" : "LG SIGNATURE 트윈워시",
+                                            "proNum" : "F12WHTS",
+                                            "info" : [
+                                                "구매수량 : 1",
+                                                "<span class='blind'>구매처</span>LG BEST SHOP 서초점",
+                                                "2019. 07. 29 구매"
+                                            ]
+                                        }, {
+                                            "liNum" : "prod03",
+                                            "img" : "/lg5-common/images/membership/img-prod03.jpg",
+                                            "name" : "LG 올레드 AI ThinQ TV",
+                                            "proNum" : "A9579I",
+                                            "info" : [
+                                                "구매수량 : 1",
+                                                "<span class='blind'>구매처</span>LG BEST SHOP 서초점",
+                                                "2019. 07. 29 구매"
+                                            ]
+                                        }
+                                    ])
+                                </ul>
+                            </div>
                             <!-- // 결과값 있을 때 -->
 
                             <!-- 결과값 없을 때 -->

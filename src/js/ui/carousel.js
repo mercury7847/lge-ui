@@ -151,7 +151,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             slidesPerRow: 1,                // rows가 1보다 클 경우 행별 슬라이드 수
             slidesToShow: 1,                // 표시할 슬라이드 수
             slidesToScroll: 1,              // 슬라이딩될 때 한번에 움직일 갯수
-            speed: 800,                     // 슬라이딩 속도
+            speed: 500,                     // 슬라이딩 속도
             swipe: true,                    // 스와이핑 허용 여부
             swipeToSlide: false,            // 사용자가 slidesToScroll과 관계없이 슬라이드로 직접 드래그 또는 스 와이프 할 수 있도록 허용
             touchMove: true,                // 터치로 슬라이드 모션 사용
@@ -1246,8 +1246,24 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     } else {
                         targetLeft = 0;
                     }
+                    
                 } else {
-                    targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+
+                    // 추가 김두일
+                    if(opt.infinite === true){
+                        targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                    }else{
+                        var lastTarget = self.$slideTrack.children('.' + _V.SLIDE).last();
+                        if(targetSlide[0] && (lastTarget[0].offsetLeft - targetSlide[0].offsetLeft + lastTarget.width() < self.listWidth)){  
+                            var dt = self.listWidth - (lastTarget[0].offsetLeft - targetSlide[0].offsetLeft + lastTarget.width());
+                            targetLeft = targetSlide[0]? (targetSlide[0].offsetLeft * -1) + dt : 0;
+                        }else{
+                            targetLeft = targetSlide[0]? targetSlide[0].offsetLeft * -1 : 0;
+                        }
+                    }
+                    // 추가 end
+                    //targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                    
                 }
 
                 if (opt.centerMode === true) {
@@ -1742,6 +1758,17 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             var self = this,
                 opt = self.options;
 
+
+            
+            // 추가
+            // var slidecw = self.$slideTrack.children('.' + _V.SLIDE).children().first().css('width');
+            // self.widthUnit = slidecw.indexOf('%') > 0 ? '%' : 'px';
+            // self.initSlideWidth = self.$slideTrack.children('.' + _V.SLIDE).children().first().width();
+            // self.slideMaxWidth = self.$slideTrack.children('.' + _V.SLIDE).children().first().css('max-width');
+
+
+
+
             self.setPosition();
 
             self.$slideTrack.css({
@@ -2221,6 +2248,29 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     });
                 }
             }
+        
+            // 추가
+            // var paddingleft = parseInt(self.$list.css('padding-left'));
+            // self.$list.css('padding-left', 0);
+
+            // var slidecont = self.$slideTrack.children('.' + _V.SLIDE).children().first();
+            // var maxwidth = parseInt(slidecont.css('max-width'));
+            // var marginleft = parseInt(slidecont.css('margin-left'));
+            // var marginright = parseInt(slidecont.css('margin-right'));
+
+            // var slidew;
+            // if(self.widthUnit == 'px'){
+            //     slidew = self.initSlideWidth;
+            // } else{
+            //     slidew = $('#wrap').width() * (self.initSlideWidth/100);
+            // }
+            // if(slidew == 0) slidew = self.$el.width();
+            // else if(slidew > maxwidth) slidew = maxwidth;
+
+            // self.$slideTrack.children('.' + _V.SLIDE).children().first().width(slidew);
+            // 추가 end
+
+
 
             //self.$slideTrack.css('width', '');
             self.listWidth = self.$list.width();
@@ -2237,6 +2287,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             }
 
             if (opt.variableWidth === false) {
+                
                 var offset = self.$slides.first().outerWidth(true) - self.$slides.first().width();
                 self.$slideTrack.children('.' + _V.SLIDE).width(self.slideWidth - offset);
             }

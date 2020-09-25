@@ -6,9 +6,6 @@
         "product_title":"LG 올레드 갤러리 TV!",
         "product_name":"OLED88ZXKNA?",
         "product_master_price":"1990001",
-        "product_sales_count":"7.1",
-        "product_price":"1853091",
-        "product_ratio":"4.7",
         "product_review_count":"1294",
         "product_notice_description":"온라인에서 구매할 수 없는 제품입니다.",
         "product_badge":[
@@ -36,415 +33,319 @@
             }
         ],
 
-        "product_tab":["benefits","rental"],
+        "product_tab":["benefits", "rental"],
         "product_info":{
             "benefits":{
-                "checked":true,
-                "text":"구매혜택2",
+                "text":"구매혜택",
                 "class":null,
-                "price_info":[
-                    {
-                        "type":"product-benefit-none",
-                        "type_name":null,
-                        "type_text":"할인혜택t1",
-                        "type_popup_text":null,
-                        "type_popup_url":null,
-                        "type_option":[
-                            "회원 할인 <em>3%</em> -59,700원",
-                            "즉시 할인 <em>4%</em> -77,210원"
-                        ]
-                    },
-                    {
-                        "type":"product-benefit-popup",
-                        "type_name":null,
-                        "type_text":"추가혜택",
-                        "type_popup_text":"추가혜택 팝업 열림",
-                        "type_popup_url":"http://www.naver.com",
-                        "type_option":[
-                            "포인트 64,000p",
-                            "캐시백 500,000원"
-                        ]
-                    }
-                ],
-                "sibling_info":[
-                    {
-                        "type":"sibling-color",
-                        "type_name":"sibling-info-color",
-                        "type_text":"색상",
-                        "type_popup_text":null,
-                        "type_popup_html":null,
-                        "type_popup_url":null,
-                        "type_option":[
-                            {
-                                "text":"그레이",
-                                "class":"gray",
-                                "value":"GR",
-                                "checked":true
-                            },
-                            {
-                                "text":"블랙",
-                                "class":"black",
-                                "value":"BK",
-                                "checked":false
+                "content_data": {
+                    "price-info":[
+                        {
+                            "type":"price-area",
+                            "type_text":null,
+                            "type_popup_text":null,
+                            "type_popup_url":null,
+                            "type_option":{
+                                "purchase_price":"19900002",
+                                "reduced_price":"1853092",
+                                "discount_rate":"7.2"
                             }
-                        ]
-                    },
-                    {
-                        "type":"sibling-size",
-                        "type_name":"sibling-info-size",
-                        "type_text":"화면크기",
-                        "type_popup_text":null,
-                        "type_popup_html":null,
-                        "type_popup_url":null,
-                        "type_option":[
-                            {
-                                "text":"1931cm",
-                                "class":"placeholder",
-                                "value":"193",
-                                "checked":true
-                            },
-                            {
-                                "text":"1631cm",
-                                "class":null,
-                                "value":"163",
-                                "checked":false
-                            },
-                            {
-                                "text":"1381cm",
-                                "class":null,
-                                "value":"138",
-                                "checked":false
-                            },
-                            {
-                                "text":"1001cm",
-                                "class":null,
-                                "value":"100",
-                                "checked":false
-                            }
-                        ]         
-                    },
-                    {
-                        "type":"sibling-service",
-                        "type_name":"sibling-info-service",
-                        "type_text":"케어십 서비스",
-                        "type_popup_text":"정수기, 정수기형 냉장고 제품은 정수 수질과 관련된 제품으로 케어십 신청이 필수 선택입니다.",
-                        "type_popup_html":"<span>케어십이란?</span><p>케어십을 신청하시면 케어솔루션 매니저의 전문적인 점검 서비스와 무상 필터 교환 등 다양한 혜택을 받으실 수 있습니다.</p><ul><li>계약기간 : 12 개월</li><li>케어십 비용 : 제품 모델 및 방문주기에 따라 다름.</li></ul><dl><dt>케어십 서비스 내용</dt><dd>필터무상교체</dd><dd>살균서비스</dd><dd>클리닝 서비스</dd></dl><a href=\"#\">보유제품 케어십 확인하기</a><button type=\"button\" class=\"btn-close\"><span class=\"blind\">닫기</span></button>",
-                        "type_popup_url":"",
-                        "type_option":[
-                            {
-                                "text":"신청",
-                                "class":null,
-                                "value":"true",
-                                "checked":true
-                            },
-                            {
-                                "text":"미신청",
-                                "class":null,
-                                "value":"false",
-                                "checked":false
-                            }
-                        ]
-                    },
-                    {
-                        "type":"is-kit",
-                        "type_name":"is-kit-list",
-                        "type_text":"구성품",
-                        "type_popup_text":null,
-                        "type_popup_html":null,
-                        "type_popup_url":null,
-                        "type_option":[
-                            {
-                                "text":"SQ07LAJWAJ(조합 벽걸이)",
-                                "class":null,
-                                "value":null,
-                                "checked":null
-                            },
-                            {
-                                "text":"FQ23LADRBN(스탠드 실외기)",
-                                "class":null,
-                                "value":null,
-                                "checked":null
-                            },
-                            {
-                                "text":"FQ30ADAU(실외기)",
-                                "class":null,
-                                "value":null,
-                                "checked":null
-                            }
-                        ]         
-                    }
-                ]
+                        },
+                        {
+                            "type":"product-benefit-none",
+                            "type_text":"할인혜택t1",
+                            "type_popup_text":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                "회원 할인 <em>3%</em> -59,700원",
+                                "즉시 할인 <em>4%</em> -77,210원"
+                            ]
+                        },
+                        {
+                            "type":"product-benefit-popup",
+                            "type_text":"추가혜택",
+                            "type_popup_text":"추가혜택 팝업 열림",
+                            "type_popup_url":"http://www.naver.com",
+                            "type_option":[
+                                "포인트 64,000p",
+                                "캐시백 500,000원"
+                            ]
+                        }
+                    ],
+                    "sibling-info":[
+                        {
+                            "type":"sibling-color",
+                            "type_text":"색상",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                {
+                                    "text":"그레이",
+                                    "class":"gray",
+                                    "value":"GR",
+                                    "checked":true
+                                },
+                                {
+                                    "text":"블랙",
+                                    "class":"black",
+                                    "value":"BK",
+                                    "checked":false
+                                }
+                            ]
+                        },
+                        {
+                            "type":"sibling-size",
+                            "type_text":"화면크기",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                {
+                                    "text":"1931cm",
+                                    "class":null,
+                                    "value":"193",
+                                    "checked":true
+                                },
+                                {
+                                    "text":"1631cm",
+                                    "class":null,
+                                    "value":"163",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"1381cm",
+                                    "class":null,
+                                    "value":"138",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"1001cm",
+                                    "class":null,
+                                    "value":"100",
+                                    "checked":false
+                                }
+                            ]         
+                        },
+                        {
+                            "type":"sibling-service",
+                            "type_text":"케어십 서비스",
+                            "type_popup_text":"정수기, 정수기형 냉장고 제품은 정수 수질과 관련된 제품으로 케어십 신청이 필수 선택입니다.",
+                            "type_popup_html":"<span>케어십이란?</span><p>케어십을 신청하시면 케어솔루션 매니저의 전문적인 점검 서비스와 무상 필터 교환 등 다양한 혜택을 받으실 수 있습니다.</p><ul class=\"bullet-list\"><li class=\"b-txt\">계약기간 : 12 개월</li><li class=\"b-txt\">케어십 비용 : 제품 모델 및 방문주기에 따라 다름.</li></ul><dl class=\"bullet-list\"><dt class=\"b-tit\">케어십 서비스 내용</dt><dd class=\"b-txt\">필터무상교체</dd><dd class=\"b-txt\">살균서비스</dd><dd class=\"b-txt\">클리닝 서비스</dd></dl><a href=\"#\">보유제품 케어십 확인하기</a><button type=\"button\" class=\"btn-close\"><span class=\"blind\">닫기</span></button>",
+                            "type_popup_url":"",
+                            "type_option":[
+                                {
+                                    "text":"신청",
+                                    "class":null,
+                                    "value":"true",
+                                    "checked":true
+                                },
+                                {
+                                    "text":"미신청",
+                                    "class":null,
+                                    "value":"false",
+                                    "checked":false
+                                }
+                            ]
+                        },
+                        {
+                            "type":"is-kit",
+                            "type_text":"구성품",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                {
+                                    "text":"SQ07LAJWAJ(조합 벽걸이)",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":null
+                                },
+                                {
+                                    "text":"FQ23LADRBN(스탠드 실외기)",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":null
+                                },
+                                {
+                                    "text":"FQ30ADAU(실외기)",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":null
+                                }
+                            ]         
+                        }
+                    ]
+                }
             },
             "rental":{
-                "checked":false,
-                "text":"렌탈 (케어 솔루션)2",
+                "text":"렌탈 (케어 솔루션)",
                 "class":"rental",
-                "price_info":[
-                    {
-                        "type":"product-benefit-none",
-                        "type_name":null,
-                        "type_text":"할인혜택t2",
-                        "type_popup_text":null,
-                        "type_popup_url":null,
-                        "type_option":[
-                            "회원 할인 <em>3%</em> -59,700원",
-                            "즉시 할인 <em>4%</em> -77,210원"
-                        ]
-                    },
-                    {
-                        "type":"product-benefit-popup",
-                        "type_name":null,
-                        "type_text":"추가혜택",
-                        "type_popup_text":"추가혜택 팝업 열림",
-                        "type_popup_url":"http://www.naver.com",
-                        "type_option":[
-                            "포인트 64,000p",
-                            "캐시백 500,000원"
-                        ]
-                    }
-                ],
-                "sibling_info":[
-                    {
-                        "type":"sibling-color",
-                        "type_name":"sibling-info-color",
-                        "type_text":"색상",
-                        "type_popup_text":null,
-                        "type_popup_html":null,
-                        "type_popup_url":null,
-                        "type_option":[
-                            {
-                                "text":"그레이",
-                                "class":"gray",
-                                "value":"GR",
-                                "checked":true
-                            },
-                            {
-                                "text":"블랙",
-                                "class":"black",
-                                "value":"BK",
-                                "checked":false
-                            }
-                        ]
-                    },
-                    {
-                        "type":"sibling-size",
-                        "type_name":"sibling-info-size",
-                        "type_text":"화면크기",
-                        "type_popup_text":null,
-                        "type_popup_html":null,
-                        "type_popup_url":null,
-                        "type_option":[
-                            {
-                                "text":"1931cm",
-                                "class":"placeholder",
-                                "value":"193",
-                                "checked":true
-                            },
-                            {
-                                "text":"1631cm",
-                                "class":null,
-                                "value":"163",
-                                "checked":false
-                            },
-                            {
-                                "text":"1381cm",
-                                "class":null,
-                                "value":"138",
-                                "checked":false
-                            },
-                            {
-                                "text":"1001cm",
-                                "class":null,
-                                "value":"100",
-                                "checked":false
-                            }
-                        ]         
-                    },
-                    {
-                        "type":"sibling-service",
-                        "type_name":"sibling-info-service",
-                        "type_text":"케어십 서비스",
-                        "type_popup_text":"정수기, 정수기형 냉장고 제품은 정수 수질과 관련된 제품으로 케어십 신청이 필수 선택입니다.",
-                        "type_popup_html":"<span>케어십이란?</span><p>케어십을 신청하시면 케어솔루션 매니저의 전문적인 점검 서비스와 무상 필터 교환 등 다양한 혜택을 받으실 수 있습니다.</p><ul><li>계약기간 : 12 개월</li><li>케어십 비용 : 제품 모델 및 방문주기에 따라 다름.</li></ul><dl><dt>케어십 서비스 내용</dt><dd>필터무상교체</dd><dd>살균서비스</dd><dd>클리닝 서비스</dd></dl><a href=\"#\">보유제품 케어십 확인하기</a><button type=\"button\" class=\"btn-close\"><span class=\"blind\">닫기</span></button>",
-                        "type_popup_url":"",
-                        "type_option":[
-                            {
-                                "text":"신청",
-                                "class":null,
-                                "value":"true",
-                                "checked":true
-                            },
-                            {
-                                "text":"미신청",
-                                "class":null,
-                                "value":"false",
-                                "checked":false
-                            }
-                        ]
-                    },
-                    {
-                        "type":"is-kit",
-                        "type_name":"is-kit-list",
-                        "type_text":"구성품",
-                        "type_popup_text":null,
-                        "type_popup_html":null,
-                        "type_popup_url":null,
-                        "type_option":[
-                            {
-                                "text":"SQ07LAJWAJ(조합 벽걸이)",
-                                "class":null,
-                                "value":null,
-                                "checked":null
-                            },
-                            {
-                                "text":"FQ23LADRBN(스탠드 실외기)",
-                                "class":null,
-                                "value":null,
-                                "checked":null
-                            },
-                            {
-                                "text":"FQ30ADAU(실외기)",
-                                "class":null,
-                                "value":null,
-                                "checked":null
-                            }
-                        ]         
-                    }
-                ]
+                "content_data": {
+                    "monthly-payment":[
+                        {
+                            "type":"monthly-payment",
+                            "type_text":"무상할인(2개월)",
+                            "type_popup_text":"월 납부금액",
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_price":"15900",
+                            "type_link_text":"결합하여 더 많은 할인 받기",
+                            "type_link_url":"",
+                            "type_option":[
+                                {
+                                    "text":"1-3년 36,900원",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":false
+                                },
+                                {
+                                    "text":"4-5년 13,900원",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":false
+                                }
+                            ]
+                        }
+                    ],
+                    "sibling-info":[
+                        {
+                            "type":"sibling-color",
+                            "type_text":"색상",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                {
+                                    "text":"그레이",
+                                    "class":"gray",
+                                    "value":"GR",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"블랙",
+                                    "class":"black",
+                                    "value":"BK",
+                                    "checked":true
+                                }
+                            ]
+                        },
+                        {
+                            "type":"sibling-size",
+                            "type_text":"화면크기",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                {
+                                    "text":"1932cm",
+                                    "class":null,
+                                    "value":"193",
+                                    "checked":true
+                                },
+                                {
+                                    "text":"1632cm",
+                                    "class":null,
+                                    "value":"163",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"1382cm",
+                                    "class":null,
+                                    "value":"138",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"1002cm",
+                                    "class":null,
+                                    "value":"100",
+                                    "checked":false
+                                }
+                            ]         
+                        },
+                        {
+                            "type":"sibling-text",
+                            "type_text":"할인등록비",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_price":"210000",
+                            "type_option":null
+                        },
+                        {
+                            "type":"sibling-membership",
+                            "type_text":"가입비(선납)",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_link_text":"가입비 선택",
+                            "type_option":[
+                                {
+                                    "text":"100,000원",
+                                    "class":null,
+                                    "value":"100000",
+                                    "checked":true
+                                },
+                                {
+                                    "text":"200,000원",
+                                    "class":null,
+                                    "value":"200000",
+                                    "checked":false
+                                }
+                            ]         
+                        },
+                        {
+                            "type":"sibling-period",
+                            "type_text":"의무사용기간",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_option":[
+                                {
+                                    "text":"5년",
+                                    "class":null,
+                                    "value":"5",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"4년",
+                                    "class":null,
+                                    "value":"4",
+                                    "checked":false
+                                },
+                                {
+                                    "text":"2~3년",
+                                    "class":null,
+                                    "value":"23",
+                                    "checked":true
+                                }
+                            ]         
+                        },
+                        {
+                            "type":"sibling-card",
+                            "type_text":"제휴카드",
+                            "type_popup_text":null,
+                            "type_popup_html":null,
+                            "type_popup_url":null,
+                            "type_link_text":"제휴카드 선택",
+                            "type_option":[
+                                {
+                                    "text":"최대 23,000원 할인",
+                                    "class":null,
+                                    "value":"23000",
+                                    "checked":true
+                                },
+                                {
+                                    "text":"최대 25,000원 할인",
+                                    "class":null,
+                                    "value":"25000",
+                                    "checked":false
+                                }
+                            ]         
+                        }
+                    ]
+                }
             }
-        },
-
-        "price_info":[
-            {
-                "type":"product-benefit-none",
-                "type_name":null,
-                "type_text":"할인혜택",
-                "type_popup_text":null,
-                "type_popup_url":null,
-                "type_option":[
-                    "회원 할인 <em>3%</em> -59,700원",
-                    "즉시 할인 <em>4%</em> -77,210원"
-                ]
-            },
-            {
-                "type":"product-benefit-popup",
-                "type_name":null,
-                "type_text":"추가혜택",
-                "type_popup_text":"추가혜택 팝업 열림",
-                "type_popup_url":"http://www.naver.com",
-                "type_option":[
-                    "포인트 64,000p",
-                    "캐시백 500,000원"
-                ]
-            }
-        ],
-        "sibling_info":[
-            {
-                "type":"sibling-color",
-                "type_name":"sibling-info-color",
-                "type_text":"색상",
-                "type_popup_text":null,
-                "type_popup_html":null,
-                "type_popup_url":null,
-                "type_option":[
-                    {
-                        "text":"그레이",
-                        "class":"gray",
-                        "value":"GR",
-                        "checked":true
-                    },
-                    {
-                        "text":"블랙",
-                        "class":"black",
-                        "value":"BK",
-                        "checked":false
-                    }
-                ]
-            },
-            {
-                "type":"sibling-size",
-                "type_name":"sibling-info-size",
-                "type_text":"화면크기",
-                "type_popup_text":null,
-                "type_popup_html":null,
-                "type_popup_url":null,
-                "type_option":[
-                    {
-                        "text":"1931cm",
-                        "class":"placeholder",
-                        "value":"193",
-                        "checked":true
-                    },
-                    {
-                        "text":"1631cm",
-                        "class":null,
-                        "value":"163",
-                        "checked":false
-                    },
-                    {
-                        "text":"1381cm",
-                        "class":null,
-                        "value":"138",
-                        "checked":false
-                    },
-                    {
-                        "text":"1001cm",
-                        "class":null,
-                        "value":"100",
-                        "checked":false
-                    }
-                ]         
-            },
-            {
-                "type":"sibling-service",
-                "type_name":"sibling-info-service",
-                "type_text":"케어십 서비스",
-                "type_popup_text":"정수기, 정수기형 냉장고 제품은 정수 수질과 관련된 제품으로 케어십 신청이 필수 선택입니다.",
-                "type_popup_html":"<span>케어십이란?</span><p>케어십을 신청하시면 케어솔루션 매니저의 전문적인 점검 서비스와 무상 필터 교환 등 다양한 혜택을 받으실 수 있습니다.</p><ul><li>계약기간 : 12 개월</li><li>케어십 비용 : 제품 모델 및 방문주기에 따라 다름.</li></ul><dl><dt>케어십 서비스 내용</dt><dd>필터무상교체</dd><dd>살균서비스</dd><dd>클리닝 서비스</dd></dl><a href=\"#\">보유제품 케어십 확인하기</a><button type=\"button\" class=\"btn-close\"><span class=\"blind\">닫기</span></button>",
-                "type_popup_url":"",
-                "type_option":[
-                    {
-                        "text":"신청",
-                        "class":null,
-                        "value":"true",
-                        "checked":true
-                    },
-                    {
-                        "text":"미신청",
-                        "class":null,
-                        "value":"false",
-                        "checked":false
-                    }
-                ]
-            },
-            {
-                "type":"is-kit",
-                "type_name":"is-kit-list",
-                "type_text":"구성품",
-                "type_popup_text":null,
-                "type_popup_html":null,
-                "type_popup_url":null,
-                "type_option":[
-                    {
-                        "text":"SQ07LAJWAJ(조합 벽걸이)",
-                        "class":null,
-                        "value":null,
-                        "checked":null
-                    },
-                    {
-                        "text":"FQ23LADRBN(스탠드 실외기)",
-                        "class":null,
-                        "value":null,
-                        "checked":null
-                    },
-                    {
-                        "text":"FQ30ADAU(실외기)",
-                        "class":null,
-                        "value":null,
-                        "checked":null
-                    }
-                ]         
-            }
-        ]
+        }
     }
 }

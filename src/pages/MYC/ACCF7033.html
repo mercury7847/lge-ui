@@ -43,7 +43,7 @@
                             </div>
                             <!-- 검색결과/소팅결과 있을 때 -->
                             <div class="product-list-wrap">
-                                <ul class="product-lists">
+                                <ul class="product-lists ui_flexible_height">
                                     @@loop('./common/modules/product-list-loop.html', [
                                         {
                                             "img" : "/lg5-common/images/MYC/@thumb.png",
@@ -197,7 +197,6 @@
         </div>
         
         @@include('./common/footer.html')
-        <script src="/lg5-common/js/mypage/membership/membership.js"></script>
         <script>
             $(function(){
                 vcui.require(['ui/carousel'], function () {

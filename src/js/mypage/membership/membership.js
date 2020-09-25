@@ -7,16 +7,16 @@
         return str.replace(/(\d{2,3})(\d{3,4})(\d{4})/gi,'$1-$2-$3');
     }
 */
-
     var listItemTemplate =
-                '<li class={{liClass}}">'+
+                '<li class="lists {{liClass}}">'+
                 '<dl><dt><span class="img"><img src="{{modelImageAddr}}" alt="{{modelName}}"></span>'+
-                '<p><span class="blind">제품명</span>{{modelName}}</p>'+
+                '<p class="name"><span class="blind">제품명</span>{{modelName}}</p>'+
                 '<p class="num"><span class="blind">제품번호</span>{{modelNumber}}</p></dt>'+
-                '<dd>구매수량 : {{purchaseQuantity}}</dd>'+
-                '<dd><span class="blind">구매처</span>{{purchaseStore}}</dd>'+
-                '<dd><span class="blind">구매일</span>{{purchaseDate}} 구매</dd>'+
-                '</dl></li>';
+                '<dd><ul class="infos">'+
+                '<li>구매수량 : {{purchaseQuantity}}</li>'+
+                '<li><span class="blind">구매처</span>{{purchaseStore}}</li>'+
+                '<li>{{purchaseDate}} 구매</li>'+
+                '</ul></dd></dl></li>';
 
     function searchPurchaseHistory(param) {
         var ajaxUrl = self.$dateFilter.data('url');
@@ -35,7 +35,6 @@
 
             self.$dateFilter.find('input[name="rdo1"][value="'+param.purchaseType+'"]').prop('checked', true);
 
-
             var contentHtml = "";
 
             var data = d.data;
@@ -52,7 +51,7 @@
             } else {
                 self.$dateFilter.siblings('div.no-data').show();
             }
-            self.$dateFilter.siblings('ul.svc-prod-list').html(contentHtml);
+            self.$productList.html(contentHtml);
         }).fail(function(d){
             alert(d.status + '\n' + d.statusText);
         });
@@ -61,9 +60,11 @@
     $(window).ready(function() {
         var myMembership = {
             init: function() {
-                self.$dateFilter = $('.cont-box .form-wrap');
+                self.$dateFilter = $('div.cont-box div.form-wrap');
                 self.$dateFilterStartDate = self.$dateFilter.find('#uc-start');
                 self.$dateFilterEndDate = self.$dateFilter.find('#uc-end');
+                self.$productList = $('div.cont-box div.product-list-wrap ul.product-lists');
+
 
                 vcui.require(["ui/tooltipTarget"], function () {
                     $('.ui_tooltip-target').vcTooltipTarget({"tooltip":".tooltip-box"});

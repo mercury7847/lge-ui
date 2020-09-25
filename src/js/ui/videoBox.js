@@ -85,8 +85,6 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
         },
 
         pause: function(){
-            console.log("GGG");
-            console.log(self)
             self.$video.pause();
         }
     });

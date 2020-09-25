@@ -59,6 +59,46 @@
             @include font-family($font-bold);
         }
     }
+    $color: (lightgray, dark, black, white);
+	@each $bg in $color {
+		&.bg-#{$bg} {
+			@if $bg == lightgray {
+				background-color: #f4f4f4;
+			} @else if $bg == dark {
+				background-color: #333;
+                &.block1 .unit-list .title *,
+                &.block2 .unit-list .title *,
+                &.block3 .unit-list .title *,
+                &.block1 .unit-list .text,
+                &.block2 .unit-list .text,
+                &.block3 .unit-list .text {
+                    color:#fff;
+                }
+                .link-text.ico-right {
+                    border-color:#fff;
+                    color:#fff;
+                    &:after {
+                        border-color:#fff;
+                    }
+				}
+			} @else if $bg == black {
+                background-color: #000;
+                &.block1 .unit-list .title *,
+                &.block1 .unit-list .text {
+                    color:#fff;
+                }
+                .link-text.ico-right {
+                    border-color:#fff;
+                    color:#fff;
+                    &:after {
+                        border-color:#fff;
+                    }
+				}
+			} @else if $bg == white {
+				background-color: #fff;
+			}
+		}
+	}
 }
 
 $block: (block1, block2, block3);

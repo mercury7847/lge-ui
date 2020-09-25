@@ -8,13 +8,17 @@
             <div class="process-info">
                 <div class="info-box">
                     <p>선택하신 제품은 케어십이 필요한 제품입니다.</p>
-                    <ul>
+                    <ul class="process-list">
                         <li><span>케어십 신청</span></li>
                         <li><span>제품주문</span></li>
                         <li><span>완료</span></li>
                     </ul>
                 </div>
-                <p class="desc">케어십은 친절한 케어매니저가 주기적으 로 방문하여 관리해 드립니다.</p>
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "케어십은 친절한 케어매니저가 주기적으로 방문하여 관리해 드립니다."
+                    ]
+                })
             </div>
         </div>
     </section>

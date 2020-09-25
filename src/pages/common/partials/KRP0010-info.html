@@ -1,7 +1,7 @@
 <!-- components/partials/KRP0010-info.html -->
 
 <div class="pdp-info-area">
-    <div class="product-detail-info">
+    <div class="product-detail-info" data-url-detail="/lg5-common/data-ajax/pdp/product_detail.json">
         <div class="info-top">
             <div class="product-wish">
                 <span class="chk-wrap">
@@ -78,7 +78,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="sibling-info" data-url-detail="/lg5-common/data-ajax/pdp/product_detail.json">
+            <div class="sibling-info">
                 <div class="sibling-color">
                     <div class="text">색상 : 그레이</div>
                     <div class="select-option radio color">
@@ -99,7 +99,7 @@
                     <div class="select-option select size">
                         <div class="select-wrap">
                             <select class="ui_selectbox" id="select1" title="사이즈 선택">
-                                <option value="" class="placeholder">193cm</option>
+                                <option value="">193cm</option>
                                 <option value="">193cm</option>
                                 <option value="">163cm</option>
                                 <option value="">138cm</option>
@@ -211,7 +211,7 @@
                         <div class="select-option select size">
                             <div class="select-wrap">
                                 <select class="ui_selectbox" id="select2" title="사이즈 선택">
-                                    <option value="" class="placeholder">193cm</option>
+                                    <option value="">193cm</option>
                                     <option value="">193cm</option>
                                     <option value="">163cm</option>
                                     <option value="">138cm</option>
@@ -246,18 +246,20 @@
             </div>
             <div class="option-contents rental" id="tab2">
                 <div class="monthly-payment">
-                    <div class="text">
-                        <span>월 납부금액</span>
-                        <a href="#" class="btn-modal"><span class="blind">월 납부금액 팝업 열림</span></a>
+                    <div class="inner">
+                        <div class="text">
+                            <span>월 납부금액</span>
+                            <a href="#" class="btn-modal"><span class="blind">월 납부금액 팝업 열림</span></a>
+                        </div>
+                        <div class="payment-info">
+                            <div class="price">13,900원<span>무상할인(2개월)</span></div>
+                            <ul class="info-list">
+                                <li>1-3년 36,900원</li>
+                                <li>4-5년 13,900원</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="btn bd-pink btn-small">결합하여 더 많은 할인 받기</a>
                     </div>
-                    <div class="payment-info">
-                        <div class="price">13,900원<span>무상할인(2개월)</span></div>
-                        <ul class="info-list">
-                            <li>1-3년 36,900원</li>
-                            <li>4-5년 13,900원</li>
-                        </ul>
-                    </div>
-                    <a href="#" class="btn bd-pink btn-small">결합하여 더 많은 할인 받기</a>
                 </div>
                 <div class="sibling-info">
                     <div class="sibling-color">
@@ -280,7 +282,7 @@
                         <div class="select-option select size">
                             <div class="select-wrap">
                                 <select class="ui_selectbox" id="select3" title="사이즈 선택">
-                                    <option value="" class="placeholder">193cm</option>
+                                    <option value="">193cm</option>
                                     <option value="">193cm</option>
                                     <option value="">163cm</option>
                                     <option value="">138cm</option>
@@ -298,7 +300,7 @@
                         <div class="select-option select membership">
                             <div class="select-wrap">
                                 <select class="ui_selectbox" id="select4" title="가입비 선택">
-                                    <option value="" class="placeholder">100,000원</option>
+                                    <option value="">100,000원</option>
                                 </select>
                             </div>
                         </div>
@@ -327,7 +329,7 @@
                         <div class="select-option select card">
                             <div class="select-wrap">
                                 <select class="ui_selectbox" id="select5" title="제휴카드 선택">
-                                    <option value="" class="placeholder">최대 23,000원 할인</option>
+                                    <option value="">최대 23,000원 할인</option>
                                 </select>
                             </div>
                         </div>
