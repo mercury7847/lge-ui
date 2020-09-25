@@ -90,14 +90,15 @@
                             color:$color-1;
                             font-size:14px;
                             line-height:20px;
+                            small {
+                                display:block;
+                                color:#616161;
+                            }
                             @include mobile {
                                 font-size:12px;
                                 line-height:16px;
                             }
                         }
-                    }
-                    &.ex {
-                        color:#616161;
                     }
                 }
                 .btn-del {
