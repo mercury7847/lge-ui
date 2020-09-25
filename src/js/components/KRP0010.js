@@ -23,8 +23,6 @@ $(window).ready(function(){
             self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual').first();
             self.$detailInfo =  $('div.pdp-wrap div.pdp-info-area div.product-detail-info').first();
             self.$detailOption = self.$detailInfo.find('div.product-detail-option').first();
-            //self.$priceInfo = self.$detailInfo.find('div.product-detail-option div.price-info').first();
-            //self.$sibilingInfo = self.$priceInfo.siblings('div.sibling-info').first();
 
             //this.bindEvents();
             this.requestDetailData();
@@ -121,18 +119,8 @@ $(window).ready(function(){
                 target.html(target.children());
                 target.append("(" + vcui.number.addComma(data.product_review_count) + "개)");
 
-                //가격
-                /*
-                target = self.$priceInfo.find('div.discount-rate span.price');
-                target.html(data.product_sales_count +'<em>%</em>');
-                target = self.$priceInfo.find('div.purchase-price span.price');
-                target.html(vcui.number.addComma(data.product_master_price) +'<em>원</em>');
-                target = self.$priceInfo.find('div.reduced-price span.price');
-                target.html(vcui.number.addComma(data.product_price) +'<em>원</em>');
-                */
-
-                //tab check
-                //self.$detailOption.children('div:not(.option-tabs)').remove();
+                //탭 갯수 체크
+                self.$detailOption.children('div:not(.option-tabs)').remove();
                 var tabArr = data.product_tab instanceof Array ? data.product_tab : [(Object.keys(data.product_info)[0])];
                 if(tabArr.length > 1) {
                     var tabs = self.$detailOption.find('.option-tabs').show();
@@ -141,7 +129,7 @@ $(window).ready(function(){
                     var optionContents = '';
                     tabArr.forEach(function(item, index) {               
                         var tabData = data.product_info[item];
-                        contentHtml += '<li role="presentation"><a href="#' + item +'" role="tab" aria-controls="' + item + '">' + tabData.text + (tabData.checked ? '<em class="blind">선택됨</em>':'') +'</a></li>';
+                        contentHtml += '<li><a href="#' + item +'">' + tabData.text + '</a></li>';
                         optionContents +=  ('<div class="option-contents ' + (tabData.class?tabData.class:'') + '" id="' + item + '"></div>');
                     });
                     tabs.find('div.ui_tab ul.tabs').html(contentHtml);
@@ -247,8 +235,8 @@ $(window).ready(function(){
                                 '<div class="select-option radio color"><div class="option-list" role="radiogroup">';
                             itemArr.forEach(function(option_item, index) {
                                 contentHtml += ('<div role="radio" class="chk-wrap-colorchip ' + option_item.class + '" title="' + option_item.text + '">' +
-                                    '<input type="radio" id="' + item.type_name + index + '" name="' + item.type_name + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
-                                    '<label for="' + item.type_name + index +'"><span class="blind">' + option_item.text  + '</span></label></div>');
+                                    '<input type="radio" id="' + item.type + index + '" name="' + item.type + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
+                                    '<label for="' + item.type + index +'"><span class="blind">' + option_item.text  + '</span></label></div>');
                             });
                             contentHtml += '</div></div></div>';
                             self.$sibilingInfo.append(contentHtml);                    
@@ -257,13 +245,13 @@ $(window).ready(function(){
                             contentHtml = '<div class="sibling-size">' +
                                 '<div class="text">' + item.type_text + '</div>' +
                                 '<div class="select-option select size"><div class="select-wrap">' +
-                                '<select class="ui_selectbox ' + item.type_name + '" id="' + item.type_name + '" title="' + item.type_text + '">';
+                                '<select class="ui_selectbox ' + item.type + '" id="' + item.type + '" title="' + item.type_text + '">';
                             itemArr.forEach(function(option_item, index) {
                                 contentHtml += ('<option value="' + option_item.value + '" class="' + (option_item.class?option_item.class:'') + '">' + option_item.text + '</option>');
                             });
                             contentHtml += '</select></div></div></div>';
                             self.$sibilingInfo.append(contentHtml);
-                            self.$sibilingInfo.find('.'+ item.type_name).vcSelectbox('update');
+                            self.$sibilingInfo.find('.'+ item.type).vcSelectbox('update');
                             break;
                         case "sibling-service":
                             contentHtml = '<div class="sibling-service">' +
@@ -273,8 +261,8 @@ $(window).ready(function(){
                                 '<div class="select-option radio service"><div class="option-list" role="radiogroup">';
                             itemArr.forEach(function(option_item, index) {
                                 contentHtml += ('<div role="radio" class="rdo-wrap">' +
-                                    '<input type="radio" id="' + item.type_name + index + '" name="' + item.type_name + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
-                                    '<label for="' + item.type_name + index +'">' + option_item.text  + '</label></div>');
+                                    '<input type="radio" id="' + item.type + index + '" name="' + item.type + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
+                                    '<label for="' + item.type + index +'">' + option_item.text  + '</label></div>');
                             });
                             contentHtml += ('</div></div><div class="service-desc">' + item.type_popup_text + '</div></div>');
                             self.$sibilingInfo.append(contentHtml);
@@ -293,7 +281,7 @@ $(window).ready(function(){
                     
                     //contentHtml += itemHtml;
                     //self.$sibilingInfo.append(itemHtml);
-                    //$('.'+ item.type_name).vcSelectbox();
+                    //$('.'+ item.type).vcSelectbox();
                 });
                 */
 
@@ -314,11 +302,12 @@ $(window).ready(function(){
         },
 
         makeContentOptionHtml: function(dataArry, idPrefix) {
-            console.log(idPrefix);
             var returnHtml = '', contentHtml = '';
             var itemArr;
             var arr = dataArry instanceof Array ? dataArry : [];
             arr.forEach(function(item, index) {
+                item.id = (idPrefix + item.type);
+                item.type_price = vcui.number.addComma(item.type_price);
                 contentHtml = '';
                 var type_option = item.type_option;
                 itemArr = type_option instanceof Array ? item.type_option : [];
@@ -330,6 +319,15 @@ $(window).ready(function(){
                             '<div class="reduced-price"><em class="blind">최대 혜택가격</em><span class="price">{{reduced_price}}<em>원</em></span></div></div>';
                         contentHtml = vcui.template(template,{"purchase_price":vcui.number.addComma(type_option.purchase_price),
                             "reduced_price":vcui.number.addComma(type_option.reduced_price), "discount_rate":vcui.number.addComma(type_option.discount_rate)});
+                        break;
+                    case "monthly-payment":
+                        var template = '<div class="inner"><div class="text"><span>{{type_popup_text}}</span>' + 
+                            '<a href="#" class="btn-modal"><span class="blind">{{type_popup_text}} 팝업 열림</span></a></div>' +
+                            '<div class="payment-info"><div class="price">{{type_price}}원<span>{{type_text}}</span></div>' +
+                            '<ul class="info-list">{{#each item in type_option}}<li>{{item.text}}</li>{{/each}}</ul></div>' + 
+                            '<a href="#" class="btn bd-pink btn-small">{{type_link_text}}</a></div>';
+                        //item.type_price = vcui.number.addComma(item.type_price);
+                        contentHtml = vcui.template(template,item);
                         break;
                     case "product-benefit-none":
                         contentHtml = '<div class="product-benefit"><div class="title">'+ item.type_text + '</div><ul>';
@@ -347,49 +345,83 @@ $(window).ready(function(){
                         contentHtml += '</ul></div>';
                         break;
                     case "sibling-color":
-                        contentHtml = '<div class="sibling-color">' +
-                            '<div class="text">' + item.type_text + '</div>' +
-                            '<div class="select-option radio color"><div class="option-list" role="radiogroup">';
-                        itemArr.forEach(function(option_item, index) {
-                            contentHtml += ('<div role="radio" class="chk-wrap-colorchip ' + option_item.class + '" title="' + option_item.text + '">' +
-                                '<input type="radio" id="' + idPrefix + item.type_name + index + '" name="' + idPrefix + item.type_name + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
-                                '<label for="' + idPrefix + item.type_name + index +'"><span class="blind">' + option_item.text  + '</span></label></div>');
-                        });
-                        contentHtml += '</div></div></div>';
+                        var template = '<div class="sibling-color"><div class="text">{{type_text}}</div>' +
+                            '<div class="select-option radio color"><div class="option-list" role="radiogroup">' +
+                            '{{#each (item, index) in type_option}}' +
+                            '<div role="radio" class="chk-wrap-colorchip {{item.class}}" title="{{item.text}}">' +
+                            '<input type="radio" id="{{id}}{{index}}" name="{{id}}" value="{{item.value}}" {{#if item.checked}}checked{{/if}}>' +
+                            '<label for="{{id}}{{index}}"><span class="blind">{{item.text}}</span></label></div>' +
+                            '{{/each}}</div></div></div>'
+                        contentHtml = vcui.template(template,item);
                         break;
                     case "sibling-size":
-                        contentHtml = '<div class="sibling-size">' +
-                            '<div class="text">' + item.type_text + '</div>' +
-                            '<div class="select-option select size"><div class="select-wrap">' +
-                            '<select class="ui_selectbox ' + item.type_name + '" id="' + idPrefix + item.type_name + '" title="' + item.type_text + '">';
-                        itemArr.forEach(function(option_item, index) {
-                            contentHtml += ('<option value="' + option_item.value + '">' + option_item.text + '</option>');
-                        });
-                        contentHtml += '</select></div></div></div>';
-                        //self.$sibilingInfo.append(contentHtml);
-                        //self.$sibilingInfo.find('.'+ item.type_name).vcSelectbox('update');
+                        var template = '<div class="sibling-size"><div class="text">{{type_text}}</div>' +
+                            '<div class="select-option select size"><div class="select-wrap"><select class="ui_selectbox" id="{{id}}" title="{{type_text}}">' +
+                            '{{#each item in type_option}}' +
+                            '<option value="{{item.value}}">{{item.text}}</option>' +
+                            '{{/each}}</select></div></div></div>'
+                        contentHtml = vcui.template(template,item);
+                        //self.$sibilingInfo.find('.'+ item.type).vcSelectbox('update');
                         break;
                     case "sibling-service":
+                        //{{type_popup_html}}
+                        var template = '<div class="sibling-service"><div class="text"><span>{{type_text}}</span>' +
+                            '<div class="tooltip-wrap"><span class="tooltip-icon ui_tooltip-target">자세히 보기</span>' +
+                            '<span class="tooltip-box">{{#raw type_popup_html}}</span></div></div>' +
+                            '<div class="select-option radio service"><div class="option-list" role="radiogroup">' +
+                            '{{#each (item, index) in type_option}}' +
+                            '<div role="radio" class="rdo-wrap">' +
+                            '<input type="radio" id="{{id}}{{index}}" name="{{id}}" value="{{item.value}}" {{#if item.checked}}checked{{/if}}>' +
+                            '<label for="{{id}}{{index}}">{{item.text}}</label></div>' +
+                            '{{/each}}' +
+                            '</div></div><div class="service-desc">{{type_popup_text}}</div></div>';
+                        contentHtml = vcui.template(template,item);
+
+                        /*
                         contentHtml = '<div class="sibling-service">' +
                             '<div class="text"><span>'+ item.type_text + '</span>' +
                             '<div class="tooltip-wrap"><span class="tooltip-icon ui_tooltip-target">자세히 보기</span>' +
                             '<span class="tooltip-box">' + item.type_popup_html + '</span></div></div>' + 
+
                             '<div class="select-option radio service"><div class="option-list" role="radiogroup">';
                         itemArr.forEach(function(option_item, index) {
                             contentHtml += ('<div role="radio" class="rdo-wrap">' +
-                                '<input type="radio" id="' + idPrefix + item.type_name + index + '" name="' + idPrefix + item.type_name + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
-                                '<label for="' + idPrefix + item.type_name + index +'">' + option_item.text  + '</label></div>');
+                                '<input type="radio" id="' + idPrefix + item.type + index + '" name="' + idPrefix + item.type + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
+                                '<label for="' + idPrefix + item.type + index +'">' + option_item.text  + '</label></div>');
                         });
                         contentHtml += ('</div></div><div class="service-desc">' + item.type_popup_text + '</div></div>');
-                        //self.$sibilingInfo.append(contentHtml);
+                        */
+                        break;
+                    case "sibling-text":
+                        var template = '<div class="sibling-text"><div class="text">{{type_text}}</div><div class="price">{{type_price}}원</div></div>';
+                        //item.type_price = vcui.number.addComma(item.type_price);
+                        contentHtml = vcui.template(template,item);
+                        break;
+                    case "sibling-membership":
+                        var template = '<div class="sibling-select"><div class="text">{{type_text}}</div><div class="select-option select membership">' +
+                            '<div class="select-wrap"><select class="ui_selectbox" id="{{id}}" title="{{type_link_text}}">' +
+                            '{{#each item in type_option}}<option value="{{item.value}}">{{item.text}}</option>{{/each}}' +
+                            '</select></div></div></div>';
+                        contentHtml = vcui.template(template,item);
+                        break;
+                    case "sibling-card":
+                        var template = '<div class="sibling-select"><div class="text">{{type_text}}</div><div class="select-option select card">' +
+                            '<div class="select-wrap"><select class="ui_selectbox" id="{{id}}" title="{{type_link_text}}">' +
+                            '{{#each item in type_option}}<option value="{{item.value}}">{{item.text}}</option>{{/each}}' +
+                            '</select></div></div></div>';
+                        contentHtml = vcui.template(template,item);
+                        break;
+                    case "sibling-period":
+                        var template = '<div class="sibling-text"><div class="text">{{type_text}}</div>' +
+                            '<div class="select-option radio use-period"><div class="option-list" role="radiogroup">' +
+                            '{{#each (item, index) in type_option}}<div class="rdo-wrap"><input type="radio" id="{{id}}{{index}}" name="{{id}}" value="{{item.value}}" {{#if item.checked}}checked{{/if}}><label for="{{id}}{{index}}">{{item.text}}</label></div>{{/each}}' +
+                            '</div></div></div>';
+                        contentHtml = vcui.template(template,item);
                         break;
                     case "is-kit":
-                        contentHtml = '<div class="is-kit"><div class="text">'+ item.type_text + '</div><ul class="kit-list">'
-                        itemArr.forEach(function(option_item, index) {
-                            contentHtml += ('<li>' + option_item.text + '</li>');
-                        });
-                        contentHtml += '</ul</div></div>';
-                        //self.$sibilingInfo.append(contentHtml);
+                        var template = '<div class="is-kit"><div class="text">{{type_text}}</div><ul class="kit-list">' + 
+                            '{{#each item in type_option}}<li>{{item.text}}</li>{{/each}}</ul></div>';
+                        contentHtml = vcui.template(template,item);
                         break;
                     default:
                         break;
