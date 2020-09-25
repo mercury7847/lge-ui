@@ -23,8 +23,8 @@ $(window).ready(function(){
             self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual').first();
             self.$detailInfo =  $('div.pdp-wrap div.pdp-info-area div.product-detail-info').first();
             self.$detailOption = self.$detailInfo.find('div.product-detail-option').first();
-            self.$priceInfo = self.$detailInfo.find('div.product-detail-option div.price-info').first();
-            self.$sibilingInfo = self.$priceInfo.siblings('div.sibling-info').first();
+            //self.$priceInfo = self.$detailInfo.find('div.product-detail-option div.price-info').first();
+            //self.$sibilingInfo = self.$priceInfo.siblings('div.sibling-info').first();
 
             //this.bindEvents();
             this.requestDetailData();
@@ -63,7 +63,7 @@ $(window).ready(function(){
         },
 
         requestDetailData: function(param) {
-            var ajaxUrl = self.$sibilingInfo.data('url-detail');
+            var ajaxUrl = self.$detailInfo.data('url-detail');
     
             $.ajax({
                 url: ajaxUrl,
@@ -112,60 +112,83 @@ $(window).ready(function(){
                 target = self.$detailInfo.find('div.review-info div.star')
                 if(data.product_review_count > 0) {
                     target.addClass('is-review');
+                    target.find('span.blind').text('리뷰있음');
                 } else {
                     target.removeClass('is-review');
+                    target.find('span.blind').text('리뷰없음');
                 }
                 target = self.$detailInfo.find('div.review-info div.review-count');
                 target.html(target.children());
                 target.append("(" + vcui.number.addComma(data.product_review_count) + "개)");
 
                 //가격
+                /*
                 target = self.$priceInfo.find('div.discount-rate span.price');
                 target.html(data.product_sales_count +'<em>%</em>');
                 target = self.$priceInfo.find('div.purchase-price span.price');
                 target.html(vcui.number.addComma(data.product_master_price) +'<em>원</em>');
                 target = self.$priceInfo.find('div.reduced-price span.price');
                 target.html(vcui.number.addComma(data.product_price) +'<em>원</em>');
+                */
 
-                self.$detailOption.children('div:not(.option-tabs)').remove();
                 //tab check
-                KRP0010.makeContentOptionHtml([]);
+                //self.$detailOption.children('div:not(.option-tabs)').remove();
                 var tabArr = data.product_tab instanceof Array ? data.product_tab : [(Object.keys(data.product_info)[0])];
                 if(tabArr.length > 1) {
                     var tabs = self.$detailOption.find('.option-tabs').show();
                     //탭영역 만들기
                     contentHtml = '';
-                    var tabContents = '';
+                    var optionContents = '';
                     tabArr.forEach(function(item, index) {               
                         var tabData = data.product_info[item];
                         contentHtml += '<li role="presentation"><a href="#' + item +'" role="tab" aria-controls="' + item + '">' + tabData.text + (tabData.checked ? '<em class="blind">선택됨</em>':'') +'</a></li>';
-                        tabContents +=  ('<div class="option-contents ' + (tabData.class?tabData.class:'') + '" id="' + item + '"></div>');
+                        optionContents +=  ('<div class="option-contents ' + (tabData.class?tabData.class:'') + '" id="' + item + '"></div>');
                     });
                     tabs.find('div.ui_tab ul.tabs').html(contentHtml);
-                    tabs.after(tabContents);
+                    tabs.after(optionContents);
                     
-                    //탭콘텐츠내용 영역만들기
+                    //탭콘텐츠
                     tabArr.forEach(function(item, index) {
-                        tabContents = '';
-                        var tabContent = self.$detailOption.find('#'+item);
+                        //탭콘텐츠 세부영역 만들기
+                        var tabContent = '';
+                        var tabContentArea = self.$detailOption.find('#'+item);
                         var contentData = data.product_info[item].content_data;
                         var keys = Object.keys(contentData);
                         keys.forEach(function(key, index) {
-                            tabContents += ('<div class="' + key + '"></div>');
-                            contentsResult = KRP0010.makeContentOptionHtml(contentData[key]);
+                            tabContent += ('<div class="' + key + '"></div>');
                         });
-                        tabContent.html(tabContents);
+                        tabContentArea.html(tabContent);
 
+                        //탭콘텐츠내용 만들기
                         var contentsResult = '';
                         keys.forEach(function(key, index) {
-                            contentsResult = KRP0010.makeContentOptionHtml(contentData[key]);
-                            tabContent.find('div.'+ key).html(contentsResult);
+                            contentsResult = KRP0010.makeContentOptionHtml(contentData[key], item+'_'+key+'_');
+                            tabContentArea.find('div.'+ key).html(contentsResult);
                         });
                     });
                 } else {
                     //1개일 경우에는 탭영역을 만들지 않는다
                     self.$detailOption.find('.option-tabs').hide();
                     self.$detailOption.find('.option-contents').remove();
+                    
+                    //탭콘텐츠
+                    var item = tabArr[0];
+                    //탭콘텐츠 세부영역 만들기
+                    var tabContent = '';
+                    var tabContentArea = self.$detailOption;
+                    var contentData = data.product_info[item].content_data;
+                    var keys = Object.keys(contentData);
+                    keys.forEach(function(key, index) {
+                        tabContent += ('<div class="' + key + '"></div>');
+                    });
+                    tabContentArea.html(tabContent);
+
+                    //탭콘텐츠내용 만들기
+                    var contentsResult = '';
+                    keys.forEach(function(key, index) {
+                        contentsResult = KRP0010.makeContentOptionHtml(contentData[key], item+'_'+key+'_');
+                        tabContentArea.find('div.'+ key).html(contentsResult);
+                    });
                 }
 
                 //soldout등 알리고 싶은 메세지
@@ -173,14 +196,13 @@ $(window).ready(function(){
                     self.$detailOption.append('<div class="display-product desc"><span>' + data.product_notice_description + '</span></div>');
                 }
 
-                /*
-                //soldout등 알리고 싶은 메세지
-                target = self.$detailInfo.find('div.product-detail-option div.display-product span');
-                //contentHtml = data.product_notice_description ? data.product_notice_description : '';
-                target.html(data.product_notice_description);
-                */
+                self.$detailOption.find('.ui_selectbox').vcSelectbox('update');
+                vcui.require(["ui/tooltipTarget"], function () {
+                    self.$detailOption.find('.ui_tooltip-target').vcTooltipTarget({"type":"click","tooltip":".tooltip-box"});
+                });
 
                 //혜택정보
+                /*
                 self.$priceInfo.children("div:not(.price-area)").remove();
                 var arr = data.price_info instanceof Array ? data.price_info : [];
                 //var itemHtml, itemArr;
@@ -207,11 +229,13 @@ $(window).ready(function(){
 
                     //contentHtml += itemHtml;
                 });
+                */
 
                 //self.$priceInfo.children("div:not(.price-area)").remove();
                 //self.$priceInfo.append(contentHtml);
                 
                 //옵션
+                /*
                 self.$sibilingInfo.empty();
                 arr = data.sibling_info instanceof Array ? data.sibling_info : [];
                 arr.forEach(function(item, index) {
@@ -271,11 +295,14 @@ $(window).ready(function(){
                     //self.$sibilingInfo.append(itemHtml);
                     //$('.'+ item.type_name).vcSelectbox();
                 });
+                */
 
+                /*
                 vcui.require(["ui/tooltipTarget"], function () {
                     var tooltip = self.$sibilingInfo.find('div.sibling-service').find('.ui_tooltip-target');
                     tooltip.vcTooltipTarget({"type":"click","tooltip":".tooltip-box"});
                 });
+*/
 
                 //$("input:radio[name='sibling-info-color']:radio[value='GR']").prop('checked', true); 
                 //self.$sibilingInfo.append(contentHtml);
@@ -286,14 +313,24 @@ $(window).ready(function(){
             });
         },
 
-        makeContentOptionHtml: function(dataArry) {
+        makeContentOptionHtml: function(dataArry, idPrefix) {
+            console.log(idPrefix);
             var returnHtml = '', contentHtml = '';
             var itemArr;
             var arr = dataArry instanceof Array ? dataArry : [];
             arr.forEach(function(item, index) {
                 contentHtml = '';
-                itemArr = item.type_option instanceof Array ? item.type_option : [];
+                var type_option = item.type_option;
+                itemArr = type_option instanceof Array ? item.type_option : [];
                 switch(item.type) {
+                    case "price-area":
+                        var template = '<div class="price-area"><div class="product-price">' +
+                            '<div class="discount-rate"><em class="blind">할인율</em><span class="price">{{discount_rate}}<em>%</em></span></div>' +
+                            '<div class="purchase-price"><em class="blind">판매가격</em><span class="price">{{purchase_price}}<em>원</em></span></div></div>' +
+                            '<div class="reduced-price"><em class="blind">최대 혜택가격</em><span class="price">{{reduced_price}}<em>원</em></span></div></div>';
+                        contentHtml = vcui.template(template,{"purchase_price":vcui.number.addComma(type_option.purchase_price),
+                            "reduced_price":vcui.number.addComma(type_option.reduced_price), "discount_rate":vcui.number.addComma(type_option.discount_rate)});
+                        break;
                     case "product-benefit-none":
                         contentHtml = '<div class="product-benefit"><div class="title">'+ item.type_text + '</div><ul>';
                         itemArr.forEach(function(item, index) {
@@ -315,8 +352,8 @@ $(window).ready(function(){
                             '<div class="select-option radio color"><div class="option-list" role="radiogroup">';
                         itemArr.forEach(function(option_item, index) {
                             contentHtml += ('<div role="radio" class="chk-wrap-colorchip ' + option_item.class + '" title="' + option_item.text + '">' +
-                                '<input type="radio" id="' + item.type_name + index + '" name="' + item.type_name + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
-                                '<label for="' + item.type_name + index +'"><span class="blind">' + option_item.text  + '</span></label></div>');
+                                '<input type="radio" id="' + idPrefix + item.type_name + index + '" name="' + idPrefix + item.type_name + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
+                                '<label for="' + idPrefix + item.type_name + index +'"><span class="blind">' + option_item.text  + '</span></label></div>');
                         });
                         contentHtml += '</div></div></div>';
                         break;
@@ -324,9 +361,9 @@ $(window).ready(function(){
                         contentHtml = '<div class="sibling-size">' +
                             '<div class="text">' + item.type_text + '</div>' +
                             '<div class="select-option select size"><div class="select-wrap">' +
-                            '<select class="ui_selectbox ' + item.type_name + '" id="' + item.type_name + '" title="' + item.type_text + '">';
+                            '<select class="ui_selectbox ' + item.type_name + '" id="' + idPrefix + item.type_name + '" title="' + item.type_text + '">';
                         itemArr.forEach(function(option_item, index) {
-                            contentHtml += ('<option value="' + option_item.value + '" class="' + (option_item.class?option_item.class:'') + '">' + option_item.text + '</option>');
+                            contentHtml += ('<option value="' + option_item.value + '">' + option_item.text + '</option>');
                         });
                         contentHtml += '</select></div></div></div>';
                         //self.$sibilingInfo.append(contentHtml);
@@ -340,8 +377,8 @@ $(window).ready(function(){
                             '<div class="select-option radio service"><div class="option-list" role="radiogroup">';
                         itemArr.forEach(function(option_item, index) {
                             contentHtml += ('<div role="radio" class="rdo-wrap">' +
-                                '<input type="radio" id="' + item.type_name + index + '" name="' + item.type_name + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
-                                '<label for="' + item.type_name + index +'">' + option_item.text  + '</label></div>');
+                                '<input type="radio" id="' + idPrefix + item.type_name + index + '" name="' + idPrefix + item.type_name + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
+                                '<label for="' + idPrefix + item.type_name + index +'">' + option_item.text  + '</label></div>');
                         });
                         contentHtml += ('</div></div><div class="service-desc">' + item.type_popup_text + '</div></div>');
                         //self.$sibilingInfo.append(contentHtml);

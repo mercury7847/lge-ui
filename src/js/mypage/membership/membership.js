@@ -9,7 +9,7 @@
 */
     var listItemTemplate =
                 '<li class="lists {{liClass}}">'+
-                '<dl><dt><span class="img"><img src="{{modelImageAddr}}" alt="{{modelName}}" style="opacity: 1;"></span>'+
+                '<dl><dt><span class="img"><img src="{{modelImageAddr}}" alt="{{modelName}}"></span>'+
                 '<p class="name"><span class="blind">제품명</span>{{modelName}}</p>'+
                 '<p class="num"><span class="blind">제품번호</span>{{modelNumber}}</p></dt>'+
                 '<dd><ul class="infos">'+
