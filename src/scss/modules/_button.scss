@@ -74,6 +74,9 @@
         padding: 7px 15px;
         font-size: 14px;
         line-height: 20px;
+        @include mobile {
+            padding: 4px 12px;
+        }
     }
     &.bd-black {
         border-color:#616161;

@@ -10,6 +10,61 @@
         padding:0 24px;
     }
 
+    $color: (lightgray, dark, black, white);
+	@each $bg in $color {
+		&.bg-#{$bg} {
+			@if $bg == lightgray {
+				background-color: #f4f4f4;
+				.title {
+					&, * {
+						color: #111;
+					}
+				}
+			} @else if $bg == dark {
+				background-color: #333;
+				.title {
+					&, * {
+						color: #fff;
+					}
+				}
+                .caption {
+                    color:#fff;
+                }
+                .link-text.ico-right {
+                    border-color:#fff;
+                    color:#fff;
+                    &:after {
+                        border-color:#fff;
+                    }
+				}
+			} @else if $bg == black {
+				background-color: #000;
+				.title {
+					&, * {
+						color: #fff;
+					}
+				}
+				.caption {
+                    color:#fff;
+                }
+                .link-text.ico-right {
+                    border-color:#fff;
+                    color:#fff;
+                    &:after {
+                        border-color:#fff;
+                    }
+				}
+			} @else if $bg == white {
+				background-color: #fff;
+				.title {
+					&, * {
+						color: #111;
+					}
+				}
+			}
+		}
+	}
+
     .btn {
         display: inline-block;
         min-width:194px;

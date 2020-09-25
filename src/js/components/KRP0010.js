@@ -22,11 +22,11 @@ $(window).ready(function(){
             //self = this;
             self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual').first();
             self.$detailInfo =  $('div.pdp-wrap div.pdp-info-area div.product-detail-info').first();
+            self.$detailOption = self.$detailInfo.find('div.product-detail-option').first();
             self.$priceInfo = self.$detailInfo.find('div.product-detail-option div.price-info').first();
             self.$sibilingInfo = self.$priceInfo.siblings('div.sibling-info').first();
 
             //this.bindEvents();
-
             this.requestDetailData();
         },
 
@@ -127,10 +127,58 @@ $(window).ready(function(){
                 target = self.$priceInfo.find('div.reduced-price span.price');
                 target.html(vcui.number.addComma(data.product_price) +'<em>원</em>');
 
+                self.$detailOption.children('div:not(.option-tabs)').remove();
+                //tab check
+                KRP0010.makeContentOptionHtml([]);
+                var tabArr = data.product_tab instanceof Array ? data.product_tab : [(Object.keys(data.product_info)[0])];
+                if(tabArr.length > 1) {
+                    var tabs = self.$detailOption.find('.option-tabs').show();
+                    //탭영역 만들기
+                    contentHtml = '';
+                    var tabContents = '';
+                    tabArr.forEach(function(item, index) {               
+                        var tabData = data.product_info[item];
+                        contentHtml += '<li role="presentation"><a href="#' + item +'" role="tab" aria-controls="' + item + '">' + tabData.text + (tabData.checked ? '<em class="blind">선택됨</em>':'') +'</a></li>';
+                        tabContents +=  ('<div class="option-contents ' + (tabData.class?tabData.class:'') + '" id="' + item + '"></div>');
+                    });
+                    tabs.find('div.ui_tab ul.tabs').html(contentHtml);
+                    tabs.after(tabContents);
+                    
+                    //탭콘텐츠내용 영역만들기
+                    tabArr.forEach(function(item, index) {
+                        tabContents = '';
+                        var tabContent = self.$detailOption.find('#'+item);
+                        var contentData = data.product_info[item].content_data;
+                        var keys = Object.keys(contentData);
+                        keys.forEach(function(key, index) {
+                            tabContents += ('<div class="' + key + '"></div>');
+                            contentsResult = KRP0010.makeContentOptionHtml(contentData[key]);
+                        });
+                        tabContent.html(tabContents);
+
+                        var contentsResult = '';
+                        keys.forEach(function(key, index) {
+                            contentsResult = KRP0010.makeContentOptionHtml(contentData[key]);
+                            tabContent.find('div.'+ key).html(contentsResult);
+                        });
+                    });
+                } else {
+                    //1개일 경우에는 탭영역을 만들지 않는다
+                    self.$detailOption.find('.option-tabs').hide();
+                    self.$detailOption.find('.option-contents').remove();
+                }
+
+                //soldout등 알리고 싶은 메세지
+                if(data.product_notice_description) {
+                    self.$detailOption.append('<div class="display-product desc"><span>' + data.product_notice_description + '</span></div>');
+                }
+
+                /*
                 //soldout등 알리고 싶은 메세지
                 target = self.$detailInfo.find('div.product-detail-option div.display-product span');
                 //contentHtml = data.product_notice_description ? data.product_notice_description : '';
                 target.html(data.product_notice_description);
+                */
 
                 //혜택정보
                 self.$priceInfo.children("div:not(.price-area)").remove();
@@ -226,7 +274,7 @@ $(window).ready(function(){
 
                 vcui.require(["ui/tooltipTarget"], function () {
                     var tooltip = self.$sibilingInfo.find('div.sibling-service').find('.ui_tooltip-target');
-                    tooltip.vcTooltipTarget({"tooltip":"div.sibling-service div div.tooltip-wrap .tooltip-box"});
+                    tooltip.vcTooltipTarget({"type":"click","tooltip":".tooltip-box"});
                 });
 
                 //$("input:radio[name='sibling-info-color']:radio[value='GR']").prop('checked', true); 
@@ -236,7 +284,83 @@ $(window).ready(function(){
             }).fail(function(d){
                 alert(d.status + '\n' + d.statusText);
             });
-    
+        },
+
+        makeContentOptionHtml: function(dataArry) {
+            var returnHtml = '', contentHtml = '';
+            var itemArr;
+            var arr = dataArry instanceof Array ? dataArry : [];
+            arr.forEach(function(item, index) {
+                contentHtml = '';
+                itemArr = item.type_option instanceof Array ? item.type_option : [];
+                switch(item.type) {
+                    case "product-benefit-none":
+                        contentHtml = '<div class="product-benefit"><div class="title">'+ item.type_text + '</div><ul>';
+                        itemArr.forEach(function(item, index) {
+                            contentHtml += ('<li>' + item + '</li>');
+                        });
+                        contentHtml += '</ul></div>';
+                        break;
+                    case "product-benefit-popup":
+                        contentHtml = '<div class="product-benefit"><div class="title">'+ item.type_text +
+                        '<a href="#' + item.type_popup_url +'" class="btn-modal"><span class="blind">' + item.type_popup_text + '</span></a></div><ul>';
+                        itemArr.forEach(function(item, index) {
+                            contentHtml += ('<li>' + item + '</li>');
+                        });
+                        contentHtml += '</ul></div>';
+                        break;
+                    case "sibling-color":
+                        contentHtml = '<div class="sibling-color">' +
+                            '<div class="text">' + item.type_text + '</div>' +
+                            '<div class="select-option radio color"><div class="option-list" role="radiogroup">';
+                        itemArr.forEach(function(option_item, index) {
+                            contentHtml += ('<div role="radio" class="chk-wrap-colorchip ' + option_item.class + '" title="' + option_item.text + '">' +
+                                '<input type="radio" id="' + item.type_name + index + '" name="' + item.type_name + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
+                                '<label for="' + item.type_name + index +'"><span class="blind">' + option_item.text  + '</span></label></div>');
+                        });
+                        contentHtml += '</div></div></div>';
+                        break;
+                    case "sibling-size":
+                        contentHtml = '<div class="sibling-size">' +
+                            '<div class="text">' + item.type_text + '</div>' +
+                            '<div class="select-option select size"><div class="select-wrap">' +
+                            '<select class="ui_selectbox ' + item.type_name + '" id="' + item.type_name + '" title="' + item.type_text + '">';
+                        itemArr.forEach(function(option_item, index) {
+                            contentHtml += ('<option value="' + option_item.value + '" class="' + (option_item.class?option_item.class:'') + '">' + option_item.text + '</option>');
+                        });
+                        contentHtml += '</select></div></div></div>';
+                        //self.$sibilingInfo.append(contentHtml);
+                        //self.$sibilingInfo.find('.'+ item.type_name).vcSelectbox('update');
+                        break;
+                    case "sibling-service":
+                        contentHtml = '<div class="sibling-service">' +
+                            '<div class="text"><span>'+ item.type_text + '</span>' +
+                            '<div class="tooltip-wrap"><span class="tooltip-icon ui_tooltip-target">자세히 보기</span>' +
+                            '<span class="tooltip-box">' + item.type_popup_html + '</span></div></div>' + 
+                            '<div class="select-option radio service"><div class="option-list" role="radiogroup">';
+                        itemArr.forEach(function(option_item, index) {
+                            contentHtml += ('<div role="radio" class="rdo-wrap">' +
+                                '<input type="radio" id="' + item.type_name + index + '" name="' + item.type_name + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
+                                '<label for="' + item.type_name + index +'">' + option_item.text  + '</label></div>');
+                        });
+                        contentHtml += ('</div></div><div class="service-desc">' + item.type_popup_text + '</div></div>');
+                        //self.$sibilingInfo.append(contentHtml);
+                        break;
+                    case "is-kit":
+                        contentHtml = '<div class="is-kit"><div class="text">'+ item.type_text + '</div><ul class="kit-list">'
+                        itemArr.forEach(function(option_item, index) {
+                            contentHtml += ('<li>' + option_item.text + '</li>');
+                        });
+                        contentHtml += '</ul</div></div>';
+                        //self.$sibilingInfo.append(contentHtml);
+                        break;
+                    default:
+                        break;
+                }
+                
+                returnHtml += contentHtml;
+            });
+            return returnHtml;
         }
     };
 
