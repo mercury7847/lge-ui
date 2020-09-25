@@ -23,7 +23,7 @@
 <h2 class="h2_guide">1. 박스 리스트 모듈(PC일 때 col 3/모바일일 때 col 2)</h2>
 <div class="guide_wrap">
     <div class="product-list-wrap">
-        <ul class="product-lists">
+        <ul class="product-lists ui_flexible_height">
             <li class="lists">
                 <dl>
                     <dt>
@@ -52,6 +52,7 @@
                         <ul class="infos">
                             <li>출고가 100,000,000원</li>
                             <li>2020.02.10 구매</li>
+                            <li>2020.02.10 구매</li>
                             <li>홈플러스 금천점</li>
                         </ul>
                     </dd>
@@ -69,6 +70,8 @@
                         <ul class="infos">
                             <li>출고가 100,000,000원</li>
                             <li>2020.02.10 구매</li>
+                            <li>홈플러스 금천점</li>
+                            <li>홈플러스 금천점</li>
                             <li>홈플러스 금천점</li>
                         </ul>
                     </dd>
@@ -114,7 +117,7 @@
 <div class="d_desc code">
 <xmp class="prettyprint linenums javascript"><!-- DOM -->
 <div class="product-list-wrap">
-    <ul class="product-lists">
+    <ul class="product-lists ui_flexible_height">
         <li class="lists">
             <dl>
                 <dt>
@@ -164,5 +167,24 @@
 
 </div>     
 @@include('../include/loadscript_wsg.html')
+<script>
+    $(function(){
+        var $box = $(".ui_flexible_height");
+        var $sbl = $box.find("li.lists");
+        var $dl = $sbl.find("dl");
+
+        
+        
+        var heightArr = $dl.map( function(){
+            return $(this).height();
+        }).get();
+        var maxHeight = Math.max.apply( Math, heightArr );
+
+        console.log(maxHeight);
+
+        $dl.height(maxHeight);
+        
+    });
+</script>
 </body>
 </html> 
