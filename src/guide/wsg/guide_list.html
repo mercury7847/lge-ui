@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('../include/head_wsg.html', {
+        "title": "List 가이드"
+    })
+<body>
+<div id="wrap" class="coding_guide">
+    
+<h1 class="h1_guide">List 정의</h1>
+
+<!-- 주의사항 -->
+<dl class="notice">
+    <dt><strong class="t_modify">주의사항</strong></dt>
+    <dd>
+        <ol>
+            <li></li>
+        </ol>
+    </dd>
+</dl>
+<!-- //주의사항 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">1. Tab H1(버튼타입)</h2>
+<div class="guide_wrap">
+    <div class="product-list-wrap">
+        <ul class="product-lists">
+            <li class="lists">
+                <dl>
+                    <dt>
+                        <span class="img"><img src="/lg5-common/images/MYC/@thumb.png" alt="LG Q92 5G"></span>
+                        <p class="name"><span class="blind">제품명</span>NEW LG 퓨리케어 ALL직수 상하좌우 냉온정수기</p>
+                        <p class="num"><span class="blind">제품번호</span>A9579I</p>
+                    </dt>
+                    <dd>
+                        <ul class="infos">
+                            <li>출고가 100,000,000원</li>
+                            <li>2020.02.10 구매</li>
+                            <li>홈플러스 금천점</li>
+                        </ul>
+                    </dd>
+                    <button type="button" class="btn-del" href="#laypop" data-control="modal"><span class="blind">삭제</span></button>
+                </dl>
+            </li>
+            <li class="lists">
+                <dl>
+                    <dt>
+                        <span class="img"><img src="/lg5-common/images/MYC/@thumb02.png" alt="LG Q92 5G"></span>
+                        <p class="name"><span class="blind">제품명</span>LG Q92 5G</p>
+                        <p class="num"><span class="blind">제품번호</span>A9579I</p>
+                    </dt>
+                    <dd>
+                        <ul class="infos">
+                            <li>출고가 100,000,000원</li>
+                            <li>2020.02.10 구매</li>
+                            <li>홈플러스 금천점</li>
+                        </ul>
+                    </dd>
+                    <button type="button" class="btn-del" href="#laypop" data-control="modal"><span class="blind">삭제</span></button>
+                </dl>
+            </li>
+            <li class="lists">
+                <dl>
+                    <dt>
+                        <span class="img"><img src="/lg5-common/images/MYC/@thumb03.png" alt="LG Q92 5G"></span>
+                        <p class="name"><span class="blind">제품명</span>LG Q92 5G</p>
+                        <p class="num"><span class="blind">제품번호</span>A9579I</p>
+                    </dt>
+                    <dd>
+                        <ul class="infos">
+                            <li>출고가 100,000,000원</li>
+                            <li>2020.02.10 구매</li>
+                            <li>홈플러스 금천점</li>
+                        </ul>
+                    </dd>
+                    <button type="button" class="btn-del" href="#laypop" data-control="modal"><span class="blind">삭제</span></button>
+                </dl>
+            </li>
+            <li class="lists">
+                <dl>
+                    <dt>
+                        <span class="img"><img src="/lg5-common/images/MYC/@thumb.png" alt="LG Q92 5G"></span>
+                        <p class="name"><span class="blind">제품명</span>LG Q92 5G</p>
+                        <p class="num"><span class="blind">제품번호</span>A9579I</p>
+                    </dt>
+                    <dd>
+                        <ul class="infos">
+                            <li>출고가 100,000,000원</li>
+                            <li>2020.02.10 구매</li>
+                            <li>홈플러스 금천점</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </li>
+            <li class="lists">
+                <dl>
+                    <dt>
+                        <span class="img"><img src="/lg5-common/images/MYC/@thumb03.png" alt="LG Q92 5G"></span>
+                        <p class="name"><span class="blind">제품명</span>LG Q92 5G</p>
+                        <p class="num"><span class="blind">제품번호</span>A9579I</p>
+                    </dt>
+                    <dd>
+                        <ul class="infos">
+                            <li>출고가 100,000,000원</li>
+                            <li>2020.02.10 구매</li>
+                            <li>홈플러스 금천점</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="product-list-wrap">
+    <ul class="product-lists">
+        <li class="lists">
+            <dl>
+                <dt>
+                    <span class="img"><img src="/lg5-common/images/MYC/@thumb.png" alt="LG Q92 5G"></span>
+                    <p class="name"><span class="blind">제품명</span>NEW LG 퓨리케어 ALL직수 상하좌우 냉온정수기</p>
+                    <p class="num"><span class="blind">제품번호</span>A9579I</p>
+                </dt>
+                <dd>
+                    <ul class="infos">
+                        <li>출고가 100,000,000원</li>
+                        <li>2020.02.10 구매</li>
+                        <li>홈플러스 금천점</li>
+                    </ul>
+                </dd>
+                <button type="button" class="btn-del" href="#laypop" data-control="modal"><span class="blind">삭제</span></button> <!-- 삭제기능 없을 경우 삭제 -->
+            </dl>
+        </li>
+    </ul>
+</div>
+<!-- // DOM -->
+
+<!-- page 내 작업 방식 -->
+<!-- (@@)loop ()삭제 후 사용 -->
+<div class="product-list-wrap">
+    <ul class="product-lists">
+        (@@)loop('./common/modules/product-list-loop.html', [
+            {
+                "img" : "/lg5-common/images/MYC/@thumb.png", <!-- 이미지 경로 -->
+                "name" : "LG Q92 5G", <!-- 상품명(이미지 alt값에 같이 들어감) -->
+                "proNum" : "A9579I", <!-- 상품 타이틀 하단 상품번호-->
+                "info" : [ <!-- 하단 infos -->
+                    "출고가 100,000,000원",
+                    "2020.02.10 구매",
+                    "<span class='blind'>구매처</span>홈플러스 금천점"
+                ],
+                "close" : true <!-- 삭제 버튼 있을 경우 true, 없을 경우 삭제 -->
+            }
+        ])
+    </ul>
+</div>
+<!-- // page 내 작업 방식 -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+
+</div>     
+@@include('../include/loadscript_wsg.html')
+</body>
+</html> 

@@ -15,12 +15,13 @@ var res = {
 			"스크롤뷰" : ["./wsg/guide_scrollview.html","","검수완료"],
 			"Pagination" : ["./wsg/guide_pagination.html","","검수완료"],
 			"블릿리스트" : ["./wsg/guide_bulletlist.html","","검수완료"],
-			"tooltip" : ["./wsg/guide_tooltip.html","","검수완료"],
-			"alert popup" : ["./wsg/guide_alert.html","","검수완료"],
-			"modal popup" : ["./wsg/guide_popup.html","","검수완료"],
-			"carousel" : ["./wsg/guide_carousel.html","","검수완료"],
+			"List" : ["./wsg/guide_list.html","","검수완료"],
+			"Tooltip" : ["./wsg/guide_tooltip.html","","검수완료"],
+			"Alert popup" : ["./wsg/guide_alert.html","","검수완료"],
+			"Modal popup" : ["./wsg/guide_popup.html","","검수완료"],
+			"Carousel" : ["./wsg/guide_carousel.html","","검수완료"],
 			"Accordion" : ["./wsg/guide_accordion.html","","검수완료"],
-			"rangeslider" : ["./wsg/guide_rangeslider.html","","검수완료"]
+			"Rangeslider" : ["./wsg/guide_rangeslider.html","","검수완료"]
 		}
 	},
 	"Front" : {
