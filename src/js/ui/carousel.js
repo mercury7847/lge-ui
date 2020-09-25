@@ -1253,11 +1253,12 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     if(opt.infinite === true){
                         targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
                     }else{
-                        var slideLen = Math.ceil(self.slideCount / opt.slidesToShow);
-                        if(slideIndex == slideLen-1){
-                            targetLeft = targetSlide[0] ? (targetSlide[0].offsetLeft * -1) + self.listWidth - targetSlide.width() : 0;
+                        var lastTarget = self.$slideTrack.children('.' + _V.SLIDE).last();
+                        if(targetSlide[0] && (lastTarget[0].offsetLeft - targetSlide[0].offsetLeft + lastTarget.width() < self.listWidth)){  
+                            var dt = self.listWidth - (lastTarget[0].offsetLeft - targetSlide[0].offsetLeft + lastTarget.width());
+                            targetLeft = targetSlide[0]? (targetSlide[0].offsetLeft * -1) + dt : 0;
                         }else{
-                            targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                            targetLeft = targetSlide[0]? targetSlide[0].offsetLeft * -1 : 0;
                         }
                     }
                     // 추가 end
