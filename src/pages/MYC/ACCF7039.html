@@ -109,17 +109,21 @@
                             <!-- filter -->
                             @@include('./common/modules/mem-filter.html', {
                                 "url" : "/lg5-common/data-ajax/mypage/membership/my_purchase_history.json",
-                                "wrapTit" : "조회기간",
-                                "inputType" : "radio",
-                                "inputArr" : [
-                                    { "id" : "rdo1-1", "name" : "rdo1", "label" : "전체", "value" : "all", "checked" : "checked" },
-                                    { "id" : "rdo1-2", "name" : "rdo1", "label" : "구매", "value" : "buy", "checked" : "" },
-                                    { "id" : "rdo1-3", "name" : "rdo1", "label" : "취소", "value" : "cancel", "checked" : "" }
-                                ]
+                                "wrapTit" : "조회기간"
                             })
                             <!-- // filter -->
  
                             <!-- 결과값 있을 때 -->
+                            <div class="result-sorting-box">
+                                <p class="total">전체 30건</p>
+                                <div class="sort-select-wrap">
+                                    <select class="ui_selectbox" id="select1" title="결과리스트 정렬 기준 선택">
+                                        <option value="">전체</option>
+                                        <option value="">구매</option>
+                                        <option value="">취소</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="product-list-wrap">
                                 <ul class="product-lists ui_flexible_height">
                                     @@loop('./common/modules/product-list-loop.html', [
