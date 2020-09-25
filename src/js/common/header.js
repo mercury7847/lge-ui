@@ -107,9 +107,9 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 $(item).find('> .nav-category-container > ul').css({
                     width: '100%'
                 });
-                $(item).find('> a').css('vertical-align', 'top');
+                // $(item).find('> a').css('vertical-align', 'top');
 
-                $(item).css({'vertical-align':  'top'});
+                // $(item).css({'vertical-align':  'top'});
 
                 $(item).data('subwidth', categorywidth);
                 $(item).on('mouseover', function(e){
@@ -241,7 +241,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     infinite: false,
                     swipeToSlide: true,
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    playSelector: '.btn-play.play'
                 });
                 categoryLayer.find('.ui_carousel_list').css('overflow', 'hidden');
             }
