@@ -2,13 +2,14 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var TooltipTarget = core.ui('TooltipTarget', /** @lends vcui.ui.TooltipTarget# */{
-        $singleton: true,
+        //$singleton: true,
         bindjQuery: 'tooltipTarget',
         defaults: {
             interval: 200,
             tooltip: null,
             type : 'over', //click, over
-            closeButtonClass : '.btn-close'
+            closeButtonClass : '.btn-close',
+            singleton : false
         },
         initialize: function initialize(el, options) {
             var self = this;
