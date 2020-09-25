@@ -8,6 +8,7 @@
     @include mobile {
         position:static;
         height:16px;
+        padding-top:0;
     }
     .tooltip-icon {
         display:block;
@@ -39,11 +40,6 @@
                 background:url('/lg5-common/images/bg-tooltip-top.svg') 0 no-repeat;
                 background-size:100%;
             }
-        }
-        @include mobile {
-            width:16px;
-            height:16px;
-            line-height:16px;
         }
     }
     &.active {
