@@ -500,9 +500,9 @@
             .slide-wrap {
                 margin-top:16px;
                 padding-bottom:34px;
-                // @include mobile {
-                //     padding:0;
-                // }
+                @include mobile {
+                    padding:0;
+                }
                 .indi-wrap {
                     bottom:0;
                 }
@@ -518,10 +518,15 @@
                     }
                     .slide-conts {
                         height:auto;
+                        .cont-wrap {
+                            @include mobile {
+                                width:61.1111vw;
+                            }
+                        }
                         .img {
                             position:relative;
-                            height:190px;
                             border-radius:4px;
+                            height:190px;
                             margin:0 8px;
                             overflow:hidden;
                             img {
