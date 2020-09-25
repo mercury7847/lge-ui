@@ -108,22 +108,13 @@
                 position:relative;
                 margin:0;
                 padding:40px 20px 56px;
+                border-top:12px solid #f4f4f4;
                 background:#fff;
                 &:last-child {
                     margin-bottom:-60px;
                 }
-                &:before {
-                    content:'';
-                    display:block;
-                    position:absolute;
-                    top:0;
-                    left:0;
-                    right:0;
-                    height:12px;
-                    background:#f4f4f4;
-                }
                 &:first-child {
-                    padding-top:40px;
+                    border-top:none;
                     &:before {
                         display:none;
                     }

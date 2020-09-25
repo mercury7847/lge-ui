@@ -83,18 +83,6 @@
             }
             .cell {
                 background:#fff;
-                vertical-align:top;
-            }
-            .btn-search {
-                display:block;
-                &::after {
-                    content:' ';
-                    display:block;
-                    width:24px;
-                    height:24px;
-                    background:url('/lg5-common/images/icons/icon-search.svg') center no-repeat;
-                    background-size:100%;
-                }
             }
         }
     }

@@ -2,7 +2,6 @@
     font-size:0;
     @include mobile {
         padding:20px;
-        margin:32px 0 37px;
         background:#f4f4f4;
         border-radius:4px;
     }
@@ -79,7 +78,7 @@
     .lists {
         float:left;
         @include mobile {
-            margin-top:-8px;
+            float:none;
         }
         li {
             margin-top:8px;
@@ -113,14 +112,19 @@
     }
     .btn-text {
         float:right;
-        border-color:transparent;
         font-size:14px;
         line-height:20px;
         font-weight:500;
         @include mobile {
             position:absolute;
             top:50px;
-            right:0;
+            right:20px;
         }
+    }
+}
+.product-list-wrap {
+    margin-top:60px;
+    @include mobile {
+        margin-top:26px;
     }
 }
