@@ -6,6 +6,13 @@
         .zero-top : 상단여백 없음
         .zero-btm : 하단여백 없음
 
+        [component 영역 옵션]
+        1. 배경 색상 :
+        .bg-white : #FFFFFF 색상 배경
+        .bg-lightgray : #F4F4F4 색상 배경
+        .bg-dark : #333333 색상 배경
+        .bg-black : #000000 색상 배경
+
         [.body-copy 옵션]
         1. 폰트 종류 :
         .font-regular : 레귤러
@@ -22,7 +29,7 @@
         해당 영역 링크가 popup인 경우는 class에 js-popup 를 추가하고, data-width="344" data-height="553" title="Opens in a new popup window" 을 추가해 주시면 됩니다.
     -->
 
-    <section class="component KRC0015 @@quantity-class">
+    <section class="component KRC0015 @@quantity-class @@bg-color">
         <ul>
             @@for (var i = 0; i < context.itemCount; i++) {
                 @@if (!context.popup) {
