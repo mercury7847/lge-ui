@@ -302,13 +302,15 @@
         $(function(){
             vcui.require(['ui/carousel'], function () {
                 $('.ui_carousel_slider').vcCarousel({
-                    infinite: true,
+                    infinite: false,
                     slidesToShow: 2,
                     slidesToScroll: 2,
+                    variableWidth : true,
                     responsive: [
                         {
-                            breakpoint: 2500,
+                            breakpoint: 10000,
                             settings: {
+                                variableWidth : true,
                                 dots: true,
                                 slidesToShow: 2,
                                 slidesToScroll: 2
@@ -318,6 +320,7 @@
                         {
                             breakpoint: 768,
                             settings: {
+                                variableWidth : true,
                                 dots: true,
                                 slidesToShow: 1, 
                                 slidesToScroll: 1

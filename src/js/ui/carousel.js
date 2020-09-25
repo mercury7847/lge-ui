@@ -1246,8 +1246,11 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     } else {
                         targetLeft = 0;
                     }
+                    
                 } else {
                     targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+
+                    console.log(targetLeft);
                 }
 
                 if (opt.centerMode === true) {
@@ -1742,17 +1745,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             var self = this,
                 opt = self.options;
 
-
-            
-            // 추가
-            var slidecw = self.$slideTrack.children('.' + _V.SLIDE).children().first().css('width');
-            self.widthUnit = slidecw.indexOf('%') > 0 ? '%' : 'px';
-            self.initSlideWidth = self.$slideTrack.children('.' + _V.SLIDE).children().first().width();
-            self.slideMaxWidth = self.$slideTrack.children('.' + _V.SLIDE).children().first().css('max-width');
-
-
-
-
             self.setPosition();
 
             self.$slideTrack.css({
@@ -2233,28 +2225,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 }
             }
         
-            // 추가
-            var paddingleft = parseInt(self.$list.css('padding-left'));
-            self.$list.css('padding-left', 0);
-
-            var slidecont = self.$slideTrack.children('.' + _V.SLIDE).children().first();
-            var maxwidth = parseInt(slidecont.css('max-width'));
-            var marginleft = parseInt(slidecont.css('margin-left'));
-            var marginright = parseInt(slidecont.css('margin-right'));
-
-            var slidew;
-            if(self.widthUnit == 'px'){
-                slidew = self.initSlideWidth;
-            } else{
-                slidew = $('#wrap').width() * (self.initSlideWidth/100);
-            }
-            if(slidew == 0) slidew = self.$el.width();
-            else if(slidew > maxwidth) slidew = maxwidth;
-
-            self.$slideTrack.children('.' + _V.SLIDE).children().first().width(slidew);
-            // 추가 end
-
-
 
             //self.$slideTrack.css('width', '');
             self.listWidth = self.$list.width();
@@ -2271,6 +2241,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             }
 
             if (opt.variableWidth === false) {
+                
                 var offset = self.$slides.first().outerWidth(true) - self.$slides.first().width();
                 self.$slideTrack.children('.' + _V.SLIDE).width(self.slideWidth - offset);
             }
@@ -2645,6 +2616,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             targetSlide = index;
             targetLeft = self.getLeft(targetSlide);
             slideLeft = self.getLeft(self.currentSlide);
+
+            console.log(targetLeft);
 
             self.currentLeft = self.swipeLeft === null ? slideLeft : self.swipeLeft;
 
