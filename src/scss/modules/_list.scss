@@ -17,16 +17,23 @@
                 width:50%;
                 margin-top:12px;
             }
-            dl {
-                position:relative;
+            div {
                 margin:0 12px;
-                padding:32px 0 28px;
                 border-radius:4px;
                 background:#f4f4f4;
-                text-align:left;
                 overflow:hidden;
                 @include mobile {
                     margin:0 6px;
+                }
+            }
+            dl {
+                position:relative;
+                padding:32px 0 28px;
+                // border-radius:4px;
+                // background:#f4f4f4;
+                text-align:left;
+                @include mobile {
+                    // margin:0 6px;
                     padding:0 0 20px;
                     text-align:center;
                 }
