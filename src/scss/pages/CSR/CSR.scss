@@ -1008,7 +1008,7 @@
             @include mobile {
                 display:block;
                 margin:0;
-                padding:0 20px 110px;
+                padding:0 20px 190px;
             }
             
             .left-box {
@@ -1104,40 +1104,61 @@
                         }
                     }
                 }
-                .sns-list {
+                .sns-wrap {
                     @include clearfix;
-                    @include mobile {
-                        display:none;
-                    }
                     margin-top:16px;
-                    li {
-                        float:left;
-                        margin-left:8px;
-                        &:first-child {
-                            margin-left:0;
-                        }
-                        .ico-btn {
-                            display:block;
-                            width:32px;
-                            height:32px;
-                            &.url {
-                                background:url('/lg5-common/images/icons/icon-url.svg') no-repeat;
-                                background-size:32px 32px;
+                    @include mobile {
+                        position:absolute;
+                        left:0;
+                        right:0;
+                        bottom:115px;
+                        text-align:center;
+                    }
+                    .sns-list {
+                        display:inline-block;
+                        li {
+                            float:left;
+                            margin-left:8px;
+                            &:first-child {
+                                margin-left:0;
                             }
-                            &.kk {
-                                background:url('/lg5-common/images/icons/icon-kakao.svg') no-repeat;
-                                background-size:32px 32px;
+                            @include mobile {
+                                margin:0 6px;
                             }
-                            &.fb {
-                                background:url('/lg5-common/images/icons/icon-facebook.svg') no-repeat;
-                                background-size:32px 32px;
-                            }
-                            &.tw {
-                                background:url('/lg5-common/images/icons/icon-twitter.svg') no-repeat;
-                                background-size:32px 32px;
+                            .ico-btn {
+                                display:block;
+                                width:32px;
+                                height:32px;
+                                &.url {
+                                    background:url('/lg5-common/images/icons/icon-url.svg') no-repeat;
+                                    background-size:32px 32px;
+                                }
+                                &.kk {
+                                    background:url('/lg5-common/images/icons/icon-kakao.svg') no-repeat;
+                                    background-size:32px 32px;
+                                }
+                                &.fb {
+                                    background:url('/lg5-common/images/icons/icon-facebook.svg') no-repeat;
+                                    background-size:32px 32px;
+                                }
+                                &.tw {
+                                    background:url('/lg5-common/images/icons/icon-twitter.svg') no-repeat;
+                                    background-size:32px 32px;
+                                }
+                                @include mobile {
+                                    width:40px;
+                                    height:40px;
+                                    &.url,
+                                        &.kk,
+                                        &.fb,
+                                        &.tw  {
+                                        background-size:40px 40px;
+                                    }
+                                }
                             }
                         }
                     }
+                   
                 }
             }
 
@@ -1213,11 +1234,10 @@
                                     }
                                     .key {
                                         @include mobile {
-                                            display:inline-block;
-                                            width:56px;
-                                            vertical-align:middle;
-                                            text-align: justify;
-                                            text-align-last:justify;
+                                            display:inline-flex;
+                                            width:45px;
+                                            justify-content:space-between;
+                                            span {display:inline-block;}
                                         }
                                     }
                                     .value {
@@ -1234,12 +1254,34 @@
                                     margin-top:4px;
                                 }
                             }
-                            .addr {
+                            .addr-info {
                                 margin-top:4px;
                                 font-size:16px;
                                 line-height:24px;
                                 &:first-child {
                                     margin-top:0;
+                                }
+                                @include mobile {
+                                    display:table;
+                                }
+                                .key {
+                                    display:inline-block;
+                                    vertical-align:middle;
+                                    @include mobile {
+                                        width:60px;
+                                        display:inline-flex;
+                                        justify-content:space-between;
+                                        span {display:inline-block;}
+                                    }
+                                }
+                                .addr {
+                                    display:inline-block;
+                                    vertical-align:middle;
+                                    @include mobile {
+                                        display:table-cell;
+                                        vertical-align:top;
+                                        padding-left:12px;
+                                    }
                                 }
                             }
                         }
@@ -1249,6 +1291,9 @@
                         height:320px;
                         margin-top:16px;
                         overflow:hidden;
+                        @include mobile {
+                            height:190px;
+                        }
                     }
                     .tabs-wrap {
                         margin-top:16px;
