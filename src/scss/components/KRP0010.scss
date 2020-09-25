@@ -23,7 +23,7 @@
     .pdp-visual-area {
 		float:left;
 		width:calc(100% - 541px);
-        margin-top:33px;
+        //margin-top:33px;
         padding-left: 4px;
         //padding-left:30px;
         /*
@@ -36,7 +36,7 @@
 		@include mobile {
             float:none;
             width:100%;
-            margin-top:25px;
+            //margin-top:25px;
             padding-left:0;
 		}
     }
@@ -121,23 +121,40 @@
                     }
                 }
                 .view-more {
+                    display: block;
                     float: right;
+                    position: relative;
+                    padding-right: 20px;
                     color: #ec455a;
                     line-height: 24px;
                     margin-top: 4px;
-                    &:after {
-                        display: inline-block;
-                        content: '+';
+                    .bt {
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
                         width: 16px;
                         height: 16px;
-                        margin-left: 4px;
-                        border: 2px solid #ec455a;
-                        text-align: center;
-                        color: #fff;
-                        background: #ec455a;
-                        border-radius: 50%;
-                        line-height: 70%;
+                        transform: translateY(-50%);
+                        border: 1px solid #ec455a;
+                        text-indent: -99999em;
+                        font-size: 1px;
+                        color: transparent;
+                        &:before,
+                        &:after {
+                            display: inline-block;
+                            position: absolute;
+                            top: calc( 50% - 4px);
+                            left: calc( 50% - 1px);
+                            width: 1px;
+                            height: 8px;
+                            background-color: #ec455a;
+                            content: '';
+                        }
+                        &:after {
+                            transform: rotate(90deg);
+                        }
                     }
+                    
                 }
             }
         }
