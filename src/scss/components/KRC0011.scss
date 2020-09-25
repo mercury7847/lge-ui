@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRC0011 {
+    padding:60px 40px;
+    background:#f4f4f4;
+    @include mobile {
+        padding:40px 0 56px;
+    }
+    .inner {
+        max-width:1066px;
+        margin:0 auto;
+        .heading-box {
+            .title {
+                h1, h2, h3, h4, h5, h6 {
+                    color:#222;
+                    font-size:16px;
+                    line-height:24px;
+                    font-weight:700;
+                }
+                .sub-tit {
+                    margin-top:12px;
+                    color:#222;
+                    font-size:14px;
+                    line-height:20px;
+                }
+                @include mobile {
+                    padding:0 24px;
+                }
+            }
+        }
+        .accordion-wrap {
+            margin-top:12px;
+            @include mobile {
+                margin-top:20px;
+            }
+        }
+    }
+}
