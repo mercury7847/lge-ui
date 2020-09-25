@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>btn_gift_48</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="[MO]-CS_매장찾기상세_팝업_full_v0.8_200909" transform="translate(-44.000000, -4757.000000)">
-            <g id="02-contents" transform="translate(39.000000, 198.000000)">
-                <g id="02-9--servey" transform="translate(1.000000, 4553.000000)">
-                    <g id="btn_gift_48">
-                        <g>
-                            <polygon id="Path" points="0 0 48 0 48 48 0 48"></polygon>
-                            <g id="ic" transform="translate(4.000000, 6.000000)">
-                                <rect id="Rectangle" stroke="#616161" stroke-width="4" x="2" y="2" width="36" height="36" rx="2"></rect>
-                                <rect id="Rectangle" fill="#616161" x="2" y="2" width="36" height="6"></rect>
-                                <rect id="Rectangle" fill="#616161" transform="translate(20.000000, 18.000000) rotate(-270.000000) translate(-20.000000, -18.000000) " x="18" y="6" width="4" height="24" rx="2"></rect>
-                                <rect id="Rectangle" fill="#616161" transform="translate(16.000000, 26.000000) rotate(-270.000000) translate(-16.000000, -26.000000) " x="14" y="18" width="4" height="16" rx="2"></rect>
-                            </g>
-                        </g>
-                    </g>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="btn_gift_48">
+            <g>
+                <polygon id="Path" points="0 0 48 0 48 48 0 48"></polygon>
+                <g id="ic" transform="translate(4.000000, 6.000000)">
+                    <rect id="Rectangle" stroke="#616161" stroke-width="4" x="2" y="2" width="36" height="36" rx="2"></rect>
+                    <rect id="Rectangle" fill="#616161" x="2" y="2" width="36" height="6"></rect>
+                    <rect id="Rectangle" fill="#616161" transform="translate(20.000000, 18.000000) rotate(-270.000000) translate(-20.000000, -18.000000) " x="18" y="6" width="4" height="24" rx="2"></rect>
+                    <rect id="Rectangle" fill="#616161" transform="translate(16.000000, 26.000000) rotate(-270.000000) translate(-16.000000, -26.000000) " x="14" y="18" width="4" height="16" rx="2"></rect>
                 </g>
             </g>
         </g>
