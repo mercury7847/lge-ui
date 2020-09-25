@@ -1248,9 +1248,21 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     }
                     
                 } else {
-                    targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
 
-                    console.log(targetLeft);
+                    // 추가 김두일
+                    if(opt.infinite === true){
+                        targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                    }else{
+                        var slideLen = Math.ceil(self.slideCount / opt.slidesToShow);
+                        if(slideIndex == slideLen-1){
+                            targetLeft = targetSlide[0] ? (targetSlide[0].offsetLeft * -1) + self.listWidth - targetSlide.width() : 0;
+                        }else{
+                            targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                        }
+                    }
+                    // 추가 end
+                    //targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                    
                 }
 
                 if (opt.centerMode === true) {
