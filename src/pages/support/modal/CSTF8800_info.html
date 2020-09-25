@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/reservation"
+        ],
+        "pageJS": [
+            "support-common",
+            "support/selectCategory"
+        ],
+        "libJS": [
+            "jquery.mCustomScrollbar"
+        ]
+    })
+<body>
+    <div class="wrap">
+        <div class="container">
+            <div class="contents support CSTF8800" style="min-height: 100vh; background-color: rgba(0, 0, 0, 0.7);">
+
+                <article id="popup" class="popup-wrap type-A" style="display:block; position:relative;">
+                    <header class="pop-header">
+                        <h1 class="tit"><span>안내</span></h1>
+                    </header>
+                    <section class="pop-conts no-footer"><!-- footer 없을 때 .no-footer(max-height 다름) -->
+                        <div class="modal-gray-box">
+                            <div class="modal-gray-box-title">
+                                <h3 class="tit"><strong>환경부, "공기청정기 OIT 항균필터 평가결과”</strong></h3>
+                            </div>
+                            <p class="text-box">
+                                환경부 조사결과에 따르면, LG전자가 판매한 일부 공기청정기의 ‘OIT 검출 필터’는 위해가 우려되는 수준이 아닌 것으로 평가됐습니다.<br><br>LG전자는 환경부 발표가 나올 때까지 고객들이 불안해 할 수 있어, 선제적인 조치가 필요하다고 판단해, 지난 6월말부터 원하시는 고객에게는 OIT가 포함되지 않은 필터로 무상으로 교체해드리고 있습니다.<br><br>고객만족을 위해 항상 최선을 다하겠습니다.
+                            </p>
+                        </div>
+                        <ul class="bullet-list top-border">
+                            <li class="b-txt">세부사항이 궁금하시면 첨부한 환경부 발표자료 또는 환경부 홈페이지를 참고하시기 바랍니다.
+                                <p class="paragraph-1"><a href="#n" class="btn-link">환경부 홈페이지 바로 가기 </a><br>공기청정기·차량용 에어컨 OIT 항균필터 위해성 평가결과</p>
+                                <p class="paragraph-1"><a href="#n" class="btn-text underline color-3">환경부 발표자료 다운로드</a></p>
+                            </li>
+                        </ul>
+                    </section>
+                    <div class="pop-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk1-2" name="chk1">
+                            <label for="chk1-2">오늘 하루 열지 않기</label>
+                        </span>
+                    </div>
+                    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+                </article>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

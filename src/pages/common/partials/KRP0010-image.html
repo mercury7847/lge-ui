@@ -124,9 +124,19 @@
 <!-- // Mobile 일 경우 : Visual -->
 
 
-<!-- modal -->
-<!-- img view layer -->
-@@include('./common/partials/modal/KRP0010-pdp-modal.html')
 
-<!-- 수상내역 -->
-@@include('./common/partials/modal/KRP0010-pdp-modal-award.html')
+<!-- modal -->
+<!-- img view layer
+include('./common/partials/modal/KRP0010-pdp-modal.html')
+-->
+<!-- 수상내역
+include('./common/partials/modal/KRP0010-pdp-modal-award.html')
+-->
+
+<!-- toast-meassage -->
+
+@@include('./common/partials/modal/toast-meassage.html', {
+    "text1" : "이미 추가된 제품입니다.",
+    "text2" : "비교함에 등록되었습니다.",
+    "text3" : "케어솔루션/케어십 장바구니에 추가되었습니다."
+})
