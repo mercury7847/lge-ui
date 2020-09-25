@@ -58,7 +58,7 @@
         &.scroll-x {
             @include mobile {
                 width:auto;
-                min-width:755px;
+                max-width:755px;
             }
         }
         &-list {

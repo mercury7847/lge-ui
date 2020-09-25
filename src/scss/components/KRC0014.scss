@@ -11,6 +11,85 @@
         padding:0 24px;
     }
 
+    $color: (lightgray, dark, black, white);
+	@each $bg in $color {
+		&.bg-#{$bg} {
+			@if $bg == lightgray {
+				background-color: #f4f4f4;
+				.title {
+					&, * {
+						color: #111;
+					}
+				}
+				.headline {
+					color: #111;
+				}
+				.text {
+					color: #515151;
+				}
+			} @else if $bg == dark {
+				background-color: #333;
+				.side-right-text .title {
+					&, * {
+						color: #fff;
+					}
+				}
+				.headline {
+					color: #fff;
+				}
+				.side-right-text .text {
+					color: #fff;
+				}
+				.visual-wrap .desc {
+					color:#fff;
+				}
+				.link-text {
+					border-bottom-color:#fff;
+					color:#fff;
+					&.ico-right:after {
+						border-color:#fff;
+					}
+				}
+			} @else if $bg == black {
+				background-color: #000;
+				.side-right-text .title {
+					&, * {
+						color: #fff;
+					}
+				}
+				.headline {
+					color: #fff;
+				}
+				.side-right-text .text {
+					color: #fff;
+				}
+				.visual-wrap .desc {
+					color:#fff;
+				}
+				.link-text {
+					border-bottom-color:#fff;
+					color:#fff;
+					&.ico-right:after {
+						border-color:#fff;
+					}
+				}
+			} @else if $bg == white {
+				background-color: #fff;
+				.title {
+					&, * {
+						color: #111;
+					}
+				}
+				.headline {
+					color: #111;
+				}
+				.text {
+					color: #515151;
+				}
+			}
+		}
+	}
+
     .btn {
         display: inline-block;
         min-width:194px;
