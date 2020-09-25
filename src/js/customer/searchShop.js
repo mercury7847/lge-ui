@@ -23,7 +23,7 @@
 
     var listTemplate = ''+
         '<li data-id="{{agNum}}">'+
-        '   <div class="store-info-list" role="button">'+
+        '   <div class="store-info-list ui_marker_selector" role="button">'+
         '        <div class="point-wrap">'+
         '           <div class="point">'+
         '                <span class="num">{{num}}</span>'+
@@ -39,7 +39,7 @@
         '            <p class="addr">{{agAddr1}}</p>'+
         '            <div class="etc-info">'+
         '                <span class="tel">{{agTel}}</span>'+
-        '                <a href="#n" class="btn-detail">상세보기</a>'+
+        '                <a href="#" class="btn-detail">상세보기</a>'+
         '            </div>'+
         '        </div>'+
         '    </div>'+
@@ -52,30 +52,43 @@
             console.log("searchShop start!!!");
             
             self._setting();
-            self._bindEvents();
         },
 
         _setting: function(){
             var self = this;
 
+            self.windowWidth;
+            self.windowHeight;
+
             self.storeArr;
             self.eventArr;
             self.bestShopUrl = $('.map-container').data("bestshop");
 
-            self.$defaultListLayer = $('.list-wrap .sch-list .scroll-wrap .list-item');
-            self.$optionSelector = $('.find-store .opt-cont');
+            self.$leftContainer = $('.store-list-wrap'); //좌측 검색&리스트 컨테이너...
+
+            self.$defaultListContainer = self.$leftContainer.find('.list-wrap'); //리스트 컨테이너...
+            self.$defaultListLayer = self.$defaultListContainer.find('.sch-list .scroll-wrap .list-item'); 
+
+            self.$searchContainer = self.$leftContainer.find('.sch-box');
+
+            self.$map = null; //맵 모듈...
+            self.$mapContainer = $('.map-area'); //맴 모듈 컨테이너...
+            
+            self.$optionSelector = $('.opt-cont'); //옵션 컨테이너...
             
             vcui.require(['ui/storeMap'], function () {
 				
-				$('.map-area').vcStoreMap({
-
+				self.$mapContainer.vcStoreMap({
                     baseUrl:'',
                     storeDataUrl: self.bestShopUrl
-
 				}).on('mapinit', function(e,data){
 
 					self.storeArr = data.storeData;
                     self.eventArr = data.eventData;
+
+                    self.$map = self.$mapContainer.vcStoreMap('instance');
+                    
+                    self._bindEvents();		
 
 				}).on('mapchanged mapsearch', function(e, data){	
 
@@ -87,9 +100,7 @@
                     
 				}).on('maperror', function(e, error){
 					console.log(error);
-                });
-                
-                self._bindEvents();				
+                });		
 			});
         },
 
@@ -102,16 +113,19 @@
                 console.log("option open")
             });
 
-            self.$defaultListLayer.on('click', 'li', function(e){
+            self.$defaultListLayer.on('click', 'li > .ui_marker_selector', function(e){
+                var $target = $(e.currentTarget);
+                var id = $target.parent().data('id');
+
+                self._setMarkerSelected(id);
+                
+                self.$map.selectedMarker(id);
+            })
+            .on('click', 'li > .ui_marker_selector .btn-detail', function(e){
                 e.preventDefault();
 
-                var $target = $(e.currentTarget);
-                var id = $target.data('id');
-
-                $target.find(".point").addClass('on')
-                $target.siblings().find('.point').removeClass('on');
-                console.log(id)
-                //showDetailInfo(id);                
+                console.log(e);
+                //showDetailInfo(id);  
             });
 
             $('#searchWrap').on('click', 'button', function(e){
@@ -157,8 +171,20 @@
                 $('#map').vcStoreMap('search', arr);	
 
             });
+
+            self._resize();
+            $(window).trigger('addResizeCallback', self._resize.bind(self));
+        },
+
+        _setMarkerSelected: function(id){
+            var self = this;
+
+            var selectedMarker = self.$defaultListLayer.find('li[data-id="' + id + '"]');
+            if(!selectedMarker.find('.point').hasClass('on')) selectedMarker.find('.point').addClass('on');
+            selectedMarker.siblings().find('.point').removeClass('on');
         },
                 
+        //매장정보 가져오기...
         _getShopInfo: function(id){
             var self = this;
             var info = vcui.array.filter(self.storeArr, function(item, idx){
@@ -168,6 +194,7 @@
             return info;
         },
 
+        //매장에 등록 된 이벤트 가져오기...
         _getEventInfo: function(id){
             var self = this;
             var evt = vcui.array.filter(self.eventArr, function(item, idx){
@@ -177,9 +204,10 @@
             return evt;
         },
 
+        //매장리스트 생성...
         _setItemList: function(data){
             var self = this;
-console.log(data)
+            
             self.$defaultListLayer.empty();
             
              for(var i=0; i<data.length; i++){
@@ -195,6 +223,37 @@ console.log(data)
                  var list = vcui.template(listTemplate, listData);
                  self.$defaultListLayer.append($(list).get(0));
              }
+        },
+
+        //리스트 컨테이너 높이 설정...스크롤영역
+        _setListArea: function(){
+            var self = this;
+
+            var top = $('.container').position().top;
+            var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
+            var scheight = self.$searchContainer.outerHeight(true);
+            var optheight = self.$optionSelector.height();
+            var listheight = self.windowHeight - top - titheight - scheight - optheight;
+            
+            self.$defaultListContainer.find('.scroll-wrap').height(listheight);
+        },
+
+        _resize: function(){
+            var self = this;
+
+            self.windowWidth = $(window).width();
+            self.windowHeight = $(window).height();
+
+            var listwidth = self.$leftContainer.width();
+
+            self.$mapContainer.css({
+                width: self.windowWidth - listwidth,
+                'margin-left': listwidth
+            });
+
+            self._setListArea();
+
+            self.$map.resize();
         }
     }
 
