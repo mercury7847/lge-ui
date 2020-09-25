@@ -4,25 +4,27 @@
 @@if ( !context.liNum ) {
 <li class="lists">
 }
-    <dl>
-        <dt>
-            <span class="img"><img src="@@img" alt="@@name"></span>
-            <p class="name"><span class="blind">제품명</span>@@name</p>
-            @@if ( context.proNum ) {
-                <p class="num"><span class="blind">제품번호</span>@@proNum</p>
-            }
-        </dt>
-        <dd>
-            @@if ( context.info ) {
-            <ul class="infos">
-                @@for ( var i=0; i < info.length; i++ ) {
-                <li>`+info[i]+`</li>
+    <div class="ui_flexible_box">
+        <dl>
+            <dt>
+                <span class="img"><img src="@@img" alt="@@name"></span>
+                <p class="name"><span class="blind">제품명</span>@@name</p>
+                @@if ( context.proNum ) {
+                    <p class="num"><span class="blind">제품번호</span>@@proNum</p>
                 }
-            </ul>
+            </dt>
+            <dd>
+                @@if ( context.info ) {
+                <ul class="infos">
+                    @@for ( var i=0; i < info.length; i++ ) {
+                    <li>`+info[i]+`</li>
+                    }
+                </ul>
+                }
+            </dd>
+            @@if ( context.close ) {
+            <button type="button" class="btn-del" href="#laypop" data-control="modal"><span class="blind">삭제</span></button>
             }
-        </dd>
-        @@if ( context.close ) {
-        <button type="button" class="btn-del" href="#laypop" data-control="modal"><span class="blind">삭제</span></button>
-        }
-    </dl>
+        </dl>
+    </div>
 </li>
