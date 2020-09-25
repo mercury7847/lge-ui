@@ -172,56 +172,44 @@
                         <h3 class="sec-tit">무상 A/S 대상 제품</h3>
                         <div class="cont-box">
                             <p class="tit-desc">할인점(홈플러스, 이마트)에서 구매하신 경우 영수증 등록을 통해서만 구매내역 적립이 가능합니다.</p>
-                            <ul class="svc-prod-list">
-                                <li class="prod01">
-                                    <dl>
-                                        <dt>
-                                            <span class="img"><img src="/lg5-common/images/membership/img-prod01.jpg" alt=""></span>
-                                            <p>TV</p>
-                                        </dt>
-                                        <dd>LED, LCD, PDP, 울트라HD, 올레드</dd>
-                                        <dd class="ex">* 벽걸이/스탠드 자제 제외</dd>
-                                    </dl>
-                                </li>
-                                <li class="prod02">
-                                    <dl>
-                                        <dt>
-                                            <span class="img"><img src="/lg5-common/images/membership/img-prod02.jpg" alt=""></span>
-                                            <p>김치냉장고</p>
-                                        </dt>
-                                        <dd>김치 냉장고 전제품</dd>
-                                    </dl>
-                                </li>
-                                <li class="prod03">
-                                    <dl>
-                                        <dt>
-                                            <span class="img"><img src="/lg5-common/images/membership/img-prod03.jpg" alt=""></span>
-                                            <p>세탁기</p>
-                                        </dt>
-                                        <dd>트윈워시, 트롬, 통돌이, 미니세탁기(미니워시, 꼬망스)</dd>
-                                        <dd class="ex">* 세탁기 받침대 제외</dd>
-                                    </dl>
-                                </li>
-                                <li class="prod04">
-                                    <dl>
-                                        <dt>
-                                            <span class="img"><img src="/lg5-common/images/membership/img-prod04.jpg" alt=""></span>
-                                            <p>냉장고</p>
-                                        </dt>
-                                        <dd>상냉장, 양문형, 정수기냉장고, 일반, 냉동고, 와인셀러</dd>
-                                    </dl>
-                                </li>
-                                <li class="prod05">
-                                    <dl>
-                                        <dt>
-                                            <span class="img"><img src="/lg5-common/images/membership/img-prod01.jpg" alt=""></span>
-                                            <p>에어컨</p>
-                                        </dt>
-                                        <dd>스탠드, 벽걸이</dd>
-                                        <dd class="ex">* 일반 냉난방기, 시스템 에어컨, 배관 자재 제외</dd>
-                                    </dl>
-                                </li>
-                            </ul>
+                            
+                            <div class="product-list-wrap">
+                                <ul class="product-lists">
+                                    @@loop('./common/modules/product-list-loop.html', [
+                                        {
+                                            "img" : "/lg5-common/images/membership/img-prod01.jpg",
+                                            "name" : "TV",
+                                            "info" : [
+                                                "LED, LCD, PDP, 울트라HE, 올레드<small>* 벽걸이/스탠드 자제 제외</small>"
+                                            ]
+                                        }, {
+                                            "img" : "/lg5-common/images/membership/img-prod02.jpg",
+                                            "name" : "김치 냉장고",
+                                            "info" : [
+                                                "김치 냉장고 전제품"
+                                            ]
+                                        }, {
+                                            "img" : "/lg5-common/images/membership/img-prod03.jpg",
+                                            "name" : "세탁기",
+                                            "info" : [
+                                                "트윈워시, 트롬, 통돌이, 미니세탁기(미니워시, 꼬망스)<small>* 세탁기 받침대 제외</small>"
+                                            ]
+                                        }, {
+                                            "img" : "/lg5-common/images/membership/img-prod04.jpg",
+                                            "name" : "냉장고",
+                                            "info" : [
+                                                "상냉장, 양문형, 정수기냉장고, 일반, 냉동고, 와인셀러"
+                                            ]
+                                        }, {
+                                            "img" : "/lg5-common/images/membership/img-prod05.jpg",
+                                            "name" : "에어컨",
+                                            "info" : [
+                                                "스탠드, 벽걸이<small>* 일반 냉난방기, 시스템 에어컨, 배관자재 제외</small>"
+                                            ]
+                                        }
+                                    ])
+                                </ul>
+                            </div>
 
                             @@include('./common/modules/bullet-list.html', {
                                 "topBorder" : true,

@@ -629,6 +629,13 @@
             max-width: 848px;
             width: 100%;
         }
+        &.type-C {
+            max-width: 520px;
+            width: 100%;
+        }
+        .btn-group {
+            margin-top: 0;
+        }
         @include mobile {
             max-width: calc(100% - 48px);
             .pop-conts {

@@ -619,3 +619,10 @@ footer {
         }
     }
 }
+.no-footer {
+    padding:24px 40px;
+    text-align:center;
+    @include mobile {
+        padding:24px 20px;
+    }
+}

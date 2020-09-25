@@ -18,5 +18,9 @@
         
         // 가입 안내
         @import "ACC4002";
+
+        .tit-desc + .product-list-wrap {
+            margin-top:32px;
+        }
     }
 }
