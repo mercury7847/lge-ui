@@ -9,14 +9,15 @@
 */
 
     var listItemTemplate =
-                '<li class={{liClass}}">'+
+                '<li class="lists {{liClass}}">'+
                 '<dl><dt><span class="img"><img src="{{modelImageAddr}}" alt="{{modelName}}"></span>'+
                 '<p><span class="blind">제품명</span>{{modelName}}</p>'+
                 '<p class="num"><span class="blind">제품번호</span>{{modelNumber}}</p></dt>'+
-                '<dd>구매수량 : {{purchaseQuantity}}</dd>'+
-                '<dd><span class="blind">구매처</span>{{purchaseStore}}</dd>'+
-                '<dd><span class="blind">구매일</span>{{purchaseDate}} 구매</dd>'+
-                '</dl></li>';
+                '<dd><ul class="infos">'+
+                '<li>구매수량 : {{purchaseQuantity}}</li>'+
+                '<li><span class="blind">구매처</span>{{purchaseStore}}</li>'+
+                '<li>{{purchaseDate}} 구매</li>'+
+                '</ul></dd></dl></li>';
 
     function searchPurchaseHistory(param) {
         var ajaxUrl = self.$dateFilter.data('url');
@@ -52,7 +53,7 @@
             } else {
                 self.$dateFilter.siblings('div.no-data').show();
             }
-            self.$dateFilter.siblings('ul.svc-prod-list').html(contentHtml);
+            self.$dateFilter.siblings('ul.product-lists').html(contentHtml);
         }).fail(function(d){
             alert(d.status + '\n' + d.statusText);
         });

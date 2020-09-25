@@ -1,4 +1,9 @@
+@@if ( context.liNum ) {
+<li class="lists @@liNum">
+}
+@@if ( !context.liNum ) {
 <li class="lists">
+}
     <dl>
         <dt>
             <span class="img"><img src="@@img" alt="@@name"></span>
