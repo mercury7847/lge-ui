@@ -37,6 +37,9 @@
                 margin-top:0;
             }
         }
+        &.type-relative {
+            position: relative;
+        }
     }
     @include mobile {
         margin-top:12px;
