@@ -48,42 +48,7 @@ $(function () {
             var firstRender = false;
 
 
-
-            //템플릿 설정 슬라이더, 체크박스, 칼라칩, 상품아이템             
-            var sliderTmpl = 
-            '<li data-id={{filterId}}><div class="head">'+
-                '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
-                    '<div class="tit">{{title}}</div>'+
-                    '<span class="blind ui_accord_text">내용 열기</span>'+
-                '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
-                '<div class="cont">'+
-                    '<div class="range-wrap"><div data-filter-id={{filterId}} class="ui_filter_slider {{uiName}}" data-input={{input}} data-range="{{range}}" data-min-label="minLabel" data-max-label="maxLabel"></div>'+
-                    '<p class="min range-num"></p><p class="max range-num"></p></div>'+
-            '</div></div></li>';
-
-            var checkboxTmpl = 
-            '<li data-id={{filterId}}><div class="head">'+
-                '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
-                    '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span> (0)</span></div>'+
-                    '<span class="blind ui_accord_text">내용 열기</span>'+
-                '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
-                '<div class="cont">'+
-                '{{#each (item, index) in list}}'+
-                '<div class="chk-wrap"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}}</label></div>'+
-                '{{/each}}' +
-            '</div></div></li>';
-
-            var colorChipTmpl = 
-            '<li data-id={{filterId}}><div class="head">'+
-                '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
-                    '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span> (0)</span></div>'+
-                    '<span class="blind ui_accord_text">내용 열기</span>'+
-                '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
-                '<div class="cont">'+
-                '{{#each (item, index) in list}}'+
-                '<div class="chk-wrap-colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}}</label></div>'+
-                '{{/each}}' +
-            '</div></div></li>';
+            //템플릿 설정 슬라이더, 체크박스, 칼라칩, 상품아이템      
 
             var productItemTmpl = 
             '<li class="">'+
@@ -516,6 +481,8 @@ $(function () {
 
 
                 // 서브카테고리 이벤트 처리 
+                //$('input[name="categoryCheckbox"]').trigger('change', true);
+
                 $('input[name="categoryCheckbox"]').on('change', function(e, noRequest){
 
                     if($('input[name="categoryCheckbox"]:checked').length < 2){
@@ -573,6 +540,7 @@ $(function () {
 
             // 슬라이더(가격,사이즈)정보를 filterValueId 로 변경합.
             function getSlideFilterValueId(arr, value, isMin){
+
                 var returnStr='';
                 var num = parseInt(value);
                 for(var i=0; i<arr.length; i++){
@@ -658,6 +626,7 @@ $(function () {
                     var productList = result.data && result.data[0].productList;
                     var pageInfo = result.data && result.data[0].pageInfo;
 
+
                     var filterObj = vcui.array.reduce(filterList, function (prev, cur) {
                         if(prev[cur['filterId']]) prev[cur['filterId']].push(cur);
                         else prev[cur['filterId']] = [cur];
@@ -731,10 +700,12 @@ $(function () {
                                 data : filterValues, 
                             });
                         }
-                    }                    
+                    }                       
+                    
                     newFilterArr.sort(function(a, b) { 
                         return parseInt(a.filterOrderNo) < parseInt(b.filterOrderNo) ? -1 : parseInt(a.filterOrderNo) > parseInt(b.filterOrderNo) ? 1 : 0;
                     });
+
                     savedFilterArr = newFilterArr;  
                     updateFilter(newFilterArr);
                     renderProdList(productList, totalCount);
@@ -749,7 +720,6 @@ $(function () {
             }
             
             init();
-
         });           
         
     })(
