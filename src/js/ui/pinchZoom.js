@@ -129,8 +129,8 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
             $(el).on('touchstart.pinchzoom', function (event) {
                 if(target.enabled) {
                     firstMove = true;
-                    fingers = event.touches.length;
-                    detectDoubleTap(event); 
+                    fingers = event.originalEvent.touches.length;
+                    detectDoubleTap(event.originalEvent); 
                        
                 }                
             });
@@ -138,24 +138,24 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
             $(el).on('touchmove.pinchzoom', function (event) {
                 if(target.enabled && !target.isDoubleTap) {
                     if (firstMove) {
-                        updateInteraction(event);
+                        updateInteraction(event.originalEvent);
                         if (interaction) {
-                            cancelEvent(event);
+                            cancelEvent(event.originalEvent);
                         }
-                        startTouches = targetTouches(event.touches);
+                        startTouches = targetTouches(event.originalEvent.touches);
                     } else {
                         switch (interaction) {
                             case 'zoom':
-                                if (startTouches.length == 2 && event.touches.length == 2) {
-                                    target._handleZoom(event, calculateScale(startTouches, targetTouches(event.touches)));
+                                if (startTouches.length == 2 && event.originalEvent.touches.length == 2) {
+                                    target._handleZoom(event.originalEvent, calculateScale(startTouches, targetTouches(event.originalEvent.touches)));
                                 }
                                 break;
                             case 'drag':
-                                target._handleDrag(event);
+                                target._handleDrag(event.originalEvent);
                                 break;
                         }
                         if (interaction) {
-                            cancelEvent(event);
+                            cancelEvent(event.originalEvent);
                             target.update();
                         }
                     }
@@ -166,8 +166,8 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
 
             $(el).on('touchend.pinchzoom', function (event) {
                 if(target.enabled) {
-                    fingers = event.touches.length;
-                    updateInteraction(event);
+                    fingers = event.originalEvent.touches.length;
+                    updateInteraction(event.originalEvent);
                 }
             });
 
@@ -177,7 +177,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
                 if(target.enabled) {
                     firstMove = true;
                     if(checkDoubleTap()){
-                        target._handleDoubleTap(event);
+                        target._handleDoubleTap(event.originalEvent);
                     }else{
                         target.isDoubleTap = false;
                         if(!isDragging){
@@ -192,9 +192,9 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
                 if(target.enabled){
                     if(isDragging) {
                         if (firstMove) {
-                            target._handleDragStart(event); 
+                            target._handleDragStart(event.originalEvent); 
                         } else {
-                            target._handleDrag(event);
+                            target._handleDrag(event.originalEvent);
                             target.update();
                         }    
                         firstMove = false;                        
