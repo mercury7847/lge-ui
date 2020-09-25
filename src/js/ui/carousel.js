@@ -2663,8 +2663,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             targetLeft = self.getLeft(targetSlide);
             slideLeft = self.getLeft(self.currentSlide);
 
-            console.log(targetLeft);
-
             self.currentLeft = self.swipeLeft === null ? slideLeft : self.swipeLeft;
 
             if (opt.infinite === false && opt.centerMode === false && (index < 0 || index > self.getDotCount() * opt.slidesToScroll)) {
