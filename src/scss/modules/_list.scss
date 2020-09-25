@@ -1,11 +1,12 @@
 // 제품리스트(gray-box list, script)
 .product-list-wrap {
     overflow:hidden;
+
     .product-lists {
         margin:-24px -12px 0;
         font-size:0;
         @include mobile {
-            margin-top:-12px;
+            margin:-12px -6px 0;
         }
         li.lists {
             display:inline-block;
@@ -22,11 +23,12 @@
                 padding:32px 0 28px;
                 border-radius:4px;
                 background:#f4f4f4;
-                text-align:center;
+                text-align:left;
                 overflow:hidden;
                 @include mobile {
                     margin:0 6px;
                     padding:0 0 20px;
+                    text-align:center;
                 }
                 dt {
                     position:relative;
@@ -80,6 +82,9 @@
                 dd {
                     margin-top:4px;
                     padding:0 40px;
+                    @include mobile {
+                        padding:0 12px;
+                    }
                     .infos {
                         li {
                             color:$color-1;
@@ -119,6 +124,13 @@
                     &::after {
                         transform:rotate(-45deg);
                     }
+                }
+            }
+        }
+        &.center {
+            li.lists {
+                dl {
+                    text-align:center;
                 }
             }
         }
