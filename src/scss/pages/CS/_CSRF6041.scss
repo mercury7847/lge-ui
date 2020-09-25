@@ -500,9 +500,9 @@
             .slide-wrap {
                 margin-top:16px;
                 padding-bottom:34px;
-                @include mobile {
-                    padding:0;
-                }
+                // @include mobile {
+                //     padding:0;
+                // }
                 .indi-wrap {
                     bottom:0;
                 }
@@ -510,6 +510,11 @@
                     margin:0 -8px;
                     @include mobile {
                         margin:0 -8px;
+                    }
+                    .slide-track {
+                        @include mobile {
+                            overflow:auto;
+                        }
                     }
                     .slide-conts {
                         height:auto;
