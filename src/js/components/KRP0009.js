@@ -5,6 +5,8 @@ $(function () {
         
         vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion', 'ui/carousel'], function () {
 
+
+
             // localStorage 
             var Storage = {
 
@@ -40,8 +42,26 @@ $(function () {
                 }
             }
 
-            
 
+            var locationObj = vcui.uri.parseUrl(window.location);
+            var storageName = encodeURIComponent(locationObj.path)+'_lgeProductFilter';
+            var storageNameExpire = encodeURIComponent(locationObj.path)+'_lgeProductFilter_expire'; // 만료일 
+            var expire = Storage.get(storageNameExpire);				
+
+            if(expire && expire.expireDate < new Date().getTime()){
+                Storage.remove(storageName);
+                Storage.remove(storageNameExpire);
+                console.log('remove expire')
+            }
+
+            Storage.set(storageNameExpire, {'expireDate' : new Date().getTime() + (20*1000)});	//24*3600000 // 20초로 테스트중 만료일 설정 
+            var storageFilters = Storage.get(storageName);	
+
+
+            var savedFilterArr = [];
+            var firstRender = false;
+
+            //template     
             
             var sliderTmpl = 
             '<li data-id={{filterId}}><div class="head">'+
@@ -57,7 +77,7 @@ $(function () {
             var checkboxTmpl = 
             '<li data-id={{filterId}}><div class="head">'+
                 '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
-                    '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span>{{count}}</span></div>'+
+                    '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span> (0)</span></div>'+
                     '<span class="blind ui_accord_text">내용 열기</span>'+
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
@@ -69,7 +89,7 @@ $(function () {
             var colorChipTmpl = 
             '<li data-id={{filterId}}><div class="head">'+
                 '<a href="#{{headId}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">'+
-                    '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span>{{count}}</span></div>'+
+                    '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수</span> (0)</span></div>'+
                     '<span class="blind ui_accord_text">내용 열기</span>'+
                 '</a></div><div class="desc ui_accord_content" id="{{headId}}">'+
                 '<div class="cont">'+
@@ -77,87 +97,6 @@ $(function () {
                 '<div class="chk-wrap-colorchip {{item.filterName}}"><input type="checkbox" name={{filterId}} value={{item.value}} id="{{item.value}}" {{item.enable}}><label for="{{item.value}}">{{item.title}}</label></div>'+
                 '{{/each}}' +
             '</div></div></li>';
-            /* 
-                    
-
-                "modelId": "MD07501035",
-                "modelName": "OLED65GXPUA",
-                "categoryId": "CT10000018",
-                "wtbUseFlag": "Y",
-                "whereToBuyUrl": "/us/tvs/lg-oled65gxpua-oled-4k-tv#pdp_where",
-                "findTheDealerUrl": null,
-                "inquiryToBuyUrl": null,
-                "retailerPricingFlag": "N",
-                "retailerPricingText": "See Retailer for Pricing",
-                "wtbExternalLinkUseFlag": "N",
-                "wtbExternalLinkName": "",
-                "wtbExternalLinkUrl": "",
-                "wtbExternalLinkSelfFlag": "",
-                "inquiryToBuyFlag": "N",
-                "modelRollingImgList": "/us/images/tvs/md07501035/350.jpg",
-                "addToCartFlag": "Y",
-                "whereToBuyFlag": "Y",
-                "findTheDealerFlag": "N",
-                "modelUrlPath": "/us/tvs/lg-oled65gxpua-oled-4k-tv",
-                "categoryName": "TVs",
-                "reviewRating": "22",
-                "reviewRatingStar": "5",
-                "reviewRatingStar2": "4.6",
-                "reviewRatingPercent": "91",
-                "modelStatusCode": "ACTIVE",
-                "bizType": "B2C",
-                "rPrice": "3499",
-                "rPriceCent": "99",
-                "rPromoPrice": "2799",
-                "rPromoPriceCent": "99",
-                "rDiscountedPrice": "700",
-                "rDiscountedPriceCent": "00",
-                "discountedRate": "20",
-                "userFriendlyName": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
-                "mediumImageAddr": "/us/images/tvs/md07501035/350.jpg",
-                "smallImageAddr": "/us/images/tvs/md07501035/260.jpg",
-                "imageAltText": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
-                "defaultProductTag": "NEW",
-                "productTag1": "NEW",
-                "productTag2": "BEST",
-                "siblingLocalValue": "65\"",
-                "siblingCode": "65",
-                "siblingType": "INCH",
-                "siblingModels": [{
-
-                    "modelName": "OLED77GXPUA",
-                    "siblingCode": "77",
-                    "siblingValue": "77\"",
-                    "modelId": "MD07500034"
-
-                }, {
-
-                    "modelName": "OLED65GXPUA",
-                    "siblingCode": "65",
-                    "siblingValue": "65\"",
-                    "modelId": "MD07501035"
-
-                }, {
-
-                    "modelName": "OLED55GXPUA",
-                    "siblingCode": "55",
-                    "siblingValue": "55\"",
-                    "modelId": "MD07501036"
-
-                }],
-
-"specInfos": [{
-    "specName": "Operating System",
-    "specInfo": "webOS"
-}],
-"promotionText1": "OLED TV Deals1",
-"promotionText2": "OLED TV Deals2",
-"bigPromotionText" : "Big Sale",
-"bigPromotionImage": "/lg5-common/images/dummy/@img-promotion-badge.png",
-
-                "salesModelCode": "OLED65GXPUA",
-                ""
-            */
 
             var productItemTmpl = 
             '<li class="">'+
@@ -300,34 +239,7 @@ $(function () {
                         '{{/if}}'+                         
                     '</div>'+
                 '</div>'+
-            '</li>';
-
-            
-
-            var bannerTmpl = 
-            '<li class="item-banner {{isLarge}}">' + 
-                '<div class="item">' +
-                    '<div class="product-image">' +
-                        '<a href="#">' +
-                            '<img data-pc-src="{{bannerImage}}" data-m-src="{{bannerMobileImage}}" alt="">' +
-                        '</a>'+
-                    '</div>'+
-                    '<div class="banner-contents">'+
-                        '<div class="inner">'+
-                            '<div class="banner-flag">'+
-                                '<span class="flag">{{bannerTitle}}</span>'+
-                            '</div>'+
-                            '<div class="banner-info">'+
-                                '<div class="title">{{bannerCopy}}</div>'+
-                                '<div class="sub-copy">{{bannerSubCopy}}</div>'+
-                            '</div>'+
-                            '<div class="banner-button">'+
-                                '<a href="#" data-id={{}} class="btn">자세히 보기</a>'+
-                            '</div>'+
-                        '</div>'+
-                    '</div>'+
-                '</div>'+
-            '</li>';
+            '</li>';     
 
             var paginationTmpl =             
             '<a href="#" data-id="{{prevNo}}" class="prev {{#if !leftPage}}disabled{{/if}}"><span class="blind">이전 페이지 보기</span></a>' +            
@@ -342,22 +254,25 @@ $(function () {
             '</span>'+
             '<a href="#" data-id="{{nextNo}}" class="next {{#if !rightPage}}disabled{{/if}}"><span class="blind">다음 페이지 보기</span></a>'      
 
+            
 
-            var isRender = false;
-            var locationObj = vcui.uri.parseUrl(window.location);
-            var storageName = encodeURIComponent(locationObj.path)+'_lgeProductFilter';
-            var storageNameExpire = encodeURIComponent(locationObj.path)+'_lgeProductFilter_expire'; // 만료일 
-            var expire = Storage.get(storageNameExpire);				
 
-            if(expire && expire.expireDate < new Date().getTime()){
-                Storage.remove(storageName);
-                Storage.remove(storageNameExpire);
-                console.log('remove expire')
+
+
+            // filter/storage reset
+            function reset(id){
+                var obj = Storage.get(storageName);	
+                for(var key in obj){	                        
+                    var $parent = $('[data-id="'+ key +'"]');
+                    $parent.find('input[name="'+key+'"]').prop('checked', false);                    
+                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                       $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', 'Min,Max');
+                    }
+                }
+                storageFilters = {};
+                Storage.remove(storageName);                				
+                requestData({});
             }
-
-            Storage.set(storageNameExpire, {'expireDate' : new Date().getTime() + (20*1000)});	//24*3600000 // 20초로 테스트중 만료일 설정 
-            var storageFilters = Storage.get(storageName);	
-
 
 
             // range slider  
@@ -371,7 +286,7 @@ $(function () {
             }
 
 
-            function setApplyFilter(obj, noRequest){		
+            function setApplyFilter(obj, noRequest){	
 
                 for(var key in obj){		
                     var $parent = $('[data-id="'+ key +'"]');
@@ -387,20 +302,7 @@ $(function () {
                 if(!noRequest) requestData(obj);
             }            
 
-            function reset(id){
-
-                var obj = Storage.get(storageName);	
-                for(var key in obj){	                        
-                    var $parent = $('[data-id="'+ key +'"]');
-                    $parent.find('input[name="'+key+'"]').prop('checked', false);                    
-                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
-                       $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', 'Min,Max');
-                    }
-                }
-                storageFilters = {};
-                Storage.remove(storageName);                				
-                requestData({});
-            }
+            
 
             function updateFilter(arr){
 
@@ -412,12 +314,14 @@ $(function () {
                     for(var j=0; j<itemArr.length; j++){
                         $parent.find('input[value="'+ itemArr[j]['filterValueId']+'"]').prop('disabled', itemArr[j]['enable']=='N');
                         // $parent.find('label[for="'+ itemArr[j]['filterValueId']+'"]').text(itemArr[j]['filterValueName'] +' ('+ itemArr[j]['modelCount']+')');
-                        $parent.find('label[for="'+ itemArr[j]['filterValueId']+'"]').text(itemArr[j]['filterValueName']);
+                        //$parent.find('label[for="'+ itemArr[j]['filterValueId']+'"]').text(itemArr[j]['rangePointStyle'] || itemArr[j]['filterValueName']);
                     }
+
+                    var len = $parent.find('input:checked').length;
+                    $parent.find('.sel_num').html('<span class="blind">총 선택 갯수</span> ('+ len +')</span>');
+
                 }
             }
-
-
 
             /////////////////////////////////////////////////////////////////////////////////////
 
@@ -438,7 +342,7 @@ $(function () {
             // 브레이크포인터 처리
             function fnBreakPoint(){
                 var name = window.breakpoint.name;
-                $('.ui_plp_carousel').off('mouseover mouseout mouseleave');
+                $('.ui_plp_carousel').off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
                 if(name=="mobile"){
                     $('.ui_plp_carousel').off('mouseover mouseout mouseleave').vcCarousel("setOption", {autoplay:false,'speed':300}, true);
 
@@ -448,13 +352,16 @@ $(function () {
             }
 
 
-            function renderProdList(arr){
+            function renderProdList(arr, totalCnt){
 
                 _$(window).off('breakpointchange.filter');
-                // $('.product-items-wrap .items-list').empty();
+                $('.product-items-wrap .items-list').empty();
+                $('#totalCount').text('총 '+totalCnt+'개');
 
                 var images = '/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg';
                 //var images = '/lg5-common/images/dummy/@img-product.jpg';
+
+                var html = '';
                 
                 for(var i=0; i<arr.length; i++){
                     var data = arr[i];
@@ -486,19 +393,17 @@ $(function () {
                         isBenefit : isBenefit, 
                         isCareShip : isCareShip
                     });   
-                    var html = vcui.template(productItemTmpl,obj);
-
-                    $('.product-items-wrap .items-list').append(html);
+                    html += vcui.template(productItemTmpl,obj);                    
                 }
 
-                $('.ui_plp_carousel').vcCarousel({
+                $('.product-items-wrap .items-list').html(html);
 
+                $('.ui_plp_carousel').vcCarousel('destroy').vcCarousel({
                     indicatorNoSeparator:/##no##/,
                     infinite:true, 
                     autoplaySpeed:500, 
                     speed:0, 
-                    easing:'easeInOutQuad',                    
-
+                    easing:'easeInOutQuad'
                 });
 
                 _$(window).on('breakpointchange.filter', function(e,data){
@@ -506,7 +411,6 @@ $(function () {
                 });
 
                 fnBreakPoint();
-
             }
             
             
@@ -522,11 +426,12 @@ $(function () {
             }
 
             function renderFilter(arr){
-                if(isRender) {
+
+                if(firstRender){
                     updateFilter(arr);
                     return;
-                }     
-                
+                }
+
                 var html = '';
 
                 for(var i=0; i<arr.length; i++){
@@ -554,7 +459,6 @@ $(function () {
                                     title:dItem['rangePointStyle'], 
                                     filterName : dItem['filterValueName'],
                                     value:dItem['filterValueId'], 
-                                    // modelCount : String(dItem['modelCount']), 
                                     enable:dItem['enable'] == 'N'? 'disabled' : '',
                                 }
                             });
@@ -563,7 +467,6 @@ $(function () {
                                 filterId : item['filterId'],
                                 headId : 'headId_'+i,
                                 title : item['filterName'],
-                                count : '',//item['modelCount'],
                                 list : dArr
                             });
 
@@ -573,7 +476,6 @@ $(function () {
                                     title:dItem['filterValueName'], 
                                     filterName : dItem['filterValueName'],
                                     value:dItem['filterValueId'], 
-                                    // modelCount:String(dItem['modelCount']), 
                                     enable:dItem['enable'] == 'N'? 'disabled' : '',
                                 }
                             });
@@ -582,18 +484,14 @@ $(function () {
                                 filterId : item['filterId'],
                                 headId : 'headId_'+i,
                                 title : item['filterName'],
-                                count : '',//item['modelCount'],
                                 list : dArr
                             });
                         }
-                    }
-                    
+                    }                    
                 }
 
-                $('.ui_filter_accordion ul').append(html);
-                isRender = true;
-
-                /*
+                $('.ui_filter_accordion ul').html(html);
+                
                 $('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged',function (e, data) {
 
                     $(e.currentTarget).siblings('.min').text(vcui.number.addComma(data.minValue));
@@ -608,105 +506,190 @@ $(function () {
     
                 $('.ui_order_accordion').vcAccordion();
                 $('.ui_filter_accordion').vcAccordion();
-                */
-
-
+                
                 setApplyFilter(storageFilters, true);
             }
 
+            function init(){
+
+                bindEvent();
+                $('input[name="categoryCheckbox"]:checked').change(); // 이벤트 초기실행
+                fnBreakPoint(); // breackpoint 이벤트 초기실행
+
+                //if(!vcui.isEmpty(storageFilters)){
+                    setApplyFilter(storageFilters);
+                //}
+
+
+            }
 
             //이벤트 바인딩
+            function bindEvent(){
 
-            isRender = true;
+               $('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged',function (e, data) {
 
+                    $(e.currentTarget).siblings('.min').text(vcui.number.addComma(data.minValue));
+                    $(e.currentTarget).siblings('.max').text(vcui.number.addComma(data.maxValue));
 
-            $('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged',function (e, data) {
+                    if(e.type=='rangesliderchanged'){
+                        var filterId = $(e.currentTarget).data('filterId');
+                        setSliderData(filterId, data);
+                    }
 
-                $(e.currentTarget).siblings('.min').text(vcui.number.addComma(data.minValue));
-                $(e.currentTarget).siblings('.max').text(vcui.number.addComma(data.maxValue));
+                }).vcRangeSlider({mode:true});
 
-                if(e.type=='rangesliderchanged'){
-                    var filterId = $(e.currentTarget).data('filterId');
-                    setSliderData(filterId, data);
-                }
+                $('.ui_order_accordion').vcAccordion();
+                $('.ui_filter_accordion').vcAccordion();
 
-            }).vcRangeSlider({mode:true});
-
-            $('.ui_order_accordion').vcAccordion();
-            $('.ui_filter_accordion').vcAccordion();
-
-            $('.ui_filter_accordion').on('accordionexpand', function(e,data){
-
-                if(data.content.find('.ui_filter_slider')) {
-                    data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
-                }   
-            });
-
-            
-            $('.ui_filter_accordion').on('change', 'input', function(e){
-                var name = e.target.name;
-                var valueStr = "";
-                $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
-                    valueStr = valueStr + item.value+','
+                $('.ui_filter_accordion').on('accordionexpand', function(e,data){
+                    if(data.content.find('.ui_filter_slider').length > 0) {
+                        data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
+                    }   
                 });
-                valueStr = valueStr.replace(/,$/,'');
+
                 
-                if(valueStr==''){
-                    delete storageFilters[name];
-                    Storage.remove(storageName, name);
-                }else{
-                    storageFilters[name] = valueStr;
-                    Storage.set(storageName, storageFilters);
+                $('.ui_filter_accordion').on('change', 'input', function(e){
+
+                    var name = e.target.name;
+                    var valueStr = "";
+                    $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
+                        valueStr = valueStr + item.value+','
+                    });
+                    valueStr = valueStr.replace(/,$/,'');
+                    
+                    if(valueStr==''){
+                        delete storageFilters[name];
+                        Storage.remove(storageName, name);
+                    }else{
+                        storageFilters[name] = valueStr;
+                        Storage.set(storageName, storageFilters);
+                    }
+                    setApplyFilter(storageFilters);
+                });
+
+                $('#filterModalLink').on('click', function(e){
+                    e.preventDefault();
+                    $('.lay-filter').addClass('open');
+                });
+
+                $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
+                    e.preventDefault();
+                    $('.lay-filter').removeClass('open');
+                });
+
+                $('input[name="sorting"]').on('change', function(e){
+                    e.preventDefault();
+                    var idx = $('input[name="sorting"]').index(this);
+                    $('.ui_sorting_selectbox').vcSelectbox('selectedIndex', idx, false);
+                    setApplyFilter(storageFilters);
+                });
+                
+                // 초기화버튼
+                $('#filterResetBtn').on('click', function(){
+                    reset();
+                });
+
+                $('.ui_reset_btn').on('click', function(){
+                    reset();
+                });
+
+                
+                // sorting dls
+                $('.ui_sorting_selectbox').on('change', function(e,data){
+                    var value = e.target.value;
+                    $('input[name="sorting"][value="'+ value +'"]').prop('checked', true).change();
+                }).vcSelectbox();
+
+                $('input[name="categoryCheckbox"]').on('change', function(e){
+
+                    if($('input[name="categoryCheckbox"]:checked').length < 2){
+                        $(e.currentTarget).prop('checked', true);
+                    }else{
+                        $('input[name="categoryCheckbox"][value="'+ e.target.value +'"]').prop('checked', e.target.checked);
+                    }
+                    
+                    var len = $('input[name="categoryCheckbox"]:checked').length/2;
+                    $('#categoryCnt').text(len + '개 선택');
+                });
+
+                $('.ui_plp_carousel').vcCarousel({
+
+                    indicatorNoSeparator:/##no##/,
+                    infinite:true, 
+                    autoplaySpeed:500, 
+                    speed:0, 
+                    easing:'easeInOutQuad',                    
+
+                });
+
+
+                _$(window).on('breakpointchange.filter', function(e,data){
+                    fnBreakPoint();
+                });     
+            }
+
+
+            function getSlideFilterValueId(arr, value){
+
+                var returnStr='';
+                var num = parseInt(value);
+                for(var i=0; i<arr.length; i++){
+                    var value1 = parseInt(arr[i]['filterValueName']);
+                    var value2 = parseInt(arr[i+1] && arr[i+1]['filterValueName']);
+                    if(value1 <= num && value2 >= num ){
+                        if(Math.abs(value1-num) > Math.abs(value2-num)){
+                            returnStr = arr[i]['filterValueId'];
+                        }else{
+                            returnStr = arr[i+1]['filterValueId'];
+                        }
+                        break;
+                    }
                 }
-                setApplyFilter(storageFilters);
-            });
+                return returnStr;
+            }
 
-            $('#filterModalLink').on('click', function(e){
-                e.preventDefault();
-                $('.lay-filter').addClass('open');
-            });
+            function convertPostData(obj){
+                var nObj = {};
 
-            $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
-                e.preventDefault();
-                $('.lay-filter').removeClass('open');
-            });
+                for(var key in obj){
+                    var fArr = vcui.array.filter(savedFilterArr, function(item){
+                        return item.filterId == key && item.filterTypeCode=='00';
+                    });
 
-            $('input[name="sorting"]').on('change', function(e){
-                e.preventDefault();
-                var idx = $('input[name="sorting"]').index(this);
-                $('.ui_sorting_selectbox').vcSelectbox('selectedIndex', idx, false);
-                setApplyFilter(storageFilters);
-            });
+                    if(fArr.length>0){
+                        var filterName = fArr[0]['filterName'].toLowerCase();
+                        if(filterName == 'price' || filterName == 'size'){
+                            var values = fArr[0]['data'];
+                            var sArr = obj[key].split(',');
+                            if(sArr.length>1){
+                                if(vcui.isNumber(parseInt(sArr[0]))){
+                                    nObj[filterName+'Min'] = getSlideFilterValueId(values, sArr[0]);
+                                }else{
+                                    nObj[filterName+'Min'] = '';
+                                }
+                                if(vcui.isNumber(parseInt(sArr[1]))){
+                                    nObj[filterName+'Max'] = getSlideFilterValueId(values, sArr[1]);
+                                }else{
+                                    nObj[filterName+'Max'] = '';
+                                }
+                            }
+                            delete obj[key];
+                        }
+                    }
+                }
+
+                nObj = vcui.extend(obj, nObj);
+                return nObj;
+            }
+
             
-            $('#filterResetBtn').on('click', function(){
-                reset();
-            });
-
-            $('.ui_sorting_selectbox').on('change', function(e,data){
-                var value = e.target.value;
-                $('input[name="sorting"][value="'+ value +'"]').prop('checked', true).change();
-            }).vcSelectbox();
-
-            $('input[name="categoryCheckbox"]').on('change', function(e){
-
-                if($('input[name="categoryCheckbox"]:checked').length < 2){
-                    $(e.currentTarget).prop('checked', true);
-                }else{
-                    $('input[name="categoryCheckbox"][value="'+ e.target.value +'"]').prop('checked', e.target.checked);
-                }
-                
-                var len = $('input[name="categoryCheckbox"]:checked').length/2;
-                $('#categoryCnt').text(len + '개 선택');
-            });
-
-            $('input[name="categoryCheckbox"]:checked').change();
-            //이벤트 바인딩 end
-
 
             function requestData(obj){
 
+                lgkorUI.showLoading();
+
                 var nObj = vcui.extend(obj,{sorting:$('input[name="sorting"]:checked').val()});
-                console.log(nObj);
+                console.log('requestData: ', convertPostData(nObj));
 
                 var idx = Math.random() > 0.5? 1 : 0;
                 //var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList'+idx+'.json'; // 테스트용
@@ -717,7 +700,7 @@ $(function () {
                     type : "GET",
                     url : ajaxUrl,
                     dataType : "json",
-                    data : nObj
+                    data : convertPostData(nObj)
 
                 }).done(function(result) {
 
@@ -813,16 +796,24 @@ $(function () {
                         return parseInt(a.filterOrderNo) < parseInt(b.filterOrderNo) ? -1 : parseInt(a.filterOrderNo) > parseInt(b.filterOrderNo) ? 1 : 0;
                     });
 
-                   renderFilter(newFilterArr);
-                   renderProdList(productList);
-                   renderPagination(pageInfo);
+                    savedFilterArr = newFilterArr;
+                    
+                    firstRender = true; //
+                    renderFilter(newFilterArr);
+                    renderProdList(productList, totalCount);
+                    renderPagination(pageInfo);
+                    firstRender = true;
+
+                    lgkorUI.hideLoading();
+                   
 
                 }).fail(function(error) {
-                    // console.error(error);
+                    console.error(error);
+                    lgkorUI.hideLoading();
                 })
             }
 
-            setApplyFilter(storageFilters, true);
+            init();
 
         });           
         
@@ -832,3 +823,82 @@ $(function () {
         }, $
     );
 });
+
+/*     
+"modelId": "MD07501035",
+"modelName": "OLED65GXPUA",
+"categoryId": "CT10000018",
+"wtbUseFlag": "Y",
+"whereToBuyUrl": "/us/tvs/lg-oled65gxpua-oled-4k-tv#pdp_where",
+"findTheDealerUrl": null,
+"inquiryToBuyUrl": null,
+"retailerPricingFlag": "N",
+"retailerPricingText": "See Retailer for Pricing",
+"wtbExternalLinkUseFlag": "N",
+"wtbExternalLinkName": "",
+"wtbExternalLinkUrl": "",
+"wtbExternalLinkSelfFlag": "",
+"inquiryToBuyFlag": "N",
+"modelRollingImgList": "/us/images/tvs/md07501035/350.jpg",
+"addToCartFlag": "Y",
+"whereToBuyFlag": "Y",
+"findTheDealerFlag": "N",
+"modelUrlPath": "/us/tvs/lg-oled65gxpua-oled-4k-tv",
+"categoryName": "TVs",
+"reviewRating": "22",
+"reviewRatingStar": "5",
+"reviewRatingStar2": "4.6",
+"reviewRatingPercent": "91",
+"modelStatusCode": "ACTIVE",
+"bizType": "B2C",
+"rPrice": "3499",
+"rPriceCent": "99",
+"rPromoPrice": "2799",
+"rPromoPriceCent": "99",
+"rDiscountedPrice": "700",
+"rDiscountedPriceCent": "00",
+"discountedRate": "20",
+"userFriendlyName": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
+"mediumImageAddr": "/us/images/tvs/md07501035/350.jpg",
+"smallImageAddr": "/us/images/tvs/md07501035/260.jpg",
+"imageAltText": "LG GX 65 inch Class with Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5\" Diag) ",
+"defaultProductTag": "NEW",
+"productTag1": "NEW",
+"productTag2": "BEST",
+"siblingLocalValue": "65\"",
+"siblingCode": "65",
+"siblingType": "INCH",
+"siblingModels": [{
+
+    "modelName": "OLED77GXPUA",
+    "siblingCode": "77",
+    "siblingValue": "77\"",
+    "modelId": "MD07500034"
+
+}, {
+
+    "modelName": "OLED65GXPUA",
+    "siblingCode": "65",
+    "siblingValue": "65\"",
+    "modelId": "MD07501035"
+
+}, {
+
+    "modelName": "OLED55GXPUA",
+    "siblingCode": "55",
+    "siblingValue": "55\"",
+    "modelId": "MD07501036"
+
+}],
+
+"specInfos": [{
+    "specName": "Operating System",
+    "specInfo": "webOS"
+}],
+"promotionText1": "OLED TV Deals1",
+"promotionText2": "OLED TV Deals2",
+"bigPromotionText" : "Big Sale",
+"bigPromotionImage": "/lg5-common/images/dummy/@img-promotion-badge.png",
+
+"salesModelCode": "OLED65GXPUA"
+*/

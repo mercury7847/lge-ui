@@ -36,7 +36,6 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
             scrollTopOffset: 0,
             activeClass: "active",
             selectedClass: 'on',
-            parentClass: '.ui_accordion',
             itemClosest: 'li',
             itemSelector: '>ul>li',
             toggleSelector: ">.head>.ui_accord_toggle",
@@ -61,13 +60,7 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
 
             if (self.supr(el, options) === false) {
                 return;
-            }      
-            
-            self._setting();
-        },
-
-        _setting: function(){
-            var self = this;
+            }
 
             self._buildARIA();
             self._bindEvent();
@@ -90,6 +83,7 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
                     });
                 }
             }
+            
         },
 
         _buildARIA: function _buildARA() {
@@ -129,29 +123,17 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
             var o = self.options;
             self.$items = self.$(o.itemSelector);
         },
+        
 
         /**
          * 해제 메소드
          */
-        destroy: function () {
-            var self = this;
-            var o = self.options;
+        // destroy: function () {
+        //     var self = this;
+        //     self.off("click", o.itemSelector + o.toggleSelector);
+        //     self.off(eventBeforeExpand);
 
-            self.off("click", o.itemSelector + o.toggleSelector);
-            self.off(eventBeforeExpand);
-
-            var tempOpt = self.options.singleOpen;
-            self.options.singleOpen = false;
-            self.expandAll();
-
-            self.options.singleOpen = tempOpt;
-        },
-
-        restart: function(){
-            var self = this;
-
-            self._setting();
-        },
+        // },
 
         /**
          * 이벤트 바인딩
@@ -163,7 +145,7 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
             // 토글버튼 클릭됐을 때
 
             self.on("click", o.itemSelector + o.toggleSelector, function (e) {
-                
+                e.preventDefault();
 
                 //self.updateSelectors();
                 var $item = $(this).closest(o.itemClosest),
@@ -171,19 +153,10 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
                     index = $items.index($item);
 
                 if ($item.hasClass(o.selectedClass)) {
-                    var href = $item.find(o.toggleSelector).find('> a').attr('href');
-                    if(href != "#n" && href != "" && href != "#"){
-                        //location.href = href;
-                    } else{
-                        e.preventDefault();
-                    }
-
                     self.collapse(index, self.options.useAnimate, function () {
                         $item.addClass(o.activeClass);
                     });
                 } else {
-                    e.preventDefault();
-
                     self.expand(index, self.options.useAnimate);
                 }
             });
@@ -192,7 +165,7 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
                 // 아코디언 요소가 따로 떨어져 있는 것을 data-accord-group속성을 묶고,
                 // 하나가 열리면 그룹으로 묶여진 다른 아코디언에 열려진게 있으면 닫아준다.
                 self.on(eventBeforeExpand, function (e) {
-                    $(o.parentClass + '[data-accord-group=' + o.accordGroup + '], ' + '.ui_accordion_list[data-accord-group=' + o.accordGroup + ']').not(self.$el).vcAccordion('collapse').find(o.itemSelector).removeClass(o.selectedClass);
+                    $('.ui_accordion[data-accord-group=' + o.accordGroup + '], ' + '.ui_accordion_list[data-accord-group=' + o.accordGroup + ']').not(self.$el).vcAccordion('collapse').find(o.itemSelector).removeClass(o.selectedClass);
                 });
             }
         },
@@ -273,9 +246,6 @@ vcui.define('ui/accordion', ['jquery', 'vcui'], function ($, core) {
                 index = oldIndex;
             }
 
-
-            //console.log($items.eq(oldIndex).find(opts.parentClass))
-            //data.header.find(opts.parentClass).vcAccordion('collapse').find(opts.itemSelector).removeClass(opts.selectedClass);
 
             if (index < 0) {
                 return;
