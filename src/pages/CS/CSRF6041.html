@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["CSR/CSR"]
+        pageCSS: ["CS/CS"]
     })
 <body>
     <div class="wrap">
@@ -33,12 +33,14 @@
                                     <p class="txt">“LG전자 강남 본점을 찾아주셔서 감사합니다. 친철하고 편안하게 모시겠습니다.”</p>
                                 </div>
                             </div>
-                            <ul class="sns-list">
-                                <li><a href="#n" class="ico-btn url"><span class="blind">URL 공유하기</span></a></li>
-                                <li><a href="#n" class="ico-btn kk"><span class="blind">카카오톡 공유하기</span></a></li>
-                                <li><a href="#n" class="ico-btn fb"><span class="blind">페이스북 공유하기</span></a></li>
-                                <li><a href="#n" class="ico-btn tw"><span class="blind">트위터 공유하기</span></a></li>
-                            </ul>
+                            <div class="sns-wrap">
+                                <ul class="sns-list">
+                                    <li><a href="#n" class="ico-btn url"><span class="blind">URL로 페이지 공유하기</span></a></li>
+                                    <li><a href="#n" class="ico-btn kk"><span class="blind">카카오톡 페이지 공유하기</span></a></li>
+                                    <li><a href="#n" class="ico-btn fb"><span class="blind">페이스북 페이지 공유하기</span></a></li>
+                                    <li><a href="#n" class="ico-btn tw"><span class="blind">트위터 페이지 공유하기</span></a></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="right-box">
                             <!-- 매장안내 -->
@@ -49,16 +51,15 @@
                                     <dd>
                                         <ul class="item">
                                             <li>
-                                                <!-- <span class="key"><span>평</span><span>일</span></span> -->
-                                                <span class="key">평일</span>
+                                                <span class="key"><span>평</span><span>일</span></span>
                                                 <span class="value">10:30~20:30</span>
                                             </li>
                                             <li>
-                                                <span class="key">토요일</span>
+                                                <span class="key"><span>토</span><span>요</span><span>일</span></span>
                                                 <span class="value">10:30~20:30</span>
                                             </li>
                                             <li>
-                                                <span class="key">일요일</span>
+                                                <span class="key"><span>일</span><span>요</span><span>일</span></span>
                                                 <span class="value">10:30~20:30</span>
                                             </li>
                                         </ul>
@@ -72,8 +73,14 @@
                                 <dl>
                                     <dt>주소</dt>
                                     <dd>
-                                        <p class="addr">[도로명] 서울특별시 강남구 도산대로 403 (청담동)</p>
-                                        <p class="addr">[지번] 서울특별시 강남구 청담동 86-1 LG 청담빌딩 1층</p>
+                                        <div class="addr-info">
+                                            <span class="key"><span>[</span><span>도</span><span>로</span><span>명</span>]</span></span>
+                                            <p class="addr">서울특별시 강남구 도산대로 403 (청담동)</p>
+                                        </div>
+                                        <div class="addr-info">
+                                            <span class="key"><span>[</span><span>지</span><span>번</span><span>]</span></span>
+                                            <p class="addr">서울특별시 강남구 청담동 86-1 LG 청담빌딩 1층</p>
+                                        </div>
                                     </dd>
                                 </dl>
                                 <dl>
@@ -81,11 +88,11 @@
                                     <dd>
                                         <ul class="item">
                                             <li>
-                                                <span class="key">전화</span>
+                                                <span class="key"><span>전</span><span>화</span></span>
                                                 <span class="value">02-3448-5191</span>
                                             </li>
                                             <li>
-                                                <span class="key">팩스</span>
+                                                <span class="key"><span>팩</span><span>스</span></span>
                                                 <span class="value">02-3448-5190</span>
                                             </li>
                                         </ul>
@@ -102,15 +109,15 @@
                                     <dd>
                                         <ul class="item">
                                             <li>
-                                                <span class="key">평일</span>
+                                                <span class="key"><span>평</span><span>일</span></span>
                                                 <span class="value">09:00~18:00</span>
                                             </li>
                                             <li>
-                                                <span class="key">토요일</span>
+                                                <span class="key"><span>토</span><span>요</span><span>일</span></span>
                                                 <span class="value">09:00~13:00</span>
                                             </li>
                                             <li>
-                                                <span class="key">일요일</span>
+                                                <span class="key"><span>일</span><span>요</span><span>일</span></span>
                                                 <span class="value">휴무</span>
                                             </li>
                                         </ul>
@@ -185,29 +192,37 @@
                                         <div class="slide-track ui_carousel_track">
                                             <!-- slide -->
                                             <div class="slide-conts ui_carousel_slide">
-                                                <div class="img">
-                                                    <img src="/lg5-common/images/dummy/@img-store01.jpg" alt="매장사진">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store01.jpg" alt="매장사진">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- //slide -->
                                             <!-- slide -->
                                             <div class="slide-conts ui_carousel_slide">
-                                                <div class="img">
-                                                    <img src="/lg5-common/images/dummy/@img-store02.jpg" alt="매장사진">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store02.jpg" alt="매장사진">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- //slide -->
                                             <!-- slide -->
                                             <div class="slide-conts ui_carousel_slide">
-                                                <div class="img">
-                                                    <img src="/lg5-common/images/dummy/@img-store01.jpg" alt="매장사진">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store01.jpg" alt="매장사진">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- //slide -->
                                             <!-- slide -->
                                             <div class="slide-conts ui_carousel_slide">
-                                                <div class="img">
-                                                    <img src="/lg5-common/images/dummy/@img-store02.jpg" alt="매장사진">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store02.jpg" alt="매장사진">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- //slide -->
@@ -230,45 +245,53 @@
                                         <div class="slide-track ui_carousel_track">
                                             <!-- slide -->
                                             <div class="slide-conts ui_carousel_slide">
-                                                <div class="img">
-                                                    <img src="/lg5-common/images/dummy/@img-store03.jpg" alt="매장사진">
-                                                </div>
-                                                <div class="desc">
-                                                    <p class="subject">결혼X이사 이벤트</p>
-                                                    <p class="date">2020.03.03~2020.09.21</p>
-                                                </div>
-                                            </div>
-                                            <!-- //slide -->
-                                            <!-- slide -->
-                                            <div class="slide-conts ui_carousel_slide">
-                                                <div class="img">
-                                                    <img src="/lg5-common/images/dummy/@img-store04.jpg" alt="매장사진">
-                                                </div>
-                                                <div class="desc">
-                                                    <p class="subject">결혼X이사 이벤트</p>
-                                                    <p class="date">2020.03.03~2020.09.21</p>
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store03.jpg" alt="매장사진">
+                                                    </div>
+                                                    <div class="desc">
+                                                        <p class="subject">결혼X이사 이벤트</p>
+                                                        <p class="date">2020.03.03~2020.09.21</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- //slide -->
                                             <!-- slide -->
                                             <div class="slide-conts ui_carousel_slide">
-                                                <div class="img">
-                                                    <img src="/lg5-common/images/dummy/@img-store03.jpg" alt="매장사진">
-                                                </div>
-                                                <div class="desc">
-                                                    <p class="subject">결혼X이사 이벤트</p>
-                                                    <p class="date">2020.03.03~2020.09.21</p>
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store04.jpg" alt="매장사진">
+                                                    </div>
+                                                    <div class="desc">
+                                                        <p class="subject">결혼X이사 이벤트</p>
+                                                        <p class="date">2020.03.03~2020.09.21</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- //slide -->
                                             <!-- slide -->
                                             <div class="slide-conts ui_carousel_slide">
-                                                <div class="img">
-                                                    <img src="/lg5-common/images/dummy/@img-store04.jpg" alt="매장사진">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store03.jpg" alt="매장사진">
+                                                    </div>
+                                                    <div class="desc">
+                                                        <p class="subject">결혼X이사 이벤트</p>
+                                                        <p class="date">2020.03.03~2020.09.21</p>
+                                                    </div>
                                                 </div>
-                                                <div class="desc">
-                                                    <p class="subject">결혼X이사 이벤트</p>
-                                                    <p class="date">2020.03.03~2020.09.21</p>
+                                            </div>
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <div class="cont-wrap">
+                                                    <div class="img">
+                                                        <img src="/lg5-common/images/dummy/@img-store04.jpg" alt="매장사진">
+                                                    </div>
+                                                    <div class="desc">
+                                                        <p class="subject">결혼X이사 이벤트</p>
+                                                        <p class="date">2020.03.03~2020.09.21</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- //slide -->
@@ -295,13 +318,15 @@
         $(function(){
             vcui.require(['ui/carousel'], function () {
                 $('.ui_carousel_slider').vcCarousel({
-                    infinite: true,
+                    infinite: false,
                     slidesToShow: 2,
                     slidesToScroll: 2,
+                    variableWidth : true,
                     responsive: [
                         {
-                            breakpoint: 2500,
+                            breakpoint: 10000,
                             settings: {
+                                variableWidth : false,
                                 dots: true,
                                 slidesToShow: 2,
                                 slidesToScroll: 2
@@ -311,6 +336,7 @@
                         {
                             breakpoint: 768,
                             settings: {
+                                variableWidth : true,
                                 dots: false,
                                 slidesToShow: 1, 
                                 slidesToScroll: 1
