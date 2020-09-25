@@ -34,6 +34,28 @@ $(document).ready(function() {
                 html += '</div>';
                 appendElement.prepend(html);
                 appendElement.find('.visual-area').vcYoutubeBox();
+            } else if($(this).data('type') == 'ani-box'){
+                var aniSrc = $(this).data('src');
+                var aniAccSrc = $(this).data('accSrc');
+                var aniTitle = $(this).data('title');
+                console.log(aniSrc, aniAccSrc, aniTitle)
+
+                html += '<div class="visual-area animation-box">';
+                html += '   <a href="#none" role="button" data-src="' + aniAccSrc + '" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>';
+                html += '   <img src="' + largeImgURL + '" alt="">';
+                html += '   <p class="hidden">graphic description : </p>';
+                html += '   <div class="animation-area">';
+                html += '       <video autoplay muted loop>';
+                html += '           <source src="' + aniSrc + '" type="video/mp4">';
+                html += '       </video>';
+                html += '       <div class="controller-wrap wa-btn">';
+                html += '           <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" aria-describedby="title01">Pause Video</button>';
+                html += '       </div>';
+                html += '   </div>';
+                html += '   <div class="caption">' + aniTitle + '</div>';
+                html += '</div>';
+                appendElement.prepend(html);
+                appendElement.find('.visual-area').vcVideoBox();
             } else{
                 html += '<div class="visual-area">'
                 html += '   <img src="' + largeImgURL + '" alt="' + alt + '"/>';
