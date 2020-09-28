@@ -1401,61 +1401,6 @@
                 @include clearfix;
                 .select-quantity {
                     float: left;
-                    .inner {
-                        display: inline-block;
-                        border: 1px solid #ddd;
-                        border-radius: 6px;
-                        font-size: 0;
-                    }
-                    .minus,
-                    .plus {
-                        position: relative;
-                        width: 32px;
-                        height: 32px;
-                        background-color: #fff;
-                        &:before,
-                        &:after {
-                            position: absolute;
-                            top: 50%;
-                            @include calc(left,50%,5px);
-                            width: 10px;
-                            height: 1px;
-                            content: '';
-                        }
-                        &.minus {
-                            border-radius: 6px 0 0 6px;
-                            &:before {
-                                background-color: #aaa;
-                            }
-                            &:after {
-                                display: none;
-                            }
-                        }
-                        &.plus {
-                            border-radius: 0 6px 6px 0;
-                            &:before,
-                            &:after {
-                                background-color: #111;
-                            }
-                            &:after {
-                                transform: rotate(90deg);
-                            }
-                        }
-                    }
-                    .quantity {
-                        width: 40px;
-                        height: 32px;
-                        border-right: 1px solid #ddd;
-                        border-left: 1px solid #ddd;
-                        background-color: #fff;
-                        font-size: 13px;
-                        text-align: center;
-                        &::-webkit-outer-spin-button,
-                        &::-webkit-inner-spin-button {
-                            -webkit-appearance: none;
-                            margin: 0;
-                        }
-                    }
                 }
                 .payment {
                     float: right;

@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+.cart {
+    //장바구니
+    //@import "OBSF9001";
+    .cart-item {
+        position: relative;
+        padding: 32px 32px 0;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        .product-info {
+            @include clearfix;
+            padding-left: 32px;
+            .item-image {
+                float: left;
+            }
+        }
+        .item-image {
+            background-color: #f4f4f4;
+            img {
+                width: 120px;
+                height: 120px;
+                border-radius: 8px;
+            }
+        }
+        .item-name {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 24px;
+            color: #222;
+            @include textClipClamp(2);
+        }
+        .item-options {
+            font-size: 0;
+            .sku,
+            .sibling-option {
+                display: inline-block;
+                font-size: 14px;
+                line-height: 20px;
+                color: #616161;
+            }
+            .sibling-option {
+                &:before {
+                    display: inline-block;
+                    width: 1px;
+                    height: 12px;
+                    margin: 0 8px;
+                    background-color: #616161;
+                    vertical-align: -1px;
+                    content: '';
+                }
+            }
+        }
+        .delivery-option {
+            a {
+                display: inline-block;
+                margin-left: 12px;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                color: #ec455a;
+            }
+        }
+        .select-coupon {
+            .select-wrap {
+                max-width: 100%;
+            }
+        }
+        .product-payment {
+            margin: 16px -32px 0;
+            padding: 23px 32px;
+            border-radius: 0 0 8px 8px;
+            background-color: #f4f4f4;
+        }
+        .product-wish {
+            position: absolute;
+            top: 32px;
+            right: 64px;
+        }
+        .item-delete {
+            position: absolute;
+            top: 32px;
+            right: 32px;
+            .btn-delete {
+                position: relative;
+                width: 24px;
+                height: 24px;
+                &:before,
+                &:after {
+                    position: absolute;
+                    @include calc(top,50%,10px);
+                    left: 50%;
+                    width: 1px;
+                    height: 20px;
+                    background-color: #222;
+                    content: '';
+                }
+                &:before {
+                    transform: rotate(-45deg);
+                }
+                &:after {
+                    transform: rotate(45deg);
+                }
+            }
+        }
+    }
+}
