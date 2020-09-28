@@ -16,6 +16,7 @@ var res = {
 			"Pagination" : ["./wsg/guide_pagination.html","","검수완료"],
 			"블릿리스트" : ["./wsg/guide_bulletlist.html","","검수완료"],
 			"List" : ["./wsg/guide_list.html","","검수완료"],
+			"Table" : ["./wsg/guide_table.html","","검수완료"],
 			"Tooltip" : ["./wsg/guide_tooltip.html","","검수완료"],
 			"Alert popup" : ["./wsg/guide_alert.html","","검수완료"],
 			"Modal popup" : ["./wsg/guide_popup.html","","검수완료"],
