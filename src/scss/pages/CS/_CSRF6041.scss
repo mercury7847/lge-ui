@@ -60,36 +60,30 @@
             padding:0 56px;
             @include mobile {
                 margin:0;
-                padding:8px 20px 0;
+                padding:0 20px;
             }
             .tit-info {
                 padding:7px 300px 0 0;
                 font-size:0;
                 @include mobile {
                     position:relative;
-                    padding:25px 0 20px;
+                    padding:0 0 20px;
                 }
                 h2.name {
                     display:inline-block;
+                    margin-right:8px;
                     font-size:32px;
                     line-height:30px;
                     font-weight:700;
                     vertical-align:middle;
                     @include mobile {
                         font-size:20px;
-                        line-height:27px;
+                        line-height:40px;
                     }
                 }
                 .flag-wrap {
                     display:inline-block;
-                    margin-left:8px;
                     vertical-align:middle;
-                    @include mobile {
-                        position:absolute;
-                        top:0;
-                        left:0;
-                        margin:0;
-                    }
                     .flag {
                         display: inline-block;
                         margin-right: 4px;
