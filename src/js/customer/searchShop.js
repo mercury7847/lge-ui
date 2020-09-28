@@ -36,6 +36,7 @@
         '                <div class="flag-wrap">'+
         '                    {{#if agNewShopComment != null }}<span class="flag">NEW</span>{{/if}}'+
         '                    {{#if isEvent}}<span class="flag">이벤트</span>{{/if}}'+
+        '                    {{#if agCenterWeekday != null }}<span class="flag">서비스센터</span>{{/if}}'+
         '               </div>'+
         '            </div>'+
         '            <p class="addr">{{agAddr1}}</p>'+
@@ -89,12 +90,15 @@
                     self._bindEvents();		
 
 				}).on('mapchanged mapsearch', function(e, data){	
-
+                    
+                    self.$defaultListContainer.find('.scroll-wrap').scrollTop(0);
                     self._setItemList(data);
+                    self._setItemPosition();
 
 				}).on('mapitemclick', function(e,data){
 
                     self._setMarkerSelected(data.id);
+                    self._setItemPosition();
                     
 				}).on('maperror', function(e, error){
 					console.log(error);
@@ -114,8 +118,6 @@
             self.$defaultListLayer.on('click', 'li > .ui_marker_selector', function(e){
                 var $target = $(e.currentTarget);
                 var id = $target.parent().data('id');
-
-                self._setMarkerSelected(id);
                 
                 self.$map.selectedMarker(id);
             })
@@ -216,6 +218,7 @@
                  var listData = {
                      num: i+1,
                      agName: data[i].info.agName,
+                     agCenterWeekday: data[i].info.agCenterWeekday,
                      agNewShopComment: data[i].info.agNewShopComment,
                      isEvent: self._getEventInfo(data[i].id).length ? true : false,
                      agAddr1: data[i].info.agAddr1,
@@ -226,6 +229,19 @@
                  var list = vcui.template(listTemplate, listData);
                  self.$defaultListLayer.append($(list).get(0));
              }
+        },
+
+        _setItemPosition: function(){
+            var self = this;
+
+            var selectID = -1;
+            self.$defaultListLayer.find('> li').each(function(idx, item){
+                if($(item).find('.point').hasClass('on')){
+                    var scrolltop = $(item).position().top;
+                    console.log(scrolltop)
+                    self.$defaultListContainer.find('.scroll-wrap').scrollTop(scrolltop);
+                }
+            })
         },
 
         //리스트 컨테이너 높이 설정...스크롤영역

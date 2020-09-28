@@ -48,10 +48,12 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     '               <dt>전화</dt>'+
                     '               <dd>{{agTel}}</dd>'+
                     '           </dl>'+
+                    '           {{#if agFax != null}}'+
                     '           <dl>'+
                     '               <dt>팩스</dt>'+
                     '               <dd>{{agFax}}</dd>'+
                     '           </dl>'+
+                    '           {{/if}}'+
                     '       </div>'+
                     '       <div class="hour-info">'+
                     '           <dl>'+
@@ -148,6 +150,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                         item['info'] = false;
                         return item;
                     });
+                    console.log(self.storeData)
                     self._draw(self.storeData);                                    
                     self.triggerHandler('mapinit', [result[0]]);
 
@@ -214,10 +217,11 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             };                  
         },
 
-        _changeMarkersState: function _changeMarkersState(isTrigger){
+        _changeMarkersState: function _changeMarkersState(isTrigger, showArr){
             var self = this;
 
-            var arr = self._getNumberInArea();
+            var items = showArr ? showArr : self.itemArr;
+            var arr = self._getNumberInArea(items);
 
             self._setItemVisible(true);
             self._setItemInfo(arr);
@@ -234,15 +238,14 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             var mp, distance;
             var bounds = self.map.getBounds();
             var center = self.map.getCenter();
-            var iArr = arr ? arr : self.itemArr;
 
-            for(var i=0; i<iArr.length; i++){
-                mp = iArr[i]['item'].getPosition();
+            for(var i=0; i<arr.length; i++){
+                mp = arr[i]['item'].getPosition();
                 distance = self._getDistance(center._lat, center._lng, mp._lat, mp._lng);
-                iArr[i]['distance'] = distance;
+                arr[i]['distance'] = distance;
 
                 if(bounds.hasPoint(mp)){
-                    nArr.push(iArr[i]);
+                    nArr.push(arr[i]);
                 }
             }
             // 지도 중심에서 가까운 곳순으로 정렬 
@@ -267,6 +270,10 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 if(!item.info.selected){
                     if(item.infoWindow && item.infoWindow.getMap()){
                         item.infoWindow.close();
+                    }
+                } else{
+                    if(item.infoWindow){
+                        if(!item.infoWindow.getMap()) item.infoWindow.open(self.map, item.item);
                     }
                 }
             }
@@ -372,7 +379,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 return {...items, info: {...items.info, selected: selected}};
             });
 
-            self._changeMarkersState(false);
+            self._changeMarkersState(true);
         },
 
         search: function(keyword){
@@ -396,23 +403,26 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     info = searchArr[i].info;
                     bounds.extend(new naver.maps.LatLng(info.agGpsX, info.agGpsY));
                 }
+                self.map.fitBounds(bounds);
+
+                self._changeMarkersState(true, searchArr);
                 
-                self.searchMode = true;  // search 시 zoom change를 막기위해 사용
-                if(searchArr.length > 0) self.map.setBounds(bounds); //bounds, paddingtop, paddingright, paddingbottom, paddingleft
+                // self.searchMode = true;  // search 시 zoom change를 막기위해 사용
+                // if(searchArr.length > 0) self.map.setBounds(bounds); //bounds, paddingtop, paddingright, paddingbottom, paddingleft
     
-                var nArr = vcui.array.filter(self.itemArr, function(item, idx){
-                    return vcui.array.include(arr, function(a){
-                        return a.id == item.id;
-                    });
-                });
+                // var nArr = vcui.array.filter(self.itemArr, function(item, idx){
+                //     return vcui.array.include(arr, function(a){
+                //         return a.id == item.id;
+                //     });
+                // });
                 
-                nArr = self._getNumberInArea(nArr);
-                self._setItemVisible(false, nArr);
-                self._setItemInfo(nArr);
-                self.triggerHandler('mapsearch', [nArr]);  
-                self.searchMode = false;
+                // nArr = self._getNumberInArea(nArr);
+                // self._setItemVisible(false, nArr);
+                // self._setItemInfo(nArr);
+                // self.triggerHandler('mapsearch', [nArr]);  
+                // self.searchMode = false;
             } else{
-                self.triggerHandler('mapsearch', [nArr]);  
+                //self.triggerHandler('mapsearch', [nArr]);  
             }            
         }
     });
