@@ -1,0 +1,156 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRP0021 {
+    .icon-accordion-wrap {
+        > ul {
+            position:relative;
+            font-size:0;
+            text-align:center;
+            @include mobile {
+                text-align:left;
+            }
+            .lists {
+                display:inline-block;
+                width:12.5%;
+                max-width:161px;
+                vertical-align:top;
+                @include mobile {
+                    width:25%;
+                }
+                .head {
+                    .accord-btn {
+                        display:block;
+                        padding:16px 0;
+                        text-align:center;
+                        .icon {
+                            display:block;
+                            width:48px;
+                            height:48px;
+                            margin:0 auto;
+                            @include mobile {
+                                width:50px;
+                                height:50px;
+                            }
+                            img {
+                                max-width:100%;
+                                height:auto;
+                                vertical-align:top;
+                            }
+                            &.on {
+                                display:none;
+                            }
+                        }
+                        .category {
+                            display:block;
+                            margin-top:8px;
+                            color:#222;
+                            font-size:12px;
+                            line-height:24px;
+                            font-weight:500;
+                            text-align:center;
+                        }
+                    }
+                }
+                &.on {
+                    padding-bottom:134px;
+                    .head {
+                        .accord-btn {
+                            .icon.on {
+                                display:block;
+                            }
+                            .icon.off {
+                                display:none;
+                            }
+                        }
+                    }
+                }
+                .accord-cont {
+                    position:absolute;
+                    top:112px;
+                    right:0;
+                    left:0;
+                    background:#f4f4f4;
+                    @include mobile {
+                        top:114px;
+                    }
+                    .sub-category-lists {
+                        padding:20px 40px;
+                        font-size:0;
+                        text-align:center;
+                        overflow-x:auto;
+                        white-space:nowrap;
+                        @include mobile {
+                            padding:22px 18px 18px;
+                            text-align:left;
+                        }
+                        li {
+                            display:inline-block;
+                            margin-left:48px;
+                            vertical-align:top;
+                            @include mobile {
+                                margin-left:16px;
+                            }
+                            &:first-child {
+                                margin-left:0;
+                            }
+                            a {
+                                display:block;
+                                .bg {
+                                    display:block;
+                                    width:64px;
+                                    height:64px;
+                                    margin:0 auto;
+                                    border-radius:50%;
+                                    background:#fff;
+                                    overflow:hidden;
+                                    text-align:center;
+                                    @include mobile {
+                                        width:66px;
+                                        height:66px;
+                                    }
+                                    img {
+                                        width:100%;
+                                        height:auto;
+                                        vertical-align:top;
+                                    }
+                                }
+                                .sub-tit {
+                                    display:block;
+                                    margin-top:6px;
+                                    color:#222;
+                                    font-size:11px;
+                                    line-height:24px;
+                                    font-weight:500;
+                                    text-align:center;
+                                    @include mobile {
+                                        margin-top:4px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                @include mobile {
+                    &:nth-child(n+5) {
+                        .accord-cont {
+                            top:(114px * 2);
+                        }
+                    }
+                    &:nth-child(n+9) {
+                        .accord-cont {
+                            top:(114px * 3);
+                        }
+                    }
+                    &:nth-child(n+13) {
+                        .accord-cont {
+                            top:(114px * 3);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

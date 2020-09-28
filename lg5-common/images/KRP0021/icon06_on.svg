@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="96px" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon06_on</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon_mobile_on">
+            <g>
+                <rect id="Rectangle" x="0" y="0" width="96" height="96"></rect>
+                <g id="ic" transform="translate(20.500000, 8.000000)" stroke="#222222" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+                    <g id="Group-12">
+                        <path d="M0,27.9003906 L0,1.53846154 C-1.04054423e-16,0.688792693 0.688792693,1.04426005e-15 1.53846154,0 L53.4615385,0 C54.3112073,6.59629701e-17 55,0.688792693 55,1.53846154 L55,78.4615385 C55,79.3112073 54.3112073,80 53.4615385,80 L1.53846154,80 C0.688792693,80 -2.33843623e-15,79.3112073 0,78.4615385 L0,46.1298077 L0,46.1298077" id="Rectangle"></path>
+                        <line x1="2.30769231" y1="62.9807692" x2="43.125" y2="63.125" id="Stroke-3"></line>
+                        <line x1="25.7692308" y1="72.0192308" x2="30.3846154" y2="72.0192308" id="Stroke-3"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
