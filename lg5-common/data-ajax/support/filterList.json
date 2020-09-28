@@ -1,0 +1,70 @@
+{
+    "status": true,
+    "message":null,
+    "data": {
+        "filterList":[
+            {
+                "topic": "ALL"
+            },
+            {
+                "topic": "기능",
+                "subFilterList": [
+                    {
+                        "subTopic": "ALL"
+                    },
+                    {
+                        "subTopic": "퀵 헬프 방법"
+                    },
+                    {
+                        "subTopic": "앱 설치"
+                    },
+                    {
+                        "subTopic": "타임머신"
+                    },
+                    {
+                        "subTopic": "신호없음"
+                    },
+                    {
+                        "subTopic": "인터넷 연결"
+                    }
+                ]
+            },
+            {
+                "topic": "설치/연결"   
+            },
+            {
+                "topic": "소음/냄새/열방생"   
+            },
+            {
+                "topic": "스마트 앱"   
+            },
+            {
+                "topic": "스마트/네트워크"   
+            },
+            {
+                "topic": "스마트 기능"   
+            },
+            {
+                "topic": "어플리케이션"   
+            },
+            {
+                "topic": "음성"   
+            },
+            {
+                "topic": "전원"   
+            },
+            {
+                "topic": "채널"   
+            },
+            {
+                "topic": "청소법"   
+            },
+            {
+                "topic": "해외 제품"   
+            },
+            {
+                "topic": "화면"   
+            }
+        ]
+    }
+}

@@ -5,20 +5,27 @@
             initialize: function() {
                 var self = this;
 
-                vcui.require(["ui/formatter", "ui/validation"], function () {
+                vcui.require(["helper/formValidator", "ui/formatter"], function (FormValidator) {
                     $('#input-phoneNumber').vcFormatter({"format":"num","maxlength":11});
-                    $('.contents-inner').vcValidation();
+                    
+                    test = new FormValidator($('#submitForm')[0], {
+                        showAlert: true,
+                        autoCheck: false,
+                    });
+                    
                 });
 
                 self._setEventListener();
             },
-            
             _reset: function() {
 
             },
             _setEventListener: function() {
                 var self = this;
 
+                $('#btn-confirm').on('click', function(){
+                    test.run();
+                });
             }
         }
 

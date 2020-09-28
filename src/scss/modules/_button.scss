@@ -45,10 +45,13 @@
     &.bd-pink {
         color:#ec455a;
         border-color:#ec455a;
+        &:hover {
+            background-color:#e51346;
+            color:#fff;
+        }
         &:active {
-            color:#e51346;
-            border-color:#e51346;
-            background-color:#f4f4f4;
+            background-color:#e51346;
+            color:#fff;
         }
         &:disabled, &.disabled, &[aria-disabled=true] {
             color:#ccc;

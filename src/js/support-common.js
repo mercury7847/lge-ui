@@ -4,6 +4,137 @@ CS.UI = CS.UI || {};
 
 CS.UI.elem = {};
 
+
+/*
+* validation cehck
+*/
+CS.MD.validation = function() {
+    function Plugin(el, opt) {
+        var self = this;
+        self.$el = $(el),
+        self.el = el,
+        self.errorList = [];
+        self.elements;
+
+        var defaults = {
+            valid: function() {},
+            inValid: function() {}
+        };
+
+        self.options = $.extend({}, defaults, opt);
+    
+        self.elements = self.$el.find('[name]');
+    }
+
+    $.extend(Plugin, {
+        rules: {
+            required: function() {
+
+            },
+            email: function() {
+
+            },
+            date: function() {
+
+            },
+            tel: function() {
+
+            },
+            file: function() {
+
+            },
+            number: function() {
+
+            },
+            alphabet: function() {
+
+            },
+            minLength: function() {
+
+            },
+            maxLength: function() {
+
+            },
+        }
+    })
+
+    Plugin.prototype = {
+        start: function() {
+            var self = this,
+                options = self.options;
+
+            self.errorList = [];
+
+            self.elements.each(function(index, item) {
+                var $element = $(item);
+
+                self._validationCheck(item);
+            });
+
+            if (self.errorList.length) {
+                $.each(self.errorList, function(index, item) {
+                    self._accessibility(item);
+                    self._invalid(item);
+                });
+
+                self._focus(self.errorList[0]);
+
+                return false;
+            }
+
+            return true;
+        },
+        _getRules: function(el) {
+            var self = this;
+
+
+        },
+        _invalid: function(el) {
+            var self = this;
+
+            
+        },
+        _accessibility: function(el) {
+            var self = this;
+
+            
+        },
+        _focus: function(el) {
+            var self = this,
+                $el = $(el);
+
+            if (el.type.indexOf('select') && $el.data('ui_selectbox')) {
+                $el.vcSelectbox('open');
+            } else {
+                $el.focus();
+            }
+        },
+        _validationCheck: function(el) {
+            var self = this,
+                rules = self._getRules(el),
+                rule;
+
+            for (var item in rules) {
+                if (rule = Plugin.rules[item]) {
+                    if (!rule(el)) {
+                        self.errorList.push({
+                            rule: item,
+                            el: el
+                        });
+                    } 
+                }
+            }
+        }
+    }
+
+    $.fn.validation = function(options){
+        return this.each(function() {
+            new Plugin(this, options);
+        });
+    };
+}
+
+
 /*
 * 셀렉트박스 타겟
 * @option data-url
