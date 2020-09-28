@@ -758,6 +758,7 @@
             margin: 0 auto;
             padding: 39px 64px 64px;
             background-color: #fff;
+
             &:before {
                 content: '';
                 position: absolute;
@@ -784,13 +785,15 @@
                 min-width: 264px;
                 padding-right: 24px;
                 &.category-banner {
-                    float: none;
                     position: absolute;
                     top: 0;
                     @include calc(right,28.261%,-16px);
+                    float: none;
                     width: 28.261%;
                     padding-right: 0;
                     &.ui_carousel_slider {
+                        position: relative;
+                        float: right;
                         right: 0;
                     }
                 }
