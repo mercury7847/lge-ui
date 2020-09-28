@@ -363,7 +363,6 @@
                 top:0;
                 left:0;
                 right:0;
-                bottom:0;
                 background:#fff;
                 z-index:1;
                 @include csmobile {
@@ -374,7 +373,7 @@
                     top:48px;
                 }
 
-                .btn-wrap {
+                .result-btn-wrap {
                     margin:0;
                     padding:12px 40px 20px;
                     background:#fff;
@@ -396,16 +395,16 @@
                             &:after {
                                 content:'';
                                 position:absolute;
-                                left:9px;
+                                left:3px;
                                 top:50%;
                                 width:10px;
                                 height:10px;
-                                margin-top:-5px;
+                                margin-top:-8px;
                                 border:2px solid #111;
                                 border-top:none;
                                 border-right:none;
-                                -webkit-transform:rotate(45deg);
-                                transform:rotate(45deg);
+                                -webkit-transform:rotate(-45deg);
+                                transform:rotate(-45deg);
                             }
                         }
                     }
@@ -446,8 +445,14 @@
             }
 
             .list-wrap {
+                position:relative;
+                top:0;
+                left:0;
+                right:0;
                 padding:0 8px 0 40px;
                 overflow:hidden;
+                // -webkit-transition:0.26s cubic-bezier(0.25,0.1,0.25,1); 
+                // transition:0.26s cubic-bezier(0.25,0.1,0.25,1);
 
                 @include csmobile {
                     padding:0 8px 0 20px;
@@ -903,20 +908,15 @@
                 }
             }
         }
-
-
         &.active {
             .result-list-box {
                 display:block;
             }
-            @include csmobile {
-                .store-map-con {
-                    position:absolute;
-                    top:0;
-                    left:0;
-                    right:0;
-                    bottom:0;
-                }
+            .sch-box {
+                display:none;
+            }
+            .list-wrap {
+                position:absolute;
             }
         }
     }
