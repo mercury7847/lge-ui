@@ -237,13 +237,14 @@
 
             .sch-list {
                 ul {
+                    position: relative;
                     padding-bottom:32px;
                 }
                 li {
                     position:relative;
-                    margin:40px 40px 0 0;
-                    &:first-child {
-                        margin-top:0;
+                    padding:0 40px 40px 0;
+                    &:last-child {
+                        padding-bottom:0;
                     }
                     @include csmobile {
                         margin:40px 20px 0 0;
@@ -423,6 +424,7 @@
                         padding:0 0 0 20px;
                     }
                     .scroll-wrap {
+                        position:relative;
                         height:calc(100vh - 371px);
                         overflow-y:scroll;
                         @include csmobile {
@@ -452,6 +454,7 @@
                     padding:0 8px 0 20px;
                 }
                 .scroll-wrap {
+                    position:relative;
                     height:calc(100vh - 471px);
                     overflow-y:scroll;
                 }
@@ -523,6 +526,7 @@
                     display:none;
                     overflow:hidden;
                     .scroll-wrap {
+                        position:relative;
                         margin-right:8px;
                         height:calc(100vh - 126px - 105px - 105px);
                         overflow-y:scroll;
@@ -760,7 +764,7 @@
             top:0;
             right:0;
             bottom:0;
-            height:100vh;
+            height:100%;
 
             .point-wrap {
                 display:block;
@@ -773,7 +777,6 @@
                     padding:24px;
                     background:#fff;
                     border-radius:16px;
-                    // overflow:hidden;
                     box-shadow:0 4px 10px 0 rgba(17,17,17,.32);
                     @include csmobile {
                         width:320px;
@@ -890,11 +893,13 @@
                         display:block;
                         position:absolute;
                         left:50%;
-                        bottom:-15Px;
-                        width:39px;
-                        height:26px;
-                        margin-left:-20px;
+                        bottom:-36px;
+                        width:57px;
+                        height:36px;
+                        -webkit-transform:translateX(-50%);
+                        transform:translateX(-50%);
                         background:url('/lg5-common/images/icons/icon-map-bubble.svg') no-repeat;
+                        background-size:57px 36px;
                     }
                 }
             }

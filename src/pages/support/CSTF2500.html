@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/product-support"
+        ],
+        "pageJS": [
+            "support-common",
+            "support/selectCategory",
+            "support/downloadResources"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'title': '카드뉴스',
+                'desc': 'LG전자 서비스센터의 가전 제품 관련한 팁과 주요 뉴스를 전해드립니다'
+            })
+
+            <div class="contents support card-news">
+                <div class="contents-inner">
+
+                    <div>
+                        <div class="list-filter">
+                            <div class="total">전체 <em id="count">122</em>건</div>
+                            <div class="sort-box">
+                                <div class="sort-select ui_dropdown">
+                                    <button type="button" class="sort-select-link ui_dropdown_toggle"><span>10개씩 보기</span><span class="ico-arrow"></span></button>
+                                    <div class="sort-select-layer ui_dropdown_list">
+                                        <ul>
+                                            <li class="active">
+                                                <button type="button">10개씩 보기</button>
+                                            </li>
+                                            <li>
+                                                <button type="button">10개씩 보기</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="sort-select ui_dropdown">
+                                    <button type="button" class="sort-select-link ui_dropdown_toggle"><span>조회순</span><span class="ico-arrow"></span></button>
+                                    <div class="sort-select-layer ui_dropdown_list">
+                                        <ul>
+                                            <li class="active">
+                                                <button type="button">조회순</button>
+                                            </li>
+                                            <li>
+                                                <button type="button">등록순</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <ul class="">
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <img src="" alt="">
+                                        </div>
+                                        <div>
+                                            
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+
+                        @@include('./common/support/pagination.html', {
+                            count: 5
+                        })
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>    
+</body>
+</html> 

@@ -25,7 +25,7 @@
         '<li data-id="{{agNum}}">'+
         '   <div class="store-info-list ui_marker_selector" role="button">'+
         '        <div class="point-wrap">'+
-        '           <div class="point">'+
+        '           <div class="point{{selected}}">'+
         '                <span class="num">{{num}}</span>'+
         '                <span class="blind">선탿안됨</span>'+
         '            </div>'+
@@ -33,8 +33,11 @@
         '        <div class="info-wrap">'+
         '            <div class="tit-wrap">'+
         '                <p class="name">{{agName}}</p>'+
-        '                {{#if agNewShopComment != null }}<span class="flag">NEW</span>{{/if}}'+
-        '                {{#if isEvent}}<span class="flag">이벤트</span>{{/if}}'+
+        '                <div class="flag-wrap">'+
+        '                    {{#if agNewShopComment != null }}<span class="flag">NEW</span>{{/if}}'+
+        '                    {{#if isEvent}}<span class="flag">이벤트</span>{{/if}}'+
+        '                    {{#if agCenterWeekday != null }}<span class="flag">서비스센터</span>{{/if}}'+
+        '               </div>'+
         '            </div>'+
         '            <p class="addr">{{agAddr1}}</p>'+
         '            <div class="etc-info">'+
@@ -48,8 +51,6 @@
     var searchShop = {
         init: function(){
             var self = this;
-
-            console.log("searchShop start!!!");
             
             self._setting();
         },
@@ -60,8 +61,6 @@
             self.windowWidth;
             self.windowHeight;
 
-            self.storeArr;
-            self.eventArr;
             self.bestShopUrl = $('.map-container').data("bestshop");
 
             self.$leftContainer = $('.store-list-wrap'); //좌측 검색&리스트 컨테이너...
@@ -75,6 +74,10 @@
             self.$mapContainer = $('.map-area'); //맴 모듈 컨테이너...
             
             self.$optionSelector = $('.opt-cont'); //옵션 컨테이너...
+
+            //검색...
+            self.$searchField = $('#tab1 .input-sch input');
+            self.$searchButton = $('#tab1 .btn-search');
             
             vcui.require(['ui/storeMap'], function () {
 				
@@ -82,21 +85,20 @@
                     baseUrl:'',
                     storeDataUrl: self.bestShopUrl
 				}).on('mapinit', function(e,data){
-
-					self.storeArr = data.storeData;
-                    self.eventArr = data.eventData;
-
                     self.$map = self.$mapContainer.vcStoreMap('instance');
                     
                     self._bindEvents();		
 
 				}).on('mapchanged mapsearch', function(e, data){	
-
+                    
+                    self.$defaultListContainer.find('.scroll-wrap').scrollTop(0);
                     self._setItemList(data);
+                    self._setItemPosition();
 
 				}).on('mapitemclick', function(e,data){
 
-                    $('#list').find('[data-id="'+ data.id +'"]').trigger('click');
+                    self._setMarkerSelected(data.id);
+                    self._setItemPosition();
                     
 				}).on('maperror', function(e, error){
 					console.log(error);
@@ -116,8 +118,6 @@
             self.$defaultListLayer.on('click', 'li > .ui_marker_selector', function(e){
                 var $target = $(e.currentTarget);
                 var id = $target.parent().data('id');
-
-                self._setMarkerSelected(id);
                 
                 self.$map.selectedMarker(id);
             })
@@ -126,6 +126,15 @@
 
                 console.log(e);
                 //showDetailInfo(id);  
+            });
+
+            self.$searchField.on('focus', function(e){
+                $(window).on('keyup.searchShop', function(e){
+                    if(e.keyCode == 13) self._setSearch();
+                })
+            });
+            self.$searchButton.on('click', function(e){
+                self._setSearch();
             });
 
             $('#searchWrap').on('click', 'button', function(e){
@@ -153,11 +162,6 @@
                         secondName = city;
                 }
 
-                var arr = vcui.array.filter(self.storeArr, function(item, idx){                
-                    return (item['agAddr1'].search(area) > -1 || item['agNAddr1'].search(area) > -1) 
-                    && (item['agAddr1'].search(city) > -1 || item['agNAddr1'].search(city) > -1 || 
-                        item['agAddr1'].search(secondName) > -1 || item['agNAddr1'].search(secondName) > -1)                
-                });
 
 
                 if(keyword!==''){
@@ -176,22 +180,22 @@
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
 
+        _setSearch: function(){
+            var self = this;
+
+            var searchWord = self.$searchField.val();
+            var trim = searchWord.replace(/\s/gi, '');
+            if(trim.length){
+                self.$map.search(searchWord);
+            }
+        },
+
         _setMarkerSelected: function(id){
             var self = this;
 
             var selectedMarker = self.$defaultListLayer.find('li[data-id="' + id + '"]');
             if(!selectedMarker.find('.point').hasClass('on')) selectedMarker.find('.point').addClass('on');
             selectedMarker.siblings().find('.point').removeClass('on');
-        },
-                
-        //매장정보 가져오기...
-        _getShopInfo: function(id){
-            var self = this;
-            var info = vcui.array.filter(self.storeArr, function(item, idx){
-                return item.id == id;
-            });
-            
-            return info;
         },
 
         //매장에 등록 된 이벤트 가져오기...
@@ -214,15 +218,30 @@
                  var listData = {
                      num: i+1,
                      agName: data[i].info.agName,
+                     agCenterWeekday: data[i].info.agCenterWeekday,
                      agNewShopComment: data[i].info.agNewShopComment,
                      isEvent: self._getEventInfo(data[i].id).length ? true : false,
                      agAddr1: data[i].info.agAddr1,
                      agTel: data[i].info.agTel,
-                     agNum: data[i].info.agNum
+                     agNum: data[i].info.agNum,
+                     selected: data[i].info.selected ? " on" : ""
                  }
                  var list = vcui.template(listTemplate, listData);
                  self.$defaultListLayer.append($(list).get(0));
              }
+        },
+
+        _setItemPosition: function(){
+            var self = this;
+
+            var selectID = -1;
+            self.$defaultListLayer.find('> li').each(function(idx, item){
+                if($(item).find('.point').hasClass('on')){
+                    var scrolltop = $(item).position().top;
+                    console.log(scrolltop)
+                    self.$defaultListContainer.find('.scroll-wrap').scrollTop(scrolltop);
+                }
+            })
         },
 
         //리스트 컨테이너 높이 설정...스크롤영역

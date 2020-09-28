@@ -758,6 +758,7 @@
             margin: 0 auto;
             padding: 39px 64px 64px;
             background-color: #fff;
+
             &:before {
                 content: '';
                 position: absolute;
@@ -784,13 +785,15 @@
                 min-width: 264px;
                 padding-right: 24px;
                 &.category-banner {
-                    float: none;
                     position: absolute;
                     top: 0;
                     @include calc(right,28.261%,-16px);
+                    float: none;
                     width: 28.261%;
                     padding-right: 0;
                     &.ui_carousel_slider {
+                        position: relative;
+                        float: right;
                         right: 0;
                     }
                 }
@@ -889,29 +892,29 @@
             bottom: -34px;
             left: 50%;
             transform: translateX(-50%);
+            padding-right: 26px;
             .ui_carousel_play {
                 position: absolute;
                 top: -3px;
-                right: -25px;
+                right: 0;
                 .btn-play {
                     position: relative;
                     display: inline-block;
                     width: 16px;
                     height: 16px;
                     margin-left: 12px;
-                    border-radius: 50%;
-                    background-color: #ec455a;
+                    background-color: #fff;
                     font-size: 0;
                 }
                 &.play {
                     .btn-play {
                         &:after {
                             position: absolute;
-                            @include calc(top,50%,4px);
-                            @include calc(left,50%,2.5px);
-                            border-left: 7px solid #fff;
-                            border-top: 4px solid transparent;
-                            border-bottom: 4px solid transparent;
+                            @include calc(top,50%,5px);
+                            @include calc(left,50%,4px);
+                            border-left: 8px solid #222;
+                            border-top: 5px solid transparent;
+                            border-bottom: 5px solid transparent;
                             content: '';
                         }
                     }
@@ -921,10 +924,10 @@
                         &:before,
                         &:after {
                             position: absolute;
-                            @include calc(top,50%,4px);
+                            @include calc(top,50%,5px);
                             width: 2px;
-                            height: 8px;
-                            background-color: #fff;
+                            height: 10px;
+                            background-color: #222;
                             content: '';
                         }
                         &:before {
