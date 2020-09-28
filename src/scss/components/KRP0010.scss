@@ -1737,9 +1737,13 @@
         }
         &.card {
             .kb-card {
-                padding-left: 30px;
-                background: url("/lg5-common/images/icons/icon-kb.png") no-repeat 0 center;
-                background-size: 26px 20px;
+                padding-left: 28px;
+                background: url("/lg5-common/images/icons/icon-kb.svg") no-repeat 0 center;
+                background-size: 24px 17px;
+                @include mobile {
+                    padding-left: 24px;
+                    background-size: 18px 13px;
+                }
                 em {
                     color: #ec455a;
                 }
@@ -1877,13 +1881,13 @@
                 content: '';
             }
             &:before {
-                bottom: 48px;
+                bottom: 43px;
                 width: 100%;
                 height: 8px;
                 background-color: #fff;
             }
             &:after {
-                bottom: 44px;
+                bottom: 40px;
                 width: 16px;
                 height: 16px;
                 border-radius: 8px;
@@ -1894,7 +1898,7 @@
                     display: block;
                     width: 100%;
                     height: 64px;
-                    margin-bottom: 50px;
+                    margin-bottom: 44px;
                     background: no-repeat center center;
                     content: '';
                 }
@@ -1902,6 +1906,43 @@
             &:last-child {
                 &:before {
                     display: none;
+                }
+            }
+        }
+    }
+    @include mobile {
+        .process-info {
+            .info-box {
+                padding: 16px 15px;
+                background-color: #f4f4f4;
+                text-align: center;
+                p {
+                    font-size: 14px;
+                    line-height: 18px;
+                }
+            }
+        }
+        .process-list {
+            position: relative;
+            margin-top: 18px;
+            font-size: 0;
+            li {
+                font-size: 13px;
+                line-height: 17px;
+
+                &:before {
+                    bottom: 24px;
+                }
+
+                &:after {
+                    bottom: 20px;
+                }
+
+                span {
+                    &:before {
+                        height: 40px;
+                        margin-bottom: 25px;
+                    }
                 }
             }
         }
@@ -1914,6 +1955,10 @@
                     span {
                         &:before {
                             background-image: url("/lg5-common/images/KRP0010/icon-careship-process01.png");
+                            background-size: 26px 32px;
+                            @include mobile {
+                                background-size: 16px 20px;
+                            }
                         }
                     }
                 }
@@ -1921,6 +1966,10 @@
                     span {
                         &:before {
                             background-image: url("/lg5-common/images/KRP0010/icon-careship-process02.png");
+                            background-size: 25px 25px;
+                            @include mobile {
+                                background-size: 17px 17px;
+                            }
                         }
                     }
                 }
@@ -1928,6 +1977,10 @@
                     span {
                         &:before {
                             background-image: url("/lg5-common/images/KRP0010/icon-careship-process03.png");
+                            background-size: 26px 26px;
+                            @include mobile {
+                                background-size: 17px 17px;
+                            }
                         }
                     }
                 }
@@ -1941,14 +1994,22 @@
                 &:nth-child(1) {
                     span {
                         &:before {
-                            background-image: url("/lg5-common/images/KRP0010/icon-preorder-process01.png");
+                            background-image: url("/lg5-common/images/KRP0010/icon-preorder-process01.svg");
+                            background-size: 36px 25px;
+                            @include mobile {
+                                background-size: 23px 16px;
+                            }
                         }
                     }
                 }
                 &:nth-child(2) {
                     span {
                         &:before {
-                            background-image: url("/lg5-common/images/KRP0010/icon-preorder-process02.png");
+                            background-image: url("/lg5-common/images/KRP0010/icon-preorder-process02.svg");
+                            background-size: 38px 36px;
+                            @include mobile {
+                                background-size: 25px 23px;
+                            }
                         }
                     }
                 }
