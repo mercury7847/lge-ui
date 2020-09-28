@@ -84,7 +84,11 @@
 			} @else if $bg == black {
                 background-color: #000;
                 &.block1 .unit-list .title *,
-                &.block1 .unit-list .text {
+                &.block2 .unit-list .title *,
+                &.block3 .unit-list .title *,
+                &.block1 .unit-list .text,
+                &.block2 .unit-list .text,
+                &.block3 .unit-list .text {
                     color:#fff;
                 }
                 .link-text.ico-right {
