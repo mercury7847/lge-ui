@@ -225,7 +225,7 @@
 
             .sch-list {
                 ul {
-                    padding-bottom:180px;
+                    padding-bottom:32px;
                 }
                 li {
                     position:relative;
@@ -261,26 +261,27 @@
                                     display:inline-block;
                                     margin-right:8px;
                                     font-size:16px;
-                                    line-height:24px;
+                                    line-height:32px;
                                     font-weight:700;
                                     vertical-align:middle;
-                                    & +.flag {
-                                        margin-left:0;
-                                    }
                                 }
                                 .flag {
                                     display:inline-block;
-                                    margin-left:4px;
+                                    margin-right:4px;
                                     padding:0 8px;
-                                    color:#EC455A;
+                                    color:#616161;
                                     font-size:12px;
                                     line-height:20px;
-                                    background:#E9E9EA;
+                                    background:#fff;
                                     font-weight:500;
+                                    border:1px solid #616161;
                                     border-radius:4px;
                                     vertical-align:middle;
                                     @include csmobile {
                                         line-height:18px;
+                                    }
+                                    &:last-child {
+                                        margin-right:0;
                                     }
                                 }
                             }
