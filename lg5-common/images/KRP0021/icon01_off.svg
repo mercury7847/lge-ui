@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="96px" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon01_off</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon_TVAV_off">
+            <g>
+                <rect id="Rectangle" x="0" y="0" width="96" height="96"></rect>
+                <g id="ic" transform="translate(8.876543, 13.049383)" stroke="#CCCCCC" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+                    <g id="Group">
+                        <path d="M-1.42108547e-14,16.6604938 L-1.42108547e-14,3.08641975 C-1.42108547e-14,1.62962963 1.80203595,0.62962963 2.77236301,5.32907052e-14 L74.8538012,5.32907052e-14 C76.3841455,5.32907052e-14 77.6261642,1.38117284 77.6261642,3.08641975 L77.6261642,52.4691358 C77.6261642,54.132716 76.3481048,55.5555556 74.8538012,55.5555556 L2.77236301,55.5555556 C1.24201863,55.5555556 -1.42108547e-14,54.1728395 -1.42108547e-14,52.4691358 L-1.42108547e-14,32.4074074" id="Stroke-1"></path>
+                        <polyline id="Stroke-3" points="22.0265627 68.4510635 38.8132207 65.8006844 55.3891791 68.4510635"></polyline>
+                        <line x1="38.7074551" y1="55.5550011" x2="38.7074551" y2="63.0279056" id="Stroke-5"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="96px" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon04_off</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon_Life_off">
+            <g>
+                <rect id="Rectangle" x="0" y="0" width="96" height="96"></rect>
+                <g id="ic" transform="translate(16.000000, 8.000000)" stroke="#CCCCCC" stroke-width="4">
+                    <path d="M-3.19744231e-14,31.9088319 L-3.19744231e-14,1.51946819 C-3.20771929e-14,0.680289079 0.680289079,-5.13601936e-14 1.51946819,-4.97379915e-14 L62.2981956,-4.97379915e-14 C63.1373747,-4.98921462e-14 63.8176638,0.680289079 63.8176638,1.51946819 L63.8176638,77.4928775 C63.8176638,78.3320566 63.1373747,79.0123457 62.2981956,79.0123457 L1.51946819,79.0123457 C0.680289079,79.0123457 -2.98732519e-14,78.3320566 -3.19744231e-14,77.4928775 L-3.19744231e-14,50 L-3.19744231e-14,50" id="Rectangle" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <circle id="Oval" cx="31.9088319" cy="48.622982" r="16.71415"></circle>
+                    <line x1="1.85185185" y1="18.5185185" x2="51.2345679" y2="18.5185185" id="Stroke-3" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="48.1481481" y1="9.11680912" x2="52.7065527" y2="9.11680912" id="Stroke-3" stroke-linecap="round" stroke-linejoin="round"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

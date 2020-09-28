@@ -11,14 +11,15 @@
         })
 
         <div class="container">
-            <!-- 메장찾기 -->
+            <!-- 매장찾기 -->
             <div class="contents find-store-wrap">
                 <div class="cont-wrap">
                     <div class="map-container" data-bestshop="/lg5-common/data-ajax/searchshop/bestShop.json">
                         <div class="store-list-wrap">
                             <h2 class="tit">매장찾기</h2>
-                            <button type="button" class="btn-fold"><span class="blind">매장찾기 리스트 닫기</span></button> <!-- 클릭 시 .store-list-wrap에 close 클래스 추가 -->
-
+                            <div class="btn-list-fold">
+                                <button type="button" class="btn-fold"><span class="blind">매장찾기 리스트 닫기</span></button> <!-- 클릭 시 .store-list-wrap에 close 클래스 추가 -->
+                            </div>
                             <!-- filter -->
                             <div class="store-list-box">
                                 <!-- search -->
@@ -107,10 +108,14 @@
                                 <!-- //search -->
 
                                 <!-- result -->
-                                <div class="result-list-box"><!-- 검색하면 .result-list-box에 active 클래스 추가 -->
+                                <div class="result-list-box"><!-- 검색하면 .map-container에 active 클래스 추가 -->
                                     <h3 class="blind">매장찾기 검색 결과 리스트</h3>
                                     <div class="btn-wrap">
                                         <button type="button" class="btn-back"><span>돌아가기</span></button>
+                                        <div class="view-info-btn">
+                                            <button type="button" class="btn-view map"><span>지도보기</span></button>
+                                            <!-- <button type="button" class="btn-view list"><span>리스트보기</span></button> -->
+                                        </div>
                                     </div>
                                     <div class="result-list">
                                         <p class="result-txt"><strong>“강남”</strong>과 가까운 <strong>10개</strong>의 매장을 찾았습니다.</p>
@@ -141,7 +146,15 @@
                                                         </span>
                                                         <span class="rdo-wrap">
                                                             <input type="radio" id="rdo1-2" name="rdo1">
-                                                            <label for="rdo1-2">냉난방시스템</label>
+                                                            <label for="rdo1-2">백화점</label>
+                                                        </span>
+                                                        <span class="rdo-wrap">
+                                                            <input type="radio" id="rdo1-3" name="rdo1">
+                                                            <label for="rdo1-3">냉난방시스템</label>
+                                                        </span>
+                                                        <span class="rdo-wrap">
+                                                            <input type="radio" id="rdo1-4" name="rdo1">
+                                                            <label for="rdo1-4">커머셜</label>
                                                         </span>
                                                     </dd>
                                                 </dl>
@@ -158,7 +171,7 @@
                                                         </span>
                                                         <span class="rdo-wrap">
                                                             <input type="radio" id="rdo2-3" name="rdo2">
-                                                            <label for="rdo2-3">휴대폰 + PC제품 접수 가능</label>
+                                                            <label for="rdo2-3">휴대폰 접수 가능</label>
                                                         </span>
                                                     </dd>
                                                 </dl>
@@ -166,7 +179,7 @@
                                                     <dt>
                                                         <span class="chk-wrap">
                                                             <input type="checkbox" id="all-chk" name="allChk" checked>
-                                                            <label for="all-chk">전체선택</label>
+                                                            <label for="all-chk">전체 선택</label>
                                                         </span>
                                                     </dt>
                                                     <dd>
@@ -196,11 +209,11 @@
                                                                 </span>
                                                                 <span class="chk-wrap">
                                                                     <input type="checkbox" id="chk2-2" name="chk2">
-                                                                    <label for="chk2-2">휴대폰 판매 가능 매장</label>
+                                                                    <label for="chk2-2">뷰티마스터 입점 매장</label>
                                                                 </span>
                                                                 <span class="chk-wrap">
                                                                     <input type="checkbox" id="chk2-3" name="chk2">
-                                                                    <label for="chk2-3">뷰티마스터 입점 매장</label>
+                                                                    <label for="chk2-3">휴대폰 판매 가능 매장</label>
                                                                 </span>
                                                                 <span class="chk-wrap">
                                                                     <input type="checkbox" id="chk2-4" name="chk2">
@@ -213,7 +226,7 @@
                                                             <dd>
                                                                 <span class="chk-wrap">
                                                                     <input type="checkbox" id="chk3-1" name="chk3" checked>
-                                                                    <label for="chk3-1">LN 신규 오픈 행사 지점</label>
+                                                                    <label for="chk3-1">N 신규 오픈 행사 지점</label>
                                                                 </span>
                                                             </dd>
                                                         </dl>
@@ -243,7 +256,7 @@
                     </div>
                 </div>
             </div>
-            <!-- // 메장찾기 -->
+            <!-- // 매장찾기 -->
         </div>
 
     </div>     
