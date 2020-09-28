@@ -2,25 +2,16 @@
 .tb_row {
     table {
         width: 100%;
-        border-spacing: 0;
+        border-collapse: collapse;
         thead {
             th {
                 padding: 14px 0;
                 border-top: 1px solid #ddd;
-                border-bottom: 1px solid #ddd;
                 background-color: #f4f4f4;
                 font-size: 14px;
                 line-height: 20px;
                 color: #616161;
                 text-align: center;
-                &:first-child {
-                    border-left: 1px solid #ddd;
-                    border-top-left-radius: 8px;
-                }
-                &:last-child {
-                    border-right: 1px solid #ddd;
-                    border-top-right-radius: 8px;
-                }
             }
         }
         td {
@@ -28,7 +19,7 @@
             border-bottom: 1px solid #ddd;
             font-size: 16px;
             line-height: 24px;
-            color: #222222;
+            color: #222;
             text-align: center;
         }
         tr {
@@ -43,25 +34,17 @@
         margin-top: 24px;
         font-size: 16px;
         line-height: 24px;
-        color: #222222;
+        color: #222;
     }
 
     @include mobile {
         table {
-            width: 100%;
-            border-spacing: 0;
             thead {
                 th {
                     padding: 12px 0;
                     border: 0;
-                    background-color: #f4f4f4;
                     font-size: 12px;
                     line-height: 16px;
-                    &:first-child,
-                    &:last-child {
-                        border: 0;
-                        border-radius: 0;
-                    }
                 }
             }
             td {
