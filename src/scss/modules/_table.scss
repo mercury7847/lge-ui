@@ -5,7 +5,7 @@
         border-collapse: collapse;
         thead {
             th {
-                padding: 14px 0;
+                padding: 14px 24px;
                 border-top: 1px solid #ddd;
                 background-color: #f4f4f4;
                 font-weight: 400;
@@ -16,12 +16,15 @@
             }
         }
         td {
-            padding: 22px 0;
+            padding: 22px 24px;
             border-bottom: 1px solid #ddd;
             font-size: 16px;
             line-height: 24px;
             color: #222;
             text-align: center;
+            &.lower {
+                color:#808080;
+            }
         }
         tr {
             &.point {
@@ -42,14 +45,14 @@
         table {
             thead {
                 th {
-                    padding: 12px 0;
+                    padding: 12px 8px;
                     border: 0;
                     font-size: 12px;
                     line-height: 16px;
                 }
             }
             td {
-                padding: 20px 0;
+                padding: 20px 8px;
                 font-size: 14px;
                 line-height: 18px;
             }

@@ -22,7 +22,8 @@ var res = {
 			"Modal popup" : ["./wsg/guide_popup.html","","검수완료"],
 			"Carousel" : ["./wsg/guide_carousel.html","","검수완료"],
 			"Accordion" : ["./wsg/guide_accordion.html","","검수완료"],
-			"Rangeslider" : ["./wsg/guide_rangeslider.html","","검수완료"]
+			"Rangeslider" : ["./wsg/guide_rangeslider.html","","검수완료"],
+			"Flag" : ["./wsg/guide_flag.html","","검수완료"]
 		}
 	},
 	"Front" : {

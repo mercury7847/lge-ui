@@ -42,11 +42,11 @@
                                                 <label for="select-type" class="tit">문의 유형<span class="require">*<span class="blind">필수항목</span></span></label>
                                             </div>
                                             <div class="select-wrap">
-                                                <select class="ui_selectbox" name="inquiryType" id="select-type" data-title="문의 유형" required>
-                                                    <option selected>유형을 선택해주세요.</option>
-                                                    <option value="">유형</option>
-                                                    <option value="">유형</option>
-                                                    <option value="">유형</option>
+                                                <select class="ui_selectbox" name="inquiryType" id="select-type" required>
+                                                    <option value="" class="placeholder">유형을 선택해주세요.</option>
+                                                    <option value="1">유형</option>
+                                                    <option value="2">유형</option>
+                                                    <option value="3">유형</option>
                                                 </select>
                                                 <p class="err-msg">문의 유형을 선택해주세요.</p>
                                             </div>
@@ -125,7 +125,7 @@
                                                 <span class="file-input">
                                                     <span class="file-label">사진을 업로드해주세요.</span>       
                                                     <label for="file-upload">업로드</label>
-                                                    <input type="file" class="ui_fileinput" id="file-upload" data-format="jpg|jpeg|gif" data-size="10MB">
+                                                    <input type="file" class="ui_fileinput" id="file-upload" data-format="jpg|jpeg|gif" data-size="10MB" data-length="3">
                                                 </span>
                                                 <ul class="file-lists">   
                                                 </ul>
