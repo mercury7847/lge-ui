@@ -70,10 +70,12 @@
 			}
 
 			.category {
+				margin-bottom: 8px;
 				max-width: 220px;
 			}
 
 			.head {
+				margin-bottom: 16px;
 				h2, h3, h4, h5, h6 {
 					font-size: inherit;
 					line-height: inherit;
@@ -87,11 +89,21 @@
 
 		&.text-white {
 			.copy-boxing-area {
+				* {
+					color: #fff;
+				}
 			}
 		}
 
 		&.text-black {
 			.copy-boxing-area {
+				.category,
+				.head {
+					color: #111;
+				}
+				.desc {
+					color: #616161;
+				}
 			}
 		}
 	}
@@ -203,58 +215,53 @@
 			overflow:hidden;
 			z-index:9;
 			text-indent:-9999px;
-				&:before {
-					content:'';
-					display:inline-block;
-					position:absolute;
-					top:0;
-					right:0;
-					left:inherit;
-					width:32px;
-					height:32px;
-					margin:0;
-					background:url('/lg5-common/images/btn-AD-on.svg');
-					background-size:100% 100%;
-					border-radius:inherit;
-				}
-			}
-		}
-		&.sub {
-			.acc-video-content {
+			&:before {
+				content:'';
+				display:inline-block;
 				position:absolute;
-				bottom:60px;
-				left:20px;
-				top:inherit;
-				right:inherit;
-				&:before {
-					left:0;
-				}
+				top:0;
+				right:0;
+				left:inherit;
+				width:32px;
+				height:32px;
+				margin:0;
+				background:url('/lg5-common/images/btn-AD-on.svg');
+				background-size:100% 100%;
+				border-radius:inherit;
 			}
 		}
-		&.main .head{
-			max-width:300px;
-			font-size:32px;
-			line-height:36px;
-			margin-top:2px;
-		}
-		&.sub .head{
-			max-width:250px;
-			font-size:28px;
-			line-height:32px;
-			margin-top:1px;
-		}
-		.copy-boxing-area {
-			.desc{
-				margin-top: 11px;
-			}
-		}
-		&.main {
-			.category,
-			.head,
-			.desc {
-			}
-			&.text-white {
-				background:#000;
-			}
-		}
+		//&.sub {
+		//	.acc-video-content {
+		//		position:absolute;
+		//		bottom:60px;
+		//		left:20px;
+		//		top:inherit;
+		//		right:inherit;
+		//		&:before {
+		//			left:0;
+		//		}
+		//	}
+		//}
+		//&.main .head{
+		//	max-width: 300px;
+		//	font-size:32px;
+		//	line-height:36px;
+		//	margin-top:2px;
+		//}
+		//&.sub .head{
+		//	max-width:250px;
+		//	font-size:28px;
+		//	line-height:32px;
+		//	margin-top:1px;
+		//}
+		//&.main {
+		//	.category,
+		//	.head,
+		//	.desc {
+		//	}
+		//	&.text-white {
+		//		background:#000;
+		//	}
+		//}
 	}
+}
