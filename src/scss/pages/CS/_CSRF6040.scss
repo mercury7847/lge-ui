@@ -423,6 +423,7 @@
                         padding:0 0 0 20px;
                     }
                     .scroll-wrap {
+                        position:relative;
                         height:calc(100vh - 371px);
                         overflow-y:scroll;
                         @include csmobile {
@@ -452,6 +453,7 @@
                     padding:0 8px 0 20px;
                 }
                 .scroll-wrap {
+                    position:relative;
                     height:calc(100vh - 471px);
                     overflow-y:scroll;
                 }
@@ -523,6 +525,7 @@
                     display:none;
                     overflow:hidden;
                     .scroll-wrap {
+                        position:relative;
                         margin-right:8px;
                         height:calc(100vh - 126px - 105px - 105px);
                         overflow-y:scroll;
@@ -760,7 +763,7 @@
             top:0;
             right:0;
             bottom:0;
-            height:100vh;
+            height:100%;
 
             .point-wrap {
                 display:block;
