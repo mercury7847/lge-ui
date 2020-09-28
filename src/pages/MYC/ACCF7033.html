@@ -144,6 +144,8 @@
                     </ul>
                     @@include('./common/modules/carousel.html', {
                         "carousel" : true,
+                        "carouselClass" : "carousel-4",
+                        "carouselScriptClass" : "ui_carousel_4_slider",
                         "slideArr" : [
                             { 
                                 "flag" : "생활의 팁",
@@ -197,34 +199,6 @@
         </div>
         
         @@include('./common/footer.html')
-        <script>
-            $(function(){
-                vcui.require(['ui/carousel'], function () {
-                    $('.ui_carousel_slider').vcCarousel({
-                        infinite: false,
-                        autoplay: false,
-                        slidesToScroll: 4,
-                        slidesToShow: 4,
-                        responsive: [
-                            {
-                                breakpoint: 768,
-                                settings: {
-                                    slidesToScroll: 1,
-                                    slidesToShow: 1
-                                }
-                            },
-                            {
-                                breakpoint: 20000,
-                                settings: {
-                                    slidesToScroll: 4,
-                                    slidesToShow: 4
-                                }
-                            }
-                        ]
-                    });
-                });
-            });
-        </script>
     </div>  
     @@include('./common/modules/alert-modal.html', {
         "msgOnly" : true,

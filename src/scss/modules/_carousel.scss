@@ -117,20 +117,9 @@
     }
 }
 
-// Carousel slide (4 case)
+// Carousel slide (4 on pc, 3 on pc)
 .slide-wrap.carousel-type {
-    max-width:(1284px + 24px);
     margin:0 auto;
-    padding-bottom:34px;
-    @include mobile {
-        margin:0 -20px;
-        padding:0 15px 38px;
-    }
-    .indi-wrap {
-        bottom:0;
-        @include mobile {
-        }
-    }
     .slide-content {
         @include mobile {
             overflow:visible !important;
@@ -138,142 +127,7 @@
     }
     .slide-conts {
         float:left;
-        width:25%;
         height:auto;
-        padding:0 12px;
-        @include mobile {
-            width:100%;
-            padding:0 5px;
-        }
-    }
-    .slide-box {
-        display:block;
-        position:relative;
-        border-radius:4px;
-        overflow:hidden;
-        .flag {
-            position:absolute;
-            top:24px;
-            left:24px;
-            padding:0 8px;
-            border-radius:4px;
-            background:#f4f4f4;
-            color:#EC455A;
-            font-size:12px;
-            line-height:20px;
-            font-weight:500;
-            z-index:10;
-        }
-        .thumb {
-            display:block;
-            position:relative;
-            z-index:1;
-            img {
-                width:100%;
-                height:auto;
-                vertical-align:top;
-            }
-            &::before {
-                content:' ';
-                position:absolute;
-                top:0;
-                right:0;
-                bottom:0;
-                left:0;
-                background:rgba(#222, .2);
-                z-index:5;
-            }
-            &::after {
-                content:' ';
-                position:absolute;
-                bottom:0;
-                left:0;
-                right:0;
-                height:50px;
-                background-image:linear-gradient(transparent, rgba(#222, .5));
-                z-index:6;
-            }
-        }
-        .info-area {
-            position:relative;
-            padding:16px 24px 24px;
-            background:#fff;
-            z-index:15;
-            .hashtag {
-                position:absolute;
-                bottom:calc(100% + 16px);
-                left:24px;
-                font-size:0;
-                .hash {
-                    display:inline-block;
-                    margin-right:8px;
-                    color:#fff;
-                    font-size:14px;
-                    line-height:20px;
-                    font-weight:500;
-                    vertical-align:top;
-                }
-            }
-            .text-box {
-                height:68px;
-            }
-            .tit {
-                max-height:48px;
-                color:#222;
-                font-size:16px;
-                line-height:24px;
-                font-weight:700;
-                @include textEllipsisClamp(2);
-            }
-            .desc {
-                margin-top:4px;
-                color:#222;
-                font-size:14px;
-                line-height:20px;
-                overflow:hidden;
-                text-overflow:ellipsis;
-                white-space:nowrap;
-            }
-            .count {
-                margin-top:20px;
-                font-size:0;
-                li {
-                    display:inline-block;
-                    margin-right:8px;
-                    color:#616161;
-                    font-size:12px;
-                    line-height:16px;
-                    font-weight:500;
-                    vertical-align:top;
-                    &::before {
-                        content:' ';
-                        display:inline-block;
-                        width:16px;
-                        height:16px;
-                        margin-right:4px;
-                        vertical-align:top;
-                    }
-                    &.like::before {
-                        background:url('/lg5-common/images/icons/icon-heart-off-sm.svg') center no-repeat;
-                    }
-                    &.view::before {
-                        background:url('/lg5-common/images/icons/icon-view-sm.svg') center no-repeat;
-                    }
-                }
-            }
-        }
-        .btn-like {
-            position:absolute;
-            top:24px;
-            right:24px;
-            width:24px;
-            height:24px;
-            background:url('/lg5-common/images/icons/icon-heart-off.svg') center no-repeat;
-            z-index:20;
-            &.on {
-                background:url('/lg5-common/images/icons/icon-heart-on.svg') center no-repeat;
-            }
-        }
     }
     .slide-controls {
         .btn-arrow.prev {
@@ -281,6 +135,161 @@
         }
         .btn-arrow.next {
             right:-16px;
+        }
+    }
+
+    // 3 on pc type carousel 
+    &.carousel-3 {
+        
+    }
+
+    // 4 on pc type carousel 
+    &.carousel-4 {
+        max-width:(1284px + 24px);
+        padding-bottom:34px;
+        @include mobile {
+            margin:0 -20px;
+            padding:0 15px 38px;
+        }
+        .indi-wrap {
+            bottom:0;
+        }
+        .slide-conts {
+            width:25%;
+            padding:0 12px;
+            @include mobile {
+                width:100%;
+                padding:0 5px;
+            }
+        }
+        .slide-box {
+            display:block;
+            position:relative;
+            border-radius:4px;
+            overflow:hidden;
+            .flag {
+                position:absolute;
+                top:24px;
+                left:24px;
+                padding:0 8px;
+                border-radius:4px;
+                background:#f4f4f4;
+                color:#EC455A;
+                font-size:12px;
+                line-height:20px;
+                font-weight:500;
+                z-index:10;
+            }
+            .thumb {
+                display:block;
+                position:relative;
+                z-index:1;
+                img {
+                    width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:0;
+                    right:0;
+                    bottom:0;
+                    left:0;
+                    background:rgba(#222, .2);
+                    z-index:5;
+                }
+                &::after {
+                    content:' ';
+                    position:absolute;
+                    bottom:0;
+                    left:0;
+                    right:0;
+                    height:50px;
+                    background-image:linear-gradient(transparent, rgba(#222, .5));
+                    z-index:6;
+                }
+            }
+            .info-area {
+                position:relative;
+                padding:16px 24px 24px;
+                background:#fff;
+                z-index:15;
+                .hashtag {
+                    position:absolute;
+                    bottom:calc(100% + 16px);
+                    left:24px;
+                    font-size:0;
+                    .hash {
+                        display:inline-block;
+                        margin-right:8px;
+                        color:#fff;
+                        font-size:14px;
+                        line-height:20px;
+                        font-weight:500;
+                        vertical-align:top;
+                    }
+                }
+                .text-box {
+                    height:68px;
+                }
+                .tit {
+                    max-height:48px;
+                    color:#222;
+                    font-size:16px;
+                    line-height:24px;
+                    font-weight:700;
+                    @include textEllipsisClamp(2);
+                }
+                .desc {
+                    margin-top:4px;
+                    color:#222;
+                    font-size:14px;
+                    line-height:20px;
+                    overflow:hidden;
+                    text-overflow:ellipsis;
+                    white-space:nowrap;
+                }
+                .count {
+                    margin-top:20px;
+                    font-size:0;
+                    li {
+                        display:inline-block;
+                        margin-right:8px;
+                        color:#616161;
+                        font-size:12px;
+                        line-height:16px;
+                        font-weight:500;
+                        vertical-align:top;
+                        &::before {
+                            content:' ';
+                            display:inline-block;
+                            width:16px;
+                            height:16px;
+                            margin-right:4px;
+                            vertical-align:top;
+                        }
+                        &.like::before {
+                            background:url('/lg5-common/images/icons/icon-heart-off-sm.svg') center no-repeat;
+                        }
+                        &.view::before {
+                            background:url('/lg5-common/images/icons/icon-view-sm.svg') center no-repeat;
+                        }
+                    }
+                }
+            }
+            .btn-like {
+                position:absolute;
+                top:24px;
+                right:24px;
+                width:24px;
+                height:24px;
+                background:url('/lg5-common/images/icons/icon-heart-off.svg') center no-repeat;
+                z-index:20;
+                &.on {
+                    background:url('/lg5-common/images/icons/icon-heart-on.svg') center no-repeat;
+                }
+            }
         }
     }
 }
