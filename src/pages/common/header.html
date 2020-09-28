@@ -134,6 +134,7 @@
 
             @@if (context.mobileCase === "all" || context.mobileCase === "isDepth") {
             <!-- Mobile Depth (동일메뉴 존재) -->
+            <!-- [D] .header-top 에 .mobile-category-depth 추가 -->
             <div class="mobile-nav-category is-depth">
                 <a href="#none" class="nav-item active">청소기</a>
                 <div class="nav-category-container">
@@ -150,6 +151,7 @@
 
             @@if (context.mobileCase === "all" || context.mobileCase === "noneDepth") {
             <!-- Mobile Depth (동일메뉴, 하위메뉴 미존재) -->
+            <!-- [D] .header-top 에 .mobile-category-depth 추가 -->
             <div class="mobile-nav-category">
                 <a href="#" class="btn-back"><span class="blind">뒤로가기</span></a>
                 <span class="nav-item">코드제로 A9</span>
@@ -1703,6 +1705,12 @@
                         <!-- //Category Layer -->
                     </li>
                 </ul>
+                <!-- [768px ~ 960px] 메뉴 슬라이드 버튼 -->
+                <div class="nav-arrow-wrap">
+                    <button type="button" class="btn-nav-arrow prev" aria-disabled="true"><span class="blind">이전</span></button>
+                    <button type="button" class="btn-nav-arrow next"><span class="blind">다음</span></button>
+                </div>
+                <!-- // 메뉴 슬라이드 버튼 -->
                 <div class="dimmed"></div>
             </div>
             <div class="nav-service">

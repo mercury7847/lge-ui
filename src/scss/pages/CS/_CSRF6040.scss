@@ -82,6 +82,41 @@
                 }
             }
 
+            .view-info-btn {
+                display:none;
+                @include csmobile {
+                    display:block;
+                    position:absolute;
+                    bottom:90px;
+                    right:0;
+                    span {
+                        display:inline-block;
+                        color:#EC455A;
+                        font-size:14px;
+                        line-height:24px;
+                        font-weight:500;
+                        &:before {
+                            content:'';
+                            display:inline-block;
+                            width:24px;
+                            height:24px;
+                            vertical-align:top;
+                        }
+                    }
+                    button {
+                        &.map span:before {
+                            background:url('/lg5-common/images/CS/btn-viewmap.svg') no-repeat;
+                            background-size:24px 24px;
+                        }
+                        &.list span:before {
+                            background:url('/lg5-common/images/CS/btn-viewmap.svg') no-repeat;
+                            background-size:24px 24px;
+                        }
+                    }
+                    
+                }
+            }
+
             .store-list-box {
                 // position:relative;
                 overflow:hidden;
@@ -126,7 +161,7 @@
                                 margin-left:0;
                             }
                         }
-                       
+                    
                     }
                     .input-sch {
                         position:relative;
@@ -154,7 +189,7 @@
                             &::after {
                                 content:'';
                                 display:block;
-                                margin-left:12px;
+                                margin-left:16px;
                                 width:24px;
                                 height:24px;
                                 background:url('/lg5-common/images/icons/icon-search.svg') no-repeat;  
@@ -186,46 +221,11 @@
                         }
                     }
                 }
-
-                .view-info-btn {
-                    display:none;
-                    @include csmobile {
-                        display:block;
-                        position:absolute;
-                        bottom:90px;
-                        right:0;
-                        span {
-                            display:inline-block;
-                            color:#EC455A;
-                            font-size:14px;
-                            line-height:24px;
-                            font-weight:500;
-                            &:before {
-                                content:'';
-                                display:inline-block;
-                                width:24px;
-                                height:24px;
-                                vertical-align:top;
-                            }
-                        }
-                        button {
-                            &.map span:before {
-                                background:url('/lg5-common/images/CS/btn-viewmap.svg') no-repeat;
-                                background-size:24px 24px;
-                            }
-                            &.list span:before {
-                                background:url('/lg5-common/images/CS/btn-viewmap.svg') no-repeat;
-                                background-size:24px 24px;
-                            }
-                        }
-                        
-                    }
-                }
             }
 
             .sch-list {
                 ul {
-                    padding-bottom:180px;
+                    padding-bottom:32px;
                 }
                 li {
                     position:relative;
@@ -261,26 +261,36 @@
                                     display:inline-block;
                                     margin-right:8px;
                                     font-size:16px;
-                                    line-height:24px;
+                                    line-height:32px;
                                     font-weight:700;
                                     vertical-align:middle;
-                                    & +.flag {
-                                        margin-left:0;
+                                    @include mobile {
+                                        margin-right:6px;
+                                        line-height:29px;
                                     }
                                 }
-                                .flag {
+                                .flag-wrap {
                                     display:inline-block;
-                                    margin-left:4px;
-                                    padding:0 8px;
-                                    color:#EC455A;
-                                    font-size:12px;
-                                    line-height:20px;
-                                    background:#E9E9EA;
-                                    font-weight:500;
-                                    border-radius:4px;
                                     vertical-align:middle;
-                                    @include csmobile {
-                                        line-height:18px;
+                                    .flag {
+                                        display:inline-block;
+                                        margin-right:4px;
+                                        padding:0 8px;
+                                        color:#616161;
+                                        font-size:12px;
+                                        line-height:22px;
+                                        background:#fff;
+                                        font-weight:500;
+                                        border:1px solid #616161;
+                                        border-radius:4px;
+                                        vertical-align:middle;
+                                        @include csmobile {
+                                            font-size:9px;
+                                            line-height:15px;
+                                        }
+                                        &:last-child {
+                                            margin-right:0;
+                                        }
                                     }
                                 }
                             }
@@ -348,21 +358,23 @@
                     position:fixed;
                     top:126px;
                 }
+                @include mobile {
+                    top:48px;
+                }
 
                 .btn-wrap {
                     margin:0;
+                    padding:12px 40px 20px;
                     background:#fff;
+                    border-bottom:1px solid #ddd;
                     @include csmobile {
-                        padding:0;
+                        padding:20px 20px;
+                        border:none;
                     }
                     .btn-back {
-                        width:100%;
-                        padding:12px 40px 20px;
-                        border-bottom:1px solid #ddd;
                         text-align:left;
                         @include csmobile {
-                            padding:20px 20px;
-                            border:none;
+                        
                         }
                         span {
                             position:relative;
@@ -385,6 +397,12 @@
                             }
                         }
                     }
+                    .view-info-btn {
+                        top:20px;
+                        right:20px;
+                        bottom:auto;
+                    }
+
                 }
                 .result-list {
                     padding:0 8px 0 40px;
@@ -411,9 +429,6 @@
                             color:#EC455A;
                         }
                     }
-                }
-                &.active {
-                    display:block;
                 }
             }
 
@@ -869,6 +884,22 @@
                         margin-left:-20px;
                         background:url('/lg5-common/images/icons/icon-map-bubble.svg') no-repeat;
                     }
+                }
+            }
+        }
+
+
+        &.active {
+            .result-list-box {
+                display:block;
+            }
+            @include csmobile {
+                .store-map-con {
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
                 }
             }
         }
