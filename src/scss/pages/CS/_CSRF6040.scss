@@ -773,7 +773,6 @@
                     padding:24px;
                     background:#fff;
                     border-radius:16px;
-                    // overflow:hidden;
                     box-shadow:0 4px 10px 0 rgba(17,17,17,.32);
                     @include csmobile {
                         width:320px;
@@ -890,11 +889,13 @@
                         display:block;
                         position:absolute;
                         left:50%;
-                        bottom:-15Px;
-                        width:39px;
-                        height:26px;
-                        margin-left:-20px;
+                        bottom:-36px;
+                        width:57px;
+                        height:36px;
+                        -webkit-transform:translateX(-50%);
+                        transform:translateX(-50%);
                         background:url('/lg5-common/images/icons/icon-map-bubble.svg') no-repeat;
+                        background-size:57px 36px;
                     }
                 }
             }

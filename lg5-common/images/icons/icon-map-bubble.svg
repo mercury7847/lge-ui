@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="39px" height="26px" viewBox="0 0 39 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="57px" height="36px" viewBox="0 0 57 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Artboard</title>
+    <defs>
+        <filter x="-7.5%" y="-10.4%" width="115.0%" height="120.8%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.0666666667   0 0 0 0 0.0666666667   0 0 0 0 0.0666666667  0 0 0 0.32 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
     <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M1.87800855,20.0569116 C10.7204608,14.7741663 16.4722124,8.08852913 19.1332633,0 C22.245268,8.08852913 28.2375226,14.7741663 37.1100274,20.0569116 C43.8894294,24.0934103 31.1782809,26.0737405 18.8273652,25.9979021 C6.9319924,25.924861 -4.62923066,23.9445308 1.87800855,20.0569116 Z" id="Path-2" fill="#FFFFFF" transform="translate(19.500000, 13.000000) scale(1, -1) translate(-19.500000, -13.000000) "></path>
+        <g id="Group-12" filter="url(#filter-1)" transform="translate(-145.000000, -244.000000)" fill="#FFFFFF">
+            <path d="M155.878009,253.056912 C164.720461,247.774166 170.472212,241.088529 173.133263,233 C176.245268,241.088529 182.237523,247.774166 191.110027,253.056912 C197.889429,257.09341 185.178281,259.07374 172.827365,258.997902 C160.931992,258.924861 149.370769,256.944531 155.878009,253.056912 Z" id="Path-2" transform="translate(173.500000, 246.000000) scale(1, -1) translate(-173.500000, -246.000000) "></path>
+        </g>
     </g>
 </svg>
