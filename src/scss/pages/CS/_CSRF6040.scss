@@ -910,16 +910,5 @@
                 }
             }
         }
-        &.active {
-            .result-list-box {
-                display:block;
-            }
-            .sch-box {
-                display:none;
-            }
-            .list-wrap {
-                position:absolute;
-            }
-        }
     }
 }
