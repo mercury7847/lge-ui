@@ -209,9 +209,12 @@
                     self.resizeCallbacks.push(callback);
                 }).on('resize', function(e){
                     for(var idx in self.resizeCallbacks){
-                        self.resizeCallbacks[idx].call()
+                        self.resizeCallbacks[idx].call();
                     }
-                });                
+
+                    self._resetFlexibleBox();
+                });  
+                self._resetFlexibleBox();              
     
                 // 모달 기초작업 //////////////////////////////////////////////////////
                 // 모달 기본옵션 설정: 모달이 들때 아무런 모션도 없도록 한다.(기본은 fade)
@@ -299,48 +302,18 @@
                 }, 400);
             });
         },
-    
-        //template html 리스트 파일 로드...
-        loadTemplateList: function(tmplID, callback){
-            var self = lgkorUI;
-    
-            $.ajax({
-                dataType: "json",
-                url: "/lg5-common/template/template_list.json",
-                success: function(data){
-                    self.templateList = data;
-                    self.getTemplate(tmplID, callback);
-                },
-                error: function(err){
-                    console.log(err);
-                }
+
+        _resetFlexibleBox: function(){
+            //리스트 height 재설정
+            $('body').find('.ui_flexible_height').each(function(idx, item){
+                var maxheight = 0;
+                $(item).find('> li').each(function(cdx, child){
+                    var flexiblebox = $(child).find('.ui_flexible_box > dl');
+                    maxheight = Math.max(maxheight, flexiblebox.outerHeight(true));
+                });
+
+                $(item).find('> li .ui_flexible_box').height(maxheight);
             });
-        },
-    
-        //template html 내보내기...
-        getTemplate: function(tmplID, callback){
-            var self = lgkorUI;
-    
-            if(self.templateList == null){
-                //template list  로드를 한번 도 안했다면...
-                self.loadTemplateList(tmplID, callback);
-            } else{
-                //template list 로드가 됐다면...
-                var tmpltag = $('#'+tmplID);
-                if(tmpltag.length){
-                    //template list 를 document에 적용해 봤다면...
-                    if(callback != undefined && typeof callback == "function") callback();
-                } else{
-                    //template list 를 document 에 적용하기 전이라면...
-                    var tmplurl = self.templateList[tmplID].url;
-                    self.template.load(tmplurl, function(html){
-                        tmpltag = $('#'+tmplID);
-                        if(!tmpltag.length) $(html).insertAfter($('body')); //중복 등록 체크...
-    
-                        if(callback != undefined && typeof callback == "function") callback();
-                    });
-                }
-            }
         },
 
         showLoading:function(msg){

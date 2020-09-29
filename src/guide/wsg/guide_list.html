@@ -180,47 +180,6 @@
 
 </div>     
 @@include('../include/loadscript_wsg.html')
-<script>
-    vcui.require(['ui/flexibleList'], function() {
-        $('.ui_flexible_height').vcFlexibleList();
-    });
-    // $(function(){ 
-    //     function maxHt() {
-    //         var $box = $(".ui_flexible_height");
-    //         var $sbl = $box.find("li.lists");
-    //         var lt = $sbl.length;
-
-    //         var winW = $(window).outerWidth(true);
-
-    //         if ( winW < 767 ) {
-    //             var n = 2;
-    //         } else {
-    //             var n = 3;
-    //         }
-
-    //         var loopNum = Math.ceil(lt / n);
-    //         var j=0;
-    //         while ( j < loopNum ) {
-    //             var arr = [];
-    //             for ( var i=n*j; i < n*j+n; i++ ) {
-    //                 arr[i] = $sbl.eq(i).find("dl").outerHeight();
-    //             }
-    //             var arr = arr.filter(function(item){
-    //                 return item !== null && item 
-    //             });
-    //             var maxHeight = Math.max.apply( Math, arr );
-    //             for ( var i=n*j; i < n*j+n; i++ ) {
-    //                 $sbl.eq(i).find(".ui_flexible_box").outerHeight(maxHeight);
-    //             }
-    //             j++
-    //         }
-    //     }
-    //     $(window).resize(function(){
-    //         maxHt();
-    //     });
-    //     maxHt();
-    // });
-
 </script>
 </body>
 </html> 
