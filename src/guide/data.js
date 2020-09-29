@@ -74,6 +74,7 @@ var res = {
 			"KRP0013_PDP Bundle" : ["/html/components/KRP0013.html","","검수완료"],
 			"KRP0016_PDP Support - B2C" : ["/html/components/KRP0016.html","","검수완료"],
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"],
+			"KRP0018_Sticky Compare" : ["/html/components/KRP0018.html","",""],
 			"KRP0020_Sitemap_Dynamic" : ["/html/components/KRP0020.html","","검수완료"],
 			"KRP0021_Category module for store home" : ["/html/components/KRP0021.html","","진행중"]
 		},
