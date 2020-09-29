@@ -217,20 +217,31 @@
         _showMap: function(){
             var self = this;
 
-            console.log("showMap")
-
-            var maptop = self.$defaultListContainer.position().top;
-            $('.store-map-con').css({
-                position: 'absolute',
-                visibility: 'visible',
-                top: maptop,
-                left:0,
-                x: self.windowWidth,
-                height: self.$mapContainer.height(),
-                'z-index': 100
-            }).transition({x:0}, 350, "easeInOutCubic");
-
-            self.$map.resize();
+            if(!self.isMapTrans){
+                self.isMapTrans = true;
+                
+                var toggle = self.$searchContainer.find('.btn-view');
+                if(toggle.hasClass('map')){
+                    var maptop = self.$defaultListContainer.position().top;
+                    $('.store-map-con').css({
+                        position: 'absolute',
+                        visibility: 'visible',
+                        top: maptop,
+                        left:0,
+                        x: self.windowWidth,
+                        height: self.$mapContainer.height(),
+                        'z-index': 100
+                    }).transition({x:0}, 350, "easeInOutCubic", function(){self.isMapTrans = false;});
+        
+                    toggle.removeClass("map").addClass('list').find('span').text('리스트보기');
+        
+                    self.$map.resize();
+                } else{
+                    toggle.removeClass("list").addClass('map').find('span').text('지도보기');
+    
+                    $('.store-map-con').stop().transition({x:self.windowWidth}, 350, "easeInOutCubic", function(){self.isMapTrans = false;})
+                }
+            }
         },
 
         _setSearch: function(){
