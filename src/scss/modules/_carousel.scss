@@ -140,7 +140,114 @@
 
     // 3 on pc type carousel 
     &.carousel-3 {
-        
+        max-width: (1284px + 30px);
+        .indi-wrap {
+            display: none;
+        }
+        .slide-conts {
+            width: 33.33%;
+            padding: 0 6px;
+        }
+        .slide-box {
+            position: relative;
+            padding: 0 40px 56px;
+            border-radius: 4px;
+            background-color: #fff;
+            .flag {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .product-image {
+                a {
+                    display: block;
+                    text-align: center;
+                    img {
+                        width: 100%;
+                        max-width: 300px;
+                    }
+                }
+            }
+            .badge-area {
+                height: 20px;
+                margin-bottom: 8px;
+                font-size: 0;
+                .badge {
+                    display: inline-block;
+                    margin-right: 4px;
+                    padding: 3px 8px;
+                    border: 1px solid #ec455a;
+                    border-radius: 4px;
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 1;
+                    color: #ec455a;
+                }
+                & + .product-name {
+                    margin-top: 0;
+                }
+            }
+            .product-name {
+                height: 48px;
+                margin: 28px 0 12px;
+                a {
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #222;
+                    @include textClipClamp(2);
+                }
+            }
+            .product-info {
+                margin-bottom: 24px;
+                padding: 0 14px;
+            }
+            .price-area {
+                margin-top: 14px;
+                font-size: 0;
+                * {
+                    display: inline-block;
+                }
+                .reduced-price {
+                    font-size: 24px;
+                    font-weight: bold;
+                    line-height: 1.33;
+                    color: #222222;
+                }
+                .product-price {
+                }
+                .purchase-price {
+                    position: relative;
+                    margin: 0 4px 0 8px;
+                    font-size: 14px;
+                    line-height: 1.43;
+                    color: #616161;
+                    &:after {
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        right: 0;
+                        height: 1px;
+                        background-color: #616161;
+                        content: '';
+                    }
+                }
+                .discount-rate {
+                    font-size: 16px;
+                    font-weight: bold;
+                    line-height: 1.5;
+                    color: #ec455a;
+                }
+            }
+            .btn {
+                width: 100%;
+            }
+            .chk-wish-wrap {
+                position: absolute;
+                top: 24px;
+                right: 24px;
+            }
+        }
     }
 
     // 4 on pc type carousel 

@@ -108,7 +108,8 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self.map = new naver.maps.Map(self.$el[0], options);            
 
             if(vcui.detect.isMobile){
-                self._getCurrentLocation();
+                //self._getCurrentLocation();
+                self._requestStoreData();
             } else{
                 self._requestStoreData();
             }
@@ -154,7 +155,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     self._draw(self.storeData);                                    
                     self.triggerHandler('mapinit', [result[0]]);
 
-                    self._changeMarkersState(true); 
+                    self._changeMarkersState(); 
 
                     self._bindEvent();
                 }else{
@@ -186,11 +187,11 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             naver.maps.Event.addListener(self.map, 'zoom_changed', function() {                  
                 if(self.searchMode) return;
 
-                self._changeMarkersState(true);             
+                self._changeMarkersState();             
             });
 
             naver.maps.Event.addListener(self.map, 'dragend', function() {
-                self._changeMarkersState(true);
+                self._changeMarkersState();
             });
 
             for(var idx in self.itemArr){
@@ -217,7 +218,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             };                  
         },
 
-        _changeMarkersState: function _changeMarkersState(isTrigger, showArr){
+        _changeMarkersState: function _changeMarkersState(showArr){
             var self = this;
 
             var items = showArr ? showArr : self.itemArr;
@@ -226,7 +227,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self._setItemVisible(true);
             self._setItemInfo(arr);
 
-            if(isTrigger) self.triggerHandler('mapchanged', [arr]);   
+            self.triggerHandler('mapchanged', [arr]);   
         },
 
         _getNumberInArea : function _getNumberInArea(arr){
@@ -368,7 +369,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
         resize: function resize(){
             var self = this;
-            self._changeMarkersState(true);
+            self._changeMarkersState();
         },
 
         selectedMarker: function selectedMarker(id){
@@ -379,7 +380,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 return {...items, info: {...items.info, selected: selected}};
             });
 
-            self._changeMarkersState(true);
+            self._changeMarkersState();
         },
 
         search: function(keyword){
@@ -405,24 +406,9 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 }
                 self.map.fitBounds(bounds);
 
-                self._changeMarkersState(true, searchArr);
-                
-                // self.searchMode = true;  // search 시 zoom change를 막기위해 사용
-                // if(searchArr.length > 0) self.map.setBounds(bounds); //bounds, paddingtop, paddingright, paddingbottom, paddingleft
-    
-                // var nArr = vcui.array.filter(self.itemArr, function(item, idx){
-                //     return vcui.array.include(arr, function(a){
-                //         return a.id == item.id;
-                //     });
-                // });
-                
-                // nArr = self._getNumberInArea(nArr);
-                // self._setItemVisible(false, nArr);
-                // self._setItemInfo(nArr);
-                // self.triggerHandler('mapsearch', [nArr]);  
-                // self.searchMode = false;
+                self._changeMarkersState(searchArr);
             } else{
-                //self.triggerHandler('mapsearch', [nArr]);  
+                self.triggerHandler('mapsearchnodata');  
             }            
         }
     });
