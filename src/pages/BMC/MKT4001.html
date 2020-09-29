@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "멤버십",
+                "pageArr" : [
+                    { "page" : "멤버십 혜택", "on" : "" },
+                    { "page" : "VIP 멤버십 혜택", "on": "" },
+                    { "page" : "가입 안내", "on": "" }
+                ]
+            })
+
+            <!-- event -->
+            <div class="contents event">
+            </div>
+            <!-- // event -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>
