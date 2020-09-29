@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "이벤트"
+            })
+
+            <!-- event -->
+            <div class="contents event">
+                <div class="cont-wrap">
+                    <div class="event-view">
+                        <div class="event-detail">
+                            <div class="flag-wrap">
+                                <span class="flag">매장</span>
+                                <span class="flag">사은품</span>
+                            </div>
+                            <div class="tit-wrap">
+                                <span class="sub-tit">새마음 새출발 gram과 함께!</span>
+                                <p class="tit">신학기 gram 페스티벌</p>
+                            </div>
+                            <div class="info-wrap">
+                                <dl>
+                                    <dt>행사기간</dt>
+                                    <dd>2020.09.04 ~2020.09.30</dd>
+                                </dl>
+                                <dl>
+                                    <dt>신청기간</dt>
+                                    <dd>2020.09.04 ~2020.09.30</dd>
+                                </dl>
+                                <dl>
+                                    <dt>대상고객</dt>
+                                    <dd>LG PC를 구매한 고객 중 사은품을 신청한 고객</dd>
+                                </dl>
+                                <dl>
+                                    <dt>배송일정</dt>
+                                    <dd>사은품 신청 후 1주 이내 (사은품 신청 및 배송 관련 문의 : 1588-7964)</dd>
+                                </dl>
+                                <dl>
+                                    <dt>참여방법</dt>
+                                    <dd>LG전자 회원 로그인 및 시리얼 번호 입력 후 사은품 신청이 가능합니다.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // event -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>
