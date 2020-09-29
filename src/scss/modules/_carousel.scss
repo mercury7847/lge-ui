@@ -278,17 +278,11 @@
                     }
                 }
             }
-            .btn-like {
+            .chk-wish-wrap {
                 position:absolute;
                 top:24px;
                 right:24px;
-                width:24px;
-                height:24px;
-                background:url('/lg5-common/images/icons/icon-heart-off.svg') center no-repeat;
                 z-index:20;
-                &.on {
-                    background:url('/lg5-common/images/icons/icon-heart-on.svg') center no-repeat;
-                }
             }
         }
     }
