@@ -27,21 +27,21 @@
         '        <div class="point-wrap">'+
         '           <div class="point{{selected}}">'+
         '                <span class="num">{{num}}</span>'+
-        '                <span class="blind">선탿안됨</span>'+
+        '                <span class="blind">선택안됨</span>'+
         '            </div>'+
         '        </div>'+
         '        <div class="info-wrap">'+
         '            <div class="tit-wrap">'+
-        '                <p class="name">{{agName}}</p>'+
+        '                <p class="name"><span class="blind">매장명</span>{{agName}}</p>'+
         '                <div class="flag-wrap">'+
         '                    {{#if agNewShopComment != null }}<span class="flag">NEW</span>{{/if}}'+
         '                    {{#if isEvent}}<span class="flag">이벤트</span>{{/if}}'+
         '                    {{#if agCenterWeekday != null }}<span class="flag">서비스센터</span>{{/if}}'+
         '               </div>'+
         '            </div>'+
-        '            <p class="addr">{{agAddr1}}</p>'+
+        '            <p class="addr"><span class="blind">주소</span>{{agAddr1}}</p>'+
         '            <div class="etc-info">'+
-        '                <span class="tel">{{agTel}}</span>'+
+        '                <span class="tel"><span class="blind">전화번호</span>{{agTel}}</span>'+
         '                <a href="#" class="btn-detail">상세보기</a>'+
         '            </div>'+
         '        </div>'+

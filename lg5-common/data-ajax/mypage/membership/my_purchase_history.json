@@ -4,7 +4,7 @@
     "param": {
         "startDate" : "20200101",
         "endDate" : "20200910",
-        "purchaseType" : "all"
+        "purchaseType" : "buy"
     },
     "data": {
         "purchaseItems" : [
