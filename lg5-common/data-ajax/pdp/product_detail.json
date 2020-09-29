@@ -34,7 +34,7 @@
         ],
         "pdp_visual_list":[
             {
-                "link_name":"65UK6300PUE",
+                "link_name":"65UK6300PUE1",
                 "type":"image",
                 "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum01.png",
                 "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
@@ -42,7 +42,7 @@
                 "image_desc":"graphic description"
             },
             {
-                "link_name":"65UK6300PUE",
+                "link_name":"65UK6300PUE2",
                 "type":"image",
                 "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum02.png",
                 "image_url":"/lg5-common/images/KRC0043/@thumb02.jpg",
@@ -50,7 +50,7 @@
                 "image_desc":"graphic description"
             },
             {
-                "link_name":"65UK6300PUE",
+                "link_name":"65UK6300PUE3",
                 "type":"image",
                 "thumb_url":"/lg5-common/images/KRC0043/@indi03.jpg",
                 "image_url":"/lg5-common/images/KRC0043/@thumb03.jpg",
@@ -58,7 +58,7 @@
                 "image_desc":"graphic description"
             },
             {
-                "link_name":"65UK6300PUE",
+                "link_name":"65UK6300PU4E",
                 "type":"image",
                 "thumb_url":"/lg5-common/images/KRC0043/@indi01.jpg",
                 "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
@@ -66,7 +66,7 @@
                 "image_desc":"graphic description"
             },
             {
-                "link_name":"65UK6300PUE",
+                "link_name":"65UK6300PUE5",
                 "type":"image",
                 "thumb_url":"/lg5-common/images/KRC0043/@indi02.jpg",
                 "image_url":"/lg5-common/images/KRC0043/@thumb02.jpg",
@@ -74,7 +74,7 @@
                 "image_desc":"graphic description"
             },
             {
-                "link_name":"65UK6300PUE",
+                "link_name":"65UK6300PUE6",
                 "type":"image",
                 "thumb_url":"/lg5-common/images/KRC0043/@indi03.jpg",
                 "image_url":"/lg5-common/images/KRC0043/@thumb03.jpg",
