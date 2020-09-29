@@ -65,6 +65,8 @@
             self.windowWidth;
             self.windowHeight;
 
+            self.isTransion = false;
+
             self.isChangeMode = false;
             self.searchResultMode = false;
 
@@ -80,7 +82,8 @@
             self.$map = null; //맵 모듈...
             self.$mapContainer = $('.map-area'); //맴 모듈 컨테이너...
             
-            self.$optionSelector = $('.opt-cont'); //옵션 컨테이너...
+            self.$optionContainer = $('.opt-cont'); //옵션 컨테이너...
+            self.$optionContainer.find('.all-chk input[type=checkbox]').attr('checked', true);
 
             //검색...
             self.searchKeywords = {};
@@ -132,10 +135,10 @@
         _bindEvents: function(){
             var self = this;
 
-            self.$optionSelector.on('click', '.btn-sel', function(e){
+            self.$optionContainer.on('click', '.btn-sel', function(e){
                 e.preventDefault();
 
-                console.log("option open")
+                self._toggleOptContainer();
             });
 
             self.$defaultListLayer.on('click', 'li > .ui_marker_selector', function(e){
@@ -171,6 +174,28 @@
 
                 self._showMap();
             });
+
+            self.$leftContainer.on('click', '.btn-fold', function(e){
+                e.preventDefault();
+
+                self._toggleLeftContainer();
+            })
+
+            self.$optionContainer.find('.all-chk dd input[type=checkbox]').on('change', function(e){
+                self._optAllChecked();
+            });
+            self.$optionContainer.find('.all-chk dt input[type=checkbox]').on('change', function(e){
+                self._optToggleAllChecked();
+            });
+            self.$optionContainer.on('click', '.btn-group button:first-child', function(e){
+                e.preventDefault();
+
+                self._setOptINIT();
+            }).on('click', '.btn-group button:last-child', function(e){
+                e.preventDefault();
+
+                self._setOptApply();
+            })
 
             $('#searchWrap').on('click', 'button', function(e){
 
@@ -215,11 +240,65 @@
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
 
+        _setOptINIT: function(){
+            var self = this;
+
+            //self.$optionContainer.find('.opt-layer')
+        },
+
+        _setOptApply: function(){
+            console.log("opt apply!!")
+        },
+
+        _optToggleAllChecked: function(){
+            var self = this;
+
+            var chked = self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked');
+            if(chked){
+                self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', true);
+            }
+        },
+
+        _optAllChecked: function(){
+            var self = this;
+
+            var total = self.$optionContainer.find('.all-chk dd input[type=checkbox]').length;
+            var chktotal = self.$optionContainer.find('.all-chk dd input[type=checkbox]:checked').length;
+            
+            var chked = total == chktotal ? true : false;
+            self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', chked);
+        },
+
+        _toggleOptContainer: function(){
+            var self = this;
+
+            var optop = self.$optionContainer.position().top;
+
+            self.$optionContainer.toggleClass('open');
+
+            // if(self.$optionContainer.hasClass('is-open')){
+            //     self.$optionContainer.find('.opt-layer').show();
+            //     self.$optionContainer.stop().css({top:optop}).transition({top:0}, 350, "easeInOutCubic");
+            // } else{
+            //     optop = self.$optionContainer.position().top;
+            //     console.log(optop)
+            //     self.$optionContainer.stop().css({y:-optop}).transition({y:0}, 350, "easeInOutCubic");
+            // }
+        },
+
+        _toggleLeftContainer: function(){
+            var self = this;
+            
+            self.$leftContainer.toggleClass('close');
+            
+            self._resize();
+        },
+
         _showMap: function(){
             var self = this;
 
-            if(!self.isMapTrans){
-                self.isMapTrans = true;
+            if(!self.isTransion){
+                self.isTransion = true;
                 
                 var toggle = self.$searchContainer.find('.btn-view');
                 if(toggle.hasClass('map')){
@@ -232,7 +311,7 @@
                         x: self.windowWidth,
                         height: self.$mapContainer.height(),
                         'z-index': 100
-                    }).transition({x:0}, 350, "easeInOutCubic", function(){self.isMapTrans = false;});
+                    }).transition({x:0}, 350, "easeInOutCubic", function(){self.isTransion = false;});
         
                     toggle.removeClass("map").addClass('list').find('span').text('리스트보기');
         
@@ -240,7 +319,7 @@
                 } else{
                     toggle.removeClass("list").addClass('map').find('span').text('지도보기');
     
-                    $('.store-map-con').stop().transition({x:self.windowWidth}, 350, "easeInOutCubic", function(){self.isMapTrans = false;})
+                    $('.store-map-con').stop().transition({x:self.windowWidth}, 350, "easeInOutCubic", function(){self.isTransion = false;})
                 }
             }
         },
@@ -369,7 +448,7 @@
             var top = $('.container').position().top;
             var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
             var scheight = self.$searchContainer.outerHeight(true);
-            var optheight = self.$optionSelector.height();
+            var optheight = self.$optionContainer.height();
             var resultheight = $('.result-list-box').height();
 
             var listheight;
@@ -398,8 +477,12 @@
 
                 mapheight = self.$defaultListContainer.find('.scroll-wrap').height();
             } else{
-                mapmargin = listwidth;
-                mapwidth = self.windowWidth - listwidth;
+                if(self.$leftContainer.hasClass('close')){
+                    mapmargin = 24;
+                } else{
+                    mapmargin = listwidth;
+                }                
+                mapwidth = self.windowWidth - mapmargin;            
                 mapheight = self.windowHeight;
             }
 

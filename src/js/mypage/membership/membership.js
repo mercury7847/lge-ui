@@ -9,6 +9,7 @@
 */
     var listItemTemplate =
                 '<li class="lists {{liClass}}">'+
+                '<div class="ui_flexible_box">'+
                 '<dl><dt><span class="img"><img src="{{modelImageAddr}}" alt="{{modelName}}"></span>'+
                 '<p class="name"><span class="blind">제품명</span>{{modelName}}</p>'+
                 '<p class="num"><span class="blind">제품번호</span>{{modelNumber}}</p></dt>'+
@@ -16,7 +17,7 @@
                 '<li>구매수량 : {{purchaseQuantity}}</li>'+
                 '<li><span class="blind">구매처</span>{{purchaseStore}}</li>'+
                 '<li>{{purchaseDate}} 구매</li>'+
-                '</ul></dd></dl></li>';
+                '</ul></dd></dl></div></li>';
 
     function searchPurchaseHistory(param) {
         var ajaxUrl = self.$dateFilter.data('url');
