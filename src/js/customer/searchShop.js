@@ -57,6 +57,7 @@
             var self = this;
             
             self._setting();
+            self._setOptData();
         },
 
         _setting: function(){
@@ -92,6 +93,8 @@
             self.$searchButton = $('#tab1 .btn-search');
 
             self.$searchResultContainer = $('.result-list-box');
+
+            
             
             vcui.require(['ui/storeMap', 'ui/tab'], function () {
 				
@@ -240,14 +243,45 @@
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
 
+        _setOptData: function(){
+            var self = this;
+
+            self.optionData = {
+                shopType: self.$optionContainer.find('.opt-layer .list-item > dl:first-child .rdo-wrap input:checked').attr('id'),
+                serviceType: self.$optionContainer.find('.opt-layer .list-item > dl:nth-child(2) .rdo-wrap input:checked').attr('id'),
+                keywords:{
+                    shop: [],
+                    service: [],
+                    etc: []
+                }
+            }
+
+            self.$optionContainer.find('.all-chk > dd > dl:nth-child(1) input').each(function(idx, item){
+                if($(item).prop('checked')) self.optionData.keywords.shop.push($(item).attr('id'));
+            });
+            self.$optionContainer.find('.all-chk > dd > dl:nth-child(2) input').each(function(idx, item){
+                if($(item).prop('checked')) self.optionData.keywords.service.push($(item).attr('id'));
+            });
+            self.$optionContainer.find('.all-chk > dd > dl:nth-child(3) input').each(function(idx, item){
+                if($(item).prop('checked')) self.optionData.keywords.etc.push($(item).attr('id'));
+            });
+
+            console.log(self.optionData);
+        },
+
         _setOptINIT: function(){
             var self = this;
 
-            //self.$optionContainer.find('.opt-layer')
+            self.$optionContainer.find('.opt-layer .list-item > dl:first-child .rdo-wrap:first-child input').prop("checked", true);
+            self.$optionContainer.find('.opt-layer .list-item > dl:nth-child(2) .rdo-wrap:first-child input').prop("checked", true);
+            self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', true);
+            self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', true);
         },
 
         _setOptApply: function(){
-            console.log("opt apply!!")
+            var self = this;
+
+            self._setOptData();
         },
 
         _optToggleAllChecked: function(){
