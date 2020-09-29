@@ -65,6 +65,7 @@
             self.windowWidth;
             self.windowHeight;
 
+            self.isChangeMode = false;
             self.searchResultMode = false;
 
             self.bestShopUrl = $('.map-container').data("bestshop");
@@ -253,6 +254,8 @@
                 self.searchResultMode = true;
 
                 self.$map.search(self.searchKeywords.keyword);
+
+                $(window).off('keyup.searchShop');
             }
         },
 
@@ -311,15 +314,20 @@
         _returnSearchMode: function(){
             var self = this;
 
-            if($('.map-container').hasClass('active')){
+            if(self.isChangeMode){
+                self.isChangeMode = false;
+                self.searchResultMode = false;
+
+                self.$searchContainer.css('display', 'block');
+
                 $('.result-list-box').stop().transition({opacity:0, y:100}, 350, "easeInOutCubic");
 
                 var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
                 var scheight = self.$searchContainer.outerHeight(true);
                 self.$defaultListContainer.transition({top:titheight+scheight}, 420, "easeInOutCubic", function(){
-                    $('.map-container').removeClass('active');
+                    $('.result-list-box').css('display', 'none');
 
-                    self.$defaultListContainer.css('top', 0)
+                    self.$defaultListContainer.css({position:'relative', top:0});
                 });
             };
         },
@@ -327,16 +335,18 @@
         _setSearchResultMode: function(){
             var self = this;
 
-            if(!$('.map-container').hasClass('active')){
+            if(!self.isChangeMode){
+                self.isChangeMode = true;
+
                 var listop = self.$defaultListContainer.position().top;
 
-                $('.map-container').addClass('active');
-
                 self._setResultText();
-                $('.result-list-box').stop().css({opacity:0, y:100}).transition({opacity:1, y:0}, 410, "easeInOutCubic");
+                $('.result-list-box').stop().css({display:'block', opacity:0, y:100}).transition({opacity:1, y:0}, 410, "easeInOutCubic");
                 
                 var resultheight = $('.result-list-box').height();
-                self.$defaultListContainer.css({top:listop}).transition({top:resultheight}, 420, "easeInOutCubic");
+                self.$defaultListContainer.css({position:'absolute', top:listop}).transition({top:resultheight}, 420, "easeInOutCubic", function(){
+                    self.$searchContainer.css('display', 'none');
+                });
 
                 self._setListArea();
             }
