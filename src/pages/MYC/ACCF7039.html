@@ -109,7 +109,12 @@
                             <!-- filter -->
                             @@include('./common/modules/mem-filter.html', {
                                 "url" : "/lg5-common/data-ajax/mypage/membership/my_purchase_history.json",
-                                "wrapTit" : "조회기간"
+                                "wrapTit" : "조회기간",
+                                "radio" : [
+                                    { "id" : "rdo1-1", "name" : "rdo1", "checked" : "checked", "value" : "전체" },
+                                    { "id" : "rdo1-2", "name" : "rdo1", "checked" : " ", "value" : "구매" },
+                                    { "id" : "rdo1-3", "name" : "rdo1", "checked" : " ", "value" : "취소" }
+                                ]
                             })
                             <!-- // filter -->
  
@@ -123,7 +128,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="product-list-wrap">
+                            <div class="product-list-wrap type2">
                                 <ul class="product-lists ui_flexible_height">
                                     @@loop('./common/modules/product-list-loop.html', [
                                         {

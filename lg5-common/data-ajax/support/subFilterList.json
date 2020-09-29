@@ -3,24 +3,24 @@
     "message":null,
     "data": {
         "title": "기능",
-        "subFilterList": [
+        "filterList": [
             {
-                "subTopic": "ALL"
+                "topic": "ALL"
             },
             {
-                "subTopic": "퀵 헬프 방법"
+                "topic": "퀵 헬프 방법"
             },
             {
-                "subTopic": "앱 설치"
+                "topic": "앱 설치"
             },
             {
-                "subTopic": "타임머신"
+                "topic": "타임머신"
             },
             {
-                "subTopic": "신호없음"
+                "topic": "신호없음"
             },
             {
-                "subTopic": "인터넷 연결"
+                "topic": "인터넷 연결"
             }
         ]
     }

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('../include/head_wsg.html', {
+        "title": "Hero banner 가이드"
+    })
+<body>
+<div id="wrap" class="coding_guide">
+    
+<h1 class="h1_guide">Hero banner 정의</h1>
+
+<!-- 주의사항 -->
+<dl class="notice">
+    <dt><strong class="t_modify">주의사항</strong></dt>
+    <dd>
+        <ol>
+            <li>gulp-file-include 방식으로 작업 시, <strong style="color:red;">(@@)include -> @@include로 적용</strong>해야함. xmp 내부에 include 되지 않도록 ()처리함.</li>
+            <li>slide 내부 디자인 반영을 위해 타입별 작업 필요함. (작업시 가이드 추가 예정)</li>
+        </ol>
+    </dd>
+</dl>
+<!-- //주의사항 -->
+
+<style type="text/css">
+.hero-banner.slide-wrap .slide-content .slide-conts {height:572px;}
+.hero-banner.slide-wrap .slide-content .slide-conts .bg:before {content:' '; display:block; position:absolute; bottom:0; width:100%; height:72px; background-image: linear-gradient(to top, #000000, rgba(0, 0, 0, 0)); opacity:.2;}
+.hero-banner.slide-wrap .indi-wrap {bottom:16px;}
+.hero-banner.slide-wrap .indi-wrap .indi-conts {display:inline-block;}
+.hero-banner.slide-wrap .indi-wrap li .btn-indi {position:relative; width:100px; height:4px; border-radius:0; background-color:rgba(255,255,255,.4); text-align:left;}
+.hero-banner.slide-wrap .indi-wrap li.on .btn-indi {width:500px;}
+.hero-banner.slide-wrap .indi-wrap li.on .btn-indi p {position:relative; top:-26px; color:#fff; font-size:16px; 
+line-height:24px;}
+.hero-banner.slide-wrap .indi-wrap li.on .btn-indi .bar {position:absolute; top:0; left:0; height:4px; background-color:#fff;}
+.hero-banner.slide-wrap .indi-wrap .indi_control {display:inline-block; position:relative; height:10px; margin-left:6px; font-size:0;}
+.hero-banner.slide-wrap .indi-wrap .indi_control:before,
+.hero-banner.slide-wrap .indi-wrap .indi_control:after {content:' '; display:inline-block; width:2px; height:10px; margin:0 2px; background-color:#fff; vertical-align:top;}
+</style>
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">3. Hero Banner(작업 중)</h2>
+<div class="guide_wrap">
+    <div class="hero-banner slide-wrap ui_carousel_slider">
+        <div class="indi-wrap">
+            <ul class="indi-conts "> <!-- ui_carousel_dots -->
+                <li class="on">
+                    <button type="button" class="btn-indi">
+                        <p>No.1의 혁신</p>
+                        <div class="bar" style="width:60%;"></div>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn-indi">
+                        <p>No.1의 혁신</p>
+                        <div class="bar" style="width:60%;"></div>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn-indi">
+                        <p>No.1의 혁신</p>
+                        <div class="bar" style="width:60%;"></div>
+                    </button>
+                </li>
+            </ul>
+            <button type="button" class="indi_control ui_carousel_play play">
+                <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+            </button>
+        </div>
+        <div class="slide-content ui_carousel_list">
+            <div class="slide-track ui_carousel_track">
+                <!-- slide -->
+                <div class="slide-conts ui_carousel_slide ui_bg_switch">
+                    <span class="bg" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
+                    <div class="slide-info-area">
+                        <div class="boxs">
+                            <p class="desc" id="tit01"> 
+                                LG전자 멤버십 앱<strong>신규 설치 고객<br>경품 추천 이벤트1</strong>
+                            </p>
+                            <a href="#n" class="btn" aria-labelledby="tit01">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- // slide -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+
+<!-- // DOM -->
+
+<!-- page 내 작업 방식 -->
+<!-- (@@)include ()삭제 후 사용 -->
+(@@)include('./common/modules/carousel.html', {
+    "mainSlideType" : true, <!-- main visual type일 때 true, 아닐경우 삭제 -->
+    "slideArr" : [
+        {
+            "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
+            "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
+            "tit" : "LG전자 멤버십 앱<strong>신규 설치 고객<br>경품 추천 이벤트1</strong>",
+            "titNum" : "tit01"
+        } <!-- slide page repeat -->
+    ]
+})
+<!-- // page 내 작업 방식 -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">3. Hero Banner(작업 중)</h2>
+<div class="guide_wrap">
+    <div class="">
+
+	</div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+
+<!-- // DOM -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+</div> 
+@@include('../include/loadscript_wsg.html')
+<script>
+    $(function(){
+        vcui.require(['ui/carousel'], function () {
+            $('.ui_carousel_slider').vcCarousel({
+                infinite: true,
+                swipeToSlide: true,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            });
+        });
+    });
+</script>
+</body>
+</html> 

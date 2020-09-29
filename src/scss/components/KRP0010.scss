@@ -70,8 +70,10 @@
         .badge {
             //display: flex;
             position: absolute;
-            top: 56px;
-            left: 56px;
+            //top: 56px;
+            //left: 56px;
+            top: 7.6%;
+            left: 7.6%;
             
             z-index: 9;
             @include mobile {
@@ -543,36 +545,7 @@
         } 
     }
 
-    // toast meassage
-    .toast-meassage {
-        display: none;
-        position: fixed;
-        left: 0;
-        bottom: 24px;
-        z-index: 1002;
-        .toast-meassage-box {
-            display: flex;
-            min-height: 72px;
-            margin-top: 8px;
-            background: #222;
-            border-radius: 8px;
-            padding: 24px;
-            color: #fff;
-            line-height: 24px;
-            .btn-area {
-                margin-left: 64px;
-                a {
-                    color: #ec455a;
-                }
-            }
-            @include mobile {
-                width: calc(100% - 40px);
-                margin-left: 20px;
-                justify-content: space-between;
-                align-items: center;
-            }
-        }
-    }
+
 
 
 

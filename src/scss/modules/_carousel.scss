@@ -1,4 +1,67 @@
-// main visual slide
+// component 대응을 위해 indicator, arrow button slide-wrap 바깥에 스타일 지정
+// carousel arrow button
+.btn-arrow {
+    position:relative;
+    display:block;
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 4px 15px 0 rgba(187, 187, 187, 1);
+    font-size:0;
+    &::before {
+        content:' '; 
+        position:absolute;
+        top:50%;
+        left:50%;
+        width:14px;
+        height:14px;
+        margin-top:-7px;
+        border-right:3px solid #111;
+        border-bottom:3px solid #111;
+    }
+    &.disabled, &.ui_carousel_hidden {
+        display:none !important;
+    }
+    &.prev {
+        &::before {
+            margin-left:-4px;
+            transform:rotate(135deg);
+        }
+    }
+    &.next {
+        &::before {
+            margin-left:-9px;
+            transform:rotate(-45deg);
+        }
+    }
+}
+
+// carousel indicator button
+.indi-wrap {
+    font-size:0;
+    text-align:center;
+    li {
+        display:inline-block;
+        padding:0 4px;
+        vertical-align:top;
+        .btn-indi {
+            display:inline-block;
+            width:10px;
+            height:10px;
+            border-radius:50%;
+            background:#adadad;
+            font-size:0;
+        }
+        &.on .btn-indi {
+            width:20px;
+            border-radius:5px;
+            background:#ec455a
+        }
+    }
+}
+
+// visual slide COMMON
 .slide-wrap {
     position:relative;
     .indi-wrap {
@@ -38,59 +101,6 @@
                     background-size:cover;
                 }
             }
-            .slide-info-area {
-                position:absolute;
-                top:0;
-                left:50%;
-                bottom:0;
-                width:100%;
-                max-width:1284px;
-                margin-left:-50%;
-                padding:0 218px;
-                .boxs {
-                    position:absolute;
-                    top:50%;
-                    left:17%;
-                    transform:translateY(-50%);
-                }
-                @include mobile {
-                    left:0;
-                    margin-left:0;
-                    padding:32px 0 0;
-                    .boxs {
-                        position:relative;
-                        top:initial;
-                        left:initial;
-                        text-align:center;
-                        transform:translateY(0);
-                    }
-                }
-                .desc {
-                    color:#111;
-                    font-size:16px;
-                    line-height:24px;
-                    font-weight:500;
-                    strong {
-                        display:block;
-                        margin-top:12px;
-                        font-size:28px;
-                        line-height:36px;
-                        font-weight:800;
-                        @include mobile {
-                            font-size:24px;
-                            line-height:32px;
-                        }
-                    }
-                }
-                .btn {
-                    min-width:auto;
-                    margin-top:24px;
-                    padding:13px 31px;
-                    font-size:14px;
-                    line-height:20px;
-                    background:transparent;
-                }
-            }
         }
     }
     .slide-controls {
@@ -113,6 +123,76 @@
         }
         @include mobile {
             display:none;
+        }
+    }
+}
+
+// main hero visual slide 
+.slide-wrap.hero-banner {
+    .slide-content {
+        .slide-conts {
+            height:572px;
+            .bg:before {
+                content:' '; 
+                display:block; 
+                position:absolute; 
+                bottom:0; 
+                width:100%; 
+                height:72px; 
+                background-image: linear-gradient(to top, #000000, rgba(0, 0, 0, 0)); 
+                opacity:.2;
+            }
+        }
+    }
+    .indi-wrap {
+        bottom:16px;
+        .indi-conts {
+            display:inline-block;
+        }
+        li {
+            .btn-indi {
+                position:relative; 
+                width:100px; 
+                height:4px; 
+                border-radius:0; 
+                background-color:rgba(255,255,255,.4); 
+                text-align:left;
+            }
+            &.on {
+                .btn-indi {
+                    width:500px;
+                    p {
+                        position:relative; 
+                        top:-26px; 
+                        color:#fff; 
+                        font-size:16px; 
+                        line-height:24px;
+                    }
+                    .bar {
+                        position:absolute; 
+                        top:0; 
+                        left:0; 
+                        height:4px; 
+                        background-color:#fff;
+                    }
+                }
+            }
+        }
+        .indi_control {
+            display:inline-block; 
+            position:relative; 
+            height:10px; 
+            margin-left:6px; 
+            font-size:0;
+            &::before, &::after {
+                content:' '; 
+                display:inline-block; 
+                width:2px; 
+                height:10px; 
+                margin:0 2px; 
+                background-color:#fff; 
+                vertical-align:top;
+            }
         }
     }
 }
@@ -140,7 +220,114 @@
 
     // 3 on pc type carousel 
     &.carousel-3 {
-        
+        max-width: (1284px + 30px);
+        .indi-wrap {
+            display: none;
+        }
+        .slide-conts {
+            width: 33.33%;
+            padding: 0 6px;
+        }
+        .slide-box {
+            position: relative;
+            padding: 0 40px 56px;
+            border-radius: 4px;
+            background-color: #fff;
+            .flag {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .product-image {
+                a {
+                    display: block;
+                    text-align: center;
+                    img {
+                        width: 100%;
+                        max-width: 300px;
+                    }
+                }
+            }
+            .badge-area {
+                height: 20px;
+                margin-bottom: 8px;
+                font-size: 0;
+                .badge {
+                    display: inline-block;
+                    margin-right: 4px;
+                    padding: 3px 8px;
+                    border: 1px solid #ec455a;
+                    border-radius: 4px;
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 1;
+                    color: #ec455a;
+                }
+                & + .product-name {
+                    margin-top: 0;
+                }
+            }
+            .product-name {
+                height: 48px;
+                margin: 28px 0 12px;
+                a {
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #222;
+                    @include textClipClamp(2);
+                }
+            }
+            .product-info {
+                margin-bottom: 24px;
+                padding: 0 14px;
+            }
+            .price-area {
+                margin-top: 14px;
+                font-size: 0;
+                * {
+                    display: inline-block;
+                }
+                .reduced-price {
+                    font-size: 24px;
+                    font-weight: bold;
+                    line-height: 1.33;
+                    color: #222222;
+                }
+                .product-price {
+                }
+                .purchase-price {
+                    position: relative;
+                    margin: 0 4px 0 8px;
+                    font-size: 14px;
+                    line-height: 1.43;
+                    color: #616161;
+                    &:after {
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        right: 0;
+                        height: 1px;
+                        background-color: #616161;
+                        content: '';
+                    }
+                }
+                .discount-rate {
+                    font-size: 16px;
+                    font-weight: bold;
+                    line-height: 1.5;
+                    color: #ec455a;
+                }
+            }
+            .btn {
+                width: 100%;
+            }
+            .chk-wish-wrap {
+                position: absolute;
+                top: 24px;
+                right: 24px;
+            }
+        }
     }
 
     // 4 on pc type carousel 
@@ -278,81 +465,12 @@
                     }
                 }
             }
-            .btn-like {
+            .chk-wish-wrap {
                 position:absolute;
                 top:24px;
                 right:24px;
-                width:24px;
-                height:24px;
-                background:url('/lg5-common/images/icons/icon-heart-off.svg') center no-repeat;
                 z-index:20;
-                &.on {
-                    background:url('/lg5-common/images/icons/icon-heart-on.svg') center no-repeat;
-                }
             }
-        }
-    }
-}
-
-// component 대응을 위해 indicator, arrow button slide-wrap 바깥에 스타일 지정
-// carousel arrow button
-.btn-arrow {
-    position:relative;
-    display:block;
-    width:56px;
-    height:56px;
-    border-radius:50%;
-    background:#fff;
-    box-shadow:0 4px 15px 0 rgba(187, 187, 187, 1);
-    font-size:0;
-    &::before {
-        content:' '; 
-        position:absolute;
-        top:50%;
-        left:50%;
-        width:14px;
-        height:14px;
-        margin-top:-7px;
-        border-right:3px solid #111;
-        border-bottom:3px solid #111;
-    }
-    &.disabled, &.ui_carousel_hidden {
-        display:none !important;
-    }
-    &.prev {
-        &::before {
-            margin-left:-4px;
-            transform:rotate(135deg);
-        }
-    }
-    &.next {
-        &::before {
-            margin-left:-9px;
-            transform:rotate(-45deg);
-        }
-    }
-}
-
-// carousel indicator button
-.indi-wrap {
-    font-size:0;
-    text-align:center;
-    li {
-        display:inline-block;
-        padding:0 4px;
-        vertical-align:top;
-        .btn-indi {
-            display:inline-block;
-            width:10px;
-            height:10px;
-            border-radius:50%;
-            background:#adadad;
-            font-size:0;
-        }
-        &.on .btn-indi {
-            width:20px;
-            border-radius:5px;
-            background:#ec455a
         }
     }
 }
