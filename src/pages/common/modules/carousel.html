@@ -62,7 +62,7 @@
             <!-- // slide -->
             }
             }
-            @@if ( context.carouselClass === "carousel-3" ) {
+            @@if ( context.recommendSlideType === true ) {
             @@for ( var i=0; i < context.slideArr.length; i++ ) {
             <!--  slide -->
             <div class="slide-conts ui_carousel_slide">
@@ -94,6 +94,10 @@
                         </div>
                     </div>
                     <button type="button" class="`+slideArr[i].btnLike+`"><span>`+slideArr[i].btnText+`</span></button>
+                    <span class="chk-wish-wrap">
+                        <input type="checkbox" id="`+slideArr[i].wish.id+`" name="`+slideArr[i].wish.name+`" `+slideArr[i].wish.checked+`>
+                        <label for="`+slideArr[i].wish.id+`"><span class="blind">찜하기</span></label>
+                    </span>
                 </div>
             </div>
             <!-- // slide -->
