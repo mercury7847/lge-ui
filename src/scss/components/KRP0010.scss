@@ -70,8 +70,10 @@
         .badge {
             //display: flex;
             position: absolute;
-            top: 56px;
-            left: 56px;
+            //top: 56px;
+            //left: 56px;
+            top: 7.6%;
+            left: 7.6%;
             
             z-index: 9;
             @include mobile {
