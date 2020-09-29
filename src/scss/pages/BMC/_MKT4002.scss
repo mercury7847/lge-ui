@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.event-view {
+    max-width:1066px;
+    margin:0 auto;
+    .event-detail {
+        padding:56px;
+        background:#fff;
+
+        .tit-wrap {
+            .sub-tit {
+                font-size:16px;
+                line-height:24px;
+            }
+            .tit {
+                font-size:28px;
+                line-height:36px;
+                font-weight:700;
+            }
+        }
+    }
+    
+}
