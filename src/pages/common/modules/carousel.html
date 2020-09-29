@@ -33,7 +33,9 @@
             <!--  slide -->
             <div class="slide-conts ui_carousel_slide">
                 <a href="#n" class="slide-box">
-                    <span class="flag"><span class="blind">게시판 분류</span>`+slideArr[i].flag+`</span>
+                    <div class="flag-wrap carousel-type">
+                        <span class="flag"><span class="blind">게시판 분류</span>`+slideArr[i].flag+`</span>
+                    </div>
                     <span class="thumb" aria-hidden="true">
                         <img src="`+slideArr[i].img+`" alt="">
                     </span>
@@ -51,7 +53,10 @@
                             <li class="view"><span class="blind">조회수</span>1,234</li>
                         </ul>
                     </div>
-                    <button type="button" class="`+slideArr[i].btnLike+`"><span class="blind">좋아요 버튼 클릭 시 좋아요ON</span></button>
+                    <span class="chk-wish-wrap">
+                        <input type="checkbox" id="`+slideArr[i].wish+`" name="wish-chk">
+                        <label for="`+slideArr[i].wish+`"><span class="blind">찜하기</span></label>
+                    </span>
                 </a>
             </div> 
             <!-- // slide -->

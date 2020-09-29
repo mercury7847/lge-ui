@@ -1,10 +1,35 @@
 // Flag
-.form-wrap {
+.flag-wrap {
+	font-size:0;
 	.flag {
+		display:inline-block;
 		min-width:43px;
 		height:24px;
-		padding:0 8px;
+		margin-left:4px;
+		padding:1px 8px;
+		border-radius:4px;
 		border:1px solid #ec455a;
-		line-height:24px;
+		color:#ec455a;
+		font-size:12px;
+		line-height:20px;
+		text-align:center;
+		&:first-child {
+			margin-left:0;
+		}
+		@include mobile {
+			min-width:36px;
+			height:17px;
+			font-size:9px;
+			line-height:13px;
+		}
+	}
+	&.carousel-type {
+		.flag {
+			height:20px;
+			border:none;
+			background-color:#f4f4f4;
+			color:#ec455a;
+			line-height:18px;
+		}
 	}
 }

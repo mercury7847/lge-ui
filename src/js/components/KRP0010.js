@@ -18,17 +18,89 @@ $(window).ready(function(){
 */
 
     var KRP0010 = {
+        product_quantity : 1,
+        product_price : 0,
+
         init: function() {
             //self = this;
             self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual').first();
             self.$detailInfo =  $('div.pdp-wrap div.pdp-info-area div.product-detail-info').first();
             self.$detailOption = self.$detailInfo.find('div.product-detail-option').first();
+            self.$additionalPurchase = self.$detailInfo.find('div.additional-purchase').first();
+            self.$careshipTotalPayment = self.$detailInfo.find('div.careship-total-payment').first();
+            self.$rentalOnlyInfo = self.$detailInfo.find('div.rental-only-info').first();
+            self.$paymentAmountInfo = self.$detailInfo.find('div.payment-amount-info').first();
+            self.$paymentAmountInfoQuantity = self.$paymentAmountInfo.find('div.quantity-wrap div.select-quantity div.inner input.quantity');
+            self.$paymentAmountInfoPaymentPrice = self.$paymentAmountInfo.find('div.quantity-wrap div.payment span.price');
+            self.$purchaseButton = self.$detailInfo.find('div.purchase-button.default');
+            self.$preorderButton = self.$detailInfo.find('div.pre-order');
+            self.$rentalButton = self.$detailInfo.find('div.rental');
+            self.$displayProduct = self.$detailInfo.find('div.display-product');
 
-            //this.bindEvents();
+
+            this.bindEvents();
+            
             this.requestDetailData();
         },
 
         bindEvents: function() {
+            //구매수량 버튼
+            self.$paymentAmountInfo.find('div.quantity-wrap div.select-quantity div.inner button.minus').on('click',function(e){
+                //수량 감소
+                e.preventDefault();
+                --product_quantity;
+                if(product_quantity < 0) product_quantity = 0;
+                KRP0010.reloadPaymentAmountInfoQuantity();
+            });
+
+            self.$paymentAmountInfo.find('div.quantity-wrap div.select-quantity div.inner button.plus').on('click',function(e){
+                //수량 증가
+                e.preventDefault();
+                ++product_quantity;
+                KRP0010.reloadPaymentAmountInfoQuantity();
+            });
+
+            self.$purchaseButton.find('div.btn-group a.btn.pink').on('click',function(e){
+                //구매
+                e.preventDefault();
+                if($(this).data('control') != 'modal') {
+                    KRP0010.purchase($(this).data('url'));
+                }
+            });
+            self.$purchaseButton.find('div.btn-group a.btn.cart').on('click',function(e){
+                //카트
+                e.preventDefault();
+                KRP0010.cart($(this).data('url'));
+            });
+
+            self.$preorderButton.find('a.btn.black').on('click',function(e){
+                //구매
+                e.preventDefault();
+                if($(this).data('control') != 'modal') {
+                    KRP0010.preorder($(this).data('url'));
+                }
+            });
+
+            self.$rentalButton.find('div.btn-group a.btn.pink').on('click',function(e){
+                //구매
+                e.preventDefault();
+                if($(this).data('control') != 'modal') {
+                    KRP0010.rental($(this).data('url'));
+                }
+            });
+            self.$rentalButton.find('div.btn-group a.btn.cart').on('click',function(e){
+                //카트
+                e.preventDefault();
+                KRP0010.cart($(this).data('url'));
+            });
+
+            self.$displayProduct.find('div.btn-group a.btn').on('click',function(e){
+                //카트
+                e.preventDefault();
+                console.log('이동',$(this).data('url'));
+            });
+
+            /*
             //탭 이벤트
             self.$mypage.find('.ui_tab').on('tabchange', function(e, data) {
                 if(firstLoad) {
@@ -58,6 +130,7 @@ $(window).ready(function(){
                 //설정
                 e.preventDefault();
             });
+            */
         },
 
         requestDetailData: function(param) {
@@ -80,7 +153,7 @@ $(window).ready(function(){
                 var arr = data.product_badge;
                 var target = self.$pdpVisual.find('div.pdp-visual-image div.badge');
                 arr.forEach(function(item, index) {
-                    contentHtml += ('<img src="' + item.imageUrl + '" alt="' + item.imageAlt +'">');
+                    contentHtml += ('<img src="' + item.image_url + '" alt="' + item.image_alt +'">');
                 });
                 target.html(contentHtml);
     
@@ -189,116 +262,154 @@ $(window).ready(function(){
                     self.$detailOption.find('.ui_tooltip-target').vcTooltipTarget({"type":"click","tooltip":".tooltip-box"});
                 });
 
-                //혜택정보
-                /*
-                self.$priceInfo.children("div:not(.price-area)").remove();
-                var arr = data.price_info instanceof Array ? data.price_info : [];
-                //var itemHtml, itemArr;
-                var itemArr;
+                //액세사리소모품 추가구매 self.$additionalPurchase
+                contentHtml = "";
+                arr = data.additional_purchase instanceof Array ? data.additional_purchase : [];
                 arr.forEach(function(item, index) {
-                    itemArr = item.type_option instanceof Array ? item.type_option : [];
+                    var template = '<li><a href="#{{product_id}}">' +
+                        '<span class="item-image"><img src="{{image_url}}" alt="{{image_alt}}"></span>' +
+                        '<dl class="item-info"><dt>{{title}}</dt><dd>{{price}}</dd></dl>' +
+                        '</a></li>';
+                    item.price = vcui.number.addComma(item.price);
+                    contentHtml += vcui.template(template,item);
+                });
+                self.$additionalPurchase.find('ul.select-list').html(contentHtml);
+                if(arr.length > 1) {
+                    self.$additionalPurchase.show();
+                } else {
+                    self.$additionalPurchase.hide();
+                };
 
-                    switch(item.type) {
-                        case "product-benefit-none":
-                            contentHtml = '<div class="product-benefit"><div class="title">'+ item.type_text + '</div><ul>';
-                            break;
-                        case "product-benefit-popup":
-                            contentHtml = '<div class="product-benefit"><div class="title">'+ item.type_text +
-                            '<a href="#' + item.type_popup_url +'" class="btn-modal"><span class="blind">' + item.type_popup_text + '</span></a></div><ul>';
-                            break;
-                        default:
-                            break;
+                //구매수량 별 금액 초기화
+                product_quantity = 1;
+                if(data.payment_amount_info.visible) {
+                    product_price = data.payment_amount_info.product_price;
+                    KRP0010.reloadPaymentAmountInfoQuantity();
+                    self.$paymentAmountInfo.show();
+                } else {
+                    self.$paymentAmountInfo.hide();
+                }
+
+                //케어십 서비스 이용료 안내
+                if(data.careship_total_payment) {
+                    self.$careshipTotalPayment.find('span.price').text(vcui.number.addComma(data.careship_total_payment) + '원').show();
+                } else {
+                    self.$careshipTotalPayment.hide();
+                };
+
+                //바로구매
+                if(data.purchase_button.visible) {
+                    self.$purchaseButton.find('div.btn-group a.btn.cart').attr("data-url", data.purchase_button.cart_url);
+                    var purchaseButtonTarget = self.$purchaseButton.find('div.btn-group a.btn.pink');
+                    purchaseButtonTarget.attr("data-url", data.purchase_button.buy_url);
+                    if(data.purchase_button.modal_url) {
+                        $.ajax({
+                            url: data.purchase_button.modal_url,
+                            dataType : 'html',
+                            success : function(html) {
+                                self.$purchaseButton.find('#purchase-button-default-modal').html(html);
+                                self.$purchaseButton.find('#purchase-button-default-modal #popup button.btn.bd-pink').on('click',function(e){
+                                    //구매
+                                    e.preventDefault();
+                                    $('div.ui_modal_wrap #popup').vcModal('close');
+                                    KRP0010.purchase(data.purchase_button.buy_url);
+                                });
+                            }
+                        });
+                        purchaseButtonTarget.attr('href', '#purchase-button-default-modal #popup');
+                        purchaseButtonTarget.attr('data-control', 'modal');
+                    } else {
+                        purchaseButtonTarget.attr('href', '#');
+                        purchaseButtonTarget.removeAttr('data-control');
                     }
-                    itemArr.forEach(function(item, index) {
-                        contentHtml += ('<li>' + item + '</li>');
-                    });
-                    contentHtml += '</ul></div>';
-                    self.$priceInfo.append(contentHtml);
+                    self.$purchaseButton.show();
+                } else {
+                    self.$purchaseButton.hide();
+                };
 
-                    //contentHtml += itemHtml;
-                });
-                */
-
-                //self.$priceInfo.children("div:not(.price-area)").remove();
-                //self.$priceInfo.append(contentHtml);
-                
-                //옵션
-                /*
-                self.$sibilingInfo.empty();
-                arr = data.sibling_info instanceof Array ? data.sibling_info : [];
-                arr.forEach(function(item, index) {
-                    itemArr = item.type_option instanceof Array ? item.type_option : [];
-                    switch(item.type) {
-                        case "sibling-color":
-                            contentHtml = '<div class="sibling-color">' +
-                                '<div class="text">' + item.type_text + '</div>' +
-                                '<div class="select-option radio color"><div class="option-list" role="radiogroup">';
-                            itemArr.forEach(function(option_item, index) {
-                                contentHtml += ('<div role="radio" class="chk-wrap-colorchip ' + option_item.class + '" title="' + option_item.text + '">' +
-                                    '<input type="radio" id="' + item.type + index + '" name="' + item.type + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
-                                    '<label for="' + item.type + index +'"><span class="blind">' + option_item.text  + '</span></label></div>');
-                            });
-                            contentHtml += '</div></div></div>';
-                            self.$sibilingInfo.append(contentHtml);                    
-                            break;
-                        case "sibling-size":
-                            contentHtml = '<div class="sibling-size">' +
-                                '<div class="text">' + item.type_text + '</div>' +
-                                '<div class="select-option select size"><div class="select-wrap">' +
-                                '<select class="ui_selectbox ' + item.type + '" id="' + item.type + '" title="' + item.type_text + '">';
-                            itemArr.forEach(function(option_item, index) {
-                                contentHtml += ('<option value="' + option_item.value + '" class="' + (option_item.class?option_item.class:'') + '">' + option_item.text + '</option>');
-                            });
-                            contentHtml += '</select></div></div></div>';
-                            self.$sibilingInfo.append(contentHtml);
-                            self.$sibilingInfo.find('.'+ item.type).vcSelectbox('update');
-                            break;
-                        case "sibling-service":
-                            contentHtml = '<div class="sibling-service">' +
-                                '<div class="text"><span>'+ item.type_text + '</span>' +
-                                '<div class="tooltip-wrap"><span class="tooltip-icon ui_tooltip-target">자세히 보기</span>' +
-                                '<span class="tooltip-box">' + item.type_popup_html + '</span></div></div>' + 
-                                '<div class="select-option radio service"><div class="option-list" role="radiogroup">';
-                            itemArr.forEach(function(option_item, index) {
-                                contentHtml += ('<div role="radio" class="rdo-wrap">' +
-                                    '<input type="radio" id="' + item.type + index + '" name="' + item.type + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
-                                    '<label for="' + item.type + index +'">' + option_item.text  + '</label></div>');
-                            });
-                            contentHtml += ('</div></div><div class="service-desc">' + item.type_popup_text + '</div></div>');
-                            self.$sibilingInfo.append(contentHtml);
-                            break;
-                        case "is-kit":
-                            contentHtml = '<div class="is-kit"><div class="text">'+ item.type_text + '</div><ul class="kit-list">'
-                            itemArr.forEach(function(option_item, index) {
-                                contentHtml += ('<li>' + option_item.text + '</li>');
-                            });
-                            contentHtml += '</ul</div></div>';
-                            self.$sibilingInfo.append(contentHtml);
-                            break;
-                        default:
-                            break;
+                //사전예약
+                if(data.preorder_button.visible) {
+                    var preorderButtonTarget = self.$preorderButton.find('a.btn.black');
+                    preorderButtonTarget.attr("data-url", data.preorder_button.buy_url);
+                    if(data.preorder_button.modal_url) {
+                        $.ajax({
+                            url: data.preorder_button.modal_url,
+                            dataType : 'html',
+                            success : function(html) {
+                                self.$preorderButton.find('#purchase-button-preorder-modal').html(html);
+                                self.$preorderButton.find('#purchase-button-preorder-modal #popup button.btn.bd-pink').on('click',function(e){
+                                    //구매
+                                    e.preventDefault();
+                                    $('div.ui_modal_wrap #popup').vcModal('close');
+                                    KRP0010.preorder(data.preorder_button.buy_url);
+                                });
+                            }
+                        });
+                        preorderButtonTarget.attr('href', '#purchase-button-preorder-modal #popup');
+                        preorderButtonTarget.attr('data-control', 'modal');
+                    } else {
+                        preorderButtonTarget.attr('href', '#');
+                        preorderButtonTarget.removeAttr('data-control');
                     }
-                    
-                    //contentHtml += itemHtml;
-                    //self.$sibilingInfo.append(itemHtml);
-                    //$('.'+ item.type).vcSelectbox();
-                });
-                */
+                    self.$preorderButton.show();
+                } else {
+                    self.$preorderButton.hide();
+                };
 
-                /*
-                vcui.require(["ui/tooltipTarget"], function () {
-                    var tooltip = self.$sibilingInfo.find('div.sibling-service').find('.ui_tooltip-target');
-                    tooltip.vcTooltipTarget({"type":"click","tooltip":".tooltip-box"});
-                });
-*/
+                //렌탈신청
+                if(data.rental_button.visible) {
+                    self.$rentalButton.find('div.btn-group a.btn.cart').attr("data-url", data.rental_button.cart_url);
+                    var rentalButtonTarget = self.$rentalButton.find('div.btn-group a.btn.pink');
+                    rentalButtonTarget.attr("data-url", data.rental_button.buy_url);
+                    if(data.rental_button.modal_url) {
+                        $.ajax({
+                            url: data.rental_button.modal_url,
+                            dataType : 'html',
+                            success : function(html) {
+                                self.$rentalButton.find('#purchase-button-rental-modal').html(html);
+                                self.$rentalButton.find('#purchase-button-rental-modal #popup button.btn.bd-pink').on('click',function(e){
+                                    //렌탈
+                                    e.preventDefault();
+                                    $('div.ui_modal_wrap #popup').vcModal('close');
+                                    KRP0010.rental(data.rental_button.buy_url);
+                                });
+                            }
+                        });
+                        rentalButtonTarget.attr('href', '#purchase-button-rental-modal #popup');
+                        rentalButtonTarget.attr('data-control', 'modal');
+                    } else {
+                        rentalButtonTarget.attr('href', '#');
+                        rentalButtonTarget.removeAttr('data-control');
+                    }
+                    self.$rentalButton.show();
+                } else {
+                    self.$rentalButton.hide();
+                };
 
-                //$("input:radio[name='sibling-info-color']:radio[value='GR']").prop('checked', true); 
-                //self.$sibilingInfo.append(contentHtml);
+                //전시매장
+                if(data.display_product.visible) {
+                    self.$displayProduct.find('#display-exhibition').attr("data-url", data.display_product.exhibition_url);
+                    self.$displayProduct.find('#display-visit').attr("data-url", data.display_product.visit_url);
+                    self.$displayProduct.show();
+                } else {
+                    self.$displayProduct.hide();
+                }
 
-    
+                //렌탈전용 제품 안내
+                if(data.rental_only_info) {
+                    self.$rentalOnlyInfo.show();
+                } else {
+                    self.$rentalOnlyInfo.hide();
+                };
+
             }).fail(function(d){
                 alert(d.status + '\n' + d.statusText);
             });
+        },
+
+        reloadPaymentAmountInfoQuantity: function() {
+            self.$paymentAmountInfoQuantity.val(product_quantity);
+            self.$paymentAmountInfoPaymentPrice.text(vcui.number.addComma(product_price * product_quantity));
         },
 
         makeContentOptionHtml: function(dataArry, idPrefix) {
@@ -322,7 +433,7 @@ $(window).ready(function(){
                         break;
                     case "monthly-payment":
                         var template = '<div class="inner"><div class="text"><span>{{type_popup_text}}</span>' + 
-                            '<a href="#" class="btn-modal"><span class="blind">{{type_popup_text}} 팝업 열림</span></a></div>' +
+                            '<a href="{{type_popup_url}}" class="btn-modal" data-control="modal"><span class="blind">{{type_popup_text}} 팝업 열림</span></a></div>' +
                             '<div class="payment-info"><div class="price">{{type_price}}원<span>{{type_text}}</span></div>' +
                             '<ul class="info-list">{{#each item in type_option}}<li>{{item.text}}</li>{{/each}}</ul></div>' + 
                             '<a href="#" class="btn bd-pink btn-small">{{type_link_text}}</a></div>';
@@ -330,19 +441,19 @@ $(window).ready(function(){
                         contentHtml = vcui.template(template,item);
                         break;
                     case "product-benefit-none":
-                        contentHtml = '<div class="product-benefit"><div class="title">'+ item.type_text + '</div><ul>';
-                        itemArr.forEach(function(item, index) {
-                            contentHtml += ('<li>' + item + '</li>');
-                        });
-                        contentHtml += '</ul></div>';
+                        var template = '<div class="product-benefit"><div class="title">{{type_text}}</div><ul>' +
+                            '{{#each item in type_option}}' +
+                            '<li>{{#raw item.text}}</li>' +
+                            '{{/each}}</ul></div>'
+                        contentHtml = vcui.template(template,item);
                         break;
                     case "product-benefit-popup":
-                        contentHtml = '<div class="product-benefit"><div class="title">'+ item.type_text +
-                        '<a href="#' + item.type_popup_url +'" class="btn-modal"><span class="blind">' + item.type_popup_text + '</span></a></div><ul>';
-                        itemArr.forEach(function(item, index) {
-                            contentHtml += ('<li>' + item + '</li>');
-                        });
-                        contentHtml += '</ul></div>';
+                        var template = '<div class="product-benefit"><div class="title">{{type_text}}' +
+                            '<a href="{{type_popup_url}}" class="btn-modal" data-control="modal"><span class="blind">{{type_popup_text}}</span></a></div><ul>' +
+                            '{{#each item in type_option}}' +
+                            '<li>{{#raw item.text}}</li>' +
+                            '{{/each}}</ul></div>'
+                       contentHtml = vcui.template(template,item);
                         break;
                     case "sibling-color":
                         var template = '<div class="sibling-color"><div class="text">{{type_text}}</div>' +
@@ -364,7 +475,6 @@ $(window).ready(function(){
                         //self.$sibilingInfo.find('.'+ item.type).vcSelectbox('update');
                         break;
                     case "sibling-service":
-                        //{{type_popup_html}}
                         var template = '<div class="sibling-service"><div class="text"><span>{{type_text}}</span>' +
                             '<div class="tooltip-wrap"><span class="tooltip-icon ui_tooltip-target">자세히 보기</span>' +
                             '<span class="tooltip-box">{{#raw type_popup_html}}</span></div></div>' +
@@ -376,21 +486,6 @@ $(window).ready(function(){
                             '{{/each}}' +
                             '</div></div><div class="service-desc">{{type_popup_text}}</div></div>';
                         contentHtml = vcui.template(template,item);
-
-                        /*
-                        contentHtml = '<div class="sibling-service">' +
-                            '<div class="text"><span>'+ item.type_text + '</span>' +
-                            '<div class="tooltip-wrap"><span class="tooltip-icon ui_tooltip-target">자세히 보기</span>' +
-                            '<span class="tooltip-box">' + item.type_popup_html + '</span></div></div>' + 
-
-                            '<div class="select-option radio service"><div class="option-list" role="radiogroup">';
-                        itemArr.forEach(function(option_item, index) {
-                            contentHtml += ('<div role="radio" class="rdo-wrap">' +
-                                '<input type="radio" id="' + idPrefix + item.type + index + '" name="' + idPrefix + item.type + '" value="' + option_item.value +'"'+ (option_item.checked?' checked':'') + '>' +
-                                '<label for="' + idPrefix + item.type + index +'">' + option_item.text  + '</label></div>');
-                        });
-                        contentHtml += ('</div></div><div class="service-desc">' + item.type_popup_text + '</div></div>');
-                        */
                         break;
                     case "sibling-text":
                         var template = '<div class="sibling-text"><div class="text">{{type_text}}</div><div class="price">{{type_price}}원</div></div>';
@@ -430,7 +525,20 @@ $(window).ready(function(){
                 returnHtml += contentHtml;
             });
             return returnHtml;
-        }
+        },
+
+        cart: function(url) {
+            console.log('카트',url);
+        },
+        purchase: function(url) {
+            console.log(url);
+        },
+        preorder: function(url) {
+            console.log(url);
+        },
+        rental: function(url) {
+            console.log('렌탈',url);
+        },
     };
 
     KRP0010.init();
