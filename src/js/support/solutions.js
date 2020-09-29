@@ -7,35 +7,42 @@
         '<li>' +
         '{{# } #}}' +
         '<a href="#" class="filter-link">{{item.topic}}</a>' +
-        '{{# if (typeof item.subFilterList != "undefined") { #}}' +
         '<div class="sub-depth">' +
-        '<a href="#" class="sub-tit">{{item.topic}}</a>' +
-        '<ul>' +
-        '{{#each subItem in item.subFilterList}}' +
-        '<li>' +
-        '<a href="#" class="filter-link">{{subItem.subTopic}}</a>' +
-        '</li>' +
-        '{{/each}}' +
-        '</ul>' +
         '</div>' +
-        '{{# } #}}' +
         '</li>' +
         '{{/each}}';
 
     var subFilterTemplate = 
-        '';
+        '<div class="filter-head">' +
+        '<button type="button" class="btn-back"><span class="blind">뒤로 가기</span></button>' +
+        '<strong class="tit">{{title}}</strong>' +
+        '</div>' +
+        '<ul>' +
+        '{{#each item in filterList}}' +
+        '<li>' +
+        '<a href="#" class="filter-link">{{item.topic}}</a>' +
+        '</li>' +
+        '{{/each}}' +
+        '</ul>';
 
     var solutionsTemplate = 
+        '{{# if (typeof video != "undefined" && video === true) { #}}' +
+        '<li class="video-item">' +
+        '{{# } else { #}}' +
         '<li>' +
+        '{{# } #}}' +
         '<a href="#">' +
         '<strong class="tit">{{title}}</strong>' +
         '<p class="topic">{{topic}}</p>' +
-        '<ul class="info">' +
+        '<ul class="infos">' +
         '<li>{{date}}</li>' +
         '<li>' +
         '<span class="info-view">{{view}}</span>' +
         '</li>' +
         '</ul>' +
+        '{{# if (typeof video != "undefined" && video === true) { #}}' +
+        '<span class="icon-movie"><span class="blind">동영상 가이드 컨텐츠</span></span>' +
+        '{{# } #}}' +
         '</a>' +
         '</li>';
 
@@ -70,12 +77,12 @@
                 this.filterList(); //삭제 예정
                 this.solutionsList(); //삭제 예정
             },
-            solutionsList: function() {
+            solutionsList: function(el, param) {
                 $.ajax({
                     url: '/lg5-common/data-ajax/support/solutionsList.json',
                     method: 'POST',
                     dataType: 'json',
-                    data: '',
+                    data: param,
                     beforeSend: function(xhr) {
                         // loading bar start
                     },
@@ -100,12 +107,12 @@
                     }
                 });
             },
-            filterList: function() {
+            filterList: function(param) {
                 $.ajax({
                     url: '/lg5-common/data-ajax/support/filterList.json',
                     method: 'POST',
                     dataType: 'json',
-                    data: '',
+                    data: param,
                     beforeSend: function(xhr) {
                         // loading bar start
                     },
@@ -114,14 +121,9 @@
                             var data = d.data,
                                 html = "";
                             
-                            // data.filterList.forEach(function(item) {
-                            //     html += vcui.template(filterTemplate, item);
-                            // });
-
                             html += vcui.template(filterTemplate, data);
 
                             $('#filterContent').html(html);
-                            //$('#filterContent').find('>li:first-child').addClass('on');
                         }
                     },
                     error: function(err){
@@ -132,12 +134,12 @@
                     }
                 });
             },
-            subFilterList: function() {
+            subFilterList: function(el, param) {
                 $.ajax({
                     url: '/lg5-common/data-ajax/support/subFilterList.json',
                     method: 'POST',
                     dataType: 'json',
-                    data: '',
+                    data: param,
                     beforeSend: function(xhr) {
                         // loading bar start
                     },
@@ -146,11 +148,7 @@
                             var data = d.data,
                                 html = "";
                             
-                            data.subFilterList.forEach(function(item) {
-                                html += vcui.template(subFilterTemplate, item);
-                            });
-
-                            $('#filterContent').html(html);
+                            html += vcui.template(subFilterTemplate, data);
                         }
                     },
                     error: function(err){
@@ -174,20 +172,30 @@
                 
                     self.solutionsList();
                 });
-                $('#filterContent').on('click', '.filter-link', function(e) {
-                    e.preventDefault();
-                    $(this).parent().addClass('on');
-                    $(this).parent().siblings().removeClass('on');
+                $('#filterContent').on('click', '.filter-link', function() {
+                    var $this = $(this),
+                        $subDepth = $(this).siblings('.sub-depth'),
+                        param = {};
 
-                    if (!$(this).siblings('.sub-depth').length) {
-                        self.solutionsList();
+                    if (!$subDepth.length) {
+                        param = {
+                            
+                        };
+
+                        self.solutionsList(this, param);
+                        $this.parent('li').addClass('on');
+                        $subDepth.parent('li').addClass('on');
                     } else {
-                        $(this).siblings('.sub-depth').show();
-                        $(this).closest('.filter-list').addClass('on');
+                        param = {
+                            
+                        };
+
+                        self.subFilterList(this, param);
+                        $subDepth.show();
+                        $this.closest('.filter-list').addClass('open');
                     }
                 });
-                $('#filterContent').on('click', '.sub-tit', function(e) {
-                    e.preventDefault();
+                $('#filterContent').on('click', '.btn-back', function() {
                     $(this).parent('.sub-depth').hide();
                     $(this).closest('.filter-list').removeClass('on');
                 });
