@@ -1,12 +1,14 @@
 // toast meassage
 .toast-message {
     display: none;
-    display: inline-block;
     position: fixed;
     left: 0;
     bottom: 24px;
     width: auto;
     z-index: 1002;
+    @include mobile {
+        width: 100%;
+    }
     .toast-message-box {
         .inner {
             display: inline-block;
@@ -17,22 +19,26 @@
             padding: 24px;
             color: #fff;
             line-height: 24px;
-        }
-        .toast-text {
-            display: inline-block;
-        }
-        .btn-area {
-            display: inline-block;
-            margin-left: 64px;
-            a {
-                color: #ec455a;
+            .toast-text {
+                display: inline-block;
             }
-        }
-        @include mobile {
-            width: calc(100% - 40px);
-            margin-left: 20px;
-            justify-content: space-between;
-            align-items: center;
+            .btn-area {
+                display: inline-block;
+                margin-left: 64px;
+                a {
+                    color: #ec455a;
+                }
+            }
+            @include mobile {
+                display: flex;
+                width: calc(100% - 40px);
+                margin-left: 20px;
+                justify-content: space-between;
+                align-items: center;
+                .btn-area {
+                    margin-left: 32px;
+                }
+            }
         }
     }
 }
