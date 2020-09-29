@@ -1,14 +1,29 @@
 @@if ( context.carousel ) {
-<div class="slide-wrap carousel-type ui_carousel_slider">
-}
-@@if ( !context.carousel ) {
-<div class="slide-wrap ui_carousel_slider">
-}
+<div class="slide-wrap carousel-type @@carouselClass @@carouselScriptClass">
     <div class="indi-wrap">
         <ul class="indi-conts ui_carousel_dots">
             <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
         </ul>
     </div>
+}
+@@if ( !context.carousel ) {
+<div class="slide-wrap hero-banner ui_wide_slider">
+    <div class="indi-wrap">
+        <ul class="indi-conts ui_carousel_dots">
+            @@for ( var i=0; i < context.indiArr.length; i++ ) {
+            <li>
+                <button type="button" class="btn-indi">
+                    <p>`+indiArr[i]+`</p>
+                    <div class="bar"></div>
+                </button>
+            </li>
+            }
+        </ul>
+        <button type="button" class="indi_control ui_carousel_play play">
+            <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+        </button>
+    </div>
+}
     <div class="slide-content ui_carousel_list">
         <div class="slide-track ui_carousel_track">
             @@if ( context.mainSlideType ) {
@@ -21,19 +36,22 @@
                         <p class="desc" id="`+slideArr[i].titNum+`"> 
                             `+slideArr[i].tit+`
                         </p>
-                        <a href="#n" class="btn" aria-labelledby="`+slideArr[i].titNum+`">자세히 보기</a>
+                        <p class="date">`+slideArr[i].date+`</p>
+                        <a href="#n" class="btn bd-black" aria-labelledby="`+slideArr[i].titNum+`">자세히 보기</a>
                     </div>
                 </div>
             </div>
             <!-- // slide -->
             }
             }
-            @@if ( context.carousel ) {
+            @@if ( context.carouselClass === "carousel-4" ) {
             @@for ( var i=0; i < context.slideArr.length; i++ ) {
             <!--  slide -->
             <div class="slide-conts ui_carousel_slide">
                 <a href="#n" class="slide-box">
-                    <span class="flag"><span class="blind">게시판 분류</span>`+slideArr[i].flag+`</span>
+                    <div class="flag-wrap carousel-type">
+                        <span class="flag"><span class="blind">게시판 분류</span>`+slideArr[i].flag+`</span>
+                    </div>
                     <span class="thumb" aria-hidden="true">
                         <img src="`+slideArr[i].img+`" alt="">
                     </span>
@@ -51,16 +69,62 @@
                             <li class="view"><span class="blind">조회수</span>1,234</li>
                         </ul>
                     </div>
-                    <button type="button" class="`+slideArr[i].btnLike+`"><span class="blind">좋아요 버튼 클릭 시 좋아요ON</span></button>
+                    <span class="chk-wish-wrap">
+                        <input type="checkbox" id="`+slideArr[i].wish+`" name="wish-chk">
+                        <label for="`+slideArr[i].wish+`"><span class="blind">찜하기</span></label>
+                    </span>
                 </a>
-            </div> 
+            </div>
+            <!-- // slide -->
+            }
+            }
+            @@if ( context.recommendSlideType === true ) {
+            @@for ( var i=0; i < context.slideArr.length; i++ ) {
+            <!--  slide -->
+            <div class="slide-conts ui_carousel_slide">
+                <div class="slide-box">
+                    <span class="flag"><img src="`+slideArr[i].flag+`" alt="`+slideArr[i].flagText+`"></span>
+                    <div class="product-image" aria-hidden="true">
+                        <a href="#"><img src="`+slideArr[i].img+`" alt=""></a>
+                    </div>
+                    <div class="product-info">
+                        `+slideArr[i].badge+`
+                        <div class="product-name">
+                            <a href="#">`+slideArr[i].name+`</a>
+                        </div>
+                        <div class="price-area">
+                            <div class="reduced-price">
+                                <em class="blind">최대 혜택가격</em>
+                                <span class="price">5,200,000<em>원</em></span>
+                            </div>
+                            <div class="product-price">
+                                <div class="purchase-price">
+                                    <em class="blind">판매가격</em>
+                                    <span class="price">360,000<em>원</em></span>
+                                </div>
+                                <div class="discount-rate">
+                                    <em class="blind">할인율</em>
+                                    <span class="price">15<em>%</em></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="`+slideArr[i].btnLike+`"><span>`+slideArr[i].btnText+`</span></button>
+                    <span class="chk-wish-wrap">
+                        <input type="checkbox" id="`+slideArr[i].wish.id+`" name="`+slideArr[i].wish.name+`" `+slideArr[i].wish.checked+`>
+                        <label for="`+slideArr[i].wish.id+`"><span class="blind">찜하기</span></label>
+                    </span>
+                </div>
+            </div>
             <!-- // slide -->
             }
             }
         </div>
     </div>
+    @@if ( context.carousel ) {
     <div class="slide-controls">
         <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
         <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
     </div>
+    }
 </div>

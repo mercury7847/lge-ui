@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTC/UTC"]
+    })
+<body>
+    <div class="wrap">
+<!--        include('./common/header.html')-->
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+            "pageTitle": "장바구니",
+                "pageArr" : [
+                    { "page" : "구매 999+", "on" : "on" },
+                    { "page" : "렌탈(케어솔루션) 0", "on": "" }
+                ]
+            })
+            <!-- cart -->
+            <div class="contents cart">
+                <div class="cont-wrap">
+                    <div class="product-cart-wrap">
+                        <div class="wrap-box">
+                            <div class="cart-area">
+                                <div class="cart-option">
+                                    <div class="chk-wrap">
+                                        <input type="checkbox" id="chk-all" name="`chk-all" checked>
+                                        <label for="chk-all">전체선택</label>
+                                    </div>
+                                    <div class="btn-area">
+                                        <button class="btn bd-black btn-small"><span>선택삭제</span></button>
+                                    </div>
+                                </div>
+                                @@include('./common/modules/cart-list.html', {
+                                    "items" : [
+                                        {
+                                            "check" : {
+                                                "id1" : "chk01",
+                                                "name1" : "chk01",
+                                                "checked1" : "checked",
+                                                "text1" : "선택함",
+                                                "id2" : "chk02",
+                                                "name2" : "chk02",
+                                                "checked2" : "checked",
+                                                "text2" : "찜한 상품"
+                                            },
+                                            "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                            "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                            "delivery" : "<a href='#'>사전방문 예약</a><a href='#'>배송희망일 지정</a>",
+                                            "amount" : "5,300,000원 + 배송비 0원"
+                                        },
+                                        {
+                                            "check" : {
+                                                "id1" : "chk03",
+                                                "name1" : "chk03",
+                                                "checked1" : "",
+                                                "text1" : "선택안함",
+                                                "id2" : "chk04",
+                                                "name2" : "chk04",
+                                                "checked2" : "",
+                                                "text2" : "찜하기"
+                                            },
+                                            "visual" : "/lg5-common/images/dummy/@sample-1-1.gif",
+                                            "modelName" : "LG 올레드 AI ThinQ(벽걸이형)",
+                                            "delivery" : "",
+                                            "amount" : "5,300,000원 <em>- 50,000원</em> + 배송비 0원"
+                                        }
+                                    ]
+                                })
+                                <div class="card-benefit">
+                                    <a href="#">카드 혜택 정보</a>
+                                </div>
+                            </div>
+                            <div class="delivery-address">
+                                <dl>
+                                    <dt>기본 배송지</dt>
+                                    <dd>서울시 영등포구 여의대로 128<span class="detail-address">LG 트윈타워 18층</span></dd>
+                                </dl>
+                                <a href="#">배송지 변경</a>
+                            </div>
+                            <div class="payment-amount-info">
+                                <span>전체 합계</span>
+                                <ul class="payment-list">
+                                    <li>
+                                        <dl>
+                                            <dt>주문금액</dt>
+                                            <dd>10,615,000원</dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>회원할인</dt>
+                                            <dd>-328,000원</dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>즉시할인</dt>
+                                            <dd>-411,280원</dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>쿠폰할인</dt>
+                                            <dd>-50,000원</dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt>배송비</dt>
+                                            <dd>0원</dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                                <div class="total-payment-amount">
+                                    <dl>
+                                        <dt>총 3건</dt>
+                                        <dd>9,835,720원</dd>
+                                    </dl>
+                                </div>
+                                <div class="btn-area">
+                                    <button type="button" class="btn pink">주문하기</button>
+                                </div>
+                            </div>
+                            @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
+                                "bulletTit" : "유의사항",
+                                "bulletTxt" : [
+                                    "담긴 제품 종류(옵션단위)는 최대 1년까지 보관됩니다.",
+                                    "판매 종료되거나 품절된 제품은 별도 표기 됩니다.",
+                                    "미성년자의 제품주문/결제에 대해 법정대리인이 미동의 시, 미성년자 본인 또는 법정대리인이 주문을 취소할 있습니다.",
+                                    "무이자 할부 개월 수가 서로 다른 제품은 주문 시 짧은 기간 기준으로 적용됩니다.",
+                                    "일부 제품에 대해서 결제 수단이 제한 될 수 있습니다."
+                                ]
+                            })
+                        </div>
+                    </div>
+
+                    <div class="product-recommend-wrap">
+                        <div class="title">
+                            <span>이 제품 어때요?</span>
+                        </div>
+                        @@include('./common/modules/carousel.html', {
+                            "carousel" : true,
+                            "recommendSlideType" : true,
+                            "carouselClass" : "carousel-3",
+                            "carouselScriptClass" : "ui_carousel_3_slider",
+                            "slideArr" : [
+                                {
+                                    "flag" : "/lg5-common/images/dummy/@img-promotion-badge.png",
+                                    "flagText" : "으뜸효율 10%",
+                                    "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                    "badge" : "<div class='badge-area'><span class='badge'>NEW</span><span class='badge'>BEST</span></div>",
+                                    "name" : "LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄",
+                                    "btnLike" : "btn bd-black",
+                                    "btnText" : "장바구니에 담기",
+                                    "wish" : { "id" : "chk01", "name" : "chk01", "checked" : "checked" }
+                                },{
+                                    "flag" : "/lg5-common/images/dummy/@img-promotion-badge.png",
+                                    "flagText" : "으뜸효율 10%",
+                                    "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                    "badge" : "",
+                                    "name" : "LG DIOS 노크온 매직스페이스",
+                                    "btnLike" : "btn bd-black",
+                                    "btnText" : "장바구니에 담기",
+                                    "wish" : { "id" : "chk02", "name" : "chk02", "checked" : "" }
+                                },{
+                                    "flag" : "/lg5-common/images/dummy/@img-promotion-badge.png",
+                                    "flagText" : "으뜸효율 10%",
+                                    "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                    "badge" : "<div class='badge-area'><span class='badge'>NEW</span><span class='badge'>BEST</span></div>",
+                                    "name" : "LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄",
+                                    "btnLike" : "btn bd-black",
+                                    "btnText" : "장바구니에 담기",
+                                    "wish" : { "id" : "chk03", "name" : "chk03", "checked" : "checked" }
+                                },{
+                                    "flag" : "/lg5-common/images/dummy/@img-promotion-badge.png",
+                                    "flagText" : "으뜸효율 10%",
+                                    "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                    "badge" : "<div class='badge-area'><span class='badge'>NEW</span><span class='badge'>BEST</span></div>",
+                                    "name" : "LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄",
+                                    "btnLike" : "btn bd-black",
+                                    "btnText" : "장바구니에 담기",
+                                    "wish" : { "id" : "chk04", "name" : "chk04", "checked" : "" }
+                                },{
+                                    "flag" : "/lg5-common/images/dummy/@img-promotion-badge.png",
+                                    "flagText" : "으뜸효율 10%",
+                                    "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                    "badge" : "<div class='badge-area'><span class='badge'>NEW</span><span class='badge'>BEST</span></div>",
+                                    "name" : "LG DIOS 노크온 매직스페이스",
+                                    "btnLike" : "btn bd-black",
+                                    "btnText" : "장바구니에 담기",
+                                    "wish" : { "id" : "chk05", "name" : "chk05", "checked" : "" }
+                                }
+                            ]
+                        })
+                    </div>
+                </div>
+            </div>
+            <!-- // cart -->
+        </div>
+        
+<!--        include('./common/footer.html')-->
+    </div>
+</body>
+</html>

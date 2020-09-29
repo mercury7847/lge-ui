@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/product-support"
+        ],
+        "pageJS": [
+            "support-common",
+            "support/solutions"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'title': '제품 문제 해결'
+            })
+
+            <div class="contents support solutions">
+                <div class="contents-inner">
+                    
+                    <div class="result-wrap">
+                        <div class="filter-box">
+                            <strong class="tit">증상 선택</strong>
+                            <ul class="filter-list" id="filterContent">
+                                <li class="on">
+                                    <button type="button" class="filter-link">ALL<span class="blind">선택됨</span></button>
+                                </li>
+                                <li>
+                                    <button type="button" class="filter-link">기능</button>
+                                    <div class="sub-depth" id="subFilterContent">
+                                        <button type="button" class="sub-tit">기능</button>
+                                        <ul class="filter-list">
+                                            <li>
+                                                <button type="button" class="filter-link">ALL</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="filter-link">퀵 헬프 방법</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="filter-link">앱 설치</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="filter-link">타임머신</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="filter-link">신호없음</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="filter-link">인터넷 연결</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <button type="button" class="filter-link">설치/연결</button>
+                                </li>
+                                <li>
+                                    <button type="button" class="filter-link">소음/냄새/열방생</button>
+                                </li>
+                                <li>
+                                    <button type="button" class="filter-link">스마트 앱</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mobile-filter-box">
+                            <div class="field-wrap">
+                                <div class="row">
+                                    <div class="field-item">
+                                        <div class="field-title">
+                                            <label for="select-symptom" class="tit">증상</label>
+                                        </div>
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" name="symptom" id="select-symptom" required>
+                                                <option selected disabled>증상을 선택해주세요.</option>
+                                                <option value="">증상</option>
+                                                <option value="">증상</option>
+                                                <option value="">증상</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="field-item">
+                                        <div class="field-title">
+                                            <label for="select-symptom2" class="tit">상세 증상</label>
+                                        </div>
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" name="symptom2" id="select-symptom2" required>
+                                                <option selected disabled>세부 증상을 선택해주세요.</option>
+                                                <option value="">세부 증상</option>
+                                                <option value="">세부 증상</option>
+                                                <option value="">세부 증상</option>
+                                            </select>
+                                            <p class="err-msg">세부 증상을 선택해주세요.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-box">
+                            <div class="sorting-wrap">
+                                <div class="total">전체 <em id="count">122</em>건</div>
+                                <div class="sort-box">
+                                    <div class="sort-select ui_dropdown">
+                                        <button type="button" class="sort-select-link ui_dropdown_toggle"><span>10개씩 보기</span><span class="ico-arrow"></span></button>
+                                        <div class="sort-select-layer ui_dropdown_list">
+                                            <ul>
+                                                <li class="active">
+                                                    <button type="button">10개씩 보기</button>
+                                                </li>
+                                                <li>
+                                                    <button type="button">10개씩 보기</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="sort-select ui_dropdown">
+                                        <button type="button" class="sort-select-link ui_dropdown_toggle"><span>조회순</span><span class="ico-arrow"></span></button>
+                                        <div class="sort-select-layer ui_dropdown_list">
+                                            <ul>
+                                                <li class="active">
+                                                    <button type="button">조회순</button>
+                                                </li>
+                                                <li>
+                                                    <button type="button">등록순</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-wrap">
+                                <ul class="list-cont" id="solutionsContent">
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            @@include('./common/support/pagination.html', {
+                                count: 5
+                            })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="service-menu-wrap">
+                    <div class="inner">
+                        <h3 class="title">원하시는 결과를 찾지 못하셨다면 고객 서비스를 통해 해결해보세요.</h3>
+                        <ul class="service-list">
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="/lg5-common/images/icons/icon-cs-call.png" alt=""> 
+                                    </div>
+                                    <strong class="tit">전화 예약 상담</strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="/lg5-common/images/icons/icon-cs-chat.png" alt=""> 
+                                    </div>
+                                    <strong class="tit">채팅상담</strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="/lg5-common/images/icons/icon-cs-email.png" alt=""> 
+                                    </div>
+                                    <strong class="tit">이메일 문의</strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="/lg5-common/images/icons/icon-cs-manual.png" alt=""> 
+                                    </div>
+                                    <strong class="tit">제품 메뉴얼</strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="/lg5-common/images/icons/icon-cs-download.png" alt=""> 
+                                    </div>
+                                    <strong class="tit">다운로드 자료실</strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="/lg5-common/images/icons/icon-cs-servicecenter.png" alt=""> 
+                                    </div>
+                                    <strong class="tit">서비스센터 찾기</strong>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+</body>
+</html> 

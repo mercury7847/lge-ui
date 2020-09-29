@@ -80,7 +80,7 @@
                 <div class="btm_info">최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, 제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다. </div>
             </div>
             <div class="btn-area">
-                <a href="#" class="btn bd-pink btn-small">결합하여 더 많은 할인 받기</a>
+                <a href="#" class="btn bd-pink btn-small ui_modal_close" onClick='moreClick("http://www.naver.com")'>결합하여 더 많은 할인 받기</a>
             </div>
             <div class="notice-box">
                 @@include('./common/modules/bullet-list.html', {
@@ -94,5 +94,10 @@
         </div>
     </section>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    <script>
+        function moreClick(url) {
+            console.log("more",url);
+        }
+    </script>
 </article>
 <!-- 매월 납부금 할인 내역 레이어팝업 -->

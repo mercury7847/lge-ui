@@ -21,118 +21,120 @@
 <!-- //주의사항 -->
 
 <!-- 가이드 내용 -->
-<h2 class="h2_guide">1. Main visual type carousel</h2>
+<h2 class="h2_guide">1. Main visual type slider</h2>
 <div class="guide_wrap">
-    <div class="slide-wrap ui_carousel_slider">
+    <div class="hero-banner slide-wrap ui_wide_slider">
         <div class="indi-wrap">
-            <ul class="indi-conts ui_carousel_dots">
-                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+            <ul class="indi-conts ui_carousel_dots"> <!-- ui_carousel_dots -->
+                <li>
+                    <button type="button" class="btn-indi">
+                        <p>No.1의 혁신1</p>
+                        <div class="bar"></div>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn-indi">
+                        <p>No.1의 혁신2</p>
+                        <div class="bar"></div>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn-indi">
+                        <p>No.1의 혁신3</p>
+                        <div class="bar"></div>
+                    </button>
+                </li>
             </ul>
+            <button type="button" class="indi_control ui_carousel_play play">
+                <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+            </button>
         </div>
         <div class="slide-content ui_carousel_list">
             <div class="slide-track ui_carousel_track">
                 <!-- slide -->
-                <div class="slide-conts ui_carousel_slide ui_bg_switch">
-                    <span class="bg" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
+                <div class="slide-conts ui_carousel_slide">
+                    <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
                     <div class="slide-info-area">
                         <div class="boxs">
                             <p class="desc" id="tit01"> 
-                                LG전자 멤버십 앱<strong>신규 설치 고객<br>경품 추천 이벤트1</strong>
+                                <small>나의 첫번째 5G 폰0</small>
+                                LG Q92 5G 구매혜택
                             </p>
-                            <a href="#n" class="btn" aria-labelledby="tit01">자세히 보기</a>
+                            <p class="date">2020.08.01~2020.09.31</p>
+                            <a href="#n" class="btn bd-black" aria-labelledby="tit01">자세히 보기</a>
                         </div>
                     </div>
                 </div>
                 <!-- // slide -->
                 <!-- slide -->
-                <div class="slide-conts ui_carousel_slide ui_bg_switch">
-                    <span class="bg" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
+                <div class="slide-conts ui_carousel_slide">
+                    <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
                     <div class="slide-info-area">
                         <div class="boxs">
-                            <p class="desc" id="tit02"> 
-                                LG전자 멤버십 앱<strong>신규 설치 고객<br>경품 추천 이벤트2</strong>
+                            <p class="desc" id="tit01"> 
+                                <small>나의 첫번째 5G 폰1</small>
+                                LG Q92 5G 구매혜택
                             </p>
-                            <a href="#n" class="btn" aria-labelledby="tit02">자세히 보기</a>
+                            <p class="date">2020.08.01~2020.09.31</p>
+                            <a href="#n" class="btn bd-black" aria-labelledby="tit01">자세히 보기</a>
                         </div>
                     </div>
                 </div>
                 <!-- // slide -->
                 <!-- slide -->
-                <div class="slide-conts ui_carousel_slide ui_bg_switch">
-                    <span class="bg" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
+                <div class="slide-conts ui_carousel_slide">
+                    <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
                     <div class="slide-info-area">
                         <div class="boxs">
-                            <p class="desc" id="tit03"> 
-                                LG전자 멤버십 앱<strong>신규 설치 고객<br>경품 추천 이벤트3</strong>
+                            <p class="desc" id="tit01"> 
+                                <small>나의 첫번째 5G 폰2</small>
+                                LG Q92 5G 구매혜택
                             </p>
-                            <a href="#n" class="btn" aria-labelledby="tit03">자세히 보기</a>
+                            <p class="date">2020.08.01~2020.09.31</p>
+                            <a href="#n" class="btn bd-black" aria-labelledby="tit01">자세히 보기</a>
                         </div>
                     </div>
                 </div>
                 <!-- // slide -->
             </div>
-        </div>
-        <div class="slide-controls">
-            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
         </div>
     </div>
 </div>
 
 <div class="d_desc code">
 <xmp class="prettyprint linenums javascript"><!-- DOM -->
-<div class="slide-wrap ui_carousel_slider">
+<div class="hero-banner slide-wrap ui_wide_slider">
     <div class="indi-wrap">
         <ul class="indi-conts ui_carousel_dots">
-            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+            <li>
+                <button type="button" class="btn-indi">
+                    <p>No.1의 혁신</p>
+                    <div class="bar"></div>
+                </button>
+            </li>
         </ul>
+        <button type="button" class="indi_control ui_carousel_play play">
+            <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+        </button>
     </div>
     <div class="slide-content ui_carousel_list">
         <div class="slide-track ui_carousel_track">
             <!-- slide -->
-            <div class="slide-conts ui_carousel_slide ui_bg_switch">
-                <span class="bg" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
+            <div class="slide-conts ui_carousel_slide">
+                <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
                 <div class="slide-info-area">
                     <div class="boxs">
                         <p class="desc" id="tit01"> 
-                            LG전자 멤버십 앱<strong>신규 설치 고객<br>경품 추천 이벤트1</strong>
+                            <small>나의 첫번째 5G 폰0</small>
+                            LG Q92 5G 구매혜택
                         </p>
-                        <a href="#n" class="btn" aria-labelledby="tit01">자세히 보기</a>
-                    </div>
-                </div>
-            </div>
-            <!-- // slide -->
-            <!-- slide -->
-            <div class="slide-conts ui_carousel_slide ui_bg_switch">
-                <span class="bg" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
-                <div class="slide-info-area">
-                    <div class="boxs">
-                        <p class="desc" id="tit02"> 
-                            LG전자 멤버십 앱<strong>신규 설치 고객<br>경품 추천 이벤트2</strong>
-                        </p>
-                        <a href="#n" class="btn" aria-labelledby="tit02">자세히 보기</a>
-                    </div>
-                </div>
-            </div>
-            <!-- // slide -->
-            <!-- slide -->
-            <div class="slide-conts ui_carousel_slide ui_bg_switch">
-                <span class="bg" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
-                <div class="slide-info-area">
-                    <div class="boxs">
-                        <p class="desc" id="tit03"> 
-                            LG전자 멤버십 앱<strong>신규 설치 고객<br>경품 추천 이벤트3</strong>
-                        </p>
-                        <a href="#n" class="btn" aria-labelledby="tit03">자세히 보기</a>
+                        <p class="date">2020.08.01~2020.09.31</p>
+                        <a href="#n" class="btn bd-black" aria-labelledby="tit01">자세히 보기</a>
                     </div>
                 </div>
             </div>
             <!-- // slide -->
         </div>
-    </div>
-    <div class="slide-controls">
-        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
     </div>
 </div>
 <!-- // DOM -->
@@ -154,19 +156,505 @@
 </xmp>
 </div>
 <!-- // 가이드 내용 -->
+
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2. carousel slider(PC : 4, Mob : full)</h2>
+<div class="guide_wrap">
+    <div class="slide-wrap carousel-type carousel-4 ui_carousel_4_slider">
+        <div class="indi-wrap">
+            <ul class="indi-conts ui_carousel_dots">
+                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+            </ul>
+        </div>
+        <div class="slide-content ui_carousel_list">
+            <div class="slide-track ui_carousel_track">
+                <!-- slide -->
+                <div class="slide-conts ui_carousel_slide">
+                    <a href="#n" class="slide-box">
+                        <span class="flag"><span class="blind">게시판 분류</span>생활의 팁</span>
+                        <span class="thumb" aria-hidden="true">
+                            <img src="/lg5-common/images/MYC/img-carousel01.jpg" alt="">
+                        </span>
+                        <div class="info-area">
+                            <p class="hashtag">
+                                <span class="blind">해시태그</span>
+                                <span class='hash'>#식기세척기</span><span class='hash'>#건조</span>
+                            </p>
+                            <div class="text-box">
+                                <p class="tit">여름철 위생적인 식기세척기 건조 꿀팁</p>
+                                <p class="desc">ThinQ 앱 제품등록 방법</p>
+                            </div>
+                            <ul class="count">
+                                <li class="like"><span class="blind">좋아요수</span>1,234</li>
+                                <li class="view"><span class="blind">조회수</span>1,234</li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-like"><span class="blind">좋아요 버튼 클릭 시 좋아요ON</span></button>
+                    </a>
+                </div> 
+                <!-- // slide -->
+                <!-- slide -->
+                <div class="slide-conts ui_carousel_slide">
+                    <a href="#n" class="slide-box">
+                        <span class="flag"><span class="blind">게시판 분류</span>생활의 팁</span>
+                        <span class="thumb" aria-hidden="true">
+                            <img src="/lg5-common/images/MYC/img-carousel01.jpg" alt="">
+                        </span>
+                        <div class="info-area">
+                            <p class="hashtag">
+                                <span class="blind">해시태그</span>
+                                <span class='hash'>#식기세척기</span><span class='hash'>#건조</span>
+                            </p>
+                            <div class="text-box">
+                                <p class="tit">여름철 위생적인 식기세척기 건조 꿀팁</p>
+                            </div>
+                            <ul class="count">
+                                <li class="like"><span class="blind">좋아요수</span>1,234</li>
+                                <li class="view"><span class="blind">조회수</span>1,234</li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-like"><span class="blind">좋아요 버튼 클릭 시 좋아요ON</span></button>
+                    </a>
+                </div> 
+                <!-- // slide -->
+                <!-- slide -->
+                <div class="slide-conts ui_carousel_slide">
+                    <a href="#n" class="slide-box">
+                        <span class="flag"><span class="blind">게시판 분류</span>생활의 팁</span>
+                        <span class="thumb" aria-hidden="true">
+                            <img src="/lg5-common/images/MYC/img-carousel01.jpg" alt="">
+                        </span>
+                        <div class="info-area">
+                            <p class="hashtag">
+                                <span class="blind">해시태그</span>
+                                <span class='hash'>#식기세척기</span><span class='hash'>#건조</span>
+                            </p>
+                            <div class="text-box">
+                                <p class="tit">여름철 위생적인 식기세척기 건조 꿀팁</p>
+                                <p class="desc">ThinQ 앱 제품등록 방법</p>
+                            </div>
+                            <ul class="count">
+                                <li class="like"><span class="blind">좋아요수</span>1,234</li>
+                                <li class="view"><span class="blind">조회수</span>1,234</li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-like on"><span class="blind">좋아요 버튼 클릭 시 좋아요ON</span></button>
+                    </a>
+                </div> 
+                <!-- // slide -->
+                <!-- slide -->
+                <div class="slide-conts ui_carousel_slide">
+                    <a href="#n" class="slide-box">
+                        <span class="flag"><span class="blind">게시판 분류</span>생활의 팁</span>
+                        <span class="thumb" aria-hidden="true">
+                            <img src="/lg5-common/images/MYC/img-carousel01.jpg" alt="">
+                        </span>
+                        <div class="info-area">
+                            <p class="hashtag">
+                                <span class="blind">해시태그</span>
+                                <span class='hash'>#식기세척기</span><span class='hash'>#건조</span>
+                            </p>
+                            <div class="text-box">
+                                <p class="tit">여름철 위생적인 식기세척기 건조 꿀팁</p>
+                            </div>
+                            <ul class="count">
+                                <li class="like"><span class="blind">좋아요수</span>1,234</li>
+                                <li class="view"><span class="blind">조회수</span>1,234</li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-like"><span class="blind">좋아요 버튼 클릭 시 좋아요ON</span></button>
+                    </a>
+                </div> 
+                <!-- // slide -->
+                <!-- slide -->
+                <div class="slide-conts ui_carousel_slide">
+                    <a href="#n" class="slide-box">
+                        <span class="flag"><span class="blind">게시판 분류</span>생활의 팁</span>
+                        <span class="thumb" aria-hidden="true">
+                            <img src="/lg5-common/images/MYC/img-carousel01.jpg" alt="">
+                        </span>
+                        <div class="info-area">
+                            <p class="hashtag">
+                                <span class="blind">해시태그</span>
+                                <span class='hash'>#식기세척기</span><span class='hash'>#건조</span>
+                            </p>
+                            <div class="text-box">
+                                <p class="tit">여름철 위생적인 식기세척기 건조 꿀팁</p>
+                            </div>
+                            <ul class="count">
+                                <li class="like"><span class="blind">좋아요수</span>1,234</li>
+                                <li class="view"><span class="blind">조회수</span>1,234</li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-like"><span class="blind">좋아요 버튼 클릭 시 좋아요ON</span></button>
+                    </a>
+                </div> 
+                <!-- // slide -->
+                <!-- slide -->
+                <div class="slide-conts ui_carousel_slide">
+                    <a href="#n" class="slide-box">
+                        <span class="flag"><span class="blind">게시판 분류</span>생활의 팁</span>
+                        <span class="thumb" aria-hidden="true">
+                            <img src="/lg5-common/images/MYC/img-carousel01.jpg" alt="">
+                        </span>
+                        <div class="info-area">
+                            <p class="hashtag">
+                                <span class="blind">해시태그</span>
+                                <span class='hash'>#식기세척기</span><span class='hash'>#건조</span>
+                            </p>
+                            <div class="text-box">
+                                <p class="tit">여름철 위생적인 식기세척기 건조 꿀팁</p>
+                            </div>
+                            <ul class="count">
+                                <li class="like"><span class="blind">좋아요수</span>1,234</li>
+                                <li class="view"><span class="blind">조회수</span>1,234</li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-like"><span class="blind">좋아요 버튼 클릭 시 좋아요ON</span></button>
+                    </a>
+                </div> 
+                <!-- // slide -->
+            </div>
+        </div>
+        <div class="slide-controls">
+            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+        </div>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="slide-wrap carousel-type carousel-4 ui_carousel_4_slider">
+    <div class="indi-wrap">
+        <ul class="indi-conts ui_carousel_dots">
+            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+        </ul>
+    </div>
+    <div class="slide-content ui_carousel_list">
+        <div class="slide-track ui_carousel_track">
+            <!-- slide -->
+            <div class="slide-conts ui_carousel_slide">
+                <a href="#n" class="slide-box">
+                    <span class="flag"><span class="blind">게시판 분류</span>생활의 팁</span>
+                    <span class="thumb" aria-hidden="true">
+                        <img src="/lg5-common/images/MYC/img-carousel01.jpg" alt="">
+                    </span>
+                    <div class="info-area">
+                        <p class="hashtag">
+                            <span class="blind">해시태그</span>
+                            <span class='hash'>#식기세척기</span><span class='hash'>#건조</span>
+                        </p>
+                        <div class="text-box">
+                            <p class="tit">여름철 위생적인 식기세척기 건조 꿀팁</p>
+                            <p class="desc">ThinQ 앱 제품등록 방법</p>
+                        </div>
+                        <ul class="count">
+                            <li class="like"><span class="blind">좋아요수</span>1,234</li>
+                            <li class="view"><span class="blind">조회수</span>1,234</li>
+                        </ul>
+                    </div>
+                    <button type="button" class="btn-like"><span class="blind">좋아요 버튼 클릭 시 좋아요ON</span></button>
+                </a>
+            </div> 
+            <!-- // slide -->
+        </div>
+    </div>
+    <div class="slide-controls">
+        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+    </div>
+</div>
+<!-- // DOM -->
+
+<!-- page 내 작업 방식 -->
+<!-- (@@)include ()삭제 후 사용 -->
+(@@)include('./common/modules/carousel.html', {
+    "carousel" : true,
+    "carouselClass" : "carousel-4", <!-- carousel-4 style class -->
+    "carouselScriptClass" : "ui_carousel_4_slider", <!-- carousel-4 script 호출 class -->
+    "slideArr" : [
+        { 
+            "flag" : "카드뉴스",
+            "img" : "/lg5-common/images/MYC/img-carousel02.jpg",
+            "hashtag" : "<span class='hash'>#ThinQ</span><span class='hash'>#스마트폰</span>",
+            "tit" : "LG ThinQ 앱 이라서 가능한 편리한 일상",
+            "desc" : "<p class='desc'>ThinQ 앱 제품등록 방법</p>", <!-- 노출 항목 없을경우 삭제 -->
+            "btnLike" : "btn-like on"
+        }
+    ]
+})
+<!-- // page 내 작업 방식 -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2-2. carousel slider(PC : 3, Mob : full)</h2>
+<div class="guide_wrap">
+    <div class="slide-wrap carousel-type carousel-3 ui_carousel_3_slider">
+        <div class="indi-wrap">
+            <ul class="indi-conts ui_carousel_dots">
+                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+            </ul>
+        </div>
+        <div class="slide-content ui_carousel_list">
+            <div class="slide-track ui_carousel_track">
+                <!--  slide -->
+                <div class="slide-conts ui_carousel_slide">
+                    <div class="slide-box">
+                        <span class="flag"><img src="/lg5-common/images/dummy/@img-promotion-badge.png" alt="으뜸효율 10%"></span>
+                        <div class="product-image" aria-hidden="true">
+                            <a href="#"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></a>
+                        </div>
+                        <div class="product-info">
+                            <div class='badge-area'><span class='badge'>NEW</span><span class='badge'>BEST</span></div>
+                            <div class="product-name">
+                                <a href="#">LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄</a>
+                            </div>
+                            <div class="price-area">
+                                <div class="reduced-price">
+                                    <em class="blind">최대 혜택가격</em>
+                                    <span class="price">5,200,000<em>원</em></span>
+                                </div>
+                                <div class="product-price">
+                                    <div class="purchase-price">
+                                        <em class="blind">판매가격</em>
+                                        <span class="price">360,000<em>원</em></span>
+                                    </div>
+                                    <div class="discount-rate">
+                                        <em class="blind">할인율</em>
+                                        <span class="price">15<em>%</em></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn bd-black"><span>장바구니에 담기</span></button>
+                    </div>
+                </div>
+                <!-- // slide -->
+                <!--  slide -->
+                <div class="slide-conts ui_carousel_slide">
+                    <div class="slide-box">
+                        <span class="flag"><img src="/lg5-common/images/dummy/@img-promotion-badge.png" alt="으뜸효율 10%"></span>
+                        <div class="product-image" aria-hidden="true">
+                            <a href="#"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></a>
+                        </div>
+                        <div class="product-info">
+
+                            <div class="product-name">
+                                <a href="#">LG DIOS 노크온 매직스페이스</a>
+                            </div>
+                            <div class="price-area">
+                                <div class="reduced-price">
+                                    <em class="blind">최대 혜택가격</em>
+                                    <span class="price">5,200,000<em>원</em></span>
+                                </div>
+                                <div class="product-price">
+                                    <div class="purchase-price">
+                                        <em class="blind">판매가격</em>
+                                        <span class="price">360,000<em>원</em></span>
+                                    </div>
+                                    <div class="discount-rate">
+                                        <em class="blind">할인율</em>
+                                        <span class="price">15<em>%</em></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn bd-black"><span>장바구니에 담기</span></button>
+                    </div>
+                </div>
+                <!-- // slide -->
+                <!--  slide -->
+                <div class="slide-conts ui_carousel_slide">
+                    <div class="slide-box">
+                        <span class="flag"><img src="/lg5-common/images/dummy/@img-promotion-badge.png" alt="으뜸효율 10%"></span>
+                        <div class="product-image" aria-hidden="true">
+                            <a href="#"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></a>
+                        </div>
+                        <div class="product-info">
+                            <div class='badge-area'><span class='badge'>NEW</span><span class='badge'>BEST</span></div>
+                            <div class="product-name">
+                                <a href="#">LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄</a>
+                            </div>
+                            <div class="price-area">
+                                <div class="reduced-price">
+                                    <em class="blind">최대 혜택가격</em>
+                                    <span class="price">5,200,000<em>원</em></span>
+                                </div>
+                                <div class="product-price">
+                                    <div class="purchase-price">
+                                        <em class="blind">판매가격</em>
+                                        <span class="price">360,000<em>원</em></span>
+                                    </div>
+                                    <div class="discount-rate">
+                                        <em class="blind">할인율</em>
+                                        <span class="price">15<em>%</em></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn bd-black"><span>장바구니에 담기</span></button>
+                    </div>
+                </div>
+                <!-- // slide -->
+                <!--  slide -->
+                <div class="slide-conts ui_carousel_slide">
+                    <div class="slide-box">
+                        <span class="flag"><img src="/lg5-common/images/dummy/@img-promotion-badge.png" alt="으뜸효율 10%"></span>
+                        <div class="product-image" aria-hidden="true">
+                            <a href="#"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></a>
+                        </div>
+                        <div class="product-info">
+                            <div class='badge-area'><span class='badge'>NEW</span><span class='badge'>BEST</span></div>
+                            <div class="product-name">
+                                <a href="#">LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄</a>
+                            </div>
+                            <div class="price-area">
+                                <div class="reduced-price">
+                                    <em class="blind">최대 혜택가격</em>
+                                    <span class="price">5,200,000<em>원</em></span>
+                                </div>
+                                <div class="product-price">
+                                    <div class="purchase-price">
+                                        <em class="blind">판매가격</em>
+                                        <span class="price">360,000<em>원</em></span>
+                                    </div>
+                                    <div class="discount-rate">
+                                        <em class="blind">할인율</em>
+                                        <span class="price">15<em>%</em></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn bd-black"><span>장바구니에 담기</span></button>
+                    </div>
+                </div>
+                <!-- // slide -->
+                <!--  slide -->
+                <div class="slide-conts ui_carousel_slide">
+                    <div class="slide-box">
+                        <span class="flag"><img src="/lg5-common/images/dummy/@img-promotion-badge.png" alt="으뜸효율 10%"></span>
+                        <div class="product-image" aria-hidden="true">
+                            <a href="#"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></a>
+                        </div>
+                        <div class="product-info">
+                            <div class='badge-area'><span class='badge'>NEW</span><span class='badge'>BEST</span></div>
+                            <div class="product-name">
+                                <a href="#">LG DIOS 노크온 매직스페이스</a>
+                            </div>
+                            <div class="price-area">
+                                <div class="reduced-price">
+                                    <em class="blind">최대 혜택가격</em>
+                                    <span class="price">5,200,000<em>원</em></span>
+                                </div>
+                                <div class="product-price">
+                                    <div class="purchase-price">
+                                        <em class="blind">판매가격</em>
+                                        <span class="price">360,000<em>원</em></span>
+                                    </div>
+                                    <div class="discount-rate">
+                                        <em class="blind">할인율</em>
+                                        <span class="price">15<em>%</em></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn bd-black"><span>장바구니에 담기</span></button>
+                    </div>
+                </div>
+                <!-- // slide -->
+            </div>
+        </div>
+        <div class="slide-controls">
+            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+        </div>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="slide-wrap carousel-type carousel-3 ui_carousel_3_slider">
+    <div class="indi-wrap">
+        <ul class="indi-conts ui_carousel_dots">
+            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+        </ul>
+    </div>
+    <div class="slide-content ui_carousel_list">
+        <div class="slide-track ui_carousel_track">
+            <!--  slide -->
+            <div class="slide-conts ui_carousel_slide">
+                <div class="slide-box">
+                    <span class="flag"><img src="/lg5-common/images/dummy/@img-promotion-badge.png" alt="으뜸효율 10%"></span>
+                    <div class="product-image" aria-hidden="true">
+                        <a href="#"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></a>
+                    </div>
+                    <div class="product-info">
+                        <div class='badge-area'><span class='badge'>NEW</span><span class='badge'>BEST</span></div>
+                        <div class="product-name">
+                            <a href="#">LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄</a>
+                        </div>
+                        <div class="price-area">
+                            <div class="reduced-price">
+                                <em class="blind">최대 혜택가격</em>
+                                <span class="price">5,200,000<em>원</em></span>
+                            </div>
+                            <div class="product-price">
+                                <div class="purchase-price">
+                                    <em class="blind">판매가격</em>
+                                    <span class="price">360,000<em>원</em></span>
+                                </div>
+                                <div class="discount-rate">
+                                    <em class="blind">할인율</em>
+                                    <span class="price">15<em>%</em></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn bd-black"><span>장바구니에 담기</span></button>
+                </div>
+            </div>
+            <!-- // slide -->
+        </div>
+    </div>
+    <div class="slide-controls">
+        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+    </div>
+</div>
+<!-- // DOM -->
+
+<!-- page 내 작업 방식 -->
+<!-- (@@)include ()삭제 후 사용 -->
+(@@)include('./common/modules/carousel.html', {
+    "carousel" : true,
+    "recommendSlideType" : true, <!-- 추전 제품 carousel 3단 일 때 true, 아닐경우 삭제 -->
+    "carouselClass" : "carousel-3", <!-- carousel-3 style class -->
+    "carouselScriptClass" : "ui_carousel_3_slider", <!-- carousel-3 script 호출 class -->
+    "slideArr" : [
+        {
+            "flag" : "/lg5-common/images/dummy/@img-promotion-badge.png",
+            "flagText" : "으뜸효율 10%",
+            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+            "badge" : "<div class='badge-area'><span class='badge'>NEW</span><span class='badge'>BEST</span></div>",
+            "name" : "LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄",
+            "btnLike" : "btn bd-black",
+            "btnText" : "장바구니에 담기"
+        }
+    ]
+})
+<!-- // page 내 작업 방식 -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
 </div> 
 @@include('../include/loadscript_wsg.html')
-<script>
-    $(function(){
-        vcui.require(['ui/carousel'], function () {
-            $('.ui_carousel_slider').vcCarousel({
-                infinite: true,
-                swipeToSlide: true,
-                slidesToShow: 1,
-                slidesToScroll: 1
-            });
-        });
-    });
-</script>
 </body>
 </html> 

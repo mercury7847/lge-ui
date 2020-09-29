@@ -10,12 +10,12 @@
         "product_notice_description":"온라인에서 구매할 수 없는 제품입니다.",
         "product_badge":[
             {
-                "imageUrl":"/lg5-common/images/dummy/@img-promotion-badge.png",
-                "imageAlt":"뱃지1"
+                "image_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "image_alt":"뱃지1"
             },
             {
-                "imageUrl":"/lg5-common/images/dummy/@img-promotion-badge.png",
-                "imageAlt":"뱃지2"
+                "image_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "image_alt":"뱃지2"
             }
         ],
         "product_flag":[
@@ -32,7 +32,118 @@
                 "class":"badge"
             }
         ],
+        "pdp_visual_list":[
+            {
+                "link_name":"65UK6300PUE",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum01.png",
+                "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 1",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PUE",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum02.png",
+                "image_url":"/lg5-common/images/KRC0043/@thumb02.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 2",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PUE",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRC0043/@indi03.jpg",
+                "image_url":"/lg5-common/images/KRC0043/@thumb03.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 3",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PUE",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRC0043/@indi01.jpg",
+                "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 4",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PUE",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRC0043/@indi02.jpg",
+                "image_url":"/lg5-common/images/KRC0043/@thumb02.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 5",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PUE",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRC0043/@indi03.jpg",
+                "image_url":"/lg5-common/images/KRC0043/@thumb03.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 6",
+                "image_desc":"graphic description"
+            }
 
+        ],
+        "pdp_more_info":{
+            "visible":true,
+            "image_url":"/lg5-common/images/KRP0010/img-ncsi.jpg",
+            "image_alt":"ncsi획득",
+            "text":"고객만족도(NCSI) TV 부문 1위",
+            "modal_text":"수상내역 더보기",
+            "modal_url":"./modal/KRP0010-pdp-modal-award.html"
+        },
+        "additional_purchase":[
+            {
+                "product_id":"pid0001",
+                "image_url":"/lg5-common/images/KRP0010/@thumb1.jpg",
+                "image_alt":"인공지능 리모컨",
+                "title":"인공지능 리모컨",
+                "price":"50000"
+            },
+            {
+                "product_id":"pid0002",
+                "image_url":"/lg5-common/images/KRP0010/@thumb1.jpg",
+                "image_alt":"스탠드",
+                "title":"스탠드",
+                "price":"100000"
+            },
+            {
+                "product_id":"pid0003",
+                "image_url":"/lg5-common/images/KRP0010/@thumb1.jpg",
+                "image_alt":"블루투스 스피커",
+                "title":"블루투스 스피커",
+                "price":"70000"
+            }
+        ],
+        "payment_amount_info":{
+            "visible":true,
+            "product_price":"1853092"
+        },
+        "careship_total_payment":"9900",
+        "rental_only_info":true,
+
+        "purchase_button": {
+            "visible":true,
+            "cart_url":"#",
+            "buy_url":"#",
+            "modal_url":"./modal/KRP0010-careship-info.html"
+        },
+        "preorder_button": {
+            "visible":true,
+            "cart_url":null,
+            "buy_url":"#",
+            "modal_url":"./modal/KRP0010-pre-order-info.html"
+        },
+        "rental_button": {
+            "visible":true,
+            "cart_url":"#",
+            "buy_url":"#",
+            "modal_url":null
+        },
+        "display_product": {
+            "visible":true,
+            "exhibition_url":"#",
+            "visit_url":"#"
+        },
         "product_tab":["benefits", "rental"],
         "product_info":{
             "benefits":{
@@ -53,22 +164,42 @@
                         },
                         {
                             "type":"product-benefit-none",
-                            "type_text":"할인혜택t1",
+                            "type_text":"할인혜택",
                             "type_popup_text":null,
                             "type_popup_url":null,
                             "type_option":[
-                                "회원 할인 <em>3%</em> -59,700원",
-                                "즉시 할인 <em>4%</em> -77,210원"
+                                {
+                                    "text":"회원 할인 <em>3%</em> -59,700원",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":false
+                                },
+                                {
+                                    "text":"즉시 할인 <em>4%</em> -77,210원",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":false
+                                }
                             ]
                         },
                         {
                             "type":"product-benefit-popup",
                             "type_text":"추가혜택",
                             "type_popup_text":"추가혜택 팝업 열림",
-                            "type_popup_url":"http://www.naver.com",
+                            "type_popup_url":"./modal/KRP0010-benefit-info.html",
                             "type_option":[
-                                "포인트 64,000p",
-                                "캐시백 500,000원"
+                                {
+                                    "text":"포인트 64,000p",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":false
+                                },
+                                {
+                                    "text":"캐시백 500,000원",
+                                    "class":null,
+                                    "value":null,
+                                    "checked":false
+                                }
                             ]
                         }
                     ],
@@ -188,10 +319,10 @@
                             "type_text":"무상할인(2개월)",
                             "type_popup_text":"월 납부금액",
                             "type_popup_html":null,
-                            "type_popup_url":null,
+                            "type_popup_url":"./modal/KRP0010-monthly-payment-info.html",
                             "type_price":"15900",
                             "type_link_text":"결합하여 더 많은 할인 받기",
-                            "type_link_url":"",
+                            "type_link_url":"#test",
                             "type_option":[
                                 {
                                     "text":"1-3년 36,900원",

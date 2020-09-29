@@ -1,5 +1,5 @@
 (function(){
-
+    
     var cityArr = [
         {title:'시/도선택', value:''},
         {title:'서울', value:'서울'},
@@ -23,33 +23,38 @@
 
     var listTemplate = ''+
         '<li data-id="{{agNum}}">'+
-        '   <div class="store-info-list ui_marker_selector" role="button">'+
+        '   <div class="store-info-list ui_marker_selector" role="button" tabindex="0">'+
         '        <div class="point-wrap">'+
-        '           <div class="point">'+
+        '           <div class="point{{selected}}">'+
         '                <span class="num">{{num}}</span>'+
-        '                <span class="blind">선탿안됨</span>'+
+        '                <span class="blind">선택안됨</span>'+
         '            </div>'+
         '        </div>'+
         '        <div class="info-wrap">'+
         '            <div class="tit-wrap">'+
-        '                <p class="name">{{agName}}</p>'+
-        '                {{#if agNewShopComment != null }}<span class="flag">NEW</span>{{/if}}'+
-        '                {{#if isEvent}}<span class="flag">이벤트</span>{{/if}}'+
+        '                <p class="name"><span class="blind">매장명</span>{{agName}}</p>'+
+        '                <div class="flag-wrap">'+
+        '                    {{#if agNewShopComment != null }}<span class="flag">NEW</span>{{/if}}'+
+        '                    {{#if isEvent}}<span class="flag">이벤트</span>{{/if}}'+
+        '                    {{#if agCenterWeekday != null }}<span class="flag">서비스센터</span>{{/if}}'+
+        '               </div>'+
         '            </div>'+
-        '            <p class="addr">{{agAddr1}}</p>'+
+        '            <p class="addr"><span class="blind">주소</span>{{agAddr1}}</p>'+
         '            <div class="etc-info">'+
-        '                <span class="tel">{{agTel}}</span>'+
+        '                <span class="tel"><span class="blind">전화번호</span>{{agTel}}</span>'+
         '                <a href="#" class="btn-detail">상세보기</a>'+
         '            </div>'+
         '        </div>'+
         '    </div>'+
         '</li>';
 
+        var searchResultText = {
+            search:'<strong>"{{keyword}}"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
+        }
+
     var searchShop = {
         init: function(){
             var self = this;
-
-            console.log("searchShop start!!!");
             
             self._setting();
         },
@@ -60,8 +65,11 @@
             self.windowWidth;
             self.windowHeight;
 
-            self.storeArr;
-            self.eventArr;
+            self.isTransion = false;
+
+            self.isChangeMode = false;
+            self.searchResultMode = false;
+
             self.bestShopUrl = $('.map-container').data("bestshop");
 
             self.$leftContainer = $('.store-list-wrap'); //좌측 검색&리스트 컨테이너...
@@ -74,50 +82,68 @@
             self.$map = null; //맵 모듈...
             self.$mapContainer = $('.map-area'); //맴 모듈 컨테이너...
             
-            self.$optionSelector = $('.opt-cont'); //옵션 컨테이너...
+            self.$optionContainer = $('.opt-cont'); //옵션 컨테이너...
+            self.$optionContainer.find('.all-chk input[type=checkbox]').attr('checked', true);
+
+            //검색...
+            self.searchKeywords = {};
+
+            self.$searchField = $('#tab1 .input-sch input');
+            self.$searchButton = $('#tab1 .btn-search');
+
+            self.$searchResultContainer = $('.result-list-box');
             
-            vcui.require(['ui/storeMap'], function () {
+            vcui.require(['ui/storeMap', 'ui/tab'], function () {
 				
 				self.$mapContainer.vcStoreMap({
                     baseUrl:'',
                     storeDataUrl: self.bestShopUrl
 				}).on('mapinit', function(e,data){
-
-					self.storeArr = data.storeData;
-                    self.eventArr = data.eventData;
-
                     self.$map = self.$mapContainer.vcStoreMap('instance');
                     
                     self._bindEvents();		
 
-				}).on('mapchanged mapsearch', function(e, data){	
-
+				}).on('mapchanged', function(e, data){	
+                    
+                    self.$defaultListContainer.find('.scroll-wrap').scrollTop(0);
                     self._setItemList(data);
+                    self._setItemPosition();
+
+                    if(self.searchResultMode){
+                        self._setSearchResultMode();
+                    }
 
 				}).on('mapitemclick', function(e,data){
 
-                    $('#list').find('[data-id="'+ data.id +'"]').trigger('click');
+                    self._setMarkerSelected(data.id);
+                    self._setItemPosition();
                     
-				}).on('maperror', function(e, error){
+				}).on('mapsearchnodata', function(e){
+                    //검색 결과 없을 때...
+                    
+                }).on('maperror', function(e, error){
 					console.log(error);
                 });		
+
+                $(".sch-box .tabs-wrap.ui_store_search_tab").vcTab()
+                .on("tabchange", function(e, data){
+                    self._setListArea();
+                });
 			});
         },
 
         _bindEvents: function(){
             var self = this;
 
-            self.$optionSelector.on('click', '.btn-sel', function(e){
+            self.$optionContainer.on('click', '.btn-sel', function(e){
                 e.preventDefault();
 
-                console.log("option open")
+                self._toggleOptContainer();
             });
 
             self.$defaultListLayer.on('click', 'li > .ui_marker_selector', function(e){
                 var $target = $(e.currentTarget);
                 var id = $target.parent().data('id');
-
-                self._setMarkerSelected(id);
                 
                 self.$map.selectedMarker(id);
             })
@@ -127,6 +153,49 @@
                 console.log(e);
                 //showDetailInfo(id);  
             });
+
+            self.$searchField.on('focus', function(e){
+                $(window).on('keyup.searchShop', function(e){
+                    if(e.keyCode == 13) self._setSearch();
+                })
+            });
+            self.$searchButton.on('click', function(e){
+                self._setSearch();
+            });
+
+            self.$searchResultContainer.on('click', '.btn-back', function(e){
+                e.preventDefault();
+
+                self._returnSearchMode();
+            });
+
+            self.$searchContainer.on('click', '.btn-view', function(e){
+                e.preventDefault();
+
+                self._showMap();
+            });
+
+            self.$leftContainer.on('click', '.btn-fold', function(e){
+                e.preventDefault();
+
+                self._toggleLeftContainer();
+            })
+
+            self.$optionContainer.find('.all-chk dd input[type=checkbox]').on('change', function(e){
+                self._optAllChecked();
+            });
+            self.$optionContainer.find('.all-chk dt input[type=checkbox]').on('change', function(e){
+                self._optToggleAllChecked();
+            });
+            self.$optionContainer.on('click', '.btn-group button:first-child', function(e){
+                e.preventDefault();
+
+                self._setOptINIT();
+            }).on('click', '.btn-group button:last-child', function(e){
+                e.preventDefault();
+
+                self._setOptApply();
+            })
 
             $('#searchWrap').on('click', 'button', function(e){
 
@@ -153,11 +222,6 @@
                         secondName = city;
                 }
 
-                var arr = vcui.array.filter(self.storeArr, function(item, idx){                
-                    return (item['agAddr1'].search(area) > -1 || item['agNAddr1'].search(area) > -1) 
-                    && (item['agAddr1'].search(city) > -1 || item['agNAddr1'].search(city) > -1 || 
-                        item['agAddr1'].search(secondName) > -1 || item['agNAddr1'].search(secondName) > -1)                
-                });
 
 
                 if(keyword!==''){
@@ -176,22 +240,110 @@
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
 
+        _setOptINIT: function(){
+            var self = this;
+
+            //self.$optionContainer.find('.opt-layer')
+        },
+
+        _setOptApply: function(){
+            console.log("opt apply!!")
+        },
+
+        _optToggleAllChecked: function(){
+            var self = this;
+
+            var chked = self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked');
+            if(chked){
+                self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', true);
+            }
+        },
+
+        _optAllChecked: function(){
+            var self = this;
+
+            var total = self.$optionContainer.find('.all-chk dd input[type=checkbox]').length;
+            var chktotal = self.$optionContainer.find('.all-chk dd input[type=checkbox]:checked').length;
+            
+            var chked = total == chktotal ? true : false;
+            self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', chked);
+        },
+
+        _toggleOptContainer: function(){
+            var self = this;
+
+            var optop = self.$optionContainer.position().top;
+
+            self.$optionContainer.toggleClass('open');
+
+            // if(self.$optionContainer.hasClass('is-open')){
+            //     self.$optionContainer.find('.opt-layer').show();
+            //     self.$optionContainer.stop().css({top:optop}).transition({top:0}, 350, "easeInOutCubic");
+            // } else{
+            //     optop = self.$optionContainer.position().top;
+            //     console.log(optop)
+            //     self.$optionContainer.stop().css({y:-optop}).transition({y:0}, 350, "easeInOutCubic");
+            // }
+        },
+
+        _toggleLeftContainer: function(){
+            var self = this;
+            
+            self.$leftContainer.toggleClass('close');
+            
+            self._resize();
+        },
+
+        _showMap: function(){
+            var self = this;
+
+            if(!self.isTransion){
+                self.isTransion = true;
+                
+                var toggle = self.$searchContainer.find('.btn-view');
+                if(toggle.hasClass('map')){
+                    var maptop = self.$defaultListContainer.position().top;
+                    $('.store-map-con').css({
+                        position: 'absolute',
+                        visibility: 'visible',
+                        top: maptop,
+                        left:0,
+                        x: self.windowWidth,
+                        height: self.$mapContainer.height(),
+                        'z-index': 100
+                    }).transition({x:0}, 350, "easeInOutCubic", function(){self.isTransion = false;});
+        
+                    toggle.removeClass("map").addClass('list').find('span').text('리스트보기');
+        
+                    self.$map.resize();
+                } else{
+                    toggle.removeClass("list").addClass('map').find('span').text('지도보기');
+    
+                    $('.store-map-con').stop().transition({x:self.windowWidth}, 350, "easeInOutCubic", function(){self.isTransion = false;})
+                }
+            }
+        },
+
+        _setSearch: function(){
+            var self = this;
+
+            self.searchKeywords.keyword = self.$searchField.val();
+            var trim = self.searchKeywords.keyword.replace(/\s/gi, '');
+            if(trim.length){
+                self.searchResultMode = true;
+
+                self.$map.search(self.searchKeywords.keyword);
+
+                $(window).off('keyup.searchShop');
+            }
+        },
+
         _setMarkerSelected: function(id){
             var self = this;
 
             var selectedMarker = self.$defaultListLayer.find('li[data-id="' + id + '"]');
             if(!selectedMarker.find('.point').hasClass('on')) selectedMarker.find('.point').addClass('on');
             selectedMarker.siblings().find('.point').removeClass('on');
-        },
-                
-        //매장정보 가져오기...
-        _getShopInfo: function(id){
-            var self = this;
-            var info = vcui.array.filter(self.storeArr, function(item, idx){
-                return item.id == id;
-            });
-            
-            return info;
         },
 
         //매장에 등록 된 이벤트 가져오기...
@@ -214,15 +366,79 @@
                  var listData = {
                      num: i+1,
                      agName: data[i].info.agName,
+                     agCenterWeekday: data[i].info.agCenterWeekday,
                      agNewShopComment: data[i].info.agNewShopComment,
                      isEvent: self._getEventInfo(data[i].id).length ? true : false,
                      agAddr1: data[i].info.agAddr1,
                      agTel: data[i].info.agTel,
-                     agNum: data[i].info.agNum
+                     agNum: data[i].info.agNum,
+                     selected: data[i].info.selected ? " on" : ""
                  }
                  var list = vcui.template(listTemplate, listData);
                  self.$defaultListLayer.append($(list).get(0));
              }
+        },
+
+        _setItemPosition: function(){
+            var self = this;
+
+            self.$defaultListLayer.find('> li').each(function(idx, item){
+                if($(item).find('.point').hasClass('on')){
+                    var scrolltop = $(item).position().top;
+                    self.$defaultListContainer.find('.scroll-wrap').stop().animate({scrollTop: scrolltop}, 220);
+                }
+            })
+        },
+
+        _returnSearchMode: function(){
+            var self = this;
+
+            if(self.isChangeMode){
+                self.isChangeMode = false;
+                self.searchResultMode = false;
+
+                self.$searchContainer.css('display', 'block');
+
+                $('.result-list-box').stop().transition({opacity:0, y:100}, 350, "easeInOutCubic");
+
+                var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
+                var scheight = self.$searchContainer.outerHeight(true);
+                self.$defaultListContainer.transition({top:titheight+scheight}, 420, "easeInOutCubic", function(){
+                    $('.result-list-box').css('display', 'none');
+
+                    self.$defaultListContainer.css({position:'relative', top:0});
+                });
+            };
+        },
+
+        _setSearchResultMode: function(){
+            var self = this;
+
+            if(!self.isChangeMode){
+                self.isChangeMode = true;
+
+                var listop = self.$defaultListContainer.position().top;
+
+                self._setResultText();
+                $('.result-list-box').stop().css({display:'block', opacity:0, y:100}).transition({opacity:1, y:0}, 410, "easeInOutCubic");
+                
+                var resultheight = $('.result-list-box').height();
+                self.$defaultListContainer.css({position:'absolute', top:listop}).transition({top:resultheight}, 420, "easeInOutCubic", function(){
+                    self.$searchContainer.css('display', 'none');
+                });
+
+                self._setListArea();
+            }
+        },
+
+        _setResultText: function(){
+            var self = this;
+
+            var resultxt = vcui.template(searchResultText.search, {
+                keyword: self.searchKeywords.keyword,
+                total: self.$defaultListLayer.find('> li').length
+            });
+            self.$searchResultContainer.find('.result-txt').html(resultxt)
         },
 
         //리스트 컨테이너 높이 설정...스크롤영역
@@ -232,8 +448,15 @@
             var top = $('.container').position().top;
             var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
             var scheight = self.$searchContainer.outerHeight(true);
-            var optheight = self.$optionSelector.height();
-            var listheight = self.windowHeight - top - titheight - scheight - optheight;
+            var optheight = self.$optionContainer.height();
+            var resultheight = $('.result-list-box').height();
+
+            var listheight;
+            if(self.searchResultMode){
+                listheight = self.windowHeight - top - resultheight - optheight;
+            } else{
+                listheight = self.windowHeight - top - titheight - scheight - optheight;
+            }
             
             self.$defaultListContainer.find('.scroll-wrap').height(listheight);
         },
@@ -244,14 +467,30 @@
             self.windowWidth = $(window).width();
             self.windowHeight = $(window).height();
 
+            self._setListArea();
+
             var listwidth = self.$leftContainer.width();
+            var mapwidth, mapheight, mapmargin;
+            if(self.windowWidth < 768){
+                mapmargin = 0;
+                mapwidth = self.windowWidth;
+
+                mapheight = self.$defaultListContainer.find('.scroll-wrap').height();
+            } else{
+                if(self.$leftContainer.hasClass('close')){
+                    mapmargin = 24;
+                } else{
+                    mapmargin = listwidth;
+                }                
+                mapwidth = self.windowWidth - mapmargin;            
+                mapheight = self.windowHeight;
+            }
 
             self.$mapContainer.css({
-                width: self.windowWidth - listwidth,
-                'margin-left': listwidth
+                width: mapwidth,
+                height: mapheight,
+                'margin-left': mapmargin
             });
-
-            self._setListArea();
 
             self.$map.resize();
         }

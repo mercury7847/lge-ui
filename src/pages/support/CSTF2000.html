@@ -22,127 +22,93 @@
 
             <div class="contents support solutions">
                 <div class="contents-inner">
-
-                    <div class="section">
-                        <div class="section-title">
-                            <h3 class="tit">01. 제품을 선택해주세요.</h3>
-                        </div>
-                        <div class="section-content">
-                            <div class="field-wrap">
-                                <div class="row">
-                                    <div class="field-item block">
-                                        <div class="model-search">
-                                            <div class="input-wrap block">
-                                                <input type="text" id="model" name="model" placeholder="모델명을 검색해주세요.">
-                                                <button type="button"><span class="blind">검색</span></button>
-                                            </div>
-                                            <div class="model-util">
-                                                <a href="#" class="btn-banner"><span class="icon-plus">내 제품 선택</span></a>
-                                                <a href="#" class="btn-text pink">모델명 확인방법</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="my-products-wrap">
-                        <h4 class="tit">이엘지님이 관리하고 있는 제품</h4>
-                        <div class="slide-wrap ui_carousel_slider">
-                            <div class="slide-content ui_carousel_list">
-                                <div class="slide-track ui_carousel_track">
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <div class="item">
-                                            <div class="img">
-                                                <img src="/lg5-common/images/dummy/@img-product3.jpg" alt="">
-                                            </div>
-                                            <div class="name">제품 모델명 노출 영역 최대 2줄 제품 모델명 노출 영역 최대 2줄</div>
-                                            <div class="id">모델명 노출 영역</div>
-                                            <div class="btn-wrap">
-                                                <button type="button" class="btn bd-gray"><span>선택</span></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <div class="item">
-                                            <div class="img">
-                                                <img src="/lg5-common/images/dummy/@img-product4.jpg" alt="">
-                                            </div>
-                                            <div class="name">제품 모델명 노출 영역 최대 2줄 제품 모델명 노출 영역 최대 2줄</div>
-                                            <div class="id">모델명 노출 영역</div>
-                                            <div class="btn-wrap">
-                                                <button type="button" class="btn bd-gray"><span>선택</span></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <div class="item">
-                                            <div class="img">
-                                                <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="">
-                                            </div>
-                                            <div class="name">제품 모델명 노출 영역 최대 2줄 제품 모델명 노출 영역 최대 2줄</div>
-                                            <div class="id">모델명 노출 영역</div>
-                                            <div class="btn-wrap">
-                                                <button type="button" class="btn bd-gray"><span>선택</span></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-controls">
-                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="solutions-wrap">
+                    
+                    <div class="result-wrap">
                         <div class="filter-box">
-                            <strong class="tit">증상 선택</strong>
-                            <ul class="filter-list">
+                            <div class="filter-head">
+                                <strong class="tit">증상 선택</strong>
+                            </div>
+                            <ul class="filter-list" id="filterContent">
                                 <li class="on">
-                                    <a href="#" class="">ALL</a>
+                                    <button type="button" class="filter-link">ALL<span class="blind">선택됨</span></button>
                                 </li>
                                 <li>
-                                    <a href="#" class="">기능</a>
-                                    <div class="sub-depth">
-                                        <a href="#" class="sub-tit">기능</a>
-                                        <ul class="">
+                                    <button type="button" class="filter-link">기능</button>
+                                    <div class="sub-depth" id="subFilterContent">
+                                        <div class="filter-head">
+                                            <button type="button" class="btn-back"><span class="blind">뒤로 가기</span></button>
+                                            <strong class="tit">기능</strong>  
+                                        </div>
+                                        <ul class="filter-list">
                                             <li>
-                                                <a href="#">ALL</a>
+                                                <button type="button" class="filter-link">ALL</button>
                                             </li>
                                             <li>
-                                                <a href="#">퀵 헬프 방법</a>
+                                                <button type="button" class="filter-link">퀵 헬프 방법</button>
                                             </li>
                                             <li>
-                                                <a href="#">앱 설치</a>
+                                                <button type="button" class="filter-link">앱 설치</button>
                                             </li>
                                             <li>
-                                                <a href="#">타임머신</a>
+                                                <button type="button" class="filter-link">타임머신</button>
                                             </li>
                                             <li>
-                                                <a href="#">신호없음</a>
+                                                <button type="button" class="filter-link">신호없음</button>
                                             </li>
                                             <li>
-                                                <a href="#">인터넷 연결</a>
+                                                <button type="button" class="filter-link">인터넷 연결</button>
                                             </li>
                                         </ul>
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="#" class="">설치/연결</a>
+                                    <button type="button" class="filter-link">설치/연결</button>
                                 </li>
                                 <li>
-                                    <a href="#" class="">소음/냄새/열방생</a>
+                                    <button type="button" class="filter-link">소음/냄새/열방생</button>
                                 </li>
                                 <li>
-                                    <a href="#" class="">스마트 앱</a>
+                                    <button type="button" class="filter-link">스마트 앱</button>
                                 </li>
                             </ul>
                         </div>
+
+                        <div class="mobile-filter-box">
+                            <div class="field-wrap">
+                                <div class="row">
+                                    <div class="field-item">
+                                        <div class="field-title">
+                                            <label for="select-symptom" class="tit">증상</label>
+                                        </div>
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" name="symptom" id="select-symptom" required>
+                                                <option selected disabled>증상을 선택해주세요.</option>
+                                                <option value="">증상</option>
+                                                <option value="">증상</option>
+                                                <option value="">증상</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="field-item">
+                                        <div class="field-title">
+                                            <label for="select-symptom2" class="tit">상세 증상</label>
+                                        </div>
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" name="symptom2" id="select-symptom2" required>
+                                                <option selected disabled>세부 증상을 선택해주세요.</option>
+                                                <option value="">세부 증상</option>
+                                                <option value="">세부 증상</option>
+                                                <option value="">세부 증상</option>
+                                            </select>
+                                            <p class="err-msg">세부 증상을 선택해주세요.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="result-box">
-                            <div class="list-filter">
+                            <div class="sorting-wrap">
                                 <div class="total">전체 <em id="count">122</em>건</div>
                                 <div class="sort-box">
                                     <div class="sort-select ui_dropdown">
@@ -153,7 +119,13 @@
                                                     <button type="button">10개씩 보기</button>
                                                 </li>
                                                 <li>
-                                                    <button type="button">10개씩 보기</button>
+                                                    <button type="button">20개씩 보기</button>
+                                                </li>
+                                                <li>
+                                                    <button type="button">30개씩 보기</button>
+                                                </li>
+                                                <li>
+                                                    <button type="button">50개씩 보기</button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -173,138 +145,347 @@
                                     </div>
                                 </div>
                             </div>
-                            <ul class="item-list" id="solutionsContent">
-                                <li>
-                                    <a href="#">
-                                        <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
-                                        <p class="topic">증상 > 세부 증상</p>
-                                        <ul class="info">
-                                            <li>2020.07.20</li>
-                                            <li>
-                                                <span class="info-view">5,692</span>
-                                            </li>
-                                        </ul>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
-                                        <p class="topic">증상 > 세부 증상</p>
-                                        <ul class="info">
-                                            <li>2020.07.20</li>
-                                            <li>
-                                                <span class="info-view">5,692</span>
-                                            </li>
-                                        </ul>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
-                                        <p class="topic">증상 > 세부 증상</p>
-                                        <ul class="info">
-                                            <li>2020.07.20</li>
-                                            <li>
-                                                <span class="info-view">5,692</span>
-                                            </li>
-                                        </ul>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
-                                        <p class="topic">증상 > 세부 증상</p>
-                                        <ul class="info">
-                                            <li>2020.07.20</li>
-                                            <li>
-                                                <span class="info-view">5,692</span>
-                                            </li>
-                                        </ul>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
-                                        <p class="topic">증상 > 세부 증상</p>
-                                        <ul class="info">
-                                            <li>2020.07.20</li>
-                                            <li>
-                                                <span class="info-view">5,692</span>
-                                            </li>
-                                        </ul>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
-                                        <p class="topic">증상 > 세부 증상</p>
-                                        <ul class="info">
-                                            <li>2020.07.20</li>
-                                            <li>
-                                                <span class="info-view">5,692</span>
-                                            </li>
-                                        </ul>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
-                                        <p class="topic">증상 > 세부 증상</p>
-                                        <ul class="info">
-                                            <li>2020.07.20</li>
-                                            <li>
-                                                <span class="info-view">5,692</span>
-                                            </li>
-                                        </ul>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
-                                        <p class="topic">증상 > 세부 증상</p>
-                                        <ul class="info">
-                                            <li>2020.07.20</li>
-                                            <li>
-                                                <span class="info-view">5,692</span>
-                                            </li>
-                                        </ul>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
-                                        <p class="topic">증상 > 세부 증상</p>
-                                        <ul class="info">
-                                            <li>2020.07.20</li>
-                                            <li>
-                                                <span class="info-view">5,692</span>
-                                            </li>
-                                        </ul>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
-                                        <p class="topic">증상 > 세부 증상</p>
-                                        <ul class="info">
-                                            <li>2020.07.20</li>
-                                            <li>
-                                                <span class="info-view">5,692</span>
-                                            </li>
-                                        </ul>
-                                    </a>
-                                </li>
-                            </ul>
+                            <div class="list-wrap">
+                                <ul class="list-cont" id="solutionsContent">
+                                    <li class="video-item">
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                            <span class="icon-movie"><span class="blind">동영상 가이드 컨텐츠</span></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                            <p class="topic">증상 > 세부 증상</p>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li>
+                                                    <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                             @@include('./common/support/pagination.html', {
                                 count: 5
                             })
                         </div>
-                    </div> 
-
+                    </div>
 
                 </div>
-            </div>
 
+                <div class="supplies-list-wrap">
+                    <div class="inner">
+                        <h3 class="title">관련 소모품이 필요하신가요?</h3>
+                        <div class="slide-wrap ui_carousel_slider">
+                            <div class="slide-content ui_carousel_list">
+                                <div class="slide-track ui_carousel_track">
+                                    <div class="slide-conts ui_carousel_slide">
+                                        <div class="item">
+                                            <div class="product-image">
+                                                <img src="/lg5-common/images/dummy/@img-product3.jpg" alt="">
+                                            </div>
+                                            <div class="product-info">
+                                                <div class="product-tag">
+                                                    <span class="tag">NEW</span>
+                                                    <span class="tag">BEST</span>
+                                                </div>
+                                                <div class="product-name">
+                                                    <a href="#" class="name">소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄</a>
+                                                </div>
+                                                <div class="product-price">
+                                                    <div class="discount-price">
+                                                        <span class="blind">할인가격</span>
+                                                        <span class="price">17,000원</span>
+                                                    </div>
+                                                    <div class="purchase-price">
+                                                        <span class="blind">원가</span>
+                                                        <span class="price">19,000원</span>    
+                                                    </div>
+                                                    <div class="discount-rate">
+                                                        <span class="blind">할인율</span>
+                                                        <span class="price">10%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-badge">
+                                                <div class="badge">
+                                                    <span>으뜸효율</span>
+                                                    <em>10%</em>
+                                                </div>
+                                            </div>
+                                            <div class="product-wish">
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" id="wish-MD07515952" name="wish-MD07515952">
+                                                    <label for="wish-MD07515952"><span class="blind">찜하기</span></label>
+                                                </span>
+                                            </div>
+                                            <div class="product-btn">
+                                                <button type="button" class="btn bd-gray"><span>장바구니에 담기</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slide-conts ui_carousel_slide">
+                                        <div class="item">
+                                            <div class="product-image">
+                                                <img src="/lg5-common/images/dummy/@img-product4.jpg" alt="">
+                                            </div>
+                                            <div class="product-info">
+                                                <div class="product-tag">
+                                                    <span class="tag">NEW</span>
+                                                    <span class="tag">BEST</span>
+                                                </div>
+                                                <div class="product-name">
+                                                    <a href="#" class="name">소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄</a>
+                                                </div>
+                                                <div class="product-price">
+                                                    <div class="discount-price">
+                                                        <span class="blind">할인가격</span>
+                                                        <span class="price">17,000원</span>
+                                                    </div>
+                                                    <div class="purchase-price">
+                                                        <span class="blind">원가</span>
+                                                        <span class="price">19,000원</span>    
+                                                    </div>
+                                                    <div class="discount-rate">
+                                                        <span class="blind">할인율</span>
+                                                        <span class="price">10%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-badge">
+                                                <div class="badge">
+                                                    <span>으뜸효율</span>
+                                                    <em>10%</em>
+                                                </div>
+                                            </div>
+                                            <div class="product-wish">
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" id="wish-MD07515952" name="wish-MD07515952">
+                                                    <label for="wish-MD07515952"><span class="blind">찜하기</span></label>
+                                                </span>
+                                            </div>
+                                            <div class="product-btn">
+                                                <button type="button" class="btn bd-gray"><span>장바구니에 담기</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slide-conts ui_carousel_slide">
+                                        <div class="item">
+                                            <div class="product-image">
+                                                <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="">
+                                            </div>
+                                            <div class="product-info">
+                                                <div class="product-tag">
+                                                    <span class="tag">NEW</span>
+                                                    <span class="tag">BEST</span>
+                                                </div>
+                                                <div class="product-name">
+                                                    <a href="#" class="name">소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄</a>
+                                                </div>
+                                                <div class="product-price">
+                                                    <div class="discount-price">
+                                                        <span class="blind">할인가격</span>
+                                                        <span class="price">17,000원</span>
+                                                    </div>
+                                                    <div class="purchase-price">
+                                                        <span class="blind">원가</span>
+                                                        <span class="price">19,000원</span>    
+                                                    </div>
+                                                    <div class="discount-rate">
+                                                        <span class="blind">할인율</span>
+                                                        <span class="price">10%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-badge">
+                                                <div class="badge">
+                                                    <span>으뜸효율</span>
+                                                    <em>10%</em>
+                                                </div>
+                                            </div>
+                                            <div class="product-wish">
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" id="wish-MD07515952" name="wish-MD07515952">
+                                                    <label for="wish-MD07515952"><span class="blind">찜하기</span></label>
+                                                </span>
+                                            </div>
+                                            <div class="product-btn">
+                                                <button type="button" class="btn bd-gray"><span>장바구니에 담기</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-controls">
+                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-menu-wrap">
+                    <div class="inner">
+                        <h3 class="title">원하시는 결과를 찾지 못하셨다면 고객 서비스를 통해 해결해보세요.</h3>
+                        <ul class="service-list">
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="/lg5-common/images/icons/icon-cs-call.png" alt=""> 
+                                    </div>
+                                    <strong class="tit">전화 예약 상담</strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="/lg5-common/images/icons/icon-cs-chat.png" alt=""> 
+                                    </div>
+                                    <strong class="tit">채팅상담</strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="/lg5-common/images/icons/icon-cs-email.png" alt=""> 
+                                    </div>
+                                    <strong class="tit">이메일 문의</strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="/lg5-common/images/icons/icon-cs-manual.png" alt=""> 
+                                    </div>
+                                    <strong class="tit">제품 메뉴얼</strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="/lg5-common/images/icons/icon-cs-download.png" alt=""> 
+                                    </div>
+                                    <strong class="tit">다운로드 자료실</strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="/lg5-common/images/icons/icon-cs-servicecenter.png" alt=""> 
+                                    </div>
+                                    <strong class="tit">서비스센터 찾기</strong>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
         </div>
              
         @@include('./common/footer.html')

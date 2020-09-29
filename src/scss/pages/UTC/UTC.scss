@@ -1,0 +1,239 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+.cart {
+
+    .cont-wrap {
+        padding: 64px 0 120px;
+    }
+    .product-cart-wrap {
+        max-width: (1066px + 60px);
+        margin: 0 auto;
+        padding: 0 30px;
+        .wrap-box {
+            padding: 56px;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+    }
+    //장바구니
+    //@import "OBSF9001";
+    .cart-option {
+        @include clearfix;
+        margin-bottom: 16px;
+        .chk-wrap {
+            float: left;
+            padding-top: 6px;
+        }
+        .btn-area {
+            float: right;
+        }
+    }
+    .cart-item {
+        position: relative;
+        margin-top: 12px;
+        padding: 32px 32px 0;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        .product-check {
+            position: absolute;
+            top: 32px;
+            left: 32px;
+        }
+        .product-info {
+            @include clearfix;
+            position: relative;
+            padding: 0 80px 0 32px;
+            .item-image {
+                float: left;
+            }
+        }
+        .item-image {
+            margin-right: 24px;
+            background-color: #f4f4f4;
+            img {
+                width: 120px;
+                height: 120px;
+                border-radius: 8px;
+            }
+        }
+        .item-name {
+            margin-bottom: 4px;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 24px;
+            color: #222;
+            @include textClipClamp(2);
+        }
+        .item-options {
+            margin-bottom: 16px;
+            font-size: 0;
+            .sku,
+            .sibling-option {
+                display: inline-block;
+                font-size: 14px;
+                line-height: 20px;
+                color: #616161;
+            }
+            .sibling-option {
+                &:before {
+                    display: inline-block;
+                    width: 1px;
+                    height: 12px;
+                    margin: 0 8px;
+                    background-color: #616161;
+                    vertical-align: -1px;
+                    content: '';
+                }
+            }
+        }
+        .quantity-wrap {
+            position: absolute;
+            bottom: 0;
+            left: 176px;
+        }
+        .delivery-option {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            a {
+                display: inline-block;
+                margin-left: 12px;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                color: #ec455a;
+            }
+        }
+        .select-coupon {
+            margin-top: 36px;
+            .select-wrap {
+                max-width: 100%;
+            }
+        }
+        .product-payment {
+            margin: 16px -32px 0;
+            padding: 23px 32px;
+            border-radius: 0 0 8px 8px;
+            background-color: #f4f4f4;
+            .inner {
+                display: table;
+                width: 100%;
+            }
+            .calc-amount,
+            .amount,
+            .btn-purchase {
+                display: table-cell;
+                vertical-align: middle;
+            }
+            .calc-amount {
+                font-size: 14px;
+                line-height: 20px;
+                color: #222;
+                em {
+                    color: #ec455a;
+                }
+            }
+            .amount {
+                padding-right: 24px;
+                text-align: right;
+                .purchase-price {
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #616161;
+                }
+                .reduced-price {
+                    display: block;
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 26px;
+                    color: #222;
+                }
+            }
+            .btn-purchase {
+                width: 84px;
+            }
+        }
+        .product-wish {
+            position: absolute;
+            top: 32px;
+            right: 64px;
+        }
+        .item-delete {
+            position: absolute;
+            top: 32px;
+            right: 32px;
+            .btn-delete {
+                position: relative;
+                width: 24px;
+                height: 24px;
+                &:before,
+                &:after {
+                    position: absolute;
+                    @include calc(top,50%,10px);
+                    left: 50%;
+                    width: 1px;
+                    height: 20px;
+                    background-color: #222;
+                    content: '';
+                }
+                &:before {
+                    transform: rotate(-45deg);
+                }
+                &:after {
+                    transform: rotate(45deg);
+                }
+            }
+        }
+    }
+
+    .card-benefit {
+        margin-top: 16px;
+        text-align: right;
+        a {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            color: #222;
+        }
+    }
+
+    .delivery-address {
+        width: 280px;
+        height: 180px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.26);
+        border: 1px solid #ddd;
+        background-color: #fff;
+    }
+
+    .payment-amount-info {
+        width: 280px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.26);
+        border: 1px solid #ddd;
+        background-color: #fff;
+    }
+
+    .bullet-list {
+        color: #808080;
+    }
+
+    // 이 제품 어때요?
+    .product-recommend-wrap {
+        margin-top: 120px;
+        padding: 63px 30px 0;
+        border-top: 1px solid #ddd;
+        .title {
+            margin-bottom: 32px;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 30px;
+            text-align: center;
+            color: #222;
+        }
+    }
+}

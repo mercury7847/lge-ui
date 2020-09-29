@@ -306,13 +306,6 @@
         //         }
         //     }
         // }
-
-        // calendar (디자인 나온 후 적용 예정)
-        .ui-calendar-container {
-            border-radius:10px;
-            box-shadow:0 4px 12px 0 rgba(0, 0, 0, .5);
-            outline:none;
-        }
     }
 }
 
@@ -444,6 +437,67 @@
             //         }
             //     }
             // }
+        }
+    }
+}
+
+// 수량선택
+.quantity-wrap {
+    .select-quantity {
+        .inner {
+            display: inline-block;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0;
+        }
+        .minus,
+        .plus {
+            position: relative;
+            width: 32px;
+            height: 32px;
+            background-color: #fff;
+            &:before,
+            &:after {
+                position: absolute;
+                top: 50%;
+                @include calc(left,50%,5px);
+                width: 10px;
+                height: 1px;
+                content: '';
+            }
+            &.minus {
+                border-radius: 6px 0 0 6px;
+                &:before {
+                    background-color: #aaa;
+                }
+                &:after {
+                    display: none;
+                }
+            }
+            &.plus {
+                border-radius: 0 6px 6px 0;
+                &:before,
+                &:after {
+                    background-color: #111;
+                }
+                &:after {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+        .quantity {
+            width: 40px;
+            height: 32px;
+            border-right: 1px solid #ddd;
+            border-left: 1px solid #ddd;
+            background-color: #fff;
+            font-size: 13px;
+            text-align: center;
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
         }
     }
 }
@@ -624,6 +678,49 @@ $input: (chk, rdo);
             &::before {
                 background:#aaa;
                 border-color:transparent;
+            }
+        }
+    }
+}
+
+.chk-wish-wrap {
+    position: relative;
+    display: inline-block;
+    input {
+        position: absolute;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        border: none;
+        clip: rect(0, 0, 0, 0);
+        & + label {
+            position: relative;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            vertical-align: top;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            &:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 24px;
+                height: 24px;
+                border: 0;
+                border-radius: 0;
+                background: url("/lg5-common/images/icons/icon-heart-off.svg") no-repeat 0 0;
+                background-size: 24px 24px;
+                content: '';
+            }
+        }
+        &:checked + label {
+            &:before {
+                background-image: url("/lg5-common/images/icons/icon-heart-on.svg");
             }
         }
     }
@@ -974,6 +1071,31 @@ $input: (chk, rdo);
                     }
                 }
             }
+        }
+    }
+    .ui-calendar-close {
+        position:absolute;
+        top:16px;
+        right:16px;
+        width:32px;
+        height:32px;
+        &::before, &::after {
+            content:' '; 
+            position:absolute;
+            top:50%;
+            left:50%;
+            width:2px;
+            height:22px;
+            margin-top:-11px;
+            margin-left:-1px;
+            border-radius:2px;
+            background:#222;
+        }
+        &::before {
+            transform:rotate(45deg);
+        }
+        &::after {
+            transform:rotate(-45deg);
         }
     }
 }

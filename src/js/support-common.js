@@ -4,6 +4,137 @@ CS.UI = CS.UI || {};
 
 CS.UI.elem = {};
 
+
+/*
+* validation cehck
+*/
+CS.MD.validation = function() {
+    function Plugin(el, opt) {
+        var self = this;
+        self.$el = $(el),
+        self.el = el,
+        self.errorList = [];
+        self.elements;
+
+        var defaults = {
+            valid: function() {},
+            inValid: function() {}
+        };
+
+        self.options = $.extend({}, defaults, opt);
+    
+        self.elements = self.$el.find('[name]');
+    }
+
+    $.extend(Plugin, {
+        rules: {
+            required: function() {
+
+            },
+            email: function() {
+
+            },
+            date: function() {
+
+            },
+            tel: function() {
+
+            },
+            file: function() {
+
+            },
+            number: function() {
+
+            },
+            alphabet: function() {
+
+            },
+            minLength: function() {
+
+            },
+            maxLength: function() {
+
+            },
+        }
+    })
+
+    Plugin.prototype = {
+        start: function() {
+            var self = this,
+                options = self.options;
+
+            self.errorList = [];
+
+            self.elements.each(function(index, item) {
+                var $element = $(item);
+
+                self._validationCheck(item);
+            });
+
+            if (self.errorList.length) {
+                $.each(self.errorList, function(index, item) {
+                    self._accessibility(item);
+                    self._invalid(item);
+                });
+
+                self._focus(self.errorList[0]);
+
+                return false;
+            }
+
+            return true;
+        },
+        _getRules: function(el) {
+            var self = this;
+
+
+        },
+        _invalid: function(el) {
+            var self = this;
+
+            
+        },
+        _accessibility: function(el) {
+            var self = this;
+
+
+        },
+        _focus: function(el) {
+            var self = this,
+                $el = $(el);
+
+            if (el.type.indexOf('select') && $el.data('ui_selectbox')) {
+                $el.vcSelectbox('open');
+            } else {
+                $el.focus();
+            }
+        },
+        _validationCheck: function(el) {
+            var self = this,
+                rules = self._getRules(el),
+                rule;
+
+            for (var item in rules) {
+                if (rule = Plugin.rules[item]) {
+                    if (!rule(el)) {
+                        self.errorList.push({
+                            rule: item,
+                            el: el
+                        });
+                    } 
+                }
+            }
+        }
+    }
+
+    $.fn.validation = function(options){
+        return this.each(function() {
+            new Plugin(this, options);
+        });
+    };
+}
+
+
 /*
 * 셀렉트박스 타겟
 * @option data-url
@@ -209,6 +340,8 @@ CS.MD.setPagination = function() {
 };
 
 
+
+
 (function($){
     CS.UI.elem.$doc = $(document);
     CS.UI.elem.$win = $(window);
@@ -252,36 +385,12 @@ CS.MD.setPagination = function() {
 
         setEventListener();
     }
-    function selectEngineer() {
-        if (!$('.engineer-carousel').length) return false;
 
+
+    function commonSlides() {
         vcui.require(['ui/carousel'], function () {
-            $('.engineer-carousel').vcCarousel({
-                swipeToSlide: true,
-                slidesToShow: 4,
-                arrows:false,
-                customPaging: function(carousel, i) {
-                    var $button = $('<button type="button" class="btn-indi"><span class="blind">'+(i+1)+'번 내용 보기'+'</span></button>');
-                    return $button;
-                },
-                responsive: [{
-                    breakpoint:768,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                    }
-                }]
-            });
-        });
-    }
-
-    function test() {
-        if (!$('.related-info-wrap').length) return false;
-
-        vcui.require(['ui/carousel'], function () {
-            $('.ui_carousel_slider').vcCarousel({
+            $('.related-info').length && $('.related-info').vcCarousel({
                 infinite: false,
-                swipeToSlide: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
                 responsive: [
@@ -295,14 +404,40 @@ CS.MD.setPagination = function() {
                     }
                 ]
             });
-        })
+
+            $('.engineer-carousel').length && $('.engineer-carousel').vcCarousel({
+                swipeToSlide: true,
+                slidesToShow: 4,
+                arrows:false,
+                customPaging: function(carousel, i) {
+                    var $button = $('<button type="button" class="btn-indi"><span class="blind">'+(i+1)+'번 내용 보기'+'</span></button>');
+                    return $button;
+                },
+                responsive: [{
+                    breakpoint:767,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                }]
+            });
+
+            $('.supplies-list-wrap .slide-wrap').length && $('.supplies-list-wrap .slide-wrap').vcCarousel({
+                slidesToShow: 3,
+                responsive: [{
+                    breakpoint:767,
+                    settings: {
+                        slidesToShow: 1,
+                    }
+                }]
+            });
+        });
     }
 
     function commonInit(){
         setTableScrollbar();
         checkPrivacy();
-        selectEngineer();
-        test();
+        commonSlides();
     }
 
     // CS.UI.elem.$win.ready( commonInit );

@@ -11,13 +11,16 @@
         </div>
         <div class="info-wrap">
             <div class="tit-wrap">
-                <p class="name">`+list[i].name+`</p>
-                <span class="flag">NEW</span>
-                <span class="flag">이벤트</span>
+                <p class="name"><span class="blind">매장명</span>`+list[i].name+`</p>
+                <div class="flag-wrap">
+                    <span class="flag">NEW</span>
+                    <span class="flag">이벤트</span>
+                    <span class="flag">서비스센터</span>
+                </div>
             </div>
-            <p class="addr">`+list[i].address+`</p>
+            <p class="addr"><span class="blind">주소</span>`+list[i].address+`</p>
             <div class="etc-info">
-                <span class="tel">`+list[i].tel+`</span>
+                <span class="tel"><span class="blind">전화번호</span>`+list[i].tel+`</span>
                 <a href="#n" title="새창 열림" class="btn-detail">상세보기<span class="blind">(새창 열림)</span></a><!-- 1066x720 으로 띄워주세요.ㅋ -->
             </div>
         </div>

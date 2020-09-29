@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('../include/head_wsg.html', {
+        "title": "Table 가이드"
+    })
+<body>
+<div id="wrap" class="coding_guide">
+    
+<h1 class="h1_guide">Table 정의</h1>
+
+<!-- 주의사항 -->
+<dl class="notice">
+    <dt><strong class="t_modify">주의사항</strong></dt>
+    <dd>
+        <ol>
+            <li></li>
+        </ol>
+    </dd>
+</dl>
+<!-- //주의사항 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">1. 가로형 테이블</h2>
+<div class="guide_wrap">
+    <div class="tb_row">
+        <table>
+            <caption>무상할인 제공 및 의무사용하는 기간 동안의 연차별 납부 금액 안내</caption>
+            <colgroup>
+                <col style="width:25%">
+                <col style="width:25%">
+                <col style="width:25%">
+                <col style="">
+            </colgroup>
+            <thead>
+            <tr>
+                <th scope="col">납부회수</th>
+                <th scope="col">납부금액</th>
+                <th scope="col">등록일</th>
+                <th scope="col">비고</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1~5회</td>
+                <td>36,000원</td>
+                <td class="lower">2020.02.27</td>
+                <td></td>
+            </tr>
+            <tr class="point">
+                <td>6회</td>
+                <td>0원</td>
+                <td>2020.02.27</td>
+                <td>무상할인제공</td>
+            </tr>
+            <tr>
+                <td>7~ 11회</td>
+                <td>36,900원</td>
+                <td class="lower">2020.02.27</td>
+                <td></td>
+            </tr>
+            <tr class="point">
+                <td>12 회</td>
+                <td>0원</td>
+                <td>2020.02.27</td>
+                <td>무상할인제공</td>
+            </tr>
+            <tr>
+                <td>13~ 36회</td>
+                <td>36,900원</td>
+                <td class="lower">2020.02.27</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>37~ 60회</td>
+                <td>13,900원</td>
+                <td class="lower">2020.02.27</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>37~ 60회</td>
+                <td>13,900원</td>
+                <td class="lower">2020.02.27</td>
+                <td><button class="btn bd-pink btn-small"><span>ZIP</span></button></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="btm_info">최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, 제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다. </div>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="tb_row">
+    <table>
+        <caption>무상할인 제공 및 의무사용하는 기간 동안의 연차별 납부 금액 안내</caption>
+        <colgroup>
+            <col style="width:25%">
+            <col style="width:25%">
+            <col style="width:25%">
+            <col style="">
+        </colgroup>
+        <thead>
+        <tr>
+            <th scope="col">납부회수</th>
+            <th scope="col">납부금액</th>
+            <th scope="col">등록일</th>
+            <th scope="col">비고</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1~5회</td>
+            <td>36,000원</td>
+            <td class="lower">2020.02.27</td>
+            <td></td>
+        </tr>
+        <tr class="point">
+            <td>6회</td>
+            <td>0원</td>
+            <td>2020.02.27</td>
+            <td>무상할인제공</td>
+        </tr>
+        <tr>
+            <td>7~ 11회</td>
+            <td>36,900원</td>
+            <td class="lower">2020.02.27</td>
+            <td></td>
+        </tr>
+        <tr class="point">
+            <td>12 회</td>
+            <td>0원</td>
+            <td>2020.02.27</td>
+            <td>무상할인제공</td>
+        </tr>
+        <tr>
+            <td>13~ 36회</td>
+            <td>36,900원</td>
+            <td class="lower">2020.02.27</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>37~ 60회</td>
+            <td>13,900원</td>
+            <td class="lower">2020.02.27</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>37~ 60회</td>
+            <td>13,900원</td>
+            <td class="lower">2020.02.27</td>
+            <td><button class="btn bd-pink btn-small"><span>ZIP</span></button></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="btm_info">최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, 제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다.</div>
+</div>
+<!-- // DOM -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+</div>     
+@@include('../include/loadscript_wsg.html')
+</body>
+</html> 

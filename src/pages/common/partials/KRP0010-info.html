@@ -4,7 +4,7 @@
     <div class="product-detail-info" data-url-detail="/lg5-common/data-ajax/pdp/product_detail.json">
         <div class="info-top">
             <div class="product-wish">
-                <span class="chk-wrap">
+                <span class="chk-wish-wrap">
                     <input type="checkbox" id="wish-chk" name="wish-chk" checked>
                     <label for="wish-chk"><span class="blind">찜하기</span></label>
                 </span>
@@ -428,21 +428,23 @@
             <span class="price">9,000원</span>
         </div>
         <!-- 일반제품 버튼 영역 -->
-        <div class="purchase-button">
+        <div class="purchase-button default">
             <div class="btn-group">
                 <a href="#n" class="btn cart" role="button"><span class="blind">장바구니 담기</span></a>
                 <a href="#n" class="btn pink" role="button"><span>바로구매</span></a>
             </div>
+            <div id="purchase-button-default-modal" style="display:none;"></div>
         </div>
         <!-- 일반제품 - 사전예약 버튼 영역 -->
         <div class="purchase-button pre-order">
             <a href="#n" class="btn black" role="button"><span>사전예약하기</span></a>
+            <div id="purchase-button-preorder-modal" style="display:none;"></div>
         </div>
         <!-- 일반제품 - 전시제품(구매불가) 버튼 영역 -->
         <div class="purchase-button display-product">
             <div class="btn-group">
-                <a href="#n" class="btn bd-black" role="button"><span>전시매장 찾기</span></a>
-                <a href="#n" class="btn bd-black" role="button"><span>매장방문예약</span></a>
+                <a href="#n" id="display-exhibition" class="btn bd-black" role="button"><span>전시매장 찾기</span></a>
+                <a href="#n" id="display-visit" class="btn bd-black" role="button"><span>매장방문예약</span></a>
             </div>
         </div>
         <!-- 일반제품 + 렌탈 버튼 영역 -->
@@ -451,6 +453,7 @@
                 <a href="#n" class="btn cart" role="button"><span class="blind">장바구니 담기</span></a>
                 <a href="#n" class="btn pink" role="button"><span>렌탈신청</span></a>
             </div>
+            <div id="purchase-button-rental-modal" style="display:none;"></div>
         </div>
         <!-- 렌탈 전용 제품 정보 영역 -->
         <div class="rental-only-info">
@@ -463,3 +466,18 @@
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<!-- 추가혜택 안내
+include('./common/partials/modal/KRP0010-benefit-info.html')
+-->
+<!-- 케어십 제품 구매 안내
+include('./common/partials/modal/KRP0010-careship-info.html')
+-->
+<!-- 사전 예약 제품 안내
+include('./common/partials/modal/KRP0010-pre-order-info.html')
+-->
+<!-- 매월 납부금 할인 내역 안내
+include('./common/partials/modal/KRP0010-monthly-payment-info.html')
+-->

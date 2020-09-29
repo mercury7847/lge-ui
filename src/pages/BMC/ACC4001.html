@@ -23,23 +23,29 @@
                 <div class="visual-wrap">
                     @@include('./common/modules/carousel.html', {
                         "mainSlideType" : true,
+                        "indiArr" : [
+                            "1번", "2번", "3번"
+                        ],
                         "slideArr" : [
                             {
                                 "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
                                 "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
-                                "tit" : "LG전자 멤버십 앱<strong>신규 설치 고객<br>경품 추천 이벤트1</strong>",
+                                "tit" : "<small>나의 첫번째 5G 폰0</small>LG Q92 5G 구매혜택",
+                                "date" : "2020.08.01~2020.09.31",
                                 "titNum" : "tit01"
                             },
                             {
                                 "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
                                 "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
-                                "tit" : "LG전자 멤버십 앱<strong>신규 설치 고객<br>경품 추천 이벤트2</strong>",
+                                "tit" : "<small>나의 첫번째 5G 폰0</small>LG Q92 5G 구매혜택2",
+                                "date" : "2020.08.01~2020.09.31",
                                 "titNum" : "tit02"
                             },
                             {
                                 "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
                                 "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
-                                "tit" : "LG전자 멤버십 앱<strong>신규 설치 고객<br>경품 추천 이벤트3</strong>",
+                                "tit" : "<small>나의 첫번째 5G 폰0</small>LG Q92 5G 구매혜택3",
+                                "date" : "2020.08.01~2020.09.31",
                                 "titNum" : "tit03"
                             }
                         ]
@@ -132,19 +138,6 @@
         </div>
         
         @@include('./common/footer.html')
-
-        <script>
-            $(function(){
-                vcui.require(['ui/carousel'], function () {
-                    $('.ui_carousel_slider').vcCarousel({
-                        infinite: true,
-                        swipeToSlide: true,
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    });
-                });
-            });
-        </script>
     </div>     
 </body>
 </html>

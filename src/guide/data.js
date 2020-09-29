@@ -16,12 +16,14 @@ var res = {
 			"Pagination" : ["./wsg/guide_pagination.html","","검수완료"],
 			"블릿리스트" : ["./wsg/guide_bulletlist.html","","검수완료"],
 			"List" : ["./wsg/guide_list.html","","검수완료"],
+			"Table" : ["./wsg/guide_table.html","","검수완료"],
 			"Tooltip" : ["./wsg/guide_tooltip.html","","검수완료"],
 			"Alert popup" : ["./wsg/guide_alert.html","","검수완료"],
 			"Modal popup" : ["./wsg/guide_popup.html","","검수완료"],
 			"Carousel" : ["./wsg/guide_carousel.html","","검수완료"],
 			"Accordion" : ["./wsg/guide_accordion.html","","검수완료"],
-			"Rangeslider" : ["./wsg/guide_rangeslider.html","","검수완료"]
+			"Rangeslider" : ["./wsg/guide_rangeslider.html","","검수완료"],
+			"Flag" : ["./wsg/guide_flag.html","","검수완료"]
 		}
 	},
 	"Front" : {
@@ -54,28 +56,35 @@ var res = {
 			"KRC0031_Block Image (2 to 3 - CTA)" : ["/html/components/KRC0031.html","","검수완료"],
 			"KRC0032_Section Title" : ["/html/components/KRC0032.html","","검수완료"],
 			"KRC0035_Promotion/Campaign - Hero_Static" : ["/html/components/KRC0035.html","","검수완료"],
-			"KRC0036_Block Image (2 to 4)_Static" : ["/html/components/KRC0036.html","","진행중"],
+			"KRC0036_Block Image (2 to 4)_Static" : ["/html/components/KRC0036.html","","검수완료"],
 			"KRC0037_Carousel BG Image " : ["/html/components/KRC0037.html","","검수완료"],
 			"KRC0038_Text" : ["/html/components/KRC0038.html","","검수완료"],
-			"KRC0039_Side Text - CTA_Static" : ["/html/components/KRC0039.html","","진행중"],
-			"KRC0040_Image (1 to 3 - CTA Overlay)_Static" : ["/html/components/KRC0040.html","","진행중"],
-			"KRC0043_Gallery - 10Pickers_Static" : ["/html/components/KRC0043.html","","진행중"],
+			"KRC0039_Side Text - CTA_Static" : ["/html/components/KRC0039.html","","검수완료"],
+			"KRC0040_Image (1 to 3 - CTA Overlay)_Static" : ["/html/components/KRC0040.html","","검수완료"],
+			"KRC0043_Gallery - 10Pickers_Static" : ["/html/components/KRC0043.html","","검수완료"],
 			"KRC0044_Hero Image (Thin)" : ["/html/components/KRC0044.html","","검수완료"],
 			"KRC0045_Article List" : ["/html/components/KRC0045.html","","검수완료"],
 			"KRC0046_Story & Products module_Dynamic" : ["/html/components/KRC0046.html","","진행중"],
 			"KRP0001_GNB - B2C" : ["/html/components/KRP0001.html","","검수완료"],
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
-			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","진행중"],
-			"KRP0005_Sticky chat_Static" : ["/html/components/floating.html","","진행중"],
+			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","검수완료"],
+			"KRP0005_Sticky chat_Static" : ["/html/components/floating.html","","검수완료"],
 			"KRP0009_Product List Products List : No Filter" : ["/html/components/KRP0009.html","","진행중"],
 			"KRP0010_Product Summary (no-img)" : ["/html/components/KRP0010.html","","진행중"],
 			"KRP0013_PDP Bundle" : ["/html/components/KRP0013.html","","검수완료"],
 			"KRP0016_PDP Support - B2C" : ["/html/components/KRP0016.html","","검수완료"],
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"],
-			"KRP0020_Sitemap_Dynamic" : ["/html/components/KRP0020.html","","진행중"]
+			"KRP0018_Sticky Compare" : ["/html/components/KRP0018.html","",""],
+			"KRP0020_Sitemap_Dynamic" : ["/html/components/KRP0020.html","","검수완료"],
+			"KRP0021_Category module for store home" : ["/html/components/KRP0021.html","","진행중"]
 		},
 		"Page" : {
 			"이벤트/멤버십(BMC)" : {
+				"이벤트" : {
+					"이벤트 리스트" : ["/html/BMC/MKT4001.html","","진행중"],
+					"이벤트 상세(기본)" : ["/html/BMC/MKT4002.html","","진행중"],
+					"이벤트 상세(종료)" : ["/html/BMC/MKT4003.html","","진행중"],
+				},
 				"멤버십" : {
 					"멤버십 메인" : ["/html/BMC/ACC4001.html","","검수요청"],
 					"멤버십 혜택" : ["/html/BMC/ACC4004.html","","검수요청"],
@@ -105,6 +114,12 @@ var res = {
 				"서비스 안내" : {
 					"FAQ" : ["/html/CS/CSRF6043.html","","진행중"]
 				}
+			},
+			"장바구니(UTC)" : {
+				"장바구니(일반상품)" : ["/html/UTC/OBSF9001.html","","진행중"],
+				"장바구니(일반상품) 추천 소모품 DISPLAY" : ["/html/UTC/OBSF9002.html","","진행중"],
+				"장바구니(케어솔루션)" : ["/html/UTC/OBSF9003.html","","진행중"],
+				"장바구니(비회원)" : ["/html/UTC/OBSF9004.html","","진행중"]
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
 			// "페이지2" : ["./html/gr/M.GR-6L.html","","검수요청"],

@@ -53,32 +53,79 @@
                 }
             }
 
-            .btn-fold {
+            .btn-list-fold {
                 position:absolute;
-                right:-40px;
+                right:-85px;
                 top:50%;
-                width:40px;
-                height:60px;
-                margin-top:-30px;
+                width:86px;
+                height:152px;
+                -webkit-transform:translateY(-50%);
+                transform:translateY(-50%);
                 background:#fff;
                 border-radius:0 8px 8px 0;
-                // box-shadow:0 2px 20px 0 rgba(0,0,0,.2);
-                &:after {
-                    content:'';
-                    position:absolute;
-                    right:15px;
+                background:url('/lg5-common/images/CS/bg-btn-shadow.svg') no-repeat;
+                background-size:86px 152px;
+                z-index:1;
+
+                .btn-fold {
+                    position:relative;
                     top:50%;
-                    width:10px;
-                    height:10px;
-                    margin-top:-5px;
-                    border:2px solid #111;
-                    border-top:none;
-                    border-right:none;
-                    -webkit-transform:rotate(45deg);
-                    transform:rotate(45deg);
+                    width:40px;
+                    height:60px;
+                    -webkit-transform:translateY(-50%);
+                    transform:translateY(-50%);
+                    &:after {
+                        content:'';
+                        position:absolute;
+                        right:15px;
+                        top:50%;
+                        width:10px;
+                        height:10px;
+                        margin-top:-5px;
+                        border:2px solid #111;
+                        border-top:none;
+                        border-right:none;
+                        -webkit-transform:rotate(45deg);
+                        transform:rotate(45deg);
+                    }
+                    @include csmobile {
+                        display:none;
+                    }
                 }
+            }
+
+            .view-info-btn {
+                display:none;
                 @include csmobile {
-                    display:none;
+                    display:block;
+                    position:absolute;
+                    bottom:90px;
+                    right:0;
+                    span {
+                        display:inline-block;
+                        color:#EC455A;
+                        font-size:14px;
+                        line-height:24px;
+                        font-weight:500;
+                        &:before {
+                            content:'';
+                            display:inline-block;
+                            width:24px;
+                            height:24px;
+                            vertical-align:top;
+                        }
+                    }
+                    button {
+                        &.map span:before {
+                            background:url('/lg5-common/images/CS/btn-viewmap.svg') no-repeat;
+                            background-size:24px 24px;
+                        }
+                        &.list span:before {
+                            background:url('/lg5-common/images/CS/btn-viewmap.svg') no-repeat;
+                            background-size:24px 24px;
+                        }
+                    }
+                    
                 }
             }
 
@@ -126,7 +173,7 @@
                                 margin-left:0;
                             }
                         }
-                       
+                    
                     }
                     .input-sch {
                         position:relative;
@@ -154,7 +201,7 @@
                             &::after {
                                 content:'';
                                 display:block;
-                                margin-left:12px;
+                                margin-left:16px;
                                 width:24px;
                                 height:24px;
                                 background:url('/lg5-common/images/icons/icon-search.svg') no-repeat;  
@@ -186,58 +233,25 @@
                         }
                     }
                 }
-
-                .view-info-btn {
-                    display:none;
-                    @include csmobile {
-                        display:block;
-                        position:absolute;
-                        bottom:90px;
-                        right:0;
-                        span {
-                            display:inline-block;
-                            color:#EC455A;
-                            font-size:14px;
-                            line-height:24px;
-                            font-weight:500;
-                            &:before {
-                                content:'';
-                                display:inline-block;
-                                width:24px;
-                                height:24px;
-                                vertical-align:top;
-                            }
-                        }
-                        button {
-                            &.map span:before {
-                                background:url('/lg5-common/images/CS/btn-viewmap.svg') no-repeat;
-                                background-size:24px 24px;
-                            }
-                            &.list span:before {
-                                background:url('/lg5-common/images/CS/btn-viewmap.svg') no-repeat;
-                                background-size:24px 24px;
-                            }
-                        }
-                        
-                    }
-                }
             }
 
             .sch-list {
                 ul {
-                    padding-bottom:180px;
+                    position: relative;
+                    padding-bottom:32px;
                 }
                 li {
                     position:relative;
-                    margin:40px 40px 0 0;
-                    &:first-child {
-                        margin-top:0;
+                    padding:0 40px 40px 0;
+                    &:last-child {
+                        padding-bottom:0;
                     }
                     @include csmobile {
-                        margin:40px 20px 0 0;
+                        padding:0 20px 40px 0;
                     }
                     .store-info-list {
                         display:table;
+                        width:100%;
                         table-layout:fixed;
                         cursor:pointer;
                         .point-wrap {
@@ -261,26 +275,36 @@
                                     display:inline-block;
                                     margin-right:8px;
                                     font-size:16px;
-                                    line-height:24px;
+                                    line-height:32px;
                                     font-weight:700;
                                     vertical-align:middle;
-                                    & +.flag {
-                                        margin-left:0;
+                                    @include mobile {
+                                        margin-right:6px;
+                                        line-height:29px;
                                     }
                                 }
-                                .flag {
+                                .flag-wrap {
                                     display:inline-block;
-                                    margin-left:4px;
-                                    padding:0 8px;
-                                    color:#EC455A;
-                                    font-size:12px;
-                                    line-height:20px;
-                                    background:#E9E9EA;
-                                    font-weight:500;
-                                    border-radius:4px;
                                     vertical-align:middle;
-                                    @include csmobile {
-                                        line-height:18px;
+                                    .flag {
+                                        display:inline-block;
+                                        margin-right:4px;
+                                        padding:0 8px;
+                                        color:#616161;
+                                        font-size:12px;
+                                        line-height:22px;
+                                        background:#fff;
+                                        font-weight:500;
+                                        border:1px solid #616161;
+                                        border-radius:4px;
+                                        vertical-align:middle;
+                                        @include csmobile {
+                                            font-size:9px;
+                                            line-height:15px;
+                                        }
+                                        &:last-child {
+                                            margin-right:0;
+                                        }
                                     }
                                 }
                             }
@@ -341,28 +365,29 @@
                 top:0;
                 left:0;
                 right:0;
-                bottom:0;
                 background:#fff;
                 z-index:1;
                 @include csmobile {
                     position:fixed;
                     top:126px;
                 }
+                @include mobile {
+                    top:48px;
+                }
 
-                .btn-wrap {
+                .result-btn-wrap {
                     margin:0;
+                    padding:12px 40px 20px;
                     background:#fff;
+                    border-bottom:1px solid #ddd;
                     @include csmobile {
-                        padding:0;
+                        padding:20px 20px;
+                        border:none;
                     }
                     .btn-back {
-                        width:100%;
-                        padding:12px 40px 20px;
-                        border-bottom:1px solid #ddd;
                         text-align:left;
                         @include csmobile {
-                            padding:20px 20px;
-                            border:none;
+                        
                         }
                         span {
                             position:relative;
@@ -372,19 +397,25 @@
                             &:after {
                                 content:'';
                                 position:absolute;
-                                left:9px;
+                                left:3px;
                                 top:50%;
                                 width:10px;
                                 height:10px;
-                                margin-top:-5px;
+                                margin-top:-8px;
                                 border:2px solid #111;
                                 border-top:none;
                                 border-right:none;
-                                -webkit-transform:rotate(45deg);
-                                transform:rotate(45deg);
+                                -webkit-transform:rotate(-45deg);
+                                transform:rotate(-45deg);
                             }
                         }
                     }
+                    .view-info-btn {
+                        top:20px;
+                        right:20px;
+                        bottom:auto;
+                    }
+
                 }
                 .result-list {
                     padding:0 8px 0 40px;
@@ -393,6 +424,7 @@
                         padding:0 0 0 20px;
                     }
                     .scroll-wrap {
+                        position:relative;
                         height:calc(100vh - 371px);
                         overflow-y:scroll;
                         @include csmobile {
@@ -412,19 +444,24 @@
                         }
                     }
                 }
-                &.active {
-                    display:block;
-                }
             }
 
             .list-wrap {
+                position:relative;
+                top:0;
+                left:0;
+                right:0;
                 padding:0 8px 0 40px;
                 overflow:hidden;
+                background: #fff;
+                // -webkit-transition:0.26s cubic-bezier(0.25,0.1,0.25,1); 
+                // transition:0.26s cubic-bezier(0.25,0.1,0.25,1);
 
                 @include csmobile {
                     padding:0 8px 0 20px;
                 }
                 .scroll-wrap {
+                    position:relative;
                     height:calc(100vh - 471px);
                     overflow-y:scroll;
                 }
@@ -496,6 +533,7 @@
                     display:none;
                     overflow:hidden;
                     .scroll-wrap {
+                        position:relative;
                         margin-right:8px;
                         height:calc(100vh - 126px - 105px - 105px);
                         overflow-y:scroll;
@@ -720,8 +758,8 @@
             width:100%;
             z-index:1;
             @include csmobile {
-                display:none;
-                position:static;
+                visibility: hidden;
+                left:-9999px;
                 height:calc(100vh - 126px - 60px - 217px - 76px);
                 overflow:hidden;
             }
@@ -733,7 +771,7 @@
             top:0;
             right:0;
             bottom:0;
-            height:100vh;
+            height:100%;
 
             .point-wrap {
                 display:block;
@@ -746,7 +784,6 @@
                     padding:24px;
                     background:#fff;
                     border-radius:16px;
-                    // overflow:hidden;
                     box-shadow:0 4px 10px 0 rgba(17,17,17,.32);
                     @include csmobile {
                         width:320px;
@@ -863,11 +900,13 @@
                         display:block;
                         position:absolute;
                         left:50%;
-                        bottom:-15Px;
-                        width:39px;
-                        height:26px;
-                        margin-left:-20px;
+                        bottom:-36px;
+                        width:57px;
+                        height:36px;
+                        -webkit-transform:translateX(-50%);
+                        transform:translateX(-50%);
                         background:url('/lg5-common/images/icons/icon-map-bubble.svg') no-repeat;
+                        background-size:57px 36px;
                     }
                 }
             }

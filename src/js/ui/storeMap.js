@@ -41,30 +41,32 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 infoWindow: 
                     '<div class="info-overlaybox">'+
                     '   <div class="inner">'+
-                    '       <p class="name">{{shopName}}</p>'+
-                    '       <p class="adress">서울특별시 강남구 청담동 86-1 LG 청담빌딩 1층</p>'+
+                    '       <p class="name">{{agName}}</p>'+
+                    '       <p class="adress">{{agAddr1}}</p>'+
                     '       <div class="store-info">'+
                     '           <dl>'+
                     '               <dt>전화</dt>'+
-                    '               <dd>02-3448-5191</dd>'+
+                    '               <dd>{{agTel}}</dd>'+
                     '           </dl>'+
+                    '           {{#if agFax != null}}'+
                     '           <dl>'+
                     '               <dt>팩스</dt>'+
-                    '               <dd>02-3448-5190</dd>'+
+                    '               <dd>{{agFax}}</dd>'+
                     '           </dl>'+
+                    '           {{/if}}'+
                     '       </div>'+
                     '       <div class="hour-info">'+
                     '           <dl>'+
                     '               <dt>평&nbsp;&nbsp;일</dt>'+
-                    '               <dd>10:30 ~ 20:30</dd>'+
+                    '               <dd>{{agWeekday}}</dd>'+
                     '           </dl>'+
                     '           <dl>'+
                     '               <dt>토요일</dt>'+
-                    '               <dd>10:30 ~ 20:30</dd>'+
+                    '               <dd>{{agSaturday}}</dd>'+
                     '           </dl>'+
                     '           <dl>'+
                     '               <dt>일요일</dt>'+
-                    '               <dd>11:00 ~ 20:30</dd>'+
+                    '               <dd>{{agSunday}}</dd>'+
                     '           </dl>'+
                     '       </div>'+
                     '       <div class="btn-group">'+
@@ -87,7 +89,6 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self.storeData = [];
             self.eventData = [];
             self.itemArr = [];
-            self.isCustomMarker = self.options.templates.customMarker; // overlay 형태일때
 
             new core.helper.NaverMapApi({
                 mapService: self.options.mapService,
@@ -104,14 +105,11 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 center: new naver.maps.LatLng(self.latitude, self.longitude),
                 level: 3
             };
-            self.map = new naver.maps.Map(self.$el[0], options);                    
-            
-            // 지도 오른쪽에 줌 컨트롤이 표시되도록 지도에 컨트롤을 추가한다.
-            // var zoomControl = new kakao.maps.ZoomControl();
-            // self.map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+            self.map = new naver.maps.Map(self.$el[0], options);            
 
             if(vcui.detect.isMobile){
-                self._getCurrentLocation();
+                //self._getCurrentLocation();
+                self._requestStoreData();
             } else{
                 self._requestStoreData();
             }
@@ -153,12 +151,13 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                         item['info'] = false;
                         return item;
                     });
-                    self._bindEvent();
-
+                    console.log(self.storeData)
                     self._draw(self.storeData);                                    
                     self.triggerHandler('mapinit', [result[0]]);
 
-                    self._changeMarkersState(true); 
+                    self._changeMarkersState(); 
+
+                    self._bindEvent();
                 }else{
                     self.triggerHandler('maperror', [{message:'매장정보가 없습니다.'}]);
                 }
@@ -176,11 +175,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 
             for(var i=0; i<arr.length; i++){
                 var obj = arr[i];
-                if(self.isCustomMarker){
-                    self._addCustomMarker(obj.agGpsX, obj.agGpsY, obj, i);
-                }else{
-                    self._addMarker(obj.agGpsX, obj.agGpsY, obj, i);
-                }
+                self._addCustomMarker(obj.agGpsX, obj.agGpsY, obj, i);
             }
         },   
 
@@ -192,61 +187,47 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             naver.maps.Event.addListener(self.map, 'zoom_changed', function() {                  
                 if(self.searchMode) return;
 
-                self._changeMarkersState(true);             
+                self._changeMarkersState();             
             });
 
             naver.maps.Event.addListener(self.map, 'dragend', function() {
-                self._changeMarkersState(true);
+                self._changeMarkersState();
             });
-            
-            // overlay 클릭시 이벤트 등록
-            // marker 클릭시 이벤트 등록은 _addMarker 쪽에 있음.
-            self.$el.on('click', '.'+self.options.overlayName, function(e){
-                e.preventDefault();
-                var id = $(e.currentTarget).data('id');
-                var arr = vcui.array.filter(self.itemArr, function(item, index){
-                    return item.id == id;
+
+            for(var idx in self.itemArr){
+                var marker = self.itemArr[idx].item;
+                var content = vcui.template(self.options.templates.infoWindow, self.itemArr[idx].info);	
+                self.itemArr[idx].infoWindow = new naver.maps.InfoWindow({
+                    content: [content].join(''),
+                    borderWidth: 0,
+                    backgroundColor: '#ffffff00',
+                    disableAnchor: true,
+                    pixelOffset: {x:0, y:-25}
                 })
-                if(arr.length > 0){
-                    self._itemClickHandler(arr[0]['info']);
-                }
-            });                        
-        },
+                naver.maps.Event.addListener(marker, 'click', function(e){
+                    var id = $(e.overlay.icon.content).data('id');                    
+                    var items = vcui.array.filter(self.itemArr, function(item, idx){
+                        return item.id == id;
+                    });
+                    if(items[0].infoWindow.getMap()) items[0].infoWindow.close();
+                    else items[0].infoWindow.open(self.map, e.overlay);
 
-        search : function search(arr){
-            var self = this;
-            var bounds = new kakao.maps.LatLngBounds();   
-            var item = null;
-            for(var i=0; i<arr.length; i++){
-                item = arr[i];
-                bounds.extend(new kakao.maps.LatLng(item.agGpsX, item.agGpsY));
-            }
-            
-            self.searchMode = true;  // search 시 zoom change를 막기위해 사용
-            if(arr.length > 0) self.map.setBounds(bounds); //bounds, paddingtop, paddingright, paddingbottom, paddingleft
-
-            var nArr = vcui.array.filter(self.itemArr, function(item, idx){
-                return vcui.array.include(arr, function(a){
-                    return a.id == item.id;
+                    self.selectedMarker(items[0].id)
+                    self._itemClickHandler(items[0]);
                 });
-            });
-            
-            nArr = self._getNumberInArea(nArr);
-            self._setItemVisible(false, nArr);
-            self._setItemInfo(nArr);
-            self.triggerHandler('mapsearch', [nArr]);  
-            self.searchMode = false;
+            };                  
         },
 
-        _changeMarkersState: function _changeMarkersState(isTrigger){
+        _changeMarkersState: function _changeMarkersState(showArr){
             var self = this;
 
-            var arr = self._getNumberInArea();
+            var items = showArr ? showArr : self.itemArr;
+            var arr = self._getNumberInArea(items);
 
             self._setItemVisible(true);
             self._setItemInfo(arr);
 
-            if(isTrigger) self.triggerHandler('mapchanged', [arr]);   
+            self.triggerHandler('mapchanged', [arr]);   
         },
 
         _getNumberInArea : function _getNumberInArea(arr){
@@ -258,15 +239,14 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             var mp, distance;
             var bounds = self.map.getBounds();
             var center = self.map.getCenter();
-            var iArr = arr ? arr : self.itemArr;
 
-            for(var i=0; i<iArr.length; i++){
-                mp = iArr[i]['item'].getPosition();
+            for(var i=0; i<arr.length; i++){
+                mp = arr[i]['item'].getPosition();
                 distance = self._getDistance(center._lat, center._lng, mp._lat, mp._lng);
-                iArr[i]['distance'] = distance;
+                arr[i]['distance'] = distance;
 
                 if(bounds.hasPoint(mp)){
-                    nArr.push(iArr[i]);
+                    nArr.push(arr[i]);
                 }
             }
             // 지도 중심에서 가까운 곳순으로 정렬 
@@ -287,6 +267,16 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 }else{
                     item['item'].setVisible(flag);
                 }
+                
+                if(!item.info.selected){
+                    if(item.infoWindow && item.infoWindow.getMap()){
+                        item.infoWindow.close();
+                    }
+                } else{
+                    if(item.infoWindow){
+                        if(!item.infoWindow.getMap()) item.infoWindow.open(self.map, item.item);
+                    }
+                }
             }
         },     
 
@@ -294,11 +284,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             var self = this;
             for(var i=0; i<arr.length; i++){    
                 var items = arr[i];
-                if(self.isCustomMarker){
-                    items.item.setIcon(self._getMarkerIcon(items.info, i))
-                }else{
-                    self._setMarkerImage(items.item, i);
-                }                
+                items.item.setIcon(self._getMarkerIcon(items.info, i));    
             }
         },   
 
@@ -335,34 +321,6 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 size: new naver.maps.Size(34, 48),
                 anchor: new naver.maps.Point(17, 48)
             };
-        },
-
-        _addMarker : function _addMarker(x, y, info, idx) {
-            // var self = this;
-            // if(!self.map) return;
-            
-            // var marker = new kakao.maps.Marker({
-            //     position: new kakao.maps.LatLng(x, y)
-            // });
-
-            // self._setMarkerImage(marker, idx);
-            // marker.setMap(self.map);     
-
-            
-            // var obj = {item:marker, info:info, id:info['id'], distance:1000}; 
-            // self.itemArr.push(obj); 
-
-            // // marker 클릭시 이벤트 등록
-            // kakao.maps.event.addListener(marker, 'click', function(){
-            //     self._itemClickHandler(obj.info);                
-            // });
-        },
-
-        _setMarkerImage : function _setMarkerImage(marker, idx){
-            var self = this;  
-            var imageSrc = idx<5? self.options.baseUrl + '/images/ico_map'+ (idx+1) +'.png' : self.options.baseUrl + '/images/ico_map_default.png';                      
-            var markerImage = new kakao.maps.MarkerImage(imageSrc, new kakao.maps.Size(20, 26), new kakao.maps.Point(10, 30));
-            marker.setImage(markerImage);
         },
 
         _itemClickHandler : function _itemClickHandler(obj){
@@ -411,7 +369,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
         resize: function resize(){
             var self = this;
-            self._changeMarkersState(true);
+            self._changeMarkersState();
         },
 
         selectedMarker: function selectedMarker(id){
@@ -422,7 +380,36 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                 return {...items, info: {...items.info, selected: selected}};
             });
 
-            self._changeMarkersState(false);
+            self._changeMarkersState();
+        },
+
+        search: function(keyword){
+            var self = this;
+            
+            var searchArr = vcui.array.filter(self.itemArr, function(item, idx){
+                var matchShop = item.info.agName.search(keyword);
+                var matchAdd1 = item.info.agAddr1.search(keyword);
+                var matchAdd2 = item.info.agAddr2.search(keyword);
+                var matchNAdd1 = item.info.agNAddr1.search(keyword);
+                var matchNAdd2 = item.info.agNAddr2.search(keyword);
+
+                if(matchShop > -1 || matchAdd1 > -1 || matchAdd2 > -1 || matchNAdd1 > -1 || matchNAdd2 > -1) return true;
+                else return false;
+            });            
+
+            if(searchArr.length){
+                var bounds = new naver.maps.LatLngBounds();
+                var info = null;
+                for(var i=0; i<searchArr.length; i++){
+                    info = searchArr[i].info;
+                    bounds.extend(new naver.maps.LatLng(info.agGpsX, info.agGpsY));
+                }
+                self.map.fitBounds(bounds);
+
+                self._changeMarkersState(searchArr);
+            } else{
+                self.triggerHandler('mapsearchnodata');  
+            }            
         }
     });
     ///////////////////////////////////////////////////////////////////////////////////////

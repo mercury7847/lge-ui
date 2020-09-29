@@ -648,7 +648,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                 self.currDate = core.clone(self.maxDate);
             }
 
-            tmpl = '<div class="ui-calendar-container"><div class="ui-select-day">' + (opts.header !== false ? opts.template.header : '') + '<div class="ui-calendar-date"></div></div></div>';
+            tmpl = '<div class="ui-calendar-container"><div class="ui-select-day">' + (opts.header !== false ? opts.template.header : '') + '<div class="ui-calendar-date"></div><a href="#" class="ui-calendar-close"><span class="blind">닫기</span></a></div></div>';
             dim = '<div class="ui-calendar-dim">&nbsp;</div>'
 
             self._remove();
