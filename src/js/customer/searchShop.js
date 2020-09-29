@@ -65,6 +65,8 @@
             self.windowWidth;
             self.windowHeight;
 
+            self.isTransion = false;
+
             self.isChangeMode = false;
             self.searchResultMode = false;
 
@@ -135,7 +137,7 @@
             self.$optionSelector.on('click', '.btn-sel', function(e){
                 e.preventDefault();
 
-                console.log("option open")
+                self._toggleOptContainer();
             });
 
             self.$defaultListLayer.on('click', 'li > .ui_marker_selector', function(e){
@@ -171,6 +173,12 @@
 
                 self._showMap();
             });
+
+            self.$leftContainer.on('click', '.btn-fold', function(e){
+                e.preventDefault();
+
+                self._toggleLeftContainer();
+            })
 
             $('#searchWrap').on('click', 'button', function(e){
 
@@ -215,11 +223,25 @@
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
 
+        _toggleOptContainer: function(){
+            var self = this;
+
+            
+        },
+
+        _toggleLeftContainer: function(){
+            var self = this;
+            
+            self.$leftContainer.toggleClass('close');
+            
+            self._resize();
+        },
+
         _showMap: function(){
             var self = this;
 
-            if(!self.isMapTrans){
-                self.isMapTrans = true;
+            if(!self.isTransion){
+                self.isTransion = true;
                 
                 var toggle = self.$searchContainer.find('.btn-view');
                 if(toggle.hasClass('map')){
@@ -232,7 +254,7 @@
                         x: self.windowWidth,
                         height: self.$mapContainer.height(),
                         'z-index': 100
-                    }).transition({x:0}, 350, "easeInOutCubic", function(){self.isMapTrans = false;});
+                    }).transition({x:0}, 350, "easeInOutCubic", function(){self.isTransion = false;});
         
                     toggle.removeClass("map").addClass('list').find('span').text('리스트보기');
         
@@ -240,7 +262,7 @@
                 } else{
                     toggle.removeClass("list").addClass('map').find('span').text('지도보기');
     
-                    $('.store-map-con').stop().transition({x:self.windowWidth}, 350, "easeInOutCubic", function(){self.isMapTrans = false;})
+                    $('.store-map-con').stop().transition({x:self.windowWidth}, 350, "easeInOutCubic", function(){self.isTransion = false;})
                 }
             }
         },
@@ -398,8 +420,12 @@
 
                 mapheight = self.$defaultListContainer.find('.scroll-wrap').height();
             } else{
-                mapmargin = listwidth;
-                mapwidth = self.windowWidth - listwidth;
+                if(self.$leftContainer.hasClass('close')){
+                    mapmargin = 24;
+                } else{
+                    mapmargin = listwidth;
+                }                
+                mapwidth = self.windowWidth - mapmargin;            
                 mapheight = self.windowHeight;
             }
 
