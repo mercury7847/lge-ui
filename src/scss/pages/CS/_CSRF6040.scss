@@ -251,6 +251,7 @@
                     }
                     .store-info-list {
                         display:table;
+                        width:100%;
                         table-layout:fixed;
                         cursor:pointer;
                         .point-wrap {
@@ -757,7 +758,7 @@
             z-index:1;
             @include csmobile {
                 visibility: hidden;
-                position:static;
+                left:-9999px;
                 height:calc(100vh - 126px - 60px - 217px - 76px);
                 overflow:hidden;
             }

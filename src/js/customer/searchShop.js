@@ -23,7 +23,7 @@
 
     var listTemplate = ''+
         '<li data-id="{{agNum}}">'+
-        '   <div class="store-info-list ui_marker_selector" role="button">'+
+        '   <div class="store-info-list ui_marker_selector" role="button" tabindex="0">'+
         '        <div class="point-wrap">'+
         '           <div class="point{{selected}}">'+
         '                <span class="num">{{num}}</span>'+
