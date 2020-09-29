@@ -82,7 +82,8 @@
             self.$map = null; //맵 모듈...
             self.$mapContainer = $('.map-area'); //맴 모듈 컨테이너...
             
-            self.$optionSelector = $('.opt-cont'); //옵션 컨테이너...
+            self.$optionContainer = $('.opt-cont'); //옵션 컨테이너...
+            self.$optionContainer.find('.all-chk input[type=checkbox]').attr('checked', true);
 
             //검색...
             self.searchKeywords = {};
@@ -134,7 +135,7 @@
         _bindEvents: function(){
             var self = this;
 
-            self.$optionSelector.on('click', '.btn-sel', function(e){
+            self.$optionContainer.on('click', '.btn-sel', function(e){
                 e.preventDefault();
 
                 self._toggleOptContainer();
@@ -180,6 +181,22 @@
                 self._toggleLeftContainer();
             })
 
+            self.$optionContainer.find('.all-chk dd input[type=checkbox]').on('change', function(e){
+                self._optAllChecked();
+            });
+            self.$optionContainer.find('.all-chk dt input[type=checkbox]').on('change', function(e){
+                self._optToggleAllChecked();
+            });
+            self.$optionContainer.on('click', '.btn-group button:first-child', function(e){
+                e.preventDefault();
+
+                self._setOptINIT();
+            }).on('click', '.btn-group button:last-child', function(e){
+                e.preventDefault();
+
+                self._setOptApply();
+            })
+
             $('#searchWrap').on('click', 'button', function(e){
 
                 
@@ -223,10 +240,50 @@
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
 
+        _setOptINIT: function(){
+            var self = this;
+
+            //self.$optionContainer.find('.opt-layer')
+        },
+
+        _setOptApply: function(){
+            console.log("opt apply!!")
+        },
+
+        _optToggleAllChecked: function(){
+            var self = this;
+
+            var chked = self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked');
+            if(chked){
+                self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', true);
+            }
+        },
+
+        _optAllChecked: function(){
+            var self = this;
+
+            var total = self.$optionContainer.find('.all-chk dd input[type=checkbox]').length;
+            var chktotal = self.$optionContainer.find('.all-chk dd input[type=checkbox]:checked').length;
+            
+            var chked = total == chktotal ? true : false;
+            self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', chked);
+        },
+
         _toggleOptContainer: function(){
             var self = this;
 
-            
+            var optop = self.$optionContainer.position().top;
+
+            self.$optionContainer.toggleClass('open');
+
+            // if(self.$optionContainer.hasClass('is-open')){
+            //     self.$optionContainer.find('.opt-layer').show();
+            //     self.$optionContainer.stop().css({top:optop}).transition({top:0}, 350, "easeInOutCubic");
+            // } else{
+            //     optop = self.$optionContainer.position().top;
+            //     console.log(optop)
+            //     self.$optionContainer.stop().css({y:-optop}).transition({y:0}, 350, "easeInOutCubic");
+            // }
         },
 
         _toggleLeftContainer: function(){
@@ -391,7 +448,7 @@
             var top = $('.container').position().top;
             var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
             var scheight = self.$searchContainer.outerHeight(true);
-            var optheight = self.$optionSelector.height();
+            var optheight = self.$optionContainer.height();
             var resultheight = $('.result-list-box').height();
 
             var listheight;
