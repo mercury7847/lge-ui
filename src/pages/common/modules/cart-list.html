@@ -1,0 +1,61 @@
+<div class="cart-list">
+    @@for (var i = 0; i < context.items.length; i++) {
+    <div class="cart-item">
+        <div class="product-check">
+            <span class="chk-wrap">
+                <input type="checkbox" id="`+items[i].check.id1+`" name="`+items[i].check.name1+`" `+items[i].check.checked1+`>
+                <label for="`+items[i].check.id1+`"><span class="blind">`+items[i].check.text1+`</span></label>
+            </span>
+        </div>
+        <div class="product-info">
+            <div class="item-image"><img src="`+items[i].visual+`" alt=""></div>
+            <div class="item-name">`+items[i].modelName+`</div>
+            <div class="item-options">
+                <div class="sku">OLED55BXPUA</div>
+                <div class="sibling-option">버건디레드 / 870 ℓ</div>
+            </div>
+            <div class="quantity-wrap">
+                <div class="select-quantity">
+                    <div class="inner">
+                        <button type="button" class="minus"><span class="blind">뺴기</span></button>
+                        <input type="number" class="quantity" title="수량 입력" value="1">
+                        <button type="button" class="plus"><span class="blind">더하기</span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="delivery-option">
+                <a href="#">사전방문 예약</a>
+                <a href="#">배송희망일 지정</a>
+            </div>
+        </div>
+        <div class="select-coupon">
+            <div class="select-wrap">
+                <select class="ui_selectbox" id="select1" title="쿠폰 선택">
+                    <option value="" class="placeholder">쿠폰을 선택해주세요.</option>
+                    <option value="">무료배송 쿠폰</option>
+                    <option value="">VIP 50,000원 할인</option>
+                </select>
+            </div>
+        </div>
+        <div class="product-payment">
+            <div class="calc-amount">5,300,000원 + 배송비 0원</div>
+            <div class="amount">
+                <span>5,300,000원</span>
+                <span>5,300,000원</span>
+            </div>
+            <div class="btn-purchase">
+                <a href="#" class="btn bd-pink btn-small">바로구매</a>
+            </div>
+        </div>
+        <div class="product-wish">
+            <span class="chk-wish-wrap">
+                <input type="checkbox" id="`+items[i].check.id2+`" name="`+items[i].check.name2+`" `+items[i].check.checked2+`>
+                <label for="`+items[i].check.id2+`"><span class="blind">`+items[i].check.text2+`</span></label>
+            </span>
+        </div>
+        <div class="item-delete">
+            <button type="button" class="btn-delete"><span class="blind">상품 삭제</span></button>
+        </div>
+    </div>
+    }
+</div>

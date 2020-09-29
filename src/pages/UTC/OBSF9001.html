@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTC/UTC"]
+    })
+<body>
+    <div class="wrap">
+<!--        include('./common/header.html')-->
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+            "pageTitle": "장바구니",
+                "pageArr" : [
+                    { "page" : "구매 999+", "on" : "on" },
+                    { "page" : "렌탈(케어솔루션) 0", "on": "" }
+                ]
+            })
+            <!-- cart -->
+            <div class="contents cart">
+                <div class="cont-wrap">
+                    @@include('./common/modules/cart-list.html', {
+                        "items" : [
+                            {
+                                "check" : {
+                                    "id1" : "chk01",
+                                    "name1" : "chk01",
+                                    "checked1" : "checked",
+                                    "text1" : "선택함",
+                                    "id2" : "chk02",
+                                    "name2" : "chk02",
+                                    "checked1" : "checked",
+                                    "text2" : "찜한 상품"
+                                },
+                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음."
+                            },
+                            {
+                                "check" : {
+                                    "id1" : "chk03",
+                                    "name1" : "chk03",
+                                    "checked1" : "",
+                                    "text1" : "선택안함",
+                                    "id2" : "chk04",
+                                    "name2" : "chk04",
+                                    "checked2" : "",
+                                    "text2" : "찜하기"
+                                },
+                                "visual" : "/lg5-common/images/dummy/@sample-1-1.gif",
+                                "modelName" : "LG 올레드 AI ThinQ(벽걸이형)"
+                            }
+                        ]
+                    })
+                </div>
+            </div>
+            <!-- // cart -->
+        </div>
+        
+<!--        include('./common/footer.html')-->
+    </div>
+</body>
+</html>

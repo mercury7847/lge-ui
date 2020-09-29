@@ -1,8 +1,8 @@
 @@if ( context.carousel ) {
-<div class="slide-wrap carousel-type ui_carousel_slider">
+<div class="slide-wrap carousel-type @@carouselClass @@carouselScriptClass">
 }
 @@if ( !context.carousel ) {
-<div class="slide-wrap ui_carousel_slider">
+<div class="slide-wrap ui_wide_slider">
 }
     <div class="indi-wrap">
         <ul class="indi-conts ui_carousel_dots">
@@ -28,12 +28,14 @@
             <!-- // slide -->
             }
             }
-            @@if ( context.carousel ) {
+            @@if ( context.carouselClass === "carousel-4" ) {
             @@for ( var i=0; i < context.slideArr.length; i++ ) {
             <!--  slide -->
             <div class="slide-conts ui_carousel_slide">
                 <a href="#n" class="slide-box">
-                    <span class="flag"><span class="blind">게시판 분류</span>`+slideArr[i].flag+`</span>
+                    <div class="flag-wrap carousel-type">
+                        <span class="flag"><span class="blind">게시판 분류</span>`+slideArr[i].flag+`</span>
+                    </div>
                     <span class="thumb" aria-hidden="true">
                         <img src="`+slideArr[i].img+`" alt="">
                     </span>
@@ -51,9 +53,53 @@
                             <li class="view"><span class="blind">조회수</span>1,234</li>
                         </ul>
                     </div>
-                    <button type="button" class="`+slideArr[i].btnLike+`"><span class="blind">좋아요 버튼 클릭 시 좋아요ON</span></button>
+                    <span class="chk-wish-wrap">
+                        <input type="checkbox" id="`+slideArr[i].wish+`" name="wish-chk">
+                        <label for="`+slideArr[i].wish+`"><span class="blind">찜하기</span></label>
+                    </span>
                 </a>
-            </div> 
+            </div>
+            <!-- // slide -->
+            }
+            }
+            @@if ( context.recommendSlideType === true ) {
+            @@for ( var i=0; i < context.slideArr.length; i++ ) {
+            <!--  slide -->
+            <div class="slide-conts ui_carousel_slide">
+                <div class="slide-box">
+                    <span class="flag"><img src="`+slideArr[i].flag+`" alt="`+slideArr[i].flagText+`"></span>
+                    <div class="product-image" aria-hidden="true">
+                        <a href="#"><img src="`+slideArr[i].img+`" alt=""></a>
+                    </div>
+                    <div class="product-info">
+                        `+slideArr[i].badge+`
+                        <div class="product-name">
+                            <a href="#">`+slideArr[i].name+`</a>
+                        </div>
+                        <div class="price-area">
+                            <div class="reduced-price">
+                                <em class="blind">최대 혜택가격</em>
+                                <span class="price">5,200,000<em>원</em></span>
+                            </div>
+                            <div class="product-price">
+                                <div class="purchase-price">
+                                    <em class="blind">판매가격</em>
+                                    <span class="price">360,000<em>원</em></span>
+                                </div>
+                                <div class="discount-rate">
+                                    <em class="blind">할인율</em>
+                                    <span class="price">15<em>%</em></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="`+slideArr[i].btnLike+`"><span>`+slideArr[i].btnText+`</span></button>
+                    <span class="chk-wish-wrap">
+                        <input type="checkbox" id="`+slideArr[i].wish.id+`" name="`+slideArr[i].wish.name+`" `+slideArr[i].wish.checked+`>
+                        <label for="`+slideArr[i].wish.id+`"><span class="blind">찜하기</span></label>
+                    </span>
+                </div>
+            </div>
             <!-- // slide -->
             }
             }

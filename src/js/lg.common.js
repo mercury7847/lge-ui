@@ -36,6 +36,58 @@
             this.find('.ui_textcontrol').vcTextcontrol();
             this.find('.ui_scrollview').vcScrollview();
             this.find('.ui_fileinput').vcFileinput();
+
+
+            this.find('.ui_wide_slider').vcCarousel({
+                infinite: true,
+                swipeToSlide: true,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            });
+            this.find('.ui_carousel_4_slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 4,
+                slidesToShow: 4,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToScroll: 1,
+                            slidesToShow: 1
+                        }
+                    },
+                    {
+                        breakpoint: 20000,
+                        settings: {
+                            slidesToScroll: 4,
+                            slidesToShow: 4
+                        }
+                    }
+                ]
+            });
+            this.find('.ui_carousel_3_slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 3,
+                slidesToShow: 3,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToScroll: 1,
+                            slidesToShow: 1
+                        }
+                    },
+                    {
+                        breakpoint: 20000,
+                        settings: {
+                            slidesToScroll: 3,
+                            slidesToShow: 3
+                        }
+                    }
+                ]
+            });
         }.bind(this));
         return this;
     };

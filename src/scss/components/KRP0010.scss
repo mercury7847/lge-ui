@@ -70,8 +70,10 @@
         .badge {
             //display: flex;
             position: absolute;
-            top: 56px;
-            left: 56px;
+            //top: 56px;
+            //left: 56px;
+            top: 7.6%;
+            left: 7.6%;
             
             z-index: 9;
             @include mobile {
@@ -543,36 +545,7 @@
         } 
     }
 
-    // toast meassage
-    .toast-meassage {
-        display: none;
-        position: fixed;
-        left: 0;
-        bottom: 24px;
-        z-index: 1002;
-        .toast-meassage-box {
-            display: flex;
-            min-height: 72px;
-            margin-top: 8px;
-            background: #222;
-            border-radius: 8px;
-            padding: 24px;
-            color: #fff;
-            line-height: 24px;
-            .btn-area {
-                margin-left: 64px;
-                a {
-                    color: #ec455a;
-                }
-            }
-            @include mobile {
-                width: calc(100% - 40px);
-                margin-left: 20px;
-                justify-content: space-between;
-                align-items: center;
-            }
-        }
-    }
+
 
 
 
@@ -1401,61 +1374,6 @@
                 @include clearfix;
                 .select-quantity {
                     float: left;
-                    .inner {
-                        display: inline-block;
-                        border: 1px solid #ddd;
-                        border-radius: 6px;
-                        font-size: 0;
-                    }
-                    .minus,
-                    .plus {
-                        position: relative;
-                        width: 32px;
-                        height: 32px;
-                        background-color: #fff;
-                        &:before,
-                        &:after {
-                            position: absolute;
-                            top: 50%;
-                            @include calc(left,50%,5px);
-                            width: 10px;
-                            height: 1px;
-                            content: '';
-                        }
-                        &.minus {
-                            border-radius: 6px 0 0 6px;
-                            &:before {
-                                background-color: #aaa;
-                            }
-                            &:after {
-                                display: none;
-                            }
-                        }
-                        &.plus {
-                            border-radius: 0 6px 6px 0;
-                            &:before,
-                            &:after {
-                                background-color: #111;
-                            }
-                            &:after {
-                                transform: rotate(90deg);
-                            }
-                        }
-                    }
-                    .quantity {
-                        width: 40px;
-                        height: 32px;
-                        border-right: 1px solid #ddd;
-                        border-left: 1px solid #ddd;
-                        background-color: #fff;
-                        font-size: 13px;
-                        text-align: center;
-                        &::-webkit-outer-spin-button,
-                        &::-webkit-inner-spin-button {
-                            -webkit-appearance: none;
-                            margin: 0;
-                        }
-                    }
                 }
                 .payment {
                     float: right;

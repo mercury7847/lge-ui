@@ -24,7 +24,7 @@
                             <div class="store-list-box">
                                 <!-- search -->
                                 <div class="sch-box">
-                                    <div class="tabs-wrap ui_tab">
+                                    <div class="tabs-wrap ui_store_search_tab">
                                         <ul class="tabs">
                                             <li class="on"><a href="#tab1">검색<em class="blind">선택됨</em></a></li>
                                             <li><a href="#tab2">지역</a></li>
@@ -108,10 +108,10 @@
                                 <!-- //search -->
 
                                 <!-- result -->
-                                <div class="result-list-box"><!-- 검색하면 .map-container에 active 클래스 추가 -->
+                                <div class="result-list-box">
                                     <h3 class="blind">매장찾기 검색 결과 리스트</h3>
-                                    <div class="btn-wrap">
-                                        <button type="button" class="btn-back"><span>돌아가기</span></button>
+                                    <div class="result-btn-wrap">
+                                        <button type="button" class="btn-back"><span>다시 검색하기</span></button>
                                         <div class="view-info-btn">
                                             <button type="button" class="btn-view map"><span>지도보기</span></button>
                                             <!-- <button type="button" class="btn-view list"><span>리스트보기</span></button> -->
@@ -119,13 +119,12 @@
                                     </div>
                                     <div class="result-list">
                                         <p class="result-txt"><strong>“강남”</strong>과 가까운 <strong>10개</strong>의 매장을 찾았습니다.</p>
-                                        @@include('./common/partials/CSRF6040-list.html')
                                     </div>
                                 </div>
                                 <!-- //result -->
 
                                 <!-- list -->
-                                <div class="list-wrap">
+                                <div class="list-wrap"><!-- 검색하면 top값 계산 : [.result-btn-wrap + .result-list] -->
                                     <h3 class="blind">매장 리스트</h3>
                                     @@include('./common/partials/CSRF6040-list.html')
                                 </div>
