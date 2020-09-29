@@ -6,11 +6,12 @@ $(window).ready(function(){
     var KRP0010 = {
         product_quantity : 1,
         product_price : 0,
+        pdp_visual_list : [],
 
         init: function() {
             //self = this;
             self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual');
-            self.$pdpImageSlider = self.$pdpVisual.find('div.ui_carousel_slider div.ui_carousel_track');
+            self.$pdpImage = self.$pdpVisual.find('div.pdp-visual-image'); 
             self.$pdpThumbSlider = self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider div.pdp-thumbnail-list ul.thumbnail-list');
             self.$pdpMoreInfo = self.$pdpVisual.find('div.pdp-more-info');
 
@@ -26,48 +27,6 @@ $(window).ready(function(){
             self.$preorderButton = self.$detailInfo.find('div.pre-order');
             self.$rentalButton = self.$detailInfo.find('div.rental');
             self.$displayProduct = self.$detailInfo.find('div.display-product');
-
-            vcui.require(['ui/carousel'], function () {
-                /*
-                $('.KRP0010').find('.inner.ui_carousel_slider').vcCarousel({
-                    infinite: false,
-                    fade:true,
-                    swipeToSlide: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    responsive: [{
-                        settings: {
-                            fade:false,
-                            swipeToSlide:false
-                        }
-                    }],
-                    asNavFor: '.ui_carousel_thumb_slider'
-                });
-        
-                $('.KRP0010').find('.ui_carousel_thumb_slider').vcCarousel({
-                    infinite: false,
-                    prevArrow:'.btn-arrow.prev',
-                    nextArrow:'.btn-arrow.next',
-                    swipeToSlide: false,
-                    slidesToShow: 6,
-                    slidesToScroll: 1,
-                    focusOnChange:true,
-                    focusOnSelect: true,
-                    asNavFor: '.inner.ui_carousel_slider'
-                });
-                */
-                self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider').vcCarousel({
-                    infinite: false,
-                    prevArrow:'.btn-arrow.prev',
-                    nextArrow:'.btn-arrow.next',
-                    swipeToSlide: false,
-                    slidesToShow: 6,
-                    slidesToScroll: 1,
-                    focusOnChange:true,
-                    focusOnSelect: true,
-                    //asNavFor: '.inner.ui_carousel_slider'
-                });
-            });
 
             this.bindEvents();
             
@@ -167,47 +126,23 @@ $(window).ready(function(){
 
                 //이미지 슬라이드
                 contentHtml = "";
-                var thumbHtml = "";
-                arr = data.pdp_visual_list instanceof Array ? data.pdp_visual_list : [];
-                arr.forEach(function(item, index) {
-                    item.index = index;
+                pdp_visual_list = data.pdp_visual_list instanceof Array ? data.pdp_visual_list : [];
+                pdp_visual_list.forEach(function(item, index) {
+                    item.index = "" + index;
                     switch(item.type) {
                         case "image":
-                            var template = '<div class="view ui_carousel_slide">' +
-                                '<a href="#" title="Tap to view more" data-link-area="product_summary-pdp_image" data-link-name="{{link_name}}">'+
-                                '<img id="base_detail_target" data-src="{{image_url}}" class="lazyload" alt="{{image_alt}}">' +
-                                '<p class="hidden pc">{{image_desc}}</p><p class="hidden mobile">{{image_desc}}</p></a></div>';
-                            contentHtml += vcui.template(template,item);
-                            template = '<li class="thumbnail ui_carousel_slide" data-idx="{{index}}">' +
+                            var template = '<li class="thumbnail ui_carousel_slide" data-idx="{{index}}">' +
                                 '<a href="#" data-link-area="product_summary-thumbnail" data-link-name="{{link_name}}">'+
                                 '<img data-src="{{thumb_url}}" class="lazyloaded" alt="{{image_alt}}" data-loaded="true">'
                                 '</a></li>';
-                            thumbHtml += vcui.template(template,item);
+                            contentHtml += vcui.template(template,item);
                             break;
                         default:
                             break;
                     }
                 });
-                //self.$pdpImageSlider.html(contentHtml);
-                self.$pdpThumbSlider.html(thumbHtml);
+                self.$pdpThumbSlider.html(contentHtml);
                 vcui.require(['ui/carousel'], function () {
-/*
-                $('.KRP0010').find('.inner.ui_carousel_slider').vcCarousel({
-                    infinite: false,
-                    fade:true,
-                    swipeToSlide: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    responsive: [{
-                        settings: {
-                            breakpoint: 768,
-                            fade:false,
-                            swipeToSlide:false
-                        }
-                    }],
-                    asNavFor: '.ui_carousel_thumb_slider'
-                });
-*/
                     self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider').vcCarousel({
                         infinite: false,
                         prevArrow:'.btn-arrow.prev',
@@ -216,10 +151,18 @@ $(window).ready(function(){
                         slidesToShow: 6,
                         slidesToScroll: 1,
                         focusOnChange:true,
-                        focusOnSelect: true,
-                    }).off('carouselbeforechange').on('carouselbeforechange', function(e, slide, prev, next){
-                        console.log(prev,nexT);
-                        //self.changeVisualContents(modal, prev, next);
+                        focusOnSelect: true
+                    });
+                    self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider').find('li.ui_carousel_slide').on('click', function (e){
+                        if(self.$selectItemTarget) {
+                            self.$selectItemTarget.removeClass('active');
+                        }
+                        self.$selectItemTarget = $(e.currentTarget);
+                        $(e.currentTarget).addClass('active');
+                        var slideClicked = $(e.currentTarget).attr("data-idx");
+                        var item = pdp_visual_list[slideClicked];
+                        self.$pdpImage.find('a').attr('data-link-name',item.link_name);
+                        self.$pdpImage.find('a img').attr({'src':item.image_url,'alt':item.image_desc});
                     });
                 });
 
