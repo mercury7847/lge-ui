@@ -1,5 +1,5 @@
 (function(){
-
+    
     var cityArr = [
         {title:'시/도선택', value:''},
         {title:'서울', value:'서울'},
@@ -48,6 +48,10 @@
         '    </div>'+
         '</li>';
 
+        var searchResultText = {
+            search:'<strong>"{{keyword}}"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
+        }
+
     var searchShop = {
         init: function(){
             var self = this;
@@ -60,6 +64,8 @@
 
             self.windowWidth;
             self.windowHeight;
+
+            self.searchResultMode = false;
 
             self.bestShopUrl = $('.map-container').data("bestshop");
 
@@ -76,10 +82,14 @@
             self.$optionSelector = $('.opt-cont'); //옵션 컨테이너...
 
             //검색...
+            self.searchKeywords = {};
+
             self.$searchField = $('#tab1 .input-sch input');
             self.$searchButton = $('#tab1 .btn-search');
+
+            self.$searchResultContainer = $('.result-list-box');
             
-            vcui.require(['ui/storeMap'], function () {
+            vcui.require(['ui/storeMap', 'ui/tab'], function () {
 				
 				self.$mapContainer.vcStoreMap({
                     baseUrl:'',
@@ -89,20 +99,32 @@
                     
                     self._bindEvents();		
 
-				}).on('mapchanged mapsearch', function(e, data){	
+				}).on('mapchanged', function(e, data){	
                     
                     self.$defaultListContainer.find('.scroll-wrap').scrollTop(0);
                     self._setItemList(data);
                     self._setItemPosition();
+
+                    if(self.searchResultMode){
+                        self._setSearchResultMode();
+                    }
 
 				}).on('mapitemclick', function(e,data){
 
                     self._setMarkerSelected(data.id);
                     self._setItemPosition();
                     
-				}).on('maperror', function(e, error){
+				}).on('mapsearchnodata', function(e){
+                    //검색 결과 없을 때...
+                    
+                }).on('maperror', function(e, error){
 					console.log(error);
                 });		
+
+                $(".sch-box .tabs-wrap.ui_store_search_tab").vcTab()
+                .on("tabchange", function(e, data){
+                    self._setListArea();
+                });
 			});
         },
 
@@ -135,6 +157,18 @@
             });
             self.$searchButton.on('click', function(e){
                 self._setSearch();
+            });
+
+            self.$searchResultContainer.on('click', '.btn-back', function(e){
+                e.preventDefault();
+
+                self._returnSearchMode();
+            });
+
+            self.$searchContainer.on('click', '.btn-view', function(e){
+                e.preventDefault();
+
+                self._showMap();
             });
 
             $('#searchWrap').on('click', 'button', function(e){
@@ -180,13 +214,34 @@
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
 
+        _showMap: function(){
+            var self = this;
+
+            console.log("showMap")
+
+            var maptop = self.$defaultListContainer.position().top;
+            $('.store-map-con').css({
+                position: 'absolute',
+                visibility: 'visible',
+                top: maptop,
+                left:0,
+                x: self.windowWidth,
+                height: self.$mapContainer.height(),
+                'z-index': 100
+            }).transition({x:0}, 350, "easeInOutCubic");
+
+            self.$map.resize();
+        },
+
         _setSearch: function(){
             var self = this;
 
-            var searchWord = self.$searchField.val();
-            var trim = searchWord.replace(/\s/gi, '');
+            self.searchKeywords.keyword = self.$searchField.val();
+            var trim = self.searchKeywords.keyword.replace(/\s/gi, '');
             if(trim.length){
-                self.$map.search(searchWord);
+                self.searchResultMode = true;
+
+                self.$map.search(self.searchKeywords.keyword);
             }
         },
 
@@ -234,14 +289,56 @@
         _setItemPosition: function(){
             var self = this;
 
-            var selectID = -1;
             self.$defaultListLayer.find('> li').each(function(idx, item){
                 if($(item).find('.point').hasClass('on')){
                     var scrolltop = $(item).position().top;
-                    console.log(scrolltop)
-                    self.$defaultListContainer.find('.scroll-wrap').scrollTop(scrolltop);
+                    self.$defaultListContainer.find('.scroll-wrap').stop().animate({scrollTop: scrolltop}, 220);
                 }
             })
+        },
+
+        _returnSearchMode: function(){
+            var self = this;
+
+            if($('.map-container').hasClass('active')){
+                $('.result-list-box').stop().transition({opacity:0, y:100}, 350, "easeInOutCubic");
+
+                var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
+                var scheight = self.$searchContainer.outerHeight(true);
+                self.$defaultListContainer.transition({top:titheight+scheight}, 420, "easeInOutCubic", function(){
+                    $('.map-container').removeClass('active');
+
+                    self.$defaultListContainer.css('top', 0)
+                });
+            };
+        },
+
+        _setSearchResultMode: function(){
+            var self = this;
+
+            if(!$('.map-container').hasClass('active')){
+                var listop = self.$defaultListContainer.position().top;
+
+                $('.map-container').addClass('active');
+
+                self._setResultText();
+                $('.result-list-box').stop().css({opacity:0, y:100}).transition({opacity:1, y:0}, 410, "easeInOutCubic");
+                
+                var resultheight = $('.result-list-box').height();
+                self.$defaultListContainer.css({top:listop}).transition({top:resultheight}, 420, "easeInOutCubic");
+
+                self._setListArea();
+            }
+        },
+
+        _setResultText: function(){
+            var self = this;
+
+            var resultxt = vcui.template(searchResultText.search, {
+                keyword: self.searchKeywords.keyword,
+                total: self.$defaultListLayer.find('> li').length
+            });
+            self.$searchResultContainer.find('.result-txt').html(resultxt)
         },
 
         //리스트 컨테이너 높이 설정...스크롤영역
@@ -252,7 +349,14 @@
             var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
             var scheight = self.$searchContainer.outerHeight(true);
             var optheight = self.$optionSelector.height();
-            var listheight = self.windowHeight - top - titheight - scheight - optheight;
+            var resultheight = $('.result-list-box').height();
+
+            var listheight;
+            if(self.searchResultMode){
+                listheight = self.windowHeight - top - resultheight - optheight;
+            } else{
+                listheight = self.windowHeight - top - titheight - scheight - optheight;
+            }
             
             self.$defaultListContainer.find('.scroll-wrap').height(listheight);
         },
@@ -263,14 +367,26 @@
             self.windowWidth = $(window).width();
             self.windowHeight = $(window).height();
 
+            self._setListArea();
+
             var listwidth = self.$leftContainer.width();
+            var mapwidth, mapheight, mapmargin;
+            if(self.windowWidth < 768){
+                mapmargin = 0;
+                mapwidth = self.windowWidth;
+
+                mapheight = self.$defaultListContainer.find('.scroll-wrap').height();
+            } else{
+                mapmargin = listwidth;
+                mapwidth = self.windowWidth - listwidth;
+                mapheight = self.windowHeight;
+            }
 
             self.$mapContainer.css({
-                width: self.windowWidth - listwidth,
-                'margin-left': listwidth
+                width: mapwidth,
+                height: mapheight,
+                'margin-left': mapmargin
             });
-
-            self._setListArea();
 
             self.$map.resize();
         }
