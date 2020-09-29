@@ -39,7 +39,11 @@
 
 
             this.find('.ui_wide_slider').vcCarousel({
+                autoplay:true,
+                autoplaySpped:5000,
                 infinite: true,
+                pauseOnHover:false,
+                pauseOnFocus:false,
                 swipeToSlide: true,
                 slidesToShow: 1,
                 slidesToScroll: 1

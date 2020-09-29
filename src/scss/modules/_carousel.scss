@@ -85,22 +85,6 @@
         }
         .slide-conts {
             position:relative;
-            height:575px;
-            .bg {
-                display:block;
-                width:100%;
-                height:100%;
-                background-position:center center;
-                background-size:auto 100%;
-            }
-            @include mobile {
-                height:auto;
-                .bg {
-                    height:0;
-                    padding-bottom:133%;
-                    background-size:cover;
-                }
-            }
         }
     }
     .slide-controls {
@@ -130,50 +114,131 @@
 // main hero visual slide 
 .slide-wrap.hero-banner {
     .slide-content {
+        .slide-track {
+            height:382px;
+        }
         .slide-conts {
-            height:572px;
-            .bg:before {
-                content:' '; 
-                display:block; 
-                position:absolute; 
-                bottom:0; 
-                width:100%; 
-                height:72px; 
-                background-image: linear-gradient(to top, #000000, rgba(0, 0, 0, 0)); 
-                opacity:.2;
+            height:382px;
+            .bg {
+                display:block;
+                width:100%;
+                height:100%;
+                background-position:center center;
+                background-size:auto 100%;
+                &:before {
+                    content:' '; 
+                    display:block; 
+                    position:absolute; 
+                    bottom:0; 
+                    width:100%; 
+                    height:72px; 
+                    background-image: linear-gradient(to top, #000000, rgba(0, 0, 0, 0)); 
+                    opacity:.2;
+                }
+            }
+            @include mobile {
+                height:auto;
+                .bg {
+                    height:0;
+                    padding-bottom:100%;
+                    background-size:cover;
+                }
+            }
+            .slide-info-area {
+                position:absolute;
+                top:0;
+                bottom:0;
+                left:50%;
+                width:100%;
+                max-width:1284px;
+                transform:translateX(-50%);
+                .boxs {
+                    position:absolute;
+                    top:50%;
+                    left:56px;
+                    transform:translateY(-50%);
+                    .desc {
+                        color:#222;
+                        font-size:40px;
+                        line-height:46px;
+                        font-weight:700;
+                        small {
+                            display:block;
+                            margin-bottom:4px;
+                            font-size:20px;
+                            line-height:30px;
+                            font-weight:500;
+                        }
+                    }
+                    .date {
+                        margin-top:20px;
+                        color:#616161;
+                        font-size:16px;
+                        line-height:24px;
+                    }
+                    .btn.bd-black {
+                        margin-top:40px;
+                        background:transparent;
+                    }
+                }
             }
         }
     }
     .indi-wrap {
-        bottom:16px;
+        bottom:4px;
         .indi-conts {
             display:inline-block;
+            height:28px;
+            vertical-align:top;
         }
         li {
+            vertical-align:bottom;
             .btn-indi {
                 position:relative; 
-                width:100px; 
-                height:4px; 
-                border-radius:0; 
-                background-color:rgba(255,255,255,.4); 
+                width:100px;
+                height:4px;
+                margin-top:24px;
+                border-radius:0;
+                background:transparent; 
                 text-align:left;
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    bottom:0;
+                    left:0;
+                    right:0;
+                    height:4px;
+                    background:rgba(#fff, .4);
+                }
+                .bar {
+                    position:absolute; 
+                    bottom:0; 
+                    left:0; 
+                    width:0;
+                    height:4px; 
+                    background-color:#fff;
+                }
             }
             &.on {
                 .btn-indi {
                     width:500px;
+                    height:28px;
+                    margin-top:0;
+                    padding-bottom:4px;
                     p {
                         position:relative; 
-                        top:-26px; 
                         color:#fff; 
                         font-size:16px; 
                         line-height:24px;
                     }
                     .bar {
-                        position:absolute; 
-                        top:0; 
-                        left:0; 
-                        height:4px; 
-                        background-color:#fff;
+                        @keyframes widths {
+                            from {width:0;}
+                            to {width:100%;}
+                        }
+                        width:100%;
+                        animation-name:widths;
+                        animation-duration:5s;
                     }
                 }
             }
@@ -181,9 +246,13 @@
         .indi_control {
             display:inline-block; 
             position:relative; 
-            height:10px; 
+            width:28px;
+            height:28px; 
+            margin-top:12px;
             margin-left:6px; 
             font-size:0;
+            line-height:28px;
+            text-align:center;
             &::before, &::after {
                 content:' '; 
                 display:inline-block; 
@@ -191,7 +260,7 @@
                 height:10px; 
                 margin:0 2px; 
                 background-color:#fff; 
-                vertical-align:top;
+                vertical-align:middle;
             }
         }
     }
