@@ -11,8 +11,12 @@ $(window).ready(function(){
         init: function() {
             //self = this;
             self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual');
-            self.$pdpImage = self.$pdpVisual.find('div.pdp-visual-image'); 
+            self.$pdpImage = self.$pdpVisual.find('div.pdp-visual-image');
+            self.$pdpVideo = self.$pdpVisual.find('div.pdp-visual-video');
+            self.$pdpAnimation = self.$pdpVisual.find('div.pdp-visual-animation');
             self.$pdpThumbSlider = self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider div.pdp-thumbnail-list ul.thumbnail-list');
+            self.$pdpMobileVisual = $('#mobile_summary_gallery');
+            self.$pdpMobileSlider = self.$pdpMobileVisual.find('div.ui_carousel_slider div.slide-content ul.slide-track');
             self.$pdpMoreInfo = self.$pdpVisual.find('div.pdp-more-info');
 
             self.$detailInfo =  $('div.pdp-wrap div.pdp-info-area div.product-detail-info').first();
@@ -104,7 +108,7 @@ $(window).ready(function(){
                 }
     
                 var data = d.data;
-                console.log(data);
+                //console.log(data);
     
                 //뱃지
                 var contentHtml = "";
@@ -124,24 +128,70 @@ $(window).ready(function(){
                 });
                 target.html(contentHtml);
 
-                //이미지 슬라이드
+                //이미지 슬라이드 데스크탑
                 contentHtml = "";
                 pdp_visual_list = data.pdp_visual_list instanceof Array ? data.pdp_visual_list : [];
                 pdp_visual_list.forEach(function(item, index) {
                     item.index = "" + index;
+                    var template = '<li class="thumbnail ui_carousel_slide" data-idx="{{index}}">' +
+                        '<a href="#" data-link-area="product_summary-thumbnail" data-link-name="{{link_name}}">'+
+                        '<img data-src="{{thumb_url}}" class="lazyloaded" alt="{{image_alt}}">'
+                        '</a></li>';
+                    contentHtml += vcui.template(template,item);
+                });
+                self.$pdpThumbSlider.html(contentHtml);
+
+                //이미지 슬라이드 모바일
+                contentHtml = "";
+                pdp_visual_list.forEach(function(item, index) {
+                    item.index = "" + index;
                     switch(item.type) {
                         case "image":
-                            var template = '<li class="thumbnail ui_carousel_slide" data-idx="{{index}}">' +
+                            var template = '<li class="slide-conts ui_carousel_slide default thumbnail" data-idx="{{index}}">' +
                                 '<a href="#" data-link-area="product_summary-thumbnail" data-link-name="{{link_name}}">'+
-                                '<img data-src="{{thumb_url}}" class="lazyloaded" alt="{{image_alt}}" data-loaded="true">'
-                                '</a></li>';
+                                '<img data-src="{{image_url}}" class="lazyloaded" alt="{{image_alt}}">'
+                                '<p class="hidden pc">{{image_desc}}</p><p class="hidden mobile">{{image_desc}}</p></a></li>';
+                            contentHtml += vcui.template(template,item);
+                            break;
+                        case "video":
+                            var template = '<li class="slide-conts ui_carousel_slide video youtube-box" data-idx="{{index}}">' +
+                                '<a href="#" data-src="{{video_url}}" class="see-video" data-type="youtube" data-target="modal" data-link-name="{{link_name}}">' +
+                                '<div class="img-box"><img data-src="{{image_url}}" class="lazyload" alt="{{image_alt}}"/></div></a>' +
+                                '<a href="#" data-src="{{video_url}}" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-name="{{link_name}}">plays audio description video</a></li>'
+                            contentHtml += vcui.template(template,item);
+                            break;
+                        case "mp4":
+                            var template = '<li class="slide-conts animation-box">' +
+						        '<a href="#" role="button" data-src="{{audio_url}}" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video">Plays audio Description Video</a>' +
+						        '<img data-src="{{image_url}}" alt="" class="lazyload" />' +
+						        '<p class="hidden">{{image_desc}}</p>' +
+						        '<div class="animation-area">' +
+							    '<video autoplay muted loop><source src="{{video_url}}" type="video/mp4"></video>' +
+							    '<div class="controller-wrap wa-btn">' +
+								'<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-name="{{link_name}}" >Pause Video</button>' +
+							    '</div></div>' +
+        						'<div class="caption">{{image_desc}}</div></li>';
+                            contentHtml += vcui.template(template,item);
+                            break;
+                        case "webm":
+                            var template = '<li class="slide-conts animation-box">' +
+						        '<a href="#" role="button" data-src="{{audio_url}}" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video">Plays audio Description Video</a>' +
+						        '<img data-src="{{image_url}}" alt="" class="lazyload" />' +
+						        '<p class="hidden">{{image_desc}}</p>' +
+						        '<div class="animation-area">' +
+							    '<video autoplay muted loop><source src="{{video_url}}" type="video/webm""></video>' +
+							    '<div class="controller-wrap wa-btn">' +
+								'<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-name="{{link_name}}" >Pause Video</button>' +
+							    '</div></div>' +
+        						'<div class="caption">{{image_desc}}</div></li>';
                             contentHtml += vcui.template(template,item);
                             break;
                         default:
                             break;
                     }
                 });
-                self.$pdpThumbSlider.html(contentHtml);
+                self.$pdpMobileSlider.html(contentHtml);
+
                 vcui.require(['ui/carousel'], function () {
                     self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider').vcCarousel({
                         infinite: false,
@@ -153,18 +203,30 @@ $(window).ready(function(){
                         focusOnChange:true,
                         focusOnSelect: true
                     });
-                    self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider').find('li.ui_carousel_slide').on('click', function (e){
+                    var thumbItems = self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider').find('li.ui_carousel_slide');
+                    thumbItems.on('click', function (e){
                         if(self.$selectItemTarget) {
                             self.$selectItemTarget.removeClass('active');
                         }
                         self.$selectItemTarget = $(e.currentTarget);
                         $(e.currentTarget).addClass('active');
                         var slideClicked = $(e.currentTarget).attr("data-idx");
-                        var item = pdp_visual_list[slideClicked];
-                        self.$pdpImage.find('a').attr('data-link-name',item.link_name);
-                        self.$pdpImage.find('a img').attr({'src':item.image_url,'alt':item.image_desc});
+                        KRP0010.clickThumbnailSlide(slideClicked);
                     });
+
+                    self.$pdpMobileVisual.find('div.ui_carousel_slider').vcCarousel({
+                        infinite: false,
+                        autoplay: false,
+                        swipeToSlide: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        prevArrow:'.btn-arrow.prev',
+                        nextArrow:'.btn-arrow.next'
+                    });
+
+                    KRP0010.clickThumbnailSlide(0);
                 });
+
 
                 //하단배너
                 if(data.pdp_more_info.visible) {
@@ -419,6 +481,7 @@ $(window).ready(function(){
             }).fail(function(d){
                 alert(d.status + '\n' + d.statusText);
             });
+
         },
 
         reloadPaymentAmountInfoQuantity: function() {
@@ -539,6 +602,40 @@ $(window).ready(function(){
                 returnHtml += contentHtml;
             });
             return returnHtml;
+        },
+
+        clickThumbnailSlide: function(index) {
+            var item = pdp_visual_list[index];
+
+            switch(item.type) {
+                case "image":
+                    self.$pdpImage.find('a').attr('data-link-name',item.link_name);
+                    self.$pdpImage.find('a img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
+                    self.$pdpVideo.hide();
+                    self.$pdpAnimation.hide();
+                    self.$pdpImage.show();
+                    break;
+                case "video":
+                    self.$pdpVideo.find('a').attr({'data-src':item.video_url,'data-link-name':item.link_name});
+                    self.$pdpVideo.find('a.see-video div img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
+                    self.$pdpVideo.show();
+                    self.$pdpAnimation.hide();
+                    self.$pdpImage.hide();
+                    break;
+                case "mp4":
+                case "wemm":
+                    self.$pdpAnimation.find('a').attr({'data-src':item.audio_url,'data-link-name':item.link_name});
+                    self.$pdpAnimation.find('img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
+                    self.$pdpAnimation.find('p.hidden').html(item.image_desc);
+                    self.$pdpAnimation.find('video source').attr({'src':item.video_url,'type':("video/"+item.type)})
+                    self.$pdpAnimation.find('div.caption').html(item.image_desc);
+                    self.$pdpVideo.hide();
+                    self.$pdpAnimation.show();
+                    self.$pdpImage.hide();
+                    break;
+                default:
+                    break;
+            }
         },
 
         cart: function(url) {

@@ -35,10 +35,29 @@
         "pdp_visual_list":[
             {
                 "link_name":"65UK6300PUE1",
+                "type":"video",
+                "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum01.png",
+                "video_url":"https://www.youtube.com/embed/6BnPTCtzHlo",
+                "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 0",
+                "image_desc":"video description"
+            },
+            {
+                "link_name":"65UK6300PUE1",
+                "type":"mp4",
+                "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum01.png",
+                "video_url":"/lg5-common/videos/signature_rain_view.mp4",
+                "audio_url":"/lg5-common/videos/Highlight_backround.mp4",
+                "image_url":"/lg5-common/images/KRC0043/@thumb02.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 1",
+                "image_desc":"animation description"
+            },
+            {
+                "link_name":"65UK6300PUE1",
                 "type":"image",
                 "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum01.png",
                 "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
-                "image_alt":"LG Vacuum Cleaners A902RM 1",
+                "image_alt":"LG Vacuum Cleaners A902RM 2",
                 "image_desc":"graphic description"
             },
             {
@@ -46,7 +65,7 @@
                 "type":"image",
                 "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum02.png",
                 "image_url":"/lg5-common/images/KRC0043/@thumb02.jpg",
-                "image_alt":"LG Vacuum Cleaners A902RM 2",
+                "image_alt":"LG Vacuum Cleaners A902RM 3",
                 "image_desc":"graphic description"
             },
             {
@@ -54,7 +73,7 @@
                 "type":"image",
                 "thumb_url":"/lg5-common/images/KRC0043/@indi03.jpg",
                 "image_url":"/lg5-common/images/KRC0043/@thumb03.jpg",
-                "image_alt":"LG Vacuum Cleaners A902RM 3",
+                "image_alt":"LG Vacuum Cleaners A902RM 4",
                 "image_desc":"graphic description"
             },
             {
@@ -62,7 +81,7 @@
                 "type":"image",
                 "thumb_url":"/lg5-common/images/KRC0043/@indi01.jpg",
                 "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
-                "image_alt":"LG Vacuum Cleaners A902RM 4",
+                "image_alt":"LG Vacuum Cleaners A902RM 5",
                 "image_desc":"graphic description"
             },
             {
@@ -70,7 +89,7 @@
                 "type":"image",
                 "thumb_url":"/lg5-common/images/KRC0043/@indi02.jpg",
                 "image_url":"/lg5-common/images/KRC0043/@thumb02.jpg",
-                "image_alt":"LG Vacuum Cleaners A902RM 5",
+                "image_alt":"LG Vacuum Cleaners A902RM 6",
                 "image_desc":"graphic description"
             },
             {
@@ -78,7 +97,7 @@
                 "type":"image",
                 "thumb_url":"/lg5-common/images/KRC0043/@indi03.jpg",
                 "image_url":"/lg5-common/images/KRC0043/@thumb03.jpg",
-                "image_alt":"LG Vacuum Cleaners A902RM 6",
+                "image_alt":"LG Vacuum Cleaners A902RM 7",
                 "image_desc":"graphic description"
             }
 

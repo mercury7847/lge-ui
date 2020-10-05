@@ -38,6 +38,7 @@
         display: inline-block;
         margin: 0 24px;
         font-size: 0;
+        vertical-align: top;;
         a,
         button,
         strong,
@@ -47,6 +48,7 @@
             font-size: 14px;
             line-height: 24px;
             color: #616161;
+            vertical-align: top;
             cursor: pointer;
 
         }

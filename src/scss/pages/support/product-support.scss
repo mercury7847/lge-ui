@@ -3,6 +3,48 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+@at-root .loading-circle {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: rgba(255,255,255,0.6);
+	z-index: 99;
+	.lds-dual-ring {
+		display: inline-block;
+		width: 64px;
+		height: 64px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%);
+	}
+	.lds-dual-ring:after {
+		content: " ";
+		display: block;
+		width: 46px;
+		height: 46px;
+		margin: 1px;
+		border-radius: 50%;
+		border: 5px solid #ec455a;
+		border-color: #ec455a transparent #ec455a transparent;
+		animation: lds-dual-ring 1.2s linear infinite;
+	}
+}
+@at-root body > .loading-circle {
+	position: fixed;
+}
+
+@keyframes lds-dual-ring {
+	0% {
+	transform: rotate(0deg);
+	}
+	100% {
+	transform: rotate(360deg);
+	}
+}
+
 .support {
     /* common */
     .sorting-wrap {
@@ -16,70 +58,11 @@
         }
         .sort-box {
             float:right;
-            .sort-select {
-                position:relative;
+            .sort-select-wrap {
                 float:left;
                 margin-left:40px;
                 &:first-child {
                     margin-left:0;
-                }
-                &-link {
-                    position:relative;
-                    padding-right:28px;
-                    font-weight:500;
-                    line-height:24px;
-                    .ico-arrow {
-                        position:absolute;
-                        top:50%;
-                        right:7px;
-                        width:0;
-                        height:0;
-                        margin-top:-4px;
-                        border-top:8px solid #111;
-                        border-left:5px solid transparent;
-                        border-right:5px solid transparent;
-                        transform:rotate(0);
-                        transition:transform 0.5s;
-                    }
-                }
-                &-layer {
-                    display:none;
-                    z-index:2;
-                    position:absolute;
-                    top:36px;
-                    left:50%;
-                    padding:28px 48px;
-                    border-radius:4px;
-                    background:#fff;
-                    box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.15);
-                    transform:translateX(-50%);
-                    li {
-                        margin-top:32px;
-                        white-space:nowrap;
-                        &:first-child {
-                            margin-top:0;
-                        }
-                        button {
-                            color:#808080;
-                            font-weight:500;
-                            line-height:24px;
-                        }
-                        &.active {
-                            button {
-                                color:#222;
-                            }
-                        }
-                    }
-                }
-                &.open {
-                    .sort-select-link {
-                        .ico-arrow {
-                            transform:rotate(180deg);
-                        }
-                    }
-                    .sort-select-layer {
-                        display:block;
-                    }
                 }
             }
         }
@@ -87,17 +70,8 @@
             margin:32px 0 12px;
             padding:0 20px;
             .sort-box {
-                .sort-select {
+                .sort-select-wrap {
                     margin-left:20px;
-                    &-layer {
-                        top:30px;
-                        padding:28px;
-                        border-radius:8px;
-                        box-shadow:0 8px 24px 0 rgba(0, 0, 0, 0.15);
-                        li {
-                            margin-top:24px;
-                        }
-                    }
                 }
             }
         }
@@ -172,7 +146,8 @@
     /* //common */
 
     /* module */
-    .supplies-list-wrap {
+    .recommand-wrap {
+        overflow:hidden;
         padding:64px 40px 80px;
         border-top:1px solid #ddd;
         .inner {
@@ -278,6 +253,7 @@
                     .price {
                         color:#616161;
                         font-size:14px;
+                        text-decoration:line-through;
                         line-height:20px;
                     }
                 }
@@ -348,6 +324,13 @@
             .product-btn {
                 .btn {
                     width:100%;
+                }
+            }
+        }
+        @include mobile {
+            .slide-wrap {
+                .slide-content {
+                    overflow:visible !important;
                 }
             }
         }
@@ -583,7 +566,7 @@
                         line-height:20px;
                     }
                     .sub-depth {
-                        display:none;
+                        // display:none;
                         position:absolute;
                         width:100%;
                         left:0%;
