@@ -50,6 +50,13 @@
         '</a>' +
         '</li>';
 
+    var optionTemplate =
+        '{{#each (item, index) in filterList}}' +
+        '<option value="{{item.code}}">' +
+        '{{item.topic}}' +
+        '</option>' +
+        '{{/each}}';
+
     $(window).ready(function() {
         var solutions = {
             form: document.getElementById('submitForm'),
@@ -59,7 +66,12 @@
                         slidesToShow: 3,
                         arrows: true,
                         responsive: [{
-                            breakpoint:768,
+                            breakpoint:1024,
+                            settings: {
+                                slidesToShow: 2
+                            }
+                        },{
+                            breakpoint:767,
                             settings: {
                                 slidesToShow: 1
                             }
@@ -73,6 +85,40 @@
                 this.filterList(); //삭제 예정
                 this.solutionsList(); //삭제 예정
                 $('.pagination').pagination();
+            },
+            filterSelect: function(code) {
+                var self = this;
+
+                self.$form.find('#topic').val(code);
+                self.$form.find('#subTopic').val('');
+
+                $('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').removeClass('on');
+
+                $('#select-symptom').val(code);
+
+                if (code !== 'ALL') {
+                    $('#select-symptom2').prop('disabled', false);
+
+                    self.subFilterList(code);
+                } else {
+                    $('.filter-link[data-code="'+ code +'"]').closest('.filter-list').removeClass('open');
+                    $('.sub-depth').remove();
+
+                    $('#select-symptom2').prop('disabled', true);
+                    $('#select-symptom2').html('<option class="placeholder">증상을 선택해주세요.</option>');
+                }
+
+                $('#select-symptom').vcSelectbox('update');
+                $('#select-symptom2').vcSelectbox('update');
+            },
+            subFilterSelect: function(code) {
+                var self = this;
+
+                self.$form.find('#subTopic').val(code);
+            
+                $('.filter-link[data-code="'+ code +'"]').parent('li').addClass('on').siblings('li').removeClass('on');
+                $('#select-symptom2').val(code);
+                $('#select-symptom2').vcSelectbox('update');
             },
             solutionsList: function() {
                 var self = this,
@@ -132,16 +178,12 @@
                                 var _this = this,
                                     $this = $(_this);
                                 
-                                self.$form.find('#topic').val($this.data('code'));
-                                self.$form.find('#subTopic').val('');
-            
-                                $this.parent('li').addClass('on').siblings('li').removeClass('on');
-                                
-                                if ($this.data('name') !== 'ALL') {
-                                    self.subFilterList(_this);
-                                }
+                                self.filterSelect($this.data('code'));
                                 self.solutionsList();
                             });
+
+                            $('#select-symptom').html(vcui.template(optionTemplate, data));
+                            $('#select-symptom').vcSelectbox('update');
                         }
                     },
                     error: function(err){
@@ -152,8 +194,9 @@
                     }
                 });
             },
-            subFilterList: function(el) {
+            subFilterList: function(code) {
                 var self = this,
+                    $el = $('.filter-link[data-code="'+ code +'"]');
                     param = self.$form.serialize();
 
                 $.ajax({
@@ -171,18 +214,18 @@
                             
                             html += vcui.template(subFilterTemplate, data);
 
-                            $(el).parent().append(html);
-                            $(el).closest('.filter-list').addClass('open');
-                            $(el).parent().find('.sub-depth .filter-link').on('click', function() {
+                            $el.parent().append(html);
+                            $el.closest('.filter-list').addClass('open');
+                            $el.parent().find('.sub-depth .filter-link').on('click', function() {
                                 var _this = this,
                                     $this = $(_this);
-            
-                                self.$form.find('#subTopic').val($this.data('code'));
-            
-                                $this.parent('li').addClass('on').siblings('li').removeClass('on');
                                 
+                                self.subFilterSelect($this.data('code'));
                                 self.solutionsList();
                             });
+
+                            $('#select-symptom2').html(vcui.template(optionTemplate, data));
+                            $('#select-symptom2').vcSelectbox('update');
                         }
                     },
                     error: function(err){
@@ -193,6 +236,7 @@
                     }
                 });
             },
+
             setEventListener: function() {
                 var self = this;
 
@@ -206,6 +250,21 @@
                     var value = $(this).val();
                     
                     self.$form.find('#orderBy').val(value);
+                    self.solutionsList();
+                });
+
+                $('#select-symptom').on('change', function() {
+                    var $this = $(this),
+                        value = $this.val();
+
+                    self.filterSelect(value);
+                    self.solutionsList();
+                });
+                $('#select-symptom2').on('change', function() {
+                    var $this = $(this),
+                        value = $this.val();
+                    
+                    self.subFilterSelect(value);
                     self.solutionsList();
                 });
 

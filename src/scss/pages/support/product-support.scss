@@ -520,6 +520,9 @@
             margin:0 auto;
             padding:56px 40px 0;
             @include clearfix;
+            @include mobile {
+                padding:90px 0 56px;
+            }
         }
         .filter-box {
             position:relative;

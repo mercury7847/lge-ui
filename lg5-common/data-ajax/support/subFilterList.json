@@ -6,7 +6,7 @@
         "filterList": [
             {
                 "topic": "ALL",
-                "code": "10000001"
+                "code": "ALL"
             },
             {
                 "topic": "퀵 헬프 방법",
