@@ -853,7 +853,10 @@ $input: (chk, rdo);
         .ui-select-button {
             display:block;
             position:relative;
-            padding:0 48px 0 24px;
+            padding:0 48px 0 0;
+            @include mobile {
+                padding-right:28px;
+            }
             .ui-select-text {
                 display:inline-block;
                 overflow:hidden;
@@ -893,16 +896,17 @@ $input: (chk, rdo);
         .ui-selectbox-list {
             position:absolute;
             top:36px;
-            left:0;
+            left:-24px;
             overflow:hidden;
             padding:12px 0;
             border-radius:4px;
             background:#fff;
             box-shadow:0 4px 12px 0 rgba(0, 0, 0, .15);
-            z-index: 1;
+            z-index: 100;
             @include mobile {
                 left:auto;
                 right:0;
+                padding:6px 0;
             }
             ul {
                 li {
@@ -916,6 +920,9 @@ $input: (chk, rdo);
                         white-space:nowrap;
                         word-break:break-all;
                         text-overflow:ellipsis;
+                        @include mobile {
+                            padding:9px 28px 9px 24px;
+                        }
                     }
                     &.on a {
                         color:#808080;
