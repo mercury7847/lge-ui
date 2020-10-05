@@ -1,10 +1,9 @@
 /*!
  * @module vcui.ui.StoreMap
  * @license MIT License
- * @description Kakao map 
+ * @description Naver map 
  * @copyright VinylC UID Group
  * 
- * <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5dddbd78e7c3f80dd289ec188acf536c&libraries=services"></script>
  */
 vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($, core) {
     "use strict";
@@ -71,7 +70,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     '       </div>'+
                     '       <div class="btn-group">'+
                     '           <a href="#n" class="btn">매장 상담 신청</a>'+
-                    '           <a href="#n" class="btn">상세 정보</a>'+
+                    '           <a href="#{{agNum}}" class="btn detail-view">상세 정보</a>'+
                     '       </div>'+
                     '   </div>'+
                     '</div>'
@@ -151,7 +150,6 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                         item['info'] = false;
                         return item;
                     });
-                    console.log(self.storeData)
                     self._draw(self.storeData);                                    
                     self.triggerHandler('mapinit', [result[0]]);
 
@@ -223,6 +221,8 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
 
             var items = showArr ? showArr : self.itemArr;
             var arr = self._getNumberInArea(items);
+            console.log(items.length)
+            console.log(arr.length)
 
             self._setItemVisible(true);
             self._setItemInfo(arr);
@@ -352,19 +352,14 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             return d;
         },
 
-
-        _getCoord2Address : function _getCoord2Address(x,y){
-            var self = this;
-            if(!self.map) return null;
-            var geocoder = new kakao.maps.services.Geocoder();
-            var coord = new kakao.maps.LatLng(x, y);
-            geocoder.coord2Address(coord.getLng(), coord.getLat(), function(result, status){
-                if (status === kakao.maps.services.Status.OK) {
-                    return result;
-                }else{
-                    return null;
-                }
+        _matchKeyword: function(item, keyword, matchKeyNames){
+            var match = vcui.array.filter(matchKeyNames, function(key, idx){
+                if(item.info[key].search(keyword) > -1) return true;
+                else return false;
             });
+
+            if(match.length) return true;
+            else return false;
         },
 
         resize: function resize(){
@@ -383,19 +378,32 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             self._changeMarkersState();
         },
 
-        search: function(keyword){
+        search: function(keywords, matchIds){
             var self = this;
+
+            var matchKeyNames = matchIds ? matchIds : ['agName', 'agAddr1', 'agAddr2', 'agNAddr1', 'agNAddr2'];
             
             var searchArr = vcui.array.filter(self.itemArr, function(item, idx){
-                var matchShop = item.info.agName.search(keyword);
-                var matchAdd1 = item.info.agAddr1.search(keyword);
-                var matchAdd2 = item.info.agAddr2.search(keyword);
-                var matchNAdd1 = item.info.agNAddr1.search(keyword);
-                var matchNAdd2 = item.info.agNAddr2.search(keyword);
+                var match = false;
+                for(var i in keywords){
+                    var keyword = keywords[i];
+                    if(Array.isArray(keyword)){
+                        if(self._matchKeyword(item, keyword[0], matchKeyNames) && self._matchKeyword(item, keyword[1], matchKeyNames)){
+                            console.log("array : " + item.info.agName, item.info.agAddr1, item.info.agAddr2, item.info.agNAddr1, item.info.agNAddr2, keyword);
+                            match = true;
+                            break;
+                        }
+                    } else{
+                        if(self._matchKeyword(item, keyword, matchKeyNames)){
+                            console.log(item.info.agName, item.info.agAddr1, item.info.agAddr2, item.info.agNAddr1, item.info.agNAddr2, keyword);
+                            match = true;
+                            break;
+                        }
+                    }
+                }
 
-                if(matchShop > -1 || matchAdd1 > -1 || matchAdd2 > -1 || matchNAdd1 > -1 || matchNAdd2 > -1) return true;
-                else return false;
-            });            
+                return match
+            });       
 
             if(searchArr.length){
                 var bounds = new naver.maps.LatLngBounds();
