@@ -25,7 +25,7 @@
 <div class="guide_wrap">
     <div class="hero-banner slide-wrap ui_wide_slider">
         <div class="indi-wrap">
-            <ul class="indi-conts ui_carousel_dots"> <!-- ui_carousel_dots -->
+            <ul class="indi-conts ui_wideslider_dots">
                 <li>
                     <button type="button" class="btn-indi">
                         <p>No.1의 혁신1</p>
@@ -105,13 +105,15 @@
 <xmp class="prettyprint linenums javascript"><!-- DOM -->
 <div class="hero-banner slide-wrap ui_wide_slider">
     <div class="indi-wrap">
-        <ul class="indi-conts ui_carousel_dots">
+        <ul class="indi-conts ui_wideslider_dots">
+            <!-- indicator(slide 수와 동일하게) -->
             <li>
                 <button type="button" class="btn-indi">
                     <p>No.1의 혁신</p>
                     <div class="bar"></div>
                 </button>
             </li>
+            <!-- // indicator(slide 수와 동일하게) -->
         </ul>
         <button type="button" class="indi_control ui_carousel_play play">
             <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
@@ -143,6 +145,9 @@
 <!-- (@@)include ()삭제 후 사용 -->
 (@@)include('./common/modules/carousel.html', {
     "mainSlideType" : true, <!-- main visual type일 때 true, 아닐경우 삭제 -->
+    "indiArr" : [
+                    "LG Q92 5G 구매혜택1" <!-- slide 수와 동일하게 생성 -->
+                ],
     "slideArr" : [
         {
             "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
