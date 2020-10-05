@@ -21,6 +21,15 @@
         {title:'강원', value:'강원'},
     ];
 
+    var subwayCityArr = [
+        {value:'', title:'지역 선택'},
+        {value:'SG', title:'수도권'},
+        {value:'BS', title:'부산'},
+        {value:'DJ', title:'대전'},
+        {value:'DG', title:'대구'},
+        {value:'GJ', title:'광주'},
+    ]
+
     var listTemplate = ''+
         '<li data-id="{{agNum}}">'+
         '   <div class="store-info-list ui_marker_selector" role="button" tabindex="0">'+
@@ -42,15 +51,20 @@
         '            <p class="addr"><span class="blind">주소</span>{{agAddr1}}</p>'+
         '            <div class="etc-info">'+
         '                <span class="tel"><span class="blind">전화번호</span>{{agTel}}</span>'+
-        '                <a href="#" class="btn-detail">상세보기</a>'+
+        '                <a href="#{{agNum}}" class="btn-detail">상세보기</a>'+
         '            </div>'+
         '        </div>'+
         '    </div>'+
         '</li>';
 
-        var searchResultText = {
-            search:'<strong>"{{keyword}}"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
-        }
+    var searchResultText = {
+        search: '<strong>"{{keyword}}"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
+        localSearch: '<strong>"{{keyword}}"</strong>와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
+        roadSearch: '입력한 주소와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
+        subwaySearch: '<strong>"{{keyword}}역"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
+    };
+
+    var localOptTemplate = '<option value={{value}}>{{title}}</option>';
 
     var searchShop = {
         init: function(){
@@ -71,7 +85,11 @@
             self.isChangeMode = false;
             self.searchResultMode = false;
 
-            self.bestShopUrl = $('.map-container').data("bestshop");
+            self.bestShopUrl = $('.map-container').data("bestshop"); 
+            self.localUrl = $('.map-container').data('locals');
+            self.subwayUrl = $('.map-container').data('subway');
+            self.stationUrl = $('.map-container').data('station');
+            self.detailUrl = $('.map-container').data('detail');
 
             self.$leftContainer = $('.store-list-wrap'); //좌측 검색&리스트 컨테이너...
 
@@ -87,16 +105,18 @@
             self.$optionContainer.find('.all-chk input[type=checkbox]').attr('checked', true);
 
             //검색...
-            self.searchKeywords = {};
+            self.searchKeyword = "";
+            self.schReaultTmplID = "";
 
             self.$searchField = $('#tab1 .input-sch input');
             self.$searchButton = $('#tab1 .btn-search');
 
             self.$searchResultContainer = $('.result-list-box');
 
+            self.$searchRoadField = $('#tab3 .input-sch input');
+            self.$searchRoadButton = $('#tab3 .btn-search');
             
-            
-            vcui.require(['ui/storeMap', 'ui/tab'], function () {
+            vcui.require(['ui/storeMap', 'ui/tab', 'ui/selectbox'], function () {
 				
 				self.$mapContainer.vcStoreMap({
                     baseUrl:'',
@@ -123,7 +143,7 @@
                     
 				}).on('mapsearchnodata', function(e){
                     //검색 결과 없을 때...
-                    
+                    alert("검색 결과가 없습니다.");
                 }).on('maperror', function(e, error){
 					console.log(error);
                 });		
@@ -132,6 +152,19 @@
                 .on("tabchange", function(e, data){
                     self._setListArea();
                 });
+
+                self.$citySelect = $('#select1');
+                self._setSelectOption(self.$citySelect, cityArr);
+                self.$citySelect.vcSelectbox('update');
+
+                self.$boroughSelect = $('#select2');
+
+                self.$subwayCitySelect = $('#select3');
+                self._setSelectOption(self.$subwayCitySelect, subwayCityArr);
+                self.$subwayCitySelect.vcSelectbox('update');
+
+                self.$subwayLineSelect = $('#select4');
+                self.$subwayStationSelect = $('#select5');
 			});
         },
 
@@ -153,18 +186,31 @@
             .on('click', 'li > .ui_marker_selector .btn-detail', function(e){
                 e.preventDefault();
 
-                console.log(e);
-                //showDetailInfo(id);  
+                var id = $(this).attr("href").replace("#", "");
+                window.open(self.detailUrl+"?agNum="+id, "_blank", "width=1070, height=" + self.windowHeight + ", location=no, menubar=no, status=no, toolbar=no")
             });
 
             self.$searchField.on('focus', function(e){
                 $(window).on('keyup.searchShop', function(e){
                     if(e.keyCode == 13) self._setSearch();
-                })
+                });
             });
             self.$searchButton.on('click', function(e){
+                e.preventDefault();
+
                 self._setSearch();
             });
+
+            self.$searchRoadField.on('focus', function(e){
+                $(window).on('keyup.searchShop', function(e){
+                    if(e.keyCode == 13) self._setRoadSearch();
+                });
+            });
+            self.$searchRoadButton.on('click', function(e){
+                e.preventDefault();
+                
+                self._setRoadSearch();
+            })
 
             self.$searchResultContainer.on('click', '.btn-back', function(e){
                 e.preventDefault();
@@ -198,49 +244,76 @@
                 e.preventDefault();
 
                 self._setOptApply();
-            })
+            });
 
-            $('#searchWrap').on('click', 'button', function(e){
+            self.$citySelect.on('change', function(e){
+				$.ajax({
+					type : "GET",
+					url : self.localUrl,
+					params:{city:encodeURI(e.target.value)},
+					dataType : "json",
+				}).done(function(result) {
+                    self._setSelectOption(self.$boroughSelect, result);
+                    self.$boroughSelect.vcSelectbox('update');
+				}).fail(function(error) {
+				});
+            });
+            self.$boroughSelect.on('change', function(e){
+                self._setLocalSearch();
+            });
 
-                
-                var city = $('#city').val();
-                var secondName;
-                var area = $('#area').val();
-                var keyword = $('#searchKeyword').val();
-
-                switch(city){
-                    case '경남':
-                        secondName = '경상남도';
-                        break;
-                    case '경북':
-                        secondName = '경상북도';
-                        break;
-                    case '전남':
-                        secondName = '전라남도';
-                        break;
-                    case '전북':
-                        secondName = '전라남도';
-                        break;
-                    default:
-                        secondName = city;
-                }
-
-
-
-                if(keyword!==''){
-                    arr = vcui.array.filter(arr, function(item, idx){  							
-                        return item['agName'].search(keyword) > -1;        
-                    });
-
-                    console.log(arr);
-                }
-
-                $('#map').vcStoreMap('search', arr);	
-
+            self.$subwayCitySelect.on('change', function(e){
+                self._getSubwayOption(self.subwayUrl, {codeType:'SUBWAY', pcode:e.target.value}, function(result){
+                    self._setSubwayOption(result, self.$subwayLineSelect, {title:"호선 선택", value:""}, "code");
+                });
+            });
+            self.$subwayLineSelect.on('change', function(e){
+                self._getSubwayOption(self.stationUrl, {codeType:'SUBWAY', pcode:e.target.value}, function(result){
+                    self._setSubwayOption(result, self.$subwayStationSelect, {title:"역 선택", value:""}, "codeName");
+                });
+            });
+            self.$subwayStationSelect.on('change', function(e){
+                self._setSubwaySearch();
             });
 
             self._resize();
             $(window).trigger('addResizeCallback', self._resize.bind(self));
+        },
+
+        _getSubwayOption: function(url, params, callback){
+            $.ajax({
+                type : "GET",
+                url : url,
+                params: params,
+                dataType : "json",
+            }).done(function(result) {
+                if(callback) callback(result.resultList);
+            }).fail(function(error) {
+            });
+        },
+
+        _setSubwayOption: function(result, select, firstdata, valuekey){
+            var self = this;
+            var lines = vcui.array.map(result, function(item, idx){
+                return {
+                    title: item.codeName,
+                    value: item[valuekey]
+                }
+            });
+            lines.unshift(firstdata);
+            self._setSelectOption(select, lines);
+            select.vcSelectbox('update');
+        },
+
+        _setSelectOption: function(select, list){
+            var self = this;
+
+            select.empty();
+
+            for(var i in list){
+                var opt = vcui.template(localOptTemplate, list[i]);
+                select.append($(opt).get(0));
+            }
         },
 
         _setOptData: function(){
@@ -288,9 +361,7 @@
             var self = this;
 
             var chked = self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked');
-            if(chked){
-                self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', true);
-            }
+            self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', chked);
         },
 
         _optAllChecked: function(){
@@ -306,18 +377,26 @@
         _toggleOptContainer: function(){
             var self = this;
 
-            var optop = self.$optionContainer.position().top;
+            if(!self.isTransion){
+                self.isTransion = true;
 
-            self.$optionContainer.toggleClass('open');
+                var optop;
+                var isOpen = self.$optionContainer.hasClass('open');
+                if(isOpen){
+                    optop = self.$leftContainer.height() - self.$optionContainer.find('.btn-sel').height();
+                    self.$optionContainer.stop().transition({y:optop}, 350, "easeInOutCubic", function(){
+                        self.isTransion = false;
 
-            // if(self.$optionContainer.hasClass('is-open')){
-            //     self.$optionContainer.find('.opt-layer').show();
-            //     self.$optionContainer.stop().css({top:optop}).transition({top:0}, 350, "easeInOutCubic");
-            // } else{
-            //     optop = self.$optionContainer.position().top;
-            //     console.log(optop)
-            //     self.$optionContainer.stop().css({y:-optop}).transition({y:0}, 350, "easeInOutCubic");
-            // }
+                        self.$optionContainer.css({y:0}).removeClass('open');
+                    });
+                } else{
+                    optop = self.$optionContainer.position().top;
+
+                    self.$optionContainer.addClass('open');
+
+                    self.$optionContainer.stop().css({y:optop}).transition({y:0}, 350, "easeInOutCubic", function(){self.isTransion=false;});
+                }
+            }
         },
 
         _toggleLeftContainer: function(){
@@ -358,18 +437,81 @@
             }
         },
 
+        //검색...
         _setSearch: function(){
             var self = this;
 
-            self.searchKeywords.keyword = self.$searchField.val();
-            var trim = self.searchKeywords.keyword.replace(/\s/gi, '');
+            self.schReaultTmplID = "search";
+            self.searchKeyword = self.$searchField.val();
+            var trim = self.searchKeyword.replace(/\s/gi, '');
             if(trim.length){
                 self.searchResultMode = true;
 
-                self.$map.search(self.searchKeywords.keyword);
+                self.$map.search([self.searchKeyword]);
 
                 $(window).off('keyup.searchShop');
             }
+        },
+
+        //지역 검색...
+        _setLocalSearch: function(){
+            var self = this;
+
+            var city = self.$citySelect.val();
+            var borough = self.$boroughSelect.val();
+            self.searchKeyword = city + " " + borough;
+            self.schReaultTmplID = "localSearch";
+            self.searchResultMode = true;
+
+            var secondName;
+            switch(city){
+                case '경남':
+                    secondName = '경상남도';
+                    break;
+                case '경북':
+                    secondName = '경상북도';
+                    break;
+                case '전남':
+                    secondName = '전라남도';
+                    break;
+                case '전북':
+                    secondName = '전라남도';
+                    break;
+                default:
+                    secondName = "";
+            }
+
+            var arr = [[city, borough]];
+            if(secondName != ""){
+                arr.push([secondName, borough])
+            }
+
+            self.$map.search(arr);
+        },
+
+        _setRoadSearch: function(){
+            var self = this;
+
+            self.schReaultTmplID = "roadSearch";
+            self.searchKeyword = self.$searchRoadField.val();
+            var trim = self.searchKeyword.replace(/\s/gi, '');
+            if(trim.length){
+                self.searchResultMode = true;
+
+                self.$map.search([self.searchKeyword]);
+
+                $(window).off('keyup.searchShop');
+            }
+        },
+
+        _setSubwaySearch: function(){
+            var self = this;
+
+            self.schReaultTmplID = "subwaySearch";
+            self.searchKeyword = self.$subwayStationSelect.val();
+            self.searchResultMode = true;
+
+            self.$map.search([self.searchKeyword], ["subway"]);
         },
 
         _setMarkerSelected: function(id){
@@ -468,8 +610,8 @@
         _setResultText: function(){
             var self = this;
 
-            var resultxt = vcui.template(searchResultText.search, {
-                keyword: self.searchKeywords.keyword,
+            var resultxt = vcui.template(searchResultText[self.schReaultTmplID], {
+                keyword: self.searchKeyword,
                 total: self.$defaultListLayer.find('> li').length
             });
             self.$searchResultContainer.find('.result-txt').html(resultxt)
