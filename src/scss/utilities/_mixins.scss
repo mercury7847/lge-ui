@@ -1,63 +1,68 @@
 // font Size PC / Mobile
 @mixin font-x-small {
+    // font-size: 12px;
 	font-size: $font-x-small;
 	line-height: $font-x-small;
 
-	@media screen and (max-width: #{$tablet-s-width}) {
-		font-size :  $font-small - 2;
-		line-height: $font-small - 2;
-	}
+	//@media screen and (max-width: #{$tablet-s-width}) {
+	//	font-size :  $font-small - 2;
+	//	line-height: $font-small - 2;
+	//}
 }
 
-
 @mixin font-small {
+    // font-size: 14px;
 	font-size: $font-small;
-	line-height: $font-small;
+	line-height: 20px;
 
 	@media screen and (max-width: #{$tablet-s-width}) {
-	    font-size :  $font-small - 2;
-	    line-height: $font-small - 2;
+	    //font-size :  $font-small - 2;
+	    line-height: 18px;
 	}
 }
 
 @mixin font-medium {
+    // font-size: 16px;
 	font-size: $font-medium;
-	line-height: $font-medium;
+	line-height: 24px;
 
 	@media screen and (max-width: #{$tablet-s-width}) {
-		font-size : $font-medium - 2;
-		line-height: $font-medium - 2;
+		//font-size : $font-medium - 2;
+		line-height: 23px;
 	}
 }
 
 @mixin font-large {
+    // font-size: 18px;
 	font-size: $font-large;
-	line-height: $font-large;
+	line-height: 26px;
 
-	@media screen and (max-width: #{$tablet-s-width}) {
-	    font-size : $font-large - 1;
-	    line-height: $font-large - 1;
-	}
+	//@media screen and (max-width: #{$tablet-s-width}) {
+	//    font-size : $font-large - 1;
+	//    line-height: $font-large - 1;
+	//}
 }
 
 @mixin font-x-large {
+    // font-size: 24px;
 	font-size: $font-x-large;
-	line-height: $font-x-large;
+	line-height: 32px;
 
-	@media screen and (max-width: #{$tablet-s-width}) {
-	    font-size : $font-x-large - 18;
-	    line-height: $font-x-large - 18;
-	}
+	//@media screen and (max-width: #{$tablet-s-width}) {
+	//    font-size : $font-x-large - 18;
+	//    line-height: $font-x-large - 18;
+	//}
 }
 
 @mixin font-xx-large {
+    // font-size: 36px;
 	font-size: $font-xx-large;
 	line-height: $font-xx-large;
 
-	@media screen and (max-width: #{$tablet-s-width}) {
-	    font-size : $font-xx-large - 12;
-	    line-height: $font-xx-large - 12;
-	}
+	//@media screen and (max-width: #{$tablet-s-width}) {
+	//    font-size : $font-xx-large - 12;
+	//    line-height: $font-xx-large - 12;
+	//}
 }
 
 /*
