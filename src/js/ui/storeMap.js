@@ -140,7 +140,7 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
             var url = self.options.baseUrl + self.options.storeDataUrl;
 
             $.ajax({
-                type : "POST",
+                type : "GET",
                 url : url,
                 dataType : "json",
             }).done(function(result) {
