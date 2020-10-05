@@ -143,6 +143,73 @@
             }
         }
     }
+    .icon-banner {
+        border-radius:4px;
+        background:#fff;
+        .inner {
+            display:block;
+            position:relative;
+            padding:32px 56px;
+            .cont {
+                padding:14px 0 14px 112px;
+                .tit {
+                    font-size:18px;
+                    font-weight:700;
+                    line-height:26px;
+                }
+                .desc {
+                    margin-top:12px;
+                    font-size:16px;
+                    line-height:24px;
+                }
+            }
+        }
+        &.with-button {
+            .inner {
+                .cont {
+                    padding-right:156px;
+                }
+            }
+            .btn {
+                position:absolute;
+                right:56px;
+                top:50%;
+                transform:translateY(-50%);
+            }
+        }
+        @include mobile {
+            border-radius:0;
+            .inner {
+                padding:24px 20px;
+                .cont {
+                    padding:0 0 0 56px;
+                    .tit {
+                        font-size:14px;
+                        line-height:18px;
+                    }
+                    .desc {
+                        margin-top:8px;
+                        font-size:12px;
+                        line-height:16px;
+                    }
+                }
+            }
+            &.with-button {
+                .inner {
+                    padding:40px 20px;
+                    .cont {
+                        padding:0 0 0 56px;
+                    }
+                }
+                .btn {
+                    position:static;
+                    width:100%;
+                    margin-top:20px;
+                    transform:translateY(0);
+                }
+            }
+        }
+    }
     /* //common */
 
     /* module */
@@ -524,6 +591,15 @@
                 padding:90px 0 56px;
             }
         }
+        .detail-wrap {
+            max-width:1146px;
+            margin:0 auto;
+            padding:0 40px;
+            @include clearfix;
+            @include mobile {
+                padding:0;
+            }
+        }
         .filter-box {
             position:relative;
             float:left;
@@ -724,6 +800,9 @@
                     }
                 }
             }
+        }
+        .icon-banner {
+            margin-top:24px;
         }
     }
     &.card {
