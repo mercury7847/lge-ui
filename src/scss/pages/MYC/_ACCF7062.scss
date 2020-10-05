@@ -109,25 +109,6 @@
                         }
                         .flag-wrap {
                             margin-bottom:4px;
-                            font-size:0;
-                            .flag {
-                                display:inline-block;
-                                margin-left:4px;
-                                padding:0 8px;
-                                border-radius:4px;
-                                background:#E9E9EA;
-                                color:#EC455A;
-                                font-size:12px;
-                                line-height:20px;
-                                font-weight:500;
-                                vertical-align:top;
-                                &:first-child {
-                                    margin-left:0;
-                                }
-                                @include mobile {
-                                    line-height:24px;
-                                }
-                            }
                         }
                         .tit {
                             padding-right:16px;
