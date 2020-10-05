@@ -68,7 +68,7 @@
         }
 
         &.bold {
-            @include font-family($font-bold);
+            @include font-family($font-weight-bold);
         }
     }
 
@@ -107,7 +107,7 @@
                 &.on {
                     a {
                         padding-bottom: 4px;
-                        @include font-family($font-bold);
+                        @include font-family($font-weight-bold);
                         color: #111;
                         border-bottom: 2px solid #111;
                     }
@@ -198,7 +198,7 @@
     .head-copy {
         height: 78px;
         margin-bottom: 4px;
-        @include font-family($font-bold);
+        @include font-family($font-weight-bold);
         font-size: 18px;
         line-height: 26px;
         color: #111;
@@ -213,7 +213,7 @@
         margin-bottom: 24px;
         font-size: 14px;
         line-height: 26px;
-        //@include font-family($font-bold);
+        //@include font-family($font-weight-bold);
         //color:$color-nightrider;
     }
 

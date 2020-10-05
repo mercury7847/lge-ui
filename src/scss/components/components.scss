@@ -9,7 +9,7 @@
 //@import './components/colorchip';
 
 @mixin font-family($font, $sytle:normal) {
-    @if ($font == $font-regular) or ($font == $font-bold) {
+    @if ($font == $font-weight-regular) or ($font == $font-weight-bold) {
         @if $sytle == italic {
             font-style: italic;
         } @else if $sytle == normal {
@@ -18,11 +18,11 @@
     }
 
     //font-weight:normal;
-    @if ($font == $font-regular) {
+    @if ($font == $font-weight-regular) {
         font-weight: 400;
-    } @else if ($font == $font-medium) {
+    } @else if ($font == $font-weight-medium) {
         font-weight: 500;
-    } @else if ($font == $font-bold) {
+    } @else if ($font == $font-weight-bold) {
         font-weight: 700;
     } @else {
         font-weight: 400;
@@ -189,16 +189,16 @@
 
     // font opion style
     .font-regular {
-        @include font-family($font-regular);
+        @include font-family($font-weight-regular);
     }
     .font-bold {
-        @include font-family($font-bold);
+        @include font-family($font-weight-bold);
     }
     .font-regular-italic {
-        @include font-family($font-regular, italic);
+        @include font-family($font-weight-regular, italic);
     }
     .font-bold-italic {
-        @include font-family($font-bold, italic);
+        @include font-family($font-weight-bold, italic);
     }
     .font-underline {
         text-decoration: underline;
@@ -213,7 +213,7 @@
     //    border-radius: 4px;
     //    background-color: #fff;
     //    line-height: 24px;
-    //    @include font-family($font-bold);
+    //    @include font-family($font-weight-bold);
     //    font-size: 16px;
     //    color: #111;
     //    text-align: center;
@@ -257,7 +257,7 @@
     //    }
     //
     //    &.bold {
-    //        @include font-family($font-bold);
+    //        @include font-family($font-weight-bold);
     //    }
     //}
 
@@ -546,7 +546,7 @@ html.modal-open {
     .modal-body {
         padding:0 30px;
         //color:$color-dimgray;
-        //@include font-family($font-regular);
+        //@include font-family($font-weight-regular);
         //@include screen(custom, max, $max-sm) {
         //    padding-left:20px;padding-right:20px;
         //}
