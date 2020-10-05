@@ -8,3 +8,13 @@
     @include mobile {
     }
 }
+.icon-download-red {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-image: url(/lg5-common/images/icons/icon-download-red.svg);
+    background-size: 100% 100%;
+
+    @include mobile {
+    }
+}
