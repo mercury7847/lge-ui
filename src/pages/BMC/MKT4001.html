@@ -14,6 +14,353 @@
 
             <!-- event -->
             <div class="contents event">
+                <!-- main visual slider -->
+                <div class="visual-wrap">
+                    @@include('./common/modules/carousel.html', {
+                        "mainSlideType" : true,
+                        "indiArr" : [
+                            "LG Q92 5G 구매혜택1", "LG Q92 5G 구매혜택2", "LG Q92 5G 구매혜택3"
+                        ],
+                        "slideArr" : [
+                            {
+                                "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
+                                "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
+                                "tit" : "<small>나의 첫번째 5G 폰</small>LG Q92 5G 구매혜택",
+                                "date" : "2020.08.01~2020.09.31",
+                                "titNum" : "tit01"
+                            },
+                            {
+                                "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
+                                "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
+                                "tit" : "<small>나의 첫번째 5G 폰</small>LG Q92 5G 구매혜택2",
+                                "date" : "2020.08.01~2020.09.31",
+                                "titNum" : "tit02"
+                            },
+                            {
+                                "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
+                                "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
+                                "tit" : "<small>나의 첫번째 5G 폰</small>LG Q92 5G 구매혜택3",
+                                "date" : "2020.08.01~2020.09.31",
+                                "titNum" : "tit03"
+                            }
+                        ]
+                    })
+                </div>
+                <!-- // main visual slider -->
+
+                <!-- tabs -->
+                <div class="tabs-wrap btn-type ui_tab event-tab">
+                    <ul class="tabs">
+                        <li class="on"><a href="#n">전체<em class="blind">선택됨</em></a></li>
+                        <li><a href="#n">TV/AV</a></li>
+                        <li><a href="#n">IT</a></li>
+                        <li><a href="#n">주방가전</a></li>
+                        <li><a href="#n">생활가전</a></li>
+                        <li><a href="#n">에어컨/에어케어</a></li>
+                        <li><a href="#n">모바일</a></li>
+                        <li><a href="#n">뷰티</a></li>
+                        <li><a href="#n">케어솔루션</a></li>
+                        <li><a href="#n">비지니스</a></li>
+                    </ul>
+                </div>
+                <!-- // tabs -->
+
+                <div class="main-wrap">
+                    <div class="sorting-filter">
+                        <div class="sort-left">
+                            <div class="sort-select-wrap left">
+                                <select class="ui_selectbox" id="select1" title="이벤트 상태 선택">
+                                    <option value="">진행중인 이벤트</option>
+                                    <option value="">종료된 이벤트</option>
+                                    <option value="">당첨자 발표</option>
+                                </select>
+                            </div>
+                            <div class="sort-select-wrap left">
+                                <select class="ui_selectbox" id="select2" title="이벤트 구분 선택">
+                                    <option value="">전체</option>
+                                    <option value="">온라인</option>
+                                    <option value="">매장</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="sort-right">
+                            <div class="sort-select-wrap">
+                                <select class="ui_selectbox" id="select3" title="정렬 기준 선택">
+                                    <option value="">최신순</option>
+                                    <option value="">마감순</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-list-wrap">
+                        <ul class="events">
+                            <!-- 진행중 이벤트 -->
+                            <li class="lists">
+                                <div class="evt">
+                                    <a href="#n">
+                                        <span class="thumb">
+                                            <img src="/lg5-common/images/dummy/@img-event01.jpg" alt="" aria-hidden="true">
+                                            @@include('./common/modules/flags.html', {
+                                                bgType:true,
+                                                flags:[
+                                                    "<span class='blind'>제품 카테고리</span>TV",
+                                                    "<span class='blind'>제품 카테고리</span>프로젝터"
+                                                ]
+                                            })
+                                        </span>
+                                        <div class="event-info">
+                                            @@include('./common/modules/flags.html', {
+                                                borderType:true,
+                                                flags:[
+                                                    "<span class='blind'>이벤트 구분</span>매장",
+                                                    "<span class='blind'>이벤트 유형</span>구매혜택"
+                                                ]
+                                            })
+                                            <p class="tit"><span class="blind">이벤트 제목</span>2020 NEW 올레드와 함께하는 홈라이프</p>
+                                            <p class="date"><span class="blind">이벤트 기간</span>2020.08.01~2020.09.30</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <!-- // 진행중 이벤트 -->
+                            <!-- 종료된 이벤트 -->
+                            <li class="lists">
+                                <div class="evt">
+                                    <span class="end-flag">종료된<br>이벤트</span>
+                                    <a href="#n">
+                                        <span class="thumb">
+                                            <img src="/lg5-common/images/dummy/@img-event02.jpg" alt="" aria-hidden="true">
+                                            @@include('./common/modules/flags.html', {
+                                                bgType:true,
+                                                flags:[
+                                                    "<span class='blind'>제품 카테고리</span>프로젝터"
+                                                ]
+                                            })
+                                        </span>
+                                        <div class="event-info">
+                                            @@include('./common/modules/flags.html', {
+                                                borderType:true,
+                                                flags:[
+                                                    "<span class='blind'>이벤트 구분</span>온라인",
+                                                    "<span class='blind'>이벤트 유형</span>사은품"
+                                                ]
+                                            })
+                                            <p class="tit"><span class="blind">이벤트 제목</span>LG 시네빔으로 즐기는 왓챠 콘텐츠!</p>
+                                            <p class="date"><span class="blind">이벤트 기간</span>2020.08.01~2020.09.30</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <!-- // 종료된 이벤트 -->
+                            <!-- 종료된+당첨자 발표 이벤트 -->
+                            <li class="lists">
+                                <div class="evt">
+                                    <span class="end-flag">종료된<br>이벤트</span>
+                                    <a href="#n">
+                                        <span class="thumb">
+                                            <img src="/lg5-common/images/dummy/@img-event03.jpg" alt="" aria-hidden="true">
+                                            @@include('./common/modules/flags.html', {
+                                                bgType:true,
+                                                flags:[
+                                                    "<span class='blind'>제품 카테고리</span>에어컨"
+                                                ]
+                                            })
+                                        </span>
+                                        <div class="event-info">
+                                            @@include('./common/modules/flags.html', {
+                                                borderType:true,
+                                                flags:[
+                                                    "<span class='blind'>이벤트 구분</span>온라인",
+                                                    "<span class='blind'>이벤트 유형</span>사은품"
+                                                ]
+                                            })
+                                            <p class="tit"><span class="blind">이벤트 제목</span>LG 이동식 에어컨 창문 잠금장치 신청 이벤트</p>
+                                            <p class="date"><span class="blind">이벤트 기간</span>2020.08.01~2020.09.30</p>
+                                        </div>
+                                    </a>
+                                    <a href="#n" class="btn bd-black btn-small"><span>당첨자 발표</span></a>
+                                </div>
+                            </li>
+                            <!-- // 종료된+당첨자 발표 이벤트 -->
+                            <!-- 진행중 이벤트 -->
+                            <li class="lists">
+                                <div class="evt">
+                                    <a href="#n">
+                                        <span class="thumb">
+                                            <img src="/lg5-common/images/dummy/@img-event01.jpg" alt="" aria-hidden="true">
+                                            @@include('./common/modules/flags.html', {
+                                                bgType:true,
+                                                flags:[
+                                                    "<span class='blind'>제품 카테고리</span>TV",
+                                                    "<span class='blind'>제품 카테고리</span>프로젝터"
+                                                ]
+                                            })
+                                        </span>
+                                        <div class="event-info">
+                                            @@include('./common/modules/flags.html', {
+                                                borderType:true,
+                                                flags:[
+                                                    "<span class='blind'>이벤트 구분</span>매장",
+                                                    "<span class='blind'>이벤트 유형</span>구매혜택"
+                                                ]
+                                            })
+                                            <p class="tit"><span class="blind">이벤트 제목</span>2020 NEW 올레드와 함께하는 홈라이프</p>
+                                            <p class="date"><span class="blind">이벤트 기간</span>2020.08.01~2020.09.30</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <!-- // 진행중 이벤트 -->
+                            <!-- 종료된 이벤트 -->
+                            <li class="lists">
+                                <div class="evt">
+                                    <span class="end-flag">종료된<br>이벤트</span>
+                                    <a href="#n">
+                                        <span class="thumb">
+                                            <img src="/lg5-common/images/dummy/@img-event02.jpg" alt="" aria-hidden="true">
+                                            @@include('./common/modules/flags.html', {
+                                                bgType:true,
+                                                flags:[
+                                                    "<span class='blind'>제품 카테고리</span>프로젝터"
+                                                ]
+                                            })
+                                        </span>
+                                        <div class="event-info">
+                                            @@include('./common/modules/flags.html', {
+                                                borderType:true,
+                                                flags:[
+                                                    "<span class='blind'>이벤트 구분</span>온라인",
+                                                    "<span class='blind'>이벤트 유형</span>사은품"
+                                                ]
+                                            })
+                                            <p class="tit"><span class="blind">이벤트 제목</span>LG 시네빔으로 즐기는 왓챠 콘텐츠!</p>
+                                            <p class="date"><span class="blind">이벤트 기간</span>2020.08.01~2020.09.30</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <!-- // 종료된 이벤트 -->
+                            <!-- 종료된+당첨자 발표 이벤트 -->
+                            <li class="lists">
+                                <div class="evt">
+                                    <span class="end-flag">종료된<br>이벤트</span>
+                                    <a href="#n">
+                                        <span class="thumb">
+                                            <img src="/lg5-common/images/dummy/@img-event03.jpg" alt="" aria-hidden="true">
+                                            @@include('./common/modules/flags.html', {
+                                                bgType:true,
+                                                flags:[
+                                                    "<span class='blind'>제품 카테고리</span>에어컨"
+                                                ]
+                                            })
+                                        </span>
+                                        <div class="event-info">
+                                            @@include('./common/modules/flags.html', {
+                                                borderType:true,
+                                                flags:[
+                                                    "<span class='blind'>이벤트 구분</span>온라인",
+                                                    "<span class='blind'>이벤트 유형</span>사은품"
+                                                ]
+                                            })
+                                            <p class="tit"><span class="blind">이벤트 제목</span>LG 이동식 에어컨 창문 잠금장치 신청 이벤트</p>
+                                            <p class="date"><span class="blind">이벤트 기간</span>2020.08.01~2020.09.30</p>
+                                        </div>
+                                    </a>
+                                    <a href="#n" class="btn bd-black btn-small"><span>당첨자 발표</span></a>
+                                </div>
+                            </li>
+                            <!-- // 종료된+당첨자 발표 이벤트 -->
+                            <!-- 진행중 이벤트 -->
+                            <li class="lists">
+                                <div class="evt">
+                                    <a href="#n">
+                                        <span class="thumb">
+                                            <img src="/lg5-common/images/dummy/@img-event01.jpg" alt="" aria-hidden="true">
+                                            @@include('./common/modules/flags.html', {
+                                                bgType:true,
+                                                flags:[
+                                                    "<span class='blind'>제품 카테고리</span>TV",
+                                                    "<span class='blind'>제품 카테고리</span>프로젝터"
+                                                ]
+                                            })
+                                        </span>
+                                        <div class="event-info">
+                                            @@include('./common/modules/flags.html', {
+                                                borderType:true,
+                                                flags:[
+                                                    "<span class='blind'>이벤트 구분</span>매장",
+                                                    "<span class='blind'>이벤트 유형</span>구매혜택"
+                                                ]
+                                            })
+                                            <p class="tit"><span class="blind">이벤트 제목</span>2020 NEW 올레드와 함께하는 홈라이프</p>
+                                            <p class="date"><span class="blind">이벤트 기간</span>2020.08.01~2020.09.30</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <!-- // 진행중 이벤트 -->
+                            <!-- 종료된 이벤트 -->
+                            <li class="lists">
+                                <div class="evt">
+                                    <span class="end-flag">종료된<br>이벤트</span>
+                                    <a href="#n">
+                                        <span class="thumb">
+                                            <img src="/lg5-common/images/dummy/@img-event02.jpg" alt="" aria-hidden="true">
+                                            @@include('./common/modules/flags.html', {
+                                                bgType:true,
+                                                flags:[
+                                                    "<span class='blind'>제품 카테고리</span>프로젝터"
+                                                ]
+                                            })
+                                        </span>
+                                        <div class="event-info">
+                                            @@include('./common/modules/flags.html', {
+                                                borderType:true,
+                                                flags:[
+                                                    "<span class='blind'>이벤트 구분</span>온라인",
+                                                    "<span class='blind'>이벤트 유형</span>사은품"
+                                                ]
+                                            })
+                                            <p class="tit"><span class="blind">이벤트 제목</span>LG 시네빔으로 즐기는 왓챠 콘텐츠!</p>
+                                            <p class="date"><span class="blind">이벤트 기간</span>2020.08.01~2020.09.30</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <!-- // 종료된 이벤트 -->
+                            <!-- 종료된+당첨자 발표 이벤트 -->
+                            <li class="lists">
+                                <div class="evt">
+                                    <span class="end-flag">종료된<br>이벤트</span>
+                                    <a href="#n">
+                                        <span class="thumb">
+                                            <img src="/lg5-common/images/dummy/@img-event03.jpg" alt="" aria-hidden="true">
+                                            @@include('./common/modules/flags.html', {
+                                                bgType:true,
+                                                flags:[
+                                                    "<span class='blind'>제품 카테고리</span>에어컨"
+                                                ]
+                                            })
+                                        </span>
+                                        <div class="event-info">
+                                            @@include('./common/modules/flags.html', {
+                                                borderType:true,
+                                                flags:[
+                                                    "<span class='blind'>이벤트 구분</span>온라인",
+                                                    "<span class='blind'>이벤트 유형</span>사은품"
+                                                ]
+                                            })
+                                            <p class="tit"><span class="blind">이벤트 제목</span>LG 이동식 에어컨 창문 잠금장치 신청 이벤트</p>
+                                            <p class="date"><span class="blind">이벤트 기간</span>2020.08.01~2020.09.30</p>
+                                        </div>
+                                    </a>
+                                    <a href="#n" class="btn bd-black btn-small"><span>당첨자 발표</span></a>
+                                </div>
+                            </li>
+                            <!-- // 종료된+당첨자 발표 이벤트 -->
+                        </ul>
+                    </div>
+                </div>
             </div>
             <!-- // event -->
         </div>

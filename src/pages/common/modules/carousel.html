@@ -9,7 +9,7 @@
 @@if ( !context.carousel ) {
 <div class="slide-wrap hero-banner ui_wide_slider">
     <div class="indi-wrap">
-        <ul class="indi-conts ui_carousel_dots">
+        <ul class="indi-conts ui_wideslider_dots">
             @@for ( var i=0; i < context.indiArr.length; i++ ) {
             <li>
                 <button type="button" class="btn-indi">
@@ -49,7 +49,7 @@
             <!--  slide -->
             <div class="slide-conts ui_carousel_slide">
                 <a href="#n" class="slide-box">
-                    <div class="flag-wrap carousel-type">
+                    <div class="flag-wrap bg-type">
                         <span class="flag"><span class="blind">게시판 분류</span>`+slideArr[i].flag+`</span>
                     </div>
                     <span class="thumb" aria-hidden="true">
@@ -83,12 +83,12 @@
             <!--  slide -->
             <div class="slide-conts ui_carousel_slide">
                 <div class="slide-box">
-                    <span class="flag"><img src="`+slideArr[i].flag+`" alt="`+slideArr[i].flagText+`"></span>
+                    <div class="badge-wrap"><img src="`+slideArr[i].badge+`" alt="`+slideArr[i].flagText+`"></div>
                     <div class="product-image" aria-hidden="true">
                         <a href="#"><img src="`+slideArr[i].img+`" alt=""></a>
                     </div>
                     <div class="product-info">
-                        `+slideArr[i].badge+`
+                        `+slideArr[i].flag+`
                         <div class="product-name">
                             <a href="#">`+slideArr[i].name+`</a>
                         </div>

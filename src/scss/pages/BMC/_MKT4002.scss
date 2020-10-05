@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+.cont-wrap {
+    @include mobile {
+        padding:0;
+    }
+}
+
 .ev-view-wrap {
     max-width:1066px;
     margin:0 auto;
@@ -7,10 +13,16 @@
         position:relative;
         padding:56px;
         background:#fff;
+        @include mobile {
+            padding:0;
+        }
 
         .btn-group {
             margin-top:24px;
             text-align:center;
+            @include mobile {
+                margin:0;
+            }
         }
 
         .sns-list {
@@ -18,14 +30,15 @@
             top:56px;
             right:56px;
             display:inline-block;
+            @include mobile {
+                top:20px;
+                right:20px;
+            }
             li {
                 float:left;
                 margin-left:8px;
                 &:first-child {
                     margin-left:0;
-                }
-                @include mobile {
-                    margin:0 6px;
                 }
                 .ico-btn {
                     display:block;
@@ -47,16 +60,6 @@
                         background:url('/lg5-common/images/icons/icon-twitter.svg') no-repeat;
                         background-size:32px 32px;
                     }
-                    @include mobile {
-                        width:40px;
-                        height:40px;
-                        &.url,
-                            &.kk,
-                            &.fb,
-                            &.tw  {
-                            background-size:40px 40px;
-                        }
-                    }
                 }
             }
         }
@@ -64,6 +67,9 @@
         .ev-detail-top {
             .tit-wrap {
                 padding-bottom:24px;
+                @include mobile {
+                    padding:40px 20px 28px;
+                }
                 .flag-wrap {
                     padding-bottom:8px;
                 }
@@ -75,12 +81,21 @@
                     font-size:28px;
                     line-height:36px;
                     font-weight:700;
+                    @include mobile {
+                        font-size:24px;
+                        line-height:29px;
+                    }
                 }
             }
             .info-wrap {
                 padding:20px 0;
                 border-top:1px solid #ddd;
                 border-bottom:1px solid #ddd;
+                @include mobile {
+                    padding:20px;
+                    border-top:12px solid #f4f4f4;
+                    border-bottom:none;
+                }
                 dl {
                     display:table;
                     width:100%;
@@ -101,11 +116,51 @@
                     }
                 }
             }
+            .finish-txt {
+                margin-top:24px;
+                padding:24px 0;
+                background:#f4f4f4;
+                border-radius:8px;
+                text-align:center;
+                @include mobile {
+                    margin:0;
+                    padding:0;
+                }
+                p {
+                    color:#616161;
+                    font-size:18px;
+                    line-height:26px;
+                    font-weight:700;
+                    @include mobile {
+                        padding:24px 20px;
+                    }
+                }
+                .btn {
+                    margin-top:16px;
+                    @include mobile {
+                        margin:0;
+                        width:100%;
+                        border-radius:0;
+                    }
+                }
+            }
         }
         
 
         .ev-detail-bottom {
-            margin-top:48px;
+            padding-top:48px;
+            @include mobile {
+                padding:40px 20px 56px;
+                .btn-group {
+                    margin-top:40px;
+                    .btn {
+                        margin-top:12px;
+                        &:first-child {
+                            margin-top:0;
+                        }
+                    }
+                }
+            }
             .ev-cont {
                 img {
                     display:block;
@@ -121,6 +176,10 @@
         margin-top:32px;
         padding:32px 56px;
         background:#fff;
+        @include mobile {
+            margin-top:12px;
+            padding:40px 20px 56px;
+        }
         .inquiry-info {
             text-align:center;
             .txt {
@@ -128,16 +187,37 @@
                 font-size:16px;
                 line-height:24px;
                 font-weight:700;
+                @include mobile {
+                    margin-bottom:32px;
+                }
             }
         }
         .btn-link {
             margin-top:16px;
             font-size:14px;
             line-height:20px;
+            @include mobile {
+                margin-top:8px;
+            }
             &::after {
                 width:6px;
                 height:6px;
                 border-width:1px 1px 0 0;
+            }
+        }
+
+        @include mobile {
+            .btn-group {
+                .btn {
+                    width:100%;
+                    margin-top:12px;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                }
+            }
+            .bullet-list {
+                margin-top:40px;
             }
         }
     }
@@ -145,12 +225,30 @@
     .btn-wrap {
         @include clearfix;
         margin-top:24px;
+        @include mobile {
+            position:relative;
+            margin:0;
+            padding:70px 20px 0;
+        }
         .btn {
             &.bd-black {
                 background:transparent;
+                @include mobile {
+                    width:100%;
+                }
             }
             &:last-child {
                 float:right;
+                @include mobile {
+                    float:inherit;
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    right:0;
+                    width:100%;
+                    margin:0;
+                    border-radius:0;
+                }
             }
         }
     }
