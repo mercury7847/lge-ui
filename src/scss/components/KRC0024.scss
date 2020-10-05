@@ -169,13 +169,13 @@
         margin-bottom: 40px;
         .eyebrow {
             margin-bottom: 16px;
-            @include font-family($font-bold);
+            @include font-family($font-weight-bold);
             font-size: 16px;
         }
         .title {
             margin-bottom: 16px;
             h1, h2, h3, h4, h5, h6 {
-                @include font-family($font-bold);
+                @include font-family($font-weight-bold);
                 font-size: 40px;
                 line-height: 46px;
             }
@@ -197,7 +197,7 @@
     .btn {
         min-width: 100px;
         padding: 7px 0;
-        @include font-family($font-medium);
+        @include font-family($font-weight-medium);
         font-size: 14px;
         line-height: 20px;
     }
