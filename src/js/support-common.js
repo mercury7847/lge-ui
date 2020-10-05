@@ -4,7 +4,6 @@ CS.UI = CS.UI || {};
 
 CS.UI.elem = {};
 
-
 /*
 * validation cehck
 */
@@ -134,7 +133,6 @@ CS.MD.validation = function() {
     };
 }
 
-
 /*
 * 셀렉트박스 타겟
 * @option data-url
@@ -201,27 +199,34 @@ CS.MD.drawOption = function() {
     };
 
     $.fn[pluginName] = function(options) {
+        var arg = arguments; 
+
         return this.each(function() {
-            if (!$.data(this, "plugin_" + pluginName)) {
-                $.data(this, "plugin_" + pluginName, new Plugin(this, options));
+            var _this = this,
+                $this = $(_this),
+                plugin = $this.data('plugin_' + pluginName);
+
+            if (!plugin) {
+                $this.data('plugin_' + pluginName, new Plugin(this, options));
+            } else {
+                if (typeof options === 'string' && typeof plugin[options] === 'function') {
+                    plugin[options].apply(plugin, [].slice.call(arg, 1));
+                }
             }
         });
     }
-}
+}();
 
 /*
 * 페이징네이션
 * */
-CS.MD.setPagination = function() {
-
+CS.MD.pagination = function() {
     var pluginName = 'pagination';
 
-    function Plugin(elem, opt, callback) {
+    function Plugin(el, opt) {
         var self = this,
-            element = this.element = elem,
-            $element = $(element),
-            $pageList, $prev, $next,
-            currentPage, startPage, endPage, totalPage;
+            el = this.el = el,
+            $el = $(el);
 
         var defaults = {
             page: 1,
@@ -239,12 +244,29 @@ CS.MD.setPagination = function() {
         self.options = $.extend({}, defaults, opt);
 
         function _initialize() {
-            $pageList = $element.find('.page_num');
-            $prev = $element.find(self.options.prevClass);
-            $next = $element.find(self.options.nextClass);
+            self.$pageList = $el.find('.page_num');
+            self.$prev = $el.find(self.options.prevClass);
+            self.$next = $el.find(self.options.nextClass);
+            self._update();
         }
-        self._update = function() {
-            var startPage = self.options.startPage,
+        function _setEventHandler() {
+            $el.on('click', 'button', function(e) {
+                var $this = $(this);
+
+                e.preventDefault();
+
+                $(this).trigger('page_click', $this.val());
+            });
+        }
+
+        _initialize();
+        _setEventHandler();
+    }
+
+    Plugin.prototype = {
+        _update: function() {
+            var self = this,
+                startPage = self.options.startPage,
                 endPage = self.options.endPage,
                 page = self.options.page,
                 html = '';
@@ -253,15 +275,15 @@ CS.MD.setPagination = function() {
                 if (page === i) {
                     html += '<strong><span class="blind">현재 페이지</span>' + i + '</strong>';
                 } else {
-                    html += '<a href="#" title="' + i + '페이지 보기">' + i + '</a>';
+                    html += '<button type="button" value="' + i + '" title="' + i + '페이지 보기">' + i + '</button>';
                 }
             }
             
-            self.options.prevBtn ? $prev.attr('aria-disabled', false) : $prev.attr('aria-disabled', true) 
-            self.options.nextBtn ? $next.attr('aria-disabled', false) : $next.attr('aria-disabled', true)
-            $pageList.html(html);
-        }
-        self._move = function() {
+            self.options.prevBtn ? self.$prev.attr('aria-disabled', false).prop('disabled', false).val(startPage-1) : self.$prev.attr('aria-disabled', true).prop('disabled', true).val('');
+            self.options.nextBtn ? self.$next.attr('aria-disabled', false).prop('disabled', false).val(endPage+1) : self.$next.attr('aria-disabled', true).prop('disabled', true).val('');
+            self.$pageList.html(html);
+        },
+        _move: function() {
             var $target, html = '';
 
             if ($target) {
@@ -310,12 +332,7 @@ CS.MD.setPagination = function() {
             }
     
             $pageList.html(html);
-        }
-
-        _initialize();
-    }
-
-    Plugin.prototype = {
+        },
         update: function(data) {
             var self = this;
 
@@ -323,30 +340,96 @@ CS.MD.setPagination = function() {
             self._update();
         },
         reset: function() {
+            var self = this;
+
             startPage = currentPage = 1;
-            endPage = totalPage <= this.options.pageToShow ? totalPage : startPage + this.options.pageToShow - 1;
+            endPage = totalPage <= self.options.pageToShow ? totalPage : startPage + self.options.pageToShow - 1;
             
-            this._move();
+            self._move();
         }
     }
 
-    $.fn[pluginName] = function(options, callback) {
+    $.fn[pluginName] = function(options) {
+        var arg = arguments; 
+
         return this.each(function() {
-            if (!$.data(this, "plugin_" + pluginName)) {
-                $.data(this, "plugin_" + pluginName, new Plugin(this, options));
+            var _this = this,
+                $this = $(_this),
+                plugin = $this.data('plugin_' + pluginName);
+
+            if (!plugin) {
+                $this.data('plugin_' + pluginName, new Plugin(this, options));
+            } else {
+                if (typeof options === 'string' && typeof plugin[options] === 'function') {
+                    plugin[options].apply(plugin, [].slice.call(arg, 1));
+                }
             }
         });
     }
-};
+}();
 
+/* */
+CS.MD.sorting  = function() {
+    var pluginName = 'sorting';
 
+    function Plugin(el, opt) {
+        var self = this,
+            el = this.el = el,
+            $el = $(el);
 
+        var defaults = {
+            
+        };
+
+        self.options = $.extend({}, defaults, opt);
+
+        function _initialize() {
+            
+        }
+        function _setEventHandler() {
+            
+        }
+
+        _initialize();
+        _setEventHandler();
+    }
+
+    Plugin.prototype = {
+
+    }
+
+    $.fn[pluginName] = function(options) {
+        var arg = arguments; 
+
+        return this.each(function() {
+            var _this = this,
+                $this = $(_this),
+                plugin = $this.data('plugin_' + pluginName);
+
+            if (!plugin) {
+                $this.data('plugin_' + pluginName, new Plugin(this, options));
+            } else {
+                if (typeof options === 'string' && typeof plugin[options] === 'function') {
+                    plugin[options].apply(plugin, [].slice.call(arg, 1));
+                }
+            }
+        });
+    }
+}();
 
 (function($){
-    CS.UI.elem.$doc = $(document);
-    CS.UI.elem.$win = $(window);
-    CS.UI.elem.$html = $('html');
-    CS.UI.elem.$body = $('body');
+    $.fn.ajaxLoad = function(type) {
+        var el = this;
+    
+        switch(type) {
+            case 'start':
+                $(el).append('<div class="loading-circle"><div class="lds-dual-ring"></div></div>');
+                break;
+            case 'end':
+                $(el).find('.loading-circle').remove();
+                break;
+        }
+    }
 
     function setTableScrollbar() {
         var $tableScroll = $(".tbl.scroll-x");
@@ -421,20 +504,15 @@ CS.MD.setPagination = function() {
                     }
                 }]
             });
-
-            $('.supplies-list-wrap .slide-wrap').length && $('.supplies-list-wrap .slide-wrap').vcCarousel({
-                slidesToShow: 3,
-                responsive: [{
-                    breakpoint:767,
-                    settings: {
-                        slidesToShow: 1,
-                    }
-                }]
-            });
         });
     }
 
     function commonInit(){
+        CS.UI.elem.$doc = $(document);
+        CS.UI.elem.$win = $(window);
+        CS.UI.elem.$html = $('html');
+        CS.UI.elem.$body = $('body');
+
         setTableScrollbar();
         checkPrivacy();
         commonSlides();

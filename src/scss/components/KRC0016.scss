@@ -74,7 +74,7 @@
         border-radius: 4px;
         background-color: #fff;
         line-height: 24px;
-        @include font-family($font-bold);
+        @include font-family($font-weight-bold);
         font-size: 16px;
         color: #111;
         text-align: center;
@@ -118,7 +118,7 @@
         }
 
         &.bold {
-            @include font-family($font-bold);
+            @include font-family($font-weight-bold);
         }
     }
 
@@ -226,7 +226,7 @@
         margin-bottom: 24px;
         h1, h2, h3, h4, h5, h6 {
             max-height: 68px;
-            @include font-family($font-bold);
+            @include font-family($font-weight-bold);
             font-size: 24px;
             line-height: 34px;
             @include textClipClamp(2);
