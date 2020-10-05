@@ -24,6 +24,17 @@
                 <div class="contents-inner">
                     
                     <div class="result-wrap">
+                        <form action="" id="submitForm">
+                            <input type="hidden" name="superCategory" id="superCategory" value="">
+                            <input type="hidden" name="category" id="category" value="">
+                            <input type="hidden" name="model" id="model" value="">
+                            <input type="hidden" name="topic" id="topic" value="LCL10005001">
+                            <input type="hidden" name="subTopic" id="subTopic" value="">
+                            <input type="hidden" name="orderBy" id="orderBy" value="most">
+                            <input type="hidden" name="viewCount" id="viewCount" value="10">
+                            <input type="hidden" name="page" id="page" value="1">
+                        </form>
+
                         <div class="filter-box">
                             <div class="filter-head">
                                 <strong class="tit">증상 선택</strong>
@@ -34,9 +45,9 @@
                                 </li>
                                 <li>
                                     <button type="button" class="filter-link">기능</button>
-                                    <div class="sub-depth" id="subFilterContent">
+                                    <!-- <div class="sub-depth">
                                         <div class="filter-head">
-                                            <button type="button" class="btn-back"><span class="blind">뒤로 가기</span></button>
+                                            <button type="button" class="btn-back"><span class="blind">이전 보기</span></button>
                                             <strong class="tit">기능</strong>  
                                         </div>
                                         <ul class="filter-list">
@@ -59,16 +70,16 @@
                                                 <button type="button" class="filter-link">인터넷 연결</button>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </li>
                                 <li>
-                                    <button type="button" class="filter-link">설치/연결</button>
+                                    <button type="button" class="filter-link ui_filter_link">설치/연결</button>
                                 </li>
                                 <li>
-                                    <button type="button" class="filter-link">소음/냄새/열방생</button>
+                                    <button type="button" class="filter-link ui_filter_link">소음/냄새/열방생</button>
                                 </li>
                                 <li>
-                                    <button type="button" class="filter-link">스마트 앱</button>
+                                    <button type="button" class="filter-link ui_filter_link">스마트 앱</button>
                                 </li>
                             </ul>
                         </div>
@@ -111,37 +122,19 @@
                             <div class="sorting-wrap">
                                 <div class="total">전체 <em id="count">122</em>건</div>
                                 <div class="sort-box">
-                                    <div class="sort-select ui_dropdown">
-                                        <button type="button" class="sort-select-link ui_dropdown_toggle"><span>10개씩 보기</span><span class="ico-arrow"></span></button>
-                                        <div class="sort-select-layer ui_dropdown_list">
-                                            <ul>
-                                                <li class="active">
-                                                    <button type="button">10개씩 보기</button>
-                                                </li>
-                                                <li>
-                                                    <button type="button">20개씩 보기</button>
-                                                </li>
-                                                <li>
-                                                    <button type="button">30개씩 보기</button>
-                                                </li>
-                                                <li>
-                                                    <button type="button">50개씩 보기</button>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <div class="sort-select-wrap">
+                                        <select class="ui_selectbox" id="selectCount" title="목록 개수 선택">
+                                            <option value="10" selected>10개씩 보기</option>
+                                            <option value="20">20개씩 보기</option>
+                                            <option value="30">30개씩 보기</option>
+                                            <option value="50">50개씩 보기</option>
+                                        </select>
                                     </div>
-                                    <div class="sort-select ui_dropdown">
-                                        <button type="button" class="sort-select-link ui_dropdown_toggle"><span>조회순</span><span class="ico-arrow"></span></button>
-                                        <div class="sort-select-layer ui_dropdown_list">
-                                            <ul>
-                                                <li class="active">
-                                                    <button type="button">조회순</button>
-                                                </li>
-                                                <li>
-                                                    <button type="button">등록순</button>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <div class="sort-select-wrap">
+                                        <select class="ui_selectbox" id="selectOrder" title="정렬 기준 선택">
+                                            <option value="most" selected>조회순</option>
+                                            <option value="newest">등록순</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -278,7 +271,7 @@
 
                 </div>
 
-                <div class="supplies-list-wrap">
+                <div class="recommand-wrap">
                     <div class="inner">
                         <h3 class="title">관련 소모품이 필요하신가요?</h3>
                         <div class="slide-wrap ui_carousel_slider">

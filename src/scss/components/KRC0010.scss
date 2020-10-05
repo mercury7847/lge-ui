@@ -46,7 +46,7 @@
         margin-bottom: 32px;
         .title {
             h1, h2, h3, h4, h5, h6 {
-                @include font-family($font-bold);
+                @include font-family($font-weight-bold);
                 font-size: 28px;
                 line-height: 36px;
                 color: #111;
@@ -79,14 +79,14 @@
         .text-wrap {
             .text {
                 margin-bottom: 8px;
-                @include font-family($font-bold);
+                @include font-family($font-weight-bold);
                 font-size: 24px;
                 line-height: 32px;
                 color: #111;
             }
             .body-copy {
                 margin-bottom: 16px;
-                @include font-family($font-bold);
+                @include font-family($font-weight-bold);
                 font-size: 14px;
                 line-height: 26px;
                 color: #616161;
@@ -118,7 +118,7 @@
         .head-copy {
             margin-bottom: 4px;
             height: 52px;
-            @include font-family($font-bold);
+            @include font-family($font-weight-bold);
             font-size: 18px;
             line-height: 26px;
             color: #111;
@@ -126,7 +126,7 @@
         }
         .body-copy {
             margin-bottom: 32px;
-            @include font-family($font-bold);
+            @include font-family($font-weight-bold);
             font-size: 14px;
             line-height: 26px;
             color: #616161;
