@@ -4,46 +4,60 @@
     "data": {
         "filterList":[
             {
-                "topic": "ALL"
+                "topic": "ALL",
+                "code": "LCL10005001"
             },
             {
-                "topic": "기능"
+                "topic": "기능",
+                "code": "LCL10005002"
             },
             {
-                "topic": "설치/연결"   
+                "topic": "설치/연결",
+                "code": "LCL10005003"   
             },
             {
-                "topic": "소음/냄새/열방생"   
+                "topic": "소음/냄새/열방생",
+                "code": "LCL10005004"   
             },
             {
-                "topic": "스마트 앱"   
+                "topic": "스마트 앱",
+                "code": "LCL10005005"   
             },
             {
-                "topic": "스마트/네트워크"   
+                "topic": "스마트/네트워크",
+                "code": "LCL10005006"   
             },
             {
-                "topic": "스마트 기능"   
+                "topic": "스마트 기능",
+                "code": "LCL10005007"   
             },
             {
-                "topic": "어플리케이션"   
+                "topic": "어플리케이션",
+                "code": "LCL10005008"   
             },
             {
-                "topic": "음성"   
+                "topic": "음성",
+                "code": "LCL10005009"   
             },
             {
-                "topic": "전원"   
+                "topic": "전원",
+                "code": "LCL10005010"   
             },
             {
-                "topic": "채널"   
+                "topic": "채널",
+                "code": "LCL10005011"   
             },
             {
-                "topic": "청소법"   
+                "topic": "청소법",
+                "code": "LCL10005012"   
             },
             {
-                "topic": "해외 제품"   
+                "topic": "해외 제품",
+                "code": "LCL10005013"   
             },
             {
-                "topic": "화면"   
+                "topic": "화면",
+                "code": "LCL10005014"   
             }
         ]
     }
