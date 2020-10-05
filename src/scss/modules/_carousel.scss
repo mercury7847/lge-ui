@@ -347,7 +347,7 @@
             padding: 0 40px 56px;
             border-radius: 4px;
             background-color: #fff;
-            .flag {
+            .badge-wrap {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -362,21 +362,20 @@
                     }
                 }
             }
-            .badge-area {
+            .flag-wrap {
                 height: 20px;
                 margin-bottom: 8px;
-                font-size: 0;
-                .badge {
-                    display: inline-block;
-                    margin-right: 4px;
-                    padding: 3px 8px;
-                    border: 1px solid #ec455a;
-                    border-radius: 4px;
-                    font-weight: 500;
-                    font-size: 12px;
-                    line-height: 1;
-                    color: #ec455a;
-                }
+                //.flag {
+                //    display: inline-block;
+                //    margin-right: 4px;
+                //    padding: 3px 8px;
+                //    border: 1px solid #ec455a;
+                //    border-radius: 4px;
+                //    font-weight: 500;
+                //    font-size: 12px;
+                //    line-height: 1;
+                //    color: #ec455a;
+                //}
                 & + .product-name {
                     margin-top: 0;
                 }
@@ -431,6 +430,14 @@
                     font-weight: bold;
                     line-height: 1.5;
                     color: #ec455a;
+                }
+                @include mobile {
+                    .reduced-price {
+                        font-size: 24px;
+                        font-weight: bold;
+                        line-height: 1.33;
+                        color: #222222;
+                    }
                 }
             }
             .btn {
