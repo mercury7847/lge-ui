@@ -3,7 +3,7 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
-.membership {
+.contents.membership {
     // MAIN
     @import "ACC4001";
 
@@ -23,4 +23,12 @@
             margin-top:32px;
         }
     }
+}
+
+.contents.event {
+    // LIST 
+    @import "MKT4001";
+
+    // VIEW
+    @import "MKT4002";
 }

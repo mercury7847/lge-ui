@@ -306,13 +306,6 @@
         //         }
         //     }
         // }
-
-        // calendar (디자인 나온 후 적용 예정)
-        .ui-calendar-container {
-            border-radius:10px;
-            box-shadow:0 4px 12px 0 rgba(0, 0, 0, .5);
-            outline:none;
-        }
     }
 }
 
@@ -1078,6 +1071,31 @@ $input: (chk, rdo);
                     }
                 }
             }
+        }
+    }
+    .ui-calendar-close {
+        position:absolute;
+        top:16px;
+        right:16px;
+        width:32px;
+        height:32px;
+        &::before, &::after {
+            content:' '; 
+            position:absolute;
+            top:50%;
+            left:50%;
+            width:2px;
+            height:22px;
+            margin-top:-11px;
+            margin-left:-1px;
+            border-radius:2px;
+            background:#222;
+        }
+        &::before {
+            transform:rotate(45deg);
+        }
+        &::after {
+            transform:rotate(-45deg);
         }
     }
 }

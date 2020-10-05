@@ -7,27 +7,7 @@
                 "topic": "ALL"
             },
             {
-                "topic": "기능",
-                "subFilterList": [
-                    {
-                        "subTopic": "ALL"
-                    },
-                    {
-                        "subTopic": "퀵 헬프 방법"
-                    },
-                    {
-                        "subTopic": "앱 설치"
-                    },
-                    {
-                        "subTopic": "타임머신"
-                    },
-                    {
-                        "subTopic": "신호없음"
-                    },
-                    {
-                        "subTopic": "인터넷 연결"
-                    }
-                ]
+                "topic": "기능"
             },
             {
                 "topic": "설치/연결"   

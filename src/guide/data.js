@@ -74,11 +74,17 @@ var res = {
 			"KRP0013_PDP Bundle" : ["/html/components/KRP0013.html","","검수완료"],
 			"KRP0016_PDP Support - B2C" : ["/html/components/KRP0016.html","","검수완료"],
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"],
+			"KRP0018_Sticky Compare" : ["/html/components/KRP0018.html","",""],
 			"KRP0020_Sitemap_Dynamic" : ["/html/components/KRP0020.html","","검수완료"],
 			"KRP0021_Category module for store home" : ["/html/components/KRP0021.html","","진행중"]
 		},
 		"Page" : {
 			"이벤트/멤버십(BMC)" : {
+				"이벤트" : {
+					"이벤트 리스트" : ["/html/BMC/MKT4001.html","","진행중"],
+					"이벤트 상세(기본)" : ["/html/BMC/MKT4002.html","","진행중"],
+					"이벤트 상세(종료)" : ["/html/BMC/MKT4003.html","","진행중"],
+				},
 				"멤버십" : {
 					"멤버십 메인" : ["/html/BMC/ACC4001.html","","검수요청"],
 					"멤버십 혜택" : ["/html/BMC/ACC4004.html","","검수요청"],

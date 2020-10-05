@@ -1,5 +1,5 @@
 (function(){
-
+    
     var cityArr = [
         {title:'시/도선택', value:''},
         {title:'서울', value:'서울'},
@@ -23,36 +23,41 @@
 
     var listTemplate = ''+
         '<li data-id="{{agNum}}">'+
-        '   <div class="store-info-list ui_marker_selector" role="button">'+
+        '   <div class="store-info-list ui_marker_selector" role="button" tabindex="0">'+
         '        <div class="point-wrap">'+
         '           <div class="point{{selected}}">'+
         '                <span class="num">{{num}}</span>'+
-        '                <span class="blind">선탿안됨</span>'+
+        '                <span class="blind">선택안됨</span>'+
         '            </div>'+
         '        </div>'+
         '        <div class="info-wrap">'+
         '            <div class="tit-wrap">'+
-        '                <p class="name">{{agName}}</p>'+
+        '                <p class="name"><span class="blind">매장명</span>{{agName}}</p>'+
         '                <div class="flag-wrap">'+
         '                    {{#if agNewShopComment != null }}<span class="flag">NEW</span>{{/if}}'+
         '                    {{#if isEvent}}<span class="flag">이벤트</span>{{/if}}'+
         '                    {{#if agCenterWeekday != null }}<span class="flag">서비스센터</span>{{/if}}'+
         '               </div>'+
         '            </div>'+
-        '            <p class="addr">{{agAddr1}}</p>'+
+        '            <p class="addr"><span class="blind">주소</span>{{agAddr1}}</p>'+
         '            <div class="etc-info">'+
-        '                <span class="tel">{{agTel}}</span>'+
+        '                <span class="tel"><span class="blind">전화번호</span>{{agTel}}</span>'+
         '                <a href="#" class="btn-detail">상세보기</a>'+
         '            </div>'+
         '        </div>'+
         '    </div>'+
         '</li>';
 
+        var searchResultText = {
+            search:'<strong>"{{keyword}}"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
+        }
+
     var searchShop = {
         init: function(){
             var self = this;
             
             self._setting();
+            self._setOptData();
         },
 
         _setting: function(){
@@ -60,6 +65,11 @@
 
             self.windowWidth;
             self.windowHeight;
+
+            self.isTransion = false;
+
+            self.isChangeMode = false;
+            self.searchResultMode = false;
 
             self.bestShopUrl = $('.map-container').data("bestshop");
 
@@ -73,13 +83,20 @@
             self.$map = null; //맵 모듈...
             self.$mapContainer = $('.map-area'); //맴 모듈 컨테이너...
             
-            self.$optionSelector = $('.opt-cont'); //옵션 컨테이너...
+            self.$optionContainer = $('.opt-cont'); //옵션 컨테이너...
+            self.$optionContainer.find('.all-chk input[type=checkbox]').attr('checked', true);
 
             //검색...
+            self.searchKeywords = {};
+
             self.$searchField = $('#tab1 .input-sch input');
             self.$searchButton = $('#tab1 .btn-search');
+
+            self.$searchResultContainer = $('.result-list-box');
+
             
-            vcui.require(['ui/storeMap'], function () {
+            
+            vcui.require(['ui/storeMap', 'ui/tab'], function () {
 				
 				self.$mapContainer.vcStoreMap({
                     baseUrl:'',
@@ -89,30 +106,42 @@
                     
                     self._bindEvents();		
 
-				}).on('mapchanged mapsearch', function(e, data){	
+				}).on('mapchanged', function(e, data){	
                     
                     self.$defaultListContainer.find('.scroll-wrap').scrollTop(0);
                     self._setItemList(data);
                     self._setItemPosition();
+
+                    if(self.searchResultMode){
+                        self._setSearchResultMode();
+                    }
 
 				}).on('mapitemclick', function(e,data){
 
                     self._setMarkerSelected(data.id);
                     self._setItemPosition();
                     
-				}).on('maperror', function(e, error){
+				}).on('mapsearchnodata', function(e){
+                    //검색 결과 없을 때...
+                    
+                }).on('maperror', function(e, error){
 					console.log(error);
                 });		
+
+                $(".sch-box .tabs-wrap.ui_store_search_tab").vcTab()
+                .on("tabchange", function(e, data){
+                    self._setListArea();
+                });
 			});
         },
 
         _bindEvents: function(){
             var self = this;
 
-            self.$optionSelector.on('click', '.btn-sel', function(e){
+            self.$optionContainer.on('click', '.btn-sel', function(e){
                 e.preventDefault();
 
-                console.log("option open")
+                self._toggleOptContainer();
             });
 
             self.$defaultListLayer.on('click', 'li > .ui_marker_selector', function(e){
@@ -136,6 +165,40 @@
             self.$searchButton.on('click', function(e){
                 self._setSearch();
             });
+
+            self.$searchResultContainer.on('click', '.btn-back', function(e){
+                e.preventDefault();
+
+                self._returnSearchMode();
+            });
+
+            self.$searchContainer.on('click', '.btn-view', function(e){
+                e.preventDefault();
+
+                self._showMap();
+            });
+
+            self.$leftContainer.on('click', '.btn-fold', function(e){
+                e.preventDefault();
+
+                self._toggleLeftContainer();
+            })
+
+            self.$optionContainer.find('.all-chk dd input[type=checkbox]').on('change', function(e){
+                self._optAllChecked();
+            });
+            self.$optionContainer.find('.all-chk dt input[type=checkbox]').on('change', function(e){
+                self._optToggleAllChecked();
+            });
+            self.$optionContainer.on('click', '.btn-group button:first-child', function(e){
+                e.preventDefault();
+
+                self._setOptINIT();
+            }).on('click', '.btn-group button:last-child', function(e){
+                e.preventDefault();
+
+                self._setOptApply();
+            })
 
             $('#searchWrap').on('click', 'button', function(e){
 
@@ -180,13 +243,132 @@
             $(window).trigger('addResizeCallback', self._resize.bind(self));
         },
 
+        _setOptData: function(){
+            var self = this;
+
+            self.optionData = {
+                shopType: self.$optionContainer.find('.opt-layer .list-item > dl:first-child .rdo-wrap input:checked').attr('id'),
+                serviceType: self.$optionContainer.find('.opt-layer .list-item > dl:nth-child(2) .rdo-wrap input:checked').attr('id'),
+                keywords:{
+                    shop: [],
+                    service: [],
+                    etc: []
+                }
+            }
+
+            self.$optionContainer.find('.all-chk > dd > dl:nth-child(1) input').each(function(idx, item){
+                if($(item).prop('checked')) self.optionData.keywords.shop.push($(item).attr('id'));
+            });
+            self.$optionContainer.find('.all-chk > dd > dl:nth-child(2) input').each(function(idx, item){
+                if($(item).prop('checked')) self.optionData.keywords.service.push($(item).attr('id'));
+            });
+            self.$optionContainer.find('.all-chk > dd > dl:nth-child(3) input').each(function(idx, item){
+                if($(item).prop('checked')) self.optionData.keywords.etc.push($(item).attr('id'));
+            });
+
+            console.log(self.optionData);
+        },
+
+        _setOptINIT: function(){
+            var self = this;
+
+            self.$optionContainer.find('.opt-layer .list-item > dl:first-child .rdo-wrap:first-child input').prop("checked", true);
+            self.$optionContainer.find('.opt-layer .list-item > dl:nth-child(2) .rdo-wrap:first-child input').prop("checked", true);
+            self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', true);
+            self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', true);
+        },
+
+        _setOptApply: function(){
+            var self = this;
+
+            self._setOptData();
+        },
+
+        _optToggleAllChecked: function(){
+            var self = this;
+
+            var chked = self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked');
+            if(chked){
+                self.$optionContainer.find('.all-chk dd input[type=checkbox]').prop('checked', true);
+            }
+        },
+
+        _optAllChecked: function(){
+            var self = this;
+
+            var total = self.$optionContainer.find('.all-chk dd input[type=checkbox]').length;
+            var chktotal = self.$optionContainer.find('.all-chk dd input[type=checkbox]:checked').length;
+            
+            var chked = total == chktotal ? true : false;
+            self.$optionContainer.find('.all-chk dt input[type=checkbox]').prop('checked', chked);
+        },
+
+        _toggleOptContainer: function(){
+            var self = this;
+
+            var optop = self.$optionContainer.position().top;
+
+            self.$optionContainer.toggleClass('open');
+
+            // if(self.$optionContainer.hasClass('is-open')){
+            //     self.$optionContainer.find('.opt-layer').show();
+            //     self.$optionContainer.stop().css({top:optop}).transition({top:0}, 350, "easeInOutCubic");
+            // } else{
+            //     optop = self.$optionContainer.position().top;
+            //     console.log(optop)
+            //     self.$optionContainer.stop().css({y:-optop}).transition({y:0}, 350, "easeInOutCubic");
+            // }
+        },
+
+        _toggleLeftContainer: function(){
+            var self = this;
+            
+            self.$leftContainer.toggleClass('close');
+            
+            self._resize();
+        },
+
+        _showMap: function(){
+            var self = this;
+
+            if(!self.isTransion){
+                self.isTransion = true;
+                
+                var toggle = self.$searchContainer.find('.btn-view');
+                if(toggle.hasClass('map')){
+                    var maptop = self.$defaultListContainer.position().top;
+                    $('.store-map-con').css({
+                        position: 'absolute',
+                        visibility: 'visible',
+                        top: maptop,
+                        left:0,
+                        x: self.windowWidth,
+                        height: self.$mapContainer.height(),
+                        'z-index': 100
+                    }).transition({x:0}, 350, "easeInOutCubic", function(){self.isTransion = false;});
+        
+                    toggle.removeClass("map").addClass('list').find('span').text('리스트보기');
+        
+                    self.$map.resize();
+                } else{
+                    toggle.removeClass("list").addClass('map').find('span').text('지도보기');
+    
+                    $('.store-map-con').stop().transition({x:self.windowWidth}, 350, "easeInOutCubic", function(){self.isTransion = false;})
+                }
+            }
+        },
+
         _setSearch: function(){
             var self = this;
 
-            var searchWord = self.$searchField.val();
-            var trim = searchWord.replace(/\s/gi, '');
+            self.searchKeywords.keyword = self.$searchField.val();
+            var trim = self.searchKeywords.keyword.replace(/\s/gi, '');
             if(trim.length){
-                self.$map.search(searchWord);
+                self.searchResultMode = true;
+
+                self.$map.search(self.searchKeywords.keyword);
+
+                $(window).off('keyup.searchShop');
             }
         },
 
@@ -234,14 +416,63 @@
         _setItemPosition: function(){
             var self = this;
 
-            var selectID = -1;
             self.$defaultListLayer.find('> li').each(function(idx, item){
                 if($(item).find('.point').hasClass('on')){
                     var scrolltop = $(item).position().top;
-                    console.log(scrolltop)
-                    self.$defaultListContainer.find('.scroll-wrap').scrollTop(scrolltop);
+                    self.$defaultListContainer.find('.scroll-wrap').stop().animate({scrollTop: scrolltop}, 220);
                 }
             })
+        },
+
+        _returnSearchMode: function(){
+            var self = this;
+
+            if(self.isChangeMode){
+                self.isChangeMode = false;
+                self.searchResultMode = false;
+
+                self.$searchContainer.css('display', 'block');
+
+                $('.result-list-box').stop().transition({opacity:0, y:100}, 350, "easeInOutCubic");
+
+                var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
+                var scheight = self.$searchContainer.outerHeight(true);
+                self.$defaultListContainer.transition({top:titheight+scheight}, 420, "easeInOutCubic", function(){
+                    $('.result-list-box').css('display', 'none');
+
+                    self.$defaultListContainer.css({position:'relative', top:0});
+                });
+            };
+        },
+
+        _setSearchResultMode: function(){
+            var self = this;
+
+            if(!self.isChangeMode){
+                self.isChangeMode = true;
+
+                var listop = self.$defaultListContainer.position().top;
+
+                self._setResultText();
+                $('.result-list-box').stop().css({display:'block', opacity:0, y:100}).transition({opacity:1, y:0}, 410, "easeInOutCubic");
+                
+                var resultheight = $('.result-list-box').height();
+                self.$defaultListContainer.css({position:'absolute', top:listop}).transition({top:resultheight}, 420, "easeInOutCubic", function(){
+                    self.$searchContainer.css('display', 'none');
+                });
+
+                self._setListArea();
+            }
+        },
+
+        _setResultText: function(){
+            var self = this;
+
+            var resultxt = vcui.template(searchResultText.search, {
+                keyword: self.searchKeywords.keyword,
+                total: self.$defaultListLayer.find('> li').length
+            });
+            self.$searchResultContainer.find('.result-txt').html(resultxt)
         },
 
         //리스트 컨테이너 높이 설정...스크롤영역
@@ -251,8 +482,15 @@
             var top = $('.container').position().top;
             var titheight = self.$leftContainer.find('> .tit').outerHeight(true);
             var scheight = self.$searchContainer.outerHeight(true);
-            var optheight = self.$optionSelector.height();
-            var listheight = self.windowHeight - top - titheight - scheight - optheight;
+            var optheight = self.$optionContainer.height();
+            var resultheight = $('.result-list-box').height();
+
+            var listheight;
+            if(self.searchResultMode){
+                listheight = self.windowHeight - top - resultheight - optheight;
+            } else{
+                listheight = self.windowHeight - top - titheight - scheight - optheight;
+            }
             
             self.$defaultListContainer.find('.scroll-wrap').height(listheight);
         },
@@ -263,14 +501,30 @@
             self.windowWidth = $(window).width();
             self.windowHeight = $(window).height();
 
+            self._setListArea();
+
             var listwidth = self.$leftContainer.width();
+            var mapwidth, mapheight, mapmargin;
+            if(self.windowWidth < 768){
+                mapmargin = 0;
+                mapwidth = self.windowWidth;
+
+                mapheight = self.$defaultListContainer.find('.scroll-wrap').height();
+            } else{
+                if(self.$leftContainer.hasClass('close')){
+                    mapmargin = 24;
+                } else{
+                    mapmargin = listwidth;
+                }                
+                mapwidth = self.windowWidth - mapmargin;            
+                mapheight = self.windowHeight;
+            }
 
             self.$mapContainer.css({
-                width: self.windowWidth - listwidth,
-                'margin-left': listwidth
+                width: mapwidth,
+                height: mapheight,
+                'margin-left': mapmargin
             });
-
-            self._setListArea();
 
             self.$map.resize();
         }

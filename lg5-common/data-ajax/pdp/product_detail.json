@@ -32,6 +32,65 @@
                 "class":"badge"
             }
         ],
+        "pdp_visual_list":[
+            {
+                "link_name":"65UK6300PUE1",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum01.png",
+                "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 1",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PUE2",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum02.png",
+                "image_url":"/lg5-common/images/KRC0043/@thumb02.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 2",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PUE3",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRC0043/@indi03.jpg",
+                "image_url":"/lg5-common/images/KRC0043/@thumb03.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 3",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PU4E",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRC0043/@indi01.jpg",
+                "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 4",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PUE5",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRC0043/@indi02.jpg",
+                "image_url":"/lg5-common/images/KRC0043/@thumb02.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 5",
+                "image_desc":"graphic description"
+            },
+            {
+                "link_name":"65UK6300PUE6",
+                "type":"image",
+                "thumb_url":"/lg5-common/images/KRC0043/@indi03.jpg",
+                "image_url":"/lg5-common/images/KRC0043/@thumb03.jpg",
+                "image_alt":"LG Vacuum Cleaners A902RM 6",
+                "image_desc":"graphic description"
+            }
+
+        ],
+        "pdp_more_info":{
+            "visible":true,
+            "image_url":"/lg5-common/images/KRP0010/img-ncsi.jpg",
+            "image_alt":"ncsi획득",
+            "text":"고객만족도(NCSI) TV 부문 1위",
+            "modal_text":"수상내역 더보기",
+            "modal_url":"./modal/KRP0010-pdp-modal-award.html"
+        },
         "additional_purchase":[
             {
                 "product_id":"pid0001",

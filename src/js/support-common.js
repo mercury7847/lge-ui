@@ -97,7 +97,7 @@ CS.MD.validation = function() {
         _accessibility: function(el) {
             var self = this;
 
-            
+
         },
         _focus: function(el) {
             var self = this,
@@ -340,6 +340,8 @@ CS.MD.setPagination = function() {
 };
 
 
+
+
 (function($){
     CS.UI.elem.$doc = $(document);
     CS.UI.elem.$win = $(window);
@@ -383,36 +385,12 @@ CS.MD.setPagination = function() {
 
         setEventListener();
     }
-    function selectEngineer() {
-        if (!$('.engineer-carousel').length) return false;
 
+
+    function commonSlides() {
         vcui.require(['ui/carousel'], function () {
-            $('.engineer-carousel').vcCarousel({
-                swipeToSlide: true,
-                slidesToShow: 4,
-                arrows:false,
-                customPaging: function(carousel, i) {
-                    var $button = $('<button type="button" class="btn-indi"><span class="blind">'+(i+1)+'번 내용 보기'+'</span></button>');
-                    return $button;
-                },
-                responsive: [{
-                    breakpoint:768,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                    }
-                }]
-            });
-        });
-    }
-
-    function test() {
-        if (!$('.related-info-wrap').length) return false;
-
-        vcui.require(['ui/carousel'], function () {
-            $('.ui_carousel_slider').vcCarousel({
+            $('.related-info').length && $('.related-info').vcCarousel({
                 infinite: false,
-                swipeToSlide: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
                 responsive: [
@@ -426,14 +404,40 @@ CS.MD.setPagination = function() {
                     }
                 ]
             });
-        })
+
+            $('.engineer-carousel').length && $('.engineer-carousel').vcCarousel({
+                swipeToSlide: true,
+                slidesToShow: 4,
+                arrows:false,
+                customPaging: function(carousel, i) {
+                    var $button = $('<button type="button" class="btn-indi"><span class="blind">'+(i+1)+'번 내용 보기'+'</span></button>');
+                    return $button;
+                },
+                responsive: [{
+                    breakpoint:767,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                }]
+            });
+
+            $('.supplies-list-wrap .slide-wrap').length && $('.supplies-list-wrap .slide-wrap').vcCarousel({
+                slidesToShow: 3,
+                responsive: [{
+                    breakpoint:767,
+                    settings: {
+                        slidesToShow: 1,
+                    }
+                }]
+            });
+        });
     }
 
     function commonInit(){
         setTableScrollbar();
         checkPrivacy();
-        selectEngineer();
-        test();
+        commonSlides();
     }
 
     // CS.UI.elem.$win.ready( commonInit );

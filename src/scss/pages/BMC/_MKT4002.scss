@@ -1,0 +1,157 @@
+@charset "UTF-8";
+
+.ev-view-wrap {
+    max-width:1066px;
+    margin:0 auto;
+    .ev-detail-wrap {
+        position:relative;
+        padding:56px;
+        background:#fff;
+
+        .btn-group {
+            margin-top:24px;
+            text-align:center;
+        }
+
+        .sns-list {
+            position:absolute;
+            top:56px;
+            right:56px;
+            display:inline-block;
+            li {
+                float:left;
+                margin-left:8px;
+                &:first-child {
+                    margin-left:0;
+                }
+                @include mobile {
+                    margin:0 6px;
+                }
+                .ico-btn {
+                    display:block;
+                    width:32px;
+                    height:32px;
+                    &.url {
+                        background:url('/lg5-common/images/icons/icon-url.svg') no-repeat;
+                        background-size:32px 32px;
+                    }
+                    &.kk {
+                        background:url('/lg5-common/images/icons/icon-kakao.svg') no-repeat;
+                        background-size:32px 32px;
+                    }
+                    &.fb {
+                        background:url('/lg5-common/images/icons/icon-facebook.svg') no-repeat;
+                        background-size:32px 32px;
+                    }
+                    &.tw {
+                        background:url('/lg5-common/images/icons/icon-twitter.svg') no-repeat;
+                        background-size:32px 32px;
+                    }
+                    @include mobile {
+                        width:40px;
+                        height:40px;
+                        &.url,
+                            &.kk,
+                            &.fb,
+                            &.tw  {
+                            background-size:40px 40px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .ev-detail-top {
+            .tit-wrap {
+                padding-bottom:24px;
+                .flag-wrap {
+                    padding-bottom:8px;
+                }
+                .sub-tit {
+                    font-size:16px;
+                    line-height:24px;
+                }
+                .tit {
+                    font-size:28px;
+                    line-height:36px;
+                    font-weight:700;
+                }
+            }
+            .info-wrap {
+                padding:20px 0;
+                border-top:1px solid #ddd;
+                border-bottom:1px solid #ddd;
+                dl {
+                    display:table;
+                    width:100%;
+                    margin-top:12px;
+                    table-layout:fixed;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                    dt,dd {
+                        display:table-cell;
+                        vertical-align:middle;
+                        font-size:14px;
+                        line-height:20px;
+                    }
+                    dt {
+                        width:84px;
+                        color:#808080;
+                    }
+                }
+            }
+        }
+        
+
+        .ev-detail-bottom {
+            margin-top:48px;
+            .ev-cont {
+                img {
+                    display:block;
+                    max-width:100%;
+                }
+            }
+            
+        }
+
+    }
+    
+    .notice-wrap {
+        margin-top:32px;
+        padding:32px 56px;
+        background:#fff;
+        .inquiry-info {
+            text-align:center;
+            .txt {
+                margin-bottom:24px;
+                font-size:16px;
+                line-height:24px;
+                font-weight:700;
+            }
+        }
+        .btn-link {
+            margin-top:16px;
+            font-size:14px;
+            line-height:20px;
+            &::after {
+                width:6px;
+                height:6px;
+                border-width:1px 1px 0 0;
+            }
+        }
+    }
+
+    .btn-wrap {
+        @include clearfix;
+        margin-top:24px;
+        .btn {
+            &.bd-black {
+                background:transparent;
+            }
+            &:last-child {
+                float:right;
+            }
+        }
+    }
+}

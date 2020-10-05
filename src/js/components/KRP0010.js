@@ -3,27 +3,18 @@ $(window).ready(function(){
 
     $('.KRP0010').buildCommonUI();
 
-    /*
-    vcui.require(['ui/carousel'], function () {
-        $('.KRP0010').find('.ui_carousel_slider').vcCarousel({
-            infinite: false,
-            prevArrow:'.btn-arrow.prev',
-            nextArrow:'.btn-arrow.next',
-            swipeToSlide: true,
-            slidesToShow: 6,
-            slidesToScroll: 1,
-            
-        });
-    });
-*/
-
     var KRP0010 = {
         product_quantity : 1,
         product_price : 0,
+        pdp_visual_list : [],
 
         init: function() {
             //self = this;
-            self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual').first();
+            self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual');
+            self.$pdpImage = self.$pdpVisual.find('div.pdp-visual-image'); 
+            self.$pdpThumbSlider = self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider div.pdp-thumbnail-list ul.thumbnail-list');
+            self.$pdpMoreInfo = self.$pdpVisual.find('div.pdp-more-info');
+
             self.$detailInfo =  $('div.pdp-wrap div.pdp-info-area div.product-detail-info').first();
             self.$detailOption = self.$detailInfo.find('div.product-detail-option').first();
             self.$additionalPurchase = self.$detailInfo.find('div.additional-purchase').first();
@@ -36,7 +27,6 @@ $(window).ready(function(){
             self.$preorderButton = self.$detailInfo.find('div.pre-order');
             self.$rentalButton = self.$detailInfo.find('div.rental');
             self.$displayProduct = self.$detailInfo.find('div.display-product');
-
 
             this.bindEvents();
             
@@ -99,38 +89,6 @@ $(window).ready(function(){
                 e.preventDefault();
                 console.log('이동',$(this).data('url'));
             });
-
-            /*
-            //탭 이벤트
-            self.$mypage.find('.ui_tab').on('tabchange', function(e, data) {
-                if(firstLoad) {
-                    //처음 변경되는 탭을 무시한다 화면에 최초 진입시
-                    //탭을 통한 데이타 갱신이 아니라 따로 데이타를 전달할 경우 사용
-                    firstLoad = false;
-                    return;
-                }
-                var href = $(data.button).attr('href');
-                this.requestData({'type': href.replace("#", "")});
-            });
-
-            //모달팝업 버튼
-            $('#laypop .btn-wrap button:not(.ui_modal_close)').on('click',function(e){
-                $(e.currentTarget).closest('#laypop').vcModal('hide');
-                //모두 삭제
-                var removeItems = [];
-                self.$mypage.find('ul.notice-lists').find('li.list div.notice-box button.btn-del').each(
-                    function () {
-                        removeItems.push($(this).data('id'))
-                    }
-                );
-                requestDeleteData({'id': removeItems});
-            });
-
-            self.$setting.on('click',function(e){
-                //설정
-                e.preventDefault();
-            });
-            */
         },
 
         requestDetailData: function(param) {
@@ -165,6 +123,62 @@ $(window).ready(function(){
                     contentHtml += (' <span class="' + item.class + '">' + item.text +'</span>');
                 });
                 target.html(contentHtml);
+
+                //이미지 슬라이드
+                contentHtml = "";
+                pdp_visual_list = data.pdp_visual_list instanceof Array ? data.pdp_visual_list : [];
+                pdp_visual_list.forEach(function(item, index) {
+                    item.index = "" + index;
+                    switch(item.type) {
+                        case "image":
+                            var template = '<li class="thumbnail ui_carousel_slide" data-idx="{{index}}">' +
+                                '<a href="#" data-link-area="product_summary-thumbnail" data-link-name="{{link_name}}">'+
+                                '<img data-src="{{thumb_url}}" class="lazyloaded" alt="{{image_alt}}" data-loaded="true">'
+                                '</a></li>';
+                            contentHtml += vcui.template(template,item);
+                            break;
+                        default:
+                            break;
+                    }
+                });
+                self.$pdpThumbSlider.html(contentHtml);
+                vcui.require(['ui/carousel'], function () {
+                    self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider').vcCarousel({
+                        infinite: false,
+                        prevArrow:'.btn-arrow.prev',
+                        nextArrow:'.btn-arrow.next',
+                        swipeToSlide: true,
+                        slidesToShow: 6,
+                        slidesToScroll: 1,
+                        focusOnChange:true,
+                        focusOnSelect: true
+                    });
+                    self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider').find('li.ui_carousel_slide').on('click', function (e){
+                        if(self.$selectItemTarget) {
+                            self.$selectItemTarget.removeClass('active');
+                        }
+                        self.$selectItemTarget = $(e.currentTarget);
+                        $(e.currentTarget).addClass('active');
+                        var slideClicked = $(e.currentTarget).attr("data-idx");
+                        var item = pdp_visual_list[slideClicked];
+                        self.$pdpImage.find('a').attr('data-link-name',item.link_name);
+                        self.$pdpImage.find('a img').attr({'src':item.image_url,'alt':item.image_desc});
+                    });
+                });
+
+                //하단배너
+                if(data.pdp_more_info.visible) {
+                    self.$pdpMoreInfo.find('div.inner p.text-info span.text').html(data.pdp_more_info.text);
+                    self.$pdpMoreInfo.find('div.inner p.text-info img.img-area').attr({src:data.pdp_more_info.image_url,alt:data.pdp_more_info.image_alt});
+                    
+                    var modalAtag = self.$pdpMoreInfo.find('div.inner a.view-more');
+                    modalAtag.attr('href',data.pdp_more_info.modal_url);
+                    modalAtag.contents().get(0).data = data.pdp_more_info.modal_text;
+                    modalAtag.find('span.bt').text(data.pdp_more_info.modal_text + ' 팝업 열림');
+                    self.$pdpMoreInfo.show();
+                } else {
+                    self.$pdpMoreInfo.hide();
+                }
 
                 //타이틀
                 target = self.$detailInfo.find('div.product-name h2.name');

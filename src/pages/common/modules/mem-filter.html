@@ -21,6 +21,16 @@
                 </span>
                 <button type="button" id="button-calendar-search" class="btn pink"><span>조회</span></button>
             </div>
+            @@if ( context.radio ) {
+            <div class="input-box">
+                @@for ( var i=0; i < radio.length; i++ ) {
+                <span class="rdo-wrap">
+                    <input type="radio" id="`+radio[i].id+`" name="`+radio[i].name+`" `+radio[i].checked+` value="`+radio[i].value+`">
+                    <label for="`+radio[i].id+`">`+radio[i].label+`</label>
+                </span>
+                }
+            </div>
+            }
         </dd>
     </dl>
 </div>
