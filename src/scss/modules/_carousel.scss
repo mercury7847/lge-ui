@@ -215,86 +215,88 @@
             }
         }
     }
-    .indi-wrap {
+    .custom-indi-wrap {
+        position:absolute;
+        left:20px;
         bottom:4px;
-        .indi-conts {
+        right:20px;
+        z-index:10;
+        font-size:0;
+        text-align:center;
+        .custom-indis {
             display:inline-block;
-            height:28px;
+            max-width:calc(100% - 30px);
             vertical-align:top;
-            @include mobile {
-                width:calc(100% - 100px);
-            }
-        }
-        li {
-            vertical-align:bottom;
-            width:100px;
-            @include mobile {
-                width:10%;
-            }
-            .btn-indi {
-                position:relative; 
-                width:100%;
-                height:4px;
-                margin-top:24px;
-                border-radius:0;
-                background:transparent; 
-                text-align:left;
-                &::before {
-                    content:' ';
-                    position:absolute;
-                    bottom:0;
-                    left:0;
-                    right:0;
-                    height:4px;
-                    background:rgba(#fff, .4);
-                }
-                .bar {
-                    position:absolute; 
-                    bottom:0; 
-                    left:0; 
-                    width:0;
-                    height:4px; 
-                    background-color:#fff;
-                }
-            }
-            &.on {
-                width:500px;
-                @include mobile {
-                    width:80%;
-                }
-                .btn-indi {
-                    height:28px;
-                    margin-top:0;
-                    padding-bottom:4px;
-                    p {
-                        position:relative; 
-                        height:24px;
-                        color:#fff; 
-                        font-size:16px; 
-                        line-height:24px;
-                        overflow:hidden;
-                        text-overflow:ellipsis;
-                        white-space:nowrap;
-                    }
-                    .bar {
-                        @keyframes widths {
-                            from {width:0;}
-                            to {width:100%;}
-                        }
+            .indis {
+                display:table;
+                width:auto;
+                li {
+                    display:table-cell;
+                    width:104px;
+                    padding:0 2px;
+                    .btn-indi {
+                        position:relative;
+                        display:block;
                         width:100%;
-                        animation-name:widths;
-                        animation-duration:5s;
+                        overflow:hidden;
+                        text-align:left;
+                        &::after {
+                            content:' ';
+                            display:block;
+                            position:relative;
+                            width:100%;
+                            height:4px;
+                            background:rgba(#fff, .4);
+                        }
+                        p {
+                            width:0;
+                            height:24px;
+                            color:#fff;
+                            font-size:16px;
+                            line-height:24px;
+                            white-space:nowrap;
+                            overflow:hidden;
+                            text-overflow:ellipsis;
+                            opacity:0;
+                        }
+                        .bar {
+                            position:absolute;
+                            left:0;
+                            bottom:0;
+                            width:0;
+                            height:4px;
+                            background:#fff;
+                        }
+                    }
+
+                    &.on {
+                        width:504px;
+                        .btn-indi {
+                            p {
+                                width:auto;
+                                opacity:1;
+                            }
+                            @keyframes bars {
+                                from { width:0; }
+                                to { width:100%; }
+                            }
+                            .bar {
+                                width:100%;
+                                animation-name:bars;
+                                animation-duration:5s;
+                            }
+                        }
                     }
                 }
             }
         }
-        .indi_control {
+        .indi-control {
             display:inline-block; 
             position:relative; 
             width:28px;
             height:28px; 
             margin-top:12px;
-            margin-left:6px; 
+            margin-left:2px; 
             font-size:0;
             line-height:28px;
             text-align:center;
@@ -306,6 +308,18 @@
                 margin:0 2px; 
                 background-color:#fff; 
                 vertical-align:middle;
+            }
+        }
+    }
+    .indi-wrap {
+        .indi-conts {
+            display:inline-block;
+            max-width:(1284px - 30px);
+            vertical-align:top;
+            .custom-indis {
+                display:flex;
+                width:auto;
+                max-width:100%;
             }
         }
     }
@@ -347,10 +361,38 @@
             padding: 0 40px 56px;
             border-radius: 4px;
             background-color: #fff;
+            @include mobile {
+                padding: 0 28px 32px;
+            }
             .badge-wrap {
                 position: absolute;
                 top: 0;
                 left: 0;
+                .badge {
+                    display: block;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    background-color: #65c467;
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 1;
+                    color: #fff;
+                    text-align: center;
+                }
+                &.thin-type {
+                    top: 24px;
+                    left: 24px;
+                }
+                @include mobile {
+                    .badge {
+                        padding: 5px 8px;
+                        font-size: 10px;
+                    }
+                    &.thin-type {
+                        top: 18px;
+                        left: 18px;
+                    }
+                }
             }
             .product-image {
                 a {
@@ -394,6 +436,9 @@
             .product-info {
                 margin-bottom: 24px;
                 padding: 0 14px;
+                @include mobile {
+                    padding: 0;
+                }
             }
             .price-area {
                 margin-top: 14px;
@@ -433,20 +478,27 @@
                 }
                 @include mobile {
                     .reduced-price {
-                        font-size: 24px;
-                        font-weight: bold;
-                        line-height: 1.33;
-                        color: #222222;
+                        font-size: 20px;
+                        line-height: 23px;
                     }
                 }
             }
             .btn {
                 width: 100%;
+                @include mobile {
+                    padding: 11px 0;
+                    font-size: 14px;
+                    line-height: 18px;
+                }
             }
             .chk-wish-wrap {
                 position: absolute;
                 top: 24px;
                 right: 24px;
+                @include mobile {
+                    top: 18px;
+                    right: 18px;
+                }
             }
         }
     }

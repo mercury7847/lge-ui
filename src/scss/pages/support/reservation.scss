@@ -2,8 +2,6 @@
 
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
-@import "../../modules/index";
-@import "../../layout/index";
 
 .support {
     .login-wrap {
@@ -234,9 +232,6 @@
         }
         .chk-wrap {
             float: right;
-            &.float-left {
-                float: left;
-            }
         }
     }
 
@@ -259,7 +254,6 @@
     }
 }
 
-@import "../../support/pages/KR50CS311";
 @import "../../support/pages/KR50CS312";
 @import "../../support/pages/KR50CS332";
 @import "../../support/pages/KR50CS332";

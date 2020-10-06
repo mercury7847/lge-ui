@@ -8,18 +8,20 @@
 }
 @@if ( !context.carousel ) {
 <div class="slide-wrap hero-banner ui_wide_slider">
-    <div class="indi-wrap">
-        <ul class="indi-conts ui_wideslider_dots">
-            @@for ( var i=0; i < context.indiArr.length; i++ ) {
-            <li>
-                <button type="button" class="btn-indi">
-                    <p>`+indiArr[i]+`</p>
-                    <div class="bar"></div>
-                </button>
-            </li>
-            }
-        </ul>
-        <button type="button" class="indi_control ui_carousel_play play">
+    <div class="custom-indi-wrap">
+        <div class="custom-indis">
+            <ul class="indis ui_wideslider_dots">
+                @@for ( var i=0; i < context.indiArr.length; i++ ) {
+                <li>
+                    <button type="button" class="btn-indi">
+                        <p>`+indiArr[i]+`</p>
+                        <div class="bar"></div>
+                    </button>
+                </li>
+                }
+            </ul>
+        </div>
+        <button type="button" class="indi-control ui_carousel_play play">
             <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
         </button>
     </div>
@@ -83,12 +85,15 @@
             <!--  slide -->
             <div class="slide-conts ui_carousel_slide">
                 <div class="slide-box">
-                    <div class="badge-wrap"><img src="`+slideArr[i].badge+`" alt="`+slideArr[i].flagText+`"></div>
+                    `+slideArr[i].badge+`
                     <div class="product-image" aria-hidden="true">
                         <a href="#"><img src="`+slideArr[i].img+`" alt=""></a>
                     </div>
                     <div class="product-info">
-                        `+slideArr[i].flag+`
+                        @@include('./common/modules/flags.html', {
+                            "borderType": true,
+                            "flags": [ "NEW","BEST" ]
+                        })
                         <div class="product-name">
                             <a href="#">`+slideArr[i].name+`</a>
                         </div>

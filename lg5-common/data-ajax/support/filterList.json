@@ -5,7 +5,7 @@
         "filterList":[
             {
                 "topic": "ALL",
-                "code": "LCL10005001"
+                "code": "ALL"
             },
             {
                 "topic": "기능",
