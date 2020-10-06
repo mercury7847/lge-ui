@@ -321,6 +321,11 @@
                 margin-left:0;
             }
         }
+        .btn-group {
+            .btn {
+                margin-left:0;
+            }
+        }
         @include mobile {
             padding:0;
         }
