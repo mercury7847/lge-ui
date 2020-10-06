@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>PC 모델명 및 시리얼번호 확인 방법 팝업 열기</span></button>
+    </div>
+
+
+    <article id="popup" class="popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit"><span>PC 모델명 및 시리얼번호 확인 방법</span></h1>
+        </header>
+        <section class="pop-conts academy-pop no-footer">
+            <p class="noti-txt">PC 모델명 및 시리얼번호는 소지하고 계신 PC/모니터의 밑면 또는 측면 바코드 부근에 기재되어 있습니다.</p>
+            <div class="example-list">
+                <dl>
+                    <dt>모델명</dt>
+                    <dd>예)PC 모델명 : 15Z980-GA70A</dd>
+                </dl>
+                <dl>
+                    <dt>S/N (시리얼번호/일련번호)</dt>
+                    <dd>예) 701ABCD123456</dd>
+                </dl>
+                <ul>
+                    <li><img src="/lg5-common/images/BMC/img_model01.jpg" alt="예시이미지"></li>
+                    <li><img src="/lg5-common/images/BMC/img_model02.jpg" alt="예시이미지"></li>
+                </ul>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+</body>
+</html>

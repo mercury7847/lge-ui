@@ -562,3 +562,53 @@
         }
     }
 }
+.card-benefit-wrap {
+    text-align: left;
+    .benefit-list {
+        @include font-medium;
+
+        [class*="-card"] {
+            position: relative;
+            margin-top: 20px;
+            padding-left: 104px;
+            background: no-repeat 0 0;
+            &:first-child {
+                margin-top: 0;
+            }
+            &[class*="kb"] {
+                background-image: url('/lg5-common/images/UTC/kb-logo.png');
+            }
+            &[class*="nh"] {
+                background-image: url('/lg5-common/images/UTC/nh-logo.png');
+            }
+            &[class*="sh"] {
+                background-image: url('/lg5-common/images/UTC/sh-logo.png');
+            }
+        }
+        dt {
+            font-weight: $font-weight-bold;
+        }
+        @include mobile {
+            @include font-small;
+            [class*="-card"] {
+                padding-left: 52px;
+                background-size: 40px 24px;
+            }
+            dt {
+                margin-bottom: 4px;
+            }
+        }
+    }
+    .benefit-info {
+        margin-top: 48px;
+        padding: 24px;
+        background-color: #f4f4f4;
+        .bullet-list {
+            margin-top: 0;
+        }
+        @include mobile {
+            margin-top: 32px;
+            padding: 12px;
+        }
+    }
+}

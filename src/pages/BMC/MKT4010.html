@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>참여내역조회 팝업 열기</span></button>
+    </div>
+
+
+    <article id="popup" class="popup-wrap full">
+        <header class="pop-header">
+            <h1 class="tit"><span>참여 내역 조회</span></h1>
+        </header>
+        <section class="pop-conts academy-pop">
+            <p class="bold-txt">이벤트 참여 시 입력하신 구매자 이름과 휴대폰 번호를 입력해 주세요.</p>
+            <div class="form-wrap">
+                <dl class="forms">
+                    <dt class="tit"><label for="name">구매자 이름</label></dt>
+                    <dd class="conts">
+                        <span class="input-wrap block">
+                            <input type="text" id="name" placeholder="이름을 입력해 주세요.">
+                        </span>
+                    </dd>
+                </dl>
+                <dl class="forms">
+                    <dt class="tit"><label for="phone" class="req">휴대폰번호<span class="blind">필수입력</span></label></dt>
+                    <dd class="conts">
+                        <span class="input-wrap block">
+                            <input type="number" id="phone" placeholder="휴대폰 번호를 입력해 주세요.">
+                        </span>
+                    </dd>
+                </dl>
+            </div>
+        </section>
+        <footer class="pop-footer center no-padding">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>확인</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+</body>
+</html>

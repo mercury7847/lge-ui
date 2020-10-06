@@ -122,10 +122,12 @@
         &:disabled, &:read-only {
             background:#f4f4f4;
             border-color:transparent;
-            color:#ccc;
             &:focus {
                 box-shadow:none;
             }
+        }
+        &:disabled {
+            color:#ccc;
         }
     }
 

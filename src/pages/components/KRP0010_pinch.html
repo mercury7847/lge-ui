@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+
+	<title>Pinch Zoom</title>
+
+	<style type="text/css">
+		body, html {
+            text-align: center;
+            color: white;
+            margin : 0;
+            padding : 0;
+            height: 100%;
+        }
+
+        body {
+            background-color: #333;
+            font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        }
+
+        #wrap {
+            position: relative;
+            /* margin : 10px; */
+            width: 90%;
+            height: 800px;
+            border: 2px solid red;
+        }
+        #container {
+            position: relative;
+            width: 100%;
+            height: 650px;
+            border: 2px solid blue;
+            background-color: white;
+        }
+        #controller {
+            position: relative;
+            height: 150px;
+            overflow: hidden;
+        }
+
+        img {
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;            
+        }
+
+        ul {
+            position: relative;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+
+        }
+        li {
+            position: relative;
+            display: inline;
+        }
+
+        li.on img{
+            border:2px solid red;
+        }
+        li img{
+            width: 100px;
+        }
+
+        .ui_pinch_zoom {
+            background-color: white;
+        }
+
+
+	</style>
+    
+    <script type="text/javascript" src="./js/libs/jquery.min.js"></script>
+    <script src="./js/vcui.js"></script>
+    <script src="./js/lge.js"></script>
+
+</head>
+
+<body>
+    <div id="wrap">        
+        <div id="controller">
+            <ul id="thumbnail">
+                <li data-id="0"><img src="./images/small_0.jpg"></li>
+                <li class='on' data-id="1"><img src="./images/small_1.jpg"></li>
+                <li data-id="2"><img src="./images/small_2.jpg"></li>
+            </ul>
+            <button id="zoomin"> zoom in </button>
+            <button id="zoomout"> zoom out </button>
+        </div>
+        <div id="container">
+            <div class="ui_pinch_zoom">
+                <!-- <img data-src-mobile="images/xlarge_m_0.jpg" data-src-pc="images/xlarge_0.jpg"/> -->
+            </div>
+        </div>
+
+    </div>
+
+	<script type='text/javascript'>
+		$(function () {
+
+            vcui.require([
+                'helper/responsiveImage',
+                'ui/pinchZoom'
+            ], function (ResponsiveImage, PinchZoom) {
+
+
+                var pinch = new PinchZoom('.ui_pinch_zoom');
+                
+                $('#zoomin').on('click', function(){
+                    // var zoom = pinch.getZoomFactor();
+                    // pinch.runZoom(zoom+1); 
+                    pinch.runZoom(2);
+                });
+
+                $('#zoomout').on('click', function(){
+                    // var zoom = pinch.getZoomFactor();
+                    // pinch.runZoom(zoom-1); 
+                    pinch.runZoom(1);
+                });
+
+                // lge.showLoading();
+
+                $(window).on('breakpointchange', function(e, data){
+                    // console.log(data);
+                    pinch.update(true); 
+
+                });
+
+                $('#thumbnail li').on('click', function(e){
+
+                    var $target = $(e.currentTarget);
+                    $target.addClass('on').siblings().removeClass('on');
+                    var id = $target.data('id');      
+                    
+                    var $img = $('<img style="opacity:0;" data-src-mobile="images/xlarge_m_'+ id +'.jpg" data-src-pc="images/xlarge_'+ id +'.jpg"/>')
+                    $('.ui_pinch_zoom').html($img );
+                    ResponsiveImage.run($('.ui_pinch_zoom'));
+                    
+                    pinch.update(true);
+                    $img.animate({opacity:1});
+                    
+                })
+
+                $('#thumbnail li').filter('.on').trigger('click');
+               
+               
+            });
+		});
+    </script>
+    
+</body>
+
+</html>

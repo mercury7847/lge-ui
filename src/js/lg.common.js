@@ -144,6 +144,7 @@
             var self = this;
 
             vcui.require([  
+                'helper/responsiveImage',
                 'helper/breakpointDispatcher',
                 'common/header', 
                 'common/footer',  
@@ -158,13 +159,9 @@
                 "ui/videoBox",
                 "ui/youtubeBox",
                 "ui/imageSwitch"
-            ], function (BreakpointDispatcher) {
+            ], function (ResponsiveImage, BreakpointDispatcher) {
                 
-                // var breakpoint = {
-                //     mobile: 768,
-                //     pc: 10000000
-                // }
-                //1780
+                
     
                 new BreakpointDispatcher({
                     matches: {
@@ -204,7 +201,14 @@
                         } 
                         */
                     }
-                }).start();       
+                }).start();     
+                
+                var breakpoint = {
+                    mobile: 768,
+                    pc: 100000
+                }
+                
+                new ResponsiveImage('body', breakpoint);
 
 
                 var $doc = $(document);                       
