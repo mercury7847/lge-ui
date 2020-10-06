@@ -23,6 +23,15 @@
 			font-size:10px;
 			line-height:15px;
 		}
+
+		&.gray {
+			border-color:#616161;
+			color:#616161;
+		}
+		&.end {
+			border-color:#CCCCCC;
+			color:#CCCCCC;
+		}
 	}
 	&.bg-type {
 		.flag {
