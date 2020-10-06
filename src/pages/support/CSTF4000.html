@@ -4,13 +4,6 @@
     "pageCSS": [
         "support/support",
         "support/reservation"
-    ],
-    "pageJS": [
-        "support-common",
-        "support/selectCategory"
-    ],
-    "libJS": [
-        "jquery.mCustomScrollbar"
     ]
 })
 <body>
@@ -24,23 +17,38 @@
                 'button': [
                     {
                         'text': '요금 및 보증기간 안내',
-                        'attr': 'class="btn bd-gray btn-small" title="레이어 열림"'
-                    }, {
-                        'text': '유상서비스 적용 안내',
-                        'attr': 'class="btn bd-gray btn-small" title="레이어 열림"'
+                        'attr': 'href="#warrantyPopup" class="btn bd-gray btn-small" data-control="modal" title="레이어 열림"'
                     }
                 ]
             })
             
-            <div class="contents support KR50CS411">
-                <div class="login-wrap">
-                    <div class="inner">
-                        <p class="text">이메일을 보내기 위해 계정이 필요하지는 않지만, 로그인을 하시면 고객님의 세부 정보가 자동으로 입력됩니다.</p>
-                        <a href="#" class="btn-text">로그인하기</a>
-                    </div>
-                </div>
+            <div class="contents support reservation">
+                @@include('./common/support/login-guide.html', {
+                    'text': '출장 서비스를 신청하기 위해 계정이 필요하지 않지만, 로그인을 하시면 고객님의 세부 정보가 자동으로 입력됩니다.'
+                })
                 <div class="contents-inner">
-                    <form action="/html/support/KR50CS412.html" id="submitForm" autocomplete="off">
+                    <form action="/html/support/CSTF4010.html" id="submitForm" autocomplete="off">
+                        <div class="process-wrap">
+                            <ol class="process-list">
+                                <li>
+                                    <span class="num">STEP 01</span>
+                                    <strong class="tit">약관동의 및 제품 선택</strong>
+                                </li>
+                                <li>
+                                    <span class="num">STEP 01</span>
+                                    <strong class="tit">증상 및 제품정보 입력</strong>
+                                </li>
+                                <li>
+                                    <span class="num">STEP 01</span>
+                                    <strong class="tit">예약자 정보 입력</strong>
+                                </li>
+                                <li>
+                                    <span class="num">STEP 01</span>
+                                    <strong class="tit">서비스 신청일 및 엔지니어 선택</strong>
+                                </li>
+                            </ol>
+                        </div>
+
                         <div class="section">
                             <div class="section-content">
                                 <div class="field-wrap">
@@ -62,9 +70,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <ul class="dot-list top-border">
-                                    <li>3건 이상의 제품에 대해 서비스 접수하실 경우, 콜센터(1544-7777)를 이용하시면 1명의 서비스 기사로 접수를 할 수 있습니다.</li>
-                                    <li>무상 보증 기간 경과 된 제품 또는 사용자 과실 등으로 인한 제품 고장의 서비스 신청 건은 유상으로 서비스 비용이 청구됩니다. (자세한 내용은 '요금 및 보증기간 안내'를 참조하시기 바랍니다.)</li>
+                                <ul class="bullet-list top-border">
+                                    <li class="b-txt">3건 이상의 제품에 대해 서비스 접수하실 경우, 콜센터(1544-7777)를 이용하시면 1명의 서비스 기사로 접수를 할 수 있습니다.</li>
+                                    <li class="b-txt">무상 보증 기간 경과 된 제품 또는 사용자 과실 등으로 인한 제품 고장의 서비스 신청 건은 유상으로 서비스 비용이 청구됩니다. (자세한 내용은 '요금 및 보증기간 안내'를 참조하시기 바랍니다.)</li>
                                 </ul>
                             </div>
                         </div>
@@ -345,16 +353,16 @@
                                                 <div class="address-default">
                                                     <div class="chk-wrap">
                                                         <input type="checkbox" id="defaultAdress">
-                                                        <label for="defaultAdress">기본 주소로 저장</label>      
+                                                        <label for="defaultAdress">기존 주소로 선택하기</label>      
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <ul class="dot-list top-border">
-                                    <li>휴대전화 인증 가능한 정보로 입력해주시기 바랍니다.</li>
-                                    <li>입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다.</li>
+                                <ul class="bullet-list top-border">
+                                    <li class="b-txt">휴대전화 인증 가능한 정보로 입력해주시기 바랍니다.</li>
+                                    <li class="b-txt">입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다.</li>
                                 </ul>
                             </div>
                         </div>
@@ -467,9 +475,9 @@
                                         <ul class="indi-conts ui_carousel_dots"></ul>
                                     </div>
                                 </div>
-                                <ul class="dot-list top-border">
-                                    <li>평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.</li>
-                                    <li>[인증/예약]버튼 클릭 시 휴대전화 인증이 진행되며, 그 후에 예약이 완료됩니다.</li>
+                                <ul class="bullet-list top-border">
+                                    <li class="b-txt">평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.</li>
+                                    <li class="b-txt">[인증/예약]버튼 클릭 시 휴대전화 인증이 진행되며, 그 후에 예약이 완료됩니다.</li>
                                 </ul>
                             </div>
                         </div>
@@ -490,6 +498,18 @@
         </div>
              
         @@include('./common/footer.html')
-    </div>      
+    </div>
+    <!-- 유상 및 보증기간 팝업 -->
+    @@include('./support/modal/rates-warranty-guide.html')
+    
+    <!-- 휴대폰인증 팝업 -->
+    <!-- 제품 해결 팝업 -->
+    <!-- 엔지니어 선택 팝업 -->
+    <!-- 예약 완료 팝업 -->
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/selectCategory.min.js"></script>
 </body>
 </html> 

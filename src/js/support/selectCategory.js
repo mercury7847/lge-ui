@@ -1,8 +1,5 @@
 $(window).ready(function() {
-    CS.MD.drawOption();
-    $('[data-target]').drawOption();
-
-    vcui.require(['ui/carousel', 'ui/validation', 'ui/modal'], function () {
+    vcui.require(['ui/carousel'], function () {
         $('.category-carousel').vcCarousel({
             infinite: false,
             swipeToSlide: true,

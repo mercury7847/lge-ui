@@ -2,6 +2,7 @@
 <!-- Desktop 일 경우 : Visual -->
 <div class="pdp-visual-area hidden-sm" id="desktop_summary_gallery">
     <div class="pdp-visual">
+        <!--image-->
         <div class="default pdp-visual-image">
             <div class="badge">
                 <img src="/lg5-common/images/dummy/@img-promotion-badge.png" alt="으뜸 효율 10%">
@@ -13,56 +14,71 @@
                 <p class="hidden mobile">graphic description : </p>
             </a>
         </div>
+        <!--video youtube-->
+        <div class="pdp-visual-video youtube-box" style="display:none;">
+            <a href="#" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-name="PetoQo1eUww">
+                <div class="img-box"><img data-src="/lg5-common/images/KRC0043/@thumb02.jpg" class="lazyload" alt="" /></div>
+            </a>
+            <a href="#" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-name="PetoQo1eUww">plays audio description video</a>
+        </div>
+        <!--animation mp4/webm-->
+        <div class="pdp-visual-animation animation-box" style="display:none;">
+            <a href="#" role="button" data-src="/lg5-common/videos/signature_rain_view.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video">Plays audio Description Video</a>
+            <img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload" />
+            <p class="hidden">graphic description : </p>
+            <div class="animation-area">
+                <video autoplay muted loop>
+                    <source src="/lg5-common/videos/Highlight_backround.mp4" type="video/mp4">
+                    <!-- WEBM 동영상을 제공하는 경우
+                    <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                    -->
+                </video>
+                <div class="controller-wrap wa-btn">
+                    <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-name="">Pause Video</button>
+                </div>
+            </div>
+            <!-- caption -->
+            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+            <!-- // caption -->
+        </div>
+
 
         <div class="pdp-thumbnail-nav" id="base_desktop_target">
-            <div class="ui_carousel_slider">
-                <div class="indi-wrap">
-                    <ul class="ui_carousel_dots">
-                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-                    </ul>
-                </div>
-                <div class="pdp-thumbnail-list ui_carousel_list">
-                    <ul class="thumbnail-list ui_carousel_track">
-                        <li class="view ui_carousel_slide" data-idx="0">
+            <div class="inner">
+                <div class="pdp-thumbnail-list">
+                    <ul class="thumbnail-list">
+                        <li class="view " data-idx="0">
                             <a href="#" title="Open the 360view layer popup" data-link-area="product_summary-360_view" data-link-name="65UK6300PUE">
                                 <img data-src="/lg5-common/images/KRP0010/icon-360.png" src="/lg5-common/images/KRP0010/icon-360.png" class="lazyloaded" alt="LG Vacuum Cleaners A902RM 360view" data-loaded="true">
                             </a>
                         </li>
-                        <li class="video iframe ui_carousel_slide" data-idx="1">
+                        <li class="video iframe " data-idx="1">
                             <a href="#" title="Open the video layer popup" data-link-area="product_summary-video" data-link-name="65UK6300PUE">
                                 <img data-src="/lg5-common/images/KRP0010/icon-movie.png" src="/lg5-common/images/KRP0010/icon-movie.png" class="lazyloaded" alt="LG Vacuum Cleaners A902RM Video" data-loaded="true">
                             </a>
                         </li>
-                        <li class="thumbnail ui_carousel_slide active" data-idx="2">
+                        <li class="thumbnail  active" data-idx="2">
                             <a href="#" data-link-area="product_summary-thumbnail" data-link-name="65UK6300PUE">
                                 <img data-src="/lg5-common/images/KRP0010/@dummy-thum01.png" src="/lg5-common/images/KRP0010/@dummy-thum01.jpg" class="lazyloaded" alt="LG Vacuum Cleaners A902RM 2" data-loaded="true">
                             </a>
                         </li>
-                        <li class="thumbnail ui_carousel_slide" data-idx="3">
+                        <li class="thumbnail " data-idx="3">
                             <a href="#" data-link-area="product_summary-thumbnail" data-link-name="65UK6300PUE">
                                 <img data-src="/lg5-common/images/KRP0010/@dummy-thum02.png" src="/lg5-common/images/KRP0010/@dummy-thum01.png" class="lazyloaded" alt="LG Vacuum Cleaners A902RM 2" data-loaded="true">
                             </a>
                         </li>
-                        <li class="thumbnail ui_carousel_slide" data-idx="4">
+                        <li class="thumbnail " data-idx="4">
                             <a href="#" data-link-area="product_summary-thumbnail" data-link-name="65UK6300PUE">
                                 <img data-src="/lg5-common/images/KRP0010/@dummy-thum01.png" src="/lg5-common/images/KRP0010/@dummy-thum01.png" class="lazyloaded" alt="LG Vacuum Cleaners A902RM 2" data-loaded="true">
                             </a>
                         </li>
-                        <li class="thumbnail ui_carousel_slide" data-idx="5">
+                        <li class="thumbnail  more" data-idx="5">
                             <a href="#" data-link-area="product_summary-thumbnail" data-link-name="65UK6300PUE">
                                 <img data-src="/lg5-common/images/KRP0010/@dummy-thum02.png" src="/lg5-common/images/KRP0010/@dummy-thum01.png" class="lazyloaded" alt="LG Vacuum Cleaners A902RM 2" data-loaded="true">
-                            </a>
-                        </li>
-                        <li class="thumbnail ui_carousel_slide" data-idx="5">
-                            <a href="#" data-link-area="product_summary-thumbnail" data-link-name="65UK6300PUE">
-                                <img data-src="/lg5-common/images/KRP0010/@dummy-thum02.png" src="/lg5-common/images/KRP0010/@dummy-thum01.png" class="lazyloaded" alt="LG Vacuum Cleaners A902RM 2" data-loaded="true">
+                                <span class="count">+5</span>
                             </a>
                         </li>
                     </ul>
-                </div>
-                <div class="slide-controls">
-                    <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                    <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
                 </div>
             </div>
         </div>
@@ -127,16 +143,10 @@
         </div>
     </div>
 
-
 </div>
 <!-- // Mobile 일 경우 : Visual -->
 
 
 
 <!-- modal -->
-<!-- img view layer
-include('./common/partials/modal/KRP0010-pdp-modal.html')
--->
-<!-- 수상내역
-include('./common/partials/modal/KRP0010-pdp-modal-award.html')
--->
+@@include('./common/partials/modal/KRP0010-pdp-modal.html')
