@@ -156,9 +156,10 @@
         @@include('./common/footer.html')
     </div>     
     
-    <!-- include('./common/modules/alert-modal.html', {
-        "alertTit" : "문자 상담 문의를 접수하시겠습니까?",
-        "confirmType": true
-    }) -->
+    include('./common/modules/alert-modal.html', {
+        "msgOnly": true,
+        "msg" : "문자 상담 문의를 접수하시겠습니까?",
+        "twobtn": true
+    })
 </body>
 </html> 

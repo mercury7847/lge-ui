@@ -30,7 +30,13 @@
     .section-area {
         position: relative;
         .section {
-            @include globalBackground;
+            padding:56px;
+            border-radius:4px;
+            background:#fff;
+            @include mobile {
+                padding:40px 24px;
+                border-radius:0;
+            }
             & + .section {
                 margin-top:48px;
                 @include mobile {
