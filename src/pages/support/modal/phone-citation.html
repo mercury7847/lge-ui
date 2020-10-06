@@ -1,0 +1,54 @@
+
+<article id="citationPopup" class="popup-wrap type-C">
+    <header class="pop-header">
+        <h1 class="tit"><span>휴대 전화 인증</span></h1>
+    </header>
+    <section class="pop-conts">
+        <div class="field-wrap">
+            <div class="row">
+                <div class="field-item block">
+                    <div class="field-title">
+                        <label for="input-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="text" name="name" id="input-name" placeholder="성함을 입력해주세요." data-msg-target=".err-msg" data-required="true" required="">
+                        <p class="err-msg">이름을 입력해주세요.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="field-item block">
+                    <div class="field-title">
+                        <label for="input-phoneNumber" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="tel" name="phoneNumber" id="input-phoneNumber" placeholder="휴대 전화를 입력해주세요." maxlength="11" required="">
+                        <p class="err-msg">휴대 전화를 입력해주세요.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="field-item block">
+                    <div class="field-title">
+                        <label for="certi-number" class="tit">인증번호<span class="require">*<span class="blind">필수항목</span></span></label>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="number" name="certi-phone" id="certi-number" placeholder="인증번호를 입력해주세요." data-msg-target=".err-msg" data-required="true" required readonly>
+                        <p class="err-msg">인증번호를 입력해주세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="bullet-list top-border">
+            <li class="b-txt">휴대전화 인증을 한 정보(이름, 휴대전화)로 접수됩니다.</li>
+            <li class="b-txt">인증번호가 수신되지 않은 경우 1544-7777이 스팸처리 되지 않았는지 확인해주시기 바랍니다.</li>
+        </ul>
+    </section>
+    <footer class="pop-footer">
+        <div class="btn-group">
+            <button type="button" class="btn pink"><span>확인</span></button>
+        </div>
+    </footer>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>

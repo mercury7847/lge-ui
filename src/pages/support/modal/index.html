@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'title': '팝업 모음'
+            })
+
+            <div class="contents support solutions">
+                <div class="contents-inner">
+                    
+                    <div class="section">
+                        <div class="section-content">
+
+                            <button type="button" data-href="#warrantyPopup" data-control="modal" class="btn pink"><span>요금 및 보증기간 안내</span></button>
+
+                            <button type="button" data-href="#citationPopup" data-control="modal" class="btn pink"><span>휴대폰인증</span></button>
+
+                            <button type="button" data-href="#paidServicePopup" data-control="modal" class="btn pink"><span>유상 서비스</span></button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+
+    <!-- 유상 및 보증기간 팝업 -->
+    @@include('./support/modal/rates-warranty-guide.html')
+    
+    <!-- 휴대폰인증 팝업 -->
+    @@include('./support/modal/phone-citation.html')
+
+    <!-- 유상 서비스 팝업 -->
+    @@include('./support/modal/paid-service.html')
+</body>
+</html> 
