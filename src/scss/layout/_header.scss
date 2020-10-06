@@ -334,27 +334,30 @@
                 .mypage-layer {
                     display: none;
                     position: absolute;
-                    top: 38px;
+                    top: 30px;
                     left: 50%;
                     z-index: 100;
                     transform: translateX(-50%);
-                    border-radius: 8px;
-                    background-color: #fff;
-                    box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.16);
+                    padding-top: 8px;
                     .mypage-layer-inner {
                         min-width: 185px;
                         padding: 16px 24px 24px;
+                        border-radius: 8px;
+                        background-color: #fff;
+                        box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.16);
+                        &.login {
+                            min-width: 193px;
+                        }
                         &:before {
                             position: absolute;
-                            top: -8px;
+                            top: 0;
                             @include calc(left,50%,4px);
                             border-bottom: 8px solid #fff;
                             border-right: 4px solid transparent;
                             border-left: 4px solid transparent;
                             content: '';
                         }
-                        .login,
-                        .logout {
+                        .btn-text {
                             display: inline-block;
                             font-weight: 500;
                             font-size: 14px;
