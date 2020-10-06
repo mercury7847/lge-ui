@@ -4,13 +4,6 @@
     "pageCSS": [
         "support/support",
         "support/reservation"
-    ],
-    "pageJS": [
-        "support-common",
-        "support/selectCategory"
-    ],
-    "libJS": [
-        "jquery.mCustomScrollbar"
     ]
 })
 <body>
@@ -24,23 +17,38 @@
                 'button': [
                     {
                         'text': '요금 및 보증기간 안내',
-                        'attr': 'class="btn bd-gray btn-small" title="레이어 열림"'
-                    }, {
-                        'text': '유상서비스 적용 안내',
-                        'attr': 'class="btn bd-gray btn-small" title="레이어 열림"'
+                        'attr': 'href="#warrantyPopup" class="btn bd-gray btn-small" data-control="modal" title="레이어 열림"'
                     }
                 ]
             })
             
-            <div class="contents support KR50CS411">
-                <div class="login-wrap">
-                    <div class="inner">
-                        <p class="text">이메일을 보내기 위해 계정이 필요하지는 않지만, 로그인을 하시면 고객님의 세부 정보가 자동으로 입력됩니다.</p>
-                        <a href="#" class="btn-text">로그인하기</a>
-                    </div>
-                </div>
+            <div class="contents support reservation">
+                @@include('./common/support/login-guide.html', {
+                    'text': '출장 서비스를 신청하기 위해 계정이 필요하지 않지만, 로그인을 하시면 고객님의 세부 정보가 자동으로 입력됩니다.'
+                })
                 <div class="contents-inner">
-                    <form action="/html/support/KR50CS412.html" id="submitForm" autocomplete="off">
+                    <form action="/html/support/CSTF4010.html" id="submitForm" autocomplete="off">
+                        <div class="process-wrap">
+                            <ol class="process-list">
+                                <li>
+                                    <span class="num">STEP 01</span>
+                                    <strong class="tit">약관동의 및 제품 선택</strong>
+                                </li>
+                                <li>
+                                    <span class="num">STEP 01</span>
+                                    <strong class="tit">증상 및 제품정보 입력</strong>
+                                </li>
+                                <li>
+                                    <span class="num">STEP 01</span>
+                                    <strong class="tit">예약자 정보 입력</strong>
+                                </li>
+                                <li>
+                                    <span class="num">STEP 01</span>
+                                    <strong class="tit">서비스 신청일 및 엔지니어 선택</strong>
+                                </li>
+                            </ol>
+                        </div>
+
                         <div class="section">
                             <div class="section-content">
                                 <div class="field-wrap">
@@ -490,6 +498,18 @@
         </div>
              
         @@include('./common/footer.html')
-    </div>      
+    </div>
+    <!-- 유상 및 보증기간 팝업 -->
+    @@include('./support/modal/rates-warranty-guide.html')
+    
+    <!-- 휴대폰인증 팝업 -->
+    <!-- 제품 해결 팝업 -->
+    <!-- 엔지니어 선택 팝업 -->
+    <!-- 예약 완료 팝업 -->
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/selectCategory.min.js"></script>
 </body>
 </html> 

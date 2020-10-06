@@ -9,7 +9,7 @@
         @@if (context.button) {
             <div class="heading-btns">
             @@for(var i = 0; i < context.button.length; i++) {
-                <a href="#" `+button[i].attr+`><span>`+button[i].text+`</span></a>
+                <a `+button[i].attr+`><span>`+button[i].text+`</span></a>
             }
             </div>
         }
