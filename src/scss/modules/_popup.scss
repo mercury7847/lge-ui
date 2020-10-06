@@ -265,7 +265,7 @@
     .pop-conts {
         height:auto;
         max-height:492px;
-        padding:24px 56px 32px;
+        padding:24px 56px 0;
         overflow-y:auto;
         &.no-footer {
             max-height:616px;
@@ -318,6 +318,26 @@
         }
         @include mobile {
             padding:0;
+            .btn {
+                width: 50%;
+                margin-left: 0;
+                padding: 17px 0;
+                border-radius: 0;
+                @include font-medium;
+            }
+        }
+    }
+
+    &.basic {
+        @include mobile {
+            @include calc(width,100%,56px);
+            height: auto;
+            padding: 0;
+            .pop-conts {
+                height: auto;
+                max-height: none;
+                padding: 0 24px 40px;
+            }
         }
     }
 }

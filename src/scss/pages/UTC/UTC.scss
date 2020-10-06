@@ -72,6 +72,7 @@
         .product-info {
             @include clearfix;
             position: relative;
+            margin-bottom: 36px;
             padding: 0 80px 0 32px;
             .item-image {
                 float: left;
@@ -132,13 +133,13 @@
             }
         }
         .select-coupon {
-            margin-top: 36px;
+            margin-bottom: 16px;
             .select-wrap {
                 max-width: 100%;
             }
         }
         .product-payment {
-            margin: 16px -32px 0;
+            margin: 0 -32px;
             padding: 23px 32px;
             border-radius: 0 0 8px 8px;
             background-color: #f4f4f4;
@@ -223,6 +224,7 @@
                 margin-bottom: 14px;
             }
             .product-info {
+                margin-bottom: 24px;
                 padding: 0;
             }
             .item-image {
@@ -264,7 +266,7 @@
                 text-align: right;
             }
             .select-coupon {
-                margin-top: 24px;
+                margin-bottom: 10px;
                 .select-wrap {
                     .ui-select-button {
                         padding: 12px 23px;
@@ -273,7 +275,7 @@
                 }
             }
             .product-payment {
-                margin: 10px -20px 0;
+                margin: 0 -20px;
                 padding: 24px 20px;
                 .inner {
                     position: relative;
@@ -328,7 +330,7 @@
         }
     }
 
-    .address-area {
+    .info-box {
         float: right;
         @include clearfix;
         width: 280px;
@@ -343,24 +345,30 @@
             font-weight: $font-weight-bold;
             @include font-medium;
         }
-        .address {
+        .text {
             @include font-small;
+            word-break: keep-all;
+            color: #616161;
             .detail-address {
                 display: block;
             }
         }
-        .btn-text {
-            float: right;
-            margin-top: 16px;
-            @include font-small;
+        .btn-area {
+            text-align: right;
+            .btn-text {
+                margin-top: 16px;
+                @include font-small;
+            }
         }
         @include mobile {
             float: none;
             width: 100%;
             margin: 0 0 40px;
             padding: 32px 20px;
-            .btn-text {
-                margin-top: 24px;
+            .btn-area {
+                .btn-text {
+                    margin-top: 24px;
+                }
             }
         }
     }
@@ -473,6 +481,84 @@
             font-size: 20px;
             line-height: 30px;
             text-align: center;
+        }
+    }
+
+    .no-data-wrap {
+        max-width: (1066px + 60px);
+        margin: 0 auto;
+        padding: 0 30px;
+        @include mobile {
+            max-width: 100%;
+            padding: 0;
+        }
+    }
+    .membership-benefit {
+        margin-top: 48px;
+        font-size: 0;
+        .box {
+            display: inline-block;
+            @include calc(width,50%,12px);
+            padding: 40px 0;
+            background-color: #fff;
+            text-align: center;
+            &:before {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                margin-bottom: 12px;
+                background: no-repeat center;
+                background-size: 50px 50px;
+                content: '';
+            }
+            &.membership {
+                &:before {
+                    background-image: url('/lg5-common/images/icons/icon-camera.png');
+                }
+            }
+            &.card-issue {
+                margin-left: 24px;
+                &:before {
+                    background-image: url('/lg5-common/images/icons/icon-battery.png');
+                }
+            }
+            dt {
+                margin-bottom: 4px;
+                font-weight: $font-weight-bold;
+                font-size: 20px;
+                line-height: 36px;
+                color: #111;
+            }
+            dd {
+                @include font-medium;
+                color: #111;
+            }
+        }
+
+        @include mobile {
+            margin-top: 12px;
+            .box {
+                width: 100%;
+                &.card-issue {
+                    margin: 4px 0 0;
+                }
+                dt {
+                    line-height: 27px;
+                    color: #222;
+                }
+            }
+        }
+    }
+}
+
+.cart-nonmember-info {
+    padding: 24px;
+    background-color: #f4f4f4;
+    .text {
+        margin-top: 16px;
+        @include font-medium;
+        &:first-child {
+            margin-top: 0;
         }
     }
 }
