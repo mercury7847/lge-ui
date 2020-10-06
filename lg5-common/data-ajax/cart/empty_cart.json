@@ -1,0 +1,16 @@
+{
+    "status":"success",
+    "message":null,
+    "data": {
+        "isMember":true,
+        "address":"서울시 영등포구 여의대로 128 LG 트윈타워 17층",
+        "amount":{
+            "order":"0",
+            "sale":[
+            ],
+            "shipping":"0",
+            "total":"0"
+        },
+        "cart":[]
+    }
+}

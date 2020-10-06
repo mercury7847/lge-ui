@@ -1,0 +1,82 @@
+{
+    "status":"success",
+    "message":null,
+    "data": {
+        "isMember":true,
+        "address":"서울시 영등포구 여의대로 128 LG 트윈타워 17층",
+        "amount":{
+            "order":"10614000",
+            "sale":[
+                {
+                    "saleAmount":"327000",
+                    "saleRatio":"2",
+                    "saleName":"회원할인"
+                },
+                {
+                    "saleAmount":"411270",
+                    "saleRatio":"3",
+                    "saleName":"즉시할인"
+                },
+                {
+                    "saleAmount":"40000",
+                    "saleRatio":null,
+                    "saleName":"쿠폰할인"
+                }
+            ],
+            "shipping":"5000",
+            "total":"9835710"
+        },
+        "cart":[
+            {
+                "productId":"p00001",
+                "check" : {
+                    "favor" : true
+                },
+                "coupon" : [
+                    {
+                        "couponId":"c00001",
+                        "couponName":"무료배송 쿠폰"
+                    },
+                    {
+                        "couponId":"c00002",
+                        "couponName":"VIP 힐인"
+                    }
+                ],
+                "imageUrl" : "/lg5-common/images/dummy/@img-product2.jpg",
+                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                "modelNumber" :"OLED55BXPUA ",
+                "modelOption" : "버건디레드 / 870 ℓ",
+                "Quantity" : "1",
+                "order" : "5300000",
+                "sale" : null,
+                "shipping" : "0",
+                "total" : "5300000"
+            },
+            {
+                "productId":"p00002",
+                "check" : {
+                    "favor" : false
+                },
+                "coupon" : [
+                    {
+                        "couponId":"c00001",
+                        "couponName":"무료배송 쿠폰"
+                    },
+                    {
+                        "couponId":"c00002",
+                        "couponName":"VIP 힐인"
+                    }
+                ],
+                "imageUrl" : "/lg5-common/images/dummy/@sample-1-1.gif",
+                "modelName" : "LG 올레드 AI ThinQ(벽걸이형)",
+                "modelNumber" :"OLED55BXPUA ",
+                "modelOption" : "화이트 / ‎86\"",
+                "Quantity" : "2",
+                "order" : "5200000",
+                "sale" : "50000",
+                "shipping" : "1000",
+                "total" : "5260000"
+            }
+        ]
+    }
+}
