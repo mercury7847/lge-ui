@@ -605,7 +605,7 @@
             border: 1px solid #111;
             border-radius: 7.5px;
             vertical-align: -2px;
-            transition: all ease 500ms;
+            transition: all ease 300ms;
             &:before,
             &:after {
                 position: absolute;
@@ -637,7 +637,7 @@
                     content: '';
                 }
                 .icon-nav {
-                    transform: rotate(45deg);
+                    transform: rotate(135deg);
                 }
             }
 
