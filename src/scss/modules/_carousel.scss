@@ -361,10 +361,38 @@
             padding: 0 40px 56px;
             border-radius: 4px;
             background-color: #fff;
+            @include mobile {
+                padding: 0 28px 32px;
+            }
             .badge-wrap {
                 position: absolute;
                 top: 0;
                 left: 0;
+                .badge {
+                    display: block;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    background-color: #65c467;
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 1;
+                    color: #fff;
+                    text-align: center;
+                }
+                &.thin-type {
+                    top: 24px;
+                    left: 24px;
+                }
+                @include mobile {
+                    .badge {
+                        padding: 5px 8px;
+                        font-size: 10px;
+                    }
+                    &.thin-type {
+                        top: 18px;
+                        left: 18px;
+                    }
+                }
             }
             .product-image {
                 a {
@@ -408,6 +436,9 @@
             .product-info {
                 margin-bottom: 24px;
                 padding: 0 14px;
+                @include mobile {
+                    padding: 0;
+                }
             }
             .price-area {
                 margin-top: 14px;
@@ -447,20 +478,27 @@
                 }
                 @include mobile {
                     .reduced-price {
-                        font-size: 24px;
-                        font-weight: bold;
-                        line-height: 1.33;
-                        color: #222222;
+                        font-size: 20px;
+                        line-height: 23px;
                     }
                 }
             }
             .btn {
                 width: 100%;
+                @include mobile {
+                    padding: 11px 0;
+                    font-size: 14px;
+                    line-height: 18px;
+                }
             }
             .chk-wish-wrap {
                 position: absolute;
                 top: 24px;
                 right: 24px;
+                @include mobile {
+                    top: 18px;
+                    right: 18px;
+                }
             }
         }
     }
