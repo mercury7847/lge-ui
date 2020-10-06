@@ -37,28 +37,27 @@
     <section class="component KRC0028 @@flow-type @@bg-color">
         <div class="component-inner">
             <div class="square-partition tall">
-                <!-- 1. image - 비디오 타입 샘플 -->
-                <div class="square main text-white youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
-                    <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play_ad" data-link-name="{video id}" aria-describedby="title01">plays audio description video</a>
-                    <!-- 1.1 video paly button -->
-                    <!-- * youtube video modal은 아래의 방식으로 입력 -->
-                    <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="common-area case-of-video see-video" data-type="youtube" data-target="modal" data-link-area="block_image_3to5_text_overlay-video_play" data-link-name="{video id}" aria-describedby="title01">
-                        <div class="visual-area">
-                            <img data-pc-src="/lg5-common/images/KRC0028/@square-case-tall.jpg" data-m-src="/lg5-common/images/KRC0028/@square-case-tall-m.jpg" alt="">
+                <!-- 2020.10.6 animation type 추가 -->
+                <div class="square main text-white">
+                    <div class="visual-area animation-box">
+                        <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
+                        <img data-pc-src="/lg5-common/images/KRC0028/@square-case-tall.jpg" data-m-src="/lg5-common/images/KRC0028/@square-case-tall-m.jpg" alt="">
+                        <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                        <div class="animation-area">
+                            <video autoplay muted loop>
+                                <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                <!-- WEBM 동영상을 제공하는 경우
+                                <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                -->
+                            </video>
+                            <div class="controller-wrap wa-btn">
+                                <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                            </div>
                         </div>
-                        <div class="copy-boxing-area">
-                            <!-- 2. eyebrow -->
-                            <div class="category">TELEVISION</div>
-                            <!-- // 2. eyebrow -->
-                            <!-- 3. headline -->
-                            <div class="head" id="title01">@@head</div>
-                            <!-- // 3. headline -->
-                            <!-- 4. body copy -->
-                            <div class="desc font-regular-italic font-underline">올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. </div>
-                            <!-- // 4. body copy -->
-                        </div>
-                    </a>
-                    <!-- // 1.1 video paly button -->
+                        <!-- caption -->
+                        <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                        <!-- // caption -->
+                    </div>
                 </div>
                 <!-- 1. image -->
             </div>

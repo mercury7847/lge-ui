@@ -42,36 +42,38 @@
                         margin-left:0;
                     }
                 }
-                &.size2 {
+                &.btn-type {
                     margin:0 -4px;
                     .input-wrap {
                         width:50%;
                         padding:0 4px;
-                        @include mobile {
-                            width:100%;
-                            padding:0;
-                            &:first-child {
-                                margin-bottom:10px;
-                            }
-                        }
-                    }
-                }
-                &.btn-type {
-                    position:relative;
-                    padding-right:132px;
-                    @include mobile {
-                        padding:0;
                     }
                     .btn {
-                        position:absolute;
-                        top:0;
-                        right:4px;
-                        @include mobile {
-                            position:relative;
-                            display:block;
-                            right:auto;
+                        margin-left:4px;
+                        padding:15px 32px;
+                    }
+                    @include mobile {
+                        margin:0;
+                        .input-wrap {
                             width:100%;
+                            padding:0;
+                        }
+                        .btn {
+                            width:100%;
+                            margin-left:0;
                             margin-top:20px;
+                        }
+                    }
+                    &.size2 {
+                        .input-wrap {
+                            width:calc((100% - 128px) / 2);
+                            @include mobile {
+                                width:100%;
+                                margin-top:8px;
+                                &:first-child {
+                                    margin-top:0;
+                                }
+                            }
                         }
                     }
                 }
@@ -120,10 +122,12 @@
         &:disabled, &:read-only {
             background:#f4f4f4;
             border-color:transparent;
-            color:#ccc;
             &:focus {
                 box-shadow:none;
             }
+        }
+        &:disabled {
+            color:#ccc;
         }
     }
 
@@ -176,6 +180,13 @@
                     width:24px;
                     height:24px;
                     background:url('/lg5-common/images/icons/icon-search2.svg') center no-repeat;
+                    background-size:24px;
+                }
+                .btn-del {
+                    display:none;
+                    width:24px;
+                    height:24px;
+                    background:url('/lg5-common/images/icons/icon-delete.svg') center no-repeat;
                     background-size:24px;
                 }
             }
@@ -251,6 +262,9 @@
             &:focus + .total {
                 border-color:#f00;
             }
+        }
+        .cell {
+            border-color:#f00;
         }
         .err-msg {
             margin-top:8px;

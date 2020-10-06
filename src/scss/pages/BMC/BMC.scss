@@ -32,3 +32,24 @@
     // VIEW
     @import "MKT4002";
 }
+
+
+.pop-conts.academy-pop {
+    text-align:left;
+
+    // PC 아카데미 이벤트 참여하기
+    @import "MKT4009";
+
+    // PC 아카데미 PC 모델명 및 시리얼번호 확인 방법 안내
+    @import "MKT4009-1";
+
+    //PC 아카데미 참여내역 조회
+    @import "MKT4010";
+}
+
+
+.popup-wrap.event-popup {
+    // 당첨자 발표
+    @import "MKT4004";    
+}
+
