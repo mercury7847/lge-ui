@@ -85,12 +85,15 @@
             <!--  slide -->
             <div class="slide-conts ui_carousel_slide">
                 <div class="slide-box">
-                    <div class="badge-wrap"><img src="`+slideArr[i].badge+`" alt="`+slideArr[i].flagText+`"></div>
+                    `+slideArr[i].badge+`
                     <div class="product-image" aria-hidden="true">
                         <a href="#"><img src="`+slideArr[i].img+`" alt=""></a>
                     </div>
                     <div class="product-info">
-                        `+slideArr[i].flag+`
+                        @@include('./common/modules/flags.html', {
+                            "borderType": true,
+                            "flags": [ "NEW","BEST" ]
+                        })
                         <div class="product-name">
                             <a href="#">`+slideArr[i].name+`</a>
                         </div>
