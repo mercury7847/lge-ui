@@ -1014,10 +1014,11 @@
 
 @include pc{
     .btn-nav-arrow {
+        display: none;
         position: absolute;
         top: 68px;
         z-index: 5;
-        width: 90px;
+        width: 55px;
         height: 36px;
         &:after {
             position: absolute;
