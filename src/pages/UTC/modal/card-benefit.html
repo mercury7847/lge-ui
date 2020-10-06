@@ -1,0 +1,38 @@
+<!-- 비회원 주문 레이어팝업 -->
+<article id="popup" class="popup-wrap basic">
+    <header class="pop-header">
+        <h1 class="tit"><span>카드 할인 혜택 보기</span></h1>
+    </header>
+    <section class="pop-conts no-footer">
+        <ul class="benefit-list">
+            <li class="kb-card">
+                <dl>
+                    <dt>국민카드</dt>
+                    <dd>5만원 이상 결제시 <em>2~5개월</em> 무이자 할부</dd>
+                </dl>
+            </li>
+            <li class="nh-card">
+                <dl>
+                    <dt>NH카드</dt>
+                    <dd>5만원 이상 결제시 <em>2~5개월</em> 무이자 할부</dd>
+                </dl>
+            </li>
+            <li class="sh-card">
+                <dl>
+                    <dt>신한카드</dt>
+                    <dd>5만원 이상 결제시 <em>2~6개월</em> 무이자 할부</dd>
+                </dl>
+            </li>
+        </ul>
+        <div class="benefit-info">
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "일반 신용카드에 한함",
+                    "상기 안내되는 카드 혜택이 우선 적용되며 LG U+전자결제 창에서 안내되는 카드혜택은 적용되지 않습니다."
+                ]
+            })
+        </div>
+    </section>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
+<!-- 비회원 주문 레이어팝업 -->
