@@ -40,6 +40,7 @@
         &:disabled, &.disabled, &[aria-disabled=true] {
             border-color:#ccc;
             background-color:#ccc;
+            cursor:default;
         }
     }
     &.bd-pink {
@@ -57,6 +58,7 @@
             color:#ccc;
             border-color:#ccc;
             background:#fff;
+            cursor:default;
         }
     }
     &.bd-gray {
@@ -70,6 +72,7 @@
             color:#ccc;
             border-color:#ccc;
             background:#fff;
+            cursor:default;
         }
     }
     &.btn-small {
@@ -80,6 +83,12 @@
         @include mobile {
             padding: 4px 12px;
         }
+    }
+    &.btn-x-small {
+        min-width:83px;
+        padding: 9px 15px;
+        font-size: 10.7px;
+        line-height: 16px;
     }
     &.bd-black {
         border-color:#616161;
@@ -92,6 +101,7 @@
             color:#ccc;
             border-color:#ccc;
             background:#fff;
+            cursor:default;
         }
     }
 }

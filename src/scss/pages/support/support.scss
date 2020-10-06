@@ -3,20 +3,9 @@
 @import "mCustomScrollbar";
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
-@import "../../modules/index";
-@import "../../layout/index";
 @import "../../support/page-visual";
 
 /* 삭제 예정 */
-@mixin globalBackground {
-    padding:56px;
-    border-radius:4px;
-    background:#fff;
-    @include mobile {
-        padding:40px 24px;
-        border-radius:0;
-    }
-}
 .dummy {
     background-color:rgba(255, 70, 70, 0.2);
     font-size:28.5px;
@@ -24,9 +13,6 @@
     line-height:1.37;
     color:#ffffff;
     text-align:center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     p {
         font-size:20px;
         color:#fff;

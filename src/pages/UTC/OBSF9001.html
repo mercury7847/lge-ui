@@ -21,17 +21,47 @@
                     <div class="product-cart-wrap">
                         <div class="wrap-box">
                             <div class="order-info">
-                                <div class="address-area">
-                                    <dl>
-                                        <dt class="title">기본 배송지</dt>
-                                        <dd class="address">서울시 영등포구 여의대로 128 <span class="detail-address">LG 트윈타워 18층</span></dd>
-                                    </dl>
-                                    <a href="#" class="btn-text">배송지 변경</a>
+                                <div class="info-box">
+                                    <!-- 비회원/로그인 전 -->
+                                    <div>
+                                        <dl>
+                                            <dt class="title">로그인 해보세요</dt>
+                                            <dd class="text">로그인하여 더 많은 혜택으로 해당 제품을 이후에도 확인 하실 수 있으며, 할인된 가격으로 구매할 수 있습니다.</dd>
+                                        </dl>
+                                        <div class="btn-area">
+                                            <a href="#" class="btn-text">로그인 하기</a>
+                                        </div>
+                                    </div>
+                                    <!-- //비회원/로그인 전 -->
+
+                                    <!-- 주소정보 있음 -->
+                                    <div>
+                                        <dl>
+                                            <dt class="title">기본 배송지</dt>
+                                            <dd class="text">서울시 영등포구 여의대로 128 <span class="detail-address">LG 트윈타워 18층</span></dd>
+                                        </dl>
+                                        <div class="btn-area">
+                                            <a href="#" class="btn-text">배송지 변경</a>
+                                        </div>
+                                    </div>
+                                    <!-- //주소정보 있음 -->
+
+                                    <!-- 주소정보 없음 -->
+                                    <div>
+                                        <dl>
+                                            <dt class="title">기본 배송지</dt>
+                                            <dd class="text">기본 배송 주소를 등록해보세요.</dd>
+                                        </dl>
+                                        <div class="btn-area">
+                                            <a href="#" class="btn-text">배송지 등록</a>
+                                        </div>
+                                    </div>
+                                    <!-- //주소정보 없음 -->
                                 </div>
                                 <div class="cart-wrap">
                                     <div class="cart-option">
                                         <div class="chk-wrap">
-                                            <input type="checkbox" id="chk-all" name="`chk-all" checked>
+                                            <input type="checkbox" id="chk-all" name="`chk-all">
                                             <label for="chk-all">전체선택</label>
                                         </div>
                                         <div class="btn-area">
@@ -191,13 +221,44 @@
                             ]
                         })
                     </div>
+
+                    <!-- 장바구니 제품이 없을 경우 -->
+                    <div class="no-data-wrap">
+                        <div class="no-data">
+                            <p>장바구니에 담긴 제품이 없습니다.</p>
+                        </div>
+                        <ul class="membership-benefit">
+                            <li class="box membership">
+                                <dl>
+                                    <dt>LG 전자 멤버십 회원 온라인 전용 혜택</dt>
+                                    <dd>모든 제품 3% 할인</dd>
+                                    <dd>멤버십포인트 3% 적립</dd>
+                                </dl>
+                            </li>
+                            <li class="box card-issue">
+                                <dl>
+                                    <dt>LG 전자 제휴카드 발급 특별 혜택</dt>
+                                    <dd>제휴카드 결제시 최대 500,000원 캐시백</dd>
+                                    <dd>멤버십포인트 3% 적립</dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //장바구니 제품이 없을 경우 -->
                 </div>
+
             </div>
             <!-- // cart -->
         </div>
-        
+
 <!--        include('./common/footer.html')-->
     </div>
+
+    <!-- 카드 할인 혜택 보기 레이어팝업 -->
+    @@include('./UTC/modal/card-benefit.html')
+    <!-- 비회원 주문 레이어팝업 -->
+    @@include('./UTC/modal/nonmember.html')
+
     <script src="/lg5-common/js/cart/cart.js"></script>
 </body>
 </html>
