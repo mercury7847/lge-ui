@@ -4,10 +4,10 @@
 	font-size: $font-x-small;
 	line-height: $font-x-small;
 
-	//@media screen and (max-width: #{$tablet-s-width}) {
+	@media screen and (max-width: #{$tablet-s-width}) {
 	//	font-size :  $font-small - 2;
-	//	line-height: $font-small - 2;
-	//}
+        line-height: 16px;
+	}
 }
 
 @mixin font-small {

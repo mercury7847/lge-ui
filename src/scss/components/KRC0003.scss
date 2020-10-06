@@ -5,9 +5,9 @@
 
 .KRC0003 {
     width: 100%;
-    max-width: (1284px + 60px);
+    // max-width: (1284px + 60px);
     margin: 0 auto;
-    padding: 0 30px;
+    // padding: 0 30px;
 
     @include mobile {
         max-width: 100%;

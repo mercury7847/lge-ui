@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "이*지 님이 보유한 제품",
+                "pageDesc" : "이메일, 오프라인 또는 인쇄물 등을 통해 발급받으신 쿠폰번호를 입력해주세요."
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="section">
+                        <h3 class="sec-tit">보유 쿠폰</h3>
+                        <div class="cont-box">
+                            <!-- 쿠폰번호 입력 -->
+                            <div class="form-wrap">
+                                <!-- 입력 전 -->
+                                <dl class="forms">
+                                    <dt class="tit">
+                                        <label for="inp01">쿠폰번호</label>
+                                    </dt>
+                                    <dd class="conts">
+                                        <div class="input-box btn-type">
+                                            <span class="input-wrap ui_value_del">
+                                                <span class="box">
+                                                    <input type="text" id="inp01" value="" placeholder="쿠폰번호 최대 12자로 '-' 생략가능">
+                                                    <span class="cell">
+                                                        <button type="button" class="btn-del ui_del_btn"><span class="blind">입력삭제</span></button>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <button type="submit" class="btn pink"><span>등록</span></button>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <!-- // 입력 전 -->
+                                <!-- 입력 후 : 입력 오류 시 -->
+                                <dl class="forms">
+                                    <dt class="tit">
+                                        <label for="inp02">쿠폰번호</label>
+                                    </dt>
+                                    <dd class="conts">
+                                        <div class="input-box btn-type">
+                                            <span class="input-wrap ui_value_del error">
+                                                <span class="box">
+                                                    <input type="text" id="inp02" value="1234567812345678" placeholder="쿠폰번호 최대 12자로 '-' 생략가능">
+                                                    <span class="cell optional">
+                                                        <button type="button" class="btn-del ui_del_btn" style="display:block"><span class="blind">입력삭제</span></button>
+                                                    </span>
+                                                </span>
+                                                <p class="err-msg">쿠폰번호 12자리를 정확히 입력해 주세요.</p>
+                                            </span>
+                                            <button class="btn pink"><span>등록</span></button>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <!-- // 입력 후 : 입력 오류 시 -->
+                            </div>
+                            <!-- // 쿠폰번호 입력 -->
+                            <!-- 쿠폰 있음 : 쿠폰리스트 -->
+                            <div class="coupon-list-wrap">
+                                <p class="total">전체 3건</p>
+                                <div class="coupon-lists">
+                                    <ul>
+                                        <li class="lists">
+                                            <!-- coupon : 사용가능 -->
+                                            <div class="coupon-box">
+                                                <div class="coupon-cont">
+                                                    <div class="flag-wrap">
+                                                        <span class="flag">사용가능</span>
+                                                        <span class="flag gray"><span class="blind">발행처</span>베스트샵</span>
+                                                    </div>
+                                                    <p class="tit">홈브루 캡슐 4개 구매 할인쿠폰</p>
+                                                    <p class="desc">159,000원 이상 결제 시<br>최대 19,600원 할인</p>
+                                                    <p class="date">유효기간 ~2020.10.11 (D-15)</p>
+                                                </div>
+                                                <span class="coupon-bg" aria-hidden="true"><em>COUPON</em></span>
+                                            </div>
+                                            <!-- // coupon : 사용가능 -->
+                                        </li>
+                                        <li class="lists">
+                                            <!-- coupon : 사용완료 -->
+                                            <div class="coupon-box disabled">
+                                                <div class="coupon-cont">
+                                                    <div class="flag-wrap">
+                                                        <span class="flag">사용완료</span>
+                                                        <span class="flag gray"><span class="blind">발행처</span>베스트샵</span>
+                                                    </div>
+                                                    <p class="tit">건조기 키트 신청 쿠폰 최대 2줄 입력 가능 쿠폰 최대 2줄 입력 가능</p>
+                                                    <p class="desc">159,000원 이상 결제 시<br>최대 19,600원 할인</p>
+                                                    <p class="date">유효기간 ~2020.10.11 (D-15)</p>
+                                                </div>
+                                                <span class="coupon-bg" aria-hidden="true"><em>COUPON</em></span>
+                                            </div>
+                                            <!-- // coupon : 사용완료 -->
+                                        </li>
+                                        <li class="lists">
+                                            <!-- coupon : 기간만료 -->
+                                            <div class="coupon-box disabled">
+                                                <div class="coupon-cont">
+                                                    <div class="flag-wrap">
+                                                        <span class="flag">기간만료</span>
+                                                        <span class="flag gray"><span class="blind">발행처</span>베스트샵</span>
+                                                    </div>
+                                                    <p class="tit">건조기 키트 신청 쿠폰 최대 2줄 입력 가능 쿠폰 최대 2줄 입력 가능</p>
+                                                    <p class="desc">159,000원 이상 결제 시<br>최대 19,600원 할인</p>
+                                                    <p class="date">유효기간 ~2020.10.11 (D-15)</p>
+                                                </div>
+                                                <span class="coupon-bg" aria-hidden="true"><em>COUPON</em></span>
+                                            </div>
+                                            <!-- // coupon : 기간만료 -->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- // 쿠폰 있음 : 쿠폰리스트 -->
+                            <!-- 쿠폰 없음 : nodata -->
+                            <div class="no-data mg-type">
+                                <p>보유하신 쿠폰이 없습니다.</p>
+                            </div>
+                            <!-- // 쿠폰 없음 : nodata -->
+                            @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
+                                "bulletTit" : "꼭 확인하세요",
+                                "bulletTxt" : [
+                                    "쿠폰은 유효기간 내에 사용하지 않으시면 자동 소멸됩니다.",
+                                    "사용 완료한 쿠폰은 다시 발행되지 않습니다."
+                                ]
+                            })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

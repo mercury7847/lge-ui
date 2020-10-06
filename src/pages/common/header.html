@@ -17,13 +17,15 @@
                 <ul class="shortcut">
                     <li class="search"><a href="#"><em class="blind">검색</em></a></li>
                     <li class="mypage">
-                        <!-- [D] Click, focus - .on 추가 -->
+                        <!-- [D] Hover, Focus - .on 추가
+                                Click 시 로그인 전 - 로그인 페이지로 이동
+                                         로그인 후 - 마이페이지로 이동 -->
                         <a href="#"><em class="blind">마이페이지</em></a>
                         <!-- 로그인 전 -->
                         <div class="mypage-layer">
-                            <div class="mypage-layer-inner">
-                                <span>로그인</span>
-                                <ul>
+                            <div class="mypage-layer-inner logout">
+                                <a href="#" class="btn-text">로그인</a>
+                                <ul class="mypage-shortcut">
                                     <li><a href="#">주문/배송 조회</a></li>
                                     <li><a href="#">멤버십 가입</a></li>
                                     <li><a href="#">제품 등록</a></li>
@@ -32,9 +34,9 @@
                         </div>
                         <!-- 로그인 후
                         <div class="mypage-layer">
-                            <div class="mypage-layer-inner">
-                                <span>로그아웃</span>
-                                <ul>
+                            <div class="mypage-layer-inner login">
+                                <a href="#" class="btn-text">로그아웃</a>
+                                <ul class="mypage-shortcut">
                                     <li><a href="#">주문/배송 조회</a></li>
                                     <li><a href="#">케어솔루션/케어십</a></li>
                                     <li><a href="#">멤버십 포인트 조회</a></li>
@@ -1707,7 +1709,7 @@
                 </ul>
                 <!-- [768px ~ 960px] 메뉴 슬라이드 버튼 -->
                 <div class="nav-arrow-wrap">
-                    <button type="button" class="btn-nav-arrow prev" aria-disabled="true"><span class="blind">이전</span></button>
+                    <button type="button" class="btn-nav-arrow prev"><span class="blind">이전</span></button>
                     <button type="button" class="btn-nav-arrow next"><span class="blind">다음</span></button>
                 </div>
                 <!-- // 메뉴 슬라이드 버튼 -->
@@ -1726,8 +1728,8 @@
             </div>
             <div class="nav-site">
                 <ul class="out-link">
-                    <li><a href="#" class="bestshop">베스트샵</a></li>
-                    <li><a href="#" class="business">B2B</a></li>
+                    <li><a href="#" class="bestshop" target="_blank" title="새창열림">베스트샵</a></li>
+                    <li><a href="#" class="business" target="_blank" title="새창열림">B2B</a></li>
                 </ul>
             </div>
             <div class="mobile-nav-banner">

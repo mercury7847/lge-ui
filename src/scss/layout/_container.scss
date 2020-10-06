@@ -174,7 +174,12 @@
     // }
     margin:0;
     padding:140px 0;
+    background-color: #fff;
     text-align:center;
+    &.mg-type {
+        padding:0;
+        margin:140px 0;
+    }
     p {
         position:relative;
         padding-top:72px;

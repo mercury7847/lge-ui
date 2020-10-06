@@ -334,53 +334,59 @@
                 .mypage-layer {
                     display: none;
                     position: absolute;
-                    top: 38px;
+                    top: 30px;
                     left: 50%;
                     z-index: 100;
                     transform: translateX(-50%);
-                    border-radius: 8px;
-                    background-color: #fff;
-                    box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.16);
+                    padding-top: 8px;
                     .mypage-layer-inner {
                         min-width: 185px;
                         padding: 16px 24px 24px;
+                        border-radius: 8px;
+                        background-color: #fff;
+                        box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.16);
+                        &.login {
+                            min-width: 193px;
+                        }
                         &:before {
                             position: absolute;
-                            top: -8px;
+                            top: 0;
                             @include calc(left,50%,4px);
                             border-bottom: 8px solid #fff;
                             border-right: 4px solid transparent;
                             border-left: 4px solid transparent;
                             content: '';
                         }
-                        span {
-                            display: block;
-                            padding-bottom: 8px;
-                            border-bottom: 1px solid #ddd;
+                        .btn-text {
+                            display: inline-block;
                             font-weight: 500;
                             font-size: 14px;
                             line-height: 20px;
                             color: #222;
                         }
-                        li {
-                            position: relative;
+                        .mypage-shortcut {
                             margin-top: 8px;
-                            &:after {
-                                position: absolute;
-                                @include calc(top,50%,4px);
-                                right: 2px;
-                                width: 8px;
-                                height: 8px;
-                                border-top: 1px solid #212121;
-                                border-right: 1px solid #212121;
-                                transform: rotate(45deg);
-                                content: '';
-                            }
-                            a {
-                                display: block;
-                                font-size: 14px;
-                                line-height: 20px;
-                                color: #222;
+                            border-top: 1px solid #ddd;
+                            li {
+                                position: relative;
+                                margin-top: 8px;
+                                &:after {
+                                    position: absolute;
+                                    @include calc(top,50%,4px);
+                                    right: 2px;
+                                    width: 8px;
+                                    height: 8px;
+                                    border-top: 1px solid #212121;
+                                    border-right: 1px solid #212121;
+                                    transform: rotate(45deg);
+                                    content: '';
+                                }
+                                a {
+                                    display: block;
+                                    font-size: 14px;
+                                    line-height: 20px;
+                                    color: #222;
+                                }
                             }
                         }
                     }
@@ -391,12 +397,13 @@
                 @include icon-cart;
                 .cart-count {
                     position: absolute;
-                    right: 3px;
+                    left: 14px;
                     bottom: 2px;
                     display: block;
-                    width: 13px;
+                    min-width: 13px;
                     height: 13px;
-                    border-radius: 50%;
+                    padding: 0 3px;
+                    border-radius: 6px;
                     background-color: #ec455a;
                     font-weight: 500;
                     font-size: 10px;
@@ -605,7 +612,7 @@
             border: 1px solid #111;
             border-radius: 7.5px;
             vertical-align: -2px;
-            transition: all ease 500ms;
+            transition: all ease 300ms;
             &:before,
             &:after {
                 position: absolute;
@@ -637,7 +644,7 @@
                     content: '';
                 }
                 .icon-nav {
-                    transform: rotate(45deg);
+                    transform: rotate(135deg);
                 }
             }
 
@@ -1007,10 +1014,11 @@
 
 @include pc{
     .btn-nav-arrow {
+        display: none;
         position: absolute;
         top: 68px;
         z-index: 5;
-        width: 90px;
+        width: 55px;
         height: 36px;
         &:after {
             position: absolute;

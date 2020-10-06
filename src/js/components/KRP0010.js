@@ -61,6 +61,7 @@ $(window).ready(function(){
                     KRP0010.purchase($(this).data('url'));
                 }
             });
+            
             self.$purchaseButton.find('div.btn-group a.btn.cart').on('click',function(e){
                 //카트
                 e.preventDefault();
@@ -92,6 +93,13 @@ $(window).ready(function(){
                 //카트
                 e.preventDefault();
                 console.log('이동',$(this).data('url'));
+            });
+
+            self.$pdpImage.find('a').first().on('click',function(e){
+                //이미지 모달 뷰
+                console.log('asdasd');
+                e.preventDefault();
+                $('#pop-pdp-visual').vcModal();
             });
         },
 

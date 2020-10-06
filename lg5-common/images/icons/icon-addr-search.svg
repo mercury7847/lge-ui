@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="26px" viewBox="0 0 27 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn_adress_32</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="[MO]CS_EventPopup1_PC_v0.9_1005" transform="translate(-631.000000, -2640.000000)">
+            <g id="02-Contents" transform="translate(0.000000, 150.000000)">
+                <g id="02-2" transform="translate(0.000000, 1714.000000)">
+                    <g id="user" transform="translate(40.000000, 192.000000)">
+                        <g id="m/input/adress" transform="translate(0.000000, 484.000000)">
+                            <g id="input" transform="translate(0.000000, 60.000000)">
+                                <g id="btn/adress" transform="translate(476.000000, 33.000000)">
+                                    <g id="btn_adress_32" transform="translate(112.000000, 2.000000)">
+                                        <rect id="Rectangle" opacity="0.0654296875" x="0" y="0" width="32" height="32"></rect>
+                                        <g id="ic" stroke-width="1" fill-rule="evenodd" transform="translate(3.000000, 5.000000)" stroke="#EC455A">
+                                            <circle id="Oval" stroke-width="2" cx="11" cy="11" r="10"></circle>
+                                            <line x1="19" y1="18.3333333" x2="25.5061171" y2="24.8394504" id="Line" stroke-width="2" stroke-linecap="round"></line>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
