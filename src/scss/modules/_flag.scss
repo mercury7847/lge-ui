@@ -21,7 +21,16 @@
 			min-width:36px;
 			height:18px;
 			font-size:10px;
-			line-height:14px;
+			line-height:15px;
+		}
+
+		&.gray {
+			border-color:#616161;
+			color:#616161;
+		}
+		&.end {
+			border-color:#CCCCCC;
+			color:#CCCCCC;
 		}
 	}
 	&.bg-type {

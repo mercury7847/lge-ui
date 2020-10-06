@@ -226,7 +226,7 @@
                   &.text {
                       position: relative;
                       min-width: auto;
-                      padding: 13px 0;
+                      padding: 13px 5px;
                       background: none;
                       border: none;
                       &:before {
@@ -239,6 +239,10 @@
                       }
                       span {
                           vertical-align: top;
+                      }
+                      &:hover,
+                      &:active {
+                          color: #ec455a;
                       }
                       &.disabled {
                         &:before {

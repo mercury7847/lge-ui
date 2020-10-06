@@ -333,7 +333,7 @@ vcui.define('ui/scrollview', ['jquery', 'vcui'], function ($, core) {
                                 scrollHeight = self.wrapperHeight - self.scrollbarHeight,
                                 y;
 
-                            self.scrollbarStyle.top = top = Math.max(0, Math.min(top, scrollHeight));
+                            //self.scrollbarStyle.top = top = Math.max(0, Math.min(top, scrollHeight));
                             y = (self.scrollHeight - self.wrapperHeight) * (top / scrollHeight);
                             self.$wrapper.scrollTop(y);
                             e.preventDefault();
