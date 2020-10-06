@@ -40,12 +40,18 @@
     position: relative;
     width: 100%;
     clear: both;
-    max-width: 1600px;
+    // max-width: 1600px;
     margin: 120px auto; // 120px : component top bottom margin for desktop
     @include clearfix;
 
     @include mobile {
         margin: 60px auto; // 60px : component top bottom margin for mobile
+    }
+
+    .component-inner {
+        max-width:1344px;
+        margin:0 auto;
+        padding: 0 30px;
     }
 
     &.zero-top {

@@ -225,6 +225,11 @@
         }
         @include mobile {
             padding:0;
+            .btn-group {
+                .btn {
+                    margin-left:0;
+                }
+            }
         }
     }
     &.full {

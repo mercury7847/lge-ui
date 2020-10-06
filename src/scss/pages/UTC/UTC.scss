@@ -89,6 +89,7 @@
         }
 
         .item-name {
+            max-height: 48px;
             margin-bottom: 4px;
             font-weight: $font-weight-bold;
             @include font-medium;
@@ -235,6 +236,7 @@
                 }
             }
             .item-name {
+                max-height: 36px;
                 margin-bottom: 14px;
                 @include font-small;
             }
