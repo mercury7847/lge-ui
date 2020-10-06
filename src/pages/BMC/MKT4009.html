@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>이벤트 참여하기 팝업 열기</span></button>
+    </div>
+
+
+    <article id="popup" class="popup-wrap full">
+        <header class="pop-header">
+            <h1 class="tit"><span>이벤트 참여하기</span></h1>
+        </header>
+        <section class="pop-conts academy-pop">
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">구매정보</h2>
+                </div>
+                <div class="form-wrap">
+                    <div class="double-form">
+                        <dl class="forms">
+                            <dt class="tit"><label for="buyerName">구매자 이름</label></dt>
+                            <dd class="conts">
+                                <span class="input-wrap block">
+                                    <input type="text" id="buyerName" value="홍길동" readonly>
+                                </span>
+                            </dd>
+                        </dl>
+                        <dl class="forms">
+                            <dt class="tit"><label for="buyerPhone">휴대폰번호</label></dt>
+                            <dd class="conts">
+                                <span class="input-wrap block">
+                                    <input type="text" id="buyerPhone" value="010-1234-5678" readonly>
+                                </span>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "bulletTxt" : [
+                                        "LG전자 회원가입 시 입력한 휴대폰 번호로 응모 됩니다."
+                                    ]
+                                })
+                            </dd>
+                        </dl>
+                    </div>
+                    <dl class="forms">
+                        <dt class="tit"><label for="modelName" class="req">모델명<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap block">
+                                <input type="text" id="modelName" placeholder="모델명을 입력해 주세요.">
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="serialNum">제조번호(S/N)</label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap block add-btn">
+                                <span class="box">
+                                    <input type="number" id="serialNum" placeholder="S/N을 입력해 주세요.">
+                                    <span class="cell">
+                                        <button type="button" class="btn-text"><span>시리얼번호 확인</span></button>
+                                    </span>
+                                </span>
+                            </span>
+                            <button type="button" data-href="#" data-control="modal" class="btn-serial"><span>제품 제조번호 확인 방법</span></button>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="buyerAddr" class="req">구매자 주소<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap block add-btn">
+                                <span class="box">
+                                    <input type="text" id="buyerAddr" value="06049" readonly>
+                                    <span class="cell addr">
+                                        <button type="button" class="btn-text"><span>주소찾기</span></button>
+                                    </span>
+                                </span>
+                            </span>
+                            <span class="input-wrap block">
+                                <input type="text" id="buyerAddr2" value="서울 강남구 논현로 748  (논현동,세화빌딩) 세회빌딩 4층" readonly>
+                            </span>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">사은품 배송정보</h2>
+                    <div class="right-chk ">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="info" name="info">
+                            <label for="info">구매자 정보와 같음</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-wrap">
+                    <div class="double-form">
+                        <dl class="forms">
+                            <dt class="tit"><label for="recipientName" class="req">수령자 이름<span class="blind">필수입력</span></label></dt>
+                            <dd class="conts">
+                                <span class="input-wrap block">
+                                    <input type="text" id="recipientName" placeholder="수령자 이름을 입력해 주세요.">
+                                </span>
+                            </dd>
+                        </dl>
+                        <dl class="forms">
+                            <dt class="tit"><label for="recipientPhone" class="req">휴대폰 번호<span class="blind">필수입력</span></label></dt>
+                            <dd class="conts">
+                                <span class="input-wrap block">
+                                    <input type="number" id="recipientPhone" placeholder="휴대폰 번호를 입력해주세요.">
+                                </span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <dl class="forms">
+                        <dt class="tit"><label for="recipientAddr" class="req">수령자 주소<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap block add-btn">
+                                <span class="box">
+                                    <input type="text" id="recipientAddr" value="06049" readonly>
+                                    <span class="cell addr">
+                                        <button type="button" class="btn-text"><span>주소찾기</span></button>
+                                    </span>
+                                </span>
+                            </span>
+                            <span class="input-wrap block">
+                                <input type="text" value="서울 강남구 논현로 748  (논현동,세화빌딩) 세회빌딩 4층" readonly>
+                            </span>
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTxt" : [
+                                    "입력한 정보로 배송되니 정확한 배송지를 확인해주세요.",
+                                    "주소는 사은품 발송의 목적으로, 해당 이벤트 참여용으로만 수집합니다."
+                                ]
+                            })
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">[필수] 개인정보 수집 이용 동의</h2>
+                    <div class="agree-chk">
+                        <span class="rdo-wrap">
+                            <input type="radio" id="rdo1-1" name="rdo1" checked>
+                            <label for="rdo1-1">동의함</label>
+                        </span>
+                        <span class="rdo-wrap">
+                            <input type="radio" id="rdo1-2" name="rdo1">
+                            <label for="rdo1-2">동의안함</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="tb_row tb-bor">
+                    <table>
+                        <caption>개인정보 수집 이용 동의 수집항목, 목적, 보유기간 안내</caption>
+                        <colgroup>
+                            <col style="width:33.3%">
+                            <col style="width:33.3%">
+                            <col style="">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">수집항목</th>
+                                <th scope="col">목적</th>
+                                <th scope="col">보유기간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>구매자 이름, 구매자 연락처, 구매자 주소</td>
+                                <td>이벤트 응모내역 확인 시 본인 확인</td>
+                                <td rowspan="3">이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                            </tr>
+                            <tr>
+                                <td>수령자 이름, 수령자 연락처</td>
+                                <td>경품배송 시 본인 확인</td>
+                            </tr>
+                            <tr>
+                                <td>수령자 주소</td>
+                                <td>경품배송</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "귀하께서는 본 동의를 거절하실 수 있습니다. 단, 거절하신 경우 이벤트 참여가 제한될 수 있습니다.",
+                        "14세 미만 고객의 경우, 이벤트 참여가 제한됩니다."
+                    ]
+                })
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">[필수] 개인정보 처리 위탁 동의</h2>
+                    <div class="agree-chk">
+                        <span class="rdo-wrap">
+                            <input type="radio" id="rdo2-1" name="rdo2" checked>
+                            <label for="rdo2-1">동의함</label>
+                        </span>
+                        <span class="rdo-wrap">
+                            <input type="radio" id="rdo2-2" name="rdo2">
+                            <label for="rdo2-2">동의안함</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="tb_row tb-bor">
+                    <table>
+                        <caption>개인정보 처리 위탁 동의 수탁자, 목적 안내</caption>
+                        <colgroup>
+                            <col style="width:50%">
+                            <col style="">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">수탁자</th>
+                                <th scope="col">목적</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>(주)LG CNS, 원은</td>
+                                <td>경품 제공 등 이벤트와 관련한 업무</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "경품 제공 등 이벤트 진행을 위한 개인정보 처리 위탁에 동의하셔야 이벤트 참여가 가능합니다."
+                    ]
+                })
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">[선택] 개인정보 수집 이용 동의</h2>
+                    <div class="agree-chk">
+                        <span class="rdo-wrap">
+                            <input type="radio" id="rdo3-1" name="rdo3" checked>
+                            <label for="rdo3-1">동의함</label>
+                        </span>
+                        <span class="rdo-wrap">
+                            <input type="radio" id="rdo3-2" name="rdo3">
+                            <label for="rdo3-2">동의안함</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="tb_row tb-bor">
+                    <table>
+                        <caption>개인정보 수집 이용 동의 수탁자, 목적, 보유기간 안내</caption>
+                        <colgroup>
+                            <col style="width:33.3%">
+                            <col style="width:33.3%">
+                            <col style="">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">수탁자</th>
+                                <th scope="col">목적</th>
+                                <th scope="col">보유기간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>생년, 성별</td>
+                                <td>마케팅 또는 통계를 위한 참고 및 활용</td>
+                                <td>이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "귀하께서는 본 동의를 거절하실 수 있습니다."
+                    ]
+                })
+            </div>
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>등록</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+</body>
+</html>
