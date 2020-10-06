@@ -12,6 +12,9 @@
     border: 1px solid #111;
     border-radius: 8px;
     background-color:transparent;
+    @include mobile {
+        padding:17px 32px;
+    }
     &:active {
         background-color:#f4f4f4;
     }
