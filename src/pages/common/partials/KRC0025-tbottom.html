@@ -1,6 +1,6 @@
 
 <!-- components/partials/KRC0025-tbottom.html -->
-<div class="component-wrap full">
+<div class="component-wrap">
 	<!--
 		[.component-wrap 옵션]
 		1. 여백
@@ -43,8 +43,7 @@
 			<div class="visual-area @@animation-type">
 				<!-- 4. image -->
 				<div class="ground-img">
-					<img data-pc-src="/lg5-common/images/KRC0025/@sample-1600x700.jpg" class="lazyload pc" alt="" />
-                    <img data-mobile-src="/lg5-common/images/KRC0025/@sample-768x720.jpg" class="lazyload mobile" alt="" />
+					<img data-pc-src="/lg5-common/images/KRC0025/@sample-1600x700.jpg" data-m-src="/lg5-common/images/KRC0025/@sample-768x720.jpg" class="lazyload" alt="" /><!-- [KR수정] img 수정 -->
 
 					<p class="hidden pc">graphic description : </p>
 					<p class="hidden mobile">graphic description : </p>
@@ -52,8 +51,7 @@
 				<!-- // 4. image -->
 				<!-- 5. inset image : inset 이미지의 경우 레이지로드를 사용하지 않습니다. -->
 				<div class="show-cut">
-					<img src="/lg5-common/images/KRC0025/@sample-krc0025-pc.png" class="pc" alt="" />
-                    <img src="/lg5-common/images/KRC0025/@sample-krc0025-mo.png" class="mobile" alt="" />
+					<img data-pc-src="/lg5-common/images/KRC0025/@sample-krc0025-pc.png" data-m-src="/lg5-common/images/KRC0025/@sample-krc0025-mo.png" alt="" /><!-- [KR수정] img 수정 -->
 
 					<p class="hidden pc">graphic description : </p>
 					<p class="hidden mobile">graphic description : </p>

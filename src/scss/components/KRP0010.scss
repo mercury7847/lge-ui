@@ -212,7 +212,9 @@
                         }
                         &:hover,
                         &.active {
-                            border-color: #000;
+                            a {
+                                border-color: #000;
+                            }
                         }
                         &.more {
                             .count {

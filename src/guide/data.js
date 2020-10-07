@@ -76,7 +76,8 @@ var res = {
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"],
 			"KRP0018_Sticky Compare" : ["/html/components/KRP0018.html","",""],
 			"KRP0020_Sitemap_Dynamic" : ["/html/components/KRP0020.html","","검수완료"],
-			"KRP0021_Category module for store home" : ["/html/components/KRP0021.html","","진행중"]
+			"KRP0021_Category module for store home" : ["/html/components/KRP0021.html","","진행중"],
+			"KRP0025_Event list for home" : ["/html/components/KRP0025.html","","진행중"],
 		},
 		"Page" : {
 			"이벤트/멤버십(BMC)" : {

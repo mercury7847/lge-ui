@@ -12,6 +12,11 @@ $(window).ready(function(){
             slidesToShow: 6,
             slidesToScroll: 1,
             responsive: [{
+                breakpoint: 20000,
+                settings: {
+                    slidesToShow: 6
+                }
+            }, {
                 breakpoint: 1270,
                 settings: {
                     slidesToShow: 5
