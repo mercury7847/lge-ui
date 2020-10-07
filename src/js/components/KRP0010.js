@@ -14,7 +14,7 @@ $(window).ready(function(){
             self.$pdpImage = self.$pdpVisual.find('div.pdp-visual-image');
             self.$pdpVideo = self.$pdpVisual.find('div.pdp-visual-video');
             self.$pdpAnimation = self.$pdpVisual.find('div.pdp-visual-animation');
-            self.$pdpThumbSlider = self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider div.pdp-thumbnail-list ul.thumbnail-list');
+            self.$pdpThumbnail = self.$pdpVisual.find('div.pdp-thumbnail-nav div.inner div.pdp-thumbnail-list ul.thumbnail-list');
             self.$pdpMobileVisual = $('#mobile_summary_gallery');
             self.$pdpMobileSlider = self.$pdpMobileVisual.find('div.ui_carousel_slider div.slide-content ul.slide-track');
             self.$pdpMoreInfo = self.$pdpVisual.find('div.pdp-more-info');
@@ -137,17 +137,51 @@ $(window).ready(function(){
                 target.html(contentHtml);
 
                 //이미지 슬라이드 데스크탑
+                self.$pdpThumbnail.html('');
                 contentHtml = "";
+                var template = '<li class="thumbnail" data-idx="{{index}}">' +
+                    '<a href="#" data-link-area="product_summary-thumbnail" data-link-name="{{link_name}}">'+
+                    '<img data-src="{{thumb_url}}" class="lazyloaded" alt="{{image_alt}}">' +
+                    '</a></li>';
                 pdp_visual_list = data.pdp_visual_list instanceof Array ? data.pdp_visual_list : [];
                 pdp_visual_list.forEach(function(item, index) {
                     item.index = "" + index;
-                    var template = '<li class="thumbnail ui_carousel_slide" data-idx="{{index}}">' +
-                        '<a href="#" data-link-area="product_summary-thumbnail" data-link-name="{{link_name}}">'+
-                        '<img data-src="{{thumb_url}}" class="lazyloaded" alt="{{image_alt}}">'
-                        '</a></li>';
-                    contentHtml += vcui.template(template,item);
+                    if(index < 5) {
+                        contentHtml += vcui.template(template,item);
+                    } else if(index == 5) {
+                        if(pdp_visual_list.length > 6) {
+                            template = '<li class="thumbnail more" data-idx="{{index}}">' +
+                                '<a href="#" data-link-area="product_summary-thumbnail" data-link-name="{{link_name}}">'+
+                                '<img data-src="{{thumb_url}}" class="lazyloaded" alt="{{image_alt}}">' +
+                                '<span class="count">+{{more_count}}</span>' +
+                                '</a></li>';
+                            item.more_count = "" + (pdp_visual_list.length - 6);
+                            contentHtml += vcui.template(template,item);
+                        } else {
+                            contentHtml += vcui.template(template,item);
+                        }
+                    } else {
+                        //무시
+                    }
                 });
-                self.$pdpThumbSlider.html(contentHtml);
+                self.$pdpThumbnail.html(contentHtml);
+                var thumbItems = self.$pdpThumbnail.find('li.thumbnail');
+                thumbItems.on('click', function (e){
+                    var slideClicked = $(this).attr("data-idx");
+                    if($(this).hasClass('more')) {
+                        //more는 바로 모달뷰 뛰움
+                        console.log('more', slideClicked);
+                    } else {
+                        if(self.$selectItemTarget) {
+                            self.$selectItemTarget.removeClass('active');
+                        }
+                        self.$selectItemTarget = $(this);
+                        self.$selectItemTarget.addClass('active');
+                        //메인이미지 변경
+                        console.log(slideClicked);
+                    } 
+                    //KRP0010.clickThumbnailSlide(slideClicked);
+                });
 
                 //이미지 슬라이드 모바일
                 contentHtml = "";
@@ -201,6 +235,7 @@ $(window).ready(function(){
                 self.$pdpMobileSlider.html(contentHtml);
 
                 vcui.require(['ui/carousel'], function () {
+                    /*
                     self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider').vcCarousel({
                         infinite: false,
                         prevArrow:'.btn-arrow.prev',
@@ -221,7 +256,7 @@ $(window).ready(function(){
                         var slideClicked = $(e.currentTarget).attr("data-idx");
                         KRP0010.clickThumbnailSlide(slideClicked);
                     });
-
+*/
                     self.$pdpMobileVisual.find('div.ui_carousel_slider').vcCarousel({
                         infinite: false,
                         autoplay: false,
