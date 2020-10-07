@@ -61,6 +61,7 @@ $(window).ready(function(){
                     KRP0010.purchase($(this).data('url'));
                 }
             });
+            
             self.$purchaseButton.find('div.btn-group a.btn.cart').on('click',function(e){
                 //카트
                 e.preventDefault();
