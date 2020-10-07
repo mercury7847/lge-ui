@@ -18,7 +18,7 @@
                 <div class="select-quantity">
                     <div class="inner">
                         <button type="button" class="minus"><span class="blind">뺴기</span></button>
-                        <input type="number" class="quantity" title="수량 입력" value="1">
+                        <input type="number" class="quantity" title="수량 입력" value="1" readonly>
                         <button type="button" class="plus"><span class="blind">더하기</span></button>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                 `+items[i].delivery+`
             </div>
         </div>
-        <!-- [D] 쿠폰이 없을 경우 .select-coupon 영역 삭제 -->
+        <!-- [D] 쿠폰이 없을 경우 .select-coupon 영역 삭제 / 비회원 쿠폰 없음 -->
         <div class="select-coupon">
             <div class="select-wrap">
                 <select class="ui_selectbox" id="select1" title="쿠폰 선택">

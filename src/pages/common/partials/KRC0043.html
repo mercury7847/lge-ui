@@ -24,95 +24,97 @@
 		.font-underline : 언더라인
 	-->
 	<section class="component KRC0043"><!-- [KR수정] div -> section DOM 수정 -->
-		<div class="inner ui_carousel_slider">
-			<!-- 1. headline -->
-			<div class="title @@align-class1">@@headline</div>
-			<!-- // 1. headline -->
-			<!--
-				visual-box와 thumbnail의 item 갯수는 항상 동일해야 합니다.
-            -->
-			<div class="visual-box slider-for ui_carousel_track">
-				<div class="item ui_carousel_slide">
-					<!-- 2-1. image -->
-					<div class="img-box">
-						<img data-src="/lg5-common/images/KRC0043/@thumb01.jpg" class="lazyload" alt="" />
-						<p class="hidden">graphic description : </p>
-					</div>
-					<!-- // 2-1. image -->
-					<!-- 2-2. body copy -->
-					<div class="txt-box @@text-box1.font-class1 @@text-box1.font-class2">1올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
-					<!-- // 2-2. body copy -->
-				</div>
-
-				<!-- markup when item content is video -->
-				<div class="item visual-area video youtube-box ui_carousel_slide"><!-- [KR수정] class 추가 -->
-					<!-- [KR수정] DOM 순서 변경 -->
-					<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="gallery_10pickers-video_play" data-link-name="{video id}">
-						<div class="img-box"><img data-src="/lg5-common/images/KRC0043/@thumb02.jpg" class="lazyload" alt="" /></div>
-					</a>
-					<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="gallery_10pickers-video_play" data-link-name="{video id}">plays audio description video</a>
-                    <div class="txt-box font-regular font-underline">2올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
-                    <!-- // [KR수정] DOM 순서 변경 -->
-				</div>
-				<!--// markup when item content is video -->
-
-				<div class="item">
-					<div class="visual-area animation-box">
-						<a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
-						<img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload" />
-						<p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
-						<div class="animation-area">
-							<video autoplay muted loop>
-								<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
-								<!-- WEBM 동영상을 제공하는 경우
-								<source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
-								-->
-							</video>
-							<div class="controller-wrap wa-btn">
-								<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
-							</div>
+		<div class="component-inner">
+			<div class="inner ui_carousel_slider">
+				<!-- 1. headline -->
+				<div class="title @@align-class1">@@headline</div>
+				<!-- // 1. headline -->
+				<!--
+					visual-box와 thumbnail의 item 갯수는 항상 동일해야 합니다.
+				-->
+				<div class="visual-box slider-for ui_carousel_track">
+					<div class="item ui_carousel_slide">
+						<!-- 2-1. image -->
+						<div class="img-box">
+							<img data-src="/lg5-common/images/KRC0043/@thumb01.jpg" class="lazyload" alt="" />
+							<p class="hidden">graphic description : </p>
 						</div>
-						<!-- caption -->
-						<div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
-						<!-- // caption -->
+						<!-- // 2-1. image -->
+						<!-- 2-2. body copy -->
+						<div class="txt-box @@text-box1.font-class1 @@text-box1.font-class2">1올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
+						<!-- // 2-2. body copy -->
+					</div>
+
+					<!-- markup when item content is video -->
+					<div class="item visual-area video youtube-box ui_carousel_slide"><!-- [KR수정] class 추가 -->
+						<!-- [KR수정] DOM 순서 변경 -->
+						<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="gallery_10pickers-video_play" data-link-name="{video id}">
+							<div class="img-box"><img data-src="/lg5-common/images/KRC0043/@thumb02.jpg" class="lazyload" alt="" /></div>
+						</a>
+						<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-area="gallery_10pickers-video_play" data-link-name="{video id}">plays audio description video</a>
+						<div class="txt-box font-regular font-underline">2올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
+						<!-- // [KR수정] DOM 순서 변경 -->
+					</div>
+					<!--// markup when item content is video -->
+
+					<div class="item">
+						<div class="visual-area animation-box">
+							<a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
+							<img data-src="/lg5-common/images/dummy/@sample-16-9.gif" alt="" class="lazyload" />
+							<p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+							<div class="animation-area">
+								<video autoplay muted loop>
+									<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+									<!-- WEBM 동영상을 제공하는 경우
+									<source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+									-->
+								</video>
+								<div class="controller-wrap wa-btn">
+									<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+								</div>
+							</div>
+							<!-- caption -->
+							<div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+							<!-- // caption -->
+						</div>
+					</div>
+					<div class="item">
+						<div class="img-box"><img data-src="/lg5-common/images/KRC0043/@thumb01.jpg" class="lazyload" alt="" /></div>
+						<div class="txt-box @@text-box1.font-class1 @@text-box1.font-class2"></div>
+					</div>
+					<div class="item">
+						<div class="img-box"><img data-src="/lg5-common/images/KRC0043/@thumb02.jpg" class="lazyload" alt="" /></div>
+						<div class="txt-box @@text-box1.font-class1 @@text-box1.font-class2"></div>
+					</div>
+					<div class="item">
+						<div class="img-box"><img data-src="/lg5-common/images/KRC0043/@thumb03.jpg" class="lazyload" alt="" /></div>
+						<div class="txt-box @@text-box3.font-class1 @@text-box3.font-class2">3올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
 					</div>
 				</div>
-				<div class="item">
-					<div class="img-box"><img data-src="/lg5-common/images/KRC0043/@thumb01.jpg" class="lazyload" alt="" /></div>
-					<div class="txt-box @@text-box1.font-class1 @@text-box1.font-class2"></div>
+				<!-- [KR수정] indicator DOM 추가-->
+				<ul class="indi-wrap ui_carousel_dots">
+					<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+				</ul>
+				<!-- // [KR수정] indicator DOM 추가-->
+			</div>
+			<!-- [KR수정] DOM 위치 이동 및 추가 -->
+			<!-- 2. thumbnail -->
+			<div class="slider thumbnail slider-nav ui_carousel_thumb_slider">
+				<div class="ui_carousel_track">
+					<div class="item ui_carousel_slide"><a href="#n" data-link-area="gallery_10pickers-thumbnail_image" data-link-name="{image alt}"><img data-src="/lg5-common/images/KRC0043/@indi01.jpg" class="lazyload" alt=""></a></div>
+					<div class="item video ui_carousel_slide"><a href="#n" data-link-area="gallery_10pickers-thumbnail_image" data-link-name="{image alt}"><img data-src="/lg5-common/images/KRC0043/@indi02.jpg" class="lazyload" alt=""></a></div>
+					<div class="item ui_carousel_slide"><a href="#n" data-link-area="gallery_10pickers-thumbnail_image" data-link-name="{image alt}"><img data-src="/lg5-common/images/KRC0043/@indi03.jpg" class="lazyload" alt=""></a></div>
+					<div class="item ui_carousel_slide"><a href="#n" data-link-area="gallery_10pickers-thumbnail_image" data-link-name="{image alt}"><img data-src="/lg5-common/images/KRC0043/@indi01.jpg" class="lazyload" alt=""></a></div>
+					<div class="item ui_carousel_slide"><a href="#n" data-link-area="gallery_10pickers-thumbnail_image" data-link-name="{image alt}"><img data-src="/lg5-common/images/KRC0043/@indi02.jpg" class="lazyload" alt=""></a></div>
+					<div class="item ui_carousel_slide"><a href="#n" data-link-area="gallery_10pickers-thumbnail_image" data-link-name="{image alt}"><img data-src="/lg5-common/images/KRC0043/@indi03.jpg" class="lazyload" alt=""></a></div>
 				</div>
-				<div class="item">
-					<div class="img-box"><img data-src="/lg5-common/images/KRC0043/@thumb02.jpg" class="lazyload" alt="" /></div>
-					<div class="txt-box @@text-box1.font-class1 @@text-box1.font-class2"></div>
-				</div>
-				<div class="item">
-					<div class="img-box"><img data-src="/lg5-common/images/KRC0043/@thumb03.jpg" class="lazyload" alt="" /></div>
-					<div class="txt-box @@text-box3.font-class1 @@text-box3.font-class2">3올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며 홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다. 222cm의 초대형 화면에 펼쳐지는 리얼 8K 올레드 스스로 빛나는 올레드 패널이 만드는 차원이 다른 화질과 만나보세요.</div>
-				</div>
-            </div>
-            <!-- [KR수정] indicator DOM 추가-->
-            <ul class="indi-wrap ui_carousel_dots">
-                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-            </ul>
-            <!-- // [KR수정] indicator DOM 추가-->
+				<!-- [KR수정] arrow button DOM 추가-->
+				<button type="button" class="btn-arrow prev">이전</button>
+				<button type="button" class="btn-arrow next">다음</button>
+				<!-- // [KR수정] arrow button DOM 추가-->
+			</div>
+			<!-- // 2. thumbnail -->
 		</div>
-        <!-- [KR수정] DOM 위치 이동 및 추가 -->
-        <!-- 2. thumbnail -->
-        <div class="slider thumbnail slider-nav ui_carousel_thumb_slider">
-            <div class="ui_carousel_track">
-                <div class="item ui_carousel_slide"><a href="#n" data-link-area="gallery_10pickers-thumbnail_image" data-link-name="{image alt}"><img data-src="/lg5-common/images/KRC0043/@indi01.jpg" class="lazyload" alt=""></a></div>
-                <div class="item video ui_carousel_slide"><a href="#n" data-link-area="gallery_10pickers-thumbnail_image" data-link-name="{image alt}"><img data-src="/lg5-common/images/KRC0043/@indi02.jpg" class="lazyload" alt=""></a></div>
-                <div class="item ui_carousel_slide"><a href="#n" data-link-area="gallery_10pickers-thumbnail_image" data-link-name="{image alt}"><img data-src="/lg5-common/images/KRC0043/@indi03.jpg" class="lazyload" alt=""></a></div>
-                <div class="item ui_carousel_slide"><a href="#n" data-link-area="gallery_10pickers-thumbnail_image" data-link-name="{image alt}"><img data-src="/lg5-common/images/KRC0043/@indi01.jpg" class="lazyload" alt=""></a></div>
-                <div class="item ui_carousel_slide"><a href="#n" data-link-area="gallery_10pickers-thumbnail_image" data-link-name="{image alt}"><img data-src="/lg5-common/images/KRC0043/@indi02.jpg" class="lazyload" alt=""></a></div>
-                <div class="item ui_carousel_slide"><a href="#n" data-link-area="gallery_10pickers-thumbnail_image" data-link-name="{image alt}"><img data-src="/lg5-common/images/KRC0043/@indi03.jpg" class="lazyload" alt=""></a></div>
-            </div>
-            <!-- [KR수정] arrow button DOM 추가-->
-            <button type="button" class="btn-arrow prev">이전</button>
-            <button type="button" class="btn-arrow next">다음</button>
-            <!-- // [KR수정] arrow button DOM 추가-->
-        </div>
-        <!-- // 2. thumbnail -->
         <!-- // [KR수정] DOM 위치 이동 및 추가 -->
 	</section>
 </div>

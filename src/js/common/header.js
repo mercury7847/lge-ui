@@ -20,6 +20,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 self._setting();
                 self._bindEvents();
                 self._resize();
+                self._arrowState();
             });
         },
 
@@ -31,6 +32,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$pcNaviWrapper = self.$el.find(".nav-wrap .nav");
             self.$pcNavItems = self.$el.find('.nav-wrap .nav > li');
 
+            self.$dimmed = self.$el.find('.nav-wrap .dimmed');
+
+            self.$leftArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .prev');
+            self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next');
+
             self.$mobileNaviWrapper = $(self.$pcNaviWrapper.clone()).width('100%');
             self.$mobileNaviItems = self.$mobileNaviWrapper.find('> li');
             self.$pcNaviWrapper.parent().append(self.$mobileNaviWrapper);
@@ -41,10 +47,14 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         _bindEvents: function(){
             var self = this;
 
-            self.$mypage.find('> a').on('click', function(e){
+            self.$mypage.on('mouseover', function(e){
                 e.preventDefault();
 
-                self._mypageToggle(e.target);
+                self._mypageOver();
+            }).on('mouseout', function(e){
+                e.preventDefault();
+
+                self._mypageOut();
             });
 
             self.$hamburger.on('click', function(e){
@@ -83,6 +93,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                     self.displayMode = "pc";
                 }
+
+                self._arrowState();
             } else{
                 if(self.displayMode != "m"){                    
                     self.$pcNaviWrapper.css('display', 'none');
@@ -90,7 +102,45 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                     self.displayMode = "m";
                 }
+                self.$leftArrow.hide();
+                self.$rightArrow.hide();
             }
+        },
+
+        _arrowState: function(){
+            var self = this;
+
+            var navwrapwidth = self.$el.find('.nav-wrap').width();
+            var brandwidth = self.$el.find('.nav-wrap .nav-brand-gate').outerWidth(true);
+            var navwidth = self.$pcNaviWrapper.outerWidth(true);
+
+            if(navwrapwidth < brandwidth + navwidth){
+                self.$leftArrow.show();
+                self.$rightArrow.show();
+            } else{
+                self.$leftArrow.hide();
+                self.$rightArrow.hide();
+            }
+        },
+
+        _setNavPosition: function(course){
+            var self = this;
+
+            // var brandgate = self.$el.find('.nav-wrap .nav-brand-gate');
+
+            // var navwrapwidth = self.$el.find('.nav-wrap').width();
+            // var brandwidth = brandgate.outerWidth(true);
+            // var navwidth = self.$pcNaviWrapper.outerWidth(true);
+            // var minx = navwrapwidth - (brandwidth + navwidth);
+            // var movalue = navwrapwidth * .5;
+
+            // var newposition = parseInt(brandgate.css('x')) + course*movalue;
+            // if(newposition > 0) newposition = 0;
+            // else if(newposition < minx) newposition = minx; 
+            
+            // brandgate.stop().transition({left: newposition}, 200);
+            // self.$pcNaviWrapper.stop().transition({left: newposition}, 200);
+            // self.$pcNaviWrapper.find('.nav-category-layer').css({x:-newposition})
         },
 
         _pcSetting: function(){
@@ -115,7 +165,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 $(item).on('mouseover', function(e){
                     self._setOver(this);
                 }).on('mouseout', function(e){    
-                    self._setOut(this);
+                    //self._setOut(this);
                 });
 
                 $(item).find('> .nav-category-container > ul >li').each(function(cdx, child){
@@ -126,6 +176,17 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     })
                 });
             });
+
+            self.$leftArrow.on('click', function(e){
+                e.preventDefault();
+
+                self._setNavPosition(1);
+            });
+            self.$rightArrow.on('click', function(e){
+                e.preventDefault();
+
+                self._setNavPosition(-1);
+            })
         },
 
         _mobileSetting: function(){
@@ -172,23 +233,22 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             });
         },
 
-        _mypageToggle: function(target){
+        _mypageOver: function(){
             var self = this;
 
             var mypageLayer = self.$mypage.find('.mypage-layer');
-            mypageLayer.toggle();
-            
-            if(mypageLayer.css('display') === 'block'){
-                if(!self.$mypage.find('> a').hasClass('on')) self.$mypage.find('> a').addClass("on");
-                $(window).on('click.headerMypage scroll.headerMypage', function(e){
-                    if(e.target !== target) {
-                        self._mypageToggle();
-                    }
-                })
-            } else{
-                self.$mypage.find('> a').removeClass("on");
-                $(window).off('click.headerMypage scroll.headerMypage');
-            }
+            mypageLayer.show();
+
+            if(!self.$mypage.find('> a').hasClass('on')) self.$mypage.find('> a').addClass("on");
+        },
+
+        _mypageOut: function(){
+            var self = this;
+
+            var mypageLayer = self.$mypage.find('.mypage-layer');
+            mypageLayer.hide();
+
+            if(self.$mypage.find('> a').hasClass('on')) self.$mypage.find('> a').removeClass("on");
         },
 
         _menuToggle: function(){
@@ -245,6 +305,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     playSelector: '.btn-play.play'
                 });
                 categoryLayer.find('.ui_carousel_list').css('overflow', 'hidden');
+
+                self.$dimmed.show();
             }
         },
 
@@ -260,6 +322,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             } else{
                 $(item).find('> a').removeClass('active');
             }
+
+            self.$dimmed.hide();
         }
     });
 

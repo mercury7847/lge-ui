@@ -32,7 +32,7 @@
         "cart":[
             {
                 "productId":"p00001",
-                "favorite" : false,
+                "wish" : false,
                 "coupon" : [
                     {
                         "couponId":"c00001",
@@ -58,7 +58,7 @@
             },
             {
                 "productId":"p00002",
-                "favorite" : true,
+                "wish" : true,
                 "coupon" : [
                     {
                         "couponId":"c00001",
