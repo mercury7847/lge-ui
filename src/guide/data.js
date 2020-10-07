@@ -55,7 +55,7 @@ var res = {
 			"KRC0030_Feature Icon Tab" : ["/html/components/KRC0030.html","","검수완료"],
 			"KRC0031_Block Image (2 to 3 - CTA)" : ["/html/components/KRC0031.html","","검수완료"],
 			"KRC0032_Section Title" : ["/html/components/KRC0032.html","","검수완료"],
-			"KRC0035_Promotion/Campaign - Hero_Static" : ["/html/components/KRC0035.html","","검수완료"],
+			//"KRC0035_Promotion/Campaign - Hero_Static" : ["/html/components/KRC0035.html","","검수완료"],
 			"KRC0036_Block Image (2 to 4)_Static" : ["/html/components/KRC0036.html","","검수완료"],
 			"KRC0037_Carousel BG Image " : ["/html/components/KRC0037.html","","검수완료"],
 			"KRC0038_Text" : ["/html/components/KRC0038.html","","검수완료"],
