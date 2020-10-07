@@ -52,6 +52,10 @@
             border-radius:50%;
             background:#adadad;
             font-size:0;
+            @include mobile {
+                width:7px;
+                height:7px;
+            }
         }
         &.on .btn-indi {
             width:20px;
