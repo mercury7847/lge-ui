@@ -3,6 +3,10 @@ CS.MD = CS.MD || {};
 CS.UI = CS.UI || {};
 
 CS.UI.elem = {};
+CS.UI.elem.$doc = $(document);
+CS.UI.elem.$win = $(window);
+CS.UI.elem.$html = $('html');
+CS.UI.elem.$body = $('body');
 
 /*
 * validation cehck
@@ -417,6 +421,155 @@ CS.MD.sorting  = function() {
     }
 }();
 
+/* PSP floating anchor tab */
+CS.MD.anchorTab  = function() {
+    var pluginName = 'anchorTab';
+
+    function Plugin(el, opt) {
+        var self = this,
+            el = self.el = el;
+            $el = self.$el = $(el);
+
+        var defaults = {
+            selectedIndex: 0,
+            selectedClass: 'on',
+            selectedText: '<span class="blind">선택됨</span>',
+            floatingClass: 'floating',
+            listSelector: 'ul',
+            tabsSelector: 'ul>li>a'
+        };
+
+        self.options = $.extend({}, defaults, opt);
+
+        function _initialize() {
+            var index;
+
+            self.$contents = $();
+            self.$anchors = $el.find(self.options.tabsSelector);
+            self.$anchors.each(function(index, anchor) {
+                var $anchor = $(anchor),
+                    href = $anchor.attr('href');
+                
+                if (href && $(href).length) {
+                    self.$contents = self.$contents.add($(href));
+                }
+            });
+
+            index = self.$anchors.parent().filter('.' + self.options.selectedClass);
+            if (index >= 0) {
+                self.options.selectedIndex = index;
+            }
+            
+            self._updateProperty();
+            self._select(self.options.selectedIndex, true);
+        }
+        function _setEventHandler() {
+            self.$anchors.on('click', function(e) { 
+                e.preventDefault();
+                self.select($(e.currentTarget).parent().index());
+            });
+
+            CS.UI.elem.$win.on('scroll resize', function() {
+                var $win = CS.UI.elem.$win,
+                    scrollTop = $win.scrollTop(),
+                    offsetTop = $el.offset().top,
+                    floatingClass = self.options.floatingClass,
+                    selectedIndex = 0;
+
+                if (scrollTop >= offsetTop) {
+                    $el.addClass(floatingClass);
+                } else {
+                    $el.removeClass(floatingClass);
+                }
+
+                self.$contents.each(function(index, content) {
+                    var $content = $(content),
+                        contOffsetTop = $content.offset().top - self.$el.outerHeight();
+
+                    if (scrollTop >= contOffsetTop) {
+                        selectedIndex = index;        
+                    }
+                });
+                self._select(selectedIndex);
+            });
+        }
+
+        _initialize();
+        _setEventHandler();
+        CS.UI.elem.$win.trigger('scroll');
+    }
+
+    Plugin.prototype = {
+        _updateProperty: function() {
+            var self = this,
+                listSelector = self.options.listSelector;
+            
+            self.$el.find(listSelector).attr('role', 'tablist');
+            self.$anchors.each(function(index, anchor) {
+                var $anchor = $(anchor),
+                    href = $anchor.attr('href'),
+                    id = $anchor.attr('id'),
+                    $content = $(href);
+
+                $anchor.attr({
+                    'aria-controls': href.replace(/\#|\./g,''),
+                    'aria-selected': false,
+                    'role': 'tab'
+                });
+                $content.attr({
+                    'aria-labelledby': id,
+                    'role': 'tabpanel'
+                });
+            });
+        },
+        _focus: function() {
+            var self = this,
+                selectedIndex = self.options.selectedIndex,
+                offsetTop = self.$contents.eq(selectedIndex).offset().top,
+                tabHeight = self.$el.outerHeight();
+
+            $('html, body').stop().animate({
+                scrollTop: offsetTop - tabHeight
+            }, 1000);
+        },
+        _select: function(selectedIndex) {
+            var self = this;
+                selectedText = self.options.selectedText,
+                selectedClass = self.options.selectedClass;
+        
+            self.options.selectedIndex = selectedIndex;
+
+            self.$anchors.attr('aria-selected', false).parent().removeClass(selectedClass).find('.blind').remove();
+            self.$anchors.eq(selectedIndex).attr('aria-selected', true).append(selectedText).parent().addClass(selectedClass);
+        },
+        select: function(selectedIndex, notFocus) {
+            var self = this;
+                
+            self._select(selectedIndex);
+            !notFocus && self._focus();
+        },
+
+    }
+
+    $.fn[pluginName] = function(options) {
+        var arg = arguments; 
+
+        return this.each(function() {
+            var _this = this,
+                $this = $(_this),
+                plugin = $this.data('plugin_' + pluginName);
+
+            if (!plugin) {
+                $this.data('plugin_' + pluginName, new Plugin(this, options));
+            } else {
+                if (typeof options === 'string' && typeof plugin[options] === 'function') {
+                    plugin[options].apply(plugin, [].slice.call(arg, 1));
+                }
+            }
+        });
+    }
+}();
+
 (function($){
     $.fn.ajaxLoad = function(type) {
         var el = this;
@@ -443,32 +596,6 @@ CS.MD.sorting  = function() {
             }
         });
     }
-
-    function checkPrivacy() {
-        var $privacyBox = $('.privacy-box');
-
-        if (!$privacyBox.length) return false;
-
-        function setEventListener() {
-            $('[type="checkbox"]').on('click', function(e) {
-                var $this = $(this);
-                
-                if ($this.is(':checked')) {
-                    e.preventDefault();
-                
-                    $('#privacyAgreeModal').vcModal();
-                }
-            });
-
-            $('#privacyAgreeModal').find('.btn.black').on('click', function() {
-                $privacyBox.find('[type="checkbox"]').prop('checked', true);
-                $('#privacyAgreeModal').vcModal('hide');
-            });
-        }
-
-        setEventListener();
-    }
-
 
     function commonSlides() {
         vcui.require(['ui/carousel'], function () {
@@ -508,16 +635,9 @@ CS.MD.sorting  = function() {
     }
 
     function commonInit(){
-        CS.UI.elem.$doc = $(document);
-        CS.UI.elem.$win = $(window);
-        CS.UI.elem.$html = $('html');
-        CS.UI.elem.$body = $('body');
-
         setTableScrollbar();
-        checkPrivacy();
         commonSlides();
     }
 
-    // CS.UI.elem.$win.ready( commonInit );
     document.addEventListener('DOMContentLoaded', commonInit);
 })(jQuery);
