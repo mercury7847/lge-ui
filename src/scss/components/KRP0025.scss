@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRP0025 {
+    .component-inner { 
+        .evt-bnr {
+            @include clearfix;
+            padding-bottom:35px;
+            h2.tit {
+                padding:0 0 36px;
+                font-size:24px;
+                line-height:32px;
+                font-weight:700;
+                text-align:center;
+                @include mobile {
+                    font-size:16px;
+                    line-height:23px;
+                }
+            }
+            .btn-text {
+                float:right;
+                margin-top:16px;
+            }
+            .slide-wrap {
+                @include mobile {
+                    box-shadow:3px 4px 15px 0 rgba(#000, .12);
+                    border-radius:8px;
+                }
+                .slide-content {
+                    margin:0 -6px;
+                    @include mobile {
+                        margin:0;
+                    }
+
+                    // .slide-conts {
+                    //     width:calc(100% / 3);
+                    //     @include mobile {
+                    //         width:100%;
+                    //     }
+                    // }
+                    .conts-wrap {
+                        margin:0 6px;
+                        @include mobile {
+                            margin:0;
+                        }
+                        .evt {
+                            position:relative;
+                            padding-bottom:76px;
+                            background:#fff;
+                            overflow:hidden;
+                            @include mobile {
+                                padding-bottom:20px;
+                                border-radius:8px;
+                            }
+                            .evt-link {
+                                display:block;
+                            }
+                            .thumb {
+                                display:block;
+                                position:relative;
+                                border-radius:4px;
+                                overflow:hidden;
+                                img {
+                                    width:100%;
+                                    height:auto;
+                                    vertical-align:top;
+                                }
+                                > .flag-wrap {
+                                    position:absolute;
+                                    top:24px;
+                                    left:24px;
+                                    @include mobile {
+                                        top:20px;
+                                        left:20px;
+                                    }
+                                }
+                            }
+                            .event-info {
+                                padding:24px;
+                                padding-bottom:0;
+                                @include mobile {
+                                    padding:16px 20px 0;
+                                }
+                                .flag-wrap {
+                                    margin-bottom:8px;
+                                }
+                                .tit {
+                                    height:30px;
+                                    color:#222;
+                                    font-size:20px;
+                                    line-height:30px;
+                                    font-weight:700;
+                                    overflow:hidden;
+                                    text-overflow:ellipsis;
+                                    white-space:nowrap;
+                                    @include mobile {
+                                        height:18px;
+                                        font-size:14px;
+                                        line-height:18px;
+                                    }
+                                }
+                                .date {
+                                    height:24px;
+                                    color:#222;
+                                    font-size:16px;
+                                    line-height:24px;
+                                    overflow:hidden;
+                                    text-overflow:ellipsis;
+                                    white-space:nowrap;
+                                    @include mobile {
+                                        height:16px;
+                                        font-size:12px;
+                                        line-height:16px;
+                                    }
+                                }
+                            }
+                            .end-flag {
+                                position:absolute;
+                                top:0;
+                                right:0;
+                                width:60px;
+                                height:60px;
+                                padding:10px 0 10px 5px;
+                                border-radius:0 4px 0 4px;
+                                background-image:linear-gradient(#F04E3E, #EC455A);
+                                color:#fff;
+                                font-size:12px;
+                                letter-spacing:5px;
+                                line-height:20px;
+                                text-align:center;
+                                z-index:10;
+                                @include mobile {
+                                    width:48px;
+                                    height:48px;
+                                    padding:8px 0 8px 4px;
+                                    font-size:10px;
+                                    line-height:16px;
+                                    letter-spacing:4px;
+                                }
+                            }
+                        }
+                    }
+                }
+    
+                .indi-wrap {
+                    bottom:-69px;
+                }
+            }
+        }
+    }
+    
+}

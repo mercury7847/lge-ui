@@ -461,7 +461,7 @@ CS.MD.anchorTab  = function() {
             }
             
             self._updateProperty();
-            self._select(self.options.selectedIndex, true);
+            self._select(self.options.selectedIndex);
         }
         function _setEventHandler() {
             self.$anchors.on('click', function(e) { 
@@ -477,20 +477,26 @@ CS.MD.anchorTab  = function() {
                     selectedIndex = 0;
 
                 if (scrollTop >= offsetTop) {
-                    $el.addClass(floatingClass);
-                } else {
+                    !$el.hasClass(floatingClass) && $el.addClass(floatingClass);
+                
+                    self.$contents.each(function(index, content) {
+                        var $content = $(content),
+                            contOffsetTop = $content.offset().top - self.$el.outerHeight();
+    
+                        if (scrollTop >= contOffsetTop) {
+                            selectedIndex = index;        
+                        }
+                    });
+                    self._active(selectedIndex);
+    
+                    clearTimeout(self.timeout);
+                    self.timeout = setTimeout(function () {
+                        self._select(selectedIndex);
+                        self.timeout = undefined;
+                    }, 400);
+                } else if (scrollTop < offsetTop && $el.hasClass(floatingClass)) {
                     $el.removeClass(floatingClass);
                 }
-
-                self.$contents.each(function(index, content) {
-                    var $content = $(content),
-                        contOffsetTop = $content.offset().top - self.$el.outerHeight();
-
-                    if (scrollTop >= contOffsetTop) {
-                        selectedIndex = index;        
-                    }
-                });
-                self._select(selectedIndex);
             });
         }
 
@@ -524,31 +530,34 @@ CS.MD.anchorTab  = function() {
         },
         _focus: function() {
             var self = this,
-                selectedIndex = self.options.selectedIndex,
-                offsetTop = self.$contents.eq(selectedIndex).offset().top,
+                offsetTop = self.$contents.eq(self.options.selectedIndex).offset().top,
                 tabHeight = self.$el.outerHeight();
 
             $('html, body').stop().animate({
                 scrollTop: offsetTop - tabHeight
-            }, 1000);
+            }, 500);
         },
         _select: function(selectedIndex) {
             var self = this;
-                selectedText = self.options.selectedText,
-                selectedClass = self.options.selectedClass;
+                selectedText = self.options.selectedText;
         
             self.options.selectedIndex = selectedIndex;
 
-            self.$anchors.attr('aria-selected', false).parent().removeClass(selectedClass).find('.blind').remove();
-            self.$anchors.eq(selectedIndex).attr('aria-selected', true).append(selectedText).parent().addClass(selectedClass);
+            self.$anchors.attr('aria-selected', false).parent().find('.blind').remove();
+            self.$anchors.eq(selectedIndex).attr('aria-selected', true).append(selectedText).parent();
         },
-        select: function(selectedIndex, notFocus) {
+        _active: function(index) {
+            var self = this,
+                selectedClass = self.options.selectedClass;
+
+            self.$anchors.eq(index).parent().addClass(selectedClass).siblings().removeClass(selectedClass);
+        },
+        select: function(selectedIndex) {
             var self = this;
                 
             self._select(selectedIndex);
-            !notFocus && self._focus();
-        },
-
+            self._focus();
+        }
     }
 
     $.fn[pluginName] = function(options) {
