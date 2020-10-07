@@ -272,6 +272,21 @@
                 }
             }
         }
+        &-dl {
+            border-top: 1px solid #ddd;
+            padding-top: 32px;
+            margin-top: 32px;
+            &:first-child {
+                border-top: 0;
+                padding-top: 0;
+                margin-top: 0;
+                }
+            dt {
+                font-size: 16px;
+                color: #222;
+                margin-bottom: 24px;
+            }
+        }
         @include mobile {
             &-list {
                 .title {
@@ -280,6 +295,11 @@
                 .description {
                     width: calc(100% - 104px);
                     font-weight: 500;
+                }
+            }
+            &-dl {
+                dt {
+                    margin-bottom: 20px;
                 }
             }
         }

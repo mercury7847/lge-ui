@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        componentID: "KRP0014",
+        isJScompile: false
+    })
+<body>
+    <div class="wrap">
+        <div class="container">
+
+            <!-- component -->
+            <div class="component-wrap">
+                <section class="component KRP0014">
+                    <div class="component-inner">
+                        <h2 class="title">제품 상세 스펙</h2>
+                        <!-- spec -->
+                        <div class="prod-spec-wrap">
+                            @@include('./common/partials/KRP0014.html', {
+                                title : "주요 특징",
+                                spec : [
+                                    { dt:"전체용량", dd:"821ℓ" },
+                                    { dt:"냉동", dd:"296ℓ" },
+                                    { dt:"냉장", dd:"525ℓ" },
+                                    { dt:"형태", dd:"노크온 매직스페이스" },
+                                    { dt:"패턴(색상)", dd:"맨해튼 미드나잇" }
+                                ]
+                            })
+                            @@include('./common/partials/KRP0014.html', {
+                                normalType : true,
+                                title : "용량",
+                                spec : [
+                                    { dt:"전체용량", dd:"821ℓ" },
+                                    { dt:"냉장", dd:"525ℓ" },
+                                    { dt:"냉동", dd:"296ℓ" }
+                                ]
+                            })
+                            @@include('./common/partials/KRP0014.html', {
+                                normalType : true,
+                                title : "크기",
+                                spec : [
+                                    { dt:"전체크기(WxHxD)", dd:"912 x 1,790 x 927mm" },
+                                    { dt:"무게", dd:"130kg" }
+                                ]
+                            })
+                            @@include('./common/partials/KRP0014.html', {
+                                normalType : true,
+                                title : "디자인",
+                                spec : [
+                                    { dt:"형태", dd:"노크온 매직스페이스" },
+                                    { dt:"히든버튼", dd:"<span class='specs on'>있음</span>" },
+                                    { dt:"핸들", dd:"스퀘어 핸들" },
+                                    { dt:"디스플레이", dd:"매직터치 디스플레이" },
+                                    { dt:"패턴", dd:"맨해튼 미드나잇" },
+                                    { dt:"도어스타일/재질", dd:"일반메탈" }
+                                ]
+                            })
+                            @@include('./common/partials/KRP0014.html', {
+                                normalType : true,
+                                title : "상세기능",
+                                spec : [
+                                    { dt:"야채실", dd:"신선야채실" },
+                                    { dt:"리니어 컴프레서", dd:"<span class='specs on'>있음</span>(5세대)" },
+                                    { dt:"도어 아이스메이커", dd:"<span class='specs on'>있음</span> 무빙 도어 아이스메이커" },
+                                    { dt:"UV안심제균+", dd:"<span class='specs on'>있음</span>" },
+                                    { dt:"에너지소비효율등급/소비전력", dd:"3등급 32.9 kWh" },
+                                    { dt:"TOP LED", dd:"<span class='specs on'>있음</span>" },
+                                    { dt:"스마트 진단", dd:"<span class='specs on'>있음</span>" },
+                                    { dt:"Wi-Fi", dd:"<span class='specs on'>있음</span>" },
+                                ]
+                            })
+                            @@include('./common/partials/KRP0014.html', {
+                                normalType : true,
+                                title : "고지정보",
+                                spec : [
+                                    { dt:"전기용품 안전인증번호", dd:"HM07003-18092" },
+                                    { dt:"전자파 적합성 인증번호", dd:"R-R-LGE-S833MC85Q2002" },
+                                    { dt:"정격전압", dd:"220V 60Hz" },
+                                    { dt:"출시년월", dd:"20년 06월" },
+                                    { dt:"제조자, 수입자", dd:"LG전자" },
+                                    { dt:"제조국", dd:"중국" },
+                                    { dt:"품질보증기준", dd:"소비자기본법 제 16조" },
+                                    { dt:"A/S 책임자와 전화번호", dd:"LG서비스센터 / 1544-7777" },
+                                ]
+                            })
+                        </div>
+                        <!-- // spec -->
+                    </div>
+                </section>
+            </div>
+            <!-- // component -->
+
+        </div>
+    </div>
+</body>
+</html>
