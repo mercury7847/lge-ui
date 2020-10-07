@@ -4,6 +4,13 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 @import "../../support/page-visual";
+@import "../../support/layout";
+@import "../../support/notice-list";
+@import "../../support/notice-view";
+@import "../../support/form-field";
+@import "../../support/modal";
+@import "../../support/select-category";
+
 
 /* 삭제 예정 */
 .dummy {
@@ -28,13 +35,6 @@
 
 
 .support {
-    @import "../../support/layout";
-    @import "../../support/notice-list";
-    @import "../../support/notice-view";
-    @import "../../support/form-field";
-    @import "../../support/modal";
-    @import "../../support/select-category";
-
     background:#f4f4f4;
 
     /* table */
