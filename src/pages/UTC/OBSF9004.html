@@ -22,7 +22,7 @@
                         <div class="wrap-box">
                             <div class="order-info">
                                 <div class="info-box">
-                                    <!-- 로그인 전 -->
+                                    <!-- 비회원/로그인 전 -->
                                     <div>
                                         <dl>
                                             <dt class="title">로그인 해보세요</dt>
@@ -32,31 +32,7 @@
                                             <a href="#" class="btn-text">로그인 하기</a>
                                         </div>
                                     </div>
-                                    <!-- //로그인 전 -->
-
-                                    <!-- 주소정보 있음 -->
-                                    <div>
-                                        <dl>
-                                            <dt class="title">기본 배송지</dt>
-                                            <dd class="text">서울시 영등포구 여의대로 128 <span class="detail-address">LG 트윈타워 18층</span></dd>
-                                        </dl>
-                                        <div class="btn-area">
-                                            <a href="#" class="btn-text">배송지 변경</a>
-                                        </div>
-                                    </div>
-                                    <!-- //주소정보 있음 -->
-
-                                    <!-- 주소정보 없음 -->
-                                    <div>
-                                        <dl>
-                                            <dt class="title">기본 배송지</dt>
-                                            <dd class="text">기본 배송 주소를 등록해보세요.</dd>
-                                        </dl>
-                                        <div class="btn-area">
-                                            <a href="#" class="btn-text">배송지 등록</a>
-                                        </div>
-                                    </div>
-                                    <!-- //주소정보 없음 -->
+                                    <!-- //비회원/로그인 전 -->
                                 </div>
                                 <div class="cart-wrap">
                                     <div class="cart-option">
@@ -123,20 +99,8 @@
                                         </li>
                                         <li>
                                             <dl>
-                                                <dt class="text">회원할인<em>3%</em></dt>
-                                                <dd class="price">-328,000원</dd>
-                                            </dl>
-                                        </li>
-                                        <li>
-                                            <dl>
-                                                <dt class="text">즉시할인<em>4%</em></dt>
-                                                <dd class="price">-411,280원</dd>
-                                            </dl>
-                                        </li>
-                                        <li>
-                                            <dl>
-                                                <dt class="text">쿠폰할인</dt>
-                                                <dd class="price">-50,000원</dd>
+                                                <dt class="text">할인금액</dt>
+                                                <dd class="price">-729,280원</dd>
                                             </dl>
                                         </li>
                                         <li>
@@ -149,11 +113,12 @@
                                     <div class="total-payment-amount">
                                         <dl>
                                             <dt class="text">총 3건</dt>
-                                            <dd class="price">9,835,720원</dd>
+                                            <dd class="price">9,885,720원</dd>
                                         </dl>
                                     </div>
                                     <div class="btn-area">
                                         <button type="button" class="btn pink">주문하기</button>
+                                        <button type="button" class="btn-text">비회원 주문하기</button>
                                     </div>
                                 </div>
                             </div>
@@ -255,6 +220,8 @@
 
     <!-- 카드 할인 혜택 보기 레이어팝업 -->
     @@include('./UTC/modal/card-benefit.html')
+    <!-- 비회원 주문 레이어팝업 -->
+    @@include('./UTC/modal/nonmember.html')
 
     <script src="/lg5-common/js/cart/cart.js"></script>
 </body>

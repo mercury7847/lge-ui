@@ -113,9 +113,9 @@ $block: (block1, block2, block3);
         vertical-align:top;
     }
     .KRC0040.#{$i} {
-        max-width:(1284px + 60px);
-        margin:-60px auto 0;
-        padding:0 18px;
+        // max-width:(1284px + 60px);
+        // margin:-60px auto 0;
+        // padding:0 18px;
         @include mobile {
             padding:0 24px;
         }
@@ -138,10 +138,15 @@ $block: (block1, block2, block3);
                         padding:0;
                     } @else if ( $i == block2 ) {
                         width:100%;
+                        margin-top:60px;
                         padding:0;
                     } @else if ( $i == block3 ) {
                         width:100%;
+                        margin-top:60px;
                         padding:0;
+                    }
+                    &:first-child {
+                        margin-top:0;
                     }
                 }
             }

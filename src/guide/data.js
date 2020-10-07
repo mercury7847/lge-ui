@@ -55,7 +55,7 @@ var res = {
 			"KRC0030_Feature Icon Tab" : ["/html/components/KRC0030.html","","검수완료"],
 			"KRC0031_Block Image (2 to 3 - CTA)" : ["/html/components/KRC0031.html","","검수완료"],
 			"KRC0032_Section Title" : ["/html/components/KRC0032.html","","검수완료"],
-			"KRC0035_Promotion/Campaign - Hero_Static" : ["/html/components/KRC0035.html","","검수완료"],
+			//"KRC0035_Promotion/Campaign - Hero_Static" : ["/html/components/KRC0035.html","","검수완료"],
 			"KRC0036_Block Image (2 to 4)_Static" : ["/html/components/KRC0036.html","","검수완료"],
 			"KRC0037_Carousel BG Image " : ["/html/components/KRC0037.html","","검수완료"],
 			"KRC0038_Text" : ["/html/components/KRC0038.html","","검수완료"],
@@ -81,14 +81,13 @@ var res = {
 		"Page" : {
 			"이벤트/멤버십(BMC)" : {
 				"이벤트" : {
-					"이벤트 리스트" : ["/html/BMC/MKT4001.html","","진행중"],
-					"이벤트 상세(기본)" : ["/html/BMC/MKT4002.html","","진행중"],
-					"이벤트 상세(종료)" : ["/html/BMC/MKT4003.html","","진행중"],
-					"PC 아카데미" : {
-						"이벤트 참여하기" : ["/html/BMC/MKT4009.html","","진행중"],
-						"PC 모델명 및 시리얼번호 확인 방법" : ["/html/BMC/MKT4009-1.html","","진행중"],
-						"참여내역 조회" : ["/html/BMC/MKT4010.html","","진행중"],
-					},
+					"리스트" : ["/html/BMC/MKT4001.html","","진행중"],
+					"상세_기본타입" : ["/html/BMC/MKT4002.html","","진행중"],
+					"상세_종료(지난이벤트)" : ["/html/BMC/MKT4003.html","","진행중"],
+					"상세_당첨자발표" : ["/html/BMC/MKT4004.html","","진행중"],
+					"이벤트참여_PC아카데미" : ["/html/BMC/MKT4009.html","","진행중"],
+					"이벤트참여내역조회_PC아카데미" : ["/html/BMC/MKT4010.html","","진행중"],
+					"PC 모델명 및 시리얼번호 확인 방법" : ["/html/BMC/MKT4017.html","","진행중"],
 				},
 				"멤버십" : {
 					"멤버십 메인" : ["/html/BMC/ACC4001.html","","검수요청"],
@@ -127,9 +126,20 @@ var res = {
 			},
 			"장바구니(UTC)" : {
 				"장바구니(일반상품)" : ["/html/UTC/OBSF9001.html","","진행중"],
-				"장바구니(일반상품) 추천 소모품 DISPLAY" : ["/html/UTC/OBSF9002.html","","진행중"],
-				"장바구니(케어솔루션)" : ["/html/UTC/OBSF9003.html","","진행중"],
 				"장바구니(비회원)" : ["/html/UTC/OBSF9004.html","","진행중"]
+			},
+			"통합검색(UTS)" : {
+				"검색중" : ["/html/UTS/SERF9001.html","","진행중"],
+				"검색결과 있음" : {
+					"전체" : ["/html/UTS/SERF9002.html","","진행중"],
+					"제품" : ["/html/UTS/SERF9003.html","","진행중"],
+					"케어솔루션" : ["/html/UTS/SERF9004.html","","진행중"],
+					"이벤트" : ["/html/UTS/SERF9005.html","","진행중"],
+					"스토리" : ["/html/UTS/SERF9006.html","","진행중"],
+					"케어용품/소모품" : ["/html/UTS/SERF9007.html","","진행중"],
+					"고객지원" : ["/html/UTS/SERF9008.html","","진행중"],
+				},
+				"검색결과 없음" : ["/html/UTS/SERF9009.html","","진행중"]
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
 			// "페이지2" : ["./html/gr/M.GR-6L.html","","검수요청"],

@@ -423,7 +423,7 @@
                         left:0,
                         x: self.windowWidth,
                         height: self.$mapContainer.height(),
-                        'z-index': 100
+                        'z-index': 5
                     }).transition({x:0}, 350, "easeInOutCubic", function(){self.isTransion = false;});
         
                     toggle.removeClass("map").addClass('list').find('span').text('리스트보기');
