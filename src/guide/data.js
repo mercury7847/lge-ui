@@ -129,17 +129,17 @@ var res = {
 				"장바구니(비회원)" : ["/html/UTC/OBSF9004.html","","진행중"]
 			},
 			"통합검색(UTS)" : {
-				"검색중" : ["/html/UTC/SERF9001.html","","진행중"],
+				"검색중" : ["/html/UTS/SERF9001.html","","진행중"],
 				"검색결과 있음" : {
-					"전체" : ["/html/UTC/SERF9002.html","","진행중"],
-					"제품" : ["/html/UTC/SERF9003.html","","진행중"],
-					"케어솔루션" : ["/html/UTC/SERF9004.html","","진행중"],
-					"이벤트" : ["/html/UTC/SERF9005.html","","진행중"],
-					"스토리" : ["/html/UTC/SERF9006.html","","진행중"],
-					"케어용품/소모품" : ["/html/UTC/SERF9007.html","","진행중"],
-					"고객지원" : ["/html/UTC/SERF9008.html","","진행중"],
+					"전체" : ["/html/UTS/SERF9002.html","","진행중"],
+					"제품" : ["/html/UTS/SERF9003.html","","진행중"],
+					"케어솔루션" : ["/html/UTS/SERF9004.html","","진행중"],
+					"이벤트" : ["/html/UTS/SERF9005.html","","진행중"],
+					"스토리" : ["/html/UTS/SERF9006.html","","진행중"],
+					"케어용품/소모품" : ["/html/UTS/SERF9007.html","","진행중"],
+					"고객지원" : ["/html/UTS/SERF9008.html","","진행중"],
 				},
-				"검색결과 없음" : ["/html/UTC/SERF9009.html","","진행중"]
+				"검색결과 없음" : ["/html/UTS/SERF9009.html","","진행중"]
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
 			// "페이지2" : ["./html/gr/M.GR-6L.html","","검수요청"],
