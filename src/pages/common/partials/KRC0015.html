@@ -30,52 +30,54 @@
     -->
 
     <section class="component KRC0015 @@quantity-class @@bg-color">
-        <ul>
-            @@for (var i = 0; i < context.itemCount; i++) {
-                @@if (!context.popup) {
-                    <li class="unit-box">
-                        <a href="#" class="icon-text-box" data-link-area="link_icon_text-cta" data-link-name="{headline text}"><!-- [KR수정] icon-text -> .icon-text-box 수정 -->
-                            <!-- 1. icon -->
-                            <div class="visual-area">
-                                <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-1-1.gif" alt=""/>
-                            </div>
-                            <!-- // 1. icon -->
-                            <!-- 2. headline -->
-                            <div class="title">@@headline</div>
-                            <!-- // 2. headline -->
-                            <!-- 모바일 디바이스에서 삭제-->
-                            <!-- 3. body copy -->
-                            <p class="body-copy @@font-class2">본문 길이는 4block에서 최대 다섯줄을 넘지 않도록 조정합니다, 세 줄 정도의 텍스트를 권장합니다 1 본문 길이는 4block에서 최대 다섯줄을 넘지 않도록 조정합니다, 세 줄 정도의 텍스트를 권장합니다 2</p>
-                            <!-- // 3. body copy -->
-                            <!-- 4. place -->
-                            <span class="place">New York - National Event</span>
-                            <!-- // 4. place -->
-                            <!-- // 모바일 디바이스에서 삭제-->
-                        </a>
-                    </li>
+        <div class="component-inner">
+            <ul>
+                @@for (var i = 0; i < context.itemCount; i++) {
+                    @@if (!context.popup) {
+                        <li class="unit-box">
+                            <a href="#" class="icon-text-box" data-link-area="link_icon_text-cta" data-link-name="{headline text}"><!-- [KR수정] icon-text -> .icon-text-box 수정 -->
+                                <!-- 1. icon -->
+                                <div class="visual-area">
+                                    <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-1-1.gif" alt=""/>
+                                </div>
+                                <!-- // 1. icon -->
+                                <!-- 2. headline -->
+                                <div class="title">@@headline</div>
+                                <!-- // 2. headline -->
+                                <!-- 모바일 디바이스에서 삭제-->
+                                <!-- 3. body copy -->
+                                <p class="body-copy @@font-class2">본문 길이는 4block에서 최대 다섯줄을 넘지 않도록 조정합니다, 세 줄 정도의 텍스트를 권장합니다 1 본문 길이는 4block에서 최대 다섯줄을 넘지 않도록 조정합니다, 세 줄 정도의 텍스트를 권장합니다 2</p>
+                                <!-- // 3. body copy -->
+                                <!-- 4. place -->
+                                <span class="place">New York - National Event</span>
+                                <!-- // 4. place -->
+                                <!-- // 모바일 디바이스에서 삭제-->
+                            </a>
+                        </li>
+                    }
+                    @@if (context.popup) {
+                        <li class="unit-box">
+                            <!-- popup인 경우 샘플 -->
+                            <a href="https://www.lgechat.com/us/index.html" class="icon-text-box js-popup" data-width="344" data-height="553" title="Opens in a new popup window" data-link-area="link_icon_text-cta" data-link-name="{headline text}"><!-- [KR수정] icon-text -> .icon-text-box 수정 -->
+                                <!-- 1. icon -->
+                                <div class="visual-area">
+                                    <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-1-1.gif" alt=""/>
+                                </div>
+                                <!-- // 1. icon -->
+                                <div class="title">@@headline</div>
+                                <!-- 모바일 디바이스에서 삭제-->
+                                <!-- 3. body copy -->
+                                <p class="body-copy @@font-class2">본문 길이는 4block에서 최대 다섯줄을 넘지 않도록 조정합니다, 세 줄 정도의 텍스트를 권장합니다 1 본문 길이는 4block에서 최대 다섯줄을 넘지 않도록 조정합니다, 세 줄 정도의 텍스트를 권장합니다 2</p>
+                                <!-- // 3. body copy -->
+                                <!-- 4. place -->
+                                <span class="place">New York - National Event</span>
+                                <!-- // 4. place -->
+                                <!-- // 모바일 디바이스에서 삭제-->
+                            </a>
+                        </li>
+                    }
                 }
-                @@if (context.popup) {
-                    <li class="unit-box">
-                        <!-- popup인 경우 샘플 -->
-                        <a href="https://www.lgechat.com/us/index.html" class="icon-text-box js-popup" data-width="344" data-height="553" title="Opens in a new popup window" data-link-area="link_icon_text-cta" data-link-name="{headline text}"><!-- [KR수정] icon-text -> .icon-text-box 수정 -->
-                            <!-- 1. icon -->
-                            <div class="visual-area">
-                                <img class="lazyload" data-src="/lg5-common/images/dummy/@sample-1-1.gif" alt=""/>
-                            </div>
-                            <!-- // 1. icon -->
-                            <div class="title">@@headline</div>
-                            <!-- 모바일 디바이스에서 삭제-->
-                            <!-- 3. body copy -->
-                            <p class="body-copy @@font-class2">본문 길이는 4block에서 최대 다섯줄을 넘지 않도록 조정합니다, 세 줄 정도의 텍스트를 권장합니다 1 본문 길이는 4block에서 최대 다섯줄을 넘지 않도록 조정합니다, 세 줄 정도의 텍스트를 권장합니다 2</p>
-                            <!-- // 3. body copy -->
-                            <!-- 4. place -->
-                            <span class="place">New York - National Event</span>
-                            <!-- // 4. place -->
-                            <!-- // 모바일 디바이스에서 삭제-->
-                        </a>
-                    </li>
-                }
-            }
-        </ul>
+            </ul>
+        </div>
     </section>
 </div>

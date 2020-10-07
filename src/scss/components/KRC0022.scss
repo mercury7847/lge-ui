@@ -4,17 +4,7 @@
 
 
 .KRC0022 {
-    width: 100%;
-    max-width: (1284px + 60px);
-    margin: 0 auto;
-    // padding-right: 30px;
-    // padding-left: 30px;
-    padding: 60px 30px;
-
-    @include mobile {
-        max-width: 100%;
-        padding: 60px 0;
-    }
+	padding:60px 0;
 
     &.full {
         max-width:1600px;
@@ -75,6 +65,10 @@
 	.visual-set {
 		width:100%;
 		@include clearfix;
+		@include mobile {
+			width:auto;
+			margin:0 -20px;
+		}
 		.visual-area {
 			float:left;
 			position:relative;
@@ -191,7 +185,6 @@
 		//width:((1000px*100%)/1284px);
 		@include mobile {
 			width:100%;
-			padding: 0 24px;
 		}
 		.sub-title, 
 		.sub-title h1, 
