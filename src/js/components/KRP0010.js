@@ -7,13 +7,14 @@ $(window).ready(function(){
         product_quantity : 1,
         product_price : 0,
         pdp_visual_list : [],
+        selectedIndex : 0,
 
         init: function() {
             //self = this;
             self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual');
             self.$pdpImage = self.$pdpVisual.find('div.pdp-visual-image');
-            self.$pdpVideo = self.$pdpVisual.find('div.pdp-visual-video');
-            self.$pdpAnimation = self.$pdpVisual.find('div.pdp-visual-animation');
+            //self.$pdpVideo = self.$pdpVisual.find('div.pdp-visual-video');
+            //self.$pdpAnimation = self.$pdpVisual.find('div.pdp-visual-animation');
             self.$pdpThumbnail = self.$pdpVisual.find('div.pdp-thumbnail-nav div.inner div.pdp-thumbnail-list ul.thumbnail-list');
             self.$pdpMobileVisual = $('#mobile_summary_gallery');
             self.$pdpMobileSlider = self.$pdpMobileVisual.find('div.ui_carousel_slider div.slide-content ul.slide-track');
@@ -39,18 +40,14 @@ $(window).ready(function(){
 
         bindEvents: function() {
             //구매수량 버튼
-            self.$paymentAmountInfo.find('div.quantity-wrap div.select-quantity div.inner button.minus').on('click',function(e){
+            self.$paymentAmountInfo.find('div.quantity-wrap div.select-quantity div.inner button').on('click',function(e){
                 //수량 감소
-                e.preventDefault();
-                --product_quantity;
+                if($(this).hasClass('minus')) {
+                    --product_quantity;
+                } else if($(this).hasClass('plus')) {
+                    ++product_quantity;
+                }
                 if(product_quantity < 0) product_quantity = 0;
-                KRP0010.reloadPaymentAmountInfoQuantity();
-            });
-
-            self.$paymentAmountInfo.find('div.quantity-wrap div.select-quantity div.inner button.plus').on('click',function(e){
-                //수량 증가
-                e.preventDefault();
-                ++product_quantity;
                 KRP0010.reloadPaymentAmountInfoQuantity();
             });
 
@@ -97,7 +94,6 @@ $(window).ready(function(){
 
             self.$pdpImage.find('a').first().on('click',function(e){
                 //이미지 모달 뷰
-                console.log('asdasd');
                 e.preventDefault();
                 $('#pop-pdp-visual').vcModal();
             });
@@ -179,8 +175,8 @@ $(window).ready(function(){
                         self.$selectItemTarget.addClass('active');
                         //메인이미지 변경
                         console.log(slideClicked);
+                        KRP0010.clickThumbnailSlide(slideClicked);
                     } 
-                    //KRP0010.clickThumbnailSlide(slideClicked);
                 });
 
                 //이미지 슬라이드 모바일
@@ -196,12 +192,21 @@ $(window).ready(function(){
                             contentHtml += vcui.template(template,item);
                             break;
                         case "video":
+                        case "mp4":
+                        case "webm":
+                            var template = '<li class="slide-conts ui_carousel_slide default video" data-idx="{{index}}">' +
+                                '<a href="#" data-link-area="product_summary-video" data-link-name="{{link_name}}">'+
+                                '<img data-src="{{image_url}}" class="lazyloaded" alt="{{image_alt}}">'
+                                '<p class="hidden pc">{{image_desc}}</p><p class="hidden mobile">{{image_desc}}</p></a></li>';
+                            /*
                             var template = '<li class="slide-conts ui_carousel_slide video youtube-box" data-idx="{{index}}">' +
                                 '<a href="#" data-src="{{video_url}}" class="see-video" data-type="youtube" data-target="modal" data-link-name="{{link_name}}">' +
                                 '<div class="img-box"><img data-src="{{image_url}}" class="lazyload" alt="{{image_alt}}"/></div></a>' +
                                 '<a href="#" data-src="{{video_url}}" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-name="{{link_name}}">plays audio description video</a></li>'
+                                */
                             contentHtml += vcui.template(template,item);
                             break;
+                        /*
                         case "mp4":
                             var template = '<li class="slide-conts animation-box">' +
 						        '<a href="#" role="button" data-src="{{audio_url}}" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video">Plays audio Description Video</a>' +
@@ -228,6 +233,7 @@ $(window).ready(function(){
         						'<div class="caption">{{image_desc}}</div></li>';
                             contentHtml += vcui.template(template,item);
                             break;
+                        */
                         default:
                             break;
                     }
@@ -267,7 +273,13 @@ $(window).ready(function(){
                         nextArrow:'.btn-arrow.next'
                     });
 
-                    KRP0010.clickThumbnailSlide(0);
+                    var f = 0;
+                    var found = pdp_visual_list.some(function(item, index) { f = index; return item.type == 'image'; });
+                    var index = 0;
+                    if(found) {
+                        index = f;
+                    }
+                    KRP0010.clickThumbnailSlide(index);
                 });
 
 
@@ -648,22 +660,24 @@ $(window).ready(function(){
         },
 
         clickThumbnailSlide: function(index) {
+            selectedIndex = index;
             var item = pdp_visual_list[index];
 
             switch(item.type) {
                 case "image":
                     self.$pdpImage.find('a').attr('data-link-name',item.link_name);
                     self.$pdpImage.find('a img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
-                    self.$pdpVideo.hide();
-                    self.$pdpAnimation.hide();
-                    self.$pdpImage.show();
+                    //self.$pdpVideo.hide();
+                    //self.$pdpAnimation.hide();
+                    //self.$pdpImage.show();
                     break;
+                    /*
                 case "video":
                     self.$pdpVideo.find('a').attr({'data-src':item.video_url,'data-link-name':item.link_name});
                     self.$pdpVideo.find('a.see-video div img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
-                    self.$pdpVideo.show();
-                    self.$pdpAnimation.hide();
-                    self.$pdpImage.hide();
+                    //self.$pdpVideo.show();
+                    //self.$pdpAnimation.hide();
+                    //self.$pdpImage.hide();
                     break;
                 case "mp4":
                 case "wemm":
@@ -672,10 +686,11 @@ $(window).ready(function(){
                     self.$pdpAnimation.find('p.hidden').html(item.image_desc);
                     self.$pdpAnimation.find('video source').attr({'src':item.video_url,'type':("video/"+item.type)})
                     self.$pdpAnimation.find('div.caption').html(item.image_desc);
-                    self.$pdpVideo.hide();
-                    self.$pdpAnimation.show();
-                    self.$pdpImage.hide();
+                    //self.$pdpVideo.hide();
+                    //self.$pdpAnimation.show();
+                    //self.$pdpImage.hide();
                     break;
+                    */
                 default:
                     break;
             }
