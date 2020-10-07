@@ -4,16 +4,6 @@
 
 
 .KRC0003 {
-    width: 100%;
-    max-width: (1284px + 60px);
-    margin: 0 auto;
-    padding: 0 30px;
-
-    @include mobile {
-        max-width: 100%;
-        padding: 0 24px;
-    }
-
     .title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6  {
 		margin:0 auto 48px auto;
 		font-size:24px;

@@ -16,7 +16,7 @@
                 '<dd><ul class="infos">'+
                 '<li>구매수량 : {{purchaseQuantity}}</li>'+
                 '<li><span class="blind">구매처</span>{{purchaseStore}}</li>'+
-                '<li>{{purchaseDate}} 구매</li>'+
+                "<li>{{purchaseDate}} {{purchaseType}}</li>"+
                 '</ul></dd></dl></div></li>';
 
     function searchPurchaseHistory(param) {
@@ -30,11 +30,12 @@
                 alert(d.message ? d.message : '오류발생');
                 return;
             }
+            /*
             var param = d.param;
             self.$dateFilterStartDate.vcCalendar('setDate', new Date(vcui.date.format(param.startDate,'yyyy.MM.dd')));
             self.$dateFilterEndDate.vcCalendar('setDate', new Date(vcui.date.format(param.endDate,'yyyy.MM.dd')));
-
             self.$dateFilter.find('input[name="rdo1"][value="'+param.purchaseType+'"]').prop('checked', true);
+            */
 
             var contentHtml = "";
 
@@ -46,7 +47,8 @@
                     contentHtml += vcui.template(listItemTemplate, {
                         ...item,
                         "liClass": "prod" + ((index < 10 ? '0' : '') + index),
-                        "purchaseDate": vcui.date.format(item.purchaseDate,'yyyy. MM. dd')
+                        "purchaseDate": vcui.date.format(item.purchaseDate,'yyyy. MM. dd'),
+                        "purchaseType": item.purchaseType == 'buy'?'구매':(item.purchaseType == 'cancel'?'취소':'')
                     });
                 });
             } else {
@@ -126,3 +128,14 @@
         myMembership.init();                
     });
 })();
+
+
+
+
+    /*
+    "param": {
+        "startDate" : "20200101",
+        "endDate" : "20200910",
+        "purchaseType" : "buy"
+    },
+    */
