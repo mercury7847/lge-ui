@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>미리미리페스티벌 이벤트 참여하기 팝업 열기</span></button>
+    </div>
+
+
+    <article id="popup" class="popup-wrap full">
+        <header class="pop-header">
+            <h1 class="tit"><span>이벤트 참여하기</span></h1>
+        </header>
+        <section class="pop-conts academy-pop">
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">구입 희망 제품 및 희망 시기 선택</h2>
+                </div>
+                @@include('./common/modules/rdochk-list.html', {
+                    "chk" : true,
+                    "name" : "chk01",
+                    "slt" : [
+                        { "checked" : "checked", "value": "시그니처 TV" },
+                        { "checked" : "", "value": "시그니처 냉장고" },
+                        { "checked" : "", "value": "시그니처 와인셀러" },
+                        { "checked" : "", "value": "시그니처 세탁기" },
+                        { "checked" : "", "value": "시그니처 에어컨" },
+                        { "checked" : "", "value": "시그니처 가습공기청정기" },
+                        { "checked" : "", "value": "TV" },
+                        { "checked" : "", "value": "냉장고" },
+                        { "checked" : "", "value": "김치냉장고" },
+                        { "checked" : "", "value": "워시타워" },
+                        { "checked" : "", "value": "세탁기" },
+                        { "checked" : "", "value": "건조기" },
+                        { "checked" : "", "value": "스타일러" },
+                        { "checked" : "", "value": "식기세척기" },
+                        { "checked" : "", "value": "전기레인지" },
+                        { "checked" : "", "value": "공기청정기" },
+                        { "checked" : "", "value": "정수기" },
+                        { "checked" : "", "value": "안마의자" },
+                        { "checked" : "", "value": "프라엘" },
+                        { "checked" : "", "value": "PC" },
+                        { "checked" : "", "value": "청소기" },
+                        { "checked" : "", "value": "에어컨" },
+                        { "checked" : "", "value": "맥주제조기" },
+                        { "checked" : "", "value": "두피관리기" },
+                        { "checked" : "", "value": "휴대폰(자급제)" },
+                        { "checked" : "", "value": "소형가전" },
+                        { "checked" : "", "value": "디오스빌트인" },
+                        { "checked" : "", "value": "SKS빌트인" }
+                    ]
+                })
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">구입 희망 시기 선택</h2>
+                </div>
+                @@include('./common/modules/rdochk-list.html', {
+                    "rdo" : true,
+                    "name" : "rdo01",
+                    "slt" : [
+                        { "checked" : "checked", "value": "1주내" },
+                        { "checked" : "", "value": "2주내" },
+                        { "checked" : "", "value": "3주내" },
+                        { "checked" : "", "value": "1개월내" },
+                        { "checked" : "", "value": "2개월내" },
+                        { "checked" : "", "value": "3개월내" },
+                        { "checked" : "", "value": "4개월내" },
+                        { "checked" : "", "value": "5개월내" },
+                        { "checked" : "", "value": "6개월내" }
+                    ]
+                })
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">응모 목적 선택</h2>
+                </div>
+                @@include('./common/modules/rdochk-list.html', {
+                    "rdo" : true,
+                    "name" : "rdo02",
+                    "slt" : [
+                        { "checked" : "checked", "value": "운정점(선호 매장)" },
+                        { "checked" : "", "value": "다른 매장 선택" }
+                    ]
+                })
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">응모 매장 선택</h2>
+                </div>
+                <div class="select-list-wrap">
+                    <ul class="ui_radio_visible">
+                        <li class="lists">
+                            <span class="rdo-wrap">
+                                <input type="radio" id="rdo03-0" name="rdo03" data-visible-target="" checked>
+                                <label for="rdo03-0">운정점(선호 매장)</label>
+                            </span>
+                        </li>
+                        <li class="lists">
+                            <span class="rdo-wrap">
+                                <input type="radio" id="rdo03-1" name="rdo03" data-visible-target=".shop-selects">
+                                <label for="rdo03-1">다른 매장 선택</label>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 다른 매장 선택 -->
+                <div class="shop-selects">
+                    <ul>
+                        <li>
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" id="select1" title="지역 시/도 선택">
+                                    <option value="" class="placeholder">지역 선택</option>
+                                    <option value="">서울시</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" id="select2" title="지역 시/군/구 선택">
+                                    <option value="" class="placeholder">지역 선택</option>
+                                    <option value="">구로구</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li class="big">
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" id="select1" title="매장 선택">
+                                    <option value="" class="placeholder">매장 선택</option>
+                                    <option value="">구로점</option>
+                                </select>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- // 다른 매장 선택 -->
+                <!-- 안내 문구 -->
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "고객님께서 작성해 주신 참여 정보는 당사의 행사, 신상품 안내 및 판촉 활용 목적으로만 사용될 예정입니다.",
+                        "본 행사는 멤버십 가입자 대상 이벤트로, 멤버십 동의절차에 따라 멤버십 가입과 이벤트를 동시 진행하실 수 있습니다.",
+                        "본 행사는 행사 기간 동안 1인 1회 참여가 가능합니다."
+                    ]
+                })
+                <!-- // 안내 문구 -->
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">[필수] 개인정보 수집 이용 동의</h2>
+                    <div class="agree-chk">
+                        <span class="rdo-wrap">
+                            <input type="radio" id="rdo1-1" name="rdo1" checked>
+                            <label for="rdo1-1">동의함</label>
+                        </span>
+                        <span class="rdo-wrap">
+                            <input type="radio" id="rdo1-2" name="rdo1">
+                            <label for="rdo1-2">동의안함</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="tb_row tb-bor">
+                    <table>
+                        <caption>개인정보 수집 이용 동의 수집항목, 목적, 수집기간, 이용기간 안내</caption>
+                        <colgroup>
+                            <col style="width:25%">
+                            <col style="width:25%">
+                            <col style="width:25%">
+                            <col style="">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">수집항목</th>
+                                <th scope="col">목적</th>
+                                <th scope="col">수집기간</th>
+                                <th scope="col">이용기간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="al-left">이름, 핸드폰번호, 구입희망제품, 응모매장</td>
+                                <td class="al-left">본인확인, 구입희망 제품 안내 및 제공, 경품배송</td>
+                                <td class="al-left">2020.01.01~2020.12.31</td>
+                                <td class="al-left">2020.01.01~2021.06.30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "고객님께서 작성해 주신 참여 정보는 당사의 행사, 신상품 안내 및 판촉 활용 목적으로만 사용될 예정입니다.",
+                        "본 행사는 멤버십 가입자 대상 이벤트로, 멤버십 동의절차에 따라 멤버십 가입과 이벤트를 동시 진행하실 수 있습니다."
+                    ]
+                })
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">[필수] 업무 위탁 동의</h2>
+                    <div class="agree-chk">
+                        <span class="rdo-wrap">
+                            <input type="radio" id="rdo2-1" name="rdo2" checked>
+                            <label for="rdo2-1">동의함</label>
+                        </span>
+                        <span class="rdo-wrap">
+                            <input type="radio" id="rdo2-2" name="rdo2">
+                            <label for="rdo2-2">동의안함</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="tb_row tb-bor">
+                    <table>
+                        <caption>개인정보 처리 업무 위탁 동의 수탁자, 목적 안내</caption>
+                        <colgroup>
+                            <col style="width:50%">
+                            <col style="">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">수탁자</th>
+                                <th scope="col">목적</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>LG전자 및 LG전자 BEST SHOP 판매 대리점<br><a href="#popup2" class="btn-allview" data-control="modal">[전체보기]</a></td>
+                                <td>카드발급, Point적립 및 사용, 회원가입 신청대행, 마케팅/판촉, 신상품/Event 안내 등</td>
+                            </tr>
+                            <tr>
+                                <td>(주)LG CNS</td>
+                                <td>이벤트 운영/유지보수</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>이벤트 참여하기</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+</body>
+</html>

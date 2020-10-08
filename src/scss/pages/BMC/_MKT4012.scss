@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+.select-list-wrap {
+    overflow:hidden;
+    > ul {
+        font-size:0;
+        margin-top:-32px;
+        margin-left:-64px;
+        li {
+            display:inline-block;
+            width:25%;
+            margin-top:32px;
+            padding-left:64px;
+            vertical-align:top;
+        }
+    }
+}
+
+.shop-selects {
+    margin-top:16px;
+    > ul {
+        margin:0 -4px;
+        font-size:0;
+        > li {
+            display:inline-block;
+            width:25%;
+            padding:0 4px;
+            vertical-align:top;
+            &.big {
+                width:50%;
+            }
+            .select-wrap {
+                display:block;
+                max-width:100%;
+            }
+        }
+    }
+}
