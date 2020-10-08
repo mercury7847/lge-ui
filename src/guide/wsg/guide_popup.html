@@ -139,44 +139,36 @@
 
 
 <!-- 가이드 내용 -->
-<h2 class="h2_guide">3. contents 제일 상단 tab으로 시작되는 케이스</h2>
+<h2 class="h2_guide">3. 모바일일 때 타이틀이 두줄이 되는 경우</h2>
 <div class="guide_wrap" style="background:rgba(0, 0, 0, .7); padding:10px;">
-    <article id="popup" class="popup-wrap" style="display:block; position:relative;">
+    <article id="popup" class="popup-wrap tit-line2" style="display:block; position:relative;">
         <header class="pop-header">
-            <h1 class="tit"><span>제품등록</span></h1>
+            <h1 class="tit"><span>제품등록 <br>모바일에선 줄 바뀜</span></h1>
         </header>
         <section class="pop-conts">
-            <div class="tabs-wrap ui_tab left">
-                <ul class="tabs">
-                    <li class="on"><a href="#n">시리얼번호<em class="blind">선택됨</em></a></li>
-                    <li><a href="#n">바코드</a></li>
-                </ul>
-            </div>
-            <div class="tabs-contents">
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-                내용<br><br>
-            </div>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
+            내용<br><br>
         </section>
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
@@ -184,9 +176,9 @@
 
 <div class="d_desc code">
 <xmp class="prettyprint linenums javascript"><!-- DOM -->
-<article id="popup" class="popup-wrap">
+<article id="popup" class="popup-wrap tit-line2"><!-- .tit-line2 모바일 두줄일 때 class 추가 -->
     <header class="pop-header">
-        <h1 class="tit"><span>제품등록</span></h1>
+        <h1 class="tit"><span>제품등록 <br>모바일에선 줄 바뀜</span></h1><!-- br태그 pc에선 display none됨 -->
     </header>
     <section class="pop-conts">
         <div class="tabs-wrap ui_tab left">

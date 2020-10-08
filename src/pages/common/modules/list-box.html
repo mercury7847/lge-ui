@@ -1,0 +1,57 @@
+
+ 
+            <li class="lists">
+                <div class="list-inner">
+                    <a href="#n">
+                        <span class="thumb">
+                            <img src="/lg5-common/images/@@img" alt="" aria-hidden="true">
+                            @@if (context.flagN1) {
+                                @@include('./common/modules/flags.html', {
+                                    bgType:true,
+                                    flags:[
+                                        "<span class='blind'>@@flag1</span>@@flag1-1",
+                                        "<span class='blind'>@@flag2</span>@@flag2-1"
+                                    ]
+                                })
+                            }
+                            
+                        </span>
+                        <div class="info">
+                            @@if (context.flagInfo1) {
+                                @@include('./common/modules/flags.html', {
+                                    borderType:true,
+                                    flags:[
+                                        "<span class='blind'>@@flagInf1</span>@@flagInf1-1",
+                                        "<span class='blind'>@@flagInf2</span>@@flagInf2-1"
+                                    ]
+                                })
+                            }
+                            @@if(context.flagInfo2) {
+                                @@include('./common/modules/flags.html', {
+                                    borderType:true,
+                                    flags:[
+                                        "<span class='blind'>@@flagInf1</span>@@flagInf1-1"
+                                    ]
+                                })
+                            }
+                            <p class="tit"><span class="blind">@@title-hd</span>@@title</p>
+                            <p class="date"><span class="blind">@@date-hd</span>@@date</p>
+                            @@if (context.hashtag) {
+                                <div class="hashtag">
+                                    @@for (var i=0; i < context.hashtag.length; i++) {
+                                        <span class="`+hashtag[i].on+`">`+hashtag[i].tag+`</span>
+                                    }
+                                </div>
+                            }
+                            @@if (context.copy) {
+                            <p class="copy">@@copyText</p>
+                            }
+                            @@if (context.btn) {
+                            <div class="btn-area">
+                                <a href="#" class="btn bd-gray"><span>@@btnName</span></a>
+                            </div>
+                            }
+                        </div>
+                    </a>
+                </div>
+            </li>

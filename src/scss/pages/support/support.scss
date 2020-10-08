@@ -585,6 +585,30 @@
         }
     }
 
+    .scrollview-wrap {
+        padding-right: 8px;
+    }
+
+    .mCSB_inside {
+        >.mCSB_container {
+            margin-right: 16px;
+        }
+    }
+
+    .mCSB_scrollTools {
+        width: 4px;
+        .mCSB_dragger {
+            .mCSB_dragger_bar {
+                width: 4px;
+                border-radius: 4px;
+                background: #ccc;
+            }
+        }
+        .mCSB_draggerRail {
+            background-color: transparent;
+        }
+    }
+
     .color-1 {
         color: #a50034;
     }
