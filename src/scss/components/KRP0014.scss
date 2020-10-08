@@ -109,6 +109,24 @@
                                 color:#222;
                                 font-size:16px;
                                 line-height:24px;
+                                .specs {
+                                    display:inline-block;
+                                    font-size:0;
+                                    vertical-align:top;
+                                    &::after {
+                                        content:'';
+                                        display:inline-block;
+                                        font-size:16px;
+                                        line-height:24px;
+                                        vertical-align:top;
+                                    }
+                                    &.on::after {
+                                        content:'O';
+                                    }
+                                    &.off::after {
+                                        content:'X';
+                                    }
+                                }
                             }
                         }
                     }
