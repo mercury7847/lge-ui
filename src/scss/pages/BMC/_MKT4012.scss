@@ -6,12 +6,21 @@
         font-size:0;
         margin-top:-32px;
         margin-left:-64px;
+        @include mobile {
+            margin-top:-16px;
+            margin-left:-12px;
+        }
         li {
             display:inline-block;
             width:25%;
             margin-top:32px;
             padding-left:64px;
             vertical-align:top;
+            @include mobile {
+                width:50%;
+                margin-top:16px;
+                padding-left:12px;
+            }
         }
     }
 }
@@ -23,15 +32,129 @@
         font-size:0;
         > li {
             display:inline-block;
-            width:25%;
+            width:50%;
             padding:0 4px;
             vertical-align:top;
             &.big {
-                width:50%;
+                width:100%;
+                margin-top:8px;
             }
             .select-wrap {
                 display:block;
                 max-width:100%;
+            }
+        }
+    }
+}
+
+.tbl-layout-wrap {
+    overflow:hidden;
+    > dl {
+        width:calc(100% + 1px);
+        margin-right:-1px;
+        border-top:1px solid #ddd;
+        dt {
+            font-size:0;
+            span {
+                display:inline-block;
+                width:25%;
+                padding:13px 24px 14px;
+                border-right:1px solid #ddd;
+                background:#f4f4f4;
+                vertical-align:top;
+                color:#616161;
+                font-size:14px;
+                line-height:20px;
+                @include mobile {
+                    width:50%;
+                    padding:12px 8px;
+                    border-bottom:1px solid #ddd;
+                    font-size:12px;
+                    line-height:16px;
+                    &:nth-child(n+3) {
+                        display:none;
+                    }
+                }
+            }
+        }
+        dd {
+            position:relative;
+            &::before {
+                content:' ';
+                position:absolute;
+                top:0;
+                right:75%;
+                bottom:0;
+                width:1px;
+                background:#ddd;
+                @include mobile {
+                    display:none;
+                }
+            }
+            &::after {
+                content:' ';
+                position:absolute;
+                bottom:0;
+                left:0;
+                right:0;
+                height:1px;
+                background:#ddd;
+            }
+            .lists {
+                position:relative;
+                font-size:0;
+                li {
+                    display:inline-block;
+                    width:25%;
+                    padding:24px;
+                    border-right:1px solid #ddd;
+                    color:#222;
+                    font-size:16px;
+                    line-height:24px;
+                    vertical-align:top;
+                    &:nth-child(n+5)::before {
+                        content:' ';
+                        position:absolute;
+                        left:0;
+                        right:0;
+                        height:1px;
+                        margin-top:-24px;
+                        background:#ddd;
+                    }
+                    @include mobile {
+                        width:50%;
+                        padding:20px 8px;
+                        font-size:14px;
+                        line-height:18px;
+                        font-weight:500;
+                        &:nth-child(n+3)::before {
+                            content:' ';
+                            position:absolute;
+                            left:0;
+                            right:0;
+                            height:1px;
+                            margin-top:-20px;
+                            background:#ddd;
+                        }
+                    }
+                }
+                &::before, &::after {
+                    content:' ';
+                    position:absolute;
+                    top:0;
+                    bottom:0;
+                    width:1px;
+                    background:#ddd;
+                }
+                &::before {
+                    right:50%;
+                }
+                &::after {
+                    right:25%;
+                    @include mobile {
+                        display:none;
+                    }
+                }
             }
         }
     }
