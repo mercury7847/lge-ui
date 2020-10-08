@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTS/UTS"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+
+            <!-- event -->
+            <div class="contents search">
+                <!-- 검색 영역 -->
+                <div class="search-top">
+                    <div class="sch-input-wrap">
+                        <div class="input-sch">
+                            <input type="text" class="txt" placeholder="검색어를 입력해주세요. (예:제품명, 모델명)" value="노크온 매직스페이ㅅ">
+                            <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                        </div>
+                    </div>
+                    <div class="related-keyword">
+                        <span class="title">연관검색어</span>
+                        <ul class="keyword-list">
+                            <li><a href="#">OLED TV</a></li>
+                            <li><a href="#">SUPER OLED TV</a></li>
+                            <li><a href="#">LG DIOS 스페이스 냉장고</a></li>
+                            <li><a href="#">노크온 매직스페이스</a></li>
+                            <li><a href="#">OLED TV/AV</a></li>
+                            <li><a href="#">홈라이프</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- // 검색 영역 -->
+
+                <!-- tabs -->
+                <div class="tabs-wrap btn-type ui_tab event-tab">
+                    <ul class="tabs">
+                        <li class="on"><a href="#n">전체(210)<em class="blind">선택됨</em></a></li>
+                        <li><a href="#n">제품(59)</a></li>
+                        <li><a href="#n">케어솔루션(2)</a></li>
+                        <li><a href="#n">이벤트(5)</a></li>
+                        <li><a href="#n">스토리(18)</a></li>
+                        <li><a href="#n">케어용품/소모품(32)</a></li>
+                        <li><a href="#n">고객지원(28)</a></li>
+                    </ul>
+                </div>
+                <!-- // tabs -->
+
+                <div class="main-wrap">
+                    <div class="sorting-filter">
+                        <div class="sort-left">
+                            <div class="sort-select-wrap left">
+                                <select class="ui_selectbox" id="select1" title="이벤트 상태 선택">
+                                    <option value="">진행중인 이벤트</option>
+                                    <option value="">종료된 이벤트</option>
+                                    <option value="">당첨자 발표</option>
+                                </select>
+                            </div>
+                            <div class="sort-select-wrap left">
+                                <select class="ui_selectbox" id="select2" title="이벤트 구분 선택">
+                                    <option value="">전체</option>
+                                    <option value="">온라인</option>
+                                    <option value="">매장</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="sort-right">
+                            <div class="sort-select-wrap">
+                                <select class="ui_selectbox" id="select3" title="정렬 기준 선택">
+                                    <option value="">정확도순</option>
+                                    <option value="">최신순</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-list search-evt-list-wrap">
+                        <ul class="events">
+                            @@loop('./common/modules/list-box.html', [
+                                {
+                                    "img" : "dummy/@img-event01.jpg",
+
+                                    "flagN1" : true,
+                                    "flag1" : "제품 카테고리",
+                                    "flag1-1" : "TV",
+                                    "flag2" : "제품 카테고리",
+                                    "flag2-1" : "프로젝터",
+                                    
+                                    "flagInfo1" : true,
+                                    "flagInf1" : "이벤트 구분",
+                                    "flagInf1-1" : "매장",
+                                    "flagInf2" : "이벤트 유형",
+                                    "flagInf2-1" : "구매혜택",
+
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+
+                                },
+                                {
+                                    "img" : "dummy/@img-event01.jpg",
+
+                                    "flagN1" : true,
+                                    "flag1" : "제품 카테고리",
+                                    "flag1-1" : "TV",
+                                    "flag2" : "제품 카테고리",
+                                    "flag2-1" : "프로젝터",
+                                    
+                                    "flagInfo1" : true,
+                                    "flagInf1" : "이벤트 구분",
+                                    "flagInf1-1" : "매장",
+                                    "flagInf2" : "이벤트 유형",
+                                    "flagInf2-1" : "구매혜택",
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event01.jpg",
+                                    
+                                    "flagN1" : true,
+                                    "flag1" : "제품 카테고리",
+                                    "flag1-1" : "TV",
+                                    "flag2" : "제품 카테고리",
+                                    "flag2-1" : "프로젝터",
+                                    
+                                    "flagInfo1" : true,
+                                    "flagInf1" : "이벤트 구분",
+                                    "flagInf1-1" : "매장",
+                                    "flagInf2" : "이벤트 유형",
+                                    "flagInf2-1" : "구매혜택",
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event01.jpg",
+
+                                    "flagN1" : true,
+                                    "flag1" : "제품 카테고리",
+                                    "flag1-1" : "TV",
+                                    "flag2" : "제품 카테고리",
+                                    "flag2-1" : "프로젝터",
+                                    
+                                    "flagInfo1" : true,
+                                    "flagInf1" : "이벤트 구분",
+                                    "flagInf1-1" : "매장",
+                                    "flagInf2" : "이벤트 유형",
+                                    "flagInf2-1" : "구매혜택",
+
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+
+                                },
+                                {
+                                    "img" : "dummy/@img-event01.jpg",
+
+                                    "flagN1" : true,
+                                    "flag1" : "제품 카테고리",
+                                    "flag1-1" : "TV",
+                                    "flag2" : "제품 카테고리",
+                                    "flag2-1" : "프로젝터",
+                                    
+                                    "flagInfo1" : true,
+                                    "flagInf1" : "이벤트 구분",
+                                    "flagInf1-1" : "매장",
+                                    "flagInf2" : "이벤트 유형",
+                                    "flagInf2-1" : "구매혜택",
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event01.jpg",
+                                    
+                                    "flagN1" : true,
+                                    "flag1" : "제품 카테고리",
+                                    "flag1-1" : "TV",
+                                    "flag2" : "제품 카테고리",
+                                    "flag2-1" : "프로젝터",
+                                    
+                                    "flagInfo1" : true,
+                                    "flagInf1" : "이벤트 구분",
+                                    "flagInf1-1" : "매장",
+                                    "flagInf2" : "이벤트 유형",
+                                    "flagInf2-1" : "구매혜택",
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                }
+                            ])
+                        </ul>
+                    </div>    
+
+                    <!--
+                    @@loop('./common/modules/product-list-loop.html', [
+                        {
+                            "img" : "/lg5-common/images/membership/img-prod01.jpg",
+                            "name" : "TV",
+                            "info" : [
+                                "LED, LCD, PDP, 울트라HE, 올레드<small>* 벽걸이/스탠드 자제 제외</small>"
+                            ]
+                        }, {
+                            "img" : "/lg5-common/images/membership/img-prod02.jpg",
+                            "name" : "김치 냉장고",
+                            "info" : [
+                                "김치 냉장고 전제품"
+                            ]
+                        }, {
+                            "img" : "/lg5-common/images/membership/img-prod03.jpg",
+                            "name" : "세탁기",
+                            "info" : [
+                                "트윈워시, 트롬, 통돌이, 미니세탁기(미니워시, 꼬망스)<small>* 세탁기 받침대 제외</small>"
+                            ]
+                        }, {
+                            "img" : "/lg5-common/images/membership/img-prod04.jpg",
+                            "name" : "냉장고",
+                            "info" : [
+                                "상냉장, 양문형, 정수기냉장고, 일반, 냉동고, 와인셀러"
+                            ]
+                        }, {
+                            "img" : "/lg5-common/images/membership/img-prod05.jpg",
+                            "name" : "에어컨",
+                            "info" : [
+                                "스탠드, 벽걸이<small>* 일반 냉난방기, 시스템 에어컨, 배관자재 제외</small>"
+                            ]
+                        }
+                    ])-->
+                    <div class="pagination">
+                        <a href="#" class="prev"><span class="blind">이전 페이지 보기</span></a>
+                        <span class="page_num">
+                            <strong><span class="blind">현재 페이지</span>1</strong>
+                            <a href="#" title="2페이지 보기">2</a>
+                            <a href="#" title="3페이지 보기">3</a>
+                            <a href="#" title="4페이지 보기">4</a>
+                            <a href="#" title="5페이지 보기">5</a>
+                            <a href="#" title="6페이지 보기">6</a>
+                            <a href="#" title="7페이지 보기">7</a>
+                        </span>
+                        <a href="#" class="next"><span class="blind">다음 페이지 보기</span></a>
+                    </div>
+                    <!-- // 검색결과/소팅결과 있을 때 -->
+                    <!-- 소팅 결과 없을 때 -->
+                    <div class="no-data">
+                        <p>조회 결과가 없습니다.</p>
+                    </div>
+                    <!-- // 소팅 결과 없을 때 -->
+                </div>
+            </div>
+            <!-- // event -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>

@@ -4,6 +4,11 @@
 @import "../../utilities/mixins";
 
 .contents.search {
+    // event 
+    @import "SERF9005";
+    // story
+    @import "SERF9006";
+    
     .tabs-wrap {
         max-width: 1284px;
         margin: 0 auto 10px;
@@ -96,148 +101,13 @@
 }
 
 .search-result-wrap {
-    @include clearfix;
     max-width: 1284px;
-    margin: 0 auto;
-
-    .result-area {
-        float: left;
-        max-width: 1284px;
-        margin: 0 auto;
-    }
-
-    .list-top {
-        @include clearfix;
-        padding: 26px 0 15px;
-        .cate-area {
-            float:right;
-            position:relative;
-            margin-left:24px;
-
-            @media screen and (min-width: 1780px) {
-                display:none;
-            }
-            .cate-list {
-                padding-right:18px;
-                line-height:36px;
-                .ico {
-                    position:absolute;
-                    top:50%;
-                    right:0;
-                    width:0;
-                    height:0;
-                    margin-top:-4px;
-                    border-top:8px solid #111;
-                    border-left:5px solid transparent;
-                    border-right:5px solid transparent;
-                }
-                .cate-sel {
-                    display:none;
-                    position:absolute;
-                    top:50px;
-                    right:0;
-                    min-width:223px;
-                    padding:12px 0;
-                    background:#fff;
-                    box-shadow:0 4px 12px 0 rgba(0,0,0,.15);
-                    z-index:2;
-                    .chk-wrap {
-                        display:block;
-                        padding:16px 24px;
-                        label {
-                            display: block;
-                            overflow: hidden;
-                            color: #222;
-                            font-size: 16px;
-                            line-height: 24px;
-                            white-space: nowrap;
-                            word-break: break-all;
-                            text-overflow: ellipsis;
-                        }
-                    }
-                }
-            }
-            &.open {
-                .cate-sel {
-                    display:block;
-                }
-            }
-        }
-        .btn-filter {
-            float:left;
-            .ico-filter {
-                display:inline-block;
-                width:24px;
-                height:24px;
-                margin:0 24px 0 8px;
-                background:url("/lg5-common/images/KRP0009/btn-filter.svg") no-repeat 0 0;
-                background-size:24px 24px;
-                @media screen and (min-width: 1780px) {
-                    display:none;
-                }
-            }
-        }
-        .check-soldout {
-            float: right;
-            margin-right: 40px;
-        }
-        .sort-area {
-            float: right;
-            @media screen and (max-width: 1780px) {
-                display:none;
-            }
-        }
-        .list-count {
-            float: left;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 24px;
-            color: #111;
-        }
-    }
-
+    margin: -48px auto 0;
     .result-category {
-        padding: 20px 0 40px;
-        font-size: 0;
-        li {
-            display: inline-block;
-            margin-left: 8px;
-            padding: 8px 12px;
-            border-radius: 20px;
-            border: 1px solid #ddd;
-            background-color: #fff;
-            &:first-child {
-                margin-left: 0;
-            }
-        }
-        .text {
-            @include font-medium;
-        }
-        .btn-delete {
-            position: relative;
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin-left: 10px;
-            border-radius: 10px;
-            background-color: #616161;
-            vertical-align: -3px;
-            &:before,
-            &:after {
-                position: absolute;
-                @include calc(top,50%,5px);
-                @include calc(left,50%,1px);
-                width: 1px;
-                height: 10px;
-                border: 1px solid #fff;
-                content: '';
-            }
-            &:before {
-                transform: rotate(-45deg);
-            }
-            &:after {
-                transform: rotate(45deg);
-            }
+        font-weight: 500;
+        @include font-medium;
+        .text-link {
+            @include text-underline(2px,#222);
         }
     }
 
