@@ -7,4 +7,6 @@ $(window).ready(function(){
         $(this).toggleClass('active')
             .closest('.compare-title').siblings('.compare-content').slideToggle(500);
     }); */
+
+    console.log(lgkorUI)
 });

@@ -5,7 +5,7 @@ $(window).ready(function(){
 
     vcui.require(['ui/carousel'], function () {
         $('.KRP0025').find('.ui_carousel_slider').vcCarousel({
-            infinite: false,
+            infinite: true,
             slidesToShow: 3,
             slidesToScroll: 3,
             responsive: [
@@ -22,7 +22,7 @@ $(window).ready(function(){
                 {
                     breakpoint: 768,
                     settings: {
-                        infinite: false,
+                        infinite: true,
                         dots: true,
                         slidesToShow: 1, 
                         slidesToScroll: 1

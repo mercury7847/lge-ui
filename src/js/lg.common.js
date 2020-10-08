@@ -132,8 +132,6 @@
     $.holdReady(true);
     
     global['lgkorUI'] = {
-        template: $('<div class="template"></div>'),
-        templateList: null,
         init: function(){
             this._preloadComponents();
             this._addTopButtonCtrl();
@@ -330,14 +328,48 @@
             var str = msg? msg : '데이터를 불러오는 중입니다.';
             $('html').addClass('dim');
             $('body').vcSpinner({msg:str});
-            $('body').vcSpinner('spin', str);
-    
+            $('body').vcSpinner('spin', str);    
         },
     
         hideLoading:function(){
             $('html').removeClass('dim');
             $('body').vcSpinner('stop');
         },
+
+        getCompareData: function(){
+
+        },
+
+        setStorage: function(key, value){
+            var storage = sessionStorage.getItem(key);
+            var storageData = storage? JSON.parse(storage) : {};        
+            storageData = Object.assign(storageData, value);
+            sessionStorage.setItem(key, JSON.stringify(storageData));        
+            return storageData;
+        },
+
+        getStorage: function(key, name){							
+            var storage = sessionStorage.getItem(key); 
+            if(name){							
+                var storageData = storage? JSON.parse(storage) : {}; 						
+                return storageData[name];
+            }else{
+                return storage? JSON.parse(storage) : {};
+            }   
+        },
+
+        removeStorage: function(key, name){    
+            if(name){
+                var storage = sessionStorage.getItem(key);
+                var storageData = storage? JSON.parse(storage) : {}; 						
+                delete storageData[name];						
+                sessionStorage.setItem(key, JSON.stringify(storageData)); 
+                return storageData;
+            }else{
+                sessionStorage.removeItem(key);
+                return null;
+            }						
+        }
     }
     
     document.addEventListener('DOMContentLoaded', function () {

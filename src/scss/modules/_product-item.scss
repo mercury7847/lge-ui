@@ -1,0 +1,160 @@
+.product-items {
+    @include clearfix;
+    margin: 0 -6px;
+    > li {
+        float: left;
+        width: 33.333333%;
+        padding: 0 6px 12px;
+    }
+    .item {
+        position: relative;
+        padding: 0 56px 36px;
+        border-radius: 4px;
+        background-color: #fff;
+        @include mobile {
+            padding: 0 28px 32px;
+        }
+        .badge-wrap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            .badge {
+                display: block;
+                padding: 4px 8px;
+                border-radius: 4px;
+                background-color: #65c467;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 1;
+                color: #fff;
+                text-align: center;
+            }
+            &.thin-type {
+                top: 24px;
+                left: 24px;
+            }
+            @include mobile {
+                .badge {
+                    padding: 5px 8px;
+                    font-size: 10px;
+                }
+                &.thin-type {
+                    top: 18px;
+                    left: 18px;
+                }
+            }
+        }
+        .product-image {
+            a {
+                display: block;
+                text-align: center;
+                img {
+                    width: 100%;
+                    max-width: 300px;
+                }
+            }
+        }
+        .flag-wrap {
+            height: 20px;
+            margin-bottom: 8px;
+            .flag {
+                height: 20px;
+                padding: 3px 8px;
+                line-height: 12px;
+            }
+            & + .product-name {
+                margin-top: 0;
+            }
+        }
+        .product-name {
+            max-height: 48px;
+            margin-top: 8px;
+            a {
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 24px;
+                color: #222;
+                @include textClipClamp(2);
+            }
+            .search-word {
+                color: #ec455a;
+            }
+        }
+        .product-info {
+            .product-name {
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 24px;
+                color: #222;
+                @include textClipClamp(1);
+            }
+            .sku {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .review-info {
+                display: inline-block;
+                margin-left: 6px;
+                .star,
+                .average-rating,
+                .review-count {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                .star {
+                    width: 16px;
+                    height: 16px;
+                    margin-right: 2px;
+                    background: url("/lg5-common/images/icons/icon-star-off.svg") no-repeat 0 0;
+                    background-size: 16px 16px;
+                    &.is-review {
+                        background-image: url("/lg5-common/images/icons/icon-star-on.svg");
+                    }
+                }
+            }
+        }
+        .price-area {
+            margin-top: 24px;
+            font-size: 0;
+            * {
+                display: inline-block;
+            }
+            .total-price {
+                font-weight: $font-weight-bold;
+                @include font-x-large;
+            }
+            .purchase-price {
+                position: relative;
+                margin: 0 4px 0 8px;
+                font-size: 14px;
+                line-height: 1.43;
+                color: #616161;
+                &:after {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    right: 0;
+                    height: 1px;
+                    background-color: #616161;
+                    content: '';
+                }
+            }
+            .discount-rate {
+                font-size: 16px;
+                font-weight: bold;
+                line-height: 1.5;
+                color: #ec455a;
+            }
+
+            & + .hashtag-wrap {
+                margin-top: 4px;
+            }
+        }
+        .hashtag-wrap {
+            margin-top: 60px;
+            .hashtag {
+                @include font-small;
+            }
+        }
+    }
+}
