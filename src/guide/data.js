@@ -81,6 +81,11 @@ var res = {
 			"KRP0025_Event list for home" : ["/html/components/KRP0025.html","","진행중"],
 		},
 		"Page" : {
+			"케어솔루션(SLC)" : {
+				"케어솔루션안내" : {
+					"케어플래너" : ["/html/SLC/RMSF2003.html","","진행중"],
+				},
+			},
 			"이벤트/멤버십(BMC)" : {
 				"이벤트" : {
 					"리스트" : ["/html/BMC/MKT4001.html","","진행중"],
