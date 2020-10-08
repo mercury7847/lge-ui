@@ -381,6 +381,7 @@
 	}
 
 	.indi-wrap {
+		display: none;
 		position: absolute;
 		bottom: 0;
 		padding: 0 0 30px;
@@ -547,6 +548,17 @@
 		opacity: 0;
 		height:auto;
 		transition:opacity 100ms;
+	}
+	.btn-arrow {
+		position: absolute;
+		@include calc(top,50%,172px);
+		z-index: 1;
+		&.prev {
+			left: 20px;
+		}
+		&.next {
+			right: 20px;
+		}
 	}
 }
 
