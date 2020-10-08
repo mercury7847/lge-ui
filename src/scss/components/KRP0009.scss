@@ -92,9 +92,15 @@
                 .btn-reset {
                     margin:23px 0 12px;
                 }
-                .btn-visit,
-                .btn-find {
+                .btn-visit {
                     margin-top:16px;
+                    text-align:center;
+                    .btn-text {
+                        text-decoration:underline;
+                    }
+                    @media screen and (max-width: 1780px) {
+                        display:none;
+                    }
                 }
             }
         }

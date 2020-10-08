@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["SLC/SLC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "케어플래너",
+                "pageDesc" : "케어솔루션/케어십 서비스의 결합 혜택을 손쉽게 계산해보세요."
+            })
+            <div class="contents care-plan">
+                <div class="cont-wrap">
+                    <!-- 비로그인 케이스 -->
+                    <div class="prd-contract-wrap">
+                        <div class="inner">
+                            <div class="login-empty">
+                                <p class="txt">로그인하시면 기존 계약된 케어솔루션/케어십 제품을 확인할 수 있습니다. 기존/신규 계약 포함 다른 제품군 추가 계약시, 결합할인 혜택을 드립니다. (월 요금 최대 5,000원 할인)</p>
+                                <a href="#n" class="btn bd-black"><span>로그인</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //비로그인 케이스 -->
+
+                    <!-- 로그인/계약 제품 미보유 케이스-->
+                    <div class="prd-contract-wrap">
+                        <div class="inner">
+                            <div class="login-empty">
+                                <p class="txt">현재 계약된 케어솔루션 또는 케어십 제품이 없습니다. 기존/신규 계약 포함 다른 제품군 추가 계약시, 결합할인 혜택을 드립니다. (월 요금 최대 5,000원 할인)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //로그인/계약 제품 미보유 케이스-->
+
+                    <!-- 로그인/계약 제품 보유 케이스 -->
+                    <div class="prd-contract-wrap">
+                        <div class="inner">
+                            <div class="tit-wrap">
+                                <p class="tit">계약 제품</p>
+                                <span class="num">총 7개</span>
+                            </div>
+                            <!-- carousel -->
+                            <div class="slide-wrap ui_carousel_slider">
+                                <div class="slide-content ui_carousel_list">
+                                    <div class="slide-track ui_carousel_track">
+                                        <!-- slide -->
+                                        <div class="slide-conts ui_carousel_slide">
+                                            <div class="conts-wrap">
+                                                <div class="prd-care-horizon">
+                                                    @@include('./common/modules/flags.html', {
+                                                        borderType:true,
+                                                        flags:[
+                                                            "<span class='blind'>서비스명</span>케어솔루션"
+                                                        ]
+                                                    })
+                                                    <div class="img-wrap">
+                                                        <img src="/lg5-common/images/dummy/@sample-150x150.jpg" alt="제품 이미지">
+                                                    </div>
+                                                    <div class="txt-wrap">
+                                                        <p class="tit"><span class="blind">제품 디스플레이 네임</span>스팀 건조기ThinQ (듀얼 인버터 히트펌프)</p>
+                                                        <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
+                                                        <p class="etc">계약기간 2020.01.13~2025.05.12</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- //slide -->
+                                        <!-- slide -->
+                                        <div class="slide-conts ui_carousel_slide">
+                                            <div class="conts-wrap">
+                                                <div class="prd-care-horizon">
+                                                    @@include('./common/modules/flags.html', {
+                                                        borderType:true,
+                                                        flags:[
+                                                            "<span class='blind'>서비스명</span>케어솔루션"
+                                                        ]
+                                                    })
+                                                    <div class="img-wrap">
+                                                        <img src="/lg5-common/images/dummy/@sample-150x150.jpg" alt="제품 이미지">
+                                                    </div>
+                                                    <div class="txt-wrap">
+                                                        <p class="tit"><span class="blind">제품 디스플레이 네임</span>스팀 건조기ThinQ (듀얼 인버터 히트펌프) 두줄 텍스트 두줄 텍스트 두줄 텍스트 두줄 텍스트</p>
+                                                        <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
+                                                        <p class="etc">계약기간 2020.01.13~2025.05.12</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- //slide -->
+                                        <!-- slide -->
+                                        <div class="slide-conts ui_carousel_slide">
+                                            <div class="conts-wrap">
+                                                <div class="prd-care-horizon">
+                                                    @@include('./common/modules/flags.html', {
+                                                        borderType:true,
+                                                        flags:[
+                                                            "<span class='blind'>서비스명</span>케어솔루션"
+                                                        ]
+                                                    })
+                                                    <div class="img-wrap">
+                                                        <img src="/lg5-common/images/dummy/@sample-150x150.jpg" alt="제품 이미지">
+                                                    </div>
+                                                    <div class="txt-wrap">
+                                                        <p class="tit"><span class="blind">제품 디스플레이 네임</span>스팀 건조기ThinQ</p>
+                                                        <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
+                                                        <p class="etc">계약기간 2020.01.13~2025.05.12</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- //slide -->
+                                        <!-- slide -->
+                                        <div class="slide-conts ui_carousel_slide">
+                                            <div class="conts-wrap">
+                                                <div class="prd-care-horizon">
+                                                    @@include('./common/modules/flags.html', {
+                                                        borderType:true,
+                                                        flags:[
+                                                            "<span class='blind'>서비스명</span>케어솔루션"
+                                                        ]
+                                                    })
+                                                    <div class="img-wrap">
+                                                        <img src="/lg5-common/images/dummy/@sample-150x150.jpg" alt="제품 이미지">
+                                                    </div>
+                                                    <div class="txt-wrap">
+                                                        <p class="tit"><span class="blind">제품 디스플레이 네임</span>스팀 건조기ThinQ (듀얼 인버터 히트펌프)</p>
+                                                        <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
+                                                        <p class="etc">계약기간 2020.01.13~2025.05.12</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- //slide -->
+                                    </div>
+                                </div>
+                                <div class="slide-controls">
+                                    <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                    <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                </div>
+                            </div>
+                            <!-- //carousel -->
+                        </div>
+                    </div>
+                    <!-- //로그인/계약 제품 보유 케이스 -->
+
+                    <!-- 케어솔루션 -->
+                    <div class="care-solution-wrap">
+                        <div class="tabs-wrap btn-type ui_tab">
+                            <ul class="tabs">
+                                <li class="on"><a href="#n">케어솔루션<em class="blind">선택됨</em></a></li>
+                                <li><a href="#n">케어십</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="tabs-wrap border-type ui_tab">
+                            <ul class="tabs">
+                                <li class="on"><a href="#n">정수기<em class="blind">선택됨</em></a></li>
+                                <li><a href="#n">맥주제조기</a></li>
+                                <li><a href="#n">공기청정기</a></li>
+                                <li><a href="#n">건조기</a></li>
+                                <li><a href="#n">스타일러</a></li>
+                                <li><a href="#n">전기레인지</a></li>
+                                <li><a href="#n">식기세척기</a></li>
+                                <li><a href="#n">안마의자</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="sort-select-wrap">
+                            <select class="ui_selectbox" id="select1" title="리스트 정렬 순서 선택">
+                                <option value="">인기순</option>
+                                <option value="">최신순</option>
+                                <option value="">가격 높은순</option>
+                                <option value="">가격 낮은순</option>
+                                <option value="">리뷰 많은순</option>
+                            </select>
+                        </div>
+
+                        <div class="prd-list-wrap">
+                            <ul class="inner">
+                                <li class="item">
+                                    <div class="prd-care-vertical">
+                                        <span class="chk-wrap">
+                                            <input type="checkbox" id="chk1" name="chk1">
+                                            <label for="chk1"><span class="blind">제품 선택</span></label>
+                                        </span>
+                                        <div class="img-wrap">
+                                            <img src="/lg5-common/images/dummy/@sample-226x226.jpg" alt="제품 이미지">
+                                        </div>
+                                        <div class="txt-wrap">
+                                            <p class="tit"><span class="blind">제품 디스플레이 네임</span>스팀 건조기ThinQ (듀얼 인버터 히트펌프)</p>
+                                            <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
+                                        </div>
+                                        <div class="info-wrap">
+                                            <div class="opt-info">
+                                                <dl>
+                                                    <dt>색상</dt>
+                                                    <dd class="color-opt">
+                                                        <div class="chk-wrap-colorchip HA_REF_Matte_Black_Stainless_Steel">
+                                                            <input type="radio" name="FT05033892" value="FV60005320" id="FV60005320" checked>
+                                                            <label for="FV60005320"><span class="blind">Matte Black Stainless Steel</span></label>
+                                                        </div>
+                                                        <div class="chk-wrap-colorchip Black-Stainless-Steel">
+                                                            <input type="radio" name="FT05033892" value="FV60005318" id="FV60005318">
+                                                            <label for="FV60005318"><span class="blind">Black Stainless Steel</span></label>
+                                                        </div>
+                                                        <div class="chk-wrap-colorchip stainless-steel">
+                                                            <input type="radio" name="FT05033892" value="FV60005327" id="FV60005327">
+                                                            <label for="FV60005327"><span class="blind">Stainless Steel</span></label>
+                                                        </div>
+                                                        <div class="chk-wrap-colorchip smooth-white">
+                                                            <input type="radio" name="FT05033892" value="FV60005326" id="FV60005326">
+                                                            <label for="FV60005326"><span class="blind">Smooth White</span></label>
+                                                        </div>
+                                                        <div class="chk-wrap-colorchip HA_REF_SIGNATURE_Textured_Steel">
+                                                            <input type="radio" name="FT05033892" value="FV60005321" id="FV60005321">
+                                                            <label for="FV60005321"><span class="blind">LG SIGNATURE Textured Steel</span></label>
+                                                        </div>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>가입비</dt>
+                                                    <dd>
+                                                        <ul class="rdo-tab-wrap">
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="rdo1" id="rdo1-1" checked>
+                                                                    <label for="rdo1-1">납부</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="rdo1" id="rdo1-2">
+                                                                    <label for="rdo1-2">미납부</label>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>의무사용</dt>
+                                                    <dd>
+                                                        <ul class="rdo-tab-wrap">
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="rdo2" id="rdo2-1" checked>
+                                                                    <label for="rdo2-1">3년</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="rdo2" id="rdo2-2">
+                                                                    <label for="rdo2-2">4년</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="rdo2" id="rdo2-3">
+                                                                    <label for="rdo2-3">5년</label>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>방문주기</dt>
+                                                    <dd>
+                                                        <ul class="rdo-tab-wrap">
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="rdo3" id="rdo3-1" checked>
+                                                                    <label for="rdo3-1">1개월</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="rdo3" id="rdo3-2">
+                                                                    <label for="rdo3-2">3개월</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="rdo3" id="rdo3-3">
+                                                                    <label for="rdo3-3">6개월</label>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                            <dl class="price-info">
+                                                <dt>월 요금</dt>
+                                                <dd>40,900원</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- //케어솔루션 -->
+
+                    <!-- 선택제품 -->
+                    <div class="prd-select-wrap">
+                        <div class="inner">
+                            <div class="tit-wrap">
+                                <p class="tit">선택 제품</p>
+                                <span class="num">총 7개</span>
+                            </div>
+                            <!-- carousel -->
+                            <div class="slide-wrap ui_carousel_slider2">
+                                <div class="slide-content ui_carousel_list">
+                                    <div class="slide-track ui_carousel_track">
+                                        <!-- slide -->
+                                        <div class="slide-conts ui_carousel_slide">
+                                            <div class="conts-wrap">
+                                                <div class="prd-care-horizon">
+                                                    @@include('./common/modules/flags.html', {
+                                                        borderType:true,
+                                                        flags:[
+                                                            "<span class='blind'>서비스명</span>케어솔루션"
+                                                        ]
+                                                    })
+                                                    <div class="img-wrap">
+                                                        <img src="/lg5-common/images/dummy/@sample-150x150.jpg" alt="제품 이미지">
+                                                    </div>
+                                                    <div class="txt-wrap">
+                                                        <p class="tit"><span class="blind">제품 디스플레이 네임</span>스팀 건조기ThinQ (듀얼 인버터 히트펌프)</p>
+                                                        <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
+                                                        <p class="etc">월 61,900원</p>
+                                                    </div>
+                                                    <div class="btn-item">
+                                                        <button type="button" class="btn-del"><span class="blind">상품 삭제</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- //slide -->
+                                        <!-- slide -->
+                                        <div class="slide-conts ui_carousel_slide">
+                                            <div class="conts-wrap">
+                                                <div class="prd-care-horizon">
+                                                    @@include('./common/modules/flags.html', {
+                                                        borderType:true,
+                                                        flags:[
+                                                            "<span class='blind'>서비스명</span>케어솔루션"
+                                                        ]
+                                                    })
+                                                    <div class="img-wrap">
+                                                        <img src="/lg5-common/images/dummy/@sample-150x150.jpg" alt="제품 이미지">
+                                                    </div>
+                                                    <div class="txt-wrap">
+                                                        <p class="tit"><span class="blind">제품 디스플레이 네임</span>스팀 건조기ThinQ (듀얼 인버터 히트펌프) 두줄 텍스트 두줄 텍스트 두줄 텍스트 두줄 텍스트</p>
+                                                        <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
+                                                        <p class="etc">월 61,900원</p>
+                                                    </div>
+                                                    <div class="btn-item">
+                                                        <button type="button" class="btn-del"><span class="blind">상품 삭제</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- //slide -->
+                                        <!-- slide -->
+                                        <div class="slide-conts ui_carousel_slide">
+                                            <div class="conts-wrap">
+                                                <div class="prd-care-horizon">
+                                                    @@include('./common/modules/flags.html', {
+                                                        borderType:true,
+                                                        flags:[
+                                                            "<span class='blind'>서비스명</span>케어솔루션"
+                                                        ]
+                                                    })
+                                                    <div class="img-wrap">
+                                                        <img src="/lg5-common/images/dummy/@sample-150x150.jpg" alt="제품 이미지">
+                                                    </div>
+                                                    <div class="txt-wrap">
+                                                        <p class="tit"><span class="blind">제품 디스플레이 네임</span>스팀 건조기ThinQ</p>
+                                                        <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
+                                                        <p class="etc">월 61,900원</p>
+                                                    </div>
+                                                    <div class="btn-item">
+                                                        <button type="button" class="btn-del"><span class="blind">상품 삭제</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- //slide -->
+                                        <!-- slide -->
+                                        <div class="slide-conts ui_carousel_slide">
+                                            <div class="conts-wrap">
+                                                <div class="prd-care-horizon">
+                                                    @@include('./common/modules/flags.html', {
+                                                        borderType:true,
+                                                        flags:[
+                                                            "<span class='blind'>서비스명</span>케어솔루션"
+                                                        ]
+                                                    })
+                                                    <div class="img-wrap">
+                                                        <img src="/lg5-common/images/dummy/@sample-150x150.jpg" alt="제품 이미지">
+                                                    </div>
+                                                    <div class="txt-wrap">
+                                                        <p class="tit"><span class="blind">제품 디스플레이 네임</span>스팀 건조기ThinQ (듀얼 인버터 히트펌프)</p>
+                                                        <p class="code"><span class="blind">제품 코드</span>WU900AS</p>
+                                                        <p class="etc">월 61,900원</p>
+                                                    </div>
+                                                    <div class="btn-item">
+                                                        <button type="button" class="btn-del"><span class="blind">상품 삭제</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- //slide -->
+                                    </div>
+                                </div>
+                                <div class="slide-controls">
+                                    <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                    <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                </div>
+                            </div>
+                            <!-- //carousel -->
+                            <div class="total-info">
+                                <dl>
+                                    <dt>월 납부 금액</dt>
+                                    <dd>월 216,000원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>기존/신규결합 할인</dt>
+                                    <dd class="sale">월 -7,000원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>제휴카드 할인시</dt>
+                                    <dd class="sale">월 최대 -26,000원</dd>
+                                </dl>
+                                <a href="#n" class="btn pink"><span>견적 할인하기</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //선택제품 -->
+                </div>
+            </div>
+        </div>
+        
+        @@include('./common/footer.html')
+    </div> 
+    
+    <script>
+        $(function(){
+            vcui.require(['ui/carousel'], function () {
+                $('.ui_carousel_slider').vcCarousel({
+                    infinite: false,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    variableWidth : true,
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: false,
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+                                
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                infinite: false,
+                                variableWidth : true,
+                                dots: false,
+                                slidesToShow: 1, 
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+            });
+
+            $('.ui_carousel_slider2').vcCarousel({
+                infinite: false,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                variableWidth : true,
+                responsive: [
+                    {
+                        breakpoint: 10000,
+                        settings: {
+                            infinite: false,
+                            variableWidth : false,
+                            dots: false,
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                            
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            infinite: false,
+                            variableWidth : true,
+                            dots: false,
+                            slidesToShow: 1, 
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
+</html>

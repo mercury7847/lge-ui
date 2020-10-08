@@ -81,6 +81,11 @@ var res = {
 			"KRP0025_Event list for home" : ["/html/components/KRP0025.html","","진행중"],
 		},
 		"Page" : {
+			"케어솔루션(SLC)" : {
+				"케어솔루션안내" : {
+					"케어플래너" : ["/html/SLC/RMSF2003.html","","진행중"],
+				},
+			},
 			"이벤트/멤버십(BMC)" : {
 				"이벤트" : {
 					"리스트" : ["/html/BMC/MKT4001.html","","진행중"],
@@ -90,6 +95,8 @@ var res = {
 					"이벤트참여_PC아카데미" : ["/html/BMC/MKT4009.html","","진행중"],
 					"이벤트참여내역조회_PC아카데미" : ["/html/BMC/MKT4010.html","","진행중"],
 					"PC 모델명 및 시리얼번호 확인 방법" : ["/html/BMC/MKT4017.html","","진행중"],
+					"이벤트참여_미리미리페스티벌" : ["/html/BMC/MKT4012.html","","진행중"],
+					"LG전자 및 LG전자 BEST SHOP 판매대리점 보기" : ["/html/BMC/MKT4013.html","","진행중"],
 				},
 				"멤버십" : {
 					"멤버십 메인" : ["/html/BMC/ACC4001.html","","검수요청"],

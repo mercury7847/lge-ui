@@ -2,22 +2,21 @@ $(window).ready(function(){
     if(!document.querySelector('.KRP0010')) return false;
 
     $('.KRP0010').buildCommonUI();
-
+    
+    var maxThumbnailCount = 6;
+    var product_quantity = 1;
+    var product_price = 0;
+    var pdp_visual_list = [];
+    var pinchZoom = null;
+    
     var KRP0010 = {
-        product_quantity : 1,
-        product_price : 0,
-        pdp_visual_list : [],
-        selectedIndex : 0,
-
         init: function() {
-            //self = this;
             self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual');
             self.$pdpImage = self.$pdpVisual.find('div.pdp-visual-image');
-            //self.$pdpVideo = self.$pdpVisual.find('div.pdp-visual-video');
-            //self.$pdpAnimation = self.$pdpVisual.find('div.pdp-visual-animation');
             self.$pdpThumbnail = self.$pdpVisual.find('div.pdp-thumbnail-nav div.inner div.pdp-thumbnail-list ul.thumbnail-list');
             self.$pdpMobileVisual = $('#mobile_summary_gallery');
-            self.$pdpMobileSlider = self.$pdpMobileVisual.find('div.ui_carousel_slider div.slide-content ul.slide-track');
+            self.$pdpMobileSlider = self.$pdpMobileVisual.find('div.ui_carousel_slider');
+            self.$pdpMobileSliderTrack = self.$pdpMobileSlider.find('div.slide-content ul.slide-track');
             self.$pdpMoreInfo = self.$pdpVisual.find('div.pdp-more-info');
 
             self.$detailInfo =  $('div.pdp-wrap div.pdp-info-area div.product-detail-info').first();
@@ -33,12 +32,45 @@ $(window).ready(function(){
             self.$rentalButton = self.$detailInfo.find('div.rental');
             self.$displayProduct = self.$detailInfo.find('div.display-product');
 
+            self.$popPdpVisual = $('#pop-pdp-visual');
+            self.$popPdpVisualImage = self.$popPdpVisual.find('#modal_detail_target li.image');
+            self.$popPdpVisualVideo = self.$popPdpVisual.find('#modal_detail_target li.video');
+            //self.$popPdpVisualAnimation = self.$popPdpVisual.find('#modal_detail_target li.image');
+            self.$popPdpThumbnail = self.$popPdpVisual.find('div.pop-pdp-thumbnail-nav ul.pop-thumbnail-list');
+
+            vcui.require(['ui/pinchZoom'], function (PinchZoom) {
+                pinchZoom = new PinchZoom('.zoom-area');
+
+                self.$popPdpVisual.find('div.zoom-btn-area a.zoom-plus').on('click', function(){
+                     var zoom = pinchZoom.getZoomFactor();
+                     if(Math.round(zoom) >= 4) zoom = 0;
+                     pinchZoom.runZoom(zoom+1); 
+                });
+
+                self.$popPdpVisual.find('div.zoom-btn-area a.zoom-minus').on('click', function(){
+                     var zoom = pinchZoom.getZoomFactor();
+                     pinchZoom.runZoom(zoom-1); 
+                });
+
+                self.$popPdpVisualImage.on('click', function(e){
+                    self.$popPdpVisual.find('div.zoom-btn-area a.zoom-plus').trigger('click');
+                });
+
+                pinchZoom.update(true);
+            });
+            
             this.bindEvents();
             
             this.requestDetailData();
         },
 
         bindEvents: function() {
+            self.$pdpMobileSlider.on("click", function(e){ 
+                e.preventDefault();
+                var slideClicked = $(this).find(".ui_carousel_current").attr("data-idx");
+                KRP0010.openVisualModal(slideClicked); 
+            });
+
             //구매수량 버튼
             self.$paymentAmountInfo.find('div.quantity-wrap div.select-quantity div.inner button').on('click',function(e){
                 //수량 감소
@@ -93,9 +125,9 @@ $(window).ready(function(){
             });
 
             self.$pdpImage.find('a').first().on('click',function(e){
-                //이미지 모달 뷰
                 e.preventDefault();
-                $('#pop-pdp-visual').vcModal();
+                var slideClicked = $(this).attr("data-idx"); 
+                KRP0010.openVisualModal(slideClicked);
             });
         },
 
@@ -122,6 +154,8 @@ $(window).ready(function(){
                     contentHtml += ('<img src="' + item.image_url + '" alt="' + item.image_alt +'">');
                 });
                 target.html(contentHtml);
+                target = self.$pdpMobileVisual.find('div.badge');
+                target.html(contentHtml);
     
                 //플래그
                 contentHtml = "";
@@ -133,7 +167,6 @@ $(window).ready(function(){
                 target.html(contentHtml);
 
                 //이미지 슬라이드 데스크탑
-                self.$pdpThumbnail.html('');
                 contentHtml = "";
                 var template = '<li class="thumbnail" data-idx="{{index}}">' +
                     '<a href="#" data-link-area="product_summary-thumbnail" data-link-name="{{link_name}}">'+
@@ -142,16 +175,16 @@ $(window).ready(function(){
                 pdp_visual_list = data.pdp_visual_list instanceof Array ? data.pdp_visual_list : [];
                 pdp_visual_list.forEach(function(item, index) {
                     item.index = "" + index;
-                    if(index < 5) {
+                    if(index < (maxThumbnailCount - 1)) {
                         contentHtml += vcui.template(template,item);
-                    } else if(index == 5) {
-                        if(pdp_visual_list.length > 6) {
+                    } else if(index == (maxThumbnailCount - 1)) {
+                        if(pdp_visual_list.length > maxThumbnailCount) {
                             template = '<li class="thumbnail more" data-idx="{{index}}">' +
                                 '<a href="#" data-link-area="product_summary-thumbnail" data-link-name="{{link_name}}">'+
                                 '<img data-src="{{thumb_url}}" class="lazyloaded" alt="{{image_alt}}">' +
                                 '<span class="count">+{{more_count}}</span>' +
                                 '</a></li>';
-                            item.more_count = "" + (pdp_visual_list.length - 6);
+                            item.more_count = "" + (pdp_visual_list.length - maxThumbnailCount);
                             contentHtml += vcui.template(template,item);
                         } else {
                             contentHtml += vcui.template(template,item);
@@ -166,15 +199,9 @@ $(window).ready(function(){
                     var slideClicked = $(this).attr("data-idx");
                     if($(this).hasClass('more')) {
                         //more는 바로 모달뷰 뛰움
-                        console.log('more', slideClicked);
+                        KRP0010.openVisualModal(slideClicked);
                     } else {
-                        if(self.$selectItemTarget) {
-                            self.$selectItemTarget.removeClass('active');
-                        }
-                        self.$selectItemTarget = $(this);
-                        self.$selectItemTarget.addClass('active');
-                        //메인이미지 변경
-                        console.log(slideClicked);
+                        //썸네일 클릭
                         KRP0010.clickThumbnailSlide(slideClicked);
                     } 
                 });
@@ -198,12 +225,6 @@ $(window).ready(function(){
                                 '<a href="#" data-link-area="product_summary-video" data-link-name="{{link_name}}">'+
                                 '<img data-src="{{image_url}}" class="lazyloaded" alt="{{image_alt}}">'
                                 '<p class="hidden pc">{{image_desc}}</p><p class="hidden mobile">{{image_desc}}</p></a></li>';
-                            /*
-                            var template = '<li class="slide-conts ui_carousel_slide video youtube-box" data-idx="{{index}}">' +
-                                '<a href="#" data-src="{{video_url}}" class="see-video" data-type="youtube" data-target="modal" data-link-name="{{link_name}}">' +
-                                '<div class="img-box"><img data-src="{{image_url}}" class="lazyload" alt="{{image_alt}}"/></div></a>' +
-                                '<a href="#" data-src="{{video_url}}" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-target="modal" data-link-name="{{link_name}}">plays audio description video</a></li>'
-                                */
                             contentHtml += vcui.template(template,item);
                             break;
                         /*
@@ -238,39 +259,19 @@ $(window).ready(function(){
                             break;
                     }
                 });
-                self.$pdpMobileSlider.html(contentHtml);
+                self.$pdpMobileSliderTrack.html(contentHtml);
 
                 vcui.require(['ui/carousel'], function () {
-                    /*
-                    self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider').vcCarousel({
-                        infinite: false,
-                        prevArrow:'.btn-arrow.prev',
-                        nextArrow:'.btn-arrow.next',
-                        swipeToSlide: true,
-                        slidesToShow: 6,
-                        slidesToScroll: 1,
-                        focusOnChange:true,
-                        focusOnSelect: true
-                    });
-                    var thumbItems = self.$pdpVisual.find('div.pdp-thumbnail-nav div.ui_carousel_slider').find('li.ui_carousel_slide');
-                    thumbItems.on('click', function (e){
-                        if(self.$selectItemTarget) {
-                            self.$selectItemTarget.removeClass('active');
-                        }
-                        self.$selectItemTarget = $(e.currentTarget);
-                        $(e.currentTarget).addClass('active');
-                        var slideClicked = $(e.currentTarget).attr("data-idx");
-                        KRP0010.clickThumbnailSlide(slideClicked);
-                    });
-*/
-                    self.$pdpMobileVisual.find('div.ui_carousel_slider').vcCarousel({
+                    self.$pdpMobileSlider.vcCarousel({
                         infinite: false,
                         autoplay: false,
                         swipeToSlide: true,
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         prevArrow:'.btn-arrow.prev',
-                        nextArrow:'.btn-arrow.next'
+                        nextArrow:'.btn-arrow.next',
+                        focusOnSelect: false,
+                        focusOnChange: false
                     });
 
                     var f = 0;
@@ -278,10 +279,41 @@ $(window).ready(function(){
                     var index = 0;
                     if(found) {
                         index = f;
-                    }
+                    };
                     KRP0010.clickThumbnailSlide(index);
                 });
 
+                //pdp모달뷰
+                contentHtml = "";
+                pdp_visual_list.forEach(function(item, index) {
+                    item.index = "" + index;
+                    switch(item.type) {
+                        case "image":
+                            var template = '<li class="pop-thumbnail" data-idx="{{index}}">' +
+                                '<a href="#" data-link-area="product_summary-thumbnail" data-link-name="{{link_name}}">'+
+                                '<img data-src="{{thumb_url}}" class="lazyloaded" alt="{{image_alt}}">'
+                                '<p class="hidden pc">{{image_desc}}</p><p class="hidden mobile">{{image_desc}}</p></a></li>';
+                            contentHtml += vcui.template(template,item);
+                            break;
+                        case "video":
+                        case "mp4":
+                        case "webm":
+                            var template = '<li class="pop-thumbnail" data-idx="{{index}}">' +
+                                '<a href="#" data-link-area="product_summary-video" data-link-name="{{link_name}}">'+
+                                '<img data-src="{{thumb_url}}" class="lazyloaded" alt="{{image_alt}}">'
+                                '<p class="hidden pc">{{image_desc}}</p><p class="hidden mobile">{{image_desc}}</p></a></li>';
+                            contentHtml += vcui.template(template,item);
+                            break;
+                        default:
+                            break;
+                    }
+                });
+                self.$popPdpThumbnail.html(contentHtml);
+                var popThumbItems = self.$popPdpThumbnail.find('li.pop-thumbnail');
+                popThumbItems.on('click', function (e){
+                    var modalClicked = $(this).attr("data-idx");
+                    KRP0010.clickModalThumbnail(modalClicked);
+                });
 
                 //하단배너
                 if(data.pdp_more_info.visible) {
@@ -660,24 +692,29 @@ $(window).ready(function(){
         },
 
         clickThumbnailSlide: function(index) {
-            selectedIndex = index;
+            var thumbItem = self.$pdpThumbnail.find('li.thumbnail:nth-child('+(parseInt(index)+1)+')');
+            if(self.$selectItemTarget) {
+                self.$selectItemTarget.removeClass('active');
+            }
+            self.$selectItemTarget = thumbItem;
+            self.$selectItemTarget.addClass('active');
+
             var item = pdp_visual_list[index];
 
             switch(item.type) {
                 case "image":
-                    self.$pdpImage.find('a').attr('data-link-name',item.link_name);
+                    self.$pdpImage.find('a').attr({'data-link-name':item.link_name,'data-idx':(""+index)});
                     self.$pdpImage.find('a img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
-                    //self.$pdpVideo.hide();
-                    //self.$pdpAnimation.hide();
-                    //self.$pdpImage.show();
+                    break;
+                case "video":
+                case "mp4":
+                case "wemm":
+                    KRP0010.openVisualModal(index);
                     break;
                     /*
                 case "video":
                     self.$pdpVideo.find('a').attr({'data-src':item.video_url,'data-link-name':item.link_name});
                     self.$pdpVideo.find('a.see-video div img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
-                    //self.$pdpVideo.show();
-                    //self.$pdpAnimation.hide();
-                    //self.$pdpImage.hide();
                     break;
                 case "mp4":
                 case "wemm":
@@ -686,9 +723,68 @@ $(window).ready(function(){
                     self.$pdpAnimation.find('p.hidden').html(item.image_desc);
                     self.$pdpAnimation.find('video source').attr({'src':item.video_url,'type':("video/"+item.type)})
                     self.$pdpAnimation.find('div.caption').html(item.image_desc);
-                    //self.$pdpVideo.hide();
-                    //self.$pdpAnimation.show();
-                    //self.$pdpImage.hide();
+                    break;
+                    */
+                default:
+                    break;
+            }
+        },
+
+        openVisualModal: function(index) {
+            KRP0010.clickModalThumbnail(index);
+            $('#pop-pdp-visual').vcModal();
+            /*
+            vcui.require(['ui/pinchZoom'], function (PinchZoom) {
+                pinchZoom = new PinchZoom('.zoom-area');
+
+                self.$popPdpVisual.find('div.zoom-btn-area a.zoom-plus').on('click', function(){
+                     var zoom = pinch.getZoomFactor();
+                     if(zoom >= 3.5) zoom = 0;
+                     pinchZoom.runZoom(zoom+1); 
+                });
+
+                self.$popPdpVisual.find('div.zoom-btn-area a.zoom-minus').on('click', function(){
+                     var zoom = pinch.getZoomFactor();
+                     pinchZoom.runZoom(zoom-1); 
+                });
+
+                pinchZoom.update(true);
+            });
+            */
+        },
+
+        clickModalThumbnail: function(index) {
+            var thumbItem = self.$popPdpThumbnail.find('li.pop-thumbnail:nth-child('+(parseInt(index)+1)+')');
+            if(self.$selectModalItemTarget) {
+                self.$selectModalItemTarget.removeClass('active');
+            }
+            self.$selectModalItemTarget = thumbItem;
+            self.$selectModalItemTarget.addClass('active');
+
+            var item = pdp_visual_list[index];
+
+            pinchZoom.runZoom(1); 
+            switch(item.type) {
+                case "image":
+                    self.$popPdpVisualImage.find('div.zoom-area img').attr({'data-pc-src':item.image_url,'data-m-src':item.image_url});
+                    self.$popPdpVisualImage.vcImageSwitch('reload').show();
+                    break;
+                case "video":
+                case "mp4":
+                case "wemm":
+                    break;
+                    /*
+                case "video":
+                    self.$pdpVideo.find('a').attr({'data-src':item.video_url,'data-link-name':item.link_name});
+                    self.$pdpVideo.find('a.see-video div img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
+                    break;
+                case "mp4":
+                case "wemm":
+                    self.$pdpAnimation.find('a').attr({'data-src':item.audio_url,'data-link-name':item.link_name});
+                    self.$pdpAnimation.find('img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
+                    self.$pdpAnimation.find('p.hidden').html(item.image_desc);
+                    self.$pdpAnimation.find('video source').attr({'src':item.video_url,'type':("video/"+item.type)})
+                    self.$pdpAnimation.find('div.caption').html(item.image_desc);
                     break;
                     */
                 default:

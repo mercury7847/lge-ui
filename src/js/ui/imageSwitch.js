@@ -29,7 +29,6 @@ vcui.define('ui/imageSwitch', ['jquery', 'vcui'], function ($, core) {
             winwidth = $(window).outerWidth(true);
             if(winwidth > 767) mode = self.options.pc_prefix;
             else mode = self.options.mobile_prefix;
-
             if(self.mode != mode) self._changeImage(mode);
         },
 
@@ -52,7 +51,13 @@ vcui.define('ui/imageSwitch', ['jquery', 'vcui'], function ($, core) {
                     $(item).attr('src', imgsrc);
                 }
             })
-        }
+        },
+
+        reload: function(){
+            var self = this;
+            self.mode = "";
+            self._resize();
+        },
     });
 
     return ImageSwitch;
