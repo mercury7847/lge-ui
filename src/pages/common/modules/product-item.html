@@ -1,0 +1,99 @@
+<li>
+    @@if (context.search) {
+    <div class="item result-item">
+    }
+    @@if (!context.search) {
+    <div class="item">
+    }
+        @@if (context.badgeType === "thin") {
+        <div class='badge-wrap thin-type'>
+            <span class='badge'>으뜸효율 10%</span>
+        </div>
+        }
+        @@if (context.badgeType === "large") {
+        <div class='badge-wrap'>
+            <img src='/lg5-common/images/dummy/@img-promotion-badge.png' alt='으뜸효율 10%'>
+        </div>
+        }
+        <div class="product-image" aria-hidden="true">
+            <a href="#"><img src="@@img" alt=""></a>
+        </div>
+        <div class="product-contents">
+            @@include('./common/modules/flags.html', {
+                "borderType": true,
+                "flags": ["NEW","BEST","케어십"]
+            })
+            <div class="product-info">
+                @@if (context.search) {
+                <div class="product-name">
+                    <a href="#">LG DIOS <span class='search-word'>노크온 매직스페이스</span></a>
+                </div>
+                }
+                @@if (!context.search) {
+                <div class="product-name">
+                    <a href="#">LG DIOS 노크온 매직스페이스</a>
+                </div>
+                }
+                <div class="sku">S833MC85Q</div>
+                <div class="review-info">
+                    <a href="#">
+                        @@if (context.review) {
+                        <div class="star is-review"><span class="blind">리뷰있음</span></div>
+                        <div class="average-rating"><span class="blind">평점</span>42</div>
+                        <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>
+                        }
+                        @@if (!context.review) {
+                        <div class="star"><span class="blind">리뷰없음</span></div>
+                        <div class="average-rating"><span class="blind">평점</span>0</div>
+                        <div class="review-count"><span class="blind">리뷰 수</span>(0)</div>
+                        }
+                    </a>
+                </div>
+                @@if (context.spec) {
+                <ul class="spec-info">
+                    <li>용량 : 840L</li>
+                    <li>전체크기(WxHxD) : 912 x 1,790 x 927 mm</li>
+                    <li>형태 : 노크온 매직스페이스</li>
+                    <li>패턴 :  미드나잇</li>
+                    <li><span class="care-option">케어십 가능</span></li>
+                </ul>
+                }
+            </div>
+            @@if (context.price) {
+            <div class="price-area">
+                <div class="total-price">
+                    <em class="blind">최대 혜택가격</em>
+                    <span class="price">4,420,000<em>원</em></span>
+                </div>
+                <div class="product-price">
+                    @@if (!context.search) {
+                    <div class="purchase-price">
+                        <em class="blind">판매가격</em>
+                        <span class="price">5,200,000<em>원</em></span>
+                    </div>
+                    }
+                    <div class="discount-rate">
+                        <em class="blind">할인율</em>
+                        <span class="price">15<em>%</em></span>
+                    </div>
+                </div>
+            </div>
+            }
+            @@if (context.care) {
+            <div class="price-area">
+                <div class="total-price">
+                    <em class="blind">최대 혜택가격</em>
+                    <span class="price"><em>월</em> 32,900<em>원</em></span>
+                </div>
+                <span class="small-text">(3개월/1회 방문)</span>
+            </div>
+            }
+            @@if (context.hashtag) {
+            <div class="hashtag-wrap">
+                <span class="hashtag">#여름가전</span>
+                <span class="hashtag">#가전</span>
+            </div>
+            }
+        </div>
+    </div>
+</li>

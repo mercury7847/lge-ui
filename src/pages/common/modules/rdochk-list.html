@@ -1,0 +1,20 @@
+<div class="select-list-wrap">
+    <ul>
+        @@for ( var i=0; i < slt.length; i++ ) {
+        <li class="lists">
+            @@if ( context.chk ) {
+            <span class="chk-wrap">
+                <input type="checkbox" id="@@name-`+[i]+`" name="@@name" `+slt[i].checked+`>
+                <label for="@@name-`+[i]+`">`+slt[i].value+`</label>
+            </span>
+            }
+            @@if ( context.rdo ) {
+            <span class="rdo-wrap">
+                <input type="radio" id="@@name-`+[i]+`" name="@@name" `+slt[i].checked+`>
+                <label for="@@name-`+[i]+`">`+slt[i].value+`</label>
+            </span>
+            }
+        </li>
+        }
+    </ul>
+</div>
