@@ -237,10 +237,16 @@
 
     .result-area {
         float: left;
-        max-width: 1284px;
-        margin: 0 auto;
+        //max-width: 1284px;
+        //margin: 0 auto;
     }
 
+    @include mobile {
+        max-width: 100%;
+        .result-area {
+            float: none;
+        }
+    }
 
     .result-category {
         padding: 20px 0 40px;
