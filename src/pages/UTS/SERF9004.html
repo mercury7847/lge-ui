@@ -17,8 +17,8 @@
                 <div class="tabs-wrap btn-type ui_tab left">
                     <ul class="tabs">
                         <li><a href="#n">전체(210)</a></li>
-                        <li class="on"><a href="#n">제품(59)<em class="blind">선택됨</em></a></li>
-                        <li><a href="#n">케어솔루션(2)</a></li>
+                        <li><a href="#n">제품(59)</a></li>
+                        <li class="on"><a href="#n">케어솔루션(2)<em class="blind">선택됨</em></a></li>
                         <li><a href="#n">이벤트(5)</a></li>
                         <li><a href="#n">스토리(18)</a></li>
                         <li><a href="#n">케어용품/소모품(32)</a></li>
@@ -27,10 +27,11 @@
                 </div>
                 <div class="cont-wrap">
                     <div class="search-result-wrap">
-                        @@include('./common/modules/list-filter.html')
+                        @@include('./common/modules/list-filter.html', {
+                            "care" : true
+                        })
                         <div class="result-area">
                             @@include('./common/modules/list-sorting.html', {
-                                "soldout" : true,
                                 "select" : [
                                     { "option" : "정확도순" },
                                     { "option" : "인기순" },
@@ -48,54 +49,47 @@
                                                 "badgeType" : "large",
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true,
-                                                "hashtag" : true
+                                                "care" : true
                                             }, {
                                                 "search" : true,
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "hashtag" : true
-                                            }, {
-                                                "search" : true,
-                                                "badgeType" : "large",
-                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "hashtag" : true
+                                                "care" : true
                                             }, {
                                                 "search" : true,
                                                 "badgeType" : "large",
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "care" : true
+                                            }, {
+                                                "search" : true,
+                                                "badgeType" : "large",
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true,
-                                                "hashtag" : true
+                                                "care" : true
                                             }, {
                                                 "search" : true,
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true,
-                                                "hashtag" : true
+                                                "care" : true
                                             }, {
                                                 "search" : true,
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true,
-                                                "hashtag" : true
+                                                "care" : true
                                             }, {
                                                 "search" : true,
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true,
-                                                "hashtag" : true
+                                                "care" : true
                                             }, {
                                                 "search" : true,
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true,
-                                                "hashtag" : true
+                                                "care" : true
                                             }, {
                                                 "search" : true,
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true,
-                                                "hashtag" : true
+                                                "care" : true
                                             }
                                         ])
                                     </ul>
@@ -105,32 +99,6 @@
                                 })
                             </div>
                         </div>
-                    </div>
-
-                    <!-- 찾으시는 제품이 없으신가요? -->
-                    <div class="box-list recommend-list-wrap">
-                        <h3 class="title">찾으시는 제품이 없으신가요?</h3>
-                        <ul class="story">
-                            @@loop('./common/modules/list-box.html', [
-                            {
-                                "img" : "dummy/@img-stroy.png",
-                                "title-hd" : "제품 큐레이션 제목",
-                                "title" : "진짜로 원하는게 무엇인지 알고 싶나요?",
-                                "copy" : true,
-                                "copyText" : "원하시는 기능과 선호/취향을 반영한 최고의 제품을 대신 찾아드립니다.",
-                                "btn" : true,
-                                "btnName" : "제품 큐레이션"
-                            },{
-                                "img" : "dummy/@img-stroy.png",
-                                "title-hd" : "라이프스타일 컨설팅",
-                                "title" : "라이프스타일에 맞는 제품은 무엇일까요?",
-                                "copy" : true,
-                                "copyText" : "나의 라이프스타일에 맞는 제품을 추천드립니다.",
-                                "btn" : true,
-                                "btnName" : "라이프스타일 컨설팅"
-                            }
-                            ])
-                        </ul>
                     </div>
                 </div>
                 <!-- // 검색 결과 영역 -->

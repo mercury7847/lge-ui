@@ -9,6 +9,20 @@
             clear: left;
         }
     }
+    @include mobile {
+        margin: 0;
+        > li {
+            float: none;
+            width: 100%;
+            padding: 0 0 12px;
+            &:nth-child(3n+1) {
+                clear: none;
+            }
+        }
+    }
+    .search-word {
+        color: #ec455a;
+    }
     .item {
         position: relative;
         padding: 0 56px 36px;
@@ -78,9 +92,6 @@
                 line-height: 24px;
                 color: #222;
                 @include textClipClamp(2);
-            }
-            .search-word {
-                color: #ec455a;
             }
         }
         .product-info {
@@ -152,6 +163,11 @@
 
             & + .hashtag-wrap {
                 margin-top: 4px;
+            }
+            .small-text {
+                display: block;
+                margin-top: 4px;
+                @include font-small;
             }
         }
         .hashtag-wrap {
