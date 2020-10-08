@@ -597,7 +597,6 @@ CS.MD.anchorTab  = function() {
         var $tableScroll = $(".tbl.scroll-x");
 
         if (!$tableScroll.length) return false;
-        
         $tableScroll.mCustomScrollbar({
             axis:"x",
             advanced:{
@@ -605,6 +604,14 @@ CS.MD.anchorTab  = function() {
             }
         });
     }
+
+    $(window).on("load",function(){
+        var $verticalScroll = $(".scroll-y");
+
+        $verticalScroll.mCustomScrollbar({
+            axis:"y"
+        });
+    });
 
     function commonSlides() {
         vcui.require(['ui/carousel'], function () {
