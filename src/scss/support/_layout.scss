@@ -5,6 +5,14 @@
     @include mobile {
         padding:12px 0 0;
     }
+    .content-wrap {
+        max-width:1146px;
+        margin:0 auto;
+        padding:0 40px;
+        @include mobile {
+            padding:0;
+        }
+    }
 }
 
 .section {

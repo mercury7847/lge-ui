@@ -9,8 +9,10 @@
 @import "../../support/board-view";
 @import "../../support/form-field";
 @import "../../support/modal";
+@import "../../support/table";
+@import "../../support/loading-bar";
+@import "../../support/sns";
 @import "../../support/select-category";
-
 
 /* 삭제 예정 */
 .dummy {
@@ -32,61 +34,22 @@
 .err-msg {
     display:none;
 }
-
+/* //삭제 예정 */
 
 .support {
     background:#f4f4f4;
 
-    /* table */
-    .tbl {
-        width:100%;
-        border-top:1px solid #ddd;
-        &.scroll-x {
-            @include mobile {
-                width:auto;
-                max-width:755px;
-            }
-        }
-        &-list {
-            width:100%;
-            border-collapse:collapse;
-            border-spacing:0;
-            th, td {
-                padding:16px 24px;
-                font-weight:400;
-                text-align:left;
-                border-bottom:1px solid #ddd;
-                // border-left:1px solid #ddd;
-                // &:first-child {
-                //     border-left:0;
-                // }
-            }
-            th {
-                color:#616161;
-                font-size:14px;
-                line-height:20px;
-                background-color:#f4f4f4;
-            }
-            td {
-                color:#222;
-                line-height:24px;
-            }
-            @include mobile {
-                th, td {
-                    padding:12px 8px;
-                    font-size:14px;
-                }
-            }
-        }
-        &-vertical {
-            th, td {
-                // text-align:center;
-            }
-        }
-        &-horizon {
-            th, td {
-                text-align:left;
-            }
+    .tag {
+        display:inline-block;
+        padding:3px 8px;
+        color:#ec455a;
+        font-size:12px;
+        font-weight:500;
+        border-radius:4px;
+        border:1px solid #ec455a;
+        &.gray {
+            color:#616161;
+            border-color:#616161;
         }
     }
 
@@ -202,42 +165,6 @@
             padding-top: 22px;
             &.no-border {
                 margin-top: 10px;
-            }
-        }
-    }
-
-    .sns-box {
-        @include clearfix;
-        .sns {
-            float:left;
-            width:32px;
-            height:32px;
-            background-repeat:no-repeat;
-            background-position:center;
-            background-size:100%;
-            margin-left:8px;
-            &:first-child {
-                margin-left:0;
-            }
-            &.icon {
-                &-kakaotalk {
-                    background-image:url(/lg5-common/images/icons/icon-sns-kakaotalk.svg);
-                }
-                &-facebook {
-                    background-image:url(/lg5-common/images/icons/icon-sns-facebook.svg);
-                }
-                &-twitter {
-                    background-image:url(/lg5-common/images/icons/icon-sns-twiter.svg);
-                }
-                &-url {
-                    background-image:url(/lg5-common/images/icons/icon-sns-url.svg);
-                }
-            }
-        }
-        @include mobile {
-            .sns {
-                width:40px;
-                height:40px;
             }
         }
     }
@@ -451,12 +378,6 @@
                 text-align: left;
                 margin-bottom: 16px;
             }
-        }
-    }
-
-    .btn-text {
-        &.underline {
-            text-decoration: underline;
         }
     }
 
