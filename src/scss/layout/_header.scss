@@ -174,12 +174,34 @@
                 border-bottom: 1px solid #ddd;
                 .nav-item {
                     padding-bottom: 11px;
+                    &:after {
+                        display: inline-block;
+                        width: 8px;
+                        height: 8px;
+                        margin-left: 6px;
+                        border-right: 1px solid #212121;
+                        border-bottom: 1px solid #212121;
+                        transform: rotate(45deg);
+                        vertical-align: 4px;
+                        content: '';
+                    }
                 }
             }
         }
         &.is-depth {
             .nav-item {
                 padding-bottom: 12px;
+                &:after {
+                    display: inline-block;
+                    width: 8px;
+                    height: 8px;
+                    margin-left: 6px;
+                    border-right: 1px solid #212121;
+                    border-bottom: 1px solid #212121;
+                    transform: rotate(45deg);
+                    vertical-align: 4px;
+                    content: '';
+                }
             }
             .nav-category-container {
                 position: absolute;

@@ -1,5 +1,5 @@
 <!-- components/partials/KRC0024-cont.html -->
-<div class="component-wrap full @@common.marginTop @@common.marginBtm"><!-- [KR수정] .full class 추가 -->
+<div class="component-wrap @@common.marginTop @@common.marginBtm">
     <section class="component KRC0024 @@common.bg-color"><!-- [KR수정] bg-color 추가 -->
         <!--
         [component-wrap 옵션]
@@ -53,8 +53,7 @@
                 <div class="carousel-box video-box @@carousel.item.font-color @@carousel.item.componentType">
                     <!-- 3. image -->
                     <div class="visual-area">
-                        <img data-pc-src="@@carousel.item.visual1" class="lazyload pc" alt="" />
-                        <img data-mobile-src="@@carousel.item.visual2" class="lazyload mobile" alt="" />
+                        <img data-pc-src="@@carousel.item.visual1" data-m-src="@@carousel.item.visual2" class="lazyload" alt="" /><!-- [KR수정] img 수정 -->
                         <p class="hidden pc">graphic description : </p>
                         <p class="hidden mobile">graphic description : </p>
                     </div>

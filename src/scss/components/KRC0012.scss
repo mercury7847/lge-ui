@@ -4,8 +4,6 @@
 
 
 .KRC0012 {
-    max-width:1284px;
-	overflow:hidden;
 	// variation
 	*.underline,
 	*.font-underline {
@@ -247,7 +245,6 @@
 	}
 	// disclaimer variation
 	&.full-size {
-		max-width:1284px;
 		.cont-head {
 			.title,
 			.title h2,

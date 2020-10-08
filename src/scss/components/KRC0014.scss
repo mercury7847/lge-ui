@@ -4,13 +4,6 @@
 
 
 .KRC0014 {
-    max-width:(1284px + 60px);
-    margin:0 auto;
-    padding:0 18px;
-    @include mobile {
-        padding:0 24px;
-    }
-
     $color: (lightgray, dark, black, white);
 	@each $bg in $color {
 		&.bg-#{$bg} {
@@ -134,7 +127,14 @@
         }
     }
 
-    @include clearfix;
+    .inner {
+        @include clearfix;
+        margin:0 -12px;
+        @include mobile {
+            margin:0;
+        }
+    }
+    
     .visual-wrap {
         width:calc((100% / 3) * 2);
         @include clearfix;
@@ -184,7 +184,7 @@
             }
         }
         @include mobile {
-            margin:0 -24px;
+            margin:0 -20px;
         }
     }
     .side-right-text {

@@ -59,7 +59,7 @@ $(document).ready(function() {
             } else{
                 html += '<div class="visual-area">'
                 html += '   <img src="' + largeImgURL + '" alt="' + alt + '"/>';
-                html += '   <p class="hidden">graphic description : </p>';
+                html += '   <p class="hidden">' + alt + '</p>';
                 html += '</div>';
                 appendElement.prepend(html);
             }      

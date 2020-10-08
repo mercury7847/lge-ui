@@ -4,6 +4,13 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 @import "../../support/page-visual";
+@import "../../support/layout";
+@import "../../support/board-list";
+@import "../../support/board-view";
+@import "../../support/form-field";
+@import "../../support/modal";
+@import "../../support/select-category";
+
 
 /* 삭제 예정 */
 .dummy {
@@ -28,13 +35,6 @@
 
 
 .support {
-    @import "../../support/layout";
-    @import "../../support/notice-list";
-    @import "../../support/notice-view";
-    @import "../../support/form-field";
-    @import "../../support/modal";
-    @import "../../support/select-category";
-
     background:#f4f4f4;
 
     /* table */
@@ -272,6 +272,21 @@
                 }
             }
         }
+        &-dl {
+            border-top: 1px solid #ddd;
+            padding-top: 32px;
+            margin-top: 32px;
+            &:first-child {
+                border-top: 0;
+                padding-top: 0;
+                margin-top: 0;
+                }
+            dt {
+                font-size: 16px;
+                color: #222;
+                margin-bottom: 24px;
+            }
+        }
         @include mobile {
             &-list {
                 .title {
@@ -280,6 +295,11 @@
                 .description {
                     width: calc(100% - 104px);
                     font-weight: 500;
+                }
+            }
+            &-dl {
+                dt {
+                    margin-bottom: 20px;
                 }
             }
         }
@@ -562,6 +582,30 @@
                     }
                 }
             }
+        }
+    }
+
+    .scrollview-wrap {
+        padding-right: 8px;
+    }
+
+    .mCSB_inside {
+        >.mCSB_container {
+            margin-right: 16px;
+        }
+    }
+
+    .mCSB_scrollTools {
+        width: 4px;
+        .mCSB_dragger {
+            .mCSB_dragger_bar {
+                width: 4px;
+                border-radius: 4px;
+                background: #ccc;
+            }
+        }
+        .mCSB_draggerRail {
+            background-color: transparent;
         }
     }
 

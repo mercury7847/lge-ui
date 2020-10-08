@@ -246,3 +246,16 @@ $wide-screen: "(min-width: 1600px)";
 @mixin  blind {
     position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;font-size:medium;line-height:normal;word-break:break-all
 }
+
+@mixin text-underline ($bottom,$color) {
+    position: relative;
+    &:after {
+        position: absolute;
+        bottom: $bottom;
+        right: 0;
+        left: 0;
+        height: 1px;
+        background-color: $color;
+        content: '';
+    }
+}

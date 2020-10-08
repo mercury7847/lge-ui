@@ -5,45 +5,10 @@ $(function () {
         
         vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion', 'ui/carousel'], function () {
 
-            // 섹션스토리지를 이용함. 
-            var Storage = {
-
-                set : function(key, value){
-                    var storage = sessionStorage.getItem(key);
-                    var storageData = storage? JSON.parse(storage) : {};        
-                    storageData = Object.assign(storageData, value);
-                    sessionStorage.setItem(key, JSON.stringify(storageData));        
-                    return storageData;
-                },
-
-                get :function(key, name){							
-                    var storage = sessionStorage.getItem(key); 
-                    if(name){							
-                        var storageData = storage? JSON.parse(storage) : {}; 						
-                        return storageData[name];
-                    }else{
-                        return storage? JSON.parse(storage) : {};
-                    }   
-                },
-
-                remove:function(key, name){    
-                    if(name){
-                        var storage = sessionStorage.getItem(key);
-                        var storageData = storage? JSON.parse(storage) : {}; 						
-                        delete storageData[name];						
-                        sessionStorage.setItem(key, JSON.stringify(storageData)); 
-                        return storageData;
-                    }else{
-                        sessionStorage.removeItem(key);
-                        return null;
-                    }						
-                }
-            }
-
             var currentPage = '1';
             var categoryId = _$('input[type="hidden"][name="categoryId"]').val();
             var storageName = categoryId+'_lgeProductFilter';
-            var storageFilters = Storage.get(storageName);	
+            var storageFilters = lgkorUI.getStorage(storageName);	
             var savedFilterArr = firstFilterList || []; // CMS에서 넣어준 firstFilterList를 이용
             var firstRender = false;
 
@@ -209,7 +174,7 @@ $(function () {
             
             // 필터를 리셋후 데이터를 호출함.
             function reset(){
-                var obj = Storage.get(storageName);	
+                var obj = lgkorUI.getStorage(storageName);	
                 for(var key in obj){	                        
                     var $parent = $('[data-id="'+ key +'"]');
                     $parent.find('input[name="'+key+'"]').prop('checked', false);                    
@@ -219,8 +184,8 @@ $(function () {
                 }
                 var rObj = vcui.extend({}, storageFilters);
                 storageFilters = {'subCategoryId':rObj['subCategoryId']};
-                Storage.remove(storageName);   
-                Storage.set(storageName, storageFilters);
+                lgkorUI.removeStorage(storageName);   
+                lgkorUI.setStorage(storageName, storageFilters);
                 requestData(storageFilters);
             }
 
@@ -231,7 +196,7 @@ $(function () {
                 for(var key in data) inputStr += data[key]+',';
                 inputStr = inputStr.replace(/,$/,'');
                 storageFilters[id] = inputStr;
-                Storage.set(storageName, storageFilters);
+                lgkorUI.setStorage(storageName, storageFilters);
                 setApplyFilter(storageFilters);
             }
 
@@ -437,10 +402,10 @@ $(function () {
                     valueStr = valueStr.replace(/,$/,'');                    
                     if(valueStr==''){
                         delete storageFilters[name];
-                        Storage.remove(storageName, name);
+                        lgkorUI.removeStorage(storageName, name);
                     }else{
                         storageFilters[name] = valueStr;
-                        Storage.set(storageName, storageFilters);
+                        lgkorUI.setStorage(storageName, storageFilters);
                     }
                     setApplyFilter(storageFilters);
                 });
@@ -504,7 +469,7 @@ $(function () {
                     subCategoryId = subCategoryId.replace(/,/,'');
 
                     storageFilters['subCategoryId'] = subCategoryId;
-                    Storage.set(storageName, storageFilters);
+                    lgkorUI.setStorage(storageName, storageFilters);
                     setApplyFilter(storageFilters, noRequest);
                 });
 

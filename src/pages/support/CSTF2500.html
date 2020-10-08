@@ -4,9 +4,6 @@
         "pageCSS": [
             "support/support",
             "support/product-support"
-        ],
-        "pageJS": [
-            "support-common"
         ]
     })
 <body>
@@ -22,35 +19,15 @@
             <div class="contents support card">
                 <div class="contents-inner">
 
-                    <div class="result-wrap">
+                    <div class="content-wrap">
                         <div class="sorting-wrap">
                             <div class="total">전체 <em id="count">122</em>건</div>
                             <div class="sort-box">
-                                <div class="sort-select ui_dropdown">
-                                    <button type="button" class="sort-select-link ui_dropdown_toggle"><span>10개씩 보기</span><span class="ico-arrow"></span></button>
-                                    <div class="sort-select-layer ui_dropdown_list">
-                                        <ul>
-                                            <li class="active">
-                                                <button type="button">10개씩 보기</button>
-                                            </li>
-                                            <li>
-                                                <button type="button">10개씩 보기</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="sort-select ui_dropdown">
-                                    <button type="button" class="sort-select-link ui_dropdown_toggle"><span>조회순</span><span class="ico-arrow"></span></button>
-                                    <div class="sort-select-layer ui_dropdown_list">
-                                        <ul>
-                                            <li class="active">
-                                                <button type="button">조회순</button>
-                                            </li>
-                                            <li>
-                                                <button type="button">등록순</button>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <div class="sort-select-wrap">
+                                    <select class="ui_selectbox" id="selectOrder" title="정렬 기준 선택">
+                                        <option value="most" selected>조회순</option>
+                                        <option value="newest">등록순</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -62,8 +39,10 @@
                                             <img src="/lg5-common/images/dummy/@img-card1.jpg" alt="카드뉴스 제목">
                                         </div>
                                         <div class="summary">
-                                            <span>2020.07.20</span>
-                                            <span class="view"><span class="blind">조회수</span>4,129</span>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li><span class="view"><span class="blind">조회수</span>4,129</span></li>  
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -73,8 +52,10 @@
                                             <img src="/lg5-common/images/dummy/@img-card2.jpg" alt="카드뉴스 제목">
                                         </div>
                                         <div class="summary">
-                                            <span>2020.07.20</span>
-                                            <span class="view"><span class="blind">조회수</span>4,129</span>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li><span class="view"><span class="blind">조회수</span>4,129</span></li>  
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -84,8 +65,10 @@
                                             <img src="/lg5-common/images/dummy/@img-card3.jpg" alt="카드뉴스 제목">
                                         </div>
                                         <div class="summary">
-                                            <span>2020.07.20</span>
-                                            <span class="view"><span class="blind">조회수</span>4,129</span>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li><span class="view"><span class="blind">조회수</span>4,129</span></li>  
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -95,8 +78,10 @@
                                             <img src="/lg5-common/images/dummy/@img-card1.jpg" alt="카드뉴스 제목">
                                         </div>
                                         <div class="summary">
-                                            <span>2020.07.20</span>
-                                            <span class="view"><span class="blind">조회수</span>4,129</span>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li><span class="view"><span class="blind">조회수</span>4,129</span></li>  
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -106,8 +91,10 @@
                                             <img src="/lg5-common/images/dummy/@img-card2.jpg" alt="카드뉴스 제목">
                                         </div>
                                         <div class="summary">
-                                            <span>2020.07.20</span>
-                                            <span class="view"><span class="blind">조회수</span>4,129</span>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li><span class="view"><span class="blind">조회수</span>4,129</span></li>  
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -117,8 +104,10 @@
                                             <img src="/lg5-common/images/dummy/@img-card3.jpg" alt="카드뉴스 제목">
                                         </div>
                                         <div class="summary">
-                                            <span>2020.07.20</span>
-                                            <span class="view"><span class="blind">조회수</span>4,129</span>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li><span class="view"><span class="blind">조회수</span>4,129</span></li>  
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -128,8 +117,10 @@
                                             <img src="/lg5-common/images/dummy/@img-card1.jpg" alt="카드뉴스 제목">
                                         </div>
                                         <div class="summary">
-                                            <span>2020.07.20</span>
-                                            <span class="view"><span class="blind">조회수</span>4,129</span>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li><span class="view"><span class="blind">조회수</span>4,129</span></li>  
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -139,8 +130,10 @@
                                             <img src="/lg5-common/images/dummy/@img-card2.jpg" alt="카드뉴스 제목">
                                         </div>
                                         <div class="summary">
-                                            <span>2020.07.20</span>
-                                            <span class="view"><span class="blind">조회수</span>4,129</span>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li><span class="view"><span class="blind">조회수</span>4,129</span></li>  
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -150,8 +143,10 @@
                                             <img src="/lg5-common/images/dummy/@img-card3.jpg" alt="카드뉴스 제목">
                                         </div>
                                         <div class="summary">
-                                            <span>2020.07.20</span>
-                                            <span class="view"><span class="blind">조회수</span>4,129</span>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li><span class="view"><span class="blind">조회수</span>4,129</span></li>  
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -161,8 +156,10 @@
                                             <img src="/lg5-common/images/dummy/@img-card1.jpg" alt="카드뉴스 제목">
                                         </div>
                                         <div class="summary">
-                                            <span>2020.07.20</span>
-                                            <span class="view"><span class="blind">조회수</span>4,129</span>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li><span class="view"><span class="blind">조회수</span>4,129</span></li>  
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -172,8 +169,10 @@
                                             <img src="/lg5-common/images/dummy/@img-card2.jpg" alt="카드뉴스 제목">
                                         </div>
                                         <div class="summary">
-                                            <span>2020.07.20</span>
-                                            <span class="view"><span class="blind">조회수</span>4,129</span>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li><span class="view"><span class="blind">조회수</span>4,129</span></li>  
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -183,8 +182,10 @@
                                             <img src="/lg5-common/images/dummy/@img-card3.jpg" alt="카드뉴스 제목">
                                         </div>
                                         <div class="summary">
-                                            <span>2020.07.20</span>
-                                            <span class="view"><span class="blind">조회수</span>4,129</span>
+                                            <ul class="infos">
+                                                <li>2020.07.20</li>
+                                                <li><span class="view"><span class="blind">조회수</span>4,129</span></li>  
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -196,11 +197,14 @@
                     </div>
                     
                 </div>
-
             </div>
         </div>
              
         @@include('./common/footer.html')
     </div>    
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 

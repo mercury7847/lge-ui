@@ -4,18 +4,6 @@
 
 
 .KRC0010 {
-    width: 100%;
-    max-width: (1284px + 60px);
-    margin: 0 auto;
-    // padding-right: 30px;
-    // padding-left: 30px;
-    padding: 0 30px;
-
-    @include mobile {
-        max-width: 100%;
-        padding: 0 24px;
-    }
-
     .btn {
         display: inline-block;
         min-width:194px;
@@ -63,7 +51,9 @@
     }
     .visual-area {
         img {
-            max-width: 100%;
+            width:100%;
+            height:auto;
+            vertical-align:top;
         }
     }
     .content-block {

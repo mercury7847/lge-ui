@@ -1,0 +1,432 @@
+@charset "UTF-8";
+
+
+.care-plan {
+    .cont-wrap {
+        padding:0 0 120px;
+        background:#fff;
+    }
+
+    .prd-care-horizon {
+        display:table;
+        position:relative;
+        width:420px;
+        padding:16px 48px 16px 0;
+        table-layout:fixed;
+        background:#fff;
+        border:1px solid #ddd;
+        border-radius:4px;
+        overflow:hidden;
+        .flag-wrap {
+            position:absolute;
+            top:0;
+            left:0;
+            .flag {
+                height:20px;
+                line-height:16px;
+            }
+        }
+        .img-wrap {
+            display:table-cell;
+            width:120px;
+            vertical-align:top;
+            img {
+                display:block;
+                width:120px;
+                height:120px;
+                overflow:hidden;
+            }
+        }
+        .txt-wrap {
+            display:table-cell;
+            width:100%;
+            padding:8px 0;
+            font-size:16px;
+            line-height:24px;
+            vertical-align:top;
+            .tit {
+                max-height:48px;
+                font-weight:700;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                word-break:break-all;
+                -moz-line-clamp: 2;
+                -ms-line-clamp: 2;
+                -webkit-line-clamp: 2;
+            }
+            .code {
+                overflow:hidden;
+                text-overflow:ellipsis;
+                white-space:nowrap;
+            }
+            .etc {
+                padding-top:8px;
+            }
+        }
+        .btn-item {
+            position:absolute;
+            top:24px;
+            right:24px;
+            width: 16px;
+            height: 16px;
+            .btn-del {
+                position: relative;
+                width: 16px;
+                height: 16px;
+                &:before, &:after {
+                    position: absolute;
+                    top: calc( 50% - 8px);
+                    left: 50%;
+                    width: 1px;
+                    height: 16px;
+                    background-color: #222;
+                    content: '';
+                }
+                &:before {
+                    transform: rotate(-45deg);
+                }
+                &:after {
+                    transform: rotate(45deg);
+                }
+            }
+        }
+    }
+
+    .prd-care-vertical {
+        position:relative;
+        padding:0 24px 48px;
+        background:#fff;
+        border-radius:4px;
+        box-shadow: 0 3px 14px 0 rgba(0, 0, 0, 0.06);
+        overflow:hidden;
+        .chk-wrap {
+            position:absolute;
+            top:24px;
+            left:24px;
+            z-index:1;
+        }
+        .img-wrap {
+            text-align:center;
+            img {
+                display:inline-block;
+                width:226px;
+                height:226px;
+                overflow:hidden;
+            }
+        }
+        .txt-wrap {
+            padding-top:24px;
+            font-size:16px;
+            line-height:24px;
+            .tit {
+                max-height:48px;
+                font-weight:700;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                word-break:break-all;
+                -moz-line-clamp: 2;
+                -ms-line-clamp: 2;
+                -webkit-line-clamp: 2;
+            }
+            .code {
+                overflow:hidden;
+                text-overflow:ellipsis;
+                white-space:nowrap;
+            }
+        }
+        .info-wrap {
+            padding-top:48px;
+            dl {
+                display:table;
+                width:100%;
+                table-layout:fixed;
+                dt, dd {
+                    display:table-cell;
+                    vertical-align:middle;
+                }
+            }
+            .opt-info {
+                dl {
+                    padding-top:12px;
+                    &:first-child {
+                        padding-top:0;
+                    }
+                    dt {
+                        color:#616161;
+                        font-size:14px;
+                        line-height:20px;
+                    }
+                    dd {
+                        width:180px;
+                        &.color-opt {
+                            text-align:center;
+                        }
+                        .chk-wrap-colorchip {
+                            input {
+                                &+ label {
+                                    width:24px;
+                                    height:24px;
+                                    padding-left:6px;
+                                }
+                                &:checked + label:after {
+                                    border-color:#EC455A;
+                                }
+                            } 
+                        }
+                        .rdo-tab-wrap {
+                            display:table; 
+                            width:100%; 
+                            table-layout:fixed;
+                            > li {
+                                display:table-cell;
+                                vertical-align:middle;
+                                .rdo-wrap {
+                                    display:block; 
+                                    position:relative; 
+                                    height:28px; 
+                                    margin:0 -1px -1px 0;
+                                    input + label {
+                                        display:block;
+                                        width:100%;
+                                        height:28px;
+                                        padding-left:0;
+                                        background:#fff;
+                                        border:1px solid #ddd;
+                                        color:#8d8d8d;
+                                        font-size:14px;
+                                        line-height:26px;
+                                        text-align:center;
+                                        cursor:pointer;
+                                    }
+                                    input:checked + label {
+                                        position:absolute;
+                                        top:0;
+                                        left:0;
+                                        border:1px solid #EC455A;
+                                        color:#EC455A;
+                                        z-index:1;
+                                        &:before, &:after {
+                                            display:none;
+                                        }
+                                    }
+                                    input:not(:checked) + label {
+                                        padding-left:0;
+                                        &:before, &:after {
+                                            display:none;
+                                        }
+                                    }
+                                }
+                                &:first-child {
+                                    input + label {
+                                        border-radius:8px 0 0 8px;
+                                    }
+                                }
+                                &:last-child {
+                                    input + label{
+                                        border-radius:0 8px 8px 0;
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+            .price-info {
+                padding-top:24px;
+                dt {
+                    font-size:16px;
+                    line-height:24px;
+                }
+                dd {
+                    font-size:24px;
+                    line-height:32px;
+                    font-weight:700;
+                    text-align:right;
+                }
+            }
+        }
+    }
+
+    .slide-wrap {
+        .slide-content {
+            margin:0 -6px;
+            .conts-wrap {
+                margin:0 6px;
+            }
+        }
+        .slide-controls {
+            margin-top:0;
+            .btn-arrow {
+                width:auto;
+                height:auto;
+                background:none;
+                box-shadow:inherit;
+                &:before {
+                    width:12px;
+                    height:12px;
+                    margin-top:-6px;
+                    border-width:2px;
+                }
+                &.prev {
+                    left:-15px;
+                }
+                &.next {
+                    right:-15px;
+                }
+            }
+        }
+    }
+
+    .prd-contract-wrap {
+        width:1708px;
+        margin:0 auto;
+        padding:36px 0;
+        background:#f4f4f4;
+        .inner {
+            max-width:1284px;
+            margin:0 auto;
+            .login-empty {
+                position:relative;
+                .txt {
+                    display:inline-block;
+                    padding-right:505px;
+                    font-size:16px;
+                    line-height:24px;
+                    vertical-align:middle;
+                }
+                .btn {
+                    position:absolute;
+                    top:50%;
+                    right:0;
+                    background:transparent;
+                    -webkit-transform:translateY(-50%);
+                    transform:translateY(-50%);
+                }
+            }
+        }
+        .tit-wrap {
+            padding-bottom:16px;
+            font-size:0;
+            .tit {
+                display:inline-block;
+                font-size:16px;
+                line-height:24px;
+                font-weight:700;
+                vertical-align:middle;
+            }
+            .num {
+                display:inline-block;
+                padding-left:8px;
+                font-size:16px;
+                line-height:24px;
+                font-weight:700;
+                vertical-align:middle;
+            }
+        }
+    }
+
+    .care-solution-wrap {
+        max-width:1284px;
+        margin:56px auto 0;
+        .tabs-wrap {
+            &.border-type {
+                margin-top:16px;
+            }
+        }
+        .sort-select-wrap {
+            float:right;
+            margin:12px 0 16px;
+        }
+        .prd-list-wrap {
+            margin-top:36px;
+            .inner {
+                @include clearfix;
+                margin:0 -12px;
+                .item {
+                    float:left;
+                    width:calc((100% - 96px) / 4);
+                    margin:0 12px;
+                }
+            }
+        }
+    }
+
+    .prd-select-wrap {
+        position:fixed;
+        left:0;
+        right:0;
+        bottom:0;
+        width:100%;
+        background:#fff;
+        box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
+        z-index:110;
+        .inner {
+            @include clearfix;
+            max-width:1284px;
+            margin:0 auto;
+            padding:36px 0;
+            .tit-wrap {
+                padding-bottom:16px;
+                font-size:0;
+                .tit {
+                    display:inline-block;
+                    font-size:16px;
+                    line-height:24px;
+                    font-weight:700;
+                    vertical-align:middle;
+                }
+                .num {
+                    display:inline-block;
+                    padding-left:8px;
+                    font-size:16px;
+                    line-height:24px;
+                    font-weight:700;
+                    vertical-align:middle;
+                }
+            }
+            .slide-wrap {
+                float:left;
+                width:852px;
+            }
+            .total-info {
+                float:right;
+                width:calc(100% - 888px);
+                padding:24px 36px;
+                background:#f4f4f4;
+                border-radius:4px;
+                dl {
+                    display:table;
+                    width:100%;
+                    margin-top:12px;
+                    table-layout:fixed;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                    dt,dd {
+                        display:table-cell;
+                        vertical-align:middle;
+                    }
+                    dt {
+                        color:#616161;
+                        font-size:14px;
+                        line-height:20px;
+                    }
+                    dd {
+                        text-align:right;
+                        font-size:16px;
+                        line-height:24px;
+                        font-weight:700;
+                        &.sale {
+                            color:#e51346;
+                        }
+                    }
+                }
+                .btn {
+                    width:100%;
+                    margin-top:24px;
+                }
+            }
+        }
+    }
+}

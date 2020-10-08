@@ -4,16 +4,6 @@
 
 
 .KRC0028 {
-	width: 100%;
-	max-width: 1284px + 60px;
-	padding-right: 30px;
-	padding-left: 30px;
-
-	@include mobile {
-		max-width: 100%;
-		padding-right: 0;
-		padding-left: 0;
-	}
 
 	.square {
 		display: inline-block;
@@ -184,9 +174,14 @@
 		}
 	}
 
-	.component-inner {
+	.inner {
 		position: relative;
 		font-size: 0;
+	}
+	@include mobile {
+		.component-inner {
+			padding:0;
+		}
 	}
 	.square-partition {
 		display:inline-block;

@@ -1,4 +1,4 @@
-<div class="component-wrap full"><!-- [KR수정] .full class 추가 -->
+<div class="component-wrap">
         <!--
             ** 이미지가 왼쪽, 텍스트가 오른쪽인 경우의 마크업입니다. 
     
@@ -50,8 +50,7 @@
                             <!-- 1-1 video play button -->
                             <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-player="default" data-target="modal" data-link-area="image_layered_text-video_play_ad" data-link-name="{video title}" aria-describedby="title01">plays audio description video</a>
                             <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title01">
-                                <img data-pc-src="@@option-type.img.visual1" class="lazyload pc" alt="" aria-hidden="true"/>
-                                <img data-mobile-src="@@option-type.img.visual2" class="lazyload mobile" alt="" aria-hidden="true"/>
+                                <img data-pc-src="@@option-type.img.visual1" data-m-src="@@option-type.img.visual2" class="lazyload" alt="" aria-hidden="true"/><!-- [KR수정] img 수정 -->
                                 <p class="hidden pc">graphic description : </p>
                             </a>
                             <!-- // 1-1 video play button -->
@@ -85,8 +84,7 @@
                         @@if (visualType === "image") {
                         <!-- 1. image : img 타입인 경우 -->
                         <div class="visual-area image">
-                            <img data-pc-src="@@option-type.img.visual1" class="lazyload pc" alt="" />
-                            <img data-mobile-src="@@option-type.img.visual2" class="lazyload mobile" alt="" />
+                            <img data-pc-src="@@option-type.img.visual1" data-m-src="@@option-type.img.visual2" class="lazyload" alt="" /><!-- [KR수정] img 수정 -->
                             <p class="hidden pc">graphic description : </p>
                         </div>
                         <!-- // 1. image : img 타입인 경우 -->

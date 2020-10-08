@@ -22,21 +22,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .blind, legend, caption {position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;font-size:medium;line-height:normal;word-break:break-all}
 .ios_no_acc{-webkit-overflow-scrolling:auto;}
 
-::selection {
-  background:#101010;
-  color: #BDD61A;
-  text-shadow: none;
-}
-::-moz-selection {
-  background:#101010;
-  color: #BDD61A;
-  text-shadow: none;
-}
-::-webkit-selection {
-  background:#101010;
-  color: #BDD61A;
-  text-shadow: none;
-}
+// ::selection {
+//   background:#101010;
+//   color: #BDD61A;
+//   text-shadow: none;
+// }
+// ::-moz-selection {
+//   background:#101010;
+//   color: #BDD61A;
+//   text-shadow: none;
+// }
+// ::-webkit-selection {
+//   background:#101010;
+//   color: #BDD61A;
+//   text-shadow: none;
+// }
 
 /* form */
 input, select, textarea, button {

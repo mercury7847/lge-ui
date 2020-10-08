@@ -4,17 +4,6 @@
 
 
 .KRC0026 {
-    width: 100%;
-    max-width: (1284px + 60px);
-    margin: 0 auto;
-	padding-right: 30px;
-    padding-left: 30px;
-
-    @include mobile {
-        max-width: 100%;
-		padding-right: 24px;
-		padding-left: 24px;
-	}
 
 	$color: (lightgray, dark, black, white);
 	@each $bg in $color {
@@ -68,10 +57,11 @@
 	// component level
 	.inner {
 		position: relative;
-		max-width: 1284px;
+		max-width: (1284px + 60px);
 		margin: auto;
+		padding:0 30px;
 		@include mobile {
-			margin: 0 -24px;
+			padding:0;
 		}
 	}
 
@@ -85,6 +75,9 @@
 		* {
 			font-size: inherit;
 			line-height: inherit;
+		}
+		@include mobile {
+			padding:0 20px;
 		}
 	}
 
@@ -388,6 +381,7 @@
 	}
 
 	.indi-wrap {
+		display: none;
 		position: absolute;
 		bottom: 0;
 		padding: 0 0 30px;
@@ -554,6 +548,17 @@
 		opacity: 0;
 		height:auto;
 		transition:opacity 100ms;
+	}
+	.btn-arrow {
+		position: absolute;
+		@include calc(top,50%,172px);
+		z-index: 1;
+		&.prev {
+			left: 20px;
+		}
+		&.next {
+			right: 20px;
+		}
 	}
 }
 

@@ -4,12 +4,6 @@
 
 
 .KRC0009 {
-    max-width:(1284px + 60px);
-    margin:0 auto;
-    padding:0 30px;
-    @include mobile {
-        padding:0 24px;
-    }
     .hidden {position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;font-size:medium;line-height:normal;word-break:break-all}
     .unit-title h3 {
         color:#111;

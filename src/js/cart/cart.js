@@ -1,5 +1,8 @@
+/*
+<script src="/lg5-common/js/cart/cart.js"></script>
+*/
 (function() {
-    var firstLoad = true;
+    var cartProducts = [];
     var cartUrl = "";
     var removeUrl = "";
 
@@ -16,7 +19,7 @@
                 '<div class="quantity-wrap">' +
                     '<div class="select-quantity"><div class="inner">' +
                         '<button type="button" class="minus"><span class="blind">뺴기</span></button>' +
-                        '<input type="number" class="quantity" title="수량 입력" value="{{Quantity}}">' +
+                        '<input type="number" class="quantity" title="수량 입력" value="{{Quantity}}" readonly>' +
                         '<button type="button" class="plus"><span class="blind">더하기</span></button>' +
                     '</div></div>' +
                 '</div><div class="delivery-option">' +
@@ -42,24 +45,18 @@
                     '</div>' +
                 '</div>' +
                 '<div class="product-wish"><span class="chk-wish-wrap">' +
-                    '<input type="checkbox" id="favoritem{{index}}" name="favoritem" {{#if (favorite)}}checked{{/if}}>' +
-                    '<label for="favoritem{{index}}"><span class="blind">찜하기</span></label>' +
+                    '<input type="checkbox" id="wishitem{{index}}" name="wishitem" {{#if (wish)}}checked{{/if}}>' +
+                    '<label for="wishitem{{index}}"><span class="blind">찜하기</span></label>' +
                 '</span></div>' +
                 '<div class="item-delete"><button type="button" class="btn-delete"><span class="blind">상품 삭제</span></button></div>' +
                 '</div>';
 
     function noData(visible) {
-        /*
         if(visible) {
-            self.$mypage.find('.notice-list-wrap .nodata').show();
-            self.$mypage.find('p.notice-txt').hide();
-            self.$removeAll.attr("disabled", true);
+            $('div.no-data-wrap').show();
         } else {
-            self.$mypage.find('.notice-list-wrap .nodata').hide();
-            self.$removeAll.removeAttr("disabled");
-            self.$mypage.find('p.notice-txt').show();
+            $('div.no-data-wrap').hide();
         }
-        */
     }
 
     function requestChangeCartData() {
@@ -94,23 +91,70 @@
                 self.$memberNoAddressInfo.hide();
             }
             
-            var arr = data.cart instanceof Array ? data.cart : [];
+            cartProducts = data.cart instanceof Array ? data.cart : [];
 
             //var contentHtml = "";
 
-            if(arr.length > 0) {
+            self.$cartList.empty();
+            if(cartProducts.length > 0) {
                 noData(false);
-                self.$cartList.empty();
-                arr.forEach(function(item, index) {
+                cartProducts.forEach(function(item, index) {
                     item.index = "" + index;
-                    //item.totalOnly = (item.order == item.total);
-                    //console.log(item);
-                    var test = vcui.template(cartItemTemplate,item);
-                    self.$cartList.append(test);
-                    //console.log(test);
+                    self.$cartList.append(vcui.template(cartItemTemplate,item));
+                });
+
+                self.$productCheck = $('div.product-check span input');
+                self.$productCheck.on('change',function (e) {
+                    self.$productAllCheck.prop('checked', !self.$productCheck.is(':not(:checked)'));
+                    changeBlindLabelTextSiblingCheckedInput(this,'선택함','선택안함');
+                });
+
+                self.$productWish = $('div.product-wish span input');
+                self.$productWish.on('click',function (e) {
+                    changeBlindLabelTextSiblingCheckedInput(this,'찜한상품','찜하기');
+                    var index = self.$productWish.index(this);
+                    var product = cartProducts[index];
+                    var param = {'productId':product.productId, 'wish':$(this).is(':checked')};
+                    requestWishProduct(param);
+                });
+
+                self.$productQuantity = $('div.quantity-wrap div.select-quantity div input');
+                self.$selectQuantity = $('div.quantity-wrap div.select-quantity div button');
+                self.$selectQuantity.on('click',function (e) {
+                    var input = $(this).siblings('input');
+                    var quantity = changeQuantity = input.val();
+                    var index = 0;
+                    if($(this).hasClass('minus')) {
+                        --changeQuantity;
+                        if(changeQuantity < 1) {
+                            changeQuantity = 1;
+                        }
+                        index = $('div.quantity-wrap div.select-quantity div button.minus').index(this);
+                    } else if($(this).hasClass('plus')) {
+                        ++changeQuantity;
+                        index = $('div.quantity-wrap div.select-quantity div button.plus').index(this);
+                    }
+                    input.val(changeQuantity);
+                    if(quantity != changeQuantity) {
+                        //수량변화
+                        var product = cartProducts[index];
+                        var param = {'cart':[{'productId':product.productId, 'quantity':(""+changeQuantity)}]};
+                        requestChangeCart(param);
+                    }
+                });
+
+                self.$removeProduct = $('div.item-delete button');
+                self.$removeProduct.on('click',function (e) {
+                    var index = self.$removeProduct.index(this);
+                    var product = cartProducts[index];
+                    var param = {'cart':[{'productId':product.productId, 'quantity':'0'}]};
+                    requestChangeCart(param);
+                    $(this).parents('div.cart-item').remove();
+                    checkNoData();
                 });
             } else {
                 noData(true);
+                self.$productCheck = null;
             }
 
         }).fail(function(d){
@@ -119,8 +163,21 @@
     }
 
     //지울려고 하는 알람id는 array로 전달
-    function requestDeleteData(param) {
+    function requestWishProduct(param) {
+        console.log(param);
+    }
 
+    //카트 선택사항 변경
+    function requestChangeCart(param) {
+        console.log(param);
+    }
+
+    function changeBlindLabelTextSiblingCheckedInput(input, trueText, falseText) {
+        $(input).siblings('label').find('span').text($(input).is(':checked')?trueText:falseText);
+    }
+
+    function checkNoData() {
+        noData(self.$cartList.find('div.cart-item').length > 0 ? false : true);
     }
 
     $(window).ready(function() {
@@ -137,6 +194,15 @@
                 self.$memberNoAddressInfo = $('div.info-box div:nth-child(3)');
                 //
                 self.$cartList = $('div.cart-list');
+                //
+                self.$productAllCheck = $('div.cart-option div.chk-wrap input');
+                self.$productCheck = null;
+                self.$selectedProductRemove = $('div.cart-option div.btn-area button');
+                //
+                self.$productWish = null;
+                self.$productQuantity = null;
+                self.$selectQuantity = null;
+                self.$removeProduct = null;
 
                 this.bindEvents();
 
@@ -144,6 +210,28 @@
             },
 
             bindEvents: function() {
+                self.$productAllCheck.on('change',function (e) {
+                    self.$productCheck.prop('checked', self.$productAllCheck.is(':checked'));
+                    self.$productCheck.each(function (index, item) {
+                        changeBlindLabelTextSiblingCheckedInput(item,'선택함','선택안함');
+                    });
+                });
+
+                $('div.cart-option div.btn-area button').on('click',function (e) {
+                    var paramData = [];
+                    var checkedProduct = $('div.product-check span input:checked');
+                    checkedProduct.each(function (index, item) {
+                        var index = self.$productCheck.index(item);
+                        var product = cartProducts[index];
+                        console.log({'productId':product.productId, 'quantity':'0'});
+                        paramData.push({'productId':product.productId, 'quantity':'0'});
+                    });
+                    if(paramData.length > 0) {
+                        requestChangeCart({cart:paramData});
+                        checkedProduct.parents('div.cart-item').remove();
+                        checkNoData();
+                    }
+                });
             }
         };
 

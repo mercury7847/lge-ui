@@ -33,6 +33,9 @@
                 }
             }
         }
+        .al-left {
+            text-align:left;
+        }
     }
     .btm_info {
         margin-top: 24px;
@@ -61,6 +64,17 @@
             margin-top: 20px;
             font-size: 14px;
             line-height: 18px;
+        }
+    }
+    &.tb-row-bl {
+        table {
+            th,
+            td {
+                border-left:1px solid #d8d8d8;
+                &:first-child {
+                    border-left:none;
+                }
+            }
         }
     }
 }

@@ -4,16 +4,6 @@
 
 
 .KRC0020 {
-    width: 100%;
-    max-width: (1284px + 60px);
-    margin: 0 auto;
-    padding: 0 30px;
-
-    @include mobile {
-        max-width: 100%;
-        padding: 0 24px;
-    }
-
     .btn {
         display: inline-block;
         min-width:194px;
@@ -324,12 +314,12 @@
     }
 
     .disclaimer {
-        padding: 16px 0;
+        padding: 16px 24px;
         font-size: 14px;
         line-height: 20px;
         @include mobile {
-            padding-left: 24px;
-            padding-right: 24px;
+            padding-left: 20px;
+            padding-right: 20px;
         }
     }
 }
