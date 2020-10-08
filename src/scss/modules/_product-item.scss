@@ -5,6 +5,9 @@
         float: left;
         width: 33.333333%;
         padding: 0 6px 12px;
+        &:nth-child(3n+1) {
+            clear: left;
+        }
     }
     .item {
         position: relative;
@@ -123,11 +126,13 @@
                 font-weight: $font-weight-bold;
                 @include font-x-large;
             }
+            .product-price {
+                margin-left: 8px;
+            }
             .purchase-price {
                 position: relative;
-                margin: 0 4px 0 8px;
-                font-size: 14px;
-                line-height: 1.43;
+                margin-right: 4px;
+                @include font-small;
                 color: #616161;
                 &:after {
                     position: absolute;
@@ -140,9 +145,8 @@
                 }
             }
             .discount-rate {
-                font-size: 16px;
-                font-weight: bold;
-                line-height: 1.5;
+                font-weight: $font-weight-bold;
+                @include font-medium;
                 color: #ec455a;
             }
 

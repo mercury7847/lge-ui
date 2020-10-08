@@ -1,0 +1,378 @@
+.search-evt-list-wrap {
+    overflow:hidden;
+    max-width:(1284px + 80px);
+    margin:16px auto 0;
+    padding:0 40px;
+    @include mobile {
+        margin-top:12px;
+        padding:32px 20px 56px;
+        background:#fff;
+    }
+    .events {
+        font-size:0;
+        margin:-12px -6px 0;
+        @include mobile {
+            margin:-24px 0 0;
+        }
+        .lists {
+            display:inline-block;
+            position:relative;
+            width:calc(100% / 3);
+            margin-top:12px;
+            padding:0 6px;
+            vertical-align:top;
+            @include mobile {
+                display:block;
+                width:100%;
+                margin-top:24px;
+                padding:0;
+            }
+            .list-inner {
+                position:relative;
+                padding-bottom:76px;
+                border-radius:4px;
+                background:#fff;
+                overflow:hidden;
+                @include mobile {
+                    padding-bottom:20px;
+                    box-shadow:3px 4px 15px 0 rgba(#000, .12);
+                }
+                .thumb {
+                    display:block;
+                    position:relative;
+                    border-radius:4px;
+                    overflow:hidden;
+                    img {
+                        width:100%;
+                        height:auto;
+                        vertical-align:top;
+                    }
+                    > .flag-wrap {
+                        position:absolute;
+                        top:24px;
+                        left:24px;
+                        @include mobile {
+                            top:20px;
+                            left:20px;
+                        }
+                    }
+                }
+                .info {
+                    padding:24px;
+                    padding-bottom:0;
+                    @include mobile {
+                        padding:16px 20px 0;
+                    }
+                    .flag-wrap {
+                        margin-bottom:8px;
+                    }
+                    .tit {
+                        height:30px;
+                        color:#222;
+                        font-size:20px;
+                        line-height:30px;
+                        font-weight:700;
+                        overflow:hidden;
+                        text-overflow:ellipsis;
+                        white-space:nowrap;
+                        @include mobile {
+                            height:18px;
+                            font-size:14px;
+                            line-height:18px;
+                        }
+                    }
+                    .date {
+                        height:24px;
+                        color:#222;
+                        font-size:16px;
+                        line-height:24px;
+                        overflow:hidden;
+                        text-overflow:ellipsis;
+                        white-space:nowrap;
+                        @include mobile {
+                            height:16px;
+                            font-size:12px;
+                            line-height:16px;
+                        }
+                    }
+                }
+                .end-flag {
+                    position:absolute;
+                    top:0;
+                    right:0;
+                    width:60px;
+                    height:60px;
+                    padding:10px 0 10px 5px;
+                    border-radius:0 4px 0 4px;
+                    background-image:linear-gradient(#F04E3E, #EC455A);
+                    color:#fff;
+                    font-size:12px;
+                    letter-spacing:5px;
+                    line-height:20px;
+                    text-align:center;
+                    z-index:10;
+                    @include mobile {
+                        width:48px;
+                        height:48px;
+                        padding:8px 0 8px 4px;
+                        font-size:10px;
+                        line-height:16px;
+                        letter-spacing:4px;
+                    }
+                }
+            }
+            .btn {
+                position:absolute;
+                bottom:24px;
+                left:24px;
+                @include mobile {
+                    position:relative;
+                    bottom:0;
+                    left:0;
+                    margin-left:20px;
+                    margin-top:12px;
+                }
+            }
+        }
+    }
+}
+
+.story-list-wrap {
+    overflow:hidden;
+    max-width:(1284px + 80px);
+    margin:16px auto 0;
+    padding:0 40px;
+    @include mobile {
+        margin-top:12px;
+        padding: 0;
+        //padding:32px 0 56px;
+        //background:#fff;
+    }
+    .story {
+        width: 100%;
+        margin:-12px 0 0;
+        font-size: 0;
+        @include mobile {
+            margin:-24px 0 0;
+        }
+        .lists {
+            display:inline-block;
+            position:relative;
+            width:calc(100% / 2);
+            margin-top:12px;
+            //padding:0 6px;
+            &:nth-child(odd) {
+                padding-right: 6px;
+                @include mobile {
+                    padding-right: 0;
+                }
+            }
+            &:nth-child(even) {
+                padding-left: 6px;
+                @include mobile {
+                    padding-right: 0;
+                }
+            }
+            vertical-align:top;
+            @include mobile {
+                display:block;
+                width:100%;
+                margin-top:24px;
+                padding:0;
+            }
+            .list-inner {
+                position:relative;
+                border-radius:4px;
+                background:#fff;
+                overflow:hidden;
+                a {
+                    display: table;
+                    width: 100%;
+                    height: 280px;
+             
+                }
+                .thumb {
+                    display: table-cell;
+                    vertical-align: middle;
+                    height: 280px;
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+                }
+                .info {
+                    display: table-cell;
+                    position: relative;
+                    width: 270px;
+                    padding: 24px 24px 24px 22px;
+                    .flag-wrap {
+                        margin-bottom: 12px;
+                    }
+                    .tit {
+                        width: 100%;
+                        height: 60px;
+                        margin-bottom: 8px;
+                        -webkit-line-clamp:2;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        font-size: 20px;
+                        line-height: 30px;
+                        color: #222;
+                        font-weight: 700;
+                        em {
+                            color: #ec455a;
+                        }
+                    }
+                    .date {
+                        font-size: 16px;
+                        line-height: 24px;
+                        color: #222;
+                    }
+                    .hashtag {
+                        position: absolute;
+                        bottom: 24px;
+                        span {
+                            display: inline-block;
+                            color: #111;
+                            font-size: 16px;
+                            line-height: 24px;
+                            &.pink {
+                                color: #ec455a;
+                            }
+                        }
+                    }
+                }
+            }
+        } 
+    }
+    /*
+
+    .story {
+        font-size:0;
+        margin:-12px -6px 0;
+        @include mobile {
+            margin:-24px 0 0;
+        }
+        .lists {
+            display:inline-block;
+            position:relative;
+            width:calc(100% / 3);
+            margin-top:12px;
+            padding:0 6px;
+            vertical-align:top;
+            @include mobile {
+                display:block;
+                width:100%;
+                margin-top:24px;
+                padding:0;
+            }
+            .cont {
+                position:relative;
+                padding-bottom:76px;
+                border-radius:4px;
+                background:#fff;
+                overflow:hidden;
+                @include mobile {
+                    padding-bottom:20px;
+                    box-shadow:3px 4px 15px 0 rgba(#000, .12);
+                }
+                .thumb {
+                    display:block;
+                    position:relative;
+                    border-radius:4px;
+                    overflow:hidden;
+                    img {
+                        width:100%;
+                        height:auto;
+                        vertical-align:top;
+                    }
+                    > .flag-wrap {
+                        position:absolute;
+                        top:24px;
+                        left:24px;
+                        @include mobile {
+                            top:20px;
+                            left:20px;
+                        }
+                    }
+                }
+                .event-info {
+                    padding:24px;
+                    padding-bottom:0;
+                    @include mobile {
+                        padding:16px 20px 0;
+                    }
+                    .flag-wrap {
+                        margin-bottom:8px;
+                    }
+                    .tit {
+                        height:30px;
+                        color:#222;
+                        font-size:20px;
+                        line-height:30px;
+                        font-weight:700;
+                        overflow:hidden;
+                        text-overflow:ellipsis;
+                        white-space:nowrap;
+                        @include mobile {
+                            height:18px;
+                            font-size:14px;
+                            line-height:18px;
+                        }
+                    }
+                    .date {
+                        height:24px;
+                        color:#222;
+                        font-size:16px;
+                        line-height:24px;
+                        overflow:hidden;
+                        text-overflow:ellipsis;
+                        white-space:nowrap;
+                        @include mobile {
+                            height:16px;
+                            font-size:12px;
+                            line-height:16px;
+                        }
+                    }
+                }
+                .end-flag {
+                    position:absolute;
+                    top:0;
+                    right:0;
+                    width:60px;
+                    height:60px;
+                    padding:10px 0 10px 5px;
+                    border-radius:0 4px 0 4px;
+                    background-image:linear-gradient(#F04E3E, #EC455A);
+                    color:#fff;
+                    font-size:12px;
+                    letter-spacing:5px;
+                    line-height:20px;
+                    text-align:center;
+                    z-index:10;
+                    @include mobile {
+                        width:48px;
+                        height:48px;
+                        padding:8px 0 8px 4px;
+                        font-size:10px;
+                        line-height:16px;
+                        letter-spacing:4px;
+                    }
+                }
+            }
+            .btn {
+                position:absolute;
+                bottom:24px;
+                left:24px;
+                @include mobile {
+                    position:relative;
+                    bottom:0;
+                    left:0;
+                    margin-left:20px;
+                    margin-top:12px;
+                }
+            }
+        }
+    }
+    */
+}
