@@ -49,6 +49,15 @@
                         }
                     </a>
                 </div>
+                @@if (context.spec) {
+                <ul class="spec-info">
+                    <li>용량 : 840L</li>
+                    <li>전체크기(WxHxD) : 912 x 1,790 x 927 mm</li>
+                    <li>형태 : 노크온 매직스페이스</li>
+                    <li>패턴 :  미드나잇</li>
+                    <li><span class="care-option">케어십 가능</span></li>
+                </ul>
+                }
             </div>
             @@if (context.price) {
             <div class="price-area">
@@ -70,10 +79,21 @@
                 </div>
             </div>
             }
+            @@if (context.care) {
+            <div class="price-area">
+                <div class="total-price">
+                    <em class="blind">최대 혜택가격</em>
+                    <span class="price"><em>월</em> 32,900<em>원</em></span>
+                </div>
+                <span class="small-text">(3개월/1회 방문)</span>
+            </div>
+            }
+            @@if (context.hashtag) {
             <div class="hashtag-wrap">
                 <span class="hashtag">#여름가전</span>
                 <span class="hashtag">#가전</span>
             </div>
+            }
         </div>
     </div>
 </li>
