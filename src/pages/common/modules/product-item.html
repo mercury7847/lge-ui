@@ -88,6 +88,13 @@
                 <span class="small-text">(3개월/1회 방문)</span>
             </div>
             }
+            @@if (context.benefit) {
+            <div class="badge-benefit">
+                <span class="text">3%할인</span>
+                <span class="text">사은품</span>
+                <span class="text">캐시백</span>
+            </div>
+            }
             @@if (context.hashtag) {
             <div class="hashtag-wrap">
                 <span class="hashtag">#여름가전</span>
@@ -95,5 +102,26 @@
             </div>
             }
         </div>
+        @@if (context.wish) {
+        <div class="product-wish">
+            <span class="chk-wrap">
+                <input type="checkbox" id="@@wish.id" name="@@wish.name" @@wish.checked>
+                <label for="@@wish.id"><span class="blind">찜하기</span></label>
+            </span>
+        </div>
+        }
+        @@if (context.compare) {
+        <div class="product-compare">
+            <span class="chk-wrap">
+                <input type="checkbox" id="@@compare.id" name="@@compare.name" @@compare.checked>
+                <label for="@@compare.id"><span class="blind">비교하기</span></label>
+            </span>
+        </div>
+        }
+        @@if (context.button) {
+        <div class="product-button">
+            <a href="#n" class="btn">@@buttonName</a>
+        </div>
+        }
     </div>
 </li>

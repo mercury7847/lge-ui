@@ -38,7 +38,7 @@
         }
     }
     .cont-wrap {
-        padding: 0 40px 120px;
+        padding: 40px 40px 120px;
     }
 
     .main-wrap {
@@ -170,7 +170,7 @@
 }
 
 .search-input-layer {
-    //display: none;
+    display: none;
     position: absolute;
     top: 56px;
     right: -1px;
@@ -377,11 +377,12 @@
             }
         }
     }
+    .result-category {
+        margin-top: -40px;
+        padding: 20px 0 30px;
+    }
 }
 
-.result-category {
-    padding: 20px 0 40px;
-}
 
 .rounded-list {
     font-size: 0;
@@ -389,7 +390,7 @@
         display: inline-block;
         margin-bottom: 8px;
         margin-right: 8px;
-        padding: 8px 12px;
+        padding: 7px 12px;
         border-radius: 20px;
         border: 1px solid #ddd;
         background-color: #fff;
@@ -398,9 +399,11 @@
         }
     }
     .text {
+        display: block;
         @include font-medium;
     }
 }
 
 @import "SERF9001";
 @import "SERF9003";
+@import "SERF9009";
