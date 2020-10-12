@@ -30,16 +30,16 @@
                 }
             }
             .prod-info {
-                padding-right:40px;
-                min-height:116px;
-                .name {
-                    display:inline-block;
-                    max-height:48px;
-                    color:#222;
-                    font-size:16px;
-                    line-height:24px;
-                    font-weight:700;
-                    @include textEllipsisClamp(2);
+                min-height:108px;
+                dt {
+                    padding-right:40px;
+                    .name {
+                        display:inline-block;
+                        color:#222;
+                        font-size:16px;
+                        line-height:24px;
+                        font-weight:700;
+                    }
                 }
                 .detail {
                     font-size:0;
@@ -93,11 +93,16 @@
                             line-height:20px;
                             text-decoration:line-through;
                         }
+                        &.msg {
+                            color:#F04E3E;
+                            font-size:14px;
+                            line-height:20px;
+                        }
                     }
                 }
             }
             .btn-wrap {
-                margin-top:0;
+                margin-top:8px;
                 text-align:right;
                 .chk-wish-wrap {
                     vertical-align:middle;
