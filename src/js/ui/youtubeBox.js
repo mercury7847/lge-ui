@@ -55,18 +55,33 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             $(self.$videoLayer).find(".close-video").on('click', function(e){
                 e.preventDefault();
 
-                self._removeVideoLayer();
+                self._removeVideoLayer(e);
             });
 
             if(isModal) $('body').addClass('modal-open').append(self.$videoLayer);
             else self.$el.append(self.$videoLayer);
+
+            var baseVideos = self.$el.find("div.video-asset");
+            if(baseVideos.length > 1) {
+                self.$baseVideo = $(baseVideos[0]).detach();
+                self.baseIsModal = isModal;
+            }
         },
 
-        _removeVideoLayer: function(){
+        _removeVideoLayer: function(e){
             var self = this;
 
-            $(self.$videoLayer).find(".close-video").off('click');
-            $(self.$videoLayer).remove();
+            if(self.$baseVideo) {
+                if(self.baseIsModal) $('body').addClass('modal-open').append(self.$baseVideo);
+                else self.$el.append(self.$baseVideo);
+                self.$baseVideo = null;
+            }
+
+            var videoLayer = $(e.currentTarget).parent('div');
+            $(e.currentTarget).off('click');
+            videoLayer.remove();
+            //$(self.$videoLayer).find(".close-video").off('click');
+            //$(self.$videoLayer).remove();
             self.$videoLayer = null;
 
             $('body').removeClass('modal-open');

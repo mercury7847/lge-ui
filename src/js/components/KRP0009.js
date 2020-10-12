@@ -377,7 +377,8 @@ $(function () {
                 var isCompare = vcui.isEmpty(storageCompare);
                 if(!isCompare){
                     for(var i in storageCompare[lgkorUI.COMPARE_ID]){
-                        var name = "compare-" + storageCompare[lgkorUI.COMPARE_ID][i];
+                        var name = "compare-" + storageCompare[lgkorUI.COMPARE_ID][i]['id'];
+                        console.log(name)
                         $('.product-items-wrap .items-list li .product-compare input[name=' + name + ']').prop('checked', true);
                     }
                 }
@@ -393,10 +394,17 @@ $(function () {
                     var productID = contents.find('.product-info .sku').text();
                     var image = compare.siblings('.product-image');
                     var productImg = image.find('.slide-content .slide-conts.on a img').attr("src");
-                    console.log(item)
+                    var productAlt = image.find('.slide-content .slide-conts.on a img').attr("alt");
 
+                    var compareObj = {
+                        id: id,
+                        productName: productName,
+                        productID: productID,
+                        productImg: productImg,
+                        productAlt: productAlt
+                    }
 
-                    var isAdd = lgkorUI.addCompareProd(id);
+                    var isAdd = lgkorUI.addCompareProd(compareObj);
                     if(!isAdd) $(ipt).prop('checked', false);
                 } else{
                     lgkorUI.removeCompareProd(id);
