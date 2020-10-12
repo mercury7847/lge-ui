@@ -1,0 +1,30 @@
+<div class="bdcard-lists ui_flexible_height">
+    <ul>
+        @@for ( var i=0; i < list.length; i++ ) {
+        <li class="lists">
+            <div class="ui_flexible_box">
+                <div class="card ui_flexible_cont">
+                    <a href="#n" class="thumb"><img src="`+list[i].img+`" alt="`+list[i].name+`"></a>
+                    <dl class="prod-info">
+                        <dt><a href="#n" class="name">`+list[i].name+`</a></dt>
+                        <dd class="detail">
+                            `+list[i].option+`
+                        </dd>
+                        <dd class="price">
+                            `+list[i].price+`
+                        </dd>
+                    </dl>
+                    <div class="btn-wrap">
+                        <span class="chk-wish-wrap">
+                            <input type="checkbox" id="wish-chk`+[i]+`" name="wish-chk`+[i]+`" `+list[i].checked+`>
+                            <label for="wish-chk`+[i]+`"><span class="blind">찜하기</span></label>
+                        </span>
+                        <button class="btn bd-pink btn-small"><span>장바구니</span></button>
+                    </div>
+                    <button class="btn-del"><span class="blind">삭제하기</span></button>
+                </div>
+            </div>
+        </li>
+        }
+    </ul>
+</div>
