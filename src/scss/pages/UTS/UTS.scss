@@ -8,6 +8,34 @@
     .tabs-wrap {
         max-width: 1284px;
         margin: 0 auto 10px;
+        &.bg-type {
+            margin-top: 18px;
+            padding: 10px 20px 14px;
+            background: #fff;
+            .tabs > li {
+                a {
+                    margin: 0 12px;
+                    padding: 6px 0;
+                    border-radius: 0;
+                }
+                &.on {
+                    a {
+                        position: relative;
+                        background: none;
+                        &:after {
+                            content: '';
+                            display: inline-block;
+                            position: absolute;
+                            left: 0;
+                            bottom: 0;
+                            width: 100%;
+                            height: 3px;
+                            background: #222;
+                        }
+                    }
+                }
+            }
+        }
     }
     .cont-wrap {
         padding: 0 40px 120px;
