@@ -10,7 +10,7 @@
     .prd-care-horizon {
         display:table;
         position:relative;
-        width:420px;
+        width:100%;
         padding:16px 48px 16px 0;
         table-layout:fixed;
         background:#fff;
@@ -44,23 +44,27 @@
             font-size:16px;
             line-height:24px;
             vertical-align:top;
-            .tit {
-                max-height:48px;
-                font-weight:700;
-                overflow:hidden;
-                text-overflow:ellipsis;
-                word-break:break-all;
-                -moz-line-clamp: 2;
-                -ms-line-clamp: 2;
-                -webkit-line-clamp: 2;
-            }
-            .code {
-                overflow:hidden;
-                text-overflow:ellipsis;
-                white-space:nowrap;
+            .tit-info {
+                height:72px;
+                .tit {
+                    max-height:48px;
+                    font-weight:700;
+                    overflow:hidden;
+                    text-overflow:ellipsis;
+                    word-break:break-all;
+                    -moz-line-clamp: 2;
+                    -ms-line-clamp: 2;
+                    -webkit-line-clamp: 2;
+                }
+                .code {
+                    overflow:hidden;
+                    text-overflow:ellipsis;
+                    white-space:nowrap;
+                }
             }
             .etc {
                 padding-top:8px;
+                word-break:break-all;
             }
         }
         .btn-item {
@@ -118,6 +122,7 @@
             padding-top:24px;
             font-size:16px;
             line-height:24px;
+            height:72px;
             .tit {
                 max-height:48px;
                 font-weight:700;
@@ -152,26 +157,54 @@
                         padding-top:0;
                     }
                     dt {
+                        width:75px;
                         color:#616161;
                         font-size:14px;
                         line-height:20px;
                     }
                     dd {
-                        width:180px;
+                        width:100%;
+                        // width:180px;
                         &.color-opt {
                             text-align:center;
-                        }
-                        .chk-wrap-colorchip {
-                            input {
-                                &+ label {
-                                    width:24px;
-                                    height:24px;
-                                    padding-left:6px;
+                            .slide-wrap {
+                                margin:0 30px;
+                                .slide-content {
+                                    text-align:center;
+                                    .slide-track {
+                                        display:inline-block;
+                                    }
                                 }
-                                &:checked + label:after {
-                                    border-color:#EC455A;
+                                .slide-controls {
+                                    .btn-arrow {
+                                        &.prev {
+                                            left:-20px;
+                                        } 
+                                        &.next {
+                                            right:-20px;
+                                        }
+
+                                        &:before {
+                                            width:10px;
+                                            height:10px;
+                                            margin-top:-5px;
+                                            border-width:2px;
+                                        }
+                                    }
                                 }
-                            } 
+                            }
+                            .chk-wrap-colorchip {
+                                input {
+                                    &+ label {
+                                        width:24px;
+                                        height:24px;
+                                        padding-left:0;
+                                    }
+                                    &:checked + label:after {
+                                        border-color:#EC455A;
+                                    }
+                                } 
+                            }
                         }
                         .rdo-tab-wrap {
                             display:table; 
@@ -235,10 +268,12 @@
             .price-info {
                 padding-top:24px;
                 dt {
+                    width:50px;
                     font-size:16px;
                     line-height:24px;
                 }
                 dd {
+                    width:100%;
                     font-size:24px;
                     line-height:32px;
                     font-weight:700;
@@ -279,9 +314,9 @@
     }
 
     .prd-contract-wrap {
-        width:1708px;
+        max-width:1708px + 60px;
         margin:0 auto;
-        padding:36px 0;
+        padding:36px 30px;
         background:#f4f4f4;
         .inner {
             max-width:1284px;
@@ -290,7 +325,6 @@
                 position:relative;
                 .txt {
                     display:inline-block;
-                    padding-right:505px;
                     font-size:16px;
                     line-height:24px;
                     vertical-align:middle;
@@ -327,26 +361,39 @@
     }
 
     .care-solution-wrap {
-        max-width:1284px;
-        margin:56px auto 0;
-        .tabs-wrap {
-            &.border-type {
-                margin-top:16px;
+        margin-top:40px;
+        .fixed-tab-wrap {
+            margin-top:24px;
+            border-bottom:1px solid #ddd;
+            .inner {
+                position:relative;
+                max-width:1284px;
+                margin:0 auto;
+                .sort-select-wrap {
+                    position:absolute;
+                    top:0;
+                    right:0;
+                }
             }
         }
-        .sort-select-wrap {
-            float:right;
-            margin:12px 0 16px;
-        }
+        
         .prd-list-wrap {
-            margin-top:36px;
+            max-width:1284px + 60px;
+            margin:46px auto 0;
+            padding:0 30px;
             .inner {
                 @include clearfix;
-                margin:0 -12px;
+                margin:-12px -12px;
                 .item {
                     float:left;
                     width:calc((100% - 96px) / 4);
-                    margin:0 12px;
+                    margin:12px 12px;
+                    @media screen and (max-width:1120px) {
+                        width:calc((100% - 72px) / 3);
+                    }
+                    @media screen and (max-width:840px) {
+                        width:calc((100% - 48px) / 2);
+                    }
                 }
             }
         }
@@ -363,11 +410,12 @@
         z-index:110;
         .inner {
             @include clearfix;
-            max-width:1284px;
+            position:relative;
+            max-width:1284px + 60px;
             margin:0 auto;
-            padding:36px 0;
+            padding:0 30px 36px;
             .tit-wrap {
-                padding-bottom:16px;
+                padding:32px 0 16px;
                 font-size:0;
                 .tit {
                     display:inline-block;
@@ -387,14 +435,22 @@
             }
             .slide-wrap {
                 float:left;
-                width:852px;
+                width:66.35%;
+                // width:852px;
+                @include tablet {
+                    width:50%;
+                }
             }
             .total-info {
                 float:right;
-                width:calc(100% - 888px);
+                width:calc(100% - 69.16%);
+                // width:calc(100% - 888px);
                 padding:24px 36px;
                 background:#f4f4f4;
                 border-radius:4px;
+                @include tablet {
+                    width:calc(100% - 55%);
+                }
                 dl {
                     display:table;
                     width:100%;
@@ -425,6 +481,37 @@
                 .btn {
                     width:100%;
                     margin-top:24px;
+                }
+            }
+            .btn-close {
+                position:absolute;
+                top:32px;
+                right:40px;
+                width:12px;
+                height:12px;
+                &:after {
+                    content:'';
+                    display:block;
+                    position:absolute;
+                    top:0;
+                    right:0;
+                    width:12px;
+                    height:12px;
+                    border-bottom:2px solid #111;
+                    border-left:2px solid #111;
+                    transform:rotate(-45deg);
+                }
+            }
+        }
+        &.close {
+            height:88px;
+            .tit-wrap {
+                padding:32px 0;
+            }
+            .btn-close { 
+                top:40px;
+                &:after {
+                    transform:rotate(135deg);
                 }
             }
         }

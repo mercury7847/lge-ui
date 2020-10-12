@@ -109,23 +109,6 @@
             margin-bottom: 20px;
             font-weight: $font-weight-bold;
         }
-        .list {
-            li {
-                display: inline-block;
-                margin-bottom: 8px;
-                margin-right: 8px;
-                padding: 8px 12px;
-                border-radius: 20px;
-                border: 1px solid #ddd;
-                background-color: #fff;
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
-            .text {
-                @include font-medium;
-            }
-        }
     }
 }
 
@@ -165,7 +148,7 @@
             @include font-medium;
         }
         .result-category {
-            padding: 0 0 24px;
+            padding-bottom: 24px;
         }
     }
 }

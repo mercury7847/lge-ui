@@ -4,7 +4,12 @@
                 <div class="list-inner">
                     <a href="#n">
                         <span class="thumb">
-                            <img src="/lg5-common/images/@@img" alt="" aria-hidden="true">
+                            @@if (context.img) {
+                                <img src="/lg5-common/images/@@img" alt="" aria-hidden="true">
+                            }
+                            @@if (context.videoBtn) {
+                                <span class="see-video">영상 보기</span>
+                            }
                             @@if (context.flagN1) {
                                 @@include('./common/modules/flags.html', {
                                     bgType:true,
@@ -34,24 +39,54 @@
                                     ]
                                 })
                             }
-                            <p class="tit"><span class="blind">@@title-hd</span>@@title</p>
+                            @@if (context.title) {
+                                <p class="tit"><span class="blind">@@title-hd</span>@@title</p>
+                            } 
+                            @@if (context.title2) {
+                                <p class="tit2"><span class="blind">@@title-hd</span>@@title2</p>
+                            } 
+                            
+                            @@if (context.pdNum) {
+                            <p class="pd-num"><span class="blind">@@pdNum-hd</span>@@pdNum</p>
+                            }
+                            @@if (context.date) {
                             <p class="date"><span class="blind">@@date-hd</span>@@date</p>
+                            }
                             @@if (context.hashtag) {
-                                <div class="hashtag">
-                                    @@for (var i=0; i < context.hashtag.length; i++) {
-                                        <span class="`+hashtag[i].on+`">`+hashtag[i].tag+`</span>
-                                    }
-                                </div>
+                            <div class="hashtag">
+                                @@for (var i=0; i < context.hashtag.length; i++) {
+                                    <span class="`+hashtag[i].on+`">`+hashtag[i].tag+`</span>
+                                }
+                            </div>
                             }
                             @@if (context.copy) {
                             <p class="copy">@@copyText</p>
                             }
-                            @@if (context.btn) {
-                            <div class="btn-area">
-                                <a href="#" class="btn bd-gray"><span>@@btnName</span></a>
-                            </div>
+                            @@if (context.step) {
+                                @@if ( !context.twoLine ) {
+                                <div class="step">
+                                }
+                                @@if ( context.twoLine ) {
+                                <div class="step twoLine">
+                                }    
+                                    @@for (var i=0; i < context.step.length; i++) {
+                                    <ol>
+                                        <li>`+step[i].txt1+`</li>
+                                        <li>`+step[i].txt2+`</li>
+                                    </ol>
+                                }
+                                </div>    
                             }
+                            @@if (context.desc) {
+                                <p class="desc">@@desc</p>
+                            }
+                            
                         </div>
                     </a>
+                    @@if (context.btn) {
+                    <div class="btn-area btm">
+                        <a href="#" class="btn bd-gray"><span>@@btnName</span></a>
+                    </div>
+                    }
                 </div>
             </li>
