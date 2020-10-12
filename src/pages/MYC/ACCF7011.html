@@ -69,5 +69,29 @@
         
         @@include('./common/footer.html')
     </div>
+
+    <!-- 장바구니 alert -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop",
+        "msgOnly" : true,
+        "msg" : "선택한 제품을 장바구니에<br>담으시겠습니까?",
+        "twobtn" : true
+    })
+    <!-- // 장바구니 alert -->
+
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop2",
+        "msgOnly" : true,
+        "msg" : "찜하기 되었습니다."
+    })
+
+    <!-- 최근본제품 삭제 alert -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop3",
+        "msgOnly" : true,
+        "msg" : "해당 제품을<br>삭제하시겠습니까?",
+        "twobtn" : true
+    })
+    <!-- // 최근본제품 삭제 alert -->
 </body>
 </html>
