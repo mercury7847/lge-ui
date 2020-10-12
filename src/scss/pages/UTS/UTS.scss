@@ -107,10 +107,17 @@
     }
 
     .related-keyword {
+        position: relative;
+        margin-top: 16px;
+        padding-left: 82px;
         .title {
+            position: absolute;
+            top: 0;
+            left: 0;
             margin-right: 16px;
             font-weight: $font-weight-bold;
             @include font-medium;
+            color: #ec455a;
         }
 
         .keyword-list {
@@ -119,10 +126,13 @@
             li {
                 display: inline-block;
                 margin-left: 20px;
-
                 a {
                     font-weight: 500;
                     @include font-small;
+                    &:focus,
+                    &:hover {
+                        @include text-underline(1px,#222);
+                    }
                 }
             }
         }
