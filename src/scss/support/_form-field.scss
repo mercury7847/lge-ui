@@ -98,6 +98,19 @@
         .rdo-wrap {
             padding:0 32px;
         }
+        @include mobile {
+            width: 100%;
+            &.type-A {
+                .rdo-wrap {
+                    width: 100%;
+                    padding-right: 0;
+                    margin-top: 16px;
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
     }
 }
 
