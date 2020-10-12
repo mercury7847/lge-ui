@@ -15,7 +15,7 @@ $(window).ready(function(){
     });
 
     function indiTop() {
-        var indi = $(".indi-wrap");
+        var indi = $('.KRC0021').find(".indi-wrap");
         indi.each(function(){
             var visualArea = $(this).parent(".items-group").find('.visual-wrap');
             var iH = visualArea.outerHeight();
