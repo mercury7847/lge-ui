@@ -267,18 +267,20 @@
 
         }
 
-        .btn-visit,
-        .btn-find {
-            margin-top:8px;
+        .service-link {
+            margin-top:30px;
             text-align:center;
+            li {
+                margin-top: 8px;
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
             .btn-text {
                 text-decoration:underline;
             }
             @media screen and (max-width: 1780px) {
                 display:none;
-            }
-            &:not(.btn-find) {
-                margin-top: 30px;
             }
         }
 

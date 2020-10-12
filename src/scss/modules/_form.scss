@@ -163,6 +163,7 @@
                 word-break:keep-all;
                 white-space:nowrap;
                 vertical-align:middle;
+                background:#fff;
                 z-index:5;
                 &:#{$p}-child {
                     @if ( $p == last ) {

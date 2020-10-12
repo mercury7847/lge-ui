@@ -1,0 +1,38 @@
+<!-- components/partials/KRC0041.html -->
+
+<div class="component-wrap">
+	<!--
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+	-->
+	<section class="component KRC0041">
+		<div class="component-inner">
+			<h2 class="title">유사 제품 추천</h2>
+			<ul class="compare-list">
+				@@for ( var i = 0; i < items.length; i++ ) {
+				<li>
+					<div class="item">
+						<div class="product-image">
+							<img data-pc-src="`+items[i].visualImagePC+`" data-m-src="`+items[i].visualImageMobile+`" class="lazyload" alt="" aria-hidden="true">
+						</div>
+						<div class="product-contents">
+							<strong class="product-name"><span class="blind">모델명</span>`+items[i].modelDisplayName+`</strong>
+							<p class="product-sku"><span class="blind">모델넘버</span>`+items[i].modelNumber+`</p>
+							<p class="product-price"><span class="blind">가격</span>`+items[i].modelPrice+`원</p>
+							<div class="review-info">
+								<div class="star `+items[i].review+`"><span class="blind">`+items[i].reviewText+`</span></div>
+								<div class="average-rating"><span class="blind">평점</span>`+items[i].average+`</div>
+								<div class="review-count"><span class="blind">리뷰 수</span>(`+items[i].reviewCount+`개)</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				}
+			</ul>
+			<div class="bottom-area">
+				<button class="btn bd-black btn-small"><span>스펙 비교하기</span></button>
+			</div>
+		</div>
+	</section>
+</div>

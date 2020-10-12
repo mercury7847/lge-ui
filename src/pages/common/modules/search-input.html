@@ -1,10 +1,11 @@
-<div class="search-top">
+<div class="input-keyword">
     <div class="sch-input-wrap">
         <div class="input-sch">
-            <input type="text" class="txt" placeholder="검색어를 입력해주세요. (예:제품명, 모델명)" value="노크온 매직스페이스" title="검색어 입력">
+            <input type="text" class="txt" placeholder="검색어를 입력해주세요. (예:제품명, 모델명)" value="@@value" title="검색어 입력">
             <button type="button" class="btn-search"><span class="blind">검색</span></button>
         </div>
     </div>
+    @@if(context.related) {
     <div class="related-keyword">
         <span class="title">연관검색어</span>
         <ul class="keyword-list">
@@ -16,4 +17,5 @@
             <li><a href="#">홈라이프</a></li>
         </ul>
     </div>
+    }
 </div>

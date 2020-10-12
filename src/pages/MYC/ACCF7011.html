@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "최근 본 제품"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect3" : [
+                                { "on": "", "page": "찜한 제품" },
+                                { "on": "on", "page": "최근 본 제품" },
+                                { "on": "", "page": "구독" },
+                                { "on": "", "page": "관심 매장" },
+                                { "on": "", "page": "관심 스토리" },
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <div class="section">
+                                <div class="cont-box">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

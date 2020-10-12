@@ -116,7 +116,8 @@
 		top: 62px;		
 		width:36px;
 		height:36px;
-		background-size:36px 36px;
+		border-radius: 18px;
+		background-color: #fff;
 		white-space:nowrap;
 		text-indent:200%;
 		border:0;
@@ -126,10 +127,10 @@
 		&:after {
 			display: inline-block;
 			position: absolute;
-			top: 3px;
-			@include calc(left, 50%, 2px);
+			@include calc(top,50%,12px);
+			@include calc(left,50%,1px);
 			width: 2px;
-			height: 30px;
+			height: 24px;
 			background-color: #111;
 			content: '';
 		}
