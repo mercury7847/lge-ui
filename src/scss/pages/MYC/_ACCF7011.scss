@@ -1,0 +1,128 @@
+.bdcard-lists {
+    overflow:hidden;
+    > ul {
+        margin:-16px -8px 0;
+        font-size:0;
+        .lists {
+            display:inline-block;
+            width:50%;
+            margin-top:16px;
+            padding:0 16px;
+        }
+        .card {
+            position:relative;
+            padding:24px 24px 24px 148px;
+            border:1px solid #ddd;
+            border-radius:8px;
+            vertical-align:top;
+            .thumb {
+                position:absolute;
+                top:24px;
+                left:24px;
+                width:108px;
+                height:108px;
+                border-radius:8px;
+                overflow:hidden;
+                img {
+                    width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+            }
+            .prod-info {
+                min-height:108px;
+                dt {
+                    padding-right:40px;
+                    .name {
+                        display:inline-block;
+                        color:#222;
+                        font-size:16px;
+                        line-height:24px;
+                        font-weight:700;
+                    }
+                }
+                .detail {
+                    font-size:0;
+                    p {
+                        display:inline-block;
+                        position:relative;
+                        margin-right:8px;
+                        padding-right:9px;
+                        color:#616161;
+                        font-size:14px;
+                        line-height:20px;
+                        vertical-align:top;
+                        &::after {
+                            content:' ';
+                            position:absolute;
+                            top:50%;
+                            right:0;
+                            width:1px;
+                            height:10px;
+                            margin-top:-5px;
+                            background:#616161;
+                        }
+                        &:last-child {
+                            margin-right:0;
+                            padding-right:0;
+                            &::after {
+                                display:none;
+                            }
+                        }
+                    }
+                }
+                .price {
+                    margin-top:16px;
+                    font-size:0;
+                    p {
+                        display:inline-block;
+                        margin-left:4px;
+                        vertical-align:bottom;
+                        &:first-child {
+                            margin-left:0;
+                        }
+                        &.sale {
+                            color:#222;
+                            font-size:16px;
+                            line-height:24px;
+                            font-weight:700;
+                        }
+                        &.original {
+                            color:#616161;
+                            font-size:14px;
+                            line-height:20px;
+                            text-decoration:line-through;
+                        }
+                        &.msg {
+                            color:#F04E3E;
+                            font-size:14px;
+                            line-height:20px;
+                        }
+                    }
+                }
+            }
+            .btn-wrap {
+                margin-top:8px;
+                text-align:right;
+                .chk-wish-wrap {
+                    vertical-align:middle;
+                }
+                .btn {
+                    min-width:84px;
+                    padding-left:15px;
+                    padding-right:15px;
+                    margin-left:12px;
+                    vertical-align:middle;
+                }
+            }
+            .btn-del {
+                position:absolute;
+                top:24px;
+                right:24px;
+                width:24px;
+                height:24px;
+                background:url('/lg5-common/images/icons/icon-delete2.svg') center no-repeat;
+            }
+        }
+    }
+}

@@ -127,6 +127,52 @@
                 }
             }
         }
+
+        .lnb-wrap {
+            max-width:1284px;
+            margin:0 auto;
+            @include clearfix;
+            .lnb {
+                float:left;
+                width:194px;
+                padding:32px 24px;
+                border-radius:4px;
+                background:#fff;
+                .mypage-lnb {
+                    > li {
+                        margin-top:40px;
+                        &:first-child {
+                            margin-top:0;
+                        }
+
+                    }
+                    a {
+                        display:inline-block;
+                        color:#222;
+                        font-size:16px;
+                        line-height:24px;
+                        &.my-dep1 {
+                            font-weight:700;
+                        }
+                        &.on {
+                            text-decoration:underline;
+                        }
+                    }
+                    .myp-sub {
+                        margin-top:12px;
+                        li {
+                            margin-top:4px;
+                            &:first-child {
+                                margin-top:0;
+                            }
+                        }
+                    }
+                }
+            }
+            .lnb-contents {
+                margin-left:(194px + 24px);
+            }
+        }
         
         .btn-wrap {
             max-width:1066px;

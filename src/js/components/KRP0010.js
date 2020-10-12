@@ -8,6 +8,7 @@ $(window).ready(function(){
     var product_price = 0;
     var pdp_visual_list = [];
     var pinchZoom = null;
+    var isDragging = false;
     
     var KRP0010 = {
         init: function() {
@@ -32,6 +33,7 @@ $(window).ready(function(){
             self.$rentalButton = self.$detailInfo.find('div.rental');
             self.$displayProduct = self.$detailInfo.find('div.display-product');
 
+            //PDP모달
             self.$popPdpVisual = $('#pop-pdp-visual');
             self.$popPdpVisualImage = self.$popPdpVisual.find('#modal_detail_target li.image');
             self.$popPdpVisualVideo = self.$popPdpVisual.find('#modal_detail_target li.video');
@@ -44,18 +46,28 @@ $(window).ready(function(){
                 self.$popPdpVisual.find('div.zoom-btn-area a.zoom-plus').on('click', function(){
                      var zoom = pinchZoom.getZoomFactor();
                      if(Math.round(zoom) >= 4) zoom = 0;
-                     pinchZoom.runZoom(zoom+1); 
+                     pinchZoom.runZoom(zoom+1, true); 
                 });
 
                 self.$popPdpVisual.find('div.zoom-btn-area a.zoom-minus').on('click', function(){
                      var zoom = pinchZoom.getZoomFactor();
-                     pinchZoom.runZoom(zoom-1); 
+                     pinchZoom.runZoom(zoom-1, true); 
                 });
 
-                self.$popPdpVisualImage.on('click', function(e){
-                    self.$popPdpVisual.find('div.zoom-btn-area a.zoom-plus').trigger('click');
+                self.$popPdpVisualImage.mousedown(function() {
+                    isDragging = false;
+                })
+                .mousemove(function() {
+                    isDragging = true;
+                 })
+                .mouseup(function() {
+                    var wasDragging = isDragging;
+                    isDragging = false;
+                    if (!wasDragging) {
+                        self.$popPdpVisual.find('div.zoom-btn-area a.zoom-plus').trigger('click');
+                    }
                 });
-
+                
                 pinchZoom.update(true);
             });
             
@@ -601,7 +613,6 @@ $(window).ready(function(){
                             '<div class="payment-info"><div class="price">{{type_price}}원<span>{{type_text}}</span></div>' +
                             '<ul class="info-list">{{#each item in type_option}}<li>{{item.text}}</li>{{/each}}</ul></div>' + 
                             '<a href="#" class="btn bd-pink btn-small">{{type_link_text}}</a></div>';
-                        //item.type_price = vcui.number.addComma(item.type_price);
                         contentHtml = vcui.template(template,item);
                         break;
                     case "product-benefit-none":
@@ -733,24 +744,6 @@ $(window).ready(function(){
         openVisualModal: function(index) {
             KRP0010.clickModalThumbnail(index);
             $('#pop-pdp-visual').vcModal();
-            /*
-            vcui.require(['ui/pinchZoom'], function (PinchZoom) {
-                pinchZoom = new PinchZoom('.zoom-area');
-
-                self.$popPdpVisual.find('div.zoom-btn-area a.zoom-plus').on('click', function(){
-                     var zoom = pinch.getZoomFactor();
-                     if(zoom >= 3.5) zoom = 0;
-                     pinchZoom.runZoom(zoom+1); 
-                });
-
-                self.$popPdpVisual.find('div.zoom-btn-area a.zoom-minus').on('click', function(){
-                     var zoom = pinch.getZoomFactor();
-                     pinchZoom.runZoom(zoom-1); 
-                });
-
-                pinchZoom.update(true);
-            });
-            */
         },
 
         clickModalThumbnail: function(index) {
@@ -763,13 +756,20 @@ $(window).ready(function(){
 
             var item = pdp_visual_list[index];
 
-            pinchZoom.runZoom(1); 
+            pinchZoom.runZoom(1, false);
+            self.$popPdpVisualVideo.find('iframe').attr('src', ''); 
             switch(item.type) {
                 case "image":
                     self.$popPdpVisualImage.find('div.zoom-area img').attr({'data-pc-src':item.image_url,'data-m-src':item.image_url});
                     self.$popPdpVisualImage.vcImageSwitch('reload').show();
+                    self.$popPdpVisualImage.show();
+                    self.$popPdpVisualVideo.hide();
                     break;
                 case "video":
+                    self.$popPdpVisualVideo.find('iframe').attr('src', item.video_url); 
+                    self.$popPdpVisualImage.hide();
+                    self.$popPdpVisualVideo.show();
+                    break;
                 case "mp4":
                 case "wemm":
                     break;

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "최근 본 제품"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect3" : [
+                                { "on": "on", "page": "찜한 제품" },
+                                { "on": "", "page": "최근 본 제품" },
+                                { "on": "", "page": "구독" },
+                                { "on": "", "page": "관심 매장" },
+                                { "on": "", "page": "관심 스토리" },
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <div class="section">
+                                <div class="cont-box">
+                                    @@include('./common/modules/bdcard-list.html', {
+                                        "list" : [
+                                            {
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "name" : "LG 디오스 상냉장하냉동",
+                                                "checked" : "checked",
+                                                "option" : "<p><span class='blind'>상품번호</span>OLED55BXPUA</p><p><span class='blind'>상품옵션</span>버건디레드/870L</p>",
+                                                "price" : "<p class='sale'><span class='blind'>할인가</span>1,759,000원</p><p class='original'><span class='blind'>할인 전 판매가</span>1,871,270원</p>"
+                                            },
+                                            {
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "name" : "LG 퓨리케어 360˚공기청정기 무빙휠 2단용",
+                                                "checked" : "checked",
+                                                "option" : "<p><span class='blind'>상품번호</span>OLED55BXPUA</p><p><span class='blind'>상품옵션</span>버건디레드/870L</p>",
+                                                "price" : "<p class='msg'>일시 판매중지</p>"
+                                            }
+                                        ]
+                                    })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>
