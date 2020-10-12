@@ -1,0 +1,68 @@
+<div class="lnb">
+    <ul class="mypage-lnb">
+        <li>
+            <a href="#n" class="my-dep1">쇼핑 관리</a>
+            <ul class="myp-sub">
+                <li><a href="#n" class="my-dep2">주문/배송 조회</a></li>
+                <li><a href="#n" class="my-dep2">쿠폰</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#n" class="my-dep1">케어솔루션</a>
+            <ul class="myp-sub">
+                <li><a href="#n" class="my-dep2">계약현황</a></li>
+                <li><a href="#n" class="my-dep2">납부내역</a></li>
+                <li><a href="#n" class="my-dep2">방문알리미</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#n" class="my-dep1">관심 목록</a>
+            @@if ( context.sect3 ) {
+            <ul class="myp-sub">
+                @@for ( var i=0; i < sect3.length; i++ ) {
+                <li><a href="#n" class="my-dep2 `+sect3[i].on+`">`+sect3[i].page+`</a></li>
+                }
+            </ul>    
+            }
+            @@if ( !context.sect3 ) {
+            <ul class="myp-sub">
+                <li><a href="#n" class="my-dep2">찜한 제품</a></li>
+                <li><a href="#n" class="my-dep2">최근 본 제품</a></li>
+                <li><a href="#n" class="my-dep2">구독</a></li>
+                <li><a href="#n" class="my-dep2">관심 매장</a></li>
+                <li><a href="#n" class="my-dep2">관심 스토리</a></li>
+            </ul>
+            }
+        </li>
+        <li>
+            <a href="#n" class="my-dep1">보유 제품 등록</a>
+        </li>
+        <li>
+            <a href="#n" class="my-dep1">멤버십 관리</a>
+            <ul class="myp-sub">
+                <li><a href="#n" class="my-dep2">멤버십 가입 정보</a></li>
+                <li><a href="#n" class="my-dep2">멤버십 포인트 조회</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#n" class="my-dep1">활동 내역</a>
+            <ul class="myp-sub">
+                <li><a href="#n" class="my-dep2">리뷰관리</a></li>
+                <li><a href="#n" class="my-dep2">나의 글 보기</a></li>
+                <li><a href="#n" class="my-dep2">문의/예약 결과</a></li>
+                <li><a href="#n" class="my-dep2">조회</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#n" class="my-dep1">회원 정보</a>
+            <ul class="myp-sub">
+                <li><a href="#n" class="my-dep2">개인정보 수정</a></li>
+                <li><a href="#n" class="my-dep2">배송지 주소 관리</a></li>
+                <li><a href="#n" class="my-dep2">회원 탈퇴</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#n" class="my-dep1">알림</a>
+        </li>
+    </ul>
+</div>

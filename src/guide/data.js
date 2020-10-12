@@ -29,11 +29,11 @@ var res = {
 	"Front" : {
 		"Component" : {
 			"KRC0001_Selective offering (Home)_Dynamic" : ["/html/components/KRC0001.html","","진행중"],
-			"KRC0002_Selective offering" : ["/html/components/KRC0002.html","","진행중"],
+			//"KRC0002_Selective offering" : ["/html/components/KRC0002.html","","진행중"],
 			"KRC0003_Vertical Selector" : ["/html/components/KRC0003.html","","검수완료"],
-			"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
-			"KRC0009_Exciting Promotion Offers" : ["/html/components/KRC0009.html","","검수완료"],
-			"KRC0010_Recommended Promotions" : ["/html/components/KRC0010.html","","검수완료"],
+			//"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
+			//"KRC0009_Exciting Promotion Offers" : ["/html/components/KRC0009.html","","검수완료"],
+			//"KRC0010_Recommended Promotions" : ["/html/components/KRC0010.html","","검수완료"],
 			"KRC0011_PDP_FAQ_Static" : ["/html/components/KRC0011.html","","진행중"],
 			"KRC0012_Image - Text(folding feature)_Static" : ["/html/components/KRC0012.html","","진행중"],
 			"KRC0013_Side Image - text" : ["/html/components/KRC0013.html","","검수완료"],
@@ -61,10 +61,11 @@ var res = {
 			"KRC0038_Text" : ["/html/components/KRC0038.html","","검수완료"],
 			"KRC0039_Side Text - CTA_Static" : ["/html/components/KRC0039.html","","검수완료"],
 			"KRC0040_Image (1 to 3 - CTA Overlay)_Static" : ["/html/components/KRC0040.html","","검수완료"],
+			"KRC0041_PDP - Spec compare" : ["/html/components/KRC0041.html","","진행중"],
 			"KRC0043_Gallery - 10Pickers_Static" : ["/html/components/KRC0043.html","","검수완료"],
 			"KRC0044_Hero Image (Thin)" : ["/html/components/KRC0044.html","","검수완료"],
 			"KRC0045_Article List" : ["/html/components/KRC0045.html","","검수완료"],
-			"KRC0046_Story & Products module_Dynamic" : ["/html/components/KRC0046.html","","진행중"],
+			//"KRC0046_Story & Products module_Dynamic" : ["/html/components/KRC0046.html","","진행중"],
 			"KRP0001_GNB - B2C" : ["/html/components/KRP0001.html","","검수완료"],
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","검수완료"],
@@ -76,6 +77,7 @@ var res = {
 			"KRP0016_PDP Support - B2C" : ["/html/components/KRP0016.html","","검수완료"],
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"],
 			"KRP0018_Sticky Compare" : ["/html/components/KRP0018.html","",""],
+			"KRP0019_Social Share_Dynamic" : ["/html/components/KRP0019.html","","진행중"],
 			"KRP0020_Sitemap_Dynamic" : ["/html/components/KRP0020.html","","검수완료"],
 			"KRP0021_Category module for store home" : ["/html/components/KRP0021.html","","진행중"],
 			"KRP0025_Event list for home" : ["/html/components/KRP0025.html","","진행중"],
@@ -106,6 +108,10 @@ var res = {
 				}
 			},
 			"마이페이지(MYC)" : {
+				"관심목록" : {
+					"최근 본 제품" : ["/html/MYC/ACCF7011.html","","진행중"],
+					"찜한 제품" : ["/html/MYC/ACCF7013.html","","진행중"]
+				},
 				"활동 내역" : {
 					"구독" : ["/html/MYC/ACCF7017.html","","진행중"],
 					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],

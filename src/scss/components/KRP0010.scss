@@ -1813,18 +1813,80 @@
             .default {
                 position: relative;
                 max-width: 848px;
-                max-height: 848px;
+                height: 848px;
                 //width: 100%;
                 //height: 100%;
                 //padding: 0 17%;
-                //padding: 0 218px;
+                margin: 0 218px;
                 text-align: center;
                 overflow: hidden;
+                @include mobile {
+                    height: auto;
+                    margin: 0;
+                }
                 li {
-                    float: left; 
+                    display: table;
+                    float: left;
+                    height: 100%;
+                    vertical-align: middle;
+                    > div {
+                        display: table-cell;
+                        vertical-align: middle;
+                    }
+                    .animation-area video {
+                        height: auto;
+                    }
+                    .youtube-box {
+                        img {
+                            width: 100%;
+                        }
+                        .see-video.acc-video-content {
+                            position: absolute;
+                            top: 20px;
+                            right: 20px;
+                            width: 36px;
+                            height: 36px;
+                            overflow: hidden;
+                            z-index: 9;
+                            text-indent: 2000%;
+                            white-space: nowrap;
+                            &:before {
+                                content: '';
+                                display: inline-block;
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                left: inherit;
+                                width: 36px;
+                                height: 36px;
+                                margin: 0;
+                                background: url(/lg5-common/images/btn-AD-on.svg);
+                                background-size: 36px 36px;
+                                border-radius: inherit; 
+                            }
+                        }
+                        button.see-video {
+                            border-radius: 50% 50%;
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            margin: auto;
+                            width: 64px;
+                            height: 64px;
+                            background: url(/lg5-common/images/btn-video-play.svg) no-repeat 0 0;
+                            background-size: 100% 100%;
+                            color: transparent;
+                            text-indent: -9999px;
+                            overflow: hidden;
+                            border: none;
+                        } 
+                    }
                 }
                 @include mobile {
                     order: 1;
+                    width: 100%;
                     min-height: 360px;
                     padding: 48px 0 0 0;
                     &:after {

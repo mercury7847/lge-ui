@@ -65,9 +65,9 @@
 			width:100%;
 			max-width:1344px;
 			margin:0 auto;
-			padding:60px 30px 48px;
+			padding:0 30px 48px;
 			@include mobile {
-				padding:60px 20px 48px;
+				padding:0 20px 48px;
 			}
 			.text-info-area {
 				max-width: 1066px;
@@ -176,6 +176,7 @@
 					}
 				}
 			}
+			&+.text-info-set {padding-top:60px;}
 		}
 
 	}

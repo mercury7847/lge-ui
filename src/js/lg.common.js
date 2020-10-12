@@ -134,6 +134,8 @@
     $.holdReady(true);
     
     global['lgkorUI'] = {
+        COMPARE_KEY: "prod_compare",
+        COMPARE_ID: "compare_list",
         init: function(){
             this._preloadComponents();
             this._addTopButtonCtrl();
@@ -318,7 +320,7 @@
             $('body').find('.ui_flexible_height').each(function(idx, item){
                 var maxheight = 0;
                 $(item).find('> li').each(function(cdx, child){
-                    var flexiblebox = $(child).find('.ui_flexible_box > dl');
+                    var flexiblebox = $(child).find('.ui_flexible_box .ui_flexible_cont');
                     maxheight = Math.max(maxheight, flexiblebox.outerHeight(true));
                 });
 
@@ -338,15 +340,48 @@
             $('body').vcSpinner('stop');
         },
 
-        getCompareData: function(){
+        addCompareProd: function(data){
+            var self = this;
 
+            var compareStorage = self.getStorage(self.COMPARE_KEY);
+            if(compareStorage[self.COMPARE_ID] == undefined){
+                compareStorage[self.COMPARE_ID] = [data];
+            } else{
+                var leng = compareStorage[self.COMPARE_ID].length;
+                var limitLeng = 3;
+                if(leng < limitLeng){
+                    compareStorage[self.COMPARE_ID].push(data);
+                } else{
+                    alert("담기 불가!!");
+                    return false;
+                }
+            }
+            self.setStorage(self.COMPARE_KEY, compareStorage);
+            console.log(self.getStorage(self.COMPARE_KEY));     
+
+            return true;
+        },
+
+        removeCompareProd: function(id){
+            var self = this;
+
+            var compareStorage = self.getStorage(self.COMPARE_KEY);
+            compareStorage[self.COMPARE_ID] = vcui.array.filter(compareStorage[self.COMPARE_ID], function(item){
+                return item['id'] != id;
+            });
+
+            self.setStorage(self.COMPARE_KEY, compareStorage);
+            console.log(self.getStorage(self.COMPARE_KEY));     
         },
 
         setStorage: function(key, value){
             var storage = sessionStorage.getItem(key);
             var storageData = storage? JSON.parse(storage) : {};        
             storageData = Object.assign(storageData, value);
-            sessionStorage.setItem(key, JSON.stringify(storageData));        
+            sessionStorage.setItem(key, JSON.stringify(storageData));
+            
+            $(window).trigger("changeStorageData");
+
             return storageData;
         },
 
@@ -361,16 +396,21 @@
         },
 
         removeStorage: function(key, name){    
+            var returnValue;
             if(name){
                 var storage = sessionStorage.getItem(key);
                 var storageData = storage? JSON.parse(storage) : {}; 						
                 delete storageData[name];						
                 sessionStorage.setItem(key, JSON.stringify(storageData)); 
-                return storageData;
+                returnValue =  storageData;
             }else{
                 sessionStorage.removeItem(key);
-                return null;
-            }						
+                returnValue =  null;
+            }
+            
+            $(window).trigger("changeStorageData");
+
+            return returnValue;
         }
     }
     

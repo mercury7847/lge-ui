@@ -2,7 +2,20 @@
 	<!--
 		1. 여백
 		.zero-top : 상단여백 없음
-		.zero-btm : 하단여백 없음
+        .zero-btm : 하단여백 없음
+        
+        2. 리스트 템플릿
+        <div class="item-inner">
+            <span class="img-area">
+                <img src="/lg5-common/images/KRP0018/@img-pc.jpg" alt="">
+                <p class="hidden">graphic description : </p>
+            </span>
+            <div class="item-text">
+                <p class="product-name">LG DIOS 노크온 매직스페이스</p>
+                <p class="modal-name">S831MC841AC</p>
+            </div>
+        </div>
+        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
 	-->
 	<div class="component KRP0018">
        
@@ -11,51 +24,25 @@
             <div class="compare-title">
                 <h3 class="title-text">제품 비교하기</h3>
                 <div class="right-cont">
-                    <div class="count">3/3</div>
+                    <div class="count">0/3</div>
                     <!--  비교하기 내용 펼침 상태 : open class 추가 
                      비교하기 내용 닫힘 상태 : close class 추가 
                     -->
-                    <span class="more-arrow close"><span class="blind">제품 비교하기 펼침</span></span>
+                    <button type="" class="more-arrow close"><span class="blind">제품 비교하기 펼침</span></button>
                 </div>
             </div>
             <div class="compare-content toggle-cont" style="display: block">
                 <div class="compare-list">
                     <ul class="list-inner">
-                        <li class="item">
-                            <div class="item-inner">
-                               <span class="img-area">
-                                    <img data-pc-src="/lg5-common/images/KRP0018/@img-pc.jpg" data-m-src="/lg5-common/images/KRP0018/@img-m.jpg" alt="">
-                                    <p class="hidden pc">graphic description : </p>
-                                    <p class="hidden mobile">graphic description : </p>
-                               </span>
-                               <div class="item-text">
-                                   <p class="product-name">LG DIOS 노크온 매직스페이스</p>
-                                   <p class="modal-name">S831MC841AC</p>
-                               </div>
-                            </div>
-                            <button type="button" class="btn-close"><span class="blind">닫기</span></button>
-                        </li>
-                        <li class="item">
-                            <div class="item-inner">
-                                <span class="img-area">
-                                    <img data-pc-src="/lg5-common/images/KRP0018/@img-pc.jpg" data-m-src="/lg5-common/images/KRP0018/@img-m.jpg" alt="">
-                               </span>
-                               <div class="item-text">
-                                    <p class="product-name">LG DIOS 노크온 매직스페이스</p>
-                                    <p class="modal-name">S831MC841AC</p>
-                               </div>
-                            </div>
-                            <button type="button" class="btn-close"><span class="blind">닫기</span></button>
-                        </li>
-                        <li class="item">
-                            
-                        </li>
+                        <li class="item"></li>
+                        <li class="item"></li>
+                        <li class="item"></li>
                     </ul>
                 </div>
                 <div class="btn-group">
                     <!-- button disabled : disabled class 추가 -->
-                    <button class="btn bd-pink text"><span>초기화하기</span></button>
-                    <button class="btn pink"><span>비교하기</span></button>
+                    <button class="btn bd-pink text btn-init"><span>초기화하기</span></button>
+                    <button class="btn pink btn-compare"><span>비교하기</span></button>
                 </div>
             </div>
         </div>

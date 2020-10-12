@@ -20,9 +20,7 @@
             }
         }
     }
-    .search-word {
-        color: #ec455a;
-    }
+
     .item {
         position: relative;
         padding: 0 56px 36px;
@@ -126,6 +124,22 @@
                     }
                 }
             }
+            .spec-info {
+                @include pc {
+                    height: 100px;
+                }
+                margin-top: 12px;
+                font-size: 14px;
+                line-height: 20px;
+                color: #616161;
+                li {
+                    @include textClipClamp(1);
+                }
+                .care-option {
+                    font-weight: 500;
+                    color: #222;
+                }
+            }
         }
         .price-area {
             margin-top: 24px;
@@ -170,11 +184,69 @@
                 @include font-small;
             }
         }
+        .badge-benefit {
+            clear: both;
+            font-size: 0;
+            .text {
+                display: inline-block;
+                margin-right: 8px;
+                font-size: 14px;
+                line-height: 20px;
+                color: #222;
+            }
+        }
         .hashtag-wrap {
             margin-top: 60px;
             .hashtag {
                 @include font-small;
             }
+        }
+
+        .product-button {
+            //@include pc {
+            //    position: absolute;
+            //    right: 47px;
+            //    bottom: 36px;
+            //    left: 47px;
+            //
+            //}
+            margin-top: 27px;
+            .btn {
+                width: 100%;
+                min-width: auto;
+                border: 1px solid #979797;
+            }
+        }
+        .product-wish {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            input {
+                & + label {
+                    &:before {
+                        border: 0;
+                        border-radius: 0;
+                        background: url("/lg5-common/images/icons/icon-heart-off.svg") no-repeat 0 0;
+                        background-size: 24px 24px;
+                    }
+                    &:after {
+                        display: none;
+                    }
+                }
+                &:checked + label {
+                    &:before {
+                        background-image: url("/lg5-common/images/icons/icon-heart-on.svg");
+                    }
+                    &:after {
+                        border-color:#fff;
+                    }
+                }
+            }
+        }
+        .product-compare {
+            position: absolute;
+            top: 24px;
+            right: 64px;
         }
     }
 }

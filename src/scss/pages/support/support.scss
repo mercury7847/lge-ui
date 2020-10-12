@@ -9,8 +9,10 @@
 @import "../../support/board-view";
 @import "../../support/form-field";
 @import "../../support/modal";
+@import "../../support/table";
+@import "../../support/loading-bar";
+@import "../../support/sns";
 @import "../../support/select-category";
-
 
 /* 삭제 예정 */
 .dummy {
@@ -32,63 +34,10 @@
 .err-msg {
     display:none;
 }
-
+/* //삭제 예정 */
 
 .support {
     background:#f4f4f4;
-
-    /* table */
-    .tbl {
-        width:100%;
-        border-top:1px solid #ddd;
-        &.scroll-x {
-            @include mobile {
-                width:auto;
-                max-width:755px;
-            }
-        }
-        &-list {
-            width:100%;
-            border-collapse:collapse;
-            border-spacing:0;
-            th, td {
-                padding:16px 24px;
-                font-weight:400;
-                text-align:left;
-                border-bottom:1px solid #ddd;
-                // border-left:1px solid #ddd;
-                // &:first-child {
-                //     border-left:0;
-                // }
-            }
-            th {
-                color:#616161;
-                font-size:14px;
-                line-height:20px;
-                background-color:#f4f4f4;
-            }
-            td {
-                color:#222;
-                line-height:24px;
-            }
-            @include mobile {
-                th, td {
-                    padding:12px 8px;
-                    font-size:14px;
-                }
-            }
-        }
-        &-vertical {
-            th, td {
-                // text-align:center;
-            }
-        }
-        &-horizon {
-            th, td {
-                text-align:left;
-            }
-        }
-    }
 
     /* text list */
     .dot-list {
@@ -202,42 +151,6 @@
             padding-top: 22px;
             &.no-border {
                 margin-top: 10px;
-            }
-        }
-    }
-
-    .sns-box {
-        @include clearfix;
-        .sns {
-            float:left;
-            width:32px;
-            height:32px;
-            background-repeat:no-repeat;
-            background-position:center;
-            background-size:100%;
-            margin-left:8px;
-            &:first-child {
-                margin-left:0;
-            }
-            &.icon {
-                &-kakaotalk {
-                    background-image:url(/lg5-common/images/icons/icon-sns-kakaotalk.svg);
-                }
-                &-facebook {
-                    background-image:url(/lg5-common/images/icons/icon-sns-facebook.svg);
-                }
-                &-twitter {
-                    background-image:url(/lg5-common/images/icons/icon-sns-twiter.svg);
-                }
-                &-url {
-                    background-image:url(/lg5-common/images/icons/icon-sns-url.svg);
-                }
-            }
-        }
-        @include mobile {
-            .sns {
-                width:40px;
-                height:40px;
             }
         }
     }
@@ -454,12 +367,6 @@
         }
     }
 
-    .btn-text {
-        &.underline {
-            text-decoration: underline;
-        }
-    }
-
     .forms {
         position: relative;
         .input-wrap {
@@ -509,6 +416,22 @@
 
     .popup-wrap {
         .pop-conts {
+            margin-right: 8px;
+            padding-right: 48px;
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+            &::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+            &::-webkit-scrollbar-thumb {
+                border-radius: 4px;
+                background-color: #ccc;
+            }
+            &::-webkit-scrollbar-button {
+                width: 0;
+                height: 0;
+            }
             .modal-gray-box {
                 border-radius: 4px;
                 background-color: #f4f4f4;
@@ -523,6 +446,45 @@
                     .tit {
                         font-size: inherit;
                     }
+                }
+                &.type-A {
+                    padding: 16px 40px;
+                    color: #616161;
+                    border-radius: 8px;
+                    @include clearfix;
+                    .text {
+                        float: left;
+                    }
+                    [class^="btn"] {
+                        color: #212121;
+                        font-size: 14px;
+                        float: right;
+                        line-height: 1;
+                    }
+                }
+                @include mobile {
+                    &.type-A {
+                        padding: 16px 20px;
+                        .text {
+                            width: 156px;
+                        }
+                    }
+                }
+            }
+            .modal-line-box {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 16px 11px 24px 16px;
+                &-privacy {
+                    height: 100px;
+                    font-size: 14px;
+                    color: #616161;
+                    margin-top: 12px;
+                    margin-left: 22px;
+                    line-height: 1.43;
+                }
+                @include mobile {
+                    padding: 16px 16px 20px 16px;
                 }
             }
             .text-box {
@@ -539,6 +501,9 @@
             }
             &-section {
                 margin-top: 32px;
+                &.type-A {
+                    margin-top: 64px;
+                }
                 &.top-border {
                     padding-top: 32px;
                     margin-top: 28px;
@@ -547,9 +512,22 @@
                 &:first-child {
                     margin-top: 0;
                 }
+                @include mobile {
+                    &.type-A {
+                        margin-top: 56px;
+                    }
+                }
             }
             .tbl {
                 margin-top: 16px;
+            }
+            @include mobile {
+                margin-right: 4px;
+                padding-right: 16px;
+                height: calc(100vh - 135px);
+                &.no-footer {
+                    height: calc(100vh - 75px);
+                }
             }
         }
         &.type-A {
@@ -567,7 +545,7 @@
             margin-top: 0;
         }
         @include mobile {
-            max-width: calc(100% - 48px);
+            // max-width: calc(100% - 48px);
             .pop-conts {
                 .modal-gray-box {
                     padding: 40px 20px;
@@ -581,6 +559,45 @@
                         }
                     }
                 }
+            }
+        }
+    }
+
+    .star-rating {
+        &-select {
+        }
+        .br-widget {
+            height: 28px;
+            white-space: nowrap;
+            a {
+                text-decoration: none;
+                height: 24px;
+                width: 24px;
+                float: left;
+                font-size: 23px;
+                margin-right: 5px;
+                &::after {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    background: url(/lg5-common/images/star-rating-off.svg) no-repeat center;
+                    background-size: 100%;
+                    display: block;
+                }
+                &.br-selected,
+                &.br-active {
+                    &::after {
+                        background-image: url(/lg5-common/images/star-rating-on.svg);
+                    }
+                }
+            }
+            .br-current-rating {
+                float: left;
+                display: block;
+                color: #222;
+                font-size: 16px;
+                line-height: 1.5;
+                margin-left: 8px;
             }
         }
     }

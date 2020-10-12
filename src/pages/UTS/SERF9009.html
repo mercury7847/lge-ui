@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTS/UTS"]
+    })
+<body>
+    <div class="wrap">
+<!--        include('./common/header.html')-->
+
+        <div class="container">
+            <!-- 통합검색 -->
+            <div class="contents search">
+                <!-- 검색 영역 -->
+                @@include('./common/modules/search-input.html', {
+                    "value" : "xlql"
+                })
+                <!-- // 검색 영역 -->
+                <!-- 검색 결과 영역 -->
+                <div class="search-not-result">
+                    <div class="no-data">
+                        <p>
+                            <span><em>&ldquo;XLQL&rdquo;</em>에 대한 검색 결과가 없습니다</span>
+                            다시 한번 확인해주세요.
+                        </p>
+                    </div>
+                </div>
+                <div class="cont-wrap">
+                    <div class="search-result-wrap">
+                        <div class="result-list-wrap">
+                            <div class="list-head">
+                                <h2 class="title">이런 제품 어떠세요?</h2>
+                            </div>
+                            <div class="list-wrap">
+                                <ul class="product-items">
+                                    @@loop('./common/modules/product-item.html', [
+                                        {
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
+                                            "spec" : true,
+                                            "price" : true,
+                                            "benefit" : true,
+                                            "wish" : true,
+                                            "wish" : {
+                                                "id" : "chk01",
+                                                "name" : "chk01",
+                                                "checked" : "checked"
+                                            },
+                                            "compare" : true,
+                                            "compare" : {
+                                                "id" : "chk02",
+                                                "name" : "chk02",
+                                                "checked" : "checked"
+                                            },
+                                            "button" : true,
+                                            "buttonName" : "장바구니 담기"
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "hashtag" : true
+                                        }, {
+                                            "search" : true,
+                                            "badgeType" : "large",
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "hashtag" : true
+                                        }, {
+                                            "search" : true,
+                                            "badgeType" : "large",
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
+                                            "price" : true,
+                                            "hashtag" : true
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
+                                            "price" : true,
+                                            "hashtag" : true
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
+                                            "price" : true,
+                                            "hashtag" : true
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
+                                            "price" : true,
+                                            "hashtag" : true
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
+                                            "price" : true,
+                                            "hashtag" : true
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
+                                            "price" : true,
+                                            "hashtag" : true
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // 검색 결과 영역 -->
+            </div>
+            <!-- // 통합검색 -->
+        </div>
+
+<!--        include('./common/footer.html')-->
+    </div>
+</body>
+</html>
