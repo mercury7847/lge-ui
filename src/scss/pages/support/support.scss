@@ -39,20 +39,6 @@
 .support {
     background:#f4f4f4;
 
-    .tag {
-        display:inline-block;
-        padding:3px 8px;
-        color:#ec455a;
-        font-size:12px;
-        font-weight:500;
-        border-radius:4px;
-        border:1px solid #ec455a;
-        &.gray {
-            color:#616161;
-            border-color:#616161;
-        }
-    }
-
     /* text list */
     .dot-list {
         &.top-border {
