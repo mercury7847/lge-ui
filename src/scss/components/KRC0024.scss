@@ -144,6 +144,7 @@
         right: 0;
         bottom: 0;
         left: 0;
+        z-index: 2;
         padding: 125px 0;
         //padding: 56px 0;
         .text-area {
@@ -163,6 +164,10 @@
                 }
             }
         }
+    }
+
+    .video-asset {
+        z-index: 2;
     }
 
     .text-block {

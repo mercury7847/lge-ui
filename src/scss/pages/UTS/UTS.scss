@@ -8,9 +8,37 @@
     .tabs-wrap {
         max-width: 1284px;
         margin: 0 auto 10px;
+        &.bg-type {
+            margin-top: 18px;
+            padding: 10px 20px 14px;
+            background: #fff;
+            .tabs > li {
+                a {
+                    margin: 0 12px;
+                    padding: 6px 0;
+                    border-radius: 0;
+                }
+                &.on {
+                    a {
+                        position: relative;
+                        background: none;
+                        &:after {
+                            content: '';
+                            display: inline-block;
+                            position: absolute;
+                            left: 0;
+                            bottom: 0;
+                            width: 100%;
+                            height: 3px;
+                            background: #222;
+                        }
+                    }
+                }
+            }
+        }
     }
     .cont-wrap {
-        padding: 0 40px 120px;
+        padding: 40px 40px 120px;
     }
 
     .main-wrap {
@@ -142,7 +170,7 @@
 }
 
 .search-input-layer {
-    //display: none;
+    display: none;
     position: absolute;
     top: 56px;
     right: -1px;
@@ -349,11 +377,12 @@
             }
         }
     }
+    .result-category {
+        margin-top: -40px;
+        padding: 20px 0 30px;
+    }
 }
 
-.result-category {
-    padding: 20px 0 40px;
-}
 
 .rounded-list {
     font-size: 0;
@@ -361,7 +390,7 @@
         display: inline-block;
         margin-bottom: 8px;
         margin-right: 8px;
-        padding: 8px 12px;
+        padding: 7px 12px;
         border-radius: 20px;
         border: 1px solid #ddd;
         background-color: #fff;
@@ -370,9 +399,11 @@
         }
     }
     .text {
+        display: block;
         @include font-medium;
     }
 }
 
 @import "SERF9001";
 @import "SERF9003";
+@import "SERF9009";
