@@ -5,7 +5,7 @@ $(window).ready(function(){
     
     ;(function($, _$){      
         var itemTemplate =             
-            '<div class="item-inner" data-modelId={{id}}>'+
+            '<div class="item-inner" data-id={{id}}>'+
             '   <span class="img-area">'+
             '       <img src="{{productImg}}" alt="{{productAlt}}">'+
             '       <p class="hidden">{{productAlt}}</p>'+
@@ -22,16 +22,30 @@ $(window).ready(function(){
                 setClearCompare();
             });
 
-            $('.sticy-compare .list-inner li').on('click', function(){
+            $('.sticy-compare .list-inner li').on('click', '.btn-close', function(e){
+                e.preventDefault();
 
+                var id = $(this).siblings('.item-inner').data("id");
+                lgkorUI.removeCompareProd(id);
             });
 
+            $('.right-cont .more-arrow').on('click', function(e){
+                e.preventDefault();
+
+                if($(this).hasClass('close')) openCompareBox();
+                else closeCompareBox();
+            })
+
             setCompares();
+            setCompareStatus();
+            _$(window).on("changeStorageData", function(){
+                setCompares();
+                setCompareStatus();
+            });
         }
         function setCompares(){
             $('.sticy-compare .list-inner li').empty();
 
-            var isAppend = false;
             var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
             var isCompare = vcui.isEmpty(storageCompare);
             if(!isCompare){
@@ -42,21 +56,50 @@ $(window).ready(function(){
                     var listItem = vcui.template(itemTemplate, storageCompare[lgkorUI.COMPARE_ID][i]);
                     list.html(listItem);
                 }
-
-                isAppend = true;
             }
 
-            if(isAppend){
-                $('.right-cont .count').text(storageCompare[lgkorUI.COMPARE_ID].length + "/3");
-                $('.right-cont .more-arrow').removeClass('close').addClass('open');
+            var leng = storageCompare[lgkorUI.COMPARE_ID] == undefined ? "0" : storageCompare[lgkorUI.COMPARE_ID].length;
+            $('.right-cont .count').text(leng + "/3");
+        }
 
-                var height = _$('.KRP0018').outerHeight(true);
-                _$('.KRP0018').css({display:'block', y:height}).transition({y:0}, 550, "easeInOutCubic");
+        function setCompareStatus(){
+            var leng = $('.sticy-compare .list-inner li').children().length;
+            if(leng){
+                if(_$('.KRP0018').css('display') == 'none'){
+                    var height = _$('.KRP0018').outerHeight(true);
+                    _$('.KRP0018').css({display:'block', y:height});
+                    openCompareBox();
+                } 
+            } else{
+                hideCompareBox();
             }
         }
 
+        function openCompareBox(){
+            $('.right-cont .more-arrow').removeClass('close').addClass('open');
+
+            _$('.KRP0018').stop().transition({y:0}, 550, "easeInOutCubic");
+        }
+
+        function closeCompareBox(){
+            $('.right-cont .more-arrow').removeClass('open').addClass('close');
+
+            var height = _$('.KRP0018').outerHeight(true) - $('.sticy-compare .compare-title').outerHeight(true);
+            _$('.KRP0018').stop().transition({y:height}, 350, "easeInOutCubic");
+        }
+
+        function hideCompareBox(){
+            $('.right-cont .more-arrow').removeClass('open').addClass('close');
+
+            var height = _$('.KRP0018').outerHeight(true);
+            _$('.KRP0018').stop().transition({y:height}, 350, "easeInOutCubic", function(){
+                _$('.KRP0018').css({display:'none', y:0});
+            });
+        }
+
         function setClearCompare(){
-            console.log("setClearCompare")
+            console.log("setClearCompare");
+            lgkorUI.initCompareProd();
         }
 
         init();
