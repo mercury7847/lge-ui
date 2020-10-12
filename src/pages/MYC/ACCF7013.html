@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "최근 본 제품"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect3" : [
+                                { "on": "on", "page": "찜한 제품" },
+                                { "on": "", "page": "최근 본 제품" },
+                                { "on": "", "page": "구독" },
+                                { "on": "", "page": "관심 매장" },
+                                { "on": "", "page": "관심 스토리" },
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <div class="section">
+                                <div class="cont-box">
+                                    <div class="bdcard-lists ui_flexible_height">
+                                        <ul>
+                                            <li class="lists">
+                                                <div class="ui_flexible_box">
+                                                    <div class="card">
+                                                        <a href="#n" class="thumb"><img src="/lg5-common/images/dummy/@img-product.jpg" alt="LG 디오스 상냉장하냉동"></a>
+                                                        <dl class="prod-info">
+                                                            <dt><a href="#n" class="name">LG 디오스 상냉장하냉동</a></dt>
+                                                            <dd class="detail">
+                                                                <p><span class="blind">상품번호</span>OLED55BXPUA</p>
+                                                                <p><span class="blind">상품옵션</span>버건디레드/870L</p>
+                                                            </dd>
+                                                            <dd class="price">
+                                                                <p class="sale"><span class="blind">할인가</span>1,759,000원</p>
+                                                                <p class="original"><span class="blind">할인 전 판매가</span>1,871,270원</p>
+                                                            </dd>
+                                                        </dl>
+                                                        <div class="btn-wrap">
+                                                            <span class="chk-wish-wrap">
+                                                                <input type="checkbox" id="wish-chk" name="wish-chk" checked>
+                                                                <label for="wish-chk"><span class="blind">찜하기</span></label>
+                                                            </span>
+                                                            <button class="btn bd-pink btn-small"><span>장바구니</span></button>
+                                                        </div>
+                                                        <button class="btn-del"><span class="blind">삭제하기</span></button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>
