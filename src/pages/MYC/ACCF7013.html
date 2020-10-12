@@ -9,7 +9,7 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "최근 본 제품"
+                "pageTitle": "찜한 제품"
             })
             <!-- mypage -->
             <div class="contents mypage">
@@ -32,17 +32,40 @@
                                             {
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "name" : "LG 디오스 상냉장하냉동",
-                                                "checked" : "checked",
                                                 "option" : "<p><span class='blind'>상품번호</span>OLED55BXPUA</p><p><span class='blind'>상품옵션</span>버건디레드/870L</p>",
                                                 "price" : "<p class='sale'><span class='blind'>할인가</span>1,759,000원</p><p class='original'><span class='blind'>할인 전 판매가</span>1,871,270원</p>"
                                             },
                                             {
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "name" : "LG 퓨리케어 360˚공기청정기 무빙휠 2단용",
-                                                "checked" : "checked",
-                                                "option" : "<p><span class='blind'>상품번호</span>OLED55BXPUA</p><p><span class='blind'>상품옵션</span>버건디레드/870L</p>",
+                                                "option" : "<p><span class='blind'>상품번호</span>ACQ76008501</p>",
                                                 "price" : "<p class='msg'>일시 판매중지</p>"
+                                            },
+                                            {
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "name" : "LG 트롬 5벌 스타일러 통살균 탈취 건조",
+                                                "option" : "<p><span class='blind'>상품번호</span>SSMBA</p><p><span class='blind'>상품옵션</span>스페이스그레이</p>",
+                                                "price" : "<p class='sale'><span class='blind'>할인가</span>1,759,000원</p><p class='original'><span class='blind'>할인 전 판매가</span>1,871,270원</p>"
                                             }
+                                        ]
+                                    })
+                                    <div class="pagination">
+                                        <a href="#" class="prev"><span class="blind">이전 페이지 보기</span></a> <!-- 비활성시 disabled 클래스 추가 -->
+                                        <span class="page_num">
+                                            <strong><span class="blind">현재 페이지</span>1</strong>
+                                            <a href="#" title="2페이지 보기">2</a>
+                                            <a href="#" title="3페이지 보기">3</a>
+                                            <a href="#" title="4페이지 보기">4</a>
+                                            <a href="#" title="5페이지 보기">5</a>
+                                            <a href="#" title="6페이지 보기">6</a>
+                                            <a href="#" title="7페이지 보기">7</a>
+                                        </span>
+                                        <a href="#" class="next"><span class="blind">다음 페이지 보기</span></a> <!-- 비활성시 disabled 클래스 추가 -->
+                                    </div>
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "topBorder" : true,
+                                        "bulletTxt" : [
+                                            "찜한 제품은 1년간 보관되며, 판매 종료 된 제품은 종료된 지 3개월 후 자동 삭제됩니다."
                                         ]
                                     })
                                 </div>

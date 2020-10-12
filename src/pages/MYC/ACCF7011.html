@@ -27,6 +27,37 @@
                         <div class="lnb-contents">
                             <div class="section">
                                 <div class="cont-box">
+                                    @@include('./common/modules/bdcard-list.html', {
+                                        "wish" : true,
+                                        "list" : [
+                                            {
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "name" : "LG 디오스 상냉장하냉동",
+                                                "checked" : "checked",
+                                                "option" : "<p><span class='blind'>상품번호</span>OLED55BXPUA</p><p><span class='blind'>상품옵션</span>버건디레드/870L</p>",
+                                                "price" : "<p class='sale'><span class='blind'>할인가</span>1,759,000원</p><p class='original'><span class='blind'>할인 전 판매가</span>1,871,270원</p>"
+                                            },
+                                            {
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "name" : "LG 퓨리케어 360˚공기청정기 무빙휠 2단용",
+                                                "checked" : "",
+                                                "option" : "<p><span class='blind'>상품번호</span>ACQ76008501</p>",
+                                                "price" : "<p class='msg'>일시 판매중지</p>"
+                                            },
+                                            {
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "name" : "LG 트롬 5벌 스타일러 통살균 탈취 건조",
+                                                "checked" : "",
+                                                "option" : "<p><span class='blind'>상품번호</span>SSMBA</p><p><span class='blind'>상품옵션</span>스페이스그레이</p>",
+                                                "price" : "<p class='sale'><span class='blind'>할인가</span>1,759,000원</p><p class='original'><span class='blind'>할인 전 판매가</span>1,871,270원</p>"
+                                            }
+                                        ]
+                                    })
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "bulletTxt" : [
+                                            "최근에 확인하신 제품을 최대 10개까지 확인 가능하며 해당 내용은 6개월 동안 유지된 후 가장 오래된 제품부터 삭제됩니다."
+                                        ]
+                                    })
                                 </div>
                             </div>
                         </div>
