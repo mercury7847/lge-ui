@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+	@@include('./common/head.html', {
+		componentID: "KRC0041",
+		isJScompile: false,
+	})
+<body>
+	<div class="wrap">
+		<div class="container">
+
+			<!-- component : PC 최대 3개 아이템 노출, Mobile 최대 2개 아이템 노출 -->
+			@@include('./common/partials/KRC0041.html', {
+				"items": [
+					{
+						"id": 0,
+						"visualImagePC": "/lg5-common/images/KRC0041/@img-product-pc.jpg",
+						"visualImageMobile": "/lg5-common/images/KRC0041/@img-product-m.jpg",
+						"modelDisplayName": "LG DIOS 노크온 매직스페이스",
+						"modelNumber": "S833MC85Q",
+						"modelPrice": "800,000",
+						"review": "is-review",
+						"reviewText": "리뷰있음",
+						"average": "4.0",
+						"reviewCount": "452",
+					},
+					{
+						"id": 1,
+						"visualImagePC": "/lg5-common/images/KRC0041/@img-product-pc.jpg",
+						"visualImageMobile": "/lg5-common/images/KRC0041/@img-product-m.jpg",
+						"modelDisplayName": "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+						"modelNumber": "S833MC85Q",
+						"modelPrice": "800,000",
+						"review": "is-review",
+						"reviewText": "리뷰있음",
+						"average": "4.0",
+						"reviewCount": "452",
+					},
+					{
+						"id": 2,
+						"visualImagePC": "/lg5-common/images/KRC0041/@img-product-pc.jpg",
+						"visualImageMobile": "/lg5-common/images/KRC0041/@img-product-m.jpg",
+						"modelDisplayName": "LG DIOS 노크온 매직스페이스",
+						"modelNumber": "S833MC85Q",
+						"modelPrice": "800,000",
+						"review": "",
+						"reviewText": "리뷰없음",
+						"average": "0",
+						"reviewCount": "0",
+					},
+				]
+			})
+			<!-- //component -->
+
+		</div>
+	</div>
+</body>
+</html>
