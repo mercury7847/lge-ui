@@ -8,7 +8,7 @@
  */
   
 
-vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function ($, core) {
+vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit.min'], function ($, core) {
     "use strict";
     var $win = $(window);
 
@@ -236,6 +236,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
             verticalPadding: 0,
             horizontalPadding: 0,
             fixedAspectRatio : true,
+            enableDoubleTab : false,
         },
         
 
@@ -364,6 +365,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
          */
         _handleDoubleTap: function _handleDoubleTap(event) {
             var self = this;
+            if(!this.options.enableDoubleTab) return;
             var center = this._getTouches(event)[0],
                 zoomFactor = this.zoomFactor > 1 ? 1 : this.options.tapZoomFactor,
                 startZoomFactor = this.zoomFactor;
@@ -599,14 +601,17 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
 
             if(this.options.fixedAspectRatio){
                 this.$el.find('img').css({
-                    'position': 'absolute',
+                    //'position': 'absolute',
                     'max-width': '100%',
                     'max-height': '100%',
                     'top' :'0',
                     'left' : '0',
                     'bottom': '0',
                     'right': '0',
-                    'margin':'auto'
+                    'margin':'auto',
+                    'draggable':'false',
+                    'user-drag':'none',
+                    'user-select':'none'
                 })
             }else{
                 this.$container.css({'height':''}).height(this.$container.parent().outerHeight());
@@ -731,14 +736,14 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
             this.$container = this.$el.parent();//('.pinch-zoom-container');             
 
             this.$container.css({
-                'position' : 'relative',
+                //'position' : 'relative',
                 'overflow' : 'hidden',
                 'transformOrigin' : '0% 0%'
             });            
 
             if(this.options.fixedAspectRatio){
                 this.$el.css({
-                    'position' :'absolute',
+                    //'position' :'absolute',
                     'transformOrigin' : '0% 0%',
                     'width' : '100%',
                     'height' : '100%'
@@ -746,7 +751,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
                 
             }else{
                 this.$el.css({
-                    'position' :'absolute',
+                    //'position' :'absolute',
                     'transformOrigin' : '0% 0%'
                 });
             }
@@ -793,8 +798,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
                 
         },
 
-
-        runZoom: function runZoom(zoom) {
+        runZoom: function runZoom(zoom, animation) {
             var self = this;
 
             var center = {x: this.$container.outerWidth()/2, y:this.$container.outerHeight()/2};
@@ -812,16 +816,23 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit'], function 
                 return;
             }
 
-
             if (startZoomFactor > zoomFactor){
                 center = this._getCurrentZoomCenter();                
             }
 
-            this._animate(this.options.animationDuration, 
-                function (progress) {
-                    self._scaleTo(startZoomFactor + progress * (zoomFactor - startZoomFactor), center);
-                }
-            );        
+            if(animation) {
+                this._animate(this.options.animationDuration, 
+                    function (progress) {
+                        self._scaleTo(startZoomFactor + progress * (zoomFactor - startZoomFactor), center);
+                    }
+                );
+            } else {
+                this._animate(100, 
+                    function (progress) {
+                        self._scaleTo(startZoomFactor + progress * (zoomFactor - startZoomFactor), center);
+                    }
+                );
+            }
         },    
 
         /**

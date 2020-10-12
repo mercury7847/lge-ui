@@ -11,25 +11,10 @@
             <!-- 통합검색 -->
             <div class="contents search">
                 <!-- 검색 영역 -->
-                <div class="search-top">
-                    <div class="sch-input-wrap">
-                        <div class="input-sch">
-                            <input type="text" class="txt" placeholder="검색어를 입력해주세요. (예:제품명, 모델명)" value="노크온 매직스페이ㅅ">
-                            <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                        </div>
-                    </div>
-                    <div class="related-keyword">
-                        <span class="title">연관검색어</span>
-                        <ul class="keyword-list">
-                            <li><a href="#">OLED TV</a></li>
-                            <li><a href="#">SUPER OLED TV</a></li>
-                            <li><a href="#">LG DIOS 스페이스 냉장고</a></li>
-                            <li><a href="#">노크온 매직스페이스</a></li>
-                            <li><a href="#">OLED TV/AV</a></li>
-                            <li><a href="#">홈라이프</a></li>
-                        </ul>
-                    </div>
-                </div>
+                @@include('./common/modules/search-input.html', {
+                    "value" : "노크온 매직스페이스",
+                    "related" : true
+                })
                 <!-- // 검색 영역 -->
                 <!-- 검색 결과 영역 -->
                 <div class="tabs-wrap btn-type ui_tab left">
@@ -47,29 +32,16 @@
                     <div class="search-result-wrap">
                         @@include('./common/modules/list-filter.html')
                         <div class="result-area">
-                            <div class="list-top">
-
-                                <div class="sort-area">
-                                    <div class="sort-list">
-                                        <div class="sort-select-wrap">
-                                            <select class="ui_selectbox" id="select1" title="리스트 정렬 순서 선택">
-                                                <option value="1">정확도순</option>
-                                                <option value="1">인기순</option>
-                                                <option value="2">최신순</option>
-                                                <option value="3">가격 높은순</option>
-                                                <option value="4">가격 낮은순</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="check-soldout">
-                                    <span class="chk-wrap">
-                                        <input type="checkbox" id="chk01" name="chk01">
-                                        <label for="chk01">품절 제품 포함</label>
-                                    </span>
-                                </div>
-                                <div class="list-count" id="totalCount">총 59개</div>
-                            </div>
+                            @@include('./common/modules/list-sorting.html', {
+                                "soldout" : true,
+                                "select" : [
+                                    { "option" : "정확도순" },
+                                    { "option" : "인기순" },
+                                    { "option" : "최신순" },
+                                    { "option" : "가격 높은순" },
+                                    { "option" : "가격 낮은순" }
+                                ]
+                            })
                             <div class="result-list-wrap">
                                 <div class="list-wrap">
                                     <ul class="product-items">
@@ -79,51 +51,89 @@
                                                 "badgeType" : "large",
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true
+                                                "price" : true,
+                                                "hashtag" : true
                                             }, {
                                                 "search" : true,
-                                                "img" : "/lg5-common/images/dummy/@img-product.jpg"
-                                            }, {
-                                                "search" : true,
-                                                "badgeType" : "large",
-                                                "img" : "/lg5-common/images/dummy/@img-product.jpg"
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "hashtag" : true
                                             }, {
                                                 "search" : true,
                                                 "badgeType" : "large",
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "hashtag" : true
+                                            }, {
+                                                "search" : true,
+                                                "badgeType" : "large",
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true
+                                                "price" : true,
+                                                "hashtag" : true
                                             }, {
                                                 "search" : true,
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true
+                                                "price" : true,
+                                                "hashtag" : true
                                             }, {
                                                 "search" : true,
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true
+                                                "price" : true,
+                                                "hashtag" : true
                                             }, {
                                                 "search" : true,
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true
+                                                "price" : true,
+                                                "hashtag" : true
                                             }, {
                                                 "search" : true,
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true
+                                                "price" : true,
+                                                "hashtag" : true
                                             }, {
                                                 "search" : true,
                                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                                 "review" : true,
-                                                "price" : true
+                                                "price" : true,
+                                                "hashtag" : true
                                             }
                                         ])
                                     </ul>
                                 </div>
+                                @@include('./common/support/pagination.html', {
+                                    count: 5
+                                })
                             </div>
                         </div>
+                    </div>
+
+                    <!-- 찾으시는 제품이 없으신가요? -->
+                    <div class="box-list recommend-list-wrap">
+                        <h3 class="title">찾으시는 제품이 없으신가요?</h3>
+                        <ul class="story">
+                            @@loop('./common/modules/list-box.html', [
+                            {
+                                "img" : "dummy/@img-stroy.png",
+                                "title-hd" : "제품 큐레이션 제목",
+                                "title" : "진짜로 원하는게 무엇인지 알고 싶나요?",
+                                "copy" : true,
+                                "copyText" : "원하시는 기능과 선호/취향을 반영한 최고의 제품을 대신 찾아드립니다.",
+                                "btn" : true,
+                                "btnName" : "제품 큐레이션"
+                            },{
+                                "img" : "dummy/@img-stroy.png",
+                                "title-hd" : "라이프스타일 컨설팅",
+                                "title" : "라이프스타일에 맞는 제품은 무엇일까요?",
+                                "copy" : true,
+                                "copyText" : "나의 라이프스타일에 맞는 제품을 추천드립니다.",
+                                "btn" : true,
+                                "btnName" : "라이프스타일 컨설팅"
+                            }
+                            ])
+                        </ul>
                     </div>
                 </div>
                 <!-- // 검색 결과 영역 -->

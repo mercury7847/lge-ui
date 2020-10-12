@@ -11,68 +11,159 @@
         @@include('./common/header.html')
 
         <div class="container">
-            <div class="contents support solutions">
+            <div class="contents support psp">
+                <div class="product-header">
+                    <div class="product-header-inner">
+                        <div class="product-header-infos">
+                            <!-- 로그인상태, 등록된 제품인 경우 노출 -->
+                            <div class="flag-wrap">
+                                <span class="flag">내 제품</span>
+                            </div>
+                            <h2 class="tit">LG XPION A50PH</h2>
+                            <p class="desc">IT/모니터 > 데스크톱/일체형</p>
+                        </div>
+                        <div class="product-header-visual">
+                            <img src="/lg5-common/images/dummy/@img-product6.jpg" class="img" alt="LG XPION A50PH">
+                        </div>
+                        <ul class="product-header-btns">
+                            <li class="pdp">
+                                <!-- PDP : 매칭되는 PDP 있을 경우 노출 -->
+                                <a href="#" class="btn bd-gray"><span>제품 정보</span></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-link"><span>이메일 문의</span></a>
+                            </li>
+                            <li>
+                                <!-- 출장 서비스 가능한 제품인 경우 노출 -->
+                                <a href="#" class="btn-link"><span>출장 서비스 예약</span></a>
+                            </li>
+                            <li>
+                                <!-- 로그인상태, 등록된 제품인 경우 노출 -->
+                                <a href="#" class="btn-link"><span>제품 관리</span></a>
+                                <!-- 비로그인상태, 등록 안된 제품인 경우 노출 -->
+                                <!-- <a href="#" class="btn-link"><span>제품 등록</span></a> -->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="anchors-tabs-wrap" data-js="anchors-tab">
+                    <div class="anchors-tabs">
+                        <ul>
+                            <!-- 다운로드 (default) -->
+                            <li class="on">
+                                <a href="#content1" id="anchor1">다운로드</a>
+                            </li>
+                            <li>
+                                <a href="#content2" id="anchor2">제품 문제 해결</a>
+                            </li>
+                            <li>
+                                <a href="#content3" id="anchor3">소모품</a>
+                            </li>
+                            <li>
+                                <a href="#content4" id="anchor4">제품 서비스</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="contents-inner">
                     
-                    <div class="product-header">
-                        <div class="product-header-inner">
-                            <div class="product-header-infos">
-                                <div class="tags">
-                                    <span class="tag">내 제품</span>
+                        <div id="content1">
+                            <div class="section">
+                                <div class="section-title">
+                                    <h4 class="tit">제품사용 설명서 (<em class="count">2</em>건)</h4>
                                 </div>
-                                <h2 class="tit">LG XPION A50PH</h2>
-                                <p class="desc">IT/모니터 > 데스크톱/일체형</p>
+                                <div class="section-content">
+                                    <div class="download-wrap">
+                                        <ul class="download-list">
+                                            <li>
+                                                <strong class="tit">제품 사용설명서</strong>
+                                                <p class="desc">Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>   
+                                                <ul class="infos">
+                                                    <li>2013.02.06</li>
+                                                    <li>한국어</li>   
+                                                </ul>
+                                                <div class="btns-wrap">
+                                                    <a href="#" class="btn bd-pink btn-small"><span>PDF</span></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <strong class="tit">제품 사용설명서</strong>
+                                                <p class="desc">Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>   
+                                                <ul class="infos">
+                                                    <li>2013.02.06</li>
+                                                    <li>한국어</li>   
+                                                </ul>
+                                                <div class="btns-wrap">
+                                                    <a href="#" class="btn bd-pink btn-small"><span>HTML</span></a>
+                                                    <a href="#" class="btn bd-pink btn-small"><span>ZIP</span></a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "topBorder" : true, 
+                                        "bulletTxt" : [
+                                            "zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다."
+                                        ]
+                                    })
+                                </div>
                             </div>
-                            <div class="product-header-visual">
-                                <img src="/lg5-common/images/dummy/@img-product6.jpg" class="img" alt="LG XPION A50PH">
+                            <div class="section">
+                                <div class="section-title">
+                                    <h4 class="tit">드라이버/소프트웨어 (<em class="count" id="count">130</em>건)</h4>
+                                </div>
+                                <div class="section-content">
+                                    <div class="tabs-wrap border-type ui_tab left">
+                                        <ul class="tabs">
+                                            <li class="on"><a href="#tab1">통합 드라이버 설치프로그램(110)<em class="blind">선택됨</em></a></li>
+                                            <li><a href="#">칩셋/패치(6)</a></li>
+                                            <li><a href="#">비디오(6)</a></li>
+                                            <li><a href="#">사운드(3)</a></li>
+                                            <li><a href="#">랜(4)</a></li>
+                                            <li><a href="#">기타(0)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="download-wrap">
+                                        <ul class="download-list">
+                                            <li>
+                                                <strong class="tit">[프로그램/Win10_64bit] XPION용 LG intelligent Update 프로그램</strong>
+                                                <p class="desc">ver.7.7PHV1 데스크톱/일체형</p>   
+                                                <ul class="infos">
+                                                    <li>2013.02.06</li>
+                                                    <li>통합 드라이버 설치프로그램</li>   
+                                                </ul>
+                                                <div class="btns-wrap">
+                                                    <a href="#" class="btn bd-pink btn-small"><span>다운로드 1118.4mb</span></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <strong class="tit">[프로그램/Win10_64bit] XPION용 LG intelligent Update 프로그램</strong>
+                                                <p class="desc">ver.7.7PHV1 데스크톱/일체형</p>   
+                                                <ul class="infos">
+                                                    <li>2013.02.06</li>
+                                                    <li>통합 드라이버 설치프로그램</li>   
+                                                </ul>
+                                                <div class="btns-wrap">
+                                                    <a href="#" class="btn bd-pink btn-small"><span>다운로드 1118.4mb</span></a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    @@include('./common/support/pagination.html', {
+                                        count: 5
+                                    })
+                                </div>
                             </div>
-                            <ul class="product-header-btns">
-                                <li>
-                                    <!-- PDP : 매칭되는 PDP 있을 경우 -->
-                                    <a href="#" class="btn bd-gray"><span>제품 정보</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-link"><span>이메일 문의</span></a>
-                                </li>
-                                <li>
-                                    <!-- 출장 서비스 가능한 제품 -->
-                                    <a href="#" class="btn-link"><span>출장 서비스 예약</span></a>
-                                </li>
-                                <li>
-                                    <!-- 로그인상태, 등록된 제품 -->
-                                    <a href="#" class="btn-link"><span>제품 관리</span></a>
-                                    <!-- 비로그인상태, 등록 안된 제품 -->
-                                    <!-- <a href="#" class="btn-link"><span>제품 등록</span></a> -->
-                                </li>
-                            </ul>
                         </div>
-                    </div>
-
-                    <div class="anchors-tabs-wrap" data-js="anchors-tab">
-                        <div class="anchors-tabs">
-                            <ul>
-                                <li class="on">
-                                    <a href="#content1" id="anchor1">다운로드</a>
-                                </li>
-                                <li>
-                                    <a href="#content2" id="anchor2">제품 문제 해결</a>
-                                </li>
-                                <li>
-                                    <a href="#content3" id="anchor3">소모품</a>
-                                </li>
-                                <li>
-                                    <a href="#content4" id="anchor4">제품 서비스</a>
-                                </li>
-                            </ul>
+                        <div id="content2">
+                            
                         </div>
-                    </div>
-
-                    <div class="result-wrap">
-                        <div id="content1" style="height:600px">컨텐츠1</div>
-                        <div id="content2" style="height:600px">컨텐츠2</div>
-                        <div id="content3" style="height:600px">컨텐츠3</div>
+                        <div id="content3" style="height:600px">
+                        
+                        </div>
                         <div id="content4" style="height:600px">컨텐츠4</div>
-                    </div>
+                    
                 </div>
 
                 <div class="recommand-wrap">

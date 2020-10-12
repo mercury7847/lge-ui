@@ -1,0 +1,21 @@
+<div class="query-input-wrap">
+    <div class="sch-input-wrap">
+        <div class="input-sch">
+            <input type="text" class="txt" placeholder="검색어를 입력해주세요. (예:제품명, 모델명)" value="@@value" title="검색어 입력">
+            <button type="button" class="btn-search"><span class="blind">검색</span></button>
+        </div>
+    </div>
+    @@if(context.related) {
+    <div class="related-keyword">
+        <span class="title">연관검색어</span>
+        <ul class="keyword-list">
+            <li><a href="#">OLED TV</a></li>
+            <li><a href="#">SUPER OLED TV</a></li>
+            <li><a href="#">LG DIOS 스페이스 냉장고</a></li>
+            <li><a href="#">노크온 매직스페이스</a></li>
+            <li><a href="#">OLED TV/AV</a></li>
+            <li><a href="#">홈라이프</a></li>
+        </ul>
+    </div>
+    }
+</div>

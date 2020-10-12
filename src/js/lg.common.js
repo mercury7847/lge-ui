@@ -18,7 +18,8 @@
                             "ui/dropdown",
                             "ui/textControl",
                             "ui/scrollview",
-                            "ui/fileInput"
+                            "ui/fileInput",
+                            "ui/radioShowHide"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
@@ -36,6 +37,7 @@
             this.find('.ui_textcontrol').vcTextcontrol();
             this.find('.ui_scrollview').vcScrollview();
             this.find('.ui_fileinput').vcFileinput();
+            this.find('.ui_radio_visible').vcRadioShowHide();
 
 
             this.find('.ui_wide_slider').vcCarousel({

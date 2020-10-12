@@ -180,8 +180,40 @@
         padding-top:56px;
         border-top:1px solid #ddd;
         .review-box {
+            position:relative;
+            padding:33px 181px 33px 26px;
             border:1px solid #ddd;
             border-radius:4px;
+            .txt {
+                padding-left:48px;
+                font-size:16px;
+                color:#222;
+                line-height:1.5;
+                background-image:url('/lg5-common/images/icons/icon-manual.svg');
+                background-repeat:no-repeat;
+                background-size:24px;
+                background-position:left center;
+            }
+            .btn {
+                position:absolute;
+                right:24px;
+                top:50%;
+                transform:translateY(-50%);
+            }
+            @include mobile {
+                padding:0;
+                .txt {
+                    margin-bottom:32px;
+                    padding-left:36px;
+                    line-height:1.38;
+                    background-position:left top;
+                }
+                .btn {
+                    position:static;
+                    width:100%;
+                    transform:translateY(0);
+                }
+            }
         }
         @include mobile {
             padding-top:40px;

@@ -150,11 +150,22 @@
                 </ul>
             </div>
 
-            <div class="btn-visit">
-                <a href="#n" class="btn-text">매장 방문 예약</a>
-            </div>
-            <div class="btn-find">
-                <a href="#n" class="btn-text">매장 찾기</a>
+            <div class="service-link">
+                <ul>
+                    @@if (!context.care && !context.story) {
+                    <li><a href="#n" class="btn-text">매장 방문 예약</a></li>
+                    <li><a href="#n" class="btn-text">매장 찾기</a></li>
+                    }
+                    @@if (context.care) {
+                    <li><a href="#n" class="btn-text">케어플래너로 견적받기</a></li>
+                    <li><a href="#n" class="btn-text">케어솔루션 상담문의</a></li>
+                    <li><a href="#n" class="btn-text">매장 찾기</a></li>
+                    }
+                    @@if (context.story) {
+                    <li><a href="#n" class="btn-text">제품 큐레이션</a></li>
+                    <li><a href="#n" class="btn-text">라이프 스타일 컨설팅</a></li>
+                    }
+                </ul>
             </div>
 
             <div class="filter-btn-wrap">

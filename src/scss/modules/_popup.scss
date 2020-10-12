@@ -232,12 +232,39 @@
             }
         }
     }
+
     &.full {
         width:1066px;
         @include mobile {
             width:100%;
             .pop-footer {
                 padding:0;
+            }
+        }
+    }
+
+    &.tit-line2 {
+        .pop-header {
+            .tit span {
+                br {
+                    display:none;
+                }
+                @include mobile {
+                    height:54px;
+                    br {
+                        display:block;
+                    }
+                }
+            }
+        }
+        @include mobile {
+            .pop-conts {
+                height:calc(100% - 135px - 27px);
+                max-height:calc(100% - 135px - 27px);
+                &.no-footer {
+                    height:calc(100% - 102px);
+                    max-height:calc(100% - 102px);
+                }
             }
         }
     }

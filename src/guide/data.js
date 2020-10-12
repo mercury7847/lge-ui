@@ -29,11 +29,11 @@ var res = {
 	"Front" : {
 		"Component" : {
 			"KRC0001_Selective offering (Home)_Dynamic" : ["/html/components/KRC0001.html","","진행중"],
-			"KRC0002_Selective offering" : ["/html/components/KRC0002.html","","진행중"],
+			//"KRC0002_Selective offering" : ["/html/components/KRC0002.html","","진행중"],
 			"KRC0003_Vertical Selector" : ["/html/components/KRC0003.html","","검수완료"],
-			"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
-			"KRC0009_Exciting Promotion Offers" : ["/html/components/KRC0009.html","","검수완료"],
-			"KRC0010_Recommended Promotions" : ["/html/components/KRC0010.html","","검수완료"],
+			//"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
+			//"KRC0009_Exciting Promotion Offers" : ["/html/components/KRC0009.html","","검수완료"],
+			//"KRC0010_Recommended Promotions" : ["/html/components/KRC0010.html","","검수완료"],
 			"KRC0011_PDP_FAQ_Static" : ["/html/components/KRC0011.html","","진행중"],
 			"KRC0012_Image - Text(folding feature)_Static" : ["/html/components/KRC0012.html","","진행중"],
 			"KRC0013_Side Image - text" : ["/html/components/KRC0013.html","","검수완료"],
@@ -61,10 +61,11 @@ var res = {
 			"KRC0038_Text" : ["/html/components/KRC0038.html","","검수완료"],
 			"KRC0039_Side Text - CTA_Static" : ["/html/components/KRC0039.html","","검수완료"],
 			"KRC0040_Image (1 to 3 - CTA Overlay)_Static" : ["/html/components/KRC0040.html","","검수완료"],
+			"KRC0041_PDP - Spec compare" : ["/html/components/KRC0041.html","","진행중"],
 			"KRC0043_Gallery - 10Pickers_Static" : ["/html/components/KRC0043.html","","검수완료"],
 			"KRC0044_Hero Image (Thin)" : ["/html/components/KRC0044.html","","검수완료"],
 			"KRC0045_Article List" : ["/html/components/KRC0045.html","","검수완료"],
-			"KRC0046_Story & Products module_Dynamic" : ["/html/components/KRC0046.html","","진행중"],
+			//"KRC0046_Story & Products module_Dynamic" : ["/html/components/KRC0046.html","","진행중"],
 			"KRP0001_GNB - B2C" : ["/html/components/KRP0001.html","","검수완료"],
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","검수완료"],
@@ -81,6 +82,11 @@ var res = {
 			"KRP0025_Event list for home" : ["/html/components/KRP0025.html","","진행중"],
 		},
 		"Page" : {
+			"케어솔루션(SLC)" : {
+				"케어솔루션안내" : {
+					"케어플래너" : ["/html/SLC/RMSF2003.html","","진행중"],
+				},
+			},
 			"이벤트/멤버십(BMC)" : {
 				"이벤트" : {
 					"리스트" : ["/html/BMC/MKT4001.html","","진행중"],
@@ -90,6 +96,8 @@ var res = {
 					"이벤트참여_PC아카데미" : ["/html/BMC/MKT4009.html","","진행중"],
 					"이벤트참여내역조회_PC아카데미" : ["/html/BMC/MKT4010.html","","진행중"],
 					"PC 모델명 및 시리얼번호 확인 방법" : ["/html/BMC/MKT4017.html","","진행중"],
+					"이벤트참여_미리미리페스티벌" : ["/html/BMC/MKT4012.html","","진행중"],
+					"LG전자 및 LG전자 BEST SHOP 판매대리점 보기" : ["/html/BMC/MKT4013.html","","진행중"],
 				},
 				"멤버십" : {
 					"멤버십 메인" : ["/html/BMC/ACC4001.html","","검수요청"],
