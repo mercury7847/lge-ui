@@ -858,56 +858,10 @@
         /* // video detail */
     }
     &.psp {
-        .list-wrap {
-            .list-cont {
-                > li {
-                    border-radius:8px;
-                    box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.26);
-                    & + li {
-                        margin-top:12px;
-                    }
-                    > div {
-                        padding:32px;
-                    }
-                }
-                .tit {
-                    font-size:16px;
-                    font-weight:700;
-                    line-height:24px;
-                }
-                .desc {
-                    margin-top:4px;
-                    font-size:16px;
-                    line-height:24px;
-                }
-                .infos {
-                    margin-top:12px;
-                    @include clearfix;
-                    li {
-                        float:left;
-                        color:#808080;
-                        font-size:16px;
-                        line-height:24px;
-                        & + li {
-                            position:relative;
-                            margin-left:16px;
-                            padding-left:17px;
-                            &:before {
-                                content:'';
-                                position:absolute;
-                                left:0;
-                                top:6px;
-                                width:1px;
-                                height:12px;
-                                background:#ddd;
-                            }
-                        }
-                    }
-                }
-            }
+        .tabs-wrap {
+            margin-bottom:24px;
         }
     }
-
 
     .product-header {
         background:#fff;

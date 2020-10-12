@@ -321,3 +321,66 @@
         }
     }
 }
+
+/* download list */
+.download-wrap {
+    .download-list {
+        > li {
+            position:relative;
+            padding:32px 266px 32px 32px;
+            border-radius:8px;
+            box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.26);
+            & + li {
+                margin-top:12px;
+            }
+        }
+        .tit {
+            font-size:16px;
+            font-weight:700;
+            line-height:24px;
+            word-break:keep-all;
+        }
+        .desc {
+            margin-top:4px;
+            font-size:16px;
+            line-height:24px;
+            word-break:keep-all;
+        }
+        .infos {
+            margin-top:12px;
+            @include clearfix;
+            li {
+                float:left;
+                color:#808080;
+                font-size:16px;
+                line-height:24px;
+                & + li {
+                    position:relative;
+                    margin-left:16px;
+                    padding-left:17px;
+                    &:before {
+                        content:'';
+                        position:absolute;
+                        left:0;
+                        top:6px;
+                        width:1px;
+                        height:12px;
+                        background:#ddd;
+                    }
+                }
+            }
+        }
+        .btns-wrap {
+            position:absolute;
+            right:32px;
+            top:50%;
+            font-size:0;
+            transform:translateY(-50%);
+            .btn {
+                & + .btn {
+                    margin-left:4px;
+                }
+            }
+        }
+    }
+}

@@ -61,6 +61,7 @@ var res = {
 			"KRC0038_Text" : ["/html/components/KRC0038.html","","검수완료"],
 			"KRC0039_Side Text - CTA_Static" : ["/html/components/KRC0039.html","","검수완료"],
 			"KRC0040_Image (1 to 3 - CTA Overlay)_Static" : ["/html/components/KRC0040.html","","검수완료"],
+			"KRC0041_PDP - Spec compare" : ["/html/components/KRC0041.html","","진행중"],
 			"KRC0043_Gallery - 10Pickers_Static" : ["/html/components/KRC0043.html","","검수완료"],
 			"KRC0044_Hero Image (Thin)" : ["/html/components/KRC0044.html","","검수완료"],
 			"KRC0045_Article List" : ["/html/components/KRC0045.html","","검수완료"],
