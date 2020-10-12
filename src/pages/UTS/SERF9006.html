@@ -8,33 +8,14 @@
         @@include('./common/header.html')
 
         <div class="container">
-
-            <!-- event -->
+            <!-- search -->
             <div class="contents search">
                 <!-- 검색 영역 -->
-                <div class="search-top">
-                    <div class="sch-input-wrap">
-                        <div class="input-sch">
-                            <input type="text" class="txt" placeholder="검색어를 입력해주세요. (예:제품명, 모델명)" value="노크온 매직스페이ㅅ">
-                            <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                        </div>
-                    </div>
-                    <div class="related-keyword">
-                        <span class="title">연관검색어</span>
-                        <ul class="keyword-list">
-                            <li><a href="#">OLED TV</a></li>
-                            <li><a href="#">SUPER OLED TV</a></li>
-                            <li><a href="#">LG DIOS 스페이스 냉장고</a></li>
-                            <li><a href="#">노크온 매직스페이스</a></li>
-                            <li><a href="#">OLED TV/AV</a></li>
-                            <li><a href="#">홈라이프</a></li>
-                        </ul>
-                    </div>
-                </div>
+                @@include('./common/modules/search-input.html')
                 <!-- // 검색 영역 -->
-
+                
                 <!-- tabs -->
-                <div class="tabs-wrap btn-type ui_tab event-tab">
+                <div class="tabs-wrap btn-type ui_tab left">
                     <ul class="tabs">
                         <li class="on"><a href="#n">전체(210)<em class="blind">선택됨</em></a></li>
                         <li><a href="#n">제품(59)</a></li>
@@ -64,7 +45,7 @@
                         </div>
                     </div>
                     <div class="box-list story-list-wrap">
-                        <ul class="story">
+                        <ul class="box-list-inner story">
                             @@loop('./common/modules/list-box.html', [
                                 {
                                     "img" : "dummy/@img-stroy.png",
@@ -147,7 +128,7 @@
                     <!-- // 소팅 결과 없을 때 -->
                 </div>
             </div>
-            <!-- // event -->
+            <!-- // evsearchent -->
         </div>
         
         @@include('./common/footer.html')
