@@ -435,9 +435,9 @@
 			margin: auto;
 			width:64px;
 			height:64px;
-			//background:url(/lg5-common/images/components/btn-play-lg.svg) no-repeat;
+			background: url('/lg5-common/images/btn-video-play.svg') no-repeat 0 0;
 			background-size:100% 100%;
-			background-color:rgba(0,0,0,.25);
+			//background-color:rgba(0,0,0,.25);
 			color:transparent;
 			text-indent:-9999px;
 			overflow: hidden;
@@ -448,9 +448,6 @@
 			}
 		}
 		.video-asset {
-			.close-video {
-				display: none;
-			}
 			/* PJTWAUS-1 20200115 modify **/
 			.change-video, .acc-change-video {
 				top:62px;
