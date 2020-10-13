@@ -17,115 +17,97 @@
                 <!-- tabs -->
                 <div class="tabs-wrap btn-type ui_tab left">
                     <ul class="tabs">
-                        <li class="on"><a href="#n">전체(210)<em class="blind">선택됨</em></a></li>
+                        <li><a href="#n">전체(210)<em class="blind">선택됨</em></a></li>
                         <li><a href="#n">제품(59)</a></li>
                         <li><a href="#n">케어솔루션(2)</a></li>
                         <li><a href="#n">이벤트(5)</a></li>
-                        <li><a href="#n">스토리(18)</a></li>
+                        <li class="on"><a href="#n">스토리(18)</a></li>
                         <li><a href="#n">케어용품/소모품(32)</a></li>
                         <li><a href="#n">고객지원(28)</a></li>
                     </ul>
                 </div>
                 <!-- // tabs -->
 
-                <div class="main-wrap">
-                    <div class="sorting-filter">
-                        <div class="sort-left">
-                            <div class="count">
-                                <span class="num">총 6개</span>
-                            </div>
+                <div class="cont-wrap">
+                    <div class="search-result-wrap">
+                        @@include('./common/modules/list-sorting.html', {
+                       
+                            "select" : [
+                                { "option" : "정확도순" },
+                                { "option" : "인기순" },
+                                { "option" : "최신순" },
+                                { "option" : "가격 높은순" },
+                                { "option" : "가격 낮은순" }
+                            ]
+                        })
+                        <div class="box-list story-list-wrap">
+                            <ul class="box-list-inner story">
+                                @@loop('./common/modules/list-box.html', [
+                                    {
+                                        "img" : "dummy/@img-stroy.png",
+                                        
+                                        "flagInfo2" : true,
+                                        "flagInf1" : "구분",
+                                        "flagInf1-1" : "비하인드스토리",
+
+                                        "title-hd" : "이벤트 제목",
+                                        "title" : "행복을 찾아주는 파랑새, 인공지능 <em>플랫폼 ‘LG ThinQ’</em>",
+                                        "date-hd" : "이벤트 기간",
+                                        "date" : "2020.08.01~2020.09.30",
+
+                                        "hashtag" : [
+                                            {"tag": "#가을", "on" : "pink"},
+                                            {"tag": "#가전", "on" : ""}
+                                        ]
+
+                                    },
+                                    {
+                                        "img" : "dummy/@img-stroy.png",
+                                        
+                                        "flagInfo2" : true,
+                                        "flagInf1" : "구분",
+                                        "flagInf1-1" : "비하인드스토리",
+
+                                        "title-hd" : "이벤트 제목",
+                                        "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                        "date-hd" : "이벤트 기간",
+                                        "date" : "2020.08.01~2020.09.30"
+
+                                    },
+                                    {
+                                        "img" : "dummy/@img-stroy.png",
+                                        
+                                        "flagInfo2" : true,
+                                        "flagInf1" : "구분",
+                                        "flagInf1-1" : "비하인드스토리",
+
+                                        "title-hd" : "이벤트 제목",
+                                        "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                        "date-hd" : "이벤트 기간",
+                                        "date" : "2020.08.01~2020.09.30"
+
+                                    },
+                                    {
+                                        "img" : "dummy/@img-stroy.png",
+                                        
+                                        "flagInfo2" : true,
+                                        "flagInf1" : "구분",
+                                        "flagInf1-1" : "비하인드스토리",
+
+                                        "title-hd" : "이벤트 제목",
+                                        "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                        "date-hd" : "이벤트 기간",
+                                        "date" : "2020.08.01~2020.09.30"
+
+                                    }
+                                ])
+                            </ul>
                         </div>
-                        <div class="sort-right">
-                            <div class="sort-select-wrap">
-                                <select class="ui_selectbox" id="select3" title="정렬 기준 선택">
-                                    <option value="">정확도순</option>
-                                    <option value="">최신순</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-list story-list-wrap">
-                        <ul class="box-list-inner story">
-                            @@loop('./common/modules/list-box.html', [
-                                {
-                                    "img" : "dummy/@img-stroy.png",
-                                    
-                                    "flagInfo2" : true,
-                                    "flagInf1" : "구분",
-                                    "flagInf1-1" : "비하인드스토리",
+                        @@include('./common/support/pagination.html', {
+                            count: 5
+                        })
 
-                                    "title-hd" : "이벤트 제목",
-                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                    "date-hd" : "이벤트 기간",
-                                    "date" : "2020.08.01~2020.09.30",
-
-                                    "hashtag" : [
-                                        {"tag": "#가을", "on" : "pink"},
-                                        {"tag": "#가전", "on" : ""}
-                                    ]
-
-                                },
-                                {
-                                    "img" : "dummy/@img-stroy.png",
-                                    
-                                    "flagInfo2" : true,
-                                    "flagInf1" : "구분",
-                                    "flagInf1-1" : "비하인드스토리",
-
-                                    "title-hd" : "이벤트 제목",
-                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                    "date-hd" : "이벤트 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-
-                                },
-                                {
-                                    "img" : "dummy/@img-stroy.png",
-                                    
-                                    "flagInfo2" : true,
-                                    "flagInf1" : "구분",
-                                    "flagInf1-1" : "비하인드스토리",
-
-                                    "title-hd" : "이벤트 제목",
-                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                    "date-hd" : "이벤트 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-
-                                },
-                                {
-                                    "img" : "dummy/@img-stroy.png",
-                                    
-                                    "flagInfo2" : true,
-                                    "flagInf1" : "구분",
-                                    "flagInf1-1" : "비하인드스토리",
-
-                                    "title-hd" : "이벤트 제목",
-                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                    "date-hd" : "이벤트 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-
-                                }
-                            ])
-                        </ul>
-                    </div>
-                    <div class="pagination">
-                        <a href="#" class="prev"><span class="blind">이전 페이지 보기</span></a>
-                        <span class="page_num">
-                            <strong><span class="blind">현재 페이지</span>1</strong>
-                            <a href="#" title="2페이지 보기">2</a>
-                            <a href="#" title="3페이지 보기">3</a>
-                            <a href="#" title="4페이지 보기">4</a>
-                            <a href="#" title="5페이지 보기">5</a>
-                            <a href="#" title="6페이지 보기">6</a>
-                            <a href="#" title="7페이지 보기">7</a>
-                        </span>
-                        <a href="#" class="next"><span class="blind">다음 페이지 보기</span></a>
-                    </div>
-                    
-                    <!-- 소팅 결과 없을 때 -->
-                    <div class="no-data">
-                        <p>조회 결과가 없습니다.</p>
-                    </div>
-                    <!-- // 소팅 결과 없을 때 -->
+                    </div>    
                 </div>
             </div>
             <!-- // evsearchent -->

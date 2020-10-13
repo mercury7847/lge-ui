@@ -4,11 +4,6 @@
         "pageCSS": [
             "support/support",
             "support/product-support"
-        ],
-        "pageJS": [
-            "support-common",
-            "support/selectCategory",
-            "support/downloadResources"
         ]
     })
 <body>
@@ -22,341 +17,151 @@
             })
 
             <div class="contents support reference">
+                <div class="product-nav-wrap" data-js="floating">
+                    <div class="model-nav-inner">
+                        <div class="model-box">
+                            <div class="infos">
+                                <ul class="category-list">
+                                    <li id="superCategory"></li>
+                                    <li id="category"></li>
+                                </ul>
+                                <p class="guide">모델을 선택하면 더 정확하게 알려드려요.</p>
+                                <p class="model" id="modelName"></p>   
+                            </div>
+                            <button type="button" class="btn-text" id="btnReset"><span>제품 다시 선택</span></button>
+                        </div>
+                    </div>
+                </div>
                 <div class="contents-inner">
-
-                    <div class="step-section" id="stepCategory">
-                        <div class="section">
-                            <div class="section-content">
-                                <div class="field-wrap">
-                                    <div class="row">
-                                        <div class="field-item block">
-                                            <div class="field-title">
-                                                <label for="model" class="tit">모델명 검색</label>
-                                            </div>
-                                            <div class="model-search">
-                                                <div class="input-wrap block">
-                                                    <input type="text" id="model" name="model" placeholder="모델명을 검색해주세요.">
-                                                    <button type="button"><span class="blind">검색</span></button>
-                                                </div>
-                                                <div class="model-util">
-                                                    <a href="#" class="btn-banner"><span class="icon-plus">내 제품 선택</span></a>
-                                                    <a href="#" class="btn-text pink">모델명 확인방법</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="section">
-                            <div class="section-title">
-                                <h3 class="tit">Step01. 제품을 선택해주세요.</h3>
-                            </div>
-                            <div class="section-content">
-                                @@include('./common/support/select-category.html')
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="step-section" id="stepModel">
-                        <div class="product-nav-wrap">
-                            <div class="model-nav-inner">
-                                <div class="model-box">
-                                    <div class="infos">
-                                        <ul class="category-list">
-                                            <li id="superCategory"></li>
-                                            <li id="category"></li>
-                                        </ul>
-                                        <p class="guide">모델을 선택하면 더 정확하게 알려드려요.</p>
-                                        <p class="model" id="modelName"></p>   
-                                    </div>
-                                    <button type="button" class="btn-text" id="btnReset"><span>제품 다시 선택</span></button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="section">
-                            <div class="section-title">
-                                <h3 class="tit">Step02. 제품 모델명을 선택해주세요. (필수)</h3>
-                            </div>
-                            <div class="section-content">
-
-                                <div class="tbl tbl-vertical model">    
-                                    <table class="tbl-list">
-                                        <colgroup>
-                                            <col>
-                                            <col>
-                                            <col>
-                                        </colgroup>
-                                        <thead>
-                                            <tr>
-                                                <th>제품 모델명</th>
-                                                <th>카테고리</th>
-                                                <th><span class="blind">선택</span></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="modelContent">
-                                            <!-- <tr>
-                                                <td>B80FV.AR9501</td>
-                                                <td>IT/모니터 > 데스크톱/일체형</td>
-                                                <td>
-                                                    <button type="button" class="btn bd-pink btn-small"><span>선택하기</span></button>
-                                                </td>
-                                            </tr> -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                                @@include('./common/support/pagination.html', {
-                                    count: 5
-                                })
-                                @@include('./common/modules/bullet-list.html', {
-                                    "topBorder" : true,
-                                    "bulletTxt" : [
-                                        "2017년 6월 30일로 당사 CCM 인증이 만료되었습니다. 이전에 업로드된 제품 매뉴얼 등에 표기되어 있는 CCM 인증으로 인해 오해 없으시기 바랍니다."
-                                    ]
-                                })
-
-                            </div>
-                        </div>
-
-                        <div class="btn-group right">
-                            <button type="submit" class="btn pink" id="btnSearch"><span>조회</span></button>
-                        </div>
-                    </div>
 
                     <div class="step-section" id="stepResult">
                         <div class="section">
                             <div class="section-title">
-                                <h3 class="tit">제품사용 설명서 (<em class="count">3</em>건)</h3>
+                                <h4 class="tit">제품사용 설명서 (<em class="count">2</em>건)</h4>
                             </div>
                             <div class="section-content">
-
-                                <div class="tbl tbl-vertical download">
-                                    <table class="tbl-list">
-                                        <colgroup>
-                                            <col>
-                                            <col>
-                                            <col>
-                                            <col>
-                                        </colgroup>
-                                        <thead>
-                                            <tr>
-                                                <th>설명서 유형</th>
-                                                <th>유형정보</th>
-                                                <th>등록일</th>
-                                                <th><span class="blind">다운로드</span></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="fileContent">
-                                            <!-- <tr>
-                                                <td>[한글] 제품사용설명서</td>
-                                                <td>Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</td>
-                                                <td>2020.02.27</td>
-                                                <td>
-                                                    <button type="button" class="btn bd-pink btn-small"><span>ZIP</span></button>
-                                                </td>
-                                            </tr> -->
-                                        </tbody>
-                                    </table>
+                                <div class="download-wrap">
+                                    <ul class="download-list">
+                                        <li>
+                                            <strong class="tit">제품 사용설명서</strong>
+                                            <p class="desc">Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>   
+                                            <ul class="infos">
+                                                <li>2013.02.06</li>
+                                                <li>한국어</li>   
+                                            </ul>
+                                            <div class="btns-wrap">
+                                                <a href="#" class="btn bd-pink btn-small"><span>PDF</span></a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong class="tit">제품 사용설명서</strong>
+                                            <p class="desc">Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>   
+                                            <ul class="infos">
+                                                <li>2013.02.06</li>
+                                                <li>한국어</li>   
+                                            </ul>
+                                            <div class="btns-wrap">
+                                                <a href="#" class="btn bd-pink btn-small"><span>HTML</span></a>
+                                                <a href="#" class="btn bd-pink btn-small"><span>ZIP</span></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "topBorder" : true, 
+                                    "bulletTxt" : [
+                                        "zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다."
+                                    ]
+                                })
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="section-title">
+                                <h4 class="tit">드라이버/소프트웨어 (<em class="count">130</em>건)</h4>
+                                <div class="btn-area">
+                                    <a href="#" class="btn-link"><span>더보기</span></a>
+                                </div>
+                            </div>
+                            <div class="section-content">
+                                <div class="tabs-wrap border-type ui_tab left">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#tab1">통합 드라이버 설치프로그램(110)<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#">칩셋/패치(6)</a></li>
+                                        <li><a href="#">비디오(6)</a></li>
+                                        <li><a href="#">사운드(3)</a></li>
+                                        <li><a href="#">랜(4)</a></li>
+                                        <li><a href="#">기타(0)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="download-wrap">
+                                    <ul class="download-list">
+                                        <li>
+                                            <strong class="tit">[프로그램/Win10_64bit] XPION용 LG intelligent Update 프로그램</strong>
+                                            <p class="desc">ver.7.7PHV1 데스크톱/일체형</p>   
+                                            <ul class="infos">
+                                                <li>2013.02.06</li>
+                                                <li>통합 드라이버 설치프로그램</li>   
+                                            </ul>
+                                            <div class="btns-wrap">
+                                                <a href="#" class="btn bd-pink btn-small"><span>다운로드 1118.4mb</span></a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong class="tit">[프로그램/Win10_64bit] XPION용 LG intelligent Update 프로그램</strong>
+                                            <p class="desc">ver.7.7PHV1 데스크톱/일체형</p>   
+                                            <ul class="infos">
+                                                <li>2013.02.06</li>
+                                                <li>통합 드라이버 설치프로그램</li>   
+                                            </ul>
+                                            <div class="btns-wrap">
+                                                <a href="#" class="btn bd-pink btn-small"><span>다운로드 1118.4mb</span></a>
+                                                <!-- <button type="button" class="btn-open"><span>이전 버전 보기</span></button> -->
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                                 @@include('./common/support/pagination.html', {
                                     count: 5
                                 })
-                                @@include('./common/modules/bullet-list.html', {
-                                    "topBorder" : true,
-                                    "bulletTxt" : [
-                                        "참조zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다."
-                                    ]
-                                })
-
-                            </div>
-                        </div>
-
-                        <div class="section">
-                            <div class="section-title">
-                                <h3 class="tit">드라이버/소프트웨어 (<em class="count">3</em>건)</h3>
-                            </div>
-                            <div class="section-content">
-
-                                <div class="field-wrap">
-                                    <div class="row">
-                                        <div class="field-item">
-                                            <div class="field-title">
-                                                <label for="osSelect" class="tit">운영체제(OS) 선택</label>
-                                            </div>
-                                            <div class="select-wrap">
-                                                <select class="ui_selectbox" id="osSelect">
-                                                    <option value="" selected>전체</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="field-item">
-                                            <div class="field-title">
-                                                <label for="driverSelect" class="tit">드라이버 분류</label>
-                                            </div>
-                                            <div class="select-wrap">
-                                                <select class="ui_selectbox" id="driverSelect">
-                                                    <option value="" selected>전체</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion ui_accord" data-open-index="0">
-                                    <ul class="accordion-list">
-                                        <!-- <li class="ui_accord_item">
-                                            <div class="accordion-head head">
-                                                <button type="button" class="accordion-head-anchor ui_accord_toggle">랜 (<em class="count">1</em>건)</button>   
-                                                <span class="blind ui_accord_text">열기</span>
-                                            </div>
-                                            <div class="accordion-panel ui_accord_content">
-                                                <ul class="driver-list">
-                                                    <li>
-                                                        <div class="file-info"> 
-                                                            <strong class="tit"><a href="#">[프로그램/Win10_64bit] LG Update Center</a></strong>
-                                                            <p class="sub">울트라 HD</p>
-                                                            <ul class="sub-list">
-                                                                <li>버전 1.0.1902.1901</li>
-                                                                <li>2020.02.27</li>
-                                                                <li>8.9mb</li>
-                                                            </ul>
-                                                            <a href="#" class="btn bd-pink btn-small"><span>다운로드</span></a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="file-info"> 
-                                                            <strong class="tit"><a href="#">[프로그램/Win10_64bit] LG Update Center</a></strong>
-                                                            <p class="sub">울트라 HD</p>
-                                                            <ul class="sub-list">
-                                                                <li>버전 1.0.1902.1901</li>
-                                                                <li>2020.02.27</li>
-                                                                <li>8.9mb</li>
-                                                            </ul>
-                                                            <a href="#" class="btn bd-pink btn-small"><span>다운로드</span></a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li> -->
-                                    </ul>
-                                </div>
-                                <div class="btn-wrap">
-                                    <a href="https://www.lgservice.co.kr/simple/selectSimpleSearchDetail.do?gubun=FAQ&type=keyword&seq=27830&itemId=9438" class="btn-banner"><span class="icon-driver">드라이버/소프트웨어는 LG Update Center를 통해 편리하게 설치해 보세요.</span></a>
+                                <div class="no-data">
+                                    <p>다운로드/소프트웨어 자료가 없습니다.</p>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="section">
-                            <div class="section-content">
-                                <div class="satis-box">    
-                                    <p class="txt">고객님이 선택하신 [A80FV] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
-                                    <a href="#" class="btn pink"><span>평가하기</span></a>
+                        <div class="section no-bg"> 
+                            <!-- 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
+                            <div class="banner-wrap">
+                                <div class="banner">
+                                    <p class="tit">드라이버/소프트웨어는 LG Update Center를 통해 편리하게 설치해 보세요.</p>
                                 </div>
+                                <a href="https://www.lgservice.co.kr/simple/selectSimpleSearchDetail.do?gubun=FAQ&type=keyword&seq=27830&itemId=9438" class="btn pink"><span>자세히 보기</span></a>
+                            </div>
+                            <!-- // 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
+
+                            <div class="banner-wrap icon-type">
+                                <div class="banner">
+                                    <i class="icon"></i>   
+                                    <p class="tit">고객님이 선택하신 [{증상명}] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
+                                </div>
+                                <button type="button" class="btn bd-gray"><span>평가하기</span></button>
                             </div>
                         </div>
                     </div>
             
                 </div>
 
-            </div>
-            <div class="service-menu-wrap">
-                <div class="inner">
-                    <h2 class="title">원하시는 결과를 찾지 못하셨다면 고객 서비스를 통해 해결해보세요.</h2>
-                    <ul class="service-list">
-                        <li>
-                            <a href="#">
-                                <div class="icon">
-                                    <img src="/lg5-common/images/icons/icon-cs-call.png" alt=""> 
-                                </div>
-                                <strong class="tit">전화 예약 상담</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="icon">
-                                    <img src="/lg5-common/images/icons/icon-cs-chat.png" alt=""> 
-                                </div>
-                                <strong class="tit">채팅상담</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="icon">
-                                    <img src="/lg5-common/images/icons/icon-cs-email.png" alt=""> 
-                                </div>
-                                <strong class="tit">이메일 문의</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="icon">
-                                    <img src="/lg5-common/images/icons/icon-cs-manual.png" alt=""> 
-                                </div>
-                                <strong class="tit">제품 메뉴얼</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="icon">
-                                    <img src="/lg5-common/images/icons/icon-cs-download.png" alt=""> 
-                                </div>
-                                <strong class="tit">다운로드 자료실</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="icon">
-                                    <img src="/lg5-common/images/icons/icon-cs-servicecenter.png" alt=""> 
-                                </div>
-                                <strong class="tit">서비스센터 찾기</strong>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                @@include('./common/support/service-menu.html')
+                <!-- include('./common/support/related-info.html') -->
 
-            <div class="related-info-wrap">
-                <div class="related-info-title">
-                    <h3 class="tit">LG제품에 관련된 정보를 확인하세요!</h3>
-                </div>
-                <div class="related-info-content">
-                    <div class="slide-wrap ui_carousel_slider related-info">
-                        <div class="slide-content ui_carousel_list">
-                            <div class="slide-track ui_carousel_track">
-                                <div class="ui_carousel_slide">
-                                    <figure class="related-info-figure">
-                                        <div class="related-info-img"><img src="/lg5-common/images/dummy-img-3.jpg" alt="관련 정보 썸네일 이미지"></div>
-                                        <figcaption class="related-info-figcap"><a href="">제품 관련 정보를어드민 타이틀 노출 영역, 최대 2줄</a></figcaption>
-                                    </figure>
-                                </div>
-                                <div class="ui_carousel_slide">
-                                    <figure class="related-info-figure">
-                                        <div class="related-info-img"><img src="/lg5-common/images/dummy-img-3.jpg" alt="관련 정보 썸네일 이미지"></div>
-                                        <figcaption class="related-info-figcap"><a href="">제품 관련 정보를어드민 타이틀 노출 영역, 최대 2줄</a></figcaption>
-                                    </figure>
-                                </div>
-                                <div class="ui_carousel_slide">
-                                    <figure class="related-info-figure">
-                                        <div class="related-info-img"><img src="/lg5-common/images/dummy-img-3.jpg" alt="관련 정보 썸네일 이미지"></div>
-                                        <figcaption class="related-info-figcap"><a href="">제품 관련 정보를어드민 타이틀 노출 영역, 최대 2줄</a></figcaption>
-                                    </figure>
-                                </div>
-                                <div class="ui_carousel_slide">
-                                    <figure class="related-info-figure">
-                                        <div class="related-info-img"><img src="/lg5-common/images/dummy-img-3.jpg" alt="관련 정보 썸네일 이미지"></div>
-                                        <figcaption class="related-info-figcap"><a href="">제품 관련 정보를어드민 타이틀 노출 영역, 최대 2줄</a></figcaption>
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
              
         @@include('./common/footer.html')
-    </div>    
+    </div>  
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/downloadResources.min.js"></script>
 </body>
 </html> 

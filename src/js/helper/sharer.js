@@ -206,7 +206,7 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
                 desc: desc,
                 image: image
             });
-
+            
             data.service = service;
             this.options.onShrered($el, data);
         },
@@ -249,7 +249,7 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
                 if (self.options.onBeforeShare($el, {service: service}) === false) {
                     return;
                 }
-
+                
                 if (!service || !core.array.include(services, service)) {
                     alert('공유할 SNS타입을 지정해주세요.');
                     return;

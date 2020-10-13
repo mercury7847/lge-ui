@@ -20,16 +20,27 @@
         <h6>@@msg</h6>
     </section>
     }
-    @@if ( !context.twobtn ) {
+    @@if ( !context.twobtn && !context.btnTxt) {
     <div class="btn-wrap laypop">
         <button type="button" class="btn pink ui_modal_close"><span>확인</span></button>
     </div>
     }
-    @@if ( context.twobtn ) {
+    @@if ( !context.twobtn && context.btnTxt) {
+        <div class="btn-wrap laypop">
+            <button type="button" class="btn pink ui_modal_close"><span>@@btnTxt</span></button>
+        </div>
+        }
+    @@if ( context.twobtn && !context.btnTxt1 && !context.btnTxt2) {
     <div class="btn-wrap laypop">
         <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
         <button type="button" class="btn pink"><span>확인</span></button>
-    </div>   
+    </div>
+    }
+    @@if ( context.twobtn && context.btnTxt1 && context.btnTxt2 ) {
+    <div class="btn-wrap laypop">
+        <button type="button" class="btn gray ui_modal_close"><span>@@btnTxt1</span></button>
+        <button type="button" class="btn pink"><span>@@btnTxt2</span></button>
+    </div>
     }
 </article>
 <!-- alert modal -->

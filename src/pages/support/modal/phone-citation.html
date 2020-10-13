@@ -1,12 +1,12 @@
 
-<article id="citationPopup" class="popup-wrap type-C">
+<article id="citationPopup" class="popup-wrap full">
     <header class="pop-header">
         <h1 class="tit"><span>휴대 전화 인증</span></h1>
     </header>
-    <section class="pop-conts">
+    <section class="pop-conts support">
         <div class="field-wrap">
             <div class="row">
-                <div class="field-item block">
+                <div class="field-item">
                     <div class="field-title">
                         <label for="input-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
                     </div>
@@ -17,18 +17,21 @@
                 </div>
             </div>
             <div class="row">
-                <div class="field-item block">
+                <div class="field-item">
                     <div class="field-title">
                         <label for="input-phoneNumber" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
                     </div>
                     <div class="input-wrap">
-                        <input type="tel" name="phoneNumber" id="input-phoneNumber" placeholder="휴대 전화를 입력해주세요." maxlength="11" required="">
+                        <div class="box">
+                            <input type="tel" name="phoneNumber" id="input-phoneNumber" placeholder="휴대 전화를 입력해주세요." maxlength="11" required="">
+                            <span class="cell text-btn">
+                                <button type="button" class="btn-text underline color-3">인증번호 발송</button>
+                            </span>
+                        </div>
                         <p class="err-msg">휴대 전화를 입력해주세요.</p>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="field-item block">
+                <div class="field-item">
                     <div class="field-title">
                         <label for="certi-number" class="tit">인증번호<span class="require">*<span class="blind">필수항목</span></span></label>
                     </div>
@@ -37,6 +40,8 @@
                         <p class="err-msg">인증번호를 입력해주세요.</p>
                     </div>
                 </div>
+            </div>
+            <div class="row">
             </div>
         </div>
 
@@ -47,7 +52,8 @@
     </section>
     <footer class="pop-footer">
         <div class="btn-group">
-            <button type="button" class="btn pink"><span>확인</span></button>
+            <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+            <button type="submit" class="btn pink"><span>확인</span></button>
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>

@@ -1,0 +1,24 @@
+<div class="dl-infolist-wrap">
+    <ul class="lists">
+    @@if ( context.idType ) {
+        @@for ( var i=0; i < list.length; i++ ) {
+        <li>
+            <dl>
+                <dt>`+list[i].dt+`</dt>
+                <dd id="`+list[i].id+`">`+list[i].dd+`</dd>
+            </dl>
+        </li>
+        }
+    }
+    @@if ( !context.idType ) {
+        @@for ( var i=0; i < list.length; i++ ) {
+        <li>
+            <dl>
+                <dt>`+list[i].dt+`</dt>
+                <dd>`+list[i].dd+`</dd>
+            </dl>
+        </li>
+        }
+    }
+    </ul>
+</div>

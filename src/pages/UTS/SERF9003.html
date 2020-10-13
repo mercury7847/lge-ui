@@ -12,7 +12,7 @@
             <div class="contents search">
                 <!-- 검색 영역 -->
                 @@include('./common/modules/search-input.html', {
-                    "value" : "노크온 매직스페이스",
+                    "value" : "",
                     "related" : true
                 })
                 <!-- // 검색 영역 -->
@@ -32,6 +32,10 @@
                     <div class="search-result-wrap">
                         @@include('./common/modules/list-filter.html')
                         <div class="result-area">
+                            <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->
+                            <div class="btn-filter">
+                                <a href="#n" id="filterModalLink" class="ico-filter"><span class="blind">옵션필터</span></a>
+                            </div>
                             @@include('./common/modules/list-sorting.html', {
                                 "soldout" : true,
                                 "select" : [
@@ -123,13 +127,19 @@
                                     count: 5
                                 })
                             </div>
+                            <div class="mobile-service-link">
+                                <ul>
+                                    <li><a href="#n" class="btn-text">매장 방문 예약</a></li>
+                                    <li><a href="#n" class="btn-text">매장 찾기</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 찾으시는 제품이 없으신가요? -->
                     <div class="box-list recommend-list-wrap">
                         <h3 class="title">찾으시는 제품이 없으신가요?</h3>
-                        <ul class="story">
+                        <ul class="box-list-inner story">
                             @@loop('./common/modules/list-box.html', [
                             {
                                 "img" : "dummy/@img-stroy.png",

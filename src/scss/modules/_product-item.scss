@@ -42,7 +42,7 @@
         border-radius: 4px;
         background-color: #fff;
         @include mobile {
-            padding: 0 28px 32px;
+            padding: 0 28px 28px;
         }
         .badge-wrap {
             position: absolute;
@@ -213,6 +213,12 @@
                     color: #222;
                 }
             }
+            .spec-info2 {
+                margin-top: 8px;
+                font-size: 14px;
+                line-height: 20px;
+                color: #616161;
+            }
         }
         .price-area {
             margin-top: 24px;
@@ -321,5 +327,25 @@
             top: 24px;
             right: 64px;
         }
+    }
+    &.type2 {
+      > li {
+        .item {
+            .product-contents {
+                padding-bottom: 60px;
+                @include mobile {
+                    padding-bottom: 0; 
+                }
+            }
+            .price-area {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                @include mobile {
+                    position: static;
+                }
+            }
+        }
+      }  
     }
 }

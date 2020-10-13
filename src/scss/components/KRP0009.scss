@@ -174,15 +174,7 @@
                 .btn-filter {
                     float:left;
                     .ico-filter {
-                        display:inline-block;
-                        width:24px;
-                        height:24px;
                         margin:0 24px 0 8px;
-                        background:url("/lg5-common/images/KRP0009/btn-filter.svg") no-repeat 0 0;
-                        background-size:24px 24px;
-                        @media screen and (min-width: 1780px) {
-                            display:none;
-                        }
                     }
                 }
                 .sort-area {

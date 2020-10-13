@@ -37,7 +37,7 @@
         '{{# } #}}' +
         '<a href="#">' +
         '<strong class="tit">{{title}}</strong>' +
-        '<p class="topic">{{topic}}</p>' +
+        '<p class="desc">{{topic}}</p>' +
         '<ul class="infos">' +
         '<li>{{date}}</li>' +
         '<li>' +
