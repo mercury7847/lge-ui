@@ -8,10 +8,9 @@ $(function () {
             var currentPage = '1';
             var categoryId = _$('input[type="hidden"][name="categoryId"]').val();
             var storageName = categoryId+'_lgeProductFilter';
-            var storageFilters = lgkorUI.getStorage(storageName);	
+            var storageFilters = lgkorUI.getStorage(storageName);
             var savedFilterArr = firstFilterList || []; // CMS에서 넣어준 firstFilterList를 이용
             var firstRender = false;
-
 
             //템플릿 설정 슬라이더, 체크박스, 칼라칩, 상품아이템      
 
@@ -320,7 +319,7 @@ $(function () {
                         isBenefit : isBenefit, 
                         isCareShip : isCareShip
                     });   
-                    html += vcui.template(productItemTmpl,obj);                    
+                    html += vcui.template(productItemTmpl,obj);   
                 }
 
                 $('.product-items-wrap .items-list').html(html);
@@ -338,6 +337,8 @@ $(function () {
                 });
 
                 fnBreakPoint();
+
+                setCompares();
             }
             
             // 페이징을 렌더링
@@ -359,12 +360,54 @@ $(function () {
 
             //시작
             function init(){
-
                 bindEvent(); 
                 fnBreakPoint(); // breackpoint 이벤트 초기실행
                 // storageFilters 값이 있을때 필터를 설정.
                 if(!vcui.isEmpty(storageFilters)){
                     setApplyFilter(storageFilters);
+                }
+
+                setCompares();
+            }
+
+            //비교하기 저장 유무 체크...
+            function setCompares(){
+                $('.product-items-wrap .items-list li .product-compare input[type=checkbox]').prop('checked', false);
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+                var isCompare = vcui.isEmpty(storageCompare);
+                if(!isCompare){
+                    for(var i in storageCompare[lgkorUI.COMPARE_ID]){
+                        var name = "compare-" + storageCompare[lgkorUI.COMPARE_ID][i]['id'];
+                        console.log(name)
+                        $('.product-items-wrap .items-list li .product-compare input[name=' + name + ']').prop('checked', true);
+                    }
+                }
+            }
+
+            function setCompareState(ipt){
+                var id = $(ipt).attr('id').split("-")[1];
+                if($(ipt).prop('checked')){
+
+                    var compare = $(ipt).closest('.product-compare');
+                    var contents = compare.siblings('.product-contents');
+                    var productName = contents.find('.product-info .product-name a').text();
+                    var productID = contents.find('.product-info .sku').text();
+                    var image = compare.siblings('.product-image');
+                    var productImg = image.find('.slide-content .slide-conts.on a img').attr("src");
+                    var productAlt = image.find('.slide-content .slide-conts.on a img').attr("alt");
+
+                    var compareObj = {
+                        id: id,
+                        productName: productName,
+                        productID: productID,
+                        productImg: productImg,
+                        productAlt: productAlt
+                    }
+
+                    var isAdd = lgkorUI.addCompareProd(compareObj);
+                    if(!isAdd) $(ipt).prop('checked', false);
+                } else{
+                    lgkorUI.removeCompareProd(id);
                 }
             }
 
@@ -444,6 +487,10 @@ $(function () {
                     $('input[name="sorting"][value="'+ value +'"]').prop('checked', true).change();
                 }).vcSelectbox();
 
+                $('.product-items-wrap .items-list').on('change', '> li .product-compare input[type=checkbox]', function(e){
+                    setCompareState(e.currentTarget);
+                });
+
 
                 // 서브카테고리 이벤트 처리 
                 //$('input[name="categoryCheckbox"]').trigger('change', true);
@@ -499,7 +546,9 @@ $(function () {
                 // 브레이크포인트 이벤트 처리
                 _$(window).on('breakpointchange.filter', function(e,data){
                     fnBreakPoint();
-                });     
+                }).on("changeStorageData", function(){
+                    setCompares();
+                })
             }
 
 

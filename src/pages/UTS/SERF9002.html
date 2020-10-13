@@ -11,7 +11,11 @@
             <!-- 통합검색 -->
             <div class="contents search">
                 <!-- 검색 영역 -->
-                @@include('./common/modules/search-input.html')
+                @@include('./common/modules/search-input.html', {
+                    "value" : "노크온 매직스페이스",
+                    "related" : true,
+                    "similar" : true
+                })
                 <!-- // 검색 영역 -->
                 <!-- 검색 결과 영역 -->
                 <div class="tabs-wrap btn-type ui_tab left">
@@ -28,14 +32,12 @@
                 <div class="cont-wrap">
                     <div class="search-result-wrap">
                         <div class="result-category">
-                            <ul>
+                            <ul class="rounded-list">
                                 <li>
                                     <a href="#" class="text">제품 &gt; TV/AV</a>
-                                    <button type="button" class="btn-delete" title="삭제"><span class="blind">삭제</span></button>
                                 </li>
                                 <li>
                                     <a href="#" class="text">제품 &gt; TV/AV &gt; OLED TV</a>
-                                    <button type="button" class="btn-delete" title="삭제"><span class="blind">삭제</span></button>
                                 </li>
                             </ul>
                         </div>
@@ -54,22 +56,40 @@
                                             "badgeType" : "large",
                                             "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                             "review" : true,
+                                            "isReview" : true,
                                             "price" : true,
                                             "hashtag" : true
                                         }, {
                                             "search" : true,
                                             "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "hashtag" : true
-                                        }, {
-                                            "search" : true,
-                                            "badgeType" : "large",
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
                                             "hashtag" : true
                                         }, {
                                             "search" : true,
                                             "badgeType" : "large",
                                             "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                             "review" : true,
+                                            "hashtag" : true
+                                        }, {
+                                            "search" : true,
+                                            "badgeType" : "large",
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "price" : true,
+                                            "hashtag" : true
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "price" : true,
+                                            "hashtag" : true
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "review" : true,
+                                            "isReview" : true,
                                             "price" : true,
                                             "hashtag" : true
                                         }, {
@@ -88,18 +108,7 @@
                                             "search" : true,
                                             "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                             "review" : true,
-                                            "price" : true,
-                                            "hashtag" : true
-                                        }, {
-                                            "search" : true,
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "review" : true,
-                                            "price" : true,
-                                            "hashtag" : true
-                                        }, {
-                                            "search" : true,
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "review" : true,
+                                            "isReview" : true,
                                             "price" : true,
                                             "hashtag" : true
                                         }

@@ -138,7 +138,11 @@
                 opacity: 0.3;
             }
         }
+        &[class*=bg-] {
+            padding:60px 0;
+        }
     }
+    
 
     // img lazyload
     img.lazyload,

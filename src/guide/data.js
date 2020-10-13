@@ -77,6 +77,7 @@ var res = {
 			"KRP0016_PDP Support - B2C" : ["/html/components/KRP0016.html","","검수완료"],
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"],
 			"KRP0018_Sticky Compare" : ["/html/components/KRP0018.html","",""],
+			"KRP0019_Social Share_Dynamic" : ["/html/components/KRP0019.html","","진행중"],
 			"KRP0020_Sitemap_Dynamic" : ["/html/components/KRP0020.html","","검수완료"],
 			"KRP0021_Category module for store home" : ["/html/components/KRP0021.html","","진행중"],
 			"KRP0025_Event list for home" : ["/html/components/KRP0025.html","","진행중"],
@@ -107,6 +108,10 @@ var res = {
 				}
 			},
 			"마이페이지(MYC)" : {
+				"관심목록" : {
+					"최근 본 제품" : ["/html/MYC/ACCF7011.html","","진행중"],
+					"찜한 제품" : ["/html/MYC/ACCF7013.html","","진행중"]
+				},
 				"활동 내역" : {
 					"구독" : ["/html/MYC/ACCF7017.html","","진행중"],
 					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],

@@ -608,7 +608,10 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit.min'], funct
                     'left' : '0',
                     'bottom': '0',
                     'right': '0',
-                    'margin':'auto'
+                    'margin':'auto',
+                    'draggable':'false',
+                    'user-drag':'none',
+                    'user-select':'none'
                 })
             }else{
                 this.$container.css({'height':''}).height(this.$container.parent().outerHeight());
@@ -795,8 +798,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit.min'], funct
                 
         },
 
-
-        runZoom: function runZoom(zoom) {
+        runZoom: function runZoom(zoom, animation) {
             var self = this;
 
             var center = {x: this.$container.outerWidth()/2, y:this.$container.outerHeight()/2};
@@ -814,16 +816,23 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit.min'], funct
                 return;
             }
 
-
             if (startZoomFactor > zoomFactor){
                 center = this._getCurrentZoomCenter();                
             }
 
-            this._animate(this.options.animationDuration, 
-                function (progress) {
-                    self._scaleTo(startZoomFactor + progress * (zoomFactor - startZoomFactor), center);
-                }
-            );        
+            if(animation) {
+                this._animate(this.options.animationDuration, 
+                    function (progress) {
+                        self._scaleTo(startZoomFactor + progress * (zoomFactor - startZoomFactor), center);
+                    }
+                );
+            } else {
+                this._animate(100, 
+                    function (progress) {
+                        self._scaleTo(startZoomFactor + progress * (zoomFactor - startZoomFactor), center);
+                    }
+                );
+            }
         },    
 
         /**
