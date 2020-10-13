@@ -1368,6 +1368,15 @@ $input: (chk, rdo);
     .address-default {
         margin-top:12px;
     }
+    .part1 {
+        @include clearfix;
+        .input-wrap {
+            float: left;
+        }
+        .address-default {
+            float: right;
+        }
+    }
     @include mobile {
         .input-wrap {
             width:100%;

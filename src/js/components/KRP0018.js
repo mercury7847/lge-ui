@@ -17,6 +17,14 @@ $(window).ready(function(){
             '</div>'+
             '<button type="button" class="btn-close"><span class="blind">닫기</span></button>';
 
+        var toastTemplate = 
+            '<div class="toast-message-box">'+
+            '   <div class="inner">'+
+            '       <p class="toast-text">{{message}}</p>'+
+            '       <span class="btn-area"><a href="#" role="button">확인</a></span>'+
+            '   </div>'+
+            '</div>';
+
         function init(){
             $('.btn-init').on('click', function(e){
                 setClearCompare();
@@ -34,6 +42,12 @@ $(window).ready(function(){
 
                 if($(this).hasClass('close')) openCompareBox();
                 else closeCompareBox();
+            });
+
+            $('.toast-message').on('click', 'a[role=button]', function(e){
+                e.preventDefault();
+
+                removeToastAlert();
             })
 
             setCompares();
@@ -41,6 +55,8 @@ $(window).ready(function(){
             _$(window).on("changeStorageData", function(){
                 setCompares();
                 setCompareStatus();
+            }).on("excessiveCompareStorage", function(){
+                addToastAlert('excessive');
             });
         }
         function setCompares(){
@@ -97,8 +113,29 @@ $(window).ready(function(){
             });
         }
 
+        function addToastAlert(mode){
+            var msg;
+            if(mode == "excessive"){
+                msg = lgkorUI.COMPARE_LIMIT + "개까지 비교가능합니다.";
+            } else{
+                msg = "비교하기 기능이 초기화되었습니다.";
+            }
+
+            var toast = vcui.template(toastTemplate, {message: msg});
+            _$('.toast-message').empty()
+            .html(toast)
+            .css({
+                display:'block', 
+                opacity:0,
+                left: _$(window).width()/2 - _$('.toast-message').width()/2
+            })
+            .transition({opacity:1}, 150, 'easeInOutCubic');
+        }
+        function removeToastAlert(){
+
+        }
+
         function setClearCompare(){
-            console.log("setClearCompare");
             lgkorUI.initCompareProd();
         }
 

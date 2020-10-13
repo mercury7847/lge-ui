@@ -35,10 +35,11 @@ $(window).ready(function(){
 
             //PDP모달
             self.$popPdpVisual = $('#pop-pdp-visual');
-            self.$popPdpVisualImage = self.$popPdpVisual.find('#modal_detail_target li.image');
-            self.$popPdpVisualVideo = self.$popPdpVisual.find('#modal_detail_target li.video');
-            self.$popPdpVisualAnimation = self.$popPdpVisual.find('#modal_detail_target li.animation');
+            self.$popPdpVisualImage = self.$popPdpVisual.find('#modal_detail_target div.image');
+            self.$popPdpVisualVideo = self.$popPdpVisual.find('#modal_detail_target div.video');
+            self.$popPdpVisualAnimation = self.$popPdpVisual.find('#modal_detail_target div.animation');
             self.$popPdpThumbnail = self.$popPdpVisual.find('div.pop-pdp-thumbnail-nav ul.pop-thumbnail-list');
+            self.$popPdpZoomArea = self.$popPdpVisual.find('div.zoom-btn-area');
 
             vcui.require(['ui/pinchZoom'], function (PinchZoom) {
                 pinchZoom = new PinchZoom('.zoom-area');
@@ -239,34 +240,6 @@ $(window).ready(function(){
                                 '<p class="hidden pc">{{image_desc}}</p><p class="hidden mobile">{{image_desc}}</p></a></li>';
                             contentHtml += vcui.template(template,item);
                             break;
-                        /*
-                        case "mp4":
-                            var template = '<li class="slide-conts animation-box">' +
-						        '<a href="#" role="button" data-src="{{audio_url}}" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video">Plays audio Description Video</a>' +
-						        '<img data-src="{{image_url}}" alt="" class="lazyload" />' +
-						        '<p class="hidden">{{image_desc}}</p>' +
-						        '<div class="animation-area">' +
-							    '<video autoplay muted loop><source src="{{video_url}}" type="video/mp4"></video>' +
-							    '<div class="controller-wrap wa-btn">' +
-								'<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-name="{{link_name}}" >Pause Video</button>' +
-							    '</div></div>' +
-        						'<div class="caption">{{image_desc}}</div></li>';
-                            contentHtml += vcui.template(template,item);
-                            break;
-                        case "webm":
-                            var template = '<li class="slide-conts animation-box">' +
-						        '<a href="#" role="button" data-src="{{audio_url}}" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video">Plays audio Description Video</a>' +
-						        '<img data-src="{{image_url}}" alt="" class="lazyload" />' +
-						        '<p class="hidden">{{image_desc}}</p>' +
-						        '<div class="animation-area">' +
-							    '<video autoplay muted loop><source src="{{video_url}}" type="video/webm""></video>' +
-							    '<div class="controller-wrap wa-btn">' +
-								'<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-name="{{link_name}}" >Pause Video</button>' +
-							    '</div></div>' +
-        						'<div class="caption">{{image_desc}}</div></li>';
-                            contentHtml += vcui.template(template,item);
-                            break;
-                        */
                         default:
                             break;
                     }
@@ -719,7 +692,7 @@ $(window).ready(function(){
                     break;
                 case "video":
                 case "mp4":
-                case "wemm":
+                case "webm":
                     KRP0010.openVisualModal(index);
                     break;
                 default:
@@ -743,20 +716,23 @@ $(window).ready(function(){
             var item = pdp_visual_list[index];
 
             pinchZoom.runZoom(1, false);
-            self.$popPdpVisualVideo.html("");
+            self.$popPdpVisualVideo.html('');
+            self.$popPdpVisualAnimation.find('div.animation-box').vcVideoBox('reset');
 
             switch(item.type) {
                 case "image":
                     self.$popPdpVisualImage.find('div.zoom-area img').attr({'data-pc-src':item.image_url,'data-m-src':item.image_url});
-                    vcui.require(['ui/youtubeBox'], function () {
-                        self.$popPdpVisualImage.vcImageSwitch('reload').show();
+                    vcui.require(['ui/imageSwitch'], function () {
+                        self.$popPdpVisualImage.vcImageSwitch('reload');
                         self.$popPdpVisualImage.show();
                         self.$popPdpVisualVideo.hide();
                         self.$popPdpVisualAnimation.hide();
+                        self.$popPdpZoomArea.show();
+                        pinchZoom.update(true);
                     });
                     break;
                 case "video":
-                    var template = '<div class="visual-box"><div class="video-container video-box youtube-box">' +
+                    var template = '<div class="item-box visual-box"><div class="video-container video-box youtube-box">' +
                         '<div class="thumnail">' +
                             '<img data-pc-src="{{image_url}}" data-m-src="{{image_url}}" alt="{{image_alt}}">' +
                             '<a href="#none" data-src="{{ad_url}}" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-link-area="" data-link-name="{{link_name}}" aria-describedby="{{image_desc}}">plays audio description video</a>' +
@@ -765,26 +741,26 @@ $(window).ready(function(){
                         '</div></div></div>'
                     self.$popPdpVisualVideo.html(vcui.template(template,item));
                     vcui.require(['ui/imageSwitch','ui/youtubeBox'], function () {
-                        self.$popPdpVisualVideo.vcImageSwitch('reload').show();
+                        self.$popPdpVisualVideo.vcImageSwitch('reload');
                         self.$popPdpVisualVideo.find('.youtube-box').vcYoutubeBox();
                         self.$popPdpVisualImage.hide();
                         self.$popPdpVisualVideo.show();
                         self.$popPdpVisualAnimation.hide();
+                        self.$popPdpZoomArea.hide();
                     });
                     break;
                 case "mp4":
-                case "wemm":
+                case "webm":
+                    self.$popPdpVisualAnimation.find('div.visual-box div.visual-area a').attr({'data-src':item.ad_url,'aria-describedby':item.image_desc});
+                    self.$popPdpVisualAnimation.find('div.visual-box div.visual-area p.hidden').text(item.image_desc);
+                    self.$popPdpVisualAnimation.find('div.visual-box div.visual-area div.animation-area video source').attr({'src':item.video_url,'type':('video/'+item.type)});
+                    self.$popPdpVisualAnimation.find('div.visual-box div.visual-area div.animation-area video').attr({'src':item.video_url});
+                    self.$popPdpVisualAnimation.find('div.animation-box').vcVideoBox('play');
+                    self.$popPdpVisualImage.hide();
+                    self.$popPdpVisualVideo.hide();
+                    self.$popPdpVisualAnimation.show();
+                    self.$popPdpZoomArea.hide();
                     break;
-                    /*
-                case "mp4":
-                case "wemm":
-                    self.$pdpAnimation.find('a').attr({'data-src':item.audio_url,'data-link-name':item.link_name});
-                    self.$pdpAnimation.find('img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
-                    self.$pdpAnimation.find('p.hidden').html(item.image_desc);
-                    self.$pdpAnimation.find('video source').attr({'src':item.video_url,'type':("video/"+item.type)})
-                    self.$pdpAnimation.find('div.caption').html(item.image_desc);
-                    break;
-                    */
                 default:
                     break;
             }
