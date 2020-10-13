@@ -1,46 +1,16 @@
 (function() {
     var modelListTemplate = 
-        '<tr>' +
-            '<td>{{modelName}}</td>' +
-            '<td>{{categoryName}}</td>' +
-            '<td>' +
-                '<button type="button" class="btn bd-pink btn-small" data-model="{{modelName}}"><span>선택하기</span></button>' +
-            '</td>' +
-        '</tr>';
-    var manualListTemplate = 
-        '<tr>' +
-            '<td>{{manualType}}</td>' +
-            '<td>{{manualInfo}}</td>' +
-            '<td>{{date}}</td>' +
-            '<td>' +
-                '<button type="button" class="btn bd-pink btn-small"><span>{{fileType}}</span></button>' +
-            '</td>' +
-        '</tr>';
-    var driverListTemplate = 
-        '<li class="ui_accord_item">' +
-            '<div class="accordion-head head">' +
-                '<button type="button" class="accordion-head-anchor ui_accord_toggle">{{driverType}} (<em class="count">{{count}}</em>건)</button>   ' +
-                '<span class="blind ui_accord_text">열기</span>' +
-            '</div>' +
-            '<div class="accordion-panel ui_accord_content">' +
-                '<ul class="driver-list">' +
-                '</ul>' +
-            '</div>' +
-        '</li>';
-    var driverListTemplate02 = 
         '<li>' +
-            '<div class="file-info">' +
-                '<strong class="tit"><a href="#">{{dirverName}}</a></strong>' +
-                '<p class="sub">{{productName}}</p>' +
-                '<ul class="sub-list">' +
-                    '<li>{{driverVersion}}</li>' +
-                    '<li>{{date}}</li>' +
-                    '<li>{{size}}</li>' +
-                '</ul>' +
-                '<a href="#" class="btn bd-pink btn-small"><span>다운로드</span></a>' +
+            '<strong class="tit">{{modelName}}</strong>' +
+            '<p class="desc>{{categoryName}}</p>' +
+            '<ul class="infos>' +
+                '<li></li>' +
+                '<li></li>' +
+            '</ul>' +
+            '<div class="btns-wrap>' +
+                '<button type="button" class="btn bd-pink btn-small" data-model="{{modelName}}"><span>선택하기</span></button>' +
             '</div>' +
         '</li>';
-    var optionTemplate =  '<option value="{{value}}">{{option}}</option>'; 
 
     $(window).ready(function() {
         var downloadResources = {
@@ -54,6 +24,8 @@
                 self.$stepResult = $('#stepResult');
 
                 self._setEventListener();
+                self.searchModelList(); //삭제예정
+                self.searchFileList(); //삭제예정
             },
             searchModelList: function(formData) {
                 var self = this;
@@ -114,7 +86,6 @@
                         });
                         $('.accordion-list').html(driverList);
     
-    
                         $('.accordion-list li').each(function(index) {
                             var driverArr = data.driverList[index].list instanceof Array ? data.driverList[index].list : [];
                             var driverList = "";
@@ -123,26 +94,8 @@
                             });
                             $(this).find('ul').html(driverList);
                         });
-                                
-                        var osArr = data.osOption instanceof Array ? data.osOption : [];
-                        var osOption = "";
-                        osArr.forEach(function(item) {
-                            osOption += vcui.template(optionTemplate, item);
-                        });
-                        $('#osSelect').html(osOption);
-                        $('#osSelect').vcSelectbox('update');
-    
-                        var driverArr = data.driverOption instanceof Array ? data.driverOption : [];
-                        var driverOption = "";
-                        driverArr.forEach(function(item) {
-                            driverOption += vcui.template(optionTemplate, item);
-                        });
-                        $('#driverSelect').html(driverOption);
-                        $('#driverSelect').vcSelectbox('update');
     
                         $('#stepResult').show();
-    
-                        $('.accordion').vcAccordion();
                     },
                     error: function(err){
                         console.log(err);
