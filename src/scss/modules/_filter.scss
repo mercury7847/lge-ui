@@ -361,3 +361,32 @@
         }
     }
 }
+
+.btn-filter {
+    .ico-filter {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url("/lg5-common/images/KRP0009/btn-filter.svg") no-repeat 0 0;
+        background-size: 24px 24px;
+        @media screen and (min-width: 1780px) {
+            display: none;
+        }
+        @include mobile {
+            background-size: 19px 19px;
+        }
+    }
+    &.applied {
+        position: relative;
+        &:after {
+            position: absolute;
+            top: -7px;
+            right: 0;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #ec455a;
+            content: '';
+        }
+    }
+}
