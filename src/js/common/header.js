@@ -165,7 +165,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 $(item).on('mouseover', function(e){
                     self._setOver(this);
                 }).on('mouseout', function(e){    
-                    //self._setOut(this);
+                    self._setOut(this);
                 });
 
                 $(item).find('> .nav-category-container > ul >li').each(function(cdx, child){
