@@ -1,5 +1,5 @@
 .box-list {
-    position: relative;
+    /*position: relative;
     overflow:hidden;
     max-width:(1284px + 80px);
     margin:16px auto 0;
@@ -8,7 +8,7 @@
         margin-top:12px;
         padding:32px 20px 56px;
         background:#fff;
-    }
+    } */
     .box-list-inner {
         font-size:0;
         margin:-12px -6px 0;
@@ -73,13 +73,14 @@
                         font-size:20px;
                         line-height:30px;
                         font-weight:700;
-                        overflow:hidden;
-                        text-overflow:ellipsis;
-                        white-space:nowrap;
+                        @include textClipClamp(1);
                         @include mobile {
                             height:18px;
                             font-size:14px;
                             line-height:18px;
+                        }
+                        em {
+                            color: #ec455a;
                         }
                     }
                     .tit2 {
@@ -88,14 +89,14 @@
                         font-size:16px;
                         line-height:24px;
                         font-weight:700;
-                        overflow:hidden;
-                        text-overflow:ellipsis;
-                        -webkit-line-clamp:2;
-                        white-space:normal;
+                        @include textClipClamp(2);
                         @include mobile {
                             height:18px;
                             font-size:14px;
                             line-height:18px;
+                        }
+                        em {
+                            color: #ec455a;
                         }
                     }
                     .date {
@@ -103,9 +104,7 @@
                         color:#222;
                         font-size:16px;
                         line-height:24px;
-                        overflow:hidden;
-                        text-overflow:ellipsis;
-                        white-space:nowrap;
+                        @include textClipClamp(1);
                         @include mobile {
                             height:16px;
                             font-size:12px;
@@ -245,13 +244,15 @@
     }
 }
 
-.story-list-wrap {
+.story-list-wrap,
+.recommend-list-wrap {
     @include mobile {
         margin-top:12px;
         padding: 0;
     }
     .story {
         width: 100%;
+        margin: -12px 0 0 0;
         .lists {
             width:calc(100% / 2);
             padding:0;
@@ -301,16 +302,20 @@
                         width: 100%;
                         height: 60px;
                         margin-bottom: 8px;
-                        -webkit-line-clamp:2;
-                        text-overflow: ellipsis;
-                        white-space: normal;
-                        overflow: hidden;
+                        @include textClipClamp(2);
                         color: #222;
                         em {
                             color: #ec455a;
                         }
+                    } 
+                }
+                .btn-area {
+                    left: auto;      
+                    width: 270px;
+                    padding: 0 24px 0 22px;
+                    .btn {
+                        width: auto;
                     }
-                    
                 }
             }
         } 
@@ -348,9 +353,7 @@
                         color:#222;
                         font-size:14px;
                         line-height:20px;
-                        overflow:hidden;
-                        text-overflow:ellipsis;
-                        white-space:nowrap;
+                        @include textClipClamp(1);
                         @include mobile {
                             height:16px;
                             font-size:12px;
