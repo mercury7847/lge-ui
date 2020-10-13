@@ -31,12 +31,16 @@
 
                 <div class="cont-wrap">
                     <div class="search-result-wrap">
-                        <div class="list-head">
-                            <h2 class="title">이벤트</h2>
-                            <div class="btn-area">
-                                <a href="#" class="btn-link"><span>더보기</span></a>
-                            </div>
-                        </div>
+                        @@include('./common/modules/list-sorting.html', {
+                       
+                            "select" : [
+                                { "option" : "정확도순" },
+                                { "option" : "인기순" },
+                                { "option" : "최신순" },
+                                { "option" : "가격 높은순" },
+                                { "option" : "가격 낮은순" }
+                            ]
+                        })
                         <div class="box-list search-evt-list-wrap">
                             <ul class="box-list-inner events">
                                 @@loop('./common/modules/list-box.html', [
