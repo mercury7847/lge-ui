@@ -1,4 +1,68 @@
 // Form
+.input-info {
+    padding-top:64px;
+    &:first-child {
+        padding-top:0;
+    }
+    @include mobile {
+        position:relative;
+        padding:50px 0 56px;
+        &:before {
+            content:'';
+            display:block;
+            position:absolute;
+            top:0;
+            left:-20px;
+            right:-20px;
+            height:12px;
+            background:#f4f4f4;
+        }
+        &:first-child {
+            &:before {
+                display:none;
+            }
+        }
+        &:last-child {
+            padding-bottom:0;
+        }
+    }
+    .tit-wrap {
+        position:relative;
+        padding-bottom:24px;
+        @include mobile {
+            padding-bottom:32px;
+        }
+        h2.h2-tit {
+            display:inline-block;
+            font-size:16px;
+            line-height:24px;
+            font-weight:700;
+            vertical-align:middle;
+        }
+        .right-chk {
+            float:right;
+        }
+        .agree-chk {
+            float:right;
+            @include mobile {
+                @include clearfix;
+                float:inherit;
+                margin-top:20px;
+            }
+            .rdo-wrap {
+                margin-left:64px;
+                @include mobile {
+                    float:left;
+                    width:50%;
+                    margin:0;
+                }
+                &:first-child {
+                    margin-left:0;
+                }
+            }
+        }
+    }
+}
 .form-wrap {
     .forms {
         position:relative;
@@ -9,9 +73,15 @@
         &:first-child {
             margin-top:0;
         }
+        .input-wrap {
+            margin-top:8px;
+            &:first-child {
+                margin-top:0;
+            }
+        }
         .tit {
-            margin-bottom:12px;
-            color:#222;
+            margin-bottom:8px;
+            color:#616161;
             font-size:14px;
             line-height:20px;
             .req {
@@ -27,10 +97,14 @@
             }
         }
         .conts {
+            @include clearfix;
             .input-box {
-                margin-top:12px;
+                margin-top:8px;
                 font-size:0;
                 &:first-child {
+                    margin-top:0;
+                }
+                .input-wrap {
                     margin-top:0;
                 }
                 .rdo-wrap {
@@ -38,18 +112,19 @@
                     @include mobile {
                         margin-left:24px;
                     }
+                    &.btn-type {
+                        margin-left:8px;
+                    }
                     &:first-child {
                         margin-left:0;
                     }
                 }
                 &.btn-type {
-                    margin:0 -4px;
                     .input-wrap {
                         width:50%;
-                        padding:0 4px;
                     }
                     .btn {
-                        margin-left:4px;
+                        margin-left:8px;
                         padding:15px 32px;
                     }
                     @include mobile {
@@ -60,21 +135,38 @@
                         }
                         .btn {
                             width:100%;
-                            margin-left:0;
+                            margin:0;
                             margin-top:20px;
                         }
                     }
                     &.size2 {
                         .input-wrap {
-                            width:calc((100% - 128px) / 2);
+                            width:calc((100% - 140px) / 2);
+                            margin-left:8px;
+                            &:first-child {
+                                margin-left:0;
+                            }
                             @include mobile {
                                 width:100%;
                                 margin-top:8px;
+                                margin-left:0;
                                 &:first-child {
                                     margin-top:0;
                                 }
                             }
                         }
+                    }
+                }
+            }
+            .input-box-wrap {
+                display:table;
+                width:100%;
+                .input-box {
+                    display:table-cell;
+                    margin:0;
+                    white-space:nowrap;
+                    &:first-child {
+                        padding-right:34px;
                     }
                 }
             }
@@ -85,6 +177,47 @@
                 position:absolute;
                 top:0;
                 right:0;
+            }
+            .flt-btn {
+                float:right;
+                margin-top:8px;
+                &.btn-text {
+                    font-size:14px;
+                    line-height:20px;
+                }
+            }
+        }
+        .bullet-list {
+            margin-top:12px;
+        }
+    }
+
+    .double-form {
+        @include clearfix;
+        .forms {
+            float:left;
+            width:calc((100% - 16px) / 2);
+            margin:32px 0 0 16px;
+            @include mobile {
+                width:100%;
+                margin:40px 0 0 0;
+            }
+            &:first-child {
+                margin:32px 0 0 0;
+                @include mobile {
+                    margin:40px 0 0 0;
+                }
+            }
+        }
+        &:first-child {
+            .forms {
+                margin-top:0;
+                @include mobile {
+                    margin-top:40px;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                }
             }
         }
     }
@@ -121,7 +254,7 @@
 
         &:disabled, &:read-only {
             background:#f4f4f4;
-            border-color:transparent;
+            border-color:#f4f4f4;
             &:focus {
                 box-shadow:none;
             }
@@ -167,7 +300,7 @@
                 z-index:5;
                 &:#{$p}-child {
                     @if ( $p == last ) {
-                        padding:0 23px 0 0;
+                        padding:0 19px 0 0;
                         border-left:none;
                         border-radius:0 8px 8px 0;
                     } @else if ( $p == first) {
@@ -190,6 +323,28 @@
                     background:url('/lg5-common/images/icons/icon-delete.svg') center no-repeat;
                     background-size:24px;
                 }
+                .btn-text {
+                    margin-right:4px;
+                }
+                &.addr {
+                    .btn-text {
+                        position:relative;
+                        padding-right:20px;
+                        &:after {
+                            content:'';
+                            display:block;
+                            position:absolute;
+                            top:50%;
+                            right:0;
+                            -webkit-transform:translateY(-50%);
+                            transform:translateY(-50%);
+                            width:16px;
+                            height:16px;
+                            background:url('/lg5-common/images/icons/icon-addr-search.svg') no-repeat;
+                            background-size:16px 16px;
+                        }
+                    }
+                }
             }
             input, textarea {
                 position:relative;
@@ -210,6 +365,14 @@
                     box-shadow:none;
                 }
             }
+        }
+
+        input:disabled + .cell, 
+        input:read-only + .cell, 
+        textarea:disabled + .cell,
+        textarea:read-only + .cell {
+            border-color:#f4f4f4;
+            background:#f4f4f4;
         }
 
         // @include mobile {
@@ -300,15 +463,19 @@
             background:transparent;
             color:#222;
         }
+        input:read-only + .cell,
+        input:disabled + .cell {
+            border-color:#ddd;
+            background:transparent;
+        }
         .pic-btn {
-            padding:11px 11px 11px 0;
             > button {
                 display:inline-block;
-                width:32px;
-                height:32px;
+                width:24px;
+                height:24px;
                 border:none;
                 background:url("/lg5-common/images/icons/icon-cal.svg") center no-repeat;
-                vertical-align:top;
+                vertical-align:middle;
             }
         }
 
