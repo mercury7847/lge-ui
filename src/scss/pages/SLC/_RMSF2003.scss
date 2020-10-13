@@ -137,7 +137,7 @@
         padding:0 24px 48px;
         background:#fff;
         border-radius:4px;
-        box-shadow: 0 3px 14px 0 rgba(0, 0, 0, 0.06);
+        box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.06);
         overflow:hidden;
         .chk-wrap {
             position:absolute;
@@ -212,6 +212,7 @@
                                     }
                                 }
                                 .slide-controls {
+                                    display:block;
                                     .btn-arrow {
                                         &.prev {
                                             left:-20px;
@@ -224,7 +225,7 @@
                                             width:10px;
                                             height:10px;
                                             margin-top:-5px;
-                                            border-width:2px;
+                                            border-width:1px;
                                         }
                                     }
                                 }
@@ -460,7 +461,7 @@
                     position:absolute;
                     top:0;
                     right:0;
-                    @include mobile {
+                    @include tablet {
                         top:48px;
                         right:20px;
                     }
@@ -472,8 +473,10 @@
             max-width:1284px + 60px;
             margin:46px auto 0;
             padding:0 30px;
-            @include mobile {
+            @include tablet {
                 margin-top:60px;
+            }
+            @include mobile {
                 padding:0 20px;
             }
             .inner {
@@ -512,7 +515,7 @@
         width:100%;
         background:#fff;
         box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
-        z-index:110;
+        z-index:10;
         .inner {
             @include clearfix;
             position:relative;
@@ -555,6 +558,12 @@
                     float:inherit;
                     width:100%;
                     padding-left:20px;
+                }
+                .prd-care-horizon {
+                    padding-right:58px;
+                    @include mobile {
+                        padding-right:56px;
+                    }
                 }
             }
             .total-info {
