@@ -3,6 +3,10 @@ $(window).ready(function(){
 
     $('.KRC0019').buildCommonUI();
 
+    $('.KRC0019 .drag-area').twentytwenty({
+        no_overlay: true
+    });
+
     var $targetDrag = $('.KRC0019 .drag-area');
     $targetDrag.each(function(){
         var dragTitle = $(this).data('handle-title');
@@ -22,9 +26,5 @@ $(window).ready(function(){
             $(this).find('a.link-text').attr('aria-describedby', 'waKRC0019_'+waNumber);
             waNumber++;
         }
-    });
-
-    $('.KRC0019 .drag-area').twentytwenty({
-        no_overlay: true
     });
 });
