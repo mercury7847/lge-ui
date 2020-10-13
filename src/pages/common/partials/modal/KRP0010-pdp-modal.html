@@ -18,13 +18,44 @@
             </div>
             --->
             <ul class="slider default slider-for" id="modal_detail_target">
-                <!--
-                <li class="item view">
-                    <div class="iframe-area" data-href="https://www.lg.com/us/images/360/ha/black_kitchen/refrigerator/LNXS30996D.html" data-type="360" data-title="TAKE US FOR A SPIN"></div>
-                </li>
-                -->
                 <li class="item video">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/A1BF1kmkvp8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="visual-box">
+                        <!-- box 컨텐츠가 video일 때 (youtube) -->
+                        <div class="video-container video-box youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
+                            <div class="thumnail">
+                                <img data-pc-src="/lg5-common/images/KRC0043/@thumb01.jpg" data-m-src="/lg5-common/images/KRC0043/@thumb01.jpg" alt="">
+                                <a href="#none" data-src="https://www.youtube.com/embed/6BnPTCtzHlo" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-link-area="" data-link-name="{video id}" aria-describedby="title01">plays audio description video</a>
+                            </div>
+                            <div class="video-asset video-box-closeset">
+                                <iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/PetoQo1eUww?autoplay=1"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item animation">
+                    <div class="visual-box" aria-describedby="title02">
+                        <!-- 1. animation 타입인 경우 animation-box 클래스 추가 -->
+                        <div class="visual-area animation-box">
+                            <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
+                            <img data-src="/lg5-common/images/dummy/@sample-960x540.png" alt="" class="lazyload" />
+                            <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                            <div class="animation-area">
+                                <video autoplay muted loop>
+                                    <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                    <!-- WEBM 동영상을 제공하는 경우
+                                    <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                    -->
+                                </video>
+                                <div class="controller-wrap wa-btn">
+                                    <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                                </div>
+                            </div>
+                            <!-- caption -->
+                            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                            <!-- // caption -->
+                        </div>
+                        <!-- // 1. animation 타입인 경우 -->
+                    </div>
                 </li>
                 <li class="item image">
                     <div class="zoom-area">

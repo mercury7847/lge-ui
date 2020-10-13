@@ -4,7 +4,7 @@
     "data": {
         "produt_id":"EPRD.348027",
         "product_title":"LG 올레드 갤러리 TV!",
-        "product_name":"OLED88ZXKNA?",
+        "product_name":"OLED88ZXKNA",
         "product_master_price":"1990001",
         "product_review_count":"1294",
         "product_notice_description":"온라인에서 구매할 수 없는 제품입니다.",
@@ -37,7 +37,9 @@
                 "link_name":"65UK6300PUE1",
                 "type":"video",
                 "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum01.png",
-                "video_url":"https://www.youtube.com/embed/6BnPTCtzHlo",
+                "ad_url":"https://www.youtube.com/embed/6BnPTCtzHlo",
+                "video_url":"https://www.youtube.com/embed/LDocqNKcW0c",
+                "ad2_url":"https://www.youtube.com/embed/LDocqNKcW0c",
                 "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
                 "image_alt":"LG Vacuum Cleaners A902RM 0",
                 "image_desc":"video description"

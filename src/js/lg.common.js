@@ -340,17 +340,17 @@
             $('body').vcSpinner('stop');
         },
 
-        addCompareProd: function(id){
+        addCompareProd: function(data){
             var self = this;
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
             if(compareStorage[self.COMPARE_ID] == undefined){
-                compareStorage[self.COMPARE_ID] = [id];
+                compareStorage[self.COMPARE_ID] = [data];
             } else{
                 var leng = compareStorage[self.COMPARE_ID].length;
                 var limitLeng = 3;
                 if(leng < limitLeng){
-                    compareStorage[self.COMPARE_ID].push(id);
+                    compareStorage[self.COMPARE_ID].push(data);
                 } else{
                     alert("담기 불가!!");
                     return false;
@@ -367,11 +367,19 @@
 
             var compareStorage = self.getStorage(self.COMPARE_KEY);
             compareStorage[self.COMPARE_ID] = vcui.array.filter(compareStorage[self.COMPARE_ID], function(item){
-                return item != id;
+                return item['id'] != id;
             });
 
             self.setStorage(self.COMPARE_KEY, compareStorage);
             console.log(self.getStorage(self.COMPARE_KEY));     
+        },
+
+        initCompareProd: function(){
+            var self = this;
+            
+            var obj = {};
+            obj[self.COMPARE_ID] = [];
+            self.setStorage(self.COMPARE_KEY, obj);
         },
 
         setStorage: function(key, value){

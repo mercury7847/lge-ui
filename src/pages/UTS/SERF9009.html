@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTS/UTS"]
+    })
+<body>
+    <div class="wrap">
+<!--        include('./common/header.html')-->
+
+        <div class="container">
+            <!-- 통합검색 -->
+            <div class="contents search">
+                <!-- 검색 영역 -->
+                @@include('./common/modules/search-input.html', {
+                    "value" : "xlql"
+                })
+                <!-- // 검색 영역 -->
+                <!-- 검색 결과 영역 -->
+                <div class="search-not-result">
+                    <div class="no-data">
+                        <p>
+                            <span><em>&ldquo;XLQL&rdquo;</em>에 대한 검색 결과가 없습니다</span>
+                            다시 한번 확인해주세요.
+                        </p>
+                    </div>
+                </div>
+                <div class="cont-wrap">
+                    <div class="search-result-wrap">
+                        <div class="result-list-wrap">
+                            <div class="list-head">
+                                <h2 class="title">이런 제품 어떠세요?</h2>
+                            </div>
+                            <div class="list-wrap">
+                                <ul class="product-items">
+                                    @@loop('./common/modules/product-item.html', [
+                                        {
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionColor" : true,
+                                            "option1" : {
+                                                "title" : "샤이니 유니버스",
+                                                "color" : "stainless-steel",
+                                                "id" : "product1-color1",
+                                                "name" : "product1",
+                                                "checked" : "checked"
+                                            },
+                                            "option2" : {
+                                                "title" : "샤이니 퓨어",
+                                                "color" : "Black-Stainless-Steel",
+                                                "id" : "product1-color2",
+                                                "name" : "product1",
+                                                "checked" : ""
+                                            },
+                                            "option3" : {
+                                                "title" : "맨하튼 미드나잇",
+                                                "color" : "MC_K62_SkyBlue",
+                                                "id" : "product1-color3",
+                                                "name" : "product1",
+                                                "checked" : ""
+                                            },
+                                            "flags" : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "price" : true,
+                                            "benefit" : true,
+                                            "wish" : true,
+                                            "wish" : {
+                                                "id" : "chk01",
+                                                "name" : "chk01",
+                                                "checked" : ""
+                                            },
+                                            "compare" : true,
+                                            "compare" : {
+                                                "id" : "chk02",
+                                                "name" : "chk02",
+                                                "checked" : ""
+                                            },
+                                            "button" : true,
+                                            "buttonName" : "장바구니 담기"
+                                        },{
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionColor" : true,
+                                            "option1" : {
+                                                "title" : "샤이니 유니버스",
+                                                "color" : "stainless-steel",
+                                                "id" : "product2-color1",
+                                                "name" : "product2",
+                                                "checked" : "checked"
+                                            },
+                                            "option2" : {
+                                                "title" : "매트 그레이",
+                                                "color" : "HA_VCC_Matte_Grey2",
+                                                "id" : "product2-color2",
+                                                "name" : "product2",
+                                                "checked" : ""
+                                            },
+                                            "option3" : {
+                                                "title" : "매트 레드",
+                                                "color" : "HA_VCC_Matte_Red",
+                                                "id" : "product2-color3",
+                                                "name" : "product2",
+                                                "checked" : ""
+                                            },
+                                            "flags" : true,
+                                            "review" : true,
+                                            "spec" : true,
+                                            "price" : true,
+                                            "benefit" : true,
+                                            "wish" : true,
+                                            "wish" : {
+                                                "id" : "chk01",
+                                                "name" : "chk01",
+                                                "checked" : ""
+                                            },
+                                            "compare" : true,
+                                            "compare" : {
+                                                "id" : "chk02",
+                                                "name" : "chk02",
+                                                "checked" : "checked"
+                                            },
+                                            "button" : true,
+                                            "buttonName" : "장바구니 담기"
+                                        },{
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionColor" : true,
+                                            "option1" : {
+                                                "title" : "샤이니 유니버스",
+                                                "color" : "stainless-steel",
+                                                "id" : "product3-color1",
+                                                "name" : "product3",
+                                                "checked" : "checked"
+                                            },
+                                            "option2" : {
+                                                "title" : "샤이니 퓨어",
+                                                "color" : "Black-Stainless-Steel",
+                                                "id" : "product3-color2",
+                                                "name" : "product3",
+                                                "checked" : ""
+                                            },
+                                            "option3" : {
+                                                "title" : "맨하튼 미드나잇",
+                                                "color" : "MC_K62_SkyBlue",
+                                                "id" : "product3-color3",
+                                                "name" : "product3",
+                                                "checked" : ""
+                                            },
+                                            "flags" : true,
+                                            "review" : true,
+                                            "spec" : true,
+                                            "price" : true,
+                                            "benefit" : true,
+                                            "wish" : true,
+                                            "wish" : {
+                                                "id" : "chk01",
+                                                "name" : "chk01",
+                                                "checked" : "checked"
+                                            },
+                                            "compare" : true,
+                                            "compare" : {
+                                                "id" : "chk02",
+                                                "name" : "chk02",
+                                                "checked" : ""
+                                            },
+                                            "button" : true,
+                                            "buttonName" : "자세히보기"
+                                        },{
+                                            "badgeType" : "large",
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionText" : true,
+                                            "option1" : {
+                                                "title" : "옵션1",
+                                                "id" : "product4-color1",
+                                                "name" : "product4",
+                                                "checked" : ""
+                                            },
+                                            "option2" : {
+                                                "title": "옵션2",
+                                                "id" : "product4-color2",
+                                                "name" : "product4",
+                                                "checked" : "checked"
+                                            },
+                                            "option3" : {
+                                                "title": "옵션3",
+                                                "id" : "product4-color3",
+                                                "name" : "product4",
+                                                "checked" : ""
+                                            },
+                                            "flags" : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "price" : true,
+                                            "benefit" : true,
+                                            "wish" : true,
+                                            "wish" : {
+                                                "id" : "chk01",
+                                                "name" : "chk01",
+                                                "checked" : ""
+                                            },
+                                            "compare" : true,
+                                            "compare" : {
+                                                "id" : "chk02",
+                                                "name" : "chk02",
+                                                "checked" : ""
+                                            },
+                                            "button" : true,
+                                            "buttonName" : "자세히보기"
+                                        },{
+                                            "badgeType" : "thin",
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionColor" : true,
+                                            "option1" : {
+                                                "title" : "샤이니 유니버스",
+                                                "color" : "stainless-steel",
+                                                "id" : "product5-color1",
+                                                "name" : "product5",
+                                                "checked" : "checked"
+                                            },
+                                            "option2" : {
+                                                "title": "샤이니 퓨어",
+                                                "color": "Black-Stainless-Steel",
+                                                "id" : "product5-color2",
+                                                "name" : "product5",
+                                                "checked" : ""
+                                            },
+                                            "option3" : {
+                                                "title": "맨하튼 미드나잇",
+                                                "color": "MC_K62_SkyBlue",
+                                                "id" : "product5-color3",
+                                                "name" : "product5",
+                                                "checked" : ""
+                                            },
+                                            "flags" : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "price" : true,
+                                            "benefit" : true,
+                                            "wish" : true,
+                                            "wish" : {
+                                                "id" : "chk01",
+                                                "name" : "chk01",
+                                                "checked" : "checked"
+                                            },
+                                            "compare" : true,
+                                            "compare" : {
+                                                "id" : "chk02",
+                                                "name" : "chk02",
+                                                "checked" : ""
+                                            },
+                                            "button" : true,
+                                            "buttonName" : "장바구니 담기"
+                                        },{
+                                            "badgeType" : "thin",
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "optionColor" : true,
+                                            "option1" : {
+                                                "title" : "샤이니 유니버스",
+                                                "color" : "stainless-steel",
+                                                "id" : "product6-color1",
+                                                "name" : "product6",
+                                                "checked" : "checked"
+                                            },
+                                            "option2" : {
+                                                "title": "샤이니 퓨어",
+                                                "color": "Black-Stainless-Steel",
+                                                "id" : "product6-color2",
+                                                "name" : "product6",
+                                                "checked" : ""
+                                            },
+                                            "option3" : {
+                                                "title": "맨하튼 미드나잇",
+                                                "color": "MC_K62_SkyBlue",
+                                                "id" : "product6-color3",
+                                                "name" : "product6",
+                                                "checked" : ""
+                                            },
+                                            "flags" : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "price" : true,
+                                            "benefit" : true,
+                                            "wish" : true,
+                                            "wish" : {
+                                                "id" : "chk01",
+                                                "name" : "chk01",
+                                                "checked" : "checked"
+                                            },
+                                            "compare" : true,
+                                            "compare" : {
+                                                "id" : "chk02",
+                                                "name" : "chk02",
+                                                "checked" : ""
+                                            },
+                                            "button" : true,
+                                            "buttonName" : "장바구니 담기"
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // 검색 결과 영역 -->
+            </div>
+            <!-- // 통합검색 -->
+        </div>
+
+<!--        include('./common/footer.html')-->
+    </div>
+</body>
+</html>

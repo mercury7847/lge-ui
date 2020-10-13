@@ -1,6 +1,14 @@
 var CS = CS || {};
 CS.MD = CS.MD || {};
 CS.UI = CS.UI || {};
+CS.VARS = CS.VARS || {}; 
+
+CS.VARS.IS_HAND_DEVICE = false;                                    //핸드 드바이스 체크 변수
+CS.VARS.IS_MOBILE = false;                                         //디바이스 모바일 변수
+CS.VARS.IS_TABLET = false; 
+CS.VARS.IS_SIZE = CS.VARS.IS_SIZE || {};                          //반응형시 SIZE OBJECT
+CS.VARS.IS_SIZE.MAXMOBILE = 767;                                   //반응형시 MOBILE 최대값
+CS.VARS.IS_SIZE.MAXTABLET = 1024;  
 
 CS.UI.elem = {};
 CS.UI.elem.$doc = $(document);
@@ -373,13 +381,13 @@ CS.MD.pagination = function() {
 }();
 
 /* */
-CS.MD.sorting  = function() {
-    var pluginName = 'sorting';
+CS.MD.filter  = function() {
+    var pluginName = 'filter';
 
     function Plugin(el, opt) {
         var self = this,
-            el = this.el = el,
-            $el = $(el);
+            el = self.el = el,
+            $el = self.$el = $(el);
 
         var defaults = {
             
@@ -427,7 +435,7 @@ CS.MD.anchorTab  = function() {
 
     function Plugin(el, opt) {
         var self = this,
-            el = self.el = el;
+            el = self.el = el,
             $el = self.$el = $(el);
 
         var defaults = {
@@ -502,7 +510,6 @@ CS.MD.anchorTab  = function() {
 
         _initialize();
         _setEventHandler();
-        CS.UI.elem.$win.trigger('scroll');
     }
 
     Plugin.prototype = {
@@ -579,6 +586,54 @@ CS.MD.anchorTab  = function() {
     }
 }();
 
+/* VIEWPORT_WIDTH&HEIGHT */
+CS.MD.VIEWPORT = function(){
+    if(CS.UI.elem.$html.hasClass('safari')) {
+        CS.VARS.VIEWPORT_WIDTH = Math.max( CS.UI.elem.$win.width() || 0);
+    } else {
+        CS.VARS.VIEWPORT_WIDTH = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    }
+}();
+
+/*
+*
+* CS.VARS.IS_HAND_DEVICE : 단말기 기준 desktop인 경우 true
+* CS.VARS.IS_MOBILE : 단말기 기준 mobile인 경우 true;
+* CS.VARS.IS_TABLET : 단말기 기준 tablet인 경우 true;
+* CS.VARS.IS_VIEWTYPE : 해상도 기준으로 web, tablet, mobile 구분
+*
+* */
+CS.MD.CHK_DEVICE = function() {
+    var mobileInfo = ['Android', 'iPhone', 'iPod', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson'];
+    $.each(mobileInfo, function(index){
+        if (navigator.userAgent.match(mobileInfo[index]) !== null){
+            CS.VARS.IS_HAND_DEVICE = true;
+            CS.VARS.IS_MOBILE = true;
+        }
+    });
+
+    if(CS.VARS.VIEWPORT_WIDTH < CS.VARS.IS_SIZE.MAXMOBILE && CS.VARS.IS_HAND_DEVICE){
+        CS.VARS.IS_VIEWTYPE = 'mobile';
+    } else if(CS.VARS.VIEWPORT_WIDTH < CS.VARS.IS_SIZE.MAXTABLET && CS.VARS.IS_HAND_DEVICE){
+        CS.VARS.IS_VIEWTYPE = 'tablet';
+    } else {
+        if(CS.VARS.VIEWPORT_WIDTH < CS.VARS.IS_SIZE.MAXMOBILE ) {
+            CS.VARS.IS_VIEWTYPE = 'mobile';
+        } else if (CS.VARS.VIEWPORT_WIDTH < CS.VARS.IS_SIZE.MAXTABLET ) {
+            CS.VARS.IS_VIEWTYPE = 'tablet';
+        } else {
+            CS.VARS.IS_VIEWTYPE = 'web';
+        }
+    }
+
+    if(CS.VARS.VIEWPORT_WIDTH >= CS.VARS.IS_SIZE.MAXMOBILE && CS.VARS.IS_MOBILE) {
+        CS.VARS.IS_MOBILE = false;
+        CS.VARS.IS_TABLET = true;
+    }
+
+    CS.VARS.IS_HAND_DEVICE ? $('html').addClass('handy') : $('html').addClass('no-handy');
+}();
+
 (function($){
     $.fn.ajaxLoad = function(type) {
         var el = this;
@@ -615,22 +670,6 @@ CS.MD.anchorTab  = function() {
 
     function commonSlides() {
         vcui.require(['ui/carousel'], function () {
-            $('.related-info').length && $('.related-info').vcCarousel({
-                infinite: false,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                responsive: [
-                    {
-                        breakpoint: 767,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            variableWidth: true,
-                        }
-                    }
-                ]
-            });
-
             $('.engineer-carousel').length && $('.engineer-carousel').vcCarousel({
                 swipeToSlide: true,
                 slidesToShow: 4,

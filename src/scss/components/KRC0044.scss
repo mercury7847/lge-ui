@@ -172,6 +172,10 @@
                 }
             }
         }
+
+        &.ui_carousel_dots {
+            display: none !important;
+        }
     }
 
 
@@ -211,7 +215,7 @@
         right: 0;
         bottom: 96px;
         left: 0;
-        z-index: 1;
+        z-index: 2;
         .text-wrap {
             .inner {
                 width: 100%;

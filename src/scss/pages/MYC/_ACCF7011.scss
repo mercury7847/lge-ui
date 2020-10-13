@@ -3,18 +3,35 @@
     > ul {
         margin:-16px -8px 0;
         font-size:0;
+        @include mobile {
+            margin:-12px 0 0;
+        }
         .lists {
             display:inline-block;
             width:50%;
             margin-top:16px;
-            padding:0 16px;
+            padding:0 8px;
+            vertical-align:top;
+            .ui_flexible_box {
+                position:relative;
+                border:1px solid #ddd;
+                border-radius:8px;
+                @include mobile {
+                    height:auto !important;
+                }
+            }
+            @include mobile {
+                display:block;
+                width:100%;
+                margin-top:12px;
+                padding:0;
+            }
         }
         .card {
-            position:relative;
-            padding:24px 24px 24px 148px;
-            border:1px solid #ddd;
-            border-radius:8px;
-            vertical-align:top;
+            padding:24px 24px 68px 148px; 
+            @include mobile {
+                padding:20px 20px 66px 122px;
+            }
             .thumb {
                 position:absolute;
                 top:24px;
@@ -28,21 +45,43 @@
                     height:auto;
                     vertical-align:top;
                 }
+                @include mobile {
+                    top:20px;
+                    left:20px;
+                    width:90px;
+                    height:90px;
+                    border-radius:4px;
+                }
             }
             .prod-info {
-                padding-right:40px;
-                min-height:116px;
-                .name {
-                    display:inline-block;
-                    max-height:48px;
-                    color:#222;
-                    font-size:16px;
-                    line-height:24px;
-                    font-weight:700;
-                    @include textEllipsisClamp(2);
+                min-height:108px;
+                @include mobile {
+                    min-height:auto;
+                }
+                dt {
+                    padding-right:40px;
+                    @include mobile {
+                        padding-right:20px;
+                    }
+                    .name {
+                        display:inline-block;
+                        color:#222;
+                        font-size:16px;
+                        line-height:24px;
+                        font-weight:700;
+                        @include mobile {
+                            font-size:14px;
+                            line-height:18px;
+                        }
+                    }
                 }
                 .detail {
+                    padding-right:40px;
                     font-size:0;
+                    @include mobile {
+                        margin-top:4px;
+                        padding-right:20px;
+                    }
                     p {
                         display:inline-block;
                         position:relative;
@@ -69,11 +108,23 @@
                                 display:none;
                             }
                         }
+                        @include mobile {
+                            display:block;
+                            margin-right:0;
+                            padding-right:0;
+                            line-height:18px;
+                            &::after {
+                                display:none;
+                            }
+                        }
                     }
                 }
                 .price {
                     margin-top:16px;
                     font-size:0;
+                    @include mobile {
+                        margin-top:8px;
+                    }
                     p {
                         display:inline-block;
                         margin-left:4px;
@@ -86,18 +137,37 @@
                             font-size:16px;
                             line-height:24px;
                             font-weight:700;
+                            @include mobile {
+                                font-size:14px;
+                                line-height:18px;
+                            }
                         }
                         &.original {
                             color:#616161;
                             font-size:14px;
                             line-height:20px;
                             text-decoration:line-through;
+                            @include mobile {
+                                font-size:12px;
+                                line-height:16px;
+                            }
+                        }
+                        &.msg {
+                            color:#F04E3E;
+                            font-size:14px;
+                            line-height:20px;
+                            @include mobile {
+                                font-size:12px;
+                                line-height:16px;
+                            }
                         }
                     }
                 }
             }
-            .btn-wrap {
-                margin-top:0;
+            .bottom-btns {
+                position:absolute;
+                bottom:24px;
+                right:24px;
                 text-align:right;
                 .chk-wish-wrap {
                     vertical-align:middle;
@@ -109,6 +179,10 @@
                     margin-left:12px;
                     vertical-align:middle;
                 }
+                @include mobile {
+                    bottom:20px;
+                    right:20px;
+                }
             }
             .btn-del {
                 position:absolute;
@@ -117,6 +191,10 @@
                 width:24px;
                 height:24px;
                 background:url('/lg5-common/images/icons/icon-delete2.svg') center no-repeat;
+                @include mobile {
+                    top:12px;
+                    right:12px;
+                }
             }
         }
     }

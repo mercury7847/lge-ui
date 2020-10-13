@@ -31,15 +31,21 @@
     }
 
     .inner {
-        max-width: (848px + 60px);
+        max-width: (848px + 80px);
         margin: 194px auto 100px;
-        padding: 0 30px;
+        padding: 0 40px;
     }
 
     .input-keyword-wrap {
         position: relative;
         .input-keyword {
             padding: 0 0 28px;
+        }
+        .search-similar {
+            margin: 20px 0 0;
+            .search-result-text {
+                margin-bottom: 48px;
+            }
         }
     }
 }
@@ -103,34 +109,13 @@
             margin-bottom: 20px;
             font-weight: $font-weight-bold;
         }
-        .list {
-            li {
-                display: inline-block;
-                margin-bottom: 8px;
-                margin-right: 8px;
-                padding: 8px 12px;
-                border-radius: 20px;
-                border: 1px solid #ddd;
-                background-color: #fff;
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
-            .text {
-                @include font-medium;
-            }
-        }
     }
 }
 
 .search-result-area {
-    //position: absolute;
-    //top: 104px;
-    //right: 0;
-    //left: 0;
     display: table;
     margin-top: -28px;
-    .result-layer {
+    .input-result-list {
         position: relative;
         //display: table-cell;
         min-width: 194px;
@@ -139,6 +124,7 @@
         border: 1px solid #ddd;
         border-top: 0;
         background-color: #fff;
+
         &:before {
             position: absolute;
             top: -8px;
@@ -149,12 +135,6 @@
             border-left: 1px solid #ddd;
             background-color: #fff;
             content: '';
-        }
-        li {
-            margin-top: 16px;
-            &:first-child {
-                margin-top: 0;
-            }
         }
     }
 
@@ -168,7 +148,7 @@
             @include font-medium;
         }
         .result-category {
-            padding: 0 0 24px;
+            padding-bottom: 24px;
         }
     }
 }
@@ -222,23 +202,5 @@
                 @include font-medium;
             }
         }
-    }
-}
-
-.search-similar {
-    margin-top: 20px;
-    text-align: center;
-    .search-result-text {
-        margin-bottom: 48px;
-        font-weight: $font-weight-medium;
-        @include font-x-large;
-        span {
-            font-weight: $font-weight-bold;
-        }
-    }
-    .similar-text {
-        font-weight: $font-weight-medium;
-        @include font-small;
-        @include text-underline(1px,#222);
     }
 }

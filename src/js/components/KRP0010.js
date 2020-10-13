@@ -37,7 +37,7 @@ $(window).ready(function(){
             self.$popPdpVisual = $('#pop-pdp-visual');
             self.$popPdpVisualImage = self.$popPdpVisual.find('#modal_detail_target li.image');
             self.$popPdpVisualVideo = self.$popPdpVisual.find('#modal_detail_target li.video');
-            //self.$popPdpVisualAnimation = self.$popPdpVisual.find('#modal_detail_target li.image');
+            self.$popPdpVisualAnimation = self.$popPdpVisual.find('#modal_detail_target li.animation');
             self.$popPdpThumbnail = self.$popPdpVisual.find('div.pop-pdp-thumbnail-nav ul.pop-thumbnail-list');
 
             vcui.require(['ui/pinchZoom'], function (PinchZoom) {
@@ -703,17 +703,17 @@ $(window).ready(function(){
         },
 
         clickThumbnailSlide: function(index) {
-            var thumbItem = self.$pdpThumbnail.find('li.thumbnail:nth-child('+(parseInt(index)+1)+')');
-            if(self.$selectItemTarget) {
-                self.$selectItemTarget.removeClass('active');
-            }
-            self.$selectItemTarget = thumbItem;
-            self.$selectItemTarget.addClass('active');
-
             var item = pdp_visual_list[index];
 
             switch(item.type) {
                 case "image":
+                    var thumbItem = self.$pdpThumbnail.find('li.thumbnail:nth-child('+(parseInt(index)+1)+')');
+                    if(self.$selectItemTarget) {
+                        self.$selectItemTarget.removeClass('active');
+                    }
+                    self.$selectItemTarget = thumbItem;
+                    self.$selectItemTarget.addClass('active');
+
                     self.$pdpImage.find('a').attr({'data-link-name':item.link_name,'data-idx':(""+index)});
                     self.$pdpImage.find('a img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
                     break;
@@ -722,20 +722,6 @@ $(window).ready(function(){
                 case "wemm":
                     KRP0010.openVisualModal(index);
                     break;
-                    /*
-                case "video":
-                    self.$pdpVideo.find('a').attr({'data-src':item.video_url,'data-link-name':item.link_name});
-                    self.$pdpVideo.find('a.see-video div img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
-                    break;
-                case "mp4":
-                case "wemm":
-                    self.$pdpAnimation.find('a').attr({'data-src':item.audio_url,'data-link-name':item.link_name});
-                    self.$pdpAnimation.find('img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
-                    self.$pdpAnimation.find('p.hidden').html(item.image_desc);
-                    self.$pdpAnimation.find('video source').attr({'src':item.video_url,'type':("video/"+item.type)})
-                    self.$pdpAnimation.find('div.caption').html(item.image_desc);
-                    break;
-                    */
                 default:
                     break;
             }
@@ -757,27 +743,39 @@ $(window).ready(function(){
             var item = pdp_visual_list[index];
 
             pinchZoom.runZoom(1, false);
-            self.$popPdpVisualVideo.find('iframe').attr('src', ''); 
+            self.$popPdpVisualVideo.html("");
+
             switch(item.type) {
                 case "image":
                     self.$popPdpVisualImage.find('div.zoom-area img').attr({'data-pc-src':item.image_url,'data-m-src':item.image_url});
-                    self.$popPdpVisualImage.vcImageSwitch('reload').show();
-                    self.$popPdpVisualImage.show();
-                    self.$popPdpVisualVideo.hide();
+                    vcui.require(['ui/youtubeBox'], function () {
+                        self.$popPdpVisualImage.vcImageSwitch('reload').show();
+                        self.$popPdpVisualImage.show();
+                        self.$popPdpVisualVideo.hide();
+                        self.$popPdpVisualAnimation.hide();
+                    });
                     break;
                 case "video":
-                    self.$popPdpVisualVideo.find('iframe').attr('src', item.video_url); 
-                    self.$popPdpVisualImage.hide();
-                    self.$popPdpVisualVideo.show();
+                    var template = '<div class="visual-box"><div class="video-container video-box youtube-box">' +
+                        '<div class="thumnail">' +
+                            '<img data-pc-src="{{image_url}}" data-m-src="{{image_url}}" alt="{{image_alt}}">' +
+                            '<a href="#none" data-src="{{ad_url}}" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-link-area="" data-link-name="{{link_name}}" aria-describedby="{{image_desc}}">plays audio description video</a>' +
+                        '</div><div class="video-asset video-box-closeset">' +
+                            '<iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{{video_url}}"></iframe>' + 
+                        '</div></div></div>'
+                    self.$popPdpVisualVideo.html(vcui.template(template,item));
+                    vcui.require(['ui/imageSwitch','ui/youtubeBox'], function () {
+                        self.$popPdpVisualVideo.vcImageSwitch('reload').show();
+                        self.$popPdpVisualVideo.find('.youtube-box').vcYoutubeBox();
+                        self.$popPdpVisualImage.hide();
+                        self.$popPdpVisualVideo.show();
+                        self.$popPdpVisualAnimation.hide();
+                    });
                     break;
                 case "mp4":
                 case "wemm":
                     break;
                     /*
-                case "video":
-                    self.$pdpVideo.find('a').attr({'data-src':item.video_url,'data-link-name':item.link_name});
-                    self.$pdpVideo.find('a.see-video div img').attr({'data-src':item.image_url,'src':item.image_url,'alt':item.image_desc});
-                    break;
                 case "mp4":
                 case "wemm":
                     self.$pdpAnimation.find('a').attr({'data-src':item.audio_url,'data-link-name':item.link_name});
