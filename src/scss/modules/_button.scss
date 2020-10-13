@@ -101,6 +101,10 @@
             cursor:default;
         }
     }
+    &.block {
+        display: block;
+        width: 100%;
+    }
 }
 
 .btn-text {
