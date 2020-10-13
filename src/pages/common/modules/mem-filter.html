@@ -5,7 +5,12 @@
             @@if ( context.dualType ) {
             <div class="input-box-wrap">
                 <div class="input-box">
-                    
+                    @@for ( var i=0; i < btnRdo.length; i++ ) {
+                    <span class="rdo-wrap btn-type">
+                        <input type="radio" id="`+btnRdo[i].name+`-`+[i]+`" name="`+btnRdo[i].name+`" `+btnRdo[i].checked+`>
+                        <label for="`+btnRdo[i].name+`-`+[i]+`">`+btnRdo[i].value+`</label>
+                    </span>
+                    }
                 </div>
                 <div class="input-box size2 btn-type">
                     <span class="input-wrap datepicker">

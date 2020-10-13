@@ -2,6 +2,10 @@ $(window).ready(function(){
     if(!document.querySelector('.KRC0020')) return false;
 
     $('.KRC0020').buildCommonUI();
+    
+    $('.KRC0020 .drag-area').twentytwenty({
+        no_overlay: true
+    });
 
     var $targetDrag = $('.KRC0020 .drag-area');
     $targetDrag.each(function(){
@@ -22,11 +26,5 @@ $(window).ready(function(){
             $(this).find('a.link-text').attr('aria-describedby', 'waKRC0020_'+waNumber);
             waNumber++;
         }
-    });
-});
-
-$(window).load(function(){
-    $('.KRC0020 .drag-area').twentytwenty({
-        no_overlay: true
     });
 });

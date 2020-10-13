@@ -14,132 +14,83 @@
                 @@include('./common/modules/search-input.html')
                 <!-- // 검색 영역 -->
 
-                <div class="main-wrap">
-                    <div class="sorting-filter">
-                        <div class="sort-left">
-                            <div class="count">
-                                <span class="num">총 6개</span>
-                            </div>
-                        </div>
-                        <div class="sort-right">
-                            <div class="sort-select-wrap">
-                                <select class="ui_selectbox" id="select3" title="정렬 기준 선택">
-                                    <option value="">정확도순</option>
-                                    <option value="">최신순</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- tabs -->
-                    <div class="tabs-wrap btn-type bg-type ui_tab left">
-                        <ul class="tabs">
-                            <li class="on"><a href="#n">전체(210)<em class="blind">선택됨</em></a></li>
-                            <li><a href="#n">제품(59)</a></li>
-                            <li><a href="#n">케어솔루션(2)</a></li>
-                            <li><a href="#n">이벤트(5)</a></li>
-                            <li><a href="#n">스토리(18)</a></li>
-                            <li><a href="#n">케어용품/소모품(32)</a></li>
-                            <li><a href="#n">고객지원(28)</a></li>
-                        </ul>
-                    </div>
-                    <!-- // tabs -->
-                    <!--
-                    <div class="result-list-wrap">
-                        <div class="list-wrap">
-                            <ul class="product-items">
-                                @@loop('./common/modules/product-item.html', [
-                                    {
-                                        "search" : true,
-                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                        "review" : true,
-                                        "care" : true
-                                    }, {
-                                        "search" : true,
-                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                        "care" : true
-                                    }, {
-                                        "search" : true,
-                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                        "care" : true
-                                    }, {
-                                        "search" : true,
-                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                        "review" : true,
-                                        "care" : true
-                                    }, {
-                                        "search" : true,
-                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                        "review" : true,
-                                        "care" : true
-                                    }, {
-                                        "search" : true,
-                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                        "review" : true,
-                                        "care" : true
-                                    }, {
-                                        "search" : true,
-                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                        "review" : true,
-                                        "care" : true
-                                    }, {
-                                        "search" : true,
-                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                        "review" : true,
-                                        "care" : true
-                                    }, {
-                                        "search" : true,
-                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                        "review" : true,
-                                        "care" : true
-                                    }
-                                ])
+                <div class="cont-wrap">
+                    <div class="search-result-wrap">
+                        @@include('./common/modules/list-sorting.html', {
+                            "soldout" : true,
+                            "select" : [
+                                { "option" : "정확도순" },
+                                { "option" : "인기순" },
+                                { "option" : "최신순" },
+                                { "option" : "가격 높은순" },
+                                { "option" : "가격 낮은순" }
+                            ]
+                        })
+                        <!-- tabs -->
+                        <div class="tabs-wrap border-type ui_tab left">
+                            <ul class="tabs">
+                                <li class="on"><a href="#n">전체(210)<em class="blind">선택됨</em></a></li>
+                                <li><a href="#n">제품(59)</a></li>
+                                <li><a href="#n">케어솔루션(2)</a></li>
+                                <li><a href="#n">이벤트(5)</a></li>
+                                <li><a href="#n">스토리(18)</a></li>
+                                <li><a href="#n">케어용품/소모품(32)</a></li>
+                                <li><a href="#n">고객지원(28)</a></li>
                             </ul>
                         </div>
-                        @@include('./common/support/pagination.html', {
-                            count: 5
-                        })
-                    </div> -->
-                    <div class="box-list search-support-list-wrap">
-                        <ul class="box-list-inner support">
-                            @@loop('./common/modules/list-box.html', [
-                                {
-                                    "img" : "dummy/@img-product.jpg",
-                                    
-                                    "title-hd" : "이벤트 제목",
-                                    "title" : "LG DIOS <em>노크온 매직스페이스</em>",
-                                    "pdNum-hd" : "시리얼 넘버",
-                                    "pdNum" : "S833MC85Q",
-                                    "btn" : true,
-                                    "btnName" : "제품 지원 더보기"
+                        <!-- // tabs -->
 
-                                }, {
-                                    "img" : "dummy/@img-product.jpg",
-                                    
-                                    "title-hd" : "이벤트 제목",
-                                    "title" : "LG DIOS <em>노크온 매직스페이스</em>",
-                                    "pdNum-hd" : "시리얼 넘버",
-                                    "pdNum" : "S833MC85Q",
-                                    "btn" : true,
-                                    "btnName" : "제품 지원 더보기"
-
-                                }, {
-                                    "img" : "dummy/@img-product.jpg",
-                                    
-                                    "title-hd" : "이벤트 제목",
-                                    "title" : "LG DIOS <em>노크온 매직스페이스</em>",
-                                    "pdNum-hd" : "시리얼 넘버",
-                                    "pdNum" : "S833MC85Q",
-                                    "btn" : true,
-                                    "btnName" : "제품 지원 더보기"
-
-                                }
-                            ])
-                        </ul>
-                    </div>
-                    @@include('./common/support/pagination.html', {
-                        count: 5
-                    })
+                        <div class="result-list-wrap">
+                            <div class="list-wrap">
+                                <ul class="product-items">
+                                    @@loop('./common/modules/product-item.html', [
+                                        {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg"
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg"
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg"
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "price" : true,
+                                            "spec2" : true
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "price" : true,
+                                            "spec2" : true
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "price" : true,
+                                            "spec2" : true
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "button" : true,
+                                            "buttonName" : "제품 지원 더보기"
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "button" : true,
+                                            "buttonName" : "제품 지원 더보기"
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "button" : true,
+                                            "buttonName" : "제품 지원 더보기"
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                            @@include('./common/support/pagination.html', {
+                                count: 5
+                            })
+                        </div> 
                     <div class="box-list search-support-list-wrap">
                         <ul class="box-list-inner support no-img">
                             @@loop('./common/modules/list-box.html', [

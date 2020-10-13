@@ -85,7 +85,21 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
         },
 
         pause: function(){
+            var self = this;
             self.$video.pause();
+        },
+
+        play: function(){
+            var self = this;
+            self.$video.play();
+        },
+
+        reset: function(){
+            var self = this;
+            if(!(self.$acctrler.hasClass('acc-btn'))) {
+                self.$acctrler.trigger("click");
+            }
+            self.pause();
         }
     });
 
