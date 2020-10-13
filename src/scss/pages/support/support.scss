@@ -479,6 +479,14 @@
 
     .choice-input {margin-bottom: 16px;}
 
+    .total-number {
+        font-size: 16px;
+        font-weight: bold;
+        color: #222;
+        margin: 32px 0 16px;
+    }
+
+
     .color-1 {
         color: #a50034;
     }
@@ -627,6 +635,9 @@
         }
         .tbl {
             margin-top: 16px;
+        }
+        &.align-left {
+            text-align: left;
         }
         @include mobile {
             margin-right: 4px;

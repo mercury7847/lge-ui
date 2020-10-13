@@ -103,7 +103,7 @@
                                 <h3 class="tit">03. 증상을 선택해주세요.</h3>        
                             </div>
 
-                            <div>
+                            <div class="pc-only">
                                 <div class="field-wrap">
                                     <div class="row">
                                         <div class="field-item block">
@@ -148,7 +148,42 @@
 
                             <div class="section-content">
                                 <div class="field-wrap">
-                                    <div class="row">
+                                    <div class="row mo-only">
+                                        <div class="field-item block">
+                                            <div class="field-title">
+                                                <label for="symptom" class="tit">증상 구분</label>
+                                            </div>
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" name="symptom" id="age">
+                                                    <option value="" selected>부품/소모품</option>
+                                                    <option value="">구입/사양</option>
+                                                    <option value="">구조/외관</option>
+                                                    <option value="">기능 관련</option>
+                                                    <option value="">난방 관련</option>
+                                                    <option value="">냄새 관련</option>
+                                                    <option value="">냉방 관련</option>
+                                                    <option value="">누수 관련</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mo-only">
+                                        <div class="field-item block">
+                                            <div class="field-title">
+                                                <label for="radio1-1" class="tit">세부 증상</label>
+                                            </div>
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" name="symptom" id="radio1-1">
+                                                    <option value="">이벤트 행사</option>
+                                                    <option value="">실내기/실외기 호환 문의</option>
+                                                    <option value="">제품 사양 문의</option>
+                                                    <option value="">제품 구입</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row pc-only">
                                         <div class="field-item block">
                                             <div class="field-title">
                                                 <strong class="tit">세부증상</strong>
@@ -177,7 +212,7 @@
                                             <p class="side-item">선택하신 증상은 제품 문제해결 방법을 통해서 해결이 가능합니다.</p>
                                         </button>
                                     </div>
-                                    <div class="row">
+                                    <div class="row pc-only">
                                         <div class="field-item block">
                                             <div class="field-title">
                                                 <strong class="tit">구입시기를 선택해주세요.</strong>
