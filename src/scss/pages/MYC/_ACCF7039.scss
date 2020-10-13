@@ -73,53 +73,13 @@
         }
     }
 }
-.mems-info {
-    @include clearfix;
-    .lists {
-        float:left;
-        @include mobile {
-            float:none;
-        }
-        li {
-            margin-top:8px;
-            @include mobile {
-                margin-top:16px;
-            }
-            &:first-child {
-                margin-top:0;
-            }
-            dl {
-                @include clearfix;
-                font-size:16px;
-                line-height:24px;
-                dt {
-                    float:left;
-                    width:135px;
-                    color:#616161;
-                    @include mobile {
-                        width:80px;
-                    }
-                }
-                dd {
-                    margin-left:135px;
-                    color:$color-1;
-                    @include mobile {
-                        margin-left:80px;
-                    }
-                }
-            }
-        }
-    }
-    .btn-text {
-        float:right;
-        font-size:14px;
-        line-height:20px;
-        font-weight:500;
-        @include mobile {
-            position:absolute;
-            top:50px;
-            right:20px;
-        }
+.btn-text.pst {
+    position:absolute;
+    top:96px;
+    right:56px;
+    @include mobile {
+        top:50px;
+        right:20px;
     }
 }
 .product-list-wrap.type2 {

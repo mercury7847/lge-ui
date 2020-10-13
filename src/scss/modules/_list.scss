@@ -200,3 +200,44 @@
         }
     }
 }
+
+// dl List 
+.dl-infolist-wrap {
+    .lists {
+        li {
+            margin-top:12px;
+            @include mobile {
+                margin-top:16px;
+            }
+            &:first-child {
+                margin-top:0;
+            }
+            dl {
+                font-size:0;
+                dt {
+                    display:inline-block;
+                    width:136px;
+                    color:#616161;
+                    font-size:16px;
+                    line-height:24px;
+                    vertical-align:top;
+                    word-break:keep-all;
+                    @include mobile {
+                        width:80px;
+                    }
+                }
+                dd {
+                    display:inline-block;
+                    max-width:calc(100% - 136px);
+                    color:$color-1;
+                    font-size:16px;
+                    line-height:24px;
+                    vertical-align:top;
+                    @include mobile {
+                        max-width:calc(100% - 80px);
+                    }
+                }
+            }
+        }
+    }
+}

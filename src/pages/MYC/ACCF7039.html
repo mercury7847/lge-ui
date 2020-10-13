@@ -53,53 +53,21 @@
                     <div class="section">
                         <h3 class="sec-tit">멤버십 가입 정보</h3>
                         <div class="cont-box">
-                            <div class="mems-info">
-                                <ul class="lists">
-                                    <li>
-                                        <dl>
-                                            <dt>이름</dt>
-                                            <dd id="membership_info_name">이엘지</dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl>
-                                            <dt>전화번호</dt>
-                                            <dd id="membership_info_tel">010-1234-5678</dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl>
-                                            <dt>카드번호</dt>
-                                            <dd id="membership_info_card">1234-5678-1234-5678</dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl>
-                                            <dt>가입일</dt>
-                                            <dd id="membership_info_regist_date"> 2017. 10. 25</dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl>
-                                            <dt>가입매장</dt>
-                                            <dd id="membership_info_regist_store">서초점</dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl>
-                                            <dt>선호매장</dt>
-                                            <dd id="membership_info_favor_date">서초점</dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl>
-                                            <dt>자택주소</dt>
-                                            <dd id="membership_info_address">서울특별시 서초구 방배동 방배로 18길 67</dd>
-                                        </dl>
-                                    </li>
-                                </ul>
-                                <a href="#n" class="btn-text red01">수정하기</a>
-                            </div>
+                            <!-- class명 수정, DOM 위치 변경 -->
+                            @@include('./common/modules/dl-infolist.html', {
+                                "idType" : true,
+                                "list" : [
+                                    { "id" : "membership_info_name", "dt" : "이름", "dd" : "이엘지" },
+                                    { "id" : "membership_info_tel", "dt" : "전화번호", "dd" : "010-1234-5678" },
+                                    { "id" : "membership_info_card", "dt" : "카드번호", "dd" : "1234-5678-1234-5678" },
+                                    { "id" : "membership_info_regist_date", "dt" : "가입일", "dd" : "2017.10.25" },
+                                    { "id" : "membership_info_regist_store", "dt" : "가입매장", "dd" : "서초점" },
+                                    { "id" : "membership_info_favor_date", "dt" : "선호매장", "dd" : "서초점" },
+                                    { "id" : "membership_info_address", "dt" : "자택주소", "dd" : "서울특별시 서초구 방배동 방배로 18길 67" }
+                                ]
+                            })
+                            <a href="#n" class="btn-text pink pst">수정하기</a>
+                            <!-- // class명 수정, DOM 위치 변경 -->
                         </div>
                     </div>
 
