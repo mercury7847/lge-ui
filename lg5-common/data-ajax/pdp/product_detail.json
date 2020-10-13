@@ -39,7 +39,6 @@
                 "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum01.png",
                 "ad_url":"https://www.youtube.com/embed/6BnPTCtzHlo",
                 "video_url":"https://www.youtube.com/embed/LDocqNKcW0c",
-                "ad2_url":"https://www.youtube.com/embed/LDocqNKcW0c",
                 "image_url":"/lg5-common/images/KRC0043/@thumb01.jpg",
                 "image_alt":"LG Vacuum Cleaners A902RM 0",
                 "image_desc":"video description"
@@ -49,7 +48,7 @@
                 "type":"mp4",
                 "thumb_url":"/lg5-common/images/KRP0010/@dummy-thum01.png",
                 "video_url":"/lg5-common/videos/signature_rain_view.mp4",
-                "audio_url":"/lg5-common/videos/Highlight_backround.mp4",
+                "ad_url":"/lg5-common/videos/Highlight_backround.mp4",
                 "image_url":"/lg5-common/images/KRC0043/@thumb02.jpg",
                 "image_alt":"LG Vacuum Cleaners A902RM 1",
                 "image_desc":"animation description"
