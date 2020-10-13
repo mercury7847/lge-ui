@@ -414,155 +414,6 @@
         }
     }
 
-    .popup-wrap {
-        .pop-conts {
-            margin-right: 8px;
-            padding-right: 48px;
-            &::-webkit-scrollbar {
-                width: 8px;
-            }
-            &::-webkit-scrollbar-track {
-                background-color: transparent;
-            }
-            &::-webkit-scrollbar-thumb {
-                border-radius: 4px;
-                background-color: #ccc;
-            }
-            &::-webkit-scrollbar-button {
-                width: 0;
-                height: 0;
-            }
-            .modal-gray-box {
-                border-radius: 4px;
-                background-color: #f4f4f4;
-                padding: 40px 32px;
-                &-title {
-                    font-size: 20px;
-                    font-weight: bold;
-                    line-height: 1.5;
-                    padding-bottom: 24px;
-                    margin-bottom: 24px;
-                    border-bottom: 1px solid #ddd;
-                    .tit {
-                        font-size: inherit;
-                    }
-                }
-                &.type-A {
-                    padding: 16px 40px;
-                    color: #616161;
-                    border-radius: 8px;
-                    @include clearfix;
-                    .text {
-                        float: left;
-                    }
-                    [class^="btn"] {
-                        color: #212121;
-                        font-size: 14px;
-                        float: right;
-                        line-height: 1;
-                    }
-                }
-                @include mobile {
-                    &.type-A {
-                        padding: 16px 20px;
-                        .text {
-                            width: 156px;
-                        }
-                    }
-                }
-            }
-            .modal-line-box {
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                padding: 16px 11px 24px 16px;
-                &-privacy {
-                    height: 100px;
-                    font-size: 14px;
-                    color: #616161;
-                    margin-top: 12px;
-                    margin-left: 22px;
-                    line-height: 1.43;
-                }
-                @include mobile {
-                    padding: 16px 16px 20px 16px;
-                }
-            }
-            .text-box {
-                font-size: 14px;
-                margin-bottom: 0;
-            }
-            .paragraph {
-                &-1 {
-                    margin-top: 18px;
-                }
-            }
-            [class^="btn-"] {
-                font-size: inherit;
-            }
-            &-section {
-                margin-top: 32px;
-                &.type-A {
-                    margin-top: 64px;
-                }
-                &.top-border {
-                    padding-top: 32px;
-                    margin-top: 28px;
-                    border-top: 1px solid #ddd;
-                }
-                &:first-child {
-                    margin-top: 0;
-                }
-                @include mobile {
-                    &.type-A {
-                        margin-top: 56px;
-                    }
-                }
-            }
-            .tbl {
-                margin-top: 16px;
-            }
-            @include mobile {
-                margin-right: 4px;
-                padding-right: 16px;
-                height: calc(100vh - 135px);
-                &.no-footer {
-                    height: calc(100vh - 75px);
-                }
-            }
-        }
-        &.type-A {
-            max-width: 630px;
-        }
-        &.type-B {
-            max-width: 848px;
-            width: 100%;
-        }
-        &.type-C {
-            max-width: 520px;
-            width: 100%;
-        }
-        .btn-group {
-            margin-top: 0;
-        }
-        @include mobile {
-            // max-width: calc(100% - 48px);
-            .pop-conts {
-                .modal-gray-box {
-                    padding: 40px 20px;
-                    &-title {
-                        font-size: 16px;
-                        padding-bottom: 32px;
-                        margin-bottom: 32px;
-                        text-align: center;
-                        .tit {
-                            font-size: inherit;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     .star-rating {
         &-select {
         }
@@ -670,4 +521,151 @@
     }
 }
 
-
+.popup-wrap {
+    .pop-conts.support {
+        margin-right: 8px;
+        padding-right: 48px;
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: #ccc;
+        }
+        &::-webkit-scrollbar-button {
+            width: 0;
+            height: 0;
+        }
+        .modal-gray-box {
+            border-radius: 4px;
+            background-color: #f4f4f4;
+            padding: 40px 32px;
+            &-title {
+                font-size: 20px;
+                font-weight: bold;
+                line-height: 1.5;
+                padding-bottom: 24px;
+                margin-bottom: 24px;
+                border-bottom: 1px solid #ddd;
+                .tit {
+                    font-size: inherit;
+                }
+            }
+            &.type-A {
+                padding: 16px 40px;
+                color: #616161;
+                border-radius: 8px;
+                @include clearfix;
+                .text {
+                    float: left;
+                }
+                [class^="btn"] {
+                    color: #212121;
+                    font-size: 14px;
+                    float: right;
+                    line-height: 1;
+                }
+            }
+            @include mobile {
+                &.type-A {
+                    padding: 16px 20px;
+                    .text {
+                        width: 156px;
+                    }
+                }
+            }
+        }
+        .modal-line-box {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px 11px 24px 16px;
+            &-privacy {
+                height: 100px;
+                font-size: 14px;
+                color: #616161;
+                margin-top: 12px;
+                margin-left: 22px;
+                line-height: 1.43;
+            }
+            @include mobile {
+                padding: 16px 16px 20px 16px;
+            }
+        }
+        .text-box {
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+        .paragraph {
+            &-1 {
+                margin-top: 18px;
+            }
+        }
+        [class^="btn-"] {
+            font-size: inherit;
+        }
+        &-section {
+            margin-top: 32px;
+            &.type-A {
+                margin-top: 64px;
+            }
+            &.top-border {
+                padding-top: 32px;
+                margin-top: 28px;
+                border-top: 1px solid #ddd;
+            }
+            &:first-child {
+                margin-top: 0;
+            }
+            @include mobile {
+                &.type-A {
+                    margin-top: 56px;
+                }
+            }
+        }
+        .tbl {
+            margin-top: 16px;
+        }
+        @include mobile {
+            margin-right: 4px;
+            padding-right: 16px;
+            height: calc(100vh - 135px);
+            &.no-footer {
+                height: calc(100vh - 75px);
+            }
+        }
+    }
+    &.type-A {
+        max-width: 630px;
+    }
+    &.type-B {
+        max-width: 848px;
+        width: 100%;
+    }
+    &.type-C {
+        max-width: 520px;
+        width: 100%;
+    }
+    .btn-group {
+        margin-top: 0;
+    }
+    @include mobile {
+        // max-width: calc(100% - 48px);
+        .pop-conts {
+            .modal-gray-box {
+                padding: 40px 20px;
+                &-title {
+                    font-size: 16px;
+                    padding-bottom: 32px;
+                    margin-bottom: 32px;
+                    text-align: center;
+                    .tit {
+                        font-size: inherit;
+                    }
+                }
+            }
+        }
+    }
+}
