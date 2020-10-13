@@ -23,9 +23,7 @@ $(window).ready(function(){
             waNumber++;
         }
     });
-});
 
-$(window).load(function(){
     $('.KRC0019 .drag-area').twentytwenty({
         no_overlay: true
     });

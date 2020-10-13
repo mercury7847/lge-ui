@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "주문/배송 조회",
+                "pageArr" : [
+                    { "page" : "구매<em class='count'>2</em>", "on" : "" },
+                    { "page" : "케어솔루션 청약내역<em class='count'>1</em>", "on" : "on" },
+                ]
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect1" : [
+                                { "on": "on", "page": "주문/배송 조회" },
+                                { "on": "", "page": "쿠폰" }
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <div class="section">
+                                <div class="cont-box">
+                                    <!-- filter -->
+                                    @@include('./common/modules/mem-filter.html', {
+                                        "wrapTit" : "조회기간",
+                                        "dualType" : true
+                                    })
+                                    <!-- // filter -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- 장바구니 alert -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop",
+        "msgOnly" : true,
+        "msg" : "선택한 제품을 장바구니에<br>담으시겠습니까?",
+        "twobtn" : true
+    })
+    <!-- // 장바구니 alert -->
+
+    <!-- 찜하기 alert -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop2",
+        "msgOnly" : true,
+        "msg" : "찜하기 되었습니다."
+    })
+    <!-- // 찜하기 alert -->
+
+    <!-- 최근본제품 삭제 alert -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop3",
+        "msgOnly" : true,
+        "msg" : "해당 제품을<br>삭제하시겠습니까?",
+        "twobtn" : true
+    })
+    <!-- // 최근본제품 삭제 alert -->
+</body>
+</html>
