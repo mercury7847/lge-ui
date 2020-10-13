@@ -17,15 +17,13 @@
             initialize: function() {
                 var self = this;
 
-                CS.MD.setPagination();
-
                 self.$stepCategory = $('#stepCategory');
                 self.$stepModel = $('#stepModel');
                 self.$stepResult = $('#stepResult');
 
                 self._setEventListener();
-                self.searchModelList(); //삭제예정
-                self.searchFileList(); //삭제예정
+                // self.searchModelList(); //삭제예정
+                // self.searchFileList(); //삭제예정
             },
             searchModelList: function(formData) {
                 var self = this;
@@ -48,7 +46,7 @@
                             });
 
                             $('#modelContent').html(html);
-                            $('.pagination').data('plugin_pagination').update(data.pageInfo);
+                            //$('.pagination').data('plugin_pagination').update(data.pageInfo);
                         }
                     },
                     error: function(err){
@@ -177,16 +175,6 @@
 
                     var offsetTop = $('.contents').get(0).offsetTop;
                     $(window).scrollTop(offsetTop);
-                });
-
-                $(window).on('scroll resize', function () {
-                    _scrollTop = $(window).scrollTop();
-            
-                    if (_scrollTop >= $('.product-nav-wrap').get(0).offsetTop) {
-                        $('.product-nav-wrap').addClass('sticky')
-                    } else {
-                        $('.product-nav-wrap').removeClass('sticky')
-                    }
                 });
             }
         }

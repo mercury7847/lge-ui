@@ -4,9 +4,6 @@
         "pageCSS": [
             "support/support",
             "support/product-support"
-        ],
-        "pageJS": [
-            "support-common"
         ]
     })
 <body>
@@ -21,22 +18,20 @@
             <div class="contents support solutions">
                 <div class="contents-inner">
                     
-                    <div class="content-wrap">
+                    <div class="section no-bg">
                         <div class="board-view">
                             <div class="board-view-head">
                                 <h3 class="head-title">자가진단이 가능한 퀵 헬프 진입 방법을 알고 싶어요자가진단이 가능한 퀵 헬프 진입 방법을 알고 싶어요자가진단이 가능한 퀵 헬프 진입 방법을 알고 싶어요자가진단이 가능한 퀵 헬프 진입 방법을 알고 싶어요자가진단이 가능한 퀵 헬프 진입 방법을 알고 싶어요자가진단이 가능한 퀵 헬프 진입 방법을 알고 싶어요자가진단이 가능한 퀵 헬프 진입 방법을 알고 싶어요</h3>
-                                <div class="head-info">
-                                    <ul class="infos category">
-                                        <li>TV/프로젝터 > 올레드</li>
-                                        <li>기능 > TV 사용시간 확인</li>
-                                    </ul>
-                                    <ul class="infos summary">
-                                        <li>2020.07.20</li>
-                                        <li>
-                                            <span class="view">4,129</span>
-                                        </li>
-                                    </ul>
-                                </div> 
+                                <ul class="head-infos category">
+                                    <li>TV/프로젝터 > 올레드</li>
+                                    <li>기능 > TV 사용시간 확인</li>
+                                </ul>
+                                <ul class="head-infos summary">
+                                    <li>2020.07.20</li>
+                                    <li>
+                                        <span class="view">4,129</span>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="board-view-body">
                                 <div class="view-content" id="viewContent">
@@ -48,30 +43,39 @@
                                         <img src="/lg5-common/images/dummy/@img-board-view.jpg" alt="">
                                     </p>
                                 </div>
-                                <div class="sns-box">
-                                    <a href="#" class="sns icon-facebook"><span class="blind">페이스북</span></a>
-                                    <a href="#" class="sns icon-twitter"><span class="blind">트위터</span></a>
-                                    <a href="#" class="sns icon-kakaotalk"><span class="blind">카카오톡</span></a>
-                                    <a href="#" class="sns icon-url"><span class="blind">URL</span></a>
-                                </div>
                             </div>
+                            <!-- <div class="share-box">
+                                <button type="button">공유하기</button>
+                                <div class="layer">
+                                    <ul class="sns-list">
+                                        <li>
+                                            <a href="#" class="sns icon-facebook"><span class="blind">페이스북</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="sns icon-twitter"><span class="blind">트위터</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="sns icon-kakaotalk"><span class="blind">카카오톡</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="sns icon-url"><span class="blind">URL</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div> -->
                         </div>
                         
-                        <div class="icon-banner with-button">
-                            <div class="inner">
-                                <div class="cont">
-                                    <p class="tit">고객님이 선택하신 [{증상명}] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
-                                </div>
-                                <a href="#" class="btn bd-gray">평가하기</a>
+                        <div class="banner-wrap icon-type">
+                            <div class="banner">
+                                <p class="tit">고객님이 선택하신 [{증상명}] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
                             </div>
+                            <button type="button" class="btn bd-gray">평가하기</button>
                         </div>
 
-                        <div class="icon-banner">
-                            <a href="#" class="inner">
-                                <div class="cont">
-                                    <p class="tit">증상관련 컨텐츠 보기</p>
-                                    <p class="desc">증상 > 세부 증상</p>
-                                </div>
+                        <div class="banner-wrap icon-type">
+                            <a href="#" class="banner">
+                                <p class="tit">증상관련 컨텐츠 보기</p>
+                                <p class="desc">증상 > 세부 증상</p>
                             </a>
                         </div>
 
@@ -90,5 +94,9 @@
              
         @@include('./common/footer.html')
     </div>      
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 
