@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["SLC/SLC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#laypop01" data-control="modal" class="btn pink"><span>총 개수 8개 선택 시도 시</span></button>
+    </div>
+
+
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop01",
+        "msgOnly" : true,
+        "msg" : "케어솔루션/케어십은<br>총 7개까지 이용가능합니다."
+    })
+</body>
+</html>

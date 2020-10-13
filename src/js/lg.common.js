@@ -136,6 +136,7 @@
     global['lgkorUI'] = {
         COMPARE_KEY: "prod_compare",
         COMPARE_ID: "compare_list",
+        COMPARE_LIMIT: 3,
         init: function(){
             this._preloadComponents();
             this._addTopButtonCtrl();
@@ -348,16 +349,14 @@
                 compareStorage[self.COMPARE_ID] = [data];
             } else{
                 var leng = compareStorage[self.COMPARE_ID].length;
-                var limitLeng = 3;
-                if(leng < limitLeng){
+                if(leng < self.COMPARE_LIMIT){
                     compareStorage[self.COMPARE_ID].push(data);
                 } else{
-                    alert("담기 불가!!");
+                    $(window).trigger('excessiveCompareStorage');
                     return false;
                 }
             }
             self.setStorage(self.COMPARE_KEY, compareStorage);
-            console.log(self.getStorage(self.COMPARE_KEY));     
 
             return true;
         },
@@ -371,7 +370,6 @@
             });
 
             self.setStorage(self.COMPARE_KEY, compareStorage);
-            console.log(self.getStorage(self.COMPARE_KEY));     
         },
 
         initCompareProd: function(){

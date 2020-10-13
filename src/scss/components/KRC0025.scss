@@ -74,15 +74,25 @@
 				margin: 0 auto;
 				.title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6 {
 					margin-bottom:24px;
-					font-size:24px;
-					line-height:34px;
+					font-size:40px;
+					line-height:52px;
 					color: #111;
 				}				
 				.desc-text {
 					margin-bottom: 40px;
-					font-size: 16px;
-					line-height: 24px;
+					font-size: 18px;
+					line-height: 28px;
 					color: #616161;
+				}
+				@include mobile {
+					.title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6 {
+						font-size:28px;
+						line-height:36px;
+					}
+					.desc-text {
+						font-size:16px;
+						line-height:24px;
+					}
 				}
 			}
 			// button type

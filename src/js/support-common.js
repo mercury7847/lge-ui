@@ -696,10 +696,9 @@ CS.MD.CHK_DEVICE = function() {
 
     document.addEventListener('DOMContentLoaded', commonInit);
 
+    // $('.star-rating-select').barrating({
+    //     theme: 'css-stars',
+    //     showSelectedRating: true
+    // });
+    // $('.star-rating-select').barrating('set', '5점 (매우 만족)');
 })(jQuery);
-
-$('.star-rating-select').barrating({
-    theme: 'css-stars',
-    showSelectedRating: true
-});
-$('.star-rating-select').barrating('set', '5점 (매우 만족)');

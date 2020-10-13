@@ -5,6 +5,9 @@
     .cont-wrap {
         padding:0 0 120px;
         background:#fff;
+        @include mobile {
+            border:none;
+        }
     }
 
     .prd-care-horizon {
@@ -16,7 +19,11 @@
         background:#fff;
         border:1px solid #ddd;
         border-radius:4px;
-        overflow:hidden;
+        // overflow:hidden;
+        @include mobile {
+            padding:24px 36px 24px 0;
+            border-radius:8px;
+        }
         .flag-wrap {
             position:absolute;
             top:0;
@@ -30,11 +37,18 @@
             display:table-cell;
             width:120px;
             vertical-align:top;
+            @include mobile {
+                width:100px;
+            }
             img {
                 display:block;
                 width:120px;
                 height:120px;
                 overflow:hidden;
+                @include mobile {
+                    width:100px;
+                    height:100px;
+                }
             }
         }
         .txt-wrap {
@@ -44,8 +58,16 @@
             font-size:16px;
             line-height:24px;
             vertical-align:top;
+            @include mobile {
+                padding:0;
+                font-size:14px;
+                line-height:18px;
+            }
             .tit-info {
                 height:72px;
+                @include mobile {
+                    height:54px;
+                }
                 .tit {
                     max-height:48px;
                     font-weight:700;
@@ -55,16 +77,30 @@
                     -moz-line-clamp: 2;
                     -ms-line-clamp: 2;
                     -webkit-line-clamp: 2;
+                    @include mobile {
+                        max-height:36px;
+                    }
                 }
                 .code {
                     overflow:hidden;
                     text-overflow:ellipsis;
                     white-space:nowrap;
+                    @include mobile {
+                        padding-top:2px;
+                        color:#616161;
+                        font-size:12px;
+                        line-height:16px;
+                    }
                 }
             }
             .etc {
                 padding-top:8px;
                 word-break:break-all;
+                @include mobile {
+                    padding-top:14px;
+                    font-size:12px;
+                    line-height:16px;
+                }
             }
         }
         .btn-item {
@@ -101,7 +137,7 @@
         padding:0 24px 48px;
         background:#fff;
         border-radius:4px;
-        box-shadow: 0 3px 14px 0 rgba(0, 0, 0, 0.06);
+        box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.06);
         overflow:hidden;
         .chk-wrap {
             position:absolute;
@@ -176,6 +212,7 @@
                                     }
                                 }
                                 .slide-controls {
+                                    display:block;
                                     .btn-arrow {
                                         &.prev {
                                             left:-20px;
@@ -188,7 +225,7 @@
                                             width:10px;
                                             height:10px;
                                             margin-top:-5px;
-                                            border-width:2px;
+                                            border-width:1px;
                                         }
                                     }
                                 }
@@ -286,8 +323,18 @@
     .slide-wrap {
         .slide-content {
             margin:0 -6px;
-            .conts-wrap {
-                margin:0 6px;
+            @include mobile {
+                margin:0 -5px;
+            }
+            .slide-track {
+                .conts-wrap {
+                    margin:0 6px;
+                    @include mobile {
+                        // width:85.8889vw;
+                        width:88.8889vw;
+                        margin:0 5px;
+                    }
+                }
             }
         }
         .slide-controls {
@@ -314,33 +361,57 @@
     }
 
     .prd-contract-wrap {
-        max-width:1708px + 60px;
+        max-width:1708px;
         margin:0 auto;
-        padding:36px 30px;
+        // padding:36px 30px;
         background:#f4f4f4;
+        @include mobile {
+            // padding:32px 20px;
+        }
         .inner {
-            max-width:1284px;
+            max-width:1284px + 60px;
             margin:0 auto;
             .login-empty {
                 position:relative;
+                padding:36px 30px;
+                @include mobile {
+                    padding:32px 20px;
+                }
                 .txt {
                     display:inline-block;
+                    padding-right:35%;
                     font-size:16px;
                     line-height:24px;
                     vertical-align:middle;
+                    word-break:keep-all;
+                    @include mobile {
+                        padding:0;
+                        font-size:14px;
+                        line-height:18px;
+                    }
                 }
                 .btn {
                     position:absolute;
                     top:50%;
-                    right:0;
+                    right:30px;
                     background:transparent;
                     -webkit-transform:translateY(-50%);
                     transform:translateY(-50%);
+                    @include mobile {
+                        position:static;
+                        width:100%;
+                        margin-top:24px;
+                        -webkit-transform:translateY(0);
+                        transform:translateY(0);
+                    }
                 }
             }
         }
         .tit-wrap {
-            padding-bottom:16px;
+            padding:36px 30px 16px;
+            @include mobile {
+                padding:32px 20px 18px;
+            }
             font-size:0;
             .tit {
                 display:inline-block;
@@ -358,13 +429,30 @@
                 vertical-align:middle;
             }
         }
+        .contract-slide {
+            max-width:1284px + 60px;
+            margin:0 auto;
+            padding:0 30px 36px;
+            @include mobile {
+                padding:0 0 32px 20px;
+            }
+        }
     }
 
     .care-solution-wrap {
         margin-top:40px;
+        @include mobile {
+            margin-top:24px;
+            .tabs-wrap.btn-type {
+                text-align:center;
+            }
+        }
         .fixed-tab-wrap {
             margin-top:24px;
             border-bottom:1px solid #ddd;
+            @include mobile {
+                margin-top:12px;
+            }
             .inner {
                 position:relative;
                 max-width:1284px;
@@ -373,6 +461,10 @@
                     position:absolute;
                     top:0;
                     right:0;
+                    @include tablet {
+                        top:48px;
+                        right:20px;
+                    }
                 }
             }
         }
@@ -381,9 +473,18 @@
             max-width:1284px + 60px;
             margin:46px auto 0;
             padding:0 30px;
+            @include tablet {
+                margin-top:60px;
+            }
+            @include mobile {
+                padding:0 20px;
+            }
             .inner {
                 @include clearfix;
                 margin:-12px -12px;
+                @include mobile {
+                    margin:0;
+                }
                 .item {
                     float:left;
                     width:calc((100% - 96px) / 4);
@@ -393,6 +494,13 @@
                     }
                     @media screen and (max-width:840px) {
                         width:calc((100% - 48px) / 2);
+                    }
+                    @include mobile {
+                        width:100%;
+                        margin:20px 0 0 0;
+                        &:first-child {
+                            margin-top:0;
+                        }
                     }
                 }
             }
@@ -407,16 +515,22 @@
         width:100%;
         background:#fff;
         box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
-        z-index:110;
+        z-index:10;
         .inner {
             @include clearfix;
             position:relative;
             max-width:1284px + 60px;
             margin:0 auto;
             padding:0 30px 36px;
+            @include mobile {
+                padding:0 0 20px;
+            }
             .tit-wrap {
                 padding:32px 0 16px;
                 font-size:0;
+                @include mobile {
+                    padding:24px 20px;
+                }
                 .tit {
                     display:inline-block;
                     font-size:16px;
@@ -433,12 +547,23 @@
                     vertical-align:middle;
                 }
             }
-            .slide-wrap {
+            .contract-slide {
                 float:left;
                 width:66.35%;
                 // width:852px;
                 @include tablet {
                     width:50%;
+                }
+                @include mobile {
+                    float:inherit;
+                    width:100%;
+                    padding-left:20px;
+                }
+                .prd-care-horizon {
+                    padding-right:58px;
+                    @include mobile {
+                        padding-right:56px;
+                    }
                 }
             }
             .total-info {
@@ -450,6 +575,13 @@
                 border-radius:4px;
                 @include tablet {
                     width:calc(100% - 55%);
+                }
+                @include mobile {
+                    float:inherit;
+                    width:calc(100% - 40px);
+                    margin:18px 20px 0;
+                    padding:18px 20px;
+                    border-radius:8px;
                 }
                 dl {
                     display:table;
@@ -489,6 +621,10 @@
                 right:40px;
                 width:12px;
                 height:12px;
+                @include mobile {
+                    top:25px;
+                    right:25px;
+                }
                 &:after {
                     content:'';
                     display:block;
@@ -505,13 +641,31 @@
         }
         &.close {
             height:88px;
+            @include mobile {
+                height:75px;
+            }
             .tit-wrap {
                 padding:32px 0;
+                @include mobile {
+                    padding:26px 20px;
+                }
             }
             .btn-close { 
                 top:40px;
+                @include mobile {
+                    width:100%;
+                    height:100%;
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
+                }
                 &:after {
                     transform:rotate(135deg);
+                    @include mobile {
+                        top:35px;
+                        right:25px;
+                    }
                 }
             }
         }
