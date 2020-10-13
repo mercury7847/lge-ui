@@ -35,6 +35,40 @@
     }
 }
 
+.rdo-btn-wrap {
+    display: inline-block;
+    font-size: 0;
+    input {
+        & + label {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1;
+            text-align: center;
+            color: #808080;
+            border-radius: 8px;
+            border: solid 1px #dddddd;
+            width: 260px;
+            padding: 28px 0;
+            display: block;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        &:checked + label {
+            color: #ec455a;
+            border-color: #ec455a;
+        }
+    }
+    @include pc {
+        margin-left: 5px;
+        &:nth-child(n+5) {
+            margin-top: 10px;
+        }
+        &:nth-child(4n+1) {
+            margin-left: 0;
+        }
+    }
+}
+
 /* form field */
 .field-wrap {
     .row {
@@ -256,6 +290,25 @@
             margin-bottom: 14px;
         }
     }
+    &.type-solution {
+        text-align: left;
+        border-color: transparent;
+        padding: 24px 40px;
+        background: url(/lg5-common/images/icons/icon-btn-arrow-right.svg) no-repeat right 40px center #f4f4f4;
+        background-size: 40px;
+        .text {
+            font-size: 16px;
+            font-weight: 500;
+            color: #222;
+        }
+        .side-item {
+            font-size: 14px;
+            line-height: 1.43;
+            color: #616161;
+            margin-top: 4px;
+        }
+    }
+
     @include mobile {
         &[class*="type-icon"] {
             padding-left: 52px;

@@ -601,7 +601,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit.min'], funct
 
             if(this.options.fixedAspectRatio){
                 this.$el.find('img').css({
-                    //'position': 'absolute',
+                    'position': 'absolute',
                     'max-width': '100%',
                     'max-height': '100%',
                     'top' :'0',
@@ -736,14 +736,14 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit.min'], funct
             this.$container = this.$el.parent();//('.pinch-zoom-container');             
 
             this.$container.css({
-                //'position' : 'relative',
+                'position' : 'relative',
                 'overflow' : 'hidden',
                 'transformOrigin' : '0% 0%'
             });            
 
             if(this.options.fixedAspectRatio){
                 this.$el.css({
-                    //'position' :'absolute',
+                    'position' :'absolute',
                     'transformOrigin' : '0% 0%',
                     'width' : '100%',
                     'height' : '100%'
@@ -751,7 +751,7 @@ vcui.define('ui/pinchZoom', ['jquery', 'vcui', 'libs/jquery.transit.min'], funct
                 
             }else{
                 this.$el.css({
-                    //'position' :'absolute',
+                    'position' :'absolute',
                     'transformOrigin' : '0% 0%'
                 });
             }

@@ -57,11 +57,13 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
                 switch(e.type){
                     case "ended":
                     case "pause":
+                        console.log('pause');
                         self.$ctrler.removeClass("pause").addClass("play");
                         break;
 
                     case "play":
                     case "playing":
+                        console.log('play');
                         self.$ctrler.removeClass("play").addClass("pause");
                         break;
                 }
@@ -85,7 +87,23 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
         },
 
         pause: function(){
+            var self = this;
             self.$video.pause();
+        },
+
+        play: function(){
+            var self = this;
+            self.$video.play();
+        },
+
+        reset: function(){
+            var self = this;
+            console.log('1');
+            if(!(self.$acctrler.hasClass('acc-btn'))) {
+                console.log('2');
+                self.$acctrler.trigger("click");
+            }
+            self.pause();
         }
     });
 
