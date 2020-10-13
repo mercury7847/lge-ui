@@ -383,4 +383,40 @@
             }
         }
     }
+    @include mobile {
+        .download-list {
+            > li {
+                padding:20px;
+            }
+            .tit {
+                font-size:14px;
+                line-height:18px;
+            }
+            .desc {
+                font-size:12px;
+                line-height:16px;
+            }
+            .infos {
+                margin-top:8px;
+                li {
+                    font-size:12px;
+                    line-height:16px;
+                    & + li {
+                        margin-left:12px;
+                        padding-left:13px;
+                        &:before {
+                            top:3px;
+                            height:10px;
+                        }
+                    }
+                }
+            }
+            .btns-wrap {
+                position:static;
+                margin-top:12px;
+                text-align:center;
+                transform:translateY(0);
+            }
+        }
+    }
 }

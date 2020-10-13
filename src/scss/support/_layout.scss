@@ -58,9 +58,18 @@
     @include mobile {
         margin-top:12px;
         padding:40px 20px 56px;
+        background:#fff;
+        &.no-bg {
+            padding:0;
+            background:transparent;
+            .section-title {
+                padding:40px 20px 0;
+                background:#fff;
+            }
+        }
         &-title {
             margin-bottom:20px;
-            background:#fff;
+            
             .tit {
                 line-height:1.19;
             }
@@ -68,7 +77,10 @@
         &-content {
             padding:0;
             border-radius:0;
-            background:#fff;
+        }
+        .tabs-wrap {
+            margin-right:-20px;
+            margin-left:-20px;
         }
     }
 }

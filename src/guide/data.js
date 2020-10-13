@@ -80,12 +80,14 @@ var res = {
 			"KRP0019_Social Share_Dynamic" : ["/html/components/KRP0019.html","","진행중"],
 			"KRP0020_Sitemap_Dynamic" : ["/html/components/KRP0020.html","","검수완료"],
 			"KRP0021_Category module for store home" : ["/html/components/KRP0021.html","","진행중"],
-			"KRP0025_Event list for home" : ["/html/components/KRP0025.html","","진행중"],
+			"KRP0025_event_list_for_category_home" : ["/html/components/KRP0025.html","","진행중"],
 		},
 		"Page" : {
 			"케어솔루션(SLC)" : {
 				"케어솔루션안내" : {
 					"케어플래너" : ["/html/SLC/RMSF2003.html","","진행중"],
+					"케어플래너_총 개수 8개 선택 시도 시" : ["/html/SLC/RMSF-popup01.html","","진행중"],
+					"케어플래너_비로그인 상태에서 [견적 확인하기] 버튼 선택 시" : ["/html/SLC/RMSF-popup02.html","","진행중"],
 				},
 			},
 			"이벤트/멤버십(BMC)" : {
@@ -116,6 +118,14 @@ var res = {
 					"구독" : ["/html/MYC/ACCF7017.html","","진행중"],
 					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
 					"관심 스토리" : ["/html/MYC/ACCF7063.html","","진행중"]
+				},
+				"케어솔루션" : {
+					"신청내역(리스트)" : ["/html/MYC/ACCF7024.html","","진행중"],
+					"신청내역(상세)" : ["/html/MYC/ACCF7065.html","","진행중"],
+					"월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
+					"계약현황" : ["/html/MYC/ACCF7025.html","","진행중"],
+					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","진행중"],
+					"납부내역" : ["/html/MYC/ACCF7027.html","","진행중"]
 				},
 				"제품 관리" : {
 					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","진행중"],

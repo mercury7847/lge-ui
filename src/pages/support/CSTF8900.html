@@ -67,312 +67,556 @@
                 </div>
 
                 <div class="contents-inner">
-                    
-                        <div id="content1">
-                            <div class="section">
-                                <div class="section-title">
-                                    <h4 class="tit">제품사용 설명서 (<em class="count">2</em>건)</h4>
-                                </div>
-                                <div class="section-content">
-                                    <div class="download-wrap">
-                                        <ul class="download-list">
-                                            <li>
-                                                <strong class="tit">제품 사용설명서</strong>
-                                                <p class="desc">Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>   
-                                                <ul class="infos">
-                                                    <li>2013.02.06</li>
-                                                    <li>한국어</li>   
-                                                </ul>
-                                                <div class="btns-wrap">
-                                                    <a href="#" class="btn bd-pink btn-small"><span>PDF</span></a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <strong class="tit">제품 사용설명서</strong>
-                                                <p class="desc">Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>   
-                                                <ul class="infos">
-                                                    <li>2013.02.06</li>
-                                                    <li>한국어</li>   
-                                                </ul>
-                                                <div class="btns-wrap">
-                                                    <a href="#" class="btn bd-pink btn-small"><span>HTML</span></a>
-                                                    <a href="#" class="btn bd-pink btn-small"><span>ZIP</span></a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    @@include('./common/modules/bullet-list.html', {
-                                        "topBorder" : true, 
-                                        "bulletTxt" : [
-                                            "zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다."
-                                        ]
-                                    })
-                                </div>
+                    <form action="" id="submitForm">
+                        <input type="hidden" name="superCategory" id="superCategory" value="">
+                        <input type="hidden" name="category" id="category" value="">
+                        <input type="hidden" name="model" id="model" value="">
+                    </form>
+
+                    <div id="content1">
+                        <div class="section">
+                            <div class="section-title">
+                                <h4 class="tit">제품사용 설명서 (<em class="count">2</em>건)</h4>
                             </div>
-                            <div class="section">
-                                <div class="section-title">
-                                    <h4 class="tit">드라이버/소프트웨어 (<em class="count" id="count">130</em>건)</h4>
+                            <div class="section-content">
+                                <div class="download-wrap">
+                                    <ul class="download-list">
+                                        <li>
+                                            <strong class="tit">제품 사용설명서</strong>
+                                            <p class="desc">Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>   
+                                            <ul class="infos">
+                                                <li>2013.02.06</li>
+                                                <li>한국어</li>   
+                                            </ul>
+                                            <div class="btns-wrap">
+                                                <a href="#" class="btn bd-pink btn-small"><span>PDF</span></a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong class="tit">제품 사용설명서</strong>
+                                            <p class="desc">Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>   
+                                            <ul class="infos">
+                                                <li>2013.02.06</li>
+                                                <li>한국어</li>   
+                                            </ul>
+                                            <div class="btns-wrap">
+                                                <a href="#" class="btn bd-pink btn-small"><span>HTML</span></a>
+                                                <a href="#" class="btn bd-pink btn-small"><span>ZIP</span></a>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="section-content">
-                                    <div class="tabs-wrap border-type ui_tab left">
-                                        <ul class="tabs">
-                                            <li class="on"><a href="#tab1">통합 드라이버 설치프로그램(110)<em class="blind">선택됨</em></a></li>
-                                            <li><a href="#">칩셋/패치(6)</a></li>
-                                            <li><a href="#">비디오(6)</a></li>
-                                            <li><a href="#">사운드(3)</a></li>
-                                            <li><a href="#">랜(4)</a></li>
-                                            <li><a href="#">기타(0)</a></li>
-                                        </ul>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "topBorder" : true, 
+                                    "bulletTxt" : [
+                                        "zip 파일 또는 chm 파일을 [열기] 눌러 사용할 경우 Internet Explorer 보안 기능으로 인해 사용설명서가 정상적으로 표시되지 않을 수 있습니다."
+                                    ]
+                                })
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="section-title">
+                                <h4 class="tit">드라이버/소프트웨어 (<em class="count">130</em>건)</h4>
+                            </div>
+                            <div class="section-content">
+                                <div class="tabs-wrap border-type ui_tab left">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#tab1">통합 드라이버 설치프로그램(110)<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#">칩셋/패치(6)</a></li>
+                                        <li><a href="#">비디오(6)</a></li>
+                                        <li><a href="#">사운드(3)</a></li>
+                                        <li><a href="#">랜(4)</a></li>
+                                        <li><a href="#">기타(0)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="download-wrap">
+                                    <ul class="download-list">
+                                        <li>
+                                            <strong class="tit">[프로그램/Win10_64bit] XPION용 LG intelligent Update 프로그램</strong>
+                                            <p class="desc">ver.7.7PHV1 데스크톱/일체형</p>   
+                                            <ul class="infos">
+                                                <li>2013.02.06</li>
+                                                <li>통합 드라이버 설치프로그램</li>   
+                                            </ul>
+                                            <div class="btns-wrap">
+                                                <a href="#" class="btn bd-pink btn-small"><span>다운로드 1118.4mb</span></a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <strong class="tit">[프로그램/Win10_64bit] XPION용 LG intelligent Update 프로그램</strong>
+                                            <p class="desc">ver.7.7PHV1 데스크톱/일체형</p>   
+                                            <ul class="infos">
+                                                <li>2013.02.06</li>
+                                                <li>통합 드라이버 설치프로그램</li>   
+                                            </ul>
+                                            <div class="btns-wrap">
+                                                <a href="#" class="btn bd-pink btn-small"><span>다운로드 1118.4mb</span></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                @@include('./common/support/pagination.html', {
+                                    count: 5
+                                })
+                            </div>
+                        </div>
+                    </div>
+                    <div id="content2">
+                        <div class="section no-bg">
+                            <form action="" id="solutionsForm">
+                                <input type="hidden" name="keyword" id="keyword" value="">
+                                <input type="hidden" name="topic" id="topic" value="LCL10005001">
+                                <input type="hidden" name="subTopic" id="subTopic" value="">
+                                <input type="hidden" name="orderBy" id="orderBy" value="most">
+                            </form>
+
+                            <div class="section-title">
+                                <h4 class="tit">제품문제해결 (<em class="count" id="count">122</em>건)</h4>
+                            </div>
+                            
+                            <div class="solution-wrap">
+                                <div class="filter-box">
+                                    <div class="filter-head">
+                                        <strong class="tit">증상 선택</strong>
                                     </div>
-                                    <div class="download-wrap">
-                                        <ul class="download-list">
-                                            <li>
-                                                <strong class="tit">[프로그램/Win10_64bit] XPION용 LG intelligent Update 프로그램</strong>
-                                                <p class="desc">ver.7.7PHV1 데스크톱/일체형</p>   
-                                                <ul class="infos">
-                                                    <li>2013.02.06</li>
-                                                    <li>통합 드라이버 설치프로그램</li>   
-                                                </ul>
-                                                <div class="btns-wrap">
-                                                    <a href="#" class="btn bd-pink btn-small"><span>다운로드 1118.4mb</span></a>
+                                    <ul class="filter-list" id="filterContent">
+                                        <li class="on">
+                                            <button type="button" class="filter-link">ALL<span class="blind">선택됨</span></button>
+                                        </li>
+                                        <li>
+                                            <button type="button" class="filter-link">기능</button>
+                                            <!-- <div class="sub-depth">
+                                                <div class="filter-head">
+                                                    <button type="button" class="btn-back"><span class="blind">이전 보기</span></button>
+                                                    <strong class="tit">기능</strong>  
                                                 </div>
+                                                <ul class="filter-list">
+                                                    <li>
+                                                        <button type="button" class="filter-link">ALL</button>
+                                                    </li>
+                                                    <li>
+                                                        <button type="button" class="filter-link">퀵 헬프 방법</button>
+                                                    </li>
+                                                    <li>
+                                                        <button type="button" class="filter-link">앱 설치</button>
+                                                    </li>
+                                                    <li>
+                                                        <button type="button" class="filter-link">타임머신</button>
+                                                    </li>
+                                                    <li>
+                                                        <button type="button" class="filter-link">신호없음</button>
+                                                    </li>
+                                                    <li>
+                                                        <button type="button" class="filter-link">인터넷 연결</button>
+                                                    </li>
+                                                </ul>
+                                            </div> -->
+                                        </li>
+                                        <li>
+                                            <button type="button" class="filter-link ui_filter_link">설치/연결</button>
+                                        </li>
+                                        <li>
+                                            <button type="button" class="filter-link ui_filter_link">소음/냄새/열방생</button>
+                                        </li>
+                                        <li>
+                                            <button type="button" class="filter-link ui_filter_link">스마트 앱</button>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="mobile-filter-box">
+                                    <div class="field-wrap">
+                                        <div class="row">
+                                            <div class="field-item">
+                                                <div class="field-title">
+                                                    <label for="select-symptom" class="tit">증상</label>
+                                                </div>
+                                                <div class="select-wrap">
+                                                    <select class="ui_selectbox" name="symptom" id="select-symptom">
+                                                        <option value="">증상</option>
+                                                        <option value="">증상</option>
+                                                        <option value="">증상</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="field-item">
+                                                <div class="field-title">
+                                                    <label for="select-symptom2" class="tit">상세 증상</label>
+                                                </div>
+                                                <div class="select-wrap">
+                                                    <select class="ui_selectbox" name="symptom2" id="select-symptom2" title="증상을 선택해주세요." disabled>
+                                                        <option class="placeholder">증상을 선택해주세요.</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="result-box">
+                                    <div class="sorting-wrap">
+                                        <div class="sort-box">
+                                            <div class="sort-select-wrap">
+                                                <select class="ui_selectbox" id="selectOrder" title="정렬 기준 선택">
+                                                    <option value="most" selected>조회순</option>
+                                                    <option value="newest">등록순</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-wrap">
+                                        <ul class="list-cont" id="solutionsContent">
+                                            <li class="video-item">
+                                                <a href="#">
+                                                    <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                                    <p class="topic">증상 > 세부 증상</p>
+                                                    <ul class="infos">
+                                                        <li>2020.07.20</li>
+                                                        <li>
+                                                            <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                        </li>
+                                                    </ul>
+                                                    <span class="icon-movie"><span class="blind">동영상 가이드 컨텐츠</span></span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <strong class="tit">[프로그램/Win10_64bit] XPION용 LG intelligent Update 프로그램</strong>
-                                                <p class="desc">ver.7.7PHV1 데스크톱/일체형</p>   
-                                                <ul class="infos">
-                                                    <li>2013.02.06</li>
-                                                    <li>통합 드라이버 설치프로그램</li>   
-                                                </ul>
-                                                <div class="btns-wrap">
-                                                    <a href="#" class="btn bd-pink btn-small"><span>다운로드 1118.4mb</span></a>
-                                                </div>
+                                                <a href="#">
+                                                    <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                                    <p class="topic">증상 > 세부 증상</p>
+                                                    <ul class="infos">
+                                                        <li>2020.07.20</li>
+                                                        <li>
+                                                            <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                        </li>
+                                                    </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                                    <p class="topic">증상 > 세부 증상</p>
+                                                    <ul class="infos">
+                                                        <li>2020.07.20</li>
+                                                        <li>
+                                                            <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                        </li>
+                                                    </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                                    <p class="topic">증상 > 세부 증상</p>
+                                                    <ul class="infos">
+                                                        <li>2020.07.20</li>
+                                                        <li>
+                                                            <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                        </li>
+                                                    </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                                    <p class="topic">증상 > 세부 증상</p>
+                                                    <ul class="infos">
+                                                        <li>2020.07.20</li>
+                                                        <li>
+                                                            <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                        </li>
+                                                    </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                                    <p class="topic">증상 > 세부 증상</p>
+                                                    <ul class="infos">
+                                                        <li>2020.07.20</li>
+                                                        <li>
+                                                            <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                        </li>
+                                                    </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                                    <p class="topic">증상 > 세부 증상</p>
+                                                    <ul class="infos">
+                                                        <li>2020.07.20</li>
+                                                        <li>
+                                                            <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                        </li>
+                                                    </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                                    <p class="topic">증상 > 세부 증상</p>
+                                                    <ul class="infos">
+                                                        <li>2020.07.20</li>
+                                                        <li>
+                                                            <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                        </li>
+                                                    </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                                    <p class="topic">증상 > 세부 증상</p>
+                                                    <ul class="infos">
+                                                        <li>2020.07.20</li>
+                                                        <li>
+                                                            <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                        </li>
+                                                    </ul>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <strong class="tit">간편해결 타이틀 노출 영역 최대 1줄, 초과 시 … 처리</strong>
+                                                    <p class="topic">증상 > 세부 증상</p>
+                                                    <ul class="infos">
+                                                        <li>2020.07.20</li>
+                                                        <li>
+                                                            <span class="info-view"><span class="blind">조회수</span>5,692</span>
+                                                        </li>
+                                                    </ul>
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
                                     @@include('./common/support/pagination.html', {
                                         count: 5
                                     })
+                                    <div class="search-wrap">
+                                        <div class="input-wrap">
+                                            <span class="box">
+                                                <input type="text" placeholder="검색어를 입력해주세요.">
+                                                <span class="cell">
+                                                    <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div id="content2">
-                            
+                    </div>
+                    <div id="content3">
+                        <div class="recommand-wrap">
+                            <div class="inner">
+                                <h3 class="title">관련 소모품이 필요하신가요?</h3>
+                                <div class="slide-wrap ui_carousel_slider">
+                                    <div class="slide-content ui_carousel_list">
+                                        <div class="slide-track ui_carousel_track">
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <div class="item">
+                                                    <div class="product-image">
+                                                        <img src="/lg5-common/images/dummy/@img-product3.jpg" alt="">
+                                                    </div>
+                                                    <div class="product-info">
+                                                        <div class="product-tag">
+                                                            <span class="tag">NEW</span>
+                                                            <span class="tag">BEST</span>
+                                                        </div>
+                                                        <div class="product-name">
+                                                            <a href="#" class="name">소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄</a>
+                                                        </div>
+                                                        <div class="product-price">
+                                                            <div class="discount-price">
+                                                                <span class="blind">할인가격</span>
+                                                                <span class="price">17,000원</span>
+                                                            </div>
+                                                            <div class="purchase-price">
+                                                                <span class="blind">원가</span>
+                                                                <span class="price">19,000원</span>    
+                                                            </div>
+                                                            <div class="discount-rate">
+                                                                <span class="blind">할인율</span>
+                                                                <span class="price">10%</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-badge">
+                                                        <div class="badge">
+                                                            <span>으뜸효율</span>
+                                                            <em>10%</em>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-wish">
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="wish-MD07515952" name="wish-MD07515952">
+                                                            <label for="wish-MD07515952"><span class="blind">찜하기</span></label>
+                                                        </span>
+                                                    </div>
+                                                    <div class="product-btn">
+                                                        <button type="button" class="btn bd-gray"><span>장바구니에 담기</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <div class="item">
+                                                    <div class="product-image">
+                                                        <img src="/lg5-common/images/dummy/@img-product4.jpg" alt="">
+                                                    </div>
+                                                    <div class="product-info">
+                                                        <div class="product-tag">
+                                                            <span class="tag">NEW</span>
+                                                            <span class="tag">BEST</span>
+                                                        </div>
+                                                        <div class="product-name">
+                                                            <a href="#" class="name">소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄</a>
+                                                        </div>
+                                                        <div class="product-price">
+                                                            <div class="discount-price">
+                                                                <span class="blind">할인가격</span>
+                                                                <span class="price">17,000원</span>
+                                                            </div>
+                                                            <div class="purchase-price">
+                                                                <span class="blind">원가</span>
+                                                                <span class="price">19,000원</span>    
+                                                            </div>
+                                                            <div class="discount-rate">
+                                                                <span class="blind">할인율</span>
+                                                                <span class="price">10%</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-badge">
+                                                        <div class="badge">
+                                                            <span>으뜸효율</span>
+                                                            <em>10%</em>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-wish">
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="wish-MD07515952" name="wish-MD07515952">
+                                                            <label for="wish-MD07515952"><span class="blind">찜하기</span></label>
+                                                        </span>
+                                                    </div>
+                                                    <div class="product-btn">
+                                                        <button type="button" class="btn bd-gray"><span>장바구니에 담기</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <div class="item">
+                                                    <div class="product-image">
+                                                        <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="">
+                                                    </div>
+                                                    <div class="product-info">
+                                                        <div class="product-tag">
+                                                            <span class="tag">NEW</span>
+                                                            <span class="tag">BEST</span>
+                                                        </div>
+                                                        <div class="product-name">
+                                                            <a href="#" class="name">소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄</a>
+                                                        </div>
+                                                        <div class="product-price">
+                                                            <div class="discount-price">
+                                                                <span class="blind">할인가격</span>
+                                                                <span class="price">17,000원</span>
+                                                            </div>
+                                                            <div class="purchase-price">
+                                                                <span class="blind">원가</span>
+                                                                <span class="price">19,000원</span>    
+                                                            </div>
+                                                            <div class="discount-rate">
+                                                                <span class="blind">할인율</span>
+                                                                <span class="price">10%</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-badge">
+                                                        <div class="badge">
+                                                            <span>으뜸효율</span>
+                                                            <em>10%</em>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-wish">
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="wish-MD07515952" name="wish-MD07515952">
+                                                            <label for="wish-MD07515952"><span class="blind">찜하기</span></label>
+                                                        </span>
+                                                    </div>
+                                                    <div class="product-btn">
+                                                        <button type="button" class="btn bd-gray"><span>장바구니에 담기</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slide-controls">
+                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div id="content3" style="height:600px">
-                        
+                    </div>
+                    <div id="content4">
+                        <div class="service-menu-wrap">
+                            <div class="inner">
+                                <h3 class="title">원하시는 결과를 찾지 못하셨다면 고객 서비스를 통해 해결해보세요.</h3>
+                                <ul class="service-list">
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon-cs-call.png" alt=""> 
+                                            </div>
+                                            <strong class="tit">전화 예약 상담</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon-cs-chat.png" alt=""> 
+                                            </div>
+                                            <strong class="tit">채팅상담</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon-cs-email.png" alt=""> 
+                                            </div>
+                                            <strong class="tit">이메일 문의</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon-cs-manual.png" alt=""> 
+                                            </div>
+                                            <strong class="tit">제품 메뉴얼</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon-cs-download.png" alt=""> 
+                                            </div>
+                                            <strong class="tit">다운로드 자료실</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="icon">
+                                                <img src="/lg5-common/images/icons/icon-cs-servicecenter.png" alt=""> 
+                                            </div>
+                                            <strong class="tit">서비스센터 찾기</strong>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div id="content4" style="height:600px">컨텐츠4</div>
+                    </div>
                     
                 </div>
-
-                <div class="recommand-wrap">
-                    <div class="inner">
-                        <h3 class="title">관련 소모품이 필요하신가요?</h3>
-                        <div class="slide-wrap ui_carousel_slider">
-                            <div class="slide-content ui_carousel_list">
-                                <div class="slide-track ui_carousel_track">
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <div class="item">
-                                            <div class="product-image">
-                                                <img src="/lg5-common/images/dummy/@img-product3.jpg" alt="">
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-tag">
-                                                    <span class="tag">NEW</span>
-                                                    <span class="tag">BEST</span>
-                                                </div>
-                                                <div class="product-name">
-                                                    <a href="#" class="name">소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄</a>
-                                                </div>
-                                                <div class="product-price">
-                                                    <div class="discount-price">
-                                                        <span class="blind">할인가격</span>
-                                                        <span class="price">17,000원</span>
-                                                    </div>
-                                                    <div class="purchase-price">
-                                                        <span class="blind">원가</span>
-                                                        <span class="price">19,000원</span>    
-                                                    </div>
-                                                    <div class="discount-rate">
-                                                        <span class="blind">할인율</span>
-                                                        <span class="price">10%</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-badge">
-                                                <div class="badge">
-                                                    <span>으뜸효율</span>
-                                                    <em>10%</em>
-                                                </div>
-                                            </div>
-                                            <div class="product-wish">
-                                                <span class="chk-wrap">
-                                                    <input type="checkbox" id="wish-MD07515952" name="wish-MD07515952">
-                                                    <label for="wish-MD07515952"><span class="blind">찜하기</span></label>
-                                                </span>
-                                            </div>
-                                            <div class="product-btn">
-                                                <button type="button" class="btn bd-gray"><span>장바구니에 담기</span></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <div class="item">
-                                            <div class="product-image">
-                                                <img src="/lg5-common/images/dummy/@img-product4.jpg" alt="">
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-tag">
-                                                    <span class="tag">NEW</span>
-                                                    <span class="tag">BEST</span>
-                                                </div>
-                                                <div class="product-name">
-                                                    <a href="#" class="name">소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄</a>
-                                                </div>
-                                                <div class="product-price">
-                                                    <div class="discount-price">
-                                                        <span class="blind">할인가격</span>
-                                                        <span class="price">17,000원</span>
-                                                    </div>
-                                                    <div class="purchase-price">
-                                                        <span class="blind">원가</span>
-                                                        <span class="price">19,000원</span>    
-                                                    </div>
-                                                    <div class="discount-rate">
-                                                        <span class="blind">할인율</span>
-                                                        <span class="price">10%</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-badge">
-                                                <div class="badge">
-                                                    <span>으뜸효율</span>
-                                                    <em>10%</em>
-                                                </div>
-                                            </div>
-                                            <div class="product-wish">
-                                                <span class="chk-wrap">
-                                                    <input type="checkbox" id="wish-MD07515952" name="wish-MD07515952">
-                                                    <label for="wish-MD07515952"><span class="blind">찜하기</span></label>
-                                                </span>
-                                            </div>
-                                            <div class="product-btn">
-                                                <button type="button" class="btn bd-gray"><span>장바구니에 담기</span></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <div class="item">
-                                            <div class="product-image">
-                                                <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="">
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-tag">
-                                                    <span class="tag">NEW</span>
-                                                    <span class="tag">BEST</span>
-                                                </div>
-                                                <div class="product-name">
-                                                    <a href="#" class="name">소모품 제품명 노출 영역 최대2줄소모품 제품명 노출 영역 최대2줄</a>
-                                                </div>
-                                                <div class="product-price">
-                                                    <div class="discount-price">
-                                                        <span class="blind">할인가격</span>
-                                                        <span class="price">17,000원</span>
-                                                    </div>
-                                                    <div class="purchase-price">
-                                                        <span class="blind">원가</span>
-                                                        <span class="price">19,000원</span>    
-                                                    </div>
-                                                    <div class="discount-rate">
-                                                        <span class="blind">할인율</span>
-                                                        <span class="price">10%</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-badge">
-                                                <div class="badge">
-                                                    <span>으뜸효율</span>
-                                                    <em>10%</em>
-                                                </div>
-                                            </div>
-                                            <div class="product-wish">
-                                                <span class="chk-wrap">
-                                                    <input type="checkbox" id="wish-MD07515952" name="wish-MD07515952">
-                                                    <label for="wish-MD07515952"><span class="blind">찜하기</span></label>
-                                                </span>
-                                            </div>
-                                            <div class="product-btn">
-                                                <button type="button" class="btn bd-gray"><span>장바구니에 담기</span></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-controls">
-                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-menu-wrap">
-                    <div class="inner">
-                        <h3 class="title">원하시는 결과를 찾지 못하셨다면 고객 서비스를 통해 해결해보세요.</h3>
-                        <ul class="service-list">
-                            <li>
-                                <a href="#">
-                                    <div class="icon">
-                                        <img src="/lg5-common/images/icons/icon-cs-call.png" alt=""> 
-                                    </div>
-                                    <strong class="tit">전화 예약 상담</strong>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="icon">
-                                        <img src="/lg5-common/images/icons/icon-cs-chat.png" alt=""> 
-                                    </div>
-                                    <strong class="tit">채팅상담</strong>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="icon">
-                                        <img src="/lg5-common/images/icons/icon-cs-email.png" alt=""> 
-                                    </div>
-                                    <strong class="tit">이메일 문의</strong>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="icon">
-                                        <img src="/lg5-common/images/icons/icon-cs-manual.png" alt=""> 
-                                    </div>
-                                    <strong class="tit">제품 메뉴얼</strong>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="icon">
-                                        <img src="/lg5-common/images/icons/icon-cs-download.png" alt=""> 
-                                    </div>
-                                    <strong class="tit">다운로드 자료실</strong>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="icon">
-                                        <img src="/lg5-common/images/icons/icon-cs-servicecenter.png" alt=""> 
-                                    </div>
-                                    <strong class="tit">서비스센터 찾기</strong>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
             </div>
         </div>
              
@@ -382,6 +626,7 @@
     <!-- support script -->
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/solutions.min.js"></script>
     <script src="/lg5-common/js/support/productSupportPage.min.js"></script>
 </body>
 </html> 
