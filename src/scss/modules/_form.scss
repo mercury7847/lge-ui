@@ -872,6 +872,16 @@ $input: (chk, rdo);
             }
         }
         &.disabled {
+            .ui-select-button {
+                border-color:#f4f4f4;
+                background:#f4f4f4;
+                .ui-select-text {
+                    color:#ccc;
+                }
+                .ico {
+                    border-top-color:#ccc;
+                }
+            }
             .ui-selectbox-list {
                 display:none;
             }
