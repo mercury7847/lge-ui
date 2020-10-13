@@ -117,6 +117,14 @@ var res = {
 					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
 					"관심 스토리" : ["/html/MYC/ACCF7063.html","","진행중"]
 				},
+				"케어솔루션" : {
+					"신청내역(리스트)" : ["/html/MYC/ACCF7024.html","","진행중"],
+					"신청내역(상세)" : ["/html/MYC/ACCF7065.html","","진행중"],
+					"월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
+					"계약현황" : ["/html/MYC/ACCF7025.html","","진행중"],
+					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","진행중"],
+					"납부내역" : ["/html/MYC/ACCF7027.html","","진행중"]
+				},
 				"제품 관리" : {
 					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","진행중"],
 					"제품/영수증 등록(제품 탭)" : ["/html/MYC/ACCF7036.html","","진행중"],
