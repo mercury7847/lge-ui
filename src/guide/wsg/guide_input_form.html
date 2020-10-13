@@ -7,21 +7,543 @@
 <div id="wrap" class="coding_guide">
     
 
-<h1 class="h1_guide">Input 정의</h1>
+<h1 class="h1_guide">Input Form 정의</h1>
 
-<h2 class="h2_guide">3. 데이터 입력 시 입력삭제 버튼 노출</h2>
+<h2 class="h2_guide">1. Basic Forms</h2>
 <div class="guide_wrap">
-    <!-- <div class="input_wrap ui_inputfield">
-        <input type="text" class="txt" id="">
-        <button class="ico del"><span class="hide">입력 삭제</span></button>
-    </div> --> 
-
-    <form name="formLoginForm" onsubmit="return false">
-        <div class="input_wrap ui_inputfield">
-            <input type="text" class="txt" id="">
-            <button class="ico del"><span class="hide">입력 삭제</span></button>
+    <div class="input-info">
+        <div class="tit-wrap">
+            <h2 class="h2-tit">구매정보</h2>
         </div>
-    </form>
+        <div class="form-wrap">
+            <div class="double-form">
+                <dl class="forms">
+                    <dt class="tit"><label for="buyerName">구매자 이름</label></dt>
+                    <dd class="conts">
+                        <span class="input-wrap block">
+                            <input type="text" id="buyerName" value="홍길동" readonly>
+                        </span>
+                    </dd>
+                </dl>
+                <dl class="forms">
+                    <dt class="tit"><label for="buyerPhone">휴대폰번호</label></dt>
+                    <dd class="conts">
+                        <span class="input-wrap block">
+                            <input type="text" id="buyerPhone" value="010-1234-5678" readonly>
+                        </span>
+                    </dd>
+                </dl>
+            </div>
+            <div class="double-form">
+                <dl class="forms">
+                    <dt class="tit"><label for="buyerName11">성명</label></dt>
+                    <dd class="conts">
+                        <span class="input-wrap block">
+                            <input type="text" id="buyerName11" placeholder="성명 입력">
+                        </span>
+                    </dd>
+                </dl>
+            </div>
+            <dl class="forms">
+                <dt class="tit"><label for="modelName" class="req">모델명<span class="blind">필수입력</span></label></dt>
+                <dd class="conts">
+                    <span class="input-wrap block">
+                        <input type="text" id="modelName" placeholder="모델명을 입력해 주세요.">
+                    </span>
+                </dd>
+            </dl>
+            <dl class="forms">
+                <dt class="tit"><label for="serialNum">제조번호(S/N)</label></dt>
+                <dd class="conts">
+                    <span class="input-wrap block add-btn">
+                        <span class="box">
+                            <input type="number" id="serialNum" placeholder="S/N을 입력해 주세요.">
+                            <span class="cell">
+                                <button type="button" class="btn-text pink"><span>시리얼번호 확인</span></button>
+                            </span>
+                        </span>
+                    </span>
+                    <button type="button" data-href="#" data-control="modal" class="btn-moreinfo flt-btn"><span>제품 제조번호 확인 방법</span></button>
+                </dd>
+            </dl>
+            <dl class="forms">
+                <dt class="tit"><label for="buyerAddr" class="req">구매자 주소<span class="blind">필수입력</span></label></dt>
+                <dd class="conts">
+                    <span class="input-wrap block add-btn">
+                        <span class="box">
+                            <input type="text" id="buyerAddr" value="06049" readonly>
+                            <span class="cell addr">
+                                <button type="button" class="btn-text pink"><span>주소찾기</span></button>
+                            </span>
+                        </span>
+                    </span>
+                    <span class="input-wrap block">
+                        <input type="text" id="buyerAddr2" value="서울 강남구 논현로 748  (논현동,세화빌딩) 세회빌딩 4층" readonly>
+                    </span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="input-info">
+        <div class="tit-wrap">
+            <h2 class="h2-tit">사은품 배송정보</h2>
+            <div class="right-chk ">
+                <span class="chk-wrap">
+                    <input type="checkbox" id="info" name="info">
+                    <label for="info">구매자 정보와 같음</label>
+                </span>
+            </div>
+        </div>
+        <div class="form-wrap">
+            <div class="double-form">
+                <dl class="forms">
+                    <dt class="tit"><label for="recipientName" class="req">수령자 이름<span class="blind">필수입력</span></label></dt>
+                    <dd class="conts">
+                        <span class="input-wrap block">
+                            <input type="text" id="recipientName" placeholder="수령자 이름을 입력해 주세요.">
+                        </span>
+                    </dd>
+                </dl>
+                <dl class="forms">
+                    <dt class="tit"><label for="recipientPhone" class="req">휴대폰 번호<span class="blind">필수입력</span></label></dt>
+                    <dd class="conts">
+                        <span class="input-wrap block">
+                            <input type="number" id="recipientPhone" placeholder="휴대폰 번호를 입력해주세요.">
+                        </span>
+                    </dd>
+                </dl>
+            </div>
+            <dl class="forms">
+                <dt class="tit"><label for="recipientAddr" class="req">수령자 주소<span class="blind">필수입력</span></label></dt>
+                <dd class="conts">
+                    <span class="input-wrap block add-btn">
+                        <span class="box">
+                            <input type="text" id="recipientAddr" value="06049" readonly>
+                            <span class="cell addr">
+                                <button type="button" class="btn-text pink"><span>주소찾기</span></button>
+                            </span>
+                        </span>
+                    </span>
+                    <span class="input-wrap block">
+                        <input type="text" value="서울 강남구 논현로 748  (논현동,세화빌딩) 세회빌딩 4층" readonly>
+                    </span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="input-info">
+        <div class="tit-wrap">
+            <h2 class="h2-tit">[필수] 개인정보 수집 이용 동의</h2>
+            <div class="agree-chk">
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo1-1" name="rdo1" checked>
+                    <label for="rdo1-1">동의함</label>
+                </span>
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo1-2" name="rdo1">
+                    <label for="rdo1-2">동의안함</label>
+                </span>
+            </div>
+        </div>
+        <div class="tb_row tb-bor">
+            <table>
+                <caption>개인정보 수집 이용 동의 수집항목, 목적, 보유기간 안내</caption>
+                <colgroup>
+                    <col style="width:33.3%">
+                    <col style="width:33.3%">
+                    <col style="">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">수집항목</th>
+                        <th scope="col">목적</th>
+                        <th scope="col">보유기간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>구매자 이름, 구매자 연락처, 구매자 주소</td>
+                        <td>이벤트 응모내역 확인 시 본인 확인</td>
+                        <td rowspan="3">이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                    </tr>
+                    <tr>
+                        <td>수령자 이름, 수령자 연락처</td>
+                        <td>경품배송 시 본인 확인</td>
+                    </tr>
+                    <tr>
+                        <td>수령자 주소</td>
+                        <td>경품배송</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+    <div class="input-info">
+        <!-- 일반 타이틀 -->
+        <div class="tit-wrap">
+            <h2 class="h2-tit">구매정보</h2>
+        </div>
+        <!-- // 일반 타이틀 -->
+        <!-- 타이틀 + 체크박스 -->
+        <div class="tit-wrap">
+            <h2 class="h2-tit">사은품 배송정보</h2>
+            <div class="right-chk ">
+                <span class="chk-wrap">
+                    <input type="checkbox" id="info" name="info">
+                    <label for="info">구매자 정보와 같음</label>
+                </span>
+            </div>
+        </div>
+        <!-- // 타이틀 + 체크박스 -->
+        <!-- 타이틀 + 라디오박스 -->
+        <div class="tit-wrap">
+            <h2 class="h2-tit">[필수] 개인정보 수집 이용 동의</h2>
+            <div class="agree-chk">
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo1-1" name="rdo1" checked>
+                    <label for="rdo1-1">동의함</label>
+                </span>
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo1-2" name="rdo1">
+                    <label for="rdo1-2">동의안함</label>
+                </span>
+            </div>
+        </div>
+        <!-- // 타이틀 + 라디오박스 -->
+        <div class="form-wrap">
+            <!-- double forms -->
+            <div class="double-form">
+                <dl class="forms">
+                    <dt class="tit"><label for="buyerName">구매자 이름</label></dt>
+                    <dd class="conts">
+                        <span class="input-wrap block">
+                            <input type="text" id="buyerName" value="홍길동" readonly>
+                        </span>
+                    </dd>
+                </dl>
+                <dl class="forms">
+                    <dt class="tit"><label for="buyerPhone">휴대폰번호</label></dt>
+                    <dd class="conts">
+                        <span class="input-wrap block">
+                            <input type="text" id="buyerPhone" value="010-1234-5678" readonly>
+                        </span>
+                    </dd>
+                </dl>
+            </div>
+            <!-- // double forms -->
+            <!-- half 사이즈 1개 들어갈 경우 -->
+            <div class="double-form">
+                <dl class="forms">
+                    <dt class="tit"><label for="buyerName11">성명</label></dt>
+                    <dd class="conts">
+                        <span class="input-wrap block">
+                            <input type="text" id="buyerName11" placeholder="성명 입력">
+                        </span>
+                    </dd>
+                </dl>
+            </div>
+            <!-- // half 사이즈 1개 들어갈 경우 -->
+            <!-- full forms -->
+            <dl class="forms">
+                <dt class="tit"><label for="modelName" class="req">모델명<span class="blind">필수입력</span></label></dt>
+                <dd class="conts">
+                    <span class="input-wrap block">
+                        <input type="text" id="modelName" placeholder="모델명을 입력해 주세요.">
+                    </span>
+                </dd>
+            </dl>
+            <!-- // full forms -->
+            <!-- full forms + text button -->
+            <dl class="forms">
+                <dt class="tit"><label for="serialNum">제조번호(S/N)</label></dt>
+                <dd class="conts">
+                    <span class="input-wrap block add-btn">
+                        <span class="box">
+                            <input type="number" id="serialNum" placeholder="S/N을 입력해 주세요.">
+                            <span class="cell">
+                                <button type="button" class="btn-text pink"><span>시리얼번호 확인</span></button>
+                            </span>
+                        </span>
+                    </span>
+                    <button type="button" data-href="#" data-control="modal" class="btn-moreinfo flt-btn"><span>제품 제조번호 확인 방법</span></button> <!-- input 하단 오른쪽 붙는 버튼 .flt-btn -->
+                </dd>
+            </dl>
+            <!-- // full forms + text button -->
+            <!-- full forms + 주소 -->
+            <dl class="forms">
+                <dt class="tit"><label for="buyerAddr" class="req">구매자 주소<span class="blind">필수입력</span></label></dt>
+                <dd class="conts">
+                    <span class="input-wrap block add-btn">
+                        <span class="box">
+                            <input type="text" id="buyerAddr" value="06049" readonly>
+                            <span class="cell addr">
+                                <button type="button" class="btn-text pink"><span>주소찾기</span></button>
+                            </span>
+                        </span>
+                    </span>
+                    <span class="input-wrap block">
+                        <input type="text" id="buyerAddr2" value="서울 강남구 논현로 748  (논현동,세화빌딩) 세회빌딩 4층" readonly>
+                    </span>
+                </dd>
+            </dl>
+            <!-- // full forms + 주소 -->
+        </div>
+    </div>
+<!-- // DOM -->
+</xmp>
+</div>
+
+
+
+
+
+<h2 class="h2_guide">2. input+button Forms</h2>
+<div class="guide_wrap">
+    <div class="form-wrap">
+        <dl class="forms">
+            <dt class="tit">
+                <label for="inp01">쿠폰번호</label>
+            </dt>
+            <dd class="conts">
+                <div class="input-box btn-type">
+                    <span class="input-wrap ui_value_del">
+                        <span class="box">
+                            <input type="text" id="inp01" value="" placeholder="쿠폰번호 최대 12자로 '-' 생략가능">
+                            <span class="cell">
+                                <button type="button" class="btn-del ui_del_btn"><span class="blind">입력삭제</span></button>
+                            </span>
+                        </span>
+                    </span>
+                    <button type="submit" class="btn pink"><span>등록</span></button>
+                </div>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="form-wrap">
+    <dl class="forms">
+        <dt class="tit">
+            <label for="inp01">쿠폰번호</label>
+        </dt>
+        <dd class="conts">
+            <div class="input-box btn-type">
+                <span class="input-wrap ui_value_del">
+                    <span class="box">
+                        <input type="text" id="inp01" value="" placeholder="쿠폰번호 최대 12자로 '-' 생략가능">
+                        <span class="cell">
+                            <button type="button" class="btn-del ui_del_btn"><span class="blind">입력삭제</span></button>
+                        </span>
+                    </span>
+                </span>
+                <button type="submit" class="btn pink"><span>등록</span></button>
+            </div>
+        </dd>
+    </dl>
+</div>
+<!-- // DOM -->
+</xmp>
+</div>
+
+
+
+
+
+
+
+<h2 class="h2_guide">3. Filter Forms</h2>
+<div class="guide_wrap">
+    <div class="form-wrap">
+        <dl class="forms">
+            <dt class="tit">조회기간</dt>
+            <dd class="conts">
+                <div class="input-box size2 btn-type">
+                    <span class="input-wrap datepicker">
+                        <span class="box">
+                            <input type="text" id="date-input-start" placeholder="날짜를 선택하세요" title="구매내역 조회기간 시작날짜 선택">
+                            <span class="cell pic-btn">
+                                <button type="button" class="ui_calendar" data-input-target="#date-input-start"><span class="blind">달력보기</span></button>
+                            </span>
+                        </span>
+                    </span>
+                    <span class="input-wrap datepicker">
+                        <span class="box">
+                            <input type="text" id="date-input-end" placeholder="날짜를 선택하세요" title="구매내역 조회기간 종료날짜 선택">
+                            <span class="cell pic-btn">
+                                <button type="button" class="ui_calendar" data-input-target="#date-input-end"><span class="blind">달력보기</span></button>
+                            </span>
+                        </span>
+                    </span>
+                    <button type="button" class="btn pink"><span>조회</span></button>
+                </div>
+            </dd>
+        </dl>
+    </div>
+
+    <br><br>
+
+    <div class="form-wrap">
+        <dl class="forms">
+            <dt class="tit">조회기간</dt>
+            <dd class="conts">
+                
+                <div class="input-box-wrap">
+                    <div class="input-box">
+                        
+                        <span class="rdo-wrap btn-type">
+                            <input type="radio" id="rdo1-0" name="rdo1" checked>
+                            <label for="rdo1-0">1주일</label>
+                        </span>
+                        
+                        <span class="rdo-wrap btn-type">
+                            <input type="radio" id="rdo1-1" name="rdo1" >
+                            <label for="rdo1-1">1개월</label>
+                        </span>
+                        
+                        <span class="rdo-wrap btn-type">
+                            <input type="radio" id="rdo1-2" name="rdo1" >
+                            <label for="rdo1-2">3개월</label>
+                        </span>
+                        
+                        <span class="rdo-wrap btn-type">
+                            <input type="radio" id="rdo1-3" name="rdo1" >
+                            <label for="rdo1-3">6개월</label>
+                        </span>
+                        
+                    </div>
+                    <div class="input-box size2 btn-type">
+                        <span class="input-wrap datepicker">
+                            <span class="box">
+                                <input type="text" id="date-input-start" placeholder="날짜를 선택하세요" title="구매내역 조회기간 시작날짜 선택">
+                                <span class="cell pic-btn">
+                                    <button type="button" id="uc-start" class="ui_calendar" data-input-target="#date-input-start"><span class="blind">달력보기</span></button>
+                                </span>
+                            </span>
+                        </span>
+                        <span class="input-wrap datepicker">
+                            <span class="box">
+                                <input type="text" id="date-input-end" placeholder="날짜를 선택하세요" title="구매내역 조회기간 종료날짜 선택">
+                                <span class="cell pic-btn">
+                                    <button type="button" id="uc-end" class="ui_calendar" data-input-target="#date-input-end"><span class="blind">달력보기</span></button>
+                                </span>
+                            </span>
+                        </span>
+                        <button type="button" id="button-calendar-search" class="btn pink"><span>조회</span></button>
+                    </div>
+                </div>
+                
+                
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<!-- type 1 -->
+<div class="form-wrap">
+    <dl class="forms">
+        <dt class="tit">조회기간</dt>
+        <dd class="conts">
+            <div class="input-box size2 btn-type">
+                <span class="input-wrap datepicker">
+                    <span class="box">
+                        <input type="text" id="date-input-start" placeholder="날짜를 선택하세요" title="구매내역 조회기간 시작날짜 선택">
+                        <span class="cell pic-btn">
+                            <button type="button" class="ui_calendar" data-input-target="#date-input-start"><span class="blind">달력보기</span></button>
+                        </span>
+                    </span>
+                </span>
+                <span class="input-wrap datepicker">
+                    <span class="box">
+                        <input type="text" id="date-input-end" placeholder="날짜를 선택하세요" title="구매내역 조회기간 종료날짜 선택">
+                        <span class="cell pic-btn">
+                            <button type="button" class="ui_calendar" data-input-target="#date-input-end"><span class="blind">달력보기</span></button>
+                        </span>
+                    </span>
+                </span>
+                <button type="button" class="btn pink"><span>조회</span></button>
+            </div>
+        </dd>
+    </dl>
+</div>
+<!-- include : Type 1 -->
+(@@)include('./common/modules/mem-filter.html', {
+    "wrapTit" : "조회기간"
+})
+<!-- // include : Type 1 -->
+<!-- // type 1 -->
+
+<!-- type 2 -->
+<div class="form-wrap">
+    <dl class="forms">
+        <dt class="tit">조회기간</dt>
+        <dd class="conts">
+            <div class="input-box-wrap">
+                <div class="input-box">
+                    <span class="rdo-wrap btn-type">
+                        <input type="radio" id="rdo1-0" name="rdo1" checked>
+                        <label for="rdo1-0">1주일</label>
+                    </span>
+                    <span class="rdo-wrap btn-type">
+                        <input type="radio" id="rdo1-1" name="rdo1" >
+                        <label for="rdo1-1">1개월</label>
+                    </span>
+                    <span class="rdo-wrap btn-type">
+                        <input type="radio" id="rdo1-2" name="rdo1" >
+                        <label for="rdo1-2">3개월</label>
+                    </span>
+                    <span class="rdo-wrap btn-type">
+                        <input type="radio" id="rdo1-3" name="rdo1" >
+                        <label for="rdo1-3">6개월</label>
+                    </span>
+                </div>
+                <div class="input-box size2 btn-type">
+                    <span class="input-wrap datepicker">
+                        <span class="box">
+                            <input type="text" id="date-input-start" placeholder="날짜를 선택하세요" title="구매내역 조회기간 시작날짜 선택">
+                            <span class="cell pic-btn">
+                                <button type="button" id="uc-start" class="ui_calendar" data-input-target="#date-input-start"><span class="blind">달력보기</span></button>
+                            </span>
+                        </span>
+                    </span>
+                    <span class="input-wrap datepicker">
+                        <span class="box">
+                            <input type="text" id="date-input-end" placeholder="날짜를 선택하세요" title="구매내역 조회기간 종료날짜 선택">
+                            <span class="cell pic-btn">
+                                <button type="button" id="uc-end" class="ui_calendar" data-input-target="#date-input-end"><span class="blind">달력보기</span></button>
+                            </span>
+                        </span>
+                    </span>
+                    <button type="button" id="button-calendar-search" class="btn pink"><span>조회</span></button>
+                </div>
+            </div>
+        </dd>
+    </dl>
+</div>
+<!-- include : Type 2 -->
+(@@)include('./common/modules/mem-filter.html', {
+    "wrapTit" : "조회기간",
+    "dualType" : true, <!-- Type2 일 때 true -->
+    "btnRdo" : [
+        { "name" : "rdo1", "checked" : "checked" , "value" : "1주일" },
+        { "name" : "rdo1", "checked" : "" , "value" : "1개월" },
+        { "name" : "rdo1", "checked" : "" , "value" : "3개월" },
+        { "name" : "rdo1", "checked" : "" , "value" : "6개월" }
+    ]
+})
+<!-- // include : Type 2 -->
+<!-- // type 2 -->
+<!-- // DOM -->
+</xmp>
 </div>
 
 </div> 

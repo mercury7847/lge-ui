@@ -39,6 +39,7 @@ $(window).ready(function(){
             self.$popPdpVisualVideo = self.$popPdpVisual.find('#modal_detail_target div.video');
             self.$popPdpVisualAnimation = self.$popPdpVisual.find('#modal_detail_target div.animation');
             self.$popPdpThumbnail = self.$popPdpVisual.find('div.pop-pdp-thumbnail-nav ul.pop-thumbnail-list');
+            self.$popPdpZoomArea = self.$popPdpVisual.find('div.zoom-btn-area');
 
             vcui.require(['ui/pinchZoom'], function (PinchZoom) {
                 pinchZoom = new PinchZoom('.zoom-area');
@@ -726,11 +727,12 @@ $(window).ready(function(){
                         self.$popPdpVisualImage.show();
                         self.$popPdpVisualVideo.hide();
                         self.$popPdpVisualAnimation.hide();
+                        self.$popPdpZoomArea.show();
                         pinchZoom.update(true);
                     });
                     break;
                 case "video":
-                    var template = '<div class="visual-box"><div class="video-container video-box youtube-box">' +
+                    var template = '<div class="item-box visual-box"><div class="video-container video-box youtube-box">' +
                         '<div class="thumnail">' +
                             '<img data-pc-src="{{image_url}}" data-m-src="{{image_url}}" alt="{{image_alt}}">' +
                             '<a href="#none" data-src="{{ad_url}}" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-link-area="" data-link-name="{{link_name}}" aria-describedby="{{image_desc}}">plays audio description video</a>' +
@@ -744,6 +746,7 @@ $(window).ready(function(){
                         self.$popPdpVisualImage.hide();
                         self.$popPdpVisualVideo.show();
                         self.$popPdpVisualAnimation.hide();
+                        self.$popPdpZoomArea.hide();
                     });
                     break;
                 case "mp4":
@@ -756,6 +759,7 @@ $(window).ready(function(){
                     self.$popPdpVisualImage.hide();
                     self.$popPdpVisualVideo.hide();
                     self.$popPdpVisualAnimation.show();
+                    self.$popPdpZoomArea.hide();
                     break;
                 default:
                     break;
