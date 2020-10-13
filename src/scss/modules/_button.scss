@@ -171,6 +171,10 @@
     font-size:14px;
     line-height:16px;
     font-weight:500;
+    span {
+        display:inline-block;
+        vertical-align:top;
+    }
     &:after {
         content:'';
         display:inline-block;

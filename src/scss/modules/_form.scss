@@ -97,7 +97,6 @@
             }
         }
         .conts {
-            @include clearfix;
             .input-box {
                 margin-top:8px;
                 font-size:0;
@@ -173,22 +172,18 @@
             .add-box {
                 margin-top:16px;
             }
-            .btn-text.pst {
-                position:absolute;
-                top:0;
-                right:0;
-            }
-            .flt-btn {
-                float:right;
-                margin-top:8px;
-                &.btn-text {
-                    font-size:14px;
-                    line-height:20px;
-                }
-            }
         }
         .bullet-list {
             margin-top:12px;
+        }
+        .btm-more {
+            display:block;
+            margin-top:8px;
+            text-align:right;
+            .btn-text {
+                font-size:14px;
+                line-height:20px;
+            }
         }
     }
 

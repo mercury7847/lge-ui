@@ -176,6 +176,9 @@
                 max-height:calc(100% - 75px);
             }
         }
+        &.support {
+            background-color: #fff;
+        }
         @include mobile {
             padding:0 20px 56px;
             height:calc(100% - 135px);
@@ -215,6 +218,9 @@
         }
         &.no-padding {
             padding:0 0 40px;
+        }
+        .btn-group {
+            padding: 0;
         }
         .btn {
             margin-left:8px;
