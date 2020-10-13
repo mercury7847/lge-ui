@@ -35,9 +35,9 @@ $(window).ready(function(){
 
             //PDP모달
             self.$popPdpVisual = $('#pop-pdp-visual');
-            self.$popPdpVisualImage = self.$popPdpVisual.find('#modal_detail_target li.image');
-            self.$popPdpVisualVideo = self.$popPdpVisual.find('#modal_detail_target li.video');
-            self.$popPdpVisualAnimation = self.$popPdpVisual.find('#modal_detail_target li.animation');
+            self.$popPdpVisualImage = self.$popPdpVisual.find('#modal_detail_target div.image');
+            self.$popPdpVisualVideo = self.$popPdpVisual.find('#modal_detail_target div.video');
+            self.$popPdpVisualAnimation = self.$popPdpVisual.find('#modal_detail_target div.animation');
             self.$popPdpThumbnail = self.$popPdpVisual.find('div.pop-pdp-thumbnail-nav ul.pop-thumbnail-list');
 
             vcui.require(['ui/pinchZoom'], function (PinchZoom) {
@@ -726,6 +726,7 @@ $(window).ready(function(){
                         self.$popPdpVisualImage.show();
                         self.$popPdpVisualVideo.hide();
                         self.$popPdpVisualAnimation.hide();
+                        pinchZoom.update(true);
                     });
                     break;
                 case "video":
@@ -743,7 +744,6 @@ $(window).ready(function(){
                         self.$popPdpVisualImage.hide();
                         self.$popPdpVisualVideo.show();
                         self.$popPdpVisualAnimation.hide();
-                        pinchZoom.update(true);
                     });
                     break;
                 case "mp4":
