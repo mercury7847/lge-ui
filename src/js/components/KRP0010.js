@@ -75,13 +75,6 @@ $(window).ready(function(){
             this.bindEvents();
             
             this.requestDetailData();
-
-            $(window).resize(function(){
-                
-                console.log('resize');
-                pinchZoom.update(true);
-            });
-            
         },
 
         bindEvents: function() {
