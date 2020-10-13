@@ -19,10 +19,12 @@
             <a href="#"><img src="@@img" alt=""></a>
         </div>
         <div class="product-contents">
-            @@include('./common/modules/flags.html', {
-                "borderType": true,
-                "flags": ["NEW","BEST","케어십"]
-            })
+            @@if (context.flags) {
+                @@include('./common/modules/flags.html', {
+                    "borderType": true,
+                    "flags": ["NEW","BEST","케어십"]
+                })
+            }
             <div class="product-info">
                 @@if (context.search) {
                 <div class="product-name">
