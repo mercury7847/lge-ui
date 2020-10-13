@@ -38,12 +38,12 @@
                 @@if (context.review) {
                 <div class="review-info">
                     <a href="#">
-                        @@if (context.review) {
+                        @@if (context.isReview) {
                         <div class="star is-review"><span class="blind">리뷰있음</span></div>
                         <div class="average-rating"><span class="blind">평점</span>42</div>
                         <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>
                         }
-                        @@if (!context.review) {
+                        @@if (!context.isReview) {
                         <div class="star"><span class="blind">리뷰없음</span></div>
                         <div class="average-rating"><span class="blind">평점</span>0</div>
                         <div class="review-count"><span class="blind">리뷰 수</span>(0)</div>
