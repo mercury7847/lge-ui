@@ -36,6 +36,11 @@
                     font-size:16px;
                     line-height:23px;
                 }
+                em.count {
+                    display:inline-block;
+                    margin-left:4px;
+                    vertical-align:top;
+                }
             }
             &.on > a {
                 color:#222;
