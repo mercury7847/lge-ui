@@ -386,17 +386,12 @@
             background:#ddd;
             transition:top 0.5s;
         }
-        &.sticky {
+        &.floating {
             .model-nav-inner {
                 position:fixed;
                 z-index:2;
                 left:0;
-                top:-100%;
-            }
-        }
-        &.show {
-            .model-nav-inner {
-                top:0;
+                top:0%;
             }
         }
         .model-box {
