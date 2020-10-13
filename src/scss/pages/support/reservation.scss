@@ -214,7 +214,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #000;
+            background: url(/lg5-common/images/support/default-engineer.jpg) no-repeat center;
+            background-size: 100%;
             float: left;
             img {
                 max-width: 100%;
@@ -232,6 +233,39 @@
         }
         &-btn-group {
             margin-top: 28px;
+        }
+        &-profile {
+            &.type-A {
+                border-radius: 8px;
+                box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+                padding: 32px;
+                .engineer-img {
+                    width: 180px;
+                    height: 180px;
+                }
+                .engineer-desc {
+                    text-align: left;
+                    margin-left: 32px;
+                    .test {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+        &-to-visit {
+            @include clearfix;
+            .part1 {
+                float: left;
+            }
+            .part2 {
+                float: right;
+            }
+            .part2 {
+                width: 396px;
+            }
+            .select-engineer {
+                margin-top: 32px;
+            }
         }
         @include mobile {
             &-img {
@@ -409,7 +443,7 @@
                 overflow:hidden;
                 width:100%;
                 margin-bottom:12px;
-                border-radius:8px;
+                border-radius:4px;
                 img {
                     width:100%;
                     height:auto;
@@ -423,6 +457,9 @@
                 padding:16px 6px 0;
             }
         }
+    }
+    .problem-solve {
+        margin-top: 32px;
     }
 }
 

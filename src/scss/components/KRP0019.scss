@@ -39,6 +39,7 @@
                 background:url('/lg5-common/images/KRP0019/icon-share.svg') center no-repeat;
             }
             .list {
+                display:none;
                 position:absolute;
                 right:0;
                 top:40px;
@@ -64,20 +65,22 @@
                             font-size:14px;
                             line-height:20px;
                             @include mobile {
+                                min-width:40px;
+                                padding-top:48px;
                                 font-size:13px;
                                 line-height:17px;
                             }
                             &.share-facebook::before {
-                                background:url('/lg5-common/images/KRP0019/icon-facebook.svg') no-repeat;
+                                background-image:url('/lg5-common/images/KRP0019/icon-facebook.svg');
                             }
                             &.share-twitter::before {
-                                background:url('/lg5-common/images/KRP0019/icon-twitter.svg') no-repeat;
+                                background-image:url('/lg5-common/images/KRP0019/icon-twitter.svg');
                             }
                             &.share-kakao::before {
-                                background:url('/lg5-common/images/KRP0019/icon-kakaotalk.svg') no-repeat;
+                                background-image:url('/lg5-common/images/KRP0019/icon-kakaotalk.svg');
                             }
                             &.share-url::before {
-                                background:url('/lg5-common/images/KRP0019/icon-url.svg') no-repeat;
+                                background-image:url('/lg5-common/images/KRP0019/icon-url.svg');
                             }
                             &::before {
                                 content:' ';
@@ -87,15 +90,18 @@
                                 width:32px;
                                 height:32px;
                                 margin-left:-16px;
+                                background-size:100%;
                                 @include mobile {
                                     width:40px;
                                     height:40px;
                                     margin-left:-20px;
-                                    background-size:40px;
                                 }
                             }
                         }
                     }
+                }
+                &.active {
+                    display:block;
                 }
             }
         }

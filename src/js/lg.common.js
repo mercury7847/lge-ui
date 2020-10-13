@@ -374,6 +374,14 @@
             console.log(self.getStorage(self.COMPARE_KEY));     
         },
 
+        initCompareProd: function(){
+            var self = this;
+            
+            var obj = {};
+            obj[self.COMPARE_ID] = [];
+            self.setStorage(self.COMPARE_KEY, obj);
+        },
+
         setStorage: function(key, value){
             var storage = sessionStorage.getItem(key);
             var storageData = storage? JSON.parse(storage) : {};        

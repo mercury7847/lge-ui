@@ -8,6 +8,21 @@
         &:nth-child(3n+1) {
             clear: left;
         }
+        @media screen and (max-width: 1284px) {
+            width: 50%;
+            &:nth-child(3n+1) {
+                clear: none;
+            }
+            &:nth-child(odd) {
+                clear: left;
+            }
+        }
+        @include mobile {
+            width: 100%;
+            &:nth-child(odd) {
+                clear: none;
+            }
+        }
     }
     @include mobile {
         margin: 0;
@@ -37,7 +52,7 @@
                 display: block;
                 padding: 4px 8px;
                 border-radius: 4px;
-                background-color: #65c467;
+                background-color: #ec455a;
                 font-weight: 500;
                 font-size: 12px;
                 line-height: 1;
@@ -69,9 +84,66 @@
                 }
             }
         }
+
+        .product-contents {
+            position: relative;
+            height: 260px;
+            @at-root .product-items {
+                .item.result-item .product-contents {
+                    height: auto;
+                }
+            }
+        }
+        .product-option {
+            position: absolute;
+            top: -38px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            .option-list {
+                font-size: 0;
+            }
+
+            &.text {
+                .rdo-wrap {
+                    margin: 0 3px;
+                    input {
+                        & + label {
+                            width: 55px;
+                            padding: 4px 8px;
+                            border: 1px solid #ddd;
+                            border-radius: 4px;
+                            font-size: 12px;
+                            line-height: 1;
+                            &:before,
+                            &:after {
+                                display: none;
+                            }
+                        }
+                        &:checked {
+                            & + label {
+                                &:after {
+                                    display: block;
+                                    position: absolute;
+                                    top: -1px;
+                                    right: -1px;
+                                    bottom: -1px;
+                                    left: -1px;
+                                    width: auto;
+                                    height: auto;
+                                    border: 2px solid #222;
+                                    border-radius: 4px;
+                                    background-color: transparent;
+                                    transform: rotate(0);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         .flag-wrap {
             height: 20px;
-            margin-bottom: 8px;
             .flag {
                 height: 20px;
                 padding: 3px 8px;
@@ -80,10 +152,13 @@
             & + .product-name {
                 margin-top: 0;
             }
+            & + .product-info {
+                padding-top: 0;
+            }
         }
         .product-name {
-            max-height: 48px;
             margin-top: 8px;
+            max-height: 48px;
             a {
                 font-weight: 700;
                 font-size: 16px;
@@ -93,11 +168,9 @@
             }
         }
         .product-info {
+            padding-top: 20px;
             .product-name {
-                font-weight: 700;
-                font-size: 16px;
-                line-height: 24px;
-                color: #222;
+                max-height: 24px;
                 @include textClipClamp(1);
             }
             .sku {
@@ -210,7 +283,7 @@
             //    left: 47px;
             //
             //}
-            margin-top: 27px;
+            margin: 24px -7px 0;
             .btn {
                 width: 100%;
                 min-width: auto;
