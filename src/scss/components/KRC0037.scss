@@ -169,7 +169,20 @@
             }
         }
     }
-  
 
+    $color: (lightgray, dark, black, white);
+	@each $bg in $color {
+		&.bg-#{$bg} {
+			@if $bg == lightgray {
+				background-color: #f4f4f4;
+			} @else if $bg == dark {
+				background-color: #333;
+			} @else if $bg == black {
+				background-color: #000;
+			} @else if $bg == white {
+				background-color: #fff;
+			}
+		}
+	}
 }
 
