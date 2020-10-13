@@ -36,32 +36,26 @@
                                     <!-- //slide -->
                                     <!-- slide -->
                                     <div class="slide-conts ui_carousel_slide">
-                                        @@if (`+items[i].colorOpt2+` !== undefined) {
-                                            <div role="radio" class="chk-wrap-colorchip `+items[i].colorOpt2.color+`" title="`+items[i].colorOpt2.title+`">
-                                                <input type="radio" id="`+items[i].colorOpt2.id+`" name="`+items[i].colorOpt2.name+`" `+items[i].colorOpt2.checked+`>
-                                                <label for="`+items[i].colorOpt2.id+`"><span class="blind">`+items[i].colorOpt2.title+`</span></label>
-                                            </div>
-                                        }
+                                        <div role="radio" class="chk-wrap-colorchip `+items[i].colorOpt2.color+`" title="`+items[i].colorOpt2.title+`">
+                                            <input type="radio" id="`+items[i].colorOpt2.id+`" name="`+items[i].colorOpt2.name+`" `+items[i].colorOpt2.checked+`>
+                                            <label for="`+items[i].colorOpt2.id+`"><span class="blind">`+items[i].colorOpt2.title+`</span></label>
+                                        </div>
                                     </div>
                                     <!-- //slide -->
                                     <!-- slide -->
                                     <div class="slide-conts ui_carousel_slide">
-                                        @@if (`+items[i].colorOpt3+` !== undefined) {
-                                            <div role="radio" class="chk-wrap-colorchip `+items[i].colorOpt3.color+`" title="`+items[i].colorOpt3.title+`">
-                                                <input type="radio" id="`+items[i].colorOpt3.id+`" name="`+items[i].colorOpt3.name+`" `+items[i].colorOpt3.checked+`>
-                                                <label for="`+items[i].colorOpt3.id+`"><span class="blind">`+items[i].colorOpt3.title+`</span></label>
-                                            </div>
-                                        }
+                                        <div role="radio" class="chk-wrap-colorchip `+items[i].colorOpt3.color+`" title="`+items[i].colorOpt3.title+`">
+                                            <input type="radio" id="`+items[i].colorOpt3.id+`" name="`+items[i].colorOpt3.name+`" `+items[i].colorOpt3.checked+`>
+                                            <label for="`+items[i].colorOpt3.id+`"><span class="blind">`+items[i].colorOpt3.title+`</span></label>
+                                        </div>
                                     </div>
                                     <!-- //slide -->
                                     <!-- slide -->
                                     <div class="slide-conts ui_carousel_slide">
-                                        @@if (`+items[i].colorOpt4+` !== undefined) {
-                                            <div role="radio" class="chk-wrap-colorchip `+items[i].colorOpt4.color+`" title="`+items[i].colorOpt4.title+`">
-                                                <input type="radio" id="`+items[i].colorOpt4.id+`" name="`+items[i].colorOpt4.name+`" `+items[i].colorOpt4.checked+`>
-                                                <label for="`+items[i].colorOpt4.id+`"><span class="blind">`+items[i].colorOpt4.title+`</span></label>
-                                            </div>
-                                        }
+                                        <div role="radio" class="chk-wrap-colorchip `+items[i].colorOpt4.color+`" title="`+items[i].colorOpt4.title+`">
+                                            <input type="radio" id="`+items[i].colorOpt4.id+`" name="`+items[i].colorOpt4.name+`" `+items[i].colorOpt4.checked+`>
+                                            <label for="`+items[i].colorOpt4.id+`"><span class="blind">`+items[i].colorOpt4.title+`</span></label>
+                                        </div>
                                     </div>
                                     <!-- //slide -->
                                 </div>
@@ -76,9 +70,9 @@
                 <dl>
                     <dt>가입비</dt>
                     <dd>
-                        <ul class="rdo-tab-wrap">
+                        <ul class="rdo-tab-wrap" role="radiogroup">
                             <li>
-                                <span class="rdo-wrap" role="radiogroup">
+                                <span class="rdo-wrap">
                                     <input type="radio" id="`+items[i].appFee1.id+`" name="`+items[i].appFee1.name+`" `+items[i].appFee1.checked+`>
                                     <label for="`+items[i].appFee1.id+`">`+items[i].appFee1.title+`</label>
                                 </span>
@@ -95,9 +89,9 @@
                 <dl>
                     <dt>의무사용</dt>
                     <dd>
-                        <ul class="rdo-tab-wrap">
+                        <ul class="rdo-tab-wrap" role="radiogroup">
                             <li>
-                                <span class="rdo-wrap" role="radiogroup">
+                                <span class="rdo-wrap">
                                     <input type="radio" id="`+items[i].useDay1.id+`" name="`+items[i].useDay1.name+`" `+items[i].useDay1.checked+`>
                                     <label for="`+items[i].useDay1.id+`">`+items[i].useDay1.title+`</label>
                                 </span>

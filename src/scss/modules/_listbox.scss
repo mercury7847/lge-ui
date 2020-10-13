@@ -36,7 +36,7 @@
                 overflow:hidden;
                 @include mobile {
                     padding-bottom:20px;
-                    box-shadow:3px 4px 15px 0 rgba(#000, .12);
+                    //box-shadow:3px 4px 15px 0 rgba(#000, .12);
                 }
                 .thumb {
                     display:block;
@@ -114,6 +114,9 @@
                     .hashtag {
                         position: absolute;
                         bottom: 24px;
+                        @include mobile {
+                            position: static;
+                        }
                         span {
                             display: inline-block;
                             color: #111;
@@ -121,6 +124,10 @@
                             line-height: 24px;
                             &.pink {
                                 color: #ec455a;
+                            }
+                            @include mobile {
+                                font-size: 12px;
+                                line-height: 16px;
                             }
                         }
                     }
@@ -240,6 +247,9 @@
     .events {
         .lists {
             width:calc(100% / 3);
+            @include mobile {
+                width: 100%;
+            }
         }  
     }
 }
@@ -280,11 +290,19 @@
                     display: table;
                     width: 100%;
                     height: 280px;
+                    @include mobile {
+                        display: block;
+                        height: auto;
+                    }
                 }
                 .thumb {
                     display: table-cell;
                     vertical-align: middle;
                     height: 280px;
+                    @include mobile {
+                        display: block;
+                        height: auto;
+                    }
                     img {
                         max-width: 100%;
                         height: 100%;
@@ -295,17 +313,28 @@
                     position: relative;
                     width: 270px;
                     padding: 24px 24px 24px 22px;
+                    @include mobile {
+                        display: block;
+                        width: 100%;
+                        padding: 15px 20px;
+                    }
                     .flag-wrap {
                         margin-bottom: 12px;
                     }
                     .tit {
                         width: 100%;
                         height: 60px;
+                        line-height: 30px;
                         margin-bottom: 8px;
                         @include textClipClamp(2);
                         color: #222;
                         em {
                             color: #ec455a;
+                        }
+                        @include mobile {
+                            height: auto;
+                            //height: 36px;
+                            line-height: 18px;
                         }
                     } 
                 }
@@ -412,4 +441,11 @@
             }
         }
     }
+}
+
+.result-list-wrap + .box-list {
+    margin-top: 120px;
+}
+.box-list + .box-list {
+    margin-top: 48px;
 }
