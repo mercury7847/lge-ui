@@ -31,7 +31,13 @@
                                     <!-- filter -->
                                     @@include('./common/modules/mem-filter.html', {
                                         "wrapTit" : "조회기간",
-                                        "dualType" : true
+                                        "dualType" : true,
+                                        "btnRdo" : [
+                                            { "name" : "rdo1", "checked" : "checked" , "value" : "1주일" },
+                                            { "name" : "rdo1", "checked" : "" , "value" : "1개월" },
+                                            { "name" : "rdo1", "checked" : "" , "value" : "3개월" },
+                                            { "name" : "rdo1", "checked" : "" , "value" : "6개월" }
+                                        ]
                                     })
                                     <!-- // filter -->
                                 </div>

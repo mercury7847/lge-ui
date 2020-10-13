@@ -9,7 +9,7 @@ var res = {
 			"컬러" : ["./wsg/guide_color.html","","검수완료"],
 			"Input" : ["./wsg/guide_input.html","","검수완료"],
 			"Select" : ["./wsg/guide_select.html","","검수완료"],
-			// "Form" : ["./wsg/guide_input_form.html","","검수완료"],
+			"Form" : ["./wsg/guide_input_form.html","","검수완료"],
 			"버튼" : ["./wsg/guide_button.html","","검수완료"],
 			"탭" : ["./wsg/guide_tab.html","","검수완료"],
 			"스크롤뷰" : ["./wsg/guide_scrollview.html","","검수완료"],
