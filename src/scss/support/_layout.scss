@@ -23,7 +23,8 @@
         margin-top:0;
     }
     &-title {
-        margin-bottom:16px;
+        position:relative;
+        padding-bottom:16px;
         .tit {
             color:#222;
             font-size:16px;
@@ -35,6 +36,22 @@
             color: #616161;
             line-height: 1.43;
             margin-top: 4px;
+        }
+        .btn-area {
+            position:absolute;
+            right:0;
+            top:0;
+            .btn-link {
+                margin-top:2px;
+                font-size:14px;
+                line-height:20px;
+                &:after {
+                    top: calc( 50% - 2px);
+                    width: 6px;
+                    height: 6px;
+                    border-width: 1px 1px 0 0;
+                }
+            }
         }
     }
     &-content {
@@ -68,8 +85,7 @@
             }
         }
         &-title {
-            margin-bottom:20px;
-            
+            padding-bottom:20px;
             .tit {
                 line-height:1.19;
             }

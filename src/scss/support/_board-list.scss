@@ -153,6 +153,138 @@
     }
 }
 
+/*  */
+.list-wrap {
+    .list-cont {
+        > li {
+            margin-top:8px;
+            border-radius:4px;
+            background:#fff;
+            &:first-child {
+                margin-top:0;
+            }
+            a {
+                display:block;
+                padding:32px 56px;
+            }
+            &.video-item {
+                a {
+                    position:relative;
+                    padding-right:160px;
+                }
+                .icon-movie {
+                    position:absolute;
+                    right:56px;
+                    top:50%;
+                    width:64px;
+                    height:64px;
+                    background:url('/lg5-common/images/icons/icon-movie.svg') no-repeat;
+                    background-size:100%;
+                    transform:translateY(-50%);
+                }
+            }
+        }
+    }
+    .tit {
+        display:block;
+        font-size:18px;
+        font-weight:700;
+        line-height:26px;
+    }
+    .topic {
+        margin-top:4px;
+        line-height:24px;
+    }
+    .infos {
+        margin-top:12px;
+        @include clearfix;
+        li {
+            float:left;
+            color:#808080;
+            line-height:24px;
+            & + li {
+                position:relative;
+                margin-left:16px;
+                padding-left:17px;
+                &:before {
+                    content:'';
+                    position:absolute;
+                    left:0;
+                    top:6px;
+                    width:1px;
+                    height:12px;
+                    background:#ddd;
+                }
+            }
+        }
+        .info-view {
+            display:inline-block;
+            padding-left:28px;
+            background:url('/lg5-common/images/icons/icon-view.svg') no-repeat;
+            background-size:24px;
+            background-position:left center;
+        }
+    }
+    @include pc {
+        .tit {
+            @include textEllipsis;
+        }
+    }
+    @include mobile {
+        .list-cont {
+            > li {
+                margin-top:4px;
+                border-radius:0px;
+                background:#fff;
+                a {
+                    padding:24px 20px;
+                }
+                &.video-item {
+                    a {
+                        padding-right:91px;
+                    }
+                    .icon-movie {
+                        right:20px;
+                        width:56px;
+                        height:56px;
+                    }
+                }
+            }
+        } 
+        .tit {
+            font-size:14px;
+            line-height:18px;
+            @include textEllipsisClamp(2);
+        }
+        .topic {
+            font-size:12px;
+            line-height:16px;
+        }
+        .infos {
+            margin-top:8px;
+            li {
+                font-size:12px;
+                line-height:16px;                            
+                & + li {
+                    margin-left:12px;
+                    padding-left:13px;
+                    &:before {
+                        top:3px;
+                        height:10px;
+                    }
+                }
+            }
+            &-view {
+                display:inline-block;
+                padding-left:24px;
+                background:url('/lg5-common/images/icons/icon-view.svg') no-repeat;
+                background-size:20px;
+                background-position:left center;
+            }
+        }
+    }
+}
+
 /* card-list */
 .card-list-wrap {
     padding:56px;
@@ -327,7 +459,7 @@
     .download-list {
         > li {
             position:relative;
-            padding:32px 266px 32px 32px;
+            padding:32px 230px 32px 32px;
             border-radius:8px;
             box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.26);
             & + li {
@@ -381,6 +513,9 @@
                     margin-left:4px;
                 }
             }
+            .btn-open {
+                
+            }
         }
     }
     @include mobile {
@@ -420,3 +555,4 @@
         }
     }
 }
+

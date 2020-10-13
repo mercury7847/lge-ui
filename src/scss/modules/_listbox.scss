@@ -1,5 +1,5 @@
 .box-list {
-    position: relative;
+    /*position: relative;
     overflow:hidden;
     max-width:(1284px + 80px);
     margin:16px auto 0;
@@ -8,7 +8,7 @@
         margin-top:12px;
         padding:32px 20px 56px;
         background:#fff;
-    }
+    } */
     .box-list-inner {
         font-size:0;
         margin:-12px -6px 0;
@@ -36,7 +36,7 @@
                 overflow:hidden;
                 @include mobile {
                     padding-bottom:20px;
-                    box-shadow:3px 4px 15px 0 rgba(#000, .12);
+                    //box-shadow:3px 4px 15px 0 rgba(#000, .12);
                 }
                 .thumb {
                     display:block;
@@ -73,13 +73,14 @@
                         font-size:20px;
                         line-height:30px;
                         font-weight:700;
-                        overflow:hidden;
-                        text-overflow:ellipsis;
-                        white-space:nowrap;
+                        @include textClipClamp(1);
                         @include mobile {
                             height:18px;
                             font-size:14px;
                             line-height:18px;
+                        }
+                        em {
+                            color: #ec455a;
                         }
                     }
                     .tit2 {
@@ -88,14 +89,14 @@
                         font-size:16px;
                         line-height:24px;
                         font-weight:700;
-                        overflow:hidden;
-                        text-overflow:ellipsis;
-                        -webkit-line-clamp:2;
-                        white-space:normal;
+                        @include textClipClamp(2);
                         @include mobile {
                             height:18px;
                             font-size:14px;
                             line-height:18px;
+                        }
+                        em {
+                            color: #ec455a;
                         }
                     }
                     .date {
@@ -103,9 +104,7 @@
                         color:#222;
                         font-size:16px;
                         line-height:24px;
-                        overflow:hidden;
-                        text-overflow:ellipsis;
-                        white-space:nowrap;
+                        @include textClipClamp(1);
                         @include mobile {
                             height:16px;
                             font-size:12px;
@@ -115,6 +114,9 @@
                     .hashtag {
                         position: absolute;
                         bottom: 24px;
+                        @include mobile {
+                            position: static;
+                        }
                         span {
                             display: inline-block;
                             color: #111;
@@ -122,6 +124,10 @@
                             line-height: 24px;
                             &.pink {
                                 color: #ec455a;
+                            }
+                            @include mobile {
+                                font-size: 12px;
+                                line-height: 16px;
                             }
                         }
                     }
@@ -241,17 +247,22 @@
     .events {
         .lists {
             width:calc(100% / 3);
+            @include mobile {
+                width: 100%;
+            }
         }  
     }
 }
 
-.story-list-wrap {
+.story-list-wrap,
+.recommend-list-wrap {
     @include mobile {
         margin-top:12px;
         padding: 0;
     }
     .story {
         width: 100%;
+        margin: -12px 0 0 0;
         .lists {
             width:calc(100% / 2);
             padding:0;
@@ -279,11 +290,19 @@
                     display: table;
                     width: 100%;
                     height: 280px;
+                    @include mobile {
+                        display: block;
+                        height: auto;
+                    }
                 }
                 .thumb {
                     display: table-cell;
                     vertical-align: middle;
                     height: 280px;
+                    @include mobile {
+                        display: block;
+                        height: auto;
+                    }
                     img {
                         max-width: 100%;
                         height: 100%;
@@ -294,23 +313,38 @@
                     position: relative;
                     width: 270px;
                     padding: 24px 24px 24px 22px;
+                    @include mobile {
+                        display: block;
+                        width: 100%;
+                        padding: 15px 20px;
+                    }
                     .flag-wrap {
                         margin-bottom: 12px;
                     }
                     .tit {
                         width: 100%;
                         height: 60px;
+                        line-height: 30px;
                         margin-bottom: 8px;
-                        -webkit-line-clamp:2;
-                        text-overflow: ellipsis;
-                        white-space: normal;
-                        overflow: hidden;
+                        @include textClipClamp(2);
                         color: #222;
                         em {
                             color: #ec455a;
                         }
+                        @include mobile {
+                            height: auto;
+                            //height: 36px;
+                            line-height: 18px;
+                        }
+                    } 
+                }
+                .btn-area {
+                    left: auto;      
+                    width: 270px;
+                    padding: 0 24px 0 22px;
+                    .btn {
+                        width: auto;
                     }
-                    
                 }
             }
         } 
@@ -348,9 +382,7 @@
                         color:#222;
                         font-size:14px;
                         line-height:20px;
-                        overflow:hidden;
-                        text-overflow:ellipsis;
-                        white-space:nowrap;
+                        @include textClipClamp(1);
                         @include mobile {
                             height:16px;
                             font-size:12px;
@@ -409,4 +441,11 @@
             }
         }
     }
+}
+
+.result-list-wrap + .box-list {
+    margin-top: 120px;
+}
+.box-list + .box-list {
+    margin-top: 48px;
 }
