@@ -1,12 +1,13 @@
 (function() {
     var minLength = 2;
     var searchDelay = 1000;
+    var searchTimer = null;
 
     $(window).ready(function() {
         var intergratedSearch = {
             init: function() {
-                var searchLayer = $('div.contents.search div.search-layer');
-                self.$inputSearch = searchLayer.find('div.input-sch input.txt');
+                self.$searchLayer = $('#layerSearch');
+                self.$inputSearch = self.$searchLayer.find('div.input-sch input.txt');
 
                 var _self = this;
                 _self.bindEvents();
@@ -28,7 +29,21 @@
             },
 
             bindEvents: function() {
-                var searchTimer = null;
+                var _self = this;
+
+                $('div.contents.search div.cont-wrap a').on("click", function(e) {
+                    self.$searchLayer.css({'opacity':0});
+                    self.$searchLayer.show();
+                    self.$searchLayer.animate({opacity:1},100);
+                });
+
+                self.$searchLayer.find('button.btn-close').on("click", function(e) {
+                    clearTimeout(searchTimer);
+                    self.$searchLayer.animate({opacity:0},100,function() {
+                        self.$searchLayer.hide();
+                    });
+                });
+
                 self.$inputSearch.on("input", function(e) {
                     clearTimeout(searchTimer);
                   
@@ -38,13 +53,14 @@
                     }  
                   
                     searchTimer = setTimeout(function() {
-                        console.log('timeOut',searchVal);
+                        _self.requestTimerSearch(searchVal);
                     }, searchDelay);
                 });
             },
 
             requestTimerSearch:function(searchValue) {
-                var ajaxUrl = self.$searchWrap.attr('data-url');
+                var ajaxUrl = self.$searchLayer.attr('data-url-timer');
+                console.log(ajaxUrl,searchValue);
             }
         }
 
