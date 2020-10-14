@@ -17,7 +17,7 @@
                 'button': [
                     {
                         'text': '요금 및 보증기간 안내',
-                        'attr': 'href="#warrantyPopup" class="btn bd-gray btn-small" data-control="modal" title="레이어 열림"'
+                        'attr': 'href="#ratesWarrantyGuidePopup" class="btn bd-gray btn-small" data-control="modal" title="레이어 열림"'
                     }
                 ]
             })
@@ -207,7 +207,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" data-href="#troubleShooting" data-control="modal" class="btn type-solution block problem-solve">
+                                        <button type="button" data-href="#solutionsPopup" data-control="modal" class="btn type-solution block problem-solve">
                                             <strong class="text">제품 문제해결 방법을 확인해보세요!</strong>
                                             <p class="side-item">선택하신 증상은 제품 문제해결 방법을 통해서 해결이 가능합니다.</p>
                                         </button>
@@ -482,7 +482,7 @@
                                         <li class="b-txt">[인증/예약]버튼 클릭 시 휴대전화 인증이 진행되며, 그 후에 예약이 완료됩니다.</li>
                                     </ul>
                                     <div class="btn-group">
-                                        <button type="button" data-href="#choice-engineer" data-control="modal" class="btn bd-black select-engineer"><span>다른 엔지니어 선택</span></button>
+                                        <button type="button" data-href="#choiceEngineerPopup" data-control="modal" class="btn bd-black select-engineer"><span>다른 엔지니어 선택</span></button>
                                     </div>
                                 </div>
                                 <figure class="engineer-profile type-A part2">
@@ -501,7 +501,7 @@
                             <p class="result-text"><strong>2020.07.01 13:30</strong>에 박두신 전문 엔지니어가 입력하신 주소로 방문하여 <strong>[누수관련 > 가동 중 누수]</strong>에 대한 증상을 해결해드릴 예정입니다. 예약하시겠습니까?</p>
                             <div class="btn-group">
                                 <a href="#" class="btn gray"><span>취소</span></a>
-                                <button type="button" data-href="#citationPopup" data-control="modal" class="btn pink">인증/예약</button>
+                                <button type="button" data-href="#certificationPopup" data-control="modal" class="btn pink">인증/예약</button>
                             </div>
                         </div>
 
@@ -513,16 +513,16 @@
         @@include('./common/footer.html')
     </div>
     <!-- 유상 및 보증기간 팝업 -->
-    @@include('./support/modal/rates-warranty-guide.html')
+    @@include('./support/modal/rates-warranty-guide-popup.html')
     
     <!-- 휴대폰인증 팝업 -->
-    @@include('./support/modal/phone-citation.html')
+    @@include('./support/modal/phone-certification-popup.html')
 
     <!-- 제품 해결 팝업 -->
-    @@include('./support/modal/troubleshooting.html')
+    @@include('./support/modal/solutions-popup.html')
 
     <!-- 엔지니어 선택 팝업 -->
-    @@include('./support/modal/choice-engineer.html')
+    @@include('./support/modal/choice-engineer-popup.html')
 
     <!-- 예약 완료 팝업 -->
     @@include('./common/modules/alert-modal.html', {

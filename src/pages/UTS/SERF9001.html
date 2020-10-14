@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["UTS/UTS"]
+        pageCSS: ["UTS/UTS"],
+        pageJS: ["search/integratedSearch"]
     })
 <body>
     <div class="wrap">
@@ -11,12 +12,11 @@
             <!-- 통합검색 -->
             <div class="contents search">
                 <div class="cont-wrap">
-
+                    <a href="#none" data-href="#layerSearch" data-control="modal" class="btn pink"><span>검색중 - Default 레이어 열기</span></a>
                 </div>
 
                 <!-- 검색 중 -->
-                <!-- [D] 마크업 확인용 - 개발시 style="display:block" 삭제 -->
-                <div class="search-layer" style="display:block">
+                <div class="search-layer" id="layerSearch">
                     <div class="inner">
 
                         <div class="input-keyword-wrap">

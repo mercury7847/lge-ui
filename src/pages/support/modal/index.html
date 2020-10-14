@@ -20,13 +20,15 @@
                     <div class="section">
                         <div class="section-content">
 
-                            <button type="button" data-href="#warrantyPopup" data-control="modal" class="btn pink"><span>요금 및 보증기간 안내</span></button>
+                            <button type="button" data-href="#ratesWarrantyGuidePopup" data-control="modal" class="btn pink"><span>요금 및 보증기간 안내</span></button>
 
-                            <button type="button" data-href="#citationPopup" data-control="modal" class="btn pink"><span>휴대폰인증</span></button>
+                            <button type="button" data-href="#certificationPopup" data-control="modal" class="btn pink"><span>휴대폰 인증</span></button>
 
-                            <button type="button" data-href="#paidServicePopup" data-control="modal" class="btn pink"><span>유상 서비스</span></button>
+                            <button type="button" data-href="#surveyPopup" data-control="modal" class="btn pink"><span>컨텐츠 만족도 조사</span></button>
 
-                            <button type="button" data-href="#serveyPopup" data-control="modal" class="btn pink"><span>컨텐츠 만족도 조사</span></button>
+                            <button type="button" data-href="#solutionsPopup" data-control="modal" class="btn pink"><span>제품 문제 해결</span></button>
+
+                            <button type="button" data-href="#choiceEngineerPopup" data-control="modal" class="btn pink"><span>엔지니어 선택</span></button>
 
                         </div>
                     </div>
@@ -39,16 +41,19 @@
     </div>      
 
     <!-- 유상 및 보증기간 팝업 -->
-    @@include('./support/modal/rates-warranty-guide.html')
+    @@include('./support/modal/rates-warranty-guide-popup.html')
     
     <!-- 휴대폰인증 팝업 -->
-    @@include('./support/modal/phone-citation.html')
-
-    <!-- 유상 서비스 팝업 -->
-    @@include('./support/modal/paid-service.html')
+    @@include('./support/modal/phone-certification-popup.html')
 
     <!-- 컨텐츠 만족도 조사 팝업 -->
-    @@include('./support/modal/satisfaction-survey.html')
+    @@include('./support/modal/survey-popup.html')
+
+    <!-- 문제 해결 팝업 -->
+    @@include('./support/modal/solutions-popup.html')
+
+    <!-- 문제 해결 팝업 -->
+    @@include('./support/modal/choice-engineer-popup.html')
 
     <!-- support script -->
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
