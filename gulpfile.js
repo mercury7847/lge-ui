@@ -130,7 +130,8 @@ gulp.task("scripts", () => {
                     "jsCompile:ui", 
                     "jsCompile:mypage",
                     "jsCompile:cart",
-                    "jsCompile:customer"
+                    "jsCompile:customer",
+                    "jsCompile:search"
     ]);
 });
 gulp.task("jsCompile", () => gulp
@@ -212,6 +213,14 @@ gulp.task("jsCompile:customer", () => gulp
     .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/customer/"))
+);
+gulp.task("jsCompile:search", () => gulp
+    .src(src + "/js/search/**/*")
+    .pipe(sourcemaps.init())
+    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/search/"))
 );
 
 // fonts, images
