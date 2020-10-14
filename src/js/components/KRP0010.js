@@ -78,10 +78,12 @@ $(window).ready(function(){
         },
 
         bindEvents: function() {
-            self.$pdpMobileSlider.on("click", function(e){ 
+            var _self = this;
+
+            self.$pdpMobileSlider.on('click', function(e){ 
                 e.preventDefault();
                 var slideClicked = $(this).find(".ui_carousel_current").attr("data-idx");
-                KRP0010.openVisualModal(slideClicked); 
+                _self.openVisualModal(slideClicked); 
             });
 
             //구매수량 버튼
@@ -93,28 +95,28 @@ $(window).ready(function(){
                     ++product_quantity;
                 }
                 if(product_quantity < 0) product_quantity = 0;
-                KRP0010.reloadPaymentAmountInfoQuantity();
+                _self.reloadPaymentAmountInfoQuantity();
             });
 
             self.$purchaseButton.find('div.btn-group a.btn.pink').on('click',function(e){
                 //구매
                 e.preventDefault();
                 if($(this).data('control') != 'modal') {
-                    KRP0010.purchase($(this).data('url'));
+                    _self.purchase($(this).data('url'));
                 }
             });
             
             self.$purchaseButton.find('div.btn-group a.btn.cart').on('click',function(e){
                 //카트
                 e.preventDefault();
-                KRP0010.cart($(this).data('url'));
+                _self.cart($(this).data('url'));
             });
 
             self.$preorderButton.find('a.btn.black').on('click',function(e){
                 //구매
                 e.preventDefault();
                 if($(this).data('control') != 'modal') {
-                    KRP0010.preorder($(this).data('url'));
+                    _self.preorder($(this).data('url'));
                 }
             });
 
@@ -122,13 +124,13 @@ $(window).ready(function(){
                 //구매
                 e.preventDefault();
                 if($(this).data('control') != 'modal') {
-                    KRP0010.rental($(this).data('url'));
+                    _self.rental($(this).data('url'));
                 }
             });
             self.$rentalButton.find('div.btn-group a.btn.cart').on('click',function(e){
                 //카트
                 e.preventDefault();
-                KRP0010.cart($(this).data('url'));
+                _self.cart($(this).data('url'));
             });
 
             self.$displayProduct.find('div.btn-group a.btn').on('click',function(e){
@@ -140,11 +142,28 @@ $(window).ready(function(){
             self.$pdpImage.find('a').first().on('click',function(e){
                 e.preventDefault();
                 var slideClicked = $(this).attr("data-idx"); 
-                KRP0010.openVisualModal(slideClicked);
+                _self.openVisualModal(slideClicked);
+            });
+
+            self.$pdpThumbnail.on('click','li.thumbnail',function(e) {
+                var slideClicked = $(this).attr("data-idx");
+                if($(this).hasClass('more')) {
+                    //more는 바로 모달뷰 뛰움
+                    _self.openVisualModal(slideClicked);
+                } else {
+                    //썸네일 클릭
+                    _self.clickThumbnailSlide(slideClicked);
+                } 
+            });
+
+            self.$popPdpThumbnail.on('click','li.pop-thumbnail',function(e) {
+                var modalClicked = $(this).attr("data-idx");
+                _self.clickModalThumbnail(modalClicked);
             });
         },
 
         requestDetailData: function(param) {
+            var _self = this;
             var ajaxUrl = self.$detailInfo.data('url-detail');
     
             $.ajax({
@@ -207,17 +226,19 @@ $(window).ready(function(){
                     }
                 });
                 self.$pdpThumbnail.html(contentHtml);
+                /*
                 var thumbItems = self.$pdpThumbnail.find('li.thumbnail');
                 thumbItems.on('click', function (e){
                     var slideClicked = $(this).attr("data-idx");
                     if($(this).hasClass('more')) {
                         //more는 바로 모달뷰 뛰움
-                        KRP0010.openVisualModal(slideClicked);
+                        _self.openVisualModal(slideClicked);
                     } else {
                         //썸네일 클릭
-                        KRP0010.clickThumbnailSlide(slideClicked);
+                        _self.clickThumbnailSlide(slideClicked);
                     } 
                 });
+                */
 
                 //이미지 슬라이드 모바일
                 contentHtml = "";
@@ -265,7 +286,7 @@ $(window).ready(function(){
                     if(found) {
                         index = f;
                     };
-                    KRP0010.clickThumbnailSlide(index);
+                    _self.clickThumbnailSlide(index);
                 });
 
                 //pdp모달뷰
@@ -294,11 +315,13 @@ $(window).ready(function(){
                     }
                 });
                 self.$popPdpThumbnail.html(contentHtml);
+                /*
                 var popThumbItems = self.$popPdpThumbnail.find('li.pop-thumbnail');
                 popThumbItems.on('click', function (e){
                     var modalClicked = $(this).attr("data-idx");
-                    KRP0010.clickModalThumbnail(modalClicked);
+                    _self.clickModalThumbnail(modalClicked);
                 });
+                */
 
                 //하단배너
                 if(data.pdp_more_info.visible) {
@@ -371,7 +394,7 @@ $(window).ready(function(){
                         //탭콘텐츠내용 만들기
                         var contentsResult = '';
                         keys.forEach(function(key, index) {
-                            contentsResult = KRP0010.makeContentOptionHtml(contentData[key], item+'_'+key+'_');
+                            contentsResult = _self.makeContentOptionHtml(contentData[key], item+'_'+key+'_');
                             tabContentArea.find('div.'+ key).html(contentsResult);
                         });
                     });
@@ -395,7 +418,7 @@ $(window).ready(function(){
                     //탭콘텐츠내용 만들기
                     var contentsResult = '';
                     keys.forEach(function(key, index) {
-                        contentsResult = KRP0010.makeContentOptionHtml(contentData[key], item+'_'+key+'_');
+                        contentsResult = _self.makeContentOptionHtml(contentData[key], item+'_'+key+'_');
                         tabContentArea.find('div.'+ key).html(contentsResult);
                     });
                 }
@@ -432,7 +455,7 @@ $(window).ready(function(){
                 product_quantity = 1;
                 if(data.payment_amount_info.visible) {
                     product_price = data.payment_amount_info.product_price;
-                    KRP0010.reloadPaymentAmountInfoQuantity();
+                    _self.reloadPaymentAmountInfoQuantity();
                     self.$paymentAmountInfo.show();
                 } else {
                     self.$paymentAmountInfo.hide();
@@ -460,7 +483,7 @@ $(window).ready(function(){
                                     //구매
                                     e.preventDefault();
                                     $('div.ui_modal_wrap #popup').vcModal('close');
-                                    KRP0010.purchase(data.purchase_button.buy_url);
+                                    _self.purchase(data.purchase_button.buy_url);
                                 });
                             }
                         });
@@ -489,7 +512,7 @@ $(window).ready(function(){
                                     //구매
                                     e.preventDefault();
                                     $('div.ui_modal_wrap #popup').vcModal('close');
-                                    KRP0010.preorder(data.preorder_button.buy_url);
+                                    _self.preorder(data.preorder_button.buy_url);
                                 });
                             }
                         });
@@ -519,7 +542,7 @@ $(window).ready(function(){
                                     //렌탈
                                     e.preventDefault();
                                     $('div.ui_modal_wrap #popup').vcModal('close');
-                                    KRP0010.rental(data.rental_button.buy_url);
+                                    _self.rental(data.rental_button.buy_url);
                                 });
                             }
                         });
@@ -563,14 +586,12 @@ $(window).ready(function(){
 
         makeContentOptionHtml: function(dataArry, idPrefix) {
             var returnHtml = '', contentHtml = '';
-            var itemArr;
             var arr = dataArry instanceof Array ? dataArry : [];
             arr.forEach(function(item, index) {
                 item.id = (idPrefix + item.type);
                 item.type_price = vcui.number.addComma(item.type_price);
                 contentHtml = '';
                 var type_option = item.type_option;
-                itemArr = type_option instanceof Array ? item.type_option : [];
                 switch(item.type) {
                     case "price-area":
                         var template = '<div class="price-area"><div class="product-price">' +
@@ -693,7 +714,7 @@ $(window).ready(function(){
                 case "video":
                 case "mp4":
                 case "webm":
-                    KRP0010.openVisualModal(index);
+                    _self.openVisualModal(index);
                     break;
                 default:
                     break;
@@ -701,7 +722,7 @@ $(window).ready(function(){
         },
 
         openVisualModal: function(index) {
-            KRP0010.clickModalThumbnail(index);
+            this.clickModalThumbnail(index);
             $('#pop-pdp-visual').vcModal();
         },
 

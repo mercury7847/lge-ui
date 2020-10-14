@@ -38,7 +38,7 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
                 self.$el.find('.link-wrap .link-section .dep2-wrap').each(function(idx, item){
                     var id = $(item).data('groupId');
-                    console.log(id)
+                    //console.log(id)
                     $(item).find('> li').each(function(cdx, child){
                         itemList[id].push($(child).clone());
                     });
