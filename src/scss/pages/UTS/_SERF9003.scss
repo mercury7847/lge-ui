@@ -1,8 +1,9 @@
 .recommend-list-wrap {
     overflow: hidden;
-    max-width: (1284px + 80px);
+    //max-width: (1284px + 80px);
+    max-width: 1284px;
     margin: 56px auto 0;
-    padding: 0 40px;
+    //padding: 0 40px;
     @include mobile {
         padding: 0;
     }

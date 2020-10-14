@@ -13,8 +13,7 @@
                 <!-- 검색 영역 -->
                 @@include('./common/modules/search-input.html', {
                     "value" : "노크온 매직스페이스",
-                    "related" : true,
-                    "layer" : true
+                    "related" : true
                 })
                 <!-- // 검색 영역 -->
                 
@@ -46,7 +45,7 @@
                                     { "option" : "가격 낮은순" }
                                 ]
                             })
-                            <div class="box-list story-list-wrap">
+                            <div class="result-list-wrap box-list story-list-wrap">
                                 <ul class="box-list-inner story">
                                     @@loop('./common/modules/list-box.html', [
                                         {
