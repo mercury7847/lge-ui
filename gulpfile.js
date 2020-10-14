@@ -286,7 +286,8 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/mypage/**/*", ["jsCompile:mypage"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/cart/**/*", ["jsCompile:cart"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/customer/**/*", ["jsCompile:customer"]).on('change', browserSync.reload);
-
+    gulp.watch(src + "/js/search/**/*", ["jsCompile:search"]).on('change', browserSync.reload);
+    
     //static
     gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);
     gulp.watch("./lg5-common/fonts/**", ["static:fonts"]).on('change', browserSync.reload);

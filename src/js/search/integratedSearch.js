@@ -1,8 +1,16 @@
 (function() {
+    var minLength = 2;
+    var searchDelay = 1000;
+
     $(window).ready(function() {
         var intergratedSearch = {
             init: function() {
-                self.$searchWrap = $('div.contents.faq div.cont-wrap div.search-wrap');
+                var searchLayer = $('div.contents.search div.search-layer');
+                self.$inputSearch = searchLayer.find('div.input-sch input.txt');
+
+                var _self = this;
+                _self.bindEvents();
+
                 /*
                 self.$selectbox = self.$searchWrap.find('select.ui_selectbox');
                 var result_wrap = $('div.contents.faq div.cont-wrap div.result-wrap');
@@ -17,6 +25,26 @@
                 });
                 */
                 //_self.searchNewData();
+            },
+
+            bindEvents: function() {
+                var searchTimer = null;
+                self.$inputSearch.on("input", function(e) {
+                    clearTimeout(searchTimer);
+                  
+                    var searchVal = this.value;
+                    if (searchVal.length < minLength) {
+                        return;
+                    }  
+                  
+                    searchTimer = setTimeout(function() {
+                        console.log('timeOut',searchVal);
+                    }, searchDelay);
+                });
+            },
+
+            requestTimerSearch:function(searchValue) {
+                var ajaxUrl = self.$searchWrap.attr('data-url');
             }
         }
 
