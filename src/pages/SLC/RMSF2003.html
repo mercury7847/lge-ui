@@ -622,9 +622,12 @@
                     <!-- //선택제품 -->
                 </div>
 
-                <div class="toast-msg">
-                    <p class="txt">제품 담기가 완료되었습니다.</p>
-                </div>
+                <!-- toast-meassage -->
+                @@include('./common/modules/toast-message.html', {
+                    "messageArr": [
+                        {"message" : "제품 담기가 완료되었습니다."}
+                    ]
+                })
             </div>
         </div>
         
