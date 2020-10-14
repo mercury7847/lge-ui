@@ -12,7 +12,11 @@
             <!-- search -->
             <div class="contents search">
                 <!-- 검색 영역 -->
-                @@include('./common/modules/search-input.html')
+                @@include('./common/modules/search-input.html', {
+                    "value" : "노크온 매직스페이스",
+                    "related" : true,
+                    "layer" : true
+                })
                 <!-- // 검색 영역 -->
 
                 <!-- tabs -->

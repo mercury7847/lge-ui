@@ -14,7 +14,7 @@
                 'title': '팝업 모음'
             })
 
-            <div class="contents solutions">
+            <div class="contents">
                 <div class="contents-inner">
                     
                     <div class="section">
@@ -25,6 +25,8 @@
                             <button type="button" data-href="#citationPopup" data-control="modal" class="btn pink"><span>휴대폰인증</span></button>
 
                             <button type="button" data-href="#paidServicePopup" data-control="modal" class="btn pink"><span>유상 서비스</span></button>
+
+                            <button type="button" data-href="#serveyPopup" data-control="modal" class="btn pink"><span>컨텐츠 만족도 조사</span></button>
 
                         </div>
                     </div>
@@ -44,5 +46,13 @@
 
     <!-- 유상 서비스 팝업 -->
     @@include('./support/modal/paid-service.html')
+
+    <!-- 컨텐츠 만족도 조사 팝업 -->
+    @@include('./support/modal/satisfaction-survey.html')
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/libs/jquery.barrating.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 
