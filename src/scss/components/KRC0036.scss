@@ -108,6 +108,9 @@ $size: (img2, img3, img4);
                             color:#333;
                         }
                     }
+                    .btn.btn-outline-primary {
+                        color:#fff !important;
+                    }
                 } @else if $bg == black {
                     background-color: #000;
                     &.img2 .unit-box .title p,
@@ -127,6 +130,9 @@ $size: (img2, img3, img4);
                             border-color:#333;
                             color:#333;
                         }
+                    }
+                    .btn.btn-outline-primary {
+                        color:#fff !important;
                     }
                 } @else if $bg == white {
                     background-color: #fff;

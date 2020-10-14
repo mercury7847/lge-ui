@@ -49,7 +49,7 @@
         padding: 60px 0; // 60px : component top bottom margin for mobile
     }
 
-    $color: (lightgray, dark, black, white);
+    $color: (lightgray, dark, black, white, gray);
 	@each $bg in $color {
 		&.bg-#{$bg} {
 			@if $bg == lightgray {
@@ -133,7 +133,9 @@
                         }
                     }
                 }
-			}
+            } @else if $bg == gray {
+                background-color:#f4f4f4;
+            }
 		}
 	}
 
