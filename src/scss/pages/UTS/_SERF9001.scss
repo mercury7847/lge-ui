@@ -1,4 +1,5 @@
 .search-layer {
+    display: none;
     overflow-y: auto;
     position: fixed;
     top: 0;
@@ -34,6 +35,12 @@
         max-width: (848px + 80px);
         margin: 194px auto 100px;
         padding: 0 40px;
+
+        @include mobile {
+            max-width: 100%;
+            margin: 12px auto 54px;
+            padding: 0 20px;
+        }
     }
 
     .input-keyword-wrap {
@@ -151,6 +158,22 @@
             padding-bottom: 24px;
         }
     }
+
+    @include mobile {
+        .input-result-list {
+            display: none;
+        }
+        .result-preview {
+            display: block;
+            padding: 27px 0 0;
+            .result-title {
+                display: block;
+            }
+            .result-category {
+                padding-bottom: 24px;
+            }
+        }
+    }
 }
 
 .result-preview-list {
@@ -200,6 +223,44 @@
                 left: 144px;
                 font-weight: $font-weight-bold;
                 @include font-medium;
+            }
+        }
+    }
+
+    @include mobile {
+        .item {
+            position: relative;
+            display: block;
+            //height: 128px;
+            background-color: #fff;
+            box-shadow: 6px 8px 30px 0 rgba(0, 0, 0, 0.12);
+            font-size: 0;
+            .image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                max-width: 128px;
+                img {
+                    width: 128px;
+                }
+            }
+            .info {
+                height: 128px;
+                padding: 16px 16px 16px 144px;
+                @include font-small;
+                .name {
+                    display: block;
+                    margin-bottom: 4px;
+                    font-weight: $font-weight-bold;
+                    @include textClipClamp(2);
+                }
+                .price {
+                    position: absolute;
+                    bottom: 16px;
+                    left: 144px;
+                    font-weight: $font-weight-bold;
+                    @include font-medium;
+                }
             }
         }
     }

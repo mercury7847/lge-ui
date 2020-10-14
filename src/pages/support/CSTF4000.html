@@ -103,7 +103,7 @@
                                 <h3 class="tit">03. 증상을 선택해주세요.</h3>        
                             </div>
 
-                            <div>
+                            <div class="pc-only">
                                 <div class="field-wrap">
                                     <div class="row">
                                         <div class="field-item block">
@@ -148,8 +148,43 @@
 
                             <div class="section-content">
                                 <div class="field-wrap">
-                                    <div class="row">
+                                    <div class="row mo-only">
                                         <div class="field-item block">
+                                            <div class="field-title">
+                                                <label for="symptom" class="tit">증상 구분</label>
+                                            </div>
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" name="symptom" id="age">
+                                                    <option value="" selected>부품/소모품</option>
+                                                    <option value="">구입/사양</option>
+                                                    <option value="">구조/외관</option>
+                                                    <option value="">기능 관련</option>
+                                                    <option value="">난방 관련</option>
+                                                    <option value="">냄새 관련</option>
+                                                    <option value="">냉방 관련</option>
+                                                    <option value="">누수 관련</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mo-only">
+                                        <div class="field-item block">
+                                            <div class="field-title">
+                                                <label for="radio1-1" class="tit">세부 증상</label>
+                                            </div>
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" name="symptom" id="radio1-1">
+                                                    <option value="">이벤트 행사</option>
+                                                    <option value="">실내기/실외기 호환 문의</option>
+                                                    <option value="">제품 사양 문의</option>
+                                                    <option value="">제품 구입</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="field-item block pc-only">
                                             <div class="field-title">
                                                 <strong class="tit">세부증상</strong>
                                             </div>
@@ -172,7 +207,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn type-solution block problem-solve">
+                                        <button type="button" data-href="#troubleShooting" data-control="modal" class="btn type-solution block problem-solve">
                                             <strong class="text">제품 문제해결 방법을 확인해보세요!</strong>
                                             <p class="side-item">선택하신 증상은 제품 문제해결 방법을 통해서 해결이 가능합니다.</p>
                                         </button>
@@ -182,7 +217,7 @@
                                             <div class="field-title">
                                                 <strong class="tit">구입시기를 선택해주세요.</strong>
                                             </div>
-                                            <div class="check-list">
+                                            <div class="check-list type-col-2">
                                                 <div class="rdo-wrap">
                                                     <input type="radio" name="period" id="period-1" value="1개월 이내">
                                                     <label for="period-1">1개월 이내</label>
@@ -204,6 +239,14 @@
                                                     <label for="period-5">기억안남</label>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="modal-line-box">
+                                            <p class="chk-wrap">
+                                                <input type="checkbox" id="rental" name="rental">
+                                                <label for="rental">렌탈 여부</label>
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -360,7 +403,7 @@
                                                             </span>
                                                         </span>
                                                     </div>
-                                                    <div class="address-default">
+                                                    <div class="address-default type-A">
                                                         <div class="chk-wrap">
                                                             <input type="checkbox" id="defaultAdress">
                                                             <label for="defaultAdress">기존 주소로 선택하기</label>      
@@ -420,76 +463,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h4 class="cont-tit">방문할 엔지니어를 선택해주세요</h4>
-                                <div class="engineer-carousel">
-                                    <div class="engineer-carousel-list ui_carousel_list">
-                                        <div class="engineer-carousel-track ui_carousel_track">
-                                            <div class="engineer-carousel-slide ui_carousel_slide">
-                                                <div class="engineer-box">
-                                                    <input type="radio" name="engineer" id="engineer-1" value="">
-                                                    <label for="engineer-1">
-                                                        <div class="engineer-image">
-                                                            <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
-                                                        </div>
-                                                        <p class="tit">박두신</p>
-                                                        <p class="desc">모란지역지원센터</p>
-                                                    </label>
-                                                </div>  
-                                            </div>
-                                            <div class="engineer-carousel-slide ui_carousel_slide">
-                                                <div class="engineer-box">
-                                                    <input type="radio" name="engineer" id="engineer-2" value="">
-                                                    <label for="engineer-2">
-                                                        <div class="engineer-image">
-                                                            <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
-                                                        </div>
-                                                        <p class="tit">박두신</p>
-                                                        <p class="desc">모란지역지원센터</p>
-                                                    </label>
-                                                </div>  
-                                            </div>
-                                            <div class="engineer-carousel-slide ui_carousel_slide">
-                                                <div class="engineer-box">
-                                                    <input type="radio" name="engineer" id="engineer-3" value="">
-                                                    <label for="engineer-3">
-                                                        <div class="engineer-image">
-                                                            <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
-                                                        </div>
-                                                        <p class="tit">박두신</p>
-                                                        <p class="desc">모란지역지원센터</p>
-                                                    </label>
-                                                </div>  
-                                            </div>
-                                            <div class="engineer-carousel-slide ui_carousel_slide">
-                                                <div class="engineer-box">
-                                                    <input type="radio" name="engineer" id="engineer-4" value="">
-                                                    <label for="engineer-4">
-                                                        <div class="engineer-image">
-                                                            <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
-                                                        </div>
-                                                        <p class="tit">박두신</p>
-                                                        <p class="desc">모란지역지원센터</p>
-                                                    </label>
-                                                </div>  
-                                            </div>
-                                            <div class="engineer-carousel-slide ui_carousel_slide">
-                                                <div class="engineer-box">
-                                                    <input type="radio" name="engineer" id="engineer-5" value="">
-                                                    <label for="engineer-5">
-                                                        <div class="engineer-image">
-                                                            <img src="/lg5-common/images/support/default-engineer.jpg" aria-hidden="true">
-                                                        </div>
-                                                        <p class="tit">박두신</p>
-                                                        <p class="desc">모란지역지원센터</p>
-                                                    </label>
-                                                </div>  
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    <div class="indi-wrap">
-                                        <ul class="indi-conts ui_carousel_dots"></ul>
-                                    </div>
-                                </div>
+
                                 <ul class="bullet-list top-border">
                                     <li class="b-txt">평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.</li>
                                     <li class="b-txt">[인증/예약]버튼 클릭 시 휴대전화 인증이 진행되며, 그 후에 예약이 완료됩니다.</li>
@@ -507,7 +481,9 @@
                                         <li class="b-txt">평일 18시 이후 또는 토/일/공휴일은 출장비 22,000원이 적용 됩니다.</li>
                                         <li class="b-txt">[인증/예약]버튼 클릭 시 휴대전화 인증이 진행되며, 그 후에 예약이 완료됩니다.</li>
                                     </ul>
-                                    <button class="btn bd-black select-engineer"><span>다른 엔지니어 선택</span></button>
+                                    <div class="btn-group">
+                                        <button type="button" data-href="#choice-engineer" data-control="modal" class="btn bd-black select-engineer"><span>다른 엔지니어 선택</span></button>
+                                    </div>
                                 </div>
                                 <figure class="engineer-profile type-A part2">
                                     <div class="engineer-img">
@@ -521,11 +497,11 @@
                             </div>
                         </div>
 
-                        <div class="section">
+                        <div class="reservation-confirm">
                             <p class="result-text"><strong>2020.07.01 13:30</strong>에 박두신 전문 엔지니어가 입력하신 주소로 방문하여 <strong>[누수관련 > 가동 중 누수]</strong>에 대한 증상을 해결해드릴 예정입니다. 예약하시겠습니까?</p>
                             <div class="btn-group">
                                 <a href="#" class="btn gray"><span>취소</span></a>
-                                <button type="button" class="btn pink">인증/예약</button>
+                                <button type="button" data-href="#citationPopup" data-control="modal" class="btn pink">인증/예약</button>
                             </div>
                         </div>
 
@@ -543,7 +519,11 @@
     @@include('./support/modal/phone-citation.html')
 
     <!-- 제품 해결 팝업 -->
+    @@include('./support/modal/troubleshooting.html')
+
     <!-- 엔지니어 선택 팝업 -->
+    @@include('./support/modal/choice-engineer.html')
+
     <!-- 예약 완료 팝업 -->
     @@include('./common/modules/alert-modal.html', {
         "popId" : "laypop",

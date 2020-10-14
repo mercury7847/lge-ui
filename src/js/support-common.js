@@ -586,6 +586,67 @@ CS.MD.anchorTab  = function() {
     }
 }();
 
+/* floating */
+CS.MD.floting  = function() {
+    var pluginName = 'floating';
+
+    function Plugin(el, opt) {
+        var self = this,
+            el = self.el = el,
+            $el = self.$el = $(el);
+
+        var defaults = {
+            floatingClass: 'floating'
+        };
+
+        self.options = $.extend({}, defaults, opt);
+
+        function _initialize() {
+            
+        }
+        function _setEventHandler() {
+            CS.UI.elem.$win.on('scroll resize', function() {
+                var $win = CS.UI.elem.$win,
+                    scrollTop = $win.scrollTop(),
+                    offsetTop = $el.offset().top,
+                    floatingClass = self.options.floatingClass;
+
+                if (scrollTop >= offsetTop) {
+                    !$el.hasClass(floatingClass) && $el.addClass(floatingClass);
+                } else if (scrollTop < offsetTop && $el.hasClass(floatingClass)) {
+                    $el.removeClass(floatingClass);
+                }
+            });
+        }
+
+        _initialize();
+        _setEventHandler();
+    }
+
+    Plugin.prototype = {
+
+    }
+
+    $.fn[pluginName] = function(options) {
+        var arg = arguments; 
+
+        return this.each(function() {
+            var _this = this,
+                $this = $(_this),
+                plugin = $this.data('plugin_' + pluginName);
+
+            if (!plugin) {
+                $this.data('plugin_' + pluginName, new Plugin(this, options));
+            } else {
+                if (typeof options === 'string' && typeof plugin[options] === 'function') {
+                    plugin[options].apply(plugin, [].slice.call(arg, 1));
+                }
+            }
+        });
+    }
+}();
+
+
 /* VIEWPORT_WIDTH&HEIGHT */
 CS.MD.VIEWPORT = function(){
     if(CS.UI.elem.$html.hasClass('safari')) {
@@ -692,6 +753,8 @@ CS.MD.CHK_DEVICE = function() {
     function commonInit(){
         setTableScrollbar();
         commonSlides();
+
+        $('[data-js="floating]').floating();
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
