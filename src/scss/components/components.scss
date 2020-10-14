@@ -57,6 +57,14 @@
                 .component[class*=bg-] {
                     background-color:transparent !important;
                 }
+                .component {
+                    .link-text {
+                        border-color:#111;
+                        &:after {
+                            border-color:#111;
+                        }
+                    }
+                }
 			} @else if $bg == dark {
                 background-color: #333;
                 * {
@@ -64,6 +72,24 @@
                 }
                 .component[class*=bg-] {
                     background-color:transparent !important;
+                }
+                .component {
+                    .btn.btn-outline-primary {
+                        color:#111 !important;
+                    }
+                    .text-wrap .btn-type-box .btn-outline-primary {
+                        color:#fff !important;
+                    }
+                    .text-black .btn.btn-outline-secondary,
+                    .text-white .btn.btn-outline-secondary {
+                        color:#111 !important;
+                    }
+                    .link-text {
+                        border-color:#fff;
+                        &:after {
+                            border-color:#fff;
+                        }
+                    }
                 }
 			} @else if $bg == black {
                 background-color: #000;
@@ -73,10 +99,39 @@
                 .component[class*=bg-] {
                     background-color:transparent !important;
                 }
+                .component {
+                    .btn.btn-outline-primary {
+                        color:#111 !important;
+                    }
+                    .text-wrap .btn-type-box .btn-outline-primary {
+                        color:#fff !important;
+                    }
+                    .text-wrap .btn-type-box .btn-primary {
+                        color:#111 !important;
+                    }
+                    .text-black .btn.btn-outline-secondary,
+                    .text-white .btn.btn-outline-secondary {
+                        color:#111 !important;
+                    }
+                    .link-text {
+                        border-color:#fff;
+                        &:after {
+                            border-color:#fff;
+                        }
+                    }
+                }
 			} @else if $bg == white {
                 background-color: #fff;
                 .component[class*=bg-] {
                     background-color:transparent !important;
+                }
+                .component {
+                    .link-text {
+                        border-color:#111;
+                        &:after {
+                            border-color:#111;
+                        }
+                    }
                 }
 			}
 		}
