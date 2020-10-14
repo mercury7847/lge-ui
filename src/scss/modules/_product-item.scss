@@ -337,24 +337,4 @@
             }
         }
     }
-    &.type2 {
-      > li {
-        .item {
-            .product-contents {
-                padding-bottom: 60px;
-                @include mobile {
-                    padding-bottom: 0; 
-                }
-            }
-            .price-area {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                @include mobile {
-                    position: static;
-                }
-            }
-        }
-      }  
-    }
 }

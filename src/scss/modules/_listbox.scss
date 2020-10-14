@@ -69,12 +69,12 @@
                     }
                     
                     .tit {
-                        height:30px;
+                        height:60px;
                         color:#222;
                         font-size:20px;
                         line-height:30px;
                         font-weight:700;
-                        @include textClipClamp(1);
+                        @include textClipClamp(2);
                         @include mobile {
                             height:18px;
                             font-size:14px;
@@ -380,14 +380,15 @@
                         padding:16px 20px 0;
                     }
                     .tit {
-                        height:24px;
+                        height:48px;
                         font-size:16px;
                         line-height:24px;
                         em {
                             color: #ec455a;
                         }
                         @include mobile {
-                            height:18px;
+                            //height:18px;
+                            height: auto;
                             font-size:14px;
                             line-height:18px;
                         }
@@ -471,8 +472,8 @@
 }
 
 .list-wrap + .box-list {
-    margin-top: 12px;
+    padding-top: 12px;
 }
 .box-list + .box-list {
-    margin-top: 24px;
+    padding-top: 24px;
 }
