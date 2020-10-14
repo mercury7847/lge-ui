@@ -1,22 +1,21 @@
-@@for (var i = 0; i < context.items.length; i++) {
 <li class="item">
     <div class="prd-care-vertical">
         <span class="chk-wrap">
-            <input type="checkbox" id="`+items[i].check.id+`" name="`+items[i].check.name+`" `+items[i].check.checked+`>
-            <label for="`+items[i].check.id+`"><span class="blind">`+items[i].check.text+`</span></label>
+            <input type="checkbox" id="@@check.id" name="@@check.name" @@check.checked>
+            <label for="@@check.id"><span class="blind">@@check.text</span></label>
         </span>
         <div class="img-wrap">
             <a href="#n">
-                <img src="`+items[i].visual+`" alt="제품 이미지">
+                <img src="@@visual" alt="제품 이미지">
             </a>
         </div>
         <div class="txt-wrap">
             <p class="tit">
                 <a href="#n">
-                    <span class="blind">제품 디스플레이 네임</span>`+items[i].title+`
+                    <span class="blind">제품 디스플레이 네임</span>@@title
                 </a>
             </p>
-            <p class="code"><span class="blind">제품 코드</span>`+items[i].code+`</p>
+            <p class="code"><span class="blind">제품 코드</span>@@code</p>
         </div>
         <div class="info-wrap">
             <div class="opt-info">
@@ -26,38 +25,14 @@
                         <div class="slide-wrap ui_carousel_slider2">
                             <div class="slide-content ui_carousel_list">
                                 <div class="slide-track ui_carousel_track">
-                                    <!-- slide -->
+                                    @@for (var i = 0; i < context.colorSet.length; i++) {
                                     <div class="slide-conts ui_carousel_slide">
-                                        <div role="radio" class="chk-wrap-colorchip `+items[i].colorOpt1.color+`" title="`+items[i].colorOpt1.title+`">
-                                            <input type="radio" id="`+items[i].colorOpt1.id+`" name="`+items[i].colorOpt1.name+`" `+items[i].colorOpt1.checked+`>
-                                            <label for="`+items[i].colorOpt1.id+`"><span class="blind">`+items[i].colorOpt1.title+`</span></label>
+                                        <div role="radio" class="chk-wrap-colorchip `+colorSet[i].color+`" title="`+colorSet[i].title+`">
+                                            <input type="radio" id="`+colorSet[i].id+`" name="`+colorSet[i].name+`" `+colorSet[i].checked+`>
+                                            <label for="`+colorSet[i].id+`"><span class="blind">`+colorSet[i].title+`</span></label>
                                         </div>
                                     </div>
-                                    <!-- //slide -->
-                                    <!-- slide -->
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <div role="radio" class="chk-wrap-colorchip `+items[i].colorOpt2.color+`" title="`+items[i].colorOpt2.title+`">
-                                            <input type="radio" id="`+items[i].colorOpt2.id+`" name="`+items[i].colorOpt2.name+`" `+items[i].colorOpt2.checked+`>
-                                            <label for="`+items[i].colorOpt2.id+`"><span class="blind">`+items[i].colorOpt2.title+`</span></label>
-                                        </div>
-                                    </div>
-                                    <!-- //slide -->
-                                    <!-- slide -->
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <div role="radio" class="chk-wrap-colorchip `+items[i].colorOpt3.color+`" title="`+items[i].colorOpt3.title+`">
-                                            <input type="radio" id="`+items[i].colorOpt3.id+`" name="`+items[i].colorOpt3.name+`" `+items[i].colorOpt3.checked+`>
-                                            <label for="`+items[i].colorOpt3.id+`"><span class="blind">`+items[i].colorOpt3.title+`</span></label>
-                                        </div>
-                                    </div>
-                                    <!-- //slide -->
-                                    <!-- slide -->
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <div role="radio" class="chk-wrap-colorchip `+items[i].colorOpt4.color+`" title="`+items[i].colorOpt4.title+`">
-                                            <input type="radio" id="`+items[i].colorOpt4.id+`" name="`+items[i].colorOpt4.name+`" `+items[i].colorOpt4.checked+`>
-                                            <label for="`+items[i].colorOpt4.id+`"><span class="blind">`+items[i].colorOpt4.title+`</span></label>
-                                        </div>
-                                    </div>
-                                    <!-- //slide -->
+                                    }
                                 </div>
                             </div>
                             <div class="slide-controls">
@@ -71,18 +46,14 @@
                     <dt>가입비</dt>
                     <dd>
                         <ul class="rdo-tab-wrap" role="radiogroup">
+                            @@for (var i = 0; i < context.appFee.length; i++) {
                             <li>
                                 <span class="rdo-wrap">
-                                    <input type="radio" id="`+items[i].appFee1.id+`" name="`+items[i].appFee1.name+`" `+items[i].appFee1.checked+`>
-                                    <label for="`+items[i].appFee1.id+`">`+items[i].appFee1.title+`</label>
+                                    <input type="radio" id="`+appFee[i].id+`" name="`+appFee[i].name+`" `+appFee[i].checked+`>
+                                    <label for="`+appFee[i].id+`">`+appFee[i].title+`</label>
                                 </span>
                             </li>
-                            <li>
-                                <span class="rdo-wrap">
-                                    <input type="radio" name="`+items[i].appFee2.name+`" id="`+items[i].appFee2.id+`" `+items[i].appFee2.checked+`>
-                                    <label for="`+items[i].appFee2.id+`">`+items[i].appFee2.title+`</label>
-                                </span>
-                            </li>
+                            }
                         </ul>
                     </dd>
                 </dl>
@@ -90,24 +61,14 @@
                     <dt>의무사용</dt>
                     <dd>
                         <ul class="rdo-tab-wrap" role="radiogroup">
+                            @@for (var i = 0; i < context.useDay.length; i++) {
                             <li>
                                 <span class="rdo-wrap">
-                                    <input type="radio" id="`+items[i].useDay1.id+`" name="`+items[i].useDay1.name+`" `+items[i].useDay1.checked+`>
-                                    <label for="`+items[i].useDay1.id+`">`+items[i].useDay1.title+`</label>
+                                    <input type="radio" id="`+useDay[i].id+`" name="`+useDay[i].name+`" `+useDay[i].checked+`>
+                                    <label for="`+useDay[i].id+`">`+useDay[i].title+`</label>
                                 </span>
                             </li>
-                            <li>
-                                <span class="rdo-wrap">
-                                    <input type="radio" name="`+items[i].useDay2.name+`" id="`+items[i].useDay2.id+`" `+items[i].useDay2.checked+`>
-                                    <label for="`+items[i].useDay2.id+`">`+items[i].useDay2.title+`</label>
-                                </span>
-                            </li>
-                            <li>
-                                <span class="rdo-wrap">
-                                    <input type="radio" name="`+items[i].useDay3.name+`" id="`+items[i].useDay3.id+`" `+items[i].useDay3.checked+`>
-                                    <label for="`+items[i].useDay3.id+`">`+items[i].useDay3.title+`</label>
-                                </span>
-                            </li>
+                            }
                         </ul>
                     </dd>
                 </dl>
@@ -115,33 +76,22 @@
                     <dt>방문주기</dt>
                     <dd>
                         <ul class="rdo-tab-wrap" role="radiogroup">
+                            @@for (var i = 0; i < context.visitDay.length; i++) {
                             <li>
                                 <span class="rdo-wrap">
-                                    <input type="radio" id="`+items[i].visitDay1.id+`" name="`+items[i].visitDay1.name+`" `+items[i].visitDay1.checked+`>
-                                    <label for="`+items[i].visitDay1.id+`">`+items[i].visitDay1.title+`</label>
+                                    <input type="radio" id="`+visitDay[i].id+`" name="`+visitDay[i].name+`" `+visitDay[i].checked+`>
+                                    <label for="`+visitDay[i].id+`">`+visitDay[i].title+`</label>
                                 </span>
                             </li>
-                            <li>
-                                <span class="rdo-wrap">
-                                    <input type="radio" name="`+items[i].visitDay2.name+`" id="`+items[i].visitDay2.id+`" `+items[i].visitDay2.checked+`>
-                                    <label for="`+items[i].visitDay2.id+`">`+items[i].visitDay2.title+`</label>
-                                </span>
-                            </li>
-                            <li>
-                                <span class="rdo-wrap">
-                                    <input type="radio" name="`+items[i].visitDay3.name+`" id="`+items[i].visitDay3.id+`" `+items[i].visitDay3.checked+`>
-                                    <label for="`+items[i].visitDay3.id+`">`+items[i].visitDay3.title+`</label>
-                                </span>
-                            </li>
+                            }
                         </ul>
                     </dd>
                 </dl>
             </div>
             <dl class="price-info">
                 <dt>월 요금</dt>
-                <dd>`+items[i].price+`원</dd>
+                <dd>@@price원</dd>
             </dl>
         </div>
     </div>
 </li>
-}
