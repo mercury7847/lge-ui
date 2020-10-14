@@ -1,0 +1,27 @@
+<div class="slide-conts ui_carousel_slide">
+    <div class="conts-wrap">
+        <div class="prd-care-horizon">
+            @@include('./common/modules/flags.html', {
+                borderType:true,
+                flags:[
+                    "<span class='blind'>서비스명</span>케어솔루션"
+                ]
+            })
+            <div class="img-wrap">
+                <img src="@@visual" alt="제품 이미지">
+            </div>
+            <div class="txt-wrap">
+                <div class="tit-info">
+                    <p class="tit"><span class="blind">제품 디스플레이 네임</span>@@title</p>
+                    <p class="code"><span class="blind">제품 코드</span>@@code</p>
+                </div>
+                <p class="etc">@@etcTxt</p>
+            </div>
+            @@if (context.btnDel === true) {
+            <div class="del-item">
+                <button type="button" class="btn-del" tabindex=""><span class="blind">제품 삭제</span></button>
+            </div>
+            }
+        </div>
+    </div>
+</div>

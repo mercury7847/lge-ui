@@ -24,20 +24,18 @@
                 <div class="list"><!-- 활성화시 .active -->
                     <div class="sns-inner">
                         <!-- 
-                            data-url : 공유될 url 주소
+                            data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
                             data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
-                            data-image : 핀터레스트 이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
-                            data-via : 트위터 공유버튼 클릭시 공유자 명으로 사용됨, 미사용시 LGUS 가 기본값으로 사용됨
+                            data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
+                            data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
+
+                            각 sns 버튼에 적용.
                         -->
                         <ul class="sns-share">
-                            <!-- facebook 공유버튼엔 data-url만 사용합니다 -->
                             <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="share-facebook" title="페이스북에 공유하기, 새창열림" data-link-name="facebook">페이스북</a></li>
-                            <!-- twitter 공유버튼엔 data-url, data-title, data-via를 사용합니다 -->
-                            <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" data-title="twitter test" data-via="LGUS" class="share-twitter" title="트위터에 공유하기, 새창열림" data-link-name="twitter">트위터</a></li>
-                            <!-- [KR수정] 카카오톡, URL복사 추가 -->
+                            <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="share-twitter" title="트위터에 공유하기, 새창열림" data-link-name="twitter">트위터</a></li>
                             <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="share-kakao" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk">카카오톡</a></li>
                             <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="share-url" data-link-name="copy_url">URL복사</a></li>
-                            <!-- // [KR수정] 카카오톡, URL복사 추가 -->
                         </ul>
                     </div>
                 </div>

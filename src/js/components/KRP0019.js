@@ -26,30 +26,7 @@ $(window).ready(function(){
             // 공유하기 헬퍼 빌드
             Sharer.init({
                 selector: '.sns-share > li >  a',
-                attr: 'data-link-name', // sns서비스명을 가져올 속성
-                metas: {
-                    image: { // 공식 메타태그가 아닌 메타태그에 있는 이미지를 공유하고자 할 경우 이 옵션 설정
-                        // kakaotalk: 'kakao:image',
-                    }
-                },
-                // 공유하기 직전에
-                onBeforeShare: function ($btn, data) {
-                    if ($btn.attr('data-link-name') == 'copy_url') {
-                        // url 복사하기 인 경우
-                        vcui.dom.copyToClipboard(location.href, {
-                            onSuccess: function () {
-                                alert('URL을 복사했습니다.');
-                            }
-                        });
-                        // false를 반환하면 공유를 위한 팝업을 안띄운다.
-                        return false;
-                    }
-                    
-                },
-                // 공유를 했을 때 서버 로그 페이지에 관련데이타를 보내준다.
-                onShrered: function ($btn, data) {
-                    // console.log(data);
-                }
+                attr: 'data-link-name' // sns서비스명을 가져올 속성
             });
     
         

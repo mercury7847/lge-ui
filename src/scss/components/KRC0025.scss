@@ -234,11 +234,11 @@
 				.btn-outline-primary {
 					@if $bg == black {
 						border-color:#fff;
-						background:transparent;
+						// background:transparent;
 						color:#fff;
 					} @else if $bg == dark {
 						border-color:#fff;
-						background:transparent;
+						// background:transparent;
 						color:#fff;
 					} @else if $bg == lightgray {
 						background:transparent;
@@ -246,8 +246,8 @@
 				}
 				.btn-primary {
 					@if $bg == black {
-						border-color:#fff;
-						background:#fff;
+						// border-color:#fff;
+						// background:#fff;
 						color:#111;
 					}
 				}
