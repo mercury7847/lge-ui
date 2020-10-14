@@ -18,12 +18,13 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
             self.$el.attr("role","navigation");
             self.$el.attr("aria-label","Pagination");
             self.$el.attr("data-aria-pattern","Page #");
-            self.$el.append('<button type="button" value="L" class="prev" aria-label="Previous page">Prev</button><ul></ul><button type="button" value="R" class="next" aria-label="Next page">Next</button>');
+            self.$el.append('<a href="#L" class="prev"><span class="blind">이전 페이지 보기</span></a><span class="page_num"></span><a href="#R" class="next"><span class="blind">다음 페이지 보기</span></a>');
 
             self._bindEvents();
         },
 
         setPageInfo: function setPageInfo(data) {
+            console.log('pageInfo',data);
             var self = this;
             if(!!data) {
                 if(!!data.page) {
@@ -60,42 +61,41 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
             let leftPage = (startPage > visibleCount);
             let rightPage = ((startPage + visibleCount - 1) < totalCount);
             if(leftPage) {
-                self.$el.find(".prev:button").show();
+                self.$el.find("a.prev").show();
             } else {
-                self.$el.find(".prev:button").hide();
+                self.$el.find("a.prev").hide();
             }
             if(rightPage) {
-                self.$el.find(".next:button").show();
+                self.$el.find("a.next").show();
             } else {
-                self.$el.find(".next:button").hide();
+                self.$el.find("a.next").hide();
             }
 
-            self.$el.find(".prev:button").next("ul").find("li").remove();
+            var pageHtml = "";
             for (var n = startPage; n <= endPage; n++) {
                 if(n == page) {
-                    self.$el.find(".prev:button").next("ul").append('<li><button type="button" value="' + n +'" aria-label="Page ' + n + '" class="active">' + n + '</button></li>');
+                    pageHtml += ('<strong><span class="blind">현재 페이지</span>' + n + '</strong>');
                 } else {
-                    self.$el.find(".prev:button").next("ul").append('<li><button type="button" value="' + n +'" aria-label="Page ' + n + '">' + n + '</button></li>');
+                    pageHtml += ('<a href="#' + n +'" title="' + n + '페이지 보기">' + n + '</a>');
                 }
             }
+            self.$el.find("span.page_num").html(pageHtml);
         },
 
         _bindEvents: function _bindEvents() {
             var self = this;
-            self.$el.on("click","button",function(e) {
+            self.$el.on("click","a",function(e) {
                 switch (e.type) {
                     case 'click':
                         e.preventDefault();
-                        let value = $(e.currentTarget).val();
+                        let value = $(e.currentTarget).attr('href').replace("#", "");
+                        console.log(value);
                         if($(e.currentTarget).hasClass("prev") || $(e.currentTarget).hasClass("next")) {
                             self.triggerHandler("page_click", {
                                 pagePosition: value,
                                 page: ""
                             });
                         } else {
-                            self.$el.find(".prev:button").next("ul").find("li>button").removeClass("active");
-                            console.log(e);
-                            $(e.currentTarget).addClass("active");
                             self.triggerHandler("page_click", {
                                 pagePosition: "",
                                 page: value
