@@ -115,6 +115,9 @@
 				.text {
 					color: #fff;
 				}
+				.btn-area .btn-primary {
+					color:#111 !important;
+				}
 			} @else if $bg == black {
 				background-color: #000;
 				.title {
@@ -127,6 +130,9 @@
 				}
 				.text {
 					color: #fff;
+				}
+				.btn-area .btn-primary {
+					color:#111 !important;
 				}
 			} @else if $bg == white {
 				background-color: #fff;

@@ -96,11 +96,16 @@
 // modal layer popup style
 .ui_modal_wrap {
     height:100%;
+    margin:0 30px;
+    @include mobile {
+        margin:0;
+    }
 }
 .popup-wrap {
     display:none;
     position:absolute;
-    width:630px;
+    width:100%;
+    max-width:630px;
     overflow:hidden;
     border-radius:4px;
     background:#fff;
@@ -170,7 +175,7 @@
         padding:0 56px 32px;
         overflow-y:auto;
         &.no-footer {
-            max-height:616px;
+            max-height:576px;
             @include mobile {
                 height:calc(100% - 75px);
                 max-height:calc(100% - 75px);
@@ -238,15 +243,11 @@
             }
         }
     }
-
+    &.middle {
+        max-width:868px;
+    }
     &.full {
-        width:1066px;
-        @include mobile {
-            width:100%;
-            .pop-footer {
-                padding:0;
-            }
-        }
+        max-width:1066px;
     }
 
     &.tit-line2 {

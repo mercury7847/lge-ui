@@ -11,7 +11,10 @@
             <!-- search -->
             <div class="contents search">
                 <!-- 검색 영역 -->
-                @@include('./common/modules/search-input.html')
+                @@include('./common/modules/search-input.html', {
+                    "value" : "노크온 매직스페이스",
+                    "related" : true
+                })
                 <!-- // 검색 영역 -->
                 
                 <!-- tabs -->
@@ -30,82 +33,85 @@
 
                 <div class="cont-wrap">
                     <div class="search-result-wrap">
-                        @@include('./common/modules/list-sorting.html', {
-                       
-                            "select" : [
-                                { "option" : "정확도순" },
-                                { "option" : "인기순" },
-                                { "option" : "최신순" },
-                                { "option" : "가격 높은순" },
-                                { "option" : "가격 낮은순" }
-                            ]
-                        })
-                        <div class="box-list story-list-wrap">
-                            <ul class="box-list-inner story">
-                                @@loop('./common/modules/list-box.html', [
-                                    {
-                                        "img" : "dummy/@img-stroy.png",
-                                        
-                                        "flagInfo2" : true,
-                                        "flagInf1" : "구분",
-                                        "flagInf1-1" : "비하인드스토리",
+                        @@include('./common/modules/list-filter.html')
+                        <div class="result-area">
+                            @@include('./common/modules/list-sorting.html', {
+                        
+                                "select" : [
+                                    { "option" : "정확도순" },
+                                    { "option" : "인기순" },
+                                    { "option" : "최신순" },
+                                    { "option" : "가격 높은순" },
+                                    { "option" : "가격 낮은순" }
+                                ]
+                            })
+                            <div class="result-list-wrap box-list story-list-wrap">
+                                <ul class="box-list-inner story">
+                                    @@loop('./common/modules/list-box.html', [
+                                        {
+                                            "img" : "dummy/@img-stroy.png",
+                                            
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "비하인드스토리",
 
-                                        "title-hd" : "이벤트 제목",
-                                        "title" : "행복을 찾아주는 파랑새, 인공지능 <em>플랫폼 ‘LG ThinQ’</em>",
-                                        "date-hd" : "이벤트 기간",
-                                        "date" : "2020.08.01~2020.09.30",
+                                            "title-hd" : "이벤트 제목",
+                                            "title" : "행복을 찾아주는 파랑새, 인공지능 <em>플랫폼 ‘LG ThinQ’</em>",
+                                            "date-hd" : "이벤트 기간",
+                                            "date" : "2020.08.01~2020.09.30",
 
-                                        "hashtag" : [
-                                            {"tag": "#가을", "on" : "pink"},
-                                            {"tag": "#가전", "on" : ""}
-                                        ]
+                                            "hashtag" : [
+                                                {"tag": "#가을", "on" : "pink"},
+                                                {"tag": "#가전", "on" : ""}
+                                            ]
 
-                                    },
-                                    {
-                                        "img" : "dummy/@img-stroy.png",
-                                        
-                                        "flagInfo2" : true,
-                                        "flagInf1" : "구분",
-                                        "flagInf1-1" : "비하인드스토리",
+                                        },
+                                        {
+                                            "img" : "dummy/@img-stroy.png",
+                                            
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "비하인드스토리",
 
-                                        "title-hd" : "이벤트 제목",
-                                        "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                        "date-hd" : "이벤트 기간",
-                                        "date" : "2020.08.01~2020.09.30"
+                                            "title-hd" : "이벤트 제목",
+                                            "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                            "date-hd" : "이벤트 기간",
+                                            "date" : "2020.08.01~2020.09.30"
 
-                                    },
-                                    {
-                                        "img" : "dummy/@img-stroy.png",
-                                        
-                                        "flagInfo2" : true,
-                                        "flagInf1" : "구분",
-                                        "flagInf1-1" : "비하인드스토리",
+                                        },
+                                        {
+                                            "img" : "dummy/@img-stroy.png",
+                                            
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "비하인드스토리",
 
-                                        "title-hd" : "이벤트 제목",
-                                        "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                        "date-hd" : "이벤트 기간",
-                                        "date" : "2020.08.01~2020.09.30"
+                                            "title-hd" : "이벤트 제목",
+                                            "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                            "date-hd" : "이벤트 기간",
+                                            "date" : "2020.08.01~2020.09.30"
 
-                                    },
-                                    {
-                                        "img" : "dummy/@img-stroy.png",
-                                        
-                                        "flagInfo2" : true,
-                                        "flagInf1" : "구분",
-                                        "flagInf1-1" : "비하인드스토리",
+                                        },
+                                        {
+                                            "img" : "dummy/@img-stroy.png",
+                                            
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "비하인드스토리",
 
-                                        "title-hd" : "이벤트 제목",
-                                        "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                        "date-hd" : "이벤트 기간",
-                                        "date" : "2020.08.01~2020.09.30"
+                                            "title-hd" : "이벤트 제목",
+                                            "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                            "date-hd" : "이벤트 기간",
+                                            "date" : "2020.08.01~2020.09.30"
 
-                                    }
-                                ])
-                            </ul>
-                        </div>
-                        @@include('./common/support/pagination.html', {
-                            count: 5
-                        })
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                            @@include('./common/support/pagination.html', {
+                                count: 5
+                            })
+                        </div>    
 
                     </div>    
                 </div>
