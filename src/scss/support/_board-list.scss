@@ -185,6 +185,14 @@
             }
         }
     }
+    .flag-wrap {
+        margin-bottom:5px;
+        .flag {
+            height:20px;
+            padding:3px 8px;
+            line-height:1;
+        }
+    }
     .tit {
         display:block;
         font-size:18px;
@@ -226,13 +234,51 @@
             background-position:left center;
         }
     }
+    &.icon-type {
+        .list {
+            > li {
+                a {
+                    position:relative;
+                    padding-left:168px;
+                    &:before {
+                        content:'';
+                        position:absolute;
+                        left:56px;
+                        top:50%;
+                        width:80px;
+                        height:80px;
+                        border-radius:100%;
+                        background-color:#ccc;
+                        background-repeat:no-repeat;
+                        background-size:100%;
+                        transform:translateY(-50%);
+                    }
+                }
+                &.icon-call a:before {
+                    background-image:url('/lg5-common/images/icons/icon-cs-call.png');
+                }
+                &.icon-remote a:before {
+                    background-image:url('/lg5-common/images/icons/icon-cs-call.png');
+                }
+                &.icon-center a:before {
+                    background-image:url('/lg5-common/images/icons/icon-cs-call.png');
+                }
+                &.icon-center a:before {
+                    background-image:url('/lg5-common/images/icons/icon-cs-call.png');
+                }
+                &.icon-set a:before {
+                    background-image:url('/lg5-common/images/icons/icon-cs-call.png');
+                }
+            }
+        }
+    }
     @include pc {
         .tit {
             @include textEllipsis;
         }
     }
     @include mobile {
-        .list-cont {
+        .list {
             > li {
                 margin-top:4px;
                 border-radius:0px;
@@ -252,12 +298,16 @@
                 }
             }
         } 
+        .flag-wrap {
+            margin-bottom:8px;
+            text-align:right;
+        }
         .tit {
             font-size:14px;
             line-height:18px;
             @include textEllipsisClamp(2);
         }
-        .topic {
+        .desc {
             font-size:12px;
             line-height:16px;
         }
@@ -281,6 +331,31 @@
                 background:url('/lg5-common/images/icons/icon-view.svg') no-repeat;
                 background-size:20px;
                 background-position:left center;
+            }
+        }
+        &.icon-type {
+            .list {
+                > li {
+                    a {
+                        padding-left:72px;
+                        &:before {
+                            left:20px;
+                            top:50px;
+                            width:40px;
+                            height:40px;
+                            transform:translateY(0);
+                        }
+                    }
+                }
+            }
+            .infos {
+                & + li {
+                    margin:0;
+                    padding:0;
+                    &:before {
+                        display:none;
+                    }
+                }
             }
         }
     }
