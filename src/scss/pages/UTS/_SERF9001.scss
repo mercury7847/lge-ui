@@ -234,6 +234,7 @@
     }
 
     @include mobile {
+        display: block;
         .input-result-list {
             display: none;
         }

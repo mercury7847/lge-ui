@@ -140,6 +140,7 @@
             .input-sch {
                 input.txt {
                     height: 51px;
+                    padding-left: 9px;
                 }
                 .btn-search {
                     width: 51px;
@@ -206,7 +207,7 @@
     right: -1px;
     left: -1px;
     z-index: 1;
-    padding: 18px 24px;
+    padding: 18px 24px 44px;
     border-radius: 0 0 8px 8px;
     border: 1px solid #ddd;
     border-top: 0;
@@ -236,14 +237,55 @@
     .input-result-list,
     .search-keyword-area {
         position: relative;
-        padding-bottom: 26px;
+        //padding-bottom: 26px;
     }
 
     .not-result {
-        padding-bottom: 26px;
+        //padding-bottom: 26px;
         @include font-medium;
         span {
             font-weight: $font-weight-medium;
+        }
+    }
+
+    @include mobile {
+        padding: 10px 14px 36px;
+        .btn-close {
+            right: 12px;
+            bottom: 12px;
+            width: 24px;
+            height: 24px;
+            span {
+                @include blind;
+            }
+            &:before,
+            &:after {
+                position: absolute;
+                @include calc(top,50%,9px);
+                @include calc(left,50%,1px);
+                width: 2px;
+                height: 18px;
+                background-color: #222;
+                content: '';
+            }
+            &:before {
+                transform: rotate(-45deg);
+            }
+            &:after {
+                transform: rotate(45deg);
+            }
+        }
+
+        .input-result-list {
+            font-size: 14px;
+            line-height: 18px;
+        }
+        .not-result {
+            font-size: 14px;
+            line-height: 18px;
+            span {
+                font-weight: $font-weight-regular;
+            }
         }
     }
 }
@@ -272,6 +314,14 @@
         font-weight: $font-weight-medium;
         @include font-small;
         @include text-underline(1px,#222);
+    }
+
+    @include mobile {
+        .search-result-text {
+            margin-bottom: 14px;
+            font-size: 16px;
+            line-height: 19px;
+        }
     }
 }
 
