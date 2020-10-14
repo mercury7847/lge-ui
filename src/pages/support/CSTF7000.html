@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/product-support"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'title': '문의/예약 결과 조회',
+                'desc': '예약하신 모든 상담/서비스 내역을 조회하실 수 있습니다.<br>에어컨 이외 제품의 설치/철거 서비스 신청 확인은 <a href="#" class="btn-text">㈜판토스 홈페이지</a>를 통해 확인해 주세요.'
+            })
+
+            <div class="contents support">
+                <div class="contents-inner">
+                    <div class="section">
+                        <div class="section-title">
+                            <h3>서비스 이용 내역</h3>
+                        </div>
+                        <div class="section-content">
+                            
+                        </div>
+                    </div>
+                    <div class="section no-bg">
+                        <div class="sorting-wrap">
+                            <div class="total">전체 <em class="count" id="count">122</em>건</div>
+                            <div class="sort-box">
+                                <div class="sort-select-wrap">
+                                    <select class="ui_selectbox" title="정렬 기준 선택">
+                                        <option value="most" selected>등록순</option>
+                                        <option value="newest">조회순</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-wrap icon-type">
+                            <ul class="list">
+                                <li>
+                                    <a href="#">                                               
+                                        <div class="flag-wrap">
+                                            <span class="flag">전화상담</span>
+                                            <span class="flag">처리대기</span>
+                                        </div>
+                                        <strong class="tit">문의 제목이 노출되는 영역</strong>
+                                        <p class="desc">HA230948WW</p>
+                                        <ul class="infos">
+                                            <li>세탁기/스타일러 > 스타일러 > S5MB</li>
+                                            <li>2020.07.27</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">                                               
+                                        <div class="flag-wrap">
+                                            <span class="flag">출장</span>
+                                            <span class="flag">방문예정</span>
+                                        </div>
+                                        <strong class="tit">문의 제목이 노출되는 영역</strong>
+                                        <p class="desc">HA230948WW</p>
+                                        <ul class="infos">
+                                            <li>카테고리 > 모델명</li>
+                                            <li>접수일</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">                                               
+                                        <div class="flag-wrap">
+                                            <span class="flag">설치/철거</span>
+                                            <span class="flag">처리상태</span>
+                                        </div>
+                                        <strong class="tit">문의 제목이 노출되는 영역</strong>
+                                        <p class="desc">HA230948WW</p>
+                                        <ul class="infos">
+                                            <li>카테고리 > 모델명</li>
+                                            <li>접수일</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">                                               
+                                        <div class="flag-wrap">
+                                            <span class="flag">원격상담</span>
+                                            <span class="flag">처리상태</span>
+                                        </div>
+                                        <strong class="tit">문의 제목이 노출되는 영역</strong>
+                                        <p class="desc">HA230948WW</p>
+                                        <ul class="infos">
+                                            <li>카테고리 > 모델명</li>
+                                            <li>접수일</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">                                               
+                                        <div class="flag-wrap">
+                                            <span class="flag">센터방문</span>
+                                            <span class="flag">처리상태</span>
+                                        </div>
+                                        <strong class="tit">문의 제목이 노출되는 영역</strong>
+                                        <p class="desc">HA230948WW</p>
+                                        <ul class="infos">
+                                            <!-- 모델명 정보 없을 경우 비노출 -->
+                                            <li>카테고리</li>
+                                            <li>접수일</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        @@include('./common/support/pagination.html', {
+                            count: 5
+                        })
+
+                        <div class="no-data">
+                            <p>조회 결과가 없습니다.</p>
+                        </div>
+                    </div>
+                    <div class="btn-group right">
+                        <a href="#" class="btn gray"><span>이전</span></a>
+                        <a href="#" class="btn pink"><span>메인</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>  
+    
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
+</body>
+</html> 
