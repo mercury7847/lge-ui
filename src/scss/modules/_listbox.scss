@@ -93,7 +93,7 @@
                         font-weight:700;
                         @include textClipClamp(2);
                         @include mobile {
-                            height:18px;
+                            height:36px;
                             font-size:14px;
                             line-height:18px;
                         }
@@ -281,7 +281,6 @@
         padding: 0;
     }
     .story {
-        width: 100%;
         .lists {
             width:calc(100% / 2);
             @include mobile {
@@ -437,6 +436,9 @@
             }
             .list-inner {
                 padding-bottom: 24px;
+                .thumb {
+                    border-radius: 4px 4px 0 0;
+                }
                 .see-video {
                     position: absolute;
                     top: 0;
@@ -468,9 +470,9 @@
     }
 }
 
-.result-list-wrap + .box-list {
-    margin-top: 120px;
+.list-wrap + .box-list {
+    margin-top: 12px;
 }
 .box-list + .box-list {
-    margin-top: 48px;
+    margin-top: 24px;
 }

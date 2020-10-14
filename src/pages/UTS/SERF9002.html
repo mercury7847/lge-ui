@@ -14,7 +14,6 @@
                 @@include('./common/modules/search-input.html', {
                     "value" : "노크온 매직스페이스",
                     "related" : true,
-                    "layer" : true,
                     "similar" : true
                 })
                 <!-- // 검색 영역 -->
@@ -31,7 +30,7 @@
                     </ul>
                 </div>
                 <div class="cont-wrap">
-                    <div class="search-result-wrap">
+                    <div class="search-result-wrap all">
                         <div class="result-category">
                             <ul class="rounded-list">
                                 <li>
@@ -222,7 +221,7 @@
                                     ])
                                 </ul>
                             </div>
-                        </div><!-- // -->
+                        </div><!-- // 스토리 -->
                         <div class="result-list-wrap">
                             <div class="list-head">
                                 <h2 class="title">케어용품/소모품</h2>
@@ -250,7 +249,7 @@
                                     ])
                                 </ul>
                             </div>
-                        </div>
+                        </div><!-- // 케어용품/소모품 -->
                         <div class="result-list-wrap">
                             <div class="list-head">
                                 <h2 class="title">고객지원</h2>
@@ -258,8 +257,115 @@
                                     <a href="#" class="btn-link"><span>더보기</span></a>
                                 </div>
                             </div>
-                            
-                        </div>
+                            <div class="list-wrap">
+                                <ul class="product-items">
+                                    @@loop('./common/modules/product-item.html', [
+                                        {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "button" : true,
+                                            "buttonName" : "제품 지원 더보기"
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "button" : true,
+                                            "buttonName" : "제품 지원 더보기"
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "button" : true,
+                                            "buttonName" : "제품 지원 더보기"
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                            <div class="box-list search-support-list-wrap">
+                                <ul class="box-list-inner support no-img">
+                                    @@loop('./common/modules/list-box.html', [
+                                        {
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "드라이버/소프트웨어",
+
+                                            "title-hd" : "고객지원 제목",
+                                            "title" : "[프로그램/Win10_64bit ] XPION용 LG <em>intelligent Update </em>프로그램",
+                                            "pdNum-hd" : "시리얼 넘버",
+
+                                            "step" : [
+                                                {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"}
+                                            ]
+
+                                        }, {
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "드라이버/소프트웨어",
+
+                                            "title-hd" : "고객지원 제목",
+                                            "title" : "[프로그램/Win10_64bit ] XPION용 LG <em>intelligent Update </em>프로그램",
+                                            "pdNum-hd" : "시리얼 넘버",
+
+                                            "step" : [
+                                                {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"}
+                                            ]
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                            <div class="box-list search-video-list-wrap">
+                                <ul class="box-list-inner video">
+                                    @@loop('./common/modules/list-box.html', [
+                                        {
+                                            "img" : "UTS/@sample-video-thum.jpg",
+                                            "videoBtn" : true,
+                                            "title-hd" : "이벤트 제목",
+                                            "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
+
+                                            "twoLine" : true,
+                                            "step" : [
+                                                {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
+                                                {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
+                                            ]
+                                        },
+                                        {
+                                            "img" : "UTS/@sample-video-thum.jpg",
+                                            "videoBtn" : true,
+                                            "title-hd" : "이벤트 제목",
+                                            "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
+
+                                            "twoLine" : true,
+                                            "step" : [
+                                                {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
+                                                {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
+                                            ]
+                                        },
+                                        {
+                                            "img" : "UTS/@sample-video-thum.jpg",
+                                            "videoBtn" : true,
+                                            "title-hd" : "이벤트 제목",
+                                            "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
+
+                                            "twoLine" : true,
+                                            "step" : [
+                                                {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
+                                                {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
+                                            ]
+                                        },
+                                        {
+                                            "img" : "UTS/@sample-video-thum.jpg",
+                                            "videoBtn" : true,
+                                            "title-hd" : "이벤트 제목",
+                                            "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
+
+                                            "twoLine" : true,
+                                            "step" : [
+                                                {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
+                                                {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
+                                            ]
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                        </div><!-- // 고객지원 -->
                     </div>
                 </div>
                 <!-- // 검색 결과 영역 -->
