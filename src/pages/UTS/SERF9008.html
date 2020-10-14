@@ -11,7 +11,10 @@
             <!-- search -->
             <div class="contents search">
                 <!-- 검색 영역 -->
-                @@include('./common/modules/search-input.html')
+                @@include('./common/modules/search-input.html', {
+                    "value" : "",
+                    "related" : true
+                })
                 <!-- // 검색 영역 -->
 
                 <!-- tabs -->

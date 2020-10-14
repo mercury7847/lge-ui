@@ -151,9 +151,10 @@
     }
 
     .related-keyword {
+        overflow: hidden;
         position: relative;
         margin-top: 16px;
-        padding-left: 82px;
+        padding-left: 102px;
         .title {
             position: absolute;
             top: 0;
@@ -169,7 +170,9 @@
             font-size: 0;
             li {
                 display: inline-block;
-                margin-left: 20px;
+                &:nth-child(1) ~ li {
+                    margin-left: 20px;
+                }
                 a {
                     font-weight: 500;
                     font-size: 14px;
@@ -180,17 +183,16 @@
                     }
                 }
             }
-            @include mobile {
-                white-space: nowrap;
-            }
         }
         @include mobile {
-            margin-top: 14px;
-            padding-left: 74px;
+            margin: 14px -20px 0 0;
+            padding-left: 86px;
             .keyword-list {
+                white-space: nowrap;
                 li {
-                    white-space: nowrap;
-                    margin-left: 12px;
+                    &:nth-child(1) ~ li {
+                        margin-left: 12px;
+                    }
                 }
             }
         }

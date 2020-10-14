@@ -34,12 +34,15 @@
             }
         }
     }
-
-    & + .cont-wrap {
-
-        @include mobile {
-            .product-items {
-                .item {
+}
+.search-result-wrap {
+    &.suggested-list-wrap {
+        .product-items {
+            .item {
+                .product-contents {
+                    height: 147px;
+                }
+                @include mobile {
                     .product-contents {
                         height: auto;
                     }
@@ -51,6 +54,5 @@
                 }
             }
         }
-
     }
 }
