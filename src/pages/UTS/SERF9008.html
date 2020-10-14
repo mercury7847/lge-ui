@@ -11,336 +11,347 @@
             <!-- search -->
             <div class="contents search">
                 <!-- 검색 영역 -->
-                @@include('./common/modules/search-input.html')
+                @@include('./common/modules/search-input.html', {
+                    "value" : "",
+                    "related" : true,
+                    "layer" : true
+                })
                 <!-- // 검색 영역 -->
 
                 <!-- tabs -->
                 <div class="tabs-wrap btn-type ui_tab left">
                     <ul class="tabs">
-                        <li class="on"><a href="#n">전체(210)<em class="blind">선택됨</em></a></li>
+                        <li><a href="#n">전체(210)<em class="blind">선택됨</em></a></li>
                         <li><a href="#n">제품(59)</a></li>
                         <li><a href="#n">케어솔루션(2)</a></li>
                         <li><a href="#n">이벤트(5)</a></li>
                         <li><a href="#n">스토리(18)</a></li>
                         <li><a href="#n">케어용품/소모품(32)</a></li>
-                        <li><a href="#n">고객지원(28)</a></li>
+                        <li class="on"><a href="#n">고객지원(28)</a></li>
                     </ul>
                 </div>
                 <!-- // tabs -->
 
-                <div class="cont-wrap">
+                <div class="cont-wrap customer-wrap">
                     <div class="search-result-wrap">
-                        @@include('./common/modules/list-sorting.html', {
-                            "soldout" : true,
-                            "select" : [
-                                { "option" : "정확도순" },
-                                { "option" : "인기순" },
-                                { "option" : "최신순" },
-                                { "option" : "가격 높은순" },
-                                { "option" : "가격 낮은순" }
-                            ]
-                        })
-                        <!-- tabs -->
-                        <div class="tabs-wrap border-type ui_tab left">
-                            <ul class="tabs">
-                                <li class="on"><a href="#n">전체(210)<em class="blind">선택됨</em></a></li>
-                                <li><a href="#n">제품(59)</a></li>
-                                <li><a href="#n">케어솔루션(2)</a></li>
-                                <li><a href="#n">이벤트(5)</a></li>
-                                <li><a href="#n">스토리(18)</a></li>
-                                <li><a href="#n">케어용품/소모품(32)</a></li>
-                                <li><a href="#n">고객지원(28)</a></li>
-                            </ul>
-                        </div>
-                        <!-- // tabs -->
+                        @@include('./common/modules/list-filter.html')
 
-                        <div class="result-list-wrap">
-                            <div class="list-wrap">
-                                <ul class="product-items">
-                                    @@loop('./common/modules/product-item.html', [
+                        <div class="result-area">
+                            <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->
+                            <div class="btn-filter">
+                                <a href="#n" id="filterModalLink" class="ico-filter"><span class="blind">옵션필터</span></a>
+                            </div>
+                            @@include('./common/modules/list-sorting.html', {
+                                "soldout" : true,
+                                "select" : [
+                                    { "option" : "정확도순" },
+                                    { "option" : "인기순" },
+                                    { "option" : "최신순" },
+                                    { "option" : "가격 높은순" },
+                                    { "option" : "가격 낮은순" }
+                                ]
+                            })
+                            <!-- tabs -->
+                            <div class="tabs-wrap border-type ui_tab left">
+                                <ul class="tabs">
+                                    <li class="on"><a href="#n">전체<em class="blind">선택됨</em></a></li>
+                                    <li><a href="#n">드라이버/소프트웨어</a></li>
+                                    <li><a href="#n">제품문제해결</a></li>
+                                    <li><a href="#n">사용설명서</a></li>
+                                    <li><a href="#n">이용가이드/FAQ</a></li>
+                                    <li><a href="#n">동영상 가이드</a></li>
+                                </ul>
+                            </div>
+                            <!-- // tabs -->
+
+                            <div class="result-list-wrap">
+                                <div class="list-wrap">
+                                    <ul class="product-items">
+                                        @@loop('./common/modules/product-item.html', [
+                                            {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg"
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg"
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg"
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "price" : true,
+                                                "spec2" : true
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "price" : true,
+                                                "spec2" : true
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "price" : true,
+                                                "spec2" : true
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "button" : true,
+                                                "buttonName" : "제품 지원 더보기"
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "button" : true,
+                                                "buttonName" : "제품 지원 더보기"
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "button" : true,
+                                                "buttonName" : "제품 지원 더보기"
+                                            }
+                                        ])
+                                    </ul>
+                                </div>
+                                @@include('./common/support/pagination.html', {
+                                    count: 5
+                                })
+                            </div> 
+                            <div class="box-list search-support-list-wrap">
+                                <div class="list-head">
+                                    <h2 class="title">드라이버/소프트웨어</h2>
+                                    <div class="btn-area">
+                                        <a href="#" class="btn-link"><span>더보기</span></a>
+                                    </div>
+                                </div>
+                                <ul class="box-list-inner support no-img">
+                                    @@loop('./common/modules/list-box.html', [
                                         {
-                                            "search" : true,
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg"
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "드라이버/소프트웨어",
+
+                                            "title-hd" : "고객지원 제목",
+                                            "title" : "[프로그램/Win10_64bit ] XPION용 LG <em>intelligent Update </em>프로그램",
+                                            "pdNum-hd" : "시리얼 넘버",
+
+                                            "step" : [
+                                                {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"}
+                                            ]
+
                                         }, {
-                                            "search" : true,
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg"
-                                        }, {
-                                            "search" : true,
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg"
-                                        }, {
-                                            "search" : true,
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "price" : true,
-                                            "spec2" : true
-                                        }, {
-                                            "search" : true,
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "price" : true,
-                                            "spec2" : true
-                                        }, {
-                                            "search" : true,
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "price" : true,
-                                            "spec2" : true
-                                        }, {
-                                            "search" : true,
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "button" : true,
-                                            "buttonName" : "제품 지원 더보기"
-                                        }, {
-                                            "search" : true,
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "button" : true,
-                                            "buttonName" : "제품 지원 더보기"
-                                        }, {
-                                            "search" : true,
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "button" : true,
-                                            "buttonName" : "제품 지원 더보기"
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "드라이버/소프트웨어",
+
+                                            "title-hd" : "고객지원 제목",
+                                            "title" : "[프로그램/Win10_64bit ] XPION용 LG <em>intelligent Update </em>프로그램",
+                                            "pdNum-hd" : "시리얼 넘버",
+
+                                            "step" : [
+                                                {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"}
+                                            ]
                                         }
                                     ])
                                 </ul>
                             </div>
-                            @@include('./common/support/pagination.html', {
-                                count: 5
-                            })
-                        </div> 
-                        <div class="box-list search-support-list-wrap">
-                            <div class="list-head">
-                                <h2 class="title">드라이버/소프트웨어</h2>
-                                <div class="btn-area">
-                                    <a href="#" class="btn-link"><span>더보기</span></a>
+
+                            <div class="box-list search-support-list-wrap">
+                                <div class="list-head">
+                                    <h2 class="title">제품문제해결</h2>
+                                    <div class="btn-area">
+                                        <a href="#" class="btn-link"><span>더보기</span></a>
+                                    </div>
                                 </div>
+                                <ul class="box-list-inner support no-img">
+                                    @@loop('./common/modules/list-box.html', [
+                                        {
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "제품문제해결",
+
+                                            "title-hd" : "고객지원 제목",
+                                            "title" : "Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
+
+                                            "step" : [
+                                                {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"},
+                                                {"txt1" : "기능관련", "txt2" : "><em>제품 사용 방법</em>"}
+                                            ]
+                                        }, {
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "제품문제해결",
+
+                                            "title-hd" : "고객지원 제목",
+                                            "title" : "Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
+
+                                            "step" : [
+                                                {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"},
+                                                {"txt1" : "기능관련", "txt2" : "><em>제품 사용 방법</em>"}
+                                            ]
+                                        }
+                                    ])
+                                </ul>
                             </div>
-                            <ul class="box-list-inner support no-img">
-                                @@loop('./common/modules/list-box.html', [
-                                    {
-                                        "flagInfo2" : true,
-                                        "flagInf1" : "구분",
-                                        "flagInf1-1" : "드라이버/소프트웨어",
 
-                                        "title-hd" : "고객지원 제목",
-                                        "title" : "[프로그램/Win10_64bit ] XPION용 LG <em>intelligent Update </em>프로그램",
-                                        "pdNum-hd" : "시리얼 넘버",
-
-                                        "step" : [
-                                            {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"}
-                                        ]
-
-                                    }, {
-                                        "flagInfo2" : true,
-                                        "flagInf1" : "구분",
-                                        "flagInf1-1" : "드라이버/소프트웨어",
-
-                                        "title-hd" : "고객지원 제목",
-                                        "title" : "[프로그램/Win10_64bit ] XPION용 LG <em>intelligent Update </em>프로그램",
-                                        "pdNum-hd" : "시리얼 넘버",
-
-                                        "step" : [
-                                            {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"}
-                                        ]
-                                    }
-                                ])
-                            </ul>
-                        </div>
-
-                        <div class="box-list search-support-list-wrap">
-                            <div class="list-head">
-                                <h2 class="title">제품문제해결</h2>
-                                <div class="btn-area">
-                                    <a href="#" class="btn-link"><span>더보기</span></a>
+                            <div class="box-list search-support-list-wrap">
+                                <div class="list-head">
+                                    <h2 class="title">사용설명서</h2>
+                                    <div class="btn-area">
+                                        <a href="#" class="btn-link"><span>더보기</span></a>
+                                    </div>
                                 </div>
+                                <ul class="box-list-inner support no-img">
+                                    @@loop('./common/modules/list-box.html', [
+                                        {
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "사용설명서",
+
+                                            "title-hd" : "고객지원 제목",
+                                            "title" : "HTML <em>사용설명서</em> (한국어)",
+
+                                            "step" : [
+                                                {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"}
+                                            ]
+
+                                        }, {
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "사용설명서",
+
+                                            "title-hd" : "고객지원 제목",
+                                            "title" : "HTML <em>사용설명서</em> (한국어)",
+                                            
+                                            "step" : [
+                                                {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"}
+                                            ]
+                                        }
+                                    ])
+                                </ul>
                             </div>
-                            <ul class="box-list-inner support no-img">
-                                @@loop('./common/modules/list-box.html', [
-                                    {
-                                        "flagInfo2" : true,
-                                        "flagInf1" : "구분",
-                                        "flagInf1-1" : "제품문제해결",
 
-                                        "title-hd" : "고객지원 제목",
-                                        "title" : "Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
-
-                                        "step" : [
-                                            {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"},
-                                            {"txt1" : "기능관련", "txt2" : "><em>제품 사용 방법</em>"}
-                                        ]
-                                    }, {
-                                        "flagInfo2" : true,
-                                        "flagInf1" : "구분",
-                                        "flagInf1-1" : "제품문제해결",
-
-                                        "title-hd" : "고객지원 제목",
-                                        "title" : "Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
-
-                                        "step" : [
-                                            {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"},
-                                            {"txt1" : "기능관련", "txt2" : "><em>제품 사용 방법</em>"}
-                                        ]
-                                    }
-                                ])
-                            </ul>
-                        </div>
-
-                        <div class="box-list search-support-list-wrap">
-                            <div class="list-head">
-                                <h2 class="title">사용설명서                                </h2>
-                                <div class="btn-area">
-                                    <a href="#" class="btn-link"><span>더보기</span></a>
+                            <div class="box-list search-support-list-wrap">
+                                <div class="list-head">
+                                    <h2 class="title">이용가이드/FAQ</h2>
+                                    <div class="btn-area">
+                                        <a href="#" class="btn-link"><span>더보기</span></a>
+                                    </div>
                                 </div>
+                                <ul class="box-list-inner support no-img">
+                                    @@loop('./common/modules/list-box.html', [
+                                        {
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "제품문제해결",
+
+                                            "title-hd" : "고객지원 제목",
+                                            "title2" : "LG 비하인드 스토리를 열람하고 싶으신 고객님들에게 제공해드리는 FAQ 가이드 “행복을 찾아주는 파랑새, 인공지능 플랫폼을 이용해보세요’  지금 이용 지금 이용 지금 이용 지금 이용 지금 이용",
+
+                                            "desc" : "사이트 <em>이용</em> "
+                                        }, {
+                                            "flagInfo2" : true,
+                                            "flagInf1" : "구분",
+                                            "flagInf1-1" : "제품문제해결",
+
+                                            "title-hd" : "고객지원 제목",
+                                            "title" : "LG 비하인드 스토리를 열람하고 싶으신 고객님들에게 제공해드리는 FAQ 가이드 “행복을 찾아주는 파랑새, 인공지능 플랫폼을 이용해보세요’  지금 이용 지금 이용 지금 이용 지금 이용 지금 이용",
+
+                                            "desc" : "사이트 <em>이용</em> "
+                                        }
+                                    ])
+                                </ul>
                             </div>
-                            <ul class="box-list-inner support no-img">
-                                @@loop('./common/modules/list-box.html', [
-                                    {
-                                        "flagInfo2" : true,
-                                        "flagInf1" : "구분",
-                                        "flagInf1-1" : "사용설명서",
 
-                                        "title-hd" : "고객지원 제목",
-                                        "title" : "HTML <em>사용설명서</em> (한국어)",
-
-                                        "step" : [
-                                            {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"}
-                                        ]
-
-                                    }, {
-                                        "flagInfo2" : true,
-                                        "flagInf1" : "구분",
-                                        "flagInf1-1" : "사용설명서",
-
-                                        "title-hd" : "고객지원 제목",
-                                        "title" : "HTML <em>사용설명서</em> (한국어)",
-                                        
-                                        "step" : [
-                                            {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"}
-                                        ]
-                                    }
-                                ])
-                            </ul>
-                        </div>
-
-                        <div class="box-list search-support-list-wrap">
-                            <div class="list-head">
-                                <h2 class="title">이용가이드/FAQ</h2>
-                                <div class="btn-area">
-                                    <a href="#" class="btn-link"><span>더보기</span></a>
+                            <div class="box-list search-video-list-wrap">
+                                <div class="list-head">
+                                    <h2 class="title">동영상 가이드</h2>
+                                    <div class="btn-area">
+                                        <a href="#" class="btn-link"><span>더보기</span></a>
+                                    </div>
                                 </div>
+                                <ul class="box-list-inner video">
+                                    @@loop('./common/modules/list-box.html', [
+                                        {
+                                            "img" : "UTS/@sample-video-thum.jpg",
+                                            "videoBtn" : true,
+                                            "title-hd" : "이벤트 제목",
+                                            "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
+
+                                            "twoLine" : true,
+                                            "step" : [
+                                                {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
+                                                {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
+                                            ]
+                                        },
+                                        {
+                                            "img" : "UTS/@sample-video-thum.jpg",
+                                            "videoBtn" : true,
+                                            "title-hd" : "이벤트 제목",
+                                            "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
+
+                                            "twoLine" : true,
+                                            "step" : [
+                                                {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
+                                                {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
+                                            ]
+                                        },
+                                        {
+                                            "img" : "UTS/@sample-video-thum.jpg",
+                                            "videoBtn" : true,
+                                            "title-hd" : "이벤트 제목",
+                                            "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
+
+                                            "twoLine" : true,
+                                            "step" : [
+                                                {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
+                                                {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
+                                            ]
+                                        },
+                                        {
+                                            "img" : "UTS/@sample-video-thum.jpg",
+                                            "videoBtn" : true,
+                                            "title-hd" : "이벤트 제목",
+                                            "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
+
+                                            "twoLine" : true,
+                                            "step" : [
+                                                {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
+                                                {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
+                                            ]
+                                        },
+                                        {
+                                            "img" : "UTS/@sample-video-thum.jpg",
+                                            "videoBtn" : true,
+                                            "title-hd" : "이벤트 제목",
+                                            "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
+
+                                            "twoLine" : true,
+                                            "step" : [
+                                                {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
+                                                {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
+                                            ]
+                                        },
+                                        {
+                                            "img" : "UTS/@sample-video-thum.jpg",
+                                            "videoBtn" : true,
+                                            "title-hd" : "이벤트 제목",
+                                            "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
+
+                                            "twoLine" : true,
+                                            "step" : [
+                                                {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
+                                                {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
+                                            ]
+                                        }
+                                    ])
+                                </ul>
                             </div>
-                            <ul class="box-list-inner support no-img">
-                                @@loop('./common/modules/list-box.html', [
-                                    {
-                                        "flagInfo2" : true,
-                                        "flagInf1" : "구분",
-                                        "flagInf1-1" : "제품문제해결",
+                        </div>     
 
-                                        "title-hd" : "고객지원 제목",
-                                        "title2" : "LG 비하인드 스토리를 열람하고 싶으신 고객님들에게 제공해드리는 FAQ 가이드 “행복을 찾아주는 파랑새, 인공지능 플랫폼을 이용해보세요’  지금 이용 지금 이용 지금 이용 지금 이용 지금 이용",
-
-                                        "desc" : "사이트 <em>이용</em> "
-                                    }, {
-                                        "flagInfo2" : true,
-                                        "flagInf1" : "구분",
-                                        "flagInf1-1" : "제품문제해결",
-
-                                        "title-hd" : "고객지원 제목",
-                                        "title2" : "LG 비하인드 스토리를 열람하고 싶으신 고객님들에게 제공해드리는 FAQ 가이드 “행복을 찾아주는 파랑새, 인공지능 플랫폼을 이용해보세요’  지금 이용 지금 이용 지금 이용 지금 이용 지금 이용",
-
-                                        "desc" : "사이트 <em>이용</em> "
-                                    }
-                                ])
-                            </ul>
-                        </div>
-
-                        <div class="box-list search-video-list-wrap">
-                            <div class="list-head">
-                                <h2 class="title">동영상 가이드</h2>
-                                <div class="btn-area">
-                                    <a href="#" class="btn-link"><span>더보기</span></a>
-                                </div>
-                            </div>
-                            <ul class="box-list-inner video">
-                                @@loop('./common/modules/list-box.html', [
-                                    {
-                                        "img" : "UTS/@sample-video-thum.jpg",
-                                        "videoBtn" : true,
-                                        "title-hd" : "이벤트 제목",
-                                        "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
-
-                                        "twoLine" : true,
-                                        "step" : [
-                                            {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
-                                            {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
-                                        ]
-                                    },
-                                    {
-                                        "img" : "UTS/@sample-video-thum.jpg",
-                                        "videoBtn" : true,
-                                        "title-hd" : "이벤트 제목",
-                                        "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
-
-                                        "twoLine" : true,
-                                        "step" : [
-                                            {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
-                                            {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
-                                        ]
-                                    },
-                                    {
-                                        "img" : "UTS/@sample-video-thum.jpg",
-                                        "videoBtn" : true,
-                                        "title-hd" : "이벤트 제목",
-                                        "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
-
-                                        "twoLine" : true,
-                                        "step" : [
-                                            {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
-                                            {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
-                                        ]
-                                    },
-                                    {
-                                        "img" : "UTS/@sample-video-thum.jpg",
-                                        "videoBtn" : true,
-                                        "title-hd" : "이벤트 제목",
-                                        "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
-
-                                        "twoLine" : true,
-                                        "step" : [
-                                            {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
-                                            {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
-                                        ]
-                                    },
-                                    {
-                                        "img" : "UTS/@sample-video-thum.jpg",
-                                        "videoBtn" : true,
-                                        "title-hd" : "이벤트 제목",
-                                        "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
-
-                                        "twoLine" : true,
-                                        "step" : [
-                                            {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
-                                            {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
-                                        ]
-                                    },
-                                    {
-                                        "img" : "UTS/@sample-video-thum.jpg",
-                                        "videoBtn" : true,
-                                        "title-hd" : "이벤트 제목",
-                                        "title2" : "LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
-
-                                        "twoLine" : true,
-                                        "step" : [
-                                            {"txt1" : "TV/프로젝터", "txt2" : ">올레드"},
-                                            {"txt1" : "기능관련", "txt2" : "> 제품 사용 방법"}
-                                        ]
-                                    }
-                                ])
-                            </ul>
-                        </div> 
-
+                    </div>
                 </div>
-            </div>
             <!-- // search -->
+            </div>
         </div>
-        
         @@include('./common/footer.html')
     </div>     
 </body>

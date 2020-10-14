@@ -38,29 +38,30 @@
     .process-wrap {
         max-width:1146px;
         margin:0 auto;
-        padding:0 40px;
         .process-list {
-            padding:28px 0 20px;
-            border-radius:100px;
             background:#fff;
-            @include clearfix;
             > li {
-                float:left;
-                width:25%;
-                padding:64px 50px 0;
-                text-align:center;
+                background-repeat: no-repeat;
                 & + li {
                     position:relative;
                     &:before {
-                        content:'';
-                        position:absolute;
-                        left:-12px;
-                        top:50%;
-                        width:24px;
-                        height:24px;
-                        background:100% url('/lg5-common/images/icons/icon-btn-arrow-right.svg') no-repeat;    
-                        transform:translateY(-50%);
+                        content: '';
+                        position: absolute;
+                        background: url(/lg5-common/images/icons/icon-btn-arrow-right2.svg) no-repeat center;
+                        background-size: 100%;
                     }
+                }
+                &:nth-child(1) {
+                    background-image: url(/lg5-common/images/icons/icon-process-list1.svg);
+                }
+                &:nth-child(2) {
+                    background-image: url(/lg5-common/images/icons/icon-process-list2.svg);
+                }
+                &:nth-child(3) {
+                    background-image: url(/lg5-common/images/icons/icon-process-list3.svg);
+                }
+                &:nth-child(4) {
+                    background-image: url(/lg5-common/images/icons/icon-process-list4.svg);
                 }
             }
         }
@@ -75,6 +76,56 @@
             font-weight:700;
             line-height:24px;
             word-break:keep-all;
+        }
+        @include pc {
+            padding:0 40px;
+            .process-list {
+                padding:28px 0 20px;
+                border-radius:100px;
+                @include clearfix;
+                > li {
+                    float:left;
+                    width:25%;
+                    height: 150px;
+                    padding:80px 50px 0;
+                    text-align:center;
+                    background-size: 64px;
+                    background-position: center top;
+                    + li {
+                        &:before {
+                            left: -12px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            width: 32px;
+                            height: 32px;
+                        }
+                    }
+                }
+            }
+        }
+        @include mobile {
+            padding: 0;
+            .process-list {
+                border-radius: 0;
+                padding: 20px 34px;
+                > li {
+                    width: 100%;
+                    float: none;
+                    padding: 0 0 0 60px;
+                    background-size: 40px;
+                    background-position: left center;
+                    + li {
+                        margin-top: 40px;
+                        &::before {
+                            width: 24px;
+                            height: 24px;
+                            transform: rotate(90deg);
+                            left: calc(50% - 12px);
+                            top: -24px;
+                        }
+                    }
+                }
+            }
         }
     }
     .agree-box {
@@ -281,6 +332,33 @@
             &-btn-group {
                 margin-top: 16px;
             }
+            &-profile {
+                &.type-A {
+                    border-radius: 4px;
+                    box-shadow: 4px 8px 24px 0 rgba(0, 0, 0, 0.15);
+                    padding: 20px 28px;
+                    .engineer-img {
+                        width: 120px;
+                        height: 120px;
+                    }
+                    .engineer-desc {
+                        text-align: left;
+                        margin-left: 28px;
+                        strong {
+                            font-size: 16px;
+                        }
+                        .test {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+            &-to-visit {
+                .part2 {
+                    margin-top: 40px;
+                    width: 100%;
+                }
+            }
         }
     }
     .solution-btn-box {
@@ -336,6 +414,18 @@
             float: right;
             margin: 0;
             padding: 0;
+        }
+
+        @include mobile {
+            padding: 0;
+            margin-top: 12px;
+            .result-text,
+            .btn-group {
+                float: none;
+            }
+            .result-text {
+                padding: 40px 20px;
+            }
         }
     }
     .field-title {
@@ -468,9 +558,13 @@
         }
         @include mobile {
             margin:-16px -6px 0;
+            .item {
+                width: 50%;
+            }
             .rdo-wrap {
-                width:50%;
-                padding:16px 6px 0;
+                width:100%;
+                padding:0;
+                font-size: 18px;
             }
         }
     }

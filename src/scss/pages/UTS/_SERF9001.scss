@@ -35,12 +35,6 @@
         max-width: (848px + 80px);
         margin: 194px auto 100px;
         padding: 0 40px;
-
-        @include mobile {
-            max-width: 100%;
-            margin: 12px auto 54px;
-            padding: 0 20px;
-        }
     }
 
     .input-keyword-wrap {
@@ -52,6 +46,45 @@
             margin: 20px 0 0;
             .search-result-text {
                 margin-bottom: 48px;
+            }
+        }
+    }
+
+    @include mobile {
+        padding-top: 75px;
+        &:before {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 3;
+            height: 75px;
+            background-color: #fff;
+            content: '';
+        }
+        .btn-close {
+            top: 24px;
+            right: 24px;
+            z-index: 3;
+            width: 24px;
+            height: 24px;
+            &:before,
+            &:after {
+                @include calc(top,50%,9px);
+                @include calc(left,50%,1px);
+                height: 18px;
+            }
+        }
+
+        .inner {
+            max-width: 100%;
+            margin: 12px auto 54px;
+            padding: 0 20px;
+        }
+
+        .input-keyword-wrap {
+            .search-similar {
+                margin: 0;
             }
         }
     }
@@ -117,6 +150,47 @@
             font-weight: $font-weight-bold;
         }
     }
+
+    @include mobile {
+        .keyword-list {
+            .list {
+                li {
+                    position: relative;
+                    margin-top: 14px;
+                    padding-right: 30px;
+                    font-size: 14px;
+                    line-height: 20px;
+                }
+            }
+            .btn-delete {
+                position: absolute;
+                top: 0;
+                right: 0;
+                vertical-align: 0;
+            }
+        }
+        .search-keyword {
+            .keyword-list {
+                float: none;
+                padding-right: 0;
+                &.popular-keyword {
+                    margin-top: 32px;
+                }
+            }
+        }
+        .suggested-tags {
+            max-width: 100%;
+            margin-top: 32px;
+            .rounded-list {
+                li {
+                    display: inline-block;
+                    &:not(:last-child) {
+                        margin-right: 8px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .search-result-area {
@@ -166,11 +240,8 @@
         .result-preview {
             display: block;
             padding: 27px 0 0;
-            .result-title {
-                display: block;
-            }
             .result-category {
-                padding-bottom: 24px;
+                padding-bottom: 12px;
             }
         }
     }
@@ -229,37 +300,31 @@
 
     @include mobile {
         .item {
-            position: relative;
-            display: block;
-            //height: 128px;
-            background-color: #fff;
-            box-shadow: 6px 8px 30px 0 rgba(0, 0, 0, 0.12);
-            font-size: 0;
+            background-color: #f4f4f4;
+            box-shadow: none;
             .image {
-                position: absolute;
-                top: 0;
-                left: 0;
-                max-width: 128px;
+                position: static;
+                max-width: 100%;
+                margin-bottom: 8px;
                 img {
-                    width: 128px;
+                    width: 100%;
                 }
             }
             .info {
-                height: 128px;
-                padding: 16px 16px 16px 144px;
-                @include font-small;
+                height: 103px;
+                padding: 0 16px 16px 18px;
+                text-align: center;
                 .name {
-                    display: block;
-                    margin-bottom: 4px;
-                    font-weight: $font-weight-bold;
+                    margin-bottom: 2px;
                     @include textClipClamp(2);
                 }
+                .sku {
+                    @include font-x-small;
+                }
                 .price {
-                    position: absolute;
-                    bottom: 16px;
-                    left: 144px;
-                    font-weight: $font-weight-bold;
-                    @include font-medium;
+                    bottom: 18px;
+                    left: 50%;
+                    transform: translateX(-50%);
                 }
             }
         }

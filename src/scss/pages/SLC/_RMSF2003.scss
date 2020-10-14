@@ -21,7 +21,7 @@
         border-radius:4px;
         // overflow:hidden;
         @include mobile {
-            padding:24px 36px 24px 0;
+            padding:23px 36px 24px 0;
             border-radius:8px;
         }
         .flag-wrap {
@@ -103,7 +103,7 @@
                 }
             }
         }
-        .btn-item {
+        .del-item {
             position:absolute;
             top:24px;
             right:24px;
@@ -308,7 +308,7 @@
             .price-info {
                 padding-top:24px;
                 dt {
-                    width:50px;
+                    width:60px;
                     font-size:16px;
                     line-height:24px;
                 }
@@ -598,6 +598,9 @@
                     width:100%;
                     margin-top:12px;
                     table-layout:fixed;
+                    @include mobile {
+                        margin-top:11px;
+                    }
                     &:first-child {
                         margin-top:0;
                     }
@@ -623,6 +626,9 @@
                 .btn {
                     width:100%;
                     margin-top:24px;
+                    @include mobile {
+                        padding:14px 32px;
+                    }
                 }
             }
             .btn-close {

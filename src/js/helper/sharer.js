@@ -23,7 +23,17 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
             description: {},
             image: {}
         },
-        onBeforeShare: function () {
+        onBeforeShare: function (el, data) {
+            if (data.service == 'copy_url') {
+                // url 복사하기 인 경우
+                vcui.dom.copyToClipboard(location.href, {
+                    onSuccess: function () {
+                        alert('URL을 복사했습니다.');
+                    }
+                });
+                // false를 반환하면 공유를 위한 팝업을 안띄운다.
+                return false;
+            }
         },
         onShrered: function () {
         }
