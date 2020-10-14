@@ -67,13 +67,14 @@
                     .flag-wrap {
                         margin-bottom:8px;
                     }
+                    
                     .tit {
-                        height:30px;
+                        height:60px;
                         color:#222;
                         font-size:20px;
                         line-height:30px;
                         font-weight:700;
-                        @include textClipClamp(1);
+                        @include textClipClamp(2);
                         @include mobile {
                             height:18px;
                             font-size:14px;
@@ -83,6 +84,7 @@
                             color: #ec455a;
                         }
                     }
+                    
                     .tit2 {
                         height:48px;
                         color:#222;
@@ -91,7 +93,7 @@
                         font-weight:700;
                         @include textClipClamp(2);
                         @include mobile {
-                            height:18px;
+                            height:36px;
                             font-size:14px;
                             line-height:18px;
                         }
@@ -107,6 +109,7 @@
                         @include textClipClamp(1);
                         @include mobile {
                             height:16px;
+                            margin-top:4px;
                             font-size:12px;
                             line-height:16px;
                         }
@@ -140,8 +143,21 @@
                             color: #ec455a;
                         }
                     }
+                    .copy {
+                        margin-top: 16px;
+                        font-size: 14px;
+                        line-height: 20px;
+                        color: #616161;
+                        @include mobile {
+                            font-size: 14px;
+                            line-height: 20px;
+                        }    
+                    }
                     .step {
                         margin-top: 12px;
+                        @include mobile {
+                            margin-top: 16px;
+                        }
                         ol {
                             display: inline-block; 
                             li {
@@ -149,6 +165,10 @@
                                 font-size: 16px;
                                 line-height: 24px;
                                 color: #808080;
+                                @include mobile {
+                                    font-size: 12px;
+                                    line-height: 16px;
+                                }
                                 em {
                                     color: #ec455a;
                                 }
@@ -261,28 +281,11 @@
         padding: 0;
     }
     .story {
-        width: 100%;
-        margin: -12px 0 0 0;
         .lists {
             width:calc(100% / 2);
-            padding:0;
-            &:nth-child(odd) {
-                padding-right: 6px;
-                @include mobile {
-                    padding-right: 0;
-                }
-            }
-            &:nth-child(even) {
-                padding-left: 6px;
-                @include mobile {
-                    padding-right: 0;
-                }
-            }
             @include mobile {
                 display:block;
                 width:100%;
-                margin-top:24px;
-                padding:0;
             }
             .list-inner {
                 padding: 0;
@@ -299,6 +302,7 @@
                     display: table-cell;
                     vertical-align: middle;
                     height: 280px;
+                    border-radius: 4px 0 0 4px;
                     @include mobile {
                         display: block;
                         height: auto;
@@ -334,6 +338,7 @@
                         @include mobile {
                             height: auto;
                             //height: 36px;
+                            margin-bottom: 16px;
                             line-height: 18px;
                         }
                     } 
@@ -342,8 +347,18 @@
                     left: auto;      
                     width: 270px;
                     padding: 0 24px 0 22px;
+                    @include mobile {
+                        position: static;
+                        width: 100%;
+
+                    }
                     .btn {
                         width: auto;
+                        @include mobile {
+                            width: 100%;
+                            margin: 0 0 28px;
+
+                        }
                     }
                 }
             }
@@ -365,14 +380,15 @@
                         padding:16px 20px 0;
                     }
                     .tit {
-                        height:24px;
+                        height:48px;
                         font-size:16px;
                         line-height:24px;
                         em {
                             color: #ec455a;
                         }
                         @include mobile {
-                            height:18px;
+                            //height:18px;
+                            height: auto;
                             font-size:14px;
                             line-height:18px;
                         }
@@ -396,8 +412,14 @@
     .support.no-img {
         .lists {
             width:calc(100% / 2);
+            @include mobile {
+                width: 100%;
+            }
             .list-inner {
                 padding: 32px 50px;
+                @include mobile {
+                    padding: 24px 20px;
+                }
                 .info {
                     padding: 0;
                 }
@@ -410,8 +432,14 @@
     .box-list-inner {
         .lists {
             width: calc(100% / 4);
+            @include mobile {
+                width: 100%;
+            }
             .list-inner {
                 padding-bottom: 24px;
+                .thumb {
+                    border-radius: 4px 4px 0 0;
+                }
                 .see-video {
                     position: absolute;
                     top: 0;
@@ -443,9 +471,9 @@
     }
 }
 
-.result-list-wrap + .box-list {
-    margin-top: 120px;
+.list-wrap + .box-list {
+    padding-top: 12px;
 }
 .box-list + .box-list {
-    margin-top: 48px;
+    padding-top: 24px;
 }

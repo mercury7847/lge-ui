@@ -12,7 +12,11 @@
             <!-- search -->
             <div class="contents search">
                 <!-- 검색 영역 -->
-                @@include('./common/modules/search-input.html')
+                @@include('./common/modules/search-input.html', {
+                    "value" : "노크온 매직스페이스",
+                    "related" : true,
+                    "layer" : true
+                })
                 <!-- // 검색 영역 -->
 
                 <!-- tabs -->
@@ -60,7 +64,7 @@
                                         "flagInf2-1" : "구매혜택",
 
                                         "title-hd" : "이벤트 제목",
-                                        "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                        "title" : "2020 NEW 올레드와 함께하는 <em>홈라이프 홈라이프</em>",
                                         "date-hd" : "이벤트 기간",
                                         "date" : "2020.08.01~2020.09.30"
 

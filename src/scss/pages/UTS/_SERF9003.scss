@@ -1,12 +1,21 @@
 .recommend-list-wrap {
     overflow: hidden;
-    max-width: (1284px + 80px);
+    //max-width: (1284px + 80px);
+    max-width: 1284px;
     margin: 56px auto 0;
-    padding: 0 40px;
+    //padding: 0 40px;
+    @include mobile {
+        padding: 0;
+    }
 
     .title {
-        margin-bottom: 16px;
+        padding-bottom: 16px;
         @include font-x-large;
         color: #111;
+        @include mobile {
+            padding-bottom: 12px;
+            @include font-medium;
+            line-height: 23px;
+        }
     }
 }

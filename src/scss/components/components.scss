@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+// @import "bootstrap-grid.min";
+// @import "bootstrap.min";
+
 @import "../utilities/variables";
 @import "../modules/video-asset";
 @import "../modules/animation-asset";
@@ -49,7 +52,7 @@
         padding: 60px 0; // 60px : component top bottom margin for mobile
     }
 
-    $color: (lightgray, dark, black, white);
+    $color: (lightgray, dark, black, white, gray);
 	@each $bg in $color {
 		&.bg-#{$bg} {
 			@if $bg == lightgray {
@@ -133,7 +136,9 @@
                         }
                     }
                 }
-			}
+            } @else if $bg == gray {
+                background-color:#f4f4f4;
+            }
 		}
 	}
 
@@ -263,6 +268,9 @@
 
     .align-center {
         text-align: center;
+        &.text-left {
+            text-align:center !important;
+        }
     }
 
     // video title copy, play button

@@ -13,18 +13,19 @@
                 <!-- 검색 영역 -->
                 @@include('./common/modules/search-input.html', {
                     "value" : "노크온 매직스페이스",
-                    "related" : true
+                    "related" : true,
+                    "layer" : true
                 })
                 <!-- // 검색 영역 -->
                 <!-- 검색 결과 영역 -->
                 <div class="tabs-wrap btn-type ui_tab left">
                     <ul class="tabs">
                         <li><a href="#n">전체(210)</a></li>
-                        <li class="on"><a href="#n">제품(59)<em class="blind">선택됨</em></a></li>
+                        <li><a href="#n">제품(59)<em class="blind">선택됨</em></a></li>
                         <li><a href="#n">케어솔루션(2)</a></li>
                         <li><a href="#n">이벤트(5)</a></li>
                         <li><a href="#n">스토리(18)</a></li>
-                        <li><a href="#n">케어용품/소모품(32)</a></li>
+                        <li class="on"><a href="#n">케어용품/소모품(32)</a></li>
                         <li><a href="#n">고객지원(28)</a></li>
                     </ul>
                 </div>
@@ -44,7 +45,7 @@
                             })
                             <div class="result-list-wrap">
                                 <div class="list-wrap">
-                                    <ul class="product-items type2">
+                                    <ul class="product-items">
                                         @@loop('./common/modules/product-item.html', [
                                             {
                                                 "search" : true,

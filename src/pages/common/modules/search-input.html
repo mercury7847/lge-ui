@@ -4,7 +4,7 @@
             <input type="text" class="txt" placeholder="검색어를 입력해주세요. (예:제품명, 모델명)" value="@@value" title="검색어 입력">
             <button type="button" class="btn-search"><span class="blind">검색</span></button>
         </div>
-        @@if(!context.layer) {
+        @@if(context.layer) {
         <div class="search-input-layer">
             <div class="input-result-list">
                 <ul>

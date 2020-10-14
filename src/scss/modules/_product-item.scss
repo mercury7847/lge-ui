@@ -1,5 +1,7 @@
 .product-items {
     @include clearfix;
+    display: flex;
+    flex-wrap: wrap;
     margin: 0 -6px;
     > li {
         float: left;
@@ -38,12 +40,11 @@
 
     .item {
         position: relative;
+        height: 100%;
         padding: 0 56px 36px;
         border-radius: 4px;
         background-color: #fff;
-        @include mobile {
-            padding: 0 28px 28px;
-        }
+
         .badge-wrap {
             position: absolute;
             top: 0;
@@ -169,6 +170,7 @@
         }
         .product-info {
             padding-top: 20px;
+            //margin-bottom: 24px;
             .product-name {
                 max-height: 24px;
                 @include textClipClamp(1);
@@ -300,52 +302,39 @@
             position: absolute;
             top: 24px;
             right: 24px;
-            input {
-                & + label {
-                    &:before {
-                        border: 0;
-                        border-radius: 0;
-                        background: url("/lg5-common/images/icons/icon-heart-off.svg") no-repeat 0 0;
-                        background-size: 24px 24px;
-                    }
-                    &:after {
-                        display: none;
-                    }
-                }
-                &:checked + label {
-                    &:before {
-                        background-image: url("/lg5-common/images/icons/icon-heart-on.svg");
-                    }
-                    &:after {
-                        border-color:#fff;
-                    }
-                }
-            }
         }
         .product-compare {
             position: absolute;
             top: 24px;
             right: 64px;
         }
-    }
-    &.type2 {
-      > li {
-        .item {
-            .product-contents {
-                padding-bottom: 60px;
-                @include mobile {
-                    padding-bottom: 0; 
+
+        @include mobile {
+            padding: 0 28px 28px;
+            .badge-wrap {
+                .badge {
+                    padding: 5px 8px;
+                    font-size: 10px;
+                }
+                &.thin-type {
+                    top: 18px;
+                    left: 18px;
+                }
+            }
+            .product-info {
+                & + .hashtag-wrap {
+                    margin-top: 24px;
                 }
             }
             .price-area {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                @include mobile {
-                    position: static;
+                .total-price {
+                    font-size: 20px;
+                    line-height: 23px;
                 }
             }
+            .hashtag-wrap {
+                margin-top: 0;
+            }
         }
-      }  
     }
 }
