@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+// @import "bootstrap-grid.min";
+// @import "bootstrap.min";
+
 @import "../utilities/variables";
 @import "../modules/video-asset";
 @import "../modules/animation-asset";
@@ -265,6 +268,9 @@
 
     .align-center {
         text-align: center;
+        &.text-left {
+            text-align:center !important;
+        }
     }
 
     // video title copy, play button
