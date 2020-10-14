@@ -41,12 +41,46 @@
     width: 100%;
     clear: both;
     // max-width: 1600px;
-    margin: 120px auto; // 120px : component top bottom margin for desktop
+    margin:0 auto;
+    padding: 60px 0; // 120px : component top bottom margin for desktop
     @include clearfix;
 
     @include mobile {
-        margin: 60px auto; // 60px : component top bottom margin for mobile
+        padding: 60px 0; // 60px : component top bottom margin for mobile
     }
+
+    $color: (lightgray, dark, black, white);
+	@each $bg in $color {
+		&.bg-#{$bg} {
+			@if $bg == lightgray {
+                background-color: #f4f4f4;
+                .component[class*=bg-] {
+                    background-color:transparent !important;
+                }
+			} @else if $bg == dark {
+                background-color: #333;
+                * {
+                    color:#fff !important;
+                }
+                .component[class*=bg-] {
+                    background-color:transparent !important;
+                }
+			} @else if $bg == black {
+                background-color: #000;
+                * {
+                    color:#fff !important;
+                }
+                .component[class*=bg-] {
+                    background-color:transparent !important;
+                }
+			} @else if $bg == white {
+                background-color: #fff;
+                .component[class*=bg-] {
+                    background-color:transparent !important;
+                }
+			}
+		}
+	}
 
     .component-inner {
         max-width:1344px;
@@ -58,13 +92,13 @@
     }
 
     &.zero-top {
-        margin-top: 0;
+        padding-top: 0;
         // 상단 여백 없음 선택 시, 기본 여백 있는 경우 추가 처리
         .component {}
     }
 
     &.zero-btm {
-        margin-bottom: 0;
+        padding-bottom: 0;
         // 하단 여백 없음 선택 시, 기본 여백 있는 경우 추가 처리
         .component {}
     }
@@ -138,9 +172,9 @@
                 opacity: 0.3;
             }
         }
-        &[class*=bg-] {
-            padding:60px 0;
-        }
+        // &[class*=bg-] {
+        //     padding:60px 0;
+        // }
     }
     
 

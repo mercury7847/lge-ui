@@ -281,6 +281,33 @@
             &-btn-group {
                 margin-top: 16px;
             }
+            &-profile {
+                &.type-A {
+                    border-radius: 4px;
+                    box-shadow: 4px 8px 24px 0 rgba(0, 0, 0, 0.15);
+                    padding: 20px 28px;
+                    .engineer-img {
+                        width: 120px;
+                        height: 120px;
+                    }
+                    .engineer-desc {
+                        text-align: left;
+                        margin-left: 28px;
+                        strong {
+                            font-size: 16px;
+                        }
+                        .test {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+            &-to-visit {
+                .part2 {
+                    margin-top: 40px;
+                    width: 100%;
+                }
+            }
         }
     }
     .solution-btn-box {
@@ -336,6 +363,18 @@
             float: right;
             margin: 0;
             padding: 0;
+        }
+
+        @include mobile {
+            padding: 0;
+            margin-top: 12px;
+            .result-text,
+            .btn-group {
+                float: none;
+            }
+            .result-text {
+                padding: 40px 20px;
+            }
         }
     }
     .field-title {
@@ -468,9 +507,13 @@
         }
         @include mobile {
             margin:-16px -6px 0;
+            .item {
+                width: 50%;
+            }
             .rdo-wrap {
-                width:50%;
-                padding:16px 6px 0;
+                width:100%;
+                padding:0;
+                font-size: 18px;
             }
         }
     }
