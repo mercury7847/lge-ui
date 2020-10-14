@@ -17,7 +17,15 @@
             margin-top: 18px;
             padding: 16px 20px 14px;
             background: #fff;
-
+            @include mobile {
+                max-width: inherit;
+                margin-left: -20px;
+                margin-right: -20px;
+                padding: 0;
+                .tabs {
+                    padding-top: 32px;
+                }
+            }
         }
     }
     .cont-wrap {
