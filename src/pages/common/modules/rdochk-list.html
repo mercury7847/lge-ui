@@ -4,6 +4,7 @@
 @@if ( !context.wAuto ) {
 <div class="select-list-wrap">    
 }
+    @@if ( !context.radioVisible ) {
     <ul>
         @@for ( var i=0; i < slt.length; i++ ) {
         <li class="lists">
@@ -22,4 +23,17 @@
         </li>
         }
     </ul>
+    }
+    @@if ( context.radioVisible ) {
+    <ul class="ui_radio_visible">
+        @@for ( var i=0; i < slt.length; i++ ) {
+        <li class="lists">
+            <span class="rdo-wrap">
+                <input type="radio" id="@@name-`+[i]+`" name="@@name" data-visible-target="`+slt[i].target+`" `+slt[i].checked+`>
+                <label for="@@name-`+[i]+`">`+slt[i].value+`</label>
+            </span>
+        </li>
+        }
+    </ul>
+    }
 </div>

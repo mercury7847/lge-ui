@@ -127,7 +127,7 @@
 
 
 <!-- 가이드 내용 -->
-<h2 class="h2_guide">1+2. 체크박스, 라디오박스 리스트</h2>
+<h2 class="h2_guide">2-1. 체크박스, 라디오박스 리스트</h2>
 <div class="guide_wrap">
     <div class="select-list-wrap">
         <ul>
@@ -336,6 +336,82 @@
 
 
 <!-- 가이드 내용 -->
+<h2 class="h2_guide">2-2. 라디오박스 tab</h2>
+<div class="guide_wrap">
+    <div class="select-list-wrap w-auto">
+        <ul class="ui_radio_visible">
+            <li>
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo22-1" name="rdo22" data-visible-target=".target1" checked>
+                    <label for="rdo22-1">선택1</label>
+                </span>
+            </li>
+            <li>
+                <span class="rdo-wrap">
+                    <input type="radio" id="rdo22-2" data-visible-target=".target2" name="rdo22">
+                    <label for="rdo22-2">선택2</label>
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div class="target1">
+        선택1 checked시 display
+    </div>
+    <div class="target2">
+        선택2 checked시 display
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<!-- include시 .select-list-wrap 까지만 생성 -->
+<div class="select-list-wrap w-auto">
+    <ul class="ui_radio_visible">
+        <li>
+            <span class="rdo-wrap">
+                <input type="radio" id="rdo22-1" name="rdo22" data-visible-target=".target1" checked>
+                <label for="rdo22-1">선택1</label>
+            </span>
+        </li>
+        <li>
+            <span class="rdo-wrap">
+                <input type="radio" id="rdo22-2" data-visible-target=".target2" name="rdo22">
+                <label for="rdo22-2">선택2</label>
+            </span>
+        </li>
+    </ul>
+</div>
+<!-- // include시 .select-list-wrap 까지만 생성 -->
+<!-- target DOM은 자유롭게. data-visible-target에 class 명이나 id 명 맞추면 됨 -->
+<div class="target1">
+    선택1 checked시 display
+</div>
+<div class="target2">
+    선택2 checked시 display
+</div>
+<!-- // target DOM은 자유롭게. data-visible-target에 class 명이나 id 명 맞추면 됨 -->
+<!-- // DOM -->
+
+<!-- include -->
+(@@)include('./common/modules/rdochk-list.html', {
+    "radioVisible" : true, <!-- radio tab일 때 true, 아니면 삭제 -->
+    "wAuto" : true, <!-- width auto일 때 true, 아니면 삭제 -->
+    "rdo" : true, <!-- 라디오박스일 때 "rdo" true, 체크박스일 때 "chk" true -->
+    "name" : "rdo1", <!-- input name. 입력 시 id도 같이 반영(ex : name="rdo1", id="rdo-1" 1, 2, 3... 매칭) -->
+    "slt" : [
+        { "value" : "구매", "checked" : "checked", "target" : ".target1" },
+        { "value" : "케어솔루션", "checked" : "", "target" : ".target2" }
+    ]
+})
+<!-- // include -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+
+
+
+<!-- 가이드 내용 -->
 <h2 class="h2_guide">3. 셀렉트박스(Basic)</h2>
 <div class="guide_wrap">
     <div class="select-wrap"> 
@@ -454,6 +530,37 @@
         <input type="checkbox" id="wish-chk" name="wish-chk" checked>
         <label for="wish-chk"><span class="blind">찜하기</span></label>
     </span>
+</xmp>
+</div>
+<!-- //가이드 내용 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">5. star rating</h2>
+<div class="guide_wrap">
+    <div class="star-rating-wrap">
+        <select class="ui_star_rating" name="rating" title="콘텐츠 별점 선택">
+            <option value=""></option> 
+            <option value="1">1점 (매우 불만족)</option>
+            <option value="2">2점 (불만족)</option>
+            <option value="3">3점 (보통)</option>
+            <option value="4">4점 (만족)</option>
+            <option value="5">5점 (매우 만족)</option>
+          </select>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript">
+    <div class="star-rating-wrap">
+        <select class="ui_star_rating" name="rating" title="콘텐츠 별점 선택">
+            <option value=""></option> 
+            <option value="1">1점 (매우 불만족)</option>
+            <option value="2">2점 (불만족)</option>
+            <option value="3">3점 (보통)</option>
+            <option value="4">4점 (만족)</option>
+            <option value="5">5점 (매우 만족)</option>
+          </select>
+    </div>
 </xmp>
 </div>
 <!-- //가이드 내용 -->
