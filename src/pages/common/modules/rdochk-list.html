@@ -1,4 +1,9 @@
-<div class="select-list-wrap">
+@@if ( context.wAuto ) {
+<div class="select-list-wrap w-auto">
+}
+@@if ( !context.wAuto ) {
+<div class="select-list-wrap">    
+}
     <ul>
         @@for ( var i=0; i < slt.length; i++ ) {
         <li class="lists">
