@@ -9,13 +9,13 @@ $(window).ready(function(){
 				infinite: false,
 				prevArrow:'.btn-arrow.prev',
 				nextArrow:'.btn-arrow.next',
-				swipeToSlide: true,
 				slidesToShow: 4,
-				slidesToScroll: 1,
+				slidesToScroll: 4,
 				responsive: [{
 					breakpoint: 768,
 					settings: {
-						slidesToShow: 2
+						slidesToShow: 2,
+						slidesToScroll: 2,
 					}
 				}]
 			});
