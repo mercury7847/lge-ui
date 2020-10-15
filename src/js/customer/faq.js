@@ -99,7 +99,7 @@
                     //console.log(data);
 
                     //전체 검색수
-                    self.$tab.find('li:nth-child(1) a').text('전체('+ data.listCount +'건)');
+                    self.$tab.find('li:nth-child(1) a').text('전체('+ vcui.number.addComma(data.listCount) +'건)');
 
                     var arr = data.listData instanceof Array ? data.listData : [];
                     var listbody = self.$faqList.find('ul');
