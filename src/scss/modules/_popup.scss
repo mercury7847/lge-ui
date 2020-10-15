@@ -176,6 +176,7 @@
         overflow-y:auto;
         &.no-footer {
             max-height:576px;
+            text-align:left;
             @include mobile {
                 height:calc(100% - 75px);
                 max-height:calc(100% - 75px);

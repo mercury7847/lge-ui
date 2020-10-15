@@ -217,6 +217,7 @@
                 dt {
                     display:inline-block;
                     width:136px;
+                    padding-right:24px;
                     color:#616161;
                     font-size:16px;
                     line-height:24px;
@@ -224,6 +225,14 @@
                     word-break:keep-all;
                     @include mobile {
                         width:80px;
+                    }
+                    .btn-moreinfo {
+                        font-size:inherit;
+                        line-height:inherit;
+                        font-weight:inherit;
+                        &::after {
+                            margin-top:4px;
+                        }
                     }
                 }
                 dd {

@@ -105,7 +105,7 @@
             input.txt {
                 width: 100%;
                 height: 56px;
-                padding: 0 70px 0 24px;
+                padding: 0 90px 0 24px;
                 border-radius: 8px;
                 background-color: #fff;
                 font-size: 16px;
@@ -114,6 +114,33 @@
                 &::-moz-placeholder,
                 &:-ms-input-placeholder {
                     color: #808080;
+                }
+            }
+
+            .btn-delete {
+                position: absolute;
+                top: 50%;
+                right: 56px;
+                width: 20px;
+                height: 20px;
+                margin-top: -10px;
+                border-radius: 10px;
+                background-color: #616161;
+                &:before,
+                &:after {
+                    position: absolute;
+                    @include calc(top,50%,5px);
+                    @include calc(left,50%,1px);
+                    width: 2px;
+                    height: 10px;
+                    background-color: #fff;
+                    content: '';
+                }
+                &:before {
+                    transform: rotate(-45deg);
+                }
+                &:after {
+                    transform: rotate(45deg);
                 }
             }
 
@@ -140,7 +167,10 @@
             .input-sch {
                 input.txt {
                     height: 51px;
-                    padding-left: 9px;
+                    padding: 0 80px 0 9px;
+                }
+                .btn-delete {
+                    right: 51px;
                 }
                 .btn-search {
                     width: 51px;
@@ -171,8 +201,9 @@
             font-size: 0;
             li {
                 display: inline-block;
-                &:nth-child(1) ~ li {
-                    margin-left: 20px;
+                margin-right: 20px;
+                &:nth-last-child(1) {
+                    margin-right: 0;
                 }
                 a {
                     font-weight: 500;
@@ -191,9 +222,7 @@
             .keyword-list {
                 white-space: nowrap;
                 li {
-                    &:nth-child(1) ~ li {
-                        margin-left: 12px;
-                    }
+                    margin-right: 12px;
                 }
             }
         }

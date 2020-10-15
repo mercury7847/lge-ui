@@ -813,18 +813,33 @@ $input: (chk, rdo);
         }
     }
 }
-.chkrdo-list {
-    font-size:0;
-    > li {
-        display:inline-block;
-        vertical-align:top;
-        margin-left:64px;
-        &:first-child {
-            margin-left:0;
-        }
+
+.select-list-wrap {
+    overflow:hidden;
+    > ul {
+        font-size:0;
+        margin-top:-32px;
+        margin-left:-64px;
         @include mobile {
-            width:50%;
-            margin-left:0;
+            margin-top:-16px;
+            margin-left:-12px;
+        }
+        li {
+            display:inline-block;
+            width:25%;
+            margin-top:32px;
+            padding-left:64px;
+            vertical-align:top;
+            @include mobile {
+                width:50%;
+                margin-top:16px;
+                padding-left:12px;
+            }
+        }
+    }
+    &.w-auto {
+        > ul li {
+            width:auto;
         }
     }
 }
@@ -960,6 +975,7 @@ $input: (chk, rdo);
             padding-right:39px;
             border:1px solid #ddd;
             border-radius:8px;
+            background:#fff;
             .ui-select-text {
                 display:inline-block;
                 overflow:hidden;
@@ -1151,6 +1167,32 @@ $input: (chk, rdo);
             .ui-selectbox-list {
                 display:none;
             }
+        }
+    }
+}
+.star-rating-wrap {
+    .ui-rating-wrap {
+        font-size:0;
+        > a {
+            display:inline-block;
+            width:24px;
+            height:24px;
+            font-size:0;
+            vertical-align:top;
+            background:url('/lg5-common/images/icons/icon-star2-off.svg') no-repeat 100%;
+            & + a {
+                margin-left:4px;
+            }
+            &.on {
+                background-image:url('/lg5-common/images/icons/icon-star2-on.svg')
+            }
+        }
+        .ui-select-label {
+            display:inline-block;
+            margin-left:8px;
+            font-size:16px;
+            line-height:24px;
+            vertical-align:top;
         }
     }
 }

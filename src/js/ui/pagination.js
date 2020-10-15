@@ -22,6 +22,19 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
 
             self._bindEvents();
 
+            var page = self.$el.attr("data-page");
+            if(!!page) {
+                self.options.page = page;
+            }
+            var visibleCount = self.$el.attr("data-visible-count");
+            if(!!visibleCount) {
+                self.options.visibleCount = visibleCount;
+            }
+            var totalCount = self.$el.attr("data-total-count");
+            if(!!totalCount) {
+                self.options.totalCount = totalCount;
+            }
+
             self.update();
         },
 
@@ -43,6 +56,7 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
 
         update: function update() {
             var self = this;
+
             const totalCount = parseInt(self.options.totalCount);
             const visibleCount = parseInt(self.options.visibleCount);
             var page = parseInt(self.options.page);
@@ -84,6 +98,10 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
                 }
             }
             self.$el.find("span.page_num").html(pageHtml);
+
+            self.$el.attr("data-page", page);
+            self.$el.attr("data-visible-count", visibleCount);
+            self.$el.attr("data-total-count", totalCount);
         },
 
         _bindEvents: function _bindEvents() {
