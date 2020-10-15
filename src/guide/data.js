@@ -23,7 +23,8 @@ var res = {
 			"Carousel" : ["./wsg/guide_carousel.html","","검수완료"],
 			"Accordion" : ["./wsg/guide_accordion.html","","검수완료"],
 			"Rangeslider" : ["./wsg/guide_rangeslider.html","","검수완료"],
-			"Flag" : ["./wsg/guide_flag.html","","검수완료"]
+			"Flag" : ["./wsg/guide_flag.html","","검수완료"],
+			"SNS Share" : ["./wsg/guide_sns_share.html","","검수완료"],
 		}
 	},
 	"Front" : {
@@ -74,6 +75,7 @@ var res = {
 			"KRP0005_Sticky chat_Static" : ["/html/components/floating.html","","검수완료"],
 			"KRP0009_Product List Products List : No Filter" : ["/html/components/KRP0009.html","","진행중"],
 			"KRP0010_Product Summary (no-img)" : ["/html/components/KRP0010.html","","진행중"],
+			"KRP0012_PDP Tab Anchor" : ["/html/components/KRP0012.html","","진행중"],
 			"KRP0013_PDP Bundle" : ["/html/components/KRP0013.html","","검수완료"],
 			"KRP0014_PDP Specs" : ["/html/components/KRP0014.html","","진행중"],
 			"KRP0016_PDP Support - B2C" : ["/html/components/KRP0016.html","","검수완료"],
