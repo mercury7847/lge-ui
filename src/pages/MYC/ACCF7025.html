@@ -127,7 +127,7 @@
                                                 <dt class="tit"><label for="ipt1">성명</label></dt>
                                                 <dd class="conts">
                                                     <span class="input-wrap block">
-                                                        <input type="text" id="ipt1" value="이케어">
+                                                        <input type="text" id="ipt1" value="이케어" readonly>
                                                     </span>
                                                 </dd>
                                             </dl>
@@ -137,7 +137,7 @@
                                                 <dt class="tit"><label for="ipt2">휴대폰</label></dt>
                                                 <dd class="conts">
                                                     <span class="input-wrap block">
-                                                        <input type="text" id="ipt2" value="010-1234-1234" readonly>
+                                                        <input type="text" id="ipt2" value="010-1234-1234">
                                                     </span>
                                                 </dd>
                                             </dl>
@@ -145,7 +145,7 @@
                                                 <dt class="tit"><label for="ipt3">전화번호</label></dt>
                                                 <dd class="conts">
                                                     <span class="input-wrap block">
-                                                        <input type="text" id="ipt3" value="010-1234-1234" readonly>
+                                                        <input type="text" id="ipt3" value="010-1234-1234">
                                                     </span>
                                                 </dd>
                                             </dl>
@@ -155,7 +155,7 @@
                                                 <dt class="tit"><label for="ipt4">이메일</label></dt>
                                                 <dd class="conts">
                                                     <span class="input-wrap block">
-                                                        <input type="text" id="ipt4" value="lge1234@naver.com" readonly>
+                                                        <input type="text" id="ipt4" value="lge1234@naver.com">
                                                     </span>
                                                 </dd>
                                             </dl>
@@ -168,6 +168,11 @@
                                                 </dd>
                                             </dl>
                                         </div>
+                                    </div>
+
+                                    <div class="btn-group right">
+                                        <button class="btn bd-black btn-small"><span>취소</span></button>
+                                        <button class="btn bd-pink btn-small"><span>저장</span></button>
                                     </div>
 
                                     @@include('./common/modules/bullet-list.html', {
@@ -183,6 +188,7 @@
                             </div>
                             <!-- // 계약자 정보 - 정보변경 -->
 
+                            <!-- 실사용자 정보 -->
                             <div class="section">
                                 <div class="flt-tit-wrap">
                                     <h3 class="sec-tit">실사용자 정보</h3>
@@ -241,10 +247,80 @@
                                     })
                                 </div>
                             </div>
+                            <!-- // 실사용자 정보 -->
+
+                            <!-- 실사용자 정보 - 정보변경 -->
+                            <div class="section">
+                                <div class="flt-tit-wrap">
+                                    <h3 class="sec-tit">실사용자 정보</h3>
+                                </div>
+                                <div class="cont-box">
+                                    <div class="form-wrap">
+                                        <div class="double-form">
+                                            <dl class="forms">
+                                                <dt class="tit"><label for="ipt1-1">성명</label></dt>
+                                                <dd class="conts">
+                                                    <span class="input-wrap block">
+                                                        <input type="text" id="ipt1-1" value="이케어">
+                                                    </span>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="double-form">
+                                            <dl class="forms">
+                                                <dt class="tit"><label for="ipt2-2">휴대폰</label></dt>
+                                                <dd class="conts">
+                                                    <span class="input-wrap block">
+                                                        <input type="text" id="ipt2-2" value="010-1234-1234">
+                                                    </span>
+                                                </dd>
+                                            </dl>
+                                            <dl class="forms">
+                                                <dt class="tit"><label for="ipt3-2">전화번호</label></dt>
+                                                <dd class="conts">
+                                                    <span class="input-wrap block">
+                                                        <input type="text" id="ipt3-2" value="010-1234-1234">
+                                                    </span>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <dl class="forms">
+                                            <dt class="tit"><label for="ipt4-2">주소</label></dt>
+                                            <dd class="conts">
+                                                <span class="input-wrap block">
+                                                    <input type="text" id="ipt4-2" value="21655 서울특별시 엘지구 엘지로 엘지빌라 100호" readonly>
+                                                </span>
+                                            </dd>
+                                        </dl>
+                                    </div>
+
+                                    <div class="btn-group right">
+                                        <button class="btn bd-black btn-small"><span>취소</span></button>
+                                        <button class="btn bd-pink btn-small"><span>저장</span></button>
+                                    </div>
+
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "topBorder" : true,
+                                        "bulletTit" : "계약자 정보변경 유의사항",
+                                        "bulletTxt" : [
+                                            "계약자 정보를 변경하시면 고객님께서 가입하신 모든 케어솔루션 서비스의 계약자 정보가 일괄 변경됩니다. 변경하긴 정보는 회원정보와 연동되지 않습니다.",
+                                            "현금영수증은 계약자 휴대전화번호 기준으로 발급됩니다.",
+                                            "주소는 변경이 불가하며, 변경을 원하실 경우 고객센터(1577-4090)으로 문의하시기 바랍니다."
+                                        ]
+                                    })
+                                </div>
+                            </div>
+                            <!-- // 실사용자 정보 - 정보변경 -->
 
                             <div class="section">
                                 <div class="flt-tit-wrap">
-                                    <h3 class="sec-tit">계약 정보</h3>
+                                    <div class="flt-box left on-tooltip">
+                                        <h3 class="sec-tit">계약 정보</h3>
+                                        @@include('./common/modules/tooltip.html', {
+                                            "type" : "text",
+                                            "text" : "계약서 발급이 필요하신 분은 발급 신청 버튼을 클릭해주세요."
+                                        })
+                                    </div>
                                     <div class="flt-box">
                                         <a href="#n" class="btn-moreinfo"><span>계약서 발급신청</span></a>
                                     </div>
@@ -263,6 +339,7 @@
                                 </div>
                             </div>
 
+                            <!-- 납부정보 -->
                             <div class="section">
                                 <div class="flt-tit-wrap">
                                     <h3 class="sec-tit">납부 정보</h3>
@@ -286,6 +363,31 @@
                                     })
                                 </div>
                             </div>
+                            <!-- // 납부정보 -->
+
+                            <!-- 납부정보 - 정보변경 -->
+                            <div class="section">
+                                <div class="flt-tit-wrap">
+                                    <h3 class="sec-tit">납부 정보</h3>
+                                    <div class="flt-box">
+                                        <ul class="var-list">
+                                            <li><button type="button" class="btn-link small"><span>납부내역 조회</span></button></li>
+                                            <li><a href="#n" class="btn-moreinfo"><span>제휴카드 신청</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="cont-box">
+                                    <div class="form-wrap">
+                                        <dl class="forms">
+                                            <dt class="tit">결제수단</dt>
+                                            <dd class="conts">
+                                                
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // 납부정보 - 정보변경 -->
 
                             <div class="section">
                                 <h3 class="sec-tit">케어솔루션 매니저 정보</h3>
@@ -308,6 +410,14 @@
         </div>
         
         @@include('./common/footer.html')
+
+        <script>
+            $(function(){
+                vcui.require(["ui/tooltipTarget"], function () {
+                    $('.ui_tooltip-target').vcTooltipTarget({"tooltip":".tooltip-box"});
+                });
+            });
+        </script>
     </div>
 </body>
 </html>
