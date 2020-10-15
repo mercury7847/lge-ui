@@ -1,3 +1,4 @@
+@@if (!context.banner) {
 <li>
     @@if (context.search) {
     <div class="item result-item">
@@ -168,3 +169,37 @@
         }
     </div>
 </li>
+}
+@@if (context.banner) {
+<li class="item-banner @@banner.moduleType">
+    @@if (context.search) {
+    <div class="item result-item">
+    }
+    @@if (!context.search) {
+    <div class="item">
+    }
+        <div class="product-image">
+            <a href="#">
+                <img data-pc-src="@@banner.visual1" data-m-src="@@banner.visual2" alt="" class="lazyload">
+            </a>
+        </div>
+        <div class="banner-contents">
+            <div class="inner">
+                @@if (context.flags) {
+                    @@include('./common/modules/flags.html', {
+                        "borderType": true,
+                        "flags": ["얼음정수기냉장고"]
+                    })
+                }
+                <div class="banner-info">
+                    <div class="title">@@banner.title</div>
+                    <div class="sub-copy">@@banner.copy</div>
+                </div>
+                <div class="banner-button">
+                    <a href="#n" class="btn">@@banner.button</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+}
