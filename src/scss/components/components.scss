@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-// @import "bootstrap-grid.min";
-// @import "bootstrap.min";
+@import "bootstrap-grid.min";
+@import "bootstrap.min";
 
 @import "../utilities/variables";
 @import "../modules/video-asset";
@@ -268,7 +268,8 @@
 
     .align-center {
         text-align: center;
-        &.text-left {
+        &.text-left,
+        &.text-right {
             text-align:center !important;
         }
     }
