@@ -8,7 +8,7 @@
             '</a></div>' +
             '<div class="accord-cont ui_accord_content" style="display:none;"><p>{{#raw desc}}</p></div>' +
         '</li>';
-    var params = null;
+    var params = {};
 
     $(window).ready(function() {
         var faq = {
@@ -80,7 +80,7 @@
                         return;
                     }
         
-                    var param = d.param;
+                    var param = d.param ? d.param : {};
                     params = param;
                     params.page = param.pagination.page;
 
