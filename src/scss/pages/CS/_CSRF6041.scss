@@ -236,7 +236,6 @@
                     }
                 }
                 .sns-wrap {
-                    @include clearfix;
                     margin-top:16px;
                     @include mobile {
                         position:absolute;
@@ -245,51 +244,6 @@
                         bottom:115px;
                         text-align:center;
                     }
-                    .sns-list {
-                        display:inline-block;
-                        li {
-                            float:left;
-                            margin-left:8px;
-                            &:first-child {
-                                margin-left:0;
-                            }
-                            @include mobile {
-                                margin:0 6px;
-                            }
-                            .ico-btn {
-                                display:block;
-                                width:32px;
-                                height:32px;
-                                &.url {
-                                    background:url('/lg5-common/images/icons/icon-url.svg') no-repeat;
-                                    background-size:32px 32px;
-                                }
-                                &.kk {
-                                    background:url('/lg5-common/images/icons/icon-kakao.svg') no-repeat;
-                                    background-size:32px 32px;
-                                }
-                                &.fb {
-                                    background:url('/lg5-common/images/icons/icon-facebook.svg') no-repeat;
-                                    background-size:32px 32px;
-                                }
-                                &.tw {
-                                    background:url('/lg5-common/images/icons/icon-twitter.svg') no-repeat;
-                                    background-size:32px 32px;
-                                }
-                                @include mobile {
-                                    width:40px;
-                                    height:40px;
-                                    &.url,
-                                        &.kk,
-                                        &.fb,
-                                        &.tw  {
-                                        background-size:40px 40px;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                   
                 }
             }
 
