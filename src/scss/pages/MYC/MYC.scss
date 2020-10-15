@@ -159,6 +159,9 @@
 
     // 케어솔루션
     @import "ACCF7024";
+
+    // 케어솔루션 계약현황
+    @import "ACCF7025";
 }
 
 
@@ -299,4 +302,9 @@
             margin-top:32px;
         }
     }
+}
+
+// 케어솔루션 팝업
+.caresolution-pop {
+    @import "ACCF-popup";
 }
