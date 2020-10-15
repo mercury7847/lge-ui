@@ -156,6 +156,28 @@
                         }
                     }
                 }
+                &.card-type {
+                    .input-wrap {
+                        position:relative;
+                        width:calc((100% - 30px) / 4);
+                        margin-left:10px;
+                        &::before {
+                            content:' ';
+                            position:absolute;
+                            top:50%;
+                            left:-7px;
+                            width:4px;
+                            height:1px;
+                            background:#222;
+                        }
+                        &:first-child {
+                            margin-left:0;
+                            &::before {
+                                display:none;
+                            }
+                        }
+                    }
+                }
             }
             .input-box-wrap {
                 display:table;
@@ -483,6 +505,38 @@
         //         }
         //     }
         // }
+    }
+}
+
+// input + btn mix type
+.input-mix-wrap {
+    display:block;
+    position:relative;
+    padding:15px 23px;
+    padding-right:39px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    background:#fff;
+    .mix-btn {
+        position:absolute;
+        top:15px;
+        right:15px;
+        width:24px;
+        height:24px;
+        &::after {
+            content:' ';
+            position:absolute;
+            top:50%;
+            right:50%;
+            width:9px;
+            height:9px;
+            margin-top:-4px;
+            margin-right:-2px;
+            border-style:solid;
+            border-color:#222;
+            border-width:1px 1px 0 0;
+            transform:rotate(45deg);
+        }
     }
 }
 

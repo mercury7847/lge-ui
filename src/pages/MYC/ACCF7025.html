@@ -381,7 +381,141 @@
                                         <dl class="forms">
                                             <dt class="tit">결제수단</dt>
                                             <dd class="conts">
-                                                
+                                                @@include('./common/modules/rdochk-list.html', {
+                                                    "wAuto" : true,
+                                                    "radioVisible" : true,
+                                                    "rdo" : true,
+                                                    "name" : "rdo-pay",
+                                                    "slt" : [
+                                                        { "value" : "신용카드", "checked" : "checked", "target" : ".by-card" },
+                                                        { "value" : "계좌이체", "checked" : "", "target" : ".by-bank" }
+                                                    ]
+                                                })
+
+                                                <!-- 신용카드 -->
+                                                <div class="payinfo-wrap by-card">
+                                                    <div class="form-wrap">
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit">휴대폰 본인인증</dt>
+                                                                <dd class="conts">
+                                                                    <div class="input-mix-wrap">
+                                                                        <span class="chk-wrap">
+                                                                            <input type="checkbox" id="chk-pay1" name="chk-pay1" checked>
+                                                                            <label for="chk-pay1">휴대폰 본인인증</label>
+                                                                        </span>
+                                                                        <a href="#n" class="mix-btn"><span class="blind">휴대폰 본인인증 진행하기</span></a>
+                                                                    </div>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="slt-card1">카드사</label></dt>
+                                                                <dd class="conts">
+                                                                    <div class="select-wrap block">
+                                                                        <select class="ui_selectbox" id="slt-card1">
+                                                                            <option value="" class="placeholder">은행 선택</option>
+                                                                            <option value="" selected>하나은행</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="ipt-card1">카드번호</label></dt>
+                                                                <dd class="conts">
+                                                                    <div class="input-box card-type">
+                                                                        <span class="input-wrap">
+                                                                            <input type="text" id="ipt-card1" maxlength="4" value="1234">
+                                                                        </span>
+                                                                        <span class="input-wrap">
+                                                                            <input type="text" maxlength="4" value="">
+                                                                        </span>
+                                                                        <span class="input-wrap">
+                                                                            <input type="text" maxlength="4" value="">
+                                                                        </span>
+                                                                        <span class="input-wrap">
+                                                                            <input type="text" maxlength="4" value="">
+                                                                        </span>
+                                                                    </div>
+                                                                </dd>
+                                                            </dl>
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="ipt-card2">유효기간(MMYY)</label></dt>
+                                                                <dd class="conts">
+                                                                    <span class="input-wrap block">
+                                                                        <div class="box">
+                                                                            <input type="text" id="ipt-card2" maxlength="4" value="1221">
+                                                                            <span class="cell">
+                                                                                <button type="button" class="btn-text pink"><span>납부 카드 확인</span></button>
+                                                                            </span>
+                                                                        </div>
+                                                                    </span>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- // 신용카드 -->
+
+                                                <!-- 계좌이체 -->
+                                                <div class="payinfo-wrap by-bank">
+                                                    <div class="form-wrap">
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit">휴대폰 본인인증</dt>
+                                                                <dd class="conts">
+                                                                    <div class="input-mix-wrap">
+                                                                        <span class="chk-wrap">
+                                                                            <input type="checkbox" id="chk-pay2" name="chk-pay2" checked>
+                                                                            <label for="chk-pay1">휴대폰 본인인증</label>
+                                                                        </span>
+                                                                        <a href="#n" class="mix-btn"><span class="blind">휴대폰 본인인증 진행하기</span></a>
+                                                                    </div>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="ipt-bank1">예금주명</label></dt>
+                                                                <dd class="conts">
+                                                                    <span class="input-wrap block">
+                                                                        <input type="text" id="ipt-bank1" value="이케어">
+                                                                    </span>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="slt-bank1">은행명</label></dt>
+                                                                <dd class="conts">
+                                                                    <div class="select-wrap block">
+                                                                        <select class="ui_selectbox" id="slt-bank1">
+                                                                            <option value="" class="placeholder">은행 선택</option>
+                                                                            <option value="" selected>하나은행</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </dd>
+                                                            </dl>
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="ipt-bank2">계좌번호</label></dt>
+                                                                <dd class="conts">
+                                                                    <span class="input-wrap block">
+                                                                        <div class="box">
+                                                                            <input type="text" id="ipt-bank2" value="123456789">
+                                                                            <span class="cell">
+                                                                                <button type="button" class="btn-text pink"><span>납부 계좌 확인</span></button>
+                                                                            </span>
+                                                                        </div>
+                                                                    </span>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- // 계좌이체 -->
                                             </dd>
                                         </dl>
                                     </div>
