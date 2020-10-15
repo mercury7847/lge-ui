@@ -12,7 +12,7 @@ var res = {
 			"Form" : ["./wsg/guide_input_form.html","","검수완료"],
 			"버튼" : ["./wsg/guide_button.html","","검수완료"],
 			"탭" : ["./wsg/guide_tab.html","","검수완료"],
-			"스크롤뷰" : ["./wsg/guide_scrollview.html","","검수완료"],
+			// "스크롤뷰" : ["./wsg/guide_scrollview.html","","검수완료"], 10.15 해남님 : '스크롤바 브라우저 기본으로 공통 적용하기로'
 			"Pagination" : ["./wsg/guide_pagination.html","","검수완료"],
 			"블릿리스트" : ["./wsg/guide_bulletlist.html","","검수완료"],
 			"List" : ["./wsg/guide_list.html","","검수완료"],
@@ -86,6 +86,7 @@ var res = {
 			"KRP0021_Category module for store home" : ["/html/components/KRP0021.html","","진행중"],
 			"KRP0025_event_list_for_category_home" : ["/html/components/KRP0025.html","","진행중"],
 			"KRP0027_Please note" : ["/html/components/KRP0027.html","","진행중"],
+			"KRP0028_Event list" : ["/html/components/KRP0028.html","","진행중"],
 		},
 		"Page" : {
 			"케어솔루션(SLC)" : {

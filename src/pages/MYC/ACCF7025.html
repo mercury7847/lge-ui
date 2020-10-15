@@ -16,9 +16,10 @@
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
-                            "sect1" : [
-                                { "on": "on", "page": "주문/배송 조회" },
-                                { "on": "", "page": "쿠폰" }
+                            "sect2" : [
+                                { "on": "on", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문알리미" }
                             ]
                         })
                         <div class="lnb-contents">
@@ -322,7 +323,7 @@
                                         })
                                     </div>
                                     <div class="flt-box">
-                                        <a href="#n" class="btn-moreinfo"><span>계약서 발급신청</span></a>
+                                        <a href="#popup2" class="btn-moreinfo" data-control="modal"><span>계약서 발급신청</span></a>
                                     </div>
                                 </div>
                                 <div class="cont-box">
@@ -347,7 +348,7 @@
                                         <ul class="var-list">
                                             <li><button type="button" class="btn-text small"><span>납부 정보변경</span></button></li>
                                             <li><button type="button" class="btn-link small"><span>납부내역 조회</span></button></li>
-                                            <li><a href="#n" class="btn-moreinfo"><span>제휴카드 신청</span></a></li>
+                                            <li><a href="#popup3" class="btn-moreinfo" data-control="modal"><span>제휴카드 신청</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -372,7 +373,7 @@
                                     <div class="flt-box">
                                         <ul class="var-list">
                                             <li><button type="button" class="btn-link small"><span>납부내역 조회</span></button></li>
-                                            <li><a href="#n" class="btn-moreinfo"><span>제휴카드 신청</span></a></li>
+                                            <li><a href="#popup3" class="btn-moreinfo" data-control="modal"><span>제휴카드 신청</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -381,9 +382,199 @@
                                         <dl class="forms">
                                             <dt class="tit">결제수단</dt>
                                             <dd class="conts">
-                                                
+                                                @@include('./common/modules/rdochk-list.html', {
+                                                    "wAuto" : true,
+                                                    "radioVisible" : true,
+                                                    "rdo" : true,
+                                                    "name" : "rdo-pay",
+                                                    "slt" : [
+                                                        { "value" : "신용카드", "checked" : "checked", "target" : ".by-card" },
+                                                        { "value" : "계좌이체", "checked" : "", "target" : ".by-bank" }
+                                                    ]
+                                                })
+
+                                                <!-- 신용카드 -->
+                                                <div class="payinfo-wrap by-card">
+                                                    <div class="form-wrap">
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit">휴대폰 본인인증</dt>
+                                                                <dd class="conts">
+                                                                    <div class="input-mix-wrap">
+                                                                        <span class="chk-wrap">
+                                                                            <input type="checkbox" id="chk-pay1" name="chk-pay1" checked>
+                                                                            <label for="chk-pay1">휴대폰 본인인증</label>
+                                                                        </span>
+                                                                        <a href="#n" class="mix-btn"><span class="blind">휴대폰 본인인증 진행하기</span></a>
+                                                                    </div>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="slt-card1">카드사</label></dt>
+                                                                <dd class="conts">
+                                                                    <div class="select-wrap block">
+                                                                        <select class="ui_selectbox" id="slt-card1">
+                                                                            <option value="" class="placeholder">은행 선택</option>
+                                                                            <option value="" selected>하나은행</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="ipt-card1">카드번호</label></dt>
+                                                                <dd class="conts">
+                                                                    <div class="input-box card-type">
+                                                                        <span class="input-wrap">
+                                                                            <input type="text" id="ipt-card1" maxlength="4" value="1234">
+                                                                        </span>
+                                                                        <span class="input-wrap">
+                                                                            <input type="text" maxlength="4" value="">
+                                                                        </span>
+                                                                        <span class="input-wrap">
+                                                                            <input type="text" maxlength="4" value="">
+                                                                        </span>
+                                                                        <span class="input-wrap">
+                                                                            <input type="text" maxlength="4" value="">
+                                                                        </span>
+                                                                    </div>
+                                                                </dd>
+                                                            </dl>
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="ipt-card2">유효기간(MMYY)</label></dt>
+                                                                <dd class="conts">
+                                                                    <span class="input-wrap block">
+                                                                        <div class="box">
+                                                                            <input type="text" id="ipt-card2" maxlength="4" value="1221">
+                                                                            <span class="cell">
+                                                                                <button type="button" class="btn-text pink"><span>납부 카드 확인</span></button>
+                                                                            </span>
+                                                                        </div>
+                                                                    </span>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- // 신용카드 -->
+
+                                                <!-- 계좌이체 -->
+                                                <div class="payinfo-wrap by-bank">
+                                                    <div class="form-wrap">
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit">휴대폰 본인인증</dt>
+                                                                <dd class="conts">
+                                                                    <div class="input-mix-wrap">
+                                                                        <span class="chk-wrap">
+                                                                            <input type="checkbox" id="chk-pay2" name="chk-pay2" checked>
+                                                                            <label for="chk-pay1">휴대폰 본인인증</label>
+                                                                        </span>
+                                                                        <a href="#n" class="mix-btn"><span class="blind">휴대폰 본인인증 진행하기</span></a>
+                                                                    </div>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="ipt-bank1">예금주명</label></dt>
+                                                                <dd class="conts">
+                                                                    <span class="input-wrap block">
+                                                                        <input type="text" id="ipt-bank1" value="이케어">
+                                                                    </span>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="slt-bank1">은행명</label></dt>
+                                                                <dd class="conts">
+                                                                    <div class="select-wrap block">
+                                                                        <select class="ui_selectbox" id="slt-bank1">
+                                                                            <option value="" class="placeholder">은행 선택</option>
+                                                                            <option value="" selected>하나은행</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </dd>
+                                                            </dl>
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="ipt-bank2">계좌번호</label></dt>
+                                                                <dd class="conts">
+                                                                    <span class="input-wrap block">
+                                                                        <div class="box">
+                                                                            <input type="text" id="ipt-bank2" value="123456789">
+                                                                            <span class="cell">
+                                                                                <button type="button" class="btn-text pink"><span>납부 계좌 확인</span></button>
+                                                                            </span>
+                                                                        </div>
+                                                                    </span>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- // 계좌이체 -->
                                             </dd>
                                         </dl>
+                                        <dl class="forms">
+                                            <dt class="tit">ARS 출금 동의</dt>
+                                            <dd class="conts">
+                                                <div class="input-mix-wrap">
+                                                    <span class="chk-wrap">
+                                                        <input type="checkbox" id="chk-agree1" name="chk-agree1">
+                                                        <label for="chk-agree1">ARS 출금동의 신청</label>
+                                                    </span>
+                                                    <a href="#n" class="mix-btn"><span class="blind">ARS 출금동의 신청 진행하기</span></a>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                        <dl class="forms">
+                                            <dt class="tit">자동결제 이용 동의</dt>
+                                            <dd class="conts">
+                                                <div class="input-mix-wrap">
+                                                    <span class="chk-wrap">
+                                                        <input type="checkbox" id="chk-agree2" name="chk-agree2">
+                                                        <label for="chk-agree2">위 결제수단으로 정기결제신청을 동의합니다.</label>
+                                                    </span>
+                                                    <a href="#n" class="mix-btn"><span class="blind">자동결제 이용 약관 보기</span></a>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                        <!-- 월 납부금액 : 계좌이체 case -->
+                                        <dl class="forms">
+                                            <dt class="tit">월 납부 금액</dt>
+                                            <dd class="conts">
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" id="chk-agree3" name="chk-agree3" checked>
+                                                    <label for="chk-agree3">선납신청</label>
+                                                </span>
+                                            </dd>
+                                        </dl>
+                                        <!-- // 월 납부금액 : 계좌이체 case -->
+                                        <!-- 월 납부금액 : 신용카드 case -->
+                                        <dl class="forms">
+                                            <dt class="tit">월 납부 금액</dt>
+                                            <dd class="conts">
+                                                @@include('./common/modules/rdochk-list.html', {
+                                                    "wAuto" : true,
+                                                    "chk" : true,
+                                                    "name" : "chk-agree4",
+                                                    "slt" : [
+                                                        { "value" : "선납신청", "checked" : "checked" },
+                                                        { "value" : "포인트 사용 동의", "checked" : "checked" }
+                                                    ]
+                                                })
+                                            </dd>
+                                        </dl>
+                                        <!-- // 월 납부금액 : 신용카드 case -->
+                                    </div>
+
+                                    <div class="btn-group right">
+                                        <button class="btn bd-black btn-small"><span>취소</span></button>
+                                        <button class="btn bd-pink btn-small"><span>저장</span></button>
                                     </div>
                                 </div>
                             </div>
@@ -419,5 +610,267 @@
             });
         </script>
     </div>
+
+    <!-- 케어솔루션 약관/유의사항 안내 popup -->
+    <article id="popup1" class="popup-wrap full">
+        <header class="pop-header">
+            <h1 class="tit"><span>케어솔루션 약관/유의사항 안내</span></h1>
+        </header>
+        <section class="pop-conts caresolution-pop">
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">케어솔루션 약관 (필수)</h2>
+                </div>
+                <div class="agree-cont-wrap">
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk1-1" name="chk1-1" checked>
+                            <label for="chk1-1">동의합니다.<br class="mob-only">(동의해야만 정보 수정이 가능합니다.)</label>
+                        </span>
+                    </div>
+                    <div class="agree-cont-box">
+                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                        1) 필수 : 이름, 휴대전화번호, 주소<br>
+                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                        1) 필수 : 이름, 휴대전화번호, 주소<br>
+                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                    </div>
+                </div>
+            </div>
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">유의사항에 대한 안내 (필수)</h2>
+                </div>
+                <div class="agree-cont-wrap">
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk1-2" name="chk1-2" checked>
+                            <label for="chk1-2">확인합니다.<br class="mob-only">(확인해야만 정보 수정이 가능합니다.)</label>
+                        </span>
+                    </div>
+                    <div class="agree-cont-box">
+                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                        1) 필수 : 이름, 휴대전화번호, 주소<br>
+                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                        1) 필수 : 이름, 휴대전화번호, 주소<br>
+                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="pop-footer">
+            <div class="btn-group">
+                <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+                <button type="button" class="btn pink"><span>동의</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 케어솔루션 약관/유의사항 안내 popup -->
+
+    <!-- 계약서 발급 신청 popup -->
+    <article id="popup2" class="popup-wrap full">
+        <header class="pop-header">
+            <h1 class="tit"><span>계약서 발급 신청</span></h1>
+        </header>
+        <section class="pop-conts caresolution-pop">
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">개인정보 수집/이용 동의(필수)</h2>
+                </div>
+                <div class="agree-cont-wrap">
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk2-1" name="chk2-1" checked>
+                            <label for="chk2-1">동의합니다.<br class="mob-only">(동의해야만 발급신청 가능합니다.)</label>
+                        </span>
+                    </div>
+                    <div class="agree-cont-box">
+                        <p>LG전자 주식회사(이하 '회사'라 합니다.)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.</p>
+                        <br>
+                        <div class="tb_row">
+                            <table>
+                                <caption>개인정보 수집항목, 수집목적, 보유기간 안내</caption>
+                                <colgroup>
+                                    <col style="width:33%">
+                                    <col style="width:33%">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">수집항목</th>
+                                        <th scope="col">수집목적</th>
+                                        <th scope="col">보유기간</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="al-left">본인확인정보(CI)</td>
+                                        <td class="al-left">이용자 식별 및 본인여부 확인</td>
+                                        <td class="al-left">세션에 저장되어 만료시간 또는 브라우저 종료시점까지 보관 후 파기</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="al-left">성명, 휴대전화번호, 유선전화번호, 주소, 이메일</td>
+                                        <td class="al-left">제품배송, 제품설치 및 회수, 콜센터 상담운영, 접수 등 계약 이행을 위한 제반업무, 렌탈 정기 유지관리 방문서비스, 알리미 서비스 조회, 케어 서비스 접수, 납부내역 조회, 결제정보 조회 및 변경</td>
+                                        <td rowspan="2" class="al-left">렌탈서비스 해지, 계약종료일, 개인정보 삭제 요구 시 까지 보관 후 파기</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="al-left">생년월일, 은행명, 계좌정보, 카드명, 카드번호, 납부일</td>
+                                        <td class="al-left">결제 정보 처리, 렌탈료 수납/이체, 계좌 유효성 검증</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        @@include('./common/modules/bullet-list.html', {
+                            "bulletTit" : "단, 수집목적 또는 제공 받은 목적이 달성된 경우에도 상법 등 법령의 규정에 의하여 보존할 필요성이 있는 경우에는 이용자의 개인정보를 보존할 수 있습니다.",
+                            "bulletTxt" : [
+                                "상법 등 법령의 규정에 의하여 보존할 필요성이 있는 경우",
+                                "계약 또는 청약철회 등에 관한 기록 : 5년",
+                                "대금결제 및 재화 등의 공급에 관한 기록 : 5년",
+                                "소비자 불만 또는 분쟁처리에 관한 기록 : 3년",
+                                "정당한 절차에 따라 보유기간을 미리 이용자에게 고지하거나 명시한 경우",
+                                "개별적으로 이용자의 동의를 받은 경우"
+                            ]
+                        })
+                    </div>
+                </div>
+                <div class="form-wrap mt-type">
+                    <dl class="forms">
+                        <dt class="tit"><label for="ipt-email">계약서를 전송 받을 이메일 주소</label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap block">
+                                <input type="text" id="ipt-email" placeholder="이메일주소 입력">
+                            </span>
+                        </dd>
+                    </dl>
+                    @@include('./common/modules/bullet-list.html', {
+                        "bulletTxt" : [
+                            "요청하신 이메일 주소로 계약서 PDF 문서가 발송됩니다.", 
+                            "발송지연이 있을 수 있으므로 잠시 후 확인하시기 바랍니다."
+                        ]
+                    })                    
+                </div>
+            </div>
+        </section>
+        <footer class="pop-footer">
+            <div class="btn-group">
+                <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+                <button type="button" class="btn pink"><span>발급신청</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 계약서 발급 신청 popup -->
+
+    <!-- 제휴카드 발급 신청 popup -->
+    <article id="popup3" class="popup-wrap full">
+        <header class="pop-header">
+            <h1 class="tit"><span>제휴카드 발급 신청</span></h1>
+        </header>
+        <section class="pop-conts caresolution-pop">
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">개인정보 수집/이용 동의(필수)</h2>
+                </div>
+                <div class="agree-cont-wrap">
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk3-1" name="chk3-1" checked>
+                            <label for="chk3-1">동의합니다.<br class="mob-only">(동의해야만 발급신청 가능합니다.)</label>
+                        </span>
+                    </div>
+                    <div class="agree-cont-box">
+                        ① 수집/이용 목적 : 신청한 케어솔루션 제휴카드사에 제휴카드 발급 및 변경 등록 처리 하기 위해 제공<br>
+                        ② 수집/이용 항목 : 제휴카드 신청 정보, 고객명, 휴대폰번호, 고객 본인 확인 정보 (CI, 생년월일, 성별, 통신사)<br>
+                        ③ 이용 기간 : 계약 해지 시점까지 또는 고객의 정보 제공 동의 철회시까지<br><br>
+                        
+                        ※ 고객님께서는 정보 활용에 동의하지 않을 권리가 있으며, 동의하지 않으면 제휴카드 발급 및 변경 신청이 되지 않습니다.<br>
+                    </div>
+                </div>
+            </div>
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">제휴카드 발급 및 변경 자동 등록을 위한 개인정보 제3자 제공 동의 (필수)</h2>
+                </div>
+                <div class="agree-cont-wrap">
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk3-2" name="chk3-2" checked>
+                            <label for="chk3-2">동의합니다.<br class="mob-only">(동의해야만 발급신청 가능합니다.)</label>
+                        </span>
+                    </div>
+                    <div class="agree-cont-box">
+                        ① 제공처 : 신한카드, BC카드, 우리카드, 하나카드, NH카드, KB카드, 광주카드 (단, 고객정보는 제3자 제공 동의 신청한 카드사에만 제공됨)<br>
+                        ② 제공 목적 : 고객이 신청한 카드사에서 케어솔루션 제휴카드 발급/변경 등록 처리 하기 위해 제공되며, 제공 후 처리사항은 아래와 같음. <br>
+                            - 제휴카드 발급을 위한 카드사의 카드발급 전화 발신<br>
+                            - 제휴카드 발급 승인 후 LG전자 렌탈/케어 결제방법 등록 및 자동이체 청구<br>
+                            - 카드사 기존 고객 여부 확인<br><br>
+                        
+                        ③ 제공 항목 : 제휴 카드 신청 정보, 고객명, 휴대폰번호, 고객 본인 확인 정보 (CI, 생년월일, 성별, 통신사)<br>
+                        ④ 보유 이용 기간 <br>
+                            - LG전자 : 계약 해지 시점까지 또는 고객의 정보 제공 동의 철회시까지<br>
+                            - 제3자 이용기관 : 제휴카드 발급 목적 달성 시점까지 또는 고객의 정보 제공 동의 철회시까지<br><br>
+                        
+                        ※ 고객님께서는 정보 활용에 동의하지 않을 권리가 있으며, 동의하지 않으면 제휴카드 발급 및 변경 신청이 되지 않습니다.<br>
+                    </div>
+                </div>
+            </div>
+            <div class="form-wrap mt-type">
+                <div class="double-form">
+                    <dl class="forms">
+                        <dt class="tit"><label for="slt1">발급한 제휴카드를 선택하세요. (필수)</label></dt>
+                        <dd class="conts">
+                            <div class="select-wrap block">
+                                <select class="ui_selectbox" id="slt1" title="제휴카드 선택">
+                                    <option value="" class="placeholder">선택</option>
+                                    <option value="">신한카드</option>
+                                    <option value="">하나카드</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="ipt-ct">납부방법 변경할 계약</label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap block">
+                                <input type="text" id="ipt-ct" value="건조기(RH9WGANR) 계약번호(12345678)" readonly>
+                            </span>
+                        </dd>
+                    </dl>
+                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "신청 불가한 경우 콜센터(1577-4090)로 문의 주시기 바랍니다."
+                    ]
+                })                    
+            </div>
+        </section>
+        <footer class="pop-footer">
+            <div class="btn-group">
+                <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+                <button type="button" class="btn pink"><span>발급신청</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 제휴카드 발급 신청 popup -->
+
+    <!-- 제휴카드신청사용중 alert -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop1",
+        "msgOnly" : true, 
+        "msg" : "고객님은 현재 제휴카드를<br>이용중이십니다."
+    })
+    <!-- // 제휴카드신청사용중 alert -->
 </body>
 </html>

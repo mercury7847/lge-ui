@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "케어솔루션 납부내역"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "on", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문알리미" }
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <div class="section">
+                                <div class="cont-box">
+                                    <div class="my-contract-info">
+                                        <h4 class="tit">이케어 고객님의 계약정보는 총 <em>3건</em> 입니다.</h4>
+                                        <div class="form-wrap">
+                                            <dl class="forms">
+                                                <dt class="tit"><label for="select1">계약정보 선택</label></dt>
+                                                <dd class="conts">
+                                                    <div class="select-wrap block">
+                                                        <select class="ui_selectbox" id="select1">
+                                                            <option value="">건조기(RH9WGANR) 계약번호(12345678)</option>
+                                                            <option value="">건조기2(RH9WGANR2) 계약번호(12345678)</option>
+                                                            <option value="">건조기3(RH9WGANR3) 계약번호(12345678)</option>
+                                                        </select>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="section">
+                                <div class="flt-tit-wrap">
+                                    <h3 class="sec-tit">연차별 납부내역 조회</h3>
+                                    <div class="flt-box">
+                                        <div class="sort-select-wrap">
+                                            <select class="ui_selectbox" id="select1" title="연차 조회">
+                                                <option value="">1년차</option>
+                                                <option value="">2년차</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cont-box">
+                                    <div class="tb_row">
+                                        <table>
+                                            <caption>연차별 납부내역을 회차, 납부일, 청구금액, 할인금액, 납부금액 순으로 안내합니다.</caption>
+                                            <colgroup>
+                                                <col>
+                                                <col style="width:21%">
+                                                <col style="width:21%">
+                                                <col style="width:21%">
+                                                <col style="width:21%">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">회차</th>
+                                                    <th scope="col">납부일</th>
+                                                    <th scope="col">청구금액</th>
+                                                    <th scope="col">할인금액</th>
+                                                    <th scope="col">납부금액</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>2020.09.10</td>
+                                                    <td>88,888원</td>
+                                                    <td>0원</td>
+                                                    <td>88,888원</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>2020.09.10</td>
+                                                    <td>88,888원</td>
+                                                    <td>0원</td>
+                                                    <td>88,888원</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>2020.09.10</td>
+                                                    <td>88,888원</td>
+                                                    <td>0원</td>
+                                                    <td>88,888원</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "bulletTxt" : [
+                                            "렌탈 비용 혜택을 받으신 회차는 납부내역에서 제외됩니다."
+                                        ]
+                                    })
+                                </div>
+                            </div>
+
+                            <div class="section">
+                                <div class="flt-tit-wrap">
+                                    <h3 class="sec-tit">연차별 납부내역 조회</h3>
+                                    <div class="flt-box">
+                                        <div class="sort-select-wrap">
+                                            <select class="ui_selectbox" id="select1" title="연차 조회">
+                                                <option value="">1년차</option>
+                                                <option value="">2년차</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cont-box">
+                                    <div class="no-data">
+                                        <p>고객님의 납부내역이 없습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+
+        <script>
+            $(function(){
+                vcui.require(["ui/tooltipTarget"], function () {
+                    $('.ui_tooltip-target').vcTooltipTarget({"tooltip":".tooltip-box"});
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>

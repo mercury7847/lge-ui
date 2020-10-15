@@ -9,6 +9,8 @@
             init: function() {
                 self.$searchLayer = $('#layerSearch');
                 self.$inputSearch = self.$searchLayer.find('div.input-sch input.txt');
+                self.$buttonSearch = self.$searchLayer.find('div.input-sch button.btn-search');
+                self.$buttonClearSearch = self.$searchLayer.find('div.input-sch button.btn-delete');
                 var $search_result_area = self.$searchLayer.find('div.search-result-area');
                 self.$inputSearchList = $search_result_area.find('div.input-result-list');
 
@@ -18,51 +20,44 @@
                 _self.bindEvents();
 
                 /*
-                self.$selectbox = self.$searchWrap.find('select.ui_selectbox');
-                var result_wrap = $('div.contents.faq div.cont-wrap div.result-wrap');
-                self.$tab = result_wrap.find('div.ui_tab');
-                self.$faqList = result_wrap.find('div.ui_accordion');
-                self.$pagination = result_wrap.find('div.pagination');
-                self.$nodata = result_wrap.find('div.no-data');
-
                 var _self = this;
                 vcui.require(['ui/pagination'], function () {
                     _self.bindEvents();
                 });
                 */
                 //_self.searchNewData();
+                /*
+                vcui.require(['ui/inputClearButton'], function () {
+                    self.$inputSearch.vcInputClearButton();
+                });
+                */
             },
 
             bindEvents: function() {
                 var _self = this;
 
+                //통합검색 노출
                 $('div.contents.search div.cont-wrap a').on("click", function(e) {
                     _self.showAnimation(self.$searchLayer);
-                    /*
-                    self.$searchLayer.css({'opacity':0});
-                    self.$searchLayer.show();
-                    self.$searchLayer.animate({opacity:1},100);
-                    */
                 });
 
+                //통합검색 닫음
                 self.$searchLayer.find('button.btn-close').on("click", function(e) {
-                    //self.$inputSearchList.hide();
                     clearTimeout(searchTimer);
                     _self.hideAnimation(self.$inputSearchList);
                     _self.hideAnimation(self.$searchLayer);
-                    /*
-                    self.$searchLayer.animate({opacity:0},100,function() {
-                        self.$searchLayer.hide();
-                    });
-                    */
                 });
 
+                //검색 타이머
                 self.$inputSearch.on("input", function(e) {
-                    //self.$inputSearchList.hide();
                     clearTimeout(searchTimer);
                     _self.hideAnimation(self.$inputSearchList);
                   
                     var searchVal = this.value;
+                    if(searchVal.length > 0) {
+
+                    }
+
                     if (searchVal.length < minLength) {
                         return;
                     }  
