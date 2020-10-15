@@ -20,6 +20,7 @@
                             "ui/scrollview",
                             "ui/fileInput",
                             "ui/radioShowHide",
+                            'ui/inputClearButton',
                             "ui/starRating"
         ], function () {    
             console.log("buildCommonUI!!!!");
@@ -39,8 +40,8 @@
             this.find('.ui_scrollview').vcScrollview();
             this.find('.ui_fileinput').vcFileinput();
             this.find('.ui_radio_visible').vcRadioShowHide();
+            this.find('.ui_input_clearbutton').vcInputClearButton();
             this.find('.ui_star_rating').vcStarRating();
-
 
             this.find('.ui_wide_slider').vcCarousel({
                 autoplay:true,
