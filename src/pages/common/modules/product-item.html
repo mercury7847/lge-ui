@@ -23,17 +23,23 @@
             @@if (context.optionColor) {
             <div class="product-option color">
                 <div class="option-list" role="radiogroup">
-                    <div role="radio" class="chk-wrap-colorchip @@option1.color" aria-describedby="product1ID" title="@@option1.title">
-                        <input type="radio" id="@@option1.id" name="@@option1.name" @@option1.checked>
-                        <label for="@@option1.id"><span class="blind">@@option1.title</span></label>
-                    </div>
-                    <div role="radio" class="chk-wrap-colorchip @@option2.color" aria-describedby="product1ID" title="@@option2.title">
-                        <input type="radio" id="@@option2.id" name="@@option2.name" @@option2.checked>
-                        <label for="@@option2.id"><span class="blind">@@option2.title</span></label>
-                    </div>
-                    <div role="radio" class="chk-wrap-colorchip @@option3.color" aria-describedby="product1ID" title="@@option3.title">
-                        <input type="radio" id="@@option3.id" name="@@option3.name" @@option3.checked>
-                        <label for="@@option3.id"><span class="blind">@@option3.title</span></label>
+                    <div class="slide-wrap ui_carousel_slider2">
+                        <div class="slide-content ui_carousel_list">
+                            <div class="slide-track ui_carousel_track">
+                                @@for (var i = 0; i < context.colorSet.length; i++) {
+                                <div class="slide-conts ui_carousel_slide">
+                                    <div role="radio" class="chk-wrap-colorchip `+colorSet[i].color+`" title="`+colorSet[i].title+`">
+                                        <input type="radio" id="`+colorSet[i].id+`" name="`+colorSet[i].name+`" `+colorSet[i].checked+`>
+                                        <label for="`+colorSet[i].id+`"><span class="blind">`+colorSet[i].title+`</span></label>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="slide-controls">
+                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -41,17 +47,23 @@
             @@if (context.optionText) {
             <div class="product-option text">
                 <div class="option-list" role="radiogroup">
-                    <div role="radio" class="rdo-wrap" aria-describedby="product1ID" title="@@option1.title">
-                        <input type="radio" id="@@option1.id" name="@@option1.name" @@option1.checked>
-                        <label for="@@option1.id">@@option1.title</label>
-                    </div>
-                    <div role="radio" class="rdo-wrap" aria-describedby="product1ID" title="@@option2.title">
-                        <input type="radio" id="@@option2.id" name="@@option2.name" @@option2.checked>
-                        <label for="@@option2.id">@@option2.title</label>
-                    </div>
-                    <div role="radio" class="rdo-wrap" aria-describedby="product1ID" title="@@option3.title">
-                        <input type="radio" id="@@option3.id" name="@@option3.name" @@option3.checked>
-                        <label for="@@option3.id">@@option3.title</label>
+                    <div class="slide-wrap ui_carousel_slider2">
+                        <div class="slide-content ui_carousel_list">
+                            <div class="slide-track ui_carousel_track">
+                                @@for (var i = 0; i < context.textSet.length; i++) {
+                                <div class="slide-conts ui_carousel_slide">
+                                    <div role="radio" class="rdo-wrap" title="`+textSet[i].title+`">
+                                        <input type="radio" id="`+textSet[i].id+`" name="`+textSet[i].name+`" `+textSet[i].checked+`>
+                                        <label for="`+textSet[i].id+`">`+textSet[i].title+`</label>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="slide-controls">
+                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,7 +112,7 @@
                 </ul>
                 }
                 @@if (context.spec2) {
-                    <p class="spec-info2">적용모델 : H-62HSGAKOR 외 </p>
+                <p class="spec-info2">적용모델 : H-62HSGAKOR 외 </p>
                 }
             </div>
             @@if (context.price) {
