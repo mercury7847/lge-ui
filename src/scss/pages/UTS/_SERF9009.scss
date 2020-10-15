@@ -40,16 +40,16 @@
         .product-items {
             .item {
                 .product-contents {
-                    height: 147px;
+                    height: 170px;
+                }
+                .product-info {
+                    & + .badge-benefit {
+                        margin-top: 56px;
+                    }
                 }
                 @include mobile {
                     .product-contents {
                         height: auto;
-                    }
-                    .product-info {
-                        .spec-info {
-                            display: none;
-                        }
                     }
                 }
             }

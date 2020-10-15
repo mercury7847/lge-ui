@@ -239,6 +239,29 @@
         }
     }
 }
+.agree-cont-wrap {
+    .agree-input {
+        margin-bottom:16px;
+        @include mobile {
+            margin-bottom:12px;
+        }
+    }
+    .agree-cont-box {
+        height:auto;
+        max-height:200px;
+        overflow-y:auto;
+        padding:24px 40px 24px 24px;
+        border:1px solid #ddd;
+        border-radius:8px;
+        color:#616161;
+        font-size:14px;
+        line-height:20px;
+        @include mobile {
+            max-height:212px;
+            padding:16px;
+        }
+    }
+}
 
 // input text, textarea
 .input-wrap {
@@ -763,6 +786,12 @@ $input: (chk, rdo);
                 -webkit-user-select:none;
                 -moz-user-select:none;
                 -ms-user-select:none;
+                br.mob-only {
+                    display:none;
+                    @include mobile {
+                        display:block;
+                    }
+                }
                 &::before {
                     content:' ';
                     position:absolute;
