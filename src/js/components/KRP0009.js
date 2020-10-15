@@ -12,6 +12,8 @@ $(function () {
             var savedFilterArr = firstFilterList || []; // CMS에서 넣어준 firstFilterList를 이용
             var firstRender = false;
 
+            var ajaxUrl = $('.plp-list-wrap').data('prodList');
+
             //템플릿 설정 슬라이더, 체크박스, 칼라칩, 상품아이템      
 
             var productItemTmpl = 
@@ -360,6 +362,8 @@ $(function () {
 
             //시작
             function init(){
+                
+
                 bindEvent(); 
                 fnBreakPoint(); // breackpoint 이벤트 초기실행
                 // storageFilters 값이 있을때 필터를 설정.
@@ -622,9 +626,8 @@ $(function () {
             function requestData(obj){
 
                 lgkorUI.showLoading();
-                console.log('requestData: ', convertPostData(obj));
-
-                var ajaxUrl = '/lg5-common/data-ajax/filter/retrieveCategoryProductList.json'; // 테스트용                
+                console.log("requestURL: " + ajaxUrl)
+                console.log('requestData: ', convertPostData(obj));            
 
                 _$.ajax({
                     type : "GET",

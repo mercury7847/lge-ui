@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRC0001 {
+	max-width:1326px;
+	margin:0 auto;
+	padding:0 30px;
+	@include mobile {
+		padding:0;
+	}
+
+	.title {
+		margin-bottom:40px;
+		font-size:28px;
+		line-height:36px;
+		text-align:center;
+		& > h2 {
+			display:block;
+			font-size:inherit;
+			line-height:inherit;
+		}
+	}
+
+	.products-list-wrap {
+		padding: {
+			left:0 !important;
+			right:0 !important;
+		}
+		.products-list-group {
+			.list-contents-wrap {
+				padding:0 28px;
+				@include mobile {
+					padding:0 10px;
+				}
+			}
+			.indi-wrap {
+				visibility:hidden;
+				position:absolute;
+				top:0;
+				z-index:-10;
+				
+				@include mobile {
+					visibility:visible;
+					position:relative;
+					top:auto;
+					z-index:10;
+					margin-top:36px;
+				}
+			}
+			.items {
+				.item {
+					display:flex;
+					flex-direction:column;
+					float:left;
+					width:25%;
+					padding:0 8px 24px;
+					text-align:center;
+					@include mobile {
+						padding:0 10px 0;
+					}
+					.tag-content {
+						order:2;
+						height:20px;
+						margin-top:6px;
+						@include mobile {
+							margin-top:20px;
+						}
+						.tag {
+							display:inline-block;
+							padding:1px 8px;
+							border-radius:4px;
+							background-color:#e2e2e2;
+	
+							font-weight:500;
+							font-size:12px;
+							line-height:18px;
+							color:#ec455a;
+						}
+					}
+					.visual {
+						order:1;
+						& > img {
+							max-width:180px;
+							@include mobile {
+								max-width:100%;
+							}
+						}
+					}
+					.model-group {
+						order:4;
+						font-weight:400;
+						font-size:16px;
+						line-height:24px;
+					}
+					.products-info {
+						order:3;
+						margin-top:8px;
+						.model-name {
+							display:block;
+							font-weight:700;
+							font-size:16px;
+							line-height:24px;
+						}
+					}
+				}
+			}
+			.slide-controls {
+				.btn-arrow {
+					position:absolute;
+					top:50%;
+					transform:translateY(-50%);
+					&.prev {
+						left:0;
+						@include mobile {
+							left:10px;
+						}
+					}
+					&.next {
+						right:0;
+						@include mobile {
+							right:10px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

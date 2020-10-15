@@ -62,17 +62,17 @@
                             @@if (context.copy) {
                             <p class="copy">@@copyText</p>
                             }
-                            @@if (context.step) {
+                            @@if (context.category) {
                                 @@if ( !context.twoLine ) {
-                                <div class="step">
+                                <div class="category">
                                 }
                                 @@if ( context.twoLine ) {
-                                <div class="step twoLine">
+                                <div class="category twoLine">
                                 }    
-                                    @@for (var i=0; i < context.step.length; i++) {
+                                    @@for (var i=0; i < context.category.length; i++) {
                                     <ol>
-                                        <li>`+step[i].txt1+`</li>
-                                        <li>`+step[i].txt2+`</li>
+                                        <li>`+category[i].txt1+`</li>
+                                        <li>`+category[i].txt2+`</li>
                                     </ol>
                                 }
                                 </div>    

@@ -124,6 +124,9 @@
 		.btn {
 			border-color:#fff;
 			color:#fff;
+			&.btn-primary {
+				background-color:transparent;
+			}
 		}
 		.btn.btn-outline-primary {
 			border-color:#111;
@@ -286,6 +289,9 @@
 	}
 	// disclaimer variation
 	&.full-size {
+		.component-inner {
+			max-width:1660px;
+		}
 		.cont-head {
 			.title,
 			.title h2,
@@ -322,6 +328,9 @@
 		}
 	}
 	&.wide-size {
+		.component-inner {
+			max-width:1344px;
+		}
 		.cpt-wrap {
 			max-width:1284px;
 			margin-left:auto;
