@@ -1,0 +1,91 @@
+<div class="box">
+    <div class="info-wrap">
+        <p class="infos">
+            @@for ( var i=0; i < infos.length; i++ ) {
+                <span>`+infos[i]+`</span>
+            }
+        </p>
+        @@if ( context.btns ) {
+        <div class="btns">
+            <a href="#n" class="btn-link small">@@btns</a>
+        </div>
+        }
+    </div>
+    <div class="tbl-layout @@size">
+        <!-- thead -->
+        <div class="thead" aria-hidden="true">
+            @@for ( var j=0; j < th.length; j++ ) {
+            <span class="th col`+[j+1]+`">`+th[j]+`</span>
+            }
+        </div>
+        <!-- // thead -->
+        <!-- tbody -->
+        <div class="tbody">
+            <!-- row -->
+            <div class="row">
+                @@if ( context.col1 ) {
+                <div class="col col1">
+                    <span class="blind">@@col1.blind</span>
+                    @@if ( context.col1.productType ) {
+                    <div class="product-info">
+                        <a href="#n" class="thumb"><img src="@@col1.productType.thumb" alt="@@col1.productType.name"></a>
+                        <div class="infos">
+                            <div class="flag-wrap">
+                                <span class="flag"><span class="blind">케어솔루션 종류</span>@@col1.productType.flag</span>
+                            </div>
+                            <p class="name"><a href="#n"><span class="blind">제품명</span>@@col1.productType.name</a></p>
+                            <ul class="more">
+                                @@for ( var k=0; k < col1.productType.more.length; k++ ) {
+                                <li>`+col1.productType.more[k]+`</li>
+                                }
+                            </ul>
+                            @@if ( context.col1.productType.review ) {
+                            <div class="buttons">
+                                <a href="#n" class="btn-link small">사용후기</a>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    }
+                </div>
+                }
+                @@if ( context.col2 ) {
+                <div class="col col2">
+                    <span class="blind">@@col2.blind</span>
+                    @@if ( context.col2.stateType ) {
+                    <div class="state-box">
+                        @@if ( context.col2.stateType.tit ) {
+                        <p class="tit">@@col2.stateType.tit</p>
+                        }
+                        @@if ( context.col2.stateType.desc ) {
+                        <p class="desc">@@col2.stateType.desc</p>
+                        }
+                        @@if ( context.col2.stateType.btn ) {
+                        <a href="#n" class="btn bd-black btn-small"><span>@@col2.stateType.btn</span></a>
+                        }
+                    </div>
+                    }
+                </div>
+                }
+            </div>
+            <!-- // row -->
+            @@if ( context.rowspan ) {
+            <!-- rowspan -->
+            <div class="rowspan">
+                <div class="col">
+                    <span class="blind">@@rowspan.blind</span>
+                    @@if ( context.rowspan.btn ) {
+                    <a href="#n" class="btn bd-black btn-small"><span>@@rowspan.btn</span></a>
+                    }
+                    @@if ( context.rowspan.txt ) {
+                    <p class="p-text red">@@rowspan.txt</p>
+                    }
+                </div>
+            </div>
+            <!-- // rowspan -->
+            }
+        </div>
+        <!-- // tbody -->
+
+    </div>
+</div>
