@@ -1,8 +1,6 @@
 
 (function(){
 
-    var _totalContract; 
-
     var _listItemTemplate =
         '<li class="item">'+
         '   <div class="prd-care-vertical">'+
@@ -103,10 +101,37 @@
         '   </div>'+
         '</li>';
 
-    function init(){
-        _totalContract = $('.ui_total_prod').data('totalProd');
-        
+    var putItemTemplate = 
+        '<div class="conts-wrap">'+
+        '   <div class="prd-care-horizon">'+
+        '       <div class="flag-wrap">'+
+        '           <span class="flag"><span class="blind">서비스명</span>케어솔루션</span>'+
+        '       </div>'+
+        '       <div class="img-wrap">'+
+        '           <img src="/lg5-common/images/dummy/@sample-150x150.jpg" alt="제품 이미지" style="opacity: 1;">'+
+        '       </div>'+
+        '       <div class="txt-wrap">'+
+        '           <div class="tit-info">'+
+        '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>스팀 건조기ThinQ&nbsp;(듀얼 인버터 히트펌프) 두줄 텍스트 두줄 텍스트 두줄 텍스트 두줄 텍스트</p>'+
+        '               <p class="code"><span class="blind">제품 코드</span>WU900AS</p>'+
+        '           </div>'+
+        '           <p class="etc">월 61,900원</p>'+
+        '       </div>'+            
+        '       <div class="del-item">'+
+        '           <button type="button" class="btn-del" tabindex=""><span class="blind">제품 삭제</span></button>'+
+        '       </div>'+            
+        '   </div>'+
+        '</div>';
 
+    var _totalContract;
+    var _prodListUrl;
+
+    function init(){
+        _totalContract = $('.ui_total_prod').data('prodTotal');
+        console.log("_totalContract: " + _totalContract);
+
+        _prodListUrl = $('.care-solution-wrap').data("prodList");
+        console.log("_prodListUrl: " + _prodListUrl);
     }
 
 
