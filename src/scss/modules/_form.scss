@@ -1154,6 +1154,32 @@ $input: (chk, rdo);
         }
     }
 }
+.star-rating-wrap {
+    .ui-rating-wrap {
+        font-size:0;
+        > a {
+            display:inline-block;
+            width:24px;
+            height:24px;
+            font-size:0;
+            vertical-align:top;
+            background:url('/lg5-common/images/icons/icon-star2-off.svg') no-repeat 100%;
+            & + a {
+                margin-left:4px;
+            }
+            &.on {
+                background-image:url('/lg5-common/images/icons/icon-star2-on.svg')
+            }
+        }
+        .ui-select-label {
+            display:inline-block;
+            margin-left:8px;
+            font-size:16px;
+            line-height:24px;
+            vertical-align:top;
+        }
+    }
+}
 
 // datepicker
 .ui-calendar-dim {
