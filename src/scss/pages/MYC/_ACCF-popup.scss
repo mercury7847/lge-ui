@@ -39,3 +39,9 @@
 .btm_info .btn {
     margin-top:16px;
 }
+.form-wrap.mt-type {
+    margin-top:40px;
+    @include mobile {
+        margin-top:20px;
+    }
+}
