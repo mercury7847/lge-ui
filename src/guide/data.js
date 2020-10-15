@@ -86,6 +86,7 @@ var res = {
 			"KRP0021_Category module for store home" : ["/html/components/KRP0021.html","","진행중"],
 			"KRP0025_event_list_for_category_home" : ["/html/components/KRP0025.html","","진행중"],
 			"KRP0027_Please note" : ["/html/components/KRP0027.html","","진행중"],
+			"KRP0028_Event list" : ["/html/components/KRP0028.html","","진행중"],
 		},
 		"Page" : {
 			"케어솔루션(SLC)" : {
