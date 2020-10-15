@@ -40,6 +40,35 @@
     }
 }
 
+.check-list {
+    margin:0 0 -32px -64px;
+    font-size:0;
+    .rdo-wrap {
+        margin-bottom:32px;
+        padding-left:64px;
+    }
+    @include mobile {
+        margin:0;
+        .rdo-wrap {
+            width:100%;
+            margin:16px 0 0;
+            padding:0;
+            &:first-child {
+                margin-top:0;
+            }
+        }
+        &.type-col-2 {
+            .rdo-wrap {
+                width:50%;
+                margin:0;
+                &:nth-child(n+3) {
+                    margin-top: 16px;
+                }
+            }
+        }
+    }
+}
+
 /* form field */
 .field-wrap {
     .row {
@@ -49,20 +78,20 @@
         }
         @include clearfix;
         @include mobile {
-            margin-top:20px;
+            margin-top:40px;
         }
     }
     .field-title {
-        margin-bottom:8px;
+        margin-bottom:16px;
         .tit {
             display:inline-block;
-            color:#616161;
             font-size:14px;
             font-weight:400;
             line-height:20px;
             vertical-align:top;
         }
         @include mobile {
+            margin-bottom:12px;
             .tit {
                 line-height:18px;
             }
@@ -111,37 +140,7 @@
             width:100%;
             & + .field-item {
                 float:none;
-                margin-top:28px;
-            }
-        }
-    }
-    .check-list {
-        margin:0 -32px;
-        font-size:0;
-        .rdo-wrap {
-            padding:0 32px;
-        }
-        @include mobile {
-            width: 100%;
-            &.type-A {
-                .rdo-wrap {
-                    width: 100%;
-                    padding-right: 0;
-                    margin-top: 16px;
-                    &:first-child {
-                        margin-top: 0;
-                    }
-                }
-            }
-            &.type-col-2 {
-                margin: 0;
-                .rdo-wrap {
-                    width: 50%;
-                    padding: 0;
-                    &:nth-child(n+3) {
-                        margin-top: 16px;
-                    }
-                }
+                margin-top:40px;
             }
         }
     }

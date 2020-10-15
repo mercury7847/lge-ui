@@ -2,12 +2,13 @@
     <header class="pop-header">
         <h1 class="tit"><span>제품 문제 해결</span></h1>
     </header>
-    <section class="pop-conts support faq no-footer align-left">
-        <div class="section-title">
-            <p class="sub-text">선택하신 고장 증상에 대한 제품 문제해결 방법을 확인하세요.</p>
+    <section class="pop-conts support no-footer">
+        <p class="info-desc">선택하신 고장 증상에 대한 제품 문제해결 방법을 확인하세요.</p>
+        
+        <div class="sorting-wrap">
+            <div class="total">전체 <em id="count" class="count">154</em>건</div>
         </div>
 
-        <div class="total-number">전체 154건</div>
         <div class="accordion-wrap ui_accordion type-B" data-single-open="true">
             <ul>
                 <li class="lists">
@@ -170,20 +171,11 @@
                 </li>
             </ul>
         </div>
-
-        <div class="pagination">
-            <a href="#" class="prev"><span class="blind">이전 페이지 보기</span></a>
-            <span class="page_num">
-                <strong><span class="blind">현재 페이지</span>1</strong>
-                <a href="#" title="2페이지 보기">2</a>
-                <a href="#" title="3페이지 보기">3</a>
-                <a href="#" title="4페이지 보기">4</a>
-                <a href="#" title="5페이지 보기">5</a>
-                <a href="#" title="6페이지 보기">6</a>
-                <a href="#" title="7페이지 보기">7</a>
-            </span>
-            <a href="#" class="next"><span class="blind">다음 페이지 보기</span></a>
-        </div>
+        
+        @@include('./common/support/pagination.html', {
+            'count': 5,
+            'last': 'false'
+        })
     </section>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
 </article>
