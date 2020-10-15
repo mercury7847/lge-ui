@@ -154,25 +154,25 @@
                     color:#808080;
                     font-size:14px;
                     line-height:20px;
-                    &:after {
+                    &:before {
                         content:'';
                         display:block;
                         position:absolute;
                         top:50%;
-                        left:4px;
-                        width:1.3px;
+                        left:4.5px;
+                        width:1px;
                         height:10px;
                         transform:translateY(-50%);
                         background:#808080;
                     }
-                    &:before {
+                    &:after {
                         content:'';
                         display:block;
                         position:absolute;
                         top:50%;
                         left:0;
                         width:10px;
-                        height:1.3px;
+                        height:1px;
                         transform:translateY(-50%);
                         background:#808080;
                     }
@@ -181,7 +181,7 @@
                     border-color:#EC455A;
                     span {
                         color:#EC455A;
-                        &:after, &before {
+                        &:before , &:after {
                             background:#EC455A;
                         }
                     }
@@ -452,6 +452,8 @@
             }
         }
         .tit-wrap {
+            max-width:1284px + 60px;
+            margin:0 auto;
             padding:36px 30px 16px;
             @include mobile {
                 padding:32px 20px 18px;
