@@ -2,22 +2,8 @@ $(window).ready(function(){
     if(!document.querySelector('.KRP0019')) return false;
 
     $('.KRP0019').buildCommonUI();
-
-    if(window.kakao){
-        startShare();
-    }else{
-        var script = document.createElement('script');
-
-        script.onload = function () {
-            startShare();
-        };
-        script.onerror = function(e){ 
-            alert('kakao api를 로드할수 없습니다.');
-        }
-        script.src = '//developers.kakao.com/sdk/js/kakao.min.js';        
-        document.head.appendChild(script); 
-    }
-
+    
+    lgkorUI.loadKakaoSdkForShare(startShare);
 
     function startShare(){
         vcui.require([
