@@ -150,6 +150,12 @@
                 &.no-pd {
                     padding:0;
                 }
+                .no-data:only-child {
+                    margin:-56px;
+                    @include mobile {
+                        margin:0 0 -56px;
+                    }
+                }
 
                 .form-wrap + .btn-group {
                     margin-top:40px;

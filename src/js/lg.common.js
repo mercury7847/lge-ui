@@ -17,7 +17,6 @@
                             "ui/imageSwitch",
                             "ui/dropdown",
                             "ui/textControl",
-                            "ui/scrollview",
                             "ui/fileInput",
                             "ui/radioShowHide",
                             'ui/inputClearButton',
@@ -37,7 +36,6 @@
             this.find('.animation-box').vcVideoBox();
             this.find('.youtube-box').vcYoutubeBox();
             this.find('.ui_textcontrol').vcTextcontrol();
-            this.find('.ui_scrollview').vcScrollview();
             this.find('.ui_fileinput').vcFileinput();
             this.find('.ui_radio_visible').vcRadioShowHide();
             this.find('.ui_input_clearbutton').vcInputClearButton();

@@ -80,13 +80,13 @@
         @include pc {
             padding:0 40px;
             .process-list {
+                display:table;
                 padding:28px 0 20px;
                 border-radius:100px;
                 @include clearfix;
                 > li {
-                    float:left;
+                    display:table-cell;
                     width:25%;
-                    height: 150px;
                     padding:80px 50px 0;
                     text-align:center;
                     background-size: 64px;
@@ -104,14 +104,14 @@
             }
         }
         @include mobile {
-            padding: 0;
+            text-align:center;
+            background:#fff;
             .process-list {
-                border-radius: 0;
-                padding: 20px 34px;
+                display:inline-block;
+                padding:20px 40px;
+                text-align:left;
                 > li {
-                    width: 100%;
-                    float: none;
-                    padding: 0 0 0 60px;
+                    padding:0 0 0 60px;
                     background-size: 40px;
                     background-position: left center;
                     + li {

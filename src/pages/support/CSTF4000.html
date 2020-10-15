@@ -80,7 +80,7 @@
                                             </div>
                                             <div class="model-search">
                                                 <div class="input-wrap block">
-                                                    <input type="text" class="" id="model" name="model" placeholder="모델명을 검색해주세요.">
+                                                    <input type="text" id="model" name="model" placeholder="모델명을 검색해주세요." required>
                                                     <button type="button"><span class="blind">검색</span></button>
                                                 </div>
                                                 <div class="model-util">
@@ -109,35 +109,35 @@
                                         <div class="field-item block">
                                             <div class="choice-input">
                                                 <div class="rdo-btn-wrap">
-                                                    <input type="radio" name="symptom" id="symptom-1" value="">
+                                                    <input type="radio" name="symptom" id="symptom-1" value="1" reauired>
                                                     <label for="symptom-1">부품/소모품</label>
                                                 </div>
                                                 <div class="rdo-btn-wrap">
-                                                    <input type="radio" name="symptom" id="symptom-2" value="">
+                                                    <input type="radio" name="symptom" id="symptom-2" value="2">
                                                     <label for="symptom-2">구입/사양</label>
                                                 </div>
                                                 <div class="rdo-btn-wrap">
-                                                    <input type="radio" name="symptom" id="symptom-3" value="">
+                                                    <input type="radio" name="symptom" id="symptom-3" value="3">
                                                     <label for="symptom-3">구조/외관</label>
                                                 </div>
                                                 <div class="rdo-btn-wrap">
-                                                    <input type="radio" name="symptom" id="symptom-4" value="">
+                                                    <input type="radio" name="symptom" id="symptom-4" value="4">
                                                     <label for="symptom-4">기능 관련</label>
                                                 </div>
                                                 <div class="rdo-btn-wrap">
-                                                    <input type="radio" name="symptom" id="symptom-5" value="">
+                                                    <input type="radio" name="symptom" id="symptom-5" value="5">
                                                     <label for="symptom-5">난방 관련</label>
                                                 </div>
                                                 <div class="rdo-btn-wrap">
-                                                    <input type="radio" name="symptom" id="symptom-6" value="">
+                                                    <input type="radio" name="symptom" id="symptom-6" value="6">
                                                     <label for="symptom-6">냄새 관련</label>
                                                 </div>
                                                 <div class="rdo-btn-wrap">
-                                                    <input type="radio" name="symptom" id="symptom-7" value="">
+                                                    <input type="radio" name="symptom" id="symptom-7" value="7">
                                                     <label for="symptom-7">냉방 관련</label>
                                                 </div>
                                                 <div class="rdo-btn-wrap">
-                                                    <input type="radio" name="symptom" id="symptom-8" value="">
+                                                    <input type="radio" name="symptom" id="symptom-8" value="8">
                                                     <label for="symptom-8">누수 관련</label>
                                                 </div>
                                             </div>
@@ -190,7 +190,7 @@
                                             </div>
                                             <div class="check-list">
                                                 <div class="rdo-wrap">
-                                                    <input type="radio" name="radio1" id="radio1-1" value="이벤트 행사">
+                                                    <input type="radio" name="radio1" id="radio1-1" value="이벤트 행사" required>
                                                     <label for="radio1-1">이벤트 행사</label>
                                                 </div>
                                                 <div class="rdo-wrap">
@@ -255,8 +255,8 @@
                                                 <label for="input-content" class="tit">전달사항</label>
                                             </div>
                                             <div class="input-wrap count">
-                                                <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" required data-limit="1000" data-count-target="#txt-count1"></textarea>
-                                                <span id="txt-count1" class="cell total"><em>0</em> / 1000</span>
+                                                <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="100" data-limit="100" data-count-target="#txt-count1"></textarea>
+                                                <span id="txt-count1" class="cell total"><em>0</em> / 100</span>
                                                 <p class="err-msg">전달사항을 입력해주세요.</p>
                                             </div>
                                         </div>
@@ -397,7 +397,7 @@
                                                 <div class="part1">
                                                     <div class="input-wrap">
                                                         <span class="box">
-                                                            <input type="text" id="input-zipcode" placeholcer="" required>
+                                                            <input type="text" name="zipcode" id="input-zipcode" placeholcer="" required>
                                                             <span class="cell">
                                                                 <button type="button">주소찾기</button>
                                                             </span>
@@ -501,7 +501,8 @@
                             <p class="result-text"><strong>2020.07.01 13:30</strong>에 박두신 전문 엔지니어가 입력하신 주소로 방문하여 <strong>[누수관련 > 가동 중 누수]</strong>에 대한 증상을 해결해드릴 예정입니다. 예약하시겠습니까?</p>
                             <div class="btn-group">
                                 <a href="#" class="btn gray"><span>취소</span></a>
-                                <button type="button" data-href="#certificationPopup" data-control="modal" class="btn pink">인증/예약</button>
+                                <button type="button" class="btn pink" id="completeBtn">인증/예약</button>
+                                <!-- <button type="button" class="btn pink" id="completeBtn" data-href="#completePop" data-control="modal">인증/예약</button> -->
                             </div>
                         </div>
 
@@ -526,7 +527,7 @@
 
     <!-- 예약 완료 팝업 -->
     @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop",
+        "popId" : "completePop",
         "msgOnly" : true,
         "msg" : "출장 서비스를<br>예약하겠습니까?",
         "twobtn" : true
@@ -535,6 +536,6 @@
     <!-- support script -->
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/support/selectCategory.min.js"></script>
+    <script src="/lg5-common/js/support/reservation.min.js"></script>
 </body>
 </html> 
