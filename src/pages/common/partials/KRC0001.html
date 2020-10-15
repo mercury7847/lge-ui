@@ -1,0 +1,113 @@
+<!-- components/partials/KRC0001.html -->
+
+<div class="component-wrap">
+	<!--
+		[.component-wrap 옵션]
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+	-->
+	<!-- 
+		제품 옵션(색상, 사이즈)이 변경되는 요소가 들어가는 경우
+		- 반드시 감싸주는 상위 요소에 js-model-switcher 클래스를 추가합니다.
+		- 개별 제품을 js-model 클래스로 각각 묶어주세요. (아래 참고)
+		- data-model-url: 제품 옵션(색상, 사이즈) 선택 시 제품 정보 호출하는 ajax를 입력합니다.
+		- data-name: 제품 모델 id parameter명을 변경할 경우 수정해주세요.
+	-->
+	<!-- b2b 페이지에선 .component에 in-b2b class를 추가해주세요. -->
+	<section class="component KRC0001 in-b2b js-model-switcher" data-model-url="/data-ajax/mkt/modelGroup.json" data-name="modelId">
+		<div class="title">@@headline</div>
+
+		<!-- 1. Tab -->
+		<div class="products-tab-area" style="display:none;"> <!-- [KR수정] 탭메뉴 수정 대기중 -->
+			<div class="tab-wrap js-tab-controll">
+				<div class="tab-outer js-tab-guide-outer">
+					<div class="tabs-type-liner tab-inner js-tab-guide-inner" role="tablist">
+						<!-- 
+							to 개발
+							: href값은 Tab Content의 id와 매칭 되어야 합니다.
+							: 매칭되는 href, id 값은 한페이지에 한개만 존재해야 합니다.(id값 중복 사용 금지)
+							2020-06-18
+							LGEUS-632 접근성 : role="tab" 추가 id="" & aria-discribedeby="" 연결
+						-->
+						<a href="#productsList1_1" id="exciting_offers_for_you" aria-controls="productsList1_1" class="btn-tab" data-link-area="selective_offering-tab" data-link-name="exciting_offers_for_you" role="tab">최근 본 상품</a>
+						<a href="#productsList1_2" id="newest" aria-controls="productsList1_2" class="btn-tab" data-link-area="selective_offering-tab" data-link-name="newest" role="tab">케어용품/소모품</a>
+						<a href="#productsList1_3" id="best_deals" aria-controls="productsList1_3" class="btn-tab" data-link-area="selective_offering-tab" data-link-name="best_deals" role="tab">유사제품 추천</a>
+						<a href="#productsList1_4" id="highly_rated" aria-controls="productsList1_4" class="btn-tab" data-link-area="selective_offering-tab" data-link-name="highly_rated" role="tab">최근 본 제품</a>
+						<a href="#productsList1_5" id="most_popular" aria-controls="productsList1_5" class="btn-tab" data-link-area="selective_offering-tab" data-link-name="most_popular" role="tab">함꼐 만히 본 제품</a>
+					</div>
+				</div>
+				<div class="tab-scroll-controller">
+					<button type="button" class="scroll-left"><span class="sr-only">Scroll Left</span></button>
+					<button type="button" class="scroll-right"><span class="sr-only">Scroll Right</span></button>
+				</div>
+			</div>
+		</div>
+		<!-- // 1. Tab -->
+
+		<!-- 2. products list -->
+		<div class="products-list-wrap component-outer-box">
+			<!-- productsList 1 -->
+			<div id="productsList1_1" aria-discribedeby="newest" class="products-list-group tabs-cont component-inner-box">
+				<div class="list-contents-wrap ui_carousel_slider"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slider -->
+					<div class="items unit-list ui_carousel_track"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_track -->
+						@@for (var i = 0; i < items.length; i++) {
+						<div class="item js-model ui_carousel_slide"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slide -->
+							<div class="tag-content">
+								<span data-key="productTag1">`+items[i].flag1+`</span>
+								<span data-key="productTag2">`+items[i].flag2+`</span>
+							</div>
+
+							<!-- [KR수정] a태그를 div로 변경 -->
+							<div class="visual" data-link-area="selective_offering-product_list" data-link-name="65SJ8500" data-adobe-modelname="{model name}" data-adobe-salesmodelcode="{sales model code without suffix}">
+								<img data-src="`+items[i].imgPC+`" class="lazyload pc" alt="`+items[i].productName+` 이미지">
+								<img data-src="`+items[i].imgMo+`" class="lazyload mobile" alt="`+items[i].productName+` 이미지">
+							</div>
+							<!-- //[KR수정] a태그를 div로 변경 -->
+
+							<div class="model-group">
+								<div class="inner" role="radiogroup">
+									<div href="#" role="radio" data-href="MD05793351" class="size" data-link-area="product_list-model_list-sibling" data-link-name="`+items[i].dataLinkName+`">`+items[i].modelName+`</div> <!-- [KR수정] a태그를 div로 변경 -->
+								</div>
+							</div>
+
+							<div class="products-info">
+								<p class="model-name">
+									<span data-link-area="selective_offering-product_list" data-link-name="65SJ8500">`+items[i].productName+`</span> <!-- [KR수정] a태그를 span으로 변경 -->
+								</p>
+							</div>
+						</div>
+						}
+					</div>
+
+					<!-- [KR수정] carousel DOM 추가 : 인디케이터 -->
+					<ul class="indi-wrap ui_carousel_dots">
+						<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+					</ul>
+					<!-- //[KR수정] carousel DOM 추가 : 인디케이터 -->
+
+					<!-- [KR수정] carousel DOM 추가 : 네비게이션 -->
+					<div class="slide-controls">
+						<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+						<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+					</div>
+					<!-- //[KR수정] carousel DOM 추가 : 네비게이션 -->
+				</div>
+			</div>
+
+			<!-- [KR수정] 탭메뉴 컨텐츠 & 노데이터 수정 대기중 -->
+			<!-- productsList 2 -->
+			<div id="productsList1_2"></div>
+			
+			<!-- productsList 3 -->
+			<div id="productsList1_3"></div>
+			
+			<!-- productsList 4 -->
+			<div id="productsList1_4"></div>
+
+			<div class="no-content-wrap"></div>
+			<!-- //[KR수정] 탭메뉴 컨텐츠 & 노데이터 수정 대기중 -->
+		</div>
+		<!-- // 2. products list -->
+	</section>
+</div>
