@@ -26,7 +26,7 @@
                     _self.bindEvents();
                 });
 
-                //this.searchNewData();
+                //_self.searchNewData();
             },
 
             bindEvents: function() {
