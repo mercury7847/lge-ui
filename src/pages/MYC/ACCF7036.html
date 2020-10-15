@@ -97,20 +97,17 @@
                     <dl class="forms">
                         <dt class="tit">제품구분</dt>
                         <dd class="conts">
-                            <ul class="chkrdo-list">
-                                <li>
-                                    <span class="rdo-wrap">
-                                        <input type="radio" id="rdo1-1" name="rdo1" checked>
-                                        <label for="rdo1-1">구매</label>
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="rdo-wrap">
-                                        <input type="radio" id="rdo1-2" name="rdo1">
-                                        <label for="rdo1-2">케어솔루션</label>
-                                    </span>
-                                </li>
-                            </ul>
+                            <!-- DOM 변경 -->
+                            @@include('./common/modules/rdochk-list.html', {
+                                "wAuto" : true,
+                                "rdo" : true,
+                                "name" : "rdo1",
+                                "slt" : [
+                                    { "value" : "구매", "checked" : "checked" },
+                                    { "value" : "케어솔루션", "checked" : "" }
+                                ]
+                            })
+                            <!-- // DOM 변경 -->
                         </dd>
                     </dl>
                 </div>

@@ -104,6 +104,12 @@
                     > .btn-moreinfo {
                         margin-top:4px;
                     }
+                    &.left {
+                        float:left;
+                        .sec-tit {
+                            float:none;
+                        }
+                    }
                 }
                 .var-list {
                     font-size:0;
@@ -143,6 +149,10 @@
                 background:#fff; 
                 &.no-pd {
                     padding:0;
+                }
+
+                .form-wrap + .btn-group {
+                    margin-top:40px;
                 }
             }
             .tit-desc {
