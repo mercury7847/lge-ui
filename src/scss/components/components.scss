@@ -1,8 +1,9 @@
 @charset "UTF-8";
 
+/* bootstrap 확인용 */
 // @import "bootstrap-grid.min";
 // @import "bootstrap.min";
-
+/* //bootstrap 확인용 */
 @import "../utilities/variables";
 @import "../modules/video-asset";
 @import "../modules/animation-asset";
@@ -268,7 +269,8 @@
 
     .align-center {
         text-align: center;
-        &.text-left {
+        &.text-left,
+        &.text-right {
             text-align:center !important;
         }
     }

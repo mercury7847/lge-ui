@@ -113,6 +113,10 @@
     font-weight:500;
     line-height:24px;
     vertical-align:top;
+    &.small {
+        font-size:14px;
+        line-height:20px;
+    }
     &.pink {
         color:#ec455a;
     }
@@ -167,13 +171,15 @@
         padding-right:20px;
         font-size:14px;
         line-height:20px;
-        font-weight:400;
         &::after {
             right:8px;
             width:6px;
             height:6px;
             border-width:1px 1px 0 0;
         }
+    }
+    &.thin {
+        font-weight:400;
     }
 }
 
@@ -237,6 +243,9 @@
 
 .btn-group {
     font-size:0;
+    &.right {
+        text-align:right;
+    }
     .btn {
         margin-left:8px;
         &:first-child {

@@ -1,11 +1,13 @@
 .info-tbl-wrap {
-    margin-top:40px;
     .box {
         margin-top:32px;
         &:first-child {
             margin-top:0;
         }
+
+        // title
         .info-wrap {
+            margin-bottom:16px;
             @include clearfix;
             .infos {
                 float:left;
@@ -26,6 +28,8 @@
                 float:right;
             }
         }
+
+        // display table box
         .tbl-layout {
             .thead {
                 border-top:1px solid #ddd;
@@ -43,12 +47,35 @@
             }
             .tbody {
                 position:relative;
+                border-bottom:1px solid #ddd;
                 .row {
                     display:table;
+                    table-layout:fixed;
+                    border-top:1px solid #ddd;
+                    &:first-child {
+                        border-top:none;
+                    }
                     .col {
                         display:table-cell;
                         padding:32px 24px;
+                        border-right:1px solid #ddd;
                         vertical-align:middle;
+                    }
+                }
+                .rowspan {
+                    position:absolute;
+                    top:0;
+                    bottom:0;
+                    right:0;
+                    text-align:center;
+                    .col {
+                        position:absolute;
+                        top:50%;
+                        left:0;
+                        right:0;
+                        padding:32px 24px;
+                        text-align:center;
+                        transform:translateY(-50%);
                     }
                 }
             }
@@ -62,7 +89,171 @@
                 .col3 {
                     width:164px;
                 }
+                .tbody {
+                    .row {
+                        width:calc(100% - 164px);
+                    }
+                    .rowspan {
+                        width:164px;
+                    }
+                }
+            }
+        }
+
+        // 제품
+        .product-info {
+            position:relative;
+            min-height:120px;
+            padding-left:136px;
+            .thumb {
+                position:absolute;
+                top:0;
+                left:0;
+                width:120px;
+                height:120px;
+                border-radius:8px;
+                overflow:hidden;
+                img {
+                    width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+            }
+            .infos {
+                .flag-wrap {
+                    margin-bottom:8px;
+                }
+                .name {
+                    color:#222;
+                    font-size:16px;
+                    line-height:24px;
+                    font-weight:700;
+                    @include textEllipsisClamp(2);
+                }
+                .more {
+                    margin-top:4px;
+                    font-size:0;
+                    li {
+                        display:inline-block;
+                        position:relative;
+                        margin-right:8px;
+                        padding-right:9px;
+                        color:#616161;
+                        font-size:14px;
+                        line-height:20px;
+                        vertical-align:top;
+                        &::after {
+                            content:' ';
+                            position:absolute;
+                            top:50%;
+                            right:0;
+                            width:1px;
+                            height:12px;
+                            margin-top:-6px;
+                            background:#616161;
+                        }
+                        &:last-child {
+                            margin-right:0;
+                            padding-right:0;
+                            &::after {
+                                display:none;
+                            }
+                        }
+                    }
+                }
+                .buttons {
+                    margin-top:21px;
+                    text-align:right;
+                }
+            }
+        }
+    
+        // 상태
+        .state-box {
+            text-align:center;
+            .tit {
+                color:#222;
+                font-size:14px;
+                line-height:20px;
+            }
+            .desc {
+                margin-top:4px;
+                color:#616161;
+                font-size:14px;
+                line-height:20px;
+            }
+            .btn {
+                margin-top:8px;
+            }
+        }
+
+        // 취소 텍스트
+        .p-text {
+            font-size:14px;
+            line-height:20px;
+            &.red {
+                color:#F04E3E;
+            }
+        }
+    }
+
+}
+
+// 청약 계약 진행단계 안내
+.contract-steps {
+    overflow:hidden;
+    > ol {
+        margin-top:-24px;
+        font-size:0;
+        .steps {
+            display:inline-block;
+            position:relative;
+            width:164px;
+            margin-top:24px;
+            margin-right:40px;
+            padding-right:24px;
+            vertical-align:top;
+            &::before {
+                content:' ';
+                display:block;
+                width:80px;
+                height:80px;
+                border-radius:50%;
+                margin-bottom:12px;
+                overflow:hidden;
+                background-size:100%;
+            }
+            @for $i from 1 through 7 {
+                &.cs#{$i}::before {
+                    background-image:url('/lg5-common/images/MYC/icon-cs#{$i}.svg');
+                }
+            }
+            &::after {
+                content:' ';
+                position:absolute;
+                top:99px;
+                right:9px;
+                width:0;
+                height:0;
+                border-top:5px solid transparent;
+                border-bottom:5px solid transparent;
+                border-left:6px solid #222;
+            }
+            dl {
+                dt {
+                    color:#222;
+                    font-size:16px;
+                    line-height:24px;
+                    font-weight:500;
+                }
+                dd {
+                    margin-top:4px;
+                    color:#616161;
+                    font-size:14px;
+                    line-height:20px;
+                }
             }
         }
     }
 }
+

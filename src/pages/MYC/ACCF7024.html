@@ -41,67 +41,177 @@
                                     })
                                     <!-- // filter -->
 
+                                    <!-- nodata -->
+                                    <div class="no-data mg-type">
+                                        <p>고객님의 신청내역이 없습니다.</p>
+                                    </div>
+                                    <!-- // nodata -->
+
                                     <!-- list -->
                                     <div class="info-tbl-wrap">
-                                        <div class="box">
-                                            <div class="info-wrap">
-                                                <p class="infos">
-                                                    <span>신청일 2020.09.12</span>
-                                                    <span>계약번호: QR20080549712</span>
-                                                    <span>총 1건</span>
-                                                </p>
-                                                <div class="btns">
-                                                    <a href="#n" class="btn-link small">케어솔루션 청약내역 상세보기</a>
-                                                </div>
-                                            </div>
-                                            <div class="tbl-layout size3">
-                                                <!-- thead -->
-                                                <div class="thead" aria-hidden="true">
-                                                    <span class="th col1">제품정보</span>
-                                                    <span class="th col2">주문상태</span>
-                                                    <span class="th col3">취소</span>
-                                                </div>
-                                                <!-- // thead -->
-                                                <!-- tbody -->
-                                                <div class="tbody">
-                                                    <!-- row -->
-                                                    <div class="row">
-                                                        <div class="col col1">
-                                                            <span class="blind">제품정보</span>
-                                                            <div class="product-info">
-                                                                <span class="thumb"><img src="/lg5-common/images/dummy/@img-product2.jpg" alt="LG TROMM 건조기 스팀 ThinQ"></span>
-                                                                <div class="infos">
-                                                                    <span class="flag-wrap">
-                                                                        <span class="flag"><span class="blind">케어솔루션 종류</span>케어솔루션 렌탈</span>
-                                                                    </span>
-                                                                    <p class="name"><span class="blind">제품명</span>LG TROMM 건조기 스팀 ThinQ 모델명 2줄까지 가능</p>
-                                                                    <ul class="more">
-                                                                        <li><span class="blind">제품번호</span>RH9WGANR.AKOR</li>
-                                                                        <li><span class="blind">제품종류</span>건조기</li>
-                                                                        <li><span class="blind">제품옵션</span>Silver</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col col2">
-                                                            <span class="blind">주문상태</span>
-                                                            <p class="state">청약신청 완료</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- // row -->
-                                                    <!-- rowspan -->
-                                                    <div class="rowspan">
-                                                        <span class="blind">취소</span>
-                                                        <button class="btn bd-black btn-small"><span>취소신청</span></button>
-                                                    </div>
-                                                    <!-- // rowspan -->
-                                                </div>
-                                                <!-- // tbody -->
+                                        <!-- loop -->
+                                        @@include('./common/modules/info-tbl-wrap.html', {
+                                            "infos" : [
+                                                "신청일 2020.09.12", "계약번호: QR20080549712", "총 1건"
+                                            ],
+                                            "btns" : "케어솔루션 청약내역 상세보기",
+                                            "size" : "size3",
+                                            "th" : [
+                                                "제품정보", "주문상태", "취소"
+                                            ], 
+                                            "col1" : {
+                                                "blind" : "제품정보",
+                                                "productType" : {
+                                                    "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "flag" : "케어솔루션 렌탈",
+                                                    "name" : "LG TROMM 건조기 스팀 ThinQ",
+                                                    "more" : [
+                                                        "<span class='blind'>제품번호</span>RH9WGANR.AKOR",
+                                                        "<span class='blind'>제품종류</span>건조기",
+                                                        "<span class='blind'>제품옵션</span>Silver"
+                                                    ]
+                                                }
+                                            },
+                                            "col2" : {
+                                                "blind" : "주문상태",
+                                                "stateType" : {
+                                                    "tit" : "청약신청 완료"
+                                                }
+                                            },
+                                            "rowspan" : {
+                                                "blind" : "취소",
+                                                "btn" : "취소신청"
+                                            }
+                                        })
+                                        <!-- // loop -->
 
-                                            </div>
-                                        </div>
+                                        <!-- loop -->
+                                        @@include('./common/modules/info-tbl-wrap.html', {
+                                            "infos" : [
+                                                "신청일 2020.09.12", "계약번호: QR20080957127", "총 1건"
+                                            ],
+                                            "btns" : "케어솔루션 청약내역 상세보기",
+                                            "size" : "size3",
+                                            "th" : [
+                                                "제품정보", "주문상태", "취소"
+                                            ], 
+                                            "col1" : {
+                                                "blind" : "제품정보",
+                                                "productType" : {
+                                                    "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                    "flag" : "케어십 렌탈",
+                                                    "name" : "LG 퓨리케어 상하좌우 냉온정수기 모델명 2줄까지 가능",
+                                                    "more" : [
+                                                        "<span class='blind'>제품번호</span>WD502AP.AKOR",
+                                                        "<span class='blind'>제품종류</span>정수기",
+                                                        "<span class='blind'>제품옵션</span>Silver"
+                                                    ]
+                                                }
+                                            },
+                                            "col2" : {
+                                                "blind" : "주문상태",
+                                                "stateType" : {
+                                                    "tit" : "배송준비중",
+                                                    "desc" : "09.19(금) 배송예정",
+                                                    "btn" : "배송문의"
+                                                }
+                                            },
+                                            "rowspan" : {
+                                                "blind" : "취소",
+                                                "txt" : "취소불가"
+                                            }
+                                        })
+                                        <!-- // loop -->
+
+                                        <!-- loop -->
+                                        @@include('./common/modules/info-tbl-wrap.html', {
+                                            "infos" : [
+                                                "신청일 2020.09.12", "계약번호: 20230461", "총 1건"
+                                            ],
+                                            "btns" : "케어솔루션 청약내역 상세보기",
+                                            "size" : "size3",
+                                            "th" : [
+                                                "제품정보", "주문상태", "취소"
+                                            ], 
+                                            "col1" : {
+                                                "blind" : "제품정보",
+                                                "productType" : {
+                                                    "thumb" : "/lg5-common/images/dummy/@img-product3.jpg",
+                                                    "flag" : "케어십 렌탈",
+                                                    "name" : "LG TROMM 스타일러 블랙에디션",
+                                                    "more" : [
+                                                        "<span class='blind'>제품번호</span>RH9WGANR.AKOR",
+                                                        "<span class='blind'>제품종류</span>스타일러",
+                                                        "<span class='blind'>제품옵션</span>Black"
+                                                    ],
+                                                    "review" : true
+                                                }
+                                            },
+                                            "col2" : {
+                                                "blind" : "주문상태",
+                                                "stateType" : {
+                                                    "tit" : "계약생성 완료",
+                                                    "desc" : "09.01(화) 도착",
+                                                    "btn" : "배송문의"
+                                                }
+                                            },
+                                            "rowspan" : {
+                                                "blind" : "취소",
+                                                "txt" : "취소불가"
+                                            }
+                                        })
+                                        <!-- // loop -->
                                     </div>
                                     <!-- // list -->
+
+                                    <div class="pagination">
+                                        <a href="#" class="prev disabled"><span class="blind">이전 페이지 보기</span></a> <!-- 비활성시 disabled 클래스 추가 -->
+                                        <span class="page_num">
+                                            <strong><span class="blind">현재 페이지</span>1</strong>
+                                            <a href="#" title="2페이지 보기">2</a>
+                                            <a href="#" title="3페이지 보기">3</a>
+                                            <a href="#" title="4페이지 보기">4</a>
+                                            <a href="#" title="5페이지 보기">5</a>
+                                        </span>
+                                        <a href="#" class="next"><span class="blind">다음 페이지 보기</span></a> <!-- 비활성시 disabled 클래스 추가 -->
+                                    </div>
+
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "topBorder" : true,
+                                        "bulletTxt" : [
+                                            "진행상태에 따라 취소 신청이 가능합니다."
+                                        ]
+                                    })
+                                </div>
+                            </div>
+
+                            <div class="section">
+                                <h3 class="sec-tit">청약 계약 진행단계 안내</h3>
+                                <div class="cont-box">
+                                    @@include('./common/modules/contract-steps.html', {
+                                        "steps" : [
+                                            { "dt" : "청약신청 완료", "dd" : "청약신청이 완료 되었습니다." },
+                                            { "dt" : "주문접수", "dd" : "주문이 접수되었습니다." },
+                                            { "dt" : "결제완료", "dd" : "결제가 완료되었습니다." },
+                                            { "dt" : "배송준비중", "dd" : "제품을 배송할 기사를 배정중입니다." },
+                                            { "dt" : "배송중", "dd" : "제품이 고객님께 배송중입니다." },
+                                            { "dt" : "배송완료", "dd" : "제품이 고객님께 전달 완료되었습니다." },
+                                            { "dt" : "계약생성 완료", "dd" : "계약생성이 완료되었습니다." }
+                                        ]
+                                    })
+
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "topBorder" : true,
+                                        "bulletTit" : "확인하세요",
+                                        "bulletTxt" : [
+                                            "주문/배송 내역은 PC웹에서는 5년, 모바일웹에서는 1년까지 조회 가능합니다.",
+                                            "주문 취소 신청은 배송이 시작되기 전까지만 가능하며 단순 변심에 의한 반품은 제품 배송 완료 후 7일 이내에 온라인 접수가 가능합니다.<br>(단, 설치 제품의 경우 인수 완료 후에는 반품이 불가하니 이점 유의하시기 바랍니다.)",
+                                            "배송 완료 후 7일 이후의 건에 대해서는 고객 서비스 센터(000-0000)로 문의하세요. 제품 반품 시 반품 사유에 따라 배송비가 발생할 수 있습니다.",
+                                            "다수의 제품을 분할 결제나 포인트로 결제하신 경우, 부분 취소 또는 부분 반품이 불가하니 주문 건 전체를 취소하신 후 다시 결제하여 주세요.",
+                                            "멤버십 포인트는 구매 제품은 배송 완료 후, 케어솔루션(렌탈) 제품의 경우 배송 및 설치 완료 14일 이후 적립됩니다.",
+                                            "배송 상태는 ‘배송중’ 상태 부터 확인 가능합니다."
+                                        ]
+                                    })
                                 </div>
                             </div>
                         </div>
@@ -113,31 +223,5 @@
         
         @@include('./common/footer.html')
     </div>
-
-    <!-- 장바구니 alert -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop",
-        "msgOnly" : true,
-        "msg" : "선택한 제품을 장바구니에<br>담으시겠습니까?",
-        "twobtn" : true
-    })
-    <!-- // 장바구니 alert -->
-
-    <!-- 찜하기 alert -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop2",
-        "msgOnly" : true,
-        "msg" : "찜하기 되었습니다."
-    })
-    <!-- // 찜하기 alert -->
-
-    <!-- 최근본제품 삭제 alert -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop3",
-        "msgOnly" : true,
-        "msg" : "해당 제품을<br>삭제하시겠습니까?",
-        "twobtn" : true
-    })
-    <!-- // 최근본제품 삭제 alert -->
 </body>
 </html>

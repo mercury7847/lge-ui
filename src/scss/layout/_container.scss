@@ -10,6 +10,9 @@
             font-size:30px;
             line-height:36px;
             font-weight:700;
+            &:only-child {
+                padding-bottom:12px;
+            }
         }
         .desc {
             margin-top:20px;
@@ -89,12 +92,67 @@
                 line-height:24px;
                 font-weight:700;
             }
+            .flt-tit-wrap {
+                @include clearfix;
+                margin-bottom:16px;
+                .sec-tit {
+                    float:left;
+                    margin-bottom:0;
+                }
+                .flt-box {
+                    float:right;
+                    > .btn-moreinfo {
+                        margin-top:4px;
+                    }
+                    &.left {
+                        float:left;
+                        .sec-tit {
+                            float:none;
+                        }
+                    }
+                }
+                .var-list {
+                    font-size:0;
+                    li {
+                        display:inline-block;
+                        position:relative;
+                        margin-left:16px;
+                        padding-left:17px;
+                        line-height:24px;
+                        vertical-align:top;
+                        &::before {
+                            content:' ';
+                            position:absolute;
+                            top:50%;
+                            left:0;
+                            width:1px;
+                            height:12px;
+                            margin-top:-6px;
+                            background:#ddd;
+                        }
+                        &:first-child {
+                            margin-left:0;
+                            padding-left:0;
+                            &::before {
+                                display:none;
+                            }
+                        }
+                        > button, > a {
+                            vertical-align:middle;
+                        }
+                    }
+                }
+            }
             .cont-box {
                 padding:56px;
                 border-radius:4px;
                 background:#fff; 
                 &.no-pd {
                     padding:0;
+                }
+
+                .form-wrap + .btn-group {
+                    margin-top:40px;
                 }
             }
             .tit-desc {
