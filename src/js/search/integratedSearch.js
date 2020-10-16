@@ -6,6 +6,11 @@
         '<div class="info">' +
             '<span class="name">{{#raw title}}</span><span class="sku">{{sku}}</span><span class="price">{{price}}원</span>' +
         '</div></a></li>';
+    var recentItemTemplate = '<li><a href="#{{text}}">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제" data-text="{{text}}"><span class="blind">삭제</span></button></li>';
+    var popularItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
+    var suggestedTagItemTemplate = '<li><a href="#{{text}}" class="rounded"><span class="text">#{{text}}</span></a></li>';
+    var similarTextTemplate = '<a href="#{{text}}" class="similar-text">이것을 찾으셨나요? “{{text}}”</a>'
+
     var minLength = 2;
     var searchDelay = 2000;
     var searchTimer = null;
@@ -24,10 +29,18 @@
                 self.$resultCount = self.$search_result_area.find('span.result-title');
                 self.$resultCategory = self.$search_result_area.find('div.result-category');
                 self.$resultPreview = self.$search_result_area.find('div.result-preview-list');
-
-                self.$inputSearchList.hide();
+                //
+                self.$searchKeywordArea = self.$searchLayer.find('div.search-keyword-area');
+                self.$recentKeywordList = self.$searchKeywordArea.find('dl.recent-keyword'); 
+                self.$popularKeywordList = self.$searchKeywordArea.find('dl.popular-keyword');
+                self.$suggestedTagsList = self.$searchKeywordArea.find('div.suggested-tags');
+                //
+                self.$searchSimilar = self.$searchLayer.find('div.search-similar');
 
                 var _self = this;
+                self.$inputSearchList.hide();
+                _self.updateRecentSearcheList();
+
                 _self.bindEvents();
             },
 
@@ -76,7 +89,7 @@
                 self.$inputSearchList.on('mouseover', searchItemTarget, function(e){
                     e.preventDefault();
                     clearTimeout(serchMouseOverTimer);
-                    var searchVal = $(this).attr('href').replaceAll("#", "");
+                    var searchVal = $(this).attr('href').replace("#", "");
                     serchMouseOverTimer = setTimeout(function() {
                         _self.requestSearch(searchVal);
                     }, searchDelay);
@@ -87,12 +100,53 @@
                     e.preventDefault();
                     clearTimeout(serchMouseOverTimer);
                     _self.hideAnimation(self.$inputSearchList);
-                    var searchVal = $(this).attr('href').replaceAll("#", "");
+                    var searchVal = $(this).attr('href').replace("#", "");
                     if(searchedValue != searchVal) {
                         //새로운 값 선택
                         _self.requestSearch(searchVal);
                     }
                 })
+
+                //최근검색어 클릭
+                searchItemTarget = 'dd.list ul li a';
+                self.$recentKeywordList.on('click', searchItemTarget, function(e){
+                    e.preventDefault();
+                    _self.clickSearchItem($(this));
+                })
+
+                //최근검색어 삭제 클릭
+                searchItemTarget = 'dd.list ul li button';
+                self.$recentKeywordList.on('click', searchItemTarget, function(e){
+                    var data_text = $(this).attr('data-text');
+                    _self.removeRecentSearcheText(data_text);
+                })
+
+                //인기검색어 클릭
+                searchItemTarget = 'dd.list ul li a';
+                self.$popularKeywordList.on('click', searchItemTarget, function(e){
+                    e.preventDefault();
+                    _self.clickSearchItem($(this));
+                })
+
+                //추천태그 클릭
+                searchItemTarget = 'dl dd.list ul li a';
+                self.$suggestedTagsList.on('click', searchItemTarget, function(e){
+                    e.preventDefault();
+                    _self.clickSearchItem($(this));
+                })
+
+                //연관검색어 클릭
+                searchItemTarget = 'a';
+                self.$searchSimilar.on('click', searchItemTarget, function(e){
+                    e.preventDefault();
+                    _self.clickSearchItem($(this));
+                })
+            },
+
+            clickSearchItem:function($item) {
+                var searchVal = $item.attr('href').replace("#", "");
+                self.$inputSearch.val(searchVal);
+                self.$buttonSearch.trigger('click');
             },
 
             showAnimation:function($item) {
@@ -105,6 +159,54 @@
                 $item.animate({opacity:0},100,function() {
                     $item.hide();
                 });
+            },
+
+            removeRecentSearcheText:function(text) {
+                var _self = this;
+                var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+                if(!searchedList) {
+                    searchedList = [];
+                }
+
+                var findIndex = $.inArray(text, searchedList);
+                if(findIndex >= 0) {
+                    searchedList.splice(findIndex, 1);
+                    localStorage.searchedList = JSON.stringify(searchedList);
+                }
+                _self.updateRecentSearcheList();
+            },
+
+            addRecentSearcheText:function(text) {
+                if(!text || text.length < 1) return;
+                var _self = this;
+                var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+                if(!searchedList) {
+                    searchedList = [];
+                }
+                var findIndex = $.inArray(text, searchedList);
+                if(findIndex < 0) {
+                    searchedList.push(text);
+                    if(searchedList.length > 5) {
+                        searchedList.shift();
+                    }
+                    localStorage.searchedList = JSON.stringify(searchedList);
+                }
+                _self.updateRecentSearcheList();
+            },
+
+            updateRecentSearcheList:function() {
+                var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+                var arr = searchedList instanceof Array ? searchedList : [];
+                if(arr.length > 0) {
+                    var $list_ul = self.$recentKeywordList.find('dd.list ul');
+                    $list_ul.empty();
+                    arr.forEach(function(item, index) {
+                        $list_ul.append(vcui.template(recentItemTemplate, {"text":item}));
+                    });
+                    self.$recentKeywordList.show();
+                } else {
+                    self.$recentKeywordList.hide();
+                }
             },
 
             requestTimerSearch:function(searchValue) {
@@ -159,10 +261,42 @@
         
                     searchedValue = d.param.input;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
+
+                    //최근검색어 갱신
+                    _self.addRecentSearcheText(searchedValue);
                     
                     var data = d.data;
+
+                    //인기검색어 갱신
+                    var arr = data.popular instanceof Array ? data.popular : [];
+                    if(arr.length > 0) {
+                        var $list_ul = self.$popularKeywordList.find('dd.list ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(popularItemTemplate, {"text":item}));
+                        });
+                        self.$popularKeywordList.show();
+                    } else {
+                        self.$popularKeywordList.hide();
+                    }
+
+                    //추천태그 갱신
+                    var arr = data.suggested instanceof Array ? data.suggested : [];
+                    if(arr.length > 0) {
+                        var $list_ul = self.$suggestedTagsList.find('dl dd.list ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(suggestedTagItemTemplate, {"text":item}));
+                        });
+                        self.$suggestedTagsList.show();
+                    } else {
+                        self.$suggestedTagsList.hide();
+                    }
+
+                    //검색결과-카테고리 갱신
                     var showResult = false;
-                    var arr = data.category instanceof Array ? data.category : [];
+
+                    arr = data.category instanceof Array ? data.category : [];
                     if(arr.length > 0) {
                         showResult = true;
                         var $list_ul = self.$resultCategory.find('ul');
@@ -175,6 +309,7 @@
                         self.$resultCategory.hide();
                     }
 
+                    //검색결과-제품 갱신
                     arr = data.preview instanceof Array ? data.preview : [];
                     if(arr.length > 0) {
                         showResult = true;
@@ -183,7 +318,6 @@
                         arr.forEach(function(item, index) {
                             item.title = item.title.replaceAll(searchedValue,replaceText);
                             item.price = vcui.number.addComma(item.price);
-                            console.log(vcui.template(previewItemTemplate, item));
                             $list_ul.append(vcui.template(previewItemTemplate, item));
                         });
                         self.$resultPreview.vcImageSwitch('reload');
@@ -192,13 +326,24 @@
                         self.$resultPreview.hide();
                     }
 
+                    //연관 검색어
+                    var similarText = data.similarText;
+                    if(similarText) {
+                        self.$searchSimilar.html(vcui.template(similarTextTemplate, {"text":similarText}));
+                        self.$searchSimilar.show();
+                    } else {
+                        self.$searchSimilar.hide();
+                    }
+
+                    //검색결과가 있을 경우 최근검색어/인기검색어 숨김
                     if(showResult) {
                         self.$resultCount.text('검색 결과 (' + vcui.number.addComma(data.resultCount) + ')');
                         self.$resultCount.show();
+                        self.$searchKeywordArea.hide();
                     } else {
                         self.$resultCount.hide();
+                        self.$searchKeywordArea.show();
                     }
-
 
                 }).fail(function(d){
                     alert(d.status + '\n' + d.statusText);

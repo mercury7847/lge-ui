@@ -6,8 +6,8 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
         bindjQuery: 'tooltipTarget',
         defaults: {
             interval: 200,
-            tooltip: null,
-            type : 'over', //click, over
+            tooltip: '.tooltip-box',
+            type : 'click', //click, over
             closeButtonClass : '.btn-close',
             singleton : false
         },

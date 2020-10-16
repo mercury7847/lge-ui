@@ -20,7 +20,8 @@
                             "ui/fileInput",
                             "ui/radioShowHide",
                             'ui/inputClearButton',
-                            "ui/starRating"
+                            "ui/starRating",
+                            "ui/tooltipTarget"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
@@ -39,20 +40,22 @@
             this.find('.ui_radio_visible').vcRadioShowHide();
             this.find('.ui_input_clearbutton').vcInputClearButton();
             this.find('.ui_star_rating').vcStarRating();
+            this.find('.ui_tooltip-target').vcTooltipTarget();
 
             this.find('.ui_selectbox').vcSelectbox({
                 events:{
-                    selectboxopenafter: function(e){
+                    selectboxtoggle: function(e){
                         var selectwrap = $(e.currentTarget).siblings('.ui-selectbox-wrap');
-                        var selectlist = selectwrap.find("> .ui-selectbox-list");
-                        var margintop = selectlist.css('margin-top');
-                        if(parseInt(margintop) < 0){
-                            if(!selectwrap.hasClass('type_up')) selectwrap.addClass('type_up')
+                        var isOpen = selectwrap.hasClass('on');
+                        if(isOpen){
+                            var selectlist = selectwrap.find("> .ui-selectbox-list");
+                            var margintop = selectlist.css('margin-top');
+                            if(parseInt(margintop) < 0){
+                                if(!selectwrap.hasClass('type_up')) selectwrap.addClass('type_up')
+                            }
+                        } else{
+                            selectwrap.removeClass("type_up");
                         }
-                    },
-                    selectboxclose: function(e){
-                        var selectwrap = $(e.currentTarget).siblings('.ui-selectbox-wrap');
-                        selectwrap.removeClass("type_up")
                     }
                 }
             });
@@ -178,7 +181,13 @@
                 'ui/lazyLoader',
                 "ui/videoBox",
                 "ui/youtubeBox",
-                "ui/imageSwitch"
+                "ui/imageSwitch", 
+                "ui/textControl",
+                "ui/fileInput",
+                "ui/radioShowHide",
+                'ui/inputClearButton',
+                "ui/starRating",
+                "ui/tooltipTarget"
             ], function (ResponsiveImage, BreakpointDispatcher) {
                 
                 new BreakpointDispatcher({

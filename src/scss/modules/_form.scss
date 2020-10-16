@@ -238,6 +238,10 @@
             }
         }
     }
+
+    &.term-filter {
+        margin-bottom:40px;
+    }
 }
 .agree-cont-wrap {
     .agree-input {
@@ -1097,6 +1101,18 @@ $input: (chk, rdo);
                 border-color:#222;
                 .ico {
                     transform:rotate(180deg);
+                }
+            }
+            &.type_up {
+                .ui-selectbox-list {
+                    border:1px solid #222;
+                    border-bottom:none;
+                    border-radius:8px 8px 0 0;
+                }
+                .ui-select-button {
+                    border:1px solid #222;
+                    border-top:none;
+                    border-radius:0 0 8px 8px;
                 }
             }
         }

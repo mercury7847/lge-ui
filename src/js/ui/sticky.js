@@ -20,6 +20,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
             stickyFor: 0,
             stickyClass: 'fixed',
             stickyContainer: 'body',
+            usedAnchor: false
         },
         selectors:{
             anchor : 'a'
@@ -46,11 +47,13 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var idx;
 
-            self.$anchor.on('click', function(e){
-                e.preventDefault();
-                var idx = vcui.array.indexOf(self.anchorArr, $(this).attr('href'));                
-                self.scollToIndex(idx, 300);
-            });
+            if(self.options.usedAnchor){
+                self.$anchor.on('click', function(e){
+                    e.preventDefault();
+                    var idx = vcui.array.indexOf(self.anchorArr, $(this).attr('href'));                
+                    self.scollToIndex(idx, 300);
+                });
+            }
             $win.on('scroll resize load', function(e) {
                 self.scrollTop = $win.scrollTop();
                 idx = self._getSelectIdx(self.scrollTop);

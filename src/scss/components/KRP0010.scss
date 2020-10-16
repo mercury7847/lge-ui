@@ -1778,6 +1778,7 @@
 .popup-wrap {
     &.pop-pdp-visual {
         width: 1284px;
+        max-width: 1284px;
         background: #fff;
         z-index: 1000;
         @media screen and (min-width: 768px) {

@@ -34,104 +34,137 @@
 .estimate-list {
     padding-bottom:64px;
     @include mobile {
+        margin:0 -20px;
         padding-bottom:32px;
-    }
-    > li {
-        padding:24px 0;
-        border-bottom:1px solid #ddd;
-        &:first-child {
-            padding-top:0;
+
+        .slide-content {
+            padding:0 20px;
         }
-        .item {
-            display:table;
-            width:100%;
-            table-layout:fixed;
-            .img-wrap {
-                display:table-cell;
+        .slide-conts {
+            margin:0 5px;
+        }
+    }
+    
+    
+    .conts-wrap {
+        @include mobile {
+            width:88.888vw;
+        }
+        
+    }
+    .item {
+        display:table;
+        padding:24px 0;
+        width:100%;
+        table-layout:fixed;
+        border-bottom:1px solid #ddd;
+        @include mobile {
+            padding:24px 16px 24px 0;
+            border:1px solid #ddd;
+            border-radius:8px;
+        }
+        .img-wrap {
+            display:table-cell;
+            width:120px;
+            vertical-align:top;
+            @include mobile {
+                width:100px;
+            }
+            img {
+                display:block;
                 width:120px;
-                vertical-align:top;
+                height:120px;
+                overflow:hidden;
                 @include mobile {
                     width:100px;
-                }
-                img {
-                    display:block;
-                    width:120px;
-                    height:120px;
-                    overflow:hidden;
-                    @include mobile {
-                        width:100px;
-                        height:100px;
-                    }
+                    height:100px;
                 }
             }
-            .txt-wrap {
-                display:table-cell;
+        }
+        .txt-wrap {
+            display:table-cell;
+            width:100%;
+            vertical-align:top;
+            @include mobile {
+                padding:0;
+            }
+            .tit-info {
+                @include clearfix;
                 width:100%;
-                vertical-align:top;
+                margin-top:8px;
                 @include mobile {
-                    padding:0;
+                    margin-top:4px;
                 }
-                .tit-info {
-                    @include clearfix;
-                    width:100%;
-                    margin-top:8px;
-                    .tit {
-                        display:inline-block;
-                        width:270px;
-                        max-height:48px;
-                        font-size:16px;
-                        line-height:24px;
-                        font-weight:700;
-                        overflow:hidden;
-                        text-overflow:ellipsis;
-                        word-break:break-all;
-                        -moz-line-clamp: 2;
-                        -ms-line-clamp: 2;
-                        -webkit-line-clamp: 2;
-                        vertical-align:top;
-                        @include mobile {
-                            font-size:14px;
-                            line-height:18px;
-                            max-height:36px;
-                        }
+                .tit {
+                    display:inline-block;
+                    width:270px;
+                    max-height:48px;
+                    font-size:16px;
+                    line-height:24px;
+                    font-weight:700;
+                    overflow:hidden;
+                    text-overflow:ellipsis;
+                    word-break:break-all;
+                    -moz-line-clamp: 2;
+                    -ms-line-clamp: 2;
+                    -webkit-line-clamp: 2;
+                    vertical-align:top;
+                    @include mobile {
+                        width:100%;
+                        font-size:14px;
+                        line-height:18px;
+                        max-height:36px;
                     }
-                    .price {
-                        float:right;
-                        font-size:16px;
-                        line-height:24px;
-                        font-weight:700;
-                    }
-                    .etc-info {
+                }
+                .price {
+                    float:right;
+                    font-size:16px;
+                    line-height:24px;
+                    font-weight:700;
+                    @include mobile {
+                        float:none;
                         margin-top:4px;
-                        padding-right:110px;
+                        font-size:14px;
+                        line-height:18px;
                     }
                 }
                 .etc-info {
                     margin-top:8px;
-                    .txt {
-                        position:relative;
-                        color:#616161;
-                        font-size:14px;
-                        line-height:20px;
-                        &:before {
-                            content:'';
-                            display:inline-block;
-                            margin:0 8px;
-                            width:1px;
-                            height:10px;
-                            background:#616161;
-                            vertical-align:baseline;
-                        }
-                        &:first-child:before {
-                            display:none;
-                            margin-left:0;
-                        }
+                }
+            }
+            .etc-info {
+                margin-top:10px;
+                .txt {
+                    position:relative;
+                    color:#616161;
+                    font-size:14px;
+                    line-height:20px;
+                    @include mobile {
+                        line-height:18px;
+                    }
+                    &:before {
+                        content:'';
+                        display:inline-block;
+                        margin:0 8px;
+                        width:1px;
+                        height:10px;
+                        background:#616161;
+                        vertical-align:baseline;
+                    }
+                    &:first-child:before {
+                        display:none;
+                        margin-left:0;
                     }
                 }
             }
         }
     }
-    
+    &:first-child .item {
+        padding-top:0;
+        @include mobile {
+            padding-top:24px;
+        }
+    }
 }
 
 .estimate-price {
