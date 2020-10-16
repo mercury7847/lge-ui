@@ -29,7 +29,6 @@
     
             this.find('.ui_calendar').vcCalendar();
             this.find('.ui_accordion').vcAccordion();        
-            this.find('.ui_selectbox').vcSelectbox();
             this.find('.ui_dropdown').vcDropdown();
             this.find('.ui_tab').vcTab();
             this.find('.ui_carousel').vcCarousel();
@@ -40,6 +39,24 @@
             this.find('.ui_radio_visible').vcRadioShowHide();
             this.find('.ui_input_clearbutton').vcInputClearButton();
             this.find('.ui_star_rating').vcStarRating();
+
+            this.find('.ui_selectbox').vcSelectbox({
+                events:{
+                    selectboxtoggle: function(e){
+                        var selectwrap = $(e.currentTarget).siblings('.ui-selectbox-wrap');
+                        var isOpen = selectwrap.hasClass('on');
+                        if(isOpen){
+                            var selectlist = selectwrap.find("> .ui-selectbox-list");
+                            var margintop = selectlist.css('margin-top');
+                            if(parseInt(margintop) < 0){
+                                if(!selectwrap.hasClass('type_up')) selectwrap.addClass('type_up')
+                            }
+                        } else{
+                            selectwrap.removeClass("type_up");
+                        }
+                    }
+                }
+            });
 
             this.find('.ui_wide_slider').vcCarousel({
                 autoplay:true,
@@ -321,12 +338,12 @@
             //리스트 height 재설정
             $('body').find('.ui_flexible_height').each(function(idx, item){
                 var maxheight = 0;
-                $(item).find('> li').each(function(cdx, child){
+                $(item).children().each(function(cdx, child){
                     var flexiblebox = $(child).find('.ui_flexible_box .ui_flexible_cont');
                     maxheight = Math.max(maxheight, flexiblebox.outerHeight(true));
                 });
 
-                $(item).find('> li .ui_flexible_box').height(maxheight);
+                $(item).find('.ui_flexible_box').height(maxheight);
             });
         },
 

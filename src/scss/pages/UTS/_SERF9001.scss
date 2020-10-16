@@ -203,9 +203,8 @@
     .input-result-list {
         position: relative;
         //display: table-cell;
-        min-width: 194px;
+        width: 194px;
         margin-right: 24px;
-        padding: 18px 24px 44px;
         border-radius: 0 0 8px 8px;
         border: 1px solid #ddd;
         border-top: 0;
@@ -221,6 +220,12 @@
             border-left: 1px solid #ddd;
             background-color: #fff;
             content: '';
+        }
+
+        > ul {
+            overflow-y: auto;
+            max-height: 593px;
+            padding: 18px 24px 44px;
         }
     }
 
