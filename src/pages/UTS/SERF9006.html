@@ -35,10 +35,6 @@
                     <div class="search-result-wrap">
                         @@include('./common/modules/list-filter.html')
                         <div class="result-area">
-                            <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->
-                            <div class="btn-filter">
-                                <a href="#n" id="filterModalLink" class="ico-filter"><span class="blind">옵션필터</span></a>
-                            </div>
                             @@include('./common/modules/list-sorting.html', {
                         
                                 "select" : [
@@ -115,13 +111,7 @@
                             @@include('./common/support/pagination.html', {
                                 count: 5
                             })
-                        </div>
-                        <div class="mobile-service-link">
-                            <ul>
-                                <li><a href="#n" class="btn-text">매장 방문 예약</a></li>
-                                <li><a href="#n" class="btn-text">매장 찾기</a></li>
-                            </ul>
-                        </div>   
+                        </div>  
 
                     </div>    
                 </div>

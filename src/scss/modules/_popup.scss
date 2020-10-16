@@ -114,6 +114,7 @@
         top:0 !important;
         width:100%;
         height:100%;
+        max-width:none;
         border-radius:0;
         transform:none !important;
     }
@@ -221,19 +222,6 @@
             padding-top:32px;
         }
     }
-    .pop-input {
-        background-color: #f4f4f4;
-        padding: 8px 56px;
-        padding-right: 0;
-        input {
-            + label {
-                font-size: 14px;
-            }
-        }
-        @include mobile {
-            padding-left: 24px;
-        }
-    }
     .pop-footer {
         padding:32px 56px 40px;
         background:transparent;
@@ -244,6 +232,9 @@
         }
         &.no-padding {
             padding:0 0 40px;
+        }
+        &.check-type {
+            text-align:left;
         }
         .btn-group {
             margin:0;
@@ -256,8 +247,33 @@
                 margin-left:0;
             }
         }
+        @include pc {
+            &.check-type {
+                padding:20px 56px 40px;
+                input {
+                    + label {
+                        padding-left:20px;
+                        font-size:12px;
+                        line-height:16px;
+                        &:before {
+                            width:16px;
+                            height:16px;
+                        }
+                        &:after {
+                            top:5px;
+                            left:4px;
+                            width:8px;
+                            height:4px;
+                        }
+                    }
+                }
+            }
+        }
         @include mobile {
             padding:0;
+            &.check-type {
+                padding:12px 24px 24px;
+            }
             .btn-group {
                 .btn {
                     margin-left:0;
