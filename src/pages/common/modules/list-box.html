@@ -3,6 +3,9 @@
             <li class="lists">
                 <div class="list-inner">
                     <a href="#n">
+                        @@if ( context.stateFlag ) {
+                        <div class="big-flag red type1 right"><span>@@stateFlag</span></div>
+                        }
                         <span class="thumb">
                             @@if (context.img) {
                                 <img src="/lg5-common/images/@@img" alt="" aria-hidden="true">
@@ -18,6 +21,13 @@
                                         "<span class='blind'>@@flag2</span>@@flag2-1"
                                     ]
                                 })
+                            }
+                            @@if ( context.flagArr ) {
+                            <span class="flag-wrap bg-type">
+                                @@for ( var j=0; j < flagArr.length; j++ ) {
+                                <span class="flag"><span class="blind">`+flagArr[j].blind+`</span>`+flagArr[j].txt+`</span>
+                                }
+                            </span>
                             }
                             
                         </span>
@@ -87,6 +97,9 @@
                     <div class="btn-area btm">
                         <a href="#" class="btn bd-gray"><span>@@btnName</span></a>
                     </div>
+                    }
+                    @@if ( context.btnOnly ) {
+                    <a href="#n" class="btn bd-black btn-small"><span>@@btnOnly</span></a>
                     }
                 </div>
             </li>
