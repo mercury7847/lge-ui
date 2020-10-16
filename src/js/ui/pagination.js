@@ -107,27 +107,23 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
         _bindEvents: function _bindEvents() {
             var self = this;
             self.$el.on("click","a",function(e) {
-                switch (e.type) {
-                    case 'click':
-                        e.preventDefault();
-                        let value = $(e.currentTarget).attr('href').replace("#", "");
-                        self.triggerHandler("page_click", value);
-                        /*
-                        if($(e.currentTarget).hasClass("prev") || $(e.currentTarget).hasClass("next")) {
-                            self.triggerHandler("page_click", {
-                                pagePosition: value,
-                                page: ""
-                            });
-                        } else {
-                            self.triggerHandler("page_click", {
-                                pagePosition: "",
-                                page: value
-                            });
-                        }
-                        */
-                        break;
+                e.preventDefault();
+                let value = $(e.currentTarget).attr('href').replace("#", "");
+                self.triggerHandler("page_click", value);
+                /*
+                if($(e.currentTarget).hasClass("prev") || $(e.currentTarget).hasClass("next")) {
+                    self.triggerHandler("page_click", {
+                        pagePosition: value,
+                        page: ""
+                    });
+                } else {
+                    self.triggerHandler("page_click", {
+                        pagePosition: "",
+                        page: value
+                    });
                 }
-            })
+                */
+            });
         },
     });
 

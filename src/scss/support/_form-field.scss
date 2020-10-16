@@ -6,35 +6,6 @@
     max-width:none;
 }
 
-/* radio */
-.rdo-wrap {
-    input {
-        & + label {
-            &:before {
-                border-color:#ddd;
-            }
-            &:after {
-                top:7px;
-                left:7px;
-                width:10px;
-                height:10px;
-                border:0 none;
-                border-radius:50%;
-                background:#ddd;
-            }
-        }
-        &:checked + label {
-            &:before {
-                border-color:#ec455a;
-                background-color:#ec455a;
-            }
-            &:after {
-                background-color:#fff;
-            }
-        }
-    }
-}
-
 .rdo-btn-wrap {
     display: inline-block;
     font-size: 0;
@@ -72,7 +43,7 @@
 /* form field */
 .field-wrap {
     .row {
-        margin:32px -4px 0;
+        margin:32px 0 0;
         &:first-child {
             margin-top:0;
         }
@@ -105,11 +76,28 @@
                 margin-top:8px;
             }
         }
+        .input-wrap, .select-wrap {
+            float:left;
+            width:calc(50% - 4px);
+            & + .input-wrap, & + .select-wrap {
+                float:right;
+            }
+            @include mobile {
+                float:none;
+                width:100%;
+                & + .input-wrap, & + .select-wrap {
+                    float:none;
+                    margin-top:8px;
+                }
+            }
+        }
     }
     .field-item {
         float:left;
-        width:50%;
-        padding:0 4px;
+        width:calc(50% - 4px);
+        & + .field-item {
+            float:right;
+        }
         &.block {
             float:none;
             width:100%;
@@ -122,6 +110,7 @@
             float:none;
             width:100%;
             & + .field-item {
+                float:none;
                 margin-top:28px;
             }
         }

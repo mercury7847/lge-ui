@@ -697,6 +697,7 @@ $(window).ready(function(){
         },
 
         clickThumbnailSlide: function(index) {
+            var _self = this;
             var item = pdp_visual_list[index];
 
             switch(item.type) {
@@ -743,14 +744,14 @@ $(window).ready(function(){
             switch(item.type) {
                 case "image":
                     self.$popPdpVisualImage.find('div.zoom-area img').attr({'data-pc-src':item.image_url,'data-m-src':item.image_url});
-                    vcui.require(['ui/imageSwitch'], function () {
+                    //vcui.require(['ui/imageSwitch'], function () {
                         self.$popPdpVisualImage.vcImageSwitch('reload');
                         self.$popPdpVisualImage.show();
                         self.$popPdpVisualVideo.hide();
                         self.$popPdpVisualAnimation.hide();
                         self.$popPdpZoomArea.show();
                         pinchZoom.update(true);
-                    });
+                    //});
                     break;
                 case "video":
                     var template = '<div class="item-box visual-box"><div class="video-container video-box youtube-box">' +
@@ -761,7 +762,8 @@ $(window).ready(function(){
                             '<iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{{video_url}}"></iframe>' + 
                         '</div></div></div>'
                     self.$popPdpVisualVideo.html(vcui.template(template,item));
-                    vcui.require(['ui/imageSwitch','ui/youtubeBox'], function () {
+                    //vcui.require(['ui/imageSwitch','ui/youtubeBox'], function () {
+                    vcui.require(['ui/youtubeBox'], function () {
                         self.$popPdpVisualVideo.vcImageSwitch('reload');
                         self.$popPdpVisualVideo.find('.youtube-box').vcYoutubeBox();
                         self.$popPdpVisualImage.hide();
