@@ -60,6 +60,12 @@
                     _self.hideAnimation(self.$searchLayer);
                 });
 
+                //검색창 입력중에는 최근/인기/추천 검색어 숨김
+                self.$inputSearch.on('input', function(e){
+                    _self.hideAnimation(self.$searchKeywordArea);
+                    _self.hideAnimation(self.$searchSimilar);
+                });
+
                 //검색버튼
                 self.$buttonSearch.on('click', function(e){
                     clearTimeout(searchTimer);
@@ -158,6 +164,7 @@
             hideAnimation:function($item) {
                 $item.animate({opacity:0},100,function() {
                     $item.hide();
+                    $item.css({'opacity':1});
                 });
             },
 
@@ -248,7 +255,7 @@
             requestSearch:function(searchValue) {
                 var _self = this;
                 var ajaxUrl = self.$searchLayer.attr('data-url-search');
-                console.log(ajaxUrl,searchValue);
+                //console.log(ajaxUrl,searchValue);
 
                 $.ajax({
                     url: ajaxUrl,
@@ -295,8 +302,10 @@
 
                     //검색결과-카테고리 갱신
                     var showResult = false;
+                    var resultCount = 0;
 
                     arr = data.category instanceof Array ? data.category : [];
+                    resultCount += arr.length;
                     if(arr.length > 0) {
                         showResult = true;
                         var $list_ul = self.$resultCategory.find('ul');
@@ -311,6 +320,7 @@
 
                     //검색결과-제품 갱신
                     arr = data.preview instanceof Array ? data.preview : [];
+                    resultCount += arr.length;
                     if(arr.length > 0) {
                         showResult = true;
                         var $list_ul = self.$resultPreview.find('ul');
@@ -326,22 +336,28 @@
                         self.$resultPreview.hide();
                     }
 
+                    //검새결과 수
+                    if(resultCount > 0) {
+                        self.$resultCount.text('검색 결과 (' + vcui.number.addComma(data.resultCount) + ')');
+                        self.$resultCount.show();
+                    } else {
+                        self.$resultCount.hide();
+                    }
+                    
                     //연관 검색어
                     var similarText = data.similarText;
                     if(similarText) {
+                        showResult = true;
                         self.$searchSimilar.html(vcui.template(similarTextTemplate, {"text":similarText}));
                         self.$searchSimilar.show();
                     } else {
                         self.$searchSimilar.hide();
                     }
 
-                    //검색결과가 있을 경우 최근검색어/인기검색어 숨김
+                    //검색결과가 있을 경우 최근/인기/추천 검색어 숨김
                     if(showResult) {
-                        self.$resultCount.text('검색 결과 (' + vcui.number.addComma(data.resultCount) + ')');
-                        self.$resultCount.show();
                         self.$searchKeywordArea.hide();
                     } else {
-                        self.$resultCount.hide();
                         self.$searchKeywordArea.show();
                     }
 
