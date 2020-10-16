@@ -4,7 +4,7 @@
             <div class="sort-select-wrap">
                 <select class="ui_selectbox" id="select1" title="정렬 기준 선택">
                     @@for (var i = 0; i < context.select.length; i++) {
-                    <option>`+select[i].option+`</option>
+                    <option `+select[i].default+`>`+select[i].option+`</option>
                     }
                 </select>
             </div>
