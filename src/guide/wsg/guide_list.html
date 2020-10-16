@@ -870,84 +870,82 @@
 
 <!-- page 내 작업 방식 -->
 <!-- (@@)loop ()삭제 후 사용 -->
-<div class="product-list-wrap">
-    <ul class="product-lists ui_flexible_height">
-        (@@)loop('./common/modules/product-item.html', [
-            {
-                "search" : true, <!-- 검색 리스트일 경우 -->
-                "badgeType" : "thin", <!-- 좌측 상단 얇은 텍스트 뱃지 -->
-                "badgeType" : "large", <!-- 좌측 상단 큰 이미지 뱃지 -->
-                "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                "flags" : true,
-                "optionColor" : true, <!-- 컬러칩 옵션 -->
-                "colorSet" : [ <!-- 컬러칩 옵션 설정값 -->
-                    {
-                        "title": "LeatherYellow",
-                        "color": "LeatherYellow",
-                        "id": "product1-color1",
-                        "name": "product1",
-                        "checked": "checked"
-                    },
-                    {
-                        "title": "PlatinumSilver",
-                        "color": "PlatinumSilver",
-                        "id": "product1-color2",
-                        "name": "product1",
-                        "checked": ""
-                    }
-                ],
-                "optionText" : true, <!-- 텍스트 옵션 -->
-                "textSet" : [ <!-- 텍스트 옵션 설정값 -->
-                    {
-                        "title": "옵션1",
-                        "id": "product1-text1",
-                        "name": "product2",
-                        "checked": "checked"
-                    },
-                    {
-                        "title": "옵션2",
-                        "id": "product1-text2",
-                        "name": "product2",
-                        "checked": ""
-                    }
-                ],
-                "review" : true,
-                "isReview" : true, <!-- 리뷰가 있는 경우 / 없는 경우는 삭제 -->
-                "spec" : true, <!-- 제품 스펙 안내 리스트 -->
-                "spec" : spec2, <!-- 제품 스펙(적용모델) 한 줄 -->
-                "price" : true,
-                "originalPrice" : true, <!-- 할인 전 판매가격이 있을 경우 -->
-                "care" : true, <!-- 케어솔루션 제품 가격 정보 -->
-                "benefit" : true, <!-- 사은혜택 정보 -->
-                "hashtag" : true, <!-- 관련 해시태그 정보 -->
-                "wish" : true,
-                "wish" : {
-                    "id" : "chk01",
-                    "name" : "chk01",
-                    "checked" : ""
+<ul class="product-items">
+    (@@)loop('./common/modules/product-item.html', [
+        {
+            "search" : true, <!-- 검색 리스트일 경우 -->
+            "badgeType" : "thin", <!-- 좌측 상단 얇은 텍스트 뱃지 -->
+            "badgeType" : "large", <!-- 좌측 상단 큰 이미지 뱃지 -->
+            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+            "flags" : true,
+            "optionColor" : true, <!-- 컬러칩 옵션 -->
+            "colorSet" : [ <!-- 컬러칩 옵션 설정값 -->
+                {
+                    "title": "LeatherYellow",
+                    "color": "LeatherYellow",
+                    "id": "product1-color1",
+                    "name": "product1",
+                    "checked": "checked"
                 },
-                "compare" : true,
-                "compare" : {
-                    "id" : "chk02",
-                    "name" : "chk02",
-                    "checked" : ""
-                },
-                "button" : true,
-                "buttonName" : "장바구니 담기"
-            }, { <!-- 리스트에 배너가 있을 경우 사용합니다 -->
-                "banner" : true,
-                "banner" : {
-                    "moduleType" : "large", <!-- col 2 사이즈의 배너일 경우 -->
-                    "visual1": "/lg5-common/images/dummy/@img-product-banner-lg.jpg", <!-- pc 이미지 -->
-                    "visual2": "/lg5-common/images/dummy/@img-product-banner.jpg", <!-- 모바일 이미지 -->
-                    "title": "새출발을 위한 혼수 지원, 2020 올 뉴 웨딩 페스타",
-                    "copy": "2020 올 뉴 웨딩 페스타 행사 모델 동시 구매 시, 최대 250만원 상당 혜택!",
-                    "button": "자세히 보기"
+                {
+                    "title": "PlatinumSilver",
+                    "color": "PlatinumSilver",
+                    "id": "product1-color2",
+                    "name": "product1",
+                    "checked": ""
                 }
+            ],
+            "optionText" : true, <!-- 텍스트 옵션 -->
+            "textSet" : [ <!-- 텍스트 옵션 설정값 -->
+                {
+                    "title": "옵션1",
+                    "id": "product1-text1",
+                    "name": "product2",
+                    "checked": "checked"
+                },
+                {
+                    "title": "옵션2",
+                    "id": "product1-text2",
+                    "name": "product2",
+                    "checked": ""
+                }
+            ],
+            "review" : true,
+            "isReview" : true, <!-- 리뷰가 있는 경우 / 없는 경우는 삭제 -->
+            "spec" : true, <!-- 제품 스펙 안내 리스트 -->
+            "spec" : spec2, <!-- 제품 스펙(적용모델) 한 줄 -->
+            "price" : true,
+            "originalPrice" : true, <!-- 할인 전 판매가격이 있을 경우 -->
+            "care" : true, <!-- 케어솔루션 제품 가격 정보 -->
+            "benefit" : true, <!-- 사은혜택 정보 -->
+            "hashtag" : true, <!-- 관련 해시태그 정보 -->
+            "wish" : true,
+            "wish" : {
+                "id" : "chk01",
+                "name" : "chk01",
+                "checked" : ""
+            },
+            "compare" : true,
+            "compare" : {
+                "id" : "chk02",
+                "name" : "chk02",
+                "checked" : ""
+            },
+            "button" : true,
+            "buttonName" : "장바구니 담기"
+        }, { <!-- 리스트에 배너가 있을 경우 사용합니다 -->
+            "banner" : true,
+            "banner" : {
+                "moduleType" : "large", <!-- col 2 사이즈의 배너일 경우 -->
+                "visual1": "/lg5-common/images/dummy/@img-product-banner-lg.jpg", <!-- pc 이미지 -->
+                "visual2": "/lg5-common/images/dummy/@img-product-banner.jpg", <!-- 모바일 이미지 -->
+                "title": "새출발을 위한 혼수 지원, 2020 올 뉴 웨딩 페스타",
+                "copy": "2020 올 뉴 웨딩 페스타 행사 모델 동시 구매 시, 최대 250만원 상당 혜택!",
+                "button": "자세히 보기"
             }
-        ])
-    </ul>
-</div>
+        }
+    ])
+</ul>
 <!-- // page 내 작업 방식 -->
 </xmp>
 </div>
