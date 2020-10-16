@@ -1,0 +1,26 @@
+{
+    "status": "success",
+    "message": null,
+    "data": [
+        {
+            "productList": [
+                {
+                    "modelId": "MD07514557",
+                    "modelName": "",
+                    "userFriendlyName": "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
+                    "siblingModels": [{
+                        "modelName": "LRMVS3006D",
+                        "siblingCode": "Black-Stainless-Steel",
+                        "siblingValue": "Black Stainless Steel",
+                        "modelId": "MD07504022"
+                    }, {
+                        "modelName": "LRMVS3006S",
+                        "siblingCode": "stainless-steel",
+                        "siblingValue": "Stainless Steel",
+                        "modelId": "MD07504171"
+                    }]
+                }
+            ]
+        }
+    ]
+}

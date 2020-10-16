@@ -99,7 +99,7 @@
                     <!-- //로그인/계약 제품 보유 케이스 -->
 
                     <!-- 케어솔루션 -->
-                    <div class="care-solution-wrap">
+                    <div class="care-solution-wrap" data-prod-list="/lg5-common/data-ajax/caresolution/carePlanerProductList.json">
                         <div class="fixed-tab-wrap"><!-- 스크롤 시 탭 고정 영역 -->
                             <div class="inner">
                                 <div class="tabs-wrap btn-type">
@@ -111,15 +111,15 @@
 
                                 <div class="tabs-wrap border-type ui_tab">
                                     <ul class="tabs">
-                                        <li class="on"><a href="#n">정수기<em class="blind">선택됨</em></a></li>
-                                        <li><a href="#n">얼음정수기 냉장고</a></li>
-                                        <li><a href="#n">맥주제조기</a></li>
-                                        <li><a href="#n">공기청정기</a></li>
-                                        <li><a href="#n">건조기</a></li>
-                                        <li><a href="#n">스타일러</a></li>
-                                        <li><a href="#n">전기레인지</a></li>
-                                        <li><a href="#n">식기세척기</a></li>
-                                        <li><a href="#n">안마의자</a></li>
+                                        <li class="on"><a href="#n" data-cate-id="정수기">정수기<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#n" data-cate-id="얼음정수기 냉장고">얼음정수기 냉장고</a></li>
+                                        <li><a href="#n" data-cate-id="맥주제조기">맥주제조기</a></li>
+                                        <li><a href="#n" data-cate-id="공기청정기">공기청정기</a></li>
+                                        <li><a href="#n" data-cate-id="건조기">건조기</a></li>
+                                        <li><a href="#n" data-cate-id="스타일러">스타일러</a></li>
+                                        <li><a href="#n" data-cate-id="전기레인지">전기레인지</a></li>
+                                        <li><a href="#n" data-cate-id="식기세척기">식기세척기</a></li>
+                                        <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -128,11 +128,11 @@
                         <div class="care-select-wrap">
                             <div class="sort-select-wrap">
                                 <select class="ui_selectbox" id="select1" title="리스트 정렬 순서 선택">
-                                    <option value="">인기순</option>
-                                    <option value="">최신순</option>
-                                    <option value="">가격 높은순</option>
-                                    <option value="">가격 낮은순</option>
-                                    <option value="">리뷰 많은순</option>
+                                    <option value="popular">인기순</option>
+                                    <option value="latest">최신순</option>
+                                    <option value="highlyprice">가격 높은순</option>
+                                    <option value="lowprice">가격 낮은순</option>
+                                    <option value="review">리뷰 많은순</option>
                                 </select>
                             </div>
                         </div>
@@ -633,100 +633,5 @@
         
         @@include('./common/footer.html')
     </div> 
-    
-    <script>
-        $(function(){
-            vcui.require(['ui/carousel'], function () {
-                $('.ui_carousel_slider').vcCarousel({
-                    infinite: false,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    variableWidth : true,
-                    responsive: [
-                        {
-                            breakpoint: 10000,
-                            settings: {
-                                infinite: false,
-                                variableWidth : false,
-                                dots: false,
-                                slidesToShow: 3,
-                                slidesToScroll: 3
-                                
-                            }
-                        },
-                        {
-                            breakpoint: 1024,
-                            settings: {
-                                infinite: false,
-                                variableWidth : false,
-                                dots: false,
-                                slidesToShow: 2, 
-                                slidesToScroll: 2
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                infinite: false,
-                                variableWidth : true,
-                                dots: false,
-                                slidesToShow: 1, 
-                                slidesToScroll: 1
-                            }
-                        }
-                    ]
-                });
-            });
-
-            $('.ui_carousel_slider2').vcCarousel({
-                infinite: false,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                variableWidth : false,
-                speed : 200,
-                dots: false
-            });
-
-            $('.ui_carousel_slider3').vcCarousel({
-                infinite: false,
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                variableWidth : true,
-                responsive: [
-                    {
-                        breakpoint: 10000,
-                        settings: {
-                            infinite: false,
-                            variableWidth : false,
-                            dots: false,
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                            
-                        }
-                    },
-                    {
-                            breakpoint: 1024,
-                            settings: {
-                                infinite: false,
-                                variableWidth : false,
-                                dots: false,
-                                slidesToShow: 1, 
-                                slidesToScroll: 1
-                            }
-                        },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            infinite: false,
-                            variableWidth : true,
-                            dots: false,
-                            slidesToShow: 1, 
-                            slidesToScroll: 1
-                        }
-                    }
-                ]
-            });
-        });
-    </script>
 </body>
 </html>

@@ -386,14 +386,6 @@
         }
     }
 
-    .input-wrap {
-        @include mobile {
-            textarea {
-                padding: 16px 12px;
-            }
-        }
-    }
-
     .note-box {
         padding: 24px;
         border: solid 1px #dddddd;
@@ -421,46 +413,6 @@
             padding: 44px 20px;
         }
     }
-
-    .star-rating {
-        &-select {
-        }
-        .br-widget {
-            height: 28px;
-            white-space: nowrap;
-            a {
-                text-decoration: none;
-                height: 24px;
-                width: 24px;
-                float: left;
-                font-size: 23px;
-                margin-right: 5px;
-                &::after {
-                    content: "";
-                    width: 100%;
-                    height: 100%;
-                    background: url(/lg5-common/images/star-rating-off.svg) no-repeat center;
-                    background-size: 100%;
-                    display: block;
-                }
-                &.br-selected,
-                &.br-active {
-                    &::after {
-                        background-image: url(/lg5-common/images/star-rating-on.svg);
-                    }
-                }
-            }
-            .br-current-rating {
-                float: left;
-                display: block;
-                color: #222;
-                font-size: 16px;
-                line-height: 1.5;
-                margin-left: 8px;
-            }
-        }
-    }
-
     .scrollview-wrap {
         padding-right: 8px;
     }
@@ -605,108 +557,5 @@
 
     .align-center {
         text-align: center !important;
-    }
-}
-
-.popup-wrap {
-    .pop-conts.support {
-        margin-right: 8px;
-        padding-right: 48px;
-        overflow-y: scroll;
-        &::-webkit-scrollbar {
-            width: 8px;
-        }
-        &::-webkit-scrollbar-track {
-            background-color: transparent;
-        }
-        &::-webkit-scrollbar-thumb {
-            border-radius: 4px;
-            background-color: #ccc;
-        }
-        &::-webkit-scrollbar-button {
-            width: 0;
-            height: 0;
-        }
-        .text-box {
-            font-size: 14px;
-            margin-bottom: 0;
-        }
-        .paragraph {
-            &-1 {
-                margin-top: 18px;
-            }
-        }
-        [class^="btn-"] {
-            font-size: inherit;
-        }
-        &-section {
-            margin-top: 32px;
-            &.type-A {
-                margin-top: 64px;
-            }
-            &.top-border {
-                padding-top: 32px;
-                margin-top: 28px;
-                border-top: 1px solid #ddd;
-            }
-            &:first-child {
-                margin-top: 0;
-            }
-            @include mobile {
-                &.type-A {
-                    margin-top: 56px;
-                }
-            }
-        }
-        .tbl {
-            margin-top: 16px;
-        }
-        &.align-left {
-            text-align: left;
-        }
-        &.no-footer {
-            margin-bottom: 8px;
-            padding-bottom: 48px;
-        }
-
-        @include mobile {
-            margin-right: 4px;
-            padding-right: 16px;
-            height: calc(100vh - 135px);
-            &.no-footer {
-                height: calc(100vh - 75px);
-            }
-        }
-    }
-    &.type-A {
-        max-width: 630px;
-    }
-    &.type-B {
-        max-width: 848px;
-        width: 100%;
-    }
-    &.type-C {
-        max-width: 520px;
-        width: 100%;
-    }
-    .btn-group {
-        margin-top: 0;
-    }
-    @include mobile {
-        // max-width: calc(100% - 48px);
-        .pop-conts {
-            .modal-gray-box {
-                padding: 40px 20px;
-                &-title {
-                    font-size: 16px;
-                    padding-bottom: 32px;
-                    margin-bottom: 32px;
-                    text-align: center;
-                    .tit {
-                        font-size: inherit;
-                    }
-                }
-            }
-        }
     }
 }
