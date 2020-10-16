@@ -4,7 +4,7 @@
     console.log("lgkorUI start!!!");
 
     $.fn.buildCommonUI = function () {
-        vcui.require([        
+        vcui.require([
                             'ui/selectbox',
                             'ui/calendar',
                             'ui/accordion',
@@ -29,7 +29,6 @@
     
             this.find('.ui_calendar').vcCalendar();
             this.find('.ui_accordion').vcAccordion();        
-            this.find('.ui_selectbox').vcSelectbox();
             this.find('.ui_dropdown').vcDropdown();
             this.find('.ui_tab').vcTab();
             this.find('.ui_carousel').vcCarousel();
@@ -40,6 +39,24 @@
             this.find('.ui_radio_visible').vcRadioShowHide();
             this.find('.ui_input_clearbutton').vcInputClearButton();
             this.find('.ui_star_rating').vcStarRating();
+
+            this.find('.ui_selectbox').vcSelectbox({
+                events:{
+                    selectboxtoggle: function(e){
+                        var selectwrap = $(e.currentTarget).siblings('.ui-selectbox-wrap');
+                        var isOpen = selectwrap.hasClass('on');
+                        if(isOpen){
+                            var selectlist = selectwrap.find("> .ui-selectbox-list");
+                            var margintop = selectlist.css('margin-top');
+                            if(parseInt(margintop) < 0){
+                                if(!selectwrap.hasClass('type_up')) selectwrap.addClass('type_up')
+                            }
+                        } else{
+                            selectwrap.removeClass("type_up");
+                        }
+                    }
+                }
+            });
 
             this.find('.ui_wide_slider').vcCarousel({
                 autoplay:true,
@@ -165,8 +182,6 @@
                 "ui/imageSwitch"
             ], function (ResponsiveImage, BreakpointDispatcher) {
                 
-                
-    
                 new BreakpointDispatcher({
                     matches: {
                         '(min-width: 768px)' : function(mq) {
@@ -297,6 +312,8 @@
                 // }, 200));
                 ///////////////////////////////////////////////////////////////////////
             });
+
+            self.loadKakaoSdkForShare();
         },
 
         //top 버튼 컨틀롤...
@@ -321,12 +338,12 @@
             //리스트 height 재설정
             $('body').find('.ui_flexible_height').each(function(idx, item){
                 var maxheight = 0;
-                $(item).find('> li').each(function(cdx, child){
+                $(item).children().each(function(cdx, child){
                     var flexiblebox = $(child).find('.ui_flexible_box .ui_flexible_cont');
                     maxheight = Math.max(maxheight, flexiblebox.outerHeight(true));
                 });
 
-                $(item).find('> li .ui_flexible_box').height(maxheight);
+                $(item).find('.ui_flexible_box').height(maxheight);
             });
         },
 
@@ -418,6 +435,41 @@
             $(window).trigger("changeStorageData");
 
             return returnValue;
+        },
+
+        loadKakaoSdkForShare: function(callback){
+            var self = this;
+
+            if(window.kakao){
+                if(callback != null) callback();
+            }else{
+                var script = document.createElement('script');
+        
+                script.onload = function () {
+                    if(callback != null){
+                        callback();
+                        return;
+                    }
+                    self.loadCommonShareUI();
+                };
+                script.onerror = function(e){ 
+                    alert('kakao api를 로드할수 없습니다.');
+                }
+                script.src = '//developers.kakao.com/sdk/js/kakao.min.js';        
+                document.head.appendChild(script); 
+            }
+        },
+
+        loadCommonShareUI: function(){
+            vcui.require([
+                'helper/sharer'
+            ], function (Sharer) {
+                // 공유하기 헬퍼 빌드
+                Sharer.init({
+                    selector: '.sns-list > li >  a',
+                    attr: 'data-link-name' // sns서비스명을 가져올 속성
+                });
+            });
         }
     }
     

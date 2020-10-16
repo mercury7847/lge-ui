@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "기획전"
+            })
+
+            <!-- event -->
+            <div class="contents event">
+                <!-- main visual slider -->
+                <div class="visual-wrap">
+                    @@include('./common/modules/carousel.html', {
+                        "mainSlideType" : true,
+                        "indiArr" : [
+                            "LG Q92 5G 구매혜택1", "LG Q92 5G 구매혜택2", "LG Q92 5G 구매혜택3"
+                        ],
+                        "slideArr" : [
+                            {
+                                "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
+                                "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
+                                "tit" : "<small>나의 첫번째 5G 폰</small>LG Q92 5G 구매혜택",
+                                "date" : "2020.08.01~2020.09.31",
+                                "titNum" : "tit01"
+                            },
+                            {
+                                "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
+                                "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
+                                "tit" : "<small>나의 첫번째 5G 폰</small>LG Q92 5G 구매혜택2",
+                                "date" : "2020.08.01~2020.09.31",
+                                "titNum" : "tit02"
+                            },
+                            {
+                                "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
+                                "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
+                                "tit" : "<small>나의 첫번째 5G 폰</small>LG Q92 5G 구매혜택3",
+                                "date" : "2020.08.01~2020.09.31",
+                                "titNum" : "tit03"
+                            }
+                        ]
+                    })
+                </div>
+                <!-- // main visual slider -->
+
+                <div class="main-wrap">
+                    <div class="box-list event-type">
+                        <ul class="box-list-inner">
+                            @@loop('./common/modules/list-box.html', [
+                                {
+                                    "img" : "dummy/@img-event01.jpg",
+
+                                    "title-hd" : "기획전 제목",
+                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                    "date-hd" : "기획전 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event02.jpg",
+
+                                    "title-hd" : "기획전 제목",
+                                    "title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
+                                    "date-hd" : "기획전 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event03.jpg",
+
+                                    "title-hd" : "기획전 제목",
+                                    "title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
+                                    "date-hd" : "기획전 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event01.jpg",
+
+                                    "title-hd" : "기획전 제목",
+                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                    "date-hd" : "기획전 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event02.jpg",
+
+                                    "title-hd" : "기획전 제목",
+                                    "title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
+                                    "date-hd" : "기획전 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event03.jpg",
+
+                                    "title-hd" : "기획전 제목",
+                                    "title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
+                                    "date-hd" : "기획전 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event01.jpg",
+
+                                    "title-hd" : "기획전 제목",
+                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                    "date-hd" : "기획전 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event02.jpg",
+
+                                    "title-hd" : "기획전 제목",
+                                    "title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
+                                    "date-hd" : "기획전 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "img" : "dummy/@img-event03.jpg",
+
+                                    "title-hd" : "기획전 제목",
+                                    "title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
+                                    "date-hd" : "기획전 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                }
+                            ])
+                        </ul>
+                    </div> 
+                </div>
+            </div>
+            <!-- // event -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>     
+</body>
+</html>

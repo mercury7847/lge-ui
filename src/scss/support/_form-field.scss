@@ -6,38 +6,11 @@
     max-width:none;
 }
 
-/* radio */
-.rdo-wrap {
-    input {
-        & + label {
-            &:before {
-                border-color:#ddd;
-            }
-            &:after {
-                top:7px;
-                left:7px;
-                width:10px;
-                height:10px;
-                border:0 none;
-                border-radius:50%;
-                background:#ddd;
-            }
-        }
-        &:checked + label {
-            &:before {
-                border-color:#ec455a;
-                background-color:#ec455a;
-            }
-            &:after {
-                background-color:#fff;
-            }
-        }
-    }
-}
-
 .rdo-btn-wrap {
     display: inline-block;
     font-size: 0;
+    max-width: 260px;
+    width: calc(25% - 7px);
     input {
         & + label {
             font-size: 16px;
@@ -46,8 +19,7 @@
             text-align: center;
             color: #808080;
             border-radius: 8px;
-            border: solid 1px #dddddd;
-            width: 260px;
+            border: solid 1px #ddd;
             padding: 28px 0;
             display: block;
             background-color: #fff;
@@ -69,29 +41,58 @@
     }
 }
 
+.check-list {
+    margin:0 0 -32px -64px;
+    font-size:0;
+    .rdo-wrap {
+        margin-bottom:32px;
+        padding-left:64px;
+    }
+    @include mobile {
+        margin:0;
+        .rdo-wrap {
+            width:100%;
+            margin:16px 0 0;
+            padding:0;
+            &:first-child {
+                margin-top:0;
+            }
+        }
+        &.type-col-2 {
+            .rdo-wrap {
+                width:50%;
+                margin:0;
+                &:nth-child(n+3) {
+                    margin-top: 16px;
+                }
+            }
+        }
+    }
+}
+
 /* form field */
 .field-wrap {
     .row {
-        margin:32px -4px 0;
+        margin:32px 0 0;
         &:first-child {
             margin-top:0;
         }
         @include clearfix;
         @include mobile {
-            margin-top:20px;
+            margin-top:40px;
         }
     }
     .field-title {
-        margin-bottom:8px;
+        margin-bottom:16px;
         .tit {
             display:inline-block;
-            color:#616161;
             font-size:14px;
             font-weight:400;
             line-height:20px;
             vertical-align:top;
         }
         @include mobile {
+            margin-bottom:12px;
             .tit {
                 line-height:18px;
             }
@@ -105,11 +106,28 @@
                 margin-top:8px;
             }
         }
+        .input-wrap, .select-wrap {
+            float:left;
+            width:calc(50% - 4px);
+            & + .input-wrap, & + .select-wrap {
+                float:right;
+            }
+            @include mobile {
+                float:none;
+                width:100%;
+                & + .input-wrap, & + .select-wrap {
+                    float:none;
+                    margin-top:8px;
+                }
+            }
+        }
     }
     .field-item {
         float:left;
-        width:50%;
-        padding:0 4px;
+        width:calc(50% - 4px);
+        & + .field-item {
+            float:right;
+        }
         &.block {
             float:none;
             width:100%;
@@ -122,37 +140,8 @@
             float:none;
             width:100%;
             & + .field-item {
-                margin-top:28px;
-            }
-        }
-    }
-    .check-list {
-        margin:0 -32px;
-        font-size:0;
-        .rdo-wrap {
-            padding:0 32px;
-        }
-        @include mobile {
-            width: 100%;
-            &.type-A {
-                .rdo-wrap {
-                    width: 100%;
-                    padding-right: 0;
-                    margin-top: 16px;
-                    &:first-child {
-                        margin-top: 0;
-                    }
-                }
-            }
-            &.type-col-2 {
-                margin: 0;
-                .rdo-wrap {
-                    width: 50%;
-                    padding: 0;
-                    &:nth-child(n+3) {
-                        margin-top: 16px;
-                    }
-                }
+                float:none;
+                margin-top:40px;
             }
         }
     }

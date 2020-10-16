@@ -25,6 +25,7 @@ var res = {
 			"Rangeslider" : ["./wsg/guide_rangeslider.html","","검수완료"],
 			"Flag" : ["./wsg/guide_flag.html","","검수완료"],
 			"SNS Share" : ["./wsg/guide_sns_share.html","","검수완료"],
+			"Filter" : ["./wsg/guide_filter.html","","검수완료"]
 		}
 	},
 	"Front" : {
@@ -84,17 +85,23 @@ var res = {
 			"KRP0019_Social Share_Dynamic" : ["/html/components/KRP0019.html","","진행중"],
 			"KRP0020_Sitemap_Dynamic" : ["/html/components/KRP0020.html","","검수완료"],
 			"KRP0021_Category module for store home" : ["/html/components/KRP0021.html","","진행중"],
+			"KRP0024_Best review" : ["/html/components/KRP0024.html","","진행중"],
 			"KRP0025_event_list_for_category_home" : ["/html/components/KRP0025.html","","진행중"],
 			"KRP0027_Please note" : ["/html/components/KRP0027.html","","진행중"],
 			"KRP0028_Event list" : ["/html/components/KRP0028.html","","진행중"],
 		},
 		"Page" : {
 			"케어솔루션(SLC)" : {
+				"케어솔루션 제품안내" : {
+					"맥주제조기_음주연령확인" : ["/html/SLC/MKTF2004.html","","진행중"]
+				},
 				"케어솔루션안내" : {
 					"케어플래너" : ["/html/SLC/RMSF2003.html","","진행중"],
 					"케어플래너_총 개수 8개 선택 시도 시" : ["/html/SLC/RMSF-popup01.html","","진행중"],
 					"케어플래너_동일 카테고리 내 제품 선택이 정수기 3대, 정수기 외 2대를 초과한 경우" : ["/html/SLC/RMSF-popup02.html","","진행중"],
 					"케어플래너_비로그인 상태에서 [견적 확인하기] 버튼 선택 시" : ["/html/SLC/RMSF-popup03.html","","진행중"],
+					"케어플래너_상세견적확인" : ["/html/SLC/RMSF2020.html","","진행중"],
+					// "케어십 가능 제품" : ["/html/SLC/RMSF2004.html","","진행중"],
 				},
 			},
 			"이벤트/멤버십(BMC)" : {
@@ -108,6 +115,10 @@ var res = {
 					"PC 모델명 및 시리얼번호 확인 방법" : ["/html/BMC/MKT4017.html","","진행중"],
 					"이벤트참여_미리미리페스티벌" : ["/html/BMC/MKT4012.html","","진행중"],
 					"LG전자 및 LG전자 BEST SHOP 판매대리점 보기" : ["/html/BMC/MKT4013.html","","진행중"],
+				},
+				"기획전" : {
+					"리스트" : ["/html/BMC/OBS4001.html","","진행중"],
+					"상세_기본타입" : ["/html/BMC/OBS4002.html","","진행중"],
 				},
 				"멤버십" : {
 					"멤버십 메인" : ["/html/BMC/ACC4001.html","","검수요청"],

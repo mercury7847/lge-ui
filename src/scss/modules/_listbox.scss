@@ -30,14 +30,9 @@
             }
             .list-inner {
                 position:relative;
-                padding-bottom:76px;
                 border-radius:4px;
                 background:#fff;
                 overflow:hidden;
-                @include mobile {
-                    padding-bottom:20px;
-                    //box-shadow:3px 4px 15px 0 rgba(#000, .12);
-                }
                 .thumb {
                     display:block;
                     position:relative;
@@ -60,9 +55,8 @@
                 }
                 .info {
                     padding:24px;
-                    padding-bottom:0;
                     @include mobile {
-                        padding:16px 20px 0;
+                        padding:16px 20px 20px;
                     }
                     .flag-wrap {
                         margin-bottom:8px;
@@ -76,7 +70,7 @@
                         font-weight:700;
                         @include textClipClamp(2);
                         @include mobile {
-                            height:18px;
+                            height:36px;
                             font-size:14px;
                             line-height:18px;
                         }
@@ -102,6 +96,7 @@
                         }
                     }
                     .date {
+                        margin-top:24px;
                         height:24px;
                         color:#222;
                         font-size:16px;
@@ -109,7 +104,6 @@
                         @include textClipClamp(1);
                         @include mobile {
                             height:16px;
-                            margin-top:4px;
                             font-size:12px;
                             line-height:16px;
                         }
@@ -207,41 +201,19 @@
                         }
                     }
                 }
-                .end-flag {
+                .big-flag {
                     position:absolute;
                     top:0;
                     right:0;
-                    width:60px;
-                    height:60px;
-                    padding:10px 0 10px 5px;
-                    border-radius:0 4px 0 4px;
-                    background-image:linear-gradient(#F04E3E, #EC455A);
-                    color:#fff;
-                    font-size:12px;
-                    letter-spacing:5px;
-                    line-height:20px;
-                    text-align:center;
-                    z-index:10;
-                    @include mobile {
-                        width:48px;
-                        height:48px;
-                        padding:8px 0 8px 4px;
-                        font-size:10px;
-                        line-height:16px;
-                        letter-spacing:4px;
-                    }
                 }
             }
             .btn {
                 position:absolute;
                 bottom:24px;
-                left:24px;
+                right:24px;
                 @include mobile {
-                    position:relative;
-                    bottom:0;
-                    left:0;
-                    margin-left:20px;
-                    margin-top:12px;
+                    bottom:20px;
+                    right:20px;
                 }
             }
             .btn-area {
@@ -258,6 +230,27 @@
                 .btn {
                     position: static;
                     width: calc(100% - 75px);
+                }
+            }
+        }
+    }
+
+    &.event-type {
+        max-width:1284px;
+        margin:0 auto;
+        overflow:hidden;
+        .lists {
+            .list-inner {
+                .info {
+                    .tit:first-child {
+                        margin-top:8px;
+                        @include mobile {
+                            margin-top:0;
+                        }
+                    }
+                }
+                .date {
+                    padding-right:124px;
                 }
             }
         }

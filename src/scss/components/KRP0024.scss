@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRP0024 {
+	.title {
+		margin-bottom:36px;
+		font-size:24px;
+		line-height:32px;
+		@include textClipClamp(1);
+		@include mobile {
+			margin-bottom:18px;
+			font-size:16px;
+			line-height:24px;
+		}
+		* {
+			font-size:inherit;
+			line-height:inherit;
+		}
+	}
+
+	.slide-wrap {
+		overflow:hidden;
+		padding-bottom:34px;
+		.indi-wrap {
+			bottom:0;
+		}
+		.slide-content {
+			margin:0 -10px;
+			.slide-conts {
+				padding:0 10px;
+			}
+		}
+	}
+
+	.best-review-wrap {
+		overflow:hidden;
+		border-radius:4px;
+		& > .inner {
+			display:flex;
+			@include mobile {
+				flex-direction:column;
+			}
+			.review-visual {
+				display:flex;
+				flex-basis:49%;
+				@include mobile {
+					flex-basis:auto;
+				}
+				& .bg {
+					flex-grow:1;
+					background: {
+						position:center center;
+						size:cover;
+					}
+					@include mobile {
+						height:400px;
+					}
+				}
+			}
+			.review-info {
+				flex-grow:1;
+				flex-basis:51%;
+				padding:56px;
+				background-color:#dde7e6;
+				@include mobile {
+					flex-grow:0;
+					flex-basis:auto;
+					padding:40px 24px 40px 28px;
+				}
+				.info-title {
+					display:block;
+					font-weight:700;
+					font-size:24px;
+					line-height:32px;
+					@include textClipClamp(2);
+					@include mobile {
+						font-size:18px;
+						line-height:22px;
+					}
+				}
+				.info-txt {
+					display:block;
+					margin-top:16px;
+					font-weight:400;
+					font-size:16px;
+					line-height:24px;
+					@include textClipClamp(3);
+					@include mobile {
+						font-size:14px;
+						line-height:18px;
+					}
+				}
+				.info-bot-area {
+					margin-top:56px;
+					@include mobile {
+						margin-top:28px;
+					}
+				}
+			}
+		}
+	} //.best-review-wrap
+
+}
