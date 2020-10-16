@@ -65,7 +65,7 @@
                 </div>
                 <!-- // tabs -->
 
-                <div class="cont-wrap type2"><!-- css 수정 -->
+                <div class="main-wrap">
                     <div class="sorting-filter">
                         <div class="sort-left">
                             <div class="sort-select-wrap left">
@@ -94,76 +94,16 @@
                     </div>
                     
                     <!-- DOM 구조 동일화 수정 -->
-                    <div class="box-list">
-                        <ul class="box-list-inner events">
+                    <div class="box-list event-type">
+                        <ul class="box-list-inner">
                             @@loop('./common/modules/list-box.html', [
                                 {
                                     "img" : "dummy/@img-event01.jpg",
 
-                                    "flagN1" : true,
-                                    "flag1" : "제품 카테고리",
-                                    "flag1-1" : "TV",
-                                    "flag2" : "제품 카테고리",
-                                    "flag2-1" : "프로젝터",
-                                    
-                                    "flagInfo1" : true,
-                                    "flagInf1" : "이벤트 구분",
-                                    "flagInf1-1" : "매장",
-                                    "flagInf2" : "이벤트 유형",
-                                    "flagInf2-1" : "구매혜택",
-
-                                    "title-hd" : "이벤트 제목",
-                                    "title" : "2020 NEW 올레드와 함께하는 <em>홈라이프 홈라이프</em>",
-                                    "date-hd" : "이벤트 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-
-                                },
-                                {
-                                    "img" : "dummy/@img-event01.jpg",
-
-                                    "flagN1" : true,
-                                    "flag1" : "제품 카테고리",
-                                    "flag1-1" : "TV",
-                                    "flag2" : "제품 카테고리",
-                                    "flag2-1" : "프로젝터",
-                                    
-                                    "flagInfo1" : true,
-                                    "flagInf1" : "이벤트 구분",
-                                    "flagInf1-1" : "매장",
-                                    "flagInf2" : "이벤트 유형",
-                                    "flagInf2-1" : "구매혜택",
-                                    "title-hd" : "이벤트 제목",
-                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                    "date-hd" : "이벤트 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-                                },
-                                {
-                                    "img" : "dummy/@img-event01.jpg",
-                                    
-                                    "flagN1" : true,
-                                    "flag1" : "제품 카테고리",
-                                    "flag1-1" : "TV",
-                                    "flag2" : "제품 카테고리",
-                                    "flag2-1" : "프로젝터",
-                                    
-                                    "flagInfo1" : true,
-                                    "flagInf1" : "이벤트 구분",
-                                    "flagInf1-1" : "매장",
-                                    "flagInf2" : "이벤트 유형",
-                                    "flagInf2-1" : "구매혜택",
-                                    "title-hd" : "이벤트 제목",
-                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                    "date-hd" : "이벤트 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-                                },
-                                {
-                                    "img" : "dummy/@img-event01.jpg",
-
-                                    "flagN1" : true,
-                                    "flag1" : "제품 카테고리",
-                                    "flag1-1" : "TV",
-                                    "flag2" : "제품 카테고리",
-                                    "flag2-1" : "프로젝터",
+                                    "flagArr" : [
+                                        { "blind" : "제품 카테고리", "txt" : "TV" },
+                                        { "blind" : "제품 카테고리", "txt" : "프로젝터" }
+                                    ],
                                     
                                     "flagInfo1" : true,
                                     "flagInf1" : "이벤트 구분",
@@ -175,45 +115,164 @@
                                     "title" : "2020 NEW 올레드와 함께하는 홈라이프",
                                     "date-hd" : "이벤트 기간",
                                     "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "stateFlag" : "종료된<br>이벤트",
+                                    "img" : "dummy/@img-event02.jpg",
 
+                                    "flagArr" : [
+                                        { "blind" : "제품 카테고리", "txt" : "프로젝터" }
+                                    ],
+                                    
+                                    "flagInfo1" : true,
+                                    "flagInf1" : "이벤트 구분",
+                                    "flagInf1-1" : "온라인",
+                                    "flagInf2" : "이벤트 유형",
+                                    "flagInf2-1" : "사은품",
+
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "stateFlag" : "종료된<br>이벤트",
+                                    "img" : "dummy/@img-event03.jpg",
+
+                                    "flagArr" : [
+                                        { "blind" : "제품 카테고리", "txt" : "에어컨" }
+                                    ],
+                                    
+                                    "flagInfo1" : true,
+                                    "flagInf1" : "이벤트 구분",
+                                    "flagInf1-1" : "온라인",
+                                    "flagInf2" : "이벤트 유형",
+                                    "flagInf2-1" : "사은품",
+
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30",
+
+                                    "btnOnly" : "당첨자 발표"
                                 },
                                 {
                                     "img" : "dummy/@img-event01.jpg",
 
-                                    "flagN1" : true,
-                                    "flag1" : "제품 카테고리",
-                                    "flag1-1" : "TV",
-                                    "flag2" : "제품 카테고리",
-                                    "flag2-1" : "프로젝터",
+                                    "flagArr" : [
+                                        { "blind" : "제품 카테고리", "txt" : "TV" },
+                                        { "blind" : "제품 카테고리", "txt" : "프로젝터" }
+                                    ],
                                     
                                     "flagInfo1" : true,
                                     "flagInf1" : "이벤트 구분",
                                     "flagInf1-1" : "매장",
                                     "flagInf2" : "이벤트 유형",
                                     "flagInf2-1" : "구매혜택",
+
                                     "title-hd" : "이벤트 제목",
                                     "title" : "2020 NEW 올레드와 함께하는 홈라이프",
                                     "date-hd" : "이벤트 기간",
                                     "date" : "2020.08.01~2020.09.30"
                                 },
                                 {
-                                    "img" : "dummy/@img-event01.jpg",
+                                    "stateFlag" : "종료된<br>이벤트",
+                                    "img" : "dummy/@img-event02.jpg",
+
+                                    "flagArr" : [
+                                        { "blind" : "제품 카테고리", "txt" : "프로젝터" }
+                                    ],
                                     
-                                    "flagN1" : true,
-                                    "flag1" : "제품 카테고리",
-                                    "flag1-1" : "TV",
-                                    "flag2" : "제품 카테고리",
-                                    "flag2-1" : "프로젝터",
+                                    "flagInfo1" : true,
+                                    "flagInf1" : "이벤트 구분",
+                                    "flagInf1-1" : "온라인",
+                                    "flagInf2" : "이벤트 유형",
+                                    "flagInf2-1" : "사은품",
+
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "stateFlag" : "종료된<br>이벤트",
+                                    "img" : "dummy/@img-event03.jpg",
+
+                                    "flagArr" : [
+                                        { "blind" : "제품 카테고리", "txt" : "에어컨" }
+                                    ],
+                                    
+                                    "flagInfo1" : true,
+                                    "flagInf1" : "이벤트 구분",
+                                    "flagInf1-1" : "온라인",
+                                    "flagInf2" : "이벤트 유형",
+                                    "flagInf2-1" : "사은품",
+
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30",
+
+                                    "btnOnly" : "당첨자 발표"
+                                },
+                                {
+                                    "img" : "dummy/@img-event01.jpg",
+
+                                    "flagArr" : [
+                                        { "blind" : "제품 카테고리", "txt" : "TV" },
+                                        { "blind" : "제품 카테고리", "txt" : "프로젝터" }
+                                    ],
                                     
                                     "flagInfo1" : true,
                                     "flagInf1" : "이벤트 구분",
                                     "flagInf1-1" : "매장",
                                     "flagInf2" : "이벤트 유형",
                                     "flagInf2-1" : "구매혜택",
+
                                     "title-hd" : "이벤트 제목",
                                     "title" : "2020 NEW 올레드와 함께하는 홈라이프",
                                     "date-hd" : "이벤트 기간",
                                     "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "stateFlag" : "종료된<br>이벤트",
+                                    "img" : "dummy/@img-event02.jpg",
+
+                                    "flagArr" : [
+                                        { "blind" : "제품 카테고리", "txt" : "프로젝터" }
+                                    ],
+                                    
+                                    "flagInfo1" : true,
+                                    "flagInf1" : "이벤트 구분",
+                                    "flagInf1-1" : "온라인",
+                                    "flagInf2" : "이벤트 유형",
+                                    "flagInf2-1" : "사은품",
+
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30"
+                                },
+                                {
+                                    "stateFlag" : "종료된<br>이벤트",
+                                    "img" : "dummy/@img-event03.jpg",
+
+                                    "flagArr" : [
+                                        { "blind" : "제품 카테고리", "txt" : "에어컨" }
+                                    ],
+                                    
+                                    "flagInfo1" : true,
+                                    "flagInf1" : "이벤트 구분",
+                                    "flagInf1-1" : "온라인",
+                                    "flagInf2" : "이벤트 유형",
+                                    "flagInf2-1" : "사은품",
+
+                                    "title-hd" : "이벤트 제목",
+                                    "title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
+                                    "date-hd" : "이벤트 기간",
+                                    "date" : "2020.08.01~2020.09.30",
+
+                                    "btnOnly" : "당첨자 발표"
                                 }
                             ])
                         </ul>

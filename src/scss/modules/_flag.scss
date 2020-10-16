@@ -43,3 +43,78 @@
 		}
 	}
 }
+
+// design flag
+.big-flag {
+	display:inline-block;
+	width:60px;
+	height:60px;
+	padding:10px 0;
+	font-size:0;
+	font-weight:500;
+	text-align:center;
+	z-index:10;
+	vertical-align:top;
+	&.left {
+		border-radius:4px 0 4px 0;
+	}
+	&.right {
+		border-radius:0 4px 0 4px;
+	}
+	@include mobile {
+		width:48px;
+		height:48px;
+		padding:8px 0;
+	}
+	span {
+		display:inline-block;
+		font-size:12px;
+		line-height:20px;
+		vertical-align:top;
+		@include mobile {
+			font-size:10px;
+			line-height:16px;
+		}
+	}
+	&.type1 {
+		span {
+			padding-left:5px;
+			letter-spacing:5px;
+			@include mobile {
+				padding-left:2px;
+				letter-spacing:2px;
+			}
+		}
+	}
+	&.type2 {
+		span {
+			padding-left:2px;
+			letter-spacing:2px;
+			@include mobile {
+				padding-left:1px;
+				letter-spacing:1px;
+			}
+		}
+		em {
+			display:inline-block;
+			margin-left:-2px;
+			font-size:16px;
+			font-weight:700;
+			line-height:20px;
+			letter-spacing:0;
+			vertical-align:top;
+			@include mobile {
+				font-size:14px;
+				line-height:16px;
+			}
+		}
+	}
+	&.red {
+		background-image:linear-gradient(#F04E3E, #EC455A);
+		color:#fff;
+	}
+	&.green {
+		background:#65c467;
+		color:#fff;
+	}
+}
