@@ -25,6 +25,7 @@ var res = {
 			"Rangeslider" : ["./wsg/guide_rangeslider.html","","검수완료"],
 			"Flag" : ["./wsg/guide_flag.html","","검수완료"],
 			"SNS Share" : ["./wsg/guide_sns_share.html","","검수완료"],
+			"Filter" : ["./wsg/guide_filter.html","","검수완료"]
 		}
 	},
 	"Front" : {
@@ -91,12 +92,15 @@ var res = {
 		},
 		"Page" : {
 			"케어솔루션(SLC)" : {
+				"케어솔루션 제품안내" : {
+					"맥주제조기_음주연령확인" : ["/html/SLC/MKTF2004.html","","진행중"]
+				},
 				"케어솔루션안내" : {
 					"케어플래너" : ["/html/SLC/RMSF2003.html","","진행중"],
 					"케어플래너_총 개수 8개 선택 시도 시" : ["/html/SLC/RMSF-popup01.html","","진행중"],
 					"케어플래너_동일 카테고리 내 제품 선택이 정수기 3대, 정수기 외 2대를 초과한 경우" : ["/html/SLC/RMSF-popup02.html","","진행중"],
 					"케어플래너_비로그인 상태에서 [견적 확인하기] 버튼 선택 시" : ["/html/SLC/RMSF-popup03.html","","진행중"],
-				},
+				}
 			},
 			"이벤트/멤버십(BMC)" : {
 				"이벤트" : {

@@ -31,7 +31,6 @@
                 </div>
                 <div class="cont-wrap">
                     <div class="search-result-wrap">
-                        @@include('./common/modules/list-filter.html')
                         <div class="result-area">
                             @@include('./common/modules/list-sorting.html', {
                                 "soldout" : false,
@@ -76,7 +75,7 @@
                                         ])
                                     </ul>
                                 </div>
-                                @@include('./common/support/pagination.html', {
+                                @@include('./common/modules/pagination.html', {
                                     count: 5
                                 })
                             </div>

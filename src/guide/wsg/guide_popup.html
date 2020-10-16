@@ -331,7 +331,7 @@
 <!-- 가이드 내용 -->
 <h2 class="h2_guide">6. 오늘 하루 열지 않기 (pop-footer + check-type)</h2>
 <div class="guide_wrap" style="background:rgba(0, 0, 0, .7); padding:10px;">
-    <article id="popup" class="popup-wrap full" style="display:block; position:relative;">
+    <article id="popup" class="popup-wrap" style="display:block; position:relative;">
         <header class="pop-header">
             <h1 class="tit"><span>제품등록</span></h1>
         </header>
@@ -372,17 +372,18 @@
 
 <div class="d_desc code">
 <xmp class="prettyprint linenums javascript"><!-- DOM -->
-<article id="popup" class="popup-wrap full">
+<article id="popup" class="popup-wrap">
     <header class="pop-header">
         <h1 class="tit"><span>제품등록</span></h1>
     </header>
     <section class="pop-conts">
         내용
     </section>
-    <footer class="pop-footer">
-        <div class="btn-group">
-            <button type="button" class="btn pink"><span>등록</span></button>
-        </div>
+    <footer class="pop-footer check-type">
+        <span class="chk-wrap">
+            <input type="checkbox" id="check-today" name="today">
+            <label for="check-today">오늘 하루 열지 않기</label>
+        </span>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
 </article>
