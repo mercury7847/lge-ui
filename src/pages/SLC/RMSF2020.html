@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["SLC/SLC"]
+    })
+    <body>
+        <div class="wrap">
+            <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>상세견적확인 팝업 열기</span></button>
+        </div>
+    
+    
+        <article id="popup" class="popup-wrap" style="display:block;">
+            <header class="pop-header">
+                <h1 class="tit"><span>케어플래너 견적내역</span></h1>
+            </header>
+            <section class="pop-conts care-estimate-pop">
+                <p class="info-txt">선택한 케어솔루션/케어십 서비스 제품의 견적을 확인해보세요.</p>
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">선택 제품</h2>
+                    <span class="leng">총 2개</span>
+                </div>
+                <div class="estimate-list">
+                    <!-- carousel -->
+                    <!-- <div class="slide-wrap ui_carousel_slider3">
+                        <div class="slide-content ui_carousel_list">
+                            <div class="slide-track ui_carousel_track">
+                                <div class="slide-conts ui_carousel_slide">
+                                    <div class="conts-wrap">
+                                        <div class="item">
+                                            <div class="img-wrap">
+                                                <img src="/lg5-common/images/dummy/@sample-150x150.jpg" alt="제품 이미지">
+                                            </div>
+                                            <div class="txt-wrap">
+                                                <div class="flag-wrap">
+                                                    <span class="flag"><span class="blind">서비스명</span>렌탈(케어솔루션)</span>
+                                                </div>
+                                                <div class="tit-info">
+                                                    <p class="tit"><span class="blind">제품 디스플레이 네임</span>LG TROMM 스타일러 블랙에디션 최대 2줄 입력 가능 최대 2줄 입력 가능 최대 2줄 입력 가능 최대 2줄 입력 가능</p>
+                                                    <p class="price">월 61,900원</p>
+                                                    <div class="etc-info">
+                                                        <span class="txt"><span class="blind">제품 코드</span>S5MBR</span>
+                                                        <span class="txt"><span class="blind">색상</span>Silver</span>
+                                                    </div>
+                                                </div>
+                                                <div class="etc-info">
+                                                    <span class="txt">가입비 -100,000원 선납</span>
+                                                    <span class="txt">신규 결합할인 -5,000원</span>
+                                                    <span class="txt">계약기간 60개월(무상할인 2개월 포함)</span>
+                                                    <span class="txt">의무 사용기간 36개월</span>
+                                                    <span class="txt">방문 주기 6개월/1회</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- //carousel -->
+
+                <ul class="estimate-list">
+                    <!-- loop -->
+                    <li>
+                        <div class="item">
+                            <div class="img-wrap">
+                                <img src="/lg5-common/images/dummy/@sample-150x150.jpg" alt="제품 이미지">
+                            </div>
+                            <div class="txt-wrap">
+                                <div class="flag-wrap">
+                                    <span class="flag"><span class="blind">서비스명</span>렌탈(케어솔루션)</span>
+                                </div>
+                                <div class="tit-info">
+                                    <p class="tit"><span class="blind">제품 디스플레이 네임</span>LG TROMM 스타일러 블랙에디션 최대 2줄 입력 가능 최대 2줄 입력 가능 최대 2줄 입력 가능 최대 2줄 입력 가능</p>
+                                    <p class="price">월 61,900원</p>
+                                    <div class="etc-info">
+                                        <span class="txt"><span class="blind">제품 코드</span>S5MBR</span>
+                                        <span class="txt"><span class="blind">색상</span>Silver</span>
+                                    </div>
+                                </div>
+                                <div class="etc-info">
+                                    <span class="txt">가입비 -100,000원 선납</span>
+                                    <span class="txt">신규 결합할인 -5,000원</span>
+                                    <span class="txt">계약기간 60개월(무상할인 2개월 포함)</span>
+                                    <span class="txt">의무 사용기간 36개월</span>
+                                    <span class="txt">방문 주기 6개월/1회</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- //loop -->
+                    <li>
+                        <div class="item">
+                            <div class="img-wrap">
+                                <img src="/lg5-common/images/dummy/@sample-150x150.jpg" alt="제품 이미지">
+                            </div>
+                            <div class="txt-wrap">
+                                <div class="flag-wrap">
+                                    <span class="flag"><span class="blind">서비스명</span>케어십</span>
+                                </div>
+                                <div class="tit-info">
+                                    <p class="tit"><span class="blind">제품 디스플레이 네임</span>LG 퓨리케어 상하좌우 냉온정수기 </p>
+                                    <p class="price">월 19,500원</p>
+                                    <div class="etc-info">
+                                        <span class="txt"><span class="blind">제품 코드</span>S5MBR</span>
+                                        <span class="txt"><span class="blind">색상</span>Silver</span>
+                                    </div>
+                                </div>
+                                <div class="etc-info">
+                                    <span class="txt">이달의 혜택 -4,000원</span>
+                                    <span class="txt">신규 결합할인 -4,000원</span>
+                                    <span class="txt">가입기간 12개월(무상할인 2개월 포함)</span>
+                                    <span class="txt">방문 주기 3개월/1회 </span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">견적 합계</h2>
+                </div>
+                <div class="estimate-price">
+                    <dl>
+                        <dt>기본 이용 요금</dt>
+                        <dd>월 81,400원</dd>
+                    </dl>
+                    <dl>
+                        <dt>결합 할인 금액</dt>
+                        <dd class="sale">월 -9,000원</dd>
+                    </dl>
+                    <dl>
+                        <dt>이달의 혜택 금액</dt>
+                        <dd class="sale">월 -4,000원</dd>
+                    </dl>
+                    <dl class="total">
+                        <dt>최종 이용 요금</dt>
+                        <dd>월 68,400원</dd>
+                    </dl>
+                </div>
+
+                <div class="alliance-card">
+                    <dl>
+                        <dt>제휴카드 선택</dt>
+                        <dd>
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" id="select1" title="제휴카드 할인 선택">
+                                    <option value="" class="placeholder">제휴카드 할인</option>
+                                    <option value="">[하나] LG전자 렌탈플러스</option>
+                                    <option value="">[신한] LG전자 렌탈애(愛)</option>
+                                    <option value="">[롯데] LG스페셜 카드</option>
+                                </select>
+                            </div>
+                            <p class="price">월 최대 -23,000원</p>
+                        </dd>
+                    </dl>
+                    @@include('./common/modules/bullet-list.html', {
+                        "bulletTxt" : [
+                            "제휴카드 신청은 청약신청 단계에서 가능합니다."
+                        ]
+                    })
+                </div>
+            </section>
+            <footer class="pop-footer">
+                <div class="btn-group">
+                    <button type="button" class="btn pink"><span>청약신청하기</span></button>
+                </div>
+            </footer>
+            <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+        </article>
+    </body>
+    </html>
