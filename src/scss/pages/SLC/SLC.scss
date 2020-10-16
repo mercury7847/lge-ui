@@ -3,5 +3,16 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+//케어솔루션 제품안내 - 맥주제조기
+//음주연령확인
+@import "MKTF2004";
+
 //케어플래너
 @import "RMSF2003";
+
+//상세 견적 확인
+.pop-conts.care-estimate-pop {
+    @import "RMSF2020";
+}
+
+

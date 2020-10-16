@@ -347,6 +347,8 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
                 }
                 self.isShown = isOpen;
                 self.$label.find('.ui-select-button').attr('title', self.attrTitle + (isOpen ? ' 닫기' : ' 열기'));
+
+                self.triggerHandler('selectboxtoggle');
             });
 
             self.$el.on('change', function () {

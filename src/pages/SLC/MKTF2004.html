@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    pageCSS: ["SLC/SLC"]
+})
+<body>
+<div class="wrap">
+    @@include('./common/header.html', {
+        "mobileCase": "isDepth"
+    })
+
+    <div class="container">
+        <div class="contents care-plan">
+            <div class="cont-wrap beer-manufacture">
+                <div class="background"><img data-pc-src="/lg5-common/images/SLC/bg-manufacture.jpg" data-m-src="/lg5-common/images/SLC/bg-manufacture-m.jpg" alt="맥주제조기 배경"></div>
+                <div class="confirm-contents">
+                    <h2 class="title"><img src="/lg5-common/images/SLC/logo-homebrew.png" alt="LG HomeBrew"></h2>
+                    <p class="copy">만 19세 이상 음주 가능한 연령입니까?</p>
+                    <div class="btn-area">
+                        <button type="button" class="btn bd-black"><span>YES</span></button>
+                        <button type="button" class="btn bd-black"><span>NO</span></button>
+                    </div>
+                </div>
+                <div class="cation">*해당 페이지는 만 19세 이상만 이용이 가능합니다.</div>
+            </div>
+        </div>
+    </div>
+
+    @@include('./common/footer.html')
+</div>
+</body>
+</html>

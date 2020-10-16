@@ -13,6 +13,9 @@
 @import "../../support/loading-bar";
 @import "../../support/sns";
 @import "../../support/select-category";
+@import "../../layout/grid";
+
+
 
 /* 삭제 예정 */
 .dummy {
@@ -517,6 +520,25 @@
         }
     }
 
+    .divisions {
+        @include clearfix;
+        @include section;
+        .col-6 {
+            @include grid-col(left,6,12);
+        }
+        .section {
+            margin-top: 0;
+        }
+        @include mobile {
+            .section {
+                margin-top: 12px;
+            }
+        }
+    }
+
+    .outside-content {
+        @include section;
+    }
 
     .color-1 {
         color: #a50034;

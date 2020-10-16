@@ -430,7 +430,7 @@ $(window).ready(function(){
 
                 self.$detailOption.find('.ui_selectbox').vcSelectbox('update');
                 vcui.require(["ui/tooltipTarget"], function () {
-                    self.$detailOption.find('.ui_tooltip-target').vcTooltipTarget({"type":"click","tooltip":".tooltip-box"});
+                    self.$detailOption.find('.ui_tooltip-target').vcTooltipTarget({"tooltip":".tooltip-box"});
                 });
 
                 //액세사리소모품 추가구매 self.$additionalPurchase
