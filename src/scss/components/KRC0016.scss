@@ -29,7 +29,12 @@
                     &:after {
                         border-color:#fff;
                     }
-				}
+                }
+                .btn.btn-primary {
+                    border-color:#fff;;
+                    background-color:#fff;
+                    color:#111;
+                }
 			} @else if $bg == black {
 				background-color: #000;
 				.title {
@@ -45,7 +50,12 @@
                     &:after {
                         border-color:#fff;
                     }
-				}
+                }
+                .btn.btn-primary {
+                    border-color:#fff;;
+                    background-color:#fff;
+                    color:#111;
+                }
 			} @else if $bg == white {
 				background-color: #fff;
 				.title {

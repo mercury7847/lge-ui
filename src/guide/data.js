@@ -69,6 +69,7 @@ var res = {
 			"KRC0044_Hero Image (Thin)" : ["/html/components/KRC0044.html","","검수완료"],
 			"KRC0045_Article List" : ["/html/components/KRC0045.html","","검수완료"],
 			//"KRC0046_Story & Products module_Dynamic" : ["/html/components/KRC0046.html","","진행중"],
+			"KRC0049_Layered component - Multi type" : ["/html/components/KRC0049.html","","진행중"],
 			"KRC0051_Recommend story - categoryhome " : ["/html/components/KRC0051.html","","진행중"],
 			"KRP0001_GNB - B2C" : ["/html/components/KRP0001.html","","검수완료"],
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
@@ -100,7 +101,9 @@ var res = {
 					"케어플래너_총 개수 8개 선택 시도 시" : ["/html/SLC/RMSF-popup01.html","","진행중"],
 					"케어플래너_동일 카테고리 내 제품 선택이 정수기 3대, 정수기 외 2대를 초과한 경우" : ["/html/SLC/RMSF-popup02.html","","진행중"],
 					"케어플래너_비로그인 상태에서 [견적 확인하기] 버튼 선택 시" : ["/html/SLC/RMSF-popup03.html","","진행중"],
-				}
+					"케어플래너_상세견적확인" : ["/html/SLC/RMSF2020.html","","진행중"],
+					"케어십 가능 제품" : ["/html/SLC/RMSF2004.html","","진행중"],
+				},
 			},
 			"이벤트/멤버십(BMC)" : {
 				"이벤트" : {

@@ -72,14 +72,14 @@
 			} @else if $bg == dark {
                 background-color: #333;
                 * {
-                    color:#fff !important;
+                    color:#fff;
                 }
                 .component[class*=bg-] {
                     background-color:transparent !important;
                 }
                 .component {
                     .btn.btn-outline-primary {
-                        color:#111 !important;
+                        color:#111;
                     }
                     .text-wrap .btn-type-box .btn-outline-primary {
                         color:#fff !important;
@@ -98,7 +98,7 @@
 			} @else if $bg == black {
                 background-color: #000;
                 * {
-                    color:#fff !important;
+                    color:#fff;
                 }
                 .component[class*=bg-] {
                     background-color:transparent !important;

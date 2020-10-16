@@ -31,16 +31,11 @@
                             })
                             <!-- // filter -->
  
-                            <div class="result-sorting-box">
-                                <p class="total">전체 30건</p>
-                                <div class="sort-select-wrap">
-                                    <select class="ui_selectbox" id="select1" title="결과리스트 정렬 기준 선택">
-                                        <option value="">전체</option>
-                                        <option value="">구매</option>
-                                        <option value="">케어솔루션</option>
-                                    </select>
-                                </div>
-                            </div>
+                            @@include('./common/modules/list-sorting.html', {
+                                "select" : [
+                                    { "default" : "class='placeholder'", "option" : "전체" }
+                                ]
+                            })
                             <!-- 검색결과/소팅결과 있을 때 -->
                             <div class="product-list-wrap">
                                 <ul class="product-lists ui_flexible_height">
@@ -109,22 +104,12 @@
                                     ])
                                 </ul>
                             </div>
-                            <div class="pagination">
-                                <a href="#" class="prev"><span class="blind">이전 페이지 보기</span></a>
-                                <span class="page_num">
-                                    <strong><span class="blind">현재 페이지</span>1</strong>
-                                    <a href="#" title="2페이지 보기">2</a>
-                                    <a href="#" title="3페이지 보기">3</a>
-                                    <a href="#" title="4페이지 보기">4</a>
-                                    <a href="#" title="5페이지 보기">5</a>
-                                    <a href="#" title="6페이지 보기">6</a>
-                                    <a href="#" title="7페이지 보기">7</a>
-                                </span>
-                                <a href="#" class="next"><span class="blind">다음 페이지 보기</span></a>
-                            </div>
+                            @@include('./common/modules/pagination.html', {
+                                count: 5
+                            })
                             <!-- // 검색결과/소팅결과 있을 때 -->
                             <!-- 소팅 결과 없을 때 -->
-                            <div class="no-data">
+                            <div class="no-data mg-type">
                                 <p>조회 결과가 없습니다.</p>
                             </div>
                             <!-- // 소팅 결과 없을 때 -->
