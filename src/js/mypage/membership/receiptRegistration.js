@@ -24,9 +24,7 @@
         var receiptRegist = {
             init: function() {
                 self.$contBox = $('.cont-box');
-
-                vcui.require(["ui/tooltipTarget","ui/formatter"], function () {
-                    $('.ui_tooltip-target').vcTooltipTarget({"tooltip":".tooltip-box"});
+                vcui.require(["ui/formatter"], function () {
                     $('#input-receipt').vcFormatter({"format":"receipt","maxlength":17});
                 });
 

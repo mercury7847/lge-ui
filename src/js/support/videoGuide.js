@@ -2,7 +2,6 @@ $(window).ready(function() {
     var videoGuide = {
         form: document.querySelector('#form'),
         init: function() {
-            $('.pagination').pagination({}, this.sumbitHandler);
             this.setEventListener();
         },
         sumbitHandler: function(e) {
@@ -33,8 +32,6 @@ $(window).ready(function() {
             $(this.form).on('submit', this.submitHandler);
         }
     }
-
-    CS.MD.setPagination();
     
     videoGuide.init();
 });

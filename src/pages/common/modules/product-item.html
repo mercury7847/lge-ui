@@ -12,9 +12,13 @@
         </div>
         }
         @@if (context.badgeType === "large") {
-        <div class="badge-wrap">
+        <!-- <div class="badge-wrap">
             <img src="/lg5-common/images/dummy/@img-promotion-badge.png" alt="으뜸효율 10%">
-        </div>
+        </div> -->
+        <div class="badge-wrap big-flag green type2 left"><span>으뜸효율<br><em>10%</em></span></div>
+        }
+        @@if (context.badgeType === "lgRed") {
+        <div class="badge-wrap big-flag red type1 left"><span>멤버십<br>포인트</span></div>
         }
         <div class="product-image" aria-hidden="true">
             <a href="#"><img src="@@img" alt=""></a>
