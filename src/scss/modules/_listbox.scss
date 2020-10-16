@@ -239,9 +239,6 @@
         max-width:1284px;
         margin:0 auto;
         overflow:hidden;
-        @include mobile {
-            margin:0 20px;
-        }
         .lists {
             .list-inner {
                 .info {
