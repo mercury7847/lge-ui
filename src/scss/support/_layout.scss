@@ -96,6 +96,13 @@
             position: relative;
         }
     }
+    &.no-bg {
+        padding: 0 12px;
+        .section-content {
+            padding: 0;
+            background-color: transparent;
+        }
+    }
     @include mobile {
         margin-top:12px;
         padding:40px 20px 56px;
@@ -107,6 +114,7 @@
                 padding:40px 20px 0;
                 background:#fff;
             }
+
         }
         &-title {
             padding-bottom:20px;
