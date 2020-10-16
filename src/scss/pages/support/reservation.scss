@@ -460,6 +460,20 @@
     }
 
     .form-wrap {
+        .forms {
+            .conts {
+                .input-box {
+                    &.size2 {
+                        .input-wrap {
+                            margin-top: 8px;
+                            &:first-child {
+                                margin-top: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         @include mobile {
             .forms {
                 .conts {
@@ -587,6 +601,14 @@
     }
     .problem-solve {
         margin-top: 32px;
+    }
+    
+    .divisions {
+        [class*="col-"] {
+            .field-wrap {
+                min-height: 288px;
+            }
+        }
     }
 }
 

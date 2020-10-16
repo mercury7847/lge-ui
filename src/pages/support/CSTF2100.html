@@ -4,10 +4,6 @@
         "pageCSS": [
             "support/support",
             "support/product-support"
-        ],
-        "pageJS": [
-            "support-common",
-            "support/videoGuide"
         ]
     })
 <body>
@@ -33,7 +29,7 @@
                         <div class="search-summary">
                             <p class="summary"><em class="summary-keyword" id="keyword">냉장고</em> 검색결과 입니다.<button type="button" class="icon-queryReset summary-delete" id="btnReset"><span class="blind">검색어 초기화</span></button></p>
                         </div>
-                        <div class="tabs-wrap border-type ui_tab">
+                        <div class="tabs-wrap ui_tab left">
                             <ul class="tabs">
                                 <li class="on"><a href="#tab1">인기 동영상 가이드<em class="blind">선택됨</em></a></li>
                                 <li><a href="#tab2">최신 동영상 가이드</a></li>
@@ -43,19 +39,31 @@
                             <div id="tab1" class="tabs-contents">
                                 <div class="result-box" id="popular">
                                     <h3 class="result-tit">인기 동영상 가이드</h3>
-                                    <ul class="video-list">
-                                        <li>
-                                            <div class="thumbnail">
-                                                <img src="" alt="">
-                                            </div>
-                                            <p class="summary">
-                                                <span class="topic">전원</span>
-                                                <span class="category">냉장/냉동고>양문형</span>
-                                            </p>
-                                            <h4 class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
-                                        </li>
-                                    </ul>
-                                    <p class="results-total">검색결과 <em class="total">240</em>건</p>
+                                    <div class="video-list-wrap">
+                                        <ul class="video-list">
+                                            <li>
+                                                <div class="video-thumb">
+                                                    <img src="" alt="">
+                                                </div>
+                                                <div class="video-cont">
+                                                    <p class="category">TV/프로젝터>올레드</p>
+                                                    <p class="topic">기능관련 > 제품 사용 방법</p>
+                                                    <h4 class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="video-thumb">
+                                                    <img src="" alt="">
+                                                </div>
+                                                <div class="video-cont">
+                                                    <p class="category">TV/프로젝터>올레드</p>
+                                                    <p class="topic">기능관련 > 제품 사용 방법</p>
+                                                    <h4 class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p class="result-total">검색결과 <em class="count">240</em>건</p>
                                     @@include('./common/support/pagination.html', {
                                         'count': 5,
                                         'last': 'true'
@@ -65,10 +73,11 @@
                             <div id="tab2" class="tabs-contents">
                                 <div class="result-box" id="newest">
                                     <h3 class="result-tit">최신 동영상 가이드</h3>
-                                    <ul class="video-list">
-                                        
-                                    </ul>
-                                    <p class="results-total">검색결과 <em class="total">240</em>건</p>
+                                    <div class="video-list-wrap">
+                                        <ul class="video-list">
+                                        </ul>
+                                    </div>
+                                    <p class="result-total">검색결과 <em class="count">240</em>건</p>
                                     @@include('./common/support/pagination.html', {
                                         'count': 5,
                                         'last': 'true'
@@ -87,5 +96,10 @@
              
         @@include('./common/footer.html')
     </div>      
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/video-guide.min.js"></script>
 </body>
 </html> 

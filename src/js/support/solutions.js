@@ -31,11 +31,11 @@
 
     var solutionsTemplate = 
         '{{# if (typeof video != "undefined" && video === true) { #}}' +
-        '<li class="video-item">' +
+        '<li class="video-type">' +
         '{{# } else { #}}' +
         '<li>' +
         '{{# } #}}' +
-        '<a href="#">' +
+        '<a href="#" class="item">' +
         '<strong class="tit">{{title}}</strong>' +
         '<p class="desc">{{topic}}</p>' +
         '<ul class="infos">' +
