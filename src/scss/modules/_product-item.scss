@@ -612,4 +612,49 @@
             }
         }
     }
+
+
+    // 기획전 상세 하단 small타입 추가
+    &.small-type {
+        display:block;
+        margin:-20px -10px 0;
+        @include mobile {
+            margin:-12px 20px 0;
+        }
+        > li {
+            width:calc(100% / 3);
+            margin-top:20px;
+            padding:0 10px;
+            &:nth-child(odd) {
+                clear:none;
+            }
+            @include mobile {
+                width:100%;
+                margin-top:12px;
+                padding:0;
+            }
+            .item {
+                .product-image {
+                    margin:0 -35px 0;
+                    @include mobile {
+                        margin:0 auto;
+                        max-width:200px;
+                    }
+                }
+                .product-contents {
+                    height:auto;
+                    .product-info {
+                        padding-top:16px;
+                    }
+                }
+                .price-area {
+                    margin-top:12px;
+                }
+            }
+        }
+    }
+}
+
+.product-items-wrap {
+    overflow:hidden; // .product-items wrapping DOM. 
 }

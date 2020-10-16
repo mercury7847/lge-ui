@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 .care-plan {
     .cont-wrap {
         padding:0 0 120px;
@@ -21,13 +20,8 @@
         border-radius:4px;
         // overflow:hidden;
         @include mobile {
-            padding:23px 36px 24px 0;
+            padding:24px 18px 24px 0;
             border-radius:8px;
-        }
-        .flag-wrap {
-            .flag {
-
-            }
         }
         .img-wrap {
             display:table-cell;
@@ -72,6 +66,8 @@
                     -ms-line-clamp: 2;
                     -webkit-line-clamp: 2;
                     @include mobile {
+                        font-size:14px;
+                        line-height:18px;
                         max-height:36px;
                     }
                 }
@@ -83,9 +79,8 @@
                     text-overflow:ellipsis;
                     white-space:nowrap;
                     @include mobile {
-                        padding-top:2px;
-                        font-size:12px;
-                        line-height:16px;
+                        font-size:14px;
+                        line-height:18px;
                     }
                 }
             }
@@ -95,9 +90,9 @@
                 line-height:24px;
                 word-break:break-all;
                 @include mobile {
-                    padding-top:14px;
-                    font-size:12px;
-                    line-height:16px;
+                    padding-top:8px;
+                    font-size:14px;
+                    line-height:18px;
                 }
             }
         }
@@ -138,13 +133,21 @@
         border-radius:4px;
         box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.06);
         overflow:hidden;
+        @include mobile {
+            padding:0 20px 32px;
+        }
         .prd-add {
             position:absolute;
             top:24px;
             left:24px;
             z-index:1;
+            @include mobile {
+                top:20px;
+                height:20px;
+            }
             .btn-add {
                 position:relative;
+                height:24px;
                 padding:0 12px;
                 border:1.3px solid #808080;
                 border-radius:12px;
@@ -153,7 +156,10 @@
                     padding-left:14px;
                     color:#808080;
                     font-size:14px;
-                    line-height:20px;
+                    @include mobile {
+                        font-size:12px;
+                        line-height:16px;
+                    }
                     &:before {
                         content:'';
                         display:block;
@@ -198,6 +204,10 @@
                 width:226px;
                 height:226px;
                 overflow:hidden;
+                @include mobile {
+                    width:150px;
+                    height:150px;
+                }
             }
         }
         .txt-wrap {
@@ -205,6 +215,10 @@
             font-size:16px;
             line-height:24px;
             height:72px;
+            @include mobile {
+                height:auto;
+                margin-top:12px;
+            }
             .tit {
                 max-height:48px;
                 font-weight:700;
@@ -223,6 +237,9 @@
         }
         .info-wrap {
             padding-top:24px;
+            @include mobile {
+                padding-top:14px;
+            }
             dl {
                 display:table;
                 width:100%;
@@ -301,6 +318,9 @@
                                     position:relative; 
                                     height:28px; 
                                     margin:0 -1px -1px 0;
+                                    @include mobile {
+                                        height:32px;
+                                    }
                                     input + label {
                                         display:block;
                                         width:100%;
@@ -313,6 +333,10 @@
                                         line-height:26px;
                                         text-align:center;
                                         cursor:pointer;
+                                        @include mobile {
+                                            height:32px;
+                                            line-height:30px;
+                                        }
                                     }
                                     input:checked + label {
                                         position:absolute;
@@ -361,6 +385,10 @@
                     line-height:32px;
                     font-weight:700;
                     text-align:right;
+                    @include mobile {
+                        font-size:20px;
+                        line-height:27px;
+                    }
                 }
             }
         }
@@ -456,7 +484,7 @@
             margin:0 auto;
             padding:36px 30px 16px;
             @include mobile {
-                padding:32px 20px 18px;
+                padding:20px 20px 12px;
             }
             font-size:0;
             .tit {
@@ -493,6 +521,7 @@
         .tabs-wrap.btn-type {
             margin-bottom:24px;
             @include mobile {
+                margin-bottom:20px;
                 text-align:center;
             }
         }
@@ -511,7 +540,7 @@
             padding-top:56px;
             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
             @include mobile {
-                margin-top:12px;
+                padding-top:24px;
             }
             .inner {
                 position:relative;
@@ -525,6 +554,10 @@
             @include clearfix;
             margin:40px auto 0;
             padding:0 30px;
+            @include mobile {
+                margin-top:24px;
+                padding:0 20px;
+            }
             .sort-select-wrap {
                 float:right;
             }
@@ -535,10 +568,8 @@
             max-width:1284px + 60px;
             margin:16px auto 0;
             padding:0 30px;
-            @include tablet {
-                margin-top:60px;
-            }
             @include mobile {
+                margin-top:20px;
                 padding:0 20px;
             }
             .inner {
@@ -559,7 +590,7 @@
                     }
                     @include mobile {
                         width:100%;
-                        margin:20px 0 0 0;
+                        margin:16px 0 0 0;
                         &:first-child {
                             margin-top:0;
                         }
@@ -644,7 +675,7 @@
                 @include mobile {
                     float:inherit;
                     width:calc(100% - 40px);
-                    margin:18px 20px 0;
+                    margin:12px 20px 0;
                     padding:18px 20px;
                     border-radius:8px;
                 }
@@ -682,7 +713,7 @@
                     width:100%;
                     margin-top:24px;
                     @include mobile {
-                        padding:14px 32px;
+                        padding:13px 32px;
                     }
                 }
             }

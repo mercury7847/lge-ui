@@ -205,6 +205,19 @@
     }
 }
 
+.btn-moreview {
+    display:inline-block;
+    font-size:14px;
+    line-height:20px;
+    font-weight:500;
+    text-decoration:underline;
+    text-align:center;
+    &.block {
+        display:block;
+        width:100%;
+    }
+}
+
 .btn-banner {
     display:inline-block;
     position:relative;
