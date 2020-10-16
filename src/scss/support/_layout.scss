@@ -5,12 +5,36 @@
     @include mobile {
         padding:12px 0 0;
     }
-    .content-wrap {
-        max-width:1146px;
-        margin:0 auto;
-        padding:0 40px;
-        @include mobile {
-            padding:0;
+}
+
+.content-wrap {
+    margin-top:64px;
+    &:first-child {
+        margin-top:0;
+    }
+    .title-wrap {
+        margin-bottom:24px;
+        .tit {
+            font-size:16px;
+            font-weight:700;
+            line-height:24px;
+            & + .desc {
+                margin-top:4px;
+            }
+        }
+        .desc {
+            color:#616161;
+            font-size:14px;
+            line-height:20px;
+        }
+    }
+    @include mobile {
+        margin-top:56px;
+        &:first-child {
+            margin-top:0;
+        }
+        .title-wrap {
+            margin-bottom:32px;
         }
     }
 }

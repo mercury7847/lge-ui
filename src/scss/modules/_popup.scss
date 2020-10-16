@@ -169,6 +169,26 @@
             }
         }
     }
+    .pop-guide {
+        margin:0 -56px;
+        padding:16px 56px;
+        background:#f4f4f4;
+        @include clearfix;
+        .text {
+            float:left;
+            color:#616161;
+            font-size:16px;
+            line-height:24px;
+        }
+        .btn-box {
+            float:right;
+            .btn-link {
+                color:#212121;;
+                font-size:14px;
+                line-height:24px;
+            }
+        }
+    }
     .pop-conts {
         height:auto;
         max-height:492px;
@@ -226,7 +246,8 @@
             padding:0 0 40px;
         }
         .btn-group {
-            padding: 0;
+            margin:0;
+            padding:0;
         }
         .btn {
             margin-left:8px;
