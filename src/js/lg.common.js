@@ -42,17 +42,18 @@
 
             this.find('.ui_selectbox').vcSelectbox({
                 events:{
-                    selectboxopenafter: function(e){
+                    selectboxtoggle: function(e){
                         var selectwrap = $(e.currentTarget).siblings('.ui-selectbox-wrap');
-                        var selectlist = selectwrap.find("> .ui-selectbox-list");
-                        var margintop = selectlist.css('margin-top');
-                        if(parseInt(margintop) < 0){
-                            if(!selectwrap.hasClass('type_up')) selectwrap.addClass('type_up')
+                        var isOpen = selectwrap.hasClass('on');
+                        if(isOpen){
+                            var selectlist = selectwrap.find("> .ui-selectbox-list");
+                            var margintop = selectlist.css('margin-top');
+                            if(parseInt(margintop) < 0){
+                                if(!selectwrap.hasClass('type_up')) selectwrap.addClass('type_up')
+                            }
+                        } else{
+                            selectwrap.removeClass("type_up");
                         }
-                    },
-                    selectboxclose: function(e){
-                        var selectwrap = $(e.currentTarget).siblings('.ui-selectbox-wrap');
-                        selectwrap.removeClass("type_up")
                     }
                 }
             });
