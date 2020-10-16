@@ -156,7 +156,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
                     position: 'fixed',
                     top: self.stickyRect.top,
                     left: self.stickyRect.left,
-                    width: $el.width()
+                    //width: $el.width() 2020.10.16 고정 width값이 있으면 틀어짐...
                 });
                 
                 $el.addClass(opt.stickyClass);
@@ -164,7 +164,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
             } else if (self.scrollTop > self.stickyRect.top - self.marginTop) {
                 $el.css({
                     position: 'fixed',
-                    width: $el.width(),
+                    //width: $el.width(), 2020.10.16 고정 width값이 있으면 틀어짐...
                     left: self.stickyRect.left
                 });
 
@@ -218,18 +218,23 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
             self.$anchor.each(function(index, item){
 
                 anchorName = $(item).attr('href');
-                $target = self.$container.find(anchorName);
-
-                if(index==0){
-                    self.posArr.push(self.containerRect.top - self.marginTop);
-                }else{
-                    top = $target.offset().top - (self.stickyRect.height + self.marginTop);                  
-                    self.posArr.push(top>lasty? lasty-10 : top);
-                    if(index == self.$anchor.length-1){
-                        top = $target.outerHeight() + $target.offset().top;
-                        self.posArr.push(top);
-                    }
-                }                
+                try{
+                    $target = self.$container.find(anchorName);
+    
+                    if(index==0){
+                        self.posArr.push(self.containerRect.top - self.marginTop);
+                    }else{
+                        //2020.10.16 $target이 없을 시...
+                        if ($target.length){
+                            top = $target.offset().top - (self.stickyRect.height + self.marginTop);                  
+                            self.posArr.push(top>lasty? lasty-10 : top);
+                            if(index == self.$anchor.length-1){
+                                top = $target.outerHeight() + $target.offset().top;
+                                self.posArr.push(top);
+                            }
+                        }
+                    }   
+                } catch(err){}         
             });
 
 
