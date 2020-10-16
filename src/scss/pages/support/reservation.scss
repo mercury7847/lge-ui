@@ -307,15 +307,22 @@
             @include clearfix;
             .part1 {
                 float: left;
+                max-width: calc(100% - 396px);
             }
             .part2 {
                 float: right;
-            }
-            .part2 {
-                width: 396px;
+                max-width: 396px;
+                width: 100%;
             }
             .select-engineer {
-                margin-top: 32px;
+                padding: 0;
+            }
+        }
+        @include pc {
+            &-to-visit {
+                .part1 {
+                    padding-right: 50px;
+                }
             }
         }
         @include mobile {
@@ -354,9 +361,19 @@
                 }
             }
             &-to-visit {
+                .part1,
+                .part2 {
+                    float: none;
+                    max-width: 100%;
+                }
+                .part1 {
+                }
                 .part2 {
                     margin-top: 40px;
                     width: 100%;
+                }
+                .select-engineer {
+                    margin-top: 40px;
                 }
             }
         }

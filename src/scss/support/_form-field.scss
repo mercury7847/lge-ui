@@ -9,6 +9,8 @@
 .rdo-btn-wrap {
     display: inline-block;
     font-size: 0;
+    max-width: 260px;
+    width: calc(25% - 7px);
     input {
         & + label {
             font-size: 16px;
@@ -17,8 +19,7 @@
             text-align: center;
             color: #808080;
             border-radius: 8px;
-            border: solid 1px #dddddd;
-            width: 260px;
+            border: solid 1px #ddd;
             padding: 28px 0;
             display: block;
             background-color: #fff;
