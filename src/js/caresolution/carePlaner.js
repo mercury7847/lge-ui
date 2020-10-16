@@ -131,27 +131,20 @@
 
     function init(){
         vcui.require(['ui/carousel', 'ui/tab'], function () {
-            _totalContract = $('.ui_total_prod').data('prodTotal');
-
-            _prodListUrl = $('.care-solution-wrap').data("prodList");
-
-            $fixedTab = $('.fixed-tab-wrap');
-            $typeTab = $fixedTab.find('.tabs-wrap.btn-type');
-            $categoryTab = $fixedTab.find('.tabs-wrap.border-type');
-            $sortSelector = $('.sort-select-wrap select');
-
-            $sortSelector.on('change', function(e){
-                changeSortType();
-            });
+            setting();
+            eventBind();
         });
     }
 
-    function changeSortType(){
-        console.log($sortSelector.val())
-    }
+    function setting(){
+        _totalContract = $('.ui_total_prod').data('prodTotal');
 
+        _prodListUrl = $('.care-solution-wrap').data("prodList");
 
-    vcui.require(['ui/carousel'], function () {
+        $fixedTab = $('.fixed-tab-wrap');
+        $typeTab = $fixedTab.find('.tabs-wrap.btn-type');
+        $categoryTab = $fixedTab.find('.tabs-wrap.border-type');
+        $sortSelector = $('.sort-select-wrap select');
 
         $('.ui_carousel_slider').vcCarousel({
             infinite: false,
@@ -192,6 +185,7 @@
                 }
             ]
         });
+        
         $('.ui_carousel_slider2').vcCarousel({
             infinite: false,
             slidesToShow: 3,
@@ -240,7 +234,25 @@
                 }
             ]
         });
-    });
+    }
+
+    function eventBind(){
+        $categoryTab.vcTab('instance').on('tabchange', function(e, data){
+            console.log(data)
+        });
+
+        $sortSelector.on('change', function(e){
+            changeSortType();
+        });
+
+        $(window).on('scroll', function(e){
+            var scrolltop = $(window).scrollTop();
+        });
+    }
+
+    function changeSortType(){
+        console.log($sortSelector.val())
+    }
 
     document.addEventListener('DOMContentLoaded', function () {
         init();
