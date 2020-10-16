@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+
+.KRP0012 {
+    width: 100%;
+    margin: 0 auto;
+    padding:0 30px;
+    background:#fff;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.12);
+    @include mobile {
+        max-width: 100%;
+        padding:0;
+        box-shadow:none;
+    }
+
+    .back-layer {
+        position: fixed;
+        top: 1px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: none;
+        background-color: #000;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+        opacity: .5;
+    }
+    
+    .inner {
+        position:relative;
+        max-width:1284px + 60px;
+        margin:0 auto;
+    }
+
+    .product-simple-info {
+        position:absolute;
+        left:0;
+        top:50%;
+        -webkit-transform:translateY(-50%);
+        transform:translateY(-50%);
+        @include mobile {
+            position:static;
+            padding:16px 20px;
+            transform:none;
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.12);
+        }
+        .product-name {
+            width:100%;
+            overflow:hidden;
+            white-space:nowrap;
+            text-overflow:clip;
+            color:#111;
+            font-size:14px;
+            line-height:26px;
+        }
+        .product-selling-price {
+            color:#111;
+            font-weight:700;
+            .price {
+                .msrp {
+                    display:inline-block;
+                    padding-right:3px;
+                    font-size:14px;
+                    line-height:26px;
+                    vertical-align:middle;
+                }
+                .number {
+                    display:inline-block;
+                    font-size:18px;
+                    line-height:26px;
+                    vertical-align:middle;
+                }
+            }
+        }
+    }
+
+    .btn-drop-menu-mob {
+        display:none;
+        padding:0;
+        border:none;
+        background-color:transparent;
+        text-align:right;
+        cursor:pointer;
+    }
+
+    .contents-menu-list {
+        .tab-menu-belt {
+            width:640px;
+            margin:0 auto;
+            padding:20px 0;
+            height:auto;
+            text-align:center;
+            background:#fff;
+            @include tablet {
+                width:550px;
+            }
+            @media screen and (max-width: 920px) {
+                width:400px;
+            }
+            @include mobile {
+                width:100%;
+                max-width:100%;
+                margin-top:20px;
+                padding:0 20px 20px;
+                overflow-x:auto;
+                -webkit-overflow-scrolling: touch;
+                white-space:nowrap;
+                text-align:left;
+            }
+            .tab-menu {
+                display:inline-block;
+                vertical-align:middle;
+                margin-left:8px;
+                font-size:0;
+                &:first-child {
+                    margin-left:0;
+                }
+                .linker {
+                    display:inline-block;
+                    padding:8px 16px;
+                    color:#ccc;
+                    font-size:16px;
+                    line-height:24px;
+                    font-weight:500;
+                }
+                &.active {
+                    background:#efefef;
+                    border-radius:20px;
+                    .linker {
+                        color:#111;
+                        font-weight:700;
+                    }
+                }
+            }
+        }
+        .extra-area {
+            position:absolute;
+            top:50%;
+            right:0;
+            -webkit-transform:translateY(-50%);
+            transform:translateY(-50%);
+            @include mobile {
+                right:20px;
+                margin-top:-40px;
+            }
+            .extra-menu {
+                &.btn {
+                    min-width:220px;
+                    @include tablet {
+                        min-width:auto;
+                    }
+                    @include mobile {
+                        padding:7px 23px;
+                        border-radius:4px;
+                    }
+                    &.disabled {
+                        background:#808080;
+                    }
+                }
+            }
+        } 
+    }
+
+}
+

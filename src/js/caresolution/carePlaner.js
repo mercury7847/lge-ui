@@ -1,28 +1,21 @@
 
 (function(){
 
-    var _totalContract; 
-
     var _listItemTemplate =
-        '<li class="item">'+
+        '<li class="item" data-model-id="{{modelID}}">'+
         '   <div class="prd-care-vertical">'+
-        '       <span class="chk-wrap">'+
-        '           <input type="checkbox" id="check1" name="check1" checked="">'+
-        '           <label for="check1"><span class="blind">선택함</span></label>'+
-        '       </span>'+
         '       <div class="img-wrap">'+
         '           <a href="#n">'+
-        '               <img src="/lg5-common/images/dummy/@sample-226x226.jpg" alt="제품 이미지" style="opacity: 1;">'+
+        '               <img src="/lg5-common/images/dummy/@sample-226x226.jpg" alt="제품 이미지">'+
         '           </a>'+
         '       </div>'+
         '       <div class="txt-wrap">'+
         '           <p class="tit">'+
         '               <a href="#n">'+
-        '                   <span class="blind">제품 디스플레이 네임</span>'+
-        '                   스팀 건조기ThinQ (듀얼 인버터 히트펌프) 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음'+
+        '                   <span class="blind">제품 디스플레이 네임</span>{{userFriendlyName}}'+
         '               </a>'+
         '           </p>'+
-        '           <p class="code"><span class="blind">제품 코드</span>WU900AS 코드값 한줄 처리 코드값 한줄 처리 코드값 한줄 처리 코드값 한줄 처리 코드값 한줄 처리</p>'+
+        '           <p class="code"><span class="blind">제품 코드</span>{{modelName}}</p>'+
         '       </div>'+
         '       <div class="info-wrap">'+
         '           <div class="opt-info">'+
@@ -32,14 +25,14 @@
         '                       <div class="slide-wrap ui_carousel_slider2 ui_carousel_initialized ui_carousel_slider" ui-modules="Carousel">'+
         '                           <div class="slide-content ui_carousel_list ui_static draggable" style="overflow: hidden;">'+
         '                               <div class="slide-track ui_carousel_track ui_static" style="opacity: 1; width: 176px; transform: translate3d(0px, 0px, 0px);">'+     
-
+        '                                   {{#each item in siblingModels}}'
         '                                   <div class="slide-conts ui_carousel_slide ui_carousel_current on" data-ui_carousel_index="0" style="float: left; width: 44px;" aria-hidden="false" role="tabpanel" id="ui_carousel_slide170" aria-describedby="ui_carousel_slide-control170">'+
         '                                       <div role="radio" class="chk-wrap-colorchip LeatherYellow" title="LeatherYellow">'+
         '                                           <input type="radio" id="product1-color1" name="product1" checked="" tabindex="">'+
         '                                           <label for="product1-color1"><span class="blind">LeatherYellow</span></label>'+
         '                                       </div>'+
         '                                   </div>'+       
-                                        
+        '                                   {{/each}}'
         '                               </div>'+
         '                           </div>'+
         '                           <div class="slide-controls">'
@@ -100,17 +93,59 @@
         '               <dd>40,900원</dd>'+
         '           </dl>'+
         '       </div>'+
+        '       <div class="prd-add">'+
+        '           <button type="button" class="btn-add"><span>담기</span></button>'+
+        '       </div>'+
         '   </div>'+
         '</li>';
 
-    function init(){
-        _totalContract = $('.ui_total_prod').data('totalProd');
-        
+    var putItemTemplate = 
+        '<div class="conts-wrap">'+
+        '   <div class="prd-care-horizon">'+
+        '       <div class="flag-wrap">'+
+        '           <span class="flag"><span class="blind">서비스명</span>케어솔루션</span>'+
+        '       </div>'+
+        '       <div class="img-wrap">'+
+        '           <img src="/lg5-common/images/dummy/@sample-150x150.jpg" alt="제품 이미지" style="opacity: 1;">'+
+        '       </div>'+
+        '       <div class="txt-wrap">'+
+        '           <div class="tit-info">'+
+        '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>스팀 건조기ThinQ&nbsp;(듀얼 인버터 히트펌프) 두줄 텍스트 두줄 텍스트 두줄 텍스트 두줄 텍스트</p>'+
+        '               <p class="code"><span class="blind">제품 코드</span>WU900AS</p>'+
+        '           </div>'+
+        '           <p class="etc">월 61,900원</p>'+
+        '       </div>'+            
+        '       <div class="del-item">'+
+        '           <button type="button" class="btn-del" tabindex=""><span class="blind">제품 삭제</span></button>'+
+        '       </div>'+            
+        '   </div>'+
+        '</div>';
 
+    var _totalContract;
+    var _prodListUrl;
+
+    var $fixedTab;
+    var $typeTab;
+    var $categoryTab;
+    var $sortSelector;
+
+    function init(){
+        vcui.require(['ui/carousel', 'ui/tab'], function () {
+            setting();
+            eventBind();
+        });
     }
 
+    function setting(){
+        _totalContract = $('.ui_total_prod').data('prodTotal');
 
-    vcui.require(['ui/carousel'], function () {
+        _prodListUrl = $('.care-solution-wrap').data("prodList");
+
+        $fixedTab = $('.fixed-tab-wrap');
+        $typeTab = $fixedTab.find('.tabs-wrap.btn-type');
+        $categoryTab = $fixedTab.find('.tabs-wrap.border-type');
+        $sortSelector = $('.sort-select-wrap select');
+
         $('.ui_carousel_slider').vcCarousel({
             infinite: false,
             slidesToShow: 3,
@@ -150,7 +185,7 @@
                 }
             ]
         });
-
+        
         $('.ui_carousel_slider2').vcCarousel({
             infinite: false,
             slidesToShow: 3,
@@ -159,7 +194,7 @@
             speed : 200,
             dots: false
         });
-    
+
         $('.ui_carousel_slider3').vcCarousel({
             infinite: false,
             slidesToShow: 2,
@@ -199,7 +234,25 @@
                 }
             ]
         });
-    });
+    }
+
+    function eventBind(){
+        $categoryTab.vcTab('instance').on('tabchange', function(e, data){
+            console.log(data)
+        });
+
+        $sortSelector.on('change', function(e){
+            changeSortType();
+        });
+
+        $(window).on('scroll', function(e){
+            var scrolltop = $(window).scrollTop();
+        });
+    }
+
+    function changeSortType(){
+        console.log($sortSelector.val())
+    }
 
     document.addEventListener('DOMContentLoaded', function () {
         init();

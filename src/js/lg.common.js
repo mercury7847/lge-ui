@@ -4,7 +4,7 @@
     console.log("lgkorUI start!!!");
 
     $.fn.buildCommonUI = function () {
-        vcui.require([        
+        vcui.require([
                             'ui/selectbox',
                             'ui/calendar',
                             'ui/accordion',
@@ -17,9 +17,9 @@
                             "ui/imageSwitch",
                             "ui/dropdown",
                             "ui/textControl",
-                            "ui/scrollview",
                             "ui/fileInput",
                             "ui/radioShowHide",
+                            'ui/inputClearButton',
                             "ui/starRating"
         ], function () {    
             console.log("buildCommonUI!!!!");
@@ -36,11 +36,10 @@
             this.find('.animation-box').vcVideoBox();
             this.find('.youtube-box').vcYoutubeBox();
             this.find('.ui_textcontrol').vcTextcontrol();
-            this.find('.ui_scrollview').vcScrollview();
             this.find('.ui_fileinput').vcFileinput();
             this.find('.ui_radio_visible').vcRadioShowHide();
+            this.find('.ui_input_clearbutton').vcInputClearButton();
             this.find('.ui_star_rating').vcStarRating();
-
 
             this.find('.ui_wide_slider').vcCarousel({
                 autoplay:true,
@@ -166,8 +165,6 @@
                 "ui/imageSwitch"
             ], function (ResponsiveImage, BreakpointDispatcher) {
                 
-                
-    
                 new BreakpointDispatcher({
                     matches: {
                         '(min-width: 768px)' : function(mq) {
@@ -298,6 +295,8 @@
                 // }, 200));
                 ///////////////////////////////////////////////////////////////////////
             });
+
+            self.loadKakaoSdkForShare();
         },
 
         //top 버튼 컨틀롤...
@@ -419,6 +418,41 @@
             $(window).trigger("changeStorageData");
 
             return returnValue;
+        },
+
+        loadKakaoSdkForShare: function(callback){
+            var self = this;
+
+            if(window.kakao){
+                if(callback != null) callback();
+            }else{
+                var script = document.createElement('script');
+        
+                script.onload = function () {
+                    if(callback != null){
+                        callback();
+                        return;
+                    }
+                    self.loadCommonShareUI();
+                };
+                script.onerror = function(e){ 
+                    alert('kakao api를 로드할수 없습니다.');
+                }
+                script.src = '//developers.kakao.com/sdk/js/kakao.min.js';        
+                document.head.appendChild(script); 
+            }
+        },
+
+        loadCommonShareUI: function(){
+            vcui.require([
+                'helper/sharer'
+            ], function (Sharer) {
+                // 공유하기 헬퍼 빌드
+                Sharer.init({
+                    selector: '.sns-list > li >  a',
+                    attr: 'data-link-name' // sns서비스명을 가져올 속성
+                });
+            });
         }
     }
     

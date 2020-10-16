@@ -709,59 +709,19 @@ CS.MD.CHK_DEVICE = function() {
         }
     }
 
-    function setTableScrollbar() {
-        var $tableScroll = $(".tbl.scroll-x");
-
-        if (!$tableScroll.length) return false;
-        $tableScroll.mCustomScrollbar({
+    function commonInit(){
+        $('.scroll-x').mCustomScrollbar({
             axis:"x",
             advanced:{
                 autoExpandHorizontalScroll:true
             }
         });
-    }
-
-    $(window).on("load",function(){
-        var $verticalScroll = $(".scroll-y");
-
-        $verticalScroll.mCustomScrollbar({
+        $('.scroll-y').mCustomScrollbar({
             axis:"y"
         });
-    });
-
-    function commonSlides() {
-        vcui.require(['ui/carousel'], function () {
-            $('.engineer-carousel').length && $('.engineer-carousel').vcCarousel({
-                swipeToSlide: true,
-                slidesToShow: 4,
-                arrows:false,
-                customPaging: function(carousel, i) {
-                    var $button = $('<button type="button" class="btn-indi"><span class="blind">'+(i+1)+'번 내용 보기'+'</span></button>');
-                    return $button;
-                },
-                responsive: [{
-                    breakpoint:767,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                    }
-                }]
-            });
-        });
-    }
-
-    function commonInit(){
-        setTableScrollbar();
-        commonSlides();
 
         $('[data-js="floating]').floating();
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
-
-    // $('.star-rating-select').barrating({
-    //     theme: 'css-stars',
-    //     showSelectedRating: true
-    // });
-    // $('.star-rating-select').barrating('set', '5점 (매우 만족)');
 })(jQuery);

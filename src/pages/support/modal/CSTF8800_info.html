@@ -6,8 +6,7 @@
             "support/reservation"
         ],
         "pageJS": [
-            "support-common",
-            "support/selectCategory"
+            "support-common"
         ],
         "libJS": [
             "jquery.mCustomScrollbar"
@@ -16,9 +15,9 @@
 <body>
     <div class="wrap">
         <div class="container">
-            <div class="contents support CSTF8800" style="min-height: 100vh; background-color: rgba(0, 0, 0, 0.7);">
+            <div class="contents support" style="min-height: 100vh; background-color: rgba(0, 0, 0, 0.7);">
 
-                <article id="popup" class="popup-wrap type-A" style="display:block; position:relative;">
+                <article id="popup" class="popup-wrap" style="display:block; position:relative;">
                     <header class="pop-header">
                         <h1 class="tit"><span>안내</span></h1>
                     </header>
@@ -39,12 +38,12 @@
                             </li>
                         </ul>
                     </section>
-                    <div class="pop-input">
+                    <footer class="pop-footer check-type">
                         <span class="chk-wrap">
-                            <input type="checkbox" id="chk1-2" name="chk1">
-                            <label for="chk1-2">오늘 하루 열지 않기</label>
+                            <input type="checkbox" id="check-today" name="today">
+                            <label for="check-today">오늘 하루 열지 않기</label>
                         </span>
-                    </div>
+                    </footer>
                     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
                 </article>
 

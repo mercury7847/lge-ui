@@ -11,44 +11,41 @@
                         <label for="input-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
                     </div>
                     <div class="input-wrap">
-                        <input type="text" name="name" id="input-name" placeholder="성함을 입력해주세요." data-msg-target=".err-msg" data-required="true" required="">
+                        <input type="text" name="name" id="input-name" placeholder="이름을 입력해주세요." required>
                         <p class="err-msg">이름을 입력해주세요.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="field-item">
+                <div class="field-item block">
                     <div class="field-title">
                         <label for="input-phoneNumber" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
                     </div>
-                    <div class="input-wrap">
-                        <div class="box">
-                            <input type="tel" name="phoneNumber" id="input-phoneNumber" placeholder="휴대 전화를 입력해주세요." maxlength="11" required="">
-                            <span class="cell text-btn">
-                                <button type="button" class="btn-text underline color-3">인증번호 발송</button>
-                            </span>
+                    <div class="field-box">
+                        <div class="input-wrap">
+                            <div class="box">
+                                <input type="tel" name="phoneNumber" id="input-phoneNumber" placeholder="휴대전화 번호를 입력해주세요." required>
+                                <span class="cell">
+                                    <button type="button" class="btn-text pink">인증번호 발송</button>
+                                </span>
+                            </div>
+                            <p class="err-msg">휴대전화 번호를 입력해주세요.</p>
                         </div>
-                        <p class="err-msg">휴대 전화를 입력해주세요.</p>
+                        <div class="input-wrap">
+                            <input type="number" name="certificationNumber" id="input-certiNumber" placeholder="인증번호를 입력해주세요." readonly required>
+                            <p class="err-msg">인증번호를 입력해주세요.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="field-item">
-                    <div class="field-title">
-                        <label for="certi-number" class="tit">인증번호<span class="require">*<span class="blind">필수항목</span></span></label>
-                    </div>
-                    <div class="input-wrap">
-                        <input type="number" name="certi-phone" id="certi-number" placeholder="인증번호를 입력해주세요." data-msg-target=".err-msg" data-required="true" required readonly>
-                        <p class="err-msg">인증번호를 입력해주세요.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
             </div>
         </div>
-
-        <ul class="bullet-list top-border">
-            <li class="b-txt">휴대전화 인증을 한 정보(이름, 휴대전화)로 접수됩니다.</li>
-            <li class="b-txt">인증번호가 수신되지 않은 경우 1544-7777이 스팸처리 되지 않았는지 확인해주시기 바랍니다.</li>
-        </ul>
+        @@include('./common/modules/bullet-list.html', {
+            "topBorder" : true,
+            "bulletTxt" : [
+                "휴대전화 인증을 한 정보(이름, 휴대전화)로 접수됩니다.",
+                "인증번호가 수신되지 않은 경우 1544-7777이 스팸처리 되지 않았는지 확인해주시기 바랍니다."
+            ]
+        })
     </section>
     <footer class="pop-footer">
         <div class="btn-group">
