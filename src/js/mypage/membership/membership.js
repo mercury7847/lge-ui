@@ -68,11 +68,6 @@
                 self.$dateFilterEndDate = self.$dateFilter.find('#uc-end');
                 self.$productList = $('div.cont-box div.product-list-wrap ul.product-lists');
 
-
-                vcui.require(["ui/tooltipTarget"], function () {
-                    $('.ui_tooltip-target').vcTooltipTarget({"type":"over","tooltip":".tooltip-box"});
-                });
-
                 //$('.ui_calendar').vcCalendar({ 'holidays': ['2017-09-06', '2017-09-07', '2017-09-08'] }); // hoildays:휴일등록
                 self.$dateFilter.find('#date-input-start').on('calendarinsertdate', function (e, data) {
                     //시작일을 선택시 종료일의 시작날짜를 변경한다.

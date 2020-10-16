@@ -21,6 +21,19 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
             self._bindEvents();
         },
 
+        changeType: function changeType(tooltipType) {
+            var self = this;
+
+            if(self.options.tooltip != tooltipType) {
+                var eventEnter = self.options.type=='over'? 'mouseenter mouseleave focusin focusout click' : 'click';
+                self.options.type = tooltipType;
+                self.off(tooltipType,self.options.type,eventEnter);
+                self.$tooltip.off('click','> '+self.options.closeButtonClass);
+
+                self._bindEvents();
+            }
+        },
+
         _bindEvents: function _bindEvents() {
             var self = this;
             self.$tooltip = self.$el.siblings(self.options.tooltip);
@@ -59,6 +72,7 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
 
 
         },
+
         _close: function _close(effect) {
             var self = this;
             clearTimeout(self.showTimer);
