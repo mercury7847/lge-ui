@@ -84,6 +84,7 @@ var res = {
 			"KRP0019_Social Share_Dynamic" : ["/html/components/KRP0019.html","","진행중"],
 			"KRP0020_Sitemap_Dynamic" : ["/html/components/KRP0020.html","","검수완료"],
 			"KRP0021_Category module for store home" : ["/html/components/KRP0021.html","","진행중"],
+			"KRP0024_Best review" : ["/html/components/KRP0024.html","","진행중"],
 			"KRP0025_event_list_for_category_home" : ["/html/components/KRP0025.html","","진행중"],
 			"KRP0027_Please note" : ["/html/components/KRP0027.html","","진행중"],
 			"KRP0028_Event list" : ["/html/components/KRP0028.html","","진행중"],
@@ -108,6 +109,10 @@ var res = {
 					"PC 모델명 및 시리얼번호 확인 방법" : ["/html/BMC/MKT4017.html","","진행중"],
 					"이벤트참여_미리미리페스티벌" : ["/html/BMC/MKT4012.html","","진행중"],
 					"LG전자 및 LG전자 BEST SHOP 판매대리점 보기" : ["/html/BMC/MKT4013.html","","진행중"],
+				},
+				"기획전" : {
+					"리스트" : ["/html/BMC/OBS4001.html","","진행중"],
+					"상세_기본타입" : ["/html/BMC/OBS4002.html","","진행중"],
 				},
 				"멤버십" : {
 					"멤버십 메인" : ["/html/BMC/ACC4001.html","","검수요청"],

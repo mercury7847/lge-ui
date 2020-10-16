@@ -9,7 +9,7 @@
 	-->
 	<div class="component KRP0012">
 		<div class="pdp-tab">
-			<!-- <div class="back-layer"></div> -->
+			<!-- <div class="back-layer"></div> --> <!-- [KR수정] 구조 삭제 -->
 			<!-- 2. sticky bar -->
 			<div class="inner">
                 @@if (context.product) {
@@ -22,7 +22,7 @@
                             <div class="price">
                                 @@product.price
                             </div>
-                            <!-- <div class="retailer"></div> -->
+                            <!-- <div class="retailer"></div> --> <!-- [KR수정] 구조 삭제 -->
                         </div>
                     }
                     </div>
@@ -30,7 +30,7 @@
 				<!-- 1. tab -->
 				<div class="contents-menu-list" role="navigation" aria-label="Page">
 					<!-- 접근성 버튼 이동 -->
-					<!-- <button type="button" class="btn-drop-menu-mob"><span class="open">menu open</span><span class="close">menu close</span></button> -->
+					<!-- <button type="button" class="btn-drop-menu-mob"><span class="open">menu open</span><span class="close">menu close</span></button> --> <!-- [KR수정] 구조 삭제 -->
 					<ul class="tab-menu-belt" aria-label="If you select menu, the focus move to area providing the selected information in this web page.">
                         @@if (!context.tabMenu.expendables) {
                             @@if (!context.tabMenu.soldOut) {
@@ -52,8 +52,7 @@
                     </ul>
                     @@if (context.extraMenu) {
                     <div class="extra-area">
-                        <!--  add to cart 버튼인 경우 
-                            a 태그에 add-to-cart 클래스 추가 
+                        <!--  구매하기 버튼인 경우
                             data-model-id="MD000000" 추가
                         -->
                         <a href="@@extraMenu.link-url" class="extra-menu btn @@extraMenu.style1 @@extraMenu.style2" data-link-area="pdp_tab_anchor-tab" data-link-name="{button name}">@@extraMenu.text</a>
