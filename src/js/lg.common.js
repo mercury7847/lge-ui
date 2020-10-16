@@ -20,7 +20,8 @@
                             "ui/fileInput",
                             "ui/radioShowHide",
                             'ui/inputClearButton',
-                            "ui/starRating"
+                            "ui/starRating",
+                            "ui/tooltipTarget"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
@@ -39,6 +40,7 @@
             this.find('.ui_radio_visible').vcRadioShowHide();
             this.find('.ui_input_clearbutton').vcInputClearButton();
             this.find('.ui_star_rating').vcStarRating();
+            this.find('.ui_tooltip-target').vcTooltipTarget();
 
             this.find('.ui_selectbox').vcSelectbox({
                 events:{
@@ -179,7 +181,13 @@
                 'ui/lazyLoader',
                 "ui/videoBox",
                 "ui/youtubeBox",
-                "ui/imageSwitch"
+                "ui/imageSwitch", 
+                "ui/textControl",
+                "ui/fileInput",
+                "ui/radioShowHide",
+                'ui/inputClearButton',
+                "ui/starRating",
+                "ui/tooltipTarget"
             ], function (ResponsiveImage, BreakpointDispatcher) {
                 
                 new BreakpointDispatcher({
