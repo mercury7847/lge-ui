@@ -26,9 +26,8 @@
 
     .sorting-filter {
         @include clearfix;
-        max-width:(1284px + 80px);
+        max-width:1284px;
         margin:0 auto 16px;
-        padding:0 40px;
         @include mobile {
             padding:0 20px;
             margin-bottom:12px;
