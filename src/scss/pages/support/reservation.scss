@@ -77,6 +77,10 @@
             line-height:24px;
             word-break:keep-all;
         }
+        &.email-inquiry-process {
+            margin-top: 48px;
+        }
+
         @include pc {
             padding:0 40px;
             .process-list {
