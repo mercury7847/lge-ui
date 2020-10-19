@@ -10,37 +10,24 @@
         <!-- Edit : 2019-02-15 <div class="inner"> add -->
         <div class="inner">
             <!-- Start : 2019-02-15 download add -->
-            <!-- 3. download -->
-            <div class="control">
-                <a href="#none" class="link-download" target="_blank"  title="Download file">다운로드</a>
+            <!-- DOM -->
+            <div class="sns-wrap">
+                <!-- 
+                    data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
+                    data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
+                    data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
+                    data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
+            
+                    각 sns 버튼에 적용.
+                -->
+                <ul class="sns-list">
+                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook"><span class="blind">페이스북으로 페이지 공유하기</span></a></li>
+                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter"><span class="blind">트위터로 페이지 공유하기</span></a></li>
+                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk"><span class="blind">카카오톡으로 페이지 공유하기</span></a></li>
+                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn url" data-link-name="copy_url"><span class="blind">URL 복사하기</span></a></li>
+                </ul>
             </div>
-            <!-- End : 2019-02-15 download add -->
-            <!-- // 3. download -->
-            <div class="sns-area share-common">
-                <!-- 1. share -->
-                <button type="button" class="sns">공유하기</button>
-                <!-- // 1. share -->
-                <!-- 2. share layer -->
-                <div class="list"><!-- 활성화시 .active -->
-                    <div class="sns-inner">
-                        <!-- 
-                            data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
-                            data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
-                            data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
-                            data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
-
-                            각 sns 버튼에 적용.
-                        -->
-                        <ul class="sns-share">
-                            <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="share-facebook" title="페이스북에 공유하기, 새창열림" data-link-name="facebook">페이스북</a></li>
-                            <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="share-twitter" title="트위터에 공유하기, 새창열림" data-link-name="twitter">트위터</a></li>
-                            <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="share-kakao" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk">카카오톡</a></li>
-                            <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="share-url" data-link-name="copy_url">URL복사</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- // 2. share layer -->
-            </div>
+            <!-- // DOM -->
         </div>
     </div>
 </div>

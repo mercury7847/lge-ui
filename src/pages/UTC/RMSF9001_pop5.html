@@ -5,110 +5,56 @@
     })
 <body>
     <div class="wrap">
-        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>매월 납부금 할인 내역 팝업 열기</span></button>
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 팝업 열기</span></button>
     </div>
 
-    <!-- 매월 납부금 할인내역 popup -->
-    <article id="popup" class="popup-wrap">
+    <!-- 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
+    <article id="popup" class="popup-wrap middle tit-line3">
         <header class="pop-header">
-            <h1 class="tit"><span>매월 납부금 할인 내역</span></h1>
+            <h1 class="tit"><span>제휴카드 발급/변경 <br>자동 등록을 위한 <br>제3자 정보제공 동의</span></h1>
         </header>
-        <section class="pop-conts no-footer mypage-pop">
+        <section class="pop-conts rmsf-pop">
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">의무 사용기간 5년/계약기간 5년</h2>
+                    <h2 class="h2-tit">개인정보 수집 및 이용에 대한 안내</h2>
                 </div>
-                <div class="fee-info-wrap">
-                    <dl>
-                        <dt>예상월요금</dt>
-                        <dd>36,900원</dd>
+                <div class="txt-cont">
+                    <dl class="dl-txt-cont">
+                        <dt>1. 제공처</dt>
+                        <dd>신한카드, BC카드, 우리카드, 롯데카드, 하나카드, NH카드, KB카드<br>(단, 고객정보는 제 3자 제공 동의 신청한 카드사에게만 제공됨)</dd>
                     </dl>
-                    <dl>
-                        <dt>제휴카드[신한] LG전자 렌탈애(愛)</dt>
-                        <dd class="minus">- 23,000원</dd>
+                    <dl class="dl-txt-cont">
+                        <dt>2. 제공 목적</dt>
+                        <dd>
+                            고객이 신청한 카드사에서 케어솔루션 제휴카드 발급/변경 등록 처리 하기 위해 제공되며, 제공 후 처리사항은 아래와 같음.<br>
+                            - 제휴카드 발급을 위한 카드사의 카드발급 전화 발신<br>
+                            - 제휴카드 발급 승인 후 LG전자 케어솔루션 결제방법 등록 및 자동이체 청구<br>
+                            - 카드사 기존 고객 여부 확인
+                        </dd>
                     </dl>
-                    <dl class="total">
-                        <dt>최적 혜택가격</dt>
-                        <dd>13,900원</dd>
+                    <dl class="dl-txt-cont">
+                        <dt>3. 제공 항목</dt>
+                        <dd>제휴카드 신청정보, 고객명, 휴대폰번호, 고객본인 확인 정보(CI, 생년월일, 성별, 통신사)</dd>
                     </dl>
+                    <dl class="dl-txt-cont">
+                        <dt>4. 보유 이용 기간</dt>
+                        <dd>
+                            - LG전자 : 계약 해지 시점까지 또는 고객의 정보 제공 동의 철회시까지<br>
+                            - 제 3자 이용기관 : 제휴카드 발급 목적 달성 시점까지 또는 고객의 정보 제공 동의 철회시까지
+                        </dd>
+                    </dl>
+                    <p class="sub-txt">※ 고객님께서는 정보 활용에 동의하지 않을 권리가 있으며, 동의하지 않더라도 케어솔루션 계약 체결에 제한이 없습니다.</p>
                 </div>
-            </div>
-
-            <div class="input-info">
-                <div class="tit-wrap">
-                    <h2 class="h2-tit">의무 사용기간 및 무상할인 적용 납부 금액 예</h2>
-                </div>
-                <div class="tb_row">
-                    <table>
-                        <caption>무상할인 제공 및 의무사용하는 기간 동안의 연차별 납부 금액 안내</caption>
-                        <colgroup>
-                            <col style="width:25%">
-                            <col style="width:25%">
-                            <col>
-                        </colgroup>
-                        <thead>
-                        <tr>
-                            <th scope="col">납부회수</th>
-                            <th scope="col">납부금액</th>
-                            <th scope="col">비고</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1~5회</td>
-                            <td>36,000원</td>
-                            <td></td>
-                        </tr>
-                        <tr class="point">
-                            <td>6회</td>
-                            <td>0원</td>
-                            <td>무상할인제공</td>
-                        </tr>
-                        <tr>
-                            <td>7~ 11회</td>
-                            <td>36,900원</td>
-                            <td></td>
-                        </tr>
-                        <tr class="point">
-                            <td>12 회</td>
-                            <td>0원</td>
-                            <td>무상할인제공</td>
-                        </tr>
-                        <tr>
-                            <td>13~ 36회</td>
-                            <td>36,900원</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>37~ 60회</td>
-                            <td>13,900원</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>37~ 60회</td>
-                            <td>13,900원</td>
-                            <td></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class="btm_info">
-                        <p>최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, 제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다.</p>
-                        <a href="#n" class="btn bd-pink btn-small"><span>제휴카드 할인 혜택 자세히 보기</span></a>
-                    </div>
-                </div>
-                @@include('./common/modules/bullet-list.html', {
-                    "topBorder" : true,
-                    "bulletTit" : "케어솔루션 안내",
-                    "bulletTxt" : [
-                        "렌탈(케어솔루션) 총요금은 대표요금제 기준이며, 요금제에 따라 총 비용이 다를 수 있습니다.",
-                        "5년 동안 무상 A/S(계약 기간 내)",
-                        "초기구입비용 0원(60개월 분할 납부)"
-                    ]
-                })
             </div>
         </section>
+        <footer class="pop-footer">
+            <div class="btn-group">
+                <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+                <button type="button" class="btn pink"><span>동의</span></button>
+            </div>
+        </footer>
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
-    <!-- // 매월 납부금 할인내역 popup -->
+    <!-- // 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
 </body>
 </html>
