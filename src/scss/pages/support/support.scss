@@ -522,16 +522,29 @@
 
     .divisions {
         @include clearfix;
-        @include section;
+        padding: 0 40px;
         .col-6 {
-            @include grid-col(left,6,12);
+            float: left;
+            width: 50%;
+            padding: 0 12px;
         }
         .section {
             margin-top: 0;
         }
         @include mobile {
+            padding: 0;
+            .col-6 {
+                float: none;
+                width: 100%;
+                padding: 40px 20px 56px;
+            }
             .section {
-                margin-top: 12px;
+                &:nth-child(n+2) {
+                    margin-top: 12px;
+                }
+                .btn-group {
+                    margin: 40px -20px 0;
+                }
             }
         }
     }
