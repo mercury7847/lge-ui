@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html')
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>배송지 관리(리스트 있음) 팝업 열기</span></button>
+        <button type="button" data-href="#popup2" data-control="modal" class="btn pink"><span>배송지 관리(리스트 없음) 팝업 열기</span></button>
+    </div>
+
+    <!-- 배송지 관리(리스트 있음) popup -->
+    <article id="popup" class="popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit"><span>배송지 관리</span></h1>
+        </header>
+        <section class="pop-conts no-footer common-pop">
+            <!-- 배송지 관리 -->
+            <div class="my-address-wrap">
+                <button type="button" class="btn-banner block"><span class="icon-plus">신규 배송지 추가</span></button>
+                <!-- 배송지 리스트 -->
+                <ul class="address-lists">
+                    <li class="lists">
+                        <div class="inner">
+                            <dl class="addr">
+                                <dt>
+                                    <p><span class="blind">배송지명</span>자택</p>
+                                    <span class="flag-wrap">
+                                        <span class="flag">기본배송지</span>
+                                    </span>
+                                </dt>
+                                <dd>
+                                    <p><span class="blind">이름</span>김엘지</p>
+                                    <p><span class="blind">연락처</span>010-1234-1234</p>
+                                </dd>
+                                <dd>
+                                    <p><span class="blind">주소</span>서울특별시 마포구 상암동 197 19호</p>
+                                </dd>
+                            </dl>
+                            <div class="btns">
+                                <button class="btn bd-black btn-small"><span>수정</span></button>
+                                <button class="btn bd-black btn-small"><span>삭제</span></button>
+                            </div>
+                            <span class="rdo-wrap">
+                                <input type="radio" id="rdo1-1" name="rdo1" checked>
+                                <label for="rdo1-1">배송지 선택</label>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="lists">
+                        <div class="inner">
+                            <dl class="addr">
+                                <dt>
+                                    <p><span class="blind">배송지명</span>엘지</p>
+                                </dt>
+                                <dd>
+                                    <p><span class="blind">이름</span>김엘지</p>
+                                    <p><span class="blind">연락처</span>010-1234-1234</p>
+                                </dd>
+                                <dd>
+                                    <p><span class="blind">주소</span>서울특별시 마포구 상암동 197 19호</p>
+                                </dd>
+                            </dl>
+                            <div class="btns">
+                                <button class="btn bd-black btn-small"><span>수정</span></button>
+                                <button class="btn bd-black btn-small"><span>삭제</span></button>
+                            </div>
+                            <span class="rdo-wrap">
+                                <input type="radio" id="rdo1-2" name="rdo1">
+                                <label for="rdo1-2">배송지 선택</label>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="lists">
+                        <div class="inner">
+                            <dl class="addr">
+                                <dt>
+                                    <p><span class="blind">배송지명</span>엘지</p>
+                                </dt>
+                                <dd>
+                                    <p><span class="blind">이름</span>김엘지</p>
+                                    <p><span class="blind">연락처</span>010-1234-1234</p>
+                                </dd>
+                                <dd>
+                                    <p><span class="blind">주소</span>서울특별시 마포구 상암동 197 19호</p>
+                                </dd>
+                            </dl>
+                            <div class="btns">
+                                <button class="btn bd-black btn-small"><span>수정</span></button>
+                                <button class="btn bd-black btn-small"><span>삭제</span></button>
+                            </div>
+                            <span class="rdo-wrap">
+                                <input type="radio" id="rdo1-3" name="rdo1">
+                                <label for="rdo1-3">배송지 선택</label>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="lists">
+                        <div class="inner">
+                            <dl class="addr">
+                                <dt>
+                                    <p><span class="blind">배송지명</span>엘지</p>
+                                </dt>
+                                <dd>
+                                    <p><span class="blind">이름</span>김엘지</p>
+                                    <p><span class="blind">연락처</span>010-1234-1234</p>
+                                </dd>
+                                <dd>
+                                    <p><span class="blind">주소</span>서울특별시 마포구 상암동 197 19호</p>
+                                </dd>
+                            </dl>
+                            <div class="btns">
+                                <button class="btn bd-black btn-small"><span>수정</span></button>
+                                <button class="btn bd-black btn-small"><span>삭제</span></button>
+                            </div>
+                            <span class="rdo-wrap">
+                                <input type="radio" id="rdo1-4" name="rdo1">
+                                <label for="rdo1-4">배송지 선택</label>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="lists">
+                        <div class="inner">
+                            <dl class="addr">
+                                <dt>
+                                    <p><span class="blind">배송지명</span>엘지</p>
+                                </dt>
+                                <dd>
+                                    <p><span class="blind">이름</span>김엘지</p>
+                                    <p><span class="blind">연락처</span>010-1234-1234</p>
+                                </dd>
+                                <dd>
+                                    <p><span class="blind">주소</span>서울특별시 마포구 상암동 197 19호</p>
+                                </dd>
+                            </dl>
+                            <div class="btns">
+                                <button class="btn bd-black btn-small"><span>수정</span></button>
+                                <button class="btn bd-black btn-small"><span>삭제</span></button>
+                            </div>
+                            <span class="rdo-wrap">
+                                <input type="radio" id="rdo1-5" name="rdo1">
+                                <label for="rdo1-5">배송지 선택</label>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+                <!-- // 배송지 리스트 -->
+                @@include('./common/modules/pagination.html', {
+                    count: 5
+                })
+            </div>
+            <!-- // 배송지 관리 -->
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 배송지 관리(리스트 있음) popup -->
+
+    <!-- 배송지 관리(리스트 없음) popup -->
+    <article id="popup2" class="popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit"><span>배송지 관리</span></h1>
+        </header>
+        <section class="pop-conts no-footer common-pop">
+            <!-- 배송지 관리 -->
+            <div class="my-address-wrap">
+                <button type="button" class="btn-banner block"><span class="icon-plus">신규 배송지 추가</span></button>
+                <!-- nodata -->
+                <div class="no-data">
+                    <p>등록하신 배송지가 없습니다.<br>배송지를 등록하시고 제품을 배송받아 보세요.</p>
+                </div>
+                <!-- // nodata -->
+            </div>
+            <!-- // 배송지 관리 -->
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 배송지 관리(리스트 없음) popup -->
+</body>
+</html>

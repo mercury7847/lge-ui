@@ -125,6 +125,9 @@
         &-content {
             padding:0;
             border-radius:0;
+            +.section-content {
+                padding-top: 40px;
+            }
         }
         .tabs-wrap {
             margin-right:-20px;

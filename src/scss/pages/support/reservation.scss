@@ -77,6 +77,10 @@
             line-height:24px;
             word-break:keep-all;
         }
+        &.email-inquiry-process {
+            margin-top: 48px;
+        }
+
         @include pc {
             padding:0 40px;
             .process-list {
@@ -608,6 +612,13 @@
             .field-wrap {
                 min-height: 288px;
             }
+        }
+        @include mobile {
+            [class*="col-"] {
+                .field-wrap {
+                    min-height: auto;
+                }
+            }   
         }
     }
 }
