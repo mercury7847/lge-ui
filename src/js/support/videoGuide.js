@@ -43,7 +43,7 @@
                         var popular = data.popular,
                             newest = data.newest;
 
-                        if (popular) {
+                        if (popular.listData) {
                             popular.listData.forEach(function(item) {
                                 html += vcui.template(listDataTmpl, item);
                             });
@@ -54,7 +54,7 @@
                             html = '';
                         }
 
-                        if (newest) {
+                        if (newest.listData) {
                             newest.listData.forEach(function(item) {
                                 html += vcui.template(listDataTmpl, item);
                             });
