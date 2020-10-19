@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTC/UTC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>매월 납부금 할인 내역 팝업 열기</span></button>
+    </div>
+
+    <!-- 매월 납부금 할인내역 popup -->
+    <article id="popup" class="popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit"><span>매월 납부금 할인 내역</span></h1>
+        </header>
+        <section class="pop-conts no-footer mypage-pop">
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">의무 사용기간 5년/계약기간 5년</h2>
+                </div>
+                <div class="fee-info-wrap">
+                    <dl>
+                        <dt>예상월요금</dt>
+                        <dd>36,900원</dd>
+                    </dl>
+                    <dl>
+                        <dt>제휴카드[신한] LG전자 렌탈애(愛)</dt>
+                        <dd class="minus">- 23,000원</dd>
+                    </dl>
+                    <dl class="total">
+                        <dt>최적 혜택가격</dt>
+                        <dd>13,900원</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">의무 사용기간 및 무상할인 적용 납부 금액 예</h2>
+                </div>
+                <div class="tb_row">
+                    <table>
+                        <caption>무상할인 제공 및 의무사용하는 기간 동안의 연차별 납부 금액 안내</caption>
+                        <colgroup>
+                            <col style="width:25%">
+                            <col style="width:25%">
+                            <col>
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th scope="col">납부회수</th>
+                            <th scope="col">납부금액</th>
+                            <th scope="col">비고</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1~5회</td>
+                            <td>36,000원</td>
+                            <td></td>
+                        </tr>
+                        <tr class="point">
+                            <td>6회</td>
+                            <td>0원</td>
+                            <td>무상할인제공</td>
+                        </tr>
+                        <tr>
+                            <td>7~ 11회</td>
+                            <td>36,900원</td>
+                            <td></td>
+                        </tr>
+                        <tr class="point">
+                            <td>12 회</td>
+                            <td>0원</td>
+                            <td>무상할인제공</td>
+                        </tr>
+                        <tr>
+                            <td>13~ 36회</td>
+                            <td>36,900원</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>37~ 60회</td>
+                            <td>13,900원</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>37~ 60회</td>
+                            <td>13,900원</td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="btm_info">
+                        <p>최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, 제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다.</p>
+                        <a href="#n" class="btn bd-pink btn-small"><span>제휴카드 할인 혜택 자세히 보기</span></a>
+                    </div>
+                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "topBorder" : true,
+                    "bulletTit" : "케어솔루션 안내",
+                    "bulletTxt" : [
+                        "렌탈(케어솔루션) 총요금은 대표요금제 기준이며, 요금제에 따라 총 비용이 다를 수 있습니다.",
+                        "5년 동안 무상 A/S(계약 기간 내)",
+                        "초기구입비용 0원(60개월 분할 납부)"
+                    ]
+                })
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 매월 납부금 할인내역 popup -->
+</body>
+</html>
