@@ -522,6 +522,8 @@
 
     .divisions {
         @include clearfix;
+        max-width:1146px;
+        margin:0 auto;
         padding: 0 40px;
         .col-6 {
             float: left;
