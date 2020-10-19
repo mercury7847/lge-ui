@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTC/UTC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>케어솔루션 약관/유의사항 안내 팝업 열기</span></button>
+    </div>
+
+    <!-- 케어솔루션 약관/유의사항 안내 popup -->
+    <article id="popup" class="popup-wrap full">
+        <header class="pop-header">
+            <h1 class="tit"><span>케어솔루션 약관/유의사항 안내</span></h1>
+        </header>
+        <section class="pop-conts rmsf-pop">
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">케어솔루션 약관(필수)</h2>
+                </div>
+                <div class="agree-cont-wrap">
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk1-1" name="chk1-1" checked>
+                            <label for="chk1-1">동의합니다. <br class="mob-only">(동의해야만 신청이 가능합니다.)</label>
+                        </span>
+                    </div>
+                    <div class="agree-cont-box">
+                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                        1) 필수 : 이름, 휴대전화번호, 주소<br>
+                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                        1) 필수 : 이름, 휴대전화번호, 주소<br>
+                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                    </div>
+                </div>
+            </div>
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">유의사항에 대한 안내(필수)</h2>
+                </div>
+                <div class="agree-cont-wrap">
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk1-2" name="chk1-2" checked>
+                            <label for="chk1-2">확인합니다. <br class="mob-only">(확인해야만 신청이 가능합니다.)</label>
+                        </span>
+                    </div>
+                    <div class="agree-cont-box">
+                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                        1) 필수 : 이름, 휴대전화번호, 주소<br>
+                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                        1) 필수 : 이름, 휴대전화번호, 주소<br>
+                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="pop-footer">
+            <div class="btn-group">
+                <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+                <button type="button" class="btn pink"><span>확인</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 케어솔루션 약관/유의사항 안내 popup -->
+</body>
+</html>
