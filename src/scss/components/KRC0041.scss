@@ -5,9 +5,15 @@
 .KRC0041 {
 	.title {
 		margin-bottom:36px;
+		font-weight:700;
 		font-size:18px;
 		line-height:42px;
 		text-align:center;
+		* {
+			font-weight:inherit;
+			font-size:inherit;
+			line-height:inherit;
+		}
 	}
 
 	.compare-list {
