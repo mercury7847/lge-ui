@@ -313,4 +313,38 @@
             }
         }
     }
+    &.tit-line3 {
+        .pop-header {
+            .tit span {
+                br {
+                    display:none;
+                }
+                @include mobile {
+                    height:81px;
+                    br {
+                        display:block;
+                    }
+                }
+            }
+        }
+        @include mobile {
+            .pop-conts {
+                height:calc(100% - 135px - 27px - 27px);
+                max-height:calc(100% - 135px - 27px - 27px);
+                &.no-footer {
+                    height:calc(100% - 129px);
+                    max-height:calc(100% - 129px);
+                }
+            }
+        }
+    }
+}
+
+
+// 공통 팝업
+// 배송지 관리
+.popup-wrap {
+    .common-pop {
+    
+    }
 }
