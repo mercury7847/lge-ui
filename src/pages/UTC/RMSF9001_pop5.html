@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTC/UTC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 팝업 열기</span></button>
+    </div>
+
+    <!-- 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
+    <article id="popup" class="popup-wrap middle tit-line3">
+        <header class="pop-header">
+            <h1 class="tit"><span>제휴카드 발급/변경 <br>자동 등록을 위한 <br>제3자 정보제공 동의</span></h1>
+        </header>
+        <section class="pop-conts rmsf-pop">
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">개인정보 수집 및 이용에 대한 안내</h2>
+                </div>
+                <div class="txt-cont">
+                    <dl class="dl-txt-cont">
+                        <dt>1. 제공처</dt>
+                        <dd>신한카드, BC카드, 우리카드, 롯데카드, 하나카드, NH카드, KB카드<br>(단, 고객정보는 제 3자 제공 동의 신청한 카드사에게만 제공됨)</dd>
+                    </dl>
+                    <dl class="dl-txt-cont">
+                        <dt>2. 제공 목적</dt>
+                        <dd>
+                            고객이 신청한 카드사에서 케어솔루션 제휴카드 발급/변경 등록 처리 하기 위해 제공되며, 제공 후 처리사항은 아래와 같음.<br>
+                            - 제휴카드 발급을 위한 카드사의 카드발급 전화 발신<br>
+                            - 제휴카드 발급 승인 후 LG전자 케어솔루션 결제방법 등록 및 자동이체 청구<br>
+                            - 카드사 기존 고객 여부 확인
+                        </dd>
+                    </dl>
+                    <dl class="dl-txt-cont">
+                        <dt>3. 제공 항목</dt>
+                        <dd>제휴카드 신청정보, 고객명, 휴대폰번호, 고객본인 확인 정보(CI, 생년월일, 성별, 통신사)</dd>
+                    </dl>
+                    <dl class="dl-txt-cont">
+                        <dt>4. 보유 이용 기간</dt>
+                        <dd>
+                            - LG전자 : 계약 해지 시점까지 또는 고객의 정보 제공 동의 철회시까지<br>
+                            - 제 3자 이용기관 : 제휴카드 발급 목적 달성 시점까지 또는 고객의 정보 제공 동의 철회시까지
+                        </dd>
+                    </dl>
+                    <p class="sub-txt">※ 고객님께서는 정보 활용에 동의하지 않을 권리가 있으며, 동의하지 않더라도 케어솔루션 계약 체결에 제한이 없습니다.</p>
+                </div>
+            </div>
+        </section>
+        <footer class="pop-footer">
+            <div class="btn-group">
+                <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+                <button type="button" class="btn pink"><span>동의</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
+</body>
+</html>

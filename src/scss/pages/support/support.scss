@@ -440,7 +440,35 @@
         }
     }
 
-    .choice-input {margin-bottom: 16px;}
+    .choice-input {
+        margin-bottom: 16px;
+        .rdo-wrap {
+            &.box-type {
+                max-width: 220px;
+                width: calc(25% - 12px);
+                margin-left: 21px;
+                input {
+                    +label {
+                        padding: 21px 16px 21px 48px;
+                        &::before {
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                        &::after {
+                            top: 50%;
+                            transform: translateY(-50%) rotate(-45deg);
+                        }
+                    }
+                }
+                &:nth-child(4n+1) {
+                    margin-left: 0;
+                }
+                &:nth-child(n+5) {
+                    margin-top: 24px;
+                }
+            }
+        }
+    }
 
     .total-number {
         font-size: 16px;

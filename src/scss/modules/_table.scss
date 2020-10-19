@@ -78,3 +78,39 @@
         }
     }
 }
+
+// 세로형 테이블
+.tb-col {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align:left;
+        border-bottom:2px solid #ddd;
+        th, td {
+            border-top: 1px solid #ddd;
+        }
+        tr:first-child {
+            th, td {
+                border-top:2px solid #ddd;
+            }
+        }
+        th {
+            padding: 18px 24px;
+            background:#f4f4f4;
+            color:#616161;
+            font-size:14px;
+            font-weight:400;
+            line-height:20px;
+            vertical-align:top;
+        }
+        td {
+            padding: 16px 24px;
+            color: #222;
+            font-size: 16px;
+            line-height: 24px;
+        }
+        .al-center {
+            text-align:left;
+        }
+    }
+}
