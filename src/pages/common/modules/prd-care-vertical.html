@@ -1,12 +1,14 @@
+@@if(context.moduleType === "module-type1" || context.moduleType === "module-type2" || context.moduleType === "module-type3" || context.moduleType === "module-type4") {
 <li class="item">
     <div class="prd-care-vertical @@moduleType">
         <!--
             [.prd-care-vertical 옵션]
             1. 타입
-            .module-type1 : 케어솔루션 제품
+            .module-type1 : 케어솔루션 제품 (default)
             .module-type2 : 유상 케어십
             .module-type3 : 보유 제품 케어십
             .module-type4 : 용역 제품 케어십
+            .module-empty : 보유제품 등록/ 찾기
         -->
         <div class="img-wrap">
             <a href="#n">
@@ -19,10 +21,16 @@
                     <span class="blind">제품 디스플레이 네임</span>@@title
                 </a>
             </p>
+            @@if(context.code) {
             <p class="code"><span class="blind">제품 코드</span>@@code</p>
+            }
         </div>
         <div class="info-wrap">
             <div class="opt-info">
+                @@if(context.codeTxt) {
+                <p class="code-txt">@@codeTxt</p>
+                }
+                @@if(context.colorSet) {
                 <dl>
                     <dt>색상</dt>
                     <dd class="color-opt" role="radiogroup">
@@ -46,6 +54,8 @@
                         </div>
                     </dd>
                 </dl>
+                }
+                @@if(context.appFee) {
                 <dl>
                     <dt>가입비</dt>
                     <dd>
@@ -61,6 +71,8 @@
                         </ul>
                     </dd>
                 </dl>
+                }
+                @@if(context.useDay) {
                 <dl>
                     <dt>의무사용</dt>
                     <dd>
@@ -76,6 +88,16 @@
                         </ul>
                     </dd>
                 </dl>
+                }
+                @@if(context.dateInfo) {
+                    @@for (var i = 0; i < context.dateInfo.length; i++) {
+                <dl>
+                    <dt>`+dateInfo[i].name+`</dt>
+                    <dd>`+dateInfo[i].date+`</dd>
+                </dl>
+                    }
+                }
+                @@if(context.visitDay) {
                 <dl>
                     <dt>방문주기</dt>
                     <dd>
@@ -91,11 +113,36 @@
                         </ul>
                     </dd>
                 </dl>
+                }
             </div>
-            <dl class="price-info">
-                <dt>월 요금</dt>
-                <dd>@@price원</dd>
-            </dl>
+            <div class="price-wrap">
+                @@if(context.sellPrice || context.benefitPrice || context.monthPrice) {
+                <div class="price-info">
+                    @@if (context.sellPrice) {
+                    <dl>
+                        <dt>@@sellPrice.name</dt>
+                        <dd>@@sellPrice.price원</dd>
+                    </dl>
+                    }
+                    @@if (context.benefitPrice) {
+                    <dl class="benefit">
+                        <dt>@@benefitPrice.name</dt>
+                        <dd>@@benefitPrice.price원</dd>
+                    </dl>
+                    }
+                    @@if (context.monthPrice) {
+                    <dl>
+                        <dt>@@monthPrice.name</dt>
+                        <dd>@@monthPrice.price원</dd>
+                    </dl>
+                    }
+                </div>
+                }
+                <dl class="total-price">
+                    <dt>@@priceName</dt>
+                    <dd>@@totalPrice원</dd>
+                </dl>
+            </div>
         </div>
 
         <div class="prd-add">
@@ -103,3 +150,28 @@
         </div>
     </div>
 </li>
+}
+
+@@if (context.moduleType === "module-empty") {
+<li class="item">
+    <div class="prd-care-vertical @@moduleType">
+        <!--
+            [.prd-care-vertical 옵션]
+            1. 타입
+            .module-type1 : 케어솔루션 제품 (default)
+            .module-type2 : 유상 케어십
+            .module-type3 : 보유 제품 케어십
+            .module-type4 : 용역 제품 케어십
+            .module-empty : 보유제품 등록/ 찾기
+        -->
+        <div class="empty-wrap">
+            <p class="tit">@@tit</p>
+            <span class="txt">@@txt</span>
+            @@if(context.etcTxt) {
+                <span class="etc-txt">@@etcTxt</span>
+            }
+            <a href="#n" class="btn pink"><span>@@btnTxt</span></a>
+        </div>
+    </div>
+</li>
+}
