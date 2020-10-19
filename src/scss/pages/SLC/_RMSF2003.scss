@@ -1,229 +1,54 @@
 @charset "UTF-8";
 
-.care-plan {
-    .cont-wrap {
-        padding:0 0 120px;
-        background:#fff;
-        @include mobile {
-            border:none;
-        }
+.prd-care-horizon {
+    display:table;
+    position:relative;
+    width:100%;
+    padding:16px 51px 16px 0;
+    table-layout:fixed;
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:4px;
+    // overflow:hidden;
+    @include mobile {
+        padding:24px 18px 24px 0;
+        border-radius:8px;
     }
-
-    .prd-care-horizon {
-        display:table;
-        position:relative;
-        width:100%;
-        padding:16px 51px 16px 0;
-        table-layout:fixed;
-        background:#fff;
-        border:1px solid #ddd;
-        border-radius:4px;
-        // overflow:hidden;
+    .img-wrap {
+        display:table-cell;
+        width:120px;
+        vertical-align:top;
         @include mobile {
-            padding:24px 18px 24px 0;
-            border-radius:8px;
+            width:100px;
         }
-        .img-wrap {
-            display:table-cell;
+        img {
+            display:block;
             width:120px;
-            vertical-align:top;
+            height:120px;
+            overflow:hidden;
             @include mobile {
                 width:100px;
-            }
-            img {
-                display:block;
-                width:120px;
-                height:120px;
-                overflow:hidden;
-                @include mobile {
-                    width:100px;
-                    height:100px;
-                }
-            }
-        }
-        .txt-wrap {
-            display:table-cell;
-            width:100%;
-            vertical-align:top;
-            @include mobile {
-                padding:0;
-            }
-            .tit-info {
-                height:68px;
-                margin-top:4px;
-                @include mobile {
-                    height:54px;
-                }
-                .tit {
-                    max-height:48px;
-                    font-size:16px;
-                    line-height:24px;
-                    font-weight:700;
-                    overflow:hidden;
-                    text-overflow:ellipsis;
-                    word-break:break-all;
-                    -moz-line-clamp: 2;
-                    -ms-line-clamp: 2;
-                    -webkit-line-clamp: 2;
-                    @include mobile {
-                        font-size:14px;
-                        line-height:18px;
-                        max-height:36px;
-                    }
-                }
-                .code {
-                    color:#616161;
-                    font-size:14px;
-                    line-height:20px;
-                    overflow:hidden;
-                    text-overflow:ellipsis;
-                    white-space:nowrap;
-                    @include mobile {
-                        font-size:14px;
-                        line-height:18px;
-                    }
-                }
-            }
-            .etc {
-                padding-top:4px;
-                font-size:16px;
-                line-height:24px;
-                word-break:break-all;
-                @include mobile {
-                    padding-top:8px;
-                    font-size:14px;
-                    line-height:18px;
-                }
-            }
-        }
-        .del-item {
-            position:absolute;
-            top:16px;
-            right:16px;
-            width:24px;
-            height:24px;
-            .btn-del {
-                position: relative;
-                width:24px;
-                height:24px;
-                &:before, &:after {
-                    content: '';
-                    position:absolute;
-                    top:calc( 50% - 8px);
-                    left:50%;
-                    width:1.3px;
-                    height:16px;
-                    background-color:#222;
-                    transform:translateX(-50%);
-                }
-                &:before {
-                    transform:rotate(-45deg);
-                }
-                &:after {
-                    transform:rotate(45deg);
-                }
+                height:100px;
             }
         }
     }
-
-    .prd-care-vertical {
-        position:relative;
-        height:586px;
-        padding:0 24px 40px;
-        background:#fff;
-        border-radius:4px;
-        box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.06);
-        overflow:hidden;
+    .txt-wrap {
+        display:table-cell;
+        width:100%;
+        vertical-align:top;
         @include mobile {
-            height:auto;
-            padding:0 20px 32px;
+            padding:0;
         }
-        .prd-add {
-            position:absolute;
-            top:24px;
-            left:24px;
-            z-index:1;
+        .tit-info {
+            height:68px;
+            margin-top:4px;
             @include mobile {
-                top:20px;
-                height:20px;
-            }
-            .btn-add {
-                position:relative;
-                height:24px;
-                padding:0 12px;
-                border:1.3px solid #808080;
-                border-radius:12px;
-                span {
-                    position:relative;
-                    padding-left:14px;
-                    color:#808080;
-                    font-size:14px;
-                    line-height:22px;
-                    @include mobile {
-                        font-size:12px;
-                        line-height:16px;
-                    }
-                    &:before {
-                        content:'';
-                        display:block;
-                        position:absolute;
-                        top:50%;
-                        left:4.5px;
-                        width:1px;
-                        height:10px;
-                        transform:translateY(-50%);
-                        background:#808080;
-                    }
-                    &:after {
-                        content:'';
-                        display:block;
-                        position:absolute;
-                        top:50%;
-                        left:0;
-                        width:10px;
-                        height:1px;
-                        transform:translateY(-50%);
-                        background:#808080;
-                    }
-                }
-                &:hover {
-                    border-color:#EC455A;
-                    span {
-                        color:#EC455A;
-                        &:before , &:after {
-                            background:#EC455A;
-                        }
-                    }
-                }
-            }
-        }
-        .img-wrap {
-            text-align:center;
-            a {
-                display:block;
-            }
-            img {
-                display:inline-block;
-                width:226px;
-                height:226px;
-                overflow:hidden;
-                @include mobile {
-                    width:150px;
-                    height:150px;
-                }
-            }
-        }
-        .txt-wrap {
-            margin-top:24px;
-            font-size:16px;
-            line-height:24px;
-            height:72px;
-            @include mobile {
-                height:auto;
-                margin-top:12px;
+                height:54px;
             }
             .tit {
                 max-height:48px;
+                font-size:16px;
+                line-height:24px;
                 font-weight:700;
                 overflow:hidden;
                 text-overflow:ellipsis;
@@ -231,30 +56,354 @@
                 -moz-line-clamp: 2;
                 -ms-line-clamp: 2;
                 -webkit-line-clamp: 2;
+                @include mobile {
+                    font-size:14px;
+                    line-height:18px;
+                    max-height:36px;
+                }
             }
             .code {
+                color:#616161;
+                font-size:14px;
+                line-height:20px;
                 overflow:hidden;
                 text-overflow:ellipsis;
                 white-space:nowrap;
-            }
-        }
-        .info-wrap {
-            padding-top:24px;
-            @include mobile {
-                padding-top:14px;
-            }
-            dl {
-                display:table;
-                width:100%;
-                table-layout:fixed;
-                dt, dd {
-                    display:table-cell;
-                    vertical-align:middle;
+                @include mobile {
+                    font-size:14px;
+                    line-height:18px;
                 }
             }
-            .opt-info {
+        }
+        .etc {
+            padding-top:4px;
+            font-size:16px;
+            line-height:24px;
+            word-break:break-all;
+            @include mobile {
+                padding-top:8px;
+                font-size:14px;
+                line-height:18px;
+            }
+        }
+    }
+    .del-item {
+        position:absolute;
+        top:16px;
+        right:16px;
+        width:24px;
+        height:24px;
+        .btn-del {
+            position: relative;
+            width:24px;
+            height:24px;
+            &:before, &:after {
+                content: '';
+                position:absolute;
+                top:calc( 50% - 8px);
+                left:50%;
+                width:1.3px;
+                height:16px;
+                background-color:#222;
+                transform:translateX(-50%);
+            }
+            &:before {
+                transform:rotate(-45deg);
+            }
+            &:after {
+                transform:rotate(45deg);
+            }
+        }
+    }
+}
+
+.prd-care-vertical {
+    position:relative;
+    height:586px;
+    padding:0 24px 40px;
+    background:#fff;
+    border-radius:4px;
+    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.06);
+    overflow:hidden;
+    @include mobile {
+        height:auto;
+        padding:0 20px 32px;
+    }
+    .prd-add {
+        position:absolute;
+        top:24px;
+        left:24px;
+        z-index:1;
+        @include mobile {
+            top:20px;
+            height:20px;
+        }
+        .btn-add {
+            position:relative;
+            height:24px;
+            padding:0 12px;
+            border:1.3px solid #808080;
+            border-radius:12px;
+            span {
+                position:relative;
+                padding-left:14px;
+                color:#808080;
+                font-size:14px;
+                line-height:22px;
+                @include mobile {
+                    font-size:12px;
+                    line-height:16px;
+                }
+                &:before {
+                    content:'';
+                    display:block;
+                    position:absolute;
+                    top:50%;
+                    left:4.5px;
+                    width:1px;
+                    height:10px;
+                    transform:translateY(-50%);
+                    background:#808080;
+                }
+                &:after {
+                    content:'';
+                    display:block;
+                    position:absolute;
+                    top:50%;
+                    left:0;
+                    width:10px;
+                    height:1px;
+                    transform:translateY(-50%);
+                    background:#808080;
+                }
+            }
+            &:hover {
+                border-color:#EC455A;
+                span {
+                    color:#EC455A;
+                    &:before , &:after {
+                        background:#EC455A;
+                    }
+                }
+            }
+        }
+    }
+    .img-wrap {
+        text-align:center;
+        a {
+            display:block;
+        }
+        img {
+            display:inline-block;
+            width:226px;
+            height:226px;
+            overflow:hidden;
+            @include mobile {
+                width:150px;
+                height:150px;
+            }
+        }
+    }
+    .txt-wrap {
+        margin-top:24px;
+        font-size:16px;
+        line-height:24px;
+        height:72px;
+        @include mobile {
+            height:auto;
+            margin-top:12px;
+        }
+        .tit {
+            max-height:48px;
+            font-weight:700;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            word-break:break-all;
+            -moz-line-clamp: 2;
+            -ms-line-clamp: 2;
+            -webkit-line-clamp: 2;
+        }
+        .code {
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+        }
+    }
+    .info-wrap {
+        padding-top:24px;
+        @include mobile {
+            padding-top:14px;
+        }
+        dl {
+            display:table;
+            width:100%;
+            table-layout:fixed;
+            dt, dd {
+                display:table-cell;
+                vertical-align:middle;
+            }
+        }
+        .opt-info {
+            dl {
+                padding-top:12px;
+                &:first-child {
+                    padding-top:0;
+                }
+                dt {
+                    width:75px;
+                    color:#616161;
+                    font-size:14px;
+                    line-height:20px;
+                    @include mobile {
+                        line-height:18px;
+                    }
+                }
+                dd {
+                    width:100%;
+                    // width:180px;
+                    text-align:right;
+                    &.color-opt {
+                        text-align:center;
+                        .slide-wrap {
+                            margin:0 30px;
+                            .slide-content {
+                                text-align:center;
+                                .slide-track {
+                                    display:inline-block;
+                                }
+                            }
+                            .slide-controls {
+                                display:block;
+                                .btn-arrow {
+                                    &.prev {
+                                        left:-20px;
+                                    } 
+                                    &.next {
+                                        right:-20px;
+                                    }
+
+                                    &:before {
+                                        width:10px;
+                                        height:10px;
+                                        margin-top:-5px;
+                                        border-width:1px;
+                                    }
+                                }
+                            }
+                        }
+                        .chk-wrap-colorchip {
+                            input {
+                                &+ label {
+                                    width:24px;
+                                    height:24px;
+                                    padding-left:0;
+                                }
+                                &:checked + label:after {
+                                    border-color:#EC455A;
+                                }
+                            } 
+                        }
+                    }
+                    .rdo-tab-wrap {
+                        display:table; 
+                        width:100%; 
+                        table-layout:fixed;
+                        > li {
+                            display:table-cell;
+                            vertical-align:middle;
+                            .rdo-wrap {
+                                display:block; 
+                                position:relative; 
+                                height:28px; 
+                                margin:0 -1px -1px 0;
+                                @include mobile {
+                                    height:32px;
+                                }
+                                input + label {
+                                    display:block;
+                                    width:100%;
+                                    height:28px;
+                                    padding-left:0;
+                                    background:#fff;
+                                    border:1px solid #ddd;
+                                    color:#8d8d8d;
+                                    font-size:14px;
+                                    line-height:26px;
+                                    text-align:center;
+                                    cursor:pointer;
+                                    @include mobile {
+                                        height:32px;
+                                        line-height:30px;
+                                    }
+                                }
+                                input:checked + label {
+                                    position:absolute;
+                                    top:0;
+                                    left:0;
+                                    border:1px solid #EC455A;
+                                    color:#EC455A;
+                                    z-index:1;
+                                    &:before, &:after {
+                                        display:none;
+                                    }
+                                }
+                                input:not(:checked) + label {
+                                    padding-left:0;
+                                    &:before, &:after {
+                                        display:none;
+                                    }
+                                }
+                            }
+                            &:first-child {
+                                input + label {
+                                    border-radius:8px 0 0 8px;
+                                }
+                            }
+                            &:last-child {
+                                input + label{
+                                    border-radius:0 8px 8px 0;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .price-wrap {
+            position:absolute;
+            left:24px;
+            right:24px;
+            bottom:40px;
+            @include mobile {
+                position:static;
+                padding-top:18px;
+            }
+            .total-price {
+                dt {
+                    width:70%;
+                    font-size:16px;
+                    line-height:24px;
+                }
+                dd {
+                    width:100%;
+                    font-size:24px;
+                    line-height:32px;
+                    font-weight:700;
+                    text-align:right;
+                    @include mobile {
+                        font-size:20px;
+                        line-height:27px;
+                    }
+                }
+            }
+            .price-info {
                 dl {
-                    padding-top:12px;
+                    padding-top:8px;
+                    @include mobile {
+                        padding-top:12px;
+                    }
                     &:first-child {
                         padding-top:0;
                     }
@@ -263,294 +412,55 @@
                         color:#616161;
                         font-size:14px;
                         line-height:20px;
-                        @include mobile {
-                            line-height:18px;
-                        }
                     }
                     dd {
-                        width:100%;
-                        // width:180px;
+                        color:#808080;
+                        font-size:14px;
+                        line-height:20px;
+                        text-decoration:line-through;
                         text-align:right;
-                        &.color-opt {
-                            text-align:center;
-                            .slide-wrap {
-                                margin:0 30px;
-                                .slide-content {
-                                    text-align:center;
-                                    .slide-track {
-                                        display:inline-block;
-                                    }
-                                }
-                                .slide-controls {
-                                    display:block;
-                                    .btn-arrow {
-                                        &.prev {
-                                            left:-20px;
-                                        } 
-                                        &.next {
-                                            right:-20px;
-                                        }
-
-                                        &:before {
-                                            width:10px;
-                                            height:10px;
-                                            margin-top:-5px;
-                                            border-width:1px;
-                                        }
-                                    }
-                                }
-                            }
-                            .chk-wrap-colorchip {
-                                input {
-                                    &+ label {
-                                        width:24px;
-                                        height:24px;
-                                        padding-left:0;
-                                    }
-                                    &:checked + label:after {
-                                        border-color:#EC455A;
-                                    }
-                                } 
-                            }
-                        }
-                        .rdo-tab-wrap {
-                            display:table; 
-                            width:100%; 
-                            table-layout:fixed;
-                            > li {
-                                display:table-cell;
-                                vertical-align:middle;
-                                .rdo-wrap {
-                                    display:block; 
-                                    position:relative; 
-                                    height:28px; 
-                                    margin:0 -1px -1px 0;
-                                    @include mobile {
-                                        height:32px;
-                                    }
-                                    input + label {
-                                        display:block;
-                                        width:100%;
-                                        height:28px;
-                                        padding-left:0;
-                                        background:#fff;
-                                        border:1px solid #ddd;
-                                        color:#8d8d8d;
-                                        font-size:14px;
-                                        line-height:26px;
-                                        text-align:center;
-                                        cursor:pointer;
-                                        @include mobile {
-                                            height:32px;
-                                            line-height:30px;
-                                        }
-                                    }
-                                    input:checked + label {
-                                        position:absolute;
-                                        top:0;
-                                        left:0;
-                                        border:1px solid #EC455A;
-                                        color:#EC455A;
-                                        z-index:1;
-                                        &:before, &:after {
-                                            display:none;
-                                        }
-                                    }
-                                    input:not(:checked) + label {
-                                        padding-left:0;
-                                        &:before, &:after {
-                                            display:none;
-                                        }
-                                    }
-                                }
-                                &:first-child {
-                                    input + label {
-                                        border-radius:8px 0 0 8px;
-                                    }
-                                }
-                                &:last-child {
-                                    input + label{
-                                        border-radius:0 8px 8px 0;
-                                    }
-                                }
-                            }
-                        }
-
                     }
-                }
-            }
-
-            .price-wrap {
-                position:absolute;
-                left:24px;
-                right:24px;
-                bottom:40px;
-                @include mobile {
-                    position:static;
-                    padding-top:18px;
-                }
-                .total-price {
-                    dt {
-                        width:70%;
-                        font-size:16px;
-                        line-height:24px;
-                    }
-                    dd {
-                        width:100%;
-                        font-size:24px;
-                        line-height:32px;
-                        font-weight:700;
-                        text-align:right;
-                        @include mobile {
-                            font-size:20px;
-                            line-height:27px;
-                        }
-                    }
-                }
-                .price-info {
-                    dl {
-                        padding-top:8px;
-                        @include mobile {
-                            padding-top:12px;
-                        }
-                        &:first-child {
-                            padding-top:0;
-                        }
-                        dt {
-                            width:75px;
-                            color:#616161;
-                            font-size:14px;
-                            line-height:20px;
-                        }
+                    &.benefit {
                         dd {
-                            color:#808080;
-                            font-size:14px;
-                            line-height:20px;
-                            text-decoration:line-through;
-                            text-align:right;
-                        }
-                        &.benefit {
-                            dd {
-                                color:#222;
-                                font-weight:700;
-                                text-decoration:none;
-                            }
-                        }
-                    }
-                    & + .total-price {
-                        padding-top:8px;
-                        @include mobile {
-                            padding-top:10px;
+                            color:#222;
+                            font-weight:700;
+                            text-decoration:none;
                         }
                     }
                 }
-            }
-        }
-
-        //유상 케어십
-        &.module-type2 {
-
-        }
-
-        //보유 제품 케어십
-        &.module-type3 {
-            .opt-info {
-                dl {
-                    padding-top:4px;
+                & + .total-price {
+                    padding-top:8px;
                     @include mobile {
                         padding-top:10px;
                     }
-                    &:first-child {
-                        padding-top:0;
-                    }
-                    &:last-child {
-                        padding-top:24px;
-                        @include mobile {
-                            padding-top:20px;
-                        }
-                    }
-                    dd {
-                        font-size:16px;
-                        line-height:24px;
-                        @include mobile {
-                            font-size:14px;
-                            line-height:18px;
-                        }
-                    }
-                }
-            }
-            .price-wrap {
-                padding-top:64px;
-                @include mobile {
-                    padding-top:18px;
                 }
             }
         }
-        
-        //용역 제품 케이섭
-        &.module-type4 {
-            .txt-wrap {
-                height:48px;
-                @include mobile {
-                    height:auto;
-                }
-            }
-            .info-wrap {
-                padding-top:28px;
-                @include mobile {
-                    padding-top:14px;
-                }
-                .opt-info {
-                    .code-txt {
-                        color:#616161;
-                        font-size:16px;
-                        line-height:24px;
-                        @include mobile {
-                            font-size:14px;
-                            line-height:18px;
-                        }
-                    }
-                    dl {
-                        padding-top:24px;
-                        @include mobile {
-                            padding-top:20px;
-                        }
-                    }
-                }
-                .price-wrap {
-                    padding-top:24px;
-                }
-            }
-        }
+    }
 
-        //보유제품 등록/ 찾기
-        &.module-empty {
-            .empty-wrap {
-                position:absolute;
-                top:50%;
-                left:24px;
-                right:24px;
-                -webkit-transform:translateY(-50%);
-                transform:translateY(-50%);
-                text-align:center;
+    //유상 케어십
+    &.module-type2 {
+
+    }
+
+    //보유 제품 케어십
+    &.module-type3 {
+        .opt-info {
+            dl {
+                padding-top:4px;
                 @include mobile {
-                    position:static;
-                    padding-top:32px;
-                    -webkit-transform:none;
-                    transform:none;
+                    padding-top:10px;
                 }
-                .tit {
-                    font-size:24px;
-                    line-height:32px;
-                    font-weight:700;
+                &:first-child {
+                    padding-top:0;
+                }
+                &:last-child {
+                    padding-top:24px;
                     @include mobile {
-                        font-size:20px;
-                        line-height:27px;
+                        padding-top:20px;
                     }
                 }
-                .txt {
-                    display:block;
-                    padding-top:16px;
+                dd {
                     font-size:16px;
                     line-height:24px;
                     @include mobile {
@@ -558,27 +468,116 @@
                         line-height:18px;
                     }
                 }
-                .etc-txt {
-                    display:block;
-                    padding-top:16px;
+            }
+        }
+        .price-wrap {
+            padding-top:64px;
+            @include mobile {
+                padding-top:18px;
+            }
+        }
+    }
+    
+    //용역 제품 케이섭
+    &.module-type4 {
+        .txt-wrap {
+            height:48px;
+            @include mobile {
+                height:auto;
+            }
+        }
+        .info-wrap {
+            padding-top:28px;
+            @include mobile {
+                padding-top:14px;
+            }
+            .opt-info {
+                .code-txt {
                     color:#616161;
-                    font-size:14px;
-                    line-height:20px;
+                    font-size:16px;
+                    line-height:24px;
                     @include mobile {
                         font-size:14px;
                         line-height:18px;
                     }
                 }
-                .btn {
-                    margin-top:40px;
+                dl {
+                    padding-top:24px;
                     @include mobile {
-                        width:100%;
+                        padding-top:20px;
                     }
                 }
+            }
+            .price-wrap {
+                padding-top:24px;
             }
         }
     }
 
+    //보유제품 등록/ 찾기
+    &.module-empty {
+        .empty-wrap {
+            position:absolute;
+            top:50%;
+            left:24px;
+            right:24px;
+            -webkit-transform:translateY(-50%);
+            transform:translateY(-50%);
+            text-align:center;
+            @include mobile {
+                position:static;
+                padding-top:32px;
+                -webkit-transform:none;
+                transform:none;
+            }
+            .tit {
+                font-size:24px;
+                line-height:32px;
+                font-weight:700;
+                @include mobile {
+                    font-size:20px;
+                    line-height:27px;
+                }
+            }
+            .txt {
+                display:block;
+                padding-top:16px;
+                font-size:16px;
+                line-height:24px;
+                @include mobile {
+                    font-size:14px;
+                    line-height:18px;
+                }
+            }
+            .etc-txt {
+                display:block;
+                padding-top:16px;
+                color:#616161;
+                font-size:14px;
+                line-height:20px;
+                @include mobile {
+                    font-size:14px;
+                    line-height:18px;
+                }
+            }
+            .btn {
+                margin-top:40px;
+                @include mobile {
+                    width:100%;
+                }
+            }
+        }
+    }
+}
+
+.care-plan {
+    .cont-wrap {
+        padding:0 0 120px;
+        background:#fff;
+        @include mobile {
+            border:none;
+        }
+    }
     .slide-wrap {
         .slide-content {
             margin:0 -6px;
@@ -723,6 +722,7 @@
         .fixed-tab-wrap {
             padding-top:56px;
             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
+            background:#fff;
             @include mobile {
                 padding-top:24px;
             }
