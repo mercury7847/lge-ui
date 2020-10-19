@@ -136,7 +136,7 @@
         z-index:1;
         @include mobile {
             top:20px;
-            height:20px;
+            left:20px;
         }
         .btn-add {
             position:relative;
@@ -152,7 +152,6 @@
                 line-height:22px;
                 @include mobile {
                     font-size:12px;
-                    line-height:16px;
                 }
                 &:before {
                     content:'';
@@ -265,7 +264,12 @@
                     &.color-opt {
                         text-align:center;
                         .slide-wrap {
-                            margin:0 30px;
+                            max-width:85px;
+                            margin:0 auto;
+                            @include mobile {
+                                max-width:100%;
+                                margin:0 30px;
+                            }
                             .slide-content {
                                 text-align:center;
                                 .slide-track {

@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRC0056 {
+	.bg-text-wrap {
+		position:relative;
+		@include mobile {
+			display:flex;
+			flex-direction:column;
+		}
+		@include pc {
+			&.text-white {
+				color:#fff;
+				* {
+					color:inherit !important;
+				}
+				.bullet-list .b-txt:before {
+					background-color:#fff;
+				}
+			}
+		}
+
+		// 1. 텍스트 영역
+		.text-area {
+			position:relative;
+			z-index:2;
+			max-width:1284px;
+			margin:0 auto;
+			padding:127px 0;
+			@include mobile {
+				order:1;
+				padding:40px 20px;
+			}
+			.item-wrap {
+				display:flex;
+				margin-top:80px;
+				&:first-child { margin-top:0; }
+				&.flex-left {
+					justify-content:flex-start;
+				}
+				&.flex-center {
+					justify-content:center;
+				}
+				&.flex-right {
+					justify-content:flex-end;
+				}
+				@include mobile {
+					margin-top:60px;
+				}
+				.item-inner {
+					$itemWidth_PC:(240px + 24px + 366px); // 썸네일폭 + 여백 + 텍스트영역
+					$itemWidth_MO:320px;
+					display:inline-flex;
+					flex-wrap:wrap;
+					max-width:$itemWidth_PC;
+					justify-content:space-between;
+					@include mobile {
+						display:block;
+						max-width:none;
+					}
+					.thumbnail {
+						width:(240px / $itemWidth_PC) * 100%;
+						& > img {
+							width:100%;
+							@include mobile {
+								min-width:240px;
+							}
+						}
+						@include mobile {
+							width:(240px / $itemWidth_MO) * 100%;
+						}
+					}
+					.item-info {
+						width:(366px / $itemWidth_PC) * 100%;
+						@include mobile {
+							width:100%;
+							margin-top:20px;
+						}
+						.item-tit {
+							display:block;
+							font-weight:700;
+							font-size:18px;
+							line-height:26px;
+							color:#111;
+							& * {
+								font-weight:inherit;
+								font-size:inherit;
+								line-height:inherit;
+								color:inherit;
+							}
+						}
+						.item-stit {
+							display:block;
+							margin-top:4px;
+							font-weight:700;
+							font-size:16px;
+							line-height:26px;
+						}
+						.item-txt {
+							display:block;
+							margin-top:12px;
+							font-weight:400;
+							font-size:14px;
+							line-height:20px;
+							color:#616161;
+						}
+						.item-btns {
+							margin-top:8px;
+						}
+					}
+					// .bullet-list {}
+				}
+			}
+		}
+
+		// 2-1. BG 이미지 영역
+		.visual-area {
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:0;
+			width:100%;
+			height:100%;
+			@include mobile {
+				position:relative;
+				order:0;
+				height:560px;
+			}
+			.bg {
+				display:block;
+				width:100%;
+				height:100%;
+				background: {
+					position:center center;
+					repeat:no-repeat;
+					size:cover;
+				}
+			}
+		}
+
+		// 2-2. BG 애니메이션 영역
+		.animation-area {
+			background-color:#222;
+			@include mobile {
+				position:relative;
+				order:0;
+				height:560px;
+			}
+		}
+	}
+}
