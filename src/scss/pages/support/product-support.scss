@@ -869,6 +869,11 @@
                     }
                 }
             }
+            @include mobile {
+                .result-box {
+                    padding:0 20px 56px;
+                }
+            }
         }
 
         /* video detail */

@@ -1,18 +1,21 @@
-<div class="pagination">
-    <button type="button" class="prev" value="" aria-disabled="false" disabled><span class="blind">이전 페이지 보기</span></button>
+@@if (context.last) {
+<div class="pagination" data-last-view="true" data-total-count="152">
+}
+@@if (!context.last) {
+<div class="pagination" data-total-count="152">
+}
+    <a href="#" class="prev disabled" data-page="" aria-disabled="false"><span class="blind">이전 페이지 보기</span></a>
     <span class="page_num">
         <strong><span class="blind">현재 페이지</span>1</strong>
-        @@if(context.count) {
-            @@for( var i = 2; i <= count; i++) {
-                <button type="button" value="`+i+`"  title="`+i+`페이지 보기">`+i+`</button>
+        @@ if(context.count) {
+            @@for (var i = 2; i <= count; i++) {
+                <a href="#" data-page="`+i+`"  title="`+i+`페이지 보기">`+i+`</a>
             }
         }
-        @@if (context.last) {
-            @@if(last === 'true') {
-                <span class="dot">...</span>
-                <button type="button" value="30" title="7페이지 보기">30</button>
-            }
+        @@ if (context.last) {
+            <span class="dot">...</span>
+            <a href="#" data-page="31" title="7페이지 보기">31</a>
         }
     </span>
-    <button type="button" class="next" aria-disabled="false" value="`+(context.count+1)+`"><span class="blind">다음 페이지 보기</span></button>
+    <a href="#" class="next" data-page="6" aria-disabled="false"><span class="blind">다음 페이지 보기</span></a>
 </div>
