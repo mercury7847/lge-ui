@@ -609,6 +609,13 @@
                 min-height: 288px;
             }
         }
+        @include mobile {
+            [class*="col-"] {
+                .field-wrap {
+                    min-height: auto;
+                }
+            }   
+        }
     }
 }
 

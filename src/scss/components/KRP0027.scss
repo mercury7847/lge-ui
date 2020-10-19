@@ -23,6 +23,11 @@
 			@include mobile {
 				padding:0 20px;
 			}
+			* {
+				font-weight:inherit;
+				font-size:inherit;
+				line-height:inherit;
+			}
 		}
 
 		// .tabs-wrap {}
