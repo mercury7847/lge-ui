@@ -10,9 +10,25 @@
 //케어플래너
 @import "RMSF2003";
 
-//상세 견적 확인
-.pop-conts.care-estimate-pop {
+
+.pop-conts.care-planner-pop {
+    .info-txt {
+        padding:12px 24px;
+        color:#616161;
+        font-size:16px;
+        line-height:24px;
+        background:#f4f4f4;
+        border-radius:8px;
+        @include mobile {
+            padding:12px 20px;
+        }
+    }
+
+    //상세 견적 확인
     @import "RMSF2020";
+
+    //내 제품 찾기
+    @import "RMSF2021";
 }
 
 
