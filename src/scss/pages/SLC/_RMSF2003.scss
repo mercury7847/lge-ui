@@ -723,6 +723,7 @@
         .fixed-tab-wrap {
             padding-top:56px;
             box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
+            background:#fff;
             @include mobile {
                 padding-top:24px;
             }
