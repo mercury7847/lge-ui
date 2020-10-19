@@ -5,110 +5,74 @@
     })
 <body>
     <div class="wrap">
-        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>매월 납부금 할인 내역 팝업 열기</span></button>
+        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>개인정보 수집 및 신용정보 제공 동의</span></button>
     </div>
 
-    <!-- 매월 납부금 할인내역 popup -->
-    <article id="popup" class="popup-wrap">
+    <!-- 개인정보 수집 및 신용정보 제공 동의 popup -->
+    <article id="popup" class="popup-wrap full">
         <header class="pop-header">
-            <h1 class="tit"><span>매월 납부금 할인 내역</span></h1>
+            <h1 class="tit"><span>개인정보 수집 및 신용정보 제공 동의</span></h1>
         </header>
-        <section class="pop-conts no-footer mypage-pop">
+        <section class="pop-conts rmsf-pop">
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">의무 사용기간 5년/계약기간 5년</h2>
+                    <h2 class="h2-tit">개인정보 수집 및 이용에 대한 안내</h2>
                 </div>
-                <div class="fee-info-wrap">
-                    <dl>
-                        <dt>예상월요금</dt>
-                        <dd>36,900원</dd>
-                    </dl>
-                    <dl>
-                        <dt>제휴카드[신한] LG전자 렌탈애(愛)</dt>
-                        <dd class="minus">- 23,000원</dd>
-                    </dl>
-                    <dl class="total">
-                        <dt>최적 혜택가격</dt>
-                        <dd>13,900원</dd>
-                    </dl>
-                </div>
-            </div>
-
-            <div class="input-info">
-                <div class="tit-wrap">
-                    <h2 class="h2-tit">의무 사용기간 및 무상할인 적용 납부 금액 예</h2>
-                </div>
-                <div class="tb_row">
-                    <table>
-                        <caption>무상할인 제공 및 의무사용하는 기간 동안의 연차별 납부 금액 안내</caption>
-                        <colgroup>
-                            <col style="width:25%">
-                            <col style="width:25%">
-                            <col>
-                        </colgroup>
-                        <thead>
-                        <tr>
-                            <th scope="col">납부회수</th>
-                            <th scope="col">납부금액</th>
-                            <th scope="col">비고</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1~5회</td>
-                            <td>36,000원</td>
-                            <td></td>
-                        </tr>
-                        <tr class="point">
-                            <td>6회</td>
-                            <td>0원</td>
-                            <td>무상할인제공</td>
-                        </tr>
-                        <tr>
-                            <td>7~ 11회</td>
-                            <td>36,900원</td>
-                            <td></td>
-                        </tr>
-                        <tr class="point">
-                            <td>12 회</td>
-                            <td>0원</td>
-                            <td>무상할인제공</td>
-                        </tr>
-                        <tr>
-                            <td>13~ 36회</td>
-                            <td>36,900원</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>37~ 60회</td>
-                            <td>13,900원</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>37~ 60회</td>
-                            <td>13,900원</td>
-                            <td></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class="btm_info">
-                        <p>최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, 제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다.</p>
-                        <a href="#n" class="btn bd-pink btn-small"><span>제휴카드 할인 혜택 자세히 보기</span></a>
+                <div class="agree-cont-wrap">
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk1-1" name="chk1-1" checked>
+                            <label for="chk1-1">동의합니다. <br class="mob-only">(동의해야만 신청이 가능합니다.)</label>
+                        </span>
+                    </div>
+                    <div class="agree-cont-box">
+                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                        1) 필수 : 이름, 휴대전화번호, 주소<br>
+                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                        1) 필수 : 이름, 휴대전화번호, 주소<br>
+                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
                     </div>
                 </div>
-                @@include('./common/modules/bullet-list.html', {
-                    "topBorder" : true,
-                    "bulletTit" : "케어솔루션 안내",
-                    "bulletTxt" : [
-                        "렌탈(케어솔루션) 총요금은 대표요금제 기준이며, 요금제에 따라 총 비용이 다를 수 있습니다.",
-                        "5년 동안 무상 A/S(계약 기간 내)",
-                        "초기구입비용 0원(60개월 분할 납부)"
-                    ]
-                })
+            </div>
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">신용정보 제공에 대한 안내</h2>
+                </div>
+                <div class="agree-cont-wrap">
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk1-2" name="chk1-2" checked>
+                            <label for="chk1-2">동의합니다. <br class="mob-only">(동의해야만 신청이 가능합니다.)</label>
+                        </span>
+                    </div>
+                    <div class="agree-cont-box">
+                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                        1) 필수 : 이름, 휴대전화번호, 주소<br>
+                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
+                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
+                        1) 필수 : 이름, 휴대전화번호, 주소<br>
+                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
+                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
+                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
+                    </div>
+                </div>
             </div>
         </section>
+        <footer class="pop-footer">
+            <div class="btn-group">
+                <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+                <button type="button" class="btn pink"><span>확인</span></button>
+            </div>
+        </footer>
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
-    <!-- // 매월 납부금 할인내역 popup -->
+    <!-- // 개인정보 수집 및 신용정보 제공 동의 popup -->
 </body>
 </html>
