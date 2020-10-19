@@ -70,7 +70,8 @@ var res = {
 			"KRC0045_Article List" : ["/html/components/KRC0045.html","","검수완료"],
 			//"KRC0046_Story & Products module_Dynamic" : ["/html/components/KRC0046.html","","진행중"],
 			"KRC0049_Layered component - Multi type" : ["/html/components/KRC0049.html","","진행중"],
-			"KRC0051_Recommend story - categoryhome " : ["/html/components/KRC0051.html","","진행중"],
+			"KRC0051_Recommend story - categoryhome" : ["/html/components/KRC0051.html","","진행중"],
+			"KRC0056_BG Image 3 Text" : ["/html/components/KRC0056.html","","진행중"],
 			"KRP0001_GNB - B2C" : ["/html/components/KRP0001.html","","검수완료"],
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","검수완료"],
@@ -171,7 +172,8 @@ var res = {
 			},
 			"장바구니(UTC)" : {
 				"장바구니(일반상품)" : ["/html/UTC/OBSF9001.html","","진행중"],
-				"장바구니(비회원)" : ["/html/UTC/OBSF9004.html","","진행중"]
+				"장바구니(비회원)" : ["/html/UTC/OBSF9004.html","","진행중"],
+				"케어솔루션" : ["/html/UTC/OBSF9003.html","","진행중"]
 			},
 			"주문결제(UTC)" : {
 				"개인정보 수집 및 신용정보 제공 동의 팝업" : ["/html/UTC/RMSF9001_pop1.html","","진행중"],
