@@ -104,28 +104,41 @@
                             <div class="inner">
                                 <div class="tabs-wrap btn-type">
                                     <ul class="tabs">
-                                        <li class="on"><a href="#n">렌탈(케어솔루션)<em class="blind">선택됨</em></a></li>
-                                        <li><a href="#n">케어십</a></li>
+                                        <li><a href="#n">렌탈(케어솔루션)</a></li>
+                                        <li class="on"><a href="#n">케어십<em class="blind">선택됨</em></a></li>
                                     </ul>
                                 </div>
 
                                 <div class="tabs-wrap border-type ui_tab">
                                     <ul class="tabs">
-                                        <li class="on"><a href="#n" data-cate-id="정수기">정수기<em class="blind">선택됨</em></a></li>
+                                        <li class="on"><a href="#n" data-cate-id="나의 제품">나의 제품(1)<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#n" data-cate-id="정수기">정수기</a></li>
                                         <li><a href="#n" data-cate-id="얼음정수기 냉장고">얼음정수기 냉장고</a></li>
-                                        <li><a href="#n" data-cate-id="맥주제조기">맥주제조기</a></li>
                                         <li><a href="#n" data-cate-id="공기청정기">공기청정기</a></li>
                                         <li><a href="#n" data-cate-id="건조기">건조기</a></li>
                                         <li><a href="#n" data-cate-id="스타일러">스타일러</a></li>
                                         <li><a href="#n" data-cate-id="전기레인지">전기레인지</a></li>
                                         <li><a href="#n" data-cate-id="식기세척기">식기세척기</a></li>
-                                        <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
+                                        <li><a href="#n" data-cate-id="청소기">청소기</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
                         <div class="care-top-wrap">
+                            <!-- ‘나의 제품’ 탭에서만 노출되는 안내 영역 -->
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTxt" : [
+                                    "등록 제품 중 케어십 가능 제품만 노출됩니다. 케어십 가입기간은 12개월이며 계약만료 시점에 계약해지 의사가 없을 시 자동 연장됩니다."
+                                ]
+                            })
+                            <!-- //‘나의 제품’ 탭에서만 노출되는 안내 영역 -->
+
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTxt" : [
+                                    "케어십 가입기간은 12개월이며 계약만료 시점에 계약해지 의사가 없을 시 자동 연장됩니다."
+                                ]
+                            })
                             <div class="sort-select-wrap">
                                 <select class="ui_selectbox" id="select1" title="리스트 정렬 순서 선택">
                                     <option value="popular">인기순</option>
@@ -139,9 +152,9 @@
 
                         <div class="prd-list-wrap">
                             <ul class="inner">
-                                <!-- loop -->
+                                <!-- 유상케어십 모듈 -->
                                 @@include('./common/modules/prd-care-vertical.html', {
-                                    "moduleType" : "module-type1",
+                                    "moduleType" : "module-type2",
                                     "visual" : "/lg5-common/images/dummy/@sample-226x226.jpg",
                                     "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프) 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음",
                                     "code" : "WU900AS 코드값 한줄 처리 코드값 한줄 처리 코드값 한줄 처리 코드값 한줄 처리 코드값 한줄 처리",
@@ -175,40 +188,6 @@
                                             "checked": ""
                                         }
                                     ],
-                                    "appFee" : [
-                                        {
-                                            "title" : "납부",
-                                            "id" : "rdo1-1",
-                                            "name" : "rdo1-1",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "미납부",
-                                            "id" : "rdo1-2",
-                                            "name" : "rdo1-1",
-                                            "checked" : ""
-                                        }
-                                    ],
-                                    "useDay" : [
-                                        {
-                                            "title" : "3년",
-                                            "id" : "rdo1-2-1",
-                                            "name" : "rdo1-2",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "4년",
-                                            "id" : "rdo1-2-2",
-                                            "name" : "rdo1-2",
-                                            "checked" : ""
-                                        },
-                                        {
-                                            "title" : "5년",
-                                            "id" : "rdo1-2-3",
-                                            "name" : "rdo1-2",
-                                            "checked" : ""
-                                        }
-                                    ],
                                     "visitDay" : [
                                         {
                                             "title" : "1개월",
@@ -221,76 +200,67 @@
                                             "id" : "rdo1-3-2",
                                             "name" : "rdo1-3",
                                             "checked" : ""
+                                        },
+                                        {
+                                            "title" : "6개월",
+                                            "id" : "rdo1-3-3",
+                                            "name" : "rdo1-3",
+                                            "checked" : ""
                                         }
 
                                     ],
-                                    "priceName" : "월 요금",
+                                    "sellPrice" : {
+                                        "name" : "판매가",
+                                        "price" : "1,334,500",
+                                    },
+                                    "benefitPrice" : {
+                                        "name" : "최대 혜택가",
+                                        "price" : "1,232,500",
+                                    },
+                                    "monthPrice" : {
+                                        "name" : "월 요금",
+                                        "price" : "21,5000",
+                                    },
+                                    "priceName" : "이달의 혜택가",
                                     "totalPrice" : "40,900",
                                 })
-                                <!-- //loop -->
+                                <!-- //유상케어십 모듈 -->
 
+                                <!-- 보유 제품 등록 모듈 -->
                                 @@include('./common/modules/prd-care-vertical.html', {
-                                    "moduleType" : "module-type1",
+                                    "moduleType" : "module-empty",
+                                    "tit" : "보유 제품 등록",
+                                    "txt" : "아직 등록하지 않은 구매 제품이<br>있으신가요?<br>보유 제품 등록하고 더 빠르게 관리 받아보세요.",
+                                    "btnTxt" : "제품 등록하기"
+                                })
+                                <!-- //보유 제품 등록 모듈 -->
+
+                                <!-- 보유 제품 찾기 모듈 -->
+                                @@include('./common/modules/prd-care-vertical.html', {
+                                    "moduleType" : "module-empty",
+                                    "tit" : "보유 제품 찾기",
+                                    "txt" : "모델명이 기억나지 않으시나요?<br>내 제품을 빠르게 찾아<br>케어십으로 관리 받아 보세요.",
+                                    "etcTxt" : "*얼음정수기냉장고, 공기청정기 건조기, 청소기 해당",
+                                    "btnTxt" : "내 제품 찾기"
+                                })
+                                <!-- //보유 제품 찾기 모듈 -->
+
+                                <!-- 보유제품케어십 모듈 -->
+                                @@include('./common/modules/prd-care-vertical.html', {
+                                    "moduleType" : "module-type3",
                                     "visual" : "/lg5-common/images/dummy/@sample-226x226.jpg",
                                     "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
                                     "code" : "WU900AS",
-                                    "colorSet" : [
+                                    "dateInfo" : [
                                         {
-                                            "title": "MC_K8_MoroccanBlue",
-                                            "color": "MC_K8_MoroccanBlue",
-                                            "id": "product2-color1",
-                                            "name": "product2",
-                                            "checked": "checked"
+                                            name : "구매일자",
+                                            date : "2020.01.30",
                                         },
                                         {
-                                            "title": "MC_Q7_Prime_LavenderViolet",
-                                            "color": "MC_Q7_Prime_LavenderViolet",
-                                            "id": "product2-color2",
-                                            "name": "product2",
-                                            "checked": ""
-                                        },
-                                        {
-                                            "title": "MC_G7_RaspberryRose",
-                                            "color": "MC_G7_RaspberryRose",
-                                            "id": "product2-color3",
-                                            "name": "product2",
-                                            "checked": ""
+                                            name : "보증기간",
+                                            date : "~ 2026.01.30",
                                         }
-                                    ],
-                                    "appFee" : [
-                                        {
-                                            "title" : "납부",
-                                            "id" : "rdo2-1",
-                                            "name" : "rdo2-1",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "미납부",
-                                            "id" : "rdo2-2",
-                                            "name" : "rdo2-1",
-                                            "checked" : ""
-                                        }
-                                    ],
-                                    "useDay" : [
-                                        {
-                                            "title" : "3년",
-                                            "id" : "rdo2-2-1",
-                                            "name" : "rdo2-2",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "4년",
-                                            "id" : "rdo2-2-2",
-                                            "name" : "rdo2-2",
-                                            "checked" : ""
-                                        },
-                                        {
-                                            "title" : "5년",
-                                            "id" : "rdo2-2-3",
-                                            "name" : "rdo2-2",
-                                            "checked" : ""
-                                        }
-                                    ],
+                                    ],   
                                     "visitDay" : [
                                         {
                                             "title" : "1개월",
@@ -303,68 +273,25 @@
                                             "id" : "rdo2-3-2",
                                             "name" : "rdo2-3",
                                             "checked" : ""
+                                        },
+                                        {
+                                            "title" : "6개월",
+                                            "id" : "rdo2-3-3",
+                                            "name" : "rdo2-3",
+                                            "checked" : ""
                                         }
-
                                     ],
-                                    "priceName" : "월 요금",
+                                    "priceName" : "이달의 혜택가",
                                     "totalPrice" : "40,900",
                                 })
+                                <!-- //보유제품케어십 모듈 -->
 
+                                <!-- 용역제품케어십 모듈 -->
                                 @@include('./common/modules/prd-care-vertical.html', {
-                                    "moduleType" : "module-type1",
+                                    "moduleType" : "module-type4",
                                     "visual" : "/lg5-common/images/dummy/@sample-226x226.jpg",
                                     "title" : "LG 퓨리케어 듀얼 냉온정수기 듀얼 냉온정수기",
-                                    "code" : "WU900AS",
-                                    "colorSet" : [
-                                        {
-                                            "title": "citrus",
-                                            "color": "citrus",
-                                            "id": "product3-color1",
-                                            "name": "product3",
-                                            "checked": "checked"
-                                        },
-                                        {
-                                            "title": "mint",
-                                            "color": "mint",
-                                            "id": "product3-color2",
-                                            "name": "product3",
-                                            "checked": ""
-                                        }
-                                    ],
-                                    "appFee" : [
-                                        {
-                                            "title" : "납부",
-                                            "id" : "rdo3-1",
-                                            "name" : "rdo3-1",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "미납부",
-                                            "id" : "rdo3-2",
-                                            "name" : "rdo3-1",
-                                            "checked" : ""
-                                        }
-                                    ],
-                                    "useDay" : [
-                                        {
-                                            "title" : "3년",
-                                            "id" : "rdo3-2-1",
-                                            "name" : "rdo3-2",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "4년",
-                                            "id" : "rdo3-2-2",
-                                            "name" : "rdo3-2",
-                                            "checked" : ""
-                                        },
-                                        {
-                                            "title" : "5년",
-                                            "id" : "rdo3-2-3",
-                                            "name" : "rdo3-2",
-                                            "checked" : ""
-                                        }
-                                    ],
+                                    "codeTxt" : "모델명이 ‘AS30***’ 또는 ‘AS28***’로 시작하는 공기청정기 전 제품 (색상 무관)",
                                     "visitDay" : [
                                         {
                                             "title" : "1개월",
@@ -377,29 +304,40 @@
                                             "id" : "rdo3-3-2",
                                             "name" : "rdo3-3",
                                             "checked" : ""
+                                        },
+                                        {
+                                            "title" : "6개월",
+                                            "id" : "rdo3-3-3",
+                                            "name" : "rdo3-3",
+                                            "checked" : ""
                                         }
-
                                     ],
-                                    "priceName" : "월 요금",
+                                    "monthPrice" : {
+                                        "name" : "월 요금",
+                                        "price" : "21,5000",
+                                    },
+                                    "priceName" : "이달의 혜택가",
                                     "totalPrice" : "40,900",
                                 })
+                                <!-- //용역제품케어십 모듈 -->
 
+                                <!-- 유상케어십 모듈 -->
                                 @@include('./common/modules/prd-care-vertical.html', {
-                                    "moduleType" : "module-type1",
+                                    "moduleType" : "module-type2",
                                     "visual" : "/lg5-common/images/dummy/@sample-226x226.jpg",
-                                    "title" : "스팀 건조기ThinQ",
+                                    "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프) 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음",
                                     "code" : "WU900AS",
                                     "colorSet" : [
                                         {
-                                            "title": "riviera-blue",
-                                            "color": "riviera-blue",
+                                            "title": "LeatherYellow",
+                                            "color": "LeatherYellow",
                                             "id": "product4-color1",
                                             "name": "product4",
                                             "checked": "checked"
                                         },
                                         {
-                                            "title": "PowderBlue",
-                                            "color": "PowderBlue",
+                                            "title": "PlatinumSilver",
+                                            "color": "PlatinumSilver",
                                             "id": "product4-color2",
                                             "name": "product4",
                                             "checked": ""
@@ -412,139 +350,42 @@
                                             "checked": ""
                                         },
                                         {
-                                            "title": "PlatinumSilver",
-                                            "color": "PlatinumSilver",
+                                            "title": "PowderBlue",
+                                            "color": "PowderBlue",
                                             "id": "product4-color4",
                                             "name": "product4",
                                             "checked": ""
                                         }
                                     ],
-                                    "appFee" : [
-                                        {
-                                            "title" : "납부",
-                                            "id" : "rdo4-1",
-                                            "name" : "rdo4-1",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "미납부",
-                                            "id" : "rdo4-2",
-                                            "name" : "rdo4-1",
-                                            "checked" : ""
-                                        }
-                                    ],
-                                    "useDay" : [
-                                        {
-                                            "title" : "3년",
-                                            "id" : "rdo4-2-1",
-                                            "name" : "rdo4-2",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "4년",
-                                            "id" : "rdo4-2-2",
-                                            "name" : "rdo4-2",
-                                            "checked" : ""
-                                        },
-                                        {
-                                            "title" : "5년",
-                                            "id" : "rdo4-2-3",
-                                            "name" : "rdo4-2",
-                                            "checked" : ""
-                                        }
-                                    ],
                                     "visitDay" : [
                                         {
                                             "title" : "1개월",
-                                            "id" : "rdo4-3-1",
-                                            "name" : "rdo4-3",
+                                            "id" : "rdo1-4-1",
+                                            "name" : "rdo1-4",
                                             "checked" : "checked"
                                         },
                                         {
                                             "title" : "3개월",
-                                            "id" : "rdo4-3-2",
-                                            "name" : "rdo4-3",
+                                            "id" : "rdo1-4-2",
+                                            "name" : "rdo1-4",
+                                            "checked" : ""
+                                        },
+                                        {
+                                            "title" : "6개월",
+                                            "id" : "rdo1-4-3",
+                                            "name" : "rdo1-4",
                                             "checked" : ""
                                         }
 
                                     ],
-                                    "priceName" : "월 요금",
+                                    "sellPrice" : {
+                                        "name" : "판매가",
+                                        "price" : "1,334,500",
+                                    },
+                                    "priceName" : "월요금",
                                     "totalPrice" : "40,900",
                                 })
-
-                                @@include('./common/modules/prd-care-vertical.html', {
-                                    "moduleType" : "module-type1",
-                                    "visual" : "/lg5-common/images/dummy/@sample-226x226.jpg",
-                                    "title" : "스팀 건조기ThinQ",
-                                    "code" : "WU900AS",
-                                    "colorSet" : [
-                                        {
-                                            "title": "Moon-Violet",
-                                            "color": "Moon-Violet",
-                                            "id": "product5-color1",
-                                            "name": "product5",
-                                            "checked": "checked"
-                                        },
-                                        {
-                                            "title": "PowderBlue",
-                                            "color": "PowderBlue",
-                                            "id": "product5-color2",
-                                            "name": "product5",
-                                            "checked": ""
-                                        }
-                                    ],
-                                    "appFee" : [
-                                        {
-                                            "title" : "납부",
-                                            "id" : "rdo5-1",
-                                            "name" : "rdo5-1",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "미납부",
-                                            "id" : "rdo5-2",
-                                            "name" : "rdo5-1",
-                                            "checked" : ""
-                                        }
-                                    ],
-                                    "useDay" : [
-                                        {
-                                            "title" : "3년",
-                                            "id" : "rdo5-2-1",
-                                            "name" : "rdo5-2",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "4년",
-                                            "id" : "rdo5-2-2",
-                                            "name" : "rdo5-2",
-                                            "checked" : ""
-                                        },
-                                        {
-                                            "title" : "5년",
-                                            "id" : "rdo5-2-3",
-                                            "name" : "rdo5-2",
-                                            "checked" : ""
-                                        }
-                                    ],
-                                    "visitDay" : [
-                                        {
-                                            "title" : "1개월",
-                                            "id" : "rdo5-3-1",
-                                            "name" : "rdo5-3",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "3개월",
-                                            "id" : "rdo5-3-2",
-                                            "name" : "rdo5-3",
-                                            "checked" : ""
-                                        }
-
-                                    ],
-                                    "priceName" : "월 요금",
-                                    "totalPrice" : "40,900",
-                                })
+                                <!-- //유상케어십 모듈 -->
                             </ul>
                         </div>
                     </div>
