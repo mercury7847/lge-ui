@@ -33,12 +33,12 @@
 
 		@@if (context.type === "bg-image") {
 		<div class="visual-area">
-			<span class="bg ui_bg_switch" data-pc-src="/lg5-common/images/KRC0056/@KRC0056-BG.jpg" data-m-src="/lg5-common/images/KRC0056/@KRC0056-BG.jpg" aria-hidden="true"></span>
+			<span class="bg ui_bg_switch" data-pc-src="@@imgUrlPC" data-m-src="@@imgUrlMO" aria-hidden="true"></span>
 		</div>
 		} @@if (context.type === "bg-animation") {
 		<div class="animation-area">
 			<video autoplay="" muted="" loop="">
-				<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+				<source src="@@aniUrl" type="video/mp4">
 				<!-- WEBM 동영상을 제공하는 경우
 				<source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
 				-->
