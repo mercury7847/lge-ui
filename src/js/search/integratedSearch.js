@@ -23,7 +23,6 @@
                 self.$searchLayer = $('#layerSearch');
                 self.$inputSearch = self.$searchLayer.find('div.input-sch input.txt');
                 self.$buttonSearch = self.$searchLayer.find('div.input-sch button.btn-search');
-                self.$buttonClearSearch = self.$searchLayer.find('div.input-sch button.btn-delete');
                 self.$search_result_area = self.$searchLayer.find('div.search-result-area');
                 self.$inputSearchList = self.$search_result_area.find('div.input-result-list');
                 self.$resultCount = self.$search_result_area.find('span.result-title');
