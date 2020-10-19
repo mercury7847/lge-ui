@@ -290,7 +290,7 @@
 	// disclaimer variation
 	&.full-size {
 		.component-inner {
-			max-width:1660px;
+			max-width:1660px !important;
 		}
 		.cont-head {
 			.title,
@@ -329,7 +329,7 @@
 	}
 	&.wide-size {
 		.component-inner {
-			max-width:1344px;
+			max-width:1344px !important;
 		}
 		.cpt-wrap {
 			max-width:1284px;
