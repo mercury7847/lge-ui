@@ -288,93 +288,6 @@
 
     .payment-amount-info {
         float: right;
-        width: 280px;
-        padding: 32px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.26);
-        border: 1px solid #ddd;
-        background-color: #fff;
-        @include mobile {
-            float: none;
-            width: 100%;
-            padding: 32px 20px;
-            .btn-area {
-                .btn {
-                    padding: 16px 0;
-                }
-                .btn-text {
-                    margin-top: 24px;
-                }
-            }
-        }
-        .title {
-            display: block;
-            margin-bottom: 18px;
-            font-weight: $font-weight-bold;
-            @include font-medium;
-        }
-        .text {
-            @include font-small;
-            letter-spacing: normal;
-            color: #616161;
-            em {
-                margin-left: 4px;
-                color: #ec455a;
-            }
-        }
-        .price {
-            @include font-medium;
-            text-align: right;
-            &.sale {
-                color:#ec455a;
-            }
-        }
-        .total-payment-amount {
-            margin: 24px 0 28px;
-            padding-top: 12px;
-            border-top: 1px solid #ddd;
-            @include mobile {
-                margin-bottom:32px;
-            }
-            .price {
-                font-weight: $font-weight-bold;
-                @include font-x-large;
-                color: #ec455a;
-            }
-            .desc {
-                margin-top:-8px;
-                color:#616161;
-                font-size:14px;
-                line-height:20px;
-                text-align:right;
-            }
-        }
-        .payment-list,
-        .total-payment-amount {
-            dl {
-                display: table;
-                width: 100%;
-                margin-bottom: 12px;
-                .text,
-                .price {
-                    display: table-cell;
-                    vertical-align: middle;
-                }
-            }
-
-        }
-        .btn-area {
-            @include clearfix;
-            .btn {
-                width: 100%;
-            }
-            .btn-text {
-                float: right;
-                margin-top: 16px;
-                font-size: $font-small;
-                line-height: 24px;
-            }
-        }
     }
 
     .bullet-list {
@@ -468,6 +381,96 @@
     }
 }
 
+.payment-amount-info {
+    width: 280px;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.26);
+    border: 1px solid #ddd;
+    background-color: #fff;
+    @include mobile {
+        float: none;
+        width: 100%;
+        padding: 32px 20px;
+        .btn-area {
+            .btn {
+                padding: 16px 0;
+            }
+            .btn-text {
+                margin-top: 24px;
+            }
+        }
+    }
+    .title {
+        display: block;
+        margin-bottom: 18px;
+        font-weight: $font-weight-bold;
+        @include font-medium;
+    }
+    .text {
+        @include font-small;
+        letter-spacing: normal;
+        color: #616161;
+        em {
+            margin-left: 4px;
+            color: #ec455a;
+        }
+    }
+    .price {
+        @include font-medium;
+        text-align: right;
+        &.sale {
+            color:#ec455a;
+        }
+    }
+    .total-payment-amount {
+        margin: 24px 0 28px;
+        padding-top: 12px;
+        border-top: 1px solid #ddd;
+        @include mobile {
+            margin-bottom:32px;
+        }
+        .price {
+            font-weight: $font-weight-bold;
+            @include font-x-large;
+            color: #ec455a;
+        }
+        .desc {
+            margin-top:-8px;
+            color:#616161;
+            font-size:14px;
+            line-height:20px;
+            text-align:right;
+        }
+    }
+    .payment-list,
+    .total-payment-amount {
+        dl {
+            display: table;
+            width: 100%;
+            margin-bottom: 12px;
+            .text,
+            .price {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+
+    }
+    .btn-area {
+        @include clearfix;
+        .btn {
+            width: 100%;
+        }
+        .btn-text {
+            float: right;
+            margin-top: 16px;
+            font-size: $font-small;
+            line-height: 24px;
+        }
+    }
+}
+
 .cart-nonmember-info {
     padding: 24px;
     background-color: #f4f4f4;
@@ -529,3 +532,6 @@
         }
     }
 }
+
+// 케어솔루션 청약 신청
+@import "RMSF9001";

@@ -181,6 +181,23 @@ var res = {
 				"케어솔루션 팝업, alert" : ["/html/UTC/OBSF9003_popup.html","","진행중"],
 			},
 			"주문결제(UTC)" : {
+				"신청자정보 입력" : {
+					"신청자정보 입력" : ["/html/UTC/RMSF9001.html","","진행중"],
+					"배송지 목록 조회" : ["/html/UTC/RMSF9002.html","","진행중"],
+					"배송지 목록" : ["/html/UTC/RMSF9003.html","","진행중"],
+					"배송지 등록/수정" : ["/html/UTC/RMSF9004.html","","진행중"],
+					"배송지 삭제" : ["/html/UTC/RMSF9005.html","","진행중"],
+					"결제 수단 선택" : ["/html/UTC/RMSF9006.html","","진행중"],
+					"월 결제 예정금액 DISPLAY" : ["/html/UTC/RMSF9007.html","","진행중"],
+					"카드사(은행명) 입력" : ["/html/UTC/RMSF9008.html","","진행중"],
+					"전자서명 (공인인증 전자서명/ARS 전자서명)" : ["/html/UTC/RMSF9009.html","","진행중"],
+					"신청" : ["/html/UTC/RMSF9010.html","","진행중"],
+				},
+				"신청 완료" : {
+					"신청 완료" : ["/html/UTC/RMSF9011.html","","진행중"],
+					"패키지 혜택 안내" : ["/html/UTC/RMSF9012.html","","진행중"],
+					"연관 케어솔루션 상품 목록 DISPLAY" : ["/html/UTC/RMSF9013.html","","진행중"],
+				},
 				"개인정보 수집 및 신용정보 제공 동의 팝업" : ["/html/UTC/RMSF9001_pop1.html","","진행중"],
 				"배송지 관리 팝업" : ["/html/UTC/RMSF9001_pop2.html","","진행중"],
 				"배송지 입력/수정 팝업" : ["/html/UTC/RMSF9001_pop3.html","","진행중"],
