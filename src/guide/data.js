@@ -147,7 +147,8 @@ var res = {
 					"월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
 					"계약현황" : ["/html/MYC/ACCF7025.html","","진행중"],
 					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","진행중"],
-					"납부내역" : ["/html/MYC/ACCF7027.html","","진행중"]
+					"납부내역" : ["/html/MYC/ACCF7027.html","","진행중"],
+					"방문 알리미" : ["/html/MYC/ACCF7030.html","","진행중"]
 				},
 				"제품 관리" : {
 					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","검수완료"],
@@ -174,7 +175,8 @@ var res = {
 			"장바구니(UTC)" : {
 				// "장바구니(일반상품)" : ["/html/UTC/OBSF9001.html","","진행중"],
 				// "장바구니(비회원)" : ["/html/UTC/OBSF9004.html","","진행중"],
-				"케어솔루션" : ["/html/UTC/OBSF9003.html","","진행중"]
+				"케어솔루션" : ["/html/UTC/OBSF9003.html","","진행중"],
+				"케어솔루션 팝업, alert" : ["/html/UTC/OBSF9003_popup.html","","진행중"],
 			},
 			"주문결제(UTC)" : {
 				"개인정보 수집 및 신용정보 제공 동의 팝업" : ["/html/UTC/RMSF9001_pop1.html","","진행중"],
