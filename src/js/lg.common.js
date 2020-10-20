@@ -157,6 +157,9 @@
         COMPARE_KEY: "prod_compare",
         COMPARE_ID: "compare_list",
         COMPARE_LIMIT: 3,
+        CAREPLANER_KEY: "care_planer",
+        CAREPLANER_ID: "putitem_list",
+        CAREPLANER_LIMIT: 7,
         init: function(){
             this._preloadComponents();
             this._addTopButtonCtrl();

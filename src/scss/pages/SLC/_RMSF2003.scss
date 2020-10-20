@@ -789,7 +789,7 @@
     }
 
     .prd-select-wrap {
-        // display:none;
+        display:none;
         position:fixed;
         left:0;
         right:0;
@@ -930,9 +930,9 @@
             }
         }
         &.close {
-            height:88px;
+            //height:88px;
             @include mobile {
-                height:75px;
+                //height:75px;
             }
             .tit-wrap {
                 padding:32px 0;

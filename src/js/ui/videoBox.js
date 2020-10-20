@@ -18,6 +18,11 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
             //self.$defaultVname = self.$el.find("video").find('source').attr('src');
             self.$ctrler = self.$el.find('.controller-wrap button');
             self.$acctrler = self.$el.find(".play-animaion-btn");
+
+            if(self.$el.find("video").attr("autoplay") != 'autoplay'){
+                self.$ctrler.removeClass("pause").addClass("play");
+                self._ariaBuild();
+            }
             
             self._addEvent();
         },
@@ -50,6 +55,11 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
                     
                     self.$video.setAttribute('src', self.$el.find("video").find('source').attr('src'));
                     self.$video.load();
+                }
+
+                if(self.$el.find("video").attr("autoplay") != 'autoplay'){
+                    self.$ctrler.removeClass("pause").addClass("play");
+                    self._ariaBuild();
                 }
             });
 
