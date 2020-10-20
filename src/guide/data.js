@@ -72,6 +72,7 @@ var res = {
 			"KRC0049_Layered component - Multi type" : ["/html/components/KRC0049.html","","진행중"],
 			"KRC0051_Recommend story - categoryhome" : ["/html/components/KRC0051.html","","진행중"],
 			"KRC0056_BG Image 3 Text" : ["/html/components/KRC0056.html","","진행중"],
+			"KRC0057_BG Image 2Image - Textoverlay" : ["/html/components/KRC0057.html","","진행중"],
 			"KRP0001_GNB - B2C" : ["/html/components/KRP0001.html","","검수완료"],
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","검수완료"],
