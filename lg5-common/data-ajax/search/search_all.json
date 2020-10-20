@@ -140,33 +140,25 @@
                 "review":"34"
             }
         ],
-        "preview":[
+        "care":[
             {
-                "image_pc_url":"/lg5-common/images/MYC/@thumb03.png",
-                "image_m_url":"/lg5-common/images/MYC/@thumb02.png",
-                "image_alt":"LG 이동식 에어컨 no.1",
-                "title":"LG 이동식 에어컨 no.1",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
                 "sku":"S833MC85Q1",
-                "price":"700000",
-                "url":"#p1"
-            },
-            {
-                "image_pc_url":"/lg5-common/images/dummy/@sample-150x150.jpg",
-                "image_m_url":"/lg5-common/images/dummy/@img-product7.jpg",
-                "image_alt":"LG 이동식 에어컨 no.2",
-                "title":"LG 이동식 에어컨 no.2",
-                "sku":"S833MC85Q2",
-                "price":"800000",
-                "url":"#p2"
-            },
-            {
-                "image_pc_url":"/lg5-common/images/dummy/@sample-150x150.jpg",
-                "image_m_url":"/lg5-common/images/dummy/@img-product7.jpg",
-                "image_alt":"LG 이동식 에어컨 no.3",
-                "title":"LG 이동식 에어컨 no.3",
-                "sku":"S833MC85Q3",
-                "price":"900000",
-                "url":"#p3"
+                "price":"4421000",
+                "sale":null,
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "isReview":true,
+                "rating":"40",
+                "review":"34",
+                "desc":""
             }
         ]
     }

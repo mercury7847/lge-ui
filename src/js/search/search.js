@@ -78,10 +78,10 @@
                 self.$searchResultText = self.$searchSimilar.find('div.search-result-text');
                 self.$searchInputText = self.$searchSimilar.find('a');
 
-                self.$resultWrap = self.$contentsSearch.find('div.search-result-wrap');
-                self.$resultCategory = self.$resultWrap.find('div.result-category');
-                self.$resultProduct = self.$resultWrap.find('#product');
-                
+                self.$resultAllWrap = self.$contentsSearch.find('div.search-result-wrap.all');
+                self.$resultAllCategory = self.$resultAllWrap.find('div.result-category');
+                self.$resultAllProduct = self.$resultAllWrap.find('div.result-list-wrap:nth-child(1)');
+                self.$resultAllCare = self.$resultAllWrap.find('div.result-list-wrap:nth-child(2)');
 
                 self.$noData = self.$contentsSearch.find();
                 self.$suggestedList = self.$contentsSearch.find('div.suggested-list-wrap');
@@ -367,14 +367,14 @@
                     arr = data.category instanceof Array ? data.category : [];
                     if(arr.length > 0) {
                         showResult = true;
-                        var $list_ul = self.$resultCategory.find('ul');
+                        var $list_ul = self.$resultAllCategory.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             $list_ul.append(vcui.template(categoryItemTemplate, {"url":item.url,"text":item.text}));
                         });
-                        self.$resultCategory.show();
+                        self.$resultAllCategory.show();
                     } else {
-                        self.$resultCategory.hide();
+                        self.$resultAllCategory.hide();
                     }
 
 
@@ -382,7 +382,7 @@
                     arr = data.product instanceof Array ? data.product : [];
                     if(arr.length > 0) {
                         showResult = true;
-                        var $list_ul = self.$resultProduct.find('div.list-wrap ul');
+                        var $list_ul = self.$resultAllProduct.find('div.list-wrap ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             if (item.sale == "0" || item.sale == 0) {
@@ -393,9 +393,9 @@
                             console.log(item);
                             $list_ul.append(vcui.template(productItemTemplate,item));
                         });
-                        self.$resultProduct.show();
+                        self.$resultAllProduct.show();
                     } else {
-                        self.$resultProduct.hide();
+                        self.$resultAllProduct.hide();
                     }
                     /*
                     //검색결과-제품 갱신
