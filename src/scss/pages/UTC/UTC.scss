@@ -158,35 +158,38 @@
                 padding:24px 20px;
             }
             .inner {
-                display: table;
-                width: 100%;
-            }
-            .amount,
-            .btn-purchase {
-                display: table-cell;
-                vertical-align: middle;
-            }
-            .amount {
-                padding-right: 24px;
-                text-align: right;
-                .total-price {
-                    display: block;
-                    float:right;
-                    font-weight: $font-weight-bold;
-                    @include font-large;
+                position:relative;
+                min-height:36px;
+                padding:5px 100px 5px 0;
+                text-align:right;
+                @include mobile {
+                    min-height:30px;
+                    padding:2px 100px 2px 0;
+                    text-align:left;
                 }
-                .btn-info {
+                .btn-purchase {
+                    position:absolute;
+                    top:0;
+                    right:0;
+                }
+                .amount {
                     display:inline-block;
-                    margin-top:5px;
-                    margin-right:4px;
-                    width:16px;
-                    height:16px;
-                    background:url("/lg5-common/images/icons/icon-tooltip.svg") center no-repeat;
-                    vertical-align:top;
+                    .total-price {
+                        display: block;
+                        float:right;
+                        font-weight: $font-weight-bold;
+                        @include font-large;
+                    }
+                    .btn-info {
+                        display:inline-block;
+                        margin-top:5px;
+                        margin-right:4px;
+                        width:16px;
+                        height:16px;
+                        background:url("/lg5-common/images/icons/icon-tooltip.svg") center no-repeat;
+                        vertical-align:top;
+                    }
                 }
-            }
-            .btn-purchase {
-                width: 84px;
             }
         }
         &.disabled .product-payment .amount .total-price {
