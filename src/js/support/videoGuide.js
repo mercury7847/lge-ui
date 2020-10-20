@@ -93,7 +93,11 @@
                 });
 
                 $('#btnReset').on('click', function() {
-                    
+                    var data = {
+                        page: 1
+                    }
+
+                    self.sumbitHandler(data);
                 });
             }
         }
