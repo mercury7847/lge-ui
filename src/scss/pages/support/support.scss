@@ -15,7 +15,7 @@
 @import "../../support/sns";
 @import "../../support/top-bar";
 @import "../../support/process";
-
+@import "../../support/banner";
 
 
 /* 삭제 예정 */
@@ -41,6 +41,7 @@
 /* //삭제 예정 */
 
 .support {
+    background:#f4f4f4;
 
     /* text list */
     .dot-list {
