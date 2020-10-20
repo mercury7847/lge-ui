@@ -74,7 +74,7 @@ $(window).ready(function(){
             
             this.bindEvents();
             
-            this.requestDetailData();
+            //this.requestDetailData();
         },
 
         bindEvents: function() {
