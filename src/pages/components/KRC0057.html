@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+	@@include('./common/head.html', {
+		componentID: "KRC0057",
+		isJScompile: false,
+	})
+<body>
+	<div class="wrap">
+		<div class="container">
+
+			<!-- component-wrap -->
+			<div class="component-wrap">
+				<!--
+					1. 여백
+					.zero-top : 상단여백 없음
+					.zero-btm : 하단여백 없음
+				-->
+
+				<!-- [JSON setting]
+
+					"type": bg-image(배경이미지 타입) / bg-animation(배경영상 타입)
+					"imgUrlPC": bg-image 타입일 경우, PC용 배경 이미지 경로
+					"imgUrlMO": bg-image 타입일 경우, Mobile용 배경 이미지 경로
+					"aniUrl": bg-animation 타입일 경우, 배경 동영상 경로
+					"items": [
+						"align": flex-left(좌측정렬) / flex-right(우측정렬)
+						"bgType": 빈값(기본 흰배경에 검정글씨) / bg-gray(회색배경에 흰색글씨)
+
+						"textAlign": align-left(문단 좌측정렬) / align-center(문단 중앙정렬) / align-right (문단 우측정렬) - 공통스타일 클래스
+						>>> 아직 사용하진 않음
+
+						"itemTitle": 아이템 타이틀 - 태그포함
+						"itemSubTitle": 아이템 서브타이틀
+						"itemText": 아이템 바디카피
+					]
+				-->
+
+				@@include('./common/partials/KRC0057.html', {
+					"type": "bg-image",
+					"imgUrlPC": "/lg5-common/images/KRC0057/@KRC0057-BG-pc.jpg",
+					"imgUrlMO": "/lg5-common/images/KRC0057/@KRC0057-BG-mo.jpg",
+					"items": [
+						{
+							"align": "flex-left",
+							"bgType": "bg-white",
+							"textAlign": "",
+							"itemTitle": "<h2>타이틀 공백포함 최대 40자까지 입력가능합니다. 최대 40자까지 입력</h2>",
+							"itemSubTitle": "서브타이틀 공백포함 최대 30자까지 입력가능합니다.",
+							"itemText": "바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 바디카피 공백포함하여 최대 100자까지 입력 가능합니다.",
+						},
+						{
+							"align": "flex-left",
+							"bgType": "bg-gray",
+							"textAlign": "",
+							"itemTitle": "<h2>타이틀 공백포함 최대 40자까지 입력가능합니다. 최대 40자까지 입력</h2>",
+							"itemSubTitle": "서브타이틀 공백포함 최대 30자까지 입력가능합니다.",
+							"itemText": "바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 바디카피 공백포함하여 최대 100자까지 입력 가능합니다.",
+						},
+					],
+				})
+
+				@@include('./common/partials/KRC0057.html', {
+					"type": "bg-animation",
+					"aniUrl": "/lg5-common/videos/signature_rain_view.mp4",
+					"items": [
+						{
+							"align": "flex-right",
+							"bgType": "bg-white",
+							"textAlign": "",
+							"itemTitle": "<h2>타이틀 공백포함 최대 40자까지 입력가능합니다. 최대 40자까지 입력</h2>",
+							"itemSubTitle": "서브타이틀 공백포함 최대 30자까지 입력가능합니다.",
+							"itemText": "바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 바디카피 공백포함하여 최대 100자까지 입력 가능합니다.",
+						},
+						{
+							"align": "flex-right",
+							"bgType": "bg-gray",
+							"textAlign": "",
+							"itemTitle": "<h2>타이틀 공백포함 최대 40자까지 입력가능합니다. 최대 40자까지 입력</h2>",
+							"itemSubTitle": "서브타이틀 공백포함 최대 30자까지 입력가능합니다.",
+							"itemText": "바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 바디카피 공백포함하여 최대 100자까지 입력 가능합니다. 바디카피 공백포함하여 최대 100자까지 입력 가능합니다.",
+						},
+					],
+				})
+			</div>
+			<!-- //component-wrap -->
+
+		</div>
+	</div>
+</body>
+</html>
