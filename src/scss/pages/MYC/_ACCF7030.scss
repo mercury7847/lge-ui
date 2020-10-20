@@ -62,6 +62,7 @@
 
 .my-visit-schedule {
     padding: 0 93px;
+    //@media screen and (max-width: 1024px) {
     @include mobile {
         margin-top: 40px;
         padding: 0 0 0 24px;
@@ -72,7 +73,8 @@
         padding-top: 98px;
         justify-content: space-between;
         align-items: flex-start;
-        @include mobile {
+        //@media screen and (max-width: 1024px) {
+        @include mobile {    
             display: block;
             padding-top: 0;
         }
@@ -86,11 +88,13 @@
             height: 8px;
             background-color: #f4f4f4;
             border-radius: 4px;
+            //@media screen and (max-width: 1024px) {
             @include mobile {
                 display: none;
             }
         }
         > li {
+            //@media screen and (max-width: 1024px) {
             @include mobile {
                 position: relative;
                 padding-top: 86px;
@@ -129,6 +133,7 @@
                     background-color: #808080;
                     border-radius: 4px;
                 }
+                //@media screen and (max-width: 1024px) {
                 @include mobile {
                     display: flex;
                     width: 100%;
@@ -172,6 +177,7 @@
                 @media screen and (max-width: 1125px){
                     left: 0;
                 }
+                //@media screen and (max-width: 1024px) {
                 @include mobile {
                     top: -26px;
                     font-size: 10px;
@@ -180,6 +186,7 @@
             }
             &.pre {
                 margin-left: -93px;
+                //@media screen and (max-width: 1024px) {
                 @include mobile {
                     margin-left: 0;
                 }
@@ -197,6 +204,7 @@
                     font-size: 14px;
                     line-height: 20px;
                     color: #ec455a;
+                    //@media screen and (max-width: 1024px) {
                     @include mobile {
                         top: -35px;
                         left: auto;
@@ -211,6 +219,7 @@
             }
             &.end {
                 margin-right: -93px;
+                //@media screen and (max-width: 1024px) {
                 @include mobile {
                     margin-right: 0;
                 }
@@ -221,14 +230,11 @@
 
 .my-visit-detail {
    .my-visit-box {
-       display: table;
+       display: flex;
        width: 100%;
        margin-top: 56px;
-       @include mobile {
-           display: block;
-       }
+       flex-wrap: wrap;
        > li {
-           display: table-cell;
             width: 50%;
             padding-right: 4px;
             &:last-child {
@@ -248,19 +254,32 @@
                 }
             }
             .inner {
-               padding: 24px;
-               border: 1px solid #ddd;
-               border-radius: 8px;
+                width: 100%;
+                height: 100%;
+                padding: 24px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
            }
-           .more-mobile {
+
+           .m-btn-area {
                display: none;
                @include mobile {
-                   display: inline-block;
+                   display: block;
+                   margin-top: 20px;
+                   text-align: center;
+                   .more-mobile {
+                       font-size: 14px;
+                       line-height: 18px;
+                       text-decoration: underline;
+                       color: #222;
+                   }
                }
            }
        }
-       > li + li {
-           margin-top: 10px;
+       @include mobile {
+        > li + li {
+            margin-top: 10px;
+        }
        }
    } 
 }
