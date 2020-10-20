@@ -22,12 +22,12 @@
                 'desc': '신품 및 재생부품 가격을 안내해 드립니다.'
             })
 
-            <div class="contents support KR50CS64">
+            <div class="contents support">
                 <div class="contents-inner">
                     
                     <div class="section">
                         <div class="section-content">
-                            <ul class="bullet-list">
+                            <ul class="bullet-list nomargin-top">
                                 <li class="b-txt">본 공지내용은 표시 · 광고의 공정화에 관한 법률 제4조 제1항의 규정에 따른 공정거래위원회의 '중요한 표시·광고 사항 고시' 에 의하여 휴대폰 및 PC 제품의 서비스(A/S) 제공시 재생부품이 사용되는 경우 교체 또는 추가되는 부품의 품질등급 및 가격을 명시하고 있습니다.</li>
                                 <li class="b-txt">본 부품의 금액은 매월 말일 기준일자 금액이며, 개별 부품의 가격은 변경 될 수 있습니다. [가격기준 : 2020년 08월]</li>
                                 <li class="b-txt">재생 부품은 당사 사정에 따라 공급되지 않을 수 있으며, 이 경우 신품 부품으로 수리됩니다.</li>
@@ -36,17 +36,11 @@
                         </div>
                     </div>
 
-                    <div class="dummy" style="height: 219px;margin-top: 24px;">
-                        TBD(제품검색)
-                    </div>
-
                     <div class="section">
                         <div class="section-content">
-                            <div class="list-sort">
-                                <p>전체 <em id="totCnt">53</em></p>
-                                <div class="fwb">단위 : 원</div>
+                            <div class="sorting-wrap">
+                                <div class="total">전체 <em class="count">53</em>건</div>
                             </div>
-
                             <div class="tbl tbl-vertical scroll-x">
                                 <table class="tbl-list">
                                     <caption>가격안내</caption>
@@ -148,8 +142,7 @@
                             </div>
 
                             @@include('./common/support/pagination.html', {
-                                'count': 5,
-                                'last': 'false'
+                                'count': 5
                             })
                         </div>
                     </div>

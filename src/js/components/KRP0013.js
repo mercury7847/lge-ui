@@ -12,6 +12,12 @@ $(window).ready(function(){
                     slidesToShow: 2,
                     slidesToScroll: 1,
                     responsive: [
+                        { 
+                            breakpoint: 100000,
+                            settings: {
+                                slidesToShow: 2
+                            }
+                        },
                         {
                             breakpoint: 768,
                             settings: {
@@ -29,6 +35,12 @@ $(window).ready(function(){
                     slidesToShow: 4,
                     slidesToScroll: 1,
                     responsive: [
+                        {
+                            breakpoint: 100000,
+                            settings: {
+                                slidesToShow: 4
+                            }
+                        },
                         {
                             breakpoint: 1200,
                             settings: {

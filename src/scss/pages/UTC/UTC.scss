@@ -4,43 +4,22 @@
 @import "../../utilities/mixins";
 
 .cart {
-    .cont-wrap {
-        padding: 64px 0 120px;
-    }
-
-    .product-cart-wrap {
-        max-width: (1066px + 60px);
-        margin: 0 auto;
-        padding: 0 30px;
-        .wrap-box {
-            padding: 56px;
-            border-radius: 4px;
-            background-color: #fff;
-        }
-    }
-    @include mobile {
-        .cont-wrap {
-            padding: 0 0 56px;
-        }
-        .product-cart-wrap {
-            max-width: 100%;
-            padding: 0;
-            .wrap-box {
-                padding: 40px 20px;
-            }
-        }
-    }
-
     .order-info {
         @include clearfix;
+        padding-top:52px;
+        @include mobile {
+            padding-top:0;
+        }
     }
     //장바구니
     .cart-wrap {
         float: left;
+        margin-top:-52px;
         @include calc(width,100%,304px);
         @include mobile {
             float: none;
             width: 100%;
+            margin-top:0;
             margin-bottom: 40px;
         }
     }
@@ -58,51 +37,74 @@
     .cart-item {
         position: relative;
         margin-top: 12px;
-        padding: 32px 32px 0;
+        padding:32px 32px 0;
         border-radius: 8px;
         border: 1px solid #ddd;
         background-color: #fff;
-        .product-check {
-            position: absolute;
-            top: 32px;
-            left: 32px;
-            z-index: 1;
-            height: 24px;
+        @include mobile {
+            padding:20px 20px 0;
         }
         .product-info {
             @include clearfix;
             position: relative;
-            margin-bottom: 36px;
-            padding: 0 80px 0 32px;
+            padding-left:176px;
+            padding-bottom:36px;
+            @include mobile {
+                padding:38px 0 40px 116px;
+            }
             .item-image {
-                float: left;
+                position:absolute;
+                top:0;
+                left:32px;
+                width:120px;
+                height:120px;
+                overflow:hidden;
+                img {
+                    width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+                @include mobile {
+                    top:38px;
+                    left:0;
+                    width:100px;
+                    height:100px;
+                }
             }
         }
-        .item-image {
-            margin-right: 24px;
-            background-color: #f4f4f4;
-            img {
-                width: 120px;
-                height: 120px;
-                border-radius: 8px;
+        .flag-wrap {
+            margin-bottom:8px;
+            padding-right:90px;
+            @include mobile {
+                padding-right:0;
             }
         }
-
         .item-name {
             max-height: 48px;
             margin-bottom: 4px;
             font-weight: $font-weight-bold;
             @include font-medium;
             @include textClipClamp(2);
+            @include mobile {
+                max-height:54px;
+                margin-bottom:14px;
+                font-size:14px;
+                line-height:18px;
+                @include textClipClamp(3);
+            }
         }
         .item-options {
-            margin-bottom: 16px;
             font-size: 0;
             .sku,
             .sibling-option {
                 display: inline-block;
-                @include font-small;
+                font-size:14px;
+                line-height:20px;
                 color: #616161;
+                @include mobile {
+                    font-size:12px;
+                    line-height:16px;
+                }
             }
             .sibling-option {
                 &:before {
@@ -116,76 +118,82 @@
                 }
             }
         }
-        .quantity-wrap {
-            position: absolute;
-            bottom: 0;
-            left: 176px;
-        }
-        .delivery-option {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            .btn-text {
-                display: inline-block;
-                margin-left: 12px;
-                font-weight: $font-weight-medium;
-                @include font-small;
-                color: #ec455a;
+        .item-options2 {
+            font-size:0;
+            margin-top:16px;
+            @include mobile {
+                margin-top:24px;
             }
-        }
-        .select-coupon {
-            margin-bottom: 16px;
-            .select-wrap {
-                max-width: 100%;
+            p {
+                display:inline;
+                color:#616161;
+                font-size:14px;
+                line-height:20px;
+                word-break:keep-all;
+                @include mobile {
+                    font-size:12px;
+                    line-height:16px;
+                }
+                &::before {
+                    content:' ';
+                    display:inline-block;
+                    width:1px;
+                    height:12px;
+                    margin:0 8px;
+                    background:#616161;
+                    vertical-align:-1px;
+                }
+                &:first-child::before {
+                    display:none;
+                }
             }
         }
         .product-payment {
             margin: 0 -32px;
-            padding: 23px 32px;
+            padding: 16px 32px;
             border-radius: 0 0 8px 8px;
             background-color: #f4f4f4;
+            @include mobile {
+                margin:0 -20px;
+                padding:24px 20px;
+            }
             .inner {
-                display: table;
-                width: 100%;
-            }
-            .calc-amount,
-            .amount,
-            .btn-purchase {
-                display: table-cell;
-                vertical-align: middle;
-            }
-            .calc-amount {
-                @include font-small;
-                em {
-                    color: #ec455a;
+                position:relative;
+                min-height:36px;
+                padding:5px 100px 5px 0;
+                text-align:right;
+                @include mobile {
+                    min-height:30px;
+                    padding:2px 100px 2px 0;
+                    text-align:left;
                 }
-            }
-            .amount {
-                padding-right: 24px;
-                text-align: right;
-                .purchase-price {
-                    position: relative;
-                    @include font-medium;
-                    color: #616161;
-                    &:after {
-                        position: absolute;
-                        top: 50%;
-                        left: 0;
-                        width: 100%;
-                        height: 1px;
-                        background-color: #616161;
-                        content: '';
+                .btn-purchase {
+                    position:absolute;
+                    top:0;
+                    right:0;
+                }
+                .amount {
+                    display:inline-block;
+                    .total-price {
+                        display: block;
+                        float:right;
+                        font-weight: $font-weight-bold;
+                        @include font-large;
+                    }
+                    .btn-info {
+                        display:inline-block;
+                        margin-top:5px;
+                        margin-right:4px;
+                        width:16px;
+                        height:16px;
+                        background:url("/lg5-common/images/icons/icon-tooltip.svg") center no-repeat;
+                        vertical-align:top;
                     }
                 }
-                .total-price {
-                    display: block;
-                    font-weight: $font-weight-bold;
-                    @include font-large;
-                }
             }
-            .btn-purchase {
-                width: 84px;
-            }
+        }
+        &.disabled .product-payment .amount .total-price {
+            color:#ccc;
         }
         .product-wish {
             position: absolute;
@@ -218,107 +226,10 @@
                 }
             }
         }
-        @include mobile {
-            padding: 20px 20px 0;
-            .product-check {
-                position: static;
-                margin-bottom: 14px;
-            }
-            .product-info {
-                margin-bottom: 24px;
-                padding: 0;
-            }
-            .item-image {
-                margin-right: 16px;
-                img {
-                    width: 100px;
-                    height: 100px;
-                }
-            }
-            .item-name {
-                max-height: 36px;
-                margin-bottom: 14px;
-                @include font-small;
-            }
-            .item-options {
-                margin-bottom: 0;
-                .sku,
-                .sibling-option {
-                    display: block;
-                    @include font-x-small;
-                }
-                .sibling-option {
-                    &:before {
-                        display: none;
-                    }
-                }
-            }
-            .quantity-wrap {
-                top: 108px;
-                left: 0;
-                .select-quantity {
-                    .quantity {
-                        width: 34px;
-                    }
-                }
-            }
-            .delivery-option {
-                position: static;
-                margin-top: 68px;
-                text-align: right;
-            }
-            .select-coupon {
-                margin-bottom: 10px;
-                .select-wrap {
-                    .ui-select-button {
-                        padding: 12px 23px;
-                        border-radius: 4px;
-                    }
-                }
-            }
-            .product-payment {
-                margin: 0 -20px;
-                padding: 24px 20px;
-                .inner {
-                    position: relative;
-                    display: block;
-                }
-                .calc-amount {
-                    margin-bottom: 12px;
-                    display: block;
-                }
-                .amount {
-                    position: relative;
-                    display: inline-block;
-                    padding-right: 0;
-                    text-align: left;
-                    .purchase-price {
-                        position: absolute;
-                        top: 50%;
-                        left: 100%;
-                        transform: translateY(-50%);
-                        margin-left: 8px;
-                        @include font-small;
-                    }
-                    .total-price {
-                        font-size: 17px;
-                        line-height: 25px;
-                    }
-                }
-                .btn-purchase {
-                    position: absolute;
-                    right: 0;
-                    bottom: 0;
-                }
-            }
-            .product-wish {
-                top: 20px;
-                right: 52px;
-            }
-            .item-delete {
-                top: 20px;
-                right: 20px;
-            }
+        .chk-wrap {
+            position:absolute;
+            top:32px;
+            left:32px;
         }
     }
 
@@ -337,7 +248,7 @@
         @include clearfix;
         width: 280px;
         padding: 32px;
-        margin: 52px 0 12px;
+        margin-bottom:12px;
         border-radius: 8px;
         box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.26);
         border: 1px solid #ddd;
@@ -387,12 +298,6 @@
             float: none;
             width: 100%;
             padding: 32px 20px;
-            .title {
-                margin-bottom: 18px;
-            }
-            .total-payment-amount {
-                margin: 27px 0 32px;
-            }
             .btn-area {
                 .btn {
                     padding: 16px 0;
@@ -404,7 +309,7 @@
         }
         .title {
             display: block;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
             font-weight: $font-weight-bold;
             @include font-medium;
         }
@@ -420,15 +325,28 @@
         .price {
             @include font-medium;
             text-align: right;
+            &.sale {
+                color:#ec455a;
+            }
         }
         .total-payment-amount {
-            margin: 26px 0 28px;
-            padding-top: 18px;
+            margin: 24px 0 28px;
+            padding-top: 12px;
             border-top: 1px solid #ddd;
+            @include mobile {
+                margin-bottom:32px;
+            }
             .price {
                 font-weight: $font-weight-bold;
                 @include font-x-large;
                 color: #ec455a;
+            }
+            .desc {
+                margin-top:-8px;
+                color:#616161;
+                font-size:14px;
+                line-height:20px;
+                text-align:right;
             }
         }
         .payment-list,
@@ -436,7 +354,7 @@
             dl {
                 display: table;
                 width: 100%;
-                margin-bottom: 16px;
+                margin-bottom: 12px;
                 .text,
                 .price {
                     display: table-cell;
@@ -470,12 +388,11 @@
     // 이 제품 어때요?
     .product-recommend-wrap {
         overflow: hidden;
-        margin-top: 120px;
-        padding: 63px 30px 0;
+        padding: 63px 40px 80px;
         border-top: 1px solid #ddd;
+        background:#f4f4f4;
         @include mobile {
-            margin-top: 56px;
-            padding: 39px 20px 0;
+            padding: 40px 20px 44px;
         }
         .title {
             margin-bottom: 32px;
@@ -487,12 +404,10 @@
     }
 
     .no-data-wrap {
-        max-width: (1066px + 60px);
+        max-width: 1066px;
         margin: 0 auto;
-        padding: 0 30px;
         @include mobile {
             max-width: 100%;
-            padding: 0;
         }
     }
     .membership-benefit {
@@ -614,7 +529,3 @@
         }
     }
 }
-
-
-// 케어솔루션 청약 팝업
-@import "RMSF-popup";

@@ -237,127 +237,120 @@ CS.MD.pagination = function() {
 
     function Plugin(el, opt) {
         var self = this,
-            el = this.el = el,
-            $el = $(el);
+            el = self.el = el,
+            $el = self.$el = $(el);
 
         var defaults = {
             page: 1,
-            startPage: 1,
-            endPage: 5,
-            totalCount: 59,
-            pageToShow: 5,
-            nextBtn: true,
-            prevBtn: false,
-            prevClass: '.prev',
-            nextClass: '.next',
-            disabledClass: 'disabled'
+            totalCount: 1,
+            pageView: 5,
+            prevClass: 'prev',
+            nextClass: 'next',
+            disabledClass: 'disabled',
+            lastView: false
         };
 
+        opt = $.extend({}, opt, $el.data());
         self.options = $.extend({}, defaults, opt);
 
         function _initialize() {
             self.$pageList = $el.find('.page_num');
-            self.$prev = $el.find(self.options.prevClass);
-            self.$next = $el.find(self.options.nextClass);
+            self.$prev = $el.find('.' + self.options.prevClass);
+            self.$next = $el.find('.' + self.options.nextClass);
+
+            self.pageTotal = Math.ceil(self.options.totalCount / self.options.pageView);
+
+            self._setEvent();
             self._update();
-        }
-        function _setEventHandler() {
-            $el.on('click', 'button', function(e) {
-                var $this = $(this);
-
-                e.preventDefault();
-
-                $(this).trigger('page_click', $this.val());
-            });
         }
 
         _initialize();
-        _setEventHandler();
     }
 
     Plugin.prototype = {
-        _update: function() {
+        _update: function(page) {
             var self = this,
-                startPage = self.options.startPage,
-                endPage = self.options.endPage,
-                page = self.options.page,
+                page = page || self.options.page,
+                pageView = self.options.pageView,
+                pageTotal = self.pageTotal,
                 html = '';
+
+            var startPage = parseInt((page - 1) / pageView) * pageView + 1; 
+            var endPage = startPage + pageView - 1;
+            if (endPage > pageTotal) {
+                endPage = pageTotal;
+            }
 
             for (var i = startPage; i <= endPage; i++) {
                 if (page === i) {
                     html += '<strong><span class="blind">현재 페이지</span>' + i + '</strong>';
                 } else {
-                    html += '<button type="button" value="' + i + '" title="' + i + '페이지 보기">' + i + '</button>';
+                    html += '<a href="#" data-page="' + i + '" title="' + i + '페이지 보기">' + i + '</a>';
                 }
+            }
+
+            if (self.options.lastView && (startPage + pageView <= pageTotal)) {
+                html += '<span class="dot">...</span>';
+                html += '<a href="#" data-page="' + pageTotal + '" title="' + pageTotal + '페이지 보기">' + pageTotal + '</a>';
+            }
+
+            if (page > pageView) {
+                self.$prev
+                    .attr('aria-disabled', false)
+                    .removeClass(self.options.disabledClass)
+                    .data('page', startPage - 1);
+            } else {
+                self.$prev
+                    .attr('aria-disabled', true)
+                    .addClass(self.options.disabledClass)
+                    .data('page', '');
+            }
+
+            if (startPage + pageView <= pageTotal) {
+                self.$next
+                    .attr('aria-disabled', false)
+                    .removeClass(self.options.disabledClass)
+                    .data('page', endPage + 1);
+            } else {
+                self.$next
+                    .attr('aria-disabled', true)
+                    .addClass(self.options.disabledClass)
+                    .data('page', '');
             }
             
-            self.options.prevBtn ? self.$prev.attr('aria-disabled', false).prop('disabled', false).val(startPage-1) : self.$prev.attr('aria-disabled', true).prop('disabled', true).val('');
-            self.options.nextBtn ? self.$next.attr('aria-disabled', false).prop('disabled', false).val(endPage+1) : self.$next.attr('aria-disabled', true).prop('disabled', true).val('');
+            self.$el.data('pageTotal', pageTotal);
+
             self.$pageList.html(html);
-        },
-        _move: function() {
-            var $target, html = '';
-
-            if ($target) {
-                if ($target.is(self.options.prevClass)) {
-                    if (startPage === 1) return false;
-
-                    startPage -= self.options.pageToShow;
-                    endPage = startPage + self.options.pageToShow - 1;
-                } else if ($target.is(self.options.nextClass)) { 
-                    if (endPage === totalPage) return false;
-
-                    startPage += self.options.pageToShow;
-                    endPage = startPage + self.options.pageToShow - 1;
-
-                    endPage >= totalPage && (endPage = totalPage);
-                } else {
-                    currentPage = parseInt($target.text());
-
-                    if (currentPage === totalPage) {
-                        startPage = currentPage - (currentPage - 1) % self.options.pageToShow;
-					    endPage = currentPage;
-                    }
-                    callback && callback();
-                }
-            }
-
-            startPage === 1 ? $prev.attr('aria-disabled', true) : $prev.attr('aria-disabled', false);
-            endPage >= totalPage ? $next.attr('aria-disabled', true) : $next.attr('aria-disabled', false);
-
-            for (var i = startPage; i <= endPage; i++) {
-                if (currentPage === i) {
-                    html += '<strong><span class="blind">현재 페이지</span>' + i + '</strong>';
-                } else {
-                    html += '<a href="#" title="' + i + '페이지 보기">' + i + '</a>';
-                }
-            }
-
-            if (self.options.pageToShow < totalPage && endPage < totalPage) {
-                html += '<span class="dot">...</span>';
-
-                if (currentPage === totalPage) {
-                    html += '<strong><span class="blind">현재 페이지</span>' + totalPage + '</strong>';
-                } else {
-                    html += '<a href="#" title="' + totalPage + '페이지 보기">' + totalPage + '</a>';
-                }
-            }
-    
-            $pageList.html(html);
         },
         update: function(data) {
             var self = this;
 
-            self.options = $.extend({}, self.defaults, data);
+            self.options.page = data.page;
+            self.options.totalCount = data.totalCount;
+            self.pageTotal = Math.ceil(self.options.totalCount / self.options.pageView);
+
             self._update();
         },
-        reset: function() {
+        _setEvent: function() {
             var self = this;
-
-            startPage = currentPage = 1;
-            endPage = totalPage <= self.options.pageToShow ? totalPage : startPage + self.options.pageToShow - 1;
             
-            self._move();
+            self.$el.on('click', 'a', function(e) {
+                e.preventDefault();
+                
+                var $this = $(this),
+                    page = $this.data('page');
+
+                if ($this.hasClass(self.options.disabledClass) || $this.attr('aria-disabled') == true) return;
+
+                if (!(self.options.lastView && ($this.hasClass(self.options.prevClass) || $this.hasClass(self.options.nextClass)))) {
+                    self.$el.trigger({
+                        type: 'pageClick',
+                        page: page
+                    });
+                } else {    
+                    self._update(page);
+                }
+            });
         }
     }
 
@@ -696,19 +689,7 @@ CS.MD.CHK_DEVICE = function() {
 }();
 
 (function($){
-    $.fn.ajaxLoad = function(type) {
-        var el = this;
     
-        switch(type) {
-            case 'start':
-                $(el).append('<div class="loading-circle"><div class="lds-dual-ring"></div></div>');
-                break;
-            case 'end':
-                $(el).find('.loading-circle').remove();
-                break;
-        }
-    }
-
     function commonInit(){
         $('.scroll-x').mCustomScrollbar({
             axis:"x",

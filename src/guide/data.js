@@ -70,7 +70,10 @@ var res = {
 			"KRC0045_Article List" : ["/html/components/KRC0045.html","","검수완료"],
 			//"KRC0046_Story & Products module_Dynamic" : ["/html/components/KRC0046.html","","진행중"],
 			"KRC0049_Layered component - Multi type" : ["/html/components/KRC0049.html","","진행중"],
-			"KRC0051_Recommend story - categoryhome " : ["/html/components/KRC0051.html","","진행중"],
+			"KRC0051_Recommend story - categoryhome" : ["/html/components/KRC0051.html","","진행중"],
+			"KRC0055_USP BANNER" : ["/html/components/KRC0055.html","","진행중"],
+			"KRC0056_BG Image 3 Text" : ["/html/components/KRC0056.html","","진행중"],
+			"KRC0057_BG Image 2Image - Textoverlay" : ["/html/components/KRC0057.html","","진행중"],
 			"KRP0001_GNB - B2C" : ["/html/components/KRP0001.html","","검수완료"],
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","검수완료"],
@@ -102,6 +105,7 @@ var res = {
 					"케어플래너_동일 카테고리 내 제품 선택이 정수기 3대, 정수기 외 2대를 초과한 경우" : ["/html/SLC/RMSF-popup02.html","","검수완료"],
 					"케어플래너_비로그인 상태에서 [견적 확인하기] 버튼 선택 시" : ["/html/SLC/RMSF-popup03.html","","검수완료"],
 					"케어플래너_상세견적확인" : ["/html/SLC/RMSF2020.html","","진행중"],
+					"케어플래너_내제품찾기" : ["/html/SLC/RMSF2021.html","","진행중"],
 					"케어십 가능 제품" : ["/html/SLC/RMSF2004.html","","진행중"],
 				},
 			},
@@ -144,7 +148,8 @@ var res = {
 					"월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
 					"계약현황" : ["/html/MYC/ACCF7025.html","","진행중"],
 					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","진행중"],
-					"납부내역" : ["/html/MYC/ACCF7027.html","","진행중"]
+					"납부내역" : ["/html/MYC/ACCF7027.html","","진행중"],
+					"방문 알리미" : ["/html/MYC/ACCF7030.html","","진행중"]
 				},
 				"제품 관리" : {
 					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","검수완료"],
@@ -169,8 +174,10 @@ var res = {
 				}
 			},
 			"장바구니(UTC)" : {
-				"장바구니(일반상품)" : ["/html/UTC/OBSF9001.html","","진행중"],
-				"장바구니(비회원)" : ["/html/UTC/OBSF9004.html","","진행중"]
+				// "장바구니(일반상품)" : ["/html/UTC/OBSF9001.html","","진행중"],
+				// "장바구니(비회원)" : ["/html/UTC/OBSF9004.html","","진행중"],
+				"케어솔루션" : ["/html/UTC/OBSF9003.html","","진행중"],
+				"케어솔루션 팝업, alert" : ["/html/UTC/OBSF9003_popup.html","","진행중"],
 			},
 			"주문결제(UTC)" : {
 				"개인정보 수집 및 신용정보 제공 동의 팝업" : ["/html/UTC/RMSF9001_pop1.html","","진행중"],
@@ -183,18 +190,26 @@ var res = {
 				"케어솔루션 청약신청 고객동의 팝업" : ["/html/UTC/RMSF9001_pop8.html","","진행중"],
 				"케어솔루션 주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
 			},
-			"통합검색(UTS)" : {
-				"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
-				"검색결과 있음" : {
-					"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
-					"제품" : ["/html/UTS/SERF9003.html","","검수완료"],
-					"케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
-					"이벤트" : ["/html/UTS/SERF9005.html","","검수완료"],
-					"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
-					"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
-					"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
+			"공통(UTS)" : {
+				"통합검색" : {
+					"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
+					"검색결과 있음" : {
+						"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
+						"제품" : ["/html/UTS/SERF9003.html","","검수완료"],
+						"케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
+						"이벤트" : ["/html/UTS/SERF9005.html","","검수완료"],
+						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
+						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
+						"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
+					},
+					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
 				},
-				"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
+				"Footer" : {
+					"개인정보취급방침" : ["/html/UTS/COMF2000.html","","진행중"],
+					"이벤트 개인정보처리방침" : ["/html/UTS/COMF2001.html","","진행중"],
+					"이용약관" : ["/html/UTS/COMF2003.html","","진행중"],
+					"소식지 신청" : ["/html/UTS/COMF2004.html","","진행중"]
+				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
 			// "페이지2" : ["./html/gr/M.GR-6L.html","","검수요청"],

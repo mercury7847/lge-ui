@@ -1,21 +1,7 @@
-@charset "UTF-8";
-
-.info-txt {
-    margin-bottom:32px;
-    padding:12px 24px;
-    color:#616161;
-    font-size:16px;
-    line-height:24px;
-    background:#f4f4f4;
-    border-radius:8px;
-    @include mobile {
-        padding:12px 20px;
-    }
-}
 
 .tit-wrap {
     @include clearfix;
-    margin-bottom:16px;
+    margin:32px 0 16px;
     @include mobile {
         margin-bottom:18px;
     }
@@ -52,117 +38,119 @@
         }
         
     }
-    .item {
-        display:table;
-        padding:24px 0;
-        width:100%;
-        table-layout:fixed;
-        border-bottom:1px solid #ddd;
-        @include mobile {
-            padding:24px 16px 24px 0;
-            border:1px solid #ddd;
-            border-radius:8px;
-        }
-        .img-wrap {
-            display:table-cell;
-            width:120px;
-            vertical-align:top;
+    .slide-conts {
+        .item {
+            display:table;
+            padding:24px 0;
+            width:100%;
+            table-layout:fixed;
+            border-bottom:1px solid #ddd;
             @include mobile {
-                width:100px;
+                padding:24px 16px 24px 0;
+                border:1px solid #ddd;
+                border-radius:8px;
             }
-            img {
-                display:block;
+            .img-wrap {
+                display:table-cell;
                 width:120px;
-                height:120px;
-                overflow:hidden;
+                vertical-align:top;
                 @include mobile {
                     width:100px;
-                    height:100px;
                 }
-            }
-        }
-        .txt-wrap {
-            display:table-cell;
-            width:100%;
-            vertical-align:top;
-            @include mobile {
-                padding:0;
-            }
-            .tit-info {
-                @include clearfix;
-                width:100%;
-                margin-top:8px;
-                @include mobile {
-                    margin-top:4px;
-                }
-                .tit {
-                    display:inline-block;
-                    width:270px;
-                    max-height:48px;
-                    font-size:16px;
-                    line-height:24px;
-                    font-weight:700;
+                img {
+                    display:block;
+                    width:120px;
+                    height:120px;
                     overflow:hidden;
-                    text-overflow:ellipsis;
-                    word-break:break-all;
-                    -moz-line-clamp: 2;
-                    -ms-line-clamp: 2;
-                    -webkit-line-clamp: 2;
-                    vertical-align:top;
                     @include mobile {
-                        width:100%;
-                        font-size:14px;
-                        line-height:18px;
-                        max-height:36px;
+                        width:100px;
+                        height:100px;
                     }
                 }
-                .price {
-                    float:right;
-                    font-size:16px;
-                    line-height:24px;
-                    font-weight:700;
+            }
+            .txt-wrap {
+                display:table-cell;
+                width:100%;
+                vertical-align:top;
+                @include mobile {
+                    padding:0;
+                }
+                .tit-info {
+                    @include clearfix;
+                    width:100%;
+                    margin-top:8px;
                     @include mobile {
-                        float:none;
                         margin-top:4px;
-                        font-size:14px;
-                        line-height:18px;
+                    }
+                    .tit {
+                        display:inline-block;
+                        width:270px;
+                        max-height:48px;
+                        font-size:16px;
+                        line-height:24px;
+                        font-weight:700;
+                        overflow:hidden;
+                        text-overflow:ellipsis;
+                        word-break:break-all;
+                        -moz-line-clamp: 2;
+                        -ms-line-clamp: 2;
+                        -webkit-line-clamp: 2;
+                        vertical-align:top;
+                        @include mobile {
+                            width:100%;
+                            font-size:14px;
+                            line-height:18px;
+                            max-height:36px;
+                        }
+                    }
+                    .price {
+                        float:right;
+                        font-size:16px;
+                        line-height:24px;
+                        font-weight:700;
+                        @include mobile {
+                            float:none;
+                            margin-top:4px;
+                            font-size:14px;
+                            line-height:18px;
+                        }
+                    }
+                    .etc-info {
+                        margin-top:8px;
                     }
                 }
                 .etc-info {
-                    margin-top:8px;
-                }
-            }
-            .etc-info {
-                margin-top:10px;
-                .txt {
-                    position:relative;
-                    color:#616161;
-                    font-size:14px;
-                    line-height:20px;
-                    @include mobile {
-                        line-height:18px;
-                    }
-                    &:before {
-                        content:'';
-                        display:inline-block;
-                        margin:0 8px;
-                        width:1px;
-                        height:10px;
-                        background:#616161;
-                        vertical-align:baseline;
-                    }
-                    &:first-child:before {
-                        display:none;
-                        margin-left:0;
+                    margin-top:10px;
+                    .txt {
+                        position:relative;
+                        color:#616161;
+                        font-size:14px;
+                        line-height:20px;
+                        @include mobile {
+                            line-height:18px;
+                        }
+                        &:before {
+                            content:'';
+                            display:inline-block;
+                            margin:0 8px;
+                            width:1px;
+                            height:10px;
+                            background:#616161;
+                            vertical-align:baseline;
+                        }
+                        &:first-child:before {
+                            display:none;
+                            margin-left:0;
+                        }
                     }
                 }
             }
         }
-    }
-    &:first-child .item {
-        padding-top:0;
-        @include mobile {
-            padding-top:24px;
+        &:first-child .item {
+            padding-top:16px;
+            @include mobile {
+                padding-top:24px;
+            }
         }
     }
 }

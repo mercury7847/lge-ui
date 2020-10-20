@@ -1,63 +1,47 @@
 <div class="cart-list">
     @@for (var i = 0; i < context.items.length; i++) {
-    <div class="cart-item">
-        <div class="product-check">
-            <span class="chk-wrap">
-                <input type="checkbox" id="`+items[i].check.id1+`" name="`+items[i].check.name1+`" `+items[i].check.checked1+`>
-                <label for="`+items[i].check.id1+`"><span class="blind">`+items[i].check.text1+`</span></label>
-            </span>
-        </div>
+    <div class="cart-item `+items[i].disabled+`"><!-- 판매종료/일시품절 시 disabled -->
         <div class="product-info">
-            <div class="item-image"><img src="`+items[i].visual+`" alt=""></div>
-            <div class="item-name">`+items[i].modelName+`</div>
+            <div class="item-image"><a href="#n"><img src="`+items[i].visual+`" alt=""></a></div>
+            <div class="flag-wrap">
+                `+items[i].flags+`
+            </div>
+            <div class="item-name"><a href="#n">`+items[i].modelName+`</a></div>
             <div class="item-options">
-                <div class="sku">OLED55BXPUA</div>
-                <div class="sibling-option">버건디레드 / 870 ℓ</div>
+                <div class="sku"><span class="blind">제품번호</span>S5MBR</div>
+                <div class="sibling-option"><span class="blind">제품옵션</span>Silver</div>
             </div>
-            <div class="quantity-wrap">
-                <div class="select-quantity">
-                    <div class="inner">
-                        <button type="button" class="minus"><span class="blind">뺴기</span></button>
-                        <input type="number" class="quantity" title="수량 입력" value="1" readonly>
-                        <button type="button" class="plus"><span class="blind">더하기</span></button>
-                    </div>
-                </div>
-            </div>
-            <div class="delivery-option">
-                `+items[i].delivery+`
-            </div>
-        </div>
-        <!-- [D] 쿠폰이 없을 경우 .select-coupon 영역 삭제 / 비회원 쿠폰 없음 -->
-        <div class="select-coupon">
-            <div class="select-wrap">
-                <select class="ui_selectbox" id="select1" title="쿠폰 선택">
-                    <option value="" class="placeholder">쿠폰을 선택해주세요.</option>
-                    <option value="">무료배송 쿠폰</option>
-                    <option value="">VIP 50,000원 할인</option>
-                </select>
+            <div class="item-options2">
+                <p>옵션 : 총 요금 3,714,000원</p>
+                <p>할인 등록비 10만원</p>
+                <p>의무 사용기간 2020.05.29로 부터 60개월(무상할인 2개월)</p>
+                <p>방문 주기 6개월/1회</p>
             </div>
         </div>
         <div class="product-payment">
             <div class="inner">
-                <div class="calc-amount">`+items[i].amount+`</div>
                 <div class="amount">
-                    `+items[i].price1+`
-                    `+items[i].price2+`
+                    <p class="total-price">`+items[i].price+`</p>
+                    <a href="#n" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>
                 </div>
                 <div class="btn-purchase">
-                    <a href="#" class="btn bd-pink btn-small">바로구매</a>
+                    <button type="button" class="btn bd-pink btn-small" `+items[i].disabled+`><span>`+items[i].btnValue+`</span></button>
                 </div>
             </div>
         </div>
         <div class="product-wish">
             <span class="chk-wish-wrap">
-                <input type="checkbox" id="`+items[i].check.id2+`" name="`+items[i].check.name2+`" `+items[i].check.checked2+`>
-                <label for="`+items[i].check.id2+`"><span class="blind">`+items[i].check.text2+`</span></label>
+                <input type="checkbox" id="chk-wish`+[i]+`" name="chk-wish`+[i]+`" `+items[i].check.checked2+`>
+                <label for="chk-wish`+[i]+`"><span class="blind">찜하기</span></label>
             </span>
         </div>
         <div class="item-delete">
-            <button type="button" class="btn-delete"><span class="blind">상품 삭제</span></button>
+            <button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button>
         </div>
+        <span class="chk-wrap">
+            <input type="checkbox" id="chk-select`+[i]+`" name="chk-select" `+items[i].check.checked1+`><!-- 판매종료/일시품절 시 disabled -->
+            <label for="chk-select`+[i]+`"><span class="blind">제품 선택</span></label>
+        </span>
     </div>
     }
 </div>

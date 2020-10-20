@@ -9,28 +9,72 @@
 	<section class="component KRC0041">
 		<div class="component-inner">
 			<div class="title">
-				<h2>유사 제품 추천</h2>
+				@@compTitle
 			</div>
 			<ul class="compare-list">
-				@@for ( var i = 0; i < items.length; i++ ) {
 				<li>
 					<div class="item">
 						<div class="product-image">
-							<img data-pc-src="`+items[i].visualImagePC+`" data-m-src="`+items[i].visualImageMobile+`" class="lazyload" alt="" aria-hidden="true">
+							<img data-pc-src="@@item1.visualImagePC" data-m-src="@@item1.visualImageMobile" class="lazyload" alt="" aria-hidden="true">
 						</div>
 						<div class="product-contents">
-							<strong class="product-name"><span class="blind">모델명</span>`+items[i].modelDisplayName+`</strong>
-							<p class="product-sku"><span class="blind">모델넘버</span>`+items[i].modelNumber+`</p>
-							<p class="product-price"><span class="blind">가격</span>`+items[i].modelPrice+`원</p>
+							<strong class="product-name"><span class="blind">모델명</span>@@item1.modelDisplayName</strong>
+							<p class="product-sku"><span class="blind">모델넘버</span>@@item1.modelNumber</p>
+							<p class="product-price"><span class="blind">가격</span><em>@@item1.modelPrice</em>원</p>
 							<div class="review-info">
-								<div class="star `+items[i].review+`"><span class="blind">`+items[i].reviewText+`</span></div>
-								<div class="average-rating"><span class="blind">평점</span>`+items[i].average+`</div>
-								<div class="review-count"><span class="blind">리뷰 수</span>(`+items[i].reviewCount+`개)</div>
+								@@if ( context.item1.review ) {
+									<div class="star is-review"><span class="blind">리뷰있음</span></div>
+								} @@if ( context.item1.review === false ) {
+									<div class="star"><span class="blind">리뷰없음</span></div>
+								}
+								<div class="average-rating"><span class="blind">평점</span>@@item1.average</div>
+								<div class="review-count"><span class="blind">리뷰 수</span>(<span>@@item1.reviewCount</span>개)</div>
 							</div>
 						</div>
 					</div>
 				</li>
-				}
+				<li>
+					<div class="item">
+						<div class="product-image">
+							<img data-pc-src="@@item2.visualImagePC" data-m-src="@@item2.visualImageMobile" class="lazyload" alt="" aria-hidden="true">
+						</div>
+						<div class="product-contents">
+							<strong class="product-name"><span class="blind">모델명</span>@@item2.modelDisplayName</strong>
+							<p class="product-sku"><span class="blind">모델넘버</span>@@item2.modelNumber</p>
+							<p class="product-price"><span class="blind">가격</span><em>@@item2.modelPrice</em>원</p>
+							<div class="review-info">
+								@@if ( context.item2.review ) {
+									<div class="star is-review"><span class="blind">리뷰있음</span></div>
+								} @@if ( context.item2.review === false ) {
+									<div class="star"><span class="blind">리뷰없음</span></div>
+								}
+								<div class="average-rating"><span class="blind">평점</span>@@item2.average</div>
+								<div class="review-count"><span class="blind">리뷰 수</span>(<span>@@item2.reviewCount</span>개)</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item">
+						<div class="product-image">
+							<img data-pc-src="@@item3.visualImagePC" data-m-src="@@item3.visualImageMobile" class="lazyload" alt="" aria-hidden="true">
+						</div>
+						<div class="product-contents">
+							<strong class="product-name"><span class="blind">모델명</span>@@item3.modelDisplayName</strong>
+							<p class="product-sku"><span class="blind">모델넘버</span>@@item3.modelNumber</p>
+							<p class="product-price"><span class="blind">가격</span><em>@@item3.modelPrice</em>원</p>
+							<div class="review-info">
+								@@if ( context.item3.review ) {
+									<div class="star is-review"><span class="blind">리뷰있음</span></div>
+								} @@if ( context.item3.review === false ) {
+									<div class="star"><span class="blind">리뷰없음</span></div>
+								}
+								<div class="average-rating"><span class="blind">평점</span>@@item3.average</div>
+								<div class="review-count"><span class="blind">리뷰 수</span>(<span>@@item3.reviewCount</span>개)</div>
+							</div>
+						</div>
+					</div>
+				</li>
 			</ul>
 			<div class="bottom-area">
 				<button class="btn bd-black btn-small"><span>스펙 비교하기</span></button>

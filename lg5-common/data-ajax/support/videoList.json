@@ -1,0 +1,82 @@
+{   
+    "status": true,
+    "message":null,
+    "data": {
+        "popular": {
+            "listData": [
+                {
+                    "videoId": "hmYVuY7VDZc",
+                    "title": "냉장고에 손이 닿을 때 전기가 느껴져요.1",
+                    "category": "TV/프로젝터>올레드",
+                    "topic": "증상 > 세부 증상"
+                },
+                {
+                    "videoId": "hmYVuY7VDZc",
+                    "title": "냉장고에 손이 닿을 때 전기가 느껴져요.2",
+                    "category": "TV/프로젝터>올레드",
+                    "topic": "증상 > 세부 증상"
+                },
+                {
+                    "videoId": "hmYVuY7VDZc",
+                    "title": "냉장고에 손이 닿을 때 전기가 느껴져요.3",
+                    "category": "TV/프로젝터>올레드",
+                    "topic": "증상 > 세부 증상"
+                },
+                {
+                    "videoId": "hmYVuY7VDZc",
+                    "title": "냉장고에 손이 닿을 때 전기가 느껴져요.4",
+                    "category": "TV/프로젝터>올레드",
+                    "topic": "증상 > 세부 증상"
+                },
+                {
+                    "videoId": "hmYVuY7VDZc",
+                    "title": "냉장고에 손이 닿을 때 전기가 느껴져요.5",
+                    "category": "TV/프로젝터>올레드",
+                    "topic": "증상 > 세부 증상"
+                }
+            ],
+            "listPage": {
+                "page": 3,
+                "totalCount": 173
+            }
+        },
+        "newest": {
+            "listData": [
+                {
+                    "videoId": "hmYVuY7VDZc",
+                    "title": "냉장고에 손이 닿을 때 전기가 느껴져요.6",
+                    "category": "TV/프로젝터>올레드",
+                    "topic": "증상 > 세부 증상"
+                },
+                {
+                    "videoId": "hmYVuY7VDZc",
+                    "title": "냉장고에 손이 닿을 때 전기가 느껴져요.7",
+                    "category": "TV/프로젝터>올레드",
+                    "topic": "증상 > 세부 증상"
+                },
+                {
+                    "videoId": "hmYVuY7VDZc",
+                    "title": "냉장고에 손이 닿을 때 전기가 느껴져요.8",
+                    "category": "TV/프로젝터>올레드",
+                    "topic": "증상 > 세부 증상"
+                },
+                {
+                    "videoId": "hmYVuY7VDZc",
+                    "title": "냉장고에 손이 닿을 때 전기가 느껴져요.9",
+                    "category": "TV/프로젝터>올레드",
+                    "topic": "증상 > 세부 증상"
+                },
+                {
+                    "videoId": "hmYVuY7VDZc",
+                    "title": "냉장고에 손이 닿을 때 전기가 느껴져요.0",
+                    "category": "TV/프로젝터>올레드",
+                    "topic": "증상 > 세부 증상"
+                }
+            ],
+            "listPage": {
+                "page": 4,
+                "totalCount": 123
+            }
+        }
+    }
+}

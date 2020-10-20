@@ -1,0 +1,328 @@
+.my-visit-info {
+    > h4.tit {
+    font-size: 20px;
+    line-height: 29px; 
+    text-align: center;
+    font-weight: 500;
+    em {
+        color:#EC455A;
+        }
+    }
+}
+.txt-box {
+    padding: 32px;
+    text-align: center;
+    background-color: #f4f4f4;
+    font-size: 16px;
+    color: #222;
+    line-height: 24px;
+    em {
+        color:#EC455A;
+    }
+}
+.my-visit-box {
+    .my-date {
+        position: relative;
+        .date-tit {
+            font-size: 14px;
+            line-height: 20px;
+            color: #808080;
+        }
+        .date {
+            font-size: 18px;
+            line-height: 28px;
+            color: #616161;
+            font-weight: 700;
+        }
+        .btn {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+        }
+    }
+    .next .date {
+        color: #ec455a;
+    }
+    .item {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid #ddd;
+        li {
+            font-size: 16px;
+            line-height: 24px;
+            color: #222;
+            margin-top:4px;
+            &:first-child {
+                margin-top: 0;
+            }
+        }  
+    }
+}
+
+.my-visit-schedule {
+    padding: 0 93px;
+    //@media screen and (max-width: 1024px) {
+    @include mobile {
+        margin-top: 40px;
+        padding: 0 0 0 24px;
+    }
+    .my-schedule {
+        display: flex;
+        position: relative;
+        padding-top: 98px;
+        justify-content: space-between;
+        align-items: flex-start;
+        //@media screen and (max-width: 1024px) {
+        @include mobile {    
+            display: block;
+            padding-top: 0;
+        }
+        &:before {
+            display: inline-block;
+            position: absolute;
+            content: '';
+            top: 74px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            //@media screen and (max-width: 1024px) {
+            @include mobile {
+                display: none;
+            }
+        }
+        > li {
+            //@media screen and (max-width: 1024px) {
+            @include mobile {
+                position: relative;
+                padding-top: 86px;
+                &:first-child {
+                    padding-top: 0;
+                }
+                &:before {
+                    display: inline-block;
+                    position: absolute;
+                    content: '';
+                    top: 0;
+                    left: -24px;
+                    width: 8px;
+                    height: 100%;
+                    background-color: #f4f4f4;
+                }
+                &:last-child:before {
+                    height: 90px;
+                }
+            }
+            .inner {
+                position: relative;
+                width: 195px;
+                padding: 24px;
+                box-shadow:0 4px 12px 0 rgba(0, 0, 0, .15);
+                border-radius: 8px;
+                &:after {
+                    display: inline-block;
+                    position: absolute;
+                    content: '';
+                    top: -24px;
+                    left: 50%;
+                    width: 8px;
+                    height: 8px;
+                    margin-left: -4px;
+                    background-color: #808080;
+                    border-radius: 4px;
+                    @include mobile {
+                        margin-left: 0;
+                    }
+                }
+                //@media screen and (max-width: 1024px) {
+                @include mobile {
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    
+                    &:after {
+                        top: 0;
+                        left: -24px;
+                    }
+                    .my-date {
+                        width: 57%;
+                    }
+                    .item {
+                        width: 43%;
+                        margin-top: 0;
+                        padding-top: 0;
+                        padding-left: 20px;
+                        border-top: none;
+                        border-left: 1px solid #ccc;
+    
+                    }
+                }  
+            }
+            &.next .inner:after {
+                background-color: #ec455a;
+            }
+            
+            .my-badge {
+                position: absolute;
+                top: -58px;
+                left: -50%;
+                padding: 2px 8px;
+                background: #ccc;
+                font-size: 12px;
+                line-height: 20px;
+                color: #fff;
+                border-radius: 4px;
+                @media screen and (max-width: 1279px){
+                    left: -20%;
+                }
+                @media screen and (max-width: 1125px){
+                    left: 0;
+                }
+                //@media screen and (max-width: 1024px) {
+                @include mobile {
+                    top: -26px;
+                    font-size: 10px;
+                    line-height: 14px;
+                }
+            }
+            &.pre {
+                margin-left: -93px;
+                //@media screen and (max-width: 1024px) {
+                @include mobile {
+                    margin-left: 0;
+                }
+            }
+            &.next {
+                .soon {
+                    position: absolute;
+                    left: 50%;
+                    top: -66px;
+                    height: 34px;
+                    margin-left: -12px;
+                    padding: 7px 0 7px 34px;
+                    background: url(/lg5-common/images/icons/icon-alarm.svg) 0 50% no-repeat;
+                    background-size: 26px 34px;
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: #ec455a;
+                    //@media screen and (max-width: 1024px) {
+                    @include mobile {
+                        top: -35px;
+                        left: auto;
+                        right: 0;
+                        padding: 6px 0 6px 29px; 
+                        font-size: 12px;
+                        line-height: 16px;
+                        background-size: 21px 27px;
+                        background-position: 0 0;
+                    }
+                }
+            }
+            &.end {
+                margin-right: -93px;
+                //@media screen and (max-width: 1024px) {
+                @include mobile {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+.my-visit-detail {
+   .my-visit-box {
+       display: flex;
+       width: 100%;
+       margin-top: 56px;
+       flex-wrap: wrap;
+       > li {
+            width: 50%;
+            padding-right: 4px;
+            &:last-child {
+                padding: 0 0 0 4px;
+            }
+            @include mobile {
+                display: block;
+                width: 100%;
+                padding: 0;
+                &:last-child {
+                    padding: 0;
+                }
+            }
+            &.next {
+                .my-date {
+                    padding-right: 150px;
+                }
+            }
+            .inner {
+                width: 100%;
+                height: 100%;
+                padding: 24px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+           }
+
+           .m-btn-area {
+               display: none;
+               @include mobile {
+                   display: block;
+                   margin-top: 20px;
+                   text-align: center;
+                   .more-mobile {
+                       font-size: 14px;
+                       line-height: 18px;
+                       text-decoration: underline;
+                       color: #222;
+                   }
+               }
+           }
+       }
+       @include mobile {
+        > li + li {
+            margin-top: 10px;
+        }
+       }
+   } 
+}
+
+.my-visit-qna {
+    margin-top: 56px;
+    @include mobile {
+        margin-top: 40px;
+    }
+    ul {
+        li {
+            margin-top: 32px;
+            @include mobile {
+                margin-top: 40px;
+            }
+            &:first-child {
+                margin-top: 0;
+            }
+            .tit {
+                padding: 14px 24px;
+                background: #f4f4f4;
+                border-top: 1px solid #ddd;
+                font-size: 14px;
+                line-height: 20px;
+                color: #616161;
+                @include mobile {
+                    padding: 12px 20px;
+                }
+            }
+            .cont {
+                padding: 24px;
+                border-bottom: 1px solid #ddd;
+                font-size: 16px;
+                line-height: 24px;
+                color: #222;
+                @include mobile {
+                    padding: 20px;
+                }
+            }
+        }
+    }
+}
+

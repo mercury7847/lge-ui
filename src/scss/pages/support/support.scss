@@ -3,6 +3,8 @@
 @import "mCustomScrollbar";
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
+@import "../../layout/grid";
+
 @import "../../support/page-visual";
 @import "../../support/layout";
 @import "../../support/board-list";
@@ -10,11 +12,10 @@
 @import "../../support/form-field";
 @import "../../support/modal";
 @import "../../support/table";
-@import "../../support/loading-bar";
 @import "../../support/sns";
-@import "../../support/select-category";
-@import "../../layout/grid";
-
+@import "../../support/top-bar";
+@import "../../support/process";
+@import "../../support/banner";
 
 
 /* 삭제 예정 */
@@ -440,14 +441,36 @@
         }
     }
 
-    .choice-input {margin-bottom: 16px;}
-
-    .total-number {
-        font-size: 16px;
-        font-weight: bold;
-        color: #222;
-        margin: 32px 0 16px;
+    .choice-input {
+        margin-bottom: 16px;
+        .rdo-wrap {
+            &.box-type {
+                max-width: 220px;
+                width: calc(25% - 12px);
+                margin-left: 21px;
+                input {
+                    +label {
+                        padding: 21px 16px 21px 48px;
+                        &::before {
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                        &::after {
+                            top: 50%;
+                            transform: translateY(-50%) rotate(-45deg);
+                        }
+                    }
+                }
+                &:nth-child(4n+1) {
+                    margin-left: 0;
+                }
+                &:nth-child(n+5) {
+                    margin-top: 24px;
+                }
+            }
+        }
     }
+
 
     .modal-gray-box {
         border-radius: 4px;

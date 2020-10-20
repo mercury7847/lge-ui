@@ -2,7 +2,7 @@
     "status":"success",
     "message":null,
     "param":{
-        "input":"에어"
+        "searchedValue":"에어"
     },
     "data":{
         "resultCount":"99",

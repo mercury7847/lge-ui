@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["UTS/UTS"]
+        pageCSS: ["UTS/UTS"],
+        pageJS: ["search/search"]
     })
 <body>
     <div class="wrap">
@@ -9,7 +10,7 @@
 
         <div class="container">
             <!-- 통합검색 -->
-            <div class="contents search">
+            <div class="contents search" data-url-timer="/lg5-common/data-ajax/search/searchTimer.json" data-url-search="/lg5-common/data-ajax/search/search_all.json">
                 <!-- 검색 영역 -->
                 @@include('./common/modules/search-input.html', {
                     "value" : "노크온 매직스페이스",
@@ -21,17 +22,17 @@
                 <!-- 검색 결과 영역 -->
                 <div class="tabs-wrap btn-type ui_tab left">
                     <ul class="tabs">
-                        <li class="on"><a href="#n">전체(210)<em class="blind">선택됨</em></a></li>
-                        <li><a href="#n">제품(59)</a></li>
-                        <li><a href="#n">케어솔루션(2)</a></li>
-                        <li><a href="#n">이벤트(5)</a></li>
-                        <li><a href="#n">스토리(18)</a></li>
-                        <li><a href="#n">케어용품/소모품(32)</a></li>
+                        <li class="on"><a href="#all">전체(210)<em class="blind">선택됨</em></a></li>
+                        <li><a href="#product">제품(59)</a></li>
+                        <li><a href="#care">케어솔루션(2)</a></li>
+                        <li><a href="#event">이벤트(5)</a></li>
+                        <li><a href="#story">스토리(18)</a></li>
+                        <li><a href="#additional">케어용품/소모품(32)</a></li>
                         <li><a href="#n">고객지원(28)</a></li>
                     </ul>
                 </div>
                 <div class="cont-wrap">
-                    <div class="search-result-wrap all">
+                    <div class="search-result-wrap all" id="all">
                         <div class="result-category">
                             <ul class="rounded-list">
                                 <li>
@@ -46,7 +47,7 @@
                             <div class="list-head">
                                 <h2 class="title">제품</h2>
                                 <div class="btn-area">
-                                    <a href="#" class="btn-link"><span>더보기</span></a>
+                                    <a href="#product" class="btn-link"><span>더보기</span></a>
                                 </div>
                             </div>
                             <div class="list-wrap">
@@ -106,9 +107,67 @@
                         </div> <!-- // 제품-->
                         <div class="result-list-wrap">
                             <div class="list-head">
+                                <h2 class="title">케어솔루션</h2>
+                                <div class="btn-area">
+                                    <a href="#product" class="btn-link"><span>더보기</span></a>
+                                </div>
+                            </div>
+                            <div class="list-wrap">
+                                <ul class="product-items">
+                                    @@loop('./common/modules/product-item.html', [
+                                        {
+                                            "search" : true,
+                                            "badgeType" : "large",
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "flags" : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "care" : true
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "flags" : true,
+                                            "review" : true,
+                                            "care" : true
+                                        }, {
+                                            "search" : true,
+                                            "badgeType" : "large",
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "flags" : true,
+                                            "review" : true,
+                                            "care" : true
+                                        }, {
+                                            "search" : true,
+                                            "badgeType" : "large",
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "flags" : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "care" : true
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "flags" : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "care" : true
+                                        }, {
+                                            "search" : true,
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "flags" : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "care" : true
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                        </div> <!-- // 케어솔루션-->
+                        <div class="result-list-wrap">
+                            <div class="list-head">
                                 <h2 class="title">이벤트</h2>
                                 <div class="btn-area">
-                                    <a href="#" class="btn-link"><span>더보기</span></a>
+                                    <a href="#event" class="btn-link"><span>더보기</span></a>
                                 </div>
                             </div>
                             <div class="box-list search-evt-list-wrap">
@@ -182,7 +241,7 @@
                             <div class="list-head">
                                 <h2 class="title">스토리</h2>
                                 <div class="btn-area">
-                                    <a href="#" class="btn-link"><span>더보기</span></a>
+                                    <a href="#story" class="btn-link"><span>더보기</span></a>
                                 </div>
                             </div>
                             <div class="box-list story-list-wrap">
@@ -227,7 +286,7 @@
                             <div class="list-head">
                                 <h2 class="title">케어용품/소모품</h2>
                                 <div class="btn-area">
-                                    <a href="#" class="btn-link"><span>더보기</span></a>
+                                    <a href="#additional" class="btn-link"><span>더보기</span></a>
                                 </div>
                             </div>
                             <div class="list-wrap">
@@ -255,7 +314,7 @@
                             <div class="list-head">
                                 <h2 class="title">고객지원</h2>
                                 <div class="btn-area">
-                                    <a href="#" class="btn-link"><span>더보기</span></a>
+                                    <a href="#customer" class="btn-link"><span>더보기</span></a>
                                 </div>
                             </div>
                             <div class="list-wrap">
@@ -310,6 +369,92 @@
                                             ]
                                         }
                                     ])
+                                </ul>
+                            </div>
+                            <div class="box-list search-support-list-wrap">
+                                <ul class="box-list-inner support no-img">
+                                    @@loop('./common/modules/list-box.html', [
+                                            {
+                                                "flagInfo2" : true,
+                                                "flagInf1" : "구분",
+                                                "flagInf1-1" : "제품문제해결",
+    
+                                                "title-hd" : "고객지원 제목",
+                                                "title" : "Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
+    
+                                                "category" : [
+                                                    {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"},
+                                                    {"txt1" : "기능관련", "txt2" : "><em>제품 사용 방법</em>"}
+                                                ]
+                                            }, {
+                                                "flagInfo2" : true,
+                                                "flagInf1" : "구분",
+                                                "flagInf1-1" : "제품문제해결",
+    
+                                                "title-hd" : "고객지원 제목",
+                                                "title" : "Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
+    
+                                                "category" : [
+                                                    {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"},
+                                                    {"txt1" : "기능관련", "txt2" : "><em>제품 사용 방법</em>"}
+                                                ]
+                                            }
+                                        ])
+                                </ul>
+                            </div>
+                            <div class="box-list search-support-list-wrap">
+                                <ul class="box-list-inner support no-img">
+                                    @@loop('./common/modules/list-box.html', [
+                                            {
+                                                "flagInfo2" : true,
+                                                "flagInf1" : "구분",
+                                                "flagInf1-1" : "사용설명서",
+    
+                                                "title-hd" : "고객지원 제목",
+                                                "title" : "HTML <em>사용설명서</em> (한국어)",
+    
+                                                "category" : [
+                                                    {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"}
+                                                ]
+    
+                                            }, {
+                                                "flagInfo2" : true,
+                                                "flagInf1" : "구분",
+                                                "flagInf1-1" : "사용설명서",
+    
+                                                "title-hd" : "고객지원 제목",
+                                                "title" : "HTML <em>사용설명서</em> (한국어)",
+                                                
+                                                "category" : [
+                                                    {"txt1" : "IT/모니터", "txt2" : "><em>데스크톱</em>/일체형"}
+                                                ]
+                                            }
+                                        ])
+                                </ul>
+                            </div>
+                            <div class="box-list search-support-list-wrap">
+                                <ul class="box-list-inner support no-img">
+                                    @@loop('./common/modules/list-box.html', [
+                                            {
+                                                "flagInfo2" : true,
+                                                "flagInf1" : "구분",
+                                                "flagInf1-1" : "이용가이드/FAQ",
+    
+                                                "title-hd" : "고객지원 제목",
+                                                "title2" : "LG 비하인드 스토리를 열람하고 싶으신 고객님들에게 제공해드리는 FAQ 가이드 “행복을 찾아주는 파랑새, 인공지능 플랫폼을 이용해보세요’  지금 이용 지금 이용 지금 이용 지금 이용 지금 이용",
+    
+                                                "desc" : "사이트 <em>이용</em> "
+                                            }, {
+                                                "flagInfo2" : true,
+                                                "flagInf1" : "구분",
+                                                "flagInf1-1" : "이용가이드/FAQ",
+    
+                                                "title-hd" : "고객지원 제목",
+                                                "title" : "LG 비하인드 스토리를 열람하고 싶으신 고객님들에게 제공해드리는 FAQ 가이드 “행복을 찾아주는 파랑새, 인공지능 플랫폼을 이용해보세요’  지금 이용 지금 이용 지금 이용 지금 이용 지금 이용",
+    
+                                                "desc" : "사이트 <em>이용</em> "
+                                            }
+                                        ])
                                 </ul>
                             </div>
                             <div class="box-list search-video-list-wrap">
@@ -367,6 +512,123 @@
                                 </ul>
                             </div>
                         </div><!-- // 고객지원 -->
+                    </div>
+                </div>
+                <!-- // 검색 결과 영역 -->
+                <div class="search-not-result">
+                    <div class="no-data">
+                        <p>
+                            <span><em>&ldquo;XLQL&rdquo;</em>에 대한 검색 결과가 없습니다</span>
+                            다시 한번 확인해주세요.
+                        </p>
+                    </div>
+                </div>
+                <div class="cont-wrap">
+                    <div class="search-result-wrap suggested-list-wrap">
+                        <div class="result-list-wrap">
+                            <div class="list-head">
+                                <h2 class="title">이런 제품 어떠세요?</h2>
+                            </div>
+                            <div class="list-wrap">
+                                <ul class="product-items">
+                                    @@loop('./common/modules/product-item.html', [
+                                        {
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "flags" : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "price" : true,
+                                            "originalPrice" : true,
+                                            "benefit" : true,
+                                            "wish" : true,
+                                            "wish" : {
+                                                "id" : "chk01",
+                                                "name" : "chk01",
+                                                "checked" : ""
+                                            },
+                                            "button" : true,
+                                            "buttonName" : "장바구니 담기"
+                                        },{
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "flags" : true,
+                                            "review" : true,
+                                            "price" : true,
+                                            "benefit" : true,
+                                            "wish" : true,
+                                            "wish" : {
+                                                "id" : "chk01",
+                                                "name" : "chk01",
+                                                "checked" : ""
+                                            },
+                                            "button" : true,
+                                            "buttonName" : "장바구니 담기"
+                                        },{
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "flags" : true,
+                                            "review" : true,
+                                            "price" : true,
+                                            "benefit" : true,
+                                            "wish" : true,
+                                            "wish" : {
+                                                "id" : "chk01",
+                                                "name" : "chk01",
+                                                "checked" : "checked"
+                                            },
+                                            "button" : true,
+                                            "buttonName" : "자세히보기"
+                                        },{
+                                            "badgeType" : "large",
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "flags" : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "price" : true,
+                                            "benefit" : true,
+                                            "wish" : true,
+                                            "wish" : {
+                                                "id" : "chk01",
+                                                "name" : "chk01",
+                                                "checked" : ""
+                                            },
+                                            "button" : true,
+                                            "buttonName" : "자세히보기"
+                                        },{
+                                            "badgeType" : "thin",
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "flags" : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "price" : true,
+                                            "benefit" : true,
+                                            "wish" : true,
+                                            "wish" : {
+                                                "id" : "chk01",
+                                                "name" : "chk01",
+                                                "checked" : "checked"
+                                            },
+                                            "button" : true,
+                                            "buttonName" : "장바구니 담기"
+                                        },{
+                                            "badgeType" : "thin",
+                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "flags" : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "price" : true,
+                                            "benefit" : true,
+                                            "wish" : true,
+                                            "wish" : {
+                                                "id" : "chk01",
+                                                "name" : "chk01",
+                                                "checked" : "checked"
+                                            },
+                                            "button" : true,
+                                            "buttonName" : "장바구니 담기"
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- // 검색 결과 영역 -->

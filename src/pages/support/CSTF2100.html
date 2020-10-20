@@ -23,7 +23,9 @@
                 <div class="contents-inner">
 
                     <div class="search-wrap">
-
+                        <form action="/html/support/CSTF2100.html" id="submitForm" data-ajax="/lg5-common/data-ajax/support/videoList.json" autocomplete="off">
+                        
+                        </form>
                     </div>
                     <div class="result-wrap">
                         <div class="search-summary">
@@ -41,26 +43,21 @@
                                     <h3 class="result-tit">인기 동영상 가이드</h3>
                                     <div class="video-list-wrap">
                                         <ul class="video-list">
+                                            @@for (var i = 0; i < 5; i++) {
                                             <li>
-                                                <div class="video-thumb">
-                                                    <img src="" alt="">
-                                                </div>
-                                                <div class="video-cont">
-                                                    <p class="category">TV/프로젝터>올레드</p>
-                                                    <p class="topic">기능관련 > 제품 사용 방법</p>
-                                                    <h4 class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
-                                                </div>
+                                                <a href="#">
+                                                    <div class="video-thumb">
+                                                        <!-- http://img.youtube.com/vi/[video-id]/[thumbnail-number].jpg -->
+                                                        <img src="//img.youtube.com/vi/hmYVuY7VDZc/default.jpg" alt="">
+                                                    </div>
+                                                    <div class="video-cont">
+                                                        <p class="category">TV/프로젝터>올레드</p>
+                                                        <p class="topic">기능관련 > 제품 사용 방법</p>
+                                                        <h4 class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
+                                                    </div>
+                                                </a>
                                             </li>
-                                            <li>
-                                                <div class="video-thumb">
-                                                    <img src="" alt="">
-                                                </div>
-                                                <div class="video-cont">
-                                                    <p class="category">TV/프로젝터>올레드</p>
-                                                    <p class="topic">기능관련 > 제품 사용 방법</p>
-                                                    <h4 class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
-                                                </div>
-                                            </li>
+                                            }
                                         </ul>
                                     </div>
                                     <p class="result-total">검색결과 <em class="count">240</em>건</p>
@@ -75,6 +72,21 @@
                                     <h3 class="result-tit">최신 동영상 가이드</h3>
                                     <div class="video-list-wrap">
                                         <ul class="video-list">
+                                            @@for (var i = 0; i < 5; i++) {
+                                            <li>
+                                                <a href="#">
+                                                    <div class="video-thumb">
+                                                        <!-- http://img.youtube.com/vi/[video-id]/[thumbnail-number].jpg -->
+                                                        <img src="//img.youtube.com/vi/hmYVuY7VDZc/default.jpg" alt="">
+                                                    </div>
+                                                    <div class="video-cont">
+                                                        <p class="category">TV/프로젝터>올레드</p>
+                                                        <p class="topic">기능관련 > 제품 사용 방법</p>
+                                                        <h4 class="tit">냉장고에 손이 닿을 때 전기가 느껴져요.</h4>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            }
                                         </ul>
                                     </div>
                                     <p class="result-total">검색결과 <em class="count">240</em>건</p>
@@ -86,7 +98,9 @@
                             </div>
                         </div>
                         <div class="search-no-result">
-                            <p class="txt">검색된 결과가 없습니다.</p>
+                            <div class="no-data">
+                                <p>검색결과가 없습니다.</p>
+                            </div>
                         </div>
                     </div>
 
@@ -100,6 +114,6 @@
     <!-- support script -->
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
-    <script src="/lg5-common/js/support/video-guide.min.js"></script>
+    <script src="/lg5-common/js/support/videoGuide.min.js"></script>
 </body>
 </html> 
