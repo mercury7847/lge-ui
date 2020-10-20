@@ -37,9 +37,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
                 self.update();
                 self._bindEvents();
                 console.log('loadImages complete');
-            });
-
-            
+            });           
         },
 
 
@@ -56,11 +54,15 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
             }
             $win.on('scroll resize load', function(e) {
                 self.scrollTop = $win.scrollTop();
-                idx = self._getSelectIdx(self.scrollTop);
-                if(idx != self.selectedIndex){
-                    self.selectedIndex = idx;
-                    self._activeBtn(self.selectedIndex);
+
+                if(self.options.usedAnchor){
+                    idx = self._getSelectIdx(self.scrollTop);
+                    if(idx != self.selectedIndex){
+                        self.selectedIndex = idx;
+                        self._activeBtn(self.selectedIndex);
+                    }
                 }
+
                 self.stickyRect = self._getRectangle(self.$el);
                 self.containerRect = self._getRectangle(self.$container);
 
@@ -87,8 +89,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
                 $target.removeClass('on');
             }else{
                 $target.eq(idx).addClass('on').siblings().removeClass('on');
-            }
-            
+            }            
         },
 
 
@@ -102,10 +103,13 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
             self.containerRect = self._getRectangle(self.$container);
             self.marginTop = opt.marginTop;
             self.marginBottom = opt.marginBottom;
-            self.anchorArr = [];
-            self.$anchor.each(function(index, item){
-                self.anchorArr.push($(item).attr('href'));
-            });
+
+            if(self.options.usedAnchor){
+                self.anchorArr = [];
+                self.$anchor.each(function(index, item){
+                    self.anchorArr.push($(item).attr('href'));
+                });
+            }
 
             if(opt.wrap){
                 self.$el.wrap(opt.wrapWith).parent().css({ 
@@ -119,9 +123,10 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
             self._calcPos();
             self._setPosition();
 
-            var idx = self.$anchor.parent('.on').index();
-            if(idx>0) self.scollToIndex(idx, 0);
-
+            if(self.options.usedAnchor){
+                var idx = self.$anchor.parent('.on').index();
+                if(idx>0) self.scollToIndex(idx, 0);
+            }
         },
 
         _handleResize: function _handleResize(e) {
@@ -159,7 +164,9 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
                     position: 'fixed',
                     top: self.stickyRect.top,
                     left: self.stickyRect.left,
-                    //width: $el.width() 2020.10.16 고정 width값이 있으면 틀어짐...
+                    right: 0,
+                    //width: $el.width(),
+                    'z-index': 1000
                 });
                 
                 $el.addClass(opt.stickyClass);
@@ -167,8 +174,10 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
             } else if (self.scrollTop > self.stickyRect.top - self.marginTop) {
                 $el.css({
                     position: 'fixed',
-                    //width: $el.width(), 2020.10.16 고정 width값이 있으면 틀어짐...
-                    left: self.stickyRect.left
+                    //width: $el.width(), 
+                    left: self.stickyRect.left,
+                    right: 0,
+                    'z-index': 1000
                 });
 
                 if (self.scrollTop + self.stickyRect.height + self.marginTop > self.containerRect.bottom - self.marginBottom) {
@@ -218,29 +227,29 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
             var lasty = $(document).outerHeight() - $(window).height();
             var $target,top,anchorName;
             
-            self.$anchor.each(function(index, item){
-
-                anchorName = $(item).attr('href');
-                try{
-                    $target = self.$container.find(anchorName);
+            if(self.options.usedAnchor){
+                self.$anchor.each(function(index, item){
     
-                    if(index==0){
-                        self.posArr.push(self.containerRect.top - self.marginTop);
-                    }else{
-                        //2020.10.16 $target이 없을 시...
-                        if ($target.length){
-                            top = $target.offset().top - (self.stickyRect.height + self.marginTop);                  
-                            self.posArr.push(top>lasty? lasty-10 : top);
-                            if(index == self.$anchor.length-1){
-                                top = $target.outerHeight() + $target.offset().top;
-                                self.posArr.push(top);
+                    anchorName = $(item).attr('href');
+                    try{
+                        $target = self.$container.find(anchorName);
+        
+                        if(index==0){
+                            self.posArr.push(self.containerRect.top - self.marginTop);
+                        }else{
+                            //2020.10.16 $target이 없을 시...
+                            if ($target.length){
+                                top = $target.offset().top - (self.stickyRect.height + self.marginTop);                  
+                                self.posArr.push(top>lasty? lasty-10 : top);
+                                if(index == self.$anchor.length-1){
+                                    top = $target.outerHeight() + $target.offset().top;
+                                    self.posArr.push(top);
+                                }
                             }
-                        }
-                    }   
-                } catch(err){}         
-            });
-
-
+                        }   
+                    } catch(err){}         
+                });
+            }
             // console.log(self.posArr);
         },
 
