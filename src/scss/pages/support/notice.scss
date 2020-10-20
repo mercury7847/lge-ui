@@ -5,11 +5,6 @@
 
 .support {
     &.notice {
-        @include mobile {
-            .contents-inner {
-                padding:0 0 56px;
-            }
-        }
         .search-wrap {
             max-width:848px;
             margin:0 auto;
@@ -17,6 +12,15 @@
             @include mobile {
                 padding:0 20px 32px;
                 background:#fff;
+            }
+        }
+        .result-wrap {
+            max-width:1066px;
+            margin:0 auto;
+        }
+        @include mobile {
+            .contents-inner {
+                padding:0 0 56px;
             }
         }
     }
