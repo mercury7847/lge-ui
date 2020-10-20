@@ -130,7 +130,7 @@
                     dataType: 'json',
                     data: param,
                     beforeSend: function(xhr) {
-                        CS.UI.elem.$body.ajaxLoad('start');
+                        lgkorUI.showLoading();
                     },
                     success: function(d) {
                         if (d.status) {
@@ -150,7 +150,7 @@
                         console.log(err);
                     },
                     complete: function() {
-                        CS.UI.elem.$body.ajaxLoad('end');
+                        lgkorUI.hideLoading();
                     }
                 });
             },
