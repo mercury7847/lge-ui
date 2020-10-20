@@ -1,0 +1,42 @@
+{
+    "status": "success",
+    "message": null,
+    "data": [
+        {
+            "categoryID": "AAA",
+            "categoryName": "정수기"
+        },
+        {
+            "categoryID": "BBB",
+            "categoryName": "얼음정수기 냉장고"
+        },
+        {
+            "categoryID": "CCC",
+            "categoryName": "맥주제조기"
+        },
+        {
+            "categoryID": "DDD",
+            "categoryName": "공기청정기"
+        },
+        {
+            "categoryID": "EEE",
+            "categoryName": "건조기"
+        },
+        {
+            "categoryID": "FFF",
+            "categoryName": "스타일러"
+        },
+        {
+            "categoryID": "GGG",
+            "categoryName": "전기레인지"
+        },
+        {
+            "categoryID": "HHH",
+            "categoryName": "식기세척기"
+        },
+        {
+            "categoryID": "III",
+            "categoryName": "안마의자"
+        }
+    ]
+}

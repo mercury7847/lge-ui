@@ -24,8 +24,9 @@
         '<div class="product-price"><div class="discount-rate">' +
         '{{#if sale}}<em class="blind">할인율</em><span class="price">{{sale}}<em>%</em></span>{{/if}}' +
         '</div></div></div>' +
-        '<div class="hashtag-wrap">{{#each item in hash}}<span class="hashtag">#{{item}} </span>{{/each}}' +
-        '</div></div></div></li>';
+        '<div class="hashtag-wrap">{{#each item in hash}}<span class="{{item.class}}">#{{item.tag}} </span>{{/each}}</div>' +
+        // '<div class="hashtag-wrap">{{#each item in hash}}<span class="hashtag">#{{item}} </span>{{/each}}</div>' +
+        '</div></div></li>';
 
     var careItemTemplate = '<li><div class="item result-item">' +
         '{{#if bigFlag_url}}<div class="badge-wrap"><img src="{{bigFlag_url}}" alt="{{bigFlag_alt}}"></div>' +
@@ -74,20 +75,34 @@
         '{{#if sale}}<em class="blind">할인율</em><span class="price">{{sale}}<em>%</em></span>{{/if}}' +
         '</div></div></div></div></div></li>';
 
-    var customerProductItemTemplate = '<li><div class="item result-item">' +
+    var customerListItemTemplate = '<li><div class="item result-item">' +
         '<div class="product-image" aria-hidden="true"><a href="{{url}}"><img src="{{image_url}}" alt="{{image_alt}}"></a></div>' +
         '<div class="product-contents"><div class="product-info"><div class="product-name">' +
         '<a href="#">{{#raw title}}</a></div>' +
         '<div class="sku">S833MC85Q</div></div></div>' +
         '<div class="product-button"><a href="{{url}}" class="btn">제품 지원 더보기</a></div></div></li>';
     
-    var customerItemTemplate = '<li class="lists"><div class="list-inner"><a href="{{url}}">' +
+    var customerBoxItemTemplate = '<li class="lists"><div class="list-inner"><a href="{{url}}">' +
         '<span class="thumb"></span><div class="info">' +
         '<div class="flag-wrap">{{#each item in flag}}<span class="flag"><span class="blind">구분</span>{{item}}</span>{{/each}}</div>' +
         '<p class="tit"><span class="blind">고객지원 제목</span>{{#raw title}}</p>' +
         '<div class="category">{{#each list in category}}<ol>{{#each (item, index) in list}}<li>{{#if index > 0}}>{{/if}}{{#raw item}}</li>{{/each}}</ol>{{/each}}</div>' +
-        '</div></a></div></li>'         
+        '{{#if desc}}<p class="desc">{{#raw desc}}</p>{{/if}}' +
+        '</div></a></div></li>';
     
+    var customerVideoItemTemplate = '<li class="lists"><div class="list-inner">' +
+        '<span class="thumb">' +
+            '<div class="video-container video-box youtube-box">' +
+            '<div class="video-asset video-box-closeset">' +
+            '<iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{{url}}"></iframe>' +
+            '</div>' +
+            '</div>' +
+        '</span>' +
+            '<div class="info">' +
+            '<p class="tit2"><span class="blind">이벤트 제목</span>{{#raw title}}</p>' +
+            '<div class="category twoLine">{{#each list in category}}<ol>{{#each (item, index) in list}}<li>{{#if index > 0}}>{{/if}}{{#raw item}}</li>{{/each}}</ol>{{/each}}</div>' +
+            '</div></div></li>';
+
     var suggestedTagItemTemplate = '<li><a href="#{{text}}" class="rounded"><span class="text">#{{text}}</span></a></li>';
     var similarTextTemplate = '<a href="#{{text}}" class="similar-text">이것을 찾으셨나요? “{{text}}”</a>'
 
@@ -102,8 +117,12 @@
             init: function() {
                 self.$contentsSearch = $('div.contents.search');
                 self.$searchLayer = self.$contentsSearch.find('div.input-keyword');
+                self.$resultLayer = self.$contentsSearch.find('div.cont-wrap').eq(0);
+                self.$tab = self.$contentsSearch.find('div.tabs-wrap.ui_tab');
+
                 self.$inputSearch = self.$searchLayer.find('div.input-sch input.txt');
                 self.$buttonSearch = self.$searchLayer.find('div.input-sch button.btn-search');
+                
             
                 self.$searchInputLayer = self.$searchLayer.find('div.search-input-layer');
                 self.$inputSearchList = self.$searchInputLayer.find('div.input-result-list');
@@ -129,8 +148,12 @@
                 self.$resultAllStory = self.$resultAllWrap.find('div.result-list-wrap').eq(3);
                 self.$resultAllAdditional = self.$resultAllWrap.find('div.result-list-wrap').eq(4);
                 self.$resultAllCustomer = self.$resultAllWrap.find('div.result-list-wrap').eq(5);
-                self.$resultAllCustomerProduct = self.$resultAllCustomer.find('div.list-wrap');
-                self.$resultAllCustomerSupport = self.$resultAllCustomer.find('div.search-support-list-wrap');
+                self.$resultAllCustomerSupport = self.$resultAllCustomer.find('div.list-wrap');
+                self.$resultAllCustomerDriver = self.$resultAllCustomer.find('div.box-list').eq(0);
+                self.$resultAllCustomerTrouble = self.$resultAllCustomer.find('div.box-list').eq(1);
+                self.$resultAllCustomerManual = self.$resultAllCustomer.find('div.box-list').eq(2);
+                self.$resultAllCustomerFaq = self.$resultAllCustomer.find('div.box-list').eq(3);
+                self.$resultAllCustomerVideo = self.$resultAllCustomer.find('div.search-video-list-wrap');
 
 
                 self.$noData = self.$contentsSearch.find('div.search-not-result');
@@ -229,6 +252,14 @@
                 self.$buttonSearch.trigger('click');
             },
 
+            checkCountData:function(item) {
+                return item ? (item.count ? item.count : 0) : 0;
+            },
+
+            checkArrayData:function(item) {
+                return item ? (item.data instanceof Array ? item.data : []) : [];
+            },
+
             showAnimation:function($item) {
                 $item.css({'opacity':0});
                 $item.show();
@@ -297,11 +328,25 @@
                 }
             },
 
+            updateTabLabel:function(tabItemIndex, count) {
+                var tabItem = self.$tab.find('li').eq(tabItemIndex);
+                var tabA = tabItem.find('a');
+                if(count > 0) {
+                    var em = tabA.children().clone();
+                    var label = tabItem.attr('data-label');
+                    tabA.text(label + '(' + vcui.number.addComma(count) + ')');
+                    tabA.append(em);
+                    tabItem.show();
+                } else {
+                    tabItem.hide();
+                }
+            },
+
             requestTimerSearch:function(searchValue) {
                 var _self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-url-timer');
+                //console.log(ajaxUrl,searchValue);
 
-                console.log(ajaxUrl,searchValue,self.$inputSearchList);
                 $.ajax({
                     url: ajaxUrl,
                     data: {"search":searchValue}
@@ -424,14 +469,26 @@
                     }
 
                     var showResult = false;
+
+                    //nodata test
+                    /*
+                    data.all = null;
                     data.product = null;
                     data.care = null;
                     data.event = null;
                     data.story = null;
                     data.additional = null;
+                    data.customer = null;
+                    */
+
+                    //전체
+                    var count = _self.checkCountData(data.all);
+                    _self.updateTabLabel(0,count);
 
                     //제품
-                    arr = data.product instanceof Array ? data.product : [];
+                    arr = _self.checkArrayData(data.product);
+                    count = _self.checkCountData(data.product);
+                    _self.updateTabLabel(1,count);
                     if(arr.length > 0) {
                         showResult = true;
                         var $list_ul = self.$resultAllProduct.find('div.list-wrap ul');
@@ -450,7 +507,9 @@
                     }
 
                     //케어솔루션
-                    arr = data.care instanceof Array ? data.care : [];
+                    arr = _self.checkArrayData(data.care);
+                    count = _self.checkCountData(data.care);
+                    _self.updateTabLabel(2,count);
                     if(arr.length > 0) {
                         showResult = true;
                         var $list_ul = self.$resultAllCare.find('div.list-wrap ul');
@@ -469,7 +528,9 @@
                     }
 
                     //이벤트
-                    arr = data.event instanceof Array ? data.event : [];
+                    arr = _self.checkArrayData(data.event);
+                    count = _self.checkCountData(data.event);
+                    _self.updateTabLabel(3,count);
                     if(arr.length > 0) {
                         showResult = true;
                         var $list_ul = self.$resultAllEvent.find('div.box-list ul');
@@ -484,16 +545,10 @@
                         self.$resultAllEvent.hide();
                     }
 
-                    if(showResult) {
-                        self.$noData.hide();
-                        self.$suggestedList.hide();
-                    } else {
-                        self.$noData.show();
-                        self.$suggestedList.show();
-                    }
-
                     //스토리
-                    arr = data.story instanceof Array ? data.story : [];
+                    arr = _self.checkArrayData(data.story);
+                    count = _self.checkCountData(data.story);
+                    _self.updateTabLabel(4,count);
                     if(arr.length > 0) {
                         showResult = true;
                         var $list_ul = self.$resultAllStory.find('div.box-list ul');
@@ -509,7 +564,9 @@
                     }
 
                     //소모품
-                    arr = data.additional instanceof Array ? data.additional : [];
+                    arr = _self.checkArrayData(data.additional);
+                    count = _self.checkCountData(data.additional);
+                    _self.updateTabLabel(5,count);
                     if(arr.length > 0) {
                         showResult = true;
                         var $list_ul = self.$resultAllAdditional.find('div.list-wrap ul');
@@ -526,26 +583,10 @@
 
                     //고객지원
                     var showCustomerResult = false;
-                    var customerData = data.customer;
+                    var customerData = data.customer ? data.customer : {};
 
                     //고객지원-제품지원
                     arr = customerData.support instanceof Array ? customerData.support : [];
-                    if(arr.length > 0) {
-                        showResult = true;
-                        showCustomerResult = true;
-                        var $list_ul = self.$resultAllCustomerProduct.find('ul');
-                        $list_ul.empty();
-                        arr.forEach(function(item, index) {
-                            item.title = item.title.replaceAll(searchedValue,replaceText);
-                            $list_ul.append(vcui.template(customerProductItemTemplate,item));
-                        });
-                        self.$resultAllCustomerProduct.show();
-                    } else {
-                        self.$resultAllCustomerProduct.hide();
-                    }
-
-                    //고객지원-드라이버
-                    arr = customerData.driver instanceof Array ? customerData.driver : [];
                     if(arr.length > 0) {
                         showResult = true;
                         showCustomerResult = true;
@@ -553,13 +594,103 @@
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = item.title.replaceAll(searchedValue,replaceText);
-                            $list_ul.append(vcui.template(customerItemTemplate,item));
+                            $list_ul.append(vcui.template(customerListItemTemplate,item));
                         });
                         self.$resultAllCustomerSupport.show();
                     } else {
                         self.$resultAllCustomerSupport.hide();
                     }
 
+                    //고객지원-드라이버
+                    arr = customerData.driver instanceof Array ? customerData.driver : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        showCustomerResult = true;
+                        var $list_ul = self.$resultAllCustomerDriver.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(customerBoxItemTemplate,item));
+                        });
+                        self.$resultAllCustomerDriver.show();
+                    } else {
+                        self.$resultAllCustomerDriver.hide();
+                    }
+
+                    //고객지원-문제해결
+                    arr = customerData.trouble instanceof Array ? customerData.trouble : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        showCustomerResult = true;
+                        var $list_ul = self.$resultAllCustomerTrouble.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(customerBoxItemTemplate,item));
+                        });
+                        self.$resultAllCustomerTrouble.show();
+                    } else {
+                        self.$resultAllCustomerTrouble.hide();
+                    }
+
+                    //고객지원-설명서
+                    arr = customerData.manual instanceof Array ? customerData.manual : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        showCustomerResult = true;
+                        var $list_ul = self.$resultAllCustomerManual.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(customerBoxItemTemplate,item));
+                        });
+                        self.$resultAllCustomerManual.show();
+                    } else {
+                        self.$resultAllCustomerManual.hide();
+                    }
+
+                    //고객지원-FAQ
+                    arr = customerData.faq instanceof Array ? customerData.faq : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        showCustomerResult = true;
+                        var $list_ul = self.$resultAllCustomerFaq.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(customerBoxItemTemplate,item));
+                        });
+                        self.$resultAllCustomerFaq.show();
+                    } else {
+                        self.$resultAllCustomerFaq.hide();
+                    }
+
+                    if(showCustomerResult) {
+                        self.$resultAllCustomer.show();
+                    } else {
+                        self.$resultAllCustomer.hide();
+                    }
+
+                    //고객지원-비디오
+                    arr = customerData.video instanceof Array ? customerData.video : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        showCustomerResult = true;
+                        var $list_ul = self.$resultAllCustomerVideo.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(customerVideoItemTemplate,item));
+                        });
+
+                        vcui.require([ 
+                            "ui/youtubeBox",
+                        ], function () {
+                            self.$resultAllCustomerVideo.find('.youtube-box').vcYoutubeBox();
+                        });
+
+                        self.$resultAllCustomerVideo.show();
+                    } else {
+                        self.$resultAllCustomerVideo.hide();
+                    }
+
+                    count = _self.checkCountData(data.customer);
+                    _self.updateTabLabel(6,count);
                     if(showCustomerResult) {
                         self.$resultAllCustomer.show();
                     } else {
@@ -570,9 +701,13 @@
                     if(showResult) {
                         self.$noData.hide();
                         self.$suggestedList.hide();
+                        self.$searchSimilar.show();
+                        self.$resultLayer.show();
                     } else {
                         self.$noData.show();
                         self.$suggestedList.show();
+                        self.$searchSimilar.hide();
+                        self.$resultLayer.hide();
                     }
 
 
