@@ -27,6 +27,24 @@
         '<div class="hashtag-wrap">{{#each item in hash}}<span class="hashtag">#{{item}} </span>{{/each}}' +
         '</div></div></div></li>';
 
+    var careItemTemplata = '<li><div class="item result-item">' +
+        '{{#if bigFlag_url}}<div class="badge-wrap"><img src="{{bigFlag_url}}" alt="{{bigFlag_alt}}"></div>' +
+        '{{#elsif bigFlag}}<div class="badge-wrap big-flag green type2 left"><span>{{#raw bigFlag}}</span></div>{{/if}}' +
+        '<div class="product-image" aria-hidden="true"><a href="#"><img src="{{image_url}}" alt="{{image_alt}}"></a></div>' +
+        '<div class="product-contents"><div class="flag-wrap">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
+        '<div class="product-info"><div class="product-name"><a href="#">{{#raw title}}</a></div>' +
+        '<div class="sku">{{sku}}</div>' +
+        '<div class="review-info"><a href="#">' +
+        '{{#if isReview}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{/if}}' +
+        '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div><div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' +
+        '</a></div></div>' +
+        '<div class="price-area"><div class="total-price">' +
+        '{{#if price}}<em class="blind">최대 혜택가격</em><span class="price">{{price}}<em>원</em></span>{{/if}}' +
+        '</div>' +
+        '<div class="product-price"><div class="discount-rate">' +
+        '{{#if sale}}<em class="blind">할인율</em><span class="price">{{sale}}<em>%</em></span>{{/if}}' +
+        '</div><span class="small-text">({{desc}})</span></div></div></div></li>';
+
     var suggestedTagItemTemplate = '<li><a href="#{{text}}" class="rounded"><span class="text">#{{text}}</span></a></li>';
     var similarTextTemplate = '<a href="#{{text}}" class="similar-text">이것을 찾으셨나요? “{{text}}”</a>'
 
