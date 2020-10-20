@@ -5,92 +5,6 @@
 
 .support {
     /* common */
-    .banner-wrap {
-        position:relative;
-        padding:45px 56px;
-        border-radius:4px;
-        background:#fff;
-        .banner {
-            display:block;
-            position:relative;
-            padding-right:156px;  
-            .tit {
-                font-size:18px;
-                font-weight:700;
-                line-height:26px;
-            }
-            .desc {
-                margin-top:12px;
-                font-size:16px;
-                line-height:24px;
-            }
-        }
-        .btn {
-            position:absolute;
-            right:56px;
-            top:50%;
-            transform:translateY(-50%);
-        }
-        &.icon-type {
-            .banner {
-                padding-left:112px;
-                .icon {
-                    position:absolute;
-                    left:0;
-                    top:50%;
-                    width:80px;
-                    height:80px;
-                    border-radius:100%;
-                    background:#ccc;
-                    transform:translateY(-50%);
-                }
-            }
-        }
-        @include mobile {
-            padding:0;
-            border-radius:0;
-            .banner {
-                padding:40px 20px;
-                .tit {
-                    font-size:14px;
-                    line-height:18px;
-                }
-                .desc {
-                    margin-top:8px;
-                    font-size:12px;
-                    line-height:16px;
-                }
-            }
-            .btn {
-                position:static;
-                width:100%;
-                border-radius:0;
-                transform:translateY(0);
-            }
-            &.icon-type {
-                padding:40px 20px;
-                .banner {
-                    padding:0 0 0 56px;
-                    .tit {
-                        min-height:40px;
-                    }
-                    .icon {
-                        top:0;
-                        width:40px;
-                        height:40px;
-                        transform:translateY(0);
-                    }
-                }
-                .btn {
-                    margin-top:20px;
-                    border-radius:8px;
-                }
-            }
-        }
-    }
-    /* //common */
-
-    /* module */
     .recommand-wrap {
         overflow:hidden;
         padding:64px 40px 80px;
@@ -490,8 +404,6 @@
             }
         }
     }
-    /* //module */
-
     .product-header {
         background:#fff;
         &-inner {
@@ -740,29 +652,22 @@
             }
         }
     }
+    /* // common */
 
 
 
-
-    &.download {
-        .step-section {
-            max-width:1066px;
-            margin:0 auto;
-        }
-        .tabs-wrap {
-            margin-bottom:24px;
-        }
+    /* page */
+    &.solutions {
         .banner-wrap {
-            margin-top:40px;
-        }
-        @include mobile {
-            .tabs-wrap {
-                margin-bottom:20px;
+            margin-top:32px;
+            & + .banner-wrpa {
+                margin-top:24px;
             }
-            .banner-wrap {
-                & + .banner-wrap {
+            @include mobile {
+                margin-top:12px;
+                & + .banner-wrpa {
                     margin-top:12px;
-                }
+                }   
             }
         }
     }
@@ -911,6 +816,34 @@
         }
         /* // video detail */
     }
+    &.download {
+        .step-section {
+            max-width:1066px;
+            margin:0 auto;
+        }
+        .tabs-wrap {
+            margin-bottom:24px;
+        }
+        .banner-wrap {
+            margin-top:40px;
+        }
+        @include mobile {
+            .tabs-wrap {
+                margin-bottom:20px;
+            }
+            .banner-wrap {
+                & + .banner-wrap {
+                    margin-top:12px;
+                }
+            }
+        }
+    }
+    &.card {   
+        .result-wrap {
+            max-width:1066px;
+            margin:0 auto;
+        } 
+    }
     &.psp {
         .tabs-wrap {
             margin-bottom:24px;
@@ -942,4 +875,5 @@
             }
         }
     }
+    /* // page */
 }
