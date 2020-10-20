@@ -10,12 +10,12 @@
     var productItemTemplate = '<li><div class="item result-item">' +
         '{{#if bigFlag_url}}<div class="badge-wrap"><img src="{{bigFlag_url}}" alt="{{bigFlag_alt}}"></div>' +
         '{{#elsif bigFlag}}<div class="badge-wrap big-flag green type2 left"><span>{{#raw bigFlag}}</span></div>{{/if}}' +
-        '<div class="product-image" aria-hidden="true"><a href="#"><img src="{{image_url}}" alt="{{image_alt}}"></a></div>' +
+        '<div class="product-image" aria-hidden="true"><a href="{{url}}"><img src="{{image_url}}" alt="{{image_alt}}"></a></div>' +
         '<div class="product-contents"><div class="flag-wrap">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
-        '<div class="product-info"><div class="product-name"><a href="#">{{#raw title}}</a></div>' +
+        '<div class="product-info"><div class="product-name"><a href="{{url}}">{{#raw title}}</a></div>' +
         '<div class="sku">{{sku}}</div>' +
-        '<div class="review-info"><a href="#">' +
-        '{{#if isReview}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{/if}}' +
+        '<div class="review-info"><a href="{{url}}">' +
+        '{{#if isReview}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
         '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div><div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' +
         '</a></div></div>' +
         '<div class="price-area"><div class="total-price">' +
@@ -27,24 +27,67 @@
         '<div class="hashtag-wrap">{{#each item in hash}}<span class="hashtag">#{{item}} </span>{{/each}}' +
         '</div></div></div></li>';
 
-    var careItemTemplata = '<li><div class="item result-item">' +
+    var careItemTemplate = '<li><div class="item result-item">' +
         '{{#if bigFlag_url}}<div class="badge-wrap"><img src="{{bigFlag_url}}" alt="{{bigFlag_alt}}"></div>' +
         '{{#elsif bigFlag}}<div class="badge-wrap big-flag green type2 left"><span>{{#raw bigFlag}}</span></div>{{/if}}' +
-        '<div class="product-image" aria-hidden="true"><a href="#"><img src="{{image_url}}" alt="{{image_alt}}"></a></div>' +
+        '<div class="product-image" aria-hidden="true"><a href="{{url}}"><img src="{{image_url}}" alt="{{image_alt}}"></a></div>' +
         '<div class="product-contents"><div class="flag-wrap">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
-        '<div class="product-info"><div class="product-name"><a href="#">{{#raw title}}</a></div>' +
+        '<div class="product-info"><div class="product-name"><a href="{{url}}">{{#raw title}}</a></div>' +
         '<div class="sku">{{sku}}</div>' +
-        '<div class="review-info"><a href="#">' +
-        '{{#if isReview}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{/if}}' +
+        '<div class="review-info"><a href="{{url}}">' +
+        '{{#if isReview}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
         '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div><div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' +
         '</a></div></div>' +
         '<div class="price-area"><div class="total-price">' +
-        '{{#if price}}<em class="blind">최대 혜택가격</em><span class="price">{{price}}<em>원</em></span>{{/if}}' +
+        '{{#if price}}<em class="blind">최대 혜택가격</em><span class="price"><em>월</em> {{price}}<em>원</em></span>{{/if}}' +
         '</div>' +
         '<div class="product-price"><div class="discount-rate">' +
         '{{#if sale}}<em class="blind">할인율</em><span class="price">{{sale}}<em>%</em></span>{{/if}}' +
-        '</div><span class="small-text">({{desc}})</span></div></div></div></li>';
+        '</div></div><span class="small-text">({{desc}})</span></div></div></div></li>';
 
+    var eventItemTemplate = '<li class="lists"><div class="list-inner"><a href="{{url}}">' +
+        '<span class="thumb"><img src="{{image_url}}" alt="{{image_alt}}">' +
+        '<div class="flag-wrap bg-type">{{#each item in thumbFlag}}<span class="flag"><span class="blind">제품 카테고리</span>{{item}}</span>>{{/each}}</div></span>' +
+        '<div class="info">' +
+        '<div class="flag-wrap">{{#each item in flag}}<span class="flag"><span class="blind">이벤트 구분</span>{{item}}</span>{{/each}}</div>' +
+        '<p class="tit"><span class="blind">이벤트 제목</span>{{#raw title}}</p>' +
+        '<p class="date"><span class="blind">이벤트 기간</span>{{startDate}}~{{endDate}}</p>' +
+        '</div></a></div></li>'
+
+    var storyItemTemplate = '<li class="lists"><div class="list-inner"><a href="{{url}}">' +
+        '<span class="thumb"><img src="{{image_url}}" alt="{{image_alt}}"></span>' +
+        '<div class="info">' +
+            '<div class="flag-wrap">{{#each item in flag}}<span class="flag"><span class="blind">구분</span>{{item}}</span>{{/each}}</div>' +
+            '<p class="tit"><span class="blind">이벤트 제목</span>{{#raw title}}</p>' +
+            '<p class="date"><span class="blind">이벤트 기간</span>{{startDate}}~{{endDate}}</p>' +
+            '<div class="hashtag">{{#each item in hash}}<span class="{{item.class}}">#{{item.tag}} </span>{{/each}}</div>' +
+            '</div></a></div></li>';
+    
+    var additionalItemTemplate = '<li><div class="item result-item">' +
+        '<div class="product-image" aria-hidden="true"><a href="{{url}}"><img src="{{image_url}}" alt="{{image_alt}}"></a></div>' +
+        '<div class="product-contents"><div class="product-info"><div class="product-name">' +
+        '<a href="{{url}}">{{#raw title}}</a></div>' +
+        '<div class="sku">S833MC85Q</div><p class="spec-info2">{{desc}}</p></div>' +        
+        '<div class="price-area"><div class="total-price">' +
+        '{{#if price}}<em class="blind">최대 혜택가격</em><span class="price">{{price}}<em>원</em></span>{{/if}}</div>' +
+        '<div class="product-price"><div class="discount-rate">' +
+        '{{#if sale}}<em class="blind">할인율</em><span class="price">{{sale}}<em>%</em></span>{{/if}}' +
+        '</div></div></div></div></div></li>';
+
+    var customerProductItemTemplate = '<li><div class="item result-item">' +
+        '<div class="product-image" aria-hidden="true"><a href="{{url}}"><img src="{{image_url}}" alt="{{image_alt}}"></a></div>' +
+        '<div class="product-contents"><div class="product-info"><div class="product-name">' +
+        '<a href="#">{{#raw title}}</a></div>' +
+        '<div class="sku">S833MC85Q</div></div></div>' +
+        '<div class="product-button"><a href="{{url}}" class="btn">제품 지원 더보기</a></div></div></li>';
+    
+    var customerItemTemplate = '<li class="lists"><div class="list-inner"><a href="{{url}}">' +
+        '<span class="thumb"></span><div class="info">' +
+        '<div class="flag-wrap">{{#each item in flag}}<span class="flag"><span class="blind">구분</span>{{item}}</span>{{/each}}</div>' +
+        '<p class="tit"><span class="blind">고객지원 제목</span>{{#raw title}}</p>' +
+        '<div class="category">{{#each list in category}}<ol>{{#each (item, index) in list}}<li>{{#if index > 0}}>{{/if}}{{#raw item}}</li>{{/each}}</ol>{{/each}}</div>' +
+        '</div></a></div></li>'         
+    
     var suggestedTagItemTemplate = '<li><a href="#{{text}}" class="rounded"><span class="text">#{{text}}</span></a></li>';
     var similarTextTemplate = '<a href="#{{text}}" class="similar-text">이것을 찾으셨나요? “{{text}}”</a>'
 
@@ -80,10 +123,17 @@
 
                 self.$resultAllWrap = self.$contentsSearch.find('div.search-result-wrap.all');
                 self.$resultAllCategory = self.$resultAllWrap.find('div.result-category');
-                self.$resultAllProduct = self.$resultAllWrap.find('div.result-list-wrap:nth-child(1)');
-                self.$resultAllCare = self.$resultAllWrap.find('div.result-list-wrap:nth-child(2)');
+                self.$resultAllProduct = self.$resultAllWrap.find('div.result-list-wrap').eq(0);
+                self.$resultAllCare = self.$resultAllWrap.find('div.result-list-wrap').eq(1);
+                self.$resultAllEvent = self.$resultAllWrap.find('div.result-list-wrap').eq(2);
+                self.$resultAllStory = self.$resultAllWrap.find('div.result-list-wrap').eq(3);
+                self.$resultAllAdditional = self.$resultAllWrap.find('div.result-list-wrap').eq(4);
+                self.$resultAllCustomer = self.$resultAllWrap.find('div.result-list-wrap').eq(5);
+                self.$resultAllCustomerProduct = self.$resultAllCustomer.find('div.list-wrap');
+                self.$resultAllCustomerSupport = self.$resultAllCustomer.find('div.search-support-list-wrap');
 
-                self.$noData = self.$contentsSearch.find();
+
+                self.$noData = self.$contentsSearch.find('div.search-not-result');
                 self.$suggestedList = self.$contentsSearch.find('div.suggested-list-wrap');
 
                 
@@ -348,7 +398,6 @@
 
                     //연관검색어
                     var arr = data.related instanceof Array ? data.related : [];
-                    console.log(self.$relatedKeywordList,arr);
                     if(arr.length > 0) {
                         showResult = true;
                         var $list_ul = self.$relatedKeywordList.find('ul');
@@ -362,11 +411,8 @@
                     }
 
                     //검색결과-카테고리 갱신
-                    var showResult = false;
-
                     arr = data.category instanceof Array ? data.category : [];
                     if(arr.length > 0) {
-                        showResult = true;
                         var $list_ul = self.$resultAllCategory.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
@@ -377,6 +423,12 @@
                         self.$resultAllCategory.hide();
                     }
 
+                    var showResult = false;
+                    data.product = null;
+                    data.care = null;
+                    data.event = null;
+                    data.story = null;
+                    data.additional = null;
 
                     //제품
                     arr = data.product instanceof Array ? data.product : [];
@@ -388,51 +440,141 @@
                             if (item.sale == "0" || item.sale == 0) {
                                 item.sale = null;
                             }
-                            item.price = vcui.number.addComma(item.price);
+                            item.price = item.price ? vcui.number.addComma(item.price) : null;
                             item.title = item.title.replaceAll(searchedValue,replaceText);
-                            console.log(item);
                             $list_ul.append(vcui.template(productItemTemplate,item));
                         });
                         self.$resultAllProduct.show();
                     } else {
                         self.$resultAllProduct.hide();
                     }
-                    /*
-                    //검색결과-제품 갱신
-                    arr = data.preview instanceof Array ? data.preview : [];
+
+                    //케어솔루션
+                    arr = data.care instanceof Array ? data.care : [];
                     if(arr.length > 0) {
                         showResult = true;
-                        var $list_ul = self.$resultPreview.find('ul');
+                        var $list_ul = self.$resultAllCare.find('div.list-wrap ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            if (item.sale == "0" || item.sale == 0) {
+                                item.sale = null;
+                            }
+                            item.price = item.price ? vcui.number.addComma(item.price) : null
+                            item.title = item.title.replaceAll(searchedValue,replaceText);
+                            $list_ul.append(vcui.template(careItemTemplate,item));
+                        });
+                        self.$resultAllCare.show();
+                    } else {
+                        self.$resultAllCare.hide();
+                    }
+
+                    //이벤트
+                    arr = data.event instanceof Array ? data.event : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        var $list_ul = self.$resultAllEvent.find('div.box-list ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
+                            item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
+                            $list_ul.append(vcui.template(eventItemTemplate,item));
+                        });
+                        self.$resultAllEvent.show();
+                    } else {
+                        self.$resultAllEvent.hide();
+                    }
+
+                    if(showResult) {
+                        self.$noData.hide();
+                        self.$suggestedList.hide();
+                    } else {
+                        self.$noData.show();
+                        self.$suggestedList.show();
+                    }
+
+                    //스토리
+                    arr = data.story instanceof Array ? data.story : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        var $list_ul = self.$resultAllStory.find('div.box-list ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
+                            item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
+                            $list_ul.append(vcui.template(storyItemTemplate,item));
+                        });
+                        self.$resultAllStory.show();
+                    } else {
+                        self.$resultAllStory.hide();
+                    }
+
+                    //소모품
+                    arr = data.additional instanceof Array ? data.additional : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        var $list_ul = self.$resultAllAdditional.find('div.list-wrap ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            item.price = item.price ? vcui.number.addComma(item.price) : null
+                            item.title = item.title.replaceAll(searchedValue,replaceText);
+                            $list_ul.append(vcui.template(additionalItemTemplate,item));
+                        });
+                        self.$resultAllAdditional.show();
+                    } else {
+                        self.$resultAllAdditional.hide();
+                    }
+
+                    //고객지원
+                    var showCustomerResult = false;
+                    var customerData = data.customer;
+
+                    //고객지원-제품지원
+                    arr = customerData.support instanceof Array ? customerData.support : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        showCustomerResult = true;
+                        var $list_ul = self.$resultAllCustomerProduct.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
                             item.title = item.title.replaceAll(searchedValue,replaceText);
-                            item.price = vcui.number.addComma(item.price);
-                            $list_ul.append(vcui.template(previewItemTemplate, item));
+                            $list_ul.append(vcui.template(customerProductItemTemplate,item));
                         });
-                        self.$resultPreview.vcImageSwitch('reload');
-                        self.$resultPreview.show();
+                        self.$resultAllCustomerProduct.show();
                     } else {
-                        self.$resultPreview.hide();
+                        self.$resultAllCustomerProduct.hide();
                     }
 
-                    
-                    //연관 검색어
-                    var similarText = data.similarText;
-                    if(similarText) {
+                    //고객지원-드라이버
+                    arr = customerData.driver instanceof Array ? customerData.driver : [];
+                    if(arr.length > 0) {
                         showResult = true;
-                        self.$searchSimilar.html(vcui.template(similarTextTemplate, {"text":similarText}));
-                        self.$searchSimilar.show();
+                        showCustomerResult = true;
+                        var $list_ul = self.$resultAllCustomerSupport.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            item.title = item.title.replaceAll(searchedValue,replaceText);
+                            $list_ul.append(vcui.template(customerItemTemplate,item));
+                        });
+                        self.$resultAllCustomerSupport.show();
                     } else {
-                        self.$searchSimilar.hide();
+                        self.$resultAllCustomerSupport.hide();
                     }
 
-                    //검색결과가 있을 경우 최근/인기/추천 검색어 숨김
-                    if(showResult) {
-                        self.$searchKeywordArea.hide();
+                    if(showCustomerResult) {
+                        self.$resultAllCustomer.show();
                     } else {
-                        self.$searchKeywordArea.show();
+                        self.$resultAllCustomer.hide();
                     }
-                    */
+
+                    //데이타 없음 화면 처리
+                    if(showResult) {
+                        self.$noData.hide();
+                        self.$suggestedList.hide();
+                    } else {
+                        self.$noData.show();
+                        self.$suggestedList.show();
+                    }
+
 
                 }).fail(function(d){
                     alert(d.status + '\n' + d.statusText);
