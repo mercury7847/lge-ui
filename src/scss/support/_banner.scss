@@ -1,84 +1,81 @@
 @charset "UTF-8";
 
 .banner-wrap {
-    position:relative;
-    padding:45px 56px;
     border-radius:4px;
     background:#fff;
     .banner {
-        display:block;
+        display:flex;
         position:relative;
-        padding-right:156px;  
-        .tit {
-            font-size:18px;
-            font-weight:700;
-            line-height:26px;
+        padding:46px 56px;
+        align-items:center;
+        .cont {
+            width:100%;
+            .tit {
+                font-size:18px;
+                font-weight:700;
+                line-height:26px;
+            }
+            .desc {
+                margin-top:12px;
+                font-size:16px;
+                line-height:24px;
+            }
         }
-        .desc {
-            margin-top:12px;
-            font-size:16px;
-            line-height:24px;
+        .btn {
+            margin-left:32px;
+            white-space:nowrap;
         }
-    }
-    .btn {
-        position:absolute;
-        right:56px;
-        top:50%;
-        transform:translateY(-50%);
     }
     &.icon-type {
         .banner {
-            padding-left:112px;
-            .icon {
+            padding-left:168px;
+            &:before {
+                content:'';
                 position:absolute;
-                left:0;
+                left:56px;
                 top:50%;
                 width:80px;
                 height:80px;
-                border-radius:100%;
-                background:#ccc;
+                background-repeat:no-repeat;
+                background-size:100%;
                 transform:translateY(-50%);
             }
         }
     }
     @include mobile {
-        padding:0;
         border-radius:0;
         .banner {
             padding:40px 20px;
-            .tit {
-                font-size:14px;
-                line-height:18px;
+            .cont {
+                .tit {
+                    font-size:14px;
+                    line-height:18px;
+                }
+                .desc {
+                    margin-top:8px;
+                    font-size:12px;
+                    line-height:16px;
+                }
             }
-            .desc {
-                margin-top:8px;
-                font-size:12px;
-                line-height:16px;
+            .btn {
+                width:100%;
+                border-radius:0;
+                transform:translateY(0);
             }
-        }
-        .btn {
-            position:static;
-            width:100%;
-            border-radius:0;
-            transform:translateY(0);
         }
         &.icon-type {
             padding:40px 20px;
             .banner {
                 padding:0 0 0 56px;
-                .tit {
-                    min-height:40px;
+                .cont {
+                    .tit {
+                        min-height:40px;
+                    }
                 }
-                .icon {
-                    top:0;
-                    width:40px;
-                    height:40px;
-                    transform:translateY(0);
+                .btn {
+                    margin-top:20px;
+                    border-radius:8px;
                 }
-            }
-            .btn {
-                margin-top:20px;
-                border-radius:8px;
             }
         }
     }

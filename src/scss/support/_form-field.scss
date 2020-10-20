@@ -139,9 +139,9 @@
         @include mobile {
             float:none;
             width:100%;
-            & + .field-item {
-                float:none;
-                margin-top:40px;
+            margin-top:40px;
+            &:first-child {
+                margin-top:0;
             }
         }
     }
@@ -204,10 +204,17 @@
     }
 }
 
-.agree-box {
-    .scrollview-wrap {
-        margin-top:16px;
-        .ui_content {
+.agree-wrap {
+    .agree-check {
+        margin-bottom:16px;
+    }
+    .agree-cont {
+        overflow:hidden;
+        height:200px;
+        padding:24px 8px 24px 24px;
+        border:1px solid #ddd;
+        border-radius:8px;
+        .cont {
             p, strong {
                 font-size:14px;
                 line-height:20px;
@@ -223,6 +230,8 @@
         }
     }
 }
+
+
 
 /* button area */
 .btn-group {

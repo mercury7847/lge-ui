@@ -471,6 +471,29 @@
             }   
         }
     }
+
+    /* page */
+    &.email-inquiry {
+        .info-list {
+            color:#616161;
+            font-size:14px;
+            line-height:20px;
+            dt {
+                margin-bottom:8px;
+                font-weight:700;
+            }
+            dd {
+                margin-top:4px;    
+            }
+        }
+        .tabs-wrap {
+            max-width:1066px;
+            margin:0 auto 24px;
+        }
+        .process-wrap {
+            margin-top:48px;
+        }
+    }
 }
 
 @import "../../support/pages/CSTF8800";
