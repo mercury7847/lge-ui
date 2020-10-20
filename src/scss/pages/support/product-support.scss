@@ -647,10 +647,12 @@
             }
         }
     }
-    .solution-wrap {
+    .solutions-wrap {
+        max-width:1066px;
+        margin:0 auto;
         @include clearfix;
         .result-box {
-            float:left;
+            float:right;
             width:calc(100% - 218px);
             @include mobile {
                 float:none;
@@ -667,7 +669,7 @@
             position:relative;
             float:left;
             width:194px;
-            margin:40px 24px 0 0;
+            margin-top:40px;
             padding:32px;
             background:#fff;
             .filter-head {
@@ -739,37 +741,19 @@
         }
     }
 
-    &.solutions {
-        .icon-banner {
-            margin-top:24px;
-        }
-    }
-    &.reference {
+
+
+
+    &.download {
         .step-section {
-            // display:none;
-            margin-bottom:48px;
-            &:first-child {
-                display:block;
-            }
-            &:last-child {
-                margin-bottom:0;
-            }
-            .section {
-                &:first-child {
-                    margin-top:0;
-                }
-            }
-            .btn-wrap {
-                margin-top:16px;
-            }
+            max-width:1066px;
+            margin:0 auto;
         }
         .tabs-wrap {
             margin-bottom:24px;
         }
         .banner-wrap {
-            & + .banner-wrap {
-                margin-top:40px;
-            }
+            margin-top:40px;
         }
         @include mobile {
             .tabs-wrap {
@@ -784,12 +768,8 @@
     }
     &.video-guide {
         .search-wrap, .result-wrap {
-            max-width:1146px;
+            max-width:1066;
             margin:0 auto;
-            padding:0 40px;
-            @include mobile {
-                padding:0;
-            }
         }
         .tabs-wrap {
             padding:32px 0 16px;
@@ -935,7 +915,7 @@
         .tabs-wrap {
             margin-bottom:24px;
         }
-        .solution-wrap {
+        .solutions-wrap {
             margin-top:-40px;
         }
         .contents-inner > div {

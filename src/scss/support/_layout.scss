@@ -2,6 +2,7 @@
 
 .contents-inner {
     padding:64px 0 120px;
+    background:#f4f4f4;
     @include mobile {
         padding:12px 0 0;
     }
@@ -96,26 +97,10 @@
             position: relative;
         }
     }
-    &.no-bg {
-        padding: 0 12px;
-        .section-content {
-            padding: 0;
-            background-color: transparent;
-        }
-    }
     @include mobile {
         margin-top:12px;
         padding:40px 20px 56px;
         background:#fff;
-        &.no-bg {
-            padding:0;
-            background:transparent;
-            .section-title {
-                padding:40px 20px 0;
-                background:#fff;
-            }
-
-        }
         &-title {
             padding-bottom:20px;
             .tit {
@@ -130,8 +115,9 @@
             }
         }
         .tabs-wrap {
-            margin-right:-20px;
-            margin-left:-20px;
+            .tabs {
+                padding:0;
+            }
         }
     }
 }
