@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 /* bootstrap 확인용 */
-// @import "bootstrap-grid.min";
-// @import "bootstrap.min";
+@import "bootstrap-grid.min";
+@import "bootstrap.min";
 /* //bootstrap 확인용 */
 @import "../utilities/variables";
 @import "../modules/video-asset";
@@ -62,6 +62,18 @@
                     background-color:transparent !important;
                 }
                 .component {
+                    .btn.btn-outline-primary {
+                        &:active {
+                            border-color:#212121 !important;
+                            background-color:#fff !important;
+                        }
+                    }
+                    .btn.btn-primary {
+                        &:active {
+                            border-color:#111 !important;
+                            background-color:#111 !important;
+                        }
+                    }
                     .link-text {
                         border-color:#111;
                         &:after {
@@ -80,9 +92,19 @@
                 .component {
                     .btn.btn-outline-primary {
                         color:#111;
+                        &:active {
+                            border-color:#212121 !important;
+                            background-color:#fff !important;
+                        }
+                    }
+                    .btn.btn-primary {
+                        &:active {
+                            border-color:#111 !important;
+                            background-color:#111 !important;
+                        }
                     }
                     .text-wrap .btn-type-box .btn-outline-primary {
-                        color:#fff !important;
+                        color:#fff;
                     }
                     .text-black .btn.btn-outline-secondary,
                     .text-white .btn.btn-outline-secondary {
@@ -104,14 +126,24 @@
                     background-color:transparent !important;
                 }
                 .component {
-                    .btn.btn-outline-primary {
-                        color:#111 !important;
-                    }
                     .text-wrap .btn-type-box .btn-outline-primary {
-                        color:#fff !important;
+                        color:#fff;
                     }
                     .text-wrap .btn-type-box .btn-primary {
                         color:#111;
+                    }
+                    .btn.btn-outline-primary {
+                        color:#111;
+                        &:active {
+                            border-color:#212121 !important;
+                            background-color:#fff !important;
+                        }
+                    }
+                    .btn.btn-primary {
+                        &:active {
+                            border-color:#111 !important;
+                            background-color:#111 !important;
+                        }
                     }
                     .text-black .btn.btn-outline-secondary,
                     .text-white .btn.btn-outline-secondary {
@@ -130,6 +162,18 @@
                     background-color:transparent !important;
                 }
                 .component {
+                    .btn.btn-outline-primary {
+                        &:active {
+                            border-color:#212121 !important;
+                            background-color:#fff !important;
+                        }
+                    }
+                    .btn.btn-primary {
+                        &:active {
+                            border-color:#111 !important;
+                            background-color:#111 !important;
+                        }
+                    }
                     .link-text {
                         border-color:#111;
                         &:after {

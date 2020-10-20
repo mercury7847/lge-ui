@@ -33,16 +33,16 @@
                     background:url('/lg5-common/images/icons/icon-twitter.svg') no-repeat;
                     background-size:32px 32px;
                 }
-                @include mobile {
-                    width:40px;
-                    height:40px;
-                    &.url,
-                        &.kk,
-                        &.fb,
-                        &.tw  {
-                        background-size:40px 40px;
-                    }
-                }
+                // @include mobile {
+                //     width:40px;
+                //     height:40px;
+                //     &.url,
+                //         &.kk,
+                //         &.fb,
+                //         &.tw  {
+                //         background-size:40px 40px;
+                //     }
+                // }
             }
         }
     }

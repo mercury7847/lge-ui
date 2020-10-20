@@ -1,0 +1,173 @@
+{
+    "status":"success",
+    "message":null,
+    "param":{
+        "searchedValue":"매직스페이스",
+        "searchedInput":"메직"
+    },
+    "data":{
+        "related":[
+            "OLED TV",
+            "4K OLED TV",
+            "LG DIOS",
+            "매직스페이스",
+            "AV 홈라이프"
+        ],
+        "category":[
+            {
+                "text":"제품>에어컨/에어케어",
+                "url":"#s1"
+            },
+            {
+                "text":"제품>에어컨/에어케어>에어컨",
+                "url":"#s2"
+            },
+            {
+                "text":"제품>에어컨/에어케어>에어케어",
+                "url":"#s3"
+            }
+        ],
+        "all":"195",
+        "product":[
+            {
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85Q1",
+                "price":"4421000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    "가전",
+                    "여름가전"
+                ],
+                "isReview":true,
+                "rating":"40",
+                "review":"34"
+            },
+            {
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85Q1",
+                "price":"4421000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    "가전",
+                    "여름가전"
+                ],
+                "isReview":false,
+                "rating":"40",
+                "review":"34"
+            },
+            {
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85Q1",
+                "price":"4421000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    "가전",
+                    "여름가전"
+                ],
+                "isReview":true,
+                "rating":"40",
+                "review":"34"
+            },
+            {
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85Q1",
+                "price":"4421000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    "가전",
+                    "여름가전"
+                ],
+                "isReview":false,
+                "rating":"40",
+                "review":"34"
+            },
+            {
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85Q1",
+                "price":"4421000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    "가전",
+                    "여름가전"
+                ],
+                "isReview":true,
+                "rating":"40",
+                "review":"34"
+            }
+        ],
+        "preview":[
+            {
+                "image_pc_url":"/lg5-common/images/MYC/@thumb03.png",
+                "image_m_url":"/lg5-common/images/MYC/@thumb02.png",
+                "image_alt":"LG 이동식 에어컨 no.1",
+                "title":"LG 이동식 에어컨 no.1",
+                "sku":"S833MC85Q1",
+                "price":"700000",
+                "url":"#p1"
+            },
+            {
+                "image_pc_url":"/lg5-common/images/dummy/@sample-150x150.jpg",
+                "image_m_url":"/lg5-common/images/dummy/@img-product7.jpg",
+                "image_alt":"LG 이동식 에어컨 no.2",
+                "title":"LG 이동식 에어컨 no.2",
+                "sku":"S833MC85Q2",
+                "price":"800000",
+                "url":"#p2"
+            },
+            {
+                "image_pc_url":"/lg5-common/images/dummy/@sample-150x150.jpg",
+                "image_m_url":"/lg5-common/images/dummy/@img-product7.jpg",
+                "image_alt":"LG 이동식 에어컨 no.3",
+                "title":"LG 이동식 에어컨 no.3",
+                "sku":"S833MC85Q3",
+                "price":"900000",
+                "url":"#p3"
+            }
+        ]
+    }
+}
