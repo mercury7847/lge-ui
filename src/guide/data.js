@@ -71,6 +71,7 @@ var res = {
 			//"KRC0046_Story & Products module_Dynamic" : ["/html/components/KRC0046.html","","진행중"],
 			"KRC0049_Layered component - Multi type" : ["/html/components/KRC0049.html","","진행중"],
 			"KRC0051_Recommend story - categoryhome" : ["/html/components/KRC0051.html","","진행중"],
+			"KRC0055_USP BANNER" : ["/html/components/KRC0055.html","","진행중"],
 			"KRC0056_BG Image 3 Text" : ["/html/components/KRC0056.html","","진행중"],
 			"KRC0057_BG Image 2Image - Textoverlay" : ["/html/components/KRC0057.html","","진행중"],
 			"KRP0001_GNB - B2C" : ["/html/components/KRP0001.html","","검수완료"],

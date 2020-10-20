@@ -3,6 +3,8 @@
 @import "mCustomScrollbar";
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
+@import "../../layout/grid";
+
 @import "../../support/page-visual";
 @import "../../support/layout";
 @import "../../support/board-list";
@@ -12,8 +14,8 @@
 @import "../../support/table";
 @import "../../support/sns";
 @import "../../support/top-bar";
-@import "../../layout/grid";
-
+@import "../../support/process";
+@import "../../support/banner";
 
 
 /* 삭제 예정 */
@@ -469,12 +471,6 @@
         }
     }
 
-    .total-number {
-        font-size: 16px;
-        font-weight: bold;
-        color: #222;
-        margin: 32px 0 16px;
-    }
 
     .modal-gray-box {
         border-radius: 4px;

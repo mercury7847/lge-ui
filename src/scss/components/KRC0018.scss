@@ -52,7 +52,7 @@
         border-bottom: 1px solid #212121 !important;
         font-size: 14px;
         line-height: 20px;
-        color: #111 !important;
+        color: #111;
         vertical-align: top;
 
         &.ico-right {
@@ -140,10 +140,10 @@
                         .text,
                         .btn-outline-primary
                          {
-                            color:#111 !important;
+                            color:#111;
                         }
                         .btn-primary {
-                            color:#fff !important;
+                            color:#fff;
                         }
                     }
                     @media screen and (min-width:768px) and (max-width:1109px) {
