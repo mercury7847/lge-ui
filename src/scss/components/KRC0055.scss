@@ -1,0 +1,232 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRC0055 {
+	& + .component { margin-top:120px; }
+	.component-box {
+		max-width:1920px;
+		margin:0 auto;
+	}
+	.usp-banner-wrap {
+		position:relative;
+		@include mobile {
+			padding-top:60px;
+		}
+
+		// Indicator Area
+		.indi-wrap {
+			position:absolute;
+			left:0;
+			bottom:48px;
+			z-index:2;
+			width:100%;
+			@include mobile {
+				bottom:30px;
+			}
+			.ui_carousel_dots,
+			.ui_carousel_play {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			.ui_carousel_play {
+				.btn-play {
+					position:relative;
+					display:inline-block;
+					width:16px;
+					height:16px;
+					margin-left:12px;
+					border-radius: 50%;
+					background-color:#fff;
+					font-size:0;
+				}
+				&.play {
+					.btn-play {
+						&:after {
+							position:absolute;
+							@include calc(top,50%,4px);
+							@include calc(left,50%,3px);
+							border-left:7px solid #111;
+							border-top:4px solid transparent;
+							border-bottom:4px solid transparent;
+							content: '';
+						}
+					}
+				}
+				&.stop {
+					.btn-play {
+						&:before,
+						&:after {
+							position:absolute;
+							@include calc(top,50%,4px);
+							width:2px;
+							height:8px;
+							background-color:#111;
+							content:'';
+						}
+						&:before {
+							@include calc(left,50%,3px);
+						}
+						&:after {
+							@include calc(left,50%,-1px);
+						}
+					}
+				}
+			}
+		}
+
+		// Swipe Area
+		.ui_carousel_track {
+			position: relative;
+		}
+		.carousel-box {
+			position:relative;
+			.text-area {
+				position:absolute;
+				top:80px;
+				left:50%;
+				transform:translateX(-50%);
+				z-index:2;
+				width:100%;
+				max-width:1284px;
+				margin:0 auto;
+				@include mobile {
+					position:relative;
+					top:0;
+					left:auto;
+					transform:none;
+					max-width:none;
+					padding:0 20px;
+				}
+
+				@mixin contentsColor($color) {
+					color:$color;
+					* { color:inherit; }
+					.bullet-list {
+						@if ($color == #222) {color:#515151; }
+						.b-txt:before {
+							@if ($color == #222) { background-color:#515151; }
+							@else { background-color:$color; }
+						}
+					}
+					.btn { border-color:$color; }
+				}
+				&.type-white { @include contentsColor(#fff); }
+				&.type-black { @include contentsColor(#222); }
+				@include mobile {
+					&.type-white { @include contentsColor(#222); }
+					&.type-black { @include contentsColor(#222); }
+				}
+
+				.banner-tit-sup {
+					display:block;
+					font-weight:700;
+					font-size:16px;
+					line-height:24px;
+					@include mobile {
+						font-weight:400;
+						font-size:12px;
+						line-height:26px;
+					}
+				}
+				.banner-tit {
+					display:block;
+					margin-top:4px;
+					font-weight:700;
+					font-size:56px;
+					line-height:72px;
+					@include mobile {
+						font-size:32px;
+						line-height:40px;
+					}
+					& * {
+						font-weight:inherit;
+						font-size:inherit;
+						line-height:inherit;
+					}
+				}
+				.banner-txt {
+					display:block;
+					margin-top:46px;
+					font-weight:400;
+					font-size:20px;
+					line-height:30px;
+					@include mobile {
+						margin-top:24px;
+						font-size:18px;
+						line-height:26px;
+					}
+				}
+				.bullet-list {
+					display:inline-block;
+					margin-top:32px;
+					@include mobile {
+						margin-top:20px;
+					}
+				}
+				.banner-btn {
+					margin-top:40px;
+				}
+			}
+			.animation-area {
+				position:relative;
+				width:100%;
+				height:1080px;
+				background-color:#111;
+				@include mobile {
+					position:relative;
+					height:500px;
+					margin-top:40px;
+				}
+				.controller-wrap {
+					right:auto;
+					left:50%;
+					bottom:109px;
+					transform:translateX(-50%);
+					@include mobile {
+						bottom:76px;
+					}
+				}
+			}
+			.visual-area {
+				position:relative;
+				width:100%;
+				height:1080px;
+				@include mobile {
+					position:relative;
+					height:500px;
+					margin-top:40px;
+				}
+				.bg {
+					display:block;
+					width:100%;
+					height:100%;
+					background: {
+						position:center center;
+						repeat:no-repeat;
+						size:cover;
+					};
+				}
+			}
+		}
+
+		// Navigation Area
+		.btn-arrow {
+			position:absolute;
+			top:50%;
+			transform:translateY(-50%);
+			z-index:3;
+			@include mobile {
+				visibility:hidden;
+				z-index:-1;
+			}
+			&.prev {
+				left:(120 / 1920) * 100%;
+			}
+			&.next {
+				right:(120 / 1920) * 100%;
+			}
+		}
+
+	}
+}
