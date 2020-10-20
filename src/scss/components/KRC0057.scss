@@ -5,6 +5,10 @@
 .KRC0057 {
 	.bg-text-wrap {
 		position:relative;
+		padding:170px 0;
+		@include mobile {
+			padding:116px 10px;
+		}
 
 		// 1. 텍스트 영역
 		.text-area {
@@ -12,10 +16,6 @@
 			z-index:2;
 			max-width:1284px;
 			margin:0 auto;
-			padding:170px 0;
-			@include mobile {
-				padding:116px 10px;
-			}
 			.item-wrap {
 				display:flex;
 				margin-top:32px;
