@@ -1,6 +1,8 @@
 <!-- page header -->
 <div class="page-header">
+    @@if ( context.pageTitle ) {
     <h2 class="title">@@pageTitle</h2>
+    }
     @@if ( context.pageDesc ) {
         <p class="desc">@@pageDesc</p>
     }

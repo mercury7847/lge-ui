@@ -1,4 +1,3 @@
-@charset "UTF-8";
 
 .prd-care-horizon {
     display:table;
@@ -776,7 +775,7 @@
                     float:left;
                     width:calc((100% - 96px) / 4);
                     margin:12px 12px;
-                    @media screen and (max-width:1124px) {
+                    @media screen and (max-width:1135px) {
                         width:calc((100% - 72px) / 3);
                     }
                     @media screen and (max-width:900px) {

@@ -190,18 +190,26 @@ var res = {
 				"케어솔루션 청약신청 고객동의 팝업" : ["/html/UTC/RMSF9001_pop8.html","","진행중"],
 				"케어솔루션 주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
 			},
-			"통합검색(UTS)" : {
-				"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
-				"검색결과 있음" : {
-					"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
-					"제품" : ["/html/UTS/SERF9003.html","","검수완료"],
-					"케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
-					"이벤트" : ["/html/UTS/SERF9005.html","","검수완료"],
-					"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
-					"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
-					"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
+			"공통(UTS)" : {
+				"통합검색" : {
+					"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
+					"검색결과 있음" : {
+						"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
+						"제품" : ["/html/UTS/SERF9003.html","","검수완료"],
+						"케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
+						"이벤트" : ["/html/UTS/SERF9005.html","","검수완료"],
+						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
+						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
+						"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
+					},
+					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
 				},
-				"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
+				"Footer" : {
+					"개인정보취급방침" : ["/html/UTS/COMF2000.html","","진행중"],
+					"이벤트 개인정보처리방침" : ["/html/UTS/COMF2001.html","","진행중"],
+					"이용약관" : ["/html/UTS/COMF2003.html","","진행중"],
+					"소식지 신청" : ["/html/UTS/COMF2004.html","","진행중"]
+				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
 			// "페이지2" : ["./html/gr/M.GR-6L.html","","검수요청"],
