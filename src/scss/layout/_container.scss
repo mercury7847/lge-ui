@@ -244,7 +244,8 @@
                 float:right;
                 width:calc(100% - 194px - 24px);
                 @include mobile {
-                    margin-left:0;
+                    float:none;
+                    width:100%;
                 }
             }
         }
