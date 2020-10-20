@@ -97,7 +97,7 @@
                     @include font-family($font-weight-bold);
                     font-size: 20px;
                     line-height: 30px;
-                    color: #111 !important;
+                    color: #111;
                     @include textClipClamp(2);
                 }
             }
@@ -175,7 +175,7 @@
                 .btn-wrap .btn_LoadMore {
                     border-color:#fff;
                     background-color:#fff;
-                    color:#111 !important;
+                    color:#111;
                 }
 			} @else if $bg == black {
 				background-color: #000;
@@ -185,7 +185,7 @@
                 .btn-wrap .btn_LoadMore {
                     border-color:#fff;
                     background-color:#fff;
-                    color:#111 !important;
+                    color:#111;
                 }
 			} @else if $bg == white {
 				background-color: #fff;
