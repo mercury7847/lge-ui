@@ -311,6 +311,7 @@
                 }).on('modalshown', function (e) {
                     // 모달이 뜰때 모달내부에 있는 공통 컴포넌트 빌드
                     //$(e.target).buildCommonUI();
+                    self._resetFlexibleBox();
                 });
                 //////////////////////////////////////////////////////////////////////
     
@@ -477,6 +478,23 @@
                     selector: '.sns-list > li >  a',
                     attr: 'data-link-name' // sns서비스명을 가져올 속성
                 });
+            });
+        },
+
+        requestAjaxData: function(url, data, callback){
+            $.ajax({
+                type : "GET",
+                url : url,
+                dataType : "json",
+                data : data
+            }).done(function (result) {
+                if(result.status != 'success'){
+                    alert(result.message ? result.message : '오류발생');
+                    return;
+                }
+                callback(result);
+            }).fail(function(err){
+                alert(err.message);
             });
         }
     }
