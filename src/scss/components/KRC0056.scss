@@ -5,9 +5,11 @@
 .KRC0056 {
 	.bg-text-wrap {
 		position:relative;
+		padding:127px 0;
 		@include mobile {
 			display:flex;
 			flex-direction:column;
+			padding:0;
 		}
 		@include pc {
 			&.text-white {
@@ -27,7 +29,6 @@
 			z-index:2;
 			max-width:1284px;
 			margin:0 auto;
-			padding:127px 0;
 			@include mobile {
 				order:1;
 				padding:40px 20px;

@@ -204,17 +204,35 @@
     }
 }
 
+.agree-box {
+    .scrollview-wrap {
+        margin-top:16px;
+        .ui_content {
+            p, strong {
+                font-size:14px;
+                line-height:20px;
+            }
+            p {
+                color:#808080;
+            }
+            strong {
+                display:block;
+                color:#222;
+                font-weight:400;
+            }
+        }
+    }
+}
+
 /* button area */
 .btn-group {
-    max-width:1146px;
+    max-width:1066px;
     margin:40px auto 0;
-    padding:0 40px;
     &.right {
         text-align:right;
     }
     @include mobile {
         margin-top:0;
-        padding:0;
     }
 }
 
