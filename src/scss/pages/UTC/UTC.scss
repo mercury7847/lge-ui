@@ -7,6 +7,9 @@
     .order-info {
         @include clearfix;
         padding-top:52px;
+        @include mobile {
+            padding-top:0;
+        }
     }
     //장바구니
     .cart-wrap {
@@ -16,6 +19,7 @@
         @include mobile {
             float: none;
             width: 100%;
+            margin-top:0;
             margin-bottom: 40px;
         }
     }
@@ -37,11 +41,17 @@
         border-radius: 8px;
         border: 1px solid #ddd;
         background-color: #fff;
+        @include mobile {
+            padding:20px 20px 0;
+        }
         .product-info {
             @include clearfix;
             position: relative;
             padding-left:176px;
             padding-bottom:36px;
+            @include mobile {
+                padding:38px 0 40px 116px;
+            }
             .item-image {
                 position:absolute;
                 top:0;
@@ -54,11 +64,20 @@
                     height:auto;
                     vertical-align:top;
                 }
+                @include mobile {
+                    top:38px;
+                    left:0;
+                    width:100px;
+                    height:100px;
+                }
             }
         }
         .flag-wrap {
             margin-bottom:8px;
             padding-right:90px;
+            @include mobile {
+                padding-right:0;
+            }
         }
         .item-name {
             max-height: 48px;
@@ -66,14 +85,26 @@
             font-weight: $font-weight-bold;
             @include font-medium;
             @include textClipClamp(2);
+            @include mobile {
+                max-height:54px;
+                margin-bottom:14px;
+                font-size:14px;
+                line-height:18px;
+                @include textClipClamp(3);
+            }
         }
         .item-options {
             font-size: 0;
             .sku,
             .sibling-option {
                 display: inline-block;
-                @include font-small;
+                font-size:14px;
+                line-height:20px;
                 color: #616161;
+                @include mobile {
+                    font-size:12px;
+                    line-height:16px;
+                }
             }
             .sibling-option {
                 &:before {
@@ -90,12 +121,19 @@
         .item-options2 {
             font-size:0;
             margin-top:16px;
+            @include mobile {
+                margin-top:24px;
+            }
             p {
                 display:inline;
                 color:#616161;
                 font-size:14px;
                 line-height:20px;
                 word-break:keep-all;
+                @include mobile {
+                    font-size:12px;
+                    line-height:16px;
+                }
                 &::before {
                     content:' ';
                     display:inline-block;
@@ -115,37 +153,47 @@
             padding: 16px 32px;
             border-radius: 0 0 8px 8px;
             background-color: #f4f4f4;
+            @include mobile {
+                margin:0 -20px;
+                padding:24px 20px;
+            }
             .inner {
-                display: table;
-                width: 100%;
-            }
-            .amount,
-            .btn-purchase {
-                display: table-cell;
-                vertical-align: middle;
-            }
-            .amount {
-                padding-right: 24px;
-                text-align: right;
-                .total-price {
-                    display: block;
-                    float:right;
-                    font-weight: $font-weight-bold;
-                    @include font-large;
+                position:relative;
+                min-height:36px;
+                padding:5px 100px 5px 0;
+                text-align:right;
+                @include mobile {
+                    min-height:30px;
+                    padding:2px 100px 2px 0;
+                    text-align:left;
                 }
-                .btn-info {
+                .btn-purchase {
+                    position:absolute;
+                    top:0;
+                    right:0;
+                }
+                .amount {
                     display:inline-block;
-                    margin-top:5px;
-                    margin-right:4px;
-                    width:16px;
-                    height:16px;
-                    background:url("/lg5-common/images/icons/icon-tooltip.svg") center no-repeat;
-                    vertical-align:top;
+                    .total-price {
+                        display: block;
+                        float:right;
+                        font-weight: $font-weight-bold;
+                        @include font-large;
+                    }
+                    .btn-info {
+                        display:inline-block;
+                        margin-top:5px;
+                        margin-right:4px;
+                        width:16px;
+                        height:16px;
+                        background:url("/lg5-common/images/icons/icon-tooltip.svg") center no-repeat;
+                        vertical-align:top;
+                    }
                 }
             }
-            .btn-purchase {
-                width: 84px;
-            }
+        }
+        &.disabled .product-payment .amount .total-price {
+            color:#ccc;
         }
         .product-wish {
             position: absolute;
@@ -182,77 +230,6 @@
             position:absolute;
             top:32px;
             left:32px;
-        }
-        @include mobile {
-            padding: 20px 20px 0;
-            .product-info {
-                margin-bottom: 24px;
-                padding: 0;
-            }
-            .item-image {
-                margin-right: 16px;
-                img {
-                    width: 100px;
-                    height: 100px;
-                }
-            }
-            .item-name {
-                max-height: 36px;
-                margin-bottom: 14px;
-                @include font-small;
-            }
-            .item-options {
-                margin-bottom: 0;
-                .sku,
-                .sibling-option {
-                    display: block;
-                    @include font-x-small;
-                }
-                .sibling-option {
-                    &:before {
-                        display: none;
-                    }
-                }
-            }
-            .product-payment {
-                margin: 0 -20px;
-                padding: 24px 20px;
-                .inner {
-                    position: relative;
-                    display: block;
-                }
-                .amount {
-                    position: relative;
-                    display: inline-block;
-                    padding-right: 0;
-                    text-align: left;
-                    .purchase-price {
-                        position: absolute;
-                        top: 50%;
-                        left: 100%;
-                        transform: translateY(-50%);
-                        margin-left: 8px;
-                        @include font-small;
-                    }
-                    .total-price {
-                        font-size: 17px;
-                        line-height: 25px;
-                    }
-                }
-                .btn-purchase {
-                    position: absolute;
-                    right: 0;
-                    bottom: 0;
-                }
-            }
-            .product-wish {
-                top: 20px;
-                right: 52px;
-            }
-            .item-delete {
-                top: 20px;
-                right: 20px;
-            }
         }
     }
 
@@ -321,9 +298,6 @@
             float: none;
             width: 100%;
             padding: 32px 20px;
-            .total-payment-amount {
-                margin: 27px 0 32px;
-            }
             .btn-area {
                 .btn {
                     padding: 16px 0;
@@ -359,6 +333,9 @@
             margin: 24px 0 28px;
             padding-top: 12px;
             border-top: 1px solid #ddd;
+            @include mobile {
+                margin-bottom:32px;
+            }
             .price {
                 font-weight: $font-weight-bold;
                 @include font-x-large;
@@ -415,8 +392,7 @@
         border-top: 1px solid #ddd;
         background:#f4f4f4;
         @include mobile {
-            margin-top: 56px;
-            padding: 39px 20px 0;
+            padding: 40px 20px 44px;
         }
         .title {
             margin-bottom: 32px;
@@ -428,12 +404,10 @@
     }
 
     .no-data-wrap {
-        max-width: (1066px + 60px);
+        max-width: 1066px;
         margin: 0 auto;
-        padding: 0 30px;
         @include mobile {
             max-width: 100%;
-            padding: 0;
         }
     }
     .membership-benefit {

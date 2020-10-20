@@ -1,18 +1,12 @@
 <div class="cart-list">
     @@for (var i = 0; i < context.items.length; i++) {
-    <div class="cart-item">
+    <div class="cart-item `+items[i].disabled+`"><!-- 판매종료/일시품절 시 disabled -->
         <div class="product-info">
-            <div class="item-image"><img src="`+items[i].visual+`" alt=""></div>
+            <div class="item-image"><a href="#n"><img src="`+items[i].visual+`" alt=""></a></div>
             <div class="flag-wrap">
-                <span class="flag"><span class="blind">제품타입</span>케어솔루션</span>
-                @@if ( context.end ) {
-                <span class="flag"><span class="blind">판매상태</span>판매종료</span>
-                }
-                @@if ( context.soldout ) {
-                <span class="flag"><span class="blind">판매상태</span>일시품절</span>
-                }
+                `+items[i].flags+`
             </div>
-            <div class="item-name">`+items[i].modelName+`</div>
+            <div class="item-name"><a href="#n">`+items[i].modelName+`</a></div>
             <div class="item-options">
                 <div class="sku"><span class="blind">제품번호</span>S5MBR</div>
                 <div class="sibling-option"><span class="blind">제품옵션</span>Silver</div>
@@ -31,7 +25,7 @@
                     <a href="#n" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>
                 </div>
                 <div class="btn-purchase">
-                    <a href="#" class="btn bd-pink btn-small">청약신청</a>
+                    <button type="button" class="btn bd-pink btn-small" `+items[i].disabled+`><span>`+items[i].btnValue+`</span></button>
                 </div>
             </div>
         </div>
@@ -45,7 +39,7 @@
             <button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button>
         </div>
         <span class="chk-wrap">
-            <input type="checkbox" id="chk-select`+[i]+`" name="chk-select" `+items[i].check.checked1+`>
+            <input type="checkbox" id="chk-select`+[i]+`" name="chk-select" `+items[i].check.checked1+`><!-- 판매종료/일시품절 시 disabled -->
             <label for="chk-select`+[i]+`"><span class="blind">제품 선택</span></label>
         </span>
     </div>

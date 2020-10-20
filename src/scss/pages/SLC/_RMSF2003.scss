@@ -212,6 +212,9 @@
             height:auto;
             margin-top:12px;
         }
+        a {
+            display:block;
+        }
         .tit {
             max-height:48px;
             font-weight:700;
@@ -386,7 +389,7 @@
             }
             .total-price {
                 dt {
-                    width:70%;
+                    width:75%;
                     font-size:16px;
                     line-height:24px;
                 }
@@ -773,10 +776,10 @@
                     float:left;
                     width:calc((100% - 96px) / 4);
                     margin:12px 12px;
-                    @media screen and (max-width:1120px) {
+                    @media screen and (max-width:1124px) {
                         width:calc((100% - 72px) / 3);
                     }
-                    @media screen and (max-width:840px) {
+                    @media screen and (max-width:900px) {
                         width:calc((100% - 48px) / 2);
                     }
                     @include mobile {

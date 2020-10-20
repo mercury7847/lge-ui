@@ -5,7 +5,7 @@
     })
 <body>
     <div class="wrap">
-<!--        include('./common/header.html')-->
+       @@include('./common/header.html')
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
@@ -47,13 +47,40 @@
                                     @@include('./common/modules/cart-list.html', {
                                         "items" : [
                                             {
+                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
+                                                "disabled" : "",
                                                 "check" : {
                                                     "checked1" : "checked",
                                                     "checked2" : "checked",
                                                 },
                                                 "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
                                                 "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
-                                                "price" : "월 36,100원"
+                                                "price" : "월 36,100원",
+                                                "btnValue" : "청약신청"
+                                            },
+                                            {
+                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span><span class='flag'><span class='blind'>판매상태</span>판매종료</span>",
+                                                "disabled" : "disabled",
+                                                "check" : {
+                                                    "checked1" : "disabled",
+                                                    "checked2" : "",
+                                                },
+                                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                                "price" : "월 36,100원",
+                                                "btnValue" : "청약불가"
+                                            },
+                                            {
+                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span><span class='flag'><span class='blind'>판매상태</span>일시품절</span>",
+                                                "disabled" : "disabled",
+                                                "check" : {
+                                                    "checked1" : "disabled",
+                                                    "checked2" : "",
+                                                },
+                                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                                "price" : "월 36,100원",
+                                                "btnValue" : "청약불가"
                                             }
                                         ]
                                     })
@@ -103,7 +130,7 @@
                     </div>
 
                     <!-- 장바구니 제품이 없을 경우 -->
-                    <div class="no-data-wrap" style="display:none;">
+                    <div class="no-data-wrap">
                         <div class="no-data">
                             <p>장바구니에 담긴 제품이 없습니다.</p>
                         </div>
@@ -182,7 +209,7 @@
             <!-- // cart -->
         </div>
 
-<!--        include('./common/footer.html')-->
+        @@include('./common/footer.html')
     </div>
 
     <!-- 카드 할인 혜택 보기 레이어팝업 -->
