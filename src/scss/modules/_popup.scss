@@ -468,5 +468,81 @@
                 }
             }
         }
+
+        // 매월 납부금 할인내역
+        .fee-info-wrap {
+            padding:24px;
+            border-radius:8px;
+            background:#f4f4f4;
+            dl {
+                display:table;
+                width:100%;
+                margin-top:10px;
+                &:first-child {
+                    margin-top:0;
+                }
+                dt, dd {
+                    display:table-cell;
+                    color:#222;
+                    font-size:16px;
+                    line-height:20px;
+                    vertical-align:bottom;
+                }
+                dt {
+                    text-align:left;
+                }
+                dd {
+                    text-align:right;
+                    &.minus {
+                        color:#F04E3E;
+                    }
+                }
+                &.total {
+                    margin-top:16px;
+                    padding-top:16px;
+                    border-top:1px solid #ddd;
+                    dd {
+                        font-weight:700;
+                    }
+                }
+            }
+        }
+        .btm_info .btn {
+            margin-top:16px;
+        }
+        .form-wrap.mt-type {
+            margin-top:40px;
+            @include mobile {
+                margin-top:20px;
+            }
+        }
+        .bk-infos {
+            dt {
+                color:#222;
+                font-size:16px;
+                line-height:24px;
+            }
+            dd {
+                margin-top:8px;
+                color:#616161;
+                font-size:14px;
+                line-height:20px;
+                .btn {
+                    margin-top:8px;
+                }
+            }
+        }
+
+        // 케어솔루션 구매 안내
+        .gray-txt-box {
+            padding:24px;
+            border-radius:8px;
+            background:#f4f4f4;
+            p {
+                color:#222;
+                font-size:16px;
+                line-height:24px;
+            }
+        }
     }
 }
