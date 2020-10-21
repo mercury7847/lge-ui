@@ -39,6 +39,7 @@
             font-weight:700;
             vertical-align:middle;
         }
+        .right-btn,
         .right-chk {
             float:right;
         }
@@ -122,8 +123,14 @@
                     vertical-align:top;
                 }
             }
+            .right-btn {
+                float: right;
+            }
         }
         .conts {
+            .select-wrap {
+                max-width: 100%;
+            }
             .input-box {
                 margin-top:8px;
                 font-size:0;
@@ -217,9 +224,94 @@
                         padding-right:34px;
                     }
                 }
+                //&.birth-date-box {
+                //    .input-box {
+                //        display: table-cell;
+                //        padding-right: 0;
+                //    }
+                //    .hyphen {
+                //        display: table-cell;
+                //        vertical-align: middle;
+                //    }
+                //    .number {
+                //        width: 41px;
+                //        input {
+                //            padding: 15px 0;
+                //            text-align: center;
+                //            &::-webkit-outer-spin-button,
+                //            &::-webkit-inner-spin-button {
+                //                -webkit-appearance: none;
+                //                margin: 0;
+                //            }
+                //        }
+                //    }
+                //    .hyphen {
+                //        width: 22px;
+                //        padding: 0 8px;
+                //    }
+                //    &:after {
+                //        display: block;
+                //        width: 164px;
+                //        padding-left: 8px;
+                //        font-size: 40px;
+                //        line-height: 56px;
+                //        color: #616161;
+                //        content: '······';
+                //    }
+                //}
+                &.birth-date-box {
+                    .input-box {
+                        padding-right: 0;
+                    }
+                    .hyphen {
+                        padding: 0 8px;
+                        font-size: 16px;
+                        line-height: 56px;
+                    }
+                    .number {
+                        width: 41px;
+                        padding-left: 0;
+                        input {
+                            padding: 15px 0;
+                            text-align: center;
+                            &::-webkit-outer-spin-button,
+                            &::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                            }
+                        }
+                    }
+                    &:after {
+                        display: block;
+                        width: 164px;
+                        padding-left: 8px;
+                        font-size: 40px;
+                        line-height: 56px;
+                        color: #616161;
+                        content: '······';
+                    }
+                }
+                &.addr-box {
+                    margin-top: 12px;
+                    .input-box {
+                        width: 50%;
+                        padding-right: 0;
+                        & + .input-box {
+                            padding-left: 16px;
+                        }
+                        .input-wrap {
+                            display: block;
+                        }
+                    }
+                }
             }
             .add-box {
                 margin-top:16px;
+            }
+            &.cert-phone {
+                .complete-text {
+                    right: 187px;
+                }
             }
         }
         .bullet-list {
@@ -233,6 +325,14 @@
                 font-size:14px;
                 line-height:20px;
             }
+        }
+        .complete-text {
+            position: absolute;
+            top: 2px;
+            right: 0;
+            font-size: 14px;
+            line-height: 20px;
+            color: #ec455a;
         }
     }
 
@@ -455,6 +555,25 @@
         //         border-radius:4px 0 0 4px;
         //     }
         // }
+    }
+
+    .box2 {
+        position:relative;
+        display:table;
+        width:100%;
+        z-index:1;
+        .cell {
+            display:table-cell;
+            position:relative;
+            width:1%;
+            padding-left: 16px;
+            border-radius: 8px;
+            word-break:keep-all;
+            white-space:nowrap;
+            vertical-align:middle;
+            background:#fff;
+            z-index:5;
+        }
     }
 
     &.block {
