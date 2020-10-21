@@ -138,20 +138,23 @@
                         </div>
 
                         <!-- 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
-                        <div class="banner-wrap">
+                        <div class="banner-wrap no-icon">
                             <div class="banner">
-                                <p class="tit">드라이버/소프트웨어는 LG Update Center를 통해 편리하게 설치해 보세요.</p>
+                                <div class="cont">    
+                                    <p class="tit">드라이버/소프트웨어는 LG Update Center를 통해 편리하게 설치해 보세요.</p>
+                                </div>
+                                <a href="https://www.lgservice.co.kr/simple/selectSimpleSearchDetail.do?gubun=FAQ&type=keyword&seq=27830&itemId=9438" class="btn pink"><span>자세히 보기</span></a>
                             </div>
-                            <a href="https://www.lgservice.co.kr/simple/selectSimpleSearchDetail.do?gubun=FAQ&type=keyword&seq=27830&itemId=9438" class="btn pink"><span>자세히 보기</span></a>
                         </div>
                         <!-- // 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
 
-                        <div class="banner-wrap icon-type">
+                        <div class="banner-wrap">
                             <div class="banner">
-                                <span class="icon"></span>   
-                                <p class="tit">고객님이 선택하신 [{증상명}] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
+                                <div class="cont">    
+                                    <p class="tit">고객님이 선택하신 [{증상명}] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
+                                </div>
+                                <button type="button" class="btn bd-gray" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
                             </div>
-                            <button type="button" class="btn bd-gray"><span>평가하기</span></button>
                         </div>
                     </div>
             
@@ -165,6 +168,9 @@
              
         @@include('./common/footer.html')
     </div>  
+
+    <!-- 컨텐츠 만족도 조사 팝업 -->
+    @@include('./support/modal/survey-popup.html')
 
     <!-- support script -->
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>

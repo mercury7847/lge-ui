@@ -5,11 +5,23 @@
     background:#fff;
     .banner {
         display:flex;
-        position:relative;
         padding:46px 56px;
         align-items:center;
+        justify-content: space-between;
         .cont {
-            width:100%;
+            position:relative;
+            padding-left:112px;
+            &:before {
+                content:'';
+                position:absolute;
+                left:0;
+                top:50%;
+                width:80px;
+                height:80px;
+                background-repeat:no-repeat;
+                background-size:100%;
+                transform:translateY(-50%);
+            }
             .tit {
                 font-size:18px;
                 font-weight:700;
@@ -26,27 +38,29 @@
             white-space:nowrap;
         }
     }
-    &.icon-type {
+    &.no-icon {
         .banner {
-            padding-left:168px;
-            &:before {
-                content:'';
-                position:absolute;
-                left:56px;
-                top:50%;
-                width:80px;
-                height:80px;
-                background-repeat:no-repeat;
-                background-size:100%;
-                transform:translateY(-50%);
+            .cont {
+                padding:0;
+                &:before {
+                    content:none;
+                }
             }
         }
     }
     @include mobile {
         border-radius:0;
         .banner {
+            display:block;
             padding:40px 20px;
             .cont {
+                padding-left:56px;
+                &:before {
+                    top:0;
+                    width:40px;
+                    height:40px;
+                    transform:translateY(0);
+                }
                 .tit {
                     font-size:14px;
                     line-height:18px;
@@ -59,22 +73,18 @@
             }
             .btn {
                 width:100%;
-                border-radius:0;
-                transform:translateY(0);
+                margin:20px 0 0;
             }
         }
-        &.icon-type {
-            padding:40px 20px;
+        &.no-icon {
             .banner {
-                padding:0 0 0 56px;
+                padding:0;
                 .cont {
-                    .tit {
-                        min-height:40px;
-                    }
+                    padding:40px 20px;
                 }
                 .btn {
-                    margin-top:20px;
-                    border-radius:8px;
+                    margin:0;
+                    border-radius:0;
                 }
             }
         }
