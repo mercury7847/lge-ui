@@ -344,7 +344,6 @@
             line-height: 24px;
             color: #222;
             vertical-align: middle;
-
         }
         .desc {
             display: inline-block;
@@ -420,16 +419,18 @@
         th,
         td {
             padding: 0 4px;
+            text-align: center;
             @include mobile {
                 padding: 0 2px;
             }
             span {
-                display: block;
+                display: inline-block;
                 width: 55px;
                 height: 55px;
                 text-align: center;
                 line-height: 55px;
                 @include mobile {
+                    //max-width: 100%;
                     width: 40px;
                     height: 40px;
                     line-height: 40px;
