@@ -33,7 +33,8 @@
         "product":{
             "count":"123",
             "data":[
-                {   "url":"#",
+                {
+                    "url":"#",
                     "image_url":"/lg5-common/images/dummy/@img-product.jpg",
                     "image_alt":"LG DIOS 노크온 매직스페이스",
                     "title":"LG DIOS 노크온 매직스페이스",
@@ -609,6 +610,222 @@
                     "desc":null
                 }
             ]
-        }
+        },
+        "suggested":[
+            {
+                "id":"S833MC85Q_ID1",
+                "url":"#",
+                "buttonUrl":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85QS",
+                "originalPrice":"5100000",
+                "price":"4321000",
+                "sale":"15",
+                "bigFlag_url":null,
+                "bigFlag_alt":null,
+                "bigFlag":null,
+                "badge":null,
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"3%할인",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"사은품",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"캐시백",
+                        "class":"text"
+                    }
+                ],
+                "isReview":true,
+                "rating":"40",
+                "review":"34",
+                "isWish":false
+            },
+            {
+                "id":"S833MC85Q_ID2",
+                "url":"#",
+                "buttonUrl":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85QS",
+                "originalPrice":null,
+                "price":"4321000",
+                "sale":"15",
+                "bigFlag_url":null,
+                "bigFlag_alt":null,
+                "bigFlag":null,
+                "badge":null,
+                "flag":[
+                    "NEW",
+                    "BEST",
+                    "케어샵"
+                ],
+                "hash":[
+                    {
+                        "tag":"3%할인",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"캐시백",
+                        "class":"text"
+                    }
+                ],
+                "isReview":false,
+                "rating":"40",
+                "review":"34",
+                "isWish":true
+            },
+            {
+                "id":"S833MC85Q_ID3",
+                "url":"#",
+                "buttonUrl":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85QS",
+                "originalPrice":"5100000",
+                "price":"4321000",
+                "sale":"15",
+                "bigFlag_url":null,
+                "bigFlag_alt":null,
+                "bigFlag":null,
+                "badge":null,
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"3%할인",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"사은품",
+                        "class":"text"
+                    }
+                ],
+                "isReview":true,
+                "rating":"40",
+                "review":"34",
+                "isWish":false
+            },
+            {
+                "id":"S833MC85Q_ID4",
+                "url":"#",
+                "buttonUrl":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85QS",
+                "originalPrice":"5100000",
+                "price":"4321000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":null,
+                "badge":null,
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"3%할인",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"사은품",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"캐시백",
+                        "class":"text"
+                    }
+                ],
+                "isReview":false,
+                "rating":"40",
+                "review":"34",
+                "isWish":true
+            },
+            {
+                "id":"S833MC85Q_ID5",
+                "url":"#",
+                "buttonUrl":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85QS",
+                "originalPrice":null,
+                "price":"4321000",
+                "sale":"15",
+                "bigFlag_url":null,
+                "bigFlag_alt":null,
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "badge":null,
+                "flag":[
+                    "NEW",
+                    "BEST",
+                    "케어샵"
+                ],
+                "hash":[
+                    {
+                        "tag":"3%할인",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"캐시백",
+                        "class":"text"
+                    }
+                ],
+                "isReview":false,
+                "rating":"40",
+                "review":"34",
+                "isWish":false
+            },
+            {
+                "id":"S833MC85Q_ID6",
+                "url":"#",
+                "buttonUrl":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85QS",
+                "originalPrice":"5100000",
+                "price":"4321000",
+                "sale":"15",
+                "bigFlag_url":null,
+                "bigFlag_alt":null,
+                "bigFlag":null,
+                "badge":"코리아세일페스티발",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"3%할인",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"사은품",
+                        "class":"text"
+                    }
+                ],
+                "isReview":false,
+                "rating":"40",
+                "review":"34",
+                "isWish":true
+            }
+        ]
     }
 }
