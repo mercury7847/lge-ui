@@ -1,0 +1,24 @@
+<div class="bdcard-lists">
+    <ul class="full-lists">
+        @@for ( var i=0; i < list.length; i++ ) {
+        <li>
+            <a href="#" class="item">
+                <div class="product-image">
+                    <img src="/lg5-common/images/dummy/@img-product7.jpg" alt="">
+                </div>
+                <div class="product-info">
+                    @@include('./common/modules/flags.html', {
+                    "borderType": true,
+                    "flags": [ "케어솔루션" ]
+                    })
+                    <div class="product-name">`+list[i].name+`</div>
+                    <div class="model-code">`+list[i].code+`</div>
+                </div>
+                <div class="product-price">
+                    <span>월 61,900원</span>
+                </div>
+            </a>
+        </li>
+        }
+    </ul>
+</div>
