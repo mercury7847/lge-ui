@@ -3,24 +3,10 @@
     @@include('./common/head.html', {
         pageCSS: ["MYC/MYC"]
     })
-<body style="background: #ccc">
+<body>
     <div class="wrap">
         <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>방문일정 변경요청 팝업 열기</span></button>
     </div>
-    <style>
-
-        .popup-wrap {
-            display: block;
-            position: absolute;
-            outline: none;
-            background-clip: padding-box;
-            transform: translateX(-50%) translateY(-50%);
-            left: 50%;
-            top: 50%;
-            min-height: 720px;
-            
-        }
-    </style>
     <!-- 방문일정 변경요청 popup -->
     <article id="popup1" class="popup-wrap small">
         <header class="pop-header">
