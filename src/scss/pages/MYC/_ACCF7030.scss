@@ -326,3 +326,175 @@
     }
 }
 
+
+// 방문일정 변경요청 팝업
+&.mycalendar {
+    @include mobile {
+        padding-top: 40px;
+        border-top: 1px solid #ededed;
+    }
+}
+.my-visit-info {
+    .tit-wrap {
+        margin-bottom: 16px;
+        font-size: 0;
+        .h2-tit {
+            display: inline-block;
+            font-size: 16px;
+            line-height: 24px;
+            color: #222;
+            vertical-align: middle;
+
+        }
+        .desc {
+            display: inline-block;
+            margin-left: 16px;
+            font-size: 16px;
+            line-height: 24px;
+            color: #ccc;
+            font-weight: 700;
+            vertical-align: middle;
+            &.point {
+                color: #ec455a;
+            }
+        }
+    }
+    .form-wrap {
+        margin-top: 0;
+    }
+}
+.my-visit-info + .my-visit-info {
+    margin-top: 64px;
+    @include mobile {
+        margin-top: 32px;
+    }
+}
+.calendar-wrap {
+    width: 465px;
+    //max-height: 497px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px 11px 24px;
+    @include mobile {
+        width: 100%;
+        padding: 0 5px 16px;
+    }
+    .month-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 28px;
+        .month {
+            font-size: 20px;
+            line-height: 30px;
+            color: #222;
+        }
+        .arrow {
+            width: 32px;
+            height: 32px;
+            background: url(/lg5-common/images/icons/btn-arrow-left-32.svg) 0 50% no-repeat;
+            background-size: 100% 100%;
+            /*&:after {
+                display: inline-block;
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 9px;
+                height: 9px;
+                margin: -4px 0 0 -2px;
+                border-width: 1px 1px 0 0;
+                border-style: solid;
+                border-color: #222;
+                transform: rotate(45deg);
+            }*/
+            &.next {
+                background: url(/lg5-common/images/icons/btn-arrow-right-32.svg) 0 50% no-repeat;
+            }
+        }
+    }
+    .tb-calendar {
+        table-layout: fixed;
+        width: 100%;
+        th,
+        td {
+            padding: 0 4px;
+            @include mobile {
+                padding: 0 2px;
+            }
+            span {
+                display: block;
+                width: 55px;
+                height: 55px;
+                text-align: center;
+                line-height: 55px;
+                @include mobile {
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                }
+            }
+        }
+        thead th {
+            span {
+                font-size: 20px;
+                color: #616161;
+            }
+        }
+        tbody td {
+            span {
+                font-size: 20px;
+                color: #222;
+            }
+            &.disabled span {
+                color: #ccc;
+            }  
+            &.expected span {
+                background: #51b1ac;
+                border-radius: 27.5px;
+                color: #fff;
+            }
+            &.change span{
+                background: #e51346;
+                border-radius: 27.5px;
+                color: #fff;
+            }
+        }
+     }
+}
+.calendar-info {
+    margin-top: 16px;
+    text-align: right;
+    @include mobile {
+        margin-top: 12px;
+    }
+    ul {
+        display: inline-block;
+        font-size: 0;
+        li {
+            display: inline-block;
+            margin-left: 24px;
+            font-size: 14px;
+            line-height: 20px;
+            color: #808080;
+            &:before {
+                display: inline-block;
+                content: '';
+                width: 16px;
+                height: 16px;
+                border-radius: 12px;
+                vertical-align: middle;
+            }
+            &.gray:before {
+                background-color: #ccc;
+            }
+            &.green:before {
+                background-color: #51b1ac;
+            }
+            &.red:before {
+                background-color: #e51346;
+            }
+        }
+    }
+}

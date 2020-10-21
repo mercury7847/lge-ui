@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>방문일정 변경요청 팝업 열기</span></button>
+    </div>
+    <!-- 방문일정 변경요청 popup -->
+    <article id="popup1" class="popup-wrap small">
+        <header class="pop-header">
+            <h1 class="tit"><span>방문일정 변경요청</span></h1>
+        </header>
+        <section class="pop-conts mypage mycalendar">
+            <div class="my-visit-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">희망 방문일*</h2>
+                    <p class="desc">변경할 방문일을 선택해주세요.</p>
+                    <!-- 방문일 표기
+                    <p class="desc point">2020.01.19</p>
+                    -->
+                </div>
+                <div class="calendar-wrap">
+                    <div class="month-wrap">
+                        <button type="button" class="arrow pre"><span class="blind">이전</span></button>
+                        <span class="month">2020.01</span>
+                        <button class="arrow next"><span class="blind">다음</span></button>
+                    </div>
+                    <table class="tb-calendar">
+                        <caption>방문일정 변경요청 달력</caption>
+                        <thead>
+                            <tr>
+                                <th><span>일</span></th>
+                                <th><span>월</span></th>
+                                <th><span>화</span></th>
+                                <th><span>수</span></th>
+                                <th><span>목</span></th>
+                                <th><span>금</span></th>
+                                <th><span>토</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="disabled"><span></span></td>
+                                <td class="disabled"><span></span></td>
+                                <td class="disabled"><span></span></td>
+                                <td class="disabled"><span></span></td>
+                                <td class="disabled"><span></span></td>
+                                <td class="disabled"><span></span></td>
+                                <td class="disabled"><span>1</span></td>
+                            </tr>
+                            <tr>
+                                <td class="disabled"><span>2</span></td>
+                                <td class="disabled"><span>3</span></td>
+                                <td class="disabled"><span>4</span></td>
+                                <td class="disabled"><span>5</span></td>
+                                <td class="disabled"><span>6</span></td>
+                                <td class="disabled"><span>7</span></td>
+                                <td class="disabled"><span>8</span></td>
+                            </tr>
+                            <tr>
+                                <td class="disabled"><span>9</span></td>
+                                <td class="disabled"><span>10</span></td>
+                                <td class="disabled"><span>11</span></td>
+                                <td class="disabled"><span>12</span></td>
+                                <td class=""><span>13</span></td>
+                                <td class=""><span>14</span></td>
+                                <td class="expected"><span>15</span></td>
+                            </tr>
+                            <tr>
+                                <td class=""><span>16</span></td>
+                                <td class=""><span>17</span></td>
+                                <td class=""><span>18</span></td>
+                                <td class=""><span>19</span></td>
+                                <td class=""><span>20</span></td>
+                                <td class=""><span>21</span></td>
+                                <td class="change"><span>22</span></td>
+                            </tr>
+                            <tr>
+                                <td class=""><span>23</span></td>
+                                <td class=""><span>24</span></td>
+                                <td class=""><span>25</span></td>
+                                <td class=""><span>26</span></td>
+                                <td class=""><span>27</span></td>
+                                <td class=""><span>28</span></td>
+                                <td class=""><span>29</span></td>
+                            </tr>
+                            <tr>
+                                <td class=""><span>30</span></td>
+                                <td class=""><span>31</span></td>
+                                <td class=""><span></span></td>
+                                <td class=""><span></span></td>
+                                <td class=""><span></span></td>
+                                <td class=""><span></span></td>
+                                <td class=""><span></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="calendar-info">
+                    <ul>
+                        <li class="gray"><span class="blind">숫자 회색</span> 선택불가</li>
+                        <li class="green"><span class="blind">초록색</span> 방문 예정일</li>
+                        <li class="red"><span class="blind">빨간색</span> 변경 요청일</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="my-visit-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">희망 방문시간*</h2>
+                    <p class="desc point">10:00 ~ 12:00</p>
+                </div>
+                <div class="form-wrap">
+                    <div class="forms">
+                        <div class="select-wrap block">
+                            <select class="ui_selectbox" id="select1" title="희망 방문시간 선택">
+                                <option value="" class="placeholder">10:00 ~ 12:00</option>
+                                <option value="">10:00 ~ 12:00</option>
+                                <option value="">10:00 ~ 12:00</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "방문 점검 소요시간은 약 40분 입니다."
+                    ]
+                })
+            </div>    
+
+        </section>
+        <footer class="pop-footer">
+            <div class="btn-group">
+                <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+                <button type="button" class="btn pink"><span>확인</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 방문일정 변경요청 popup -->
+
+</body>
+</html>
