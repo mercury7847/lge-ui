@@ -206,7 +206,8 @@ var res = {
 				},
 				"Footer" : {
 					"개인정보취급방침" : ["/html/UTS/COMF2000.html","","진행중"],
-					"이벤트 개인정보처리방침" : ["/html/UTS/COMF2001.html","","진행중"],
+					"이벤트 개인정보처리방침(리스트)" : ["/html/UTS/COMF2001.html","","진행중"],
+					"이벤트 개인정보처리방침(상세)" : ["/html/UTS/COMF2001_view.html","","진행중"],
 					"이용약관" : ["/html/UTS/COMF2003.html","","진행중"],
 					"소식지 신청" : ["/html/UTS/COMF2004.html","","진행중"]
 				}

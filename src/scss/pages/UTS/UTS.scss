@@ -486,3 +486,403 @@
 @import "SERF9001";
 @import "SERF9003";
 @import "SERF9009";
+
+
+
+// 개인정보취급방침, 이벤트개인정보처리방침, 이용약관
+.contents.term-wrap {
+    .cont-wrap {
+        border:none;
+    }
+    .private-info {
+        max-width:1066px + 30px;
+        margin:0 auto;
+        padding:0 30px;
+        @include mobile {
+            padding:0;
+        }
+        .inner {
+            @include mobile {
+                margin-top:12px;
+                padding:40px 20px 56px;
+                background:#fff;
+                &:first-child {
+                    margin-top:0;
+                }
+            }
+        }
+        .inner-con {
+            padding:56px 56px;
+            background:#fff;
+            border-radius:4px;
+            font-size:16px;
+            line-height:24px;
+            @include mobile {
+                padding:0;
+                font-size:14px;
+                line-height:18px;
+                border-radius:inherit;
+            }
+            .h2-tit {
+                margin-bottom:32px;
+                font-size:20px;
+                line-height:30px;
+                font-weight:700;
+                text-align:center;
+                @include mobile {
+                    display:none;
+                }
+            }
+            .select-dl {
+                margin-bottom:32px;
+                dt {
+                    color:#616161;
+                    font-size:14px;
+                    line-height:20px;
+                    @include mobile {
+                        line-height:18px;
+                    }
+                }
+                dd {
+                    margin-top:8px;
+                    @include mobile {
+                        margin-top:12px;
+                    }
+                    .select-wrap {
+                        max-width:100%;
+                    }
+                }
+            }
+    
+            .private-list {
+                display:flex;
+                margin-top:32px;
+                @include mobile {
+                    display:block;
+                    margin-top:40px;
+                }
+                @include clearfix;
+                .list-item {
+                    margin:0 0 0 88px;
+                    @include mobile {
+                        margin:16px 0 0 0;
+                        &:first-child {
+                            margin-top:0;
+                        }
+                    }
+                    &:first-child {
+                        margin-left:0;
+                    }
+                    li {
+                        margin-top:16px;
+                        &:first-child {
+                            margin-top:0;
+                        }
+                        > a {
+                            color:#EC455A;
+                            font-size:14px;
+                            line-height:20px;
+                            font-weight:500;
+                            &:hover {
+                                text-decoration:underline;
+                            }
+                        }
+                    }
+                }
+            }
+    
+            .term-list {
+                font-size:0;
+                .list-item {
+                    display:inline-block;
+                    width:calc((100% - 64px) / 2);
+                    margin-left:64px;
+                    vertical-align:top;
+                    @include mobile {
+                        width:100%;
+                        margin:0;
+                    }
+                    &:first-child {
+                        margin:0;
+                        > li:first-child {
+                            margin-top:0;
+                        }
+                    }
+                    > li {
+                        display:table;
+                        width:100%;
+                        margin-top:32px;
+                        table-layout:fixed;
+                        &:first-child {
+                            margin-top:0;
+                        }
+                        @include mobile {
+                            margin-top:40px;
+                            &:first-child {
+                                margin-top:40px;
+                            }
+                        }
+                        > a {
+                            display:table-cell;
+                            width:40%;
+                            vertical-align:top;
+                            color:#EC455A;
+                            font-size:14px;
+                            line-height:20px;
+                            font-weight:500;
+                            &:hover {
+                                text-decoration:underline;
+                            }
+                            @include mobile {
+                                display:block;
+                                width:100%;
+                                margin-bottom:16px;
+                            }
+                        }
+    
+                        > ol {
+                            display:table-cell;
+                            padding-left:32px;
+                            vertical-align:top;
+                            @include mobile {
+                                display:block;
+                                padding:0;
+                            }
+                            > li {
+                                margin-top:8px;
+                                &:first-child {
+                                    margin-top:0;
+                                }
+                                > a {
+                                    display:block;
+                                    color:#222;
+                                    font-size:14px;
+                                    line-height:20px;
+                                    font-weight:500;
+                                    &:hover {
+                                        text-decoration:underline;
+                                    }
+                                    @include mobile {
+                                        line-height:18px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        .h3-tit {
+            padding:48px 0 16px;
+            font-size:16px;
+            line-height:24px;
+            font-weight:700;
+            @include mobile {
+                padding:0 0 32px;
+                line-height:21px;
+            }
+        }
+    
+        .h4-tit {
+            padding:32px 0 12px;
+            color:#222;
+            font-size:16px;
+            line-height:24px;
+            font-weight:normal;
+            &:first-child {
+                padding-top:0;   
+            }
+            @include mobile {
+                padding:40px 0 12px;
+                font-size:14px;
+                line-height:18px;
+            }
+        }
+    
+        ol, ul {
+            li.mt {
+                margin-top:24px;
+                &:first-child {
+                    margin-top:0;
+                }
+            }
+        }
+        
+        .txt {
+            & + ol,
+                & + ul {
+                margin-top:24px;
+                @include mobile {
+                    margin-top:40px;
+                }
+            }
+            & + .tb_row {
+                margin-top:32px;
+                @include mobile {
+                    margin-top:40px;
+                }
+            }
+            & + .txt {
+                margin-top:32px;
+                @include mobile {
+                    margin-top:40px;
+                }
+            }
+        }
+        
+    
+        dl.con-dl {
+            margin-top:32px;
+            @include mobile {
+                margin-top:40px;
+            }
+            dd {
+                margin-top:8px;
+                ol, ul {
+                    margin-top:0;
+                }
+                .bullet-list {
+                    margin-top:12px;
+                    @include mobile {
+                        margin-top:20px;
+                    }
+                }
+            }
+        }
+    
+        .tb_row {
+            .btn-text {
+                font-size:14px;
+                line-height:20px;
+                font-weight:500;
+                vertical-align:baseline;
+            }
+        }
+    
+        .total-tit {
+            margin:48px 0 16px;
+            @include mobile {
+                margin:40px 0 12px;
+                padding:0 20px;
+            }
+            .num {
+                display:inline-block;
+                font-size:16px;
+                line-height:24px;
+                font-weight:700;
+                vertical-align:middle;
+            }
+        }
+    
+        .ev-private-list {
+            li {
+                margin-top:8px;
+                @include mobile {
+                    margin-top:4px;
+                }
+                &:first-child {
+                    margin-top:0;
+                }
+                a {
+                    display:block;
+                }
+                .item {
+                    padding:32px 56px;
+                    background:#fff;
+                    @include mobile {
+                        padding:24px 20px;
+                    }
+                    .tit {
+                        font-size:16px;
+                        line-height:24px;
+                        font-weight:700;
+                        @include mobile {
+                            font-size:14px;
+                            line-height:18px;
+                        }
+                    }
+                    .date {
+                        display:block;
+                        margin-top:4px;
+                        color:#616161;
+                        font-size:14px;
+                        line-height:20px;
+                        @include mobile {
+                            margin-top:6px;
+                            font-size:12px;
+                            line-height:16px;
+                        }
+                    }
+                }
+            }
+        }
+    
+        &.term-info {
+            .inner-con {
+                color:#616161;
+                font-size:14px;
+                line-height:20px;
+                .txt {
+                    & + ol,
+                        & + ul {
+                        margin-top:20px;
+                        @include mobile {
+                            margin-top:12px;
+                        }
+                    }
+                }
+                dl.con-dl {
+                    margin-top:20px;
+                    @include mobile {
+                        margin-top:12px;
+                    }
+                    dd {
+                        margin-top:0;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+// 소식지 신청
+.pop-conts.term-pop {
+    .desc {
+        color:#616161;
+        font-size:14px;
+        line-height:20px;
+    }
+    .input-info {
+        padding:56px 0 0 0;
+        &:before {
+            display:none;
+        }
+        dd.conts {
+            font-size:0;
+            .select-list-wrap {
+                padding-top:8px;
+            }
+            .select-wrap {
+                max-width:calc((100% - 8px) /2);
+                margin:0 0 0 8px;
+                @include mobile {
+                    max-width:100%;
+                    margin:8px 0 0 0;
+                }
+                &:first-child {
+                    margin:0;
+                }
+            }
+        }
+    }
+    .tb_row {
+        margin-top:24px;
+    }
+    .tit-wrap {
+        + .desc {
+            margin-top:-20px;
+        }
+    }
+}
