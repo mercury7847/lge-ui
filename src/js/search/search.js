@@ -103,8 +103,40 @@
             '<div class="category twoLine">{{#each list in category}}<ol>{{#each (item, index) in list}}<li>{{#if index > 0}}>{{/if}}{{#raw item}}</li>{{/each}}</ol>{{/each}}</div>' +
             '</div></div></li>';
 
-    var suggestedTagItemTemplate = '<li><a href="#{{text}}" class="rounded"><span class="text">#{{text}}</span></a></li>';
-    var similarTextTemplate = '<a href="#{{text}}" class="similar-text">이것을 찾으셨나요? “{{text}}”</a>'
+    var suggestedItemTemplate = '<li><div class="item">' +
+        '{{#if badge}}<div class="badge-wrap thin-type"><span class="badge">{{badge}}</span></div>' +
+        '{{#elsif bigFlag}}<div class="badge-wrap big-flag green type2 left"><span>{{#raw bigFlag}}</span></div>{{/if}}' +
+        '<div class="product-image" aria-hidden="true"><a href="{{url}}"><img src="{{image_url}}" alt="{{image_alt}}"></a></div>' +
+        '<div class="product-contents">' +
+            '<div class="flag-wrap">{{#each item in flag}}<span class="flag"><span class="blind">구분</span>{{item}}</span>{{/each}}</div>' +
+            '<div class="product-info">' +
+                '<div class="product-name"><a href="{{url}}">{{#raw title}}</a></div>' +
+                '<div class="sku">{{sku}}</div>' +
+                '<div class="review-info"><a href="{{url}}">' +
+                    '{{#if isReview}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
+                    '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div><div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' +
+            '</a></div></div>' +
+            '<div class="price-area">' +
+                '<div class="total-price">' +
+                    '{{#if price}}<em class="blind">최대 혜택가격</em><span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                '</div>' +
+                '<div class="product-price">' +
+                    '<div class="purchase-price">' +
+                        '{{#if originalPrice}}<em class="blind">판매가격</em><span class="price">5,200,000<em>원</em></span>{{/if}}' +
+                    '</div>' +
+                    '<div class="discount-rate">' +
+                        '{{#if sale}}<em class="blind">할인율</em><span class="price">{{sale}}<em>%</em></span>{{/if}}' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="badge-benefit">{{#each item in hash}}<span class="{{item.class}}">{{item.tag}} </span>{{/each}}</div>' +
+        '</div>' +
+        '<div class="product-wish"><span class="chk-wish-wrap">' +
+            '<input data-id={{id}} type="checkbox" id="chk{{index}}" name="chk{{index}}" {{#if isWish}}checked{{/if}}>' +
+            '<label for="chk{{index}}"><span class="blind">{{#if isWish}}찜한상품{{#else}}찜하기{{/if}}</span></label>' +
+        '</span></div>' +
+        '<div class="product-button"><a href="{{buttonUrl}}" class="btn">장바구니 담기</a></div>' +
+        '</div></li>';
 
     var searchInputLayerVisible = false;
     var minLength = 1;
@@ -244,6 +276,13 @@
                     e.preventDefault();
                     _self.clickSearchItem($(this));
                 });
+
+                //추천상품 찜하기 클릭
+                searchItemTarget = 'div.result-list-wrap div.list-wrap ul li div.item div.product-wish span.chk-wish-wrap input';
+                self.$suggestedList.on('click', searchItemTarget, function(e){
+                    _self.changeBlindLabelTextSiblingCheckedInput(this, "찜한상품","찜하기");
+                    _self.requestWish($(this).attr('data-id'),$(this).is(':checked'));
+                });
             },
 
             clickSearchItem:function($item) {
@@ -342,6 +381,21 @@
                 }
             },
 
+            changeBlindLabelTextSiblingCheckedInput:function (input, trueText, falseText) {
+                $(input).siblings('label').find('span').text($(input).is(':checked')?trueText:falseText);
+            },
+
+            requestWish:function(productId, isWish) {
+                //찜하기
+                var ajaxUrl = self.$contentsSearch.attr('data-url-wish');
+                console.log(ajaxUrl, {"id":productId, "wish":isWish});
+                $.ajax({
+                    type: 'POST',
+                    url: ajaxUrl,
+                    data: {"id":productId, "wish":isWish}
+                })
+            },
+
             requestTimerSearch:function(searchValue) {
                 var _self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-url-timer');
@@ -360,7 +414,7 @@
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     var data = d.data;
-                    console.log(data);
+                    //console.log(data);
 
                     var param = d.param;
 
@@ -408,7 +462,7 @@
             requestSearch:function(searchValue, ignoreRelated) {
                 var _self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-url-search');
-                console.log(ajaxUrl,ignoreRelated,searchValue);
+                //console.log(ajaxUrl,ignoreRelated,searchValue);
 
                 $.ajax({
                     url: ajaxUrl,
@@ -696,14 +750,35 @@
                     } else {
                         self.$resultAllCustomer.hide();
                     }
-
+                    
                     //데이타 없음 화면 처리
+
+                    //데이타 없을때 나올 추천상품
+                    arr = data.suggested instanceof Array ? data.suggested : [];
+                    if(arr.length > 0) {
+                        var $list_ul = self.$suggestedList.find('div.result-list-wrap div.list-wrap ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            if (item.sale == "0" || item.sale == 0) {
+                                item.sale = null;
+                            }
+                            item.index = index;
+                            item.price = item.price ? vcui.number.addComma(item.price) : null;
+                            item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                            $list_ul.append(vcui.template(suggestedItemTemplate,item));
+                        });
+                    } else {
+                        var $list_ul = self.$suggestedList.find('div.result-list-wrap div.list-wrap ul');
+                        $list_ul.empty();
+                    }
+
                     if(showResult) {
                         self.$noData.hide();
                         self.$suggestedList.hide();
                         self.$searchSimilar.show();
                         self.$resultLayer.show();
                     } else {
+                        self.$noData.find('div.no-data p span em').text('“' + searchedValue + '”');
                         self.$noData.show();
                         self.$suggestedList.show();
                         self.$searchSimilar.hide();
