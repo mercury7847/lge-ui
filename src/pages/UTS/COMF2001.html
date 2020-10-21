@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTS/UTS"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageArr" : [
+                    { "page" : "개인정보처리방침", "on" : "" },
+                    { "page" : "이벤트 개인정보처리방침", "on" : "on" },
+                    { "page" : "이용약관", "on" : "" },
+                    { "page" : "이메일 무단수집 거부", "on" : "" }
+                ]
+            })
+
+            <div class="contents term-wrap">
+                <div class="cont-wrap">
+                    <div class="private-info">
+                        <div class="inner">
+                            <div class="inner-con">
+                                <h2 class="h2-tit">이벤트 개인정보처리방침</h2>
+                                <p class="txt">
+                                    LG전자 웹사이트(www.lge.co.kr, 이하 "회사")는 이용자의 개인 정보를 보호하기 위하여 「정보통신망 이용 촉진 및 정보보호 등에 관한 법률」 및 「개인정보보호법」 등 관련 법령상의 개인정보 보호 규정을 준수하고 있으며 다음과 같은 개인정보 처리 방침을 가지고 있습니다.<br>
+                                    회사는 개인정보 처리방침을 통하여 이용자의 개인정보가 어떠한 목적과 방식으로 수집, 이용되고 있으며, 이용자의 개인정보 보호를 위해 회사가 어떠한 조치를 취하고 있는지 알려드립니다.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="total-tit">
+                            <span class="num">총 62개</span>
+                        </div>
+                        <ul class="ev-private-list">
+                            <!-- loop -->
+                            <li>
+                                <a href="#n">
+                                    <div class="item">
+                                        <p class="tit">LG SIGNATURE OLED R 품격 이상의 존재감을 새겨 넣는 각인 서비스</p>
+                                        <span class="date"><span class="bline">이벤트기간</span>2020.09.10 - 2020.09.30</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <!-- //loop -->
+                            <li>
+                                <a href="#n">
+                                    <div class="item">
+                                        <p class="tit">LG전자 식기세척기 런칭 라이브 방송 사전 공유 이벤트</p>
+                                        <span class="date"><span class="bline">이벤트기간</span>2020.09.10 - 2020.09.30</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#n">
+                                    <div class="item">
+                                        <p class="tit">신학기 gram 페스티벌</p>
+                                        <span class="date"><span class="bline">이벤트기간</span>2020.09.10 - 2020.09.30</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#n">
+                                    <div class="item">
+                                        <p class="tit">LG 모니터 360 시리즈 출시기념! 총 360분께 드리는 사은품 이벤트</p>
+                                        <span class="date"><span class="bline">이벤트기간</span>2020.09.10 - 2020.09.30</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#n">
+                                    <div class="item">
+                                        <p class="tit">LG 힐링미 안마의자 검색이벤트</p>
+                                        <span class="date"><span class="bline">이벤트기간</span>2020.09.10 - 2020.09.30</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+
+                        @@include('./common/modules/pagination.html', {
+                            count: 5
+                        })
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

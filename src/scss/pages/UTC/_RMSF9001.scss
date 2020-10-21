@@ -8,6 +8,16 @@
         padding: 56px;
         background-color: #fff;
     }
+
+    @include mobile {
+        .cont-wrap {
+            padding: 0 0 60px;
+        }
+        .subscribe-wrap {
+            max-width: 100%;
+            padding: 0;
+        }
+    }
 }
 
 .full-lists {
@@ -20,20 +30,23 @@
         display: table;
         width: 100%;
         padding: 32px;
+        border: 1px solid #dddddd;
         border-radius: 8px;
-        border: solid 1px #dddddd;
         background-color: #fff;
     }
     .product-image {
         display: table-cell;
         width: 80px;
-        height: 80px;
-        border-radius: 8px;
-        background-color: #f4f4f4;
         vertical-align: top;
-        img {
-            width: 100%;
+        .image-box {
+            width: 80px;
+            height: 80px;
+            background-color: #f4f4f4;
             border-radius: 8px;
+            img {
+                width: 100%;
+                border-radius: 8px;
+            }
         }
     }
     .product-info {
@@ -58,6 +71,35 @@
         text-align: right;
         vertical-align: middle;
     }
+
+    @include mobile {
+        .item {
+            position: relative;
+            display: block;
+            padding: 28px 20px;
+        }
+        .product-image {
+            width: 100px;
+            .image-box {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        .product-info {
+            display: table-cell;
+            padding-left: 16px;
+            .product-name {
+                @include font-small;
+            }
+            .model-code {
+                margin-top: 14px;
+                @include font-x-small;
+            }
+        }
+        .product-price {
+            display: block;
+        }
+    }
 }
 
 .subscribe-payment {
@@ -70,6 +112,10 @@
             padding: 32px;
             border-radius: 8px;
             border: 1px solid #ddd;
+        }
+        @include mobile {
+            float: none;
+            width: 100%;
         }
     }
     .payment-amount-info {

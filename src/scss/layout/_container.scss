@@ -38,14 +38,18 @@
             }
         }
         @include mobile {
-            padding:56px 0 20px;
+            padding:0 0 20px;
             .title {
+                margin-top:56px;
                 padding:0 20px;
                 font-size:24px;
                 line-height:32px;
             }
             .tabs-wrap.btn-type {
                 margin-top:28px;
+                &:only-child {
+                    margin-top:28px;
+                }
             }
             .desc {
                 padding:0 20px;

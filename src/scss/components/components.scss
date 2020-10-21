@@ -40,6 +40,23 @@
     margin-top: -1px;
 }
 
+// text-align
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center;
+    &.text-left,
+    &.text-right {
+        text-align:center !important;
+    }
+}
+
 .component-wrap {
     position: relative;
     width: 100%;
@@ -327,23 +344,6 @@
     }
     // img.lazyload {opacity:0;}
     // img.lazyloaded {opacity:1;}
-
-    // text-align
-    .align-left {
-        text-align: left;
-    }
-
-    .align-right {
-        text-align: right;
-    }
-
-    .align-center {
-        text-align: center;
-        &.text-left,
-        &.text-right {
-            text-align:center !important;
-        }
-    }
 
     // video title copy, play button
     .video,
