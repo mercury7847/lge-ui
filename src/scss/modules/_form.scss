@@ -128,6 +128,7 @@
             }
         }
         .conts {
+            margin-top:8px;
             .select-wrap {
                 max-width: 100%;
             }
@@ -210,6 +211,9 @@
                                 display:none;
                             }
                         }
+                        //input {
+                        //    padding: 15px 13px;
+                        //}
                     }
                 }
             }
@@ -220,7 +224,7 @@
                     display:table-cell;
                     margin:0;
                     white-space:nowrap;
-                    &:first-child {
+                    .rdo-btn-wrap {
                         padding-right:34px;
                     }
                 }
@@ -229,11 +233,17 @@
                         padding-right: 0;
                     }
                     .number {
-                        //&.hyphen {
-                        //    padding: 0 8px;
-                        //    font-size: 16px;
-                        //    line-height: 56px;
-                        //}
+                        .box {
+                            &:after {
+                                display: block;
+                                width: 164px;
+                                padding-left: 8px;
+                                font-size: 40px;
+                                line-height: 56px;
+                                color: #616161;
+                                content: '······';
+                            }
+                        }
                         .cell {
                             width: 61px;
                             padding: 0 0 0 20px;
@@ -260,15 +270,6 @@
                                     margin: 0;
                                 }
                             }
-                        }
-                        &:after {
-                            display: block;
-                            width: 164px;
-                            padding-left: 8px;
-                            font-size: 40px;
-                            line-height: 56px;
-                            color: #616161;
-                            content: '······';
                         }
                     }
 
@@ -305,12 +306,13 @@
             .add-box {
                 margin-top:16px;
             }
-            @include pc {
-                &.cert-phone {
-                    .complete-text {
-                        right: 187px;
-                    }
+            &.cert-phone {
+                .complete-text {
+                    right: 187px;
                 }
+            }
+            &.right {
+                text-align:right;
             }
         }
         .bullet-list {
@@ -324,14 +326,6 @@
                 font-size:14px;
                 line-height:20px;
             }
-        }
-        .complete-text {
-            position: absolute;
-            top: 2px;
-            right: 0;
-            font-size: 14px;
-            line-height: 20px;
-            color: #ec455a;
         }
     }
 
@@ -367,6 +361,49 @@
 
     &.term-filter {
         margin-bottom:40px;
+        @include mobile {
+            .forms {
+                .conts {
+                    .input-box-wrap {
+                        display:block;
+                        .input-box {
+                            display:block;
+                            white-space:initial;
+                        }
+                        .rdo-btn-wrap {
+                            margin-right:-3px;
+                            margin-bottom:8px;
+                            padding-right:0;
+                            .rdo-wrap {
+                                position:relative;
+                                margin-left:-1px;
+                                width:25%;
+                                input+label {
+                                    display:block;
+                                    position:relative;
+                                    border-radius:0;
+                                }
+                                &:first-child {
+                                    margin-left:0;
+                                    input + label {
+                                        border-radius:8px 0 0 8px;
+                                    }
+                                }
+                                &:last-child {
+                                    input+label {
+                                        border-radius:0 8px 8px 0;
+                                    }
+                                }
+                                input:checked+label {
+                                    border-color:#222;
+                                    z-index:10;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 .agree-cont-wrap {
@@ -569,7 +606,7 @@
             border-radius: 8px;
             word-break:keep-all;
             white-space:nowrap;
-            vertical-align:middle;
+            vertical-align:top;
             background:#fff;
             z-index:5;
         }
@@ -641,6 +678,19 @@
             }
         }
 
+        &.disabled {
+            input {
+                border-color:#f4f4f4;
+                background:#f4f4f4;
+                color:#ccc;
+            }
+            input:read-only + .cell,
+            input:disabled + .cell {
+                border-color:#f4f4f4;
+                background:#f4f4f4;
+            }
+        }
+
         // @include mobile {
         //     .pic-btn {
         //         padding:13px 15px 13px 0;
@@ -693,6 +743,31 @@
         //     }
         // }
     }
+    &.info {
+        position: relative;
+        .info-msg {
+            margin-top:8px;
+            color:#808080;
+            font-size:14px;
+            line-height:20px;
+            vertical-align:top;
+        }
+        .info-msg-top {
+            position: absolute;
+            top: -28px;
+            right: 0;
+            font-size: 14px;
+            line-height: 20px;
+            color: #ec455a;
+        }
+        @include pc {
+            &.phone {
+                .info-msg-top {
+                    right: 187px;
+                }
+            }
+        }
+    }
 }
 
 // input + btn mix type
@@ -723,6 +798,27 @@
             border-color:#222;
             border-width:1px 1px 0 0;
             transform:rotate(45deg);
+        }
+    }
+    &.cell-type {
+        display:table;
+        width:100%;
+        padding:0;
+        .chk-wrap {
+            display:table-cell;
+            padding:15px 0 15px 23px;
+            white-space:nowrap;
+        }
+        .input-wrap {
+            display:table-cell;
+            input {
+                border:none;
+                text-align:right;
+                color:#e51346;
+                &:focus {
+                    box-shadow:none;
+                }
+            }
         }
     }
 }
@@ -1042,6 +1138,7 @@ $input: (chk, rdo);
                         color:#808080;
                         font-size:16px;
                         line-height:24px;
+                        text-align:center;
                         &::before, &::after {
                             display:none;
                         }

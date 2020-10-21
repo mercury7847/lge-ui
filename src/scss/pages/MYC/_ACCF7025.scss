@@ -4,15 +4,28 @@
         font-size:20px;
         line-height:30px;
         font-weight:700;
+        @include mobile {
+            font-size:16px;
+            line-height:21px;
+        }
         em {
             color:#EC455A;
         }
     }
+    > .desc {
+        margin-top:8px;
+        color:#222;
+        font-size:16px;
+        line-height:24px;
+        @include mobile {
+            margin-top:12px;
+        }
+    }
     .form-wrap {
-        margin-top:16px;
-        padding:32px 24px;
-        border-radius:8px;
-        background:#f4f4f4;
+        margin-top:24px;
+        @include mobile {
+            margin-top:20px;
+        }
     }
 }
 
@@ -22,4 +35,25 @@
     padding:24px;
     border-radius:8px;
     background:#f4f4f4;
+}
+
+.flt-wrapping {
+    @include clearfix;
+    .dl-infolist-wrap {
+        float:left;
+        max-width:calc(100% - 300px);
+    }
+    .btn-group {
+        float:right;
+    }
+    @include mobile {
+        .dl-infolist-wrap {
+            float:none;
+            max-width:100%;
+        }
+        .btn-group {
+            float:none;
+            margin-top:24px;
+        }
+    }
 }

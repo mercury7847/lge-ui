@@ -29,7 +29,7 @@
                                     <div class="info-tbl-wrap">
                                         @@include('./common/modules/info-tbl-wrap.html', {
                                             "infos" : [
-                                                "신청일 2020.09.12", "계약번호: QR20080549712", "총 1건"
+                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>1</em>건"
                                             ],
                                             "size" : "size3",
                                             "th" : [
@@ -54,10 +54,7 @@
                                                     "tit" : "청약신청 완료"
                                                 }
                                             },
-                                            "rowspan" : {
-                                                "blind" : "취소",
-                                                "btn" : "취소신청"
-                                            }
+                                            "cancel" : "on"
                                         })
                                     </div>
                                     <!-- // list -->
@@ -69,9 +66,9 @@
                                 <div class="cont-box">
                                     @@include('./common/modules/dl-infolist.html', {
                                         "list" : [
-                                            { "dt" : "성명", "dd" : "이케어" },
-                                            { "dt" : "휴대폰", "dd" : "010-1234-1234" },
-                                            { "dt" : "이메일", "dd" : "lge1234@naver.com" }
+                                            { "dt" : "성명", "dd" : "이*어" },
+                                            { "dt" : "휴대폰", "dd" : "010-****-1234" },
+                                            { "dt" : "이메일", "dd" : "lg****@naver.com" }
                                         ]
                                     })
                                 </div>
@@ -82,14 +79,14 @@
                                 <div class="cont-box">
                                     @@include('./common/modules/dl-infolist.html', {
                                         "list" : [
-                                            { "dt" : "인수자 성명", "dd" : "이인수" },
-                                            { "dt" : "인수자 휴대폰", "dd" : "010-1234-1234" },
-                                            { "dt" : "일반 전화번호", "dd" : "010-1234-1234" },
-                                            { "dt" : "설치 주소", "dd" : "21655 서울특별시 엘지구 엘지구 엘지빌라 100호" },
+                                            { "dt" : "인수자 성명", "dd" : "이*수" },
+                                            { "dt" : "인수자 휴대폰", "dd" : "010-****-1234" },
+                                            { "dt" : "일반 전화번호", "dd" : "010-****-1234" },
+                                            { "dt" : "설치 주소", "dd" : "21655 서울특별시 엘지구 엘지로 ***" },
                                             { "dt" : "배송 요청사항", "dd" : "배송 요청사항이 노출됩니다." },
-                                            { "dt" : "설치 장소", "dd" : "설치장소" },
+                                            { "dt" : "설치 장소", "dd" : "설치장소가 노출됩니다." },
                                             { "dt" : "설치희망 일시", "dd" : "2020.09.23 10:00~12:00" },
-                                            { "dt" : "사전 방문 신청", "dd" : "미신청 혹은 신청" },
+                                            { "dt" : "사전방문 신청", "dd" : "미신청 혹은 신청" },
                                             { "dt" : "폐가전 수거", "dd" : "수거신청 혹은 해당없음" }
                                         ]
                                     })
@@ -102,13 +99,11 @@
                                 <div class="cont-box">
                                     @@include('./common/modules/dl-infolist.html', {
                                         "list" : [
-                                            { "dt" : "결제 수단", "dd" : "신용카드" },
-                                            { "dt" : "카드사", "dd" : "하나카드 / 제휴카드 신청" },
-                                            { "dt" : "카드번호", "dd" : "1234************ / 카드 확인 완료" },
-                                            { "dt" : "유효기간", "dd" : "**/**" },
-                                            { "dt" : "ARS 출금 동의", "dd" : "동의 완료" },
-                                            { "dt" : "자동결제 이용 동의", "dd" : "동의 완료" },
-                                            { "dt" : "<a href='#popup' class='btn-moreinfo' data-control='modal'><span>월 납부 금액</span></a>", "dd" : "선납 신청 / 포인트 사용 동의 / 1년차 월 88,888원" },
+                                            { "dt" : "제휴카드신청", "dd" : "신청 - 하나카드 LG전자 렌탈 PLUS" },
+                                            { "dt" : "결제수단", "dd" : "신용카드" },
+                                            { "dt" : "카드사", "dd" : "하나카드" },
+                                            { "dt" : "카드번호", "dd" : "1234-11**-****-****" },
+                                            { "dt" : "월 납부 금액", "dd" : "<p>선납 신청 / 포인트 사용 동의 / 1년차 월 88,888원</p><a href='#popup' class='btn-moreinfo' data-control='modal'><span>매월 납부금 할인 내역 알아보기</span></a>" },
                                         ]
                                     })
                                 </div>
@@ -121,13 +116,11 @@
                                 <div class="cont-box">
                                     @@include('./common/modules/dl-infolist.html', {
                                         "list" : [
-                                            { "dt" : "결제 수단", "dd" : "계좌이체" },
-                                            { "dt" : "예금주명", "dd" : "이케어" },
+                                            { "dt" : "결제수단", "dd" : "계좌이체" },
+                                            { "dt" : "예금주명", "dd" : "이*어" },
                                             { "dt" : "은행명", "dd" : "하나은행" },
-                                            { "dt" : "계좌번호", "dd" : "111111********* / 계좌 확인 완료" },
-                                            { "dt" : "ARS 출금 동의", "dd" : "동의 완료" },
-                                            { "dt" : "자동결제 이용 동의", "dd" : "동의 완료" },
-                                            { "dt" : "<a href='#popup' class='btn-moreinfo' data-control='modal'><span>월 납부 금액</span></a>", "dd" : "선납 신청 / 1년차 월 88,888원" },
+                                            { "dt" : "계좌번호", "dd" : "111111*********" },
+                                            { "dt" : "월 납부 금액", "dd" : "<p>선납 / 1년차 월 88,888원</p><a href='#popup' class='btn-moreinfo' data-control='modal'><span>매월 납부금 할인 내역 알아보기</span></a>" }
                                         ]
                                     })
                                 </div>
@@ -148,8 +141,8 @@
         <header class="pop-header">
             <h1 class="tit"><span>매월 납부금 할인 내역</span></h1>
         </header>
-        <section class="pop-conts no-footer mypage-pop">
-            <div class="input-info">
+        <section class="pop-conts no-footer common-pop">
+            <div class="sect-wrap">
                 <div class="tit-wrap">
                     <h2 class="h2-tit">의무 사용기간 5년/계약기간 5년</h2>
                 </div>
@@ -169,7 +162,7 @@
                 </div>
             </div>
 
-            <div class="input-info">
+            <div class="sect-wrap">
                 <div class="tit-wrap">
                     <h2 class="h2-tit">의무 사용기간 및 무상할인 적용 납부 금액 예</h2>
                 </div>

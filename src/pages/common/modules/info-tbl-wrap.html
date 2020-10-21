@@ -1,15 +1,10 @@
 <div class="box">
     <div class="info-wrap">
-        <p class="infos">
+        <ul class="infos">
             @@for ( var i=0; i < infos.length; i++ ) {
-            <span>`+infos[i]+`</span>
+            <li>`+infos[i]+`</li>
             }
-        </p>
-        @@if ( context.btns ) {
-        <div class="btns">
-            <a href="#n" class="btn-link small">@@btns</a>
-        </div>
-        }
+        </ul>
     </div>
     <div class="tbl-layout @@size">
         <!-- thead -->
@@ -39,9 +34,17 @@
                                 <li>`+col1.productType.more[k]+`</li>
                                 }
                             </ul>
+                            <div class="cancel-box">
+                                @@if ( context.cancel === "on" ) {
+                                <a href="#n" class="btn bd-black btn-small"><span>취소신청</span></a>
+                                }
+                                @@if ( context.cancel === "off" ) {
+                                <p class="p-text red">취소불가</p>
+                                }
+                            </div>
                             @@if ( context.col1.productType.review ) {
                             <div class="buttons">
-                                <a href="#n" class="btn-link small">사용후기</a>
+                                <a href="#n" class="btn-link small"><span>사용후기</span></a>
                             </div>
                             }
                         </div>
@@ -51,11 +54,10 @@
                 }
                 @@if ( context.col2 ) {
                 <div class="col col2">
-                    <span class="blind">@@col2.blind</span>
                     @@if ( context.col2.stateType ) {
                     <div class="state-box">
                         @@if ( context.col2.stateType.tit ) {
-                        <p class="tit">@@col2.stateType.tit</p>
+                        <p class="tit"><span class="pc-blind">@@col2.blind</span>@@col2.stateType.tit</p>
                         }
                         @@if ( context.col2.stateType.desc ) {
                         <p class="desc">@@col2.stateType.desc</p>
@@ -69,23 +71,13 @@
                 }
             </div>
             <!-- // row -->
-            @@if ( context.rowspan ) {
-            <!-- rowspan -->
-            <div class="rowspan">
-                <div class="col">
-                    <span class="blind">@@rowspan.blind</span>
-                    @@if ( context.rowspan.btn ) {
-                    <a href="#n" class="btn bd-black btn-small"><span>@@rowspan.btn</span></a>
-                    }
-                    @@if ( context.rowspan.txt ) {
-                    <p class="p-text red">@@rowspan.txt</p>
-                    }
-                </div>
-            </div>
-            <!-- // rowspan -->
-            }
         </div>
         <!-- // tbody -->
 
     </div>
+    @@if ( context.btns ) {
+    <div class="btns">
+        <a href="#n" class="btn-link small">@@btns</a>
+    </div>
+    }
 </div>

@@ -27,6 +27,7 @@
                                 <div class="cont-box">
                                     <div class="my-contract-info">
                                         <h4 class="tit">이케어 고객님의 계약정보는 총 <em>3건</em> 입니다.</h4>
+                                        <p class="desc">계약정보를 선택하여 상세한 내용을 확인 하실 수 있습니다.</p>
                                         <div class="form-wrap">
                                             <dl class="forms">
                                                 <dt class="tit"><label for="select1">계약정보 선택</label></dt>
@@ -50,7 +51,7 @@
                                 <div class="flt-tit-wrap">
                                     <h3 class="sec-tit">계약자 정보</h3>
                                     <div class="flt-box">
-                                        <button type="button" class="btn-text"><span>정보변경</span></button>
+                                        <button type="button" class="btn-text small"><span>정보변경</span></button>
                                     </div>
                                 </div>
                                 <div class="cont-box">
@@ -120,6 +121,12 @@
                             <div class="section">
                                 <div class="flt-tit-wrap">
                                     <h3 class="sec-tit">계약자 정보</h3>
+                                    <div class="flt-box">
+                                        <ul class="var-list">
+                                            <li><button type="button" class="btn-text small"><span>취소</span></button></li>
+                                            <li><button type="button" class="btn-text small"><span>저장</span></button></li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="cont-box">
                                     <div class="form-wrap">
@@ -171,11 +178,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="btn-group right">
-                                        <button class="btn bd-black btn-small"><span>취소</span></button>
-                                        <button class="btn bd-pink btn-small"><span>저장</span></button>
-                                    </div>
-
                                     @@include('./common/modules/bullet-list.html', {
                                         "topBorder" : true,
                                         "bulletTit" : "계약자 정보변경 유의사항",
@@ -194,7 +196,7 @@
                                 <div class="flt-tit-wrap">
                                     <h3 class="sec-tit">실사용자 정보</h3>
                                     <div class="flt-box">
-                                        <button type="button" class="btn-text"><span>정보변경</span></button>
+                                        <button type="button" class="btn-text small"><span>정보변경</span></button>
                                     </div>
                                 </div>
                                 <div class="cont-box">
@@ -254,6 +256,12 @@
                             <div class="section">
                                 <div class="flt-tit-wrap">
                                     <h3 class="sec-tit">실사용자 정보</h3>
+                                    <div class="flt-box">
+                                        <ul class="var-list">
+                                            <li><button type="button" class="btn-text small"><span>취소</span></button></li>
+                                            <li><button type="button" class="btn-text small"><span>저장</span></button></li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="cont-box">
                                     <div class="form-wrap">
@@ -295,11 +303,6 @@
                                         </dl>
                                     </div>
 
-                                    <div class="btn-group right">
-                                        <button class="btn bd-black btn-small"><span>취소</span></button>
-                                        <button class="btn bd-pink btn-small"><span>저장</span></button>
-                                    </div>
-
                                     @@include('./common/modules/bullet-list.html', {
                                         "topBorder" : true,
                                         "bulletTit" : "계약자 정보변경 유의사항",
@@ -314,29 +317,30 @@
                             <!-- // 실사용자 정보 - 정보변경 -->
 
                             <div class="section">
-                                <div class="flt-tit-wrap">
-                                    <div class="flt-box left on-tooltip">
-                                        <h3 class="sec-tit">계약 정보</h3>
-                                        @@include('./common/modules/tooltip.html', {
-                                            "type" : "text",
-                                            "text" : "계약서 발급이 필요하신 분은 발급 신청 버튼을 클릭해주세요."
-                                        })
-                                    </div>
-                                    <div class="flt-box">
-                                        <a href="#popup2" class="btn-moreinfo" data-control="modal"><span>계약서 발급신청</span></a>
-                                    </div>
+                                <div class="flt-tit-wrap on-tooltip">
+                                    <h3 class="sec-tit">계약 정보</h3>
+                                    @@include('./common/modules/tooltip.html', {
+                                        "type" : "text",
+                                        "text" : "계약서 발급이 필요하신 분은 발급 신청 버튼을 클릭해주세요."
+                                    })
                                 </div>
                                 <div class="cont-box">
-                                    @@include('./common/modules/dl-infolist.html', {
-                                        "list" : [ 
-                                            { "dt" : "제품군(모델명)", "dd" : "건조기(RH9WGANR)" },
-                                            { "dt" : "계약번호", "dd" : "12345678" },
-                                            { "dt" : "계약기간", "dd" : "2020.09.01 ~ 2025.09.01" },
-                                            { "dt" : "설치일자", "dd" : "2020.09.01" },
-                                            { "dt" : "설치장소", "dd" : "가정" },
-                                            { "dt" : "무상할인회차", "dd" : "3, 5, 6회차" },
-                                        ]
-                                    })
+                                    <div class="flt-wrapping">
+                                        @@include('./common/modules/dl-infolist.html', {
+                                            "list" : [ 
+                                                { "dt" : "제품군(모델명)", "dd" : "건조기(RH9WGANR)" },
+                                                { "dt" : "계약번호", "dd" : "12345678" },
+                                                { "dt" : "계약기간", "dd" : "2020.09.01 ~ 2025.09.01" },
+                                                { "dt" : "설치일자", "dd" : "2020.09.01" },
+                                                { "dt" : "설치장소", "dd" : "가정" },
+                                                { "dt" : "무상할인회차", "dd" : "3, 5, 6회차" },
+                                            ]
+                                        })
+                                        <div class="btn-group">
+                                            <a href="#n" class="btn bd-black btn-small"><span>계약서 발급신청</span></a>
+                                            <a href="#n" class="btn bd-black btn-small"><span>해지상담 신청</span></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -345,23 +349,25 @@
                                 <div class="flt-tit-wrap">
                                     <h3 class="sec-tit">납부 정보</h3>
                                     <div class="flt-box">
-                                        <ul class="var-list">
-                                            <li><button type="button" class="btn-text small"><span>납부 정보변경</span></button></li>
-                                            <li><button type="button" class="btn-link small"><span>납부내역 조회</span></button></li>
-                                            <li><a href="#popup3" class="btn-moreinfo" data-control="modal"><span>제휴카드 신청</span></a></li>
-                                        </ul>
+                                        <button type="button" class="btn-text small"><span>납부 정보변경</span></button>
                                     </div>
                                 </div>
                                 <div class="cont-box">
-                                    @@include('./common/modules/dl-infolist.html', {
-                                        "list" : [ 
-                                            { "dt" : "월 납부금액", "dd" : "88,880원" },
-                                            { "dt" : "정기 출금일", "dd" : "매월 10일" },
-                                            { "dt" : "납부방법", "dd" : "신용카드" },
-                                            { "dt" : "은행(카드)명", "dd" : "하나카드" },
-                                            { "dt" : "계좌(카드)번호", "dd" : "1111-11**-****-****" },
-                                        ]
-                                    })
+                                    <div class="flt-wrapping">
+                                        @@include('./common/modules/dl-infolist.html', {
+                                            "list" : [ 
+                                                { "dt" : "월 납부금액", "dd" : "88,880원" },
+                                                { "dt" : "정기 출금일", "dd" : "매월 10일" },
+                                                { "dt" : "납부방법", "dd" : "신용카드" },
+                                                { "dt" : "은행(카드)명", "dd" : "하나카드" },
+                                                { "dt" : "계좌(카드)번호", "dd" : "1111-11**-****-****" },
+                                            ]
+                                        })
+                                        <div class="btn-group">
+                                            <a href="#n" class="btn bd-black btn-small"><span>납부내역 조회</span></a>
+                                            <a href="#n" class="btn bd-black btn-small"><span>제휴카드 신청</span></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- // 납부정보 -->
@@ -370,15 +376,12 @@
                             <div class="section">
                                 <div class="flt-tit-wrap">
                                     <h3 class="sec-tit">납부 정보</h3>
-                                    <div class="flt-box">
-                                        <ul class="var-list">
-                                            <li><button type="button" class="btn-link small"><span>납부내역 조회</span></button></li>
-                                            <li><a href="#popup3" class="btn-moreinfo" data-control="modal"><span>제휴카드 신청</span></a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                                 <div class="cont-box">
                                     <div class="form-wrap">
+                                        <div class="btn-group">
+                                            <button class="btn bd-black"><span>휴대폰 본인인증</span></button>
+                                        </div>
                                         <dl class="forms">
                                             <dt class="tit">결제수단</dt>
                                             <dd class="conts">
@@ -396,20 +399,6 @@
                                                 <!-- 신용카드 -->
                                                 <div class="payinfo-wrap by-card">
                                                     <div class="form-wrap">
-                                                        <div class="double-form">
-                                                            <dl class="forms">
-                                                                <dt class="tit">휴대폰 본인인증</dt>
-                                                                <dd class="conts">
-                                                                    <div class="input-mix-wrap">
-                                                                        <span class="chk-wrap">
-                                                                            <input type="checkbox" id="chk-pay1" name="chk-pay1" checked>
-                                                                            <label for="chk-pay1">휴대폰 본인인증</label>
-                                                                        </span>
-                                                                        <a href="#n" class="mix-btn"><span class="blind">휴대폰 본인인증 진행하기</span></a>
-                                                                    </div>
-                                                                </dd>
-                                                            </dl>
-                                                        </div>
                                                         <div class="double-form">
                                                             <dl class="forms">
                                                                 <dt class="tit"><label for="slt-card1">카드사</label></dt>
@@ -447,13 +436,11 @@
                                                                 <dt class="tit"><label for="ipt-card2">유효기간(MMYY)</label></dt>
                                                                 <dd class="conts">
                                                                     <span class="input-wrap block">
-                                                                        <div class="box">
-                                                                            <input type="text" id="ipt-card2" maxlength="4" value="1221">
-                                                                            <span class="cell">
-                                                                                <button type="button" class="btn-text pink"><span>납부 카드 확인</span></button>
-                                                                            </span>
-                                                                        </div>
+                                                                        <input type="text" id="ipt-card2" maxlength="4" value="1221">
                                                                     </span>
+                                                                </dd>
+                                                                <dd class="conts right">
+                                                                    <button type="button" class="btn-text pink"><span>납부 카드 확인</span></button>
                                                                 </dd>
                                                             </dl>
                                                         </div>
@@ -464,20 +451,6 @@
                                                 <!-- 계좌이체 -->
                                                 <div class="payinfo-wrap by-bank">
                                                     <div class="form-wrap">
-                                                        <div class="double-form">
-                                                            <dl class="forms">
-                                                                <dt class="tit">휴대폰 본인인증</dt>
-                                                                <dd class="conts">
-                                                                    <div class="input-mix-wrap">
-                                                                        <span class="chk-wrap">
-                                                                            <input type="checkbox" id="chk-pay2" name="chk-pay2" checked>
-                                                                            <label for="chk-pay1">휴대폰 본인인증</label>
-                                                                        </span>
-                                                                        <a href="#n" class="mix-btn"><span class="blind">휴대폰 본인인증 진행하기</span></a>
-                                                                    </div>
-                                                                </dd>
-                                                            </dl>
-                                                        </div>
                                                         <div class="double-form">
                                                             <dl class="forms">
                                                                 <dt class="tit"><label for="ipt-bank1">예금주명</label></dt>
@@ -504,13 +477,11 @@
                                                                 <dt class="tit"><label for="ipt-bank2">계좌번호</label></dt>
                                                                 <dd class="conts">
                                                                     <span class="input-wrap block">
-                                                                        <div class="box">
-                                                                            <input type="text" id="ipt-bank2" value="123456789">
-                                                                            <span class="cell">
-                                                                                <button type="button" class="btn-text pink"><span>납부 계좌 확인</span></button>
-                                                                            </span>
-                                                                        </div>
+                                                                        <input type="text" id="ipt-bank2" value="123456789">
                                                                     </span>
+                                                                </dd>
+                                                                <dd class="conts right">
+                                                                    <button type="button" class="btn-text pink"><span>납부 계좌 확인</span></button>
                                                                 </dd>
                                                             </dl>
                                                         </div>
@@ -519,63 +490,85 @@
                                                 <!-- // 계좌이체 -->
                                             </dd>
                                         </dl>
-                                        <dl class="forms">
-                                            <dt class="tit">ARS 출금 동의</dt>
-                                            <dd class="conts">
-                                                <div class="input-mix-wrap">
-                                                    <span class="chk-wrap">
-                                                        <input type="checkbox" id="chk-agree1" name="chk-agree1">
-                                                        <label for="chk-agree1">ARS 출금동의 신청</label>
-                                                    </span>
-                                                    <a href="#n" class="mix-btn"><span class="blind">ARS 출금동의 신청 진행하기</span></a>
-                                                </div>
-                                            </dd>
-                                        </dl>
-                                        <dl class="forms">
-                                            <dt class="tit">자동결제 이용 동의</dt>
-                                            <dd class="conts">
-                                                <div class="input-mix-wrap">
-                                                    <span class="chk-wrap">
-                                                        <input type="checkbox" id="chk-agree2" name="chk-agree2">
-                                                        <label for="chk-agree2">위 결제수단으로 정기결제신청을 동의합니다.</label>
-                                                    </span>
-                                                    <a href="#n" class="mix-btn"><span class="blind">자동결제 이용 약관 보기</span></a>
-                                                </div>
-                                            </dd>
-                                        </dl>
-                                        <!-- 월 납부금액 : 계좌이체 case -->
-                                        <dl class="forms">
-                                            <dt class="tit">월 납부 금액</dt>
-                                            <dd class="conts">
-                                                <span class="chk-wrap">
-                                                    <input type="checkbox" id="chk-agree3" name="chk-agree3" checked>
-                                                    <label for="chk-agree3">선납신청</label>
-                                                </span>
-                                            </dd>
-                                        </dl>
-                                        <!-- // 월 납부금액 : 계좌이체 case -->
-                                        <!-- 월 납부금액 : 신용카드 case -->
-                                        <dl class="forms">
-                                            <dt class="tit">월 납부 금액</dt>
-                                            <dd class="conts">
-                                                @@include('./common/modules/rdochk-list.html', {
-                                                    "wAuto" : true,
-                                                    "chk" : true,
-                                                    "name" : "chk-agree4",
-                                                    "slt" : [
-                                                        { "value" : "선납신청", "checked" : "checked" },
-                                                        { "value" : "포인트 사용 동의", "checked" : "checked" }
-                                                    ]
-                                                })
-                                            </dd>
-                                        </dl>
-                                        <!-- // 월 납부금액 : 신용카드 case -->
+                                        <!-- 신용카드 case -->
+                                        <div class="double-form">
+                                            <dl class="forms">
+                                                <dt class="tit">보유 멤버십 포인트 사용</dt>
+                                                <dd class="conts">
+                                                    <div class="input-mix-wrap cell-type">
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk-agree1" name="chk-agree1">
+                                                            <label for="chk-agree1">포인트 사용 동의</label>
+                                                        </span>
+                                                        <span class="input-wrap">
+                                                            <input type="text" value="5,000 P">
+                                                        </span>
+                                                    </div>
+                                                    @@include('./common/modules/bullet-list.html', {
+                                                        "bulletTxt" : [
+                                                            "멤버십 포인트는 보유 액수와 관계없이 매월 최대 5,000P까지 차감됩니다."
+                                                        ]
+                                                    })
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="double-form">
+                                            <dl class="forms">
+                                                <dt class="tit">자동결제 이용 동의</dt>
+                                                <dd class="conts">
+                                                    <div class="input-mix-wrap">
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk-agree2" name="chk-agree2">
+                                                            <label for="chk-agree2">위 결제수단으로 정기결제신청을 동의합니다.</label>
+                                                        </span>
+                                                        <a href="#n" class="mix-btn"><span class="blind">자동결제 이용 약관 보기</span></a>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                            <dl class="forms">
+                                                <dt class="tit">ARS 출금 동의</dt>
+                                                <dd class="conts">
+                                                    <div class="input-mix-wrap">
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk-agree3" name="chk-agree3">
+                                                            <label for="chk-agree3">ARS 출금동의 신청</label>
+                                                        </span>
+                                                        <a href="#n" class="mix-btn"><span class="blind">ARS 출금동의 신청 하기</span></a>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <!-- // 신용카드 case -->
+                                        <!-- 계좌이체 case -->
+                                        <div class="double-form">
+                                            <dl class="forms">
+                                                <dt class="tit">자동결제 이용 동의</dt>
+                                                <dd class="conts">
+                                                    <div class="input-mix-wrap">
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk-agree2-2" name="chk-agree2-2">
+                                                            <label for="chk-agree2-2">위 결제수단으로 정기결제신청을 동의합니다.</label>
+                                                        </span>
+                                                        <a href="#n" class="mix-btn"><span class="blind">자동결제 이용 약관 보기</span></a>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <!-- // 계좌이체 case -->
                                     </div>
 
                                     <div class="btn-group right">
-                                        <button class="btn bd-black btn-small"><span>취소</span></button>
-                                        <button class="btn bd-pink btn-small"><span>저장</span></button>
+                                        <button class="btn gray"><span>취소</span></button>
+                                        <button class="btn pink"><span>저장</span></button>
                                     </div>
+
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "topBorder" : true,
+                                        "bulletTit" : "납부 정보변경 유의사항",
+                                        "bulletTxt" : [
+                                            "청구그룹(묶음 결제)일 경우 납부 정보 변경 및 제휴카드 신청은 고객센터(1577-4090)으로 문의 부탁드립니다."
+                                        ]
+                                    })
                                 </div>
                             </div>
                             <!-- // 납부정보 - 정보변경 -->
@@ -587,7 +580,6 @@
                                         "list" : [ 
                                             { "dt" : "성명", "dd" : "김매니저" },
                                             { "dt" : "휴대폰", "dd" : "010-1234-1234" },
-                                            { "dt" : "이메일", "dd" : "lge5678@naver.com" },
                                             { "dt" : "방문주기", "dd" : "1회 / 6개월" },
                                         ]
                                     })

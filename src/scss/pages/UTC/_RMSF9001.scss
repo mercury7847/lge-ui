@@ -20,7 +20,7 @@
     }
 }
 
-.full-lists {
+.full-card-lists {
     > li {
         &:not(:nth-child(1)) {
             margin-top: 12px;
@@ -70,6 +70,12 @@
         @include font-large;
         text-align: right;
         vertical-align: middle;
+        .msg {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: #f04e3e;
+        }
     }
 
     @include mobile {
