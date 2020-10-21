@@ -210,6 +210,9 @@
                                 display:none;
                             }
                         }
+                        //input {
+                        //    padding: 15px 13px;
+                        //}
                     }
                 }
             }
@@ -229,11 +232,17 @@
                         padding-right: 0;
                     }
                     .number {
-                        //&.hyphen {
-                        //    padding: 0 8px;
-                        //    font-size: 16px;
-                        //    line-height: 56px;
-                        //}
+                        .box {
+                            &:after {
+                                display: block;
+                                width: 164px;
+                                padding-left: 8px;
+                                font-size: 40px;
+                                line-height: 56px;
+                                color: #616161;
+                                content: '······';
+                            }
+                        }
                         .cell {
                             width: 61px;
                             padding: 0 0 0 20px;
@@ -260,15 +269,6 @@
                                     margin: 0;
                                 }
                             }
-                        }
-                        &:after {
-                            display: block;
-                            width: 164px;
-                            padding-left: 8px;
-                            font-size: 40px;
-                            line-height: 56px;
-                            color: #616161;
-                            content: '······';
                         }
                     }
 
@@ -305,13 +305,6 @@
             .add-box {
                 margin-top:16px;
             }
-            @include pc {
-                &.cert-phone {
-                    .complete-text {
-                        right: 187px;
-                    }
-                }
-            }
         }
         .bullet-list {
             margin-top:12px;
@@ -324,14 +317,6 @@
                 font-size:14px;
                 line-height:20px;
             }
-        }
-        .complete-text {
-            position: absolute;
-            top: 2px;
-            right: 0;
-            font-size: 14px;
-            line-height: 20px;
-            color: #ec455a;
         }
     }
 
@@ -569,7 +554,7 @@
             border-radius: 8px;
             word-break:keep-all;
             white-space:nowrap;
-            vertical-align:middle;
+            vertical-align:top;
             background:#fff;
             z-index:5;
         }
@@ -641,6 +626,19 @@
             }
         }
 
+        &.disabled {
+            input {
+                border-color:#f4f4f4;
+                background:#f4f4f4;
+                color:#ccc;
+            }
+            input:read-only + .cell,
+            input:disabled + .cell {
+                border-color:#f4f4f4;
+                background:#f4f4f4;
+            }
+        }
+
         // @include mobile {
         //     .pic-btn {
         //         padding:13px 15px 13px 0;
@@ -692,6 +690,31 @@
         //         }
         //     }
         // }
+    }
+    &.info {
+        position: relative;
+        .info-msg {
+            margin-top:8px;
+            color:#808080;
+            font-size:14px;
+            line-height:20px;
+            vertical-align:top;
+        }
+        .info-msg-top {
+            position: absolute;
+            top: -28px;
+            right: 0;
+            font-size: 14px;
+            line-height: 20px;
+            color: #ec455a;
+        }
+        @include pc {
+            &.phone {
+                .info-msg-top {
+                    right: 187px;
+                }
+            }
+        }
     }
 }
 
