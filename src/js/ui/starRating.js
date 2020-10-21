@@ -71,7 +71,7 @@ vcui.define('ui/starRating', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             self.$label = $(self.tmpl('label', {
-                text: ''
+                text: '0점'
             }));
             self.$ratingBox.append(self.$label);
         },

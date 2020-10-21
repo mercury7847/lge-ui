@@ -3,33 +3,16 @@
         <h3 class="tit">LG제품에 관련된 정보를 확인하세요!</h3>
     </div>
     <div class="related-info-content">
-        <div class="slide-wrap ui_carousel_slider related-info">
+        <div class="slide-wrap ui_carousel_slider">
             <div class="slide-content ui_carousel_list">
                 <div class="slide-track ui_carousel_track">
-                    <div class="ui_carousel_slide">
-                        <figure class="related-info-figure">
-                            <div class="related-info-img"><img src="/lg5-common/images/dummy-img-3.jpg" alt="관련 정보 썸네일 이미지"></div>
-                            <figcaption class="related-info-figcap"><a href="">제품 관련 정보를어드민 타이틀 노출 영역, 최대 2줄</a></figcaption>
-                        </figure>
+                    @@for (var i = 0; i < 3; i++) {
+                    <div class="slide-conts ui_carousel_slide">
+                        <a href="#">
+                            <img src="/lg5-common/images/dummy/@img-plan-list0.jpg" alt="{{이미지 정보}}">
+                        </a>
                     </div>
-                    <div class="ui_carousel_slide">
-                        <figure class="related-info-figure">
-                            <div class="related-info-img"><img src="/lg5-common/images/dummy-img-3.jpg" alt="관련 정보 썸네일 이미지"></div>
-                            <figcaption class="related-info-figcap"><a href="">제품 관련 정보를어드민 타이틀 노출 영역, 최대 2줄</a></figcaption>
-                        </figure>
-                    </div>
-                    <div class="ui_carousel_slide">
-                        <figure class="related-info-figure">
-                            <div class="related-info-img"><img src="/lg5-common/images/dummy-img-3.jpg" alt="관련 정보 썸네일 이미지"></div>
-                            <figcaption class="related-info-figcap"><a href="">제품 관련 정보를어드민 타이틀 노출 영역, 최대 2줄</a></figcaption>
-                        </figure>
-                    </div>
-                    <div class="ui_carousel_slide">
-                        <figure class="related-info-figure">
-                            <div class="related-info-img"><img src="/lg5-common/images/dummy-img-3.jpg" alt="관련 정보 썸네일 이미지"></div>
-                            <figcaption class="related-info-figcap"><a href="">제품 관련 정보를어드민 타이틀 노출 영역, 최대 2줄</a></figcaption>
-                        </figure>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
