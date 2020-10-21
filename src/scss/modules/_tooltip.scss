@@ -108,14 +108,6 @@
 // 요소 + tooltip-wrap 일 때 감싸주는 DOM.
 .on-tooltip {
     position:relative;
-    font-size:0;
-    .sec-tit {
-        display:inline-block;
-        vertical-align:top;
-        & + .tooltip-wrap {
-            margin-top:2px;
-        }
-    }
     .tooltip-wrap {
         margin-left:4px;
     }
