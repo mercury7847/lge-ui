@@ -224,71 +224,61 @@
                         padding-right:34px;
                     }
                 }
-                //&.birth-date-box {
-                //    .input-box {
-                //        display: table-cell;
-                //        padding-right: 0;
-                //    }
-                //    .hyphen {
-                //        display: table-cell;
-                //        vertical-align: middle;
-                //    }
-                //    .number {
-                //        width: 41px;
-                //        input {
-                //            padding: 15px 0;
-                //            text-align: center;
-                //            &::-webkit-outer-spin-button,
-                //            &::-webkit-inner-spin-button {
-                //                -webkit-appearance: none;
-                //                margin: 0;
-                //            }
-                //        }
-                //    }
-                //    .hyphen {
-                //        width: 22px;
-                //        padding: 0 8px;
-                //    }
-                //    &:after {
-                //        display: block;
-                //        width: 164px;
-                //        padding-left: 8px;
-                //        font-size: 40px;
-                //        line-height: 56px;
-                //        color: #616161;
-                //        content: '······';
-                //    }
-                //}
                 &.birth-date-box {
                     .input-box {
                         padding-right: 0;
                     }
-                    .hyphen {
-                        padding: 0 8px;
-                        font-size: 16px;
-                        line-height: 56px;
-                    }
                     .number {
-                        width: 41px;
-                        padding-left: 0;
-                        input {
-                            padding: 15px 0;
-                            text-align: center;
-                            &::-webkit-outer-spin-button,
-                            &::-webkit-inner-spin-button {
-                                -webkit-appearance: none;
-                                margin: 0;
+                        //&.hyphen {
+                        //    padding: 0 8px;
+                        //    font-size: 16px;
+                        //    line-height: 56px;
+                        //}
+                        .cell {
+                            width: 61px;
+                            padding: 0 0 0 20px;
+                            border: 0;
+                            border-radius: 0;
+                            &:before {
+                                position: absolute;
+                                top: 50%;
+                                left: 8px;
+                                width: 4px;
+                                height: 1px;
+                                background: #222;
+                                content: '';
+                            }
+                            input {
+                                width: 41px;
+                                padding: 15px 0;
+                                border: 1px solid #ddd;
+                                border-radius: 8px;
+                                text-align: center;
+                                &::-webkit-outer-spin-button,
+                                &::-webkit-inner-spin-button {
+                                    -webkit-appearance: none;
+                                    margin: 0;
+                                }
                             }
                         }
+                        &:after {
+                            display: block;
+                            width: 164px;
+                            padding-left: 8px;
+                            font-size: 40px;
+                            line-height: 56px;
+                            color: #616161;
+                            content: '······';
+                        }
                     }
-                    &:after {
-                        display: block;
-                        width: 164px;
-                        padding-left: 8px;
-                        font-size: 40px;
-                        line-height: 56px;
-                        color: #616161;
-                        content: '······';
+
+
+                    @include mobile {
+                        .number {
+                            input {
+                                border: 1px solid #ddd;
+                            }
+                        }
                     }
                 }
                 &.addr-box {
@@ -299,8 +289,15 @@
                         & + .input-box {
                             padding-left: 16px;
                         }
-                        .input-wrap {
+                    }
+                    @include mobile {
+                        .input-box {
                             display: block;
+                            width: 100%;
+                            & + .input-box {
+                                margin-top: 16px;
+                                padding-left: 0;
+                            }
                         }
                     }
                 }
@@ -308,9 +305,11 @@
             .add-box {
                 margin-top:16px;
             }
-            &.cert-phone {
-                .complete-text {
-                    right: 187px;
+            @include pc {
+                &.cert-phone {
+                    .complete-text {
+                        right: 187px;
+                    }
                 }
             }
         }
@@ -573,6 +572,18 @@
             vertical-align:middle;
             background:#fff;
             z-index:5;
+        }
+        @include mobile {
+            display: block;
+            .cell {
+                display: block;
+                width: 100%;
+                margin-top: 20px;
+                padding-left: 0;
+                .btn {
+                    width: 100%;
+                }
+            }
         }
     }
 
