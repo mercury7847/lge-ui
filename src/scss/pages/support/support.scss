@@ -551,6 +551,82 @@
         }
     }
 
+    .search-wrap {
+        &.typa-A {
+            position:relative;
+            margin:0 auto;
+            .select-wrap {
+                position:relative;
+                float:left;
+                width:188px;
+                z-index:10;
+                .ui-selectbox-wrap {
+                    .ui-select-button {
+                        border-radius:8px 0 0 8px;
+                        border-right-color:transparent;
+                        background:#fff;
+                    }
+                    &.on {
+                        .ui-select-button {
+                            border-radius:8px 8px 0 0;
+                            border-right-color:#222;
+                        }
+                    }
+                    @include mobile {
+                        .ui-select-button {
+                            border-radius:8px;
+                            border-right-color:#ddd;
+                        }
+                    }
+                }
+                @include mobile {
+                    float:none;
+                    width:100%;
+                }
+            }
+            .input-wrap {
+                display:block;
+                margin-left:188px;
+                width: calc(100% - 188px);
+                .box input {
+                    padding-left:8px;
+                    border-radius:0;
+                    border-left-color:transparent;
+                    &:focus {
+                        box-shadow:none;
+                    }
+                }
+                @include mobile {
+                    margin-top:8px;
+                    margin-left:0;
+                    .box input {
+                        border-radius:8px 0 0 8px;
+                        border-left-color:#ddd;
+                        padding-left:23px;
+                    }
+                }
+                .cell {
+                    background:#fff;
+                }
+            }
+            @include pc {
+                .bullet-list {
+                    margin-bottom: 56px;
+                }
+            }
+            @include mobile {
+                padding:0 20px 32px;
+                background:#fff;
+                &::before, &::after {
+                    display:none;
+                }
+                .input-wrap {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
     .outside-content {
         @include section;
     }
