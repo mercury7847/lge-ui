@@ -1394,7 +1394,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             }
 
             if (opt.autoplay) {
-
                 self.paused = false;
                 self.autoPlay();
                 self.triggerHandler(_N + 'play', [self]);
@@ -1412,6 +1411,10 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         }, true);
                     }
                 }
+            }
+
+            if(self.$slides.length < 2){
+                self.$el.find('.indi-wrap').hide();
             }
 
             setTimeout(function(){

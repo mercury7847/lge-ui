@@ -691,15 +691,15 @@ CS.MD.CHK_DEVICE = function() {
 (function($){
     
     function commonInit(){
-        $('.scroll-x').mCustomScrollbar({
-            axis:"x",
-            advanced:{
-                autoExpandHorizontalScroll:true
-            }
-        });
-        $('.scroll-y').mCustomScrollbar({
-            axis:"y"
-        });
+        // $('.scroll-x').mCustomScrollbar({
+        //     axis:"x",
+        //     advanced:{
+        //         autoExpandHorizontalScroll:true
+        //     }
+        // });
+        // $('.scroll-y').mCustomScrollbar({
+        //     axis:"y"
+        // });
 
         $('[data-js="floating]').floating();
     }

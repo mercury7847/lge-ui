@@ -39,6 +39,7 @@
             font-weight:700;
             vertical-align:middle;
         }
+        .right-btn,
         .right-chk {
             float:right;
         }
@@ -122,8 +123,14 @@
                     vertical-align:top;
                 }
             }
+            .right-btn {
+                float: right;
+            }
         }
         .conts {
+            .select-wrap {
+                max-width: 100%;
+            }
             .input-box {
                 margin-top:8px;
                 font-size:0;
@@ -217,9 +224,93 @@
                         padding-right:34px;
                     }
                 }
+                &.birth-date-box {
+                    .input-box {
+                        padding-right: 0;
+                    }
+                    .number {
+                        //&.hyphen {
+                        //    padding: 0 8px;
+                        //    font-size: 16px;
+                        //    line-height: 56px;
+                        //}
+                        .cell {
+                            width: 61px;
+                            padding: 0 0 0 20px;
+                            border: 0;
+                            border-radius: 0;
+                            &:before {
+                                position: absolute;
+                                top: 50%;
+                                left: 8px;
+                                width: 4px;
+                                height: 1px;
+                                background: #222;
+                                content: '';
+                            }
+                            input {
+                                width: 41px;
+                                padding: 15px 0;
+                                border: 1px solid #ddd;
+                                border-radius: 8px;
+                                text-align: center;
+                                &::-webkit-outer-spin-button,
+                                &::-webkit-inner-spin-button {
+                                    -webkit-appearance: none;
+                                    margin: 0;
+                                }
+                            }
+                        }
+                        &:after {
+                            display: block;
+                            width: 164px;
+                            padding-left: 8px;
+                            font-size: 40px;
+                            line-height: 56px;
+                            color: #616161;
+                            content: '······';
+                        }
+                    }
+
+
+                    @include mobile {
+                        .number {
+                            input {
+                                border: 1px solid #ddd;
+                            }
+                        }
+                    }
+                }
+                &.addr-box {
+                    margin-top: 12px;
+                    .input-box {
+                        width: 50%;
+                        padding-right: 0;
+                        & + .input-box {
+                            padding-left: 16px;
+                        }
+                    }
+                    @include mobile {
+                        .input-box {
+                            display: block;
+                            width: 100%;
+                            & + .input-box {
+                                margin-top: 16px;
+                                padding-left: 0;
+                            }
+                        }
+                    }
+                }
             }
             .add-box {
                 margin-top:16px;
+            }
+            @include pc {
+                &.cert-phone {
+                    .complete-text {
+                        right: 187px;
+                    }
+                }
             }
         }
         .bullet-list {
@@ -233,6 +324,14 @@
                 font-size:14px;
                 line-height:20px;
             }
+        }
+        .complete-text {
+            position: absolute;
+            top: 2px;
+            right: 0;
+            font-size: 14px;
+            line-height: 20px;
+            color: #ec455a;
         }
     }
 
@@ -455,6 +554,37 @@
         //         border-radius:4px 0 0 4px;
         //     }
         // }
+    }
+
+    .box2 {
+        position:relative;
+        display:table;
+        width:100%;
+        z-index:1;
+        .cell {
+            display:table-cell;
+            position:relative;
+            width:1%;
+            padding-left: 16px;
+            border-radius: 8px;
+            word-break:keep-all;
+            white-space:nowrap;
+            vertical-align:middle;
+            background:#fff;
+            z-index:5;
+        }
+        @include mobile {
+            display: block;
+            .cell {
+                display: block;
+                width: 100%;
+                margin-top: 20px;
+                padding-left: 0;
+                .btn {
+                    width: 100%;
+                }
+            }
+        }
     }
 
     &.block {

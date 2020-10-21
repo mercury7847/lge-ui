@@ -4,10 +4,10 @@
 	font-size: $font-x-small;
 	line-height: $font-x-small;
 
-	@media screen and (max-width: #{$tablet-s-width}) {
+	//@media screen and (max-width: #{$tablet-s-width}) {
 	//	font-size :  $font-small - 2;
-        line-height: 16px;
-	}
+    //    line-height: 16px;
+	//}
 }
 
 @mixin font-small {
@@ -15,10 +15,10 @@
 	font-size: $font-small;
 	line-height: 20px;
 
-	@media screen and (max-width: #{$tablet-s-width}) {
-	    //font-size :  $font-small - 2;
-	    line-height: 18px;
-	}
+	//@media screen and (max-width: #{$tablet-s-width}) {
+	//    font-size :  $font-small - 2;
+	//    line-height: 18px;
+	//}
 }
 
 @mixin font-medium {
@@ -26,10 +26,10 @@
 	font-size: $font-medium;
 	line-height: 24px;
 
-	@media screen and (max-width: #{$tablet-s-width}) {
-		//font-size : $font-medium - 2;
-		line-height: 23px;
-	}
+	//@media screen and (max-width: #{$tablet-s-width}) {
+	//	font-size : $font-medium - 2;
+	//	line-height: 23px;
+	//}
 }
 
 @mixin font-large {
