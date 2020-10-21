@@ -4,6 +4,7 @@
     width:100%;
     border-top:1px solid #ddd;
     &.scroll-x {
+        overflow-x: auto;
         @include mobile {
             width:auto;
             max-width:755px;
@@ -11,17 +12,17 @@
     }
     &-list {
         width:100%;
+        min-width: 720px;
         border-collapse:collapse;
         border-spacing:0;
         th, td {
             padding:16px 24px;
             font-weight:400;
-            text-align:left;
             border-bottom:1px solid #ddd;
-            // border-left:1px solid #ddd;
-            // &:first-child {
-            //     border-left:0;
-            // }
+            border-left:1px solid #ddd;
+            &:first-child {
+                border-left:0;
+            }
         }
         th {
             color:#616161;
