@@ -99,6 +99,11 @@ vcui.define('ui/starRating', ['jquery', 'vcui'], function ($, core) {
 
             self.el.selectedIndex = typeof index === 'undefined' ? 0 : index + 1;
             self._update();
+        },
+        value: function value() {
+            var self = this;
+
+            return self.el.options[self.el.selectedIndex].value;
         }
     });
 
