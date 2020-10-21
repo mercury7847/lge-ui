@@ -211,6 +211,9 @@
                                 display:none;
                             }
                         }
+                        //input {
+                        //    padding: 15px 13px;
+                        //}
                     }
                 }
             }
@@ -225,71 +228,58 @@
                         padding-right:34px;
                     }
                 }
-                //&.birth-date-box {
-                //    .input-box {
-                //        display: table-cell;
-                //        padding-right: 0;
-                //    }
-                //    .hyphen {
-                //        display: table-cell;
-                //        vertical-align: middle;
-                //    }
-                //    .number {
-                //        width: 41px;
-                //        input {
-                //            padding: 15px 0;
-                //            text-align: center;
-                //            &::-webkit-outer-spin-button,
-                //            &::-webkit-inner-spin-button {
-                //                -webkit-appearance: none;
-                //                margin: 0;
-                //            }
-                //        }
-                //    }
-                //    .hyphen {
-                //        width: 22px;
-                //        padding: 0 8px;
-                //    }
-                //    &:after {
-                //        display: block;
-                //        width: 164px;
-                //        padding-left: 8px;
-                //        font-size: 40px;
-                //        line-height: 56px;
-                //        color: #616161;
-                //        content: '······';
-                //    }
-                //}
                 &.birth-date-box {
                     .input-box {
                         padding-right: 0;
                     }
-                    .hyphen {
-                        padding: 0 8px;
-                        font-size: 16px;
-                        line-height: 56px;
-                    }
                     .number {
-                        width: 41px;
-                        padding-left: 0;
-                        input {
-                            padding: 15px 0;
-                            text-align: center;
-                            &::-webkit-outer-spin-button,
-                            &::-webkit-inner-spin-button {
-                                -webkit-appearance: none;
-                                margin: 0;
+                        .box {
+                            &:after {
+                                display: block;
+                                width: 164px;
+                                padding-left: 8px;
+                                font-size: 40px;
+                                line-height: 56px;
+                                color: #616161;
+                                content: '······';
+                            }
+                        }
+                        .cell {
+                            width: 61px;
+                            padding: 0 0 0 20px;
+                            border: 0;
+                            border-radius: 0;
+                            &:before {
+                                position: absolute;
+                                top: 50%;
+                                left: 8px;
+                                width: 4px;
+                                height: 1px;
+                                background: #222;
+                                content: '';
+                            }
+                            input {
+                                width: 41px;
+                                padding: 15px 0;
+                                border: 1px solid #ddd;
+                                border-radius: 8px;
+                                text-align: center;
+                                &::-webkit-outer-spin-button,
+                                &::-webkit-inner-spin-button {
+                                    -webkit-appearance: none;
+                                    margin: 0;
+                                }
                             }
                         }
                     }
-                    &:after {
-                        display: block;
-                        width: 164px;
-                        padding-left: 8px;
-                        font-size: 40px;
-                        line-height: 56px;
-                        color: #616161;
-                        content: '······';
+
+
+                    @include mobile {
+                        .number {
+                            input {
+                                border: 1px solid #ddd;
+                            }
+                        }
                     }
                 }
                 &.addr-box {
@@ -300,8 +290,15 @@
                         & + .input-box {
                             padding-left: 16px;
                         }
-                        .input-wrap {
+                    }
+                    @include mobile {
+                        .input-box {
                             display: block;
+                            width: 100%;
+                            & + .input-box {
+                                margin-top: 16px;
+                                padding-left: 0;
+                            }
                         }
                     }
                 }
@@ -329,14 +326,6 @@
                 font-size:14px;
                 line-height:20px;
             }
-        }
-        .complete-text {
-            position: absolute;
-            top: 2px;
-            right: 0;
-            font-size: 14px;
-            line-height: 20px;
-            color: #ec455a;
         }
     }
 
@@ -617,9 +606,21 @@
             border-radius: 8px;
             word-break:keep-all;
             white-space:nowrap;
-            vertical-align:middle;
+            vertical-align:top;
             background:#fff;
             z-index:5;
+        }
+        @include mobile {
+            display: block;
+            .cell {
+                display: block;
+                width: 100%;
+                margin-top: 20px;
+                padding-left: 0;
+                .btn {
+                    width: 100%;
+                }
+            }
         }
     }
 
@@ -677,6 +678,19 @@
             }
         }
 
+        &.disabled {
+            input {
+                border-color:#f4f4f4;
+                background:#f4f4f4;
+                color:#ccc;
+            }
+            input:read-only + .cell,
+            input:disabled + .cell {
+                border-color:#f4f4f4;
+                background:#f4f4f4;
+            }
+        }
+
         // @include mobile {
         //     .pic-btn {
         //         padding:13px 15px 13px 0;
@@ -728,6 +742,31 @@
         //         }
         //     }
         // }
+    }
+    &.info {
+        position: relative;
+        .info-msg {
+            margin-top:8px;
+            color:#808080;
+            font-size:14px;
+            line-height:20px;
+            vertical-align:top;
+        }
+        .info-msg-top {
+            position: absolute;
+            top: -28px;
+            right: 0;
+            font-size: 14px;
+            line-height: 20px;
+            color: #ec455a;
+        }
+        @include pc {
+            &.phone {
+                .info-msg-top {
+                    right: 187px;
+                }
+            }
+        }
     }
 }
 
