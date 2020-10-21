@@ -224,17 +224,53 @@
                         padding-right:34px;
                     }
                 }
+                //&.birth-date-box {
+                //    .input-box {
+                //        display: table-cell;
+                //        padding-right: 0;
+                //    }
+                //    .hyphen {
+                //        display: table-cell;
+                //        vertical-align: middle;
+                //    }
+                //    .number {
+                //        width: 41px;
+                //        input {
+                //            padding: 15px 0;
+                //            text-align: center;
+                //            &::-webkit-outer-spin-button,
+                //            &::-webkit-inner-spin-button {
+                //                -webkit-appearance: none;
+                //                margin: 0;
+                //            }
+                //        }
+                //    }
+                //    .hyphen {
+                //        width: 22px;
+                //        padding: 0 8px;
+                //    }
+                //    &:after {
+                //        display: block;
+                //        width: 164px;
+                //        padding-left: 8px;
+                //        font-size: 40px;
+                //        line-height: 56px;
+                //        color: #616161;
+                //        content: '······';
+                //    }
+                //}
                 &.birth-date-box {
                     .input-box {
-                        display: table-cell;
                         padding-right: 0;
                     }
                     .hyphen {
-                        display: table-cell;
-                        vertical-align: middle;
+                        padding: 0 8px;
+                        font-size: 16px;
+                        line-height: 56px;
                     }
                     .number {
                         width: 41px;
+                        padding-left: 0;
                         input {
                             padding: 15px 0;
                             text-align: center;
@@ -244,10 +280,6 @@
                                 margin: 0;
                             }
                         }
-                    }
-                    .hyphen {
-                        width: 22px;
-                        padding: 0 8px;
                     }
                     &:after {
                         display: block;
