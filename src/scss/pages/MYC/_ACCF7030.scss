@@ -362,13 +362,13 @@
         }
     }
 }
-/*
+
 .my-visit-info + .my-visit-info {
     margin-top: 64px;
     @include mobile {
         margin-top: 32px;
     }
-}*/
+}
 .calendar-wrap {
     width: 465px;
     //max-height: 497px;
@@ -439,28 +439,39 @@
             }
         }
         thead th {
-            span {
+            div {
                 font-size: 20px;
                 color: #616161;
             }
         }
         tbody td {
-            span {
+            div {
                 font-size: 20px;
                 color: #222;
             }
-            &.disabled span {
+            .disabled {
+                cursor: default;
+                button {
+                    color: #ccc;
+                }
+            }
+            button:disabled {
                 color: #ccc;
-            }  
-            &.expected span {
+                cursor: default;
+            }
+            .expected {
                 background: #51b1ac;
                 border-radius: 27.5px;
-                color: #fff;
+                button {
+                    color: #fff;
+                }
             }
-            &.change span{
+            .change {
                 background: #e51346;
                 border-radius: 27.5px;
-                color: #fff;
+                button {
+                    color: #fff;
+                }
             }
         }
      }

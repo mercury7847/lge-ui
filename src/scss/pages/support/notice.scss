@@ -4,6 +4,11 @@
 @import "../../utilities/mixins";
 
 .support {
+    /* common */
+
+
+    /* pages */
+    /* 공지사항 */
     &.notice {
         .search-wrap {
             max-width:848px;
@@ -24,7 +29,7 @@
             }
         }
     }
+    /* 고객의소리 */
 }
 
-@import "../../support/pages/KR50CS64";
 @import "../../support/pages/CSTF3500";

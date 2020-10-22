@@ -100,35 +100,27 @@
             }
         }
         &-body {
+            padding-top:34px;
             .view-content {
-                padding:34px 0 48px;
-                strong {
-                    color:#222;
-                    font-size:16px;
-                    line-height:24px;
-                }
-                p {
-                    color:#616161;
-                    font-size:16px;
-                    line-height:24px;
-                }
-                img {
-                    max-width:100%;
+                &#viewContent {
+                    strong, p {
+                        color:#616161;
+                        font-size:16px;
+                        line-height:24px;
+                    }
+                    img {
+                        max-width:100%;
+                    }
                 }
             }
             @include mobile {
+                padding-top:50px;
                 .view-content {
-                    padding:50px 0 40px;
-                    strong {
-                        font-size:14px;
-                        line-height:18px;
-                    }
-                    p {
-                        font-size:14px;
-                        line-height:18px;
-                    }
-                    img {
-                        width:100%;
+                    &#viewContent {
+                        strong, p {
+                            font-size:14px;
+                            line-height:18px;
+                        }
                     }
                 }
             }
