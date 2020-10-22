@@ -5,10 +5,89 @@
     })
 <body>
     <div class="wrap">
-        <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>케어솔루션 약관/유의사항 안내 팝업 열기</span></button><br><br>
-        <button type="button" data-href="#popup2" data-control="modal" class="btn pink"><span>계약서 발급 신청 팝업 열기</span></button><br><br>
-        <button type="button" data-href="#popup3" data-control="modal" class="btn pink"><span>제휴카드 발급 신청 팝업 열기</span></button><br><br>
-        <button type="button" data-href="#laypop1" data-control="modal" class="btn pink"><span>제휴카드 신청 사용중 alert 열기</span></button><br><br>
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "케어솔루션 계약현황 - 해지 상담 신청"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap type3">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "on", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문알리미" }
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <div class="section">
+                                <div class="cont-box">
+                                    <div class="my-contract-info">
+                                        <h4 class="tit">이케어 고객님</h4>
+                                        <p class="desc">계약정보를 해지 하지 위해 아래 정보를 입력해주세요. 해지 상담 신청 접수 후 빠른 시일내에 담당자가 연락 드리겠습니다.</p>
+                                    </div>
+
+                                    <div class="form-wrap">
+                                        <dl class="forms">
+                                            <dt class="tit"><label for="ipt1">해지 상담할 계약</label></dt>
+                                            <dd class="conts">
+                                                <span class="input-wrap block">
+                                                    <input type="text" id="ipt1" value="건조기(RH9WGANR) 계약번호(12345678)" readonly>
+                                                </span>
+                                            </dd>
+                                        </dl>
+                                        <div class="double-form">
+                                            <dl class="forms">
+                                                <dt class="tit"><label for="date-input" class="req">날짜 선택<span class="blind">필수입력</span></label></dt>
+                                                <dd class="conts">
+                                                    <span class="input-wrap datepicker">
+                                                        <span class="box">
+                                                            <input type="text" id="date-input" placeholder="날짜를 선택하세요">
+                                                            <span class="cell pic-btn">
+                                                                <button type="button" class="ui_calendar" data-input-target="#date-input" data-min-date=new Date()><span class="blind">달력보기</span></button>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </dd>
+                                            </dl>
+                                            <dl class="forms">
+                                                <dt class="tit"><label for="select1" class="req">시간 선택<span class="blind">필수입력</span></label></dt>
+                                                <dd class="conts">
+                                                    <div class="select-wrap">
+                                                        <select class="ui_selectbox" id="select1" title="해지상담 신청 시간 선택">
+                                                            <option value="">10:00 ~ 12:00</option>
+                                                        </select>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <dl class="forms">
+                                            <dt class="tit"><label for="ipt2" class="req">해지 신청 사유<span class="blind">필수입력</span></label></dt>
+                                            <dd class="conts">
+                                                <span class="input-wrap block">
+                                                    <textarea placeholder="해지 신청 사유를 입력해주세요."></textarea>
+                                                </span>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="btn-group right">
+                                <button type="button" class="btn gray"><span>취소</span></button>
+                                <button type="submit" class="btn pink"><span>신청</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
     </div>
 
     <!-- 케어솔루션 약관/유의사항 안내 popup -->
@@ -16,16 +95,16 @@
         <header class="pop-header">
             <h1 class="tit"><span>케어솔루션 약관/유의사항 안내</span></h1>
         </header>
-        <section class="pop-conts common-pop">
+        <section class="pop-conts mypage-pop">
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">케어솔루션 약관(필수)</h2>
+                    <h2 class="h2-tit">케어솔루션 약관 (필수)</h2>
                 </div>
                 <div class="agree-cont-wrap">
                     <div class="agree-input">
                         <span class="chk-wrap">
                             <input type="checkbox" id="chk1-1" name="chk1-1" checked>
-                            <label for="chk1-1">동의합니다. <br class="mob-only">(동의해야만 정보 수정이 가능합니다.)</label>
+                            <label for="chk1-1">동의합니다.<br class="mob-only">(동의해야만 정보 수정이 가능합니다.)</label>
                         </span>
                     </div>
                     <div class="agree-cont-box">
@@ -44,13 +123,13 @@
             </div>
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">유의사항에 대한 안내(필수)</h2>
+                    <h2 class="h2-tit">유의사항에 대한 안내 (필수)</h2>
                 </div>
                 <div class="agree-cont-wrap">
                     <div class="agree-input">
                         <span class="chk-wrap">
                             <input type="checkbox" id="chk1-2" name="chk1-2" checked>
-                            <label for="chk1-2">확인합니다. <br class="mob-only">(확인해야만 정보 수정이 가능합니다.)</label>
+                            <label for="chk1-2">확인합니다.<br class="mob-only">(확인해야만 정보 수정이 가능합니다.)</label>
                         </span>
                     </div>
                     <div class="agree-cont-box">
@@ -83,7 +162,7 @@
         <header class="pop-header">
             <h1 class="tit"><span>계약서 발급 신청</span></h1>
         </header>
-        <section class="pop-conts common-pop">
+        <section class="pop-conts mypage-pop">
             <div class="input-info">
                 <div class="tit-wrap">
                     <h2 class="h2-tit">개인정보 수집/이용 동의(필수)</h2>
@@ -92,7 +171,7 @@
                     <div class="agree-input">
                         <span class="chk-wrap">
                             <input type="checkbox" id="chk2-1" name="chk2-1" checked>
-                            <label for="chk2-1">동의합니다. <br class="mob-only">(동의해야만 발급신청 가능합니다.)</label>
+                            <label for="chk2-1">동의합니다.<br class="mob-only">(동의해야만 발급신청 가능합니다.)</label>
                         </span>
                     </div>
                     <div class="agree-cont-box">
@@ -177,7 +256,7 @@
         <header class="pop-header">
             <h1 class="tit"><span>제휴카드 발급 신청</span></h1>
         </header>
-        <section class="pop-conts common-pop">
+        <section class="pop-conts mypage-pop">
             <div class="input-info">
                 <div class="tit-wrap">
                     <h2 class="h2-tit">개인정보 수집/이용 동의(필수)</h2>
@@ -186,7 +265,7 @@
                     <div class="agree-input">
                         <span class="chk-wrap">
                             <input type="checkbox" id="chk3-1" name="chk3-1" checked>
-                            <label for="chk3-1">동의합니다. <br class="mob-only">(동의해야만 발급신청 가능합니다.)</label>
+                            <label for="chk3-1">동의합니다.<br class="mob-only">(동의해야만 발급신청 가능합니다.)</label>
                         </span>
                     </div>
                     <div class="agree-cont-box">
@@ -200,13 +279,13 @@
             </div>
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">제휴카드 발급 및 변경 자동 등록을 위한 개인정보 제3자 제공 동의(필수)</h2>
+                    <h2 class="h2-tit">제휴카드 발급 및 변경 자동 등록을 위한 개인정보 제3자 제공 동의 (필수)</h2>
                 </div>
                 <div class="agree-cont-wrap">
                     <div class="agree-input">
                         <span class="chk-wrap">
                             <input type="checkbox" id="chk3-2" name="chk3-2" checked>
-                            <label for="chk3-2">동의합니다. <br class="mob-only">(동의해야만 발급신청 가능합니다.)</label>
+                            <label for="chk3-2">동의합니다.<br class="mob-only">(동의해야만 발급신청 가능합니다.)</label>
                         </span>
                     </div>
                     <div class="agree-cont-box">

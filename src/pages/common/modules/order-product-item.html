@@ -1,26 +1,38 @@
-<div class="bdcard-lists">
-    <ul class="full-lists">
-        @@for ( var i=0; i < list.length; i++ ) {
-        <li>
-            <a href="#" class="item">
-                <div class="product-image">
-                    <span class="image-box">
-                        <img src="/lg5-common/images/dummy/@img-product7.jpg" alt="">
-                    </span>
-                </div>
-                <div class="product-info">
-                    @@include('./common/modules/flags.html', {
-                        "borderType": true,
-                        "flags": [ "케어솔루션" ]
-                    })
-                    <div class="product-name">`+list[i].name+`</div>
-                    <div class="model-code">`+list[i].code+`</div>
-                </div>
-                <div class="product-price">
-                    <span>월 61,900원</span>
-                </div>
-            </a>
-        </li>
+<li>
+    @@if(context.number) {
+        <div class="number-subscribe">
+            <span class="text">청약번호</span>
+            <span class="number">OR2022330343</span>
+        </div>
+    }
+    <div class="item">
+        <div class="product-image">
+            <span class="image-box">
+                <a href="#"><img src="/lg5-common/images/dummy/@img-product7.jpg" alt=""></a>
+            </span>
+        </div>
+        <div class="product-info">
+            <div class="flag-wrap">
+                <span class="flag"><span class="blind">제품타입</span>케어솔루션</span>
+            </div>
+            <div class="product-name"><a href="#">LG TROMM 스타일러 블랙에디션</a></div>
+            <div class="model-code">S5MBR</div>
+            @@if(context.option) {
+            <div class="item-options">
+                <p>월 61,900원</p>
+                <p>방문 주기 6개월/1회</p>
+            </div>
+            }
+        </div>
+        @@if(context.price) {
+        <div class="product-price">@@price</div>
         }
-    </ul>
-</div>
+        @@if(context.message) {
+        <div class="message-box">
+            <div class="text-box">
+                <span>@@message</span>
+            </div>
+        </div>
+        }
+    </div>
+</li>

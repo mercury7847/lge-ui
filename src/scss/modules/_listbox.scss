@@ -52,6 +52,16 @@
                             left:20px;
                         }
                     }
+                    .youtube-box {
+                        iframe {
+                            width: 100%;
+                        }
+                        @include pc {
+                            iframe {
+                                height: 100%;
+                            }
+                        }
+                    }
                 }
                 .info {
                     padding:24px;

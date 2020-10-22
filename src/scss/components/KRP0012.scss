@@ -41,6 +41,7 @@
         transform:translateY(-50%);
         @include mobile {
             position:static;
+            min-height:84px;
             padding:16px 20px;
             transform:none;
             box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.12);
@@ -53,6 +54,11 @@
             color:#111;
             font-size:14px;
             line-height:26px;
+            @include mobile {
+                &:only-child {
+                    padding:13px 0; 
+                }
+            }
         }
         .product-selling-price {
             color:#111;
@@ -85,6 +91,9 @@
     }
 
     .contents-menu-list {
+        @include mobile {
+            padding:20px 20px;
+        }
         .tab-menu-belt {
             width:640px;
             margin:0 auto;
@@ -101,8 +110,9 @@
             @include mobile {
                 width:100%;
                 max-width:100%;
-                margin-top:20px;
-                padding:0 20px 20px;
+                // margin-top:20px;
+                // padding:0 20px 20px;
+                padding:0;
                 overflow-x:auto;
                 -webkit-overflow-scrolling: touch;
                 white-space:nowrap;

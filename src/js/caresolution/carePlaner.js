@@ -30,7 +30,7 @@
         '                               {{#each item in siblingColors}}'+
         '                                   <div class="slide-conts ui_carousel_slide">'+
         '                                       <div role="radio" class="chk-wrap-colorchip {{item.siblingValue}}" title="{{item.siblingValue}}">'+
-        '                                           <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="color-{{modelId}}" {{#if selectColorID==item.siblingCode}}checked{{/if}}>'+
+        '                                           <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="color-{{modelId}}" value="{{item.siblingCode}}" data-sibling-type="siblingColors" {{#if selectColorID==item.siblingCode}}checked{{/if}}>'+
         '                                           <label for="{{item.siblingCode}}-{{modelId}}"><span class="blind">{{item.siblingValue}}</span></label>'+
         '                                       </div>'+
         '                                   </div>'+
@@ -51,7 +51,7 @@
         '                       {{#each item in siblingFee}}'+
         '                           <li>'+
         '                               <span class="rdo-wrap">'+
-        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="fee-{{modelId}}" {{#if selectFeeID==item.siblingCode}}checked{{/if}}>'+
+        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="fee-{{modelId}}" value="{{item.siblingCode}}" data-sibling-type="siblingFee" {{#if selectFeeID==item.siblingCode}}checked{{/if}}>'+
         '                                   <label for="{{item.siblingCode}}-{{modelId}}">{{item.siblingValue}}</label>'+
         '                               </span>'+
         '                           </li>'+
@@ -66,7 +66,7 @@
         '                       {{#each item in siblingUsePeriod}}'+
         '                           <li>'+
         '                              <span class="rdo-wrap">'+
-        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="period-{{modelId}}" {{#if selectUserPeriodID==item.siblingCode}}checked{{/if}}>'+
+        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="period-{{modelId}}" value="{{item.siblingCode}}" data-sibling-type="siblingUsePeriod" {{#if selectUserPeriodID==item.siblingCode}}checked{{/if}}>'+
         '                                   <label for="{{item.siblingCode}}-{{modelId}}">{{item.siblingValue}}</label>'+
         '                               </span>'+
         '                           </li>'+     
@@ -81,7 +81,7 @@
         '                       {{#each item in siblingVisitCycle}}'+
         '                           <li>'+
         '                               <span class="rdo-wrap">'+
-        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="visit-{{modelId}}" {{#if selectVisitCycleID==item.siblingCode}}checked{{/if}}>'+
+        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="visit-{{modelId}}" value="{{item.siblingCode}}" data-sibling-type="siblingVisitCycle" {{#if selectVisitCycleID==item.siblingCode}}checked{{/if}}>'+
         '                                   <label for="{{item.siblingCode}}-{{modelId}}">{{item.siblingValue}}</label>'+
         '                               </span>'+
         '                           </li>'+     
@@ -140,6 +140,9 @@
     '</div>';
 
     var _showItemLength = 8;
+
+    var _isStorageChk = false;
+    var _isStickyApply = false;
     
     var _totalContract;
 
@@ -155,10 +158,10 @@
     var $categoryTab;
     var $sortSelector;
     var $prodListContainer;
-    var $putItemContaienr;
+    var $putItemContainer;
 
     function init(){
-        vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky'], function () {
+        vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky', 'ui/modal'], function () {
             setting();
             eventBind();
 
@@ -173,14 +176,12 @@
         $categoryTab = $fixedTab.find('.tabs-wrap.border-type');
         $sortSelector = $('.sort-select-wrap select');
         $prodListContainer = $('.prd-list-wrap');
-        $putItemContaienr = $('.prd-select-wrap');
+        $putItemContainer = $('.prd-select-wrap');
 
         _totalContract = $('.ui_total_prod').data('prodTotal');
 
         _categoryListUrl = $caresolutionContainer.data("cateList");
         _prodListUrl = $caresolutionContainer.data("prodList");
-
-        $fixedTab.vcSticky({stickyContainer: ".care-solution-wrap", marginTop: -30});
 
         $('.ui_carousel_slider').vcCarousel({
             infinite: false,
@@ -233,34 +234,44 @@
         });
 
         $sortSelector.on('change', function(e){
-            changeSortType();
+            loadCareProdList(true);
         });
 
-        $prodListContainer.find('> ul.inner').on('click', '> li.item .prd-add .btn-add', function(e){
+        $prodListContainer.on('click', '> ul.inner > li.item .prd-add .btn-add', function(e){
             e.preventDefault();
             
-            var idx = $(this).parents('.prd-care-vertical').data('index')-1;
-            addPutItem(idx);
-        });
-
-        $prodListContainer.find('> ul.inner').on('change', '> li.item .info-wrap input[type=radio]', function(e){
+            addPutItem(this);
+        }).on('change', '> ul.inner > li.item .info-wrap input[type=radio]', function(e){
             e.preventDefault();
-            
-            var idx = $(this).parents('.prd-care-vertical').data('index')-1;
-            console.log(idx);
+
+            changeItemOptions(this);
         });
 
-        $putItemContaienr.on('click', 'button.btn-del', function(e){
+        $putItemContainer.on('click', 'button.btn-del', function(e){
             e.preventDefault();
 
             var putId = $(this).data('putId');
             removePutItem(putId);
-        })
+        }).on('click', 'button.btn-close', function(e){
+            e.preventDefault();
+
+            putItemToggleStatus();
+        });
 
         $(window).on("changeStorageData", function(){
             setPutItems();
             setPutItemStatus();
-        })
+        }).on('scroll', function(e){
+            var scrolltop = $(window).scrollTop();
+            var winheight = $(window).height();
+            var contop = $caresolutionContainer.offset().top;
+            var contheight = $caresolutionContainer.outerHeight(true);
+            var bottomy = -scrolltop + contop + contheight;
+            
+            if(bottomy + 100 < winheight){
+                setNextProdList();
+            }
+        });
     }
 
     function loadCategoryList(){
@@ -276,17 +287,26 @@
             }
             selectedTab($categoryTab.find('> .tabs > li:nth-child(1) > a'));
 
+            if(!_isStickyApply){
+                _isStickyApply = true;
+                $fixedTab.vcSticky({stickyContainer: ".care-solution-wrap", marginTop:-30});
+            }
+
             loadCareProdList(false);
         });
     }
 
     function loadCareProdList(isLoading){
         if(isLoading) lgkorUI.showLoading();
-
-        var tabID = getTabID();
-        var cateID = getCategoryID();
+        
         var serviceName = getServiceName();
-        lgkorUI.requestAjaxData(_prodListUrl, {tabID: tabID, categoryID: cateID}, function(result){
+        var requestData = {
+            tabID: getTabID(),
+            categoryID: getCategoryID(),
+            sortID: getSortID()
+        }
+        console.log("requestData : ", requestData)
+        lgkorUI.requestAjaxData(_prodListUrl, requestData, function(result){
 
             _currentItemList = vcui.array.map(result.data.productList, function(item, idx){
                 item['index'] = idx+1;
@@ -306,15 +326,45 @@
             
             lgkorUI.hideLoading();
         });
+
+        if(!_isStorageChk){
+            _isStorageChk = true;
+
+            setPutItems();
+            setPutItemStatus();
+        }
+    }
+
+    function changeItemOptions(item){
+        var idx = $(item).parents('.prd-care-vertical').data('index')-1;
+        var optgroup = $(item).closest('.opt-info');
+        optgroup.children().each(function(idx, item){
+            var selectItem = $(item).find('input[type=radio]:checked');
+            var selectValue = selectItem.val();
+            var siblingType = selectItem.data('siblingType');
+            console.log("selectValue : ", selectValue, "siblingType : ", siblingType);
+        })
+    }
+
+    function setNextProdList(){
+        var page = _page + 1;
+        if(page < _pageTotal){
+            _page = page;
+
+            addProdItemList();
+        }
     }
 
     function addProdItemList(){
-        var first = _page;
-        var last = _page + _showItemLength;
+        var first = _page * 8;
+        var last = first + _showItemLength;
         if(last > _currentItemList.length) last = _currentItemList.length;
         for(var i=first;i < last;i++){
             var prodlist = vcui.template(_listItemTemplate, _currentItemList[i]);
-            $prodListContainer.find('> ul.inner').append($(prodlist).get(0));
+            var addItem = $(prodlist).get(0);
+            $prodListContainer.find('> ul.inner').append(addItem);
+
+            $(addItem).css({y:200, opacity:0}).transition({y:0, opacity:1}, 450, "easeOutQuart");
         }
 
         $('.ui_carousel_slider2').vcCarousel({
@@ -327,7 +377,8 @@
         });
     }
 
-    function addPutItem(idx){        
+    function addPutItem(item){ 
+        var idx = $(item).parents('.prd-care-vertical').data('index')-1;
         var data = {
             itemData: _currentItemList[idx],
             putID : _currentItemList[idx]['modelId'] + "-" + parseInt(Math.random()*999) + "-" + parseInt(Math.random()*99) + "-" + parseInt(Math.random()*9999)
@@ -339,15 +390,15 @@
         } else{
             var leng = putItemStorage[lgkorUI.CAREPLANER_ID].length;
             if(leng + _totalContract < lgkorUI.CAREPLANER_LIMIT){
-                putItemStorage[lgkorUI.CAREPLANER_ID].push(data);
+                putItemStorage[lgkorUI.CAREPLANER_ID].unshift(data);
+
+                $(window).trigger("toastshow", "제품 담기가 완료되었습니다.");
             } else{
-                alert("limit over!!");
+                $('#alert-overclick').vcModal();
                 return false;
             }
         }
         lgkorUI.setStorage(lgkorUI.CAREPLANER_KEY, putItemStorage);
-
-        console.log(lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY))
     }
 
     function removePutItem(id){
@@ -360,15 +411,16 @@
     }
 
     function setPutItems(){
-        $putItemContaienr.find('.contract-slide').empty();
+        $putItemContainer.find('.contract-slide').empty();
 
         var putItemCompare = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        var isPutItem = vcui.isEmpty(putItemCompare);
-        if(!isPutItem){
+        var leng = putItemCompare[lgkorUI.CAREPLANER_ID] == undefined ? "0" : putItemCompare[lgkorUI.CAREPLANER_ID].length;
+        if(leng){
             var listItem = vcui.template(_putItemTemplate, putItemCompare);
-            $putItemContaienr.find('.contract-slide').append(listItem);
+            $putItemContainer.find('.contract-slide').append(listItem);
 
-            $putItemContaienr.css('display', 'block');
+            var display = $putItemContainer.css('display');
+            $putItemContainer.css({display:'block'});
             $('.ui_carousel_slider3').vcCarousel({
                 infinite: false,
                 slidesToShow: 2,
@@ -408,45 +460,66 @@
                     }
                 ]
             });
+            $putItemContainer.css({display:display});
         }
-
-        var leng = putItemCompare[lgkorUI.CAREPLANER_ID] == undefined ? "0" : putItemCompare[lgkorUI.CAREPLANER_ID].length;
-        $putItemContaienr.find('.tit_wrap .num strong').html(leng);
+        
+        $putItemContainer.find('.tit-wrap .num strong').text(leng);
     }
 
     function setPutItemStatus(){
-        var leng = $putItemContaienr.find('.contract-slide').length;
+        var leng = $putItemContainer.find('.contract-slide').children().length;
         if(leng){
-            if($putItemContaienr.css('display') == 'none'){
-                var height = $putItemContaienr.outerHeight(true);
-                $putItemContaienr.css({display:'block', y:height});
+            if($putItemContainer.css('display') == 'none'){
+                var height = $putItemContainer.outerHeight(true);
+                $putItemContainer.css({display:'block', y:height});
                 openPutItemBox();
-            } 
+            } else{
+                if($putItemContainer.hasClass('close')) openPutItemBox();
+            }
         } else{
             hidePutItemBox();
         }
     }
 
     function openPutItemBox(){
-        $putItemContaienr.removeClass('close');
+        putItemStatus("open");
 
-        $putItemContaienr.stop().transition({y:0}, 550, "easeInOutCubic");
+        $putItemContainer.stop().transition({y:0}, 550, "easeInOutCubic");
+        $putItemContainer.find('.tit-wrap').stop().transition({'padding-bottom': 16}, 550, 'easeInOutCubic');
     }
 
     function closePutItemBox(){
-        if(!$putItemContaienr.hasClass('close')) $putItemContaienr.addClass('close');
+        putItemStatus("close");
 
-        //var height = _$('.KRP0018').outerHeight(true) - $('.sticy-compare .compare-title').outerHeight(true);
-        //_$('.KRP0018').stop().transition({y:height}, 350, "easeInOutCubic");
+        var height = $putItemContainer.outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true);
+        $putItemContainer.stop().transition({y:height}, 350, "easeInOutCubic");
+        $putItemContainer.find('.tit-wrap').stop().transition({'padding-bottom': 32}, 550, 'easeInOutCubic');
     }
 
     function hidePutItemBox(){
-        if(!$putItemContaienr.hasClass('close')) $putItemContaienr.addClass('close');
+        putItemStatus("close");
 
-        // var height = _$('.KRP0018').outerHeight(true);
-        // _$('.KRP0018').stop().transition({y:height}, 350, "easeInOutCubic", function(){
-        //     _$('.KRP0018').css({display:'none', y:0});
-        // });
+        var height = $putItemContainer.outerHeight(true);
+        $putItemContainer.stop().transition({y:height}, 350, "easeInOutCubic", function(){
+           $putItemContainer.css({display:'none', y:0});
+        });
+    }
+
+    function putItemToggleStatus(){
+        if($putItemContainer.hasClass('close')){
+            openPutItemBox();
+        } else{
+            closePutItemBox();
+        }
+    }
+    function putItemStatus(status){
+        if(status == "close"){
+            if(!$putItemContainer.hasClass('close')) $putItemContainer.addClass('close');
+            $putItemContainer.find('button.btn-close blind').text("열기");
+        } else{
+            if($putItemContainer.hasClass('close')) $putItemContainer.removeClass('close');
+            $putItemContainer.find('button.btn-close blind').text("닫기");
+        }
     }
 
     function selectedTab(item){
@@ -469,14 +542,14 @@
         return cateID;
     }
 
+    function getSortID(){
+        return $sortSelector.val();
+    }
+
     function getServiceName(){
         var currentab = $typeTab.find('.tabs li[class=on]');
 
         return currentab.find('a span').text();
-    }
-
-    function changeSortType(){
-        console.log($sortSelector.val())
     }
 
     document.addEventListener('DOMContentLoaded', function () {

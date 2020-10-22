@@ -224,15 +224,7 @@
                     vertical-align:top;
                     word-break:keep-all;
                     @include mobile {
-                        width:80px;
-                    }
-                    .btn-moreinfo {
-                        font-size:inherit;
-                        line-height:inherit;
-                        font-weight:inherit;
-                        &::after {
-                            margin-top:4px;
-                        }
+                        width:124px;
                     }
                 }
                 dd {
@@ -242,8 +234,31 @@
                     font-size:16px;
                     line-height:24px;
                     vertical-align:top;
+                    p {
+                        display:inline;
+                        margin-right:16px;
+                    }
+                    .btn-moreinfo {
+                        font-size:inherit;
+                        line-height:inherit;
+                        font-weight:inherit;
+                        &::after {
+                            margin-top:4px;
+                        }
+                    }
                     @include mobile {
-                        max-width:calc(100% - 80px);
+                        max-width:calc(100% - 124px);
+                        p {
+                            display:block;
+                        }
+                        .btn-moreinfo {
+                            margin-top:8px;
+                            font-size:14px;
+                            line-height:20px;
+                            &::after {
+                                margin-top:2px;
+                            }
+                        }
                     }
                 }
             }

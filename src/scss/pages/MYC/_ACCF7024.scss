@@ -1,6 +1,15 @@
 .info-tbl-wrap {
     .box {
+        position:relative;
         margin-top:32px;
+        padding-bottom:20px;
+        @include mobile {
+            position:relative;
+            margin-top:16px;
+            overflow:hidden;
+            border-radius:8px;
+            box-shadow:0 6px 30px 0 rgba(0, 0, 0, .12);
+        }
         &:first-child {
             margin-top:0;
         }
@@ -8,11 +17,9 @@
         // title
         .info-wrap {
             margin-bottom:16px;
-            @include clearfix;
             .infos {
-                float:left;
                 font-size:0;
-                span {
+                > li {
                     display:inline-block;
                     margin-left:8px;
                     color:#222;
@@ -22,10 +29,41 @@
                     &:first-child {
                         margin-left:0;
                     }
+                    .m-blind {
+                        margin-right:4px;
+                    }
                 }
             }
-            .btns {
-                float:right;
+            @include mobile {
+                margin:0 16px 20px;
+                padding:20px 0 18px;
+                border-bottom:1px solid #ddd;
+                .infos {
+                    float:none;
+                    @include clearfix;
+                    text-align:right;
+                    > li {
+                        color:#616161;
+                        .m-blind {
+                            position:absolute;
+                            z-index:-10;
+                            width:0 !important;
+                            height:0 !important;
+                            overflow:hidden !important;
+                            font-size:medium;
+                            line-height:normal;
+                            word-break:break-all;
+                        }
+                        em {
+                            color:#222;
+                        }
+                        &:first-child {
+                            float:left;
+                            color:#222;
+                            font-weight:500;
+                        }
+                    }
+                }
             }
         }
 
@@ -43,6 +81,9 @@
                     line-height:20px;
                     text-align:center;
                     vertical-align:top;
+                }
+                @include mobile {
+                    display:none;
                 }
             }
             .tbody {
@@ -62,24 +103,27 @@
                         vertical-align:middle;
                     }
                 }
-                .rowspan {
-                    position:absolute;
-                    top:0;
-                    bottom:0;
-                    right:0;
-                    text-align:center;
-                    .col {
-                        position:absolute;
-                        top:50%;
-                        left:0;
-                        right:0;
-                        padding:32px 24px;
-                        text-align:center;
-                        transform:translateY(-50%);
+                @include mobile {
+                    border-bottom:none;
+                    .row {
+                        display:block;
+                        border-top:none;
+                        @include clearfix;
+                        .col {
+                            display:block;
+                            padding:0;
+                            border-right:none;
+                        }
                     }
                 }
             }
             &.size3 {
+                .row {
+                    width:calc(100% - 164px);
+                    @include mobile {
+                        width:100%;
+                    }
+                }
                 .col1 {
                     width:calc(100% - 161px - 164px);
                 }
@@ -89,12 +133,42 @@
                 .col3 {
                     width:164px;
                 }
-                .tbody {
+                @include mobile {
                     .row {
-                        width:calc(100% - 164px);
+                        .col1 {
+                            width:auto;
+                        }
+                        .col2 {
+                            width:auto;
+                            margin:20px 16px 0;
+                        }
                     }
-                    .rowspan {
-                        width:164px;
+                }
+            }
+        }
+
+        // 상세보기 버튼
+        .btns {
+            position:absolute;
+            top:0;
+            right:0;
+            @include mobile {
+                position:relative;
+                top:auto;
+                right:auto;
+                margin-top:20px;
+                margin-bottom:-20px;
+                border-top:1px solid #ddd;
+                .btn-link {
+                    display:block;
+                    padding:18px 0;
+                    color:#616161;
+                    font-size:14px;
+                    line-height:18px;
+                    font-weight:500;
+                    text-align:center;
+                    &::after {
+                        display:none;
                     }
                 }
             }
@@ -102,17 +176,17 @@
 
         // 제품
         .product-info {
-            position:relative;
-            min-height:120px;
-            padding-left:136px;
+            @include clearfix;
             .thumb {
-                position:absolute;
-                top:0;
-                left:0;
+                float:left;
                 width:120px;
                 height:120px;
                 border-radius:8px;
                 overflow:hidden;
+                @include mobile {
+                    width:100px;
+                    height:100px;
+                }
                 img {
                     width:100%;
                     height:auto;
@@ -120,8 +194,16 @@
                 }
             }
             .infos {
+                margin-left:136px;
+                @include mobile {
+                    margin-right:20px;
+                    margin-left:100px;
+                }
                 .flag-wrap {
                     margin-bottom:8px;
+                    @include mobile {
+                        margin-bottom:4px;
+                    }
                 }
                 .name {
                     color:#222;
@@ -129,6 +211,10 @@
                     line-height:24px;
                     font-weight:700;
                     @include textEllipsisClamp(2);
+                    @include mobile {
+                        font-size:14px;
+                        line-height:18px;
+                    }
                 }
                 .more {
                     margin-top:4px;
@@ -160,10 +246,44 @@
                             }
                         }
                     }
+                    @include mobile {
+                        margin-top:0;
+                        li:first-child {
+                            width:100%;
+                            margin-right:0;
+                            margin-bottom:8px;
+                            padding-right:0;
+                            &::after {
+                                display:none;
+                            }
+                        }
+                    }
+                }
+                .cancel-box {
+                    position:absolute;
+                    right:0;
+                    top:50%;
+                    width:164px;
+                    transform:translateY(-50%);
+                    text-align:center;
+                    @include mobile {
+                        float:left;
+                        position:relative;
+                        right:auto;
+                        top:auto;
+                        width:auto;
+                        margin-top:12px;
+                        transform:translateY(0);
+                        text-align:left;
+                    }
                 }
                 .buttons {
                     margin-top:21px;
                     text-align:right;
+                    @include mobile {
+                        float:right;
+                        margin-top:12px;
+                    }
                 }
             }
         }
@@ -171,19 +291,65 @@
         // 상태
         .state-box {
             text-align:center;
+            @include mobile {
+                @include clearfix;
+            }
             .tit {
                 color:#222;
                 font-size:14px;
                 line-height:20px;
+                @include mobile {
+                    clear:both;
+                }
+                .pc-blind {
+                    color:#616161;
+                    &::after {
+                        content:' ';
+                        display:inline-block;
+                        width:1px;
+                        height:10px;
+                        margin:5px 8px 0;
+                        background:#616161;
+                        vertical-align:top;
+                    }
+                    @media screen and (min-width:768px) {
+                        position:absolute;
+                        z-index:-10;
+                        width:0 !important;
+                        height:0 !important;
+                        overflow:hidden !important;
+                        font-size:medium;
+                        line-height:normal;
+                        word-break:break-all;
+                        &::after {
+                            display:none;
+                        }
+                    }
+                }
             }
             .desc {
                 margin-top:4px;
                 color:#616161;
                 font-size:14px;
                 line-height:20px;
+                @include mobile {
+                    float:left;
+                    line-height:30px;
+                }
             }
             .btn {
                 margin-top:8px;
+                @include mobile {
+                    float:right;
+                    margin-top:4px;
+                    background:transparent;
+                }
+            }
+            @include mobile {
+                padding:16px;
+                border-radius:4px;
+                background:#f4f4f4;
+                text-align:left;
             }
         }
 
@@ -205,6 +371,9 @@
     > ol {
         margin-top:-24px;
         font-size:0;
+        @include mobile {
+            margin-top:0;
+        }
         .steps {
             display:inline-block;
             position:relative;
@@ -239,18 +408,60 @@
                 border-bottom:5px solid transparent;
                 border-left:6px solid #222;
             }
+            @include mobile {
+                display:block;
+                width:100%;
+                min-height:40px;
+                margin-top:40px;
+                padding-right:0;
+                padding-left:80px;
+                &::before {
+                    position:absolute;
+                    top:0;
+                    left:20px;
+                    width:40px;
+                    height:40px;
+                    margin-bottom:0;
+                }
+                &::after {
+                    top:-32px;
+                    left:50%;
+                    width:24px;
+                    height:24px;
+                    margin-left:-12px;
+                    border:none;
+                    background-image:url('/lg5-common/images/icons/icon-btn-arrow-bottom.svg');
+                    background-size:100%;
+                }
+                &:first-child {
+                    margin-top:0;
+                    &::after {
+                        display:none;
+                    }
+                }
+            }
             dl {
                 dt {
                     color:#222;
                     font-size:16px;
                     line-height:24px;
                     font-weight:500;
+                    @include mobile {
+                        font-size:14px;
+                        line-height:18px;
+                        font-weight:700;
+                    }
                 }
                 dd {
                     margin-top:4px;
                     color:#616161;
                     font-size:14px;
                     line-height:20px;
+                    @include mobile {
+                        color:#222;
+                        margin-top:2px;
+                        line-height:18px;
+                    }
                 }
             }
         }

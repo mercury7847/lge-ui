@@ -207,6 +207,24 @@
             bindEvents: function() {
                 var _self = this;
 
+                //탭 클릭
+                var searchItemTarget = 'ul.tabs li a';
+                self.$tab.on("click", searchItemTarget, function(e) {
+                    clearTimeout(searchTimer);
+                    _self.setSearchInputLayerVisible(false);
+                    var searchVal = $(this).attr('href').replace("#", "");
+                    console.log(searchVal);
+                    switch(searchVal) {
+                        case "all":
+                            self.$buttonSearch.trigger('click');
+                            break;
+                        case "product":
+                            break;
+                        default:
+                            break;
+                    }
+                });
+
                 //검색 닫기버튼
                 self.$searchInputClose.on("click", function(e) {
                     clearTimeout(searchTimer);
@@ -410,8 +428,8 @@
                         return;
                     }
         
-                    var searchedValue = d.param.searchedValue;
-                    var replaceText = '<span class="search-word">' + searchedValue + '</span>';
+                    var timerSearchedValue = d.param.searchedValue;
+                    var replaceText = '<span class="search-word">' + timerSearchedValue + '</span>';
 
                     var data = d.data;
                     //console.log(data);
@@ -438,7 +456,7 @@
                         var $list_ul = self.$inputSearchList.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(inputSearchListItemTemplate, {"input":item, "text":item.replaceAll(searchedValue,replaceText)}));
+                            $list_ul.append(vcui.template(inputSearchListItemTemplate, {"input":item, "text":item.replaceAll(timerSearchedValue,replaceText)}));
                         });
 
                         self.$inputSearchList.show();

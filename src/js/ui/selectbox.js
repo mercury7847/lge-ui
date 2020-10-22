@@ -551,7 +551,9 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
 
             if (offset + listHeight + selectHeight > scrollHeight && offset - scrollTop > listHeight) {
                 self.$selectbox.addClass('up');
-                self.$list.css('marginTop', (listHeight + selectHeight + 3) * -1);
+                //var margintop = (listHeight + selectHeight + 3) * -1;
+                var margintop = (listHeight + selectHeight) * -1;
+                self.$list.css('marginTop', margintop);
             } else {
                 self.$selectbox.removeClass('up');
                 self.$list.css('marginTop', '');

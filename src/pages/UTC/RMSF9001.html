@@ -18,18 +18,14 @@
                         <div class="section">
                             <h3 class="sec-tit">주문제품</h3>
                             <div class="list-wrap">
-                                <ul class="order-product-items">
-                                    @@include('./common/modules/order-product-item.html', {
-                                        "list" : [
-                                            {
-                                                "name" : "LG TROMM 스타일러 블랙에디션",
-                                                "code" : "S5MBR"
-                                            }, {
-                                                "name" : "LG 퓨리케어 상하좌우 냉온정수기",
-                                                "code" : "WD503AS"
-                                            }
-                                        ]
-                                    })
+                                <ul class="order-items">
+                                    @@loop('./common/modules/order-product-item.html', [
+                                        {
+                                            "price" : "<span>월 61,900원</span>"
+                                        }, {
+                                            "price" : "<span class='msg'>서비스 불가능 항목</span>"
+                                        }
+                                    ])
                                 </ul>
                             </div>
                         </div>
@@ -48,18 +44,21 @@
                                         </dl>
                                         <dl class="forms">
                                             <dt class="tit"><label for="contractorPhone" class="req">휴대폰 번호<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts cert-phone">
+                                            <dd class="conts">
                                                 <div class="input-box">
-                                                    <span class="input-wrap block">
+                                                    <span class="input-wrap block info phone">
                                                         <span class="box2">
                                                             <input type="number" id="contractorPhone" placeholder="휴대폰 번호를 입력해주세요." >
-                                                            <div class="cell">
+                                                            <span class="cell">
                                                                 <a href="#" class="btn bd-black"><span>휴대폰 본인인증</span></a>
-                                                            </div>
+                                                            </span>
                                                         </span>
+                                                        <p class="info-msg-top">본인인증 완료</p>
+                                                        <!-- 본인인증 미완료 시
+                                                        <p class="info-msg-top">본인인증 미완료</p>
+                                                        -->
                                                     </span>
                                                 </div>
-                                                <p class="complete-text">본인인증 완료</p>
                                             </dd>
                                         </dl>
                                     </div>
@@ -76,9 +75,9 @@
                                                     <div class="input-box">
                                                         <span class="input-wrap number">
                                                             <span class="box">
-                                                                <div class="cell">
+                                                                <span class="cell">
                                                                     <input type="number" value="1" title="주민등록번호 뒤 첫번째 자리">
-                                                                </div>
+                                                                </span>
                                                             </span>
                                                         </span>
                                                     </div>
@@ -105,16 +104,16 @@
                                             <div class="input-box">
                                                 <span class="input-wrap block">
                                                     <span class="box2">
-                                                        <div class="input-mix-wrap">
+                                                        <span class="input-mix-wrap">
                                                             <span class="chk-wrap">
                                                                 <input type="checkbox" id="chk-agree1" name="chk-agree1" checked>
                                                                 <label for="chk-agree1">개인정보 및 신용정보 제공 동의</label>
                                                             </span>
                                                             <a href="#n" class="mix-btn"><span class="blind">개인정보 및 신용정보 제공 동의 확인하기</span></a>
-                                                        </div>
-                                                        <div class="cell">
+                                                        </span>
+                                                        <span class="cell">
                                                             <a href="#" class="btn bd-black"><span>신용정보 조회</span></a>
-                                                        </div>
+                                                        </span>
                                                     </span>
                                                 </span>
                                             </div>
@@ -191,9 +190,45 @@
                                                     <span class="input-wrap block">
                                                         <span class="box2">
                                                             <input type="text" placeholder="상세 주소를 입력해주세요." title="상세 주소 입력">
-                                                            <div class="cell">
+                                                            <span class="cell">
                                                                 <a href="#" class="btn bd-black disabled" disabled><span>설치 가능 여부 확인</span></a>
-                                                            </div>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="input-box-wrap addr-box">
+                                                <div class="input-box">
+                                                    <span class="input-wrap block">
+                                                        <input type="text" placeholder="기본 주소" title="기본 주소 입력" readonly>
+                                                    </span>
+                                                </div>
+                                                <div class="input-box">
+                                                    <span class="input-wrap block error">
+                                                        <span class="box2">
+                                                            <input type="text" placeholder="상세 주소를 입력해주세요." title="상세 주소 입력">
+                                                            <p class="err-msg">올바른 이름을 입력해주세요.</p>
+                                                            <span class="cell">
+                                                                <a href="#" class="btn bd-black disabled" disabled><span>설치 가능 여부 확인</span></a>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="input-box-wrap addr-box">
+                                                <div class="input-box">
+                                                    <span class="input-wrap block">
+                                                        <input type="text" placeholder="기본 주소" title="기본 주소 입력" readonly>
+                                                    </span>
+                                                </div>
+                                                <div class="input-box">
+                                                    <span class="input-wrap block info">
+                                                        <span class="box2">
+                                                            <input type="text" placeholder="상세 주소를 입력해주세요." title="상세 주소 입력" value="엘지빌딩 702호">
+                                                            <p class="info-msg">설치 가능 지역입니다.</p>
+                                                            <span class="cell">
+                                                                <a href="#" class="btn bd-black"><span>설치 가능 여부 확인</span></a>
+                                                            </span>
                                                         </span>
                                                     </span>
                                                 </div>
@@ -231,7 +266,8 @@
                                             <dt class="tit"><label for="date-install" class="req">설치 희망일 선택<span class="blind">필수입력</span></label></dt>
                                             <dd class="conts">
                                                 <div class="input-box">
-                                                    <span class="input-wrap datepicker">
+                                                    <!-- 날짜 선택 후 disabled 클래스 삭제 -->
+                                                    <span class="input-wrap datepicker disabled">
                                                         <span class="box">
                                                             <input type="text" id="date-install" placeholder="날짜를 선택하세요" title="설치 희망일 시작날짜 선택">
                                                             <span class="cell pic-btn">
@@ -303,10 +339,10 @@
                                             </div>
                                             <div class="input-box add-box">
                                                 <div class="input-mix-wrap">
-                                                        <span class="chk-wrap">
-                                                            <input type="checkbox" id="chk-agree2" name="chk-agree2" checked>
-                                                            <label for="chk-agree2">사전방문 서비스 제공을 위한 개인정보 수집/이용 동의</label>
-                                                        </span>
+                                                    <span class="chk-wrap">
+                                                        <input type="checkbox" id="chk-agree2" name="chk-agree2" checked>
+                                                        <label for="chk-agree2">사전방문 서비스 제공을 위한 개인정보 수집/이용 동의</label>
+                                                    </span>
                                                     <a href="#n" class="mix-btn"><span class="blind">사전방문 서비스 제공을 위한 개인정보 수집/이용 동의 확인하기</span></a>
                                                 </div>
                                             </div>
@@ -322,7 +358,7 @@
                                 </div>
                                 <div class="form-wrap">
                                     <dl class="forms">
-                                        <dt class="tit"><label for="recipientName">제휴카드 신청</label></dt>
+                                        <dt class="tit"><label for="cardApplication">제휴카드 신청</label></dt>
                                         <dd class="conts">
                                             <div class="select-list-wrap">
                                                 <ul>
@@ -342,12 +378,29 @@
                                             </div>
                                             <div class="input-box add-box">
                                                 <div class="input-mix-wrap">
-                                                        <span class="chk-wrap">
-                                                            <input type="checkbox" id="chk-agree3" name="chk-agree3">
-                                                            <label for="chk-agree3">제휴카드 발급/변경 자동 등록을 위한 정보제공 동의</label>
-                                                        </span>
+                                                    <span class="chk-wrap">
+                                                        <input type="checkbox" id="chk-agree3" name="chk-agree3">
+                                                        <label for="chk-agree3">제휴카드 발급/변경 자동 등록을 위한 정보제공 동의</label>
+                                                    </span>
                                                     <a href="#n" class="mix-btn"><span class="blind">제휴카드 발급/변경 자동 등록을 위한 정보제공 동의 확인하기</span></a>
                                                 </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="forms">
+                                        <dt class="tit"><label for="cardSelect">제휴카드 선택</label></dt>
+                                        <dd class="conts">
+                                            <div class="input-box btn-type">
+                                                <div class="input-wrap info">
+                                                    <div class="select-wrap block">
+                                                        <select class="ui_selectbox" id="slt-card2" title="제휴카드 선택">
+                                                            <option value="" class="placeholder">제휴카드 선택</option>
+                                                            <option value="" selected>[하나] LG전자 렌탈플러스</option>
+                                                        </select>
+                                                    </div>
+                                                    <p class="info-msg-top">최대 23,000원 청구 할인</p>
+                                                </div>
+                                                <a href="#n" class="btn bd-black"><span>동의 문자 발송</span></a>
                                             </div>
                                         </dd>
                                     </dl>
@@ -385,16 +438,16 @@
                                                     <dd class="conts">
                                                         <div class="input-box card-type">
                                                             <span class="input-wrap">
-                                                                <input type="text" id="ipt-card1" maxlength="4" value="1234">
+                                                                <input type="text" id="ipt-card1" placeholder="1234" maxlength="4" value="1234" size="3">
                                                             </span>
                                                             <span class="input-wrap">
-                                                                <input type="text" maxlength="4" value="">
+                                                                <input type="text" maxlength="4" placeholder="1234" value="" size="3">
                                                             </span>
                                                             <span class="input-wrap">
-                                                                <input type="text" maxlength="4" value="">
+                                                                <input type="text" maxlength="4" placeholder="1234" value="" size="3">
                                                             </span>
                                                             <span class="input-wrap">
-                                                                <input type="text" maxlength="4" value="">
+                                                                <input type="text" maxlength="4" placeholder="1234" value="" size="3">
                                                             </span>
                                                         </div>
                                                     </dd>
@@ -403,13 +456,11 @@
                                                     <dt class="tit"><label for="ipt-card2">유효기간(MMYY)</label></dt>
                                                     <dd class="conts">
                                                         <span class="input-wrap block">
-                                                            <div class="box">
-                                                                <input type="text" id="ipt-card2" maxlength="4" value="1221">
-                                                                <span class="cell">
-                                                                    <button type="button" class="btn-text pink"><span>납부 카드 확인</span></button>
-                                                                </span>
-                                                            </div>
+                                                            <input type="text" id="ipt-card2" maxlength="4" placeholder="MMYY" value="1221">
                                                         </span>
+                                                    </dd>
+                                                    <dd class="conts right">
+                                                        <button type="button" class="btn-text pink"><span>납부 카드 확인</span></button>
                                                     </dd>
                                                 </dl>
                                             </div>
@@ -423,7 +474,7 @@
                                                 <dt class="tit"><label for="ipt-bank1">예금주명</label></dt>
                                                 <dd class="conts">
                                                     <span class="input-wrap block">
-                                                        <input type="text" id="ipt-bank1" value="이케어">
+                                                        <input type="text" id="ipt-bank1" placeholder="예금주명을 입력해주세요." value="">
                                                     </span>
                                                 </dd>
                                             </dl>
@@ -433,7 +484,7 @@
                                                     <dd class="conts">
                                                         <div class="select-wrap block">
                                                             <select class="ui_selectbox" id="slt-bank1">
-                                                                <option value="" class="placeholder">은행 선택</option>
+                                                                <option value="" class="placeholder">선택해주세요.</option>
                                                                 <option value="" selected>하나은행</option>
                                                             </select>
                                                         </div>
@@ -443,16 +494,45 @@
                                                     <dt class="tit"><label for="ipt-bank2">계좌번호</label></dt>
                                                     <dd class="conts">
                                                         <span class="input-wrap block">
-                                                            <div class="box">
-                                                                <input type="text" id="ipt-bank2" value="123456789">
+                                                            <span class="box">
+                                                                <input type="text" id="ipt-bank2" placeholder="계좌번호를 “-“없이 숫자만 입력해주세요." value="">
                                                                 <span class="cell">
                                                                     <button type="button" class="btn-text pink"><span>납부 계좌 확인</span></button>
                                                                 </span>
-                                                            </div>
+                                                            </span>
                                                         </span>
                                                     </dd>
                                                 </dl>
                                             </div>
+                                            <dl class="forms">
+                                                <dt class="tit"><label for="rdo-receipt" class="req">현금영수증<span class="blind">필수입력</span></label></dt>
+                                                <dd class="conts">
+                                                    <div class="select-list-wrap">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" id="rdo3-1" name="rdo3" checked>
+                                                                    <label for="rdo1-1">발급</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" id="rdo3-2" name="rdo3">
+                                                                    <label for="rdo1-2">미발급</label>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                            <dl class="forms">
+                                                <dt class="tit"><label for="ipt-phone">휴대폰</label></dt>
+                                                <dd class="conts">
+                                                    <span class="input-wrap block">
+                                                        <input type="text" id="ipt-phone" placeholder="휴대폰 번호를 입력해주세요.">
+                                                    </span>
+                                                </dd>
+                                            </dl>
                                         </div>
                                     </div>
                                     <!-- // 실시간 계좌이체 -->

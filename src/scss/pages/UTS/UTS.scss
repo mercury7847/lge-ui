@@ -496,8 +496,8 @@
     .cont-wrap {
         border:none;
     }
-    .private-info {
-        max-width:1066px + 30px;
+    .private-info-wrap {
+        max-width:1066px + 60px;
         margin:0 auto;
         padding:0 30px;
         @include mobile {
@@ -557,23 +557,39 @@
             }
     
             .private-list {
-                display:flex;
-                margin-top:32px;
+                @include clearfix;
+                margin:32px 0 0 0;
                 @include mobile {
                     display:block;
                     margin-top:40px;
                 }
-                @include clearfix;
                 .list-item {
-                    margin:0 0 0 88px;
+                    float:left;
+                    width:37%;
+                    padding-left:80px;
+                    @include tablet {
+                        padding-left:40px;
+                    }
                     @include mobile {
-                        margin:16px 0 0 0;
+                        float:none;
+                        width:100%;
+                        padding:16px 0 0 0;
                         &:first-child {
-                            margin-top:0;
+                            padding-top:0;
                         }
                     }
                     &:first-child {
-                        margin-left:0;
+                        width:22%;
+                        padding:0;
+                        @include mobile {
+                            width:100%;
+                        }
+                    }
+                    &:nth-child(2) {
+                        width:41%;
+                        @include mobile {
+                            width:100%;
+                        }
                     }
                     li {
                         margin-top:16px;
@@ -581,6 +597,7 @@
                             margin-top:0;
                         }
                         > a {
+                            display:block;
                             color:#EC455A;
                             font-size:14px;
                             line-height:20px;
@@ -729,6 +746,12 @@
                 margin-top:32px;
                 @include mobile {
                     margin-top:40px;
+                }
+            }
+            &.center {
+                text-align:center;
+                @include tablet {
+                    text-align:left;
                 }
             }
         }
