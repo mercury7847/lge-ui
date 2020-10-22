@@ -142,7 +142,9 @@
     var minLength = 1;
     var searchDelay = 2000;
     var searchTimer = null;
-    var searchedValue = null;
+    var searchedValue = "";
+    var storageFilters = {};
+    var savedFilterArr = [];
 
     $(window).ready(function() {
         var search = {
@@ -202,6 +204,10 @@
                 _self.updateRecentSearcheList();
 
                 _self.bindEvents();
+
+                vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
+                    _self.filterBindEvents();
+                });
             },
 
             bindEvents: function() {
@@ -219,6 +225,7 @@
                             self.$buttonSearch.trigger('click');
                             break;
                         case "product":
+                            _self.requestSearchProduct(searchedValue);
                             break;
                         default:
                             break;
@@ -807,6 +814,287 @@
                 }).fail(function(d){
                     alert(d.status + '\n' + d.statusText);
                 });
+            },
+
+            requestSearchProduct:function(searchValue) {
+                var searchItemTarget = 'ul.tabs li a[href="#product"]';
+                console.log(searchValue, self.$tab.find(searchItemTarget));
+
+                var _self = this;
+                var ajaxUrl = self.$tab.find(searchItemTarget).attr('data-url-search');
+
+                console.log(ajaxUrl);
+                $.ajax({
+                    url: ajaxUrl,
+                    data: {"search":searchValue}
+                }).done(function (d) {
+                    if(d.status != 'success') {
+                        alert(d.message ? d.message : '오류발생');
+                        return;
+                    }
+        
+                    console.log(d);
+
+                    var enableList = d.filterEnableList;
+                    var filterList = d.filterList;
+
+                    var filterObj = vcui.array.reduce(filterList, function (prev, cur) {
+                        if(prev[cur['filterId']]) prev[cur['filterId']].push(cur);
+                        else prev[cur['filterId']] = [cur];
+                        return prev;
+                    }, {});
+
+                    var newFilterArr = [];
+
+                    for(var key in filterObj){
+                        var filterValues = vcui.array.map(filterObj[key], function(item, index) {	
+                            var enableArr = vcui.array.filter(enableList, function(target){
+                                // ** facetValueId->filterValueId facetValueId 삭제됨. filterValueId로 대체되어야함.
+                                if(target['filterId'] == item['filterId']){
+                                    return vcui.array.filter(item['facetValueId'].split(','), function(fItem){
+                                        return target['facetValueId'] == item['facetValueId'];
+                                    });
+                                }else{
+                                    return false;
+                                }
+                                /*
+                                if(target['filterId'] == item['filterId'] && target['filterValueId'] == item['filterValueId']){
+                                    return true;
+                                }else{
+                                    return false;
+                                }*/
+                            });
+
+                            var obj = {
+                                'filterName' : item['filterName'], 
+                                'filterValueName' : item['filterValueName'], 
+                                'filterValueId' : item['filterValueId'], 
+                                'facetValueId' : item['facetValueId'], 
+                                'modelCount' : item['countModel'],
+                                'filterTypeCode' : item['filterTypeCode'], //00(슬라이더),..
+                                'rangePointStyle' : item['rangePointStyle'],
+                                'facetSourceCode': item['facetSourceCode'], //COLR(칼라칩),..
+                                'filterOrderNo': item['filterOrderNo'],
+                            } 
+
+                            if(enableArr.length>0){ 
+                                var eArr = vcui.array.filter(enableArr, function(eItem){
+                                    return eItem['facetValueId'] == obj['facetValueId'];
+                                });
+                                if(eArr.length>0){
+                                    obj['modelCount'] = eArr[0]['modelCount'];
+                                    obj['enable'] = eArr[0]['enable'];
+                                }
+                            };
+                            
+                            return obj;
+                        });
+
+                        filterValues = vcui.array.reduce(filterValues, function(prev, cur){
+                            var items = vcui.array.filter(prev, function(item, index) {
+                                return item['filterValueId'] === cur['filterValueId'];
+                            });
+                            if(items.length===0){ 
+                                prev.push(cur);
+                            }else{
+                                //**facetValueId 삭제되면 주석처리 필요.
+                                prev[prev.length-1]['facetValueId'] = prev[prev.length-1]['facetValueId'] +','+ cur['facetValueId'];
+                            }	  
+                            return prev;
+                        },[]);
+
+                        if(filterValues.length > 0){
+                            newFilterArr.push({ 
+                                filterId : key,
+                                filterTypeCode : filterValues[0]['filterTypeCode'],
+                                facetSourceCode : filterValues[0]['facetSourceCode'],
+                                filterName : filterValues[0]['filterName'],
+                                filterOrderNo : filterValues[0]['filterOrderNo'],
+                                data : filterValues, 
+                            });
+                        }
+                    }                       
+                    
+                    newFilterArr.sort(function(a, b) { 
+                        return parseInt(a.filterOrderNo) < parseInt(b.filterOrderNo) ? -1 : parseInt(a.filterOrderNo) > parseInt(b.filterOrderNo) ? 1 : 0;
+                    });
+
+                    savedFilterArr = newFilterArr;
+                    _self.updateFilter(newFilterArr);
+
+
+
+                }).fail(function(d){
+                    alert(d.status + '\n' + d.statusText);
+                });
+            },
+
+
+            // 필터 관련 처리
+
+            filterBindEvents: function() {
+                var _self = this;
+                
+                // 필터안 슬라이더 이벤트 처리 (가격, 사이즈,..)
+                $('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged',function (e, data) {
+                    $(e.currentTarget).siblings('.min').text(vcui.number.addComma(data.minValue));
+                    $(e.currentTarget).siblings('.max').text(vcui.number.addComma(data.maxValue));
+                    if(e.type=='rangesliderchanged'){
+                        var filterId = $(e.currentTarget).data('filterId');
+                        _self.setSliderData(filterId, data);
+                    }
+                }).vcRangeSlider({mode:true});
+
+                // 아코디언 설정
+                $('.ui_order_accordion').vcAccordion();
+                $('.ui_filter_accordion').vcAccordion();
+
+                // 필터 아코디언 오픈시 슬라이더 업데이트
+                $('.ui_filter_accordion').on('accordionexpand', function(e,data){
+                    if(data.content.find('.ui_filter_slider').length > 0) {
+                        data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
+                    }   
+                });
+
+                // 필터안 체크박스 이벤트 처리
+                $('.ui_filter_accordion').on('change', 'input', function(e){
+                    var name = e.target.name;
+                    var valueStr = "";
+                    $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
+                        valueStr = valueStr + item.value+','
+                    });
+                    valueStr = valueStr.replace(/,$/,'');                    
+                    if(valueStr==''){
+                        delete storageFilters[name];
+                        //lgkorUI.removeStorage(storageName, name);
+                    }else{
+                        storageFilters[name] = valueStr;
+                        //lgkorUI.setStorage(storageName, storageFilters);
+                    }
+                    _self.setApplyFilter(storageFilters);
+                });
+
+                // 모바일 필터박스 열기
+                $('#filterModalLink').on('click', function(e){
+                    e.preventDefault();
+                    $('.lay-filter').addClass('open');
+                });
+
+                // 모바일 필터박스 닫기
+                $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
+                    e.preventDefault();
+                    $('.lay-filter').removeClass('open');
+                });
+
+                // 모바일 필터박스 확인
+                $('.lay-filter').find('div.filter-btn-wrap button.ui_confirm_btn').on('click', function(e){
+                    e.preventDefault();
+                    $('.lay-filter').removeClass('open');
+                    console.log('확인',storageFilters);
+                    //_self.requstData(storageFilters);
+                });
+
+                // 초기화버튼 이벤트 처리
+                $('#filterResetBtn').on('click', function(){
+                    _self.reset();
+                });
+
+                $('.ui_reset_btn').on('click', function(){
+                    _self.reset();
+                });
+            },
+
+            // 필터 리셋후 데이터를 호출함.
+            reset:function() {
+                console.log('reset',savedFilterArr);
+                var _self = this;
+                for(var key in storageFilters) {	                        
+                    var $parent = $('[data-id="'+ key +'"]');
+                    $parent.find('input[name="'+key+'"]').prop('checked', false);                    
+                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                       $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', 'Min,Max');
+                    }
+                }
+
+                storageFilters = {};
+                // 데이터를 호출함. 
+                //_self.requestData(storageFilters);
+                /*
+                var obj = lgkorUI.getStorage(storageName);	
+                for(var key in obj){	                        
+                    var $parent = $('[data-id="'+ key +'"]');
+                    $parent.find('input[name="'+key+'"]').prop('checked', false);                    
+                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                       $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', 'Min,Max');
+                    }
+                }
+                var rObj = vcui.extend({}, storageFilters);
+                storageFilters = {'subCategoryId':rObj['subCategoryId']};
+                lgkorUI.removeStorage(storageName);   
+                lgkorUI.setStorage(storageName, storageFilters);
+                requestData(storageFilters);
+                */
+            },
+
+            // 슬라이더 값을 스토리지에 저장함.
+            setSliderData:function(id, data) {
+                var _self = this;
+                var inputStr = ''
+                for(var key in data) inputStr += data[key]+',';
+                inputStr = inputStr.replace(/,$/,'');
+                storageFilters[id] = inputStr;
+                //lgkorUI.setStorage(storageName, storageFilters);
+                _self.setApplyFilter(storageFilters);
+            },
+
+            // **필터에 상태를 설정후 데이터를 호출함 (슬라이더,체크박스를 저장된 값으로 설정).
+            // setApplyFilter(obj, true) => 설정만 실행
+            setApplyFilter:function(obj, noRequest) {
+                var _self = this;
+                
+                for(var key in obj){		
+                    var $parent = $('[data-id="'+ key +'"]');
+                    var values = obj[key].split(',');
+                    for(var i=0; i<values.length; i++){
+                        $parent.find('input[id="'+ values[i] +'"]').prop('checked', true);
+                    }
+                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
+                        $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', obj[key]);
+                    }
+                    if(key == 'subCategoryId'){
+
+                        $('input[name="categoryCheckbox"]').each(function(idx, item){
+                            var fArr = vcui.array.filter(values, function(target){
+                                return target == item.value;
+                            });
+                            $(item).prop('checked', fArr.length > 0? true:false);
+                        });
+                                               
+                        var len = $('input[name="categoryCheckbox"]:checked').length/2;
+                        $('#categoryCnt').text(len + '개 선택'); 
+                    }	
+                }
+                console.log(obj);
+                // 데이터를 호출함. 
+                //if(!noRequest) _self.requestData(obj);
+            },
+
+            // 필터의 비활성 및 선택 갯수를 업데이트
+            updateFilter:function(arr) {
+
+                for(var i=0; i<arr.length; i++){
+                    var item = arr[i];
+                    var itemArr = item.data;
+                    var $parent = $('[data-id="'+ item['filterId'] +'"]');
+
+                    for(var j=0; j<itemArr.length; j++){
+                        $parent.find('input[value="'+ itemArr[j]['filterValueId']+'"]').prop('disabled', itemArr[j]['enable']=='N');
+                    }
+
+                    var len = $parent.find('input:checked').length;
+                    $parent.find('.sel_num').html('<span class="blind">총 선택 갯수</span> ('+ len +')</span>');
+
+                }
             }
         }
         search.init();
