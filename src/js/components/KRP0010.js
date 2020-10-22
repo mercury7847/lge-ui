@@ -69,7 +69,7 @@ $(window).ready(function(){
                     }
                 });
                 
-                pinchZoom.update(true);
+                //pinchZoom.update(true);
             });
             
             this.bindEvents();

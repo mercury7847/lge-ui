@@ -23,7 +23,7 @@
                 <div class="tabs-wrap btn-type ui_tab left">
                     <ul class="tabs">
                         <li class="on" data-label="전체"><a href="#all">전체(210)<em class="blind">선택됨</em></a></li>
-                        <li data-label="제품"><a href="#product">제품(59)</a></li>
+                        <li data-label="제품"><a href="#product" data-url-search="/lg5-common/data-ajax/search/search_product.json">제품(59)</a></li>
                         <li data-label="케어솔루션"><a href="#care">케어솔루션(2)</a></li>
                         <li data-label="이벤트"><a href="#event">이벤트(5)</a></li>
                         <li data-label="스토리"><a href="#story">스토리(18)</a></li>
@@ -524,11 +524,11 @@
                             @@include('./common/modules/list-sorting.html', {
                                 "soldout" : true,
                                 "select" : [
-                                    { "option" : "정확도순" },
-                                    { "option" : "인기순" },
-                                    { "option" : "최신순" },
-                                    { "option" : "가격 높은순" },
-                                    { "option" : "가격 낮은순" }
+                                    { "default" : "value='sort1'", "option" : "정확도순" },
+                                    { "default" : "value='sort2'", "option" : "인기순" },
+                                    { "default" : "value='sort3'", "option" : "최신순" },
+                                    { "default" : "value='sort4'", "option" : "가격 높은순" },
+                                    { "default" : "value='sort5'", "option" : "가격 낮은순" }
                                 ]
                             })
                             <div class="result-list-wrap">

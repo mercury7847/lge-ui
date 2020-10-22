@@ -20,13 +20,36 @@
     }
 }
 
-.full-card-lists {
+.order-items {
     > li {
         &:not(:nth-child(1)) {
             margin-top: 12px;
         }
     }
+    &.order-complete {
+        @include clearfix;
+        > li {
+            float: left;
+            @include calc(width,50%,4px);
+            &:not(:nth-child(1)) {
+                margin-top: 0;
+            }
+            &:nth-child(even) {
+                margin-left: 8px;
+            }
+        }
+    }
+    .number-subscribe {
+        margin-bottom: 16px;
+        font-weight: 700;
+        @include font-medium;
+        .number {
+            margin-left: 8px;
+            color: #ec455a;
+        }
+    }
     .item {
+        position: relative;
         display: table;
         width: 100%;
         padding: 32px;
@@ -63,6 +86,36 @@
             @include font-small;
             color: #616161;
         }
+        .item-options {
+            font-size:0;
+            margin-top:16px;
+            @include mobile {
+                margin-top:24px;
+            }
+            p {
+                display:inline;
+                color:#616161;
+                font-size:14px;
+                line-height:20px;
+                word-break:keep-all;
+                @include mobile {
+                    font-size:12px;
+                    line-height:16px;
+                }
+                &::before {
+                    content:' ';
+                    display:inline-block;
+                    width:1px;
+                    height:12px;
+                    margin:0 8px;
+                    background:#616161;
+                    vertical-align:-1px;
+                }
+                &:first-child::before {
+                    display:none;
+                }
+            }
+        }
     }
     .product-price {
         display: table-cell;
@@ -77,8 +130,41 @@
             color: #f04e3e;
         }
     }
+    .message-box {
+        height: 72px;
+        margin: 32px -32px -32px -112px;
+        padding: 16px 32px;
+        border-radius: 0 0 8px 8px;
+        background-color: #f4f4f4;
+        @include font-small;
+        .text-box {
+            overflow: hidden;
+            height: 40px;
+            span {
+                display: inline-block;
+            }
+            &:after {
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+                content: '';
+            }
+        }
+    }
 
     @include mobile {
+        &.order-complete {
+            > li {
+                float: none;
+                width: 100%;
+                &:not(:nth-child(1)) {
+                    margin-top: 40px;
+                }
+                &:nth-child(even) {
+                    margin-left: 0;
+                }
+            }
+        }
         .item {
             position: relative;
             display: block;
@@ -104,6 +190,18 @@
         }
         .product-price {
             display: block;
+        }
+        .message-box {
+            height: auto;
+            margin: 40px -20px -28px;
+            padding: 24px 20px;
+            .text-box {
+                overflow: visible;
+                height: auto;
+                &:after {
+                    display: none;
+                }
+            }
         }
     }
 }

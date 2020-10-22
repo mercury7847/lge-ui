@@ -42,7 +42,7 @@ vcui.define('ui/toast', ['jquery', 'vcui'], function ($, core) {
 
             $(window).on('toastshow', function(e, msg){
                 self.show(msg);
-            })
+            });
         },
 
         show: function(msg){

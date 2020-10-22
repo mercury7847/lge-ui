@@ -30,7 +30,7 @@
         '                               {{#each item in siblingColors}}'+
         '                                   <div class="slide-conts ui_carousel_slide">'+
         '                                       <div role="radio" class="chk-wrap-colorchip {{item.siblingValue}}" title="{{item.siblingValue}}">'+
-        '                                           <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="color-{{modelId}}" {{#if selectColorID==item.siblingCode}}checked{{/if}}>'+
+        '                                           <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="color-{{modelId}}" value="{{item.siblingCode}}" data-sibling-type="siblingColors" {{#if selectColorID==item.siblingCode}}checked{{/if}}>'+
         '                                           <label for="{{item.siblingCode}}-{{modelId}}"><span class="blind">{{item.siblingValue}}</span></label>'+
         '                                       </div>'+
         '                                   </div>'+
@@ -51,7 +51,7 @@
         '                       {{#each item in siblingFee}}'+
         '                           <li>'+
         '                               <span class="rdo-wrap">'+
-        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="fee-{{modelId}}" {{#if selectFeeID==item.siblingCode}}checked{{/if}}>'+
+        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="fee-{{modelId}}" value="{{item.siblingCode}}" data-sibling-type="siblingFee" {{#if selectFeeID==item.siblingCode}}checked{{/if}}>'+
         '                                   <label for="{{item.siblingCode}}-{{modelId}}">{{item.siblingValue}}</label>'+
         '                               </span>'+
         '                           </li>'+
@@ -66,7 +66,7 @@
         '                       {{#each item in siblingUsePeriod}}'+
         '                           <li>'+
         '                              <span class="rdo-wrap">'+
-        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="period-{{modelId}}" {{#if selectUserPeriodID==item.siblingCode}}checked{{/if}}>'+
+        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="period-{{modelId}}" value="{{item.siblingCode}}" data-sibling-type="siblingUsePeriod" {{#if selectUserPeriodID==item.siblingCode}}checked{{/if}}>'+
         '                                   <label for="{{item.siblingCode}}-{{modelId}}">{{item.siblingValue}}</label>'+
         '                               </span>'+
         '                           </li>'+     
@@ -81,7 +81,7 @@
         '                       {{#each item in siblingVisitCycle}}'+
         '                           <li>'+
         '                               <span class="rdo-wrap">'+
-        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="visit-{{modelId}}" {{#if selectVisitCycleID==item.siblingCode}}checked{{/if}}>'+
+        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="visit-{{modelId}}" value="{{item.siblingCode}}" data-sibling-type="siblingVisitCycle" {{#if selectVisitCycleID==item.siblingCode}}checked{{/if}}>'+
         '                                   <label for="{{item.siblingCode}}-{{modelId}}">{{item.siblingValue}}</label>'+
         '                               </span>'+
         '                           </li>'+     
@@ -161,7 +161,7 @@
     var $putItemContainer;
 
     function init(){
-        vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky'], function () {
+        vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky', 'ui/modal'], function () {
             setting();
             eventBind();
 
@@ -234,19 +234,17 @@
         });
 
         $sortSelector.on('change', function(e){
-            changeSortType();
+            loadCareProdList(true);
         });
 
         $prodListContainer.on('click', '> ul.inner > li.item .prd-add .btn-add', function(e){
             e.preventDefault();
             
-            var idx = $(this).parents('.prd-care-vertical').data('index')-1;
-            addPutItem(idx);
+            addPutItem(this);
         }).on('change', '> ul.inner > li.item .info-wrap input[type=radio]', function(e){
             e.preventDefault();
-            
-            var idx = $(this).parents('.prd-care-vertical').data('index')-1;
-            console.log(idx);
+
+            changeItemOptions(this);
         });
 
         $putItemContainer.on('click', 'button.btn-del', function(e){
@@ -270,7 +268,7 @@
             var contheight = $caresolutionContainer.outerHeight(true);
             var bottomy = -scrolltop + contop + contheight;
             
-            if(bottomy < winheight){
+            if(bottomy + 100 < winheight){
                 setNextProdList();
             }
         });
@@ -300,11 +298,15 @@
 
     function loadCareProdList(isLoading){
         if(isLoading) lgkorUI.showLoading();
-
-        var tabID = getTabID();
-        var cateID = getCategoryID();
+        
         var serviceName = getServiceName();
-        lgkorUI.requestAjaxData(_prodListUrl, {tabID: tabID, categoryID: cateID}, function(result){
+        var requestData = {
+            tabID: getTabID(),
+            categoryID: getCategoryID(),
+            sortID: getSortID()
+        }
+        console.log("requestData : ", requestData)
+        lgkorUI.requestAjaxData(_prodListUrl, requestData, function(result){
 
             _currentItemList = vcui.array.map(result.data.productList, function(item, idx){
                 item['index'] = idx+1;
@@ -326,9 +328,22 @@
         });
 
         if(!_isStorageChk){
+            _isStorageChk = true;
+
             setPutItems();
             setPutItemStatus();
         }
+    }
+
+    function changeItemOptions(item){
+        var idx = $(item).parents('.prd-care-vertical').data('index')-1;
+        var optgroup = $(item).closest('.opt-info');
+        optgroup.children().each(function(idx, item){
+            var selectItem = $(item).find('input[type=radio]:checked');
+            var selectValue = selectItem.val();
+            var siblingType = selectItem.data('siblingType');
+            console.log("selectValue : ", selectValue, "siblingType : ", siblingType);
+        })
     }
 
     function setNextProdList(){
@@ -336,20 +351,20 @@
         if(page < _pageTotal){
             _page = page;
 
-            addProdItemList(true);
+            addProdItemList();
         }
     }
 
-    function addProdItemList(anim){
-        var first = _page;
-        var last = _page + _showItemLength;
+    function addProdItemList(){
+        var first = _page * 8;
+        var last = first + _showItemLength;
         if(last > _currentItemList.length) last = _currentItemList.length;
         for(var i=first;i < last;i++){
             var prodlist = vcui.template(_listItemTemplate, _currentItemList[i]);
             var addItem = $(prodlist).get(0);
             $prodListContainer.find('> ul.inner').append(addItem);
 
-            if(anim) $(addItem).css({y:200, opacity:0}).transition({y:0, opacity:1}, 450, "easeOutQuart");
+            $(addItem).css({y:200, opacity:0}).transition({y:0, opacity:1}, 450, "easeOutQuart");
         }
 
         $('.ui_carousel_slider2').vcCarousel({
@@ -362,7 +377,8 @@
         });
     }
 
-    function addPutItem(idx){        
+    function addPutItem(item){ 
+        var idx = $(item).parents('.prd-care-vertical').data('index')-1;
         var data = {
             itemData: _currentItemList[idx],
             putID : _currentItemList[idx]['modelId'] + "-" + parseInt(Math.random()*999) + "-" + parseInt(Math.random()*99) + "-" + parseInt(Math.random()*9999)
@@ -378,7 +394,7 @@
 
                 $(window).trigger("toastshow", "제품 담기가 완료되었습니다.");
             } else{
-                alert("limit over!!");
+                $('#alert-overclick').vcModal();
                 return false;
             }
         }
@@ -526,14 +542,14 @@
         return cateID;
     }
 
+    function getSortID(){
+        return $sortSelector.val();
+    }
+
     function getServiceName(){
         var currentab = $typeTab.find('.tabs li[class=on]');
 
         return currentab.find('a span').text();
-    }
-
-    function changeSortType(){
-        console.log($sortSelector.val())
     }
 
     document.addEventListener('DOMContentLoaded', function () {

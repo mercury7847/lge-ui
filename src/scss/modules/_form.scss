@@ -531,6 +531,7 @@
         padding:15px 23px;
     }
     textarea {
+        height:160px;
         padding:23px;
     }
     // @include mobile {
@@ -665,6 +666,11 @@
             vertical-align:top;
             background:#fff;
             z-index:5;
+        }
+        @include pc {
+            .btn {
+                padding: 15px 32px;
+            }
         }
         @include mobile {
             display: block;

@@ -17,15 +17,17 @@
                     <div class="subscribe-wrap">
                         <div class="section">
                             <h3 class="sec-tit">주문제품</h3>
-                            @@include('./common/modules/order-product-item.html', {
-                                "list" : [
-                                    {
-                                        "price" : "<span>월 61,900원</span>"
-                                    }, {
-                                        "price" : "<span class='msg'>서비스 불가능 항목</span>"
-                                    }
-                                ]
-                            })
+                            <div class="list-wrap">
+                                <ul class="order-items">
+                                    @@loop('./common/modules/order-product-item.html', [
+                                        {
+                                            "price" : "<span>월 61,900원</span>"
+                                        }, {
+                                            "price" : "<span class='msg'>서비스 불가능 항목</span>"
+                                        }
+                                    ])
+                                </ul>
+                            </div>
                         </div>
                         <div class="section">
                             <div class="input-info">
