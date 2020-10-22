@@ -4,5 +4,19 @@
 @import "../../utilities/mixins";
 
 .support {
-
+    &.suggestions {
+        .search-wrap {
+            max-width:848px;
+            margin:0 auto;
+            padding-bottom:64px;
+            @include mobile {
+                padding:0 20px 32px;
+                background:#fff;
+            }
+        }
+        .result-wrap {
+            max-width:1066px;
+            margin:0 auto;
+        }
+    }
 }

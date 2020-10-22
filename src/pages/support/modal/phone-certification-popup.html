@@ -12,7 +12,6 @@
                     </div>
                     <div class="input-wrap">
                         <input type="text" name="name" id="input-name" placeholder="이름을 입력해주세요." required>
-                        <p class="err-msg">이름을 입력해주세요.</p>
                     </div>
                 </div>
             </div>
@@ -29,11 +28,9 @@
                                     <button type="button" class="btn-text pink">인증번호 발송</button>
                                 </span>
                             </div>
-                            <p class="err-msg">휴대전화 번호를 입력해주세요.</p>
                         </div>
                         <div class="input-wrap">
-                            <input type="number" name="certificationNumber" id="input-certiNumber" placeholder="인증번호를 입력해주세요." readonly required>
-                            <p class="err-msg">인증번호를 입력해주세요.</p>
+                            <input type="number" name="certiNumber" id="input-certiNumber" placeholder="인증번호를 입력해주세요." disabled required>
                         </div>
                     </div>
                 </div>
@@ -50,7 +47,7 @@
     <footer class="pop-footer">
         <div class="btn-group">
             <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-            <button type="submit" class="btn pink"><span>확인</span></button>
+            <button type="button" class="btn pink"><span>확인</span></button>
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>

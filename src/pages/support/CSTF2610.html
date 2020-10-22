@@ -36,7 +36,7 @@
                             </div>
                         </div>
 
-                        <div class="board-survey">
+                        <div class="board-survey" data-ajax="/lg5-common/data-ajax/support/survey.json">
                             <div class="content-wrap">
                                 <div class="title-wrap">
                                     <h3 class="tit">생활의 TIP을 평가해주세요.</h3>
@@ -55,12 +55,12 @@
                                 </div>
                                 <div>
                                     <div class="input-wrap count block">
-                                        <textarea class="ui_textcontrol" placeholder="작성하실 내용을 1,000자 이내로 입력해주세요." maxlength="1000" data-limit="1000" data-count-target="#txt-count1"></textarea>
+                                        <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="작성하실 내용을 1,000자 이내로 입력해주세요." maxlength="1000" data-limit="1000" data-count-target="#txt-count1"></textarea>
                                         <span id="txt-count1" class="total"><em>0</em> / 1000</span>
                                     </div>
                                 </div>
                                 <div class="btn-wrap">
-                                    <button type="button" class="btn bd-gray" id="btnRating"><span>평가</span></button>
+                                    <button type="button" class="btn bd-gray btn-survey"><span>평가</span></button>
                                 </div>
                             </div>
                         </div>
@@ -89,15 +89,15 @@
 
     <!-- 평가 확인 팝업 -->
     @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop1",
+        "popId" : "surveyPop",
         "alertTit" : "생활의 TIP을 평가해주세요.",
         "alertCont" : [
-            { "txt" : "평가해 주신 내용은 더 나은 콘텐츠를 제공해 드리기 위한 자료로 활용합니다." }
         ]
     })
 
     <!-- support script -->
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/productSupport/card.min.js"></script>
 </body>
 </html> 
