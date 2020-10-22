@@ -257,26 +257,35 @@
                 }
             }
             .inner {
+                position: relative;
                 width: 100%;
                 height: 100%;
-                padding: 24px;
+                padding: 24px 24px 52px;
                 border: 1px solid #ddd;
                 border-radius: 8px;
+                @include mobile {
+                    padding: 20px 20px 16px;
+                }
            }
 
-           .m-btn-area {
-               display: none;
+           .btn-area {
+               position: absolute;
+               bottom: 24px;
+               right: 24px;
                @include mobile {
+                   position: static;
                    display: block;
                    margin-top: 20px;
                    text-align: center;
-                   .more-mobile {
-                       font-size: 14px;
-                       line-height: 18px;
-                       text-decoration: underline;
-                       color: #222;
-                   }
                }
+               .more-btn {
+                font-size: 14px;
+                line-height: 20px;
+                color: #222;
+                @include mobile {
+                    text-decoration: underline;
+                }
+                }
            }
        }
        @include mobile {
