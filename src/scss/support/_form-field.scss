@@ -125,16 +125,18 @@
     .field-item {
         float:left;
         width:calc(50% - 4px);
-        & + .field-item {
-            float:right;
-        }
         &.block {
             float:none;
             width:100%;
         }
-        .field-btn-group {
-            text-align: center;
-            margin-top: 32px;
+        & + .field-item {
+            float:right;
+        }
+        > .input-wrap, > .select-wrap {
+            width:100%;
+            & + .input-wrap, & + .select-wrap {
+                margin-top:8px;
+            }
         }
         @include mobile {
             float:none;
@@ -144,6 +146,10 @@
                 margin-top:0;
             }
         }
+    }
+    .btn-wrap {
+        margin-top:32px;
+        text-align:center;
     }
 }
 
