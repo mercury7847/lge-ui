@@ -50,6 +50,7 @@ vcui.define('ui/starRating', ['jquery', 'vcui'], function ($, core) {
 
             self._creatOption();
             self._creatLabel();
+            self._update();
         },
         _creatOption: function _creatOption() {
             var self = this,
@@ -62,16 +63,22 @@ vcui.define('ui/starRating', ['jquery', 'vcui'], function ($, core) {
                         text: item.innerText,
                         title: self.attrTitle
                     });
+                } else {
+                    self.$ratingBox.data({
+                        'defaultValue': item.value,
+                        'defaultText': item.innerText
+                    });
                 }
             });
 
             self.$ratingBox.html(html);
         },
         _creatLabel: function _creatLabel() {
-            var self = this;
+            var self = this,
+                defaultText = self.$ratingBox.data('defaultText');
 
             self.$label = $(self.tmpl('label', {
-                text: '0점'
+                text: defaultText
             }));
             self.$ratingBox.append(self.$label);
         },
@@ -81,29 +88,44 @@ vcui.define('ui/starRating', ['jquery', 'vcui'], function ($, core) {
             self.$ratingBox.on('click', 'a', function(e) {
                 e.preventDefault();
 
-                self.update($(this).index());
+                self.selectedIndex($(this).index() + 1);
             });
         },
         _update: function _update() {
             var self = this,
-                index = self.el.selectedIndex - 1,
-                text = index < 0 ? '' : self.$ratingBox.find('a').eq(index).data('text');
+                index = self.el.selectedIndex,
+                text = index <= 0 ? self.$ratingBox.data('defaultText') : self.$ratingBox.find('a').eq(index - 1).data('text');
 
             self.$ratingBox.find('a').removeClass('on');
             self.$label.text(text);
 
-            index >= 0 && self.$ratingBox.find('a').slice(0, index + 1).addClass('on');
+            index > 0 && self.$ratingBox.find('a').slice(0, index).addClass('on');
         },
-        update: function update(index) {
+        selectedIndex: function update(index) {
             var self = this;
 
-            self.el.selectedIndex = typeof index === 'undefined' ? 0 : index + 1;
-            self._update();
+            if (arguments.length === 0) {
+                return self.el.selectedIndex;
+            } else {
+                if (self.el.options.length - 1 >= index) {
+                    self.el.selectedIndex = index;
+                    self._update();
+                }
+            }
         },
-        value: function value() {
+        value: function value(value) {
             var self = this;
 
-            return self.el.options[self.el.selectedIndex].value;
+            if (arguments.length === 0) {
+                return self.el.value;
+            } else {
+                core.each(core.toArray(self.el.options), function(item, i) {
+                    if (item.value == value) {
+                        self.selectedIndex(i);
+                        return false;
+                    } 
+                });
+            }
         }
     });
 
