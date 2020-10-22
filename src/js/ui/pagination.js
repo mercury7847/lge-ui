@@ -78,15 +78,19 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
 
             if(leftPage) {
                 self.$el.find("a.prev").attr("href","#"+(startPage-1));
-                self.$el.find("a.prev").show();
+                //self.$el.find("a.prev").show();
+                self.$el.find("a.prev").removeClass('disabled');
             } else {
-                self.$el.find("a.prev").hide();
+                //self.$el.find("a.prev").hide();
+                self.$el.find("a.prev").addClass('disabled');
             }
             if(rightPage) {
                 self.$el.find("a.next").attr("href","#"+(endPage+1));
-                self.$el.find("a.next").show();
+                //self.$el.find("a.next").show();
+                self.$el.find("a.next").removeClass('disabled');
             } else {
-                self.$el.find("a.next").hide();
+                //self.$el.find("a.next").hide();
+                self.$el.find("a.next").addClass('disabled');
             }
 
             var pageHtml = "";
@@ -108,6 +112,7 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             self.$el.on("click","a",function(e) {
                 e.preventDefault();
+                if($(e.currentTarget).hasClass('disabled')) return;
                 let value = $(e.currentTarget).attr('href').replace("#", "");
                 self.triggerHandler("page_click", value);
                 /*

@@ -142,6 +142,7 @@
     var minLength = 1;
     var searchDelay = 2000;
     var searchTimer = null;
+    var selectedTab = "";
     var searchedValue = "";
     var storageFilters = {};
     var savedFilterArr = [];
@@ -199,11 +200,18 @@
                 self.$searchResultText.hide();
                 self.$searchInputText.hide();
 
+                self.$pagination = self.$contentsSearch.find('div.pagination');
+
+                selectedTab = self.$tab.find('ul.tabs li a').eq(0).attr('href').replace("#", "");
                 
+
+
                 var _self = this;
                 _self.updateRecentSearcheList();
 
-                _self.bindEvents();
+                vcui.require(['ui/pagination'], function () {
+                    _self.bindEvents();
+                });
 
                 vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
                     _self.filterBindEvents();
@@ -212,15 +220,14 @@
 
             bindEvents: function() {
                 var _self = this;
-
+                
                 //탭 클릭
                 var searchItemTarget = 'ul.tabs li a';
                 self.$tab.on("click", searchItemTarget, function(e) {
                     clearTimeout(searchTimer);
                     _self.setSearchInputLayerVisible(false);
-                    var searchVal = $(this).attr('href').replace("#", "");
-                    console.log(searchVal);
-                    switch(searchVal) {
+                    selectedTab = $(this).attr('href').replace("#", "");
+                    switch(selectedTab) {
                         case "all":
                             self.$buttonSearch.trigger('click');
                             break;
@@ -230,6 +237,14 @@
                         default:
                             break;
                     }
+                });
+
+                //페이지
+                self.$pagination.vcPagination().on('page_click', function(e, data) {
+                    //기존에 입력된 데이타와 변경된 페이지로 검색
+                    console.log('page',data);
+                    //var param = {'input':params.input, 'type':params.type, 'category':params.category, 'page':data}
+                   // _self.requestData(param);
                 });
 
                 //검색 닫기버튼
@@ -1002,6 +1017,39 @@
                 $('.ui_reset_btn').on('click', function(){
                     _self.reset();
                 });
+
+                //품절상품 확인
+                $('div.check-soldout span.chk-wrap').on('change', 'input[type="checkbox"]', function(e){
+                    e.preventDefault();
+                    //var includeSoldOut = $(this).is(':checked');
+                    //console.log(selectedTab, $(this).is(':checked'));
+                    _self.setApplyFilter(storageFilters);
+                    /*
+                    switch(selectedTab) {
+                        case "product":
+                            //_self.requestSearchProduct(searchedValue);
+                            break;
+                        default:
+                            break;
+                    }
+                    */
+                });
+
+                // 필터의 정렬 선택시 리스트의 정렬값도 선택하게 함
+                $('input[name="sorting"]').on('change', function(e){
+                    e.preventDefault();
+                    var idx = $('#'+selectedTab).find('input[name="sorting"]').index(this);
+                    var $target = $('#'+selectedTab).find('div.list-sorting').find('.ui_selectbox');
+                    $target.vcSelectbox('selectedIndex', idx, false);
+                    _self.setApplyFilter(storageFilters);
+                });
+
+                //리스트 정렬 선택시 필터의 정렬 값도 선택하게함
+                $('div.list-sorting').find('.ui_selectbox').on('change', function(e,data){
+                    var value = e.target.value;
+                    $('#'+selectedTab).find('input[name="sorting"][value="'+ value +'"]').prop('checked', true);
+                    _self.setApplyFilter(storageFilters);
+                });
             },
 
             // 필터 리셋후 데이터를 호출함.
@@ -1009,7 +1057,7 @@
                 console.log('reset',savedFilterArr);
                 var _self = this;
                 for(var key in storageFilters) {	                        
-                    var $parent = $('[data-id="'+ key +'"]');
+                    var $parent = $('#'+selectedTab).find('[data-id="'+ key +'"]');
                     $parent.find('input[name="'+key+'"]').prop('checked', false);                    
                     if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
                        $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', 'Min,Max');
@@ -1053,7 +1101,7 @@
                 var _self = this;
                 
                 for(var key in obj){		
-                    var $parent = $('[data-id="'+ key +'"]');
+                    var $parent = $('#'+selectedTab).find('[data-id="'+ key +'"]');
                     var values = obj[key].split(',');
                     for(var i=0; i<values.length; i++){
                         $parent.find('input[id="'+ values[i] +'"]').prop('checked', true);
@@ -1063,18 +1111,18 @@
                     }
                     if(key == 'subCategoryId'){
 
-                        $('input[name="categoryCheckbox"]').each(function(idx, item){
+                        $('#'+selectedTab).find('input[name="categoryCheckbox"]').each(function(idx, item){
                             var fArr = vcui.array.filter(values, function(target){
                                 return target == item.value;
                             });
                             $(item).prop('checked', fArr.length > 0? true:false);
                         });
                                                
-                        var len = $('input[name="categoryCheckbox"]:checked').length/2;
+                        var len = $('#'+selectedTab).find('input[name="categoryCheckbox"]:checked').length/2;
                         $('#categoryCnt').text(len + '개 선택'); 
                     }	
                 }
-                console.log(obj);
+                console.log(_self.convertPostData(obj));
                 // 데이터를 호출함. 
                 //if(!noRequest) _self.requestData(obj);
             },
@@ -1085,7 +1133,7 @@
                 for(var i=0; i<arr.length; i++){
                     var item = arr[i];
                     var itemArr = item.data;
-                    var $parent = $('[data-id="'+ item['filterId'] +'"]');
+                    var $parent = $('#'+selectedTab).find('[data-id="'+ item['filterId'] +'"]');
 
                     for(var j=0; j<itemArr.length; j++){
                         $parent.find('input[value="'+ itemArr[j]['filterValueId']+'"]').prop('disabled', itemArr[j]['enable']=='N');
@@ -1095,6 +1143,78 @@
                     $parent.find('.sel_num').html('<span class="blind">총 선택 갯수</span> ('+ len +')</span>');
 
                 }
+            },
+
+            // 슬라이더(가격,사이즈)정보를 filterValueId 로 변경합.
+            getSlideFilterValueId:function(arr, value, isMin) {
+                var returnStr='';
+                var num = parseInt(value);
+                for(var i=0; i<arr.length; i++){
+                    var value1 = parseInt(arr[i]['filterValueName']);
+                    var value2 = parseInt(arr[i+1] && arr[i+1]['filterValueName']);
+                    if(value1 <= num && value2 >= num ){
+                        if(isMin){
+                            if(value1==num){
+                                returnStr = arr[i]['filterValueId'];
+                            }else{
+                                returnStr = arr[i+1]['filterValueId'];
+                            }                            
+                        }else{
+                            if(value2==num){
+                                returnStr = arr[i+1]['filterValueId'];
+                            }else{
+                                returnStr = arr[i]['filterValueId'];
+                            }                            
+                        }
+                        break;
+                    }
+                }
+                return returnStr;
+            },
+
+            // ajax 보내는 데이터를 변경.(가격정보,사이즈정보를 id값으로 변경합.)
+            convertPostData:function(obj) {
+                var _self = this;
+
+                var $target = $('#'+selectedTab).find('div.list-sorting').find('.ui_selectbox');
+                var sortValue = $target.vcSelectbox('selectedOption').value;
+
+                $target = $('#'+selectedTab).find('div.check-soldout span.chk-wrap input[type="checkbox"]');
+                var includeSoldOut = $target.is(':checked');
+                
+                var nObj = vcui.extend({
+                    sort: sortValue,
+                    includeSoldOut: includeSoldOut
+//                    categoryId : categoryId,
+//                    page : currentPage,
+                }, obj);
+
+                for(var key in obj){
+                    var fArr = vcui.array.filter(savedFilterArr, function(item){
+                        return item.filterId == key && item.filterTypeCode=='00';
+                    });                    
+                    if(fArr.length>0){
+                        var filterName = fArr[0]['filterName'].toLowerCase();
+                        if(filterName == 'price' || filterName == 'size'){
+                            var values = fArr[0]['data'];
+                            var sArr = obj[key].split(',');
+                            if(sArr.length>1){
+                                if(vcui.isNumber(parseInt(sArr[0]))){
+                                    nObj[filterName+'Min'] = _self.getSlideFilterValueId(values, sArr[0], true);
+                                }else{
+                                    nObj[filterName+'Min'] = '';
+                                }
+                                if(vcui.isNumber(parseInt(sArr[1]))){
+                                    nObj[filterName+'Max'] = _self.getSlideFilterValueId(values, sArr[1], false);
+                                }else{
+                                    nObj[filterName+'Max'] = '';
+                                }
+                            }
+                            delete nObj[key];
+                        }
+                    }
+                }
+                return nObj;
             }
         }
         search.init();

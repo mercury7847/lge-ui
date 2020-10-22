@@ -524,11 +524,11 @@
                             @@include('./common/modules/list-sorting.html', {
                                 "soldout" : true,
                                 "select" : [
-                                    { "default" : "value='sort1'", "option" : "정확도순" },
-                                    { "default" : "value='sort2'", "option" : "인기순" },
-                                    { "default" : "value='sort3'", "option" : "최신순" },
-                                    { "default" : "value='sort4'", "option" : "가격 높은순" },
-                                    { "default" : "value='sort5'", "option" : "가격 낮은순" }
+                                    { "default" : "value='1'", "option" : "정확도순" },
+                                    { "default" : "value='2'", "option" : "인기순" },
+                                    { "default" : "value='3'", "option" : "최신순" },
+                                    { "default" : "value='4'", "option" : "가격 높은순" },
+                                    { "default" : "value='5'", "option" : "가격 낮은순" }
                                 ]
                             })
                             <div class="result-list-wrap">
@@ -604,9 +604,10 @@
                                         ])
                                     </ul>
                                 </div>
-                                @@include('./common/modules/pagination.html', {
+                                <div class="pagination" data-page="5" data-visible-count="7" data-total-count="33"></div>
+                                <!-- @@include('./common/modules/pagination.html', {
                                     count: 5
-                                })
+                                }) -->
                             </div>
                             <div class="mobile-service-link">
                                 <ul>
