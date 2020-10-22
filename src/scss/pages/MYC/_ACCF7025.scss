@@ -57,3 +57,10 @@
         }
     }
 }
+
+
+.cont-wrap.type3 {
+    @include mobile {
+        padding:0;
+    }
+}
