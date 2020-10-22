@@ -3,6 +3,40 @@ $(document).ready(function() {
 
     $('.KRC0022').buildCommonUI();
 
+    var youtubeTemplate =     
+        '<div class="visual-area video youtube-box">'+
+        '   <a href="#none" role="button" data-src="https://www.youtube.com/embed/{{videoID}}"'+
+        ' class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" aria-describedby="{{ariaDesc}}">plays audio description video</a>'+
+        '   <a href="#none" data-src="https://www.youtube.com/embed/{{videoID}}"'+
+        ' class="see-video" data-type="youtube" data-target="modal" aria-describedby="{{ariaDesc}}">'+
+        '       <img src="{{largeImgURL}}" alt="{{alt}}">'+
+        '   </a>'+
+        '   <p class="hidden">{{videoTitle}}</p>'+
+        '   <div class="caption{{#if videoTitleColor != ""}} videoTitleColor{{/if}}">{{videoTitle}}</div>'+
+        '</div>';
+
+    var aniboxTemplate = 
+         '<div class="visual-area animation-box">'+
+         '   <a href="#none" role="button" data-src="{{aniAccSrc}}" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="{{ariaDesc}}">Plays audio Description Video</a>'+
+         '   <img src="{{largeImgURL}}" alt="{{alt}}">'+
+         '   <p class="hidden">graphic description : </p>'+
+         '   <div class="animation-area">'+
+         '       <video loop{{#if videoAutoplay}} autoplay{{/if}}{{#if videoMuted}} muted{{/if}}>'+
+         '           <source src="{{aniSrc}}" type="video/mp4">'+
+         '       </video>'+
+         '       <div class="controller-wrap wa-btn">'+
+         '           <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" aria-describedby="{{ariaDesc}}">Pause Video</button>'+
+         '       </div>'+
+         '   </div>'+
+         '   <div class="caption{{#if videoTitleColor != ""}} videoTitleColor{{/if}}">{{aniTitle}}</div>'+
+         '</div>';
+
+    var defaultTemplate =
+         '<div class="visual-area">'+
+         '   <img src="{{largeImgURL}}" alt="{{alt}}"/>'+
+         '   <p class="hidden">{{alt}}</p>'+
+         '</div>';
+
     $('.KRC0022').each(function(idx, item){
         $(item).find('.visual-set .visual-thumbnail-set a').on('click', function(e){
             e.preventDefault();
@@ -17,50 +51,54 @@ $(document).ready(function() {
             var appendElement = $(item).find('.visual-set');
             appendElement.find('.visual-area').remove();
     
-            var html = "";
+            var html;
             if($(this).data('type') == 'youtube'){
                 var videoID = $(this).data('video-id');
                 var videoTitle = $(this).data('video-title');
-    
-                html += '<div class="visual-area video youtube-box">';
-                html += '   <a href="#none" role="button" data-src="https://www.youtube.com/embed/';
-                html += videoID + '" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" aria-describedby="' + ariaDesc + '">plays audio description video</a>'
-                html += '   <a href="#none" data-src="https://www.youtube.com/embed/';
-                html += videoID + '" class="see-video" data-type="youtube" data-target="modal" aria-describedby="' + ariaDesc + '">';
-                html += '       <img src="' + largeImgURL + '" alt="' + alt + '">';
-                html += '   </a>';
-                html += '   <p class="hidden">' + videoTitle + '</p>';
-                html += '   <div class="caption">' + videoTitle + '</div>';
-                html += '</div>';
+                var videoTitleColor = $(this).data('titleColor') || "";
+                console.log("videoTitleColor :", videoTitleColor)       
+
+                html = vcui.template(youtubeTemplate, {
+                    videoID: videoID,
+                    videoTitle: videoTitle,
+                    videoTitleColor: videoTitleColor,
+                    largeImgURL: largeImgURL,
+                    ariaDesc: ariaDesc,
+                    alt: alt
+                });
+
                 appendElement.prepend(html);
                 appendElement.find('.visual-area').vcYoutubeBox();
             } else if($(this).data('type') == 'ani-box'){
                 var aniSrc = $(this).data('src');
                 var aniAccSrc = $(this).data('accSrc');
                 var aniTitle = $(this).data('title');
-                console.log(aniSrc, aniAccSrc, aniTitle)
+                var videoTitleColor = $(this).data('titleColor') || "";
+                var videoAutoplay = $(this).data("autoplay");
+                var videoMuted = videoAutoplay;
+                console.log("videoAutoplay :", videoAutoplay, "videoMuted :", videoMuted)
 
-                html += '<div class="visual-area animation-box">';
-                html += '   <a href="#none" role="button" data-src="' + aniAccSrc + '" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>';
-                html += '   <img src="' + largeImgURL + '" alt="">';
-                html += '   <p class="hidden">graphic description : </p>';
-                html += '   <div class="animation-area">';
-                html += '       <video autoplay muted loop>';
-                html += '           <source src="' + aniSrc + '" type="video/mp4">';
-                html += '       </video>';
-                html += '       <div class="controller-wrap wa-btn">';
-                html += '           <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" aria-describedby="title01">Pause Video</button>';
-                html += '       </div>';
-                html += '   </div>';
-                html += '   <div class="caption">' + aniTitle + '</div>';
-                html += '</div>';
+                html = vcui.template(aniboxTemplate, {
+                    aniSrc: aniSrc,
+                    aniAccSrc: aniAccSrc,
+                    aniTitle: aniTitle,
+                    videoTitleColor: videoTitleColor,
+                    largeImgURL: largeImgURL,
+                    videoAutoplay: videoAutoplay,
+                    videoMuted: videoMuted,
+                    ariaDesc: ariaDesc,
+                    alt: alt
+                });
+
                 appendElement.prepend(html);
                 appendElement.find('.visual-area').vcVideoBox();
             } else{
-                html += '<div class="visual-area">'
-                html += '   <img src="' + largeImgURL + '" alt="' + alt + '"/>';
-                html += '   <p class="hidden">' + alt + '</p>';
-                html += '</div>';
+
+                html = vcui.template(defaultTemplate, {
+                    largeImgURL: largeImgURL,
+                    alt: alt
+                });
+                
                 appendElement.prepend(html);
             }      
     
