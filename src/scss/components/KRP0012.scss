@@ -85,6 +85,9 @@
     }
 
     .contents-menu-list {
+        @include mobile {
+            padding:20px 20px;
+        }
         .tab-menu-belt {
             width:640px;
             margin:0 auto;
@@ -101,8 +104,9 @@
             @include mobile {
                 width:100%;
                 max-width:100%;
-                margin-top:20px;
-                padding:0 20px 20px;
+                // margin-top:20px;
+                // padding:0 20px 20px;
+                padding:0;
                 overflow-x:auto;
                 -webkit-overflow-scrolling: touch;
                 white-space:nowrap;
