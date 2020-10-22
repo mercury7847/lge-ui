@@ -33,11 +33,13 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
 
             self.$container = self.$el.closest(self.options.stickyContainer);
             
-            core.util.loadImages(self.$container.find('img[data-src]')).done(function(){
-                self.update();
-                self._bindEvents();
-                console.log('loadImages complete');
-            });           
+            // core.util.loadImages(self.$container.find('img[data-src]')).done(function(){
+            //     self.update();
+            //     self._bindEvents();
+            //     console.log('loadImages complete');
+            // });           
+            self.update();
+            self._bindEvents();
         },
 
 
