@@ -80,6 +80,14 @@
                     {
                         "siblingCode": "MC_G7_RaspberryRose_code",
                         "siblingValue": "MC_G7_RaspberryRose"
+                    },
+                    {
+                        "siblingCode": "citrus_code",
+                        "siblingValue": "citrus"
+                    }, 
+                    {
+                        "siblingCode": "mint_code",
+                        "siblingValue": "mint"
                     }
                 ],
                 "selectFeeID": "납부_code",
