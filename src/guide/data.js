@@ -213,6 +213,7 @@ var res = {
 					"이벤트 개인정보처리방침(리스트)" : ["/html/UTS/COMF2001.html","","진행중"],
 					"이벤트 개인정보처리방침(상세)" : ["/html/UTS/COMF2001_view.html","","진행중"],
 					"이용약관" : ["/html/UTS/COMF2003.html","","진행중"],
+					"이메일 무단수집 거부" : ["/html/UTS/COMF2005.html","","진행중"],
 					"소식지 신청" : ["/html/UTS/COMF2004.html","","진행중"]
 				}
 			}
