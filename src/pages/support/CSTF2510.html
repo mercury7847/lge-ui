@@ -14,7 +14,6 @@
             @@include('./common/support/page-visual.html', {
                 'title': '카드뉴스'
             })
-
             <div class="contents support card">
                 <div class="contents-inner">
 
@@ -30,28 +29,31 @@
                                 </ul>
                             </div>
                             <div class="board-view-body">
-                                
+                                <!-- admin editor 등록 시 id="viewContent" 추가 -->
+                                <div class="view-content">
+
+                                </div>
                             </div>
                         </div>
                         
                         <div class="board-navi">
                             <a href="#" class="navi">
                                 <span class="navi-label">이전글</span>
-                                <h4 class="navi-desc">LG ThinQ 앱이라서 가능한 편리한 일상 - 앱 사용법 편</h4>
+                                <span class="navi-desc">LG ThinQ 앱이라서 가능한 편리한 일상 - 앱 사용법 편</span>
                             </a>
                             <a href="#" class="navi">
                                 <span class="navi-label">다음글</span>
-                                <h4 class="navi-desc">LG ThinQ 앱이라서 가능한 편리한 일상 – 카드뉴스 타이틀 노출 영역 최대 1줄, 초과 시 …처리를 해야하는 부분입…</h4>
+                                <span class="navi-desc">LG ThinQ 앱이라서 가능한 편리한 일상 – 카드뉴스 타이틀 노출 영역 최대 1줄, 초과 시 …처리를 해야하는 부분입…</span>
                             </a>
                         </div>
                     </div>
+
                     <div class="btn-group right">
                         <a href="/html/support/CSTF2500.html" class="btn pink"><span>목록보기</span></a>
                     </div>
 
                 </div>
             </div>
-
         </div>
              
         @@include('./common/footer.html')
