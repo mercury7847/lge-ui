@@ -10,7 +10,8 @@ const gulp = require("gulp"),
         gulpif = require('gulp-if'),
         fileinclude = require('gulp-file-include'),
         git = require('gulp-git'),
-        del = require('del');
+        del = require('del'),
+        terser = require('gulp-terser');
 
 var src = "./src";
 var dist = './dist';
@@ -193,10 +194,11 @@ gulp.task("jsCompile:ui", () => gulp
 );
 gulp.task("jsCompile:mypage", () => gulp
     .src(src + "/js/mypage/**/*")
-    //.pipe(sourcemaps.init())
+    .pipe(sourcemaps.init())
+    .pipe(terser())
     //.pipe(gulpif(["*.js", "!*.min.js"], uglify()))
-    //.pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
-    //.pipe(sourcemaps.write('./maps'))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({suffix: ".min"})))
+    .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/mypage/"))
 );
 gulp.task("jsCompile:cart", () => gulp

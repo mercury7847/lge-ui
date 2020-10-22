@@ -123,14 +123,3 @@
         myMembership.init();                
     });
 })();
-
-
-
-
-    /*
-    "param": {
-        "startDate" : "20200101",
-        "endDate" : "20200910",
-        "purchaseType" : "buy"
-    },
-    */
