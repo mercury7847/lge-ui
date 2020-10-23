@@ -95,6 +95,36 @@ var res = {
 			"KRP0028_Event list" : ["/html/components/KRP0028.html","","검수완료"],
 		},
 		"Page" : {
+			"공통(UTS)" : {
+				"통합검색" : {
+					"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
+					"검색결과 있음" : {
+						"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
+						"제품" : ["/html/UTS/SERF9003.html","","검수완료"],
+						"케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
+						"이벤트" : ["/html/UTS/SERF9005.html","","검수완료"],
+						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
+						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
+						"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
+					},
+					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
+				},
+				"Footer" : {
+					"개인정보취급방침" : ["/html/UTS/COMF2000.html","","진행중"],
+					"이벤트 개인정보처리방침(리스트)" : ["/html/UTS/COMF2001.html","","진행중"],
+					"이벤트 개인정보처리방침(상세)" : ["/html/UTS/COMF2001_view.html","","진행중"],
+					"이용약관" : ["/html/UTS/COMF2003.html","","진행중"],
+					"이메일 무단수집 거부" : ["/html/UTS/COMF2005.html","","진행중"],
+					"소식지 신청" : ["/html/UTS/COMF2004.html","","진행중"]
+				}
+			},
+			"스토리(STC)" : {
+				"모바일 서비스" : {
+					"타사 안드로이드 -> LG 스마트 폰으로" : ["/html/STC/MKT5006.html","","진행중"],
+					"LG 스마트폰 -> LG 스마트 폰으로" : ["/html/STC/MKT5007.html","","진행중"],
+					"iOS -> LG 스마트 폰으로" : ["/html/STC/MKT5008.html","","진행중"]
+				},
+			},
 			"케어솔루션(SLC)" : {
 				"케어솔루션 제품안내" : {
 					"맥주제조기_음주연령확인" : ["/html/SLC/MKTF2004.html","","진행중"]
@@ -193,29 +223,6 @@ var res = {
 				"자동결제 이용 약관 동의 팝업" : ["/html/UTC/RMSF9001_pop7.html","","진행중"],
 				"케어솔루션 청약신청 고객동의 팝업" : ["/html/UTC/RMSF9001_pop8.html","","진행중"],
 				"케어솔루션 주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
-			},
-			"공통(UTS)" : {
-				"통합검색" : {
-					"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
-					"검색결과 있음" : {
-						"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
-						"제품" : ["/html/UTS/SERF9003.html","","검수완료"],
-						"케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
-						"이벤트" : ["/html/UTS/SERF9005.html","","검수완료"],
-						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
-						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
-						"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
-					},
-					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
-				},
-				"Footer" : {
-					"개인정보취급방침" : ["/html/UTS/COMF2000.html","","진행중"],
-					"이벤트 개인정보처리방침(리스트)" : ["/html/UTS/COMF2001.html","","진행중"],
-					"이벤트 개인정보처리방침(상세)" : ["/html/UTS/COMF2001_view.html","","진행중"],
-					"이용약관" : ["/html/UTS/COMF2003.html","","진행중"],
-					"이메일 무단수집 거부" : ["/html/UTS/COMF2005.html","","진행중"],
-					"소식지 신청" : ["/html/UTS/COMF2004.html","","진행중"]
-				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
 			// "페이지2" : ["./html/gr/M.GR-6L.html","","검수요청"],
