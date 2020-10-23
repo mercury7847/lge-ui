@@ -46,7 +46,8 @@
                             'ui/inputClearButton',
                             "ui/starRating",
                             "ui/tooltipTarget",
-                            "ui/toast"
+                            "ui/toast",
+                            "ui/sticky"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
@@ -68,6 +69,8 @@
             this.find('.ui_tooltip-target').vcTooltipTarget();
 
             this.find('.toast-message').vcToast();
+
+            this.find('.ui_sticky').vcSticky();
 
             this.find('.ui_selectbox').vcSelectbox({
                 events:{
@@ -218,7 +221,8 @@
                 'ui/inputClearButton',
                 "ui/starRating",
                 "ui/tooltipTarget",
-                "ui/toast"
+                "ui/toast",
+                "ui/sticky"
             ], function (ResponsiveImage, BreakpointDispatcher) {
                 
                 new BreakpointDispatcher({
@@ -341,7 +345,7 @@
     
                 }).on('modalshown', function (e) {
                     // 모달이 뜰때 모달내부에 있는 공통 컴포넌트 빌드
-                    //$(e.target).buildCommonUI();
+                    $(e.target).buildCommonUI();
                     self._resetFlexibleBox();
                 });
                 //////////////////////////////////////////////////////////////////////
