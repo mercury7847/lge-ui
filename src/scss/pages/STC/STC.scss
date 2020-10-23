@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+// 모바일 스위치
+.contents.switch-wrap {
+    @import "MKT5006";
+}

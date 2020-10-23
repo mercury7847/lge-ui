@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTS/UTS"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageArr" : [
+                    { "page" : "모바일 스위치란?", "on" : "on" },
+                    { "page" : "데이터 이동 가이드", "on" : "" }
+                ]
+            })
+
+            <div class="contents term-wrap">
+                <div class="cont-wrap">
+                    
+                </div>
+            </div>
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>
