@@ -30,8 +30,10 @@ $(document).ready(function() {
 				var $thisIndex = $this.index();
 				$this.siblings().removeClass('active').attr('aria-selected', false); //PJTWAUS-1 :  20191223 modify
 				$this.addClass('active').attr('aria-selected', true); //PJTWAUS-1 : 20191223 modify
-				$(this).parents('.icon-area').next().find('.group').removeClass('active');
-				$(this).parents('.icon-area').next().find('.group').eq($thisIndex).addClass('active');
+				//$(this).parents('.icon-area').next().find('.group').removeClass('active');
+				//$(this).parents('.icon-area').next().find('.group').eq($thisIndex).addClass('active');
+				$(this).parents('.icon-area').siblings('.text-area').find('.group.active').removeClass('active');
+				$(this).parents('.icon-area').siblings('.text-area').find('.group').eq($thisIndex).addClass('active');
 				$(this).parents('.KRC0030').attr('data-index',$thisIndex);
 				return false;
 			});
