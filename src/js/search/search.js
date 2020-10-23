@@ -1193,10 +1193,10 @@
                 var keys = Object.keys(obj);
                 if(keys.length > 0) {
                     $('#filterModalLink').parent().addClass('applied');
-                    $('#filterModalLink span').text('옵션필터');
+                    $('#filterModalLink span').text('옵션 적용됨');
                 } else {
                     $('#filterModalLink').parent().removeClass('applied');
-                    $('#filterModalLink span').text('옵션 적용됨');
+                    $('#filterModalLink span').text('옵션필터');
                 }
                 // 데이터를 호출함. 
                 if(!noRequest) _self.requestSearchProduct(searchedValue);
