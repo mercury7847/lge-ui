@@ -146,6 +146,21 @@
                     }
                 ]
             });
+            this.find('.ui_carousel_1_slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 1,
+                slidesToShow: 1,
+                // responsive: [
+                //     {
+                //         breakpoint: 768,
+                //         settings: {
+                //             variableWidth: true,
+                //             centerMode: true
+                //         }
+                //     }
+                // ]
+            });
         }.bind(this));
         return this;
     };

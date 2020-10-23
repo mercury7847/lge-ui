@@ -845,6 +845,17 @@
             max-width:1066px;
             margin:0 auto;
         } 
+        @include mobile {
+            .board-view {
+                padding-top: 52px;
+                overflow: hidden;
+                .sns-list {
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                }
+            }
+        }
     }
     /* 제품 지원 페이지 */
     &.psp {

@@ -142,7 +142,7 @@
                                 <div class="cont">    
                                     <p class="tit">드라이버/소프트웨어는 LG Update Center를 통해 편리하게 설치해 보세요.</p>
                                 </div>
-                                <a href="https://www.lgservice.co.kr/simple/selectSimpleSearchDetail.do?gubun=FAQ&type=keyword&seq=27830&itemId=9438" class="btn pink"><span>자세히 보기</span></a>
+                                <button type="button" class="btn pink" data-href="#softNdriver" data-control="modal"><span>자세히 보기</span></button>
                             </div>
                         </div>
                         <!-- // 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
@@ -169,6 +169,9 @@
 
     <!-- 컨텐츠 만족도 조사 팝업 -->
     @@include('./support/modal/survey-popup.html')
+
+    <!-- 설치 전 주의사항 및 사용법 팝업 -->
+    @@include('./support/modal/softNdriver-popup.html')
 
     <!-- support script -->
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
