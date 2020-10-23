@@ -351,6 +351,32 @@
     }
 
     // 3 on pc type carousel 
+    &.carousel-1 {
+        margin: 0 -5px;
+        .indi-wrap {
+            position: static;
+            margin-top: 24px;
+        }
+        .slide-controls {
+            .btn-arrow {
+                &.prev {
+                    left: 0;
+                    transform: translateX(-50%);
+                }
+                &.next {
+                    right: 0;
+                    transform: translateX(50%);
+                }
+            }
+        }
+        @include mobile {
+            .slide-conts {
+                margin: 0 5px;
+            }
+        }
+    }
+
+    // 3 on pc type carousel 
     &.carousel-3 {
         max-width: (1284px + 12px);
         .indi-wrap {
