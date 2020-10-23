@@ -3,9 +3,253 @@
     "message":null,
     "param":{
         "searchedValue":"매직스페이스",
-        "searchedInput":"메직"
+        "pagination":{
+            "page":"12",
+            "visibleCount":"7",
+            "totalCount":"23"
+        }
     },
     "data":{
+        "count":"123",
+        "data":[
+            {
+                "itemType":"1",
+                "url":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85Q1",
+                "price":"4421000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"가전",
+                        "class":"hashtag"
+                    },
+                    {
+                        "tag":"여름가전",
+                        "class":"hashtag"
+                    }
+                ],
+                "isReview":true,
+                "rating":"40",
+                "review":"34"
+            },
+            {
+                "itemType":"1",
+                "url":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85Q1",
+                "price":"4421000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"가전",
+                        "class":"hashtag"
+                    },
+                    {
+                        "tag":"여름가전",
+                        "class":"hashtag"
+                    }
+                ],
+                "isReview":false,
+                "rating":"40",
+                "review":"34"
+            },
+            {
+                "itemType":"1",
+                "url":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85Q1",
+                "price":"4421000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"가전",
+                        "class":"hashtag"
+                    },
+                    {
+                        "tag":"여름가전",
+                        "class":"hashtag"
+                    }
+                ],
+                "isReview":true,
+                "rating":"40",
+                "review":"34"
+            },
+            {
+                "itemType":"1",
+                "url":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85Q1",
+                "price":"4421000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"가전",
+                        "class":"hashtag"
+                    },
+                    {
+                        "tag":"여름가전",
+                        "class":"hashtag"
+                    }
+                ],
+                "isReview":false,
+                "rating":"40",
+                "review":"34"
+            },
+            {
+                "itemType":"1",
+                "url":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85Q1",
+                "price":"4421000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"가전",
+                        "class":"hashtag"
+                    },
+                    {
+                        "tag":"여름가전",
+                        "class":"hashtag"
+                    }
+                ],
+                "isReview":true,
+                "rating":"40",
+                "review":"34"
+            },
+            {
+                "itemType":"1",
+                "url":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85Q1",
+                "price":"4424000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"가전",
+                        "class":"hashtag"
+                    },
+                    {
+                        "tag":"여름가전",
+                        "class":"hashtag"
+                    }
+                ],
+                "isReview":true,
+                "rating":"40",
+                "review":"34"
+            },
+            {
+                "itemType":"2",
+                "url":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product-banner-lg.jpg",
+                "image_alt":"새출발을 위한 혼수 지원, 2021 올 뉴 웨딩 페스타",
+                "title":"새출발을 위한 혼수 지원, 2021 올 뉴 웨딩 페스타",
+                "subTitle":"2020 올 뉴 웨딩 페스타 행사 모델 동시 구매 시, 최대 200만원 상당 혜택!",
+                "buttonTitle":"자세히 보기"
+            },
+            {
+                "itemType":"1",
+                "url":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85Q1",
+                "price":"4425000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"가전",
+                        "class":"hashtag"
+                    },
+                    {
+                        "tag":"여름가전",
+                        "class":"hashtag"
+                    }
+                ],
+                "isReview":true,
+                "rating":"40",
+                "review":"34"
+            }
+        ],
+        "recommend":[
+            {
+                "url":"#",
+                "image_url":"/lg5-common/images/dummy/@img-stroy.png",
+                "image_alt":"정말로 원하는게 무엇인지 알고 싶나요?",
+                "title":"정말로 원하는게 무엇인지 알고 싶나요?",
+                "subTitle":"원하시는 기능과 선호/취향을 반영한 최고의 제품을 찾아드립니다.",
+                "buttonTitle":"제품 큐레이션"
+            },
+            {
+                "url":"#",
+                "image_url":"/lg5-common/images/dummy/@img-stroy.png",
+                "image_alt":"라이프스타일에 맞는 제품은 무엇일까요?",
+                "title":"라이프스타일에 맞는 제품은 무엇일까요?",
+                "subTitle":"나의 라이프스타일에 맞는 제품을 추천드립니다.",
+                "buttonTitle":"라이프스타일 컨설팅"
+            }
+        ]
     },
     "filterList": [{
         "filterId": "FT05034285",

@@ -27,6 +27,14 @@
         '<div class="hashtag-wrap">{{#each item in hash}}<span class="{{item.class}}">#{{item.tag}} </span>{{/each}}</div>' +
         // '<div class="hashtag-wrap">{{#each item in hash}}<span class="hashtag">#{{item}} </span>{{/each}}</div>' +
         '</div></div></li>';
+    
+    var productBannerTemplate = '<li class="item-banner large"><div class="item result-item">' +
+        '<div class="product-image" aria-hidden="true"><a href="{{url}}"><img src="{{image_url}}" alt="{{image_alt}}"></a></div>' +
+        '<div class="banner-contents"><div class="inner">' +
+            '<div class="banner-info"><div class="title">{{#raw title}}</div><div class="sub-copy">{{#raw subTitle}}</div></div>' +
+            '<div class="banner-button"><a href="{{url}}" class="btn">{{buttonTitle}}</a></div>' +
+        '</div></div>' +
+        '</div></li>'
 
     var careItemTemplate = '<li><div class="item result-item">' +
         '{{#if bigFlag_url}}<div class="badge-wrap"><img src="{{bigFlag_url}}" alt="{{bigFlag_alt}}"></div>' +
@@ -137,6 +145,14 @@
         '</span></div>' +
         '<div class="product-button"><a href="{{buttonUrl}}" class="btn">장바구니 담기</a></div>' +
         '</div></li>';
+    
+    var recommendItemTemplate = '<li class="lists"><div class="list-inner">' +
+        '<a href="{{url}}">' +
+        '<span class="thumb"><img src="{{image_url}}" alt="{{image_alt}}"></span>' +
+        '<div class="info"><p class="tit">{{#raw title}}</p><p class="copy">{{#raw subTitle}}</p></div>' +
+        '</a>' +
+        '<div class="btn-area btm"><a href="{{url}}" class="btn bd-gray"><span>{{buttonTitle}}</span></a></div>' +
+        '</div></li>'
 
     var searchInputLayerVisible = false;
     var minLength = 1;
@@ -146,6 +162,7 @@
     var searchedValue = "";
     var storageFilters = {};
     var savedFilterArr = [];
+    var currentPage = "1";
 
     $(window).ready(function() {
         var search = {
@@ -190,6 +207,7 @@
                 self.$resultAllCustomerFaq = self.$resultAllCustomer.find('div.box-list').eq(3);
                 self.$resultAllCustomerVideo = self.$resultAllCustomer.find('div.search-video-list-wrap');
 
+                self.$recommendList = self.$contentsSearch.find('div.recommend-list-wrap');
 
                 self.$noData = self.$contentsSearch.find('div.search-not-result');
                 self.$suggestedList = self.$contentsSearch.find('div.suggested-list-wrap');
@@ -226,6 +244,7 @@
                 self.$tab.on("click", searchItemTarget, function(e) {
                     clearTimeout(searchTimer);
                     _self.setSearchInputLayerVisible(false);
+                    currentPage = "1";
                     selectedTab = $(this).attr('href').replace("#", "");
                     switch(selectedTab) {
                         case "all":
@@ -242,9 +261,8 @@
                 //페이지
                 self.$pagination.vcPagination().on('page_click', function(e, data) {
                     //기존에 입력된 데이타와 변경된 페이지로 검색
-                    console.log('page',data);
-                    //var param = {'input':params.input, 'type':params.type, 'category':params.category, 'page':data}
-                   // _self.requestData(param);
+                    currentPage = data;
+                    _self.requestSearchProduct(searchedValue);
                 });
 
                 //검색 닫기버튼
@@ -832,13 +850,15 @@
             },
 
             requestSearchProduct:function(searchValue) {
-                var searchItemTarget = 'ul.tabs li a[href="#product"]';
-                console.log(searchValue, self.$tab.find(searchItemTarget));
-
                 var _self = this;
+                var searchItemTarget = 'ul.tabs li a[href="#' + selectedTab + '"]';
                 var ajaxUrl = self.$tab.find(searchItemTarget).attr('data-url-search');
 
-                console.log(ajaxUrl);
+                console.log(selectedTab, searchValue, ajaxUrl);
+
+                var postData = vcui.extend(_self.convertPostData(storageFilters), {"search":searchValue});
+                console.log(postData);
+                
                 $.ajax({
                     url: ajaxUrl,
                     data: {"search":searchValue}
@@ -848,8 +868,69 @@
                         return;
                     }
         
+                    var data = d.data;
                     console.log(d);
 
+                    //제품 리스트
+                    var arr = _self.checkArrayData(data);
+                    var count = _self.checkCountData(data);
+                    var paramSearchedValue = d.param.searchedValue;
+                    var replaceText = '<span class="search-word">' + paramSearchedValue + '</span>';
+
+                    var $list_sorting = $('#'+selectedTab).find('div.list-sorting');
+                    var $list_count = $list_sorting.find('div.list-count');
+                    $list_count.text('총 ' + vcui.number.addComma(count)+'개');
+
+                    currentPage = d.param.pagination.page;
+                    $pagination = $('#'+selectedTab).find('div.pagination');
+                    $pagination.vcPagination('setPageInfo',d.param.pagination);
+
+                    var $list = $('#'+selectedTab).find('div.result-list-wrap');
+                    if(arr.length > 0) {
+                        var $list_ul = $list.find('div.list-wrap ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            if (item.sale == "0" || item.sale == 0) {
+                                item.sale = null;
+                            }
+                            item.price = item.price ? vcui.number.addComma(item.price) : null;
+                            switch(item.itemType) {
+                                case "1":
+                                    item.title = item.title.replaceAll(paramSearchedValue,replaceText);
+                                    $list_ul.append(vcui.template(productItemTemplate,item));
+                                    break;
+                                case "2":
+                                    $list_ul.append(vcui.template(productBannerTemplate,item));
+                                    break;
+                                default:
+                                    break;
+                            }
+                        });
+                        $list.show();
+                        $list_sorting.show();
+                    } else {
+                        $list.hide();
+                        $list_sorting.hide();
+                    }
+
+                    //추천상품
+                    arr = data.recommend instanceof Array ? data.recommend : [];
+                    if(arr.length > 0) {
+                        var $list_ul = self.$recommendList.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(recommendItemTemplate,item));
+                        });
+                        self.$recommendList.show();
+                    } else {
+                        self.$recommendList.hide();
+                    }
+
+                    //전체 검색용 noData화면 숨김
+                    self.$noData.hide();
+                    self.$suggestedList.hide();
+
+                    //필터 메뉴
                     var enableList = d.filterEnableList;
                     var filterList = d.filterList;
 
@@ -1005,8 +1086,7 @@
                 $('.lay-filter').find('div.filter-btn-wrap button.ui_confirm_btn').on('click', function(e){
                     e.preventDefault();
                     $('.lay-filter').removeClass('open');
-                    console.log('확인',storageFilters);
-                    //_self.requstData(storageFilters);
+                    _self.requestSearchProduct(searchedValue);
                 });
 
                 // 초기화버튼 이벤트 처리
@@ -1023,7 +1103,7 @@
                     e.preventDefault();
                     //var includeSoldOut = $(this).is(':checked');
                     //console.log(selectedTab, $(this).is(':checked'));
-                    _self.setApplyFilter(storageFilters);
+                    _self.requestSearchProduct(searchedValue);
                     /*
                     switch(selectedTab) {
                         case "product":
@@ -1048,7 +1128,7 @@
                 $('div.list-sorting').find('.ui_selectbox').on('change', function(e,data){
                     var value = e.target.value;
                     $('#'+selectedTab).find('input[name="sorting"][value="'+ value +'"]').prop('checked', true);
-                    _self.setApplyFilter(storageFilters);
+                    _self.requestSearchProduct(searchedValue);
                 });
             },
 
@@ -1065,23 +1145,8 @@
                 }
 
                 storageFilters = {};
-                // 데이터를 호출함. 
-                //_self.requestData(storageFilters);
-                /*
-                var obj = lgkorUI.getStorage(storageName);	
-                for(var key in obj){	                        
-                    var $parent = $('[data-id="'+ key +'"]');
-                    $parent.find('input[name="'+key+'"]').prop('checked', false);                    
-                    if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
-                       $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', 'Min,Max');
-                    }
-                }
-                var rObj = vcui.extend({}, storageFilters);
-                storageFilters = {'subCategoryId':rObj['subCategoryId']};
-                lgkorUI.removeStorage(storageName);   
-                lgkorUI.setStorage(storageName, storageFilters);
-                requestData(storageFilters);
-                */
+                _self.setApplyFilter(storageFilters);
+                //_self.requestSearchProduct(searchedValue);
             },
 
             // 슬라이더 값을 스토리지에 저장함.
@@ -1122,9 +1187,19 @@
                         $('#categoryCnt').text(len + '개 선택'); 
                     }	
                 }
-                console.log(_self.convertPostData(obj));
+
+                // 선택된 필터값이 있을경우 처리
+                console.log(storageFilters, obj);
+                var keys = Object.keys(obj);
+                if(keys.length > 0) {
+                    $('#filterModalLink').parent().addClass('applied');
+                    $('#filterModalLink span').text('옵션필터');
+                } else {
+                    $('#filterModalLink').parent().removeClass('applied');
+                    $('#filterModalLink span').text('옵션 적용됨');
+                }
                 // 데이터를 호출함. 
-                //if(!noRequest) _self.requestData(obj);
+                if(!noRequest) _self.requestSearchProduct(searchedValue);
             },
 
             // 필터의 비활성 및 선택 갯수를 업데이트
@@ -1184,9 +1259,8 @@
                 
                 var nObj = vcui.extend({
                     sort: sortValue,
-                    includeSoldOut: includeSoldOut
-//                    categoryId : categoryId,
-//                    page : currentPage,
+                    includeSoldOut: includeSoldOut,
+                    page : currentPage,
                 }, obj);
 
                 for(var key in obj){
