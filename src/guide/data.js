@@ -83,6 +83,7 @@ var res = {
 			"KRP0012_PDP Tab Anchor" : ["/html/components/KRP0012.html","","검수완료"],
 			"KRP0013_PDP Bundle" : ["/html/components/KRP0013.html","","검수완료"],
 			"KRP0014_PDP Specs" : ["/html/components/KRP0014.html","","진행중"],
+			"KRP0015_PDP Reviews" : ["/html/components/KRP0015.html","","진행중"],
 			"KRP0016_PDP Support - B2C" : ["/html/components/KRP0016.html","","검수완료"],
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"],
 			"KRP0018_Sticky Compare" : ["/html/components/KRP0018.html","",""],
