@@ -5,7 +5,7 @@
  * @copyright VinylC UID Group
  * 
  */
-vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/sticky', ['jquery', 'vcui', 'libs/jquery.transit.min'], function ($, core) {
     "use strict";
     var $win = $(window);
 
@@ -20,7 +20,8 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
             stickyFor: 0,
             stickyClass: 'fixed',
             stickyContainer: 'body',
-            usedAnchor: false
+            usedAnchor: false,
+            isHidden: true
         },
         selectors:{
             anchor : 'a'
@@ -33,6 +34,8 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
 
             self.$container = self.$el.closest(self.options.stickyContainer);
             
+            self.scrollCourse = "down";
+            self.prevScrollTop = $win.scrollTop();
             // core.util.loadImages(self.$container.find('img[data-src]')).done(function(){
             //     self.update();
             //     self._bindEvents();
@@ -67,6 +70,16 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
 
                 self.stickyRect = self._getRectangle(self.$el);
                 self.containerRect = self._getRectangle(self.$container);
+
+                if(e.type == "scroll"){
+                    var dist = self.scrollTop - self.prevScrollTop;
+                    if(dist < 0){
+                        self.scrollCourse = "down";
+                    } else{
+                        self.scrollCourse =  "up";
+                    }
+                    self.prevScrollTop = self.scrollTop;
+                }
 
                 switch (e.type) {
                     case 'resize':
@@ -115,7 +128,6 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
 
             if(opt.wrap){
                 var outerheight = self.$el.outerHeight(true);
-                console.log("outerheight : " + outerheight)
                 self.$el.wrap(opt.wrapWith).parent().css({ 
                     height: self.$el.outerHeight(true)
                 });
@@ -136,6 +148,10 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
         _handleResize: function _handleResize(e) {
             var self = this;
             var opt = self.options;
+
+            var outerheight = self.$el.outerHeight(true);
+            var wrapheight = self.$el.parent().height();
+            if(wrapheight != outerheight) self.$el.parent().height(outerheight);
 
             self.vpHeight = $win.height();
             self.vpWidth = $win.width();
@@ -170,7 +186,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
                     left: self.stickyRect.left,
                     right: 0,
                     //width: $el.width(),
-                    'z-index': 1000
+                    'z-index': 90
                 });
                 
                 $el.addClass(opt.stickyClass);
@@ -181,7 +197,7 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
                     //width: $el.width(), 
                     left: self.stickyRect.left,
                     right: 0,
-                    'z-index': 1000
+                    'z-index': 90
                 });
 
                 if (self.scrollTop + self.stickyRect.height + self.marginTop > self.containerRect.bottom - self.marginBottom) {
@@ -196,9 +212,38 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
                     });
                 }
             } else {
-
                 $el.removeClass(opt.stickyClass);
                 self._clearCss();
+            }
+
+            self.scrollDistance = self.scrollTop - (self.stickyRect.top + self.marginTop);
+            self._setStickyMobileStatus();
+        },
+
+        //모바일에서 스크롤방향에 따라 
+        _setStickyMobileStatus: function(){
+            if(vcui.detect.isMobileDevice){
+                var self = this;
+                
+                var mode = self.$el.data("mode");
+                if(self.$el.hasClass(self.options.stickyClass)){                    
+                    if(mode != self.scrollCourse){ 
+                        if(self.scrollCourse == "down"){
+                            self.$el.stop().transition({y:0}, 450, "easeOutCubic");                            
+                        } else{
+                            if(self.scrollDistance < self.$el.outerHeight(true)){
+                                return
+                            }
+                            self.$el.stop().transition({y:-self.$el.outerHeight(true)}, 350, "easeOutCubic");
+                        }
+                        self.$el.data('mode', self.scrollCourse);
+                    }
+                } else{
+                    if (mode != 'none'){
+                        self.$el.data('mode', 'none');
+                        self.$el.stop().transition({y:0}, 450, "easeOutCubic");
+                    }
+                }
             }
         },
 

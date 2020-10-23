@@ -3,6 +3,30 @@
     if(global['lgkorUI']) return;
     console.log("lgkorUI start!!!");
 
+    var alertTmpl =  '<article id="laypop" class="lay-wrap" style="display:block;" role="alert">\n'+
+        '   <header class="lay-header">\n'+
+        '       <h1 class="tit"><span>{{title}}</span></h1>\n'+
+        '   </header>\n'+
+        '   <section class="lay-conts ui-alert-msg">\n'+
+        '   </section>\n'+
+        '   <div class="btn-wrap laypop">\n'+
+        '       <button type="button" class="btn pink ui_modal_close" data-role="ok"><span>확인</span></button>\n'+
+        '   </div>\n'+
+        '</article>';
+
+
+
+    var confirmTmpl =  '<article id="laypop" class="lay-wrap" style="display:block;" role="alert">\n'+
+        '    <section class="lay-conts">\n'+
+        '        <h6 class="ui-alert-msg"></h6>\n'+
+        '    </section>\n'+
+        '    <div class="btn-wrap laypop">\n'+
+        '        <button type="button" class="btn gray ui_modal_close" data-role="cancel"><span>취소</span></button>\n'+
+        '        <button type="button" class="btn pink ui_modal_close" data-role="ok"><span>확인</span></button>\n'+
+        '    </div>\n'+
+        '</article>';
+
+
     $.fn.buildCommonUI = function () {
         vcui.require([
                             'ui/selectbox',
@@ -22,7 +46,8 @@
                             'ui/inputClearButton',
                             "ui/starRating",
                             "ui/tooltipTarget",
-                            "ui/toast"
+                            "ui/toast",
+                            "ui/sticky"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
@@ -44,6 +69,8 @@
             this.find('.ui_tooltip-target').vcTooltipTarget();
 
             this.find('.toast-message').vcToast();
+
+            this.find('.ui_sticky').vcSticky();
 
             this.find('.ui_selectbox').vcSelectbox({
                 events:{
@@ -209,7 +236,8 @@
                 'ui/inputClearButton',
                 "ui/starRating",
                 "ui/tooltipTarget",
-                "ui/toast"
+                "ui/toast",
+                "ui/sticky"
             ], function (ResponsiveImage, BreakpointDispatcher) {
                 
                 new BreakpointDispatcher({
@@ -332,7 +360,7 @@
     
                 }).on('modalshown', function (e) {
                     // 모달이 뜰때 모달내부에 있는 공통 컴포넌트 빌드
-                    //$(e.target).buildCommonUI();
+                    $(e.target).buildCommonUI();
                     self._resetFlexibleBox();
                 });
                 //////////////////////////////////////////////////////////////////////
@@ -389,6 +417,115 @@
             $('html').removeClass('dim');
             $('body').vcSpinner('stop');
         },
+
+
+
+
+
+        confirm:function () {
+            /**
+             * 얼럿레이어
+             * @memberOf vcui.ui
+             * @name confirm
+             * @function
+             * @param {string} msg 얼럿 메세지
+             * @param {Object} options 모달 옵션
+             * @example
+             * lgkorUI.confirm('받은 알림을 전체삭제<br>하시겠습니까?', {                        
+                ok:function(){},
+                cancel:function(){}
+                });
+             */
+            return function (msg, options) {
+            
+                if (typeof msg !== 'string' && arguments.length === 0) {
+                    options = msg;
+                    msg = '';
+                }
+    
+                var callbackOk, callbackCancel;
+    
+                if(options && options.ok && typeof options.ok =='function'){
+                    callbackOk = options.ok;
+                    delete options['ok'];
+                } 
+                if(options && options.cancel && typeof options.cancel =='function'){ 
+                    callbackCancel = options.cancel;
+                    delete options['cancel'];
+                }
+    
+                $('html').addClass('dim');
+                var el = $(vcui.template(confirmTmpl, {title:options && options.title? options.title:'알림창'})).appendTo('body');
+                $(el).find('.ui-alert-msg').html(msg);
+                
+
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true }, options)).vcModal('instance');
+                modal.getElement().buildCommonUI();
+                modal.on('modalhidden modalok modalcancel', function (e) {
+    
+                    if(e.type =='modalok'){
+                        if(callbackOk) callbackOk.call(this, e);
+                    }else if(e.type == 'modalcancel'){
+                        if(callbackCancel) callbackCancel.call(this, e);
+                    }
+    
+                    $('html').removeClass('dim');
+                    el = null;
+                    modal = null;
+                });
+                return modal;
+            };
+        }(),
+    
+        alert:function () {
+            /**
+             * 얼럿레이어
+             * @memberOf vcui.ui
+             * @name alert
+             * @function
+             * @param {string} msg 얼럿 메세지
+             * @param {Object} options 모달 옵션
+             * @example
+             * lgkorUI.alert('<p>구매일자 : 2020. 06. 18</p><p>구매제품 : 얼음정수기냉장고</p>', {
+                 title:'영수증 등록이 완료되었습니다.',
+                 ok:function(){}
+                });
+             *  
+             */
+    
+            return function (msg, options) {
+                if (typeof msg !== 'string' && arguments.length === 0) {
+                    options = msg;
+                    msg = '';
+                }
+    
+                var callbackOk;
+    
+                if(options && options.ok && typeof options.ok =='function'){
+                    callbackOk = options.ok;
+                    delete options['ok'];
+                } 
+    
+                $('html').addClass('dim');
+    
+                var el = $(vcui.template(alertTmpl, {title:options && options.title? options.title:'알림창'})).appendTo('body');
+                $(el).find('.ui-alert-msg').html(msg);                
+
+                var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true }, options)).vcModal('instance');
+                modal.getElement().buildCommonUI();
+                modal.on('modalhidden modalok', function (e) {
+    
+                    if(e.type =='modalok'){
+                        if(callbackOk) callbackOk.call(this, e);
+                    }
+                    $('html').removeClass('dim');
+                    el = null;
+                    modal = null;
+                });
+                return modal;
+            };   
+            
+        }(),
 
         addCompareProd: function(data){
             var self = this;

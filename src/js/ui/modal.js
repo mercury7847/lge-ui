@@ -194,7 +194,7 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             effect: 'fade', // slide | fade
             cssTitle: '.ui_modal_title',
             useTransformAlign: true,
-            variableWidth: true,
+            variableWidth: true, 
             variableHeight: true
         },
 
@@ -249,13 +249,17 @@ vcui.define('ui/modal', ['jquery', 'vcui'], function ($, core) {
             self.isShown = false;
             self._originalDisplay = self.$el.css('display');
 
+            /* 
+            // self.$el.css('left') : % 값도 px 값으로 출력됨.    
+            // 센터정렬이 아니고 위치를 잡을땐 variableWidth, variableHeight 을 false 설정필요
+
             if (/[0-9]+px/.test(self.$el.css('left'))) {
                 self.options.variableWidth = false;
-            }
-
+            }            
             if (/[0-9]+px/.test(self.$el.css('top'))) {
-                self.options.variableHeight = false;
+               self.options.variableHeight = false;
             }
+            */
 
             if (self.options.show) {
                 setTimeout(function () {

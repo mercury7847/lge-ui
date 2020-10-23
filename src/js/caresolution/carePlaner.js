@@ -230,7 +230,10 @@
 
             selectedTab(this);
 
-            loadCareProdList(true);
+            var categorytop = $caresolutionContainer.offset().top;
+            $('html, body').animate({scrollTop:categorytop}, 120, function(){
+                loadCareProdList(true);
+            });
         });
 
         $sortSelector.on('change', function(e){
@@ -289,7 +292,7 @@
 
             if(!_isStickyApply){
                 _isStickyApply = true;
-                $fixedTab.vcSticky({stickyContainer: ".care-solution-wrap", marginTop:-30});
+                $fixedTab.vcSticky({stickyContainer: ".care-solution-wrap"});
             }
 
             loadCareProdList(false);
@@ -351,11 +354,11 @@
         if(page < _pageTotal){
             _page = page;
 
-            addProdItemList();
+            addProdItemList(true);
         }
     }
 
-    function addProdItemList(){
+    function addProdItemList(anim){
         var first = _page * 8;
         var last = first + _showItemLength;
         if(last > _currentItemList.length) last = _currentItemList.length;
@@ -364,7 +367,7 @@
             var addItem = $(prodlist).get(0);
             $prodListContainer.find('> ul.inner').append(addItem);
 
-            $(addItem).css({y:200, opacity:0}).transition({y:0, opacity:1}, 450, "easeOutQuart");
+            if(anim) $(addItem).css({y:200, opacity:0}).transition({y:0, opacity:1}, 450, "easeOutQuart");
         }
 
         $('.ui_carousel_slider2').vcCarousel({
@@ -414,7 +417,7 @@
         $putItemContainer.find('.contract-slide').empty();
 
         var putItemCompare = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
-        var leng = putItemCompare[lgkorUI.CAREPLANER_ID] == undefined ? "0" : putItemCompare[lgkorUI.CAREPLANER_ID].length;
+        var leng = putItemCompare[lgkorUI.CAREPLANER_ID] == undefined ? 0 : putItemCompare[lgkorUI.CAREPLANER_ID].length;
         if(leng){
             var listItem = vcui.template(_putItemTemplate, putItemCompare);
             $putItemContainer.find('.contract-slide').append(listItem);
