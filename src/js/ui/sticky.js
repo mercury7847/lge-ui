@@ -115,7 +115,6 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
 
             if(opt.wrap){
                 var outerheight = self.$el.outerHeight(true);
-                console.log("outerheight : " + outerheight)
                 self.$el.wrap(opt.wrapWith).parent().css({ 
                     height: self.$el.outerHeight(true)
                 });
@@ -136,6 +135,10 @@ vcui.define('ui/sticky', ['jquery', 'vcui'], function ($, core) {
         _handleResize: function _handleResize(e) {
             var self = this;
             var opt = self.options;
+
+            var outerheight = self.$el.outerHeight(true);
+            var wrapheight = self.$el.parent().height();
+            if(wrapheight != outerheight) self.$el.parent().height(outerheight);
 
             self.vpHeight = $win.height();
             self.vpWidth = $win.width();
