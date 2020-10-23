@@ -194,6 +194,11 @@ var res = {
 				"케어솔루션 청약신청 고객동의 팝업" : ["/html/UTC/RMSF9001_pop8.html","","진행중"],
 				"케어솔루션 주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
 			},
+			"LG 페이(STC)" : {
+				"LG 페이" : ["/html/STC/MKT5003.html","","진행중"],
+				"LG 페이제휴카드 안내" : ["/html/STC/MKT5004.html","","진행중"],
+				"LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","진행중"]
+			},
 			"공통(UTS)" : {
 				"통합검색" : {
 					"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
