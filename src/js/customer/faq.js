@@ -56,7 +56,7 @@
                 var searchInput = self.$searchWrap.find('input').val();
                 var searchType = self.$selectbox.vcSelectbox('selectedOption').value;
                 var searchCategory = self.$tab.find('li:nth-child(1) a').attr('href').replace("#", "");
-                this.requestData({'input':searchInput, 'type':searchType, 'category':searchCategory, 'page':'1', pagePosition: ""});
+                this.requestData({'input':searchInput, 'type':searchType, 'category':searchCategory, 'page':'1'});
             },
 
             searchDataFromTab: function(tabValue) {
@@ -64,7 +64,7 @@
                 var searchInput = params.input;
                 var searchType = params.type;
                 var searchCategory = tabValue;
-                this.requestData({'input':searchInput, 'type':searchType, 'category':searchCategory, 'page':'1', pagePosition: ""});
+                this.requestData({'input':searchInput, 'type':searchType, 'category':searchCategory, 'page':'1'});
             },
 
             requestData:function(param) {

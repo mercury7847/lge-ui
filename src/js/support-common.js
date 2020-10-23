@@ -10,11 +10,11 @@ CS.VARS.IS_SIZE = CS.VARS.IS_SIZE || {};                          //반응형시
 CS.VARS.IS_SIZE.MAXMOBILE = 767;                                   //반응형시 MOBILE 최대값
 CS.VARS.IS_SIZE.MAXTABLET = 1024;  
 
-CS.UI.elem = {};
-CS.UI.elem.$doc = $(document);
-CS.UI.elem.$win = $(window);
-CS.UI.elem.$html = $('html');
-CS.UI.elem.$body = $('body');
+CS.UI = {};
+CS.UI.$doc = $(document);
+CS.UI.$win = $(window);
+CS.UI.$html = $('html');
+CS.UI.$body = $('body');
 
 /*
 * validation cehck
@@ -327,7 +327,7 @@ CS.MD.pagination = function() {
 
             self.options.page = data.page;
             self.options.totalCount = data.totalCount;
-            self.pageTotal = Math.ceil(self.options.totalCount / self.options.pageView);
+            self.pageTotal = self.options.totalCount == 0 ? 1 : Math.ceil(self.options.totalCount / self.options.pageView);
 
             self._update();
         },
@@ -352,55 +352,6 @@ CS.MD.pagination = function() {
                 }
             });
         }
-    }
-
-    $.fn[pluginName] = function(options) {
-        var arg = arguments; 
-
-        return this.each(function() {
-            var _this = this,
-                $this = $(_this),
-                plugin = $this.data('plugin_' + pluginName);
-
-            if (!plugin) {
-                $this.data('plugin_' + pluginName, new Plugin(this, options));
-            } else {
-                if (typeof options === 'string' && typeof plugin[options] === 'function') {
-                    plugin[options].apply(plugin, [].slice.call(arg, 1));
-                }
-            }
-        });
-    }
-}();
-
-/* */
-CS.MD.filter  = function() {
-    var pluginName = 'filter';
-
-    function Plugin(el, opt) {
-        var self = this,
-            el = self.el = el,
-            $el = self.$el = $(el);
-
-        var defaults = {
-            
-        };
-
-        self.options = $.extend({}, defaults, opt);
-
-        function _initialize() {
-            
-        }
-        function _setEventHandler() {
-            
-        }
-
-        _initialize();
-        _setEventHandler();
-    }
-
-    Plugin.prototype = {
-
     }
 
     $.fn[pluginName] = function(options) {
@@ -470,8 +421,8 @@ CS.MD.anchorTab  = function() {
                 self.select($(e.currentTarget).parent().index());
             });
 
-            CS.UI.elem.$win.on('scroll resize', function() {
-                var $win = CS.UI.elem.$win,
+            CS.UI.$win.on('scroll resize', function() {
+                var $win = CS.UI.$win,
                     scrollTop = $win.scrollTop(),
                     offsetTop = $el.offset().top,
                     floatingClass = self.options.floatingClass,
@@ -579,71 +530,11 @@ CS.MD.anchorTab  = function() {
     }
 }();
 
-/* floating */
-CS.MD.floting  = function() {
-    var pluginName = 'floating';
-
-    function Plugin(el, opt) {
-        var self = this,
-            el = self.el = el,
-            $el = self.$el = $(el);
-
-        var defaults = {
-            floatingClass: 'floating'
-        };
-
-        self.options = $.extend({}, defaults, opt);
-
-        function _initialize() {
-            
-        }
-        function _setEventHandler() {
-            CS.UI.elem.$win.on('scroll resize', function() {
-                var $win = CS.UI.elem.$win,
-                    scrollTop = $win.scrollTop(),
-                    offsetTop = $el.offset().top,
-                    floatingClass = self.options.floatingClass;
-
-                if (scrollTop >= offsetTop) {
-                    !$el.hasClass(floatingClass) && $el.addClass(floatingClass);
-                } else if (scrollTop < offsetTop && $el.hasClass(floatingClass)) {
-                    $el.removeClass(floatingClass);
-                }
-            });
-        }
-
-        _initialize();
-        _setEventHandler();
-    }
-
-    Plugin.prototype = {
-
-    }
-
-    $.fn[pluginName] = function(options) {
-        var arg = arguments; 
-
-        return this.each(function() {
-            var _this = this,
-                $this = $(_this),
-                plugin = $this.data('plugin_' + pluginName);
-
-            if (!plugin) {
-                $this.data('plugin_' + pluginName, new Plugin(this, options));
-            } else {
-                if (typeof options === 'string' && typeof plugin[options] === 'function') {
-                    plugin[options].apply(plugin, [].slice.call(arg, 1));
-                }
-            }
-        });
-    }
-}();
-
 
 /* VIEWPORT_WIDTH&HEIGHT */
 CS.MD.VIEWPORT = function(){
-    if(CS.UI.elem.$html.hasClass('safari')) {
-        CS.VARS.VIEWPORT_WIDTH = Math.max( CS.UI.elem.$win.width() || 0);
+    if(CS.UI.$html.hasClass('safari')) {
+        CS.VARS.VIEWPORT_WIDTH = Math.max( CS.UI.$win.width() || 0);
     } else {
         CS.VARS.VIEWPORT_WIDTH = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     }
@@ -691,17 +582,15 @@ CS.MD.CHK_DEVICE = function() {
 (function($){
     
     function commonInit(){
-        // $('.scroll-x').mCustomScrollbar({
-        //     axis:"x",
-        //     advanced:{
-        //         autoExpandHorizontalScroll:true
-        //     }
-        // });
-        // $('.scroll-y').mCustomScrollbar({
-        //     axis:"y"
-        // });
-
-        $('[data-js="floating]').floating();
+        $('.scroll-x').mCustomScrollbar({
+            axis:"x",
+            advanced:{
+                autoExpandHorizontalScroll:true
+            }
+        });
+        $('.scroll-y').mCustomScrollbar({
+            axis:"y"
+        });
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);

@@ -31,6 +31,8 @@
 
 	tr td > .edit {display:block;color:#767676;}
 	tr td > .edit:after {content: '작업 중'}
+	tr td > .edit.endbefore {color:orange}
+	tr td > .edit.endbefore:after {content:'미완료';}
 	tr td > .edit.end {color:red}
 	tr td > .edit.end:after {content:'완료';}
 	tr td > .edit.after {color:green;}
@@ -69,7 +71,7 @@
 			<tbody>
 				<!-- 
 					span.edit 작업중
-					span.edit.end 완료
+					span.edit 완료
 					span.edit.after 완료 후 수정
 				 -->
 				<tr>
@@ -101,7 +103,7 @@
 					<td>목록</td>
 					<td class="links">/html/support/CSTF2000.html</td>
 					<td><span class="edit"></span></td>
-					<td>제품 선택 영역 컨펌 중</td>
+					<td>제품선택영역 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF2010</td>
@@ -111,7 +113,7 @@
 					<td>상세</td>
 					<td class="links">/html/support/CSTF2010.html</td>
 					<td><span class="edit"></span></td>
-					<td></td>
+					<td>내용영역 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF2100</td>
@@ -121,7 +123,7 @@
 					<td>목록</td>
 					<td class="links">/html/support/CSTF2100.html</td>
 					<td><span class="edit"></span></td>
-					<td>기획 홀딩</td>
+					<td>검색영역 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF2110</td>
@@ -131,27 +133,17 @@
 					<td>상세</td>
 					<td class="links">/html/support/CSTF2110.html</td>
 					<td><span class="edit"></span></td>
-					<td></td>
+					<td>내용영역 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF2300</td>
 					<td></td>
 					<td></td>
-					<td>제품사용 설명서</td>
+					<td>다운로드 자료실</td>
 					<td></td>
 					<td class="links">/html/support/CSTF2300.html</td>
 					<td><span class="edit"></span></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>CSTF2400</td>
-					<td></td>
-					<td></td>
-					<td>드라이버/소프트웨어</td>
-					<td></td>
-					<td class="links">/html/support/CSTF2300.html</td>
-					<td><span class="edit"></span></td>
-					<td></td>
+					<td>제품선택영역 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF2500</td>
@@ -160,18 +152,18 @@
 					<td>카드뉴스</td>
 					<td>목록</td>
 					<td class="links">/html/support/CSTF2500.html</td>
-					<td><span class="edit"></span></td>
+					<td><span class="edit endbefore"></span></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>CSTF2510</td>
 					<td></td>
 					<td></td>
-					<td>카드뉴스</td>
+					<td></td>
 					<td>상세</td>
 					<td class="links">/html/support/CSTF2510.html</td>
-					<td><span class=""></span></td>
-					<td></td>
+					<td><span class="edit"></span></td>
+					<td>내용영역 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF2600</td>
@@ -180,7 +172,7 @@
 					<td>가전제품 생활의 팁</td>
 					<td>목록</td>
 					<td class="links">/html/support/CSTF2600.html</td>
-					<td><span class="edit"></span></td>
+					<td><span class="edit endbefore"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -190,8 +182,8 @@
 					<td></td>
 					<td>상세</td>
 					<td class="links">/html/support/CSTF2610.html</td>
-					<td><span class=""></span></td>
-					<td></td>
+					<td><span class="edit"></span></td>
+					<td>내용영역 미정</td>
 				</tr>
 				<!-- // 제품 지원 -->
 				<!-- 제품 상담/문의 -->
@@ -215,26 +207,6 @@
 					<td><span class=""></span></td>
 					<td></td>
 				</tr>
-				<!-- <tr>
-					<td>CSTF3100</td>
-					<td></td>
-					<td></td>
-					<td>문자상담 문의</td>
-					<td>신청</td>
-					<td class="links">/html/support/CSTF3100.html</td>
-					<td><span class=""></span></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>CSTF3110</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>완료</td>
-					<td class="links">/html/support/CSTF3110.html</td>
-					<td><span class=""></span></td>
-					<td></td>
-				</tr> -->
 				<tr>
 					<td>CSTF3200</td>
 					<td></td>
@@ -302,8 +274,8 @@
 					<td>상담결과 조회/변경</td>
 					<td>접수번호/휴대폰번호 입력</td>
 					<td class="links">/html/support/CSTF3500.html</td>
-					<td><span class="edit end"></span></td>
-					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
+					<td><span class=""></span></td>
+					<td></td>
 				</tr>
 				<tr>
 					<td>CSTF3510</td>
@@ -384,8 +356,8 @@
 					<td>제품 설치/철거 예약</td>
 					<td>신청</td>
 					<td class="links">/html/support/CSTF4100.html</td>
-					<td><span class="edit end"></span></td>
-					<td>공통영역 제외 : 상단 영역, 하단 영역, 절차 안내 및 가이드 영역, 개인 정보 이용 동의 및 소식지 수신 동의 영역, 내 제품 선택 영역, 제품 선택 영역</td>
+					<td><span class=""></span></td>
+					<td></td>
 				</tr>
 				<tr>
 					<td>CSTF4110</td>
@@ -394,8 +366,8 @@
 					<td></td>
 					<td>완료</td>
 					<td class="links">/html/support/CSTF4110.html</td>
-					<td><span class="edit end"></span></td>
-					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
+					<td><span class=""></span></td>
+					<td></td>
 				</tr>
 				<!-- // 서비스 예약 -->
 				<!-- 센터/매장 찾기 -->
@@ -468,8 +440,8 @@
 					<td>칭찬합니다</td>
 					<td>작성</td>
 					<td class="links">/html/support/CSTF6000.html</td>
-					<td><span class="edit end"></span></td>
-					<td>공통영역 제외 : 상단 영역, 절차 안내 및 가이드 영역, 개인정보/소식지 및  휴대전화 인증 영역, 하단 영역</td>
+					<td><span class="edit"></span></td>
+					<td>절차안내영역/로그인유도 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF6010</td>
@@ -478,8 +450,8 @@
 					<td></td>
 					<td>완료</td>
 					<td class="links">/html/support/CSTF6010.html</td>
-					<td><span class="edit end"></span></td>
-					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
+					<td><span class="edit"></span></td>
+					<td>진행상태 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF6100</td>
@@ -488,8 +460,8 @@
 					<td>개선해주세요</td>
 					<td>작성</td>
 					<td class="links">/html/support/CSTF6100.html</td>
-					<td><span class="edit end"></span></td>
-					<td>공통영역 제외 : 상단 영역, 절차 안내 및 가이드 영역, 개인정보/소식지 및  휴대전화 인증 영역, 내 제품 선택영역, 제품 선택영역, 하단 영역</td>
+					<td><span class="edit"></span></td>
+					<td>절차안내영역/로그인유도 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF6110</td>
@@ -498,8 +470,8 @@
 					<td></td>
 					<td>완료</td>
 					<td class="links">/html/support/CSTF6110.html</td>
-					<td><span class="edit end"></span></td>
-					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
+					<td><span class="edit"></span></td>
+					<td>진행상태 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF6200</td>
@@ -538,8 +510,8 @@
 					<td>칭찬 글 보기</td>
 					<td>목록</td>
 					<td class="links">/html/support/CSTF6300.html</td>
-					<td><span class=""></span></td>
-					<td></td>
+					<td><span class="edit"></span></td>
+					<td>검색영역 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF6310</td>
@@ -548,8 +520,8 @@
 					<td></td>
 					<td>상세</td>
 					<td class="links">/html/support/CSTF6310.html</td>
-					<td><span class=""></span></td>
-					<td></td>
+					<td><span class="edit"></span></td>
+					<td>내용영역 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF6400</td>
@@ -558,8 +530,8 @@
 					<td>경영진에게 제안</td>
 					<td>작성</td>
 					<td class="links">/html/support/CSTF6400.html</td>
-					<td><span class="edit end"></span></td>
-					<td>공통영역 제외 : 상단 영역, 절차 안내 및 가이드 영역, 개인정보/소식지 및  휴대전화 인증 영역, 하단 영역</td>
+					<td><span class="edit"></span></td>
+					<td>절차안내영역/로그인유도 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF6410</td>
@@ -568,8 +540,8 @@
 					<td></td>
 					<td>완료</td>
 					<td class="links">/html/support/CSTF6410.html</td>
-					<td><span class="edit end"></span></td>
-					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
+					<td><span class="edit"></span></td>
+					<td>진행상태 미정</td>
 				</tr>
 				<!-- // 고객의견 -->
 				<!-- 서비스 안내 -->
@@ -590,8 +562,8 @@
 					<td></td>
 					<td>상세</td>
 					<td class="links">/html/support/CSTF7010.html</td>
-					<td><span class=""></span></td>
-					<td></td>
+					<td><span class="edit"></span></td>
+					<td>내용영역 미정</td>
 				</tr>
 				<tr>
 					<td>CSTF7100</td>
@@ -600,7 +572,7 @@
 					<td>공지사항</td>
 					<td>목록</td>
 					<td class="links">/html/support/CSTF7100.html</td>
-					<td><span class=""></span></td>
+					<td><span class="edit endbefore"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -610,7 +582,7 @@
 					<td></td>
 					<td>상세</td>
 					<td class="links">/html/support/CSTF7110.html</td>
-					<td><span class=""></span></td>
+					<td><span class="edit endbefore"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -642,7 +614,7 @@
 					<td>App Gate (Mobile 전용)</td>
 					<td></td>
 					<td class="links">/html/support/CSTF8000.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
 				</tr>
 				<tr>
@@ -652,7 +624,7 @@
 					<td>QR코드 랜딩 페이지 (Mobile 정용)</td>
 					<td></td>
 					<td class="links">/html/support/CSTF8100.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
 				</tr>
 				<tr>
@@ -662,7 +634,7 @@
 					<td>접수 제품 및 증상 / 설치 환경 등록 (mobile 전용)</td>
 					<td></td>
 					<td class="links">/html/support/CSTF8200.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
 				</tr>
 				<tr>
@@ -672,7 +644,7 @@
 					<td>접수 만족도 설문 참여 (mobile 전용)</td>
 					<td></td>
 					<td class="links">/html/support/CSTF8300.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
 				</tr>
 				<tr>
@@ -702,7 +674,7 @@
 					<td>공기청정필터신청</td>
 					<td>신청</td>
 					<td class="links">/html/support/CSTF8800.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td>공통영역 제외 : 상단 영역, 개인정보 동의 영역, 하단 영역</td>
 				</tr>
 				<tr>
@@ -712,7 +684,7 @@
 					<td></td>
 					<td>완료</td>
 					<td class="links">/html/support/CSTF8810.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
 				</tr>
 				<tr>
@@ -722,7 +694,7 @@
 					<td></td>
 					<td>조회</td>
 					<td class="links">/html/support/CSTF8820.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
 				</tr>
 				<tr>
@@ -732,7 +704,7 @@
 					<td></td>
 					<td>상세</td>
 					<td class="links">/html/support/CSTF8830.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
 				</tr>
 				<tr>
@@ -742,7 +714,7 @@
 					<td>공기청정필터신청_팝업</td>
 					<td></td>
 					<td class="links">/html/support/modal/CSTF8800_info.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -752,7 +724,7 @@
 					<td>공기청정 필터 신청_팝업_미적용모델안내</td>
 					<td></td>
 					<td class="links">/html/support/modal/CSTF8800_unapplied.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -762,7 +734,7 @@
 					<td>엔지니어 정보 확인 (mobile 전용)</td>
 					<td></td>
 					<td class="links">/html/support/.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -772,7 +744,7 @@
 					<td>메일폼</td>
 					<td>메일 기본 폼 (inline-style 변환 전)</td>
 					<td class="links">/html/support/email/CSTF8700_form.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td><a href="https://htmlemail.io/inline/" target="_blank">https://htmlemail.io/inline/</a> 에서 inline-style로 변환</td>
 				</tr>
 				<tr>
@@ -782,7 +754,7 @@
 					<td></td>
 					<td>경영진에게제안_수신</td>
 					<td class="links">/html/support/email/CSTF8700_management_reception.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -792,7 +764,7 @@
 					<td></td>
 					<td>경영진에게제안_접수</td>
 					<td class="links">/html/support/email/CSTF8700_management_receipt.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -802,7 +774,7 @@
 					<td></td>
 					<td>드라이버소프트웨어</td>
 					<td class="links">/html/support/email/CSTF8700_driver.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -812,7 +784,7 @@
 					<td></td>
 					<td>qna_접수</td>
 					<td class="links">/html/support/email/CSTF8700_qna.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -821,8 +793,8 @@
 					<td></td>
 					<td></td>
 					<td>소모품샵_주문완료</td>
-					<td class="links">/html/support/email/CSTF8700_expendables.html</td>
-					<td><span class="edit end"></span></td>
+					<td class="links">/html/support/email/CSTF8700_exables.html</td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -832,7 +804,7 @@
 					<td></td>
 					<td>이메일문의_사용자</td>
 					<td class="links">/html/support/email/CSTF8700_user.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -842,7 +814,7 @@
 					<td></td>
 					<td>이메일문의_관리자</td>
 					<td class="links">/html/support/email/CSTF8700_admin.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>

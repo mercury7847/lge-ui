@@ -15,9 +15,9 @@
                 'title': '개선해주세요',
                 'desc': '미흡한 내용을 개선할 수 있도록 의견을 전달 할 수 있습니다.'
             })
-
             <div class="contents support suggestions">
                 <div class="contents-inner">
+
                     <form action="/html/support/CSTF6110.html" id="submitForm" autocomplete="off">
                         <div class="section">
                             <div class="dummy">
@@ -45,13 +45,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="section">
-                            <div class="dummy">
-                                <p>내 제품 선택영역</p>
-                                <p>제품 선택 공통 영역</p>
-                            </div>
-                        </div>
                         
                         <div class="section">
                             <div class="section-title">
@@ -65,8 +58,7 @@
                                                 <label for="input-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
                                             </div>
                                             <div class="input-wrap">
-                                                <input type="text" name="name" id="input-name" placeholder="성함을 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
-                                                <p class="err-msg">이름을 입력해주세요.</p>
+                                                <input type="text" name="name" id="input-name" placeholder="성함을 입력해주세요." required>
                                             </div>
                                         </div>
                                         <div class="field-item">
@@ -74,8 +66,7 @@
                                                 <label for="input-phoneNumber" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
                                             </div>
                                             <div class="input-wrap">
-                                                <input type="tel" name="phoneNumber" id="input-phoneNumber" placeholder="휴대 전화를 입력해주세요." maxlength="11" required>
-                                                <p class="err-msg">휴대 전화를 입력해주세요.</p>
+                                                <input type="text" name="phoneNumber" id="input-phoneNumber" placeholder="휴대 전화를 입력해주세요." maxlength="11" required>
                                             </div>
                                         </div>
                                     </div>
@@ -94,15 +85,15 @@
                                             </div>
                                             <div class="contact-box">
                                                 <div class="input-wrap">
-                                                    <input type="text" name="" id="contact-box-1">
+                                                    <input type="text" name="contact01" id="input-contact01">
                                                 </div>
                                                 <span class="at">-</span>
                                                 <div class="input-wrap">
-                                                    <input type="text" name="" id="">
+                                                    <input type="text" name="contact02" id="input-contact02">
                                                 </div>
                                                 <span class="at">-</span>
                                                 <div class="input-wrap">
-                                                    <input type="text" name="" id="">
+                                                    <input type="text" name="contact03" id="input-contact01">
                                                 </div>
                                             </div>
                                         </div> 
@@ -114,12 +105,12 @@
                                             </div>
                                             <div class="check-list">
                                                 <div class="rdo-wrap">
-                                                    <input type="radio" name="period" id="period-1" value="회신 필요">
-                                                    <label for="period-1">회신 필요</label>
+                                                    <input type="radio" name="replay" id="replay01" value="회신 필요" required>
+                                                    <label for="replay01">회신 필요</label>
                                                 </div>
                                                 <div class="rdo-wrap">
-                                                    <input type="radio" name="period" id="period-2" value="회신 불필요">
-                                                    <label for="period-2">회신 불필요</label>
+                                                    <input type="radio" name="replay" id="replay02" value="회신 불필요">
+                                                    <label for="replay02">회신 불필요</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,9 +138,8 @@
                                                 <label for="input-title" class="tit">제목<span class="require">*<span class="blind">필수항목</span></span></label>
                                             </div>
                                             <div class="input-wrap count">
-                                                <input type="text" class="ui_textcontrol" name="title" id="input-title" placeholder="제목을 입력해주세요." required maxlength="100" data-limit="100" data-count-target="#txt-count">
+                                                <input type="text" class="ui_textcontrol" name="title" id="input-title" placeholder="제목을 입력해주세요." maxlength="100" data-limit="100" data-count-target="#txt-count" required>
                                                 <span id="txt-count" class="total"><em>0</em> / 100</span>
-                                                <p class="err-msg">제목을 입력해주세요.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -159,9 +149,8 @@
                                                 <label for="input-content" class="tit">내용<span class="require">*<span class="blind">필수항목</span></span></label>
                                             </div>
                                             <div class="input-wrap count">
-                                                <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" required data-limit="1000" data-count-target="#txt-count2"></textarea>
+                                                <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" required></textarea>
                                                 <span id="txt-count2" class="cell total"><em>0</em> / 1000</span>
-                                                <p class="err-msg">내용을 입력해주세요.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -195,15 +184,24 @@
 
                         <div class="btn-group right">
                             <a href="#" class="btn gray"><span>취소</span></a>
-                            <button type="button" class="btn pink" id="btn-confirm"><span>확인</span></button>
+                            <button type="button" class="btn pink btn-confirm"><span>확인</span></button>
                         </div>
                     </form>
+                    
                 </div>
             </div>
         </div>
              
         @@include('./common/footer.html')
     </div>
+
+    <!-- 확인 팝업 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop",
+        "msgOnly" : true,
+        "msg" : "저장 하시겠습니까?",
+        "twobtn" : true
+    })
 
     <!-- support script -->
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>

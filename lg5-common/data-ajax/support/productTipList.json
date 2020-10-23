@@ -1,0 +1,98 @@
+{   
+    "status": "success",
+    "message":null,
+    "data": {
+        "listData": [
+            {
+                "flag": "NEW",
+                "url": "/html/support/CSTF7110.html",
+                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
+                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "flag": "NEW",
+                "url": "/html/support/CSTF7110.html",
+                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
+                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목생활의팁 제목 생활의팁 제목 생활의팁 제목생활의팁 제목 생활의팁 제목 생활의팁 제목생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7110.html",
+                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
+                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7110.html",
+                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
+                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7110.html",
+                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
+                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7110.html",
+                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
+                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7110.html",
+                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
+                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7110.html",
+                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
+                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7110.html",
+                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
+                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7110.html",
+                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
+                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7110.html",
+                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
+                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7110.html",
+                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
+                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "date": "2019.06.15",
+                "view": "3,100"
+            }
+        ],
+        "listPage": {
+            "page": 2,
+            "totalCount": 20
+        }
+    }
+}

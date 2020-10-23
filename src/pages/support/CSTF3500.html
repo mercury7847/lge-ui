@@ -4,10 +4,6 @@
         "pageCSS": [
             "support/support",
             "support/reservation"
-        ],
-        "pageJS": [
-            "support-common",
-            "support/selectCategory"
         ]
     })
 <body>
@@ -19,9 +15,9 @@
                 'title': '문의/예약 결과 조회',
                 'desc': '예약하신 모든 상담/서비스 내역을 조회하실 수 있습니다. 에어컨 이외 제품의 설치/철거 서비스 신청 확인은 <strong>㈜판토스 홈페이지</strong>를 통해 확인해 주세요.'
             })
-
-            <div class="contents support CSTF3500">
+            <div class="contents support">
                 <div class="contents-inner">
+
                     <div class="divisions">
                         <div class="section col-6">
                             <div class="section-title">
@@ -66,7 +62,7 @@
                             </div>
                             <form action="">
                                 <div class="section-content">
-                                    <div class="form-wrap field-wrap">
+                                    <div class="field-wrap">
                                         <div class="row">
                                             <div class="field-item block">
                                                 <div class="field-title">
@@ -79,28 +75,24 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <dl class="forms">
-                                                <dt class="field-title">
+                                            <div class="field-item block">
+                                                <div class="field-title">
                                                     <label for="certi-phone-number" class="tit">휴대전화</label>
-                                                </dt>
-                                                <dd class="conts">
-                                                    <div class="input-box size2">
-                                                        <div class="input-wrap">
-                                                            <span class="box">
-                                                                <input type="tel" name="certi-phone" id="certi-phone-number" placeholder="휴대전화 번호를 입력해주세요." data-msg-target=".err-msg" data-required="true" maxlength="11" required>
-                                                                <span class="cell text-btn">
-                                                                    <button type="button" class="btn-text underline color-3">인증번호 발송</button>
-                                                                </span>
-                                                            </span>
-                                                            <p class="err-msg">휴대전화 번호를 입력해주세요.</p>
-                                                        </div>
-                                                        <div class="input-wrap">
-                                                            <input type="number" name="certi-phone" id="certi-number" placeholder="인증번호를 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
-                                                            <p class="err-msg">인증번호를 입력해주세요.</p>
-                                                        </div>
-                                                    </div>
-                                                </dd>
-                                            </dl>
+                                                </div>
+                                                <div class="input-wrap">
+                                                    <span class="box">
+                                                        <input type="tel" name="certi-phone" id="certi-phone-number" placeholder="휴대전화 번호를 입력해주세요." maxlength="11" required>
+                                                        <span class="cell">
+                                                            <button type="button" class="btn-text pink">인증번호 발송</button>
+                                                        </span>
+                                                    </span>
+                                                    <p class="err-msg">휴대전화 번호를 입력해주세요.</p>
+                                                </div>
+                                                <div class="input-wrap">
+                                                    <input type="number" name="certi-phone" id="certi-number" placeholder="인증번호를 입력해주세요." disabled required>
+                                                    <p class="err-msg">인증번호를 입력해주세요.</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="btn-group center">
@@ -114,11 +106,16 @@
                         <li class="b-txt">서비스 이용 내역의 조회 가능 기간은 1년입니다. (단, 이메일 상담 조회는 답변메일 발송일로부터 1개월간 확인 가능합니다.)</li>
                         <li class="b-txt">휴대전화 인증번호가 수신되지 않는 경우 휴대폰에 1544-7777 번호가 스팸 등록되었는지 여부를 확인해주시기 바랍니다.</li>
                     </ul>
+
                 </div>
             </div>
         </div>
              
         @@include('./common/footer.html')
     </div>
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 

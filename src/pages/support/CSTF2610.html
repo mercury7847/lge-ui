@@ -14,7 +14,6 @@
             @@include('./common/support/page-visual.html', {
                 'title': '생활의 팁'
             })
-
             <div class="contents support card">
                 <div class="contents-inner">
 
@@ -22,7 +21,11 @@
                         <div class="board-view">
                             <div class="board-view-head">
                                 <h3 class="head-title">드럼 / 일반형 세탁기의 올바른 세탁 방법 (최대 2줄) 드럼 / 일반형 세탁기의 올바른 세탁 방법 (최대 2줄) 드럼 / 일반형 세탁기의 올바른 세탁 방법 (최대 2줄)</h3>
-                                <ul class="head-infos summary">
+                                <ul class="head-infos category">
+                                    <li>TV/프로젝터 > 올레드</li>
+                                    <li>기능 > TV 사용시간 확인</li>
+                                </ul>
+                                <ul class="head-infos summary"> 
                                     <li>2020.07.20</li>
                                     <li>
                                         <span class="view"><span class="blind">조회수</span>4,129</span>
@@ -30,18 +33,25 @@
                                 </ul>
                             </div>
                             <div class="board-view-body">
-                                
+                                <!-- admin editor 등록 시 id="viewContent" 추가 -->
+                                <div class="view-content">
+                                    <p class="view-content-img">
+                                        <img src="/lg5-common/images/dummy/@img-board-view.jpg" alt="">
+                                    </p>
+                                    <p class="view-content-title"><strong>타이틀 노출 영역</strong></p>
+                                    <p class="view-content-text">생활의 팁 컨텐츠 본문 노출 영역 생활의 팁 컨텐츠 본문 노출 영역 생활의 팁 컨텐츠 본문 노출 영역 생활의 팁 컨텐츠 본문 노출 영역 생활의 팁 생활의 팁 컨텐츠 본문 노출 영역 생활의 팁 컨텐츠 본문 노출 영역 생활의 팁 컨텐츠 본문 노출 영역 생활의 팁 컨텐츠 본문 노출 영역 생활의 팁</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="board-survey">
+                        <div class="board-survey" data-ajax="/lg5-common/data-ajax/support/survey.json">
                             <div class="content-wrap">
                                 <div class="title-wrap">
-                                    <p class="tit">생활의 TIP을 평가해주세요.</p>
+                                    <h3 class="tit">생활의 TIP을 평가해주세요.</h3>
                                     <p class="desc">평가해주신 내용은 더 나은 컨텐츠를 제공해 드리기 위한 자료로 활용합니다.</p>
                                 </div>
                                 <div class="star-rating-wrap">
-                                    <select class="ui_star_rating" name="rating" id="select-rating" title="콘텐츠 별점 선택">
+                                    <select class="ui_star_rating" name="rating" id="select-rating" title="콘텐츠 별점 선택" required>
                                         <option value="">0점</option> 
                                         <option value="1">1점 (매우 불만족)</option>
                                         <option value="2">2점 (불만족)</option>
@@ -49,15 +59,7 @@
                                         <option value="4">4점 (만족)</option>
                                         <option value="5">5점 (매우 만족)</option>
                                       </select>
-                                </div>
-                                <div>
-                                    <div class="input-wrap count block">
-                                        <textarea class="ui_textcontrol" placeholder="작성하실 내용을 1,000자 이내로 입력해주세요." maxlength="1000" data-limit="1000" data-count-target="#txt-count1"></textarea>
-                                        <span id="txt-count1" class="total"><em>0</em> / 1000</span>
-                                    </div>
-                                </div>
-                                <div class="btn-wrap">
-                                    <button type="button" class="btn bd-gray"><span>평가</span></button>
+                                      <p class="err-msg">평가 점수를 선택해주세요.</p>
                                 </div>
                             </div>
                         </div>
@@ -65,16 +67,16 @@
                         <div class="board-navi">
                             <a href="#" class="navi">
                                 <span class="navi-label">이전글</span>
-                                <h4 class="navi-desc">LG ThinQ 앱이라서 가능한 편리한 일상 - 앱 사용법 편</h4>
+                                <span class="navi-desc">LG ThinQ 앱이라서 가능한 편리한 일상 - 앱 사용법 편</span>
                             </a>
                             <a href="#" class="navi">
                                 <span class="navi-label">다음글</span>
-                                <h4 class="navi-desc">LG ThinQ 앱이라서 가능한 편리한 일상 – 카드뉴스 타이틀 노출 영역 최대 1줄, 초과 시 …처리를 해야하는 부분입…</h4>
+                                <span class="navi-desc">LG ThinQ 앱이라서 가능한 편리한 일상 – 카드뉴스 타이틀 노출 영역 최대 1줄, 초과 시 …처리를 해야하는 부분입…</span>
                             </a>
                         </div>
                     </div>
                     <div class="btn-group right">
-                        <a href="/html/support/CSTF2600.html" class="btn pink"><span>목록보기</span></a>
+                        <a href="/html/support/CSTF2600.html" class="btn pink"><span>목록</span></a>
                     </div>
                     
                 </div>
@@ -85,9 +87,16 @@
     </div>    
 
     <!-- 평가 확인 팝업 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "surveyPop",
+        "alertTit" : "생활의 TIP을 평가해주세요.",
+        "alertCont" : [
+        ]
+    })
 
     <!-- support script -->
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/productSupport/card.min.js"></script>
 </body>
 </html> 

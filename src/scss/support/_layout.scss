@@ -56,9 +56,11 @@
         }
     }
     @include mobile {
-        margin-top:12px;
         padding:40px 20px 56px;
         background:#fff;
+        & ~ & {
+            margin-top:12px;
+        }
         &.no-bg {
             padding:0;
             background:transparent;   
