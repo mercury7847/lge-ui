@@ -124,6 +124,29 @@
             <!-- // slide -->
             }
             }
+            @@if ( context.carouselScriptClass === "ui_carousel_1_slider" ) {
+            @@for ( var i=0; i < context.slideArr.length; i++ ) {
+            <!--  slide -->
+            <div class="slide-conts ui_carousel_slide">
+                <div class="inner">
+                    <div class="slide-info-area">
+                        <div class="boxs">
+                            @@if(context.step) {
+                            <span class="step">`+slideArr[i].step+`</span>
+                            }
+                            <p class="title">`+slideArr[i].tit+`</p>
+                            <p class="desc">`+slideArr[i].desc+`</p>
+                            `+slideArr[i].btn+`
+                        </div>
+                    </div>
+                    <div class="visual-area">
+                        <img src="/lg5-common/images/dummy/@sample-3-2.gif" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- // slide -->
+            }
+            }
         </div>
     </div>
     @@if ( context.carousel ) {
