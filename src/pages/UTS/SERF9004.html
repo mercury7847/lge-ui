@@ -30,10 +30,10 @@
                     </ul>
                 </div>
                 <div class="cont-wrap">
+                    @@include('./common/modules/list-filter.html', {
+                        "care" : true
+                    })
                     <div class="search-result-wrap">
-                        @@include('./common/modules/list-filter.html', {
-                            "care" : true
-                        })
                         <div class="result-area">
 
                             @@include('./common/modules/list-sorting.html', {
