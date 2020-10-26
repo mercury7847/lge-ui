@@ -2,10 +2,10 @@
     .box {
         position:relative;
         margin-top:32px;
-        padding-bottom:20px;
         @include mobile {
             position:relative;
             margin-top:16px;
+            padding-bottom:20px;
             overflow:hidden;
             border-radius:8px;
             box-shadow:0 6px 30px 0 rgba(0, 0, 0, .12);
@@ -35,9 +35,11 @@
                 }
             }
             @include mobile {
-                margin:0 16px 20px;
-                padding:20px 0 18px;
-                border-bottom:1px solid #ddd;
+                margin-bottom:0;
+                padding:18px 16px;
+                border:1px solid #ddd;
+                border-radius:8px 8px 0 0;
+                background:#f4f4f4;
                 .infos {
                     float:none;
                     @include clearfix;
@@ -54,9 +56,6 @@
                             line-height:normal;
                             word-break:break-all;
                         }
-                        em {
-                            color:#222;
-                        }
                         &:first-child {
                             float:left;
                             color:#222;
@@ -69,6 +68,9 @@
 
         // display table box
         .tbl-layout {
+            @include mobile {
+                margin:28px 0;
+            }
             .thead {
                 border-top:1px solid #ddd;
                 padding:13px 0 14px;
@@ -140,7 +142,7 @@
                         }
                         .col2 {
                             width:auto;
-                            margin:20px 16px 0;
+                            margin:20px 28px 0 100px;
                         }
                     }
                 }
@@ -152,11 +154,13 @@
             position:absolute;
             top:0;
             right:0;
+            .btn-link {
+                font-weight:400;
+            }
             @include mobile {
                 position:relative;
                 top:auto;
                 right:auto;
-                margin-top:20px;
                 margin-bottom:-20px;
                 border-top:1px solid #ddd;
                 .btn-link {
@@ -176,9 +180,17 @@
 
         // 제품
         .product-info {
-            @include clearfix;
+            position:relative;
+            min-height:120px;
+            padding-left:136px;
+            @include mobile {
+                padding-left:100px;
+                min-height:100%;
+            }
             .thumb {
-                float:left;
+                position:absolute;
+                top:0;
+                left:0;
                 width:120px;
                 height:120px;
                 border-radius:8px;
@@ -194,10 +206,9 @@
                 }
             }
             .infos {
-                margin-left:136px;
+                position:relative;
                 @include mobile {
-                    margin-right:20px;
-                    margin-left:100px;
+                    margin-right:28px;
                 }
                 .flag-wrap {
                     margin-bottom:8px;
@@ -216,9 +227,17 @@
                         line-height:18px;
                     }
                 }
+                .e-name {
+                    color:#616161;
+                    font-size:14px;
+                    line-height:20px;
+                }
                 .more {
-                    margin-top:4px;
+                    padding-top:4px;
                     font-size:0;
+                    @include mobile {
+                        padding-top:8px;
+                    }
                     li {
                         display:inline-block;
                         position:relative;
@@ -246,16 +265,56 @@
                             }
                         }
                     }
+                    .count {
+                        color:#616161;
+                        font-size:14px;
+                        line-height:20px;
+                        @include mobile {
+                            margin-top:4px;
+                        }
+                    }
+                }
+                .top-wrap {
+                    min-height:88px;
                     @include mobile {
-                        margin-top:0;
-                        li:first-child {
-                            width:100%;
-                            margin-right:0;
-                            margin-bottom:8px;
-                            padding-right:0;
-                            &::after {
-                                display:none;
-                            }
+                        min-height:auto;
+                    }
+                }
+                .btm-wrap {
+                    display:table;
+                    width:100%;
+                    .more {
+                        display:table-cell;
+                    }
+                    .count {
+                        display:table-cell;
+                        color:#616161;
+                        font-size:14px;
+                        line-height:20px;
+                        vertical-align:bottom;
+                    }
+                    .price {
+                        display:table-cell;
+                        color:#222;
+                        font-size:16px;
+                        line-height:24px;
+                        font-weight:700;
+                        text-align:right;
+                        vertical-align:bottom;
+                    }
+                    @include mobile {
+                        display:block;
+                        .more {
+                            display:block;
+                        }
+                        .count {
+                            display:block;
+                            margin-top:2px;
+                        }
+                        .price {
+                            display:block;
+                            margin-top:12px;
+                            text-align:left;
                         }
                     }
                 }
@@ -286,69 +345,81 @@
                     }
                 }
             }
+
+            &.count-type {
+                .infos {
+                    .tit-wrap {
+                        min-height:92px;
+                    }
+                }
+            }
         }
     
         // 상태
         .state-box {
             text-align:center;
             @include mobile {
-                @include clearfix;
+                font-size:0;
             }
             .tit {
-                color:#222;
+                color:#616161;
+                font-size:14px;
+                line-height:20px;
+                &.cancel {
+                    color:#F04E3E;
+                }
+                @include mobile {
+                    display:inline-block;
+                    margin-right:6px;
+                    vertical-align:top;
+                }
+            }
+            .desc {
+                color:#51B1AC;
                 font-size:14px;
                 line-height:20px;
                 @include mobile {
-                    clear:both;
+                    display:inline-block;
+                    vertical-align:top;
                 }
-                .pc-blind {
-                    color:#616161;
-                    &::after {
-                        content:' ';
-                        display:inline-block;
-                        width:1px;
-                        height:10px;
-                        margin:5px 8px 0;
-                        background:#616161;
-                        vertical-align:top;
+            }
+            .state-btns {
+                .btn {
+                    margin-top:4px;
+                    &:first-child {
+                        margin-top:8px;
                     }
-                    @media screen and (min-width:768px) {
-                        position:absolute;
-                        z-index:-10;
-                        width:0 !important;
-                        height:0 !important;
-                        overflow:hidden !important;
-                        font-size:medium;
-                        line-height:normal;
-                        word-break:break-all;
-                        &::after {
+                }
+                .btn.btn-cancel {
+                    position:absolute;
+                    top:50%;
+                    right:82px;
+                    margin-top:0;
+                    transform:translateY(-50%) translateX(50%);
+                }
+                @include mobile {
+                    margin-top:12px;
+                    .btn {
+                        margin-top:0;
+                        margin-right:6px;
+                        &:first-child {
+                            margin-top:0;
+                        }
+                    }
+                    .btn.btn-cancel {
+                        position:relative;
+                        top:initial;
+                        right:initial;
+                        display:inline-block;
+                        margin-right:0;
+                        transform:initial;
+                        &:disabled {
                             display:none;
                         }
                     }
                 }
             }
-            .desc {
-                margin-top:4px;
-                color:#616161;
-                font-size:14px;
-                line-height:20px;
-                @include mobile {
-                    float:left;
-                    line-height:30px;
-                }
-            }
-            .btn {
-                margin-top:8px;
-                @include mobile {
-                    float:right;
-                    margin-top:4px;
-                    background:transparent;
-                }
-            }
             @include mobile {
-                padding:16px;
-                border-radius:4px;
-                background:#f4f4f4;
                 text-align:left;
             }
         }

@@ -21,7 +21,7 @@
                 @@if ( context.col1 ) {
                 <div class="col col1">
                     <span class="blind">@@col1.blind</span>
-                    @@if ( context.col1.productType ) {
+                    @@if ( !context.count ) {
                     <div class="product-info">
                         <a href="#n" class="thumb"><img src="@@col1.productType.thumb" alt="@@col1.productType.name"></a>
                         <div class="infos">
@@ -29,24 +29,39 @@
                                 <span class="flag"><span class="blind">케어솔루션 종류</span>@@col1.productType.flag</span>
                             </div>
                             <p class="name"><a href="#n"><span class="blind">제품명</span>@@col1.productType.name</a></p>
-                            <ul class="more">
-                                @@for ( var k=0; k < col1.productType.more.length; k++ ) {
-                                <li>`+col1.productType.more[k]+`</li>
-                                }
-                            </ul>
-                            <div class="cancel-box">
-                                @@if ( context.cancel === "on" ) {
-                                <a href="#n" class="btn bd-black btn-small"><span>취소신청</span></a>
-                                }
-                                @@if ( context.cancel === "off" ) {
-                                <p class="p-text red">취소불가</p>
+                            <p class="e-name"><span class="blind">영문제품번호</span>@@col1.productType.name2</p>
+                            <div class="btm-wrap">
+                                <ul class="more">
+                                    @@for ( var k=0; k < col1.productType.more.length; k++ ) {
+                                    <li>`+col1.productType.more[k]+`</li>
+                                    }
+                                </ul>
+                                @@if ( context.col1.productType.price ) {
+                                <p class="price">1,760,000원</p>
                                 }
                             </div>
-                            @@if ( context.col1.productType.review ) {
-                            <div class="buttons">
-                                <a href="#n" class="btn-link small"><span>사용후기</span></a>
+                        </div>
+                    </div>
+                    }
+                    @@if ( context.count ) {
+                    <div class="product-info count-type">
+                        <a href="#n" class="thumb"><img src="@@col1.productType.thumb" alt="@@col1.productType.name"></a>
+                        <div class="infos">
+                            <div class="top-wrap">
+                                <p class="name"><a href="#n"><span class="blind">제품명</span>@@col1.productType.name</a></p>
+                                <p class="e-name"><span class="blind">영문제품번호</span>@@col1.productType.name2</p>
+                                <ul class="more">
+                                    @@for ( var k=0; k < col1.productType.more.length; k++ ) {
+                                    <li>`+col1.productType.more[k]+`</li>
+                                    }
+                                </ul>
                             </div>
-                            }
+                            <div class="btm-wrap">
+                                <p class="count">수량 : 1</p>
+                                @@if ( context.col1.productType.price ) {
+                                <p class="price">1,760,000원</p>
+                                }
+                            </div>
                         </div>
                     </div>
                     }
@@ -57,14 +72,25 @@
                     @@if ( context.col2.stateType ) {
                     <div class="state-box">
                         @@if ( context.col2.stateType.tit ) {
-                        <p class="tit"><span class="pc-blind">@@col2.blind</span>@@col2.stateType.tit</p>
+                        <p class="tit"><span class="blind">@@col2.blind</span>@@col2.stateType.tit</p>
+                        }
+                        @@if ( context.col2.stateType.titRed ) {
+                        <p class="tit cancel"><span class="blind">@@col2.blind</span>@@col2.stateType.titRed</p>    
                         }
                         @@if ( context.col2.stateType.desc ) {
                         <p class="desc">@@col2.stateType.desc</p>
                         }
-                        @@if ( context.col2.stateType.btn ) {
-                        <a href="#n" class="btn bd-black btn-small"><span>@@col2.stateType.btn</span></a>
-                        }
+                        <div class="state-btns">
+                            @@if ( context.col2.stateType.btn ) {
+                            <a href="#n" class="btn bd-black btn-small"><span>@@col2.stateType.btn</span></a>
+                            }
+                            @@if ( context.cancel === "on" ) {
+                            <button type="button" class="btn bd-black btn-small btn-cancel"><span>취소신청</span></button>
+                            }
+                            @@if ( context.cancel === "off" ) {
+                            <button type="button" class="btn bd-black btn-small btn-cancel" disabled><span>취소불가</span></button>
+                            }                                
+                        </div>
                     </div>
                     }
                 </div>
