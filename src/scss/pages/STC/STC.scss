@@ -3,7 +3,17 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+// LG 페이
+.contents.lgpay-wrap {
+    @import "MKT5003";
+}
+
 // 모바일 스위치
 .contents.switch-wrap {
     @import "MKT5006";
+}
+
+// 엘지페이
+.contents.lgpay-wrap {
+    @import "MKT5003";
 }

@@ -250,10 +250,8 @@
                         case "all":
                             self.$buttonSearch.trigger('click');
                             break;
-                        case "product":
-                            _self.requestSearchProduct(searchedValue);
-                            break;
                         default:
+                            _self.requestSearchProduct(searchedValue);
                             break;
                     }
                 });
@@ -861,7 +859,7 @@
                 
                 $.ajax({
                     url: ajaxUrl,
-                    data: {"search":searchValue}
+                    data: postData,
                 }).done(function (d) {
                     if(d.status != 'success') {
                         alert(d.message ? d.message : '오류발생');
@@ -888,20 +886,39 @@
                     var $list = $('#'+selectedTab).find('div.result-list-wrap');
                     if(arr.length > 0) {
                         var $list_ul = $list.find('div.list-wrap ul');
+                        console.log(arr,$list_ul);
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
-                            if (item.sale == "0" || item.sale == 0) {
-                                item.sale = null;
-                            }
-                            item.price = item.price ? vcui.number.addComma(item.price) : null;
-                            switch(item.itemType) {
-                                case "1":
+                            switch(selectedTab) {
+                                case "product": {
+                                    if (item.sale == "0" || item.sale == 0) {
+                                        item.sale = null;
+                                    }
+                                    item.price = item.price ? vcui.number.addComma(item.price) : null;
+                                    switch(item.itemType) {
+                                        case "1":
+                                            item.title = item.title.replaceAll(paramSearchedValue,replaceText);
+                                            $list_ul.append(vcui.template(productItemTemplate,item));
+                                            break;
+                                        case "2":
+                                            $list_ul.append(vcui.template(productBannerTemplate,item));
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    break;
+                                }
+
+                                case "care": {
+                                    if (item.sale == "0" || item.sale == 0) {
+                                        item.sale = null;
+                                    }
+                                    item.price = item.price ? vcui.number.addComma(item.price) : null
                                     item.title = item.title.replaceAll(paramSearchedValue,replaceText);
-                                    $list_ul.append(vcui.template(productItemTemplate,item));
+                                    $list_ul.append(vcui.template(careItemTemplate,item));
                                     break;
-                                case "2":
-                                    $list_ul.append(vcui.template(productBannerTemplate,item));
-                                    break;
+                                }
+
                                 default:
                                     break;
                             }
@@ -1053,7 +1070,7 @@
                 });
 
                 // 필터안 체크박스 이벤트 처리
-                $('.ui_filter_accordion').on('change', 'input', function(e){
+                $('.ui_filter_accordion').on('click', 'ul li div.ui_accord_content div div input', function(e){
                     var name = e.target.name;
                     var valueStr = "";
                     $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
@@ -1071,7 +1088,7 @@
                 });
 
                 // 모바일 필터박스 열기
-                $('#filterModalLink').on('click', function(e){
+                $('div.result-area div.btn-filter a').on('click', function(e){
                     e.preventDefault();
                     $('.lay-filter').addClass('open');
                 });
@@ -1090,7 +1107,7 @@
                 });
 
                 // 초기화버튼 이벤트 처리
-                $('#filterResetBtn').on('click', function(){
+                $('.lay-filter open div.plp-filter-wrap div.btn-reset button').on('click', function(){
                     _self.reset();
                 });
 
@@ -1164,12 +1181,11 @@
             // setApplyFilter(obj, true) => 설정만 실행
             setApplyFilter:function(obj, noRequest) {
                 var _self = this;
-                
                 for(var key in obj){		
                     var $parent = $('#'+selectedTab).find('[data-id="'+ key +'"]');
                     var values = obj[key].split(',');
                     for(var i=0; i<values.length; i++){
-                        $parent.find('input[id="'+ values[i] +'"]').prop('checked', true);
+                        $parent.find('input[data-value="'+ values[i] +'"]').prop('checked', true);
                     }
                     if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
                         $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', obj[key]);
@@ -1192,11 +1208,11 @@
                 console.log(storageFilters, obj);
                 var keys = Object.keys(obj);
                 if(keys.length > 0) {
-                    $('#filterModalLink').parent().addClass('applied');
-                    $('#filterModalLink span').text('옵션 적용됨');
+                    $('#'+selectedTab).find('div.result-area div.btn-filter').parent().addClass('applied');
+                    $('#'+selectedTab).find('div.result-area div.btn-filter a span').text('옵션 적용됨');
                 } else {
-                    $('#filterModalLink').parent().removeClass('applied');
-                    $('#filterModalLink span').text('옵션필터');
+                    $('#'+selectedTab).find('div.result-area div.btn-filter').parent().removeClass('applied');
+                    $('#'+selectedTab).find('div.result-area div.btn-filter a span').text('옵션필터');
                 }
                 // 데이터를 호출함. 
                 if(!noRequest) _self.requestSearchProduct(searchedValue);

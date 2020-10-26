@@ -525,16 +525,32 @@
         max-width:1146px;
         margin:0 auto;
         padding: 0 40px;
-        .col-6 {
-            float: left;
-            width: 50%;
-            padding: 0 12px;
-        }
         .section {
             margin-top: 0;
         }
+        &.my-suggestions {
+            margin-top: 48px;
+        }
+        @include pc {
+            [class*="col-"] {
+                .field-wrap {
+                    min-height: 288px;
+                }
+            }
+            .col-6 {
+                float: left;
+                width: 50%;
+                padding-left: 24px;
+                &:first-child {
+                    padding-left: 0;
+                }
+            }
+        }
         @include mobile {
             padding: 0;
+            &.my-suggestions {
+                margin-top: 12px;
+            }
             .col-6 {
                 float: none;
                 width: 100%;
@@ -550,6 +566,13 @@
             }
         }
     }
+
+	.headline {
+		margin-bottom: 16px;
+		font-weight: 700;
+		font-size: 20px;
+		line-height: 32px;
+	}
 
     .outside-content {
         @include section;
