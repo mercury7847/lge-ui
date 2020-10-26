@@ -100,37 +100,51 @@
                     }
                     .col {
                         display:table-cell;
-                        padding:32px 24px;
                         border-right:1px solid #ddd;
                         vertical-align:middle;
+                        &.col1 {
+                            padding:32px;
+                        }
                     }
                 }
                 @include mobile {
+                    padding:0 16px;
                     border-bottom:none;
                     .row {
                         display:block;
-                        border-top:none;
+                        margin-top:28px;
+                        padding-top:28px;
+                        &:first-child {
+                            margin-top:0;
+                            padding-top:0;
+                        }
                         @include clearfix;
                         .col {
                             display:block;
                             padding:0;
                             border-right:none;
+                            &.col1 {
+                                padding:0;
+                            }
                         }
                     }
                 }
             }
             &.size3 {
                 .row {
-                    width:calc(100% - 164px);
+                    position:relative;
+                    width:100%;
+                    padding-right:164px;
                     @include mobile {
-                        width:100%;
+                        width:auto;
+                        padding-right:0;
                     }
                 }
                 .col1 {
-                    width:calc(100% - 161px - 164px);
+                    width:calc(100% - 164px - 164px);
                 }
                 .col2 {
-                    width:161px;
+                    width:164px;
                 }
                 .col3 {
                     width:164px;
@@ -142,7 +156,7 @@
                         }
                         .col2 {
                             width:auto;
-                            margin:20px 28px 0 100px;
+                            margin:20px 28px 0 84px;
                         }
                     }
                 }
@@ -184,6 +198,7 @@
             min-height:120px;
             padding-left:136px;
             @include mobile {
+                margin-left:-16px;
                 padding-left:100px;
                 min-height:100%;
             }
@@ -207,9 +222,6 @@
             }
             .infos {
                 position:relative;
-                @include mobile {
-                    margin-right:28px;
-                }
                 .flag-wrap {
                     margin-bottom:8px;
                     @include mobile {
@@ -234,43 +246,37 @@
                 }
                 .more {
                     padding-top:4px;
-                    font-size:0;
-                    @include mobile {
-                        padding-top:8px;
-                    }
-                    li {
-                        display:inline-block;
-                        position:relative;
-                        margin-right:8px;
-                        padding-right:9px;
-                        color:#616161;
-                        font-size:14px;
-                        line-height:20px;
-                        vertical-align:top;
-                        &::after {
-                            content:' ';
-                            position:absolute;
-                            top:50%;
-                            right:0;
-                            width:1px;
-                            height:12px;
-                            margin-top:-6px;
-                            background:#616161;
-                        }
-                        &:last-child {
-                            margin-right:0;
-                            padding-right:0;
-                            &::after {
-                                display:none;
-                            }
-                        }
-                    }
-                    .count {
-                        color:#616161;
-                        font-size:14px;
-                        line-height:20px;
+                    ul {
+                        font-size:0;
                         @include mobile {
-                            margin-top:4px;
+                            padding-top:8px;
+                        }
+                        li {
+                            display:inline-block;
+                            position:relative;
+                            margin-right:8px;
+                            padding-right:9px;
+                            color:#616161;
+                            font-size:14px;
+                            line-height:20px;
+                            vertical-align:top;
+                            &::after {
+                                content:' ';
+                                position:absolute;
+                                top:50%;
+                                right:0;
+                                width:1px;
+                                height:12px;
+                                margin-top:-6px;
+                                background:#616161;
+                            }
+                            &:last-child {
+                                margin-right:0;
+                                padding-right:0;
+                                &::after {
+                                    display:none;
+                                }
+                            }
                         }
                     }
                 }
@@ -478,6 +484,14 @@
                 border-top:5px solid transparent;
                 border-bottom:5px solid transparent;
                 border-left:6px solid #222;
+            }
+            &:last-child {
+                width:138px;
+                margin-right:0;
+                padding-right:0;
+                &::after {
+                    display:none;
+                }
             }
             @include mobile {
                 display:block;

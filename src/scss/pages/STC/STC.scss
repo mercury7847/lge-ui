@@ -3,11 +3,6 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
-// LG 페이
-.contents.lgpay-wrap {
-    @import "MKT5003";
-}
-
 // 모바일 스위치
 .contents.switch-wrap {
     @import "MKT5006";
@@ -16,4 +11,71 @@
 // 엘지페이
 .contents.lgpay-wrap {
     @import "MKT5003";
+}
+
+.card-wrap {
+    .info-txt {
+        margin-bottom: 48px;
+        @include font-small;
+        color: #616161;
+    }
+    .card-list {
+        @include clearfix;
+        @include font-medium;
+        > li {
+            float: left;
+            @include calc(width,50%,13px);
+            &:nth-child(even) {
+                margin-left: 26px;
+            }
+        }
+
+        [class*="-card"] {
+            position: relative;
+            margin-top: 20px;
+            padding-left: 104px;
+            background: no-repeat 0 0;
+            &:first-child {
+                margin-top: 0;
+            }
+            &[class*="kb"] {
+                background-image: url('/lg5-common/images/UTC/kb-logo.png');
+            }
+            &[class*="nh"] {
+                background-image: url('/lg5-common/images/UTC/nh-logo.png');
+            }
+            &[class*="sh"] {
+                background-image: url('/lg5-common/images/UTC/sh-logo.png');
+            }
+        }
+        dt {
+            font-weight: 700;
+        }
+    }
+
+    @include mobile {
+        .info-txt {
+            margin-bottom: 24px;
+            font-size: 12px;
+            line-height: 16px;
+        }
+        .card-list {
+            @include font-small;
+            > li {
+                float: none;
+                width: 100%;
+                &:nth-child(even) {
+                    margin-left: 0;
+                }
+            }
+
+            [class*="-card"] {
+                padding-left: 52px;
+                background-size: 40px 24px;
+            }
+            dt {
+                margin-bottom: 4px;
+            }
+        }
+    }
 }

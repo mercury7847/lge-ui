@@ -1,35 +1,15 @@
-<div class="box">
-    <div class="info-wrap">
-        <ul class="infos">
-            @@for ( var i=0; i < infos.length; i++ ) {
-            <li>`+infos[i]+`</li>
-            }
-        </ul>
-    </div>
-    <div class="tbl-layout @@size">
-        <!-- thead -->
-        <div class="thead" aria-hidden="true">
-            @@for ( var j=0; j < th.length; j++ ) {
-            <span class="th col`+[j+1]+`">`+th[j]+`</span>
-            }
-        </div>
-        <!-- // thead -->
-        <!-- tbody -->
-        <div class="tbody">
             <!-- row -->
             <div class="row">
                 @@if ( context.col1 ) {
                 <div class="col col1">
                     <span class="blind">@@col1.blind</span>
-                    <div class="product-info">
+                    <div class="product-info count-type">
                         <a href="#n" class="thumb"><img src="@@col1.productType.thumb" alt="@@col1.productType.name"></a>
                         <div class="infos">
-                            <div class="flag-wrap">
-                                <span class="flag"><span class="blind">케어솔루션 종류</span>@@col1.productType.flag</span>
-                            </div>
-                            <p class="name"><a href="#n"><span class="blind">제품명</span>@@col1.productType.name</a></p>
-                            <p class="e-name"><span class="blind">영문제품번호</span>@@col1.productType.name2</p>
-                            <div class="btm-wrap">
+                            <div class="top-wrap">
+                                <p class="name"><a href="#n"><span class="blind">제품명</span>@@col1.productType.name</a></p>
+                                <p class="e-name"><span class="blind">영문제품번호</span>@@col1.productType.name2</p>
+                                @@if ( context.col1.productType.more ) {
                                 <div class="more">
                                     <span class="blind">제품스펙</span>
                                     <ul>
@@ -38,9 +18,11 @@
                                         }
                                     </ul>
                                 </div>
-                                @@if ( context.col1.productType.price ) {
-                                <p class="price"><span class="blind">가격</span>1,760,000원</p>
                                 }
+                            </div>
+                            <div class="btm-wrap">
+                                <p class="count">수량 : 1</p>
+                                <p class="price"><span class="blind">가격</span>@@col1.productType.price</p>
                             </div>
                         </div>
                     </div>
@@ -63,6 +45,9 @@
                             @@if ( context.col2.stateType.btn ) {
                             <a href="#n" class="btn bd-black btn-small"><span>@@col2.stateType.btn</span></a>
                             }
+                            @@if ( context.col2.stateType.btn2 ) {
+                            <a href="#n" class="btn bd-black btn-small"><span>@@col2.stateType.btn2</span></a>
+                            }
                             @@if ( context.cancel === "on" ) {
                             <button type="button" class="btn bd-black btn-small btn-cancel"><span>취소신청</span></button>
                             }
@@ -76,13 +61,3 @@
                 }
             </div>
             <!-- // row -->
-        </div>
-        <!-- // tbody -->
-
-    </div>
-    @@if ( context.btns ) {
-    <div class="btns">
-        <a href="#n" class="btn-link small">@@btns</a>
-    </div>
-    }
-</div>

@@ -11,8 +11,8 @@
             @@include('./common/modules/page-header.html', {
                 "pageTitle": "주문/배송 조회",
                 "pageArr" : [
-                    { "page" : "구매<em class='count'>2</em>", "on" : "" },
-                    { "page" : "케어솔루션 청약내역<em class='count'>1</em>", "on" : "on" },
+                    { "page" : "구매<em class='count'>2</em>", "on" : "on" },
+                    { "page" : "케어솔루션 청약내역<em class='count'>1</em>", "on" : "" },
                 ]
             })
             <!-- mypage -->
@@ -20,10 +20,9 @@
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
-                            "sect2" : [
-                                { "on": "on", "page": "계약현황" },
-                                { "on": "", "page": "납부내역" },
-                                { "on": "", "page": "방문알리미" }
+                            "sect1" : [
+                                { "on": "on", "page": "주문/배송 조회" },
+                                { "on": "", "page": "쿠폰" }
                             ]
                         })
                         <div class="lnb-contents">
@@ -44,112 +43,195 @@
 
                                     <!-- nodata -->
                                     <div class="no-data mg-type">
-                                        <p>고객님의 신청내역이 없습니다.</p>
+                                        <p>고객님의 구매내역이 없습니다.</p>
                                     </div>
                                     <!-- // nodata -->
 
                                     <!-- list -->
                                     <div class="info-tbl-wrap">
                                         <!-- loop -->
-                                        @@include('./common/modules/info-tbl-wrap.html', {
+                                        @@include('./common/modules/info-tbl-wrap-infos.html', {
                                             "infos" : [
-                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>1</em>건"
+                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>2</em>건"
                                             ],
-                                            "btns" : "케어솔루션 청약내역 상세보기",
                                             "size" : "size3",
                                             "th" : [
                                                 "제품정보", "주문상태", "취소"
-                                            ], 
-                                            "col1" : {
-                                                "blind" : "제품정보",
-                                                "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                    "flag" : "렌탈 (케어솔루션)",
-                                                    "name" : "LG TROMM 건조기 스팀 ThinQ",
-                                                    "more" : [
-                                                        "<span class='blind'>제품종류</span>건조기",
-                                                        "<span class='blind'>제품옵션</span>Silver"
-                                                    ]
-                                                }
+                                            ]
+                                        })
+                                        @@loop('./common/modules/info-tbl-wrap-loop.html', [
+                                            {
+                                                "col1" : {
+                                                    "blind" : "제품정보",
+                                                    "productType" : {
+                                                        "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG TROMM 건조기 스팀 ThinQ",
+                                                        "name2" : "RH9WGANR.AKOR",
+                                                        "more" : [
+                                                            "주요스펙1",
+                                                            "주요스펙2"
+                                                        ],
+                                                        "price" : "1,760,000원"
+                                                    }
+                                                },
+                                                "col2" : {
+                                                    "blind" : "주문상태",
+                                                    "stateType" : {
+                                                        "tit" : "배송준비중",
+                                                        "desc" : "09.01(화) 배송희망일",
+                                                        "btn" : "배송문의"
+                                                    }
+                                                },
+                                                "cancel" : "on"
                                             },
-                                            "col2" : {
-                                                "blind" : "주문상태",
-                                                "stateType" : {
-                                                    "tit" : "청약신청 완료"
-                                                }
-                                            },
-                                            "cancel" : "on"
+                                            {
+                                                "col1" : {
+                                                    "blind" : "제품정보",
+                                                    "productType" : {
+                                                        "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                        "name" : "LG 디오스 상냉장하냉동 모델명 최대 2줄까지 노출",
+                                                        "name2" : "OLED55BXPUA",
+                                                        "more" : [
+                                                            "그레이",
+                                                            "870L"
+                                                        ],
+                                                        "price" : "1,760,000원"
+                                                    }
+                                                },
+                                                "col2" : {
+                                                    "blind" : "주문상태",
+                                                    "stateType" : {
+                                                        "tit" : "배송완료",
+                                                        "desc" : "09.01(화) 도착",
+                                                        "btn" : "제품리뷰"
+                                                    }
+                                                },
+                                                "cancel" : "on"
+                                            }
+                                        ])
+                                        @@include('./common/modules/info-tbl-wrap-bottom.html', {
+                                            "btns" : "주문/배송 상세보기"
                                         })
                                         <!-- // loop -->
 
                                         <!-- loop -->
-                                        @@include('./common/modules/info-tbl-wrap.html', {
+                                        @@include('./common/modules/info-tbl-wrap-infos.html', {
                                             "infos" : [
-                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>1</em>건"                                                
+                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>2</em>건"
                                             ],
-                                            "btns" : "케어솔루션 청약내역 상세보기",
                                             "size" : "size3",
                                             "th" : [
                                                 "제품정보", "주문상태", "취소"
-                                            ], 
-                                            "col1" : {
-                                                "blind" : "제품정보",
-                                                "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                    "flag" : "케어십",
-                                                    "name" : "LG 퓨리케어 상하좌우 냉온정수기 모델명 2줄까지 가능",
-                                                    "more" : [
-                                                        "<span class='blind'>제품번호</span>WD502AP.AKOR",
-                                                        "<span class='blind'>제품종류</span>정수기",
-                                                        "<span class='blind'>제품옵션</span>Silver"
-                                                    ]
-                                                }
+                                            ]
+                                        })
+                                        @@loop('./common/modules/info-tbl-wrap-loop.html', [
+                                            {
+                                                "col1" : {
+                                                    "blind" : "제품정보",
+                                                    "productType" : {
+                                                        "thumb" : "/lg5-common/images/dummy/@img-product3.jpg",
+                                                        "name" : "LG DIOS 식기세척기 트루스팀 (12인용)",
+                                                        "name2" : "RH9WGANR.AKOR",
+                                                        "more" : [
+                                                            "주요스펙1",
+                                                            "주요스펙2"
+                                                        ],
+                                                        "price" : "1,760,000원"
+                                                    }
+                                                },
+                                                "col2" : {
+                                                    "blind" : "주문상태",
+                                                    "stateType" : {
+                                                        "tit" : "주문접수",
+                                                        "desc" : "09.01(화) 배송희망일"
+                                                    }
+                                                },
+                                                "cancel" : "on"
                                             },
-                                            "col2" : {
-                                                "blind" : "주문상태",
-                                                "stateType" : {
-                                                    "tit" : "배송준비중",
-                                                    "desc" : "09.19(금) 배송예정",
-                                                    "btn" : "배송문의"
-                                                }
-                                            },
-                                            "cancel" : "off"
+                                            {
+                                                "col1" : {
+                                                    "blind" : "제품정보",
+                                                    "productType" : {
+                                                        "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                        "name" : "양문형 냉장고 야채실 덮개 (소모품)",
+                                                        "name2" : "ACQ76008501",
+                                                        "price" : "50,000원"
+                                                    }
+                                                },
+                                                "col2" : {
+                                                    "blind" : "주문상태",
+                                                    "stateType" : {
+                                                        "tit" : "배송중",
+                                                        "desc" : "09.01(화) 배송희망일",
+                                                        "btn" : "배송문의",
+                                                        "btn2" : "배송조회",
+                                                    }
+                                                },
+                                                "cancel" : "off"
+                                            }
+                                        ])
+                                        @@include('./common/modules/info-tbl-wrap-bottom.html', {
+                                            "btns" : "주문/배송 상세보기"
                                         })
                                         <!-- // loop -->
 
                                         <!-- loop -->
-                                        @@include('./common/modules/info-tbl-wrap.html', {
+                                        @@include('./common/modules/info-tbl-wrap-infos.html', {
                                             "infos" : [
-                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>1</em>건"
+                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>2</em>건"
                                             ],
-                                            "btns" : "케어솔루션 청약내역 상세보기",
                                             "size" : "size3",
                                             "th" : [
                                                 "제품정보", "주문상태", "취소"
-                                            ], 
-                                            "col1" : {
-                                                "blind" : "제품정보",
-                                                "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product3.jpg",
-                                                    "flag" : "케어십",
-                                                    "name" : "LG TROMM 스타일러 블랙에디션",
-                                                    "more" : [
-                                                        "<span class='blind'>제품번호</span>RH9WGANR.AKOR",
-                                                        "<span class='blind'>제품종류</span>스타일러",
-                                                        "<span class='blind'>제품옵션</span>Black"
-                                                    ],
-                                                    "review" : true
-                                                }
+                                            ]
+                                        })
+                                        @@loop('./common/modules/info-tbl-wrap-loop.html', [
+                                            {
+                                                "col1" : {
+                                                    "blind" : "제품정보",
+                                                    "productType" : {
+                                                        "thumb" : "/lg5-common/images/dummy/@img-product4.jpg",
+                                                        "name" : "LG DIOS 식기세척기 트루스팀 (12인용)",
+                                                        "name2" : "RH9WGANR.AKOR",
+                                                        "more" : [
+                                                            "주요스펙1",
+                                                            "주요스펙2"
+                                                        ],
+                                                        "price" : "1,760,000원"
+                                                    }
+                                                },
+                                                "col2" : {
+                                                    "blind" : "주문상태",
+                                                    "stateType" : {
+                                                        "tit" : "결제완료",
+                                                        "desc" : "09.01(화) 배송희망일"
+                                                    }
+                                                },
+                                                "cancel" : "on"
                                             },
-                                            "col2" : {
-                                                "blind" : "주문상태",
-                                                "stateType" : {
-                                                    "tit" : "계약생성 완료",
-                                                    "desc" : "09.01(화) 도착",
-                                                    "btn" : "배송문의"
-                                                }
-                                            },
-                                            "cancel" : "off"
+                                            {
+                                                "col1" : {
+                                                    "blind" : "제품정보",
+                                                    "productType" : {
+                                                        "thumb" : "/lg5-common/images/dummy/@img-product3.jpg",
+                                                        "name" : "양문형 냉장고 야채실 덮개 (소모품)",
+                                                        "name2" : "ACQ76008501",
+                                                        "price" : "50,000원"
+                                                    }
+                                                },
+                                                "col2" : {
+                                                    "blind" : "주문상태",
+                                                    "stateType" : {
+                                                        "tit" : "배송완료",
+                                                        "desc" : "09.01(화) 도착",
+                                                        "btn1" : "제품리뷰",
+                                                    }
+                                                },
+                                                "cancel" : "off"
+                                            }
+                                        ])
+                                        @@include('./common/modules/info-tbl-wrap-bottom.html', {
+                                            "btns" : "주문/배송 상세보기"
                                         })
                                         <!-- // loop -->
                                     </div>
@@ -169,17 +251,16 @@
                             </div>
 
                             <div class="section">
-                                <h3 class="sec-tit">청약 계약 진행단계 안내</h3>
+                                <h3 class="sec-tit">주문/배송 진행단계 안내</h3>
                                 <div class="cont-box">
                                     @@include('./common/modules/contract-steps.html', {
+                                        "delivery" : true,
                                         "steps" : [
-                                            { "dt" : "청약신청 완료", "dd" : "청약신청이 완료 되었습니다." },
                                             { "dt" : "주문접수", "dd" : "주문이 접수되었습니다." },
                                             { "dt" : "결제완료", "dd" : "결제가 완료되었습니다." },
                                             { "dt" : "배송준비중", "dd" : "제품을 배송할 기사를 배정중입니다." },
                                             { "dt" : "배송중", "dd" : "제품이 고객님께 배송중입니다." },
-                                            { "dt" : "배송완료", "dd" : "제품이 고객님께 전달 완료되었습니다." },
-                                            { "dt" : "계약생성 완료", "dd" : "계약생성이 완료되었습니다." }
+                                            { "dt" : "배송완료", "dd" : "제품이 고객님께 전달 완료되었습니다." }
                                         ]
                                     })
 
