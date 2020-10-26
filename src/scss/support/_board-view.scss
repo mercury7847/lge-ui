@@ -217,5 +217,8 @@
             margin-top:48px;
             text-align:center;
         }
+        @include mobile {
+            padding: 40px 20px 56px;
+        }
     }
 }
