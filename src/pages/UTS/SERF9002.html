@@ -24,7 +24,7 @@
                     <ul class="tabs">
                         <li class="on" data-label="전체"><a href="#all">전체(210)<em class="blind">선택됨</em></a></li>
                         <li data-label="제품"><a href="#product" data-url-search="/lg5-common/data-ajax/search/search_product.json">제품(59)</a></li>
-                        <li data-label="케어솔루션"><a href="#care">케어솔루션(2)</a></li>
+                        <li data-label="케어솔루션"><a href="#care" data-url-search="/lg5-common/data-ajax/search/search_care.json">케어솔루션(2)</a></li>
                         <li data-label="이벤트"><a href="#event">이벤트(5)</a></li>
                         <li data-label="스토리"><a href="#story">스토리(18)</a></li>
                         <li data-label="케어용품/소모품"><a href="#additional">케어용품/소모품(32)</a></li>
@@ -604,10 +604,7 @@
                                         ])
                                     </ul>
                                 </div>
-                                <div class="pagination" data-page="5" data-visible-count="7" data-total-count="33"></div>
-                                <!-- @@include('./common/modules/pagination.html', {
-                                    count: 5
-                                }) -->
+                                <div class="pagination" data-page="6" data-visible-count="7" data-total-count="33"></div>
                             </div>
                             <div class="mobile-service-link">
                                 <ul>
@@ -618,6 +615,99 @@
                         </div>
                     </div>
 
+                    <div class="search-result-wrap care" id="care">
+                        @@include('./common/modules/list-filter.html', {
+                            "care" : true
+                        })
+                        <div class="result-area">
+                            <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->
+                            <div class="btn-filter">
+                                <a href="#n" id="filterModalLink" class="ico-filter"><span class="blind">옵션필터</span></a>
+                            </div>
+                            @@include('./common/modules/list-sorting.html', {
+                                "select" : [
+                                    { "option" : "정확도순" },
+                                    { "option" : "인기순" },
+                                    { "option" : "최신순" },
+                                    { "option" : "가격 높은순" },
+                                    { "option" : "가격 낮은순" }
+                                ]
+                            })
+                            <div class="result-list-wrap">
+                                <div class="list-wrap">
+                                    <ul class="product-items">
+                                        @@loop('./common/modules/product-item.html', [
+                                            {
+                                                "search" : true,
+                                                "badgeType" : "large",
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "flags" : true,
+                                                "review" : true,
+                                                "isReview" : true,
+                                                "care" : true
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "flags" : true,
+                                                "review" : true,
+                                                "care" : true
+                                            }, {
+                                                "search" : true,
+                                                "badgeType" : "large",
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "flags" : true,
+                                                "review" : true,
+                                                "care" : true
+                                            }, {
+                                                "search" : true,
+                                                "badgeType" : "large",
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "flags" : true,
+                                                "review" : true,
+                                                "isReview" : true,
+                                                "care" : true
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "flags" : true,
+                                                "review" : true,
+                                                "isReview" : true,
+                                                "care" : true
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "flags" : true,
+                                                "review" : true,
+                                                "isReview" : true,
+                                                "care" : true
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "flags" : true,
+                                                "review" : true,
+                                                "care" : true
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "flags" : true,
+                                                "review" : true,
+                                                "care" : true
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "flags" : true,
+                                                "review" : true,
+                                                "isReview" : true,
+                                                "care" : true
+                                            }
+                                        ])
+                                    </ul>
+                                </div>
+                                <div class="pagination" data-page="5" data-visible-count="7" data-total-count="33"></div>
+                            </div> 
+                        </div>
+                    </div>
+                    
                     <!-- 찾으시는 제품이 없으신가요? -->
                     <div class="box-list recommend-list-wrap">
                         <h3 class="title">찾으시는 제품이 없으신가요?</h3>

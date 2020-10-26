@@ -425,22 +425,6 @@
         margin-top: 32px;
     }
     
-    .divisions {
-        [class*="col-"] {
-            .field-wrap {
-                min-height: 288px;
-            }
-        }
-        @include mobile {
-            [class*="col-"] {
-                .field-wrap {
-                    min-height: auto;
-                }
-            }   
-        }
-    }
-
-    
 
     /* page */
     &.email-inquiry {

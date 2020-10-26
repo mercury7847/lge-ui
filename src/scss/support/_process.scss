@@ -102,9 +102,10 @@
     ul {
         position:relative;
         height:8px;
-        border-radius:4ps;
+        border-radius:4px;
         background:#f4f4f4;
         li {
+            overflow:hidden;
             position:absolute;
             bottom:0;
             width:8px;
@@ -112,41 +113,32 @@
             border-radius:4px;
             background:#808080;
             &:nth-child(1) {
-                left:0;
+                left:56px;
             }
             &:nth-child(2) {
                 left:50%;
                 transform:translateX(-50%);
             }
             &:nth-child(3) {
-                right:0;
+                right:56px;
             }
             .txt {
-                display:none;
                 position:absolute;
-                top:-42px;
-                left:-9px;
-                padding-left:34px;
+                bottom:100%;
+                left:50%;
+                padding-bottom:48px;
                 color:#ec455a;
                 font-size:14px;
                 font-weight:700;
-                line-height:34px;
                 white-space:nowrap;
-                &:before {
-                    content:'';
-                    position:absolute;
-                    left:0;
-                    width:26px;
-                    height:34px;
-                    background:url('/lg5-common/images/icons/icon-alarm.svg') no-repeat 100%;
-                }
+                background:url('/lg5-common/images/icons/icon-alarm2.svg') no-repeat 100%;
+                background-size:26px 34px;
+                background-position:center bottom 8px;
+                transform:translateX(-50%);
             }
-
             &.on {
+                overflow:visible;
                 background:#ec455a;
-                .txt {
-                    display:block;
-                }
             }
         }
     }
