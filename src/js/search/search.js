@@ -223,7 +223,7 @@
                 selectedTab = self.$tab.find('ul.tabs li a').eq(0).attr('href').replace("#", "");
                 
                 //$('.lay-filter').hide();
-                $('.lay-filter').removeClass('open');
+                $('.lay-filter').addClass('search-all');
 
                 var _self = this;
                 _self.updateRecentSearcheList();
@@ -249,9 +249,11 @@
                     selectedTab = $(this).attr('href').replace("#", "");
                     switch(selectedTab) {
                         case "all":
+                            $('.lay-filter').addClass('search-all');
                             self.$buttonSearch.trigger('click');
                             break;
                         default:
+                            $('.lay-filter').removeClass('open search-all');
                             _self.requestSearchProduct(searchedValue);
                             break;
                     }
@@ -841,9 +843,6 @@
                         self.$resultLayer.hide();
                     }
 
-                    //$('.lay-filter').hide();
-                    $('.lay-filter').removeClass('open');
-
                 }).fail(function(d){
                     alert(d.status + '\n' + d.statusText);
                 });
@@ -1033,9 +1032,6 @@
 
                     savedFilterArr = newFilterArr;
                     _self.updateFilter(newFilterArr);
-
-                    //$('.lay-filter').show();
-                    $('.lay-filter').removeClass('open');
 
                 }).fail(function(d){
                     alert(d.status + '\n' + d.statusText);
