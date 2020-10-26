@@ -497,7 +497,8 @@
                 display:block;
                 width:100%;
                 min-height:40px;
-                margin-top:40px;
+                margin-top:0;
+                margin-bottom:40px;
                 padding-right:0;
                 padding-left:80px;
                 &::before {
@@ -509,7 +510,8 @@
                     margin-bottom:0;
                 }
                 &::after {
-                    top:-32px;
+                    top:initial;
+                    bottom:-32px;
                     left:50%;
                     width:24px;
                     height:24px;
@@ -518,11 +520,9 @@
                     background-image:url('/lg5-common/images/icons/icon-btn-arrow-bottom.svg');
                     background-size:100%;
                 }
-                &:first-child {
-                    margin-top:0;
-                    &::after {
-                        display:none;
-                    }
+                &:last-child {
+                    width:100%;
+                    margin-bottom:0;
                 }
             }
             dl {
