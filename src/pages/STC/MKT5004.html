@@ -1,22 +1,89 @@
 <!DOCTYPE html>
 <html lang="ko">
 @@include('./common/head.html', {
-    pageCSS: ["UTS/UTS"]
+    pageCSS: ["STC/STC"]
 })
 <body>
 <div class="wrap">
-<!--    include('./common/header.html')-->
 
-    <div class="container">
+    <button type="button" data-href="#laypop01" data-control="modal" class="btn pink"><span>제휴카드 안내</span></button>
 
-        <div class="contents lgpay-wrap">
-            <div class="cont-wrap">
+
+    <article id="laypop01" class="popup-wrap full">
+        <header class="pop-header">
+            <h1 class="tit"><span>제휴카드 안내</span></h1>
+        </header>
+        <section class="pop-conts no-footer">
+            <div class="card-wrap">
+                <p class="info-txt">더 나은 서비스를 위해 지속적으로 카드가 추가될 예정입니다.</p>
+                <ul class="card-list">
+                    <li class="sh-card">
+                        <dl>
+                            <dt>신한카드</dt>
+                            <dd>개인, 법인, 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="ld-card">
+                        <dl>
+                            <dt>롯데카드</dt>
+                            <dd>개인, 법인, 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="kb-card">
+                        <dl>
+                            <dt>국민카드</dt>
+                            <dd>개인, 법인, 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="bc-card">
+                        <dl>
+                            <dt>BC카드</dt>
+                            <dd>BC자체, 우리, IBK기업, SC제일, NH농협, 대구은행, 경남은행, 부산은행, 전북은행, 수협, 광주은행, 제주은행 등 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="hd-card">
+                        <dl>
+                            <dt>현대카드</dt>
+                            <dd>개인, 법인, 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="nh-card">
+                        <dl>
+                            <dt>NH 농협카드</dt>
+                            <dd>개인, 법인 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="hn-card">
+                        <dl>
+                            <dt>하나카드</dt>
+                            <dd>개인, 법인, 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="ss-card">
+                        <dl>
+                            <dt>삼성카드</dt>
+                            <dd>개인, 법인 체크 가족카드 가능</dd>
+                        </dl>
+                    </li>
+                    <li class="kko-card">
+                        <dl>
+                            <dt>카카오뱅크</dt>
+                            <dd>개인 체크카드 가능</dd>
+                        </dl>
+                    </li>
+                </ul>
+                <div class="bullet-list-box">
+                    @@include('./common/modules/bullet-list.html', {
+                        "bulletTxt" : [
+                            "카드사 상품에 따라 지원 여부가 상이하므로, 카드사 고객센터에 문의하시기 바랍니다."
+                        ]
+                    })
+                </div>
 
             </div>
-        </div>
-    </div>
-
-<!--    include('./common/footer.html')-->
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
 </div>
 </body>
 </html>

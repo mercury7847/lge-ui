@@ -47,3 +47,15 @@
         margin-top: 0;
     }
 }
+
+.bullet-list-box {
+    margin-top: 32px;
+    padding: 24px 35px;
+    background-color: #f4f4f4;
+    .bullet-list {
+        margin-top: 0;
+    }
+    @include mobile {
+        padding: 12px 20px;
+    }
+}
