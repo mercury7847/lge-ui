@@ -26,7 +26,13 @@
         top: 0;
         left: 50%;
         transform: translateX(-642px);
+        @include mobile {
+            position: fixed;
+            left: 0;
+            transform: translateX(0);
+        }
     }
+
     @media screen and (max-width: 1780px) {
         display:none;
         position:fixed;
