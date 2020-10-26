@@ -2,6 +2,7 @@
     padding: 48px 40px 120px;
     background-color: #fff;
 }
+
 // Top Visual
 .top-visual-area {
     position: relative;
@@ -70,9 +71,9 @@
             float: left;
             width: 436px;
             padding-right: 40px;
-            
+
         }
-        
+
         .lgpay-visual {
             float: right;
             max-width: 848px;
@@ -91,6 +92,162 @@
             }
             .lgpay-visual {
                 float: left;
+            }
+        }
+    }
+}
+
+.slide-wrap.carousel-type {
+    &.carousel-1 {
+        &.lg-pay {
+            max-width: (1284px + 12px);
+            margin: 0 auto;
+            .indi-wrap {
+                position: absolute;
+                bottom: 40px;
+                margin-top: 0;
+
+            }
+            @include mobile {
+                max-width: 100%;
+                padding: 16px 0 53px;
+                .indi-wrap {
+                    bottom: 28px;
+                }
+            }
+            .slide-controls {
+                .btn-arrow {
+                    &.prev,
+                    &.next {
+                        transform: translateX(0);
+                    }
+                    &.prev {
+                        left: -16px;
+                    }
+                    &.next {
+                        right: -16px;
+                    }
+                }
+                @media screen and (max-width: 1380px) {
+                    .btn-arrow {
+                        &.prev {
+                            left: 20px;
+                        }
+                        &.next {
+                            right: 20px;
+                        }
+                    }
+                }
+            }
+            .slide-content {
+                .slide-track {
+                    height: 420px;
+                    @include mobile {
+                        height: auto;
+                    }
+                }
+                .slide-conts {
+                    height: 420px;
+                    .inner {
+                        display: table;
+                        width: 100%;
+                        max-width: (847px + 192px);
+                        margin: 0 auto;
+                        padding: 0 96px;
+                        font-size: 0;
+                    }
+                    .slide-info-area {
+                        display: table-cell;
+                        width: 396px;
+                        padding-top: 78px;
+                        //margin-right: 93px;
+                        .boxs {
+                            .step {
+                                font-weight: 700;
+                                font-size: 20px;
+                                line-height: 30px;
+                                color: #797979;
+                                letter-spacing: -.3px;
+                            }
+                            .title {
+                                margin: 8px 0 24px;
+                                font-weight: 700;
+                                font-size: 32px;
+                                line-height: 38px;
+                            }
+                            .desc {
+                                @include font-medium;
+                                small {
+                                    display: block;
+                                    margin-top: 8px;
+                                    color: #808080;
+                                }
+                            }
+                            .btn-area {
+                                margin-top: 44px;
+                            }
+                        }
+                    }
+                    .visual-area {
+                        display: table-cell;
+                        width: 358px;
+                        height: 268px;
+                        padding-top: 62px;
+                        text-align: right;
+                        vertical-align: top;
+                        img {
+                            width: 100%;
+                            max-width: 358px;
+                            height: 268px;
+                        }
+                    }
+
+                    @include mobile {
+                        height: auto;
+                        .inner {
+                            display: block;
+                            max-width: 100%;
+                            padding: 0 20px;
+                        }
+                        .slide-info-area {
+                            display: block;
+                            width: 100%;
+                            height: 205px;
+                            padding-top: 0;
+                            .boxs {
+                                .step {
+                                    font-size: 14px;
+                                    line-height: 18px;
+                                    color: #ccc;
+                                }
+                                .title {
+                                    margin: 6px 0 16px;
+                                    font-size: 24px;
+                                    line-height: 29px;
+                                }
+                                .desc {
+                                    font-size: 14px;
+                                    line-height: 18px;
+                                }
+                                .btn-area {
+                                    margin-top: 32px;
+                                }
+                            }
+                        }
+                        .visual-area {
+                            display: block;
+                            width: 100%;
+                            height: auto;
+                            padding-top: 28px;
+                            border-radius: 4px;
+                            img {
+                                max-width: 100%;
+                                height: auto;
+                                border-radius: 4px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
