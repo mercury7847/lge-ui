@@ -1,0 +1,97 @@
+.cont-wrap {
+    padding: 48px 40px 120px;
+    background-color: #fff;
+}
+// Top Visual
+.top-visual-area {
+    position: relative;
+    .visual-img {
+        &.full {
+            width: 100%;
+        }
+        &.wide {
+            max-width: 1920px;
+        }
+        img {
+            max-width: 100%;
+        }
+    }
+    .visual-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        .inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            max-width: 1284px;
+            padding: 0 56px;
+            color: #fff;
+            transform: translate(-50%, -50%);
+            .tit {
+                font-size: 40px;
+                line-height: 46px;
+                color: #fff;
+            }
+            .desc {
+                margin-top: 4px;
+                font-size: 20px;
+                line-height: 30px;
+                color: #fff;
+            }
+            .desc2 {
+                margin-top: 4px;
+                font-size: 14px;
+                line-height: 20px;
+                color: #ccc;
+            }
+            .btn-area {
+                margin-top: 52px;
+                .btn {
+                    color: #fff;
+                    border-color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.lgpay-content {
+    width: 100%;
+    max-width: calc(1284px + 60px);
+    margin: 0 auto;
+    padding: 0 30px;
+    .lgpay-introdution {
+        @include clearfix;
+        .lgpay-text {
+            float: left;
+            width: 436px;
+            padding-right: 40px;
+            
+        }
+        
+        .lgpay-visual {
+            float: right;
+            max-width: 848px;
+            img {
+                max-width: 100%;
+                width: 100%;
+                height: auto;
+                vertical-align: top;
+            }
+        }
+        &.right {
+            .lgpay-text {
+                float: right;
+                padding-right: 0;
+                padding-left: 40px;
+            }
+            .lgpay-visual {
+                float: left;
+            }
+        }
+    }
+}
