@@ -647,11 +647,17 @@
                 dataType : "json",
                 data : data
             }).done(function (result) {
+                
+                if(result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != ""){
+                    location.href = result.ssoCheckUrl;                    
+                    return;
+                }
+
                 if(result.status != 'success'){
                     alert(result.message ? result.message : '오류발생');
                     return;
                 }
-                callback(result);
+                if(callback) callback(result);
             }).fail(function(err){
                 alert(err.message);
             });

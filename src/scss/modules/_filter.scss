@@ -26,6 +26,10 @@
         top: 0;
         left: 50%;
         transform: translateX(-642px);
+
+        &.search-all {
+            display: none;
+        }
     }
 
     @media screen and (max-width: 1780px) {
