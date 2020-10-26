@@ -143,6 +143,68 @@
             }
         }
     }
+
+    &.shadow-box-list {
+        overflow: visible;
+        .product-lists {
+            //margin-top: 0;
+            li.lists {
+                @include mobile {
+                    width: 100%;
+                    margin-top: 16px;
+                }
+                div {
+                    background:#fff;
+                    box-shadow: 0 3px 14px 0 rgba(0, 0, 0, 0.06);
+                }
+                dl {
+                    padding:0 0 32px;
+                     dt {
+                         .img {
+                             max-width: 226px;
+                             margin: 0 auto 26px;
+                         }
+                         p {
+                             padding:0 28px;
+                             &.name {
+                                 font-size: 20px;
+                                 line-height: 32px;
+                             }
+                         }
+                     }
+                    dd {
+                        padding:0 28px;
+                        .infos {
+                            li {
+                                color: #616161;
+                            }
+                        }
+                    }
+                    @include mobile {
+                        padding-bottom: 26px;
+                        text-align: left;
+                        dt {
+                            .img {
+                                max-width: 172px;
+                                margin: 0 auto 18px;
+                            }
+                            p {
+                                padding:0 20px;
+                                &.name {
+                                    font-size: 16px;
+                                    line-height: 23px;
+                                }
+                            }
+                        }
+                        dd {
+                            margin-top: 8px;
+                            padding:0 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 // link button list

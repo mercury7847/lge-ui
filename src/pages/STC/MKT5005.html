@@ -1,22 +1,63 @@
 <!DOCTYPE html>
 <html lang="ko">
 @@include('./common/head.html', {
-    pageCSS: ["UTS/UTS"]
+    pageCSS: ["STC/STC"]
 })
 <body>
 <div class="wrap">
-<!--    include('./common/header.html')-->
 
-    <div class="container">
+    <button type="button" data-href="#laypop01" data-control="modal" class="btn pink"><span>LG 페이 사용 가능 단말기</span></button>
 
-        <div class="contents lgpay-wrap">
-            <div class="cont-wrap">
 
+    <article id="laypop01" class="popup-wrap full">
+        <header class="pop-header">
+            <h1 class="tit"><span>LG 페이 사용 가능 단말기</span></h1>
+        </header>
+        <section class="pop-conts no-footer">
+            <div class="device-wrap">
+                <div class="product-list-wrap shadow-box-list">
+                    <ul class="product-lists ui_flexible_height">
+                        @@loop('./common/modules/product-list-loop.html', [
+                            {
+                                "img" : "/lg5-common/images/STC/img-prod01.jpg",
+                                "name" : "LG VELVET",
+                                "info" : ["LG VELVET"]
+                            }, {
+                                "img" : "/lg5-common/images/STC/img-prod02.jpg",
+                                "name" : "V 시리즈",
+                                "info" : ["V50S ThinQ, V50 ThinQ, V40 ThinQ, V35 ThinQ, V30, V30+, V30S, V30S+"]
+                            }, {
+                                "img" : "/lg5-common/images/STC/img-prod03.jpg",
+                                "name" : "G 시리즈",
+                                "info" : ["G8 ThinQ, G7 ThinQ, G7+ ThinQ, G6+, G6, G6 32GB"]
+                            }, {
+                                "img" : "/lg5-common/images/STC/img-prod02.jpg",
+                                "name" : "Q 시리즈",
+                                "info" : ["Q61, Q51, Q70, Q9, Q7 BTS EDITION, Q8(2018), Q7, Q7+"]
+                            }, {
+                                "img" : "/lg5-common/images/STC/img-prod03.jpg",
+                                "name" : "X 시리즈",
+                                "info" : ["X6(2019), X4(2019), X5, X4+, X4"]
+                            }, {
+                                "img" : "/lg5-common/images/STC/img-prod01.jpg",
+                                "name" : "V 시리즈",
+                                "info" : ["V50S ThinQ, V50 ThinQ, V40 ThinQ, V35 ThinQ, V30, V30+, V30S, V30S+"]
+                            }
+                        ])
+                    </ul>
+                </div>
+
+                <div class="bullet-list-box">
+                    @@include('./common/modules/bullet-list.html', {
+                        "bulletTxt" : [
+                            "생산일자에 따라, 일부 단말은 펌웨어 업그레이드 후 사용 가능합니다."
+                        ]
+                    })
+                </div>
             </div>
-        </div>
-    </div>
-
-<!--    include('./common/footer.html')-->
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
 </div>
 </body>
 </html>
