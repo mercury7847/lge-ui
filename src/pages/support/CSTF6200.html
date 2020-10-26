@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/custom-voice"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'title': '나의 글 보기',
+                'desc': '서비스센터 홈페이지를 통해 등록하신 칭찬, 개선 건에 대한 내역 조회를 하실 수 있습니다.'
+            })
+            <div class="contents support suggestions">
+                <div class="contents-inner">
+
+                    <div class="section">
+                        <div class="section-content">
+                            <h3 class="headline">서비스센터 홈페이지를 통해 칭찬 또는 개선사항을 등록 하셨나요?</h3>
+                            <p>서비스센터 홈페이지를 통해 등록하신 칭찬, 개선, 제안 건에 대한 내역 조회를 하실 수 있습니다. (칭찬합니다, 개선해주세요 조회는 <strong class="color-3">답변 메일 발송 일로부터 1개월간 확인</strong>하실 수 있습니다.)</p>
+                        </div>
+                    </div>
+
+                    <div class="divisions my-suggestions">
+                        <div class="section col-6">
+                            <div class="section-title">
+                                <h3 class="tit">접수번호로 빠르게!</h3>        
+                            </div>
+                            <form action="">
+                                <div class="section-content">
+                                    <div class="field-wrap">
+                                        <div class="row">
+                                            <div class="field-item block">
+                                                <div class="field-title">
+                                                    <label for="regist-name" class="tit">이름</label>
+                                                </div>
+                                                <div class="input-wrap">
+                                                    <input type="text" name="regist-search" id="regist-name" placeholder="이름을 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
+                                                    <p class="err-msg">이름을 입력해주세요.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="field-item block">
+                                                <div class="field-title">
+                                                    <label for="regist-number" class="tit">접수 번호</label>
+                                                </div>
+                                                <div class="input-wrap">
+                                                    <input type="number" name="regist-search" id="regist-number" placeholder="접수 번호를 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
+                                                    <p class="err-msg">접수 번호를 입력해주세요.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn-group center">
+                                        <button type="submit" class="btn pink"><span>확인</span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="section col-6">
+                            <div class="section-title">
+                                <h3 class="tit">휴대전화 인증으로 한번에!</h3>        
+                            </div>
+                            <form action="">
+                                <div class="section-content">
+                                    <div class="field-wrap">
+                                        <div class="row">
+                                            <div class="field-item block">
+                                                <div class="field-title">
+                                                    <label for="certi-phone-name" class="tit">이름</label>
+                                                </div>
+                                                <div class="input-wrap">
+                                                    <input type="text" name="certi-phone" id="certi-phone-name" placeholder="이름을 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
+                                                    <p class="err-msg">이름을 입력해주세요.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="field-item block">
+                                                <div class="field-title">
+                                                    <label for="certi-phone-number" class="tit">휴대전화</label>
+                                                </div>
+                                                <div class="input-wrap">
+                                                    <span class="box">
+                                                        <input type="tel" name="certi-phone" id="certi-phone-number" placeholder="휴대전화 번호를 입력해주세요." maxlength="11" required>
+                                                        <span class="cell">
+                                                            <button type="button" class="btn-text pink">인증번호 발송</button>
+                                                        </span>
+                                                    </span>
+                                                    <p class="err-msg">휴대전화 번호를 입력해주세요.</p>
+                                                </div>
+                                                <div class="input-wrap">
+                                                    <input type="number" name="certi-phone" id="certi-number" placeholder="인증번호를 입력해주세요." disabled required>
+                                                    <p class="err-msg">인증번호를 입력해주세요.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn-group center">
+                                        <button type="submit" class="btn pink"><span>확인</span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
+</body>
+</html> 
