@@ -30,7 +30,7 @@
         '                               {{#each item in siblingColors}}'+
         '                                   <div class="slide-conts ui_carousel_slide">'+
         '                                       <div role="radio" class="chk-wrap-colorchip {{item.siblingValue}}" title="{{item.siblingValue}}">'+
-        '                                           <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="color-{{modelId}}" value="{{item.siblingCode}}" data-sibling-type="siblingColors" {{#if selectColorID==item.siblingCode}}checked{{/if}}>'+
+        '                                           <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="color-{{modelId}}" value="{{item.siblingCode}}" data-sibling-name="{{item.siblingValue}}" data-sibling-type="siblingColors" {{#if selectColorID==item.siblingCode}}checked{{/if}}>'+
         '                                           <label for="{{item.siblingCode}}-{{modelId}}"><span class="blind">{{item.siblingValue}}</span></label>'+
         '                                       </div>'+
         '                                   </div>'+
@@ -51,7 +51,7 @@
         '                       {{#each item in siblingFee}}'+
         '                           <li>'+
         '                               <span class="rdo-wrap">'+
-        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="fee-{{modelId}}" value="{{item.siblingCode}}" data-sibling-type="siblingFee" {{#if selectFeeID==item.siblingCode}}checked{{/if}}>'+
+        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="fee-{{modelId}}" value="{{item.siblingCode}}" data-sibling-name="{{item.siblingValue}}" data-sibling-type="siblingFee" {{#if selectFeeID==item.siblingCode}}checked{{/if}}>'+
         '                                   <label for="{{item.siblingCode}}-{{modelId}}">{{item.siblingValue}}</label>'+
         '                               </span>'+
         '                           </li>'+
@@ -66,7 +66,7 @@
         '                       {{#each item in siblingUsePeriod}}'+
         '                           <li>'+
         '                              <span class="rdo-wrap">'+
-        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="period-{{modelId}}" value="{{item.siblingCode}}" data-sibling-type="siblingUsePeriod" {{#if selectUserPeriodID==item.siblingCode}}checked{{/if}}>'+
+        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="period-{{modelId}}" value="{{item.siblingCode}}" data-sibling-name="{{item.siblingValue}}" data-sibling-type="siblingUsePeriod" {{#if selectUserPeriodID==item.siblingCode}}checked{{/if}}>'+
         '                                   <label for="{{item.siblingCode}}-{{modelId}}">{{item.siblingValue}}</label>'+
         '                               </span>'+
         '                           </li>'+     
@@ -81,7 +81,7 @@
         '                       {{#each item in siblingVisitCycle}}'+
         '                           <li>'+
         '                               <span class="rdo-wrap">'+
-        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="visit-{{modelId}}" value="{{item.siblingCode}}" data-sibling-type="siblingVisitCycle" {{#if selectVisitCycleID==item.siblingCode}}checked{{/if}}>'+
+        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="visit-{{modelId}}" value="{{item.siblingCode}}" data-sibling-name="{{item.siblingValue}}" data-sibling-type="siblingVisitCycle" {{#if selectVisitCycleID==item.siblingCode}}checked{{/if}}>'+
         '                                   <label for="{{item.siblingCode}}-{{modelId}}">{{item.siblingValue}}</label>'+
         '                               </span>'+
         '                           </li>'+     
@@ -138,6 +138,45 @@
     '       <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>'+
     '   </div>'+
     '</div>';
+
+    var _estimateProdTemplate =    
+    '   <div class="slide-wrap estimate_prod_slide">'+
+    '       <div class="slide-content ui_carousel_list">'+
+    '           <div class="slide-track ui_carousel_track ui_flexible_height">'+
+    '           {{#each item in putitem_list}}'+
+    '               <div class="slide-conts ui_carousel_slide">'+
+    '                   <div class="conts-wrap">'+
+    '                       <div class="item ui_flexible_box">'+
+    '                           <div class="ui_flexible_cont">'+
+    '                               <div class="img-wrap">'+
+    '                                   <img src="{{item.itemData.modelImg}}" alt="{{item.itemData.userFriendlyName}}">'+
+    '                               </div>'+
+    '                               <div class="txt-wrap">'+
+    '                                   <div class="flag-wrap">'+
+    '                                       <span class="flag"><span class="blind">서비스명</span>{{item.itemData.serviceName}}</span>'+
+    '                                   </div>'+
+    '                                   <div class="tit-info">'+
+    '                                       <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.itemData.userFriendlyName}}</p>'+
+    '                                       <p class="price">월 {{item.itemData.monthlyPrice}}</p>'+
+    '                                       <div class="etc-info">'+
+    '                                           <span class="txt"><span class="blind">제품 코드</span>{{item.itemData.modelName}}</span>'+
+    '                                           <span class="txt"><span class="blind">색상</span>{{item.itemData.selectColorName}}</span>'+
+    '                                       </div>'+
+    '                                   </div>'+
+    '                                   <div class="etc-info">'+
+    '                                   {{#each etc in item.itemData.detailProdInfo}}'+
+    '                                       <span class="txt">{{item.itemData.detailProdInfo[etc]}}</span>'+
+    '                                   {{/each}}'+
+    '                                   </div>'+
+    '                               </div>'+
+    '                           </div>'+
+    '                       </div>'+
+    '                   </div>'+
+    '               </div>'+
+    '           {{/each}}'+
+    '           </div>'+
+    '       </div>'+
+    '   </div>';
 
     var _showItemLength = 8;
 
@@ -259,6 +298,10 @@
             e.preventDefault();
 
             putItemToggleStatus();
+        }).on('click', '.total-info .btn', function(e){
+            e.preventDefault();
+
+            openEstimatePopUp();
         });
 
         $(window).on("changeStorageData", function(){
@@ -339,14 +382,9 @@
     }
 
     function changeItemOptions(item){
-        var idx = $(item).parents('.prd-care-vertical').data('index')-1;
-        var optgroup = $(item).closest('.opt-info');
-        optgroup.children().each(function(idx, item){
-            var selectItem = $(item).find('input[type=radio]:checked');
-            var selectValue = selectItem.val();
-            var siblingType = selectItem.data('siblingType');
-            console.log("selectValue : ", selectValue, "siblingType : ", siblingType);
-        })
+        var idx = $(item).closest('.prd-care-vertical').data('index')-1;
+        console.log("changeItemOptions :", idx)
+        var optionData = getOptionData(item);
     }
 
     function setNextProdList(){
@@ -382,9 +420,11 @@
 
     function addPutItem(item){ 
         var idx = $(item).parents('.prd-care-vertical').data('index')-1;
+        var optdata = getOptionData(item);
         var data = {
             itemData: _currentItemList[idx],
-            putID : _currentItemList[idx]['modelId'] + "-" + parseInt(Math.random()*999) + "-" + parseInt(Math.random()*99) + "-" + parseInt(Math.random()*9999)
+            putID : _currentItemList[idx]['modelId'] + "-" + parseInt(Math.random()*999) + "-" + parseInt(Math.random()*99) + "-" + parseInt(Math.random()*9999),
+            selectOptions: optdata
         }
 
         var putItemStorage = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
@@ -525,6 +565,41 @@
         }
     }
 
+    function openEstimatePopUp(){
+        $('#pop-estimate').find('.estimate-list').empty();
+        //estimate_prod_slide
+        var putItemCompare = lgkorUI.getStorage(lgkorUI.CAREPLANER_KEY);
+        var putItemList = putItemCompare[lgkorUI.CAREPLANER_ID];
+        var leng = putItemList.length;
+        var estimateList = vcui.template(_estimateProdTemplate, putItemCompare);
+        $('#pop-estimate').find('.estimate-list').append($(estimateList).get(0));
+
+        $('#pop-estimate').find('.tit-wrap .leng').text('총 '+leng+'개');
+        
+
+        $('#pop-estimate').vcModal();
+
+        $('.estimate_prod_slide').vcCarousel({
+            settings: "unslick",
+            responsive: [
+                {
+                    breakpoint: 10000,
+                    settings: "unslick"
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        infinite: false,
+                        variableWidth : true,
+                        dots: false,
+                        slidesToShow: 1, 
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    }
+
     function selectedTab(item){
         $(item).parents('li').siblings('li').removeClass('on').find('a').attr("aria-selected", false).find('em').remove();
         $(item).parent().addClass('on');
@@ -553,6 +628,24 @@
         var currentab = $typeTab.find('.tabs li[class=on]');
 
         return currentab.find('a span').text();
+    }
+
+    function getOptionData(item){
+        var optgroup = $(item).closest('.prd-care-vertical').find('.info-wrap .opt-info')
+        var optdata = {};
+        optgroup.children().each(function(idx, opt){
+            var selectItem = $(opt).find('input[type=radio]:checked');
+            var selectValue = selectItem.val();
+            var selectName = selectItem.data('siblingName');
+            var siblingType = selectItem.data('siblingType');
+            
+            optdata[siblingType] = {
+                name: selectName,
+                value: selectValue
+            }
+        });
+
+        return optdata;
     }
 
     document.addEventListener('DOMContentLoaded', function () {
