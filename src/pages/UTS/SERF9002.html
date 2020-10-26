@@ -32,6 +32,7 @@
                     </ul>
                 </div>
                 <div class="cont-wrap">
+                    @@include('./common/modules/list-filter.html')
                     <div class="search-result-wrap all" id="all">
                         <div class="result-category">
                             <ul class="rounded-list">
@@ -515,7 +516,6 @@
                     </div>
 
                     <div class="search-result-wrap product" id="product">
-                        @@include('./common/modules/list-filter.html')
                         <div class="result-area">
                             <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->
                             <div class="btn-filter">
@@ -616,9 +616,6 @@
                     </div>
 
                     <div class="search-result-wrap care" id="care">
-                        @@include('./common/modules/list-filter.html', {
-                            "care" : true
-                        })
                         <div class="result-area">
                             <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->
                             <div class="btn-filter">
