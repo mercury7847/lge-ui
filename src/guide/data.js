@@ -122,7 +122,7 @@ var res = {
 			"스토리(STC)" : {
 				"LG 페이" : {
 					"LG 페이" : ["/html/STC/MKT5003.html","","진행중"],
-					"LG 페이_설치 및 등록 영상 보기 팝업" : ["/html/STC/MKT5003_popup.html","","진행중"],
+					"LG 페이_영상 보기 팝업" : ["/html/STC/MKT5003_popup.html","","진행중"],
 					"LG 페이제휴카드 안내" : ["/html/STC/MKT5004.html","","진행중"],
 					"LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","진행중"]
 				},
