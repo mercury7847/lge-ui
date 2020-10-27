@@ -112,6 +112,11 @@
             color:#616161;
             font-size:14px;
             line-height:20px;
+            label,
+            .label {
+                display:inline-block;
+                vertical-align:top;
+            }
             .req {
                 &::after {
                     content:'*';
