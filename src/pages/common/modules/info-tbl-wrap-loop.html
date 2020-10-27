@@ -45,15 +45,15 @@
                             @@if ( context.col2.stateType.btn ) {
                             <a href="#n" class="btn bd-black btn-small"><span>@@col2.stateType.btn</span></a>
                             }
-                            @@if ( context.col2.stateType.btn2 ) {
-                            <a href="#n" class="btn bd-black btn-small"><span>@@col2.stateType.btn2</span></a>
-                            }
                             @@if ( context.cancel === "on" ) {
                             <button type="button" class="btn bd-black btn-small btn-cancel"><span>취소신청</span></button>
                             }
                             @@if ( context.cancel === "off" ) {
                             <button type="button" class="btn bd-black btn-small btn-cancel" disabled><span>취소불가</span></button>
-                            }                                
+                            }
+                            @@if ( context.col2.stateType.btn2 ) {
+                            <a href="#n" class="btn bd-black btn-small"><span>@@col2.stateType.btn2</span></a>
+                            }                            
                         </div>
                     </div>
                     }

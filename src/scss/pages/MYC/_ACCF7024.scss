@@ -156,7 +156,7 @@
                         }
                         .col2 {
                             width:auto;
-                            margin:20px 28px 0 84px;
+                            margin:20px 0 0 84px;
                         }
                     }
                 }
@@ -406,10 +406,12 @@
                 @include mobile {
                     margin-top:12px;
                     .btn {
+                        width:calc((100% - 6px) / 2);
                         margin-top:0;
-                        margin-right:6px;
+                        margin-left:6px;
                         &:first-child {
                             margin-top:0;
+                            margin-left:0;
                         }
                     }
                     .btn.btn-cancel {
@@ -419,9 +421,14 @@
                         display:inline-block;
                         margin-right:0;
                         transform:initial;
-                        &:disabled {
-                            display:none;
-                        }
+                        // &:disabled {
+                        //     display:none;
+                        // }
+                    }
+                    .btn:nth-child(2) ~ .btn {
+                        width:100%;
+                        margin-top:6px;
+                        margin-left:0;
                     }
                 }
             }

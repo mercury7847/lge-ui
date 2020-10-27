@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    pageCSS: ["STC/STC"]
+})
+<body>
+<div class="wrap">
+
+    <button type="button" data-href="#popup01" data-control="modal" class="btn pink"><span>설치 및 등록 영상 보기
+</span></button>
+    <br>
+    <br>
+    <button type="button" data-href="#popup02" data-control="modal" class="btn pink"><span>퀵페이 활용 영상 보기
+</span></button>
+
+
+    <article id="popup01" class="popup-wrap video">
+        <section class="pop-conts no-footer">
+            <div class="video-asset youtube-box">
+                <div class="video-box">
+                    <iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/Nr-0TtrVb7s"></iframe>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+
+    <article id="popup02" class="popup-wrap video">
+        <section class="pop-conts no-footer">
+            <div class="video-asset youtube-box">
+                <div class="video-box">
+                    <iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/czkUgPOPOIs"></iframe>
+                </div>
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+
+</div>
+</body>
+</html>
