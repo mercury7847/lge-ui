@@ -107,7 +107,111 @@
         </dd>
     </dl>
     @@if ( context.doubleType && context.forms2 ) {
-    
+    <dl class="forms">
+        <dt class="tit">
+            @@if ( !context.forms2.onlyTxt && !context.forms2.reqType ) {
+            <label for="@@forms2.id">@@forms2.label</label>
+            }
+            @@if ( !context.forms2.onlyTxt && context.forms2.reqType ) {
+            <label for="@@forms2.id" class="req">@@forms2.label<span class="blind">필수입력</span></label>
+            }
+            @@if ( context.forms2.onlyTxt && !context.forms2.reqType ) {
+            <p class="label">@@forms2.onlyTxt</p>
+            }
+            @@if ( context.forms2.onlyTxt && context.forms2.reqType ) {
+            <p class="label req">@@forms2.onlyTxt<span class="blind">필수입력</span></p>
+            }
+        </dt>
+        <dd class="conts">
+            @@if ( context.forms2.textType ) {
+            <span class="input-wrap block @@if(context.forms2.textType.error){error} @@if(context.forms2.textType.count){count}">            
+                @@if ( context.forms2.textType && !context.forms2.textType.count ) {
+                <input type="text" @@if(context.forms2.id){id="@@forms2.id"} @@if(context.forms2.textType.placeholder){placeholder="@@forms2.textType.placeholder"} @@if(context.forms2.textType.title){title="@@forms2.textType.title"} @@if(context.forms2.textType.value){value="@@forms2.textType.value"} @@if(context.forms2.textType.disabled){disabled} @@if(context.forms2.textType.readonly){readonly}>
+                }
+                @@if ( context.forms2.textType && context.forms2.textType.count ) {
+                <input type="text" @@if(context.forms2.id){id="@@forms2.id"} class="ui_textcontrol" @@if(context.forms2.textType.placeholder){placeholder="@@forms2.textType.placeholder"} @@if(context.forms2.textType.title){title="@@forms2.textType.title"} @@if(context.forms2.textType.value){value="@@forms2.textType.value"} maxlength="@@forms2.textType.count" data-limit="@@forms2.textType.count" data-count-target="#@@forms2.textType.target">
+                }
+                @@if ( context.forms2.textType.error ) {
+                <p class="err-msg">@@forms2.textType.error</p>
+                }
+                @@if ( context.forms2.textType.count ) {
+                <span id="@@forms2.textType.target" class="total"><em>0</em> / 0</span>   
+                }
+            </span>
+            }
+            @@if ( context.forms2.textareaType ) {
+            <span class="input-wrap block @@if(context.forms2.textareaType.error){error} @@if(context.forms2.textareaType.count){count}">            
+                @@if ( context.forms2.textareaType && !context.forms2.textareaType.count ) {
+                <textarea @@if(context.forms2.id){id="@@forms2.id"} @@if(context.forms2.textareaType.placeholder){placeholder="@@forms2.textareaType.placeholder"} @@if(context.forms2.textareaType.title){title="@@forms2.textareaType.title"} @@if(context.forms2.textareaType.disabled){disabled} @@if(context.forms2.textareaType.readonly){readonly}>@@if(context.forms2.textareaType.value){@@forms2.textareaType.value}</textarea>
+                }
+                @@if ( context.forms2.textareaType && context.forms2.textareaType.count ) {
+                <textarea @@if(context.forms2.id){id="@@forms2.id"} class="ui_textcontrol" @@if(context.forms2.textareaType.placeholder){placeholder="@@forms2.textareaType.placeholder"} @@if(context.forms2.textareaType.title){title="@@forms2.textareaType.title"} maxlength="@@forms2.textareaType.count" data-limit="@@forms2.textareaType.count" data-count-target="#@@forms2.textareaType.target">@@if(context.forms2.textareaType.value){@@forms2.textareaType.value}</textarea>
+                }
+                @@if ( context.forms2.textareaType.error ) {
+                <p class="err-msg">@@forms2.textareaType.error</p>
+                }
+                @@if ( context.forms2.textareaType.count ) {
+                <span id="@@forms2.textareaType.target" class="total"><em>0</em> / 0</span>   
+                }
+            </span>
+            }
+            @@if ( context.forms2.selectboxType ) {
+            <div class="select-wrap block">
+                <select class="ui_selectbox" @@if(context.forms2.id){id="forms2.id"} @@if(context.forms2.selectboxType.title){title="forms2.selectboxType.title"}>
+                    <option value="" @@if(context.forms2.selectboxType.placeholder){class="placeholder"}>@@forms2.selectboxType.option</option>
+                </select>
+            </div>
+            }
+            @@if ( context.forms2.creditcardType ) {
+            <div class="input-box card-type">
+                <span class="input-wrap">
+                    <input type="text" @@if(context.forms2.id){id="@@forms2.id"} maxlength="4" @@if(context.forms2.creditcardType.value1){value="@@forms2.creditcardType.value1"} size="3" title="신용카드번호 첫 4자리">
+                </span>
+                <span class="input-wrap">
+                    <input type="text" maxlength="4" placeholder="0000" @@if(context.forms2.creditcardType.value2){value="@@forms2.creditcardType.value2"} size="3" title="신용카드번호 두번째 4자리">
+                </span>
+                <span class="input-wrap">
+                    <input type="text" maxlength="4" placeholder="0000" @@if(context.forms2.creditcardType.value3){value="@@forms2.creditcardType.value3"} size="3" title="신용카드번호 세번째 4자리">
+                </span>
+                <span class="input-wrap">
+                    <input type="text" maxlength="4" placeholder="0000" @@if(context.forms2.creditcardType.value4){value="@@forms2.creditcardType.value4"} size="3" title="신용카드번호 네번째 4자리">
+                </span>
+            </div>
+            }
+            @@if ( context.forms2.birthdayType ) {
+            <div class="input-box-wrap birth-date-box">
+                <div class="input-box">
+                    <span class="input-wrap block">
+                        <input type="number" @@if(context.forms2.id){id="@@forms2.id"} placeholder="YYMMDD" @@if(context.forms2.birthdayType.value){value="@@forms2.birthdayType.value"} title="주민등록번호 앞자리">
+                    </span>
+                </div>
+                <div class="input-box">
+                    <span class="input-wrap number">
+                        <span class="box">
+                            <span class="cell">
+                                <input type="number" @@if(context.forms2.birthdayType.value2){value="@@forms2.birthdayType.value2"} title="주민등록번호 뒤 첫번째 자리">
+                            </span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+            }
+            @@if ( context.forms2.inputMixType ) {
+            <div class="input-mix-wrap">
+                <span class="chk-wrap">
+                    <input type="checkbox" id="@@forms2.inputMixType.id" name="@@forms2.inputMixType.id" checked>
+                    <label for="@@forms2.inputMixType.id">@@forms2.inputMixType.label</label>
+                </span>
+                <a href="#n" class="mix-btn"><span class="blind">@@forms2.inputMixType.btn</span></a>
+            </div>
+            }
+            @@if ( context.forms2.btmMore ) {
+            <span class="btm-more">
+                @@forms2.btmMore
+            </span>
+            }
+        </dd>
+    </dl>
     }
 @@if ( context.doubleType ) {
 </div>
