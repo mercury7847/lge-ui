@@ -150,21 +150,34 @@
                 </ul>
             </div>
 
-            <div class="service-link">
+            <div class="service-link product">
                 <ul>
-                    @@if (!context.care && !context.story) {
                     <li><a href="#n" class="btn-text">매장 방문 예약</a></li>
                     <li><a href="#n" class="btn-text">매장 찾기</a></li>
-                    }
-                    @@if (context.care) {
+                </ul>
+            </div>
+
+            <div class="service-link care">
+                <ul>
                     <li><a href="#n" class="btn-text">케어플래너로 견적받기</a></li>
                     <li><a href="#n" class="btn-text">케어솔루션 상담문의</a></li>
                     <li><a href="#n" class="btn-text">매장 찾기</a></li>
-                    }
-                    @@if (context.story) {
+                </ul>
+            </div>
+
+            <div class="service-link story">
+                <ul>
                     <li><a href="#n" class="btn-text">제품 큐레이션</a></li>
                     <li><a href="#n" class="btn-text">라이프 스타일 컨설팅</a></li>
-                    }
+                </ul>
+            </div>
+
+            <div class="service-link customer">
+                <ul>
+                    <li><a href="#n" class="btn-text">센터 방문 예약</a></li>
+                    <li><a href="#n" class="btn-text">이메일 문의</a></li>
+                    <li><a href="#n" class="btn-text">출장 서비스 예약</a></li>
+                    <li><a href="#n" class="btn-text">제품 설치/철거 예약</a></li>
                 </ul>
             </div>
 
