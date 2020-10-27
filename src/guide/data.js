@@ -174,6 +174,7 @@ var res = {
 					"주문/배송내역 조회(상세)" : ["/html/MYC/ACCF7003.html","","진행중"],
 					"신청내역(리스트-케어솔루션)" : ["/html/MYC/ACCF7024.html","","진행중"],
 					"신청내역(상세-케어솔루션)" : ["/html/MYC/ACCF7065.html","","진행중"],
+					"취소신청팝업, alert" : ["/html/MYC/ACCF7002_popup.html","","진행중"],
 				},
 				"케어솔루션" : {
 					"월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
