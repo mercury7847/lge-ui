@@ -30,23 +30,21 @@
 					}
 				}
 				.items {
-					display: inline-block;
+					min-width:100%;
 					@include clearfix();
 					.item {
-						float:left;
-						width:25%;
+						float:none !important;
+						display: inline-block;
+						max-width: 24.5%;
 						padding:0 12px;
 						@include mobile {
 							width:100%;
+							max-width:none;
 							padding:0 20px;
 						}
 						.visual-area {
-							max-width:272px;
 							margin:0 auto;
 							text-align:center;
-							@include mobile {
-								max-width:none;
-							}
 							& > img {
 								width:100%;
 							}
