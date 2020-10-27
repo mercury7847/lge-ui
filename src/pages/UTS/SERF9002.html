@@ -25,9 +25,9 @@
                         <li class="on" data-label="전체"><a href="#all">전체(210)<em class="blind">선택됨</em></a></li>
                         <li data-label="제품"><a href="#product" data-url-search="/lg5-common/data-ajax/search/search_product.json">제품(59)</a></li>
                         <li data-label="케어솔루션"><a href="#care" data-url-search="/lg5-common/data-ajax/search/search_care.json">케어솔루션(2)</a></li>
-                        <li data-label="이벤트"><a href="#event">이벤트(5)</a></li>
-                        <li data-label="스토리"><a href="#story">스토리(18)</a></li>
-                        <li data-label="케어용품/소모품"><a href="#additional">케어용품/소모품(32)</a></li>
+                        <li data-label="이벤트"><a href="#event" data-url-search="/lg5-common/data-ajax/search/search_event.json">이벤트(5)</a></li>
+                        <li data-label="스토리"><a href="#story" data-url-search="/lg5-common/data-ajax/search/search_story.json">스토리(18)</a></li>
+                        <li data-label="케어용품/소모품"><a href="#additional" data-url-search="/lg5-common/data-ajax/search/search_additional.json">케어용품/소모품(32)</a></li>
                         <li data-label="고객지원"><a href="#customer">고객지원(28)</a></li>
                     </ul>
                 </div>
@@ -622,12 +622,13 @@
                                 <a href="#n" id="filterModalLink" class="ico-filter"><span class="blind">옵션필터</span></a>
                             </div>
                             @@include('./common/modules/list-sorting.html', {
+                                "soldout" : false,
                                 "select" : [
-                                    { "option" : "정확도순" },
-                                    { "option" : "인기순" },
-                                    { "option" : "최신순" },
-                                    { "option" : "가격 높은순" },
-                                    { "option" : "가격 낮은순" }
+                                    { "default" : "value='1'", "option" : "정확도순" },
+                                    { "default" : "value='2'", "option" : "인기순" },
+                                    { "default" : "value='3'", "option" : "최신순" },
+                                    { "default" : "value='4'", "option" : "가격 높은순" },
+                                    { "default" : "value='5'", "option" : "가격 낮은순" }
                                 ]
                             })
                             <div class="result-list-wrap">
@@ -705,6 +706,286 @@
                         </div>
                     </div>
                     
+                    <div class="search-result-wrap event" id="event">
+                        <div class="search-result-wrap">
+                            <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->
+                            <div class="btn-filter">
+                                <a href="#n" id="filterModalLink" class="ico-filter"><span class="blind">옵션필터</span></a>
+                            </div>
+                            @@include('./common/modules/list-sorting.html', {
+                                "soldout" : false,
+                                "select" : [
+                                    { "default" : "value='1'", "option" : "정확도순" },
+                                    { "default" : "value='2'", "option" : "인기순" },
+                                    { "default" : "value='3'", "option" : "최신순" }
+                                ]
+                            })
+                            
+                            <div class="box-list search-evt-list-wrap">
+                                <ul class="box-list-inner events">
+                                    @@loop('./common/modules/list-box.html', [
+                                        {
+                                            "img" : "dummy/@img-event01.jpg",
+    
+                                            "flagN1" : true,
+                                            "flag1" : "제품 카테고리",
+                                            "flag1-1" : "TV",
+                                            "flag2" : "제품 카테고리",
+                                            "flag2-1" : "프로젝터",
+                                            
+                                            "flagInfo1" : true,
+                                            "flagInf1" : "이벤트 구분",
+                                            "flagInf1-1" : "매장",
+                                            "flagInf2" : "이벤트 유형",
+                                            "flagInf2-1" : "구매혜택",
+    
+                                            "title-hd" : "이벤트 제목",
+                                            "title" : "2020 NEW 올레드와 함께하는 <em>홈라이프 홈라이프</em>",
+                                            "date-hd" : "이벤트 기간",
+                                            "date" : "2020.08.01~2020.09.30"
+    
+                                        },
+                                        {
+                                            "img" : "dummy/@img-event01.jpg",
+    
+                                            "flagN1" : true,
+                                            "flag1" : "제품 카테고리",
+                                            "flag1-1" : "TV",
+                                            "flag2" : "제품 카테고리",
+                                            "flag2-1" : "프로젝터",
+                                            
+                                            "flagInfo1" : true,
+                                            "flagInf1" : "이벤트 구분",
+                                            "flagInf1-1" : "매장",
+                                            "flagInf2" : "이벤트 유형",
+                                            "flagInf2-1" : "구매혜택",
+                                            "title-hd" : "이벤트 제목",
+                                            "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                            "date-hd" : "이벤트 기간",
+                                            "date" : "2020.08.01~2020.09.30"
+                                        },
+                                        {
+                                            "img" : "dummy/@img-event01.jpg",
+                                            
+                                            "flagN1" : true,
+                                            "flag1" : "제품 카테고리",
+                                            "flag1-1" : "TV",
+                                            "flag2" : "제품 카테고리",
+                                            "flag2-1" : "프로젝터",
+                                            
+                                            "flagInfo1" : true,
+                                            "flagInf1" : "이벤트 구분",
+                                            "flagInf1-1" : "매장",
+                                            "flagInf2" : "이벤트 유형",
+                                            "flagInf2-1" : "구매혜택",
+                                            "title-hd" : "이벤트 제목",
+                                            "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                            "date-hd" : "이벤트 기간",
+                                            "date" : "2020.08.01~2020.09.30"
+                                        },
+                                        {
+                                            "img" : "dummy/@img-event01.jpg",
+    
+                                            "flagN1" : true,
+                                            "flag1" : "제품 카테고리",
+                                            "flag1-1" : "TV",
+                                            "flag2" : "제품 카테고리",
+                                            "flag2-1" : "프로젝터",
+                                            
+                                            "flagInfo1" : true,
+                                            "flagInf1" : "이벤트 구분",
+                                            "flagInf1-1" : "매장",
+                                            "flagInf2" : "이벤트 유형",
+                                            "flagInf2-1" : "구매혜택",
+    
+                                            "title-hd" : "이벤트 제목",
+                                            "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                            "date-hd" : "이벤트 기간",
+                                            "date" : "2020.08.01~2020.09.30"
+    
+                                        },
+                                        {
+                                            "img" : "dummy/@img-event01.jpg",
+    
+                                            "flagN1" : true,
+                                            "flag1" : "제품 카테고리",
+                                            "flag1-1" : "TV",
+                                            "flag2" : "제품 카테고리",
+                                            "flag2-1" : "프로젝터",
+                                            
+                                            "flagInfo1" : true,
+                                            "flagInf1" : "이벤트 구분",
+                                            "flagInf1-1" : "매장",
+                                            "flagInf2" : "이벤트 유형",
+                                            "flagInf2-1" : "구매혜택",
+                                            "title-hd" : "이벤트 제목",
+                                            "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                            "date-hd" : "이벤트 기간",
+                                            "date" : "2020.08.01~2020.09.30"
+                                        },
+                                        {
+                                            "img" : "dummy/@img-event01.jpg",
+                                            
+                                            "flagN1" : true,
+                                            "flag1" : "제품 카테고리",
+                                            "flag1-1" : "TV",
+                                            "flag2" : "제품 카테고리",
+                                            "flag2-1" : "프로젝터",
+                                            
+                                            "flagInfo1" : true,
+                                            "flagInf1" : "이벤트 구분",
+                                            "flagInf1-1" : "매장",
+                                            "flagInf2" : "이벤트 유형",
+                                            "flagInf2-1" : "구매혜택",
+                                            "title-hd" : "이벤트 제목",
+                                            "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                            "date-hd" : "이벤트 기간",
+                                            "date" : "2020.08.01~2020.09.30"
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                            <div class="pagination" data-page="5" data-visible-count="7" data-total-count="33"></div>
+                        </div>
+                    </div>
+
+                    <div class="search-result-wrap story" id="story">
+                        <div class="search-result-wrap">
+                            <div class="result-area">
+                                <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->
+                                <div class="btn-filter">
+                                    <a href="#n" id="filterModalLink" class="ico-filter"><span class="blind">옵션필터</span></a>
+                                </div>
+                                @@include('./common/modules/list-sorting.html', {
+                                    "soldout" : false,
+                                    "select" : [
+                                        { "default" : "value='1'", "option" : "정확도순" },
+                                        { "default" : "value='2'", "option" : "인기순" },
+                                        { "default" : "value='3'", "option" : "최신순" }
+                                    ]
+                                })
+                                <div class="result-list-wrap box-list story-list-wrap">
+                                    <ul class="box-list-inner story">
+                                        @@loop('./common/modules/list-box.html', [
+                                            {
+                                                "img" : "dummy/@img-stroy.png",
+                                                
+                                                "flagInfo2" : true,
+                                                "flagInf1" : "구분",
+                                                "flagInf1-1" : "비하인드스토리",
+
+                                                "title-hd" : "이벤트 제목",
+                                                "title" : "행복을 찾아주는 파랑새, 인공지능 <em>플랫폼 ‘LG ThinQ’</em>",
+                                                "date-hd" : "이벤트 기간",
+                                                "date" : "2020.08.01~2020.09.30",
+
+                                                "hashtag" : [
+                                                    {"tag": "#가을", "on" : "pink"},
+                                                    {"tag": "#가전", "on" : ""}
+                                                ]
+
+                                            },
+                                            {
+                                                "img" : "dummy/@img-stroy.png",
+                                                
+                                                "flagInfo2" : true,
+                                                "flagInf1" : "구분",
+                                                "flagInf1-1" : "비하인드스토리",
+
+                                                "title-hd" : "이벤트 제목",
+                                                "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                                "date-hd" : "이벤트 기간",
+                                                "date" : "2020.08.01~2020.09.30"
+
+                                            },
+                                            {
+                                                "img" : "dummy/@img-stroy.png",
+                                                
+                                                "flagInfo2" : true,
+                                                "flagInf1" : "구분",
+                                                "flagInf1-1" : "비하인드스토리",
+
+                                                "title-hd" : "이벤트 제목",
+                                                "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                                "date-hd" : "이벤트 기간",
+                                                "date" : "2020.08.01~2020.09.30"
+
+                                            },
+                                            {
+                                                "img" : "dummy/@img-stroy.png",
+                                                
+                                                "flagInfo2" : true,
+                                                "flagInf1" : "구분",
+                                                "flagInf1-1" : "비하인드스토리",
+
+                                                "title-hd" : "이벤트 제목",
+                                                "title" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                                "date-hd" : "이벤트 기간",
+                                                "date" : "2020.08.01~2020.09.30"
+
+                                            }
+                                        ])
+                                    </ul>
+                                </div>
+                                <div class="pagination" data-page="5" data-visible-count="7" data-total-count="33"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search-result-wrap additional" id="additional">
+                        <div class="result-area">
+                            <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->
+                            <div class="btn-filter">
+                                <a href="#n" id="filterModalLink" class="ico-filter"><span class="blind">옵션필터</span></a>
+                            </div>
+                            @@include('./common/modules/list-sorting.html', {
+                                "soldout" : false,
+                                "select" : [
+                                    { "default" : "value='1'", "option" : "정확도순" },
+                                    { "default" : "value='2'", "option" : "인기순" },
+                                    { "default" : "value='3'", "option" : "최신순" },
+                                    { "default" : "value='4'", "option" : "가격 높은순" },
+                                    { "default" : "value='5'", "option" : "가격 낮은순" }
+                                ]
+                            })
+                            <div class="result-list-wrap">
+                                <div class="list-wrap">
+                                    <ul class="product-items">
+                                        @@loop('./common/modules/product-item.html', [
+                                            {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "spec2" : true,
+                                                "price" : true
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "spec2" : true,
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "spec2" : true
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "spec2" : true
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "spec2" : true
+                                            }, {
+                                                "search" : true,
+                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                "spec2" : true
+                                            }
+                                        ])
+                                    </ul>
+                                </div>
+                                <div class="pagination" data-page="6" data-visible-count="7" data-total-count="33"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- 찾으시는 제품이 없으신가요? -->
                     <div class="box-list recommend-list-wrap">
                         <h3 class="title">찾으시는 제품이 없으신가요?</h3>
