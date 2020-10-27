@@ -288,6 +288,56 @@
     &.small {
         max-width: 577px;
     }
+    &.video {
+        max-width: 1284px;
+        border-radius: 0;
+        @include mobile {
+            background-color: #000;
+            .video-asset {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                transform: translateY(-50%);
+                overflow: hidden;
+            }
+        }
+        .btn-close {
+            width:42px;
+            height:42px;
+            &::before, &::after {
+                width: 3px;
+                height: 32px;
+                margin-top: -16px;
+                background-color: #fff;
+            }
+            @include mobile {
+                top:24px;
+                right:24px;
+                &::before, &::after {
+                    width: 2px;
+                    height: 18px;
+                    margin-top: -9px;
+                }
+            }
+        }
+        .pop-conts {
+            padding: 0;
+        }
+        .video-box {
+            overflow: hidden;
+            width: 100%;
+            height: calc((100vw - 15px) * (9/16));
+            iframe {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+        }
+    }
 
     &.tit-line2 {
         .pop-header {
