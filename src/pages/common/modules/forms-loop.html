@@ -1,0 +1,114 @@
+@@if ( context.doubleType ) {
+<div class="double-form">
+}
+    <dl class="forms">
+        <dt class="tit">
+            @@if ( !context.forms.onlyTxt && !context.forms.reqType ) {
+            <label for="@@forms.id">@@forms.label</label>
+            }
+            @@if ( !context.forms.onlyTxt && context.forms.reqType ) {
+            <label for="@@forms.id" class="req">@@forms.label<span class="blind">필수입력</span></label>
+            }
+            @@if ( context.forms.onlyTxt && !context.forms.reqType ) {
+            <p class="label">@@forms.onlyTxt</p>
+            }
+            @@if ( context.forms.onlyTxt && context.forms.reqType ) {
+            <p class="label req">@@forms.onlyTxt<span class="blind">필수입력</span></p>
+            }
+        </dt>
+        <dd class="conts">
+            @@if ( context.forms.textType ) {
+            <span class="input-wrap block @@if(context.forms.textType.error){error} @@if(context.forms.textType.count){count}">            
+                @@if ( context.forms.textType && !context.forms.textType.count ) {
+                <input type="text" @@if(context.forms.id){id="@@forms.id"} @@if(context.forms.textType.placeholder){placeholder="@@forms.textType.placeholder"} @@if(context.forms.textType.title){title="@@forms.textType.title"} @@if(context.forms.textType.value){value="@@forms.textType.value"} @@if(context.forms.textType.disabled){disabled} @@if(context.forms.textType.readonly){readonly}>
+                }
+                @@if ( context.forms.textType && context.forms.textType.count ) {
+                <input type="text" @@if(context.forms.id){id="@@forms.id"} class="ui_textcontrol" @@if(context.forms.textType.placeholder){placeholder="@@forms.textType.placeholder"} @@if(context.forms.textType.title){title="@@forms.textType.title"} @@if(context.forms.textType.value){value="@@forms.textType.value"} maxlength="@@forms.textType.count" data-limit="@@forms.textType.count" data-count-target="#@@forms.textType.target">
+                }
+                @@if ( context.forms.textType.error ) {
+                <p class="err-msg">@@forms.textType.error</p>
+                }
+                @@if ( context.forms.textType.count ) {
+                <span id="@@forms.textType.target" class="total"><em>0</em> / 0</span>   
+                }
+            </span>
+            }
+            @@if ( context.forms.textareaType ) {
+            <span class="input-wrap block @@if(context.forms.textareaType.error){error} @@if(context.forms.textareaType.count){count}">            
+                @@if ( context.forms.textareaType && !context.forms.textareaType.count ) {
+                <textarea @@if(context.forms.id){id="@@forms.id"} @@if(context.forms.textareaType.placeholder){placeholder="@@forms.textareaType.placeholder"} @@if(context.forms.textareaType.title){title="@@forms.textareaType.title"} @@if(context.forms.textareaType.disabled){disabled} @@if(context.forms.textareaType.readonly){readonly}>@@if(context.forms.textareaType.value){@@forms.textareaType.value}</textarea>
+                }
+                @@if ( context.forms.textareaType && context.forms.textareaType.count ) {
+                <textarea @@if(context.forms.id){id="@@forms.id"} class="ui_textcontrol" @@if(context.forms.textareaType.placeholder){placeholder="@@forms.textareaType.placeholder"} @@if(context.forms.textareaType.title){title="@@forms.textareaType.title"} maxlength="@@forms.textareaType.count" data-limit="@@forms.textareaType.count" data-count-target="#@@forms.textareaType.target">@@if(context.forms.textareaType.value){@@forms.textareaType.value}</textarea>
+                }
+                @@if ( context.forms.textareaType.error ) {
+                <p class="err-msg">@@forms.textareaType.error</p>
+                }
+                @@if ( context.forms.textareaType.count ) {
+                <span id="@@forms.textareaType.target" class="total"><em>0</em> / 0</span>   
+                }
+            </span>
+            }
+            @@if ( context.forms.selectboxType ) {
+            <div class="select-wrap block">
+                <select class="ui_selectbox" @@if(context.forms.id){id="forms.id"} @@if(context.forms.selectboxType.title){title="forms.selectboxType.title"}>
+                    <option value="" @@if(context.forms.selectboxType.placeholder){class="placeholder"}>@@forms.selectboxType.option</option>
+                </select>
+            </div>
+            }
+            @@if ( context.forms.creditcardType ) {
+            <div class="input-box card-type">
+                <span class="input-wrap">
+                    <input type="text" @@if(context.forms.id){id="@@forms.id"} maxlength="4" @@if(context.forms.creditcardType.value1){value="@@forms.creditcardType.value1"} size="3" title="신용카드번호 첫 4자리">
+                </span>
+                <span class="input-wrap">
+                    <input type="text" maxlength="4" placeholder="0000" @@if(context.forms.creditcardType.value2){value="@@forms.creditcardType.value2"} size="3" title="신용카드번호 두번째 4자리">
+                </span>
+                <span class="input-wrap">
+                    <input type="text" maxlength="4" placeholder="0000" @@if(context.forms.creditcardType.value3){value="@@forms.creditcardType.value3"} size="3" title="신용카드번호 세번째 4자리">
+                </span>
+                <span class="input-wrap">
+                    <input type="text" maxlength="4" placeholder="0000" @@if(context.forms.creditcardType.value4){value="@@forms.creditcardType.value4"} size="3" title="신용카드번호 네번째 4자리">
+                </span>
+            </div>
+            }
+            @@if ( context.forms.birthdayType ) {
+            <div class="input-box-wrap birth-date-box">
+                <div class="input-box">
+                    <span class="input-wrap block">
+                        <input type="number" @@if(context.forms.id){id="@@forms.id"} placeholder="YYMMDD" @@if(context.forms.birthdayType.value){value="@@forms.birthdayType.value"} title="주민등록번호 앞자리">
+                    </span>
+                </div>
+                <div class="input-box">
+                    <span class="input-wrap number">
+                        <span class="box">
+                            <span class="cell">
+                                <input type="number" @@if(context.forms.birthdayType.value2){value="@@forms.birthdayType.value2"} title="주민등록번호 뒤 첫번째 자리">
+                            </span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+            }
+            @@if ( context.forms.inputMixType ) {
+            <div class="input-mix-wrap">
+                <span class="chk-wrap">
+                    <input type="checkbox" id="@@forms.inputMixType.id" name="@@forms.inputMixType.id" checked>
+                    <label for="@@forms.inputMixType.id">@@forms.inputMixType.label</label>
+                </span>
+                <a href="#n" class="mix-btn"><span class="blind">@@forms.inputMixType.btn</span></a>
+            </div>
+            }
+            @@if ( context.forms.btmMore ) {
+            <span class="btm-more">
+                @@forms.btmMore
+            </span>
+            }
+        </dd>
+    </dl>
+    @@if ( context.doubleType && context.forms2 ) {
+    
+    }
+@@if ( context.doubleType ) {
+</div>
+}
