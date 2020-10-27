@@ -690,6 +690,7 @@
         display:block;
     }
     &.count {
+        position:relative;
         .total {
             display:block;
             margin-top:8px;
@@ -705,7 +706,11 @@
         textarea {
             height:160px;
         }
-
+        .err-msg {
+            position:absolute;
+            left:0;
+            bottom:0;
+        }
         // @include mobile {
         //     .total {
         //         font-size:13px;
