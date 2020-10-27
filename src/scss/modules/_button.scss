@@ -101,6 +101,19 @@
             cursor:default;
         }
     }
+    &.bd-white {
+        border-color:#fff;
+        color:#fff;
+        &:hover {
+            background-color: inherit;
+        }
+        &:disabled, &.disabled, &[aria-disabled=true] {
+            color:#ccc;
+            border-color:#ccc;
+            background:inherit;
+            cursor:default;
+        }
+    }
     &.block {
         display: block;
         width: 100%;
