@@ -80,6 +80,7 @@
 					}
 					.visual {
 						order:1;
+						min-height:1px; // ie
 						& > img {
 							max-width:180px;
 							@include mobile {
