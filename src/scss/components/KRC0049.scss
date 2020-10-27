@@ -22,7 +22,8 @@
 				margin:0;
 			}
 			.layered-item {
-				flex-basis:100%;
+				width:100%; // ie
+				// flex-basis:100%;
 				padding:$boxSpacing;
 				@include mobile {
 					margin-top:60px;
@@ -99,7 +100,9 @@
 	.layered-wrap.type-2column {
 		.layered-inner {
 			.layered-item {
-				flex-basis:calc(100% / 2);
+				width:calc(100% / 2); // ie
+				// flex-basis:calc(100% / 2);
+				@include mobile { width:100%; }
 				.lay-cont-wrap {
 					height:474px;
 					
@@ -112,7 +115,9 @@
 	.layered-wrap.type-3column {
 		.layered-inner {
 			.layered-item {
-				flex-basis:calc(100% / 3);
+				width:calc(100% / 3); // ie
+				// flex-basis:calc(100% / 3);
+				@include mobile { width:100%; }
 				.lay-cont-wrap {
 					height:310px;
 					padding:50px 20px;
