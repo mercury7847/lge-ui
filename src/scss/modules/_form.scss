@@ -164,7 +164,8 @@
                     }
                     @include mobile {
                         margin:0;
-                        .input-wrap {
+                        .input-wrap,
+                        .select-wrap {
                             width:100%;
                             padding:0;
                         }
