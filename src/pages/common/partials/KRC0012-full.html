@@ -82,8 +82,8 @@
 				<div class="visual-area">
 					<!-- 링크없을 경우 <a> 태그 삭제 해주세요. -->
 					<a href="#none" data-link-area="image_text_folding_feature-image" data-link-name="{Alt Text}">
-						<img data-src="@@fixarea.img" class="lazyload pc" alt="" />
-						<img data-src="@@fixarea.img-mobile" class="lazyload mobile" alt="" />
+						<img data-pc-src="@@fixarea.img" data-m-src="@@fixarea.img-mobile" class="lazyload" alt="" />
+						<p class="hidden">graphic description : </p>
 					</a>
 				</div>
 				<!-- // 7. Image -->
@@ -147,6 +147,7 @@
 								<a href="#none" role="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" data-link-area="side_image_text-video_play_ad" data-link-name="{video title / video id}" aria-describedby="title02">plays audio description video</a>
 
 								<img src="@@foldarea.list1-img" class="lazyload" alt="" />
+								<p class="hidden">graphic description : </p>
 								<div class="video-link">
 									<!-- * youtube video는 아래의 방식으로 입력 -->
 									<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="image_text_folding_feature-video_play" data-link-name="{video id}">Watch the Full Movie</a>
@@ -169,6 +170,7 @@
 							<!-- 22. image -->
 							<div class="visual-area animation-box">
 								<img data-pc-src="@@fixarea.img" data-m-src="@@fixarea.img-mobile" class="lazyload" alt="" aria-hidden="true" />
+								<p class="hidden">graphic description : </p>
 								<!-- 7-2. animation play/pause -->
 								<div class="animation-area">
 									<a href="#none" role="button" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video">changes a audio description video</a>
