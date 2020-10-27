@@ -41,7 +41,6 @@
     @include clearfix;
     .dl-infolist-wrap {
         float:left;
-        max-width:calc(100% - 300px);
     }
     .btn-group {
         float:right;
@@ -54,6 +53,22 @@
         .btn-group {
             float:none;
             margin-top:24px;
+            .btn.bd-black {
+                width:calc((100% - 8px) / 2);
+                margin-left:8px;
+                &:first-child {
+                    margin-left:0;
+                }
+                &:nth-child(3) {
+                    width:100%;
+                    margin-top:8px;
+                    margin-left:0;
+                }
+                &:only-child {
+                    width:100%;
+                    margin:0;
+                }
+            }
         }
     }
 }

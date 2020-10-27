@@ -222,7 +222,8 @@
 
                 selectedTab = self.$tab.find('ul.tabs li a').eq(0).attr('href').replace("#", "");
                 
-
+                //$('.lay-filter').hide();
+                $('.lay-filter').addClass('search-all');
 
                 var _self = this;
                 _self.updateRecentSearcheList();
@@ -248,9 +249,11 @@
                     selectedTab = $(this).attr('href').replace("#", "");
                     switch(selectedTab) {
                         case "all":
+                            $('.lay-filter').addClass('search-all');
                             self.$buttonSearch.trigger('click');
                             break;
                         default:
+                            $('.lay-filter').removeClass('open search-all');
                             _self.requestSearchProduct(searchedValue);
                             break;
                     }
@@ -444,7 +447,6 @@
             requestWish:function(productId, isWish) {
                 //찜하기
                 var ajaxUrl = self.$contentsSearch.attr('data-url-wish');
-                console.log(ajaxUrl, {"id":productId, "wish":isWish});
                 $.ajax({
                     type: 'POST',
                     url: ajaxUrl,
@@ -841,7 +843,6 @@
                         self.$resultLayer.hide();
                     }
 
-
                 }).fail(function(d){
                     alert(d.status + '\n' + d.statusText);
                 });
@@ -852,10 +853,8 @@
                 var searchItemTarget = 'ul.tabs li a[href="#' + selectedTab + '"]';
                 var ajaxUrl = self.$tab.find(searchItemTarget).attr('data-url-search');
 
-                console.log(selectedTab, searchValue, ajaxUrl);
-
                 var postData = vcui.extend(_self.convertPostData(storageFilters), {"search":searchValue});
-                console.log(postData);
+                console.log(ajaxUrl,postData);
                 
                 $.ajax({
                     url: ajaxUrl,
@@ -867,7 +866,7 @@
                     }
         
                     var data = d.data;
-                    console.log(d);
+                    //console.log(d);
 
                     //제품 리스트
                     var arr = _self.checkArrayData(data);
@@ -883,11 +882,28 @@
                     $pagination = $('#'+selectedTab).find('div.pagination');
                     $pagination.vcPagination('setPageInfo',d.param.pagination);
 
-                    var $list = $('#'+selectedTab).find('div.result-list-wrap');
+                    var $list = null;
+                    var $list_ul = null;
+                    switch(selectedTab) {
+                        case "product":
+                        case "care":
+                        case "additional":
+                            $list = $('#'+selectedTab).find('div.result-area');
+                            $list_ul = $list.find('div.list-wrap ul');
+                            $list_ul.empty();
+                            break;
+                        case "event":
+                        case "story":
+                            $list = $('#'+selectedTab).find('div.search-result-wrap');
+                            $list_ul = $('#'+selectedTab).find('div.box-list ul');
+                            $list_ul.empty();
+                            break;
+                        default:
+                            break;
+                    }
+
+                    console.log(arr);
                     if(arr.length > 0) {
-                        var $list_ul = $list.find('div.list-wrap ul');
-                        console.log(arr,$list_ul);
-                        $list_ul.empty();
                         arr.forEach(function(item, index) {
                             switch(selectedTab) {
                                 case "product": {
@@ -919,15 +935,33 @@
                                     break;
                                 }
 
+                                case "event": {
+                                    item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
+                                    item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
+                                    $list_ul.append(vcui.template(eventItemTemplate,item));
+                                    break;
+                                }
+
+                                case "story": {
+                                    item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
+                                    item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
+                                    $list_ul.append(vcui.template(storyItemTemplate,item));
+                                    break;
+                                }
+
+                                case "additional": {
+                                    item.price = item.price ? vcui.number.addComma(item.price) : null
+                                    item.title = item.title.replaceAll(paramSearchedValue,replaceText);
+                                    $list_ul.append(vcui.template(additionalItemTemplate,item));
+                                    break;
+                                }
                                 default:
                                     break;
                             }
                         });
                         $list.show();
-                        $list_sorting.show();
                     } else {
                         $list.hide();
-                        $list_sorting.hide();
                     }
 
                     //추천상품
@@ -1035,8 +1069,6 @@
                     savedFilterArr = newFilterArr;
                     _self.updateFilter(newFilterArr);
 
-
-
                 }).fail(function(d){
                     alert(d.status + '\n' + d.statusText);
                 });
@@ -1070,7 +1102,7 @@
                 });
 
                 // 필터안 체크박스 이벤트 처리
-                $('.ui_filter_accordion').on('click', 'ul li div.ui_accord_content div div input', function(e){
+                $('.ui_filter_accordion').on('change', 'input', function(e){
                     var name = e.target.name;
                     var valueStr = "";
                     $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
@@ -1088,13 +1120,14 @@
                 });
 
                 // 모바일 필터박스 열기
-                $('div.result-area div.btn-filter a').on('click', function(e){
+                $('div.btn-filter a').on('click', function(e){
                     e.preventDefault();
                     $('.lay-filter').addClass('open');
                 });
 
                 // 모바일 필터박스 닫기
                 $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
+                    console.log('close');
                     e.preventDefault();
                     $('.lay-filter').removeClass('open');
                 });
@@ -1107,12 +1140,14 @@
                 });
 
                 // 초기화버튼 이벤트 처리
-                $('.lay-filter open div.plp-filter-wrap div.btn-reset button').on('click', function(){
+                $('.lay-filter').find('div.plp-filter-wrap div.btn-reset button').on('click', function(){
                     _self.reset();
+                    $('.lay-filter').removeClass('open');
                 });
 
                 $('.ui_reset_btn').on('click', function(){
                     _self.reset();
+                    $('.lay-filter').removeClass('open');
                 });
 
                 //품절상품 확인
@@ -1135,7 +1170,7 @@
                 // 필터의 정렬 선택시 리스트의 정렬값도 선택하게 함
                 $('input[name="sorting"]').on('change', function(e){
                     e.preventDefault();
-                    var idx = $('#'+selectedTab).find('input[name="sorting"]').index(this);
+                    var idx = $('input[name="sorting"]').index(this);
                     var $target = $('#'+selectedTab).find('div.list-sorting').find('.ui_selectbox');
                     $target.vcSelectbox('selectedIndex', idx, false);
                     _self.setApplyFilter(storageFilters);
@@ -1144,7 +1179,7 @@
                 //리스트 정렬 선택시 필터의 정렬 값도 선택하게함
                 $('div.list-sorting').find('.ui_selectbox').on('change', function(e,data){
                     var value = e.target.value;
-                    $('#'+selectedTab).find('input[name="sorting"][value="'+ value +'"]').prop('checked', true);
+                    $('input[name="sorting"][value="'+ value +'"]').prop('checked', true);
                     _self.requestSearchProduct(searchedValue);
                 });
             },
@@ -1154,7 +1189,7 @@
                 console.log('reset',savedFilterArr);
                 var _self = this;
                 for(var key in storageFilters) {	                        
-                    var $parent = $('#'+selectedTab).find('[data-id="'+ key +'"]');
+                    var $parent = $('[data-id="'+ key +'"]');
                     $parent.find('input[name="'+key+'"]').prop('checked', false);                    
                     if($parent.find('[data-filter-id="'+ key +'"]').data('ui_rangeSlider')){
                        $parent.find('[data-filter-id="'+ key +'"]').vcRangeSlider('reset', 'Min,Max');
@@ -1182,7 +1217,7 @@
             setApplyFilter:function(obj, noRequest) {
                 var _self = this;
                 for(var key in obj){		
-                    var $parent = $('#'+selectedTab).find('[data-id="'+ key +'"]');
+                    var $parent = $('[data-id="'+ key +'"]');
                     var values = obj[key].split(',');
                     for(var i=0; i<values.length; i++){
                         $parent.find('input[data-value="'+ values[i] +'"]').prop('checked', true);
@@ -1199,20 +1234,19 @@
                             $(item).prop('checked', fArr.length > 0? true:false);
                         });
                                                
-                        var len = $('#'+selectedTab).find('input[name="categoryCheckbox"]:checked').length/2;
+                        var len = $('input[name="categoryCheckbox"]:checked').length/2;
                         $('#categoryCnt').text(len + '개 선택'); 
                     }	
                 }
 
                 // 선택된 필터값이 있을경우 처리
-                console.log(storageFilters, obj);
                 var keys = Object.keys(obj);
                 if(keys.length > 0) {
-                    $('#'+selectedTab).find('div.result-area div.btn-filter').parent().addClass('applied');
-                    $('#'+selectedTab).find('div.result-area div.btn-filter a span').text('옵션 적용됨');
+                    $('#'+selectedTab).find('div.btn-filter').addClass('applied');
+                    $('#'+selectedTab).find('div.btn-filter a span').text('옵션 적용됨');
                 } else {
-                    $('#'+selectedTab).find('div.result-area div.btn-filter').parent().removeClass('applied');
-                    $('#'+selectedTab).find('div.result-area div.btn-filter a span').text('옵션필터');
+                    $('#'+selectedTab).find('div.btn-filter').removeClass('applied');
+                    $('#'+selectedTab).find('div.btn-filter a span').text('옵션필터');
                 }
                 // 데이터를 호출함. 
                 if(!noRequest) _self.requestSearchProduct(searchedValue);
@@ -1224,7 +1258,7 @@
                 for(var i=0; i<arr.length; i++){
                     var item = arr[i];
                     var itemArr = item.data;
-                    var $parent = $('#'+selectedTab).find('[data-id="'+ item['filterId'] +'"]');
+                    var $parent = $('[data-id="'+ item['filterId'] +'"]');
 
                     for(var j=0; j<itemArr.length; j++){
                         $parent.find('input[value="'+ itemArr[j]['filterValueId']+'"]').prop('disabled', itemArr[j]['enable']=='N');

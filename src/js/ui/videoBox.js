@@ -48,12 +48,14 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
                     $(this).attr('aria-label', aniText).addClass('ani-btn').removeClass('acc-btn').text(aniText);
                     
                     self.$video.setAttribute('src', $(this).data('src'));
+                    self.$video.setAttribute('muted', false);
                     self.$video.load();
                 }else{
                     var accAniText = $(this).data('acc-ani-text');
                     $(this).attr('aria-label', accAniText).addClass('acc-btn').removeClass('ani-btn').text(accAniText);
                     
                     self.$video.setAttribute('src', self.$el.find("video").find('source').attr('src'));
+                    self.$video.setAttribute('muted', true);
                     self.$video.load();
                 }
 

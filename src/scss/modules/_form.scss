@@ -154,7 +154,8 @@
                     }
                 }
                 &.btn-type {
-                    .input-wrap {
+                    .input-wrap,
+                    .select-wrap {
                         width:50%;
                     }
                     .btn {
@@ -163,7 +164,8 @@
                     }
                     @include mobile {
                         margin:0;
-                        .input-wrap {
+                        .input-wrap,
+                        .select-wrap {
                             width:100%;
                             padding:0;
                         }
@@ -238,7 +240,7 @@
                     display:table-cell;
                     margin:0;
                     white-space:nowrap;
-                    .rdo-btn-wrap {
+                    &.rdo-btn-wrap {
                         padding-right:34px;
                     }
                 }
@@ -690,6 +692,7 @@
         display:block;
     }
     &.count {
+        position:relative;
         .total {
             display:block;
             margin-top:8px;
@@ -705,7 +708,11 @@
         textarea {
             height:160px;
         }
-
+        .err-msg {
+            position:absolute;
+            left:0;
+            bottom:0;
+        }
         // @include mobile {
         //     .total {
         //         font-size:13px;

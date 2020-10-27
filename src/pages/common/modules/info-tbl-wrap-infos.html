@@ -1,0 +1,18 @@
+<div class="box">
+    <div class="info-wrap">
+        <ul class="infos">
+            @@for ( var i=0; i < infos.length; i++ ) {
+            <li>`+infos[i]+`</li>
+            }
+        </ul>
+    </div>
+    <div class="tbl-layout @@size">
+        <!-- thead -->
+        <div class="thead" aria-hidden="true">
+            @@for ( var j=0; j < th.length; j++ ) {
+            <span class="th col`+[j+1]+`">`+th[j]+`</span>
+            }
+        </div>
+        <!-- // thead -->
+        <!-- tbody -->
+        <div class="tbody">
