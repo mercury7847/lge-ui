@@ -20,130 +20,169 @@ CS.UI.$body = $('body');
 * validation cehck
 */
 CS.MD.validation = function() {
+    var pluginName = 'validation';
+
     function Plugin(el, opt) {
         var self = this;
-        self.$el = $(el),
-        self.el = el,
-        self.errorList = [];
-        self.elements;
+            self.$el = $(el),
+            self.el = el;
 
         var defaults = {
-            valid: function() {},
-            inValid: function() {}
+            success: function() {},
+            error: function() {}
         };
 
         self.options = $.extend({}, defaults, opt);
     
-        self.elements = self.$el.find('[name]');
+        var register = self.options.register;
+        var tempObj = {};
+
+        self.$el.find('[name]').each(function(index, el) {
+            var $el = $(el),
+                msgTarget = $el.data('msgTarget'),
+                errorMsg = $el.data('errorMsg'),
+                requiredMsg = $el.data('requiredMsg');
+
+            if (msgTarget) {
+                tempObj[el.name] = {}
+
+                if (tempObj[el.name]){       
+                    tempObj[el.name]['msgTarget'] = msgTarget;
+                    errorMsg && (tempObj[el.name]['errorMsg'] = errorMsg);
+                    requiredMsg && (tempObj[el.name]['requiredMsg'] = requiredMsg);
+                }
+
+                tempObj[el.name] = $.extend(tempObj[el.name], register[el.name] || {});
+            }
+        });
+
+        self.register = tempObj;
     }
-
-    $.extend(Plugin, {
-        rules: {
-            required: function() {
-
-            },
-            email: function() {
-
-            },
-            date: function() {
-
-            },
-            tel: function() {
-
-            },
-            file: function() {
-
-            },
-            number: function() {
-
-            },
-            alphabet: function() {
-
-            },
-            minLength: function() {
-
-            },
-            maxLength: function() {
-
-            },
-        }
-    })
 
     Plugin.prototype = {
         start: function() {
+            var self = this;
+
+            self.errorObjs = self._validationCheck();
+
+            self._setMessage();
+            
+            if (!Object.keys(self.errorObjs).length) {
+                self.$el.trigger('success');
+            } else {
+                self._focus();
+                self.$el.trigger('error');
+            }
+        },
+        _validationCheck: function() {
             var self = this,
-                options = self.options;
+                objs = {},
+                $target;
 
-            self.errorList = [];
+            for (var key in self.register) {
+                var $target = self.$el.find('[name="' + key + '"]');
+                var opt = self.register[key];
+                var value = $target.val();
 
-            self.elements.each(function(index, item) {
-                var $element = $(item);
+                if ($target.is(':checkbox') || $target.is(':radio')) {
+                    if (!$target.is(':checked')) {
+                        if (value == 'on') value = '';
+                    }
+                }
 
-                self._validationCheck(item);
-            });
-
-            if (self.errorList.length) {
-                $.each(self.errorList, function(index, item) {
-                    self._accessibility(item);
-                    self._invalid(item);
-                });
-
-                self._focus(self.errorList[0]);
-
-                return false;
+                if (opt.required) {
+                    if (!self._valueCheck(value)) {
+                        objs[key] = self.register[key]['requiredMsg'];
+                    } else if (opt.pattern) {                        
+                        if (!self._regexCheck(opt.pattern, value)) {
+                            objs[key] = self.register[key]['errorMsg'];
+                        }
+                    }
+                } else {
+                    if (opt.pattern) {                        
+                        if (!self._regexCheck(opt.pattern, value)) {
+                            objs[key] = self.register[key]['errorMsg'];
+                        }
+                    }
+                }
             }
 
-            return true;
+            return objs;
         },
-        _getRules: function(el) {
-            var self = this;
-
-
+        _regexCheck: function(pattern, val) {
+            return pattern.test(val);
         },
-        _invalid: function(el) {
+        _valueCheck: function(val) {
+            return $.trim(val) ? true : false;
+        },
+        _setMessage: function() {
             var self = this;
-
             
-        },
-        _accessibility: function(el) {
-            var self = this;
+            for (var key in self.register) {
+                var $target = self.$el.find('[name="' + key + '"]');
+                var msgTarget = self.register[key].msgTarget;
 
+                if ($target.siblings(msgTarget).length) {
+                    $target.siblings(msgTarget).hide();
+                } else if ($target.parent().siblings(msgTarget).length) {
+                    $target.parent().siblings(msgTarget).hide();
+                } else {
+                    self.$el.find(msgTarget).hide();
+                }
 
+                if ($target.closest('.input-wrap, .select-wrap').length) {
+                    $target.closest('.input-wrap, .select-wrap').removeClass('error');
+                }
+            }
+
+            for (var key in self.errorObjs) {
+                var $target = self.$el.find('[name="' + key + '"]');
+                var msgTarget = self.register[key].msgTarget;
+                var errOpj = self.errorObjs[key];
+
+                if ($target.siblings(msgTarget).length) {
+                    $target.siblings(msgTarget).text(errOpj).show();
+                } else if ($target.parent().siblings(msgTarget).length) {
+                    $target.parent().siblings(msgTarget).text(errOpj).show();
+                } else {
+                    self.$el.find(msgTarget).text(errOpj).show();
+                }
+
+                if ($target.closest('.input-wrap, .select-wrap').length) {
+                    $target.closest('.input-wrap, .select-wrap').addClass('error');
+                }
+            }
         },
-        _focus: function(el) {
+        _focus: function() {
             var self = this,
-                $el = $(el);
+                $el = self.$el.find('[name="' + Object.keys(self.errorObjs)[0] + '"]');
 
-            if (el.type.indexOf('select') && $el.data('ui_selectbox')) {
-                $el.vcSelectbox('open');
+            if ($el[0].type.indexOf('select') && $el.data('ui_selectbox')) {
+                $el.vcSelectbox('focus');
             } else {
                 $el.focus();
-            }
-        },
-        _validationCheck: function(el) {
-            var self = this,
-                rules = self._getRules(el),
-                rule;
-
-            for (var item in rules) {
-                if (rule = Plugin.rules[item]) {
-                    if (!rule(el)) {
-                        self.errorList.push({
-                            rule: item,
-                            el: el
-                        });
-                    } 
-                }
             }
         }
     }
 
-    $.fn.validation = function(options){
+    $.fn[pluginName] = function(options) {
+        var arg = arguments; 
+
         return this.each(function() {
-            new Plugin(this, options);
+            var _this = this,
+                $this = $(_this),
+                plugin = $this.data('plugin_' + pluginName);
+
+            if (!plugin) {
+                $this.data('plugin_' + pluginName, new Plugin(this, options));
+            } else {
+                if (typeof options === 'string' && typeof plugin[options] === 'function') {
+                    plugin[options].apply(plugin, [].slice.call(arg, 1));
+                }
+            }
         });
-    };
-}
+    }
+}();
 
 /*
 * 셀렉트박스 타겟
