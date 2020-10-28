@@ -112,6 +112,11 @@
             color:#616161;
             font-size:14px;
             line-height:20px;
+            label,
+            .label {
+                display:inline-block;
+                vertical-align:top;
+            }
             .req {
                 &::after {
                     content:'*';
@@ -154,7 +159,8 @@
                     }
                 }
                 &.btn-type {
-                    .input-wrap {
+                    .input-wrap,
+                    .select-wrap {
                         width:50%;
                     }
                     .btn {
@@ -163,7 +169,8 @@
                     }
                     @include mobile {
                         margin:0;
-                        .input-wrap {
+                        .input-wrap,
+                        .select-wrap {
                             width:100%;
                             padding:0;
                         }

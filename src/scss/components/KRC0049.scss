@@ -22,7 +22,8 @@
 				margin:0;
 			}
 			.layered-item {
-				flex-basis:100%;
+				width:100%; // ie
+				// flex-basis:100%;
 				padding:$boxSpacing;
 				@include mobile {
 					margin-top:60px;
@@ -65,6 +66,7 @@
 							font-weight:700;
 							font-size:28px;
 							line-height:36px;
+							height: 36px * 2; // IE : 멀티 말줄임 대응 높이제한
 							@include textClipClamp(2);
 							@include mobile {
 								line-height:32px;
@@ -76,6 +78,7 @@
 							margin-top:16px;
 							font-size:18px;
 							line-height:28px;
+							height: 28px * 2; // IE : 멀티 말줄임 대응 높이제한
 							@include textClipClamp(2);
 							@include mobile {
 								margin-top:11px;
@@ -99,7 +102,9 @@
 	.layered-wrap.type-2column {
 		.layered-inner {
 			.layered-item {
-				flex-basis:calc(100% / 2);
+				width:calc(100% / 2); // ie
+				// flex-basis:calc(100% / 2);
+				@include mobile { width:100%; }
 				.lay-cont-wrap {
 					height:474px;
 					
@@ -112,7 +117,9 @@
 	.layered-wrap.type-3column {
 		.layered-inner {
 			.layered-item {
-				flex-basis:calc(100% / 3);
+				width:33.3%; // IE : calc 계산이 100% 넘어갈때가 종종 있어서 고정값으로 수정
+				// flex-basis:calc(100% / 3);
+				@include mobile { width:100%; }
 				.lay-cont-wrap {
 					height:310px;
 					padding:50px 20px;

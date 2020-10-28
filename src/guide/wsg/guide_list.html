@@ -176,9 +176,149 @@
 </div>
 <!-- // 가이드 내용 -->
 
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2. 새도우박스 리스트 모듈(PC일 때 col 3/모바일일 때 col 1)</h2>
+<div class="guide_wrap">
+    <div class="product-list-wrap shadow-box-list">
+        <ul class="product-lists ui_flexible_height">
+            <li class="lists">
+                <div class="ui_flexible_box">
+                    <dl class="ui_flexible_cont">
+                        <dt>
+                            <span class="img"><img src="/lg5-common/images/STC/img-prod01.jpg" alt="LG VELVET"></span>
+                            <p class="name"><span class="blind">제품명</span>LG VELVET</p>
+                        </dt>
+                        <dd>
+                            <ul class="infos">
+                                <li>LG VELVET</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+            <li class="lists">
+                <div class="ui_flexible_box">
+                    <dl class="ui_flexible_cont">
+                        <dt>
+                            <span class="img"><img src="/lg5-common/images/STC/img-prod02.jpg" alt="V 시리즈"></span>
+                            <p class="name"><span class="blind">제품명</span>V 시리즈</p>
+                        </dt>
+                        <dd>
+                            <ul class="infos">
+                                <li>V50S ThinQ, V50 ThinQ, V40 ThinQ, V35 ThinQ, V30, V30+, V30S, V30S+</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+            <li class="lists">
+                <div class="ui_flexible_box">
+                    <dl class="ui_flexible_cont">
+                        <dt>
+                            <span class="img"><img src="/lg5-common/images/STC/img-prod03.jpg" alt="G 시리즈"></span>
+                            <p class="name"><span class="blind">제품명</span>G 시리즈</p>
+                        </dt>
+                        <dd>
+                            <ul class="infos">
+                                <li>G8 ThinQ, G7 ThinQ, G7+ ThinQ, G6+, G6, G6 32GB</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+            <li class="lists">
+                <div class="ui_flexible_box">
+                    <dl class="ui_flexible_cont">
+                        <dt>
+                            <span class="img"><img src="/lg5-common/images/STC/img-prod02.jpg" alt="Q 시리즈"></span>
+                            <p class="name"><span class="blind">제품명</span>Q 시리즈</p>
+                        </dt>
+                        <dd>
+                            <ul class="infos">
+                                <li>Q61, Q51, Q70, Q9, Q7 BTS EDITION, Q8(2018), Q7, Q7+</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+            <li class="lists">
+                <div class="ui_flexible_box">
+                    <dl class="ui_flexible_cont">
+                        <dt>
+                            <span class="img"><img src="/lg5-common/images/STC/img-prod03.jpg" alt="X 시리즈"></span>
+                            <p class="name"><span class="blind">제품명</span>X 시리즈</p>
+                        </dt>
+                        <dd>
+                            <ul class="infos">
+                                <li>X6(2019), X4(2019), X5, X4+, X4</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+            <li class="lists">
+                <div class="ui_flexible_box">
+                    <dl class="ui_flexible_cont">
+                        <dt>
+                            <span class="img"><img src="/lg5-common/images/STC/img-prod01.jpg" alt="V 시리즈"></span>
+                            <p class="name"><span class="blind">제품명</span>V 시리즈</p>
+                        </dt>
+                        <dd>
+                            <ul class="infos">
+                                <li>V50S ThinQ, V50 ThinQ, V40 ThinQ, V35 ThinQ, V30, V30+, V30S, V30S+</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="product-list-wrap shadow-box-list">
+    <ul class="product-lists ui_flexible_height">
+        <li class="lists">
+            <div class="ui_flexible_box">
+                <dl class="ui_flexible_cont">
+                    <dt>
+                        <span class="img"><img src="/lg5-common/images/STC/img-prod01.jpg" alt="LG VELVET"></span>
+                        <p class="name"><span class="blind">제품명</span>LG VELVET</p>
+                    </dt>
+                    <dd>
+                        <ul class="infos">
+                            <li>LG VELVET</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        </li>
+    </ul>
+</div>
+<!-- // DOM -->
+
+<!-- page 내 작업 방식 -->
+<!-- (@@)loop ()삭제 후 사용 -->
+<div class="product-list-wrap shadow-box-list">
+    <ul class="product-lists ui_flexible_height">
+        (@@)loop('./common/modules/product-list-loop.html', [
+            {
+                "img" : "/lg5-common/images/STC/img-prod01.jpg",
+                "name" : "LG VELVET",
+                "info" : ["LG VELVET"]
+            }
+        ])
+    </ul>
+</div>
+<!-- // page 내 작업 방식 -->
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
 
 <!-- 가이드 내용 -->
-<h2 class="h2_guide">1. 제품 리스트 모듈(PC col 3/테블릿 col 2/모바일 col 1)</h2>
+<h2 class="h2_guide">3. 제품 리스트 모듈(PC col 3/테블릿 col 2/모바일 col 1)</h2>
 <div class="guide_wrap">
     <ul class="product-items">
         <li>

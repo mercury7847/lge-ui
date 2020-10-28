@@ -71,7 +71,7 @@
 				.lists {
 					display:inline-block;
 					position:relative;
-					width:calc(100% / 3);
+					width:33.3%; // ie (calc 계산이 100%를 넘어갈때가 종종 있어서 수치로 고정)
 					margin-top:12px;
 					padding:0 6px;
 					vertical-align:top;

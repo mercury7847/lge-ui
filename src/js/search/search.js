@@ -154,11 +154,14 @@
         '<div class="btn-area btm"><a href="{{url}}" class="btn bd-gray"><span>{{buttonTitle}}</span></a></div>' +
         '</div></li>'
 
+    var sortingInputTemplate = '<div class="rdo-wrap"><input type="radio" name="sorting" id="sort{{index}}" value="{{value}}" {{#if checked}}checked{{/if}}><label for="sort{{index}}">{{text}}</label></div>'
+
     var searchInputLayerVisible = false;
     var minLength = 1;
     var searchDelay = 2000;
     var searchTimer = null;
     var selectedTab = "";
+    var customerSelectedTab = "";
     var searchedValue = "";
     var storageFilters = {};
     var savedFilterArr = [];
@@ -170,7 +173,8 @@
                 self.$contentsSearch = $('div.contents.search');
                 self.$searchLayer = self.$contentsSearch.find('div.input-keyword');
                 self.$resultLayer = self.$contentsSearch.find('div.cont-wrap').eq(0);
-                self.$tab = self.$contentsSearch.find('div.tabs-wrap.ui_tab');
+                self.$tab = self.$contentsSearch.find('div.tabs-wrap.btn-type.ui_tab');
+                self.$customerTab = self.$contentsSearch.find('div.tabs-wrap.border-type.ui_tab');
 
                 self.$inputSearch = self.$searchLayer.find('div.input-sch input.txt');
                 self.$buttonSearch = self.$searchLayer.find('div.input-sch button.btn-search');
@@ -225,6 +229,12 @@
                 //$('.lay-filter').hide();
                 $('.lay-filter').addClass('search-all');
 
+                $('#customer').find('div.btn-filter').hide();
+                var $list_sorting = $('#customer').find('div.list-sorting');
+                var $list_count = $list_sorting.find('div.list-count');
+                $list_sorting.hide();
+                $list_count.hide();
+
                 var _self = this;
                 _self.updateRecentSearcheList();
 
@@ -247,14 +257,49 @@
                     _self.setSearchInputLayerVisible(false);
                     currentPage = "1";
                     selectedTab = $(this).attr('href').replace("#", "");
+                    $('.lay-filter').find('div.service-link').not('.'+selectedTab).hide();
+                    $('.lay-filter').find('div.service-link.'+selectedTab).show();
+                    var $list_sorting = $('#'+selectedTab).find('div.list-sorting');
                     switch(selectedTab) {
                         case "all":
                             $('.lay-filter').addClass('search-all');
                             self.$buttonSearch.trigger('click');
                             break;
+                        case "event":
+                            var $sortItems = $list_sorting.find('div.ui-selectbox-list div.ui-select-scrollarea ul li a');
+                            _self.updateMobileSortFilter($sortItems);
+                            $('.lay-filter').addClass('search-all');
+                            _self.requestSearchProduct(searchedValue);
+                            break;
                         default:
+                            var $sortItems = $list_sorting.find('div.ui-selectbox-list div.ui-select-scrollarea ul li a');
+                            _self.updateMobileSortFilter($sortItems);
                             $('.lay-filter').removeClass('open search-all');
                             _self.requestSearchProduct(searchedValue);
+                            break;
+                    }
+                });
+
+                self.$customerTab.on("click", searchItemTarget, function(e) { 
+                    currentPage = "1";
+                    customerSelectedTab = $(this).attr('href').replace("#", "");
+                    var $btn_filter = $('#customer').find('div.btn-filter');
+                    var $list_sorting = $('#customer').find('div.list-sorting');
+                    var $list_count = $list_sorting.find('div.list-count');
+                    switch(customerSelectedTab) {
+                        case "customer-all":
+                            $('.lay-filter').addClass('search-all');
+                            $btn_filter.hide();
+                            $list_sorting.hide();
+                            $list_count.hide();
+                            //self.$buttonSearch.trigger('click');
+                            break;
+                        default:
+                            $('.lay-filter').removeClass('open search-all');
+                            $btn_filter.show();
+                            $list_sorting.show();
+                            $list_count.show();
+                            //_self.requestSearchProduct(searchedValue);
                             break;
                     }
                 });
@@ -438,6 +483,21 @@
                 } else {
                     tabItem.hide();
                 }
+            },
+
+            updateMobileSortFilter: function($sortItems) {
+
+                var $sortList = $('.lay-filter').find('div.list-acco-sorting ul li div.ui_accord_content div.cont');
+                $sortList.empty();
+
+                var value = $('#'+selectedTab).find('div.list-sorting').find('.ui_selectbox').vcSelectbox('value');
+                console.log(value);
+
+                $sortItems.each(function(index, item) {
+                    var itemValue = $(item).attr("data-value");
+                    $sortList.append(vcui.template(sortingInputTemplate, {"index":(""+(index+1)),"value":itemValue, "text":$(item).attr("data-text"), "checked":(value==itemValue)}));
+                });
+            
             },
 
             changeBlindLabelTextSiblingCheckedInput:function (input, trueText, falseText) {
@@ -882,10 +942,27 @@
                     $pagination = $('#'+selectedTab).find('div.pagination');
                     $pagination.vcPagination('setPageInfo',d.param.pagination);
 
-                    var $list = $('#'+selectedTab).find('div.result-list-wrap');
+                    var $list = null;
+                    var $list_ul = null;
+                    switch(selectedTab) {
+                        case "product":
+                        case "care":
+                        case "additional":
+                            $list = $('#'+selectedTab).find('div.result-area');
+                            $list_ul = $list.find('div.list-wrap ul');
+                            $list_ul.empty();
+                            break;
+                        case "event":
+                        case "story":
+                            $list = $('#'+selectedTab).find('div.search-result-wrap');
+                            $list_ul = $('#'+selectedTab).find('div.box-list ul');
+                            $list_ul.empty();
+                            break;
+                        default:
+                            break;
+                    }
+
                     if(arr.length > 0) {
-                        var $list_ul = $list.find('div.list-wrap ul');
-                        $list_ul.empty();
                         arr.forEach(function(item, index) {
                             switch(selectedTab) {
                                 case "product": {
@@ -917,15 +994,33 @@
                                     break;
                                 }
 
+                                case "event": {
+                                    item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
+                                    item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
+                                    $list_ul.append(vcui.template(eventItemTemplate,item));
+                                    break;
+                                }
+
+                                case "story": {
+                                    item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
+                                    item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
+                                    $list_ul.append(vcui.template(storyItemTemplate,item));
+                                    break;
+                                }
+
+                                case "additional": {
+                                    item.price = item.price ? vcui.number.addComma(item.price) : null
+                                    item.title = item.title.replaceAll(paramSearchedValue,replaceText);
+                                    $list_ul.append(vcui.template(additionalItemTemplate,item));
+                                    break;
+                                }
                                 default:
                                     break;
                             }
                         });
                         $list.show();
-                        $list_sorting.show();
                     } else {
                         $list.hide();
-                        $list_sorting.hide();
                     }
 
                     //추천상품
@@ -1084,7 +1179,7 @@
                 });
 
                 // 모바일 필터박스 열기
-                $('div.result-area div.btn-filter a').on('click', function(e){
+                $('div.btn-filter a').on('click', function(e){
                     e.preventDefault();
                     $('.lay-filter').addClass('open');
                 });
@@ -1104,33 +1199,25 @@
                 });
 
                 // 초기화버튼 이벤트 처리
-                $('.lay-filter open div.plp-filter-wrap div.btn-reset button').on('click', function(){
+                $('.lay-filter').find('div.plp-filter-wrap div.btn-reset button').on('click', function(){
                     _self.reset();
+                    $('.lay-filter').removeClass('open');
                 });
 
                 $('.ui_reset_btn').on('click', function(){
                     _self.reset();
+                    $('.lay-filter').removeClass('open');
                 });
 
                 //품절상품 확인
                 $('div.check-soldout span.chk-wrap').on('change', 'input[type="checkbox"]', function(e){
                     e.preventDefault();
-                    //var includeSoldOut = $(this).is(':checked');
-                    //console.log(selectedTab, $(this).is(':checked'));
                     _self.requestSearchProduct(searchedValue);
-                    /*
-                    switch(selectedTab) {
-                        case "product":
-                            //_self.requestSearchProduct(searchedValue);
-                            break;
-                        default:
-                            break;
-                    }
-                    */
                 });
 
                 // 필터의 정렬 선택시 리스트의 정렬값도 선택하게 함
-                $('input[name="sorting"]').on('change', function(e){
+                //$('input[name="sorting"]').on('change', function(e){
+                $('.lay-filter').find('div.list-acco-sorting ul li div.ui_accord_content div.cont').on('change', 'input[name="sorting"]',function(e){
                     e.preventDefault();
                     var idx = $('input[name="sorting"]').index(this);
                     var $target = $('#'+selectedTab).find('div.list-sorting').find('.ui_selectbox');
@@ -1204,11 +1291,11 @@
                 // 선택된 필터값이 있을경우 처리
                 var keys = Object.keys(obj);
                 if(keys.length > 0) {
-                    $('#'+selectedTab).find('div.result-area div.btn-filter').parent().addClass('applied');
-                    $('#'+selectedTab).find('div.result-area div.btn-filter a span').text('옵션 적용됨');
+                    $('#'+selectedTab).find('div.btn-filter').addClass('applied');
+                    $('#'+selectedTab).find('div.btn-filter a span').text('옵션 적용됨');
                 } else {
-                    $('#'+selectedTab).find('div.result-area div.btn-filter').parent().removeClass('applied');
-                    $('#'+selectedTab).find('div.result-area div.btn-filter a span').text('옵션필터');
+                    $('#'+selectedTab).find('div.btn-filter').removeClass('applied');
+                    $('#'+selectedTab).find('div.btn-filter a span').text('옵션필터');
                 }
                 // 데이터를 호출함. 
                 if(!noRequest) _self.requestSearchProduct(searchedValue);

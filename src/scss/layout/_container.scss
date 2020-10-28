@@ -5,7 +5,8 @@
         text-align:center;
         .title {
             max-width:1280px;
-            margin:56px auto 0;
+            margin:0 auto;
+            padding-top:56px;
             color:#111;
             font-size:30px;
             line-height:36px;
@@ -32,23 +33,22 @@
             margin:0 auto;
         }
         .tabs-wrap.btn-type {
-            margin-top:20px;
+            padding-top:20px;
             &:only-child {
-                margin-top:24px;
+                padding-top:24px;
             }
         }
         @include mobile {
             padding:0 0 20px;
             .title {
-                margin-top:56px;
-                padding:0 20px;
+                padding:56px 20px 0;
                 font-size:24px;
                 line-height:32px;
             }
             .tabs-wrap.btn-type {
-                margin-top:28px;
+                padding-top:28px;
                 &:only-child {
-                    margin-top:28px;
+                    padding-top:28px;
                 }
             }
             .desc {
