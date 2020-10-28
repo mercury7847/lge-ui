@@ -271,6 +271,12 @@
                             $('.lay-filter').addClass('search-all');
                             _self.requestSearchProduct(searchedValue);
                             break;
+                        case "customer":
+                            var $sortItems = $list_sorting.find('div.ui-selectbox-list div.ui-select-scrollarea ul li a');
+                            _self.updateMobileSortFilter($sortItems);
+                            $('.lay-filter').addClass('search-all');
+                            self.$customerTab.find('ul.tabs li a').eq(0).trigger('click');
+                            break;
                         default:
                             var $sortItems = $list_sorting.find('div.ui-selectbox-list div.ui-select-scrollarea ul li a');
                             _self.updateMobileSortFilter($sortItems);
@@ -292,16 +298,15 @@
                             $btn_filter.hide();
                             $list_sorting.hide();
                             $list_count.hide();
-                            //self.$buttonSearch.trigger('click');
                             break;
                         default:
                             $('.lay-filter').removeClass('open search-all');
                             $btn_filter.show();
                             $list_sorting.show();
                             $list_count.show();
-                            //_self.requestSearchProduct(searchedValue);
                             break;
                     }
+                    _self.requestCustomerSearch(searchedValue);
                 });
 
                 //페이지
@@ -491,7 +496,6 @@
                 $sortList.empty();
 
                 var value = $('#'+selectedTab).find('div.list-sorting').find('.ui_selectbox').vcSelectbox('value');
-                console.log(value);
 
                 $sortItems.each(function(index, item) {
                     var itemValue = $(item).attr("data-value");
@@ -913,7 +917,7 @@
                 var searchItemTarget = 'ul.tabs li a[href="#' + selectedTab + '"]';
                 var ajaxUrl = self.$tab.find(searchItemTarget).attr('data-url-search');
 
-                var postData = vcui.extend(_self.convertPostData(storageFilters), {"search":searchValue});
+                var postData = (selectedTabb == "event") ? {"search":searchValue} : vcui.extend(_self.convertPostData(storageFilters), {"search":searchValue});
                 console.log(ajaxUrl,postData);
                 
                 $.ajax({
@@ -1133,6 +1137,146 @@
                 });
             },
 
+            //고객지원 하위탭 조회 jsw
+            requestCustomerSearch:function(searchValue) {
+                var _self = this;
+                var searchItemTarget = 'ul.tabs li a[href="#' + customerSelectedTab + '"]';
+                var ajaxUrl = self.$customerTab.find(searchItemTarget).attr('data-url-search');
+
+                var postData = (customerSelectedTab == "customer-all") ? {"search":searchValue} : vcui.extend(_self.convertPostData(storageFilters), {"search":searchValue});
+                console.log(ajaxUrl,postData);
+                
+                $.ajax({
+                    url: ajaxUrl,
+                    data: postData,
+                }).done(function (d) {
+                    if(d.status != 'success') {
+                        alert(d.message ? d.message : '오류발생');
+                        return;
+                    }
+        
+                    var customerData = d.data;
+                    var count = _self.checkCountData(customerData);
+                    var paramSearchedValue = d.param.searchedValue;
+                    var replaceText = '<span class="search-word">' + paramSearchedValue + '</span>';
+
+                    //고객지원-제품지원
+                    var arr = customerData.support instanceof Array ? customerData.support : [];
+                    var $list = $('#'+customerSelectedTab).find('result-list-wrap').eq(0);
+                    if(arr.length > 0) {
+                        var $list_ul = $list.find('div.list-wrap ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            item.title = item.title.replaceAll(paramSearchedValue, replaceText);
+                            $list_ul.append(vcui.template(customerListItemTemplate,item));
+                        });
+                        $list.show();
+                    } else {
+                        $list.hide();
+                    }
+
+                    /*
+                    //고객지원-드라이버
+                    arr = customerData.driver instanceof Array ? customerData.driver : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        showCustomerResult = true;
+                        var $list_ul = self.$resultAllCustomerDriver.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(customerBoxItemTemplate,item));
+                        });
+                        self.$resultAllCustomerDriver.show();
+                    } else {
+                        self.$resultAllCustomerDriver.hide();
+                    }
+
+                    //고객지원-문제해결
+                    arr = customerData.trouble instanceof Array ? customerData.trouble : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        showCustomerResult = true;
+                        var $list_ul = self.$resultAllCustomerTrouble.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(customerBoxItemTemplate,item));
+                        });
+                        self.$resultAllCustomerTrouble.show();
+                    } else {
+                        self.$resultAllCustomerTrouble.hide();
+                    }
+
+                    //고객지원-설명서
+                    arr = customerData.manual instanceof Array ? customerData.manual : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        showCustomerResult = true;
+                        var $list_ul = self.$resultAllCustomerManual.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(customerBoxItemTemplate,item));
+                        });
+                        self.$resultAllCustomerManual.show();
+                    } else {
+                        self.$resultAllCustomerManual.hide();
+                    }
+
+                    //고객지원-FAQ
+                    arr = customerData.faq instanceof Array ? customerData.faq : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        showCustomerResult = true;
+                        var $list_ul = self.$resultAllCustomerFaq.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(customerBoxItemTemplate,item));
+                        });
+                        self.$resultAllCustomerFaq.show();
+                    } else {
+                        self.$resultAllCustomerFaq.hide();
+                    }
+
+                    if(showCustomerResult) {
+                        self.$resultAllCustomer.show();
+                    } else {
+                        self.$resultAllCustomer.hide();
+                    }
+
+                    //고객지원-비디오
+                    arr = customerData.video instanceof Array ? customerData.video : [];
+                    if(arr.length > 0) {
+                        showResult = true;
+                        showCustomerResult = true;
+                        var $list_ul = self.$resultAllCustomerVideo.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            $list_ul.append(vcui.template(customerVideoItemTemplate,item));
+                        });
+
+                        vcui.require([ 
+                            "ui/youtubeBox",
+                        ], function () {
+                            self.$resultAllCustomerVideo.find('.youtube-box').vcYoutubeBox();
+                        });
+
+                        self.$resultAllCustomerVideo.show();
+                    } else {
+                        self.$resultAllCustomerVideo.hide();
+                    }
+
+                    count = _self.checkCountData(data.customer);
+                    _self.updateTabLabel(6,count);
+                    if(showCustomerResult) {
+                        self.$resultAllCustomer.show();
+                    } else {
+                        self.$resultAllCustomer.hide();
+                    }
+                    */
+
+                }).fail(function(d){
+                    alert(d.status + '\n' + d.statusText);
+                });
+            },
 
             // 필터 관련 처리
 
