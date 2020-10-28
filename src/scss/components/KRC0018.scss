@@ -11,9 +11,15 @@
     }
     &.bg-dark {
         background:#333;
+        .link-text {
+            color:#111 !important;
+        }
     }
     &.bg-black {
         background:#000;
+        .link-text {
+            color:#111 !important;
+        }
     }
     &.bg-white {
         background:#fff;
