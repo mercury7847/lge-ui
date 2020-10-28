@@ -833,6 +833,11 @@
             height: 72px;
             width: 72px;
             transition: width ease 0.5s;
+            .fold-btn {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
             &-ul {
                 @include clearfix;
                 display: inline-block;
@@ -871,9 +876,6 @@
                 top: -8px;
                 right: -8px;
                 z-index: 1;
-            }
-            [class*="-btn"] {
-                transition: opacity 0.5s;
             }
             .fold-expand-btn {
                 opacity: 1;
@@ -945,9 +947,6 @@
             &-history {
                 height: 54px;
                 width: 54px;
-                &-count {
-
-                }
             }
         }
     }
