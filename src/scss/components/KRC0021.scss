@@ -233,7 +233,7 @@ $color: (lightgray, dark, black, white);
                         } @else if $bg == dark {
                             border-color:#fff;
                             background:transparent;
-                            color:#fff;
+                            color:#fff !important;
                         } @else if $bg == lightgray {
                             background:transparent;
                         }
