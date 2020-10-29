@@ -621,7 +621,12 @@ CS.MD.CHK_DEVICE = function() {
 
 (function($){
     
+    function _initQuickMenu() {
+        
+    }
     function commonInit(){
+        _initQuickMenu();
+
         $('.scroll-x').mCustomScrollbar({
             axis:"x",
             advanced:{
