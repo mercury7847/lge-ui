@@ -185,6 +185,11 @@
                     vertical-align: middle;
                 }
             }
+            .file-list {
+                a {
+                    text-decoration:underline;
+                }
+            }
         }
         &-dl {
             border-top: 1px solid #ddd;
