@@ -62,6 +62,12 @@
             padding: 0;
         }
     }
+    &.nobg {
+        background-color: transparent;
+        .section-content {
+            background-color: transparent;
+        }
+    }
     @include mobile {
         padding:40px 20px 56px;
         background:#fff;
