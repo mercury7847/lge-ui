@@ -24,7 +24,7 @@
     position: relative;
     height: 380px;
     background: url('/lg5-common/images/STC/img-lgpay-banner.jpg') no-repeat 50% 50%;
-    background-size: 1920px 380px;
+    background-size: cover;
     @include mobile {
         height: 320px;
         background: url('/lg5-common/images/STC/img-lgpay-banner-m.jpg') no-repeat 50% 50%;

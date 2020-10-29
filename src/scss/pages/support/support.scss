@@ -185,6 +185,11 @@
                     vertical-align: middle;
                 }
             }
+            .file-list {
+                a {
+                    text-decoration:underline;
+                }
+            }
         }
         &-dl {
             border-top: 1px solid #ddd;
@@ -215,75 +220,6 @@
                 dt {
                     margin-bottom: 20px;
                 }
-            }
-        }
-    }
-
-    .related-info {
-        .slide-content {
-            margin-left: -12px;
-            margin-right: -12px;
-        }
-        &-wrap {
-            background-color: #f4f4f4;
-            padding-top: 80px;
-            padding-bottom: 120px;
-        }
-        &-title {
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 32px;
-        }
-        &-content {
-            max-width: 1284px;
-            margin: 0 auto;
-        }
-        &-figure {
-            @include clearfix;
-            margin: 0 12px;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        &-img,
-        &-figcap {
-            float: left;
-            height: 128px;
-        }
-        &-img {
-            width: 194px;
-            img {
-                max-width: 100%;
-            }
-        }
-        &-figcap {
-            width: calc(100% - 194px);
-            padding: 44px 24px;
-            font-size: 14px;
-            line-height: 1.43;
-            background-color: #fff;
-            a {
-                @include textEllipsisClamp(2)
-            }
-        }
-        @include mobile {
-            .slide-content {
-                margin-left: 12px;
-                margin-right: 0;
-            }
-            &-figure {
-                width: 200px;
-                margin-left: 8px;
-                margin-right: 0;
-            }
-            &-img,
-            &-figcap {
-                float: none;
-                height: auto;
-                width: 100%;
-            }
-            &-figcap {
-                padding: 40px 16px;
             }
         }
     }

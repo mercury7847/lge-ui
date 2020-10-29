@@ -15,7 +15,7 @@
 		.layered-inner {
 			display:flex;
 			flex-wrap:wrap;
-			justify-content:space-between;
+			// justify-content:space-between;
 			margin:(-$boxSpacing);
 			@include mobile {
 				display:block;
@@ -23,7 +23,6 @@
 			}
 			.layered-item {
 				width:100%; // ie
-				// flex-basis:100%;
 				padding:$boxSpacing;
 				@include mobile {
 					margin-top:60px;
@@ -33,15 +32,21 @@
 				.lay-cont-wrap {
 					display:flex;
 					position:relative;
+					height:474px;
 					min-height:100px;
 					padding:40px;
 					@include mobile {
 						height:auto !important;
-						padding:20px;
+						padding:20px 20px 29px;
 					}
 					&.valign-middle { align-items:flex-start; }
 					&.valign-middle { align-items:center; }
 					&.valign-bottom { align-items:flex-end; }
+					@include mobile {
+						&.valign-middle,
+						&.valign-middle,
+						&.valign-bottom { align-items:flex-start; }
+					}
 					.bg {
 						position:absolute;
 						top:0;
@@ -60,15 +65,19 @@
 						z-index:2;
 						color:#222;
 						&.colorWhite { color:#fff; }
-						* { color:inherit; }
+						* {
+							color:inherit;
+							word-break:break-all;
+						}
 						.lay-tit {
 							display:block;
 							font-weight:700;
 							font-size:28px;
 							line-height:36px;
-							height: 36px * 2; // IE : 멀티 말줄임 대응 높이제한
+							max-height: 36px * 2; // IE : 멀티 말줄임 대응 높이제한
 							@include textClipClamp(2);
 							@include mobile {
+								max-height: 32px * 2;
 								line-height:32px;
 							}
 						}
@@ -78,9 +87,11 @@
 							margin-top:16px;
 							font-size:18px;
 							line-height:28px;
-							height: 28px * 2; // IE : 멀티 말줄임 대응 높이제한
+							max-height: 28px * 2; // IE : 멀티 말줄임 대응 높이제한
 							@include textClipClamp(2);
 							@include mobile {
+								height: auto;
+								max-height: 26px * 2;
 								margin-top:11px;
 								line-height:26px;
 							}
@@ -102,12 +113,10 @@
 	.layered-wrap.type-2column {
 		.layered-inner {
 			.layered-item {
-				width:calc(100% / 2); // ie
-				// flex-basis:calc(100% / 2);
+				width:calc(100% / 2); // IE
 				@include mobile { width:100%; }
 				.lay-cont-wrap {
 					height:474px;
-					
 				}
 			}
 		}
@@ -118,11 +127,12 @@
 		.layered-inner {
 			.layered-item {
 				width:33.3%; // IE : calc 계산이 100% 넘어갈때가 종종 있어서 고정값으로 수정
-				// flex-basis:calc(100% / 3);
 				@include mobile { width:100%; }
 				.lay-cont-wrap {
 					height:310px;
-					padding:50px 20px;
+					@include pc {
+						padding:50px 20px;
+					}
 					.cont-box {
 						.lay-txt {
 							margin-top:12px;
