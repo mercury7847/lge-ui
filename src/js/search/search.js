@@ -166,6 +166,7 @@
     var storageFilters = {};
     var savedFilterArr = [];
     var currentPage = "1";
+    var customerCurrentPage = "1";
 
     $(window).ready(function() {
         var search = {
@@ -238,7 +239,7 @@
                 var _self = this;
                 _self.updateRecentSearcheList();
 
-                vcui.require(['ui/pagination'], function () {
+                vcui.require(['ui/pagination', "ui/youtubeBox"], function () {
                     _self.bindEvents();
                 });
 
@@ -312,8 +313,13 @@
                 //페이지
                 self.$pagination.vcPagination().on('page_click', function(e, data) {
                     //기존에 입력된 데이타와 변경된 페이지로 검색
-                    currentPage = data;
-                    _self.requestSearchProduct(searchedValue);
+                    if($(this).hasClass('customer')) {
+                        customerCurrentPage = data;
+                        _self.requestCustomerSearch(searchedValue);
+                    } else {
+                        currentPage = data;
+                        _self.requestSearchProduct(searchedValue);
+                    }
                 });
 
                 //검색 닫기버튼
@@ -502,6 +508,20 @@
                     $sortList.append(vcui.template(sortingInputTemplate, {"index":(""+(index+1)),"value":itemValue, "text":$(item).attr("data-text"), "checked":(value==itemValue)}));
                 });
             
+            },
+
+            updateRecommendList: function(listData) {
+                var arr = listData instanceof Array ? listData : [];
+                if(arr.length > 0) {
+                    var $list_ul = self.$recommendList.find('ul');
+                    $list_ul.empty();
+                    arr.forEach(function(item, index) {
+                        $list_ul.append(vcui.template(recommendItemTemplate,item));
+                    });
+                    self.$recommendList.show();
+                } else {
+                    self.$recommendList.hide();
+                }
             },
 
             changeBlindLabelTextSiblingCheckedInput:function (input, trueText, falseText) {
@@ -854,11 +874,7 @@
                             $list_ul.append(vcui.template(customerVideoItemTemplate,item));
                         });
 
-                        vcui.require([ 
-                            "ui/youtubeBox",
-                        ], function () {
-                            self.$resultAllCustomerVideo.find('.youtube-box').vcYoutubeBox();
-                        });
+                        self.$resultAllCustomerVideo.find('.youtube-box').vcYoutubeBox();
 
                         self.$resultAllCustomerVideo.show();
                     } else {
@@ -917,7 +933,7 @@
                 var searchItemTarget = 'ul.tabs li a[href="#' + selectedTab + '"]';
                 var ajaxUrl = self.$tab.find(searchItemTarget).attr('data-url-search');
 
-                var postData = (selectedTabb == "event") ? {"search":searchValue} : vcui.extend(_self.convertPostData(storageFilters), {"search":searchValue});
+                var postData = (selectedTab == "event") ? {"search":searchValue} : vcui.extend(_self.convertPostData(storageFilters), {"search":searchValue});
                 console.log(ajaxUrl,postData);
                 
                 $.ajax({
@@ -1028,17 +1044,7 @@
                     }
 
                     //추천상품
-                    arr = data.recommend instanceof Array ? data.recommend : [];
-                    if(arr.length > 0) {
-                        var $list_ul = self.$recommendList.find('ul');
-                        $list_ul.empty();
-                        arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(recommendItemTemplate,item));
-                        });
-                        self.$recommendList.show();
-                    } else {
-                        self.$recommendList.hide();
-                    }
+                    _self.updateRecommendList(data.recommend);
 
                     //전체 검색용 noData화면 숨김
                     self.$noData.hide();
@@ -1160,110 +1166,128 @@
                     var paramSearchedValue = d.param.searchedValue;
                     var replaceText = '<span class="search-word">' + paramSearchedValue + '</span>';
 
-                    //고객지원-제품지원
-                    var arr = customerData.support instanceof Array ? customerData.support : [];
-                    var $list = $('#'+customerSelectedTab).find('result-list-wrap').eq(0);
-                    if(arr.length > 0) {
-                        var $list_ul = $list.find('div.list-wrap ul');
-                        $list_ul.empty();
-                        arr.forEach(function(item, index) {
-                            item.title = item.title.replaceAll(paramSearchedValue, replaceText);
-                            $list_ul.append(vcui.template(customerListItemTemplate,item));
-                        });
-                        $list.show();
+                    var $list_sorting = $('#'+selectedTab).find('div.list-sorting');
+                    var $list_count = $list_sorting.find('div.list-count');
+                    $list_count.text('총 ' + vcui.number.addComma(count)+'개');
+
+                    customerCurrentPage = d.param.pagination.page;
+                    var $pagination = $('#'+customerSelectedTab).find('div.pagination');
+                    $pagination.vcPagination('setPageInfo',d.param.pagination);
+
+                    if(customerSelectedTab == 'customer-all') {
+                        //고객지원-제품지원
+                        var arr = customerData.support instanceof Array ? customerData.support : [];
+                        var $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(0);
+                        if(arr.length > 0) {
+                            var $list_ul = $list.find('div.list-wrap ul');
+                            $list_ul.empty();
+                            arr.forEach(function(item, index) {
+                                item.title = item.title.replaceAll(paramSearchedValue, replaceText);
+                                $list_ul.append(vcui.template(customerListItemTemplate,item));
+                            });
+                            $list.show();
+                        } else {
+                            $list.hide();
+                        }
+
+                        //고객지원-드라이버
+                        arr = customerData.driver instanceof Array ? customerData.driver : [];
+                        $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(1);
+                        if(arr.length > 0) {
+                            var $list_ul = $list.find('div.box-list ul');
+                            $list_ul.empty();
+                            arr.forEach(function(item, index) {
+                                $list_ul.append(vcui.template(customerBoxItemTemplate,item));
+                            });
+                            $list.show();
+                        } else {
+                            $list.hide();
+                        }
+
+                        //고객지원-문제해결
+                        arr = customerData.trouble instanceof Array ? customerData.trouble : [];
+                        $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(2);
+                        if(arr.length > 0) {
+                            var $list_ul = $list.find('div.box-list ul');
+                            $list_ul.empty();
+                            arr.forEach(function(item, index) {
+                                $list_ul.append(vcui.template(customerBoxItemTemplate,item));
+                            });
+                            $list.show();
+                        } else {
+                            $list.hide();
+                        }
+
+                        //고객지원-설명서
+                        arr = customerData.manual instanceof Array ? customerData.manual : [];
+                        $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(3);
+                        if(arr.length > 0) {
+                            var $list_ul = $list.find('div.box-list ul');
+                            $list_ul.empty();
+                            arr.forEach(function(item, index) {
+                                $list_ul.append(vcui.template(customerBoxItemTemplate,item));
+                            });
+                            $list.show();
+                        } else {
+                            $list.hide();
+                        }
+
+                        //고객지원-FAQ
+                        arr = customerData.faq instanceof Array ? customerData.faq : [];
+                        $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(4);
+                        if(arr.length > 0) {
+                            var $list_ul = $list.find('div.box-list ul');
+                            $list_ul.empty();
+                            arr.forEach(function(item, index) {
+                                $list_ul.append(vcui.template(customerBoxItemTemplate,item));
+                            });
+                            $list.show();
+                        } else {
+                            $list.hide();
+                        }
+
+                        //고객지원-비디오
+                        arr = customerData.video instanceof Array ? customerData.video : [];
+                        $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(5);
+                        if(arr.length > 0) {
+                            var $list_ul = $list.find('div.box-list ul');
+                            $list_ul.empty();
+                            arr.forEach(function(item, index) {
+                                $list_ul.append(vcui.template(customerVideoItemTemplate,item));
+                            });
+
+                            $list.find('.youtube-box').vcYoutubeBox();
+
+                            $list.show();
+                        } else {
+                            $list.hide();
+                        }
                     } else {
-                        $list.hide();
+                        var arr = _self.checkArrayData(customerData);
+                        var $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(0);
+                        var $list_ul = $list.find('div.box-list ul');
+                        $list_ul.empty();
+                        if(arr.length < 1) {
+                            $list.hide();
+                        }
+                        switch(customerSelectedTab) {
+                            case "customer-video":
+                                arr.forEach(function(item, index) {
+                                    $list_ul.append(vcui.template(customerVideoItemTemplate,item));
+                                });
+                                $list.find('.youtube-box').vcYoutubeBox();
+                                $list.show();
+                                break;
+                            default:
+                                arr.forEach(function(item, index) {
+                                    $list_ul.append(vcui.template(customerBoxItemTemplate,item));
+                                });
+                                $list.show();
+                                break;
+                        }
                     }
 
                     /*
-                    //고객지원-드라이버
-                    arr = customerData.driver instanceof Array ? customerData.driver : [];
-                    if(arr.length > 0) {
-                        showResult = true;
-                        showCustomerResult = true;
-                        var $list_ul = self.$resultAllCustomerDriver.find('ul');
-                        $list_ul.empty();
-                        arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(customerBoxItemTemplate,item));
-                        });
-                        self.$resultAllCustomerDriver.show();
-                    } else {
-                        self.$resultAllCustomerDriver.hide();
-                    }
-
-                    //고객지원-문제해결
-                    arr = customerData.trouble instanceof Array ? customerData.trouble : [];
-                    if(arr.length > 0) {
-                        showResult = true;
-                        showCustomerResult = true;
-                        var $list_ul = self.$resultAllCustomerTrouble.find('ul');
-                        $list_ul.empty();
-                        arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(customerBoxItemTemplate,item));
-                        });
-                        self.$resultAllCustomerTrouble.show();
-                    } else {
-                        self.$resultAllCustomerTrouble.hide();
-                    }
-
-                    //고객지원-설명서
-                    arr = customerData.manual instanceof Array ? customerData.manual : [];
-                    if(arr.length > 0) {
-                        showResult = true;
-                        showCustomerResult = true;
-                        var $list_ul = self.$resultAllCustomerManual.find('ul');
-                        $list_ul.empty();
-                        arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(customerBoxItemTemplate,item));
-                        });
-                        self.$resultAllCustomerManual.show();
-                    } else {
-                        self.$resultAllCustomerManual.hide();
-                    }
-
-                    //고객지원-FAQ
-                    arr = customerData.faq instanceof Array ? customerData.faq : [];
-                    if(arr.length > 0) {
-                        showResult = true;
-                        showCustomerResult = true;
-                        var $list_ul = self.$resultAllCustomerFaq.find('ul');
-                        $list_ul.empty();
-                        arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(customerBoxItemTemplate,item));
-                        });
-                        self.$resultAllCustomerFaq.show();
-                    } else {
-                        self.$resultAllCustomerFaq.hide();
-                    }
-
-                    if(showCustomerResult) {
-                        self.$resultAllCustomer.show();
-                    } else {
-                        self.$resultAllCustomer.hide();
-                    }
-
-                    //고객지원-비디오
-                    arr = customerData.video instanceof Array ? customerData.video : [];
-                    if(arr.length > 0) {
-                        showResult = true;
-                        showCustomerResult = true;
-                        var $list_ul = self.$resultAllCustomerVideo.find('ul');
-                        $list_ul.empty();
-                        arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(customerVideoItemTemplate,item));
-                        });
-
-                        vcui.require([ 
-                            "ui/youtubeBox",
-                        ], function () {
-                            self.$resultAllCustomerVideo.find('.youtube-box').vcYoutubeBox();
-                        });
-
-                        self.$resultAllCustomerVideo.show();
-                    } else {
-                        self.$resultAllCustomerVideo.hide();
-                    }
-
                     count = _self.checkCountData(data.customer);
                     _self.updateTabLabel(6,count);
                     if(showCustomerResult) {
@@ -1272,6 +1296,14 @@
                         self.$resultAllCustomer.hide();
                     }
                     */
+
+                    //추천상품
+                    _self.updateRecommendList(customerData.recommend);
+
+                    //전체 검색용 noData화면 숨김
+                    self.$noData.hide();
+                    self.$suggestedList.hide();
+
 
                 }).fail(function(d){
                     alert(d.status + '\n' + d.statusText);
@@ -1330,7 +1362,6 @@
 
                 // 모바일 필터박스 닫기
                 $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
-                    console.log('close');
                     e.preventDefault();
                     $('.lay-filter').removeClass('open');
                 });
@@ -1537,4 +1568,3 @@
         search.init();
     });
 })();
-
