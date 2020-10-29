@@ -10,6 +10,10 @@
 .section {
     max-width:1066px;
     margin:0 auto;
+    margin-top:48px;
+    &:first-child {
+        margin-top:0
+    }
     & ~ & {
         margin-top:48px;
     }
@@ -56,6 +60,12 @@
         }
         &.no-pd {
             padding: 0;
+        }
+    }
+    &.nobg {
+        background-color: transparent;
+        .section-content {
+            background-color: transparent;
         }
     }
     @include mobile {

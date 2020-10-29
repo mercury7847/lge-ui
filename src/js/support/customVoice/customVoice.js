@@ -4,12 +4,11 @@
     $(window).ready(function() {
         var custom = {
             init: function() {
-                var _self = this,
-                    $contents = $('.contents.suggestions');
+                var _self = this;
                 
-                CS.UI.$form = $contents.find('#submitForm');
+                CS.UI.$form = $('#submitForm');
 
-                vcui.require(['ui/validation', 'ui/formatter'], function () {
+                vcui.require(['ui/formatter'], function () {
                     $('#input-phoneNumber2').vcFormatter({'format':'num','maxlength':11});
 
                     var register = {
@@ -33,6 +32,10 @@
                             pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,						
                             requiredMsg: '이메일 주소를 입력해주세요',
                             errorMsg:'올바른 이메일 형식이 아닙니다. '
+                        },
+                        replay: {
+                            required: true,
+                            requiredMsg: '회신 여부를 선택해주세요.'
                         },
                         title: {
                             required: true,

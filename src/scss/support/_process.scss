@@ -3,17 +3,17 @@
 .process-wrap {
     max-width:1066px;
     margin:0 auto;
+    background:#fff;
     .process-list {
-        background:#fff;
         > li {
-            background-repeat: no-repeat;
+            background-repeat:no-repeat;
             & + li {
                 position:relative;
                 &:before {
                     content: '';
-                    position: absolute;
-                    background: url(/lg5-common/images/icons/icon-btn-arrow-right2.svg) no-repeat center;
-                    background-size: 100%;
+                    position:absolute;
+                    background:url(/lg5-common/images/icons/icon-btn-arrow-right2.svg) no-repeat center;
+                    background-size:100%;
                 }
             }
             &:nth-child(1) {
@@ -42,54 +42,48 @@
         line-height:24px;
         word-break:keep-all;
     }
-    &.email-inquiry-process {
-        margin-top: 48px;
-    }
 
     @include pc {
+        padding:36px 45px 42px;
+        border-radius:100px;
         .process-list {
-            display:table;
-            padding:28px 0 20px;
-            border-radius:100px;
-            @include clearfix;
+            font-size:0;
+            text-align:center;
             > li {
-                display:table-cell;
+                display:inline-block;
                 width:25%;
-                padding:80px 50px 0;
-                text-align:center;
-                background-size: 64px;
-                background-position: center top;
+                padding:100px 32px 0;
+                vertical-align:top;
+                background-size:64px;
+                background-position:center top;
                 + li {
                     &:before {
-                        left: -12px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        width: 32px;
-                        height: 32px;
+                        left:-16px;
+                        top:50%;
+                        transform:translateY(-50%);
+                        width:32px;
+                        height:32px;
                     }
                 }
             }
         }
     }
     @include mobile {
-        text-align:center;
-        background:#fff;
+        padding:30px 40px;
         .process-list {
-            display:inline-block;
-            padding:20px 40px;
             text-align:left;
             > li {
                 padding:0 0 0 60px;
-                background-size: 40px;
-                background-position: left center;
+                background-size:40px;
+                background-position:left center;
                 + li {
                     margin-top: 40px;
                     &::before {
-                        width: 24px;
-                        height: 24px;
-                        transform: rotate(90deg);
-                        left: calc(50% - 12px);
-                        top: -24px;
+                        width:24px;
+                        height:24px;
+                        transform:rotate(90deg);
+                        left:calc(50% - 12px);
+                        top:-32px;
                     }
                 }
             }
@@ -98,47 +92,47 @@
 }
 
 .process-bar-wrap {
-    padding-top:42px;
-    ul {
-        position:relative;
+    max-width:842px;
+    margin:0 auto;
+    padding-top:66px;
+    .bar-track {
         height:8px;
         border-radius:4px;
         background:#f4f4f4;
-        li {
-            overflow:hidden;
-            position:absolute;
-            bottom:0;
-            width:8px;
-            height:8px;
+        .bar {
+            position:relative;
+            width:0;
+            height:100%;
             border-radius:4px;
-            background:#808080;
-            &:nth-child(1) {
-                left:56px;
-            }
-            &:nth-child(2) {
-                left:50%;
-                transform:translateX(-50%);
-            }
-            &:nth-child(3) {
-                right:56px;
-            }
+            background:#ec455a;
             .txt {
                 position:absolute;
                 bottom:100%;
-                left:50%;
+                left:100%;
                 padding-bottom:48px;
                 color:#ec455a;
                 font-size:14px;
                 font-weight:700;
+                line-height:20px;
                 white-space:nowrap;
                 background:url('/lg5-common/images/icons/icon-alarm2.svg') no-repeat 100%;
                 background-size:26px 34px;
                 background-position:center bottom 8px;
                 transform:translateX(-50%);
             }
-            &.on {
-                overflow:visible;
-                background:#ec455a;
+        }
+    }
+    @include mobile {
+        padding:66px 20px 0;
+        .bar-track {
+            .bar {
+                .txt {
+                    padding-bottom:40px;
+                    font-size:12px;
+                    line-height:16px;
+                    background-size:21px 87px;
+                    background-position:center bottom 6px;
+                }
             }
         }
     }

@@ -44,7 +44,7 @@ CS.MD.validation = function() {
                 requiredMsg = $el.data('requiredMsg');
 
             if (msgTarget) {
-                tempObj[el.name] = {}
+                tempObj[el.name] = tempObj[el.name] || {};
 
                 if (tempObj[el.name]){       
                     tempObj[el.name]['msgTarget'] = msgTarget;
@@ -84,9 +84,10 @@ CS.MD.validation = function() {
                 var opt = self.register[key];
                 var value = $target.val();
 
-                if ($target.is(':checkbox') || $target.is(':radio')) {
-                    if (!$target.is(':checked')) {
-                        if (value == 'on') value = '';
+                if ($target.is(':radio') || $target.is(':checkbox') ){
+                    var $checked = $target.filter(':checked');
+                    if ($checked) {
+                        value = $checked.val();
                     }
                 }
 
@@ -620,7 +621,12 @@ CS.MD.CHK_DEVICE = function() {
 
 (function($){
     
+    function _initQuickMenu() {
+        
+    }
     function commonInit(){
+        _initQuickMenu();
+
         $('.scroll-x').mCustomScrollbar({
             axis:"x",
             advanced:{
