@@ -313,7 +313,7 @@
                 //페이지
                 self.$pagination.vcPagination().on('page_click', function(e, data) {
                     //기존에 입력된 데이타와 변경된 페이지로 검색
-                    if($(this).hasClass('customer')) {
+                    if(selectedTab == 'customer') {
                         customerCurrentPage = data;
                         _self.requestCustomerSearch(searchedValue);
                     } else {
@@ -1404,7 +1404,11 @@
                 $('div.list-sorting').find('.ui_selectbox').on('change', function(e,data){
                     var value = e.target.value;
                     $('input[name="sorting"][value="'+ value +'"]').prop('checked', true);
-                    _self.requestSearchProduct(searchedValue);
+                    if(selectedTab == 'customer') {
+                        _self.requestCustomerSearch(searchedValue);
+                    } else {
+                        _self.requestSearchProduct(searchedValue);
+                    }
                 });
             },
 
