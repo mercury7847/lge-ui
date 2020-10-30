@@ -73,10 +73,10 @@
 							font-weight:700;
 							font-size:28px;
 							line-height:36px;
-							max-height: 36px * 2;
+							max-height:36px * 2;
 							@include textClipClamp(2);
 							@include mobile {
-								max-height: 32px * 2;
+								max-height:32px * 2;
 								line-height:32px;
 							}
 						}
@@ -86,11 +86,11 @@
 							margin-top:16px;
 							font-size:18px;
 							line-height:28px;
-							max-height: 28px * 2;
+							max-height:28px * 2;
 							@include textClipClamp(2);
 							@include mobile {
-								height: auto;
-								max-height: 26px * 2;
+								height:auto;
+								max-height:26px * 2;
 								margin-top:11px;
 								line-height:26px;
 							}
