@@ -15,14 +15,13 @@
 		.layered-inner {
 			display:flex;
 			flex-wrap:wrap;
-			// justify-content:space-between;
 			margin:(-$boxSpacing);
 			@include mobile {
 				display:block;
 				margin:0;
 			}
 			.layered-item {
-				width:100%; // ie
+				width:100%;
 				padding:$boxSpacing;
 				@include mobile {
 					margin-top:60px;
@@ -74,7 +73,7 @@
 							font-weight:700;
 							font-size:28px;
 							line-height:36px;
-							max-height: 36px * 2; // IE : 멀티 말줄임 대응 높이제한
+							max-height: 36px * 2;
 							@include textClipClamp(2);
 							@include mobile {
 								max-height: 32px * 2;
@@ -87,7 +86,7 @@
 							margin-top:16px;
 							font-size:18px;
 							line-height:28px;
-							max-height: 28px * 2; // IE : 멀티 말줄임 대응 높이제한
+							max-height: 28px * 2;
 							@include textClipClamp(2);
 							@include mobile {
 								height: auto;
