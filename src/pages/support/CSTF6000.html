@@ -72,20 +72,22 @@
                                     <!-- <div class="row">
                                         <div class="field-item">
                                             <div class="field-title">
-                                                <label for="input-name1" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
+                                                <label for="input-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
                                             </div>
                                             <div class="input-wrap">
-                                                <input type="text" name="name1" id="input-name1" value="홍길동" placeholder="성함을 입력해주세요."  data-msg-target=".err-msg" readonly required>
+                                                <input type="text" name="name" id="input-name" value="홍길동" placeholder="이름을 입력해주세요." data-required="true" data-msg-target=".err-msg" readonly required>
+                                                <p class="err-msg"></p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="field-item">
                                             <div class="field-title">
-                                                <label for="input-phoneNumber1" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
+                                                <label for="input-phoneNo" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
                                             </div>
                                             <div class="input-wrap">
-                                                <input type="text" name="phoneNumber1" id="input-phoneNumber1" value="010-1234-5678" placeholder="휴대 전화를 입력해주세요." data-msg-target=".err-msg" readonly required>
+                                                <input type="text" name="phoneNo" id="input-phoneNo" value="01012345678" placeholder="휴대 전화를 입력해주세요." data-required="true" data-msg-target=".err-msg" readonly required>
+                                                <p class="err-msg"></p>
                                             </div>
                                         </div>
                                     </div> -->
@@ -106,20 +108,20 @@
                                     <div class="row">
                                         <div class="field-item block">
                                             <div class="field-title">
-                                                <label for="input-phoneNumber" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
+                                                <label for="input-phoneNo" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
                                             </div>
                                             <div class="field-box">
                                                 <div class="input-wrap">
                                                     <div class="box">
-                                                        <input type="text" name="phoneNumber" id="input-phoneNumber" placeholder="휴대 전화를 입력해주세요." data-required="true" data-msg-target=".err-msg" required>
+                                                        <input type="text" name="phoneNo" id="input-phoneNo" placeholder="휴대 전화를 입력해주세요." data-required="true" data-msg-target=".err-msg" required>
                                                         <span class="cell">
-                                                            <button type="button" class="btn-text pink"><span>인증번호 발송</span></button>
+                                                            <button type="button" class="btn-text pink" data-href="#certificationPopup" data-control="modal"><span>휴대전화 인증</span></button>
                                                         </span>
                                                     </div>
                                                     <p class="err-msg"></p>
                                                 </div>
                                                 <div class="input-wrap">
-                                                    <input type="text" name="authNumber" id="input-authNumber" placeholder="인증번호를 입력해주세요." readonly>
+                                                    <input type="text" name="authNo" id="input-authNo" placeholder="인증번호를 입력해주세요." readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -208,7 +210,7 @@
                         </div>
 
                         <div class="btn-group right">
-                            <a href="#" class="btn gray"><span>취소</span></a>
+                            <a href="/html/support/CSTF1000.html" class="btn gray"><span>취소</span></a>
                             <button type="button" class="btn pink btn-confirm"><span>확인</span></button>
                         </div>
                     </form>
@@ -229,7 +231,7 @@
     })
 
     <!-- 휴대폰인증 팝업 -->
-    <!-- include('./support/modal/phone-certification-popup.html') -->
+    @@include('./support/modal/phone-certification-popup.html')
 
     <!-- support script -->
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
