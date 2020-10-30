@@ -7,7 +7,7 @@ vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
     var message = {
         length: '첨부 파일은 최대 3개까지 가능합니다.',
         name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
-        format: 'jpg, jpeg, png, gif  파일만 첨부 가능합니다.',
+        format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
         size: '첨부파일 전체 용량은 10MB 이내로 등록 가능합니다'
     }
 
@@ -32,7 +32,6 @@ vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
             self.$el.closest(".file-box").find(".file-lists").empty();
             self._bindEvents();
         },
-
         getSelectFiles: function getSelectFiles() {
             return selectFiles;
         },
@@ -86,7 +85,7 @@ vcui.define('ui/fileInput', ['jquery', 'vcui'], function ($, core) {
                 tmpl;
 
             tmpl = vcui.template(self.options.templateAlert, {
-                message: msg
+                message: message[msg]
             });
 
             $('body').append(tmpl);

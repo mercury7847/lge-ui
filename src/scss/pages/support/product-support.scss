@@ -571,6 +571,7 @@
         }
     }
     .related-info-wrap {
+        overflow:hidden;
         padding:80px 40px 120px;
         background-color: #f4f4f4;
         .inner {
@@ -579,18 +580,18 @@
         }
         .title {
             margin-bottom:32px;
+            font-size:20px;
+            font-weight:700;
+            line-height:30px;
             text-align:center;
-            .tit {
-                font-size:20px;
-                font-weight:700;
-                line-height:30px;
-            }
         }
         .slide {
             &-content {
                 margin:0 -6px;
+                text-align:center;
             }
             &-track {
+                display:inline-block;
                 @include clearfix;
             }
             &-conts {
@@ -610,10 +611,8 @@
         @include mobile {
             padding:40px 20px 56px;
             .title {
-                .tit {
-                    font-size:16px;
-                    line-height:24px;
-                }
+                font-size:16px;
+                line-height:24px;
             }
             .slide {
                 &-content {
@@ -648,7 +647,7 @@
     /* 비디오 가이드 */
     &.video-guide {
         .search-wrap, .result-wrap {
-            max-width:1066;
+            max-width:1066px;
             margin:0 auto;
         }
         .tabs-wrap {

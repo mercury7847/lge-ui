@@ -18,5 +18,28 @@
             max-width:1066px;
             margin:0 auto;
         }
+        .search-info {
+            .tit {
+                margin-bottom:8px;
+                font-size:20px;
+                font-weight:700;
+                line-height:24px;
+            }
+            .desc {
+                font-size:16px;
+                line-height:24px
+            }
+            @include mobile {
+                .tit {
+                    margin-bottom:12px;
+                    font-size:16px;
+                    line-height:24px;
+                }
+                .desc {
+                    font-size:14px;
+                    line-height:18px;
+                }
+            }
+        }
     }
 }

@@ -20,154 +20,110 @@
 
                     <div class="section">
                         <div class="section-content">
-                            <h3 class="headline">서비스센터 홈페이지를 통해 칭찬 또는 개선사항을 등록 하셨나요?</h3>
-                            <p>서비스센터 홈페이지를 통해 등록하신 칭찬, 개선, 제안 건에 대한 내역 조회를 하실 수 있습니다. (칭찬합니다, 개선해주세요 조회는 <strong class="color-3">답변 메일 발송 일로부터 1개월간 확인</strong>하실 수 있습니다.)</p>
+                            <div class="search-info">
+                                <h4 class="tit">서비스센터 홈페이지를 통해 칭찬 또는 개선사항을 등록 하셨나요?</h4>
+                                <p class="desc">서비스센터 홈페이지를 통해 등록하신 칭찬, 개선, 제안 건에 대한 내역 조회를 하실 수 있습니다.<br>(칭찬합니다, 개선해주세요 조회는 <strong class="color-3">답변 메일 발송 일로부터 1개월간 확인</strong>하실 수 있습니다.)</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="divisions my-suggestions">
-                        <div class="section col-6">
-                            <div class="section-title">
-                                <h3 class="tit">접수번호로 빠르게!</h3>        
-                            </div>
-                            <form action="">
-                                <div class="section-content">
-                                    <div class="field-wrap">
-                                        <div class="row">
-                                            <div class="field-item block">
-                                                <div class="field-title">
-                                                    <label for="regist-name" class="tit">이름</label>
-                                                </div>
-                                                <div class="input-wrap">
-                                                    <input type="text" name="regist-search" id="regist-name" placeholder="이름을 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
-                                                    <p class="err-msg">이름을 입력해주세요.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="field-item block">
-                                                <div class="field-title">
-                                                    <label for="regist-number" class="tit">접수 번호</label>
-                                                </div>
-                                                <div class="input-wrap">
-                                                    <input type="number" name="regist-search" id="regist-number" placeholder="접수 번호를 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
-                                                    <p class="err-msg">접수 번호를 입력해주세요.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="btn-group center">
-                                        <button type="submit" class="btn pink"><span>확인</span></button>
-                                    </div>
+                    <div class="double-section">
+                        <div class="sections">
+                            <div class="section">
+                                <div class="section-title">
+                                    <h3 class="tit">접수번호로 빠르게!</h3>        
                                 </div>
-                            </form>
-                        </div>
+                                <div class="section-content">
+                                    <form action="">
+                                        <div class="field-wrap">
+                                            <div class="row">
+                                                <div class="field-item block">
+                                                    <div class="field-title">
+                                                        <label for="regist-name" class="tit">이름</label>
+                                                    </div>
+                                                    <div class="input-wrap">
+                                                        <input type="text" name="regist-search" id="regist-name" placeholder="이름을 입력해주세요." data-msg-target=".err-msg" required>
+                                                        <p class="err-msg">이름을 입력해주세요.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="field-item block">
+                                                    <div class="field-title">
+                                                        <label for="regist-number" class="tit">접수 번호</label>
+                                                    </div>
+                                                    <div class="input-wrap">
+                                                        <input type="number" name="regist-search" id="regist-number" placeholder="접수 번호를 입력해주세요." data-msg-target=".err-msg" required>
+                                                        <p class="err-msg">접수 번호를 입력해주세요.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-group center">
+                                            <button type="submit" class="btn pink"><span>확인</span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
 
-                        <div class="section col-6">
-                            <div class="section-title">
-                                <h3 class="tit">휴대전화 인증으로 한번에!</h3>        
-                            </div>
-                            <form action="">
-                                <div class="section-content">
-                                    <div class="field-wrap">
-                                        <div class="row">
-                                            <div class="field-item block">
-                                                <div class="field-title">
-                                                    <label for="certi-phone-name" class="tit">이름</label>
-                                                </div>
-                                                <div class="input-wrap">
-                                                    <input type="text" name="certi-phone" id="certi-phone-name" placeholder="이름을 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
-                                                    <p class="err-msg">이름을 입력해주세요.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="field-item block">
-                                                <div class="field-title">
-                                                    <label for="certi-phone-number" class="tit">휴대전화</label>
-                                                </div>
-                                                <div class="input-wrap">
-                                                    <span class="box">
-                                                        <input type="tel" name="certi-phone" id="certi-phone-number" placeholder="휴대전화 번호를 입력해주세요." maxlength="11" required>
-                                                        <span class="cell">
-                                                            <button type="button" class="btn-text pink">인증번호 발송</button>
-                                                        </span>
-                                                    </span>
-                                                    <p class="err-msg">휴대전화 번호를 입력해주세요.</p>
-                                                </div>
-                                                <div class="input-wrap">
-                                                    <input type="number" name="certi-phone" id="certi-number" placeholder="인증번호를 입력해주세요." disabled required>
-                                                    <p class="err-msg">인증번호를 입력해주세요.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="btn-group center">
-                                        <button type="submit" class="btn pink"><span>확인</span></button>
-                                    </div>
+                            <div class="section">
+                                <div class="section-title">
+                                    <h3 class="tit">휴대전화 인증으로 한번에!</h3>        
                                 </div>
-                            </form>
+                                <div class="section-content">
+                                    <form action="">
+                                        <div class="field-wrap">
+                                            <div class="row">
+                                                <div class="field-item block">
+                                                    <div class="field-title">
+                                                        <label for="certi-phone-name" class="tit">이름</label>
+                                                    </div>
+                                                    <div class="input-wrap">
+                                                        <input type="text" name="certi-phone" id="certi-phone-name" placeholder="이름을 입력해주세요." data-msg-target=".err-msg" required>
+                                                        <p class="err-msg">이름을 입력해주세요.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="field-item block">
+                                                    <div class="field-title">
+                                                        <label for="certi-phone-number" class="tit">휴대전화</label>
+                                                    </div>
+                                                    <div class="input-wrap">
+                                                        <span class="box">
+                                                            <input type="tel" name="certi-phone" id="certi-phone-number" placeholder="휴대전화 번호를 입력해주세요." maxlength="11"  data-msg-target=".err-msg" required>
+                                                            <span class="cell">
+                                                                <button type="button" class="btn-text pink">인증번호 발송</button>
+                                                            </span>
+                                                        </span>
+                                                        <p class="err-msg">휴대전화 번호를 입력해주세요.</p>
+                                                    </div>
+                                                    <div class="input-wrap">
+                                                        <input type="number" name="certi-phone" id="certi-number" placeholder="인증번호를 입력해주세요."  data-msg-target=".err-msg" disabled required>
+                                                        <p class="err-msg">인증번호를 입력해주세요.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-group center">
+                                            <button type="submit" class="btn pink"><span>확인</span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
+                        @@include('./common/modules/bullet-list.html', {
+                            "bulletTxt" : [
+                                "인증번호가 수신되지 않은 경우 1544-7777이 스팸 처리 되지 않았는지 확인해주시기 바랍니다."
+                            ]
+                        })
                     </div>
 
                 </div>
             </div>
         </div>
 
-        <aside id="quickmenu" class="quickmenu">
-            <ul class="quickmenu-ul">
-                <li class="service-menu on"><!-- fold-expand-btn을 누르면 service-menu에 on 추가 -->
-                    <button class="quickmenu-btn circle-type fold-expand-btn" type="button"><span class="icon"></span><span class="blind">메뉴 닫힘</span></button>
-                    <ul class="service-menu-ul">
-                        <li><a class="fold-btn circle-type" href="#n"><span class="icon">퀵메뉴 5</span></a></li>
-                        <li><a class="fold-btn circle-type" href="#n"><span class="icon">제품 문제 해결</span></a></li>
-                        <li><a class="fold-btn circle-type" href="#n"><span class="icon">드라이버/SW 다운로드</span></a></li>
-                        <li><a class="fold-btn circle-type" href="#n"><span class="icon">서비스 센터 찾기</span></a></li>
-                        <li><a class="fold-btn circle-type" href="#n"><span class="icon">전문가 상담</span></a></li>
-                    </ul>
-                </li>
-                <li>
-                    <button class="quickmenu-btn" type="button"><span class="icon">고객센터</span></button>
-                </li>
-                <li>
-                    <a class="quickmenu-btn" href="#n" target="_blank" title="새 창에서 실행"><span class="icon">챗봇</span></a>
-                </li>
-                <li class="service-history on"><!-- fold-expand-btn을 누르면 service-history에 on 추가 -->
-                    <mark class="service-history-count"><span class="blind">고객지원 제품 검색 기록</span> 0<span class="blind">건</span></mark>
-                    <button class="fold-btn fold-expand-btn" type="button"><span class="icon">고객지원 제품 검색 기록</span></button>
-                    <ul class="service-history-ul">
-                        <li>
-                            <a href="#n" class="service-history-btn">
-                                <figure class="icon">
-                                    <img src="/lg5-common/images/dummy/@img-product.jpg" alt="제품 이미지">
-                                    <figcaption class="textEllipsis">OLED65RXKNA</figcaption>
-                                </figure>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#n" class="service-history-btn">
-                                <figure class="icon">
-                                    <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="제품 이미지">
-                                    <figcaption class="textEllipsis">OLED65RXKNA</figcaption>
-                                </figure>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#n" class="service-history-btn">
-                                <figure class="icon">
-                                    <img src="/lg5-common/images/dummy/@img-product3.jpg" alt="제품 이미지">
-                                    <figcaption class="textEllipsis">OLED65RXKNA</figcaption>
-                                </figure>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <button class="quickmenu-btn circle-type" type="button"><span class="icon"></span><span class="blind">맨 위로 이동</span></button>
-                </li>
-            </ul>
-        </aside>
-
+        @@include('./common/support/quick-menu.html')
         @@include('./common/footer.html')
     </div>
 
