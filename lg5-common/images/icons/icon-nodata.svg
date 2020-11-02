@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon-nodata</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="icon_nodata_56">
-            <rect id="Rectangle" x="0" y="0" width="56" height="56"></rect>
-            <g id="ic" stroke-width="1" fill-rule="evenodd">
-                <rect id="Rectangle" stroke="#CCCCCC" stroke-width="3" x="1.5" y="1.5" width="53" height="53" rx="26.5"></rect>
-                <g id="Group-3" transform="translate(26.000000, 15.000000)" fill="#CCCCCC">
-                    <rect id="Rectangle" x="0" y="23" width="4" height="4" rx="2"></rect>
-                    <rect id="Rectangle" x="0" y="0" width="4" height="20" rx="2"></rect>
+<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_nodata_60">
+            <rect id="area" x="0" y="0" width="120" height="120"></rect>
+            <g id="shape" transform="translate(6.000000, 6.000000)" fill="#767676">
+                <g id="ic" fill-rule="nonzero">
+                    <path d="M54,-2 C23.072054,-2 -2,23.072054 -2,54 C-2,84.927946 23.072054,110 54,110 C84.927946,110 110,84.927946 110,54 C110,23.072054 84.927946,-2 54,-2 Z M54,2 C82.718807,2 106,25.281193 106,54 C106,82.718807 82.718807,106 54,106 C25.281193,106 2,82.718807 2,54 C2,25.281193 25.281193,2 54,2 Z" id="Oval"></path>
+                </g>
+                <g id="Group-112" transform="translate(48.000000, 25.500000)">
+                    <g id="Group-114">
+                        <path d="M6,0 C9.08545762,-5.66789369e-16 11.5867152,2.5012576 11.5867152,5.58671522 C11.5867152,5.71952079 11.5819797,5.85228413 11.5725177,5.9847522 L9.21374115,39.0076239 C9.0933088,40.6936768 7.69034855,42 6,42 C4.30965145,42 2.9066912,40.6936768 2.78625885,39.0076239 L0.4274823,5.9847522 C0.207652547,2.90713566 2.52434648,0.234027273 5.60196302,0.0141975203 C5.73443109,0.00473551537 5.86719443,2.43959871e-17 6,0 Z" id="Rectangle"></path>
+                        <rect id="Rectangle" x="1.5" y="46.5" width="9" height="9" rx="4.5"></rect>
+                    </g>
                 </g>
             </g>
         </g>

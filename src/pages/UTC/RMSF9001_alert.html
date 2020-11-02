@@ -3,6 +3,14 @@
     @@include('./common/head.html')
 <body>
     <div class="wrap">
+        <button type="button" data-href="#laypop1" data-control="modal" class="btn pink"><span>인증완료</span></button><br><br>
+        <button type="button" data-href="#laypop2" data-control="modal" class="btn pink"><span>다시시도</span></button><br><br>
+        <button type="button" data-href="#laypop3" data-control="modal" class="btn pink"><span>성공</span></button><br><br>
+        <button type="button" data-href="#laypop4" data-control="modal" class="btn pink"><span>실패</span></button><br><br>
+        <button type="button" data-href="#laypop5" data-control="modal" class="btn pink"><span>신청불가</span></button><br><br>
+
+
+
         <button type="button" data-href="#laypop1" data-control="modal" class="btn pink"><span>제휴카드 신청 동의 문자 alert</span></button><br><br>
         <button type="button" data-href="#laypop2" data-control="modal" class="btn pink"><span>카드등록 오류 alert</span></button><br><br>
         <button type="button" data-href="#laypop3" data-control="modal" class="btn pink"><span>카드등록 완료 alert</span></button><br><br>
@@ -11,6 +19,49 @@
         <button type="button" data-href="#laypop6" data-control="modal" class="btn pink"><span>ARS요청 alert</span></button><br><br>
         <button type="button" data-href="#laypop7" data-control="modal" class="btn pink"><span>ARS 출금동의 오류 alert</span></button><br><br>
     </div>
+
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop1",
+        "msgOnly" : true,
+        "msg" : "인증이 완료되었습니다."
+    })
+
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop2",
+        "msgOnly" : true,
+        "msg" : "인증이 완료되지 않았습니다.<br>다시 시도해주세요."
+    })
+
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop3",
+        "msgOnly" : true,
+        "msg" : "Safekey발급이 성공했습니다."
+    })
+
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop4",
+        "alertTit" : "인증이 실패했습니다.",
+        "alertCont" : [
+            { "txt" : "자세한 사항은 1577-4090 으로 문의부탁드립니다." }
+        ]
+    })
+
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop5",
+        "alertTit" : "청약 신청 불가 안내",
+        "alertCont" : [
+            { "txt" : "신용등급심사 결과, 청약 신청이 불가능합니다.<br>자세한 사항은 1577-4090 으로 문의부탁드립니다." }
+        ]
+    })
+
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop6",
+        "msgOnly" : true,
+        "msg" : "선택한 제품을 삭제하시겠습니까?",
+        "twobtn" : true,
+        "btnTxt1" : "취소", 
+        "btnTxt2" : "확인"
+    })
 
     @@include('./common/modules/alert-modal.html', {
         "popId" : "laypop1",

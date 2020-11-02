@@ -326,7 +326,7 @@
     //     line-height:24px;
     // }
     margin:0;
-    padding:140px 0;
+    padding:160px 0 140px;
     background-color: #fff;
     text-align:center;
     &.mg-type {
@@ -335,19 +335,20 @@
     }
     p {
         position:relative;
-        padding-top:72px;
-        color:#808080;
+        padding-top:76px;
+        color:#767676;
         font-size:16px;
-        line-height:24px;
+        line-height:26px;
         &::before {
             content:' ';
             position:absolute;
             top:0;
             left:50%;
-            margin-left:-28px;
-            width:56px;
-            height:56px;
+            margin-left:-30px;
+            width:60px;
+            height:60px;
             background:url('/lg5-common/images/icons/icon-nodata.svg') center no-repeat;
+            background-size:60px 60px;
         }
     }
     &.full {
