@@ -64,8 +64,13 @@
     }
     &.nobg {
         background-color: transparent;
+        padding-bottom: 40px;
         .section-content {
             background-color: transparent;
+        }
+        ~ .nobg {
+            margin-top: 0;
+            padding-top: 0;
         }
     }
     @include mobile {
