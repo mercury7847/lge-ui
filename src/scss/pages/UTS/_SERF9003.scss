@@ -10,7 +10,7 @@
 
     .title {
         padding-bottom: 16px;
-        @include font-x-large;
+        @include font-large-1;
         color: #111;
         @include mobile {
             padding-bottom: 12px;
