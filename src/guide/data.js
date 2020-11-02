@@ -25,7 +25,8 @@ var res = {
 			"Rangeslider" : ["./wsg/guide_rangeslider.html","","검수완료"],
 			"Flag" : ["./wsg/guide_flag.html","","검수완료"],
 			"SNS Share" : ["./wsg/guide_sns_share.html","","검수완료"],
-			"Filter" : ["./wsg/guide_filter.html","","검수완료"]
+			"Filter" : ["./wsg/guide_filter.html","","검수완료"],
+			"Location" : ["./wsg/guide_location.html","","검수완료"]
 		}
 	},
 	"Front" : {
