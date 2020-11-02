@@ -1,6 +1,6 @@
 // Form
 .input-info {
-    padding-top:64px;
+    padding-top:40px;
     &:first-child {
         padding-top:0;
     }
@@ -80,14 +80,14 @@
                 font-weight:500;
             }
             dd {
-                color:#979797;
+                color:#767676;
                 font-size:14px;
-                line-height:20px;
+                line-height:22px;
             }
         }
         .sub-txt {
             margin-top:24px;
-            color:#979797;
+            color:#767676;
         }
     }
 }
@@ -466,6 +466,9 @@
 .agree-cont-wrap {
     .agree-input {
         margin-bottom:16px;
+        .chk-wrap input + label {
+            font-weight:500;
+        }
         @include mobile {
             margin-bottom:12px;
         }
@@ -477,9 +480,9 @@
         padding:24px 40px 24px 24px;
         border:1px solid #ddd;
         border-radius:8px;
-        color:#616161;
+        color:#767676;
         font-size:14px;
-        line-height:20px;
+        line-height:22px;
         @include mobile {
             max-height:212px;
             padding:16px;

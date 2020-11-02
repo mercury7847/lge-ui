@@ -122,12 +122,14 @@
     .btn-close {
         position:absolute;
         top:40px;
-        right:56px;
+        right:48px;
         width:24px;
         height:24px;
         @include mobile {
-            top:24px;
-            right:24px;
+            top:8px;
+            right:16px;
+            width:16px;
+            height:16px;
         }
         &::before, &::after {
             content:' ';
@@ -140,6 +142,10 @@
             margin-left:-1px;
             border-radius:1px;
             background:#222;
+            @include mobile {
+                height:16px;
+                margin-top:-8px;
+            }
         }
         &::before {
             transform:rotate(45deg);
@@ -149,7 +155,9 @@
         }
     }
     .pop-header {
-        padding:40px 88px 32px 56px;
+        padding:40px 0 22px;
+        margin:0 48px;
+        border-bottom:2px solid #222;
         .tit span {
             display:block;
             height:32px;
@@ -162,12 +170,13 @@
             word-break:keep-all;
         }
         @include mobile {
-            padding:24px 52px;
+            margin:0;
+            padding:8px 16px;
+            border:none;
             .tit span {
-                height:27px;
-                font-size:18px;
-                line-height:27px;
-                text-align:center;
+                height:24px;
+                font-size:13px;
+                line-height:21px;
             }
         }
     }
@@ -192,10 +201,11 @@
     .pop-conts {
         height:auto;
         max-height:492px;
-        padding:0 48px 48px;
+        padding:48px 48px 0;
         overflow-y:auto;
         &.no-footer {
             max-height:576px;
+            padding-bottom:48px;
             text-align:left;
             @include mobile {
                 height:calc(100% - 75px);
@@ -206,9 +216,9 @@
             background-color: #fff;
         }
         @include mobile {
-            padding:0 20px 56px;
-            height:calc(100% - 135px);
-            max-height:calc(100% - 135px);
+            padding:32px 16px 60px;
+            height:calc(100% - 113px);
+            max-height:calc(100% - 113px);
         }
         .tabs-wrap {
             &:first-child {
@@ -222,7 +232,7 @@
         }
     }
     .pop-footer {
-        padding:32px 56px 40px;
+        padding:48px 48px 48px;
         background:transparent;
         font-size:0;
         text-align:right;
@@ -349,7 +359,7 @@
                     display:none;
                 }
                 @include mobile {
-                    height:54px;
+                    height:42px;
                     br {
                         display:block;
                     }
@@ -515,7 +525,7 @@
                                 position:relative;
                                 top:auto;
                                 right:auto;
-                                margin-top:10px;
+                                margin:24px 0 0 -32px;
                                 font-size:0;
                                 text-align:right;
                                 transform:translateY(0);
@@ -523,13 +533,17 @@
                             .btn {
                                 display:block;
                                 margin-top:8px;
-                                &:first-child {
-                                    margin-top:0;
-                                }
                                 @include mobile {
                                     display:inline-block;
+                                    width:calc((100% - 8px) / 2);
                                     margin-top:0;
                                     margin-left:8px;
+                                }
+                                &:first-child {
+                                    margin-top:0;
+                                    @include mobile {
+                                        margin-left:0;
+                                    }
                                 }
                             }
                         }
