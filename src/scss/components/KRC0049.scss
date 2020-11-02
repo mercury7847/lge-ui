@@ -95,8 +95,11 @@
 								line-height:26px;
 							}
 						}
-						.bullet-list .b-txt:before {
-							background:#222;
+						.bullet-list .b-txt {
+							display:inline-block;
+							&:before {
+								background:#222;
+							}
 						}
 						&.colorWhite .bullet-list .b-txt:before {
 							background:#fff;
