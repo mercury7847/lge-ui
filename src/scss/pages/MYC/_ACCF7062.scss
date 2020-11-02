@@ -87,7 +87,7 @@
                     }
                     .date {
                         margin-bottom:8px;
-                        color:$color-1;
+                        color:$color-default;
                         font-size:16px;
                         line-height:24px;
                         @include mobile {
@@ -112,7 +112,7 @@
                         }
                         .tit {
                             padding-right:16px;
-                            color:$color-1;
+                            color:$color-default;
                             font-size:16px;
                             line-height:24px;
                             font-weight:700;
@@ -122,7 +122,7 @@
                         }
                         .desc {
                             margin-top:4px;
-                            color:$color-1;
+                            color:$color-default;
                             font-size:16px;
                             line-height:24px;
                             @include mobile {
@@ -155,7 +155,7 @@
                                 border-radius:4px;
                             }
                             .name {
-                                color:$color-1;
+                                color:$color-default;
                                 font-size:14px;
                                 line-height:20px;
                                 font-weight:700;
@@ -205,7 +205,7 @@
                                         dt, dd {
                                             display:inline-block;
                                             vertical-align:top;
-                                            color:$color-1;
+                                            color:$color-default;
                                             font-size:14px;
                                             line-height:20px;
                                             @include mobile {
@@ -293,7 +293,7 @@
         .notice-txt {
             margin-top:40px;
             padding-left:60px;
-            color:$color-1;
+            color:$color-default;
             font-size:16px;
             line-height:24px;
             em {

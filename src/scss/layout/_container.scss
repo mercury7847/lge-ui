@@ -1,14 +1,11 @@
 .container {
     // Page Header
     .page-header {
-        padding:0 40px 24px;
-        text-align:center;
+        padding: 64px 0 32px;
         .title {
-            max-width:1280px;
+            max-width:1380px;
             margin:0 auto;
-            padding-top:56px;
-            color:#111;
-            font-size:30px;
+            font-size:32px;
             line-height:36px;
             font-weight:700;
             &:only-child {
@@ -64,16 +61,11 @@
 
     // sub page common layout : title + white box layout
     .cont-wrap {
-        padding:64px 40px 120px;
-        background:#f4f4f4;
-        &.type2 {
-            padding:0 40px 120px;
-        }
+        padding: 0 40px 160px;
         @include mobile {
-            padding:0;
-            padding-bottom:60px;
-            border-top:12px solid #f4f4f4;
-        }
+            padding: 0 0 60px;
+            //border-top:12px solid #f4f4f4;
+             }
         &.no-bd {
             @include mobile {
                 border-top:none;

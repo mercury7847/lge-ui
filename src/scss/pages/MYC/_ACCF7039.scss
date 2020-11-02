@@ -32,7 +32,7 @@
                 text-align:left;
             }
             dt {
-                color:$color-1;
+                color:$color-default;
                 @include mobile {
                     display:inline-block;
                     width:50%;
