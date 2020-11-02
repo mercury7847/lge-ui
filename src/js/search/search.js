@@ -102,7 +102,7 @@
         '<span class="thumb">' +
             '<div class="video-container video-box youtube-box">' +
             '<div class="video-asset video-box-closeset">' +
-            '<iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{{url}}"></iframe>' +
+            '<iframe width="640" height="360" src="{{url}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
             '</div>' +
             '</div>' +
         '</span>' +
@@ -167,6 +167,7 @@
     var savedFilterArr = [];
     var currentPage = "1";
     var customerCurrentPage = "1";
+    var searchForce = false;
 
     $(window).ready(function() {
         var search = {
@@ -288,7 +289,7 @@
                 });
 
                 self.$customerTab.on("click", searchItemTarget, function(e) { 
-                    currentPage = "1";
+                    customerCurrentPage = "1";
                     customerSelectedTab = $(this).attr('href').replace("#", "");
                     var $btn_filter = $('#customer').find('div.btn-filter');
                     var $list_sorting = $('#customer').find('div.list-sorting');
@@ -308,6 +309,12 @@
                             break;
                     }
                     _self.requestCustomerSearch(searchedValue);
+                });
+
+                $('div.list-head div.btn-area a').on("click", function(e) {
+                    e.preventDefault();
+                    var href = $(this).attr('href');
+                    _self.clickTabItem(href);
                 });
 
                 //페이지
@@ -349,6 +356,7 @@
 
                 //검색버튼
                 self.$buttonSearch.on('click', function(e){
+                    e.preventDefault();
                     clearTimeout(searchTimer);
                     _self.setSearchInputLayerVisible(false);
                     var searchVal = self.$inputSearch.val();
@@ -357,6 +365,7 @@
 
                 //입력값으로 강제 검색하기
                 self.$searchInputText.on('click', function(e){
+                    e.preventDefault();
                     clearTimeout(searchTimer);
                     _self.setSearchInputLayerVisible(false);
                     var searchVal = $(this).attr('href').replace("#", "");
@@ -398,6 +407,10 @@
                     _self.changeBlindLabelTextSiblingCheckedInput(this, "찜한상품","찜하기");
                     _self.requestWish($(this).attr('data-id'),$(this).is(':checked'));
                 });
+            },
+
+            clickTabItem:function(href) {
+                $('div.ui_tab ul.tabs li a[href="'+ href + '"').trigger('click');
             },
 
             clickSearchItem:function($item) {
@@ -602,9 +615,11 @@
 
             //검색 ignoreRelated이 참일 경우 연관검색어 무시
             requestSearch:function(searchValue, ignoreRelated) {
+                self.$tab.vcTab('select',0);
+                
                 var _self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-url-search');
-                //console.log(ajaxUrl,ignoreRelated,searchValue);
+                console.log(ajaxUrl,ignoreRelated,searchValue);
 
                 $.ajax({
                     url: ajaxUrl,
@@ -933,7 +948,8 @@
                 var searchItemTarget = 'ul.tabs li a[href="#' + selectedTab + '"]';
                 var ajaxUrl = self.$tab.find(searchItemTarget).attr('data-url-search');
 
-                var postData = (selectedTab == "event") ? {"search":searchValue} : vcui.extend(_self.convertPostData(storageFilters), {"search":searchValue});
+                var postObj = {"search":searchValue, "page":currentPage};
+                var postData = (selectedTab == "event") ? postObj : vcui.extend(_self.convertPostData(storageFilters), postObj);
                 console.log(ajaxUrl,postData);
                 
                 $.ajax({
@@ -1149,7 +1165,8 @@
                 var searchItemTarget = 'ul.tabs li a[href="#' + customerSelectedTab + '"]';
                 var ajaxUrl = self.$customerTab.find(searchItemTarget).attr('data-url-search');
 
-                var postData = (customerSelectedTab == "customer-all") ? {"search":searchValue} : vcui.extend(_self.convertPostData(storageFilters), {"search":searchValue});
+                var postObj = {"search":searchValue, "page":customerCurrentPage};
+                var postData = (customerSelectedTab == "customer-all") ? postObj : vcui.extend(_self.convertPostData(storageFilters), postObj);
                 console.log(ajaxUrl,postData);
                 
                 $.ajax({
@@ -1537,8 +1554,7 @@
                 
                 var nObj = vcui.extend({
                     sort: sortValue,
-                    includeSoldOut: includeSoldOut,
-                    page : currentPage,
+                    includeSoldOut: includeSoldOut
                 }, obj);
 
                 for(var key in obj){
