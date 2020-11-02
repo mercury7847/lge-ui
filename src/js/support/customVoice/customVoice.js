@@ -1,5 +1,9 @@
 (function() {
+    function setMessage($el, msg) {
+        var msgTarget = $el.data('msgTarget');
 
+        $(msgTarget).text(msg).show();
+    }
 
     $(window).ready(function() {
         var custom = {
@@ -9,7 +13,7 @@
                 CS.UI.$form = $('#submitForm');
 
                 vcui.require(['ui/formatter'], function () {
-                    $('#input-phoneNumber2').vcFormatter({'format':'num','maxlength':11});
+                    $('#input-phoneNo').vcFormatter({'format':'num', "maxlength":11});
 
                     var register = {
                         privacy: {
@@ -21,7 +25,7 @@
                             requiredMsg: '이름을 입력해주세요',
                             errorMsg: '이름은 한글 또는 영문으로만 입력해주세요'
                         },
-                        phoneNumber: {
+                        phoneNo: {
                             required: true,
                             pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
                             requiredMsg: '휴대전화를 정확히 입력해주세요',
@@ -29,7 +33,7 @@
                         },
                         email:{
                             required: true,
-                            pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,						
+                            pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                             requiredMsg: '이메일 주소를 입력해주세요',
                             errorMsg:'올바른 이메일 형식이 아닙니다. '
                         },
@@ -57,13 +61,110 @@
             bindEvent: function() {
                 var _self = this;
 
+                $('#certificationPopup').on('modalshown', function() {
+                    var register = {
+                        authName: {
+                            required: true,
+                            requiredMsg: '이름을 입력해주세요',
+                            errorMsg: '이름은 한글 또는 영문으로만 입력해주세요'
+                        },
+                        authPhoneNo: {
+                            required: true,
+                            pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
+                            requiredMsg: '휴대전화를 정확히 입력해주세요',
+                            errorMsg: '휴대전화를 정확히 입력해주세요'
+                        },
+                        authNo:{
+                            required: true,
+                            validate: function(name, val) {
+                                var $el = $('[name="'+name+'"]');
+
+                                if ($el.is(':disabled')) {
+                                    setMessage($('#authNo'), '인증 번호 발송 버튼을 선택해 주세요');
+                                    return false;
+                                }
+
+                                $.ajax({
+                                    type: 'POST',
+                                    async: false,
+                                    url: url,
+                                    dataType: 'json',
+                                    data: data
+                                }).done(function (result) {
+                                    if (result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != '') {
+                                        location.href = result.ssoCheckUrl;                    
+                                        return;
+                                    }
+                    
+                                    if(result.status != 'success'){
+                                        alert(result.message ? result.message : '오류발생');
+                                        return;
+                                    }
+                                    
+                                    if (result.data.resultFlag == 'N') {
+                                        setMessage($('#authNo'), '입력하신 인증 번호가 발송된 인증 번호와 맞지 않습니다');
+                                    } else {
+                                        setMessage($('#authNo'), '휴대전화 인증이 완료되었습니다');
+                                    }
+                                    
+                                }).fail(function(err){
+                                    alert(err.message);
+                                });
+                            }
+                        }
+                    }
+                    CS.UI.authValidation = $('#certificationPopup').find('.field-wrap').validation({
+                        register: register
+                    });
+
+                    $('#certificationPopup').find('.btn-auth').off('click').on('click', function() {
+                        CS.UI.authValidation.validation('start');
+                    });
+
+                    $('#certificationPopup').find('.btn-send').off('click').on('click', function() {
+                        var url = '/lg5-common/data-ajax/support/auth.json',
+                            data = '';
+
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            dataType: 'json',
+                            data: data
+                        }).done(function (result) {
+                            if (result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != '') {
+                                location.href = result.ssoCheckUrl;                    
+                                return;
+                            }
+            
+                            if(result.status != 'success'){
+                                alert(result.message ? result.message : '오류발생');
+                                return;
+                            }
+                            
+                            if (result.data.resultFlag == 'Y') {
+                                $(this).text('인증번호 재발송');
+                                $('#authNo').prop('disabled', false);
+                                setMessage($('#authNo'), '입력하신 휴대 전화 번호로 인증 번호를 보내드렸습니다');
+                            } else {
+                                setMessage($('#authNo'), '1분 당 2회만 인증 번호 발송이 가능합니다');
+                            }
+                            
+                        }).fail(function(err){
+                            alert(err.message);
+                        });
+                    });
+                });
+                $('#certificationPopup').on('modalhide', function() {
+                    CS.UI.authValidation.validation('reset');
+                });
+
                 CS.UI.$form.find('.btn-confirm').on('click', function() {
                     CS.UI.validation.validation('start');
                 });
                 CS.UI.$form.on('success', function() {
                     $('#laypop').vcModal();
                     $('#laypop').find('.btn-wrap .btn:not(.ui_modal_close)').off('click').on('click', function() {
-                        var url = CS.UI.$form.attr('ajax'),
+                        var url = CS.UI.$form.data('ajax'),
                             params = CS.UI.$form.serialize();
                         
                         lgkorUI.showLoading();
