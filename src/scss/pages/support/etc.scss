@@ -60,10 +60,11 @@
 }
 
 .appgate-figure {
-    margin-bottom: 28px;
+    margin-bottom: 25px;
     text-align: center;
     &-img {
         margin-bottom: 12px;
+        padding: 26px 28px 0 28px;
     }
     figcaption {
         color: #222222;
@@ -77,13 +78,14 @@
     &.type-A {
         display: flex;
         align-items: center;
-        background-color: #fff;
-        box-shadow: 0px 6px 30px 0 rgba(0, 0, 0, 0.12);
-        padding: 12px 0;
+        justify-content: center;
+        padding-top: 12px;
+        margin-bottom: 28px;
         .appgate-figure-img {
             width: 120px;
             height: 120px;
             margin-bottom: 0;
+            padding: 0;
             img {
                 max-width: 100%;
                 max-height: 100%;
@@ -94,7 +96,14 @@
             padding-right: 40px;
             flex: 1;
         }
-        .appgate-figure-title {}
+    }
+    &-box {
+        background-color: #fff;
+        box-shadow: 0px 6px 30px 0 rgba(0, 0, 0, 0.12);
+        padding-bottom: 40px;
+        .btn-group {
+            padding: 0 20px;
+        }
     }
 }
 

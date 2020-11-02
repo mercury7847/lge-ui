@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/etc"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'desc': '제품에 대한 문제를 빠르게 진단하고<br>해결할 수 있도록 도와드리겠습니다.'
+            })
+            
+            <div class="contents support CSTF8000">
+                <div class="contents-inner">
+                    <section class="section nobg">
+                        <div class="section-title">
+                            <h3 class="tit">고객님의 사용 제품 입니다</h3>        
+                        </div>
+                        <div class="section-content">
+                            <figure class="appgate-figure type-A">
+                                <div class="appgate-figure-img"><img src="/lg5-common/images/dummy/@img-product8.png" alt="제품 이미지"></div>
+                                <figcaption>
+                                    <div class="appgate-figure-title"><img src="/lg5-common/images/dummy/@img-product8-title.png" alt="LG G7 ThinQ / G7+ ThinQ"></div>
+                                    모델명 <strong class="color-3">LM-G710N</strong>
+                                </figcaption>
+                            </figure>
+                            <ul class="swipe-content">
+                                <li class="swipe-item"><a href="" class="swipe-link">제품사용 설명서</a></li>
+                                <li class="swipe-item"><a href="" class="swipe-link">드라이버/소프트웨어</a></li>
+                                <li class="swipe-item"><a href="" class="swipe-link" target="_blank" title="새 창에서 열림">소모품 구매</a></li>
+                                <li class="swipe-item"><a href="" class="swipe-link">공지사항</a></li>
+                                <li class="swipe-item"><a href="" class="swipe-link">사용 제품 등록</a></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="section">
+                        <div class="section-title">
+                            <h3 class="tit">검색을 통해 문제 해결 도움을 받으세요.</h3>
+                        </div>
+                        <div class="section-content">
+                            <div class="field-wrap">
+                                <div class="row">
+                                    <div class="field-item block">
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" id="select1" title="증상을 선택해주세요.">
+                                                <option value="" class="placeholder">증상을 선택해주세요.</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+                                                <option value="">증상1</option>
+                                                <option value="">증상2</option>
+                                            </select>
+                                        </div>
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" id="select2" title="상세 증상을 선택해주세요." disabled>
+                                                <option value="" class="placeholder">상세 증상을 선택해주세요.</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+                                                <option value="">상세 증상1</option>
+                                                <option value="">상세 증상2</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-wrap search">
+                                            <div class="input-wrap">
+                                                <div class="box">   
+                                                    <input type="text" placeholder="검색어를 입력해주세요.">
+                                                    <div class="cell">
+                                                        <button type="submit" class="btn-search">
+                                                            <span class="blind">검색</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="service-menu-wrap">
+                        <div class="inner">
+                            <h3 class="title">문제를 해결하지 못하셨다면 다른 고객 서비스를 통해 해결해보세요.</h3>
+                            <ul class="service-list">
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <img src="/lg5-common/images/icons/icon-cs-email.png" alt=""> 
+                                        </div>
+                                        <strong class="tit">이메일 문의</strong>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <img src="/lg5-common/images/icons/icon-cs-call.png" alt=""> 
+                                        </div>
+                                        <strong class="tit">전화 예약 상담</strong>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <img src="/lg5-common/images/icons/icon-process-list4.svg" alt=""> 
+                                        </div>
+                                        <strong class="tit">원격상담 예약</strong>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <img src="/lg5-common/images/icons/icon-cs-servicecenter.png" alt=""> 
+                                        </div>
+                                        <strong class="tit">센터방문 예약</strong>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-menu-wrap nobg">
+                        <div class="inner">
+                            <h3 class="title">고객 서비스에 대한 조회 및 변경사항을 확인하실 수 있어요.</h3>
+                            <ul class="service-list">
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <img src="/lg5-common/images/icons/icon-cs-call.svg" alt=""> 
+                                        </div>
+                                        <strong class="tit">상담결과 조회/변경</strong>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <img src="/lg5-common/images/icons/icon-cs-call.svg" alt=""> 
+                                        </div>
+                                        <strong class="tit">예약결과 조회/변경</strong>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+</body>
+</html> 
