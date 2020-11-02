@@ -121,4 +121,57 @@
             }
         }
     }
+    &.new-type {
+        position:relative;
+        text-align:left;
+        &:before {
+            content:' ';
+            position:absolute;
+            bottom:0;
+            left:0;
+            z-index:1;
+            width:100%;
+            height:1px;
+            background-color:#222;
+        }
+        .tabs {
+            @include mobile {
+                width:100%;
+                padding:0;
+            }
+            li {
+                width:206px;
+                margin-left:0;
+                a {
+                    height:56px;
+                    border-radius:8px 8px 0 0;
+                    background-color:#f4f4f4;
+                    color:#aaa;
+                    font-size:16px;
+                    line-height:58px;
+                    text-align:center;
+                }
+                &.on a {
+                    position:relative;
+                    z-index:1;
+                    border:1px solid #222;
+                    border-bottom:1px solid #fff;
+                    background-color:#fff;
+                    color:#222;
+                    line-height:56px;
+                    overflow:hidden;
+                }
+                @include mobile {
+                    width:50%;
+                    a {
+                        height:48px;
+                        line-height:50px;
+                    }
+                    &.on a {
+                        line-height:48px;
+                    }
+                }
+            }
+        }
+    }
 }

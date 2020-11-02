@@ -1,14 +1,6 @@
 var CS = CS || {};
 CS.MD = CS.MD || {};
 CS.UI = CS.UI || {};
-CS.VARS = CS.VARS || {}; 
-
-CS.VARS.IS_HAND_DEVICE = false;                                    //핸드 드바이스 체크 변수
-CS.VARS.IS_MOBILE = false;                                         //디바이스 모바일 변수
-CS.VARS.IS_TABLET = false; 
-CS.VARS.IS_SIZE = CS.VARS.IS_SIZE || {};                          //반응형시 SIZE OBJECT
-CS.VARS.IS_SIZE.MAXMOBILE = 767;                                   //반응형시 MOBILE 최대값
-CS.VARS.IS_SIZE.MAXTABLET = 1024;  
 
 CS.UI = {};
 CS.UI.$doc = $(document);
@@ -16,12 +8,33 @@ CS.UI.$win = $(window);
 CS.UI.$html = $('html');
 CS.UI.$body = $('body');
 
+CS.MD.plugin = function(pluginName, Plugin) {
+    $.fn[pluginName] = function(options) {
+        var arg = arguments; 
+
+        return this.each(function() {
+            var _this = this,
+                $this = $(_this),
+                plugin = $this.data('plugin_' + pluginName);
+
+            if (!plugin) {
+                $this.data('plugin_' + pluginName, new Plugin(this, options));
+            } else {
+                if (typeof options === 'string' && typeof plugin[options] === 'function') {
+                    plugin[options].apply(plugin, [].slice.call(arg, 1));
+                }
+            }
+        });
+    }
+}
+
 /*
 * validation cehck
 */
 CS.MD.validation = function() {
     var pluginName = 'validation';
-
+    var authFlag = false;
+    
     function Plugin(el, opt) {
         var self = this;
             self.$el = $(el),
@@ -50,6 +63,13 @@ CS.MD.validation = function() {
                     tempObj[el.name]['msgTarget'] = msgTarget;
                     errorMsg && (tempObj[el.name]['errorMsg'] = errorMsg);
                     requiredMsg && (tempObj[el.name]['requiredMsg'] = requiredMsg);
+                    
+                    if (tempObj[el.name]['auth']) {
+                        self.authApt = tempObj[el.name]; 
+                        self.$btn = $(tempObj[el.name]['auth'].btn);
+                        self.$phone = $(tempObj[el.name]['auth'].target);
+                        self.$auth = $el;
+                    }
                 }
 
                 tempObj[el.name] = $.extend(tempObj[el.name], register[el.name] || {});
@@ -74,15 +94,46 @@ CS.MD.validation = function() {
                 self.$el.trigger('error');
             }
         },
-        _validationCheck: function() {
+        checkValidation: function(register) {
             var self = this,
-                objs = {},
-                $target;
+                $el = self.$el.find('[name="'+name+'"]');
+
+            self._validationCheck();
+        },
+        reset: function() {
+            var self = this;
 
             for (var key in self.register) {
                 var $target = self.$el.find('[name="' + key + '"]');
-                var opt = self.register[key];
+                var msgTarget = self.register[key].msgTarget;
+
+                $target.val('');
+
+                if ($target.siblings(msgTarget).length) {
+                    $target.siblings(msgTarget).hide();
+                } else if ($target.parent().siblings(msgTarget).length) {
+                    $target.parent().siblings(msgTarget).hide();
+                } else {
+                    self.$el.find(msgTarget).hide();
+                }
+
+                if ($target.closest('.input-wrap, .select-wrap').length) {
+                    $target.closest('.input-wrap, .select-wrap').removeClass('error');
+                }
+            }
+        },
+        _validationCheck: function(register) {
+            var self = this,
+                register = register || self.register,
+                objs = {},
+                $target;
+
+            for (var key in register) {
+                var $target = self.$el.find('[name="' + key + '"]');
+                var opt = register[key];
                 var value = $target.val();
+
+                if ($target.is(':disabled')) break;
 
                 if ($target.is(':radio') || $target.is(':checkbox') ){
                     var $checked = $target.filter(':checked');
@@ -166,23 +217,7 @@ CS.MD.validation = function() {
         }
     }
 
-    $.fn[pluginName] = function(options) {
-        var arg = arguments; 
-
-        return this.each(function() {
-            var _this = this,
-                $this = $(_this),
-                plugin = $this.data('plugin_' + pluginName);
-
-            if (!plugin) {
-                $this.data('plugin_' + pluginName, new Plugin(this, options));
-            } else {
-                if (typeof options === 'string' && typeof plugin[options] === 'function') {
-                    plugin[options].apply(plugin, [].slice.call(arg, 1));
-                }
-            }
-        });
-    }
+    CS.MD.plugin(pluginName, Plugin);
 }();
 
 /*
@@ -250,23 +285,7 @@ CS.MD.drawOption = function() {
 
     };
 
-    $.fn[pluginName] = function(options) {
-        var arg = arguments; 
-
-        return this.each(function() {
-            var _this = this,
-                $this = $(_this),
-                plugin = $this.data('plugin_' + pluginName);
-
-            if (!plugin) {
-                $this.data('plugin_' + pluginName, new Plugin(this, options));
-            } else {
-                if (typeof options === 'string' && typeof plugin[options] === 'function') {
-                    plugin[options].apply(plugin, [].slice.call(arg, 1));
-                }
-            }
-        });
-    }
+    CS.MD.plugin(pluginName, Plugin);
 }();
 
 /*
@@ -394,23 +413,7 @@ CS.MD.pagination = function() {
         }
     }
 
-    $.fn[pluginName] = function(options) {
-        var arg = arguments; 
-
-        return this.each(function() {
-            var _this = this,
-                $this = $(_this),
-                plugin = $this.data('plugin_' + pluginName);
-
-            if (!plugin) {
-                $this.data('plugin_' + pluginName, new Plugin(this, options));
-            } else {
-                if (typeof options === 'string' && typeof plugin[options] === 'function') {
-                    plugin[options].apply(plugin, [].slice.call(arg, 1));
-                }
-            }
-        });
-    }
+    CS.MD.plugin(pluginName, Plugin);
 }();
 
 /* PSP floating anchor tab */
@@ -551,77 +554,16 @@ CS.MD.anchorTab  = function() {
         }
     }
 
-    $.fn[pluginName] = function(options) {
-        var arg = arguments; 
-
-        return this.each(function() {
-            var _this = this,
-                $this = $(_this),
-                plugin = $this.data('plugin_' + pluginName);
-
-            if (!plugin) {
-                $this.data('plugin_' + pluginName, new Plugin(this, options));
-            } else {
-                if (typeof options === 'string' && typeof plugin[options] === 'function') {
-                    plugin[options].apply(plugin, [].slice.call(arg, 1));
-                }
-            }
-        });
-    }
-}();
-
-
-/* VIEWPORT_WIDTH&HEIGHT */
-CS.MD.VIEWPORT = function(){
-    if(CS.UI.$html.hasClass('safari')) {
-        CS.VARS.VIEWPORT_WIDTH = Math.max( CS.UI.$win.width() || 0);
-    } else {
-        CS.VARS.VIEWPORT_WIDTH = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    }
-}();
-
-/*
-*
-* CS.VARS.IS_HAND_DEVICE : 단말기 기준 desktop인 경우 true
-* CS.VARS.IS_MOBILE : 단말기 기준 mobile인 경우 true;
-* CS.VARS.IS_TABLET : 단말기 기준 tablet인 경우 true;
-* CS.VARS.IS_VIEWTYPE : 해상도 기준으로 web, tablet, mobile 구분
-*
-* */
-CS.MD.CHK_DEVICE = function() {
-    var mobileInfo = ['Android', 'iPhone', 'iPod', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson'];
-    $.each(mobileInfo, function(index){
-        if (navigator.userAgent.match(mobileInfo[index]) !== null){
-            CS.VARS.IS_HAND_DEVICE = true;
-            CS.VARS.IS_MOBILE = true;
-        }
-    });
-
-    if(CS.VARS.VIEWPORT_WIDTH < CS.VARS.IS_SIZE.MAXMOBILE && CS.VARS.IS_HAND_DEVICE){
-        CS.VARS.IS_VIEWTYPE = 'mobile';
-    } else if(CS.VARS.VIEWPORT_WIDTH < CS.VARS.IS_SIZE.MAXTABLET && CS.VARS.IS_HAND_DEVICE){
-        CS.VARS.IS_VIEWTYPE = 'tablet';
-    } else {
-        if(CS.VARS.VIEWPORT_WIDTH < CS.VARS.IS_SIZE.MAXMOBILE ) {
-            CS.VARS.IS_VIEWTYPE = 'mobile';
-        } else if (CS.VARS.VIEWPORT_WIDTH < CS.VARS.IS_SIZE.MAXTABLET ) {
-            CS.VARS.IS_VIEWTYPE = 'tablet';
-        } else {
-            CS.VARS.IS_VIEWTYPE = 'web';
-        }
-    }
-
-    if(CS.VARS.VIEWPORT_WIDTH >= CS.VARS.IS_SIZE.MAXMOBILE && CS.VARS.IS_MOBILE) {
-        CS.VARS.IS_MOBILE = false;
-        CS.VARS.IS_TABLET = true;
-    }
-
-    CS.VARS.IS_HAND_DEVICE ? $('html').addClass('handy') : $('html').addClass('no-handy');
+    CS.MD.plugin(pluginName, Plugin);
 }();
 
 (function($){
-    
+    function _initQuickMenu() {
+        
+    }
     function commonInit(){
+        _initQuickMenu();
+
         $('.scroll-x').mCustomScrollbar({
             axis:"x",
             advanced:{

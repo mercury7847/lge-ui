@@ -92,47 +92,47 @@
 }
 
 .process-bar-wrap {
-    padding-top:42px;
-    ul {
-        position:relative;
+    max-width:842px;
+    margin:0 auto;
+    padding-top:66px;
+    .bar-track {
         height:8px;
         border-radius:4px;
         background:#f4f4f4;
-        li {
-            overflow:hidden;
-            position:absolute;
-            bottom:0;
-            width:8px;
-            height:8px;
+        .bar {
+            position:relative;
+            width:0;
+            height:100%;
             border-radius:4px;
-            background:#808080;
-            &:nth-child(1) {
-                left:56px;
-            }
-            &:nth-child(2) {
-                left:50%;
-                transform:translateX(-50%);
-            }
-            &:nth-child(3) {
-                right:56px;
-            }
+            background:#ec455a;
             .txt {
                 position:absolute;
                 bottom:100%;
-                left:50%;
+                left:100%;
                 padding-bottom:48px;
                 color:#ec455a;
                 font-size:14px;
                 font-weight:700;
+                line-height:20px;
                 white-space:nowrap;
                 background:url('/lg5-common/images/icons/icon-alarm2.svg') no-repeat 100%;
                 background-size:26px 34px;
                 background-position:center bottom 8px;
                 transform:translateX(-50%);
             }
-            &.on {
-                overflow:visible;
-                background:#ec455a;
+        }
+    }
+    @include mobile {
+        padding:66px 20px 0;
+        .bar-track {
+            .bar {
+                .txt {
+                    padding-bottom:40px;
+                    font-size:12px;
+                    line-height:16px;
+                    background-size:21px 87px;
+                    background-position:center bottom 6px;
+                }
             }
         }
     }

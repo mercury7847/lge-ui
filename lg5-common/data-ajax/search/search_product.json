@@ -236,8 +236,8 @@
             {
                 "url":"#",
                 "image_url":"/lg5-common/images/dummy/@img-stroy.png",
-                "image_alt":"정말로 원하는게 무엇인지 알고 싶나요?",
-                "title":"정말로 원하는게 무엇인지 알고 싶나요?",
+                "image_alt":"정말 원하는게 무엇인지 알고 싶나요?",
+                "title":"정말 원하는게 무엇인지 알고 싶나요?",
                 "subTitle":"원하시는 기능과 선호/취향을 반영한 최고의 제품을 찾아드립니다.",
                 "buttonTitle":"제품 큐레이션"
             },
@@ -246,7 +246,7 @@
                 "image_url":"/lg5-common/images/dummy/@img-stroy.png",
                 "image_alt":"라이프스타일에 맞는 제품은 무엇일까요?",
                 "title":"라이프스타일에 맞는 제품은 무엇일까요?",
-                "subTitle":"나의 라이프스타일에 맞는 제품을 추천드립니다.",
+                "subTitle":"나의 라이프에 맞는 제품을 추천드립니다.",
                 "buttonTitle":"라이프스타일 컨설팅"
             }
         ]

@@ -59,20 +59,48 @@
     }
 }
 
-.appgate {
-    &-figure {
-        margin-bottom: 28px;
-        text-align: center;
-        &-img {
-            margin-bottom: 12px;
+.appgate-figure {
+    text-align: center;
+    &-img {
+        margin-bottom: 12px;
+        padding: 26px 28px 0 28px;
+    }
+    figcaption {
+        color: #222222;
+        font-size: 16px;
+        line-height: 1.44;
+        strong {
+            font-weight: bold;
+        }
+    }
+
+    &.type-A {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 0;
+        .appgate-figure-img {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 0;
+            padding: 0;
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
         }
         figcaption {
-            color: #222222;
-            font-size: 16px;
-            line-height: 1.44;
-            strong {
-                font-weight: bold;
-            }
+            text-align: left;
+            padding-right: 40px;
+            flex: 1;
+        }
+    }
+    &-box {
+        background-color: #fff;
+        box-shadow: 0px 6px 30px 0 rgba(0, 0, 0, 0.12);
+        .btn-group {
+            padding: 0 20px 40px;
+            margin-top: 20px;
         }
     }
 }
@@ -104,5 +132,5 @@
 }
 
 @import "../../support/pages/CSTF8500"; // 엔지니어 사진 등록
-@import "../../support/pages/KR50CS106"; // APP GATE
+@import "../../support/pages/CSTF8000"; // APP GATE
 @import "../../support/pages/KR50CS107"; // QR코드 랜딩 페이지
