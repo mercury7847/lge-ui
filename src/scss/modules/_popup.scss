@@ -75,6 +75,7 @@
                 padding:0;
             }
             .btn {
+                border-radius:26px;
                 margin-left:8px;
                 &:first-child {
                     margin-left:0;
@@ -105,7 +106,7 @@
     display:none;
     position:absolute;
     width:100%;
-    max-width:630px;
+    max-width:726px;
     overflow:hidden;
     border-radius:4px;
     background:#fff;
@@ -280,7 +281,7 @@
         }
     }
     &.middle {
-        max-width:726px;
+        max-width:868px;
     }
     &.full {
         max-width:1066px;
@@ -420,13 +421,14 @@
         // 배송지 관리
         .my-address-wrap {
             .address-lists {
-                margin-top:40px;
+                margin-top:23px;
                 .lists {
-                    margin-top:12px;
+                    margin-top:10px;
                     padding:32px;
                     border-radius:8px;
                     background:#fff;
-                    box-shadow:0 4px 12px 0 rgba(0, 0, 0, .26);
+                    border:1px solid #ddd;
+                    // box-shadow:0 4px 12px 0 rgba(0, 0, 0, .26);
                     &:first-child {
                         margin-top:0;
                     }
@@ -472,10 +474,10 @@
                                 p {
                                     display:inline-block;
                                     position:relative;
-                                    margin-right:10px;
-                                    padding-right:11px;
-                                    color:#808080;
-                                    font-size:16px;
+                                    margin-right:8px;
+                                    padding-right:9px;
+                                    color:#616161;
+                                    font-size:14px;
                                     line-height:24px;
                                     vertical-align:top;
                                     @include mobile {
