@@ -7,6 +7,7 @@ var res = {
 		// },
 		"WSG" : {
 			"컬러" : ["./wsg/guide_color.html","","검수완료"],
+			"폰트" : ["./wsg/guide_font.html","","검수완료"],
 			"Input" : ["./wsg/guide_input.html","","검수완료"],
 			"Select" : ["./wsg/guide_select.html","","검수완료"],
 			"Form" : ["./wsg/guide_input_form.html","","검수완료"],
