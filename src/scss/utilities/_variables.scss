@@ -40,29 +40,35 @@ $font-weight-bold: 700;
 // $c-large: 1180px; /*  75.00 / 1024px */
 
 // MAIN COLORS
-$color-default-1:#a50024;
+$color-primary      :#ec455a;
 
 // COLORS
-$color-1            :#222;
-$color-2            :#616161;
-$color-3            :#979797;
-$color-4            :#ccc; 
+$color-default      :#222;
+$color-gray-1       :#767676;
+$color-gray-2       :#979797;
+$color-gray-3       :#ccc;
+$color-white        :#fff;
 
 $color-border       :#ddd;
 
-$color-bg           : #f4f4f4;
-$color-bg-wt        : #fff;
+$color-bg           :#f4f4f4;
+$color-bg-wt        :#fff;
 
 
 // font size
-$font-x-small      : 12px;
-$font-small         : 14px;
-$font-medium     : 16px;
-$font-large         : 18px;
-$font-x-large      : 24px;
-$font-xx-large     : 36px;
+$font-x-small       :12px;
+$font-small         :14px;
+$font-medium        :16px;
+$font-large         :18px;
+$font-large-1       :20px;
+$font-large-2       :24px;
+$font-large-3       :28px;
+$font-large-4       :32px;
+$font-large-5       :40px;
+$font-large-6       :48px;
+
 
 // media query
-$desktop-l-width	: 1600px;
-$tablet-l-width		: 1024px;
-$tablet-s-width		: 767px;
+$desktop-l-width	:1600px;
+$tablet-l-width		:1024px;
+$tablet-s-width		:767px;
