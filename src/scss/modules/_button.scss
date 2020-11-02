@@ -156,22 +156,6 @@
     }
 }
 
-.btn-arr-view {
-    position:relative;
-    padding-right:20px;
-    color:#767676;
-    @include font-small;
-    &:after {
-        content:' ';
-        position:absolute;
-        top:1px;
-        right:0;
-        width:20px;
-        height:20px;
-        background:url('/lg5-common/images/icons/btn-arr-view.svg') no-repeat 0 0;
-    }
-}
-
 .btn-link {
     position: relative;
     display: inline-block;

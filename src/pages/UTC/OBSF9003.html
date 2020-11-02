@@ -9,116 +9,149 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "장바구니"
+            "pageTitle": "장바구니",
+                "pageArr" : [
+                    { "page" : "구매 999+", "on" : "" },
+                    { "page" : "렌탈(케어솔루션) 0", "on": "on" }
+                ]
             })
             <!-- cart -->
             <div class="contents cart">
-                <div class="cont-wrap row-wrap">
-                    <div class="col-left">
-                        <div class="tabs-wrap new-type ui_tab">
-                            <ul class="tabs">
-                                <li><a href="#tab1">구매 2</a></li>
-                                <li class="on"><a href="#tab2">렌탈 (케어솔루션) 1<em class="blind">선택됨</em></a></li>
-                            </ul>
-                        </div>
-                        <div class="section">
-                            <div class="cont-box">
-                                <div class="order-info">
-                                    <div class="cart-wrap">
-                                        <div class="cart-option">
-                                            <div class="chk-wrap">
-                                                <input type="checkbox" id="chk-all" name="chk-all">
-                                                <label for="chk-all">전체선택</label>
-                                            </div>
-                                            <div class="btn-area">
-                                                <button class="btn bd-black btn-small"><span>선택삭제</span></button>
-                                            </div>
+                <div class="cont-wrap">
+                    <div class="section">
+                        <div class="cont-box">
+                            <div class="order-info">
+                                <!-- 로그인 전 -->
+                                <div class="info-box">
+                                    <div>
+                                        <dl>
+                                            <dt class="title">청약 정보</dt>
+                                            <dd class="text">케어솔루션/케어십 서비스 이용을 위해, 회원 로그인이 필요합니다. 로그인으로 더 많은 혜택을 확인해 보세요.</dd>
+                                        </dl>
+                                        <div class="btn-area">
+                                            <a href="#" class="btn-text">로그인 하기</a>
                                         </div>
-                                        @@include('./common/modules/cart-list.html', {
-                                        "items" : [
-                                        {
-                                        "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
-                                        "disabled" : "",
-                                        "check" : {
-                                        "checked1" : "checked",
-                                        "checked2" : "checked",
-                                        },
-                                        "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                        "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
-                                        "price" : "월 36,100원",
-                                        "btnValue" : "청약신청"
-                                        },
-                                        {
-                                        "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span><span class='flag'><span class='blind'>판매상태</span>판매종료</span>",
-                                        "disabled" : "disabled",
-                                        "check" : {
-                                        "checked1" : "disabled",
-                                        "checked2" : "",
-                                        },
-                                        "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                        "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
-                                        "price" : "월 36,100원",
-                                        "btnValue" : "청약불가"
-                                        },
-                                        {
-                                        "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span><span class='flag'><span class='blind'>판매상태</span>일시품절</span>",
-                                        "disabled" : "disabled",
-                                        "check" : {
-                                        "checked1" : "disabled",
-                                        "checked2" : "",
-                                        },
-                                        "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                        "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
-                                        "price" : "월 36,100원",
-                                        "btnValue" : "청약불가"
-                                        }
-                                        ]
-                                        })
                                     </div>
                                 </div>
-                                @@include('./common/modules/bullet-list.html', {
+                                <!-- //로그인 전 -->
+                                <div class="cart-wrap">
+                                    <div class="cart-option">
+                                        <div class="chk-wrap">
+                                            <input type="checkbox" id="chk-all" name="chk-all">
+                                            <label for="chk-all">전체선택</label>
+                                        </div>
+                                        <div class="btn-area">
+                                            <button class="btn bd-black btn-small"><span>선택삭제</span></button>
+                                        </div>
+                                    </div>
+                                    @@include('./common/modules/cart-list.html', {
+                                        "items" : [
+                                            {
+                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
+                                                "disabled" : "",
+                                                "check" : {
+                                                    "checked1" : "checked",
+                                                    "checked2" : "checked",
+                                                },
+                                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                                "price" : "월 36,100원",
+                                                "btnValue" : "청약신청"
+                                            },
+                                            {
+                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span><span class='flag'><span class='blind'>판매상태</span>판매종료</span>",
+                                                "disabled" : "disabled",
+                                                "check" : {
+                                                    "checked1" : "disabled",
+                                                    "checked2" : "",
+                                                },
+                                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                                "price" : "월 36,100원",
+                                                "btnValue" : "청약불가"
+                                            },
+                                            {
+                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span><span class='flag'><span class='blind'>판매상태</span>일시품절</span>",
+                                                "disabled" : "disabled",
+                                                "check" : {
+                                                    "checked1" : "disabled",
+                                                    "checked2" : "",
+                                                },
+                                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                                "price" : "월 36,100원",
+                                                "btnValue" : "청약불가"
+                                            }
+                                        ]
+                                    })
+                                </div>
+                                <div class="payment-amount-info">
+                                    <span class="title">전체 합계</span>
+                                    <ul class="payment-list">
+                                        <li>
+                                            <dl>
+                                                <dt class="text">이용요금</dt>
+                                                <dd class="price">월 61,900원</dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl>
+                                                <dt class="text">결합할인 금액</dt>
+                                                <dd class="price sale">월 -5,000원</dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                    <div class="total-payment-amount">
+                                        <dl>
+                                            <dt class="text">총 1건</dt>
+                                            <dd class="price">9,835,720원</dd>
+                                        </dl>
+                                        <p class="desc">* 기존 케어솔루션/케어십 결합할인 적용</p>
+                                    </div>
+                                    <div class="btn-area">
+                                        <button type="button" class="btn pink">신청하기</button>
+                                    </div>
+                                </div>
+                            </div>
+                            @@include('./common/modules/bullet-list.html', {
                                 "topBorder" : true,
                                 "bulletTit" : "유의사항",
                                 "bulletTxt" : [
-                                "미성년자의 상품주문/결제에 대해 법정대리인이 미동의 시, 미성년자 본인 또는 법정대리인이 주문을 취소할 수 있습니다.",
-                                "결합할인은 다른 제품군인 경우에만 적용 가능합니다. (ex_정수기와 공기청정기 결합시 할인)",
-                                "가입비 10만원 무료는 약정 기간 전 해지 시 환급 처리됩니다.",
-                                "기존에 이용 중인 케어솔루션/케어십과의 결합할인은 계약 시점에 자동 적용됩니다.",
-                                "장바구니에는 최대 50개의 상품을 담으실 수 있습니다.",
-                                "담긴 상품 종류(옵션단위)는 최대 1년까지 보관됩니다.",
-                                "판매 종료되거나 품절된 상품은 별도 표기 됩니다."
+                                    "미성년자의 상품주문/결제에 대해 법정대리인이 미동의 시, 미성년자 본인 또는 법정대리인이 주문을 취소할 수 있습니다.",
+                                    "결합할인은 다른 제품군인 경우에만 적용 가능합니다. (ex_정수기와 공기청정기 결합시 할인)",
+                                    "가입비 10만원 무료는 약정 기간 전 해지 시 환급 처리됩니다.",
+                                    "기존에 이용 중인 케어솔루션/케어십과의 결합할인은 계약 시점에 자동 적용됩니다.",
+                                    "장바구니에는 최대 50개의 상품을 담으실 수 있습니다.",
+                                    "담긴 상품 종류(옵션단위)는 최대 1년까지 보관됩니다.",
+                                    "판매 종료되거나 품절된 상품은 별도 표기 됩니다."
                                 ]
-                                })
-                            </div>
+                            })
                         </div>
+                    </div>
 
-                        <!-- 장바구니 제품이 없을 경우 -->
-<!--                        <div class="no-data-wrap">-->
-<!--                            <div class="no-data">-->
-<!--                                <p>장바구니에 담긴 제품이 없습니다.</p>-->
-<!--                            </div>-->
-<!--                            <ul class="membership-benefit">-->
-<!--                                <li class="box membership">-->
-<!--                                    <dl>-->
-<!--                                        <dt>LG 전자 멤버십 회원 온라인 전용 혜택</dt>-->
-<!--                                        <dd>모든 제품 3% 할인</dd>-->
-<!--                                        <dd>멤버십포인트 3% 적립</dd>-->
-<!--                                    </dl>-->
-<!--                                </li>-->
-<!--                                <li class="box card-issue">-->
-<!--                                    <dl>-->
-<!--                                        <dt>LG 전자 제휴카드 발급 특별 혜택</dt>-->
-<!--                                        <dd>제휴카드 결제시 최대 500,000원 캐시백</dd>-->
-<!--                                        <dd>멤버십포인트 3% 적립</dd>-->
-<!--                                    </dl>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-                        <!-- //장바구니 제품이 없을 경우 -->
+                    <!-- 장바구니 제품이 없을 경우 -->
+                    <div class="no-data-wrap">
+                        <div class="no-data">
+                            <p>장바구니에 담긴 제품이 없습니다.</p>
+                        </div>
+                        <ul class="membership-benefit">
+                            <li class="box membership">
+                                <dl>
+                                    <dt>LG 전자 멤버십 회원 온라인 전용 혜택</dt>
+                                    <dd>모든 제품 3% 할인</dd>
+                                    <dd>멤버십포인트 3% 적립</dd>
+                                </dl>
+                            </li>
+                            <li class="box card-issue">
+                                <dl>
+                                    <dt>LG 전자 제휴카드 발급 특별 혜택</dt>
+                                    <dd>제휴카드 결제시 최대 500,000원 캐시백</dd>
+                                    <dd>멤버십포인트 3% 적립</dd>
+                                </dl>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="col-right">
-                        오른쪽 인포 영역
-                    </div>
+                    <!-- //장바구니 제품이 없을 경우 -->
                 </div>
 
                 <div class="product-recommend-wrap">

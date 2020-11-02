@@ -29,6 +29,198 @@ CS.MD.plugin = function(pluginName, Plugin) {
 }
 
 /*
+* validation cehck
+*/
+CS.MD.validation = function() {
+    var pluginName = 'validation';
+    var authFlag = false;
+    
+    function Plugin(el, opt) {
+        var self = this;
+            self.$el = $(el),
+            self.el = el;
+
+        var defaults = {
+            success: function() {},
+            error: function() {}
+        };
+
+        self.options = $.extend({}, defaults, opt);
+    
+        var register = self.options.register;
+        var tempObj = {};
+
+        self.$el.find('[name]').each(function(index, el) {
+            var $el = $(el),
+                msgTarget = $el.data('msgTarget'),
+                errorMsg = $el.data('errorMsg'),
+                requiredMsg = $el.data('requiredMsg');
+
+            if (msgTarget) {
+                tempObj[el.name] = tempObj[el.name] || {};
+
+                if (tempObj[el.name]){       
+                    tempObj[el.name]['msgTarget'] = msgTarget;
+                    errorMsg && (tempObj[el.name]['errorMsg'] = errorMsg);
+                    requiredMsg && (tempObj[el.name]['requiredMsg'] = requiredMsg);
+                    
+                    if (tempObj[el.name]['auth']) {
+                        self.authApt = tempObj[el.name]; 
+                        self.$btn = $(tempObj[el.name]['auth'].btn);
+                        self.$phone = $(tempObj[el.name]['auth'].target);
+                        self.$auth = $el;
+                    }
+                }
+
+                tempObj[el.name] = $.extend(tempObj[el.name], register[el.name] || {});
+            }
+        });
+
+        self.register = tempObj;
+    }
+
+    Plugin.prototype = {
+        start: function() {
+            var self = this;
+
+            self.errorObjs = self._validationCheck();
+
+            self._setMessage();
+            
+            if (!Object.keys(self.errorObjs).length) {
+                self.$el.trigger('success');
+            } else {
+                self._focus();
+                self.$el.trigger('error');
+            }
+        },
+        checkValidation: function(register) {
+            var self = this,
+                $el = self.$el.find('[name="'+name+'"]');
+
+            self._validationCheck();
+        },
+        reset: function() {
+            var self = this;
+
+            for (var key in self.register) {
+                var $target = self.$el.find('[name="' + key + '"]');
+                var msgTarget = self.register[key].msgTarget;
+
+                $target.val('');
+
+                if ($target.siblings(msgTarget).length) {
+                    $target.siblings(msgTarget).hide();
+                } else if ($target.parent().siblings(msgTarget).length) {
+                    $target.parent().siblings(msgTarget).hide();
+                } else {
+                    self.$el.find(msgTarget).hide();
+                }
+
+                if ($target.closest('.input-wrap, .select-wrap').length) {
+                    $target.closest('.input-wrap, .select-wrap').removeClass('error');
+                }
+            }
+        },
+        _validationCheck: function(register) {
+            var self = this,
+                register = register || self.register,
+                objs = {},
+                $target;
+
+            for (var key in register) {
+                var $target = self.$el.find('[name="' + key + '"]');
+                var opt = register[key];
+                var value = $target.val();
+
+                if ($target.is(':disabled')) break;
+
+                if ($target.is(':radio') || $target.is(':checkbox') ){
+                    var $checked = $target.filter(':checked');
+                    if ($checked) {
+                        value = $checked.val();
+                    }
+                }
+
+                if (opt.required) {
+                    if (!self._valueCheck(value)) {
+                        objs[key] = self.register[key]['requiredMsg'];
+                    } else if (opt.pattern) {                        
+                        if (!self._regexCheck(opt.pattern, value)) {
+                            objs[key] = self.register[key]['errorMsg'];
+                        }
+                    }
+                } else {
+                    if (opt.pattern) {                        
+                        if (!self._regexCheck(opt.pattern, value)) {
+                            objs[key] = self.register[key]['errorMsg'];
+                        }
+                    }
+                }
+            }
+
+            return objs;
+        },
+        _regexCheck: function(pattern, val) {
+            return pattern.test(val);
+        },
+        _valueCheck: function(val) {
+            return $.trim(val) ? true : false;
+        },
+        _setMessage: function() {
+            var self = this;
+            
+            for (var key in self.register) {
+                var $target = self.$el.find('[name="' + key + '"]');
+                var msgTarget = self.register[key].msgTarget;
+
+                if ($target.siblings(msgTarget).length) {
+                    $target.siblings(msgTarget).hide();
+                } else if ($target.parent().siblings(msgTarget).length) {
+                    $target.parent().siblings(msgTarget).hide();
+                } else {
+                    self.$el.find(msgTarget).hide();
+                }
+
+                if ($target.closest('.input-wrap, .select-wrap').length) {
+                    $target.closest('.input-wrap, .select-wrap').removeClass('error');
+                }
+            }
+
+            for (var key in self.errorObjs) {
+                var $target = self.$el.find('[name="' + key + '"]');
+                var msgTarget = self.register[key].msgTarget;
+                var errOpj = self.errorObjs[key];
+
+                if ($target.siblings(msgTarget).length) {
+                    $target.siblings(msgTarget).text(errOpj).show();
+                } else if ($target.parent().siblings(msgTarget).length) {
+                    $target.parent().siblings(msgTarget).text(errOpj).show();
+                } else {
+                    self.$el.find(msgTarget).text(errOpj).show();
+                }
+
+                if ($target.closest('.input-wrap, .select-wrap').length) {
+                    $target.closest('.input-wrap, .select-wrap').addClass('error');
+                }
+            }
+        },
+        _focus: function() {
+            var self = this,
+                $el = self.$el.find('[name="' + Object.keys(self.errorObjs)[0] + '"]');
+
+            if ($el[0].type.indexOf('select') && $el.data('ui_selectbox')) {
+                $el.vcSelectbox('focus');
+            } else {
+                $el.focus();
+            }
+        }
+    }
+
+    CS.MD.plugin(pluginName, Plugin);
+}();
+
+/*
 * 셀렉트박스 타겟
 * @option data-url
 * @option data-target

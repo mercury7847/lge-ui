@@ -148,7 +148,7 @@
                     background-color:#f4f4f4;
                     color:#aaa;
                     font-size:16px;
-                    line-height:58px;
+                    line-height:56px;
                     text-align:center;
                 }
                 &.on a {
@@ -158,16 +158,12 @@
                     border-bottom:1px solid #fff;
                     background-color:#fff;
                     color:#222;
-                    line-height:56px;
                     overflow:hidden;
                 }
                 @include mobile {
                     width:50%;
                     a {
                         height:48px;
-                        line-height:50px;
-                    }
-                    &.on a {
                         line-height:48px;
                     }
                 }
