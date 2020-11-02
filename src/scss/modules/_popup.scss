@@ -2,8 +2,8 @@
 .lay-wrap {
     display:none;
     position:absolute;
-    width:462px;
-    padding-top:56px;
+    width:492px;
+    padding-top:70px;
     background-color:#fff;
     box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.16);
     border-radius:4px;
@@ -36,8 +36,8 @@
         }
     }
     .lay-conts {
-        margin-top:20px;
-        padding:0 56px 40px;
+        margin-top:8px;
+        padding:0 48px 32px;
         font-size:16px;
         line-height:24px;
         text-align:center;
@@ -68,13 +68,14 @@
     }
     .laypop {
         &.btn-wrap {
-            padding-bottom:24px;
+            padding-bottom:48px;
             font-size:0;
             text-align:center;
             @include mobile {
                 padding:0;
             }
             .btn {
+                border-radius:26px;
                 margin-left:8px;
                 &:first-child {
                     margin-left:0;
@@ -105,7 +106,7 @@
     display:none;
     position:absolute;
     width:100%;
-    max-width:630px;
+    max-width:726px;
     overflow:hidden;
     border-radius:4px;
     background:#fff;
@@ -191,7 +192,7 @@
     .pop-conts {
         height:auto;
         max-height:492px;
-        padding:0 56px 32px;
+        padding:0 48px 48px;
         overflow-y:auto;
         &.no-footer {
             max-height:576px;
@@ -286,7 +287,7 @@
         max-width:1066px;
     }
     &.small {
-        max-width: 577px;
+        max-width: 492px;
     }
     &.video {
         max-width: 1284px;
@@ -420,13 +421,14 @@
         // 배송지 관리
         .my-address-wrap {
             .address-lists {
-                margin-top:40px;
+                margin-top:23px;
                 .lists {
-                    margin-top:12px;
+                    margin-top:10px;
                     padding:32px;
                     border-radius:8px;
                     background:#fff;
-                    box-shadow:0 4px 12px 0 rgba(0, 0, 0, .26);
+                    border:1px solid #ddd;
+                    // box-shadow:0 4px 12px 0 rgba(0, 0, 0, .26);
                     &:first-child {
                         margin-top:0;
                     }
@@ -472,10 +474,10 @@
                                 p {
                                     display:inline-block;
                                     position:relative;
-                                    margin-right:10px;
-                                    padding-right:11px;
-                                    color:#808080;
-                                    font-size:16px;
+                                    margin-right:8px;
+                                    padding-right:9px;
+                                    color:#616161;
+                                    font-size:14px;
                                     line-height:24px;
                                     vertical-align:top;
                                     @include mobile {
@@ -615,6 +617,37 @@
                 color:#222;
                 font-size:16px;
                 line-height:24px;
+            }
+        }
+
+        //케어십안내
+        .careship-info {
+            margin-top:16px;
+            @include clearfix;
+            li {
+                float:left;
+                position:relative;
+                padding-left:56px;
+                line-height:26px;
+                font-weight:700;
+                &:before {
+                    content:'';
+                    display:block;
+                    position:absolute;
+                    top:50%;
+                    left:15px;
+                    width:10px;
+                    height:10px;
+                    border-top:1.3px solid #222;
+                    border-left:1.3px solid #222;
+                    transform:translateY(-50%) rotate(135deg) ;
+                }
+                &:first-child {
+                    padding-left:0;
+                    &:before {
+                        display:none;
+                    }
+                }
             }
         }
     }

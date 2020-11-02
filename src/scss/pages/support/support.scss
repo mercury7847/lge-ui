@@ -465,6 +465,7 @@
             font-size: 12px;
             display: flex;
             overflow-x: auto;
+            margin-top: 12px;
         }
         &-item {
             margin-left: 4px;
@@ -572,12 +573,6 @@
         }
     }
 
-    .color-2 {
-        color: #f04e3e;
-    }
-    .color-3 {
-        color: #ec455a;
-    }
     .pc-only {
         display: block;
         &.ib {
@@ -610,4 +605,11 @@
         text-align: center !important;
     }
 
+}
+
+.color-2 {
+    color: #f04e3e !important;
+}
+.color-3 {
+    color: #ec455a !important;
 }

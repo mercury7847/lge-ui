@@ -11,7 +11,7 @@ $(document).ready(function() {
         ' class="see-video" data-type="youtube" data-target="modal" aria-describedby="{{ariaDesc}}">'+
         '       <img src="{{largeImgURL}}" alt="{{alt}}">'+
         '   </a>'+
-        '   <p class="hidden">{{videoTitle}}</p>'+
+        '   <p class="hidden">{{accDesc}}</p>'+
         '   <div class="caption{{#if videoTitleColor != ""}} videoTitleColor{{/if}}">{{videoTitle}}</div>'+
         '</div>';
 
@@ -19,7 +19,7 @@ $(document).ready(function() {
          '<div class="visual-area animation-box">'+
          '   <a href="#none" role="button" data-src="{{aniAccSrc}}" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="{{ariaDesc}}">Plays audio Description Video</a>'+
          '   <img src="{{largeImgURL}}" alt="{{alt}}">'+
-         '   <p class="hidden">graphic description : </p>'+
+         '   <p class="hidden">{{accDesc}}</p>'+
          '   <div class="animation-area">'+
          '       <video loop{{#if videoAutoplay}} autoplay{{/if}}{{#if videoMuted}} muted{{/if}}>'+
          '           <source src="{{aniSrc}}" type="video/mp4">'+
@@ -34,19 +34,22 @@ $(document).ready(function() {
     var defaultTemplate =
          '<div class="visual-area">'+
          '   <img src="{{largeImgURL}}" alt="{{alt}}"/>'+
-         '   <p class="hidden">{{alt}}</p>'+
+         '   <p class="hidden">{{accDesc}}</p>'+
          '</div>';
 
     $('.KRC0022').each(function(idx, item){
-        $(item).find('.visual-set .visual-thumbnail-set a').on('click', function(e){
+        $(item).find('.visual-set .visual-thumbnail-set .thumb-obj > a').on('click', function(e){
             e.preventDefault();
     
-            var text = $(item).find('.thumb-obj .text-set-default').html();
+            var text = $(this).siblings('.text-set-default').html();
+            console.log(text);
             $(item).find('.text-set').html(text);
     
             var largeImgURL = $(this).find('img').data('large');
             var ariaDesc = $(this).attr('aria-describedby');
             var alt = $(this).find('img').attr('alt').replace(/\&quot\;/gi, '\'\'').replace(/"/g, '\'\'');
+            
+            var accDesc = $(this).data('accDesc') || "";
             
             var appendElement = $(item).find('.visual-set');
             appendElement.find('.visual-area').remove();
@@ -56,7 +59,6 @@ $(document).ready(function() {
                 var videoID = $(this).data('video-id');
                 var videoTitle = $(this).data('video-title');
                 var videoTitleColor = $(this).data('titleColor') || "";
-                console.log("videoTitleColor :", videoTitleColor)       
 
                 html = vcui.template(youtubeTemplate, {
                     videoID: videoID,
@@ -64,7 +66,8 @@ $(document).ready(function() {
                     videoTitleColor: videoTitleColor,
                     largeImgURL: largeImgURL,
                     ariaDesc: ariaDesc,
-                    alt: alt
+                    alt: alt,
+                    accDesc: accDesc
                 });
 
                 appendElement.prepend(html);
@@ -87,7 +90,8 @@ $(document).ready(function() {
                     videoAutoplay: videoAutoplay,
                     videoMuted: videoMuted,
                     ariaDesc: ariaDesc,
-                    alt: alt
+                    alt: alt,
+                    accDesc: accDesc
                 });
 
                 appendElement.prepend(html);
@@ -96,7 +100,8 @@ $(document).ready(function() {
 
                 html = vcui.template(defaultTemplate, {
                     largeImgURL: largeImgURL,
-                    alt: alt
+                    alt: alt,
+                    accDesc: accDesc
                 });
                 
                 appendElement.prepend(html);

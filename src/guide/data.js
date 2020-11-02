@@ -7,6 +7,7 @@ var res = {
 		// },
 		"WSG" : {
 			"컬러" : ["./wsg/guide_color.html","","검수완료"],
+			"폰트" : ["./wsg/guide_font.html","","검수완료"],
 			"Input" : ["./wsg/guide_input.html","","검수완료"],
 			"Select" : ["./wsg/guide_select.html","","검수완료"],
 			"Form" : ["./wsg/guide_input_form.html","","검수완료"],
@@ -25,7 +26,8 @@ var res = {
 			"Rangeslider" : ["./wsg/guide_rangeslider.html","","검수완료"],
 			"Flag" : ["./wsg/guide_flag.html","","검수완료"],
 			"SNS Share" : ["./wsg/guide_sns_share.html","","검수완료"],
-			"Filter" : ["./wsg/guide_filter.html","","검수완료"]
+			"Filter" : ["./wsg/guide_filter.html","","검수완료"],
+			"Location" : ["./wsg/guide_location.html","","검수완료"]
 		}
 	},
 	"Front" : {
@@ -223,6 +225,7 @@ var res = {
 			},
 			"주문결제(UTC)" : {
 				"신청자정보 입력" : ["/html/UTC/RMSF9001.html","","진행중"],
+				"RMSF9001-Alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"],
 				"신청 완료" : ["/html/UTC/RMSF9011.html","","진행중"],
 				"개인정보 수집 및 신용정보 제공 동의 팝업" : ["/html/UTC/RMSF9001_pop1.html","","진행중"],
 				"배송지 관리 팝업" : ["/html/UTC/RMSF9001_pop2.html","","진행중"],

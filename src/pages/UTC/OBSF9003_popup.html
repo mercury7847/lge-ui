@@ -5,14 +5,16 @@
     })
 <body>
     <div class="wrap">
-        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>매월 납부금 할인 내역 팝업 열기</span></button><br><br>
-        <button type="button" data-href="#laypop" data-control="modal" class="btn pink"><span>선택삭제버튼 선택시 alert</span></button><br><br>
-        <button type="button" data-href="#laypop2" data-control="modal" class="btn pink"><span>로그인 안내 alert</span></button><br><br>
-        <button type="button" data-href="#laypop3" data-control="modal" class="btn pink"><span>7개 초과시 알림 팝업 열기</span></button>
+        <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>매월 납부금 할인 내역 팝업 열기</span></button><br><br>
+        <button type="button" data-href="#laypop1" data-control="modal" class="btn pink"><span>삭제</span></button><br><br>
+        <button type="button" data-href="#laypop2" data-control="modal" class="btn pink"><span>로그인 필요</span></button><br><br>
+        <button type="button" data-href="#laypop3" data-control="modal" class="btn pink"><span>선택불가</span></button><br><br>
+        <button type="button" data-href="#laypop4" data-control="modal" class="btn pink"><span>최대</span></button><br><br>
+        <button type="button" data-href="#popup2" data-control="modal" class="btn pink"><span>케어십 안내 팝업 열기</span></button><br><br>
     </div>
 
     <!-- 매월 납부금 할인내역 popup -->
-    <article id="popup" class="popup-wrap">
+    <article id="popup1" class="popup-wrap">
         <header class="pop-header">
             <h1 class="tit"><span>매월 납부금 할인 내역</span></h1>
         </header>
@@ -134,36 +136,75 @@
     </article> -->
     <!-- // 7개 초과시 알림 popup -->
 
-    <!-- 선택삭제버튼 선택시 alert -->
+    <!-- 삭제 -->
     @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop",
+        "popId" : "laypop1",
         "msgOnly" : true,
-        "msg" : "선택한 제품을<br>삭제하시겠습니까?",
+        "msg" : "선택한 제품을 삭제하시겠습니까?",
         "twobtn" : true,
         "btnTxt1" : "취소", 
-        "btnTxt2" : "삭제"
+        "btnTxt2" : "확인"
     })
-    <!-- // 선택삭제버튼 선택시 alert -->
+    <!-- // 삭제 -->
 
-    <!-- 로그인 안내 alert -->
+    <!-- 로그인 필요 -->
     @@include('./common/modules/alert-modal.html', {
         "popId" : "laypop2",
         "msgOnly" : true,
-        "msg" : "케어솔루션/케어십<br>청약신청은<br>로그인이 필요합니다.",
+        "msg" : "케어솔루션/케어십 청약신청은<br>로그인이 필요합니다.",
         "twobtn" : true,
         "btnTxt1" : "취소", 
         "btnTxt2" : "로그인"
     })
-    <!-- // 로그인 안내 alert -->
+    <!-- //로그인 필요 -->
 
-    <!-- 로그인 안내 alert -->
+    <!-- 선택불가 -->
     @@include('./common/modules/alert-modal.html', {
         "popId" : "laypop3",
-        "alertTit" : "알림",
+        "alertTit" : "총 7개를 초과하여<br>선택하실 수 없습니다.",
         "alertCont" : [
-            { "txt" : "회원님,<br>케어솔루션/케어십 서비스는 최대 7개까지<br>서비스 이용이 가능합니다.<br>제품 2개를 해제 후 다시 신청해주시기 바랍니다.<br>(현재 4개의 제품 이용 중, 선택 제품 5개)" }
+            { "txt" : "케어솔루션은 정수기 제품의 경우 최대 3대<br>그 외 제품의 경우 최대 2대로 제한됩니다." }
         ]
     })
-    <!-- // 로그인 안내 alert -->
+    <!-- //선택불가 -->
+
+    <!-- 최대 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop4",
+        "alertTit" : "케어솔루션/케어십 서비스는<br>최대 7개까지 가능합니다.",
+        "alertCont" : [
+            { "txt" : "제품 2개를 해제 후 다시 신청해주시기 바랍니다.<br>(기존 4개의 제품 이용 중, 현재 신청 제품 5개)" }
+        ]
+    })
+    <!-- //최대 -->
+
+    <!-- 케어십안내 popup -->
+    <article id="popup2" class="popup-wrap small">
+        <header class="pop-header">
+            <h1 class="tit"><span>케어십안내</span></h1>
+        </header>
+        <section class="pop-conts common-pop">
+            <div class="gray-txt-box">
+                <p>선택하신 제품 중 케어십은 다음과 같은 절차로 주문이 진행됩니다.</p>
+                <ul class="careship-info">
+                    <li>01<br>청약신청</li>
+                    <li>02<br>제품주문</li>
+                    <li>03<br>매니저방문</li>
+                </ul>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "케어십은 친절한 케어매니저가 주기적으로 방문하여 관리해 드립니다."
+                ]
+            })
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>확인</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 케어십안내 popup -->
 </body>
 </html>
