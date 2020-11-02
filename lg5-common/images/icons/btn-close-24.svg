@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g>
+                                    <path d="M0 0H24V24H0z" transform="translate(-1178 -444) translate(270 294) translate(0 81) translate(0 36) translate(0 1) translate(792) translate(116 32)"/>
+                                    <g fill="#222" transform="translate(-1178 -444) translate(270 294) translate(0 81) translate(0 36) translate(0 1) translate(792) translate(116 32) translate(4.644 4.644)">
+                                        <rect width="2" height="18" x="6.75" y="-1.5" rx="1" transform="rotate(-45 7.75 7.5)"/>
+                                        <rect width="2" height="18" x="6.75" y="-1.5" rx="1" transform="rotate(45 7.75 7.5)"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
