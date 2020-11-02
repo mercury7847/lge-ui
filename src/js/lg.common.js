@@ -370,6 +370,24 @@
                 //     $(window).triggerHandler('resize');
                 // }, 200));
                 ///////////////////////////////////////////////////////////////////////
+
+                //공통 js-pop a태그 처리...
+                $doc.on('click', '.js-popup', function(e){
+                    e.preventDefault();
+
+                    var target = this.getAttribute('href'),
+                        popupWidth = parseInt(this.getAttribute('data-width')),
+                        popupHeight = parseInt(this.getAttribute('data-height')),
+                        screenWidth = parseInt(screen.width),
+                        screenHeight = parseInt(screen.height),
+                        intLeft = Math.floor((screenWidth - popupWidth) / 2),
+                        intTop = Math.floor((screenHeight - popupHeight) / 2);
+            
+                    if (intLeft < 0) intLeft = 0;
+                    if (intTop < 0) intTop = 0;
+            
+                    window.open(target, '_blank', 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + intLeft + ',top=' + intTop + ',history=no,resizable=no,status=no,scrollbars=yes,menubar=no');
+                });
             });
 
             self.loadKakaoSdkForShare();

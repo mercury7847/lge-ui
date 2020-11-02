@@ -19,13 +19,34 @@
                             <h3 class="sec-tit">주문제품</h3>
                             <div class="list-wrap">
                                 <ul class="order-items">
-                                    @@loop('./common/modules/order-product-item.html', [
-                                        {
-                                            "price" : "<span>월 61,900원</span>"
-                                        }, {
-                                            "price" : "<span class='msg'>서비스 불가능 항목</span>"
-                                        }
-                                    ])
+                                    @@include('./common/modules/order-list.html', {
+                                        "items" : [
+                                            {
+                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
+                                                "disabled" : "",
+                                                "check" : {
+                                                    "checked1" : "checked",
+                                                    "checked2" : "checked",
+                                                },
+                                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                                "price" : "월 36,100원",
+                                                "btnValue" : "청약신청"
+                                            },
+                                            {
+                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span><span class='flag'><span class='blind'>판매상태</span>판매종료</span>",
+                                                "disabled" : "disabled",
+                                                "check" : {
+                                                    "checked1" : "disabled",
+                                                    "checked2" : "",
+                                                },
+                                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                                "price" : "월 36,100원",
+                                                "btnValue" : "청약불가"
+                                            }
+                                        ]
+                                    })
                                 </ul>
                             </div>
                         </div>
