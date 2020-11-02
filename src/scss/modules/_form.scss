@@ -97,8 +97,7 @@
         margin-bottom:48px;
         p.req {
             color:#222;
-            font-size:16px;
-            line-height:26px;
+            @include font-medium;
             &::before {
                 content:'*';
                 display:inline-block;
@@ -114,19 +113,21 @@
         &:first-child {
             margin-top:0;
         }
-        .input-wrap {
+
+        .input-wrap,
+        .box {
             margin-top:8px;
             &:first-child {
                 margin-top:0;
             }
         }
+
         .tit {
             display:inline-block;
             width:234px;
             padding:11px 24px 11px 0;
             color:#222;
-            font-size:16px;
-            line-height:26px;
+            @include font-medium;
             vertical-align:top;
             label,
             .label {
@@ -152,116 +153,11 @@
             display:inline-block;
             width:calc(100% - 234px);
             vertical-align:top;
-
-
-
-            
             .input-wrap {
                 display:block;
             }
             .select-wrap {
                 max-width: 100%;
-            }
-            .input-box {
-                margin-top:8px;
-                font-size:0;
-                &:first-child {
-                    margin-top:0;
-                }
-                .input-wrap {
-                    margin-top:0;
-                }
-                .rdo-wrap {
-                    margin-left:64px;
-                    @include mobile {
-                        margin-left:24px;
-                    }
-                    &.btn-type {
-                        margin-left:8px;
-                    }
-                    &:first-child {
-                        margin-left:0;
-                    }
-                }
-                &.btn-type {
-                    .input-wrap,
-                    .select-wrap {
-                        width:50%;
-                    }
-                    .btn {
-                        margin-left:8px;
-                        padding:15px 32px;
-                    }
-                    @include mobile {
-                        margin:0;
-                        .input-wrap,
-                        .select-wrap {
-                            width:100%;
-                            padding:0;
-                        }
-                        .btn {
-                            width:100%;
-                            margin:0;
-                            margin-top:20px;
-                        }
-                    }
-                    &.size2 {
-                        .input-wrap {
-                            width:calc((100% - 140px) / 2);
-                            margin-left:8px;
-                            &:first-child {
-                                margin-left:0;
-                            }
-                            @include mobile {
-                                width:100%;
-                                margin-top:8px;
-                                margin-left:0;
-                                &:first-child {
-                                    margin-top:0;
-                                }
-                            }
-                        }
-                    }
-                }
-                &.card-type {
-                    padding:0 23px;
-                    border:1px solid #ddd;
-                    border-radius:8px;
-                    background:#fff;
-                    white-space:nowrap;
-                    overflow:hidden;
-                    .input-wrap {
-                        position:relative;
-                        width:auto;
-                        margin-left:22px;
-                        input {
-                            width:auto;
-                            padding:15px 0;
-                            border-color:transparent;
-                            &:focus {
-                                box-shadow:none;
-                            }
-                        }
-                        &::before {
-                            content:' ';
-                            position:absolute;
-                            top:50%;
-                            left:-13px;
-                            width:4px;
-                            height:1px;
-                            background:#222;
-                        }
-                        &:first-child {
-                            margin-left:0;
-                            &::before {
-                                display:none;
-                            }
-                        }
-                        //input {
-                        //    padding: 15px 13px;
-                        //}
-                    }
-                }
             }
             .input-box-wrap {
                 display:table;
@@ -272,60 +168,6 @@
                     white-space:nowrap;
                     &.rdo-btn-wrap {
                         padding-right:34px;
-                    }
-                }
-                &.birth-date-box {
-                    .input-box {
-                        padding-right: 0;
-                    }
-                    .number {
-                        .box {
-                            &:after {
-                                display: block;
-                                width: 164px;
-                                padding-left: 8px;
-                                font-size: 40px;
-                                line-height: 56px;
-                                color: #616161;
-                                content: '······';
-                            }
-                        }
-                        .cell {
-                            width: 61px;
-                            padding: 0 0 0 20px;
-                            border: 0;
-                            border-radius: 0;
-                            &:before {
-                                position: absolute;
-                                top: 50%;
-                                left: 8px;
-                                width: 4px;
-                                height: 1px;
-                                background: #222;
-                                content: '';
-                            }
-                            input {
-                                width: 41px;
-                                padding: 15px 0;
-                                border: 1px solid #ddd;
-                                border-radius: 8px;
-                                text-align: center;
-                                &::-webkit-outer-spin-button,
-                                &::-webkit-inner-spin-button {
-                                    -webkit-appearance: none;
-                                    margin: 0;
-                                }
-                            }
-                        }
-                    }
-
-
-                    @include mobile {
-                        .number {
-                            input {
-                                border: 1px solid #ddd;
-                            }
-                        }
                     }
                 }
                 &.addr-box {
@@ -360,6 +202,133 @@
             &.right {
                 text-align:right;
             }
+        }
+        // input + other
+        .box {
+            position:relative;
+            display:table;
+            width:100%;
+            z-index:1;
+
+            > .input-wrap {
+                display:table-cell;
+            }
+            .cell {
+                display:table-cell;
+                width:1%;
+                padding-left:8px;
+                vertical-align:middle;
+            }
+        }
+        .input-wrap {
+            .box {
+                margin:0;
+                input {
+                    display:table-cell;
+                    border-right:none;
+                    border-radius:8px 0 0 8px;
+                }
+                .cell {
+                    padding:10px 15px 10px 0;
+                    border:1px solid #ddd;
+                    border-left:none;
+                    border-radius:0 8px 8px 0;
+                    p.comp {
+                        color:#3B9792;
+                        @include font-small;
+                        font-weight:500;
+                        white-space:nowrap;
+                        &::before {
+                            content:' ';
+                            display:inline-block;
+                            width:20px;
+                            height:20px;
+                            margin-top:2px;
+                            background:url('/lg5-common/images/icons/icon-comp.svg') center no-repeat;
+                            vertical-align:top;
+                        }
+                    }
+                }
+                input:disabled + .cell,
+                input:read-only + .cell {
+                    background:#ededed;
+                    border-color:#ededed;
+                }
+            }
+        }
+        // input case
+        // : 생년월일+주민번호 뒤 앞자리1 
+        .birth-date-box {
+            font-size:0;
+            white-space:nowrap;
+            .input-wrap,
+            .cell {
+                display:inline-block;
+                vertical-align:top;
+            }
+            > .input-wrap {
+                width:140px;
+            }
+            .cell {
+                &::before {
+                    content:'-';
+                    display:inline-block;
+                    margin:11px 8px;
+                    @include font-medium;
+                }
+                &::after {
+                    content:'······';
+                    display:inline-block;
+                    color:#767676;
+                    font-size:40px;
+                    line-height:48px;
+                    vertical-align:top;
+                }
+                .input-wrap {
+                    width:auto;
+                    input {
+                        width:41px;
+                        padding:10px 0;
+                        text-align:center;
+                    }
+                }
+            }
+        }
+        // 카드번호 입력
+        .card-num-box {
+            font-size:0;
+            padding:0 11px;
+            border:1px solid #ddd;
+            border-radius:8px;
+            .input-wrap {
+                display:inline-block;
+                margin:0;
+                vertical-align:top;
+                input {
+                    width:auto;
+                    border:none;
+                    padding:10px 0;
+                    text-align:center;
+                }
+                &::before {
+                    content:'-';
+                    display:inline-block;
+                    margin:0 4px;
+                    padding:10px 0;
+                    @include font-medium;
+                    vertical-align:top;
+                }
+                &:first-child::before {
+                    display:none;
+                }
+            }
+        }
+        .btn {
+            min-width:initial;
+            height:48px;
+            padding:11px;
+            @include font-small;
+            white-space:nowrap;
         }
         .bullet-list {
             margin-top:12px;
@@ -530,156 +499,46 @@
         border:1px solid #ddd;
         border-radius:8px;
         color:#222;
-        font-size:16px;
-        line-height:24px;
+        @include font-medium;
         vertical-align:top;
         resize:none;
 
         &::-webkit-input-placeholder,
-        &::-moz-placeholder,
-        &:-ms-input-placeholder,
+        &:-moz-placeholder,
+        &:-ms-input-placeholder {
+            color:#767676;
+        }
         &::placeholder {
-            color:#bcbcbc;
+            color:#767676;
+            opacity:1;
         }
 
         &:focus {
-            box-shadow:2px 4px 12px 0 rgba(0, 0, 0, .16);
             outline:none;
         }
 
         &:disabled, &:read-only {
-            background:#f4f4f4;
-            border-color:#f4f4f4;
-            &:focus {
-                box-shadow:none;
+            background:#ededed;
+            border-color:#ededed;
+            &::placeholder {
+                color:#aaa;
             }
         }
-        &:disabled {
-            color:#ccc;
-        }
     }
-
     input {
-        padding:15px 23px;
+        height:48px;
+        padding:10px 15px;
+        &[type=number] {
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance:none;
+                margin:0;
+            }
+        }
     }
     textarea {
         height:160px;
         padding:23px;
-    }
-    // @include mobile {
-    //     input {
-    //         padding:13px 15px;
-    //     }
-    //     textarea {
-    //         padding:15px;
-    //     }
-    // }
-
-    // input + other
-    .box {
-        position:relative;
-        display:table;
-        width:100%;
-        z-index:1;
-
-        $child: (last, first);
-        @each $p in $child {
-            .cell {
-                display:table-cell;
-                position:relative;
-                width:1%;
-                border:1px solid #ddd;
-                word-break:keep-all;
-                white-space:nowrap;
-                vertical-align:middle;
-                background:#fff;
-                z-index:5;
-                &:#{$p}-child {
-                    @if ( $p == last ) {
-                        padding:0 19px 0 0;
-                        border-left:none;
-                        border-radius:0 8px 8px 0;
-                    } @else if ( $p == first) {
-                        padding:0 0 0 23px;
-                        border-right:none;
-                        border-radius:8px 0 0 8px;
-                    }
-                }
-                .btn-search {
-                    display:inline-block;
-                    width:24px;
-                    height:24px;
-                    background:url('/lg5-common/images/icons/icon-search2.svg') center no-repeat;
-                    background-size:24px;
-                }
-                .btn-del {
-                    display:none;
-                    width:24px;
-                    height:24px;
-                    background:url('/lg5-common/images/icons/icon-delete.svg') center no-repeat;
-                    background-size:24px;
-                }
-                .btn-text {
-                    margin-right:4px;
-                }
-                &.addr {
-                    .btn-text {
-                        position:relative;
-                        padding-right:20px;
-                        &:after {
-                            content:'';
-                            display:block;
-                            position:absolute;
-                            top:50%;
-                            right:0;
-                            -webkit-transform:translateY(-50%);
-                            transform:translateY(-50%);
-                            width:16px;
-                            height:16px;
-                            background:url('/lg5-common/images/icons/icon-addr-search.svg') no-repeat;
-                            background-size:16px 16px;
-                        }
-                    }
-                }
-            }
-            input, textarea {
-                position:relative;
-                display:table-cell;
-                z-index:1;
-                &:#{$p}-child {
-                    @if ( $p == last ) {
-                        padding-left:16px;
-                        border-left:none;
-                        border-radius:0 8px 8px 0;
-                    } @else if ( $p == first) {
-                        padding-right:16px;
-                        border-right:none;
-                        border-radius:8px 0 0 8px;
-                    }
-                }
-                &:focus {
-                    box-shadow:none;
-                }
-            }
-        }
-
-        input:disabled + .cell, 
-        input:read-only + .cell, 
-        textarea:disabled + .cell,
-        textarea:read-only + .cell {
-            border-color:#f4f4f4;
-            background:#f4f4f4;
-        }
-
-        // @include mobile {
-        //     .cell {
-        //         padding:13px 15px 13px 0;
-        //         border-radius:0 4px 4px 0;
-        //     }
-        //     input, textarea {
-        //         border-radius:4px 0 0 4px;
-        //     }
-        // }
     }
 
     .box2 {
@@ -699,23 +558,23 @@
             background:#fff;
             z-index:5;
         }
-        @include pc {
-            .btn {
-                padding: 15px 32px;
-            }
-        }
-        @include mobile {
-            display: block;
-            .cell {
-                display: block;
-                width: 100%;
-                margin-top: 20px;
-                padding-left: 0;
-                .btn {
-                    width: 100%;
-                }
-            }
-        }
+        // @include pc {
+        //     .btn {
+        //         padding: 15px 32px;
+        //     }
+        // }
+        // @include mobile {
+        //     display: block;
+        //     .cell {
+        //         display: block;
+        //         width: 100%;
+        //         margin-top: 20px;
+        //         padding-left: 0;
+        //         .btn {
+        //             width: 100%;
+        //         }
+        //     }
+        // }
     }
 
     &.block {
@@ -1493,7 +1352,6 @@ $input: (chk, rdo);
     display:inline-block;
     position:relative;
     width:100%;
-    max-width:364px;
     &.block {
         display:block;
         max-width:100%;
@@ -1512,7 +1370,7 @@ $input: (chk, rdo);
         .ui-select-button {
             display:block;
             position:relative;
-            padding:15px 23px;
+            padding:10px 15px;
             padding-right:39px;
             border:1px solid #ddd;
             border-radius:8px;
@@ -1522,23 +1380,22 @@ $input: (chk, rdo);
                 overflow:hidden;
                 max-width:100%;
                 color:#222;
-                font-size:16px;
-                line-height:24px;
+                @include font-medium;
                 text-overflow:ellipsis;
                 white-space:nowrap;
                 word-break:break-all;
                 vertical-align:top;
             }
             &.placeholder .ui-select-text {
-                color:#808080;
+                color:#767676;
             }
             .ico {
                 position:absolute;
                 top:50%;
-                right:24px;
+                right:22px;
                 width:0;
                 height:0;
-                margin-top:-4px;
+                margin-top:-3px;
                 border-top:6px solid #222;
                 border-left:5px solid transparent;
                 border-right:5px solid transparent;
@@ -1547,9 +1404,9 @@ $input: (chk, rdo);
         }
         &.on {
             .ui-select-button {
-                border-bottom:none;
                 border-radius:8px 8px 0 0;
                 border-color:#222;
+                border-bottom-color:transparent;
                 .ico {
                     transform:rotate(180deg);
                 }
@@ -1569,7 +1426,7 @@ $input: (chk, rdo);
         }
         .ui-selectbox-list {
             position:absolute;
-            top:54px;
+            top:47px;
             right:0;
             left:0;
             overflow:hidden;
@@ -1583,10 +1440,9 @@ $input: (chk, rdo);
                     a {
                         display:block;
                         overflow:hidden;
-                        padding:16px 23px;
-                        color:#808080;
-                        font-size:16px;
-                        line-height:24px;
+                        padding:11px 15px;
+                        color:#767676;
+                        @include font-medium;
                         white-space:nowrap;
                         word-break:break-all;
                         text-overflow:ellipsis;
@@ -1595,8 +1451,7 @@ $input: (chk, rdo);
                         }
                     }
                     &.on a {
-                        color:#222;
-                        font-weight:700;
+                        background:#f4f4f4;
                     }
 
                 }
@@ -1604,13 +1459,13 @@ $input: (chk, rdo);
         }
         &.disabled {
             .ui-select-button {
-                border-color:#f4f4f4;
-                background:#f4f4f4;
+                border-color:#ededed;
+                background:#ededed;
                 .ui-select-text {
-                    color:#ccc;
+                    color:#aaa;
                 }
                 .ico {
-                    border-top-color:#ccc;
+                    border-top-color:#9c9c9c;
                 }
             }
             .ui-selectbox-list {
