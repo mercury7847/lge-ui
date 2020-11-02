@@ -432,7 +432,7 @@
         }
         .price {
             font-weight: $font-weight-bold;
-            @include font-x-large;
+            @include font-large-1;
             color: #ec455a;
         }
         .desc {

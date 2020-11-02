@@ -338,7 +338,7 @@
     .search-result-text {
         margin-bottom: 24px;
         font-weight: $font-weight-medium;
-        @include font-x-large;
+        @include font-large-1;
         span {
             font-weight: $font-weight-bold;
         }
@@ -394,7 +394,7 @@
 
     .result-list-wrap {
         .title {
-            @include font-x-large;
+            @include font-large-1;
             @include mobile {
                 @include font-medium;
             }

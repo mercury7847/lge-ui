@@ -193,7 +193,7 @@
     .comp-tit {
         position:relative;
         padding-top:28px;
-        color:$color-1;
+        color:$color-default;
         font-size:16px;
         line-height:24px;
         text-align:center;
@@ -235,7 +235,7 @@
             }
         }
         .tit {
-            color:$color-1;
+            color:$color-default;
             font-size:16px;
             line-height:24px;
             font-weight:700;
@@ -248,7 +248,7 @@
                 display:inline-block;
                 position:relative;
                 padding-left:12px;
-                color:$color-1;
+                color:$color-default;
                 font-size:14px;
                 line-height:20px;
                 vertical-align:top;
@@ -261,7 +261,7 @@
                     height:4px;
                     margin-top:-2px;
                     border-radius:2px;
-                    background:$color-1;
+                    background:$color-default;
                 }
                 &:first-child {
                     padding-left:0;
@@ -280,7 +280,7 @@
                 font-size:0;
                 dt, dd {
                     display:inline-block;
-                    color:$color-1;
+                    color:$color-default;
                     font-size:14px;
                     line-height:20px;
                 }
@@ -296,7 +296,7 @@
     }
     .more-txt {
         margin-top:48px;
-        color:$color-1;
+        color:$color-default;
         font-size:16px;
         line-height:24px;
         font-weight:700;
