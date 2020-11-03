@@ -53,6 +53,19 @@
             </dd>
         </dl>
         <dl class="forms">
+            <dt class="tit"><label for="inp011" class="req">계좌번호<span class="blind">필수입력</span></label></dt>
+            <dd class="conts">
+                <div class="box type2">
+                    <div class="input-wrap">
+                        <input type="text" id="inp011" value="123456789" placeholder="계좌번호를 입력해주세요">
+                    </div>
+                    <div class="cell">
+                        <button type="button" class="btn"><span>납부 계좌 확인</span></button>
+                    </div>
+                </div>
+            </dd>
+        </dl>
+        <dl class="forms">
             <dt class="tit"><label for="slt01">배송 요청사항</label></dt>
             <dd class="conts">
                 <div class="select-wrap">
@@ -310,7 +323,7 @@
                                             <p clss="label">제휴카드 선택</p>
                                         </dt>
                                         <dd class="conts">
-                                            <div class="box">
+                                            <div class="box type2"> <!-- 모바일일 때 버튼이 하단으로 떨어지는 케이스일 때 type2 -->
                                                 <div class="select-wrap">
                                                     <select class="ui_selectbox" title="카드사 선택">
                                                         <option value="" class="placeholder">카드 선택</option>
@@ -665,7 +678,7 @@
                                         <p clss="label">제휴카드 선택</p>
                                     </dt>
                                     <dd class="conts">
-                                        <div class="box">
+                                        <div class="box type2"> <!-- 모바일일 때 버튼이 하단으로 떨어지는 케이스일 때 type2 -->
                                             <div class="select-wrap">
                                                 <select class="ui_selectbox" title="카드사 선택">
                                                     <option value="" class="placeholder">카드 선택</option>

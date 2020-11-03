@@ -192,6 +192,7 @@
             }
         }
         .conts {
+            position:relative;
             display:inline-block;
             width:calc(100% - 234px);
             vertical-align:top;
@@ -301,6 +302,30 @@
                 vertical-align:middle;
                 @include mobile {
                     padding-left:6px;
+                }
+            }
+
+            &.type2 {
+                @include mobile {
+                    display:block;
+                    > .input-wrap,
+                    > .select-wrap {
+                        display:block;
+                    }
+                    .cell {
+                        display:block;
+                        width:100%;
+                        margin-top:8px;
+                        padding-left:0;
+                        text-align:right;
+                    }
+                    & + .btm-more {
+                        position:absolute;
+                        top:56px;
+                        left:0;
+                        max-width:calc(100% - 120px);
+                        margin-top:0;
+                    }
                 }
             }
         }
@@ -780,6 +805,19 @@
         .cell {
             text-align:right;
         }
+        @include mobile {
+            display:block;
+            padding:16px;
+            .chk-wrap,
+            .cell {
+                display:block;
+            }
+            .cell {
+                margin-top:2px;
+                padding-left:32px;
+                text-align:left;
+            }
+        }
     }
     .mix-cont {
         padding:11px 23px 15px;
@@ -803,9 +841,16 @@
             &:first-child {
                 margin-top:0;
             }
+            @include mobile {
+                margin-bottom:0;
+                padding:20px 12px;
+            }
         }
         &:first-child {
             padding:15px 23px;
+        }
+        @include mobile {
+            padding:16px;
         }
     }
     &.cell-type {
@@ -1399,6 +1444,9 @@ $input: (chk, rdo);
             border:1px solid #ddd;
             border-radius:8px;
             background:#fff;
+            @include mobile {
+                padding:11px 15px 12px;
+            }
             .ui-select-text {
                 display:inline-block;
                 overflow:hidden;
