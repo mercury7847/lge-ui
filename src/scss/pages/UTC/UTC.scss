@@ -5,7 +5,7 @@
 
 .cart {
     //장바구니
-    .cart-option {
+    .check-option {
         @include clearfix;
         padding: 24px 0 12px;
         .chk-wrap {
@@ -165,7 +165,9 @@
 }
 
 .order-item {
-    display: table;
+    display: flex;
+    align-items: center;
+    //flex-wrap: wrap;
     position: relative;
     padding:32px 0 32px;
     border-top: 1px solid #ddd;
@@ -173,12 +175,11 @@
     @include mobile {
         padding:20px 20px 0;
     }
-    .item-image,
-    .product-info,
-    .product-payment {
-        display: table-cell;
-        vertical-align: top;
-    }
+    //.item-image,
+    //.product-info,
+    //.product-payment {
+    //    flex: auto;
+    //}
     .item-image {
         width:140px;
         height:140px;
@@ -196,7 +197,8 @@
         }
     }
     .product-info {
-        @include clearfix;
+        //@include clearfix;
+        flex: 1;
         position: relative;
     }
     .flag-wrap {
@@ -209,7 +211,7 @@
     .item-name {
         max-height: 48px;
         margin-bottom: 4px;
-        font-weight: $font-weight-bold;
+        font-weight: 700;
         @include font-medium;
         @include textClipClamp(2);
         @include mobile {
@@ -276,45 +278,53 @@
         }
     }
     .product-payment {
-        width: 320px;
-        vertical-align: middle;
+        //position:relative;
+        //display: flex;
+        //align-items: center;
+        //padding:0 140px 0 0;
+        //width: 320px;
+        text-align: right;
+        //vertical-align: middle;
         @include mobile {
             margin:0 -20px;
             padding:24px 20px;
         }
-        .inner {
-            position:relative;
-            min-height:36px;
-            padding:5px 100px 5px 0;
-            text-align:right;
-            @include mobile {
-                min-height:30px;
-                padding:2px 100px 2px 0;
-                text-align:left;
-            }
-            .btn-purchase {
-                position:absolute;
-                top:0;
-                right:0;
-            }
-            .amount {
-                display:inline-block;
-                .total-price {
-                    display: block;
-                    float:right;
-                    font-weight: $font-weight-bold;
+        .amount {
+            position: relative;
+            width: 180px;
+            display:inline-block;
+            vertical-align: middle;
+            .price {
+                display: inline-block;
+                .original {
+                    font-weight: 500;
+                    @include font-small;
+                    color: $color-gray-1;
+                    text-decoration: line-through;
+                }
+                .total {
+                    display: inline-block;
+                    font-weight: 700;
                     @include font-large;
                 }
-                .btn-info {
-                    display:inline-block;
-                    margin-top:5px;
-                    margin-right:4px;
-                    width:16px;
-                    height:16px;
-                    background:url("/lg5-common/images/icons/icon-tooltip.svg") center no-repeat;
-                    vertical-align:top;
-                }
             }
+            .btn-info {
+                display: inline-block;
+                width:16px;
+                height:16px;
+                margin-bottom: 6px;
+                background:url("/lg5-common/images/icons/icon-tooltip.svg") center no-repeat;
+                vertical-align:bottom;
+            }
+        }
+        .btn-area {
+            display: inline-block;
+            width: 140px;
+            vertical-align: middle;
+            //position:absolute;
+            //top:50%;
+            //right:0;
+            //transform: translateY(-50%);
         }
     }
     &.disabled .product-payment .amount .total-price {
@@ -330,6 +340,11 @@
             height: 24px;
             background: url('/lg5-common/images/icons/btn-close-24.svg') no-repeat 0 0;
         }
+    }
+    .chk-wish-wrap {
+        position: absolute;
+        top: 32px;
+        right: 36px;
     }
     .chk-wrap {
         position:absolute;
