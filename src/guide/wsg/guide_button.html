@@ -13,11 +13,7 @@
     <dt><strong class="t_modify">주의사항</strong></dt>
     <dd>
         <ol>
-            <li>button size PC일 때 194px, 모바일일 때 100% default</li>
-            <li>버튼 2개이상 나열될 경우 .btn-group안에 나열, 버튼 2개가 default</li>
-            <li>버튼그룹 3개 이상 케이스 발생할 경우 추가 class 생성예정</li>
-            <li>hover, active 디자인 작업 후 반영 예정</li>
-            <li>Carousel 용 arrow 버튼 디자인만 반영, 위치 등 상세 옵션은 화면/디자인별 적용 필요</li>
+            <li></li>
         </ol>
     </dd>
 </dl>
@@ -26,70 +22,78 @@
 <!-- 가이드 내용 -->
 <h2 class="h2_guide">1. button default</h2>
 <div class="guide_wrap">
-    <button class="btn pink"><span>이전</span></button>
-    <a href="#n" class="btn pink"><span>이전</span></a>
-    <button class="btn pink disabled" disabled><span>이전 비활성화</span></button>
-    <a href="#n" class="btn pink disabled"><span>이전 비활성화</span></a>
+    <button type="button" class="btn"><span>버튼default</span></button>
+    <a href="#n" class="btn"><span>버튼default</span></a>
+    <button type="button" class="btn disabled" disabled><span>버튼disabled</span></button>
+    <a href="#n" class="btn disabled"><span>버튼disabled</span></a>
+    <button type="button" class="btn gray"><span>버튼gray</span></button>
+    <a href="#n" class="btn gray"><span>버튼gray</span></a>
+
+    <button type="button" class="btn block"><span>버튼default,block</span></button>
+    <a href="#n" class="btn block"><span>버튼default,block</span></a>
+
+    <button type="button" class="btn border"><span>버튼border</span></button>
+    <a href="#n" class="btn border"><span>버튼border</span></a>
+
     <br><br>
-    <button class="btn gray"><span>이전</span></button>
-    <a href="#n" class="btn gray"><span>이전</span></a>
-    <button class="btn gray disabled" disabled><span>이전 비활성화</span></button>
-    <a href="#n" class="btn gray disabled" disabled><span>이전 비활성화</span></a>
-    <br><br>
-    <button class="btn bd-black"><span>문의하기</span></button>
-    <a href="#n" class="btn bd-black"><span>문의하기</span></a>
-    <button class="btn bd-black disabled" disabled><span>문의하기 비활성화</span></button>
-    <a href="#n" class="btn bd-black disabled"><span>문의하기 비활성화</span></a>
-    <br><br>
-    <button class="btn bd-black btn-small"><span>상세보기</span></button>
-    <a href="#n" class="btn bd-black btn-small"><span>상세보기</span></a>
-    <button class="btn bd-black btn-small disabled" disabled><span>상세보기 비활성화</span></button>
-    <a href="#n" class="btn bd-black btn-small disabled"><span>상세보기 비활성화</span></a>
-    <br><br>
-    <button class="btn bd-pink btn-small"><span>상세보기</span></button>
-    <a href="#n" class="btn bd-pink btn-small"><span>상세보기</span></a>
-    <button class="btn bd-pink btn-small disabled" disabled><span>상세보기</span></button>
-    <a href="#n" class="btn bd-pink btn-small disabled"><span>상세보기</span></a>
-    <br><br>
-    <button class="btn gray btn-x-small"><span>상세보기</span></button>
-    <a href="#n" class="btn gray btn-x-small"><span>상세보기</span></a>
-    <button class="btn pink btn-x-small"><span>상세보기</span></button>
-    <a href="#n" class="btn pink btn-x-small"><span>상세보기</span></a>
-    <button class="btn gray btn-x-small disabled" disabled><span>상세보기</span></button>
-    <a href="#n" class="btn pink btn-x-small disabled"><span>상세보기</span></a>
+
+    <button type="button" class="btn size"><span>버튼default,size</span></button>
+    <a href="#n" class="btn size"><span>버튼default,size</span></a>
+    <button type="button" class="btn disabled size" disabled><span>버튼disabled,size</span></button>
+    <a href="#n" class="btn disabled size"><span>버튼disabled,size</span></a>
+    <button type="button" class="btn gray size"><span>버튼gray,size</span></button>
+    <a href="#n" class="btn gray size"><span>버튼gray,size</span></a>
+
+    <button type="button" class="btn block size"><span>버튼default,block,size</span></button>
+    <a href="#n" class="btn block size"><span>버튼default,block,size</span></a>
+
+    <button type="button" class="btn border size"><span>버튼border,size</span></button>
+    <a href="#n" class="btn border size"><span>버튼border,size</span></a>
 </div>
 
 <div class="d_desc code">
 <xmp class="prettyprint linenums javascript"><!-- default button -->
-<button class="btn pink"><span>이전</span></button>
-<a href="#n" class="btn pink"><span>이전</span></a>
-<button class="btn pink disabled" disabled><span>이전 비활성화</span></button>
-<a href="#n" class="btn pink disabled"><span>이전 비활성화</span></a>
-<!-- //default button -->
-<!-- gray button -->
-<button class="btn gray"><span>이전</span></button>
-<a href="#n" class="btn gray"><span>이전</span></a>
-<button class="btn gray disabled" disabled><span>이전 비활성화</span></button>
-<a href="#n" class="btn gray disabled" disabled><span>이전 비활성화</span></a>
-<!-- //gray button -->
-<!-- black border button -->
-<button class="btn bd-black"><span>문의하기</span></button>
-<a href="#n" class="btn bd-black"><span>문의하기</span></a>
-<button class="btn sub disabled" disabled><span>문의하기 비활성화</span></button>
-<a href="#n" class="btn bd-black disabled"><span>문의하기 비활성화</span></a>
-<!-- //black border button -->
-<!-- black border small button -->
-<button class="btn bd-black btn-small"><span>상세보기</span></button>
-<a href="#n" class="btn bd-black btn-small"><span>상세보기</span></a>
-<button class="btn bd-black btn-small disabled" disabled><span>상세보기 비활성화</span></button>
-<a href="#n" class="btn bd-black btn-small disabled"><span>상세보기 비활성화</span></a>
-<!-- //black border small button -->
-<!-- pink border small button -->
-<button class="btn bd-pink btn-small"><span>상세보기</span></button>
-<a href="#n" class="btn bd-pink btn-small"><span>상세보기</span></a>
-<button class="btn bd-pink btn-small disabled" disabled><span>상세보기</span></button>
-<a href="#n" class="btn bd-pink btn-small disabled"><span>상세보기</span></a>
-<!-- //pink border small button -->
+<!-- default -->
+<button type="button" class="btn"><span>버튼default</span></button>
+<a href="#n" class="btn"><span>버튼default</span></a>
+<!-- // default -->
+<!-- default , disabled -->
+<button type="button" class="btn disabled" disabled><span>버튼disabled</span></button>
+<a href="#n" class="btn disabled"><span>버튼disabled</span></a>
+<!-- // default , disabled -->
+<!-- default , gray -->
+<button type="button" class="btn gray"><span>버튼gray</span></button>
+<a href="#n" class="btn gray"><span>버튼gray</span></a>
+<!-- // default , gray -->
+<!-- default , block -->
+<button type="button" class="btn block"><span>버튼default,block</span></button>
+<a href="#n" class="btn block"><span>버튼default,block</span></a>
+<!-- // default , block -->
+<!-- default , border -->
+<button type="button" class="btn border"><span>버튼border</span></button>
+<a href="#n" class="btn border"><span>버튼border</span></a>
+<!-- // default , border -->
+
+<!-- medium size default -->
+<button type="button" class="btn size"><span>버튼default,size</span></button>
+<a href="#n" class="btn size"><span>버튼default,size</span></a>
+<!-- // medium size default -->
+<!-- medium size default , disabled -->
+<button type="button" class="btn disabled size" disabled><span>버튼disabled,size</span></button>
+<a href="#n" class="btn disabled size"><span>버튼disabled,size</span></a>
+<!-- // medium size default , disabled -->
+<!-- medium size default , gray -->
+<button type="button" class="btn gray size"><span>버튼gray,size</span></button>
+<a href="#n" class="btn gray size"><span>버튼gray,size</span></a>
+<!-- // medium size default , gray -->
+<!-- medium size default , block -->
+<button type="button" class="btn block size"><span>버튼default,block,size</span></button>
+<a href="#n" class="btn block size"><span>버튼default,block,size</span></a>
+<!-- // medium size default , block -->
+<!-- medium size default , border -->
+<button type="button" class="btn border size"><span>버튼border,size</span></button>
+<a href="#n" class="btn border size"><span>버튼border,size</span></a>
+<!-- // medium size default , border -->
 </xmp>
 </div>
 <!-- //가이드 내용 -->

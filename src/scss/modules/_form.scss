@@ -115,6 +115,7 @@
             height:48px;
             padding:11px;
             border:1px solid #222;
+            border-radius:8px;
             background:#fff;
             color:#222;
             @include font-small;
@@ -176,7 +177,7 @@
                     content:'*';
                     display:inline-block;
                     margin-left:1px;
-                    color:inherit;
+                    color:#EC455A;
                     font-size:inherit;
                     line-height:inherit;
                     vertical-align:top;
@@ -333,7 +334,7 @@
                 &::after {
                     content:'······';
                     display:inline-block;
-                    color:#767676;
+                    color:#222;
                     font-size:40px;
                     line-height:48px;
                     vertical-align:top;
@@ -635,10 +636,14 @@
                     width:20px;
                     height:20px;
                     margin-top:2px;
+                    margin-right:2px;
                     background:url('/lg5-common/images/icons/icon-comp.svg') center no-repeat;
                     vertical-align:top;
                 }
             }
+        }
+        input:focus + .cell {
+            border-color:#EC455A;
         }
         input:disabled + .cell,
         input:read-only + .cell {
@@ -1034,7 +1039,7 @@ $input: (chk, rdo);
             &+label {
                 position:relative;
                 display:inline-block;
-                padding-left:28px;
+                padding-left:32px;
                 color:#222;
                 @include font-medium;
                 vertical-align:top;
@@ -1052,7 +1057,7 @@ $input: (chk, rdo);
                     content:' ';
                     position:absolute;
                     top:3px;
-                    left:0;
+                    left:2px;
                     width:20px;
                     height:20px;
                     background:url("/lg5-common/images/bg-input-default.svg") center no-repeat;
@@ -1062,7 +1067,7 @@ $input: (chk, rdo);
                         content:' ';
                         position:absolute;
                         top:9px;
-                        left:5px;
+                        left:6px;
                         width:11px;
                         height:9px;
                         background:url("/lg5-common/images/bg-chk-default.svg") center no-repeat;
@@ -1072,7 +1077,7 @@ $input: (chk, rdo);
                         content:' ';
                         position:absolute;
                         top:6px;
-                        left:3px;
+                        left:5px;
                         width:14px;
                         height:14px;
                         border-radius:50%;
