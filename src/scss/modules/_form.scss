@@ -381,6 +381,9 @@
         // 날짜 선택(datepicker)
         .datepicker {
             width:calc((100% - 8px) / 2);
+            @include mobile {
+                width:100%;
+            }
         }
         .bullet-list {
             margin-top:12px;
@@ -1663,124 +1666,114 @@ $input: (chk, rdo);
 }
 
 // datepicker
-.ui-calendar-dim {
-    position:fixed;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
-    background:rgba(#222, .7);
-    z-index:9990;
-}
 .ui-calendar-container {
+    position:absolute;
+    top:60px;
+    left:0;
     background:#fff;
-    width:630px;
-    padding:40px 56px 32px;
-    border-radius:4px;
-    margin-left:-315px;
-    transform:translateY(-50%);
+    width:473px;
+    padding:0;
+    border-radius:8px;
+    box-shadow:0 2px 14px 0 rgba(0, 0, 0, .06);
     @include mobile {
-        width:304px;
-        margin-left:-152px;
-        padding:20px 12px 16px;
-        border-radius:2px;
+        top:54px;
+        width:100%;
     }
     .ui-calendar-header-second {
         position:relative;
-        margin:0 16px 40px;
+        margin-bottom:24px;
+        padding:32px 64px 0;
         text-align:center;
         @include mobile {
-            margin:0 8px 16px;
+            margin-bottom:15px;
+            padding:20px 48px 0;
         }
         > a {
             position:absolute;
-            top:50%;
-            margin-top:-16px;
-            padding:10px;
+            top:32px;
             font-size:0;
+            @include mobile {
+                top:20px;
+            }
             &::before {
                 content:' ';
                 display:block;
-                width:12px;
-                height:12px;
-                border:2px solid #222;
-                border-right:none;
-                border-bottom:none;
-                transform:rotate(-45deg);
+                width:32px;
+                height:32px;
+                background:url("/lg5-common/images/icons/btn-arrow-right-32.svg");
+                background-size:32px;
+                @include mobile {
+                    width:24px;
+                    height:24px;
+                    background-size:24px;
+                }
             }
             &.ui-calendar-prev {
-                left:0;
+                left:32px;
+                @include mobile {
+                    left:24px;
+                }
+                &::before {
+                    transform:rotate(180deg);
+                }
             }
             &.ui-calendar-next {
-                right:0;
-                &::before {
-                    transform:rotate(135deg);
+                right:32px;
+                @include mobile {
+                    right:24px;
                 }
             }
             &.disabled {
                 cursor: default;
-                &::before {
-                    border-color:#adadad;
-                }
-            }
-            @include mobile {
-                margin-top:-12px;
-                padding:8px;
-                &::before {
-                    width:8px;
-                    height:8px;
-                }
+                opacity:0.5;
             }
         }
         .ui-calendar-now {
             color:#222;
-            font-size:28px;
-            line-height:36px;
-            font-weight:700;
+            @include font-large-1;
+            font-weight:500;
             .year::after {
                 content:'.';
                 display:inline-block;
             }
-            @include mobile {
-                font-size:18px;
-                line-height:27px;
-            }
         }
     }
     .ui-calendar-date {
+        padding:0 20px 24px;
+        @include mobile {
+            padding:0 18px 16px;
+        }
         .ui-calendar-table {
             table-layout:fixed;
             width:100%;
-            font-size:24px;
-            line-height:32px;
+            @include font-large-1;
             text-align:center;
             border-collapse:collapse;
             th {
-                padding:12px 0 36px;
-                color:#515151;
-                font-weight:300;
-            }
-            @include mobile {
-                font-size:14px;
-                line-height:18px;
-                th {
-                    padding:11px 0 19px;
+                padding:13px 0 12px;
+                color:#767676;
+                font-weight:400;
+                @include mobile {
+                    padding:7px 0;
                 }
             }
             tbody {
                 .ui-calendar-cell {
                     .ui-calendar-day {
                         display:inline-block;
-                        width:74px;
-                        height:72px;
-                        border-radius:8px;
+                        width:55px;
+                        height:55px;
+                        border-radius:50%;
                         background:transparent;
                         color:#222;
-                        font-size:24px;
-                        line-height:72px;
+                        font-weight:500;
                         vertical-align:top;
                         &.disabled {
-                            color:#bcbcbc;
+                            color:#aaa;
+                        }
+                        @include mobile {
+                            width:37px;
+                            height:37px;
                         }
                     }
                     &.ui-calendar-active {
@@ -1790,42 +1783,8 @@ $input: (chk, rdo);
                             font-weight:700;
                         }
                     }
-                    @include mobile {
-                        .ui-calendar-day {
-                            width:40px;
-                            height:40px;
-                            border-radius:4px;
-                            font-size:14px;
-                            line-height:40px;
-                        }
-                    }
                 }
             }
-        }
-    }
-    .ui-calendar-close {
-        position:absolute;
-        top:16px;
-        right:16px;
-        width:32px;
-        height:32px;
-        &::before, &::after {
-            content:' '; 
-            position:absolute;
-            top:50%;
-            left:50%;
-            width:2px;
-            height:22px;
-            margin-top:-11px;
-            margin-left:-1px;
-            border-radius:2px;
-            background:#222;
-        }
-        &::before {
-            transform:rotate(45deg);
-        }
-        &::after {
-            transform:rotate(-45deg);
         }
     }
 }
