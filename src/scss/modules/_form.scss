@@ -95,8 +95,34 @@
                 margin-top:0;
             }
         }
+        .btn {
+            min-width:initial;
+            height:48px;
+            padding:11px;
+            border:1px solid #222;
+            background:#fff;
+            color:#222;
+            @include font-small;
+            white-space:nowrap;
+        }
+        .btn.bg-type {
+            min-width:initial;
+            height:38px;
+            padding:6px 13px;
+            border:1px solid #767676;
+            border-radius:24px;
+            background:#767676;
+            color:#fff;
+            @include font-small;
+            &:disabled {
+                background:#f4f4f4;
+                border-color:#ddd;
+                color:#aaa;
+            }
+        }
 
         .tit {
+            position:relative;
             display:inline-block;
             width:234px;
             padding:11px 24px 11px 0;
@@ -119,6 +145,10 @@
                     line-height:inherit;
                     vertical-align:top;
                 }
+            }
+            .tooltip-wrap {
+                margin-top:3px;
+                margin-left:4px;
             }
             .right-btn {
                 float: right;
@@ -175,6 +205,12 @@
                     }
                 }
             }
+            .select-list-wrap {
+                margin-bottom:16px;
+                &:last-child {
+                    margin-bottom:0;
+                }
+            }
             .add-box {
                 margin-top:16px;
             }
@@ -185,6 +221,19 @@
             }
             &.right {
                 text-align:right;
+            }
+        }
+        &.inner-type {
+            .tit {
+                display:block;
+                width:100%;
+                margin-bottom:8px;
+                @include font-small;
+                font-weight:500;
+            }
+            .conts {
+                display:block;
+                width:100%;
             }
         }
         &.type2 {
@@ -199,7 +248,8 @@
             width:100%;
             z-index:1;
 
-            > .input-wrap {
+            > .input-wrap, 
+            > .select-wrap {
                 display:table-cell;
             }
             .cell {
@@ -287,13 +337,6 @@
         .datepicker {
             width:calc((100% - 8px) / 2);
         }
-        .btn {
-            min-width:initial;
-            height:48px;
-            padding:11px;
-            @include font-small;
-            white-space:nowrap;
-        }
         .bullet-list {
             margin-top:12px;
         }
@@ -303,6 +346,20 @@
             .btn-text {
                 font-size:14px;
                 line-height:20px;
+            }
+            .discount-txt {
+                color:#EC455A;
+                @include font-small;
+                font-weight:500;
+                &::before {
+                    content:' ';
+                    display:inline-block;
+                    width:20px;
+                    height:20px;
+                    margin:2px 4px 0 0;
+                    background:url("/lg5-common/images/icons/icon-sale.svg") center no-repeat;
+                    vertical-align:top;
+                }
             }
             &.right {
                 text-align:right;
@@ -481,6 +538,7 @@
 
         &:focus {
             outline:none;
+            border-color:#EC455A;
         }
 
         &:disabled, &:read-only {
@@ -654,31 +712,43 @@
 // input + btn mix type
 .input-mix-wrap {
     display:block;
-    position:relative;
-    padding:15px 23px;
-    padding-right:39px;
     border:1px solid #ddd;
     border-radius:8px;
     background:#fff;
-    .mix-btn {
-        position:absolute;
-        top:15px;
-        right:15px;
-        width:24px;
-        height:24px;
-        &::after {
-            content:' ';
-            position:absolute;
-            top:50%;
-            right:50%;
-            width:9px;
-            height:9px;
-            margin-top:-4px;
-            margin-right:-2px;
-            border-style:solid;
-            border-color:#222;
-            border-width:1px 1px 0 0;
-            transform:rotate(45deg);
+    .mix-input {
+        display:table;
+        width:100%;
+        padding:15px 23px;
+        border-bottom:1px solid #ddd;
+        .chk-wrap,
+        .cell {
+            display:table-cell;
+            vertical-align:middle;
+        }
+        .cell {
+            text-align:right;
+        }
+    }
+    .mix-cont {
+        padding:11px 23px 15px;
+        .desc {
+            color:#767676;
+            @include font-small;
+            font-weight:500;
+        }
+        .btn-wrap {
+            margin-top:12px;
+            margin-bottom:8px;
+        }
+        .gray-box {
+            margin-top:24px;
+            margin-bottom:8px;
+            padding:16px 24px;
+            border-radius:8px;
+            background:#f4f4f4;
+            &:first-child {
+                margin-top:0;
+            }
         }
     }
     &.cell-type {
@@ -915,10 +985,9 @@ $input: (chk, rdo);
             &+label {
                 position:relative;
                 display:inline-block;
-                padding-left:32px;
+                padding-left:28px;
                 color:#222;
-                font-size:16px;
-                line-height:24px;
+                @include font-medium;
                 vertical-align:top;
                 cursor:pointer;
                 -webkit-user-select:none;
@@ -933,34 +1002,30 @@ $input: (chk, rdo);
                 &::before {
                     content:' ';
                     position:absolute;
-                    top:0;
+                    top:3px;
                     left:0;
-                    width:24px;
-                    height:24px;
-                    border:1px solid #808080;
-                    border-radius:50%;
+                    width:20px;
+                    height:20px;
+                    background:url("/lg5-common/images/bg-input-default.svg") center no-repeat;
                 }
                 @if ( $type == chk ) {
                     &::after {
                         content:' ';
                         position:absolute;
-                        top:8px;
-                        left:6px;
-                        width:12px;
-                        height:6px;
-                        border:1px solid #808080;
-                        border-top:none;
-                        border-right:none;
-                        transform:rotate(-45deg);
+                        top:9px;
+                        left:5px;
+                        width:11px;
+                        height:9px;
+                        background:url("/lg5-common/images/bg-chk-default.svg") center no-repeat;
                     }
                 } @else if ( $type == rdo ) {
                     &::after {
                         content:' ';
                         position:absolute;
-                        top:4px;
-                        left:4px;
-                        width:16px;
-                        height:16px;
+                        top:6px;
+                        left:3px;
+                        width:14px;
+                        height:14px;
                         border-radius:50%;
                         background:transparent;
                     }
@@ -969,16 +1034,15 @@ $input: (chk, rdo);
             &:checked+label {
                 @if ( $type == chk ) {
                     &::before {
-                        border-color:transparent;
-                        background:#ec455a;
+                        background:#EC455A;
+                        border-radius:50%;
                     }
                     &::after {
-                        border-color:#fff;
+                        background:url("/lg5-common/images/bg-chk-on.svg") center no-repeat;
                     }
                 } @else if ( $type == rdo ) {
                     &::before {
-                        background-color:transparent;
-                        border-color:#ec455a;
+                        background:url("/lg5-common/images/bg-input-checked.svg") center no-repeat;
                     }
                     &::after {
                         background:#ec455a;
@@ -990,16 +1054,11 @@ $input: (chk, rdo);
                 cursor: default;
                 @if ( $type == chk ) {
                     &::before {
-                        border-color:#ccc;
-                        background:#f4f4f4;
-                    }
-                    &::after {
-                        border-color:#ccc;
+                        background:url("/lg5-common/images/bg-input-disabled.svg") center no-repeat;
                     }
                 } @else if ( $type == rdo ) {
                     &::before {
-                        background-color:#f4f4f4;
-                        border-color:#ccc;
+                        background:url("/lg5-common/images/bg-input-disabled.svg") center no-repeat;
                     }
                     &::after {
                         background:transparent;
@@ -1090,21 +1149,12 @@ $input: (chk, rdo);
                         border: 1px solid #ddd;
                         border-radius: 8px;
                         &:before {
-                            top: 16px;
-                            left: 16px;
+                            top: 20px;
+                            left: 18px;
                         }
-                        &:after {
-                            content: '';
-                            position: absolute;
-                            top: 24px;
-                            left: 22px;
-                            width: 12px;
-                            height: 6px;
-                            border: 2px solid #808080;
-                            border-top: none;
-                            border-right: none;
-                            border-radius: 0;
-                            transform: rotate(-45deg);
+                        &::after {
+                            top:23px;
+                            left:21px;
                         }
                         @include mobile {
                             border-radius: 4px;
@@ -1123,13 +1173,6 @@ $input: (chk, rdo);
                     &:checked {
                         & + label {
                             border-color: #ec455a;
-                            &:before {
-                                border-color: transparent;
-                                background: #ec455a;
-                            }
-                            &:after {
-                                border-color:#fff;
-                            }
                         }
                     }
                 }
@@ -1143,7 +1186,7 @@ $input: (chk, rdo);
     > ul {
         font-size:0;
         margin-top:-32px;
-        margin-left:-24px;
+        margin-left:-32px;
         @include mobile {
             margin-top:-16px;
             margin-left:-12px;
@@ -1152,7 +1195,7 @@ $input: (chk, rdo);
             display:inline-block;
             width:25%;
             margin-top:32px;
-            padding-left:24px;
+            padding-left:32px;
             vertical-align:top;
             @include mobile {
                 width:50%;
