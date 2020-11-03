@@ -88,18 +88,10 @@
             param = {'type': href.replace("#", "")}
         }
 
-        $.ajax({
-            url: ajaxUrl,
-            data: param
-        }).done(function (d) {
-            if(d.status != 'success') {
-                alert(d.message ? d.message : '오류발생');
-                return;
-            }
+        lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
+            var data = result.data;
 
             var contentHtml = "";
-
-            var data = d.data;
             var arr = data instanceof Array ? data : [];
 
             if(arr.length > 0) {
@@ -125,34 +117,15 @@
                 noData(true);
             }
             self.$mypage.find('ul.notice-lists').html(contentHtml);
-            
-            self.$mypage.find('ul.notice-lists').find('li.list div.notice-box button.btn-del').on('click',function(e){
-                e.preventDefault();
-                var _id = $(this).data('id');
-                requestDeleteData({'id': [_id]});
-            });
-
-        }).fail(function(d){
-            alert(d.status + '\n' + d.statusText);
         });
     }
 
     //지울려고 하는 알람id는 array로 전달
     function requestDeleteData(param) {
         var ajaxUrl = self.$mypage.data('deleteurl');
-
-        $.ajax({
-            url: ajaxUrl,
-            data: param
-        }).done(function (d) {
-            if(d.status != 'success') {
-                alert(d.message ? d.message : '오류발생');
-                return;
-            }
+        lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
             var href = self.$mypage.find('div.cont-wrap div.ui_tab ul.tabs li.on a').attr('href');
             requestData({'type': href.replace("#", "")});
-        }).fail(function(d){
-            alert(d.status + '\n' + d.statusText);
         });
     }
 
@@ -197,6 +170,14 @@
                 self.$setting.on('click',function(e){
                     //설정
                     e.preventDefault();
+                });
+
+                //알림 개별 삭제 버튼
+                self.$mypage.find('ul.notice-lists').on('click', 'button.btn-del', function(e){
+                    e.preventDefault();
+                    var _id = $(this).attr('data-id');
+                    console.log('delete',_id);
+                    requestDeleteData({'id': [_id]});
                 });
 
             }

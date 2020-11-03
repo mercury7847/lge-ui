@@ -22,24 +22,10 @@
     function searchPurchaseHistory(param) {
         var ajaxUrl = self.$dateFilter.data('url');
 
-        $.ajax({
-            url: ajaxUrl,
-            data: param
-        }).done(function (d) {
-            if(d.status != 'success') {
-                alert(d.message ? d.message : '오류발생');
-                return;
-            }
-            /*
-            var param = d.param;
-            self.$dateFilterStartDate.vcCalendar('setDate', new Date(vcui.date.format(param.startDate,'yyyy.MM.dd')));
-            self.$dateFilterEndDate.vcCalendar('setDate', new Date(vcui.date.format(param.endDate,'yyyy.MM.dd')));
-            self.$dateFilter.find('input[name="rdo1"][value="'+param.purchaseType+'"]').prop('checked', true);
-            */
+        lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
+            var data = result.data;
 
             var contentHtml = "";
-
-            var data = d.data;
             var arr = data.purchaseItems instanceof Array ? data.purchaseItems : [];
             if(arr.length > 0) {
                 self.$dateFilter.siblings('div.no-data').hide();
@@ -55,8 +41,6 @@
                 self.$dateFilter.siblings('div.no-data').show();
             }
             self.$productList.html(contentHtml);
-        }).fail(function(d){
-            alert(d.status + '\n' + d.statusText);
         });
     }
 
