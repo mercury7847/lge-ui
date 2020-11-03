@@ -4,9 +4,6 @@
     "pageCSS": [
         "support/support",
         "support/reservation"
-    ],
-    "pageJS": [
-        "support-common"
     ]
 })
 <body>
@@ -19,8 +16,9 @@
                 'desc': '신청하신 희망 일시에 엔지니어가 방문하여 설치/철거를 진행합니다.'
             })
             
-            <div class="contents support KR50CS432">
+            <div class="contents support">
                 <div class="contents-inner">
+
                     <div class="section">
                         <div class="section-content">
                             <figure class="engineer-profile">
@@ -104,10 +102,13 @@
 
                 </div>
             </div>
-
         </div>
              
         @@include('./common/footer.html')
     </div>      
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 

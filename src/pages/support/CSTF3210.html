@@ -4,9 +4,6 @@
     "pageCSS": [
         "support/support",
         "support/reservation"
-    ],
-    "pageJS": [
-        "support-common"
     ]
 })
 <body>
@@ -26,6 +23,7 @@
             
             <div class="contents support reservation">
                 <div class="contents-inner">
+                    
                     <div class="section">
                         <div class="section-content">
                             <div class="reservation-title">
@@ -158,11 +156,16 @@
                     <div class="btn-group right">
                         <a href="#" class="btn pink">확인</a>
                     </div>
+
                 </div>
             </div>
         </div>
              
         @@include('./common/footer.html')
     </div>      
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 
