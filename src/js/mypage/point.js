@@ -9,23 +9,16 @@
     function searchPointHistory(param) {
         var ajaxUrl = self.$dateFilter.data('url');
 
-        $.ajax({
-            url: ajaxUrl,
-            data: param
-        }).done(function (d) {
-            if(d.status != 'success') {
-                alert(d.message ? d.message : '오류발생');
-                return;
-            }
-            var param = d.param;
+        lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
+            var param = result.param;
+            var data = result.data;
+
             self.$dateFilterStartDate.vcCalendar('setDate', new Date(vcui.date.format(param.startDate,'yyyy.MM.dd')));
             self.$dateFilterEndDate.vcCalendar('setDate', new Date(vcui.date.format(param.endDate,'yyyy.MM.dd')));
 
             self.$dateFilter.find('input[name="rdo1"][value="'+param.pointUseType+'"]').prop('checked', true);
 
             var contentHtml = "";
-
-            var data = d.data;
             var arr = data.pointHistory instanceof Array ? data.pointHistory : [];
             if(arr.length > 0) {
                 self.$dateFilter.siblings('div.no-data').hide();
@@ -41,8 +34,6 @@
             }
             self.$dateFilter.siblings('div.point-use-list').find('.lists').html(contentHtml);
             $('#my_totalpoint').text(vcui.number.addComma(data.totalPoint)+"P");
-        }).fail(function(d){
-            alert(d.status + '\n' + d.statusText);
         });
     }
 
