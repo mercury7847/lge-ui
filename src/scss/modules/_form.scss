@@ -315,13 +315,13 @@
                     .cell {
                         display:block;
                         width:100%;
-                        margin-top:8px;
+                        margin-top:6px;
                         padding-left:0;
                         text-align:right;
                     }
                     & + .btm-more {
                         position:absolute;
-                        top:56px;
+                        top:54px;
                         left:0;
                         max-width:calc(100% - 120px);
                         margin-top:0;
