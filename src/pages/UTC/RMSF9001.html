@@ -325,8 +325,8 @@
                                                         <div class="input-mix-wrap visible-target1">
                                                             <div class="mix-input">
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk-pay1" name="chk-pay1" checked>
-                                                                    <label for="chk-pay1">휴대폰 본인인증</label>
+                                                                    <input type="checkbox" id="chk02-2" name="chk02-2" checked>
+                                                                    <label for="chk02-2">휴대폰 본인인증</label>
                                                                 </span>
                                                                 <div class="cell">
                                                                     <a href="#n" class="btn-link">이용약관 보기</a>
@@ -360,14 +360,14 @@
                                                         <ul class="ui_radio_visible">
                                                             <li>
                                                                 <span class="rdo-wrap">
-                                                                    <input type="radio" id="rdo111-1" name="rdo111" data-visible-target=".visible-target2" checked>
-                                                                    <label for="rdo111-1">신청</label>
+                                                                    <input type="radio" id="rdo03-1" name="rdo03" data-visible-target=".visible-target2" checked>
+                                                                    <label for="rdo03-1">신청</label>
                                                                 </span>
                                                             </li>
                                                             <li>
                                                                 <span class="rdo-wrap">
-                                                                    <input type="radio" id="rdo111-2" name="rdo111" data-visible-target=" ">
-                                                                    <label for="rdo111-2">미신청</label>
+                                                                    <input type="radio" id="rdo03-2" name="rdo03" data-visible-target=" ">
+                                                                    <label for="rdo03-2">미신청</label>
                                                                 </span>
                                                             </li>
                                                         </ul>
@@ -375,8 +375,8 @@
                                                     <div class="input-mix-wrap visible-target2">
                                                         <div class="mix-input">
                                                             <span class="chk-wrap">
-                                                                <input type="checkbox" id="chk-pay11" name="chk-pay11" checked>
-                                                                <label for="chk-pay11">제휴카드 발급/변경 정보제공 동의</label>
+                                                                <input type="checkbox" id="chk-pay1" name="chk-pay1" checked>
+                                                                <label for="chk-pay1">제휴카드 발급/변경 정보제공 동의</label>
                                                             </span>
                                                             <div class="cell">
                                                                 <a href="#n" class="btn-link">동의약관 보기</a>
@@ -424,14 +424,14 @@
                                                         </ul>
                                                     </div>
                                                     <!-- 신용카드 -->
-                                                    <div role="tabpanel" class="tabs-panel by-card" id="card">
+                                                    <div role="tabpanel" class="tab-panel by-card" id="card">
                                                         <div class="form-wrap">
                                                             <dl class="forms inner-type">
                                                                 <dt class="tit"><label for="slt-card1">카드사</label></dt>
                                                                 <dd class="conts">
                                                                     <div class="select-wrap">
-                                                                        <select class="ui_selectbox" id="slt-card1" title="은행 선택">
-                                                                            <option value="" class="placeholder">은행 선택</option>
+                                                                        <select class="ui_selectbox" id="slt-card1" title="카드사 선택">
+                                                                            <option value="" class="placeholder">카드사 선택</option>
                                                                             <option value="">하나은행</option>
                                                                         </select>
                                                                     </div>
@@ -464,7 +464,7 @@
                                                     </div>
                                                     <!-- // 신용카드 -->
                                                     <!-- 실시간 계좌이체 -->
-                                                    <div role="tabpanel" class="tabs-panel by-bank" id="bank">
+                                                    <div role="tabpanel" class="tab-panel by-bank" id="bank">
                                                         <div class="form-wrap">
                                                             <dl class="forms inner-type">
                                                                 <dt class="tit"><label for="ipt-bank1">예금주명</label></dt>
@@ -507,12 +507,92 @@
                                                     </div>
                                                     <!-- // 실시간 계좌이체 -->
                                                     @@include('./common/modules/bullet-list.html', {
+                                                        "bgGray" : true,
                                                         "bulletTxt" : [
                                                             "결제정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능합니다.",
                                                             "제휴카드를 신청한 경우, 발급시 자동으로 납부방법이 변경됩니다.",
                                                             "월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다."
                                                         ]
                                                     })
+                                                </dd>
+                                            </dl>
+                                            <dl class="forms">
+                                                <dt class="tit">
+                                                    <p class="label req">ARS 출금 동의<span class="blind">필수</span></p>
+                                                    <div class="tooltip-wrap"><!-- 활성화시 active -->
+                                                        <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
+                                                        <span class="tooltip-box">
+                                                            <p>1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다.</p>
+                                                            <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                                        </span>
+                                                    </div>
+                                                </dt>
+                                                <dd class="conts">
+                                                    <div class="input-mix-wrap">
+                                                        <div class="mix-cont">
+                                                            <p class="desc">입력한 결제 수단의 휴력이 발생하기 위해서 ARS 출금동의가 필요합니다.<br>ARS 출금동의 시 내용증명을 위해 음성 녹취가 진행됩니다.</p>
+                                                            <div class="btn-wrap">
+                                                                <button class="btn bg-type icon-ars"><span>ARS 출금 동의 신청</span></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                            <dl class="forms">
+                                                <dt class="tit">
+                                                    <p class="label req">자동결제 이용 약관 동의<span class="blind">필수입력</span></p>
+                                                </dt>
+                                                <dd class="conts">
+                                                    <div class="input-mix-wrap">
+                                                        <div class="mix-input">
+                                                            <span class="chk-wrap">
+                                                                <input type="checkbox" id="chk03-1" name="chk03-1" checked>
+                                                                <label for="chk03-1">자동결제 신청 동의</label>
+                                                            </span>
+                                                            <div class="cell">
+                                                                <a href="#n" class="btn-link">이용약관 보기</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mix-cont">
+                                                            <p class="desc">입력하신 위의 결제수단으로 정기결제 신청을 동의합니다.</p>
+                                                        </div>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                            <dl class="forms">
+                                                <dt class="tit">
+                                                    <p class="label">1년 요금 선납 신청</p>
+                                                </dt>
+                                                <dd class="conts">
+                                                    <div class="input-mix-wrap">
+                                                        <div class="mix-input">
+                                                            <span class="chk-wrap">
+                                                                <input type="checkbox" id="chk03-2" name="chk03-2" checked>
+                                                                <label for="chk03-2">선납 신청</label>
+                                                            </span>
+                                                        </div>
+                                                        <div class="mix-cont">
+                                                            <p class="desc">선납금액, 납부기한 등의 자세한 내용은 계약자의 휴대폰 번호로 전달 예정입니다.</p>
+                                                        </div>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                            <dl class="forms">
+                                                <dt class="tit">
+                                                    <p class="label">보유 멤버십 포인트 사용</p>
+                                                </dt>
+                                                <dd class="conts">
+                                                    <div class="input-mix-wrap">
+                                                        <div class="mix-input">
+                                                            <span class="chk-wrap">
+                                                                <input type="checkbox" id="chk03-3" name="chk03-3" checked>
+                                                                <label for="chk03-3">포인트 사용 동의</label>
+                                                            </span>
+                                                        </div>
+                                                        <div class="mix-cont">
+                                                            <p class="desc">멤버십 포인트는 보유 액수와 관계없이 매월 <em>최대 5,000P</em>까지 차감됩니다.</p>
+                                                        </div>
+                                                    </div>
                                                 </dd>
                                             </dl>
                                         </div>
