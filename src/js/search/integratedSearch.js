@@ -219,19 +219,12 @@
                 var _self = this;
                 var ajaxUrl = self.$searchLayer.attr('data-url-timer');
 
-                $.ajax({
-                    url: ajaxUrl,
-                    data: {"search":searchValue}
-                }).done(function (d) {
-                    if(d.status != 'success') {
-                        alert(d.message ? d.message : '오류발생');
-                        return;
-                    }
-        
-                    var searchedValue = d.param.searchedValue;
-                    var replaceText = '<span class="search-word">' + searchedValue + '</span>';
+                lgkorUI.requestAjaxData(ajaxUrl, {"search":searchValue}, function(result) {
+                    var param = result.param;
+                    var data = result.data;
 
-                    var data = d.data;
+                    var searchedValue = param.searchedValue;
+                    var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     //인기검색어 갱신
                     var arr = data.popular instanceof Array ? data.popular : [];
@@ -273,8 +266,6 @@
                     } else {
                         _self.hideAnimation(self.$inputSearchList);
                     }
-                }).fail(function(d){
-                    alert(d.status + '\n' + d.statusText);
                 });
             },
 
@@ -283,22 +274,15 @@
                 var ajaxUrl = self.$searchLayer.attr('data-url-search');
                 //console.log(ajaxUrl,searchValue);
 
-                $.ajax({
-                    url: ajaxUrl,
-                    data: {"search":searchValue}
-                }).done(function (d) {
-                    if(d.status != 'success') {
-                        alert(d.message ? d.message : '오류발생');
-                        return;
-                    }
-        
-                    searchedValue = d.param.searchedValue;
+                lgkorUI.requestAjaxData(ajaxUrl, {"search":searchValue}, function(result) {
+                    var param = result.param;
+                    var data = result.data;
+                
+                    searchedValue = param.searchedValue;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     //최근검색어 갱신
                     _self.addRecentSearcheText(searchedValue);
-                    
-                    var data = d.data;
 
                     //인기검색어 갱신
                     var arr = data.popular instanceof Array ? data.popular : [];
@@ -386,9 +370,6 @@
                     } else {
                         self.$searchKeywordArea.show();
                     }
-
-                }).fail(function(d){
-                    alert(d.status + '\n' + d.statusText);
                 });
             }
         }

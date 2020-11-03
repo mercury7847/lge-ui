@@ -658,9 +658,9 @@
             });
         },
 
-        requestAjaxData: function(url, data, callback){
+        requestAjaxData: function(url, data, callback, type) {
             $.ajax({
-                type : "GET",
+                type : type? type : "GET",
                 url : url,
                 dataType : "json",
                 data : data
@@ -679,9 +679,14 @@
             }).fail(function(err){
                 alert(err.message);
             });
-        }
+        },
+
+        requestAjaxDataPost: function(url, data, callback) {
+            var self = this;
+            self.requestAjaxData(url, data, callback, "POST");
+        }    
     }
-    
+
     document.addEventListener('DOMContentLoaded', function () {
         lgkorUI.init();
     });
