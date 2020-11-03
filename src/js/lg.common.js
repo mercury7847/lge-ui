@@ -208,6 +208,13 @@
         init: function(){
             this._preloadComponents();
             this._addTopButtonCtrl();
+            this._createMainWrapper();
+        },
+
+        _createMainWrapper: function(){
+            if ( $('.container-fluid:has(.header)').length && !$('main').length ) {
+                //$('.container-fluid:has(.header) ~ div,.container-fluid.iw_section:has(.header) ~ section').not(':has(.footer-box)').wrapAll('<main></main>');
+            }
         },
     
         // 주요 컴포넌트를 미리 로드
