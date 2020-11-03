@@ -2,8 +2,8 @@
 .lay-wrap {
     display:none;
     position:absolute;
-    width:492px;
-    padding-top:48px;
+    width:444px;
+    padding-top:72px;
     background-color:#fff;
     box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.16);
     border-radius:4px;
@@ -11,14 +11,13 @@
     overflow:hidden;
     @include mobile {
         width:73.4%;
-        padding-top:48px;
+        padding-top:75px;
     }
     .lay-header {
         position:relative; 
         width:auto;
         text-align:center;
         margin:0 24px;
-        padding:0 32px;
         box-shadow:none;
         @include mobile {
             padding:0;
@@ -30,21 +29,17 @@
         }
     }
     .lay-conts {
-        margin-top:8px;
-        padding:0 48px 32px;
+        padding:0 24px 32px;
         @include font-medium;
         text-align:center;
         &:first-child {
             margin-top:0;
         }
         @include mobile {
-            padding:0 24px 40px;
+            padding:0 24px 75px;
         }
         p {
-            margin-top:4px;
-            &:first-child {
-                margin-top:0;
-            }
+            margin-top:8px;
         }
         h6 {
             @include font-large-2;
@@ -53,7 +48,7 @@
     }
     .laypop {
         &.btn-wrap {
-            padding-bottom:48px;
+            padding-bottom:72px;
             font-size:0;
             text-align:center;
             @include mobile {
@@ -72,6 +67,17 @@
                     &:only-child {
                         width:100%;
                     }
+                }
+            }
+        }
+    }
+    &.type2 {
+        padding-top:48px;
+        .laypop {
+            &.btn-wrap {
+                padding-bottom:48px;
+                @include mobile {
+                    padding:0;
                 }
             }
         }

@@ -10,7 +10,7 @@
         '   <section class="lay-conts ui-alert-msg">\n'+
         '   </section>\n'+
         '   <div class="btn-wrap laypop">\n'+
-        '       <button type="button" class="btn pink ui_modal_close" data-role="ok"><span>{{okBtnName}}</span></button>\n'+
+        '       <button type="button" class="btn ui_modal_close" data-role="ok"><span>{{okBtnName}}</span></button>\n'+
         '   </div>\n'+
         '</article>';
 
@@ -21,8 +21,8 @@
         '        <h6 class="ui-alert-msg"></h6>\n'+
         '    </section>\n'+
         '    <div class="btn-wrap laypop">\n'+
-        '        <button type="button" class="btn gray ui_modal_close" data-role="cancel"><span>{{cancleBtnName}}</span></button>\n'+
-        '        <button type="button" class="btn pink ui_modal_close" data-role="ok"><span>{{okBtnName}}</span></button>\n'+
+        '        <button type="button" class="btn gray ui_modal_close" data-role="cancel"><span>{{cancelBtnName}}</span></button>\n'+
+        '        <button type="button" class="btn" data-role="ok"><span>{{okBtnName}}</span></button>\n'+
         '    </div>\n'+
         '</article>';
 
@@ -477,7 +477,8 @@
                     cancelBtnName:options && options.cancelBtnName? options.cancelBtnName:'취소' ,
                     okBtnName:options && options.okBtnName? options.okBtnName:'확인' ,
                     typeClass:options && options.typeClass? options.typeClass:'' ,
-                    title:options && options.title? options.title:'알림창'})).appendTo('body');
+                    title:options && options.title? options.title:''
+                })).appendTo('body');
                 $(el).find('.ui-alert-msg').html(msg);
                 
 
@@ -533,7 +534,8 @@
                 var el = $(vcui.template(alertTmpl, {
                     okBtnName:options && options.okBtnName? options.okBtnName:'확인' ,
                     typeClass:options && options.typeClass? options.typeClass:'' ,
-                    title:options && options.title? options.title:''})).appendTo('body');
+                    title:options && options.title? options.title:''
+                })).appendTo('body');
                 $(el).find('.ui-alert-msg').html(msg);                
 
                 var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true }, options)).vcModal('instance');
