@@ -4,10 +4,6 @@
     "pageCSS": [
         "support/support",
         "support/reservation"
-    ],
-    "pageJS": [
-        "support-common",
-        "support/selectCategory"
     ]
 })
 <body>
@@ -26,8 +22,9 @@
                 ]
             })
             
-            <div class="contents support CSTF4010">
+            <div class="contents support">
                 <div class="contents-inner">
+
                     <div class="section">
                         <div class="section-content">
                             <figure class="engineer-profile">
@@ -163,10 +160,13 @@
 
                 </div>
             </div>
-
         </div>
              
         @@include('./common/footer.html')
     </div>      
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 

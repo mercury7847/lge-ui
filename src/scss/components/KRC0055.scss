@@ -3,6 +3,32 @@
 @import "../components-app";
 
 .KRC0055 {
+	.btn {
+        display: inline-block;
+        min-width:194px;
+        padding:15px 0;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        background-color: #fff;
+        line-height: 24px;
+        @include font-family($font-weight-bold);
+        font-size: 16px;
+        color: #111;
+        text-align: center;
+        vertical-align: top;
+
+        &.btn-outline-primary {
+            border-color: #212121;
+            background-color: #fff;
+            color: #111;
+        }
+        &.btn-primary {
+            border-color: #111;
+            background-color: #111;
+            color: #fff;
+        }
+    }
+
 	& + .component { margin-top:120px; }
 	&.full-size {
 		.component-box {
@@ -114,7 +140,7 @@
 							@else { background-color:$color; }
 						}
 					}
-					.btn { border-color:$color; }
+					.btn { border-color:$color; background-color:transparent; }
 				}
 				&.type-white { @include contentsColor(#fff); }
 				&.type-black { @include contentsColor(#222); }

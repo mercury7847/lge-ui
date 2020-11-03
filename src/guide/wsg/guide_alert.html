@@ -1,167 +1,131 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('../include/head_wsg.html', {
-        "title": "alert modal popup 가이드"
+        "title": "Alert/Confirm 가이드"
     })
 <body>
 <div id="wrap" class="coding_guide">
     
-<h1 class="h1_guide">alert modal popup 정의</h1>
+<h1 class="h1_guide">Alert/Confirm 정의</h1>
 
 <!-- 주의사항 -->
 <dl class="notice">
     <dt><strong class="t_modify">주의사항</strong></dt>
-    <dd>
-        <ol>
-            <li>gulp-file-include 방식으로 작업 시, <strong style="color:red">(@@)include -> @@include로 적용</strong>해야함. xmp 내부에 include 되지 않도록 ()처리함.</li>
-        </ol>
-    </dd>
+    <dd></dd>
 </dl>
 <!-- //주의사항 -->
 
 <!-- 가이드 내용 -->
-<h2 class="h2_guide">1. Basic type</h2>
+<h2 class="h2_guide">1. Alert Case - 타이틀</h2>
 <div class="guide_wrap">
-    <article id="laypop" class="lay-wrap" style="display:block;">
-        <header class="lay-header">
-            <h1 class="tit"><span>영수증 등록이 완료되었습니다.</span></h1>
-        </header>
-        <section class="lay-conts">
-            <p>구매일자 : 2020. 06. 18</p>
-            <p>구매제품 : 얼음정수기냉장고</p>
-        </section>
-        <div class="btn-wrap laypop">
-            <button type="button" class="btn pink ui_modal_close"><span>확인</span></button>
-        </div>
-    </article>
+    <button type="button" data-id="#laypop1" data-control="modal" class="btn"><span>Alert Case- 타이틀</span></button>
 </div>
 
 <div class="d_desc code">
 <xmp class="prettyprint linenums javascript"><!-- DOM -->
-<article id="laypop" class="lay-wrap" style="display:block;">
-    <header class="lay-header">
-        <h1 class="tit"><span>영수증 등록이 완료되었습니다.</span></h1>
-    </header>
-    <section class="lay-conts">
-        <p>구매일자 : 2020. 06. 18</p>
-        <p>구매제품 : 얼음정수기냉장고</p>
-    </section>
-    <div class="btn-wrap laypop">
-        <button type="button" class="btn pink ui_modal_close"><span>확인</span></button>
-    </div>
-</article>
-<!-- // DOM -->  
-
-<!-- page 내 작업 방식 -->
-<!-- (@@)include ()삭제 후 사용 -->
-(@@)include('./common/modules/alert-modal.html', {
-    "popId" : "laypop", <!-- article id -->
-    "alertTit" : "영수증 등록이 완료되었습니다.",
-    "alertCont" : [
-        { "txt" : "구매일자 : 2020. 06. 18" },
-        { "txt" : "구매제품 : 얼음정수기냉장고" }
-    ]
-})
-<!-- // page 내 작업 방식 -->
+<button type="button" data-id="#laypop1" data-control="modal" class="btn"><span>Alert- 타이틀</span></button>
+<script>
+    $(function() {
+        $('button').on('click', function(e){
+            var id = $(e.currentTarget).data('id');
+            var obj ={title:'.', ok : function (){ }};
+            var desc = '';
+    
+            if(id=="#laypop1"){
+                obj = $.extend(obj,{title:'인증이 완료되지 않았습니다.<br>다시 시도해주세요.'});
+                desc = '';
+            }    
+            lgkorUI.alert(desc, obj);
+        });
+    });
+</script>
 </xmp>
 </div>
-<!-- // 가이드 내용 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2. Alert Case - 타이틀 + 설명</h2>
+<div class="guide_wrap">
+    <button type="button" data-id="#laypop2" data-control="modal" class="btn"><span>Alert Case- 타이틀 + 설명</span></button>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<button type="button" data-id="#laypop2" data-control="modal" class="btn"><span>Alert- 타이틀 + 설명</span></button>
+<script>
+    $(function() {
+        $('button').on('click', function(e){
+            var id = $(e.currentTarget).data('id');
+            var obj ={title:'', typeClass:'', ok : function (){ }};
+            var desc = '';
+    
+            if(id=="#laypop2"){
+                obj = $.extend(obj,{typeClass:'type2', title:'인증이 실패했습니다.'});
+                desc = '<p>자세한 사항은 1577-4090 으로<br>문의부탁드립니다.</p>';
+            }
+            lgkorUI.alert(desc, obj);
+        });
+    });
+</script>
+</xmp>
+</div>
 
 
 <!-- 가이드 내용 -->
-<h2 class="h2_guide">2. 디자인 적용을 위해 class 추가가 필요한 경우</h2>
+<h2 class="h2_guide">2. Confirm Case - 타이틀</h2>
 <div class="guide_wrap">
-    <article id="laypop" class="lay-wrap type1" style="display:block;"> <!-- ex) .type1 -->
-        <header class="lay-header">
-            <h1 class="tit"><span>영수증 등록이 완료되었습니다.</span></h1>
-        </header>
-        <section class="lay-conts">
-            <p>구매일자 : 2020. 06. 18</p>
-            <p>구매제품 : 얼음정수기냉장고</p>
-        </section>
-        <div class="btn-wrap laypop">
-            <button type="button" class="btn pink ui_modal_close"><span>확인</span></button>
-        </div>
-    </article>
+    <button type="button" data-id="#laypop3" data-control="modal" class="btn"><span>Confirm Case- 타이틀</span></button>
 </div>
 
 <div class="d_desc code">
 <xmp class="prettyprint linenums javascript"><!-- DOM -->
-<article id="laypop" class="lay-wrap type1" style="display:block;">
-    <header class="lay-header">
-        <h1 class="tit"><span>영수증 등록이 완료되었습니다.</span></h1>
-    </header>
-    <section class="lay-conts">
-        <p>구매일자 : 2020. 06. 18</p>
-        <p>구매제품 : 얼음정수기냉장고</p>
-    </section>
-    <div class="btn-wrap laypop">
-        <button type="button" class="btn pink ui_modal_close"><span>확인</span></button>
-    </div>
-</article>
-<!-- // DOM -->  
-
-<!-- page 내 작업 방식 -->
-<!-- (@@)include ()삭제 후 사용 -->
-(@@)include('./common/modules/alert-modal.html', {
-    "popId" : "laypop", <!-- article id -->
-    "typeVer" : true, <!-- 디자인 반영을 위해 class 추가가 필요할 경우 'true', 아닐경우 삭제 -->
-    "typeClass" : "type1", <!-- typeVer:true 일 때 사용할 class명 -->
-    "alertTit" : "영수증 등록이 완료되었습니다.",
-    "alertCont" : [
-        { "txt" : "구매일자 : 2020. 06. 18" },
-        { "txt" : "구매제품 : 얼음정수기냉장고" }
-    ]
-})
-<!-- // page 내 작업 방식 -->
-
+<button type="button" data-id="#laypop3" data-control="modal" class="btn"><span>Confirm- 타이틀</span></button>
+<script>
+    $(function() {
+        $('button').on('click', function(e){
+            var id = $(e.currentTarget).data('id');
+            var obj ={title:'', typeClass:'', ok : function (){ }};
+            var desc = '';
+    
+            if(id=="#laypop3"){
+                obj = $.extend(obj,{title:'선택한 제품을 삭제하시겠습니까?'});
+                desc = '';
+            }
+            lgkorUI.alert(desc, obj);
+        });
+    });
+</script>
 </xmp>
 </div>
-<!-- // 가이드 내용 -->
 
-
-
-<!-- 가이드 내용 -->
-<h2 class="h2_guide">3. alert text만 있는 경우, 버튼 두개타입</h2>
-<div class="guide_wrap">
-    <article id="laypop" class="lay-wrap" style="display:block;">
-        <section class="lay-conts">
-            <h6>받은 알림을 전체삭제<br>하시겠습니까?</h6>
-        </section>
-        <div class="btn-wrap laypop">
-            <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-            <button type="button" class="btn pink"><span>확인</span></button>
-        </div>
-    </article>
-</div>
-
-<div class="d_desc code">
-<xmp class="prettyprint linenums javascript"><!-- DOM -->
-<article id="laypop" class="lay-wrap">
-    <section class="lay-conts">
-        <h6>받은 알림을 전체삭제<br>하시겠습니까?</h6>
-    </section>
-    <div class="btn-wrap laypop">
-        <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-        <button type="button" class="btn pink"><span>확인</span></button>
-    </div>
-</article>
-<!-- // DOM -->  
-
-<!-- page 내 작업 방식 -->
-<!-- (@@)include ()삭제 후 사용 -->
-(@@)include('./common/modules/alert-modal.html', {
-    "popId" : "laypop", <!-- article id -->
-    "msgOnly" : true, <!-- 타이틀 없이 메시지만 있을 경우 true, 아닐경우 삭제 -->
-    "msg" : "이메일 문의를<br>등록하시겠습니까?",
-    "twobtn" : true <!-- 취소,확인 버튼 두개짜리일 경우 true, 아닐경우 삭제 -->
-})
-<!-- // page 내 작업 방식 -->
-
-</xmp>
-</div>
-<!-- // 가이드 내용 -->
-</div> 
 @@include('../include/loadscript_wsg.html')
+
+<script>
+$(function() {
+    $('button').on('click', function(e){
+        var id = $(e.currentTarget).data('id');
+        var obj ={title:'', typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
+        var desc = '';
+
+        if(id=="#laypop1"){
+            obj = $.extend(obj,{title:'인증이 완료되지 않았습니다.<br>다시 시도해주세요.'});
+            desc = '';
+
+            lgkorUI.alert(desc, obj);
+        }
+        if(id=="#laypop2"){
+            obj = $.extend(obj,{typeClass:'type2', title:'인증이 실패했습니다.'});
+            desc = '<p>자세한 사항은 1577-4090 으로<br>문의부탁드립니다.</p>';
+
+            lgkorUI.alert(desc, obj);
+        }
+        if(id=="#laypop3"){
+            obj = $.extend(obj,{title:'', cancelBtnName:'취소', okBtnName:'로그인'});
+            desc = '케어솔루션/케어십 청약신청은<br>로그인이 필요합니다.';
+
+            lgkorUI.confirm(desc, obj);
+        }
+    });
+});
+</script>
 </body>
 </html> 

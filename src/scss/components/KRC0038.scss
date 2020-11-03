@@ -63,6 +63,17 @@
             @include font-family($font-weight-bold);
         }
     }
+
+    &.full-size {
+		.unit-list {
+			max-width:1660px !important;
+		}
+    }
+    &.medium-size {
+		.unit-list {
+			max-width:1344px !important;
+		}
+	}
     
     /* bg, color 추가 */
 	&.bg-black {
@@ -128,13 +139,13 @@
 	/* // bg, color 추가 */
 
     .unit-list {
-        max-width:1284px;
+        // max-width:1284px;
         margin:0 auto;
         padding:0;
         @include clearfix;
         &.block1 {
             .unit-box {
-                max-width:1284px;
+                // max-width:1284px;
                 padding:0 50px;
                 @include mobile {
                     padding:0 24px;

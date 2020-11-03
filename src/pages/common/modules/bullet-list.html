@@ -3,7 +3,12 @@
     <dl class="bullet-list top-border">
     }
     @@if ( !context.topBorder ) {
-    <dl class="bullet-list">
+        @@if ( !context.bgGray ) {
+        <dl class="bullet-list">
+        }
+        @@if ( context.bgGray ) {
+        <dl class="bullet-list bgGray">
+        }
     }
         <dt class="b-tit">@@bulletTit</dt>
         @@for (var i=0; i < context.bulletTxt.length; i++) {
@@ -15,7 +20,12 @@
     <ul class="bullet-list top-border">
     }
     @@if ( !context.topBorder ) {
-    <ul class="bullet-list">
+        @@if ( !context.bgGray ) {
+        <ul class="bullet-list">
+        }
+        @@if ( context.bgGray ) {
+        <ul class="bullet-list bgGray">
+        }
     }
         @@for (var i=0; i < context.bulletTxt.length; i++) {
             <li class="b-txt">`+bulletTxt[i]+`</li>

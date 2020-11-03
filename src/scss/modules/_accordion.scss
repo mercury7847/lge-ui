@@ -203,3 +203,44 @@
         }
     }
 }
+
+.accordion-section {
+    > ul {
+        .lists {
+            padding-bottom: 80px;
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+    }
+    .head {
+        border-bottom: 2px solid #222;
+        .accord-btn {
+            display:flex;
+            position:relative;
+            padding:20px 0;
+            font-size:0;
+            &::after {
+                content:'';
+                position:absolute;
+                top:50%;
+                right:0;
+                width:32px;
+                height:32px;
+                margin-top:-16px;
+                background: url('/lg5-common/images/icons/icon-arrow-accor.svg') no-repeat 0 0;
+                @include mobile {
+                    right:27px;
+                }
+            }
+        }
+        .title {
+            font-weight: 700;
+            font-size: $font-large-4;
+            line-height: 42px;
+        }
+    }
+    .accord-cont {
+        padding-top: 16px;
+    }
+}

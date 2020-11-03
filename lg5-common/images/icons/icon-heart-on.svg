@@ -1,11 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon-ht-on</title>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="btn_wish_24_on">
-            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
-            <g id="ic" transform="translate(0.000000, 2.000000)" fill="#EC455A">
-                <path d="M1.46025536,10.222075 C-1.13575417,6.96276667 -0.270417659,2.07380416 4.05626489,0.444149998 C8.38294743,-1.18550417 10.978957,2.07380416 11.8442935,3.70345833 C12.70963,2.07380416 16.170976,-1.18550417 20.4976586,0.444149998 C24.8243411,2.07380416 24.8243411,6.96276667 22.2283316,10.222075 C19.6323221,13.4813833 11.8442935,20 11.8442935,20 C11.8442935,20 4.05626489,13.4813833 1.46025536,10.222075 Z" id="Icon-Path"></path>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <path d="M0 0H24V24H0z" transform="translate(-407 -369) translate(407 369)"/>
+                <g>
+                    <path d="M11.055 5.234H12.055V6.234H11.055z" transform="translate(-407 -369) translate(407 369) translate(2 3)"/>
+                    <g fill="#EC455A" fill-rule="nonzero">
+                        <g>
+                            <path d="M14.688 0c-1.086 0-2.08.344-2.958 1.022-.84.65-1.4 1.479-1.73 2.081-.33-.602-.89-1.43-1.73-2.08C7.393.342 6.398 0 5.313 0 2.283 0 0 2.477 0 5.762c0 3.55 2.85 5.977 7.163 9.653.732.625 1.563 1.332 2.426 2.087.113.1.26.154.411.154.152 0 .298-.055.411-.154.863-.755 1.694-1.462 2.427-2.087C17.15 11.739 20 9.31 20 5.762 20 2.477 17.716 0 14.687 0z" transform="translate(-407 -369) translate(407 369) translate(2 3)"/>
+                        </g>
+                    </g>
+                </g>
             </g>
         </g>
     </g>

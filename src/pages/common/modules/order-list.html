@@ -1,7 +1,20 @@
-<div class="order-item @@disabled"><!-- 판매종료/일시품절 시 disabled -->
+<li class="order-item @@disabled"><!-- 판매종료/일시품절 시 disabled -->
+    @@if(context.message) {
+    <div>
+        <div class="message-box">
+            <div class="text-box">
+                <span>@@message</span>
+            </div>
+        </div>
+        <div class="number-subscribe">
+            <span class="text">청약번호</span>
+            <span class="number">OR2022330343</span>
+        </div>
+    </div>
+    }
     <div class="item-image"><a href="#n"><img src="@@visual" alt=""></a></div>
     <div class="product-info">
-        <div class="flag-wrap">
+        <div class="flag-wrap bg-type">
             @@flags
         </div>
         <div class="item-name"><a href="#n">@@modelName</a></div>
@@ -17,25 +30,30 @@
         </div>
     </div>
     <div class="product-payment">
-        <div class="inner">
-            <div class="amount">
-                <p class="total-price">@@price</p>
-                @@if(context.tooltip) {
-                <a href="#n" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>
-                }
+        <div class="amount">
+            <div class="price">
+                <p class="original">@@originalPrice</p>
+                <p class="total">@@price</p>
             </div>
-            @@if(context.btn) {
-            <div class="btn-purchase">
-                <button type="button" class="btn bd-pink btn-small" @@disabled><span>@@btnValue</span></button>
-            </div>
+            @@if(context.tooltip) {
+            <a href="#n" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>
             }
         </div>
+        @@if(context.btn) {
+        <div class="btn-area">
+            <button type="button" class="btn pink border size" @@disabled><span>@@btnValue</span></button>
+        </div>
+        }
     </div>
+    @@if(context.checkOption) {
+    @@for ( var i=0; i < check.length; i++ ) {
+    <span class="`+check[i].class+`">
+        <input type="checkbox" id="`+check[i].id+`" name="`+check[i].id+`" `+check[i].checked+`>
+        <label for="`+check[i].id+`"><span class="blind">`+check[i].text+`</span></label>
+    </span>
+    }
     <div class="item-delete">
         <button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button>
     </div>
-    <span class="chk-wrap">
-        <input type="checkbox" id="chk-select" name="chk-select" @@check.disabled><!-- 판매종료/일시품절 시 disabled -->
-        <label for="chk-select"><span class="blind">제품 선택</span></label>
-    </span>
-</div>
+    }
+</li>

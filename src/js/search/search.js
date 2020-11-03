@@ -369,8 +369,15 @@
                     clearTimeout(searchTimer);
                     _self.setSearchInputLayerVisible(false);
                     var searchVal = $(this).attr('href').replace("#", "");
-                    self.$inputSearch.val(searchVal);
+                    self.$inputSearch.vcInputClearButton('changeVal', searchVal);
                     _self.requestSearch(searchVal, true);
+                });
+
+                //검색어 목록 클릭
+                searchItemTarget = 'ul li a';
+                self.$inputSearchList.on('click', searchItemTarget, function(e){
+                    e.preventDefault();
+                    _self.clickSearchItem($(this));
                 });
 
                 //최근검색어 클릭
@@ -415,7 +422,8 @@
 
             clickSearchItem:function($item) {
                 var searchVal = $item.attr('href').replace("#", "");
-                self.$inputSearch.val(searchVal);
+                //self.$inputSearch.val(searchVal).trigger('input');
+                self.$inputSearch.vcInputClearButton('changeVal', searchVal);
                 self.$buttonSearch.trigger('click');
             },
 
@@ -544,11 +552,7 @@
             requestWish:function(productId, isWish) {
                 //찜하기
                 var ajaxUrl = self.$contentsSearch.attr('data-url-wish');
-                $.ajax({
-                    type: 'POST',
-                    url: ajaxUrl,
-                    data: {"id":productId, "wish":isWish}
-                })
+                lgkorUI.requestAjaxDataPost(ajaxUrl, {"id":productId, "wish":isWish}, null);
             },
 
             requestTimerSearch:function(searchValue) {
@@ -556,22 +560,12 @@
                 var ajaxUrl = self.$contentsSearch.attr('data-url-timer');
                 //console.log(ajaxUrl,searchValue);
 
-                $.ajax({
-                    url: ajaxUrl,
-                    data: {"search":searchValue}
-                }).done(function (d) {
-                    if(d.status != 'success') {
-                        alert(d.message ? d.message : '오류발생');
-                        return;
-                    }
-        
-                    var timerSearchedValue = d.param.searchedValue;
+                lgkorUI.requestAjaxData(ajaxUrl, {"search":searchValue}, function(result) {
+                    var param = result.param;
+                    var data = result.data;
+
+                    var timerSearchedValue = param.searchedValue;
                     var replaceText = '<span class="search-word">' + timerSearchedValue + '</span>';
-
-                    var data = d.data;
-                    //console.log(data);
-
-                    var param = d.param;
 
                     //인기검색어 갱신
                     var arr = data.popular instanceof Array ? data.popular : [];
@@ -593,7 +587,7 @@
                         var $list_ul = self.$inputSearchList.find('ul');
                         $list_ul.empty();
                         arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(inputSearchListItemTemplate, {"input":item, "text":item.replaceAll(timerSearchedValue,replaceText)}));
+                            $list_ul.append(vcui.template(inputSearchListItemTemplate, {"input":item, "text":item.replaceAll(timerSearchedValue, replaceText)}));
                         });
 
                         self.$inputSearchList.show();
@@ -608,8 +602,6 @@
                         self.$noInputSearchData.show();
                         _self.setSearchInputLayerVisible(true);
                     }
-                }).fail(function(d){
-                    alert(d.status + '\n' + d.statusText);
                 });
             },
 
@@ -620,18 +612,13 @@
                 var _self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-url-search');
                 console.log(ajaxUrl,ignoreRelated,searchValue);
+                
+                lgkorUI.requestAjaxData(ajaxUrl, {"search":searchValue, "ignoreRelated":ignoreRelated}, function(result) {
+                    var param = result.param;
+                    var data = result.data;
 
-                $.ajax({
-                    url: ajaxUrl,
-                    data: {"search":searchValue, "ignoreRelated":ignoreRelated}
-                }).done(function (d) {
-                    if(d.status != 'success') {
-                        alert(d.message ? d.message : '오류발생');
-                        return;
-                    }
-        
-                    searchedValue = d.param.searchedValue;
-                    var searchedInput = d.param.searchedInput;
+                    searchedValue = param.searchedValue;
+                    var searchedInput = param.searchedInput;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     //최근검색어 갱신
@@ -650,8 +637,6 @@
                         self.$searchInputText.show();
                     }
                     
-                    var data = d.data;
-
                     //연관검색어
                     var arr = data.related instanceof Array ? data.related : [];
                     if(arr.length > 0) {
@@ -937,9 +922,6 @@
                         self.$searchSimilar.hide();
                         self.$resultLayer.hide();
                     }
-
-                }).fail(function(d){
-                    alert(d.status + '\n' + d.statusText);
                 });
             },
 
@@ -951,32 +933,23 @@
                 var postObj = {"search":searchValue, "page":currentPage};
                 var postData = (selectedTab == "event") ? postObj : vcui.extend(_self.convertPostData(storageFilters), postObj);
                 console.log(ajaxUrl,postData);
-                
-                $.ajax({
-                    url: ajaxUrl,
-                    data: postData,
-                }).done(function (d) {
-                    if(d.status != 'success') {
-                        alert(d.message ? d.message : '오류발생');
-                        return;
-                    }
-        
-                    var data = d.data;
-                    //console.log(d);
+                lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
+                    var param = result.param;
+                    var data = result.data;
 
                     //제품 리스트
                     var arr = _self.checkArrayData(data);
                     var count = _self.checkCountData(data);
-                    var paramSearchedValue = d.param.searchedValue;
+                    var paramSearchedValue = param.searchedValue;
                     var replaceText = '<span class="search-word">' + paramSearchedValue + '</span>';
 
                     var $list_sorting = $('#'+selectedTab).find('div.list-sorting');
                     var $list_count = $list_sorting.find('div.list-count');
                     $list_count.text('총 ' + vcui.number.addComma(count)+'개');
 
-                    currentPage = d.param.pagination.page;
+                    currentPage = param.pagination.page;
                     $pagination = $('#'+selectedTab).find('div.pagination');
-                    $pagination.vcPagination('setPageInfo',d.param.pagination);
+                    $pagination.vcPagination('setPageInfo', param.pagination);
 
                     var $list = null;
                     var $list_ul = null;
@@ -1067,8 +1040,8 @@
                     self.$suggestedList.hide();
 
                     //필터 메뉴
-                    var enableList = d.filterEnableList;
-                    var filterList = d.filterList;
+                    var enableList = result.filterEnableList;
+                    var filterList = result.filterList;
 
                     var filterObj = vcui.array.reduce(filterList, function (prev, cur) {
                         if(prev[cur['filterId']]) prev[cur['filterId']].push(cur);
@@ -1153,13 +1126,10 @@
 
                     savedFilterArr = newFilterArr;
                     _self.updateFilter(newFilterArr);
-
-                }).fail(function(d){
-                    alert(d.status + '\n' + d.statusText);
                 });
             },
 
-            //고객지원 하위탭 조회 jsw
+            //고객지원 하위탭 조회
             requestCustomerSearch:function(searchValue) {
                 var _self = this;
                 var searchItemTarget = 'ul.tabs li a[href="#' + customerSelectedTab + '"]';
@@ -1169,31 +1139,25 @@
                 var postData = (customerSelectedTab == "customer-all") ? postObj : vcui.extend(_self.convertPostData(storageFilters), postObj);
                 console.log(ajaxUrl,postData);
                 
-                $.ajax({
-                    url: ajaxUrl,
-                    data: postData,
-                }).done(function (d) {
-                    if(d.status != 'success') {
-                        alert(d.message ? d.message : '오류발생');
-                        return;
-                    }
-        
-                    var customerData = d.data;
-                    var count = _self.checkCountData(customerData);
-                    var paramSearchedValue = d.param.searchedValue;
+                lgkorUI.requestAjaxData(ajaxUrl, postData, function(result){
+                    var param = result.param;
+                    var data = result.data;
+
+                    var count = _self.checkCountData(data);
+                    var paramSearchedValue = param.searchedValue;
                     var replaceText = '<span class="search-word">' + paramSearchedValue + '</span>';
 
                     var $list_sorting = $('#'+selectedTab).find('div.list-sorting');
                     var $list_count = $list_sorting.find('div.list-count');
                     $list_count.text('총 ' + vcui.number.addComma(count)+'개');
 
-                    customerCurrentPage = d.param.pagination.page;
+                    customerCurrentPage = param.pagination.page;
                     var $pagination = $('#'+customerSelectedTab).find('div.pagination');
-                    $pagination.vcPagination('setPageInfo',d.param.pagination);
+                    $pagination.vcPagination('setPageInfo', param.pagination);
 
                     if(customerSelectedTab == 'customer-all') {
                         //고객지원-제품지원
-                        var arr = customerData.support instanceof Array ? customerData.support : [];
+                        var arr = data.support instanceof Array ? data.support : [];
                         var $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(0);
                         if(arr.length > 0) {
                             var $list_ul = $list.find('div.list-wrap ul');
@@ -1208,7 +1172,7 @@
                         }
 
                         //고객지원-드라이버
-                        arr = customerData.driver instanceof Array ? customerData.driver : [];
+                        arr = data.driver instanceof Array ? data.driver : [];
                         $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(1);
                         if(arr.length > 0) {
                             var $list_ul = $list.find('div.box-list ul');
@@ -1222,7 +1186,7 @@
                         }
 
                         //고객지원-문제해결
-                        arr = customerData.trouble instanceof Array ? customerData.trouble : [];
+                        arr = data.trouble instanceof Array ? data.trouble : [];
                         $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(2);
                         if(arr.length > 0) {
                             var $list_ul = $list.find('div.box-list ul');
@@ -1236,7 +1200,7 @@
                         }
 
                         //고객지원-설명서
-                        arr = customerData.manual instanceof Array ? customerData.manual : [];
+                        arr = data.manual instanceof Array ? data.manual : [];
                         $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(3);
                         if(arr.length > 0) {
                             var $list_ul = $list.find('div.box-list ul');
@@ -1250,7 +1214,7 @@
                         }
 
                         //고객지원-FAQ
-                        arr = customerData.faq instanceof Array ? customerData.faq : [];
+                        arr = data.faq instanceof Array ? data.faq : [];
                         $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(4);
                         if(arr.length > 0) {
                             var $list_ul = $list.find('div.box-list ul');
@@ -1264,7 +1228,7 @@
                         }
 
                         //고객지원-비디오
-                        arr = customerData.video instanceof Array ? customerData.video : [];
+                        arr = data.video instanceof Array ? data.video : [];
                         $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(5);
                         if(arr.length > 0) {
                             var $list_ul = $list.find('div.box-list ul');
@@ -1280,7 +1244,7 @@
                             $list.hide();
                         }
                     } else {
-                        var arr = _self.checkArrayData(customerData);
+                        var arr = _self.checkArrayData(data);
                         var $list = $('#'+customerSelectedTab).find('div.result-list-wrap').eq(0);
                         var $list_ul = $list.find('div.box-list ul');
                         $list_ul.empty();
@@ -1304,31 +1268,16 @@
                         }
                     }
 
-                    /*
-                    count = _self.checkCountData(data.customer);
-                    _self.updateTabLabel(6,count);
-                    if(showCustomerResult) {
-                        self.$resultAllCustomer.show();
-                    } else {
-                        self.$resultAllCustomer.hide();
-                    }
-                    */
-
                     //추천상품
-                    _self.updateRecommendList(customerData.recommend);
+                    _self.updateRecommendList(data.recommend);
 
                     //전체 검색용 noData화면 숨김
                     self.$noData.hide();
                     self.$suggestedList.hide();
-
-
-                }).fail(function(d){
-                    alert(d.status + '\n' + d.statusText);
                 });
             },
 
             // 필터 관련 처리
-
             filterBindEvents: function() {
                 var _self = this;
                 
