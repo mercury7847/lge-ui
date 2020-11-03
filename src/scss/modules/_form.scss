@@ -348,6 +348,9 @@
             }
             > .input-wrap {
                 width:140px;
+                @include mobile {
+                    width:44%;
+                }
             }
             .cell {
                 &::before {
@@ -359,9 +362,11 @@
                 &::after {
                     content:'······';
                     display:inline-block;
+                    margin-left:3px;
                     color:#222;
                     font-size:40px;
                     line-height:48px;
+                    letter-spacing:-3px;
                     vertical-align:top;
                 }
                 .input-wrap {
