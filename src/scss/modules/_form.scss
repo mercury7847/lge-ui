@@ -1,6 +1,9 @@
 // Form
 .input-info {
     margin-top:48px;
+    @include mobile {
+        margin-top:40px;
+    }
     &:first-child {
         margin-top:0;
     }
@@ -69,6 +72,9 @@
     // form 시작 전 form 안내 요소
     .form-infos {
         margin-bottom:48px;
+        @include mobile {
+            margin-bottom:16px;
+        }
         p.req {
             color:#222;
             @include font-medium;
@@ -77,6 +83,9 @@
                 display:inline-block;
                 margin-right:4px;
                 vertical-align:top;
+                @include mobile {
+                    margin-right:0;
+                }
             }
         }
     }
@@ -84,6 +93,9 @@
         position:relative;
         margin-top:32px;
         font-size:0;
+        @include mobile {
+            margin-top:24px;
+        }
         &:first-child {
             margin-top:0;
         }
@@ -91,6 +103,9 @@
         .input-wrap,
         .box {
             margin-top:8px;
+            @include mobile {
+                margin-top:6px;
+            }
             &:first-child {
                 margin-top:0;
             }
@@ -104,6 +119,10 @@
             color:#222;
             @include font-small;
             white-space:nowrap;
+            span {
+                display:inline-block;
+                vertical-align:top;
+            }
         }
         .btn.bg-type {
             min-width:initial;
@@ -119,6 +138,18 @@
                 border-color:#ddd;
                 color:#aaa;
             }
+            &.icon-ars {
+                &::before {
+                    content:' ';
+                    display:inline-block;
+                    width:20px;
+                    height:20px;
+                    margin-top:2px;
+                    margin-right:8px;
+                    background:url("/lg5-common/images/icons/icon-ars-call.svg") center no-repeat;
+                    vertical-align:top;
+                }
+            }
         }
 
         .tit {
@@ -128,6 +159,11 @@
             padding:11px 24px 11px 0;
             font-size:0;
             vertical-align:top;
+            @include mobile {
+                display:block;
+                width:100%;
+                padding:0;
+            }
             label,
             .label {
                 display:inline-block;
@@ -158,6 +194,11 @@
             display:inline-block;
             width:calc(100% - 234px);
             vertical-align:top;
+            @include mobile {
+                display:block;
+                width:100%;
+                margin-top:6px;
+            }
             .input-wrap {
                 display:block;
             }
@@ -257,6 +298,9 @@
                 width:1%;
                 padding-left:8px;
                 vertical-align:middle;
+                @include mobile {
+                    padding-left:6px;
+                }
             }
         }
         .input-wrap {
@@ -735,10 +779,12 @@
             color:#767676;
             @include font-small;
             font-weight:500;
+            em {
+                color:#EC455A;
+            }
         }
         .btn-wrap {
             margin-top:12px;
-            margin-bottom:8px;
         }
         .gray-box {
             margin-top:24px;
@@ -749,6 +795,9 @@
             &:first-child {
                 margin-top:0;
             }
+        }
+        &:first-child {
+            padding:15px 23px;
         }
     }
     &.cell-type {
