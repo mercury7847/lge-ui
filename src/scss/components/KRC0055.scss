@@ -4,6 +4,11 @@
 
 .KRC0055 {
 	& + .component { margin-top:120px; }
+	&.full-size {
+		.component-box {
+			max-width:1660px !important;
+		}
+	}
 	.component-box {
 		max-width:1920px;
 		margin:0 auto;
