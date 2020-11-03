@@ -348,6 +348,9 @@
             }
             > .input-wrap {
                 width:140px;
+                @include mobile {
+                    width:44%;
+                }
             }
             .cell {
                 &::before {
@@ -359,9 +362,11 @@
                 &::after {
                     content:'······';
                     display:inline-block;
+                    margin-left:3px;
                     color:#222;
                     font-size:40px;
                     line-height:48px;
+                    letter-spacing:-3px;
                     vertical-align:top;
                 }
                 .input-wrap {
@@ -667,6 +672,9 @@
                     margin-right:2px;
                     background:url('/lg5-common/images/icons/icon-comp.svg') center no-repeat;
                     vertical-align:top;
+                    @include mobile {
+                        margin-top:1px;
+                    }
                 }
             }
         }
@@ -726,6 +734,9 @@
             background:url("/lg5-common/images/icons/icon-cal.svg") center no-repeat;
             vertical-align:middle;
         }
+        input.selected + .cell button.ui_calendar {
+            background:url("/lg5-common/images/icons/icon-cal-selected.svg") center no-repeat;
+        }
     }
     &.error {
         .total {
@@ -783,6 +794,9 @@
         margin:2px 4px 0 0;
         background: url("/lg5-common/images/icons/icon-error.svg") center no-repeat;
         vertical-align:top;
+        @include mobile {
+            margin-top:1px;
+        }
     }
 }
 
@@ -1109,6 +1123,9 @@ $input: (chk, rdo);
                     width:20px;
                     height:20px;
                     background:url("/lg5-common/images/bg-input-default.svg") center no-repeat;
+                    @include mobile {
+                        top:2px;
+                    }
                 }
                 @if ( $type == chk ) {
                     &::after {
@@ -1119,6 +1136,9 @@ $input: (chk, rdo);
                         width:11px;
                         height:9px;
                         background:url("/lg5-common/images/bg-chk-default.svg") center no-repeat;
+                        @include mobile {
+                            top:8px;
+                        }
                     }
                 } @else if ( $type == rdo ) {
                     &::after {
@@ -1130,6 +1150,9 @@ $input: (chk, rdo);
                         height:14px;
                         border-radius:50%;
                         background:transparent;
+                        @include mobile {
+                            top:5px;
+                        }
                     }
                 }
             }
@@ -1263,12 +1286,12 @@ $input: (chk, rdo);
                             font-size: 14px;
                             line-height: 18px;
                             &:before {
-                                top: 14px;
-                                left: 14px;
+                                top: 16px;
+                                left: 16px;
                             }
                             &:after {
-                                top: 22px;
-                                left: 20px;
+                                top: 19px;
+                                left: 19px;
                             }
                         }
                     }

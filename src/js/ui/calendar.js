@@ -730,6 +730,7 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
                     e = $.Event('calendarinsertdate');
                     e.target = e.currentTarget = this;
                     self.$input[opts.isBubble ? 'trigger' : 'triggerHandler'](e, evtData);
+                    self.$input.addClass('selected'); // 날짜 선택 시 selected
 
                     /*if (e.isDefaultPrevented()) {
                      return;
