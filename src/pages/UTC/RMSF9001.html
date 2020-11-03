@@ -5,7 +5,7 @@
     })
 <body>
     <div class="wrap">
-<!--        include('./common/header.html')-->
+        <!--include('./common/header.html')-->
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
@@ -13,666 +13,614 @@
             })
             <!-- 청약 신청 -->
             <div class="contents subscribe">
-                <div class="cont-wrap">
-                    <div class="subscribe-wrap">
+                <div class="cont-wrap row-wrap">
+                    <div class="col-left">
                         <div class="section">
-                            <h3 class="sec-tit">주문제품</h3>
+                            <h3 class="blind">주문제품</h3>
                             <div class="list-wrap">
-                                <ul class="order-items">
-                                    @@include('./common/modules/order-list.html', {
-                                        "items" : [
-                                            {
-                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
+                                <ul class="order-list">
+                                    @@loop('./common/modules/order-list.html', [
+                                        {
+                                            "flags" : "<span class='flag'><span class='blind'>제품타입</span>렌탈(케어솔루션)</span>",
+                                            "disabled" : "",
+                                            "check" : {
+                                                "id" : "chk-select01",
                                                 "disabled" : "",
-                                                "check" : {
-                                                    "checked1" : "checked",
-                                                    "checked2" : "checked",
-                                                },
-                                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
-                                                "price" : "월 36,100원",
-                                                "btnValue" : "청약신청"
                                             },
-                                            {
-                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span><span class='flag'><span class='blind'>판매상태</span>판매종료</span>",
+                                            "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                            "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                            "originalPrice" : "",
+                                            "price" : "월 61,900원"
+                                        },
+                                        {
+                                            "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어십</span>",
+                                            "disabled" : "",
+                                            "check" : {
+                                                "id" : "chk-select02",
                                                 "disabled" : "disabled",
-                                                "check" : {
-                                                    "checked1" : "disabled",
-                                                    "checked2" : "",
-                                                },
-                                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
-                                                "price" : "월 36,100원",
-                                                "btnValue" : "청약불가"
-                                            }
-                                        ]
-                                    })
+                                            },
+                                            "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                            "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                            "originalPrice" : "월 19,500원",
+                                            "price" : "월 10,900원"
+                                        }
+                                    ])
                                 </ul>
                             </div>
                         </div>
-                        <div class="section">
-                            <div class="input-info">
-                                <div class="tit-wrap"><h2 class="h2-tit">계약자 정보</h2></div>
-                                <div class="form-wrap">
-                                    <div class="double-form">
-                                        <dl class="forms">
-                                            <dt class="tit"><label for="contractorName" class="req">성명<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <span class="input-wrap block">
-                                                    <input type="text" id="contractorName" value="김엘지" readonly>
-                                                </span>
-                                            </dd>
-                                        </dl>
-                                        <dl class="forms">
-                                            <dt class="tit"><label for="contractorPhone" class="req">휴대폰 번호<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <div class="input-box">
-                                                    <span class="input-wrap block info phone">
-                                                        <span class="box2">
-                                                            <input type="number" id="contractorPhone" placeholder="휴대폰 번호를 입력해주세요." >
-                                                            <span class="cell">
-                                                                <a href="#" class="btn bd-black"><span>휴대폰 본인인증</span></a>
-                                                            </span>
-                                                        </span>
-                                                        <p class="info-msg-top">본인인증 완료</p>
-                                                        <!-- 본인인증 미완료 시
-                                                        <p class="info-msg-top">본인인증 미완료</p>
-                                                        -->
-                                                    </span>
-                                                </div>
-                                            </dd>
-                                        </dl>
+                        <div class="accordion-section ui_accordion" data-single-open="false">
+                            <ul>
+                                <li class="lists">
+                                    <div class="head">
+                                        <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                            <h3 class="title">계약자 정보 입력</h3>
+                                            <span class="blind ui_accord_text">내용 더 보기</span>
+                                        </a>
                                     </div>
-                                    <div class="double-form">
-                                        <dl class="forms">
-                                            <dt class="tit"><label for="contractorBirthDate" class="req">생년월일<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <div class="input-box-wrap birth-date-box">
-                                                    <div class="input-box">
-                                                        <span class="input-wrap block">
-                                                            <input type="number" id="contractorBirthDate" placeholder="YYMMDD" value="881123" title="주민등록번호 앞자리">
-                                                        </span>
-                                                    </div>
-                                                    <div class="input-box">
-                                                        <span class="input-wrap number">
-                                                            <span class="box">
-                                                                <span class="cell">
-                                                                    <input type="number" value="1" title="주민등록번호 뒤 첫번째 자리">
-                                                                </span>
-                                                            </span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </dd>
-                                        </dl>
-                                        <dl class="forms">
-                                            <dt class="tit"><label for="contractorEmail" class="req">이메일<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <span class="input-wrap block">
-                                                    <input type="email" id="contractorEmail" placeholder="이메일을 입력해주세요." value="kimlg@lgmember.co.kr">
-                                                </span>
-                                                @@include('./common/modules/bullet-list.html', {
-                                                    "bulletTxt" : [
-                                                        "입력하신 이메일 주소로 주문 확인 메일이 발송되니, 정확히 입력해주세요."
-                                                    ]
-                                                })
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                    <dl class="forms">
-                                        <dt class="tit"><label for="chk-agree1" class="req">계약자 등록/조회<span class="blind">필수입력</span></label></dt>
-                                        <dd class="conts">
-                                            <div class="input-box">
-                                                <span class="input-wrap block">
-                                                    <span class="box2">
-                                                        <span class="input-mix-wrap">
-                                                            <span class="chk-wrap">
-                                                                <input type="checkbox" id="chk-agree1" name="chk-agree1" checked>
-                                                                <label for="chk-agree1">개인정보 및 신용정보 제공 동의</label>
-                                                            </span>
-                                                            <a href="#n" class="mix-btn"><span class="blind">개인정보 및 신용정보 제공 동의 확인하기</span></a>
-                                                        </span>
-                                                        <span class="cell">
-                                                            <a href="#" class="btn bd-black"><span>신용정보 조회</span></a>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-
-                            <div class="input-info">
-                                <div class="tit-wrap">
-                                    <h2 class="h2-tit">배송 설치 정보</h2>
-                                    <div class="right-chk ">
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="info" name="info">
-                                            <label for="info">계약자 정보와 동일</label>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-wrap">
-                                    <dl class="forms">
-                                        <dt class="tit"><label for="recipientName" class="req">인수자 성명<span class="blind">필수입력</span></label></dt>
-                                        <dd class="conts">
-                                            <span class="input-wrap block">
-                                                <input type="text" id="recipientName" placeholder="성명을 입력해주세요.">
-                                            </span>
-                                        </dd>
-                                    </dl>
-                                    <div class="double-form">
-                                        <dl class="forms">
-                                            <dt class="tit"><label for="recipientCellPhone" class="req">인수자 휴대폰<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <span class="input-wrap block">
-                                                    <input type="number" id="recipientCellPhone" placeholder="(-)없이 입력해주세요.">
-                                                </span>
-                                                @@include('./common/modules/bullet-list.html', {
-                                                    "bulletTxt" : [
-                                                        "입력하신 이메일 주소로 주문 확인 메일이 발송되니, 정확히 입력해주세요."
-                                                    ]
-                                                })
-                                            </dd>
-                                        </dl>
-                                        <dl class="forms">
-                                            <dt class="tit"><label for="recipientPhone" class="req">일반 전화번호<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <span class="input-wrap block">
-                                                    <input type="number" id="recipientPhone" placeholder="(-)없이 입력해주세요.">
-                                                </span>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                    <dl class="forms">
-                                        <dt class="tit">
-                                            <label for="recipientAddr">설치 주소</label>
-                                            <a href="#" class="right-btn btn-text pink">내 배송지 목록</a>
-                                        </dt>
-                                        <dd class="conts">
-                                            <div class="input-box btn-type">
-                                                <span class="input-wrap block">
-                                                    <span class="box">
-                                                        <input type="text" id="recipientAddr" placeholder="우편번호">
-                                                        <span class="cell addr">
-                                                            <button type="button" class="btn-text pink"><span>주소찾기</span></button>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <div class="input-box-wrap addr-box">
-                                                <div class="input-box">
-                                                    <span class="input-wrap block">
-                                                        <input type="text" placeholder="기본 주소" title="기본 주소 입력" readonly>
-                                                    </span>
-                                                </div>
-                                                <div class="input-box">
-                                                    <span class="input-wrap block">
-                                                        <span class="box2">
-                                                            <input type="text" placeholder="상세 주소를 입력해주세요." title="상세 주소 입력">
-                                                            <span class="cell">
-                                                                <a href="#" class="btn bd-black disabled" disabled><span>설치 가능 여부 확인</span></a>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="input-box-wrap addr-box">
-                                                <div class="input-box">
-                                                    <span class="input-wrap block">
-                                                        <input type="text" placeholder="기본 주소" title="기본 주소 입력" readonly>
-                                                    </span>
-                                                </div>
-                                                <div class="input-box">
-                                                    <span class="input-wrap block error">
-                                                        <span class="box2">
-                                                            <input type="text" placeholder="상세 주소를 입력해주세요." title="상세 주소 입력">
-                                                            <p class="err-msg">올바른 이름을 입력해주세요.</p>
-                                                            <span class="cell">
-                                                                <a href="#" class="btn bd-black disabled" disabled><span>설치 가능 여부 확인</span></a>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="input-box-wrap addr-box">
-                                                <div class="input-box">
-                                                    <span class="input-wrap block">
-                                                        <input type="text" placeholder="기본 주소" title="기본 주소 입력" readonly>
-                                                    </span>
-                                                </div>
-                                                <div class="input-box">
-                                                    <span class="input-wrap block info">
-                                                        <span class="box2">
-                                                            <input type="text" placeholder="상세 주소를 입력해주세요." title="상세 주소 입력" value="엘지빌딩 702호">
-                                                            <p class="info-msg">설치 가능 지역입니다.</p>
-                                                            <span class="cell">
-                                                                <a href="#" class="btn bd-black"><span>설치 가능 여부 확인</span></a>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                    <div class="double-form">
-                                        <dl class="forms">
-                                            <dt class="tit"><label for="select1">배송 시 요청사항</label></dt>
-                                            <dd class="conts">
-                                                <div class="select-wrap">
-                                                    <select class="ui_selectbox" id="select1" title="배송 요청 메시지 선택" disabled>
-                                                        <option value="" class="placeholder">기사님에게 요청하실 메시지입니다.</option>
-                                                        <option value="">요청 메시지를 선택해주세요.</option>
-                                                        <option value="">요청 메시지를 선택해주세요.</option>
-                                                    </select>
-                                                </div>
-                                            </dd>
-                                        </dl>
-                                        <dl class="forms">
-                                            <dt class="tit"><label for="select2" class="req">설치 장소<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <div class="select-wrap">
-                                                    <select class="ui_selectbox" id="select2" title="설치 장소 선택">
-                                                        <option value="" class="placeholder">선택해주세요.</option>
-                                                        <option value="">설치 장소를 선택해주세요.</option>
-                                                        <option value="">설치 장소를 선택해주세요.</option>
-                                                    </select>
-                                                </div>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                    <div class="double-form">
-                                        <dl class="forms">
-                                            <dt class="tit"><label for="date-install" class="req">설치 희망일 선택<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <div class="input-box">
-                                                    <!-- 날짜 선택 후 disabled 클래스 삭제 -->
-                                                    <span class="input-wrap datepicker disabled">
-                                                        <span class="box">
-                                                            <input type="text" id="date-install" placeholder="날짜를 선택하세요" title="설치 희망일 시작날짜 선택">
-                                                            <span class="cell pic-btn">
-                                                                <button type="button" class="ui_calendar" data-input-target="#date-install"><span class="blind">달력보기</span></button>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                                @@include('./common/modules/bullet-list.html', {
-                                                    "bulletTxt" : [
-                                                        "설치 당일 기사님이 유선 연락 드립니다."
-                                                    ]
-                                                })
-                                            </dd>
-                                        </dl>
-                                        <dl class="forms">
-                                            <dt class="tit"><label for="select3" class="req">설치 희망 시간 선택<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <div class="select-wrap">
-                                                    <select class="ui_selectbox" id="select3" title="설치 희망 시간 선택" disabled>
-                                                        <option value="" class="placeholder">HH:MM</option>
-                                                        <option value="">설치 희망 시간을 선택해주세요.</option>
-                                                        <option value="">설치 희망 시간을 선택해주세요.</option>
-                                                    </select>
-                                                </div>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="input-info">
-                                <div class="tit-wrap">
-                                    <h2 class="h2-tit">배송 시 추가 확인 정보</h2>
-                                </div>
-                                <div class="form-wrap">
-                                    <dl class="forms">
-                                        <dt class="tit"><label for="recipientName">폐가전 수거</label></dt>
-                                        <dd class="conts">
-                                            <span class="chk-wrap">
-                                                <input type="checkbox" id="chk-pickup" name="chk-pickup">
-                                                <label for="chk-pickup">수거신청</label>
-                                            </span>
-                                            @@include('./common/modules/bullet-list.html', {
-                                                "bulletTxt" : [
-                                                    "폐가전 무료수거 서비스로 동일 제품군에 한합니다."
-                                                ]
-                                            })
-                                        </dd>
-                                    </dl>
-                                    <dl class="forms">
-                                        <dt class="tit"><label for="recipientName">사전방문 예약 신청</label></dt>
-                                        <dd class="conts">
-                                            <div class="select-list-wrap">
-                                                <ul>
-                                                    <li>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="rdo1-1" name="rdo1" checked>
-                                                            <label for="rdo1-1">신청</label>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="rdo1-2" name="rdo1">
-                                                            <label for="rdo1-2">미신청</label>
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="input-box add-box">
-                                                <div class="input-mix-wrap">
-                                                    <span class="chk-wrap">
-                                                        <input type="checkbox" id="chk-agree2" name="chk-agree2" checked>
-                                                        <label for="chk-agree2">사전방문 서비스 제공을 위한 개인정보 수집/이용 동의</label>
-                                                    </span>
-                                                    <a href="#n" class="mix-btn"><span class="blind">사전방문 서비스 제공을 위한 개인정보 수집/이용 동의 확인하기</span></a>
-                                                </div>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-
-                            <div class="input-info">
-                                <div class="tit-wrap">
-                                    <h2 class="h2-tit">제휴카드 신청/할인</h2>
-                                    <a href="#" class="right-btn btn-text pink">카드혜택 자세히보기</a>
-                                </div>
-                                <div class="form-wrap">
-                                    <dl class="forms">
-                                        <dt class="tit"><label for="cardApplication">제휴카드 신청</label></dt>
-                                        <dd class="conts">
-                                            <div class="select-list-wrap">
-                                                <ul>
-                                                    <li>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="rdo2-1" name="rdo2" checked>
-                                                            <label for="rdo2-1">신청</label>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="rdo-wrap">
-                                                            <input type="radio" id="rdo2-2" name="rdo2">
-                                                            <label for="rdo2-2">미신청</label>
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="input-box add-box">
-                                                <div class="input-mix-wrap">
-                                                    <span class="chk-wrap">
-                                                        <input type="checkbox" id="chk-agree3" name="chk-agree3">
-                                                        <label for="chk-agree3">제휴카드 발급/변경 자동 등록을 위한 정보제공 동의</label>
-                                                    </span>
-                                                    <a href="#n" class="mix-btn"><span class="blind">제휴카드 발급/변경 자동 등록을 위한 정보제공 동의 확인하기</span></a>
-                                                </div>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                    <dl class="forms">
-                                        <dt class="tit"><label for="cardSelect">제휴카드 선택</label></dt>
-                                        <dd class="conts">
-                                            <div class="input-box btn-type">
-                                                <div class="input-wrap info">
-                                                    <div class="select-wrap block">
-                                                        <select class="ui_selectbox" id="slt-card2" title="제휴카드 선택">
-                                                            <option value="" class="placeholder">제휴카드 선택</option>
-                                                            <option value="" selected>[하나] LG전자 렌탈플러스</option>
-                                                        </select>
-                                                    </div>
-                                                    <p class="info-msg-top">최대 23,000원 청구 할인</p>
-                                                </div>
-                                                <a href="#n" class="btn bd-black"><span>동의 문자 발송</span></a>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="section">
-                            <h3 class="sec-tit">납부방법 선택</h3>
-                            <div class="subscribe-payment">
-                                <div class="form-wrap select-payment">
-                                    <div class="tabs-wrap border-type left ui_tab">
-                                        <ul class="tabs">
-                                            <li class="on"><a href="#card">신용카드<em class="blind">선택됨</em></a></li>
-                                            <li><a href="#bank">실시간 계좌이체</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- 신용카드 -->
-                                    <div class="payinfo-wrap by-card" id="card">
+                                    <div class="accord-cont ui_accord_content">
                                         <div class="form-wrap">
-                                            <dl class="forms">
-                                                <dt class="tit"><label for="slt-card1">카드사</label></dt>
-                                                <dd class="conts">
-                                                    <div class="select-wrap block">
-                                                        <select class="ui_selectbox" id="slt-card1">
-                                                            <option value="" class="placeholder">은행 선택</option>
-                                                            <option value="" selected>하나은행</option>
-                                                        </select>
-                                                    </div>
-                                                </dd>
-                                            </dl>
                                             <div class="double-form">
                                                 <dl class="forms">
-                                                    <dt class="tit"><label for="ipt-card1">카드번호</label></dt>
+                                                    <dt class="tit"><label for="contractorName" class="req">성명<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
-                                                        <div class="input-box card-type">
-                                                            <span class="input-wrap">
-                                                                <input type="text" id="ipt-card1" placeholder="1234" maxlength="4" value="1234" size="3">
-                                                            </span>
-                                                            <span class="input-wrap">
-                                                                <input type="text" maxlength="4" placeholder="1234" value="" size="3">
-                                                            </span>
-                                                            <span class="input-wrap">
-                                                                <input type="text" maxlength="4" placeholder="1234" value="" size="3">
-                                                            </span>
-                                                            <span class="input-wrap">
-                                                                <input type="text" maxlength="4" placeholder="1234" value="" size="3">
+                                                        <span class="input-wrap block">
+                                                            <input type="text" id="contractorName" value="김엘지" readonly>
+                                                        </span>
+                                                    </dd>
+                                                </dl>
+                                                <dl class="forms">
+                                                    <dt class="tit"><label for="contractorPhone" class="req">휴대폰 번호<span class="blind">필수입력</span></label></dt>
+                                                    <dd class="conts">
+                                                        <div class="input-box">
+                                                            <span class="input-wrap block info phone">
+                                                                <span class="box2">
+                                                                    <input type="number" id="contractorPhone" placeholder="휴대폰 번호를 입력해주세요." >
+                                                                    <span class="cell">
+                                                                        <a href="#" class="btn bd-black"><span>휴대폰 본인인증</span></a>
+                                                                    </span>
+                                                                </span>
+                                                                <p class="info-msg-top">본인인증 완료</p>
+                                                                <!-- 본인인증 미완료 시
+                                                                <p class="info-msg-top">본인인증 미완료</p>
+                                                                -->
                                                             </span>
                                                         </div>
                                                     </dd>
                                                 </dl>
+                                            </div>
+                                            <div class="double-form">
                                                 <dl class="forms">
-                                                    <dt class="tit"><label for="ipt-card2">유효기간(MMYY)</label></dt>
+                                                    <dt class="tit"><label for="contractorBirthDate" class="req">생년월일<span class="blind">필수입력</span></label></dt>
+                                                    <dd class="conts">
+                                                        <div class="input-box-wrap birth-date-box">
+                                                            <div class="input-box">
+                                                                <span class="input-wrap block">
+                                                                    <input type="number" id="contractorBirthDate" placeholder="YYMMDD" value="881123" title="주민등록번호 앞자리">
+                                                                </span>
+                                                            </div>
+                                                            <div class="input-box">
+                                                                <span class="input-wrap number">
+                                                                    <span class="box">
+                                                                        <span class="cell">
+                                                                            <input type="number" value="1" title="주민등록번호 뒤 첫번째 자리">
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                </dl>
+                                                <dl class="forms">
+                                                    <dt class="tit"><label for="contractorEmail" class="req">이메일<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <span class="input-wrap block">
-                                                            <input type="text" id="ipt-card2" maxlength="4" placeholder="MMYY" value="1221">
+                                                            <input type="email" id="contractorEmail" placeholder="이메일을 입력해주세요." value="kimlg@lgmember.co.kr">
                                                         </span>
-                                                    </dd>
-                                                    <dd class="conts right">
-                                                        <button type="button" class="btn-text pink"><span>납부 카드 확인</span></button>
+                                                        @@include('./common/modules/bullet-list.html', {
+                                                            "bulletTxt" : [
+                                                                "입력하신 이메일 주소로 주문 확인 메일이 발송되니, 정확히 입력해주세요."
+                                                            ]
+                                                        })
                                                     </dd>
                                                 </dl>
                                             </div>
+                                            <dl class="forms">
+                                                <dt class="tit"><label for="chk-agree1" class="req">계약자 등록/조회<span class="blind">필수입력</span></label></dt>
+                                                <dd class="conts">
+                                                    <div class="input-box">
+                                                        <span class="input-wrap block">
+                                                            <span class="box2">
+                                                                <span class="input-mix-wrap">
+                                                                    <span class="chk-wrap">
+                                                                        <input type="checkbox" id="chk-agree1" name="chk-agree1" checked>
+                                                                        <label for="chk-agree1">개인정보 및 신용정보 제공 동의</label>
+                                                                    </span>
+                                                                    <a href="#n" class="mix-btn"><span class="blind">개인정보 및 신용정보 제공 동의 확인하기</span></a>
+                                                                </span>
+                                                                <span class="cell">
+                                                                    <a href="#" class="btn bd-black"><span>신용정보 조회</span></a>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </dd>
+                                            </dl>
                                         </div>
                                     </div>
-                                    <!-- // 신용카드 -->
-                                    <!-- 실시간 계좌이체 -->
-                                    <div class="payinfo-wrap by-bank" id="bank">
+                                </li>
+                                <li class="lists">
+                                    <div class="head">
+                                        <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                            <h3 class="title">설치 정보 입력</h3>
+                                            <span class="blind ui_accord_text">내용 더 보기</span>
+                                        </a>
+                                    </div>
+                                    <div class="accord-cont ui_accord_content">
                                         <div class="form-wrap">
                                             <dl class="forms">
-                                                <dt class="tit"><label for="ipt-bank1">예금주명</label></dt>
+                                                <dt class="tit"><label for="recipientName" class="req">인수자 성명<span class="blind">필수입력</span></label></dt>
                                                 <dd class="conts">
                                                     <span class="input-wrap block">
-                                                        <input type="text" id="ipt-bank1" placeholder="예금주명을 입력해주세요." value="">
+                                                        <input type="text" id="recipientName" placeholder="성명을 입력해주세요.">
                                                     </span>
                                                 </dd>
                                             </dl>
                                             <div class="double-form">
                                                 <dl class="forms">
-                                                    <dt class="tit"><label for="slt-bank1">은행명</label></dt>
+                                                    <dt class="tit"><label for="recipientCellPhone" class="req">인수자 휴대폰<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
-                                                        <div class="select-wrap block">
-                                                            <select class="ui_selectbox" id="slt-bank1">
-                                                                <option value="" class="placeholder">선택해주세요.</option>
-                                                                <option value="" selected>하나은행</option>
+                                                        <span class="input-wrap block">
+                                                            <input type="number" id="recipientCellPhone" placeholder="(-)없이 입력해주세요.">
+                                                        </span>
+                                                        @@include('./common/modules/bullet-list.html', {
+                                                            "bulletTxt" : [
+                                                                "입력하신 이메일 주소로 주문 확인 메일이 발송되니, 정확히 입력해주세요."
+                                                            ]
+                                                        })
+                                                    </dd>
+                                                </dl>
+                                                <dl class="forms">
+                                                    <dt class="tit"><label for="recipientPhone" class="req">일반 전화번호<span class="blind">필수입력</span></label></dt>
+                                                    <dd class="conts">
+                                                        <span class="input-wrap block">
+                                                            <input type="number" id="recipientPhone" placeholder="(-)없이 입력해주세요.">
+                                                        </span>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                            <dl class="forms">
+                                                <dt class="tit">
+                                                    <label for="recipientAddr">설치 주소</label>
+                                                    <a href="#" class="right-btn btn-text pink">내 배송지 목록</a>
+                                                </dt>
+                                                <dd class="conts">
+                                                    <div class="input-box btn-type">
+                                                        <span class="input-wrap block">
+                                                            <span class="box">
+                                                                <input type="text" id="recipientAddr" placeholder="우편번호">
+                                                                <span class="cell addr">
+                                                                    <button type="button" class="btn-text pink"><span>주소찾기</span></button>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="input-box-wrap addr-box">
+                                                        <div class="input-box">
+                                                            <span class="input-wrap block">
+                                                                <input type="text" placeholder="기본 주소" title="기본 주소 입력" readonly>
+                                                            </span>
+                                                        </div>
+                                                        <div class="input-box">
+                                                            <span class="input-wrap block">
+                                                                <span class="box2">
+                                                                    <input type="text" placeholder="상세 주소를 입력해주세요." title="상세 주소 입력">
+                                                                    <span class="cell">
+                                                                        <a href="#" class="btn bd-black disabled" disabled><span>설치 가능 여부 확인</span></a>
+                                                                    </span>
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-box-wrap addr-box">
+                                                        <div class="input-box">
+                                                            <span class="input-wrap block">
+                                                                <input type="text" placeholder="기본 주소" title="기본 주소 입력" readonly>
+                                                            </span>
+                                                        </div>
+                                                        <div class="input-box">
+                                                            <span class="input-wrap block error">
+                                                                <span class="box2">
+                                                                    <input type="text" placeholder="상세 주소를 입력해주세요." title="상세 주소 입력">
+                                                                    <p class="err-msg">올바른 이름을 입력해주세요.</p>
+                                                                    <span class="cell">
+                                                                        <a href="#" class="btn bd-black disabled" disabled><span>설치 가능 여부 확인</span></a>
+                                                                    </span>
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-box-wrap addr-box">
+                                                        <div class="input-box">
+                                                            <span class="input-wrap block">
+                                                                <input type="text" placeholder="기본 주소" title="기본 주소 입력" readonly>
+                                                            </span>
+                                                        </div>
+                                                        <div class="input-box">
+                                                            <span class="input-wrap block info">
+                                                                <span class="box2">
+                                                                    <input type="text" placeholder="상세 주소를 입력해주세요." title="상세 주소 입력" value="엘지빌딩 702호">
+                                                                    <p class="info-msg">설치 가능 지역입니다.</p>
+                                                                    <span class="cell">
+                                                                        <a href="#" class="btn bd-black"><span>설치 가능 여부 확인</span></a>
+                                                                    </span>
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                            <div class="double-form">
+                                                <dl class="forms">
+                                                    <dt class="tit"><label for="select1">배송 시 요청사항</label></dt>
+                                                    <dd class="conts">
+                                                        <div class="select-wrap">
+                                                            <select class="ui_selectbox" id="select1" title="배송 요청 메시지 선택" disabled>
+                                                                <option value="" class="placeholder">기사님에게 요청하실 메시지입니다.</option>
+                                                                <option value="">요청 메시지를 선택해주세요.</option>
+                                                                <option value="">요청 메시지를 선택해주세요.</option>
                                                             </select>
                                                         </div>
                                                     </dd>
                                                 </dl>
                                                 <dl class="forms">
-                                                    <dt class="tit"><label for="ipt-bank2">계좌번호</label></dt>
+                                                    <dt class="tit"><label for="select2" class="req">설치 장소<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
-                                                        <span class="input-wrap block">
-                                                            <span class="box">
-                                                                <input type="text" id="ipt-bank2" placeholder="계좌번호를 “-“없이 숫자만 입력해주세요." value="">
-                                                                <span class="cell">
-                                                                    <button type="button" class="btn-text pink"><span>납부 계좌 확인</span></button>
-                                                                </span>
-                                                            </span>
-                                                        </span>
+                                                        <div class="select-wrap">
+                                                            <select class="ui_selectbox" id="select2" title="설치 장소 선택">
+                                                                <option value="" class="placeholder">선택해주세요.</option>
+                                                                <option value="">설치 장소를 선택해주세요.</option>
+                                                                <option value="">설치 장소를 선택해주세요.</option>
+                                                            </select>
+                                                        </div>
                                                     </dd>
                                                 </dl>
                                             </div>
-                                            <dl class="forms">
-                                                <dt class="tit"><label for="rdo-receipt" class="req">현금영수증<span class="blind">필수입력</span></label></dt>
-                                                <dd class="conts">
-                                                    <div class="select-list-wrap">
-                                                        <ul>
-                                                            <li>
-                                                                <span class="rdo-wrap">
-                                                                    <input type="radio" id="rdo3-1" name="rdo3" checked>
-                                                                    <label for="rdo1-1">발급</label>
+                                            <div class="double-form">
+                                                <dl class="forms">
+                                                    <dt class="tit"><label for="date-install" class="req">설치 희망일 선택<span class="blind">필수입력</span></label></dt>
+                                                    <dd class="conts">
+                                                        <div class="input-box">
+                                                            <!-- 날짜 선택 후 disabled 클래스 삭제 -->
+                                                            <span class="input-wrap datepicker disabled">
+                                                                <span class="box">
+                                                                    <input type="text" id="date-install" placeholder="날짜를 선택하세요" title="설치 희망일 시작날짜 선택">
+                                                                    <span class="cell pic-btn">
+                                                                        <button type="button" class="ui_calendar" data-input-target="#date-install"><span class="blind">달력보기</span></button>
+                                                                    </span>
                                                                 </span>
-                                                            </li>
-                                                            <li>
-                                                                <span class="rdo-wrap">
-                                                                    <input type="radio" id="rdo3-2" name="rdo3">
-                                                                    <label for="rdo1-2">미발급</label>
+                                                            </span>
+                                                        </div>
+                                                        @@include('./common/modules/bullet-list.html', {
+                                                            "bulletTxt" : [
+                                                                "설치 당일 기사님이 유선 연락 드립니다."
+                                                            ]
+                                                        })
+                                                    </dd>
+                                                </dl>
+                                                <dl class="forms">
+                                                    <dt class="tit"><label for="select3" class="req">설치 희망 시간 선택<span class="blind">필수입력</span></label></dt>
+                                                    <dd class="conts">
+                                                        <div class="select-wrap">
+                                                            <select class="ui_selectbox" id="select3" title="설치 희망 시간 선택" disabled>
+                                                                <option value="" class="placeholder">HH:MM</option>
+                                                                <option value="">설치 희망 시간을 선택해주세요.</option>
+                                                                <option value="">설치 희망 시간을 선택해주세요.</option>
+                                                            </select>
+                                                        </div>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                        <div class="input-info">
+                                            <div class="tit-wrap">
+                                                <h2 class="h2-tit">배송 시 추가 확인 정보</h2>
+                                            </div>
+                                            <div class="form-wrap">
+                                                <dl class="forms">
+                                                    <dt class="tit"><label for="recipientName">폐가전 수거</label></dt>
+                                                    <dd class="conts">
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk-pickup" name="chk-pickup">
+                                                            <label for="chk-pickup">수거신청</label>
+                                                        </span>
+                                                        @@include('./common/modules/bullet-list.html', {
+                                                            "bulletTxt" : [
+                                                                "폐가전 무료수거 서비스로 동일 제품군에 한합니다."
+                                                            ]
+                                                        })
+                                                    </dd>
+                                                </dl>
+                                                <dl class="forms">
+                                                    <dt class="tit"><label for="recipientName">사전방문 예약 신청</label></dt>
+                                                    <dd class="conts">
+                                                        <div class="select-list-wrap">
+                                                            <ul>
+                                                                <li>
+                                                                    <span class="rdo-wrap">
+                                                                        <input type="radio" id="rdo1-1" name="rdo1" checked>
+                                                                        <label for="rdo1-1">신청</label>
+                                                                    </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="rdo-wrap">
+                                                                        <input type="radio" id="rdo1-2" name="rdo1">
+                                                                        <label for="rdo1-2">미신청</label>
+                                                                    </span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="input-box add-box">
+                                                            <div class="input-mix-wrap">
+                                                                <span class="chk-wrap">
+                                                                    <input type="checkbox" id="chk-agree2" name="chk-agree2" checked>
+                                                                    <label for="chk-agree2">사전방문 서비스 제공을 위한 개인정보 수집/이용 동의</label>
                                                                 </span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </dd>
-                                            </dl>
-                                            <dl class="forms">
-                                                <dt class="tit"><label for="ipt-phone">휴대폰</label></dt>
-                                                <dd class="conts">
-                                                    <span class="input-wrap block">
-                                                        <input type="text" id="ipt-phone" placeholder="휴대폰 번호를 입력해주세요.">
-                                                    </span>
-                                                </dd>
-                                            </dl>
+                                                                <a href="#n" class="mix-btn"><span class="blind">사전방문 서비스 제공을 위한 개인정보 수집/이용 동의 확인하기</span></a>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                </dl>
+                                            </div>
                                         </div>
                                     </div>
-                                    <!-- // 실시간 계좌이체 -->
-                                    @@include('./common/modules/bullet-list.html', {
-                                        "bulletTxt" : [
-                                            "결제정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능합니다.",
-                                            "제휴카드를 신청한 경우, 발급시 자동으로 납부방법이 변경됩니다.",
-                                            "월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다."
-                                        ]
-                                    })
-                                    <dl class="forms">
-                                        <dt class="tit"><label for="recipientName">ARS 출금 동의 관리</label></dt>
-                                        <dd class="conts">
-                                            <div class="input-box add-box">
-                                                <div class="input-mix-wrap">
-                                                    <span class="chk-wrap">
-                                                        <input type="checkbox" id="chk-agree4" name="chk-agree4">
-                                                        <label for="chk-agree4">ARS 출금동의 신청</label>
-                                                    </span>
-                                                    <a href="#n" class="mix-btn"><span class="blind">ARS 출금동의 신청 하러가기</span></a>
+                                </li>
+                                <li class="lists">
+                                    <div class="head">
+                                        <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                            <h3 class="title">납부 정보 입력</h3>
+                                            <span class="blind ui_accord_text">내용 더 보기</span>
+                                        </a>
+                                    </div>
+                                    <div class="accord-cont ui_accord_content">
+                                        <div class="subscribe-payment">
+                                            <div class="form-wrap select-payment">
+                                                <div class="tabs-wrap border-type left ui_tab">
+                                                    <ul class="tabs">
+                                                        <li class="on"><a href="#card">신용카드<em class="blind">선택됨</em></a></li>
+                                                        <li><a href="#bank">실시간 계좌이체</a></li>
+                                                    </ul>
                                                 </div>
-                                            </div>
-                                            @@include('./common/modules/bullet-list.html', {
-                                                "bulletTxt" : [
-                                                    "입력한 결제 수단의 효력이 발생하기 위해서, ARS출금 동의가 필요합니다.",
-                                                    "ARS 출금 동의 관련 수신료는 업체가 부담합니다."
-                                                ]
-                                            })
-                                        </dd>
-                                    </dl>
-                                    <dl class="forms">
-                                        <dt class="tit"><label for="recipientName">자동결제 이용약관 동의</label></dt>
-                                        <dd class="conts">
-                                            <div class="input-box">
-                                                <div class="input-mix-wrap">
-                                                    <span class="chk-wrap">
-                                                        <input type="checkbox" id="chk-agree5" name="chk-agree5">
-                                                        <label for="chk-agree5">위 결제수단으로 정기결제 신청 동의</label>
-                                                    </span>
-                                                    <a href="#n" class="mix-btn"><span class="blind">위 결제수단으로 정기결제 신청 동의 확인하기</span></a>
+                                                <!-- 신용카드 -->
+                                                <div class="payinfo-wrap by-card" id="card">
+                                                    <div class="form-wrap">
+                                                        <dl class="forms">
+                                                            <dt class="tit"><label for="slt-card1">카드사</label></dt>
+                                                            <dd class="conts">
+                                                                <div class="select-wrap block">
+                                                                    <select class="ui_selectbox" id="slt-card1">
+                                                                        <option value="" class="placeholder">은행 선택</option>
+                                                                        <option value="" selected>하나은행</option>
+                                                                    </select>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="ipt-card1">카드번호</label></dt>
+                                                                <dd class="conts">
+                                                                    <div class="input-box card-type">
+                                                                        <span class="input-wrap">
+                                                                            <input type="text" id="ipt-card1" placeholder="1234" maxlength="4" value="1234" size="3">
+                                                                        </span>
+                                                                        <span class="input-wrap">
+                                                                            <input type="text" maxlength="4" placeholder="1234" value="" size="3">
+                                                                        </span>
+                                                                        <span class="input-wrap">
+                                                                            <input type="text" maxlength="4" placeholder="1234" value="" size="3">
+                                                                        </span>
+                                                                        <span class="input-wrap">
+                                                                            <input type="text" maxlength="4" placeholder="1234" value="" size="3">
+                                                                        </span>
+                                                                    </div>
+                                                                </dd>
+                                                            </dl>
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="ipt-card2">유효기간(MMYY)</label></dt>
+                                                                <dd class="conts">
+                                                                    <span class="input-wrap block">
+                                                                        <input type="text" id="ipt-card2" maxlength="4" placeholder="MMYY" value="1221">
+                                                                    </span>
+                                                                </dd>
+                                                                <dd class="conts right">
+                                                                    <button type="button" class="btn-text pink"><span>납부 카드 확인</span></button>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                <!-- // 신용카드 -->
+                                                <!-- 실시간 계좌이체 -->
+                                                <div class="payinfo-wrap by-bank" id="bank">
+                                                    <div class="form-wrap">
+                                                        <dl class="forms">
+                                                            <dt class="tit"><label for="ipt-bank1">예금주명</label></dt>
+                                                            <dd class="conts">
+                                                                <span class="input-wrap block">
+                                                                    <input type="text" id="ipt-bank1" placeholder="예금주명을 입력해주세요." value="">
+                                                                </span>
+                                                            </dd>
+                                                        </dl>
+                                                        <div class="double-form">
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="slt-bank1">은행명</label></dt>
+                                                                <dd class="conts">
+                                                                    <div class="select-wrap block">
+                                                                        <select class="ui_selectbox" id="slt-bank1">
+                                                                            <option value="" class="placeholder">선택해주세요.</option>
+                                                                            <option value="" selected>하나은행</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </dd>
+                                                            </dl>
+                                                            <dl class="forms">
+                                                                <dt class="tit"><label for="ipt-bank2">계좌번호</label></dt>
+                                                                <dd class="conts">
+                                                                    <span class="input-wrap block">
+                                                                        <span class="box">
+                                                                            <input type="text" id="ipt-bank2" placeholder="계좌번호를 “-“없이 숫자만 입력해주세요." value="">
+                                                                            <span class="cell">
+                                                                                <button type="button" class="btn-text pink"><span>납부 계좌 확인</span></button>
+                                                                            </span>
+                                                                        </span>
+                                                                    </span>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <dl class="forms">
+                                                            <dt class="tit"><label for="rdo-receipt" class="req">현금영수증<span class="blind">필수입력</span></label></dt>
+                                                            <dd class="conts">
+                                                                <div class="select-list-wrap">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <span class="rdo-wrap">
+                                                                                <input type="radio" id="rdo3-1" name="rdo3" checked>
+                                                                                <label for="rdo1-1">발급</label>
+                                                                            </span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span class="rdo-wrap">
+                                                                                <input type="radio" id="rdo3-2" name="rdo3">
+                                                                                <label for="rdo1-2">미발급</label>
+                                                                            </span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="forms">
+                                                            <dt class="tit"><label for="ipt-phone">휴대폰</label></dt>
+                                                            <dd class="conts">
+                                                                <span class="input-wrap block">
+                                                                    <input type="text" id="ipt-phone" placeholder="휴대폰 번호를 입력해주세요.">
+                                                                </span>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <!-- // 실시간 계좌이체 -->
+                                                @@include('./common/modules/bullet-list.html', {
+                                                    "bulletTxt" : [
+                                                        "결제정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능합니다.",
+                                                        "제휴카드를 신청한 경우, 발급시 자동으로 납부방법이 변경됩니다.",
+                                                        "월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다."
+                                                    ]
+                                                })
+                                                <dl class="forms">
+                                                    <dt class="tit"><label for="recipientName">ARS 출금 동의 관리</label></dt>
+                                                    <dd class="conts">
+                                                        <div class="input-box add-box">
+                                                            <div class="input-mix-wrap">
+                                                                <span class="chk-wrap">
+                                                                    <input type="checkbox" id="chk-agree4" name="chk-agree4">
+                                                                    <label for="chk-agree4">ARS 출금동의 신청</label>
+                                                                </span>
+                                                                <a href="#n" class="mix-btn"><span class="blind">ARS 출금동의 신청 하러가기</span></a>
+                                                            </div>
+                                                        </div>
+                                                        @@include('./common/modules/bullet-list.html', {
+                                                            "bulletTxt" : [
+                                                                "입력한 결제 수단의 효력이 발생하기 위해서, ARS출금 동의가 필요합니다.",
+                                                                "ARS 출금 동의 관련 수신료는 업체가 부담합니다."
+                                                            ]
+                                                        })
+                                                    </dd>
+                                                </dl>
+                                                <dl class="forms">
+                                                    <dt class="tit"><label for="recipientName">자동결제 이용약관 동의</label></dt>
+                                                    <dd class="conts">
+                                                        <div class="input-box">
+                                                            <div class="input-mix-wrap">
+                                                <span class="chk-wrap">
+                                                    <input type="checkbox" id="chk-agree5" name="chk-agree5">
+                                                    <label for="chk-agree5">위 결제수단으로 정기결제 신청 동의</label>
+                                                </span>
+                                                                <a href="#n" class="mix-btn"><span class="blind">위 결제수단으로 정기결제 신청 동의 확인하기</span></a>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                </dl>
+                                                <dl class="forms">
+                                                    <dt class="tit"><label for="recipientName">1년 요금 선납 신청</label></dt>
+                                                    <dd class="conts">
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk-agree6" name="chk-agree6" checked>
+                                                            <label for="chk-agree6">선납 신청</label>
+                                                        </span>
+                                                        @@include('./common/modules/bullet-list.html', {
+                                                            "bulletTxt" : [
+                                                                "선납금액, 납부기한 등의 자세한 내용은 계약자의 휴대폰 번호로 전달 예정입니다."
+                                                            ]
+                                                        })
+                                                    </dd>
+                                                </dl>
+                                                <dl class="forms">
+                                                    <dt class="tit"><label for="recipientName">보유 멤버십 포인트 사용</label></dt>
+                                                    <dd class="conts">
+                                                        <span class="chk-wrap">
+                                                            <input type="checkbox" id="chk-agree7" name="chk-agree7" checked>
+                                                            <label for="chk-agree7">포인트 사용 동의</label>
+                                                        </span>
+                                                        @@include('./common/modules/bullet-list.html', {
+                                                            "bulletTxt" : [
+                                                                "멤버십 포인트는 보유 액수와 관계없이 매월 최대 5,000P까지 차감됩니다."
+                                                            ]
+                                                        })
+                                                    </dd>
+                                                </dl>
                                             </div>
-                                        </dd>
-                                    </dl>
-                                    <dl class="forms">
-                                        <dt class="tit"><label for="recipientName">1년 요금 선납 신청</label></dt>
-                                        <dd class="conts">
-                                            <span class="chk-wrap">
-                                                <input type="checkbox" id="chk-agree6" name="chk-agree6" checked>
-                                                <label for="chk-agree6">선납 신청</label>
-                                            </span>
-                                            @@include('./common/modules/bullet-list.html', {
-                                                "bulletTxt" : [
-                                                    "선납금액, 납부기한 등의 자세한 내용은 계약자의 휴대폰 번호로 전달 예정입니다."
-                                                ]
-                                            })
-                                        </dd>
-                                    </dl>
-                                    <dl class="forms">
-                                        <dt class="tit"><label for="recipientName">보유 멤버십 포인트 사용</label></dt>
-                                        <dd class="conts">
-                                            <span class="chk-wrap">
-                                                <input type="checkbox" id="chk-agree7" name="chk-agree7" checked>
-                                                <label for="chk-agree7">포인트 사용 동의</label>
-                                            </span>
-                                            @@include('./common/modules/bullet-list.html', {
-                                                "bulletTxt" : [
-                                                    "멤버십 포인트는 보유 액수와 관계없이 매월 최대 5,000P까지 차감됩니다."
-                                                ]
-                                            })
-                                        </dd>
-                                    </dl>
-                                </div>
-                                <div class="payment-amount-info">
-                                    <span class="title">서비스 이용요금 계산</span>
-                                    <ul class="payment-list">
-                                        <li>
-                                            <dl>
-                                                <dt class="text">이용요금</dt>
-                                                <dd class="price">월 98,800원</dd>
-                                            </dl>
-                                        </li>
-                                        <li>
-                                            <dl>
-                                                <dt class="text">결합할인 금액</dt>
-                                                <dd class="price sale">월 -5,000원</dd>
-                                            </dl>
-                                        </li>
-                                    </ul>
-                                    <div class="total-payment-amount">
-                                        <dl>
-                                            <dt class="text">총 2건</dt>
-                                            <dd class="price">월 93,800원</dd>
-                                        </dl>
-                                        <p class="desc">* 신규 결합할인 적용</p>
+                                        </div>
                                     </div>
-                                    <div class="agree">
-                                        <span class="chk-wrap">
-                                            <input type="checkbox" id="chk-agree8" name="chk-agree8">
-                                            <label for="chk-agree8">포인트 사용 동의</label>
-                                        </span>
-                                        <ul class="text-list">
-                                            <li>위에서 입력한 납부 방법(카드/은행 계좌)에서 월 렌탈료를 자동이체 하는 것에 동의합니다.</li>
-                                            <li>주문할 제품의 제품명, 제품 가격, 배송 정보를 확인하였으며, 주문상품 및 결제 대행 서비스 약관에 모두 동의합니다.(전자상거래법 제8조 2항)</li>
-                                        </ul>
-                                    </div>
-                                    <div class="btn-area">
-                                        <button type="button" class="btn pink">청약 신청하기</button>
-                                    </div>
-                                </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-right">
+                        <div class="payment-amount-info">
+                            <span class="title">서비스 이용요금 계산</span>
+                            <ul class="payment-list">
+                                <li>
+                                    <dl>
+                                        <dt class="text">이용요금</dt>
+                                        <dd class="price">월 98,800원</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt class="text">결합할인 금액</dt>
+                                        <dd class="price sale">월 -5,000원</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <div class="total-payment-amount">
+                                <dl>
+                                    <dt class="text">총 2건</dt>
+                                    <dd class="price">월 93,800원</dd>
+                                </dl>
+                                <p class="desc">* 신규 결합할인 적용</p>
                             </div>
-                            @@include('./common/modules/bullet-list.html', {
-                                "topBorder" : true,
-                                "bulletTit" : "유의사항",
-                                "bulletTxt" : [
-                                    "청약 완료 후 고객님의 휴대폰 번호로 청약 완료 문자가 발송되며, 청약 내용은 이메일로 발송되니 확인하세요.",
-                                    "본인 신용 인증이 불가능할 경우, 결제/청약 신청이 취소됩니다."
-                                ]
-                            })
+                            <div class="agree">
+                                <span class="chk-wrap">
+                                    <input type="checkbox" id="chk-agree8" name="chk-agree8">
+                                    <label for="chk-agree8">포인트 사용 동의</label>
+                                </span>
+                                <ul class="text-list">
+                                    <li>위에서 입력한 납부 방법(카드/은행 계좌)에서 월 렌탈료를 자동이체 하는 것에 동의합니다.</li>
+                                    <li>주문할 제품의 제품명, 제품 가격, 배송 정보를 확인하였으며, 주문상품 및 결제 대행 서비스 약관에 모두 동의합니다.(전자상거래법 제8조 2항)</li>
+                                </ul>
+                            </div>
+                            <div class="btn-area">
+                                <button type="button" class="btn pink">청약 신청하기</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -680,7 +628,7 @@
             <!-- // 청약 신청 -->
         </div>
 
-<!--        include('./common/footer.html')-->
+        <!--include('./common/footer.html')-->
     </div>
 
 </body>
