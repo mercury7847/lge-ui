@@ -71,16 +71,10 @@
                 var ajaxUrl = self.$searchWrap.attr('data-url');
                 //console.log(ajaxUrl, param);
 
-                $.ajax({
-                    url: ajaxUrl,
-                    data: param
-                }).done(function (d) {
-                    if(d.status != 'success') {
-                        alert(d.message ? d.message : '오류발생');
-                        return;
-                    }
-        
-                    var param = d.param ? d.param : {};
+                lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
+                    var param = result.param;
+                    var data = result.data;
+
                     params = param;
                     params.page = param.pagination.page;
 
@@ -94,9 +88,6 @@
                     self.$tab.vcTab('select',tabIndex,true);
                     //페이지
                     self.$pagination.vcPagination('setPageInfo',param.pagination);
-
-                    var data = d.data;
-                    //console.log(data);
 
                     //전체 검색수
                     self.$tab.find('li:nth-child(1) a').text('전체('+ vcui.number.addComma(data.listCount) +'건)');
@@ -119,8 +110,6 @@
                         self.$pagination.hide();
                         self.$nodata.show();
                     }
-                }).fail(function(d){
-                    alert(d.status + '\n' + d.statusText);
                 });
             }
         };

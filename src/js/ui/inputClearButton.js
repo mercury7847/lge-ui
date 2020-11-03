@@ -25,6 +25,11 @@ vcui.define('ui/inputClearButton', ['jquery', 'vcui'], function ($, core) {
             self._update();
         },
 
+        changeVal: function changeVal(v) {
+            var self = this;
+            self.$el.val(v).trigger("input");
+        },
+
         _update: function update() {
             var self = this;
             if(self.options.alway) {

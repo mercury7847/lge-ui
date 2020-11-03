@@ -1,24 +1,4 @@
-.subscribe {
-    .cont-wrap {
-        padding: 40px 0 120px;
-    }
-    .subscribe-wrap {
-        max-width: 1066px;
-        margin: 0 auto;
-        padding: 56px;
-        background-color: #fff;
-    }
-
-    @include mobile {
-        .cont-wrap {
-            padding: 0 0 60px;
-        }
-        .subscribe-wrap {
-            max-width: 100%;
-            padding: 0;
-        }
-    }
-}
+.subscribe {}
 
 .order-items {
     > li {

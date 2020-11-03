@@ -4,10 +4,6 @@
         "pageCSS": [
             "support/support",
             "support/reservation"
-        ],
-        "pageJS": [
-            "support-common",
-            "support/selectCategory"
         ]
     })
 <body>
@@ -20,8 +16,9 @@
                 'desc': 'LG전자 제품을 댁 내 재설치 또는 이사를 할 경우 엔지니어가 직접 방문하여 설치 및 철거해 드립니다.'
             })
 
-            <div class="contents support KR50CS411">
+            <div class="contents support">
                 <div class="contents-inner">
+
                     <form action="">
                         <div class="section">
                             <div class="section-title">
@@ -251,11 +248,16 @@
                             <button type="button" class="btn pink" id="btn-confirm"><span>인증/예약</span></button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
              
         @@include('./common/footer.html')
     </div>
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 

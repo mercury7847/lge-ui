@@ -212,18 +212,6 @@
         }
     }
 
-    .tabs-wrap {
-        &.type-A {
-            .tabs {
-                max-width: 1066px;
-                width: 100%;
-                margin: 0 auto;
-                text-align: left;
-                margin-bottom: 16px;
-            }
-        }
-    }
-
     .forms {
         position: relative;
         .input-wrap {
@@ -371,13 +359,6 @@
                 }
             }
         }
-    }
-
-	.headline {
-		margin-bottom: 16px;
-		font-weight: 700;
-		font-size: 20px;
-		line-height: 32px;
     }
     
     .mymem-lists {

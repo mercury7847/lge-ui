@@ -3,58 +3,91 @@
 @import "../../modules/index";
 @import "../../layout/index";
 
-.profile-regist {
-    position: relative;
-    margin: 48px auto 0;
-    &-box {
-        width: calc(50% - 12px);
-        height: 310px;
-        border-radius: 4px;
-        border: 1px solid #ddd;
-        position: relative;
-    }
-    &-wrap {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-    }
-    &-img {
-        width: 180px;
-        height: 180px;
-        // background: url(/lg5-common/images/no-profile-image.png) no-repeat center;
-        // background-size: 100%;
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-    &-text {
-        font-size: 14px;
-        color: #616161;
+.profile-upload {
+    .heading-title {
+        font-size: 32px;
+        font-weight: bold;
         text-align: center;
-        margin-top: 16px;
+        margin-bottom: 40px;
     }
-    &-file {
-        margin-top: 40px;
+    .contents-inner {
+        min-height: 100vh;
+        max-width: 848px;
+        margin: 0 auto;
+        padding: 80px 0 100px;
     }
-    &-filed {
-        position: absolute;
-        top: 56px;
-        right: 56px;
-        width: calc(50% - 68px);
-    }
-    @include mobile {
-        .section-content {
-            padding: 40px 20px 58px;
+    .icon-download {
+        width: 14px;
+        height: 14px;
+        &-btn {
+            font-size: 14px;
+            color: #222;
+            display: inline-block;
+            margin-top: 17px;
         }
-        &-filed {
-            position: static;
-        }
-        &-box,
-        &-filed {
+    }
+    .file-box {
+        .file-input {
             width: 100%;
+        }
+    }
+    .btn-group {
+        padding: 0;
+    }
+
+    .profile-regist {
+        position: relative;
+        margin: 48px auto 0;
+        &-box {
+            width: calc(50% - 12px);
+            height: 310px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+        &-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        &-img {
+            width: 180px;
+            height: 180px;
+            // background: url(/lg5-common/images/no-profile-image.png) no-repeat center;
+            // background-size: 100%;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &-text {
+            font-size: 14px;
+            color: #616161;
+            text-align: center;
+            margin-top: 16px;
+        }
+        &-file {
             margin-top: 40px;
+        }
+        &-filed {
+            position: absolute;
+            top: 56px;
+            right: 56px;
+            width: calc(50% - 68px);
+        }
+        @include mobile {
+            .section-content {
+                padding: 40px 20px 58px;
+            }
+            &-filed {
+                position: static;
+            }
+            &-box,
+            &-filed {
+                width: 100%;
+                margin-top: 40px;
+            }
         }
     }
 }
@@ -131,6 +164,5 @@
     }
 }
 
-@import "../../support/pages/CSTF8500"; // 엔지니어 사진 등록
 @import "../../support/pages/CSTF8000"; // APP GATE
 @import "../../support/pages/KR50CS107"; // QR코드 랜딩 페이지
