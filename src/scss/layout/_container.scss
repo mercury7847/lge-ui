@@ -226,6 +226,10 @@
                     padding:0;
                 }
             }
+
+            & + .accordion-section {
+                margin-top: 80px;
+            }
         }
 
         .lnb-wrap {

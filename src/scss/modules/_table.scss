@@ -99,13 +99,13 @@
         width: 100%;
         border-collapse: collapse;
         text-align:left;
-        border-bottom:2px solid #ddd;
+        border-bottom: 1px solid #ddd;
         th, td {
             border-top: 1px solid #ddd;
         }
         tr:first-child {
             th, td {
-                border-top:2px solid #ddd;
+                border-top:2px solid #222;
             }
         }
         th {

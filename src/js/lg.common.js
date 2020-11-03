@@ -3,26 +3,26 @@
     if(global['lgkorUI']) return;
     console.log("lgkorUI start!!!");
 
-    var alertTmpl =  '<article id="laypop" class="lay-wrap" style="display:block;" role="alert">\n'+
+    var alertTmpl =  '<article id="laypop" class="lay-wrap {{typeClass}}" style="display:block;" role="alert">\n'+
         '   <header class="lay-header">\n'+
-        '       <h1 class="tit"><span>{{title}}</span></h1>\n'+
+        '       <h1 class="tit">{{#raw title}}</h1>\n'+
         '   </header>\n'+
         '   <section class="lay-conts ui-alert-msg">\n'+
         '   </section>\n'+
         '   <div class="btn-wrap laypop">\n'+
-        '       <button type="button" class="btn pink ui_modal_close" data-role="ok"><span>확인</span></button>\n'+
+        '       <button type="button" class="btn ui_modal_close" data-role="ok"><span>{{okBtnName}}</span></button>\n'+
         '   </div>\n'+
         '</article>';
 
 
 
-    var confirmTmpl =  '<article id="laypop" class="lay-wrap" style="display:block;" role="alert">\n'+
+    var confirmTmpl =  '<article id="laypop" class="lay-wrap {{typeClass}}" style="display:block;" role="confirm">\n'+
         '    <section class="lay-conts">\n'+
         '        <h6 class="ui-alert-msg"></h6>\n'+
         '    </section>\n'+
         '    <div class="btn-wrap laypop">\n'+
-        '        <button type="button" class="btn gray ui_modal_close" data-role="cancel"><span>취소</span></button>\n'+
-        '        <button type="button" class="btn pink ui_modal_close" data-role="ok"><span>확인</span></button>\n'+
+        '        <button type="button" class="btn gray ui_modal_close" data-role="cancel"><span>{{cancelBtnName}}</span></button>\n'+
+        '        <button type="button" class="btn" data-role="ok"><span>{{okBtnName}}</span></button>\n'+
         '    </div>\n'+
         '</article>';
 
@@ -473,7 +473,12 @@
                 }
     
                 $('html').addClass('dim');
-                var el = $(vcui.template(confirmTmpl, {title:options && options.title? options.title:'알림창'})).appendTo('body');
+                var el = $(vcui.template(confirmTmpl, {
+                    cancelBtnName:options && options.cancelBtnName? options.cancelBtnName:'취소' ,
+                    okBtnName:options && options.okBtnName? options.okBtnName:'확인' ,
+                    typeClass:options && options.typeClass? options.typeClass:'' ,
+                    title:options && options.title? options.title:''
+                })).appendTo('body');
                 $(el).find('.ui-alert-msg').html(msg);
                 
 
@@ -526,7 +531,11 @@
     
                 $('html').addClass('dim');
     
-                var el = $(vcui.template(alertTmpl, {title:options && options.title? options.title:'알림창'})).appendTo('body');
+                var el = $(vcui.template(alertTmpl, {
+                    okBtnName:options && options.okBtnName? options.okBtnName:'확인' ,
+                    typeClass:options && options.typeClass? options.typeClass:'' ,
+                    title:options && options.title? options.title:''
+                })).appendTo('body');
                 $(el).find('.ui-alert-msg').html(msg);                
 
                 var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true }, options)).vcModal('instance');

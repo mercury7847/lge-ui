@@ -50,9 +50,9 @@
 			<!-- productsList 1 -->
 			<div id="productsList1_1" aria-discribedeby="newest" class="products-list-group tabs-cont component-inner-box">
 				<div class="list-contents-wrap ui_carousel_slider"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slider -->
-					<div class="items unit-list ui_carousel_track"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_track -->
+					<ul class="items unit-list ui_carousel_track"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_track -->
 						@@for (var i = 0; i < items.length; i++) {
-						<div class="item js-model ui_carousel_slide"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slide -->
+						<li class="item js-model ui_carousel_slide"> <!-- [KR수정] carousel 클래스 추가 : .ui_carousel_slide -->
 							<div class="tag-content">
 								<span data-key="productTag1">`+items[i].flag1+`</span>
 								<span data-key="productTag2">`+items[i].flag2+`</span>
@@ -78,9 +78,9 @@
 									<span data-link-area="selective_offering-product_list" data-link-name="65SJ8500">`+items[i].productName+`</span> <!-- [KR수정] a태그를 span으로 변경 -->
 								</p>
 							</div>
-						</div>
+						</li>
 						}
-					</div>
+					</ul>
 
 					<!-- [KR수정] carousel DOM 추가 : 인디케이터 -->
 					<ul class="indi-wrap ui_carousel_dots">

@@ -46,6 +46,11 @@
     &.nomargin-top {
         margin-top: 0;
     }
+    &.bgGray {
+        padding: 24px;
+        border-radius: 8px;
+        background-color: #f4f4f4;
+    }
 }
 
 .bullet-list-box {

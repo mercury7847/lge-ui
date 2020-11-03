@@ -100,10 +100,9 @@
         width:20px;
         height:20px;
         background:url("/lg5-common/images/icons/btn-arr-20x20-gray.svg") center no-repeat;
-    }
-    @include mobile {
-        font-size:14px;
-        line-height:18px;
+        @include mobile {
+            top:1px;
+        }
     }
 }
 
