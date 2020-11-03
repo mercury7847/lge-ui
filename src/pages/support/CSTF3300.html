@@ -4,10 +4,6 @@
     "pageCSS": [
         "support/support",
         "support/reservation"
-    ],
-    "pageJS": [
-        "support-common",
-        "support/selectCategory"
     ]
 })
 <body>
@@ -28,6 +24,7 @@
                     <p>제품 선택 영역</p>
                 </div>
                 <div class="contents-inner">
+
                     <form action="/html/support/CSTF3310.html" id="submitForm" autocomplete="off">
                         <div class="section">
                             <div class="section-title">
@@ -166,13 +163,16 @@
                             <button type="button" class="btn pink"><span>인증/예약</span></button>
                         </div>
                     </form>
+
                 </div>
             </div>
-
-           
         </div>
              
         @@include('./common/footer.html')
     </div>      
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 

@@ -3,116 +3,44 @@
 .btn {
     display: inline-block;
     min-width:124px;
-    padding:13px 32px;
-    line-height: 24px;
-    font-weight: 500;
-    font-size: 16px;
+    padding:12px;
+    @include font-medium;
     text-align: center;
     vertical-align: top;
-    border: 1px solid #111;
-    border-radius: 8px;
-    background-color:transparent;
-    @include mobile {
-        padding:17px 32px;
+    border: 1px solid #EC455A;
+    border-radius: 26px;
+    background-color:#EC455A;
+    color:#fff;
+    font-weight:500;
+    &:hover {
+        border-color:#EC455A;
+        background-color:#EC455A;
     }
-    &:active {
-        background-color:#f4f4f4;
+    &:disabled,
+    &.disabled {
+        border-color:#aaa;
+        background-color:#aaa;
     }
     &.gray {
         border-color: #ededed;
         background: #ededed;
         color: #ec455a;
-        &:active {
-            border-color:#ddd;
-            background-color:#ddd;
-        }
-        &:disabled, &.disabled, &[aria-disabled=true] {
-            color:#ccc;
+        &:hover {
             border-color:#ededed;
-            background-color:#ededed;
-            cursor:default;
+            background:#ededed;
         }
     }
-    &.pink {
-        border-color:#ec455a;
-        background-color:#ec455a;
-        color:#fff;
-        &:active {
-            background-color: #e51346;
-        }
-        &:disabled, &.disabled, &[aria-disabled=true] {
-            border-color:#ccc;
-            background-color:#ccc;
-            cursor:default;
-        }
+    &.border {
+        border-color:#222;
+        background:#fff;
+        color:#222;
     }
-    &.bd-pink {
-        color:#ec455a;
-        border-color:#ec455a;
-        &:hover {
-            background-color:#e51346;
-            color:#fff;
-        }
-        &:active {
-            background-color:#e51346;
-            color:#fff;
-        }
-        &:disabled, &.disabled, &[aria-disabled=true] {
-            color:#ccc;
-            border-color:#ccc;
-            background:#fff;
-            cursor:default;
-        }
-    }
-    &.bd-gray {
-        color:#616161;
-        border-color:#979797;
-        &:active {
-            border-color:#979797;
-            background-color: #f4f4f4;   
-        }
-        &:disabled, &.disabled, &[aria-disabled=true] {
-            color:#ccc;
-            border-color:#ccc;
-            background:#fff;
-            cursor:default;
-        }
-    }
-    &.btn-small {
-        min-width:84px;
-        padding: 7px 15px;
-        font-size: 14px;
-        line-height: 20px;
-        @include mobile {
-            padding: 4px 12px;
-        }
-    }
-    &.bd-black {
-        border-color:#616161;
-        background-color:#fff;
-        color:#616161;
-        &:hover {
-            background-color:#f4f4f4;
-        }
-        &:disabled, &.disabled, &[aria-disabled=true] {
-            color:#ccc;
-            border-color:#ccc;
-            background:#fff;
-            cursor:default;
-        }
-    }
-    &.bd-white {
-        border-color:#fff;
-        color:#fff;
-        &:hover {
-            background-color: inherit;
-        }
-        &:disabled, &.disabled, &[aria-disabled=true] {
-            color:#ccc;
-            border-color:#ccc;
-            background:inherit;
-            cursor:default;
-        }
+    // 작은사이즈 버튼
+    &.size {
+        min-width:68px;
+        padding:3px 20px;
+        border-radius:16px;
+        @include font-small;
     }
     &.block {
         display: block;
@@ -159,40 +87,23 @@
 .btn-link {
     position: relative;
     display: inline-block;
-    padding-right: 24px;
+    padding-right: 22px;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #222;
+    @include font-small;
+    color: #616161;
     vertical-align: top;
     &:after {
-        position: absolute;
-        @include calc(top, 50%, 3px);
-        right: 9px;
-        width: 8px;
-        height: 8px;
-        border: 2px solid #222;
-        border-width: 2px 2px 0 0;
-        transform: rotate(45deg);
         content: '';
+        position:absolute;
+        right:0;
+        top:2px;
+        width:20px;
+        height:20px;
+        background:url("/lg5-common/images/icons/btn-arr-20x20-gray.svg") center no-repeat;
     }
     @include mobile {
         font-size:14px;
         line-height:18px;
-    }
-    &.small {
-        padding-right:20px;
-        font-size:14px;
-        line-height:20px;
-        &::after {
-            right:8px;
-            width:6px;
-            height:6px;
-            border-width:1px 1px 0 0;
-        }
-    }
-    &.thin {
-        font-weight:400;
     }
 }
 

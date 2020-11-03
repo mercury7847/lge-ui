@@ -1,6 +1,9 @@
 // Form
 .input-info {
     margin-top:48px;
+    @include mobile {
+        margin-top:40px;
+    }
     &:first-child {
         margin-top:0;
     }
@@ -69,6 +72,9 @@
     // form 시작 전 form 안내 요소
     .form-infos {
         margin-bottom:48px;
+        @include mobile {
+            margin-bottom:16px;
+        }
         p.req {
             color:#222;
             @include font-medium;
@@ -77,6 +83,9 @@
                 display:inline-block;
                 margin-right:4px;
                 vertical-align:top;
+                @include mobile {
+                    margin-right:0;
+                }
             }
         }
     }
@@ -84,6 +93,9 @@
         position:relative;
         margin-top:32px;
         font-size:0;
+        @include mobile {
+            margin-top:24px;
+        }
         &:first-child {
             margin-top:0;
         }
@@ -91,6 +103,9 @@
         .input-wrap,
         .box {
             margin-top:8px;
+            @include mobile {
+                margin-top:6px;
+            }
             &:first-child {
                 margin-top:0;
             }
@@ -100,10 +115,15 @@
             height:48px;
             padding:11px;
             border:1px solid #222;
+            border-radius:8px;
             background:#fff;
             color:#222;
             @include font-small;
             white-space:nowrap;
+            span {
+                display:inline-block;
+                vertical-align:top;
+            }
         }
         .btn.bg-type {
             min-width:initial;
@@ -119,6 +139,18 @@
                 border-color:#ddd;
                 color:#aaa;
             }
+            &.icon-ars {
+                &::before {
+                    content:' ';
+                    display:inline-block;
+                    width:20px;
+                    height:20px;
+                    margin-top:2px;
+                    margin-right:8px;
+                    background:url("/lg5-common/images/icons/icon-ars-call.svg") center no-repeat;
+                    vertical-align:top;
+                }
+            }
         }
 
         .tit {
@@ -128,6 +160,11 @@
             padding:11px 24px 11px 0;
             font-size:0;
             vertical-align:top;
+            @include mobile {
+                display:block;
+                width:100%;
+                padding:0;
+            }
             label,
             .label {
                 display:inline-block;
@@ -140,7 +177,7 @@
                     content:'*';
                     display:inline-block;
                     margin-left:1px;
-                    color:inherit;
+                    color:#EC455A;
                     font-size:inherit;
                     line-height:inherit;
                     vertical-align:top;
@@ -158,6 +195,11 @@
             display:inline-block;
             width:calc(100% - 234px);
             vertical-align:top;
+            @include mobile {
+                display:block;
+                width:100%;
+                margin-top:6px;
+            }
             .input-wrap {
                 display:block;
             }
@@ -257,6 +299,9 @@
                 width:1%;
                 padding-left:8px;
                 vertical-align:middle;
+                @include mobile {
+                    padding-left:6px;
+                }
             }
         }
         .input-wrap {
@@ -289,7 +334,7 @@
                 &::after {
                     content:'······';
                     display:inline-block;
-                    color:#767676;
+                    color:#222;
                     font-size:40px;
                     line-height:48px;
                     vertical-align:top;
@@ -591,10 +636,14 @@
                     width:20px;
                     height:20px;
                     margin-top:2px;
+                    margin-right:2px;
                     background:url('/lg5-common/images/icons/icon-comp.svg') center no-repeat;
                     vertical-align:top;
                 }
             }
+        }
+        input:focus + .cell {
+            border-color:#EC455A;
         }
         input:disabled + .cell,
         input:read-only + .cell {
@@ -735,10 +784,12 @@
             color:#767676;
             @include font-small;
             font-weight:500;
+            em {
+                color:#EC455A;
+            }
         }
         .btn-wrap {
             margin-top:12px;
-            margin-bottom:8px;
         }
         .gray-box {
             margin-top:24px;
@@ -749,6 +800,9 @@
             &:first-child {
                 margin-top:0;
             }
+        }
+        &:first-child {
+            padding:15px 23px;
         }
     }
     &.cell-type {
@@ -985,7 +1039,7 @@ $input: (chk, rdo);
             &+label {
                 position:relative;
                 display:inline-block;
-                padding-left:28px;
+                padding-left:32px;
                 color:#222;
                 @include font-medium;
                 vertical-align:top;
@@ -1003,33 +1057,29 @@ $input: (chk, rdo);
                     content:' ';
                     position:absolute;
                     top:3px;
-                    left:0;
+                    left:2px;
                     width:20px;
                     height:20px;
-                    border:1px solid #808080;
-                    border-radius:50%;
+                    background:url("/lg5-common/images/bg-input-default.svg") center no-repeat;
                 }
                 @if ( $type == chk ) {
                     &::after {
                         content:' ';
                         position:absolute;
-                        top:8px;
+                        top:9px;
                         left:6px;
-                        width:12px;
-                        height:6px;
-                        border:1px solid #808080;
-                        border-top:none;
-                        border-right:none;
-                        transform:rotate(-45deg);
+                        width:11px;
+                        height:9px;
+                        background:url("/lg5-common/images/bg-chk-default.svg") center no-repeat;
                     }
                 } @else if ( $type == rdo ) {
                     &::after {
                         content:' ';
                         position:absolute;
-                        top:4px;
-                        left:4px;
-                        width:16px;
-                        height:16px;
+                        top:6px;
+                        left:5px;
+                        width:14px;
+                        height:14px;
                         border-radius:50%;
                         background:transparent;
                     }
@@ -1038,16 +1088,15 @@ $input: (chk, rdo);
             &:checked+label {
                 @if ( $type == chk ) {
                     &::before {
-                        border-color:transparent;
-                        background:#ec455a;
+                        background:#EC455A;
+                        border-radius:50%;
                     }
                     &::after {
-                        border-color:#fff;
+                        background:url("/lg5-common/images/bg-chk-on.svg") center no-repeat;
                     }
                 } @else if ( $type == rdo ) {
                     &::before {
-                        background-color:transparent;
-                        border-color:#ec455a;
+                        background:url("/lg5-common/images/bg-input-checked.svg") center no-repeat;
                     }
                     &::after {
                         background:#ec455a;
@@ -1059,16 +1108,11 @@ $input: (chk, rdo);
                 cursor: default;
                 @if ( $type == chk ) {
                     &::before {
-                        border-color:#ccc;
-                        background:#f4f4f4;
-                    }
-                    &::after {
-                        border-color:#ccc;
+                        background:url("/lg5-common/images/bg-input-disabled.svg") center no-repeat;
                     }
                 } @else if ( $type == rdo ) {
                     &::before {
-                        background-color:#f4f4f4;
-                        border-color:#ccc;
+                        background:url("/lg5-common/images/bg-input-disabled.svg") center no-repeat;
                     }
                     &::after {
                         background:transparent;
@@ -1159,21 +1203,12 @@ $input: (chk, rdo);
                         border: 1px solid #ddd;
                         border-radius: 8px;
                         &:before {
-                            top: 16px;
-                            left: 16px;
+                            top: 20px;
+                            left: 18px;
                         }
-                        &:after {
-                            content: '';
-                            position: absolute;
-                            top: 24px;
-                            left: 22px;
-                            width: 12px;
-                            height: 6px;
-                            border: 2px solid #808080;
-                            border-top: none;
-                            border-right: none;
-                            border-radius: 0;
-                            transform: rotate(-45deg);
+                        &::after {
+                            top:23px;
+                            left:21px;
                         }
                         @include mobile {
                             border-radius: 4px;
@@ -1192,13 +1227,6 @@ $input: (chk, rdo);
                     &:checked {
                         & + label {
                             border-color: #ec455a;
-                            &:before {
-                                border-color: transparent;
-                                background: #ec455a;
-                            }
-                            &:after {
-                                border-color:#fff;
-                            }
                         }
                     }
                 }
