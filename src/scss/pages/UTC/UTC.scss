@@ -166,7 +166,7 @@
 
 .order-item {
     display: flex;
-    align-items: center;
+    //align-items: center;
     //flex-wrap: wrap;
     position: relative;
     padding:32px 0 32px;
@@ -202,10 +202,14 @@
         position: relative;
     }
     .flag-wrap {
-        margin-bottom:8px;
-        padding-right:90px;
+        margin-bottom:4px;
         @include mobile {
             padding-right:0;
+        }
+        .flag {
+            &:first-child {
+                padding-left: 0;
+            }
         }
     }
     .item-name {
@@ -279,8 +283,8 @@
     }
     .product-payment {
         //position:relative;
-        //display: flex;
-        //align-items: center;
+        display: flex;
+        align-items: center;
         //padding:0 140px 0 0;
         //width: 320px;
         text-align: right;
