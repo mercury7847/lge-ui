@@ -35,9 +35,6 @@ $(window).ready(function(){
                 asNavFor: '.ui_carousel_slider'
             });
 
-            $('.ui_carousel_thumb_slider .ui_carousel_track a').on('click', function(e){
-                e.preventDefault();
-            })
         });           
         
     })(

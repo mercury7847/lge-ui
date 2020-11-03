@@ -138,6 +138,12 @@
                 margin-top:8px;
             }
         }
+        .box {
+            width:100%;
+        }
+        .err-msg {
+            display:none;
+        }
         @include mobile {
             float:none;
             width:100%;

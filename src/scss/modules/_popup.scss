@@ -2,8 +2,8 @@
 .lay-wrap {
     display:none;
     position:absolute;
-    width:492px;
-    padding-top:70px;
+    width:444px;
+    padding-top:72px;
     background-color:#fff;
     box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.16);
     border-radius:4px;
@@ -11,64 +11,44 @@
     overflow:hidden;
     @include mobile {
         width:73.4%;
-        padding-top:48px;
+        padding-top:75px;
     }
     .lay-header {
         position:relative; 
         width:auto;
         text-align:center;
         margin:0 24px;
-        padding:0 32px;
         box-shadow:none;
         @include mobile {
             padding:0;
         }
         h1 {
-            color:#222; 
-            font-size:24px;
-            line-height:32px; 
+            @include font-large-2; 
             text-align:center; 
             font-weight:700;
-            @include mobile {
-                font-size:16px;
-                line-height:24px;
-            }
         }
     }
     .lay-conts {
-        margin-top:8px;
-        padding:0 48px 32px;
-        font-size:16px;
-        line-height:24px;
+        padding:0 24px 32px;
+        @include font-medium;
         text-align:center;
         &:first-child {
             margin-top:0;
         }
         @include mobile {
-            padding:0 24px 40px;
-            font-size:14px;
-            line-height:18px;
+            padding:0 24px 75px;
         }
         p {
-            margin-top:4px;
-            &:first-child {
-                margin-top:0;
-            }
+            margin-top:8px;
         }
         h6 {
-            color:#222;
-            font-size:24px;
-            line-height:32px;
+            @include font-large-2;
             font-weight:700;
-            @include mobile {
-                font-size:16px;
-                line-height:24px;
-            }
         }
     }
     .laypop {
         &.btn-wrap {
-            padding-bottom:48px;
+            padding-bottom:72px;
             font-size:0;
             text-align:center;
             @include mobile {
@@ -87,6 +67,17 @@
                     &:only-child {
                         width:100%;
                     }
+                }
+            }
+        }
+    }
+    &.type2 {
+        padding-top:48px;
+        .laypop {
+            &.btn-wrap {
+                padding-bottom:48px;
+                @include mobile {
+                    padding:0;
                 }
             }
         }
@@ -122,12 +113,14 @@
     .btn-close {
         position:absolute;
         top:40px;
-        right:56px;
+        right:48px;
         width:24px;
         height:24px;
         @include mobile {
-            top:24px;
-            right:24px;
+            top:8px;
+            right:16px;
+            width:16px;
+            height:16px;
         }
         &::before, &::after {
             content:' ';
@@ -140,6 +133,10 @@
             margin-left:-1px;
             border-radius:1px;
             background:#222;
+            @include mobile {
+                height:16px;
+                margin-top:-8px;
+            }
         }
         &::before {
             transform:rotate(45deg);
@@ -149,7 +146,9 @@
         }
     }
     .pop-header {
-        padding:40px 88px 32px 56px;
+        padding:40px 0 22px;
+        margin:0 48px;
+        border-bottom:2px solid #222;
         .tit span {
             display:block;
             height:32px;
@@ -162,12 +161,13 @@
             word-break:keep-all;
         }
         @include mobile {
-            padding:24px 52px;
+            margin:0;
+            padding:8px 16px;
+            border:none;
             .tit span {
-                height:27px;
-                font-size:18px;
-                line-height:27px;
-                text-align:center;
+                height:24px;
+                font-size:13px;
+                line-height:21px;
             }
         }
     }
@@ -192,10 +192,11 @@
     .pop-conts {
         height:auto;
         max-height:492px;
-        padding:0 48px 48px;
+        padding:48px 48px 0;
         overflow-y:auto;
         &.no-footer {
             max-height:576px;
+            padding-bottom:48px;
             text-align:left;
             @include mobile {
                 height:calc(100% - 75px);
@@ -206,9 +207,9 @@
             background-color: #fff;
         }
         @include mobile {
-            padding:0 20px 56px;
-            height:calc(100% - 135px);
-            max-height:calc(100% - 135px);
+            padding:32px 16px 60px;
+            height:calc(100% - 113px);
+            max-height:calc(100% - 113px);
         }
         .tabs-wrap {
             &:first-child {
@@ -222,7 +223,7 @@
         }
     }
     .pop-footer {
-        padding:32px 56px 40px;
+        padding:48px 48px 48px;
         background:transparent;
         font-size:0;
         text-align:right;
@@ -349,7 +350,7 @@
                     display:none;
                 }
                 @include mobile {
-                    height:54px;
+                    height:42px;
                     br {
                         display:block;
                     }
@@ -515,7 +516,7 @@
                                 position:relative;
                                 top:auto;
                                 right:auto;
-                                margin-top:10px;
+                                margin:24px 0 0 -32px;
                                 font-size:0;
                                 text-align:right;
                                 transform:translateY(0);
@@ -523,13 +524,17 @@
                             .btn {
                                 display:block;
                                 margin-top:8px;
-                                &:first-child {
-                                    margin-top:0;
-                                }
                                 @include mobile {
                                     display:inline-block;
+                                    width:calc((100% - 8px) / 2);
                                     margin-top:0;
                                     margin-left:8px;
+                                }
+                                &:first-child {
+                                    margin-top:0;
+                                    @include mobile {
+                                        margin-left:0;
+                                    }
                                 }
                             }
                         }
@@ -649,6 +654,22 @@
                     &:before {
                         display:none;
                     }
+                }
+            }
+        }
+    }
+
+    // input-form
+    .input-info {
+        .tit-wrap {
+            padding-bottom:8px;
+            .h2-tit {
+                @include font-large;
+            }
+            &.type2 {
+                padding-bottom:23px;
+                .h2-tit {
+                    @include font-medium;
                 }
             }
         }

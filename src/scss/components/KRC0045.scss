@@ -124,7 +124,7 @@
         }
     }
     .unit-box {
-        @include grid-col(left,4,6);
+        @include grid-col(left,3,6);
         margin-bottom: 64px;
         .img-wrap {
             margin-bottom: 16px;

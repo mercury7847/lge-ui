@@ -103,7 +103,6 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var nObj = {};
             var $target;
-            var $msgTarget;
             var msg;
 
             for(var key in self.register){
@@ -114,18 +113,11 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
 
                 if(msg) {
                     if($target.siblings(msg).length > 0){
-                        // $target.siblings(msg).text(obj.errorMsg);
-                        $msgTarget = $target.siblings(msg);
-                    }else if ($target.parent().siblings(msg).length > 0) {
-                        // $target.parent().siblings(msg).text(obj.errorMsg);
-                        $msgTarget = $target.parent().siblings(msg);
-                    }else {
-                        // $(msg).text(obj.errorMsg);
-                        $msgTarget = $(msg); 
+                        $target.siblings(msg).hide();
+                        $target.siblings(msg).text(obj.errorMsg);
+                    }else{
+                        $target.parent().siblings(msg).text(obj.errorMsg);
                     }
-
-                    $msgTarget.hide();
-                    self.register[key]['msgObj'] = $msgTarget;
                 };
             }
 
@@ -149,47 +141,36 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
             var rObj = newObj;
             var isFalse = flag? flag : false;
 
-            if (self._defaultCheckFunc(val) != isFalse) {
-                if(obj.validate){
-                    if(obj.validate(val) == isFalse){
-                        // rObj[key] = isFalse? val : obj.errorMsg ;
-                        rObj[key] = isFalse? val : (obj[key + 'Msg'] || obj.errorMsg );
+            if(obj.validate){
+                if(obj.validate(val) == isFalse){
+                    rObj[key] = isFalse? val : obj.errorMsg ;
+                }else{
+                    delete rObj[key];
+                }            
+            }else{       
+                if(obj.pattern){
+                    if(self._regexCheckFunc(obj.pattern, val) == isFalse){  
+                        rObj[key] = isFalse? val : obj.errorMsg;
                     }else{
                         delete rObj[key];
-                    }            
-                }else{       
-                    if(obj.pattern){
-                        if(self._regexCheckFunc(obj.pattern, val) == isFalse){  
-                            // rObj[key] = isFalse? val : obj.errorMsg ;
-                            rObj[key] = isFalse? val : (obj[key + 'Msg'] || obj.errorMsg );
+                    }
+                }else{
+                    if(obj.minLength || obj.maxLength){
+                        if(self._lenCheckFunc(val, obj.minLength? obj.minLength : 0 , obj.maxLength? obj.maxLength : self.options.maxLength) == isFalse){
+                            rObj[key] = isFalse? val : obj.errorMsg;
                         }else{
                             delete rObj[key];
                         }
                     }else{
-                        if(obj.minLength || obj.maxLength){
-                            if(self._lenCheckFunc(val, obj.minLength? obj.minLength : 0 , obj.maxLength? obj.maxLength : self.options.maxLength) == isFalse){
-                                // rObj[key] = isFalse? val : obj.errorMsg ;
-                                rObj[key] = isFalse? val : (obj[key + 'Msg'] || obj.errorMsg );
-                            }else{
-                                delete rObj[key];
-                            }
-                        } else {
+
+                        if(self._defaultCheckFunc(val) == isFalse){
+                            rObj[key] = isFalse? val : obj.errorMsg;
+                        }else{
                             delete rObj[key];
                         }
-                        // else{
-
-                        //     if(self._defaultCheckFunc(val) == isFalse){
-                        //         // rObj[key] = isFalse? val : obj.errorMsg ;
-                        //         rObj[key] = isFalse? val : obj.errorMsg;
-                        //     }else{
-                        //         delete rObj[key];
-                        //     }
-                        // }
                     }
-                } 
-            } else {
-                rObj[key] = isFalse? val : obj.errorMsg;
-            }
+                }
+            } 
 
             // console.log(rObj);
             return rObj;
@@ -279,7 +260,7 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                             nArr.push($(item).val())
                         });
                         val = $target.is(':radio')? nArr[0] : nArr;
-                        //if(val=='on') val = '';
+                        if(val=='on') val = '';
 
                     }else{
                         val = $target.val();
@@ -316,7 +297,6 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
 
             self.validItemObj = rObj;
 
-            self._accessibility(self.validItemObj);
             if(vcui.isEmpty(rObj)){
                 self.triggerHandler('success');
             }else{
@@ -325,65 +305,37 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
             }
             
         },
-        _accessibility: function(obj) {
-            var self = this;
-            var $target, $msg;
 
-            for(var key in self.register){
-                var nobj = self.register[key];
-                if(nobj.required){
-                    $target = self.$el.find('[name='+ key +']');
-                    $msg = nobj['msgObj'];
-
-                    if($msg.length > 0) {
-                        if (vcui.hasOwn(obj, key)) {
-                            $target.attr('aria-describedby', key + 'Error');
-                            $msg.attr('id', key + 'Error');
-                        } else {
-                            $target.removeAttr('aria-describedby');
-                            $msg.removeAttr('id');
-                        }
-                    }
-                }
-            }
-        },
         _swicthErrorMsg : function _swicthErrorMsg(obj){
             var self = this;
-            var $target, $msg;
+            var $target, msg;
 
             for(var key in self.register){
                 var nobj = self.register[key];
                 if(nobj.required){
                     $target = self.$el.find('[name='+ key +']');
-                    $msg = nobj['msgObj'];
-                    if($msg.length > 0) {
-                        if (vcui.hasOwn(obj, key)) {
-                            $msg.text(obj[key]);
-                            $msg.show();
-                        } else {
-                            $msg.text('');
-                            $msg.hide();
-                            // if($target.siblings(msg).length>0){
-                            //     $target.siblings(msg).hide();
-                            // }else{
-                            //     $target.parent().siblings(msg).hide();
-                            // }
+                    msg = nobj['msgTarget'];
+                    if(msg) {
+                        if($target.siblings(msg).length>0){
+                            $target.siblings(msg).hide();
+                        }else{
+                            $target.parent().siblings(msg).hide();
                         }
                     }
                 }
             }
-            // for(var prop in obj){
+            for(var prop in obj){
 
-            //     $target = self.$el.find('[name='+ prop +']');
-            //     msg = nobj['msgTarget'];
-            //     if(msg){ 
-            //         if($target.siblings(msg).length>0){
-            //             $target.siblings(msg).show();
-            //         }else{
-            //             $target.parent().siblings(msg).show();
-            //         }
-            //     }
-            // }
+                $target = self.$el.find('[name='+ prop +']');
+                msg = nobj['msgTarget'];
+                if(msg){ 
+                    if($target.siblings(msg).length>0){
+                        $target.siblings(msg).show();
+                    }else{
+                        $target.parent().siblings(msg).show();
+                    }
+                }
+            }
         },
 
         _validateEvent : function _validateEvent(key){
@@ -409,14 +361,13 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                         nArr.push($(item).val())
                     });
                     val = $target.is(':radio')? nArr[0] : nArr;
-                    //if(val=='on') val = '';
+                    if(val=='on') val = '';
 
                 }else{
                     val = e.currentTarget.value;
                 }
                 
-                self.validItemObj = self._checkValidate(key, obj, val, self.validItemObj);        
-                self._accessibility(self.validItemObj);        
+                self.validItemObj = self._checkValidate(key, obj, val, self.validItemObj);                
                 self._swicthErrorMsg(self.validItemObj);
                 if(!vcui.isEmpty(self.validItemObj)){                    
                     self.triggerHandler('errors', [self.validItemObj]);

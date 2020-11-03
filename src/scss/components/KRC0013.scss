@@ -191,18 +191,30 @@
 	}
 
 	.inner {
+		display:table;
 		@include clearfix;
 		margin:0 -12px;
 		@include mobile {
+			display:inherit;
 			margin:0 -6px;
 		}
 	}
 
 	.visual-wrap {
+		display:table-cell;
+		float:none !important;
+		vertical-align:middle;
+		@include mobile {
+			display:inherit;
+		}
 		.visual-area {
 			position: relative;
 			max-width: 100%;
 			margin-bottom: 14px;
+
+			video {
+				height:auto;
+			}
 
 			&.image {
 				.caption {
@@ -245,8 +257,13 @@
 	}
 	
 	.text-wrap {
+		display:table-cell;
+		float:none !important;
 		padding-top: 25px;
-
+		vertical-align:middle;
+		@include mobile {
+			display:inherit;
+		}
 		.title {
 			margin-bottom: 40px;
 			h1, h2, h3, h4, h5, h6 {
