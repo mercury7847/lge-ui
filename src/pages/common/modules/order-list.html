@@ -1,4 +1,4 @@
-<li class="order-item @@disabled"><!-- 판매종료/일시품절 시 disabled -->
+<li class="order-item @@disabled" data-item-id="@@itemID"><!-- 판매종료/일시품절 시 disabled -->
     @@if(context.message) {
     <div>
         <div class="message-box">
@@ -36,12 +36,19 @@
                 <p class="total">@@price</p>
             </div>
             @@if(context.tooltip) {
-            <a href="#n" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>
+                <div class="tooltip-wrap">
+                    <span class="tooltip-icon ui_tooltip-target">계약내용 자세히 보기</span>
+                    <span class="tooltip-box">
+                        <p>계약내용이 들어갈 자리</p>
+                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                    </span>
+                </div>
+            <!-- <a href="#n" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a> -->
             }
         </div>
         @@if(context.btn) {
         <div class="btn-area">
-            <button type="button" class="btn pink border size" @@disabled><span>@@btnValue</span></button>
+            <button type="button" class="btn pink border size" data-url="#n" @@disabled><span>@@btnValue</span></button>
         </div>
         }
     </div>

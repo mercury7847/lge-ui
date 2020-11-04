@@ -1,55 +1,27 @@
-/*
-<script src="/lg5-common/js/cart/cart.js"></script>
-*/
 (function() {
-    var cartProducts = [];
-    var cartUrl = "";
-    var removeUrl = "";
-
-    var cartItemTemplate =
-                '<div class="cart-item">' +
-                '<div class="product-check"><span class="chk-wrap">' +
-                    '<input type="checkbox" id="selectitem{{index}}" name="selectitem">' +
-                    '<label for="selectitem{{index}}"><span class="blind">선택안함</span></label>' +
-                '</span></div>' +
-                '<div class="product-info">' +
-                    '<div class="item-image"><img src="{{imageUrl}}" alt="{{imageAlt}}"></div><div class="item-name">{{modelName}}</div>' +
-                    '<div class="item-options"><div class="sku">{{modelNumber}}</div><div class="sibling-option">{{modelOption}}</div>' +
-                '</div>' +
-                '<div class="quantity-wrap">' +
-                    '<div class="select-quantity"><div class="inner">' +
-                        '<button type="button" class="minus"><span class="blind">뺴기</span></button>' +
-                        '<input type="number" class="quantity" title="수량 입력" value="{{Quantity}}" readonly>' +
-                        '<button type="button" class="plus"><span class="blind">더하기</span></button>' +
-                    '</div></div>' +
-                '</div><div class="delivery-option">' +
-                    '{{#if (reservationAdvance)}}<a href="{{reservationAdvance}}" class="btn-text">사전방문 예약</a>{{/if}}' +
-                    '{{#if (deliveryDesired)}}<a href="{{deliveryDesired}}" class="btn-text">배송희망일 지정</a>{{/if}}' +
-                '</div></div>' +
-                '{{#if (coupon.length > 0)}}' +
-                '<div class="select-coupon"><div class="select-wrap">' +
-                    '<select class="ui_selectbox" id="selectCoupon" title="쿠폰 선택">' +
-                        '<option value="" class="placeholder">쿠폰을 선택해주세요.</option>' +
-                        '{{#each item in coupon}}<option value="{{item.couponId}}">{{item.couponName}}</option>{{/each}}' +
-                    '</select></div>' +
-                '</div>'+
-                '{{/if}}' +
-                '<div class="product-payment">' +
-                    '<div class="inner">' +
-                        '<div class="calc-amount">{{order}}원 {{#if (sale)}}<em>- {{sale}}</em> {{/if}}+ 배송비 {{shipping}}원</div>' +
-                        '<div class="amount">' +
-                            '{{#if (order != total)}}<span class="purchase-price"><em class="blind">판매가격</em>{{order}}원</span>{{/if}}' +
-                            '<span class="total-price"><em class="blind">총 금액</em>{{total}}원</span>' +
-                        '</div>' +
-                        '<div class="btn-purchase"><a href="#" class="btn bd-pink btn-small">바로구매</a></div>' +
-                    '</div>' +
-                '</div>' +
-                '<div class="product-wish"><span class="chk-wish-wrap">' +
-                    '<input type="checkbox" id="wishitem{{index}}" name="wishitem" {{#if (wish)}}checked{{/if}}>' +
-                    '<label for="wishitem{{index}}"><span class="blind">찜하기</span></label>' +
-                '</span></div>' +
-                '<div class="item-delete"><button type="button" class="btn-delete"><span class="blind">상품 삭제</span></button></div>' +
-                '</div>';
+    var cartItemTemplate = '<li class="order-item {{#if soldout}}disabled{{/if}}" data-item-id={{id}}>' +
+        '<div class="item-image"><a href="{{url}}"><img src="{{image_url}}" alt="{{image_alt}}"></a></div>' +
+        '<div class="product-info">' +
+            '<div class="flag-wrap bg-type">' +
+                '<span class="flag"><span class="blind">제품타입</span>{{type}}</span>' +
+            '</div>'
+            '<div class="item-name"><a href="{{url}}">{{title}}</a></div>' +
+            '<div class="item-options"><div class="sku"><span class="blind">제품번호</span>{{sku}}</div><div class="sibling-option"><span class="blind">제품옵션</span>{{color_option}}</div></div>' +
+            '<div class="item-options2">{{#each (item, index) in option}}<p>{{#if index == 0}}옵션 : {{/if}}item</P>{{/each}}</div>' +
+        '</div>' +
+        '<div class="product-payment">' +
+            '<div class="amount">' +
+            '<div class="price">{{#if original_price}}<p class="original">월 {{original_price}}원</p>{{/if}}<p class="total">월 {{sale_price}}원</p></div>' +
+            '{{#if tooltip}}<div class="tooltip-wrap"><span class="tooltip-icon ui_tooltip-target">계약내용 자세히 보기</span>'
+            '<span class="tooltip-box"><p>{{tooltip}}</p><button type="button" class="btn-close"><span class="blind">닫기</span></button></span></div>{{/if}}' +
+            //'<a href="#" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>' +
+        '</div><div class="btn-area">' +
+            '{{#if subscription_url}}<button type="button" class="btn pink border size" data-url={{subscription_url}}><span>청약신청</span></button>{{#else}}<button type="button" class="btn pink border size" disabled><span>청약신청불가</span></button>{{/if}}' +
+        '</div></div>' +
+        '<span class="chk-wish-wrap"><input type="checkbox" id="chk-wish{{index}}" name="chk-wish{{index}}" {{#if (wish)}}checked{{/if}}><label for="chk-wish{{index}}"><span class="blind">{{#if wish}}찜한상품{{#else}}찜하기{{/if}}</span></label></span>' +
+        '<span class="chk-wrap"><input type="checkbox" id="chk-select{{index}}" name="chk-select{{index}}"><label for="chk-select{{index}}"><span class="blind">선택안함</span></label></span>' +
+        '<div class="item-delete"><button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button></div>' +
+        '</li>'
 
     function noData(visible) {
         if(visible) {
@@ -162,6 +134,7 @@
         });
     }
 
+    //지울려고 하는 알람id는 array로 전달
     function requestWishProduct(param) {
         console.log(param);
     }
@@ -180,8 +153,15 @@
     }
 
     $(window).ready(function() {
-        var myCart = {
+        var careCart = {
             init: function() {
+                self.$cartContent = $('#tab2');
+                self.$cartAllCheck = self.$cartContent.find('div.check-option div.chk-wrap input');
+                self.$cartSelectRemove = self.$cartContent.find('div.check-option div.btn-area button.btn-text');
+                self.$cartList = self.$cartContent.find('div.list-wrap');
+                self.cartItemCheckQuery = "li.order-item span.chk-wrap input";
+
+                /*
                 var cartContent = $('div.contents.cart');
                 cartUrl = cartContent.attr('data-url-cart');
                 removeUrl = cartContent.attr('data-url-remove');
@@ -202,13 +182,64 @@
                 self.$productQuantity = null;
                 self.$selectQuantity = null;
                 self.$removeProduct = null;
-
+*/
                 this.bindEvents();
 
-                requestChangeCartData();
+                //requestChangeCartData();
             },
 
             bindEvents: function() {
+                var _self = this;
+
+                //전체선택
+                self.$cartAllCheck.on('change',function (e) {
+                    var $cartItemCheck = self.$cartList.find(self.cartItemCheckQuery);
+                    $cartItemCheck.prop('checked', self.$cartAllCheck.is(':checked'));
+                    $cartItemCheck.each(function (index, item) {
+                        changeBlindLabelTextSiblingCheckedInput(item,'선택함','선택안함');
+                    });
+                });
+
+                //리스트 아이템 선택
+                self.$cartList.on('click', self.cartItemCheckQuery, function(e) {
+                    var $cartItemCheck = self.$cartList.find(self.cartItemCheckQuery);
+                    self.$cartAllCheck.prop('checked', !$cartItemCheck.is(':not(:checked)'));
+                    changeBlindLabelTextSiblingCheckedInput(this,'선택함','선택안함');
+                });
+
+                //리스트 아이템 청약하기 버튼
+                self.$cartList.on('click', 'div.product-payment div.btn-area button', function(e) {
+                    var url = $(this).attr('data-url');
+                    location.href = url;
+                });
+
+                //리스트 아이템 찜하기
+                self.$cartList.on('click', 'span.chk-wish-wrap input', function(e) {
+                    var itemID = $(this).parents('li.order-item').attr('data-item-id');
+                    var checked = $(this).is(':checked');
+                    _self.requestWishItem(itemID, checked);
+                });
+
+                //전체삭제
+                self.$cartSelectRemove.on('click', function(e) {
+                    var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
+                    var itemList = [];
+                    cartItemCheck.each(function (index, item) {
+                        var itemID = $(item).parents('li.order-item').attr('data-item-id');
+                        itemList.push(itemID);
+                    });
+                    if(itemList.length > 0) {
+                        _self.requestRemoveItem(itemList);
+                    }
+                });
+
+                //리스트 아이템 삭제
+                self.$cartList.on('click', 'div.item-delete button.btn-delete', function(e) {
+                    var itemID = $(this).parents('li.order-item').attr('data-item-id');
+                    _self.requestRemoveItem([itemID]);
+                });
+
+                /*
                 self.$productAllCheck.on('change',function (e) {
                     self.$productCheck.prop('checked', self.$productAllCheck.is(':checked'));
                     self.$productCheck.each(function (index, item) {
@@ -231,9 +262,35 @@
                         checkNoData();
                     }
                 });
+                */
+            },
+
+            //아이템 삭제 (리스트로 전달)
+            requestRemoveItem: function(items) {
+                var ajaxUrl = self.$cartContent.attr('data-remove-url');
+                var postData = JSON.stringify(items);
+                console.log('remove',ajaxUrl, postData);
+                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
+                    console.log(result);
+                });
+            },
+
+            //아이템 찜하기
+            requestWishItem: function(itemID, wish) {
+                var ajaxUrl = self.$cartContent.attr('data-wish-url');
+                var postData = {"itemID":itemID, "wish":wish};
+                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
+            },
+
+            //장바구니에 담기
+            requestCartItem: function(itemID) {
+                var ajaxUrl = self.$cartContent.attr('data-cart-url');
+                var postData = {"itemID":itemID};
+                console.log('cart',ajaxUrl, postData);
+                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
             }
         };
 
-        myCart.init();
+        careCart.init();
     });
 })();
