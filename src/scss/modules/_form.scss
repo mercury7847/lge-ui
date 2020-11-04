@@ -454,6 +454,9 @@
         }
         .bullet-list {
             margin-top:12px;
+            &.bgGray {
+                margin-top: 0;
+            }
         }
         .btm-more {
             display:block;

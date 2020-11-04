@@ -229,9 +229,6 @@
                 height:32px;
                 margin-top:-16px;
                 background: url('/lg5-common/images/icons/icon-arrow-accor.svg') no-repeat 0 0;
-                @include mobile {
-                    right:27px;
-                }
             }
         }
         .title {
@@ -242,5 +239,36 @@
     }
     .accord-cont {
         padding-top: 16px;
+    }
+
+    @include mobile {
+        > ul {
+            .lists {
+                border-top: 12px solid $color-bg;
+                padding: 16px;
+                &:last-child {
+                    padding-bottom: 16px;
+                }
+            }
+        }
+        .head {
+                border-bottom: 0;
+            &.btn_close {
+                border-bottom: 2.5px solid #222;
+            }
+            .accord-btn {
+                padding:12px 0;
+                &::after {
+                     right:7px;
+                }
+            }
+            .title {
+                font-size: $font-large;
+                line-height: 27px;
+            }
+        }
+        .accord-cont {
+            padding: 16px 0 44px;
+        }
     }
 }

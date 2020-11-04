@@ -175,20 +175,13 @@
 
 .order-item {
     display: flex;
-    //align-items: center;
-    //flex-wrap: wrap;
     position: relative;
     padding:32px 0 32px;
     border-top: 1px solid #ddd;
     background-color: #fff;
     @include mobile {
-        padding:20px 20px 0;
+        flex-flow: column;
     }
-    //.item-image,
-    //.product-info,
-    //.product-payment {
-    //    flex: auto;
-    //}
     .item-image {
         width:140px;
         height:140px;
@@ -199,8 +192,10 @@
             vertical-align:top;
         }
         @include mobile {
-            top:38px;
-            left:0;
+            position: absolute;
+            top: 32px;
+            left: 0;
+            z-index: 1;
             width:100px;
             height:100px;
         }
@@ -209,6 +204,9 @@
         //@include clearfix;
         flex: 1;
         position: relative;
+        @include mobile {
+            padding-left: 112px;
+        }
     }
     .flag-wrap {
         margin-bottom:4px;
@@ -299,8 +297,9 @@
         text-align: right;
         //vertical-align: middle;
         @include mobile {
-            margin:0 -20px;
-            padding:24px 20px;
+            margin-top: 16px;
+            padding-left: 112px;
+            text-align: left;
         }
         .amount {
             position: relative;
@@ -334,10 +333,6 @@
             display: inline-block;
             width: 140px;
             vertical-align: middle;
-            //position:absolute;
-            //top:50%;
-            //right:0;
-            //transform: translateY(-50%);
         }
     }
     &.disabled .product-payment .amount .total-price {
@@ -486,9 +481,9 @@
     }
     .total-payment-amount {
         padding-top: 12px;
-        @include mobile {
-            margin-bottom:32px;
-        }
+        //@include mobile {
+        //    margin-bottom:32px;
+        //}
         dl {
             margin-bottom: 0 !important;
         }

@@ -86,8 +86,15 @@
                 float: left;
                 width: 400px;
                 margin-left: 48px;
-                &.is-title {
-                    margin-top: -44px;
+            }
+            @include mobile {
+                .col-left,
+                .col-right {
+                    float: none;
+                    width: 100%;
+                }
+                .col-right {
+                    margin-left: 0;
                 }
             }
         }
@@ -232,6 +239,9 @@
 
             & + .accordion-section {
                 margin-top: 80px;
+                @include mobile {
+                    margin-top: 0;
+                }
             }
         }
 

@@ -40,6 +40,10 @@
 			font-weight: 700;
 			color:#ec455a;
 			line-height:22px;
+			@include mobile {
+				font-size:12px;
+				line-height:20px;
+			}
 		}
 	}
 }

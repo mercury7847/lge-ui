@@ -1,4 +1,34 @@
-.subscribe {}
+.subscribe {
+    @media screen and (min-width: 1284px) {
+        .accord-cont {
+            padding-right: 137px;
+        }
+    }
+    @include mobile {
+        .order-item {
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+    }
+    .col-right {
+        .info-area {
+            margin-top: -44px;
+            @include mobile {
+                margin-top: 0;
+                padding:40px 16px 0;
+                border-top: 12px solid $color-bg;
+                //&:before {
+                //    display: block;
+                //    width: 100%;
+                //    height: 12px;
+                //    background-color: $color-bg;
+                //    content: '';
+                //}
+            }
+        }
+    }
+}
 
 .order-items {
     > li {
@@ -222,7 +252,56 @@
 }
 
 .card-benefit-box {
+    @include clearfix;
+    margin: 32px 0 48px;
     padding: 17px 48px;
     border-radius: 8px;
-    background-color: #f4f4f4;
+    background-color: $color-bg;
+    &:before {
+        display: inline-block;
+        width: 64px;
+        height: 41px;
+        margin-right: 40px;
+        background: url('/lg5-common/images/icons/icon-card-74.svg') no-repeat 0 0;
+        vertical-align: middle;
+        content: '';
+    }
+    .text {
+        display: inline-block;
+        font-weight: 700;
+        font-size: $font-large-1;
+        line-height: 30px;
+        vertical-align: middle;
+        em {
+            color: $color-primary;
+        }
+    }
+    .btn-link {
+        float: right;
+        margin-top: 18px;
+    }
+
+    @include mobile {
+        position: relative;
+        margin: 0 0 24px;
+        padding: 14px 48px 16px 108px;
+        border-radius: 4px;
+        &:before {
+            position: absolute;
+            top: 19px;
+            left: 48px;
+            width: 48px;
+            height: 31px;
+            background-size: 48px 31px;
+        }
+        .text {
+            display: block;
+            font-size: $font-medium;
+            line-height: 23px;
+        }
+        .btn-link {
+            float: none;
+            margin-top: 6px;
+        }
+    }
 }
