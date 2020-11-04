@@ -1,6 +1,6 @@
 {
-    "status":"success",
-    "message":null,
+    "status": "success",
+    "message": null,
     "data": {
         "price":{
             "cartCount": "3",
@@ -10,42 +10,48 @@
         },
         "list":[
             {
-                "itemID":"item00001",
-                "wish" : false,
-                "image_url" : "/lg5-common/images/dummy/@img-product2.jpg",
-                "image_alt" : "S5MBR",
-                "title" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
-                "sku" :"S5MBR_1",
-                "color_option" : "버건디레드",
+                "itemID": "item00001",
+                "soldout": false,
+                "type": "렌탈(케어솔루션)",
+                "wish": false,
+                "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt": "S5MBR",
+                "title": "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                "sku": "S5MBR_1",
+                "colorOption": "버건디레드",
                 "option": [
                     "총 요금 3,710,000원",
                     "할인 등록비 5만원",
                     "의무 사용기간 2020.05.29로 부터 36개월(무상할인 2개월)",
                     "방문 주기 6개월/1회"
                 ],
-                "sale_price" : "0",
-                "original_price" : "0",
-                "tooltip":"툴팁내용",
-                "subscription_url":null
+                "salePrice": "56500",
+                "originalPrice": "61400",
+                "tooltip": "툴팁내용",
+                "subscriptionUrl": null,
+                "itemUrl":"#"
             },
             {
-                "itemID":"item00002",
-                "wish" : true,
-                "image_url" : "/lg5-common/images/dummy/@img-product2.jpg",
-                "image_alt" : "S5MBR",
+                "itemID": "item00002",
+                "soldout": true,
+                "type": "케어솔루션",
+                "wish": true,
+                "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
+                "imageAlt": "S5MBR",
                 "title" : "LG2 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
                 "sku" :"S5MBR_2",
-                "color_option" : "실버",
+                "colorOption" : "실버",
                 "option": [
                     "총 요금 3,720,000원",
                     "할인 등록비 6만원",
                     "의무 사용기간 2020.05.30로 부터 50개월(무상할인 4개월)",
                     "방문 주기 6개월/1회"
                 ],
-                "sale_price" : "0",
-                "original_price" : "0",
+                "salePrice" : "56600",
+                "originalPrice" : "61500",
                 "tooltip":"툴팁내용",
-                "subscription_url":"#청약url"
+                "subscriptionUrl":"#청약url",
+                "itemUrl":"#"
             }
         ]
     }
