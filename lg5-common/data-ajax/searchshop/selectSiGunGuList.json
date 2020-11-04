@@ -1,5 +1,9 @@
 {
-    "resultList": [{
+    "ssoCheckUrl": null,
+    "status":"success",
+    "message":null,
+    "param":{},
+    "data": [{
         "city": "서울",
         "gu": "강남구",
         "selFlag": "N"

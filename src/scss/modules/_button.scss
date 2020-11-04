@@ -3,12 +3,12 @@
 .btn {
     display: inline-block;
     min-width:124px;
-    padding:12px;
+    padding:11px;
     @include font-medium;
     text-align: center;
     vertical-align: top;
     border: 1px solid #EC455A;
-    border-radius: 26px;
+    border-radius: 25px;
     background-color:#EC455A;
     color:#fff;
     font-weight:500;
@@ -38,7 +38,7 @@
     // 작은사이즈 버튼
     &.size {
         min-width:68px;
-        padding:3px 20px;
+        padding:5px 20px;
         border-radius:16px;
         @include font-small;
     }
