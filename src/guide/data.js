@@ -226,7 +226,7 @@ var res = {
 			"주문결제(UTC)" : {
 				"신청자정보 입력" : ["/html/UTC/RMSF9001.html","","진행중"],
 				"신청 완료" : ["/html/UTC/RMSF9011.html","","진행중"],
-				"개인정보 수집 및 신용정보 제공 동의 팝업" : ["/html/UTC/RMSF9001_pop1.html","","진행중"],
+				"개인정보 수집 및 이용에 대한 안내 팝업" : ["/html/UTC/RMSF9001_pop1.html","","진행중"],
 				"배송지 관리 팝업" : ["/html/UTC/RMSF9001_pop2.html","","진행중"],
 				"배송지 입력/수정 팝업" : ["/html/UTC/RMSF9001_pop3.html","","진행중"],
 				"LG전자 사전 방문 개인 정보 수집 이용동의 팝업" : ["/html/UTC/RMSF9001_pop4.html","","진행중"],

@@ -41,9 +41,7 @@
         }
     }
     .txt-cont {
-        color:#616161;
-        font-size:14px;
-        line-height:20px;
+        @include font-small;
         .dl-txt-cont {
             margin-top:24px;
             &:first-child {
@@ -51,20 +49,17 @@
             }
             dt {
                 margin-bottom:8px;
-                color:#222;
-                font-size:16px;
-                line-height:24px;
-                font-weight:500;
+                @include font-medium;
+                font-weight:700;
             }
             dd {
-                color:#979797;
-                font-size:14px;
-                line-height:20px;
+                color:#767676;
+                @include font-small;
             }
         }
         .sub-txt {
             margin-top:24px;
-            color:#979797;
+            color:#767676;
         }
     }
 }
@@ -578,9 +573,9 @@
 }
 .agree-cont-wrap {
     .agree-input {
-        margin-bottom:16px;
+        margin-bottom:12px;
         @include mobile {
-            margin-bottom:12px;
+            margin-bottom:8px;
         }
     }
     .agree-cont-box {

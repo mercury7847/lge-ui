@@ -117,10 +117,10 @@
         width:32px;
         height:32px;
         @include mobile {
-            top:24px;
-            right:24px;
+            top:28px;
+            right:16px;
             width:24px;
-            height:16px;
+            height:24px;
         }
         &::before {
             content:' ';
@@ -152,9 +152,11 @@
         }
         @include mobile {
             margin:0 16px;
-            padding:24px 0 12px;
+            padding:24px 0 24px;
+            font-size:24px;
+            line-height:32px;
             .tit span {
-                height:26px;
+                height:32px;
             }
         }
     }
@@ -186,8 +188,8 @@
             padding-bottom:40px;
             text-align:left;
             @include mobile {
-                height:calc(100% - 75px);
-                max-height:calc(100% - 75px);
+                height:calc(100% - 82px);
+                max-height:calc(100% - 82px);
             }
         }
         &.support {
@@ -195,8 +197,8 @@
         }
         @include mobile {
             padding:32px 16px 60px;
-            height:calc(100% - 113px);
-            max-height:calc(100% - 113px);
+            height:calc(100% - 142px);
+            max-height:calc(100% - 142px);
         }
         .tabs-wrap {
             &:first-child {
@@ -233,6 +235,11 @@
             vertical-align:top;
             &:first-child {
                 margin-left:0;
+            }
+            @include mobile {
+                padding:17px 0;
+                font-size:17px;
+                line-height:24px;
             }
         }
         @include pc {
@@ -334,7 +341,7 @@
                     display:none;
                 }
                 @include mobile {
-                    height:54px;
+                    height:64px;
                     br {
                         display:block;
                     }
@@ -343,8 +350,8 @@
         }
         @include mobile {
             .pop-conts {
-                height:calc(100% - 135px - 27px);
-                max-height:calc(100% - 135px - 27px);
+                height:calc(100% - 142px - 32px);
+                max-height:calc(100% - 142px - 32px);
                 &.no-footer {
                     height:calc(100% - 102px);
                     max-height:calc(100% - 102px);
@@ -659,9 +666,16 @@
                 @include font-large;
             }
             &.type2 {
-                padding-bottom:23px;
+                padding-bottom:24px;
+                @include mobile {
+                    padding-bottom:12px;
+                }
                 .h2-tit {
                     @include font-medium;
+                    @include mobile {
+                        font-size:18px;
+                        line-height:26px;
+                    }
                 }
             }
         }
