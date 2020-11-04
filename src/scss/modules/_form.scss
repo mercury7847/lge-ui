@@ -154,8 +154,8 @@
             @include mobile {
                 height:46px;
                 border-radius:4px;
-                font-size:14px;
-                line-height:22px;
+                font-size:13px;
+                line-height:21px;
             }
         }
         .btn.bg-type {
@@ -301,8 +301,13 @@
                 display:block;
                 width:100%;
                 margin-bottom:8px;
-                @include font-small;
+                font-size:14px;
+                line-height:24px;
                 font-weight:500;
+                @include mobile {
+                    font-size:13px;
+                    line-height:21px;
+                }
             }
             .conts {
                 display:block;
@@ -891,6 +896,11 @@
         }
         .btn-wrap {
             margin-top:12px;
+            @include mobile {
+                margin-top:12px !important;
+                padding:0 !important;
+                background:transparent !important;
+            }
         }
         .gray-box {
             margin-top:24px;
