@@ -582,6 +582,8 @@
                 input {
                     & + label {
                         &:before {
+                            width: 24px;
+                            height: 24px;
                             border: 0;
                             border-radius: 0;
                             background: url("/lg5-common/images/icons/icon-heart-off.svg") no-repeat 0 0;
@@ -606,8 +608,191 @@
                 top: 24px;
                 right: 64px;
             }
-        
 
+            .item-banner {
+                .item {
+                    padding: 0;
+                    .product-image {
+                        height: 100%;
+                        max-height: 100%;
+                        margin-bottom: 0;
+                        padding: 0;
+                        a {
+                            width: 100%;
+                            height: 100%;
+                        }
+                        img {
+                            max-width: none;
+                        }
+                    }
+
+                    .banner-contents {
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        left: 0;
+                        padding: 36px 54px;
+
+                        .banner-flag {
+                            margin-bottom: 4px;
+
+                            .flag {
+                                display: inline-block;
+                                border-radius: 4px;
+                                border: 1px solid #fff;
+                                padding: 3px 8px;
+                                font-weight: 500;
+                                font-size: 12px;
+                                line-height: 1;
+                                color: #fff;
+                            }
+                        }
+
+                        .banner-info {
+                            .title {
+                                max-height: 58px;
+                                margin-bottom: 16px;
+                                font-weight: 700;
+                                font-size: 20px;
+                                line-height: 29px;
+                                color: #fff;
+                                @include textClipClamp(2);
+                            }
+
+                            .sub-copy {
+                                font-weight: 500;
+                                font-size: 14px;
+                                line-height: 20px;
+                                color: #fff;
+                                @include textClipClamp(2);
+                            }
+                        }
+
+                        .banner-button {
+                            margin-top: 32px;
+
+                            .btn {
+                                min-width: 124px;
+                                border: 1px solid #fff;
+                                background-color: transparent;
+                                color: #fff;
+                            }
+                        }
+
+                        @include mobile {
+                            padding: 32px 24px;
+                            .banner-flag,
+                            .banner-button {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                &.large {
+
+                    .product-image {
+                        overflow: hidden;
+                        width: 100%;
+                        a {
+                            position: relative;
+                            height: 100%;
+                        }
+                        img {
+                            width: 100%;
+                        }
+
+                        @media screen and (min-width: 768px) {
+                            img {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%,-50%);
+                            }
+                        }
+                    }
+
+                    .banner-contents {
+                        .banner-flag {
+                            margin-bottom: 8px;
+                        }
+                        .banner-button {
+                            margin-top: 0;
+                        }
+                    }
+
+                    // pc
+                    @media screen and (min-width: 1285px) {
+                        .item {
+                            display: flex;
+                            flex-wrap: wrap;
+                            flex-direction: row;
+                            .product-image {
+                                @include calc(height, 100%, 212px);
+                            }
+                        }
+                        .banner-contents {
+                            position: static;
+                            display: table;
+                            width: 100%;
+                            padding: 0 54px;
+                            .inner {
+                                position: relative;
+                                display: table-cell;
+                                padding-right: 184px;
+                                vertical-align: middle;
+                            }
+
+                            .banner-flag {
+                                .flag {
+                                    border-color: #222;
+                                    color: #222;
+                                }
+                            }
+                            .banner-info {
+                                .title,
+                                .sub-copy {
+                                    color: #222;
+                                }
+                            }
+                            .banner-button {
+                                .btn {
+                                    border-color: #979797;
+                                    color: #222;
+                                }
+                            }
+
+                            .banner-button {
+                                position: absolute;
+                                top: 50%;
+                                right: 0;
+                                transform: translateY(-50%);
+                            }
+                        }
+                    }
+                    @media (min-width: 768px) and (max-width: 1284px) {
+                        .product-image {
+                            img {
+                                width: auto;
+                                height: 100%;
+                            }
+                        }
+                        .banner-contents {
+                            padding: 36px 54px;
+                        }
+                    }
+                    @media screen and (max-width: 1284px) {
+                        .product-image {
+                            border-radius: 4px;
+                        }
+                        .banner-contents {
+                            .banner-button {
+                                margin-top: 20px;
+                            }
+                        }
+                    }
+                }
+            }
 
             .pagination {
                 padding-top: 36px;
