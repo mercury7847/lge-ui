@@ -41,6 +41,20 @@ $(window).ready(function(){
             self.$popPdpThumbnail = self.$popPdpVisual.find('div.pop-pdp-thumbnail-nav ul.pop-thumbnail-list');
             self.$popPdpZoomArea = self.$popPdpVisual.find('div.zoom-btn-area');
 
+            vcui.require(['ui/carousel'], function () {
+                self.$pdpMobileSlider.vcCarousel({
+                    infinite: false,
+                    autoplay: false,
+                    swipeToSlide: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    prevArrow:'.btn-arrow.prev',
+                    nextArrow:'.btn-arrow.next',
+                    focusOnSelect: false,
+                    focusOnChange: false
+                });
+            });
+
             vcui.require(['ui/pinchZoom'], function (PinchZoom) {
                 pinchZoom = new PinchZoom('.zoom-area');
 
@@ -166,18 +180,9 @@ $(window).ready(function(){
             var _self = this;
             var ajaxUrl = self.$detailInfo.data('url-detail');
     
-            $.ajax({
-                url: ajaxUrl,
-                data: param
-            }).done(function (d) {
-                if(d.status != 'success') {
-                    alert(d.message ? d.message : '오류발생');
-                    return;
-                }
-    
-                var data = d.data;
-                //console.log(data);
-    
+            lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
+                var data = result.data;
+
                 //뱃지
                 var contentHtml = "";
                 var arr = data.product_badge;
@@ -226,19 +231,6 @@ $(window).ready(function(){
                     }
                 });
                 self.$pdpThumbnail.html(contentHtml);
-                /*
-                var thumbItems = self.$pdpThumbnail.find('li.thumbnail');
-                thumbItems.on('click', function (e){
-                    var slideClicked = $(this).attr("data-idx");
-                    if($(this).hasClass('more')) {
-                        //more는 바로 모달뷰 뛰움
-                        _self.openVisualModal(slideClicked);
-                    } else {
-                        //썸네일 클릭
-                        _self.clickThumbnailSlide(slideClicked);
-                    } 
-                });
-                */
 
                 //이미지 슬라이드 모바일
                 contentHtml = "";
@@ -267,27 +259,13 @@ $(window).ready(function(){
                 });
                 self.$pdpMobileSliderTrack.html(contentHtml);
 
-                vcui.require(['ui/carousel'], function () {
-                    self.$pdpMobileSlider.vcCarousel({
-                        infinite: false,
-                        autoplay: false,
-                        swipeToSlide: true,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        prevArrow:'.btn-arrow.prev',
-                        nextArrow:'.btn-arrow.next',
-                        focusOnSelect: false,
-                        focusOnChange: false
-                    });
-
-                    var f = 0;
-                    var found = pdp_visual_list.some(function(item, index) { f = index; return item.type == 'image'; });
-                    var index = 0;
-                    if(found) {
-                        index = f;
-                    };
-                    _self.clickThumbnailSlide(index);
-                });
+                var f = 0;
+                var found = pdp_visual_list.some(function(item, index) { f = index; return item.type == 'image'; });
+                var index = 0;
+                if(found) {
+                    index = f;
+                };
+                _self.clickThumbnailSlide(index);
 
                 //pdp모달뷰
                 contentHtml = "";
@@ -315,13 +293,6 @@ $(window).ready(function(){
                     }
                 });
                 self.$popPdpThumbnail.html(contentHtml);
-                /*
-                var popThumbItems = self.$popPdpThumbnail.find('li.pop-thumbnail');
-                popThumbItems.on('click', function (e){
-                    var modalClicked = $(this).attr("data-idx");
-                    _self.clickModalThumbnail(modalClicked);
-                });
-                */
 
                 //하단배너
                 if(data.pdp_more_info.visible) {
@@ -569,11 +540,7 @@ $(window).ready(function(){
                 } else {
                     self.$rentalOnlyInfo.hide();
                 };
-
-            }).fail(function(d){
-                alert(d.status + '\n' + d.statusText);
             });
-
         },
 
         reloadPaymentAmountInfoQuantity: function() {
