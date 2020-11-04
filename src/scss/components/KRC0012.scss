@@ -4,6 +4,32 @@
 
 
 .KRC0012 {
+	.btn {
+        display: inline-block;
+        min-width:194px;
+        padding:15px 0;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #fff;
+        line-height: 24px;
+        @include font-family($font-weight-bold);
+        font-size: 16px;
+        color: #111;
+        text-align: center;
+        vertical-align: top;
+
+        &.btn-outline-primary {
+            border-color: #212121;
+            background-color: #fff;
+            color: #111;
+        }
+        &.btn-primary {
+            border-color: #111;
+            background-color: #111;
+            color: #fff;
+        }
+	}
+	
 	// variation
 	*.underline,
 	*.font-underline {
@@ -136,7 +162,7 @@
 		}
 		.btn.btn-outline-primary.btn-lg {
 			border-color:#fff;
-			color:#fff !important;
+			color:#111;
 			&:hover {
 				background-color:transparent;
 			}
@@ -376,7 +402,7 @@
 	.cpt-wrap {
 		position: relative;
 		.cont-head {
-			max-width:(1066px+60px);
+			// max-width:(1066px+60px);
 			padding:0 30px 0;
             margin:0 auto;
             @include mobile {
@@ -384,7 +410,7 @@
                 padding: 0 24px;
             }
 			.text-area {
-				max-width:1066px;
+				// max-width:1066px;
 			}
 		}
 	}
