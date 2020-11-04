@@ -76,7 +76,7 @@
             }
         }
 
-        &.row-wrap {
+        .row-wrap {
             @include clearfix;
             .col-left {
                 float: left;
@@ -86,6 +86,15 @@
                 float: left;
                 width: 400px;
                 margin-left: 48px;
+            }
+        }
+
+        .tab-in-column {
+            .tabs-wrap {
+                @include calc(width,100%,448px);
+            }
+            .col-right {
+                margin-top: -56px;
             }
         }
 
