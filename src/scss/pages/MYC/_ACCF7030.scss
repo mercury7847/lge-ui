@@ -393,7 +393,7 @@
         .arrow {
             width: 32px;
             height: 32px;
-            background: url(/lg5-common/images/icons/btn-arrow-left-32.svg) 0 50% no-repeat;
+            background: url(/lg5-common/images/icons/btn-arr-32x32-black.svg) 0 50% no-repeat;
             background-size: 100% 100%;
             /*&:after {
                 display: inline-block;
@@ -409,8 +409,8 @@
                 border-color: #222;
                 transform: rotate(45deg);
             }*/
-            &.next {
-                background: url(/lg5-common/images/icons/btn-arrow-right-32.svg) 0 50% no-repeat;
+            &.pre {
+                transform:rotate(180deg);
             }
         }
     }

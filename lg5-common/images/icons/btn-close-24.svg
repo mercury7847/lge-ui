@@ -1,21 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    <g fill="none" fill-rule="evenodd">
-        <g>
-            <g>
-                <g>
-                    <g>
-                        <g>
-                            <g>
-                                <g>
-                                    <path d="M0 0H24V24H0z" transform="translate(-1178 -444) translate(270 294) translate(0 81) translate(0 36) translate(0 1) translate(792) translate(116 32)"/>
-                                    <g fill="#222" transform="translate(-1178 -444) translate(270 294) translate(0 81) translate(0 36) translate(0 1) translate(792) translate(116 32) translate(4.644 4.644)">
-                                        <rect width="2" height="18" x="6.75" y="-1.5" rx="1" transform="rotate(-45 7.75 7.5)"/>
-                                        <rect width="2" height="18" x="6.75" y="-1.5" rx="1" transform="rotate(45 7.75 7.5)"/>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn-close-24</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-116">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" opacity="0" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) " xlink:href="#path-1"></use>
+            <g id="Group-115" mask="url(#mask-2)" stroke="#222222" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <g transform="translate(11.500000, 12.000000) rotate(-45.000000) translate(-11.500000, -12.000000) translate(2.000000, 3.000000)" id="Path-45">
+                    <line x1="9.5" y1="9.09494702e-13" x2="9.5" y2="18"></line>
+                    <line x1="9.5" y1="9.09494702e-13" x2="9.5" y2="18" transform="translate(9.500000, 9.000000) rotate(90.000000) translate(-9.500000, -9.000000) "></line>
                 </g>
             </g>
         </g>
