@@ -183,6 +183,39 @@
     }
 }
 
+.btn-addr {
+    display:inline-block;
+    position:relative;
+    padding:10px 16px;
+    color:#ec455a;
+    @include font-medium;
+    text-align:center;
+    vertical-align:top;
+    border:1px solid #ec455a;
+    border-radius:8px;
+    [class^=icon-] {
+        display:inline-block;
+        padding-left:36px;
+        background-repeat:no-repeat;
+        background-size:24px;
+        &.icon-plus {
+            background-image:url(/lg5-common/images/icons/icon-plus.svg); 
+        }
+    }
+    @include mobile {
+        width:100%;
+        padding:14px 12px;
+        background:none;
+        [class^=icon-] {
+            padding-left:32px;
+        }
+    }
+    &.block {
+        display:block;
+        width:100%;
+    }
+}
+
 .btn-group {
     font-size:0;
     &.right {
