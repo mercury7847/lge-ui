@@ -377,6 +377,9 @@
         padding: 32px;
         border-radius: 8px;
         background-color: #f4f4f4;
+        @include mobile {
+            padding: 32px 20px;
+        }
     }
 }
 .item-info {
@@ -498,6 +501,9 @@
             font-size: 26px;
             line-height: 36px;
             color: $color-default;
+            @include mobile {
+                @include font-large-2;
+            }
         }
         .desc {
             margin-top:-8px;
@@ -538,11 +544,19 @@
         margin-bottom: 12px;
         @include font-medium;
         color: $color-gray-1; 
+        @include mobile {
+            font-size: 15px;
+            line-height: 23px;
+        }
     }    
     .desc {
         margin-bottom: 28px;
         @include font-small;
         color: $color-gray-1; 
+        @include mobile {
+            font-size: 13px;
+            line-height: 21px;
+        }
     }
     .agree {
         .text-list {
