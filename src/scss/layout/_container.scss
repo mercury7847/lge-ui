@@ -92,15 +92,6 @@
             }
         }
 
-        .tab-in-column {
-            .tabs-wrap {
-                @include calc(width,100%,448px);
-            }
-            .col-right {
-                margin-top: -56px;
-            }
-        }
-
         // layout
         .tabs-wrap.cont-tab {
             @include mobile {
