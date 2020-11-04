@@ -129,6 +129,31 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- 장바구니 제품이 없을 경우 -->
+                           <div class="no-data-wrap">
+                               <div class="no-data">
+                                   <p>장바구니에 담긴 제품이 없습니다.</p>
+                               </div>
+                               <ul class="membership-benefit">
+                                   <li class="box membership">
+                                       <dl>
+                                           <dt>LG 전자 멤버십 회원 온라인 전용 혜택</dt>
+                                           <dd>모든 제품 3% 할인</dd>
+                                           <dd>멤버십포인트 3% 적립</dd>
+                                       </dl>
+                                   </li>
+                                   <li class="box card-issue">
+                                       <dl>
+                                           <dt>LG 전자 제휴카드 발급 특별 혜택</dt>
+                                           <dd>제휴카드 결제시 최대 500,000원 캐시백</dd>
+                                           <dd>멤버십포인트 3% 적립</dd>
+                                       </dl>
+                                   </li>
+                               </ul>
+                            </div>
+                            <!-- //장바구니 제품이 없을 경우 -->
+
                             @@include('./common/modules/bullet-list.html', {
                                 "topBorder" : true,
                                 "bulletTit" : "유의사항",
@@ -142,30 +167,6 @@
                                     "판매 종료되거나 품절된 상품은 별도 표기 됩니다."
                                 ]
                             })
-
-                            <!-- 장바구니 제품이 없을 경우 -->
-    <!--                        <div class="no-data-wrap">-->
-    <!--                            <div class="no-data">-->
-    <!--                                <p>장바구니에 담긴 제품이 없습니다.</p>-->
-    <!--                            </div>-->
-    <!--                            <ul class="membership-benefit">-->
-    <!--                                <li class="box membership">-->
-    <!--                                    <dl>-->
-    <!--                                        <dt>LG 전자 멤버십 회원 온라인 전용 혜택</dt>-->
-    <!--                                        <dd>모든 제품 3% 할인</dd>-->
-    <!--                                        <dd>멤버십포인트 3% 적립</dd>-->
-    <!--                                    </dl>-->
-    <!--                                </li>-->
-    <!--                                <li class="box card-issue">-->
-    <!--                                    <dl>-->
-    <!--                                        <dt>LG 전자 제휴카드 발급 특별 혜택</dt>-->
-    <!--                                        <dd>제휴카드 결제시 최대 500,000원 캐시백</dd>-->
-    <!--                                        <dd>멤버십포인트 3% 적립</dd>-->
-    <!--                                    </dl>-->
-    <!--                                </li>-->
-    <!--                            </ul>-->
-    <!--                        </div>-->
-                            <!-- //장바구니 제품이 없을 경우 -->
                         </div>
                         <div class="col-right is-title">
                             <h3 class="sub-title">청약 정보</h3>
