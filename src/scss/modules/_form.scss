@@ -327,7 +327,6 @@
             position:relative;
             display:table;
             width:100%;
-            z-index:1;
 
             > .input-wrap, 
             > .select-wrap {
@@ -1842,6 +1841,7 @@ $input: (chk, rdo);
     padding:0;
     border-radius:8px;
     box-shadow:0 2px 14px 0 rgba(0, 0, 0, .06);
+    z-index:9999;
     @include mobile {
         top:54px;
         width:100%;
