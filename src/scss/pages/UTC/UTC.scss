@@ -4,6 +4,15 @@
 @import "../../utilities/mixins";
 
 .cart {
+    .cont-wrap {
+        .tabs-wrap {
+            @include calc(width,100%,448px);
+        }
+        .col-right {
+            margin-top: -56px;
+        }
+    }
+
     //장바구니
     .check-option {
         @include clearfix;
