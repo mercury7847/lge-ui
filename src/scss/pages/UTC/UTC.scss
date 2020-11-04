@@ -4,6 +4,15 @@
 @import "../../utilities/mixins";
 
 .cart {
+    .cont-wrap {
+        .tabs-wrap {
+            @include calc(width,100%,448px);
+        }
+        .col-right {
+            margin-top: -56px;
+        }
+    }
+
     //장바구니
     .check-option {
         @include clearfix;
@@ -25,7 +34,7 @@
             line-height: 24px;
         }
     }
-
+/*
     .info-box {
         float: right;
         @include clearfix;
@@ -72,7 +81,7 @@
     .payment-amount-info {
         float: right;
     }
-
+*/
     .bullet-list {
         clear: both;
         color: #808080;
@@ -357,13 +366,86 @@
     }
 }
 
+.col-right {
+    .sub-title {
+        margin-bottom: 16px;
+        @include font-large;
+    }
+    .gray-box {
+        width: 100%;
+        margin-bottom: 4px;
+        padding: 32px;
+        border-radius: 8px;
+        background-color: #f4f4f4;
+    }
+}
+.item-info {
+    .item-list {
+        > li {
+            .item-subtit {
+                display: block;
+                @include font-x-small;
+                margin-bottom: 4px;
+                color: $color-primary;
+            }
+            .item-tit {
+                display: block;
+                @include font-medium;
+                color: $color-default;
+            }
+            .item-spec {
+                display: block;
+                font-size: 0;
+                span {
+                    display: inline-block;
+                    position: relative;
+                    margin-right: 8px;
+                    padding-right: 9px;
+                    @include font-small; 
+                    color: $color-gray-1;
+                    vertical-align: middle; 
+                    &:before {
+                       display: inline-block;
+                       content: '';
+                       position: absolute;
+                       top: 50%;
+                       right: 0; 
+                       width: 1px;
+                       height: 12px;
+                       background-color: $color-gray-1;
+                       transform: translateY(-50%);
+                   }
+                   &:last-child:before {
+                       display: none;
+                   }
+                }
+            }
+            .text-disabled {
+                text-align: right;
+                span {
+                    margin-top: 4px;
+                    padding-left: 24px;
+                    background: url('/lg5-common/images/icons/icon-error.svg') no-repeat 0 50%;
+                    background-size: 20px 20px;
+                    @include font-small; 
+                    color: $color-primary !important;
+                }
+            }
+            &.item-disabled .item-subtit,
+            &.item-disabled .item-tit,
+            &.item-disabled .item-spec span{
+                color: $color-gray-4;
+            }
+        }
+        > li + li {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid $color-border;
+        }
+    }
+}
 .payment-amount-info {
-    width: 280px;
-    padding: 32px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.26);
-    border: 1px solid #ddd;
-    background-color: #fff;
+/*
     @include mobile {
         float: none;
         width: 100%;
@@ -382,40 +464,45 @@
         margin-bottom: 18px;
         font-weight: $font-weight-bold;
         @include font-medium;
-    }
+    }*/
     .text {
         @include font-small;
         letter-spacing: normal;
-        color: #616161;
+        color: $color-gray-1;
         em {
             margin-left: 4px;
-            color: #ec455a;
+            color: $color-primary;
         }
     }
     .price {
-        @include font-medium;
+        @include font-small;
         text-align: right;
         &.sale {
-            color:#ec455a;
+            color: $color-primary;
         }
     }
     .total-payment-amount {
-        margin: 24px 0 28px;
         padding-top: 12px;
-        border-top: 1px solid #ddd;
         @include mobile {
             margin-bottom:32px;
         }
+        dl {
+            margin-bottom: 0 !important;
+        }
+        .text {
+            @include font-small;
+            color: $color-default;
+        }
         .price {
             font-weight: $font-weight-bold;
-            @include font-large-1;
-            color: #ec455a;
+            font-size: 26px;
+            line-height: 36px;
+            color: $color-default;
         }
         .desc {
             margin-top:-8px;
             color:#616161;
-            font-size:14px;
-            line-height:20px;
+            @include font-small;
             text-align:right;
         }
     }
@@ -424,7 +511,7 @@
         dl {
             display: table;
             width: 100%;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             .text,
             .price {
                 display: table-cell;
@@ -441,12 +528,44 @@
         .btn-text {
             float: right;
             margin-top: 16px;
-            font-size: $font-small;
+            @include font-small;
             line-height: 24px;
         }
     }
 }
-
+.agree-box {
+    .sub-title {
+        margin-bottom: 12px;
+        @include font-medium;
+        color: $color-gray-1; 
+    }    
+    .desc {
+        margin-bottom: 28px;
+        @include font-small;
+        color: $color-gray-1; 
+    }
+    .agree {
+        .text-list {
+            li {
+                margin-bottom: 8px;
+                label {
+                    color: $color-gray-1; 
+                }
+            } 
+        }
+        .chk-btm {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid $color-border;
+        }
+    }
+    .btn-area {
+        margin-top: 32px;
+        .btn {
+            width: 100%;
+        }
+    }
+}
 .cart-nonmember-info {
     padding: 24px;
     background-color: #f4f4f4;
