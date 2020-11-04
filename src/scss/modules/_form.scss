@@ -1199,6 +1199,31 @@ $input: (chk, rdo);
             }
         }
 
+        &.chk-sm {
+            @if ( $type == chk ) {
+                input {
+                    &+label {
+                        padding-left: 24px;
+                        @include font-small;
+                        &::before {
+                            top: 4px;
+                            left: 1px;
+                            width:16px;
+                            height:16px;
+                            background-size: cover;
+                        }
+                        &::after {
+                            top: 9px;
+                            left: 5px;
+                            width: 8px;
+                            height: 6px;
+                            background-size: cover;
+                        }
+                    }
+                }
+            }      
+        }
+
         &.btn-type {
             @if ( $type == rdo ) {
                 input {

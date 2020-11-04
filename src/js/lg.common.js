@@ -683,7 +683,7 @@
             }).done(function (result) {
                 
                 if(result.ssoCheckUrl != undefined && result.ssoCheckUrl != null && result.ssoCheckUrl != ""){
-                    location.href = result.ssoCheckUrl;                    
+                    location.reload();                
                     return;
                 }
 
