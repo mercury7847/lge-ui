@@ -108,9 +108,10 @@
         .copy-boxing-area {
             position: absolute;
             top: 0;
-            right: 0;
-            bottom: 0;
+            //right: 0;
+            //bottom: 0;
             left: 0;
+            z-index: 1;
             padding: 64px 0 0 32px;
             @include mobile {
                 padding: 24px 0 0 24px;
