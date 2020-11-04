@@ -73,11 +73,17 @@
     .form-infos {
         margin-bottom:48px;
         @include mobile {
-            margin-bottom:16px;
+            margin-bottom:24px;
         }
         p.req {
-            color:#222;
-            @include font-medium;
+            color:#EC455A;
+            font-size:16px;
+            line-height:26px;
+            @include mobile {
+                font-size:13px;
+                line-height:21px;
+                font-weight:500;
+            }
             &::before {
                 content:'*';
                 display:inline-block;
@@ -169,8 +175,14 @@
             .label {
                 display:inline-block;
                 color:#222;
-                @include font-medium;
+                font-size:16px;
+                line-height:26px;
+                font-weight:500;
                 vertical-align:top;
+                @include mobile {
+                    font-size:13px;
+                    line-height:21px;
+                }
             }
             .req {
                 &::after {
@@ -848,7 +860,7 @@
         }
         .gray-box {
             margin-top:24px;
-            margin-bottom:8px;
+            margin-bottom:7px;
             padding:16px 24px;
             border-radius:8px;
             background:#f4f4f4;

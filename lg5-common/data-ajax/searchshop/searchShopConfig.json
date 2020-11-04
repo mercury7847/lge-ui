@@ -1,0 +1,19 @@
+{
+    "ssoCheckUrl": null,
+    "status":"success",
+    "message":null,
+    "param":{},
+    "data": {
+        "bestShopUrl": "/lg5-common/data-ajax/searchshop/bestShop.json",
+        "localListUrl": "/lg5-common/data-ajax/searchshop/bestShopArea.json",
+        "subwayListUrl": "/lg5-common/data-ajax/searchshop/selectSubwayList.json",
+        "stationListUrl": "/lg5-common/data-ajax/searchshop/selectStation.json",
+        "detailPageUrl": "/html/CS/CSRF6041.html",
+        "mapID": "vsay0tnzme",
+        "appKey": "oqYmIfzrl6E72lYDAvNeII5x9wEWUNwKrcUctzVa",
+        "basicPosition": {
+            "latitude": 37.5235644,
+            "longitude" : 127.0395764
+        }
+    }
+}

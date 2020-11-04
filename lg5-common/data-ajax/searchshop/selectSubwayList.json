@@ -1,5 +1,9 @@
 {
-    "resultList": [{
+    "ssoCheckUrl": null,
+    "status":"success",
+    "message":null,
+    "param":{},
+    "data": [{
         "seq": "840",
         "codeType": "SUBWAY",
         "code": "SG1",
