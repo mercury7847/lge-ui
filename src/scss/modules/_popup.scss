@@ -101,6 +101,18 @@
     overflow:hidden;
     border-radius:4px;
     background:#fff;
+    &.full {
+        max-width:912px;
+        @include mobile {
+            max-width:100%;
+        }
+    }
+    &.small {
+        max-width:444px;
+        @include mobile {
+            max-width:100%;
+        }
+    }
     @include mobile {
         left:0 !important;
         top:0 !important;
@@ -277,12 +289,6 @@
             }
         }
     }
-    &.full {
-        max-width:912px;
-    }
-    &.small {
-        max-width:444px;
-    }
     &.video {
         max-width: 1284px;
         border-radius: 0;
@@ -353,8 +359,8 @@
                 height:calc(100% - 142px - 32px);
                 max-height:calc(100% - 142px - 32px);
                 &.no-footer {
-                    height:calc(100% - 102px);
-                    max-height:calc(100% - 102px);
+                    height:calc(100% - 114px);
+                    max-height:calc(100% - 114px);
                 }
             }
         }

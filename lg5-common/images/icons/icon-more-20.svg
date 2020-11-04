@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-more-20</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-23">
+            <rect id="Rectangle" x="0" y="0" width="20" height="20"></rect>
+            <g id="Group-2" transform="translate(2.000000, 2.000000)">
+                <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+                <rect id="Rectangle" stroke="#616161" stroke-width="1.5" x="4.75" y="7.75" width="6.5" height="1" rx="0.5"></rect>
+                <rect id="Rectangle" stroke="#616161" stroke-width="1.5" transform="translate(8.000000, 7.750000) rotate(-270.000000) translate(-8.000000, -7.750000) " x="4.75" y="7.75" width="6.5" height="1" rx="0.5"></rect>
+            </g>
+            <circle id="Oval" stroke="#616161" stroke-width="1.5" cx="10" cy="10" r="7.25"></circle>
+        </g>
+    </g>
+</svg>
