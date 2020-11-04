@@ -22,15 +22,39 @@
         '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}" name="chk-select-{{itemID}}"><label for="chk-select-{{itemID}}"><span class="blind">선택안함</span></label></span>' +
         '<div class="item-delete"><button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button></div>' +
         '</li>'
+    
+    var subscriptionItemTemplate = '<li><span class="item-subtit">{{type}}</span>' +
+        '<strong class="item-tit">{{title}}</strong>' +
+        '<div class="item-spec"><span>{{sku}}</span>' +
+        '<span>월 {{salePrice}}원</span></div></li>'
+    
+    var subscriptionDisableItemTemplate = '<li class="item-disabled"><span class="item-subtit">{{type}}</span>' +
+        '<strong class="item-tit">{{title}}</strong>' +
+        '<div class="item-spec"><span>{{sku}}</span>' +
+        '<span>월 {{salePrice}}원</span></div>' +
+        '<p class="text-disabled"><span>설치 불가능 제품</span></p></li>'
 
+    var paymentItemTemplate = '<li><dl><dt class="text">{{text}}</dt><dd class="price {{appendClass}}">{{price}}</dd></dl></li>';
+    var totalPaymentItemTemplate = '<dl><dt class="text">{{text}}</dt><dd class="price">{{price}}</dd></dl>{{#if desc}}<p class="desc">{{desc}}</p>{{/if}}'
+    
     $(window).ready(function() {
         var careCart = {
             init: function() {
+                //케어솔루션 리스트
                 self.$cartContent = $('#tab2');
-                self.$cartWrap = self.$cartContent.find('cart-wrap');
+                self.$cartWrap = self.$cartContent.find('div.cart-wrap');
                 self.$cartAllCheck = self.$cartContent.find('div.check-option div.chk-wrap input');
                 self.$cartSelectRemove = self.$cartContent.find('div.check-option div.btn-area button.btn-text');
                 self.$cartList = self.$cartContent.find('div.list-wrap');
+
+                //청약정보
+                self.$subscriptionInfo = self.$cartContent.find('div.col-right div.item-info');
+                //요금정보
+                self.$paymentInfo = self.$cartContent.find('div.col-right div.payment-amount-info');
+                //신청서확인
+                self.$agreement = self.$cartContent.find('div.col-right div.agree-box');
+
+
                 self.$noData = self.$cartContent.find('div.no-data-wrap');
                 self.cartItemCheckQuery = "li.order-item span.chk-wrap input";
 
@@ -89,43 +113,23 @@
                     var itemID = $(this).parents('li.order-item').attr('data-item-id');
                     _self.requestRemoveItem([itemID]);
                 });
-
-                /*
-                self.$productAllCheck.on('change',function (e) {
-                    self.$productCheck.prop('checked', self.$productAllCheck.is(':checked'));
-                    self.$productCheck.each(function (index, item) {
-                        changeBlindLabelTextSiblingCheckedInput(item,'선택함','선택안함');
-                    });
-                });
-
-                $('div.cart-option div.btn-area button').on('click',function (e) {
-                    var paramData = [];
-                    var checkedProduct = $('div.product-check span input:checked');
-                    checkedProduct.each(function (index, item) {
-                        var index = self.$productCheck.index(item);
-                        var product = cartProducts[index];
-                        console.log({'productId':product.productId, 'quantity':'0'});
-                        paramData.push({'productId':product.productId, 'quantity':'0'});
-                    });
-                    if(paramData.length > 0) {
-                        requestChangeCart({cart:paramData});
-                        checkedProduct.parents('div.cart-item').remove();
-                        checkNoData();
-                    }
-                });
-                */
             },
 
             updateList: function(data) {
                 console.log(data);
                 var _self = this;
+
+                //카트 목록
                 var $list_ul = self.$cartList.find('ul.order-list');
                 $list_ul.empty();
                 var arr =  data ? (data.list instanceof Array ? data.list : []) : [];
+                arr.forEach(function(item, index) {
+                    item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                    item.salePrice = item.salePrice ? vcui.number.addComma(item.salePrice) : null;
+                });
+
                 if(arr.length > 0) {
                     arr.forEach(function(item, index) {
-                        item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
-                        item.salePrice = item.salePrice ? vcui.number.addComma(item.salePrice) : null;
                         $list_ul.append(vcui.template(cartItemTemplate, item));
                     });
                     self.$cartWrap.show();
@@ -133,6 +137,45 @@
                     self.$cartWrap.hide();
                 }
                 _self.checkNoData();
+
+                //청약정보
+                $list_ul = self.$subscriptionInfo.find('ul.item-list');
+                $list_ul.empty();
+                if(arr.length > 0) {
+                    arr.forEach(function(item, index) {
+                        if(item.soldout) {
+                            $list_ul.append(vcui.template(subscriptionDisableItemTemplate, item));
+                        } else {
+                            $list_ul.append(vcui.template(subscriptionItemTemplate, item));
+                        }
+                    });
+                    self.$subscriptionInfo.show();
+                } else {
+                    self.$subscriptionInfo.hide();
+                }
+            },
+
+            updatePaymentInfo: function(data) {
+                //요금정보
+                var $list_ul = self.$paymentInfo.find('ul.payment-list');
+                $list_ul.empty();
+                var arr = data ? (data.price instanceof Array ? data.price : []) : [];
+
+                if(arr.length > 0) {
+                    arr.forEach(function(item, index) {
+                        $list_ul.append(vcui.template(paymentItemTemplate, item));
+                    });
+                    self.$paymentInfo.show();
+                }
+
+                if(data.total) {
+                   self.$paymentInfo.find('div.total-payment-amount').html(vcui.template(totalPaymentItemTemplate, data.total));
+                   self.$paymentInfo.show();
+                } else {
+                    if (arr.length < 1) {
+                        self.$paymentInfo.hide();
+                    }
+                }
             },
 
             changeBlindLabelTextSiblingCheckedInput: function(input, trueText, falseText) {
@@ -159,6 +202,7 @@
                 var postData = JSON.stringify(items);
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     _self.updateList(result.data);
+                    _self.updatePaymentInfo(result.data);
                 });
             },
 

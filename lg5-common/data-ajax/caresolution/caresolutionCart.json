@@ -2,11 +2,27 @@
     "status": "success",
     "message": null,
     "data": {
-        "price":{
-            "cartCount": "3",
-            "usage": "98500",
-            "sale": "4500",
-            "total": "94000"
+        "price":[
+            {
+                "text": "제품 수",
+                "price": "3개",
+                "appendClass": "num"
+            },
+            {
+                "text": "이용요금",
+                "price": "월 98,000원",
+                "appendClass": ""
+            },
+            {
+                "text": "결합할인 금액",
+                "price": "월 -5,000원",
+                "appendClass": "sale"
+            }
+        ],
+        "total":{
+            "text": "총 2건",
+            "price": "월 98,500원",
+            "desc": "* 결합할인 적용"
         },
         "list":[
             {
