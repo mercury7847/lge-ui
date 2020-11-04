@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="btn_close_32">
+            <rect id="Rectangle" x="0" y="0" width="32" height="32"></rect>
+            <g id="ic" stroke-width="1" fill-rule="evenodd" transform="translate(6.192388, 6.192388)" fill="#222222">
+                <rect id="Rectangle" transform="translate(10.000000, 10.000000) rotate(-45.000000) translate(-10.000000, -10.000000) " x="9" y="-2" width="2" height="24" rx="1"></rect>
+                <rect id="Rectangle" transform="translate(10.000000, 10.000000) rotate(-315.000000) translate(-10.000000, -10.000000) " x="9" y="-2" width="2" height="24" rx="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
