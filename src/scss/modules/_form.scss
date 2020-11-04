@@ -478,76 +478,14 @@
                 text-align:right;
             }
         }
-    }
 
-    .double-form {
-        @include clearfix;
-        .forms {
-            float:left;
-            width:calc((100% - 16px) / 2);
-            margin:32px 0 0 16px;
+        & +.chk-wrap {
+            display:block;
+            margin-top:24px;
+            text-align:right;
             @include mobile {
-                width:100%;
-                margin:40px 0 0 0;
-            }
-            &:first-child {
-                margin:32px 0 0 0;
-                @include mobile {
-                    margin:40px 0 0 0;
-                }
-            }
-        }
-        &:first-child {
-            .forms {
-                margin-top:0;
-                @include mobile {
-                    margin-top:40px;
-                    &:first-child {
-                        margin-top:0;
-                    }
-                }
-            }
-        }
-    }
-
-    // 마이페이지 케어솔루션 카드정보 입력 부분. 추후 계속 사용하는지 확인 필요
-    .triple-form {
-        @include clearfix;
-        .forms {
-            float:left;
-            margin:32px 0 0 8px;
-            &:first-child {
-                width:calc((100% - 16px) / 2);
-                margin:32px 0 0 0;
-                @include mobile {
-                    width:100%;
-                }
-            }
-            &:nth-child(2) {
-                width:32%;
-                @include mobile {
-                    width:100%;
-                }
-            }
-            &:last-child {
-                width:calc(18% - 8px);
-                @include mobile {
-                    width:100%;   
-                }
-            }
-            @include mobile {
-                margin:40px 0 0 0;
-            }
-        }
-        &:first-child {
-            .forms {
-                margin-top:0;
-                @include mobile {
-                    margin-top:40px;
-                    &:first-child {
-                        margin-top:0;
-                    }
-                }
+                margin-top:16px;
+                text-align:left;
             }
         }
     }
