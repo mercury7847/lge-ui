@@ -66,6 +66,11 @@
 
     &.full-size {
 		.unit-list {
+			max-width:1980px !important;
+		}
+    }
+    &.wide-size {
+		.unit-list {
 			max-width:1660px !important;
 		}
     }
