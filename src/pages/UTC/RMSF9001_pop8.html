@@ -9,20 +9,29 @@
     </div>
 
     <!-- 케어솔루션 청약신청 고객동의 popup -->
-    <article id="popup" class="popup-wrap full">
+    <article id="popup" class="popup-wrap full tit-line2">
         <header class="pop-header">
-            <h1 class="tit"><span>케어솔루션 청약신청 고객동의</span></h1>
+            <h1 class="tit"><span>케어솔루션 청약신청 <br class="mob-only">고객동의</span></h1>
         </header>
         <section class="pop-conts rmsf-pop">
             <div class="input-info">
+                <div class="agree-cont-wrap">
+                    <div class="agree-input all-chk">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk1-1" name="chk1-1" checked>
+                            <label for="chk1-1">이용약관, 개인정보 수집/이용 동의, 정보활용 동의에 모두 동의합니다.</label>
+                        </span>
+                    </div>
+                </div>
+
                 <div class="tit-wrap type2">
-                    <h2 class="h2-tit">이용 약관(필수)</h2>
+                    <h2 class="h2-tit">이용약관(필수)</h2>
                 </div>
                 <div class="agree-cont-wrap">
                     <div class="agree-input">
                         <span class="chk-wrap">
                             <input type="checkbox" id="chk1-1" name="chk1-1" checked>
-                            <label for="chk1-1">동의합니다. <br class="mob-only">(동의해야만 신청이 가능합니다.)</label>
+                            <label for="chk1-1">동의합니다. (동의해야만 신청이 가능합니다.)</label>
                         </span>
                     </div>
                     <div class="agree-cont-box">
@@ -41,13 +50,13 @@
             </div>
             <div class="input-info">
                 <div class="tit-wrap type2">
-                    <h2 class="h2-tit">고객 확인 사항(필수)</h2>
+                    <h2 class="h2-tit">고객확인사항(필수)</h2>
                 </div>
                 <div class="agree-cont-wrap">
                     <div class="agree-input">
                         <span class="chk-wrap">
                             <input type="checkbox" id="chk1-2" name="chk1-2" checked>
-                            <label for="chk1-2">확인합니다. <br class="mob-only">(확인해야만 신청이 가능합니다.)</label>
+                            <label for="chk1-2">동의합니다. (동의해야만 신청이 가능합니다.)</label>
                         </span>
                     </div>
                     <div class="agree-cont-box">
@@ -72,7 +81,7 @@
                     <div class="agree-input">
                         <span class="chk-wrap">
                             <input type="checkbox" id="chk1-3" name="chk1-3" checked>
-                            <label for="chk1-3">동의합니다. <br class="mob-only">(동의해야만 신청이 가능합니다.)</label>
+                            <label for="chk1-3">동의합니다. (동의해야만 신청이 가능합니다.)</label>
                         </span>
                     </div>
                     <div class="agree-cont-box">
@@ -93,7 +102,7 @@
         <footer class="pop-footer center">
             <div class="btn-group">
                 <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-                <button type="button" class="btn pink"><span>확인</span></button>
+                <button type="button" class="btn pink"><span>동의</span></button>
             </div>
         </footer>
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
