@@ -608,6 +608,13 @@
         @include mobile {
             margin-bottom:8px;
         }
+        &.all-chk {
+            margin-bottom:48px;
+            font-weight:700;
+            @include mobile {
+                margin-bottom:40px;
+            }
+        }
     }
     .agree-cont-box {
         height:auto;
