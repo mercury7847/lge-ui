@@ -97,6 +97,30 @@
         @include mobile {
             margin-top:24px;
         }
+        &.wide {
+            margin-top:48px;
+            @include mobile {
+                margin-top:40px;
+            }
+        }
+        &.type2 + .forms.type2 {
+            margin-top:32px;
+            @include mobile {
+                margin-top:32px;
+            }
+        }
+        &.type2 + .forms.type2.wide {
+            margin-top:32px;
+            @include mobile {
+                margin-top:32px;
+            }
+        }
+        &.inner-type {
+            margin-top:24px;
+            @include mobile {
+                margin-top:24px;
+            }
+        }
         &:first-child {
             margin-top:0;
         }
@@ -119,11 +143,19 @@
             border-radius:8px;
             background:#fff;
             color:#222;
-            @include font-small;
+            font-size:14px;
+            line-height:24px;
+            font-weight:500;
             white-space:nowrap;
             span {
                 display:inline-block;
                 vertical-align:top;
+            }
+            @include mobile {
+                height:46px;
+                border-radius:4px;
+                font-size:13px;
+                line-height:21px;
             }
         }
         .btn.bg-type {
@@ -214,15 +246,6 @@
             .select-wrap {
                 max-width: 100%;
             }
-            .info-txt {
-                margin-bottom:16px;
-                color:#222;
-                @include font-small;
-                font-weight:500;
-                &:first-child {
-                    padding-top:1px;
-                }
-            }
             .input-box-wrap {
                 display:table;
                 width:100%;
@@ -278,8 +301,13 @@
                 display:block;
                 width:100%;
                 margin-bottom:8px;
-                @include font-small;
+                font-size:14px;
+                line-height:24px;
                 font-weight:500;
+                @include mobile {
+                    font-size:13px;
+                    line-height:21px;
+                }
             }
             .conts {
                 display:block;
@@ -328,7 +356,7 @@
                     }
                     & + .btm-more {
                         position:absolute;
-                        top:54px;
+                        top:52px;
                         left:0;
                         max-width:calc(100% - 120px);
                         margin-top:0;
@@ -617,6 +645,9 @@
         @include font-medium;
         vertical-align:top;
         resize:none;
+        @include mobile {
+            border-radius:4px;
+        }
 
         &::-webkit-input-placeholder,
         &:-moz-placeholder,
@@ -651,10 +682,17 @@
                 margin:0;
             }
         }
+        @include mobile {
+            height:46px;
+            padding:11px;
+        }
     }
     textarea {
         height:160px;
-        padding:23px;
+        padding:23px 15px;
+        @include mobile {
+            padding:11px;
+        }
     }
 
     .box {
@@ -664,6 +702,9 @@
             display:table-cell;
             border-right:none;
             border-radius:8px 0 0 8px;
+            @include mobile {
+                border-radius:4px 0 0 4px;
+            }
         }
         .cell {
             display:table-cell;
@@ -672,6 +713,9 @@
             border-left:none;
             border-radius:0 8px 8px 0;
             vertical-align:middle;
+            @include mobile {
+                border-radius:0 4px 4px 0;
+            }
             p.comp {
                 color:#3B9792;
                 @include font-small;
@@ -841,8 +885,8 @@
                 display:block;
             }
             .cell {
-                margin-top:2px;
-                padding-left:32px;
+                margin-top:8px;
+                padding-left:30px;
                 text-align:left;
             }
         }
@@ -859,6 +903,11 @@
         }
         .btn-wrap {
             margin-top:12px;
+            @include mobile {
+                margin-top:12px !important;
+                padding:0 !important;
+                background:transparent !important;
+            }
         }
         .gray-box {
             margin-top:24px;
@@ -1115,7 +1164,7 @@ $input: (chk, rdo);
             &+label {
                 position:relative;
                 display:inline-block;
-                padding-left:32px;
+                padding-left:30px;
                 color:#222;
                 @include font-medium;
                 vertical-align:top;
@@ -1507,7 +1556,9 @@ $input: (chk, rdo);
             border-radius:8px;
             background:#fff;
             @include mobile {
-                padding:11px 15px 12px;
+                padding:11px;
+                padding-right:35px;
+                border-radius:4px;
             }
             .ui-select-text {
                 display:inline-block;
@@ -1534,6 +1585,9 @@ $input: (chk, rdo);
                 border-left:5px solid transparent;
                 border-right:5px solid transparent;
                 transition:all 0.3s;
+                @include mobile {
+                    right:19px;
+                }
             }
         }
         &.on {

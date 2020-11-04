@@ -4,6 +4,15 @@
 @import "../../utilities/mixins";
 
 .cart {
+    .cont-wrap {
+        .tabs-wrap {
+            @include calc(width,100%,448px);
+        }
+        .col-right {
+            margin-top: -56px;
+        }
+    }
+
     //장바구니
     .check-option {
         @include clearfix;
@@ -416,7 +425,7 @@
                 span {
                     margin-top: 4px;
                     padding-left: 24px;
-                    background: url('/lg5-common/images/icons/ic-caution.svg') no-repeat 0 50%;
+                    background: url('/lg5-common/images/icons/icon-error.svg') no-repeat 0 50%;
                     background-size: 20px 20px;
                     @include font-small; 
                     color: $color-primary !important;

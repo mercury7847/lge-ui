@@ -4,6 +4,17 @@
 
 
 .KRC0013 {
+	//v-align
+	.valign-top {
+		vertical-align:top !important;
+	}
+	.valign-middle {
+		vertical-align:middle !important;
+	}
+	.valign-bottom {
+		vertical-align:bottom !important;
+	}
+
 	$color: (lightgray, dark, black, white);
 	@each $bg in $color {
 		&.bg-#{$bg} {
