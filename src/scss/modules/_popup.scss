@@ -97,7 +97,7 @@
     display:none;
     position:absolute;
     width:100%;
-    max-width:726px;
+    max-width:678px;
     overflow:hidden;
     border-radius:4px;
     background:#fff;
@@ -113,61 +113,50 @@
     .btn-close {
         position:absolute;
         top:40px;
-        right:48px;
-        width:24px;
-        height:24px;
+        right:24px;
+        width:32px;
+        height:32px;
         @include mobile {
-            top:8px;
+            top:28px;
             right:16px;
-            width:16px;
-            height:16px;
-        }
-        &::before, &::after {
-            content:' ';
-            position:absolute;
-            top:50%;
-            left:50%;
-            width:2px;
+            width:24px;
             height:24px;
-            margin-top:-12px;
-            margin-left:-1px;
-            border-radius:1px;
-            background:#222;
-            @include mobile {
-                height:16px;
-                margin-top:-8px;
-            }
         }
         &::before {
-            transform:rotate(45deg);
-        }
-        &::after {
-            transform:rotate(-45deg);
+            content:' ';
+            position:absolute;
+            top:0;
+            left:0;
+            width:32px;
+            height:32px;
+            background:url('/lg5-common/images/icons/btn-close-32.svg') no-repeat;
+            @include mobile {
+                width:24px;
+                height:24px;
+                background-size:24px 24px;
+            }
         }
     }
     .pop-header {
-        padding:40px 0 22px;
-        margin:0 48px;
+        padding:40px 0 20px;
+        margin:0 24px;
         border-bottom:2px solid #222;
         .tit span {
             display:block;
-            height:32px;
-            color:#222;
-            font-size:24px;
-            line-height:32px;
+            height:34px;
+            @include font-large-2;
             font-weight:700;
             overflow:hidden;
             text-overflow:ellipsis;
             word-break:keep-all;
         }
         @include mobile {
-            margin:0;
-            padding:8px 16px;
-            border:none;
+            margin:0 16px;
+            padding:24px 0 24px;
+            font-size:24px;
+            line-height:32px;
             .tit span {
-                height:24px;
-                font-size:13px;
-                line-height:21px;
+                height:32px;
             }
         }
     }
@@ -192,15 +181,15 @@
     .pop-conts {
         height:auto;
         max-height:492px;
-        padding:48px 48px 0;
+        padding:48px 24px 0;
         overflow-y:auto;
         &.no-footer {
             max-height:576px;
-            padding-bottom:48px;
+            padding-bottom:40px;
             text-align:left;
             @include mobile {
-                height:calc(100% - 75px);
-                max-height:calc(100% - 75px);
+                height:calc(100% - 82px);
+                max-height:calc(100% - 82px);
             }
         }
         &.support {
@@ -208,8 +197,8 @@
         }
         @include mobile {
             padding:32px 16px 60px;
-            height:calc(100% - 113px);
-            max-height:calc(100% - 113px);
+            height:calc(100% - 142px);
+            max-height:calc(100% - 142px);
         }
         .tabs-wrap {
             &:first-child {
@@ -223,7 +212,7 @@
         }
     }
     .pop-footer {
-        padding:48px 48px 48px;
+        padding:32px 24px 32px;
         background:transparent;
         font-size:0;
         text-align:right;
@@ -246,6 +235,11 @@
             vertical-align:top;
             &:first-child {
                 margin-left:0;
+            }
+            @include mobile {
+                padding:17px 0;
+                font-size:17px;
+                line-height:24px;
             }
         }
         @include pc {
@@ -283,14 +277,11 @@
             }
         }
     }
-    &.middle {
-        max-width:868px;
-    }
     &.full {
-        max-width:1066px;
+        max-width:912px;
     }
     &.small {
-        max-width: 492px;
+        max-width:444px;
     }
     &.video {
         max-width: 1284px;
@@ -350,7 +341,7 @@
                     display:none;
                 }
                 @include mobile {
-                    height:42px;
+                    height:64px;
                     br {
                         display:block;
                     }
@@ -359,8 +350,8 @@
         }
         @include mobile {
             .pop-conts {
-                height:calc(100% - 135px - 27px);
-                max-height:calc(100% - 135px - 27px);
+                height:calc(100% - 142px - 32px);
+                max-height:calc(100% - 142px - 32px);
                 &.no-footer {
                     height:calc(100% - 102px);
                     max-height:calc(100% - 102px);
@@ -424,7 +415,7 @@
         // 배송지 관리
         .my-address-wrap {
             .address-lists {
-                margin-top:23px;
+                margin-top:24px;
                 .lists {
                     margin-top:10px;
                     padding:32px;
@@ -456,24 +447,33 @@
                                 }
                                 p {
                                     display:inline-block;
-                                    color:#222;
-                                    font-size:16px;
-                                    line-height:24px;
+                                    @include font-medium;
                                     font-weight:700;
                                     vertical-align:top;
-                                    @include mobile {
-                                        font-size:14px;
-                                        line-height:18px;
-                                    }
                                 }
                                 .flag-wrap {
                                     display:inline-block;
                                     margin-left:8px;
                                     vertical-align:top;
+                                    .flag {
+                                        padding:0;
+                                        border:none;
+                                        font-size:12px;
+                                        line-height:22px;
+                                        font-weight:700;
+                                        @include mobile {
+                                            height:20px;
+                                            line-height:20px;
+                                        }
+                                    }
                                 }
                             }
                             dd {
+                                margin-top:2px;
                                 font-size:0;
+                                &:first-child {
+                                    margin-top:0;
+                                }
                                 p {
                                     display:inline-block;
                                     position:relative;
@@ -516,9 +516,9 @@
                                 position:relative;
                                 top:auto;
                                 right:auto;
-                                margin:24px 0 0 -32px;
+                                margin:16px 0 0 0;
                                 font-size:0;
-                                text-align:right;
+                                text-align:left;
                                 transform:translateY(0);
                             }
                             .btn {
@@ -526,7 +526,6 @@
                                 margin-top:8px;
                                 @include mobile {
                                     display:inline-block;
-                                    width:calc((100% - 8px) / 2);
                                     margin-top:0;
                                     margin-left:8px;
                                 }
@@ -667,9 +666,16 @@
                 @include font-large;
             }
             &.type2 {
-                padding-bottom:23px;
+                padding-bottom:24px;
+                @include mobile {
+                    padding-bottom:12px;
+                }
                 .h2-tit {
                     @include font-medium;
+                    @include mobile {
+                        font-size:18px;
+                        line-height:26px;
+                    }
                 }
             }
         }

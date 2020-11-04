@@ -101,7 +101,9 @@
         text-align:left;
         border-bottom: 1px solid #ddd;
         th, td {
+            padding: 19px 24px;
             border-top: 1px solid #ddd;
+            @include font-small;
         }
         tr:first-child {
             th, td {
@@ -109,22 +111,20 @@
             }
         }
         th {
-            padding: 18px 24px;
             background:#f4f4f4;
-            color:#616161;
-            font-size:14px;
-            font-weight:400;
-            line-height:20px;
+            font-weight:500;
             vertical-align:top;
         }
         td {
-            padding: 16px 24px;
-            color: #222;
-            font-size: 16px;
-            line-height: 24px;
+            color:#616161;
         }
         .al-center {
             text-align:left;
+        }
+    }
+    @include mobile {
+        th, td {
+            padding:18px 16px;
         }
     }
 }

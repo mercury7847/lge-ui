@@ -76,7 +76,7 @@
             }
         }
 
-        &.row-wrap {
+        .row-wrap {
             @include clearfix;
             .col-left {
                 float: left;
@@ -86,6 +86,9 @@
                 float: left;
                 width: 400px;
                 margin-left: 48px;
+                &.is-title {
+                    margin-top: -44px;
+                }
             }
         }
 
