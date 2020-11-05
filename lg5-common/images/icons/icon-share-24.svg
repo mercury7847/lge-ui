@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-share-24</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-share-24">
+            <g id="icon_share_32_PC">
+                <rect id="Rectangle" fill="#F4F4F4" x="0" y="0" width="24" height="24" rx="12"></rect>
+                <g id="ic" transform="translate(6.000000, 5.250000)">
+                    <g id="Group-44">
+                        <polyline id="Path-4" stroke="#767676" points="8.625 2.25 1.875 6.75 8.625 11.25"></polyline>
+                        <circle id="Oval" fill="#767676" cx="9" cy="2.25" r="2.25"></circle>
+                        <circle id="Oval" fill="#767676" cx="2.25" cy="6.75" r="2.25"></circle>
+                        <circle id="Oval" fill="#767676" cx="9" cy="11.25" r="2.25"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

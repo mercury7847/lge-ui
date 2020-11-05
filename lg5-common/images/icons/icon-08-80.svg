@@ -2,7 +2,7 @@
 <svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>icon-08-80</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group-122">
+        <g id="ic_productinfo_80">
             <g id="Group-109">
                 <g id="ic" fill="#F4F4F4">
                     <circle id="Oval" cx="40" cy="40" r="40"></circle>
@@ -11,8 +11,8 @@
                     <g id="Group-57">
                         <rect id="Rectangle" x="0" y="0" width="64" height="64"></rect>
                     </g>
-                    <rect id="Rectangle" stroke="#808080" stroke-width="2" fill="#FFFFFF" x="9" y="10" width="38" height="46" rx="3"></rect>
-                    <g id="Group-105" transform="translate(14.000000, 20.000000)" stroke="#808080" stroke-linecap="round" stroke-width="2">
+                    <rect id="Rectangle" stroke="#767676" stroke-width="2" fill="#FFFFFF" x="9" y="10" width="38" height="46" rx="3"></rect>
+                    <g id="Group-105" transform="translate(14.000000, 20.000000)" stroke="#767676" stroke-linecap="round" stroke-width="2">
                         <g id="Group-104">
                             <polyline id="Path-34" stroke-linejoin="round" points="1.11022302e-14 2.18211958 2.04541548 4.36423915 6.35014025 0"></polyline>
                             <line x1="11.5599179" y1="2.18211958" x2="27.5599179" y2="2.18211958" id="Path-39"></line>
@@ -26,7 +26,7 @@
                             <line x1="11.5599179" y1="2.18211958" x2="27.5599179" y2="2.18211958" id="Path-39"></line>
                         </g>
                     </g>
-                    <g id="Group-56" transform="translate(27.000000, 22.000000)" stroke="#808080" stroke-linejoin="round" stroke-width="2">
+                    <g id="Group-56" transform="translate(27.000000, 22.000000)" stroke="#767676" stroke-linejoin="round" stroke-width="2">
                         <path d="M17.3241161,-3.67588386 C19.2571128,-3.67588386 20.8241161,-2.10888049 20.8241161,-0.175883861 L20.8241161,29.9173615 L20.8241161,29.9173615 L18.900201,34.5353505 C18.5372621,35.4065156 17.5368232,35.8185143 16.6656582,35.4555754 C16.2492848,35.2821087 15.9183854,34.9510507 15.7451184,34.5345941 L13.8241161,29.9173615 L13.8241161,29.9173615 L13.8241161,-0.175883861 C13.8241161,-2.10888049 15.3911195,-3.67588386 17.3241161,-3.67588386 Z" id="Rectangle" fill="#FFFFFF" transform="translate(17.324116, 17.324116) rotate(-315.000000) translate(-17.324116, -17.324116) "></path>
                         <line x1="25.8241161" y1="5.32411614" x2="29.6918016" y2="8.74696187" id="Path-14" stroke-linecap="round"></line>
                     </g>
