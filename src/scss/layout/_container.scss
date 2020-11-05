@@ -93,6 +93,13 @@
                     float: none;
                     width: 100%;
                 }
+                .col-left {
+                    .section {
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
                 .col-right {
                     margin-left: 0;
                 }
