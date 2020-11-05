@@ -1,4 +1,9 @@
+@@if(context.checkOption) {
+<li class="order-item @@disabled is-check" data-item-id="@@itemID"><!-- 판매종료/일시품절 시 disabled -->
+}
+@@if(!context.checkOption) {
 <li class="order-item @@disabled" data-item-id="@@itemID"><!-- 판매종료/일시품절 시 disabled -->
+}
     @@if(context.message) {
     <div>
         <div class="message-box">
