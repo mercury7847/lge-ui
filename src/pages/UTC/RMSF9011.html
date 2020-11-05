@@ -8,40 +8,51 @@
 <!--        include('./common/header.html')-->
 
         <div class="container">
-            @@include('./common/modules/page-header.html', {
-                "pageTitle": "청약 완료"
-            })
             <!-- 청약 신청 완료 -->
             <div class="contents subscribe">
                 <div class="cont-wrap">
-                    <div class="subscribe-wrap">
-                        <div class="section">
-                            <div class="complete-wrap">
-                                <span class="text">청약이 완료되었습니다.</span>
-                                <p class="small-text">자세한 청약내역은 마이페이지에서 확인하실수 있습니다.</p>
-                            </div>
-                            <div class="list-wrap">
-                                <ul class="order-items order-complete">
-                                    @@loop('./common/modules/order-product-item.html', [
-                                        {
-                                            "number" : true,
-                                            "option" : true,
-                                            "message" : "청약이 완료되었습니다. 제품 주문은 자동으로 진행됩니다."
-                                        }, {
-                                            "number" : true,
-                                            "option" : true,
-                                            "message" : "청약이 완료되었으나, 제품 주문이 정상적으로 처리되지 않았습니다. 1577-4090으로 문의해주세요."
-                                        }
-                                    ])
-                                </ul>
-                            </div>
-                            <div class="care-solution-call-box">
-                                <dl class="call-info">
-                                    <dt class="title">LG전자 케어솔루션 상담문의</dt>
-                                    <dd class="number"><span>1544 - 4090</span></dd>
+                    <div class="section">
+                        <div class="complete-wrap">
+                            <span class="text">청약이 완료되었습니다.</span>
+                            <p class="small-text">자세한 청약내역은 마이페이지에서 확인하실수 있습니다.</p>
+                            <a href="#n" class="btn-link"><span>MY케어솔루션으로 이동</span></a>
+                        </div>
+                        <div class="list-wrap">
+                            <ul class="order-list order-complete">
+                                @@loop('./common/modules/order-list.html', [
+                                    {
+                                        "number" : true,
+                                        "flags" : "<span class='flag'><span class='blind'>제품타입</span>렌탈(케어솔루션)</span>",
+                                        "disabled" : "",
+                                        "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                        "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                        "option" : true,
+                                        "orderMessage" : "제품 주문은 자동으로 진행됩니다."
+                                    }, {
+                                        "number" : true,
+                                        "number" : true,
+                                        "flags" : "<span class='flag'><span class='blind'>제품타입</span>렌탈(케어솔루션)</span>",
+                                        "disabled" : "",
+                                        "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                        "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                        "option" : true,
+                                        "orderMessage" : "청약이 완료되었으나, 제품 주문이 정상적으로 처리되지 않았습니다. 1577-4090으로 문의해주세요."
+                                    }
+                                ])
+                            </ul>
+                            <div class="total-payment-amount">
+                                <dl>
+                                    <dt class="title">최종 월 요금</dt>
+                                    <dd class="price">월 63,800원</dd>
                                 </dl>
-                                <p class="text">제품 사용 시 불편하거나 문의사항이 있을 경우 위 번호로 연락 주시기 바랍니다.</p>
+                                <p class="text">*제휴카드 할인 미적용</p>
                             </div>
+                        </div>
+                        <div class="care-solution-call-box">
+                            <dl class="call-info">
+                                <dt class="title">LG전자 케어솔루션 상담문의</dt>
+                                <dd class="number"><span>1544 - 4090</span></dd>
+                            </dl>
                         </div>
                     </div>
                 </div>

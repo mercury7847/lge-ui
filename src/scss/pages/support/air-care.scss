@@ -1,7 +1,11 @@
+
 @charset "UTF-8";
 
-.CSTF8800 {
-    .gray-box, .pop-conts-section {
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+.air-care {
+    .gray-box {
         .bullet-list {
             margin-top: 0;
         }

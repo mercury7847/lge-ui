@@ -680,6 +680,9 @@
                 padding-left:48px;
                 @include font-medium;
                 font-weight:700;
+                @include mobile {
+                    padding-left:10.6707vw;
+                }
                 &:before {
                     content:'';
                     display:block;
@@ -691,6 +694,9 @@
                     background:url('/lg5-common/images/icons/btn-arrow_right_24.svg') no-repeat;
                     background-size:24px 24px;
                     transform:translateY(-50%);
+                    @include mobile {
+                        left:12px;
+                    }
                 }
                 &:first-child {
                     padding-left:0;
