@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-04-120</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-98">
+            <rect id="Rectangle" x="0" y="0" width="120" height="120"></rect>
+            <g id="Group-96" transform="translate(22.000000, 22.000000)" stroke="#979797" stroke-width="2">
+                <g id="Group-97">
+                    <path d="M0,14 L0,0 L69.5,0 L69.5,14 L64,14 L64,63 C64,64.6568542 62.6568542,66 61,66 L8,66 C6.34314575,66 5,64.6568542 5,63 L5,14 L5,14 L0,14 Z" id="Rectangle" stroke-linejoin="round"></path>
+                    <polyline id="Path-35" stroke-linecap="round" points="11 17.2681932 11 60.2681932 58.4313305 60.2681932 58.4313305 17.2681932"></polyline>
+                    <g id="Group-85" transform="translate(43.000000, 42.000000)">
+                        <rect id="Rectangle" fill="#FFFFFF" x="1" y="1" width="34" height="34" rx="17"></rect>
+                        <g id="Group-82" transform="translate(10.000000, 9.000000)" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline id="Path-29" points="5 0 0 4.5 5 9"></polyline>
+                            <g id="Group-81" transform="translate(8.000000, 13.500000) scale(-1, 1) translate(-8.000000, -13.500000) translate(0.000000, 9.000000)">
+                                <polyline id="Path-29" points="5 0 0 4.5 5 9"></polyline>
+                                <line x1="0" y1="4.5" x2="16" y2="4.5" id="Path-30"></line>
+                            </g>
+                            <line x1="0" y1="4.5" x2="16" y2="4.5" id="Path-30"></line>
+                        </g>
+                    </g>
+                    <path d="M11,17.4513816 C14.3581888,20.5631544 17.7615897,22.1190408 21.2102028,22.1190408 C26.3831225,22.1190408 30.8897663,13 41.7180926,13 C48.9369767,13 54.508056,14.4227311 58.4313305,17.2681932" id="Path-36" stroke-linecap="round"></path>
+                </g>
+            </g>
+            <line x1="49.7156652" y1="55.1186409" x2="59.7562356" y2="48" id="Path-37" stroke="#979797" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="43" y1="67.7619185" x2="57.2562356" y2="56.8809592" id="Path-37" stroke="#979797" stroke-width="2" stroke-linecap="round"></line>
+        </g>
+    </g>
+</svg>

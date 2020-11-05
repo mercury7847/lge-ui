@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160px" height="160px" viewBox="0 0 160 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-01-160</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="159.600005" height="159.600005"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="pic_nodata_120_PC">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Mask"></g>
+            <g id="Group-10" mask="url(#mask-2)">
+                <g transform="translate(23.940001, 21.280001)">
+                    <g id="Group-6" stroke="none" stroke-width="1" fill-rule="evenodd" transform="translate(93.229954, 96.278591) rotate(-45.000000) translate(-93.229954, -96.278591) translate(59.229954, 60.778591)">
+                        <rect id="Rectangle" stroke="#EC455A" stroke-width="4" transform="translate(33.940001, 33.940001) rotate(-315.000000) translate(-33.940001, -33.940001) " x="12" y="12" width="43.8800015" height="43.8800015" rx="21.9400008"></rect>
+                        <line x1="34.3531788" y1="57.1612162" x2="34.3531788" y2="70.4612166" id="Path-38" stroke="#EC455A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></line>
+                    </g>
+                    <g id="Group-8" stroke="none" stroke-width="1" fill-rule="evenodd">
+                        <path d="M59.7892451,104 L59.7892451,104 L5.23636364,104 C2.34439986,104 0,101.710047 0,98.8852459 L0,5.1147541 C0,2.28995341 2.34439986,0 5.23636364,0 L90.7636364,0 C93.6556001,0 96,2.28995341 96,5.1147541 L96,59.8444612 L96,59.8444612" id="Path" stroke="#222222" stroke-width="4" stroke-linecap="round"></path>
+                        <g id="Group-11" transform="translate(18.000000, 28.000000)" fill="#222222">
+                            <rect id="Rectangle" x="0" y="0" width="60" height="4" rx="2"></rect>
+                            <rect id="Rectangle" x="0" y="22" width="60" height="4" rx="2"></rect>
+                            <path d="M2,44 L38,44 C39.1045695,44 40,44.8954305 40,46 C40,47.1045695 39.1045695,48 38,48 L2,48 C0.8954305,48 1.3527075e-16,47.1045695 0,46 C-1.3527075e-16,44.8954305 0.8954305,44 2,44 Z" id="Rectangle"></path>
+                        </g>
+                    </g>
+                    <line x1="83" y1="87" x2="101.27075" y2="102.562124" id="Path-2" stroke="#EC455A" stroke-width="4" stroke-linecap="round" transform="translate(92.135375, 94.781062) rotate(5.000000) translate(-92.135375, -94.781062) "></line>
+                    <line x1="83" y1="87" x2="101.27075" y2="102.562124" id="Path-2" stroke="#EC455A" stroke-width="4" stroke-linecap="round" transform="translate(92.135375, 94.781062) scale(-1, 1) rotate(5.000000) translate(-92.135375, -94.781062) "></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
