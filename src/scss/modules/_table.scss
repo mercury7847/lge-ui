@@ -5,22 +5,20 @@
         border-collapse: collapse;
         thead {
             th {
-                padding: 14px 24px;
-                border-top: 1px solid #ddd;
+                padding: 16px 24px;
+                border-top: 2px solid #222;
                 background-color: #f4f4f4;
-                font-weight: 400;
-                font-size: 14px;
-                line-height: 20px;
-                color: #616161;
+                font-weight: 500;
+                @include font-small;
                 text-align: center;
             }
         }
         td {
-            padding: 22px 24px;
+            padding: 20px 24px;
             border-bottom: 1px solid #ddd;
-            font-size: 16px;
-            line-height: 24px;
-            color: #222;
+            color:#767676;
+            @include font-small;
+            font-weight: 500;
             text-align: center;
             &.lower {
                 color:#808080;
@@ -51,16 +49,11 @@
         table {
             thead {
                 th {
-                    padding: 12px 8px;
-                    border: 0;
-                    font-size: 12px;
-                    line-height: 16px;
+                    padding: 15px 10px;
                 }
             }
             td {
-                padding: 20px 8px;
-                font-size: 14px;
-                line-height: 18px;
+                padding: 20px 10px;
             }
         }
         .btm_info {
