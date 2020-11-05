@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-11-80</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_care_logininfo_80">
+            <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
+            <rect id="Rectangle" x="4" y="4" width="72" height="72"></rect>
+            <g id="Group-3" transform="translate(10.000000, 8.000000)">
+                <g id="Group-43" transform="translate(15.500000, 36.000000) scale(-1, 1) translate(-15.500000, -36.000000) translate(0.000000, 10.000000)" stroke="#767676">
+                    <g id="Group-46">
+                        <g id="Group">
+                            <rect id="Rectangle" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="29" height="47"></rect>
+                            <path d="M6,48 L2,48 L2,50 C2,50.2761424 2.11192881,50.5261424 2.29289322,50.7071068 C2.47385763,50.8880712 2.72385763,51 3,51 L5,51 C5.27614237,51 5.52614237,50.8880712 5.70710678,50.7071068 C5.88807119,50.5261424 6,50.2761424 6,50 L6,48 Z" id="Rectangle" stroke-width="2" fill="#FFFFFF"></path>
+                            <path d="M29,48 L25,48 L25,50 C25,50.2761424 25.1119288,50.5261424 25.2928932,50.7071068 C25.4738576,50.8880712 25.7238576,51 26,51 L28,51 C28.2761424,51 28.5261424,50.8880712 28.7071068,50.7071068 C28.8880712,50.5261424 29,50.2761424 29,50 L29,48 Z" id="Rectangle" stroke-width="2" fill="#FFFFFF"></path>
+                            <path d="" id="Rectangle" fill="#979797" transform="translate(26.000000, 15.000000) rotate(-270.000000) translate(-26.000000, -15.000000) "></path>
+                            <path d="" id="Rectangle" fill="#979797" transform="translate(26.000000, 25.500000) rotate(-270.000000) translate(-26.000000, -25.500000) "></path>
+                            <path d="" id="Rectangle" fill="#979797" transform="translate(15.500000, 19.846154) rotate(-180.000000) translate(-15.500000, -19.846154) "></path>
+                        </g>
+                    </g>
+                </g>
+                <g id="Group-43" transform="translate(23.000000, 19.000000)" stroke="#767676">
+                    <g id="Group-69">
+                        <rect id="Rectangle" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="31" height="38"></rect>
+                        <path d="" id="Rectangle" fill="#D8D8D8"></path>
+                        <rect id="Rectangle" stroke-width="2" fill="#FFFFFF" x="7" y="10" width="20" height="20" rx="10"></rect>
+                        <path d="M11,23 C12.5,25 14.5,26 17,26 C19.5,26 21.5,25 23,23" id="Path-15" stroke-width="2" stroke-linecap="round"></path>
+                        <path d="M7,39 L3,39 L3,41 C3,41.2761424 3.11192881,41.5261424 3.29289322,41.7071068 C3.47385763,41.8880712 3.72385763,42 4,42 L6,42 C6.27614237,42 6.52614237,41.8880712 6.70710678,41.7071068 C6.88807119,41.5261424 7,41.2761424 7,41 L7,39 Z" id="Rectangle" stroke-width="2" fill="#FFFFFF"></path>
+                        <path d="M30,39 L26,39 L26,41 C26,41.2761424 26.1119288,41.5261424 26.2928932,41.7071068 C26.4738576,41.8880712 26.7238576,42 27,42 L29,42 C29.2761424,42 29.5261424,41.8880712 29.7071068,41.7071068 C29.8880712,41.5261424 30,41.2761424 30,41 L30,39 Z" id="Rectangle" stroke-width="2" fill="#FFFFFF"></path>
+                    </g>
+                </g>
+                <g id="Group-2" transform="translate(36.000000, 0.000000)" stroke="#EC455A" stroke-width="1.73333333">
+                    <circle id="Oval" fill="#FFFFFF" cx="13" cy="13" r="13"></circle>
+                    <polyline id="Path-2" stroke-linecap="round" stroke-linejoin="round" points="6.93333333 13.5254166 10.7959553 18.2 19.0666667 8.66666667"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

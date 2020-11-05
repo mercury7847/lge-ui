@@ -21,18 +21,12 @@
     &:hover {
         
     }
-    &:disabled,
-    &.disabled {
-        color:#aaa;
-        border-color:#ddd;
-        background-color:#ededed;
-    }
     &.gray {
         border-color: #ededed;
         background: #ededed;
         color: #ec455a;
         &:hover {
-            
+
         }
     }
     &.dark-gray {
@@ -40,13 +34,20 @@
         background: #767676;
         color: #fff;
         &:hover {
-           
+
         }
     }
     &.border {
         border-color:#222;
         background:#fff;
         color:#222;
+    }
+
+    &:disabled,
+    &.disabled {
+        color:#aaa;
+        border-color:#ddd;
+        background-color:#ededed;
     }
     // 작은사이즈 버튼
     &.size {
