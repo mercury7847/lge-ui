@@ -386,6 +386,32 @@
         @include mobile {
             padding: 32px 20px;
         }
+        .btn-area {
+            margin-top: 32px;
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+}
+.box-link {
+    > a {
+        display: block;
+        position: relative;
+        padding-right: 48px;
+        @include font-small;
+        font-weight: $font-weight-medium;
+        &:after {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 24px;
+            height: 24px;
+            background: url('/lg5-common/images/icons/btn-arrow_right_24.svg') no-repeat;
+            background-size: 100%;
+        }
     }
 }
 .item-info {
@@ -532,6 +558,7 @@
         }
 
     }
+    /*
     .btn-area {
         @include clearfix;
         .btn {
@@ -543,7 +570,7 @@
             @include font-small;
             line-height: 24px;
         }
-    }
+    }*/
 }
 .agree-box {
     .sub-title {
@@ -577,12 +604,6 @@
             margin-top: 24px;
             padding-top: 16px;
             border-top: 1px solid $color-border;
-        }
-    }
-    .btn-area {
-        margin-top: 32px;
-        .btn {
-            width: 100%;
         }
     }
 }
