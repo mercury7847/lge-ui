@@ -674,11 +674,11 @@
             });
         },
 
-        requestAjaxData: function(url, data, callback, type) {
+        requestAjaxData: function(url, data, callback, type, dataType) {
             $.ajax({
                 type : type? type : "GET",
                 url : url,
-                dataType : "json",
+                dataType : dataType? dataType : "json",
                 data : data
             }).done(function (result) {
                 
