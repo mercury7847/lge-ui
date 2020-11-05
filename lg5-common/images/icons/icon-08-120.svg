@@ -4,18 +4,18 @@
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="ic_care_dishwasher_120">
             <rect id="Rectangle" x="0" y="0" width="120" height="120"></rect>
-            <g id="Group-101" transform="translate(18.000000, 23.000000)" stroke="#767676">
+            <g id="Group-101" transform="translate(18.000000, 23.000000)">
                 <g id="Group-100">
-                    <rect id="Rectangle" stroke-width="2" x="0" y="0" width="66" height="80" rx="3"></rect>
-                    <rect id="Rectangle" stroke-width="2" x="23" y="8" width="20" height="7" rx="2"></rect>
-                    <path d="" id="Rectangle" fill="#979797"></path>
-                    <path d="" id="Rectangle" fill="#979797"></path>
-                    <rect id="Rectangle" stroke-width="2" x="7" y="24" width="52" height="49" rx="2"></rect>
-                    <ellipse id="Oval" stroke-width="2" fill="#FFFFFF" cx="42.5" cy="60" rx="11.5" ry="12"></ellipse>
-                    <path d="M59,80 L8,80 L8,84 C8,84.5522847 8.22385763,85.0522847 8.58578644,85.4142136 C8.94771525,85.7761424 9.44771525,86 10,86 L57,86 C57.5522847,86 58.0522847,85.7761424 58.4142136,85.4142136 C58.7761424,85.0522847 59,84.5522847 59,84 L59,80 Z" id="Rectangle" stroke-width="2"></path>
-                    <path d="M43,67 C46.3137085,67 49,64.3137085 49,61" id="Path" stroke-width="2" stroke-linecap="round"></path>
-                    <circle id="Oval" stroke-width="2" fill="#FFFFFF" cx="24" cy="60" r="12"></circle>
-                    <path d="M25,67 C28.3137085,67 31,64.3137085 31,61" id="Path" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M63,-1 L3,-1 C0.790861001,-1 -1,0.790861001 -1,3 L-1,77 C-1,79.209139 0.790861001,81 3,81 L63,81 C65.209139,81 67,79.209139 67,77 L67,3 C67,0.790861001 65.209139,-1 63,-1 Z M3,1 L63,1 C64.1045695,1 65,1.8954305 65,3 L65,77 C65,78.1045695 64.1045695,79 63,79 L3,79 C1.8954305,79 1,78.1045695 1,77 L1,3 C1,1.8954305 1.8954305,1 3,1 Z" id="Rectangle" fill="#767676" fill-rule="nonzero"></path>
+                    <path d="M41,7 L25,7 C23.3431458,7 22,8.34314575 22,10 L22,13 C22,14.6568542 23.3431458,16 25,16 L41,16 C42.6568542,16 44,14.6568542 44,13 L44,10 C44,8.34314575 42.6568542,7 41,7 Z M25,9 L41,9 C41.5522847,9 42,9.44771525 42,10 L42,13 C42,13.5522847 41.5522847,14 41,14 L25,14 C24.4477153,14 24,13.5522847 24,13 L24,10 C24,9.44771525 24.4477153,9 25,9 Z" id="Rectangle" fill="#767676" fill-rule="nonzero"></path>
+                    <path d="M16,11 C16.5522847,11 17,11.4477153 17,12 C17,12.5522847 16.5522847,13 16,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L16,11 Z" id="Rectangle" fill="#767676" fill-rule="nonzero"></path>
+                    <path d="M59,11 C59.5522847,11 60,11.4477153 60,12 C60,12.5522847 59.5522847,13 59,13 L50,13 C49.4477153,13 49,12.5522847 49,12 C49,11.4477153 49.4477153,11 50,11 L59,11 Z" id="Rectangle" fill="#767676" fill-rule="nonzero"></path>
+                    <path d="M58,23 C59.1045695,23 60,23.8954305 60,25 L60,72 C60,73.1045695 59.1045695,74 58,74 L8,74 C6.8954305,74 6,73.1045695 6,72 L6,25 C6,23.8954305 6.8954305,23 8,23 L58,23 Z M58,25 L8,25 L8,72 L58,72 L58,25 Z" id="Rectangle" fill="#767676" fill-rule="nonzero"></path>
+                    <ellipse id="Oval" stroke="#767676" stroke-width="2" fill="#FFFFFF" cx="42.5" cy="60" rx="11.5" ry="12"></ellipse>
+                    <path d="M60,79 L60,84 C60,85.6568542 58.6568542,87 57,87 L10,87 C8.34314575,87 7,85.6568542 7,84 L7,79 L60,79 Z M58,81 L9,81 L9,84 C9,84.5128358 9.38604019,84.9355072 9.88337887,84.9932723 L10,85 L57,85 C57.5128358,85 57.9355072,84.6139598 57.9932723,84.1166211 L58,84 L58,81 Z" id="Rectangle" fill="#767676" fill-rule="nonzero"></path>
+                    <path d="M43,67 C46.3137085,67 49,64.3137085 49,61" id="Path" stroke="#767676" stroke-width="2" stroke-linecap="round"></path>
+                    <circle id="Oval" stroke="#767676" stroke-width="2" fill="#FFFFFF" cx="24" cy="60" r="12"></circle>
+                    <path d="M25,67 C28.3137085,67 31,64.3137085 31,61" id="Path" stroke="#767676" stroke-width="2" stroke-linecap="round"></path>
                 </g>
             </g>
             <path d="M86.4936007,10.3857829 L83.8395277,18.2666642 L78.2778071,20.4834136 L83.8383934,22.6596255 L86.4935917,30.652865 L89.1850744,22.6591589 L94.7058227,20.4834056 L89.1839413,18.2671205 L86.4936007,10.3857829 Z" id="Path-33" stroke="#767676" stroke-width="2" fill="#FFFFFF"></path>
