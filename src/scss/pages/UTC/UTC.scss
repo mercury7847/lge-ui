@@ -8,15 +8,9 @@
         .tabs-wrap {
             @include calc(width,100%,448px);
         }
-        .col-right {
-            margin-top: -56px;
-        }
         @media screen and (max-width: $tablet-l-width) {
             .tabs-wrap {
                 width: auto;
-            }
-            .col-right {
-                margin-top: 0;
             }
         }
         @include mobile {
@@ -38,6 +32,11 @@
         }
         @include mobile {
             margin-top: -40px;
+        }
+    }
+    .order-item {
+        &.disabled .product-payment .amount .total {
+            text-decoration: line-through;
         }
     }
 
@@ -158,9 +157,10 @@
         }
     }
     .item-image {
+        overflow:hidden;
         width:140px;
         height:140px;
-        overflow:hidden;
+        margin-right: 24px;
         img {
             width:100%;
             height:auto;
@@ -173,6 +173,7 @@
             z-index: 1;
             width:100px;
             height:100px;
+            margin-right: 0;
         }
     }
     .product-info {
@@ -275,6 +276,7 @@
             position: relative;
             width: 180px;
             display:inline-block;
+            padding-right: 24px;
             vertical-align: middle;
             .price {
                 display: inline-block;
@@ -301,7 +303,7 @@
         }
         .btn-area {
             display: inline-block;
-            width: 140px;
+            width: 116px;
             vertical-align: middle;
         }
         .tooltip-wrap {
@@ -326,8 +328,27 @@
             }
         }
     }
-    &.disabled .product-payment .amount .total-price {
-        color:#ccc;
+    &.disabled .product-payment .amount .total {
+        color:$color-gray-4;
+    }
+    &.disabled.bg {
+        background-color: $color-bg;
+        .flag-wrap.bg-type .flag {
+            background-color: transparent;
+            color: $color-gray-4;
+        }
+        .item-image,
+        .product-info,
+        .product-payment {
+            * {
+                color: $color-gray-4 !important;
+            }
+        }
+        .disabled-message {
+            position: absolute;
+            right: 24px;
+            bottom: 36px;
+        }
     }
     .item-delete {
         position: absolute;
@@ -354,19 +375,19 @@
 
 .col-right {
     .info-area {
-        padding-top: 80px;
-        @include mobile {
-            padding:40px 16px 0;
-            border-top: 12px solid $color-bg;
+        margin-top: -44px;
+        @media screen and (max-width: $tablet-l-width) {
+            margin-top: 0;
+            padding-top: 80px;
+            @include mobile {
+                padding:40px 16px 0;
+                border-top: 12px solid $color-bg;
+            }
         }
     }
     .sub-title {
-        margin-top: -44px;
         margin-bottom: 16px;
         @include font-large;
-        @media screen and (max-width: $tablet-l-width) {
-            margin-top: 0;
-        }
     }
     .gray-box {
         width: 100%;
