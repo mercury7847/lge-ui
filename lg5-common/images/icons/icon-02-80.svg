@@ -2,10 +2,10 @@
 <svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>icon-02-80</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group-15">
+        <g id="ic_USP_chatcounsel_80">
             <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
             <g id="Group-12" transform="translate(14.000000, 16.000000)">
-                <path d="M44,0 C48.418278,3.11259467e-15 52,3.581722 52,8 L52,31.8224205 C52,36.2406985 48.418278,39.8224205 44,39.8224205 L16.85,39.822 L7.41379141,48 L7.41319911,39.8012271 C3.26889901,39.5007824 2.39138267e-15,36.0433476 0,31.8224205 L0,8 C-5.41083001e-16,3.581722 3.581722,-9.64732338e-16 8,0 L44,0 Z" id="Combined-Shape" stroke="#808080" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M44,0 C48.418278,3.11259467e-15 52,3.581722 52,8 L52,31.8224205 C52,36.2406985 48.418278,39.8224205 44,39.8224205 L16.85,39.822 L7.41379141,48 L7.41319911,39.8012271 C3.26889901,39.5007824 2.39138267e-15,36.0433476 0,31.8224205 L0,8 C-5.41083001e-16,3.581722 3.581722,-9.64732338e-16 8,0 L44,0 Z" id="Combined-Shape" stroke="#767676" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
                 <g id="Group-58" transform="translate(13.000000, 18.000000)" fill="#EC455A">
                     <g id="Group-45">
                         <circle id="Oval-Copy-2" cx="24.5" cy="2.5" r="2.5"></circle>
