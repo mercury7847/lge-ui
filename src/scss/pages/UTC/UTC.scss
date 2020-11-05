@@ -565,7 +565,7 @@
 }
 .agree-box {
     .sub-title {
-        margin-bottom: 12px;
+        margin: 0 0 12px 0;
         @include font-medium;
         color: $color-gray-1; 
         @include mobile {
