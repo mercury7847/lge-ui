@@ -2,21 +2,21 @@
 <svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>icon-07-120</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group-94">
+        <g id="ic_care_dryer_120_PC">
             <g id="Group-65">
                 <rect id="Rectangle" x="0" y="0" width="120" height="120"></rect>
-                <g id="Group-43" transform="translate(18.000000, 13.000000)">
+                <g id="Group-43" transform="translate(18.000000, 13.000000)" stroke="#767676">
                     <g id="Group-69">
                         <g id="Group-91" transform="translate(-0.000000, 0.000000)">
                             <g id="Group-93">
-                                <rect id="Rectangle" stroke="#979797" stroke-width="2" fill="#FFFFFF" x="1" y="9" width="64" height="78"></rect>
-                                <path d="M45,16 L57,16 C57.5522847,16 58,16.4477153 58,17 C58,17.5522847 57.5522847,18 57,18 L45,18 C44.4477153,18 44,17.5522847 44,17 C44,16.4477153 44.4477153,16 45,16 Z" id="Rectangle" fill="#979797"></path>
-                                <path d="M6,25 L59,25 C59.5522847,25 60,25.4477153 60,26 C60,26.5522847 59.5522847,27 59,27 L6,27 C5.44771525,27 5,26.5522847 5,26 C5,25.4477153 5.44771525,25 6,25 Z" id="Rectangle" fill="#979797"></path>
-                                <rect id="Rectangle" stroke="#979797" stroke-width="2" fill="#FFFFFF" x="12" y="36" width="42" height="42" rx="21"></rect>
-                                <path d="M21,65 C24,69 28,71 33,71 C38,71 42,69 45,65" id="Path-15" stroke="#979797" stroke-width="2" stroke-linecap="round"></path>
-                                <path d="M15,86 L5,86 L5,92.6 C5,92.9865993 5.15670034,93.3365993 5.41005051,93.5899495 C5.66340068,93.8432997 6.01340068,94 6.4,94 L13.6,94 C13.9865993,94 14.3365993,93.8432997 14.5899495,93.5899495 C14.8432997,93.3365993 15,92.9865993 15,92.6 L15,86 Z" id="Rectangle" stroke="#979797" stroke-width="2" fill="#FFFFFF"></path>
-                                <path d="M61,86 L51,86 L51,92.6 C51,92.9865993 51.1567003,93.3365993 51.4100505,93.5899495 C51.6634007,93.8432997 52.0134007,94 52.4,94 L59.6,94 C59.9865993,94 60.3365993,93.8432997 60.5899495,93.5899495 C60.8432997,93.3365993 61,92.9865993 61,92.6 L61,86 Z" id="Rectangle" stroke="#979797" stroke-width="2" fill="#FFFFFF"></path>
-                                <g id="Group-92" transform="translate(67.000000, -0.000000)" stroke="#979797" stroke-width="2">
+                                <rect id="Rectangle" stroke-width="2" fill="#FFFFFF" x="1" y="9" width="64" height="78"></rect>
+                                <path d="" id="Rectangle" stroke-width="1.2" fill="#979797"></path>
+                                <path d="" id="Rectangle" stroke-width="1.2" fill="#979797"></path>
+                                <rect id="Rectangle" stroke-width="2" fill="#FFFFFF" x="12" y="36" width="42" height="42" rx="21"></rect>
+                                <path d="M21,65 C24,69 28,71 33,71 C38,71 42,69 45,65" id="Path-15" stroke-width="2" stroke-linecap="round"></path>
+                                <path d="M15,87 L5,87 L5,93.6 C5,93.9865993 5.15670034,94.3365993 5.41005051,94.5899495 C5.66340068,94.8432997 6.01340068,95 6.4,95 L13.6,95 C13.9865993,95 14.3365993,94.8432997 14.5899495,94.5899495 C14.8432997,94.3365993 15,93.9865993 15,93.6 L15,87 Z" id="Rectangle" stroke-width="2" fill="#FFFFFF"></path>
+                                <path d="M61,87 L51,87 L51,93.6 C51,93.9865993 51.1567003,94.3365993 51.4100505,94.5899495 C51.6634007,94.8432997 52.0134007,95 52.4,95 L59.6,95 C59.9865993,95 60.3365993,94.8432997 60.5899495,94.5899495 C60.8432997,94.3365993 61,93.9865993 61,93.6 L61,87 Z" id="Rectangle" stroke-width="2" fill="#FFFFFF"></path>
+                                <g id="Group-92" transform="translate(67.000000, -0.000000)" stroke-width="2">
                                     <path d="M5.49360069,4.38578285 L2.8395277,12.2666642 L-2.72219293,14.4834136 L2.83839341,16.6596255 L5.49359173,24.652865 L8.18507437,16.6591589 L13.7058227,14.4834056 L8.18394135,12.2671205 L5.49360069,4.38578285 Z" id="Path-33" fill="#FFFFFF"></path>
                                     <rect id="Rectangle" x="16" y="0" width="7" height="7" rx="3.5"></rect>
                                     <rect id="Rectangle" x="16" y="21" width="7" height="7" rx="3.5"></rect>

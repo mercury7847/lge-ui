@@ -2,32 +2,39 @@
 
 .btn {
     display: inline-block;
-    min-width:124px;
-    padding:11px 23px;
+    min-width:112px;
+    padding:11px 31px;
     @include font-medium;
     text-align: center;
     vertical-align: top;
     border: 1px solid #EC455A;
-    border-radius: 25px;
+    border-radius: 26px;
     background-color:#EC455A;
     color:#fff;
     font-weight:500;
-    &:hover {
-        border-color:#EC455A;
-        background-color:#EC455A;
+    @include mobile {
+        font-size:17px;
+        line-height:25px;
+        padding:16.5px 31px;
+        border-radius:0;
     }
-    &:disabled,
-    &.disabled {
-        border-color:#aaa;
-        background-color:#aaa;
+    &:hover {
+        
     }
     &.gray {
         border-color: #ededed;
         background: #ededed;
         color: #ec455a;
         &:hover {
-            border-color:#ededed;
-            background:#ededed;
+
+        }
+    }
+    &.dark-gray {
+        border-color: #767676;
+        background: #767676;
+        color: #fff;
+        &:hover {
+
         }
     }
     &.border {
@@ -35,12 +42,23 @@
         background:#fff;
         color:#222;
     }
+
+    &:disabled,
+    &.disabled {
+        color:#aaa;
+        border-color:#ddd;
+        background-color:#ededed;
+    }
     // 작은사이즈 버튼
     &.size {
         min-width:68px;
-        padding:5px 20px;
+        padding:5px 15px;
         border-radius:16px;
         @include font-small;
+        @include mobile {
+            font-size:14px;
+            line-height:22px;
+        }
     }
     &.block {
         display: block;

@@ -11,6 +11,19 @@
         .col-right {
             margin-top: -56px;
         }
+        @media screen and (max-width: $tablet-l-width) {
+            .tabs-wrap {
+                width: auto;
+            }
+            .col-right {
+                margin-top: 0;
+            }
+        }
+        @include mobile {
+            .tabs-wrap {
+                margin: 0 16px;
+            }
+        }
     }
 
     //장바구니
@@ -23,6 +36,9 @@
         .btn-area {
             float: right;
         }
+        @include mobile {
+            margin-top: -40px;
+        }
     }
 
     .card-benefit {
@@ -34,54 +50,7 @@
             line-height: 24px;
         }
     }
-/*
-    .info-box {
-        float: right;
-        @include clearfix;
-        width: 280px;
-        padding: 32px;
-        margin-bottom:12px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.26);
-        border: 1px solid #ddd;
-        background-color: #fff;
-        .title {
-            margin-bottom: 16px;
-            font-weight: $font-weight-bold;
-            @include font-medium;
-        }
-        .text {
-            @include font-small;
-            word-break: keep-all;
-            color: #616161;
-            .detail-address {
-                display: block;
-            }
-        }
-        .btn-area {
-            text-align: right;
-            .btn-text {
-                margin-top: 16px;
-                @include font-small;
-            }
-        }
-        @include mobile {
-            float: none;
-            width: 100%;
-            margin: 0 0 40px;
-            padding: 32px 20px;
-            .btn-area {
-                .btn-text {
-                    margin-top: 24px;
-                }
-            }
-        }
-    }
 
-    .payment-amount-info {
-        float: right;
-    }
-*/
     .bullet-list {
         clear: both;
         color: #808080;
@@ -181,6 +150,12 @@
     background-color: #fff;
     @include mobile {
         flex-flow: column;
+        &.is-check {
+            padding-top: 56px;
+            .item-image {
+                top: 56px;
+            }
+        }
     }
     .item-image {
         width:140px;
@@ -296,11 +271,6 @@
         //width: 320px;
         text-align: right;
         //vertical-align: middle;
-        @include mobile {
-            margin-top: 16px;
-            padding-left: 112px;
-            text-align: left;
-        }
         .amount {
             position: relative;
             width: 180px;
@@ -333,6 +303,27 @@
             display: inline-block;
             width: 140px;
             vertical-align: middle;
+        }
+        .tooltip-wrap {
+            margin-bottom: 4px;
+            vertical-align: bottom;
+        }
+
+        @include mobile {
+            display: block;
+            margin-top: 16px;
+            padding-left: 112px;
+            text-align: left;
+            .amount {
+                position: relative;
+                width: 100%;
+                display:block;
+            }
+            .btn-area {
+                display: block;
+                width: 100%;
+                margin-top: 12px;
+            }
         }
     }
     &.disabled .product-payment .amount .total-price {
@@ -385,6 +376,32 @@
         background-color: #f4f4f4;
         @include mobile {
             padding: 32px 20px;
+        }
+        .btn-area {
+            margin-top: 32px;
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+}
+.box-link {
+    > a {
+        display: block;
+        position: relative;
+        padding-right: 48px;
+        @include font-small;
+        font-weight: $font-weight-medium;
+        &:after {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 24px;
+            height: 24px;
+            background: url('/lg5-common/images/icons/btn-arrow_right_24.svg') no-repeat;
+            background-size: 100%;
         }
     }
 }
@@ -532,6 +549,7 @@
         }
 
     }
+    /*
     .btn-area {
         @include clearfix;
         .btn {
@@ -543,7 +561,7 @@
             @include font-small;
             line-height: 24px;
         }
-    }
+    }*/
 }
 .agree-box {
     .sub-title {
@@ -577,12 +595,6 @@
             margin-top: 24px;
             padding-top: 16px;
             border-top: 1px solid $color-border;
-        }
-    }
-    .btn-area {
-        margin-top: 32px;
-        .btn {
-            width: 100%;
         }
     }
 }
