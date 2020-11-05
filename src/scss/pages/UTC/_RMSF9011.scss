@@ -3,38 +3,18 @@
     text-align: center;
     margin-top: 84px;
     padding: 88px 0 64px;
-    &:before,
-    &:after {
-        position: absolute;
-        left: 50%;
-        content: '';
-    }
-    &:before {
-        top: 0;
-        width: 56px;
-        height: 56px;
-        border-radius: 28px;
-        background-color: #ec455a;
-        transform: translateX(-50%);
-    }
-    &:after {
-        top: 15px;
-        width: 27px;
-        height: 19px;
-        border-bottom: 3px solid #fff;
-        border-left: 3px solid #fff;
-        transform: translateX(-50%) rotate(-45deg);
-    }
     .text {
         font-weight: 700;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: $font-large-5;
+        line-height: 56px;
     }
     .small-text {
         margin-top: 8px;
-        @include font-small;
-        color: #616161;
+        @include font-medium;
         word-break: keep-all;
+    }
+    .btn-link {
+        color: $color-gray-1;
     }
 
     @include mobile {
@@ -45,6 +25,36 @@
         }
         .small-text {
             color: #808080;
+        }
+    }
+
+}
+
+.order-complete {
+    .order-item {
+        padding-top: 88px;
+        &:first-child {
+            border-top: 2px solid $color-default;
+        }
+    }
+    & + .total-payment-amount {
+        text-align: right;
+        .title,
+        .price {
+            display: inline-block;
+            vertical-align: bottom;
+        }
+        .title {
+            margin-right: 12px;
+            font-weight: 500;
+            @include font-small;
+        }
+        .price {
+            @include font-large-2;
+        }
+        .text {
+            @include font-small;
+            color: $color-primary;
         }
     }
 }

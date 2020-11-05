@@ -328,6 +328,14 @@
             }
         }
     }
+    .state-message {
+        display: flex;
+        align-items: center;
+        width: 270px;
+        padding: 0 24px;
+        font-weight: 500;
+        @include font-small;
+    }
     &.disabled .product-payment .amount .total {
         color:$color-gray-4;
     }
@@ -370,6 +378,21 @@
         position:absolute;
         top:32px;
         left:0;
+    }
+
+    .order-number {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        padding: 14px 17px;
+        background-color: $color-bg;
+        font-weight: 700;
+        @include font-large;
+        .text {
+            color: $color-gray-1;
+        }
+        .number {}
     }
 }
 
