@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-product02-60</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-67">
+            <rect id="Rectangle" x="0" y="0" width="60" height="60"></rect>
+            <g id="Group-51" transform="translate(2.000000, 11.000000)" stroke="#979797" stroke-width="2">
+                <g id="Group-49">
+                    <g id="Group-70">
+                        <g id="Group-71">
+                            <rect id="Rectangle" fill="#FFFFFF" x="9" y="1" width="38" height="24"></rect>
+                            <rect id="Rectangle" fill="#FFFFFF" x="12" y="4" width="32" height="17.9047619" rx="2"></rect>
+                            <path d="M46.3944487,25 L9.60555128,25 C8.9368449,25 8.31238224,25.3342023 7.94145069,25.8905996 L3.94145069,31.8905996 C3.72242733,32.2191346 3.60555128,32.60515 3.60555128,33 C3.60555128,33.5522847 3.8294089,34.0522847 4.19133771,34.4142136 C4.55326653,34.7761424 5.05326653,35 5.60555128,35 L50.3944487,35 C50.7892987,35 51.1753141,34.8831239 51.5038491,34.6641006 C51.9633778,34.3577481 52.2552291,33.8941372 52.3556101,33.3922323 C52.4559911,32.8903273 52.3649018,32.3501283 52.0585493,31.8905996 L48.0585493,25.8905996 C47.6876178,25.3342023 47.0631551,25 46.3944487,25 Z" id="Rectangle" fill="#FFFFFF"></path>
+                            <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="4.01438226 34 7.01438226 38 49 38 52 34"></polyline>
+                            <polyline id="Path-2" stroke-linecap="round" stroke-linejoin="round" points="17.5433253 34.5 19.8486015 30.5 37.2380492 30.5 39.5433253 34.5"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-product05-60</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-65">
+            <rect id="Rectangle" x="0" y="0" width="60" height="60"></rect>
+            <g id="Group-43" transform="translate(14.000000, 9.000000)" stroke="#979797">
+                <g id="Group-69">
+                    <rect id="Rectangle" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="31" height="38"></rect>
+                    <path d="" id="Rectangle" fill="#D8D8D8"></path>
+                    <rect id="Rectangle" stroke-width="2" fill="#FFFFFF" x="7" y="10" width="20" height="20" rx="10"></rect>
+                    <path d="M11,23 C12.5,25 14.5,26 17,26 C19.5,26 21.5,25 23,23" id="Path-15" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M7,39 L3,39 L3,41 C3,41.2761424 3.11192881,41.5261424 3.29289322,41.7071068 C3.47385763,41.8880712 3.72385763,42 4,42 L6,42 C6.27614237,42 6.52614237,41.8880712 6.70710678,41.7071068 C6.88807119,41.5261424 7,41.2761424 7,41 L7,39 Z" id="Rectangle" stroke-width="2" fill="#FFFFFF"></path>
+                    <path d="M30,39 L26,39 L26,41 C26,41.2761424 26.1119288,41.5261424 26.2928932,41.7071068 C26.4738576,41.8880712 26.7238576,42 27,42 L29,42 C29.2761424,42 29.5261424,41.8880712 29.7071068,41.7071068 C29.8880712,41.5261424 30,41.2761424 30,41 L30,39 Z" id="Rectangle" stroke-width="2" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
