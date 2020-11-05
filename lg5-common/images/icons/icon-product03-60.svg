@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-product03-60</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-67">
+            <rect id="Rectangle" x="0" y="0" width="60" height="60"></rect>
+            <g id="Group-51" transform="translate(8.000000, 12.000000)" stroke="#979797">
+                <g id="Group-49">
+                    <rect id="Rectangle" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="42" height="29"></rect>
+                    <polyline id="Path-16" stroke-width="2" points="20 30 18 36 26.8803302 36 24.8803302 30"></polyline>
+                    <rect id="Rectangle" fill="#D8D8D8" x="14.5" y="35.5" width="16" height="1" rx="0.5"></rect>
+                </g>
+                <path d="" id="Rectangle" fill="#D8D8D8"></path>
+            </g>
+        </g>
+    </g>
+</svg>

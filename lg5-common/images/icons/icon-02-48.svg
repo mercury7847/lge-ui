@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-02-48</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-124">
+            <g id="Group-29">
+                <rect id="Mask-Copy-8" opacity="0.300000012" x="0" y="0" width="48" height="48"></rect>
+                <g id="Group-28" transform="translate(2.000000, 3.000000)">
+                    <rect id="Rectangle" stroke="#222222" stroke-width="1.5" fill="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" x="17" y="0" width="27" height="38"></rect>
+                    <rect id="Rectangle" fill="#222222" x="27" y="14" width="17" height="1.5"></rect>
+                    <rect id="Rectangle" fill="#222222" x="38" y="9" width="3" height="3" rx="1.5"></rect>
+                    <rect id="Rectangle" fill="#222222" x="38" y="18" width="3" height="3" rx="1.5"></rect>
+                    <rect id="Rectangle" stroke="#222222" stroke-width="1.5" fill="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" x="0" y="11" width="28" height="32"></rect>
+                    <circle id="Oval" stroke="#222222" stroke-width="1.5" fill="#EDEDED" stroke-linecap="round" stroke-linejoin="round" cx="14" cy="30" r="9"></circle>
+                    <path d="" id="Rectangle" stroke="#222222"></path>
+                    <path d="" id="Rectangle" stroke="#222222" transform="translate(14.000000, 30.000000) rotate(-270.000000) translate(-14.000000, -30.000000) "></path>
+                    <rect id="Rectangle" fill="#222222" x="5" y="15" width="19" height="1.5" rx="0.75"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

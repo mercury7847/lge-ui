@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-scrollTop-on-64</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="btn_scrollTop_64">
+            <rect id="Rectangle" x="0" y="0" width="64" height="64"></rect>
+            <g id="ic">
+                <g id="Group-20" transform="translate(24.000000, 23.000000)">
+                    <polyline id="Path" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(8.500000, 11.000000) rotate(-180.000000) translate(-8.500000, -11.000000) " points="17 7 8.5 15 0 7"></polyline>
+                    <path d="M1.5,0 L15.5,0 C16.3284271,-1.52179594e-16 17,0.671572875 17,1.5 C17,2.32842712 16.3284271,3 15.5,3 L1.5,3 C0.671572875,3 1.01453063e-16,2.32842712 0,1.5 C-1.01453063e-16,0.671572875 0.671572875,1.52179594e-16 1.5,0 Z" id="Rectangle" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

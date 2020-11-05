@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-nodata-60</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-120">
+            <g id="ic_nodata_60">
+                <rect id="area" x="0" y="0" width="60" height="60"></rect>
+                <g id="shape" transform="translate(3.000000, 3.000000)">
+                    <g id="ic" stroke="#767676" stroke-width="2">
+                        <circle id="Oval" cx="27" cy="27" r="27"></circle>
+                    </g>
+                    <g id="Group-112" transform="translate(24.000000, 12.750000)" fill="#767676">
+                        <g id="Group-114">
+                            <path d="M3,0 C4.54272881,-2.83394685e-16 5.79335761,1.2506288 5.79335761,2.79335761 C5.79335761,2.85976039 5.79098985,2.92614206 5.78625885,2.9923761 L4.60687057,19.503812 C4.5466544,20.3468384 3.84517428,21 3,21 C2.15482572,21 1.4533456,20.3468384 1.39312943,19.503812 L0.21374115,2.9923761 C0.103826273,1.45356783 1.26217324,0.117013637 2.80098151,0.00709876017 C2.86721555,0.00236775769 2.93359722,1.21979936e-17 3,0 Z" id="Rectangle"></path>
+                            <rect id="Rectangle" x="0.75" y="23.25" width="4.5" height="4.5" rx="2.25"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
