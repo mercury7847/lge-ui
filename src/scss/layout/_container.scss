@@ -87,7 +87,7 @@
                 width: 400px;
                 margin-left: 48px;
             }
-            @include mobile {
+            @media screen and (max-width: $tablet-l-width) {
                 .col-left,
                 .col-right {
                     float: none;
@@ -97,6 +97,16 @@
                     margin-left: 0;
                 }
             }
+            //@include mobile {
+            //    .col-left,
+            //    .col-right {
+            //        float: none;
+            //        width: 100%;
+            //    }
+            //    .col-right {
+            //        margin-left: 0;
+            //    }
+            //}
         }
 
         // layout

@@ -362,9 +362,20 @@
 }
 
 .col-right {
+    .info-area {
+        padding-top: 80px;
+        @include mobile {
+            padding:40px 16px 0;
+            border-top: 12px solid $color-bg;
+        }
+    }
     .sub-title {
+        margin-top: -44px;
         margin-bottom: 16px;
         @include font-large;
+        @media screen and (max-width: $tablet-l-width) {
+            margin-top: 0;
+        }
     }
     .gray-box {
         width: 100%;
