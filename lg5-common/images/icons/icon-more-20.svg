@@ -2,14 +2,14 @@
 <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>icon-more-20</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group-23">
+        <g id="btn_more_20">
             <rect id="Rectangle" x="0" y="0" width="20" height="20"></rect>
             <g id="Group-2" transform="translate(2.000000, 2.000000)">
                 <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
-                <rect id="Rectangle" stroke="#616161" stroke-width="1.5" x="4.75" y="7.75" width="6.5" height="1" rx="0.5"></rect>
-                <rect id="Rectangle" stroke="#616161" stroke-width="1.5" transform="translate(8.000000, 7.750000) rotate(-270.000000) translate(-8.000000, -7.750000) " x="4.75" y="7.75" width="6.5" height="1" rx="0.5"></rect>
+                <path d="M11.25,7 C11.6642136,7 12,7.33578644 12,7.75 C12,8.16421356 11.6642136,8.5 11.25,8.5 L4.75,8.5 C4.33578644,8.5 4,8.16421356 4,7.75 C4,7.33578644 4.33578644,7 4.75,7 L11.25,7 Z" id="Rectangle" fill="#616161" fill-rule="nonzero"></path>
+                <path d="M11.25,7 C11.6642136,7 12,7.33578644 12,7.75 C12,8.16421356 11.6642136,8.5 11.25,8.5 L4.75,8.5 C4.33578644,8.5 4,8.16421356 4,7.75 C4,7.33578644 4.33578644,7 4.75,7 L11.25,7 Z" id="Rectangle" fill="#616161" fill-rule="nonzero" transform="translate(8.000000, 7.750000) rotate(-270.000000) translate(-8.000000, -7.750000) "></path>
             </g>
-            <circle id="Oval" stroke="#616161" stroke-width="1.5" cx="10" cy="10" r="7.25"></circle>
+            <path d="M10,1 C14.9705627,1 19,5.02943725 19,10 C19,14.9705627 14.9705627,19 10,19 C5.02943725,19 1,14.9705627 1,10 C1,5.02943725 5.02943725,1 10,1 Z M10,2.5 C5.85786438,2.5 2.5,5.85786438 2.5,10 C2.5,14.1421356 5.85786438,17.5 10,17.5 C14.1421356,17.5 17.5,14.1421356 17.5,10 C17.5,5.85786438 14.1421356,2.5 10,2.5 Z" id="Oval" fill="#616161" fill-rule="nonzero"></path>
         </g>
     </g>
 </svg>
