@@ -84,7 +84,7 @@
             @@for ( var i=0; i < context.slideArr.length; i++ ) {
             <!--  slide -->
             <div class="slide-conts ui_carousel_slide">
-                <div class="slide-box">
+                <div class="slide-box" data-item-id="`+slideArr[i].itemID+`">
                     `+slideArr[i].badge+`
                     <div class="product-image" aria-hidden="true">
                         <a href="#"><img src="`+slideArr[i].img+`" alt=""></a>
