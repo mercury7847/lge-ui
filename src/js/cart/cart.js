@@ -162,7 +162,6 @@
         });
     }
 
-    //지울려고 하는 알람id는 array로 전달
     function requestWishProduct(param) {
         console.log(param);
     }
