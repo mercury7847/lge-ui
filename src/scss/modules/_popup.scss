@@ -10,8 +10,8 @@
     z-index:9000;
     overflow:hidden;
     @include mobile {
-        width:73.4%;
-        padding-top:75px;
+        width:87.5%;
+        padding-top:70px;
     }
     .lay-header {
         position:relative; 
@@ -36,7 +36,7 @@
             margin-top:0;
         }
         @include mobile {
-            padding:0 24px 75px;
+            padding:0 24px 70px;
         }
         p {
             margin-top:8px;
@@ -55,7 +55,6 @@
                 padding:0;
             }
             .btn {
-                border-radius:26px;
                 margin-left:8px;
                 &:first-child {
                     margin-left:0;
@@ -63,7 +62,6 @@
                 @include mobile {
                     width:50%;
                     margin-left:0;
-                    border-radius:0;
                     &:only-child {
                         width:100%;
                     }
@@ -73,6 +71,15 @@
     }
     &.type2 {
         padding-top:48px;
+        @include mobile {
+            padding-top:60px;
+        }
+        .lay-conts {
+            padding:0 24px 32px;
+            @include mobile {
+                padding:0 24px 40px;
+            }
+        }
         .laypop {
             &.btn-wrap {
                 padding-bottom:48px;
@@ -109,9 +116,6 @@
     }
     &.small {
         max-width:444px;
-        @include mobile {
-            max-width:100%;
-        }
     }
     @include mobile {
         left:0 !important;
@@ -125,14 +129,12 @@
     .btn-close {
         position:absolute;
         top:40px;
-        right:24px;
+        right:48px;
         width:32px;
         height:32px;
         @include mobile {
-            top:28px;
+            top:24px;
             right:16px;
-            width:24px;
-            height:24px;
         }
         &::before {
             content:' ';
@@ -142,16 +144,12 @@
             width:32px;
             height:32px;
             background:url('/lg5-common/images/icons/btn-close-32.svg') no-repeat;
-            @include mobile {
-                width:24px;
-                height:24px;
-                background-size:24px 24px;
-            }
+
         }
     }
     .pop-header {
         padding:40px 0 20px;
-        margin:0 24px;
+        margin:0 48px;
         border-bottom:2px solid #222;
         .tit span {
             display:block;
@@ -193,7 +191,7 @@
     .pop-conts {
         height:auto;
         max-height:492px;
-        padding:48px 24px 0;
+        padding:48px 48px 0;
         overflow-y:auto;
         &.no-footer {
             max-height:576px;
@@ -224,7 +222,7 @@
         }
     }
     .pop-footer {
-        padding:32px 24px 32px;
+        padding:32px 48px 48px;
         background:transparent;
         font-size:0;
         text-align:right;
@@ -668,22 +666,34 @@
     // input-form
     .input-info {
         .tit-wrap {
-            padding-bottom:8px;
+            @include clearfix;
+            position:relative;
+            margin-bottom:8px;
+            padding:0;
             .h2-tit {
                 @include font-large;
             }
             &.type2 {
-                padding-bottom:16px;
+                margin-bottom:16px;
                 @include mobile {
-                    padding-bottom:12px;
+                    margin-bottom:8px;
                 }
                 .h2-tit {
+                    display:inline-block;
+                    padding-right:100px;
                     @include font-medium;
+                    vertical-align:middle;
                     @include mobile {
                         font-size:18px;
                         line-height:26px;
                     }
                 }
+            }
+            .btn-link {
+                position:absolute;
+                top:50%;
+                right:0;
+                transform:translateY(-50%);
             }
         }
     }

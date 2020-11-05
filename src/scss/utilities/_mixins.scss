@@ -58,10 +58,10 @@
     font-size: $font-large-2;
     line-height: 34px;
 
-    //@media screen and (max-width: #{$tablet-s-width}) {
-    //    font-size : $font-large - 1;
-    //    line-height: 25px;
-    //}
+    @media screen and (max-width: #{$tablet-s-width}) {
+       font-size : $font-large ;
+       line-height: 26px;
+    }
 }
 
 @mixin font-large-3 {
