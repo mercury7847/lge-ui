@@ -1,5 +1,5 @@
 (function() {
-    var cartItemTemplate = '<li class="order-item {{#if soldout}}disabled{{/if}}" data-item-id={{itemID}}>' +
+    var cartItemTemplate = '<li class="order-item {{#if soldout}}disabled{{/if}}" data-item-id="{{itemID}}">' +
         '<div class="item-image"><a href="{{itemUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="product-info">' +
             '<div class="flag-wrap bg-type">' +
@@ -44,6 +44,7 @@
                 self.$cartContent = $('#tab2');
                 self.$cartWrap = self.$cartContent.find('div.cart-wrap');
                 self.$cartAllCheck = self.$cartContent.find('div.check-option div.chk-wrap input');
+                self.cartItemCheckQuery = "li.order-item span.chk-wrap input";
                 self.$cartSelectRemove = self.$cartContent.find('div.check-option div.btn-area button.btn-text');
                 self.$cartList = self.$cartContent.find('div.list-wrap');
 
@@ -54,9 +55,15 @@
                 //신청서확인
                 self.$agreement = self.$cartContent.find('div.col-right div.agree-box');
 
+                //계약신청서 확인/동의
+                self.$agreementAllCheck = self.$agreement.find('div.chk-btm span.chk-wrap input');
+                self.agreementItemCheckQuery = "li span.chk-wrap input";
 
+                //nodata
                 self.$noData = self.$cartContent.find('div.no-data-wrap');
-                self.cartItemCheckQuery = "li.order-item span.chk-wrap input";
+
+                //추천제품
+                self.$recommendProduct = $('div.product-recommend-wrap');
 
                 var _self = this;
                 _self.bindEvents();
@@ -84,8 +91,7 @@
 
                 //리스트 아이템 청약하기 버튼
                 self.$cartList.on('click', 'div.product-payment div.btn-area button', function(e) {
-                    var url = $(this).attr('data-url');
-                    location.href = url;
+                    _self.locationButtonUrl(this);
                 });
 
                 //리스트 아이템 찜하기
@@ -112,6 +118,36 @@
                 self.$cartList.on('click', 'div.item-delete button.btn-delete', function(e) {
                     var itemID = $(this).parents('li.order-item').attr('data-item-id');
                     _self.requestRemoveItem([itemID]);
+                });
+
+                //계약신청서 확인/동의 전체 선택
+                self.$agreementAllCheck.on('change',function (e) {
+                    var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
+                    $itemCheck.prop('checked', self.$agreementAllCheck.is(':checked'));
+                });
+
+                //계약신청서 아이템 선택
+                self.$agreement.on('click', self.agreementItemCheckQuery, function(e) {
+                    var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
+                    self.$agreementAllCheck.prop('checked', !$itemCheck.is(':not(:checked)'));
+                });
+
+                //청약하기
+                self.$agreement.on('click', 'div.btn-area button', function(e) {
+                    _self.clickSubscriptionButton(this);
+                });
+
+                //추천제품 장바구니
+                self.$recommendProduct.on('click', 'div.slide-box button', function(e) {
+                    var itemID = $(this).parents('div.slide-box').attr('data-item-id');
+                    _self.requestCartItem(itemID);
+                });
+
+                //추천제품 찜하기
+                self.$recommendProduct.on('click', 'div.slide-box span.chk-wish-wrap input', function(e) {
+                    var itemID = $(this).parents('div.slide-box').attr('data-item-id');
+                    var checked = $(this).is(':checked');
+                    _self.requestWishItem(itemID, checked);
                 });
             },
 
@@ -217,8 +253,24 @@
             requestCartItem: function(itemID) {
                 var ajaxUrl = self.$cartContent.attr('data-cart-url');
                 var postData = {"itemID":itemID};
-                console.log('cart',ajaxUrl, postData);
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
+            },
+
+            //청약신청하기 버튼 클릭
+            clickSubscriptionButton: function(dm) {
+                var _self = this;
+                var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
+                if(!$itemCheck.is(':not(:checked)')) {
+                    _self.locationButtonUrl(dm);
+                } else {
+                    //동의서가 다 체크되지 않음
+                }
+            },
+
+            //dom의 data-url을 읽어서 이동시킴
+            locationButtonUrl: function(dm) {
+                var url = $(dm).attr('data-url');
+                location.href = url;
             }
         };
 
