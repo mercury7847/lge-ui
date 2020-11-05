@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRP0044 {
+	.title {
+		font-size:24px;
+		font-weight:700;
+		line-height:32px;
+	}
+	.bullet-list {
+		margin-top:24px;
+	}
+	@include mobile {
+		.title {
+			line-height:30px;
+		}
+		.bullet-list {
+			margin-top:20px;
+		}
+	}
+}

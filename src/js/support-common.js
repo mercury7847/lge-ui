@@ -557,12 +557,73 @@ CS.MD.anchorTab  = function() {
     CS.MD.plugin(pluginName, Plugin);
 }();
 
-(function($){
-    function _initQuickMenu() {
-        
+CS.MD.quickMenu = function() {
+    var pluginName = 'quickMenu';
+    
+    function Plugin(el, opt) {
+        var self = this;
+            self.$el = $(el),
+            self.el = el;
+
+        var defaults = {};
+
+        self.options = $.extend({}, defaults, opt);
+    
+        self.$topBtn = self.$el.find('.btn-top');
+
+        self._bindEvent();
     }
+
+    Plugin.prototype = {
+        _bindEvent: function() {
+            var self = this;
+
+            $('.fold-expand-btn').on('click', function(e) {
+                e.preventDefault();
+
+                var $this = $(this),
+                    $item = $this.closest('li');
+
+                if ($item.hasClass('on')) {
+                    $item.removeClass('on');
+                } else {
+                    $item.addClass('on');
+                }
+            });
+
+
+            $(window).on('breakpointchange.quickmenu', function(e, data){
+                if (data.isMobile) {
+                    $('.service-history-btn:first-child').off('click').on('click', function(e) {
+                        if (!$('.service-history-ul').hasClass('on')) {
+                            e.preventDefault();
+                            $('.service-history-ul').addClass('on');
+                        }
+                    });
+                }
+            })
+
+            self.$topBtn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').stop().animate({
+                    scrollTop: 0
+                }, 400);
+            });
+
+            $(window).on('scroll resize', function(){
+                if (self.$el.find('.on').length > 0) {
+                    self.$el.find('.on').removeClass('on');
+                }
+            });
+        }
+    }
+
+    CS.MD.plugin(pluginName, Plugin);
+}();
+
+(function($){
     function commonInit(){
-        _initQuickMenu();
+        $('#quickmenu').quickMenu();
 
         $('.scroll-x').mCustomScrollbar({
             axis:"x",
