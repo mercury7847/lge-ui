@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-cart-48</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_pdp_cart_Default_48">
+            <rect id="Rectangle" x="0" y="0" width="48" height="48"></rect>
+            <g id="Group-6" transform="translate(13.000000, 13.000000)" stroke="#222222" stroke-width="2">
+                <polyline id="Path-5" stroke-linecap="round" stroke-linejoin="round" points="0 0 3.86842105 0 5.38471246 16.5 19.736917 16.5"></polyline>
+                <polyline id="Path-6" stroke-linecap="round" points="6.2684593 12 18.6535451 12 22.0117436 5.625"></polyline>
+                <circle id="Oval" stroke-linejoin="round" cx="19.5" cy="19.5" r="3"></circle>
+                <circle id="Oval" stroke-linejoin="round" cx="4.5" cy="19.5" r="3"></circle>
+                <line x1="22.0117436" y1="5.625" x2="4.04639409" y2="4.5" id="Path-7"></line>
+            </g>
+        </g>
+    </g>
+</svg>

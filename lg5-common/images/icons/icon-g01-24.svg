@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-g01-24</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_pdp_counsel_24_PC">
+            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+            <path d="M18.2222222,3 C19.2040618,3 20,3.79593822 20,4.77777778 L20,15.6666667 C20,16.6485062 19.2040618,17.4444444 18.2222222,17.4444444 L8.46,17.444 L5.77777778,20.1510668 L5.77777778,17.4444444 C4.79593822,17.4444444 4,16.6485062 4,15.6666667 L4,4.77777778 C4,3.79593822 4.79593822,3 5.77777778,3 L18.2222222,3 Z" id="Combined-Shape" fill="#767676"></path>
+            <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1.5" x="7.75" y="8.75" width="8.5" height="1" rx="0.5"></rect>
+            <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1.5" x="7.75" y="12.25" width="4.5" height="1" rx="0.5"></rect>
+        </g>
+    </g>
+</svg>
