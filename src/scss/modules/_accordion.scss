@@ -211,6 +211,9 @@
             &:last-child {
                 padding-bottom: 0;
             }
+            &.on .accord-btn:after {
+                transform:rotate(180deg);
+            }
         }
     }
     .head {

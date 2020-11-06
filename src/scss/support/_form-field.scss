@@ -1,9 +1,173 @@
 @charset "UTF-8";
 
-/* input, select */
-.input-wrap, .select-wrap {
-    width:100%;
-    max-width:none;
+/* form field */
+.field-wrap {
+    .row {
+        margin:32px 0 0;
+        &:first-child {
+            margin-top:0;
+        }
+        @include clearfix;
+        @include mobile {
+            margin-top:40px;
+        }
+    }
+    .field-title {
+        margin-bottom:16px;
+        .tit {
+            display:inline-block;
+            font-size:14px;
+            font-weight:400;
+            line-height:20px;
+            vertical-align:top;
+        }
+        @include mobile {
+            margin-bottom:12px;
+            .tit {
+                line-height:18px;
+            }
+        }
+    }
+    .field-box {
+        @include clearfix;
+        & + .field-box {
+            margin-top:12px;
+            @include mobile {
+                margin-top:8px;
+            }
+        }
+        > .input-wrap, > .select-wrap {
+            float:left;
+            width:calc(50% - 4px);
+            & + .input-wrap, & + .select-wrap {
+                float:right;
+            }
+            @include mobile {
+                float:none;
+                width:100%;
+                & + .input-wrap, & + .select-wrap {
+                    float:none;
+                    margin-top:8px;
+                }
+            }
+        }
+    }
+    .field-item {
+        float:left;
+        width:calc(50% - 4px);
+        &.block {
+            float:none;
+            width:100%;
+        }
+        & + .field-item {
+            float:right;
+        }
+        .input-wrap, .select-wrap {
+            display:block;
+        }
+        .box {
+            width:100%;
+        }
+        .err-msg {
+            display:none;
+        }
+        @include mobile {
+            float:none;
+            width:100%;
+            margin-top:40px;
+            &:first-child {
+                margin-top:0;
+            }
+        }
+    }
+    .btn-wrap {
+        margin-top:32px;
+        text-align:center;
+    }
+}
+
+/* button */
+.btn-group {
+    margin:40px auto 0;
+    @include mobile {
+        margin-top:0;
+    }
+}
+
+/* input or textarea */
+
+/* select */
+
+/* check or radio */
+
+/* check or radio list */ 
+
+/* input box (email, address, search etc... */
+
+
+
+
+
+
+
+
+/* button */
+.btn {
+    &.type-privacy {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1;
+        color: #616161;
+        text-align: left;
+        border-color: #ddd;
+        padding: 15px 32px 15px 16px;
+        position: relative;
+        margin-top: 8px;
+        &:first-child {
+            margin-top: 0;
+        }
+        &::after {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 24px;
+            background: url("/lg5-common/images/icons/icon-btn-arrow-right.svg") no-repeat;
+            position: absolute;
+            right: 16px;
+            top: 16px;
+        }
+        .side-item {
+            font-size: 14px;
+            font-weight: normal;
+            color: #808080;
+            margin-top: 12px;
+            margin-left: 32px;
+            margin-bottom: 14px;
+        }
+    }
+    &.type-solution {
+        text-align: left;
+        border-color: transparent;
+        padding: 24px 40px;
+        background: url(/lg5-common/images/icons/icon-btn-arrow-right.svg) no-repeat right 40px center #f4f4f4;
+        background-size: 40px;
+        .text {
+            font-size: 16px;
+            font-weight: 500;
+            color: #222;
+        }
+        .side-item {
+            font-size: 14px;
+            line-height: 1.43;
+            color: #616161;
+            margin-top: 4px;
+        }
+        @include mobile {
+            padding: 20px;
+            background-position: top 20px right 20px;
+            background-size: 24px;
+        }
+    }
 }
 
 .rdo-btn-wrap {
@@ -70,125 +234,32 @@
     }
 }
 
-/* form field */
-.field-wrap {
-    .row {
-        margin:32px 0 0;
-        &:first-child {
-            margin-top:0;
-        }
-        @include clearfix;
-        @include mobile {
-            margin-top:40px;
-        }
-    }
-    .field-title {
-        margin-bottom:16px;
-        .tit {
-            display:inline-block;
-            font-size:14px;
-            font-weight:400;
-            line-height:20px;
-            vertical-align:top;
-        }
-        @include mobile {
-            margin-bottom:12px;
-            .tit {
-                line-height:18px;
-            }
-        }
-    }
-    .field-box {
-        @include clearfix;
-        & + .field-box {
-            margin-top:12px;
-            @include mobile {
-                margin-top:8px;
-            }
-        }
-        .input-wrap, .select-wrap {
-            float:left;
-            width:calc(50% - 4px);
-            & + .input-wrap, & + .select-wrap {
-                float:right;
-            }
-            @include mobile {
-                float:none;
-                width:100%;
-                & + .input-wrap, & + .select-wrap {
-                    float:none;
-                    margin-top:8px;
-                }
-            }
-        }
-    }
-    .field-item {
-        float:left;
-        width:calc(50% - 4px);
-        &.block {
-            float:none;
-            width:100%;
-        }
-        & + .field-item {
-            float:right;
-        }
-        > .input-wrap, > .select-wrap {
-            width:100%;
-            & + .input-wrap, & + .select-wrap {
-                margin-top:8px;
-            }
-        }
-        .box {
-            width:100%;
-        }
-        .err-msg {
-            display:none;
-        }
-        @include mobile {
-            float:none;
-            width:100%;
-            margin-top:40px;
-            &:first-child {
-                margin-top:0;
-            }
-        }
-    }
-    .btn-wrap {
-        margin-top:32px;
-        text-align:center;
-    }
-}
-
 .email-box {
-    .email-input {
-        margin:0 -4px;
-        @include clearfix;
-        .input-wrap, .select-wrap {
-            float:left;
-            width:calc((100% - 24px) / 3);
-            padding:0 4px;
-        }
-        .at {
-            float:left;
-            width:24px;
-            padding:0 4px;
-            color:#616161;
-            font-size:16px;
-            line-height:56px;
-        }
+    margin:0 -4px;
+    @include clearfix;
+    .input-wrap, .select-wrap {
+        float:left;
+        width:calc((100% - 24px) / 3);
+        padding:0 4px;
     }
-    @include mobile {
-        .email-input {
-            .input-wrap {
-                width: calc((100% - 24px)/ 2);
-            }
-            .select-wrap {
-                display: block;
+    .at {
+        float:left;
+        width:24px;
+        padding:0 4px;
+        color:#616161;
+        font-size:16px;
+        line-height:48px;
+    }
+    @include mobile {    
+        .input-wrap {
+            width: calc((100% - 24px)/ 2);
+        }
+        .select-wrap {
+            display: block;
+            width: 100%;
+            margin-top:8px;
+            input {
                 width: 100%;
-                margin-top:8px;
-                input {
-                    width: 100%;
-                }
             }
         }
     }
@@ -233,127 +304,6 @@
                 display:block;
                 color:#222;
                 font-weight:400;
-            }
-        }
-    }
-}
-
-
-
-/* button area */
-.btn-group {
-    max-width:1066px;
-    margin:40px auto 0;
-    &.right {
-        text-align:right;
-    }
-    @include mobile {
-        margin-top:0;
-    }
-}
-
-/* button */
-.btn {
-    &.btn-icon {
-        position:relative;
-        padding-left:52px;
-        padding-right:64px;
-        text-align:left;
-        background:url(/lg5-common/images/icons/icon-arrow-right-red.svg) no-repeat right 16px top 16px;
-        &:before {
-            content:'';
-            position:absolute;
-            left:16px;
-            top:16px;
-            width:24px;
-            height:24px;
-            background-repeat:no-repeat;
-            background-size:100%;
-        }
-        &.icon-solution:before {
-            background-image: url(/lg5-common/images/icons/icon-solution.svg);
-        }
-        &.icon-driver:before {
-            background-image: url(/lg5-common/images/icons/icon-driver.svg);
-        }
-        @include mobile {
-            padding-right:12px;
-            background:none;
-        }
-    }
-    &[class*="type-icon"] {
-        width:100%;
-        padding-left: 52px;
-        padding-right: 64px;
-        &[class$="-1"] {
-            border-color: #ec455a;
-            color: #ec455a;
-            background: url(/lg5-common/images/icons/icon-solution.svg) no-repeat left 16px top 13px, url(/lg5-common/images/icons/icon-arrow-right-red.svg) no-repeat right 16px top 13px;
-        }
-    }
-    &.type-privacy {
-        font-size: 16px;
-        font-weight: normal;
-        line-height: 1;
-        color: #616161;
-        text-align: left;
-        border-color: #ddd;
-        padding: 15px 32px 15px 16px;
-        position: relative;
-        margin-top: 8px;
-        &:first-child {
-            margin-top: 0;
-        }
-        &::after {
-            content: '';
-            display: block;
-            width: 24px;
-            height: 24px;
-            background: url("/lg5-common/images/icons/icon-btn-arrow-right.svg") no-repeat;
-            position: absolute;
-            right: 16px;
-            top: 16px;
-        }
-        .side-item {
-            font-size: 14px;
-            font-weight: normal;
-            color: #808080;
-            margin-top: 12px;
-            margin-left: 32px;
-            margin-bottom: 14px;
-        }
-    }
-    &.type-solution {
-        text-align: left;
-        border-color: transparent;
-        padding: 24px 40px;
-        background: url(/lg5-common/images/icons/icon-btn-arrow-right.svg) no-repeat right 40px center #f4f4f4;
-        background-size: 40px;
-        .text {
-            font-size: 16px;
-            font-weight: 500;
-            color: #222;
-        }
-        .side-item {
-            font-size: 14px;
-            line-height: 1.43;
-            color: #616161;
-            margin-top: 4px;
-        }
-        @include mobile {
-            padding: 20px;
-            background-position: top 20px right 20px;
-            background-size: 24px;
-        }
-    }
-
-    @include mobile {
-        &[class*="type-icon"] {
-            padding-left: 52px;
-            padding-right: 12px;
-            text-align: left;
-            &[class$="-1"] {
-                background: url(/lg5-common/images/icons/icon-solution.svg) no-repeat left 16px top 16px,
             }
         }
     }
