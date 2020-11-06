@@ -6,10 +6,11 @@
 <body>
     <div class="wrap">
         <button type="button" data-href="#popup1" data-control="modal" class="btn"><span>케어솔루션 월 요금 혜택 팝업 열기</span></button><br><br>
-        <button type="button" data-href="#popup2" data-control="modal" class="btn"><span>케어십 안내 팝업 열기</span></button><br><br>
+        <button type="button" data-href="#popup2" data-control="modal" class="btn"><span>케어십 할인 혜택 팝업 열기</span></button><br><br>
+        <button type="button" data-href="#popup3" data-control="modal" class="btn"><span>케어십 안내 팝업 열기</span></button><br><br>
     </div>
 
-    <!-- 매월 납부금 할인내역 popup -->
+    <!-- 케어솔루션 월 요금 혜택 popup -->
     <article id="popup1" class="popup-wrap">
         <header class="pop-header">
             <h1 class="tit"><span>케어솔루션 월 요금 혜택</span></h1>
@@ -68,17 +69,17 @@
                         <tr>
                             <td class="point">3년차(25~36회차)</td>
                             <td>36,900원</td>
-                            <td></td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td>4년차(37~48회차)</td>
                             <td>13,900원</td>
-                            <td></td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td>5년차(49~60회차)</td>
                             <td>13,900원</td>
-                            <td></td>
+                            <td>&nbsp;</td>
                         </tr>
                         </tbody>
                     </table>
@@ -91,7 +92,7 @@
                 </div>
                 <dl class="bk-infos">
                     <dt>납부 월 회차 : <strong>3, 6, 9, 12, 15, 18회차</strong> 월납부금액 할인(0원)</dt>
-                    <dd>최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, 제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다.</dd>
+                    <dd>최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, <br>제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다.</dd>
                     <dd><a href="#n" class="btn dark-gray size"><span>제휴카드 할인 혜택 자세히 보기</span></a></dd>
                 </dl>
                 @@include('./common/modules/bullet-list.html', {
@@ -107,10 +108,109 @@
         </section>
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
-    <!-- // 매월 납부금 할인내역 popup -->
+    <!-- // 케어솔루션 월 요금 혜택 popup -->
+
+    <!-- 케어십 할인 혜택popup -->
+    <article id="popup2" class="popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit"><span>케어솔루션 월 요금 혜택</span></h1>
+        </header>
+        <section class="pop-conts no-footer common-pop">
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">의무 사용기간 5년/계약기간 5년</h2>
+                </div>
+                <div class="fee-info-wrap">
+                    <dl>
+                        <dt>예상월요금</dt>
+                        <dd>36,900원</dd>
+                    </dl>
+                    <dl>
+                        <dt>제휴카드[신한] LG전자 렌탈애(愛)</dt>
+                        <dd class="minus">- 23,000원</dd>
+                    </dl>
+                    <dl class="total">
+                        <dt>최적 혜택가격</dt>
+                        <dd>13,900원</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">연차별 납부금액</h2>
+                </div>
+                <div class="tb_row tb-row-bl">
+                    <table>
+                        <caption>연차(납부회차)에 따른 납부금액, 비고를 안내</caption>
+                        <colgroup>
+                            <col style="width:35%">
+                            <col style="width:25%">
+                            <col>
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th scope="col">연차(납부회차)</th>
+                            <th scope="col">납부금액</th>
+                            <th scope="col">비고</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="point">1년차(1~12회차)</td>
+                            <td>36,900원</td>
+                            <td>6,12 무상할인</td>
+                        </tr>
+                        <tr>
+                            <td>2년차(13~24회차)</td>
+                            <td>36,900원</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>3년차(25~36회차)</td>
+                            <td>36,900원</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>4년차(37~48회차)</td>
+                            <td>13,900원</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>5년차(49~60회차)</td>
+                            <td>13,900원</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">무상할인 적용 회차(2회)</h2>
+                </div>
+                <dl class="bk-infos">
+                    <dt>납부 월 회차 : <strong>6, 12회차</strong> 월납부금액 할인(0원)</dt>
+                    <dd>최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, <br>제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다.</dd>
+                    <dd><a href="#n" class="btn dark-gray size"><span>제휴카드 할인 혜택 자세히 보기</span></a></dd>
+                </dl>
+                @@include('./common/modules/bullet-list.html', {
+                    "topBorder" : true,
+                    "bulletTit" : "케어십 안내",
+                    "bulletTxt" : [
+                        "케어십 요금은 대표요금제 기준이며, 요금제에 따라 제공되는 혜택이 다를 수 있습니다.",
+                        "해지의사가 없을시, 1년 단위로 자동 연장됩니다."
+                    ]
+                })
+            </div>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 케어십 할인 혜택 popup -->
 
     <!-- 케어십안내 popup -->
-    <article id="popup2" class="popup-wrap small">
+    <article id="popup3" class="popup-wrap small">
         <header class="pop-header">
             <h1 class="tit"><span>케어십안내</span></h1>
         </header>
