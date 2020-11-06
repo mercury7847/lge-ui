@@ -223,9 +223,8 @@
         .sku,
         .sibling-option {
             display: inline-block;
-            font-size:14px;
-            line-height:20px;
-            color: #616161;
+            @include font-small;
+            color: $color-gray-1;
             @include mobile {
                 font-size:12px;
                 line-height:16px;
@@ -237,7 +236,7 @@
                 width: 1px;
                 height: 12px;
                 margin: 0 8px;
-                background-color: #616161;
+                background-color: $color-gray-1;
                 vertical-align: -1px;
                 content: '';
             }
@@ -251,9 +250,8 @@
         }
         p {
             display:inline;
-            color:#616161;
-            font-size:14px;
-            line-height:20px;
+            @include font-small;
+            color: $color-gray-1;
             word-break:keep-all;
             @include mobile {
                 font-size:12px;
@@ -265,7 +263,7 @@
                 width:1px;
                 height:12px;
                 margin:0 8px;
-                background:#616161;
+                background-color: $color-gray-1;
                 vertical-align:-1px;
             }
             &:first-child::before {
