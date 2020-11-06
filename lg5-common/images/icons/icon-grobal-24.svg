@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-grobal-24</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-39">
+            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+            <g id="Group-4" transform="translate(3.000000, 3.000000)" stroke="#808080">
+                <rect id="Rectangle" stroke-width="2" x="1" y="1" width="16" height="16" rx="8"></rect>
+                <rect id="Rectangle" fill="#D8D8D8" x="0.5" y="8.5" width="17" height="1"></rect>
+                <path d="M9,1.24686981 C5,6.58859297 5,11.9219263 9,17.2468698" id="Path-12" stroke-width="2"></path>
+                <path d="M12,1.24686981 C8,6.58859297 8,11.9219263 12,17.2468698" id="Path-12" stroke-width="2" transform="translate(10.500000, 9.246870) scale(-1, 1) translate(-10.500000, -9.246870) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

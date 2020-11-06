@@ -26,223 +26,228 @@
                     </div>
                     <div role="tabpanel" class="row-wrap" id="tab2" data-wish-url="#" data-cart-url="#" data-remove-url="/lg5-common/data-ajax/caresolution/caresolutionCart.json">
                         <div class="col-left">
-                            <div class="order-info">
-                                <div class="cart-wrap">
-                                    <div class="check-option">
-                                        <div class="chk-wrap">
-                                            <input type="checkbox" id="chk-all" name="chk-all">
-                                            <label for="chk-all">전체선택</label>
-                                        </div>
-                                        <div class="btn-area">
-                                            <button class="btn-text"><span>선택삭제</span></button>
-                                        </div>
+                            <div class="section">
+                                <div class="check-option">
+                                    <div class="chk-wrap">
+                                        <input type="checkbox" id="chk-all" name="chk-all">
+                                        <label for="chk-all">전체선택</label>
                                     </div>
-                                    <div class="list-wrap">
-                                        <ul class="order-list">
-                                            @@loop('./common/modules/order-list.html', [
-                                                {
-                                                    "itemID" : "id000001",
-                                                    "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
-                                                    "disabled" : "",
-                                                    "checkOption" : true,
-                                                    "wish" : true,
-                                                    "select" : true,
-                                                    "check" : [
-                                                        {
-                                                            "class" : "chk-wish-wrap",
-                                                            "id" : "chk-wish1",
-                                                            "text" : "찜하기",
-                                                            "checked" : "checked",
-                                                        },{
-                                                            "class" : "chk-wrap",
-                                                            "id" : "chk-select1",
-                                                            "text" : "제품 선택",
-                                                            "checked" : "",
-                                                        }
-                                                    ],
-                                                    "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                    "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
-                                                    "originalPrice" : "월 61,900원",
-                                                    "price" : "월 56,900원",
-                                                    "tooltip" : true,
-                                                    "btn" : true,
-                                                    "btnValue" : "청약신청"
-                                                },
-                                                {
-                                                    "itemID" : "id000002",
-                                                    "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
-                                                    "disabled" : "disabled",
-                                                    "checkOption" : true,
-                                                    "wish" : true,
-                                                    "select" : true,
-                                                    "check" : [
-                                                        {
-                                                            "class" : "chk-wish-wrap",
-                                                            "id" : "chk-wish2",
-                                                            "text" : "찜하기",
-                                                            "checked" : "",
-                                                        },{
-                                                            "class" : "chk-wrap",
-                                                            "id" : "chk-select2",
-                                                            "text" : "제품 선택",
-                                                            "checked" : "",
-                                                        }
-                                                    ],
-                                                    "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                    "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
-                                                    "originalPrice" : "월 36,100원",
-                                                    "price" : "월 31,100원",
-                                                    "tooltip" : true,
-                                                    "btn" : true,
-                                                    "btnValue" : "청약신청불가"
-                                                },
-                                                {
-                                                    "itemID" : "id000003",
-                                                    "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
-                                                    "disabled" : "disabled",
-                                                    "checkOption" : true,
-                                                    "wish" : true,
-                                                    "select" : true,
-                                                    "check" : [
-                                                        {
-                                                            "class" : "chk-wish-wrap",
-                                                            "id" : "chk-wish3",
-                                                            "text" : "찜하기",
-                                                            "checked" : "",
-                                                        },{
-                                                            "class" : "chk-wrap",
-                                                            "id" : "chk-select3",
-                                                            "text" : "제품 선택",
-                                                            "checked" : "",
-                                                        }
-                                                    ],
-                                                    "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                    "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
-                                                    "originalPrice" : "",
-                                                    "price" : "월 36,100원",
-                                                    "tooltip" : true,
-                                                    "btn" : true,
-                                                    "btnValue" : "청약신청불가"
-                                                }
-                                            ])
-                                        </ul>
+                                    <div class="btn-area">
+                                        <button class="btn-text"><span>선택삭제</span></button>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- 장바구니 제품이 없을 경우 -->
-                           <div class="no-data-wrap">
-                               <div class="no-data">
-                                   <p>장바구니에 담긴 제품이 없습니다.</p>
-                               </div>
-                               <ul class="membership-benefit">
-                                   <li class="box membership">
-                                       <dl>
-                                           <dt>LG 전자 멤버십 회원 온라인 전용 혜택</dt>
-                                           <dd>모든 제품 3% 할인</dd>
-                                           <dd>멤버십포인트 3% 적립</dd>
-                                       </dl>
-                                   </li>
-                                   <li class="box card-issue">
-                                       <dl>
-                                           <dt>LG 전자 제휴카드 발급 특별 혜택</dt>
-                                           <dd>제휴카드 결제시 최대 500,000원 캐시백</dd>
-                                           <dd>멤버십포인트 3% 적립</dd>
-                                       </dl>
-                                   </li>
-                               </ul>
-                            </div>
-                            <!-- //장바구니 제품이 없을 경우 -->
-
-                            @@include('./common/modules/bullet-list.html', {
-                                "topBorder" : true,
-                                "bulletTit" : "유의사항",
-                                "bulletTxt" : [
-                                    "미성년자의 상품주문/결제에 대해 법정대리인이 미동의 시, 미성년자 본인 또는 법정대리인이 주문을 취소할 수 있습니다.",
-                                    "결합할인은 다른 제품군인 경우에만 적용 가능합니다. (ex_정수기와 공기청정기 결합시 할인)",
-                                    "가입비 10만원 무료는 약정 기간 전 해지 시 환급 처리됩니다.",
-                                    "기존에 이용 중인 케어솔루션/케어십과의 결합할인은 계약 시점에 자동 적용됩니다.",
-                                    "장바구니에는 최대 50개의 상품을 담으실 수 있습니다.",
-                                    "담긴 상품 종류(옵션단위)는 최대 1년까지 보관됩니다.",
-                                    "판매 종료되거나 품절된 상품은 별도 표기 됩니다."
-                                ]
-                            })
-                        </div>
-                        <div class="col-right is-title">
-                            <h3 class="sub-title">청약 정보</h3>
-                            <div class="gray-box item-info">
-                                <ul class="item-list">
-                                    <li>
-                                        <span class="item-subtit">렌탈(케어솔루션)</span>
-                                        <strong class="item-tit">LG TROMM 스타일러 블랙에디션</strong>
-                                        <div class="item-spec">
-                                            <span>S5MBR</span>
-                                            <span>월 61,900원</span>
-                                        </div>
-                                    </li>
-                                    <li class="item-disabled"><!-- disabled -->
-                                        <span class="item-subtit">렌탈(케어솔루션)</span>
-                                        <strong class="item-tit">LG TROMM 스타일러 블랙에디션</strong>
-                                        <div class="item-spec">
-                                            <span>S5MBR</span>
-                                            <span>월 61,900원</span>
-                                        </div>
-                                        <p class="text-disabled"><span>설치 불가능 제품</span></p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="gray-box payment-amount-info">
-                                <ul class="payment-list">
-                                    <li>
-                                        <dl>
-                                            <dt class="text">제품 수</dt>
-                                            <dd class="price num">2개</dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl>
-                                            <dt class="text">이용요금</dt>
-                                            <dd class="price">월 98,800원</dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl>
-                                            <dt class="text">결합할인 금액</dt>
-                                            <dd class="price sale">월 -5,000원</dd>
-                                        </dl>
-                                    </li>
-                                </ul>
-                                <div class="total-payment-amount">
-                                    <dl>
-                                        <dt class="text">총 2건</dt>
-                                        <dd class="price">월 93,800원</dd>
-                                    </dl>
-                                    <!-- <p class="desc">* 신규 결합할인 적용</p>  -->
-                                </div>
-                            </div>
-                            <div class="gray-box agree-box">
-                                <h4 class="sub-title">계약 신청서 확인</h4>
-                                <p class="desc">
-                                    본인 신용 인증이 불가능할 경우, 결제/청약 신청이 취소됩니다. 청약 완료 후 고객님의 휴대폰 번호로 청약 완료 문자가 발송되며 청약 내용은 이메일로 발송되니 확인하세요.
-                                </p>
-                                <div class="agree">
-                                    <ul class="text-list">
-                                        <li><span class="chk-wrap chk-sm">
-                                        <input type="checkbox" id="chk-agree-1" name="chk-agree-1"><label for="chk-agree-1">위에서 입력한 납부 방법(카드/은행 계좌)에서 월 렌탈료를 자동이체 하는 것에 동의합니다.</label>
-                                    </span></li>
-                                        <li><span class="chk-wrap chk-sm">
-                                        <input type="checkbox" id="chk-agree-2" name="chk-agree-2"><label for="chk-agree-2">주문할 제품의 제품명, 제품 가격, 배송 정보를 확인하였으며, 주문상품 및 결제 대행 서비스 약관에 모두 동의합니다.(전자상거래법 제8조 2항)</label>
-                                    </span></li>
+                                <div class="list-wrap">
+                                    <ul class="order-list">
+                                        @@loop('./common/modules/order-list.html', [
+                                            {
+                                                "itemID" : "id000001",
+                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
+                                                "disabled" : "",
+                                                "checkOption" : true,
+                                                "wish" : true,
+                                                "select" : true,
+                                                "check" : [
+                                                    {
+                                                        "class" : "chk-wish-wrap",
+                                                        "id" : "chk-wish1",
+                                                        "text" : "찜하기",
+                                                        "checked" : "checked",
+                                                    },{
+                                                        "class" : "chk-wrap",
+                                                        "id" : "chk-select1",
+                                                        "text" : "제품 선택",
+                                                        "checked" : "",
+                                                    }
+                                                ],
+                                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                                "originalPrice" : "월 61,900원",
+                                                "price" : "월 56,900원",
+                                                "tooltip" : true,
+                                                "btn" : true,
+                                                "btnValue" : "청약신청"
+                                            },
+                                            {
+                                                "itemID" : "id000002",
+                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
+                                                "disabled" : "",
+                                                "checkOption" : true,
+                                                "wish" : true,
+                                                "select" : true,
+                                                "check" : [
+                                                    {
+                                                        "class" : "chk-wish-wrap",
+                                                        "id" : "chk-wish2",
+                                                        "text" : "찜하기",
+                                                        "checked" : "",
+                                                    },{
+                                                        "class" : "chk-wrap",
+                                                        "id" : "chk-select2",
+                                                        "text" : "제품 선택",
+                                                        "checked" : "",
+                                                    }
+                                                ],
+                                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                                "originalPrice" : "월 36,100원",
+                                                "price" : "월 31,100원",
+                                                "tooltip" : true,
+                                                "btn" : true,
+                                                "btnValue" : "청약신청"
+                                            },
+                                            {
+                                                "itemID" : "id000003",
+                                                "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어솔루션</span>",
+                                                "disabled" : "disabled",
+                                                "checkOption" : true,
+                                                "wish" : true,
+                                                "select" : true,
+                                                "check" : [
+                                                    {
+                                                        "class" : "chk-wish-wrap",
+                                                        "id" : "chk-wish3",
+                                                        "text" : "찜하기",
+                                                        "checked" : "",
+                                                    },{
+                                                        "class" : "chk-wrap",
+                                                        "id" : "chk-select3",
+                                                        "text" : "제품 선택",
+                                                        "checked" : "",
+                                                    }
+                                                ],
+                                                "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                                "originalPrice" : "",
+                                                "price" : "월 36,100원",
+                                                "tooltip" : true,
+                                                "btn" : true,
+                                                "btnValue" : "청약신청불가"
+                                            }
+                                        ])
                                     </ul>
-                                    <div class="chk-btm">
-                                    <span class="chk-wrap">
-                                        <input type="checkbox" id="chk-agree-3" name="chk-agree8">
-                                        <label for="chk-agree-3">모든 계약신청서 확인/동의</label>
-                                    </span>
+                                </div>
+
+                                <!-- 장바구니 제품이 없을 경우 -->
+                                <div class="no-data-wrap">
+                                    <div class="no-data">
+                                        <p>장바구니에 담긴 제품이 없습니다.</p>
+                                    </div>
+                                    <ul class="membership-benefit">
+                                        <li class="box membership">
+                                            <dl>
+                                                <dt>멤버십 회원 전용 케어솔루션 혜택</dt>
+                                                <dd>멤버십 포인트 월 최대 5,000포인트 차감 가능</dd>
+                                            </dl>
+                                        </li>
+                                        <li class="box card-benefit">
+                                            <dl>
+                                                <dt>케어솔루션 제휴카드 할인 혜택</dt>
+                                                <dd>제휴카드 결제시 월 최대 23,000원 할인</dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- //장바구니 제품이 없을 경우 -->
+
+                                @@include('./common/modules/bullet-list.html', {
+                                    "topBorder" : true,
+                                    "bulletTit" : "유의사항",
+                                    "bulletTxt" : [
+                                        "미성년자의 상품주문/결제에 대해 법정대리인이 미동의 시, 미성년자 본인 또는 법정대리인이 주문을 취소할 수 있습니다.",
+                                        "결합할인은 다른 제품군인 경우에만 적용 가능합니다. (ex_정수기와 공기청정기 결합시 할인)",
+                                        "가입비 10만원 무료는 약정 기간 전 해지 시 환급 처리됩니다.",
+                                        "기존에 이용 중인 케어솔루션/케어십과의 결합할인은 계약 시점에 자동 적용됩니다.",
+                                        "장바구니에는 최대 50개의 상품을 담으실 수 있습니다.",
+                                        "담긴 상품 종류(옵션단위)는 최대 1년까지 보관됩니다.",
+                                        "판매 종료되거나 품절된 상품은 별도 표기 됩니다."
+                                    ]
+                                })
+                            </div>
+                        </div>
+                        <div class="col-right">
+                            <div class="info-area">
+                                <h3 class="sub-title">청약 정보</h3>
+                                <div class="gray-box box-link">
+                                    <a href="#n">
+                                        케어솔루션/케어십 서비스 이용을 위해 로그인이 필요합니다.
+                                    </a>
+                                </div>
+                                <div class="gray-box item-info">
+                                    <ul class="item-list">
+                                        <li>
+                                            <span class="item-subtit">렌탈(케어솔루션)</span>
+                                            <strong class="item-tit">LG TROMM 스타일러 블랙에디션</strong>
+                                            <div class="item-spec">
+                                                <span>S5MBR</span>
+                                                <span>월 61,900원</span>
+                                            </div>
+                                        </li>
+                                        <li class="item-disabled"><!-- disabled -->
+                                            <span class="item-subtit">렌탈(케어솔루션)</span>
+                                            <strong class="item-tit">LG TROMM 스타일러 블랙에디션</strong>
+                                            <div class="item-spec">
+                                                <span>S5MBR</span>
+                                                <span>월 61,900원</span>
+                                            </div>
+                                            <p class="text-disabled"><span>설치 불가능 제품</span></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="gray-box payment-amount-info">
+                                    <ul class="payment-list">
+                                        <li>
+                                            <dl>
+                                                <dt class="text">제품 수</dt>
+                                                <dd class="price num">2개</dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl>
+                                                <dt class="text">이용요금</dt>
+                                                <dd class="price">월 98,800원</dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl>
+                                                <dt class="text">결합할인 금액</dt>
+                                                <dd class="price sale">월 -5,000원</dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                    <div class="total-payment-amount">
+                                        <dl>
+                                            <dt class="text">총 2건</dt>
+                                            <dd class="price">월 93,800원</dd>
+                                        </dl>
+                                        <div class="btn-area">
+                                            <button type="button" class="btn pink" disabled>총 2개  신청하기</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="btn-area">
-                                    <button type="button" class="btn pink">청약 신청하기</button>
+                                <div class="gray-box agree-box">
+                                    <h4 class="sub-title">계약 신청서 확인</h4>
+                                    <p class="desc">
+                                        본인 신용 인증이 불가능할 경우, 결제/청약 신청이 취소됩니다. 청약 완료 후 고객님의 휴대폰 번호로 청약 완료 문자가 발송되며 청약 내용은 이메일로 발송되니 확인하세요.
+                                    </p>
+                                    <div class="agree">
+                                        <ul class="text-list">
+                                            <li><span class="chk-wrap chk-sm">
+                                            <input type="checkbox" id="chk-agree-1" name="chk-agree-1"><label for="chk-agree-1">위에서 입력한 납부 방법(카드/은행 계좌)에서 월 렌탈료를 자동이체 하는 것에 동의합니다.</label>
+                                        </span></li>
+                                            <li><span class="chk-wrap chk-sm">
+                                            <input type="checkbox" id="chk-agree-2" name="chk-agree-2"><label for="chk-agree-2">주문할 제품의 제품명, 제품 가격, 배송 정보를 확인하였으며, 주문상품 및 결제 대행 서비스 약관에 모두 동의합니다.(전자상거래법 제8조 2항)</label>
+                                        </span></li>
+                                        </ul>
+                                        <div class="chk-btm">
+                                        <span class="chk-wrap">
+                                            <input type="checkbox" id="chk-agree-3" name="chk-agree8">
+                                            <label for="chk-agree-3">모든 계약신청서 확인/동의</label>
+                                        </span>
+                                        </div>
+                                    </div>
+                                    <div class="btn-area">
+                                        <button type="button" class="btn pink">청약 신청하기</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -260,40 +265,25 @@
                         "carouselScriptClass" : "ui_carousel_3_slider",
                         "slideArr" : [
                             {
-                                "badge" : "<div class='badge-wrap'><img src='/lg5-common/images/dummy/@img-promotion-badge.png' alt='으뜸효율 10%'></div>",
                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                 "name" : "LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄",
-                                "btnLike" : "btn bd-black",
-                                "btnText" : "장바구니에 담기",
-                                "wish" : { "id" : "chk01", "name" : "chk01", "checked" : "checked" }
+                                "itemID" : "item0001"
                             },{
-                                "badge" : "<div class='badge-wrap thin-type'><span class='badge'>으뜸효율 10%</span></div>",
                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                 "name" : "LG DIOS 노크온 매직스페이스",
-                                "btnLike" : "btn bd-black",
-                                "btnText" : "장바구니에 담기",
-                                "wish" : { "id" : "chk02", "name" : "chk02", "checked" : "" }
+                                "itemID" : "item0002"
                             },{
-                                "badge" : "<div class='badge-wrap'><img src='/lg5-common/images/dummy/@img-promotion-badge.png' alt='으뜸효율 10%'></div>",
                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                 "name" : "LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄",
-                                "btnLike" : "btn bd-black",
-                                "btnText" : "장바구니에 담기",
-                                "wish" : { "id" : "chk03", "name" : "chk03", "checked" : "checked" }
+                                "itemID" : "item0003"
                             },{
-                                "badge" : "<div class='badge-wrap'><img src='/lg5-common/images/dummy/@img-promotion-badge.png' alt='으뜸효율 10%'></div>",
                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                 "name" : "LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄",
-                                "btnLike" : "btn bd-black",
-                                "btnText" : "장바구니에 담기",
-                                "wish" : { "id" : "chk04", "name" : "chk04", "checked" : "" }
+                                "itemID" : "item0004"
                             },{
-                                "badge" : "<div class='badge-wrap'><img src='/lg5-common/images/dummy/@img-promotion-badge.png' alt='으뜸효율 10%'></div>",
                                 "img" : "/lg5-common/images/dummy/@img-product.jpg",
                                 "name" : "LG DIOS 노크온 매직스페이스",
-                                "btnLike" : "btn bd-black",
-                                "btnText" : "장바구니에 담기",
-                                "wish" : { "id" : "chk05", "name" : "chk05", "checked" : "" }
+                                "itemID" : "item0005"
                             }
                         ]
                     })

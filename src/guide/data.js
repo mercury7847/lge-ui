@@ -11,6 +11,7 @@ var res = {
 			"Input" : ["./wsg/guide_input.html","","검수완료"],
 			"Select" : ["./wsg/guide_select.html","","검수완료"],
 			"Form" : ["./wsg/guide_input_form.html","","검수완료"],
+			"아이콘" : ["./wsg/guide_icons.html","","검수완료"],
 			"버튼" : ["./wsg/guide_button.html","","검수완료"],
 			"탭" : ["./wsg/guide_tab.html","","검수완료"],
 			// "스크롤뷰" : ["./wsg/guide_scrollview.html","","검수완료"], 10.15 해남님 : '스크롤바 브라우저 기본으로 공통 적용하기로'
@@ -234,6 +235,7 @@ var res = {
 				"케어솔루션 약관/유의사항 안내 팝업" : ["/html/UTC/RMSF9001_pop6.html","","진행중"],
 				"자동결제 이용 약관 동의 팝업" : ["/html/UTC/RMSF9001_pop7.html","","진행중"],
 				"케어솔루션 청약신청 고객동의 팝업" : ["/html/UTC/RMSF9001_pop8.html","","진행중"],
+				"약관 전문보기" : ["/html/UTC/RMSF9001_pop9.html","","진행중"],
 				//"케어솔루션 주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],

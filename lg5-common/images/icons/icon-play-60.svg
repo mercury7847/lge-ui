@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-play-60</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="btn_PDP_vod_60_PC">
+            <rect id="Rectangle" x="0" y="0" width="60" height="60"></rect>
+            <g id="Group-59" transform="translate(14.000000, 14.000000)">
+                <rect id="Rectangle" stroke="#DDDDDD" stroke-width="1.5" fill="#F4F4F4" stroke-linecap="round" x="0" y="0" width="32" height="32" rx="16"></rect>
+                <path d="M13.2359907,10.8033939 L20.9680694,15.8292451 C21.3385171,16.0700361 21.4436246,16.565543 21.2028336,16.9359907 C21.1418567,17.0298013 21.06188,17.109778 20.9680694,17.1707549 L13.2359907,22.1966061 C12.865543,22.4373971 12.3700361,22.3322895 12.1292451,21.9618418 C12.0448958,21.8320736 12,21.6806239 12,21.5258512 L12,11.4741488 C12,11.032321 12.3581722,10.6741488 12.8,10.6741488 C12.9547727,10.6741488 13.1062225,10.7190446 13.2359907,10.8033939 Z" id="Rectangle" fill="#AAAAAA"></path>
+            </g>
+        </g>
+    </g>
+</svg>

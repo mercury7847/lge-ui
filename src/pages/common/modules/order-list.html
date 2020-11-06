@@ -1,15 +1,13 @@
+@@if(context.checkOption) {
+<li class="order-item @@disabled is-check" data-item-id="@@itemID"><!-- 판매종료/일시품절 시 disabled -->
+}
+@@if(!context.checkOption) {
 <li class="order-item @@disabled" data-item-id="@@itemID"><!-- 판매종료/일시품절 시 disabled -->
-    @@if(context.message) {
-    <div>
-        <div class="message-box">
-            <div class="text-box">
-                <span>@@message</span>
-            </div>
-        </div>
-        <div class="number-subscribe">
-            <span class="text">청약번호</span>
-            <span class="number">OR2022330343</span>
-        </div>
+}
+    @@if(context.number) {
+    <div class="order-number">
+        <span class="text">청약번호</span>
+        <span class="number">OR2022330343</span>
     </div>
     }
     <div class="item-image"><a href="#n"><img src="@@visual" alt=""></a></div>
@@ -29,6 +27,7 @@
             <p>방문 주기 6개월/1회</p>
         </div>
     </div>
+    @@if(context.price) {
     <div class="product-payment">
         <div class="amount">
             <div class="price">
@@ -52,6 +51,19 @@
         </div>
         }
     </div>
+    }
+    @@if(context.orderMessage) {
+    <div class="state-message">
+        <div class="text-box">
+            <span>@@orderMessage</span>
+        </div>
+    </div>
+    }
+    @@if(context.message) {
+    <div class="disabled-message">
+        <p class="err-msg">설치 불가능 제품</p>
+    </div>
+    }
     @@if(context.checkOption) {
     @@for ( var i=0; i < check.length; i++ ) {
     <span class="`+check[i].class+`">

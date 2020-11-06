@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-10-80</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_engineerselect_80">
+            <g id="ic" fill="#F4F4F4">
+                <circle id="Oval" cx="40" cy="40" r="40"></circle>
+            </g>
+            <g id="Group-57" transform="translate(8.000000, 8.000000)">
+                <rect id="Rectangle" x="0" y="0" width="64" height="64"></rect>
+                <g id="Group-56" transform="translate(9.000000, 8.000000)">
+                    <g id="Group-32">
+                        <path d="M38.4000015,21.3199997 L38.4000015,44.5902453 C38.4000015,46.1420308 37.1420308,47.4000015 35.5902453,47.4000015 L2.80975621,47.4000015 C1.2579707,47.4000015 0,46.1420308 0,44.5902453 L0,11.8097562 C0,10.2579707 1.2579707,9 2.80975621,9 L26,9" id="Path" stroke="#767676" stroke-width="2" fill="#FFFFFF" stroke-linecap="round"></path>
+                        <rect id="Rectangle" stroke="#767676" stroke-width="2" fill="#FFFFFF" stroke-linecap="round" x="26" y="0.319999695" width="21" height="21" rx="10.5"></rect>
+                        <polyline id="Path-20" stroke="#767676" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="32 10.9125971 35.1022502 14.3199997 40.9572019 7.31999969"></polyline>
+                        <g id="Group-111" transform="translate(5.000000, 19.000000)" fill="#767676">
+                            <rect id="Rectangle" x="0" y="0" width="18" height="2"></rect>
+                            <rect id="Rectangle" x="0" y="8" width="29" height="2"></rect>
+                            <rect id="Rectangle" x="0" y="16" width="22" height="2"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

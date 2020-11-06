@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+	@@include('./common/head.html', {
+		componentID: "KRP0044"
+	})
+<body>
+	<div class="wrap">
+		<div class="container">
+
+			<div id="pdp_shipping" class="component-wrap">
+				<section class="component KRP0044">
+					<div class="component-inner">
+						<h2 class="title">배송안내</h2>
+						@@include('./common/modules/bullet-list.html', {
+							"bulletTxt" : [
+								'<span class="point">주문 후 배송까지 2~5일 소요됩니다.</span>',
+								"단, 품절상품 또는 계절제품이나 특수 인기제품, 천재지변, 일부 도서지역일 경우 배송이 다소 지연될 수 있습니다.<br>(도서지역의 경우 2~3일 정도 추가 소요)",
+								"공휴일은 배송기간에 포함되지 않습니다.",
+								"해외의 경우 케어용품/소모품 주문 및 배송은 불가능합니다."
+							]
+						})
+					</div>
+				</section>
+			</div> <!-- //.component-wrap-->
+
+		</div>
+	</div>
+</body>
+</html>

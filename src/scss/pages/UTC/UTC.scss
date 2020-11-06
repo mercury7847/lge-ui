@@ -8,8 +8,15 @@
         .tabs-wrap {
             @include calc(width,100%,448px);
         }
-        .col-right {
-            margin-top: -56px;
+        @media screen and (max-width: $tablet-l-width) {
+            .tabs-wrap {
+                width: auto;
+            }
+        }
+        @include mobile {
+            .tabs-wrap {
+                margin: 0 16px;
+            }
         }
     }
 
@@ -23,6 +30,14 @@
         .btn-area {
             float: right;
         }
+        //@include mobile {
+        //    margin-top: -40px;
+        //}
+    }
+    .order-item {
+        &.disabled .product-payment .amount .total {
+            text-decoration: line-through;
+        }
     }
 
     .card-benefit {
@@ -34,54 +49,7 @@
             line-height: 24px;
         }
     }
-/*
-    .info-box {
-        float: right;
-        @include clearfix;
-        width: 280px;
-        padding: 32px;
-        margin-bottom:12px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.26);
-        border: 1px solid #ddd;
-        background-color: #fff;
-        .title {
-            margin-bottom: 16px;
-            font-weight: $font-weight-bold;
-            @include font-medium;
-        }
-        .text {
-            @include font-small;
-            word-break: keep-all;
-            color: #616161;
-            .detail-address {
-                display: block;
-            }
-        }
-        .btn-area {
-            text-align: right;
-            .btn-text {
-                margin-top: 16px;
-                @include font-small;
-            }
-        }
-        @include mobile {
-            float: none;
-            width: 100%;
-            margin: 0 0 40px;
-            padding: 32px 20px;
-            .btn-area {
-                .btn-text {
-                    margin-top: 24px;
-                }
-            }
-        }
-    }
 
-    .payment-amount-info {
-        float: right;
-    }
-*/
     .bullet-list {
         clear: both;
         color: #808080;
@@ -175,40 +143,46 @@
 
 .order-item {
     display: flex;
-    //align-items: center;
-    //flex-wrap: wrap;
     position: relative;
     padding:32px 0 32px;
     border-top: 1px solid #ddd;
     background-color: #fff;
     @include mobile {
-        padding:20px 20px 0;
+        flex-flow: column;
+        &.is-check {
+            padding-top: 56px;
+            .item-image {
+                top: 56px;
+            }
+        }
     }
-    //.item-image,
-    //.product-info,
-    //.product-payment {
-    //    flex: auto;
-    //}
     .item-image {
+        overflow:hidden;
         width:140px;
         height:140px;
-        overflow:hidden;
+        margin-right: 24px;
         img {
             width:100%;
             height:auto;
             vertical-align:top;
         }
         @include mobile {
-            top:38px;
-            left:0;
+            position: absolute;
+            top: 32px;
+            left: 0;
+            z-index: 1;
             width:100px;
             height:100px;
+            margin-right: 0;
         }
     }
     .product-info {
         //@include clearfix;
         flex: 1;
         position: relative;
+        @include mobile {
+            padding-left: 112px;
+        }
     }
     .flag-wrap {
         margin-bottom:4px;
@@ -298,14 +272,11 @@
         //width: 320px;
         text-align: right;
         //vertical-align: middle;
-        @include mobile {
-            margin:0 -20px;
-            padding:24px 20px;
-        }
         .amount {
             position: relative;
             width: 180px;
             display:inline-block;
+            padding-right: 24px;
             vertical-align: middle;
             .price {
                 display: inline-block;
@@ -332,16 +303,71 @@
         }
         .btn-area {
             display: inline-block;
-            width: 140px;
+            width: 116px;
             vertical-align: middle;
-            //position:absolute;
-            //top:50%;
-            //right:0;
-            //transform: translateY(-50%);
+        }
+        .tooltip-wrap {
+            margin-bottom: 4px;
+            vertical-align: bottom;
+        }
+
+        @include mobile {
+            display: block;
+            margin-top: 16px;
+            padding-left: 112px;
+            text-align: left;
+            .amount {
+                position: relative;
+                width: 100%;
+                display:block;
+            }
+            .btn-area {
+                display: block;
+                width: 100%;
+                margin-top: 12px;
+            }
         }
     }
-    &.disabled .product-payment .amount .total-price {
-        color:#ccc;
+    .state-message {
+        display: flex;
+        align-items: center;
+        width: 270px;
+        padding: 0 24px;
+        font-weight: 500;
+        @include font-small;
+        @include mobile {
+            width: 100%;
+            margin-top: 16px;
+            padding-left: 112px;
+            font-weight: 400;
+        }
+    }
+    &.disabled .product-payment .amount .total {
+        color:$color-gray-4;
+    }
+    &.disabled.bg {
+        background-color: $color-bg;
+        @include mobile {
+            &:last-child {
+                padding-bottom: 32px;
+            }
+        }
+        .flag-wrap.bg-type .flag {
+            background-color: transparent;
+            color: $color-gray-4;
+        }
+        .item-image,
+        .product-info,
+        .product-payment {
+            * {
+                color: $color-gray-4 !important;
+            }
+        }
+        .disabled-message {
+            position: absolute;
+            right: 24px;
+            bottom: 36px;
+        }
     }
     .item-delete {
         position: absolute;
@@ -364,9 +390,39 @@
         top:32px;
         left:0;
     }
+
+    .order-number {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        padding: 14px 17px;
+        background-color: $color-bg;
+        font-weight: 700;
+        @include font-large;
+        .text {
+            color: $color-gray-1;
+        }
+        @include mobile {
+            padding: 15px 12px;
+            font-size: 15px;
+            line-height: 23px;
+        }
+    }
 }
 
 .col-right {
+    .info-area {
+        margin-top: -44px;
+        @media screen and (max-width: $tablet-l-width) {
+            margin-top: 0;
+            padding-top: 80px;
+            @include mobile {
+                padding:40px 16px 0;
+                border-top: 12px solid $color-bg;
+            }
+        }
+    }
     .sub-title {
         margin-bottom: 16px;
         @include font-large;
@@ -379,6 +435,32 @@
         background-color: #f4f4f4;
         @include mobile {
             padding: 32px 20px;
+        }
+        .btn-area {
+            margin-top: 32px;
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+}
+.box-link {
+    > a {
+        display: block;
+        position: relative;
+        padding-right: 48px;
+        @include font-small;
+        font-weight: $font-weight-medium;
+        &:after {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 24px;
+            height: 24px;
+            background: url('/lg5-common/images/icons/btn-arrow_right_24.svg') no-repeat;
+            background-size: 100%;
         }
     }
 }
@@ -486,9 +568,9 @@
     }
     .total-payment-amount {
         padding-top: 12px;
-        @include mobile {
-            margin-bottom:32px;
-        }
+        //@include mobile {
+        //    margin-bottom:32px;
+        //}
         dl {
             margin-bottom: 0 !important;
         }
@@ -526,6 +608,7 @@
         }
 
     }
+    /*
     .btn-area {
         @include clearfix;
         .btn {
@@ -537,11 +620,11 @@
             @include font-small;
             line-height: 24px;
         }
-    }
+    }*/
 }
 .agree-box {
     .sub-title {
-        margin-bottom: 12px;
+        margin: 0 0 12px 0;
         @include font-medium;
         color: $color-gray-1; 
         @include mobile {
@@ -571,12 +654,6 @@
             margin-top: 24px;
             padding-top: 16px;
             border-top: 1px solid $color-border;
-        }
-    }
-    .btn-area {
-        margin-top: 32px;
-        .btn {
-            width: 100%;
         }
     }
 }

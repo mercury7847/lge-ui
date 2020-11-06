@@ -10,8 +10,8 @@
     z-index:9000;
     overflow:hidden;
     @include mobile {
-        width:73.4%;
-        padding-top:75px;
+        width:87.5%;
+        padding-top:70px;
     }
     .lay-header {
         position:relative; 
@@ -36,7 +36,7 @@
             margin-top:0;
         }
         @include mobile {
-            padding:0 24px 75px;
+            padding:0 24px 70px;
         }
         p {
             margin-top:8px;
@@ -55,7 +55,6 @@
                 padding:0;
             }
             .btn {
-                border-radius:26px;
                 margin-left:8px;
                 &:first-child {
                     margin-left:0;
@@ -63,7 +62,6 @@
                 @include mobile {
                     width:50%;
                     margin-left:0;
-                    border-radius:0;
                     &:only-child {
                         width:100%;
                     }
@@ -73,6 +71,15 @@
     }
     &.type2 {
         padding-top:48px;
+        @include mobile {
+            padding-top:60px;
+        }
+        .lay-conts {
+            padding:0 24px 32px;
+            @include mobile {
+                padding:0 24px 40px;
+            }
+        }
         .laypop {
             &.btn-wrap {
                 padding-bottom:48px;
@@ -110,7 +117,27 @@
     &.small {
         max-width:444px;
         @include mobile {
-            max-width:100%;
+            height:auto;
+            width:87.5%;
+            left:50% !important;
+            top:50%  !important;
+            transform:translateX(-50%) translateY(-50%) !important;
+            border-radius:4px;
+            .pop-header {
+                padding:24px 0 14px;
+                .tit {
+                    span {
+                        font-size:18px;
+                        line-height:26px;
+                    }
+                }
+            }
+            .pop-conts {
+                padding:24px 16px 40px;
+            }
+            .btn-close {
+                top:21px;
+            }
         }
     }
     @include mobile {
@@ -125,14 +152,12 @@
     .btn-close {
         position:absolute;
         top:40px;
-        right:24px;
+        right:48px;
         width:32px;
         height:32px;
         @include mobile {
-            top:28px;
+            top:24px;
             right:16px;
-            width:24px;
-            height:24px;
         }
         &::before {
             content:' ';
@@ -142,16 +167,12 @@
             width:32px;
             height:32px;
             background:url('/lg5-common/images/icons/btn-close-32.svg') no-repeat;
-            @include mobile {
-                width:24px;
-                height:24px;
-                background-size:24px 24px;
-            }
+
         }
     }
     .pop-header {
         padding:40px 0 20px;
-        margin:0 24px;
+        margin:0 48px;
         border-bottom:2px solid #222;
         .tit span {
             display:block;
@@ -193,11 +214,11 @@
     .pop-conts {
         height:auto;
         max-height:492px;
-        padding:48px 24px 0;
+        padding:48px 48px 0;
         overflow-y:auto;
         &.no-footer {
             max-height:576px;
-            padding-bottom:40px;
+            padding-bottom:48px;
             text-align:left;
             @include mobile {
                 height:calc(100% - 82px);
@@ -224,7 +245,7 @@
         }
     }
     .pop-footer {
-        padding:32px 24px 32px;
+        padding:32px 48px 48px;
         background:transparent;
         font-size:0;
         text-align:right;
@@ -448,19 +469,16 @@
                             dt {
                                 margin-bottom:8px;
                                 font-size:0;
-                                @include mobile {
-                                    padding-top:3px;
-                                }
                                 p {
                                     display:inline-block;
                                     @include font-medium;
                                     font-weight:700;
-                                    vertical-align:top;
+                                    vertical-align:middle;
                                 }
                                 .flag-wrap {
                                     display:inline-block;
                                     margin-left:8px;
-                                    vertical-align:top;
+                                    vertical-align:middle;
                                     .flag {
                                         padding:0;
                                         border:none;
@@ -518,6 +536,7 @@
                             top:50%;
                             right:0;
                             transform:translateY(-50%);
+                            font-size:0;
                             @include mobile {
                                 position:relative;
                                 top:auto;
@@ -528,18 +547,12 @@
                                 transform:translateY(0);
                             }
                             .btn {
-                                display:block;
-                                margin-top:8px;
+                                margin-left:8px;
                                 @include mobile {
-                                    display:inline-block;
-                                    margin-top:0;
-                                    margin-left:8px;
+                                    margin-left:6px;
                                 }
                                 &:first-child {
-                                    margin-top:0;
-                                    @include mobile {
-                                        margin-left:0;
-                                    }
+                                    margin-left:0;
                                 }
                             }
                         }
@@ -554,28 +567,37 @@
                     }
                 }
             }
+            .no-data {
+                padding:88px 0 124px;
+            }
         }
 
         // 매월 납부금 할인내역
         .fee-info-wrap {
-            padding:24px;
+            padding:32px;
             border-radius:8px;
-            box-shadow:0 3px 14px 0 rgba(0, 0, 0, .12);
+            background:#f4f4f4;
+            @include mobile {
+                padding:24px 20px;
+                border-radius:4px;
+            }
             dl {
                 display:table;
                 width:100%;
-                margin-top:10px;
+                margin-top:16px;
+                @include mobile {
+                    margin-top:8px;
+                }
                 &:first-child {
                     margin-top:0;
                 }
                 dt, dd {
                     display:table-cell;
-                    color:#222;
-                    font-size:16px;
-                    line-height:20px;
-                    vertical-align:bottom;
+                    @include font-small;
+                    vertical-align:middle;
                 }
                 dt {
+                    color:#767676;
                     text-align:left;
                 }
                 dd {
@@ -588,7 +610,15 @@
                     margin-top:16px;
                     padding-top:16px;
                     border-top:1px solid #ddd;
+                    @include mobile {
+                        padding-top:12px;
+                    }
+                    dt {
+                        color:#222;
+                        font-weight:500;
+                    }
                     dd {
+                        @include font-large-2;
                         font-weight:700;
                     }
                 }
@@ -605,17 +635,25 @@
         }
         .bk-infos {
             dt {
-                color:#222;
-                font-size:16px;
-                line-height:24px;
+                @include font-medium;
+                strong {
+                    color:#EC455A;
+                    font-weight:normal;
+                }
             }
             dd {
                 margin-top:8px;
                 color:#616161;
-                font-size:14px;
-                line-height:20px;
+                @include font-small;
+                font-weight:500;
+                @include mobile {
+                    margin-top:12px;
+                }
                 .btn {
-                    margin-top:8px;
+                    margin-top:16px;
+                    @include mobile {
+                        margin-top:8px;
+                    }
                 }
             }
         }
@@ -628,7 +666,6 @@
             p {
                 @include font-medium;
                 @include mobile {
-                    text-align:center;
                 }
             }
         }
@@ -640,20 +677,26 @@
             li {
                 float:left;
                 position:relative;
-                padding-left:68px;
+                padding-left:48px;
                 @include font-medium;
                 font-weight:700;
+                @include mobile {
+                    padding-left:10.6707vw;
+                }
                 &:before {
                     content:'';
                     display:block;
                     position:absolute;
                     top:50%;
-                    left:22px;
+                    left:12px;
                     width:24px;
                     height:24px;
-                    background:url('/lg5-common/images/icons/btn-arrow-right-32.svg') no-repeat;
+                    background:url('/lg5-common/images/icons/btn-arrow_right_24.svg') no-repeat;
                     background-size:24px 24px;
                     transform:translateY(-50%);
+                    @include mobile {
+                        left:12px;
+                    }
                 }
                 &:first-child {
                     padding-left:0;
@@ -668,22 +711,34 @@
     // input-form
     .input-info {
         .tit-wrap {
-            padding-bottom:8px;
+            @include clearfix;
+            position:relative;
+            margin-bottom:8px;
+            padding:0;
             .h2-tit {
-                @include font-large;
+                @include font-medium;
+                @include mobile {
+                    font-size:18px;
+                    line-height:26px;
+                }
             }
             &.type2 {
-                padding-bottom:16px;
+                margin-bottom:16px;
                 @include mobile {
-                    padding-bottom:12px;
+                    margin-bottom:8px;
                 }
                 .h2-tit {
+                    display:inline-block;
+                    padding-right:100px;
                     @include font-medium;
-                    @include mobile {
-                        font-size:18px;
-                        line-height:26px;
-                    }
+                    vertical-align:middle;
                 }
+            }
+            .btn-link {
+                position:absolute;
+                top:50%;
+                right:0;
+                transform:translateY(-50%);
             }
         }
     }

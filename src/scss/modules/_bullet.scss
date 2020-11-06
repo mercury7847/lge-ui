@@ -1,46 +1,50 @@
 .bullet-list {
     margin-top:16px;
-    color:#616161;
-    font-size:14px;
-    line-height:20px;
+    color:#767676;
+    @include font-small;
     @include mobile {
-        margin-top:12px;
         color:#808080;
-        line-height:18px;
     }
     .b-tit {
-        margin-bottom:8px;
+        margin-bottom:2px;
         font-weight:700;
+        @include mobile {
+            margin-bottom:8px;
+        }
     }
     .b-txt {
         position:relative;
-        margin-top:4px;
+        margin-top:2px;
         padding-left:10px;
+        font-weight:500;
         @include mobile {
-            margin-top:8px;
+            margin-top:0;
         }
         &::before {
             content:' ';
             position:absolute;
-            top:9px;
+            top:11px;
             left:0;
-            width:2px;
-            height:2px;
+            width:3px;
+            height:3px;
             border-radius:50%;
-            background:#808080;
+            background:#767676;
         }
         &:first-child {
             margin-top:0;
         }
+        .point {
+            color:#ec455a;
+        }
     }
 
     &.top-border {
-        margin-top:40px;
-        padding-top:16px;
+        margin-top:24px;
+        padding-top:26px;
         border-top:1px solid #ddd;
         @include mobile {
-            margin-top:24px;
-            padding-top:12px;
+            margin-top:20px;
+            padding-top:16px;
         }
     }
     &.nomargin-top {

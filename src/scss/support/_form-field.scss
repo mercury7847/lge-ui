@@ -359,6 +359,112 @@
     }
 }
 
+// address search
+.address-box {
+    .input-wrap {
+        width:calc(50% - 4px);
+        .box {
+            .cell {
+                font-size:0;
+                padding:15px 16px 15px 0;
+                button {
+                    padding-right:28px;
+                    color:#ec455a;
+                    font-size:16px;
+                    font-weight:500;
+                    line-height:24px;
+                    vertical-align:top;
+                    background:url('/lg5-common/images/icons/icon-search2-on.svg') no-repeat;
+                    background-position:right top;
+                    background-size:24px;
+                }
+            }
+        }
+    }
+    .address-detail {
+        position:relative;
+        margin-top:8px;
+        padding: 16px 24px;
+        border-radius: 8px;
+        background: #f4f4f4;
+        .address {
+            display:block;
+            height:24px;
+            font-size:16px;
+            line-height:24px;
+            color:#222;
+            word-wrap:break-word;
+        }
+    }
+    .address-default {
+        margin-top:12px;
+    }
+    .part1 {
+        @include clearfix;
+        .input-wrap {
+            float: left;
+        }
+        .address-default {
+            float: right;
+        }
+    }
+    @include mobile {
+        .input-wrap {
+            width:100%;
+        }
+        .address-detail {
+            .address {
+                height:auto;
+                min-height:24px;
+            }
+        }
+    }
+}
+
+.address-box {
+    @include mobile {
+        .part1 {
+            position: relative;
+            .address-default {
+                margin-top: 0;
+                position: absolute;
+                right: 0;
+                top: -28px;
+            }
+        }
+    }
+}
+
+.choice-input {
+    margin-bottom: 16px;
+    .rdo-wrap {
+        &.box-type {
+            max-width: 220px;
+            width: calc(25% - 12px);
+            margin-left: 21px;
+            input {
+                +label {
+                    padding: 21px 16px 21px 48px;
+                    &::before {
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                    &::after {
+                        top: 50%;
+                        transform: translateY(-50%) rotate(-45deg);
+                    }
+                }
+            }
+            &:nth-child(4n+1) {
+                margin-left: 0;
+            }
+            &:nth-child(n+5) {
+                margin-top: 24px;
+            }
+        }
+    }
+}
+
 /* 모델명 검색 영역 */
 .model-search {
     .input-wrap {

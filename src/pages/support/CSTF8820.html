@@ -3,11 +3,7 @@
     @@include('./common/head.html', {
         "pageCSS": [
             "support/support",
-            "support/reservation"
-        ],
-        "pageJS": [
-            "support-common",
-            "support/selectCategory"
+            "support/air-care"
         ]
     })
 <body>
@@ -19,7 +15,7 @@
                 'title': '공기청정 필터 신청 결과 조회'
             })
 
-            <div class="contents support CSTF8800">
+            <div class="contents support air-care">
                 <div class="contents-inner">
                     <div class="section top-section">
                         <div class="section-content">
@@ -29,7 +25,7 @@
                         </div>
                     </div>
 
-                    <div class="tabs-wrap ui_tab type-A"> <!-- tabs-wrap ui_tab -->
+                    <div class="tabs-wrap ui_tab left">
                         <ul class="tabs">
                             <li class="on"><a href="#tab1">접수 번호 조회</a></li>
                             <li><a href="#tab2">휴대전화 인증 조회</a></li>
@@ -39,30 +35,34 @@
                     <div id="tab1" class="tabs-contents">
                         <form action="">
                             <div class="section">
-                                <div class="section-content type-relative">
-                                    <p class="sub-infomation type-A color-3">무상필터 신청 조회를 위해 접수번호나 휴대전화 인증이 필요합니다.</p>
-                                    <div class="field-wrap">
-                                        <div class="row">
-                                            <div class="field-item">
-                                                <div class="field-title">
-                                                    <label for="input-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
+                                <div class="section-content">
+                                    <div class="content-wrap">
+                                        <div class="title-wrap">
+                                            <p class="tit">무상필터 신청 조회를 위해 접수번호나 휴대전화 인증이 필요합니다.</p>
+                                        </div>
+                                        <div class="field-wrap">
+                                            <div class="row">
+                                                <div class="field-item">
+                                                    <div class="field-title">
+                                                        <label for="input-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
+                                                    </div>
+                                                    <div class="input-wrap">
+                                                        <input type="text" name="name" id="input-name" placeholder="성함을 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
+                                                        <p class="err-msg">이름을 입력해주세요.</p>
+                                                    </div>
                                                 </div>
-                                                <div class="input-wrap">
-                                                    <input type="text" name="name" id="input-name" placeholder="성함을 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
-                                                    <p class="err-msg">이름을 입력해주세요.</p>
-                                                </div>
-                                            </div>
-                                            <div class="field-item">
-                                                <div class="field-title">
-                                                    <label for="regist-number" class="tit">접수 번호<span class="require">*<span class="blind">필수항목</span></span></label>
-                                                </div>
-                                                <div class="input-wrap">
-                                                    <input type="number" name="regist-search" id="regist-number" placeholder="접수 번호를 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
-                                                    <p class="err-msg">접수 번호를 입력해주세요.</p>
+                                                <div class="field-item">
+                                                    <div class="field-title">
+                                                        <label for="regist-number" class="tit">접수 번호<span class="require">*<span class="blind">필수항목</span></span></label>
+                                                    </div>
+                                                    <div class="input-wrap">
+                                                        <input type="number" name="regist-search" id="regist-number" placeholder="접수 번호를 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
+                                                        <p class="err-msg">접수 번호를 입력해주세요.</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>    
                                 </div>
                             </div>
                             <div class="btn-group right">
@@ -74,43 +74,44 @@
                     <div id="tab2" class="tabs-contents">
                         <form action="">
                             <div class="section">
-                                <div class="section-content type-relative">
-                                    <p class="sub-infomation type-A color-3">무상필터 신청 조회를 위해 접수번호나 휴대전화 인증이 필요합니다.</p>
-                                    <div class="form-wrap field-wrap">
-                                        <div class="row">
-                                            <div class="field-item">
-                                                <div class="field-title">
-                                                    <label for="certi-phone-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
-                                                </div>
-                                                <div class="input-wrap">
-                                                    <input type="text" name="certi-phone" id="certi-phone-name" placeholder="이름을 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
-                                                    <p class="err-msg">이름을 입력해주세요.</p>
+                                <div class="section-content">
+                                    <div class="content-wrap">
+                                        <div class="title-wrap">
+                                            <p class="tit">무상필터 신청 조회를 위해 접수번호나 휴대전화 인증이 필요합니다.</p>
+                                        </div>
+                                        <div class="field-wrap">
+                                            <div class="row">
+                                                <div class="field-item">
+                                                    <div class="field-title">
+                                                        <label for="certi-phone-name" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
+                                                    </div>
+                                                    <div class="input-wrap">
+                                                        <input type="text" name="certi-phone" id="certi-phone-name" placeholder="이름을 입력해주세요." data-msg-target=".err-msg" data-required="true" required>
+                                                        <p class="err-msg">이름을 입력해주세요.</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <dl class="forms">
-                                                <dt class="field-title">
-                                                    <label for="certi-phone-number" class="tit">휴대전화<span class="require">*<span class="blind">필수항목</span></span></label>
-                                                </dt>
-                                                <dd class="conts">
-                                                    <div class="input-box size2">
+                                            <div class="row">
+                                                <div class="field-item block">
+                                                    <div class="field-title">
+                                                        <label for="input-phoneNo" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
+                                                    </div>
+                                                    <div class="field-box">
                                                         <div class="input-wrap">
-                                                            <span class="box">
-                                                                <input type="tel" name="certi-phone" id="certi-phone-number" placeholder="휴대전화 번호를 입력해주세요." data-msg-target=".err-msg" data-required="true" maxlength="11" required>
-                                                                <span class="cell text-btn">
-                                                                    <button type="button" class="btn-text underline color-3">인증번호 발송</button>
+                                                            <div class="box">
+                                                                <input type="text" name="phoneNo" id="input-phoneNo" placeholder="휴대 전화를 입력해주세요." data-required="true" data-msg-target=".err-msg" required>
+                                                                <span class="cell">
+                                                                    <button type="button" class="btn-text pink" data-href="#certificationPopup" data-control="modal"><span>인증번호 발송</span></button>
                                                                 </span>
-                                                            </span>
-                                                            <p class="err-msg">휴대전화 번호를 입력해주세요.</p>
+                                                            </div>
+                                                            <p class="err-msg"></p>
                                                         </div>
                                                         <div class="input-wrap">
-                                                            <input type="number" name="certi-phone" id="certi-number" placeholder="인증번호를 입력해주세요." data-msg-target=".err-msg" data-required="true" required readonly>
-                                                            <p class="err-msg">인증번호를 입력해주세요.</p>
+                                                            <input type="text" name="authNo" id="input-authNo" placeholder="인증번호를 입력해주세요." readonly>
                                                         </div>
                                                     </div>
-                                                </dd>
-                                            </dl>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -126,5 +127,9 @@
              
         @@include('./common/footer.html')
     </div>
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 

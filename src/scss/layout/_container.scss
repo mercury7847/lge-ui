@@ -38,6 +38,7 @@
             }
         }
         @include mobile {
+            display: none;
             padding:0 0 20px;
             .title {
                 padding:56px 20px 0;
@@ -86,10 +87,37 @@
                 float: left;
                 width: 400px;
                 margin-left: 48px;
-                &.is-title {
-                    margin-top: -44px;
+            }
+            @media screen and (max-width: $tablet-l-width) {
+                .col-left,
+                .col-right {
+                    float: none;
+                    width: 100%;
+                }
+                .col-left {
+                    .section {
+                        &:first-child {
+                            padding-top: 0;
+                        }
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+                .col-right {
+                    margin-left: 0;
                 }
             }
+            //@include mobile {
+            //    .col-left,
+            //    .col-right {
+            //        float: none;
+            //        width: 100%;
+            //    }
+            //    .col-right {
+            //        margin-left: 0;
+            //    }
+            //}
         }
 
         // layout
@@ -210,7 +238,7 @@
             @include mobile {
                 position:relative;
                 margin:0;
-                padding:40px 20px 56px;
+                padding:40px 16px 56px;
                 border-top:12px solid #f4f4f4;
                 background:#fff;
                 &:last-child {
@@ -232,6 +260,9 @@
 
             & + .accordion-section {
                 margin-top: 80px;
+                @include mobile {
+                    margin-top: 0;
+                }
             }
         }
 

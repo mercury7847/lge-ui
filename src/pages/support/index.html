@@ -36,7 +36,7 @@
 	tr td > .edit.end {color:red}
 	tr td > .edit.end:after {content:'완료';}
 	tr td > .edit.after {color:green;}
-	tr td > .edit.after:after {content:'완료 후 수정';}
+	tr td > .edit.after:after {content:'수정 중';}
 </style>
 </head>
 <body>
@@ -47,7 +47,7 @@
 		<h2>CS</h2>
 		<table>
 			<colgroup>
-				<col width="100px" />
+				<col width="80px" />
 				<col width="100px" />
 				<col width="150px" />
 				<col width="" />
@@ -70,15 +70,16 @@
 			</thead>
 			<tbody>
 				<!-- 
-					span.edit 작업중
-					span.edit 완료
-					span.edit.after 완료 후 수정
+					span.edit 			작업중
+					span.edit.endbefore 개발 전달 전
+					span.edit.end 		개발 전달 완료
+					span.edit.after 	개발 전달 완료 후 수정 중
 				 -->
 				<tr>
 					<td>Popup</td>
 					<td></td>
-					<td></td>
 					<td>팝업 모음</td>
+					<td></td>
 					<td></td>
 					<td class="links">/html/support/modal/index.html</td>
 					<td><span class=""></span></td>
@@ -382,12 +383,12 @@
 					<td></td>
 				</tr>
 				<tr>
-					<td>CSTF5310</td>
+					<td>CSTF5010</td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>서비스센터 상세</td>
-					<td class="links">/html/support/CSTF5310.html</td>
+					<td class="links">/html/support/CSTF5010.html</td>
 					<td><span class=""></span></td>
 					<td></td>
 				</tr>
@@ -480,7 +481,7 @@
 					<td>나의 글 보기</td>
 					<td>접수번호/휴대폰번호 입력</td>
 					<td class="links">/html/support/CSTF6200.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td>퀵메뉴 포함</td>
 				</tr>
 				<tr>
@@ -490,7 +491,7 @@
 					<td></td>
 					<td>목록</td>
 					<td class="links">/html/support/CSTF6210.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -500,7 +501,7 @@
 					<td></td>
 					<td>상세</td>
 					<td class="links">/html/support/CSTF6220.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -614,7 +615,7 @@
 					<td>App Gate (Mobile 전용) intro</td>
 					<td></td>
 					<td class="links">/html/support/CSTF8000.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -624,7 +625,7 @@
 					<td>App Gate (Mobile 전용)</td>
 					<td></td>
 					<td class="links">/html/support/CSTF8010.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -663,7 +664,7 @@
 					<td></td>
 					<td>콘텐츠만족도조사</td>
 					<td></td>
-					<td class="links">/html/support/modal/CSTF8400.html</td>
+					<td class="links">/html/support/CSTF8400.html</td>
 					<td><span class=""></span></td>
 					<td></td>
 				</tr>
@@ -718,22 +719,22 @@
 					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
 				</tr>
 				<tr>
-					<td>CSTF8800_info</td>
+					<td>CSTF8840</td>
 					<td></td>
 					<td></td>
-					<td>공기청정필터신청_팝업</td>
 					<td></td>
-					<td class="links">/html/support/modal/CSTF8800_info.html</td>
+					<td>공기청정필터신청 팝업</td>
+					<td class="links">/html/support/CSTF8840.html</td>
 					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
-					<td>CSTF8800_unapplied</td>
+					<td>CSTF8850</td>
 					<td></td>
 					<td></td>
-					<td>공기청정 필터 신청_팝업_미적용모델안내</td>
 					<td></td>
-					<td class="links">/html/support/modal/CSTF8800_unapplied.html</td>
+					<td>공기청정필터신청 미적용모델안내 팝업</td>
+					<td class="links">/html/support/CSTF8850.html</td>
 					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
@@ -834,7 +835,7 @@
 					<td></td>
 					<td>일일접수통계</td>
 					<td class="links">/html/support/email/CSTF8700_statistics.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -844,7 +845,7 @@
 					<td></td>
 					<td>신규모델등록알림</td>
 					<td class="links">/html/support/email/CSTF8700_newmodel.html</td>
-					<td><span class="edit end"></span></td>
+					<td><span class="edit"></span></td>
 					<td></td>
 				</tr>
 				<tr>

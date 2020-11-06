@@ -424,7 +424,22 @@
     .problem-solve {
         margin-top: 32px;
     }
-    
+    .modal-line-box {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 16px 11px 24px 16px;
+        &-privacy {
+            height: 100px;
+            font-size: 14px;
+            color: #616161;
+            margin-top: 12px;
+            margin-left: 22px;
+            line-height: 1.43;
+        }
+        @include mobile {
+            padding: 16px 16px 20px 16px;
+        }
+    }
 
     /* page */
     &.email-inquiry {
@@ -449,5 +464,3 @@
         }
     }
 }
-
-@import "../../support/pages/CSTF8800";

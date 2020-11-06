@@ -1,0 +1,35 @@
+
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+.air-care {
+    .gray-box {
+        background-color: #f4f4f4;
+        padding: 44px 47px;
+        .bullet-list {
+            margin-top: 0;
+        }
+        @include mobile {
+            padding: 44px 20px;
+        }
+    }
+    .text-box {
+        line-height: 1.5;
+        margin-bottom: 42px;
+    }
+    .sub-infomation {
+        margin-bottom: 15px;
+        text-align: right;
+        font-size: 16px;
+        font-weight: 500;
+        word-break: keep-all;
+    }
+    .top-section {
+        margin-bottom: 48px;
+        @include mobile {
+            margin-bottom: 34px;
+        }
+    }
+}
