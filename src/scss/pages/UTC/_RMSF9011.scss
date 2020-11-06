@@ -1,3 +1,13 @@
+.subscribe {
+    .cont-wrap {
+        .section {
+            max-width: 1146px;
+            @include mobile {
+                max-width: 100%;
+            }
+        }
+    }
+}
 .complete-wrap {
     position: relative;
     text-align: center;
@@ -9,50 +19,71 @@
         line-height: 56px;
     }
     .small-text {
-        margin-top: 8px;
+        margin-top: 24px;
         @include font-medium;
         word-break: keep-all;
     }
     .btn-link {
+        margin-top: 12px;
         color: $color-gray-1;
     }
 
     @include mobile {
-        padding: 82px 30px 56px;
+        margin-top: 0;
+        padding: 30px 30px 32px;
         .text {
-            font-size: 20px;
-            line-height: 27px;
+            font-size: $font-large-3;
+            line-height: 32px;
         }
         .small-text {
-            color: #808080;
+            margin-top: 16px;
+            font-size: $font-small;
+            line-height: 22px;
+        }
+        .btn-link {
+            margin-top: 8px;
         }
     }
-
 }
 
 .order-complete {
     .order-item {
         padding-top: 88px;
         &:first-child {
-            border-top: 2px solid $color-default;
+            border-top: 2px solid #222;
+        }
+        &:last-child {
+            border-bottom: 1px solid $color-border;
+        }
+        @include mobile {
+            padding-top: 85px;
+            &:last-child {
+                padding-bottom: 32px;
+            }
+            .item-image {
+                top: 85px;
+            }
         }
     }
     & + .total-payment-amount {
+        margin-top: 16px;
         text-align: right;
-        .title,
+        .text,
         .price {
             display: inline-block;
             vertical-align: bottom;
         }
-        .title {
+        .text {
             margin-right: 12px;
             font-weight: 500;
             @include font-small;
         }
         .price {
+            font-weight: 700;
             @include font-large-2;
         }
-        .text {
+        .desc {
+            font-weight: 500;
             @include font-small;
             color: $color-primary;
         }
@@ -61,46 +92,47 @@
 
 .care-solution-call-box {
     margin-top: 65px;
-    padding: 32px 12px;
-    border-radius: 8px;
-    background-color: #f4f4f4;
+    padding: 20px 12px;
+    background-color: $color-bg;
     text-align: center;
     .call-info {
         font-size: 0;
-        .title,
+        .title {
+            display: inline-block;
+            font-size: 16px;
+            line-height: 24px;
+        }
         .number {
             display: inline-block;
-            @include font-medium;
-        }
-        .number {
-            margin-left: 12px;
-            padding: 2px 12px;
-            border-radius: 14px;
-            background-color: #fff;
+            margin-left: 32px;
+            padding: 6px 16px;
+            border-radius: 24px;
+            background-color: $color-gray-1;
             font-weight: 700;
+            color: $color-white;
+            @include font-small;
+            &:before {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin-right: 8px;
+                background: url('/lg5-common/images/icons/icon-ars-call.svg') no-repeat 0 0;
+                vertical-align: -5px;
+                content: '';
+            }
         }
-    }
-    .text {
-        margin-top: 8px;
-        @include font-small;
-        color: #616161;
-        word-break: keep-all;
     }
 
     @include mobile {
         margin-top: 56px;
         .call-info {
             .title {
-                display: block;
-                margin-bottom: 10px;
+                font-size: 14px;
+                line-height: 18px;
             }
             .number {
-                margin-left: 0;
+                margin-left: 8px;
             }
-        }
-        .text {
-            margin-top: 20px;
-            color: #808080;
         }
     }
 }
