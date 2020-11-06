@@ -108,7 +108,7 @@
             }
 		}
 	}
-	&.bg-dark-gray {
+	&.bg-dark-gray, &.bg-dark {
 		background-color: #333;
 		.title, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6 {
 			color:#fff;

@@ -63,25 +63,48 @@
 .fc-black * {
     color:#222 !important;
 }
+.fc-black:before {
+    background-color:#222 !important;
+}
+
 .fc-dark-gray,
 .fc-dark-gray * {
     color:#616161 !important;
 }
+.fc-dark-gray:before {
+    background-color:#616161 !important;
+}
+
 .fc-gray,
 .fc-gray * {
     color:#808080 !important;
 }
+.fc-gray:before {
+    background-color:#808080 !important;
+}
+
 .fc-lightgray,
 .fc-lightgray * {
     color:#ccc !important;
 }
+.fc-lightgray:before {
+    background-color:#ccc !important;
+}
+
 .fc-white,
 .fc-white * {
     color:#fff !important;
 }
+.fc-white:before {
+    background-color:#fff !important;
+}
+
 .fc-pink,
 .fc-pink * {
     color:#ec455a !important;
+}
+.fc-pink:before {
+    background-color:#ec455a !important;
 }
 
 .component-wrap {

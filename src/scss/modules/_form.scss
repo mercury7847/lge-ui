@@ -580,12 +580,12 @@
 }
 
 .agree-all-chk {
-    margin-top:24px;
-    padding-top:12px;
-    border-top:1px solid #ddd;
     font-weight:700;
-    @include mobile {
-        margin-top:20px;
+    + .input-info {
+        margin-top:32px;
+        @include mobile {
+            margin-top:20px;
+        }
     }
 }
 
