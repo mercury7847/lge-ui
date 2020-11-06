@@ -38,13 +38,22 @@
         $privacyAgreeOkButton = $('#popup-privacy .btn-group .btn:nth-child(2)').css({cursor:'default'});
 
         var register = {}
-        step1Validation = new vcui.ui.Validation('.accordion-section ul li:nth-child(1)',{register:register});
+        //step1Validation = new vcui.ui.Validation('.accordion-section ul li:nth-child(1)',{register:register});
     }
 
     function bindEvents(){
         $stepAccordion.on('accordionbeforeexpand', function(e, data){
             if(data.index > step){
-                //e.preventDefault();
+
+                if(!setNextStep()){
+                    e.preventDefault();
+                    return;
+                }
+
+                var scrolltop = $(window).scrollTop();
+                var winheight = $(window).height();
+                var contop = $(data.header).offset().top;
+                $('html, body').stop().animate({scrollTop:contop}, 350);
             }
         });
 
@@ -72,11 +81,6 @@
 
         $('#popup-privacy').on('click', '.btn-group .btn:nth-child(1)', function(e){
             setPrivacyAgreePop(false);
-        }).on('click', '.terms_open_btn', function(e){
-            e.preventDefault();
-
-            var termsurl = $(this).data('url');
-            openTermsDetailPopup(termsurl);
         });
         $privacyAgreeOkButton.on('click', function(e){
             if($privacyAgreeAllChker.getAllChecked()){
@@ -84,16 +88,20 @@
             }
         });
 
-        $('#popup-terms').on('click', '.btn-group .agree-confirm', function(e){
+        $('.popup-wrap').on('click', '.btn-group .agree-confirm', function(e){
             e.preventDefault();
-        });
-    }
 
-    function openTermsDetailPopup(url){
-        lgkorUI.requestAjaxData(url, {}, function(result){
-            $('#popup-terms .pop-conts.rmsf-pop').empty().html(result);
-            $('#popup-terms').vcModal();
-        }, "GET", "html");
+            var chkername = $(this).data('chkName');
+            $privacyAgreeAllChker.setChecked(chkername, true);
+
+            var idname = $(this).closest('.popup-wrap').attr('id');
+            $("#"+idname).vcModal('close');
+        }).on('click', '.btn-group .agree-cancel', function(e){
+            e.preventDefault();
+
+            var chkername = $(this).data('chkName');
+            $privacyAgreeAllChker.setChecked(chkername, false);
+        });
     }
 
     function openPrivacyPopup(){
@@ -117,11 +125,14 @@
     }
 
     function setNextStep(){
+        var isComplete = true;
         switch(step){
             case 0:
 
                 break;
         }
+
+        return isComplete;
     }
 
     function rentalRequest(){

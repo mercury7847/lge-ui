@@ -173,16 +173,16 @@
                                         <div class="accord-cont ui_accord_content">
                                             <div class="form-wrap">
                                                 <div class="select-list-wrap w-auto">
-                                                    <ul class="ui_radio_visible">
+                                                    <ul>
                                                         <li>
                                                             <span class="rdo-wrap">
-                                                                <input type="radio" id="rdo02-1" name="rdo02-12" data-visible-target=" ">
+                                                                <input type="radio" id="rdo02-1" name="rdo02-12" checked>
                                                                 <label for="rdo02-1">직접 입력</label>
                                                             </span>
                                                         </li>
                                                         <li>
                                                             <span class="rdo-wrap">
-                                                                <input type="radio" id="rdo02-2" name="rdo02-12" data-visible-target=".visible-target2" checked>
+                                                                <input type="radio" id="rdo02-2" name="rdo02-12">
                                                                 <label for="rdo02-2">계약자 정보와 동일</label>
                                                             </span>
                                                         </li>
@@ -710,98 +710,26 @@
 
 
     <!-- 개인정보 수집 및 신용정보 제공 동의 popup -->
-    <article id="popup-privacy" class="popup-wrap full tit-line2">
-        <header class="pop-header">
-            <h1 class="tit"><span>개인정보 수집 및 <br class="mob-only">이용에 대한 안내</span></h1>
-        </header>
-        <section class="pop-conts rmsf-pop">
-            <div class="input-info">
-                <div class="tit-wrap type2">
-                    <h2 class="h2-tit">개인정보 수집 및 이용에 대한 안내</h2>
-                    <a href="#n" class="btn-link terms_open_btn" data-url="/lg5-common/data-ajax/caresolution/privacy_terms.html">전문 보기</a>
-                </div>
-                <div class="agree-cont-wrap">
-                    <div class="agree-cont-box">
-                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
-                        1) 필수 : 이름, 휴대전화번호, 주소<br>
-                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
-                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
-                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
-                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
-                        1) 필수 : 이름, 휴대전화번호, 주소<br>
-                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
-                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
-                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
-                    </div>
-                    <div class="agree-input">
-                        <span class="chk-wrap">
-                            <input type="checkbox" id="chk1-1" name="chk1-1">
-                            <label for="chk1-1">동의합니다. (동의해야만 신청이 가능합니다.)</label>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="input-info">
-                <div class="tit-wrap type2">
-                    <h2 class="h2-tit">신용정보 제공에 대한 안내</h2>
-                    <a href="#n" class="btn-link terms_open_btn" data-url="/lg5-common/data-ajax/caresolution/credit_terms.html">전문 보기</a>
-                </div>
-                <div class="agree-cont-wrap">
-                    <div class="agree-cont-box">
-                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
-                        1) 필수 : 이름, 휴대전화번호, 주소<br>
-                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
-                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
-                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
-                        LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
-                        1) 필수 : 이름, 휴대전화번호, 주소<br>
-                        ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
-                        - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
-                        - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
-                    </div>
-                    <div class="agree-input">
-                        <span class="chk-wrap">
-                            <input type="checkbox" id="chk1-2" name="chk1-2">
-                            <label for="chk1-2">동의합니다. (동의해야만 신청이 가능합니다.)</label>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="agree-all-chk">
-                <span class="chk-wrap">
-                    <input type="checkbox" id="all-chk" name="all-chk" class="ui_all_checker">
-                    <label for="all-chk">위 약관에 모두 동의/확인합니다.</label>
-                </span>
-            </div>
-        </section>
-        <footer class="pop-footer center">
-            <div class="btn-group">
-                <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-                <button type="button" class="btn disabled"><span>동의</span></button>
-            </div>
-        </footer>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-    </article>
+    @@include('./common/popup/RMSF9001_pop4.html', {
+        popupID: "popup-privacy"
+    })
     <!-- // 개인정보 수집 및 신용정보 제공 동의 popup -->
 
+    <!-- 개인정보 수집 약관전문 보기 popup -->
+    @@include('./common/popup/RMSF9001_pop10.html', {
+        popupID: "popup-privacy-terms",
+        chkname: "agreechker-privacy",
+        tempName: "개인"
+    })
+    <!-- // 개인정보 수집 약관전문 보기 popup -->
 
-    <!-- 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
-    <article id="popup-terms" class="popup-wrap full">
-        <header class="pop-header">
-            <h1 class="tit"><span>약관 전문보기</span></h1>
-        </header>
-        <section class="pop-conts rmsf-pop">
-            
-        </section>
-        <footer class="pop-footer center">
-            <div class="btn-group">
-                <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-                <button type="button" class="btn pink agree-confirm"><span>동의 후 닫기</span></button>
-            </div>
-        </footer>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-    </article>
-    <!-- // 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
+    <!-- 개인정보 수집 약관전문 보기 popup -->
+    @@include('./common/popup/RMSF9001_pop10.html', {
+        popupID: "popup-credit-terms",
+        chkname: "agreechker-credit",
+        tempName: "신용"
+    })
+    <!-- // 개인정보 수집 약관전문 보기 popup -->
 
 </body>
 </html>

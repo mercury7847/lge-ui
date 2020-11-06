@@ -1,18 +1,18 @@
-<article id="popup4" class="popup-wrap full tit-line2">
+<article id="@@popupID" class="popup-wrap full tit-line2">
     <header class="pop-header">
         <h1 class="tit"><span>개인정보 수집 및 <br class="mob-only">이용에 대한 안내</span></h1>
     </header>
     <section class="pop-conts rmsf-pop">
         <div class="agree-all-chk">
             <span class="chk-wrap">
-                <input type="checkbox" id="all-chk1" name="chk1-chk1">
-                <label for="all-chk1">위 약관에 모두 동의/확인합니다.</label>
+                <input type="checkbox" id="all-chk" name="all-chk" class="ui_all_checker">
+                <label for="all-chk">위 약관에 모두 동의/확인합니다.</label>
             </span>
         </div>
         <div class="input-info">
             <div class="tit-wrap type2">
                 <h2 class="h2-tit">개인정보 수집 및 이용에 대한 안내</h2>
-                <a href="#n" data-control="modal" class="btn-link">전문 보기</a>
+                <a href="#popup-privacy-terms" data-control="modal" class="btn-link">전문 보기</a>
             </div>
             <div class="agree-cont-wrap">
                 <div class="agree-cont-box">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="agree-input">
                     <span class="chk-wrap">
-                        <input type="checkbox" id="chk1-1" name="chk1-1">
+                        <input type="checkbox" id="chk1-1" name="agreechker-privacy">
                         <label for="chk1-1">동의합니다. (동의해야만 신청이 가능합니다.)</label>
                     </span>
                 </div>
@@ -38,7 +38,7 @@
         <div class="input-info">
             <div class="tit-wrap type2">
                 <h2 class="h2-tit">신용정보 제공에 대한 안내</h2>
-                <a href="#n" data-control="modal" class="btn-link">전문 보기</a>
+                <a href="#popup-credit-terms" data-control="modal" class="btn-link">전문 보기</a>
             </div>
             <div class="agree-cont-wrap">
                 <div class="agree-cont-box">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="agree-input">
                     <span class="chk-wrap">
-                        <input type="checkbox" id="chk1-2" name="chk1-2">
+                        <input type="checkbox" id="chk1-2" name="agreechker-credit">
                         <label for="chk1-2">동의합니다. (동의해야만 신청이 가능합니다.)</label>
                     </span>
                 </div>
@@ -65,7 +65,7 @@
     <footer class="pop-footer center">
         <div class="btn-group">
             <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-            <button type="button" class="btn pink"><span>동의</span></button>
+            <button type="button" class="btn disabled"><span>동의</span></button>
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
