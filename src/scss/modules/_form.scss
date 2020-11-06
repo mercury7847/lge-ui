@@ -349,7 +349,7 @@
                 display:table-cell;
                 width:1%;
                 padding-left:8px;
-                vertical-align:middle;
+                vertical-align:top;
                 @include mobile {
                     padding-left:6px;
                 }
@@ -675,25 +675,6 @@
             @include mobile {
                 border-radius:0 4px 4px 0;
             }
-            p.comp {
-                color:#3B9792;
-                @include font-small;
-                font-weight:500;
-                white-space:nowrap;
-                &::before {
-                    content:' ';
-                    display:inline-block;
-                    width:20px;
-                    height:20px;
-                    margin-top:2px;
-                    margin-right:2px;
-                    background:url('/lg5-common/images/icons/icon-comp.svg') center no-repeat;
-                    vertical-align:top;
-                    @include mobile {
-                        margin-top:1px;
-                    }
-                }
-            }
         }
         input:focus + .cell {
             border-color:#EC455A;
@@ -702,6 +683,27 @@
         input:read-only + .cell {
             background:#ededed;
             border-color:#ededed;
+        }
+    }
+
+    .comp {
+        margin-top: 4px;
+        color:#3B9792;
+        @include font-small;
+        font-weight:500;
+        white-space:nowrap;
+        &::before {
+            content:' ';
+            display:inline-block;
+            width:20px;
+            height:20px;
+            margin-top:2px;
+            margin-right:2px;
+            background:url('/lg5-common/images/icons/icon-comp.svg') center no-repeat;
+            vertical-align:top;
+            @include mobile {
+                margin-top:1px;
+            }
         }
     }
 
@@ -733,6 +735,11 @@
     }
     &.datepicker {
         position:relative;
+        .box {
+            .cell {
+                vertical-align: middle;
+            }
+        }
         input,
         input:read-only {
             border-color:#ddd;
