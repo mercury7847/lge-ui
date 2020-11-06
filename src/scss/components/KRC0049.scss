@@ -62,6 +62,7 @@
 					.cont-box {
 						position:relative;
 						z-index:2;
+						width:100%;
 						color:#222;
 						&.colorWhite { color:#fff; }
 						* {
@@ -94,6 +95,9 @@
 								margin-top:11px;
 								line-height:26px;
 							}
+						}
+						.bullet-list li {
+							display:inline-block;
 						}
 						.bullet-list .b-txt:before {
 							background:#222;

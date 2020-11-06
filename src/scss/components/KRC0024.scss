@@ -10,6 +10,22 @@
         margin: 0 auto;
     }
 
+    &.full-size {
+		.component-box {
+			max-width:1980px !important;
+		}
+    }
+    &.wide-size {
+		.component-box {
+			max-width:1660px !important;
+		}
+    }
+    &.medium-size {
+		.component-box {
+			max-width:1344px !important;
+		}
+	}
+
     .ui_carousel_list {
         overflow:hidden;
     }

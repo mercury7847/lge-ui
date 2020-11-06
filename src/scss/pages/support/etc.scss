@@ -156,11 +156,109 @@
     }
 }
 
+.swipe {
+    &-content {
+        font-size: 12px;
+        display: flex;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+    &-item {
+        margin-left: 4px;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+    &-link {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 76px;
+        height: 76px;
+        text-align: center;
+    }
+}
+
+.qr-code {
+    .inquiry-title {
+        .tit {
+            font-size: 16px;
+        }
+    }
+    .app-accodian {
+        border-radius: 4px;
+        border: solid 2px #dddddd;
+        background-color: #fff;
+        font-size: 16px;
+        color: #222;
+        .head {
+            padding: 17px 12px;
+            background-color: #f4f4f4;
+            position: relative;
+        }
+        .ui_accord_text {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 16px;
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            font-size: 0;
+        }
+        .btn_open {
+            .ui_accord_text {
+                border-top: 8px solid #111;
+            }
+        }
+        .btn_close {
+            .ui_accord_text {
+                border-bottom: 8px solid #111;
+            }
+        }
+        .txt_list {
+            font-weight: 500;
+            padding: 20px 0;
+            li {
+                > a {
+                    padding: 12px 16px;
+                    display: flex;
+                    align-items: center;
+
+                    &::after {
+                        content: '';
+                        display: inline-block;
+                        width: 14px;
+                        height: 24px;
+                        background: url(/lg5-common/images/icons/icon-btn-arrow-right2.svg) no-repeat center;
+                        background-size: 150%;
+                        margin-left: 8px;
+                    }
+                }
+                &:first-child {
+                    > a {
+                        padding-top: 0;
+                    }
+                }
+                &:last-child {
+                    > a {
+                        padding-bottom: 0;
+                    }
+                }
+            }
+        }
+        @include mobile {
+        }
+    }
+}
+
 @include mobile {
     img {
         max-width: 100%;
     }
 }
-
-@import "../../support/pages/CSTF8000"; // APP GATE
-@import "../../support/pages/KR50CS107"; // QR코드 랜딩 페이지

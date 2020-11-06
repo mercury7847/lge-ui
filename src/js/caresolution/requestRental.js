@@ -44,7 +44,7 @@
     function bindEvents(){
         $stepAccordion.on('accordionbeforeexpand', function(e, data){
             if(data.index > step){
-                e.preventDefault();
+                //e.preventDefault();
             }
         });
 
@@ -72,12 +72,28 @@
 
         $('#popup-privacy').on('click', '.btn-group .btn:nth-child(1)', function(e){
             setPrivacyAgreePop(false);
+        }).on('click', '.terms_open_btn', function(e){
+            e.preventDefault();
+
+            var termsurl = $(this).data('url');
+            openTermsDetailPopup(termsurl);
         });
         $privacyAgreeOkButton.on('click', function(e){
             if($privacyAgreeAllChker.getAllChecked()){
                 $('#popup-privacy').vcModal('close');
             }
         });
+
+        $('#popup-terms').on('click', '.btn-group .agree-confirm', function(e){
+            e.preventDefault();
+        });
+    }
+
+    function openTermsDetailPopup(url){
+        lgkorUI.requestAjaxData(url, {}, function(result){
+            $('#popup-terms .pop-conts.rmsf-pop').empty().html(result);
+            $('#popup-terms').vcModal();
+        }, "GET", "html");
     }
 
     function openPrivacyPopup(){
