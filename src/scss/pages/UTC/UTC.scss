@@ -40,15 +40,15 @@
         }
     }
 
-    .card-benefit {
-        margin-top: 16px;
-        text-align: right;
-        a {
-            font-weight: $font-weight-medium;
-            font-size: $font-small;
-            line-height: 24px;
-        }
-    }
+    //.card-benefit {
+    //    margin-top: 16px;
+    //    text-align: right;
+    //    a {
+    //        font-weight: $font-weight-medium;
+    //        font-size: $font-small;
+    //        line-height: 24px;
+    //    }
+    //}
 
     .bullet-list {
         clear: both;
@@ -76,65 +76,67 @@
         }
     }
 
-    .no-data-wrap {
-        max-width: 1066px;
-        margin: 0 auto;
-        @include mobile {
-            max-width: 100%;
-        }
-    }
+    .no-data-wrap {}
     .membership-benefit {
-        margin-top: 48px;
+        display: flex;
+        margin-top: 100px;
         font-size: 0;
         .box {
             display: inline-block;
-            @include calc(width,50%,12px);
-            padding: 40px 0;
+            @include calc(width,50%,6px);
+            padding: 64px 32px 72px;
+            border-radius: 8px;
             background-color: #fff;
-            text-align: center;
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
+            vertical-align: top;
             &:before {
                 display: inline-block;
-                width: 50px;
-                height: 50px;
-                margin-bottom: 12px;
+                width: 64px;
+                height: 64px;
+                margin-bottom: 24px;
                 background: no-repeat center;
-                background-size: 50px 50px;
+                background-size: 64px 64px;
                 content: '';
             }
             &.membership {
                 &:before {
-                    background-image: url('/lg5-common/images/icons/icon-camera.png');
+                    background-image: url('/lg5-common/images/icons/icon-img01-64.svg');
                 }
             }
-            &.card-issue {
-                margin-left: 24px;
+            &.card-benefit {
+                margin-left: 12px;
                 &:before {
-                    background-image: url('/lg5-common/images/icons/icon-battery.png');
+                    background-image: url('/lg5-common/images/icons/icon-img03-64.svg');
                 }
             }
             dt {
-                margin-bottom: 4px;
-                font-weight: $font-weight-bold;
-                font-size: 20px;
-                line-height: 36px;
-                color: #111;
+                margin-bottom: 20px;
+                font-weight: 700;
+                @include font-large-3;
+                word-break: keep-all;
             }
             dd {
                 @include font-medium;
-                color: #111;
+                color: $color-gray-1;
             }
         }
 
         @include mobile {
+            display: block;
             margin-top: 12px;
             .box {
                 width: 100%;
-                &.card-issue {
-                    margin: 4px 0 0;
+                padding: 32px 20px 36px;
+                &.card-benefit {
+                    margin: 12px 0 0;
                 }
                 dt {
-                    line-height: 27px;
-                    color: #222;
+                    font-size: $font-large-3;
+                    line-height: 40px;
+                }
+                dd {
+                    font-size: $font-small;
+                    line-height: 22px;
                 }
             }
         }
