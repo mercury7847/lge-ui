@@ -88,7 +88,24 @@
             margin-bottom: 16px;
         }
     }
-
+    .note-box {
+        padding: 24px;
+        border: solid 1px #dddddd;
+        margin-bottom: 24px;
+        &-title {
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        .in-note-box {
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+        @include mobile {
+            padding: 16px;
+        }
+    }
     .ui_tab-notice {
         max-width: 1066px;
         position: relative;
@@ -235,6 +252,40 @@
             height: 4px;
             border-radius: 2px;
             background-color: #616161;
+        }
+    }
+
+    .dot-list02 {
+        li {
+            position:relative;
+            margin-top:6px;
+            padding-left:12px;
+            font-size:16px;
+            color:#222;
+            line-height:1.5;
+            &:first-child {
+                margin-top:0;
+            }
+            &:before {
+                content:'';
+                position:absolute;
+                left:0;
+                top:11px;
+                width:4px;
+                height:4px;
+                border-radius:50%;
+                background-color:#616161;
+            }
+            @include mobile {
+                padding-left:10px;
+                font-size:12px;
+                line-height:18px;
+                margin-top: 10px;
+                &:before {
+                    top:8px;
+                }
+    
+            }
         }
     }
 }

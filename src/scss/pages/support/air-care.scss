@@ -6,8 +6,13 @@
 
 .air-care {
     .gray-box {
+        background-color: #f4f4f4;
+        padding: 44px 47px;
         .bullet-list {
             margin-top: 0;
+        }
+        @include mobile {
+            padding: 44px 20px;
         }
     }
     .text-box {
