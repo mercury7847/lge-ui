@@ -687,7 +687,7 @@
                     return;
                 }
 
-                if(result.status != 'success'){
+                if(dataType == 'json' && result.status != 'success'){
                     alert(result.message ? result.message : '오류발생');
                     return;
                 }
