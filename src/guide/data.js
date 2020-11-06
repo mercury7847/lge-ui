@@ -70,7 +70,7 @@ var res = {
 			// "KRC0042_Recommed product by tag" : ["/html/components/KRC0042.html","","진행중"],
 			"KRC0043_Gallery - 10Pickers_Static" : ["/html/components/KRC0043.html","","검수완료"],
 			"KRC0044_Hero Image (Thin)" : ["/html/components/KRC0044.html","","검수완료"],
-			"KRC0045_Article List" : ["/html/components/KRC0045.html","","검수완료"],
+			// "KRC0045_Article List" : ["/html/components/KRC0045.html","","검수완료"],
 			//"KRC0046_Story & Products module_Dynamic" : ["/html/components/KRC0046.html","","진행중"],
 			"KRC0049_Layered component - Multi type" : ["/html/components/KRC0049.html","","진행중"],
 			"KRC0051_Recommend story - categoryhome" : ["/html/components/KRC0051.html","","진행중"],
@@ -227,15 +227,7 @@ var res = {
 			"주문결제(UTC)" : {
 				"신청자정보 입력" : ["/html/UTC/RMSF9001.html","","진행중"],
 				"신청 완료" : ["/html/UTC/RMSF9011.html","","진행중"],
-				"개인정보 수집 및 이용에 대한 안내 팝업" : ["/html/UTC/RMSF9001_pop1.html","","진행중"],
-				"배송지 관리 팝업" : ["/html/UTC/RMSF9001_pop2.html","","진행중"],
-				"배송지 입력/수정 팝업" : ["/html/UTC/RMSF9001_pop3.html","","진행중"],
-				"LG전자 사전 방문 개인 정보 수집 이용동의 팝업" : ["/html/UTC/RMSF9001_pop4.html","","진행중"],
-				"제휴카드 발급/변경 자동 등록을 위한 제 3자 정보제공 동의 팝업" : ["/html/UTC/RMSF9001_pop5.html","","진행중"],
-				"케어솔루션 약관/유의사항 안내 팝업" : ["/html/UTC/RMSF9001_pop6.html","","진행중"],
-				"자동결제 이용 약관 동의 팝업" : ["/html/UTC/RMSF9001_pop7.html","","진행중"],
-				"케어솔루션 청약신청 고객동의 팝업" : ["/html/UTC/RMSF9001_pop8.html","","진행중"],
-				"약관 전문보기" : ["/html/UTC/RMSF9001_pop9.html","","진행중"],
+				"주문결제 팝업" : ["/html/UTC/RMSF9001_popup.html","","진행중"],
 				//"케어솔루션 주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],

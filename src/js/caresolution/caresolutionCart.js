@@ -1,5 +1,5 @@
 (function() {
-    var cartItemTemplate = '<li class="order-item {{#if soldout}}disabled{{/if}}" data-item-id="{{itemID}}">' +
+    var cartItemTemplate = '<li class="order-item {{#if available}}disabled{{/if}}" data-item-id="{{itemID}}">' +
         '<div class="item-image"><a href="{{itemUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="product-info">' +
             '<div class="flag-wrap bg-type">' +
@@ -19,47 +19,22 @@
             '{{#if subscriptionUrl}}<button type="button" class="btn pink border size" data-url={{subscriptionUrl}}><span>청약신청</span></button>{{#else}}<button type="button" class="btn pink border size" disabled><span>청약신청불가</span></button>{{/if}}' +
         '</div></div>' +
         '<span class="chk-wish-wrap"><input type="checkbox" id="chk-wish-{{itemID}}" name="chk-wish-{{itemID}}" {{#if (wish)}}checked{{/if}}><label for="chk-wish-{{itemID}}"><span class="blind">{{#if wish}}찜한상품{{#else}}찜하기{{/if}}</span></label></span>' +
-        '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}" name="chk-select-{{itemID}}"><label for="chk-select-{{itemID}}"><span class="blind">선택안함</span></label></span>' +
+        '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}" name="chk-select-{{itemID}}" checked><label for="chk-select-{{itemID}}"><span class="blind">선택안함</span></label></span>' +
         '<div class="item-delete"><button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button></div>' +
         '</li>'
-    
-    var subscriptionItemTemplate = '<li><span class="item-subtit">{{type}}</span>' +
-        '<strong class="item-tit">{{title}}</strong>' +
-        '<div class="item-spec"><span>{{sku}}</span>' +
-        '<span>월 {{salePrice}}원</span></div></li>'
-    
-    var subscriptionDisableItemTemplate = '<li class="item-disabled"><span class="item-subtit">{{type}}</span>' +
-        '<strong class="item-tit">{{title}}</strong>' +
-        '<div class="item-spec"><span>{{sku}}</span>' +
-        '<span>월 {{salePrice}}원</span></div>' +
-        '<p class="text-disabled"><span>설치 불가능 제품</span></p></li>'
 
-    var paymentItemTemplate = '<li><dl><dt class="text">{{text}}</dt><dd class="price {{appendClass}}">{{price}}</dd></dl></li>';
-    var totalPaymentItemTemplate = '<dl><dt class="text">{{text}}</dt><dd class="price">{{price}}</dd></dl>{{#if desc}}<p class="desc">{{desc}}</p>{{/if}}'
     $(window).ready(function() {
         var careCartInfo = new CareCartInfo('div.col-right');
 
         var careCart = {
             init: function() {
                 //케어솔루션 리스트
-                //self.careCartInfo = CareCartInfo('div.col-right');
                 self.$cartContent = $('#tab2');
                 self.$cartWrap = self.$cartContent.find('div.cart-wrap');
                 self.$cartAllCheck = self.$cartContent.find('div.check-option div.chk-wrap input');
                 self.cartItemCheckQuery = "li.order-item span.chk-wrap input";
                 self.$cartSelectRemove = self.$cartContent.find('div.check-option div.btn-area button.btn-text');
                 self.$cartList = self.$cartContent.find('div.list-wrap');
-
-                //청약정보
-                //self.$subscriptionInfo = self.$cartContent.find('div.col-right div.item-info');
-                //요금정보
-                //self.$paymentInfo = self.$cartContent.find('div.col-right div.payment-amount-info');
-                //신청서확인
-                //self.$agreement = self.$cartContent.find('div.col-right div.agree-box');
-
-                //계약신청서 확인/동의
-                //self.$agreementAllCheck = self.$agreement.find('div.chk-btm span.chk-wrap input');
-                //self.agreementItemCheckQuery = "li span.chk-wrap input";
 
                 //nodata
                 self.$noData = self.$cartContent.find('div.no-data-wrap');
@@ -68,7 +43,9 @@
                 self.$recommendProduct = $('div.product-recommend-wrap');
 
                 var _self = this;
+
                 _self.bindEvents();
+                _self.updateCartItemCheck();
                 _self.checkNoData();
             },
 
@@ -82,13 +59,14 @@
                     $cartItemCheck.each(function (index, item) {
                         _self.changeBlindLabelTextSiblingCheckedInput(item,'선택함','선택안함');
                     });
+                    _self.requestInfo();
                 });
 
                 //리스트 아이템 선택
                 self.$cartList.on('click', self.cartItemCheckQuery, function(e) {
-                    var $cartItemCheck = self.$cartList.find(self.cartItemCheckQuery);
-                    self.$cartAllCheck.prop('checked', !$cartItemCheck.is(':not(:checked)'));
+                    _self.updateCartItemCheck();
                     _self.changeBlindLabelTextSiblingCheckedInput(this,'선택함','선택안함');
+                    _self.requestInfo();
                 });
 
                 //리스트 아이템 청약하기 버튼
@@ -103,17 +81,21 @@
                     _self.requestWishItem(itemID, checked);
                 });
 
-                //전체삭제
+                //선택 삭제
                 self.$cartSelectRemove.on('click', function(e) {
-                    var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
-                    var itemList = [];
-                    cartItemCheck.each(function (index, item) {
-                        var itemID = $(item).parents('li.order-item').attr('data-item-id');
-                        itemList.push(itemID);
-                    });
-                    if(itemList.length > 0) {
-                        _self.requestRemoveItem(itemList);
-                    }
+                    var obj = {title:'', cancelBtnName:'취소', okBtnName:'삭제', ok: function (){
+                        var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
+                        var itemList = [];
+                        cartItemCheck.each(function (index, item) {
+                            var itemID = $(item).parents('li.order-item').attr('data-item-id');
+                            itemList.push(itemID);
+                        });
+                        if(itemList.length > 0) {
+                            _self.requestRemoveItem(itemList);
+                        }
+                    }};
+                    var desc = '선택된 제품을 삭제하시겠습니까?';
+                    lgkorUI.confirm(desc, obj);
                 });
 
                 //리스트 아이템 삭제
@@ -121,25 +103,6 @@
                     var itemID = $(this).parents('li.order-item').attr('data-item-id');
                     _self.requestRemoveItem([itemID]);
                 });
-
-                /*
-                //계약신청서 확인/동의 전체 선택
-                self.$agreementAllCheck.on('change',function (e) {
-                    var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
-                    $itemCheck.prop('checked', self.$agreementAllCheck.is(':checked'));
-                });
-
-                //계약신청서 아이템 선택
-                self.$agreement.on('click', self.agreementItemCheckQuery, function(e) {
-                    var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
-                    self.$agreementAllCheck.prop('checked', !$itemCheck.is(':not(:checked)'));
-                });
-
-                //청약하기
-                self.$agreement.on('click', 'div.btn-area button', function(e) {
-                    _self.clickSubscriptionButton(this);
-                });
-                */
 
                 //추천제품 장바구니
                 self.$recommendProduct.on('click', 'div.slide-box button', function(e) {
@@ -155,14 +118,19 @@
                 });
             },
 
+            //전체선택 버튼 상태 갱신
+            updateCartItemCheck: function() {
+                var $cartItemCheck = self.$cartList.find(self.cartItemCheckQuery);
+                self.$cartAllCheck.prop('checked', !$cartItemCheck.is(':not(:checked)'));
+            },
+
             updateList: function(data) {
-                console.log(data);
                 var _self = this;
 
                 //카트 목록
                 var $list_ul = self.$cartList.find('ul.order-list');
                 $list_ul.empty();
-                var arr =  data ? (data.list instanceof Array ? data.list : []) : [];
+                var arr =  data ? (data.itemList instanceof Array ? data.itemList : []) : [];
                 arr.forEach(function(item, index) {
                     item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                     item.salePrice = item.salePrice ? vcui.number.addComma(item.salePrice) : null;
@@ -176,48 +144,8 @@
                 } else {
                     self.$cartWrap.hide();
                 }
+                _self.updateCartItemCheck();
                 _self.checkNoData();
-
-                //청약정보
-                /*
-                $list_ul = self.$subscriptionInfo.find('ul.item-list');
-                $list_ul.empty();
-                if(arr.length > 0) {
-                    arr.forEach(function(item, index) {
-                        if(item.soldout) {
-                            $list_ul.append(vcui.template(subscriptionDisableItemTemplate, item));
-                        } else {
-                            $list_ul.append(vcui.template(subscriptionItemTemplate, item));
-                        }
-                    });
-                    self.$subscriptionInfo.show();
-                } else {
-                    self.$subscriptionInfo.hide();
-                }
-                */
-            },
-
-            updatePaymentInfo: function(data) {
-                //요금정보
-                var $list_ul = self.$paymentInfo.find('ul.payment-list');
-                $list_ul.empty();
-                var arr = data ? (data.price instanceof Array ? data.price : []) : [];
-
-                if(arr.length > 0) {
-                    arr.forEach(function(item, index) {
-                        $list_ul.append(vcui.template(paymentItemTemplate, item));
-                    });
-                    self.$paymentInfo.show();
-                }
-
-                if(data.total) {
-                   self.$paymentInfo.find('div.total-payment-amount').html(vcui.template(totalPaymentItemTemplate, data.total));
-                   self.$paymentInfo.show();
-                } else {
-                    if (arr.length < 1) {
-                        self.$paymentInfo.hide();
-                    }
-                }
             },
 
             changeBlindLabelTextSiblingCheckedInput: function(input, trueText, falseText) {
@@ -237,6 +165,25 @@
                 _self.noData(self.$cartList.find('li.order-item').length > 0 ? false : true);
             },
 
+            //선택된 제품에 따른 구매정보들 요청
+            requestInfo: function() {
+                var _self = this;
+                
+                var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
+                var itemList = [];
+                cartItemCheck.each(function (index, item) {
+                    var itemID = $(item).parents('li.order-item').attr('data-item-id');
+                    itemList.push(itemID);
+                });
+                if(itemList.length > 0) {
+                    var ajaxUrl = self.$cartContent.attr('data-info-url');
+                    var postData = JSON.stringify(itemList);
+                    lgkorUI.requestAjaxData(ajaxUrl, postData, function(result){
+                        careCartInfo.updateData(result.data);
+                    });
+                }
+            },
+
             //아이템 삭제 (리스트로 전달)
             requestRemoveItem: function(items) {
                 var _self = this;
@@ -244,10 +191,8 @@
                 var postData = JSON.stringify(items);
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     _self.updateList(result.data);
-                   // _self.updatePaymentInfo(result.data);
-                   console.log(careCartInfo);
-                   careCartInfo.updateList(result.data);
-                   careCartInfo.updatePaymentInfo(result.data);
+                    _self.requestInfo();
+                    $(window).trigger("toastshow", "선택한 제품이 삭제되었습니다.");
                 });
             },
 
@@ -263,17 +208,6 @@
                 var ajaxUrl = self.$cartContent.attr('data-cart-url');
                 var postData = {"itemID":itemID};
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
-            },
-
-            //청약신청하기 버튼 클릭
-            clickSubscriptionButton: function(dm) {
-                var _self = this;
-                var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
-                if(!$itemCheck.is(':not(:checked)')) {
-                    _self.locationButtonUrl(dm);
-                } else {
-                    //동의서가 다 체크되지 않음
-                }
             },
 
             //dom의 data-url을 읽어서 이동시킴

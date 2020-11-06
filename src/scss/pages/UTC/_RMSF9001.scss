@@ -243,9 +243,9 @@
 }
 
 .card-benefit-box {
-    @include clearfix;
-    margin: 32px 0 48px;
-    padding: 17px 48px;
+    position: relative;
+    margin: 32px -137px 48px 0;
+    padding: 10px 48px;
     border-radius: 8px;
     background-color: $color-bg;
     &:before {
@@ -268,10 +268,15 @@
         }
     }
     .btn-link {
-        float: right;
-        margin-top: 18px;
+        position: absolute;
+        top: 50%;
+        right: 47px;
+        transform: translateY(-50%);
     }
 
+    @media screen and (max-width: 1284px) {
+        margin-right: 0;
+    }
     @include mobile {
         position: relative;
         margin: 0 0 24px;
@@ -291,8 +296,9 @@
             line-height: 23px;
         }
         .btn-link {
-            float: none;
-            margin-top: 6px;
+            position: static;
+            transform: translateY(0);
+            margin-top: 7px;
         }
     }
 }
