@@ -2,32 +2,42 @@
     "status": "success",
     "message": null,
     "data": {
-        "price":[
-            {
-                "text": "제품 수",
-                "price": "3개",
-                "appendClass": "num"
-            },
-            {
-                "text": "이용요금",
-                "price": "월 98,000원",
-                "appendClass": ""
-            },
-            {
-                "text": "결합할인 금액",
-                "price": "월 -5,000원",
-                "appendClass": "sale"
-            }
-        ],
+        "isLogin": true,
         "total":{
-            "text": "총 2건",
-            "price": "월 98,500원",
-            "desc": "* 결합할인 적용"
+            "count": "3",
+            "price": "98600"
         },
-        "list":[
+        "paymentInfo": {
+            "total":{
+                "count": "3",
+                "price": "98600"
+            },
+            "list":[
+                {
+                    "text": "제품 수",
+                    "price": "3개",
+                    "appendClass": "num"
+                },
+                {
+                    "text": "이용요금",
+                    "price": "월 98,000원",
+                    "appendClass": ""
+                },
+                {
+                    "text": "결합할인 금액",
+                    "price": "월 -5,000원",
+                    "appendClass": "sale"
+                }
+            ]
+        },
+        "selectedItem":[
+            "item00001",
+            "item00002"
+        ],
+        "itemList":[
             {
                 "itemID": "item00001",
-                "soldout": false,
+                "available": false,
                 "type": "렌탈(케어솔루션)",
                 "wish": false,
                 "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
@@ -49,7 +59,7 @@
             },
             {
                 "itemID": "item00002",
-                "soldout": true,
+                "available": true,
                 "type": "케어솔루션",
                 "wish": true,
                 "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
