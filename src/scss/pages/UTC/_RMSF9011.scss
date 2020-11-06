@@ -48,12 +48,22 @@
 
 .order-complete {
     .order-item {
+        justify-content: space-between;
         padding-top: 88px;
         &:first-child {
             border-top: 2px solid #222;
         }
         &:last-child {
             border-bottom: 1px solid $color-border;
+        }
+        .product-info {
+            //max-width: 514px;
+            flex: 1.3;
+        }
+        .state-message {
+            flex: 1;
+            //justify-content: flex-end;
+            //margin-left: auto;
         }
         @include mobile {
             padding-top: 85px;
@@ -62,6 +72,12 @@
             }
             .item-image {
                 top: 85px;
+            }
+            .product-info {
+                flex: 1;
+            }
+            .state-message {
+                justify-content: flex-start;
             }
         }
     }
