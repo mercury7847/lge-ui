@@ -10,8 +10,6 @@
 }
 
 .section {
-    max-width:1066px;
-    margin:0 auto;
     margin-top:48px;
     &:first-child {
         margin-top:0
@@ -104,7 +102,6 @@
 }
 
 .double-section {
-    max-width:1066px;
     margin:48px auto 0;
     &:first-child {
         margin-top:0;

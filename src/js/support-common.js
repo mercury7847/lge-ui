@@ -230,66 +230,62 @@ CS.MD.drawOption = function() {
 
     var pluginName = 'drawOption';
 
-    function Plugin(elem, opt) {
-        var _this = this;
-            element = this.element = elem;
+    function Plugin(el, opt) {
+        var self = this;
+            self.$el = $(el),
+            self.el = el;
 
         var defaults = {};
-            
-        defaults = $.extend({}, $(element).data(), opt);
+
+        self.options = $.extend({}, defaults, self.$el.data(), opt);
     
+        self._bindEvent();
+    }
 
-        function ajaxEventListener() {
-            var formData = $(element).serialize();
+    Plugin.prototype = {
+        _bindEvent: function() {
+            var self = this;
 
-            $.ajax({
-                url: defaults.url,
-                method: 'POST',
-                dataType: 'json',
-                data: formData,
-                beforeSend: function(xhr) {
-                    // loading bar start
-                },
-                success: function(data) {
-                    if (data) {
-                        drawEventListener(data);
-                        defaults.callback && defaults.callback(); 
-                    }
-                },
-                error: function(err){
-                    console.log(err);
-                },
-                complete: function() {
-                    // loading bar end
-                }
+            self.$el.on('change', function() {
+                var params = $(element).serialize();
+
+                self._ajax(params);
             });
-        }   
-        function drawEventListener(data) {
-            var html = '';
+        },
+        _ajax: function(params) {
+            var self = this;
+            var opt = self.options;
+
+            lgkorUI.showLoading();
+            lgkorUI.requestAjaxDataPost(url, params, function(d) {
+                if (d.data) {
+                    self.draw(d.data);
+                    if (opt.callback) opt.callback();
+                }
+                 
+                lgkorUI.hideLoading();
+            });
+        },
+        draw: function() {
+            var self = this;
+            var $target = $(self.options.target),
+                html = '';
 
             for (var key in data) {
                 html += '<option value="'+ key +'">'+ data[key] +'</option>'
             }
 
-            $(defaults.target).html(html);
-            $(defaults.target).vcSelectbox('update');
+            $target.html(html);
+            $target.prop('disabled', false);
+            $target.vcSelectbox('update');
         }
-        function setEventListener() {
-            $(element).on('change', ajaxEventListener);
-        }
-
-        setEventListener();
-    }
-
-    Plugin.prototype = {
-
     };
 
     CS.MD.plugin(pluginName, Plugin);
 }();
 
 /*
-* 페이징네이션
+* pagination
 * */
 CS.MD.pagination = function() {
     var pluginName = 'pagination';
@@ -309,8 +305,7 @@ CS.MD.pagination = function() {
             lastView: false
         };
 
-        opt = $.extend({}, opt, $el.data());
-        self.options = $.extend({}, defaults, opt);
+        self.options = $.extend({}, defaults, self.$el.data(), opt);
 
         function _initialize() {
             self.$pageList = $el.find('.page_num');
@@ -416,7 +411,9 @@ CS.MD.pagination = function() {
     CS.MD.plugin(pluginName, Plugin);
 }();
 
-/* PSP floating anchor tab */
+/* 
+*floating anchor tab 
+**/
 CS.MD.anchorTab  = function() {
     var pluginName = 'anchorTab';
 
@@ -557,6 +554,9 @@ CS.MD.anchorTab  = function() {
     CS.MD.plugin(pluginName, Plugin);
 }();
 
+/*
+* quick menu
+*/
 CS.MD.quickMenu = function() {
     var pluginName = 'quickMenu';
     
@@ -570,6 +570,7 @@ CS.MD.quickMenu = function() {
         self.options = $.extend({}, defaults, opt);
     
         self.$topBtn = self.$el.find('.btn-top');
+        self.$menuBtn = self.$el.find('.btn-expand');
 
         self._bindEvent();
     }
@@ -578,11 +579,10 @@ CS.MD.quickMenu = function() {
         _bindEvent: function() {
             var self = this;
 
-            $('.fold-expand-btn').on('click', function(e) {
+            self.$menuBtn.on('click', function(e) {
                 e.preventDefault();
 
-                var $this = $(this),
-                    $item = $this.closest('li');
+                var $item = $(this).closest('li');
 
                 if ($item.hasClass('on')) {
                     $item.removeClass('on');
@@ -590,9 +590,19 @@ CS.MD.quickMenu = function() {
                     $item.addClass('on');
                 }
             });
+            self.$topBtn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').stop().animate({
+                    scrollTop: 0
+                }, 400);
+            });
 
-
-            $(window).on('breakpointchange.quickmenu', function(e, data){
+            CS.UI.$win.on('scroll resize', function(){
+                if (self.$el.find('.on').length > 0) {
+                    self.$el.find('.on').removeClass('on');
+                }
+            });
+            CS.UI.$win.on('breakpointchange.'+pluginName, function(e, data){
                 if (data.isMobile) {
                     $('.service-history-btn:first-child').off('click').on('click', function(e) {
                         if (!$('.service-history-ul').hasClass('on')) {
@@ -602,19 +612,6 @@ CS.MD.quickMenu = function() {
                     });
                 }
             })
-
-            self.$topBtn.on('click', function (e) {
-                e.preventDefault();
-                $('html, body').stop().animate({
-                    scrollTop: 0
-                }, 400);
-            });
-
-            $(window).on('scroll resize', function(){
-                if (self.$el.find('.on').length > 0) {
-                    self.$el.find('.on').removeClass('on');
-                }
-            });
         }
     }
 
