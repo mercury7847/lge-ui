@@ -38,6 +38,7 @@
             }
         }
         @include mobile {
+            display: none;
             padding:0 0 20px;
             .title {
                 padding:56px 20px 0;
@@ -95,6 +96,9 @@
                 }
                 .col-left {
                     .section {
+                        &:first-child {
+                            padding-top: 0;
+                        }
                         &:last-child {
                             margin-bottom: 0;
                         }
@@ -234,7 +238,7 @@
             @include mobile {
                 position:relative;
                 margin:0;
-                padding:40px 20px 56px;
+                padding:40px 16px 56px;
                 border-top:12px solid #f4f4f4;
                 background:#fff;
                 &:last-child {
