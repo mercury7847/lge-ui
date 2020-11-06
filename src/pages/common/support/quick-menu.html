@@ -1,24 +1,71 @@
 <div id="quickmenu" class="quickmenu">
     <ul class="quickmenu-ul">
-        <li class="service-menu on"><!-- fold-expand-btn을 누르면 service-menu에 on 추가 -->
-            <button class="quickmenu-btn circle-type fold-expand-btn" type="button"><span class="icon"></span><span class="blind">메뉴 닫힘</span></button>
+        <li class="service-menu"><!-- fold-expand-btn을 누르면 service-menu에 on 추가 -->
+            <button type="button" class="quickmenu-btn fold-expand-btn"><span class="blind">메뉴 열림</span></button>
             <ul class="service-menu-ul">
-                <li><a href="#" class="fold-btn circle-type"><span class="icon">퀵메뉴 5</span></a></li>
-                <li><a href="#" class="fold-btn circle-type"><span class="icon">제품 문제 해결</span></a></li>
-                <li><a href="#" class="fold-btn circle-type"><span class="icon">드라이버/SW 다운로드</span></a></li>
-                <li><a href="#" class="fold-btn circle-type"><span class="icon">서비스 센터 찾기</span></a></li>
-                <li><a href="#" class="fold-btn circle-type"><span class="icon">전문가 상담</span></a></li>
+                <li>
+                    <a href="#" class="fold-btn">
+                        <span class="icon"></span>제품 문제 해결
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="fold-btn">
+                        <span class="icon"></span>드라이버/SW 다운로드
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="fold-btn">
+                        <span class="icon"></span>서비스 센터 찾기
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="fold-btn">
+                        <span class="icon"></span>전문가 상담
+                    </a>
+                </li>
             </ul>
         </li>
-        <li>
-            <a href="#" class="quickmenu-btn"><span class="icon">고객센터</span></a>
+        <li class="service-menu">
+            <a href="#" class="fold-btn">
+                <span class="icon"></span>제품 문제 해결
+            </a>
         </li>
+
+        <!-- 모바일 기기에만 노출 -->
         <li>
-            <a href="https://www.lgechat.com/kr/index.html?lg_homepage" class="btn-chatbot" title="Opens in a new window" data-width="344" data-height="553" data-link-area="sticky_chat-chatbot_button" data-link-name=""><span class="blind">LG Chatbot</span></a>
+            <a href="tel:15447777">
+                <span class="icon"></span>
+                고객센터
+            </a>
         </li>
-        <li class="service-history on"><!-- fold-expand-btn을 누르면 service-history에 on 추가 -->
+        <!-- // 모바일 기기에만 노출 -->
+       
+        <li>
+            <a href="https://www.lgechat.com/kr/index.html?lg_homepage" class="btn-chatbot" title="Opens in a new window" data-width="360" data-height="620" data-link-area="sticky_chat-chatbot_button" data-link-name=""><span class="blind">LG Chatbot</span></a>
+        </li>
+
+        <!-- 검색 기록 0건 -->
+        <li class="service-history"><!-- fold-expand-btn을 누르면 service-history에 on 추가 -->
             <em class="service-history-count"><span class="blind">고객지원 제품 검색 기록</span>0<span class="blind">건</span></em>
-            <button class="fold-btn fold-expand-btn" type="button"><span class="icon">고객지원 제품 검색 기록</span></button>
+            <button type="button" class="fold-btn fold-expand-btn"><span class="icon"></span>고객지원 제품 검색 기록</button>
+        </li>
+        <!-- 검색 기록 1건 -->
+        <li class="service-history"><!-- fold-expand-btn을 누르면 service-history에 on 추가 -->
+            <em class="service-history-count"><span class="blind">고객지원 제품 검색 기록</span>1<span class="blind">건</span></em>
+            <ul class="service-history-ul">
+                <li>
+                    <a href="#" class="service-history-btn">
+                        <figure class="icon">
+                            <img src="/lg5-common/images/dummy/@img-product.jpg" alt="제품 이미지">
+                            <figcaption class="textEllipsis">OLED65RXKNA</figcaption>
+                        </figure>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- 검색 기록 2건 이상 -->
+        <li class="service-history"><!-- fold-expand-btn을 누르면 service-history에 on 추가 -->
+            <em class="service-history-count"><span class="blind">고객지원 제품 검색 기록</span>3<span class="blind">건</span></em>
             <ul class="service-history-ul">
                 <li>
                     <a href="#" class="service-history-btn">

@@ -36,11 +36,13 @@
 
     var paymentItemTemplate = '<li><dl><dt class="text">{{text}}</dt><dd class="price {{appendClass}}">{{price}}</dd></dl></li>';
     var totalPaymentItemTemplate = '<dl><dt class="text">{{text}}</dt><dd class="price">{{price}}</dd></dl>{{#if desc}}<p class="desc">{{desc}}</p>{{/if}}'
-    
     $(window).ready(function() {
+        var careCartInfo = new CareCartInfo('div.col-right');
+
         var careCart = {
             init: function() {
                 //케어솔루션 리스트
+                //self.careCartInfo = CareCartInfo('div.col-right');
                 self.$cartContent = $('#tab2');
                 self.$cartWrap = self.$cartContent.find('div.cart-wrap');
                 self.$cartAllCheck = self.$cartContent.find('div.check-option div.chk-wrap input');
@@ -49,15 +51,15 @@
                 self.$cartList = self.$cartContent.find('div.list-wrap');
 
                 //청약정보
-                self.$subscriptionInfo = self.$cartContent.find('div.col-right div.item-info');
+                //self.$subscriptionInfo = self.$cartContent.find('div.col-right div.item-info');
                 //요금정보
-                self.$paymentInfo = self.$cartContent.find('div.col-right div.payment-amount-info');
+                //self.$paymentInfo = self.$cartContent.find('div.col-right div.payment-amount-info');
                 //신청서확인
-                self.$agreement = self.$cartContent.find('div.col-right div.agree-box');
+                //self.$agreement = self.$cartContent.find('div.col-right div.agree-box');
 
                 //계약신청서 확인/동의
-                self.$agreementAllCheck = self.$agreement.find('div.chk-btm span.chk-wrap input');
-                self.agreementItemCheckQuery = "li span.chk-wrap input";
+                //self.$agreementAllCheck = self.$agreement.find('div.chk-btm span.chk-wrap input');
+                //self.agreementItemCheckQuery = "li span.chk-wrap input";
 
                 //nodata
                 self.$noData = self.$cartContent.find('div.no-data-wrap');
@@ -120,6 +122,7 @@
                     _self.requestRemoveItem([itemID]);
                 });
 
+                /*
                 //계약신청서 확인/동의 전체 선택
                 self.$agreementAllCheck.on('change',function (e) {
                     var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
@@ -136,6 +139,7 @@
                 self.$agreement.on('click', 'div.btn-area button', function(e) {
                     _self.clickSubscriptionButton(this);
                 });
+                */
 
                 //추천제품 장바구니
                 self.$recommendProduct.on('click', 'div.slide-box button', function(e) {
@@ -175,6 +179,7 @@
                 _self.checkNoData();
 
                 //청약정보
+                /*
                 $list_ul = self.$subscriptionInfo.find('ul.item-list');
                 $list_ul.empty();
                 if(arr.length > 0) {
@@ -189,6 +194,7 @@
                 } else {
                     self.$subscriptionInfo.hide();
                 }
+                */
             },
 
             updatePaymentInfo: function(data) {
@@ -238,7 +244,10 @@
                 var postData = JSON.stringify(items);
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     _self.updateList(result.data);
-                    _self.updatePaymentInfo(result.data);
+                   // _self.updatePaymentInfo(result.data);
+                   console.log(careCartInfo);
+                   careCartInfo.updateList(result.data);
+                   careCartInfo.updatePaymentInfo(result.data);
                 });
             },
 

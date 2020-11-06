@@ -11,6 +11,7 @@ var res = {
 			"Input" : ["./wsg/guide_input.html","","검수완료"],
 			"Select" : ["./wsg/guide_select.html","","검수완료"],
 			"Form" : ["./wsg/guide_input_form.html","","검수완료"],
+			"아이콘" : ["./wsg/guide_icons.html","","검수완료"],
 			"버튼" : ["./wsg/guide_button.html","","검수완료"],
 			"탭" : ["./wsg/guide_tab.html","","검수완료"],
 			// "스크롤뷰" : ["./wsg/guide_scrollview.html","","검수완료"], 10.15 해남님 : '스크롤바 브라우저 기본으로 공통 적용하기로'
