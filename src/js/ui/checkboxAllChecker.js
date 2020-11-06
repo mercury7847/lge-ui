@@ -61,6 +61,13 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
 
             self.trigger('allCheckerChange', [self.getAllChecked()]);
         },
+
+        setChecked: function(iptname, chk){
+            var self = this;
+
+            self.$items.closest('[name='+iptname+']').prop('checked', chk);
+            self._allChecked();
+        },
         
         getAllChecked: function(){
             var self = this;
