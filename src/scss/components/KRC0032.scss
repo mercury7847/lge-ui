@@ -72,6 +72,22 @@
         }
     }
 
+    &.full-size {
+		.heading-box {
+			max-width:1980px !important;
+		}
+    }
+    &.wide-size {
+		.heading-box {
+			max-width:1660px !important;
+		}
+    }
+    &.medium-size {
+		.heading-box {
+			max-width:1344px !important;
+		}
+	}
+
     /* bg, color 추가 */
     &.bg-black {
         background-color: #000;
@@ -144,7 +160,7 @@
     }
     /* // bg, color 추가 */
     .heading-box {
-        max-width:1284px;
+        // max-width:1284px;
         margin:0 auto;
         padding:0 30px 48px 30px;
         @include clearfix;
