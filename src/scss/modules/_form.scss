@@ -1594,10 +1594,12 @@ $input: (chk, rdo);
                         word-break:break-all;
                         text-overflow:ellipsis;
                         &:hover {
+                            color:#222;
                             background:#f4f4f4;
                         }
                     }
                     &.on a {
+                        color:#222;
                         background:#f4f4f4;
                     }
 
