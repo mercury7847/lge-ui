@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
 .contents-inner {
+    max-width:1460px;
+    margin:0 auto;
     padding:64px 40px 120px;
     @include mobile {
         padding:12px 0 0;
@@ -54,9 +56,6 @@
             &:first-of-type {
                 margin-top:0;
             }
-        }
-        &.type-relative {
-            position: relative;
         }
         &.no-pd {
             padding: 0;

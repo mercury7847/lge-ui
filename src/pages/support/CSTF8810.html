@@ -12,7 +12,8 @@
 
         <div class="container">
             @@include('./common/support/page-visual.html', {
-                'title': '공기청정 필터 신청'
+                'title': '공기청정 필터 신청이 접수되었습니다.',
+                'desc': '신청하신 주소지로 배송될 예정입니다.'
             })
 
             <div class="contents support air-care">
@@ -70,14 +71,12 @@
                                     <div class="description">요청사항 내용표시</div>
                                 </li>
                             </ul>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <div class="section-content">
-                            <ul class="dot-list">
-                                <li>접수하신 사항에 대한 진행상태 확인은 결과 조회에서 가능합니다. <a href="#" class="btn-link">나의 글 보기</a></li>
-                            </ul>
+                            @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
+                                "bulletTxt" : [
+                                    '접수하신 사항에 대한 진행상태 확인은 결과 조회에서 가능합니다. <a href="#" class="btn-link">바로 가기</a>'
+                                ]
+                            })
                         </div>
                     </div>
 

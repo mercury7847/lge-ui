@@ -85,40 +85,24 @@
             <!--  slide -->
             <div class="slide-conts ui_carousel_slide">
                 <div class="slide-box" data-item-id="`+slideArr[i].itemID+`">
-                    `+slideArr[i].badge+`
                     <div class="product-image" aria-hidden="true">
                         <a href="#"><img src="`+slideArr[i].img+`" alt=""></a>
                     </div>
                     <div class="product-info">
-                        @@include('./common/modules/flags.html', {
-                            "borderType": true,
-                            "flags": [ "NEW","BEST" ]
-                        })
                         <div class="product-name">
                             <a href="#">`+slideArr[i].name+`</a>
                         </div>
                         <div class="price-area">
                             <div class="reduced-price">
-                                <em class="blind">최대 혜택가격</em>
-                                <span class="price">5,200,000<em>원</em></span>
+                                <em class="blind">월 요금</em>
+                                <span class="price">월 <em>58,900</em>원</span>
                             </div>
-                            <div class="product-price">
-                                <div class="purchase-price">
-                                    <em class="blind">판매가격</em>
-                                    <span class="price">360,000<em>원</em></span>
-                                </div>
-                                <div class="discount-rate">
-                                    <em class="blind">할인율</em>
-                                    <span class="price">15<em>%</em></span>
-                                </div>
+                            <div class="discount-price">
+                                <em class="blind">할인 금액</em>
+                                <span class="price"><em>5,000</em>원 결합 할인</span>
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="`+slideArr[i].btnLike+`"><span>`+slideArr[i].btnText+`</span></button>
-                    <span class="chk-wish-wrap">
-                        <input type="checkbox" id="`+slideArr[i].wish.id+`" name="`+slideArr[i].wish.name+`" `+slideArr[i].wish.checked+`>
-                        <label for="`+slideArr[i].wish.id+`"><span class="blind">찜하기</span></label>
-                    </span>
                 </div>
             </div>
             <!-- // slide -->

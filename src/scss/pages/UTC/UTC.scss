@@ -30,9 +30,9 @@
         .btn-area {
             float: right;
         }
-        @include mobile {
-            margin-top: -40px;
-        }
+        //@include mobile {
+        //    margin-top: -40px;
+        //}
     }
     .order-item {
         &.disabled .product-payment .amount .total {
@@ -65,7 +65,7 @@
         border-top: 1px solid #ddd;
         background:#f4f4f4;
         @include mobile {
-            padding: 40px 20px 44px;
+            padding: 40px 16px 44px;
         }
         .title {
             margin-bottom: 32px;
@@ -335,12 +335,23 @@
         padding: 0 24px;
         font-weight: 500;
         @include font-small;
+        @include mobile {
+            width: 100%;
+            margin-top: 16px;
+            padding-left: 112px;
+            font-weight: 400;
+        }
     }
     &.disabled .product-payment .amount .total {
         color:$color-gray-4;
     }
     &.disabled.bg {
         background-color: $color-bg;
+        @include mobile {
+            &:last-child {
+                padding-bottom: 32px;
+            }
+        }
         .flag-wrap.bg-type .flag {
             background-color: transparent;
             color: $color-gray-4;
@@ -392,7 +403,11 @@
         .text {
             color: $color-gray-1;
         }
-        .number {}
+        @include mobile {
+            padding: 15px 12px;
+            font-size: 15px;
+            line-height: 23px;
+        }
     }
 }
 
