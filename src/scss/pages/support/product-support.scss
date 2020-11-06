@@ -646,10 +646,6 @@
     }
     /* 비디오 가이드 */
     &.video-guide {
-        .search-wrap, .result-wrap {
-            max-width:1066px;
-            margin:0 auto;
-        }
         .tabs-wrap {
             padding:32px 0 16px;
             @media screen and (min-width: $tablet-l-width) {

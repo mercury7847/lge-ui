@@ -1,41 +1,58 @@
 <div id="quickmenu" class="quickmenu">
-    <ul class="quickmenu-ul">
-        <li class="service-menu"><!-- fold-expand-btn을 누르면 service-menu에 on 추가 -->
-            <button type="button" class="quickmenu-btn fold-expand-btn"><span class="blind">메뉴 열림</span></button>
+    <ul class="quickmenu-list">
+        <li class="service-menu"><!-- btn-expand 클릭 시 service-menu에 on 추가 -->
+            <button type="button" class="btn-expand"><span class="blind">메뉴 열림</span></button>
             <ul class="service-menu-ul">
                 <li>
-                    <a href="#" class="fold-btn">
-                        <span class="icon"></span>제품 문제 해결
+                    <a href="#" class="btn-fold">
+                        <span class="icon">
+                            <img src="/lg5-common/images/icons/icon-cs-set.svg" alt="제품 문제 해결 메뉴 아이콘">
+                        </span>
+                        <span class="txt">제품 문제 해결</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="fold-btn">
-                        <span class="icon"></span>드라이버/SW 다운로드
+                    <a href="#" class="btn-fold">
+                        <span class="icon">
+                            <img src="/lg5-common/images/icons/icon-cs-set.svg" alt="드라이버/SW 다운로드 메뉴 아이콘">
+                        </span>
+                        <span class="txt">드라이버/SW 다운로드</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="fold-btn">
-                        <span class="icon"></span>서비스 센터 찾기
+                    <a href="#" class="btn-fold">
+                        <span class="icon">
+                            <img src="/lg5-common/images/icons/icon-cs-set.svg" alt="서비스 센터 찾기 메뉴 아이콘">
+                        </span>
+                        <span class="txt">서비스 센터 찾기</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="fold-btn">
-                        <span class="icon"></span>전문가 상담
+                    <a href="#" class="btn-fold">
+                        <span class="icon">
+                            <img src="/lg5-common/images/icons/icon-cs-set.svg" alt="전문가 상담 메뉴 아이콘">
+                        </span>
+                        <span class="txt">전문가 상담</span>
                     </a>
                 </li>
             </ul>
         </li>
         <li class="service-menu">
-            <a href="#" class="fold-btn">
-                <span class="icon"></span>제품 문제 해결
+            <a href="#" class="btn-fold">
+                <span class="icon">
+                    <img src="/lg5-common/images/icons/icon-cs-set.svg" alt="제품 문제 해결 메뉴 아이콘">
+                </span>
+                <span class="txt">제품 문제 해결</span>
             </a>
         </li>
 
         <!-- 모바일 기기에만 노출 -->
         <li>
             <a href="tel:15447777">
-                <span class="icon"></span>
-                고객센터
+                <span class="icon">
+                    <img src="/lg5-common/images/icons/icon-cs-set.svg" alt="고객센터 메뉴 아이콘">
+                </span>
+                <span class="txt">고객센터</span>
             </a>
         </li>
         <!-- // 모바일 기기에만 노출 -->
@@ -45,49 +62,57 @@
         </li>
 
         <!-- 검색 기록 0건 -->
-        <li class="service-history"><!-- fold-expand-btn을 누르면 service-history에 on 추가 -->
-            <em class="service-history-count"><span class="blind">고객지원 제품 검색 기록</span>0<span class="blind">건</span></em>
-            <button type="button" class="fold-btn fold-expand-btn"><span class="icon"></span>고객지원 제품 검색 기록</button>
+        <li class="service-history">
+            <div class="btn-fold">
+                <span class="icon"></span>
+                <span class="txt">고객지원 제품 검색 기록 <em class="count">0<span class="blind">건</span></em></span>
+            </div>
         </li>
         <!-- 검색 기록 1건 -->
-        <li class="service-history"><!-- fold-expand-btn을 누르면 service-history에 on 추가 -->
-            <em class="service-history-count"><span class="blind">고객지원 제품 검색 기록</span>1<span class="blind">건</span></em>
+        <li class="service-history">
+            <div class="blind">
+                <span class="icon"></span>
+                <span class="txt">고객지원 제품 검색 기록 <em class="count">0<span class="blind">건</span></em></span>
+            </div>
             <ul class="service-history-ul">
                 <li>
                     <a href="#" class="service-history-btn">
-                        <figure class="icon">
+                        <figure class="img">
                             <img src="/lg5-common/images/dummy/@img-product.jpg" alt="제품 이미지">
-                            <figcaption class="textEllipsis">OLED65RXKNA</figcaption>
+                            <figcaption class="name">OLED65RXKNA</figcaption>
                         </figure>
                     </a>
                 </li>
             </ul>
         </li>
         <!-- 검색 기록 2건 이상 -->
-        <li class="service-history"><!-- fold-expand-btn을 누르면 service-history에 on 추가 -->
-            <em class="service-history-count"><span class="blind">고객지원 제품 검색 기록</span>3<span class="blind">건</span></em>
+        <li class="service-history">
+            <div class="blind">
+                <span class="icon"></span>
+                <span class="txt">고객지원 제품 검색 기록 <em class="count">0<span class="blind">건</span></em></span>
+            </div>
             <ul class="service-history-ul">
                 <li>
                     <a href="#" class="service-history-btn">
-                        <figure class="icon">
+                        <figure class="img">
                             <img src="/lg5-common/images/dummy/@img-product.jpg" alt="제품 이미지">
-                            <figcaption class="textEllipsis">OLED65RXKNA</figcaption>
+                            <figcaption class="name">OLED65RXKNA</figcaption>
                         </figure>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="service-history-btn">
-                        <figure class="icon">
+                        <figure class="img">
                             <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="제품 이미지">
-                            <figcaption class="textEllipsis">OLED65RXKNA</figcaption>
+                            <figcaption class="name">OLED65RXKNA</figcaption>
                         </figure>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="service-history-btn">
-                        <figure class="icon">
+                        <figure class="img">
                             <img src="/lg5-common/images/dummy/@img-product3.jpg" alt="제품 이미지">
-                            <figcaption class="textEllipsis">OLED65RXKNA</figcaption>
+                            <figcaption class="name">OLED65RXKNA</figcaption>
                         </figure>
                     </a>
                 </li>
