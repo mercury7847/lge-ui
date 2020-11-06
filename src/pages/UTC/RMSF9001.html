@@ -18,7 +18,7 @@
                     <div class="row-wrap">
                         <div class="col-left">
                             <div class="section">
-                                <h3 class="blind">주문제품</h3>
+                                <h3 class="sec-tit">주문제품</h3>
                                 <div class="list-wrap">
                                     <ul class="order-list">
                                         @@loop('./common/modules/order-list.html', [
@@ -732,7 +732,7 @@
             <div class="input-info">
                 <div class="tit-wrap type2">
                     <h2 class="h2-tit">개인정보 수집 및 이용에 대한 안내</h2>
-                    <a href="#n" data-control="modal" class="btn-link">전문 보기</a>
+                    <a href="#n" class="btn-link terms_open_btn" data-url="/lg5-common/data-ajax/caresolution/privacy_terms.html">전문 보기</a>
                 </div>
                 <div class="agree-cont-wrap">
                     <div class="agree-cont-box">
@@ -758,7 +758,7 @@
             <div class="input-info">
                 <div class="tit-wrap type2">
                     <h2 class="h2-tit">신용정보 제공에 대한 안내</h2>
-                    <a href="#n" data-control="modal" class="btn-link">전문 보기</a>
+                    <a href="#n" class="btn-link terms_open_btn" data-url="/lg5-common/data-ajax/caresolution/credit_terms.html">전문 보기</a>
                 </div>
                 <div class="agree-cont-wrap">
                     <div class="agree-cont-box">
@@ -799,6 +799,23 @@
     <!-- // 개인정보 수집 및 신용정보 제공 동의 popup -->
 
 
+    <!-- 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
+    <article id="popup-terms" class="popup-wrap full">
+        <header class="pop-header">
+            <h1 class="tit"><span>약관 전문보기</span></h1>
+        </header>
+        <section class="pop-conts rmsf-pop">
+            
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+                <button type="button" class="btn pink agree-confirm"><span>동의 후 닫기</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
 
 </body>
 </html>
