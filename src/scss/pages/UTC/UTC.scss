@@ -148,12 +148,15 @@
 
 .order-item {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     position: relative;
+    width: 100%;
     padding:32px 0 32px;
     border-top: 1px solid #ddd;
     background-color: #fff;
     @include mobile {
-        flex-flow: column;
+        display: block;
         &.is-check {
             padding-top: 56px;
             .item-image {
@@ -162,6 +165,7 @@
         }
     }
     .item-image {
+        align-self: flex-start;
         overflow:hidden;
         width:140px;
         height:140px;
@@ -334,44 +338,54 @@
         }
     }
     .state-message {
-        display: flex;
-        align-items: center;
-        width: 270px;
+        //display: flex;
+
+        //margin-left: auto;
+        //width: 270px;
         padding: 0 24px;
         font-weight: 500;
         @include font-small;
+        .text-box {
+            text-align: right;
+            span {
+                display: inline-block;
+                text-align: left;
+
+            }
+        }
         @include mobile {
             width: 100%;
             margin-top: 16px;
             padding-left: 112px;
             font-weight: 400;
+            .text-box {
+                text-align: left;
+            }
         }
     }
     &.disabled .product-payment .amount .total {
         color:$color-gray-4;
     }
-    &.disabled.bg {
-        background-color: $color-bg;
-        @include mobile {
-            &:last-child {
-                padding-bottom: 32px;
-            }
-        }
+    &.disabled.item-disabled {
         .flag-wrap.bg-type .flag {
             background-color: transparent;
             color: $color-gray-4;
         }
-        .item-image,
-        .product-info,
-        .product-payment {
-            * {
-                color: $color-gray-4 !important;
+        .product-info {
+            .item-name {
+                color: $color-gray-4;
             }
         }
         .disabled-message {
-            position: absolute;
-            right: 24px;
-            bottom: 36px;
+            @include pc {
+                position: absolute;
+                right: 24px;
+                bottom: 36px;
+            }
+            @include mobile {
+                margin-top: 12px;
+                padding-left: 112px;
+            }
         }
     }
     .item-delete {
