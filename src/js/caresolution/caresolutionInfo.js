@@ -1,10 +1,10 @@
 var CareCartInfo = (function() {
-    var subscriptionItemTemplate = '<li><span class="item-subtit">{{type}}</span>' +
+    var subscriptionItemTemplate = '<li><span class="item-subtit">{{typeName}}</span>' +
         '<strong class="item-tit">{{title}}</strong>' +
         '<div class="item-spec"><span>{{sku}}</span>' +
         '<span>월 {{salePrice}}원</span></div></li>'
     
-    var subscriptionDisableItemTemplate = '<li class="item-disabled"><span class="item-subtit">{{type}}</span>' +
+    var subscriptionDisableItemTemplate = '<li class="item-disabled"><span class="item-subtit">{{typeName}}</span>' +
         '<strong class="item-tit">{{title}}</strong>' +
         '<div class="item-spec"><span>{{sku}}</span>' +
         '<span>월 {{salePrice}}원</span></div>' +
@@ -51,6 +51,7 @@ var CareCartInfo = (function() {
     CareCartInfo.prototype = {
         updateData: function(data) {
             var self = this;
+            console.log(data.isLogin, self.$loginInfo);
             if(data.isLogin) {
                 self.$loginInfo.hide();
             } else {

@@ -38,12 +38,13 @@
             {
                 "itemID": "item00001",
                 "available": false,
-                "type": "렌탈(케어솔루션)",
+                "type": "caresolution",
+                "typeName": "렌탈(케어솔루션)",
                 "wish": false,
                 "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
                 "imageAlt": "S5MBR",
                 "title": "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
-                "sku": "S5MBR_1",
+                "sku": "S5MBR",
                 "colorOption": "버건디레드",
                 "option": [
                     "총 요금 3,710,000원",
@@ -60,12 +61,13 @@
             {
                 "itemID": "item00002",
                 "available": true,
-                "type": "케어솔루션",
+                "type": "careship",
+                "typeName": "케어십",
                 "wish": true,
                 "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
                 "imageAlt": "S5MBR",
                 "title" : "LG2 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
-                "sku" :"S5MBR_2",
+                "sku" :"S5MBR",
                 "colorOption" : "실버",
                 "option": [
                     "총 요금 3,720,000원",

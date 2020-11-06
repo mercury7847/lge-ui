@@ -1,9 +1,9 @@
 (function() {
-    var cartItemTemplate = '<li class="order-item {{#if available}}disabled{{/if}}" data-item-id="{{itemID}}">' +
+    var cartItemTemplate = '<li class="order-item is-check {{#if available}}disabled{{/if}}" data-item-id="{{itemID}}">' +
         '<div class="item-image"><a href="{{itemUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="product-info">' +
             '<div class="flag-wrap bg-type">' +
-                '<span class="flag"><span class="blind">제품타입</span>{{type}}</span>' +
+                '<span class="flag"><span class="blind">제품타입</span>{{typeName}}</span>' +
             '</div>' +
             '<div class="item-name"><a href="{{itemUrl}}">{{title}}</a></div>' +
             '<div class="item-options"><div class="sku"><span class="blind">제품번호</span>{{sku}}</div><div class="sibling-option"><span class="blind">제품옵션</span>{{colorOption}}</div></div>' +
@@ -11,17 +11,17 @@
         '</div>' +
         '<div class="product-payment">' +
             '<div class="amount">' +
-            '<div class="price">{{#if originalPrice}}<p class="original">월 {{originalPrice}}원</p>{{/if}}<p class="total">월 {{salePrice}}원</p></div>' +
-            '{{#if tooltip}}<div class="tooltip-wrap"><span class="tooltip-icon ui_tooltip-target">계약내용 자세히 보기</span>' +
-            '<span class="tooltip-box"><p>{{tooltip}}</p><button type="button" class="btn-close"><span class="blind">닫기</span></button></span></div>{{/if}}' +
-            //'<a href="#" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>' +
+            '<div class="price">{{#if originalPrice}}<p class="original">월 {{originalPrice}}원</p>{{/if}}<p class="total">월 {{salePrice}}원</p></div>' +            
+            //'{{#if tooltip}}<div class="tooltip-wrap"><span class="tooltip-icon ui_tooltip-target">계약내용 자세히 보기</span>' +
+            //'<span class="tooltip-box"><p>{{tooltip}}</p><button type="button" class="btn-close"><span class="blind">닫기</span></button></span></div>{{/if}}' +
+            '<a href="#" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>' +
         '</div><div class="btn-area">' +
             '{{#if subscriptionUrl}}<button type="button" class="btn pink border size" data-url={{subscriptionUrl}}><span>청약신청</span></button>{{#else}}<button type="button" class="btn pink border size" disabled><span>청약신청불가</span></button>{{/if}}' +
         '</div></div>' +
-        '<span class="chk-wish-wrap"><input type="checkbox" id="chk-wish-{{itemID}}" name="chk-wish-{{itemID}}" {{#if (wish)}}checked{{/if}}><label for="chk-wish-{{itemID}}"><span class="blind">{{#if wish}}찜한상품{{#else}}찜하기{{/if}}</span></label></span>' +
+        '{{#if isLogin}}<span class="chk-wish-wrap"><input type="checkbox" id="chk-wish-{{itemID}}" name="chk-wish-{{itemID}}" {{#if (wish)}}checked{{/if}}><label for="chk-wish-{{itemID}}"><span class="blind">{{#if wish}}찜한상품{{#else}}찜하기{{/if}}</span></label></span>{{/if}}' +
         '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}" name="chk-select-{{itemID}}" checked><label for="chk-select-{{itemID}}"><span class="blind">선택안함</span></label></span>' +
         '<div class="item-delete"><button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button></div>' +
-        '</li>'
+        '</li>';
 
     $(window).ready(function() {
         var careCartInfo = new CareCartInfo('div.col-right');
@@ -104,6 +104,13 @@
                     _self.requestRemoveItem([itemID]);
                 });
 
+                //리스트 아이템 안내 팁
+                self.$cartList.on('click', 'div.product-payment div.amount a.btn-info', function(e) {
+                    e.preventDefault();
+                    var itemID = $(this).parents('li.order-item').attr('data-item-id');
+                    _self.requestItemTip(itemID);
+                });
+
                 //추천제품 장바구니
                 self.$recommendProduct.on('click', 'div.slide-box button', function(e) {
                     var itemID = $(this).parents('div.slide-box').attr('data-item-id');
@@ -127,6 +134,8 @@
             updateList: function(data) {
                 var _self = this;
 
+                var isLogin = data.isLogin;
+
                 //카트 목록
                 var $list_ul = self.$cartList.find('ul.order-list');
                 $list_ul.empty();
@@ -134,6 +143,7 @@
                 arr.forEach(function(item, index) {
                     item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
                     item.salePrice = item.salePrice ? vcui.number.addComma(item.salePrice) : null;
+                    item.isLogin = isLogin;
                 });
 
                 if(arr.length > 0) {
@@ -165,6 +175,10 @@
                 _self.noData(self.$cartList.find('li.order-item').length > 0 ? false : true);
             },
 
+            openModalFromHtml: function(html) {
+                $('#request-tip-modal').html(html).vcModal();
+            },
+
             //선택된 제품에 따른 구매정보들 요청
             requestInfo: function() {
                 var _self = this;
@@ -182,6 +196,15 @@
                         careCartInfo.updateData(result.data);
                     });
                 }
+            },
+
+            //아이템 안내 팁
+            requestItemTip: function(itemID) {
+                var _self = this;
+                var ajaxUrl = self.$cartContent.attr('data-tip-url');
+                lgkorUI.requestAjaxData(ajaxUrl, {"itemID":itemID}, function(result){
+                    _self.openModalFromHtml(result);
+                }, null, "html");
             },
 
             //아이템 삭제 (리스트로 전달)
