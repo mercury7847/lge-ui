@@ -295,8 +295,9 @@
         }
         .opt-info {
             dl {
+                position:relative;
                 margin-top:12px;
-                padding:8px 12px;
+                padding:7px 11px;
                 border-radius:8px;
                 border:1px solid #ddd;
                 &:first-child {
@@ -311,115 +312,55 @@
                     width:100%;
                     // width:180px;
                     text-align:right;
-                    &.color-opt {
-                        .slide-wrap {
-                            max-width:85px;
-                            margin:0 auto;
-                            @include mobile {
-                                max-width:100%;
-                                margin:0 30px;
-                            }
-                            .slide-content {
-                                text-align:center;
-                                .slide-track {
-                                    display:inline-block;
-                                }
-                            }
-                            .slide-controls {
-                                display:block;
-                                .btn-arrow {
-                                    &.prev {
-                                        left:-20px;
-                                    } 
-                                    &.next {
-                                        right:-20px;
-                                    }
-
-                                    &:before {
-                                        width:10px;
-                                        height:10px;
-                                        margin-top:-5px;
-                                        border-width:1px;
-                                    }
-                                }
-                            }
-                        }
-                        .chk-wrap-colorchip {
-                            input {
-                                &+ label {
-                                    width:24px;
-                                    height:24px;
-                                    padding-left:0;
-                                }
-                                &:checked + label:after {
-                                    border-color:#EC455A;
-                                }
-                            } 
-                        }
-                    }
-                    .rdo-tab-wrap {
-                        display:table; 
-                        width:100%; 
-                        table-layout:fixed;
-                        > li {
-                            display:table-cell;
-                            vertical-align:middle;
-                            .rdo-wrap {
-                                display:block; 
-                                position:relative; 
-                                height:28px; 
-                                margin:0 -1px -1px 0;
-                                @include mobile {
-                                    height:32px;
-                                }
-                                input + label {
-                                    display:block;
-                                    width:100%;
-                                    height:28px;
-                                    padding-left:0;
-                                    background:#fff;
-                                    border:1px solid #ddd;
-                                    color:#8d8d8d;
-                                    font-size:14px;
-                                    line-height:26px;
-                                    text-align:center;
-                                    cursor:pointer;
-                                    @include mobile {
-                                        height:32px;
-                                        line-height:30px;
-                                    }
-                                }
-                                input:checked + label {
-                                    position:absolute;
-                                    top:0;
-                                    left:0;
-                                    border:1px solid #EC455A;
-                                    color:#EC455A;
-                                    z-index:1;
-                                    &:before, &:after {
-                                        display:none;
-                                    }
-                                }
-                                input:not(:checked) + label {
-                                    padding-left:0;
-                                    &:before, &:after {
-                                        display:none;
-                                    }
-                                }
-                            }
-                            &:first-child {
-                                input + label {
-                                    border-radius:8px 0 0 8px;
-                                }
-                            }
-                            &:last-child {
-                                input + label{
-                                    border-radius:0 8px 8px 0;
+                    .sort-select-wrap {
+                        position:static;
+                        width:100%;
+                        text-align:right;
+                        .ui-selectbox-wrap {
+                            position:static;
+                            .ui-select-button {
+                                position:static;
+                                text-align:right;
+                                .ico {
+                                    right:16px;
                                 }
                             }
                         }
                     }
-
+                }
+                &.open {
+                    border-color:#222;
+                    border-bottom:none;
+                    border-radius:8px 8px 0 0;
+                    dt {
+                        position:relative;
+                        z-index:101;
+                    }
+                    dd {
+                        .ui-selectbox-list {
+                            top:38px;
+                            left:-1px;
+                            right:-1px;
+                            box-shadow:none;
+                            text-align:right;
+                            border:1px solid #222;
+                            border-top:none;
+                            border-radius:0 0 8px 8px;
+                            ul li {
+                                a {
+                                    padding:5px 39px;
+                                    @include font-small;
+                                    font-weight:500;
+                                    &:hover {
+                                        background:#f4f4f4;
+                                    }
+                                }
+                                &.on a {
+                                    color:#222;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
