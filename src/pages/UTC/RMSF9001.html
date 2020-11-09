@@ -8,7 +8,7 @@
     <div class="wrap">
         <!--include('./common/header.html')-->
 
-        <div class="container">
+        <main class="container">
             @@include('./common/modules/page-header.html', {
                 "pageTitle": "청약 신청"
             })
@@ -51,7 +51,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="accordion-section ui_accordion" data-single-open="false" data-open-index="[0]">
+                            <div class="accordion-section ui_accordion" data-single-open="false" data-open-index="[0]" data-certify="true">
                                 <ul>
                                     <li class="lists">
                                         <div class="head">
@@ -69,7 +69,7 @@
                                                     <dt class="tit"><label for="inp01-1" class="req">성명<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inp01-1" placeholder="성명을 입력해주세요" value="이엘지" readonly>
+                                                            <input type="text" id="inp01-1" name="userName" data-required="true" placeholder="성명을 입력해주세요" value="이엘지" readonly>
                                                             <p class="comp">본인 인증 완료</p>
                                                         </div>
                                                     </dd>
@@ -78,7 +78,7 @@
                                                     <dt class="tit"><label for="inp01-2" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inp01-2" placeholder="성명을 입력해주세요" readonly>
+                                                            <input type="text" id="inp01-2" name="userPhone" data-required="true" placeholder="휴대폰 본인인증이 필요합니다." value="01087360999" readonly>
                                                         </div>
                                                     </dd>
                                                 </dl>
@@ -87,11 +87,11 @@
                                                     <dd class="conts">
                                                         <div class="birth-date-box">
                                                             <div class="input-wrap">
-                                                                <input type="number" id="inp01-3" placeholder="YYMMDD" value="" title="주민등록번호 앞자리" name="registFrontNumber">
+                                                                <input type="number" id="inp01-3" placeholder="YYMMDD" value="960821" title="주민등록번호 앞자리" name="registFrontNumber" data-required="true" >
                                                             </div>
                                                             <div class="cell">
                                                                 <div class="input-wrap">
-                                                                    <input type="number" value="1" title="주민등록번호 뒤 첫번째 자리" name="regist">
+                                                                    <input type="number" value="1" title="주민등록번호 뒤 첫번째 자리" name="registBackFirst" data-required="true">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -110,7 +110,7 @@
                                                     </dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inp01-4" placeholder="이메일을 입력해주세요" value="lge1234@naver.com">
+                                                            <input type="text" id="inp01-4" placeholder="이메일을 입력해주세요" value="" name="userEmail" data-required="true">
                                                         </div>
                                                     </dd>
                                                 </dl>
@@ -119,20 +119,20 @@
                                                     <dd class="conts">
                                                         <div class="box">
                                                             <div class="input-wrap">
-                                                                <input type="text" id="inp01-5" value="" placeholder="우편번호" disabled>
+                                                                <input type="text" id="inp01-5" value="" name="zipCode" placeholder="우편번호" disabled>
                                                             </div>
                                                             <div class="cell">
-                                                                <button type="button" class="btn"><span>주소 찾기</span></button>
+                                                                <button type="button" class="btn search-postcode"><span>주소 찾기</span></button>
                                                             </div>
                                                             <div class="cell">
                                                                 <button type="button" class="btn"><span>배송지 목록</span></button>
                                                             </div>
                                                         </div>
                                                         <div class="input-wrap">
-                                                            <input type="text" value="" placeholder="주소찾기 또는 배송지 목록을 선택해주세요." disabled>
+                                                            <input type="text" value="" name="userAddress" placeholder="주소찾기 또는 배송지 목록을 선택해주세요." disabled>
                                                         </div>
                                                         <div class="input-wrap">
-                                                            <input type="text" value="" placeholder="상세주소를 입력해주세요.">
+                                                            <input type="text" value="" name="detailAddress" placeholder="상세주소를 입력해주세요.">
                                                         </div>
                                                     </dd>
                                                 </dl>
@@ -144,7 +144,7 @@
                                                         <div class="input-mix-wrap">
                                                             <div class="mix-input">
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk-pri1" name="chk-pri1">
+                                                                    <input type="checkbox" id="chk-pri1" name="chkPrivacy">
                                                                     <label for="chk-pri1">개인정보 및 신용정보 제공 동의</label>
                                                                 </span>
                                                                 <div class="cell">
@@ -154,7 +154,7 @@
                                                             <div class="mix-cont">
                                                                 <p class="desc">신용정보 조회시 개인의 신용등급에 영향을 미치지 않습니다.</p>
                                                                 <div class="btn-wrap">
-                                                                    <button class="btn bg-type" disabled><span>신용정보 조회</span></button>
+                                                                    <button class="btn bg-type creditInquire" disabled><span>신용정보 조회</span></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -192,7 +192,7 @@
                                                     <dt class="tit"><label for="inp02-1" class="req">인수자 성명<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inp02-1" placeholder="성명을 입력해주세요" value="이엘지">
+                                                            <input type="text" id="inp02-1" placeholder="성명을 입력해주세요" value="이엘지" name="userName" data-required="true">
                                                         </div>
                                                     </dd>
                                                 </dl>
@@ -209,7 +209,7 @@
                                                     </dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inp02-2" placeholder="휴대폰을 입력해주세요">
+                                                            <input type="text" id="inp02-2" placeholder="휴대폰을 입력해주세요" name="userPhone" data-required="true">
                                                         </div>
                                                     </dd>
                                                 </dl>
@@ -226,21 +226,21 @@
                                                     <dd class="conts">
                                                         <div class="box">
                                                             <div class="input-wrap">
-                                                                <input type="text" id="inp02-4" value="05723" placeholder="우편번호" disabled>
+                                                                <input type="text" id="inp02-4" value="05723" name="zipCode" placeholder="우편번호" disabled>
                                                             </div>
                                                             <div class="cell">
-                                                                <button type="button" class="btn"><span>주소 찾기</span></button>
+                                                                <button type="button" class="btn search-postcode"><span>주소 찾기</span></button>
                                                             </div>
                                                             <div class="cell">
                                                                 <button type="button" class="btn"><span>배송지 목록</span></button>
                                                             </div>
                                                         </div>
                                                         <div class="input-wrap">
-                                                            <input type="text" value="서울특별시 송파구 동남로23가길 4-11" placeholder="주소찾기 또는 배송지 목록을 선택해주세요." disabled>
+                                                            <input type="text" value="서울특별시 송파구 동남로23가길 4-11" name="userAddress" placeholder="주소찾기 또는 배송지 목록을 선택해주세요." disabled>
                                                         </div>
                                                         <div class="box type2">
                                                             <div class="input-wrap">
-                                                                <input type="text" value="엘지 송파빌딩 1702호" placeholder="상세주소를 입력해주세요.">
+                                                                <input type="text" value="엘지 송파빌딩 1702호" name="detailAddress" placeholder="상세주소를 입력해주세요.">
                                                                 <p class="comp">설치 가능 지역</p>
                                                             </div>
                                                             <div class="cell">
@@ -703,7 +703,7 @@
                 </div>
             </div>
             <!-- // 청약 신청 -->
-        </div>
+        </main>
 
         <!--include('./common/footer.html')-->
     </div>

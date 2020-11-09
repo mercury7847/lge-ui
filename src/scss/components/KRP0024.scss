@@ -3,6 +3,34 @@
 @import "../components-app";
 
 .KRP0024 {
+	.btn {
+        display: inline-block;
+        min-width:132px;
+        padding:11px 0;
+        border: 1px solid #111;
+        border-radius: 8px;
+        background-color: transparent;
+        line-height: 24px;
+        @include font-family($font-weight-medium);
+        font-size: 16px;
+        color: #111;
+        text-align: center;
+		vertical-align: top;
+		@include mobile {
+			font-size:14px;
+		}
+
+        &.btn-outline-primary {
+            border-color: #212121;
+            background-color: #fff;
+            color: #111;
+        }
+        &.btn-primary {
+            border-color: #111;
+            background-color: #111;
+            color: #fff;
+        }
+    }
 	.title {
 		margin-bottom:36px;
 		font-size:24px;
