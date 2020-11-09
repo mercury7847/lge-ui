@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["SLC/SLC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "케어플래너",
+                "pageDesc" : "케어솔루션/케어십 서비스의 결합 혜택을 손쉽게 계산해보세요."
+            })
+            <div class="contents care-plan">
+                
+            </div>
+        </div>
+        
+        @@include('./common/footer.html')
+    </div> 
+</body>
+</html>
