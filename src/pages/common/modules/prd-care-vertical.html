@@ -35,9 +35,9 @@
                     <dt>색상</dt>
                     <dd>
                         <div class="sort-select-wrap">
-                            <select class="ui_selectbox" id="select1" title="전체 카테고리 선택">
+                            <select class="ui_selectbox" id="@@colorId" title="색상 선택">
                                 @@for (var i = 0; i < context.colorSet.length; i++) {
-                                <option value="`+colorSet[i].id+`">`+colorSet[i].title+`</option>
+                                <option value="">`+colorSet[i].title+`</option>
                                 }
                             </select>
                         </div>
@@ -48,16 +48,13 @@
                 <dl>
                     <dt>가입비</dt>
                     <dd>
-                        <ul class="rdo-tab-wrap" role="radiogroup">
-                            @@for (var i = 0; i < context.appFee.length; i++) {
-                            <li>
-                                <span class="rdo-wrap">
-                                    <input type="radio" id="`+appFee[i].id+`" name="`+appFee[i].name+`" `+appFee[i].checked+`>
-                                    <label for="`+appFee[i].id+`">`+appFee[i].title+`</label>
-                                </span>
-                            </li>
-                            }
-                        </ul>
+                        <div class="sort-select-wrap">
+                            <select class="ui_selectbox" id="@@appFeeId" title="가입비 선택">
+                                @@for (var i = 0; i < context.appFee.length; i++) {
+                                <option value="">`+appFee[i].title+`</option>
+                                }
+                            </select>
+                        </div>
                     </dd>
                 </dl>
                 }
@@ -65,16 +62,13 @@
                 <dl>
                     <dt>의무사용</dt>
                     <dd>
-                        <ul class="rdo-tab-wrap" role="radiogroup">
-                            @@for (var i = 0; i < context.useDay.length; i++) {
-                            <li>
-                                <span class="rdo-wrap">
-                                    <input type="radio" id="`+useDay[i].id+`" name="`+useDay[i].name+`" `+useDay[i].checked+`>
-                                    <label for="`+useDay[i].id+`">`+useDay[i].title+`</label>
-                                </span>
-                            </li>
-                            }
-                        </ul>
+                        <div class="sort-select-wrap">
+                            <select class="ui_selectbox" id="@@useDayId" title="의무사용 선택">
+                                @@for (var i = 0; i < context.useDay.length; i++) {
+                                <option value="">`+useDay[i].title+`</option>
+                                }
+                            </select>
+                        </div>
                     </dd>
                 </dl>
                 }
@@ -90,16 +84,13 @@
                 <dl>
                     <dt>방문주기</dt>
                     <dd>
-                        <ul class="rdo-tab-wrap" role="radiogroup">
-                            @@for (var i = 0; i < context.visitDay.length; i++) {
-                            <li>
-                                <span class="rdo-wrap">
-                                    <input type="radio" id="`+visitDay[i].id+`" name="`+visitDay[i].name+`" `+visitDay[i].checked+`>
-                                    <label for="`+visitDay[i].id+`">`+visitDay[i].title+`</label>
-                                </span>
-                            </li>
-                            }
-                        </ul>
+                        <div class="sort-select-wrap">
+                            <select class="ui_selectbox" id="@@visitDayId"" title="방문주기 선택">
+                                @@for (var i = 0; i < context.visitDay.length; i++) {
+                                <option value="">`+visitDay[i].title+`</option>
+                                }
+                            </select>
+                        </div>
                     </dd>
                 </dl>
                 }
@@ -127,16 +118,16 @@
                     }
                 </div>
                 }
-                <dl class="total-price">
-                    <dt>@@priceName</dt>
-                    <dd>@@totalPrice원</dd>
-                </dl>
+                <div class="total-price">
+                    <p class="price">@@totalPrice</p>
+                    <button type="button" class="btn border"><span>담기</span></button>
+                </div>
             </div>
         </div>
 
-        <div class="prd-add">
+        <!-- <div class="prd-add">
             <button type="button" class="btn-add"><span>담기</span></button>
-        </div>
+        </div> -->
     </div>
 </li>
 }
