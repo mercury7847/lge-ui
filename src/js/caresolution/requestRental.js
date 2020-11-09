@@ -8,11 +8,18 @@
     var $privacyAgreeAllChker;
     var $privacyAgreeOkButton;
 
+    var $creditInquireButton;
+
+    var step1Block, step2Block, step3Block;
     var step1Validation, step2Validation, step3Validation;
 
     var step = 0;
 
     var isPostCode = false;
+
+    var addHtmls = {
+        installAbled: '<p class="comp">설치 가능 지역</p>'
+    }
 
     function init(){
         console.log("requestRental Start!!!");
@@ -58,6 +65,10 @@
     }
 
     function setting(){
+        step1Block = $('.accordion-section ul li:nth-child(1)');
+        step2Block = $('.accordion-section ul li:nth-child(2)');
+        step3Block = $('.accordion-section ul li:nth-child(3)');
+
         $('.agree-box').vcCheckboxAllChecker();
         $requestAgreeChecker = $('.agree-box').vcCheckboxAllChecker('instance');
         $requestButton = $('.agree-box').find('button.btn');
@@ -72,6 +83,8 @@
         $privacyAgreeAllChker = $('#popup-privacy').vcCheckboxAllChecker('instance');
 
         $privacyAgreeOkButton = $('#popup-privacy .btn-group .btn:nth-child(2)').css({cursor:'default'});
+
+        $creditInquireButton = $('.creditInquire');
 
         var register = {
             userEmail:{
@@ -90,9 +103,7 @@
                     e.preventDefault();
                     return;
                 }
-
-                var scrolltop = $(window).scrollTop();
-                var winheight = $(window).height();
+                
                 var contop = $(data.header).offset().top;
                 $('html, body').stop().animate({scrollTop:contop}, 350);
             }
@@ -110,7 +121,8 @@
                 setPrivacyAgreePop(false);
             }
         });
-        $('.accordion-section ul li:nth-child(1) .input-mix-wrap .cell .btn-link').on('click', function(e){
+
+        step1Block.find('.input-mix-wrap .cell .btn-link').on('click', function(e){
             e.preventDefault();
 
             openPrivacyPopup();
@@ -128,6 +140,12 @@
                 $('#popup-privacy').vcModal('close');
             }
         });
+
+        $creditInquireButton.on('click', function(e){
+            e.preventDefault();
+
+            setCreditInquire();
+        })
 
         $('.popup-wrap').on('click', '.btn-group .agree-confirm', function(e){
             e.preventDefault();
@@ -148,9 +166,7 @@
             e.preventDefault();
 
             getPostCode($(this).closest('.conts'));
-        })
-
-
+        });
 
         step1Validation.on('errors', function(e,data){
             console.log('errors', data); // 이걸 어떤식으로 쓸까?
@@ -161,6 +177,42 @@
             console.log('success');
 
         });
+
+
+        step2Block.find('input[name=installInpuType]').on('change', function(e){
+            changeInstallInputType($(this).val());
+        });
+
+        step2Block.find('input[name=preVisitRequest]').on('change', function(e){
+            changePrevisitRequest($(this).val());
+        });
+    }
+
+    function setCreditInquire(){
+        console.log('creditInquireButton')
+    }
+
+    function changeInstallInputType(type){
+        if(type == "equal"){
+            var step1Value = step1Validation.getValues();
+
+            for(var str in step1Value){
+                step2Block.find('input[name=' + str +']').val(step1Value[str]);
+            }
+
+            var telephone = step2Block.find('input[name=userTelephone]');
+            telephone.val(telephone.data('equalNumber'));
+
+            step2Block.find('input[name=detailAdress]').val(step1Validation.getValues('detailAdress'));
+        } else{
+            step2Block.find('input').not('[name=installInpuType], [name=preVisitRequest]').val("")
+        }
+    }
+
+    function changePrevisitRequest(abled){
+        if(abled == "Y"){
+            step2Block.find('input[name=preVisitAgree]').prop('checked', false);
+        }
     }
 
     function getPostCode(item){
@@ -186,8 +238,8 @@
                         extraRoadAddr = ' (' + extraRoadAddr + ')';
                     }
                     item.find('input[name=zipCode]').val(data.zonecode);
-                    item.find('input[name=userAddress]').val(roadAddr);
-                    item.find('input[name=detailAddress]').val('');
+                    item.find('input[name=userAdress]').val(roadAddr);
+                    item.find('input[name=detailAdress]').val('');
                 }
             }).open();
         }
@@ -196,7 +248,9 @@
     function openPrivacyPopup(){
         $('#popup-privacy').vcModal()
         .on('modalhide', function(e){
-            $privacyAgreeChker.prop('checked', $privacyAgreeAllChker.getAllChecked());
+            var chk = $privacyAgreeAllChker.getAllChecked();
+            $privacyAgreeChker.prop('checked', chk);
+            $creditInquireButton.prop('disabled', !chk);
         });
     }
     function setPrivacyAgreeStatus(status){

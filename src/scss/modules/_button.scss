@@ -109,13 +109,13 @@
     padding-right: 22px;
     font-weight: 500;
     @include font-small;
-    color: #616161;
+    color: #767676;
     vertical-align: top;
     &:after {
         content: '';
         position:absolute;
         right:0;
-        top:2px;
+        top:3px;
         width:20px;
         height:20px;
         background:url("/lg5-common/images/icons/btn-arr-20x20-gray.svg") center no-repeat;

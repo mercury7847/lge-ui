@@ -111,18 +111,22 @@
                     _self.requestItemTip(itemID);
                 });
 
-                //추천제품 장바구니
+                //추천제품 장바구니(삭제)
+                /*
                 self.$recommendProduct.on('click', 'div.slide-box button', function(e) {
                     var itemID = $(this).parents('div.slide-box').attr('data-item-id');
                     _self.requestCartItem(itemID);
                 });
+                */
 
-                //추천제품 찜하기
+                //추천제품 찜하기 (삭제)
+                /*
                 self.$recommendProduct.on('click', 'div.slide-box span.chk-wish-wrap input', function(e) {
                     var itemID = $(this).parents('div.slide-box').attr('data-item-id');
                     var checked = $(this).is(':checked');
                     _self.requestWishItem(itemID, checked);
                 });
+                */
             },
 
             //전체선택 버튼 상태 갱신

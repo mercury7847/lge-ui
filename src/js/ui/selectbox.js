@@ -581,7 +581,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
              * 셀렉트박스가 열릴 때 발생
              * @event vcui.ui.Selectbox#selectboxopen
              */ //self.$selectbox.triggerHandler('selectboxopen');
-            self.triggerHandler('selectboxopen');
+            self.triggerHandler('selectboxopen', [self.$el]);
         },
 
         /**
@@ -595,7 +595,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
              * 셀렉트박스가 닫힐 때 발생
              * @event vcui.ui.Selectbox#selectboxclose
              */
-            self.triggerHandler('selectboxclose');
+            self.triggerHandler('selectboxclose', [self.$el]);
 
             if (self.options.where === 'body') {
                 self.$label.after(self.$list.css({

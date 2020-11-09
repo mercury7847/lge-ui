@@ -31,26 +31,15 @@
                 <p class="code-txt">@@codeTxt</p>
                 }
                 @@if(context.colorSet) {
-                <dl>
+                <dl><!-- 셀렉트 선택 시 open 클래스 추가 -->
                     <dt>색상</dt>
-                    <dd class="color-opt" role="radiogroup">
-                        <div class="slide-wrap ui_carousel_slider2">
-                            <div class="slide-content ui_carousel_list">
-                                <div class="slide-track ui_carousel_track">
-                                    @@for (var i = 0; i < context.colorSet.length; i++) {
-                                    <div class="slide-conts ui_carousel_slide">
-                                        <div role="radio" class="chk-wrap-colorchip `+colorSet[i].color+`" title="`+colorSet[i].title+`">
-                                            <input type="radio" id="`+colorSet[i].id+`" name="`+colorSet[i].name+`" `+colorSet[i].checked+`>
-                                            <label for="`+colorSet[i].id+`"><span class="blind">`+colorSet[i].title+`</span></label>
-                                        </div>
-                                    </div>
-                                    }
-                                </div>
-                            </div>
-                            <div class="slide-controls">
-                                <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                            </div>
+                    <dd>
+                        <div class="sort-select-wrap">
+                            <select class="ui_selectbox" id="select1" title="전체 카테고리 선택">
+                                @@for (var i = 0; i < context.colorSet.length; i++) {
+                                <option value="`+colorSet[i].id+`">`+colorSet[i].title+`</option>
+                                }
+                            </select>
                         </div>
                     </dd>
                 </dl>
