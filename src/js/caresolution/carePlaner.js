@@ -201,11 +201,105 @@
 
     function init(){
         vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky', 'ui/modal'], function () {
-            setting();
-            eventBind();
+            // setting();
+            // eventBind();
 
-            loadCategoryList();
+            // loadCategoryList();
+
+
+        $('.ui_carousel_slider').vcCarousel({
+            infinite: false,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            variableWidth : true,
+            responsive: [
+                {
+                    breakpoint: 10000,
+                    settings: {
+                        infinite: false,
+                        variableWidth : false,
+                        dots: false,
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                        
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        infinite: false,
+                        variableWidth : false,
+                        dots: false,
+                        slidesToShow: 2, 
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        infinite: false,
+                        variableWidth : true,
+                        dots: false,
+                        slidesToShow: 1, 
+                        slidesToScroll: 1
+                    }
+                }
+            ]
         });
+
+        $('.ui_carousel_slider2').vcCarousel({
+            infinite: false,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            variableWidth : false,
+            speed : 200,
+            dots: false
+        });
+        $('.ui_carousel_slider3').vcCarousel({
+            infinite: false,
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            variableWidth : true,
+            responsive: [
+                {
+                    breakpoint: 10000,
+                    settings: {
+                        infinite: false,
+                        variableWidth : false,
+                        dots: false,
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                        
+                    }
+                },
+                {
+                        breakpoint: 1024,
+                        settings: {
+                            infinite: false,
+                            variableWidth : false,
+                            dots: false,
+                            slidesToShow: 1, 
+                            slidesToScroll: 1
+                        }
+                    },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        infinite: false,
+                        variableWidth : true,
+                        dots: false,
+                        slidesToShow: 1, 
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+        $('.prd-select-wrap').css({display:'block'});
+
+        
+        });
+
+
     }
 
     function setting(){

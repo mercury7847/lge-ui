@@ -481,17 +481,6 @@
                                     display:inline-block;
                                     margin-left:8px;
                                     vertical-align:middle;
-                                    .flag {
-                                        padding:0;
-                                        border:none;
-                                        font-size:12px;
-                                        line-height:22px;
-                                        font-weight:700;
-                                        @include mobile {
-                                            height:20px;
-                                            line-height:20px;
-                                        }
-                                    }
                                 }
                             }
                             dd {

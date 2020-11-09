@@ -17,10 +17,10 @@
         -webkit-overflow-scrolling: touch;
         > li {
             display:inline-block;
-            margin-left:24px;
+            margin-left:40px;
             vertical-align:top;
             @include mobile {
-                margin-left:20px;
+                margin-left:24px;
             }
             &:first-child {
                 margin-left:0;
@@ -28,18 +28,18 @@
             > a {
                 display:block;
                 position:relative;
-                color:#ccc;
-                font-size:18px;
+                color:#aaa;
+                font-size:28px;
+                line-height:40px;
                 font-weight:700;
-                line-height:26px;
-                @include mobile {
-                    font-size:16px;
-                    line-height:23px;
-                }
                 em.count {
                     display:inline-block;
                     margin-left:4px;
                     vertical-align:top;
+                }
+                @include mobile {
+                    font-size:18px;
+                    line-height:26px;
                 }
             }
             &.on > a {

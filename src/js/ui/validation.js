@@ -72,8 +72,7 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                     if(maxLength) newObj[item.name]['maxLength'] = maxLength;
                     if(validate) newObj[item.name]['validate'] = validate;
                     if(msgTarget) newObj[item.name]['msgTarget'] = msgTarget;
-                    newObj[item.name] = $.extend(newObj[item.name], register[item.name] || {});                    
-
+                    newObj[item.name] = $.extend(newObj[item.name], register[item.name] || {}); 
                 }else{
 
                     if(msgTarget) {
@@ -90,6 +89,8 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
 
                 self.nameArr.push(item.name);
             });
+
+            console.log(newObj)
 
             self.register = newObj;
 
