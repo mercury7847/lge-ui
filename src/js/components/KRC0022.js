@@ -42,7 +42,6 @@ $(document).ready(function() {
             e.preventDefault();
     
             var text = $(this).siblings('.text-set-default').html();
-            console.log(text);
             $(item).find('.text-set').html(text);
     
             var largeImgURL = $(this).find('img').data('large');
@@ -77,9 +76,8 @@ $(document).ready(function() {
                 var aniAccSrc = $(this).data('accSrc');
                 var aniTitle = $(this).data('title');
                 var videoTitleColor = $(this).data('titleColor') || "";
-                var videoAutoplay = $(this).data("autoplay");
-                var videoMuted = videoAutoplay;
-                console.log("videoAutoplay :", videoAutoplay, "videoMuted :", videoMuted)
+                var videoAutoplay = ($(this).attr("data-autoplay") == "true");
+                var videoMuted = ($(this).attr("data-muted")  == "true");
 
                 html = vcui.template(aniboxTemplate, {
                     aniSrc: aniSrc,

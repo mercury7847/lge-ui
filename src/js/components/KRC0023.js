@@ -4,18 +4,22 @@ $(window).ready(function(){
     $('.KRC0023').buildCommonUI();
 
     $('.KRC0023').each(function(idx, item){
+
         $(item).find('.hidden-xs .text-thumb-area .thumbnail-area-box ul li').eq(0).addClass('on').attr('aria-selected', true);
         $(item).find('.hidden-xs .text-thumb-area .thumbnail-area-box ul li a').on('click', function(e){
             e.preventDefault();
-    
+
+            //var appendElement = $(item).find('.hidden-xs');
+            var appendElement = $(this).parents('div.hidden-xs');
+
             var text = $(this).siblings('.text-area-default').html();
-            $(item).find('.text-area').html(text);
-    
+            //$(item).find('.text-area').html(text);
+            appendElement.find('.text-area').html(text);
+   
             var largeImgURL = $(this).find('img').data('large');
             var ariaDesc = $(this).attr('aria-describedby');
             var alt = $(this).find('img').attr('alt').replace(/\&quot\;/gi, '\'\'').replace(/"/g, '\'\'');
             
-            var appendElement = $(item).find('.hidden-xs');
             appendElement.find('.visual-area').remove();
     
             var html = "";
@@ -39,14 +43,13 @@ $(window).ready(function(){
                 var aniSrc = $(this).data('src');
                 var aniAccSrc = $(this).data('accSrc');
                 var aniTitle = $(this).data('title');
-                console.log(aniSrc, aniAccSrc, aniTitle)
 
                 html += '<div class="visual-area animation-box">';
                 html += '   <a href="#none" role="button" data-src="' + aniAccSrc + '" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>';
                 html += '   <img src="' + largeImgURL + '" alt="">';
                 html += '   <p class="hidden">graphic description : </p>';
                 html += '   <div class="animation-area">';
-                html += '       <video autoplay muted loop>';
+                html += '       <video loop' +  ($(this).attr('data-autoplay')=="true"?' autoplay ':'')  + ($(this).attr(' data-muted')=="true"?'muted':'') + '>';
                 html += '           <source src="' + aniSrc + '" type="video/mp4">';
                 html += '       </video>';
                 html += '       <div class="controller-wrap wa-btn">';
@@ -55,6 +58,7 @@ $(window).ready(function(){
                 html += '   </div>';
                 html += '   <div class="caption">' + aniTitle + '</div>';
                 html += '</div>';
+
                 appendElement.prepend(html);
                 appendElement.find('.visual-area').vcVideoBox();
             } else{
@@ -65,6 +69,9 @@ $(window).ready(function(){
                 appendElement.prepend(html);
             }      
     
+            var buttonClone = $(this).siblings('div.button-box-default').children().clone();
+            appendElement.find('.btn-type-box').html(buttonClone);
+
             $(this).closest('li').siblings().removeClass('on').attr('aria-selected', false);
             $(this).closest('li').addClass('on').attr('aria-selected', true);
         });
