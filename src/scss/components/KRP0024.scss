@@ -16,9 +16,6 @@
         color: #111;
         text-align: center;
 		vertical-align: top;
-		@include mobile {
-			font-size:14px;
-		}
 
         &.btn-outline-primary {
             border-color: #212121;
