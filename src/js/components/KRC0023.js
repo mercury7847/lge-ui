@@ -72,6 +72,9 @@ $(window).ready(function(){
             var buttonClone = $(this).siblings('div.button-box-default').children().clone();
             appendElement.find('.btn-type-box').html(buttonClone);
 
+            buttonClone = $(this).siblings('div.button-text-default').children().clone();
+            appendElement.find('.btn-type-text').html(buttonClone);
+
             $(this).closest('li').siblings().removeClass('on').attr('aria-selected', false);
             $(this).closest('li').addClass('on').attr('aria-selected', true);
         });
