@@ -1,0 +1,35 @@
+// visual title
+.visual-tit-wrap {
+    position:relative;
+    height:480px;
+    background:url('/lg5-common/images/SLC/bg-visual-tit01.jpg') center no-repeat;
+    line-height:480px;
+    text-align:center;
+    .txt-wrap {
+        display:inline-block;
+        width:100%;
+        max-width:1380px;
+        vertical-align:middle;
+        line-height:1;
+        text-align:left;
+        .tit {
+            color:#222;
+            @include font-large-6;
+            font-weight:700;
+        }
+        .tit-desc {
+            margin-top:20px;
+            color:#222;
+            @include font-medium;
+        }
+    }
+}
+
+.cont-wrap {
+    .section {
+        width:100%;
+        max-width:initial;
+        margin-top:120px;
+    }
+}
+
