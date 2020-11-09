@@ -165,11 +165,11 @@
 
 .prd-care-vertical {
     position:relative;
-    height:586px;
-    padding:0 24px 40px;
+    height:656px;
+    padding:0 40px 32px;
     background:#fff;
-    border-radius:4px;
-    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.06);
+    border-radius:8px;
+    box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
     overflow:hidden;
     @include mobile {
         height:auto;
@@ -234,6 +234,7 @@
         }
     }
     .img-wrap {
+        margin-top:12px;
         text-align:center;
         a {
             display:block;
@@ -251,9 +252,6 @@
     }
     .txt-wrap {
         margin-top:24px;
-        font-size:16px;
-        line-height:24px;
-        height:72px;
         @include mobile {
             height:auto;
             margin-top:12px;
@@ -262,7 +260,8 @@
             display:block;
         }
         .tit {
-            max-height:48px;
+            max-height:56px;
+            @include font-large;
             font-weight:700;
             overflow:hidden;
             text-overflow:ellipsis;
@@ -272,6 +271,9 @@
             -webkit-line-clamp: 2;
         }
         .code {
+            margin-top:2px;
+            color:#767676;
+            @include font-small;
             overflow:hidden;
             text-overflow:ellipsis;
             white-space:nowrap;
@@ -293,25 +295,23 @@
         }
         .opt-info {
             dl {
-                padding-top:12px;
+                margin-top:12px;
+                padding:8px 12px;
+                border-radius:8px;
+                border:1px solid #ddd;
                 &:first-child {
-                    padding-top:0;
+                    margin-top:0;
                 }
                 dt {
                     width:75px;
-                    color:#616161;
-                    font-size:14px;
-                    line-height:20px;
-                    @include mobile {
-                        line-height:18px;
-                    }
+                    color:#767676;
+                    @include font-small;
                 }
                 dd {
                     width:100%;
                     // width:180px;
                     text-align:right;
                     &.color-opt {
-                        text-align:center;
                         .slide-wrap {
                             max-width:85px;
                             margin:0 auto;
