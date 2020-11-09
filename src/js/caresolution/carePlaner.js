@@ -200,7 +200,7 @@
     var $putItemContainer;
 
     function init(){
-        vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky', 'ui/modal'], function () {
+        vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky', 'ui/modal', 'ui/selectbox'], function () {
             // setting();
             // eventBind();
 
@@ -296,7 +296,13 @@
         });
         $('.prd-select-wrap').css({display:'block'});
 
-        
+        var selectbox = $('.ui_selectbox').vcSelectbox('instance').on('selectboxopen', function(e, sbox){
+            var dl = $(sbox).closest('dl');
+            if(!dl.hasClass('open')) dl.addClass('open');
+        }).on('selectboxclose', function(e, sbox){
+            var dl = $(sbox).closest('dl');
+            if(dl.hasClass('open')) dl.removeClass('open');
+        })
         });
 
 
