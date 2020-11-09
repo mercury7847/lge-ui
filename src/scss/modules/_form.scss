@@ -1655,7 +1655,7 @@ $input: (chk, rdo);
         .ui-select-button {
             display:block;
             position:relative;
-            padding:0 48px 0 0;
+            padding:0 24px 0 0;
             @include mobile {
                 padding-right:28px;
             }
@@ -1664,8 +1664,7 @@ $input: (chk, rdo);
                 overflow:hidden;
                 max-width:100%;
                 color:#222;
-                font-size:16px;
-                line-height:24px;
+                @include font-small;
                 font-weight:500;
                 text-overflow:ellipsis;
                 white-space:nowrap;
@@ -1678,14 +1677,12 @@ $input: (chk, rdo);
             .ico {
                 position:absolute;
                 top:50%;
-                right:7px;
-                width:0;
-                height:0;
-                margin-top:-3px;
-                border-top:6px solid #222;
-                border-left:5px solid transparent;
-                border-right:5px solid transparent;
-                transition:all 0.3s;
+                right:0;
+                width:24px;
+                height:24px;
+                margin-top:-12px;
+                background:url('/lg5-common/images/icons/icon_triangle_24.svg') no-repeat;
+                transition:all 0.1s;
             }
         }
         &.on {
