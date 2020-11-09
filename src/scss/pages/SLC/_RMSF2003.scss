@@ -3,11 +3,12 @@
     display:table;
     position:relative;
     width:100%;
-    padding:16px 51px 16px 0;
+    height:186px;
+    padding:22px 22px 22px 14px;
     table-layout:fixed;
     background:#fff;
-    border:1px solid #ddd;
-    border-radius:4px;
+    border-radius:8px;
+    border:2px solid #fff;
     // overflow:hidden;
     @include mobile {
         padding:24px 18px 24px 0;
@@ -34,20 +35,20 @@
     .txt-wrap {
         display:table-cell;
         width:100%;
+        padding-left:20px;
         vertical-align:top;
         @include mobile {
             padding:0;
         }
         .tit-info {
-            height:68px;
+            height:76px;
             margin-top:4px;
             @include mobile {
                 height:54px;
             }
             .tit {
-                max-height:48px;
-                font-size:16px;
-                line-height:24px;
+                max-height:52px;
+                @include font-medium;
                 font-weight:700;
                 overflow:hidden;
                 text-overflow:ellipsis;
@@ -56,33 +57,25 @@
                 -ms-line-clamp: 2;
                 -webkit-line-clamp: 2;
                 @include mobile {
-                    font-size:14px;
-                    line-height:18px;
                     max-height:36px;
                 }
             }
             .code {
-                color:#616161;
-                font-size:14px;
-                line-height:20px;
+                color:#767676;
+                @include font-small;
+                font-weight:500;
                 overflow:hidden;
                 text-overflow:ellipsis;
                 white-space:nowrap;
-                @include mobile {
-                    font-size:14px;
-                    line-height:18px;
-                }
             }
         }
         .etc {
-            padding-top:4px;
-            font-size:16px;
-            line-height:24px;
+            padding-top:12px;
+            @include font-small;
+            font-weight:500;
             word-break:break-all;
             @include mobile {
                 padding-top:8px;
-                font-size:14px;
-                line-height:18px;
             }
         }
     }
@@ -114,15 +107,69 @@
             }
         }
     }
+
+    &.free-care {
+        padding:47px 0;
+        text-align:center;
+        p {
+            @include font-medium;
+            font-weight:700;
+        }
+        span {
+            position:relative;
+            display:block;
+            margin-top:12px;
+            @include font-small;
+            font-weight:500;
+            &:before {
+                content:'';
+                display:inline-block;
+                width:20px;
+                height:20px;
+                margin-right:2px;
+                background:url('/lg5-common/images/icons/icon-tel-20.svg') no-repeat;
+                vertical-align:middle;
+            }
+        }
+    }
+
+        
+
+    &.holding-care {
+        padding:50px 46px;
+        .box {
+            position:relative;
+            padding-left:120px;
+            p {
+                @include font-small;
+                font-weight:500;
+            }
+            .btn-link {
+                margin-top:12px;
+            }
+            &:before {
+                content:'';
+                    display:block;
+                    position:absolute;
+                    top:50%;
+                    left:0;
+                    transform:translateY(-50%);
+                    width:80px;
+                    height:80px;
+                    margin-right:2px;
+                    background:url('/lg5-common/images/icons/icon-13-80.svg') no-repeat;
+            }
+        }
+    }
 }
 
 .prd-care-vertical {
     position:relative;
-    height:586px;
-    padding:0 24px 40px;
+    height:656px;
+    padding:0 40px 32px;
     background:#fff;
-    border-radius:4px;
-    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.06);
+    border-radius:8px;
+    box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
     overflow:hidden;
     @include mobile {
         height:auto;
@@ -187,6 +234,7 @@
         }
     }
     .img-wrap {
+        margin-top:12px;
         text-align:center;
         a {
             display:block;
@@ -204,9 +252,6 @@
     }
     .txt-wrap {
         margin-top:24px;
-        font-size:16px;
-        line-height:24px;
-        height:72px;
         @include mobile {
             height:auto;
             margin-top:12px;
@@ -215,7 +260,8 @@
             display:block;
         }
         .tit {
-            max-height:48px;
+            max-height:56px;
+            @include font-large;
             font-weight:700;
             overflow:hidden;
             text-overflow:ellipsis;
@@ -225,6 +271,9 @@
             -webkit-line-clamp: 2;
         }
         .code {
+            margin-top:2px;
+            color:#767676;
+            @include font-small;
             overflow:hidden;
             text-overflow:ellipsis;
             white-space:nowrap;
@@ -246,25 +295,23 @@
         }
         .opt-info {
             dl {
-                padding-top:12px;
+                margin-top:12px;
+                padding:8px 12px;
+                border-radius:8px;
+                border:1px solid #ddd;
                 &:first-child {
-                    padding-top:0;
+                    margin-top:0;
                 }
                 dt {
                     width:75px;
-                    color:#616161;
-                    font-size:14px;
-                    line-height:20px;
-                    @include mobile {
-                        line-height:18px;
-                    }
+                    color:#767676;
+                    @include font-small;
                 }
                 dd {
                     width:100%;
                     // width:180px;
                     text-align:right;
                     &.color-opt {
-                        text-align:center;
                         .slide-wrap {
                             max-width:85px;
                             margin:0 auto;
@@ -578,6 +625,7 @@
 
 .care-plan {
     .cont-wrap {
+        max-width:100%;
         padding:0 0 120px;
         background:#fff;
         @include mobile {
@@ -625,26 +673,40 @@
     }
 
     .prd-contract-wrap {
+        max-width:100%;
         .inner {
             background:#f4f4f4;
         }
         &.login-empty {
+            max-width:1380px + 80px;
+            margin:0 auto;
+            padding:0 40px;
             .inner {
                 position:relative;
-                max-width:1284px + 60px;
-                margin:0 auto;
-                padding:36px 30px;
+                padding:30px 48px 30px 40px;
                 border-radius:8px;
                 @include mobile {
                     padding:32px 20px;
                 }
                 .txt {
+                    position:relative;
                     display:inline-block;
+                    padding-left:120px;
                     padding-right:20%;
-                    font-size:16px;
-                    line-height:24px;
+                    @include font-medium;
                     vertical-align:middle;
                     word-break:keep-all;
+                    &:before {
+                        content:'';
+                        display:block;
+                        position:absolute;
+                        top:50%;
+                        left:0;
+                        width:80px;
+                        height:80px;
+                        transform:translateY(-50%);
+                        background:url('/lg5-common/images/icons/icon-11-80.svg') no-repeat;
+                    }
                     @include mobile {
                         padding:0;
                         font-size:14px;
@@ -654,8 +716,7 @@
                 .btn {
                     position:absolute;
                     top:50%;
-                    right:30px;
-                    background:transparent;
+                    right:48px;
                     -webkit-transform:translateY(-50%);
                     transform:translateY(-50%);
                     @include mobile {
@@ -669,36 +730,31 @@
             }
         }
         .tit-wrap {
-            max-width:1284px + 60px;
+            max-width:1380px + 80px;
             margin:0 auto;
-            padding:36px 30px 16px;
+            padding:36px 40px 16px;
             @include mobile {
                 padding:20px 20px 12px;
             }
             font-size:0;
             .tit {
                 display:inline-block;
-                font-size:16px;
-                line-height:24px;
+                @include font-large;
                 font-weight:700;
                 vertical-align:middle;
             }
             .num {
                 display:inline-block;
                 padding-left:8px;
-                font-size:16px;
-                line-height:24px;
+                @include font-large;
                 font-weight:700;
                 vertical-align:middle;
-                strong {
-                    color:#EC455A;
-                }
             }
         }
         .contract-slide {
-            max-width:1284px + 60px;
+            max-width:1380px + 80px;
             margin:0 auto;
-            padding:0 30px 36px;
+            padding:0 40px 36px;
             @include mobile {
                 margin:0;
                 padding:0 0 32px 0;
@@ -707,60 +763,60 @@
     }
 
     .care-solution-wrap {
-        .tabs-wrap.btn-type {
-            margin-bottom:24px;
-            @include mobile {
-                margin-bottom:20px;
-                text-align:center;
-            }
-        }
-        .tabs-wrap.border-type {
-            .tabs {
-                li > a {
-                    padding-bottom:13px;
-                    border-width:3px;
-                    &.on {
-                        padding-bottom:16px;
-                    }
+        .tabs-wrap {
+            text-align:left;
+            &.new-type {
+                margin-bottom:32px;
+                @include mobile {
+                    margin-bottom:20px;
                 }
             }
         }
         .fixed-tab-wrap {
-            padding-top:56px;
-            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
+            padding-top:80px;
             background:#fff;
             @include mobile {
                 padding-top:24px;
             }
             .inner {
                 position:relative;
-                max-width:1284px;
+                max-width:1380px + 80px;
                 margin:0 auto;
+                padding:0 40px;
             }
         }
 
         .care-top-wrap {
             @include clearfix;
-            max-width:1284px + 60px;
-            margin:30px auto;
-            padding:0 30px;
+            max-width:1380px + 80px;
+            margin:28px auto 16px;
+            padding:0 40px;
             @include mobile {
                 margin-top:24px;
                 padding:0 20px;
             }
-            .bullet-list {
-                float:left;
-                margin-top:0;
-            }    
+            .txt-wrap {
+                display:inline-block;
+                vertical-align:middle;
+                > p {
+                    display:inline-block;
+                    vertical-align:middle;
+                    @include font-small;
+                    font-weight:500;
+                }
+                .btn-link {
+                    margin-top:24px;
+                }
+            }   
             .sort-select-wrap {
                 float:right;
             }
         }
 
         .prd-list-wrap {
-            max-width:1284px + 60px;
-            margin:16px auto 0;
-            padding:0 30px;
+            max-width:1380px + 80px;
+            margin:0 auto;
+            padding:0 40px;
             @include mobile {
                 margin-top:20px;
                 padding:0 20px;
@@ -813,28 +869,23 @@
                 padding:0 0 20px;
             }
             .tit-wrap {
-                padding:32px 0 16px;
+                padding:30px 0 16px;
                 font-size:0;
                 @include mobile {
                     padding:24px 20px;
                 }
                 .tit {
                     display:inline-block;
-                    font-size:16px;
-                    line-height:24px;
+                    @include font-large;
                     font-weight:700;
                     vertical-align:middle;
                 }
                 .num {
                     display:inline-block;
                     padding-left:8px;
-                    font-size:16px;
-                    line-height:24px;
+                    @include font-large;
                     font-weight:700;
                     vertical-align:middle;
-                    strong {
-                        color:#EC455A;
-                    }
                 }
             }
             .contract-slide {

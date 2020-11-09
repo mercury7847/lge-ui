@@ -4,7 +4,21 @@
     <h2 class="title">@@pageTitle</h2>
     }
     @@if ( context.pageDesc ) {
-        <p class="desc">@@pageDesc</p>
+        <div class="desc">
+            <p class="txt">@@pageDesc</p>
+
+            @@if (context.toolTip) {
+                @@include('./common/modules/tooltip.html', {
+                    "type" : "@@type",
+                    @@if (context.text) {
+                        "page" : "@@text"
+                    }
+                    @@if (context.page) {
+                        "page" : "@@page"
+                    }
+                })
+            }
+        </div>
     }
     @@if ( context.pageBtn ) {
         <div class="btn-desc">

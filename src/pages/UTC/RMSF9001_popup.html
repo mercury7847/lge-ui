@@ -28,7 +28,9 @@
     <!-- // 배송지 관리(리스트 없음) popup -->
 
     <!-- 개인정보 수집 및 신용정보 제공 동의 popup -->
-    @@include('./common/popup/RMSF9001_pop4.html')
+    @@include('./common/popup/RMSF9001_pop4.html', {
+        popupID: "popup4"
+    })
     <!-- // 개인정보 수집 및 신용정보 제공 동의 popup -->
 
     <!-- LG전자 사전 방문 개인 정보 수집&middot;이용동의 popup -->
@@ -52,7 +54,11 @@
     <!-- // 케어솔루션 청약신청 고객동의 popup -->
 
     <!-- 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
-    @@include('./common/popup/RMSF9001_pop10.html')
+    @@include('./common/popup/RMSF9001_pop10.html', {
+        popupID: "popup10",
+        chkname: "agreechker-privacy",
+        tempName: "개인"
+    })
     <!-- // 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
 </body>
 </html>
