@@ -161,6 +161,12 @@
                 display:inline-block;
                 vertical-align:top;
             }
+            &.disabled, 
+            &:disabled {
+                border-color:#ddd;
+                background:#ededed;
+                color:#aaa;
+            }
             @include mobile {
                 height:46px;
                 border-radius:4px;

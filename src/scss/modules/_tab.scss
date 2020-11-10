@@ -126,7 +126,7 @@
     &.bar-type {
         .tabs {
             @include mobile {
-                padding:0;
+                padding:0 16px;
             }
             > li {
                 position:relative;
