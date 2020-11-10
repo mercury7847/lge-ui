@@ -161,6 +161,12 @@
                 display:inline-block;
                 vertical-align:top;
             }
+            &.disabled, 
+            &:disabled {
+                border-color:#ddd;
+                background:#ededed;
+                color:#aaa;
+            }
             @include mobile {
                 height:46px;
                 border-radius:4px;
@@ -1494,6 +1500,19 @@ $input: (chk, rdo);
         &:checked + label {
             &:before {
                 background-image: url("/lg5-common/images/icons/icon-heart-on.svg");
+            }
+        }
+    }
+    &.large {
+        input {
+            & + label {
+                width: 32px;
+                height: 32px;
+                &:before {
+                    width: 32px;
+                    height: 32px;
+                    background-size: 32px 32px;
+                }
             }
         }
     }

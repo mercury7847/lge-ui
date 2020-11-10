@@ -188,7 +188,7 @@ br.m {
     
     // 제품별 케어솔루션 혜택 탭 컨텐츠
     .csn-itr-cont {
-        padding:64px 48px 48px;
+        padding:64px 48px;
         border-radius:8px;
         background:#f4f4f4;
         @include mobile {
@@ -288,6 +288,11 @@ br.m {
                 margin-top:40px;
                 padding-top:32px;
             }
+            &:first-child {
+                margin-top:0;
+                padding-top:0;
+                border-top:none;
+            }
             .csn-icon-list {
                 > ul {
                     margin-top:-44px;
@@ -307,6 +312,9 @@ br.m {
                             width:100%;
                             margin-top:32px;
                             padding-left:0;
+                            &:first-child {
+                                margin-top:0;
+                            }
                         }
                         dl {
                             position:relative;
@@ -321,17 +329,17 @@ br.m {
                             &::before {
                                 content:' ';
                                 position:absolute;
-                                top:50%;
+                                top:0;
                                 left:0;
                                 width:80px;
                                 height:80px;
-                                margin-top:-40px;
                                 border-radius:50%;
                                 background-color:#fff;
                                 background-size:60px;
                                 background-repeat:no-repeat;
                                 background-position:center;
                                 @include mobile {
+                                    top:50%;
                                     width:60px;
                                     height:60px;
                                     margin-top:-30px;
@@ -351,6 +359,21 @@ br.m {
                                 background-image:url('/lg5-common/images/icons/icon-01-120.svg');
                             }
                             &.svc1-5::before {
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
+                            }
+                            &.mng1::before {
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
+                            }
+                            &.mng2::before {
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
+                            }
+                            &.mng3::before {
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
+                            }
+                            &.mng4::before {
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
+                            }
+                            &.mng5::before {
                                 background-image:url('/lg5-common/images/icons/icon-01-120.svg');
                             }
                             dt {
@@ -609,6 +632,76 @@ br.m {
             p {
                 margin-bottom:8px;
                 @include font-small;
+            }
+        }
+    }
+
+    // 케어솔루션 매니저 역할
+    .csn-mngs-info {
+        margin-top:48px;
+        overflow:hidden;
+        @include mobile {
+            margin-top:24px;
+        }
+        > ul {
+            margin:0 -12px;
+            font-size:0;
+            @include mobile {
+                margin:0;
+            }
+            li {
+                display:inline-block;
+                vertical-align:top;
+                width:calc(100% / 3);
+                padding:0 12px;
+                > img {
+                    display:block;
+                    width:100%;
+                    height:auto;
+                }
+                dl {
+                    margin-top:32px;
+                    text-align:center;
+                    dt {
+                        @include font-large-1;
+                        font-weight:700;
+                        @include mobile {
+                            font-size:16px;
+                            line-height:24px;
+                        }
+                    }
+                    dd {
+                        margin-top:12px;
+                        @include font-medium;
+                        @include mobile {
+                            margin-top:8px;
+                        }
+                    }
+                }
+                @include mobile {
+                    display:block;
+                    position:relative;
+                    width:100%;
+                    min-height:78px;
+                    margin-top:12px;
+                    padding:12px 0;
+                    padding-left:124px;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                    > img {
+                        position:absolute;
+                        top:50%;
+                        left:0;
+                        width:104px;
+                        margin-top:-39px;
+                        border-radius:4px;
+                    }
+                    dl {
+                        margin-top:0;
+                        text-align:left;
+                    }
+                }
             }
         }
     }
