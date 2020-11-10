@@ -166,11 +166,10 @@
 .prd-care-vertical {
     position:relative;
     height:656px;
-    padding:0 40px 32px;
+    padding:12px 40px 32px;
     background:#fff;
     border-radius:8px;
     box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
-    overflow:hidden;
     @include mobile {
         height:auto;
         padding:0 20px 32px;
@@ -234,7 +233,6 @@
         }
     }
     .img-wrap {
-        margin-top:12px;
         text-align:center;
         a {
             display:block;
@@ -349,7 +347,7 @@
                             border-radius:0 0 8px 8px;
                             ul li {
                                 a {
-                                    padding:8px 39px;
+                                    padding:8px 44px;
                                     @include font-small;
                                     font-weight:500;
                                     &:hover {
@@ -367,6 +365,17 @@
                 &.disabled {
                     border-color:#ededed;
                     background:#ededed;
+                    .sort-select-wrap {
+                        .ui-select-button {
+                            cursor:default;
+                            &:focus {
+                                outline:0;
+                            }
+                            .ico {
+                            background:url('/lg5-common/images/icons/icon-triangle-dis-24.svg') no-repeat;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -790,7 +799,7 @@
         background:#fff;
         box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
         text-align:center;
-        z-index:11;
+        z-index:110;
         .txt {
             position:relative;
             padding-top:96px;
@@ -822,7 +831,7 @@
         width:100%;
         background:#fff;
         box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
-        z-index:10;
+        z-index:100;
         .inner {
             @include clearfix;
             position:relative;
