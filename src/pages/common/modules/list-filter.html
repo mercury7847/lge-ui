@@ -4,9 +4,6 @@
             <h2 class="tit">상세 필터</h2>
         </div>
         <div class="plp-filter-wrap">
-            <div class="btn-reset">
-                <button id="filterResetBtn" type="button"><span>초기화</span></button>
-            </div>
             <div class="list-acco list-acco-sorting ui_order_accordion" data-accord-group="filter" data-single-open="false" data-open-index="0">
                 <ul>
                     <li>
@@ -149,22 +146,22 @@
                     </li>
                 </ul>
             </div>
-
-            <div class="service-link product">
-                <ul>
-                    <li><a href="#n" class="btn-text">매장 방문 예약</a></li>
-                    <li><a href="#n" class="btn-text">매장 찾기</a></li>
-                </ul>
+            <div class="btn-reset">
+                <button id="filterResetBtn" type="button"><span>초기화</span></button>
             </div>
 
-            <div class="service-link care">
-                <ul>
-                    <li><a href="#n" class="btn-text">케어플래너로 견적받기</a></li>
-                    <li><a href="#n" class="btn-text">케어솔루션 상담문의</a></li>
-                    <li><a href="#n" class="btn-text">매장 찾기</a></li>
-                </ul>
-            </div>
-
+            @@if (context.btmLink) {
+                <div class="service-link @@serviceLinkClass">
+                    <ul>
+                        @@for ( var i=0; i < context.btmLink.length; i++) {
+                            <li><a href="#n" class="btn-text">`+btmLink[i].text+`</a></li>
+                        }
+                    </ul>
+                </div>
+            } 
+                
+            
+<!--
             <div class="service-link story">
                 <ul>
                     <li><a href="#n" class="btn-text">제품 큐레이션</a></li>
@@ -172,20 +169,12 @@
                 </ul>
             </div>
 
-            <div class="service-link customer">
-                <ul>
-                    <li><a href="#n" class="btn-text">센터 방문 예약</a></li>
-                    <li><a href="#n" class="btn-text">이메일 문의</a></li>
-                    <li><a href="#n" class="btn-text">출장 서비스 예약</a></li>
-                    <li><a href="#n" class="btn-text">제품 설치/철거 예약</a></li>
-                </ul>
-            </div>
-
             <div class="filter-btn-wrap">
                 <button type="button" class="btn ui_reset_btn" ><span>초기화</span></button>
                 <button type="button" class="btn ui_confirm_btn"><span>확인</span></button>
             </div>
-
+-->
+            
             <div class="filter-close">
                 <button type="button" class="btn-close"><span class="blind">닫기</span></button>
             </div>

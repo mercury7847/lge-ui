@@ -30,7 +30,13 @@
                     </ul>
                 </div>
                 <div class="cont-wrap">
-                    @@include('./common/modules/list-filter.html')
+                    @@include('./common/modules/list-filter.html', {
+                        "serviceLinkClass" : "product",
+                        "btmLink" : [
+                            {"text" : "매장 방문 예약"},
+                            {"text" : "매장 찾기"}
+                        ]
+                   })
                     <div class="search-result-wrap">
                         <div class="result-area">
                             <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->

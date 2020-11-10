@@ -7,6 +7,11 @@
         @@if ( type == "include" ) {
             @@include('./common/modules/@@page.html')
         }
+        @@if ( type == "includeType" ) {
+            @@include('./common/modules/@@page.html', {
+                "@@pageType" : true
+            })
+        }
         <button type="button" class="btn-close"><span class="blind">닫기</span></button>
     </span>
 </div>

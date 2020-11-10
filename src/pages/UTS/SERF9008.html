@@ -32,7 +32,15 @@
                 <!-- // tabs -->
 
                 <div class="cont-wrap customer-wrap">
-                    @@include('./common/modules/list-filter.html')
+                    @@include('./common/modules/list-filter.html', {
+                        "serviceLinkClass" : "customer",
+                        "btmLink" : [
+                            {"text" : "센터 방문 예약"},
+                            {"text" : "이메일 문의"},
+                            {"text" : "출장 서비스 예약"},
+                            {"text" : "제품 설치/철거 예약"}
+                        ]
+                   })
                     <div class="search-result-wrap">
 
                         <div class="result-area">

@@ -177,8 +177,8 @@
     }
     .prd-add {
         position:absolute;
-        top:24px;
-        left:24px;
+        bottom:32px;
+        right:40px;
         z-index:1;
         @include mobile {
             top:20px;
@@ -280,7 +280,7 @@
         }
     }
     .info-wrap {
-        padding-top:24px;
+        padding-top:16px;
         @include mobile {
             padding-top:14px;
         }
@@ -296,7 +296,7 @@
         .opt-info {
             dl {
                 position:relative;
-                margin-top:12px;
+                margin-top:8px;
                 padding:7px 11px;
                 border-radius:8px;
                 border:1px solid #ddd;
@@ -341,6 +341,7 @@
                             top:38px;
                             left:-1px;
                             right:-1px;
+                            padding:0;
                             box-shadow:none;
                             text-align:right;
                             border:1px solid #222;
@@ -348,7 +349,7 @@
                             border-radius:0 0 8px 8px;
                             ul li {
                                 a {
-                                    padding:5px 39px;
+                                    padding:8px 39px;
                                     @include font-small;
                                     font-weight:500;
                                     &:hover {
@@ -356,6 +357,7 @@
                                     }
                                 }
                                 &.on a {
+                                    display:none;
                                     color:#222;
                                 }
                             }
@@ -367,29 +369,24 @@
 
         .price-wrap {
             position:absolute;
-            left:24px;
-            right:24px;
-            bottom:40px;
+            left:40px;
+            right:40px;
+            bottom:32px;
             @include mobile {
                 position:static;
                 padding-top:18px;
             }
             .total-price {
-                dt {
-                    width:75%;
-                    font-size:16px;
-                    line-height:24px;
-                }
-                dd {
-                    width:100%;
-                    font-size:24px;
-                    line-height:32px;
+                @include clearfix;
+                .price {
+                    display:inline-block;
+                    padding:10px 0;
+                    @include font-large-1;
                     font-weight:700;
-                    text-align:right;
-                    @include mobile {
-                        font-size:20px;
-                        line-height:27px;
-                    }
+                    vertical-align:middle;
+                }
+                .btn {
+                    float:right;
                 }
             }
             .price-info {
@@ -788,6 +785,10 @@
                 }
             }
         }
+    }
+
+    .default-bottom-wrap {
+
     }
 
     .prd-select-wrap {

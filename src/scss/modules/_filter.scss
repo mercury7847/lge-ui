@@ -18,15 +18,15 @@
 
 .lay-filter {
     float:left;
-    width:200px;
-    margin-left:-224px;
+    width:215px;
+    margin-left:-240px;
+    margin-top: 79px;
 
     @at-root .search .lay-filter {
         position: absolute;
         top: 0;
         left: 50%;
         transform: translateX(-642px);
-
         &.search-all {
             display: none;
         }
@@ -81,7 +81,7 @@
             font-size:18px;
             padding-top:24px;
             line-height:27px;
-            font-weight:700;
+            font-weight:$font-weight-bold;
         }
         @media screen and (min-width: 1780px) {
             display:none;
@@ -95,14 +95,10 @@
 
         .btn-reset {
             margin:20px 0 12px;
-            text-align:center;
+            text-align:right;
             button {
-                padding:0 16px;
-                color:#616161;
-                font-size:14px;
-                line-height:36px;
-                border:1px solid #979797;
-                border-radius:8px;
+                color:$color-default;
+                @include font-small;
                 span {
                     position:relative;
                     padding-right:20px;
@@ -112,10 +108,10 @@
                         position:absolute;
                         top:50%;
                         right:0;
-                        width:16px;
-                        height:16px;
+                        width:17px;
+                        height:17px;
                         margin-top:-8px;
-                        background:url('/lg5-common/images/KRP0009/icon-reset.svg') no-repeat;
+                        background:url('/lg5-common/images/icons/btn-reset-16.svg') no-repeat;
                     }
                 }
             }
@@ -134,8 +130,10 @@
 
         .list-acco {
             ul {
+                border-top: 1px solid $color-border;
                 li {
                     background-color:#fff;
+                    border-bottom: 1px solid $color-border;
                     border-radius:4px;
                     margin-top:2px;
                     overflow:hidden;
@@ -160,10 +158,10 @@
                                 display:block;
                                 position:absolute;
                                 top:24px;
-                                right:16px;
-                                width:24px;
-                                height:24px;
-                                background:url('/lg5-common/images/KRP0009/icon-acco-off.svg') no-repeat;
+                                right:0;
+                                width:16px;
+                                height:16px;
+                                background:url('/lg5-common/images/icons/btn-plus.svg') no-repeat;
                                 @media screen and (max-width: 1780px) {
                                     top:32px;
                                     right:0;
@@ -172,11 +170,10 @@
                         }
                         .tit {
                             display:block;
-                            padding:24px 0 32px;
+                            padding:24px 0 22px;
                             color:#222;
-                            font-size:16px;
-                            line-height:24px;
-                            font-weight:500;
+                            @include font-small;
+                            font-weight:$font-weight-bold;
                             word-break:break-all;
                             span {
                                 word-break:break-all;
@@ -188,10 +185,8 @@
                     }
                     .desc {
                         display:none;
-                        margin-top:-12px;
                         padding:0 20px 32px;
                         @media screen and (max-width: 1780px) {
-                            margin:0;
                             padding:20px 8px 32px;
                         }
                     }
@@ -200,10 +195,29 @@
                         word-break:break-all;
                         p {
                             word-break:break-all;
+                            @include font-small;
                         }
 
                         .range-wrap {
                             font-size:0;
+                            .ui-range-slider {
+                                background-color: #fff;
+                                .ui-range-slider-bg {
+                                    height: 4px;
+                                    background-color: #ddd;
+                                    border-radius: 2px;
+                                }
+                                .ui-range-slider-range {
+                                    height: 4px;
+                                    border-radius: 2px;
+                                }
+                                .ui-range-slider-handler {
+                                    width: 12px;
+                                    height: 12px;
+                                    border: 1px solid #adadad;
+                                    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.28);
+                                }
+                            }
                             .range-num {
                                 display:inline-block;
                                 width:50%;
@@ -228,6 +242,7 @@
                             }
                             & input + label {
                                 word-break:break-all;
+                                @include font-small;
                             }
                         }
 
@@ -277,7 +292,8 @@
                         }
                     }
                     &.on .head a:before {
-                        background:url('/lg5-common/images/KRP0009/icon-acco-on.svg') no-repeat;
+                        top: 32px;
+                        background:url('/lg5-common/images/icons/btn-minus.svg') no-repeat;
                     }
                 }
             }
