@@ -69,7 +69,7 @@ br.m {
     .bar-type {
         margin-top:32px;
         @include mobile {
-            margin-top:24px;
+            margin:24px -16px 0;
         }
     }
     .csn-itr-cont {
@@ -126,6 +126,12 @@ br.m {
                         margin-top:12px;
                         font-size:14px;
                         line-height:22px;
+                    }
+                }
+                .btn {
+                    margin-top:24px;
+                    @include mobile {
+                        margin-top:16px;
                     }
                 }
             }
@@ -389,6 +395,10 @@ br.m {
                                     margin-top:3px;
                                     margin-left:4px;
                                     vertical-align:top;
+                                    .tooltip-box {
+                                        right:-12px;
+                                        left:-92px;
+                                    }
                                 }
                             }
                             dd {
@@ -417,10 +427,16 @@ br.m {
         table-layout:fixed;
         border-collapse:separate;
         border-spacing:24px 0;
+        &.type2 {
+            margin:48px -24px 0;
+        }
         @include mobile {
             display:block;
             width:100%;
             margin-top:32px;
+            &.type2 {
+                margin:32px 0 0;
+            }
         }
         .blocks {
             display:table-cell;
@@ -431,6 +447,7 @@ br.m {
             vertical-align:middle;
             @include mobile {
                 display:block;
+                position:relative;
                 width:100%;
                 margin-top:12px;
                 padding:20px;
@@ -457,6 +474,7 @@ br.m {
                 dd {
                     margin-top:8px;
                     @include font-medium;
+                    word-break:keep-all;
                     &.num {
                         margin-top:16px;
                         color:#EC455A;
@@ -466,6 +484,17 @@ br.m {
                             margin-top:4px;
                             text-align:right;
                         }
+                    }
+                }
+            }
+        }
+        &.type2 {
+            .blocks {
+                height:327px;
+                @include mobile {
+                    height:auto;
+                    dl {
+                        text-align:center;
                     }
                 }
             }
