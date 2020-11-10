@@ -346,7 +346,7 @@
                                                                         <label for="chk02-2">휴대폰 본인인증</label>
                                                                     </span>
                                                                     <div class="cell">
-                                                                        <a href="#n" class="btn-link">이용약관 보기</a>
+                                                                        <a href="#n" class="btn-link ">이용약관 보기</a>
                                                                     </div>
                                                                 </div>
                                                                 <div class="mix-cont">
@@ -369,7 +369,7 @@
                                         <div class="accord-cont ui_accord_content">
                                             <div class="card-benefit-box">
                                                 <span class="text">제휴카드 신청시<br><em>최대 23,000원</em> 청구할인</span>
-                                                <a href="#n" class="btn-link"><span>카드혜택 자세히보기</span></a>
+                                                <a href="#n" target="_blank" class="btn-link"><span>카드혜택 자세히보기</span></a>
                                             </div>
                                             <div class="form-wrap">
                                                 <dl class="forms type2">
@@ -381,13 +381,13 @@
                                                             <ul class="ui_radio_visible">
                                                                 <li>
                                                                     <span class="rdo-wrap">
-                                                                        <input type="radio" id="rdo03-1" name="rdo03" data-visible-target=".visible-target2" checked>
+                                                                        <input type="radio" id="rdo03-1" name="cardApplication" data-visible-target=".visible-target2" checked>
                                                                         <label for="rdo03-1">신청</label>
                                                                     </span>
                                                                 </li>
                                                                 <li>
                                                                     <span class="rdo-wrap">
-                                                                        <input type="radio" id="rdo03-2" name="rdo03" data-visible-target=" ">
+                                                                        <input type="radio" id="rdo03-2" name="cardApplication" data-visible-target=" ">
                                                                         <label for="rdo03-2">미신청</label>
                                                                     </span>
                                                                 </li>
@@ -396,7 +396,7 @@
                                                         <div class="input-mix-wrap visible-target2">
                                                             <div class="mix-input">
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk-pay1" name="chk-pay1" checked>
+                                                                    <input type="checkbox" id="chk-pay1" name="cardApplyaAgree">
                                                                     <label for="chk-pay1">제휴카드 발급/변경 정보제공 동의</label>
                                                                 </span>
                                                                 <div class="cell">
@@ -414,12 +414,14 @@
                                                                             <dd class="conts">
                                                                                 <div class="box">
                                                                                     <div class="select-wrap">
-                                                                                        <select class="ui_selectbox" title="카드사 선택">
+                                                                                        <select class="ui_selectbox" title="카드사 선택" name="associatedCard">
                                                                                             <option value="" class="placeholder">카드 선택</option>
+                                                                                            <option value="11" class="placeholder">카드 선택1</option>
+                                                                                            <option value="22" class="placeholder">카드 선택2</option>
                                                                                         </select>
                                                                                     </div>
                                                                                     <div class="cell">
-                                                                                        <button type="button" class="btn"><span>동의 문자 발송</span></button>
+                                                                                        <button type="button" class="btn sendMessage" disabled><span>동의 문자 발송</span></button>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="btm-more">
@@ -451,9 +453,11 @@
                                                                     <dt class="tit"><label for="slt-card1">카드사</label></dt>
                                                                     <dd class="conts">
                                                                         <div class="select-wrap">
-                                                                            <select class="ui_selectbox" id="slt-card1" title="카드사 선택">
+                                                                            <select class="ui_selectbox" id="slt-card1" title="카드사 선택" name="paymentCard">
                                                                                 <option value="" class="placeholder">카드사 선택</option>
-                                                                                <option value="">하나은행</option>
+                                                                                <option value="11">카드사1</option>
+                                                                                <option value="22">카드사2</option>
+                                                                                <option value="33">카드사3</option>
                                                                             </select>
                                                                         </div>
                                                                     </dd>
@@ -462,7 +466,7 @@
                                                                     <dt class="tit"><label for="ipt-card1">카드번호</label></dt>
                                                                     <dd class="conts">
                                                                         <div class="input-wrap">
-                                                                            <input type="text" id="ipt-card1" placeholder="카드번호를 입력해주세요" value="1234123412341234">
+                                                                            <input type="text" id="ipt-card1" placeholder="카드번호를 입력해주세요" value="" name="paymentCardNumber">
                                                                         </div>
                                                                     </dd>
                                                                 </dl>
@@ -471,10 +475,10 @@
                                                                     <dd class="conts">
                                                                         <div class="box">
                                                                             <div class="input-wrap">
-                                                                                <input type="text" id="ipt-card2" value="" placeholder="유효기간을 입력해주세요">
+                                                                                <input type="text" id="ipt-card2" value="" placeholder="유효기간을 입력해주세요" name="paymentCardPeriod">
                                                                             </div>
                                                                             <div class="cell">
-                                                                                <button type="button" class="btn"><span>납부 카드 확인</span></button>
+                                                                                <button type="button" class="btn paymentCardConfirm" disabled><span>납부 카드 확인</span></button>
                                                                             </div>
                                                                         </div>
                                                                     </dd>
@@ -489,7 +493,7 @@
                                                                     <dt class="tit"><label for="ipt-bank1">예금주명</label></dt>
                                                                     <dd class="conts">
                                                                         <div class="input-wrap">
-                                                                            <input type="text" id="ipt-bank1" placeholder="예금주명을 입력해주세요" value="">
+                                                                            <input type="text" id="ipt-bank1" placeholder="예금주명을 입력해주세요" value="이엘지" disabled>
                                                                         </div>
                                                                     </dd>
                                                                 </dl>
@@ -497,9 +501,11 @@
                                                                     <dt class="tit"><label for="slt-bank1">은행명</label></dt>
                                                                     <dd class="conts">
                                                                         <div class="select-wrap">
-                                                                            <select class="ui_selectbox" id="slt-bank1" title="은행 선택">
+                                                                            <select class="ui_selectbox" id="slt-bank1" title="은행 선택" name="paymentBank">
                                                                                 <option value="" class="placeholder">선택해주세요.</option>
-                                                                                <option value="">하나은행</option>
+                                                                                <option value="111">은행1</option>
+                                                                                <option value="222">은행2</option>
+                                                                                <option value="333">은행3</option>
                                                                             </select>
                                                                         </div>
                                                                     </dd>
@@ -509,10 +515,10 @@
                                                                     <dd class="conts">
                                                                         <div class="box">
                                                                             <div class="input-wrap">
-                                                                                <input type="text" id="ipt-bank2" value="" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요.">
+                                                                                <input type="text" id="ipt-bank2" value="" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요." name="paymentBankNumber">
                                                                             </div>
                                                                             <div class="cell">
-                                                                                <button type="button" class="btn"><span>납부 계좌 확인</span></button>
+                                                                                <button type="button" class="btn paymentBankConfirm" disabled><span>납부 계좌 확인</span></button>
                                                                             </div>
                                                                         </div>
                                                                         <div class="btm-more">
@@ -729,6 +735,19 @@
         tempName: "신용"
     })
     <!-- // 개인정보 수집 약관전문 보기 popup -->
+
+    <!-- LG전자 사전 방문 개인 정보 수집&middot;이용동의 popup -->
+    @@include('./common/popup/RMSF9001_pop5.html', {
+        popupID: "popup-previsit"
+    })
+    <!-- // LG전자 사전 방문 개인 정보 수집&middot;이용동의 popup -->
+
+
+    <!-- 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
+    @@include('./common/popup/RMSF9001_pop6.html', {
+        popupID: 'popup-cardApply'
+    })
+    <!-- // 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
 
 </body>
 </html>
