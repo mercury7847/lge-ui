@@ -225,7 +225,7 @@
                     }
                 },
                 {
-                    breakpoint: 1024,
+                    breakpoint: 1090,
                     settings: {
                         infinite: false,
                         variableWidth : false,
@@ -294,6 +294,14 @@
                 }
             ]
         });
+        $('.ui_carousel_slider4').vcCarousel({
+            infinite: false,
+            slidesToScroll: 1,
+            variableWidth : true,
+            speed : 200,
+            dots: false
+        });
+
         $('.prd-select-wrap').css({display:'block'});
 
         var selectbox = $('.ui_selectbox').vcSelectbox('instance').on('selectboxopen', function(e, sbox){

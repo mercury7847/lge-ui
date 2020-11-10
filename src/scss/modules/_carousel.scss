@@ -6,33 +6,22 @@
     width:56px;
     height:56px;
     border-radius:50%;
-    background:#fff;
     box-shadow:0 4px 20px 0 rgba(0, 0, 0, 0.06);
     font-size:0;
+    overflow:hidden;
     &::before {
-        content:' '; 
-        position:absolute;
-        top:50%;
-        left:50%;
-        width:14px;
-        height:14px;
-        margin-top:-7px;
-        border-right:3px solid #111;
-        border-bottom:3px solid #111;
+        content:' ';
+        display:block;
+        width:56px;
+        height:56px;
+        background:url('/lg5-common/images/icons/btn-arr-56x56.svg') no-repeat;
     }
     &.disabled, &.ui_carousel_hidden {
         display:none !important;
     }
     &.prev {
         &::before {
-            margin-left:-4px;
-            transform:rotate(135deg);
-        }
-    }
-    &.next {
-        &::before {
-            margin-left:-9px;
-            transform:rotate(-45deg);
+            transform:rotate(180deg);
         }
     }
 }

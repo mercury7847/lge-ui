@@ -1,28 +1,35 @@
 <li class="slide-conts ui_carousel_slide">
     <div class="conts-wrap">
-        <div class="prd-care-horizon">
-            <div class="img-wrap">
-                <img src="@@visual" alt="제품 이미지">
-            </div>
-            <div class="txt-wrap">
-                @@include('./common/modules/flags.html', {
-                    borderType:true,
-                    flags:[
-                        "<span class='blind'>서비스명</span>@@flagName"
-                    ]
-                })
-                <div class="tit-info">
-                    <p class="tit"><span class="blind">제품 디스플레이 네임</span>@@title</p>
-                    <p class="code">
-                        <span class="blind">제품 코드</span>@@code</p>
+        <div class="prd-care-horizon ui_flexible_box @@type"><!-- 결합된 상품이면 comb-type 클래스 추가 -->
+            <div class="ui_flexible_cont">
+                <div class="img-wrap">
+                    <img src="@@visual" alt="제품 이미지">
                 </div>
-                <p class="etc">@@etcTxt</p>
+                <div class="txt-wrap">
+                    @@include('./common/modules/flags.html', {
+                        borderType:true,
+                        flags:[
+                            "<span class='blind'>서비스명</span>@@flagName"
+                        ]
+                    })
+                    <div class="tit-info">
+                        <p class="tit"><span class="blind">제품 디스플레이 네임</span>@@title</p>
+                        <p class="code">
+                            <span class="blind">제품 코드</span>@@code</p>
+                    </div>
+                    <p class="etc">
+                        @@etcTxt
+                        @@if( context.combTxt) {
+                            <span class="comb-txt">@@combTxt</span>
+                        }
+                    </p>
+                </div>
+                @@if (context.btnDel === true) {
+                <div class="del-item">
+                    <button type="button" class="btn-del" tabindex=""><span class="blind">제품 삭제</span></button>
+                </div>
+                }
             </div>
-            @@if (context.btnDel === true) {
-            <div class="del-item">
-                <button type="button" class="btn-del" tabindex=""><span class="blind">제품 삭제</span></button>
-            </div>
-            }
         </div>
     </div>
 </li>
