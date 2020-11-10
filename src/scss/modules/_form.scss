@@ -1497,6 +1497,19 @@ $input: (chk, rdo);
             }
         }
     }
+    &.large {
+        input {
+            & + label {
+                width: 32px;
+                height: 32px;
+                &:before {
+                    width: 32px;
+                    height: 32px;
+                    background-size: 32px 32px;
+                }
+            }
+        }
+    }
 }
 
 // selectbox
