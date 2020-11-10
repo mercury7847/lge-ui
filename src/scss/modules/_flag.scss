@@ -36,6 +36,27 @@
 			}
 		}
 	}
+	&.bar-type {
+		.flag {
+			min-width: auto;
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: $font-x-small;
+			line-height: 22px;
+			&:not(:first-child) {
+				&:before {
+					display: inline-block;
+					width: 1px;
+					height: 10px;
+					margin: 0 4px;
+					background-color: #adadad;
+					vertical-align: -1px;
+					content: '';
+				}
+			}
+		}
+	}
 }
 
 // design flag
