@@ -84,7 +84,7 @@ $(window).ready(function(){
     });
 
     vcui.require(['ui/carousel'], function () {
-        $('.ui_carousel_slider').vcCarousel({
+        $('.KRC0023').find('.ui_carousel_slider').vcCarousel({
             infinite: false,
             swipeToSlide: true,
             slidesToShow: 1,
