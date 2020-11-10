@@ -47,13 +47,15 @@
                                 <!-- carousel -->
                                 <div class="slide-wrap ui_carousel_slider">
                                     <div class="slide-content ui_carousel_list">
-                                        <ul class="slide-track ui_carousel_track">
+                                        <ul class="slide-track ui_carousel_track ui_flexible_height">
                                             <!-- 무상케어십 계약 -->
                                             <li class="slide-conts ui_carousel_slide">
                                                 <div class="conts-wrap">
-                                                    <div class="prd-care-horizon free-care">
-                                                        <p>케어십 일시납 확인으로 <br>기존 결합 할인 적용되었습니다.</p>
-                                                        <span>기존계약 문의 1577-4090</span>
+                                                    <div class="prd-care-horizon ui_flexible_box free-care comb-type"><!-- 결합된 상품이면 comb-type 클래스 추가 -->
+                                                        <div class="ui_flexible_cont">
+                                                            <p>케어십 일시납 확인으로 <br>기존 결합 할인 적용되었습니다.</p>
+                                                            <span>기존계약 문의 1577-4090</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </li>
@@ -65,6 +67,7 @@
                                                 "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
                                                 "code" : "WU900AS 한줄 이상 한줄 이상 한줄 이상 한줄 이상 한줄 이상 한줄 이상 한줄 이상",
                                                 "etcTxt" : "계약기간 2020.01.13~2025.05.12",
+                                                "type" : "comb-type",
                                                 btnDel : false
                                             })
                                             <!-- //slide -->
@@ -101,10 +104,12 @@
                                             <!-- 보유 제품 등록 -->
                                             <li class="slide-conts ui_carousel_slide">
                                                 <div class="conts-wrap">
-                                                    <div class="prd-care-horizon holding-care">
-                                                        <div class="box">
-                                                            <p>등록하지 않은 구매 제품이 있으시다면, <br>등록 후 케어십으로 관리 받아 보세요.</p>
-                                                            <a href="#n" class="btn-link">보유제품 등록하기</a>
+                                                    <div class="prd-care-horizon ui_flexible_box holding-care">
+                                                        <div class="ui_flexible_cont">
+                                                            <div class="box">
+                                                                <p>등록하지 않은 구매 제품이 있으시다면, <br>등록 후 케어십으로 관리 받아 보세요.</p>
+                                                                <a href="#n" class="btn-link">보유제품 등록하기</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -128,7 +133,7 @@
                         data-prod-list="/lg5-common/data-ajax/caresolution/carePlanerProductList.json"
                         data-cate-list="/lg5-common/data-ajax/caresolution/carePlanerCategory.json"
                     >
-                        <div class="fixed-tab-wrap"><!-- 스크롤 시 탭 고정 영역 -->
+                        <div class="fixed-tab-wrap"><!-- 스크롤 시 tab-fix 클래스 추가 -->
                             <div class="inner">
                                 <div class="tabs-wrap new-type">
                                     <ul class="tabs">
@@ -136,19 +141,84 @@
                                         <li><a href="#n" data-tab-id="tab02">케어십</a></li>
                                     </ul>
                                 </div>
-
-                                <div class="tabs-wrap bar-type">
-                                    <ul class="tabs">
-                                        <li class="on"><a href="#n" data-cate-id="정수기">정수기<em class="blind">선택됨</em></a></li>
-                                        <li><a href="#n" data-cate-id="얼음정수기 냉장고">얼음정수기 냉장고</a></li>
-                                        <li><a href="#n" data-cate-id="맥주제조기">맥주제조기</a></li>
-                                        <li><a href="#n" data-cate-id="공기청정기">공기청정기</a></li>
-                                        <li><a href="#n" data-cate-id="건조기">건조기</a></li>
-                                        <li><a href="#n" data-cate-id="스타일러">스타일러</a></li>
-                                        <li><a href="#n" data-cate-id="전기레인지">전기레인지</a></li>
-                                        <li><a href="#n" data-cate-id="식기세척기">식기세척기</a></li>
-                                        <li><a href="#n" data-cate-id="안마의자">안마의자</a></li>
-                                    </ul>
+                            </div>
+                            <div class="inner">
+                                <!-- carousel -->
+                                <div class="slide-wrap tab-slide-wrap ui_carousel_slider4">
+                                    <div class="slide-content ui_carousel_list tabs-wrap bar-type">
+                                        <ul class="slide-track ui_carousel_track tabs">
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="정수기">정수기<em class="blind">선택됨</em></a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="얼음정수기 냉장고">얼음정수기 냉장고</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="맥주제조기">맥주제조기</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="공기청정기">공기청정기</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="건조기">건조기</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="스타일러">스타일러</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="전기레인지">전기레인지</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="식기세척기">식기세척기</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="slide-controls">
+                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -199,9 +269,63 @@
                                 <!-- carousel -->
                                 <div class="slide-wrap ui_carousel_slider3">
                                     <div class="slide-content ui_carousel_list">
-                                        <div class="slide-track ui_carousel_track">
-                                            @@include('./common/modules/prd-care-horizon-list.html')
-                                        </div>
+                                        <ul class="slide-track ui_carousel_track ui_flexible_height">
+                                            <!-- 두개이상 결합 가능 문구 -->
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <div class="conts-wrap">
+                                                    <div class="prd-care-horizon ui_flexible_box empty">
+                                                        <div class="ui_flexible_cont">
+                                                            <p>2개 이상부터 결합할인 가능</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <!-- //두개이상 결합 가능 문구 -->
+                                                
+                                            <!-- slide -->      
+                                            @@include('./common/modules/prd-care-horizon.html', {
+                                                "flagName" : "렌탈(케어솔루션)",
+                                                "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
+                                                "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
+                                                "code" : "WU900AS",
+                                                "etcTxt" : "월 61,900원",
+                                                "type" : "comb-type",
+                                                "combTxt" : "결합 -5,000원",
+                                                btnDel : true
+                                            })
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            @@include('./common/modules/prd-care-horizon.html', {
+                                                "flagName" : "케어십",
+                                                "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
+                                                "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프) 두줄 텍스트 두줄 텍스트 두줄 텍스트 두줄 텍스트",
+                                                "code" : "WU900AS",
+                                                "etcTxt" : "월 61,900원",
+                                                "combTxt" : "결합 미적용",
+                                                btnDel : true
+                                            })
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            @@include('./common/modules/prd-care-horizon.html', {
+                                                "flagName" : "렌탈(케어솔루션)",
+                                                "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
+                                                "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
+                                                "code" : "WU900AS",
+                                                "etcTxt" : "월 61,900원",
+                                                btnDel : true
+                                            })
+                                            <!-- //slide -->
+                                            <!-- slide -->
+                                            @@include('./common/modules/prd-care-horizon.html', {
+                                                "flagName" : "렌탈(케어솔루션)",
+                                                "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
+                                                "title" : "스팀 건조기ThinQ",
+                                                "code" : "WU900AS",
+                                                "etcTxt" : "월 61,900원",
+                                                btnDel : true
+                                            })
+                                            <!-- //slide -->
+                                        </ul>
                                     </div>
                                     <div class="slide-controls">
                                         <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
@@ -223,7 +347,7 @@
                                     <dt>제휴카드 할인시</dt>
                                     <dd class="sale">월 최대 -26,000원</dd>
                                 </dl>
-                                <a href="#n" class="btn pink"><span>견적 확인하기</span></a>
+                                <a href="#n" class="btn"><span>견적 확인하기</span></a>
                             </div>
                         </div>
                     </div>
