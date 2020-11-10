@@ -51,7 +51,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="accordion-section ui_accordion" data-single-open="false" data-open-index="[0]" data-certify="true">
+                            <div class="accordion-section ui_accordion" 
+                                data-single-open="false" 
+                                data-open-index="[0]" 
+                                data-certify="true"
+                                data-requst-url=""
+                            >
                                 <ul>
                                     <li class="lists">
                                         <div class="head">
@@ -70,7 +75,7 @@
                                                     <dd class="conts">
                                                         <div class="input-wrap">
                                                             <input type="text" id="inp01-1" name="userName" data-required="true" placeholder="성명을 입력해주세요" value="이엘지" readonly>
-                                                            <p class="comp">본인 인증 완료</p>
+                                                            <!-- <p class="comp">본인 인증 완료</p> -->
                                                         </div>
                                                     </dd>
                                                 </dl>
@@ -80,7 +85,7 @@
                                                     <dd class="conts">
                                                         <div class="box">
                                                             <div class="input-wrap">
-                                                                <input type="text" id="inp01-2-yet" name="userPhone" data-required="true" placeholder="휴대폰 본인인증이 필요합니다." readonly>
+                                                                <input type="text" id="inp01-2-yet" name="userPhone" value="01012349876" data-required="true" placeholder="휴대폰 본인인증이 필요합니다." readonly>
                                                             </div>
                                                             <div class="cell">
                                                                 <button type="button" class="btn"><span>휴대폰 본인인증</span></button>
@@ -90,14 +95,14 @@
                                                 </dl>
                                                 <!-- // 휴대폰 본인인증 전 -->
                                                 <!-- 휴대폰 본인인증 후 -->
-                                                <dl class="forms">
+                                                <!-- <dl class="forms">
                                                     <dt class="tit"><label for="inp01-2" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
                                                             <input type="text" id="inp01-2" name="userPhone" data-required="true" placeholder="휴대폰 본인인증이 필요합니다." value="01087360999" readonly>
                                                         </div>
                                                     </dd>
-                                                </dl>
+                                                </dl> -->
                                                 <!-- // 휴대폰 본인인증 후 -->
                                                 <dl class="forms">
                                                     <dt class="tit"><label for="inp01-3" class="req">생년월일<span class="blind">필수입력</span></label></dt>
@@ -417,7 +422,7 @@
                                                                     <label for="chk-pay1">제휴카드 발급/변경 정보제공 동의</label>
                                                                 </span>
                                                                 <div class="cell">
-                                                                    <a href="#n" class="btn-link">동의약관 보기</a>
+                                                                    <a href="#n" class="btn-link cardApplyaAgree">동의약관 보기</a>
                                                                 </div>
                                                             </div>
                                                             <div class="mix-cont">
@@ -482,19 +487,8 @@
                                                                 <dl class="forms inner-type">
                                                                     <dt class="tit"><label for="ipt-card1">카드번호</label></dt>
                                                                     <dd class="conts">
-                                                                        <div class="card-num-box">
-                                                                            <div class="input-wrap">
-                                                                                <input type="number" id="ipt-card1" placeholder="0000" min="0000" max="9999" value="1234" title="카드번호 첫 4자리">
-                                                                            </div>
-                                                                            <div class="input-wrap">
-                                                                                <input type="number" placeholder="0000" min="0000" max="9999" value="1234" title="카드번호 두번째 4자리">
-                                                                            </div>
-                                                                            <div class="input-wrap">
-                                                                                <input type="number" placeholder="0000" min="0000" max="9999" value="1234" title="카드번호 세번째 4자리">
-                                                                            </div>
-                                                                            <div class="input-wrap">
-                                                                                <input type="number" placeholder="0000" min="0000" max="9999" value="1234" title="카드번호 네번째 4자리">
-                                                                            </div>
+                                                                        <div class="input-wrap">
+                                                                            <input type="number" id="ipt-card1" placeholder="(-)없이 입력하세요." value="" class="ui_card_number" name="paymentCardNumber">
                                                                         </div>
                                                                     </dd>
                                                                 </dl>
@@ -597,11 +591,11 @@
                                                         <div class="input-mix-wrap">
                                                             <div class="mix-input">
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk03-1" name="chk03-1" checked>
+                                                                    <input type="checkbox" id="chk03-1" name="selfClearingAgree">
                                                                     <label for="chk03-1">자동결제 신청 동의</label>
                                                                 </span>
                                                                 <div class="cell">
-                                                                    <a href="#n" class="btn-link">이용약관 보기</a>
+                                                                    <a href="#n" class="btn-link selfClearingAgree">이용약관 보기</a>
                                                                 </div>
                                                             </div>
                                                             <div class="mix-cont">
@@ -618,7 +612,7 @@
                                                         <div class="input-mix-wrap">
                                                             <div class="mix-input">
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk03-2" name="chk03-2" checked>
+                                                                    <input type="checkbox" id="chk03-2" name="chk03-2">
                                                                     <label for="chk03-2">선납 신청</label>
                                                                 </span>
                                                             </div>
@@ -636,7 +630,7 @@
                                                         <div class="input-mix-wrap">
                                                             <div class="mix-input">
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk03-3" name="chk03-3" checked>
+                                                                    <input type="checkbox" id="chk03-3" name="chk03-3">
                                                                     <label for="chk03-3">포인트 사용 동의</label>
                                                                 </span>
                                                             </div>
@@ -776,6 +770,12 @@
         popupID: 'popup-cardApply'
     })
     <!-- // 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
+
+    <!-- 자동결제 이용 약관 동의 popup -->
+    @@include('./common/popup/RMSF9001_pop8.html', {
+        popupID: 'popup-selfClearing'
+    })
+    <!-- //자동결제 이용 약관 동의 popup -->
 
 </body>
 </html>
