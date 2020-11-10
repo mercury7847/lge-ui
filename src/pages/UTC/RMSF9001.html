@@ -74,6 +74,22 @@
                                                         </div>
                                                     </dd>
                                                 </dl>
+                                                <!-- 휴대폰 본인인증 전 -->
+                                                <dl class="forms">
+                                                    <dt class="tit"><label for="inp01-2-yet" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
+                                                    <dd class="conts">
+                                                        <div class="box">
+                                                            <div class="input-wrap">
+                                                                <input type="text" id="inp01-2-yet" name="userPhone" data-required="true" placeholder="휴대폰 본인인증이 필요합니다." readonly>
+                                                            </div>
+                                                            <div class="cell">
+                                                                <button type="button" class="btn"><span>휴대폰 본인인증</span></button>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                </dl>
+                                                <!-- // 휴대폰 본인인증 전 -->
+                                                <!-- 휴대폰 본인인증 후 -->
                                                 <dl class="forms">
                                                     <dt class="tit"><label for="inp01-2" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
@@ -82,6 +98,7 @@
                                                         </div>
                                                     </dd>
                                                 </dl>
+                                                <!-- // 휴대폰 본인인증 후 -->
                                                 <dl class="forms">
                                                     <dt class="tit"><label for="inp01-3" class="req">생년월일<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
@@ -419,7 +436,7 @@
                                                                                         </select>
                                                                                     </div>
                                                                                     <div class="cell">
-                                                                                        <button type="button" class="btn"><span>동의 문자 발송</span></button>
+                                                                                        <button type="button" class="btn disabled" disabled><span>동의 문자 발송</span></button>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="btm-more">
@@ -461,8 +478,19 @@
                                                                 <dl class="forms inner-type">
                                                                     <dt class="tit"><label for="ipt-card1">카드번호</label></dt>
                                                                     <dd class="conts">
-                                                                        <div class="input-wrap">
-                                                                            <input type="text" id="ipt-card1" placeholder="카드번호를 입력해주세요" value="1234123412341234">
+                                                                        <div class="card-num-box">
+                                                                            <div class="input-wrap">
+                                                                                <input type="number" id="ipt-card1" placeholder="0000" min="0000" max="9999" value="1234" title="카드번호 첫 4자리">
+                                                                            </div>
+                                                                            <div class="input-wrap">
+                                                                                <input type="number" placeholder="0000" min="0000" max="9999" value="1234" title="카드번호 두번째 4자리">
+                                                                            </div>
+                                                                            <div class="input-wrap">
+                                                                                <input type="number" placeholder="0000" min="0000" max="9999" value="1234" title="카드번호 세번째 4자리">
+                                                                            </div>
+                                                                            <div class="input-wrap">
+                                                                                <input type="number" placeholder="0000" min="0000" max="9999" value="1234" title="카드번호 네번째 4자리">
+                                                                            </div>
                                                                         </div>
                                                                     </dd>
                                                                 </dl>
