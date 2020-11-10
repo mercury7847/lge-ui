@@ -76,9 +76,9 @@
     }
 
     .plp-list-wrap {
-        max-width:1284px + (54px * 2);
+        max-width:1380px + 80;
         margin:0 auto;
-        padding: 0 54px 82px;
+        padding: 0 40px;
         @include clearfix;
 
         @include mobile {
@@ -97,16 +97,13 @@
                     .btn-text {
                         text-decoration:underline;
                     }
-                    @media screen and (max-width: 1780px) {
-                        display:none;
-                    }
                 }
             }
         }
 
-        .product-items-wrap {
+        .list-wrap {
             float: left;
-            max-width: (420px * 3) + 24px;
+            max-width: (372px * 3) + 24px;
             margin: 0 auto;
             @media screen and (max-width: 1284px) {
                 float: none;
