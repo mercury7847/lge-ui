@@ -20,27 +20,6 @@
         font-size:0;
         line-height:20px;
         cursor:pointer;
-        &::before {
-            display:none;
-            content:' ';
-            position:absolute;
-            left:28px;
-            bottom:6px;
-            width:15px;
-            height:15px;
-            background:url('/lg5-common/images/bg-tooltip-left.svg') 0 no-repeat;
-            z-index:100;
-            @include mobile {
-                top:20px;
-                left:50%;
-                bottom:initial;
-                width:20px;
-                height:12px;
-                margin-left:-10px;
-                background:url('/lg5-common/images/bg-tooltip-top.svg') 0 no-repeat;
-                background-size:100%;
-            }
-        }
     }
     &.active {
         .tooltip-icon::before {
@@ -50,10 +29,10 @@
     .tooltip-box {
         display:none;
         position:absolute;
-        left:0;
+        left:-8px;
         top:28px;
         min-width:460px;
-        padding:40px 50px 40px 32px;
+        padding:40px 32px;
         border-radius:8px;
         background:#fff;
         text-align:left;
@@ -66,7 +45,9 @@
         .bullet-list {
             color:#222;
             font-weight:500;
-            
+            &.only {
+                margin-top:0;
+            }
         }
         @include mobile {
             position:absolute;
@@ -74,7 +55,9 @@
             right:0;
             top:initial;
             bottom:initial;
-            margin-top:15px;
+            min-width:initial;
+            margin-top:8px;
+            padding:40px 16px;
             box-shadow:0 4px 10px 0 rgba(#111, .32);
         }
     }

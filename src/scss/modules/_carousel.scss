@@ -7,7 +7,7 @@
     height:56px;
     border-radius:50%;
     background:#fff;
-    box-shadow:0 4px 15px 0 rgba(187, 187, 187, 1);
+    box-shadow:0 4px 20px 0 rgba(0, 0, 0, 0.06);
     font-size:0;
     &::before {
         content:' '; 
@@ -97,7 +97,7 @@
         left:50%;
         width:100%;
         max-width:1600px;
-        margin-top:-18px;
+        margin-top:-28px;
         transform:translateX(-50%);
         z-index:10;
         button {
