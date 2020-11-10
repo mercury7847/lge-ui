@@ -1,10 +1,10 @@
 var CareCartInfo = (function() {
-    var subscriptionItemTemplate = '<li><span class="item-subtit">{{typeName}}</span>' +
+    var subscriptionItemTemplate = '<li><span class="item-subtit">{{type}}</span>' +
         '<strong class="item-tit">{{title}}</strong>' +
         '<div class="item-spec"><span>{{sku}}</span>' +
         '<span>월 {{salePrice}}원</span></div></li>'
     
-    var subscriptionDisableItemTemplate = '<li class="item-disabled"><span class="item-subtit">{{typeName}}</span>' +
+    var subscriptionDisableItemTemplate = '<li class="item-disabled"><span class="item-subtit">{{type}}</span>' +
         '<strong class="item-tit">{{title}}</strong>' +
         '<div class="item-spec"><span>{{sku}}</span>' +
         '<span>월 {{salePrice}}원</span></div>' +
@@ -51,7 +51,6 @@ var CareCartInfo = (function() {
     CareCartInfo.prototype = {
         updateData: function(data) {
             var self = this;
-            console.log(data.isLogin, self.$loginInfo);
             if(data.isLogin) {
                 self.$loginInfo.hide();
             } else {
@@ -59,6 +58,7 @@ var CareCartInfo = (function() {
             }
             self._updateItemInfo(data);
             self._updatePaymentInfo(data);
+            self._updateAgreement(data);
         },
 
         _updateItemInfo: function(data) {
@@ -128,6 +128,14 @@ var CareCartInfo = (function() {
             }
         },
 
+        _updateAgreement: function(data) {
+            var self = this;
+            var agreementData = data.agreement;
+            var hasCareship = agreementData.hasCareship;
+
+            self.$agreement.attr('data-has-careship',hasCareship);
+        },
+
         _bindEvents: function() {
             var self = this;
             
@@ -183,7 +191,15 @@ var CareCartInfo = (function() {
             var self = this;
             var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
             if(!$itemCheck.is(':not(:checked)')) {
-                $('#careship-subscription-popup').vcModal();
+                //동의서 모두 체크
+                console.log(self.$agreement.attr('data-has-careship'));
+                if(self.$agreement.attr('data-has-careship')) {
+                    //케어쉽 상품이 포함되어있는지 체크
+                    $('#careship-subscription-popup').vcModal();
+                } else {
+                    //포함되어 있지 않으면 바로 청약신청
+                    self._subscriptionItem();
+                }
             } else {
                 //동의서가 다 체크되지 않음
             }

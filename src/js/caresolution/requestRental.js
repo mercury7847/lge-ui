@@ -179,13 +179,61 @@
         });
 
 
-        step2Block.find('input[name=installInpuType]').on('change', function(e){
+        step2Block.on('change', 'input[name=installInpuType]', function(e){
             changeInstallInputType($(this).val());
+        }).on('change', 'input[name=preVisitRequest]', function(e){
+            changePrevisitRequest($(this).val());
+        }).on('change', 'input[name=preVisitAgree]', function(e){
+            var chk = $(this).prop('checked');
+            if(chk) $('#popup-previsit').vcModal();
+        }).on('click', '.input-mix-wrap .cell .btn-link', function(e){
+            e.preventDefault();
+            $('#popup-previsit').vcModal();
         });
 
-        step2Block.find('input[name=preVisitRequest]').on('change', function(e){
-            changePrevisitRequest($(this).val());
+        $('#popup-previsit').on('click', '.btn-group button.btn', function(e){
+            e.preventDefault();
+
+            var chk = $(this).index() ? true : false;
+            step2Block.find('input[name=preVisitAgree]').prop('checked', chk);
+
+            if(chk) $('#popup-previsit').vcModal('close');
         });
+
+
+        step3Block.on('change', 'input[name=cardApplyaAgree]', function(e){
+            var chk = $(this).prop('checked');
+            if(chk) $('#popup-cardApply').vcModal();
+        }).on('click', '.input-mix-wrap .cell .btn-link', function(e){
+            e.preventDefault();
+            $('#popup-cardApply').vcModal();
+        }).on('change', 'select[name=associatedCard]', function(e){
+            var chk = $(this).val() != "" ? false : true;
+            step3Block.find('.sendMessage').prop('disabled', chk);
+        }).on('change', 'select[name=paymentCard], input[name=paymentCardNumber], input[name=paymentCardPeriod]', function(e){
+            var chk = 0;
+            if(step3Block.find('select[name=paymentCard]').val() != "") chk++;
+            if(step3Block.find('input[name=paymentCardNumber]').val() != "") chk++;
+            if(step3Block.find('input[name=paymentCardPeriod]').val() != "") chk++;
+            
+            step3Block.find('.paymentCardConfirm').prop('disabled', chk < 3);
+        }).on('change', 'select[name=paymentBank], input[name=paymentBankNumber]', function(e){
+            var chk = 0;
+            if(step3Block.find('select[name=paymentBank]').val() != "") chk++;
+            if(step3Block.find('input[name=paymentBankNumber]').val() != "") chk++;
+            
+            step3Block.find('.paymentBankConfirm').prop('disabled', chk < 2);
+        });
+
+        $('#popup-cardApply').on('click', '.btn-group button.btn', function(e){
+            e.preventDefault();
+
+            var chk = $(this).index() ? true : false;
+            step3Block.find('input[name=cardApplyaAgree]').prop('checked', chk);
+
+            if(chk) $('#popup-cardApply').vcModal('close');
+        });
+
     }
 
     function setCreditInquire(){
