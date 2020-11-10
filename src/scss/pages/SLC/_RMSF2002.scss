@@ -8,7 +8,8 @@
     .txt-wrap {
         display:inline-block;
         width:100%;
-        max-width:1380px;
+        max-width:1380px + 80px;
+        padding:0 40px;
         vertical-align:middle;
         line-height:1;
         text-align:left;
@@ -23,13 +24,447 @@
             @include font-medium;
         }
     }
-}
-
-.cont-wrap {
-    .section {
-        width:100%;
-        max-width:initial;
-        margin-top:120px;
+    @include mobile {
+        height:270px;
+        background:url('/lg5-common/images/SLC/bg-visual-tit01-m.jpg') center bottom no-repeat;
+        background-size:cover;
+        .txt-wrap {
+            display:block;
+            max-width:70%;
+            padding:32px 16px;
+            .tit {
+                font-size:24px;
+                line-height:32px;
+            }
+            .tit-desc {
+                margin-top:12px;
+                word-break:keep-all;
+                br {
+                    display:none;
+                }
+            }
+        }
     }
 }
+
+.csn-tabs {
+    padding-top:64px;
+    @include mobile {
+        padding:24px 0;
+        text-align:center;
+    }
+}
+.csn-tab-contents {
+    padding-top:80px;
+    @include mobile {
+        padding-top:0;
+    }
+    .bar-type {
+        margin-top:32px;
+    }
+    .csn-itr-cont {
+        margin-top:64px;
+    }
+
+    .cont-wrap {
+        padding-bottom:120px;
+        @include mobile {
+            padding:0;
+        }
+        .section {
+            width:100%;
+            max-width:initial;
+            margin-top:120px;
+            @include mobile {
+                margin-top:0;
+                padding:32px 16px 60px;
+                border-top:12px solid #f4f4f4;
+            }
+            &:first-child {
+                margin-top:0;
+            }
+            .tit-wrap {
+                text-align:center;
+                .tit {
+                    font-size:36px;
+                    line-height:52px;
+                    font-weight:700;
+                    @include mobile {
+                        font-size:24px;
+                        line-height:32px;
+                    }
+                }
+                .desc {
+                    margin-top:16px;
+                    @include font-large;
+                    small {
+                        display:block;
+                        margin-top:8px;
+                        font-size:inherit;
+                        line-height:inherit;
+                    }
+                    @include mobile {
+                        margin-top:12px;
+                    }
+                }
+            }
+        }
+    }
+
+    .csn-intro {
+        position:relative;
+        dl {
+            position:absolute;
+            left:calc(49% + 64px);
+            top:50%;
+            transform:translateY(-50%);
+            dt {
+                color:#222;
+                font-size:32px;
+                line-height:52px;
+                font-weight:700;
+            }
+            dd {
+                width:100%;
+                max-width:430px;
+                margin-top:20px;
+                color:#222;
+                @include font-medium;
+                word-break:keep-all;
+            }
+        }
+        .img {
+            display:block;
+            width:49%;
+            border-radius:4px 0 0 4px;
+            img {
+                width:100%;
+                height:auto;
+                vertical-align:top;
+            }
+        }
+        @include mobile {
+            dl {
+                position:relative;
+                left:initial;
+                top:initial;
+                transform:translateY(0);
+                dt {
+                    font-size:24px;
+                    line-height:32px;
+                }
+                dd {
+                    margin-top:12px;
+                }
+            }
+            .img {
+                width:auto;
+                margin:32px -16px -60px;
+            }
+        }
+    }
+    
+    .csn-itr-cont {
+        padding:64px 48px 48px;
+        border-radius:8px;
+        background:#f4f4f4;
+        .csn-itr-head {
+            @include clearfix;
+            .csn-video {
+                position:relative;
+                float:left;
+                width:56.7%;
+                img {
+                    width:100%;
+                    height:auto;
+                    vertical-align:top;
+                }
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:0;
+                    right:0;
+                    bottom:0;
+                    left:0;
+                    background:rgba(#000, 0.4);
+                }
+                &::after {
+                    content:' ';
+                    position:absolute;
+                    top:50%;
+                    left:50%;
+                    width:68px;
+                    height:68px;
+                    margin-top:-34px;
+                    margin-left:-34px;
+                    background-image:url('/lg5-common/images/icons/icon-playbtn-68.png');
+                    background-size:100%;
+                }
+            }
+            .csn-prod-intro {
+                float:right;
+                width:calc(100% - 56.7% - 64px);
+                .video-tit {
+                    position:relative;
+                    margin-bottom:24px;
+                    padding-bottom:28px;
+                    @include font-large-2;
+                    font-weight:700;
+                    em {
+                        display:block;
+                        color:#767676;
+                    }
+                    &::after {
+                        content:' ';
+                        position:absolute;
+                        left:0;
+                        bottom:0;
+                        width:40px;
+                        height:4px;
+                        background:#222;
+                    }
+                }
+                .tit {
+                    @include font-medium;
+                    font-weight:700;
+                }
+                .desc {
+                    margin-top:24px;
+                    @include font-medium;
+                }
+            }
+        }
+        .csn-itr-body {
+            margin-top:64px;
+            padding-top:64px;
+            border-top:1px solid #ddd;
+            .csn-icon-list {
+                > ul {
+                    margin-top:-44px;
+                    margin-left:-50px;
+                    font-size:0;
+                    > li {
+                        display:inline-block;
+                        width:50%;
+                        margin-top:44px;
+                        padding-left:50px;
+                        dl {
+                            position:relative;
+                            max-width:522px;
+                            padding-left:112px;
+                            &::before {
+                                content:' ';
+                                position:absolute;
+                                top:7px;
+                                left:0;
+                                width:80px;
+                                height:80px;
+                                border-radius:50%;
+                                background-color:#fff;
+                                background-size:60px;
+                                background-repeat:no-repeat;
+                                background-position:center;
+                            }
+                            &.svc1-1::before {
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
+                            }
+                            &.svc1-2::before {
+                                background-image:url('/lg5-common/images/icons/icon-03-120.svg');
+                            }
+                            &.svc1-3::before {
+                                background-image:url('/lg5-common/images/icons/icon-06-120.svg');
+                            }
+                            &.svc1-4::before {
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
+                            }
+                            &.svc1-5::before {
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
+                            }
+                            dt {
+                                position:relative;
+                                font-size:0;
+                                p {
+                                    display:inline-block;
+                                    @include font-large-1;
+                                    font-weight:700;
+                                    vertical-align:top;
+                                }
+                                .tooltip-wrap {
+                                    margin-top:3px;
+                                    margin-left:4px;
+                                    vertical-align:top;
+                                }
+                            }
+                            dd {
+                                margin-top:12px;
+                                @include font-medium;
+                                word-break:keep-all;
+                            }
+                        }
+                    }
+                }
+            }
+            > .bullet-list {
+                margin-top:64px;
+            }
+        }
+    }
+    
+    .gray-block-wrap {
+        display:table;
+        width:auto;
+        margin:48px auto 0;
+        table-layout:fixed;
+        border-collapse:separate;
+        border-spacing:24px 0;
+        .blocks {
+            display:table-cell;
+            width:444px;
+            padding:36px;
+            border-radius:8px;
+            background:#f4f4f4;
+            vertical-align:middle;
+            dl {
+                text-align:center;
+                dt {
+                    font-size:0;
+                    .tit {
+                        display:inline-block;
+                        @include font-medium;
+                        font-weight:700;
+                        vertical-align:top;
+                    }
+                    .tooltip-wrap {
+                        margin:2px 0 0 4px;
+                        vertical-align:top;
+                    }
+                }
+                dd {
+                    margin-top:8px;
+                    @include font-medium;
+                    &.num {
+                        margin-top:16px;
+                        color:#EC455A;
+                        @include font-large-1;
+                        font-weight:700;
+                    }
+                }
+            }
+        }
+    }
+    
+    .csn-ars-svc {
+        margin-top:64px;
+        font-size:0;
+        text-align:center;
+        > li {
+            position:relative;
+            display:inline-block;
+            width:30%;
+            max-width:327px;
+            margin:0 12px;
+            padding-top:100px;
+            vertical-align:top;
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:0;
+                    left:50%;
+                    width:80px;
+                    height:80px;
+                    margin-left:-40px;
+                    background:url("/lg5-common/images/icons/icon-09-80.svg") center no-repeat;
+                }
+            .tit {
+                display:inline-block;
+                @include font-large-1;
+                font-weight:700;
+            }
+            dl {
+                dt {
+                    font-size:0;
+                    text-align:center;
+                    .tooltip-wrap {
+                        margin:2px 0 0 4px;
+                        vertical-align:top;
+                    }
+                }
+                dd {
+                    margin-top:12px;
+                    @include font-medium;
+                    word-break:keep-all;
+                }
+            }
+        }
+    }
+    .csn-ars-bottom {
+        padding:64px 40px;
+        background:#f4f4f4;
+        .inner {
+            display:table;
+            width:912px;
+            margin:0 auto;
+            .txt-cell {
+                display:table-cell;
+                vertical-align:middle;
+                .tit {
+                    @include font-large-1;
+                    font-weight:700;
+                }
+                .desc {
+                    margin-top:16px;
+                    @include font-medium;
+                    small {
+                        display:block;
+                        margin-top:8px;
+                        color:#767676;
+                        @include font-small;
+                    }
+                }
+            }
+            .img-cell {
+                display:table-cell;
+                vertical-align:middle;
+                text-align:right;
+                img {
+                    width:100%;
+                    max-width:162px;
+                    height:auto;
+                    vertical-align:middle;
+                }
+            }
+        }
+    }
+
+    .csn-tooltips {
+        ol {
+            > li {
+                margin-top:24px;
+                &:first-child {
+                    margin-top:0;
+                }
+                .bullet-list {
+                    font-size:0;
+                    > li {
+                        display:inline-block;
+                        width:50%;
+                        margin-top:8px;
+                        vertical-align:top;
+                        @include font-small;
+                        &::before {
+                            background:#222;
+                        }
+                    }
+                }
+            }
+            p {
+                margin-bottom:8px;
+                @include font-small;
+            }
+        }
+    }
+}
+
+
+
 
