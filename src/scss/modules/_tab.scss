@@ -125,10 +125,17 @@
     // H3
     &.bar-type {
         .tabs {
+            @include mobile {
+                padding:0 16px;
+            }
             > li {
                 position:relative;
                 margin-left:16px;
                 padding-left:17px;
+                @include mobile {
+                    margin-left:12px;
+                    padding-left:13px;
+                }
                 &::before {
                     content:' ';
                     position:absolute;
