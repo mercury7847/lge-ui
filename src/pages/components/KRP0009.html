@@ -31,7 +31,12 @@
                     <div class="plp-list-wrap" data-prod-list="/lg5-common/data-ajax/filter/retrieveCategoryProductList.json">
                         <!-- component -->
                         
-                       @@include('./common/modules/list-filter.html')
+                       @@include('./common/modules/list-filter.html', {
+                           "btmBoxLink" : [
+                                {"text" : "케어솔루션 신청"},
+                                {"text" : "매장 방문 예약"}
+                           ]
+                       })
                         <!-- // component -->
                         <!-- component -->
                         @@include('./common/partials/KRP0009-list.html', {

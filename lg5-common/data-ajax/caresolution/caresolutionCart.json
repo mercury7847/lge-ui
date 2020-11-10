@@ -3,9 +3,8 @@
     "message": null,
     "data": {
         "isLogin": true,
-        "total":{
-            "count": "3",
-            "price": "98600"
+        "agreement": {
+            "hasCareship":true
         },
         "paymentInfo": {
             "total":{
@@ -38,8 +37,7 @@
             {
                 "itemID": "item00001",
                 "available": false,
-                "type": "caresolution",
-                "typeName": "렌탈(케어솔루션)",
+                "type": "렌탈(케어솔루션)",
                 "wish": false,
                 "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
                 "imageAlt": "S5MBR",
@@ -56,13 +54,13 @@
                 "originalPrice": "61400",
                 "tooltip": "툴팁내용",
                 "subscriptionUrl": null,
-                "itemUrl":"#"
+                "itemUrl":"#",
+                "tipUrl":"/lg5-common/data-ajax/caresolution/caresolutionTip.html"
             },
             {
                 "itemID": "item00002",
                 "available": true,
-                "type": "careship",
-                "typeName": "케어십",
+                "type": "케어십",
                 "wish": true,
                 "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
                 "imageAlt": "S5MBR",
@@ -79,7 +77,8 @@
                 "originalPrice" : "61500",
                 "tooltip":"툴팁내용",
                 "subscriptionUrl":"#청약url",
-                "itemUrl":"#"
+                "itemUrl":"#",
+                "tipUrl":"/lg5-common/data-ajax/caresolution/caresolutionTip.html"
             }
         ]
     }
