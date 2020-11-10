@@ -31,11 +31,11 @@
                 <p class="code-txt">@@codeTxt</p>
                 }
                 @@if(context.colorSet) {
-                <dl><!-- 셀렉트 선택 시 open 클래스 추가 -->
+                <dl class="disabled"><!-- 단일 항목 인 경우 disabled 클래스 추가 -->
                     <dt>색상</dt>
                     <dd>
                         <div class="sort-select-wrap">
-                            <select class="ui_selectbox" id="@@colorId" title="색상 선택">
+                            <select class="ui_selectbox" id="@@colorId" title="색상 선택" disabled><!-- 단일 항목인 경우 disabled -->
                                 @@for (var i = 0; i < context.colorSet.length; i++) {
                                 <option value="">`+colorSet[i].title+`</option>
                                 }
