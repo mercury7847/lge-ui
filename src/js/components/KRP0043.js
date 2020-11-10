@@ -13,23 +13,37 @@ $(window).ready(function(){
 
             this.bindEvent();
         },
+        searchModel: function(val, $box) {
+            var $activeItem = $box.find('li:contains("' + val + '")');
+
+            if ($activeItem.length > 0) {
+                $activeItem.show();
+                $box.find('li').not($activeItem).hide();
+                $box.find('.list-wrap').show();
+                $box.find('.no-data').hide();
+            } else {
+                $box.find('.list-wrap').hide();
+                $box.find('.no-data').show();
+            }
+        },
         bindEvent: function() {
             var _self = this;
 
-            _self.$btnSearch.on('click', function() {
-                var val = _self.$input.val().toUpperCase(),
-                    $box = $(this).closest('.product-area'),
-                    $activeItem = $box.find('li:contains("' + val + '")');
-
-                if ($activeItem.length > 0) {
-                    $activeItem.show();
-                    $box.find('li').not($activeItem).hide();
-                    $box.find('.list-wrap').show();
-                    $box.find('.no-data').hide();
-                } else {
-                    $box.find('.list-wrap').hide();
-                    $box.find('.no-data').show();
+            _self.$input.on('keydown', function(e) {
+                var $box = $(this).closest('.product-area'),
+                    param = $(this).val().toUpperCase();
+                
+                if (e.keyCode == 13) {
+                    _self.searchModel(param, $box);
                 }
+            });
+
+            _self.$btnSearch.on('click', function() {
+                var $box = $(this).closest('.product-area'),
+                    param = _self.$input.val().toUpperCase();
+                    
+
+                _self.searchModel(param, $box);    
             });
         }
     }
