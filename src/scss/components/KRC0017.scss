@@ -120,14 +120,22 @@
         a {
             display:block;
             position:relative;
+            height:0;
+            padding-bottom:100%;
             img {
+                position:absolute;
+                top:0;
+                right:0;
+                bottom:0;
+                left:0;
                 width:100%;
-                height:auto;
+                height:100%;
                 vertical-align:top;
             }
         }
         &.video {
             .see-video:before {
+                z-index:1;
                 width:32px;
                 height:32px;
                 margin:-16px 0 0 -16px;
