@@ -1,3 +1,10 @@
+// common
+br.m {
+    display:none;
+    @include mobile {
+        display:block;
+    }
+}
 // visual title
 .visual-tit-wrap {
     position:relative;
@@ -61,9 +68,15 @@
     }
     .bar-type {
         margin-top:32px;
+        @include mobile {
+            margin-top:24px;
+        }
     }
     .csn-itr-cont {
         margin-top:64px;
+        @include mobile {
+            margin-top:16px;
+        }
     }
 
     .cont-wrap {
@@ -85,6 +98,9 @@
             }
             .tit-wrap {
                 text-align:center;
+                @include mobile {
+                    text-align:left;
+                }
                 .tit {
                     font-size:36px;
                     line-height:52px;
@@ -102,15 +118,21 @@
                         margin-top:8px;
                         font-size:inherit;
                         line-height:inherit;
+                        @include mobile {
+                            margin-top:0;
+                        }
                     }
                     @include mobile {
                         margin-top:12px;
+                        font-size:14px;
+                        line-height:22px;
                     }
                 }
             }
         }
     }
 
+    // 케어솔루션이란?
     .csn-intro {
         position:relative;
         dl {
@@ -164,16 +186,28 @@
         }
     }
     
+    // 제품별 케어솔루션 혜택 탭 컨텐츠
     .csn-itr-cont {
-        padding:64px 48px 48px;
+        padding:64px 48px;
         border-radius:8px;
         background:#f4f4f4;
+        @include mobile {
+            padding:24px 12px;
+            border-radius:4px;
+        }
         .csn-itr-head {
             @include clearfix;
             .csn-video {
+                display:block;
                 position:relative;
                 float:left;
                 width:56.7%;
+                @include mobile {
+                    float:none;
+                    width:100%;
+                    border-radius:4px;
+                    overflow:hidden;
+                }
                 img {
                     width:100%;
                     height:auto;
@@ -204,12 +238,21 @@
             .csn-prod-intro {
                 float:right;
                 width:calc(100% - 56.7% - 64px);
+                @include mobile {
+                    float:none;
+                    width:100%;
+                    margin-top:16px;
+                }
                 .video-tit {
                     position:relative;
                     margin-bottom:24px;
                     padding-bottom:28px;
                     @include font-large-2;
                     font-weight:700;
+                    @include mobile {
+                        margin-bottom:12px;
+                        padding-bottom:20px;
+                    }
                     em {
                         display:block;
                         color:#767676;
@@ -231,6 +274,9 @@
                 .desc {
                     margin-top:24px;
                     @include font-medium;
+                    @include mobile {
+                        margin-top:8px;
+                    }
                 }
             }
         }
@@ -238,24 +284,52 @@
             margin-top:64px;
             padding-top:64px;
             border-top:1px solid #ddd;
+            @include mobile {
+                margin-top:40px;
+                padding-top:32px;
+            }
+            &:first-child {
+                margin-top:0;
+                padding-top:0;
+                border-top:none;
+            }
             .csn-icon-list {
                 > ul {
                     margin-top:-44px;
                     margin-left:-50px;
                     font-size:0;
+                    @include mobile {
+                        margin-top:0;
+                        margin-left:0;
+                    }
                     > li {
                         display:inline-block;
                         width:50%;
                         margin-top:44px;
                         padding-left:50px;
+                        @include mobile {
+                            display:block;
+                            width:100%;
+                            margin-top:32px;
+                            padding-left:0;
+                            &:first-child {
+                                margin-top:0;
+                            }
+                        }
                         dl {
                             position:relative;
                             max-width:522px;
+                            min-height:80px;
                             padding-left:112px;
+                            @include mobile {
+                                max-width:100%;
+                                min-height:60px;
+                                padding-left:80px;
+                            }
                             &::before {
                                 content:' ';
                                 position:absolute;
-                                top:7px;
+                                top:0;
                                 left:0;
                                 width:80px;
                                 height:80px;
@@ -264,6 +338,13 @@
                                 background-size:60px;
                                 background-repeat:no-repeat;
                                 background-position:center;
+                                @include mobile {
+                                    top:50%;
+                                    width:60px;
+                                    height:60px;
+                                    margin-top:-30px;
+                                    background-size:40px;
+                                }
                             }
                             &.svc1-1::before {
                                 background-image:url('/lg5-common/images/icons/icon-01-120.svg');
@@ -278,6 +359,21 @@
                                 background-image:url('/lg5-common/images/icons/icon-01-120.svg');
                             }
                             &.svc1-5::before {
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
+                            }
+                            &.mng1::before {
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
+                            }
+                            &.mng2::before {
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
+                            }
+                            &.mng3::before {
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
+                            }
+                            &.mng4::before {
+                                background-image:url('/lg5-common/images/icons/icon-01-120.svg');
+                            }
+                            &.mng5::before {
                                 background-image:url('/lg5-common/images/icons/icon-01-120.svg');
                             }
                             dt {
@@ -306,10 +402,14 @@
             }
             > .bullet-list {
                 margin-top:64px;
+                @include mobile {
+                    margin-top:40px;
+                }
             }
         }
     }
     
+    // gray block modules
     .gray-block-wrap {
         display:table;
         width:auto;
@@ -317,6 +417,11 @@
         table-layout:fixed;
         border-collapse:separate;
         border-spacing:24px 0;
+        @include mobile {
+            display:block;
+            width:100%;
+            margin-top:32px;
+        }
         .blocks {
             display:table-cell;
             width:444px;
@@ -324,8 +429,18 @@
             border-radius:8px;
             background:#f4f4f4;
             vertical-align:middle;
+            @include mobile {
+                display:block;
+                width:100%;
+                margin-top:12px;
+                padding:20px;
+                border-radius:4px;
+            }
             dl {
                 text-align:center;
+                @include mobile {
+                    text-align:left;
+                }
                 dt {
                     font-size:0;
                     .tit {
@@ -347,6 +462,10 @@
                         color:#EC455A;
                         @include font-large-1;
                         font-weight:700;
+                        @include mobile {
+                            margin-top:4px;
+                            text-align:right;
+                        }
                     }
                 }
             }
@@ -357,24 +476,42 @@
         margin-top:64px;
         font-size:0;
         text-align:center;
+        @include mobile {
+            margin-top:32px;
+            text-align:left;
+        }
         > li {
             position:relative;
             display:inline-block;
             width:30%;
             max-width:327px;
-            margin:0 12px;
-            padding-top:100px;
+            padding:100px 12px 0;
             vertical-align:top;
-                &::before {
-                    content:' ';
-                    position:absolute;
-                    top:0;
-                    left:50%;
-                    width:80px;
-                    height:80px;
-                    margin-left:-40px;
-                    background:url("/lg5-common/images/icons/icon-09-80.svg") center no-repeat;
+            @include mobile {
+                display:block;
+                width:100%;
+                max-width:initial;
+                min-height:80px;
+                margin:32px 0 0;
+                padding:4px 92px 4px 0;
+            }
+            &::before {
+                content:' ';
+                position:absolute;
+                top:0;
+                left:50%;
+                width:80px;
+                height:80px;
+                margin-left:-40px;
+                background:url("/lg5-common/images/icons/icon-09-80.svg") center no-repeat;
+                @include mobile {
+                    top:50%;
+                    left:auto;
+                    right:0;
+                    margin-top:-40px;
+                    margin-left:0;
                 }
+            }
             .tit {
                 display:inline-block;
                 @include font-large-1;
@@ -384,6 +521,9 @@
                 dt {
                     font-size:0;
                     text-align:center;
+                    @include mobile {
+                        text-align:left;
+                    }
                     .tooltip-wrap {
                         margin:2px 0 0 4px;
                         vertical-align:top;
@@ -397,16 +537,28 @@
             }
         }
     }
+
+    // 앱 qr
     .csn-ars-bottom {
         padding:64px 40px;
         background:#f4f4f4;
+        @include mobile {
+            padding:32px 16px;
+        }
         .inner {
             display:table;
             width:912px;
             margin:0 auto;
+            @include mobile {
+                display:block;
+                width:auto;
+            }
             .txt-cell {
                 display:table-cell;
                 vertical-align:middle;
+                @include mobile {
+                    display:block;
+                }
                 .tit {
                     @include font-large-1;
                     font-weight:700;
@@ -426,11 +578,31 @@
                 display:table-cell;
                 vertical-align:middle;
                 text-align:right;
+                @include mobile {
+                    display:none;
+                }
                 img {
                     width:100%;
                     max-width:162px;
                     height:auto;
                     vertical-align:middle;
+                }
+            }
+            .appstore-btn {
+                display:inline-block;
+                font-size:0;
+            }
+            @include mobile {
+                .appstore-btn {
+                    display:inline-block;
+                    margin-top:32px;
+                    padding:17px 23px;
+                    border:1px solid #222;
+                    border-radius:30px;
+                    color:#222;
+                    font-size:16px;
+                    line-height:24px;
+                    font-weight:500;
                 }
             }
         }
@@ -460,6 +632,76 @@
             p {
                 margin-bottom:8px;
                 @include font-small;
+            }
+        }
+    }
+
+    // 케어솔루션 매니저 역할
+    .csn-mngs-info {
+        margin-top:48px;
+        overflow:hidden;
+        @include mobile {
+            margin-top:24px;
+        }
+        > ul {
+            margin:0 -12px;
+            font-size:0;
+            @include mobile {
+                margin:0;
+            }
+            li {
+                display:inline-block;
+                vertical-align:top;
+                width:calc(100% / 3);
+                padding:0 12px;
+                > img {
+                    display:block;
+                    width:100%;
+                    height:auto;
+                }
+                dl {
+                    margin-top:32px;
+                    text-align:center;
+                    dt {
+                        @include font-large-1;
+                        font-weight:700;
+                        @include mobile {
+                            font-size:16px;
+                            line-height:24px;
+                        }
+                    }
+                    dd {
+                        margin-top:12px;
+                        @include font-medium;
+                        @include mobile {
+                            margin-top:8px;
+                        }
+                    }
+                }
+                @include mobile {
+                    display:block;
+                    position:relative;
+                    width:100%;
+                    min-height:78px;
+                    margin-top:12px;
+                    padding:12px 0;
+                    padding-left:124px;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                    > img {
+                        position:absolute;
+                        top:50%;
+                        left:0;
+                        width:104px;
+                        margin-top:-39px;
+                        border-radius:4px;
+                    }
+                    dl {
+                        margin-top:0;
+                        text-align:left;
+                    }
+                }
             }
         }
     }
