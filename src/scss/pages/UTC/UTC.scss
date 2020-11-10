@@ -284,6 +284,7 @@
             width: 180px;
             display:inline-block;
             padding-right: 24px;
+            font-size:0;
             vertical-align: middle;
             .price {
                 display: inline-block;
@@ -303,7 +304,7 @@
                 display: inline-block;
                 width:16px;
                 height:16px;
-                margin-bottom: 6px;
+                margin:0 0 6px 4px;
                 background:url("/lg5-common/images/icons/icon-tooltip.svg") center no-repeat;
                 vertical-align:bottom;
             }

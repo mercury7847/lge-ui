@@ -12,7 +12,7 @@ $(document).ready(function() {
         '       <img src="{{largeImgURL}}" alt="{{alt}}">'+
         '   </a>'+
         '   <p class="hidden">{{accDesc}}</p>'+
-        '   <div class="caption{{#if videoTitleColor != ""}} videoTitleColor{{/if}}">{{videoTitle}}</div>'+
+        '   <div class="caption {{#if videoTitleColor != ""}}{{videoTitleColor}}{{/if}}">{{videoTitle}}</div>'+
         '</div>';
 
     var aniboxTemplate = 
@@ -21,14 +21,14 @@ $(document).ready(function() {
          '   <img src="{{largeImgURL}}" alt="{{alt}}">'+
          '   <p class="hidden">{{accDesc}}</p>'+
          '   <div class="animation-area">'+
-         '       <video loop{{#if videoAutoplay}} autoplay{{/if}}{{#if videoMuted}} muted{{/if}}>'+
+         '       <video loop muted{{#if videoAutoplay}} autoplay{{/if}}>'+
          '           <source src="{{aniSrc}}" type="video/mp4">'+
          '       </video>'+
          '       <div class="controller-wrap wa-btn">'+
          '           <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" aria-describedby="{{ariaDesc}}">Pause Video</button>'+
          '       </div>'+
          '   </div>'+
-         '   <div class="caption{{#if videoTitleColor != ""}} videoTitleColor{{/if}}">{{aniTitle}}</div>'+
+         '   <div class="caption {{#if videoTitleColor != ""}}{{videoTitleColor}}{{/if}}">{{aniTitle}}</div>'+
          '</div>';
 
     var defaultTemplate =
@@ -57,7 +57,7 @@ $(document).ready(function() {
             if($(this).data('type') == 'youtube'){
                 var videoID = $(this).data('video-id');
                 var videoTitle = $(this).data('video-title');
-                var videoTitleColor = $(this).data('titleColor') || "";
+                var videoTitleColor = $(this).data('title-color') || "";
 
                 html = vcui.template(youtubeTemplate, {
                     videoID: videoID,
@@ -77,7 +77,7 @@ $(document).ready(function() {
                 var aniTitle = $(this).data('title');
                 var videoTitleColor = $(this).data('titleColor') || "";
                 var videoAutoplay = ($(this).attr("data-autoplay") == "true");
-                var videoMuted = ($(this).attr("data-muted")  == "true");
+                //var videoMuted = ($(this).attr("data-muted")  == "true");
 
                 html = vcui.template(aniboxTemplate, {
                     aniSrc: aniSrc,
@@ -86,7 +86,7 @@ $(document).ready(function() {
                     videoTitleColor: videoTitleColor,
                     largeImgURL: largeImgURL,
                     videoAutoplay: videoAutoplay,
-                    videoMuted: videoMuted,
+                    //videoMuted: videoMuted,
                     ariaDesc: ariaDesc,
                     alt: alt,
                     accDesc: accDesc
