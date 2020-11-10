@@ -6,22 +6,20 @@
     @@if (!context.search) {
     <div class="item">
     }
-        @@if (context.badgeType === "thin") {
-        <div class="badge-wrap thin-type">
-            <span class="badge">코리아세일페스파</span>
+        @@if (context.badge) {
+        <div class="badge">
+            <div class="flag-wrap image-type left">
+                @@badge
+            </div>
         </div>
         }
-        @@if (context.badgeType === "large") {
-        <!-- <div class="badge-wrap">
-            <img src="/lg5-common/images/dummy/@img-promotion-badge.png" alt="으뜸효율 10%">
-        </div> -->
-        <div class="badge-wrap big-flag green type2 left"><span>으뜸효율<br><em>10%</em></span></div>
-        }
-        @@if (context.badgeType === "lgRed") {
-        <div class="badge-wrap big-flag red type1 left"><span>멤버십<br>포인트</span></div>
-        }
         <div class="product-image" aria-hidden="true">
-            <a href="#"><img src="@@img" alt=""></a>
+            @@include('./common/partials/KRP0009-carousel.html', {
+                "slideArr" : [
+                    {"visual" : "/lg5-common/images/dummy/@img-product.jpg"},
+                    {"visual" : "/lg5-common/images/dummy/@img-product2.jpg"}
+                ]
+            })
         </div>
         <div class="product-contents">
             @@if (context.optionColor) {
@@ -74,8 +72,8 @@
             }
             @@if (context.flags) {
                 @@include('./common/modules/flags.html', {
-                    "borderType": true,
-                    "flags": ["NEW","BEST","케어십"]
+                    "barType": true,
+                    "flags": ["NEW","BEST"]
                 })
             }
             <div class="product-info">
@@ -119,23 +117,29 @@
                 <p class="spec-info2">적용모델 : H-62HSGAKOR 외 </p>
                 }
             </div>
+            @@if (context.benefit) {
+            @@include('./common/modules/flags.html', {
+                "barType": true,
+                "flags": ["캐시백","사은품"]
+            })
+            }
             @@if (context.price) {
             <div class="price-area">
-                <div class="total-price">
-                    <em class="blind">최대 혜택가격</em>
+                <div class="total">
+                    <em class="blind">총 판매가격</em>
                     <span class="price">4,420,000<em>원</em></span>
                 </div>
                 <div class="product-price">
                     @@if (context.originalPrice) {
-                    <div class="purchase-price">
+                    <div class="original">
                         <em class="blind">판매가격</em>
                         <span class="price">5,200,000<em>원</em></span>
                     </div>
                     }
-                    <div class="discount-rate">
+                    <!--<div class="discount">
                         <em class="blind">할인율</em>
                         <span class="price">15<em>%</em></span>
-                    </div>
+                    </div>-->
                 </div>
             </div>
             }
@@ -146,13 +150,6 @@
                     <span class="price"><em>월</em> 32,900<em>원</em></span>
                 </div>
                 <span class="small-text">(3개월/1회 방문)</span>
-            </div>
-            }
-            @@if (context.benefit) {
-            <div class="badge-benefit">
-                <span class="text">3%할인</span>
-                <span class="text">사은품</span>
-                <span class="text">캐시백</span>
             </div>
             }
             @@if (context.hashtag) {
@@ -172,15 +169,29 @@
         }
         @@if (context.compare) {
         <div class="product-compare">
-            <span class="chk-wrap">
-                <input type="checkbox" id="@@compare.id" name="@@compare.name" @@compare.checked>
-                <label for="@@compare.id"><span class="blind">비교하기</span></label>
-            </span>
+            @@compare
+        </div>
+        }
+        @@if (context.singleButton) {
+        <div class="product-button">
+            <a href="#n" class="btn border">@@singleButton</a>
         </div>
         }
         @@if (context.button) {
-        <div class="product-button">
-            <a href="#n" class="btn">@@buttonName</a>
+        <div class="product-bottom">
+            <div class="wishlist">
+                <span class="chk-wish-wrap large">
+                    <input type="checkbox" id="@@wishlist.id" name="@@wishlist.name" @@wishlist.checked>
+                    <label for="@@wishlist.id"><span class="blind">찜하기</span></label>
+                </span>
+            </div>
+            <div class="cart">
+                <!-- 비활성화 시 .disabled 추가 -->
+                <a href="#n" class="btn-cart"><span class="blind">장바구니 담기</span></a>
+            </div>
+            <div class="button">
+                <a href="#n" class="btn border">@@button</a>
+            </div>
         </div>
         }
     </div>
@@ -209,10 +220,12 @@
                 }
                 <div class="banner-info">
                     <div class="title">@@banner.title</div>
+                    @@if(context.banner.copy) {
                     <div class="sub-copy">@@banner.copy</div>
+                    }
                 </div>
                 <div class="banner-button">
-                    <a href="#n" class="btn">@@banner.button</a>
+                    <a href="#n" class="btn border">@@banner.button</a>
                 </div>
             </div>
         </div>

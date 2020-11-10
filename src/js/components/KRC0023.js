@@ -19,7 +19,8 @@ $(window).ready(function(){
             var largeImgURL = $(this).find('img').data('large');
             var ariaDesc = $(this).attr('aria-describedby');
             var alt = $(this).find('img').attr('alt').replace(/\&quot\;/gi, '\'\'').replace(/"/g, '\'\'');
-            
+            var accDesc = $(this).data('acc-desc') || "";
+            console.log("acc",accDesc);
             appendElement.find('.visual-area').remove();
     
             var html = "";
@@ -27,7 +28,7 @@ $(window).ready(function(){
                 var videoID = $(this).data('video-id');
                 var videoTitle = $(this).data('video-title');
                 var videoTitleColor = $(this).data('title-color') || "";
-    
+                
                 html += '<div class="visual-area video youtube-box">';
                 html += '   <a href="#none" role="button" data-src="https://www.youtube.com/embed/';
                 html += videoID + '" class="see-video acc-video-content" title="Opens in a new layer popup" data-type="youtube" data-player="default" data-target="modal" aria-describedby="' + ariaDesc + '">plays audio description video</a>'
@@ -35,7 +36,7 @@ $(window).ready(function(){
                 html += videoID + '" class="see-video" data-type="youtube" data-target="modal" aria-describedby="' + ariaDesc + '">';
                 html += '       <img src="' + largeImgURL + '" alt="' + alt + '">';
                 html += '   </a>';
-                html += '   <p class="hidden">' + videoTitle + '</p>';
+                html += '   <p class="hidden">' + accDesc + '</p>';
                 html += '   <div class="caption ' + videoTitleColor +'">' + videoTitle + '</div>';
                 html += '</div>';
                 appendElement.prepend(html);
@@ -49,7 +50,7 @@ $(window).ready(function(){
                 html += '<div class="visual-area animation-box">';
                 html += '   <a href="#none" role="button" data-src="' + aniAccSrc + '" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>';
                 html += '   <img src="' + largeImgURL + '" alt="">';
-                html += '   <p class="hidden">graphic description : </p>';
+                html += '   <p class="hidden">' + accDesc + '</p>';
                 html += '   <div class="animation-area">';
                 html += '       <video loop muted' +  ($(this).attr('data-autoplay')=="true"?' autoplay':'')  /*+ ($(this).attr(' data-muted')=="true"?'muted':'')*/ + '>';
                 html += '           <source src="' + aniSrc + '" type="video/mp4">';
@@ -66,7 +67,7 @@ $(window).ready(function(){
             } else{
                 html += '<div class="visual-area">'
                 html += '   <img src="' + largeImgURL + '" alt="' + alt + '"/>';
-                html += '   <p class="hidden">' + alt + '</p>';
+                html += '   <p class="hidden">' + accDesc + '</p>';
                 html += '</div>';
                 appendElement.prepend(html);
             }      

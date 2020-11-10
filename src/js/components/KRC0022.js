@@ -12,7 +12,7 @@ $(document).ready(function() {
         '       <img src="{{largeImgURL}}" alt="{{alt}}">'+
         '   </a>'+
         '   <p class="hidden">{{accDesc}}</p>'+
-        '   <div class="caption {{#if videoTitleColor != ""}}{{videoTitleColor}}{{/if}}">{{videoTitle}}</div>'+
+        '   <div class="caption {{#if videoTitleColor}}{{videoTitleColor}}{{/if}}">{{videoTitle}}</div>'+
         '</div>';
 
     var aniboxTemplate = 
@@ -28,7 +28,7 @@ $(document).ready(function() {
          '           <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" aria-describedby="{{ariaDesc}}">Pause Video</button>'+
          '       </div>'+
          '   </div>'+
-         '   <div class="caption {{#if videoTitleColor != ""}}{{videoTitleColor}}{{/if}}">{{aniTitle}}</div>'+
+         '   <div class="caption {{#if videoTitleColor}}{{videoTitleColor}}{{/if}}">{{aniTitle}}</div>'+
          '</div>';
 
     var defaultTemplate =
@@ -48,7 +48,8 @@ $(document).ready(function() {
             var ariaDesc = $(this).attr('aria-describedby');
             var alt = $(this).find('img').attr('alt').replace(/\&quot\;/gi, '\'\'').replace(/"/g, '\'\'');
             
-            var accDesc = $(this).data('accDesc') || "";
+            var accDesc = $(this).data('acc-desc') || "";
+            console.log("acc2",accDesc);
             
             var appendElement = $(item).find('.visual-set');
             appendElement.find('.visual-area').remove();
@@ -57,7 +58,7 @@ $(document).ready(function() {
             if($(this).data('type') == 'youtube'){
                 var videoID = $(this).data('video-id');
                 var videoTitle = $(this).data('video-title');
-                var videoTitleColor = $(this).data('title-color') || "";
+                var videoTitleColor = $(this).data('title-color');
 
                 html = vcui.template(youtubeTemplate, {
                     videoID: videoID,
@@ -75,7 +76,7 @@ $(document).ready(function() {
                 var aniSrc = $(this).data('src');
                 var aniAccSrc = $(this).data('accSrc');
                 var aniTitle = $(this).data('title');
-                var videoTitleColor = $(this).data('titleColor') || "";
+                var videoTitleColor = $(this).data('title-color');
                 var videoAutoplay = ($(this).attr("data-autoplay") == "true");
                 //var videoMuted = ($(this).attr("data-muted")  == "true");
 
