@@ -12,7 +12,7 @@ $(document).ready(function() {
         '       <img src="{{largeImgURL}}" alt="{{alt}}">'+
         '   </a>'+
         '   <p class="hidden">{{accDesc}}</p>'+
-        '   <div class="caption {{#if videoTitleColor != ""}}{{videoTitleColor}}{{/if}}">{{videoTitle}}</div>'+
+        '   <div class="caption {{#if videoTitleColor}}{{videoTitleColor}}{{/if}}">{{videoTitle}}</div>'+
         '</div>';
 
     var aniboxTemplate = 
@@ -28,7 +28,7 @@ $(document).ready(function() {
          '           <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" aria-describedby="{{ariaDesc}}">Pause Video</button>'+
          '       </div>'+
          '   </div>'+
-         '   <div class="caption {{#if videoTitleColor != ""}}{{videoTitleColor}}{{/if}}">{{aniTitle}}</div>'+
+         '   <div class="caption {{#if videoTitleColor}}{{videoTitleColor}}{{/if}}">{{aniTitle}}</div>'+
          '</div>';
 
     var defaultTemplate =
@@ -75,7 +75,7 @@ $(document).ready(function() {
                 var aniSrc = $(this).data('src');
                 var aniAccSrc = $(this).data('accSrc');
                 var aniTitle = $(this).data('title');
-                var videoTitleColor = $(this).data('titleColor') || "";
+                var videoTitleColor = $(this).data('title-color') || "";
                 var videoAutoplay = ($(this).attr("data-autoplay") == "true");
                 //var videoMuted = ($(this).attr("data-muted")  == "true");
 
