@@ -1,14 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon-reset-20</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="icon_reset">
-            <rect id="Rectangle" x="0" y="0" width="20" height="20"></rect>
-            <g id="Group-50" transform="translate(4.000000, 2.000000)">
-                <g id="Group-54">
-                    <g id="Group-55">
-                        <path d="M6,3 C2.6862915,3 0,5.6862915 0,9 C0,12.3137085 2.6862915,15 6,15 C9.3137085,15 12,12.3137085 12,9 C12,8.09616993 11.8001528,7.23901668 11.4422363,6.47031822" id="Path" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(6.000000, 9.000000) rotate(-360.000000) translate(-6.000000, -9.000000) "></path>
-                        <path d="M8,2.20710678 L8,4.5 C8,4.77614237 7.77614237,5 7.5,5 L5.20710678,5 C4.93096441,5 4.70710678,4.77614237 4.70710678,4.5 C4.70710678,4.36739176 4.7597852,4.2402148 4.85355339,4.14644661 L7.14644661,1.85355339 C7.34170876,1.65829124 7.65829124,1.65829124 7.85355339,1.85355339 C7.94732158,1.94732158 8,2.07449854 8,2.20710678 Z" id="Path-18" fill="#222222" transform="translate(6.000000, 3.000000) rotate(-45.000000) translate(-6.000000, -3.000000) "></path>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <path d="M0 0H20V20H0z" transform="translate(-313 -758) translate(270 752) translate(0 4) translate(43 2)"/>
+                            <g>
+                                <g>
+                                    <g>
+                                        <path stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 3C2.686 3 0 5.686 0 9s2.686 6 6 6 6-2.686 6-6c0-.904-.2-1.761-.558-2.53" transform="translate(-313 -758) translate(270 752) translate(0 4) translate(43 2) translate(4 2)"/>
+                                        <path fill="#222" d="M8 2.207V4.5c0 .276-.224.5-.5.5H5.207c-.276 0-.5-.224-.5-.5 0-.133.053-.26.147-.354l2.292-2.292c.196-.196.512-.196.708 0 .093.093.146.22.146.353z" transform="translate(-313 -758) translate(270 752) translate(0 4) translate(43 2) translate(4 2) rotate(-45 6 3)"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
                     </g>
                 </g>
             </g>

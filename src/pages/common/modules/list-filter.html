@@ -40,10 +40,55 @@
                     </li>
                 </ul>
             </div>
-
+            <div class="btn-reset">
+                <button id="filterResetBtn" type="button"><span>초기화</span></button>
+            </div>
             <!-- 필터항목 -->
             <div class="list-acco ui_filter_accordion" data-accord-group="filter" data-single-open="false" data-open-index="[0,1]">
                 <ul>
+                    <!-- Slider 형태일때(가격정보, 사이즈등) --> 
+                    <li data-id="RG00001157" class="on">
+                        <div class="head">
+                            <a href="#headId_1" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                <div class="tit">Price</div>
+                                <span class="blind ui_accord_text">내용 열기</span>
+                            </a>
+                        </div>
+                        <div class="desc ui_accord_content" id="headId_1">
+                            <div class="cont">
+                                <div class="range-wrap">
+                                    <div data-filter-id="RG00001157" class="ui_filter_slider ui_price_slider" data-input="," data-range="899,3999" data-min-label="minLabel" data-max-label="maxLabel"></div>
+                                    <p class="min range-num">Min</p>
+                                    <p class="max range-num">Max</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- radio button 
+                    <li data-id="">
+                        <div class="head">
+                            <a href="#headId_10" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                <div class="tit">서비스 구분</div>
+                                <span class="blind ui_accord_text">내용 더 보기</span>
+                            </a>
+                        </div>
+                        <div class="desc ui_accord_content" id="headId_10">
+                            <div class="cont">
+                                <div class="rdo-wrap">
+                                    <input type="radio" name="rdo1" value="" id="rdo-1" checked>
+                                    <label for="rdo-1">전체</label>
+                                </div>
+                                <div class="rdo-wrap">
+                                    <input type="radio" name="rdo1" value="" id="rdo-2">
+                                    <label for="rdo-2">일반제품</label>
+                                </div>
+                                <div class="rdo-wrap">
+                                    <input type="radio" name="rdo1" value="" id="rdo-3">
+                                    <label for="rdo-3">케어십 가능 제품</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>-->
                     <!-- 칼라칩 형태일때 -->
                     <li data-id="FT05033892">
                         <div class="head">
@@ -126,35 +171,25 @@
                         </div>
                     </li>
 
-                    <!-- Slider 형태일때(가격정보, 사이즈등) --> 
-                    <li data-id="RG00001157" class="on">
-                        <div class="head">
-                            <a href="#headId_1" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                <div class="tit">Price</div>
-                                <span class="blind ui_accord_text">내용 열기</span>
-                            </a>
-                        </div>
-                        <div class="desc ui_accord_content" id="headId_1">
-                            <div class="cont">
-                                <div class="range-wrap">
-                                    <div data-filter-id="RG00001157" class="ui_filter_slider ui_price_slider" data-input="," data-range="899,3999" data-min-label="minLabel" data-max-label="maxLabel"></div>
-                                    <p class="min range-num">Min</p>
-                                    <p class="max range-num">Max</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
-            <div class="btn-reset">
-                <button id="filterResetBtn" type="button"><span>초기화</span></button>
-            </div>
+            
 
             @@if (context.btmLink) {
                 <div class="service-link @@serviceLinkClass">
                     <ul>
                         @@for ( var i=0; i < context.btmLink.length; i++) {
                             <li><a href="#n" class="btn-text">`+btmLink[i].text+`</a></li>
+                        }
+                    </ul>
+                </div>
+            } 
+
+            @@if (context.btmBoxLink) {
+                <div class="service-link-box">
+                    <ul>
+                        @@for ( var i=0; i < context.btmBoxLink.length; i++) {
+                            <li><a href="#n" class="btn-gray-box"><span>`+btmBoxLink[i].text+`</span></a></li>
                         }
                     </ul>
                 </div>
@@ -168,12 +203,12 @@
                     <li><a href="#n" class="btn-text">라이프 스타일 컨설팅</a></li>
                 </ul>
             </div>
-
+-->
             <div class="filter-btn-wrap">
                 <button type="button" class="btn ui_reset_btn" ><span>초기화</span></button>
                 <button type="button" class="btn ui_confirm_btn"><span>확인</span></button>
             </div>
--->
+
             
             <div class="filter-close">
                 <button type="button" class="btn-close"><span class="blind">닫기</span></button>
