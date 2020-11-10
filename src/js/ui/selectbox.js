@@ -548,7 +548,7 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             self.$list.css('visibility', 'hidden').show();
             listHeight = self.$listWrapper.innerHeight();
             self.$list.css('visibility', '').hide();
-
+            
             if (offset + listHeight + selectHeight > scrollHeight && offset - scrollTop > listHeight) {
                 self.$selectbox.addClass('up');
                 //var margintop = (listHeight + selectHeight + 3) * -1;
