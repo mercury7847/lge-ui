@@ -3,7 +3,7 @@
         '<div class="item-image"><a href="{{itemUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="product-info">' +
             '<div class="flag-wrap bg-type">' +
-                '<span class="flag"><span class="blind">제품타입</span>{{typeName}}</span>' +
+                '<span class="flag"><span class="blind">제품타입</span>{{type}}</span>' +
             '</div>' +
             '<div class="item-name"><a href="{{itemUrl}}">{{title}}</a></div>' +
             '<div class="item-options"><div class="sku"><span class="blind">제품번호</span>{{sku}}</div><div class="sibling-option"><span class="blind">제품옵션</span>{{colorOption}}</div></div>' +
@@ -14,7 +14,7 @@
             '<div class="price">{{#if originalPrice}}<p class="original">월 {{originalPrice}}원</p>{{/if}}<p class="total">월 {{salePrice}}원</p></div>' +            
             //'{{#if tooltip}}<div class="tooltip-wrap"><span class="tooltip-icon ui_tooltip-target">계약내용 자세히 보기</span>' +
             //'<span class="tooltip-box"><p>{{tooltip}}</p><button type="button" class="btn-close"><span class="blind">닫기</span></button></span></div>{{/if}}' +
-            '<a href="#" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>' +
+            '<a href="{{tipUrl}}" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>' +
         '</div><div class="btn-area">' +
             '{{#if subscriptionUrl}}<button type="button" class="btn pink border size" data-url={{subscriptionUrl}}><span>청약신청</span></button>{{#else}}<button type="button" class="btn pink border size" disabled><span>청약신청불가</span></button>{{/if}}' +
         '</div></div>' +
@@ -45,6 +45,7 @@
                 var _self = this;
 
                 _self.bindEvents();
+                _self.bindPopupEvents();
                 _self.updateCartItemCheck();
                 _self.checkNoData();
             },
@@ -107,8 +108,7 @@
                 //리스트 아이템 안내 팁
                 self.$cartList.on('click', 'div.product-payment div.amount a.btn-info', function(e) {
                     e.preventDefault();
-                    var itemID = $(this).parents('li.order-item').attr('data-item-id');
-                    _self.requestItemTip(itemID);
+                    _self.requestItemTip(this);
                 });
 
                 //추천제품 장바구니(삭제)
@@ -127,6 +127,13 @@
                     _self.requestWishItem(itemID, checked);
                 });
                 */
+            },
+
+            bindPopupEvents: function() {
+                //아이템 팁 중 제휴카드 혜택 안내
+                $('#request-tip-modal').on('click','dl.bk-infos dd a', function(e) {
+                    $('#card-benefit-popup').vcModal();
+                });
             },
 
             //전체선택 버튼 상태 갱신
@@ -195,7 +202,7 @@
                 });
                 if(itemList.length > 0) {
                     var ajaxUrl = self.$cartContent.attr('data-info-url');
-                    var postData = JSON.stringify(itemList);
+                    var postData = {'itemID': itemList.join()};
                     lgkorUI.requestAjaxData(ajaxUrl, postData, function(result){
                         careCartInfo.updateData(result.data);
                     });
@@ -203,10 +210,10 @@
             },
 
             //아이템 안내 팁
-            requestItemTip: function(itemID) {
+            requestItemTip: function(dm) {
                 var _self = this;
-                var ajaxUrl = self.$cartContent.attr('data-tip-url');
-                lgkorUI.requestAjaxData(ajaxUrl, {"itemID":itemID}, function(result){
+                var ajaxUrl = $(dm).attr('href');
+                lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
                     _self.openModalFromHtml(result);
                 }, null, "html");
             },
@@ -215,7 +222,7 @@
             requestRemoveItem: function(items) {
                 var _self = this;
                 var ajaxUrl = self.$cartContent.attr('data-remove-url');
-                var postData = JSON.stringify(items);
+                var postData = {'itemID': (items instanceof Array ? items.join() : items) }
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     _self.updateList(result.data);
                     _self.requestInfo();

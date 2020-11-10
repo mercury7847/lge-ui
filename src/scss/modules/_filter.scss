@@ -20,7 +20,7 @@
     float:left;
     width:215px;
     margin-left:-240px;
-    margin-top: 79px;
+    //margin-top: 79px;
 
     @at-root .search .lay-filter {
         position: absolute;
@@ -73,10 +73,21 @@
     .filter-head {
         position:relative;
         width:auto;
-        text-align:center;
+        //text-align:center;
         height:75px;
-        border-bottom:1px solid #ededed;
+        padding: 0 16px;
+        //border-bottom:1px solid #ededed;
         z-index:20;
+        &::after {
+            display: inline-block;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 16px;
+            width: calc(100% - 32px);
+            height: 2px;
+            background-color: #222;
+        }
         .tit {
             font-size:18px;
             padding-top:24px;
@@ -90,28 +101,28 @@
 
     .plp-filter-wrap {
         @media screen and (max-width: 1780px) {
-            padding:40px 20px 115px;
+            //padding:40px 20px 115px;
+            padding:0 16px 115px;
         }
 
         .btn-reset {
             margin:20px 0 12px;
-            text-align:right;
             button {
                 color:$color-default;
                 @include font-small;
                 span {
                     position:relative;
-                    padding-right:20px;
+                    padding-right:24px;
                     &:after {
                         content:'';
                         display:block;
                         position:absolute;
                         top:50%;
                         right:0;
-                        width:17px;
-                        height:17px;
-                        margin-top:-8px;
-                        background:url('/lg5-common/images/icons/btn-reset-16.svg') no-repeat;
+                        width:20px;
+                        height:20px;
+                        margin-top:-10px;
+                        background:url('/lg5-common/images/icons/icon-reset-20.svg') no-repeat;
                     }
                 }
             }
@@ -131,11 +142,12 @@
         .list-acco {
             ul {
                 border-top: 1px solid $color-border;
+                @media screen and (max-width: 1780px) {
+                    border-top: none;
+                }
                 li {
                     background-color:#fff;
                     border-bottom: 1px solid $color-border;
-                    border-radius:4px;
-                    margin-top:2px;
                     overflow:hidden;
                     @media screen and (max-width: 1780px) {
                         margin:0;
@@ -148,10 +160,10 @@
                         }
                         .link-acco {
                             display:block;
-                            padding:0 45px 0 20px;
+                            padding:0 45px 0 0;
                             @media screen and (max-width: 1780px) {
                                 display:block;
-                                padding:0 45px 0 20px;
+                                padding:0 45px 0 0;
                             }
                             &:before {
                                 content:'';
@@ -185,9 +197,10 @@
                     }
                     .desc {
                         display:none;
-                        padding:0 20px 32px;
+                        padding:0 1px 32px 1px;
                         @media screen and (max-width: 1780px) {
-                            padding:20px 8px 32px;
+                            padding:20px 0 32px 0;
+                            //padding:20px 8px 32px;
                         }
                     }
                     .cont {
@@ -199,9 +212,14 @@
                         }
 
                         .range-wrap {
+                            width: 100%;
+                            padding: 0 2px;
                             font-size:0;
                             .ui-range-slider {
-                                background-color: #fff;
+                                height: 4px;
+                                margin-bottom: 10px;
+                                //background-color: #fff;
+                                background-color: #ddd;
                                 .ui-range-slider-bg {
                                     height: 4px;
                                     background-color: #ddd;
@@ -245,7 +263,7 @@
                                 @include font-small;
                             }
                         }
-
+                        /*
                         .rdo-wrap {
                             & input + label {
                                 &:before {
@@ -279,7 +297,7 @@
                                     background:#f4f4f4;
                                 }
                             }
-                        }
+                        }*/
 
                         .chk-wrap-colorchip {
                             & input:disabled + label {
@@ -314,6 +332,46 @@
             }
             @media screen and (max-width: 1780px) {
                 display:none;
+            }
+        }
+
+        .service-link-box {
+            ul {
+                margin-top: 16px;
+                li {
+                    margin-bottom: 8px;
+                    .btn-gray-box {
+                        display: inline-flex;
+                        align-items: center;
+                        width: 100%;
+                        min-height: 80px;
+                        padding: 20px;
+                        border-radius: 8px;
+                        background: #aeaeae;
+                        justify-content: center;
+                        vertical-align: middle;
+                        span {
+                            display: inline-block;
+                            position: relative;
+                            padding-right: 24px;
+                            @include font-medium;
+                            color: $color-bg-wt;
+                            &::after {
+                                display: inline-block;
+                                content: '';
+                                position: absolute;
+                                top: 4px;
+                                right: 0;
+                                width: 20px;
+                                height: 20px;
+                                background: url('/lg5-common/images/icons/btn-arrow-right-white-20.svg') no-repeat;
+
+                            }
+                            
+                        }
+                    }
+                }
+
             }
         }
 

@@ -164,7 +164,7 @@
             &.disabled, 
             &:disabled {
                 border-color:#ddd;
-                background:#ededed;
+                background:#f4f4f4;
                 color:#aaa;
             }
             @include mobile {
@@ -201,7 +201,7 @@
                 }
             }
         }
-@include clearfix;
+        @include clearfix;
         .tit {
             position:relative;
             display:inline-block;
