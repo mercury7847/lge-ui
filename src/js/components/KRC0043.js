@@ -20,7 +20,7 @@ $(window).ready(function(){
                         swipeToSlide:false
                     }
                 }],
-                asNavFor: '.ui_carousel_thumb_slider'
+                //asNavFor: '.ui_carousel_thumb_slider'
             })
 
             $('.KRC0043').find('.ui_carousel_thumb_slider').vcCarousel({
@@ -32,7 +32,7 @@ $(window).ready(function(){
                 slidesToScroll: 1,
                 focusOnChange:true,
                 focusOnSelect: true,
-                asNavFor: '.ui_carousel_slider'
+                //asNavFor: '.ui_carousel_slider'
             });
 
         });           
