@@ -8,6 +8,7 @@
 	<div class="wrap">
 		<div class="container">
 
+			<!-- 대체 가능한 상품 목록 (없을 경우 비노출) -->
 			@@include('./common/partials/KRP0043.html', {
 				'component-class': {
 					'margin': 'zero-top'
@@ -16,6 +17,7 @@
 				'desc': '본 상품과 대체가능한 상품의 판매금액은 동일 합니다.'
 			})
 			
+			<!-- 소모품을 사용할 수 있는 제품 목록 (항상 노출) -->
 			@@include('./common/partials/KRP0043.html', {
 				'component-class': {
 					'margin': 'zero-top'

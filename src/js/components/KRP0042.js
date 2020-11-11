@@ -9,8 +9,8 @@ $(window).ready(function(){
             this.$el = $('.KRP0042');
             this.$form = this.$el.find('#searchForm');
             this.$keyword = this.$form.find('input[type="text"]');
-            this.$button = this.$form.find('button');
-            this.$error = this.$form.find('p.err-msg');
+            this.$button = this.$form.find('.btn-search');
+            this.$error = this.$form.find('.err-msg');
 
             this.bindEvent();
         },
