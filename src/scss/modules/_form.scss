@@ -1825,10 +1825,11 @@ $input: (chk, rdo);
     top:60px;
     left:0;
     background:#fff;
-    width:473px;
+    width:360px;
     padding:0;
     border-radius:8px;
     box-shadow:0 2px 14px 0 rgba(0, 0, 0, .06);
+    overflow:hidden;
     z-index:9999;
     @include mobile {
         top:54px;
@@ -1836,26 +1837,26 @@ $input: (chk, rdo);
     }
     .ui-calendar-header-second {
         position:relative;
-        margin-bottom:24px;
-        padding:32px 64px 0;
+        padding:24px 64px;
+        background:#767676;
         text-align:center;
         @include mobile {
-            margin-bottom:15px;
-            padding:20px 48px 0;
+            padding:16px 58px;
         }
         > a {
             position:absolute;
-            top:32px;
+            top:50%;
+            margin-top:-16px;
             font-size:0;
             @include mobile {
-                top:20px;
+                margin-top:-12px;
             }
             &::before {
                 content:' ';
                 display:block;
                 width:32px;
                 height:32px;
-                background:url("/lg5-common/images/icons/btn-arrow-right-32.svg");
+                background:url("/lg5-common/images/icons/btn-arrow-right-wt-32.svg");
                 background-size:32px;
                 @include mobile {
                     width:24px;
@@ -1866,7 +1867,7 @@ $input: (chk, rdo);
             &.ui-calendar-prev {
                 left:32px;
                 @include mobile {
-                    left:24px;
+                    left:34px;
                 }
                 &::before {
                     transform:rotate(180deg);
@@ -1875,7 +1876,7 @@ $input: (chk, rdo);
             &.ui-calendar-next {
                 right:32px;
                 @include mobile {
-                    right:24px;
+                    right:34px;
                 }
             }
             &.disabled {
@@ -1884,9 +1885,9 @@ $input: (chk, rdo);
             }
         }
         .ui-calendar-now {
-            color:#222;
+            color:#fff;
             @include font-large-1;
-            font-weight:500;
+            font-weight:700;
             .year::after {
                 content:'.';
                 display:inline-block;
@@ -1894,33 +1895,36 @@ $input: (chk, rdo);
         }
     }
     .ui-calendar-date {
-        padding:0 20px 24px;
+        padding:32px 32px 40px;
         @include mobile {
             padding:0 18px 16px;
         }
         .ui-calendar-table {
             table-layout:fixed;
-            width:100%;
-            @include font-large-1;
+            width:calc(100% + 12px);
+            margin:0 -6px;
             text-align:center;
-            border-collapse:collapse;
             th {
-                padding:13px 0 12px;
+                height:32px;
+                padding:0;
                 color:#767676;
-                font-weight:400;
+                @include font-small;
+                font-weight:500;
                 @include mobile {
                     padding:7px 0;
                 }
             }
             tbody {
                 .ui-calendar-cell {
+                    padding:6px;
                     .ui-calendar-day {
                         display:inline-block;
-                        width:55px;
-                        height:55px;
+                        width:32px;
+                        height:32px;
                         border-radius:50%;
                         background:transparent;
                         color:#222;
+                        @include font-small;
                         font-weight:500;
                         vertical-align:top;
                         &.disabled {
