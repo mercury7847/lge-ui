@@ -23,7 +23,7 @@ dev:
     - apt-get update
     - apt-get install rsync -y
     - mkdir -p ${DEV_WEB_NAS}/htdocs
-    - rm -rf ${DEV_WEB_NAS}/akamai-temp
-    - mkdir -p ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}
+    - rm -rf ${DEV_WEB_NAS}/test-temp
+    - mkdir -p ${DEV_WEB_NAS}/test-temp-${CI_COMMIT_SHA}
 
     - cp -rf ./dist/${CI_COMMIT_SHA}/lg5-common/ ${DEV_WEB_NAS}/test-temp-${CI_COMMIT_SHA}/lg5-common/
