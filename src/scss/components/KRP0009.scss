@@ -8,68 +8,55 @@
     @include clearfix;
 
     .cate-wrap {
-
-        @media screen and (max-width: 1780px) {
-            display:none;
-        }
-
-        @media screen and (min-width: 1780px) {
-            display:block;
-        }
-
-        padding:9px 0;
-        height:56px;
+        height:102px;
+        padding:24px 0 10px;
         background:#fff;
+        border-bottom: 8px solid #f4f4f4;
 
         .cate-list {
             @include clearfix;
             max-width:1284px;
             margin:0 auto;
+            height: 60px;
+            padding-bottom: 14px;
+            overflow: hidden;
+            overflow-x: auto;
+            white-space: nowrap;
+            background-color: yellow;
 
             .chk-cate {
-                float:left;
-                padding-right:100px;
                 font-size:0;
+                text-align: center;
                 .chk-wrap {
-                    margin:0 8px;
+                    margin:0 13px;
+                    vertical-align: top;
                     &:first-child {
                         margin-left:0;
                     }
                 }
                 .chk-wrap input:checked+label {
-                    color:#222;
-                    font-weight:500;
-                    background:#f4f4f4;
-                    border-radius:19px;
+                    background:#ededed;
+                    border-radius:28px;
                     white-space:nowrap;
                     overflow:hidden;
                 }
                 .chk-wrap input+label {
-                    padding:0 12px;
-                    color:#979797;
-                    font-size:14px;
-                    line-height:38px;
+                    padding:6px 12px;
+                    color:#222;
+                    font-weight:$font-weight-bold;
+                    @include font-large-1;
+                    line-height:34px;
+                    @include mobile {
+                        padding:12px 16px;
+                        font-size: 13px;
+                        line-height: 21px;
+                    }
                     &:before {
                         display:none;
                     }
                     &:after {
                         display:none;
                     }
-                }
-            }
-
-            .btn-compare {
-                float:right;
-                button {
-                    padding:0 16px;
-                    color:#616161;
-                    font-size:14px;
-                    line-height:36px;
-                    border:1px solid #979797;
-                    border-radius:8px;
-                }
-                @media screen and (max-width: 1780px) {
-                    display:none;
                 }
             }
         }
@@ -103,10 +90,12 @@
 
         .product-list-area {
             float: left;
+            @include calc(width,100%,240px);
             max-width: (372px * 3) + 24px;
             margin: 0 auto;
-            @media screen and (max-width: 1284px) {
+            @media screen and (max-width: $tablet-l-width) {
                 float: none;
+                width: 100%;
                 max-width: 100%;
             }
 
@@ -114,21 +103,17 @@
                 padding-top: 36px;
             }
             .read-more-area {
-                padding-top: 36px;
+                padding-top: 39px;
                 text-align: center;
                 .read-more {
                     font-weight: 500;
-                    font-size: 16px;
-                    color: #222;
+                    @include font-small;
                     &:after {
-                        display: inline-block;
-                        width: 8px;
-                        height: 8px;
-                        margin-left: 6px;
-                        border-right: 1px solid #222;
-                        border-bottom: 1px solid #222;
-                        transform: rotate(45deg);
-                        vertical-align: 4px;
+                        display: block;
+                        width: 100%;
+                        height: 32px;
+                        margin-top: 6px;
+                        background: url("/lg5-common/images/icons/btn-arr2-32x32.svg") no-repeat center 0;
                         content: '';
                     }
 
