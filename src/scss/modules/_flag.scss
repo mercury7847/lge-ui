@@ -21,6 +21,10 @@
 			border-color:#CCCCCC;
 			color:#CCCCCC;
 		}
+		@include mobile {
+			font-size:12px;
+			line-height:20px;
+		}
 	}
 	&.bg-type {
 		.flag {
