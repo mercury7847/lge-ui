@@ -13,9 +13,10 @@
     color:#fff;
     font-weight:500;
     @include mobile {
+        min-width:124px;
         font-size:17px;
         line-height:25px;
-        padding:16.5px 31px;
+        padding:14.5px 30px;
         border-radius:30px;
     }
     &:hover {

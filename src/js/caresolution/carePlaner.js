@@ -208,10 +208,7 @@
 
 
         $('.ui_carousel_slider').vcCarousel({
-            infinite: false,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            variableWidth : true,
+            settings: "unslick",
             responsive: [
                 {
                     breakpoint: 10000,
@@ -236,13 +233,7 @@
                 },
                 {
                     breakpoint: 768,
-                    settings: {
-                        infinite: false,
-                        variableWidth : true,
-                        dots: false,
-                        slidesToShow: 1, 
-                        slidesToScroll: 1
-                    }
+                    settings: "unslick"
                 }
             ]
         });
@@ -295,11 +286,23 @@
             ]
         });
         $('.ui_carousel_slider4').vcCarousel({
-            infinite: false,
-            slidesToScroll: 1,
-            variableWidth : true,
-            speed : 200,
-            dots: false
+            settings: "unslick",
+            responsive: [
+                {
+                    breakpoint: 10000,
+                    settings: {
+                        infinite: false,
+                        variableWidth : true,
+                        dots: false,
+                        slidesToScroll: 1
+                        
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: "unslick"
+                }
+            ]
         });
 
         // $('.prd-select-wrap').css({display:'block'});

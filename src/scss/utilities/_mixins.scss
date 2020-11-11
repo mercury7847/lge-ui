@@ -36,10 +36,10 @@
 	font-size: $font-large;
 	line-height: 28px;
 
-	//@media screen and (max-width: #{$tablet-s-width}) {
-	//    font-size : $font-medium - 3;
-	//    line-height: 23px;
-	//}
+	@media screen and (max-width: #{$tablet-s-width}) {
+	   font-size : $font-medium - 1;
+	   line-height: 23px;
+	}
 }
 
 @mixin font-large-1 {
@@ -47,10 +47,10 @@
 	font-size: $font-large-1;
 	line-height: 30px;
 
-	//@media screen and (max-width: #{$tablet-s-width}) {
-	//    font-size : $font-medium;
-	//    line-height: 24px;
-	//}
+	@media screen and (max-width: #{$tablet-s-width}) {
+	   font-size : $font-medium;
+	   line-height: 24px;
+	}
 }
 
 @mixin font-large-2 {
