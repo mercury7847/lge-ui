@@ -31,9 +31,7 @@ dev:
     - cp -rf ./dist/${CI_COMMIT_SHA}/guide/ ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/guide/
 
     - cd akamai-purge-script
-    - rsync -v -r -c ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/lg5-common/ ${DEV_WEB_NAS}/htdocs/lg5-common/ > rsync-result.txt
-    - rsync -v -r -c ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/html/ ${DEV_WEB_NAS}/htdocs/html/ > rsync-result.txt
-    - rsync -v -r -c ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/guide/ ${DEV_WEB_NAS}/htdocs/guide/ > rsync-result.txt
+    - rsync -v -r -c ${DEV_WEB_NAS}/akamai-temp-${CI_COMMIT_SHA}/ ${DEV_WEB_NAS}/htdocs/ > rsync-result.txt
     - export AKAMAI_PROPERTY=wwwdev50.lge.co.kr
     - export PURGE_ROOT_URL=https://wwwdev50.lge.co.kr
 
