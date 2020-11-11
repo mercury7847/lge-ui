@@ -56,12 +56,12 @@ var CareCartInfo = (function() {
             } else {
                 self.$loginInfo.show();
             }
-            self._updateItemInfo(data);
-            self._updatePaymentInfo(data);
+            self.updateItemInfo(data);
+            self.updatePaymentInfo(data);
             self._updateAgreement(data);
         },
 
-        _updateItemInfo: function(data) {
+        updateItemInfo: function(data) {
             var self = this;
             var selectedItem = data ? (data.selectedItem instanceof Array ? data.selectedItem : []) : [];
             var itemList =  data ? (data.itemList instanceof Array ? data.itemList : []) : [];
@@ -95,7 +95,7 @@ var CareCartInfo = (function() {
             }
         },
     
-        _updatePaymentInfo: function(data) {
+        updatePaymentInfo: function(data) {
             var self = this;
             var paymentInfo = data.paymentInfo;
 
