@@ -151,6 +151,7 @@
                         margin:0;
                         border-radius:inherit;
                     }
+                    
                     .head {
                         position:relative;
                         @media screen and (max-width: 1024px) {
@@ -169,15 +170,17 @@
                                 position:absolute;
                                 top:24px;
                                 right:0;
-                                width:16px;
-                                height:16px;
-                                background:url('/lg5-common/images/icons/btn-plus.svg') no-repeat;
+                                width:24px;
+                                height:24px;
+                                background:url('/lg5-common/images/icons/btn-dropdown-down-48.svg') no-repeat;
+                                background-size: cover;
                                 @media screen and (max-width: 1024px) {
                                     top:32px;
                                     right:0;
                                 }
                             }
                         }
+                        
                         .tit {
                             display:block;
                             padding:24px 0 22px;
@@ -192,6 +195,10 @@
                                 padding:32px 0 16px;
                             }
                         }
+                    }
+                    &.on .head a:before {
+                        background:url('/lg5-common/images/icons/btn-dropdown-up-48.svg') no-repeat;
+                        background-size: cover;
                     }
                     .desc {
                         display:none;
@@ -307,10 +314,7 @@
                             }
                         }
                     }
-                    &.on .head a:before {
-                        top: 32px;
-                        background:url('/lg5-common/images/icons/btn-minus.svg') no-repeat;
-                    }
+                    
                 }
             }
 
@@ -452,16 +456,19 @@
 }
 
 .btn-filter {
+    display: inline-block;
     .ico-filter {
         display: inline-block;
-        width: 24px;
-        height: 24px;
-        background: url("/lg5-common/images/KRP0009/btn-filter.svg") no-repeat 0 0;
-        background-size: 24px 24px;
+        width: 32px;
+        height: 32px;
+        margin: 5px 24px 0 0;
+        background: url("/lg5-common/images/icons/btn-filter-32.svg") no-repeat 0 0;
+        background-size: 32px 32px;
         @media screen and (min-width: 1025px) {
             display: none;
         }
         @include mobile {
+            margin-right: 20px;
             background-size: 32px 32px;
         }
     }
