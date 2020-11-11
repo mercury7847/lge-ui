@@ -6,7 +6,6 @@
     // height:186px;
     // max-height:186px; 
     margin:6px 0 0 0;
-    padding:22px 22px 22px 14px;
     background:#fff;
     border-radius:8px;
     border:2px solid #fff;
@@ -20,6 +19,7 @@
         display:table;
         table-layout:fixed;
         width:100%; 
+        padding:22px 24px 22px 14px;
         min-height:138px;
     }
     .img-wrap {
@@ -91,6 +91,9 @@
             .comb-txt {
                 color:#3B9792;
                 float:right;
+                @media screen and (max-width:1380px) {
+                    float:left;
+                }
             }
         }
     }
@@ -156,6 +159,7 @@
             width:auto;
             transform:translateY(-50%);
             min-height:inherit;
+            padding:0;
         }
         .box {
             position:relative;
@@ -200,29 +204,12 @@
             }
         }
     }
-
-    &.empty {
-        text-align:center;
-        p {
-            color:#767676;
-            @include font-medium;
-            font-weight:700;
-        }
-        .ui_flexible_cont {
-            position:absolute;
-            top:50%;
-            left:0;
-            right:0;
-            width:100%;
-            transform:translateY(-50%);
-            // min-height:inherit;
-        }
-    }
 }
 
 .prd-care-vertical {
     position:relative;
-    height:656px;
+    height:664px;
+    max-height:664px;
     padding:12px 40px 32px;
     background:#fff;
     border-radius:8px;
@@ -440,6 +427,41 @@
             }
         }
 
+        
+        .price-info {
+            margin-top:16px;
+            padding:16px;
+            background:#f4f4f4;
+            border-radius:8px;
+            dl {
+                padding-top:8px;
+                @include mobile {
+                    padding-top:12px;
+                }
+                &:first-child {
+                    padding-top:0;
+                }
+                dt {
+                    width:75px;
+                    color:#767676;
+                    @include font-small;
+                    font-weight:500;
+                }
+                dd {
+                    @include font-small;
+                    font-weight:500;
+                    text-align:right;
+                }
+                &.default {
+                    dd {
+                        color:#aaa;
+                        text-decoration:line-through;
+                        
+                    }
+                }
+            }
+        }
+
         .price-wrap {
             position:absolute;
             left:40px;
@@ -461,179 +483,53 @@
                     @include font-large-1;
                     font-weight:700;
                     vertical-align:middle;
+                    @media screen and (max-width:1235px) {
+                        @include font-large;
+                    }
                 }
                 .btn {
                     float:right;
                 }
             }
-            .price-info {
-                dl {
-                    padding-top:8px;
-                    @include mobile {
-                        padding-top:12px;
-                    }
-                    &:first-child {
-                        padding-top:0;
-                    }
-                    dt {
-                        width:75px;
-                        color:#616161;
-                        font-size:14px;
-                        line-height:20px;
-                    }
-                    dd {
-                        color:#808080;
-                        font-size:14px;
-                        line-height:20px;
-                        text-decoration:line-through;
-                        text-align:right;
-                    }
-                    &.benefit {
-                        dd {
-                            color:#222;
-                            font-weight:700;
-                            text-decoration:none;
-                        }
-                    }
-                }
-                & + .total-price {
-                    padding-top:8px;
-                    @include mobile {
-                        padding-top:10px;
-                    }
-                }
-            }
         }
     }
 
-    //유상 케어십
+    //케어솔루션_제품모튤
+    &.module-type1 {
+        height:656px;
+        max-height:656px;
+    }
+
+    //케어십_유상제품 모듈
     &.module-type2 {
 
     }
 
-    //보유 제품 케어십
+    //케어십_보유제품 모듈
     &.module-type3 {
-        .opt-info {
-            dl {
-                padding-top:4px;
-                @include mobile {
-                    padding-top:10px;
-                }
-                &:first-child {
-                    padding-top:0;
-                }
-                &:last-child {
-                    padding-top:24px;
-                    @include mobile {
-                        padding-top:20px;
-                    }
-                }
-                dd {
-                    font-size:16px;
-                    line-height:24px;
-                    @include mobile {
-                        font-size:14px;
-                        line-height:18px;
-                    }
-                }
-            }
+        .txt-wrap {
+            margin-top:4px;
         }
-        .price-wrap {
-            padding-top:64px;
-            @include mobile {
-                padding-top:18px;
-            }
+        .opt-info {
+            margin-top:16px;
+        }
+        .price-info {
+            margin-top:0;
         }
     }
     
-    //용역 제품 케이섭
+    //케어십_용역제품 모듈
     &.module-type4 {
-        .txt-wrap {
-            height:48px;
-            @include mobile {
-                height:auto;
-            }
+        .code-txt {
+            padding:16px;
+            color:#767676;
+            @include font-small;
+            font-weight:500;
+            background:#f4f4f4;
+            border-radius:8px;
         }
-        .info-wrap {
-            padding-top:28px;
-            @include mobile {
-                padding-top:14px;
-            }
-            .opt-info {
-                .code-txt {
-                    color:#616161;
-                    font-size:16px;
-                    line-height:24px;
-                    @include mobile {
-                        font-size:14px;
-                        line-height:18px;
-                    }
-                }
-                dl {
-                    padding-top:24px;
-                    @include mobile {
-                        padding-top:20px;
-                    }
-                }
-            }
-            .price-wrap {
-                padding-top:24px;
-            }
-        }
-    }
-
-    //보유제품 등록/ 찾기
-    &.module-empty {
-        .empty-wrap {
-            position:absolute;
-            top:50%;
-            left:24px;
-            right:24px;
-            -webkit-transform:translateY(-50%);
-            transform:translateY(-50%);
-            text-align:center;
-            @include mobile {
-                position:static;
-                padding-top:32px;
-                -webkit-transform:none;
-                transform:none;
-            }
-            .tit {
-                font-size:24px;
-                line-height:32px;
-                font-weight:700;
-                @include mobile {
-                    font-size:20px;
-                    line-height:27px;
-                }
-            }
-            .txt {
-                display:block;
-                padding-top:16px;
-                font-size:16px;
-                line-height:24px;
-                @include mobile {
-                    font-size:14px;
-                    line-height:18px;
-                }
-            }
-            .etc-txt {
-                display:block;
-                padding-top:16px;
-                color:#616161;
-                font-size:14px;
-                line-height:20px;
-                @include mobile {
-                    font-size:14px;
-                    line-height:18px;
-                }
-            }
-            .btn {
-                margin-top:40px;
-                @include mobile {
-                    width:100%;
-                }
-            }
+        .opt-info {
+            margin-top:16px;
         }
     }
 }
@@ -685,18 +581,20 @@
             max-width:1380px + 80px;
             margin:0 auto;
             padding:0 40px;
+            @include mobile {
+                padding:0 16px;
+            }
             .inner {
                 position:relative;
                 padding:30px 48px 30px 40px;
                 border-radius:8px;
                 @include mobile {
-                    padding:32px 20px;
+                    padding:16px 16px 24px;
                 }
                 .txt {
                     position:relative;
                     display:inline-block;
-                    padding-left:120px;
-                    padding-right:20%;
+                    padding:0 20px 0 120px;
                     @include font-medium;
                     vertical-align:middle;
                     word-break:keep-all;
@@ -712,9 +610,11 @@
                         background:url('/lg5-common/images/icons/icon-11-80.svg') no-repeat;
                     }
                     @include mobile {
-                        padding:0;
-                        font-size:14px;
-                        line-height:18px;
+                        padding:88px 0 0 0;
+                        &:before {
+                            top:0;
+                            transform:none;
+                        }
                     }
                 }
                 .btn {
@@ -725,7 +625,6 @@
                     transform:translateY(-50%);
                     @include mobile {
                         position:static;
-                        width:100%;
                         margin-top:24px;
                         -webkit-transform:translateY(0);
                         transform:translateY(0);
@@ -753,6 +652,9 @@
                 @include font-large;
                 font-weight:700;
                 vertical-align:middle;
+                strong {
+                    color:#ec455a;
+                }
             }
         }
         .contract-slide {
@@ -827,6 +729,7 @@
                     .btn-arrow {
                         width:32px;
                         height:32px;
+                        box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.06);
                         &:before {
                             width:32px;
                             height:32px;
@@ -1018,7 +921,6 @@
                 .prd-care-horizon {
                     //height:204px;
                     // max-height:204px;
-                    padding:29px 31px 29px 13px;
                     border:1px solid #ddd;
                     .txt-wrap {
                         .etc {
@@ -1026,22 +928,44 @@
                             font-weight:700;
                         }
                     }
-                    &.comb-type {
-                        padding:28px 31px 28px 13px;
-                        border:2px solid #ec455a;
-                    }
                     .ui_flexible_cont {
                         min-height:142px;
+                        padding:29px 31px 29px 13px;
+                    }
+                    &.comb-type {
+                        border:2px solid #ec455a;
+                        .ui_flexible_cont {
+                            padding:28px 31px 28px 13px;
+                        }
+                    }
+                    
+                    &.empty {
+                        text-align:center;
+                        p {
+                            color:#767676;
+                            @include font-medium;
+                            font-weight:700;
+                        }
+                        .ui_flexible_cont {
+                            position:absolute;
+                            top:50%;
+                            left:0;
+                            right:0;
+                            width:100%;
+                            transform:translateY(-50%);
+                            min-height:inherit;
+                        }
                     }
                 }
             }
             .total-info {
                 float:right;
                 width:calc(100% - 69.16%);
+                margin-top:-38px;
                 // width:calc(100% - 888px);
-                padding:24px 36px;
+                padding:32px;
                 background:#f4f4f4;
-                border-radius:4px;
+                border-radius:8px;
                 @include tablet {
                     width:calc(100% - 55%);
                 }
@@ -1055,7 +979,7 @@
                 dl {
                     display:table;
                     width:100%;
-                    margin-top:12px;
+                    margin-top:8px;
                     table-layout:fixed;
                     @include mobile {
                         margin-top:11px;
@@ -1068,23 +992,29 @@
                         vertical-align:middle;
                     }
                     dt {
-                        color:#616161;
-                        font-size:14px;
-                        line-height:20px;
+                        color:#767676;
+                        @include font-small;
+                        font-weight:500;
                     }
                     dd {
-                        text-align:right;
-                        font-size:16px;
-                        line-height:24px;
+                        @include font-large;
                         font-weight:700;
+                        text-align:right;
                         &.sale {
                             color:#e51346;
                         }
+                        &.sm {
+                            @include font-small;
+                            font-weight:normal;
+                        }
+                    }
+                    &.last {
+                        margin-top:12px;
                     }
                 }
                 .btn {
                     width:100%;
-                    margin-top:24px;
+                    margin-top:32px;
                     @include mobile {
                         padding:13px 32px;
                     }
