@@ -225,13 +225,13 @@ var res = {
 			"장바구니(UTC)" : {
 				// "장바구니(일반상품)" : ["/html/UTC/OBSF9001.html","","진행중"],
 				// "장바구니(비회원)" : ["/html/UTC/OBSF9004.html","","진행중"],
-				"케어솔루션" : ["/html/UTC/OBSF9003.html","","진행중"],
-				"케어솔루션 팝업" : ["/html/UTC/OBSF9003_popup.html","","진행중"],
+				"케어솔루션" : ["/html/UTC/OBSF9003.html","","검수완료"],
+				"케어솔루션 팝업" : ["/html/UTC/OBSF9003_popup.html","","검수완료"],
 			},
 			"주문결제(UTC)" : {
-				"신청자정보 입력" : ["/html/UTC/RMSF9001.html","","진행중"],
-				"신청 완료" : ["/html/UTC/RMSF9011.html","","진행중"],
-				"주문결제 팝업" : ["/html/UTC/RMSF9001_popup.html","","진행중"],
+				"신청자정보 입력" : ["/html/UTC/RMSF9001.html","","검수완료"],
+				"신청 완료" : ["/html/UTC/RMSF9011.html","","검수완료"],
+				"주문결제 팝업" : ["/html/UTC/RMSF9001_popup.html","","검수완료"],
 				//"케어솔루션 주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
