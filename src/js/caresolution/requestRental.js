@@ -168,17 +168,6 @@
             getPostCode($(this).closest('.conts'));
         });
 
-        step1Validation.on('errors', function(e,data){
-            console.log('errors', data); // 이걸 어떤식으로 쓸까?
-
-        }).on('success', function(data){
-
-            console.log(step1Validation.getValues());
-            console.log('success');
-
-        });
-
-
         step2Block.on('change', 'input[name=installInpuType]', function(e){
             changeInstallInputType($(this).val());
         }).on('change', 'input[name=preVisitRequest]', function(e){
@@ -204,7 +193,7 @@
         step3Block.on('change', 'input[name=cardApplyaAgree]', function(e){
             var chk = $(this).prop('checked');
             if(chk) $('#popup-cardApply').vcModal();
-        }).on('click', '.input-mix-wrap .cell .btn-link', function(e){
+        }).on('click', '.cardApplyaAgree', function(e){
             e.preventDefault();
             $('#popup-cardApply').vcModal();
         }).on('change', 'select[name=associatedCard]', function(e){
@@ -223,6 +212,12 @@
             if(step3Block.find('input[name=paymentBankNumber]').val() != "") chk++;
             
             step3Block.find('.paymentBankConfirm').prop('disabled', chk < 2);
+        }).on('change', 'input[name=selfClearingAgree]', function(e){
+            var chk = $(this).prop('checked');
+            if(chk) $('#popup-selfClearing').vcModal();
+        }).on('click', '.selfClearingAgree', function(e){
+            e.preventDefault();
+            $('#popup-selfClearing').vcModal();
         });
 
         $('#popup-cardApply').on('click', '.btn-group button.btn', function(e){
@@ -232,6 +227,15 @@
             step3Block.find('input[name=cardApplyaAgree]').prop('checked', chk);
 
             if(chk) $('#popup-cardApply').vcModal('close');
+        });
+
+        $('#popup-selfClearing').on('click', '.btn-group button.btn', function(e){
+            e.preventDefault();
+
+            var chk = $(this).index() ? true : false;
+            step3Block.find('input[name=selfClearingAgree]').prop('checked', chk);
+
+            if(chk) $('#popup-selfClearing').vcModal('close');
         });
 
     }
@@ -316,10 +320,13 @@
     }
 
     function setNextStep(){
-        var isComplete = true;
+        var isComplete = false;
         switch(step){
             case 0:
-                //step1Validation.validate();
+                var success = step1Validation.validate();
+                if(success){
+                    console.log("step1Validation.validate(); Success!!!")
+                }
                 break;
         }
 

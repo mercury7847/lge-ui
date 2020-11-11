@@ -298,13 +298,16 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
 
             self.validItemObj = rObj;
 
+            var isSuccess = false;
             if(vcui.isEmpty(rObj)){
+                isSuccess = true;
                 self.triggerHandler('success');
             }else{
                 self._swicthErrorMsg(self.validItemObj);
                 self.triggerHandler('validerror', [self.validItemObj]);
             }
             
+            return isSuccess;
         },
 
         _swicthErrorMsg : function _swicthErrorMsg(obj){
