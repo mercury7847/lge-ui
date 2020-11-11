@@ -1,6 +1,8 @@
 $(window).ready(function(){
     if(!document.querySelector('.KRC0043')) return false;
 
+    console.log('merge?');
+
     $('.KRC0043').buildCommonUI();
 
     //;(function($, _$){   
@@ -20,7 +22,6 @@ $(window).ready(function(){
                         swipeToSlide:false
                     }
                 }],
-                //asNavFor: '.ui_carousel_thumb_slider'
             })
 
             $('.KRC0043').find('.ui_carousel_thumb_slider').vcCarousel({
@@ -32,7 +33,6 @@ $(window).ready(function(){
                 slidesToScroll: 1,
                 focusOnChange:true,
                 focusOnSelect: true,
-                //asNavFor: '.ui_carousel_slider'
             });
 
         });           
