@@ -192,8 +192,6 @@
 
             //선택된 제품에 따른 구매정보들 요청
             requestInfo: function() {
-                var _self = this;
-                
                 var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
                 var itemList = [];
                 cartItemCheck.each(function (index, item) {
@@ -202,10 +200,34 @@
                 });
                 if(itemList.length > 0) {
                     var ajaxUrl = self.$cartContent.attr('data-info-url');
-                    var postData = {'itemID': itemList.join()};
+                    var postData = {'itemID': (itemList.length > 0) ? itemList.join() : null};
                     lgkorUI.requestAjaxData(ajaxUrl, postData, function(result){
                         careCartInfo.updateData(result.data);
                     });
+                } else {
+                    //선택된 제품이 없다
+                    var resetPaymentData = {
+                        "paymentInfo": {
+                            "total":{
+                                "count": "0",
+                                "price": "0"
+                            },
+                            "list":[
+                                {
+                                    "text": "제품 수",
+                                    "price": "0개",
+                                    "appendClass": "num"
+                                },
+                                {
+                                    "text": "이용요금",
+                                    "price": "월 0원",
+                                    "appendClass": ""
+                                }
+                            ]
+                        }
+                    }
+                    careCartInfo.updatePaymentInfo(resetPaymentData);
+                    careCartInfo.updateItemInfo(null);
                 }
             },
 

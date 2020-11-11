@@ -3295,6 +3295,20 @@ if (!window.JSON) {
         })(),
 
         /**
+         * 숫자를 하이픈이 들어간 폰넘버로 변환
+         */
+        phoneNumber: function (str) {
+            return str.replace(/(\d{2,3})(\d{3,4})(\d{4})/gi,'$1-$2-$3');
+        },
+
+        /**
+         * 숫자를 하이픈이 들어간 4-4-4-4 카드넘버로 변환
+         */
+        cardNumber: function (str) {
+            return str.replace(/(\d{4})(\d{4})(\d{4})(\d+)/gi,'$1-$2-$3-$4');
+        },
+
+        /**
          * min ~ max사이의 랜덤값 반환
          *
          * @param {number} min 최소값
