@@ -31,8 +31,8 @@ $(window).ready(function(){
                 swipeToSlide: false,
                 slidesToShow: 5,
                 slidesToScroll: 1,
-                focusOnChange:true,
-                focusOnSelect: true,
+                //focusOnChange:true,
+                //focusOnSelect: true,
             });
 
         });           
