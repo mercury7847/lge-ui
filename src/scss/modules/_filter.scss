@@ -405,7 +405,7 @@
                     color:#EC455A;
                 }
             }
-            @media screen and (min-width: 1780px) {
+            @media screen and (min-width: 1025px) {
                 display:none;
             }
         }
@@ -417,6 +417,9 @@
             width:24px;
             height:24px;
             z-index:20;
+            @media screen and (min-width: 1025px) {
+                display:none;
+            }
             .btn-close {
                 position:relative;
                 width:24px;
@@ -443,10 +446,7 @@
                     border-width: 0 1.5px 0px 0;
                     transform: rotate(-45deg);
                 }
-            }
-            @media screen and (min-width: 1780px) {
-                display:none;
-            }
+            }          
         }
     }
 }
