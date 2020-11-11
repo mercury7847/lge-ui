@@ -7,7 +7,7 @@ $(window).ready(function(){
         
         vcui.require(['ui/carousel'], function () {
 
-            $('.ui_carousel_slider').vcCarousel({
+            $('.KRC0043').find('.ui_carousel_slider').vcCarousel({
                 infinite: false,
                 fade:true,
                 swipeToSlide: true,
@@ -23,7 +23,7 @@ $(window).ready(function(){
                 asNavFor: '.ui_carousel_thumb_slider'
             })
 
-            $('.ui_carousel_thumb_slider').vcCarousel({
+            $('.KRC0043').find('.ui_carousel_thumb_slider').vcCarousel({
                 infinite: false,
                 prevArrow:'.btn-arrow.prev',
                 nextArrow:'.btn-arrow.next',
