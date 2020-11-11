@@ -1,0 +1,109 @@
+<!-- 비로그인 케이스 -->
+<div class="prd-contract-wrap login-empty">
+    <div class="inner">
+        <p class="txt">로그인하시면 기존 계약된 <strong>케어솔루션/케어십 제품을 확인</strong>할 수 있습니다. <br>기존/신규 계약 포함 다른 제품군 추가 계약 시, 결합할인 혜택을 드립니다. (월 요금 최대 5,000원 할인)</p>
+        <a href="#n" class="btn dark-gray size"><span>로그인 하기</span></a>
+    </div>
+</div>
+<!-- //비로그인 케이스 -->
+
+<!-- 로그인/계약 제품 미보유 케이스-->
+<div class="prd-contract-wrap login-empty">
+    <div class="inner">
+        <p class="txt">현재 <strong>계약된 케어솔루션 또는 케어십 제품이 없습니다.</strong><br>기존/신규 계약 포함 다른 제품군 추가 계약 시, 결합할인 혜택을 드립니다. (월 요금 최대 5,000원 할인)</p>
+    </div>
+</div>
+<!-- //로그인/계약 제품 미보유 케이스-->
+
+<!-- 로그인/계약 제품 보유 케이스 -->
+<div class="prd-contract-wrap">
+    <!-- 계약제품 총 보유량. 개발시 <span class="num">필드값과 <div class="contract-slide">아래 슬라이드 이미지 개수를 맞춰줘야 합니다. -->
+    <div class="inner ui_total_prod" data-prod-total="3">
+        <div class="tit-wrap">
+            <p class="tit">계약 제품</p>
+            <span class="num">총 <strong>3</strong>개</span>
+        </div>
+        <div class="contract-slide">
+            <!-- carousel -->
+            <div class="slide-wrap ui_carousel_slider">
+                <div class="slide-content ui_carousel_list">
+                    <ul class="slide-track ui_carousel_track ui_flexible_height">
+                        <!-- 무상케어십 계약 -->
+                        <li class="slide-conts ui_carousel_slide">
+                            <div class="conts-wrap">
+                                <div class="prd-care-horizon ui_flexible_box free-care comb-type"><!-- 결합된 상품이면 comb-type 클래스 추가 -->
+                                    <div class="ui_flexible_cont">
+                                        <p>케어십 일시납 확인으로 <br>기존 결합 할인 적용되었습니다.</p>
+                                        <span>기존계약 문의 1577-4090</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- //무상케어십 계약 -->
+                        <!-- slide -->
+                        @@include('./common/modules/prd-care-horizon.html', {
+                            "flagName" : "렌탈(케어솔루션)",
+                            "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
+                            "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
+                            "code" : "WU900AS 한줄 이상 한줄 이상 한줄 이상 한줄 이상 한줄 이상 한줄 이상 한줄 이상",
+                            "etcTxt" : "계약기간 2020.01.13~2025.05.12",
+                            "type" : "comb-type",
+                            btnDel : false
+                        })
+                        <!-- //slide -->
+                        <!-- slide -->
+                        @@include('./common/modules/prd-care-horizon.html', {
+                            "flagName" : "케어십",
+                            "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
+                            "title" : "LG 퓨리케어 상하좌우 냉온정수기 냉온정수기 냉온정수기 두줄 테스트 두줄 테스트 두줄 테스트 두줄 테스트 두줄 테스트 두줄 테스트",
+                            "code" : "S5MBR",
+                            "etcTxt" : "계약기간 2020.01.13~2025.05.12",
+                            btnDel : false
+                        })
+                        <!-- //slide -->
+                        <!-- slide -->
+                        @@include('./common/modules/prd-care-horizon.html', {
+                            "flagName" : "렌탈(케어솔루션)",
+                            "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
+                            "title" : "스팀 건조기ThinQ",
+                            "code" : "WU900AS",
+                            "etcTxt" : "계약기간 2020.01.13~2025.05.12",
+                            btnDel : false
+                        })
+                        <!-- //slide -->
+                        <!-- slide -->
+                        @@include('./common/modules/prd-care-horizon.html', {
+                            "flagName" : "렌탈(케어솔루션)",
+                            "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
+                            "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
+                            "code" : "WU900AS",
+                            "etcTxt" : "계약기간 2020.01.13~2025.05.12",
+                            btnDel : false
+                        })
+                        <!-- //slide -->
+                        <!-- 보유 제품 등록 -->
+                        <li class="slide-conts ui_carousel_slide">
+                            <div class="conts-wrap">
+                                <div class="prd-care-horizon ui_flexible_box holding-care">
+                                    <div class="ui_flexible_cont">
+                                        <div class="box">
+                                            <p>등록하지 않은 구매 제품이 있으시다면, <br>등록 후 케어십으로 관리 받아 보세요.</p>
+                                            <a href="#n" class="btn-link">보유제품 등록하기</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- //보유 제품 등록 -->
+                    </ul>
+                </div>
+                <div class="slide-controls">
+                    <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                    <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                </div>
+            </div>
+            <!-- //carousel -->
+        </div>
+    </div>
+</div>
+<!-- //로그인/계약 제품 보유 케이스 -->

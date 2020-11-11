@@ -19,9 +19,7 @@
 .lay-filter {
     float:left;
     width:215px;
-    margin-left:-240px;
-    //margin-top: 79px;
-
+    margin-right: 25px;
     @at-root .search .lay-filter {
         position: absolute;
         top: 0;
@@ -32,7 +30,7 @@
         }
     }
 
-    @media screen and (max-width: 1780px) {
+    @media screen and (max-width: 1024px) {
         display:none;
         position:fixed;
         top:0;
@@ -60,7 +58,7 @@
 
     .lay-fliter-con,
     .lay-filter-con {
-        @media screen and (max-width: 1780px) {
+        @media screen and (max-width: 1024px) {
             position:absolute;
             top:0;
             width:100%;
@@ -94,13 +92,13 @@
             line-height:27px;
             font-weight:$font-weight-bold;
         }
-        @media screen and (min-width: 1780px) {
+        @media screen and (min-width: 1024px) {
             display:none;
         }
     }
 
     .plp-filter-wrap {
-        @media screen and (max-width: 1780px) {
+        @media screen and (max-width: 1024px) {
             //padding:40px 20px 115px;
             padding:0 16px 115px;
         }
@@ -126,15 +124,15 @@
                     }
                 }
             }
-            @media screen and (max-width: 1780px) {
+            @media screen and (max-width: 1024px) {
                 display:none;
             }
         }
         .list-acco-sorting{
-            @media screen and (max-width: 1780px) {
+            @media screen and (max-width: 1024px) {
                 display:block;
             }
-            @media screen and (min-width: 1780px) {
+            @media screen and (min-width: 1024px) {
                 display:none;
             }
         }
@@ -142,26 +140,26 @@
         .list-acco {
             ul {
                 border-top: 1px solid $color-border;
-                @media screen and (max-width: 1780px) {
+                @media screen and (max-width: 1024px) {
                     border-top: none;
                 }
                 li {
                     background-color:#fff;
                     border-bottom: 1px solid $color-border;
                     overflow:hidden;
-                    @media screen and (max-width: 1780px) {
+                    @media screen and (max-width: 1024px) {
                         margin:0;
                         border-radius:inherit;
                     }
                     .head {
                         position:relative;
-                        @media screen and (max-width: 1780px) {
+                        @media screen and (max-width: 1024px) {
                             border-bottom:1px solid #ededed;
                         }
                         .link-acco {
                             display:block;
                             padding:0 45px 0 0;
-                            @media screen and (max-width: 1780px) {
+                            @media screen and (max-width: 1024px) {
                                 display:block;
                                 padding:0 45px 0 0;
                             }
@@ -174,7 +172,7 @@
                                 width:16px;
                                 height:16px;
                                 background:url('/lg5-common/images/icons/btn-plus.svg') no-repeat;
-                                @media screen and (max-width: 1780px) {
+                                @media screen and (max-width: 1024px) {
                                     top:32px;
                                     right:0;
                                 }
@@ -190,7 +188,7 @@
                             span {
                                 word-break:break-all;
                             }
-                            @media screen and (max-width: 1780px) {
+                            @media screen and (max-width: 1024px) {
                                 padding:32px 0 16px;
                             }
                         }
@@ -198,7 +196,7 @@
                     .desc {
                         display:none;
                         padding:0 1px 32px 1px;
-                        @media screen and (max-width: 1780px) {
+                        @media screen and (max-width: 1024px) {
                             padding:20px 0 32px 0;
                             //padding:20px 8px 32px;
                         }
@@ -330,7 +328,7 @@
             .btn-text {
                 text-decoration:underline;
             }
-            @media screen and (max-width: 1780px) {
+            @media screen and (max-width: 1024px) {
                 display:none;
             }
         }
@@ -407,7 +405,7 @@
                     color:#EC455A;
                 }
             }
-            @media screen and (min-width: 1780px) {
+            @media screen and (min-width: 1025px) {
                 display:none;
             }
         }
@@ -419,6 +417,9 @@
             width:24px;
             height:24px;
             z-index:20;
+            @media screen and (min-width: 1025px) {
+                display:none;
+            }
             .btn-close {
                 position:relative;
                 width:24px;
@@ -445,10 +446,7 @@
                     border-width: 0 1.5px 0px 0;
                     transform: rotate(-45deg);
                 }
-            }
-            @media screen and (min-width: 1780px) {
-                display:none;
-            }
+            }          
         }
     }
 }
@@ -460,11 +458,11 @@
         height: 24px;
         background: url("/lg5-common/images/KRP0009/btn-filter.svg") no-repeat 0 0;
         background-size: 24px 24px;
-        @media screen and (min-width: 1780px) {
+        @media screen and (min-width: 1025px) {
             display: none;
         }
         @include mobile {
-            background-size: 19px 19px;
+            background-size: 32px 32px;
         }
     }
     &.applied {

@@ -1544,3 +1544,27 @@
         }
     }
 }
+
+
+.nav-brand-gate-mobile {
+    @include pc {
+        display: none;
+    }
+    padding: 20px;
+    border-bottom: 6px solid #f5f5f5;
+    .title {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        @include font-medium;
+    }
+    .brand-link {
+        @include font-small;
+        li {
+            display: inline-block;
+            &:not(:first-child) {
+                padding-left: 20px;
+            }
+        }
+    }
+}

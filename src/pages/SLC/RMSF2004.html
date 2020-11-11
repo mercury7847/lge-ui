@@ -1,146 +1,129 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["SLC/SLC"]
+        pageCSS: ["SLC/SLC"],
+        pageJS: ["caresolution/carePlaner"]
     })
 <body>
     <div class="wrap">
         @@include('./common/header.html')
 
-        <div class="container">
+        <main class="container">
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "케어플래너",
-                "pageDesc" : "케어솔루션/케어십 서비스의 결합 혜택을 손쉽게 계산해보세요."
+                "pageTitle": "렌탈 케어플래너",
+                "pageDesc" : "케어솔루션/케어십 서비스의 결합 혜택을 손쉽게 계산해보세요.",
+                toolTip: true,
+                "type" : "include",
+                "page" : "tooltip-RMSF2003-01"
             })
             <div class="contents care-plan">
                 <div class="cont-wrap">
-                    <!-- 비로그인 케이스 -->
-                    <div class="prd-contract-wrap login-empty">
-                        <div class="inner">
-                            <p class="txt">로그인하시면 기존 계약된 케어솔루션/케어십 제품을 확인할 수 있습니다. 기존/신규 계약 포함 다른 제품군 추가 계약 시, <br>결합할인 혜택을 드립니다. (월 요금 최대 5,000원 할인)</p>
-                            <a href="#n" class="btn bd-black"><span>로그인</span></a>
-                        </div>
-                    </div>
-                    <!-- //비로그인 케이스 -->
 
-                    <!-- 로그인/계약 제품 미보유 케이스-->
-                    <div class="prd-contract-wrap login-empty">
-                        <div class="inner">
-                            <p class="txt">현재 계약된 케어솔루션 또는 케어십 제품이 없습니다. 기존/신규 계약 포함 다른 제품군 추가 계약 시, 결합할인 혜택을 드립니다. (월 요금 최대 5,000원 할인)</p>
-                        </div>
-                    </div>
-                    <!-- //로그인/계약 제품 미보유 케이스-->
-
-                    <!-- 로그인/계약 제품 보유 케이스 -->
-                    <div class="prd-contract-wrap">
-                        <!-- 계약제품 총 보유량. 개발시 <span class="num">필드값과 <div class="contract-slide">아래 슬라이드 이미지 개수를 맞춰줘야 합니다. -->
-                        <div class="inner ui_total_prod" data-prod-total="3">
-                            <div class="tit-wrap">
-                                <p class="tit">계약 제품</p>
-                                <span class="num">총 <strong>3</strong>개</span>
-                            </div>
-                            <div class="contract-slide">
-                                <!-- carousel -->
-                                <div class="slide-wrap ui_carousel_slider">
-                                    <div class="slide-content ui_carousel_list">
-                                        <div class="slide-track ui_carousel_track">
-                                            <!-- slide -->
-                                            @@include('./common/modules/prd-care-horizon.html', {
-                                                "flagName" : "렌탈(케어솔루션)",
-                                                "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
-                                                "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
-                                                "code" : "WU900AS 한줄 이상 한줄 이상 한줄 이상 한줄 이상 한줄 이상 한줄 이상 한줄 이상",
-                                                "etcTxt" : "계약기간 2020.01.13~2025.05.12",
-                                                btnDel : false
-                                            })
-                                            <!-- //slide -->
-                                            <!-- slide -->
-                                            @@include('./common/modules/prd-care-horizon.html', {
-                                                "flagName" : "케어십",
-                                                "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
-                                                "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프) 두줄 텍스트 두줄 텍스트 두줄 텍스트 두줄 텍스트",
-                                                "code" : "WU900AS",
-                                                "etcTxt" : "계약기간 2020.01.13~2025.05.12",
-                                                btnDel : false
-                                            })
-                                            <!-- //slide -->
-                                            <!-- slide -->
-                                            @@include('./common/modules/prd-care-horizon.html', {
-                                                "flagName" : "렌탈(케어솔루션)",
-                                                "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
-                                                "title" : "스팀 건조기ThinQ",
-                                                "code" : "WU900AS",
-                                                "etcTxt" : "계약기간 2020.01.13~2025.05.12",
-                                                btnDel : false
-                                            })
-                                            <!-- //slide -->
-                                            <!-- slide -->
-                                            @@include('./common/modules/prd-care-horizon.html', {
-                                                "flagName" : "렌탈(케어솔루션)",
-                                                "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
-                                                "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
-                                                "code" : "WU900AS",
-                                                "etcTxt" : "계약기간 2020.01.13~2025.05.12",
-                                                btnDel : false
-                                            })
-                                            <!-- //slide -->
-                                        </div>
-                                    </div>
-                                    <div class="slide-controls">
-                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                    </div>
-                                </div>
-                                <!-- //carousel -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- //로그인/계약 제품 보유 케이스 -->
+                    @@include('./SLC/care-planner-top.html')
 
                     <!-- 케어솔루션 -->
                     <div class="care-solution-wrap"
                         data-prod-list="/lg5-common/data-ajax/caresolution/carePlanerProductList.json"
                         data-cate-list="/lg5-common/data-ajax/caresolution/carePlanerCategory.json"
                     >
-                        <div class="fixed-tab-wrap ui_sticky" data-sticky-container=".care-solution-wrap"><!-- 스크롤 시 탭 고정 영역 -->
+                        <div class="fixed-tab-wrap"><!-- 스크롤 시 tab-fix 클래스 추가 -->
                             <div class="inner">
-                                <div class="tabs-wrap btn-type">
+                                <div class="tabs-wrap new-type">
                                     <ul class="tabs">
-                                        <li><a href="#n">렌탈(케어솔루션)</a></li>
-                                        <li class="on"><a href="#n">케어십<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#n" data-tab-id="tab01">렌탈 케어솔루션</a></li>
+                                        <li class="on"><a href="#n" data-tab-id="tab02">케어십<em class="blind">선택됨</em></a></li>
                                     </ul>
                                 </div>
-
-                                <div class="tabs-wrap border-type ui_tab">
-                                    <ul class="tabs">
-                                        <li class="on"><a href="#n" data-cate-id="나의 제품">나의 제품(1)<em class="blind">선택됨</em></a></li>
-                                        <li><a href="#n" data-cate-id="정수기">정수기</a></li>
-                                        <li><a href="#n" data-cate-id="얼음정수기 냉장고">얼음정수기 냉장고</a></li>
-                                        <li><a href="#n" data-cate-id="공기청정기">공기청정기</a></li>
-                                        <li><a href="#n" data-cate-id="건조기">건조기</a></li>
-                                        <li><a href="#n" data-cate-id="스타일러">스타일러</a></li>
-                                        <li><a href="#n" data-cate-id="전기레인지">전기레인지</a></li>
-                                        <li><a href="#n" data-cate-id="식기세척기">식기세척기</a></li>
-                                        <li><a href="#n" data-cate-id="청소기">청소기</a></li>
-                                    </ul>
+                            </div>
+                            <div class="inner">
+                                <!-- carousel -->
+                                <div class="slide-wrap tab-slide-wrap ui_carousel_slider4">
+                                    <div class="slide-content ui_carousel_list tabs-wrap bar-type">
+                                        <ul class="slide-track ui_carousel_track tabs">
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="정수기">정수기<em class="blind">선택됨</em></a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="얼음정수기 냉장고">얼음정수기 냉장고</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="맥주제조기">맥주제조기</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="공기청정기">공기청정기</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="건조기">건조기</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="스타일러">스타일러</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="전기레인지">전기레인지</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="식기세척기">식기세척기</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                            <li class="slide-conts ui_carousel_slide">
+                                                <a href="#n" data-cate-id="안마의자">안마의자</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="slide-controls">
+                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="care-top-wrap">
-                            <!-- ‘나의 제품’ 탭에서만 노출되는 안내 영역 -->
-                            @@include('./common/modules/bullet-list.html', {
-                                "bulletTxt" : [
-                                    "등록 제품 중 케어십 가능 제품만 노출됩니다. 케어십 가입기간은 12개월이며 계약만료 시점에 계약해지 의사가 없을 시 자동 연장됩니다."
-                                ]
-                            })
-                            <!-- //‘나의 제품’ 탭에서만 노출되는 안내 영역 -->
-
-                            @@include('./common/modules/bullet-list.html', {
-                                "bulletTxt" : [
-                                    "케어십 가입기간은 12개월이며 계약만료 시점에 계약해지 의사가 없을 시 자동 연장됩니다."
-                                ]
-                            })
+                            <div class="txt-wrap">
+                                <p>케어십이란</p>
+                                @@include('./common/modules/tooltip.html', {
+                                    "type" : "include",
+                                    "page" : "tooltip-RMSF2003-03"
+                                })
+                            </div>
                             <div class="sort-select-wrap">
                                 <select class="ui_selectbox" id="select1" title="리스트 정렬 순서 선택">
                                     <option value="popular">인기순</option>
@@ -154,325 +137,88 @@
 
                         <div class="prd-list-wrap">
                             <ul class="inner">
-                                <!-- 유상 케어십 모듈 -->
+                                <!-- 케어십_유상제품 모듈 -->
                                 @@include('./common/modules/prd-care-vertical.html', {
                                     "moduleType" : "module-type2",
                                     "visual" : "/lg5-common/images/dummy/@sample-226x226.jpg",
                                     "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프) 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음",
                                     "code" : "WU900AS 코드값 한줄 처리 코드값 한줄 처리 코드값 한줄 처리 코드값 한줄 처리 코드값 한줄 처리",
+                                    "colorId" : "product1-color",
+                                    "colorDisabled" : "disabled",
                                     "colorSet" : [
-                                        {
-                                            "title": "LeatherYellow",
-                                            "color": "LeatherYellow",
-                                            "id": "product1-color1",
-                                            "name": "product1",
-                                            "checked": "checked"
-                                        },
-                                        {
-                                            "title": "PlatinumSilver",
-                                            "color": "PlatinumSilver",
-                                            "id": "product1-color2",
-                                            "name": "product1",
-                                            "checked": ""
-                                        },
-                                        {
-                                            "title": "Opal_Blue",
-                                            "color": "Opal_Blue",
-                                            "id": "product1-color3",
-                                            "name": "product1",
-                                            "checked": ""
-                                        },
-                                        {
-                                            "title": "PowderBlue",
-                                            "color": "PowderBlue",
-                                            "id": "product1-color4",
-                                            "name": "product1",
-                                            "checked": ""
-                                        }
+                                        {"title": "실버"},
+                                        {"title": "블루"},
+                                        {"title": "레드"},
+                                        {"title": "블랙"}
                                     ],
+                                    "visitDayId" : "product1-visit",
                                     "visitDay" : [
-                                        {
-                                            "title" : "1개월",
-                                            "id" : "rdo1-3-1",
-                                            "name" : "rdo1-3",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "3개월",
-                                            "id" : "rdo1-3-2",
-                                            "name" : "rdo1-3",
-                                            "checked" : ""
-                                        },
-                                        {
-                                            "title" : "6개월",
-                                            "id" : "rdo1-3-3",
-                                            "name" : "rdo1-3",
-                                            "checked" : ""
-                                        }
+                                        {"title" : "1개월"},
+                                        {"title" : "3개월"}
 
                                     ],
                                     "sellPrice" : {
-                                        "name" : "판매가",
-                                        "price" : "1,334,500",
-                                    },
-                                    "benefitPrice" : {
-                                        "name" : "최대 혜택가",
+                                        "name" : "할인 적용가",
                                         "price" : "1,232,500",
                                     },
-                                    "monthPrice" : {
-                                        "name" : "월 요금",
-                                        "price" : "21,5000",
+                                    "benefitPrice" : {
+                                        "name" : "제품 판매가",
+                                        "price" : "1,334,500",
                                     },
-                                    "priceName" : "이달의 혜택가",
-                                    "totalPrice" : "140,900",
+                                    "totalPrice" : "월 105,200원"
                                 })
-                                <!-- //유상 케어십 모듈 -->
+                                <!-- //케어십_유상제품 모듈 -->
 
-                                <!-- 보유 제품 등록 모듈 -->
-                                @@include('./common/modules/prd-care-vertical.html', {
-                                    "moduleType" : "module-empty",
-                                    "tit" : "보유 제품 등록",
-                                    "txt" : "아직 등록하지 않은 구매 제품이<br>있으신가요?<br>보유 제품 등록하고 더 빠르게 관리 받아보세요.",
-                                    "btnTxt" : "제품 등록하기"
-                                })
-                                <!-- //보유 제품 등록 모듈 -->
-
-                                <!-- 보유 제품 찾기 모듈 -->
-                                @@include('./common/modules/prd-care-vertical.html', {
-                                    "moduleType" : "module-empty",
-                                    "tit" : "보유 제품 찾기",
-                                    "txt" : "모델명이 기억나지 않으시나요?<br>내 제품을 빠르게 찾아<br>케어십으로 관리 받아 보세요.",
-                                    "etcTxt" : "*얼음정수기냉장고, 공기청정기 건조기, 청소기 해당",
-                                    "btnTxt" : "내 제품 찾기"
-                                })
-                                <!-- //보유 제품 찾기 모듈 -->
-
-                                <!-- 보유 제품 케어십 모듈 -->
+                                <!-- 케어십_보유제품 모듈 -->
                                 @@include('./common/modules/prd-care-vertical.html', {
                                     "moduleType" : "module-type3",
                                     "visual" : "/lg5-common/images/dummy/@sample-226x226.jpg",
+                                    "flag" : "보유제품",
                                     "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
                                     "code" : "WU900AS",
-                                    "dateInfo" : [
+                                    "infoDate" : [
                                         {
-                                            name : "구매일자",
-                                            date : "2020.01.30",
+                                            "name" : "구매일자",
+                                            "date" : "2020.01.31"
                                         },
                                         {
-                                            name : "보증기간",
-                                            date : "~ 2026.01.30",
-                                        }
-                                    ],   
-                                    "visitDay" : [
-                                        {
-                                            "title" : "1개월",
-                                            "id" : "rdo2-3-1",
-                                            "name" : "rdo2-3",
-                                            "checked" : "checked"
+                                            "name" : "보증기간",
+                                            "date" : "~ 2022.01.31"
                                         },
-                                        {
-                                            "title" : "3개월",
-                                            "id" : "rdo2-3-2",
-                                            "name" : "rdo2-3",
-                                            "checked" : ""
-                                        },
-                                        {
-                                            "title" : "6개월",
-                                            "id" : "rdo2-3-3",
-                                            "name" : "rdo2-3",
-                                            "checked" : ""
-                                        }
                                     ],
-                                    "priceName" : "이달의 혜택가",
-                                    "totalPrice" : "40,900",
+                                    "visitDayId" : "product2-visit",
+                                    "visitDay" : [
+                                        {"title" : "1개월"},
+                                        {"title" : "3개월"},
+                                        {"title" : "6개월"},
+                                        {"title" : "1년"},
+                                        {"title" : "2년"},
+                                        {"title" : "3년"}
+                                    ],
+                                    "totalPrice" : "월 15,200원"
                                 })
-                                <!-- //보유 제품 케어십 모듈 -->
+                                <!-- //케어십_보유제품 모듈 -->
 
-                                <!-- 용역 제품 케어십 모듈 -->
+                                <!-- 케어십_용역제품 모듈 -->
                                 @@include('./common/modules/prd-care-vertical.html', {
                                     "moduleType" : "module-type4",
                                     "visual" : "/lg5-common/images/dummy/@sample-226x226.jpg",
                                     "title" : "LG 퓨리케어 듀얼 냉온정수기 듀얼 냉온정수기",
                                     "codeTxt" : "모델명이 ‘AS30***’ 또는 ‘AS28***’로 시작하는 공기청정기 전 제품 (색상 무관)",
+                                    "visitDayId" : "product3-visit",
                                     "visitDay" : [
-                                        {
-                                            "title" : "1개월",
-                                            "id" : "rdo3-3-1",
-                                            "name" : "rdo3-3",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "3개월",
-                                            "id" : "rdo3-3-2",
-                                            "name" : "rdo3-3",
-                                            "checked" : ""
-                                        },
-                                        {
-                                            "title" : "6개월",
-                                            "id" : "rdo3-3-3",
-                                            "name" : "rdo3-3",
-                                            "checked" : ""
-                                        }
+                                        {"title" : "1개월"},
+                                        {"title" : "3개월"}
                                     ],
-                                    "monthPrice" : {
-                                        "name" : "월 요금",
-                                        "price" : "21,5000",
-                                    },
-                                    "priceName" : "이달의 혜택가",
-                                    "totalPrice" : "40,900",
+                                    "totalPrice" : "월 15,200원"
                                 })
-                                <!-- //용역 제품 케어십 모듈 -->
-
-                                <!-- 유상 케어십 모듈 -->
-                                @@include('./common/modules/prd-care-vertical.html', {
-                                    "moduleType" : "module-type2",
-                                    "visual" : "/lg5-common/images/dummy/@sample-226x226.jpg",
-                                    "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프) 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음",
-                                    "code" : "WU900AS",
-                                    "colorSet" : [
-                                        {
-                                            "title": "LeatherYellow",
-                                            "color": "LeatherYellow",
-                                            "id": "product4-color1",
-                                            "name": "product4",
-                                            "checked": "checked"
-                                        },
-                                        {
-                                            "title": "PlatinumSilver",
-                                            "color": "PlatinumSilver",
-                                            "id": "product4-color2",
-                                            "name": "product4",
-                                            "checked": ""
-                                        },
-                                        {
-                                            "title": "Opal_Blue",
-                                            "color": "Opal_Blue",
-                                            "id": "product4-color3",
-                                            "name": "product4",
-                                            "checked": ""
-                                        },
-                                        {
-                                            "title": "PowderBlue",
-                                            "color": "PowderBlue",
-                                            "id": "product4-color4",
-                                            "name": "product4",
-                                            "checked": ""
-                                        }
-                                    ],
-                                    "visitDay" : [
-                                        {
-                                            "title" : "1개월",
-                                            "id" : "rdo1-4-1",
-                                            "name" : "rdo1-4",
-                                            "checked" : "checked"
-                                        },
-                                        {
-                                            "title" : "3개월",
-                                            "id" : "rdo1-4-2",
-                                            "name" : "rdo1-4",
-                                            "checked" : ""
-                                        },
-                                        {
-                                            "title" : "6개월",
-                                            "id" : "rdo1-4-3",
-                                            "name" : "rdo1-4",
-                                            "checked" : ""
-                                        }
-
-                                    ],
-                                    "sellPrice" : {
-                                        "name" : "판매가",
-                                        "price" : "1,334,500",
-                                    },
-                                    "priceName" : "월요금",
-                                    "totalPrice" : "40,900",
-                                })
-                                <!-- //유상 케어십 모듈 -->
+                                <!-- //케어십_용역제품 모듈 -->
                             </ul>
                         </div>
                     </div>
                     <!-- //케어솔루션 -->
 
-                    <!-- 선택제품 -->
-                    <div class="prd-select-wrap">
-                        <div class="inner">
-                            <div class="tit-wrap">
-                                <p class="tit">결합할 제품 담기</p>
-                                <span class="num">총 <strong>2</strong>개</span>
-                            </div>
-                            <button type="button" class="btn-close"><span class="blind">닫기</span></button> <!-- 클릭 시 .prd-select-wrap에 close 클래스 토글 / 열기,닫기 텍스트 교체 -->
-                            <div class="contract-slide">
-                                <!-- carousel -->
-                                <div class="slide-wrap ui_carousel_slider3">
-                                    <div class="slide-content ui_carousel_list">
-                                        <div class="slide-track ui_carousel_track">
-                                            <!-- slide -->
-                                            @@include('./common/modules/prd-care-horizon.html', {
-                                                "flagName" : "렌탈(케어솔루션)",
-                                                "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
-                                                "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
-                                                "code" : "WU900AS",
-                                                "etcTxt" : "월 61,900원",
-                                                btnDel : true
-                                            })
-                                            <!-- //slide -->
-                                            <!-- slide -->
-                                            @@include('./common/modules/prd-care-horizon.html', {
-                                                "flagName" : "케어십",
-                                                "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
-                                                "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프) 두줄 텍스트 두줄 텍스트 두줄 텍스트 두줄 텍스트",
-                                                "code" : "WU900AS",
-                                                "etcTxt" : "월 61,900원",
-                                                btnDel : true
-                                            })
-                                            <!-- //slide -->
-                                            <!-- slide -->
-                                            @@include('./common/modules/prd-care-horizon.html', {
-                                                "flagName" : "렌탈(케어솔루션)",
-                                                "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
-                                                "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
-                                                "code" : "WU900AS",
-                                                "etcTxt" : "월 61,900원",
-                                                btnDel : true
-                                            })
-                                            <!-- //slide -->
-                                            <!-- slide -->
-                                            @@include('./common/modules/prd-care-horizon.html', {
-                                                "flagName" : "렌탈(케어솔루션)",
-                                                "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
-                                                "title" : "스팀 건조기ThinQ",
-                                                "code" : "WU900AS",
-                                                "etcTxt" : "월 61,900원",
-                                                btnDel : true
-                                            })
-                                            <!-- //slide -->
-                                        </div>
-                                    </div>
-                                    <div class="slide-controls">
-                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                                    </div>
-                                </div>
-                                <!-- //carousel -->
-                            </div>
-                            <div class="total-info">
-                                <dl>
-                                    <dt>이용 요금</dt>
-                                    <dd>월 81,400원</dd>
-                                </dl>
-                                <dl>
-                                    <dt>결합 할인</dt>
-                                    <dd class="sale">월 -5,000원</dd>
-                                </dl>
-                                <dl>
-                                    <dt>제휴카드 할인시</dt>
-                                    <dd class="sale">월 최대 -26,000원</dd>
-                                </dl>
-                                <a href="#n" class="btn pink"><span>견적 확인하기</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- //선택제품 -->
+                    @@include('./SLC/care-planner-bottom.html')
                 </div>
 
                 <!-- toast-meassage -->
@@ -482,102 +228,9 @@
                     ]
                 })
             </div>
-        </div>
+        </main>
         
         @@include('./common/footer.html')
     </div> 
-    <script>
-
-    vcui.require(['ui/carousel'], function () {
-        $('.ui_carousel_slider').vcCarousel({
-            infinite: false,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            variableWidth : true,
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: {
-                        infinite: false,
-                        variableWidth : false,
-                        dots: false,
-                        slidesToShow: 3,
-                        slidesToScroll: 3
-                        
-                    }
-                },
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        infinite: false,
-                        variableWidth : false,
-                        dots: false,
-                        slidesToShow: 2, 
-                        slidesToScroll: 2
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        infinite: false,
-                        variableWidth : true,
-                        dots: false,
-                        slidesToShow: 1, 
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
-
-        $('.ui_carousel_slider2').vcCarousel({
-            infinite: false,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            variableWidth : false,
-            speed : 200,
-            dots: false
-        });
-
-        $('.ui_carousel_slider3').vcCarousel({
-                infinite: false,
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                variableWidth : true,
-                responsive: [
-                    {
-                        breakpoint: 10000,
-                        settings: {
-                            infinite: false,
-                            variableWidth : false,
-                            dots: false,
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                            
-                        }
-                    },
-                    {
-                            breakpoint: 1024,
-                            settings: {
-                                infinite: false,
-                                variableWidth : false,
-                                dots: false,
-                                slidesToShow: 1, 
-                                slidesToScroll: 1
-                            }
-                        },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            infinite: false,
-                            variableWidth : true,
-                            dots: false,
-                            slidesToShow: 1, 
-                            slidesToScroll: 1
-                        }
-                    }
-                ]
-            });
-        });
-    </script>
 </body>
 </html>
