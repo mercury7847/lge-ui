@@ -302,7 +302,7 @@
             dots: false
         });
 
-        $('.prd-select-wrap').css({display:'block'});
+        // $('.prd-select-wrap').css({display:'block'});
 
         var selectbox = $('.ui_selectbox').vcSelectbox('instance').on('selectboxopen', function(e, sbox){
             var dl = $(sbox).closest('dl');
