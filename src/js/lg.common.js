@@ -161,7 +161,10 @@
                 //     }
                 // ]
             });
+
+            lgkorUI._resetFlexibleBox();
         }.bind(this));
+
         return this;
     };
 
