@@ -215,69 +215,13 @@
     border-radius:8px;
     box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
     @media screen and (max-width:1380px) {
-        padding:15px 20px 32px;
+        padding:12px 20px 32px;
     }
     @include mobile {
         height:auto;
-        padding:0 20px 32px;
-    }
-    .prd-add {
-        position:absolute;
-        bottom:32px;
-        right:40px;
-        z-index:1;
-        @include mobile {
-            top:20px;
-            left:20px;
-        }
-        .btn-add {
-            position:relative;
-            height:24px;
-            padding:0 12px;
-            border:1.3px solid #808080;
-            border-radius:12px;
-            span {
-                position:relative;
-                padding-left:14px;
-                color:#808080;
-                font-size:14px;
-                line-height:22px;
-                @include mobile {
-                    font-size:12px;
-                }
-                &:before {
-                    content:'';
-                    display:block;
-                    position:absolute;
-                    top:50%;
-                    left:4.5px;
-                    width:1px;
-                    height:10px;
-                    transform:translateY(-50%);
-                    background:#808080;
-                }
-                &:after {
-                    content:'';
-                    display:block;
-                    position:absolute;
-                    top:50%;
-                    left:0;
-                    width:10px;
-                    height:1px;
-                    transform:translateY(-50%);
-                    background:#808080;
-                }
-            }
-            &:hover {
-                border-color:#EC455A;
-                span {
-                    color:#EC455A;
-                    &:before , &:after {
-                        background:#EC455A;
-                    }
-                }
-            }
-        }
+        min-height:650px;
+        max-height:inherit;
+        padding:12px 36px 32px;
     }
     .img-wrap {
         text-align:center;
@@ -290,17 +234,13 @@
             height:226px;
             overflow:hidden;
             @include mobile {
-                width:150px;
-                height:150px;
+                width:232px;
+                height:232px;
             }
         }
     }
     .txt-wrap {
-        margin-top:24px;
-        @include mobile {
-            height:auto;
-            margin-top:12px;
-        }
+        margin-top:16px;
         a {
             display:block;
         }
@@ -314,6 +254,9 @@
             -moz-line-clamp: 2;
             -ms-line-clamp: 2;
             -webkit-line-clamp: 2;
+            @include mobile {
+                max-height:46px;
+            }
         }
         .code {
             margin-top:2px;
@@ -322,13 +265,13 @@
             overflow:hidden;
             text-overflow:ellipsis;
             white-space:nowrap;
+            @include mobile {
+                margin-top:4px;
+            }
         }
     }
     .info-wrap {
         padding-top:16px;
-        @include mobile {
-            padding-top:14px;
-        }
         dl {
             display:table;
             width:100%;
@@ -345,6 +288,9 @@
                 padding:7px 11px;
                 border-radius:8px;
                 border:1px solid #ddd;
+                @include mobile {
+                    padding:10px 12px;
+                }
                 &:first-child {
                     margin-top:0;
                 }
@@ -472,8 +418,8 @@
                 right:20px;
             }
             @include mobile {
-                position:static;
-                padding-top:18px;
+                left:36px;
+                right:36px;
             }
             .total-price {
                 @include clearfix;
@@ -485,6 +431,10 @@
                     vertical-align:middle;
                     @media screen and (max-width:1235px) {
                         @include font-large;
+                    }
+                    @include mobile {
+                        padding:12px 0;
+                        @include font-large-1;
                     }
                 }
                 .btn {
@@ -498,6 +448,11 @@
     &.module-type1 {
         height:656px;
         max-height:656px;
+        @include mobile {
+            height:648px;
+            min-height:648px;
+            max-height:inherit;
+        }
     }
 
     //케어십_유상제품 모듈
@@ -574,6 +529,7 @@
 
     .prd-contract-wrap {
         max-width:100%;
+        overflow:hidden;
         .inner {
             background:#f4f4f4;
         }
@@ -670,40 +626,54 @@
 
     .care-solution-wrap {
         padding-top:80px;
+        @include mobile {
+            padding-top:40px;
+        }
         .tabs-wrap {
             text-align:left;
             &.new-type {
                 margin-bottom:32px;
                 @include mobile {
-                    margin-bottom:20px;
+                    margin-bottom:0;
                 }
             }
         }
         .fixed-tab-wrap {
             background:#fff;
-            @include mobile {
-                padding-top:24px;
-            }
             .inner {
                 position:relative;
                 max-width:1380px + 80px;
                 margin:0 auto;
                 padding:0 40px;
+                @include mobile {
+                    padding:0 16px;
+                }
                 .tab-slide-wrap {
                     margin-bottom:28px;
+                    @include mobile {
+                        margin-bottom:0;
+                    }
                     .slide-content {
                         margin:0;
+                        padding:0;
                     }
                     .tabs {
                         max-width:inherit;
                         overflow:hidden;
                         -webkit-overflow-scrolling:inherit;
+                        @include mobile {
+                            display:flex;
+                            max-width:100%;
+                            padding:24px 0;
+                            overflow:auto;
+                            overflow-x:auto;
+                            -webkit-overflow-scrolling:touch;
+                        }
                         > li {
                             margin:0;
                             padding:0 16px;
                             @include mobile {
-                                margin-left:12px;
-                                padding-left:13px;
+                                padding:0 8px;
                             }
                             &::before {
                                 content:' ';
@@ -777,8 +747,8 @@
             margin:0 auto 16px;
             padding:0 40px;
             @include mobile {
-                margin-top:24px;
-                padding:0 20px;
+                margin-top:8px;
+                padding:0 16px;
             }
             .txt-wrap {
                 display:inline-block;
@@ -824,7 +794,7 @@
                     }
                     @include mobile {
                         width:100%;
-                        margin:16px 0 0 0;
+                        margin:12px 0 0 0;
                         &:first-child {
                             margin-top:0;
                         }
@@ -865,6 +835,9 @@
             strong {
                 color:#ec455a;
             }
+        }
+        @include mobile {
+            padding:32px 16px 32px;
         }
     }
 
