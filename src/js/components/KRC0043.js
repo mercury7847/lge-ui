@@ -37,6 +37,12 @@ $(window).ready(function(){
                 asNavFor: '.ui_carousel_slider'
             });
 
+            $('.KRC0043').find('.ui_carousel_thumb_slider').find('a').on('click', function(e){
+                e.preventDefault();
+                console.log('block?');
+            });
+            
+
         });           
         /*
     })(
