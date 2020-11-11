@@ -3,7 +3,7 @@ $(window).ready(function(){
 
     $('.KRC0043').buildCommonUI();
 
-    ;(function($, _$){   
+    //;(function($, _$){   
         
         vcui.require(['ui/carousel'], function () {
 
@@ -36,12 +36,13 @@ $(window).ready(function(){
             });
 
         });           
-        
+        /*
     })(
         function (selector){
             return $('.KRC0043').find(selector); 
         }, $
     );
+    */
 
 
 })
