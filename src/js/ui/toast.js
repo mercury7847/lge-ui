@@ -6,7 +6,7 @@ vcui.define('ui/toast', ['jquery', 'vcui'], function ($, core) {
     '<div class="toast-message-box">'+
     '   <div class="inner">'+
     '       <p class="toast-text"></p>'+
-    '       <span class="btn-area"><a href="#" role="button">확인</a></span>'+
+    '       <a href="#" role="button" class="btn-area"><span class="blind">확인</span></a>'+
     '   </div>'+
     '</div>';
 

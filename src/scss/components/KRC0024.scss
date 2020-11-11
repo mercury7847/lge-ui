@@ -162,6 +162,10 @@
         left: 60px;
         z-index: 2;
         padding: 125px 0;
+        @include mobile {
+            right:0;
+            left:0;
+        }
         //padding: 56px 0;
         .text-area {
             position: relative;
@@ -175,8 +179,8 @@
 
                 @include mobile {
                     max-width: 100%;
-                    padding-right: 24px;
-                    padding-left: 24px;
+                    padding-right: 20px;
+                    padding-left: 20px;
                 }
             }
         }
@@ -258,8 +262,6 @@
         }
     }
 
-    .type-narrow {}
-
     @include mobile {
         .mobile-text-block-left,
         .mobile-text-block-right,
@@ -279,7 +281,7 @@
                         }
                         .text-wrap {
                             position: static;
-                            padding: 24px 24px 60px;
+                            padding: 24px 20px 60px;
                             transform: translateY(0);
                         }
                     }
@@ -324,21 +326,38 @@
         }
     }
 
+    .type-wide {
+        .text-wrap {
+            .inner {
+                .text-block {
+                    max-width:100%;
+                }
+            }
+        }
+    }
+    .type-narrow {
+        .text-wrap {
+            .inner {
+                .text-block {
+                    max-width:60%;
+                    @include mobile {
+                        max-width:100%;
+                    }
+                }
+            }
+        }
+    }
+
     // 텍스트 가로정렬 및 버튼 사이 간격
     $align: (left, right, center, top, middle, bottom);
     @each $key in $align {
         .align-#{$key} {
             @if $key == left {
-                &.type-wide {
-                    .text-wrap {
-                        .inner {
-                            float: left;
-                            width: 50%;
-                            text-align: left;
-                            @include mobile {
-                                float: none;
-                                width: 100%;
-                            }
+                .text-wrap {
+                    .inner {
+                        text-align: left;
+                        .text-block {
+                            margin-right:auto;
                         }
                     }
                 }
@@ -353,16 +372,11 @@
                 }
             }
             @if $key == right {
-                &.type-wide {
-                    .text-wrap {
-                        .inner {
-                            float: right;
-                            width: 50%;
-                            text-align: right;
-                            @include mobile {
-                                float: none;
-                                width: 100%;
-                            }
+                .text-wrap {
+                    .inner {
+                        text-align: right;
+                        .text-block {
+                            margin-left:auto;
                         }
                     }
                 }
@@ -377,6 +391,14 @@
                 }
             }
             @if $key == center {
+                .text-wrap {
+                    .inner {
+                        .text-block {
+                            margin-left:auto;
+                            margin-right:auto;
+                        }
+                    }
+                }
                 .cta-button,
                 .cta-link {
                     margin: 0 -12px;
