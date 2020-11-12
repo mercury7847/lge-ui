@@ -7,25 +7,13 @@
     -->
     <section class="component KRP0043">
         <div class="component-inner">
+            <!-- 대체 가능한 상품 목록 (없을 경우 비노출) -->
             <div class="product-area">
                 <div class="heading-box">
                     <div class="title">
-                        <h2>@@title</h2>
-                        <p>@@desc</p>
+                        <h2>본 상품은 배송시점 재고상태에 따라 아래 대체 가능한 모델로 배송될 수 있습니다.</h2>
+                        <p>본 상품과 대체가능한 상품의 판매금액은 동일 합니다.</p>
                     </div>
-                    @@if (context.search == true) {
-                    <div class="search">
-                        <div class="input-wrap">
-                            <div class="box">
-                                <input type="text" name="modelName" id="modelName" class="ui_input_clearbutton" data-clear-button="button.btn-del" placeholder="모델명을 입력하세요.">
-                                <div class="cell">
-                                    <button type="button" class="btn-del"><span class="blind">검색어 삭제</span></button>
-                                    <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    }
                 </div>
                 <div class="result-wrap">
                     <div class="list-wrap">
@@ -52,13 +40,61 @@
                             <li>15ZG980-G</li>
                         </ul>
                     </div>
-                    @@if (context.search == true) {
+                </div>
+            </div>
+            <!-- // 대체 가능한 상품 목록 (없을 경우 비노출) -->
+
+            <!-- 소모품을 사용할 수 있는 제품 목록 (항상 노출) -->
+            <div class="product-area">
+                <div class="heading-box">
+                    <div class="title">
+                        <h2>소모품을 사용할 수 있는 일반제품 목록</h2>
+                        <p>구매 전 적용가능 모델을 확인하세요</p>
+                    </div>
+                    <div class="search">
+                        <div class="input-wrap">
+                            <div class="box">
+                                <input type="text" name="modelName" id="modelName" class="ui_input_clearbutton" data-clear-button="button.btn-del" placeholder="모델명을 입력하세요.">
+                                <div class="cell">
+                                    <button type="button" class="btn-del"><span class="blind">검색어 삭제</span></button>
+                                    <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-wrap">
+                    <div class="list-wrap">
+                        <ul class="product-list">
+                            <li>14Z970-G.AR30ML</li>
+                            <li>13Z970-E</li>
+                            <li>13Z970-G</li>
+                            <li>13Z980-B</li>
+                            <li>13Z980-G</li>
+                            <li>14Z970-E</li>
+                            <li>14Z970-G</li>
+                            <li>14Z970-T</li>
+                            <li>14Z980-G</li>
+                            <li>14ZB970-G</li>
+                            <li>14ZD970-G</li>
+                            <li>15Z960-G</li>
+                            <li>15Z960-M</li>
+                            <li>15Z970-E</li>
+                            <li>15Z970-G</li>
+                            <li>15Z970-L</li>
+                            <li>15Z975-G</li>
+                            <li>15Z980-G</li>
+                            <li>15ZB970-G</li>
+                            <li>15ZG980-G</li>
+                        </ul>
+                    </div>
                     <div class="no-data">
                         <p>입력하신 모델과 일치하는 적용 모델을 찾지 못했습니다.</p>
                     </div>
-                    }
                 </div>
             </div>
+            <!-- // 소모품을 사용할 수 있는 제품 목록 (항상 노출) -->
+
         </div>	
     </section>
 </div> <!-- //.component-wrap-->

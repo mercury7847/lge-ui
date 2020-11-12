@@ -35,6 +35,9 @@
 						white-space:nowrap;
 					}
 				}
+				input[type=text] {
+					height:56px;
+				}
 				button {
 					width:24px;
 					height:24px;
@@ -65,6 +68,11 @@
 			.search {
 				width:100%;
 				margin-top:12px;
+				.input-wrap {
+					input[type=text] {
+						height:51px;
+					}
+				}
 			}
 		}
 	}
@@ -108,7 +116,7 @@
 			margin-top:20px;
 			padding:16px 0;
 			.list-wrap {
-				height:84px;
+				height:88px;
 				.product-list {
 					li {
 						width:50%;
