@@ -276,24 +276,6 @@
                 }
             ]
         });
-        $('.ui_carousel_slider4').vcCarousel({
-            settings: "unslick",
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: {
-                        infinite: false,
-                        variableWidth : true,
-                        dots: false,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: "unslick"
-                }
-            ]
-        });
 
         // $('.prd-select-wrap').css({display:'block'});
 

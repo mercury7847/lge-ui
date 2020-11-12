@@ -11,8 +11,11 @@ var AddressFind = (function() {
 
     //public
     AddressFind.prototype = {
-        open: function() {
+        open: function(completeCallback) {
             var self = this;
+            if(completeCallback) {
+                self.completeCallback = completeCallback;
+            }
             if(self.isPostCode){
                 self.daumPost.open();
             }

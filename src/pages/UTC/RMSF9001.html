@@ -2,7 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTC/UTC"],
-        pageJS: ["caresolution/requestRental"]
+        pageJS: ["caresolution/requestRental", "caresolution/addressFInd", "caresolution/addressManagement", "caresolution/addressRegist"]
     })
 <body>
     <div class="wrap">
@@ -51,18 +51,26 @@
                                     </ul>
                                 </div>
                             </div>
+                            <!--
+                                @ data-credit-inquire-url : 신용정보 조회 연동 유알엘
+                                @ data-install-abled-url : 설치 가능여부 확인 유알엘
+                                @ data-card-abled-url : 납부카드 확인 유알엘
+                                @ data-ars-agree-url : ARS 출금 동의 신청 확인 유알엘
+                                @ data-submit_url : 청약 신청 submit 유알엘
+                            -->
                             <div class="accordion-section ui_accordion requestRentalForm" 
                                 data-single-open="false" 
                                 data-open-index="[0]" 
                                 data-certify="true"
                                 data-credit-inquire="false"
-                                data-credit-inquire-url="/lg5-common/data-ajax/caresolution/requestCreditInquire.json"
+                                data-credit-inquire-url="/lg5-common/data-ajax/caresolution/requestCreditInquire.json" 
                                 data-install-abled="false"
                                 data-install-abled-url="/lg5-common/data-ajax/caresolution/requestInstallAbled.json"
                                 data-card-abled="false"
                                 data-card-abled-url="/lg5-common/data-ajax/caresolution/requestCardAbled.json"
                                 data-ars-agree="false"
                                 data-ars-agree-url="/lg5-common/data-ajax/caresolution/requestArsAgree.json"
+                                data-submit_url="" 
                             >
                                 <ul>
                                     <li class="lists">
@@ -450,7 +458,7 @@
                                                                                         </select>
                                                                                     </div>
                                                                                     <div class="cell">
-                                                                                        <button type="button" class="btn sendMessage disabled" disabled><span>동의 문자 발송</span></button>
+                                                                                        <button type="button" class="btn sendMessage" disabled><span>동의 문자 발송</span></button>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="btm-more">
@@ -784,6 +792,18 @@
         popupID: 'popup-selfClearing'
     })
     <!-- //자동결제 이용 약관 동의 popup -->
+
+    <!-- 배송지 입력/수정 popup -->
+    @@include('./common/popup/RMSF9001_pop1.html', {
+        popupID: 'popup-delivery-address'
+    })
+    <!-- // 배송지 입력/수정 popup -->
+
+    <!-- 배송지 관리(리스트 있음) popup -->
+    @@include('./common/popup/RMSF9001_pop2.html', {
+        popupID: 'popup-delivery-list'
+    })
+    <!-- // 배송지 관리(리스트 있음) popup -->
 
 </body>
 </html>
