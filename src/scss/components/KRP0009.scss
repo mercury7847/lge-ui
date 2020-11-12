@@ -188,7 +188,7 @@
                 padding-top: 36px;
             }
             .read-more-area {
-                padding-top: 39px;
+                padding-top: 40px;
                 text-align: center;
                 .read-more {
                     font-weight: 500;
@@ -201,17 +201,16 @@
                         background: url("/lg5-common/images/icons/btn-arr2-32x32.svg") no-repeat center 0;
                         content: '';
                     }
+                }
 
-                    @include mobile {
-                        position: relative;
-                        &:before {
-                            position: absolute;
-                            bottom: -2px;
-                            left: 0;
-                            right: 15px;
-                            height: 1px;
-                            background-color: #222;
-                            content: '';
+                @include mobile {
+                    padding-top: 18px;
+                    .read-more {
+                        padding: 10px 0;
+                        font-weight: 500;
+                        @include font-small;
+                        &:after {
+                            display: none;
                         }
                     }
                 }

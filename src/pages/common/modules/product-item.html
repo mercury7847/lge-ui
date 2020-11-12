@@ -106,30 +106,10 @@
                 }
                 @@if (context.spec) {
                 <ul class="spec-info">
-                    <li>
-                        <dl>
-                            <dt>용량 : </dt>
-                            <dd>840L</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <dl>
-                            <dt>전체크기(WxHxD) : </dt>
-                            <dd>912 x 1,790 x 927 mm</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <dl>
-                            <dt>형태 : </dt>
-                            <dd>노크온 매직스페이스</dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <dl>
-                            <dt>패턴 : </dt>
-                            <dd>미드나잇</dd>
-                        </dl>
-                    </li>
+                    <li><span class="title">용량 : </span>840L</li>
+                    <li><span class="title">전체크기(WxHxD) : </span>912 x 1,790 x 927 mm</li>
+                    <li><span class="title">형태 : </span>노크온 매직스페이스</li>
+                    <li><span class="title">패턴 : </span>미드나잇</li>
                     <li><span class="care-option">케어십 가능</span></li>
                 </ul>
                 }
@@ -243,7 +223,7 @@
     }
         <div class="product-image">
             <a href="#">
-                <img data-pc-src="@@banner.visual1" data-m-src="@@banner.visual2" alt="" class="lazyload">
+                <img @@banner.visual alt="" class="lazyload">
             </a>
         </div>
         <div class="banner-contents">
