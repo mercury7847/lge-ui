@@ -8,23 +8,10 @@
 	<div class="wrap">
 		<div class="container">
 
-			<!-- 대체 가능한 상품 목록 (없을 경우 비노출) -->
 			@@include('./common/partials/KRP0043.html', {
 				'component-class': {
 					'margin': 'zero-top'
-				},
-				'title': '본 상품은 배송시점 재고상태에 따라 아래 대체 가능한 모델로 배송될 수 있습니다.',
-				'desc': '본 상품과 대체가능한 상품의 판매금액은 동일 합니다.'
-			})
-			
-			<!-- 소모품을 사용할 수 있는 제품 목록 (항상 노출) -->
-			@@include('./common/partials/KRP0043.html', {
-				'component-class': {
-					'margin': 'zero-top'
-				},
-				'title': '소모품을 사용할 수 있는 일반제품 목록',
-				'desc': '구매 전 적용가능 모델을 확인하세요',
-				'search': true
+				}
 			})
 
 		</div>

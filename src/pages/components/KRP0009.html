@@ -32,9 +32,9 @@
                         <!-- component -->
                         
                        @@include('./common/modules/list-filter.html', {
-                           "btmBoxLink" : [
-                                {"text" : "케어솔루션 신청"},
-                                {"text" : "매장 방문 예약"}
+                           "bannerBox" : [
+                                {"text" : "나에게 꼭 맞는 <br>케어솔루션 제품 찾기"},
+                                {"text" : "나에게 꼭 맞는 <br>케어솔루션 제품 찾기"}
                            ]
                        })
                         <!-- // component -->
@@ -131,8 +131,7 @@
                                             "banner" : true,
                                             "banner" : {
                                                 "moduleType" : "",
-                                                "visual1": "/lg5-common/images/dummy/@img-product-banner.jpg",
-                                                "visual2": "/lg5-common/images/dummy/@img-product-banner.jpg",
+                                                "visual": "data-src='/lg5-common/images/dummy/@img-product-banner.jpg'",
                                                 "title": "각 얼음 세팅해줘!",
                                                 "copy": "말로 제어하는 디오스 라이프",
                                                 "button": "더 알아보기"
@@ -283,8 +282,7 @@
                                         },{
                                             "banner" : {
                                                 "moduleType" : "large",
-                                                "visual1": "/lg5-common/images/dummy/@img-product-banner-lg.jpg",
-                                                "visual2": "/lg5-common/images/dummy/@img-product-banner.jpg",
+                                                "visual": "data-pc-src='/lg5-common/images/dummy/@img-product-banner-lg.jpg' data-m-src='/lg5-common/images/dummy/@img-product-banner2.jpg'",
                                                 "title": "마트 가기 전, 음료가 있는지 없는지 헷갈린다면?",
                                                 "button": "더 알아보기"
                                             }

@@ -20,14 +20,14 @@
         border-radius:30px;
     }
     &:hover {
-        
+        background-color:#EC455A;
     }
     &.gray {
         border-color: #ededed;
         background: #ededed;
         color: #ec455a;
         &:hover {
-
+            background: #ededed;
         }
     }
     &.dark-gray {
@@ -35,13 +35,16 @@
         background: #767676;
         color: #fff;
         &:hover {
-
+            background: #767676;
         }
     }
     &.border {
         border-color:#222;
         background:#fff;
         color:#222;
+        &:hover {
+            background:#fff;
+        }
     }
 
     &:disabled,

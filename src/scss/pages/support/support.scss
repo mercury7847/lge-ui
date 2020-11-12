@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-@import "mCustomScrollbar";
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 @import "../../layout/grid";
@@ -35,8 +34,6 @@
 /* //삭제 예정 */
 
 .support {
-    background:#f4f4f4;
-
     .service-menu-wrap {
         padding:64px 40px 56px;
         background:#ededed;

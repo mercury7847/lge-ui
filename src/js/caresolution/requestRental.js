@@ -4,16 +4,18 @@
     var CARD_ABLED_URL;
     var ARS_AGREE_URL;
 
-    var $requestAgreeChecker;
-    var $requestButton;
+    var requestAgreeChecker;
+    var requestButton;
 
-    var $stepAccordion;
+    var stepAccordion;
 
-    var $privacyAgreeChker;
-    var $privacyAgreeAllChker;
-    var $privacyAgreeOkButton;
+    var privacyAgreeChker;
+    var privacyAgreeAllChker;
+    var privacyAgreeOkButton;
 
-    var $creditInquireButton;
+    var creditInquireButton;
+
+    var requestInfoBlock, requestInfoY;
 
     var step1Block, step2Block, step3Block;
     var step1Validation, step2Validation, cardValidation, bankValidation;
@@ -79,22 +81,28 @@
         step2Block = $('.requestRentalForm ul li:nth-child(2)');
         step3Block = $('.requestRentalForm ul li:nth-child(3)');
 
+        requestInfoBlock = $('.col-right');
+        requestInfoY = requestInfoBlock.offset().top;
+        if(!vcui.detect.isMobile){
+            requestInfoBlock.find('.item-info').hide();
+        }
+
         $('.agree-box').vcCheckboxAllChecker();
-        $requestAgreeChecker = $('.agree-box').vcCheckboxAllChecker('instance');
-        $requestButton = $('.agree-box').find('button.btn');
+        requestAgreeChecker = $('.agree-box').vcCheckboxAllChecker('instance');
+        requestButton = $('.agree-box').find('button.btn');
 
         $('.ui_accordion').vcAccordion();
-        $stepAccordion = $('.ui_accordion').vcAccordion('instance');
+        stepAccordion = $('.ui_accordion').vcAccordion('instance');
 
-        $privacyAgreeChker = $('input[name=chkPrivacy]');
+        privacyAgreeChker = $('input[name=chkPrivacy]');
 
 
         $('#popup-privacy').vcCheckboxAllChecker();
-        $privacyAgreeAllChker = $('#popup-privacy').vcCheckboxAllChecker('instance');
+        privacyAgreeAllChker = $('#popup-privacy').vcCheckboxAllChecker('instance');
 
-        $privacyAgreeOkButton = $('#popup-privacy .btn-group .btn:nth-child(2)').css({cursor:'default'});
+        privacyAgreeOkButton = $('#popup-privacy .btn-group .btn:nth-child(2)').css({cursor:'default'});
 
-        $creditInquireButton = $('.creditInquire');
+        creditInquireButton = $('.creditInquire');
 
         var register = {
             userEmail:{
@@ -112,7 +120,7 @@
     }
 
     function bindEvents(){
-        $stepAccordion.on('accordionbeforeexpand', function(e, data){
+        stepAccordion.on('accordionbeforeexpand', function(e, data){
             if(data.index > step){
 
                 if(!setNextStep()){
@@ -125,11 +133,11 @@
             }
         });
 
-        $requestButton.on('click', function(e){
+        requestButton.on('click', function(e){
             rentalRequest();
         });
 
-        $privacyAgreeChker.on('change', function(e){
+        privacyAgreeChker.on('change', function(e){
             var chk = $(this).prop('checked');
             if(chk){
                 openPrivacyPopup();
@@ -144,20 +152,20 @@
             openPrivacyPopup();
         });
 
-        $privacyAgreeAllChker.on('allCheckerChange', function(e, status){
+        privacyAgreeAllChker.on('allCheckerChange', function(e, status){
             setPrivacyAgreeStatus(status);
         });
 
         $('#popup-privacy').on('click', '.btn-group .btn:nth-child(1)', function(e){
             setPrivacyAgreePop(false);
         });
-        $privacyAgreeOkButton.on('click', function(e){
-            if($privacyAgreeAllChker.getAllChecked()){
+        privacyAgreeOkButton.on('click', function(e){
+            if(privacyAgreeAllChker.getAllChecked()){
                 $('#popup-privacy').vcModal('close');
             }
         });
 
-        $creditInquireButton.on('click', function(e){
+        creditInquireButton.on('click', function(e){
             e.preventDefault();
 
             setCreditInquire();
@@ -167,7 +175,7 @@
             e.preventDefault();
 
             var chkername = $(this).data('chkName');
-            $privacyAgreeAllChker.setChecked(chkername, true);
+            privacyAgreeAllChker.setChecked(chkername, true);
 
             var idname = $(this).closest('.popup-wrap').attr('id');
             $("#"+idname).vcModal('close');
@@ -175,7 +183,7 @@
             e.preventDefault();
 
             var chkername = $(this).data('chkName');
-            $privacyAgreeAllChker.setChecked(chkername, false);
+            privacyAgreeAllChker.setChecked(chkername, false);
         });
 
         $('.search-postcode').on('click', function(e){
@@ -190,7 +198,10 @@
             changePrevisitRequest($(this).val());
         }).on('change', 'input[name=preVisitAgree]', function(e){
             var chk = $(this).prop('checked');
-            if(chk) $('#popup-previsit').vcModal();
+            if(chk) {
+                $(this).prop('checked', false);
+                $('#popup-previsit').vcModal();
+            }
         }).on('click', '.input-mix-wrap .cell .btn-link', function(e){
             e.preventDefault();
             $('#popup-previsit').vcModal();
@@ -263,6 +274,44 @@
             if(chk) $('#popup-selfClearing').vcModal('close');
         });
 
+        if(!vcui.detect.isMobile){
+            $(window).on('scroll', function(e){
+                setScrollMoved();
+            });
+            setScrollMoved();
+        }
+    }
+
+    function setScrollMoved(){
+        var winwidth = $(window).width();
+        if(winwidth > 1024){
+            var scrolltop = $(window).scrollTop();
+            if(scrolltop > requestInfoY-54){
+                if(!requestInfoBlock.hasClass('fixed')) requestInfoBlock.addClass('fixed');
+    
+                var formy = $('.requestRentalForm').offset().top;
+                if(scrolltop > formy){
+                    requestInfoBlock.find('.item-info').show();
+                } else{
+                    requestInfoBlock.find('.item-info').hide();
+                }
+
+                var footery = -scrolltop + $('footer').offset().top - 100;
+                var infoheight = requestInfoBlock.find('.info-area').outerHeight(true);
+                if(footery < infoheight){
+                    console.log(infoheight)
+                    requestInfoBlock.find('.info-area').css({y:footery - infoheight})
+                } else{
+                    requestInfoBlock.find('.info-area').css({y:0})
+                }
+            } else{
+                if(requestInfoBlock.hasClass('fixed')) requestInfoBlock.removeClass('fixed');
+            }
+        } else{
+            if(requestInfoBlock.hasClass('fixed')) requestInfoBlock.removeClass('fixed');
+
+            requestInfoBlock.find('.item-info').show();
+        }
     }
 
     function setNextStep(){
@@ -311,9 +360,15 @@
     }
 
     function setStep3Validation(){
-        var applyAble = step3Block.find('input[name=cardApplication]:checked').val();
-        var result = applyAble == "Y" ? cardValidation.validate() : bankValidation.validate();
+        var cardApply = step3Block.find('input[name=cardApplication]:checked').val();
+        if(cardApply == "Y"){
 
+        }
+
+
+
+        var result = applyAble == "Y" ? cardValidation.validate() : bankValidation.validate();
+console.log('result :', result, applyAble)
         var completed = false;
         if(result.success){
             console.log("step3Validation.validate(); Success!!!");
@@ -440,18 +495,18 @@
     function openPrivacyPopup(){
         $('#popup-privacy').vcModal()
         .on('modalhide', function(e){
-            var chk = $privacyAgreeAllChker.getAllChecked();
-            $privacyAgreeChker.prop('checked', chk);
-            $creditInquireButton.prop('disabled', !chk);
+            var chk = privacyAgreeAllChker.getAllChecked();
+            privacyAgreeChker.prop('checked', chk);
+            creditInquireButton.prop('disabled', !chk);
         });
     }
     function setPrivacyAgreeStatus(status){
         if(status){
-            $privacyAgreeOkButton.css('cursor', 'pointer').removeClass('disabled');
-            if(!$privacyAgreeOkButton.hasClass('pink')) $privacyAgreeOkButton.addClass('pink');
+            privacyAgreeOkButton.css('cursor', 'pointer').removeClass('disabled');
+            if(!privacyAgreeOkButton.hasClass('pink')) privacyAgreeOkButton.addClass('pink');
         } else{
-            $privacyAgreeOkButton.css('cursor', 'default').removeClass('pink');
-            if(!$privacyAgreeOkButton.hasClass('disabled')) $privacyAgreeOkButton.addClass('disabled');
+            privacyAgreeOkButton.css('cursor', 'default').removeClass('pink');
+            if(!privacyAgreeOkButton.hasClass('disabled')) privacyAgreeOkButton.addClass('disabled');
         }
     }
     function setPrivacyAgreePop(status){
@@ -478,7 +533,7 @@
     //         return;
     //    }
 
-        var agreechk = $requestAgreeChecker.getAllChecked();
+        var agreechk = requestAgreeChecker.getAllChecked();
         console.log(agreechk)
     }
 

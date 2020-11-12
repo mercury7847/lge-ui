@@ -6,7 +6,7 @@
     })
 <body>
     <div class="wrap">
-        <!--include('./common/header.html')-->
+        @@include('./common/header.html')
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
@@ -653,6 +653,7 @@
                                 </ul>
                             </div>
                         </div>
+                        <!-- scroll 시 .fixed 추가 -->
                         <div class="col-right">
                             <div class="info-area">
                                 <h3 class="sub-title">청약 정보</h3>
@@ -739,7 +740,7 @@
             <!-- // 청약 신청 -->
         </div>
 
-        <!--include('./common/footer.html')-->
+        @@include('./common/footer.html')
     </div>
 
 
