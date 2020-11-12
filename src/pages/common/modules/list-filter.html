@@ -194,6 +194,16 @@
                     </ul>
                 </div>
             } 
+            
+            @@if (context.bannerBox) {
+                @@for ( var i=0; i < context.bannerBox.length; i++) {
+                <div class="banner-box">
+                    <div class="inner">
+                        <a href="#n" class="banner-btn"><span>`+bannerBox[i].text+`</span></a>
+                    </div>
+                </div>
+                }
+            } 
                 
             
 <!--

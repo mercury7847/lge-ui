@@ -30,20 +30,22 @@
                 padding: 0 20px;
             }
             .chk-cate {
-                //padding-bottom: 10px;
                 font-size:0;
                 text-align: center;
                 white-space: nowrap;
                 overflow-x: auto;
+                @include mobile {
+                    margin-left: -4px;  
+                }
                 .chk-wrap {
                     margin:0 13px;
                     vertical-align: top;
-                    @include mobile {
-                        //margin:0 14px;
-                        margin: 0 28px 14px 0;
-                    }
                     &:first-child {
                         margin-left:0;
+                    }
+                    @include mobile {
+                        //margin:0 14px;
+                        margin: 0 4px;
                     }
                 }
                 .chk-wrap input:checked+label {
@@ -87,7 +89,7 @@
                     width: 32px;
                     height: 32px;
                     margin-top: 6px;
-                    background: #fff url('/lg5-common/images/icons/icon-arrow-accor.svg') no-repeat;
+                    background: #fff url('/lg5-common/images/icons/btn-arrow-down.svg') no-repeat;
                     background-size: 32px 32px;
                 }
                 &::before {
@@ -121,16 +123,23 @@
                 height: auto;
                 .cate-list {
                     display: block;
+                    padding-right: 52px;
                     .chk-cate {
                         display: inline;
                         white-space: normal;
                         overflow:visible;
                         text-align: left;
+                        .chk-wrap {
+                            margin-bottom: 20px;
+                        }
                     }
                     .mobile-more-btn {
                         height: auto;
                         &::before {
                             display: none;
+                        }
+                        a {
+                            background: #fff url('/lg5-common/images/icons/btn-arrow-up.svg') no-repeat;
                         }
                     }
                 }

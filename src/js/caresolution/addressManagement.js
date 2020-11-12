@@ -1,5 +1,5 @@
 var AddressManagement = (function() {
-    var addressItemTemplate = '<li class="lists"><div class="inner">' +
+    var addressItemTemplate = '<li class="lists" data-id={{addressID}}}><div class="inner">' +
         '<dl class="addr">' +
             '<dt>' +
                 '<p><span class="blind">배송지명</span>{{addressName}}</p>' +
@@ -26,7 +26,7 @@ var AddressManagement = (function() {
         //페이지목록
         self.$pagination = self.$content.find('div.pagination');
         //데이타없음
-        self.$nodata = self.$content.find('div.no-data');
+        self.$noData = self.$content.find('div.no-data');
         //하단
         self.$footer = self.$content.find('.pop-footer');
         //배송지선택 버튼
@@ -37,6 +37,8 @@ var AddressManagement = (function() {
         vcui.require(['ui/pagination'], function () {
             self._bindEvents();
         });
+
+        self._checkNoData();
     }
 
     //public
@@ -74,10 +76,9 @@ var AddressManagement = (function() {
                     item.telString = item.tel ? vcui.number.phoneNumber(item.tel) : '';
                     self.$addressLists.append(vcui.template(addressItemTemplate, item));
                 });
-                self.$addressLists.show();
-            } else {
-                self.$addressLists.hide();
             }
+
+            self._checkNoData();
         },
     
         _bindEvents: function() {
@@ -195,7 +196,27 @@ var AddressManagement = (function() {
                     lgkorUI.alert(desc, obj);
                 }
             });
-        }
+        },
+
+        _checkNoData: function() {
+            var self = this;
+            self._noData(self.$addressLists.find('li.lists').length > 0 ? false : true);
+        },
+
+        _noData: function(visible) {
+            var self = this;
+            if(visible) {
+                self.$noData.show();
+                self.$addressLists.hide();
+                self.$pagination.hide();
+                self.$footer.hide();
+            } else {
+                self.$noData.hide();
+                self.$addressLists.show();
+                self.$pagination.show();
+                self.$footer.show();
+            }
+        },
     }
 
     return AddressManagement;
