@@ -51,11 +51,18 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="accordion-section ui_accordion" 
+                            <div class="accordion-section ui_accordion requestRentalForm" 
                                 data-single-open="false" 
                                 data-open-index="[0]" 
                                 data-certify="true"
-                                data-requst-url=""
+                                data-credit-inquire="false"
+                                data-credit-inquire-url="/lg5-common/data-ajax/caresolution/requestCreditInquire.json"
+                                data-install-abled="false"
+                                data-install-abled-url="/lg5-common/data-ajax/caresolution/requestInstallAbled.json"
+                                data-card-abled="false"
+                                data-card-abled-url="/lg5-common/data-ajax/caresolution/requestCardAbled.json"
+                                data-ars-agree="false"
+                                data-ars-agree-url="/lg5-common/data-ajax/caresolution/requestArsAgree.json"
                             >
                                 <ul>
                                     <li class="lists">
@@ -85,7 +92,7 @@
                                                     <dd class="conts">
                                                         <div class="box">
                                                             <div class="input-wrap">
-                                                                <input type="text" id="inp01-2-yet" name="userPhone" value="01012349876" data-required="true" placeholder="휴대폰 본인인증이 필요합니다." readonly>
+                                                                <input type="number" id="inp01-2-yet" name="userPhone" value="01012349876" data-max-length="11" data-required="true" placeholder="휴대폰 본인인증이 필요합니다." readonly>
                                                             </div>
                                                             <div class="cell">
                                                                 <button type="button" class="btn"><span>휴대폰 본인인증</span></button>
@@ -166,7 +173,7 @@
                                                         <div class="input-mix-wrap">
                                                             <div class="mix-input">
                                                                 <span class="chk-wrap">
-                                                                    <input type="checkbox" id="chk-pri1" name="chkPrivacy">
+                                                                    <input type="checkbox" id="chk-pri1" name="chkPrivacy" value="" data-required="true">
                                                                     <label for="chk-pri1">개인정보 및 신용정보 제공 동의</label>
                                                                 </span>
                                                                 <div class="cell">
@@ -231,7 +238,7 @@
                                                     </dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inp02-2" placeholder="휴대폰을 입력해주세요" name="userPhone" data-required="true">
+                                                            <input type="number" id="inp02-2" placeholder="휴대폰을 입력해주세요" name="userPhone" data-min-length="10" data-max-length="11" data-required="true">
                                                         </div>
                                                     </dd>
                                                 </dl>
@@ -239,7 +246,7 @@
                                                     <dt class="tit"><label for="inp02-3" class="req">일반 전화번호<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="input-wrap">
-                                                            <input type="text" id="inp02-3" placeholder="일반 전화번호를 입력해주세요" name="userTelephone" data-equal-number="0212345678">
+                                                            <input type="text" id="inp02-3" placeholder="일반 전화번호를 입력해주세요" name="userTelephone" data-equal-number="0212345678" data-required="true">
                                                         </div>
                                                     </dd>
                                                 </dl>
@@ -248,7 +255,7 @@
                                                     <dd class="conts">
                                                         <div class="box">
                                                             <div class="input-wrap">
-                                                                <input type="text" id="inp02-4" value="" name="zipCode" placeholder="우편번호" disabled>
+                                                                <input type="text" id="inp02-4" value="" name="zipCode" placeholder="우편번호" data-required="true" disabled>
                                                             </div>
                                                             <div class="cell">
                                                                 <button type="button" class="btn search-postcode"><span>주소 찾기</span></button>
@@ -258,14 +265,14 @@
                                                             </div>
                                                         </div>
                                                         <div class="input-wrap">
-                                                            <input type="text" value="" name="userAdress" placeholder="주소찾기 또는 배송지 목록을 선택해주세요." disabled>
+                                                            <input type="text" value="" name="userAdress" placeholder="주소찾기 또는 배송지 목록을 선택해주세요." data-required="true" disabled>
                                                         </div>
                                                         <div class="box type2">
                                                             <div class="input-wrap">
                                                                 <input type="text" value="" name="detailAdress" placeholder="상세주소를 입력해주세요.">
                                                             </div>
                                                             <div class="cell">
-                                                                <button type="button" class="btn"><span>설치 가능여부 확인</span></button>
+                                                                <button type="button" class="btn installAbledConfirm"><span>설치 가능여부 확인</span></button>
                                                             </div>
                                                         </div>
                                                     </dd>
@@ -286,7 +293,7 @@
                                                     <dt class="tit"><label for="slt02-2" class="req">설치 장소<span class="blind">필수입력</span></label></dt>
                                                     <dd class="conts">
                                                         <div class="select-wrap">
-                                                            <select class="ui_selectbox" id="slt02-2" title="설치 장소 선택" name="inatallPlace">
+                                                            <select class="ui_selectbox" id="slt02-2" title="설치 장소 선택" name="inatallPlace" data-required="true">
                                                                 <option value="" class="placeholder">전체 카테고리를 선택해주세요.</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
                                                                 <option value="aaa">전체 카테고리를 선택해주세요.a</option>
                                                                 <option value="bbb">전체 카테고리를 선택해주세요.b</option>
@@ -403,13 +410,13 @@
                                                             <ul class="ui_radio_visible">
                                                                 <li>
                                                                     <span class="rdo-wrap">
-                                                                        <input type="radio" id="rdo03-1" name="cardApplication" data-visible-target=".visible-target2" checked>
+                                                                        <input type="radio" id="rdo03-1" name="cardApplication" value="Y" data-visible-target=".visible-target2">
                                                                         <label for="rdo03-1">신청</label>
                                                                     </span>
                                                                 </li>
                                                                 <li>
                                                                     <span class="rdo-wrap">
-                                                                        <input type="radio" id="rdo03-2" name="cardApplication" data-visible-target=" ">
+                                                                        <input type="radio" id="rdo03-2" name="cardApplication" value="N" data-visible-target="" checked>
                                                                         <label for="rdo03-2">미신청</label>
                                                                     </span>
                                                                 </li>
@@ -475,7 +482,7 @@
                                                                     <dt class="tit"><label for="slt-card1">카드사</label></dt>
                                                                     <dd class="conts">
                                                                         <div class="select-wrap">
-                                                                            <select class="ui_selectbox" id="slt-card1" title="카드사 선택" name="paymentCard">
+                                                                            <select class="ui_selectbox" id="slt-card1" title="카드사 선택" name="paymentCard" data-required="true">
                                                                                 <option value="" class="placeholder">카드사 선택</option>
                                                                                 <option value="11">카드사1</option>
                                                                                 <option value="22">카드사2</option>
@@ -488,7 +495,7 @@
                                                                     <dt class="tit"><label for="ipt-card1">카드번호</label></dt>
                                                                     <dd class="conts">
                                                                         <div class="input-wrap">
-                                                                            <input type="number" id="ipt-card1" placeholder="(-)없이 입력하세요." value="" class="ui_card_number" name="paymentCardNumber">
+                                                                            <input type="text" id="ipt-card1" placeholder="(-)없이 입력하세요." value="" class="ui_card_number" name="paymentCardNumber" data-min-length="19" data-max-length="19" data-required="true">
                                                                         </div>
                                                                     </dd>
                                                                 </dl>
@@ -497,7 +504,7 @@
                                                                     <dd class="conts">
                                                                         <div class="box">
                                                                             <div class="input-wrap">
-                                                                                <input type="text" id="ipt-card2" value="" placeholder="유효기간을 입력해주세요" name="paymentCardPeriod">
+                                                                                <input type="text" id="ipt-card2" value="" placeholder="유효기간을 입력해주세요" name="paymentCardPeriod" data-required="true">
                                                                             </div>
                                                                             <div class="cell">
                                                                                 <button type="button" class="btn paymentCardConfirm" disabled><span>납부 카드 확인</span></button>
@@ -577,7 +584,7 @@
                                                             <div class="mix-cont">
                                                                 <p class="desc">입력한 결제 수단의 휴력이 발생하기 위해서 ARS 출금동의가 필요합니다.<br>ARS 출금동의 시 내용증명을 위해 음성 녹취가 진행됩니다.</p>
                                                                 <div class="btn-wrap">
-                                                                    <button class="btn bg-type icon-ars"><span>ARS 출금 동의 신청</span></button>
+                                                                    <button class="btn bg-type icon-ars arsAgreeRequest" disabled><span>ARS 출금 동의 신청</span></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -715,7 +722,7 @@
                                         </ul>
                                         <div class="chk-btm">
                                         <span class="chk-wrap">
-                                            <input type="checkbox" id="chk-agree-3" name="chk-agree8">
+                                            <input type="checkbox" id="chk-agree-3" name="chk-agree8" class="ui_all_checker">
                                             <label for="chk-agree-3">모든 계약신청서 확인/동의</label>
                                         </span>
                                         </div>

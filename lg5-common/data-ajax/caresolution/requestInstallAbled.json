@@ -1,0 +1,12 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "alert":{
+            "title": "설치 가능 안내",
+            "desc": "해당 주소는 서비스 이용이<br>가능한 지역입니다."
+        }
+    }
+}
