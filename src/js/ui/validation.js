@@ -174,7 +174,25 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
             return rObj;
         },
 
-        
+        getAllValues : function getAllValues(){
+            var self = this;  
+            var result = {};
+            var $findInput = self.$el.find('input');
+            console.log($findInput);
+            $findInput.each(function(i, obj) {
+                var item = $(obj)
+                var name = item.attr('name');
+                if(name) {
+                    if(item.is(':checkbox')) {
+                        result[name] = item.is(":checked");
+                    } else {
+                        result[name] = item.val();
+                    }
+                }
+            });
+            return result;
+        },
+
         // getValues('name'), getValues(['name','email']); -> result : {name:'', email:''}
         getValues : function getValues(str){
             var self = this;  

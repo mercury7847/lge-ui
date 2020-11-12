@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageJS: ["caresolution/addressManagement"]
+        pageJS: ["caresolution/addressFind", "caresolution/addressRegist", "caresolution/addressManagement"]
     })
 <body>
     <div class="wrap">
-        <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>배송지 입력/수정 팝업 열기</span></button><br><br>
-        <button type="button" class="btn pink" id="btn-popup2"><span>배송지 관리(리스트 있음) 팝업 열기</span></button><br><br>
-        <button type="button" data-href="#popup3" data-control="modal" class="btn pink"><span>배송지 관리(리스트 없음) 팝업 열기</span></button><br><br>
+        <button type="button" class="btn pink" id="btn-popup2"><span>배송지 관리 팝업 열기</span></button><br><br>
     </div>
 
     <!-- 배송지 입력/수정 popup -->
@@ -21,59 +19,15 @@
         popupID: 'popup2'
     })
     <!-- // 배송지 관리(리스트 있음) popup -->
-
-    <!-- 배송지 관리(리스트 없음) popup -->
-    @@include('./common/popup/RMSF9001_pop3.html', {
-        popupID: 'popup3'
-    })
-    <!-- // 배송지 관리(리스트 없음) popup -->
-
-    <!-- 개인정보 수집 및 신용정보 제공 동의 popup -->
-    @@include('./common/popup/RMSF9001_pop4.html', {
-        popupID: "popup4"
-    })
-    <!-- // 개인정보 수집 및 신용정보 제공 동의 popup -->
-
-    <!-- LG전자 사전 방문 개인 정보 수집&middot;이용동의 popup -->
-    @@include('./common/popup/RMSF9001_pop5.html', {
-        popupID: 'popup5'
-    })
-    <!-- // LG전자 사전 방문 개인 정보 수집&middot;이용동의 popup -->
-
-    <!-- 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
-    @@include('./common/popup/RMSF9001_pop6.html', {
-        popupID: 'popup6'
-    })
-    <!-- // 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
-
-    <!-- 케어솔루션 약관/유의사항 안내 popup -->
-    @@include('./common/popup/RMSF9001_pop7.html', {
-        popupID: 'popup7'
-    })
-    <!-- // 케어솔루션 약관/유의사항 안내 popup -->
-
-    <!-- 자동결제 이용 약관 동의 popup -->
-    @@include('./common/popup/RMSF9001_pop8.html', {
-        popupID: 'popup8'
-    })
-    <!-- //자동결제 이용 약관 동의 popup -->
-
-    <!-- 케어솔루션 청약신청 고객동의 popup -->
-    @@include('./common/popup/RMSF9001_pop9.html', {
-        popupID: 'popup9'
-    })
-    <!-- // 케어솔루션 청약신청 고객동의 popup -->
-
-    <!-- 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
-    @@include('./common/popup/RMSF9001_pop10.html', {
-        popupID: "popup10",
-        chkname: "agreechker-privacy",
-        tempName: "개인"
-    })
-    <!-- // 제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의 popup -->
+    
 </body>
 <script>
-    var addTest = new AddressManagement(popup2);
+    function selectCallback(data) {
+        console.log('select!',data);
+    };
+
+    var addTest = new AddressManagement("#popup2", "#popup1", selectCallback);
+
     $('#btn-popup2').on('click',function(e){
         addTest.open();
     });

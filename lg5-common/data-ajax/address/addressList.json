@@ -1,0 +1,68 @@
+{
+    "status": "success",
+    "message": null,
+    "param":{
+        "pagination":{
+            "page":"2",
+            "visibleCount":"5",
+            "totalCount":"12"
+        }
+    },
+    "data": [
+        {
+            "addressID": "addr0001",
+            "addressName": "자택",
+            "defaultAddress": true,
+            "name": "김엘지1",
+            "mobilePhone": "01012341111",
+            "phone": "01012341111",
+            "zipCode":"03649",
+            "userAddress": "서울특별시 마포구 상암동",
+            "detailAddress": "월드컵 맨션 197 1호"
+        },
+        {
+            "addressID": "addr0002",
+            "addressName": "엘지2",
+            "defaultAddress": false,
+            "name": "김엘지2",
+            "mobilePhone": "01012342222",
+            "phone": "01012341111",
+            "zipCode":"03649",
+            "userAddress": "서울특별시 마포구 상암동",
+            "detailAddress": "월드컵 맨션 197 2호"
+        },
+        {
+            "addressID": "addr0003",
+            "addressName": "엘지3",
+            "defaultAddress": false,
+            "name": "김엘지3",
+            "mobilePhone": "01012343333",
+            "phone": "01012341111",
+            "zipCode":"03649",
+            "userAddress": "서울특별시 마포구 상암동",
+            "detailAddress": "월드컵 맨션 197 3호"
+        },
+        {
+            "addressID": "addr0004",
+            "addressName": "엘지4",
+            "defaultAddress": false,
+            "name": "김엘지4",
+            "mobilePhone": "01012344444",
+            "phone": "01012341111",
+            "zipCode":"03649",
+            "userAddress": "서울특별시 마포구 상암동",
+            "detailAddress": "월드컵 맨션 197 4호"
+        },
+        {
+            "addressID": "addr0005",
+            "addressName": "엘지5",
+            "defaultAddress": false,
+            "name": "김엘지5",
+            "mobilePhone": "01012345555",
+            "phone": "01012341111",
+            "zipCode":"03649",
+            "userAddress": "서울특별시 마포구 상암동",
+            "detailAddress": "월드컵 맨션 197 5호"
+        }
+    ]
+}
