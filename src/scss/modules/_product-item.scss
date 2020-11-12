@@ -57,8 +57,14 @@
         background-color: #fff;
         box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
 
-        &.plp-item {
-            padding-bottom: 166px;
+        @include pc {
+            &.plp-item {
+                padding-bottom: 166px;
+            }
+        }
+
+        @include mobile {
+            padding: 36px 36px 32px;
         }
 
         .badge {
@@ -73,6 +79,30 @@
                 img {
                     width: 100%;
                     max-width: 268px;
+                }
+            }
+
+            @include mobile {
+                .slide-wrap {
+                    .slide-controls {
+                        display: block;
+                        margin-top: -16px;
+                        .btn-arrow {
+                            width: 32px;
+                            height: 32px;
+                            &:before {
+                                width: 32px;
+                                height: 32px;
+                                background-size: 32px 32px;
+                            }
+                            &.prev {
+                                left: 8px;
+                            }
+                            &.next {
+                                right: 8px;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -103,16 +133,20 @@
                         .slide-conts {
                             float: none;
                             display: inline-block;
+                            padding: 0 1px;
                         }
                     }
                     .slide-controls {
                         display:block;
+                        margin-top: 0;
                         .btn-arrow {
                             width: 64px;
                             height: 50px;
                             top: 50%;
                             transform: translateY(-50%);
                             border-radius: 0;
+                            background:none;
+                            box-shadow:initial;
                             &.prev {
                                 left: -48px;
                                 background-image: linear-gradient(to right, #FFFFFF 80%, rgba(255, 255, 255, 0) 100%);
@@ -120,13 +154,21 @@
                             &.next {
                                 right: -48px;
                                 background-image: linear-gradient(to left, #FFFFFF 80%, rgba(255, 255, 255, 0) 100%);
-                                //background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);;
                             }
                             &:before {
                                 display: inline-block;
                                 width: 100%;
                                 height: 24px;
-                                background: url('/lg5-common/images/icons/btn-arrow_right_24.svg') no-repeat 16px 0px;
+                                background: url('/lg5-common/images/icons/btn-arrow_right_24.svg') no-repeat 16px 0;
+                            }
+
+                            @include mobile {
+                                &.prev {
+                                    left: -36px;
+                                }
+                                &.next {
+                                    right: -36px;
+                                }
                             }
                         }
                     }
@@ -176,55 +218,6 @@
             }
         }
 
-        .slide-wrap {
-            .slide-content {
-                margin:0 -6px;
-                @include mobile {
-                    margin:0;
-                    padding:0 15px;
-                }
-                .slide-conts {
-                    float: left;
-                    padding: 0 1px;
-                }
-                .slide-track {
-                    .conts-wrap {
-                        margin:0 6px;
-                        @include mobile {
-                            width:88.8889vw;
-                            margin:0;
-                            padding:0 5px;
-                        }
-                    }
-                }
-            }
-            .slide-controls {
-                @media screen and (min-width: $tablet-l-width) {
-                    display: none;
-                }
-                display: block;
-                margin-top:0;
-                .btn-arrow {
-                    width:auto;
-                    height:auto;
-                    background:none;
-                    box-shadow:inherit;
-                    //&:before {
-                    //    width:12px;
-                    //    height:12px;
-                    //    margin-top:-6px;
-                    //    border-width:2px;
-                    //}
-                    &.prev {
-                        left:0;
-                    }
-                    &.next {
-                        right:0;
-                    }
-                }
-            }
-        }
-
         .flag-wrap {
             & + .product-name {
                 margin-top: 0;
@@ -233,6 +226,7 @@
                 padding-top: 0;
             }
         }
+
         .product-info {
             padding-top: 20px;
             //margin-bottom: 24px;
@@ -273,9 +267,6 @@
                 }
             }
             .spec-info {
-                @include pc {
-                    height: 94px;
-                }
                 margin: 10px 0 24px;
                 font-size: $font-small;
                 line-height: 14px;
@@ -283,12 +274,25 @@
                 li {
                     margin-top: 6px;
                     @include textClipClamp(1);
-                    dl {
-                        white-space: nowrap;
-                    }
-                    dt,
-                    dd {
+                }
+                @include mobile {
+                    margin: 4px 0 16px;
+                    li {
                         display: inline-block;
+                        &:after {
+                            display: inline-block;
+                            width: 1px;
+                            height: 10px;
+                            margin: 0 6px;
+                            background-color: $color-border;
+                            content: '';
+                        }
+                        &:last-child:after {
+                            display: none;
+                        }
+                    }
+                    .title {
+                        display: none;
                     }
                 }
             }
@@ -301,11 +305,7 @@
         }
         .price-area {
             @include clearfix;
-            //margin-top: 24px;
             font-size: 0;
-            //* {
-            //    display: inline-block;
-            //}
             .total {
                 float: left;
                 font-weight: 700;
@@ -344,11 +344,26 @@
                 margin-top: 4px;
                 @include font-small;
             }
+
+            @include mobile {
+                .original {
+                    font-size: 13px;
+                    line-height: 21px;
+                }
+                .total {
+                    font-size: $font-large;
+                    line-height: 26px;
+                }
+            }
         }
         .hashtag-wrap {
             margin-top: 60px;
             .hashtag {
                 @include font-small;
+            }
+
+            @include mobile {
+                margin-top: 0;
             }
         }
 
@@ -385,10 +400,12 @@
             }
         }
         .product-bottom {
-            position: absolute;
-            bottom: 48px;
-            right: 46px;
-            left: 46px;
+            @include pc {
+                position: absolute;
+                bottom: 48px;
+                right: 46px;
+                left: 46px;
+            }
         }
         .btn-area-wrap {
             display: table;
@@ -429,34 +446,6 @@
                         color: $color-white;
                     }
                 }
-            }
-        }
-
-        @include mobile {
-            padding: 0 36px 32px;
-            .badge-wrap {
-                .badge {
-                    padding: 5px 8px;
-                    font-size: 10px;
-                }
-                &.thin-type {
-                    top: 18px;
-                    left: 18px;
-                }
-            }
-            .product-info {
-                & + .hashtag-wrap {
-                    margin-top: 24px;
-                }
-            }
-            .price-area {
-                .total {
-                    font-size: 20px;
-                    line-height: 23px;
-                }
-            }
-            .hashtag-wrap {
-                margin-top: 0;
             }
         }
     }
