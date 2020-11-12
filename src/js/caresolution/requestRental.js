@@ -20,6 +20,8 @@
     var step1Block, step2Block, step3Block;
     var step1Validation, step2Validation, cardValidation, bankValidation;
 
+    var deliveryMnger;
+
     var step = 0;
 
     var isPostCode = false;
@@ -71,6 +73,7 @@
         isPostCode = true;
     }
 
+    //초기 셋팅...
     function setting(){
         CREDIT_INQUIRE_URL = $('.requestRentalForm').data('creditInquireUrl');
         INSTALL_ABLED_URL = $('.requestRentalForm').data('installAbledUrl');
@@ -84,6 +87,7 @@
         requestInfoBlock = $('.col-right');
         requestInfoY = requestInfoBlock.offset().top;
         if(!vcui.detect.isMobile){
+            requestInfoBlock.data('infoHidden', true);
             requestInfoBlock.find('.item-info').hide();
         }
 
@@ -117,8 +121,11 @@
 
         cardValidation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(3) .by-card');
         bankValidation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(3) .by-bank');
+
+        deliveryMnger = new AddressManagement("#popup-delivery-list", "#popup-delivery-address");
     }
 
+    //이벤트 등록...
     function bindEvents(){
         stepAccordion.on('accordionbeforeexpand', function(e, data){
             if(data.index > step){
@@ -220,15 +227,23 @@
         });
 
 
-        step3Block.on('change', 'input[name=cardApplyaAgree]', function(e){
+        step3Block.on('change', 'input[name=cardApplication]', function(){
+            var chk = $(this).val();
+            if(chk == "Y"){
+                step3Block.find('input[name=cardApplyaAgree]').prop('checked', false);
+                step3Block.find('.sendMessage').prop('disabled', true);
+                step3Block.find('select[name=associatedCard] option').eq(0).prop('selected', true);
+                step3Block.find('select[name=associatedCard]').vcSelectbox('update');
+            }
+        }).on('change', 'input[name=cardApplyaAgree]', function(e){
             var chk = $(this).prop('checked');
-            if(chk) $('#popup-cardApply').vcModal();
+            if(chk){
+                $(this).prop('checked', false);
+                $('#popup-cardApply').vcModal();
+            }
         }).on('click', '.cardApplyaAgree', function(e){
             e.preventDefault();
             $('#popup-cardApply').vcModal();
-        }).on('change', 'select[name=associatedCard]', function(e){
-            var chk = $(this).val() != "" ? false : true;
-            step3Block.find('.sendMessage').prop('disabled', chk);
         }).on('change', 'select[name=paymentCard], input[name=paymentCardNumber], input[name=paymentCardPeriod]', function(e){
             var chk = 0;
             if(step3Block.find('select[name=paymentCard]').val() != "") chk++;
@@ -244,7 +259,10 @@
             step3Block.find('.paymentBankConfirm').prop('disabled', chk < 2);
         }).on('change', 'input[name=selfClearingAgree]', function(e){
             var chk = $(this).prop('checked');
-            if(chk) $('#popup-selfClearing').vcModal();
+            if(chk){
+                $(this).prop('checked', false);
+                $('#popup-selfClearing').vcModal();
+            }
         }).on('click', '.selfClearingAgree', function(e){
             e.preventDefault();
             $('#popup-selfClearing').vcModal();
@@ -261,6 +279,7 @@
 
             var chk = $(this).index() ? true : false;
             step3Block.find('input[name=cardApplyaAgree]').prop('checked', chk);
+            step3Block.find('.sendMessage').prop('disabled', !chk);
 
             if(chk) $('#popup-cardApply').vcModal('close');
         });
@@ -290,10 +309,17 @@
                 if(!requestInfoBlock.hasClass('fixed')) requestInfoBlock.addClass('fixed');
     
                 var formy = $('.requestRentalForm').offset().top;
+                var isHidden = requestInfoBlock.data('infoHidden');
                 if(scrolltop > formy){
-                    requestInfoBlock.find('.item-info').show();
+                    if(isHidden){
+                        requestInfoBlock.data('infoHidden', false);
+                        requestInfoBlock.find('.item-info').slideDown();
+                    }
                 } else{
-                    requestInfoBlock.find('.item-info').hide();
+                    if(!isHidden){
+                        requestInfoBlock.data('infoHidden', true);
+                        requestInfoBlock.find('.item-info').slideUp();
+                    }
                 }
 
                 var footery = -scrolltop + $('footer').offset().top - 100;
@@ -331,6 +357,7 @@
         return isComplete;
     }
 
+    //계약자 정보입력 밸리데이션...
     function setStep1Validation(){
         var completed = false;
         var result = step1Validation.validate();
@@ -342,9 +369,10 @@
             console.log(result.validItem);
         }
 
-        return true;
+        return completed;
     }
 
+    //설치 정보 입력 밸리데이션...
     function setStep2Validation(){
         var completed = false;
         var result = step2Validation.validate();
@@ -356,28 +384,33 @@
             console.log(result.validItem);
         }
 
-        return true;
+        return completed;
     }
 
+    //납부 정보 입력 밸리데이션...
     function setStep3Validation(){
-        var cardApply = step3Block.find('input[name=cardApplication]:checked').val();
+        var cardApply, chk, value, paymethod, result;
+        cardApply = step3Block.find('input[name=cardApplication]:checked').val();
         if(cardApply == "Y"){
+            chk = step3Block.find('input[name=cardApplyaAgree]').prop('checked');
+            if(!chk) return false;
 
+            value = step3Block.find('select[name=associatedCard] option:selected').val();
+            if(value == "") return false;
         }
 
+        paymethod = step3Block.find('.new-type > ul > li.on').index();
+        result = paymethod ? cardValidation.validate() : bankValidation.validate();
+        if(result.success != "Y") return false;
 
+        chk = $('.requestRentalForm').data('arsAgree');
+        if(!chk) return false;
 
-        var result = applyAble == "Y" ? cardValidation.validate() : bankValidation.validate();
-console.log('result :', result, applyAble)
-        var completed = false;
-        if(result.success){
-            console.log("step3Validation.validate(); Success!!!");
-
-        } else{
-            console.log(result.validItem);
-        }
+        chk = step3Block.find('input[name=selfClearingAgree]').prop('checked');
+        if(!chk) return false;
         
-        return false;
+        
+        return true;
     }
 
     //설치 가능여부 확인...
@@ -514,24 +547,23 @@ console.log('result :', result, applyAble)
         setPrivacyAgreeStatus(status)
     }
 
+    //청약신청하기...
     function rentalRequest(){
         var chk = false;
-        // if(setStep1Validation()){
-        //     if(setStep2Validation()){
-        //         if(setStep3Validation()){
-        //             chk = true;
-        //         }
-        //     }
-        // }
+        if(setStep1Validation()){
+            if(setStep2Validation()){
+                if(setStep3Validation()){
+                    chk = true;
+                }
+            }
+        }
 
-        setStep3Validation();
-
-    //     if(!chk){
-    //         lgkorUI.alert('', {
-    //             title:'입력정보를 확인해주세요.'
-    //         });
-    //         return;
-    //    }
+        if(!chk){
+            lgkorUI.alert('', {
+                title:'입력정보를 확인해주세요.'
+            });
+            return;
+       }
 
         var agreechk = requestAgreeChecker.getAllChecked();
         console.log(agreechk)
