@@ -624,11 +624,14 @@ br.pc-only {
                     right:48px;
                     -webkit-transform:translateY(-50%);
                     transform:translateY(-50%);
-                    @include mobile {
+                    @include tablet {
                         position:static;
-                        margin-top:24px;
+                        margin:24px 0 0 120px;
                         -webkit-transform:translateY(0);
                         transform:translateY(0);
+                    }
+                    @include mobile {
+                        margin-left:0;
                     }
                 }
             }
@@ -639,7 +642,7 @@ br.pc-only {
             margin:0 auto;
             padding:36px 40px 10px;
             @include mobile {
-                padding:32px 16px 10px;
+                padding:25px 16px 10px;
             }
             font-size:0;
             .tit {
@@ -662,12 +665,12 @@ br.pc-only {
                     padding-right:36px;
                 }
             }
-            .btn-open {
+            .btn-toggle {
                 display:none;
                 @include mobile {
                     display:block;
                     position:absolute;
-                    top:30px;
+                    top:24px;
                     right:16px;
                     width:24px;
                     height:24px;
@@ -677,12 +680,7 @@ br.pc-only {
                         width:24px;
                         height:24px;
                         background:url('/lg5-common/images/icons/btn-arr-24x24-black.svg') no-repeat;
-                        transform:rotate(-90deg);
-                    }
-                    &.active {
-                        &:after {
-                            transform:rotate(-270deg);
-                        }
+                        transform:rotate(-270deg);
                     }
                 }
             }
@@ -702,10 +700,20 @@ br.pc-only {
                         display:block;
                     }
                 }
-                &.active {
-                    .slide-conts {
-                        display:block;
-                    }
+            }
+        }
+        &.active {
+            height:41vh;
+            max-height:41vh;
+            overflow-y:scroll;
+            .contract-slide {
+                .slide-conts {
+                    display:block;
+                }
+            }
+            .btn-toggle {
+                &:after {
+                    transform:rotate(-90deg);
                 }
             }
         }
@@ -792,14 +800,28 @@ br.pc-only {
                             height:32px;
                             background:url("/lg5-common/images/icons/btn-arr-32x32.svg") no-repeat;
                         }
+                        &.prev {
+                            left:-48px;
+                        }
                         &.next {
                             right:-48px;
+                        }
+                        @media screen and (max-width:1460px) {
+                            &.prev {
+                                left:-32px;
+                            }
+                            &.next {
+                                right:-32px;
+                            }
                         }
                     }
                 }
                 &:last-child {
-                    padding: 0 0 0 16px;
+                    @include mobile {
+                        padding: 0 0 0 16px;
+                    }
                 }
+                
             }
             &.tab-fix {
                 position:fixed;
@@ -919,7 +941,6 @@ br.pc-only {
     }
 
     .default-bottom-wrap {
-        display:none;
         position:fixed;
         left:0;
         right:0;
@@ -965,6 +986,12 @@ br.pc-only {
         background:#fff;
         box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
         z-index:100;
+        @include mobile {
+            height:80vh;
+            max-height:80vh;
+            overflow-y:scroll;
+            box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+        }
         .inner {
             @include clearfix;
             position:relative;
@@ -972,13 +999,13 @@ br.pc-only {
             margin:0 auto;
             padding:0 40px 48px;
             @include mobile {
-                padding:0 0 20px;
+                padding:0 0 32px;
             }
             .tit-wrap {
                 padding:40px 0 10px;
                 font-size:0;
                 @include mobile {
-                    padding:24px 20px;
+                    padding:25px 16px 20px;
                 }
                 .tit {
                     display:inline-block;
@@ -992,6 +1019,32 @@ br.pc-only {
                     @include font-large;
                     font-weight:700;
                     vertical-align:middle;
+                    strong {
+                        color:#ec455a;
+                    }
+                    @include mobile {
+                        float:right;
+                        padding-right:36px;
+                    }
+                }
+                .btn-toggle {
+                    display:none;
+                    @include mobile {
+                        display:block;
+                        position:absolute;
+                        top:22px;
+                        right:16px;
+                        width:24px;
+                        height:24px;
+                        &:after {
+                            content:'';
+                            display:block;
+                            width:24px;
+                            height:24px;
+                            background:url('/lg5-common/images/icons/btn-arr-24x24-black.svg') no-repeat;
+                            transform:rotate(-270deg);
+                        }
+                    }
                 }
             }
             .contract-slide {
@@ -1004,6 +1057,7 @@ br.pc-only {
                 @include mobile {
                     float:inherit;
                     width:100%;
+                    padding-bottom:242px;
                 }
                 .prd-care-horizon {
                     //height:204px;
@@ -1057,11 +1111,15 @@ br.pc-only {
                     width:calc(100% - 55%);
                 }
                 @include mobile {
+                    position:fixed;
+                    left:0;
+                    bottom:0;
+                    right:0;
                     float:inherit;
-                    width:calc(100% - 40px);
-                    margin:12px 20px 0;
-                    padding:18px 20px;
-                    border-radius:8px;
+                    width:100%;
+                    margin:0;
+                    padding:20px 16px 32px;
+                    border-radius:0;
                 }
                 dl {
                     display:table;
@@ -1069,7 +1127,7 @@ br.pc-only {
                     margin-top:8px;
                     table-layout:fixed;
                     @include mobile {
-                        margin-top:11px;
+                        padding:0 16px;
                     }
                     &:first-child {
                         margin-top:0;
@@ -1082,6 +1140,10 @@ br.pc-only {
                         color:#767676;
                         @include font-small;
                         font-weight:500;
+                        @include mobile {
+                            font-size:14px;
+                            line-height:22px;
+                        }
                     }
                     dd {
                         @include font-large;
@@ -1093,6 +1155,14 @@ br.pc-only {
                         &.sm {
                             @include font-small;
                             font-weight:normal;
+                            @include mobile {
+                                font-size:14px;
+                                line-height:22px;
+                            }
+                        }
+                        @include mobile {
+                            font-size:18px;
+                            line-height:26px;
                         }
                     }
                     &.last {
@@ -1103,62 +1173,35 @@ br.pc-only {
                     width:100%;
                     margin-top:32px;
                     @include mobile {
-                        padding:13px 32px;
+                        margin-top:24px;
                     }
                 }
             }
-            .btn-close {
-                display:none;
-                position:absolute;
-                top:32px;
-                right:40px;
-                width:12px;
-                height:12px;
-                @include mobile {
-                    display:block;
-                    top:25px;
-                    right:25px;
-                }
-                &:after {
-                    content:'';
-                    display:block;
-                    position:absolute;
-                    top:0;
-                    right:0;
-                    width:12px;
-                    height:12px;
-                    border-bottom:2px solid #111;
-                    border-left:2px solid #111;
-                    transform:rotate(-45deg);
-                }
-            }
         }
-        &.close {
-            //height:88px;
-            @include mobile {
-                //height:75px;
-            }
-            .tit-wrap {
-                //padding:32px 0;
-                @include mobile {
-                    padding:26px 20px;
+        &.active {
+            height:auto;
+            max-height:auto;
+            .inner {
+                .tit-wrap {
+                    .btn-toggle {
+                        &:after {
+                            transform:rotate(-90deg);
+                        }
+                    }
                 }
-            }
-            .btn-close { 
-                top:40px;
-                @include mobile {
-                    width:100%;
-                    height:100%;
-                    top:0;
-                    left:0;
-                    right:0;
-                    bottom:0;
+                
+                .contract-slide {
+                    display:none;
                 }
-                &:after {
-                    transform:rotate(135deg);
-                    @include mobile {
-                        top:35px;
-                        right:25px;
+                .total-info {
+                    position:static;
+                    background:#fff;
+                    padding:0 16px;
+                    dl {
+                        display:none;
+                    }
+                    .btn {
+                        margin:0;
                     }
                 }
             }

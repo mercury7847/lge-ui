@@ -6,16 +6,12 @@
     bottom: 24px;
     width: auto;
     z-index: 1002;
-    @include mobile {
-        width: 100%;
-    }
     .toast-message-box {
         .inner {
             position:relative;
             display: inline-block;
             min-width:444px;
             min-height: 58px;
-            margin-top: 8px;
             background: rgba(34, 34, 34, .6);
             border-radius: 28px;
             padding: 16px 48px;
@@ -41,15 +37,16 @@
                 }
             }
             @include mobile {
-                display: flex;
-                width: calc(100% - 40px);
-                margin-left: 20px;
-                justify-content: space-between;
-                align-items: center;
+                min-width:100%;
+                padding: 17px 24px;
                 .btn-area {
-                    margin-left: 32px;
+                    right:16px;
                 }
             }
         }
+    }
+    @include mobile {
+        left:16px;
+        right:16px;
     }
 }

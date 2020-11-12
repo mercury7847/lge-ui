@@ -621,16 +621,6 @@ CS.MD.quickMenu = function() {
 (function($){
     function commonInit(){
         $('#quickmenu').quickMenu();
-
-        $('.scroll-x').mCustomScrollbar({
-            axis:"x",
-            advanced:{
-                autoExpandHorizontalScroll:true
-            }
-        });
-        $('.scroll-y').mCustomScrollbar({
-            axis:"y"
-        });
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
