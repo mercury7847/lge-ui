@@ -82,6 +82,12 @@
                 }
             }
 
+            @include pc {
+                .slide-controls {
+                    display: none;
+                }
+            }
+
             @include mobile {
                 .slide-wrap {
                     .slide-controls {
