@@ -85,6 +85,15 @@
                 float: left;
                 width: 400px;
                 margin-left: 48px;
+                &.fixed {
+                    position: fixed;
+                    top: 44px;
+                    right: 40px;
+                    @media screen and (min-width: 1460px) {
+                        right: 50%;
+                        margin-right: -690px;
+                    }
+                }
             }
             @media screen and (max-width: $tablet-l-width) {
                 .col-left,
@@ -104,6 +113,9 @@
                 }
                 .col-right {
                     margin-left: 0;
+                    &.fixed {
+                        position: static;
+                    }
                 }
             }
             //@include mobile {
