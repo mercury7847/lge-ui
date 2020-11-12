@@ -108,7 +108,8 @@ br.pc-only {
                 color:#3B9792;
                 float:right;
                 @media screen and (max-width:1380px) {
-                    float:left;
+                    float:none;
+                    display:block;
                 }
             }
         }
@@ -626,7 +627,7 @@ br.pc-only {
                     transform:translateY(-50%);
                     @include tablet {
                         position:static;
-                        margin:24px 0 0 120px;
+                        margin:12px 0 0 120px;
                         -webkit-transform:translateY(0);
                         transform:translateY(0);
                     }
@@ -703,12 +704,15 @@ br.pc-only {
             }
         }
         &.active {
-            height:41vh;
-            max-height:41vh;
-            overflow-y:scroll;
             .contract-slide {
+                height:65vh;
+                max-height:65vh;
+                overflow-y:scroll;
                 .slide-conts {
                     display:block;
+                    &:first-child {
+                        padding-top:6px;
+                    }
                 }
             }
             .btn-toggle {
@@ -743,35 +747,29 @@ br.pc-only {
                         }
                     }
                 }
-                .tab-slide-wrap {
+                .cate-scroll-wrap {
+                    position:relative;
                     margin-bottom:28px;
                     @include mobile {
-                        margin-bottom:0;
-                    }
-                    .slide-content {
+                        padding:24px 0;
                         margin:0;
-                        padding:0;
                     }
                     .tabs {
-                        max-width:inherit;
-                        overflow:hidden;
-                        -webkit-overflow-scrolling:inherit;
-                        @include mobile {
-                            display:flex;
-                            max-width:100%;
-                            padding:24px 0;
-                            overflow:auto;
-                            overflow-x:auto;
-                            -webkit-overflow-scrolling:touch;
-                        }
+                        white-space:nowrap;
+                        font-size:0;
                         > li {
-                            margin:0;
-                            padding:0 16px;
+                            position:relative;
+                            display:inline-block;
+                            vertical-align:middle;
+                            margin-left:16px;
+                            padding-left:16px;
                             @include mobile {
-                                padding:0 8px;
+                                margin-left:8px;
+                                padding-left:8px
                             }
-                            &::before {
-                                content:' ';
+                            &:before {
+                                content:'';
+                                display:block;
                                 position:absolute;
                                 top:50%;
                                 left:0;
@@ -781,47 +779,76 @@ br.pc-only {
                                 background:#d8d8d8;
                             }
                             &:first-child {
+                                margin-left:0;
                                 padding-left:0;
-                                &::before {
+                                @include mobile {
+                                    margin-left:16px;
+                                    padding-left:8px;
+                                }
+                                &:before {
                                     display:none;
+                                }
+                            }
+                            &:last-child {
+                                margin-right:16px;
+                            }
+                            a {
+                                color:#767676;
+                                @include font-medium;
+                                font-weight:500;
+                            }
+                            &.on {
+                                a {
+                                    color:#222;
+                                    font-weight:500;
                                 }
                             }
                         }
                     }
-                    .slide-controls {
+                    .scroll-controls {
+                        position:absolute;
+                        top:50%;
+                        left:50%;
+                        width:100%;
+                        max-width:100%;
                         margin-top:-16px;
-                    }
-                    .btn-arrow {
-                        width:32px;
-                        height:32px;
-                        box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.06);
-                        &:before {
+                        transform:translateX(-50%);
+                        z-index:10;
+                        @include mobile {
+                            display:none;
+                        }
+                        .btn-arrow {
+                            position: absolute;
                             width:32px;
                             height:32px;
-                            background:url("/lg5-common/images/icons/btn-arr-32x32.svg") no-repeat;
-                        }
-                        &.prev {
-                            left:-48px;
-                        }
-                        &.next {
-                            right:-48px;
-                        }
-                        @media screen and (max-width:1460px) {
+                            box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.06);
+                            &:before {
+                                width:32px;
+                                height:32px;
+                                background:url("/lg5-common/images/icons/btn-arr-32x32.svg") no-repeat;
+                            }
                             &.prev {
-                                left:-32px;
+                                left:-48px;
                             }
                             &.next {
-                                right:-32px;
+                                right:-48px;
+                            }
+                            @media screen and (max-width:1460px) {
+                                &.prev {
+                                    left:-32px;
+                                }
+                                &.next {
+                                    right:-32px;
+                                }
                             }
                         }
                     }
                 }
                 &:last-child {
                     @include mobile {
-                        padding: 0 0 0 16px;
+                        padding:0;
                     }
                 }
-                
             }
             &.tab-fix {
                 position:fixed;
@@ -832,7 +859,9 @@ br.pc-only {
                 box-shadow:0 2px 20px 0 rgba(0, 0, 0, 0.2);
                 .inner {
                     @include mobile {
-                        padding:0 0 0 16px;
+                        &:last-child {
+                            padding:0;
+                        }
                     }
                     &:first-child {
                         max-width:100%;
@@ -857,6 +886,7 @@ br.pc-only {
                             li {
                                 &.on a {
                                     border:0;
+                                    border-radius:0;
                                     @include mobile {
                                         border:1px solid #222;
                                         border-bottom:0;
@@ -866,8 +896,10 @@ br.pc-only {
                                 }
                                 &:first-child {
                                     &.on a {
-                                        border-left:0;
-                                        border-right:1px solid #222;
+                                        @include mobile {
+                                            border-left:0;
+                                            border-right:1px solid #222;
+                                        }
                                     }
                                 }
                             }
@@ -941,6 +973,7 @@ br.pc-only {
     }
 
     .default-bottom-wrap {
+        display:none;
         position:fixed;
         left:0;
         right:0;
@@ -987,9 +1020,6 @@ br.pc-only {
         box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
         z-index:100;
         @include mobile {
-            height:80vh;
-            max-height:80vh;
-            overflow-y:scroll;
             box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
         }
         .inner {
@@ -1057,7 +1087,10 @@ br.pc-only {
                 @include mobile {
                     float:inherit;
                     width:100%;
-                    padding-bottom:242px;
+                    height:80vh;
+                    max-height:80vh;
+                    overflow-y:scroll;
+                    padding-bottom:226px;
                 }
                 .prd-care-horizon {
                     //height:204px;
@@ -1067,17 +1100,23 @@ br.pc-only {
                         .etc {
                             @include font-large;
                             font-weight:700;
+                            @include mobile {
+                                position:absolute;
+                                bottom:15px;
+                                left:123px;
+                            }
                         }
                     }
                     .ui_flexible_cont {
                         min-height:142px;
                         padding:29px 31px 29px 13px;
+                        @include mobile {
+                            min-height:179px;
+                            padding:15px 14px 15px 11px;
+                        }
                     }
                     &.comb-type {
                         border:2px solid #ec455a;
-                        .ui_flexible_cont {
-                            padding:28px 31px 28px 13px;
-                        }
                     }
                     
                     &.empty {
@@ -1180,7 +1219,7 @@ br.pc-only {
         }
         &.active {
             height:auto;
-            max-height:auto;
+            max-height:inherit;
             .inner {
                 .tit-wrap {
                     .btn-toggle {
