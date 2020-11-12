@@ -1828,7 +1828,7 @@ $input: (chk, rdo);
     width:360px;
     padding:0;
     border-radius:8px;
-    box-shadow:0 2px 14px 0 rgba(0, 0, 0, .06);
+    box-shadow:2px 4px 16px 0 rgba(0, 0, 0, .14);
     overflow:hidden;
     z-index:9999;
     @include mobile {
@@ -1897,13 +1897,17 @@ $input: (chk, rdo);
     .ui-calendar-date {
         padding:32px 32px 40px;
         @include mobile {
-            padding:0 18px 16px;
+            padding:20px 34px;
         }
         .ui-calendar-table {
             table-layout:fixed;
             width:calc(100% + 12px);
             margin:0 -6px;
             text-align:center;
+            @include mobile {
+                width:calc(100% + 6px);
+                margin:0 -3px;
+            }
             th {
                 height:32px;
                 padding:0;
@@ -1917,6 +1921,9 @@ $input: (chk, rdo);
             tbody {
                 .ui-calendar-cell {
                     padding:6px;
+                    @include mobile {
+                        padding:3px;
+                    }
                     .ui-calendar-day {
                         display:inline-block;
                         width:32px;
@@ -1929,10 +1936,6 @@ $input: (chk, rdo);
                         vertical-align:top;
                         &.disabled {
                             color:#aaa;
-                        }
-                        @include mobile {
-                            width:37px;
-                            height:37px;
                         }
                     }
                     &.ui-calendar-active {

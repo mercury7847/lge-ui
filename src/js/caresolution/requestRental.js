@@ -1,4 +1,9 @@
 (function(){
+    var CREDIT_INQUIRE_URL;
+    var INSTALL_ABLED_URL;
+    var CARD_ABLED_URL;
+    var ARS_AGREE_URL;
+
     var $requestAgreeChecker;
     var $requestButton;
 
@@ -11,7 +16,7 @@
     var $creditInquireButton;
 
     var step1Block, step2Block, step3Block;
-    var step1Validation, step2Validation, step3Validation;
+    var step1Validation, step2Validation, cardValidation, bankValidation;
 
     var step = 0;
 
@@ -65,9 +70,14 @@
     }
 
     function setting(){
-        step1Block = $('.accordion-section ul li:nth-child(1)');
-        step2Block = $('.accordion-section ul li:nth-child(2)');
-        step3Block = $('.accordion-section ul li:nth-child(3)');
+        CREDIT_INQUIRE_URL = $('.requestRentalForm').data('creditInquireUrl');
+        INSTALL_ABLED_URL = $('.requestRentalForm').data('installAbledUrl');
+        CARD_ABLED_URL = $('.requestRentalForm').data('cardAbledUrl');
+        ARS_AGREE_URL = $('.requestRentalForm').data('arsAgreeUrl');
+
+        step1Block = $('.requestRentalForm ul li:nth-child(1)');
+        step2Block = $('.requestRentalForm ul li:nth-child(2)');
+        step3Block = $('.requestRentalForm ul li:nth-child(3)');
 
         $('.agree-box').vcCheckboxAllChecker();
         $requestAgreeChecker = $('.agree-box').vcCheckboxAllChecker('instance');
@@ -92,7 +102,13 @@
                 pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             }
         }
-        step1Validation = new vcui.ui.Validation('.accordion-section ul li:nth-child(1)',{register:register});
+        step1Validation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(1)',{register:register});
+
+
+        step2Validation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(2)');
+
+        cardValidation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(3) .by-card');
+        bankValidation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(3) .by-bank');
     }
 
     function bindEvents(){
@@ -178,6 +194,9 @@
         }).on('click', '.input-mix-wrap .cell .btn-link', function(e){
             e.preventDefault();
             $('#popup-previsit').vcModal();
+        }).on('click', '.installAbledConfirm', function(e){
+            e.preventDefault();
+            setInstallAbledConfirm();
         });
 
         $('#popup-previsit').on('click', '.btn-group button.btn', function(e){
@@ -218,6 +237,12 @@
         }).on('click', '.selfClearingAgree', function(e){
             e.preventDefault();
             $('#popup-selfClearing').vcModal();
+        }).on('click', '.paymentCardConfirm', function(e){
+            e.preventDefault();
+            setCardAbledConfirm();
+        }).on('click', '.arsAgreeRequest', function(e){
+            e.preventDefault();
+            setArsAgreeConfirm();
         });
 
         $('#popup-cardApply').on('click', '.btn-group button.btn', function(e){
@@ -240,10 +265,100 @@
 
     }
 
-    function setCreditInquire(){
-        console.log('creditInquireButton')
+    function setNextStep(){
+        var isComplete = false;
+        switch(step){
+            case 0:
+                isComplete = setStep1Validation();
+                break;
+
+            case 1:
+                isComplete = setStep2Validation();
+                break;
+        }
+        
+        if(isComplete) step++;
+
+        return isComplete;
     }
 
+    function setStep1Validation(){
+        var completed = false;
+        var result = step1Validation.validate();
+        if(result.success){
+            console.log("step1Validation.validate(); Success!!!");
+
+            completed = $('.requestRentalForm').data('creditInquire');
+        } else{
+            console.log(result.validItem);
+        }
+
+        return true;
+    }
+
+    function setStep2Validation(){
+        var completed = false;
+        var result = step2Validation.validate();
+        if(result.success){
+            console.log("step2Validation.validate(); Success!!!");
+
+            completed= $('.requestRentalForm').data('installAbled');
+        } else{
+            console.log(result.validItem);
+        }
+
+        return true;
+    }
+
+    function setStep3Validation(){
+        var applyAble = step3Block.find('input[name=cardApplication]:checked').val();
+        var result = applyAble == "Y" ? cardValidation.validate() : bankValidation.validate();
+
+        var completed = false;
+        if(result.success){
+            console.log("step3Validation.validate(); Success!!!");
+
+        } else{
+            console.log(result.validItem);
+        }
+        
+        return false;
+    }
+
+    //설치 가능여부 확인...
+    function setInstallAbledConfirm(){
+        var values = step2Validation.getValues();
+        if(values.zipCode == "" || values.userAdress == ""){
+            lgkorUI.alert('', {
+                title:'상세주소를 입력해주세요.'
+            });
+
+            return;
+        }
+
+        lgkorUI.requestAjaxData(INSTALL_ABLED_URL, {}, function(result){
+            lgkorUI.alert(result.data.alert.desc, {
+                title: result.data.alert.title
+            });
+
+            if(result.data.success == "Y") $('.requestRentalForm').data('installAbled', true);
+            else $('.requestRentalForm').data('installAbled', false);
+        });
+    }
+
+    //신용정보 조회...
+    function setCreditInquire(){
+        lgkorUI.requestAjaxData(CREDIT_INQUIRE_URL, {}, function(result){
+            lgkorUI.alert(result.data.alert.desc, {
+                title: result.data.alert.title
+            });
+
+            if(result.data.success == "Y") $('.requestRentalForm').data('creditInquire', true);
+            else $('.requestRentalForm').data('creditInquire', false);
+        });
+    }
+
+    //설치 정보 입력 타입 선택...
     function changeInstallInputType(type){
         if(type == "equal"){
             var step1Value = step1Validation.getValues();
@@ -259,6 +374,31 @@
         } else{
             step2Block.find('input').not('[name=installInpuType], [name=preVisitRequest]').val("")
         }
+    }
+
+    //납부카드확인...
+    function setCardAbledConfirm(){
+        lgkorUI.requestAjaxData(CARD_ABLED_URL, {}, function(result){
+            lgkorUI.alert(result.data.alert.desc, {
+                title: result.data.alert.title
+            });
+
+            var chk = result.data.success == "Y" ? true : false;
+            $('.requestRentalForm').data('cardAbled', chk);            
+            step3Block.find('.arsAgreeRequest').prop('disabled', !chk);
+        });
+    }
+
+    //ARS출금동의 신청...
+    function setArsAgreeConfirm(){
+        lgkorUI.requestAjaxData(ARS_AGREE_URL, {}, function(result){
+            lgkorUI.alert(result.data.alert.desc, {
+                title: result.data.alert.title
+            });
+
+            var chk = result.data.success == "Y" ? true : false;
+            $('.requestRentalForm').data('arsAgree', chk);
+        });
     }
 
     function changePrevisitRequest(abled){
@@ -319,21 +459,25 @@
         setPrivacyAgreeStatus(status)
     }
 
-    function setNextStep(){
-        var isComplete = false;
-        switch(step){
-            case 0:
-                var success = step1Validation.validate();
-                if(success){
-                    console.log("step1Validation.validate(); Success!!!")
-                }
-                break;
-        }
-
-        return isComplete;
-    }
-
     function rentalRequest(){
+        var chk = false;
+        // if(setStep1Validation()){
+        //     if(setStep2Validation()){
+        //         if(setStep3Validation()){
+        //             chk = true;
+        //         }
+        //     }
+        // }
+
+        setStep3Validation();
+
+    //     if(!chk){
+    //         lgkorUI.alert('', {
+    //             title:'입력정보를 확인해주세요.'
+    //         });
+    //         return;
+    //    }
+
         var agreechk = $requestAgreeChecker.getAllChecked();
         console.log(agreechk)
     }

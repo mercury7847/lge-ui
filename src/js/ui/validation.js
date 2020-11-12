@@ -90,8 +90,6 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                 self.nameArr.push(item.name);
             });
 
-            console.log(newObj)
-
             self.register = newObj;
 
             self.nameArr = vcui.array.unique(self.nameArr);
@@ -173,7 +171,6 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                 }
             } 
 
-            // console.log(rObj);
             return rObj;
         },
 
@@ -254,7 +251,6 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                 obj = self.register[key];
                 if(obj && obj.required){
                     $target = self.$el.find('[name='+ key +']');
-
                     if($target.is(':checkbox') || $target.is(':radio')){
                         var nArr = [];
                         $target.filter(':checked').each(function(idx, item){
@@ -307,7 +303,10 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                 self.triggerHandler('validerror', [self.validItemObj]);
             }
             
-            return isSuccess;
+            return {
+                success: isSuccess,
+                validItem: self.validItemObj
+            };
         },
 
         _swicthErrorMsg : function _swicthErrorMsg(obj){
