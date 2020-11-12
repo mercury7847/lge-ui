@@ -51,8 +51,11 @@ var AddressManagement = (function() {
 
     //public
     AddressManagement.prototype = {
-        open: function() {
+        open: function(selectCallback) {
             var self = this;
+            if(selectCallback) {
+                self.selectCallback = selectCallback;
+            }
             var param = {"page": "0"}
             self._getData(param, function(){
                 self.$content.vcModal();
