@@ -247,10 +247,7 @@
             dots: false
         });
         $('.ui_carousel_slider3').vcCarousel({
-            infinite: false,
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            variableWidth : true,
+            settings: "unslick",
             responsive: [
                 {
                     breakpoint: 10000,
@@ -264,24 +261,18 @@
                     }
                 },
                 {
-                        breakpoint: 1024,
-                        settings: {
-                            infinite: false,
-                            variableWidth : false,
-                            dots: false,
-                            slidesToShow: 1, 
-                            slidesToScroll: 1
-                        }
-                    },
-                {
-                    breakpoint: 768,
+                    breakpoint: 1024,
                     settings: {
                         infinite: false,
-                        variableWidth : true,
+                        variableWidth : false,
                         dots: false,
                         slidesToShow: 1, 
                         slidesToScroll: 1
                     }
+                },
+                {
+                    breakpoint: 768,
+                    settings: "unslick"
                 }
             ]
         });
@@ -295,7 +286,6 @@
                         variableWidth : true,
                         dots: false,
                         slidesToScroll: 1
-                        
                     }
                 },
                 {
