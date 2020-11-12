@@ -48,7 +48,9 @@
                             "ui/tooltipTarget",
                             "ui/toast",
                             "ui/sticky",
-                            "ui/formatter"
+                            "ui/formatter",
+                            "ui/scrollNavi",
+                            "ui/smoothScroll"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
@@ -69,6 +71,9 @@
             this.find('.ui_star_rating').vcStarRating();
             this.find('.ui_tooltip-target').vcTooltipTarget();
             this.find('.ui_card_number').vcFormatter({format: "card", maxlength:12});
+
+            this.find('.ui_smooth_scroll').vcSmoothScroll();
+            this.find('.ui_scroll_navi').vcScrollNavi();
 
             this.find('.toast-message').vcToast();
 
@@ -250,7 +255,9 @@
                 "ui/tooltipTarget",
                 "ui/toast",
                 "ui/sticky",
-                "ui/formatter"
+                "ui/formatter",
+                "ui/scrollNavi",
+                "ui/smoothScroll"
             ], function (ResponsiveImage, BreakpointDispatcher) {
                 
                 new BreakpointDispatcher({
