@@ -376,6 +376,32 @@
 
             }
         }
+        .banner-box {
+            margin-top: 16px;
+            .inner {
+                a {
+                    display: inline-flex;
+                    align-items: center;
+                    width: 100%;
+                    min-height: 80px;
+                    padding: 20px;
+                    border-radius: 8px;
+                    background: #aeaeae;
+                    justify-content: center;
+                    vertical-align: middle;
+                    span {
+                        display: inline-block;
+                        position: relative;
+                        padding-right: 24px;
+                        @include font-medium;
+                        color: $color-bg-wt;
+                    }
+                }
+            }
+        }
+        .banner-box + .banner-box {
+            margin-top: 8px;
+        }
 
         .filter-btn-wrap {
             position:fixed;

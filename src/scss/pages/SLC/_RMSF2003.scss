@@ -679,6 +679,11 @@ br.pc-only {
                         background:url('/lg5-common/images/icons/btn-arr-24x24-black.svg') no-repeat;
                         transform:rotate(-90deg);
                     }
+                    &.active {
+                        &:after {
+                            transform:rotate(-270deg);
+                        }
+                    }
                 }
             }
         }
@@ -694,6 +699,11 @@ br.pc-only {
                 .slide-conts {
                     display:none;
                     &:first-child {
+                        display:block;
+                    }
+                }
+                &.active {
+                    .slide-conts {
                         display:block;
                     }
                 }
