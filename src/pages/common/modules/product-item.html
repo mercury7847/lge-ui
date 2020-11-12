@@ -4,7 +4,7 @@
     <div class="item result-item">
     }
     @@if (!context.search) {
-    <div class="item">
+    <div class="item @@itemClass">
     }
         @@if (context.badge) {
         <div class="badge">
@@ -106,10 +106,30 @@
                 }
                 @@if (context.spec) {
                 <ul class="spec-info">
-                    <li>용량 : 840L</li>
-                    <li>전체크기(WxHxD) : 912 x 1,790 x 927 mm</li>
-                    <li>형태 : 노크온 매직스페이스</li>
-                    <li>패턴 :  미드나잇</li>
+                    <li>
+                        <dl>
+                            <dt>용량 : </dt>
+                            <dd>840L</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>전체크기(WxHxD) : </dt>
+                            <dd>912 x 1,790 x 927 mm</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>형태 : </dt>
+                            <dd>노크온 매직스페이스</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>패턴 : </dt>
+                            <dd>미드나잇</dd>
+                        </dl>
+                    </li>
                     <li><span class="care-option">케어십 가능</span></li>
                 </ul>
                 }
@@ -125,21 +145,15 @@
             }
             @@if (context.price) {
             <div class="price-area">
+                @@if (context.originalPrice) {
+                <div class="original">
+                    <em class="blind">판매가격</em>
+                    <span class="price">5,200,000<em>원</em></span>
+                </div>
+                }
                 <div class="total">
                     <em class="blind">총 판매가격</em>
                     <span class="price">4,420,000<em>원</em></span>
-                </div>
-                <div class="product-price">
-                    @@if (context.originalPrice) {
-                    <div class="original">
-                        <em class="blind">판매가격</em>
-                        <span class="price">5,200,000<em>원</em></span>
-                    </div>
-                    }
-                    <!--<div class="discount">
-                        <em class="blind">할인율</em>
-                        <span class="price">15<em>%</em></span>
-                    </div>-->
                 </div>
             </div>
             }
@@ -167,31 +181,53 @@
             </span>
         </div>
         }
-        @@if (context.compare) {
-        <div class="product-compare">
-            @@compare
-        </div>
-        }
         @@if (context.singleButton) {
         <div class="product-button">
             <a href="#n" class="btn border">@@singleButton</a>
         </div>
         }
-        @@if (context.button) {
+        @@if (context.bottom) {
         <div class="product-bottom">
-            <div class="wishlist">
-                <span class="chk-wish-wrap large">
-                    <input type="checkbox" id="@@wishlist.id" name="@@wishlist.name" @@wishlist.checked>
-                    <label for="@@wishlist.id"><span class="blind">찜하기</span></label>
-                </span>
+            @@if (context.bottom.benefit) {
+            @@include('./common/modules/flags.html', {
+                "barType": true,
+                "flags": ["캐시백","사은품"]
+            })
+            }
+            @@if (context.bottom.price) {
+            <div class="price-area">
+                @@if (context.bottom.originalPrice) {
+                <div class="original">
+                    <em class="blind">판매가격</em>
+                    <span class="price">5,200,000<em>원</em></span>
+                </div>
+                }
+                <div class="total">
+                    <em class="blind">총 판매가격</em>
+                    <span class="price">4,420,000<em>원</em></span>
+                </div>
             </div>
-            <div class="cart">
-                <!-- 비활성화 시 .disabled 추가 -->
-                <a href="#n" class="btn-cart"><span class="blind">장바구니 담기</span></a>
+            }
+            <div class="btn-area-wrap">
+                <div class="wishlist">
+                    <span class="chk-wish-wrap large">
+                        <input type="checkbox" id="@@bottom.wish.id" name="@@bottom.wish.name" @@bottom.wish.checked>
+                        <label for="@@bottom.wish.id"><span class="blind">찜하기</span></label>
+                    </span>
+                </div>
+                <div class="cart">
+                    <!-- 비활성화 시 .disabled 추가 -->
+                    <a href="#n" class="btn-cart"><span class="blind">장바구니 담기</span></a>
+                </div>
+                <div class="btn-area">
+                    <a href="#n" class="btn border">@@bottom.button</a>
+                </div>
             </div>
-            <div class="button">
-                <a href="#n" class="btn border">@@button</a>
-            </div>
+        </div>
+        }
+        @@if (context.compare) {
+        <div class="product-compare">
+            @@compare
         </div>
         }
     </div>
@@ -212,12 +248,6 @@
         </div>
         <div class="banner-contents">
             <div class="inner">
-                @@if (context.flags) {
-                    @@include('./common/modules/flags.html', {
-                        "borderType": true,
-                        "flags": ["얼음정수기냉장고"]
-                    })
-                }
                 <div class="banner-info">
                     <div class="title">@@banner.title</div>
                     @@if(context.banner.copy) {

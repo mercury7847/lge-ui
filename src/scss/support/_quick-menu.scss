@@ -16,7 +16,7 @@
             }
         }
     }
-    a, button {
+    a, button, .btn-fold {
         display:block;
         overflow:hidden;
         position:relative;
@@ -100,7 +100,7 @@
                 width:264px;
                 padding-left:24px;
                 .icon {
-                    width:96px;
+                    //width:96px;
                 }
                 
             }
@@ -198,12 +198,12 @@
                 }
             }
         }
-        &-count {
+        .count {
             display:block;
             position:absolute;
             top:-8px;
             right:-8px;
-            z-index:4;
+            z-index:10;
             width:24px;
             height:24px;            
             color:#fff;

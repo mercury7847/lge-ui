@@ -1,0 +1,101 @@
+<!-- 하단 기본 -->
+<div class="default-bottom-wrap">
+    <p class="txt">결합할 제품을 담으시면, <br class="mob-only"><strong>예상 혜택을 바로 확인</strong>하실 수 있습니다.</p>
+</div>
+<!-- //하단 기본 -->
+
+<!-- 선택제품 -->
+<div class="prd-select-wrap">
+    <div class="inner">
+        <div class="tit-wrap">
+            <p class="tit">결합할 제품 담기</p>
+            <span class="num">총 <strong>2</strong>개</span>
+        </div>
+        <button type="button" class="btn-close"><span class="blind">닫기</span></button> <!-- 클릭 시 .prd-select-wrap에 close 클래스 토글 / 열기,닫기 텍스트 교체 -->
+        <div class="contract-slide">
+            <!-- carousel -->
+            <div class="slide-wrap ui_carousel_slider3">
+                <div class="slide-content ui_carousel_list">
+                    <ul class="slide-track ui_carousel_track ui_flexible_height">
+                        <!-- 두개이상 결합 가능 문구 -->
+                        <li class="slide-conts ui_carousel_slide">
+                            <div class="conts-wrap">
+                                <div class="prd-care-horizon ui_flexible_box empty">
+                                    <div class="ui_flexible_cont">
+                                        <p>2개 이상부터 결합할인 가능</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- //두개이상 결합 가능 문구 -->
+                            
+                        <!-- slide -->      
+                        @@include('./common/modules/prd-care-horizon.html', {
+                            "flagName" : "렌탈(케어솔루션)",
+                            "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
+                            "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
+                            "code" : "WU900AS",
+                            "etcTxt" : "월 161,900원",
+                            "type" : "comb-type",
+                            "combTxt" : "결합 -15,000원",
+                            btnDel : true
+                        })
+                        <!-- //slide -->
+                        <!-- slide -->
+                        @@include('./common/modules/prd-care-horizon.html', {
+                            "flagName" : "케어십",
+                            "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
+                            "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프) 두줄 텍스트 두줄 텍스트 두줄 텍스트 두줄 텍스트",
+                            "code" : "WU900AS",
+                            "etcTxt" : "월 61,900원",
+                            "combTxt" : "결합 미적용",
+                            btnDel : true
+                        })
+                        <!-- //slide -->
+                        <!-- slide -->
+                        @@include('./common/modules/prd-care-horizon.html', {
+                            "flagName" : "렌탈(케어솔루션)",
+                            "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
+                            "title" : "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
+                            "code" : "WU900AS",
+                            "etcTxt" : "월 61,900원",
+                            btnDel : true
+                        })
+                        <!-- //slide -->
+                        <!-- slide -->
+                        @@include('./common/modules/prd-care-horizon.html', {
+                            "flagName" : "렌탈(케어솔루션)",
+                            "visual" : "/lg5-common/images/dummy/@sample-150x150.jpg",
+                            "title" : "스팀 건조기ThinQ",
+                            "code" : "WU900AS",
+                            "etcTxt" : "월 61,900원",
+                            btnDel : true
+                        })
+                        <!-- //slide -->
+                    </ul>
+                </div>
+                <div class="slide-controls">
+                    <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                    <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                </div>
+            </div>
+            <!-- //carousel -->
+        </div>
+        <div class="total-info">
+            <dl>
+                <dt>이용 요금</dt>
+                <dd>월 81,400원</dd>
+            </dl>
+            <dl>
+                <dt>결합 할인</dt>
+                <dd class="sale">월 -5,000원</dd>
+            </dl>
+            <dl class="last">
+                <dt>제휴카드 할인시</dt>
+                <dd class="sale sm">월 최대 -26,000원</dd>
+            </dl>
+            <a href="#n" class="btn"><span>견적 확인하기</span></a>
+        </div>
+    </div>
+</div>
+<!-- //선택제품 -->
