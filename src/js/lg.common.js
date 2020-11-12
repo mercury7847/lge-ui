@@ -47,7 +47,8 @@
                             "ui/starRating",
                             "ui/tooltipTarget",
                             "ui/toast",
-                            "ui/sticky"
+                            "ui/sticky",
+                            "ui/formatter"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
@@ -67,6 +68,7 @@
             this.find('.ui_input_clearbutton').vcInputClearButton();
             this.find('.ui_star_rating').vcStarRating();
             this.find('.ui_tooltip-target').vcTooltipTarget();
+            this.find('.ui_card_number').vcFormatter({format: "card", maxlength:12});
 
             this.find('.toast-message').vcToast();
 
@@ -247,7 +249,8 @@
                 "ui/starRating",
                 "ui/tooltipTarget",
                 "ui/toast",
-                "ui/sticky"
+                "ui/sticky",
+                "ui/formatter"
             ], function (ResponsiveImage, BreakpointDispatcher) {
                 
                 new BreakpointDispatcher({
@@ -678,10 +681,11 @@
         },
 
         requestAjaxData: function(url, data, callback, type, dataType) {
+            var dtype = dataType? dataType : "json";
             $.ajax({
                 type : type? type : "GET",
                 url : url,
-                dataType : dataType? dataType : "json",
+                dataType : dtype,
                 data : data
             }).done(function (result) {
                 
@@ -689,8 +693,8 @@
                     location.reload();                
                     return;
                 }
-
-                if(dataType == 'json' && result.status != 'success'){
+                
+                if(dtype == 'json' && result.status != 'success'){
                     alert(result.message ? result.message : '오류발생');
                     return;
                 }
