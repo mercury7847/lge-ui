@@ -21,10 +21,11 @@
     var step1Validation, step2Validation, cardValidation, bankValidation;
 
     var deliveryMnger;
+    var addressFinder;
 
     var step = 0;
 
-    var isPostCode = false;
+    //var isPostCode = false;
 
     var addHtmls = {
         installAbled: '<p class="comp">설치 가능 지역</p>'
@@ -38,9 +39,10 @@
             bindEvents();
         });
 
-        load(postcodeLoadComplete);
+        //load(postcodeLoadComplete);
     }
 
+    /*
     function _importApiJs(){
         var defer = $.Deferred();
         var script = document.createElement('script');
@@ -72,6 +74,7 @@
         console.log("postcodeLoadComplete");
         isPostCode = true;
     }
+*/
 
     //초기 셋팅...
     function setting(){
@@ -123,6 +126,7 @@
         bankValidation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(3) .by-bank');
 
         deliveryMnger = new AddressManagement("#popup-delivery-list", "#popup-delivery-address");
+        addressFinder = new AddressFind();
     }
 
     //이벤트 등록...
@@ -422,7 +426,7 @@
     //설치 가능여부 확인...
     function setInstallAbledConfirm(){
         var values = step2Validation.getValues();
-        if(values.zipCode == "" || values.userAdress == ""){
+        if(values.zipCode == "" || values.userAddress == ""){
             lgkorUI.alert('', {
                 title:'상세주소를 입력해주세요.'
             });
@@ -464,7 +468,7 @@
             var telephone = step2Block.find('input[name=userTelephone]');
             telephone.val(telephone.data('equalNumber'));
 
-            step2Block.find('input[name=detailAdress]').val(step1Validation.getValues('detailAdress'));
+            step2Block.find('input[name=detailAddress]').val(step1Validation.getValues('detailAddress'));
         } else{
             step2Block.find('input').not('[name=installInpuType], [name=preVisitRequest]').val("")
         }
@@ -503,41 +507,19 @@
 
     //우편번호 찾기 연동...
     function getPostCode(item){
-        if(isPostCode){
-            new daum.Postcode({
-                oncomplete: function(data){
-                    // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                    var roadAddr = data.roadAddress; // 도로명 주소 변수
-                    var extraRoadAddr = ''; // 참고 항목 변수
-
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraRoadAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                    extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraRoadAddr !== ''){
-                        extraRoadAddr = ' (' + extraRoadAddr + ')';
-                    }
-                    item.find('input[name=zipCode]').val(data.zonecode);
-                    item.find('input[name=userAdress]').val(roadAddr);
-                    item.find('input[name=detailAdress]').val('');
-                }
-            }).open();
-        }
+        addressFinder.open(function(data){
+            item.find('input[name=zipCode]').val(data.zonecode);
+            item.find('input[name=userAddress]').val(data.roadAddress);
+            item.find('input[name=detailAddress]').val('');
+        });
     }
 
     //배송지 목록 팝업 오픈...
     function openDeliveryPop(item){
         deliveryMnger.open(function(data){
             item.find('input[name=zipCode]').val(data.zipCode);
-            item.find('input[name=userAdress]').val(data.userAddress);
-            item.find('input[name=detailAdress]').val(data.detailAddress);
+            item.find('input[name=userAddress]').val(data.userAddress);
+            item.find('input[name=detailAddress]').val(data.detailAddress);
         });
     }
 
