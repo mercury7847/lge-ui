@@ -24,49 +24,41 @@
         <div class="product-contents">
             @@if (context.optionColor) {
             <div class="product-option color">
-                <div class="option-list" role="radiogroup">
-                    <div class="slide-wrap ui_carousel_slider2">
-                        <div class="slide-content ui_carousel_list">
-                            <div class="slide-track ui_carousel_track">
-                                @@for (var i = 0; i < context.colorSet.length; i++) {
-                                <div class="slide-conts ui_carousel_slide">
-                                    <div role="radio" class="chk-wrap-colorchip `+colorSet[i].color+`" title="`+colorSet[i].title+`">
-                                        <input type="radio" id="`+colorSet[i].id+`" name="`+colorSet[i].name+`" `+colorSet[i].checked+`>
-                                        <label for="`+colorSet[i].id+`"><span class="blind">`+colorSet[i].title+`</span></label>
-                                    </div>
-                                </div>
-                                }
+                <div class="ui_smooth_scroll">
+                    <ul class="option-list" role="radiogroup">
+                        @@for (var i = 0; i < context.colorSet.length; i++) {
+                        <li>
+                            <div role="radio" class="chk-wrap-colorchip `+colorSet[i].color+`" title="`+colorSet[i].title+`">
+                                <input type="radio" id="`+colorSet[i].id+`" name="`+colorSet[i].name+`" `+colorSet[i].checked+`>
+                                <label for="`+colorSet[i].id+`"><span class="blind">`+colorSet[i].title+`</span></label>
                             </div>
-                        </div>
-                        <div class="slide-controls">
-                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                        </div>
-                    </div>
+                        </li>
+                        }
+                    </ul>
+                </div>
+                <div class="scroll-controls">
+                    <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                    <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
                 </div>
             </div>
             }
             @@if (context.optionText) {
             <div class="product-option text">
-                <div class="option-list" role="radiogroup">
-                    <div class="slide-wrap ui_carousel_slider2">
-                        <div class="slide-content ui_carousel_list">
-                            <div class="slide-track ui_carousel_track">
-                                @@for (var i = 0; i < context.textSet.length; i++) {
-                                <div class="slide-conts ui_carousel_slide">
-                                    <div role="radio" class="rdo-wrap" title="`+textSet[i].title+`">
-                                        <input type="radio" id="`+textSet[i].id+`" name="`+textSet[i].name+`" `+textSet[i].checked+`>
-                                        <label for="`+textSet[i].id+`">`+textSet[i].title+`</label>
-                                    </div>
-                                </div>
-                                }
+                <div class="ui_smooth_scroll">
+                    <ul class="option-list" role="radiogroup">
+                        @@for (var i = 0; i < context.textSet.length; i++) {
+                        <li>
+                            <div role="radio" class="rdo-wrap" title="`+textSet[i].title+`">
+                                <input type="radio" id="`+textSet[i].id+`" name="`+textSet[i].name+`" `+textSet[i].checked+`>
+                                <label for="`+textSet[i].id+`">`+textSet[i].title+`</label>
                             </div>
-                        </div>
-                        <div class="slide-controls">
-                            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
-                            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
-                        </div>
-                    </div>
+                        </li>
+                        }
+                    </ul>
+                </div>
+                <div class="scroll-controls">
+                    <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+                    <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
                 </div>
             </div>
             }
