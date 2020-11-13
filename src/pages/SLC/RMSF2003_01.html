@@ -197,7 +197,71 @@
 
 				$('.ui_smooth_prev').on('click', function(e){
 					$('.ui_smooth_scroll').vcSmoothScroll('prevPage');
-				})
+                });
+                
+                $('.ui_carousel_slider').vcCarousel({
+                    settings: "unslick",
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: false,
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+                                
+                            }
+                        },
+                        {
+                            breakpoint: 1090,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: false,
+                                slidesToShow: 2, 
+                                slidesToScroll: 2
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: "unslick"
+                        }
+                    ]
+                });
+
+
+                $('.ui_carousel_slider3').vcCarousel({
+                    settings: "unslick",
+                    responsive: [
+                        {
+                            breakpoint: 10000,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: false,
+                                slidesToShow: 2,
+                                slidesToScroll: 2
+                                
+                            }
+                        },
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                infinite: false,
+                                variableWidth : false,
+                                dots: false,
+                                slidesToShow: 1, 
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: "unslick"
+                        }
+                    ]
+                });
+                
 			});
 
 		});

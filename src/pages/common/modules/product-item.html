@@ -213,6 +213,12 @@
     @@if (!context.search) {
     <div class="item">
     }
+        @@include('./common/modules/flags.html', {
+            borderType: true,
+            flags: [
+                "<span class='blind'>제품 카테고리</span>제품관리팁"
+            ]
+        })
         <div class="product-image">
             <a href="#">
                 <img @@banner.visual alt="" class="lazyload">
