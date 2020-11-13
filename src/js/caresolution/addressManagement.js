@@ -259,6 +259,7 @@ var AddressManagement = (function() {
         self.$selectAddress = self.$footer.find('div.btn-group button');
         //배송지추가 버튼
         self.$addAddress = self.$content.find('div.my-address-wrap button.btn-addr');
+        console.log(self.$addAddress);
 
         self.addressRegist = new AddressRegist(registerTargetQuert, function(data){
             var param = {page:self.$pagination.attr("data-page")};
@@ -333,6 +334,7 @@ var AddressManagement = (function() {
             
             //배송지 추가
             self.$addAddress.on('click', function(e) {
+                console.log('????',self.addressRegist);
                 self.addressRegist.open();
             })
 
