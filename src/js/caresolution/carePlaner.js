@@ -2,103 +2,118 @@
 (function(){
 
     var _categoryItemTemplate = '<li><a href="#n" data-cate-id="{{categoryID}}">{{categoryName}}</a></li>';
+    
+    // [.prd-care-vertical 옵션]
+    // 1. 타입
+    // .module-type1 : 케어솔루션_제품모튤
+    // .module-type2 : 케어십_유상제품 모듈
+    // .module-type3 : 케어십_보유제품 모듈
+    // .module-type4 : 케어십_용역제품 모듈
 
     var _listItemTemplate =
         '<li class="item">'+
-        '   <div class="prd-care-vertical module-type1" data-index="{{index}}">'+
+        '   <div class="prd-care-vertical {{moduleType}}" data-index="{{index}}">'+
         '       <div class="img-wrap">'+
         '           <a href="#n">'+
         '               <img src="{{modelImg}}" alt="{{userFriendlyName}}">'+
         '           </a>'+
         '       </div>'+
         '       <div class="txt-wrap">'+
-        '           <p class="tit">'+
-        '               <a href="#n">'+
-        '                   <span class="blind">제품 디스플레이 네임</span>{{userFriendlyName}}'+
-        '               </a>'+
-        '           </p>'+
+        '       {{#if moduleType == "module-type3"}}'+
+        '           <div class="flag-wrap"><span class="flag">보유제품</span></div>'+
+        '       {{/if}}'+
+        '           <a href="#n">'+
+        '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{userFriendlyName}}</p>'+
+        '           </a>'+
         '           <p class="code"><span class="blind">제품 코드</span>{{modelName}}</p>'+
         '       </div>'+
         '       <div class="info-wrap">'+
-        '           <div class="opt-info">'+
+        '       {{#if moduleType == "module-type4"}}'+
+        '           <p class="code-txt">{{modelDescription}}</p>'+
+        '       {{/if}}'+
+        '       {{#if purchaseInfo != null && purchaseInfo != undefined && purchaseInfo != ""}}'+
+        '           <div class="txt-info">'+
+        '           {{#each item in purchaseInfo}}'+
         '               <dl>'+
+        '                   <dt>{{purchaseInfo.title}}</dt>'+
+        '                   <dd>{{purchaseInfo.date}}</dd>'+
+        '               </dl>'+
+        '           {{/each}}'+
+        '       {{/if}}'+
+        '           </div>'+
+        '           <div class="opt-info">'+
+        '           {{#if siblingColors.length > 0}}'+
+        '               <dl {{#if siblingColors.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>색상</dt>'+
-        '                   <dd class="color-opt" role="radiogroup">'+
-        '                       <div class="slide-wrap ui_carousel_slider2">'+
-        '                           <div class="slide-content ui_carousel_list">'+
-        '                               <div class="slide-track ui_carousel_track">'+
-        '                               {{#each item in siblingColors}}'+
-        '                                   <div class="slide-conts ui_carousel_slide">'+
-        '                                       <div role="radio" class="chk-wrap-colorchip {{item.siblingValue}}" title="{{item.siblingValue}}">'+
-        '                                           <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="color-{{modelId}}" value="{{item.siblingCode}}" data-sibling-name="{{item.siblingValue}}" data-sibling-type="siblingColors" {{#if selectColorID==item.siblingCode}}checked{{/if}}>'+
-        '                                           <label for="{{item.siblingCode}}-{{modelId}}"><span class="blind">{{item.siblingValue}}</span></label>'+
-        '                                       </div>'+
-        '                                   </div>'+
-        '                               {{/each}}'+
-        '                               </div>'+
-        '                           </div>'+
-        '                           <div class="slide-controls">'+
-        '                               <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>'+
-        '                               <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>'+
-        '                           </div>'+
+        '                   <dd>'+
+        '                       <div class="sort-select-wrap">'+
+        '                           <select class="ui_selectbox" id="colorSet-{{modelId}}" title="색상 선택" {{#if siblingColors.length == 1}}disabled{{/if}}>'+
+        '                           {{#each item in siblingColors}}'+
+        '                               <option value="{{item.siblingCode}}">{{item.siblingValue}}</option>'+
+        '                           {{/each}}'+
+        '                           </select>'+
         '                       </div>'+
         '                   </dd>'+
         '               </dl>'+
-        '               <dl>'+
+        '           {{/if}}'+
+        '           {{#if siblingFee.length > 0}}'+
+        '               <dl {{#if siblingFee.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>가입비</dt>'+
         '                   <dd>'+
-        '                       <ul class="rdo-tab-wrap" role="radiogroup">'+
-        '                       {{#each item in siblingFee}}'+
-        '                           <li>'+
-        '                               <span class="rdo-wrap">'+
-        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="fee-{{modelId}}" value="{{item.siblingCode}}" data-sibling-name="{{item.siblingValue}}" data-sibling-type="siblingFee" {{#if selectFeeID==item.siblingCode}}checked{{/if}}>'+
-        '                                   <label for="{{item.siblingCode}}-{{modelId}}">{{item.siblingValue}}</label>'+
-        '                               </span>'+
-        '                           </li>'+
-        '                       {{/each}}'+
-        '                       </ul>'+
+        '                       <div class="sort-select-wrap">'+
+        '                           <select class="ui_selectbox" id="feeSet-{{modelId}}" title="가입비 선택"  {{#if siblingFee.length == 1}}disabled{{/if}}>'+
+        '                           {{#each item in siblingFee}}'+
+        '                               <option value="{{item.siblingCode}}">{{item.siblingValue}}</option>'+
+        '                           {{/each}}'+
+        '                           </select>'+
+        '                       </div>'+
         '                   </dd>'+
         '               </dl>'+
-        '               <dl>'+
+        '           {{/if}}'+
+        '           {{#if siblingUsePeriod.length > 0}}'+
+        '               <dl {{#if siblingUsePeriod.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>의무사용</dt>'+
         '                   <dd>'+
-        '                       <ul class="rdo-tab-wrap" role="radiogroup">'+
-        '                       {{#each item in siblingUsePeriod}}'+
-        '                           <li>'+
-        '                              <span class="rdo-wrap">'+
-        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="period-{{modelId}}" value="{{item.siblingCode}}" data-sibling-name="{{item.siblingValue}}" data-sibling-type="siblingUsePeriod" {{#if selectUserPeriodID==item.siblingCode}}checked{{/if}}>'+
-        '                                   <label for="{{item.siblingCode}}-{{modelId}}">{{item.siblingValue}}</label>'+
-        '                               </span>'+
-        '                           </li>'+     
-        '                       {{/each}}'+                       
-        '                       </ul>'+
+        '                       <div class="sort-select-wrap">'+
+        '                           <select class="ui_selectbox" id="usePeriodSet-{{modelId}}" title="의무사용 선택"  {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
+        '                           {{#each item in siblingUsePeriod}}'+
+        '                               <option value="{{item.siblingCode}}">{{item.siblingValue}}</option>'+
+        '                           {{/each}}'+
+        '                           </select>'+
+        '                       </div>'+
         '                   </dd>'+
         '               </dl>'+
-        '               <dl>'+
+        '           {{/if}}'+
+        '           {{#if siblingVisitCycle.length > 0}}'+
+        '               <dl {{#if siblingVisitCycle.length == 1}}class="disabled"{{/if}}>'+
         '                   <dt>방문주기</dt>'+
         '                   <dd>'+
-        '                       <ul class="rdo-tab-wrap" role="radiogroup">'+
-        '                       {{#each item in siblingVisitCycle}}'+
-        '                           <li>'+
-        '                               <span class="rdo-wrap">'+
-        '                                   <input type="radio" id="{{item.siblingCode}}-{{modelId}}" name="visit-{{modelId}}" value="{{item.siblingCode}}" data-sibling-name="{{item.siblingValue}}" data-sibling-type="siblingVisitCycle" {{#if selectVisitCycleID==item.siblingCode}}checked{{/if}}>'+
-        '                                   <label for="{{item.siblingCode}}-{{modelId}}">{{item.siblingValue}}</label>'+
-        '                               </span>'+
-        '                           </li>'+     
-        '                       {{/each}}'+                       
-        '                       </ul>'+
+        '                       <div class="sort-select-wrap">'+
+        '                           <select class="ui_selectbox" id="visiSet-{{modelId}}" title="방문주기 선택"  {{#if siblingVisitCycle.length == 1}}disabled{{/if}}>'+
+        '                           {{#each item in siblingVisitCycle}}'+
+        '                               <option value="{{item.siblingCode}}">{{item.siblingValue}}</option>'+
+        '                           {{/each}}'+
+        '                           </select>'+
+        '                       </div>'+
         '                   </dd>'+
-        '               </dl>'+                
-        '           </div>'+
-        '           <div class="price-wrap">'+
-        '               <dl class="total-price">'+
-        '                   <dt>월 요금</dt>'+
-        '                   <dd>{{monthlyPrice}}</dd>'+
         '               </dl>'+
+        '           {{/if}}'+
         '           </div>'+
-        '       </div>'+
-        '       <div class="prd-add">'+
-        '           <button type="button" class="btn-add"><span>담기</span></button>'+
+        '       {{#if priceInfo != null && priceInfo != undefined && priceInfo != ""}}'+
+        '           <div class="txt-info">'+
+        '           {{#each item in priceInfo}}'+
+        '               <dl>'+
+        '                   <dt>{{priceInfo.title}}</dt>'+
+        '                   <dd>{{priceInfo.price}}</dd>'+
+        '               </dl>'+
+        '           {{/each}}'+
+        '       {{/if}}'+
+        '           <div class="price-wrap">'+
+        '               <div class="total-price">'+
+        '                   <p class="price">월 {{monthlyPrice}}원</p>'+
+        '                   <button type="button" class="btn border"><span>담기</span></button>'+
+        '               </div>'+
+        '           </div>'+
         '       </div>'+
         '   </div>'+
         '</li>';
@@ -201,11 +216,28 @@
 
     function init(){
         vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky', 'ui/modal', 'ui/selectbox'], function () {
-            // setting();
-            // eventBind();
+            setting();
+            eventBind();
 
-            // loadCategoryList();
+            loadCategoryList();
+        });
 
+
+    }
+
+    function setting(){
+        $caresolutionContainer = $('.care-solution-wrap');
+        $fixedTab = $('.fixed-tab-wrap');
+        $typeTab = $fixedTab.find('.tabs-wrap.btn-type');
+        $categoryTab = $fixedTab.find('.tabs-wrap.border-type');
+        $sortSelector = $('.sort-select-wrap select');
+        $prodListContainer = $('.prd-list-wrap');
+        $putItemContainer = $('.prd-select-wrap');
+
+        _totalContract = $('.ui_total_prod').data('prodTotal');
+
+        _categoryListUrl = $caresolutionContainer.data("cateList");
+        _prodListUrl = $caresolutionContainer.data("prodList");
 
         $('.ui_carousel_slider').vcCarousel({
             settings: "unslick",
@@ -234,113 +266,6 @@
                 {
                     breakpoint: 768,
                     settings: "unslick"
-                }
-            ]
-        });
-
-        $('.ui_carousel_slider2').vcCarousel({
-            infinite: false,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            variableWidth : false,
-            speed : 200,
-            dots: false
-        });
-        $('.ui_carousel_slider3').vcCarousel({
-            settings: "unslick",
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: {
-                        infinite: false,
-                        variableWidth : false,
-                        dots: false,
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                        
-                    }
-                },
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        infinite: false,
-                        variableWidth : false,
-                        dots: false,
-                        slidesToShow: 1, 
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: "unslick"
-                }
-            ]
-        });
-
-        // $('.prd-select-wrap').css({display:'block'});
-
-        var selectbox = $('.ui_selectbox').vcSelectbox('instance').on('selectboxopen', function(e, sbox){
-            var dl = $(sbox).closest('dl');
-            if(!dl.hasClass('open')) dl.addClass('open');
-        }).on('selectboxclose', function(e, sbox){
-            var dl = $(sbox).closest('dl');
-            if(dl.hasClass('open')) dl.removeClass('open');
-        })
-        });
-
-
-    }
-
-    function setting(){
-        $caresolutionContainer = $('.care-solution-wrap');
-        $fixedTab = $('.fixed-tab-wrap');
-        $typeTab = $fixedTab.find('.tabs-wrap.btn-type');
-        $categoryTab = $fixedTab.find('.tabs-wrap.border-type');
-        $sortSelector = $('.sort-select-wrap select');
-        $prodListContainer = $('.prd-list-wrap');
-        $putItemContainer = $('.prd-select-wrap');
-
-        _totalContract = $('.ui_total_prod').data('prodTotal');
-
-        _categoryListUrl = $caresolutionContainer.data("cateList");
-        _prodListUrl = $caresolutionContainer.data("prodList");
-
-        $('.ui_carousel_slider').vcCarousel({
-            infinite: false,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            variableWidth : true,
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: {
-                        infinite: false,
-                        variableWidth : false,
-                        dots: false,
-                        slidesToShow: 3,
-                        slidesToScroll: 3
-                        
-                    }
-                },
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        infinite: false,
-                        variableWidth : false,
-                        dots: false,
-                        slidesToShow: 2, 
-                        slidesToScroll: 2
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        infinite: false,
-                        variableWidth : true,
-                        dots: false,
-                        slidesToShow: 1, 
-                        slidesToScroll: 1
-                    }
                 }
             ]
         });
@@ -491,14 +416,14 @@
             if(anim) $(addItem).css({y:200, opacity:0}).transition({y:0, opacity:1}, 450, "easeOutQuart");
         }
 
-        $('.ui_carousel_slider2').vcCarousel({
-            infinite: false,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            variableWidth : false,
-            speed : 200,
-            dots: false
-        });
+
+        $('.ui_selectbox').vcSelectbox().on('selectboxopen', function(e, sbox){
+            var dl = $(sbox).closest('dl');
+            if(!dl.hasClass('open')) dl.addClass('open');
+        }).on('selectboxclose', function(e, sbox){
+            var dl = $(sbox).closest('dl');
+            if(dl.hasClass('open')) dl.removeClass('open');
+        })
     }
 
     function addPutItem(item){ 
@@ -547,11 +472,9 @@
 
             var display = $putItemContainer.css('display');
             $putItemContainer.css({display:'block'});
+            
             $('.ui_carousel_slider3').vcCarousel({
-                infinite: false,
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                variableWidth : true,
+                settings: "unslick",
                 responsive: [
                     {
                         breakpoint: 10000,
@@ -565,24 +488,18 @@
                         }
                     },
                     {
-                            breakpoint: 1024,
-                            settings: {
-                                infinite: false,
-                                variableWidth : false,
-                                dots: false,
-                                slidesToShow: 1, 
-                                slidesToScroll: 1
-                            }
-                        },
-                    {
-                        breakpoint: 768,
+                        breakpoint: 1024,
                         settings: {
                             infinite: false,
-                            variableWidth : true,
+                            variableWidth : false,
                             dots: false,
                             slidesToShow: 1, 
                             slidesToScroll: 1
                         }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: "unslick"
                     }
                 ]
             });
