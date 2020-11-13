@@ -754,10 +754,8 @@ br.pc-only {
                 }
                 .cate-scroll-wrap {
                     position:relative;
-                    margin-bottom:28px;
                     @include mobile {
                         padding:24px 0;
-                        margin:0;
                     }
                     .tabs {
                         white-space:nowrap;
@@ -856,12 +854,12 @@ br.pc-only {
                 }
             }
             &.tab-fix {
-                position:fixed;
-                top:0;
-                left:0;
-                right:0;
-                z-index:10;
+                padding-bottom:28px;
                 box-shadow:0 2px 20px 0 rgba(0, 0, 0, 0.2);
+                @include mobile {
+                    padding:0;
+                    box-shadow:0 1px 10px 0 rgba(0, 0, 0, 0.2);
+                }
                 .inner {
                     @include mobile {
                         &:last-child {
@@ -917,10 +915,10 @@ br.pc-only {
         .care-top-wrap {
             @include clearfix;
             max-width:1380px + 80px;
-            margin:0 auto 16px;
+            margin:28px auto 16px;
             padding:0 40px;
             @include mobile {
-                margin-top:8px;
+                margin-top:10px;
                 padding:0 16px;
             }
             .txt-wrap {
@@ -978,6 +976,7 @@ br.pc-only {
     }
 
     .default-bottom-wrap {
+        display:none;
         position:fixed;
         left:0;
         right:0;
@@ -1014,7 +1013,6 @@ br.pc-only {
     }
 
     .prd-select-wrap {
-        display:none;
         position:fixed;
         left:0;
         right:0;
