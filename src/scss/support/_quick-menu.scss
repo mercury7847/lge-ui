@@ -5,13 +5,6 @@
     z-index:100;
     right:100px;
     bottom:112px;
-    transition:right;
-    &.on {
-        .btn-top {
-            opacity:1;
-            transform:translateX(0);
-        }
-    }
     &-list {
         li {
             position:relative;
@@ -57,9 +50,13 @@
 		border-radius:50%;
         background:url('/lg5-common/images/icons/icon-top.svg') no-repeat;
         background-size:100%;
-        opacity:0;
-        transform:translateX(172px);
+        opacity:1;
+        transform:translateX(0);
         transition:opacity 0.8s ease-out, transform 0.5s ease-out; 
+        &.off {
+            opacity:0;
+            transform:translateX(172px);
+        }
     }
     .btn-chatbot {
         background:url('/lg5-common/images/icons/icon-chatbot.svg') no-repeat;
@@ -116,9 +113,55 @@
             }
         }
     }
+    @include mobile {
+        right:20px;
+        bottom:56px;
+        &-list {
+            li {
+                width:54px;
+                height:54px;
+                margin-bottom:9px;
+                &:last-child {
+                    margin-bottom:0;
+                }
+            }
+        }
+        a, button, .btn-fold {
+            width:54px;
+            height:54px;
+            padding:7px;
+            border-radius:19px;
+            &:not(.btn-fold) {
+                .icon {
+                    width:28px;
+                    height:28px;
+                }
+                .txt {
+                    font-size:11px;
+                    line-height:12px;
+                }
+            }
+        }
+        .btn-top {
+            margin-top:9px;
+        }
+        .btn-fold {
+            .icon {
+                width:54px;
+                height:54px;
+                img {
+                    width:40px;
+                    height:40px;
+                }
+            }
+            .txt {
+                font-size:14px;
+            }
+        }
+    }
     
     .service-menu {
-        &-ul {
+        &-list {
             display:flex;
             flex-direction:column-reverse;
             position:absolute;
@@ -162,9 +205,30 @@
                 }
             }
         }   
+        @include mobile {
+            &-list {
+                > li {
+                    margin-bottom:-54px;
+                }
+                a {
+                    width:234px;
+                }
+            }
+            &.on {
+                ul > li {
+                    margin-bottom:9px;
+                }
+            }
+            .btn-expand {
+                &:before {
+                    top:15px;
+                    left:15px;
+                }
+            }
+        }
     }
-    .service-history {
-        &-ul {
+    .history {
+        &-list {
             display:flex;
             flex-direction:row-reverse;
             position:absolute;
@@ -224,80 +288,8 @@
             border-radius:50%;
             background-color:#ec455a;
         }
-    }
-    
-    
-    
-    @include mobile {
-        right:20px;
-        bottom:56px;
-        &-list {
-            li {
-                width:54px;
-                height:54px;
-                margin-bottom:9px;
-                &:last-child {
-                    margin-bottom:0;
-                }
-            }
-        }
-        a, button, .btn-fold {
-            width:54px;
-            height:54px;
-            padding:7px;
-            border-radius:19px;
-            &:not(.btn-fold) {
-                .icon {
-                    width:28px;
-                    height:28px;
-                }
-                .txt {
-                    font-size:11px;
-                    line-height:12px;
-                }
-            }
-        }
-        .btn-top {
-            margin-top:9px;
-        }
-        .btn-fold {
-            .icon {
-                width:54px;
-                height:54px;
-                img {
-                    width:40px;
-                    height:40px;
-                }
-            }
-            .txt {
-                font-size:14px;
-            }
-        }
-
-        .service-menu {
-            &-ul {
-                > li {
-                    margin-bottom:-54px;
-                }
-                a {
-                    width:234px;
-                }
-            }
-            &.on {
-                ul > li {
-                    margin-bottom:9px;
-                }
-            }
-            .btn-expand {
-                &:before {
-                    top:15px;
-                    left:15px;
-                }
-            }
-        }
-
-        .service-history {
-            &-ul {
+        @include mobile {
+            &-list {
                 width:54px;
                 li {
                     margin:0 -54px 0 0;
