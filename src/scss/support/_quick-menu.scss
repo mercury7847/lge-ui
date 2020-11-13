@@ -1,10 +1,17 @@
 @charset "UTF-8";
 
-.quickmenu {
+.quick-menu {
     position:fixed;
     z-index:100;
     right:100px;
     bottom:112px;
+    transition:right;
+    &.on {
+        .btn-top {
+            opacity:1;
+            transform:translateX(0);
+        }
+    }
     &-list {
         li {
             position:relative;
@@ -49,7 +56,10 @@
         margin-top:12px;
 		border-radius:50%;
         background:url('/lg5-common/images/icons/icon-top.svg') no-repeat;
-		background-size:100%;
+        background-size:100%;
+        opacity:0;
+        transform:translateX(172px);
+        transition:opacity 0.8s ease-out, transform 0.5s ease-out; 
     }
     .btn-chatbot {
         background:url('/lg5-common/images/icons/icon-chatbot.svg') no-repeat;
@@ -125,15 +135,18 @@
         a, button {
             border-radius:54px;
         }
-        button {
+        .btn-expand {
             &:before {
                 content:'';
                 position:absolute;
-                left:50%;
-                top:50%;
+                left:24px;
+                top:24px;
                 width:24px;
                 height:24px;
-                transform:translate(-50%, -50%);
+                transform:rotate(315deg);
+                transition:transform .3s .1s ease-out;
+                background:url(/lg5-common/images/icons/btn-close-24.svg) no-repeat;
+                background-size:100%;
             }
         }
         &.on {
@@ -143,11 +156,9 @@
                     opacity: 1;
                 }
             }
-            button {
-                .icon {
-                    &::before {
-                        transform:rotate(315deg);
-                    }
+            .btn-expand {
+                &::before {
+                    transform:rotate(0);
                 }
             }
         }   
@@ -277,10 +288,10 @@
                     margin-bottom:9px;
                 }
             }
-            button {
+            .btn-expand {
                 &:before {
-                    width:18px;
-                    height:18px;
+                    top:15px;
+                    left:15px;
                 }
             }
         }
