@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.quickmenu {
+.quick-menu {
     position:fixed;
     z-index:100;
     right:100px;
@@ -49,7 +49,14 @@
         margin-top:12px;
 		border-radius:50%;
         background:url('/lg5-common/images/icons/icon-top.svg') no-repeat;
-		background-size:100%;
+        background-size:100%;
+        opacity:1;
+        transform:translateX(0);
+        transition:opacity 0.8s ease-out, transform 0.5s ease-out; 
+        &.off {
+            opacity:0;
+            transform:translateX(172px);
+        }
     }
     .btn-chatbot {
         background:url('/lg5-common/images/icons/icon-chatbot.svg') no-repeat;
@@ -106,9 +113,55 @@
             }
         }
     }
+    @include mobile {
+        right:20px;
+        bottom:56px;
+        &-list {
+            li {
+                width:54px;
+                height:54px;
+                margin-bottom:9px;
+                &:last-child {
+                    margin-bottom:0;
+                }
+            }
+        }
+        a, button, .btn-fold {
+            width:54px;
+            height:54px;
+            padding:7px;
+            border-radius:19px;
+            &:not(.btn-fold) {
+                .icon {
+                    width:28px;
+                    height:28px;
+                }
+                .txt {
+                    font-size:11px;
+                    line-height:12px;
+                }
+            }
+        }
+        .btn-top {
+            margin-top:9px;
+        }
+        .btn-fold {
+            .icon {
+                width:54px;
+                height:54px;
+                img {
+                    width:40px;
+                    height:40px;
+                }
+            }
+            .txt {
+                font-size:14px;
+            }
+        }
+    }
     
     .service-menu {
-        &-ul {
+        &-list {
             display:flex;
             flex-direction:column-reverse;
             position:absolute;
@@ -125,15 +178,18 @@
         a, button {
             border-radius:54px;
         }
-        button {
+        .btn-expand {
             &:before {
                 content:'';
                 position:absolute;
-                left:50%;
-                top:50%;
+                left:24px;
+                top:24px;
                 width:24px;
                 height:24px;
-                transform:translate(-50%, -50%);
+                transform:rotate(315deg);
+                transition:transform .3s .1s ease-out;
+                background:url(/lg5-common/images/icons/btn-close-24.svg) no-repeat;
+                background-size:100%;
             }
         }
         &.on {
@@ -143,17 +199,36 @@
                     opacity: 1;
                 }
             }
-            button {
-                .icon {
-                    &::before {
-                        transform:rotate(315deg);
-                    }
+            .btn-expand {
+                &::before {
+                    transform:rotate(0);
                 }
             }
         }   
+        @include mobile {
+            &-list {
+                > li {
+                    margin-bottom:-54px;
+                }
+                a {
+                    width:234px;
+                }
+            }
+            &.on {
+                ul > li {
+                    margin-bottom:9px;
+                }
+            }
+            .btn-expand {
+                &:before {
+                    top:15px;
+                    left:15px;
+                }
+            }
+        }
     }
-    .service-history {
-        &-ul {
+    .history {
+        &-list {
             display:flex;
             flex-direction:row-reverse;
             position:absolute;
@@ -213,80 +288,8 @@
             border-radius:50%;
             background-color:#ec455a;
         }
-    }
-    
-    
-    
-    @include mobile {
-        right:20px;
-        bottom:56px;
-        &-list {
-            li {
-                width:54px;
-                height:54px;
-                margin-bottom:9px;
-                &:last-child {
-                    margin-bottom:0;
-                }
-            }
-        }
-        a, button, .btn-fold {
-            width:54px;
-            height:54px;
-            padding:7px;
-            border-radius:19px;
-            &:not(.btn-fold) {
-                .icon {
-                    width:28px;
-                    height:28px;
-                }
-                .txt {
-                    font-size:11px;
-                    line-height:12px;
-                }
-            }
-        }
-        .btn-top {
-            margin-top:9px;
-        }
-        .btn-fold {
-            .icon {
-                width:54px;
-                height:54px;
-                img {
-                    width:40px;
-                    height:40px;
-                }
-            }
-            .txt {
-                font-size:14px;
-            }
-        }
-
-        .service-menu {
-            &-ul {
-                > li {
-                    margin-bottom:-54px;
-                }
-                a {
-                    width:234px;
-                }
-            }
-            &.on {
-                ul > li {
-                    margin-bottom:9px;
-                }
-            }
-            button {
-                &:before {
-                    width:18px;
-                    height:18px;
-                }
-            }
-        }
-
-        .service-history {
-            &-ul {
+        @include mobile {
+            &-list {
                 width:54px;
                 li {
                     margin:0 -54px 0 0;

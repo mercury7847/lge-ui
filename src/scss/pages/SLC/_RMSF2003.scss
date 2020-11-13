@@ -250,12 +250,12 @@ br.pc-only {
     background:#fff;
     border-radius:8px;
     box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
-    @media screen and (max-width:1380px) {
+    @media screen and (max-width:1400px) {
         padding:12px 20px 32px;
     }
     @include mobile {
         height:auto;
-        min-height:650px;
+        min-height:auto;
         max-height:inherit;
         padding:12px 36px 32px;
     }
@@ -291,7 +291,9 @@ br.pc-only {
             -ms-line-clamp: 2;
             -webkit-line-clamp: 2;
             @include mobile {
-                max-height:46px;
+                font-size:18px;
+                line-height:26px;
+                max-height:52px;
             }
         }
         .code {
@@ -302,7 +304,8 @@ br.pc-only {
             text-overflow:ellipsis;
             white-space:nowrap;
             @include mobile {
-                margin-top:4px;
+                font-size:14px;
+                line-height:22px;
             }
         }
     }
@@ -410,7 +413,7 @@ br.pc-only {
         }
 
         
-        .price-info {
+        .txt-info {
             margin-top:16px;
             padding:16px;
             background:#f4f4f4;
@@ -449,13 +452,13 @@ br.pc-only {
             left:40px;
             right:40px;
             bottom:32px;
-            @media screen and (max-width:1380px) {
+            @media screen and (max-width:1400px) {
                 left:20px;
                 right:20px;
             }
             @include mobile {
-                left:36px;
-                right:36px;
+                position:static;
+                margin-top:24px;
             }
             .total-price {
                 @include clearfix;
@@ -470,7 +473,8 @@ br.pc-only {
                     }
                     @include mobile {
                         padding:12px 0;
-                        @include font-large-1;
+                        font-size:20px;
+                        line-height:30px;
                     }
                 }
                 .btn {
@@ -485,8 +489,7 @@ br.pc-only {
         height:656px;
         max-height:656px;
         @include mobile {
-            height:648px;
-            min-height:648px;
+            height:auto;
             max-height:inherit;
         }
     }
@@ -504,7 +507,7 @@ br.pc-only {
         .opt-info {
             margin-top:16px;
         }
-        .price-info {
+        .txt-info {
             margin-top:0;
         }
     }
@@ -528,7 +531,7 @@ br.pc-only {
 .care-plan {
     .cont-wrap {
         max-width:100%;
-        padding:0 0 120px;
+        padding:0;
         background:#fff;
         @include mobile {
             border:none;
@@ -705,8 +708,10 @@ br.pc-only {
         }
         &.active {
             .contract-slide {
-                height:65vh;
-                max-height:65vh;
+                @include mobile {
+                    height:65vh;
+                    max-height:65vh;
+                }
                 overflow-y:scroll;
                 .slide-conts {
                     display:block;
@@ -749,10 +754,8 @@ br.pc-only {
                 }
                 .cate-scroll-wrap {
                     position:relative;
-                    margin-bottom:28px;
                     @include mobile {
                         padding:24px 0;
-                        margin:0;
                     }
                     .tabs {
                         white-space:nowrap;
@@ -851,12 +854,12 @@ br.pc-only {
                 }
             }
             &.tab-fix {
-                position:fixed;
-                top:0;
-                left:0;
-                right:0;
-                z-index:10;
+                padding-bottom:28px;
                 box-shadow:0 2px 20px 0 rgba(0, 0, 0, 0.2);
+                @include mobile {
+                    padding:0;
+                    box-shadow:0 1px 10px 0 rgba(0, 0, 0, 0.2);
+                }
                 .inner {
                     @include mobile {
                         &:last-child {
@@ -912,10 +915,10 @@ br.pc-only {
         .care-top-wrap {
             @include clearfix;
             max-width:1380px + 80px;
-            margin:0 auto 16px;
+            margin:28px auto 16px;
             padding:0 40px;
             @include mobile {
-                margin-top:8px;
+                margin-top:10px;
                 padding:0 16px;
             }
             .txt-wrap {
@@ -946,7 +949,7 @@ br.pc-only {
             }
             .inner {
                 @include clearfix;
-                margin:-12px -12px;
+                margin:-12px -12px 0;
                 @include mobile {
                     margin:0;
                 }
@@ -1010,7 +1013,6 @@ br.pc-only {
     }
 
     .prd-select-wrap {
-        display:none;
         position:fixed;
         left:0;
         right:0;

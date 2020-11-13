@@ -565,9 +565,8 @@ CS.MD.quickMenu = function() {
             self.$el = $(el),
             self.el = el;
 
-        var defaults = {};
-
-        self.options = $.extend({}, defaults, opt);
+        // var defaults = {};
+        // self.options = $.extend({}, defaults, opt);
     
         self.$topBtn = self.$el.find('.btn-top');
         self.$menuBtn = self.$el.find('.btn-expand');
@@ -580,18 +579,16 @@ CS.MD.quickMenu = function() {
             var self = this;
 
             self.$menuBtn.on('click', function(e) {
-                e.preventDefault();
-
-                var $item = $(this).closest('li');
+                var $item = $(this).parent();
 
                 if ($item.hasClass('on')) {
                     $item.removeClass('on');
                 } else {
                     $item.addClass('on');
+                    $('.history-list').removeClass('on');
                 }
             });
             self.$topBtn.on('click', function (e) {
-                e.preventDefault();
                 $('html, body').stop().animate({
                     scrollTop: 0
                 }, 400);
@@ -601,13 +598,27 @@ CS.MD.quickMenu = function() {
                 if (self.$el.find('.on').length > 0) {
                     self.$el.find('.on').removeClass('on');
                 }
+
+                if (CS.UI.$win.scrollTop() > 100) {
+                    self.$topBtn.removeClass('off');
+                } else {
+                    self.$topBtn.addClass('off');
+                }
             });
+
+            CS.UI.$doc.on('click', function(e) {
+                if (!$(e.target).closest(self.$el).length) {
+                    self.$el.find('.on').removeClass('on');
+                }
+            });
+
             CS.UI.$win.on('breakpointchange.'+pluginName, function(e, data){
                 if (data.isMobile) {
-                    $('.service-history-btn:first-child').off('click').on('click', function(e) {
-                        if (!$('.service-history-ul').hasClass('on')) {
+                    $('.history-btn:first-child').off('click').on('click', function(e) {
+                        if (!$('.history-list').hasClass('on')) {
                             e.preventDefault();
-                            $('.service-history-ul').addClass('on');
+                            $('.history-list').addClass('on');
+                            self.$menuBtn.parent().removeClass('on');
                         }
                     });
                 }
@@ -620,7 +631,7 @@ CS.MD.quickMenu = function() {
 
 (function($){
     function commonInit(){
-        $('#quickmenu').quickMenu();
+        $('#quickMenu').quickMenu();
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
