@@ -291,7 +291,9 @@ br.pc-only {
             -ms-line-clamp: 2;
             -webkit-line-clamp: 2;
             @include mobile {
-                max-height:46px;
+                font-size:18px;
+                line-height:26px;
+                max-height:52px;
             }
         }
         .code {
@@ -302,7 +304,8 @@ br.pc-only {
             text-overflow:ellipsis;
             white-space:nowrap;
             @include mobile {
-                margin-top:4px;
+                font-size:14px;
+                line-height:22px;
             }
         }
     }
@@ -470,7 +473,8 @@ br.pc-only {
                     }
                     @include mobile {
                         padding:12px 0;
-                        @include font-large-1;
+                        font-size:20px;
+                        line-height:30px;
                     }
                 }
                 .btn {
@@ -528,7 +532,7 @@ br.pc-only {
 .care-plan {
     .cont-wrap {
         max-width:100%;
-        padding:0 0 120px;
+        padding:0;
         background:#fff;
         @include mobile {
             border:none;
