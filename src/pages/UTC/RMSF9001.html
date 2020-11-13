@@ -2,7 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTC/UTC"],
-        pageJS: ["caresolution/requestRental", "caresolution/addressFInd", "caresolution/addressManagement", "caresolution/addressRegist"]
+        pageJS: ["caresolution/requestRental", "caresolution/addressManagement"]
     })
 <body>
     <div class="wrap">
@@ -166,10 +166,12 @@
                                                             </div>
                                                         </div>
                                                         <div class="input-wrap">
-                                                            <input type="text" value="" name="userAdress" data-required="true" placeholder="주소찾기 또는 배송지 목록을 선택해주세요." disabled>
+                                                            <!-- 2020-11-13 name 수정-->
+                                                            <input type="text" value="" name="userAddress" data-required="true" placeholder="주소찾기 또는 배송지 목록을 선택해주세요." disabled>
                                                         </div>
                                                         <div class="input-wrap">
-                                                            <input type="text" value="" name="detailAdress" placeholder="상세주소를 입력해주세요.">
+                                                            <!-- 2020-11-13 name 수정-->
+                                                            <input type="text" value="" name="detailAddress" placeholder="상세주소를 입력해주세요.">
                                                         </div>
                                                     </dd>
                                                 </dl>
@@ -273,11 +275,13 @@
                                                             </div>
                                                         </div>
                                                         <div class="input-wrap">
-                                                            <input type="text" value="" name="userAdress" placeholder="주소찾기 또는 배송지 목록을 선택해주세요." data-required="true" disabled>
+                                                            <!-- 2020-11-13 name 수정-->
+                                                            <input type="text" value="" name="userAddress" placeholder="주소찾기 또는 배송지 목록을 선택해주세요." data-required="true" disabled>
                                                         </div>
                                                         <div class="box type2">
                                                             <div class="input-wrap">
-                                                                <input type="text" value="" name="detailAdress" placeholder="상세주소를 입력해주세요.">
+                                                                <!-- 2020-11-13 name 수정-->
+                                                                <input type="text" value="" name="detailAddress" placeholder="상세주소를 입력해주세요.">
                                                             </div>
                                                             <div class="cell">
                                                                 <button type="button" class="btn installAbledConfirm"><span>설치 가능여부 확인</span></button>

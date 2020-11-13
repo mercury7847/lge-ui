@@ -588,6 +588,7 @@ CS.MD.quickMenu = function() {
                     $item.removeClass('on');
                 } else {
                     $item.addClass('on');
+                    $('.service-history-ul').removeClass('on');
                 }
             });
             self.$topBtn.on('click', function (e) {
@@ -601,13 +602,21 @@ CS.MD.quickMenu = function() {
                 if (self.$el.find('.on').length > 0) {
                     self.$el.find('.on').removeClass('on');
                 }
+
+                if (CS.UI.$win.scrollTop() > 100) {
+                    $('.quick-menu').addClass('on');
+                } else {
+                    $('.quick-menu').removeClass('on');
+                }
             });
+
             CS.UI.$win.on('breakpointchange.'+pluginName, function(e, data){
                 if (data.isMobile) {
                     $('.service-history-btn:first-child').off('click').on('click', function(e) {
                         if (!$('.service-history-ul').hasClass('on')) {
                             e.preventDefault();
                             $('.service-history-ul').addClass('on');
+                            self.$menuBtn.parent().removeClass('on');
                         }
                     });
                 }
@@ -620,7 +629,7 @@ CS.MD.quickMenu = function() {
 
 (function($){
     function commonInit(){
-        $('#quickmenu').quickMenu();
+        $('#quickMenu').quickMenu();
     }
 
     document.addEventListener('DOMContentLoaded', commonInit);
