@@ -31,16 +31,17 @@
         '       {{#if moduleType == "module-type4"}}'+
         '           <p class="code-txt">{{modelDescription}}</p>'+
         '       {{/if}}'+
+
         '       {{#if purchaseInfo != null && purchaseInfo != undefined && purchaseInfo != ""}}'+
         '           <div class="txt-info">'+
         '           {{#each item in purchaseInfo}}'+
         '               <dl>'+
-        '                   <dt>{{purchaseInfo.title}}</dt>'+
-        '                   <dd>{{purchaseInfo.date}}</dd>'+
+        '                   <dt>{{item.title}}</dt>'+
+        '                   <dd>{{item.date}}</dd>'+
         '               </dl>'+
         '           {{/each}}'+
-        '       {{/if}}'+
         '           </div>'+
+        '       {{/if}}'+
         '           <div class="opt-info">'+
         '           {{#if siblingColors.length > 0}}'+
         '               <dl {{#if siblingColors.length == 1}}class="disabled"{{/if}}>'+
@@ -100,98 +101,102 @@
         '           {{/if}}'+
         '           </div>'+
         '       {{#if priceInfo != null && priceInfo != undefined && priceInfo != ""}}'+
-        '           <div class="txt-info">'+
+        '           <div class="txt-info price-info">'+
         '           {{#each item in priceInfo}}'+
         '               <dl>'+
-        '                   <dt>{{priceInfo.title}}</dt>'+
-        '                   <dd>{{priceInfo.price}}</dd>'+
+        '                   <dt>{{item.title}}</dt>'+
+        '                   <dd>{{item.price}}원</dd>'+
         '               </dl>'+
         '           {{/each}}'+
+        '           </div>'+
         '       {{/if}}'+
         '           <div class="price-wrap">'+
         '               <div class="total-price">'+
         '                   <p class="price">월 {{monthlyPrice}}원</p>'+
-        '                   <button type="button" class="btn border"><span>담기</span></button>'+
+        '                   <button type="button" class="btn border putItemBtn"><span>담기</span></button>'+
         '               </div>'+
         '           </div>'+
         '       </div>'+
         '   </div>'+
         '</li>';
 
+        //<!-- 결합된 상품이면 comb-type 클래스 추가 -->
     var _putItemTemplate = 
-    '<div class="slide-wrap ui_carousel_slider3">'+
-    '   <div class="slide-content ui_carousel_list">'+
-    '       <div class="slide-track ui_carousel_track">'+
-    '       {{#each item in putitem_list}}'+
-    '           <div class="slide-conts ui_carousel_slide">'+
-    '               <div class="conts-wrap">'+
-    '                   <div class="prd-care-horizon">'+
-    '                       <div class="img-wrap">'+
-    '                           <img src="{{item.itemData.modelImg}}" alt="{{item.itemData.userFriendlyName}}">'+
-    '                       </div>'+
-    '                       <div class="txt-wrap">'+
-    '                           <div class="flag-wrap">'+
-    '                               <span class="flag"><span class="blind">서비스명</span>{{item.itemData.serviceName}}</span>'+
-    '                           </div>'+
-    '                           <div class="tit-info">'+
-    '                               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.itemData.userFriendlyName}}</p>'+
-    '                               <p class="code"><span class="blind">제품 코드</span>{{item.itemData.modelName}}</p>'+
-    '                           </div>'+
-    '                           <p class="etc">월 {{item.itemData.monthlyPrice}}</p>'+
-    '                       </div>'+            
-    '                       <div class="del-item">'+
-    '                           <button type="button" class="btn-del" tabindex="" data-put-id="{{item.putID}}"><span class="blind">제품 삭제</span></button>'+
-    '                       </div>'+            
-    '                   </div>'+
-    '               </div>'+
-    '           </div>'+
-    '       {{/each}}'+
-    '       </div>'+
-    '   </div>'+
-    '   <div class="slide-controls">'+
-    '       <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>'+
-    '       <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>'+
-    '   </div>'+
-    '</div>';
+        '<div class="slide-wrap ui_carousel_slider3">'+
+        '   <div class="slide-content ui_carousel_list">'+
+        '       <div class="slide-track ui_carousel_track">'+
+        '       {{#each item in putitem_list}}'+
+        '           <li class="slide-conts ui_carousel_slide">'+
+        '               <div class="conts-wrap">'+
+        '                   <div class="prd-care-horizon ui_flexible_box {{item.itemData.serviceName}}">'+
+        '                       <div class="ui_flexible_cont">'+
+        '                           <div class="img-wrap">'+
+        '                               <img src="{{item.itemData.modelImg}}" alt="{{item.itemData.userFriendlyName}}">'+
+        '                           </div>'+
+        '                           <div class="txt-wrap">'+
+        '                             <div class="flag-wrap">'+
+        '                                   <span class="flag"><span class="blind">서비스명</span>{{item.itemData.serviceName}}</span>'+
+        '                               </div>'+
+        '                               <div class="tit-info">'+
+        '                                   <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.itemData.userFriendlyName}}</p>'+
+        '                                   <p class="code"><span class="blind">제품 코드</span>{{item.itemData.modelName}}</p>'+
+        '                               </div>'+
+        '                               <p class="etc">월 {{item.itemData.monthlyPrice}}원<span class="comb-txt"></span></p>'+
+        '                           </div>'+  
+        '                           <div class="del-item">'+
+        '                               <button type="button" class="btn-del" tabindex="" data-put-id="{{item.putID}}"><span class="blind">제품 삭제</span></button>'+
+        '                           </div>'+  
+        '                       </div>'+
+        '                   </div>'+
+        '               </div>'+
+        '           </li>'+
+        '       {{/each}}'+
+        '       </div>'+
+        '   </div>'+
+        '   <div class="slide-controls">'+
+        '       <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>'+
+        '       <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>'+
+        '   </div>'+
+        '</div>';
 
     var _estimateProdTemplate =    
-    '   <div class="slide-wrap estimate_prod_slide">'+
-    '       <div class="slide-content ui_carousel_list">'+
-    '           <div class="slide-track ui_carousel_track ui_flexible_height">'+
-    '           {{#each item in putitem_list}}'+
-    '               <div class="slide-conts ui_carousel_slide">'+
-    '                   <div class="conts-wrap">'+
-    '                       <div class="item ui_flexible_box">'+
-    '                           <div class="ui_flexible_cont">'+
-    '                               <div class="img-wrap">'+
-    '                                   <img src="{{item.itemData.modelImg}}" alt="{{item.itemData.userFriendlyName}}">'+
-    '                               </div>'+
-    '                               <div class="txt-wrap">'+
-    '                                   <div class="flag-wrap">'+
-    '                                       <span class="flag"><span class="blind">서비스명</span>{{item.itemData.serviceName}}</span>'+
-    '                                   </div>'+
-    '                                   <div class="tit-info">'+
-    '                                       <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.itemData.userFriendlyName}}</p>'+
-    '                                       <p class="price">월 {{item.itemData.monthlyPrice}}</p>'+
-    '                                       <div class="etc-info">'+
-    '                                           <span class="txt"><span class="blind">제품 코드</span>{{item.itemData.modelName}}</span>'+
-    '                                           <span class="txt"><span class="blind">색상</span>{{item.itemData.selectColorName}}</span>'+
-    '                                       </div>'+
-    '                                   </div>'+
-    '                                   <div class="etc-info">'+
-    '                                   {{#each etc in item.itemData.detailProdInfo}}'+
-    '                                       <span class="txt">{{item.itemData.detailProdInfo[etc]}}</span>'+
-    '                                   {{/each}}'+
-    '                                   </div>'+
-    '                               </div>'+
-    '                           </div>'+
-    '                       </div>'+
-    '                   </div>'+
-    '               </div>'+
-    '           {{/each}}'+
-    '           </div>'+
-    '       </div>'+
-    '   </div>';
+        '   <div class="slide-wrap estimate_prod_slide">'+
+        '       <div class="slide-content ui_carousel_list">'+
+        '           <div class="slide-track ui_carousel_track ui_flexible_height">'+
+        '           {{#each item in putitem_list}}'+
+        '               <div class="slide-conts ui_carousel_slide">'+
+        '                   <div class="conts-wrap">'+
+        '                       <div class="item ui_flexible_box">'+
+        '                           <div class="ui_flexible_cont">'+
+        '                               <div class="img-wrap">'+
+        '                                   <img src="{{item.itemData.modelImg}}" alt="{{item.itemData.userFriendlyName}}">'+
+        '                               </div>'+
+        '                               <div class="txt-wrap">'+
+        '                                   <div class="flag-wrap">'+
+        '                                       <span class="flag"><span class="blind">서비스명</span>{{item.itemData.serviceName}}</span>'+
+        '                                   </div>'+
+        '                                   <div class="tit-info">'+
+        '                                       <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.itemData.userFriendlyName}}</p>'+
+        '                                       <p class="price">월 {{item.itemData.monthlyPrice}}</p>'+
+        '                                       <div class="etc-info">'+
+        '                                           <span class="txt"><span class="blind">제품 코드</span>{{item.itemData.modelName}}</span>'+
+        '                                           <span class="txt"><span class="blind">색상</span>{{item.itemData.selectColorName}}</span>'+
+        '                                       </div>'+
+        '                                   </div>'+
+        '                                   <div class="etc-info">'+
+        '                                   {{#each etc in item.itemData.detailProdInfo}}'+
+        '                                       <span class="txt">{{item.itemData.detailProdInfo[etc]}}</span>'+
+        '                                   {{/each}}'+
+        '                                   </div>'+
+        '                               </div>'+
+        '                           </div>'+
+        '                       </div>'+
+        '                   </div>'+
+        '               </div>'+
+        '           {{/each}}'+
+        '           </div>'+
+        '       </div>'+
+        '   </div>';
 
     var _showItemLength = 8;
 
@@ -229,7 +234,7 @@
         $caresolutionContainer = $('.care-solution-wrap');
         $fixedTab = $('.fixed-tab-wrap');
         $typeTab = $fixedTab.find('.tabs-wrap.btn-type');
-        $categoryTab = $fixedTab.find('.tabs-wrap.border-type');
+        $categoryTab = $fixedTab.find('.cate-scroll-wrap');
         $sortSelector = $('.sort-select-wrap select');
         $prodListContainer = $('.prd-list-wrap');
         $putItemContainer = $('.prd-select-wrap');
@@ -272,7 +277,7 @@
     }
 
     function eventBind(){
-        $categoryTab.on('click', '> .tabs > li > a', function(e){
+        $categoryTab.on('click', '.tabs > li > a', function(e){
             e.preventDefault();
 
             selectedTab(this);
@@ -287,7 +292,7 @@
             loadCareProdList(true);
         });
 
-        $prodListContainer.on('click', '> ul.inner > li.item .prd-add .btn-add', function(e){
+        $prodListContainer.on('click', '.putItemBtn', function(e){
             e.preventDefault();
             
             addPutItem(this);
@@ -310,6 +315,18 @@
             e.preventDefault();
 
             openEstimatePopUp();
+        });
+
+        $('.ui_active_toggle').on('click', function(e){
+            e.preventDefault();
+
+            var togglewrap = $(this).closest('.ui_active_toggle_wrap');
+
+            togglewrap.toggleClass('active');
+
+            if(togglewrap.hasClass('active')){
+                lgkorUI._resetFlexibleBox();
+            };
         });
 
         $(window).on("changeStorageData", function(){
@@ -343,7 +360,7 @@
 
             if(!_isStickyApply){
                 _isStickyApply = true;
-                $fixedTab.vcSticky({stickyContainer: ".care-solution-wrap"});
+                $fixedTab.vcSticky({stickyContainer: ".care-solution-wrap", stickyClass:"tab-fix"});
             }
 
             loadCareProdList(false);
@@ -416,6 +433,7 @@
             if(anim) $(addItem).css({y:200, opacity:0}).transition({y:0, opacity:1}, 450, "easeOutQuart");
         }
 
+        $('.price-info dl:first-child').not('.default').addClass('default');
 
         $('.ui_selectbox').vcSelectbox().on('selectboxopen', function(e, sbox){
             var dl = $(sbox).closest('dl');
@@ -529,14 +547,14 @@
 
         $putItemContainer.stop().transition({y:0}, 550, "easeInOutCubic");
         $putItemContainer.find('.tit-wrap').stop().transition({'padding-bottom': 16}, 550, 'easeInOutCubic');
+
+        var height = $('.default-bottom-wrap').outerHeight(true);
+        $('.default-bottom-wrap').stop().transition({y:height}, 450, "easeInOutCubic", function(){
+            $('.default-bottom-wrap').hide();
+        });
     }
 
     function closePutItemBox(){
-        putItemStatus("close");
-
-        var height = $putItemContainer.outerHeight(true) - $putItemContainer.find('.tit-wrap').outerHeight(true);
-        $putItemContainer.stop().transition({y:height}, 350, "easeInOutCubic");
-        $putItemContainer.find('.tit-wrap').stop().transition({'padding-bottom': 32}, 550, 'easeInOutCubic');
     }
 
     function hidePutItemBox(){
@@ -546,6 +564,9 @@
         $putItemContainer.stop().transition({y:height}, 350, "easeInOutCubic", function(){
            $putItemContainer.css({display:'none', y:0});
         });
+
+        height = $('.default-bottom-wrap').outerHeight(true);
+        $('.default-bottom-wrap').stop().show().transition({y:0}, 450, "easeInOutCubic");
     }
 
     function putItemToggleStatus(){
