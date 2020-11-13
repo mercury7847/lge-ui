@@ -82,6 +82,12 @@
                 }
             }
 
+            .slide-wrap {
+                .indi-wrap {
+                    display: none;
+                }
+            }
+
             @include pc {
                 .slide-controls {
                     display: none;
