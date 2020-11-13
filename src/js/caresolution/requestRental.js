@@ -508,6 +508,7 @@
     //우편번호 찾기 연동...
     function getPostCode(item){
         addressFinder.open(function(data){
+            /*
             // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
             var roadAddr = data.roadAddress; // 도로명 주소 변수
@@ -526,8 +527,9 @@
             if(extraRoadAddr !== ''){
                 extraRoadAddr = ' (' + extraRoadAddr + ')';
             }
+            */
             item.find('input[name=zipCode]').val(data.zonecode);
-            item.find('input[name=userAdress]').val(roadAddr);
+            item.find('input[name=userAdress]').val(data.roadAddress);
             item.find('input[name=detailAdress]').val('');
         });
 
