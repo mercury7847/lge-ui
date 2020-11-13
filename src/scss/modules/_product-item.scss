@@ -458,6 +458,20 @@
     .item-banner {
         .item {
             padding: 0;
+            .flag-wrap {
+                position: absolute;
+                top: 16px ;
+                left: 16px;
+                z-index: 1;
+                .flag {
+                    padding: 5px 10px;
+                    border-radius: 11px;
+                    background-color: $color-bg-wt;
+                    font-size: $font-x-small;
+                    line-height: 1;
+                    color: $color-default;
+                }
+            }
             .product-image {
                 overflow: hidden;
                 height: 100%;
@@ -485,7 +499,7 @@
                 right: 0;
                 left: 0;
                 width: 100%;
-                padding: 48px 48px;
+                padding: 64px 48px;
                 text-align: center;
 
                 .banner-info {
@@ -566,7 +580,7 @@
                     }
                 }
                 .banner-contents {
-                    padding: 36px 54px;
+                    padding: 64px 54px;
                 }
             }
         }
