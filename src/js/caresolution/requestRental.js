@@ -199,6 +199,12 @@
             getPostCode($(this).closest('.conts'));
         });
 
+        $('.openDelivery').on('click', function(e){
+            e.preventDefault();
+
+            openDeliveryPop($(this).closest('.conts'))
+        });
+
         step2Block.on('change', 'input[name=installInpuType]', function(e){
             changeInstallInputType($(this).val());
         }).on('change', 'input[name=preVisitRequest]', function(e){
@@ -495,6 +501,7 @@
         }
     }
 
+    //우편번호 찾기 연동...
     function getPostCode(item){
         if(isPostCode){
             new daum.Postcode({
@@ -523,6 +530,15 @@
                 }
             }).open();
         }
+    }
+
+    //배송지 목록 팝업 오픈...
+    function openDeliveryPop(item){
+        deliveryMnger.open(function(data){
+            item.find('input[name=zipCode]').val(data.zipCode);
+            item.find('input[name=userAdress]').val(data.userAddress);
+            item.find('input[name=detailAdress]').val(data.detailAddress);
+        });
     }
 
     function openPrivacyPopup(){
