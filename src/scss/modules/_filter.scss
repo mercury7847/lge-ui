@@ -482,7 +482,10 @@
 }
 
 .btn-filter {
-    float: left;
+    //float: left;
+    position: absolute;
+    top: 0;
+    left: 20px;
     .ico-filter {
         display: inline-block;
         width: 32px;
