@@ -18,6 +18,10 @@
         @include font-medium;
         font-weight:700;
         vertical-align:middle;
+        @include mobile {
+            font-size:18px;
+            line-height:26px;
+        }
     }
     .leng {
         margin-left:8px;
@@ -93,7 +97,9 @@
                     vertical-align:top;
                     @include mobile {
                         width:100%;
-                        max-height:44px;
+                        font-size:16px;
+                        line-height:24px;
+                        max-height:48px;
                     }
                 }
                 .etc-info {
@@ -113,6 +119,10 @@
                 .price {
                     @include font-large;
                     font-weight:700;
+                    @include mobile {
+                        font-size:18px;
+                        line-height:26px;
+                    }
                     &.sale {
                         color:#767676;
                         @include font-small;
@@ -179,6 +189,10 @@
             vertical-align:middle;
             @include font-small;
             font-weight:500;
+            @include mobile {
+                font-size:14px;
+                line-height:22px;
+            }
         }
         dt {
             color:#767676;
@@ -202,6 +216,10 @@
             dd {
                 @include font-large-2;
                 font-weight:700;
+                @include mobile {
+                    font-size:24px;
+                    line-height:32px;
+                }
             }
         }
     }
@@ -229,6 +247,11 @@
         color:#EC455A;
         @include font-small;
         font-weight:500;
+        @include mobile {
+            margin-top:6px;
+            font-size:14px;
+            line-height:22px;
+        }
         &:before {
             content:'';
             display:inline-block;
