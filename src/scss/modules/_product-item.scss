@@ -461,7 +461,7 @@
             .flag-wrap {
                 position: absolute;
                 top: 16px ;
-                left: 16px;
+                right: 16px;
                 z-index: 1;
                 .flag {
                     padding: 5px 10px;
@@ -547,7 +547,7 @@
                     flex-wrap: wrap;
                     flex-direction: row;
                     .product-image {
-                        @include calc(height, 100%, 176px);
+                        @include calc(height, 100%, 208px);
                         border-radius: 8px 8px 0 0;
                     }
                     &.result-item {
