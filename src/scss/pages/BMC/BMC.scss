@@ -26,8 +26,6 @@
 }
 
 .contents.event {
-    // LIST 
-    @import "MKT4001";
 
     // VIEW
     @import "MKT4002";
@@ -53,6 +51,11 @@
 
 .popup-wrap.event-popup {
     // 당첨자 발표
-    @import "MKT4004";    
+    @import "MKT4007";    
+}
+.win-popup-wrap {
+    // 당첨자 발표
+    @import "MKT4007"; 
+    
 }
 

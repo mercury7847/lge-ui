@@ -75,14 +75,11 @@
                     .tit {
                         height:60px;
                         color:#222;
-                        font-size:20px;
-                        line-height:30px;
+                        @include font-large-1;
                         font-weight:700;
                         @include textClipClamp(2);
                         @include mobile {
                             height:36px;
-                            font-size:14px;
-                            line-height:18px;
                         }
                         em {
                             color: #ec455a;
@@ -246,21 +243,98 @@
     }
 
     &.event-type {
-        max-width:1284px;
-        margin:0 auto;
         overflow:hidden;
-        .lists {
-            .list-inner {
-                .info {
-                    .tit:first-child {
-                        margin-top:8px;
-                        @include mobile {
+        @include mobile {
+            overflow:initial;
+        }
+        .box-list-inner {
+            margin-top:-32px;
+            @include mobile {
+                margin-top:0;
+            }
+            .lists {
+                margin-top:32px;
+                @include mobile {
+                    margin-top:12px;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                }
+                .list-inner {
+                    .thumb  {
+                        position:relative;
+                        width:100%;
+                        height:75%;
+                        border-radius:8px;
+                        > .flag-wrap {
+                            top:16px;
+                            left:16px;
+                        }
+                        .event-end {
+                            position:absolute;
+                            top:0;
+                            right:0;
+                            bottom:0;
+                            left:0;
+                            background:rgba(#000, .5);
+                            z-index:10;
+                            em {
+                                position:absolute;
+                                top:50%;
+                                left:0;
+                                right:0;
+                                transform:translateY(-50%);
+                                color:#fff;
+                                @include font-large-3;
+                                text-align:center;
+                                font-weight:700;
+                            }
+                        }
+                    }
+                    .info {
+                        padding:0;
+                        padding-top:16px;
+                        .flag-wrap {
+                            margin-bottom:2px;
+                        }
+                        .tit {
+                            height:auto;
+                            max-height:60px;
+                            @include mobile {
+                                max-height:48px;
+                            }
+                        }
+                        .tit:first-child {
                             margin-top:0;
                         }
                     }
-                }
-                .date {
-                    padding-right:124px;
+                    .date {
+                        margin-top:8px;
+                        padding-right:100px;
+                        color:#767676;
+                        @include font-small;
+                        font-weight:500;
+                    }
+                    .btn-link {
+                        position:absolute;
+                        right:0;
+                        bottom:0;
+                    }
+                    @include mobile {
+                        border-radius:8px;
+                        overflow:hidden;
+                        box-shadow:2px 4px 16px 0 rgba(#000, .14);
+                        .info {
+                            padding:16px 16px 24px;
+                        }
+                        .date {
+                            height:21px;
+                        }
+                        .btn-link {
+                            right:16px;
+                            bottom:24px;
+                        }
+                    }
                 }
             }
         }
