@@ -230,31 +230,31 @@
                 padding-top: 36px;
             }
             .read-more-area {
-                padding-top: 40px;
+                margin-top: 20px;
                 text-align: center;
                 .read-more {
+                    padding: 6px 16px;
+                    border: 1px solid $color-default;
+                    border-radius: 18px;
                     font-weight: 500;
                     @include font-small;
-                    &:after {
-                        display: block;
-                        width: 100%;
-                        height: 32px;
-                        margin-top: 6px;
-                        background: url("/lg5-common/images/icons/btn-arr2-32x32.svg") no-repeat center 0;
+                    &:before {
+                        display: inline-block;
+                        width: 20px;
+                        height: 20px;
+                        margin-right: 4px;
+                        background: url("/lg5-common/images/icons/btn-more-20.svg") no-repeat 0 0;
+                        vertical-align: -4px;
                         content: '';
+                    }
+
+                    em {
+                        @include blind;
                     }
                 }
 
                 @include mobile {
-                    padding-top: 18px;
-                    .read-more {
-                        padding: 10px 0;
-                        font-weight: 500;
-                        @include font-small;
-                        &:after {
-                            display: none;
-                        }
-                    }
+                    margin-top: 18px;
                 }
             }
         }

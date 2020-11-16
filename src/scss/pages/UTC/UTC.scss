@@ -242,6 +242,11 @@
             }
         }
     }
+    .item-amount-info {
+        margin: 12px 0 -12px;
+        font-weight: 700;
+        @include font-small;
+    }
     .item-options2 {
         font-size:0;
         margin-top:16px;
@@ -362,24 +367,34 @@
             }
         }
     }
-    &.disabled .product-payment .amount .total {
-        color:$color-gray-4;
-    }
-    &.disabled.item-disabled {
+    &.disabled {
+        @include pc {
+            padding-bottom: 70px;
+        }
         .flag-wrap.bg-type .flag {
             background-color: transparent;
             color: $color-gray-4;
         }
         .product-info {
-            .item-name {
+            .flag,
+            .item-name,
+            .item-options .sku, .item-options .sibling-option,
+            .item-amount-info,
+            .item-options2 p {
                 color: $color-gray-4;
+            }
+        }
+        .product-payment .amount {
+            .original,
+            .total {
+                color:$color-gray-4;
             }
         }
         .disabled-message {
             @include pc {
                 position: absolute;
-                right: 24px;
-                bottom: 36px;
+                left: 164px;
+                bottom: 38px;
             }
             @include mobile {
                 margin-top: 12px;

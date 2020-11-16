@@ -58,7 +58,34 @@ var CareCartInfo = (function() {
             }
             self.updateItemInfo(data);
             self.updatePaymentInfo(data);
-            self._updateAgreement(data);
+            self.updateAgreement(data);
+        },
+
+        setEmptyData: function() {
+            var self = this;
+            var resetPaymentData = {
+                "paymentInfo": {
+                    "total":{
+                        "count": "0",
+                        "price": "0"
+                    },
+                    "list":[
+                        {
+                            "text": "제품 수",
+                            "price": "0개",
+                            "appendClass": "num"
+                        },
+                        {
+                            "text": "이용요금",
+                            "price": "월 0원",
+                            "appendClass": ""
+                        }
+                    ]
+                }
+            }
+            self.updatePaymentInfo(resetPaymentData);
+            self.updateItemInfo(null);
+            self.updateAgreement(null);
         },
 
         updateItemInfo: function(data) {
@@ -128,12 +155,16 @@ var CareCartInfo = (function() {
             }
         },
 
-        _updateAgreement: function(data) {
+        updateAgreement: function(data) {
             var self = this;
-            var agreementData = data.agreement;
-            var hasCareship = agreementData.hasCareship;
-
-            self.$agreement.attr('data-has-careship',hasCareship);
+            var agreementData = data ? data.agreement : null;
+            console.log(data);
+            if(agreementData && agreementData.hasCareship) {
+                var hasCareship = agreementData.hasCareship;
+                self.$agreement.attr('data-has-careship',hasCareship);
+            } else {
+                self.$agreement.removeAttr('data-has-careship');
+            }
         },
 
         _bindEvents: function() {
@@ -192,10 +223,11 @@ var CareCartInfo = (function() {
         //청약신청하기 버튼 클릭
         _clickSubscriptionButton: function(dm) {
             var self = this;
+            console.log('click');
             var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
             if(!$itemCheck.is(':not(:checked)')) {
                 //동의서 모두 체크
-                console.log(self.$agreement.attr('data-has-careship'));
+                console.log(self.$agreement);
                 if(self.$agreement.attr('data-has-careship')) {
                     //케어쉽 상품이 포함되어있는지 체크
                     $('#careship-subscription-popup').vcModal();
