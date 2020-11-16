@@ -1703,7 +1703,7 @@ $input: (chk, rdo);
         .ui-select-button {
             display:block;
             position:relative;
-            padding:0 32px 0 0;
+            padding:0 28px 0 0;
             @include mobile {
                 padding-right:28px;
             }
@@ -1712,7 +1712,7 @@ $input: (chk, rdo);
                 overflow:hidden;
                 max-width:100%;
                 color:#222;
-                @include font-small;
+                @include font-medium;
                 font-weight:500;
                 text-overflow:ellipsis;
                 white-space:nowrap;
@@ -1742,37 +1742,32 @@ $input: (chk, rdo);
         }
         .ui-selectbox-list {
             position:absolute;
-            top:36px;
-            left:-24px;
+            top:34px;
+            left:50%;
             overflow:hidden;
-            padding:12px 0;
+            padding:4px;
             border-radius:4px;
             background:#fff;
             box-shadow:0 4px 12px 0 rgba(0, 0, 0, .15);
+            transform:translateX(-50%);
             z-index: 100;
-            @include mobile {
-                left:auto;
-                right:0;
-                padding:6px 0;
-            }
             ul {
                 li {
                     a {
                         display:block;
                         overflow:hidden;
-                        padding:16px 48px 16px 24px;
+                        padding:8px 20px;
+                        border-radius:4px;
                         color:#222;
-                        font-size:16px;
-                        line-height:24px;
+                        @include font-medium;
+                        font-weight:500;
                         white-space:nowrap;
                         word-break:break-all;
                         text-overflow:ellipsis;
-                        @include mobile {
-                            padding:9px 28px 9px 24px;
-                        }
+                        text-align:center;
                     }
                     &.on a {
-                        color:#808080;
+                        background:#f4f4f4;
                     }
 
                 }

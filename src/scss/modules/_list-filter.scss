@@ -19,28 +19,8 @@
     }
     .sort-area {
         float: right;
-        @include pc {
-            .sort-select-wrap {
-                .ui-selectbox-wrap {
-                    .ui-selectbox-list {
-                        right: 0;
-                        left: auto;
-                    }
-                }
-            }
-        }
         &.left {
             float:left;
-            @include pc {
-                .sort-select-wrap {
-                    .ui-selectbox-wrap {
-                        .ui-selectbox-list {
-                            left:-24px;
-                            right:auto;
-                        }
-                    }
-                }
-            }
         }
         .sort-list {
             font-size:0;
