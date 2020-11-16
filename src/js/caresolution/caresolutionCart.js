@@ -228,6 +228,7 @@
                     }
                     careCartInfo.updatePaymentInfo(resetPaymentData);
                     careCartInfo.updateItemInfo(null);
+                    careCartInfo.updateAgreement(null);
                 }
             },
 

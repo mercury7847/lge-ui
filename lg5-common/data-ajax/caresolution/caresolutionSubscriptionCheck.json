@@ -2,7 +2,10 @@
     "status": "success",
     "message": null,
     "data": {
-        "title":"케어솔루션은 정수기 제품의 경우 최대 3대, 그 외 제품의 경우 최대 2대로 제한되며 총 7개를 초과하여 선택하실 수 없습니다.",
-        "desc":null
+        "alert":{
+            "title":"케어솔루션은 정수기 제품의 경우 최대 3대, 그 외 제품의 경우 최대 2대로 제한되며 총 7개를 초과하여 선택하실 수 없습니다.",
+            "desc":null
+        },
+        "url":"http://www.google.com"
     }
 }
