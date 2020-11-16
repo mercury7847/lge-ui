@@ -5,18 +5,17 @@
     &-heading {
         max-width:1460px;
         margin:0 auto;
-        padding:56px 40px 36px;
+        padding:48px 40px 0;
         text-align:center;
         @include mobile {
-            padding:56px 20px 40px;
+            padding:32px 16px 0;
         }
     }
     .heading {
         &-title {
-            font-size:30px;
+            font-size:28px;
             font-weight:700;
-            color:#111;
-            line-height:1.2;
+            line-height:38px;
         }
         &-desc {
             margin-top:20px;
