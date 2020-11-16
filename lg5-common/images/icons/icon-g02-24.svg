@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon-g02-24</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic_pdp_findshop_24_PC">
-            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
-            <path d="M18.806926,8 L21,13.0331518 L21,15 L20,15 L20,19 C20,19.5522847 19.5522847,20 19,20 L18,20 L18,15 L14,15 L14,20 L6,20 C5.44771525,20 5,19.5522847 5,19 L5,15 L4,15 L4,13.0331518 L6.09021852,8 L18.806926,8 Z M12,15 L7,15 L7,17.999 L12,18 L12,15 Z M18,5 C18.5522847,5 19,5.44771525 19,6 L19,7 L6,7 L6,6 C6,5.44771525 6.44771525,5 7,5 L18,5 Z" id="Combined-Shape" fill="#767676"></path>
+    <title>ic_pdp_findshop_24_PC</title>
+    <g id="디자인" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="MKT4002_이벤트상세-(가이드)" transform="translate(-1177.000000, -2496.000000)">
+            <g id="02-Contents" transform="translate(270.000000, 528.000000)">
+                <g id="store-btn" transform="translate(0.000000, 1938.000000)">
+                    <g id="Group-4" transform="translate(333.000000, 24.000000)">
+                        <g id="btn" transform="translate(406.000000, 0.000000)">
+                            <g transform="translate(152.000000, 0.000000)" id="ic_pdp_findshop_24_PC">
+                                <g transform="translate(16.000000, 6.000000)">
+                                    <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                                    <path d="M18.806926,8 L21,13.0331518 L21,15 L20,15 L20,19 C20,19.5522847 19.5522847,20 19,20 L18,20 L18,15 L14,15 L14,20 L6,20 C5.44771525,20 5,19.5522847 5,19 L5,15 L4,15 L4,13.0331518 L6.09021852,8 L18.806926,8 Z M12,15 L7,15 L7,17.999 L12,18 L12,15 Z M18,5 C18.5522847,5 19,5.44771525 19,6 L19,7 L6,7 L6,6 C6,5.44771525 6.44771525,5 7,5 L18,5 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
         </g>
     </g>
 </svg>

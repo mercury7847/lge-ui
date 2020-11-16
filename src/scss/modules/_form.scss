@@ -399,6 +399,35 @@
             }
         }
         // input case
+        // : 주소찾기 pc만 다른 케이스
+        @include pc {
+            .address-box {
+                position: relative;
+                display: table;
+                width: 100%;
+                padding-right: 87px;
+                .box {
+                    position: initial;
+                    display: table-cell;
+                    width: 91px;
+                }
+                .input-wrap {
+                    display: table-cell;
+                    padding-left: 8px;
+                    &.zip-code {
+                        padding-left: 0;
+                    }
+                }
+                .cell {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    display: block;
+                    width: 79px;
+                    padding-left: 0;
+                }
+            }
+        }
         // : 생년월일+주민번호 뒤 앞자리1 
         .birth-date-box {
             font-size:0;

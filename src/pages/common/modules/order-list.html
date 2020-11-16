@@ -10,40 +10,41 @@
         <span class="number">OR2022330343</span>
     </div>
     }
-    <div class="item-image"><a href="#n"><img src="@@visual" alt=""></a></div>
+    <div class="item-image"><img src="@@visual" alt=""></div>
     <div class="product-info">
         <div class="flag-wrap bg-type">
             @@flags
         </div>
-        <div class="item-name"><a href="#n">@@modelName</a></div>
+        <div class="item-name">@@modelName</div>
         <div class="item-options">
             <div class="sku"><span class="blind">제품번호</span>S5MBR</div>
             <div class="sibling-option"><span class="blind">제품옵션</span>Silver</div>
         </div>
+        @@if(context.amountInfo) {
+        <div class="item-amount-info">청약 후 결제예정금액 1,222,000원</div>
+        }
         <div class="item-options2">
-            <p>옵션 : 총 요금 3,714,000원</p>
-            <p>할인 등록비 10만원</p>
-            <p>의무 사용기간 2020.05.29로 부터 60개월(무상할인 2개월)</p>
-            <p>방문 주기 6개월/1회</p>
+            @@options
         </div>
     </div>
     @@if(context.price) {
     <div class="product-payment">
         <div class="amount">
             <div class="price">
+                @@if(context.originalPrice) {
                 <p class="original">@@originalPrice</p>
+                }
                 <p class="total">@@price</p>
             </div>
-            <!-- @@if(context.tooltip) {
+            @@if(context.tooltip) {
                 <div class="tooltip-wrap">
-                    <span class="tooltip-icon ui_tooltip-target">계약내용 자세히 보기</span>
+                    <span class="tooltip-icon ui_tooltip-target">매월 납부금 계약내용 자세히 보기</span>
                     <span class="tooltip-box">
                         <p>계약내용이 들어갈 자리</p>
                         <button type="button" class="btn-close"><span class="blind">닫기</span></button>
                     </span>
                 </div>
-            } -->
-            <a href="#n" class="btn-info"><span class="blind">매월 납부금 계약내용 자세히 보기</span></a>
+            }
         </div>
         @@if(context.btn) {
         <div class="btn-area">
@@ -61,7 +62,7 @@
     }
     @@if(context.message) {
     <div class="disabled-message">
-        <p class="err-msg">설치 불가능 제품</p>
+        <p class="err-msg">@@message</p>
     </div>
     }
     @@if(context.checkOption) {
