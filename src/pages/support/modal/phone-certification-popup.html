@@ -24,16 +24,17 @@
                     <div class="field-box">
                         <div class="input-wrap">
                             <div class="box">
-                                <input type="tel" name="authPhoneNo" id="authPhoneNo" placeholder="휴대전화 번호를 입력해주세요." data-required="true" data-msg-target=".auth-err-msg" required>
+                                <input type="tel" name="authPhoneNo" id="authPhoneNo" placeholder="휴대전화 번호를 입력해주세요." data-required="true" data-msg-target=".err-msg" required>
                                 <span class="cell">
                                     <button type="button" class="btn-text pink btn-send">인증번호 발송</button>
                                 </span>
                             </div>
+                            <p class="err-msg"></p>
                         </div>
                         <div class="input-wrap">
-                            <input type="number" name="authNo" id="authNo" placeholder="인증번호를 입력해주세요." data-required="true" data-msg-target=".auth-err-msg" disabled required>
+                            <input type="number" name="authNo" id="authNo" placeholder="인증번호를 입력해주세요." data-required="true" data-msg-target=".err-msg" disabled required>
+                            <p class="err-msg"></p>
                         </div>
-                        <p class="err-msg auth-err-msg"></p>
                     </div>
                 </div>
             </div>

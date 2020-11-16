@@ -187,11 +187,9 @@ var AddressRegist = (function() {
             var ajaxUrl = self.$content.attr('data-insert-url');
             if(addressID) {
                 //신규가 아닌 수정
-                console.log('수정!!!');
                 data.addressID = addressID;
                 ajaxUrl = self.$content.attr('data-update-url');
             }
-            console.log(data);
             lgkorUI.requestAjaxDataPost(ajaxUrl, data, function(result){
                 self.completeCallback(data);
                 self.close();
@@ -203,7 +201,6 @@ var AddressRegist = (function() {
             if(data) {
                 self.$content.attr('data-address-id',data.addressID);
                 $.each(data, function(key, value) {
-                    console.log(key,value);
                     var $input = self.$formWrap.find('input[name=' + key + ']');
                     if($input.is(':checkbox')) {
                         $input.prop("checked", value);
@@ -259,7 +256,6 @@ var AddressManagement = (function() {
         self.$selectAddress = self.$footer.find('div.btn-group button');
         //배송지추가 버튼
         self.$addAddress = self.$content.find('div.my-address-wrap button.btn-addr');
-        console.log(self.$addAddress);
 
         self.addressRegist = new AddressRegist(registerTargetQuert, function(data){
             var param = {page:self.$pagination.attr("data-page")};
@@ -334,7 +330,6 @@ var AddressManagement = (function() {
             
             //배송지 추가
             self.$addAddress.on('click', function(e) {
-                console.log('????',self.addressRegist);
                 self.addressRegist.open();
             })
 
@@ -354,7 +349,6 @@ var AddressManagement = (function() {
                 var addressID = $this.parents('li.lists').attr('data-id');
                 if($this.hasClass('edit')) {
                     //아이템 수정
-                    console.log('아이템 수정');
                     var addressData = self._decodeAddressData($this.parents('li.lists').attr('data-address'));
                     self.addressRegist.open(addressData);
                 } else if($this.hasClass('remove')){
