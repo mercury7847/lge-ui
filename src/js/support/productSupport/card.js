@@ -1,14 +1,14 @@
 (function() {
     var cardListTmpl = 
         '<li>' +
-            '<a href="{{url}}">' +
-                '<div class="image">' +
-                    '<img src="{{imgUrl}}" alt="{{title}}">' +
+            '<a href="{{url}}" class="item">' +
+                '<div class="item-image">' +
+                    '<img src="{{imgUrl}}" alt="{{imgAlt}}">' +
                 '</div>' +
-                '<div class="summary">' +
+                '<div class="item-conts">' +
                     '<ul class="infos">' +
                         '<li>{{date}}</li>' +
-                        '<li><span class="view"><span class="blind">조회수</span>{{view}}</span></li>' +
+                        '<li>조회 {{view}}</li>' +
                     '</ul>' +
                 '</div>' +
             '</a>' +
@@ -16,20 +16,20 @@
 
     var productTipListTmpl =
         '<li>' +
-            '<a href="{{url}}">' +
-                '<div class="image">' +
-                    '<img src="{{imgUrl}}" alt="{{title}}">' +
+            '<a href="{{url}}" class="item">' +
+                '<div class="item-image">' +
+                    '<img src="{{imgUrl}}" alt="{{imgAlt}}">' +
                 '</div>' +
-                '<div class="summary">' +
+                '<div class="item-conts">' +
                     '{{# if (typeof flag != "undefined") { #}}' +
                     '<div class="flag-wrap"><span class="flag">{{flag}}</span></div>' +
                     '{{# } #}}' +
+                    '<p class="tit">{{title}}</p>' +
                     '<ul class="infos">' +
                         '<li>{{date}}</li>' +
-                        '<li><span class="view"><span class="blind">조회수</span>{{view}}</span></li>' +
+                        '<li>조회 {{view}}</li>' +
                     '</ul>' +
                 '</div>' +
-                '<p class="tit">{{title}}</p>'
             '</a>' +
         '</li>';
 
@@ -92,7 +92,7 @@
             
                 _self.bindEvent();
             },
-            searchList: function(param) {
+            searchList: function() {
                 var url = CS.UI.$resultWrap.data('ajax');
 
                 lgkorUI.showLoading();

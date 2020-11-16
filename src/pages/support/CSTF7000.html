@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/notice"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'title': '서비스 뉴스'
+            })
+            <div class="contents support notice">
+
+                <div class="search-wrap" data-ajax="/lg5-common/data-ajax/support/cardNewsList.json">
+                    <div class="keyword-search">
+                        <div class="input-wrap">
+                            <input type="text" name="keyword" id="keyword" placeholder="검색어 입력">
+                            <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="contents-inner">
+                    <div class="sorting-wrap">
+                        <div class="total">전체 <em id="count" class="count">122</em>건</div>
+                        <div class="sort-box">
+                            <div class="sort-select-wrap">
+                                <select class="ui_selectbox" title="정렬 기준 선택">
+                                    <option value="최신순" selected>최신순</option>
+                                    <option value="조회순">조회순</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-wrap thumb-type">
+                        <ul class="list">
+                            @@for (var i = 0; i < 10; i++) {
+                            <li>
+                                <a href="#" class="item">
+                                    <div class="item-image">
+                                        <img src="/lg5-common/images/dummy/@img-news.png" alt="">
+                                    </div>
+                                    <div class="item-conts">
+                                        <div class="flag-wrap">
+                                            <span class="flag">NEW</span>
+                                        </div>
+                                        <p class="tit">노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀</p>
+                                        <ul class="infos">
+                                            <li>2020.07.20</li>
+                                            <li>조회 4,129</li>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                    @@include('./common/support/pagination.html', {
+                        count: 5
+                    })
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/notice.min.js"></script>
+</body>
+</html> 
