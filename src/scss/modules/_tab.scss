@@ -105,12 +105,11 @@
                 > a {
                     padding-bottom:2px;
                     border-bottom:2px solid transparent;
-                    font-size:18px;
-                    line-height:28px;
+                    @include font-large-1;
                     font-weight:700;
                     @include mobile {
-                        font-size:14px;
-                        line-height:18px;
+                        padding-bottom:9px;
+                        border-width:3px;
                     }
                 }
                 &.on > a {

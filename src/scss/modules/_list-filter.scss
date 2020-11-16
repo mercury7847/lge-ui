@@ -1,6 +1,9 @@
 .list-sorting {
     @include clearfix;
-    padding: 26px 0 15px;
+    padding: 26px 0 12px;
+    &.no-pt {
+        padding-top:0;
+    }
 
     .check-soldout {
         float: right;
@@ -23,6 +26,28 @@
                         right: 0;
                         left: auto;
                     }
+                }
+            }
+        }
+        &.left {
+            float:left;
+            @include pc {
+                .sort-select-wrap {
+                    .ui-selectbox-wrap {
+                        .ui-selectbox-list {
+                            left:-24px;
+                            right:auto;
+                        }
+                    }
+                }
+            }
+        }
+        .sort-list {
+            font-size:0;
+            .sort-select-wrap {
+                margin-left:24px;
+                &:first-child {
+                    margin-left:0;
                 }
             }
         }

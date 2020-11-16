@@ -135,6 +135,10 @@ br.m {
                     }
                 }
             }
+
+            &:last-child {
+                margin-bottom:0;
+            }
         }
     }
 

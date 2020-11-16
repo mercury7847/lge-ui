@@ -3,12 +3,14 @@
             <li class="lists">
                 <div class="list-inner">
                     <a href="#n">
-                        @@if ( context.stateFlag ) {
-                        <div class="big-flag red type1 right"><span>@@stateFlag</span></div>
-                        }
                         <span class="thumb">
                             @@if (context.img) {
                                 <img src="/lg5-common/images/@@img" alt="" aria-hidden="true">
+                            }
+                            @@if ( context.endEvent ) {
+                            <span class="event-end">
+                                <em>종료된 이벤트</em>
+                            </span>
                             }
                             @@if (context.videoBtn) {
                                 <span class="see-video">영상 보기</span>
@@ -29,12 +31,11 @@
                                 }
                             </span>
                             }
-                            
                         </span>
                         <div class="info">
                             @@if (context.flagInfo1) {
                                 @@include('./common/modules/flags.html', {
-                                    borderType:true,
+                                    barType:true,
                                     flags:[
                                         "<span class='blind'>@@flagInf1</span>@@flagInf1-1",
                                         "<span class='blind'>@@flagInf2</span>@@flagInf2-1"
@@ -43,7 +44,7 @@
                             }
                             @@if(context.flagInfo2) {
                                 @@include('./common/modules/flags.html', {
-                                    borderType:true,
+                                    barType:true,
                                     flags:[
                                         "<span class='blind'>@@flagInf1</span>@@flagInf1-1"
                                     ]
@@ -99,7 +100,7 @@
                     </div>
                     }
                     @@if ( context.btnOnly ) {
-                    <a href="#n" class="btn bd-black btn-small"><span>@@btnOnly</span></a>
+                    <a href="#n" class="btn-link"><span>@@btnOnly</span></a>
                     }
                 </div>
             </li>
