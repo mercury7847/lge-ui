@@ -19,7 +19,7 @@
                 <div class="search-wrap" data-ajax="/lg5-common/data-ajax/support/cardNewsList.json">
                     <div class="keyword-search">
                         <div class="input-wrap">
-                            <input type="text" name="keyword" id="keyword" placeholder="검색어 입력">
+                            <input type="text" name="keyword" placeholder="검색어 입력">
                             <button type="button" class="btn-search"><span class="blind">검색</span></button>
                         </div>
                     </div> 
@@ -30,7 +30,7 @@
                         <div class="total">전체 <em id="count" class="count">122</em>건</div>
                         <div class="sort-box">
                             <div class="sort-select-wrap">
-                                <select class="ui_selectbox" title="정렬 기준 선택">
+                                <select name="orderType" class="ui_selectbox" title="정렬 기준 선택">
                                     <option value="최신순" selected>최신순</option>
                                     <option value="조회순">조회순</option>
                                 </select>
@@ -59,6 +59,9 @@
                             </li>
                             }
                         </ul>
+                    </div>
+                    <div class="no-data">
+                        <p>검색결과가 없습니다.</p>
                     </div>
                     @@include('./common/support/pagination.html', {
                         count: 5
