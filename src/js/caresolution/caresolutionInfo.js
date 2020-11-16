@@ -61,6 +61,33 @@ var CareCartInfo = (function() {
             self.updateAgreement(data);
         },
 
+        setEmptyData: function() {
+            var self = this;
+            var resetPaymentData = {
+                "paymentInfo": {
+                    "total":{
+                        "count": "0",
+                        "price": "0"
+                    },
+                    "list":[
+                        {
+                            "text": "제품 수",
+                            "price": "0개",
+                            "appendClass": "num"
+                        },
+                        {
+                            "text": "이용요금",
+                            "price": "월 0원",
+                            "appendClass": ""
+                        }
+                    ]
+                }
+            }
+            self.updatePaymentInfo(resetPaymentData);
+            self.updateItemInfo(null);
+            self.updateAgreement(null);
+        },
+
         updateItemInfo: function(data) {
             var self = this;
             var selectedItem = data ? (data.selectedItem instanceof Array ? data.selectedItem : []) : [];
