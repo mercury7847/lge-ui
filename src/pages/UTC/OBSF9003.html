@@ -17,14 +17,14 @@
                 <div class="cont-wrap">
                     <div class="tabs-wrap new-type ui_tab">
                         <ul role="tablist" class="tabs">
-                            <li><a href="#tab1">구매 2</a></li>
-                            <li class="on"><a href="#tab2">렌탈 (케어솔루션) 1<em class="blind">선택됨</em></a></li>
+                            <li><a href="#tab1">구매 <span class="count">2</span></a></li>
+                            <li class="on"><a href="#tab2">렌탈 (케어솔루션) <span class="count">1</span><em class="blind">선택됨</em></a></li>
                         </ul>
                     </div>
                     <div role="tabpanel" class="row-wrap" id="tab1">
                         구매
                     </div>
-                    <div role="tabpanel" class="row-wrap" id="tab2" data-wish-url="#" data-cart-url="#" data-remove-url="/lg5-common/data-ajax/caresolution/caresolutionCart.json" data-info-url="/lg5-common/data-ajax/caresolution/caresolutionCart.json">
+                    <div role="tabpanel" class="row-wrap" id="tab2" data-wish-url="#" data-list-url="/lg5-common/data-ajax/caresolution/caresolutionCart.json" data-remove-url="/lg5-common/data-ajax/caresolution/caresolutionCart.json" data-reveal-url="/lg5-common/data-ajax/caresolution/caresolutionCart.json">
                         <div class="col-left">
                             <div class="section">
                                 <div class="cart-wrap">
@@ -90,6 +90,7 @@
                                                     ],
                                                     "visual" : "/lg5-common/images/dummy/@img-product2.jpg",
                                                     "modelName" : "LG 디오스 상냉장하냉동 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음 모델명이 두줄로 들어갈수 있음.",
+                                                    "amountInfo" : true,
                                                     "originalPrice" : "월 36,100원",
                                                     "price" : "월 31,100원",
                                                     "tooltip" : true,
@@ -122,7 +123,8 @@
                                                     "price" : "월 36,100원",
                                                     "tooltip" : true,
                                                     "btn" : true,
-                                                    "btnValue" : "청약신청불가"
+                                                    "btnValue" : "청약신청불가",
+                                                    "message" : true
                                                 }
                                             ])
                                         </ul>

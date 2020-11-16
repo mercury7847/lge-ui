@@ -16,6 +16,16 @@
     }
     .sort-area {
         float: right;
+        @include pc {
+            .sort-select-wrap {
+                .ui-selectbox-wrap {
+                    .ui-selectbox-list {
+                        right: 0;
+                        left: auto;
+                    }
+                }
+            }
+        }
     }
     .list-count {
         float: left;
