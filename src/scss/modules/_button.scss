@@ -266,6 +266,13 @@
                 width:50%;
             }
         }
+        &.round-type {
+            margin-top: 32px;
+            padding: 0 16px;
+            .btn {
+                border-radius: 60px;
+            }
+        }
     }
 }
 
