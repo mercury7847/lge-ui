@@ -31,7 +31,9 @@
     <div class="product-payment">
         <div class="amount">
             <div class="price">
+                @@if(context.originalPrice) {
                 <p class="original">@@originalPrice</p>
+                }
                 <p class="total">@@price</p>
             </div>
             @@if(context.tooltip) {
@@ -60,7 +62,7 @@
     }
     @@if(context.message) {
     <div class="disabled-message">
-        <p class="err-msg">설치 불가능 제품</p>
+        <p class="err-msg">@@message</p>
     </div>
     }
     @@if(context.checkOption) {

@@ -34,11 +34,11 @@
         //    margin-top: -40px;
         //}
     }
-    .order-item {
-        &.disabled .product-payment .amount .total {
-            text-decoration: line-through;
-        }
-    }
+    //.order-item {
+    //    &.disabled .product-payment .amount .total {
+    //        text-decoration: line-through;
+    //    }
+    //}
 
     //.card-benefit {
     //    margin-top: 16px;
@@ -320,7 +320,7 @@
             vertical-align: middle;
         }
         .tooltip-wrap {
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             vertical-align: bottom;
         }
 
