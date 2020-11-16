@@ -415,20 +415,17 @@
 
 /* card list */
 .card-list-wrap {
-    padding:56px;
-    background:#fff;
     .card-list {
         margin:-32px -12px 0;
         font-size:0;
         > li {
             display:inline-block;
-            width:calc(100% / 3);
+            width:25%;
             margin-top:32px;
             vertical-align:top;
             > a {
                 display:block;
                 margin:0 12px;
-                background:#fff;
             }
         }
         .image {
@@ -448,6 +445,20 @@
             }
         }
         .summary {
+            .flag-wrap {
+                .flag {
+                    height:20px;
+                    padding:3px 8px;
+                    line-height:12px;
+                }
+            }
+            .tit {
+                margin-top:4px;
+                font-size:16px;
+                font-weight:700;
+                line-height:24px;
+                @include textEllipsis;
+            }
             .infos {
                 @include clearfix;
                 > li {
@@ -455,7 +466,18 @@
                     font-size:14px;
                     line-height:20px;
                     & + li {
-                        float:right;
+                        position:relative;
+                        margin-left:16px;
+                        padding-left:17px;
+                        &:before {
+                            content:'';
+                            position:absolute;
+                            left:0;
+                            top:6px;
+                            width:1px;
+                            height:12px;
+                            background:#ddd;
+                        }
                     }
                 }
             } 
@@ -463,43 +485,6 @@
                 padding-left:28px;
                 background:left center/24px url('/lg5-common/images/icons/icon-view.svg') no-repeat;
             }    
-        }
-    }
-    &.title-type {
-        .summary {
-            @include clearfix;
-            .flag-wrap {
-                float:left;
-                .flag {
-                    height:20px;
-                    padding:3px 8px;
-                    line-height:12px;
-                }
-            }
-            .infos {
-                float:right;
-                li + li {
-                    position:relative;
-                    margin-left:16px;
-                    padding-left:17px;
-                    &:before {
-                        content:'';
-                        position:absolute;
-                        left:0;
-                        top:6px;
-                        width:1px;
-                        height:12px;
-                        background:#ddd;
-                    }
-                }
-            }
-        }
-        .tit {
-            margin-top:4px;
-            font-size:16px;
-            font-weight:700;
-            line-height:24px;
-            @include textEllipsis;
         }
     }
     @include tablet {
@@ -532,6 +517,13 @@
             }
             .summary {
                 padding:18px 20px;
+                .tit {
+                    margin:10px 20px 18px 20px;
+                    font-size:14px;
+                    line-height:18px;
+                    white-space:normal;
+                    @include textEllipsisClamp(2);
+                }
                 .infos {
                     li {
                         font-size:12px;
@@ -553,18 +545,6 @@
                         }
                     }
                 }
-            }
-        }
-        &.title-type {
-            .summary {
-                padding:18px 20px 0 20px;
-            }
-            .tit {
-                margin:10px 20px 18px 20px;
-                font-size:14px;
-                line-height:18px;
-                white-space:normal;
-                @include textEllipsisClamp(2);
             }
         }
     }
