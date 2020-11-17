@@ -355,6 +355,9 @@ br.pc-only {
                                     right:16px;
                                 }
                             }
+                            .ui-select-text {
+                                @include font-small;
+                            }
                         }
                     }
                 }
@@ -364,7 +367,7 @@ br.pc-only {
                     border-radius:8px 8px 0 0;
                     dt {
                         position:relative;
-                        z-index:101;
+                        z-index:50;
                     }
                     dd {
                         .ui-selectbox-list {
@@ -377,11 +380,13 @@ br.pc-only {
                             border:1px solid #222;
                             border-top:none;
                             border-radius:0 0 8px 8px;
+                            transform:none;
                             ul li {
                                 a {
                                     padding:8px 44px;
                                     @include font-small;
                                     font-weight:500;
+                                    text-align:right;
                                     &:hover {
                                         background:#f4f4f4;
                                     }
