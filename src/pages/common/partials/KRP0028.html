@@ -4,21 +4,21 @@
         .zero-top : 상단여백 없음
         .zero-btm : 하단여백 없음
     -->
-    <section class="component KRP0028">
+    <section class="component KRP0028" data-list-url="">
         @@if ( context.eventPage ) {
         <!-- tabs -->
         <div class="tabs-wrap border-type ui_tab">
             <ul class="tabs">
                 <li class="on"><a href="#n">전체<em class="blind">선택됨</em></a></li>
-                <li><a href="#n">TV/AV</a></li>
-                <li><a href="#n">IT</a></li>
-                <li><a href="#n">주방가전</a></li>
-                <li><a href="#n">생활가전</a></li>
-                <li><a href="#n">에어컨/에어케어</a></li>
-                <li><a href="#n">모바일</a></li>
-                <li><a href="#n">뷰티</a></li>
-                <li><a href="#n">케어솔루션</a></li>
-                <li><a href="#n">비지니스</a></li>
+                <li><a href="#TVAV">TV/AV</a></li>
+                <li><a href="#IT">IT</a></li>
+                <li><a href="#KITCHEN">주방가전</a></li>
+                <li><a href="#LIFE">생활가전</a></li>
+                <li><a href="#AIR">에어컨/에어케어</a></li>
+                <li><a href="#MOBILE">모바일</a></li>
+                <li><a href="#BEAUTY">뷰티</a></li>
+                <li><a href="#CARE">케어솔루션</a></li>
+                <li><a href="#BUSINESS">비지니스</a></li>
             </ul>
         </div>
         <!-- // tabs -->
@@ -32,16 +32,16 @@
                     <div class="sort-list">
                         <div class="sort-select-wrap">
                             <select class="ui_selectbox" id="select2" title="이벤트 상태 선택">
-                                <option>진행중인 이벤트</option>
-                                <option>종료된 이벤트</option>
-                                <option>당첨자 발표</option>
+                                <option value="event_state_val_1">진행중인 이벤트</option>
+                                <option value="event_state_val_2">종료된 이벤트</option>
+                                <option value="event_state_val_3">당첨자 발표</option>
                             </select>
                         </div>
                         <div class="sort-select-wrap">
                             <select class="ui_selectbox" id="select3" title="이벤트 구분 선택">
-                                <option>전체</option>
-                                <option>온라인</option>
-                                <option>매장</option>
+                                <option value="event_section_val_1">전체</option>
+                                <option value="event_section_val_2">온라인</option>
+                                <option value="event_section_val_3">매장</option>
                             </select>
                         </div>
                     </div>
@@ -50,8 +50,8 @@
                     <div class="sort-list">
                         <div class="sort-select-wrap">
                             <select class="ui_selectbox" id="select1" title="정렬 옵션 선택">
-                                <option>최신순</option>
-                                <option>마감순</option>
+                                <option value="order_1">최신순</option>
+                                <option value="order_2">마감순</option>
                             </select>
                         </div>
                     </div>
