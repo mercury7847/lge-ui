@@ -29,6 +29,7 @@
         var careCart = {
             init: function() {
                 //케어솔루션 리스트
+                self.$tabCount = $('.ui_tab ul.tabs li a[href="#tab2"] span');
                 self.$cartContent = $('#tab2');
                 self.$cartWrap = self.$cartContent.find('div.cart-wrap');
                 self.$cartAllCheck = self.$cartContent.find('div.check-option div.chk-wrap input');
@@ -168,6 +169,9 @@
 
                 var isLogin = data.isLogin;
 
+                //탭 카운트
+                self.$tabCount.text(vcui.number.addComma(data.tabCount));
+                
                 //카트 목록
                 var $list_ul = self.$cartList.find('ul.order-list');
                 $list_ul.empty();
