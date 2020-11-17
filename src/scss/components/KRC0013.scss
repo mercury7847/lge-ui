@@ -173,7 +173,7 @@
 				@include grid-col(right,6,12);
 			}
 			.title {
-				max-height: 68px;
+				max-height: 104px;
 				@include textEllipsisClamp(2);
 			}
 		}
@@ -276,11 +276,18 @@
 			display:inherit;
 		}
 		.title {
-			margin-bottom: 40px;
+			margin-bottom: 28px;
+			@include mobile {
+				margin-bottom:18px;
+			}
 			h1, h2, h3, h4, h5, h6 {
 				@include font-family($font-weight-bold);
-				font-size: 24px;
-				line-height: 34px;
+				font-size: 40px;
+				line-height: 52px;
+				@include mobile {
+					font-size:28px;
+					line-height:36px;
+				}
 
 			}
 		}
@@ -293,7 +300,7 @@
 			color: #616161;
 		}
 		.text {
-			margin-bottom: 48px;
+			margin-bottom: 32px;
 			font-size: 16px;
 			line-height: 24px;
 			color: #616161;
@@ -316,6 +323,12 @@
 				line-height: 24px;
 				font-size: 16px;
 			}
+		}
+	}
+	.btn-type-text + .small-title {
+		margin-top:72px;
+		@include mobile {
+			margin-top:56px;
 		}
 	}
 
