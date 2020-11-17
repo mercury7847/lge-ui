@@ -115,29 +115,6 @@
                 "flags": ["캐시백","사은품"]
             })
             }
-            @@if (context.price) {
-            <div class="price-area">
-                @@if (context.originalPrice) {
-                <div class="original">
-                    <em class="blind">판매가격</em>
-                    <span class="price">5,200,000<em>원</em></span>
-                </div>
-                }
-                <div class="total">
-                    <em class="blind">총 판매가격</em>
-                    <span class="price">4,420,000<em>원</em></span>
-                </div>
-            </div>
-            }
-            @@if (context.care) {
-            <div class="price-area">
-                <div class="total-price">
-                    <em class="blind">최대 혜택가격</em>
-                    <span class="price"><em>월</em> 32,900<em>원</em></span>
-                </div>
-                <span class="small-text">(3개월/1회 방문)</span>
-            </div>
-            }
             @@if (context.hashtag) {
             <div class="hashtag-wrap">
                 <span class="hashtag">#여름가전</span>
@@ -154,8 +131,33 @@
         </div>
         }
         @@if (context.singleButton) {
-        <div class="product-button">
-            <a href="#n" class="btn border">@@singleButton</a>
+        <div class="product-bottom">
+            @@if (context.price) {
+            <div class="price-area">
+                @@if (context.originalPrice) {
+                <div class="original">
+                    <em class="blind">판매가격</em>
+                    <span class="price">5,200,000<em>원</em></span>
+                </div>
+                }
+                <div class="total">
+                    <em class="blind">총 판매가격</em>
+                    <span class="price">4,420,000<em>원</em></span>
+                </div>
+            </div>
+            }
+            @@if (context.carePrice) {
+            <div class="price-area">
+                <div class="total-price">
+                    <em class="blind">최대 혜택가격</em>
+                    <span class="price"><em>월</em> 32,900<em>원</em></span>
+                </div>
+                <span class="small-text">(3개월/1회 방문)</span>
+            </div>
+            }
+            <div class="product-button">
+                <a href="#n" class="btn border">@@singleButton</a>
+            </div>
         </div>
         }
         @@if (context.bottom) {
