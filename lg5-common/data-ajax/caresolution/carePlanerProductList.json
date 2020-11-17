@@ -7,69 +7,6 @@
         "productList": [
             {
                 "moduleType": "module-type1",
-                "modelId": "MD07514557",
-                "userFriendlyName": "스팀 건조기ThinQ (듀얼 인버터 히트펌프)",
-                "modelName": "WU900AS",
-                "modelImg": "/lg5-common/images/dummy/@sample-226x226.jpg",
-                "modelDescription": "",
-                "purchaseInfo": "",
-                "selectColorID": "LeatherYellow_code",
-                "siblingColors": [
-                    {
-                        "siblingCode": "LeatherYellow_code",
-                        "siblingValue": "LeatherYellow"
-                    }, 
-                    {
-                        "siblingCode": "PlatinumSilver_code",
-                        "siblingValue": "PlatinumSilver"
-                    }, 
-                    {
-                        "siblingCode": "Opal_Blue_code",
-                        "siblingValue": "Opal_Blue"
-                    }
-                ],
-                "selectFeeID": "납부_code",
-                "siblingFee": [
-                    {
-                        "siblingCode": "납부_code",
-                        "siblingValue": "납부"
-                    },
-                    {
-                        "siblingCode": "미납부_code",
-                        "siblingValue": "미납부"
-                    }
-                ],
-                "selectUserPeriodID": "5년_code",
-                "siblingUsePeriod": [
-                    {
-                        "siblingCode": "3년_code",
-                        "siblingValue": "3년"
-                    },
-                    {
-                        "siblingCode": "4년_code",
-                        "siblingValue": "4년"
-                    },
-                    {
-                        "siblingCode": "5년_code",
-                        "siblingValue": "5년"
-                    }
-                ],
-                "selectVisitCycleID": "3개월_code",
-                "siblingVisitCycle":[
-                    {
-                        "siblingCode": "1개월_code",
-                        "siblingValue": "1개월"
-                    },
-                    {
-                        "siblingCode": "3개월_code",
-                        "siblingValue": "3개월"
-                    }
-                ],
-                "priceInfo": "",
-                "monthlyPrice": "55,900"
-            },
-            {
-                "moduleType": "module-type2",
                 "modelId": "MD07519999",
                 "userFriendlyName": "스팀 건조기ThinQ2",
                 "modelName": "WU900AS2",
@@ -113,7 +50,7 @@
                 "monthlyPrice": "55,900"
             },
             {
-                "moduleType": "module-type3",
+                "moduleType": "module-type1",
                 "modelId": "MD07588888",
                 "userFriendlyName": "스팀 건조기ThinQ3 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS3",
@@ -153,7 +90,7 @@
                 "monthlyPrice": "55,900"
             },
             {
-                "moduleType": "module-type4",
+                "moduleType": "module-type1",
                 "modelId": "MD07577777",
                 "userFriendlyName": "스팀 건조기ThinQ4 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS4",
@@ -432,7 +369,7 @@
                 "monthlyPrice": "55,900"
             },
             {
-                "moduleType": "module-type2",
+                "moduleType": "module-type1",
                 "modelId": "MD0468234600",
                 "userFriendlyName": "스팀 건조기ThinQ4 (듀얼 인버터 히트펌프)",
                 "modelName": "WU900AS4",
