@@ -21,9 +21,11 @@
                 self.$KRP0028 = $('.KRP0028').first();
                 self.$tab = self.$KRP0028.find('div.ui_tab');
                 self.$list = self.$KRP0028.find('ul.box-list-inner');
+                self.$noData = self.$KRP0028.find('div.no-data');
 
                 var _self = this;
                 _self.bindEvents();
+                _self.checkNoData();
             },
 
             bindEvents: function() {
@@ -35,6 +37,25 @@
                 self.$tab.on("tabchange", function(e) {
                     _self.requestData();
                 });
+
+
+                self.$list.on('click', 'div.list-inner a.btn-link', function(e) {
+                    e.preventDefault();
+                    _self.requestEventModal(this);
+                });
+            },
+
+            noData: function(visible) {
+                if(visible) {
+                    self.$noData.show();
+                } else {
+                    self.$noData.hide();
+                }
+            },
+
+            checkNoData: function() {
+                var _self = this;
+                _self.noData(self.$list.find('li').length > 0 ? false : true);
             },
 
             requestData: function() {
@@ -49,22 +70,33 @@
                 });
 
                 lgkorUI.requestAjaxData(ajaxUrl, postData, function(result){
-                    console.log(result);
                     _self.updateList(result.data);
                 });
             },
 
             updateList: function(data) {
-                //var _self = this;
+                var _self = this;
                 self.$list.empty();
                 var arr =  data ? (data instanceof Array ? data : []) : [];
-                console.log(arr)
                 arr.forEach(function(item, index) {
                     item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
                     item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
                     self.$list.append(vcui.template(eventItemList, item));
                 });
-            }
+                _self.checkNoData();
+            },
+
+            requestEventModal: function(dm) {
+                var _self = this;
+                var ajaxUrl = $(dm).attr('href');
+                lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
+                    _self.openModalFromHtml(result);
+                }, null, "html");
+            },
+
+            openModalFromHtml: function(html) {
+                $('#event-modal').html(html).vcModal();
+            },
         };
 
         KRP0028.init();
