@@ -244,3 +244,8 @@
 .color-3 {
     color: #ec455a !important;
 }
+
+// content title
+.h2_tit{
+    @include font-small;
+}

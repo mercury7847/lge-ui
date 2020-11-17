@@ -307,6 +307,11 @@
                 font-weight:400;
             }
         }
+        .agree-desc{
+            @include font-small;
+            letter-spacing:0;
+            white-space:pre-line;
+        }
     }
 }
 

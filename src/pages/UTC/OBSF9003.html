@@ -30,7 +30,7 @@
                                 <div class="cart-wrap">
                                     <div class="check-option">
                                         <div class="chk-wrap">
-                                            <input type="checkbox" id="chk-all" name="chk-all">
+                                            <input type="checkbox" id="chk-all" name="chk-all" class="ui_all_checker">
                                             <label for="chk-all">전체선택</label>
                                         </div>
                                         <div class="btn-area">
@@ -305,7 +305,7 @@
                                         </ul>
                                         <div class="chk-btm">
                                         <span class="chk-wrap">
-                                            <input type="checkbox" id="chk-agree-3" name="chk-agree8">
+                                            <input type="checkbox" id="chk-agree-3" name="chk-agree8" class="ui_all_checker">
                                             <label for="chk-agree-3">모든 계약신청서 확인/동의</label>
                                         </span>
                                         </div>
@@ -352,23 +352,23 @@
             <!-- // cart -->
         </div>
 
-        <article id="request-tip-modal" class="popup-wrap">
-        </article>
-        <!-- 케어십안내 popup -->
-        @@include('./common/popup/OBSF9003_popup3.html', {
-            "popupID":"careship-subscription-popup"
-        })
-        <!-- // 케어십안내 popup -->
-
-        <!-- toast-meassage -->
-        @@include('./common/modules/toast-message.html', {
-            "messageArr": [
-                {"message" : "선택한 제품이 삭제되었습니다."}
-            ]
-        })
-
         @@include('./common/footer.html')
     </div>
+
+    <article id="request-tip-modal" class="popup-wrap">
+    </article>
+    <!-- 케어십안내 popup -->
+    @@include('./common/popup/OBSF9003_popup3.html', {
+        "popupID":"careship-subscription-popup"
+    })
+    <!-- // 케어십안내 popup -->
+
+    <!-- toast-meassage -->
+    @@include('./common/modules/toast-message.html', {
+        "messageArr": [
+            {"message" : "선택한 제품이 삭제되었습니다."}
+        ]
+    })
 
     <!-- 카드 할인 혜택 보기 레이어팝업 -->
     @@include('./UTC/modal/card-benefit.html')

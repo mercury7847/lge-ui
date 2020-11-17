@@ -226,6 +226,19 @@
                 max-width: 100%;
             }
 
+            // 부트스트랩 충돌 이슈로 추가
+            .product-items {
+                .item {
+                    .badge {
+                        padding: 0;
+                    }
+                    .btn {
+                        border-color: $color-default !important;
+                    }
+                }
+            }
+            // 부트스트랩 충돌 이슈로 추가 end
+
             .pagination {
                 padding-top: 36px;
             }
