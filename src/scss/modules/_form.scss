@@ -367,6 +367,11 @@
                 @include mobile {
                     padding-left:6px;
                 }
+                &.text {
+                    padding-right: 20px;
+                    @include font-medium;
+                    vertical-align: middle;
+                }
             }
 
             &.type2 {
@@ -433,6 +438,29 @@
                     display: block;
                     width: 79px;
                     padding-left: 0;
+                }
+            }
+        }
+        // 날짜 선택
+        .date-select-box {
+            .cell {
+                padding-left: 0;
+                &:last-child {
+                    .text {
+                        padding-right: 0;
+                    }
+                }
+            }
+            .text {
+                display: table-cell;
+                padding-left: 8px;
+                padding-right: 20px;
+                @include font-medium;
+                vertical-align: middle;
+            }
+            @include pc {
+                &.col-2 {
+                    @include calc(padding-right,33.33%,-10px);
                 }
             }
         }
@@ -756,6 +784,10 @@
         }
     }
 
+    .link {
+        margin-top: 8px;
+    }
+
     &.block {
         display:block;
     }
@@ -811,6 +843,7 @@
             background:url("/lg5-common/images/icons/icon-cal-selected.svg") center no-repeat;
         }
     }
+
     &.error {
         .total {
             border-color:#f00;
