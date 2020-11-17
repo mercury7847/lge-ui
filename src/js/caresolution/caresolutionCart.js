@@ -44,8 +44,13 @@
                 self.$recommendProduct = $('div.product-recommend-wrap');
 
                 var _self = this;
+                vcui.require(['ui/checkboxAllChecker'], function () {
+                    self.$cartWrap.vcCheckboxAllChecker({checkBoxItemsTargetQuery:self.cartItemCheckQuery});
+                    self.cartAllChecker = self.$cartWrap.vcCheckboxAllChecker('instance');
 
-                _self.bindEvents();
+                    _self.bindEvents();
+                });
+
                 _self.bindPopupEvents();
                 _self.updateCartItemCheck();
                 _self.checkNoData();
@@ -76,7 +81,8 @@
                 var _self = this;
 
                 //전체선택
-                self.$cartAllCheck.on('change',function (e) {
+                /*
+                self.$cartAllCheck.on('change', function (e) {
                     var $cartItemCheck = self.$cartList.find(self.cartItemCheckQuery);
                     $cartItemCheck.prop('checked', self.$cartAllCheck.is(':checked'));
                     $cartItemCheck.each(function (index, item) {
@@ -84,11 +90,18 @@
                     });
                     _self.requestInfo();
                 });
+                */
 
                 //리스트 아이템 선택
+                /*
                 self.$cartList.on('click', self.cartItemCheckQuery, function(e) {
                     _self.updateCartItemCheck();
                     _self.changeBlindLabelTextSiblingCheckedInput(this,'선택함','선택안함');
+                    _self.requestInfo();
+                });
+                */
+               
+                self.cartAllChecker.on('allCheckerChange', function(e, status){
                     _self.requestInfo();
                 });
 
@@ -223,6 +236,7 @@
                     var itemID = $(item).parents('li.order-item').attr('data-item-id');
                     itemList.push(itemID);
                 });
+                console.log(itemList);
                 if(itemList.length > 0) {
                     var ajaxUrl = self.$cartContent.attr('data-list-url');
                     var postData = {'itemID': (itemList.length > 0) ? itemList.join() : null};

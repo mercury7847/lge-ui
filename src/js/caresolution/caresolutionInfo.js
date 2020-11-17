@@ -19,30 +19,9 @@ var CareCartInfo = (function() {
     }
     */
 
-    function CareCartInfo(targetQuery) {
+    function CareCartInfo(targetQuery, itemInfoHiddenCheckTargetQuery) {
         var self = this;
-        self.$cartContent = $(targetQuery);
-
-        //로그인
-        self.$loginInfo = self.$cartContent.find('div.box-link');
-
-        //아이템정보
-        self.$itemInfo = self.$cartContent.find('div.item-info');
-
-        //요금정보
-        self.$paymentInfo = self.$cartContent.find('div.payment-amount-info');
-        self.$paymentButton = self.$paymentInfo.find('div.btn-area button');
-        
-        //신청서확인
-        self.$agreement = self.$cartContent.find('div.agree-box');
-    
-        //계약신청서 확인/동의
-        self.$agreementAllCheck = self.$agreement.find('div.chk-btm span.chk-wrap input');
-        self.agreementItemCheckQuery = "li span.chk-wrap input";
-
-        //청약하기 버튼
-        self.$subscriptionButton = self.$agreement.find('div.btn-area button');
-
+        self._setting(targetQuery, itemInfoHiddenCheckTargetQuery);
         self._bindEvents();
         self._bindPopupEvents();
     }
@@ -166,10 +145,42 @@ var CareCartInfo = (function() {
             }
         },
 
+        _setting: function(targetQuery, itemInfoHiddenCheckTargetQuery) {
+            var self = this;
+            self.$cartContent = $(targetQuery);
+            self.requestInfoY = self.$cartContent.offset().top;
+            self.itemInfoHiddenCheckTarget = $(itemInfoHiddenCheckTargetQuery);
+
+            //로그인
+            self.$loginInfo = self.$cartContent.find('div.box-link');
+
+            //아이템정보
+            self.$itemInfo = self.$cartContent.find('div.item-info');
+
+            //요금정보
+            self.$paymentInfo = self.$cartContent.find('div.payment-amount-info');
+            self.$paymentButton = self.$paymentInfo.find('div.btn-area button');
+            
+            //신청서확인
+            self.$agreement = self.$cartContent.find('div.agree-box');
+            vcui.require(['ui/checkboxAllChecker'], function () {
+                self.$agreement.vcCheckboxAllChecker();
+                self.requestAgreeChecker = self.$agreement.vcCheckboxAllChecker('instance');
+            });
+        
+            //계약신청서 확인/동의
+            self.$agreementAllCheck = self.$agreement.find('div.chk-btm span.chk-wrap input');
+            self.agreementItemCheckQuery = "li span.chk-wrap input";
+
+            //청약하기 버튼
+            self.$subscriptionButton = self.$agreement.find('div.btn-area button');
+        },
+        
         _bindEvents: function() {
             var self = this;
             
             //계약신청서 확인/동의 전체 선택
+            /*
             self.$agreementAllCheck.on('change',function (e) {
                 var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
                 $itemCheck.prop('checked', self.$agreementAllCheck.is(':checked'));
@@ -180,6 +191,7 @@ var CareCartInfo = (function() {
                 var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
                 self.$agreementAllCheck.prop('checked', !$itemCheck.is(':not(:checked)'));
             });
+            */
     
             //청약하기버튼 클릭
             self.$subscriptionButton.on('click', function(e) {
@@ -190,6 +202,14 @@ var CareCartInfo = (function() {
             self.$paymentButton.on('click', function(e) {
                 self._clickApplyButton(this);
             });
+
+            //스크롤 이벤트
+            if(!vcui.detect.isMobile){
+                $(window).on('scroll', function(e){
+                    self._setScrollMoved();
+                });
+                self._setScrollMoved();
+            }
         },
 
         _bindPopupEvents: function() {
@@ -199,6 +219,48 @@ var CareCartInfo = (function() {
                 $('#careship-subscription-popup').vcModal('close');
                 self._subscriptionItem();
             });
+        },
+
+        _setScrollMoved: function() {
+            var self = this;
+            if(self.itemInfoHiddenCheckTarget.length > 0) {
+                var winwidth = $(window).width();
+                if(winwidth > 1024){
+                    var scrolltop = $(window).scrollTop();
+                    if(scrolltop > self.requestInfoY-54){
+                        if(!self.$cartContent.hasClass('fixed')) self.$cartContent.addClass('fixed');
+            
+                        var formy = self.itemInfoHiddenCheckTarget.offset().top;
+                        var isHidden = self.$cartContent.data('infoHidden');
+                        if(scrolltop > formy){
+                            if(isHidden){
+                                self.$cartContent.data('infoHidden', false);
+                                self.$itemInfo.slideDown();
+                            }
+                        } else{
+                            if(!isHidden){
+                                self.$cartContent.data('infoHidden', true);
+                                self.$itemInfo.slideUp();
+                            }
+                        }
+        
+                        var footery = -scrolltop + $('footer').first().offset().top - 100;
+                        var infoheight = self.$cartContent.find('.info-area').outerHeight(true);
+                        if(footery < infoheight){
+                            //console.log(infoheight)
+                            self.$cartContent.find('.info-area').css({y:footery - infoheight})
+                        } else{
+                            self.$cartContent.find('.info-area').css({y:0})
+                        }
+                    } else{
+                        if(self.$cartContent.hasClass('fixed')) self.$cartContent.removeClass('fixed');
+                    }
+                } else{
+                    if(self.$cartContent.hasClass('fixed')) self.$cartContent.removeClass('fixed');
+        
+                    self.$itemInfo.show();
+                }
+            }
         },
 
         //ajax 호출시 리턴된 alert을 뛰운다
@@ -253,8 +315,10 @@ var CareCartInfo = (function() {
         //청약신청하기 버튼 클릭
         _clickSubscriptionButton: function(dm) {
             var self = this;
-            var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
-            if(!$itemCheck.is(':not(:checked)')) {
+            var agreechk = self.requestAgreeChecker.getAllChecked();
+            //var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
+            //if(!$itemCheck.is(':not(:checked)'))
+            if(agreechk) {
                 //동의서 모두 체크
                 console.log(self.$agreement);
                 if(self.$agreement.attr('data-has-careship')) {

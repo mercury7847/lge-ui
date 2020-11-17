@@ -332,7 +332,7 @@
                     }
                 }
 
-                var footery = -scrolltop + $('footer').offset().top - 100;
+                var footery = -scrolltop + $('footer').first().offset().top - 100;
                 var infoheight = requestInfoBlock.find('.info-area').outerHeight(true);
                 if(footery < infoheight){
                     console.log(infoheight)
