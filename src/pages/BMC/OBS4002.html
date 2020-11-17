@@ -9,119 +9,144 @@
             "mobileCase": "noneDepth"
         })
 
-        <div class="container">
-            @@include('./common/modules/page-header.html', {
-                "pageTitle": "기획전"
-            })
-
+        <main class="container">
             <!-- event -->
             <div class="contents event">
                 <div class="cont-wrap">
-                    <div class="ev-view-wrap">
-                        <div class="ev-detail-wrap">
-                            <div class="ev-detail-top">
-                                <div class="tit-wrap">
-                                    <span class="sub-tit"><span class="blind">서브 제목</span>예비 신혼 부부를 위한</span>
-                                    <p class="tit"><span class="blind">제목</span>웨딩(혼수가전) 페스티벌</p>
-                                </div>
-                                <div class="info-wrap">
-                                    <dl>
-                                        <dt>행사기간</dt>
-                                        <dd>2020.09.04 ~2020.09.30</dd>
-                                    </dl>
+                    <div class="ev-detail-wrap">
+                        <div class="ev-detail-top">
+                            <div class="tit-wrap">
+                                <p class="tit"><span class="blind">제목</span>웨딩(혼수가전) 페스티벌</p>
+                                <span class="sub-tit"><span class="blind">서브 제목</span>예비 신혼부부를 위한 LG전자 웨딩 페스티벌!</span>
+                            </div>
+                            <div class="info-wrap">
+                                <div class="info-list">
+                                    <div class="group">
+                                        <dl>
+                                            <dt>행사기간</dt>
+                                            <dd>2020.09.04 ~2020.09.30</dd>
+                                        </dl>
+                                    </div>
                                     <dl>
                                         <dt>행사채널</dt>
-                                        <dd>전 채널</dd>
+                                        <dd>전채널</dd>
                                     </dl>
                                     <dl>
-                                        <dt>참여방법</dt>
+                                        <dt>행사경품</dt>
                                         <dd>청첩장 또는 웨딩홀 계약서 등 확인 후 제품 구매 시 할인혜택 제공</dd>
                                     </dl>
                                 </div>
-                            </div>
-
-                            <div class="ev-detail-bottom">
-                                <div class="ev-cont">
-                                    <img src="/lg5-common/images/dummy/@img_event-view.jpg" alt="이벤트 내용">
+                                <div class="sns-wrap">
+                                    <!-- 
+                                        data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
+                                        data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
+                                        data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
+                                        data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
+            
+                                        각 sns 버튼에 적용.
+                                    -->
+                                    <ul class="sns-list">
+                                        <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook"><span class="blind">페이스북으로 페이지 공유하기</span></a></li>
+                                        <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter"><span class="blind">트위터로 페이지 공유하기</span></a></li>
+                                        <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk"><span class="blind">카카오톡으로 페이지 공유하기</span></a></li>
+                                        <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn url" data-link-name="copy_url"><span class="blind">URL 복사하기</span></a></li>
+                                    </ul>
                                 </div>
-                            </div>
-
-                            <div class="sns-wrap">
-                                <!-- 
-                                    data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
-                                    data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
-                                    data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
-                                    data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
-        
-                                    각 sns 버튼에 적용.
-                                -->
-                                <ul class="sns-list">
-                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook"><span class="blind">페이스북으로 페이지 공유하기</span></a></li>
-                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter"><span class="blind">트위터로 페이지 공유하기</span></a></li>
-                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk"><span class="blind">카카오톡으로 페이지 공유하기</span></a></li>
-                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn url" data-link-name="copy_url"><span class="blind">URL 복사하기</span></a></li>
-                                </ul>
                             </div>
                         </div>
 
-                        <div class="ev-product-items">
-                            <div class="product-items-wrap">
-                                <ul class="product-items small-type">
+                        <div class="ev-detail-con">
+                            <div class="ev-cont">
+                                <div class="conts">
+                                    <!-- 이벤트 상세내용 자리 -->
+                                    <img src="/lg5-common/images/dummy/@img-event-view3.jpg" alt="이벤트 내용">
+                                    <!-- //이벤트 상세내용 자리 -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ev-detail-bottom">
+                            <div class="ev-prd-wrap">
+                                <ul class="product-items col4">
                                     @@loop('./common/modules/product-item.html', [
                                         {
-                                            "badgeType" : "lgRed",
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "itemClass" : "evt-item",
+                                            "flags" : ["멤버십 포인트"],
+                                            "singleButton" : "장바구니에 담기",
                                             "price" : true,
-                                            "originalPrice" : true,
-                                            "button" : true,
-                                            "buttonName" : "장바구니 담기"
-                                        }, 
-                                        {
-                                            "badgeType" : "lgRed",
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "originalPrice" : true
+                                        },{
+                                            "itemClass" : "evt-item",
+                                            "flags" : ["캐시백"],
+                                            "singleButton" : "장바구니에 담기",
                                             "price" : true,
-                                            "originalPrice" : true,
-                                            "button" : true,
-                                            "buttonName" : "장바구니 담기"
-                                        }, 
-                                        {
-                                            "badgeType" : "lgRed",
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                            "originalPrice" : true
+                                        },{
+                                            "itemClass" : "evt-item",
+                                            "flags" : ["캐시백"],
+                                            "singleButton" : "장바구니에 담기",
                                             "price" : true,
-                                            "originalPrice" : true,
-                                            "button" : true,
-                                            "buttonName" : "장바구니 담기"
+                                            "originalPrice" : true
+                                        },{
+                                            "itemClass" : "evt-item",
+                                            "flags" : ["캐시백"],
+                                            "singleButton" : "장바구니에 담기",
+                                            "price" : true,
+                                            "originalPrice" : true
+                                        },{
+                                            "itemClass" : "evt-item",
+                                            "flags" : ["캐시백"],
+                                            "singleButton" : "장바구니에 담기",
+                                            "price" : true,
+                                            "originalPrice" : true
+                                        },{
+                                            "itemClass" : "evt-item",
+                                            "flags" : ["캐시백"],
+                                            "singleButton" : "장바구니에 담기",
+                                            "price" : true,
+                                            "originalPrice" : true
+                                        },{
+                                            "itemClass" : "evt-item",
+                                            "flags" : ["캐시백"],
+                                            "singleButton" : "장바구니에 담기",
+                                            "price" : true,
+                                            "originalPrice" : true
+                                        },{
+                                            "itemClass" : "evt-item",
+                                            "flags" : ["캐시백"],
+                                            "singleButton" : "장바구니에 담기",
+                                            "price" : true,
+                                            "originalPrice" : true
                                         }
                                     ])
                                 </ul>
                             </div>
-                            <button type="button" class="btn-moreview block"><span>더보기</span></button>
-                        </div>
 
-                        <div class="notice-wrap">
-                            @@include('./common/modules/bullet-list.html', {
-                                "bulletTit" : "유의사항", 
-                                "bulletTxt" : [
-                                    "본 이벤트는 LG전자 회원 및 멤버십 가입자 대상 이벤트로 LG전자 회원가입/로그인 후 참여하실 수 있습니다.",
-                                    "LG전자 멤버십 고객에 한하여 당첨 시 멤버십 포인트가 적립됩니다.",
-                                    "상기 멤버십 포인트는 당사 사정에 따라 변경될 수 있습니다.",
-                                    "멤버십 포인트는 양도가 불가능합니다.",
-                                    "멤버십 포인트는 이벤트 응모 시 작성된 참여자 정보를 기준으로 지급됩니다.",
-                                    "이벤트 응모 시 개인정보수집 및 이용에 동의가 필요합니다."
-                                ]
-                            })
-                            <a href="#n" class="btn-link">개인정보처리방침</a>
-                        </div>
+                            <div class="notice-wrap">
+                                @@include('./common/modules/bullet-list.html', {
+                                    "bulletTit" : "유의사항", 
+                                    "bulletTxt" : [
+                                        "본 이벤트는 LG전자 회원 및 멤버십 가입자 대상 이벤트로 LG전자 회원가입/로그인 후 참여하실 수 있습니다.",
+                                        "LG전자 멤버십 고객에 한하여 당첨 시 멤버십 포인트가 적립됩니다.",
+                                        "상기 멤버십 포인트는 당사 사정에 따라 변경될 수 있습니다.",
+                                        "멤버십 포인트는 양도가 불가능합니다.",
+                                        "멤버십 포인트는 이벤트 응모 시 작성된 참여자 정보를 기준으로 지급됩니다.",
+                                        "이벤트 응모 시 개인정보수집 및 이용에 동의가 필요합니다."
+                                    ]
+                                })
+                                <a href="#n" class="btn-link">개인정보처리방침</a>
+                            </div>
 
-                        <div class="btn-wrap">
-                            <a href="#n" class="btn bd-black"><span>이메일 문의</span></a>
-                            <a href="#n" class="btn pink"><span>목록</span></a>
+                            <div class="btn-wrap">
+                                <a href="#n" class="btn border"><span>이메일 문의</span></a>
+                                <a href="#n" class="btn"><span>목록</span></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- // event -->
-        </div>
+        </main>
         
         @@include('./common/footer.html')
     </div>     
