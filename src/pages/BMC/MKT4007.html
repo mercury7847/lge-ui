@@ -4,22 +4,13 @@
         pageCSS: ["BMC/BMC"]
     })
 <body>
-    <div class="wrap">
-        <button type="button" data-href="#popup" data-control="modal" class="btn pink"><span>당첨자 발표 팝업 열기</span></button>
-    </div>
-
-
-    <article id="popup" class="popup-wrap event-popup" style="display: none">
+    <!-- width: 912px -->
+    <article id="popup" class="win-popup-wrap event-popup">
         <header class="pop-header">
             <h1 class="tit"><span>당첨자 발표</span></h1>
         </header>
         <section class="pop-conts">
             <div class="tit-area">
-                <div class="visual-area">
-                    <img data-pc-src="/lg5-common/images/dummy/@sample-1066x144.png" data-m-src="/lg5-common/images/dummy/@sample-720x320.png" alt="">
-                    <p class="hidden pc">graphic description : </p>
-                    <p class="hidden mobile">graphic description : </p>
-                </div>
                 <div class="content-block">
                     <div class="text-block">
                         <div class="flag-wrap">
@@ -29,7 +20,6 @@
                         <p class="date">2020.09.04 ~2020.09.30</p>
                     </div>
                 </div>
-                
             </div>
             <!-- 당첨자 확인 -->
             <div class="form-wrap search-box" data-url="">
@@ -38,9 +28,9 @@
                     <dd class="conts">
                         <div class="input-box btn-type">
                             <span class="input-wrap">
-                                <input type="text" id="inp01" value="" placeholder="이름을 입력해주세요.">
+                                <input type="text" id="inp01" value="" placeholder="휴대폰 번호를 입력해 주세요.">
                             </span>
-                            <button type="button" id="button-calendar-search" class="btn pink"><span>확인</span></button>
+                            <button type="button" id="button-calendar-search" class="btn pink"><span>조회</span></button>
                         </div>
                         
                     </dd>
@@ -70,8 +60,8 @@
                                 <tr>
                                     <td class="winner">홍*동</td>
                                     <td class="phone">010-****-1234</td>
-                                    <td class="winner">김*신</td>
-                                    <td class="phone">010-****-1234</td>
+                                    <td class="winner on">김*신</td>
+                                    <td class="phone on">010-****-1234</td>
                                 </tr>
                             </tbody>    
                         </table>
@@ -121,7 +111,6 @@
                     </div>
                 </div> 
                 @@include('./common/modules/bullet-list.html', {
-                    "topBorder" : true,
                     "bulletTit" : "당첨 및 경품 발송 관련 사항", 
                     "bulletTxt" : [
                         "제세공과금은 당사에서 부담해 드리며, 본인확인 및 제세공과금 처리를 위해 신분증 사본을 요청할 수 있습니다.",
@@ -134,7 +123,7 @@
             </div>
             
         </section>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+        <button type="button" class="win-btn-close"><span class="blind">닫기</span></button>
     </article>
 
 </body>

@@ -1,6 +1,9 @@
 .list-sorting {
     @include clearfix;
-    padding: 26px 0 15px;
+    padding: 26px 0 12px;
+    &.no-pt {
+        padding-top:0;
+    }
 
     .check-soldout {
         float: right;
@@ -16,6 +19,18 @@
     }
     .sort-area {
         float: right;
+        &.left {
+            float:left;
+        }
+        .sort-list {
+            font-size:0;
+            .sort-select-wrap {
+                margin-left:24px;
+                &:first-child {
+                    margin-left:0;
+                }
+            }
+        }
     }
     .list-count {
         float: left;

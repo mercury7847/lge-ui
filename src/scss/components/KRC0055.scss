@@ -329,4 +329,17 @@
 		}
 
 	}
+	&.type-wide {
+		.usp-banner-wrap .carousel-box .text-area {
+			max-width:100%;
+		}
+    }
+    &.type-narrow {
+		.usp-banner-wrap .carousel-box .text-area {
+			max-width:60%;
+			@include mobile {
+				max-width:100%;
+			}
+		}
+    }
 }

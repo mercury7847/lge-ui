@@ -18,6 +18,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
+        width:100%;
         transform: translate(-50%,-50%);
         .title {
             display: inline-block;
@@ -30,10 +31,15 @@
             color: #fff;
         }
         .btn-area {
+            font-size:0;
             .btn {
+                margin:0 4px;
                 border-color: #fff;
                 background-color: transparent;
                 color: #fff;
+                @include mobile {
+                    min-width:156px;
+                }
             }
         }
     }

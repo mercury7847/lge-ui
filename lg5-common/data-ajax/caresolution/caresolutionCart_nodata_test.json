@@ -1,0 +1,37 @@
+{
+    "status": "success",
+    "message": null,
+    "data": {
+        "isLogin": true,
+        "total": {
+            "price": "0",
+            "count": "0"
+        },
+        "selectedItem": [],
+        "itemList": [],
+        "paymentInfo": {
+            "total": {
+                "price": "0",
+                "count": "0"
+            },
+            "list": [
+                {
+                    "price": "0개",
+                    "text": "제품 수",
+                    "appendClass": "num"
+                },
+                {
+                    "price": "월 0원",
+                    "text": "이용요금",
+                    "appendClass": ""
+                },
+                {
+                    "price": "월 0",
+                    "text": "결합할인 금액",
+                    "appendClass": "sale"
+                }
+            ]
+        },
+        "status": true
+    }
+}

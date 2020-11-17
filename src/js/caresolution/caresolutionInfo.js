@@ -1,10 +1,10 @@
 var CareCartInfo = (function() {
-    var subscriptionItemTemplate = '<li><span class="item-subtit">{{type}}</span>' +
+    var subscriptionItemTemplate = '<li data-item-id="{{itemID}}"><span class="item-subtit">{{type}}</span>' +
         '<strong class="item-tit">{{title}}</strong>' +
         '<div class="item-spec"><span>{{sku}}</span>' +
         '<span>월 {{salePrice}}원</span></div></li>'
     
-    var subscriptionDisableItemTemplate = '<li class="item-disabled"><span class="item-subtit">{{type}}</span>' +
+    var subscriptionDisableItemTemplate = '<li class="item-disabled" data-item-id="{{itemID}}"><span class="item-subtit">{{type}}</span>' +
         '<strong class="item-tit">{{title}}</strong>' +
         '<div class="item-spec"><span>{{sku}}</span>' +
         '<span>월 {{salePrice}}원</span></div>' +
@@ -58,7 +58,34 @@ var CareCartInfo = (function() {
             }
             self.updateItemInfo(data);
             self.updatePaymentInfo(data);
-            self._updateAgreement(data);
+            self.updateAgreement(data);
+        },
+
+        setEmptyData: function() {
+            var self = this;
+            var resetPaymentData = {
+                "paymentInfo": {
+                    "total":{
+                        "count": "0",
+                        "price": "0"
+                    },
+                    "list":[
+                        {
+                            "text": "제품 수",
+                            "price": "0개",
+                            "appendClass": "num"
+                        },
+                        {
+                            "text": "이용요금",
+                            "price": "월 0원",
+                            "appendClass": ""
+                        }
+                    ]
+                }
+            }
+            self.updatePaymentInfo(resetPaymentData);
+            self.updateItemInfo(null);
+            self.updateAgreement(null);
         },
 
         updateItemInfo: function(data) {
@@ -128,12 +155,15 @@ var CareCartInfo = (function() {
             }
         },
 
-        _updateAgreement: function(data) {
+        updateAgreement: function(data) {
             var self = this;
-            var agreementData = data.agreement;
-            var hasCareship = agreementData.hasCareship;
-
-            self.$agreement.attr('data-has-careship',hasCareship);
+            var agreementData = data ? data.agreement : null;
+            if(agreementData && agreementData.hasCareship) {
+                var hasCareship = agreementData.hasCareship;
+                self.$agreement.attr('data-has-careship',hasCareship);
+            } else {
+                self.$agreement.removeAttr('data-has-careship');
+            }
         },
 
         _bindEvents: function() {
@@ -171,20 +201,51 @@ var CareCartInfo = (function() {
             });
         },
 
+        //ajax 호출시 리턴된 alert을 뛰운다
+        openCartAlert: function(alert) {
+            if(alert.isConfirm) {
+                //컨펌
+                var obj ={title: alert.title,
+                    typeClass: '',
+                    cancelBtnName: alert.cancelBtnName,
+                    okBtnName: alert.okBtnName,
+                    ok: alert.okUrl ? function (){
+                        location.href = alert.okUrl;
+                    } : function (){}
+                };
+
+                var desc = alert.desc ? alert.desc : alert.title;
+                if(alert.title && alert.desc) {
+                    obj.typeClass = 'type2'
+                }
+                lgkorUI.confirm(desc, obj);
+            } else {
+                //알림
+                var obj ={title: alert.title,
+                    typeClass: '',
+                    cancelBtnName: alert.cancelBtnName,
+                    okBtnName: alert.okBtnName,
+                    ok: function (){}
+                };
+
+                var desc = alert.desc;
+                if(desc) {
+                    obj.typeClass = 'type2'
+                }
+                lgkorUI.alert(desc, obj);
+            }
+        },
+
         //신청하기 버튼 클릭
         _clickApplyButton: function(dm) {
+            var self = this;
             var ajaxUrl = $(dm).attr('data-check-url');
             lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
                 var alert = result.data.alert;
                 if(alert) {
-                    var obj ={title:alert.title , typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
-                    var desc = alert.desc;
-                    if(desc) {
-                        obj.typeClass = 'type2'
-                    }
-                    lgkorUI.alert(desc, obj);
+                    self.openCartAlert(alert);
                 } else {
-                    location.href = result.data.url;
+                    window.location.href = result.data.url;
                 }
             });
         },
@@ -195,7 +256,7 @@ var CareCartInfo = (function() {
             var $itemCheck = self.$agreement.find(self.agreementItemCheckQuery);
             if(!$itemCheck.is(':not(:checked)')) {
                 //동의서 모두 체크
-                console.log(self.$agreement.attr('data-has-careship'));
+                console.log(self.$agreement);
                 if(self.$agreement.attr('data-has-careship')) {
                     //케어쉽 상품이 포함되어있는지 체크
                     $('#careship-subscription-popup').vcModal();
@@ -215,16 +276,40 @@ var CareCartInfo = (function() {
             lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
                 var alert = result.data.alert;
                 if(alert) {
+                    /*
                     var obj ={title:alert.title , typeClass:'', cancelBtnName:'', okBtnName:'', ok : function (){}};
                     var desc = alert.desc;
                     if(desc) {
                         obj.typeClass = 'type2'
                     }
                     lgkorUI.alert(desc, obj);
+                    */
+                    self.openCartAlert(alert);
                 } else {
                     location.href = result.data.url;
                 }
             });
+        },
+
+        setItemInfoDisabled: function(itemID, disabled) {
+            var self = this;
+            var $item_li = self.$itemInfo.find('li[data-item-id="' + itemID +'"]');
+            if($item_li) {
+                var $p_text_disabled = $item_li.find('p.text-disabled');
+                if(disabled) {
+                    $item_li.addClass('item-disabled');
+                    if($p_text_disabled.length > 0) {
+                        $p_text_disabled.show();
+                    } else {
+                        $item_li.append('<p class="text-disabled"><span>설치 불가능 제품</span></p>')
+                    }
+                } else {
+                    $item_li.removeClass('item-disabled');
+                    if($p_text_disabled.length > 0) {
+                        $p_text_disabled.hide();
+                    }
+                }
+            }
         }
     }
 

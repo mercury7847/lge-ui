@@ -19,7 +19,7 @@
             '{{#if subscriptionUrl}}<button type="button" class="btn pink border size" data-url={{subscriptionUrl}}><span>청약신청</span></button>{{#else}}<button type="button" class="btn pink border size" disabled><span>청약신청불가</span></button>{{/if}}' +
         '</div></div>' +
         '{{#if isLogin}}<span class="chk-wish-wrap"><input type="checkbox" id="chk-wish-{{itemID}}" name="chk-wish-{{itemID}}" {{#if (wish)}}checked{{/if}}><label for="chk-wish-{{itemID}}"><span class="blind">{{#if wish}}찜한상품{{#else}}찜하기{{/if}}</span></label></span>{{/if}}' +
-        '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}" name="chk-select-{{itemID}}" checked><label for="chk-select-{{itemID}}"><span class="blind">선택안함</span></label></span>' +
+        '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}" name="chk-select-{{itemID}}" {{#if !(available)}}checked{{/if}}><label for="chk-select-{{itemID}}"><span class="blind">선택안함</span></label></span>' +
         '<div class="item-delete"><button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button></div>' +
         '</li>';
 
@@ -29,6 +29,7 @@
         var careCart = {
             init: function() {
                 //케어솔루션 리스트
+                self.$tabCount = $('.ui_tab ul.tabs li a[href="#tab2"] span');
                 self.$cartContent = $('#tab2');
                 self.$cartWrap = self.$cartContent.find('div.cart-wrap');
                 self.$cartAllCheck = self.$cartContent.find('div.check-option div.chk-wrap input');
@@ -48,6 +49,27 @@
                 _self.bindPopupEvents();
                 _self.updateCartItemCheck();
                 _self.checkNoData();
+
+                var reveal_url = self.$cartContent.attr('data-reveal-url');
+                if(reveal_url) {
+                    var ajaxUrl = self.$cartContent.attr('data-list-url');
+                    lgkorUI.requestAjaxDataPost(ajaxUrl, null, function(result){
+                        _self.updateList(result.data);
+
+                        var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
+                        var itemList = [];
+                        cartItemCheck.each(function (index, item) {
+                            var itemID = $(item).parents('li.order-item').attr('data-item-id');
+                            itemList.push(itemID);
+                        });
+                        if(itemList.length > 0) {
+                            careCartInfo.updateData(result.data);
+                        } else {
+                            //선택된 제품이 없다
+                            careCartInfo.setEmptyData();
+                        }
+                    });
+                }
             },
 
             bindEvents: function() {
@@ -147,6 +169,9 @@
 
                 var isLogin = data.isLogin;
 
+                //탭 카운트
+                self.$tabCount.text(vcui.number.addComma(data.tabCount));
+                
                 //카트 목록
                 var $list_ul = self.$cartList.find('ul.order-list');
                 $list_ul.empty();
@@ -199,35 +224,14 @@
                     itemList.push(itemID);
                 });
                 if(itemList.length > 0) {
-                    var ajaxUrl = self.$cartContent.attr('data-info-url');
+                    var ajaxUrl = self.$cartContent.attr('data-list-url');
                     var postData = {'itemID': (itemList.length > 0) ? itemList.join() : null};
                     lgkorUI.requestAjaxData(ajaxUrl, postData, function(result){
                         careCartInfo.updateData(result.data);
                     });
                 } else {
                     //선택된 제품이 없다
-                    var resetPaymentData = {
-                        "paymentInfo": {
-                            "total":{
-                                "count": "0",
-                                "price": "0"
-                            },
-                            "list":[
-                                {
-                                    "text": "제품 수",
-                                    "price": "0개",
-                                    "appendClass": "num"
-                                },
-                                {
-                                    "text": "이용요금",
-                                    "price": "월 0원",
-                                    "appendClass": ""
-                                }
-                            ]
-                        }
-                    }
-                    careCartInfo.updatePaymentInfo(resetPaymentData);
-                    careCartInfo.updateItemInfo(null);
+                    careCartInfo.setEmptyData();
                 }
             },
 
@@ -259,12 +263,14 @@
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
             },
 
+            /*
             //장바구니에 담기
             requestCartItem: function(itemID) {
                 var ajaxUrl = self.$cartContent.attr('data-cart-url');
                 var postData = {"itemID":itemID};
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
             },
+            */
 
             //dom의 data-url을 읽어서 이동시킴
             locationButtonUrl: function(dm) {

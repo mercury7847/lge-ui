@@ -8,7 +8,7 @@
             float:left;
             margin-left:8px;
             @include mobile { 
-                margin-left:6px;
+                margin-left:12px;
             }
             &:first-child {
                 margin-left:0;
