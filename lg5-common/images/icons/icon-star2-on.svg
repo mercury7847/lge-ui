@@ -4,7 +4,7 @@
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="btn_star_24_on">
             <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
-            <g id="ic" fill="#222222">
+            <g id="ic" fill="#ff6767">
                 <polygon id="Star" points="12 18 4.94657697 21.7082039 6.2936609 13.854102 0.587321804 8.29179607 8.47328849 7.14589803 12 0 15.5267115 7.14589803 23.4126782 8.29179607 17.7063391 13.854102 19.053423 21.7082039"></polygon>
             </g>
         </g>

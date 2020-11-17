@@ -12,44 +12,40 @@
 
         <div class="container">
             @@include('./common/support/page-visual.html', {
-                'title': '공지사항',
-                'desc': 'LG전자 서비스센터의 소식을 안내해 드립니다.'
+                'title': '공지사항'
             })
             <div class="contents support notice">
+                <div class="search-wrap" data-ajax="/lg5-common/data-ajax/support/noticeList.json">
+                    <div class="keyword-search">
+                        <div class="input-wrap">
+                            <input type="text" name="keyword" placeholder="검색어 입력">
+                            <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                        </div>
+                    </div> 
+                </div>
+
                 <div class="contents-inner">
 
-                    <div class="search-wrap" data-ajax="/lg5-common/data-ajax/support/noticeList.json">
-                        <div class="input-wrap">
-                            <div class="box">   
-                                <input type="text" placeholder="검색어를 입력해주세요.">
-                                <div class="cell">
-                                    <button type="button" class="btn-search">
-                                        <span class="blind">검색</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="result-wrap">
                         <div class="sorting-wrap row-type">
                             <div class="total">전체 <em class="count" id="count">122</em>건</div>
                             <div class="sort-box">
                                 <div class="sort-select-wrap">
-                                    <select class="ui_selectbox" title="정렬 기준 선택">
+                                    <select name="category" class="ui_selectbox" title="정렬 기준 선택">
                                         <option value="전체" selected>전체</option>
                                         <option value="공지사항">공지사항</option>
                                         <option value="만족도/설문 당첨자 발표">만족도/설문 당첨자 발표</option>  
                                     </select>
                                 </div>
                                 <div class="sort-select-wrap">
-                                    <select class="ui_selectbox" title="정렬 기준 선택">
+                                    <select name="orderType" class="ui_selectbox" title="정렬 기준 선택">
                                         <option value="최신순" selected>최신순</option>
                                         <option value="조회순">조회순</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="board-list-wrap">
+                        <!-- <div class="board-list-wrap">
                             <ul class="board-list">
                                 @@for (var i = 0; i < 10; i++) {
                                 <li>
@@ -68,6 +64,39 @@
                                 </li>
                                 }
                             </ul>
+                        </div> -->
+
+                        <div class="tb_row">
+                            <table>
+                                <caption>공지사항 목록</caption>
+                                <colgroup>
+                                    <col style="width:25%">
+                                    <col style="width:25%">
+                                    <col style="width:25%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th scope="col">제목</th>
+                                    <th scope="col">등록일</th>
+                                    <th scope="col">조회수</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @@for (var i=0; i < 10; i++) {
+                                    <tr>
+                                        <td class="al-left">
+                                            <p class="">[안내] LG전자 소형 폐전자제품 무상 처리서비스</p>
+                                            <div class="flag-wrap bar-type">
+                                                <span class="flag"><span class="blind">제품 상태</span>NEW</span>
+                                                <span class="flag"><span class="blind">제품 상태</span>BEST</span>
+                                            </div>
+                                        </td>
+                                        <td>2020.07.27</td>
+                                        <td>3,021</td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                         <div class="no-data">
                             <p>검색결과가 없습니다.</p>

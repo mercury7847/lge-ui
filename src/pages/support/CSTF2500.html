@@ -22,9 +22,9 @@
                             <div class="total">전체 <em class="count" id="count">122</em>건</div>
                             <div class="sort-box">
                                 <div class="sort-select-wrap">
-                                    <select class="ui_selectbox" title="정렬 기준 선택">
-                                        <option value="조회순" selected>조회순</option>
-                                        <option value="등록순">등록순</option>
+                                    <select name="orderType" class="ui_selectbox" title="정렬 기준 선택">
+                                        <option value="최신순" selected>최신순</option>
+                                        <option value="조회순">조회순</option>
                                     </select>
                                 </div>
                             </div>
@@ -33,14 +33,14 @@
                             <ul class="card-list">
                                 @@for (var i = 0; i < 12; i++) {
                                 <li>
-                                    <a href="#">
-                                        <div class="image">
+                                    <a href="#" class="item">
+                                        <div class="item-image">
                                             <img src="/lg5-common/images/dummy/@img-card1.jpg" alt="카드뉴스 제목">
                                         </div>
-                                        <div class="summary">
+                                        <div class="item-conts">
                                             <ul class="infos">
                                                 <li>2020.07.20</li>
-                                                <li><span class="view"><span class="blind">조회수</span>4,129</span></li>  
+                                                <li>조회 4,129</li>  
                                             </ul>
                                         </div>
                                     </a>

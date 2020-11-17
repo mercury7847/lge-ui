@@ -96,6 +96,7 @@ var res = {
 			"KRP0024_Best review" : ["/html/components/KRP0024.html","","검수완료"],
 			"KRP0025_event_list_for_category_home" : ["/html/components/KRP0025.html","","검수완료"],
 			"KRP0027_Please note" : ["/html/components/KRP0027.html","","검수완료"],
+			"KRP0028_Event list" : ["/html/components/KRP0028.html","",""],
 			"KRP0042_Consumables Search" : ["/html/components/KRP0042.html","","진행중"],
 			"KRP0043_Substitutes&related General Products" : ["/html/components/KRP0043.html","","진행중"],
 			"KRP0044_PDP Shipping Information" : ["/html/components/KRP0044.html","","진행중"],
@@ -117,34 +118,34 @@ var res = {
 					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
 				},
 				"Footer" : {
-					"개인정보취급방침" : ["/html/UTS/COMF2000.html","","진행중"],
-					"이벤트 개인정보처리방침(리스트)" : ["/html/UTS/COMF2001.html","","진행중"],
-					"이벤트 개인정보처리방침(상세)" : ["/html/UTS/COMF2001_view.html","","진행중"],
-					"이용약관" : ["/html/UTS/COMF2003.html","","진행중"],
-					"이메일 무단수집 거부" : ["/html/UTS/COMF2005.html","","진행중"],
-					"소식지 신청" : ["/html/UTS/COMF2004.html","","진행중"]
+					// "개인정보취급방침" : ["/html/UTS/COMF2000.html","","진행중"],
+					// "이벤트 개인정보처리방침(리스트)" : ["/html/UTS/COMF2001.html","","진행중"],
+					// "이벤트 개인정보처리방침(상세)" : ["/html/UTS/COMF2001_view.html","","진행중"],
+					// "이용약관" : ["/html/UTS/COMF2003.html","","진행중"],
+					// "이메일 무단수집 거부" : ["/html/UTS/COMF2005.html","","진행중"],
+					// "소식지 신청" : ["/html/UTS/COMF2004.html","","진행중"]
 				}
 			},
 			"스토리(STC)" : {
 				"LG 페이" : {
-					"LG 페이" : ["/html/STC/MKT5003.html","","진행중"],
-					"LG 페이_영상 보기 팝업" : ["/html/STC/MKT5003_popup.html","","진행중"],
-					"LG 페이제휴카드 안내" : ["/html/STC/MKT5004.html","","진행중"],
-					"LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","진행중"]
+					// "LG 페이" : ["/html/STC/MKT5003.html","","진행중"],
+					// "LG 페이_영상 보기 팝업" : ["/html/STC/MKT5003_popup.html","","진행중"],
+					// "LG 페이제휴카드 안내" : ["/html/STC/MKT5004.html","","진행중"],
+					// "LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","진행중"]
 				},
 				"모바일 서비스" : {
-					"모바일스위치(MKT5006,MKT5007,MKT5008)" : ["/html/STC/MKT5006.html","","진행중"]
+					// "모바일스위치(MKT5006,MKT5007,MKT5008)" : ["/html/STC/MKT5006.html","","진행중"]
 				}
 			},
 			"케어솔루션(SLC)" : {
 				"케어솔루션 제품안내" : {
-					"맥주제조기_음주연령확인" : ["/html/SLC/MKTF2004.html","","진행중"]
+					"맥주제조기_음주연령확인" : ["/html/SLC/MKTF2004.html","","검수완료"]
 				},
 				"케어솔루션안내" : {
-					"WHY케어솔루션" : ["/html/SLC/RMSF2002.html","","진행중"],
+					"WHY케어솔루션" : ["/html/SLC/RMSF2002.html","","검수완료"],
 					"케어플래너_렌탈케어솔루션" : ["/html/SLC/RMSF2003.html","","검수완료"],
-					"케어플래너_케어십" : ["/html/SLC/RMSF2003_01.html","","진행중"],
-					"케어플래너_상세견적확인" : ["/html/SLC/RMSF2020.html","","진행중"]
+					"케어플래너_케어십" : ["/html/SLC/RMSF2003_01.html","","검수완료"],
+					"케어플래너_상세견적확인" : ["/html/SLC/RMSF2020.html","","검수완료"]
 				},
 			},
 			"이벤트/멤버십(BMC)" : {
@@ -152,10 +153,12 @@ var res = {
 					"리스트" : ["/html/BMC/MKT4001.html","","검수완료"],
 					"상세_기본타입" : ["/html/BMC/MKT4002.html","","검수완료"],
 					"상세_종료(지난이벤트)" : ["/html/BMC/MKT4005.html","","검수완료"],
-					"당첨자발표" : ["/html/BMC/MKT4007.html","","검수완료"],
-					"이벤트참여_PC아카데미" : ["/html/BMC/MKT4008.html","","진행중"],
+					"상세_당첨자발표" : ["/html/BMC/MKT4007.html","","검수완료"],
+					"상세_PC아카데미" : ["/html/BMC/MKT4008.html","","검수완료"],
+					"이벤트참여_PC아카데미" : ["/html/BMC/MKT4009.html","","진행중"],
 					"이벤트참여내역조회_PC아카데미" : ["/html/BMC/MKT4010.html","","진행중"],
 					"PC 모델명 및 시리얼번호 확인 방법" : ["/html/BMC/MKT4017.html","","진행중"],
+					"상세_미리미리페스티벌" : ["/html/BMC/MKT4011.html","","진행중"],
 					"이벤트참여_미리미리페스티벌" : ["/html/BMC/MKT4012.html","","진행중"],
 					"LG전자 및 LG전자 BEST SHOP 판매대리점 보기" : ["/html/BMC/MKT4013.html","","진행중"],
 				},
@@ -164,49 +167,49 @@ var res = {
 					"상세_기본타입" : ["/html/BMC/OBS4002.html","","진행중"],
 				},
 				"멤버십" : {
-					"멤버십 메인" : ["/html/BMC/ACC4001.html","","검수요청"],
-					"멤버십 혜택" : ["/html/BMC/ACC4004.html","","검수요청"],
-					"VIP 멤버십 혜택" : ["/html/BMC/ACC4005.html","","검수요청"],
-					"멤버십 가입안내" : ["/html/BMC/ACC4002.html","","검수요청"]
+					// "멤버십 메인" : ["/html/BMC/ACC4001.html","","진행중"],
+					// "멤버십 혜택" : ["/html/BMC/ACC4004.html","","진행중"],
+					// "VIP 멤버십 혜택" : ["/html/BMC/ACC4005.html","","진행중"],
+					// "멤버십 가입안내" : ["/html/BMC/ACC4002.html","","진행중"]
 				}
 			},
 			"마이페이지(MYC)" : {
 				"쇼핑 관리" : {
-					"주문/배송내역 조회(리스트)" : ["/html/MYC/ACCF7002.html","","진행중"],
-					"주문/배송내역 조회(상세)" : ["/html/MYC/ACCF7003.html","","진행중"],
-					"신청내역(리스트-케어솔루션)" : ["/html/MYC/ACCF7024.html","","진행중"],
-					"신청내역(상세-케어솔루션)" : ["/html/MYC/ACCF7065.html","","진행중"],
-					"취소신청팝업, alert" : ["/html/MYC/ACCF7002_popup.html","","진행중"],
+					// "주문/배송내역 조회(리스트)" : ["/html/MYC/ACCF7002.html","","진행중"],
+					// "주문/배송내역 조회(상세)" : ["/html/MYC/ACCF7003.html","","진행중"],
+					// "신청내역(리스트-케어솔루션)" : ["/html/MYC/ACCF7024.html","","진행중"],
+					// "신청내역(상세-케어솔루션)" : ["/html/MYC/ACCF7065.html","","진행중"],
+					// "취소신청팝업, alert" : ["/html/MYC/ACCF7002_popup.html","","진행중"],
 				},
 				"케어솔루션" : {
-					"월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
-					"계약현황" : ["/html/MYC/ACCF7025.html","","진행중"],
-					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7025-2.html","","진행중"],
-					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","진행중"],
-					"납부내역" : ["/html/MYC/ACCF7027.html","","진행중"],
-					"방문 알리미" : ["/html/MYC/ACCF7030.html","","진행중"],
-					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]
+					// "월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
+					// "계약현황" : ["/html/MYC/ACCF7025.html","","진행중"],
+					// "계약현황-해지 상담 신청" : ["/html/MYC/ACCF7025-2.html","","진행중"],
+					// "계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","진행중"],
+					// "납부내역" : ["/html/MYC/ACCF7027.html","","진행중"],
+					// "방문 알리미" : ["/html/MYC/ACCF7030.html","","진행중"],
+					// "방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]
 				},
 				"관심목록" : {
-					"최근 본 제품" : ["/html/MYC/ACCF7011.html","","진행중"],
-					"찜한 제품" : ["/html/MYC/ACCF7013.html","","진행중"]
+					// "최근 본 제품" : ["/html/MYC/ACCF7011.html","","진행중"],
+					// "찜한 제품" : ["/html/MYC/ACCF7013.html","","진행중"]
 				},
 				"제품 관리" : {
-					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","검수완료"],
-					"제품/영수증 등록(제품 탭)" : ["/html/MYC/ACCF7036.html","","검수완료"],
-					"제품/영수증 등록(영수증 탭)" : ["/html/MYC/ACCF7037.html","","검수완료"],
-					"등록완료" : ["/html/MYC/ACCF7064.html","","검수완료"]
+					// "보유제품 리스트" : ["/html/MYC/ACCF7033.html","","진행중"],
+					// "제품/영수증 등록(제품 탭)" : ["/html/MYC/ACCF7036.html","","진행중"],
+					// "제품/영수증 등록(영수증 탭)" : ["/html/MYC/ACCF7037.html","","진행중"],
+					// "등록완료" : ["/html/MYC/ACCF7064.html","","진행중"]
 				},
 				"활동 내역" : {
-					"구독" : ["/html/MYC/ACCF7017.html","","진행중"],
-					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
-					"관심 스토리" : ["/html/MYC/ACCF7063.html","","진행중"]
+					// "구독" : ["/html/MYC/ACCF7017.html","","진행중"],
+					// "쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
+					// "관심 스토리" : ["/html/MYC/ACCF7063.html","","진행중"]
 				},
 				"멤버십 관리" : {
-					"멤버십 가입 정보" : ["/html/MYC/ACCF7039.html","","검수요청"],
-					"멤버십 포인트 조회" : ["/html/MYC/ACCF7052.html","","검수요청"]
+					// "멤버십 가입 정보" : ["/html/MYC/ACCF7039.html","","진행중"],
+					// "멤버십 포인트 조회" : ["/html/MYC/ACCF7052.html","","진행중"]
 				},
-				"알림" : ["/html/MYC/ACCF7062.html","","진행중"]
+				// "알림" : ["/html/MYC/ACCF7062.html","","진행중"]
 			},
 			"고객지원(CS)" : {
 				"센터/매장찾기" : {
@@ -215,7 +218,7 @@ var res = {
 					//"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"]
 				},
 				"서비스 안내" : {
-					"FAQ" : ["/html/CS/CSRF6043.html","","검수완료"]
+					// "FAQ" : ["/html/CS/CSRF6043.html","","진행중"]
 				}
 			},
 			"장바구니(UTC)" : {

@@ -3,8 +3,11 @@
     "message": null,
     "data": {
         "alert":{
+            "isConfirm":true,
             "title":"케어솔루션/케어십 서비스는 최대 7개까지 서비스 이용이 가능합니다.<br>제품 2개를 해제 후 다시 신청해주시기 바랍니다.",
-            "desc":"(기존 4개의 제품 이용 중, 현재 신청 제품 5개)"
+            "cancelBtnName":null,
+            "okBtnName":null,
+            "okUrl":"#login"
         },
         "url":"http://www.naver.com"
     }

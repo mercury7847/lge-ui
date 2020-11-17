@@ -1,135 +1,185 @@
 <!DOCTYPE html>
 <html lang="ko">
-    @@include('./common/head.html', {
-        pageCSS: ["BMC/BMC"]
-    })
+    <!-- 템플릿으로 진행되는 화면. 제대로 display되도록 임시 삽입 -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>lge</title>
+        <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
+        <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0028.min.css" />
+        <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRC0024.min.css" />
+        <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
+        <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
+        <script src="/lg5-common/js/libs/jquery.event.move.min.js"></script>
+        <script src="/lg5-common/js/libs/jquery.twentytwenty.min.js"></script>
+        <script src="/lg5-common/js/vcui.min.js"></script>
+        <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
+        <script src="/lg5-common/js/lg.common.min.js"></script>
+        <script src="/lg5-common/js/components/KRC0024.min.js"></script>
+    </head>
+    <!-- // 템플릿으로 진행되는 화면. 제대로 display되도록 임시 삽입 -->
 <body>
     <div class="wrap">
         @@include('./common/header.html')
 
         <div class="container">
-            @@include('./common/modules/page-header.html', {
-                "pageTitle": "기획전"
+            <!-- component -->
+            @@include('./common/partials/KRC0024-hero.html', {
+                "common": {
+                    "marginTop": "zero-top",
+                    "marginBtm": "",
+                    "bg-color": "bg-black"
+                },
+                "title": {
+                    "align-class":"align-left",
+                    "font-class1": "font-regular",
+                    "font-class2": "font-underline",
+                    "headline": "<h2>LG SIGNATURE</h2>",
+                    "copy":"올레드 4S는 스스로 빛나는 올레드 만이 가능한 핵심가치를 뜻하며<br>홈시네마, 게임, 스포츠 등 TV의 활용 영역을 넓힌 새로운 TV 선택의 기준입니다."
+                },
+                "carousel": {
+                    "type": "type-hero",
+                    "item1": {
+                        "visual1":"/lg5-common/images/KRC0024/@thumb-1920x572.jpg",
+                        "visual2":"/lg5-common/images/KRC0024/@thumb-720x1125.jpg",
+                        "componentType":"",
+                        "align-class1":"align-left",
+                        "align-class2":"align-top align-mobile-bottom",
+                        "width-class":"type-wide",
+                        "font-color":"text-white",
+                        "font-class1":"font-regular",
+                        "font-class2":"",
+                        "component-class" : {
+                            "margin" : "zero-top zero-btm",
+                            "color" : "text-white",
+                            "textAlign": "text-center",
+                            "type" : "horizontal",
+                            "bg" : "bg-dark-gray",
+                            "slide" : "none-slide"
+                        }
+                    },
+                    "item2": {
+                        "visual1":"/lg5-common/images/KRC0024/@thumb-1920x572.jpg",
+                        "visual2":"/lg5-common/images/KRC0024/@thumb-720x1125.jpg",
+                        "componentType":"",
+                        "align-class1":"align-left",
+                        "align-class2":"align-top align-mobile-bottom",
+                        "width-class":"type-wide",
+                        "font-color":"text-white",
+                        "font-class1":"font-regular",
+                        "font-class2":"",
+                        "component-class" : {
+                            "margin" : "zero-top zero-btm",
+                            "color" : "text-white",
+                            "textAlign": "text-center",
+                            "type" : "horizontal",
+                            "bg" : "bg-dark-gray",
+                            "slide" : "none-slide"
+                        }
+                    },
+                    "item3": {
+                        "visual1":"/lg5-common/images/KRC0024/@thumb-1920x572.jpg",
+                        "visual2":"/lg5-common/images/KRC0024/@thumb-720x1125.jpg",
+                        "componentType":"",
+                        "align-class1":"align-center",
+                        "align-class2":"align-middle align-mobile-middle",
+                        "width-class":"type-narrow",
+                        "font-color":"text-white",
+                        "font-class1":"font-bold",
+                        "font-class2":"",
+                        "component-class" : {
+                            "margin" : "zero-top zero-btm",
+                            "color" : "text-black",
+                            "textAlign": "text-center",
+                            "type" : "horizontal",
+                            "bg" : "bg-gray",
+                            "slide" : ""
+                        }
+                    },
+                    "item4": {
+                        "visual1":"/lg5-common/images/KRC0024/@thumb-1920x572.jpg",
+                        "visual2":"/lg5-common/images/KRC0024/@thumb-720x1125.jpg",
+                        "componentType":"",
+                        "align-class1":"align-right",
+                        "align-class2":"align-bottom align-mobile-bottom",
+                        "width-class":"type-narrow",
+                        "font-color":"text-white",
+                        "font-class1":"font-bold",
+                        "component-class" : {
+                            "margin" : "zero-top zero-btm",
+                            "color" : "text-white",
+                            "textAlign": "text-center",
+                            "type" : "horizontal",
+                            "bg" : "bg-dark-gray",
+                            "slide" : ""
+                        }
+                    },
+                    "item5": {
+                        "visual1":"/lg5-common/images/KRC0024/@thumb-1920x572.jpg",
+                        "visual2":"/lg5-common/images/KRC0024/@thumb-720x1125.jpg",
+                        "componentType":"",
+                        "align-class1":"align-center",
+                        "align-class2":"align-top align-mobile-top",
+                        "width-class":"type-narrow",
+                        "font-color":"text-white",
+                        "font-class1":"font-bold",
+                        "font-class2":"",
+                        "component-class" : {
+                            "margin" : "zero-top zero-btm",
+                            "color" : "text-white",
+                            "textAlign": "text-center",
+                            "type" : "horizontal",
+                            "bg" : "bg-dark-gray",
+                            "slide" : "none-slide"
+                        }
+                    },
+                    "item6": {
+                        "visual1":"/lg5-common/images/KRC0024/@thumb-1920x572.jpg",
+                        "visual2":"/lg5-common/images/KRC0024/@thumb-720x1125.jpg",
+                        "componentType":"",
+                        "align-class1":"align-center",
+                        "align-class2":"align-top align-mobile-bottom",
+                        "width-class":"type-narrow",
+                        "font-color":"text-white",
+                        "font-class1":"font-bold",
+                        "font-class2":"",
+                        "component-class" : {
+                            "margin" : "zero-top zero-btm",
+                            "color" : "text-white",
+                            "textAlign": "text-center",
+                            "type" : "horizontal",
+                            "bg" : "bg-dark-gray",
+                            "slide" : ""
+                        }
+                    },
+                    "item7": {
+                        "visual1":"/lg5-common/images/KRC0024/@thumb-1920x572.jpg",
+                        "visual2":"/lg5-common/images/KRC0024/@thumb-720x1125.jpg",
+                        "componentType":"",
+                        "align-class1":"align-center",
+                        "align-class2":"align-middle align-mobile-middle",
+                        "width-class":"type-narrow",
+                        "font-color":"text-white",
+                        "font-class1":"font-bold",
+                        "font-class2":"",
+                        "component-class" : {
+                            "margin" : "zero-top zero-btm",
+                            "color" : "text-white",
+                            "textAlign": "text-center",
+                            "type" : "horizontal",
+                            "bg" : "bg-dark-gray",
+                            "slide" : "none-slide"
+                        }
+                    }
+                }
             })
-
-            <!-- event -->
-            <div class="contents event">
-                <!-- main visual slider -->
-                <div class="visual-wrap">
-                    @@include('./common/modules/carousel.html', {
-                        "mainSlideType" : true,
-                        "indiArr" : [
-                            "LG Q92 5G 구매혜택1", "LG Q92 5G 구매혜택2", "LG Q92 5G 구매혜택3"
-                        ],
-                        "slideArr" : [
-                            {
-                                "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
-                                "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
-                                "tit" : "<small>나의 첫번째 5G 폰</small>LG Q92 5G 구매혜택",
-                                "date" : "2020.08.01~2020.09.31",
-                                "titNum" : "tit01"
-                            },
-                            {
-                                "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
-                                "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
-                                "tit" : "<small>나의 첫번째 5G 폰</small>LG Q92 5G 구매혜택2",
-                                "date" : "2020.08.01~2020.09.31",
-                                "titNum" : "tit02"
-                            },
-                            {
-                                "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
-                                "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
-                                "tit" : "<small>나의 첫번째 5G 폰</small>LG Q92 5G 구매혜택3",
-                                "date" : "2020.08.01~2020.09.31",
-                                "titNum" : "tit03"
-                            }
-                        ]
-                    })
-                </div>
-                <!-- // main visual slider -->
-
-                <div class="main-wrap">
-                    <div class="box-list event-type">
-                        <ul class="box-list-inner">
-                            @@loop('./common/modules/list-box.html', [
-                                {
-                                    "img" : "dummy/@img-event01.jpg",
-
-                                    "title-hd" : "기획전 제목",
-                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                    "date-hd" : "기획전 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-                                },
-                                {
-                                    "img" : "dummy/@img-event02.jpg",
-
-                                    "title-hd" : "기획전 제목",
-                                    "title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
-                                    "date-hd" : "기획전 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-                                },
-                                {
-                                    "img" : "dummy/@img-event03.jpg",
-
-                                    "title-hd" : "기획전 제목",
-                                    "title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
-                                    "date-hd" : "기획전 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-                                },
-                                {
-                                    "img" : "dummy/@img-event01.jpg",
-
-                                    "title-hd" : "기획전 제목",
-                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                    "date-hd" : "기획전 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-                                },
-                                {
-                                    "img" : "dummy/@img-event02.jpg",
-
-                                    "title-hd" : "기획전 제목",
-                                    "title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
-                                    "date-hd" : "기획전 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-                                },
-                                {
-                                    "img" : "dummy/@img-event03.jpg",
-
-                                    "title-hd" : "기획전 제목",
-                                    "title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
-                                    "date-hd" : "기획전 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-                                },
-                                {
-                                    "img" : "dummy/@img-event01.jpg",
-
-                                    "title-hd" : "기획전 제목",
-                                    "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                    "date-hd" : "기획전 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-                                },
-                                {
-                                    "img" : "dummy/@img-event02.jpg",
-
-                                    "title-hd" : "기획전 제목",
-                                    "title" : "LG 시네빔으로 즐기는 왓챠 콘텐츠! LG 시네빔으로 즐기는 왓챠 콘텐츠!", 
-                                    "date-hd" : "기획전 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-                                },
-                                {
-                                    "img" : "dummy/@img-event03.jpg",
-
-                                    "title-hd" : "기획전 제목",
-                                    "title" : "LG 이동식 에어컨 창문 잠금장치 신청 이벤트", 
-                                    "date-hd" : "기획전 기간",
-                                    "date" : "2020.08.01~2020.09.30"
-                                }
-                            ])
-                        </ul>
-                    </div> 
-                </div>
-            </div>
-            <!-- // event -->
+            <!-- // component -->
+            <!-- component -->
+            @@include('./common/partials/KRP0028.html', {
+                "zero" : "zero-top zero-btm"
+            })
+            <!-- // component -->
         </div>
         
         @@include('./common/footer.html')

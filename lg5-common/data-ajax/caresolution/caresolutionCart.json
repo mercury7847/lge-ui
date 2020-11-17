@@ -3,6 +3,7 @@
     "message": null,
     "data": {
         "isLogin": true,
+        "tabCount": 2,
         "agreement": {
             "hasCareship":true
         },
@@ -53,7 +54,7 @@
                 "salePrice": "56500",
                 "originalPrice": "61400",
                 "tooltip": "툴팁내용",
-                "subscriptionUrl": null,
+                "subscriptionUrl": "#청약url",
                 "itemUrl":"#",
                 "tipUrl":"/lg5-common/data-ajax/caresolution/caresolutionTip.html"
             },
@@ -76,7 +77,7 @@
                 "salePrice" : "56600",
                 "originalPrice" : "61500",
                 "tooltip":"툴팁내용",
-                "subscriptionUrl":"#청약url",
+                "subscriptionUrl":null,
                 "itemUrl":"#",
                 "tipUrl":"/lg5-common/data-ajax/caresolution/caresolutionTip.html"
             }

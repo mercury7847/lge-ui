@@ -4,192 +4,32 @@
 
 .KRP0028 {
 	.tabs-wrap {
-		max-width:(1284px + 80px);
-		margin:0 auto;
-		background:#fff;
-		text-align:left;
+		padding:32px 0 48px;
 		.tabs {
-			padding:9px 40px;
-			text-align:left;
+			padding:0 40px;
+		}
+	}
+	.tab-contents {
+		max-width:1380px + 80px;
+		margin:0 auto;
+		padding:0 40px 120px;
+		.box-list:first-child {
+			padding-top:64px;
 			@include mobile {
-				padding:28px 20px 8px;
+				padding-top:0;
 			}
 		}
 	}
-
-	.main-wrap {
-		padding:32px 0 120px;
-		// background:#f4f4f4;
-		@include mobile {
-			padding:24px 0 0;
-		}
-	
-		.sorting-filter {
-			@include clearfix;
-			max-width:(1284px + 80px);
-			margin:0 auto;
-			padding:0 40px;
-			@include mobile {
-				padding:0 20px;
-			}
-			.sort-left {
-				float:left;
-				font-size:0;
-			}
-			.sort-right {
-				float:right;
-				font-size:0;
-			}
-			.sort-select-wrap {
-				vertical-align:top;
-				margin-left:40px;
-				@include mobile {
-					margin-left:20px;
-				}
-				&:first-child {
-					margin-left:0;
-				}
+	@include mobile {
+		.tabs-wrap {
+			padding:12px 0 0;
+			.tabs {
+				padding:0 16px;
 			}
 		}
-	
-		.event-list-wrap {
-			overflow:hidden;
-			max-width:(1284px + 80px);
-			margin:16px auto 0;
-			padding:0 40px;
-			@include mobile {
-				margin-top:12px;
-				padding:32px 20px 56px;
-				background:#fff;
-			}
-			.events {
-				font-size:0;
-				margin:-12px -6px 0;
-				@include mobile {
-					margin:-24px 0 0;
-				}
-				.lists {
-					display:inline-block;
-					position:relative;
-					width:33.3%; // ie (calc 계산이 100%를 넘어갈때가 종종 있어서 수치로 고정)
-					margin-top:12px;
-					padding:0 6px;
-					vertical-align:top;
-					@include mobile {
-						display:block;
-						width:100%;
-						margin-top:24px;
-						padding:0;
-					}
-					.evt {
-						position:relative;
-						padding-bottom:76px;
-						border-radius:4px;
-						background:#fff;
-						overflow:hidden;
-						@include mobile {
-							padding-bottom:20px;
-							box-shadow:3px 4px 15px 0 rgba(#000, .12);
-						}
-						.thumb {
-							display:block;
-							position:relative;
-							border-radius:4px;
-							overflow:hidden;
-							img {
-								width:100%;
-								height:auto;
-								vertical-align:top;
-							}
-							> .flag-wrap {
-								position:absolute;
-								top:24px;
-								left:24px;
-								@include mobile {
-									top:20px;
-									left:20px;
-								}
-							}
-						}
-						.event-info {
-							padding:24px;
-							padding-bottom:0;
-							@include mobile {
-								padding:16px 20px 0;
-							}
-							.flag-wrap {
-								margin-bottom:8px;
-							}
-							.tit {
-								height:30px;
-								color:#222;
-								font-size:20px;
-								line-height:30px;
-								font-weight:700;
-								overflow:hidden;
-								text-overflow:ellipsis;
-								white-space:nowrap;
-								@include mobile {
-									height:18px;
-									font-size:14px;
-									line-height:18px;
-								}
-							}
-							.date {
-								height:24px;
-								color:#222;
-								font-size:16px;
-								line-height:24px;
-								overflow:hidden;
-								text-overflow:ellipsis;
-								white-space:nowrap;
-								@include mobile {
-									height:16px;
-									font-size:12px;
-									line-height:16px;
-								}
-							}
-						}
-						.end-flag {
-							position:absolute;
-							top:0;
-							right:0;
-							width:60px;
-							height:60px;
-							padding:10px 0 10px 5px;
-							border-radius:0 4px 0 4px;
-							background-image:linear-gradient(#F04E3E, #EC455A);
-							color:#fff;
-							font-size:12px;
-							letter-spacing:5px;
-							line-height:20px;
-							text-align:center;
-							z-index:10;
-							@include mobile {
-								width:48px;
-								height:48px;
-								padding:8px 0 8px 4px;
-								font-size:10px;
-								line-height:16px;
-								letter-spacing:4px;
-							}
-						}
-					}
-					.btn {
-						position:absolute;
-						bottom:24px;
-						left:24px;
-						@include mobile {
-							position:relative;
-							bottom:0;
-							left:0;
-							margin-left:20px;
-							margin-top:12px;
-						}
-					}
-				}
-			}
+		.tab-contents {
+			border-top:12px solid #f4f4f4;
+			padding:32px 16px 60px;
 		}
-
-	} //.main-wrap
+	}
 }

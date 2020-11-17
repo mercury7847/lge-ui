@@ -150,81 +150,97 @@
 }
 
 
-    .inner-contents {
-        .table-cont {
-            .tb-tit {
-                margin-bottom: 8px;
-                @include font-small;
-                color: $color-default;
-                font-weight: $font-weight-bold; 
-                @include mobile {
-                    margin-bottom: 12px;
-                    font-size: 13px;
-                    line-height: 21px;
-                }
+.inner-contents {
+    .table-cont {
+        .tb-tit {
+            margin-bottom: 8px;
+            @include font-small;
+            color: $color-default;
+            font-weight: $font-weight-bold; 
+            @include mobile {
+                margin-bottom: 12px;
+                font-size: 13px;
+                line-height: 21px;
             }
-            .tb_row {
-                &.tb-left {
-                    text-align: left;
-                }
-                thead tr th,
-                tbody tr td {
-                    border-left: 1px solid #ddd;  
-                }
-                thead tr th:nth-child(1),
-                tbody tr td:nth-child(1){
+        }
+        .tb_row {
+            &.tb-left {
+                text-align: left;
+            }
+            thead tr th,
+            tbody tr td {
+                border-left: 1px solid #ddd;  
+            }
+            thead tr th:nth-child(1),
+            tbody tr td:nth-child(1){
+                border-left: none;  
+            }
+
+            tbody tr td.winner.on {
+                border: 2px solid $color-primary;
+                border-right: none;
+            }
+            tbody tr td.phone.on {
+                border: 2px solid $color-primary;
+                border-left: 1px solid #ddd;
+            }
+            @include mobile {
+                thead tr th:nth-child(2n+1),
+                tbody tr td:nth-child(2n+1){
                     border-left: none;  
                 }
-
-                tbody tr td.winner.on {
-                    border: 2px solid $color-primary;
-                    border-right: none;
-                }
-                tbody tr td.phone.on {
-                    border: 2px solid $color-primary;
-                    border-left: 1px solid #ddd;
-                }
-                @include mobile {
-                    thead tr th:nth-child(2n+1),
-                    tbody tr td:nth-child(2n+1){
-                        border-left: none;  
-                    }
-                }
             }
-        }
-        @include mobile {
-            .table-cont {
-                table {
-                    tr {
-                        display: flex;
-                        width: 100%;
-                        flex-wrap: wrap;
-                        th:nth-child(3),
-                        th:nth-child(4) {
-                            display: none;
-                        }
-                        .winner-tt,
-                        .winner{
-                            display: inline-flex;
-                            width: 34.4%;
-                        }
-                        .phone-tt,
-                        .phone {
-                            display: inline-flex;
-                            width: 65.6%;
-                        }
-                        .empty {
-                            display: none;
-                        }
-                    }
-                }
-            }
-        }
-        
-        .table-cont + .table-cont {
-            margin-top: 32px;
         }
     }
+    @include mobile {
+        .table-cont {
+            table {
+                tr {
+                    display: flex;
+                    width: 100%;
+                    flex-wrap: wrap;
+                    th:nth-child(3),
+                    th:nth-child(4) {
+                        display: none;
+                    }
+                    .winner-tt,
+                    .winner{
+                        display: inline-flex;
+                        width: 34.4%;
+                    }
+                    .phone-tt,
+                    .phone {
+                        display: inline-flex;
+                        width: 65.6%;
+                    }
+                    .empty {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    
+    .table-cont + .table-cont {
+        margin-top: 32px;
+    }
+}
+
+.select-list-wrap > ul {
+    margin-top: -19px;
+    li {
+        margin-top: 19px;
+    }
+}
+
+.academy-pop {
+    .input-info  {
+        margin-top: 64px;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
 
 
 

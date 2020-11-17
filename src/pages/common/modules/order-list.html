@@ -10,12 +10,12 @@
         <span class="number">OR2022330343</span>
     </div>
     }
-    <div class="item-image"><img src="@@visual" alt=""></div>
+    <div class="item-image"><a href="#n"><img src="@@visual" alt=""></a></div>
     <div class="product-info">
         <div class="flag-wrap bg-type">
             @@flags
         </div>
-        <div class="item-name">@@modelName</div>
+        <div class="item-name"><a href="#n">@@modelName</a></div>
         <div class="item-options">
             <div class="sku"><span class="blind">제품번호</span>S5MBR</div>
             <div class="sibling-option"><span class="blind">제품옵션</span>Silver</div>
@@ -31,7 +31,9 @@
     <div class="product-payment">
         <div class="amount">
             <div class="price">
+                @@if(context.originalPrice) {
                 <p class="original">@@originalPrice</p>
+                }
                 <p class="total">@@price</p>
             </div>
             @@if(context.tooltip) {
@@ -60,7 +62,7 @@
     }
     @@if(context.message) {
     <div class="disabled-message">
-        <p class="err-msg">설치 불가능 제품</p>
+        <p class="err-msg">@@message</p>
     </div>
     }
     @@if(context.checkOption) {
