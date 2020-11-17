@@ -10,7 +10,8 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
     return core.ui('CheckboxAllChecker', {
         bindjQuery: 'checkboxAllChecker',
         defaults: {
-            allCheckClass: '.ui_all_checker' //전체 선택 체크박스 클래스...
+            allCheckClass: '.ui_all_checker', //전체 선택 체크박스 클래스...
+            checkBoxItemsTargetQuery: null
         },
         initialize: function initialize(el, options) {
             var self = this;
@@ -20,7 +21,11 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
             }
 
             self.$allChecker = self.$el.find(self.options.allCheckClass);
-            self.$items = self.$el.find('input[type=checkbox]').not(self.options.allCheckClass);
+            if(self.options.checkBoxItemsTargetQuery) {
+                self.$items = self.$el.find(self.options.checkBoxItemsTargetQuery);
+            } else {
+                self.$items = self.$el.find('input[type=checkbox]').not(self.options.allCheckClass);
+            }
             self.total = self.$items.size();
             
             if (self.total === 0) {
