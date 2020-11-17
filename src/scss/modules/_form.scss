@@ -248,6 +248,14 @@
                 float: right;
             }
         }
+        .tit.type2{
+            display:block;
+            width:auto;
+
+            span{
+                @include font-medium;
+            }
+        }
         .conts {
             position:relative;
             display:inline-block;
@@ -846,6 +854,9 @@
         }
     }
 }
+.input-wrap.type2{
+    display:block;
+}
 // input error text
 .err-msg {
     color:#f00;
@@ -863,6 +874,10 @@
             margin-top:1px;
         }
     }
+}
+.err-msg.type2{
+    color:#ec455a;
+    background-image:none;
 }
 
 // input + btn mix type
