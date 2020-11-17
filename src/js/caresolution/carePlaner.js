@@ -215,12 +215,13 @@
     var $fixedTab;
     var $typeTab;
     var $categoryTab;
+    var $categoryTabCtrler;
     var $sortSelector;
     var $prodListContainer;
     var $putItemContainer;
 
     function init(){
-        vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky', 'ui/modal', 'ui/selectbox'], function () {
+        vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky', 'ui/modal', 'ui/selectbox', 'ui/smoothScrollTab'], function () {
             setting();
             eventBind();
 
@@ -233,7 +234,7 @@
     function setting(){
         $caresolutionContainer = $('.care-solution-wrap');
         $fixedTab = $('.fixed-tab-wrap');
-        $typeTab = $fixedTab.find('.tabs-wrap.btn-type');
+        $typeTab = $fixedTab.find('.tabs-wrap.new-type');
         $categoryTab = $fixedTab.find('.cate-scroll-wrap');
         $sortSelector = $('.sort-select-wrap select');
         $prodListContainer = $('.prd-list-wrap');
@@ -243,6 +244,8 @@
 
         _categoryListUrl = $caresolutionContainer.data("cateList");
         _prodListUrl = $caresolutionContainer.data("prodList");
+
+        $categoryTabCtrler = new vcui.ui.SmoothScrollTab('.ui_smoothScroll_tab');
 
         $('.ui_carousel_slider').vcCarousel({
             settings: "unslick",
@@ -277,15 +280,20 @@
     }
 
     function eventBind(){
+        $typeTab .on('click', '.tabs li a', function(e){
+            e.preventDefault();
+        })
         $categoryTab.on('click', '.tabs > li > a', function(e){
             e.preventDefault();
 
-            selectedTab(this);
+            $categoryTabCtrler.setTabIndex(3);
 
-            var categorytop = $caresolutionContainer.offset().top;
-            $('html, body').animate({scrollTop:categorytop}, 120, function(){
-                loadCareProdList(true);
-            });
+            // selectedTab(this);
+
+            // var categorytop = $caresolutionContainer.offset().top;
+            // $('html, body').animate({scrollTop:categorytop}, 120, function(){
+            //     loadCareProdList(true);
+            // });
         });
 
         $sortSelector.on('change', function(e){
@@ -376,7 +384,7 @@
             categoryID: getCategoryID(),
             sortID: getSortID()
         }
-        console.log("requestData : ", requestData)
+        console.log("serviceName : ", serviceName)
         lgkorUI.requestAjaxData(_prodListUrl, requestData, function(result){
 
             _currentItemList = vcui.array.map(result.data.productList, function(item, idx){
@@ -647,8 +655,8 @@
 
     function getServiceName(){
         var currentab = $typeTab.find('.tabs li[class=on]');
-
-        return currentab.find('a span').text();
+        
+        return currentab.find('a').data("serviceName");
     }
 
     function getOptionData(item){
