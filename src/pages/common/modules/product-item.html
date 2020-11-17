@@ -63,10 +63,11 @@
             </div>
             }
             @@if (context.flags) {
-                @@include('./common/modules/flags.html', {
-                    "barType": true,
-                    "flags": ["NEW","BEST"]
-                })
+            <div class="flag-wrap bar-type">
+                @@for ( var i=0; i < flags.length; i++ ) {
+                <span class="flag">`+flags[i]+`</span>
+                }
+            </div>
             }
             <div class="product-info">
                 @@if (context.search) {
@@ -110,11 +111,32 @@
                 }
             </div>
             @@if (context.benefit) {
-            @@include('./common/modules/flags.html', {
-                "barType": true,
-                "flags": ["캐시백","사은품"]
-            })
+            <!-- 2차 디자인 변경에 의해 앞으로 사용하는지 확인 해야함 -->
+            <div class="flag-wrap bar-type">
+                @@for ( var i=0; i < benefit.length; i++ ) {
+                <span class="flag">`+benefit[i]+`</span>
+                }
+            </div>
             }
+            @@if (context.hashtag) {
+            <!-- 2차 디자인 변경에 의해 앞으로 사용하는지 확인 해야함 -->
+            <div class="hashtag-wrap">
+                <span class="hashtag">#여름가전</span>
+                <span class="hashtag">#가전</span>
+            </div>
+            }
+        </div>
+        @@if (context.wish) {
+        <!-- 2차 디자인 변경에 의해 앞으로 사용하는지 확인 해야함 -->
+        <div class="product-wish">
+            <span class="chk-wish-wrap">
+                <input type="checkbox" id="@@wish.id" name="@@wish.name" @@wish.checked>
+                <label for="@@wish.id"><span class="blind">찜하기</span></label>
+            </span>
+        </div>
+        }
+        @@if (context.singleButton) {
+        <div class="product-bottom">
             @@if (context.price) {
             <div class="price-area">
                 @@if (context.originalPrice) {
@@ -129,7 +151,7 @@
                 </div>
             </div>
             }
-            @@if (context.care) {
+            @@if (context.carePrice) {
             <div class="price-area">
                 <div class="total-price">
                     <em class="blind">최대 혜택가격</em>
@@ -138,33 +160,19 @@
                 <span class="small-text">(3개월/1회 방문)</span>
             </div>
             }
-            @@if (context.hashtag) {
-            <div class="hashtag-wrap">
-                <span class="hashtag">#여름가전</span>
-                <span class="hashtag">#가전</span>
+            <div class="product-button">
+                <a href="#n" class="btn border">@@singleButton</a>
             </div>
-            }
-        </div>
-        @@if (context.wish) {
-        <div class="product-wish">
-            <span class="chk-wish-wrap">
-                <input type="checkbox" id="@@wish.id" name="@@wish.name" @@wish.checked>
-                <label for="@@wish.id"><span class="blind">찜하기</span></label>
-            </span>
-        </div>
-        }
-        @@if (context.singleButton) {
-        <div class="product-button">
-            <a href="#n" class="btn border">@@singleButton</a>
         </div>
         }
         @@if (context.bottom) {
         <div class="product-bottom">
             @@if (context.bottom.benefit) {
-            @@include('./common/modules/flags.html', {
-                "barType": true,
-                "flags": ["캐시백","사은품"]
-            })
+            <div class="flag-wrap bar-type">
+                @@for ( var i=0; i < bottom.benefit.length; i++ ) {
+                <span class="flag">`+bottom.benefit[i]+`</span>
+                }
+            </div>
             }
             @@if (context.bottom.price) {
             <div class="price-area">
