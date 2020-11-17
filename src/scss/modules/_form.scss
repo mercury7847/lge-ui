@@ -877,7 +877,10 @@
 }
 .err-msg.type2{
     color:#ec455a;
-    background-image:none;
+    &::before{
+        background-image:none;
+        width:0;
+    }
 }
 
 // input + btn mix type
