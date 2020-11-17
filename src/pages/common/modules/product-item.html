@@ -63,10 +63,11 @@
             </div>
             }
             @@if (context.flags) {
-                @@include('./common/modules/flags.html', {
-                    "barType": true,
-                    "flags": ["NEW","BEST"]
-                })
+            <div class="flag-wrap bar-type">
+                @@for ( var i=0; i < flags.length; i++ ) {
+                <span class="flag">`+flags[i]+`</span>
+                }
+            </div>
             }
             <div class="product-info">
                 @@if (context.search) {
@@ -110,12 +111,15 @@
                 }
             </div>
             @@if (context.benefit) {
-            @@include('./common/modules/flags.html', {
-                "barType": true,
-                "flags": ["캐시백","사은품"]
-            })
+            <!-- 2차 디자인 변경에 의해 앞으로 사용하는지 확인 해야함 -->
+            <div class="flag-wrap bar-type">
+                @@for ( var i=0; i < benefit.length; i++ ) {
+                <span class="flag">`+benefit[i]+`</span>
+                }
+            </div>
             }
             @@if (context.hashtag) {
+            <!-- 2차 디자인 변경에 의해 앞으로 사용하는지 확인 해야함 -->
             <div class="hashtag-wrap">
                 <span class="hashtag">#여름가전</span>
                 <span class="hashtag">#가전</span>
@@ -123,6 +127,7 @@
             }
         </div>
         @@if (context.wish) {
+        <!-- 2차 디자인 변경에 의해 앞으로 사용하는지 확인 해야함 -->
         <div class="product-wish">
             <span class="chk-wish-wrap">
                 <input type="checkbox" id="@@wish.id" name="@@wish.name" @@wish.checked>
@@ -163,10 +168,11 @@
         @@if (context.bottom) {
         <div class="product-bottom">
             @@if (context.bottom.benefit) {
-            @@include('./common/modules/flags.html', {
-                "barType": true,
-                "flags": ["캐시백","사은품"]
-            })
+            <div class="flag-wrap bar-type">
+                @@for ( var i=0; i < bottom.benefit.length; i++ ) {
+                <span class="flag">`+bottom.benefit[i]+`</span>
+                }
+            </div>
             }
             @@if (context.bottom.price) {
             <div class="price-area">
