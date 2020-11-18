@@ -77,6 +77,7 @@ var res = {
 			"KRC0055_USP BANNER" : ["/html/components/KRC0055.html","","검수완료"],
 			"KRC0056_BG Image 3 Text" : ["/html/components/KRC0056.html","","검수완료"],
 			"KRC0057_BG Image 2Image - Textoverlay" : ["/html/components/KRC0057.html","","검수완료"],
+			"KRC0058_Side Slide Image - Text" : ["/html/components/KRC0058.html","","진행중"],
 			"KRP0001_GNB - B2C" : ["/html/components/KRP0001.html","","검수완료"],
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","검수완료"],
