@@ -105,8 +105,8 @@
                 //데스크탑용 갤러리 이미지 클릭
                 self.$pdpImage.find('a').first().on('click',function(e){
                     e.preventDefault();
-                    var slideClicked = $(this).attr("data-idx"); 
-                    self.openVisualModal(slideClicked);
+                    var index = $(this).attr("data-idx"); 
+                    self.openVisualModal(index);
                 });
 
                 //데스크탑용 썸네일리스트 클릭
@@ -114,8 +114,6 @@
                     e.preventDefault();
                     var $li = $(this).parent();
                     var index = $li.find('input[name="index"]').val();
-                    console.log($li, $li.find('input[name="index"]'));
-                    //var slideClicked = $(this).attr("data-idx");
                     if($li.hasClass('more')) {
                         //더보기 버튼은 바로 pdp모달 뛰움
                         self.openVisualModal(index);
@@ -129,6 +127,22 @@
                 self.$pdpMoreInfo.on('click','a',function(e) {
                     e.preventDefault();
                     self.requestModal(this);
+                });
+
+                //모바일용 갤러리 클릭
+                self.$pdpMobileSlider.on('click', function(e){ 
+                    e.preventDefault();
+                    var index = $(this).find(".ui_carousel_current").attr("data-ui_carousel_index");
+                    console.log(index);
+                    self.openVisualModal(index); 
+                });
+
+                //pdp모달 썸네일 리스트 클릭
+                self.$popPdpThumbnail.on('click','li.pop-thumbnail a',function(e) {
+                    e.preventDefault();
+                    var $li = $(this).parent();
+                    var index = $li.find('input[name="index"]').val();
+                    self.clickModalThumbnail(index);
                 });
             },
 
@@ -178,9 +192,9 @@
             },
 
             clickModalThumbnail: function(index) {
+                var self = this;
                 var thumbItem = self.$popPdpThumbnail.find('li.pop-thumbnail:nth-child('+(parseInt(index)+1)+')');
                 var item = self.findHiddenInput(thumbItem);
-                console.log(index,thumbItem);
 
                 //이전에 선택되었던 썸네일 활성화 제거 및 새로운 썸네일 활성화
                 if(self.$selectModalItemTarget) {
@@ -193,7 +207,7 @@
                 self.$popPdpVisualVideo.html('');
                 self.$popPdpVisualAnimation.find('div.animation-box').vcVideoBox('reset');
     
-                switch(item.attr('data-type')) {
+                switch(item.type) {
                     case "image":
                         self.$popPdpVisualImage.find('div.zoom-area img').attr({'data-pc-src':item.imagePC,'data-m-src':item.imageMobile});
                         //vcui.require(['ui/imageSwitch'], function () {
