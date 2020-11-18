@@ -41,7 +41,7 @@
 
                 self.$list.on('click', 'div.list-inner a.btn-link', function(e) {
                     e.preventDefault();
-                    _self.requestEventModal(this);
+                    _self.requestModal(this);
                 });
             },
 
@@ -86,7 +86,7 @@
                 _self.checkNoData();
             },
 
-            requestEventModal: function(dm) {
+            requestModal: function(dm) {
                 var _self = this;
                 var ajaxUrl = $(dm).attr('href');
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
