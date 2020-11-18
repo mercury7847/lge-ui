@@ -234,6 +234,10 @@
                     }
                     .btn {
                         border-color: $color-default !important;
+                        &:hover,
+                        &:focus {
+                            border-color: $color-primary !important;
+                        }
                     }
                 }
             }
