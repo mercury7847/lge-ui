@@ -31,6 +31,11 @@
         &:first-child {
             margin-top: 0;
         }
+        @include pc {
+            .form-wrap {
+                padding-right: 186px;
+            }
+        }
     }
     .input-info-wrap {
         margin-top: 64px;
@@ -53,6 +58,19 @@
         margin-top: 64px;
         &:first-child {
             margin-top: 0;
+        }
+
+        .form-wrap {
+            & + .bullet-list {
+                margin-top: 48px;
+            }
+            @include pc {
+                padding-right: 186px;
+                & + .bullet-list {
+                    margin-right: 186px;
+                    @include calc(margin-left,25%,24px);
+                }
+            }
         }
     }
 }
