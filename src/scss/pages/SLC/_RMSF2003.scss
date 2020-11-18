@@ -350,9 +350,40 @@ br.pc-only {
                             position:static;
                             .ui-select-button {
                                 position:static;
+                                padding:0 32px 0 0;
                                 text-align:right;
                                 .ico {
                                     right:16px;
+                                }
+                            }
+                            .ui-select-text {
+                                @include font-small;
+                            }
+                            .ui-selectbox-list {
+                                top:38px;
+                                left:-1px;
+                                right:-1px;
+                                padding:0;
+                                box-shadow:none;
+                                text-align:right;
+                                border:1px solid #222;
+                                border-top:none;
+                                border-radius:0 0 8px 8px;
+                                transform:none;
+                                ul li {
+                                    a {
+                                        padding:8px 44px;
+                                        @include font-small;
+                                        font-weight:500;
+                                        text-align:right;
+                                        &:hover {
+                                            background:#f4f4f4;
+                                        }
+                                    }
+                                    &.on a {
+                                        display:none;
+                                        color:#222;
+                                    }
                                 }
                             }
                         }
@@ -364,34 +395,7 @@ br.pc-only {
                     border-radius:8px 8px 0 0;
                     dt {
                         position:relative;
-                        z-index:101;
-                    }
-                    dd {
-                        .ui-selectbox-list {
-                            top:38px;
-                            left:-1px;
-                            right:-1px;
-                            padding:0;
-                            box-shadow:none;
-                            text-align:right;
-                            border:1px solid #222;
-                            border-top:none;
-                            border-radius:0 0 8px 8px;
-                            ul li {
-                                a {
-                                    padding:8px 44px;
-                                    @include font-small;
-                                    font-weight:500;
-                                    &:hover {
-                                        background:#f4f4f4;
-                                    }
-                                }
-                                &.on a {
-                                    display:none;
-                                    color:#222;
-                                }
-                            }
-                        }
+                        z-index:50;
                     }
                 }
                 &.disabled {

@@ -149,20 +149,19 @@
     }
 }
 
-
+.tb-tit {
+    margin-bottom: 8px;
+    @include font-small;
+    color: $color-default;
+    font-weight: $font-weight-bold; 
+    @include mobile {
+        margin-bottom: 12px;
+        font-size: 13px;
+        line-height: 21px;
+    }
+}
 .inner-contents {
     .table-cont {
-        .tb-tit {
-            margin-bottom: 8px;
-            @include font-small;
-            color: $color-default;
-            font-weight: $font-weight-bold; 
-            @include mobile {
-                margin-bottom: 12px;
-                font-size: 13px;
-                line-height: 21px;
-            }
-        }
         .tb_row {
             &.tb-left {
                 text-align: left;
@@ -226,21 +225,7 @@
     }
 }
 
-.select-list-wrap > ul {
-    margin-top: -19px;
-    li {
-        margin-top: 19px;
-    }
-}
 
-.academy-pop {
-    .input-info  {
-        margin-top: 64px;
-        &:first-child {
-            margin-top: 0;
-        }
-    }
-}
 
 
 
