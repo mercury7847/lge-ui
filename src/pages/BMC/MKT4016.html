@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <article id="popup" class="win-popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit"><span>이벤트 응모 내역 조회</span></h1>
+        </header>
+        <section class="pop-conts event-app-form">
+            <div class="table-cont">
+                <p class="tb-tit">이벤트 응모 내역</p>
+                <div class="tb_row tb-row-bl">
+                    <table>
+                        <caption>이벤트 응모 내역 모델명, 변경하기, 변경일자 안내</caption>
+                        <colgroup>
+                            <col style="width:33.33%">
+                            <col style="width:33.33%">
+                            <col>
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th scope="col">모델명</th>
+                            <th scope="col">변경하기</th>
+                            <th scope="col">변경일자</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>AS309DWA</td>
+                            <td>
+                                <button type="button" class="btn border size"><span>변경하기</span></button>
+                            </td>
+                            <td>2020.09.30</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">01. 구매정보</h2>
+                </div>
+                <div class="form-wrap">
+                    <dl class="forms">
+                        <dt class="tit"><label for="modelName">모델명</label></dt>
+                        <dd class="conts">
+                            <div class="input-wrap">
+                                <input type="text" id="modelName" value="AS309DWA" placeholder="모델명을 입력해 주세요." readonly>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="buyDate">구매일자</label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap">
+                                <input type="text" id="buyDate" value="2020.09.01" placeholder="구매일자를 입력해 주세요." readonly>
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="buyPlace">구매장소</label></dt>
+                        <dd class="conts">
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" id="buyPlace" title="구매장소 선택">
+                                    <option value="" class="placeholder">선택</option>
+                                    <option value="">베스트샵</option>
+                                    <option value="">베스트샵</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="branch">지점명</label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap">
+                                <input type="text" id="branch" value="운정점" placeholder="지점명을 입력해 주세요.">
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="serialNum">제조번호(S/N)</label></dt>
+                        <dd class="conts">
+                            <div class="box">
+                                <div class="input-wrap">
+                                    <input type="text" id="serialNum" value="12345678910" placeholder="S/N을 입력해 주세요.">
+                                    <p class="link"><a href="#n" class="btn-link">제품 제조번호 확인방법</a></p>
+                                </div>
+                                <div class="cell">
+                                    <button type="button" class="btn"><span>제조번호 확인</span></button>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">02. 서비스 요청 정보</h2>
+                </div>
+                <div class="form-wrap">
+                    <dl class="forms">
+                        <dt class="tit"><label for="name" class="req">이름<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <div class="input-wrap">
+                                <input type="text" id="name" placeholder="이름을 입력해 주세요." value="">
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit">
+                            <label for="phone" class="req">휴대폰번호<span class="blind">필수입력</span></label>
+                        </dt>
+                        <dd class="conts">
+                            <div class="input-wrap">
+                                <input type="text" id="phone" placeholder="‘-’ 없이 번호를 입력해 주세요." readonly>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="addr" class="req">주소<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <div class="address-box">
+                                <div class="box">
+                                    <div class="input-wrap zip-code">
+                                        <input type="text" id="addr" value="05723" placeholder="우편번호" disabled>
+                                    </div>
+                                    <div class="cell">
+                                        <button type="button" class="btn"><span>주소 찾기</span></button>
+                                    </div>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
+                                </div>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" value="엘지 송파빌딩 1702호" placeholder="상세주소를 입력해주세요.">
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="slt05" class="req">서비스 요청시기<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <div class="box date-select-box col-2">
+                                <div class="cell">
+                                    <div class="box">
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" id="slt05" title="년 선택">
+                                                <option value="" class="placeholder">선택</option>
+                                                <option value="">2020</option>
+                                                <option value="">2019</option>
+                                            </select>
+                                        </div>
+                                        <div class="text"><span>년</span></div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="box">
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" id="slt06" title="월 선택">
+                                                <option value="" class="placeholder">선택</option>
+                                                <option value="">10</option>
+                                                <option value="">11</option>
+                                            </select>
+                                        </div>
+                                        <div class="text"><span>월</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "topBorder" : true,
+                    "bulletTxt" : [
+                        "선택하신 날짜 이전에 상담사가 사전 연락을 드립니다.",
+                        "필터 교체와 토탈 케어 서비스는 전문 관리사에 의해 동시에 진행 됩니다.",
+                        "당첨 발표 이후 서비스 요청 시기 수정은 불가능 합니다."
+                    ]
+                })
+            </div>
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>저장하기</span></button>
+            </div>
+        </footer>
+        <button type="button" class="win-btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+</body>
+</html>

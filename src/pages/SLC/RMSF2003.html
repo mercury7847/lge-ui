@@ -118,72 +118,9 @@
         })
 
         <!-- 상세견적확인 팝업-->
-        <article id="pop-estimate" class="popup-wrap">
-            <header class="pop-header">
-                <h1 class="tit"><span>케어플래너 견적내역</span></h1>
-            </header>
-            <section class="pop-conts care-planner-pop">
-                <p class="info-txt">선택한 케어솔루션/케어십 서비스 제품의 견적을 확인해보세요.</p>
-                <div class="tit-wrap">
-                    <h2 class="h2-tit">선택 제품</h2>
-                    <span class="leng">총 2개</span>
-                </div>
-                <div class="estimate-list">
-                    <!-- carousel -->
-                    <!-- //carousel -->
-                </div>
-
-                <div class="tit-wrap">
-                    <h2 class="h2-tit">견적 합계</h2>
-                </div>
-                <div class="estimate-price">
-                    <dl>
-                        <dt>기본 이용 요금</dt>
-                        <dd>월 81,400원</dd>
-                    </dl>
-                    <dl>
-                        <dt>결합 할인 금액</dt>
-                        <dd class="sale">월 -9,000원</dd>
-                    </dl>
-                    <dl>
-                        <dt>이달의 혜택 금액</dt>
-                        <dd class="sale">월 -4,000원</dd>
-                    </dl>
-                    <dl class="total">
-                        <dt>최종 이용 요금</dt>
-                        <dd>월 68,400원</dd>
-                    </dl>
-                </div>
-
-                <div class="alliance-card">
-                    <dl>
-                        <dt>제휴카드 선택</dt>
-                        <dd>
-                            <div class="select-wrap">
-                                <select class="ui_selectbox" id="select1" title="제휴카드 할인 선택">
-                                    <option value="" class="placeholder">제휴카드 할인</option>
-                                    <option value="">[하나] LG전자 렌탈플러스</option>
-                                    <option value="">[신한] LG전자 렌탈애(愛)</option>
-                                    <option value="">[롯데] LG스페셜 카드</option>
-                                </select>
-                            </div>
-                            <p class="price">월 최대 -23,000원</p>
-                        </dd>
-                    </dl>
-                    @@include('./common/modules/bullet-list.html', {
-                        "bulletTxt" : [
-                            "제휴카드 신청은 청약신청 단계에서 가능합니다."
-                        ]
-                    })
-                </div>
-            </section>
-            <footer class="pop-footer">
-                <div class="btn-group">
-                    <button type="button" class="btn pink"><span>청약신청하기</span></button>
-                </div>
-            </footer>
-            <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-        </article>
+        @@include('./common/popup/RMSF2020_popup.html', {
+            popupID: 'pop-estimate'
+        })
         <!-- //상세견적확인 팝업-->
         
         @@include('./common/footer.html')

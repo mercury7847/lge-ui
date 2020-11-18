@@ -11,72 +11,75 @@
         <section class="pop-conts academy-pop">
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">구매정보</h2>
+                    <h2 class="h2-tit">01. 구매정보</h2>
                 </div>
                 <div class="form-wrap">
-                    <div class="double-form">
-                        <dl class="forms">
-                            <dt class="tit"><label for="buyerName">구매자 이름</label></dt>
-                            <dd class="conts">
-                                <span class="input-wrap block">
-                                    <input type="text" id="buyerName" value="홍길동" readonly>
-                                </span>
-                            </dd>
-                        </dl>
-                        <dl class="forms">
-                            <dt class="tit"><label for="buyerPhone">휴대폰번호</label></dt>
-                            <dd class="conts">
-                                <span class="input-wrap block">
-                                    <input type="text" id="buyerPhone" value="010-1234-5678" readonly>
-                                </span>
-                                @@include('./common/modules/bullet-list.html', {
-                                    "bulletTxt" : [
-                                        "LG전자 회원가입 시 입력한 휴대폰 번호로 응모 됩니다."
-                                    ]
-                                })
-                            </dd>
-                        </dl>
-                    </div>
                     <dl class="forms">
-                        <dt class="tit"><label for="modelName" class="req">모델명<span class="blind">필수입력</span></label></dt>
+                        <dt class="tit"><label for="buyerName">구매자 이름</label></dt>
                         <dd class="conts">
-                            <span class="input-wrap block">
-                                <input type="text" id="modelName" placeholder="모델명을 입력해 주세요.">
+                            <span class="input-wrap">
+                                <input type="text" id="buyerName" value="홍길동" placeholder="이름을 입력해 주세요." readonly>
                             </span>
                         </dd>
                     </dl>
                     <dl class="forms">
-                        <dt class="tit"><label for="serialNum">제조번호(S/N)</label></dt>
-                        <dd class="conts">
-                            <span class="input-wrap block add-btn">
-                                <span class="box">
-                                    <input type="number" id="serialNum" placeholder="S/N을 입력해 주세요.">
-                                    <span class="cell">
-                                        <button type="button" class="btn-text pink"><span>시리얼번호 확인</span></button><!-- class 수정 -->
-                                    </span>
+                        <dt class="tit">
+                            <label for="buyerPhone">휴대폰번호</label>
+                            <div class="tooltip-wrap"><!-- 활성화시 active -->
+                                <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
+                                <span class="tooltip-box">
+                                    <p>LG전자 회원가입 시 입력한 휴대폰 번호로 응모 됩니다.</p>
+                                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
                                 </span>
-                            </span>
-                            <!-- DOM 수정 -->
-                            <span class="btm-more">
-                                <button type="button" data-href="#" data-control="modal" class="btn-moreinfo flt-btn"><span>제품 제조번호 확인 방법</span></button>
-                            </span>
-                            <!-- // DOM 수정 -->
+                            </div>
+                        </dt>
+                        <dd class="conts">
+                            <div class="input-wrap">
+                                <input type="text" id="buyerPhone" placeholder="‘-’ 없이 번호를 입력해 주세요." readonly>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="modelName" class="req">모델명<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <div class="input-wrap">
+                                <input type="text" id="modelName" placeholder="모델명을 입력해 주세요.">
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="serialNum" class="req">시리얼번호<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <div class="box">
+                                <div class="input-wrap">
+                                    <input type="text" id="serialNum" placeholder="S/N을 입력해 주세요.">
+                                    <p class="link"><a href="#n" class="btn-link">PC 모델명  및 시리얼 번호 확인 방법</a></p>
+                                </div>
+                                <div class="cell">
+                                    <button type="button" class="btn"><span>시리얼번호 확인</span></button>
+                                </div>
+                            </div>
                         </dd>
                     </dl>
                     <dl class="forms">
                         <dt class="tit"><label for="buyerAddr" class="req">구매자 주소<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
-                            <span class="input-wrap block add-btn">
-                                <span class="box">
-                                    <input type="text" id="buyerAddr" value="06049" readonly>
-                                    <span class="cell addr">
-                                        <button type="button" class="btn-text pink"><span>주소찾기</span></button><!-- class 수정 -->
-                                    </span>
-                                </span>
-                            </span>
-                            <span class="input-wrap block">
-                                <input type="text" id="buyerAddr2" value="서울 강남구 논현로 748  (논현동,세화빌딩) 세회빌딩 4층" readonly>
-                            </span>
+                            <div class="address-box">
+                                <div class="box">
+                                    <div class="input-wrap zip-code">
+                                        <input type="text" id="buyerAddr" value="05723" placeholder="우편번호" disabled>
+                                    </div>
+                                    <div class="cell">
+                                        <button type="button" class="btn"><span>주소 찾기</span></button>
+                                    </div>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
+                                </div>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" value="엘지 송파빌딩 1702호" placeholder="상세주소를 입력해주세요.">
+                            </div>
                         </dd>
                     </dl>
                 </div>
@@ -84,53 +87,62 @@
 
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">사은품 배송정보</h2>
-                    <div class="right-chk ">
-                        <span class="chk-wrap">
-                            <input type="checkbox" id="info" name="info">
-                            <label for="info">구매자 정보와 같음</label>
-                        </span>
-                    </div>
+                    <h2 class="h2-tit">02. 사은품 배송 정보</h2>
                 </div>
                 <div class="form-wrap">
-                    <div class="double-form">
-                        <dl class="forms">
-                            <dt class="tit"><label for="recipientName" class="req">수령자 이름<span class="blind">필수입력</span></label></dt>
-                            <dd class="conts">
-                                <span class="input-wrap block">
-                                    <input type="text" id="recipientName" placeholder="수령자 이름을 입력해 주세요.">
-                                </span>
-                            </dd>
-                        </dl>
-                        <dl class="forms">
-                            <dt class="tit"><label for="recipientPhone" class="req">휴대폰 번호<span class="blind">필수입력</span></label></dt>
-                            <dd class="conts">
-                                <span class="input-wrap block">
-                                    <input type="number" id="recipientPhone" placeholder="휴대폰 번호를 입력해주세요.">
-                                </span>
-                            </dd>
-                        </dl>
+                    <div class="select-list-wrap">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="info" name="info">
+                            <label for="info">구매자 정보와 동일</label>
+                        </span>
                     </div>
                     <dl class="forms">
-                        <dt class="tit"><label for="recipientAddr" class="req">수령자 주소<span class="blind">필수입력</span></label></dt>
+                        <dt class="tit"><label for="recipientName" class="req">수령자 이름<span class="blind">필수입력</span></label></dt>
                         <dd class="conts">
-                            <span class="input-wrap block add-btn">
-                                <span class="box">
-                                    <input type="text" id="recipientAddr" value="06049" readonly>
-                                    <span class="cell addr">
-                                        <button type="button" class="btn-text pink"><span>주소찾기</span></button><!-- class 수정 -->
-                                    </span>
+                            <div class="input-wrap">
+                                <input type="text" id="recipientName" placeholder="이름을 입력해 주세요." value="">
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit">
+                            <label for="recipientPhone" class="req">휴대폰번호<span class="blind">필수입력</span></label>
+                        </dt>
+                        <dd class="conts">
+                            <div class="input-wrap">
+                                <input type="text" id="recipientPhone" placeholder="‘-’ 없이 번호를 입력해 주세요." readonly>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit">
+                            <label for="recipientAddr" class="req">수령자 주소<span class="blind">필수입력</span></label>
+                            <div class="tooltip-wrap"><!-- 활성화시 active -->
+                                <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
+                                <span class="tooltip-box">
+                                    <p>입력한 정보로 배송되니 정확한 배송지를 확인해주세요.<br>
+                                    주소는 사은품 발송의 목적으로, 해당 이벤트 참여용으로만 수집합니다.</p>
+                                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
                                 </span>
-                            </span>
-                            <span class="input-wrap block">
-                                <input type="text" value="서울 강남구 논현로 748  (논현동,세화빌딩) 세회빌딩 4층" readonly>
-                            </span>
-                            @@include('./common/modules/bullet-list.html', {
-                                "bulletTxt" : [
-                                    "입력한 정보로 배송되니 정확한 배송지를 확인해주세요.",
-                                    "주소는 사은품 발송의 목적으로, 해당 이벤트 참여용으로만 수집합니다."
-                                ]
-                            })
+                            </div>
+                        </dt>
+                        <dd class="conts">
+                            <div class="address-box">
+                                <div class="box">
+                                    <div class="input-wrap zip-code">
+                                        <input type="text" id="recipientAddr" value="05723" placeholder="우편번호" disabled>
+                                    </div>
+                                    <div class="cell">
+                                        <button type="button" class="btn"><span>주소 찾기</span></button>
+                                    </div>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
+                                </div>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" value="엘지 송파빌딩 1702호" placeholder="상세주소를 입력해주세요.">
+                            </div>
                         </dd>
                     </dl>
                 </div>
@@ -138,47 +150,39 @@
 
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">[필수] 개인정보 수집 이용 동의</h2>
-                    <div class="agree-chk">
-                        <span class="rdo-wrap">
-                            <input type="radio" id="rdo1-1" name="rdo1" checked>
-                            <label for="rdo1-1">동의함</label>
-                        </span>
-                        <span class="rdo-wrap">
-                            <input type="radio" id="rdo1-2" name="rdo1">
-                            <label for="rdo1-2">동의안함</label>
-                        </span>
-                    </div>
+                    <h2 class="h2-tit">03. 개인정보 수집 이용 및 처리 위탁 동의</h2>
                 </div>
+                <p class="tb-tit">개인정보 수집 이용 동의(필수)</p>
                 <div class="tb_row tb-bor">
                     <table>
                         <caption>개인정보 수집 이용 동의 수집항목, 목적, 보유기간 안내</caption>
                         <colgroup>
-                            <col style="width:33.3%">
-                            <col style="width:33.3%">
-                            <col style="">
+                            <col style="width:25%">
+                            <col style="width:25%">
+                            <col style="width:25%">
+                            <col>
                         </colgroup>
                         <thead>
-                            <tr>
-                                <th scope="col">수집항목</th>
-                                <th scope="col">목적</th>
-                                <th scope="col">보유기간</th>
-                            </tr>
+                        <tr>
+                            <th scope="col">수집항목</th>
+                            <th scope="col">목적</th>
+                            <th scope="col">보유기간</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>구매자 이름, 구매자 연락처, 구매자 주소</td>
-                                <td>이벤트 응모내역 확인 시 본인 확인</td>
-                                <td rowspan="3">이벤트 종료일로부터 3개월까지 보유 후 파기</td>
-                            </tr>
-                            <tr>
-                                <td>수령자 이름, 수령자 연락처</td>
-                                <td>경품배송 시 본인 확인</td>
-                            </tr>
-                            <tr>
-                                <td>수령자 주소</td>
-                                <td>경품배송</td>
-                            </tr>
+                        <tr>
+                            <td class="al-left">구매자 이름, 구매자 연락처, 구매자 주소</td>
+                            <td class="al-left">이벤트 응모내역 확인 시 본인 확인</td>
+                            <td rowspan="3" class="al-left">이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                        </tr>
+                        <tr>
+                            <td class="al-left">수령자 이름, 수령자 연락처</td>
+                            <td class="al-left">경품배송 시 본인 확인</td>
+                        </tr>
+                        <tr>
+                            <td class="al-left">수령자 주소</td>
+                            <td class="al-left">경품배송</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -188,22 +192,16 @@
                         "14세 미만 고객의 경우, 이벤트 참여가 제한됩니다."
                     ]
                 })
+                <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk1-1" name="agreechk-1" >
+                            <label for="chk1-1">동의합니다</label>
+                        </span>
+                </div>
             </div>
 
             <div class="input-info">
-                <div class="tit-wrap">
-                    <h2 class="h2-tit">[필수] 개인정보 처리 위탁 동의</h2>
-                    <div class="agree-chk">
-                        <span class="rdo-wrap">
-                            <input type="radio" id="rdo2-1" name="rdo2" checked>
-                            <label for="rdo2-1">동의함</label>
-                        </span>
-                        <span class="rdo-wrap">
-                            <input type="radio" id="rdo2-2" name="rdo2">
-                            <label for="rdo2-2">동의안함</label>
-                        </span>
-                    </div>
-                </div>
+                <p class="tb-tit">개인정보 처리 위탁 동의(필수)</p>
                 <div class="tb_row tb-bor">
                     <table>
                         <caption>개인정보 처리 위탁 동의 수탁자, 목적 안내</caption>
@@ -230,22 +228,16 @@
                         "경품 제공 등 이벤트 진행을 위한 개인정보 처리 위탁에 동의하셔야 이벤트 참여가 가능합니다."
                     ]
                 })
+                <div class="agree-input">
+                    <span class="chk-wrap">
+                        <input type="checkbox" id="chk2-1" name="agreechk-2" >
+                        <label for="chk2-1">동의합니다</label>
+                    </span>
+                </div>
             </div>
 
             <div class="input-info">
-                <div class="tit-wrap">
-                    <h2 class="h2-tit">[선택] 개인정보 수집 이용 동의</h2>
-                    <div class="agree-chk">
-                        <span class="rdo-wrap">
-                            <input type="radio" id="rdo3-1" name="rdo3" checked>
-                            <label for="rdo3-1">동의함</label>
-                        </span>
-                        <span class="rdo-wrap">
-                            <input type="radio" id="rdo3-2" name="rdo3">
-                            <label for="rdo3-2">동의안함</label>
-                        </span>
-                    </div>
-                </div>
+                <p class="tb-tit">개인정보 수집 이용 동의(선택)</p>
                 <div class="tb_row tb-bor">
                     <table>
                         <caption>개인정보 수집 이용 동의 수탁자, 목적, 보유기간 안내</caption>
@@ -255,18 +247,18 @@
                             <col style="">
                         </colgroup>
                         <thead>
-                            <tr>
-                                <th scope="col">수탁자</th>
-                                <th scope="col">목적</th>
-                                <th scope="col">보유기간</th>
-                            </tr>
+                        <tr>
+                            <th scope="col">수탁자</th>
+                            <th scope="col">목적</th>
+                            <th scope="col">보유기간</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>생년, 성별</td>
-                                <td>마케팅 또는 통계를 위한 참고 및 활용</td>
-                                <td>이벤트 종료일로부터 3개월까지 보유 후 파기</td>
-                            </tr>
+                        <tr>
+                            <td>생년, 성별</td>
+                            <td>마케팅 또는 통계를 위한 참고 및 활용</td>
+                            <td>이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -275,6 +267,12 @@
                         "귀하께서는 본 동의를 거절하실 수 있습니다."
                     ]
                 })
+                <div class="agree-input">
+                    <span class="chk-wrap">
+                        <input type="checkbox" id="chk3-1" name="agreechk-3" >
+                        <label for="chk3-1">동의합니다</label>
+                    </span>
+                </div>
             </div>
         </section>
         <footer class="pop-footer center">
@@ -282,7 +280,7 @@
                 <button type="button" class="btn pink"><span>신청하기</span></button>
             </div>
         </footer>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+        <button type="button" class="win-btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
 </body>
 </html>

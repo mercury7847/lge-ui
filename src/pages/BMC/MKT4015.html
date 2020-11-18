@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <!-- width: 912px -->
+    <article id="popup" class="win-popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit"><span>이벤트 참여하기</span></h1>
+        </header>
+        <section class="pop-conts event-app-form">
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">01. 구매 내역 조회</h2>
+                    <div class="chk-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk-input-1" name="chk-input-1">
+                            <label for="chk-input-1">구매정보 직접입력</label>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="form-wrap">
+                    <dl class="forms">
+                        <dt class="tit"><label for="name">이름<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap block">
+                                <input type="text" id="name" placeholder="이름을 입력해 주세요.">
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="phone" class="req">휴대폰번호<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap block">
+                                <input type="number" id="phone" placeholder="‘-’없이 번호만 입력해 주세요.">
+                            </span>
+                        </dd>
+                    </dl>
+                    <!-- 직접입력시 -->
+                    <dl class="forms">
+                        <dt class="tit"><label for="modelName">모델명</label></dt>
+                        <dd class="conts">
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" id="modelName" title="모델명 선택">
+                                    <option value="" class="placeholder">선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+                                    <option value="">모델명</option>
+                                    <option value="">모델명</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="purDate">구매일자</label></dt>
+                        <dd class="conts">
+                            <div class="box date-select-box">
+                                <div class="cell">
+                                    <div class="box">
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" id="purDateY" title="년 선택">
+                                                <option value="" class="placeholder">선택</option>
+                                                <option value="">2020</option>
+                                                <option value="">2019</option>
+                                            </select>
+                                        </div>
+                                        <div class="text"><span>년</span></div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="box">
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" id="purDateM" title="월 선택">
+                                                <option value="" class="placeholder">선택</option>
+                                                <option value="">10</option>
+                                                <option value="">11</option>
+                                            </select>
+                                        </div>
+                                        <div class="text"><span>월</span></div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="box">
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" id="purDateD" title="일 선택">
+                                                <option value="" class="placeholder">선택</option>
+                                                <option value="">17</option>
+                                                <option value="">18</option>
+                                            </select>
+                                        </div>
+                                        <div class="text"><span>일</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="purShop">구매장소</label></dt>
+                        <dd class="conts">
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" id="purShop" title="구매장소 선택">
+                                    <option value="" class="placeholder">선택</option> <!-- placeholder 개념의 option 일 경우 .placeholder -->
+                                    <option value="">구매장소</option>
+                                    <option value="">구매장소</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="branchName">지점명</label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap block">
+                                <input type="text" id="branchName" placeholder="지점명을 입력해 주세요.">
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="serialNum">제조번호(S/N)</label></dt>
+                        <dd class="conts">
+                            <div class="box">
+                                <div class="input-wrap">
+                                    <input type="text" id="serialNum" placeholder="제조번호를 입력해 주세요.">
+                                    <p class="link"><a href="#n" class="btn-link">제품 제조번호 확인방법</a></p>
+                                </div>
+                                <div class="cell">
+                                    <button type="button" class="btn"><span>제조번호 확인</span></button>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn border"><span>조회</span></button>
+                </div>
+            </div>
+
+            <!-- 02. 제품 구매 내역-->
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">02. 제품 구매 내역</h2>
+                </div>
+                <div class="tb_row tb-row-bl">
+                    <table>
+                        <caption>개인정보 처리 위탁 동의 수탁자, 목적 안내</caption>
+                        <colgroup>
+                            <col style="width:33%">
+                            <col style="width:33%">
+                            <col style="">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">모델명</th>
+                                <th scope="col">변경하기</th>
+                                <th scope="col">변경일자</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>(AS309DWA)</td>
+                                <td><button type="button" class="btn border size"><span>응모하기</span></button></td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "응모 기간 내에만 응모 내역 변경이 가능합니다.",
+                        "구매 내역이 조회되지 않는 경우, 구매 제품을 직접 등록해 주세요."
+                    ]
+                })
+            </div> 
+            <!-- // 02. 제품 구매 내역-->
+            
+            <!-- 03. 서비스 요청 정보 입력 -->
+            <div class="input-info">
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">03. 서비스 요청 정보 입력</h2>
+                </div>
+                <div class="form-wrap">
+                    <dl class="forms">
+                        <dt class="tit"><label for="name2">이름<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap block">
+                                <input type="text" id="name2" placeholder="이름을 입력해 주세요.">
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit"><label for="phone2" class="req">휴대폰번호<span class="blind">필수입력</span></label></dt>
+                        <dd class="conts">
+                            <span class="input-wrap block">
+                                <input type="number" id="phone2" placeholder="‘-’없이 번호만 입력해 주세요.">
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit">
+                            <label for="inp03-2" class="req">주소<span class="blind">필수입력</span></label>
+                        </dt>
+                        <dd class="conts">
+                            <div class="address-box">
+                                <div class="box">
+                                    <div class="input-wrap zip-code">
+                                        <input type="text" id="inp03-2" value="" placeholder="우편번호" disabled>
+                                    </div>
+                                    <div class="cell">
+                                        <button type="button" class="btn"><span>주소 찾기</span></button>
+                                    </div>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" value="" placeholder="주소 찾기를 선택해 주세요." disabled>
+                                </div>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" value="" placeholder="상세주소를 입력해주세요.">
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="forms">
+                        <dt class="tit">
+                            <p class="label req">서비스 요청시기<span class="blind">필수입력</span></p>
+                            <div class="tooltip-wrap"><!-- 활성화시 active -->
+                                <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
+                                <span class="tooltip-box">
+                                    <p>선택하신 날짜 이전에 상담사가 사전 연락을 드립니다. </p>
+                                    <p>필터 교체와 토탈 케어 서비스는 전문 관리사에 의해 동시에 진행 됩니다.
+                                    </p>
+                                    <p>당첨 발표 이후 서비스 요청 시기 수정은 불가능 합니다. 
+                                    </p>
+                                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                </span>
+                            </div>
+                        </dt>
+                        <dd class="conts">
+                            <div class="box date-select-box col-2">
+                                <div class="cell">
+                                    <div class="box">
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" id="serviceYear" title="년 선택">
+                                                <option value="" class="placeholder">선택</option>
+                                                <option value="">2020</option>
+                                                <option value="">2019</option>
+                                            </select>
+                                        </div>
+                                        <div class="text"><span>년</span></div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="box">
+                                        <div class="select-wrap">
+                                            <select class="ui_selectbox" id="serviceMonth" title="월 선택">
+                                                <option value="" class="placeholder">선택</option>
+                                                <option value="">10</option>
+                                                <option value="">11</option>
+                                            </select>
+                                        </div>
+                                        <div class="text"><span>월</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>        
+            <!-- // 03. 서비스 요청 정보 입력 -->
+
+            <!-- 04. 개인정보 수집 이용 및 처리 위탁 동의 -->
+            <div class="input-info">
+                <div class="input-info-wrap">
+                    <div class="tit-wrap">
+                        <h2 class="h2-tit">04. 개인정보 수집 이용 및 처리 위탁 동의</h2> 
+                    </div>
+                    <p class="tb-tit">개인정보 수집 이용 동의(필수)</p>
+                    <div class="tb_row tb-row-bl">
+                        <table>
+                            <caption>개인정보 수집 이용 동의 수집항목, 목적, 보유기간 안내</caption>
+                            <colgroup>
+                                <col style="width:33%">
+                                <col style="width:33%">
+                                <col>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">수집항목</th>
+                                    <th scope="col">목적</th>
+                                    <th scope="col">보유기간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>본인확인정보(CI)</td>
+                                    <td>이벤트 응모내역 확인 시 본인 확인</td>
+                                    <td>이벤트 종료일로부터 3개월까지 보유 후 파기</td>
+                                </tr>
+                                <tr>
+                                    <td>이름, 휴대폰번호, 주소</td>
+                                    <td>본인 확인, 구매내역 확인 및
+                                        케어서비스 및 경품 제공</td>
+                                    <td>최종 방문 서비스 일로부터
+                                        3개월간 보유 후 파기</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    @@include('./common/modules/bullet-list.html', {
+                        "bulletTxt" : [
+                            "귀하께서는 본 동의를 거절하실 수 있습니다. 단, 거절하신 경우 이벤트 참여가 제한될 수 있습니다.",
+                            "14세 미만 고객의 경우, 이벤트 참여가 제한됩니다."
+                        ]
+                    })
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="agreechk-1" name="agreechk-1" >
+                            <label for="agreechk-1">동의합니다</label>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="input-info-wrap">
+                    <p class="tb-tit">개인정보 처리 위탁 동의(필수)</p>
+                    <div class="tb_row tb-row-bl">
+                        <table>
+                            <caption>개인정보 처리 위탁 동의 수탁자,목적 안내</caption>
+                            <colgroup>
+                                <col style="width:50%">
+                                <col>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">수탁자</th>
+                                    <th scope="col">목적</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>(주)LG CNS</td>
+                                    <td>케어서비스 제공 등 이벤트와
+                                        관련한 업무</td>
+                                </tr>
+                                <tr>
+                                    <td>하이엠솔루텍(주)</td>
+                                    <td>케어서비스 응대 및 고객 상담, 
+                                        해피콜과 관련한 업무</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    @@include('./common/modules/bullet-list.html', {
+                        "bulletTxt" : [
+                            "경품 제공 등 이벤트 진행을 위한 개인정보 처리 위탁에 동의하셔야 이벤트 참여가 가능합니다."
+                        ]
+                    })
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="agreechk-2" name="agreechk-2" >
+                            <label for="agreechk-2">동의합니다</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- // 04. 개인정보 수집 이용 및 처리 위탁 동의 -->
+        </section>
+
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>이벤트 응모하기</span></button>
+            </div>
+        </footer>
+        <button type="button" class="win-btn-close"><span class="blind">닫기</span></button>
+    </article>
+</body>
+</html>
