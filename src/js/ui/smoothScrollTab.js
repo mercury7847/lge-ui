@@ -47,7 +47,7 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
             self._bindEvent();            
         },
 
-        _build: function _build() {
+        _build: function() {
             var self = this;
 
             self.smoothScroll = new vcui.ui.SmoothScroll(self.$el.find('.' + self.options.tabname), self.options.scrollOption);
@@ -56,12 +56,15 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
             if(self.controls.length){
                 self.prevCtrler = self.controls.find('.'+self.options.prevname);
                 self.nextCtrler = self.controls.find('.'+self.options.nextname);
+
+                self.prevCtrler.hide();
+                self._setArrowCtrlStatus();
             }
 
             self._setTabIndex();
         },
 
-        _bindEvent  : function _bindEvent() {
+        _bindEvent  : function() {
             var self = this;
             
             self.nextCtrler.on('click', function(e){
@@ -77,21 +80,56 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
             self.$el.on('click', self.options.tabItem, function(e){
                 var idx = $(this).index();
                 
-            })
+                if(idx != self.tabIndex){
+                    self.tabIndex = idx;
+                    self._setTabIndex();
+
+                    self.trigger("smoothscrolltabselecttab", [self.tabIndex])
+                }
+            });
+
+            self.smoothScroll.on('smoothscrollrefresh smoothscrollend', function(e){
+                self._setArrowCtrlStatus();
+            });
         },
 
-        _setTabIndex: function _setTabIndex(){
+        _setArrowCtrlStatus: function(){
             var self = this;
+
+            if(self.smoothScroll.maxScrollX == 0){
+                self.controls.hide();
+            } else{
+                self.controls.show();
+
+                if(self.smoothScroll.x == 0) self.prevCtrler.hide();
+                else self.prevCtrler.show();
+
+                if(self.smoothScroll.x == self.smoothScroll.maxScrollX) self.nextCtrler.hide();
+                else self.nextCtrler.show();
+            }
+        },
+
+        _setTabIndex: function(){
+            var self = this;
+
+            var tabwrap = self.$el.find('.' + self.options.tabname);
+            var items = tabwrap.find(self.options.tabItem);
             
-            var items = self.$el.find(self.options.tabItem);
             items.removeClass(self.options.selectclass);
-            items.eq(self.options.tabIndex).addClass(self.options.selectclass);
+            items.eq(self.tabIndex).addClass(self.options.selectclass);
         },
 
-        setTabIndex: function setTabIndex(idx){
+        setTabIndex: function(idx){
             var self = this;
 
-            console.log(self.smoothScroll.maxScrollX)
+            self.tabIndex = idx;
+            self._setTabIndex();
+        },
+
+        getTabIndex: function(){
+            var self = this;
+
+            return self.tabIndex;
         }
     });
     ///////////////////////////////////////////////////////////////////////////////////////

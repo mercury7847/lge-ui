@@ -282,18 +282,13 @@
     function eventBind(){
         $typeTab .on('click', '.tabs li a', function(e){
             e.preventDefault();
-        })
-        $categoryTab.on('click', '.tabs > li > a', function(e){
-            e.preventDefault();
+        });
 
-            $categoryTabCtrler.setTabIndex(3);
-
-            // selectedTab(this);
-
-            // var categorytop = $caresolutionContainer.offset().top;
-            // $('html, body').animate({scrollTop:categorytop}, 120, function(){
-            //     loadCareProdList(true);
-            // });
+        $categoryTabCtrler.on('smoothscrolltabselecttab', function(e, data){
+            var categorytop = $caresolutionContainer.offset().top;
+            $('html, body').animate({scrollTop:categorytop}, 120, function(){
+                loadCareProdList(true);
+            });
         });
 
         $sortSelector.on('change', function(e){
@@ -364,7 +359,7 @@
                 var category = vcui.template(_categoryItemTemplate, result.data[id]);
                 $categoryTab.find('.tabs').append($(category).get(0));
             }
-            selectedTab($categoryTab.find('> .tabs > li:nth-child(1) > a'));
+            $categoryTabCtrler.setTabIndex(0);
 
             if(!_isStickyApply){
                 _isStickyApply = true;
@@ -384,7 +379,6 @@
             categoryID: getCategoryID(),
             sortID: getSortID()
         }
-        console.log("serviceName : ", serviceName)
         lgkorUI.requestAjaxData(_prodListUrl, requestData, function(result){
 
             _currentItemList = vcui.array.map(result.data.productList, function(item, idx){
@@ -629,17 +623,9 @@
         });
     }
 
-    function selectedTab(item){
-        $(item).parents('li').siblings('li').removeClass('on').find('a').attr("aria-selected", false).find('em').remove();
-        $(item).parent().addClass('on');
-        $(item).attr("aria-selected", true).append('<em class="blind">선택됨</em>');
-    }
-
     function getTabID(){
-        var currentab = $typeTab.find('.tabs li[class=on]');
-        var tabID = currentab.find('a').data('tabId');
-
-        return tabID;
+        var tabIndx = $categoryTabCtrler.getTabIndex();
+        return tabIndx;
     }
 
     function getCategoryID(){
