@@ -31,18 +31,16 @@
         &:first-child {
             margin-top: 0;
         }
+        .input-info-wrap {
+            margin-top: 48px; 
+        }
         @include pc {
             .form-wrap {
                 padding-right: 186px;
             }
         }
     }
-    .input-info-wrap {
-        margin-top: 64px;
-        .input-info {
-            margin-top: 48px;
-        }
-    }
+
     .select-list-wrap > ul {
         margin-top: -19px;
         li {
@@ -59,6 +57,9 @@
         &:first-child {
             margin-top: 0;
         }
+        .input-info-wrap {
+            margin-top: 48px; 
+        }
 
         .form-wrap {
             & + .bullet-list {
@@ -70,6 +71,11 @@
                     margin-right: 186px;
                     @include calc(margin-left,25%,24px);
                 }
+            }
+        }
+        .tit-wrap {
+            .chk-input {
+                padding-top: 16px;
             }
         }
     }
