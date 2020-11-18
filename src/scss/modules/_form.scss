@@ -349,6 +349,17 @@
                 padding:0 24px 0 0;
             }
         }
+        &.type3 {
+            .tit {
+                display:block;
+                width:100%;
+                padding:0 0 12px 0;
+            }
+            .conts {
+                display:block;
+                width:100%;
+            }
+        }
         // input + other
         .box {
             position:relative;
@@ -796,9 +807,9 @@
         .total {
             display:block;
             margin-top:8px;
-            color:#808080;
+            color:#767676;
             font-size:14px;
-            line-height:20px;
+            line-height:24px;
             text-align:right;
             em {
                 font-size:inherit;
@@ -887,9 +898,6 @@
         }
     }
 }
-.input-wrap.type2{
-    display:block;
-}
 // input error text
 .err-msg {
     color:#f00;
@@ -906,13 +914,6 @@
         @include mobile {
             margin-top:1px;
         }
-    }
-}
-.err-msg.type2{
-    color:#ec455a;
-    &::before{
-        background-image:none;
-        width:0;
     }
 }
 
