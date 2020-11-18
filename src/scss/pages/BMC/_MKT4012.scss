@@ -48,6 +48,14 @@
         margin-top: 12px;
     }
 }
+.event-app-form {
+    .input-info {
+        margin-top: 64px;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
 
 .tb-tit {
     margin-bottom: 8px;
