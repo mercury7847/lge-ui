@@ -83,6 +83,29 @@
             }
         }
     }
+    &.board-type {
+        table {
+            table-layout:fixed;
+        }
+        tbody td:first-child {
+            .tb-title {
+                display:flex;
+                text-align:left;
+                p {
+                    color:#222;
+                    font-weight:500;
+                    @include textEllipsis;
+                    & + .flag-wrap {
+                        margin-left:12px;
+                        white-space:nowrap;
+                        .flag {
+                            vertical-align:middle;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 // 세로형 테이블
