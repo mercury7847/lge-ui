@@ -66,7 +66,7 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
             if (index >= 0) {
                 self.options.selectedIndex = index;
             }
-            self.select(self.options.selectedIndex);
+            self.select(self.options.selectedIndex, true);
         },
 
         update: function update() {

@@ -575,30 +575,33 @@
                     position: relative;
                     height: 100%;
                 }
-                img {
-                    width: 100%;
-                }
+                //img {
+                //    width: 100%;
+                //}
             }
 
             // pc
             @media screen and (min-width: $desktop-s-width + 1) {
-                .item {
-                    display: flex;
-                    flex-wrap: wrap;
-                    flex-direction: row;
-                    .product-image {
-                        @include calc(height, 100%, 208px);
-                        border-radius: 8px 8px 0 0;
-                    }
-                    &.result-item {
-                        .product-image {
-                            @include calc(height, 100%, 133px);
-                        }
-                    }
-                }
+                //.item {
+                //    display: flex;
+                //    flex-wrap: wrap;
+                //    flex-direction: row;
+                //    .product-image {
+                //        @include calc(height, 100%, 208px);
+                //        border-radius: 8px 8px 0 0;
+                //    }
+                //    &.result-item {
+                //        .product-image {
+                //            @include calc(height, 100%, 133px);
+                //        }
+                //    }
+                //}
                 .banner-contents {
-                    position: static;
+                    //position: static;
+                    top: auto;
+                    bottom: 0;
                     padding: 32px 48px 40px;
+                    background-color: $color-bg-wt;
                     .banner-info {
                         .title {
                             @include textEllipsisClamp(1);

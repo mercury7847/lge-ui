@@ -52,7 +52,7 @@
 
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">구입 희망 시기 선택</h2>
+                    <h2 class="h2-tit">02. 구입 희망 시기</h2>
                 </div>
                 @@include('./common/modules/rdochk-list.html', {
                     "rdo" : true,
@@ -73,7 +73,7 @@
 
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">응모 목적 선택</h2>
+                    <h2 class="h2-tit">03. 응모 목적 선택</h2>
                 </div>
                 @@include('./common/modules/rdochk-list.html', {
                     "rdo" : true,
@@ -89,7 +89,7 @@
 
             <div class="input-info">
                 <div class="tit-wrap">
-                    <h2 class="h2-tit">응모 매장 선택</h2>
+                    <h2 class="h2-tit">04. 응모 매장 선택</h2>
                 </div>
                 <div class="select-list-wrap">
                     <ul class="ui_radio_visible">
@@ -147,94 +147,86 @@
                 })
                 <!-- // 안내 문구 -->
             </div>
-
             <div class="input-info">
-                <div class="tit-wrap">
-                    <h2 class="h2-tit">[필수] 개인정보 수집 이용 동의</h2>
-                    <div class="agree-chk">
-                        <span class="rdo-wrap">
-                            <input type="radio" id="rdo1-1" name="rdo1" checked>
-                            <label for="rdo1-1">동의함</label>
-                        </span>
-                        <span class="rdo-wrap">
-                            <input type="radio" id="rdo1-2" name="rdo1">
-                            <label for="rdo1-2">동의안함</label>
+                <div class="input-info-wrap">
+                    <div class="tit-wrap">
+                        <h2 class="h2-tit">05. 개인정보 수집 이용 및 처리 위탁 동의</h2> 
+                    </div>
+                    <p class="tb-tit">개인정보 수집 이용 동의(필수)</p>
+                    <div class="tb_row tb-bor">
+                        <table>
+                            <caption>개인정보 수집 이용 동의 수집항목, 목적, 수집기간, 이용기간 안내</caption>
+                            <colgroup>
+                                <col style="width:25%">
+                                <col style="width:25%">
+                                <col style="width:25%">
+                                <col>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">수집항목</th>
+                                    <th scope="col">목적</th>
+                                    <th scope="col">수집기간</th>
+                                    <th scope="col">이용기간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="al-left">이름, 핸드폰번호, 구입희망제품, 응모매장</td>
+                                    <td class="al-left">본인확인, 구입희망 제품 안내 및 제공, 경품배송</td>
+                                    <td class="al-left">2020.01.01~2020.12.31</td>
+                                    <td class="al-left">2020.01.01~2021.06.30</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    @@include('./common/modules/bullet-list.html', {
+                        "bulletTxt" : [
+                            "고객님께서 작성해 주신 참여 정보는 당사의 행사, 신상품 안내 및 판촉 활용 목적으로만 사용될 예정입니다.",
+                            "본 행사는 멤버십 가입자 대상 이벤트로, 멤버십 동의절차에 따라 멤버십 가입과 이벤트를 동시 진행하실 수 있습니다."
+                        ]
+                    })
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk1-1" name="agreechk-1" >
+                            <label for="chk1-1">동의합니다</label>
                         </span>
                     </div>
                 </div>
-                <div class="tb_row tb-bor">
-                    <table>
-                        <caption>개인정보 수집 이용 동의 수집항목, 목적, 수집기간, 이용기간 안내</caption>
-                        <colgroup>
-                            <col style="width:25%">
-                            <col style="width:25%">
-                            <col style="width:25%">
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th scope="col">수집항목</th>
-                                <th scope="col">목적</th>
-                                <th scope="col">수집기간</th>
-                                <th scope="col">이용기간</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="al-left">이름, 핸드폰번호, 구입희망제품, 응모매장</td>
-                                <td class="al-left">본인확인, 구입희망 제품 안내 및 제공, 경품배송</td>
-                                <td class="al-left">2020.01.01~2020.12.31</td>
-                                <td class="al-left">2020.01.01~2021.06.30</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                @@include('./common/modules/bullet-list.html', {
-                    "bulletTxt" : [
-                        "고객님께서 작성해 주신 참여 정보는 당사의 행사, 신상품 안내 및 판촉 활용 목적으로만 사용될 예정입니다.",
-                        "본 행사는 멤버십 가입자 대상 이벤트로, 멤버십 동의절차에 따라 멤버십 가입과 이벤트를 동시 진행하실 수 있습니다."
-                    ]
-                })
-            </div>
 
-            <div class="input-info">
-                <div class="tit-wrap">
-                    <h2 class="h2-tit">[필수] 업무 위탁 동의</h2>
-                    <div class="agree-chk">
-                        <span class="rdo-wrap">
-                            <input type="radio" id="rdo2-1" name="rdo2" checked>
-                            <label for="rdo2-1">동의함</label>
-                        </span>
-                        <span class="rdo-wrap">
-                            <input type="radio" id="rdo2-2" name="rdo2">
-                            <label for="rdo2-2">동의안함</label>
+                <div class="input-info-wrap">
+                    <p class="tb-tit">업무 위탁 동의(필수)</p>
+                    <div class="tb_row tb-bor">
+                        <table>
+                            <caption>개인정보 처리 업무 위탁 동의 수탁자, 목적 안내</caption>
+                            <colgroup>
+                                <col style="width:50%">
+                                <col>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">수탁자</th>
+                                    <th scope="col">목적</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>LG전자 및 LG전자 BEST SHOP 판매 대리점<br><a href="#popup2" class="btn-allview" data-control="modal">[전체보기]</a></td>
+                                    <td>카드발급, Point적립 및 사용, 회원가입 신청대행, 마케팅/판촉, 신상품/Event 안내 등</td>
+                                </tr>
+                                <tr>
+                                    <td>(주)LG CNS</td>
+                                    <td>이벤트 운영/유지보수</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="agree-input">
+                        <span class="chk-wrap">
+                            <input type="checkbox" id="chk2-1" name="agreechk-2" >
+                            <label for="chk2-1">동의합니다</label>
                         </span>
                     </div>
-                </div>
-                <div class="tb_row tb-bor">
-                    <table>
-                        <caption>개인정보 처리 업무 위탁 동의 수탁자, 목적 안내</caption>
-                        <colgroup>
-                            <col style="width:50%">
-                            <col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th scope="col">수탁자</th>
-                                <th scope="col">목적</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>LG전자 및 LG전자 BEST SHOP 판매 대리점<br><a href="#popup2" class="btn-allview" data-control="modal">[전체보기]</a></td>
-                                <td>카드발급, Point적립 및 사용, 회원가입 신청대행, 마케팅/판촉, 신상품/Event 안내 등</td>
-                            </tr>
-                            <tr>
-                                <td>(주)LG CNS</td>
-                                <td>이벤트 운영/유지보수</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </section>
@@ -243,54 +235,9 @@
                 <button type="button" class="btn pink"><span>이벤트 참여하기</span></button>
             </div>
         </footer>
-        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
-    </article>
-
-    <!-- MKT4013 매장전체보기 팝업 -->
-    <article id="popup2" class="popup-wrap tit-line2 full">
-        <header class="pop-header">
-            <h1 class="tit"><span>LG전자 및 LG전자<br>BEST SHOP 판매 대리점</span></h1>
-        </header>
-        <section class="pop-conts no-footer academy-pop">
-            <div class="tbl-layout-wrap">
-                <dl>
-                    <dt>
-                        <span>매장명</span>
-                        <span aria-hidden="true">매장명</span>
-                        <span aria-hidden="true">매장명</span>
-                        <span aria-hidden="true">매장명</span>
-                    </dt>
-                    <dd>
-                        <ul class="lists">
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵0dd0점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵00dddddd점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵00dddd점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵00d점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵0dddd0점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵0dddd0점</li>
-                            <li>㈜베스트샵00점</li>
-                            <li>㈜베스트샵00점</li>
-                        </ul>
-                    </dd>
-                </dl>
-            </div>
-        </section>
         <button type="button" class="win-btn-close"><span class="blind">닫기</span></button>
     </article>
-    <!-- // MKT4013 매장전체보기 팝업 -->
+
+
 </body>
 </html>

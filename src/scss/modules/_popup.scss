@@ -801,28 +801,48 @@
         padding: 144px 48px 48px;
         @include mobile {
             //padding: 32px 16px 60px;
-            padding: 114px 16px 60px;
+            padding: 114px 16px 115px;
         }
         .tit-wrap {
             padding-bottom: 24px;
+            @include mobile {
+                padding-bottom: 20px;
+            }
             .h2-tit {
                 @include font-large-1;
                 color: $color-default;
                 font-weight: $font-weight-bold;
             }
         }
-        
+        .h3-tit {
+            margin-bottom: 8px;
+            @include font-small;
+            color: $color-default;
+            font-weight: $font-weight-bold;
+        }
+       .btn-group {
+           padding-top: 32px;
+           text-align: center;
+       } 
     }
-    footer {
-        /*
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        padding: 32px 0 48px;*/
+    .pop-footer {
+        margin-top: -16px;
         padding: 0 0 48px;
         background: #fff;
+        @include mobile {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
         .btn-group {
             text-align: center;
+            @include mobile {
+                button, a {
+                    border-radius: 0;
+                } 
+            } 
         }
     }
 }
