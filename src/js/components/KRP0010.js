@@ -16,6 +16,9 @@
 
             setting: function() {
                 var self = this;
+                //pdp데이타
+                self.$pdpData = $('#pdp-data');
+
                 //데스크탑용 갤러리
                 self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual');
                 //데스크탑용 갤러리 이미지
@@ -49,6 +52,9 @@
                 self.$selectModalItemTarget = self.$popPdpThumbnail.find('li.pop-thumbnail.active');
                 //PDP모달 확대축소 버튼영역
                 self.$popPdpZoomArea = self.$popPdpVisual.find('div.zoom-btn-area');
+
+                //PDP 인포
+                self.$pdpInfo = $('div.pdp-info-area')
 
                 //vcui.require(['ui/carousel'], function () {
                     self.$pdpMobileSlider.vcCarousel({
@@ -110,10 +116,10 @@
                 });
 
                 //데스크탑용 썸네일리스트 클릭
-                self.$pdpThumbnail.on('click','li.thumbnail a',function(e) {
+                self.$pdpThumbnail.on('click','li a',function(e) {
                     e.preventDefault();
                     var $li = $(this).parent();
-                    var index = $li.find('input[name="index"]').val();
+                    var index = $(this).attr('href').replace("#","");
                     if($li.hasClass('more')) {
                         //더보기 버튼은 바로 pdp모달 뛰움
                         self.openVisualModal(index);
@@ -133,21 +139,20 @@
                 self.$pdpMobileSlider.on('click', function(e){ 
                     e.preventDefault();
                     var index = $(this).find(".ui_carousel_current").attr("data-ui_carousel_index");
-                    console.log(index);
                     self.openVisualModal(index); 
                 });
 
                 //pdp모달 썸네일 리스트 클릭
                 self.$popPdpThumbnail.on('click','li.pop-thumbnail a',function(e) {
                     e.preventDefault();
-                    var $li = $(this).parent();
-                    var index = $li.find('input[name="index"]').val();
+                    var index = $(this).attr('href').replace("#","");
                     self.clickModalThumbnail(index);
                 });
             },
 
-            findHiddenInput: function($el) {
-                var inputs = $el.find('input');
+            findPdpData: function(index) {
+                var self = this;
+                var inputs = self.$pdpData.find('div:nth-child(' + (parseInt(index)+1) + ') input');
                 var item = {};
                 inputs.each(function (i, o) {
                     item[$(o).attr('name')] = $(o).val();
@@ -158,14 +163,11 @@
             //썸네일 리스트 클릭
             clickThumbnailSlide: function(index) {
                 var self = this;
-    
-                var thumbItem = self.$pdpThumbnail.find('li.thumbnail:nth-child('+(parseInt(index)+1)+')');
-                var item = self.findHiddenInput(thumbItem);
-                console.log(index,thumbItem);
-
+                var item = self.findPdpData(index);
                 switch(item.type) {
                     case "image":
                         //이전에 선택되었던 썸네일 활성화 제거 및 새로운 썸네일 활성화
+                        var thumbItem = self.$pdpThumbnail.find('li.thumbnail:nth-child('+(parseInt(index)+1)+')');
                         if(self.$selectItemTarget) {
                             self.$selectItemTarget.removeClass('active');
                         }
@@ -173,7 +175,7 @@
                         self.$selectItemTarget.addClass('active');
 
                         self.$pdpImage.find('a').attr({'data-link-name':item.linkName,'data-idx':(""+index)});
-                        self.$pdpImage.find('a img').attr({'src':item.imageUrl,'alt':item.alt});
+                        self.$pdpImage.find('a img').attr({'src':item.imagePdp,'alt':item.alt});
                         break;
                     case "video":
                     case "animation":
@@ -193,10 +195,10 @@
 
             clickModalThumbnail: function(index) {
                 var self = this;
-                var thumbItem = self.$popPdpThumbnail.find('li.pop-thumbnail:nth-child('+(parseInt(index)+1)+')');
-                var item = self.findHiddenInput(thumbItem);
+                var item = self.findPdpData(index);
 
                 //이전에 선택되었던 썸네일 활성화 제거 및 새로운 썸네일 활성화
+                var thumbItem = self.$popPdpThumbnail.find('li.pop-thumbnail:nth-child('+(parseInt(index)+1)+')');
                 if(self.$selectModalItemTarget) {
                     self.$selectModalItemTarget.removeClass('active');
                 }
@@ -221,16 +223,18 @@
                         break;
                     case "video":
                         var template = '<div class="item-box visual-box"><div class="video-container video-box youtube-box">' +
-                            '<div class="thumnail">' +
-                                '<img data-pc-src="{{imagePC}}" data-m-src="{{imageMobile}}" alt="{{alt}}">' +
-                                '<a href="#" data-src="{{adUrl}}" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-link-area="" data-link-name="{{linkName}}" aria-describedby="{{alt}}">plays audio description video</a>' +
-                            '</div><div class="video-asset video-box-closeset">' +
-                                '<iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{{videoUrl}}"></iframe>' + 
-                            '</div></div></div>'
+                                '<div class="thumnail">' +
+                                    '<img data-pc-src="{{imagePC}}" data-m-src="{{imageMobile}}" alt="{{alt}}">' +
+                                    '<a href="#" data-src="{{adUrl}}" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-link-area="" data-link-name="{{linkName}}" aria-describedby="{{alt}}">plays audio description video</a>' +
+                                '</div>' +
+                                '<div class="video-asset video-box-closeset">' +
+                                    '<iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{{videoUrl}}"></iframe>' + 
+                                '</div>' +
+                            '</div></div>'
                         self.$popPdpVisualVideo.html(vcui.template(template,item));
+                        self.$popPdpVisualVideo.vcImageSwitch('reload');
                         //vcui.require(['ui/imageSwitch','ui/youtubeBox'], function () {
                         vcui.require(['ui/youtubeBox'], function () {
-                            self.$popPdpVisualVideo.vcImageSwitch('reload');
                             self.$popPdpVisualVideo.find('.youtube-box').vcYoutubeBox();
                             self.$popPdpVisualImage.hide();
                             self.$popPdpVisualVideo.show();
@@ -254,6 +258,7 @@
                 }
             },
 
+            //ajax 팝업뷰 뛰우기
             requestModal: function(dm) {
                 var self = this;
                 var ajaxUrl = $(dm).attr('href');
