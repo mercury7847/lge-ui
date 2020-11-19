@@ -28,7 +28,7 @@
                     >
                         <div class="fixed-tab-wrap"><!-- 스크롤 시 tab-fix 클래스 추가 -->
                             <div class="inner">
-                                <div class="tabs-wrap new-type">
+                                <div class="tabs-wrap new-type service_tab">
                                     <ul class="tabs">
                                         <li class="on"><a href="#n" data-tab-id="tab01" data-service-name="렌탈(케어솔루션)">렌탈 케어솔루션<em class="blind">선택됨</em></a></li>
                                         <li><a href="#n" data-tab-id="tab02" data-service-name="케어십">케어십</a></li>
@@ -71,12 +71,21 @@
                         </div>
 
                         <div class="care-top-wrap">
-                            <div class="txt-wrap">
-                                <p>렌탈 케어솔루션이란</p>
-                                @@include('./common/modules/tooltip.html', {
-                                    "type" : "include",
-                                    "page" : "tooltip-RMSF2003-02"
-                                })
+                            <div class="service-tooltop">
+                                <div class="txt-wrap">
+                                    <p>렌탈 케어솔루션이란</p>
+                                    @@include('./common/modules/tooltip.html', {
+                                        "type" : "include",
+                                        "page" : "tooltip-RMSF2003-02"
+                                    })
+                                </div>
+                                <div class="txt-wrap">
+                                    <p>케어십이란</p>
+                                    @@include('./common/modules/tooltip.html', {
+                                        "type" : "include",
+                                        "page" : "tooltip-RMSF2003-03"
+                                    })
+                                </div>
                             </div>
                             <div class="sort-select-wrap">
                                 <select class="ui_selectbox" id="select1" title="리스트 정렬 순서 선택">
