@@ -1,0 +1,64 @@
+{   
+    "status": "success",
+    "message":null,
+    "data": {
+        "listData": [
+            {
+                "url": "/html/support/CSTF7010.html",
+                "flag": "NEW",
+                "img": {
+                    "src": "/lg5-common/images/dummy/@img-news.png",
+                    "alt": "LG전자 소형 폐전자제품 무상 처리서비스"
+                },
+                "title": "LG전자 소형 폐전자제품 무상 처리서비스",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7010.html",
+                "flag": "NEW",
+                "img": {
+                    "src": "/lg5-common/images/dummy/@img-news.png",
+                    "alt": "LG전자 소형 폐전자제품 무상 처리서비스"
+                },
+                "title": "LG전자 소형 폐전자제품 무상 처리서비스",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7010.html",
+                "img": {
+                    "src": "/lg5-common/images/dummy/@img-news.png",
+                    "alt": "LG전자 소형 폐전자제품 무상 처리서비스"
+                },
+                "title": "LG전자 소형 폐전자제품 무상 처리서비스",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7010.html",
+                "img": {
+                    "src": "/lg5-common/images/dummy/@img-news.png",
+                    "alt": "LG전자 소형 폐전자제품 무상 처리서비스"
+                },
+                "title": "LG전자 소형 폐전자제품 무상 처리서비스",
+                "date": "2019.06.15",
+                "view": "3,100"
+            },
+            {
+                "url": "/html/support/CSTF7010.html",
+                "img": {
+                    "src": "/lg5-common/images/dummy/@img-news.png",
+                    "alt": "LG전자 소형 폐전자제품 무상 처리서비스"
+                },
+                "title": "LG전자 소형 폐전자제품 무상 처리서비스",
+                "date": "2019.06.15",
+                "view": "3,100"
+            }
+        ],
+        "listPage": {
+            "page": 1,
+            "totalCount": 5
+        }
+    }
+}

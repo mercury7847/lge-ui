@@ -2,11 +2,8 @@
 
 /* notice view */
 .board-view-wrap {
-    max-width:1380px;
-    margin:0 auto;
     .board-view {
         position:relative;
-        background:#fff;
         @include mobile {
             padding:40px 20px 56px;
         }
@@ -160,6 +157,10 @@
                         line-height:18px;
                     }
                 }
+            }
+            #viewContent {
+                color:#222;
+                @include font-medium;
             }
         }
     }

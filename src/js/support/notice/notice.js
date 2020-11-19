@@ -1,19 +1,21 @@
 (function() {
     var listTmpl = 
-        '<li>' +
+    '<tr>' +
+        '<td class="board-tit">' +
             '<a href="{{url}}">' +
                 '{{# if (typeof flag != "undefined") { #}}' +
-                    '<div class="flag-wrap">' +
-                        '<span class="flag">{{flag}}</div>' +
-                    '</div>' +
+                '<div class="flag-wrap bar-type">' +
+                    '{{# for (var i=0; i<flag.length; i++) { #}}' +
+                    '<span class="flag"><span class="blind">제품 상태</span>{{flag[i]}}</span>' +
+                    '{{# } #}}' +
+                '</div>' +
                 '{{# } #}}' +
-                '<h3 class="title">{{title}}</h3>' +
-                '<ul class="infos">' +
-                    '<li>{{date}}</li>' +
-                    '<li><span class="view"><span class="blind">조회수</span>{{view}}</span></li>' +
-                '</ul>' +
+                '<p>{{title}}</p>' +
             '</a>' +
-        '</li>';
+        '</td>' +
+        '<td>{{date}}</td>' +
+        '<td>조회 {{view}}</td>' +
+    '</tr>';
 
     $(window).ready(function() {
         var notice = {            
@@ -27,7 +29,7 @@
                 _self.$sortsWrap = $contents.find('.sorting-wrap');
                 _self.$sortTotal = $contents.find('#count');
                 _self.$sortSelect = $contents.find('.ui_selectbox');
-                _self.$listWrap = $contents.find('.board-list-wrap');
+                _self.$listWrap = $contents.find('.tb_row');
                 _self.$noData = $contents.find('.no-data');
 
                 _self.params = {
@@ -41,7 +43,7 @@
             
                 _self.bindEvent();
             },
-            searchList: function(param) {
+            searchList: function() {
                 var _self = this,
                     url = _self.$searchWrap.data('ajax');
 
@@ -54,13 +56,13 @@
                     _self.$searchWrap.find('input[type="text"]').val(_self.params['keyword']);
                     _self.$sortTotal.html(page.totalCount);                    
                     _self.$pagination.pagination('update', page);
-                    _self.$listWrap.find('ul').empty();
+                    _self.$listWrap.find('tbody').empty();
 
                     if (data.length) {
                         data.forEach(function(item) {
                             html += vcui.template(listTmpl, item);
                         });
-                        _self.$listWrap.find('ul').html(html);
+                        _self.$listWrap.find('tbody').html(html);
                     
                         _self.$listWrap.show();
                         _self.$noData.hide();
