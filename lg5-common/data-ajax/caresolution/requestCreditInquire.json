@@ -4,6 +4,8 @@
     "message": null,
     "data": {
         "success": "Y",
+        "safekey": "asddffgghsdfrtgt",
+        "nicePersonLogSeq": "89898989898989",
         "alert":{
             "title": "Safekey발급이 성공했습니다",
             "desc": ""
