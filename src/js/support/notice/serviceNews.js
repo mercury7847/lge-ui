@@ -1,107 +1,110 @@
 (function() {
-    var listDataTmpl = 
+    var listTmpl = 
         '<li>' +
-            '<a href="#">' +
-                '<div class="video-thumb">' +
-                    '<img src="//img.youtube.com/vi/{{videoId}}/default.jpg" alt="">' +
+            '<a href="{{url}}" class="item">' +
+                '<div class="item-image">' +
+                    '<img src="{{img.src}}" alt="{{img.alt}}" aria-hidden="true">' +
                 '</div>' +
-                '<div class="video-cont">' +
-                    '<p class="category">{{category}}</p>' +
-                    '<p class="topic">{{topic}}</p>' +
-                    '<h4 class="tit">{{title}}</h4>' +
+                '<div class="item-conts">' +
+                    '{{# if (typeof flag != "undefined") { #}}' +
+                    '<div class="flag-wrap">' +
+                        '<span class="flag">{{flag}}</span>' +
+                    '</div>' +
+                    '{{# } #}}' +
+                    '<p class="tit">{{title}}</p>' +
+                    '<ul class="infos">' +
+                        '<li>{{date}}</li>' +
+                        '<li>조회 {{view}}</li>' +
+                    '</ul>' +
                 '</div>' +
             '</a>' +
         '</li>';
 
     $(window).ready(function() {
-        var videoGuide = {
-            form: document.querySelector('#submitForm'),
+        var notice = {            
+            params: {},
             init: function() {
-                this.$form = $(this.form);
-                this.setEventListener();
-                this.sumbitHandler(); // 삭제 예정
-            
-                $('.pagination').pagination();
-            },
-            sumbitHandler: function(param) {
-                var self = this;
-
-                $.ajax({
-                    url: self.$form.data('ajax'),
-                    method: 'POST',
-                    dataType: 'json',
-                    data: param,
-                    beforeSend: function(xhr) {
-                        lgkorUI.showLoading();
-                    },
-                    success: function(d) {
-                        if (!d.status) return;
-                        
-                        var data = d.data,
-                            html = '';
-
-                        var popular = data.popular,
-                            newest = data.newest;
-
-                        if (popular.listData) {
-                            popular.listData.forEach(function(item) {
-                                html += vcui.template(listDataTmpl, item);
-                            });
-
-                            $('#popular .video-list').html(html);
-                            $('#popular .pagination').pagination('update', popular.listPage);
-                            $('#popular .count').html(popular.listPage.totalCount);
-                            html = '';
-                        }
-
-                        if (newest.listData) {
-                            newest.listData.forEach(function(item) {
-                                html += vcui.template(listDataTmpl, item);
-                            });
-                            $('#newest .video-list').html(html);
-                            $('#newest .pagination').pagination('update', newest.listPage);
-                            $('#newest .count').html(newest.listPage.totalCount);
-                        }
-                    },
-                    error: function(err){
-                        console.log(err);
-                    },
-                    complete: function() {
-                        lgkorUI.hideLoading();
-                    }
-                });
-            },
-            setEventListener: function() {
-                var self = this;
+                var _self = this,
+                    $contents = $('.contents.notice');
                 
-                self.$form.on('submit', function(e) {
-                    e.preventDefault();
+                _self.$searchWrap = $contents.find('.search-wrap');
+                _self.$pagination = $contents.find('.pagination');
+                _self.$sortsWrap = $contents.find('.sorting-wrap');
+                _self.$sortTotal = $contents.find('#count');
+                _self.$sortSelect = $contents.find('.ui_selectbox');
+                _self.$listWrap = $contents.find('.list-wrap');
+                _self.$noData = $contents.find('.no-data');
 
-                    var data = {
-                        page: 1
-                    }
+                _self.params = {
+                    'keyword': _self.$searchWrap.find('input[type="text"]').val(),
+                    'orderType': _self.$sortSelect.eq(0).vcSelectbox('value'),
+                    'page': 1
+                };
+
+                _self.$pagination.pagination();
+            
+                _self.bindEvent();
+            },
+            searchList: function() {
+                var _self = this,
+                    url = _self.$searchWrap.data('ajax');
+
+                lgkorUI.showLoading();
+                lgkorUI.requestAjaxData(url, _self.params, function(d) {
+                    var html = '',
+                        data = d.data.listData,
+                        page = d.data.listPage;
+
+                    _self.$searchWrap.find('input[type="text"]').val(_self.params['keyword']);
+                    _self.$sortTotal.html(page.totalCount);                    
+                    _self.$pagination.pagination('update', page);
+                    _self.$listWrap.find('ul').empty();
+
+                    if (data.length) {
+                        data.forEach(function(item) {
+                            html += vcui.template(listTmpl, item);
+                        });
+                        _self.$listWrap.find('ul').html(html);
                     
-                    self.sumbitHandler(data);
-                });
-
-                $('.pagination').on('pageClick', function(e) {
-                    var data = {
-                        page: e.page
-                    };
-
-                    self.sumbitHandler(data);
-                });
-
-                $('#btnReset').on('click', function() {
-                    var data = {
-                        page: 1
+                        _self.$listWrap.show();
+                        _self.$noData.hide();
+                    } else {
+                        _self.$listWrap.hide();
+                        _self.$noData.show();
                     }
 
-                    self.sumbitHandler(data);
+                    lgkorUI.hideLoading();
+                });
+            },
+            bindEvent: function() {
+                var _self = this;
+                
+                _self.$searchWrap.find('.btn-search').on('click', function() {
+                    _self.params = $.extend({}, _self.params, {
+                        'keyword': _self.$searchWrap.find('input[type="text"]').val(),
+                        'page': 1
+                    });
+                    
+                    _self.searchList();
+                });
+
+                _self.$sortSelect.on('change', function() {
+                    _self.params = $.extend({}, _self.params, {
+                        'orderType': _self.$sortSelect.eq(0).vcSelectbox('value'),
+                        'page': 1
+                    });
+                    _self.searchList();
+                });
+
+                _self.$pagination.on('pageClick', function(e) {
+                    _self.params = $.extend({}, _self.params, {
+                        'page': e.page
+                    });
+                    _self.searchList();
                 });
             }
         }
         
-        videoGuide.init();
+        notice.init();
     });
 })();

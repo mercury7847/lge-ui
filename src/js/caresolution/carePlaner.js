@@ -48,9 +48,9 @@
         '                   <dt>색상</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" id="colorSet-{{modelId}}" title="색상 선택" {{#if siblingColors.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" id="colorSet-{{modelId}}" title="색상 선택" data-sibling-type="siblingColors" {{#if siblingColors.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingColors}}'+
-        '                               <option value="{{item.siblingCode}}">{{item.siblingValue}}</option>'+
+        '                               <option value="{{item.siblingCode}}"{{#if selectColorID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
         '                           </select>'+
         '                       </div>'+
@@ -62,9 +62,9 @@
         '                   <dt>가입비</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" id="feeSet-{{modelId}}" title="가입비 선택"  {{#if siblingFee.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee" {{#if siblingFee.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingFee}}'+
-        '                               <option value="{{item.siblingCode}}">{{item.siblingValue}}</option>'+
+        '                               <option value="{{item.siblingCode}}"{{#if selectFeeID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
         '                           </select>'+
         '                       </div>'+
@@ -76,9 +76,9 @@
         '                   <dt>의무사용</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" id="usePeriodSet-{{modelId}}" title="의무사용 선택"  {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" id="usePeriodSet-{{modelId}}" title="의무사용 선택" data-sibling-type="siblingUsePeriod" {{#if siblingUsePeriod.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingUsePeriod}}'+
-        '                               <option value="{{item.siblingCode}}">{{item.siblingValue}}</option>'+
+        '                               <option value="{{item.siblingCode}}"{{#if selectUserPeriodID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
         '                           </select>'+
         '                       </div>'+
@@ -90,9 +90,9 @@
         '                   <dt>방문주기</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" id="visiSet-{{modelId}}" title="방문주기 선택"  {{#if siblingVisitCycle.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" id="visiSet-{{modelId}}" title="방문주기 선택" data-sibling-type="siblingVisitCycle" {{#if siblingVisitCycle.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingVisitCycle}}'+
-        '                               <option value="{{item.siblingCode}}">{{item.siblingValue}}</option>'+
+        '                               <option value="{{item.siblingCode}}"{{#if selectVisitCycleID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
         '                           </select>'+
         '                       </div>'+
@@ -159,44 +159,37 @@
         '   </div>'+
         '</div>';
 
-    var _estimateProdTemplate =    
-        '   <div class="slide-wrap estimate_prod_slide">'+
-        '       <div class="slide-content ui_carousel_list">'+
-        '           <div class="slide-track ui_carousel_track ui_flexible_height">'+
-        '           {{#each item in putitem_list}}'+
-        '               <div class="slide-conts ui_carousel_slide">'+
-        '                   <div class="conts-wrap">'+
-        '                       <div class="item ui_flexible_box">'+
-        '                           <div class="ui_flexible_cont">'+
-        '                               <div class="img-wrap">'+
-        '                                   <img src="{{item.itemData.modelImg}}" alt="{{item.itemData.userFriendlyName}}">'+
-        '                               </div>'+
-        '                               <div class="txt-wrap">'+
-        '                                   <div class="flag-wrap">'+
-        '                                       <span class="flag"><span class="blind">서비스명</span>{{item.itemData.serviceName}}</span>'+
-        '                                   </div>'+
-        '                                   <div class="tit-info">'+
-        '                                       <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.itemData.userFriendlyName}}</p>'+
-        '                                       <p class="price">월 {{item.itemData.monthlyPrice}}</p>'+
-        '                                       <div class="etc-info">'+
-        '                                           <span class="txt"><span class="blind">제품 코드</span>{{item.itemData.modelName}}</span>'+
-        '                                           <span class="txt"><span class="blind">색상</span>{{item.itemData.selectColorName}}</span>'+
-        '                                       </div>'+
-        '                                   </div>'+
-        '                                   <div class="etc-info">'+
-        '                                   {{#each etc in item.itemData.detailProdInfo}}'+
-        '                                       <span class="txt">{{item.itemData.detailProdInfo[etc]}}</span>'+
-        '                                   {{/each}}'+
-        '                                   </div>'+
-        '                               </div>'+
-        '                           </div>'+
-        '                       </div>'+
-        '                   </div>'+
+    var _estimateProdTemplate =
+        '<ul>'+
+        '   {{#each item in putitem_list}}'+
+        '   <li class="item">'+
+        '       <div class="img-wrap">'+
+        '           <img src="{{item.itemData.modelImg}}" alt="{{item.itemData.userFriendlyName}}">'+
+        '       </div>'+
+        '       <div class="txt-wrap">'+
+        '           <div class="flag-wrap">'+
+        '               <span class="flag"><span class="blind">서비스명</span>{{item.itemData.serviceName}}</span>'+
+        '           </div>'+
+        '           <div class="tit-info">'+
+        '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{item.itemData.userFriendlyName}}</p>'+
+        '               <div class="etc-info">'+
+        '                   <span class="txt"><span class="blind">제품 코드</span>{{item.itemData.modelName}}</span>'+
+        '                   <span class="txt"><span class="blind">색상</span>{{item.selectOptions.optdata["siblingColors"].name}}</span>'+
         '               </div>'+
-        '           {{/each}}'+
+        '           </div>'+
+        '           <div class="etc-info">'+
+        '               {{#each info in item.selectOptions.optstring}}'+
+        '               <span class="txt">{{info}}</span>'+
+        '               {{/each}}'+
+        '           </div>'+
+        '           <div class="price-info">'+
+        '               <p class="price sale"><span class="blind">기본 이용 요금</span>월 {{item.itemData.basicMonthlyPrice}}원</p>'+
+        '               <p class="price"><span class="blind">최종 이용 요금</span>월 {{item.itemData.monthlyPrice}}원</p>'+
         '           </div>'+
         '       </div>'+
-        '   </div>';
+        '   {{/each}}'+
+        '   </li>'
+        '</ul>';
 
     var _showItemLength = 8;
 
@@ -213,12 +206,14 @@
 
     var $caresolutionContainer;
     var $fixedTab;
-    var $typeTab;
+    var $serviceTab;
     var $categoryTab;
     var $categoryTabCtrler;
     var $sortSelector;
     var $prodListContainer;
     var $putItemContainer;
+
+    var _serviceID = 0;
 
     function init(){
         vcui.require(['ui/carousel', 'ui/tab', 'ui/sticky', 'ui/modal', 'ui/selectbox', 'ui/smoothScrollTab'], function () {
@@ -234,7 +229,7 @@
     function setting(){
         $caresolutionContainer = $('.care-solution-wrap');
         $fixedTab = $('.fixed-tab-wrap');
-        $typeTab = $fixedTab.find('.tabs-wrap.new-type');
+        $serviceTab = $fixedTab.find('.tabs-wrap.new-type');
         $categoryTab = $fixedTab.find('.cate-scroll-wrap');
         $sortSelector = $('.sort-select-wrap select');
         $prodListContainer = $('.prd-list-wrap');
@@ -244,6 +239,11 @@
 
         _categoryListUrl = $caresolutionContainer.data("cateList");
         _prodListUrl = $caresolutionContainer.data("prodList");
+
+        $fixedTab.find('.service_tab').vcTab()
+        .on('tabchange', function(e, data){
+            changeService(data.selectedIndex)
+        });
 
         $categoryTabCtrler = new vcui.ui.SmoothScrollTab('.ui_smoothScroll_tab');
 
@@ -280,9 +280,6 @@
     }
 
     function eventBind(){
-        $typeTab .on('click', '.tabs li a', function(e){
-            e.preventDefault();
-        });
 
         $categoryTabCtrler.on('smoothscrolltabselecttab', function(e, data){
             var categorytop = $caresolutionContainer.offset().top;
@@ -299,7 +296,7 @@
             e.preventDefault();
             
             addPutItem(this);
-        }).on('change', '> ul.inner > li.item .info-wrap input[type=radio]', function(e){
+        }).on('change', '.info-wrap select', function(e){
             e.preventDefault();
 
             changeItemOptions(this);
@@ -359,7 +356,10 @@
                 var category = vcui.template(_categoryItemTemplate, result.data[id]);
                 $categoryTab.find('.tabs').append($(category).get(0));
             }
-            $categoryTabCtrler.setTabIndex(0);
+            $categoryTabCtrler.resetStatus(0);
+
+            $('.service-tooltop .txt-wrap').hide();
+            $('.service-tooltop .txt-wrap').eq(_serviceID).show();
 
             if(!_isStickyApply){
                 _isStickyApply = true;
@@ -405,6 +405,24 @@
 
             setPutItems();
             setPutItemStatus();
+        }
+    }
+
+    function changeService(sid){
+        if(_serviceID != sid){
+            _serviceID = sid;
+
+            if(location.hostname === 'localhost'){
+                if(_serviceID == 0){
+                    _categoryListUrl = "/lg5-common/data-ajax/caresolution/carePlanerCategory.json";
+                    _prodListUrl = "/lg5-common/data-ajax/caresolution/carePlanerProductList.json";
+                } else{
+                    _categoryListUrl = "/lg5-common/data-ajax/caresolution/carePlnerCareshipCategory.json";
+                    _prodListUrl = "/lg5-common/data-ajax/caresolution/carePlanerCareshipList.json";
+                }
+            }
+
+            loadCategoryList();
         }
     }
 
@@ -625,6 +643,10 @@
 
     function getTabID(){
         var tabIndx = $categoryTabCtrler.getTabIndex();
+
+        var uitab = $fixedTab.find('.service_tab').vcTab('instance');
+        console.log(uitab.getSelectIdx())
+
         return tabIndx;
     }
 
@@ -640,7 +662,7 @@
     }
 
     function getServiceName(){
-        var currentab = $typeTab.find('.tabs li[class=on]');
+        var currentab = $serviceTab.find('.tabs li[class=on]');
         
         return currentab.find('a').data("serviceName");
     }
@@ -648,19 +670,33 @@
     function getOptionData(item){
         var optgroup = $(item).closest('.prd-care-vertical').find('.info-wrap .opt-info')
         var optdata = {};
+        var optstring = [];
         optgroup.children().each(function(idx, opt){
-            var selectItem = $(opt).find('input[type=radio]:checked');
-            var selectValue = selectItem.val();
-            var selectName = selectItem.data('siblingName');
-            var siblingType = selectItem.data('siblingType');
+            var selectItem = $(opt).find('.ui_selectbox').vcSelectbox('instance');
+            var selectValue = selectItem.value();
+            var selectName = selectItem.text();
+            var siblingType = selectItem.$el.data('siblingType');
             
             optdata[siblingType] = {
                 name: selectName,
                 value: selectValue
             }
+            console.log()
         });
 
-        return optdata;
+        if(_serviceID == 0){
+            optstring.push(
+                "가입비 " + optdata["siblingFee"].name + "원 선납",
+                "계약기간 " + optdata["siblingUsePeriod"].name,
+                "의무 사용기간 " + optdata["siblingUsePeriod"].name,
+                "방문 주기 " + optdata["siblingVisitCycle"].name + "/1회"
+            );
+        }
+
+        return {
+            optdata: optdata,
+            optstring: optstring
+        };
     }
 
     document.addEventListener('DOMContentLoaded', function () {

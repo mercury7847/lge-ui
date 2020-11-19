@@ -2,11 +2,8 @@
 
 /* notice view */
 .board-view-wrap {
-    max-width:1380px;
-    margin:0 auto;
     .board-view {
         position:relative;
-        background:#fff;
         @include mobile {
             padding:40px 20px 56px;
         }
@@ -112,10 +109,6 @@
                 }
                 p {
                     color:#616161;
-                    margin-bottom: 24px;
-                    &:last-child {
-                        margin-bottom: 0;
-                    }
                     &.view-content-title {
                         color:#222;
                         margin-bottom: 16px;
@@ -160,6 +153,13 @@
                         line-height:18px;
                     }
                 }
+            }
+            #viewContent {
+                color:#222;
+                p {
+                    color: inherit;
+                }
+                @include font-medium;
             }
         }
     }

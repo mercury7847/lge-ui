@@ -130,6 +130,16 @@ vcui.define('ui/smoothScrollTab', ['jquery', 'vcui', 'ui/smoothScroll'], functio
             var self = this;
 
             return self.tabIndex;
+        },
+
+        resetStatus: function(selectIdx){
+            var self = this;
+
+            self.setTabIndex(selectIdx);
+
+            self.smoothScroll.update();
+            
+            self._setArrowCtrlStatus();
         }
     });
     ///////////////////////////////////////////////////////////////////////////////////////
