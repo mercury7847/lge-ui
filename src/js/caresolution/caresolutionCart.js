@@ -57,8 +57,7 @@
 
                 var reveal_url = self.$cartContent.attr('data-reveal-url');
                 if(reveal_url) {
-                    var ajaxUrl = self.$cartContent.attr('data-list-url');
-                    lgkorUI.requestAjaxDataPost(ajaxUrl, null, function(result){
+                    lgkorUI.requestAjaxDataPost(reveal_url, null, function(result){
                         _self.updateList(result.data);
 
                         var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
