@@ -31,26 +31,42 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="additional-purchase">
-                                <div class="addfile-wrap ui_dropdown">
-                                    <a href="#" class="addfile-button ui_dropdown_toggle">첨부파일</a>
-                                    <div class="addfilebox-list ui_dropdown_list">
-                                        <ul class="addfile-list">
-                                            <li>
-                                                <a href="#">전체</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Test.jpg</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Test.png</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">한번에 받기</a>
-                                            </li>
-                                        </ul>
+                            <div class="board-view-sns sns-wrap type2">
+                                <div class="additional-purchase">
+                                    <div class="addfile-wrap ui_dropdown">
+                                        <a href="#" class="addfile-button ui_dropdown_toggle">첨부파일</a>
+                                        <div class="addfilebox-list ui_dropdown_list">
+                                            <ul class="addfile-list">
+                                                <li>
+                                                    <a href="#">전체</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Test.jpg</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Test.png</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">한번에 받기</a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- 
+                                    data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
+                                    data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
+                                    data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
+                                    data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
+                                
+                                    각 sns 버튼에 적용.
+                                -->
+                                <ul class="sns-list">
+                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook"><span class="blind">페이스북으로 페이지 공유하기</span></a></li>
+                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter"><span class="blind">트위터로 페이지 공유하기</span></a></li>
+                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk"><span class="blind">카카오톡으로 페이지 공유하기</span></a></li>
+                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn url" data-link-name="copy_url"><span class="blind">URL 복사하기</span></a></li>
+                                </ul>
                             </div>
                             <div class="board-view-body">
                                 <!-- admin editor 등록 시 id="viewContent" 추가 -->

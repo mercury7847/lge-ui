@@ -251,10 +251,12 @@
 }
 
 // board add file list
+.board-view-sns.type2{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 .addfile-wrap{
-    border-bottom:1px solid #ddd;
-    padding:20px 0;
-
     .addfile-button{
         @include font-small;
         background:url("/lg5-common/images/icons/icon-download-32.svg") no-repeat 100% center;
@@ -269,7 +271,7 @@
         border-radius: 4px;
         box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
         background-color: #ffffff;
-
+        text-align:left;
     }
     .addfilebox-list li{
         padding:17px 24px;
