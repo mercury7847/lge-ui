@@ -514,7 +514,7 @@
         }
     }
     .title-type{
-        .image {
+        .item-image {
             padding-top:75%;
         }
     }
@@ -526,7 +526,6 @@
         }
     }
     @include mobile {
-        padding:0 16px;
         .card-list { 
             margin:0;
             > li {

@@ -249,3 +249,39 @@
 .h2_tit{
     @include font-small;
 }
+
+// board add file list
+.board-view-sns.type2{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.addfile-wrap{
+    .addfile-button{
+        @include font-small;
+        background:url("/lg5-common/images/icons/icon-download-32.svg") no-repeat 100% center;
+        padding-right:36px;
+    }
+    .addfilebox-list{
+        display:none;
+        position:absolute;
+        margin: 12px 0 0 0;
+        padding: 4px 0 10px;
+        border-radius: 4px;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+        background-color: #ffffff;
+        text-align:left;
+    }
+    .addfilebox-list li{
+        padding:17px 24px;
+        color:#808080;
+    }
+    .addfilebox-list li:hover{
+        color:#222;
+    }
+}
+.addfile-wrap.open{
+    .addfilebox-list{
+        display:block;
+    }
+}
