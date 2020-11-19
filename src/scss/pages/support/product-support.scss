@@ -774,6 +774,9 @@
     /* 카드뉴스 & 가전제품 생활의 팁 */
     &.card {   
         @include mobile {
+            .result-wrap {
+                padding:0 16px;
+            }
             .board-view {
                 padding-top: 52px;
                 overflow: hidden;

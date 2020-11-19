@@ -3,7 +3,7 @@
         '<li>' +
             '<a href="{{url}}" class="item">' +
                 '<div class="item-image">' +
-                    '<img src="{{imgUrl}}" alt="{{imgAlt}}">' +
+                    '<img src="{{img.src}}" alt="{{img.alt}}">' +
                 '</div>' +
                 '<div class="item-conts">' +
                     '<ul class="infos">' +
@@ -18,7 +18,7 @@
         '<li>' +
             '<a href="{{url}}" class="item">' +
                 '<div class="item-image">' +
-                    '<img src="{{imgUrl}}" alt="{{imgAlt}}">' +
+                    '<img src="{{img.src}}" alt="{{img.alt}}">' +
                 '</div>' +
                 '<div class="item-conts">' +
                     '{{# if (typeof flag != "undefined") { #}}' +
@@ -88,7 +88,9 @@
                     'page': 1
                 };
 
-                CS.UI.$pagination.pagination();
+                CS.UI.$pagination.pagination({
+                    pageCount: 12
+                });
             
                 _self.bindEvent();
             },
