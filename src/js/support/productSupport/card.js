@@ -37,35 +37,26 @@
         var url = CS.UI.$surveyWrap.data('ajax');
 
         lgkorUI.showLoading();
-        $.ajax({
-            url: url,
-            data: param
-        }).done(function (d) {
-            if(d.status != 'success'){
-                alert(d.message ? d.message : '오류발생');
-                return;
-            }
-
+        lgkorUI.requestAjaxDataPost(url, param, function(d) {
+            var data = d.data;
             var content = 
                 '<p>평가해 주신 내용은 더 나은 콘텐츠를 제공해 드리기 위한 자료로 활용합니다.</p>' +
                 '<p><span class="star-rating-wrap">';
                 
             for (var i = 0; i < 5; i++) {
-                if (i < d.data.score) {
+                if (i < data.score) {
                     content += '<span class="star on"></span>';
                 } else {
                     content += '<span class="star"></span>';
                 }
             }
-            content += '</span></p><p>' + '평가결과 ' + d.data.score + ' / ' + d.data.headCount + '명 참여</p>';
+            content += '</span></p><p>' + '평가결과 ' + data.score + ' / ' + data.count + '명 참여</p>';
 
             $('#surveyPop .lay-conts').html(content);
             $('#surveyPop').vcModal();
 
             lgkorUI.hideLoading();
-        }).fail(function(err){
-            alert(err.message);
-        });;
+        });
     }
 
     $(window).ready(function() {
