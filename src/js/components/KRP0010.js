@@ -12,12 +12,16 @@
                 self.isDragging = false;
                 self.setting();
                 self.bindEvents();
+                self.bindPopupEvents();
             },
 
             setting: function() {
                 var self = this;
                 //pdp데이타
                 self.$pdpData = $('#pdp-data');
+
+                //콤포넌트
+                self.$component = $('div.component-wrap');
 
                 //데스크탑용 갤러리
                 self.$pdpVisual = $('#desktop_summary_gallery div.pdp-visual');
@@ -26,7 +30,7 @@
                 //데스크탑용 갤러리 썸네일리스트
                 self.$pdpThumbnail = self.$pdpVisual.find('div.pdp-thumbnail-nav div.inner div.pdp-thumbnail-list ul.thumbnail-list');
                 //PDP 더보기
-                self.$pdpMoreInfo = self.$pdpVisual.find('div.pdp-more-info');
+                //self.$pdpMoreInfo = self.$pdpVisual.find('div.pdp-more-info');
                 //선택된 데스크탑 썸네일
                 self.$selectItemTarget = self.$pdpThumbnail.find('li.thumbnail.active');
 
@@ -108,6 +112,20 @@
                     //pinchZoom.update(true);
                 });
 
+                /*
+                //PDP 갤러리 더보기
+                self.$pdpMoreInfo.on('click','a',function(e) {
+                    e.preventDefault();
+                    self.requestModal(this);
+                });
+                */
+                                
+                //팝업 모달뷰 버튼
+                self.$component.find('a.btn-modal').on('click', function(e) {
+                    e.preventDefault();
+                    self.requestModal(this);
+                });
+
                 //데스크탑용 갤러리 이미지 클릭
                 self.$pdpImage.find('a').first().on('click',function(e){
                     e.preventDefault();
@@ -129,12 +147,6 @@
                     }
                 });
 
-                //PDP 갤러리 더보기
-                self.$pdpMoreInfo.on('click','a',function(e) {
-                    e.preventDefault();
-                    self.requestModal(this);
-                });
-
                 //모바일용 갤러리 클릭
                 self.$pdpMobileSlider.on('click', function(e){ 
                     e.preventDefault();
@@ -148,8 +160,26 @@
                     var index = $(this).attr('href').replace("#","");
                     self.clickModalThumbnail(index);
                 });
+
+                //즐겨찾기
+                self.$pdpInfo.find('#wish-chk').on('click', function(e) {
+                    var itemID = self.$pdpInfo.attr('data-id');
+                    var checked = $(this).is(':checked');
+                    self.requestWishItem(itemID, checked);
+                });
             },
 
+            //팝업 버튼 이벤트
+            bindPopupEvents: function() {
+                $('#pdp-modal').on('click', 'button', function(e) {
+                    var buttonLinkUrl = $(this).attr('data-link-url');
+                    if(buttonLinkUrl) {
+                        location.href = buttonLinkUrl;
+                    }
+                });
+            },
+
+            //페이지에 저장된 pdp 데이타 가져오기
             findPdpData: function(index) {
                 var self = this;
                 var inputs = self.$pdpData.find('div:nth-child(' + (parseInt(index)+1) + ') input');
@@ -268,9 +298,16 @@
             },
 
             openModalFromHtml: function(html) {
-                $('#event-modal').html(html).vcModal();
+                $('#pdp-modal').html(html).vcModal();
             },
 
+            //아이템 찜하기
+            requestWishItem: function(itemID, wish) {
+                var self = this;
+                var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
+                var postData = {"itemID":itemID, "wish":wish};
+                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, null);
+            },
         };
 
         KRP0010.init();
