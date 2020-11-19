@@ -298,6 +298,7 @@ CS.MD.pagination = function() {
         var defaults = {
             page: 1,
             totalCount: 1,
+            pageCount:10,
             pageView: 5,
             prevClass: 'prev',
             nextClass: 'next',
@@ -312,7 +313,7 @@ CS.MD.pagination = function() {
             self.$prev = $el.find('.' + self.options.prevClass);
             self.$next = $el.find('.' + self.options.nextClass);
 
-            self.pageTotal = Math.ceil(self.options.totalCount / self.options.pageView);
+            self.pageTotal = (self.options.totalCount - 1)  / self.options.pageCount + 1;
 
             self._setEvent();
             self._update();
@@ -381,7 +382,7 @@ CS.MD.pagination = function() {
 
             self.options.page = data.page;
             self.options.totalCount = data.totalCount;
-            self.pageTotal = self.options.totalCount == 0 ? 1 : Math.ceil(self.options.totalCount / self.options.pageView);
+            self.pageTotal = self.options.totalCount == 0 ? 1 : (self.options.totalCount - 1)  / self.options.pageCount + 1;
 
             self._update();
         },

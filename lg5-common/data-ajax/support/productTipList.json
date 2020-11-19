@@ -4,107 +4,91 @@
     "data": {
         "listData": [
             {
+                "url": "/html/support/CSTF2610.html",
                 "flag": "NEW",
-                "url": "/html/support/CSTF7110.html",
-                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
-                "imgAlt": "생활의팁생활의팁생활의팁 사진",
-                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "img": {
+                    "src": "/lg5-common/images/dummy/@img-card1.jpg",
+                    "alt": "생활의팁생활의팁생활의팁 사진"
+                },
+                "title": "카드뉴스제목",
                 "date": "2019.06.15",
                 "view": "3,100"
             },
             {
+                "url": "/html/support/CSTF2610.html",
                 "flag": "NEW",
-                "url": "/html/support/CSTF7110.html",
-                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
-                "imgAlt": "생활의팁생활의팁생활의팁 사진",
-                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목생활의팁 제목 생활의팁 제목 생활의팁 제목생활의팁 제목 생활의팁 제목 생활의팁 제목생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "img": {
+                    "src": "/lg5-common/images/dummy/@img-card1.jpg",
+                    "alt": "생활의팁생활의팁생활의팁 사진"
+                },
+                "title": "카드뉴스제목",
                 "date": "2019.06.15",
                 "view": "3,100"
             },
             {
-                "url": "/html/support/CSTF7110.html",
-                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
-                "imgAlt": "생활의팁생활의팁생활의팁 사진",
-                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "url": "/html/support/CSTF2610.html",
+                "img": {
+                    "src": "/lg5-common/images/dummy/@img-card1.jpg",
+                    "alt": "생활의팁생활의팁생활의팁 사진"
+                },
+                "title": "카드뉴스제목",
                 "date": "2019.06.15",
                 "view": "3,100"
             },
             {
-                "url": "/html/support/CSTF7110.html",
-                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
-                "imgAlt": "생활의팁생활의팁생활의팁 사진",
-                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "url": "/html/support/CSTF2610.html",
+                "img": {
+                    "src": "/lg5-common/images/dummy/@img-card1.jpg",
+                    "alt": "생활의팁생활의팁생활의팁 사진"
+                },
+                "title": "카드뉴스제목",
                 "date": "2019.06.15",
                 "view": "3,100"
             },
             {
-                "url": "/html/support/CSTF7110.html",
-                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
-                "imgAlt": "생활의팁생활의팁생활의팁 사진",
-                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "url": "/html/support/CSTF2610.html",
+                "img": {
+                    "src": "/lg5-common/images/dummy/@img-card1.jpg",
+                    "alt": "생활의팁생활의팁생활의팁 사진"
+                },
+                "title": "카드뉴스제목",
                 "date": "2019.06.15",
                 "view": "3,100"
             },
             {
-                "url": "/html/support/CSTF7110.html",
-                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
-                "imgAlt": "생활의팁생활의팁생활의팁 사진",
-                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "url": "/html/support/CSTF2610.html",
+                "img": {
+                    "src": "/lg5-common/images/dummy/@img-card1.jpg",
+                    "alt": "생활의팁생활의팁생활의팁 사진"
+                },
+                "title": "카드뉴스제목",
                 "date": "2019.06.15",
                 "view": "3,100"
             },
             {
-                "url": "/html/support/CSTF7110.html",
-                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
-                "imgAlt": "생활의팁생활의팁생활의팁 사진",
-                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "url": "/html/support/CSTF2610.html",
+                "img": {
+                    "src": "/lg5-common/images/dummy/@img-card1.jpg",
+                    "alt": "생활의팁생활의팁생활의팁 사진"
+                },
+                "title": "카드뉴스제목",
                 "date": "2019.06.15",
                 "view": "3,100"
             },
             {
-                "url": "/html/support/CSTF7110.html",
-                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
-                "imgAlt": "생활의팁생활의팁생활의팁 사진",
-                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
-                "date": "2019.06.15",
-                "view": "3,100"
-            },
-            {
-                "url": "/html/support/CSTF7110.html",
-                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
-                "imgAlt": "생활의팁생활의팁생활의팁 사진",
-                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
-                "date": "2019.06.15",
-                "view": "3,100"
-            },
-            {
-                "url": "/html/support/CSTF7110.html",
-                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
-                "imgAlt": "생활의팁생활의팁생활의팁 사진",
-                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
-                "date": "2019.06.15",
-                "view": "3,100"
-            },
-            {
-                "url": "/html/support/CSTF7110.html",
-                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
-                "imgAlt": "생활의팁생활의팁생활의팁 사진",
-                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
-                "date": "2019.06.15",
-                "view": "3,100"
-            },
-            {
-                "url": "/html/support/CSTF7110.html",
-                "imgUrl": "/lg5-common/images/dummy/@img-card1.jpg",
-                "imgAlt": "생활의팁생활의팁생활의팁 사진",
-                "title": "생활의팁 제목 생활의팁 제목 생활의팁 제목",
+                "url": "/html/support/CSTF2610.html",
+                "img": {
+                    "src": "/lg5-common/images/dummy/@img-card1.jpg",
+                    "alt": "생활의팁생활의팁생활의팁 사진"
+                },
+                "title": "카드뉴스제목",
                 "date": "2019.06.15",
                 "view": "3,100"
             }
         ],
         "listPage": {
-            "page": 2,
-            "totalCount": 20
+            "page": 1,
+            "totalCount": 8
         }
     }
 }
