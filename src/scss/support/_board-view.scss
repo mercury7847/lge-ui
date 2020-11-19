@@ -156,6 +156,9 @@
             }
             #viewContent {
                 color:#222;
+                p {
+                    color: inherit;
+                }
                 @include font-medium;
             }
         }
