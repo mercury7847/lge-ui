@@ -87,19 +87,81 @@
         table {
             table-layout:fixed;
         }
-        tbody td:first-child {
-            .tb-title {
-                display:flex;
+        .board-tit {
+            & > a {
                 text-align:left;
+            }
+            p {
+                color:#222;
+                font-weight:500;
+                @include font-medium;
+            }
+            .flag-wrap {
+                margin-right:12px;
+                white-space:nowrap;
+                .flag {
+                    vertical-align:middle;
+                }
+            }
+        }
+        @include pc {
+            .board-tit {
+                & > a {
+                    display:flex;
+                }
                 p {
-                    color:#222;
-                    font-weight:500;
                     @include textEllipsis;
-                    & + .flag-wrap {
-                        margin-left:12px;
-                        white-space:nowrap;
-                        .flag {
-                            vertical-align:middle;
+                }
+            }
+        }
+        @include mobile {
+            table {
+                display:block;
+                border-top:2px solid #222;
+            }
+            thead {
+                @include blind;
+            }
+            tbody {
+                tr {
+                    display:block;
+                    overflow:hidden;
+                    padding:16px 0; 
+                    border-bottom:1px solid #ddd;
+                }
+                td {
+                    display:block;
+                    padding:0;
+                    text-align:left;
+                    border:0 none;
+                    &.board-tit {
+                        margin-bottom:4px;
+                        & > a {
+                            display:block;
+                        }
+                        p {
+                            @include textEllipsisClamp(2);
+                        }
+                        .flag-wrap {
+                            display:block;
+                            margin:0 0 2px 0;
+                        }
+                    }
+                    &:not(.board-tit) {
+                        float:left;
+                        & + td {
+                            position:relative;
+                            margin-left:6px;
+                            padding-left:7px;
+                            &:before {
+                                content:'';
+                                position:absolute;
+                                left:0;
+                                top:6px;
+                                width:1px;
+                                height:10px;
+                                background:#ddd;
+                            }
                         }
                     }
                 }

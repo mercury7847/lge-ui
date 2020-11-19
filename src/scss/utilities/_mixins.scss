@@ -302,32 +302,3 @@ $wide-screen: "(min-width: 1600px)";
         content: '';
     }
 }
-
-@mixin section {
-    max-width:1146px;
-    margin:0 auto;
-    padding:0 40px;
-    &:first-child {
-        margin-top:0;
-    }
-    &.no-bg {
-        padding: 0 12px;
-        .section-content {
-            padding: 0;
-            background-color: transparent;
-        }
-    }
-    @include mobile {
-        padding:40px 20px 56px;
-        background:#fff;
-        &.no-bg {
-            padding:0;
-            background:transparent;
-            .section-title {
-                padding:40px 20px 0;
-                background:#fff;
-            }
-
-        }
-    }
-}

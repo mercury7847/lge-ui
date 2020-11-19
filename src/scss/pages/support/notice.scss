@@ -51,7 +51,11 @@
     /* pages */
     /* 공지사항 */
     &.notice {
-        
+        .result-wrap {
+            @include mobile {
+                padding:0 16px;
+            }
+        }
     }
 }
 

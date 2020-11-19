@@ -13,31 +13,5 @@
             popupID: 'popup'
         })
 
-        <script>
-            $(function(){
-                vcui.require(['ui/carousel'], function () {
-                    $('.ui_carousel_slider').vcCarousel({
-                        settings: "unslick",
-                        responsive: [
-                            {
-                                breakpoint: 10000,
-                                settings: "unslick"
-                            },
-                            {
-                                breakpoint: 767,
-                                settings: {
-                                    infinite: false,
-                                    variableWidth : true,
-                                    dots: false,
-                                    slidesToShow: 1, 
-                                    slidesToScroll: 1
-                                }
-                            }
-                        ]
-                    });
-                });
-            });
-        </script>
-
     </body>
     </html>

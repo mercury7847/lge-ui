@@ -647,6 +647,12 @@ vcui.define('ui/selectbox', ['jquery', 'vcui', 'helper/gesture'], function ($, c
             }
         },
 
+        text: function(){
+            var self = this;
+            
+            return self.el.options[self.el.selectedIndex].text;
+        },
+
         /**
          * 동적으로 select의 항목들이 변경되었을 때, UI에 반영
          *
