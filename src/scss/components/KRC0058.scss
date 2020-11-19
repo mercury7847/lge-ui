@@ -208,6 +208,7 @@
 		margin:0 -12px;
 		@include mobile {
 			display:inherit;
+			width:auto;
 			margin:0 -6px;
 		}
 	}
