@@ -269,9 +269,13 @@
         
 
         .slide-wrap {
+			padding-bottom:34px;
+			@include mobile {
+				padding-bottom:28px;
+			}
             .indi-wrap {
-                bottom:-28px;
-                font-size:0;
+                bottom:0;
+				font-size:0;
                 .indi-conts {
                     display:inline-block;
                     vertical-align:middle;
@@ -320,7 +324,11 @@
                         }
                     }
                 }
-            }
+			}
+			
+			.slide-controls {
+				top:calc((100% - 34px) / 2);
+			}
         }
 	}
 	
