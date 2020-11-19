@@ -123,6 +123,7 @@
                 @include blind;
             }
             tbody {
+                display:block;
                 tr {
                     display:block;
                     overflow:hidden;
