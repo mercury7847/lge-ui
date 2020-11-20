@@ -141,7 +141,20 @@
                         </dd>
                     </dl>
                     <dl class="forms">
-                        <dt class="tit"><label for="slt05" class="req">서비스 요청시기<span class="blind">필수입력</span></label></dt>
+                        <dt class="tit">
+                            <label for="slt05" class="req">서비스 요청시기<span class="blind">필수입력</span></label>
+                            <div class="tooltip-wrap"><!-- 활성화시 active -->
+                                <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
+                                <span class="tooltip-box">
+                                    <p>선택하신 날짜 이전에 상담사가 사전 연락을 드립니다. </p>
+                                    <p>필터 교체와 토탈 케어 서비스는 전문 관리사에 의해 동시에 진행 됩니다.
+                                    </p>
+                                    <p>당첨 발표 이후 서비스 요청 시기 수정은 불가능 합니다.
+                                    </p>
+                                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                </span>
+                            </div>
+                        </dt>
                         <dd class="conts">
                             <div class="box date-select-box col-2">
                                 <div class="cell">
@@ -172,14 +185,6 @@
                         </dd>
                     </dl>
                 </div>
-                @@include('./common/modules/bullet-list.html', {
-                    "topBorder" : true,
-                    "bulletTxt" : [
-                        "선택하신 날짜 이전에 상담사가 사전 연락을 드립니다.",
-                        "필터 교체와 토탈 케어 서비스는 전문 관리사에 의해 동시에 진행 됩니다.",
-                        "당첨 발표 이후 서비스 요청 시기 수정은 불가능 합니다."
-                    ]
-                })
             </div>
         </section>
         <footer class="pop-footer center">
