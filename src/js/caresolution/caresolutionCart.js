@@ -49,31 +49,30 @@
                     self.cartAllChecker = self.$cartWrap.vcCheckboxAllChecker('instance');
 
                     _self.bindEvents();
-                });
+                    _self.bindPopupEvents();
+                    _self.updateCartItemCheck();
+                    _self.checkNoData();
 
-                _self.bindPopupEvents();
-                _self.updateCartItemCheck();
-                _self.checkNoData();
+                    var reveal_url = self.$cartContent.attr('data-reveal-url');
+                    if(reveal_url) {
+                        lgkorUI.requestAjaxDataPost(reveal_url, null, function(result){
+                            _self.updateList(result.data);
 
-                var reveal_url = self.$cartContent.attr('data-reveal-url');
-                if(reveal_url) {
-                    lgkorUI.requestAjaxDataPost(reveal_url, null, function(result){
-                        _self.updateList(result.data);
-
-                        var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
-                        var itemList = [];
-                        cartItemCheck.each(function (index, item) {
-                            var itemID = $(item).parents('li.order-item').attr('data-item-id');
-                            itemList.push(itemID);
+                            var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
+                            var itemList = [];
+                            cartItemCheck.each(function (index, item) {
+                                var itemID = $(item).parents('li.order-item').attr('data-item-id');
+                                itemList.push(itemID);
+                            });
+                            if(itemList.length > 0) {
+                                careCartInfo.updateData(result.data);
+                            } else {
+                                //선택된 제품이 없다
+                                careCartInfo.setEmptyData();
+                            }
                         });
-                        if(itemList.length > 0) {
-                            careCartInfo.updateData(result.data);
-                        } else {
-                            //선택된 제품이 없다
-                            careCartInfo.setEmptyData();
-                        }
-                    });
-                }
+                    }
+                });
             },
 
             bindEvents: function() {
@@ -172,6 +171,9 @@
 
             //전체선택 버튼 상태 갱신
             updateCartItemCheck: function() {
+                if(self.cartAllChecker) {
+                    self.cartAllChecker.update();
+                }
                 var $cartItemCheck = self.$cartList.find(self.cartItemCheckQuery);
                 self.$cartAllCheck.prop('checked', !$cartItemCheck.is(':not(:checked)'));
             },
@@ -235,7 +237,7 @@
                     var itemID = $(item).parents('li.order-item').attr('data-item-id');
                     itemList.push(itemID);
                 });
-                console.log(itemList);
+                //console.log(itemList);
                 if(itemList.length > 0) {
                     var ajaxUrl = self.$cartContent.attr('data-list-url');
                     var postData = {'itemID': (itemList.length > 0) ? itemList.join() : null};
