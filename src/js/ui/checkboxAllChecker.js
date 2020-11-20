@@ -39,6 +39,7 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
             });
 
             // 소속 체크박스를 선택시
+            self.$items.off('change');
             self.$items.on('change', function (e) {
                 self._allChecked();
             });
@@ -52,6 +53,11 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
                 self.$items = self.$el.find('input[type=checkbox]').not(self.options.allCheckClass);
             }
             self.total = self.$items.size();
+
+            self.$items.off('change');
+            self.$items.on('change', function (e) {
+                self._allChecked();
+            });
         },
 
         _toggleAllChecked: function(){

@@ -10,6 +10,7 @@
             init: function() {
                 var self = this;
                 self.isDragging = false;
+
                 self.setting();
                 self.bindEvents();
                 self.bindPopupEvents();
@@ -121,6 +122,10 @@
                 */
                                 
                 //팝업 모달뷰 버튼
+                self.$component.find('a.view-more').on('click', function(e) {
+                    e.preventDefault();
+                    self.requestModal(this);
+                });
                 self.$component.find('a.btn-modal').on('click', function(e) {
                     e.preventDefault();
                     self.requestModal(this);
@@ -264,13 +269,12 @@
                         self.$popPdpVisualVideo.html(vcui.template(template,item));
                         self.$popPdpVisualVideo.vcImageSwitch('reload');
                         //vcui.require(['ui/imageSwitch','ui/youtubeBox'], function () {
-                        vcui.require(['ui/youtubeBox'], function () {
                             self.$popPdpVisualVideo.find('.youtube-box').vcYoutubeBox();
                             self.$popPdpVisualImage.hide();
                             self.$popPdpVisualVideo.show();
                             self.$popPdpVisualAnimation.hide();
                             self.$popPdpZoomArea.hide();
-                        });
+                        //});
                         break;
                     case "animation":
                         self.$popPdpVisualAnimation.find('div.visual-box div.visual-area a').attr({'data-src':item.adUrl,'aria-describedby':item.alt});

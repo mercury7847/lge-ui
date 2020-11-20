@@ -100,6 +100,7 @@
                 */
                
                 self.cartAllChecker.on('allCheckerChange', function(e, status){
+                    console.log('allcheck');
                     _self.requestInfo();
                 });
 
@@ -237,7 +238,6 @@
                     var itemID = $(item).parents('li.order-item').attr('data-item-id');
                     itemList.push(itemID);
                 });
-                //console.log(itemList);
                 if(itemList.length > 0) {
                     var ajaxUrl = self.$cartContent.attr('data-list-url');
                     var postData = {'itemID': (itemList.length > 0) ? itemList.join() : null};

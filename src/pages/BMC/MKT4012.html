@@ -113,7 +113,7 @@
                         <li>
                             <div class="select-wrap">
                                 <select class="ui_selectbox" id="select1" title="지역 시/도 선택">
-                                    <option value="" class="placeholder">지역 선택</option>
+                                    <option value="" class="placeholder">지역 선택 1</option>
                                     <option value="">서울시</option>
                                 </select>
                             </div>
@@ -121,7 +121,7 @@
                         <li>
                             <div class="select-wrap">
                                 <select class="ui_selectbox" id="select2" title="지역 시/군/구 선택">
-                                    <option value="" class="placeholder">지역 선택</option>
+                                    <option value="" class="placeholder">지역 선택 2</option>
                                     <option value="">구로구</option>
                                 </select>
                             </div>
@@ -172,18 +172,18 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="al-left">이름, 핸드폰번호, 구입희망제품, 응모매장</td>
-                                    <td class="al-left">본인확인, 구입희망 제품 안내 및 제공, 경품배송</td>
-                                    <td class="al-left">2020.01.01~2020.12.31</td>
-                                    <td class="al-left">2020.01.01~2021.06.30</td>
+                                    <td>이름, 핸드폰번호, 구입희망제품, 응모매장</td>
+                                    <td>본인확인, 구입희망 제품 안내 및 제공, 경품배송</td>
+                                    <td>2020.01.01~2020.12.31</td>
+                                    <td>2020.01.01~2021.06.30</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     @@include('./common/modules/bullet-list.html', {
                         "bulletTxt" : [
-                            "고객님께서 작성해 주신 참여 정보는 당사의 행사, 신상품 안내 및 판촉 활용 목적으로만 사용될 예정입니다.",
-                            "본 행사는 멤버십 가입자 대상 이벤트로, 멤버십 동의절차에 따라 멤버십 가입과 이벤트를 동시 진행하실 수 있습니다."
+                            "귀하께서는 본 동의를 거절하실 수 있습니다. 단, 거절하신 경우 이벤트 참여가 제한될 수 있습니다.",
+                            "14세 미만 고객의 경우, 이벤트 참여가 제한됩니다."
                         ]
                     })
                     <div class="agree-input">
@@ -221,6 +221,11 @@
                             </tbody>
                         </table>
                     </div>
+                    @@include('./common/modules/bullet-list.html', {
+                        "bulletTxt" : [
+                            "경품 제공 등 이벤트 진행을 위한 개인정보 처리 위탁에 동의하셔야 이벤트 참여가 가능합니다."
+                        ]
+                    })
                     <div class="agree-input">
                         <span class="chk-wrap">
                             <input type="checkbox" id="chk2-1" name="agreechk-2" >

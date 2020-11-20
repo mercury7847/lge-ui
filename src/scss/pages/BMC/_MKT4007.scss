@@ -206,11 +206,13 @@
                     .winner{
                         display: inline-flex;
                         width: 34.4%;
+                        justify-content: center;
                     }
                     .phone-tt,
                     .phone {
                         display: inline-flex;
                         width: 65.6%;
+                        justify-content: center;
                     }
                     .empty {
                         display: none;
