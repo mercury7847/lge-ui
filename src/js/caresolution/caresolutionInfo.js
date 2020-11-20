@@ -121,9 +121,8 @@ var CareCartInfo = (function() {
                 var count = totalData.count;
                 if(count > 0) {
                     self.$paymentButton.removeAttr('disabled');
-                    self.$paymentButton.attr('disabled');
                 } else {
-                    self.$paymentButton.attr('disabled');
+                    self.$paymentButton.attr('disabled',true);
                 }
 
                 totalData.count = totalData.count ? vcui.number.addComma(totalData.count) : '';
@@ -320,7 +319,7 @@ var CareCartInfo = (function() {
             //if(!$itemCheck.is(':not(:checked)'))
             if(agreechk) {
                 //동의서 모두 체크
-                console.log(self.$agreement);
+                //console.log(self.$agreement);
                 if(self.$agreement.attr('data-has-careship')) {
                     //케어쉽 상품이 포함되어있는지 체크
                     $('#careship-subscription-popup').vcModal();
