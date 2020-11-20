@@ -21,13 +21,8 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
             }
 
             self.$allChecker = self.$el.find(self.options.allCheckClass);
-            if(self.options.checkBoxItemsTargetQuery) {
-                self.$items = self.$el.find(self.options.checkBoxItemsTargetQuery);
-            } else {
-                self.$items = self.$el.find('input[type=checkbox]').not(self.options.allCheckClass);
-            }
-            self.total = self.$items.size();
-            
+
+            self.update();            
             if (self.total === 0) {
                 return;
             }
@@ -47,6 +42,16 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
             self.$items.on('change', function (e) {
                 self._allChecked();
             });
+        },
+
+        update: function update() {
+            var self = this;
+            if(self.options.checkBoxItemsTargetQuery) {
+                self.$items = self.$el.find(self.options.checkBoxItemsTargetQuery);
+            } else {
+                self.$items = self.$el.find('input[type=checkbox]').not(self.options.allCheckClass);
+            }
+            self.total = self.$items.size();
         },
 
         _toggleAllChecked: function(){
