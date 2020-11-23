@@ -22,7 +22,7 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
 
     var Validation = core.ui('Validation', /** @lends vcui.ui.Validation# */{
         bindjQuery: 'validation',
-        defaults: {   
+        defaults: {
             defaultErrorMsg : '입력하세요', 
             register : null,
             maxLength : 10000     
@@ -46,7 +46,7 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                 var required = $(item).data('required'); 
                 var msgTarget = $(item).data('msgTarget'); 
                 var errorMsg = $(item).data('errorMsg') || self.options.defaultErrorMsg; 
-
+                
                 if(required && /true/i.test(required)){
                     
                     var value = $(item).data('value');
@@ -89,7 +89,6 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
 
                 self.nameArr.push(item.name);
             });
-            console.log(newObj)
             self.register = newObj;
 
             self.nameArr = vcui.array.unique(self.nameArr);
@@ -105,22 +104,51 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
             var msg;
 
             for(var key in self.register){
+                msg = "";
+
                 var obj = self.register[key];
                 if(obj.value) nObj[key] = obj.value;
                 if(obj.msgTarget) msg = obj.msgTarget;
                 $target = self.$el.find('[name='+ key +']');
-
+                
                 if(msg) {
-                    if($target.siblings(msg).length > 0){
-                        $target.siblings(msg).hide();
-                        $target.siblings(msg).text(obj.errorMsg);
-                    }else{
-                        $target.parent().siblings(msg).text(obj.errorMsg);
-                    }
+                    var errblock = self._getMsgBlock($target, msg);
+                    errblock.hide();
                 };
+
+                if($target.is('[type=number]') && $target.prop('maxlength') > 0){
+                    $target.on('input', function(){
+                        var maxleng = $(this).prop('maxlength');
+                        var str = $(this).val();
+                        if(str.length > maxleng){
+                            $(this).val(str.slice(0, maxleng));
+                        }
+                    })
+                }
             }
 
             self.setValues(nObj);
+        },
+
+        _getMsgBlock: function _getMsgBlock(item, msg){
+            var block = item.siblings(msg);
+            if(block.length) return block;
+
+            block = item.parent().siblings(msg);
+            if(block.length) return block;
+
+            block = item.parent().parent().siblings(msg);
+            if(block.length) return block;
+
+            return $(msg);
+        },
+
+        _getMsgField: function _getMsgField(block){
+            if(block.children().length){
+                return block.children().eq(0);
+            } else{
+                return block;
+            }
         },
 
         _defaultCheckFunc : function _defaultCheckFunc(val){
@@ -178,7 +206,6 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
             var self = this;  
             var result = {};
             var $findInput = self.$el.find('input');
-            console.log($findInput);
             $findInput.each(function(i, obj) {
                 var item = $(obj)
                 var name = item.attr('name');
@@ -317,9 +344,9 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                 isSuccess = true;
                 self.triggerHandler('success');
             }else{
-                self._swicthErrorMsg(self.validItemObj);
                 self.triggerHandler('validerror', [self.validItemObj]);
             }
+            self._swicthErrorMsg(self.validItemObj);
             
             return {
                 success: isSuccess,
@@ -329,32 +356,30 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
 
         _swicthErrorMsg : function _swicthErrorMsg(obj){
             var self = this;
-            var $target, msg;
+            var $target, msg, nobj;
 
             for(var key in self.register){
-                var nobj = self.register[key];
+                nobj = self.register[key];
                 if(nobj.required){
                     $target = self.$el.find('[name='+ key +']');
                     msg = nobj['msgTarget'];
                     if(msg) {
-                        if($target.siblings(msg).length>0){
-                            $target.siblings(msg).hide();
-                        }else{
-                            $target.parent().siblings(msg).hide();
-                        }
+                        var errblock = self._getMsgBlock($target, msg);
+                        errblock.hide();
                     }
                 }
             }
+            
             for(var prop in obj){
-
                 $target = self.$el.find('[name='+ prop +']');
+                nobj = self.register[prop];
                 msg = nobj['msgTarget'];
                 if(msg){ 
-                    if($target.siblings(msg).length>0){
-                        $target.siblings(msg).show();
-                    }else{
-                        $target.parent().siblings(msg).show();
-                    }
+                    var errblock = self._getMsgBlock($target, msg);
+                    errblock.show();
+
+                    var errfield = self._getMsgField(errblock);
+                    errfield.text(nobj.errorMsg);
                 }
             }
         },
