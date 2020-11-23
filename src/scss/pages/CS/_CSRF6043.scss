@@ -30,7 +30,7 @@
         //     z-index:1;
         // }
         @include mobile {
-            padding:0 20px 32px;
+            padding:0 16px 32px;
             background:#fff;
             &::before, &::after {
                 display:none;
@@ -128,10 +128,13 @@
         max-width:1380px;
         margin:0 auto;
         padding-top:64px;
+        @include mobile {
+            border-top:12px solid #f4f4f4;
+        }
         .list-sorting {
             padding:32px 0 12px;
             @include mobile {
-                padding:16px 16px 12px;
+                padding:32px 16px 12px;
             }
         }
         .accordion-wrap {
@@ -200,7 +203,7 @@
             }
         }
         @include mobile {
-            padding-top:40px;
+            padding-top:12px;
             .accordion-wrap {
                 margin:0 16px;
             }
