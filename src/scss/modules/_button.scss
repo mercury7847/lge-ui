@@ -44,6 +44,8 @@
         color:#222;
         &:hover {
             background:#fff;
+            border-color:#EC455A;
+            color:#EC455A;
         }
     }
 
@@ -53,6 +55,11 @@
         border-color:#ddd;
         background-color:#ededed;
         cursor:default;
+        &:hover {
+            background:#ededed;
+            border-color:#ddd;
+            color:#aaa;
+        }
     }
     // 작은사이즈 버튼
     &.size {
@@ -260,11 +267,19 @@
     @include mobile {
         .btn {
             width:100%;
-            margin:0;
+            margin-left:6px;
             border-radius: 60px;
+            &:first-child,
+            &:only-child {
+                margin-left:0;
+            }
             &:first-child:nth-last-child(2), 
             &:first-child:nth-last-child(2) ~ .btn {
-                width:50%;
+                width:calc((100% - 6px) / 2);
+            }
+            &:first-child:nth-last-child(3), 
+            &:first-child:nth-last-child(3) ~ .btn {
+                width:calc((100% - 12px) / 3);
             }
         }
     }
