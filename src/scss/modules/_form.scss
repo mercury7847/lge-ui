@@ -1483,6 +1483,13 @@ $input: (chk, rdo);
     }
 }
 
+.select-list-wrap.type2{
+    padding-top:32px;
+    li{
+        margin:0 0 16px 0;
+    }
+}
+
 .chk-wrap-colorchip {
     position:relative;
     display:inline-block;
@@ -2024,5 +2031,48 @@ $input: (chk, rdo);
                 }
             }
         }
+    }
+}
+
+//rdo-wrap-list
+.rdo-wrap-info{
+    margin:32px 0 24px;
+    .tit{
+        display:block;
+        font-weight:bold;
+        color:#222;
+        @include font-large;
+    }
+    .tit.req {
+        &::after {
+            content:'*';
+            display:inline-block;
+            margin-left:1px;
+            color:#EC455A;
+            font-size:inherit;
+            line-height:inherit;
+            vertical-align:top;
+        }
+    }
+}
+.rdo-wrap-list{
+    display:flex;
+    flex-flow:wrap;
+    .rdo-wrap.btn-type2 input+label,
+    .rdo-wrap-list button{
+        min-width:181px;
+        width:16.66%;
+        padding:15px 13px;
+        box-sizing:border-box;
+        box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+        border:0;
+        margin:0 12px 12px 0;
+        font-weight:500;
+    }
+    .rdo-wrap.btn-type2 input + label:after{
+        border:0;
+    }
+    .rdo-wrap.btn-type2 input:checked + label:after{
+        border:2px solid #ec455a;
     }
 }
