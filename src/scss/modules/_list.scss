@@ -267,10 +267,7 @@
 .dl-infolist-wrap {
     .lists {
         li {
-            margin-top:12px;
-            @include mobile {
-                margin-top:16px;
-            }
+            margin-top:16px;
             &:first-child {
                 margin-top:0;
             }
@@ -278,67 +275,19 @@
                 font-size:0;
                 dt {
                     display:inline-block;
-                    width:136px;
+                    width:234px;
                     padding-right:24px;
-                    color:#616161;
-                    font-size:16px;
-                    line-height:24px;
+                    color:#767676;
+                    @include font-medium;
                     vertical-align:top;
                     word-break:keep-all;
-                    @include mobile {
-                        width:124px;
-                    }
                 }
                 dd {
                     display:inline-block;
-                    max-width:calc(100% - 136px);
-                    color:$color-default;
-                    font-size:16px;
-                    line-height:24px;
+                    max-width:calc(100% - 234px);
+                    color:#222;
+                    @include font-medium;
                     vertical-align:top;
-                    em {
-                        font-weight:700;
-                    }
-                    p {
-                        display:inline;
-                        margin-right:16px;
-                    }
-                    p.line {
-                        display:block;
-                        margin:0;
-                        margin-top:8px;
-                        &:first-child {
-                            margin-top:0;
-                        }
-                    }
-                    small {
-                        display:block;
-                        color:#F04E3E;
-                        font-size:inherit;
-                        line-height:inherit;
-                    }
-                    .btn-moreinfo {
-                        font-size:inherit;
-                        line-height:inherit;
-                        font-weight:inherit;
-                        &::after {
-                            margin-top:4px;
-                        }
-                    }
-                    @include mobile {
-                        max-width:calc(100% - 124px);
-                        p {
-                            display:block;
-                        }
-                        .btn-moreinfo {
-                            margin-top:8px;
-                            font-size:14px;
-                            line-height:20px;
-                            &::after {
-                                margin-top:2px;
-                            }
-                        }
-                    }
                 }
             }
         }
