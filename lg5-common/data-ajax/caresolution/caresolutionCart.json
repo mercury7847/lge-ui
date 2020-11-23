@@ -37,7 +37,8 @@
         "itemList":[
             {
                 "itemID": "item00001",
-                "available": false,
+                "available": true,
+                "availableMessage": null,
                 "type": "렌탈(케어솔루션)",
                 "wish": false,
                 "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
@@ -60,7 +61,8 @@
             },
             {
                 "itemID": "item00002",
-                "available": true,
+                "available": false,
+                "availableMessage": "설치 불가능 제품입니다.",
                 "type": "케어십",
                 "wish": true,
                 "imageUrl": "/lg5-common/images/dummy/@img-product2.jpg",
