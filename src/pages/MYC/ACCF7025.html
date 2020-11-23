@@ -277,7 +277,7 @@
                                         </div>
                                     </div>
                                     <div class="section-inner type2">
-                                        <div class="form-wrap">
+                                        <div class="form-wrap size2">
                                             <div class="form-infos">
                                                 <p class="req" aria-disabled="true">필수 입력 사항</p>
                                             </div>
@@ -301,11 +301,9 @@
                                                                     <div class="select-wrap">
                                                                         <select class="ui_selectbox" id="slt-card1" title="카드사 선택" name="paymentCard" data-required="true">
                                                                             <option value="" class="placeholder">카드사 선택</option>
-                                                                            <option value="11">카드사1</option>
-                                                                            <option value="22">카드사2</option>
-                                                                            <option value="33">카드사3</option>
+                                                                            <option value="" selected>하나카드</option>
                                                                         </select>
-                                                                        <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
+                                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                                     </div>
                                                                 </dd>
                                                             </dl>
@@ -313,9 +311,9 @@
                                                                 <dt class="tit"><label for="ipt-card1">카드번호</label></dt>
                                                                 <dd class="conts">
                                                                     <div class="input-wrap">
-                                                                        <input type="text" id="ipt-card1" placeholder="(-)없이 입력하세요." value="" class="ui_card_number" name="paymentCardNumber" data-min-length="19" data-max-length="19" data-required="true">
+                                                                        <input type="text" id="ipt-card1" placeholder="(-)없이 입력하세요." value="1234567812345678" class="ui_card_number" name="paymentCardNumber" data-min-length="19" data-max-length="19" data-required="true">
                                                                     </div>
-                                                                    <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
+                                                                    <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                                 </dd>
                                                             </dl>
                                                             <dl class="forms inner-type">
@@ -323,13 +321,13 @@
                                                                 <dd class="conts">
                                                                     <div class="box">
                                                                         <div class="input-wrap">
-                                                                            <input type="text" id="ipt-card2" value="" placeholder="유효기간을 입력해주세요" name="paymentCardPeriod" data-required="true">
+                                                                            <input type="text" id="ipt-card2" value="1220" placeholder="유효기간을 입력해주세요" name="paymentCardPeriod" data-required="true">
                                                                         </div>
                                                                         <div class="cell">
-                                                                            <button type="button" class="btn paymentCardConfirm" disabled><span>납부 카드 확인</span></button>
+                                                                            <button type="button" class="btn paymentCardConfirm"><span>납부 카드 확인</span></button>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
+                                                                    <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                                 </dd>
                                                             </dl>
                                                         </div>
@@ -350,13 +348,11 @@
                                                                 <dt class="tit"><label for="slt-bank1">은행명</label></dt>
                                                                 <dd class="conts">
                                                                     <div class="select-wrap">
-                                                                        <select class="ui_selectbox" id="slt-bank1" title="은행 선택" name="paymentBank" data-required="true"> <!-- 2020-11-20 -->
+                                                                        <select class="ui_selectbox" id="slt-bank1" title="은행 선택" name="paymentBank" data-required="true">
                                                                             <option value="" class="placeholder">선택해주세요.</option>
-                                                                            <option value="111">은행1</option>
-                                                                            <option value="222">은행2</option>
-                                                                            <option value="333">은행3</option>
+                                                                            <option value="111" selected>하나은행</option>
                                                                         </select>
-                                                                        <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
+                                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>=
                                                                     </div>
                                                                 </dd>
                                                             </dl>
@@ -365,13 +361,13 @@
                                                                 <dd class="conts">
                                                                     <div class="box">
                                                                         <div class="input-wrap">
-                                                                            <input type="text" id="ipt-bank2" value="" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요." name="paymentBankNumber" data-required="true"> <!-- 2020-11-20 -->
+                                                                            <input type="text" id="ipt-bank2" value="123456789123" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요." name="paymentBankNumber" data-required="true"> <!-- 2020-11-20 -->
                                                                         </div>
                                                                         <div class="cell">
-                                                                            <button type="button" class="btn paymentBankConfirm" disabled><span>납부 계좌 확인</span></button>
+                                                                            <button type="button" class="btn paymentBankConfirm"><span>납부 계좌 확인</span></button>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="btm-more err-block"><p class="err-msg"></p></div> <!-- 2020-11-20 -->
+                                                                    <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                                 </dd>
                                                             </dl>
                                                         </div>
@@ -385,6 +381,60 @@
                                                             "월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다."
                                                         ]
                                                     })
+                                                </dd>
+                                            </dl>
+                                            <dl class="forms wide">
+                                                <dt class="tit">
+                                                    <p class="label req">ARS 출금 동의<span class="blind">필수</span></p>
+                                                </dt>
+                                                <dd class="conts">
+                                                    <div class="input-mix-wrap">
+                                                        <div class="mix-cont">
+                                                            <p class="desc">입력한 결제 수단의 효력이 발생하기 위해서 ARS 출금동의가 필요합니다.<br>ARS 출금동의 시 내용증명을 위해 음성 녹취가 진행됩니다.</p>
+                                                            <div class="btn-wrap">
+                                                                <button class="btn bg-type icon-ars"><span>ARS 출금 동의 신청</span></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                            <dl class="forms wide">
+                                                <dt class="tit">
+                                                    <p class="label req">자동결제 이용 약관 동의<span class="blind">필수입력</span></p>
+                                                </dt>
+                                                <dd class="conts">
+                                                    <div class="input-mix-wrap">
+                                                        <div class="mix-input">
+                                                            <span class="chk-wrap">
+                                                                <input type="checkbox" id="chk03-1" name="chk03-1">
+                                                                <label for="chk03-1">자동결제 신청 동의</label>
+                                                            </span>
+                                                            <div class="cell">
+                                                                <a href="#n" class="btn-link">이용약관 보기</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mix-cont">
+                                                            <p class="desc">입력하신 위의 결제수단으로 정기결제 신청을 동의합니다.</p>
+                                                        </div>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                            <dl class="forms wide">
+                                                <dt class="tit">
+                                                    <p class="label">보유 멤버십 포인트 사용</p>
+                                                </dt>
+                                                <dd class="conts">
+                                                    <div class="input-mix-wrap">
+                                                        <div class="mix-input">
+                                                            <span class="chk-wrap">
+                                                                <input type="checkbox" id="chk03-2" name="chk03-2">
+                                                                <label for="chk03-2">포인트 사용 동의</label>
+                                                            </span>
+                                                        </div>
+                                                        <div class="mix-cont">
+                                                            <p class="desc">멤버십 포인트는 보유 액수와 관계없이 매월 <em>최대 5,000P</em>까지 차감됩니다.</p>
+                                                        </div>
+                                                    </div>
                                                 </dd>
                                             </dl>
                                         </div>

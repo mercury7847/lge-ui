@@ -586,6 +586,9 @@
             &.right {
                 text-align:right;
             }
+            &.err-block {
+                display:none;
+            }
         }
 
         & +.chk-wrap {

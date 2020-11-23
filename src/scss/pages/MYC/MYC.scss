@@ -85,6 +85,7 @@
             > .tit-wrap {
                 @include clearfix;
                 height:50px;
+                margin-bottom:0;
                 border-bottom:2px solid #222;
                 @include mobile {
                     height:auto;
@@ -185,8 +186,15 @@
                             }
                         }
                     }
+                    &.size2 {
+                        .forms {
+                            .conts {
+                                max-width:560px;
+                            }
+                        }
+                    }
                 }
-                .bullet-list {
+                > .bullet-list {
                     margin-left:20.4%;
                     @include mobile {
                         margin-left:0;
