@@ -440,11 +440,13 @@
     //계약자 정보입력 밸리데이션...
     function setStep1Validation(){
         var completed = false;
+        console.log("step1 validation start!!");
         var result = step1Validation.validate();
         if(result.success){
             console.log("step1Validation.validate(); Success!!!");
 
             var data = getInputData('creditInquire');
+            console.log("creditInquire :", creditInquire);
             completed = data === "Y" ? true : false;
             if(!completed){
                 lgkorUI.alert("", {
@@ -452,7 +454,7 @@
                 });
             }
         } else{
-            //console.log(result.validItem);
+            console.log("step1Validation.validate(); Fail!!!", result.validItem);
         }
 
         return completed;
@@ -461,14 +463,16 @@
     //설치 정보 입력 밸리데이션...
     function setStep2Validation(){
         var completed = false;
+        console.log("step2 validation start!!");
         var result = step2Validation.validate();
         if(result.success){
             console.log("step2Validation.validate(); Success!!!");
 
             var data = getInputData('installAbled');
+            console.log("installAbled :", installAbled);
             completed= data === "Y" ? true : false;
         } else{
-            console.log(result.validItem);
+            console.log("step2Validation.validate(); Fail!!!", result.validItem);
         }
 
         return completed;
@@ -501,6 +505,8 @@
 
         chk = step3Block.find('input[name=selfClearingAgree]').prop('checked');
         if(!chk) return false;
+        
+        console.log("step3Validation.validate(); Success!!!");
         
         
         return true;

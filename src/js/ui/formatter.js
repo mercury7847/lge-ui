@@ -93,7 +93,7 @@ vcui.define('ui/formatter', ['jquery', 'vcui'], function ($, core) {
                 // 숫자
                 num: { format: '0000000000000000000' },
                 // 카드
-                card: { format: '0000-0000-0000-0000' },
+                card: { format: '0000 - 0000 - 0000 - 0000' },
                 // 아멕스카드
                 amexcard: { format: '0000-000000-00000' },
                 // 운전면허번호
