@@ -82,6 +82,7 @@ var res = {
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","검수완료"],
 			"KRP0005_Sticky chat_Static" : ["/html/components/floating.html","","검수완료"],
+			"KRP0008_Responsive UI" : ["/html/components/KRP0008.html","","진행중"],
 			"KRP0009_Product List Products List : No Filter" : ["/html/components/KRP0009.html","","진행중"],
 			"KRP0010_Product Summary (no-img)" : ["/html/components/KRP0010.html","","진행중"],
 			"KRP0012_PDP Tab Anchor" : ["/html/components/KRP0012.html","","검수완료"],
@@ -221,7 +222,7 @@ var res = {
 					"매장 상세" : ["/html/CS/CSRF6041.html","","검수완료"],
 					//"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"]
 				},
-				"서비스 안내" : {
+				"공지사항" : {
 					"FAQ" : ["/html/CS/CSRF6043.html","","진행중"]
 				}
 			},
