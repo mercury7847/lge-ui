@@ -3,19 +3,20 @@
     color:#767676;
     @include font-small;
     @include mobile {
+        margin-top:12px;
         color:#808080;
     }
     .b-tit {
         margin-bottom:2px;
         font-weight:700;
         @include mobile {
-            margin-bottom:8px;
+            margin-bottom:4px;
         }
     }
     .b-txt {
         position:relative;
         margin-top:2px;
-        padding-left:10px;
+        padding-left:11px;
         font-weight:500;
         @include mobile {
             margin-top:0;
@@ -39,12 +40,11 @@
     }
 
     &.top-border {
-        margin-top:24px;
-        padding-top:26px;
+        margin-top:48px;
+        padding-top:12px;
         border-top:1px solid #ddd;
         @include mobile {
-            margin-top:20px;
-            padding-top:16px;
+            margin-top:40px;
         }
     }
     &.nomargin-top {

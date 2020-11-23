@@ -268,6 +268,9 @@
     .lists {
         li {
             margin-top:16px;
+            @include mobile {
+                margin-top:14px;
+            }
             &:first-child {
                 margin-top:0;
             }
@@ -281,13 +284,32 @@
                     @include font-medium;
                     vertical-align:top;
                     word-break:keep-all;
+                    @include mobile {
+                        width:34%;
+                    }
                 }
                 dd {
                     display:inline-block;
+                    width:100%;
                     max-width:calc(100% - 234px);
                     color:#222;
                     @include font-medium;
                     vertical-align:top;
+                    .btn-link {
+                        margin-top:1px;
+                        margin-left:24px;
+                    }
+                    @include mobile {
+                        width:66%;
+                        max-width:initial;
+                        span {
+                            display:block;
+                        }
+                        .btn-link {
+                            margin-top:6px;
+                            margin-left:0;
+                        }
+                    }
                 }
             }
         }

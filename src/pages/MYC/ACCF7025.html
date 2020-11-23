@@ -26,7 +26,7 @@
                         <div class="lnb-contents">
                             <!-- 계약정보 -->
                             <div class="my-contract-info">
-                                <h4 class="tit">이케어 고객님의 계약정보는 총 <em>3건</em>입니다.</h4>
+                                <h4 class="tit">이케어 고객님의 계약정보는 <br class="mob">총 <em>3건</em>입니다.</h4>
                                 <div class="form-wrap">
                                     <dl class="forms">
                                         <dt class="tit"><label for="slt1">계약정보 선택</label></dt>
@@ -44,6 +44,7 @@
 
                             <!-- 상세 -->
                             <div class="section-wrap">
+                                <!-- 계약자/실사용자 정보 -->
                                 <div class="section">
                                     <div class="tit-wrap">
                                         <h5 class="tit">계약자/실사용자 정보</h5>
@@ -52,18 +53,117 @@
                                         </div>
                                     </div>
                                     <div class="section-inner">
-                                        <p class="sub-tit">계약자 정보</p>
-                                        @@include('./common/modules/dl-infolist.html', {
-                                            "list" : [
-                                                { "dt" : "이름", "dd" : "이*어" },
-                                                { "dt" : "휴대폰", "dd" : "010****1234" },
-                                                { "dt" : "일반전화", "dd" : "010****1234" },
-                                                { "dt" : "이메일", "dd" : "lg*****@naver.com" },
-                                                { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********" },
+                                        <div class="inner-box">
+                                            <p class="inner-tit">계약자 정보</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "이름", "dd" : "이*어" },
+                                                    { "dt" : "휴대폰", "dd" : "010****1234" },
+                                                    { "dt" : "일반전화", "dd" : "010****1234" },
+                                                    { "dt" : "이메일", "dd" : "lg*****@naver.com" },
+                                                    { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********" },
+                                                ]
+                                            })
+                                        </div>
+                                        <div class="inner-box">
+                                            <p class="inner-tit">실사용자 정보</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "이름", "dd" : "이*어" },
+                                                    { "dt" : "휴대폰", "dd" : "010****1234" },
+                                                    { "dt" : "일반전화", "dd" : "010****1234" },
+                                                    { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********" },
+                                                ]
+                                            })
+                                        </div>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "size2" : true,
+                                            "topBorder" : true,
+                                            "bulletTit" : "계약자 정보변경 유의사항",
+                                            "bulletTxt" : [
+                                                "계약자 정보는 계약 건당 변경되며, 원하실 경우 일괄변경도 가능합니다. 변경하신 정보는 회원정보와 연동되지 않습니다.",
+                                                "현금영수증은 계약자 휴대폰 번호 기준으로 발급됩니다.",
+                                                "주소는 변경이 불가하며, 변경을 원하실 경우 고객센터(1577-4090)으로 문의해주세요."
                                             ]
                                         })
                                     </div>
                                 </div>
+                                <!-- // 계약자/실사용자 정보 -->
+
+                                <!-- 계약 정보 -->
+                                <div class="section">
+                                    <div class="tit-wrap">
+                                        <div class="flt-cont left">
+                                            <h5 class="tit">계약 정보</h5>
+                                            @@include('./common/modules/tooltip.html', {
+                                                "type" : "text",
+                                                "text" : "계약서 발급이 필요하신 분은 발급신청 버튼을 클릭해주세요."
+                                            })
+                                        </div>
+                                        <div class="flt-cont">
+                                            <button type="button" class="btn border size"><span>계약서 발급신청</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="section-inner">
+                                        @@include('./common/modules/dl-infolist.html', {
+                                            "list" : [
+                                                { "dt" : "제품군(모델명)", "dd" : "건조기(RH9WGANR)" },
+                                                { "dt" : "계약번호", "dd" : "<span>12345678</span><a href='#n' class='btn-link'>해지상담 신청</a>" },
+                                                { "dt" : "계약기간", "dd" : "1년(2020.09.01)" },
+                                                { "dt" : "설치일", "dd" : "2020.09.01" },
+                                                { "dt" : "설치장소", "dd" : "가정" },
+                                                { "dt" : "무상할인회차", "dd" : "3, 5, 6회차" },
+                                            ]
+                                        })
+                                    </div>
+                                </div>
+                                <!-- // 계약 정보 -->
+
+                                <!-- 납부 정보 -->
+                                <div class="section">
+                                    <div class="tit-wrap">
+                                        <h5 class="tit">납부 정보</h5>
+                                        <div class="flt-cont">
+                                            <button type="button" class="btn border size"><span>납부 정보변경</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="section-inner">
+                                        @@include('./common/modules/dl-infolist.html', {
+                                            "list" : [
+                                                { "dt" : "월 납부 금액", "dd" : "<span>88,800원</span><a href='#n' class='btn-link'>납부내역 조회</a>" },
+                                                { "dt" : "정기 출금일", "dd" : "매월 10일" },
+                                                { "dt" : "납부방법", "dd" : "<span>신용카드</span><a href='#n' class='btn-link'>제휴카드 신청</a>" },
+                                                { "dt" : "은행(카드)명", "dd" : "하나카드" },
+                                                { "dt" : "계좌(카드)번호", "dd" : "1111-11**-****-****" },
+                                            ]
+                                        })
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "topBorder" : true,
+                                            "bulletTit" : "납부 정보변경 유의사항",
+                                            "bulletTxt" : [
+                                                "청구그룹(묶음 결제)일 경우 납부 정보 변경 및 제휴카드 신청은 고객센터(1577-4090)으로 문의 부탁드립니다."
+                                            ]
+                                        })
+                                    </div>
+                                </div>
+                                <!-- // 납부 정보 -->
+
+                                <!-- 케어솔루션 매니저 정보 -->
+                                <div class="section">
+                                    <div class="tit-wrap">
+                                        <h5 class="tit">케어솔루션 매니저 정보</h5>
+                                    </div>
+                                    <div class="section-inner">
+                                        @@include('./common/modules/dl-infolist.html', {
+                                            "list" : [
+                                                { "dt" : "이름", "dd" : "김진희 매니저" },
+                                                { "dt" : "휴대폰", "dd" : "010-1234-1234" },
+                                                { "dt" : "방문주기", "dd" : "1회/6개월" },
+                                            ]
+                                        })
+                                    </div>
+                                </div>
+                                <!-- // 케어솔루션 매니저 정보 -->
                             </div>
                             <!-- // 상세 -->
                         </div>
