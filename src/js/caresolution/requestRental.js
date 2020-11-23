@@ -508,14 +508,6 @@
 
     //설치 가능여부 확인...
     function setInstallAbledConfirm(){
-        var values = step2Validation.getValues();
-        if(values.zipCode == "" || values.userAddress == ""){
-            lgkorUI.alert('', {
-                title:'상세주소를 입력해주세요.'
-            });
-
-            return;
-        }
 
         var code = [];
         $('.order-list li').each(function(idx, item){
@@ -523,7 +515,17 @@
         });
         var sendata = {
             rtModelSeq: code.join(','),
-            waterTestYn: getInputData('waterTestYn')
+            waterTestYn: getInputData('waterTestYn'),
+            zipCode: step2Validation.getValues("zipCode")
+        }
+        console.log(sendata)
+        var values = step2Validation.getValues();
+        if(values.zipCode == "" || values.userAddress == ""){
+            lgkorUI.alert('', {
+                title:'상세주소를 입력해주세요.'
+            });
+
+            return;
         }
 
         lgkorUI.requestAjaxData(INSTALL_ABLED_URL, sendata, function(result){
