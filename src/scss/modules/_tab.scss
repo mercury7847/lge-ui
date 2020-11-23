@@ -105,7 +105,7 @@
                 > a {
                     padding-bottom:2px;
                     border-bottom:2px solid transparent;
-                    @include font-large-1;
+                    @include font-medium;
                     font-weight:700;
                     @include mobile {
                         padding-bottom:9px;
