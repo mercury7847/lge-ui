@@ -145,6 +145,24 @@
                 line-height:24px;
                 font-weight:700;
             }
+            .tit-wrap {
+                position:relative;
+                padding-bottom:20px;
+                margin-bottom:16px;
+                border-bottom:2px solid #222;
+                .tit {
+                    color:#222;
+                    font-size:20px;
+                    font-weight:700;
+                    line-height:30px;
+                    .count {
+                        color:#ec455a;
+                    }
+                    .tooltip-wrap {
+                        padding-top:5px;
+                    }   
+                }
+            }
             @include mobile {
                 padding:40px 16px 56px;
                 border-top:12px solid #f4f4f4;
@@ -159,6 +177,14 @@
                 }
                 .sec-tit {
                     margin-bottom:32px;
+                }
+                .tit-wrap {
+                    padding-bottom:16px;
+                    margin-bottom:20px;
+                    .tit {
+                        font-size:18px;
+                        line-height:28px;
+                    }
                 }
             }
 
