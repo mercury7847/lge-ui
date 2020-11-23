@@ -71,7 +71,7 @@
         }
     }
     .section-wrap {
-        .section {
+        .sects {
             margin-top:80px;
             @include mobile {
                 margin-top:60px;
@@ -190,6 +190,9 @@
                         .forms {
                             .conts {
                                 max-width:560px;
+                                @include mobile {
+                                    max-width:initial;
+                                }
                             }
                         }
                     }

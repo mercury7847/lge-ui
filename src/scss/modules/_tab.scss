@@ -231,4 +231,7 @@
 
 .tab-panel {
     padding: 24px;
+    @include mobile {
+        padding:24px 12px;
+    }
 }
