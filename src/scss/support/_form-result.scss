@@ -5,7 +5,7 @@
     &-list {
         > li {
             @include clearfix;
-            margin-top: 12px;
+            margin-top: 16px;
             &:first-child {
                 margin-top: 0;
             }
@@ -14,7 +14,8 @@
             font-size: 16px;
             line-height: 1.38;
             color: #616161;
-            width: 176px;
+            max-width: 210px;
+            width: 100%;
             float: left;
             strong {
                 font-weight: normal;
@@ -23,7 +24,6 @@
         .description {
             font-size: 16px;
             line-height: 1.38;
-            width: calc(100% - 176px);
             float: left;
             > [class^="btn"] {
                 margin-left: 16px;
