@@ -4,6 +4,140 @@
 @import "../../utilities/mixins";
 
 .mypage {
+    br.mob {
+        display:none;
+        @include mobile {
+            display:block;
+        }
+    }
+    .cont-wrap {
+        @include mobile {
+            padding-top:0;
+        }
+    }
+    // mypage lnb layout
+    .lnb-wrap {
+        @include clearfix;
+        .lnb {
+            float:left;
+            width:16%;
+            padding-right:24px;
+            border-radius:4px;
+            background:#fff;
+            @include mobile {
+                display:none;
+            }
+            .mypage-lnb {
+                > li {
+                    margin-top:16px;
+                    &:first-child {
+                        margin-top:0;
+                    }
+
+                }
+                a {
+                    display:inline-block;
+                    color:#767676;
+                    @include font-small;
+                    font-weight:500;
+                    &.my-dep1 {
+                        color:#222;
+                        font-weight:700;
+                    }
+                    &.on {
+                        text-decoration:underline;
+                    }
+                }
+                .myp-sub {
+                    margin-top:4px;
+                    li {
+                        margin-top:4px;
+                        &:first-child {
+                            margin-top:0;
+                        }
+                    }
+                }
+            }
+        }
+        .lnb-contents {
+            float:right;
+            width:84%;
+            max-width:1146px;
+            @include mobile {
+                float:none;
+                width:auto;
+                padding:0 16px;
+            }
+        }
+    }
+    .section-wrap {
+        .section {
+            margin-top:80px;
+            &:first-child {
+                margin-top:0;
+            }
+            @include mobile {
+                padding:0;
+            }
+            // title
+            .tit-wrap {
+                @include clearfix;
+                height:50px;
+                border-bottom:2px solid #222;
+                @include mobile {
+                    height:auto;
+                    padding-bottom:12px;
+                }
+                .tit {
+                    float:left;
+                    color:#222;
+                    @include font-large-1;
+                    font-weight:700;
+                    @include mobile {
+                        padding:4px 0;
+                        font-size:18px;
+                        line-height:26px;
+                    }
+                }
+                .flt-cont {
+                    float:right;
+                    font-size:0;
+                    &.left {
+                        float:left;
+                        .tit {
+                            float:none;
+                            display:inline-block;
+                            vertical-align:top;
+                        }
+                        .tooltip-wrap {
+                            margin-top:3px;
+                            margin-left:4px;
+                        }
+                    }
+                }
+            }
+            // contents
+            .section-inner {
+                padding-top:48px;
+                .inner-box {
+                    margin-top:64px;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                    .inner-tit {
+                        margin-bottom:24px;
+                        color:#222;
+                        @include font-large;
+                        font-weight:700;
+                    }
+                }
+                .bullet-list {
+                    margin-left:234px;
+                }
+            }
+        }
+    }
+
     //멤버십 포인트 조회
     @import "ACCF7052";
 
