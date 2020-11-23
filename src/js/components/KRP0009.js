@@ -16,21 +16,12 @@ $(function () {
 
             //템플릿 설정 슬라이더, 체크박스, 칼라칩, 상품아이템      
 
-        //     '{{#if isBadge}}'+ 
-        //     '<div class="badge-product">'+
-        //         '{{#if productTag1}}'+ 
-        //             '<span class="badge">{{productTag1}}</span>'+
-        //         '{{/if}}'+ 
-        //         '{{#if productTag2}}'+ 
-        //             '<span class="badge">{{productTag2}}</span>'+
-        //         '{{/if}}'+ 
-        //     '</div>'+
-        // '{{/if}}'+ 
+      
             var productItemTmpl = 
                 '<li>'+
                 '   <div class="item plp-item">'+
                 '       {{#if badges}}'+
-                '       <div class="badges">'+
+                '       <div class="badge">'+
                 '           <div class="flag-wrap image-type left">'+
                 '               {{#each badge in badges}}'+
                 '               <span class="big-flag">'+
@@ -88,15 +79,21 @@ $(function () {
                 '                   <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>'+
                 '               </div>'+
                 '           </div>'+
-                '           <div class="flag-wrap bar-type">'+                
-                '               <span class="flag">NEW</span>'+                
-                '               <span class="flag">BEST</span>'+                
-                '           </div>'+            
+                '           {{#if isBadge}}'+ 
+                '           <div class="flag-wrap bar-type">'+  
+                '               {{#if productTag1}}'+ 
+                '               <span class="flag">{{productTag1}}</span>'+
+                '               {{/if}}'+ 
+                '               {{#if productTag2}}'+ 
+                '               <span class="flag">{{productTag2}}</span>'+
+                '               {{/if}}'+ 
+                '           </div>'+
+                '           {{/if}}'+   
                 '           <div class="product-info">'+
                 '               <div class="product-name">'+
-                '                   <a href="#">LG DIOS 노크온 매직스페이스</a>'+
+                '                   <a href="#">{{userFriendlyName}}</a>'+
                 '               </div>'+                
-                '               <div class="sku">S833MC85Q</div>'+                
+                '               <div class="sku">{{modelName}}</div>'+                
                 '               <div class="review-info">'+
                 '                   <a href="#">'+                        
                 '                       <div class="star is-review"><span class="blind">리뷰있음</span></div>'+
@@ -105,11 +102,14 @@ $(function () {
                 '                   </a>'+
                 '               </div>'+    
                 '               <ul class="spec-info">'+
-                '                   <li><span class="title">용량 : </span>840L</li>'
-                '                   <li><span class="title">전체크기(WxHxD) : </span>912 x 1,790 x 927 mm</li>'+
-                '                   <li><span class="title">형태 : </span>노크온 매직스페이스</li>'+
-                '                   <li><span class="title">패턴 : </span>미드나잇</li>'+
-                '                   <li><span class="care-option">케어십 가능</span></li>'+
+                '                   {{#if isSpecInfo}}'+
+                '                       {{#each item in specInfos}}'+
+                '                           <li><span class="title">{{item.specName}} : </span>{{item.specInfo}}</li>'+
+                '                       {{/each}}'+
+                '                   {{/if}}'+
+                '                   {{#if isCareShip}}'+
+                '                           <li><span class="care-option">케어십 가능</span></li>'+
+                '                   {{/if}}'+
                 '               </ul>'+
                 '           </div>'+
                 '       </div>'+
@@ -118,132 +118,38 @@ $(function () {
                 '               <span class="flag">캐시백</span>'+                
                 '               <span class="flag">사은품</span>'+                
                 '           </div>'+
-                '           <div class="price-area">'+                
+                '           <div class="price-area">'+      
+                '               {{#if rPrice}}'+          
                 '               <div class="original">'+
                 '                   <em class="blind">판매가격</em>'+
-                '                   <span class="price">5,200,000<em>원</em></span>'+
-                '               </div>'+                
+                '                   <span class="price">{{rPrice}}<em>원</em></span>'+
+                '               </div>'+        
+                '               '       
                 '               <div class="total">'+
                 '                   <em class="blind">총 판매가격</em>'+
-                '                   <span class="price">4,420,000<em>원</em></span>'+
+                '                   <span class="price">{{rPromoPrice}}<em>원</em></span>'+
                 '               </div>'+
                 '           </div>'+            
                 '           <div class="btn-area-wrap">'+
                 '               <div class="wishlist">'+
                 '                   <span class="chk-wish-wrap large">'+
-                '                       <input type="checkbox" id="wish-chk1" name="wish-chk1" checked>'+
-                '                       <label for="wish-chk1"><span class="blind">찜하기</span></label>'+
+                '                       <input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}">'+
+                '                       <label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>'+
                 '                   </span>'+
                 '               </div>'+
                 '               <div class="cart">'+
-                '                   <a href="#n" class="btn-cart"><span class="blind">장바구니 담기</span></a>'+
+                '                   <a href="#n" class="btn-cart" data-id="{{modelId}}"><span class="blind">장바구니 담기</span></a>'+
                 '               </div>'+
                 '               <div class="btn-area">'+
-                '                   <a href="#n" class="btn border">자세히 보기</a>'+
+                '                   <a href="#n" class="btn border" data-id="{{modelId}}">자세히 보기</a>'+
                 '               </div>'+
                 '           </div>'+
                 '       </div>'+
                 '       <div class="product-compare">'+
-                '           <a href="#n"><span>비교하기</span></a>'+
+                '           <a href="#n" data-id="{{modelId}}"><span>비교하기</span></a>'+
                 '       </div>'+        
                 '   </div>'+
                 '</li>';
-
-
-
-                
-
-
-
-
-
-
-
-
-
-
-
-
-                    '<div class="product-info">'+
-                        '<div class="product-name">'+
-                            '<a href="#" id="{{modelId}}">{{userFriendlyName}}</a>'+
-                        '</div>'+
-                        '<div class="sku">{{modelName}}</div>'+
-                        '<div class="review-info">'+
-                            ' <a href="#">'+
-                                '{{#if reviewRating>0}}'+ 
-                                    '<div class="star is-review">'+
-                                        '<span class="blind">리뷰있음</span>'+
-                                    '</div>'+
-                                '{{#else}}' +
-                                    '<div class="star">'+
-                                        '<span class="blind">리뷰없음</span>'+
-                                    '</div>'+
-                                '{{/if}}'+
-                                '<div class="average-rating"><span class="blind">평점</span>{{reviewRatingStar2}}</div>'+
-                                '<div class="review-count"><span class="blind">리뷰 수</span>({{reviewRating}})</div>'+
-                            ' </a>'+
-                        '</div>'+
-                        '<ul class="spec-info">'+
-                            '{{#if isSpecInfo}}'+ 
-                                '{{#each item in specInfos}}'+  
-                                    '<li>{{item.specName}} : {{item.specInfo}}</li>'+
-                                '{{/each}}' +  
-                            '{{/if}}'+    
-                            '{{#if isCareShip}}'+                        
-                                '<li><span class="care-option">케어십 가능</span></li>'+
-                            '{{/if}}'+  
-                        '</ul>'+
-                        '</div>'+
-                        '<div class="price-area">'+
-                            '{{#if rPromoPrice}}'+
-                                '<div class="reduced-price">'+
-                                    '<em class="blind">최대 혜택가격</em>'+
-                                    '<span class="price">{{rPromoPrice}}<em>원</em></span>'+
-                                '</div>'+
-                            '{{/if}}'+
-                            '{{#if isPrice}}'+ 
-                                '<div class="product-price">'+
-                                    '<div class="purchase-price">'+
-                                        '<em class="blind">판매가격</em>'+
-                                        '<span class="price">{{rPrice}}<em>원</em></span>'+
-                                    '</div>'+
-                                    '<div class="discount-rate">'+
-                                        '<em class="blind">할인율</em>'+
-                                        '<span class="price">{{discountedRate}}<em>%</em></span>'+
-                                    '</div>'+
-                                '</div>'+
-                            '{{/if}}'+
-                        '</div>'+
-                        '{{#if isBenefit}}'+ 
-                            '<div class="badge-benefit">'+
-                            '{{#each item in benefitInfos}}'+  
-                                '<span class="text">{{}}</span>'+
-                            '{{/each}}' +  
-                            '</div>'+
-                        '{{/if}}'+ 
-                    '</div>'+
-                    '<div class="product-wish">'+
-                        '<span class="chk-wrap">'+
-                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}">'+
-                            '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>'+
-                        '</span>'+
-                    '</div>'+
-                    '<div class="product-compare">'+
-                        '<span class="chk-wrap">'+
-                            '<input type="checkbox" id="compare-{{modelId}}" name="compare-{{modelId}}">'+
-                            '<label for="compare-{{modelId}}"><span class="blind">비교하기</span></label>'+
-                        '</span>'+
-                    '</div>'+
-                    '<div class="product-button">'+
-                        '{{#if addToCartFlag=="Y"}}'+ 
-                            '<a href="#n" data-id="{{modelId}}" class="btn">장바구니에 담기</a>'+
-                        '{{#else}}' +
-                            '<a href="#n" data-id="{{modelId}}" class="btn">자세히 보기</a>'+
-                        '{{/if}}'+                         
-                    '</div>'+
-                '</div>'+
-            '</li>';     
 
             var paginationTmpl =             
             '<a href="#" data-id="{{prevNo}}" class="prev {{#if !leftPage}}disabled{{/if}}"><span class="blind">이전 페이지 보기</span></a>' +            
@@ -448,8 +354,6 @@ $(function () {
 
             //시작
             function init(){
-                
-
                 bindEvent(); 
                 fnBreakPoint(); // breackpoint 이벤트 초기실행
                 // storageFilters 값이 있을때 필터를 설정.
