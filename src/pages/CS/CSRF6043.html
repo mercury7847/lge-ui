@@ -10,24 +10,23 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                "pageTitle" : "FAQ",
-                "pageDesc" : "LG전자 고객님들이 <br>가장 많이 물어보시는 질문들입니다."
+                "pageTitle": "이용가이드/FAQ"
             })
             <!-- FAQ -->
             <div class="contents faq">
                 <div class="cont-wrap no-bd">
                     <!-- 검색창 -->
                     <div class="search-wrap" data-url="/lg5-common/data-ajax/customer/faq.json">
-                        <div class="select-wrap">
+                        <!-- <div class="select-wrap">
                             <select class="ui_selectbox" title="검색 기준 선택">
                                 <option value="search_type1">제목</option>
                                 <option value="search_type2">내용</option>
                                 <option value="search_type3">제목 + 내용</option>
                             </select>
-                        </div>
+                        </div> -->
                         <div class="input-wrap">
                             <div class="box">   
-                                <input type="text" placeholder="검색어를 입력해주세요.">
+                                <input type="text" placeholder="검색어 입력">
                                 <div class="cell">
                                     <button type="submit" class="btn-search">
                                         <span class="blind">검색</span>
@@ -43,26 +42,24 @@
                         <!-- tabs -->
                         <div class="tabs-wrap border-type left ui_tab">
                             <ul class="tabs">
-                                <li class="on"><a href="#all">전체(154건)<em class="blind">선택됨</em></a></li>
-                                <li><a href="#product">상품문의</a></li>
-                                <li><a href="#order">주문&middot;결제</a></li>
-                                <li><a href="#shipping">배송 문의</a></li>
-                                <li><a href="#contact">반품&middot;교환&middot;환불</a></li>
-                                <li><a href="#point">적립 포인트</a></li>
-                                <li><a href="#member">회원</a></li>
-                                <li><a href="#etc">기타</a></li>
+                                <li class="on"><a href="#all">전체<em class="blind">선택됨</em></a></li>
+                                <li><a href="#product">사이트 이용</a></li>
+                                <li><a href="#order">회원/멤버십</a></li>
+                                <li><a href="#shipping">이벤트/혜택</a></li>
+                                <li><a href="#contact">주문/배송/취소</a></li>
+                                <li><a href="#point">케어솔루션/케어십</a></li>
                             </ul>
                         </div>
                         <!-- // tabs -->
 
                         <!-- list -->
-                        <div class="accordion-wrap ui_accordion" data-single-open="true">
+                        <div class="accordion-wrap faq-type ui_accordion" data-single-open="true">
                             <ul>
                                 <li class="lists">
                                     <div class="head">
                                         <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                            <span class="flag">기타</span>
-                                            <span class="title line2">고객센터 번호는 어떻게 되나요? 고객센터 번호는 어떻게 되나요? 고객센터 번호는 어떻게 되나요? 고객센터 번호는 어떻게 되나요? 고객센터 번호는 어떻게 되나요? 고객센터 번호는 어떻게 되나요? 고객센터 번호는 어떻게 되나요? 고객센터 번호는 어떻게 되나요? 고객센터 번호는 어떻게 되나요?</span>
+                                            <span class="que">Q</span>
+                                            <span class="title line2">[사이트 이용] 고객센터 번호는 어떻게 되나요?</span>
                                             <span class="blind ui_accord_text">내용 더 보기</span>
                                         </a>
                                     </div>
@@ -77,8 +74,8 @@
                                 <li class="lists">
                                     <div class="head">
                                         <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                            <span class="flag">주문&middot;결제</span>
-                                            <span class="title line2">고객센터 번호는 어떻게 되나요?</span>
+                                            <span class="que">Q</span>
+                                            <span class="title line2">[주문/배송/취소] 세금계산서 발행이 되나요?</span>
                                             <span class="blind ui_accord_text">내용 더 보기</span>
                                         </a>
                                     </div>
@@ -93,8 +90,8 @@
                                 <li class="lists">
                                     <div class="head">
                                         <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                            <span class="flag">적립포인트</span>
-                                            <span class="title line2">고객센터 번호는 어떻게 되나요?</span>
+                                            <span class="que">Q</span>
+                                            <span class="title line2">[회원/멤버십] 회원탈퇴 시, 개인정보는 모두 삭제되나요?</span>
                                             <span class="blind ui_accord_text">내용 더 보기</span>
                                         </a>
                                     </div>
@@ -109,8 +106,8 @@
                                 <li class="lists">
                                     <div class="head">
                                         <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                            <span class="flag">배송문의</span>
-                                            <span class="title line2">고객센터 번호는 어떻게 되나요?</span>
+                                            <span class="que">Q</span>
+                                            <span class="title line2">[사이트 이용] 고객센터 번호는 어떻게 되나요?</span>
                                             <span class="blind ui_accord_text">내용 더 보기</span>
                                         </a>
                                     </div>
@@ -125,8 +122,8 @@
                                 <li class="lists">
                                     <div class="head">
                                         <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                            <span class="flag">회원</span>
-                                            <span class="title line2">고객센터 번호는 어떻게 되나요?</span>
+                                            <span class="que">Q</span>
+                                            <span class="title line2">[주문/배송/취소] 세금계산서 발행이 되나요?</span>
                                             <span class="blind ui_accord_text">내용 더 보기</span>
                                         </a>
                                     </div>
@@ -141,8 +138,8 @@
                                 <li class="lists">
                                     <div class="head">
                                         <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                            <span class="flag">상품문의</span>
-                                            <span class="title line2">고객센터 번호는 어떻게 되나요?</span>
+                                            <span class="que">Q</span>
+                                            <span class="title line2">[회원/멤버십] 회원탈퇴 시, 개인정보는 모두 삭제되나요?</span>
                                             <span class="blind ui_accord_text">내용 더 보기</span>
                                         </a>
                                     </div>
@@ -157,8 +154,8 @@
                                 <li class="lists">
                                     <div class="head">
                                         <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                            <span class="flag">상품문의</span>
-                                            <span class="title line2">고객센터 번호는 어떻게 되나요?</span>
+                                            <span class="que">Q</span>
+                                            <span class="title line2">[사이트 이용] 고객센터 번호는 어떻게 되나요?</span>
                                             <span class="blind ui_accord_text">내용 더 보기</span>
                                         </a>
                                     </div>
@@ -173,8 +170,8 @@
                                 <li class="lists">
                                     <div class="head">
                                         <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                            <span class="flag">상품문의</span>
-                                            <span class="title line2">고객센터 번호는 어떻게 되나요?</span>
+                                            <span class="que">Q</span>
+                                            <span class="title line2">[주문/배송/취소] 세금계산서 발행이 되나요?</span>
                                             <span class="blind ui_accord_text">내용 더 보기</span>
                                         </a>
                                     </div>
@@ -189,8 +186,8 @@
                                 <li class="lists">
                                     <div class="head">
                                         <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                            <span class="flag">상품문의</span>
-                                            <span class="title line2">고객센터 번호는 어떻게 되나요?</span>
+                                            <span class="que">Q</span>
+                                            <span class="title line2">[회원/멤버십] 회원탈퇴 시, 개인정보는 모두 삭제되나요?</span>
                                             <span class="blind ui_accord_text">내용 더 보기</span>
                                         </a>
                                     </div>
@@ -205,8 +202,40 @@
                                 <li class="lists">
                                     <div class="head">
                                         <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-                                            <span class="flag">상품문의</span>
-                                            <span class="title line2">고객센터 번호는 어떻게 되나요?</span>
+                                            <span class="que">Q</span>
+                                            <span class="title line2">[사이트 이용] 고객센터 번호는 어떻게 되나요?</span>
+                                            <span class="blind ui_accord_text">내용 더 보기</span>
+                                        </a>
+                                    </div>
+                                    <div class="accord-cont ui_accord_content" style="display:none;">
+                                        <p>
+                                            구매 및 사이트 이용문의: LG전자 BEST SHOP 고객센터 ☎ 1661-2471<br>
+                                            (고객센터 업무시간은 평일 오전 9시 ~ 오후 6시이며, 오후 12 - 1시는 점심시간으로 상담원 연결이 불가능합니다.)<br>
+                                            제품 및 AS 문의: LG전자 고객센터 1544-7777, 1588-7777 
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="lists">
+                                    <div class="head">
+                                        <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                            <span class="que">Q</span>
+                                            <span class="title line2">[주문/배송/취소] 세금계산서 발행이 되나요?</span>
+                                            <span class="blind ui_accord_text">내용 더 보기</span>
+                                        </a>
+                                    </div>
+                                    <div class="accord-cont ui_accord_content" style="display:none;">
+                                        <p>
+                                            구매 및 사이트 이용문의: LG전자 BEST SHOP 고객센터 ☎ 1661-2471<br>
+                                            (고객센터 업무시간은 평일 오전 9시 ~ 오후 6시이며, 오후 12 - 1시는 점심시간으로 상담원 연결이 불가능합니다.)<br>
+                                            제품 및 AS 문의: LG전자 고객센터 1544-7777, 1588-7777 
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="lists">
+                                    <div class="head">
+                                        <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                            <span class="que">Q</span>
+                                            <span class="title line2">[회원/멤버십] 회원탈퇴 시, 개인정보는 모두 삭제되나요?</span>
                                             <span class="blind ui_accord_text">내용 더 보기</span>
                                         </a>
                                     </div>
