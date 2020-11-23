@@ -172,6 +172,14 @@
                     var checked = $(this).is(':checked');
                     self.requestWishItem(itemID, checked);
                 });
+
+                self.$pdpInfo.find('div.purchase-button a').on('click', function(e) {
+                    if($(this).hasClass('cart')) {
+                        console.log('카트');
+                    } else {
+                        console.log('goto buy');
+                    }
+                });
             },
 
             //팝업 버튼 이벤트
