@@ -1,13 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon-delete-20</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="btn_delete_24">
-            <g id="Group-127">
-                <rect id="Rectangle" x="0" y="0" width="20" height="20"></rect>
-                <path d="M10,1 C5.023,1 1,5.023 1,10 C1,14.977 5.023,19 10,19 C14.977,19 19,14.977 19,10 C19,5.023 14.977,1 10,1 Z" id="Path" fill="#616161" fill-rule="nonzero"></path>
-                <line x1="6" y1="6" x2="13.9758375" y2="13.5753558" id="Path-26" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></line>
-                <line x1="6" y1="6" x2="13.9758375" y2="13.5753558" id="Path-26" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(9.987919, 9.787678) scale(-1, 1) translate(-9.987919, -9.787678) "></line>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <path d="M0 0H20V20H0z" transform="translate(-1453 -227) translate(0 209) translate(387) translate(1066 18)"/>
+                                <path fill="#616161" fill-rule="nonzero" stroke="#616161" d="M10 1c-4.977 0-9 4.023-9 9s4.023 9 9 9 9-4.023 9-9-4.023-9-9-9z" transform="translate(-1453 -227) translate(0 209) translate(387) translate(1066 18)"/>
+                                <path stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 6L13.976 13.575" transform="translate(-1453 -227) translate(0 209) translate(387) translate(1066 18)"/>
+                                <path stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 6L13.976 13.575" transform="translate(-1453 -227) translate(0 209) translate(387) translate(1066 18) matrix(-1 0 0 1 19.976 0)"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
             </g>
         </g>
     </g>

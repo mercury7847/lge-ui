@@ -82,6 +82,7 @@ var res = {
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","검수완료"],
 			"KRP0005_Sticky chat_Static" : ["/html/components/floating.html","","검수완료"],
+			"KRP0008_Responsive UI" : ["/html/components/KRP0008.html","","진행중"],
 			"KRP0009_Product List Products List : No Filter" : ["/html/components/KRP0009.html","","진행중"],
 			"KRP0010_Product Summary (no-img)" : ["/html/components/KRP0010.html","","진행중"],
 			"KRP0012_PDP Tab Anchor" : ["/html/components/KRP0012.html","","검수완료"],
@@ -154,17 +155,17 @@ var res = {
 					"리스트" : ["/html/BMC/MKT4001.html","","검수완료"],
 					"상세_기본타입" : ["/html/BMC/MKT4002.html","","검수완료"],
 					"상세_종료(지난이벤트)" : ["/html/BMC/MKT4005.html","","검수완료"],
-					"상세_당첨자발표" : ["/html/BMC/MKT4007.html","","검수완료"],
-					"상세_당첨자발표2" : ["/html/BMC/MKT4007_2.html","","검수완료"],
+					"상세_당첨자발표" : ["/html/BMC/MKT4007.html","_blank:width=912,height=760,scrollbars=no","검수완료"],
+					"상세_당첨자발표2" : ["/html/BMC/MKT4007_2.html","_blank:width=912,height=560,scrollbars=no","검수완료"],
 					"상세_PC아카데미" : ["/html/BMC/MKT4008.html","","검수완료"],
-					"이벤트참여_PC아카데미" : ["/html/BMC/MKT4009.html","","검수완료"],
-					"이벤트참여내역조회_PC아카데미" : ["/html/BMC/MKT4010.html","","검수완료"],
+					"이벤트참여_PC아카데미" : ["/html/BMC/MKT4009.html","_blank:width=912,height=760,scrollbars=no","검수완료"],
+					"이벤트참여내역조회_PC아카데미" : ["/html/BMC/MKT4010.html","_blank:width=912,height=560,scrollbars=no","검수완료"],
 					"PC 모델명 및 시리얼번호 확인 방법" : ["/html/BMC/MKT4017.html","","검수완료"],
 					"상세_미리미리페스티벌" : ["/html/BMC/MKT4011.html","","검수완료"],
 					"이벤트참여_미리미리페스티벌" : ["/html/BMC/MKT4012.html","","검수완료"],
 					"LG전자 및 LG전자 BEST SHOP 판매대리점 보기" : ["/html/BMC/MKT4013.html","","검수완료"],
-					"케어솔루션_이벤트 참여하기" : ["/html/BMC/MKT4015.html","","검수완료"],
-					"케어솔루션_이벤트 응모 내역 조회" : ["/html/BMC/MKT4016.html","","검수완료"],
+					"케어솔루션_이벤트 참여하기" : ["/html/BMC/MKT4015.html","_blank:width=912,height=760,scrollbars=no","검수완료"],
+					"케어솔루션_이벤트 응모 내역 조회" : ["/html/BMC/MKT4016.html","_blank:width=912,height=760,scrollbars=no","검수완료"],
 				},
 				"기획전" : {
 					"리스트" : ["/html/BMC/OBS4001.html","","검수완료"],
@@ -221,7 +222,7 @@ var res = {
 					"매장 상세" : ["/html/CS/CSRF6041.html","","검수완료"],
 					//"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"]
 				},
-				"서비스 안내" : {
+				"공지사항" : {
 					"FAQ" : ["/html/CS/CSRF6043.html","","진행중"]
 				}
 			},

@@ -225,6 +225,10 @@ function builsJsTree(tree) {
                 }
 
                 var link = $el.find('a.jstree-link:first');
+
+                var feature = link.attr('feature');
+                if(feature) return;
+
                 var a = link.clone();
 
                 link.attr('title', node.text);
