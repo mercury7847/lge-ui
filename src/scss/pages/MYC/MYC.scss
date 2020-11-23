@@ -4,143 +4,357 @@
 @import "../../utilities/mixins";
 
 .mypage {
-    //멤버십 포인트 조회
-    @import "ACCF7052";
-
-    // 영수증 등록
-    .form-wrap {
-        margin-top:32px;
+    br.mob {
+        display:none;
         @include mobile {
-            margin-top:24px;
+            display:block;
         }
-        &:first-child {
-            margin-top:0;
+    }
+    .cont-wrap {
+        @include mobile {
+            padding-top:0;
         }
-        .tooltip-tit {
-            position:relative;
-            font-size:0;
-        }
-        .tit-txt {
-            display:inline-block;
-            font-size:14px;
-            line-height:20px;
-            vertical-align:top;
+    }
+    // mypage lnb layout
+    .lnb-wrap {
+        @include clearfix;
+        .lnb {
+            float:left;
+            width:16%;
+            padding-right:24px;
+            border-radius:4px;
+            background:#fff;
             @include mobile {
-                line-height:18px;
+                display:none;
+            }
+            .mypage-lnb {
+                > li {
+                    margin-top:16px;
+                    &:first-child {
+                        margin-top:0;
+                    }
+
+                }
+                a {
+                    display:inline-block;
+                    color:#767676;
+                    @include font-small;
+                    font-weight:500;
+                    &.my-dep1 {
+                        color:#222;
+                        font-weight:700;
+                    }
+                    &.on {
+                        text-decoration:underline;
+                    }
+                }
+                .myp-sub {
+                    margin-top:4px;
+                    li {
+                        margin-top:4px;
+                        &:first-child {
+                            margin-top:0;
+                        }
+                    }
+                }
             }
         }
-        .btn-receipt {
+        .lnb-contents {
             float:right;
-            color:#EC455A;
-            font-size:14px;
-            line-height:20px;
-            font-weight:500;
+            width:84%;
+            max-width:1146px;
             @include mobile {
-                position:absolute;
-                top:40px;
-                right:0;
+                float:none;
+                width:auto;
+                padding:0 16px;
             }
         }
-        .tooltip-wrap {
-            margin-left:4px;
-            vertical-align:top;
+    }
+    .section-wrap {
+        .sects {
+            margin-top:80px;
             @include mobile {
-                margin-top:1px;
+                margin-top:60px;
+                padding:0;
+                border-top:none;
             }
-            .img_barcode {
-                max-width:214px;
-                margin-bottom:10px;
-                img {
-                    display:block;
-                    width:100%
-                }
+            &:first-child {
+                margin-top:0;
             }
-        }
-        .input-wrap {
-            &.barcode {
-                position:relative;
-                width:465px;
+            // title
+            > .tit-wrap {
+                @include clearfix;
+                height:50px;
+                margin-bottom:0;
+                border-bottom:2px solid #222;
                 @include mobile {
-                    width:100%;
+                    height:auto;
+                    padding-bottom:12px;
                 }
-                input {
-                    padding-right:120px;
+                .tit {
+                    float:left;
+                    color:#222;
+                    @include font-large-1;
+                    font-weight:700;
                     @include mobile {
-                        padding-right:15px;
+                        padding:4px 0;
+                        font-size:18px;
+                        line-height:26px;
+                        &:only-child {
+                            padding-top:0;
+                        }
                     }
                 }
-                .btn-confirm {
-                    position:absolute;
-                    top:15px;
-                    right:15px;
-                    padding-right:28px;
-                    @include mobile {
-                        position:relative;
-                        top:0;
-                        right:0;
-                        float:right;
-                        margin-top:8px;
-                    }
-                    &:after {
-                        content:'';
-                        display:block;
-                        position:absolute;
-                        top:0;
-                        right:0;
-                        width:24px;
-                        height:24px;
-                        border:1px solid #EC455A;
-                        border-radius:50%;
-                    }
-                    span {
-                        position:relative;
-                        color:#EC455A;
-                        font-size:16px;
-                        line-height:24px;
-                        font-weight:500;
-                        &:before {
-                            content:'';
-                            display:block;
-                            position:absolute;
-                            top:7px;
-                            right:-16px;
-                            width:1px;
-                            height:11px;
-                            background:#EC455A;
+                .flt-cont {
+                    float:right;
+                    font-size:0;
+                    &.left {
+                        float:left;
+                        padding:4px 0;
+                        .tit {
+                            float:none;
+                            display:inline-block;
+                            padding:0;
+                            vertical-align:top;
                         }
-                        &:after {
-                            content:'';
-                            display:block;
-                            position:absolute;
-                            top:12px;
-                            right:-21px;
-                            width:11px;
-                            height:1px;
-                            background:#EC455A;
-                        }
-                    }
-                    &:disabled {
-                        &::after {
-                            border-color:#ccc;
-                        }
-                        span {
-                            color:#ccc;
-                            &::before, &::after {
-                                background:#ccc;
+                        .tooltip-wrap {
+                            margin-top:3px;
+                            margin-left:4px;
+                            @include mobile {
+                                .tooltip-box {
+                                    left:0;
+                                    right:0;
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-
-        .spot-select {
-            max-width:465px;
-            @include mobile {
-                max-width:100%;
+            // contents
+            .section-inner {
+                padding-top:48px;
+                @include mobile {
+                    padding-top:20px;
+                }
+                &.type2 {
+                    padding-top:16px;
+                }
+                .inner-box {
+                    margin-top:64px;
+                    @include mobile {
+                        margin-top:40px;
+                    }
+                    &:first-child {
+                        margin-top:0;
+                    }
+                    .inner-tit {
+                        margin-bottom:24px;
+                        color:#222;
+                        @include font-large;
+                        font-weight:700;
+                        @include mobile {
+                            margin-bottom:12px;
+                        }
+                    }
+                }
+                .dl-infolist-wrap {
+                    .lists {
+                        li {
+                            dl {
+                                dt {
+                                    width:20.4%;
+                                }
+                                dd {
+                                    width:79.6%;
+                                }
+                            }
+                        }
+                    }
+                }
+                .form-wrap {
+                    .forms {
+                        .tit {
+                            width:20.4%;
+                        }
+                        .conts {
+                            width:79.6%;
+                            max-width:795px;
+                        }
+                        @include mobile {
+                            .tit, .conts {
+                                width:100%;
+                            }
+                        }
+                    }
+                    &.size2 {
+                        .forms {
+                            .conts {
+                                max-width:560px;
+                                @include mobile {
+                                    max-width:initial;
+                                }
+                            }
+                        }
+                    }
+                }
+                > .bullet-list {
+                    margin-left:20.4%;
+                    @include mobile {
+                        margin-left:0;
+                    }
+                }
+                .chk-wrap.margin {
+                    margin-top:16px;
+                    margin-left:20.4%;
+                    @include mobile {
+                        margin-top:24px;
+                        margin-left:0;
+                    }
+                }
+                .btn-group {
+                    margin-top:32px;
+                }
             }
         }
     }
+
+    //멤버십 포인트 조회
+    @import "ACCF7052";
+
+    // 영수증 등록
+    // .form-wrap {
+    //     margin-top:32px;
+    //     @include mobile {
+    //         margin-top:24px;
+    //     }
+    //     &:first-child {
+    //         margin-top:0;
+    //     }
+    //     .tooltip-tit {
+    //         position:relative;
+    //         font-size:0;
+    //     }
+    //     .tit-txt {
+    //         display:inline-block;
+    //         font-size:14px;
+    //         line-height:20px;
+    //         vertical-align:top;
+    //         @include mobile {
+    //             line-height:18px;
+    //         }
+    //     }
+    //     .btn-receipt {
+    //         float:right;
+    //         color:#EC455A;
+    //         font-size:14px;
+    //         line-height:20px;
+    //         font-weight:500;
+    //         @include mobile {
+    //             position:absolute;
+    //             top:40px;
+    //             right:0;
+    //         }
+    //     }
+    //     .tooltip-wrap {
+    //         margin-left:4px;
+    //         vertical-align:top;
+    //         @include mobile {
+    //             margin-top:1px;
+    //         }
+    //         .img_barcode {
+    //             max-width:214px;
+    //             margin-bottom:10px;
+    //             img {
+    //                 display:block;
+    //                 width:100%
+    //             }
+    //         }
+    //     }
+    //     .input-wrap {
+    //         &.barcode {
+    //             position:relative;
+    //             width:465px;
+    //             @include mobile {
+    //                 width:100%;
+    //             }
+    //             input {
+    //                 padding-right:120px;
+    //                 @include mobile {
+    //                     padding-right:15px;
+    //                 }
+    //             }
+    //             .btn-confirm {
+    //                 position:absolute;
+    //                 top:15px;
+    //                 right:15px;
+    //                 padding-right:28px;
+    //                 @include mobile {
+    //                     position:relative;
+    //                     top:0;
+    //                     right:0;
+    //                     float:right;
+    //                     margin-top:8px;
+    //                 }
+    //                 &:after {
+    //                     content:'';
+    //                     display:block;
+    //                     position:absolute;
+    //                     top:0;
+    //                     right:0;
+    //                     width:24px;
+    //                     height:24px;
+    //                     border:1px solid #EC455A;
+    //                     border-radius:50%;
+    //                 }
+    //                 span {
+    //                     position:relative;
+    //                     color:#EC455A;
+    //                     font-size:16px;
+    //                     line-height:24px;
+    //                     font-weight:500;
+    //                     &:before {
+    //                         content:'';
+    //                         display:block;
+    //                         position:absolute;
+    //                         top:7px;
+    //                         right:-16px;
+    //                         width:1px;
+    //                         height:11px;
+    //                         background:#EC455A;
+    //                     }
+    //                     &:after {
+    //                         content:'';
+    //                         display:block;
+    //                         position:absolute;
+    //                         top:12px;
+    //                         right:-21px;
+    //                         width:11px;
+    //                         height:1px;
+    //                         background:#EC455A;
+    //                     }
+    //                 }
+    //                 &:disabled {
+    //                     &::after {
+    //                         border-color:#ccc;
+    //                     }
+    //                     span {
+    //                         color:#ccc;
+    //                         &::before, &::after {
+    //                             background:#ccc;
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+
+    //     .spot-select {
+    //         max-width:465px;
+    //         @include mobile {
+    //             max-width:100%;
+    //         }
+    //     }
+    // }
 
     // 나의 멤버십 정보
     @import "ACCF7039";

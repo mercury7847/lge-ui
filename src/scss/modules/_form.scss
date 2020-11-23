@@ -15,6 +15,9 @@
             @include font-large-1;
             font-weight:700;
             vertical-align:middle;
+            &.size {
+                @include font-large;
+            }
         }
         .right-btn,
         .right-chk {
@@ -73,33 +76,33 @@
         }
     }
 }
-.form-wrap {
-    // form 시작 전 form 안내 요소
-    .form-infos {
-        margin-bottom:48px;
+.form-infos {
+    margin-bottom:48px;
+    @include mobile {
+        margin-bottom:24px;
+    }
+    p.req {
+        color:#EC455A;
+        font-size:16px;
+        line-height:26px;
         @include mobile {
-            margin-bottom:24px;
+            font-size:13px;
+            line-height:21px;
+            font-weight:500;
         }
-        p.req {
-            color:#EC455A;
-            font-size:16px;
-            line-height:26px;
+        &::before {
+            content:'*';
+            display:inline-block;
+            margin-right:4px;
+            vertical-align:top;
             @include mobile {
-                font-size:13px;
-                line-height:21px;
-                font-weight:500;
-            }
-            &::before {
-                content:'*';
-                display:inline-block;
-                margin-right:4px;
-                vertical-align:top;
-                @include mobile {
-                    margin-right:0;
-                }
+                margin-right:0;
             }
         }
     }
+}
+.form-wrap {
+    // form 시작 전 form 안내 요소
     .forms {
         position:relative;
         margin-top:32px;
@@ -582,6 +585,9 @@
             }
             &.right {
                 text-align:right;
+            }
+            &.err-block {
+                display:none;
             }
         }
 

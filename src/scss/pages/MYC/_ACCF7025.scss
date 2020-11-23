@@ -1,13 +1,17 @@
 .my-contract-info {
+    margin-bottom:48px;
+    padding:32px;
+    border-radius:8px;
+    background:#f4f4f4;
+    @include mobile {
+        margin-bottom:36px;
+        padding:32px 12px;
+    }
     > h4.tit {
         color:#222;
-        font-size:20px;
-        line-height:30px;
+        @include font-large-1;
         font-weight:700;
-        @include mobile {
-            font-size:16px;
-            line-height:21px;
-        }
+        text-align:center;
         em {
             color:#EC455A;
         }
@@ -22,9 +26,23 @@
         }
     }
     .form-wrap {
-        margin-top:24px;
+        max-width:912px;
+        margin:16px auto 0;
+        .forms {
+            .tit {
+                width:117px;
+            }
+            .conts {
+                width:calc(100% - 117px);
+            }
+        }
         @include mobile {
-            margin-top:20px;
+            margin-top:24px;
+            .forms {
+                .tit, .conts {
+                    width:100%;
+                }
+            }
         }
     }
 }

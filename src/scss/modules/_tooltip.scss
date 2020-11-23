@@ -7,7 +7,6 @@
     vertical-align:top;
     @include mobile {
         position:static;
-        height:16px;
         padding-top:0;
     }
     .tooltip-icon {

@@ -38,43 +38,7 @@
             setting();
             bindEvents();
         });
-
-        //load(postcodeLoadComplete);
     }
-
-    /*
-    function _importApiJs(){
-        var defer = $.Deferred();
-        var script = document.createElement('script');
-
-        script.onload = function () {
-            defer.resolve();
-        };
-        script.onerror = function(e){ 
-            defer.reject('map api를 로드할수 없습니다.');          
-        }
-        script.src = "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";        
-        document.head.appendChild(script);  
-
-        return defer.promise();
-    }
-    function load(callback){
-        if(window.daum && window.daum.Postcode){
-            if(callback) callback();
-        }else{
-            _importApiJs().done(function(){
-                if(callback) callback();
-            }).fail(function(e){
-                alert(e);
-            }) 
-        } 
-    }
-
-    function postcodeLoadComplete(){
-        console.log("postcodeLoadComplete");
-        isPostCode = true;
-    }
-*/
 
     //초기 셋팅...
     function setting(){
@@ -112,18 +76,117 @@
         creditInquireButton = $('.creditInquire');
 
         var register = {
+            registFrontNumber:{
+                required: true,
+                errorMsg: "생년월일을 다시 확인해주세요.",
+                msgTarget: '.err-regist'
+            },
+            registBackFirst: {
+                required: true,
+                errorMsg: "생년월일을 다시 확인해주세요.",
+                msgTarget: '.err-regist'
+            },
             userEmail:{
                 required: true,
+                errorMsg: "이메일 주소를 다시 확인해주세요.",
+                msgTarget: '.err-block',
                 pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            },
+            zipCode: {
+                required: true,
+                errorMsg: "주소를 확인해주세요.",
+                msgTarget: '.err-address'
+            },
+            userAddress: {
+                required: true,
+                errorMsg: "주소를 확인해주세요.",
+                msgTarget: '.err-address'
+            },
+            detailAddress: {
+                required: true,
+                errorMsg: "상세주소를 입력해주세요.",
+                msgTarget: '.err-address'
             }
         }
         step1Validation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(1)',{register:register});
 
 
-        step2Validation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(2)');
+        register = {
+            userName:{
+                required: true,
+                errorMsg: "이름을 입력해주세요.",
+                msgTarget: '.err-block'
+            },
+            userPhone: {
+                required: true,
+                errorMsg: "휴대폰 번호를 입력해주세요.",
+                msgTarget: '.err-block'
+            },
+            userTelephone: {
+                required: true,
+                errorMsg: "전화번호를 입력해주세요.",
+                msgTarget: '.err-block'
+            },
+            zipCode: {
+                required: true,
+                errorMsg: "주소를 확인해주세요.",
+                msgTarget: '.err-address-install'
+            },
+            userAddress: {
+                required: true,
+                errorMsg: "주소를 확인해주세요.",
+                msgTarget: '.err-address-install'
+            },
+            detailAddress: {
+                required: true,
+                errorMsg: "상세주소를 입력해주세요.",
+                msgTarget: '.err-address-install'
+            },
+            inatallPlace: {
+                required: true,
+                errorMsg: "설치장소를 선택해주세요.",
+                msgTarget: '.err-block'
+            },
+            inatallDate: {
+                required: true,
+                errorMsg: "설치희망일을 선택해주세요.",
+                msgTarget: '.err-block'
+            }
+        }
+        step2Validation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(2)',{register:register});
 
-        cardValidation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(3) .by-card');
-        bankValidation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(3) .by-bank');
+        register = {
+            paymentCard:{
+                required: true,
+                errorMsg: "신용카드의 카드사를 선택해주세요.",
+                msgTarget: '.err-block'
+            },
+            paymentCardNumber: {
+                required: true,
+                errorMsg: "신용카드의 카드번호를 입력해주세요.",
+                msgTarget: '.err-block'
+            },
+            paymentCardPeriod: {
+                required: true,
+                errorMsg: "신용카드의 유효기간을 정확히 입력해주세요.",
+                msgTarget: '.err-block'
+            }
+        }
+        cardValidation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(3) .by-card',{register:register});
+
+        register = {
+            paymentBank: {
+                required: true,
+                errorMsg: "계좌이체할 은행명을 선택해주세요.",
+                msgTarget: '.err-block'
+            },
+            paymentBankNumber: {
+                required: true,
+                errorMsg: "계좌번호를 정확히 입력해주세요.",
+                msgTarget: '.err-block'
+            }
+        }
+        bankValidation = new vcui.ui.Validation('.requestRentalForm ul li:nth-child(3) .by-bank',{register:register});
 
         deliveryMnger = new AddressManagement("#popup-delivery-list", "#popup-delivery-address");
         addressFinder = new AddressFind();
@@ -303,6 +366,14 @@
             if(chk) $('#popup-selfClearing').vcModal('close');
         });
 
+        step1Validation.on('validerror', function(e, data){
+            if(Object.keys(data).length == 1){
+                if(data.chkPrivacy){
+                    $(window).trigger("toastshow", "개인정보 및 신용정보 제공 동의가 필요합니다.");
+                }
+            }
+        });
+
         if(!vcui.detect.isMobile){
             $(window).on('scroll', function(e){
                 setScrollMoved();
@@ -335,7 +406,6 @@
                 var footery = -scrolltop + $('footer').first().offset().top - 100;
                 var infoheight = requestInfoBlock.find('.info-area').outerHeight(true);
                 if(footery < infoheight){
-                    console.log(infoheight)
                     requestInfoBlock.find('.info-area').css({y:footery - infoheight})
                 } else{
                     requestInfoBlock.find('.info-area').css({y:0})
@@ -370,13 +440,21 @@
     //계약자 정보입력 밸리데이션...
     function setStep1Validation(){
         var completed = false;
+        console.log("step1 validation start!!");
         var result = step1Validation.validate();
         if(result.success){
             console.log("step1Validation.validate(); Success!!!");
 
-            completed = $('.requestRentalForm').data('creditInquire');
+            var data = getInputData('creditInquire');
+            console.log("creditInquire :", creditInquire);
+            completed = data === "Y" ? true : false;
+            if(!completed){
+                lgkorUI.alert("", {
+                    title: "신용정보 조회로 계약 가능 여부<br>확인이 필요합니다."
+                });
+            }
         } else{
-            console.log(result.validItem);
+            console.log("step1Validation.validate(); Fail!!!", result.validItem);
         }
 
         return completed;
@@ -385,13 +463,16 @@
     //설치 정보 입력 밸리데이션...
     function setStep2Validation(){
         var completed = false;
+        console.log("step2 validation start!!");
         var result = step2Validation.validate();
         if(result.success){
             console.log("step2Validation.validate(); Success!!!");
 
-            completed= $('.requestRentalForm').data('installAbled');
+            var data = getInputData('installAbled');
+            console.log("installAbled :", installAbled);
+            completed= data === "Y" ? true : false;
         } else{
-            console.log(result.validItem);
+            console.log("step2Validation.validate(); Fail!!!", result.validItem);
         }
 
         return completed;
@@ -403,21 +484,29 @@
         cardApply = step3Block.find('input[name=cardApplication]:checked').val();
         if(cardApply == "Y"){
             chk = step3Block.find('input[name=cardApplyaAgree]').prop('checked');
-            if(!chk) return false;
+            if(!chk){
+                $(window).trigger("toastshow", "제휴카드 발급/변경 자동 등록을 위한 제3자 정보제공 동의가 필요합니다.");
+                return false;
+            } 
 
             value = step3Block.find('select[name=associatedCard] option:selected').val();
-            if(value == "") return false;
+            if(value == ""){
+                $(window).trigger("toastshow", "신용카드의 카드사를 선택해주세요.");
+                return false;
+            }
         }
 
         paymethod = step3Block.find('.new-type > ul > li.on').index();
         result = paymethod ? cardValidation.validate() : bankValidation.validate();
         if(result.success != "Y") return false;
 
-        chk = $('.requestRentalForm').data('arsAgree');
-        if(!chk) return false;
+        chk = getInputData('arsAgree');
+        if(!chk !== "Y") return false;
 
         chk = step3Block.find('input[name=selfClearingAgree]').prop('checked');
         if(!chk) return false;
+        
+        console.log("step3Validation.validate(); Success!!!");
         
         
         return true;
@@ -425,6 +514,17 @@
 
     //설치 가능여부 확인...
     function setInstallAbledConfirm(){
+
+        var code = [];
+        $('.order-list li').each(function(idx, item){
+            code.push($(item).data('itemId'));
+        });
+        var sendata = {
+            rtModelSeq: code.join(','),
+            waterTestYn: getInputData('waterTestYn'),
+            zipCode: step2Validation.getValues("zipCode")
+        }
+        console.log(sendata)
         var values = step2Validation.getValues();
         if(values.zipCode == "" || values.userAddress == ""){
             lgkorUI.alert('', {
@@ -434,25 +534,36 @@
             return;
         }
 
-        lgkorUI.requestAjaxData(INSTALL_ABLED_URL, {}, function(result){
+        lgkorUI.requestAjaxData(INSTALL_ABLED_URL, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
 
-            if(result.data.success == "Y") $('.requestRentalForm').data('installAbled', true);
-            else $('.requestRentalForm').data('installAbled', false);
+            if(result.data.success == "Y"){
+                setInputData('installAbled', 'Y');
+            } else{
+                setInputData('installAbled', 'N');
+            } 
         });
     }
 
     //신용정보 조회...
     function setCreditInquire(){
-        lgkorUI.requestAjaxData(CREDIT_INQUIRE_URL, {}, function(result){
+        var sendata = {
+            rentalCareType: getInputData('rentalCareType')
+        }
+        lgkorUI.requestAjaxData(CREDIT_INQUIRE_URL, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });
 
-            if(result.data.success == "Y") $('.requestRentalForm').data('creditInquire', true);
-            else $('.requestRentalForm').data('creditInquire', false);
+            if(result.data.success == "Y"){
+                setInputData('safekey', result.data.safekey);
+                setInputData('nicePersonLogSeq', result.data.nicePersonLogSeq);
+                setInputData('creditInquire', 'Y');
+            } else{
+                setInputData('creditInquire', 'N');
+            }
         });
     }
 
@@ -482,7 +593,7 @@
             });
 
             var chk = result.data.success == "Y" ? true : false;
-            $('.requestRentalForm').data('cardAbled', chk);            
+            setInputData('cardAbled', result.data.success);            
             step3Block.find('.arsAgreeRequest').prop('disabled', !chk);
         });
     }
@@ -494,8 +605,7 @@
                 title: result.data.alert.title
             });
 
-            var chk = result.data.success == "Y" ? true : false;
-            $('.requestRentalForm').data('arsAgree', chk);
+            setInputData('arsAgree', result.data.success);
         });
     }
 
@@ -543,6 +653,16 @@
     function setPrivacyAgreePop(status){
         $('#popup-privacy').find('input[type=checkbox]').prop('checked', status);
         setPrivacyAgreeStatus(status)
+    }
+
+    function getInputData(iptname){
+        var ipt = $('.hidden-input-group').find('input[name=' + iptname + ']');
+        return ipt.val();
+    }
+
+    function setInputData(iptname, value){
+        var ipt = $('.hidden-input-group').find('input[name=' + iptname + ']');
+        ipt.val(value);
     }
 
     //청약신청하기...

@@ -8,7 +8,7 @@ var CareCartInfo = (function() {
         '<strong class="item-tit">{{title}}</strong>' +
         '<div class="item-spec"><span>{{sku}}</span>' +
         '<span>월 {{salePrice}}원</span></div>' +
-        '<p class="text-disabled"><span>설치 불가능 제품</span></p></li>'
+        '{{#if availableMessage}}<p class="text-disabled"><span>{{availableMessage}}</span></p>{{/if}}</li>'
 
     var paymentItemTemplate = '<li><dl><dt class="text">{{text}}</dt><dd class="price {{appendClass}}">{{price}}</dd></dl></li>';
     var totalPaymentItemTemplate = '<dt class="text">총 {{count}}건</dt><dd class="price">월 {{price}}원</dd>'
@@ -90,9 +90,9 @@ var CareCartInfo = (function() {
                     item.salePrice = item.salePrice ? vcui.number.addComma(item.salePrice) : '';
 
                     if(item.available) {
-                        $list_ul.append(vcui.template(subscriptionDisableItemTemplate, item));
-                    } else {
                         $list_ul.append(vcui.template(subscriptionItemTemplate, item));
+                    } else {
+                        $list_ul.append(vcui.template(subscriptionDisableItemTemplate, item));
                     }
                 });
                 self.$itemInfo.show();
