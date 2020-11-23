@@ -7,6 +7,9 @@
         margin:0 auto;
         padding:10px 40px 48px;
         text-align:center;
+        @include mobile {
+            padding:32px 16px 24px;
+        }
         .title {
             @include font-large-3;
             font-weight:700;
@@ -34,22 +37,6 @@
             padding-top:20px;
             &:only-child {
                 padding-top:24px;
-            }
-        }
-        @include mobile {
-            padding:0 0 24px;
-            .title {
-                padding:40px 16px 0;
-            }
-            .tabs-wrap.btn-type {
-                padding-top:28px;
-                &:only-child {
-                    padding-top:28px;
-                }
-            }
-            .desc {
-                margin-top:8px;
-                padding:0 16px;
             }
         }
         &.no-title {
@@ -166,83 +153,6 @@
                 margin-top: 80px;
                 @include mobile {
                     margin-top: 0;
-                }
-            }
-        }
-
-        // 마이페이지
-        .lnb-wrap {
-            @include clearfix;
-            .lnb {
-                float:left;
-                width:17%;
-                max-width:234px;
-                border-radius:4px;
-                background:#fff;
-                @include mobile {
-                    display:none;
-                }
-                .mypage-lnb {
-                    > li {
-                        margin-top:16px;
-                        &:first-child {
-                            margin-top:0;
-                        }
-
-                    }
-                    a {
-                        display:inline-block;
-                        color:#767676;
-                        @include font-small;
-                        font-weight:500;
-                        &.my-dep1 {
-                            color:#222;
-                            font-weight:700;
-                        }
-                        &.on {
-                            text-decoration:underline;
-                        }
-                    }
-                    .myp-sub {
-                        margin-top:4px;
-                        li {
-                            margin-top:4px;
-                            &:first-child {
-                                margin-top:0;
-                            }
-                        }
-                    }
-                }
-            }
-            .lnb-contents {
-                float:right;
-                width:83%;
-                max-width:calc(100% - 234px);
-                @include mobile {
-                    float:none;
-                    width:100%;
-                }
-                .section-wrap {
-                    .section {
-                        margin-top:80px;
-                        &:first-child {
-                            margin-top:0;
-                        }
-                        .tit-wrap {
-                            @include clearfix;
-                            height:50px;
-                            border-bottom:2px solid #222;
-                            .tit {
-                                float:left;
-                                color:#222;
-                                @include font-large-1;
-                                font-weight:700;
-                            }
-                            .flt-cont {
-                                float:right;
-                            }
-                        }
-                    }
                 }
             }
         }
