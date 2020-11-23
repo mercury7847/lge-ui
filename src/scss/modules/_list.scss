@@ -284,10 +284,15 @@
                 }
                 dd {
                     display:inline-block;
+                    width:100%;
                     max-width:calc(100% - 234px);
                     color:#222;
                     @include font-medium;
                     vertical-align:top;
+                    .btn-link {
+                        margin-top:1px;
+                        margin-left:24px;
+                    }
                 }
             }
         }
