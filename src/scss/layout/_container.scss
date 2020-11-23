@@ -51,7 +51,7 @@
         margin: 0 auto;
         padding: 0 40px 120px;
         @include mobile {
-            padding: 24px 0 60px;
+            padding: 0 0 60px;
             //border-top:12px solid #f4f4f4;
          }
         &.no-bd {
@@ -135,9 +135,6 @@
             @include mobile {
                 padding:40px 16px 56px;
                 border-top:12px solid #f4f4f4;
-                &:last-child {
-                    margin-bottom:-60px;
-                }
                 &:first-child {
                     border-top:none;
                     &:before {
