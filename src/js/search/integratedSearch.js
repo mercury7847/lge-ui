@@ -20,6 +20,14 @@
     $(window).ready(function() {
         var intergratedSearch = {
             init: function() {
+
+                var self = this;
+                self.$searchLayer = $('#layerSearch');
+                $('div.contents.search div.cont-wrap a').on("click", function(e) {
+                    self.showAnimation(self.$searchLayer);
+                });
+
+                /*
                 self.$searchLayer = $('#layerSearch');
                 self.$inputSearch = self.$searchLayer.find('div.input-sch input.txt');
                 self.$buttonSearch = self.$searchLayer.find('div.input-sch button.btn-search');
@@ -41,6 +49,7 @@
                 _self.updateRecentSearcheList();
 
                 _self.bindEvents();
+                */
             },
 
             bindEvents: function() {
