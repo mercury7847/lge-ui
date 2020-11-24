@@ -96,8 +96,8 @@
                     self.$pagination.vcPagination('setPageInfo',param.pagination);
 
                     //전체 검색수
-                    //self.$tab.find('li:nth-child(1) a').text('전체('+ vcui.number.addComma(data.listCount) +'건)');
-                    $('#totalCount').text('총 '+ vcui.number.addComma(data.listCount) +'개');
+                    //self.$tab.find('li:nth-child(1) a').text('전체('+ vcui.number.addComma(data.totalCount) +'건)');
+                    $('#totalCount').text('총 '+ vcui.number.addComma(data.totalCount) +'개');
 
                     var arr = data.listData instanceof Array ? data.listData : [];
                     var listbody = self.$faqList.find('ul');
