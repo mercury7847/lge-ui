@@ -71,7 +71,136 @@
 //     }
 // }
 
-
+.my-visit-schedule {
+    .schedule-list {
+        position:relative;
+        &::before {
+            content:' ';
+            position:absolute;
+            top:0;
+            left:33px;
+            bottom:0;
+            width:8px;
+            border-radius:4px;
+            background:#f4f4f4;
+        }
+        > li {
+            margin-top:19px;
+            &:first-child {
+                margin-top:0;
+            }
+            @each $state in on, off {
+                $fontColor:transparent;
+                @if $state == on {
+                    $fontColor:#EC455A;
+                } @else if $state == off {
+                    $fontColor:#aaa;
+                }
+                &.#{$state} {
+                    position:relative;
+                    .inner {
+                        position:relative;
+                        padding-left:81px;
+                        @include clearfix;
+                        .svc-info {
+                            float:left;
+                            width:270px;
+                            .date {
+                                @include font-large-2;
+                                color:$fontColor;
+                                font-weight:700;
+                                small {
+                                    display:block;
+                                    margin-bottom:2px;
+                                    @include font-small;
+                                    font-weight:500;
+                                }
+                            }
+                            .infos {
+                                margin-top:20px;
+                                ul {
+                                    font-size:0;
+                                    li {
+                                        display:inline-block;
+                                        @include font-small;
+                                        @if $state == on {
+                                            $fontColor:#767676;
+                                        }
+                                        color:$fontColor;
+                                        vertical-align:top;
+                                        &::before {
+                                            content:' ';
+                                            display:inline-block;
+                                            width:1px;
+                                            height:10px;
+                                            margin:7px 8px 0;
+                                            background:#ddd;
+                                            vertical-align:top;
+                                        }
+                                        &:first-child::before {
+                                            display:none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .svc-lists {
+                            position:relative;
+                            float:right;
+                            width:calc(100% - 270px);
+                            padding:32px 48px;
+                            padding-right:191px;
+                            border-radius:8px;
+                            box-shadow:2px 4px 16px 0 rgba(#000, .14);
+                            p {
+                                color:#767676;
+                                @include font-small;
+                                font-weight:500;
+                            }
+                            .svc-details {
+                                max-height:138px;
+                                margin-top:16px;
+                                overflow:hidden;
+                                li {
+                                    margin-top:2px;
+                                    color:#222;
+                                    @include font-medium;
+                                    &:first-child {
+                                        margin-top:0;
+                                    }
+                                }
+                            }
+                            .more-view {
+                                position:absolute;
+                                top:109px;
+                                right:48px;
+                                padding-right:24px;
+                                color:#767676;
+                                @include font-small;
+                                &::after {
+                                    content:' ';
+                                    position:absolute;
+                                    top:50%;
+                                    right:0;
+                                    width:20px;
+                                    height:20px;
+                                    margin-top:-10px;
+                                    background:url('/lg5-common/images/icons/btn-more-20-gray.svg') no-repeat;
+                                    vertical-align:top;
+                                }
+                            }
+                            .btn.border {
+                                position:absolute;
+                                top:32px;
+                                right:48px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 .my-visit-detail {
    .my-visit-box {
