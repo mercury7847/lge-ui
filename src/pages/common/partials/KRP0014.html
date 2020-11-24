@@ -1,11 +1,10 @@
 @@if ( !context.normalType ) {
 <div class="box">
-    <h3 class="tit">@@title</h3>
     <!-- 상품 이미지 -->
     <div class="prod-img">
         <!-- PC -->
         <span class="pc">
-            <img src="/lg5-common/images/KRP0014/@prod-pc.png" alt="">
+            <img src="/lg5-common/images/KRP0014/@img-prod-pc.png" alt="">
             <p class="hidden">PC 이미지 설명 영역</p>
         </span>
         <!-- // PC -->
@@ -19,20 +18,21 @@
         <!-- // mob -->
     </div>
     <!-- // 상품 이미지 -->
+    <h3 class="tit">@@title</h3>
     <!-- 스펙 리스트 -->
     <div class="spec-info-list big">
         <ul>
             @@for ( var i=0; i < spec.length; i++ ) {
-            <li>
-                <dl>
-                    <dt>`+spec[i].dt+`</dt>
-                    <dd>`+spec[i].dd+`</dd>
-                </dl>
-            </li>
+            <li>`+spec[i].li+`</li>
             }
         </ul>
     </div>
     <!-- // 스펙 리스트 -->
+    <!-- 접기 버튼 -->
+    <div class="btn_collapse_more">
+        <a href="#"><span>간략하게 보기</span></a>
+    </div>
+    <!-- //접기 버튼 -->
 </div>
 }
 @@if ( context.normalType ) {
