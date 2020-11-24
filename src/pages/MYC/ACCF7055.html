@@ -9,11 +9,12 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "케어솔루션 계약현황 - 해지 상담 신청"
+                "pageTitle": "계약현황 - 해지 상담 신청",
+                "pageDesc" : "고객님의 계약 정보를 해지하기 위해 아래 정보를 입력해주세요. 신청 후 빠른 시일 내에 담당자가 연락 드리겠습니다."
             })
             <!-- mypage -->
             <div class="contents mypage">
-                <div class="cont-wrap type3">
+                <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
                             "sect2" : [
@@ -23,62 +24,45 @@
                             ]
                         })
                         <div class="lnb-contents">
-                            <div class="section">
-                                <div class="cont-box">
-                                    <div class="my-contract-info">
-                                        <h4 class="tit">이케어 고객님</h4>
-                                        <p class="desc">계약정보를 해지 하지 위해 아래 정보를 입력해주세요. 해지 상담 신청 접수 후 빠른 시일내에 담당자가 연락 드리겠습니다.</p>
+                            <div class="section-wrap">
+                                <div class="sects">
+                                    <div class="tit-wrap">
+                                        <h5 class="tit">해지 상담 신청 정보 입력</h5>
                                     </div>
-
-                                    <div class="form-wrap">
-                                        <dl class="forms">
-                                            <dt class="tit"><label for="ipt1">해지 상담할 계약</label></dt>
-                                            <dd class="conts">
-                                                <span class="input-wrap block">
-                                                    <input type="text" id="ipt1" value="건조기(RH9WGANR) 계약번호(12345678)" readonly>
-                                                </span>
-                                            </dd>
-                                        </dl>
-                                        <div class="double-form">
+                                    <div class="section-inner type2">
+                                        <div class="form-wrap">
+                                            <div class="form-infos">
+                                                <p class="req" aria-disabled="true">필수 입력 사항</p>
+                                            </div>
                                             <dl class="forms">
-                                                <dt class="tit"><label for="date-input" class="req">날짜 선택<span class="blind">필수입력</span></label></dt>
+                                                <dt class="tit"><label for="inp01">해지 상담할 계약</label></dt>
                                                 <dd class="conts">
-                                                    <span class="input-wrap datepicker">
-                                                        <span class="box">
-                                                            <input type="text" id="date-input" placeholder="날짜를 선택하세요">
-                                                            <span class="cell pic-btn">
-                                                                <button type="button" class="ui_calendar" data-input-target="#date-input" data-min-date=new Date()><span class="blind">달력보기</span></button>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </dd>
-                                            </dl>
-                                            <dl class="forms">
-                                                <dt class="tit"><label for="select1" class="req">시간 선택<span class="blind">필수입력</span></label></dt>
-                                                <dd class="conts">
-                                                    <div class="select-wrap">
-                                                        <select class="ui_selectbox" id="select1" title="해지상담 신청 시간 선택">
-                                                            <option value="">10:00 ~ 12:00</option>
-                                                        </select>
+                                                    <div class="input-wrap">
+                                                        <input type="text" id="inp01" value="건조기(RH9WGANR) 계약번호(12345678)" readonly>
                                                     </div>
                                                 </dd>
                                             </dl>
+                                            <dl class="forms">
+                                                <dt class="tit"><label for="inp02" class="req">해지 희망일시<span class="blind">필수입력</span></label></dt>
+                                                <dd class="conts">
+                                                    날짜선택 기획 대기중
+                                                </dd>
+                                            </dl>
+                                            <dl class="forms">
+                                                <dt class="tit"><label for="text01" class="req">해지 신청사유<span class="blind">필수입력</span></label></dt>
+                                                <dd class="conts">
+                                                    <span class="input-wrap block">
+                                                        <textarea id="text01" placeholder="내용을 입력해 주세요."></textarea>
+                                                    </span>
+                                                </dd>
+                                            </dl>
                                         </div>
-                                        <dl class="forms">
-                                            <dt class="tit"><label for="ipt2" class="req">해지 신청 사유<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <span class="input-wrap block">
-                                                    <textarea placeholder="해지 신청 사유를 입력해주세요."></textarea>
-                                                </span>
-                                            </dd>
-                                        </dl>
+                                        <div class="btn-group center">
+                                            <button class="btn gray"><span>취소</span></button>
+                                            <button class="btn"><span>신청</span></button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="btn-group right">
-                                <button type="button" class="btn gray"><span>취소</span></button>
-                                <button type="submit" class="btn pink"><span>신청</span></button>
                             </div>
                         </div>
                     </div>
