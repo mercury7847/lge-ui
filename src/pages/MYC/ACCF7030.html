@@ -10,7 +10,8 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "방문 알리미"
+                "pageTitle": "방문 알리미",
+                "pageDesc" : "계약정보를 선택하여 상세한 내용을 확인 하실 수 있습니다."
             })
             <!-- mypage -->
             <div class="contents mypage">
@@ -18,157 +19,186 @@
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
                             "sect2" : [
-                                { "on": "on", "page": "계약현황" },
+                                { "on": "", "page": "계약현황" },
                                 { "on": "", "page": "납부내역" },
-                                { "on": "", "page": "방문알리미" }
+                                { "on": "on", "page": "방문 알리미" }
                             ]
                         })
                         <div class="lnb-contents">
-                            <div class="section">
-                                <div class="cont-box">
-                                    <div class="my-contract-info my-visit-info">
-                                        <h4 class="tit"><strong>이케어 고객님</strong> 안녕하세요!<br>
-                                            “고객님, LG전자 케어솔루션과 함께한 시간이 <em>3개월 24일</em>이 되었습니다. ” </h4>
-                                        <div class="form-wrap">
-                                            <dl class="forms">
-                                                <dt class="tit"><label for="select1">계약정보 선택</label></dt>
-                                                <dd class="conts">
-                                                    <div class="select-wrap block">
-                                                        <select class="ui_selectbox" id="select1">
-                                                            <option value="">모아보기</option>
-                                                            <option value="">계약건별</option>
-                                                        </select>
-                                                    </div>
-                                                </dd>
-                                            </dl>
-                                        </div>
-                                    </div>
+                            <!-- 계약정보 -->
+                            <div class="my-contract-info">
+                                <h4 class="tit">이케어 고객님 안녕하세요!</h4>
+                                <p class="desc">"고객님, LG전자 케어솔루션과 함께한 시간이 <em>3개월 24일</em> 되었습니다."</p>
+                                <div class="form-wrap">
+                                    <dl class="forms">
+                                        <dt class="tit"><label for="slt1">계약정보 선택</label></dt>
+                                        <dd class="conts">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="slt1">
+                                                    <option value="">모아보기</option>
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
                                 </div>
                             </div>
+                            <!-- // 계약정보 -->
 
-                            <div class="section">
-                                <div class="flt-tit-wrap">
-                                    <h3 class="sec-tit">케어 내역</h3>
-                                </div>
-                                <div class="cont-box">
-                                    <div class="txt-box">
-                                        <span>최근 5월 11일에 매니저가 방문하여 정수기(WD502AP) 외 1건 방문 서비스를 받으셨습니다. </span><br>
-                                        <span>고객님과 케어솔루션 매니저가 만나는 <em>다음 일정</em>은 아래와 같습니다.</span>
+                            <!-- 서비스 내역 알림 -->
+                            <div class="sects">
+                                <div class="service-info-txt">
+                                    <div class="tit">
+                                        <p>최근 <em>5월 11일에 매니저가 방문</em>하여 <em class="red">정수기(WD502AP) 외 2건</em> 서비스를 받으셨습니다.</p>
                                     </div>
-                                    <div class="my-visit-schedule">
-                                        <ul class="my-visit-box my-schedule">
-                                            <li class="pre">
-                                                <div class="inner">
-                                                    <div class="my-date">
-                                                        <span class="date-tit">이전 방문 서비스</span>
-                                                        <p class="date">2020.05.11</p>
-                                                    </div>
-                                                    <div class="service-item">
-                                                        <p class="blind">서비스 제품</p>
-                                                        <ul class="item">
-                                                            <li>정수기</li>
-                                                            <li>공기청정기</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="next">
-                                                <div class="inner">
-                                                    <span class="my-badge">6개월 2주 후</span>
-                                                    <span class="soon"><span class="icon"></span>곧 만나요!</span>
-                                                    <div class="my-date">
-                                                        <span class="date-tit">다음 방문 서비스</span>
-                                                        <p class="date">2020.05.11</p>
-                                                    </div>
-                                                    <div class="service-item">
-                                                        <p class="blind">서비스 제품</p>
-                                                        <ul class="item">
-                                                            <li>정수기</li>
-                                                            <li>공기청정기</li>
-                                                            <li>정수기</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>    
-                                            </li>
-                                            <li class="end">
-                                                <div class="inner">
-                                                    <span class="my-badge">6개월 2주 후</span>
-                                                    <div class="my-date">
-                                                        <span class="date-tit">이후 방문 예정 서비스</span>
-                                                        <p class="date">2020.05.11</p>
-                                                    </div>
-                                                    <div class="service-item">
-                                                        <p class="blind">서비스 제품</p>
-                                                        <ul class="item">
-                                                            <li>정수기</li>
-                                                            <li>공기청정기</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="my-visit-detail">
-                                        <ul class="my-visit-box">
-                                            <li class="pre">
-                                                <div class="inner">
-                                                    <div class="my-date">
-                                                        <span class="date-tit">이전 방문 서비스</span>
-                                                        <p class="date">2020.05.11</p>
-                                                    </div>
-                                                    <div class="service-item">
-                                                        <p class="blind">서비스 제품 상세</p>
-                                                        <ul class="item">
-                                                            <li>정수기(12343242): 정기점검</li>
-                                                            <li>정수기(23424232): 정기점검</li>
-                                                            <li>공기청정기(23424232): 정기점검</li>
-                                                            <li>공기청정기(23424232): 정기점검</li>
-                                                            <li>공기청정기(23424232): 정기점검</li>
-                                                        </ul>
-                                                    </div>    
-                                                
-                                                    <div class="btn-area"><button type="button" class="more-btn"><span>더보기</span></button></div>
-                                                </div>   
-                                            </li>
-                                            <li class="next">
-                                                <div class="inner">
-                                                    <div class="my-date">
-                                                        <span class="date-tit">다음 방문 서비스</span>
-                                                        <p class="date">2020.05.11</p>
-                                                        <button class="btn bd-black btn-small"><span>방문 일정 변경 요청</span></button>
-                                                    </div>
-                                                    <div class="service-item">
-                                                        <p class="blind">서비스 제품 상세</p>
-                                                        <ul class="item">
-                                                            <li>정수기(12343242): 정기점검</li>
-                                                            <li>공기청정기 (12342526): 필터 교체 / 소프트웨어 업데이트</li>
-                                                            <li>건조기(12342526) : (건)섬유 유연시트 교체</li>
-                                                            <li>건조기(12342526) : (건)섬유 유연시트 교체</li>
-                                                        </ul>
-                                                    </div>    
-                                                    <div class="btn-area"><button type="button" class="more-btn"><span>더보기</span></button></div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="my-visit-qna">
-                                        <ul>
-                                            <li>
-                                                <div class="tit">방문 일정 변경 요청 답변</div>
-                                                <div class="cont">
-                                                    죄송합니다. 요청하신 일자에는 방문이 어렵습니다.
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="tit">방문 일정 변경 요청 답변</div>
-                                                <div class="cont">
-                                                    죄송합니다. 요청하신 일자에는 방문이 어렵습니다.
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div> <!-- // end-->
+                                    <p class="desc">고객님과 케어솔루션 매니저가 만나는 다음 일정은 아래와 같습니다.</p>
                                 </div>
                             </div>
+                            <!-- // 서비스 내역 알림 -->
+
+                            <!-- 상세 -->
+                            <div class="section-wrap">
+                                <!-- 방문 알리미 일정 -->
+                                <div class="sects">
+                                    <div class="tit-wrap">
+                                        <h5 class="tit">방문 알리미 일정</h5>
+                                    </div>
+                                    <div class="section-inner">
+                                        <div class="my-visit-schedule">
+                                            <ul class="schedule-list">
+                                                <li class="off">
+                                                    <div class="inner">
+                                                        <div class="svc-info">
+                                                            <p class="date">
+                                                                <small>이전 방문 서비스</small>
+                                                                2020.05.11
+                                                            </p>
+                                                            <div class="infos">
+                                                                <p class="blind">방문 서비스 해당 제품</p>
+                                                                <ul>
+                                                                    <li>정수기</li>
+                                                                    <li>공기청정기</li>
+                                                                    <li>건조기</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="svc-lists">
+                                                            <p>이전 방문 서비스 상세 내역</p>
+                                                            <div class="svc-wrap">
+                                                                <ul class="svc-details">
+                                                                    <li>정수기(12341234) - 정기정검</li>
+                                                                    <li>정수기(12341234) - 정기정검</li>
+                                                                    <li>공기청정기(12341234) - 정기정검</li>
+                                                                    <li>건조기(12341234) - 설치</li>
+                                                                    <li>건조기(12341234) - 설치</li>
+                                                                </ul>
+                                                            </div>
+                                                            <span class="more-view" aria-hidden="true">내역 더보기</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="on">
+                                                    <div class="inner">
+                                                        <div class="svc-info">
+                                                            <p class="date">
+                                                                <small>이전 방문 서비스</small>
+                                                                2020.05.11
+                                                            </p>
+                                                            <div class="infos">
+                                                                <p class="blind">방문 서비스 해당 제품</p>
+                                                                <ul>
+                                                                    <li>정수기</li>
+                                                                    <li>공기청정기</li>
+                                                                    <li>건조기</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="svc-lists">
+                                                            <p>이전 방문 서비스 상세 내역</p>
+                                                            <div class="svc-wrap">
+                                                                <ul class="svc-details open">
+                                                                    <li>정수기(12341234) - 정기정검</li>
+                                                                    <li>정수기(12341234) - 정기정검</li>
+                                                                    <li>공기청정기(12341234) - 정기정검</li>
+                                                                    <li>건조기(12341234) - 설치</li>
+                                                                    <li>건조기(12341234) - 설치</li>
+                                                                    <li>정수기(12341234) - 정기정검</li>
+                                                                    <li>정수기(12341234) - 정기정검</li>
+                                                                    <li>공기청정기(12341234) - 정기정검</li>
+                                                                    <li>건조기(12341234) - 설치</li>
+                                                                    <li>건조기(12341234) - 설치</li>
+                                                                </ul>
+                                                            </div>
+                                                            <span class="more-view open" aria-hidden="true">닫기</span>
+                                                            <button type="button" class="btn size border"><span>방문일정 변경요청</span></button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- <div class="my-visit-detail">
+                                            <ul class="my-visit-box">
+                                                <li class="pre">
+                                                    <div class="inner">
+                                                        <div class="my-date">
+                                                            <span class="date-tit">이전 방문 서비스</span>
+                                                            <p class="date">2020.05.11</p>
+                                                        </div>
+                                                        <div class="service-item">
+                                                            <p class="blind">서비스 제품 상세</p>
+                                                            <ul class="item">
+                                                                <li>정수기(12343242): 정기점검</li>
+                                                                <li>정수기(23424232): 정기점검</li>
+                                                                <li>공기청정기(23424232): 정기점검</li>
+                                                                <li>공기청정기(23424232): 정기점검</li>
+                                                                <li>공기청정기(23424232): 정기점검</li>
+                                                            </ul>
+                                                        </div>    
+                                                    
+                                                        <div class="btn-area"><button type="button" class="more-btn"><span>더보기</span></button></div>
+                                                    </div>   
+                                                </li>
+                                                <li class="next">
+                                                    <div class="inner">
+                                                        <div class="my-date">
+                                                            <span class="date-tit">다음 방문 서비스</span>
+                                                            <p class="date">2020.05.11</p>
+                                                            <button class="btn bd-black btn-small"><span>방문 일정 변경 요청</span></button>
+                                                        </div>
+                                                        <div class="service-item">
+                                                            <p class="blind">서비스 제품 상세</p>
+                                                            <ul class="item">
+                                                                <li>정수기(12343242): 정기점검</li>
+                                                                <li>공기청정기 (12342526): 필터 교체 / 소프트웨어 업데이트</li>
+                                                                <li>건조기(12342526) : (건)섬유 유연시트 교체</li>
+                                                                <li>건조기(12342526) : (건)섬유 유연시트 교체</li>
+                                                            </ul>
+                                                        </div>    
+                                                        <div class="btn-area"><button type="button" class="more-btn"><span>더보기</span></button></div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div> -->
+                                        <div class="my-visit-qna">
+                                            <ul>
+                                                <li>
+                                                    <div class="tit">방문 일정 변경 요청 답변</div>
+                                                    <div class="cont">
+                                                        죄송합니다. 요청하신 일자에는 방문이 어렵습니다.
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="tit">방문 일정 변경 요청 답변</div>
+                                                    <div class="cont">
+                                                        죄송합니다. 요청하신 일자에는 방문이 어렵습니다.
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div> <!-- // end-->
+                                    </div>
+                                </div>
+                                <!-- // 방문 알리미 일정 -->
+                            </div>
+                            <!-- // 상세 -->
                         </div>
                     </div>
                 </div>

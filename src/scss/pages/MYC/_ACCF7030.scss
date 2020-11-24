@@ -1,224 +1,224 @@
-.my-visit-info {
-    > h4.tit {
-    text-align: center;
-    font-weight: 400;
-    }
-}
-.txt-box {
-    padding: 32px;
-    text-align: center;
-    background-color: #f4f4f4;
-    font-size: 16px;
-    color: #222;
-    line-height: 24px;
-    em {
-        color:#EC455A;
-    }
-}
-.my-visit-box {
-    .my-date {
-        position: relative;
-        .date-tit {
-            font-size: 14px;
-            line-height: 20px;
-            color: #808080;
+.service-info-txt {
+    margin:64px 0;
+    text-align:center;
+    .tit {
+        font-size:0;
+        &::before {
+            content:' '; 
+            display:inline-block;
+            width:48px;
+            height:48px;
+            margin-right:24px;
+            vertical-align:middle;
+            background:url('/lg5-common/images/icons/icon-04-48.svg') no-repeat;
         }
-        .date {
-            font-size: 18px;
-            line-height: 28px;
-            color: #616161;
-            font-weight: 700;
-        }
-        .btn {
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-        }
-    }
-    .next .date {
-        color: #ec455a;
-    }
-    .service-item {
-        margin-top: 16px;
-        padding-top: 16px;
-        border-top: 1px solid #ddd;
-        li {
-            font-size: 16px;
-            line-height: 24px;
-            color: #222;
-            margin-top:4px;
-            &:first-child {
-                margin-top: 0;
+        p {
+            display:inline-block;
+            color:#222;
+            @include font-large-2;
+            vertical-align:middle;
+            em {
+                font-weight:700;
+                &.red {
+                    color:#ec455a;
+                }
             }
-        }  
+        }
+    }
+    .desc {
+        margin-top:8px;
+        color:#222;
+        @include font-medium;
     }
 }
+// .my-visit-box {
+//     .my-date {
+//         position: relative;
+//         .date-tit {
+//             font-size: 14px;
+//             line-height: 20px;
+//             color: #808080;
+//         }
+//         .date {
+//             font-size: 18px;
+//             line-height: 28px;
+//             color: #616161;
+//             font-weight: 700;
+//         }
+//         .btn {
+//             position: absolute;
+//             top: 50%;
+//             right: 0;
+//             transform: translateY(-50%);
+//         }
+//     }
+//     .next .date {
+//         color: #ec455a;
+//     }
+//     .service-item {
+//         margin-top: 16px;
+//         padding-top: 16px;
+//         border-top: 1px solid #ddd;
+//         li {
+//             font-size: 16px;
+//             line-height: 24px;
+//             color: #222;
+//             margin-top:4px;
+//             &:first-child {
+//                 margin-top: 0;
+//             }
+//         }  
+//     }
+// }
 
 .my-visit-schedule {
-    padding: 0 93px;
-    //@media screen and (max-width: 1024px) {
-    @include mobile {
-        margin-top: 40px;
-        padding: 0 0 0 24px;
-    }
-    .my-schedule {
-        display: flex;
-        position: relative;
-        padding-top: 98px;
-        justify-content: space-between;
-        align-items: flex-start;
-        //@media screen and (max-width: 1024px) {
-        @include mobile {    
-            display: block;
-            padding-top: 0;
-        }
-        &:before {
-            display: inline-block;
-            position: absolute;
-            content: '';
-            top: 74px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background-color: #f4f4f4;
-            border-radius: 4px;
-            //@media screen and (max-width: 1024px) {
-            @include mobile {
-                display: none;
-            }
+    .schedule-list {
+        position:relative;
+        &::before {
+            content:' ';
+            position:absolute;
+            top:0;
+            left:33px;
+            bottom:0;
+            width:8px;
+            border-radius:4px;
+            background:#f4f4f4;
         }
         > li {
-            //@media screen and (max-width: 1024px) {
-            @include mobile {
-                position: relative;
-                padding-top: 86px;
-                &:first-child {
-                    padding-top: 0;
-                }
-                &:before {
-                    display: inline-block;
-                    position: absolute;
-                    content: '';
-                    top: 0;
-                    left: -24px;
-                    width: 8px;
-                    height: 100%;
-                    background-color: #f4f4f4;
-                }
-                &:last-child:before {
-                    height: 90px;
-                }
+            margin-top:19px;
+            &:first-child {
+                margin-top:0;
             }
             .inner {
-                position: relative;
-                width: 195px;
-                padding: 24px;
-                box-shadow:0 4px 12px 0 rgba(0, 0, 0, .15);
-                border-radius: 8px;
-                &:after {
-                    display: inline-block;
-                    position: absolute;
-                    content: '';
-                    top: -24px;
-                    left: 50%;
-                    width: 8px;
-                    height: 8px;
-                    margin-left: -4px;
-                    background-color: #808080;
-                    border-radius: 4px;
-                    @include mobile {
-                        margin-left: 0;
-                    }
-                }
-                //@media screen and (max-width: 1024px) {
-                @include mobile {
-                    display: flex;
-                    width: 100%;
-                    align-items: center;
-                    
-                    &:after {
-                        top: 0;
-                        left: -24px;
-                    }
-                    .my-date {
-                        width: 57%;
-                    }
-                    .service-item {
-                        width: 43%;
-                        margin-top: 0;
-                        padding-top: 0;
-                        padding-left: 20px;
-                        border-top: none;
-                        border-left: 1px solid #ccc;
-                    }
-                }  
-            }
-            &.next .inner:after {
-                background-color: #ec455a;
-            }
-            
-            .my-badge {
-                position: absolute;
-                top: -58px;
-                left: -50%;
-                padding: 2px 8px;
-                background: #ccc;
-                font-size: 12px;
-                line-height: 20px;
-                color: #fff;
-                border-radius: 4px;
-                @media screen and (max-width: 1279px){
-                    left: -20%;
-                }
-                @media screen and (max-width: 1125px){
-                    left: 0;
-                }
-                //@media screen and (max-width: 1024px) {
-                @include mobile {
-                    top: -26px;
-                    font-size: 10px;
-                    line-height: 14px;
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:38px;
+                    left:33px;
+                    width:8px;
+                    height:8px;
+                    border-radius:50%;
+                    background:#aaa;
                 }
             }
-            &.pre {
-                margin-left: -93px;
-                //@media screen and (max-width: 1024px) {
-                @include mobile {
-                    margin-left: 0;
+            @each $state in on, off {
+                $fontColor:transparent;
+                @if $state == on {
+                    $fontColor:#EC455A;
+                } @else if $state == off {
+                    $fontColor:#aaa;
                 }
-            }
-            &.next {
-                .soon {
-                    position: absolute;
-                    left: 50%;
-                    top: -66px;
-                    height: 34px;
-                    margin-left: -12px;
-                    padding: 7px 0 7px 34px;
-                    background: url(/lg5-common/images/icons/icon-alarm.svg) 0 50% no-repeat;
-                    background-size: 26px 34px;
-                    font-size: 14px;
-                    line-height: 20px;
-                    color: #ec455a;
-                    //@media screen and (max-width: 1024px) {
-                    @include mobile {
-                        top: -35px;
-                        left: auto;
-                        right: 0;
-                        padding: 6px 0 6px 29px; 
-                        font-size: 12px;
-                        line-height: 16px;
-                        background-size: 21px 27px;
-                        background-position: 0 0;
+                &.#{$state} {
+                    position:relative;
+                    .inner {
+                        position:relative;
+                        padding-left:81px;
+                        @include clearfix;
+                        .svc-info {
+                            float:left;
+                            width:270px;
+                            .date {
+                                @include font-large-2;
+                                color:$fontColor;
+                                font-weight:700;
+                                small {
+                                    display:block;
+                                    margin-bottom:2px;
+                                    @include font-small;
+                                    font-weight:500;
+                                }
+                            }
+                            .infos {
+                                margin-top:20px;
+                                ul {
+                                    font-size:0;
+                                    li {
+                                        display:inline-block;
+                                        @include font-small;
+                                        @if $state == on {
+                                            $fontColor:#767676;
+                                        }
+                                        color:$fontColor;
+                                        vertical-align:top;
+                                        &::before {
+                                            content:' ';
+                                            display:inline-block;
+                                            width:1px;
+                                            height:10px;
+                                            margin:7px 8px 0;
+                                            background:#ddd;
+                                            vertical-align:top;
+                                        }
+                                        &:first-child::before {
+                                            display:none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .svc-lists {
+                            position:relative;
+                            float:right;
+                            width:calc(100% - 270px);
+                            padding:32px 48px;
+                            padding-right:191px;
+                            border-radius:8px;
+                            box-shadow:2px 4px 16px 0 rgba(#000, .14);
+                            p {
+                                color:#767676;
+                                @include font-small;
+                                font-weight:500;
+                            }
+                            .svc-details {
+                                max-height:138px;
+                                margin-top:16px;
+                                overflow:hidden;
+                                li {
+                                    margin-top:2px;
+                                    color:#222;
+                                    @include font-medium;
+                                    &:first-child {
+                                        margin-top:0;
+                                    }
+                                }
+                                &.open {
+                                    max-height:240px;
+                                    overflow-y:auto;
+                                }
+                            }
+                            .more-view {
+                                position:absolute;
+                                top:109px;
+                                right:48px;
+                                padding-right:24px;
+                                color:#767676;
+                                @include font-small;
+                                cursor:pointer;
+                                &::after {
+                                    content:' ';
+                                    position:absolute;
+                                    top:50%;
+                                    right:0;
+                                    width:20px;
+                                    height:20px;
+                                    margin-top:-10px;
+                                    background:url('/lg5-common/images/icons/btn-more-20-gray.svg') no-repeat;
+                                    vertical-align:top;
+                                }
+                                &.open {
+                                    color:#EC455A;
+                                    &::after {
+                                        background:url('/lg5-common/images/icons/btn-minus-20-pink.svg') no-repeat;
+                                    }
+                                }
+                            }
+                            .btn.border {
+                                position:absolute;
+                                top:32px;
+                                right:48px;
+                            }
+                        }
                     }
-                }
-            }
-            &.end {
-                margin-right: -93px;
-                //@media screen and (max-width: 1024px) {
-                @include mobile {
-                    margin-right: 0;
                 }
             }
         }

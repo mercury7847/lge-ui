@@ -3,9 +3,9 @@
 /* page visual */
 .page-visual {
     &-heading {
-        max-width:1460px;
+        max-width:1380px + 80px;
         margin:0 auto;
-        padding:48px 40px 0;
+        padding:40px 40px 48px;
         text-align:center;
         @include mobile {
             padding:32px 16px 0;
@@ -16,11 +16,19 @@
             font-size:28px;
             font-weight:700;
             line-height:38px;
+            &:only-child {
+                @at-root {
+                    .page-visual-heading {
+                        padding-bottom:0;
+                    }
+                }
+            }
         }
         &-desc {
-            margin-top:20px;
-            color:#515151;
-            line-height:1.5;
+            margin-top:8px;
+            font-size:14px;
+            font-weight:500;
+            line-height:24px;
             word-break:keep-all;
         }
         &-btns {

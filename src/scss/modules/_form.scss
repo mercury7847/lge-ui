@@ -777,9 +777,10 @@
         }
     }
     textarea {
-        height:160px;
-        padding:23px 15px;
+        height:120px;
+        padding:15px;
         @include mobile {
+            height:130px;
             padding:11px;
         }
     }
