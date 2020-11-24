@@ -6,10 +6,10 @@
     .component-inner {
         max-width:1206px;
     }
-    padding:60px 0;
+    padding:40px 0;
     @include mobile {
-        border-top:12px solid #f4f4f4;
-        padding:32px 0 0;
+        // border-top:12px solid #f4f4f4;
+        // padding:32px 0 0;
         background:#fff;
         .component-inner {
             padding:0;
@@ -272,6 +272,7 @@
                         display:inline-block;
                         width:20px;
                         height:20px;
+                        margin-left:4px;
                         background:url('/lg5-common/images/KRP0014/btn-arrow-right-20.svg') no-repeat right 0;
                         vertical-align:middle;
                         transform:rotate(180deg);

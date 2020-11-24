@@ -56,147 +56,578 @@
                             </ul>
                         </div>
                         <!-- //tab -->
-                        <!-- spec -->
-                        <div class="prod-spec-wrap">
-                            @@include('./common/partials/KRP0014.html', {
-                                title : "스펙 요약정보",
-                                spec : [
-                                    { li:"TV 종류 : 올레드" },
-                                    { li:"화면크기 : 222cm" },
-                                    { li:"해상도 : 8K" },
-                                    { li:"스탠드 디자인 : 아트 퍼니쳐 스텐드" }
-                                ]
-                            })
-                            @@include('./common/partials/KRP0014.html', {
-                                normalType : true,
-                                title : "디스플레이",
-                                spec : [
-                                    { dt:"화면크기", dd:"222cm" },
-                                    { dt:"TV종류", dd:"올레드" },
-                                    { dt:"디밍 방식", dd:"올레드 픽셀디밍" },
-                                    { dt:"해상도", dd:"8K" }
-                                ]
-                            })
-                            @@include('./common/partials/KRP0014.html', {
-                                normalType : true,
-                                title : "화질",
-                                spec : [
-                                    { dt:"인공지능 프로세서", dd:"3세대 인공지능 알파9 8K" },
-                                    { dt:"인공지능 화질", dd:"<span class='specs on'>있음</span>  (인공지능 화질 프로)" },
-                                    { dt:"얼굴 입체감 강화", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"콘텐츠 맞춤화질", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"인공지능 밝기 조정", dd:"<span class='specs on'>있음</span>  (HDR 컨텐츠 입력시 지원)" },
-                                    { dt:"Dolby Vision IQ", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"FILMMAKER MODE™", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"HDR10", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"HLG", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"HDR효과", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"HFR", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"G-Sync호환", dd:"<span class='specs 44n'>있음</span>" },
-                                    { dt:"블랙 기술", dd:"정확한 블랙" },
-                                    { dt:"무한대 명암비", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"시야각", dd:"올레드 광시야각" }
-                                ]
-                            })
-                            @@include('./common/partials/KRP0014.html', {
-                                normalType : true,
-                                title : "디자인",
-                                spec : [
-                                    { dt:"슬림 타입", dd:"<span class='specs on'>있음</span> 페이퍼 슬림(일체형)" },
-                                    { dt:"시네마스크린", dd:"<span class='specs on'>있음</span> (4면 시네마 스크린)" },
-                                    { dt:"스탠드 디자인", dd:"아트 퍼니쳐 스텐드" }
-                                ]
-                            })
-                            @@include('./common/partials/KRP0014.html', {
-                                normalType : true,
-                                title : "사운드",
-                                spec : [
-                                    { dt:"사운드 채널/출력", dd:"4.2Ch/80W" },
-                                    { dt:"인공지능 사운드", dd:"<span class='specs on'>있음</span> (인공지능 사운드 프로)" },
-                                    { dt:"돌비애트모스", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"LG 사운드싱크(TV음원 → 사운드바(블루투스 활용))", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"블루투스 사운드(모바일 음원 → TV스피커(블루투스 활용))", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"블루투스 서라운드 레디", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"공간인식 사운드+", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"클리어보이스 III", dd:"<span class='specs on'>있음</span> (딥러닝 클리어 보이스)" }
-                                ]
-                            })
-                            @@include('./common/partials/KRP0014.html', {
-                                normalType : true,
-                                title : "스마트",
-                                spec : [
-                                    { dt:"인공지능 ThinQ", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"인공지능 홈보드", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"구글 어시스턴트", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"AirPlay2", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"다이렉트 음성인식, 수입자", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"운영체제", dd:"webOS 5.0" },
-                                    { dt:"리모컨", dd:"리모컨'20년 프리미엄 인공지능 리모컨" },
-                                    { dt:"LG 채널", dd:"<span class='specs on'>있음</span>" },
-                                ]
-                            })
-                            @@include('./common/partials/KRP0014.html', {
-                                normalType : true,
-                                title : "부가기능",
-                                spec : [
-                                    { dt:"갤러리 모드", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"스포츠 알람", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"VRR(Variable Refresh Rate)", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"ALLM(Auto Low Latency Mode)", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"UHD 방송 수신", dd:"<span class='specs on'>있음</span>" },
-                                    { dt:"USB (2.0)", dd:"<span class='specs on'>있음</span> (3포트)" },
-                                    { dt:"HDMI", dd:"<span class='specs on'>있음</span> (4포트)" }
-                                ]
-                            })
-                            @@include('./common/partials/KRP0014.html', {
-                                normalType : true,
-                                title : "에너지절약",
-                                spec : [
-                                    { dt:"에너지소비효율등급", dd:"비대상" },
-                                    { dt:"정격 소비전력(W)", dd:"1086W" },
-                                    { dt:"일반 소비전력(W)", dd:"비대상" },
-                                    { dt:"ALLM(Auto Low Latency Mode)", dd:"Under 0.5W" }
-                                ]
-                            })
-                            @@include('./common/partials/KRP0014.html', {
-                                normalType : true,
-                                title : "크기",
-                                spec : [
-                                    { dt:"스탠드 제외크기(WxHxD)", dd:"1961x1120x49.9mm" },
-                                    { dt:"스탠드 포함크기(WxHxD)", dd:"1,961x1,456x281mm" },
-                                    { dt:"스탠드 제외무게", dd:"42kg" },
-                                    { dt:"스탠드 포함무게", dd:"104kg" },
-                                    { dt:"스탠드 크기(WxD)", dd:"1,961x281mm" }
-                                ]
-                            })
-                            @@include('./common/partials/KRP0014.html', {
-                                normalType : true,
-                                title : "비고",
-                                spec : [
-                                    { dt:"비고", dd:"*일부 8K 입력/디코딩 표준이 지원되지 않을 수 있으며, 8K 표준을 지원하기 위하여 추가 장치가 필요할 수 있습니다. 8K로 향상된 이미지는 원본 영상에 따라 차이가 있습니다." }
-                                ]
-                            })
-                            @@include('./common/partials/KRP0014.html', {
-                                normalType : true,
-                                title : "기본정보",
-                                spec : [
-                                    { dt:"품명 및 모델명", dd:"텔레비전 수상기(OLED88ZXKNA)" },
-                                    { dt:"KC 인증 필 유무", dd:"R-R-LGE-OLED88ZXKNA XL090008-19297" },
-                                    { dt:"정격전압", dd:"AC 220-240 V~ 60Hz" },
-                                    { dt:"동일 모델의 출시년월", dd:"2020년 3월" },
-                                    { dt:"제조자", dd:"엘지전자㈜" },
-                                    { dt:"제조국", dd:"한국" },
-                                    { dt:"품질보증기준", dd:"결함&middot;하자 등에 따른 소비자피해에 대해서는 소비자분쟁해결기준(소비자기본법 제 16조)에 따라 보상 가능" },
-                                    { dt:"A/S 책임자와 전화번호", dd:"LG서비스센터 / 1544-7777" }
-                                ]
-                            })
-                            <!-- print btn -->
-                            <div class="prod-print">
-                                <button type="button">인쇄하기</button>
+                        <div id="tab1">
+                            <!-- spec -->
+                            <div class="prod-spec-wrap">
+                                @@include('./common/partials/KRP0014.html', {
+                                    title : "스펙 요약정보",
+                                    spec : [
+                                        { li:"TV 종류 : 올레드" },
+                                        { li:"화면크기 : 222cm" },
+                                        { li:"해상도 : 8K" },
+                                        { li:"스탠드 디자인 : 아트 퍼니쳐 스텐드" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "디스플레이",
+                                    spec : [
+                                        { dt:"화면크기", dd:"222cm" },
+                                        { dt:"TV종류", dd:"올레드" },
+                                        { dt:"디밍 방식", dd:"올레드 픽셀디밍" },
+                                        { dt:"해상도", dd:"8K" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "화질",
+                                    spec : [
+                                        { dt:"인공지능 프로세서", dd:"3세대 인공지능 알파9 8K" },
+                                        { dt:"인공지능 화질", dd:"<span class='specs on'>있음</span>  (인공지능 화질 프로)" },
+                                        { dt:"얼굴 입체감 강화", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"콘텐츠 맞춤화질", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"인공지능 밝기 조정", dd:"<span class='specs on'>있음</span>  (HDR 컨텐츠 입력시 지원)" },
+                                        { dt:"Dolby Vision IQ", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"FILMMAKER MODE™", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HDR10", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HLG", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HDR효과", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HFR", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"G-Sync호환", dd:"<span class='specs 44n'>있음</span>" },
+                                        { dt:"블랙 기술", dd:"정확한 블랙" },
+                                        { dt:"무한대 명암비", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"시야각", dd:"올레드 광시야각" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "디자인",
+                                    spec : [
+                                        { dt:"슬림 타입", dd:"<span class='specs on'>있음</span> 페이퍼 슬림(일체형)" },
+                                        { dt:"시네마스크린", dd:"<span class='specs on'>있음</span> (4면 시네마 스크린)" },
+                                        { dt:"스탠드 디자인", dd:"아트 퍼니쳐 스텐드" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "사운드",
+                                    spec : [
+                                        { dt:"사운드 채널/출력", dd:"4.2Ch/80W" },
+                                        { dt:"인공지능 사운드", dd:"<span class='specs on'>있음</span> (인공지능 사운드 프로)" },
+                                        { dt:"돌비애트모스", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"LG 사운드싱크(TV음원 → 사운드바(블루투스 활용))", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"블루투스 사운드(모바일 음원 → TV스피커(블루투스 활용))", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"블루투스 서라운드 레디", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"공간인식 사운드+", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"클리어보이스 III", dd:"<span class='specs on'>있음</span> (딥러닝 클리어 보이스)" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "스마트",
+                                    spec : [
+                                        { dt:"인공지능 ThinQ", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"인공지능 홈보드", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"구글 어시스턴트", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"AirPlay2", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"다이렉트 음성인식, 수입자", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"운영체제", dd:"webOS 5.0" },
+                                        { dt:"리모컨", dd:"리모컨'20년 프리미엄 인공지능 리모컨" },
+                                        { dt:"LG 채널", dd:"<span class='specs on'>있음</span>" },
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "부가기능",
+                                    spec : [
+                                        { dt:"갤러리 모드", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"스포츠 알람", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"VRR(Variable Refresh Rate)", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"ALLM(Auto Low Latency Mode)", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"UHD 방송 수신", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"USB (2.0)", dd:"<span class='specs on'>있음</span> (3포트)" },
+                                        { dt:"HDMI", dd:"<span class='specs on'>있음</span> (4포트)" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "에너지절약",
+                                    spec : [
+                                        { dt:"에너지소비효율등급", dd:"비대상" },
+                                        { dt:"정격 소비전력(W)", dd:"1086W" },
+                                        { dt:"일반 소비전력(W)", dd:"비대상" },
+                                        { dt:"ALLM(Auto Low Latency Mode)", dd:"Under 0.5W" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "크기",
+                                    spec : [
+                                        { dt:"스탠드 제외크기(WxHxD)", dd:"1961x1120x49.9mm" },
+                                        { dt:"스탠드 포함크기(WxHxD)", dd:"1,961x1,456x281mm" },
+                                        { dt:"스탠드 제외무게", dd:"42kg" },
+                                        { dt:"스탠드 포함무게", dd:"104kg" },
+                                        { dt:"스탠드 크기(WxD)", dd:"1,961x281mm" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "비고",
+                                    spec : [
+                                        { dt:"비고", dd:"*일부 8K 입력/디코딩 표준이 지원되지 않을 수 있으며, 8K 표준을 지원하기 위하여 추가 장치가 필요할 수 있습니다. 8K로 향상된 이미지는 원본 영상에 따라 차이가 있습니다." }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "기본정보",
+                                    spec : [
+                                        { dt:"품명 및 모델명", dd:"텔레비전 수상기(OLED88ZXKNA)" },
+                                        { dt:"KC 인증 필 유무", dd:"R-R-LGE-OLED88ZXKNA XL090008-19297" },
+                                        { dt:"정격전압", dd:"AC 220-240 V~ 60Hz" },
+                                        { dt:"동일 모델의 출시년월", dd:"2020년 3월" },
+                                        { dt:"제조자", dd:"엘지전자㈜" },
+                                        { dt:"제조국", dd:"한국" },
+                                        { dt:"품질보증기준", dd:"결함&middot;하자 등에 따른 소비자피해에 대해서는 소비자분쟁해결기준(소비자기본법 제 16조)에 따라 보상 가능" },
+                                        { dt:"A/S 책임자와 전화번호", dd:"LG서비스센터 / 1544-7777" }
+                                    ]
+                                })
+                                <!-- print btn -->
+                                <div class="prod-print">
+                                    <button type="button">인쇄하기</button>
+                                </div>
+                                <!-- //print btn -->
                             </div>
-                            <!-- //print btn -->
+                            <!-- // spec -->
                         </div>
-                        <!-- // spec -->
+                        <div id="tab2">
+                            <!-- spec -->
+                            <div class="prod-spec-wrap">
+                                @@include('./common/partials/KRP0014.html', {
+                                    title : "스펙 요약정보",
+                                    spec : [
+                                        { li:"TV 종류 : 올레드2" },
+                                        { li:"화면크기 : 222cm" },
+                                        { li:"해상도 : 8K" },
+                                        { li:"스탠드 디자인 : 아트 퍼니쳐 스텐드" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "디스플레이",
+                                    spec : [
+                                        { dt:"화면크기", dd:"222cm" },
+                                        { dt:"TV종류", dd:"올레드" },
+                                        { dt:"디밍 방식", dd:"올레드 픽셀디밍" },
+                                        { dt:"해상도", dd:"8K" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "화질",
+                                    spec : [
+                                        { dt:"인공지능 프로세서", dd:"3세대 인공지능 알파9 8K" },
+                                        { dt:"인공지능 화질", dd:"<span class='specs on'>있음</span>  (인공지능 화질 프로)" },
+                                        { dt:"얼굴 입체감 강화", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"콘텐츠 맞춤화질", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"인공지능 밝기 조정", dd:"<span class='specs on'>있음</span>  (HDR 컨텐츠 입력시 지원)" },
+                                        { dt:"Dolby Vision IQ", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"FILMMAKER MODE™", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HDR10", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HLG", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HDR효과", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HFR", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"G-Sync호환", dd:"<span class='specs 44n'>있음</span>" },
+                                        { dt:"블랙 기술", dd:"정확한 블랙" },
+                                        { dt:"무한대 명암비", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"시야각", dd:"올레드 광시야각" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "디자인",
+                                    spec : [
+                                        { dt:"슬림 타입", dd:"<span class='specs on'>있음</span> 페이퍼 슬림(일체형)" },
+                                        { dt:"시네마스크린", dd:"<span class='specs on'>있음</span> (4면 시네마 스크린)" },
+                                        { dt:"스탠드 디자인", dd:"아트 퍼니쳐 스텐드" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "사운드",
+                                    spec : [
+                                        { dt:"사운드 채널/출력", dd:"4.2Ch/80W" },
+                                        { dt:"인공지능 사운드", dd:"<span class='specs on'>있음</span> (인공지능 사운드 프로)" },
+                                        { dt:"돌비애트모스", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"LG 사운드싱크(TV음원 → 사운드바(블루투스 활용))", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"블루투스 사운드(모바일 음원 → TV스피커(블루투스 활용))", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"블루투스 서라운드 레디", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"공간인식 사운드+", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"클리어보이스 III", dd:"<span class='specs on'>있음</span> (딥러닝 클리어 보이스)" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "스마트",
+                                    spec : [
+                                        { dt:"인공지능 ThinQ", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"인공지능 홈보드", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"구글 어시스턴트", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"AirPlay2", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"다이렉트 음성인식, 수입자", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"운영체제", dd:"webOS 5.0" },
+                                        { dt:"리모컨", dd:"리모컨'20년 프리미엄 인공지능 리모컨" },
+                                        { dt:"LG 채널", dd:"<span class='specs on'>있음</span>" },
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "부가기능",
+                                    spec : [
+                                        { dt:"갤러리 모드", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"스포츠 알람", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"VRR(Variable Refresh Rate)", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"ALLM(Auto Low Latency Mode)", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"UHD 방송 수신", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"USB (2.0)", dd:"<span class='specs on'>있음</span> (3포트)" },
+                                        { dt:"HDMI", dd:"<span class='specs on'>있음</span> (4포트)" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "에너지절약",
+                                    spec : [
+                                        { dt:"에너지소비효율등급", dd:"비대상" },
+                                        { dt:"정격 소비전력(W)", dd:"1086W" },
+                                        { dt:"일반 소비전력(W)", dd:"비대상" },
+                                        { dt:"ALLM(Auto Low Latency Mode)", dd:"Under 0.5W" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "크기",
+                                    spec : [
+                                        { dt:"스탠드 제외크기(WxHxD)", dd:"1961x1120x49.9mm" },
+                                        { dt:"스탠드 포함크기(WxHxD)", dd:"1,961x1,456x281mm" },
+                                        { dt:"스탠드 제외무게", dd:"42kg" },
+                                        { dt:"스탠드 포함무게", dd:"104kg" },
+                                        { dt:"스탠드 크기(WxD)", dd:"1,961x281mm" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "비고",
+                                    spec : [
+                                        { dt:"비고", dd:"*일부 8K 입력/디코딩 표준이 지원되지 않을 수 있으며, 8K 표준을 지원하기 위하여 추가 장치가 필요할 수 있습니다. 8K로 향상된 이미지는 원본 영상에 따라 차이가 있습니다." }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "기본정보",
+                                    spec : [
+                                        { dt:"품명 및 모델명", dd:"텔레비전 수상기(OLED88ZXKNA)" },
+                                        { dt:"KC 인증 필 유무", dd:"R-R-LGE-OLED88ZXKNA XL090008-19297" },
+                                        { dt:"정격전압", dd:"AC 220-240 V~ 60Hz" },
+                                        { dt:"동일 모델의 출시년월", dd:"2020년 3월" },
+                                        { dt:"제조자", dd:"엘지전자㈜" },
+                                        { dt:"제조국", dd:"한국" },
+                                        { dt:"품질보증기준", dd:"결함&middot;하자 등에 따른 소비자피해에 대해서는 소비자분쟁해결기준(소비자기본법 제 16조)에 따라 보상 가능" },
+                                        { dt:"A/S 책임자와 전화번호", dd:"LG서비스센터 / 1544-7777" }
+                                    ]
+                                })
+                                <!-- print btn -->
+                                <div class="prod-print">
+                                    <button type="button">인쇄하기</button>
+                                </div>
+                                <!-- //print btn -->
+                            </div>
+                            <!-- // spec -->
+                        </div>
+                        <div id="tab3">
+                            <!-- spec -->
+                            <div class="prod-spec-wrap">
+                                @@include('./common/partials/KRP0014.html', {
+                                    title : "스펙 요약정보",
+                                    spec : [
+                                        { li:"TV 종류 : 올레드3" },
+                                        { li:"화면크기 : 222cm" },
+                                        { li:"해상도 : 8K" },
+                                        { li:"스탠드 디자인 : 아트 퍼니쳐 스텐드" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "디스플레이",
+                                    spec : [
+                                        { dt:"화면크기", dd:"222cm" },
+                                        { dt:"TV종류", dd:"올레드" },
+                                        { dt:"디밍 방식", dd:"올레드 픽셀디밍" },
+                                        { dt:"해상도", dd:"8K" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "화질",
+                                    spec : [
+                                        { dt:"인공지능 프로세서", dd:"3세대 인공지능 알파9 8K" },
+                                        { dt:"인공지능 화질", dd:"<span class='specs on'>있음</span>  (인공지능 화질 프로)" },
+                                        { dt:"얼굴 입체감 강화", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"콘텐츠 맞춤화질", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"인공지능 밝기 조정", dd:"<span class='specs on'>있음</span>  (HDR 컨텐츠 입력시 지원)" },
+                                        { dt:"Dolby Vision IQ", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"FILMMAKER MODE™", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HDR10", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HLG", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HDR효과", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HFR", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"G-Sync호환", dd:"<span class='specs 44n'>있음</span>" },
+                                        { dt:"블랙 기술", dd:"정확한 블랙" },
+                                        { dt:"무한대 명암비", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"시야각", dd:"올레드 광시야각" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "디자인",
+                                    spec : [
+                                        { dt:"슬림 타입", dd:"<span class='specs on'>있음</span> 페이퍼 슬림(일체형)" },
+                                        { dt:"시네마스크린", dd:"<span class='specs on'>있음</span> (4면 시네마 스크린)" },
+                                        { dt:"스탠드 디자인", dd:"아트 퍼니쳐 스텐드" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "사운드",
+                                    spec : [
+                                        { dt:"사운드 채널/출력", dd:"4.2Ch/80W" },
+                                        { dt:"인공지능 사운드", dd:"<span class='specs on'>있음</span> (인공지능 사운드 프로)" },
+                                        { dt:"돌비애트모스", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"LG 사운드싱크(TV음원 → 사운드바(블루투스 활용))", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"블루투스 사운드(모바일 음원 → TV스피커(블루투스 활용))", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"블루투스 서라운드 레디", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"공간인식 사운드+", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"클리어보이스 III", dd:"<span class='specs on'>있음</span> (딥러닝 클리어 보이스)" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "스마트",
+                                    spec : [
+                                        { dt:"인공지능 ThinQ", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"인공지능 홈보드", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"구글 어시스턴트", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"AirPlay2", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"다이렉트 음성인식, 수입자", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"운영체제", dd:"webOS 5.0" },
+                                        { dt:"리모컨", dd:"리모컨'20년 프리미엄 인공지능 리모컨" },
+                                        { dt:"LG 채널", dd:"<span class='specs on'>있음</span>" },
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "부가기능",
+                                    spec : [
+                                        { dt:"갤러리 모드", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"스포츠 알람", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"VRR(Variable Refresh Rate)", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"ALLM(Auto Low Latency Mode)", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"UHD 방송 수신", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"USB (2.0)", dd:"<span class='specs on'>있음</span> (3포트)" },
+                                        { dt:"HDMI", dd:"<span class='specs on'>있음</span> (4포트)" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "에너지절약",
+                                    spec : [
+                                        { dt:"에너지소비효율등급", dd:"비대상" },
+                                        { dt:"정격 소비전력(W)", dd:"1086W" },
+                                        { dt:"일반 소비전력(W)", dd:"비대상" },
+                                        { dt:"ALLM(Auto Low Latency Mode)", dd:"Under 0.5W" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "크기",
+                                    spec : [
+                                        { dt:"스탠드 제외크기(WxHxD)", dd:"1961x1120x49.9mm" },
+                                        { dt:"스탠드 포함크기(WxHxD)", dd:"1,961x1,456x281mm" },
+                                        { dt:"스탠드 제외무게", dd:"42kg" },
+                                        { dt:"스탠드 포함무게", dd:"104kg" },
+                                        { dt:"스탠드 크기(WxD)", dd:"1,961x281mm" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "비고",
+                                    spec : [
+                                        { dt:"비고", dd:"*일부 8K 입력/디코딩 표준이 지원되지 않을 수 있으며, 8K 표준을 지원하기 위하여 추가 장치가 필요할 수 있습니다. 8K로 향상된 이미지는 원본 영상에 따라 차이가 있습니다." }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "기본정보",
+                                    spec : [
+                                        { dt:"품명 및 모델명", dd:"텔레비전 수상기(OLED88ZXKNA)" },
+                                        { dt:"KC 인증 필 유무", dd:"R-R-LGE-OLED88ZXKNA XL090008-19297" },
+                                        { dt:"정격전압", dd:"AC 220-240 V~ 60Hz" },
+                                        { dt:"동일 모델의 출시년월", dd:"2020년 3월" },
+                                        { dt:"제조자", dd:"엘지전자㈜" },
+                                        { dt:"제조국", dd:"한국" },
+                                        { dt:"품질보증기준", dd:"결함&middot;하자 등에 따른 소비자피해에 대해서는 소비자분쟁해결기준(소비자기본법 제 16조)에 따라 보상 가능" },
+                                        { dt:"A/S 책임자와 전화번호", dd:"LG서비스센터 / 1544-7777" }
+                                    ]
+                                })
+                                <!-- print btn -->
+                                <div class="prod-print">
+                                    <button type="button">인쇄하기</button>
+                                </div>
+                                <!-- //print btn -->
+                            </div>
+                            <!-- // spec -->
+                        </div>
+                        <div id="tab4">
+                            <!-- spec -->
+                            <div class="prod-spec-wrap">
+                                @@include('./common/partials/KRP0014.html', {
+                                    title : "스펙 요약정보",
+                                    spec : [
+                                        { li:"TV 종류 : 올레드4" },
+                                        { li:"화면크기 : 222cm" },
+                                        { li:"해상도 : 8K" },
+                                        { li:"스탠드 디자인 : 아트 퍼니쳐 스텐드" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "디스플레이",
+                                    spec : [
+                                        { dt:"화면크기", dd:"222cm" },
+                                        { dt:"TV종류", dd:"올레드" },
+                                        { dt:"디밍 방식", dd:"올레드 픽셀디밍" },
+                                        { dt:"해상도", dd:"8K" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "화질",
+                                    spec : [
+                                        { dt:"인공지능 프로세서", dd:"3세대 인공지능 알파9 8K" },
+                                        { dt:"인공지능 화질", dd:"<span class='specs on'>있음</span>  (인공지능 화질 프로)" },
+                                        { dt:"얼굴 입체감 강화", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"콘텐츠 맞춤화질", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"인공지능 밝기 조정", dd:"<span class='specs on'>있음</span>  (HDR 컨텐츠 입력시 지원)" },
+                                        { dt:"Dolby Vision IQ", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"FILMMAKER MODE™", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HDR10", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HLG", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HDR효과", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"HFR", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"G-Sync호환", dd:"<span class='specs 44n'>있음</span>" },
+                                        { dt:"블랙 기술", dd:"정확한 블랙" },
+                                        { dt:"무한대 명암비", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"시야각", dd:"올레드 광시야각" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "디자인",
+                                    spec : [
+                                        { dt:"슬림 타입", dd:"<span class='specs on'>있음</span> 페이퍼 슬림(일체형)" },
+                                        { dt:"시네마스크린", dd:"<span class='specs on'>있음</span> (4면 시네마 스크린)" },
+                                        { dt:"스탠드 디자인", dd:"아트 퍼니쳐 스텐드" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "사운드",
+                                    spec : [
+                                        { dt:"사운드 채널/출력", dd:"4.2Ch/80W" },
+                                        { dt:"인공지능 사운드", dd:"<span class='specs on'>있음</span> (인공지능 사운드 프로)" },
+                                        { dt:"돌비애트모스", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"LG 사운드싱크(TV음원 → 사운드바(블루투스 활용))", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"블루투스 사운드(모바일 음원 → TV스피커(블루투스 활용))", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"블루투스 서라운드 레디", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"공간인식 사운드+", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"클리어보이스 III", dd:"<span class='specs on'>있음</span> (딥러닝 클리어 보이스)" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "스마트",
+                                    spec : [
+                                        { dt:"인공지능 ThinQ", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"인공지능 홈보드", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"구글 어시스턴트", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"AirPlay2", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"다이렉트 음성인식, 수입자", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"운영체제", dd:"webOS 5.0" },
+                                        { dt:"리모컨", dd:"리모컨'20년 프리미엄 인공지능 리모컨" },
+                                        { dt:"LG 채널", dd:"<span class='specs on'>있음</span>" },
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "부가기능",
+                                    spec : [
+                                        { dt:"갤러리 모드", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"스포츠 알람", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"VRR(Variable Refresh Rate)", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"ALLM(Auto Low Latency Mode)", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"UHD 방송 수신", dd:"<span class='specs on'>있음</span>" },
+                                        { dt:"USB (2.0)", dd:"<span class='specs on'>있음</span> (3포트)" },
+                                        { dt:"HDMI", dd:"<span class='specs on'>있음</span> (4포트)" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "에너지절약",
+                                    spec : [
+                                        { dt:"에너지소비효율등급", dd:"비대상" },
+                                        { dt:"정격 소비전력(W)", dd:"1086W" },
+                                        { dt:"일반 소비전력(W)", dd:"비대상" },
+                                        { dt:"ALLM(Auto Low Latency Mode)", dd:"Under 0.5W" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "크기",
+                                    spec : [
+                                        { dt:"스탠드 제외크기(WxHxD)", dd:"1961x1120x49.9mm" },
+                                        { dt:"스탠드 포함크기(WxHxD)", dd:"1,961x1,456x281mm" },
+                                        { dt:"스탠드 제외무게", dd:"42kg" },
+                                        { dt:"스탠드 포함무게", dd:"104kg" },
+                                        { dt:"스탠드 크기(WxD)", dd:"1,961x281mm" }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "비고",
+                                    spec : [
+                                        { dt:"비고", dd:"*일부 8K 입력/디코딩 표준이 지원되지 않을 수 있으며, 8K 표준을 지원하기 위하여 추가 장치가 필요할 수 있습니다. 8K로 향상된 이미지는 원본 영상에 따라 차이가 있습니다." }
+                                    ]
+                                })
+                                @@include('./common/partials/KRP0014.html', {
+                                    normalType : true,
+                                    title : "기본정보",
+                                    spec : [
+                                        { dt:"품명 및 모델명", dd:"텔레비전 수상기(OLED88ZXKNA)" },
+                                        { dt:"KC 인증 필 유무", dd:"R-R-LGE-OLED88ZXKNA XL090008-19297" },
+                                        { dt:"정격전압", dd:"AC 220-240 V~ 60Hz" },
+                                        { dt:"동일 모델의 출시년월", dd:"2020년 3월" },
+                                        { dt:"제조자", dd:"엘지전자㈜" },
+                                        { dt:"제조국", dd:"한국" },
+                                        { dt:"품질보증기준", dd:"결함&middot;하자 등에 따른 소비자피해에 대해서는 소비자분쟁해결기준(소비자기본법 제 16조)에 따라 보상 가능" },
+                                        { dt:"A/S 책임자와 전화번호", dd:"LG서비스센터 / 1544-7777" }
+                                    ]
+                                })
+                                <!-- print btn -->
+                                <div class="prod-print">
+                                    <button type="button">인쇄하기</button>
+                                </div>
+                                <!-- //print btn -->
+                            </div>
+                            <!-- // spec -->
+                        </div>
                     </div>
                 </section>
             </div>
