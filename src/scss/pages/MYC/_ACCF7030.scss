@@ -89,6 +89,18 @@
             &:first-child {
                 margin-top:0;
             }
+            .inner {
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:38px;
+                    left:33px;
+                    width:8px;
+                    height:8px;
+                    border-radius:50%;
+                    background:#aaa;
+                }
+            }
             @each $state in on, off {
                 $fontColor:transparent;
                 @if $state == on {
@@ -169,6 +181,10 @@
                                         margin-top:0;
                                     }
                                 }
+                                &.open {
+                                    max-height:240px;
+                                    overflow-y:auto;
+                                }
                             }
                             .more-view {
                                 position:absolute;
@@ -177,6 +193,7 @@
                                 padding-right:24px;
                                 color:#767676;
                                 @include font-small;
+                                cursor:pointer;
                                 &::after {
                                     content:' ';
                                     position:absolute;
@@ -187,6 +204,12 @@
                                     margin-top:-10px;
                                     background:url('/lg5-common/images/icons/btn-more-20-gray.svg') no-repeat;
                                     vertical-align:top;
+                                }
+                                &.open {
+                                    color:#EC455A;
+                                    &::after {
+                                        background:url('/lg5-common/images/icons/btn-minus-20-pink.svg') no-repeat;
+                                    }
                                 }
                             }
                             .btn.border {
