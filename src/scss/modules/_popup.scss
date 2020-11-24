@@ -153,7 +153,7 @@
         border-radius:0;
         transform:none !important;
     }
-    .btn-close {
+    > .btn-close {
         position:absolute;
         top:40px;
         right:48px;
@@ -431,6 +431,22 @@
 // 공통 팝업
 .popup-wrap {
     .common-pop {
+        .form-wrap.pop-wide {
+            .forms {
+                .tit {
+                    width:263px;
+                }
+                .conts {
+                    width:calc(100% - 263px);
+                }
+                @include mobile {
+                    .tit, 
+                    .conts {
+                        width:100%;
+                    }
+                }
+            }
+        }
         .sect-wrap {
             margin-top:48px;
             @include mobile {
@@ -451,7 +467,6 @@
                     font-weight:700;
                 }
             }
-            
         }
         // 배송지 관리
         .my-address-wrap {
@@ -731,14 +746,11 @@
                 }
             }
             &.type2 {
-                margin-bottom:16px;
-                @include mobile {
-                    margin-bottom:8px;
-                }
+                margin-bottom:12px;
                 .h2-tit {
                     display:inline-block;
                     padding-right:100px;
-                    @include font-medium;
+                    @include font-small;
                     vertical-align:middle;
                 }
             }

@@ -652,9 +652,6 @@
 .agree-cont-wrap {
     .agree-input {
         margin-top:12px;
-        @include mobile {
-            margin-top:8px;
-        }
     }
     .agree-cont-box {
         height:auto;
@@ -672,13 +669,52 @@
         }
     }
 }
-
 .agree-all-chk {
     font-weight:700;
     + .input-info {
         margin-top:32px;
         @include mobile {
             margin-top:25px;
+        }
+    }
+}
+
+// 큰 타이틀+간격 80px 폼 section
+.form-sections {
+    margin-top:80px;
+    @include mobile {
+        margin-top:60px;
+    }
+    &:first-child {
+        margin-top:0;
+    }
+    .sect-tit {
+        position:relative;
+        margin-bottom:24px;
+        font-size:0;
+        @include mobile {
+            margin-bottom:20px;
+        }
+        .tit {
+            display:inline-block;
+            vertical-align:top;
+            color:#222;
+            @include font-large-1;
+            font-weight:700;
+            @include mobile {
+                font-size:18px;
+                line-height:24px;
+            }
+        }
+        .tooltip-wrap {
+            margin-top:3px;
+            margin-left:4px;
+        }
+    }
+    .agree-all-chk {
+        margin-top:16px;
+        & + .input-info {
+            margin-top:32px;
         }
     }
 }
@@ -1777,7 +1813,7 @@ $input: (chk, rdo);
                 overflow:hidden;
                 max-width:100%;
                 color:#222;
-                @include font-medium;
+                @include font-small;
                 font-weight:500;
                 text-overflow:ellipsis;
                 white-space:nowrap;
@@ -1810,7 +1846,6 @@ $input: (chk, rdo);
             top:34px;
             left:50%;
             overflow:hidden;
-            padding:4px;
             border-radius:4px;
             background:#fff;
             box-shadow:0 4px 12px 0 rgba(0, 0, 0, .15);
@@ -1821,10 +1856,10 @@ $input: (chk, rdo);
                     a {
                         display:block;
                         overflow:hidden;
-                        padding:8px 20px;
+                        padding:12px 24px;
                         border-radius:4px;
                         color:#222;
-                        @include font-medium;
+                        @include font-small;
                         font-weight:500;
                         white-space:nowrap;
                         word-break:break-all;
