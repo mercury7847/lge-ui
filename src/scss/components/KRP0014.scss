@@ -221,13 +221,27 @@
                 }
                 &.big {
                     ul {
-                        margin-top:-16px;
+                        margin:-16px 0 0;
                         li {
+                            position:relative;
                             width:100%;
                             margin-top:16px;
+                            padding:0 12px;
                             color:#222;
                             font-size:16px;
                             line-height:26px;
+                            &:before {
+                                content:' ';
+                                display:block;
+                                position:absolute;
+                                top:12px;
+                                left:0;
+                                width:3px;
+                                height:3px;
+                                border-radius:50%;
+                                background-color:#222;
+                                vertical-align:middle;
+                            }
                             dl {
                                 dd {
                                     font-size:20px;
@@ -242,7 +256,10 @@
                                 display:block;
                                 width:100%;
                                 margin-top:12px;
-                                padding:0;
+                                &:before {
+                                    width:2px;
+                                    height:2px;
+                                }
                                 &:first-child {
                                     margin-top:0;
                                 }
