@@ -12,7 +12,6 @@
     @include mobile {
         width:87.5%;
         padding-top:70px;
-        border-radius:4px;
     }
     .lay-header {
         position:relative; 
@@ -57,6 +56,7 @@
             }
             .btn {
                 margin-left:8px;
+                border-radius:0;
                 &:first-child {
                     margin-left:0;
                 }
@@ -117,13 +117,16 @@
     }
     &.small {
         max-width:444px;
+        .pop-conts {
+            padding-top:24px;
+        }
         @include mobile {
             height:auto;
             width:87.5%;
             left:50% !important;
             top:50%  !important;
             transform:translateX(-50%) translateY(-50%) !important;
-            border-radius:4px;
+            border-radius:8px;
             .pop-header {
                 padding:24px 0 14px;
                 .tit {
@@ -280,6 +283,10 @@
                 padding:17px 0;
                 font-size:17px;
                 line-height:24px;
+                &:first-child:nth-last-child(2),
+                &:first-child:nth-last-child(2) ~ .btn {
+                    width:50%;
+                }
             }
         }
         @include pc {
@@ -661,6 +668,11 @@
             background:#f4f4f4;
             p {
                 @include font-medium;
+                em {
+                    display:block;
+                    margin-top:4px;
+                    font-weight:700;
+                }
                 @include mobile {
                 }
             }
