@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/product-support"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/support/page-visual.html', {
+                'title': '제품 문제해결'
+            })
+
+            <div class="contents support solutions">
+                <div class="">
+                    <div class="">
+                        <div class="">
+
+                        </div>
+                        <div class="">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cont-wrap">
+
+                    <div class="accordion-section ui_accordion">
+                        <ul>
+                            <li class="lists">
+                                <div class="head">
+                                    <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+                                        <h3 class="title">모델명 선택</h3>
+                                        <span class="blind ui_accord_text">내용 더 보기</span>
+                                    </a>
+                                </div>
+                                <div class="accord-cont ui_accord_content">
+                                    <div class="dummy">
+                                        <p>11/20 제품 선택 부분 변경 고도화 필요</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="">
+                        <div></div>
+                    </div>
+
+                    <div class="solutions-wrap">
+                        <form action="" id="submitForm">
+                            <input type="hidden" name="keyword" id="keyword" value="">
+                            <input type="hidden" name="superCategory" id="superCategory" value="">
+                            <input type="hidden" name="category" id="category" value="">
+                            <input type="hidden" name="model" id="model" value="">
+                            <input type="hidden" name="topic" id="topic" value="LCL10005001">
+                            <input type="hidden" name="subTopic" id="subTopic" value="">
+                            <input type="hidden" name="orderBy" id="orderBy" value="most">
+                            <input type="hidden" name="page" id="page" value="1">
+                        </form>
+
+                        <div class="search-wrap">
+                            <div class="input-wrap">
+                                <span class="box">
+                                    <input type="text" name="" id="" placeholder="키워드 검색">
+                                    <span class="cell">
+                                        <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                @@include('./common/support/recommand-product.html')
+                @@include('./common/support/service-menu.html')
+                @@include('./common/support/center-find.html')
+
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>  
+    
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/productSupport/solutions.min.js"></script>
+</body>
+</html> 
