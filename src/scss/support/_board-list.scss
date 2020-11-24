@@ -273,19 +273,21 @@
 
     &.icon-type {
         .list {
+            border-top: 2px solid #222;
             > li {
+                margin-top: 0;
                 a {
                     position:relative;
-                    padding-left:168px;
+                    padding:24px 0 24px 120px;
+                    border-bottom: 1px solid #ddd;
                     &:before {
                         content:'';
                         position:absolute;
-                        left:56px;
+                        left:0;
                         top:50%;
                         width:80px;
                         height:80px;
                         border-radius:100%;
-                        background-color:#ccc;
                         background-repeat:no-repeat;
                         background-size:100%;
                         transform:translateY(-50%);
@@ -305,6 +307,12 @@
                 }
                 &.icon-set a:before {
                     background-image:url('/lg5-common/images/icons/icon-cs-call.png');
+                }
+                &.icon-mail a:before {
+                    background-image:url('/lg5-common/images/icons/icon-service-usage1.svg');
+                }
+                &.icon-phone a:before {
+                    background-image:url('/lg5-common/images/icons/icon-service-usage2.svg');
                 }
             }
         }
