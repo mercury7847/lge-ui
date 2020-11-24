@@ -4,33 +4,20 @@
 	.flag {
 		display:inline-block;
 		height:22px;
-		margin-left:8px;
-		padding-left:8px;
+		margin-left:4px;
 		color:#ec455a;
 		@include font-x-small;
 		line-height:22px;
 		font-weight:700;
-		position: relative;
-		&::before {
-			content: '';
-			display: block;
-			width: 1px;
-			height: 10px;
-			background-color: #ddd;
-			position: absolute;
-			left: 0;
-			top: 50%;
-			transform: translateY(-50%);
-		}
 		&:first-child {
 			margin-left:0;
-			padding-left:0;
-			color: #3b9792;
 		}
-
 		&.gray {
 			border-color:#616161;
 			color:#616161;
+		}
+		&.green {
+			color: #3b9792;
 		}
 		&.end {
 			border-color:#CCCCCC;
