@@ -1,0 +1,91 @@
+<article id="@@popupID" class="popup-wrap full">
+    <header class="pop-header">
+        <h1 class="tit"><span>계약서 발급 신청</span></h1>
+    </header>
+    <section class="pop-conts common-pop">
+        <div class="input-info">
+            <div class="tit-wrap">
+                <h2 class="h2-tit">개인정보 수집/이용 동의(필수)</h2>
+            </div>
+            <div class="agree-cont-wrap">
+                <div class="agree-input">
+                    <span class="chk-wrap">
+                        <input type="checkbox" id="chk2-1" name="chk2-1" checked>
+                        <label for="chk2-1">동의합니다. <br class="mob-only">(동의해야만 발급신청 가능합니다.)</label>
+                    </span>
+                </div>
+                <div class="agree-cont-box">
+                    <p>LG전자 주식회사(이하 '회사'라 합니다.)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.</p>
+                    <br>
+                    <div class="tb_row">
+                        <table>
+                            <caption>개인정보 수집항목, 수집목적, 보유기간 안내</caption>
+                            <colgroup>
+                                <col style="width:33%">
+                                <col style="width:33%">
+                                <col>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">수집항목</th>
+                                    <th scope="col">수집목적</th>
+                                    <th scope="col">보유기간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="al-left">본인확인정보(CI)</td>
+                                    <td class="al-left">이용자 식별 및 본인여부 확인</td>
+                                    <td class="al-left">세션에 저장되어 만료시간 또는 브라우저 종료시점까지 보관 후 파기</td>
+                                </tr>
+                                <tr>
+                                    <td class="al-left">성명, 휴대전화번호, 유선전화번호, 주소, 이메일</td>
+                                    <td class="al-left">제품배송, 제품설치 및 회수, 콜센터 상담운영, 접수 등 계약 이행을 위한 제반업무, 렌탈 정기 유지관리 방문서비스, 알리미 서비스 조회, 케어 서비스 접수, 납부내역 조회, 결제정보 조회 및 변경</td>
+                                    <td rowspan="2" class="al-left">렌탈서비스 해지, 계약종료일, 개인정보 삭제 요구 시 까지 보관 후 파기</td>
+                                </tr>
+                                <tr>
+                                    <td class="al-left">생년월일, 은행명, 계좌정보, 카드명, 카드번호, 납부일</td>
+                                    <td class="al-left">결제 정보 처리, 렌탈료 수납/이체, 계좌 유효성 검증</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    @@include('./common/modules/bullet-list.html', {
+                        "bulletTit" : "단, 수집목적 또는 제공 받은 목적이 달성된 경우에도 상법 등 법령의 규정에 의하여 보존할 필요성이 있는 경우에는 이용자의 개인정보를 보존할 수 있습니다.",
+                        "bulletTxt" : [
+                            "상법 등 법령의 규정에 의하여 보존할 필요성이 있는 경우",
+                            "계약 또는 청약철회 등에 관한 기록 : 5년",
+                            "대금결제 및 재화 등의 공급에 관한 기록 : 5년",
+                            "소비자 불만 또는 분쟁처리에 관한 기록 : 3년",
+                            "정당한 절차에 따라 보유기간을 미리 이용자에게 고지하거나 명시한 경우",
+                            "개별적으로 이용자의 동의를 받은 경우"
+                        ]
+                    })
+                </div>
+            </div>
+            <div class="form-wrap mt-type">
+                <dl class="forms">
+                    <dt class="tit"><label for="ipt-email">계약서를 전송 받을 이메일 주소</label></dt>
+                    <dd class="conts">
+                        <span class="input-wrap block">
+                            <input type="text" id="ipt-email" placeholder="이메일주소 입력">
+                        </span>
+                    </dd>
+                </dl>
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "요청하신 이메일 주소로 계약서 PDF 문서가 발송됩니다.", 
+                        "발송지연이 있을 수 있으므로 잠시 후 확인하시기 바랍니다."
+                    ]
+                })                    
+            </div>
+        </div>
+    </section>
+    <footer class="pop-footer">
+        <div class="btn-group">
+            <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+            <button type="button" class="btn pink"><span>발급신청</span></button>
+        </div>
+    </footer>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
