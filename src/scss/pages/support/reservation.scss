@@ -204,7 +204,12 @@
             }
 
             .engineer-desc{
-                .result-text strong{color:#ec455a;}
+                float:none;
+                max-width:unset;
+                width:100%;
+                .result-text strong{
+                    color:#ec455a;
+                }
             }
 
             .btn-group{margin-top:24px;}
@@ -459,32 +464,43 @@
         }
     }
     /* thumbnail list */
-    .support{
-        .thumnail-check.type2{
+    .thumnail-check.type2{
+        display:flex;
+        flex-flow:wrap;
+        .item{
+            width:20%;
+        }
+        .item.block{
             display:flex;
-            flex-flow:wrap;
-            .item{
-                width:20%;
-            }
-            .item.block{
-                display:flex;
-                align-items:center;
+            align-items:center;
+            width:100%;
 
-                .rdo-wrap{
-                    width:20%;
-                    display: inline-block;
-                }
-                .input-wrap{
-                    width:calc(100% - 22%);
-                    display: inline-block;
-                    margin-top:0;
-                }
+            .rdo-wrap{
+                width:20%;
+                display: inline-block;
             }
-        }   
+            .input-wrap{
+                width:calc(100% - 22%);
+                display: inline-block;
+                margin-top:0;
+            }
+        }
     }
 
     .problem-solve {
         margin-top: 32px;
+    }
+    .problem-solve.type2 {
+        border-radius:8px;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        background-image:url(/lg5-common/images/icons/btn-arrow-right-16.svg);
+        .btn-txt{
+            color:#767676;
+            @include font-small;
+            margin-right:24px;
+        }
     }
     .modal-line-box {
         border: 1px solid #ddd;
@@ -523,6 +539,32 @@
         }
         .process-wrap {
             margin-top:48px;
+        }
+    }
+}
+
+.field-wrap{
+    .field-item.type2{
+        display:flex;
+        justify-content: space-between;
+        margin-top:59px;
+        padding-right:117px;
+    
+        .field-title .tit{
+            margin-right:175px;
+            @include font-medium;
+            margin-top:11px;
+        }
+        .input-wrap{
+            width:calc(100% - 235px);
+
+            textarea{
+                height:120px;
+            }
+
+            .total{
+                color:#aaa;
+            }
         }
     }
 }
