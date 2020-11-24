@@ -204,19 +204,12 @@
     }
 
     .service-history {
-        display: flex;
         mark {
             background-color: transparent;
         }
         .item {
             border: 1px solid #ddd;
             border-radius: 8px;
-            padding: 24px;
-            margin-left: 24px;
-            flex: 1;
-            &:first-child {
-                margin-left: 0;
-            }
         }
         &-title {
             font-size: 18px;
@@ -227,7 +220,6 @@
             margin-bottom: 24px;
         }
         &-list {
-            font-size: 16px;
             margin-top: 16px;
             display: flex;
             &:first-child {
@@ -240,7 +232,6 @@
             }
             dd {
                 flex: 1;
-                margin-left: 30px;
                 ul {
                     text-align: right;
                     li {
@@ -270,6 +261,49 @@
                 }
             }
         }
+        @include pc {
+            font-size: 16px;
+            display: flex;
+            .item {
+                padding: 24px;
+                margin-left: 24px;
+                flex: 1;
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+            &-list {
+                dd {
+                    margin-left: 30px;
+                }
+            }
+        }
+        @include mobile {
+            font-size: 14px;
+            display: block;
+            .item {
+                padding: 20px;
+                margin-top: 12px;
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+            &-title {
+                font-size: 15px;
+                margin-bottom: 12px;
+            }
+            &-list {
+                margin-top: 12px;
+            }
+        }
+    }
+
+    .held-product {
+        padding-left: 22px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #767676;
+        background: url(/lg5-common/images/icons/icon-more-pk-20.svg) no-repeat left center;
     }
 }
 

@@ -48,7 +48,112 @@
             </div>
         </div>
     </div>
-        <div class="list-count" id="totalCount">총 59개</div>
+    <div class="list-count" id="totalCount">총 59개</div>
+</div>
+<!-- // DOM -->  
+</xmp>
+</div>
+<!-- // 가이드 내용 -->
+
+<!-- 가이드 내용 -->
+<h2 class="h2_guide">2. 좌/우 filter DOM 순서 변경 필요한 경우</h2>
+<div class="guide_wrap">
+    <div class="list-sorting">
+        <div class="sort-area left">
+            <div class="sort-list">
+                <div class="sort-select-wrap">
+                    <select class="ui_selectbox" id="select2" title="이벤트 상태 선택">
+                        <option value="event_state_val_1">진행중인 이벤트</option>
+                        <option value="event_state_val_2">종료된 이벤트</option>
+                        <option value="event_state_val_3">당첨자 발표</option>
+                    </select>
+                </div>
+                <div class="sort-select-wrap">
+                    <select class="ui_selectbox" id="select3" title="이벤트 구분 선택">
+                        <option value="event_section_val_1">전체</option>
+                        <option value="event_section_val_2">온라인</option>
+                        <option value="event_section_val_3">매장</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="sort-area">
+            <div class="sort-list">
+                <div class="sort-select-wrap">
+                    <select class="ui_selectbox" id="select1" title="정렬 옵션 선택">
+                        <option value="order_1">최신순</option>
+                        <option value="order_2">마감순</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="list-sorting">
+        <div class="sort-area left">
+            <p class="sort-tit">연차별 납부내역 조회</p>
+        </div>
+        <div class="sort-area">
+            <div class="sort-list">
+                <div class="sort-select-wrap">
+                    <select class="ui_selectbox" id="select1" title="조회할 연차 선택">
+                        <option value="">전체</option>
+                        <option value="">1년차</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d_desc code">
+<xmp class="prettyprint linenums javascript"><!-- DOM -->
+<div class="list-sorting">
+    <div class="sort-area left"> <!-- left floating -->
+        <div class="sort-list">
+            <div class="sort-select-wrap">
+                <select class="ui_selectbox" id="select2" title="이벤트 상태 선택">
+                    <option value="event_state_val_1">진행중인 이벤트</option>
+                    <option value="event_state_val_2">종료된 이벤트</option>
+                    <option value="event_state_val_3">당첨자 발표</option>
+                </select>
+            </div>
+            <div class="sort-select-wrap">
+                <select class="ui_selectbox" id="select3" title="이벤트 구분 선택">
+                    <option value="event_section_val_1">전체</option>
+                    <option value="event_section_val_2">온라인</option>
+                    <option value="event_section_val_3">매장</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="sort-area"> <!-- right floating -->
+        <div class="sort-list">
+            <div class="sort-select-wrap">
+                <select class="ui_selectbox" id="select1" title="정렬 옵션 선택">
+                    <option value="order_1">최신순</option>
+                    <option value="order_2">마감순</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="list-sorting">
+    <div class="sort-area left">
+        <p class="sort-tit">연차별 납부내역 조회</p>
+    </div>
+    <div class="sort-area">
+        <div class="sort-list">
+            <div class="sort-select-wrap">
+                <select class="ui_selectbox" id="select1" title="조회할 연차 선택">
+                    <option value="">전체</option>
+                    <option value="">1년차</option>
+                </select>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- // DOM -->  
 </xmp>
