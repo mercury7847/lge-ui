@@ -190,6 +190,10 @@
                     width:100%;
                     height:auto;
                     margin-bottom:32px;
+                    
+                    img{
+                        border-radius:10px;
+                    }
                 }
 
                 .engineer-desc{
@@ -495,12 +499,13 @@
         display:flex;
         justify-content: space-between;
         align-items: center;
-        background-image:url(/lg5-common/images/icons/btn_arrow_right_16.svg);
-        background-size:16px;
+        background-image:none;
         .btn-txt{
             color:#767676;
             @include font-small;
-            margin-right:24px;
+            padding-right:24px;
+            background:url(/lg5-common/images/icons/btn_arrow_right_16.svg) right center no-repeat;
+            background-size:16px;
         }
     }
     .modal-line-box {
@@ -540,6 +545,81 @@
         }
         .process-wrap {
             margin-top:48px;
+        }
+    }
+
+    @media (max-width: 767px){
+        .rdo-wrap-list{
+            justify-content: space-between;
+        }
+        .rdo-wrap-list .rdo-wrap.btn-type2,
+        .thumnail-check.type2 .item{
+            width:48%;
+        }
+        .rdo-wrap-list .rdo-wrap.btn-type2 input + label,
+        .rdo-wrap-list .rdo-wrap-list button{
+            min-width:unset;width:100%;
+        }
+
+        .problem-solve.type2{
+            justify-content: unset;
+            flex-flow:column;
+            align-items:baseline;
+
+            .solve-btn-txt-area{
+                margin-top:25px;
+            }
+        }
+
+        .field-wrap .field-item.type2{
+            flex-flow:column;
+            padding-right:0;
+
+            .input-wrap{
+                width:100%;
+            }
+        }
+
+        .thumnail-check.type2 .item.block{
+            flex-flow:column;
+            align-items: baseline;
+
+            .rdo-wrap{
+                width:auto;
+                margin-bottom:12px;
+            }
+            .input-wrap{
+                width:100%;
+            }
+        }
+
+        .engineer-to-visit.type2{
+            flex-flow:column;
+            padding-top:0;
+            
+            .engineer-profile{
+                width:100%;
+                flex-flow:initial;
+                margin-top:0;
+                height:auto;
+                padding:0 0 0 6%;
+
+                .engineer-img{
+                    width:42%;
+                    margin-bottom:0;
+                    padding:5% 0;
+                }
+            }
+
+            .engineer-desc{
+                margin-top:40px;
+                margin-left:0;
+                text-align:center;
+
+                .select-engineer .btn{
+                    width:auto;
+                }
+            }
         }
     }
 }
