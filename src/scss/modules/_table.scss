@@ -1,4 +1,13 @@
 /* 가로형 테이블 */
+.tb-scroll {
+    margin:0 -16px;
+    padding:0 16px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    table {
+        white-space:nowrap;
+    }
+}
 .tb_row {
     table {
         width: 100%;
@@ -70,15 +79,6 @@
                     border-left:none;
                 }
             }
-        }
-    }
-    &.scroll {
-        margin:0 -16px;
-        padding:0 16px;
-        overflow-x:auto;
-        -webkit-overflow-scrolling:touch;
-        table {
-            white-space:nowrap;
         }
     }
     &.board-type {
