@@ -2,7 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTC/UTC"],
-        pageJS: ["caresolution/requestRental", "caresolution/addressManagement"]
+        pageJS: ["caresolution/requestRental", "caresolution/addressManagement", "caresolution/caresolutionInfo"]
     })
 <body>
     <div class="wrap">
@@ -54,7 +54,7 @@
                                             },
                                             {
                                                 "flags" : "<span class='flag'><span class='blind'>제품타입</span>케어십</span>",
-                                                "disabled" : "disabled",
+                                                "disabled" : "",
                                                 "check" : {
                                                     "id" : "chk-select02",
                                                     "disabled" : "disabled",
@@ -721,7 +721,7 @@
                                 <h3 class="sub-title">청약 정보</h3>
                                 <div class="gray-box item-info">
                                     <ul class="item-list">
-                                        <li>
+                                        <li class="" data-item-id="A23134124">
                                             <span class="item-subtit">렌탈(케어솔루션)</span>
                                             <strong class="item-tit">LG TROMM 스타일러 블랙에디션</strong>
                                             <div class="item-spec">
@@ -729,7 +729,15 @@
                                                 <span>월 61,900원</span>
                                             </div>
                                         </li>
-                                        <li class="item-disabled"><!-- disabled -->
+                                        <li class="" data-item-id="B23134124">
+                                            <span class="item-subtit">렌탈(케어솔루션)</span>
+                                            <strong class="item-tit">LG TROMM 스타일러 블랙에디션</strong>
+                                            <div class="item-spec">
+                                                <span>S5MBR</span>
+                                                <span>월 61,900원</span>
+                                            </div>
+                                        </li>
+                                        <li class="item-disabled" data-item-id="C23134124"><!-- disabled -->
                                             <span class="item-subtit">렌탈(케어솔루션)</span>
                                             <strong class="item-tit">LG TROMM 스타일러 블랙에디션</strong>
                                             <div class="item-spec">

@@ -38,7 +38,7 @@
 
     var creditInquireButton;
 
-    var requestInfoBlock;
+    var requestInfoBlock, requestInfoY;
 
     var step1Block, step2Block, step3Block;
     var step1Validation, step2Validation, cardValidation, bankValidation;
@@ -74,12 +74,12 @@
         step2Block = $('.requestRentalForm ul li:nth-child(2)');
         step3Block = $('.requestRentalForm ul li:nth-child(3)');
 
-        requestInfoBlock = new CareCartInfo('div.col-right', '.requestRentalForm');
-        // requestInfoY = requestInfoBlock.offset().top;
-        // if(!vcui.detect.isMobile){
-        //     requestInfoBlock.data('infoHidden', true);
-        //     requestInfoBlock.find('.item-info').hide();
-        // }
+        requestInfoBlock = $('.col-right');
+        requestInfoY = requestInfoBlock.offset().top;
+        if(!vcui.detect.isMobile){
+            requestInfoBlock.data('infoHidden', true);
+            requestInfoBlock.find('.item-info').hide();
+        }
 
         $('.agree-box').vcCheckboxAllChecker();
         requestAgreeChecker = $('.agree-box').vcCheckboxAllChecker('instance');
@@ -396,6 +396,51 @@
                 }
             }
         });
+
+        if(!vcui.detect.isMobile){
+            $(window).on('scroll', function(e){
+                setScrollMoved();
+            });
+            setScrollMoved();
+        }
+    }
+
+    function setScrollMoved(){
+        var winwidth = $(window).width();
+        if(winwidth > 1024){
+            var scrolltop = $(window).scrollTop();
+            if(scrolltop > requestInfoY-54){
+                if(!requestInfoBlock.hasClass('fixed')) requestInfoBlock.addClass('fixed');
+    
+                var formy = $('.requestRentalForm').offset().top;
+                var isHidden = requestInfoBlock.data('infoHidden');
+                if(scrolltop > formy){
+                    if(isHidden){
+                        requestInfoBlock.data('infoHidden', false);
+                        requestInfoBlock.find('.item-info').slideDown();
+                    }
+                } else{
+                    if(!isHidden){
+                        requestInfoBlock.data('infoHidden', true);
+                        requestInfoBlock.find('.item-info').slideUp();
+                    }
+                }
+
+                var footery = -scrolltop + $('footer').first().offset().top - 100;
+                var infoheight = requestInfoBlock.find('.info-area').outerHeight(true);
+                if(footery < infoheight){
+                    requestInfoBlock.find('.info-area').css({y:footery - infoheight})
+                } else{
+                    requestInfoBlock.find('.info-area').css({y:0})
+                }
+            } else{
+                if(requestInfoBlock.hasClass('fixed')) requestInfoBlock.removeClass('fixed');
+            }
+        } else{
+            if(requestInfoBlock.hasClass('fixed')) requestInfoBlock.removeClass('fixed');
+
+            requestInfoBlock.find('.item-info').show();
+        }
     }
 
     function setNextStep(){
@@ -519,36 +564,14 @@
                 });
                 setInputData('installAbled', 'Y');
             } else{
-                if(result.data.productStatus){
-                    for(var str in result.data.productStatus){
-                        var modelID = result.data.productStatus[str].modelID;
-                        var installAbled = result.data.productStatus[str].installAbled;
-                        var listItem = $('.order-list .order-item[data-item-id=' + modelID + ']');
-                        if(installAbled == "Y"){
-                            $(listItem).removeClass('disabled');
-                        } else{
-                            if(!$(listItem).hasClass('disabled')) $(listItem).addClass('disabled');
-                            $(listItem).find('.disabled-message p').text(result.data.productStatus[str].availableMessage);
-                            requestInfoBlock.setItemInfoDisabled(modelID, true)
-                        }
-                    }
-
-                    requestInfoBlock.updatePaymentInfo(result.data.productPriceInfo);
-                }
-                
                 lgkorUI.confirm(result.data.alert.desc, {
-                    typeClass: "type2",
                     title: result.data.alert.title,
                     cancelBtnName: result.data.alert.leftBtnName,
                     okBtnName: result.data.alert.rightBtnName,
-                    cancel: result.data.alert.leftUrl && result.data.alert.leftUrl != "" ? function(){
-                        location.href = result.data.alert.leftUrl;
-                    } : "",
-                    ok: result.data.alert.rightUrl && result.data.alert.rightUrl != "" ? function(){
-                        location.href = result.data.alert.rightUrl;
-                    } : ""
+                    ok: function(){
+                        location.href = result.data.alert.rightUrl
+                    }
                 });
-
                 setInputData('installAbled', 'N');
             } 
         });

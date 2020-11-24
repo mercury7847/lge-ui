@@ -173,6 +173,11 @@ var CareCartInfo = (function() {
 
             //청약하기 버튼
             self.$subscriptionButton = self.$agreement.find('div.btn-area button');
+            
+            if(!vcui.detect.isMobile){
+                self.$cartContent.data('infoHidden', true);
+                self.$itemInfo.hide();
+            }
         },
         
         _bindEvents: function() {
