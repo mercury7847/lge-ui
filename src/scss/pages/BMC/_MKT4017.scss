@@ -16,11 +16,6 @@
     dl {
         padding-top:2px;
         font-size: 0;
-        @include mobile {
-            &:first-child {
-                padding-top:40px;
-            }
-        }
         dt,dd {
             display: inline-block;
             font-size:14px;
@@ -30,6 +25,15 @@
             margin-bottom:4px;
             margin-right: 8px;
             font-weight:700;
+        }
+        @include mobile {
+            &:first-child {
+                padding-top:40px;
+            }
+            display: flex;
+            dd {
+                flex: 1;
+            }
         }
     }
     ul {
@@ -83,5 +87,22 @@
                 }
             }
         }
+    }
+    &.type-A {
+        padding-top: 64px;
+        ul {
+            margin-top: 16px;
+        }
+    }
+}
+
+.category-select {
+    margin-top: 24px;
+}
+
+.nodata {
+    margin-top: 24px;
+    img {
+        max-width: 100%;
     }
 }

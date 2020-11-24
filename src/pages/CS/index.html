@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=700, user-scalable=no">
+<title>LG 5.0 HTML List</title>
+<style type="text/css">
+	body{-webkit-text-size-adjust: none;-moz-text-size-adjust: none;-ms-text-size-adjust: none;font-family:'Malgun Gothic', verdana;}
+	h1 {text-align:center;font-family:verdana;font-size:30px;margin:0;padding:0;}
+	h2 {text-align:center;font-family:verdana;font-size:20px;margin:0;padding:20px 0 10px;}
+
+	/* tables */
+	table {table-layout:fixed;font-family:arial;margin:10px 0 15px;font-size: 14px;width: 100%;text-align: left;border-collapse: collapse;border:1px solid #cdcdcd;}
+	table thead tr th, table tfoot tr th {background-color: #e7ecf8;border: 1px solid #fff;font-size: 11px;padding:4px;border:1px solid #cdcdcd;text-align:center;}
+	table thead tr .header {background-repeat: no-repeat;background-position: center right;cursor: pointer;}
+	table tbody td {color: #3d3d3d;padding: 4px;background-color: #fff;vertical-align: top;border:1px solid #cdcdcd;}
+	table tbody tr:hover td {background-color:yellow}
+	table thead tr th, 
+	table tbody tr td {padding:5px 6px;}
+	table tbody tr td {line-height:150%;}
+	table tbody tr td:first-child,
+	table tbody tr td:nth-child(7) {font-weight:bold; text-align:center;}
+	table tbody tr td a {color:#000;}
+
+	.wrap {margin:0 auto;padding:30px 0;}
+	.box {position:relative;width:1460px;margin:0 auto;padding:10px 40px 0 0;font-size:11px;}
+	.box a {color:#000;display:inline-block;padding:0 10px;margin-top:5px;border:2px solid #ddd;text-decoration:none;}
+	
+	td.links {font-size:0;color:#fff;text-align:center;overflow:hidden;}
+	td.links a {font-size:10px;line-height:150%;color:#000;display:inline-block;width:58px;padding:0;margin:2px;border:0;background:#eee;text-decoration:none;text-align:center;overflow:hidden;}
+
+	tr td > .edit {display:block;color:#767676;}
+	tr td > .edit:after {content: '작업 중'}
+	tr td > .edit.endbefore {color:orange}
+	tr td > .edit.endbefore:after {content:'작업 완료';}
+	tr td > .edit.end {color:red}
+	tr td > .edit.end:after {content:'개발 전달 완료';}
+	tr td > .edit.after {color:green;}
+	tr td > .edit.after:after {content:'수정 중';}
+</style>
+</head>
+<body>
+<div class="wrap">
+	<h1>한국 통합 사이트 구축</h1>
+	
+	<div class="box">
+		<h2>CS</h2>
+		<table>
+			<colgroup>
+				<col width="100px" />
+				<col width="80px" />
+				<col width="130px" />
+				<col width="" />
+				<col width="" />
+				<col width="100px" />
+				<col width="100px" />
+				<col width="" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Depth1</th>
+					<th>Depth2</th>
+					<th>Depth3</th>
+					<th>Depth4</th>
+					<th>Page</th>
+					<th>status</th>
+					<th>비고</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- 
+					span.edit 			작업중
+					span.edit.endbefore 작업 완료 및 개발 전달 전
+					span.edit.end 		개발 전달 완료
+					span.edit.after 	개발 전달 완료 후 수정 중
+				 -->
+				<tr>
+					<td>Popup</td>
+					<td></td>
+					<td>팝업 모음</td>
+					<td></td>
+					<td></td>
+					<td class="links">/html/support/modal/index.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6001</td>
+					<td>고객지원</td>
+					<td>메인</td>
+					<td></td>
+					<td></td>
+					<td class="links">/html/support/CSRF6001.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<!-- 제품 지원 -->
+				<tr>
+					<td>CSRF6002</td>
+					<td></td>
+					<td>제품 사용 지원</td>
+					<td>제품 문제 해결</td>
+					<td>목록</td>
+					<td class="links">/html/support/CSRF6002.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6003</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>상세</td>
+					<td class="links">/html/support/CSRF6003.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6006</td>
+					<td></td>
+					<td></td>
+					<td>동영상 가이드</td>
+					<td>목록</td>
+					<td class="links">/html/support/CSRF6006.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6007</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>상세</td>
+					<td class="links">/html/support/CSRF6007.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6008</td>
+					<td></td>
+					<td></td>
+					<td>다운로드 자료실</td>
+					<td></td>
+					<td class="links">/html/support/CSRF6008.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6010</td>
+					<td></td>
+					<td></td>
+					<td>카드뉴스</td>
+					<td>목록</td>
+					<td class="links">/html/support/CSRF6010.html</td>
+					<td><span class="edit"></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6011</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>상세</td>
+					<td class="links">/html/support/CSRF6011.html</td>
+					<td><span class="edit"></span></td>
+					<td>퍼블리싱 완료 (2020.11.17)</td>
+				</tr>
+				<tr>
+					<td>CSRF6012</td>
+					<td></td>
+					<td></td>
+					<td>가전제품 생활의 팁</td>
+					<td>목록</td>
+					<td class="links">/html/support/CSRF6012.html</td>
+					<td><span class="edit"></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6013</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>상세</td>
+					<td class="links">/html/support/CSRF6013.html</td>
+					<td><span class="edit"></span></td>
+					<td>퍼블리싱 완료 (2020.11.17), 평가하기 작업 보류</td>
+				</tr>
+				<tr>
+					<td>CSRF6075</td>
+					<td></td>
+					<td>제품지원상세</td>
+					<td></td>
+					<td></td>
+					<td class="links">/html/support/CSRF6075.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<!-- // 제품 지원 -->
+				<!-- 제품 상담/문의 -->
+				<tr>
+					<td>CSRF6014</td>
+					<td></td>
+					<td>서비스 상담</td>
+					<td>이메일 문의</td>
+					<td>신청</td>
+					<td class="links">/html/support/CSRF6014.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6015</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>완료</td>
+					<td class="links">/html/support/CSRF6015.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6021</td>
+					<td></td>
+					<td></td>
+					<td>전화상담 예약</td>
+					<td>신청</td>
+					<td class="links">/html/support/CSRF6016.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6022</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>완료</td>
+					<td class="links">/html/support/CSRF6017.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6018</td>
+					<td></td>
+					<td></td>
+					<td>원격상담 예약</td>
+					<td>신청</td>
+					<td class="links">/html/support/CSRF6018.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6019</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>완료</td>
+					<td class="links">/html/support/CSRF6019.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6021</td>
+					<td></td>
+					<td></td>
+					<td>영상상담 예약</td>
+					<td>신청</td>
+					<td class="links">/html/support/CSRF6021.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6022</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>완료</td>
+					<td class="links">/html/support/CSRF6022.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6023</td>
+					<td></td>
+					<td></td>
+					<td>상담결과 조회/변경</td>
+					<td>접수번호/휴대폰번호 입력</td>
+					<td class="links">/html/support/CSRF6023.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6024</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>이메일 접수 조회 (단건)</td>
+					<td class="links">/html/support/CSRF6024.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6025</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>서비스 접수 조회 (단건)</td>
+					<td class="links">/html/support/CSRF6025.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6026</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>서비스 접수 조회 (복수)</td>
+					<td class="links">/html/support/CSRF6026.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>예약 접수 취소(POPUP)</td>
+					<td class="links"></td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>예약 접수 예약일 변경</td>
+					<td class="links"></td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<!-- // 제품 상담/문의 -->
+				<!-- 서비스 예약 -->
+				<tr>
+					<td>CSRF6028</td>
+					<td></td>
+					<td>서비스 예약</td>
+					<td>출장 서비스 예약</td>
+					<td>신청</td>
+					<td class="links">/html/support/CSRF6028.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6029</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>완료</td>
+					<td class="links">/html/support/CSRF6029.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6032</td>
+					<td></td>
+					<td></td>
+					<td>제품 설치/철거 예약</td>
+					<td>신청</td>
+					<td class="links">/html/support/CSRF6032.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6033</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>완료</td>
+					<td class="links">/html/support/CSRF6033.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<!-- // 서비스 예약 -->
+				<!-- 센터/매장 찾기 -->
+				<tr>
+					<td>CSRF6036</td>
+					<td></td>
+					<td>센터/매장 찾기</td>
+					<td>센터찾기</td>
+					<td>검색/결과</td>
+					<td class="links">/html/support/CSRF6036.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6037</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>서비스센터 상세</td>
+					<td class="links">/html/support/CSRF6037.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6038</td>
+					<td></td>
+					<td></td>
+					<td>센터찾기 (스마일전용)</td>
+					<td>검색/결과</td>
+					<td class="links">/html/support/CSRF6038.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6039</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>서비스센터 상세</td>
+					<td class="links">/html/support/CSRF6039.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6030</td>
+					<td></td>
+					<td></td>
+					<td>센터방문 예약</td>
+					<td>신청</td>
+					<td class="links">/html/support/CSRF6030.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6031</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>완료</td>
+					<td class="links">/html/support/CSRF6031.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<!-- // 센터/매장 찾기 -->
+				<!-- 고객의견 -->
+				<tr>
+					<td>CSRF6054</td>
+					<td></td>
+					<td>고객의 소리</td>
+					<td>칭찬합니다</td>
+					<td>작성</td>
+					<td class="links">/html/support/CSRF6054.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6055</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>완료</td>
+					<td class="links">/html/support/CSRF6055.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6056</td>
+					<td></td>
+					<td></td>
+					<td>개선해주세요</td>
+					<td>작성</td>
+					<td class="links">/html/support/CSRF6056.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6057</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>완료</td>
+					<td class="links">/html/support/CSRF6057.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6060</td>
+					<td></td>
+					<td></td>
+					<td>나의 글 보기</td>
+					<td>접수번호/휴대폰번호 입력</td>
+					<td class="links">/html/support/CSRF6060.html</td>
+					<td><span class=""></span></td>
+					<td>퀵메뉴 포함</td>
+				</tr>
+				<tr>
+					<td>CSRF6061</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>목록</td>
+					<td class="links">/html/support/CSRF6061.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6062</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>상세</td>
+					<td class="links">/html/support/CSRF6062.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6063</td>
+					<td></td>
+					<td></td>
+					<td>칭찬 글 보기</td>
+					<td>목록</td>
+					<td class="links">/html/support/CSRF6063.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6064</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>상세</td>
+					<td class="links">/html/support/CSRF6064.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6058</td>
+					<td></td>
+					<td></td>
+					<td>경영진에게 제안</td>
+					<td>작성</td>
+					<td class="links">/html/support/CSRF6058.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6059</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>완료</td>
+					<td class="links">/html/support/CSRF6059.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<!-- // 고객의견 -->
+				<!-- 서비스 안내 -->
+				<tr>
+					<td>CSRF6045</td>
+					<td></td>
+					<td>공지사항</td>
+					<td>서비스 뉴스</td>
+					<td>목록</td>
+					<td class="links">/html/support/CSRF6045.html</td>
+					<td><span class="edit"></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6046</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>상세</td>
+					<td class="links">/html/support/CSRF6046.html</td>
+					<td><span class="edit"></span></td>
+					<td>퍼블리싱 완료 (2020.11.16)</td>
+				</tr>
+				<tr>
+					<td>CSRF6052</td>
+					<td></td>
+					<td></td>
+					<td>공지사항</td>
+					<td>목록</td>
+					<td class="links">/html/support/CSRF6052.html</td>
+					<td><span class="edit"></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6053</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>상세</td>
+					<td class="links">/html/support/CSRF6053.html</td>
+					<td><span class="edit"></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6047</td>
+					<td></td>
+					<td></td>
+					<td>요금/보증기간 안내</td>
+					<td></td>
+					<td class="links">/html/support/CSRF6047.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSRF6051</td>
+					<td></td>
+					<td></td>
+					<td>재생부품 가격 공지</td>
+					<td></td>
+					<td class="links">/html/support/CSRF6051.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<!-- // 서비스 안내 -->
+				<!-- 기타 -->
+				<tr>
+					<td>CSRF6070</td>
+					<td></td>
+					<td>기타</td>
+					<td>App Gate (Mobile 전용) intro</td>
+					<td></td>
+					<td class="links">/html/support/CSRF6070.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSTF8010</td>
+					<td></td>
+					<td></td>
+					<td>App Gate (Mobile 전용)</td>
+					<td></td>
+					<td class="links">/html/support/CSTF8010.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSTF8100</td>
+					<td></td>
+					<td></td>
+					<td>QR코드 랜딩 페이지 (Mobile 정용)</td>
+					<td></td>
+					<td class="links">/html/support/CSTF8100.html</td>
+					<td><span class=""></span></td>
+					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
+				</tr>
+				<tr>
+					<td>CSTF8200</td>
+					<td></td>
+					<td></td>
+					<td>접수 제품 및 증상 / 설치 환경 등록 (mobile 전용)</td>
+					<td></td>
+					<td class="links">/html/support/CSTF8200.html</td>
+					<td><span class=""></span></td>
+					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
+				</tr>
+				<tr>
+					<td>CSTF8300</td>
+					<td></td>
+					<td></td>
+					<td>접수 만족도 설문 참여 (mobile 전용)</td>
+					<td></td>
+					<td class="links">/html/support/CSTF8300.html</td>
+					<td><span class=""></span></td>
+					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
+				</tr>
+				<tr>
+					<td>CSTF8400</td>
+					<td></td>
+					<td></td>
+					<td>콘텐츠만족도조사</td>
+					<td></td>
+					<td class="links">/html/support/CSTF8400.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSTF8500</td>
+					<td></td>
+					<td></td>
+					<td>엔지니어 사진 등록 (스마일 전용)</td>
+					<td></td>
+					<td class="links">/html/support/CSTF8500.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSTF8800</td>
+					<td></td>
+					<td></td>
+					<td>공기청정필터신청</td>
+					<td>신청</td>
+					<td class="links">/html/support/CSTF8800.html</td>
+					<td><span class=""></span></td>
+					<td>공통영역 제외 : 상단 영역, 개인정보 동의 영역, 하단 영역</td>
+				</tr>
+				<tr>
+					<td>CSTF8810</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>완료</td>
+					<td class="links">/html/support/CSTF8810.html</td>
+					<td><span class=""></span></td>
+					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
+				</tr>
+				<tr>
+					<td>CSTF8820</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>조회</td>
+					<td class="links">/html/support/CSTF8820.html</td>
+					<td><span class=""></span></td>
+					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
+				</tr>
+				<tr>
+					<td>CSTF8830</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>상세</td>
+					<td class="links">/html/support/CSTF8830.html</td>
+					<td><span class=""></span></td>
+					<td>공통영역 제외 : 상단 영역, 하단 영역</td>
+				</tr>
+				<tr>
+					<td>CSTF8840</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>안내 팝업</td>
+					<td class="links">/html/support/CSTF8840.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>CSTF8850</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>미적용모델안내 팝업</td>
+					<td class="links">/html/support/CSTF8850.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>엔지니어 정보 확인 (mobile 전용)</td>
+					<td></td>
+					<td class="links">/html/support/.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>메일폼</td>
+					<td>메일 기본 폼 (inline-style 변환 전)</td>
+					<td class="links">/html/support/email/CSTF8700_form.html</td>
+					<td><span class=""></span></td>
+					<td><a href="https://htmlemail.io/inline/" target="_blank">https://htmlemail.io/inline/</a> 에서 inline-style로 변환</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>경영진에게제안_수신</td>
+					<td class="links">/html/support/email/CSTF8700_management_reception.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>경영진에게제안_접수</td>
+					<td class="links">/html/support/email/CSTF8700_management_receipt.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>드라이버소프트웨어</td>
+					<td class="links">/html/support/email/CSTF8700_driver.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>qna_접수</td>
+					<td class="links">/html/support/email/CSTF8700_qna.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>소모품샵_주문완료</td>
+					<td class="links">/html/support/email/CSTF8700_exables.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>이메일문의_사용자</td>
+					<td class="links">/html/support/email/CSTF8700_user.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>이메일문의_관리자</td>
+					<td class="links">/html/support/email/CSTF8700_admin.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>일일접수통계</td>
+					<td class="links">/html/support/email/CSTF8700_statistics.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>신규모델등록알림</td>
+					<td class="links">/html/support/email/CSTF8700_newmodel.html</td>
+					<td><span class=""></span></td>
+					<td></td>
+				</tr>
+				<!-- // 기타 -->
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+
+$('table tbody tr td').each(function() {
+	var obj = $(this);
+	// 링크 걸어 주기
+	if(obj.hasClass('links') || obj.hasClass('uxpin')) {
+		var txt = obj.text();
+		if(txt!='') {
+			var linkArr = txt.split("|");
+			var localeArr = obj.data("locale") ? obj.data("locale").toString().split("|") : null;
+			var htmlStr = "";
+			if (obj.hasClass('uxpin')) {
+				for(var i=0; i<linkArr.length; i++){
+					htmlStr += '<a href="'+$.trim(linkArr[i])+'" class="uxpin" target="_blank">uxpin</a>';
+				}
+				obj.html(htmlStr);
+			} else {
+				for(var i=0; i<linkArr.length; i++){
+					var test = linkArr[i].split("/");
+					var test1 = test[test.length - 1].split('.')[0];
+					htmlStr += '<a href="'+$.trim(linkArr[i])+'" target="_blank">'+ (localeArr !== null ? localeArr[i].toString() : test1)+'</a>';
+				}
+				obj.html(htmlStr);
+			}
+		}
+	}
+});
+</script>
+
+</body>
+</html>
