@@ -8,15 +8,17 @@
             display:inline-block;
             width:48px;
             height:48px;
-            margin-right:24px;
+            margin:0 12px;
             vertical-align:middle;
             background:url('/lg5-common/images/icons/icon-04-48.svg') no-repeat;
         }
         p {
             display:inline-block;
+            margin:0 12px;
             color:#222;
             @include font-large-2;
             vertical-align:middle;
+            word-break:keep-all;
             em {
                 font-weight:700;
                 &.red {
@@ -28,6 +30,7 @@
     .desc {
         margin-top:8px;
         color:#222;
+        word-break:keep-all;
         @include font-medium;
     }
 }
