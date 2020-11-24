@@ -198,23 +198,32 @@
         .infos {
             @include clearfix;
             > li {
-                float:left;
                 color:#767676;
-                font-size:14px;
-                line-height:24px;
-                & + li {
-                    position:relative;
-                    margin-left:8px;
-                    padding-left:9px;
-                    &:before {
-                        content:'';
-                        position:absolute;
-                        left:0;
-                        top:6px;
-                        width:1px;
-                        height:14px;
-                        background:#ddd;
+            }
+            @include pc {
+                > li {
+                    float:left;
+                    font-size:14px;
+                    line-height:24px;
+                    & + li {
+                        margin-left:8px;
+                        padding-left:9px;
+                        position:relative;
+                        &:before {
+                            content:'';
+                            position:absolute;
+                            left:0;
+                            top:6px;
+                            width:1px;
+                            height:14px;
+                            background:#ddd;
+                        }
                     }
+                }
+            }
+            @include mobile {
+                > li {
+                    font-size: 13px;
                 }
             }
         }
@@ -245,7 +254,7 @@
                 // padding:24px 20px;
             }
             .flag-wrap {
-                margin-bottom:8px;
+                margin-bottom:4px;
             }
             .tit {
                 font-size:14px;
@@ -253,6 +262,7 @@
                 @include textEllipsisClamp(2);
             }
             .desc {
+                margin-top: 12px;
                 font-size:12px;
                 line-height:16px;
             }
@@ -320,12 +330,12 @@
             .list {
                 > li {
                     a {
-                        padding-left:72px;
+                        padding:16px 0 16px 80px;
                         &:before {
-                            left:20px;
-                            top:50px;
-                            width:40px;
-                            height:40px;
+                            left:0;
+                            top:16px;
+                            width:60px;
+                            height:60px;
                             transform:translateY(0);
                         }
                     }
