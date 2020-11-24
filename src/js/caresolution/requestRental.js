@@ -446,7 +446,7 @@
             console.log("step1Validation.validate(); Success!!!");
 
             var data = getInputData('creditInquire');
-            console.log("creditInquire :", creditInquire);
+            console.log("creditInquire :", data);
             completed = data === "Y" ? true : false;
             if(!completed){
                 lgkorUI.alert("", {
@@ -469,7 +469,7 @@
             console.log("step2Validation.validate(); Success!!!");
 
             var data = getInputData('installAbled');
-            console.log("installAbled :", installAbled);
+            console.log("installAbled :", data);
             completed= data === "Y" ? true : false;
         } else{
             console.log("step2Validation.validate(); Fail!!!", result.validItem);
