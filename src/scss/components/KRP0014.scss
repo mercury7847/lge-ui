@@ -274,6 +274,12 @@
                         height:20px;
                         background:url('/lg5-common/images/KRP0014/btn-arrow-right-20.svg') no-repeat right 0;
                         vertical-align:middle;
+                        transform:rotate(180deg);
+                    }
+                    &.open {
+                        &:after {
+                            transform:rotate(0deg);
+                        }
                     }
                 }
             }
