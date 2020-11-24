@@ -6,7 +6,6 @@
     .component-inner {
         max-width:1206px;
     }
-
     padding:60px 0;
     @include mobile {
         border-top:12px solid #f4f4f4;
@@ -29,19 +28,19 @@
         font-weight:bold;
         text-align:center;
         @include mobile {
-            margin-bottom:0;
+            margin-bottom:16px;
             padding:0 20px;
+            font-size:24px;
+            line-height:33px;
         }
     }
     .bundle-type {
         padding:24px 0;
+        @include mobile {
+            padding:16px 0;
+        }
         .tabs {
-            overflow:hidden;
-            white-space:inherit;
-            @include mobile {
-                overflow-x:auto;
-                white-space:nowrap;
-            }
+            overflow-y:hidden;
             > li {
                 width:276px;
                 margin-left:14px;
@@ -92,6 +91,7 @@
                             padding-left:8px;
                             overflow: hidden;
                             text-overflow: ellipsis;
+                            white-space:initial;
                         }
                     }
                 }
@@ -108,8 +108,7 @@
             background:#fff;
             @include mobile {
                 margin-top:0;
-                padding:32px 20px;
-                border-top:4px solid #f4f4f4;
+                padding:40px 16px;
                 border-radius:0;
             }
             &:first-child {
@@ -131,7 +130,7 @@
                 // margin-bottom:36px;
                 text-align:center;
                 @include mobile {
-                    margin-bottom:24px;
+                    margin-bottom:40px;
                 }
                 > span {
                     &.mob {
@@ -151,6 +150,9 @@
             .spec-info-list {
                 margin-top:24px;
                 overflow:hidden;
+                @include mobile {
+                    margin-top:20px;
+                }
                 ul {
                     margin:-36px -18px 0;
                     font-size:0;
@@ -179,6 +181,10 @@
                                 font-size:14px;
                                 font-weight:500;
                                 line-height:20px;
+                                @include mobile {
+                                    font-size:13px;
+                                    line-height:21px;
+                                }
                             }
                             dd {
                                 margin-top:4px;
@@ -186,11 +192,16 @@
                                 font-size:16px;
                                 font-weight:bold;
                                 line-height:24px;
+                                @include mobile {
+                                    margin-top:2px;
+                                    font-size:14px;
+                                    line-height:22px;
+                                }
                                 .specs {
                                     display:inline-block;
                                     font-size:0;
                                     vertical-align:top;
-                                    &::after {
+                                    &:after {
                                         content:'';
                                         display:inline-block;
                                         font-size:16px;
@@ -230,7 +241,7 @@
                             li {
                                 display:block;
                                 width:100%;
-                                margin-top:32px;
+                                margin-top:12px;
                                 padding:0;
                                 &:first-child {
                                     margin-top:0;
@@ -244,6 +255,10 @@
                 margin-bottom:-48px;
                 padding:24px 0 12px;
                 text-align:center;
+                @include mobile {
+                    margin-bottom:-40px;
+                    padding-top:27px;
+                }
                 a {
                     display:block;
                     width:100%;
