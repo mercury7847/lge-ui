@@ -33,6 +33,7 @@
                 self.$tabCount = $('.ui_tab ul.tabs li a[href="#tab2"] span');
                 self.$cartContent = $('#tab2');
                 self.$cartWrap = self.$cartContent.find('div.cart-wrap');
+                self.$checkOption = self.$cartWrap.find('div.check-option');
                 self.$cartAllCheck = self.$cartContent.find('div.check-option div.chk-wrap input');
                 self.cartItemCheckQuery = "li.order-item span.chk-wrap input";
                 self.$cartSelectRemove = self.$cartContent.find('div.check-option div.btn-area button.btn-text');
@@ -101,7 +102,6 @@
                 */
                
                 self.cartAllChecker.on('allCheckerChange', function(e, status){
-                    console.log('allcheck');
                     _self.requestInfo();
                 });
 
@@ -203,6 +203,7 @@
                         $list_ul.append(vcui.template(cartItemTemplate, item));
                     });
                     self.$cartWrap.show();
+                    self.$checkOption.show();
                 } else {
                     self.$cartWrap.hide();
                 }
@@ -216,6 +217,7 @@
 
             noData: function(visible) {
                 if(visible) {
+                    self.$checkOption.hide();
                     self.$noData.show();
                 } else {
                     self.$noData.hide();

@@ -35,21 +35,13 @@
 
 .support {
     .service-menu-wrap {
-        padding:64px 40px 56px;
-        background:#ededed;
-        &.nobg {
-            background-color: transparent;
-        }
-        .inner {
-            max-width:1284px;
-            margin:0 auto;
-            text-align:center;
-        }
+        padding:120px 0;
         .title {
-            margin-bottom:32px;
-            font-size:20px;
+            margin-bottom:48px;
+            font-size:32px;
             font-weight:700;
-            line-height:30px;
+            line-height:48px;
+            text-align:center;
             word-break:keep-all;
         }
         .service-list {
@@ -67,8 +59,8 @@
                     background:#fff;
                 }
                 .icon {
-                    width:48px;
-                    height:48px;
+                    width:80px;
+                    height:80px;
                     margin:0 auto;
                     img {
                         width:100%;
@@ -76,10 +68,9 @@
                 }
                 .tit {
                     display:block;
-                    margin-top:24px;
-                    font-size:16px;
-                    font-weight:500;
-                    line-height:24px;
+                    margin-top:8px;
+                    @include font-large-1;
+                    font-weight:700;
                     text-align:center;
                 }
             }
@@ -94,28 +85,18 @@
             }
         }
         @include mobile {
-            padding:40px 20px 56px;
+            padding:32px 16px;
             .title {
-                font-size:16px;
-                line-height:24px;
+                margin-bottom:24px;
+                font-size:24px;
+                line-height:33px;
             }
             .service-list {
-                margin:-8px -4px 0;
+                margin:-40px -4px 0;
                 > li {
                     display:inline-block;
                     width:50%;
-                    padding:8px 4px 0;
-                    a {
-                        border-radius:0;
-                    }
-                    .icon {
-                        width:40px;
-                        height:40px;
-                    }
-                    .tit {
-                        margin-top:16px;
-                        font-size:14px;
-                    }
+                    padding:40px 4px 0;
                 }
             }
         }

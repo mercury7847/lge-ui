@@ -1,5 +1,27 @@
 @charset "UTF-8";
 
+.container {
+    .page-header {
+        .desc {
+            margin-top:8px;
+            .txt {
+                @include font-small;
+            }
+        }
+    }
+    .cont-wrap {
+        .section {
+            margin-top:80px;
+        }
+        @include mobile {
+            .section {
+                margin-top:0;
+            }
+        }
+    }
+}
+
+
 .contents {
     .contents-inner {
         max-width:1460px;
@@ -13,97 +35,97 @@
     }
 }
 
-.section {
-    margin-top:48px;
-    &:first-child {
-        margin-top:0
-    }
-    & ~ & {
-        margin-top:48px;
-    }
-    &-title {
-        position:relative;
-        padding-bottom:16px;
-        .tit {
-            color:#222;
-            font-size:16px;
-            font-weight:700;
-            line-height:24px;
-        }
-        .sub-text {
-            font-size: 14px;
-            color: #616161;
-            line-height: 1.43;
-            margin-top: 4px;
-        }
-        .btn-area {
-            position:absolute;
-            right:0;
-            top:0;
-            .btn-link {
-                margin-top:2px;
-            }
-        }
-    }
-    &-content {
-        padding:56px;
-        border-radius:4px;
-        background:#fff;
-        .cont-tit {
-            margin:32px 0 12px;
-            color:#222;
-            font-size:16px;
-            font-weight:500;
-            line-height:1.5;
-            &:first-of-type {
-                margin-top:0;
-            }
-        }
-        &.no-pd {
-            padding: 0;
-        }
-    }
-    &.nobg {
-        background-color: transparent;
-        padding-bottom: 40px;
-        .section-content {
-            background-color: transparent;
-        }
-        ~ .nobg {
-            margin-top: 0;
-            padding-top: 0;
-        }
-    }
-    @include mobile {
-        padding:40px 20px 56px;
-        background:#fff;
-        & ~ & {
-            margin-top:12px;
-        }
-        &.no-bg {
-            padding:0;
-            background:transparent;   
-        }
-        &-title {
-            padding-bottom:20px;
-            .tit {
-                line-height:1.19;
-            }
-        }
-        &-content {
-            padding:0;
-            border-radius:0;
-            +.section-content {
-                padding-top: 40px;
-            }
-        }
-        .tabs-wrap {
-            .tabs {
-                padding:0;
-            }
-        }
-    }
-}
+// .section {
+//     margin-top:48px;
+//     &:first-child {
+//         margin-top:0
+//     }
+//     & ~ & {
+//         margin-top:48px;
+//     }
+//     &-title {
+//         position:relative;
+//         padding-bottom:16px;
+//         .tit {
+//             color:#222;
+//             font-size:16px;
+//             font-weight:700;
+//             line-height:24px;
+//         }
+//         .sub-text {
+//             font-size: 14px;
+//             color: #616161;
+//             line-height: 1.43;
+//             margin-top: 4px;
+//         }
+//         .btn-area {
+//             position:absolute;
+//             right:0;
+//             top:0;
+//             .btn-link {
+//                 margin-top:2px;
+//             }
+//         }
+//     }
+//     &-content {
+//         padding:56px;
+//         border-radius:4px;
+//         background:#fff;
+//         .cont-tit {
+//             margin:32px 0 12px;
+//             color:#222;
+//             font-size:16px;
+//             font-weight:500;
+//             line-height:1.5;
+//             &:first-of-type {
+//                 margin-top:0;
+//             }
+//         }
+//         &.no-pd {
+//             padding: 0;
+//         }
+//     }
+//     &.nobg {
+//         background-color: transparent;
+//         padding-bottom: 40px;
+//         .section-content {
+//             background-color: transparent;
+//         }
+//         ~ .nobg {
+//             margin-top: 0;
+//             padding-top: 0;
+//         }
+//     }
+//     @include mobile {
+//         padding:40px 20px 56px;
+//         background:#fff;
+//         & ~ & {
+//             margin-top:12px;
+//         }
+//         &.no-bg {
+//             padding:0;
+//             background:transparent;   
+//         }
+//         &-title {
+//             padding-bottom:20px;
+//             .tit {
+//                 line-height:1.19;
+//             }
+//         }
+//         &-content {
+//             padding:0;
+//             border-radius:0;
+//             +.section-content {
+//                 padding-top: 40px;
+//             }
+//         }
+//         .tabs-wrap {
+//             .tabs {
+//                 padding:0;
+//             }
+//         }
+//     }
+// }
 
 .double-section {
     margin:48px auto 0;

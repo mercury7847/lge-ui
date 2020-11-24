@@ -22,10 +22,12 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
 
             self.$allChecker = self.$el.find(self.options.allCheckClass);
 
-            self.update();            
+            self.update();
+            /*          
             if (self.total === 0) {
                 return;
             }
+            */
 
             self._bindEvents();
         },
@@ -47,6 +49,7 @@ vcui.define('ui/checkboxAllChecker', ['jquery', 'vcui'], function ($, core) {
 
         update: function update() {
             var self = this;
+
             if(self.options.checkBoxItemsTargetQuery) {
                 self.$items = self.$el.find(self.options.checkBoxItemsTargetQuery);
             } else {
