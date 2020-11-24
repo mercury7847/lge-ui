@@ -495,7 +495,8 @@
         display:flex;
         justify-content: space-between;
         align-items: center;
-        background-image:url(/lg5-common/images/icons/btn-arrow-right-16.svg);
+        background-image:url(/lg5-common/images/icons/btn_arrow_right_16.svg);
+        background-size:16px;
         .btn-txt{
             color:#767676;
             @include font-small;
