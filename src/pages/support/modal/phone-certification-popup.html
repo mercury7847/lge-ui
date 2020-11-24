@@ -3,42 +3,43 @@
     <header class="pop-header">
         <h1 class="tit"><span>휴대 전화 인증</span></h1>
     </header>
-    <section class="pop-conts support">
-        <div class="field-wrap" data-ajax="">
-            <div class="row">
-                <div class="field-item">
-                    <div class="field-title">
-                        <label for="authName" class="tit">이름<span class="require">*<span class="blind">필수항목</span></span></label>
+    <section class="pop-conts support mt8">
+        <div class="form-desc">
+            <span class="req">필수 입력 사항</span>
+        </div>
+        <div class="input-info" data-ajax="">
+            <div class="form-wrap">
+                <div class="forms">
+                    <div class="tit">
+                        <label for="authName" class="req">이름 <span class="blind">필수입력</span></label>
                     </div>
-                    <div class="input-wrap">
-                        <input type="text" name="authName" id="authName" placeholder="이름을 입력해주세요." data-required="true" data-msg-target=".err-msg" required>
-                        <p class="err-msg"></p>
+                    <div class="conts">
+                        <div class="input-wrap">
+                            <input type="text" name="authName" id="authName" placeholder="이름을 입력해주세요." data-required="true" data-msg-target=".err-msg" required>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="field-item block">
-                    <div class="field-title">
-                        <label for="authPhoneNo" class="tit">휴대 전화<span class="require">*<span class="blind">필수항목</span></span></label>
+                <div class="forms">
+                    <div class="tit">
+                        <label for="input-phoneNumber" class="req">휴대 전화 <span class="blind">필수입력</span></label>
                     </div>
-                    <div class="field-box">
-                        <div class="input-wrap">
-                            <div class="box">
+                    <div class="conts">
+                        <div class="box">
+                            <div class="input-wrap">
                                 <input type="tel" name="authPhoneNo" id="authPhoneNo" placeholder="휴대전화 번호를 입력해주세요." data-required="true" data-msg-target=".err-msg" required>
-                                <span class="cell">
-                                    <button type="button" class="btn-text pink btn-send">인증번호 발송</button>
-                                </span>
                             </div>
-                            <p class="err-msg"></p>
+                            <div class="cell">
+                                <button type="button" class="btn">인증번호 발송</button>
+                            </div>
                         </div>
                         <div class="input-wrap">
                             <input type="number" name="authNo" id="authNo" placeholder="인증번호를 입력해주세요." data-required="true" data-msg-target=".err-msg" disabled required>
-                            <p class="err-msg"></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         @@include('./common/modules/bullet-list.html', {
             "topBorder" : true,
             "bulletTxt" : [
@@ -48,7 +49,7 @@
         })
     </section>
     <footer class="pop-footer">
-        <div class="btn-group">
+        <div class="btn-group center">
             <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
             <button type="button" class="btn pink btn-auth"><span>확인</span></button>
         </div>
