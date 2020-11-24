@@ -35,4 +35,9 @@
         @include font-small;
         color: #222;
     }
+    .sort-tit {
+        @include font-small;
+        color:#222;
+        font-weight:700;
+    }
 }
