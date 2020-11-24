@@ -73,14 +73,12 @@
         }
     }
     &.scroll {
-        @include mobile {
-            margin:0 -20px;
-            padding:0 20px;
-            overflow-x:scroll;
-            -webkit-overflow-scrolling:touch;
-            table {
-                white-space:nowrap;
-            }
+        margin:0 -16px;
+        padding:0 16px;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        table {
+            white-space:nowrap;
         }
     }
     &.board-type {
