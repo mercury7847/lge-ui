@@ -369,3 +369,19 @@
         display:block;
     }
 }
+
+//form desc
+.popup-wrap .pop-conts.mt8{
+    padding-top:0;
+    margin-top:8px;
+}
+.form-desc{
+    .req{
+        @include font-small;
+        color:#767676;
+    }
+    .req::before{
+        content:'*';
+        color: #ec455a;
+    }
+}

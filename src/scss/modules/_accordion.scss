@@ -239,6 +239,9 @@
             font-size: $font-large-4;
             line-height: 42px;
         }
+        .title.type2{
+            @include font-large-1;
+        }
     }
     .accord-cont {
         padding-top: 16px;

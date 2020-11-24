@@ -650,6 +650,12 @@
     }
 }
 .agree-cont-wrap {
+    .tit-wrap{
+        .tit{
+            @include font-medium;
+            margin:48px 0 16px;
+        }
+    }
     .agree-input {
         margin-top:12px;
     }
@@ -667,6 +673,14 @@
             max-height:192px;
             padding:20px;
         }
+    }
+    .chk-all{
+        font-weight:bold;
+    }
+    .chk-desc{
+        color:#767676;
+        @include font-small;
+        margin-left:24px;
     }
 }
 .agree-all-chk {
