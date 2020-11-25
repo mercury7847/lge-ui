@@ -3,15 +3,33 @@ $(document).ready(function() {
 
     $('.KRC0030').buildCommonUI();
 
+	vcui.require(['ui/carousel'], function () {
+		$('.KRC0030').find('.ui_carousel_slider').vcCarousel({
+			infinite: false,
+			swipeToSlide: true,
+			slidesToShow: 6,
+			dots: false,
+			responsive: [{
+				breakpoint: 768,
+				settings: {
+					dots: true,
+					slidesToShow: 3,
+					slidesToScroll: 3
+				}
+			}]
+		});
+	});
+
+
 	var $obj = $('.KRC0030');
 	var $objIndex = $obj.attr('data-index','0');
 
 	$obj.each(function(){
 		if ($(this).hasClass('bg-dark') || $(this).hasClass('bg-black')){
-			$(this).find('.slider-nav .icon a').find('img.off').attr('src', '/lg5-common/images/KRC0030/@icon-white.png');
+			$(this).find('.slider-nav .icon a').find('img.off').attr('src', '/lg5-common/images/KRC0030/icon-off.png');
 		}	
 		else {
-			$(this).find('.slider-nav .icon a').find('img.off').attr('src', '/lg5-common/images/KRC0030/@icon-gray.png');
+			$(this).find('.slider-nav .icon a').find('img.off').attr('src', '/lg5-common/images/KRC0030/icon-off.png');
 		}
 	
 	});
