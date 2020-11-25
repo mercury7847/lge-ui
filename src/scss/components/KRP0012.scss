@@ -2,13 +2,12 @@
 
 @import "../components-app";
 
-
 .KRP0012 {
     width: 100%;
     margin: 0 auto;
     padding:0 30px;
     background:#fff;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
     @include mobile {
         max-width: 100%;
         padding:0;
@@ -47,13 +46,14 @@
             box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.12);
         }
         .product-name {
-            width:100%;
+            width:280px;
             overflow:hidden;
             white-space:nowrap;
-            text-overflow:clip;
+            text-overflow:ellipsis;
             color:#111;
-            font-size:14px;
-            line-height:26px;
+            font-size:18px;
+            font-weight:bold;
+            line-height:28px;
             @include mobile {
                 &:only-child {
                     padding:13px 0; 
@@ -91,14 +91,21 @@
     }
 
     .contents-menu-list {
+        &:after {
+            content:' ';
+            display:block;
+            clear:both;
+        }
         @include mobile {
             padding:20px 20px;
         }
         .tab-menu-belt {
-            width:640px;
+            float:right;
+            width:800px;
             margin:0 auto;
-            padding:20px 0;
+            // padding:16px 0;
             height:auto;
+            font-size:0;
             text-align:center;
             background:#fff;
             @include tablet {
@@ -120,26 +127,40 @@
             }
             .tab-menu {
                 display:inline-block;
+                width:160px;
                 vertical-align:middle;
-                margin-left:8px;
+                // margin-left:8px;
                 font-size:0;
                 &:first-child {
                     margin-left:0;
                 }
                 .linker {
-                    display:inline-block;
-                    padding:8px 16px;
+                    display:block;
+                    height:72px;
+                    // padding:8px 16px;
                     color:#ccc;
                     font-size:16px;
-                    line-height:24px;
+                    line-height:72px;
                     font-weight:500;
+                    text-align:center;
                 }
                 &.active {
-                    background:#efefef;
-                    border-radius:20px;
+                    // background:#efefef;
+                    // border-radius:20px;
                     .linker {
+                        position:relative;
                         color:#111;
                         font-weight:700;
+                        &:before {
+                            content:' ';
+                            display:block;
+                            position:absolute;
+                            bottom:0;
+                            width:100%;
+                            height:2px;
+                            border-radius:2px;
+                            background-color:#222;
+                        }
                     }
                 }
             }
@@ -156,7 +177,7 @@
             }
             .extra-menu {
                 &.btn {
-                    min-width:220px;
+                    min-width:107px;
                     @include tablet {
                         min-width:auto;
                     }
@@ -171,6 +192,32 @@
             }
         } 
     }
-
+    &.anchor {
+        .inner {
+            max-width:1380px;
+        }
+        .contents-menu-list .tab-menu-belt {
+            width:100%;
+            display:table;
+            table-layout:fixed;
+            .tab-menu {
+                display:table-cell;
+                &.active .linker {
+                    color:#222;
+                    font-weight:bold;
+                }
+                .linker {
+                    display:block;
+                    color:#ccc;
+                }
+            }
+        }
+    }
+    &.sticky {
+        .contents-menu-list .tab-menu-belt.type-btn {
+            margin-right:155px;
+            text-align:right;
+        }
+    }
 }
 

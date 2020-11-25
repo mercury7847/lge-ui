@@ -159,6 +159,30 @@
     }
 }
 
+.btn-pr-list {
+    display:inline-block;
+    position:relative;
+    font-size:14px;
+    line-height:16px;
+    font-weight:500;
+    color:#767676;
+    span {
+        display:inline-block;
+        vertical-align:top;
+    }
+    &:after {
+        content:'';
+        display:inline-block;
+        margin-top:-1px;
+        margin-left:4px;
+        vertical-align:top;
+        width:20px;
+        height:20px;
+        background:url('/lg5-common/images/icons/icon-more-pk-20.svg') no-repeat;
+        background-size:20px 20px;
+    }
+}
+
 .btn-moreview {
     display:inline-block;
     font-size:14px;
