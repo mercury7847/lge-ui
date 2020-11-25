@@ -398,3 +398,15 @@
         @include font-large-1;
     }
 }
+
+@media screen and (max-width: 767px){
+    .page-visual .heading-title{
+        word-break:keep-all;
+    }
+
+    .section-title{
+        .tit{
+            margin-top:20px;
+        }
+    }
+}
