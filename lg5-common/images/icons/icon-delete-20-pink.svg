@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-delete-20-pink</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="btn_delete_20">
+            <g id="Group-127">
+                <rect id="Rectangle" x="0" y="0" width="20" height="20"></rect>
+                <g id="Group-8" transform="translate(6.000000, 6.000000)" stroke="#EC455A" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                    <line x1="2.44962713e-13" y1="1.77635684e-14" x2="7.57704563" y2="7.57535584" id="Path-26"></line>
+                    <line x1="2.44962713e-13" y1="1.77635684e-14" x2="7.57704563" y2="7.57535584" id="Path-26" transform="translate(3.788523, 3.787678) scale(-1, 1) translate(-3.788523, -3.787678) "></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
