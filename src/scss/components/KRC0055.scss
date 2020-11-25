@@ -5,28 +5,31 @@
 .KRC0055 {
 	.btn {
         display: inline-block;
-        min-width:194px;
-        padding:15px 0;
+        //min-width:194px;
+        padding:12px 24px;
         border: 1px solid transparent;
-        border-radius: 8px;
+        border-radius: 25px;
         background-color: #fff;
         line-height: 24px;
         @include font-family($font-weight-bold);
         font-size: 16px;
-        color: #111;
+        color: #222;
         text-align: center;
         vertical-align: top;
 
         &.btn-outline-primary {
             border-color: #212121;
             background-color: #fff;
-            color: #111;
+            color:#222;
         }
         &.btn-primary {
-            border-color: #111;
-            background-color: #111;
+            border-color:#222;
+            background-color:#222;
             color: #fff;
-        }
+		}
+		@include mobile {
+			width: 100%;
+		}
 	}
 	.link-text {
 		position: relative;
@@ -37,7 +40,7 @@
 		font-weight: 700;
 		font-size: 16px;
 		line-height: 24px;
-		color: #111;
+		color:#222;
 		vertical-align: top;
 
 		&:after {
@@ -46,7 +49,7 @@
 			right: -12px;
 			width: 8px;
 			height: 8px;
-			border: solid #111;
+			border: solid#222;
 			border-width: 2px 2px 0 0;
 			transform: rotate(45deg);
 			content: '';
@@ -106,7 +109,7 @@
 							position:absolute;
 							@include calc(top,50%,4px);
 							@include calc(left,50%,3px);
-							border-left:7px solid #111;
+							border-left:7px solid#222;
 							border-top:4px solid transparent;
 							border-bottom:4px solid transparent;
 							content: '';
@@ -197,11 +200,21 @@
 					color:$color;
 					* { color:inherit; }
 					.bullet-list {
-						@if ($color == #222) {color:#515151; }
+						@if ($color == #222) {color:#767676; }
+						@include mobile {
+							@if ($color == #222) {color:#515151; }
+						}
 						.b-txt:before {
-							@if ($color == #222) { background-color:#515151; }
+							@if ($color == #222) { background-color:#767676; }
 							@else { background-color:$color; }
 						}
+						@include mobile {
+							.b-txt:before {
+								@if ($color == #222) { background-color:#515151; }
+								@else { background-color:$color; }
+							}	
+						}
+
 					}
 					.btn { border-color:$color; background-color:transparent; }
 					.link-text {
@@ -214,7 +227,7 @@
 				&.type-white { @include contentsColor(#fff); }
 				&.type-black { @include contentsColor(#222); }
 				@include mobile {
-					&.type-white { @include contentsColor(#222); }
+					&.type-white { @include contentsColor(#fff); }
 					&.type-black { @include contentsColor(#222); }
 				}
 
@@ -225,8 +238,8 @@
 					line-height:24px;
 					@include mobile {
 						font-weight:400;
-						font-size:12px;
-						line-height:26px;
+						font-size:14px;
+						line-height:22px;
 					}
 				}
 				.banner-tit {
@@ -234,10 +247,10 @@
 					margin-top:4px;
 					font-weight:700;
 					font-size:56px;
-					line-height:72px;
+					line-height:74px;
 					@include mobile {
 						font-size:32px;
-						line-height:40px;
+						line-height:42px;
 					}
 					& * {
 						font-weight:inherit;
@@ -247,25 +260,29 @@
 				}
 				.banner-txt {
 					display:block;
-					margin-top:46px;
+					margin-top:32px;
 					font-weight:400;
 					font-size:20px;
 					line-height:30px;
 					@include mobile {
-						margin-top:24px;
-						font-size:18px;
-						line-height:26px;
+						margin-top:16px;
+						font-size:16px;
+						line-height:24px;
 					}
 				}
 				.bullet-list {
 					display:inline-block;
-					margin-top:32px;
+					margin-top:22px;
 					@include mobile {
-						margin-top:20px;
+						margin-top:28px;
 					}
 				}
 				.banner-btn {
 					margin-top:40px;
+					@include mobile {
+						margin-top:28px;
+						padding: 0 16px;
+					}
 				}
 			}
 			.animation-area {
