@@ -89,6 +89,20 @@
             }
         }
     }
+
+    .title-line {
+        display: block;
+        margin-bottom: 24px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid $color-default;
+        font-weight: 700;
+        @include font-large-2;
+        @include pc {
+            .count {
+                display: none;
+            }
+        }
+    }
 }
 
 .search-keyword-area {
@@ -103,14 +117,6 @@
     .suggested-tags {
         display: table-cell;
         width: ((100% / 10) * 4);
-    }
-    .keyword-title {
-        display: block;
-        margin-bottom: 24px;
-        padding-bottom: 20px;
-        border-bottom: 2px solid $color-default;
-        font-weight: 700;
-        @include font-large-2;
     }
     .keyword-list {
         li {
@@ -185,14 +191,6 @@
 .search-result-area {
     display: table;
     padding-top: 48px;
-    .result-title {
-        display: block;
-        margin-bottom: 24px;
-        padding-bottom: 20px;
-        border-bottom: 2px solid $color-default;
-        font-weight: 700;
-        @include font-large-2;
-    }
 
     .auto-complete {
         position: relative;
