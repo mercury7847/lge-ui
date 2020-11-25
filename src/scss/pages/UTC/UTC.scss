@@ -367,9 +367,17 @@
             }
         }
     }
+    .disabled-message {
+        display: none;
+    }
     &.disabled {
         @include pc {
             padding-bottom: 70px;
+        }
+        .item-image {
+            img {
+                opacity: .3;
+            }
         }
         .flag-wrap.bg-type .flag {
             background-color: transparent;
@@ -391,6 +399,7 @@
             }
         }
         .disabled-message {
+            display: block;
             @include pc {
                 position: absolute;
                 left: 164px;
@@ -539,6 +548,7 @@
                 }
             }
             .text-disabled {
+                display: none;
                 text-align: right;
                 span {
                     margin-top: 4px;
@@ -549,10 +559,15 @@
                     color: $color-primary !important;
                 }
             }
-            &.item-disabled .item-subtit,
-            &.item-disabled .item-tit,
-            &.item-disabled .item-spec span{
-                color: $color-gray-4;
+            &.item-disabled {
+                .item-subtit,
+                .item-tit,
+                .item-spec span {
+                    color: $color-gray-4;
+                }
+                .text-disabled {
+                    display: block;
+                }
             }
         }
         > li + li {

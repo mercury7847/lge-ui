@@ -1,20 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="26" height="34" viewBox="0 0 26 34">
-    <g fill="none" fill-rule="evenodd">
-        <g>
-            <g>
-                <g>
-                    <g>
-                        <g>
-                            <g transform="translate(-1056 -894) translate(318 318) translate(218 336) translate(56 240) translate(464)">
-                                <path fill="#EC455A" d="M13 34c8.667-9.282 13-16.304 13-21.066C26 5.79 20.18 0 13 0S0 5.79 0 12.934C0 17.696 4.333 24.718 13 34z" opacity=".2"/>
-                                <circle cx="11.5" cy="9.5" r="1.5" fill="gray"/>
-                                <path stroke="gray" stroke-linecap="round" stroke-linejoin="round" d="M13 13c0 1.657 1.12 3 2.5 3s2.5-1.343 2.5-3"/>
-                                <circle cx="19.5" cy="9.5" r="1.5" fill="gray"/>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="34px" viewBox="0 0 26 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-alarm</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon_alarm1">
+            <path d="M13,0.5 C9.54792624,0.5 6.42254583,1.89188854 4.16025876,4.14261945 C1.89890084,6.39242597 0.5,9.50044334 0.5,12.9335938 C0.5,17.56103 4.7150722,24.3286002 12.9996254,33.2655473 C21.2844057,24.3294384 25.5,17.5613166 25.5,12.9335938 C25.5,9.50044334 24.1010992,6.39242597 21.8397412,4.14261945 C19.5774542,1.89188854 16.4520738,0.5 13,0.5 Z" id="Oval" stroke="#EC455A" fill="#FDECEE"></path>
+            <circle id="Oval" fill="#EC455A" cx="11.5" cy="9.5" r="1.5"></circle>
+            <path d="M13,13 C13,14.6568542 14.1192881,16 15.5,16 C16.8807119,16 18,14.6568542 18,13" id="Path" stroke="#EC455A" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle id="Oval" fill="#EC455A" cx="19.5" cy="9.5" r="1.5"></circle>
         </g>
     </g>
 </svg>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/product-support"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '드라이버/SW',
+                'pageDesc': '제품에 필요한 사용설명서, 소프트웨어, 드라이버를 지원해드립니다.'
+            })
+            <div class="contents support download">
+
+                <div class="guide-wrap ui_sticky">
+                    <div class="guide-bar">
+                        <ul class="product-list">
+                            <li class="category-box">
+                                <span class="blind">선택 제품</span>
+                                <p>제품을 선택해 주세요.</p>
+                            </li>
+                            <li class="model-box">
+                                <span class="blind">선택된 모델명</span>
+                                <p>모델명을 추가하면 더 정확한 답변을 받을 수 있어요.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="guide-wrap ui_sticky">
+                    <div class="guide-bar">
+                        <ul class="product-list">
+                            <li class="category-box">
+                                <span class="blind">선택 제품</span>
+                                <ul class="category-list">
+                                    <li>TV/프로젝터</li>
+                                    <li>올레드</li>
+                                </ul>
+                            </li>
+                            <li class="model-box">
+                                <span class="blind">선택된 모델명</span>
+                                <p>OLED48CXKNB</p>
+                                <button type="button" class="btn-add">보유 제품 <span class="blind">추가</span></button>
+                            </li>
+                        </ul>
+                        <button type="button" class="btn-select"><span>제품 선택</span></button>
+                    </div>
+                </div>
+
+                <div class="cont-wrap">
+                    <div class="section">
+                        <div class="tit-wrap">
+                            <h3 class="tit">제품사용 설명서 <em class="point">3</em>건
+                                @@include('./common/modules/tooltip.html', {
+                                    "type" : "include",
+                                    "page" : "tooltip-CSRF6008"
+                                })
+                            </h3>
+                        </div>
+
+                        <div class="list-wrap">
+                            <ul class="manual-list">
+                                <li>
+                                    <p class="tit">제품 사용설명서</p>
+                                    <p class="desc">Owner’s Manual (Simple Book) – 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>
+                                    <div class="info-wrap">
+                                        <ul class="options">
+                                            <li>2020.11.03</li>
+                                            <li>한국어</li>
+                                            <li>펫네임</li>
+                                            <li>OS</li>
+                                        </ul>
+                                        <div class="btns-area">
+                                            <a href="#" class="btn border size"><span>PDF</span></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="tit">제품 사용설명서</p>
+                                    <p class="desc">Owner’s Manual (Simple Book) – 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>
+                                    <div class="info-wrap">
+                                        <ul class="options">
+                                            <li>2020.11.03</li>
+                                            <li>English</li>
+                                        </ul>
+                                        <div class="btns-area">
+                                            <a href="#" class="btn border size"><span>ZIP</span></a>
+                                            <a href="#" class="btn border size"><span>HTML</span></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="section driver-section">
+                        <div class="tit-wrap">
+                            <h3 class="tit">드라이버/SW <em class="point">130</em>건</h3>
+                        </div>
+
+                        <!-- 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
+                        <div class="banner-wrap">
+                            <div class="banner">    
+                                <p class="tit">드라이버/소프트웨어는 LG Update Center[통합 드라이버 설치 프로그램]을 통해 편리하게 설치해 보세요.</p>
+                                <a href="https://www.lgservice.co.kr/simple/selectSimpleSearchDetail.do?gubun=FAQ&type=keyword&seq=27830&itemId=9438" class="btn-link">LG UPdata Center 가기</a>
+                            </div>
+                        </div>
+                        <!-- // 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
+
+                        <div class="form-wrap ">
+                            <div class="forms">
+                                <div class="tit">
+                                    <label for="os">운영체제(OS) 선택</label>
+                                </div>
+                                <div class="conts">
+                                    <div class="select-wrap">
+                                        <select name="os" id="os" class="ui_selectbox">
+                                            <option value="">전체</option>
+                                            <option value="">전체</option>
+                                            <option value="">전체</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="forms">
+                                <div class="tit">
+                                    <label for="driver">드라이버 분류</label>
+                                </div>
+                                <div class="conts">
+                                    <div class="select-wrap">
+                                        <select name="driver" id="driver" class="ui_selectbox">
+                                            <option value="">전체</option>
+                                            <option value="">전체</option>
+                                            <option value="">전체</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tabs-wrap border-type ui_tab left">
+                            <ul class="tabs">
+                                <li class="on"><a href="#tab1">통합 드라이버 설치프로그램(110)<em class="blind">선택됨</em></a></li>
+                                <li><a href="#">칩셋/패치(6)</a></li>
+                                <li><a href="#">비디오(6)</a></li>
+                                <li><a href="#">사운드(3)</a></li>
+                                <li><a href="#">랜(4)</a></li>
+                                <li><a href="#">기타(0)</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="list-wrap ui_accordion" data-toggle-selector=">.head .ui_accord_toggle">
+                            <ul class="file-list">
+                                <li>
+                                    <div class="head">
+                                        <div class="file-box">
+                                            <p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                            <ul class="options">
+                                                <li>ver 7.7PHV1  데스크톱/일체형  </li>
+                                                <li>통합 드라이버 설치 프로그램</li>
+                                                <li>2020.11.03</li>
+                                            </ul>
+                                            <div class="btn-area">
+                                                <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                                <a href="#" class="accord-btn ui_accord_toggle" data-open-text="이전 버전 보기" data-close-text="이전 버전 닫기"><span class="ui_accord_text">이전 버전 보기</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accord-cont ui_accord_content">
+                                        <ul class="file-list">
+                                            <li>
+                                                <div class="file-box">
+                                                    <p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                                    <ul class="options">
+                                                        <li>ver 7.7PHV1  데스크톱/일체형  </li>
+                                                        <li>통합 드라이버 설치 프로그램</li>
+                                                        <li>2020.11.03</li>
+                                                    </ul>
+                                                    <div class="btn-area">
+                                                        <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="file-box">
+                                                    <p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                                    <ul class="options">
+                                                        <li>ver 7.7PHV1  데스크톱/일체형  </li>
+                                                        <li>통합 드라이버 설치 프로그램</li>
+                                                        <li>2020.11.03</li>
+                                                    </ul>
+                                                    <div class="btn-area">
+                                                        <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="head">
+                                        <div class="file-box">
+                                            <p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                            <ul class="options">
+                                                <li>ver 7.7PHV1  데스크톱/일체형  </li>
+                                                <li>통합 드라이버 설치 프로그램</li>
+                                                <li>2020.11.03</li>
+                                            </ul>
+                                            <div class="btn-area">
+                                                <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        @@include('./common/support/pagination.html', {
+                            count: 5
+                        })
+                        <div class="no-data">
+                            <p>다운로드/소프트웨어 자료가 없습니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="survey-banner-wrap">
+                        <div class="banner">    
+                            <p class="tit">고객님이 선택하신 [<strong class="point">OLED48CXKNB</strong>] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
+                            <button type="button" class="btn dark-gray size" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
+                        </div>
+                    </div>
+                
+                </div>
+
+                @@include('./common/support/service-menu.html')
+                @@include('./common/support/related-info.html')
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>  
+
+    <!-- 컨텐츠 만족도 조사 팝업 -->
+    @@include('./support/modal/survey-popup.html')
+
+    <!-- 설치 전 주의사항 및 사용법 팝업 -->
+    @@include('./support/modal/file-detail-popup.html')
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/productSupport/productSupport.min.js"></script>
+    <script src="/lg5-common/js/support/productSupport/downloadResources.min.js"></script>
+</body>
+</html> 

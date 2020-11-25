@@ -11,21 +11,21 @@
         @@include('./common/header.html')
 
         <div class="container">
-            @@include('./common/support/page-visual.html', {
-                'title': '서비스 뉴스'
+            @@@include('./common/modules/page-header.html', {
+                'pageTitle': '서비스 뉴스'
             })
+
             <div class="contents support notice">
+                <div class="cont-wrap">
 
-                <div class="search-wrap" data-ajax="/lg5-common/data-ajax/support/servieceNewsList.json">
-                    <div class="keyword-search">
-                        <div class="input-wrap">
-                            <input type="text" name="keyword" placeholder="검색어 입력">
-                            <button type="button" class="btn-search"><span class="blind">검색</span></button>
-                        </div>
-                    </div> 
-                </div>
-
-                <div class="contents-inner">
+                    <div class="search-wrap" data-ajax="/lg5-common/data-ajax/support/servieceNewsList.json">
+                        <div class="keyword-search">
+                            <div class="input-wrap">
+                                <input type="text" name="keyword" placeholder="검색어 입력">
+                                <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                            </div>
+                        </div> 
+                    </div>
                     <div class="result-wrap">
                         <div class="sorting-wrap">
                             <div class="total">전체 <em id="count" class="count">122</em>건</div>
@@ -51,7 +51,7 @@
                                                 <span class="flag">NEW</span>
                                             </div>
                                             <p class="tit">노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀</p>
-                                            <ul class="infos">
+                                            <ul class="options">
                                                 <li>2020.07.20</li>
                                                 <li>조회 4,129</li>
                                             </ul>

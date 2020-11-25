@@ -1,9 +1,6 @@
 .list-sorting {
     @include clearfix;
-    padding: 26px 0 12px;
-    &.no-pt {
-        padding-top:0;
-    }
+    padding-bottom:12px;
 
     .check-soldout {
         float: right;
@@ -25,7 +22,7 @@
         .sort-list {
             font-size:0;
             .sort-select-wrap {
-                margin-left:24px;
+                margin-left:42px;
                 &:first-child {
                     margin-left:0;
                 }
@@ -34,23 +31,13 @@
     }
     .list-count {
         float: left;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 24px;
-        color: #111;
+        font-weight: 700;
+        @include font-small;
+        color: #222;
+    }
+    .sort-tit {
+        @include font-small;
+        color:#222;
+        font-weight:700;
     }
 }
-/*
-@media screen and (max-width: 1780px) {
-    .btn-filter {
-        position: absolute;
-        top: 29px;
-        left: 0;
-        & + .list-sorting {
-            padding-left: 48px;
-            @include mobile {
-                padding: 26px 0 62px 38px;
-            }
-        }
-    }
-}*/

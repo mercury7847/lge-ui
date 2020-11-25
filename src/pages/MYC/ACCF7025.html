@@ -32,7 +32,7 @@
                                         <dt class="tit"><label for="slt1">계약정보 선택</label></dt>
                                         <dd class="conts">
                                             <div class="select-wrap">
-                                                <select class="ui_selectbox" id="slt1" title="전체 카테고리 선택">
+                                                <select class="ui_selectbox" id="slt1">
                                                     <option value="">건조기 (RH9WGANR) 계약번호 (12345678)</option>
                                                 </select>
                                             </div>
@@ -473,17 +473,5 @@
         
         @@include('./common/footer.html')
     </div>
-
-    <!-- 제휴카드 발급 신청 popup -->
-    @@include('./common/popup/ACCF7025_pop1.html', {
-        popupID: 'popup1'
-    })
-    <!-- // 제휴카드 발급 신청 popup -->
-
-    <!-- 자동결제 이용 약관 동의 popup -->
-    @@include('./common/popup/RMSF9001_pop8.html', {
-        popupID: 'popup-selfClearing'
-    })
-    <!-- //자동결제 이용 약관 동의 popup -->
 </body>
 </html>

@@ -33,7 +33,7 @@ var res = {
 	},
 	"Front" : {
 		"Component" : {
-			"KRC0001_Selective offering (Home)_Dynamic" : ["/html/components/KRC0001.html","_blank:width=1000, height=800, location=no, menubar=no, status=no, toolbar=no","검수완료"],
+			"KRC0001_Selective offering (Home)_Dynamic" : ["/html/components/KRC0001.html","","검수완료"],
 			//"KRC0002_Selective offering" : ["/html/components/KRC0002.html","","진행중"],
 			"KRC0003_Vertical Selector" : ["/html/components/KRC0003.html","","검수완료"],
 			//"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
@@ -187,10 +187,10 @@ var res = {
 					// "취소신청팝업, alert" : ["/html/MYC/ACCF7002_popup.html","","진행중"],
 				},
 				"케어솔루션" : {
-					"월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
+					// "월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
 					"계약현황" : ["/html/MYC/ACCF7025.html","","진행중"],
-					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7025-2.html","","진행중"],
 					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","진행중"],
+					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","진행중"],
 					"납부내역" : ["/html/MYC/ACCF7027.html","","진행중"],
 					"방문 알리미" : ["/html/MYC/ACCF7030.html","","진행중"],
 					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]

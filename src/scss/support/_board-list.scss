@@ -150,78 +150,67 @@
 
 /* list */
 .list-wrap {
-    .list {
-        > li {
+    .tit {
+        @include font-medium;
+        font-weight:700;
+        a, button {
+            font-size:inherit;
+            font-weight:inherit;
+            line-height:inherit;
+            vertical-align:top;
+            text-align:left;
+        }
+    }
+    .desc {
+        color:#767676;
+        @include font-small;
+    }
+    .options {
+        color:#767676;
+        @include font-small;
+        @include clearfix;
+        & > li {
             position:relative;
-            margin-top:8px;
-            border-radius:4px;
-            background:#fff;
-            &:first-child {
-                margin-top:0;
+            float:left;
+            margin-right:8px;
+            padding-right:9px;
+            &:after {
+                content:'';
+                position:absolute;
+                top:7px;
+                right:0;
+                width:1px;
+                height:10px;
+                background:#ddd;
             }
-            &.video-type {
-                a {
-                    position:relative;
-                    padding-right:160px;
-                }
-                .icon-movie {
-                    position:absolute;
-                    right:56px;
-                    top:50%;
-                    width:64px;
-                    height:64px;
-                    background:url('/lg5-common/images/icons/icon-movie.svg') no-repeat;
-                    background-size:100%;
-                    transform:translateY(-50%);
-                }
-            }
-        }
-        .item {
-            display:block;
-            // padding:32px 56px;
-        }
-        .flag-wrap {
-            margin-bottom:5px;
-        }
-        .tit {
-            display:block;
-            font-size:18px;
-            font-weight:700;
-            line-height:26px;
-            word-break:keep-all;
-        }
-        .desc {
-            margin-top:4px;
-            line-height:24px;
-            word-break:keep-all;
-        }
-        .infos {
-            @include clearfix;
-            > li {
-                float:left;
-                color:#767676;
-                font-size:14px;
-                line-height:24px;
-                & + li {
-                    position:relative;
-                    margin-left:8px;
-                    padding-left:9px;
-                    &:before {
-                        content:'';
-                        position:absolute;
-                        left:0;
-                        top:6px;
-                        width:1px;
-                        height:14px;
-                        background:#ddd;
-                    }
+            &:last-child {
+                margin:0;
+                padding:0;
+                &:after {
+                    content:none;
                 }
             }
         }
     }
-    @include pc {
-        .list .tit {
-            //@include textEllipsis;
+    @include mobile {
+        .options {
+            & > li {
+                margin-right:6px;
+                padding-right:7px;
+                &:after {
+                    top:6px;
+                }
+            }
+        }
+    }
+    
+    .list {
+        > li {
+            position:relative;
+            border-bottom:1px solid #ddd;
+        }
+        .item {
+            display:block;
         }
     }
     @include mobile {
@@ -245,7 +234,7 @@
                 // padding:24px 20px;
             }
             .flag-wrap {
-                margin-bottom:8px;
+                margin-bottom:4px;
             }
             .tit {
                 font-size:14px;
@@ -253,6 +242,7 @@
                 @include textEllipsisClamp(2);
             }
             .desc {
+                margin-top: 12px;
                 font-size:12px;
                 line-height:16px;
             }
@@ -273,22 +263,34 @@
 
     &.icon-type {
         .list {
+            border-top: 2px solid #222;
             > li {
                 a {
                     position:relative;
-                    padding-left:168px;
+                    padding:24px 0 24px 120px;
+                    border-bottom: 1px solid #ddd;
                     &:before {
                         content:'';
                         position:absolute;
-                        left:56px;
+                        left:0;
                         top:50%;
                         width:80px;
                         height:80px;
                         border-radius:100%;
-                        background-color:#ccc;
                         background-repeat:no-repeat;
                         background-size:100%;
                         transform:translateY(-50%);
+                    }
+                    .flag-wrap {
+                        margin-bottom:2px;
+                    }
+                    .options {
+                        margin-top:12px;
+                    }
+                    @include pc {
+                        .list .tit {
+                            @include textEllipsisClamp(2);
+                        }
                     }
                 }
                 &.icon-call a:before {
@@ -306,79 +308,37 @@
                 &.icon-set a:before {
                     background-image:url('/lg5-common/images/icons/icon-cs-call.png');
                 }
+                &.icon-mail a:before {
+                    background-image:url('/lg5-common/images/icons/icon-service-usage1.svg');
+                }
+                &.icon-phone a:before {
+                    background-image:url('/lg5-common/images/icons/icon-service-usage2.svg');
+                }
             }
         }
         @include mobile {
             .list {
                 > li {
                     a {
-                        padding-left:72px;
+                        padding:16px 0 16px 80px;
                         &:before {
-                            left:20px;
-                            top:50px;
-                            width:40px;
-                            height:40px;
+                            left:0;
+                            top:16px;
+                            width:60px;
+                            height:60px;
                             transform:translateY(0);
                         }
+                        .options {
+                            li {
+                                float:none;
+                                margin:0;
+                                padding:0;
+                                &:before {
+                                    display:none;
+                                }
+                            }
+                        }
                     }
-                }
-            }
-            .infos {
-                & + li {
-                    margin:0;
-                    padding:0;
-                    &:before {
-                        display:none;
-                    }
-                }
-            }
-        }
-    }
-    &.btn-type {
-        .list {
-            > li {
-                margin-top:12px;
-                border-radius:8px;
-                box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.26);
-                .item {
-                    padding:32px 230px 32px 32px;
-                }
-            }
-            .tit {
-                font-size:16px;
-                line-height:24px;
-                white-space:normal;
-            }
-            .btns-wrap {
-                position:absolute;
-                right:32px;
-                top:50%;
-                font-size:0;
-                transform:translateY(-50%);
-                .btn {
-                    & + .btn {
-                        margin-left:4px;
-                    }
-                }
-            }
-        }
-        @include mobile {
-            .list {
-                > li {
-                    .item {
-                        padding:20px;
-                    }
-                }
-                .tit {
-                    display:block;
-                    font-size:14px;
-                    line-height:18px;
-                }
-                .btns-wrap {
-                    position:static;
-                    margin-top:12px;
-                    text-align:center;
-                    transform:translateY(0);
                 }
             }
         }
@@ -413,11 +373,12 @@
                     margin-bottom:4px;
                 }
                 .tit {
-                    margin-bottom:8px;
-                    font-size:18px;
+                    @include font-large;
                     font-weight:700;
-                    line-height:26px;
                     @include textEllipsisClamp(2);
+                }
+                .options {
+                    margin-top:8px;
                 }
             }
         }
@@ -435,10 +396,10 @@
                         margin-bottom:2px;
                     }
                     .tit {
-                        margin-bottom:4px;
-                        font-size:15px;
                         font-weight:500;
-                        line-height:23px;
+                    }
+                    .options {
+                        margin-top:3px;
                     }
                 }
             }

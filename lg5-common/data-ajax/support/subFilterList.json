@@ -5,8 +5,8 @@
         "title": "기능",
         "filterList": [
             {
-                "topic": "ALL",
-                "code": "ALL"
+                "topic": "All",
+                "code": "All"
             },
             {
                 "topic": "퀵 헬프 방법",

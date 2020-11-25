@@ -12,10 +12,12 @@
 		&:first-child {
 			margin-left:0;
 		}
-
 		&.gray {
 			border-color:#616161;
 			color:#616161;
+		}
+		&.green {
+			color: #3b9792;
 		}
 		&.end {
 			border-color:#CCCCCC;
