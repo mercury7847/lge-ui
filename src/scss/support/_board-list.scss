@@ -260,7 +260,6 @@
                         top:50%;
                         width:80px;
                         height:80px;
-                        border-radius:100%;
                         background-repeat:no-repeat;
                         background-size:100%;
                         transform:translateY(-50%);
@@ -288,10 +287,22 @@
                     background-image:url('/lg5-common/images/icons/icon-cs-call.png');
                 }
                 &.icon-mail a:before {
-                    background-image:url('/lg5-common/images/icons/icon-service-usage1.svg');
+                    background-image:url('/lg5-common/images/icons/icon-03-80.svg');
                 }
                 &.icon-phone a:before {
-                    background-image:url('/lg5-common/images/icons/icon-service-usage2.svg');
+                    background-image:url('/lg5-common/images/icons/icon-01-80.svg');
+                }
+                &.icon-chat a:before {
+                    background-image:url('/lg5-common/images/icons/icon-02-80.svg');
+                }
+                &.icon-trip a:before {
+                    background-image:url('/lg5-common/images/icons/icon-04-80.svg');
+                }
+                &.icon-center a:before {
+                    background-image:url('/lg5-common/images/icons/icon-06-80.svg');
+                }
+                &.icon-store a:before {
+                    background-image:url('/lg5-common/images/icons/icon-05-80.svg');
                 }
             }
         }

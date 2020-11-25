@@ -4,18 +4,26 @@
         componentID: "KRP0012",
         isJScompile: true
     })
-<body>
+<body style="background-color:#f4f4f4;">
     <div class="wrap">
         <div class="container">
             
             <div style="width:100%;height:200px;"></div>
+            <!-- anchor tab -->
+            @@include('./common/partials/KRP0012.html', {
+                "component-class.margin" : "zero-top zero-btm",
+                "tabMenu" : {
+                    careSolution : true
+                },
+                "type": "anchor"
+            })
+            <!-- //anchor tab -->
 
             <!-- 품절제품-->
             @@include('./common/partials/KRP0012.html', {
                 "component-class.margin" : "zero-top zero-btm",
                 "product" : {
-                    "name" : "LG TROMM 스타일러",
-                    "price" : "<span class='number'>1,999,000원</span>"
+                    "name" : "LG TROMM 스타일러LG TROMM 스타일러LG TROMM 스타일러"
                 },
                 "tabMenu" : {
                     careSolution : true
@@ -25,7 +33,9 @@
                     "style2" : "disabled",
                     "text" : "품절",
                     "link-url" : "#"
-                }
+                },
+                "type": "sticky",
+                "type-btn": "type-btn"
             })
             <!-- //품절제품 -->
             <div style="width:100%;height:2000px;"></div> <!-- 스크롤테스트를 위한 임시 돔. 개발시 삭제-->

@@ -55,7 +55,12 @@
             }
         </li>
         <li>
+            @@if ( context.sect4 ) {
+            <a href="#n" class="my-dep1 on">보유 제품 등록</a>
+            }
+            @@if ( !context.sect4 ) {
             <a href="#n" class="my-dep1">보유 제품 등록</a>
+            }
         </li>
         <li>
             <a href="#n" class="my-dep1">고객지원 관리</a>

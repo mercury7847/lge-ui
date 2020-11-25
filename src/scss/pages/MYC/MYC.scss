@@ -129,6 +129,14 @@
                         }
                     }
                 }
+                &.type2 {
+                    height:auto;
+                    margin-bottom:12px;
+                    border-bottom:none;
+                    .tit {
+                        @include font-large;
+                    }
+                }
             }
             // contents
             .section-inner {

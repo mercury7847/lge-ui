@@ -382,3 +382,31 @@
         color: #ec455a;
     }
 }
+
+//section title
+.section-title{
+    .tit{
+        @include font-large;
+        margin-top:48px;
+        margin-bottom:16px;
+    }
+}
+.contents-inner-title{
+    border-bottom:2px solid #222;
+    padding-bottom:16px;
+    .tit{
+        @include font-large-1;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .page-visual .heading-title{
+        word-break:keep-all;
+    }
+
+    .section-title{
+        .tit{
+            margin-top:20px;
+        }
+    }
+}
