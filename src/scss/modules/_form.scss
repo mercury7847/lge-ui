@@ -681,6 +681,7 @@
     .chk-desc{
         color:#767676;
         @include font-small;
+        font-weight:normal;
         margin-left:24px;
     }
 }
