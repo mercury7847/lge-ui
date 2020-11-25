@@ -415,19 +415,18 @@
             console.log("step2Validation.validate(); Success!!!");
 
             var data = getInputData('installAbled');
-            console.log("installAbled :", data);
+            console.log("setStep2Validation() > installAbled :", data);
 
             var chk = false;
             if(data == "Y"){
                 chk = compareInstallAdress();
+                console.log("chk :", chk)
             }
 
             if(!chk){
                 lgkorUI.alert("", {
                     title: "설치 가능여부 확인이 필요합니다."
                 });
-
-                step2Block.find('.install-abled').remove();
             }
 
             completed = chk;
@@ -480,16 +479,23 @@
             userAddress: values.userAddress,
             detailAddress: values.detailAddress
         }
+        console.log("setInstallAdress() >", installAdress)
     }
     //저장한 배송지역 주소 비교...
     function compareInstallAdress(){
         var chk = 0;
         var values = step2Validation.getValues();
         for(var str in installAdress){
+            console.log("=========================================")
+            console.log("installAdress[", str, '] :', installAdress[str])
+            console.log("values[", str, '] :', values[str])
+            console.log("=========================================")
             if(installAdress[str] !== values[str]) break;
-
+            console.log("OK~~~")
             chk++;
         }
+
+        console.log("compareInstallAdress(); > chk :", chk)
 
         if(chk < 3) return false;
         else return true;
@@ -520,12 +526,12 @@
 
         lgkorUI.requestAjaxData(INSTALL_ABLED_URL, sendata, function(result){
             console.log("success :", result.data.success);
+            var abled = "N";
             if(result.data.success == "Y"){
                 lgkorUI.alert(result.data.alert.desc, {
                     title: result.data.alert.title
                 });
-                setInstallAdress();
-                setInputData('installAbled', 'Y');
+                abled = "Y";
             } else{
                 if(result.data.productStatus){
                     console.log("productStatus :", result.data.productStatus);
@@ -543,6 +549,10 @@
                     }
                     console.log("productPriceInfo :", result.data.productPriceInfo);
                     requestInfoBlock.updatePaymentInfo(result.data.productPriceInfo);
+
+                    var total = parseInt(result.data.productPriceInfo.total.count);
+                    console.log('total :', total)
+                    if(total) abled = "Y";
                 }
                 
                 lgkorUI.confirm(result.data.alert.desc, {
@@ -557,9 +567,13 @@
                         location.href = result.data.alert.rightUrl;
                     } : ""
                 });
-
-                setInputData('installAbled', 'N');
             } 
+
+            console.log("setInstallAbledConfirm() abled :", abled);
+            
+            if(abled == "Y") setInstallAdress();
+            
+            setInputData('installAbled', abled);
         });
     }
 
