@@ -5,12 +5,11 @@
     "data": {
         "success": "N",
         "alert":{
-            "isConfirm":true,
             "title":"설치 불가능 안내",
             "desc": "수질로 인한 설치불가지역으로 확인되어, 정수기, 얼음정수기냉장고의 청약 신청이 불가능합니다. 설치가능 제품만 청약 신청하시고자 할 경우 [가능 제품만 청약]으로 계속 진행해 주세요.",
             "leftBtnName":"장바구니로 이동",
-            "rightBtnName":"가능 제품만 청약",
             "leftUrl": "http://www.lge.co.kr",
+            "rightBtnName":"가능 제품만 청약",
             "rightUrl":""
         },
         "productStatus": [
@@ -31,24 +30,27 @@
             }
         ],
         "productPriceInfo": {
-            "paymentInfo": {
-                "total":{
-                    "count": "0",
-                    "price": "0"
+            "total":{
+                "count": "1",
+                "price": "43800"
+            },
+            "list":[
+                {
+                    "text": "제품 수",
+                    "price": "1개",
+                    "appendClass": ""
                 },
-                "list":[
-                    {
-                        "text": "제품 수",
-                        "price": "0개",
-                        "appendClass": "num"
-                    },
-                    {
-                        "text": "이용요금",
-                        "price": "월 0원",
-                        "appendClass": ""
-                    }
-                ]
-            }
+                {
+                    "text": "이용요금",
+                    "price": "월 48,800원",
+                    "appendClass": ""
+                },
+                {
+                    "text": "결합할인 금액",
+                    "price": "월 -5,000원",
+                    "appendClass": "sale"
+                }
+            ]
         }
     }
 }

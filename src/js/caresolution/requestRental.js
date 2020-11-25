@@ -1,26 +1,3 @@
-
-        // "success": "Y",
-        // "alert":{
-        //     "isConfirm":false,
-        //     "title":"설치 가능 안내",
-        //     "desc": "해당 주소는 서비스 이용이<br>가능한 지역입니다.",
-        //     "leftBtnName":"확인",
-        //     "rightBtnName":null,
-        //     "rightUrl":""
-        // }
-
-
-        // "success": "N",
-        // "alert":{
-        //     "isConfirm":true,
-        //     "title":"설치 불가능 안내",
-        //     "desc": "미제공 요금제가 적용된 제품이 포함되어 있어, 청약 신청이 불가능합니다. 해당 제품을 장바구니에서 비운 후 다시 시도해주세요.",
-        //     "leftBtnName":"확인",
-        //     "rightBtnName":"장바구니로 이동",
-        //     "rightUrl":"http://lge.co.kr"
-        // }
-
-
 (function(){
     var CREDIT_INQUIRE_URL;
     var INSTALL_ABLED_URL;
@@ -48,11 +25,7 @@
 
     var step = 0;
 
-    //var isPostCode = false;
-
-    var addHtmls = {
-        installAbled: '<p class="comp">설치 가능 지역</p>'
-    }
+    var installAdress = {}
 
     function init(){
         console.log("requestRental Start!!!");
@@ -75,11 +48,6 @@
         step3Block = $('.requestRentalForm ul li:nth-child(3)');
 
         requestInfoBlock = new CareCartInfo('div.col-right', '.requestRentalForm');
-        // requestInfoY = requestInfoBlock.offset().top;
-        // if(!vcui.detect.isMobile){
-        //     requestInfoBlock.data('infoHidden', true);
-        //     requestInfoBlock.find('.item-info').hide();
-        // }
 
         $('.agree-box').vcCheckboxAllChecker();
         requestAgreeChecker = $('.agree-box').vcCheckboxAllChecker('instance');
@@ -435,7 +403,7 @@
             console.log("step1Validation.validate(); Fail!!!", result.validItem);
         }
 
-        return true;
+        return completed;
     }
 
     //설치 정보 입력 밸리데이션...
@@ -448,7 +416,21 @@
 
             var data = getInputData('installAbled');
             console.log("installAbled :", data);
-            completed= data === "Y" ? true : false;
+
+            var chk = false;
+            if(data == "Y"){
+                chk = compareInstallAdress();
+            }
+
+            if(!chk){
+                lgkorUI.alert("", {
+                    title: "설치 가능여부 확인이 필요합니다."
+                });
+
+                step2Block.find('.install-abled').remove();
+            }
+
+            completed = chk;
         } else{
             console.log("step2Validation.validate(); Fail!!!", result.validItem);
         }
@@ -490,8 +472,41 @@
         return true;
     }
 
+    //배송지역 주소 저장...
+    function setInstallAdress(){
+        var values = step2Validation.getValues(); 
+        installAdress = {
+            zipCode: values.zipCode,
+            userAddress: values.userAddress,
+            detailAddress: values.detailAddress
+        }
+    }
+    //저장한 배송지역 주소 비교...
+    function compareInstallAdress(){
+        var chk = 0;
+        var values = step2Validation.getValues();
+        for(var str in installAdress){
+            if(installAdress[str] !== values[str]) break;
+
+            chk++;
+        }
+
+        if(chk < 3) return false;
+        else return true;
+    }
+
     //설치 가능여부 확인...
     function setInstallAbledConfirm(){
+        var values = step2Validation.getValues();
+        if(values.zipCode == "" || values.userAddress == "" || values.detailAddress == ""){
+            lgkorUI.alert('', {
+                title:'상세주소를 입력해주세요.'
+            });
+
+            return;
+        }
+
+        installAdress = {};
 
         var code = [];
         $('.order-list li').each(function(idx, item){
@@ -502,24 +517,18 @@
             waterTestYn: getInputData('waterTestYn'),
             zipCode: step2Validation.getValues("zipCode")
         }
-        console.log(sendata)
-        // var values = step2Validation.getValues();
-        // if(values.zipCode == "" || values.userAddress == ""){
-        //     lgkorUI.alert('', {
-        //         title:'상세주소를 입력해주세요.'
-        //     });
-
-        //     return;
-        // }
 
         lgkorUI.requestAjaxData(INSTALL_ABLED_URL, sendata, function(result){
+            console.log("success :", result.data.success);
             if(result.data.success == "Y"){
                 lgkorUI.alert(result.data.alert.desc, {
                     title: result.data.alert.title
                 });
+                setInstallAdress();
                 setInputData('installAbled', 'Y');
             } else{
                 if(result.data.productStatus){
+                    console.log("productStatus :", result.data.productStatus);
                     for(var str in result.data.productStatus){
                         var modelID = result.data.productStatus[str].modelID;
                         var installAbled = result.data.productStatus[str].installAbled;
@@ -532,7 +541,7 @@
                             requestInfoBlock.setItemInfoDisabled(modelID, true)
                         }
                     }
-
+                    console.log("productPriceInfo :", result.data.productPriceInfo);
                     requestInfoBlock.updatePaymentInfo(result.data.productPriceInfo);
                 }
                 

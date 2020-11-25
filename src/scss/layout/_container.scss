@@ -195,6 +195,9 @@
     padding:160px 0;
     background-color: #fff;
     text-align:center;
+    @include mobile {
+        padding:40px 0;
+    }
     &.mg-type {
         padding:0;
         margin:140px 0;

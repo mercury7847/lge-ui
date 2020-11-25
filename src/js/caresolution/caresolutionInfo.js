@@ -51,7 +51,7 @@ var CareCartInfo = (function() {
                     {
                         "text": "제품 수",
                         "price": "0개",
-                        "appendClass": "num"
+                        "appendClass": ""
                     },
                     {
                         "text": "이용요금",
