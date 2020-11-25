@@ -33,7 +33,7 @@ var res = {
 	},
 	"Front" : {
 		"Component" : {
-			"KRC0001_Selective offering (Home)_Dynamic" : ["/html/components/KRC0001.html","_blank:width=1000, height=800, location=no, menubar=no, status=no, toolbar=no","검수완료"],
+			"KRC0001_Selective offering (Home)_Dynamic" : ["/html/components/KRC0001.html","","검수완료"],
 			//"KRC0002_Selective offering" : ["/html/components/KRC0002.html","","진행중"],
 			"KRC0003_Vertical Selector" : ["/html/components/KRC0003.html","","검수완료"],
 			//"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
