@@ -188,11 +188,11 @@ var res = {
 				},
 				"케어솔루션" : {
 					// "월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
-					"계약현황" : ["/html/MYC/ACCF7025.html","","진행중"],
-					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","진행중"],
-					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","진행중"],
-					"납부내역" : ["/html/MYC/ACCF7027.html","","진행중"],
-					"방문 알리미" : ["/html/MYC/ACCF7030.html","","진행중"],
+					"계약현황" : ["/html/MYC/ACCF7025.html","","검수요청"],
+					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","검수요청"],
+					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","검수요청"],
+					"납부내역" : ["/html/MYC/ACCF7027.html","","검수요청"],
+					"방문 알리미" : ["/html/MYC/ACCF7030.html","","검수요청"],
 					// "방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]
 				},
 				"관심목록" : {
