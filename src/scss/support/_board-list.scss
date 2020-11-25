@@ -151,6 +151,7 @@
 /* list */
 .list-wrap {
     .tit {
+        display:block;
         @include font-medium;
         font-weight:700;
         a, button {
@@ -205,22 +206,32 @@
     }
     
     .list {
+        border-top:1px solid #ddd;
         > li {
             position:relative;
             border-bottom:1px solid #ddd;
+            &.video-type {
+                .item {
+                    padding-right:91px;
+                }
+                .icon-movie {
+                    right:20px;
+                    width:56px;
+                    height:56px;
+                }
+            }
+            .item {
+                display:block;
+                padding:24px 0;
+                .tit {
+                    @include textEllipsisClamp(2);
+                }
+            }
         }
-        .item {
-            display:block;
-        }
-    }
-    @include mobile {
-        .list {
-            > li {
-                margin-top:4px;
-                border-radius:0px;
-                background:#fff;   
+        @include mobile {
+            & > li {   
                 &.video-type {
-                    a {
+                    .item {
                         padding-right:91px;
                     }
                     .icon-movie {
@@ -229,36 +240,11 @@
                         height:56px;
                     }
                 }
-            }
-            .item {
-                // padding:24px 20px;
-            }
-            .flag-wrap {
-                margin-bottom:4px;
-            }
-            .tit {
-                font-size:14px;
-                line-height:18px;
-                @include textEllipsisClamp(2);
-            }
-            .desc {
-                margin-top: 12px;
-                font-size:12px;
-                line-height:16px;
-            }
-            .infos {
-                li {
-                    line-height:22px;
-                    & + li {
-                        &:before {
-                            width:1px;
-                            height:10px;
-                        }
-
-                    }
+                .item {
+                    padding:16px 0;
                 }
             }
-        } 
+        }
     }
 
     &.icon-type {
@@ -267,8 +253,7 @@
             > li {
                 a {
                     position:relative;
-                    padding:24px 0 24px 120px;
-                    border-bottom: 1px solid #ddd;
+                    padding-left:120px;
                     &:before {
                         content:'';
                         position:absolute;
@@ -276,7 +261,6 @@
                         top:50%;
                         width:80px;
                         height:80px;
-                        border-radius:100%;
                         background-repeat:no-repeat;
                         background-size:100%;
                         transform:translateY(-50%);
@@ -286,11 +270,6 @@
                     }
                     .options {
                         margin-top:12px;
-                    }
-                    @include pc {
-                        .list .tit {
-                            @include textEllipsisClamp(2);
-                        }
                     }
                 }
                 &.icon-call a:before {
@@ -309,10 +288,22 @@
                     background-image:url('/lg5-common/images/icons/icon-cs-call.png');
                 }
                 &.icon-mail a:before {
-                    background-image:url('/lg5-common/images/icons/icon-service-usage1.svg');
+                    background-image:url('/lg5-common/images/icons/icon-03-80.svg');
                 }
                 &.icon-phone a:before {
-                    background-image:url('/lg5-common/images/icons/icon-service-usage2.svg');
+                    background-image:url('/lg5-common/images/icons/icon-01-80.svg');
+                }
+                &.icon-chat a:before {
+                    background-image:url('/lg5-common/images/icons/icon-02-80.svg');
+                }
+                &.icon-trip a:before {
+                    background-image:url('/lg5-common/images/icons/icon-04-80.svg');
+                }
+                &.icon-center a:before {
+                    background-image:url('/lg5-common/images/icons/icon-06-80.svg');
+                }
+                &.icon-store a:before {
+                    background-image:url('/lg5-common/images/icons/icon-05-80.svg');
                 }
             }
         }
@@ -320,7 +311,7 @@
             .list {
                 > li {
                     a {
-                        padding:16px 0 16px 80px;
+                        padding-left:80px;
                         &:before {
                             left:0;
                             top:16px;
@@ -344,13 +335,6 @@
         }
     }
     &.thumb-type {
-        .list {
-            border-top:1px solid #ddd;
-            > li {
-                padding:24px 0;
-                border-bottom:1px solid #ddd;
-            }
-        }
         .item {
             display:table;
             width:100%;
@@ -375,7 +359,6 @@
                 .tit {
                     @include font-large;
                     font-weight:700;
-                    @include textEllipsisClamp(2);
                 }
                 .options {
                     margin-top:8px;
@@ -383,11 +366,6 @@
             }
         }
         @include mobile {
-            .list {
-                > li {
-                    padding:16px 0;
-                }
-            }
             .item {
                 padding:0;
                 &-conts {

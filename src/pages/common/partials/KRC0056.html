@@ -1,55 +1,38 @@
 <!-- components/partials/KRC0056.html -->
-
-<section class="component KRC0056">
-	@@if (context.type === "bg-image") {
-	<div class="bg-text-wrap @@themeColor">
-	} @@if (context.type === "bg-animation") {
-	<div class="bg-text-wrap animation-box @@themeColor">
-	}
-		<div class="text-area">
-			@@for (var i = 0; i < items.length; i++) {
-				<div class="item-wrap `+items[i].align+`">
-					<div class="item-inner">
-						<div class="thumbnail">
-							<img src="`+items[i].thumbnail+`" alt="`+items[i].thumbnailAlt+`">
-							<p class="hidden">graphic description : </p>
-						</div>
-						<div class="item-info">
-							<div class="item-tit">
-								`+items[i].itemTitle+`
-							</div>
-							<strong class="item-stit">`+items[i].itemSubTitle+`</strong>
-							<p class="item-txt">`+items[i].itemText+`</p>
-							<div class="item-btns">더보기</div>
-						</div>
-						@@include('./common/modules/bullet-list.html', {
-							"bulletTxt" : [
-								"`+items[i].itemBullet+`",
-							]
-						})
-					</div>
-				</div>
-			}
-		</div>
-
-		@@if (context.type === "bg-image") {
-		<div class="visual-area">
-			<span class="bg ui_bg_switch" data-pc-src="@@imgUrlPC" data-m-src="@@imgUrlMO" aria-hidden="true"></span>
-		</div>
-		} @@if (context.type === "bg-animation") {
-		<div class="animation-area">
-			<video autoplay="" muted="" loop="">
-				<source src="@@aniUrl" type="video/mp4">
-				<!-- WEBM 동영상을 제공하는 경우
-				<source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
-				-->
-			</video>
-			<div class="controller-wrap wa-btn">
-				<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" aria-describedby="title01" tabindex="">Pause Video</button>
-				<!-- <button class="play" name="play" data-link-area="carousel_bg_image-animation_play" data-link-name="">Play Video</button> -->
+<div class="component-wrap">
+	<section class="component KRC0056 @@pageSize">
+		<div class="size-inner">
+			<!-- 이미지/애니메이션 -->
+			<div class="visual-area image">
+				<img src="/lg5-common/images/KRC0056/@KRC0056-BG.jpg" alt="">
+				<p class="hidden pc">graphic description : </p>
 			</div>
-		</div>
-		}
+			<!-- // 이미지/애니메이션 -->
 
-	</div>
-</section>
+			<!-- 텍스트 -->
+			<div class="text-set-wrap">
+				<!-- text set -->
+				<div class="text-set section-a">
+					<div id="title01" class="title">
+						<h2>타이틀 텍스트 최대 30자까지 사용가능</h2>
+					</div>
+					<p class="sub-tit">서브타이틀 공백포함 최대 40자 이내에서 사용가능합니다.</p>
+					<p class="body-copy">바디카피 공백포함 최대 120자 이내에서 사용가능합니다. 바디카피 공백포함 최대 120자 이내에서 사용가능합니다.</p>
+					<div class="cta-box">
+						<a href="#n" target="_blank" class="btn border" aria-describedby="title01">자세히 보기</a>
+					</div>
+					<div class="thumbnail-box">
+						<img src="/lg5-common/images/KRC0056/@KRC0056-img-thumbnail.jpg" alt="">
+						<p class="hidden pc">graphic description : </p>
+					</div>
+					<ul class="bullet-list">
+						<li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다. 단, 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
+						<li class="b-txt">디스클레이머 텍스트 영역내에서 자유롭게 사용가능합니다. 단, 모바일 영역을 고려하여 너무 긴 텍스트는 지양합니다.</li>
+					</ul>
+				</div>
+				<!-- // text set -->
+			</div>
+			<!-- // 텍스트 -->
+		</div>
+	</section>
+</div>
