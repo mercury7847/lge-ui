@@ -324,5 +324,18 @@
                 }
             }
         }
+        .prod-spec-detail {
+            display:none;
+            &.open {
+                display:block;
+            }
+            .box:first-child {
+                padding-top:48px;
+                border-top:1px solid #ddd;
+                @include mobile {
+                    padding-top:40px;
+                }
+            }
+        }
     }
 }
