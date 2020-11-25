@@ -25,6 +25,7 @@
                             ]
                         })
                         <div class="lnb-contents">
+                            <!-- 계약정보가 있을 때 -->
                             <!-- 계약정보 -->
                             <div class="my-contract-info">
                                 <h4 class="tit">이케어 고객님 안녕하세요!</h4>
@@ -45,13 +46,11 @@
                             <!-- // 계약정보 -->
 
                             <!-- 서비스 내역 알림 -->
-                            <div class="sects">
-                                <div class="service-info-txt">
-                                    <div class="tit">
-                                        <p>최근 <em>5월 11일에 매니저가 방문</em>하여 <em class="red">정수기(WD502AP) 외 2건</em> 서비스를 받으셨습니다.</p>
-                                    </div>
-                                    <p class="desc">고객님과 케어솔루션 매니저가 만나는 다음 일정은 아래와 같습니다.</p>
+                            <div class="service-info-txt">
+                                <div class="tit">
+                                    <p>최근 <em>5월 11일에 매니저가 방문</em>하여 <em class="red">정수기(WD502AP) 외 2건</em> 서비스를 받으셨습니다.</p>
                                 </div>
+                                <p class="desc">고객님과 케어솔루션 매니저가 만나는 다음 일정은 아래와 같습니다.</p>
                             </div>
                             <!-- // 서비스 내역 알림 -->
 
@@ -78,6 +77,8 @@
                                                                     <li>정수기</li>
                                                                     <li>공기청정기</li>
                                                                     <li>건조기</li>
+                                                                    <li>건조기2</li>
+                                                                    <li>건조기3</li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -92,7 +93,9 @@
                                                                     <li>건조기(12341234) - 설치</li>
                                                                 </ul>
                                                             </div>
-                                                            <span class="more-view" aria-hidden="true">내역 더보기</span>
+                                                            <div class="more-view-wrap" aria-hidden="true">
+                                                                <span class="more-view">내역 더보기</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -131,7 +134,9 @@
                                                                     <li>건조기(12341234) - 설치</li>
                                                                 </ul>
                                                             </div>
-                                                            <span class="more-view open" aria-hidden="true">닫기</span>
+                                                            <div class="more-view-wrap" aria-hidden="true">
+                                                                <span class="more-view open">닫기</span>
+                                                            </div>
                                                             <button type="button" class="btn size border"><span>방문일정 변경요청</span></button>
                                                         </div>
                                                     </div>
@@ -164,7 +169,9 @@
                                                                     <li>공기청정기(12341234) - 정기정검</li>
                                                                 </ul>
                                                             </div>
-                                                            <span class="more-view" aria-hidden="true" style="display:none">내역 더보기</span>
+                                                            <div class="more-view-wrap" aria-hidden="true" style="display:none;">
+                                                                <span class="more-view">내역 더보기</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -191,6 +198,31 @@
                                 <!-- // 방문 알리미 일정 -->
                             </div>
                             <!-- // 상세 -->
+                            <!-- // 계약정보가 있을 때 -->
+
+                            <!-- 계약정보가 없을 때 no data -->
+                            <div class="my-contract-info">
+                                <h4 class="tit">이케어 고객님 안녕하세요!</h4>
+                                <p class="desc">"고객님, LG전자 케어솔루션과 함께 제품을 관리해보세요!"</p>
+                                <div class="form-wrap">
+                                    <dl class="forms">
+                                        <dt class="tit"><label for="slt2">계약정보 선택</label></dt>
+                                        <dd class="conts">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="slt2">
+                                                    <option value="" class="placeholder">선택</option>
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="section-wrap">
+                                <div class="no-data">
+                                    <p>보유하신 케어솔루션 계약 정보가 없습니다.</p>
+                                </div>
+                            </div>
+                            <!-- // 계약정보가 없을 때 no data -->
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,9 @@
 .service-info-txt {
     margin:64px 0;
     text-align:center;
+    @include mobile {
+        margin:40px 0;
+    }
     .tit {
         font-size:0;
         &::before {
@@ -11,6 +14,9 @@
             margin:0 12px;
             vertical-align:middle;
             background:url('/lg5-common/images/icons/icon-04-48.svg') no-repeat;
+            @include mobile {
+                margin-bottom:12px;
+            }
         }
         p {
             display:inline-block;
@@ -34,47 +40,11 @@
         @include font-medium;
     }
 }
-// .my-visit-box {
-//     .my-date {
-//         position: relative;
-//         .date-tit {
-//             font-size: 14px;
-//             line-height: 20px;
-//             color: #808080;
-//         }
-//         .date {
-//             font-size: 18px;
-//             line-height: 28px;
-//             color: #616161;
-//             font-weight: 700;
-//         }
-//         .btn {
-//             position: absolute;
-//             top: 50%;
-//             right: 0;
-//             transform: translateY(-50%);
-//         }
-//     }
-//     .next .date {
-//         color: #ec455a;
-//     }
-//     .service-item {
-//         margin-top: 16px;
-//         padding-top: 16px;
-//         border-top: 1px solid #ddd;
-//         li {
-//             font-size: 16px;
-//             line-height: 24px;
-//             color: #222;
-//             margin-top:4px;
-//             &:first-child {
-//                 margin-top: 0;
-//             }
-//         }  
-//     }
-// }
 
 .my-visit-schedule {
+    @include mobile {
+        padding-top:20px;
+    }
     .schedule-list {
         position:relative;
         &::before {
@@ -86,36 +56,23 @@
             width:8px;
             border-radius:4px;
             background:#f4f4f4;
+            @include mobile {
+                left:20px;
+            }
         }
         > li {
             margin-top:19px;
+            @include mobile {
+                margin-top:24px;
+            }
             &:first-child {
                 margin-top:0;
-            }
-
-            // bullet
-            .inner {
-                &::before {
-                    content:' ';
-                    position:absolute;
-                    top:38px;
-                    left:33px;
-                    width:8px;
-                    height:8px;
-                    border-radius:50%;
-                    background:#aaa;
-                }
-            }
-            &.on {
-                .inner::before {
-                    background:#ec455a;
-                }
             }
             &.after {
                 .inner {
                     padding-top:45px;
-                    &::before {
-                        top:89px;
+                    @include mobile {
+                        padding-top:54px;
                     }
                 }
             }
@@ -133,6 +90,10 @@
                     width:26px;
                     height:34px;
                     background:url('/lg5-common/images/icons/icon-alarm2.svg') center no-repeat;
+                    @include mobile {
+                        top:46px;
+                        left:11px;
+                    }
                 }
                 p {
                     position:relative;
@@ -151,6 +112,12 @@
                         width:14px;
                         height:9px;
                         background:url('/lg5-common/images/MYC/bg-offs.svg') center no-repeat;
+                    }
+                    @include mobile {
+                        padding:5px 15px;
+                        &::after {
+                            left:16px;
+                        }
                     }
                 }
             }
@@ -180,26 +147,56 @@
                 &.#{$state} {
                     position:relative;
                     .inner {
-                        position:relative;
                         padding-left:81px;
                         @include clearfix;
+                        @include mobile {
+                            padding-left:56px;
+                        }
                         .svc-info {
                             float:left;
                             width:30.6%;
+                            padding-right:24px;
+                            @include mobile {
+                                float:none;
+                                width:100%;
+                                padding-right:0;
+                            }
                             .date {
+                                position:relative;
                                 @include font-large-2;
                                 color:$fontColor;
                                 font-weight:700;
                                 small {
                                     display:block;
-                                    margin-bottom:2px;
+                                    margin-bottom:5px;
                                     @include font-small;
                                     font-weight:500;
+                                    @include mobile {
+                                        margin-bottom:2px;
+                                    }
+                                }
+                                &::before {
+                                    content:' ';
+                                    position:absolute;
+                                    top:43px;
+                                    left:-48px;
+                                    width:8px;
+                                    height:8px;
+                                    border-radius:50%;
+                                    background:$fontColor;
+                                    @include mobile {
+                                        top:32px;
+                                        left:-36px;
+                                    }
                                 }
                             }
                             .infos {
                                 margin-top:20px;
+                                @include mobile {
+                                    margin-top:12px;
+                                }
                                 ul {
+                                    max-width:200px;
                                     font-size:0;
                                     li {
                                         display:inline-block;
@@ -239,6 +236,13 @@
                                     background:url('/lg5-common/images/icons/icon-error.svg') center no-repeat;
                                     vertical-align:top;
                                 }
+                                @include mobile {
+                                    margin-top:24px;
+                                    &::before {
+                                        margin-top:1px;
+                                        background-size:16px 16px;
+                                    }
+                                }
                             }
                         }
                         .svc-lists {
@@ -249,6 +253,13 @@
                             padding-right:191px;
                             border-radius:8px;
                             box-shadow:2px 4px 16px 0 rgba(#000, .14);
+                            @include mobile {
+                                float:none;
+                                width:100%;
+                                margin-top:24px;
+                                padding:20px;
+                                @include clearfix;
+                            }
                             p {
                                 color:#767676;
                                 @include font-small;
@@ -258,6 +269,10 @@
                                 max-height:138px;
                                 margin-top:16px;
                                 overflow:hidden;
+                                @include mobile {
+                                    max-height:118px;
+                                    margin-top:24px;
+                                }
                                 li {
                                     margin-top:2px;
                                     color:#222;
@@ -269,31 +284,54 @@
                                 &.open {
                                     max-height:240px;
                                     overflow-y:auto;
+                                    @include mobile {
+                                        max-height:200px;
+                                    }
                                 }
                             }
-                            .more-view {
+                            .more-view-wrap {
                                 position:absolute;
                                 top:109px;
                                 right:48px;
-                                padding-right:24px;
-                                color:#767676;
-                                @include font-small;
-                                cursor:pointer;
-                                &::after {
-                                    content:' ';
-                                    position:absolute;
-                                    top:50%;
-                                    right:0;
-                                    width:20px;
-                                    height:20px;
-                                    margin-top:-10px;
-                                    background:url('/lg5-common/images/icons/btn-more-20-gray.svg') no-repeat;
-                                    vertical-align:top;
+                                @include mobile {
+                                    position:relative;
+                                    top:auto;
+                                    right:auto;
+                                    float:right;
+                                    margin-top:20px;
+                                    @if $state == on {
+                                        padding-top:6px;
+                                    }
                                 }
-                                &.open {
-                                    color:#EC455A;
+                                .more-view {
+                                    display:inline-block;
+                                    position:relative;
+                                    width:auto;
+                                    padding-right:24px;
+                                    color:#767676;
+                                    @include font-small;
+                                    cursor:pointer;
+                                    vertical-align:top;
+                                    @include mobile {
+                                        font-size:14px;
+                                        line-height:22px;
+                                    }
                                     &::after {
-                                        background:url('/lg5-common/images/icons/btn-minus-20-pink.svg') no-repeat;
+                                        content:' ';
+                                        position:absolute;
+                                        top:50%;
+                                        right:0;
+                                        width:20px;
+                                        height:20px;
+                                        margin-top:-10px;
+                                        background:url('/lg5-common/images/icons/btn-more-20-gray.svg') no-repeat;
+                                        vertical-align:top;
+                                    }
+                                    &.open {
+                                        color:#EC455A;
+                                        &::after {
+                                            background:url('/lg5-common/images/icons/btn-minus-20-pink.svg') no-repeat;
+                                        }
                                     }
                                 }
                             }
@@ -301,6 +339,13 @@
                                 position:absolute;
                                 top:32px;
                                 right:48px;
+                                @include mobile {
+                                    position:relative;
+                                    top:auto;
+                                    right:auto;
+                                    float:left;
+                                    margin-top:20px;
+                                }
                             }
                         }
                     }
@@ -313,7 +358,7 @@
 .my-visit-qna {
     margin-top: 80px;
     @include mobile {
-        margin-top: 40px;
+        margin-top: 62px;
     }
     ul {
         li {
@@ -334,6 +379,9 @@
                 padding: 24px;
                 @include font-medium;
                 color: #767676;
+                @include mobile {
+                    padding:21px;
+                }
             }
         }
     }
