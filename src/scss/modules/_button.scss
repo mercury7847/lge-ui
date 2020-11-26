@@ -186,11 +186,19 @@
 .btn-moreview {
     display:inline-block;
     font-size:14px;
-    line-height:20px;
+    line-height:24px;
     font-weight:500;
-    text-decoration:underline;
     text-align:center;
     vertical-align:top;
+    &::before {
+        content:' ';
+        display:inline-block;
+        width:20px;
+        height:24px;
+        margin-right:2px;
+        background:url('/lg5-common/images/icons/btn-more-20.svg') center no-repeat;
+        vertical-align:top;
+    }
     &.block {
         display:block;
         width:100%;

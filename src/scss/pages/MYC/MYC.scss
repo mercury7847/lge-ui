@@ -262,6 +262,12 @@
                 .btn-group {
                     margin-top:32px;
                 }
+                .btn-moreview {
+                    margin-top:32px;
+                    @include mobile {
+                        margin-top:24px;
+                    }
+                }
             }
         }
     }
