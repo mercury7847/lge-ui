@@ -1,12 +1,95 @@
-<article id="@@popupID" class="popup-wrap wide">
+<article id="@@popupID" class="popup-wrap full">
     <header class="pop-header">
         <h1 class="tit"><span>내 보유 제품 등록</span></h1>
     </header>
-    <section class="pop-conts no-footer mypage">
-        <div class="section-wrap">
-            <div class="sects">
-            </div>
+    <section class="pop-conts mypage">
+        <div class="form-wrap">
+            <dl class="forms">
+                <dt class="tit"><label for="inp01" class="req">제품 모델명<span class="blind">필수입력</span></label></dt>
+                <dd class="conts">
+                    <div class="box">
+                        <div class="input-wrap">
+                            <input type="text" id="inp01" value="" placeholder="제품 모델명(코드) 입력">
+                            <p class="link"><a href="#n" class="btn-link">제품 모델명 찾기</a></p>
+                            <p class="comp">제품 모델명 확인완료!</p><!-- 확인 버튼 클릭, 확인 후 출력 -->
+                        </div>
+                        <div class="cell">
+                            <button type="button" class="btn"><span>확인</span></button>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="forms">
+                <dt class="tit"><label for="slt01" class="req">구매 년 월<span class="blind">필수입력</span></label></dt>
+                <dd class="conts">
+                    <div class="box date-select-box col-2">
+                        <div class="cell">
+                            <div class="box">
+                                <div class="select-wrap">
+                                    <select class="ui_selectbox" id="slt01" title="년 선택">
+                                        <option value="" class="placeholder">선택</option>
+                                        <option value="">2020</option>
+                                        <option value="">2019</option>
+                                    </select>
+                                </div>
+                                <div class="text"><span>년</span></div>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="box">
+                                <div class="select-wrap">
+                                    <select class="ui_selectbox" id="slt01-1" title="월 선택">
+                                        <option value="" class="placeholder">선택</option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                    </select>
+                                </div>
+                                <div class="text"><span>월</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="forms">
+                <dt class="tit"><label for="inp02">제조번호(S/N)</label></dt>
+                <dd class="conts">
+                    <div class="box">
+                        <div class="input-wrap">
+                            <input type="text" id="inp02" value="" placeholder="제조번호(Serial Number) 입력">
+                        </div>
+                        <div class="cell">
+                            <button type="button" class="btn"><span>제조번호 확인</span></button>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="forms">
+                <dt class="tit"><label for="slt02">구매장소</label></dt>
+                <dd class="conts">
+                    <div class="select-wrap">
+                        <select class="ui_selectbox" id="slt02" title="구매 장소 유형 선택">
+                            <option value="" class="placeholder">구매 장소 유형 선택</option>
+                        </select>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="text" id="inp03" value="" placeholder="상세 구매처 명 입력">
+                    </div>
+                </dd>
+            </dl>
         </div>
+        @@include('./common/modules/bullet-list.html', {
+            "topBorder" : true,
+            "bulletTit" : "확인하세요",
+            "bulletTxt" : [
+                "제품 등록은 구매일 다음날부터 등록 가능하며 제품 등록 시 리워드가 포인트로 적립됩니다."
+            ]
+        })
     </section>
+    <footer class="pop-footer center">
+        <div class="btn-group">
+            <button type="button" class="btn gray"><span>취소</span></button>
+            <button type="button" class="btn"><span>등록</span></button>
+        </div>
+    </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
 </article>
