@@ -63,7 +63,7 @@
                 var ajaxUrl = self.$KRP0028.attr('data-list-url');
                 var selectIdx = self.$tab.vcTab('getSelectIdx') + 1;
                 var selectedCategory = self.$tab.find('ul.tabs li:nth-child(' + selectIdx +') a').attr('href').replace("#", "");                
-                var postData = {category:selectedCategory};
+                var postData = {"categoryId":selectedCategory};
                 self.$KRP0028.find('.ui_selectbox').each(function (index, item) {
                     var $item = $(item);
                     postData[$item.attr('id')] = $item.vcSelectbox('value');

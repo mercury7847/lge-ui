@@ -2,68 +2,57 @@
     "status":"success",
     "message":null,
     "param":{
-        "searchedValue":"에어"
+        "searchedValue":"클린"
     },
-    "data":{
-        "resultCount":"99",
+    "data": {
+        "searchCount":"99",
         "similarText": "에어케어",
         "category":[
             {
-                "text":"제품>에어컨/에어케어",
+                "text":"제품>에어컨/에어케어클린",
                 "url":"#s1"
             },
             {
-                "text":"제품>에어컨/에어케어>에어컨",
+                "text":"제품>에어컨/에어클린케어>에어컨",
                 "url":"#s2"
             },
             {
-                "text":"제품>에어컨/에어케어>에어케어",
+                "text":"제품>에어컨/클린에어케어>에어클린케어",
                 "url":"#s3"
             }
         ],
         "preview":[
             {
-                "image_pc_url":"/lg5-common/images/MYC/@thumb03.png",
-                "image_m_url":"/lg5-common/images/MYC/@thumb02.png",
-                "image_alt":"LG 이동식 에어컨 no.1",
-                "title":"LG 이동식 에어컨 no.1",
+                "imageUrl":"/lg5-common/images/dummy/@sample-150x150.jpg",
+                "imageAlt":"LG 이동식에어컨 no.1",
+                "title":"LG 이동식 클린 에어컨 no.1",
                 "sku":"S833MC85Q1",
                 "price":"700000",
                 "url":"#p1"
             },
             {
-                "image_pc_url":"/lg5-common/images/dummy/@sample-150x150.jpg",
-                "image_m_url":"/lg5-common/images/dummy/@img-product7.jpg",
-                "image_alt":"LG 이동식 에어컨 no.2",
-                "title":"LG 이동식 에어컨 no.2",
+                "imageUrl":"/lg5-common/images/dummy/@sample-150x150.jpg",
+                "imageAlt":"LG 이동식 에어컨 no.2",
+                "title":"LG 이동식 에어컨 클린 no.2",
                 "sku":"S833MC85Q2",
                 "price":"800000",
                 "url":"#p2"
             },
             {
-                "image_pc_url":"/lg5-common/images/dummy/@sample-150x150.jpg",
-                "image_m_url":"/lg5-common/images/dummy/@img-product7.jpg",
-                "image_alt":"LG 이동식 에어컨 no.3",
-                "title":"LG 이동식 에어컨 no.3",
+                "imageUrl":"/lg5-common/images/dummy/@sample-150x150.jpg",
+                "imageAlt":"LG 이동식 에어컨 no.3",
+                "title":"LG 클린 이동식 에어컨 no.3",
                 "sku":"S833MC85Q3",
                 "price":"900000",
                 "url":"#p3"
             }
         ],
-        "popular":[
-            "LG 그램 16",
-            "스팀 건조기 20년 7형",
-            "LG 스타일러 1",
-            "LG 스타일러 2"
-        ],
-        "suggested":[
-            "LG 스타일러 1",
-            "LG 스타일러 2",
-            "LG 그램 19",
-            "스팀 건조기 20년 3형",
-            "LED 마스크",
-            "공기청정기 이벤트",
-            "S833MC85Q1"
+        "autocomplete":[
+            "클린 에어컨",
+            "에어컨 클린 설치",
+            "클린 에어컨 고장 수리",
+            "에어 클린케어",
+            "클린 에어컨 가격"
         ]
     }
 }
