@@ -1,5 +1,5 @@
 .search-layer {
-    display: none;
+    //display: none;
     overflow-y: auto;
     position: fixed;
     top: 0;
@@ -105,22 +105,39 @@
         }
         */
     }
+
+    .search-keyword-area {
+        display: flex;
+        //width: 100%;
+        padding-top: 48px;
+        .recent-keyword,
+        .popular-keyword {
+            //display: table-cell;
+            width: ((100% / 10) * 3);
+            padding-right: 64px;
+        }
+        .suggested-tags {
+            //display: table-cell;
+            width: ((100% / 10) * 4);
+        }
+        @include mobile {
+            display: block;
+            padding-top: 24px;
+            .recent-keyword,
+            .popular-keyword,
+            .suggested-tags {
+                width: 100%;
+                padding-right: 0;
+            }
+            .popular-keyword,
+            .suggested-tags {
+                margin-top: 40px;
+            }
+        }
+    }
 }
 
 .search-keyword-area {
-    display: flex;
-    //width: 100%;
-    padding-top: 48px;
-    .recent-keyword,
-    .popular-keyword {
-        //display: table-cell;
-        width: ((100% / 10) * 3);
-        padding-right: 64px;
-    }
-    .suggested-tags {
-        //display: table-cell;
-        width: ((100% / 10) * 4);
-    }
     .keyword-list {
         .no-data {
             padding: 0;
@@ -134,17 +151,18 @@
                 margin-top: 0;
             }
             a {
+                display: block;
+                height: 26px;
+                @include textEllipsisClamp(1);
                 @include font-medium;
+                &.rounded {
+                    height: auto;
+                }
             }
             .box {
                 position: relative;
                 display: inline-block;
                 padding-right: 22px;
-                a {
-                    display: block;
-                    height: 26px;
-                    @include textEllipsisClamp(1);
-                }
             }
         }
         .rounded-list {
@@ -168,19 +186,6 @@
     }
 
     @include mobile {
-        display: block;
-        padding-top: 24px;
-        .recent-keyword,
-        .popular-keyword,
-        .suggested-tags {
-            display: block;
-            width: 100%;
-            padding-right: 0;
-        }
-        .popular-keyword,
-        .suggested-tags {
-            margin-top: 40px;
-        }
         .keyword-list {
             li {
                 .box {
@@ -209,30 +214,30 @@
         @include mobile {
             display: none !important;
         }
+        //.keyword-list {
+        //    margin-top: -4px;
+        //    li {
+        //        margin-top: 4px;
+        //        padding: 4px 12px;
+        //        &:first-child {
+        //            margin-top: 0;
+        //        }
+        //        a {
+        //            @include font-medium;
+        //        }
+        //        &.on,
+        //        &:hover,
+        //        &:focus {
+        //            border-radius: 17px;
+        //            background-color: $color-bg;
+        //            a {
+        //                font-weight: 700;
+        //            }
+        //        }
+        //    }
+        //}
     }
 
-    .keyword-list {
-        margin-top: -4px;
-        li {
-            margin-top: 4px;
-            padding: 4px 12px;
-            &:first-child {
-                margin-top: 0;
-            }
-            a {
-                @include font-medium;
-            }
-            &.on,
-            &:hover,
-            &:focus {
-                border-radius: 17px;
-                background-color: $color-bg;
-                a {
-                    font-weight: 700;
-                }
-            }
-        }
-    }
 
     .result-preview {
         //display: table-cell;
