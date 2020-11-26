@@ -31,86 +31,77 @@
                 </div>
                 <!-- // tabs -->
 
-                <div class="cont-wrap">
-                    <div class="search-result-wrap">
+                <div class="cont-wrap w-filter"><!-- 필터 포함 시 : .w-filter 추가 -->
+                    @@include('./common/modules/list-filter.html')
+                    <div class="search-result-wrap">                       
                         <div class="result-area">
-                            @@include('./common/modules/list-sorting.html', {
-                        
-                                "select" : [
-                                    { "option" : "정확도순" },
-                                    { "option" : "인기순" },
-                                    { "option" : "최신순" },
-                                    { "option" : "가격 높은순" },
-                                    { "option" : "가격 낮은순" }
-                                ]
-                            })
-                            <div class="result-list-wrap box-list story-list-wrap">
-                                <ul class="box-list-inner story">
-                                    @@loop('./common/modules/list-box.html', [
-                                        {
-                                            "img" : "dummy/@img-stroy.png",
-                                            
-                                            "flagInfo2" : true,
-                                            "flagInf1" : "구분",
-                                            "flagInf1-1" : "비하인드스토리",
-
-                                            "title-hd" : "이벤트 제목",
-                                            "title" : "행복을 찾아주는 파랑새, 인공지능 <em>플랫폼 ‘LG ThinQ’</em>",
-                                            "date-hd" : "이벤트 기간",
-                                            "date" : "2020.08.01~2020.09.30",
-
-                                            "hashtag" : [
-                                                {"tag": "#가을", "on" : "pink"},
-                                                {"tag": "#가전", "on" : ""}
-                                            ]
-
-                                        },
-                                        {
-                                            "img" : "dummy/@img-stroy.png",
-                                            
-                                            "flagInfo2" : true,
-                                            "flagInf1" : "구분",
-                                            "flagInf1-1" : "비하인드스토리",
-
-                                            "title-hd" : "이벤트 제목",
-                                            "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                            "date-hd" : "이벤트 기간",
-                                            "date" : "2020.08.01~2020.09.30"
-
-                                        },
-                                        {
-                                            "img" : "dummy/@img-stroy.png",
-                                            
-                                            "flagInfo2" : true,
-                                            "flagInf1" : "구분",
-                                            "flagInf1-1" : "비하인드스토리",
-
-                                            "title-hd" : "이벤트 제목",
-                                            "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                            "date-hd" : "이벤트 기간",
-                                            "date" : "2020.08.01~2020.09.30"
-
-                                        },
-                                        {
-                                            "img" : "dummy/@img-stroy.png",
-                                            
-                                            "flagInfo2" : true,
-                                            "flagInf1" : "구분",
-                                            "flagInf1-1" : "비하인드스토리",
-
-                                            "title-hd" : "이벤트 제목",
-                                            "title" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                            "date-hd" : "이벤트 기간",
-                                            "date" : "2020.08.01~2020.09.30"
-
-                                        }
-                                    ])
-                                </ul>
+                            <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->
+                            <div class="btn-filter">
+                                <a href="#n" id="filterModalLink" class="ico-filter"><span class="blind">옵션필터</span></a>
                             </div>
-                            @@include('./common/modules/pagination.html', {
-                                count: 5
-                            })
-                        </div>  
+
+                            <div class="list-sorting">
+                                <div class="sort-area left">
+                                    <p class="list-count">총 59개</p>
+                                </div>
+                                <div class="sort-area">
+                                    <div class="sort-list">
+                                        <div class="sort-search-area">
+                                            <div class="search-inner">
+                                                <input type="text" class="inp-txt" placeholder="결과 내 검색" value="" title="검색어 입력">
+                                                <button type="button" class="btn-sch"><span class="blind">검색</span></button> 
+                                            </div>
+                                        </div>
+                                        <div class="sort-select-wrap">
+                                            <select class="ui_selectbox" id="select1" title="조회할 연차 선택">
+                                                <option value="">정확도순</option>
+                                                <option value="">인기순</option>
+                                                <option value="">최신순</option>
+                                                <option value="">가격 높은순</option>
+                                                <option value="">가격 낮은순</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="result-list-wrap result-story">
+                                    <!--
+                                    <div class="list-head">
+                                        <h2 class="title">스토리</h2>
+                                        <div class="btn-area">
+                                            <a href="#product" class="btn-link"><span>더보기</span></a>
+                                        </div>
+                                    </div>-->
+                                    <div class="list-wrap">
+                                        <ul class="result-list">
+                                            @@loop('./common/modules/result-list.html', [
+                                                {
+                                                    "itemClass" : "item-type2",
+                                                    "img" : "/lg5-common/images/dummy/@img-search.jpg",      
+                                                    "flags" : ["비하인드 스토리"],       
+                                                    "tit" : "LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결",
+                                                    "desc" : "코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. ",
+                                                    "hashtag" : ["#가전", "#여름가전"],
+                                                    "date" : "2020.08.01"
+                                                }, {
+                                                    "itemClass" : "item-type2",
+                                                    "img" : "/lg5-common/images/dummy/@img-search.jpg",      
+                                                    "flags" : ["비하인드 스토리"],       
+                                                    "tit" : "LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결",
+                                                    "desc" : "코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. ",
+                                                    "hashtag" : ["#가전", "#여름가전"],
+                                                    "date" : "2020.08.01"
+                                                }
+                                            ])
+                                        </ul>
+                                    </div>
+                                </div> <!-- // 스토리-->
+
+                                @@include('./common/modules/pagination.html', {
+                                    count: 5
+                                })
+                        </div>
 
                     </div>    
                 </div>
