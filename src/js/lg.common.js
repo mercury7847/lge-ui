@@ -57,7 +57,8 @@
                             "ui/sticky",
                             "ui/formatter",
                             "ui/scrollNavi",
-                            "ui/smoothScroll"
+                            "ui/smoothScroll",
+                            "ui/smoothScrollTab"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
@@ -81,6 +82,8 @@
 
             this.find('.ui_smooth_scroll').vcSmoothScroll();
             this.find('.ui_scroll_navi').vcScrollNavi();
+
+            this.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
 
             this.find('.toast-message').vcToast();
 
@@ -264,7 +267,8 @@
                 "ui/sticky",
                 "ui/formatter",
                 "ui/scrollNavi",
-                "ui/smoothScroll"
+                "ui/smoothScroll",
+                "ui/smoothScrollTab"
             ], function (ResponsiveImage, BreakpointDispatcher) {
                 
                 new BreakpointDispatcher({
