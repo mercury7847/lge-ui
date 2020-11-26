@@ -162,16 +162,15 @@
                             background:url('/lg5-common/images/icons/icon-delete-20-pink.svg') center no-repeat;
                             vertical-align:middle;
                         }
-                    }
-                    &::after {
-                        content:' ';
-                        position:absolute;
-                        left:50%;
-                        top:-13px;
-                        width:14px;
-                        height:9px;
-                        margin-left:-7px;
-                        background:url('/lg5-common/images/MYC/bg-ons.svg') center no-repeat;
+                        &::after {
+                            content:' ';
+                            position:absolute;
+                            right:78px;
+                            top:30px;
+                            width:14px;
+                            height:9px;
+                            background:url('/lg5-common/images/MYC/bg-ons.svg') center no-repeat;
+                        }
                     }
                 }
                 // delete
