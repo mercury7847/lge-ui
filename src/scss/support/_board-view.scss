@@ -2,106 +2,83 @@
 
 /* notice view */
 .board-view-wrap {
+    padding-top:48px;
+    @include mobile {
+        padding-top:32px;
+    }
     .board-view {
         position:relative;
         @include mobile {
-            padding:40px 20px 56px;
+            padding:0 16px;
         }
         &-head {
-            padding-bottom: 16px;
-            border-bottom: 2px solid #222;
+            padding-bottom:16px;
+            border-bottom:2px solid #222;
             .flag-wrap {
                 margin-bottom:2px;
-                .flag {
-                    line-height:22px;
-                }
             }
             .head {
                 &-title {
                     color:#222;
-                    font-size:28px;
                     font-weight:700;
-                    line-height: 1.36;
+                    @include font-large-3;
                     @include textEllipsisClamp(2);
                 }
                 &-infos {
+                    margin-top:8px;
                     @include clearfix;
                     > li {
                         float:left;
+                        color:#767676;
+                        @include font-small;
+                        font-weight:500;
                         & + li {
                             position:relative;
                             margin-left:8px;
-                            padding-left:7px;
+                            padding-left:9px;
                             &:before {
                                 content:'';
                                 position:absolute;
                                 left:0;
                                 top:6px;
                                 width:1px;
-                                height:12px;
+                                height:14px;
                                 background:#979797;
                             }
                         }
                     }
-                    .view {
-                        display: inline-block;
-                        // padding-left: 28px;
-                        // background: url(/lg5-common/images/icons/icon-view.svg) no-repeat;
-                        background-size: 24px;
-                        background-position: left center;
-                    }
-                    &.category {
-                        margin-top:4px;
-                        line-height:24px;
-                    }
-                    &.summary {
-                        margin-top:14px;
-                        font-size:14px;
-                        line-height:20px;
-                        color: #767676;
-                    }
                 }
             }
             @include mobile {
+                .flag-wrap {
+                    margin-bottom:4px;
+                }
                 .head {
-                    &-title {
-                        font-size:20px;
-                        line-height:1.45;
-                    }
                     &-infos {
+                        margin-top:10px;
                         > li {
-                            line-height: 1.62;
                             & + li {
-                                margin-left:8px;
-                                padding-left:9px;
                                 &:before {
-                                    top:3px;
+                                    height:10px;
                                 }
                             }
-                        }
-                        .view {
-                            background-size: 20px;
-                        }
-                        &.category {
-                            font-size:14px;
-                            line-height:18px;
-                        }   
-                        &.summary {
-                            margin-top: 10px;
-                            font-size:12px;
-                            line-height:16px;
                         }
                     }
                 }
             }
         }
         &-sns {
-            margin-top: 16px;
-            padding-bottom: 16px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:16px 0;
             border-bottom: 1px solid #ddd;
-            text-align: right;
+            .sns-wrap:only-child {
+                margin-left:auto;
+            }
         }
         &-body {
+            padding:48px 0;
             .view-content {
                 strong, p {
                     font-size:16px;
@@ -143,28 +120,29 @@
                     max-width: 1146px;
                     margin: 0 auto;
                 }
+                &#viewContent {
+                    padding:0 24px;
+                    p, strong {
+                        color:#222;
+                        @include font-medium;
+                    }
+                }
             }
-            padding-top:48px;
             @include mobile {
-                padding-top:32px;
+                padding:32px 0 40px;
                 .view-content {
                     strong, p {
                         font-size:14px;
                         line-height:18px;
                     }
+                    &#viewContent {
+                        padding:0;
+                    }
                 }
-            }
-            #viewContent {
-                color:#222;
-                p {
-                    color: inherit;
-                }
-                @include font-medium;
             }
         }
     }
     .board-navi {
-        margin-top:80px;
         border-bottom: 1px solid #ddd;
         .navi {
             display:flex;
@@ -174,10 +152,9 @@
             background-color: #fff;
             border-top: 1px solid #ddd;
             @include clearfix;
-            &-label, &-desc {
+            &-label, &-desc, &-date, &-views {
                 display:inline-block;
-                font-size:16px;
-                line-height:1.38;
+                @include font-medium;
                 vertical-align:middle;
             }
             &-label {
@@ -193,25 +170,15 @@
             }
             &-date,
             &-views {
-                font-size: 16px;
                 color: #767676;
-                line-height: 1;
                 margin-left: 64px;
             }
         }
         @include mobile {
-            margin-top:12px;
             padding: 0 16px;
-            border-bottom: none;
             .navi {
-                margin-top:4px;
                 padding:16px 12px;
-                border-radius: 0;
                 flex-wrap: wrap;
-                &-label, &-desc {
-                    font-size: 14px;
-                    line-height:1.75;
-                }
                 &-label {
                     margin-right:24px;
                 }
@@ -219,15 +186,13 @@
                     flex: auto;
                     width: calc(100% - 70px);
                 }
-                &-date,
-                &-views {
-                    margin-left: 64px;
-                    margin-top: 4px;
+                &-date {
+                    margin:4px 0 0 64px;
                 }
                 &-views {
-                    margin-left: 8px;
-                    padding-left: 9px;
                     position: relative;
+                    margin:4px 0 0 8px;
+                    padding-left:9px;
                     &::before {
                         content: '';
                         display: block;
@@ -235,7 +200,7 @@
                         height: 10px;
                         position: absolute;
                         background-color: #ddd;
-                        bottom: 0;
+                        top: 6px;
                         left: 0;
                     }
                 }

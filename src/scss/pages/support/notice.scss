@@ -7,7 +7,7 @@
     /* common */
     .search-wrap {
         width:444px;
-        margin:32px auto 0;
+        margin:0 auto 64px;
         .keyword-search {
             .input-wrap {
                 display:block;
@@ -31,7 +31,7 @@
         
         @include mobile {
             width:100%;
-            margin:24px 0 0;
+            margin:0 0 65px;
             padding:0 16px;
             .keyword-search {
                 .input-wrap {

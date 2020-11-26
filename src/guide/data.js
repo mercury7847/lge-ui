@@ -33,7 +33,7 @@ var res = {
 	},
 	"Front" : {
 		"Component" : {
-			"KRC0001_Selective offering (Home)_Dynamic" : ["/html/components/KRC0001.html","_blank:width=1000, height=800, location=no, menubar=no, status=no, toolbar=no","검수완료"],
+			"KRC0001_Selective offering (Home)_Dynamic" : ["/html/components/KRC0001.html","","검수완료"],
 			//"KRC0002_Selective offering" : ["/html/components/KRC0002.html","","진행중"],
 			"KRC0003_Vertical Selector" : ["/html/components/KRC0003.html","","검수완료"],
 			//"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
@@ -189,12 +189,12 @@ var res = {
 				},
 				"케어솔루션" : {
 					// "월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
-					"계약현황" : ["/html/MYC/ACCF7025.html","","진행중"],
-					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","진행중"],
-					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","진행중"],
-					"납부내역" : ["/html/MYC/ACCF7027.html","","진행중"],
-					"방문 알리미" : ["/html/MYC/ACCF7030.html","","진행중"],
-					"방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]
+					"계약현황" : ["/html/MYC/ACCF7025.html","","검수요청"],
+					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","검수요청"],
+					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","검수요청"],
+					"납부내역" : ["/html/MYC/ACCF7027.html","","검수요청"],
+					"방문 알리미" : ["/html/MYC/ACCF7030.html","","검수요청"],
+					// "방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]
 				},
 				"관심목록" : {
 					// "최근 본 제품" : ["/html/MYC/ACCF7011.html","","진행중"],
@@ -202,9 +202,10 @@ var res = {
 				},
 				"제품 관리" : {
 					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","진행중"],
-					"제품/영수증 등록(제품 탭)" : ["/html/MYC/ACCF7036.html","","진행중"],
-					"제품/영수증 등록(영수증 탭)" : ["/html/MYC/ACCF7037.html","","진행중"],
-					"등록완료" : ["/html/MYC/ACCF7064.html","","진행중"]
+					"보유제품 리스트 화면 내 팝업" : ["/html/MYC/ACCF7033_popup.html","","진행중"],
+					// "제품/영수증 등록(제품 탭)" : ["/html/MYC/ACCF7036.html","","진행중"],
+					// "제품/영수증 등록(영수증 탭)" : ["/html/MYC/ACCF7037.html","","진행중"],
+					// "등록완료" : ["/html/MYC/ACCF7064.html","","진행중"]
 				},
 				"활동 내역" : {
 					// "구독" : ["/html/MYC/ACCF7017.html","","진행중"],

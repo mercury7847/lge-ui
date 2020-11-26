@@ -6,10 +6,10 @@
     .component-inner {
         max-width:1206px;
     }
-    padding:60px 0;
+    padding:40px 0;
     @include mobile {
-        border-top:12px solid #f4f4f4;
-        padding:32px 0 0;
+        // border-top:12px solid #f4f4f4;
+        // padding:32px 0 0;
         background:#fff;
         .component-inner {
             padding:0;
@@ -221,13 +221,27 @@
                 }
                 &.big {
                     ul {
-                        margin-top:-16px;
+                        margin:-16px 0 0;
                         li {
+                            position:relative;
                             width:100%;
                             margin-top:16px;
+                            padding:0 12px;
                             color:#222;
                             font-size:16px;
                             line-height:26px;
+                            &:before {
+                                content:' ';
+                                display:block;
+                                position:absolute;
+                                top:12px;
+                                left:0;
+                                width:3px;
+                                height:3px;
+                                border-radius:50%;
+                                background-color:#222;
+                                vertical-align:middle;
+                            }
                             dl {
                                 dd {
                                     font-size:20px;
@@ -242,7 +256,10 @@
                                 display:block;
                                 width:100%;
                                 margin-top:12px;
-                                padding:0;
+                                &:before {
+                                    width:2px;
+                                    height:2px;
+                                }
                                 &:first-child {
                                     margin-top:0;
                                 }
@@ -272,6 +289,7 @@
                         display:inline-block;
                         width:20px;
                         height:20px;
+                        margin-left:4px;
                         background:url('/lg5-common/images/KRP0014/btn-arrow-right-20.svg') no-repeat right 0;
                         vertical-align:middle;
                         transform:rotate(180deg);
@@ -281,6 +299,9 @@
                             transform:rotate(0deg);
                         }
                     }
+                }
+                a:nth-child(2){
+                    display:none;
                 }
             }
         }
@@ -303,6 +324,19 @@
                     margin-right:4px;
                     background:url('/lg5-common/images/KRP0014/icon-print.svg') no-repeat 0 0;
                     vertical-align:middle;
+                }
+            }
+        }
+        .prod-spec-detail {
+            display:none;
+            &.open {
+                display:block;
+            }
+            .box:first-child {
+                padding-top:48px;
+                border-top:1px solid #ddd;
+                @include mobile {
+                    padding-top:40px;
                 }
             }
         }

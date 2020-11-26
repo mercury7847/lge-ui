@@ -7,7 +7,7 @@
 		.zero-top : 상단여백 없음
 		.zero-btm : 하단여백 없음
 	-->
-	<div class="component KRP0012">
+	<div class="component KRP0012 @@type">
 		<div class="pdp-tab">
 			<!-- <div class="back-layer"></div> --> <!-- [KR수정] 구조 삭제 -->
 			<!-- 2. sticky bar -->
@@ -31,7 +31,7 @@
 				<div class="contents-menu-list" role="navigation" aria-label="Page">
 					<!-- 접근성 버튼 이동 -->
 					<!-- <button type="button" class="btn-drop-menu-mob"><span class="open">menu open</span><span class="close">menu close</span></button> --> <!-- [KR수정] 구조 삭제 -->
-					<ul class="tab-menu-belt" aria-label="If you select menu, the focus move to area providing the selected information in this web page.">
+					<ul class="tab-menu-belt @@type-btn" aria-label="If you select menu, the focus move to area providing the selected information in this web page.">
                         @@if (!context.tabMenu.expendables) {
                             @@if (!context.tabMenu.soldOut) {
                         <li class="tab-menu active"><a href="#overview" class="linker" aria-selected="true" data-link-area="pdp_tab_anchor-tab" data-link-name="overview">제품상세</a></li>

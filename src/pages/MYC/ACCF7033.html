@@ -9,176 +9,123 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "이*지 님이 보유한 제품",
-                "pageDesc" : "고객님의 전화번호를 기준으로 A/S 발생시 수집된 정보이며, 사실과 다를 수 있습니다.<br>만일 사실과 다른 경우 삭제기능을 이용해주세요.",
-                "pageBtn" : [
-                    { "btn" : "시리얼번호로 등록" },
-                    { "btn" : "영수증 바코드로 등록" }
-                ]
+                "pageTitle": "보유 제품 등록",
+                "pageDesc" : "보유 제품 등록을 통해 제품을 좀더 체계적으로 관리하실 수 있습니다."
             })
             <!-- mypage -->
             <div class="contents mypage">
                 <div class="cont-wrap">
-                    <!-- 보유제품 -->
-                    <!-- 보유제품 있을 때 -->
-                    <div class="section">
-                        <h3 class="sec-tit">보유 제품</h3>
-                        <div class="cont-box">
-                            <!-- filter -->
-                            @@include('./common/modules/mem-filter.html', {
-                                "url" : "/lg5-common/data-ajax/mypage/membership/my_purchase_history.json",
-                                "wrapTit" : "조회기간"
-                            })
-                            <!-- // filter -->
- 
-                            @@include('./common/modules/list-sorting.html', {
-                                "select" : [
-                                    { "default" : "class='placeholder'", "option" : "전체" }
-                                ]
-                            })
-                            <!-- 검색결과/소팅결과 있을 때 -->
-                            <div class="product-list-wrap">
-                                <ul class="product-lists ui_flexible_height">
-                                    @@loop('./common/modules/product-list-loop.html', [
-                                        {
-                                            "img" : "/lg5-common/images/MYC/@thumb.png",
-                                            "name" : "LG Q92 5G",
-                                            "proNum" : "A9579I",
-                                            "info" : [
-                                                "출고가 100,000,000원",
-                                                "2020.02.10 구매",
-                                                "<span class='blind'>구매처</span>홈플러스 금천점"
-                                            ],
-                                            "close" : true
-                                        }, {
-                                            "img" : "/lg5-common/images/MYC/@thumb02.png",
-                                            "name" : "NEW LG 퓨리케어 ALL 직수 상하좌우 냉온정수기",
-                                            "proNum" : "WD503AS",
-                                            "info" : [
-                                                "2020.02.10",
-                                                "월 13,900원/5년",
-                                                "<span class='blind'>구매처</span>LG 케어솔루션 온라인몰"
-                                            ],
-                                            "close" : true
-                                        }, {
-                                            "img" : "/lg5-common/images/MYC/@thumb03.png",
-                                            "name" : "LG 올레드 AI ThinQ TV",
-                                            "proNum" : "OLED65B9CNA",
-                                            "info" : [
-                                                "출고가 100,000,000원",
-                                                "2020.02.10 구매",
-                                                "<span class='blind'>구매처</span>LG BEST SHOP 서초점"
-                                            ],
-                                            "close" : true
-                                        }, {
-                                            "img" : "/lg5-common/images/MYC/@thumb02.png",
-                                            "name" : "NEW LG 퓨리케어 ALL 직수 상하좌우 냉온정수기",
-                                            "proNum" : "WD503AS",
-                                            "info" : [
-                                                "2020.02.10",
-                                                "월 13,900원/5년",
-                                                "<span class='blind'>구매처</span>LG 케어솔루션 온라인몰"
-                                            ],
-                                            "close" : true
-                                        }, {
-                                            "img" : "/lg5-common/images/MYC/@thumb03.png",
-                                            "name" : "LG 올레드 AI ThinQ TV",
-                                            "proNum" : "OLED65B9CNA",
-                                            "info" : [
-                                                "출고가 100,000,000원",
-                                                "2020.02.10 구매",
-                                                "<span class='blind'>구매처</span>LG BEST SHOP 서초점"
-                                            ],
-                                            "close" : true
-                                        }, {
-                                            "img" : "/lg5-common/images/MYC/@thumb.png",
-                                            "name" : "LG Q92 5G",
-                                            "proNum" : "A9579I",
-                                            "info" : [
-                                                "출고가 100,000,000원",
-                                                "2020.02.10 구매",
-                                                "<span class='blind'>구매처</span>홈플러스 금천점"
-                                            ],
-                                            "close" : true
-                                        }
-                                    ])
-                                </ul>
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect4" : true
+                        })
+                        <div class="lnb-contents">
+                            <div class="section-wrap">
+                                <!-- TBD -->
+                                <div class="tbd-box">
+                                    보유 제품 등록 TBD
+                                </div>
+                                <!-- // TBD -->
+
+                                <div class="sects">
+                                    <div class="tit-wrap type2">
+                                        <h4 class="tit">보유 제품 목록</h4>
+                                    </div>
+                                    <!-- 보유제품목록 -->
+                                    <div class="my-product-lists">
+                                        <ul>
+                                            @@loop('./common/modules/my-product-lists.html', [
+                                                {
+                                                    "thumb" : "@img-product2",
+                                                    "name" : "LG 올레드 AI TV",
+                                                    "eName" : "OLED65WXKNA",
+                                                    "twoBtn" : true,
+                                                    "careship" : true,
+                                                    "csMsg" : "신청안함",
+                                                    "btns" : [
+                                                        "소모품 조회", "출장 서비스 신청", "리뷰 작성"
+                                                    ],
+                                                    "rightBtn" : "케어십 신청하기",
+                                                    "notice" : "케어서비스로 제품을 관리해보세요!"
+                                                },
+                                                {
+                                                    "thumb" : "@img-product3",
+                                                    "name" : "LG 퓨리케어 냉온정수기",
+                                                    "eName" : "W5MBR",
+                                                    "twoBtn" : true,
+                                                    "careship" : true,
+                                                    "csMsg" : "이용중",
+                                                    "btns" : [
+                                                        "소모품 조회"
+                                                    ],
+                                                    "rightBtn" : "신제품 확인하기",
+                                                    "notice" : "새로운 정수기를 확인해보시겠어요?"
+                                                },
+                                                {
+                                                    "thumb" : "@img-product4",
+                                                    "name" : "LG 퓨리케어 360 공기청정기",
+                                                    "eName" : "AS300DNPRWM",
+                                                    "careship" : true,
+                                                    "csMsg" : "계약만료",
+                                                    "btns" : [
+                                                        "소모품 조회", "출장 서비스 신청"
+                                                    ],
+                                                    "rightBtn" : "케어십 신청하기",
+                                                    "notice" : "케어십 서비스가 계약만료되었어요!"
+                                                },
+                                                {
+                                                    "thumb" : "@img-product4",
+                                                    "name" : "LG 그램 17",
+                                                    "eName" : "15U560-G",
+                                                    "twoBtn" : true,
+                                                    "careship" : false,
+                                                    "btns" : [
+                                                        "소모품 조회", "출장 서비스 신청"
+                                                    ],
+                                                    "saleEnd" : true
+                                                },
+                                                {
+                                                    "thumb" : "@img-product2",
+                                                    "name" : "LG 올레드 AI TV",
+                                                    "eName" : "OLED65WXKNA",
+                                                    "twoBtn" : true,
+                                                    "careship" : true,
+                                                    "csMsg" : "신청안함",
+                                                    "btns" : [
+                                                        "소모품 조회", "출장 서비스 신청"
+                                                    ],
+                                                    "rightBtn" : "케어십 신청하기"
+                                                },
+                                                {
+                                                    "thumb" : "@img-product5",
+                                                    "name" : "LG WING",
+                                                    "eName" : "LM-F200N",
+                                                    "careship" : false,
+                                                    "btns" : [
+                                                        "소모품 조회", "출장 서비스 신청", "리뷰 작성"
+                                                    ]
+                                                }
+                                            ])
+                                        </ul>
+                                    </div>
+                                    <!-- // 보유제품목록 -->
+
+                                    <!-- 보유제품목록 no data -->
+                                    <div class="no-data">
+                                        <p>보유하신 제품이 없습니다.<br>구매하신 제품을 등록하여 다양한 혜택을 받아보세요.</p>
+                                    </div>
+                                    <!-- // 보유제품목록 no data -->
+                                </div>
+
+                                <!-- TBD -->
+                                <div class="tbd-box">
+                                    제품 등록 회원 혜택 TBD
+                                </div>
+                                <!-- // TBD -->
                             </div>
-                            @@include('./common/modules/pagination.html', {
-                                count: 5
-                            })
-                            <!-- // 검색결과/소팅결과 있을 때 -->
-                            <!-- 소팅 결과 없을 때 -->
-                            <div class="no-data mg-type">
-                                <p>조회 결과가 없습니다.</p>
-                            </div>
-                            <!-- // 소팅 결과 없을 때 -->
-                            <!-- // result -->
                         </div>
                     </div>
-                    <!-- // 보유제품 있을 때 -->
-                    <!-- // 보유제품 -->
                 </div>
-                <!-- 이렇게 활용해보세요 -->
-                <div class="smart-guide-wrap">
-                    <p class="tit">고객님의 소중한 제품을 더 스마트하게!<br>이럴 땐 이렇게 활용해보세요.</p>
-                    <ul class="link-btn-lists">
-                        <li><a href="#n"><span>스토리</span></a></li>
-                        <li><a href="#n"><span>카드뉴스</span></a></li>
-                        <li><a href="#n"><span>생활의 팁</span></a></li>
-                    </ul>
-                    @@include('./common/modules/carousel.html', {
-                        "carousel" : true,
-                        "carouselClass" : "carousel-4",
-                        "carouselScriptClass" : "ui_carousel_4_slider",
-                        "slideArr" : [
-                            { 
-                                "flag" : "생활의 팁",
-                                "img" : "/lg5-common/images/MYC/img-carousel01.jpg",
-                                "hashtag" : "<span class='hash'>#식기세척기</span><span class='hash'>#건조</span>",
-                                "tit" : "여름철 위생적인 식기세척기 건조 꿀팁",
-                                "desc" : " ",
-                                "wish" : "wish01"
-                            }, { 
-                                "flag" : "카드뉴스",
-                                "img" : "/lg5-common/images/MYC/img-carousel02.jpg",
-                                "hashtag" : "<span class='hash'>#ThinQ</span><span class='hash'>#스마트폰</span>",
-                                "tit" : "LG ThinQ 앱 이라서 가능한 편리한 일상",
-                                "desc" : "<p class='desc'>ThinQ 앱 제품등록 방법</p>",
-                                "wish" : "wish02"
-                            }, { 
-                                "flag" : "스토리",
-                                "img" : "/lg5-common/images/MYC/img-carousel03.jpg",
-                                "hashtag" : "<span class='hash'>#배터리</span><span class='hash'>#스마트폰</span>",
-                                "tit" : "스마트폰 사용시 배터리 사용 시간이 짧다고 느끼셨나요?",
-                                "desc" : "<p class='desc'>휴대폰에서 배터리 소모를 최소화 하는 방법</p>",
-                                "wish" : "wish03"
-                            }, { 
-                                "flag" : "스토리",
-                                "img" : "/lg5-common/images/MYC/img-carousel04.jpg",
-                                "hashtag" : "<span class='hash'>#설거지옥</span><span class='hash'>#필수가전</span>",
-                                "tit" : "설거지옥 탈출 위한 필수가전",
-                                "desc" : "<p class='desc'>설거지 깨끗하고 빠르게 하는 방법</p>",
-                                "wish" : "wish04"
-                            }, { 
-                                "flag" : "스토리",
-                                "img" : "/lg5-common/images/MYC/img-carousel03.jpg",
-                                "hashtag" : "<span class='hash'>#배터리</span><span class='hash'>#스마트폰</span>",
-                                "tit" : "스마트폰 사용시 배터리 사용 시간이 짧다고 느끼셨나요?",
-                                "desc" : "<p class='desc'>휴대폰에서 배터리 소모를 최소화 하는 방법</p>",
-                                "wish" : "wish05"
-                            }, { 
-                                "flag" : "스토리",
-                                "img" : "/lg5-common/images/MYC/img-carousel04.jpg",
-                                "hashtag" : "<span class='hash'>#설거지옥</span><span class='hash'>#필수가전</span>",
-                                "tit" : "설거지옥 탈출 위한 필수가전",
-                                "desc" : "<p class='desc'>설거지 깨끗하고 빠르게 하는 방법</p>",
-                                "wish" : "wish06"
-                            }
-                        ]
-                    })
-                </div>
-                <!-- // 이렇게 활용해보세요 -->
             </div>
             <!-- // mypage -->
         </div>

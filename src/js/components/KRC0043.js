@@ -13,13 +13,18 @@ $(window).ready(function(){
             swipeToSlide: true,
             slidesToShow: 1,
             slidesToScroll: 1,
-            responsive: [{
-                breakpoint: 768,
-                settings: {
-                    fade:false,
-                    swipeToSlide:false
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        infinite: false,
+                        fade:false,
+                        swipeToSlide:false,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
                 }
-            }],
+            ],
             asNavFor: '.ui_carousel_thumb_slider'
         })
 

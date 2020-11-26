@@ -26,8 +26,9 @@ vcui.define('ui/lazyLoader', ['jquery', 'vcui'], function ($, core) {
 
             self.isVert = self.options.mode === 'vertical';
             self.largestPosition = 0;
-            self.$items = $(self.options.selector);
+            self.$items = $(self.options.selector+"[data-src]");
             self.$con = self.$el.css('overflow') === 'scroll' ? self.$el : $(window);
+
 
             self._bindEvents();
         },

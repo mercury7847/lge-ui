@@ -17,6 +17,13 @@
 
 
     var confirmTmpl =  '<article id="laypop" class="lay-wrap {{typeClass}}" style="display:block;" role="confirm">\n'+
+        '   {{#if title}}'+
+        '   <header class="lay-header">\n'+
+        '       <h1 class="tit">{{#raw title}}</h1>\n'+
+        '   </header>\n'+
+        '   {{/if}}'+
+        '   <section class="lay-conts ui-alert-msg">\n'+
+        '   </section>\n'+
         '    <section class="lay-conts">\n'+
         '        <h6 class="ui-alert-msg"></h6>\n'+
         '    </section>\n'+
@@ -50,7 +57,8 @@
                             "ui/sticky",
                             "ui/formatter",
                             "ui/scrollNavi",
-                            "ui/smoothScroll"
+                            "ui/smoothScroll",
+                            "ui/smoothScrollTab"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
@@ -74,6 +82,8 @@
 
             this.find('.ui_smooth_scroll').vcSmoothScroll();
             this.find('.ui_scroll_navi').vcScrollNavi();
+
+            this.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
 
             this.find('.toast-message').vcToast();
 
@@ -257,7 +267,8 @@
                 "ui/sticky",
                 "ui/formatter",
                 "ui/scrollNavi",
-                "ui/smoothScroll"
+                "ui/smoothScroll",
+                "ui/smoothScrollTab"
             ], function (ResponsiveImage, BreakpointDispatcher) {
                 
                 new BreakpointDispatcher({
@@ -493,13 +504,15 @@
                 }
     
                 $('html').addClass('dim');
-                var el = $(vcui.template(confirmTmpl, {
+                var tmplObj = {
                     cancelBtnName:options && options.cancelBtnName? options.cancelBtnName:'취소' ,
                     okBtnName:options && options.okBtnName? options.okBtnName:'확인' ,
                     typeClass:options && options.typeClass? options.typeClass:'' ,
                     title:options && options.title? options.title:''
-                })).appendTo('body');
-                $(el).find('.ui-alert-msg').html(msg);
+                }
+                var el = $(vcui.template(confirmTmpl, tmplObj)).appendTo('body');
+                if(tmplObj.title) $(el).find('.lay-conts.ui-alert-msg').html(msg);
+                else $(el).find('.lay-conts h6.ui-alert-msg').html(msg);
                 
 
                 var modal = $(el).vcModal(vcui.extend({ removeOnClose: true, variableHeight:true, variableWidth:true }, options)).vcModal('instance');

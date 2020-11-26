@@ -1,6 +1,9 @@
 .service-info-txt {
     margin:64px 0;
     text-align:center;
+    @include mobile {
+        margin:40px 0;
+    }
     .tit {
         font-size:0;
         &::before {
@@ -8,19 +11,28 @@
             display:inline-block;
             width:48px;
             height:48px;
-            margin-right:24px;
+            margin:0 12px;
             vertical-align:middle;
             background:url('/lg5-common/images/icons/icon-04-48.svg') no-repeat;
+            @include mobile {
+                display:block;
+                margin:0 auto 12px;
+            }
         }
         p {
             display:inline-block;
+            margin:0 12px;
             color:#222;
             @include font-large-2;
             vertical-align:middle;
+            word-break:keep-all;
             em {
                 font-weight:700;
                 &.red {
                     color:#ec455a;
+                    @include mobile {
+                        display:block;
+                    }
                 }
             }
         }
@@ -28,149 +40,354 @@
     .desc {
         margin-top:8px;
         color:#222;
+        word-break:keep-all;
         @include font-medium;
+        @include mobile {
+            margin-top:12px;
+        }
     }
 }
-// .my-visit-box {
-//     .my-date {
-//         position: relative;
-//         .date-tit {
-//             font-size: 14px;
-//             line-height: 20px;
-//             color: #808080;
-//         }
-//         .date {
-//             font-size: 18px;
-//             line-height: 28px;
-//             color: #616161;
-//             font-weight: 700;
-//         }
-//         .btn {
-//             position: absolute;
-//             top: 50%;
-//             right: 0;
-//             transform: translateY(-50%);
-//         }
-//     }
-//     .next .date {
-//         color: #ec455a;
-//     }
-//     .service-item {
-//         margin-top: 16px;
-//         padding-top: 16px;
-//         border-top: 1px solid #ddd;
-//         li {
-//             font-size: 16px;
-//             line-height: 24px;
-//             color: #222;
-//             margin-top:4px;
-//             &:first-child {
-//                 margin-top: 0;
-//             }
-//         }  
-//     }
-// }
 
-
-
-.my-visit-detail {
-   .my-visit-box {
-       display: flex;
-       width: 100%;
-       margin-top: 56px;
-       flex-wrap: wrap;
-       > li {
-            width: 50%;
-            padding-right: 4px;
-            &:last-child {
-                padding: 0 0 0 4px;
-            }
+.my-visit-schedule {
+    @include mobile {
+        padding-top:20px;
+    }
+    .schedule-list {
+        position:relative;
+        &::before {
+            content:' ';
+            position:absolute;
+            top:0;
+            left:33px;
+            bottom:0;
+            width:8px;
+            border-radius:4px;
+            background:#f4f4f4;
             @include mobile {
-                display: block;
-                width: 100%;
-                padding: 0;
-                &:last-child {
-                    padding: 0;
-                }
+                left:20px;
             }
-            &.next {
-                .my-date {
-                    padding-right: 150px;
-                }
-            }
-            .inner {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                padding: 24px 24px 52px;
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                @include mobile {
-                    padding: 20px 20px 16px;
-                }
-           }
-
-           .btn-area {
-               position: absolute;
-               bottom: 24px;
-               right: 24px;
-               @include mobile {
-                   position: static;
-                   display: block;
-                   margin-top: 20px;
-                   text-align: center;
-               }
-               .more-btn {
-                font-size: 14px;
-                line-height: 20px;
-                color: #222;
-                @include mobile {
-                    text-decoration: underline;
-                }
-                }
-           }
-       }
-       @include mobile {
-        > li + li {
-            margin-top: 10px;
         }
-       }
-   } 
+        > li {
+            margin-top:19px;
+            @include mobile {
+                margin-top:24px;
+            }
+            &:first-child {
+                margin-top:0;
+            }
+            &.after {
+                .inner {
+                    padding-top:45px;
+                    @include mobile {
+                        padding-top:54px;
+                    }
+                }
+            }
+
+            // visit icon
+            .visit-icons {
+                position:absolute;
+                top:0;
+                left:0;
+                &::after {
+                    content:' ';
+                    position:absolute;
+                    top:47px;
+                    left:24px;
+                    width:26px;
+                    height:34px;
+                    background:url('/lg5-common/images/icons/icon-alarm2.svg') center no-repeat;
+                    @include mobile {
+                        top:46px;
+                        left:11px;
+                    }
+                }
+                p {
+                    position:relative;
+                    padding:3px 7px;
+                    border:1px solid #ddd;
+                    border-radius:8px;
+                    background:#f4f4f4;
+                    @include font-small;
+                    color:#aaa;
+                    font-weight:500;
+                    &::after {
+                        content:' ';
+                        position:absolute;
+                        bottom:-9px;
+                        left:30px;
+                        width:14px;
+                        height:9px;
+                        background:url('/lg5-common/images/MYC/bg-offs.svg') center no-repeat;
+                    }
+                    @include mobile {
+                        padding:5px 15px;
+                        &::after {
+                            left:16px;
+                        }
+                    }
+                }
+            }
+            &.on {
+                .visit-icons {
+                    &::after {
+                        background:url('/lg5-common/images/icons/icon-alarm.svg') center no-repeat;
+                    }
+                    p {
+                        border:1px solid #EC455A;
+                        background:#fdecee;
+                        color:#EC455A;
+                        &::after {
+                            background:url('/lg5-common/images/MYC/bg-ons.svg') center no-repeat;
+                        }
+                    }
+                }
+            }
+
+            @each $state in on, off {
+                $fontColor:transparent;
+                @if $state == on {
+                    $fontColor:#EC455A;
+                } @else if $state == off {
+                    $fontColor:#aaa;
+                }
+                &.#{$state} {
+                    position:relative;
+                    .inner {
+                        padding-left:81px;
+                        @include clearfix;
+                        @include mobile {
+                            padding-left:56px;
+                        }
+                        .svc-info {
+                            float:left;
+                            width:30.6%;
+                            padding-right:24px;
+                            @include mobile {
+                                float:none;
+                                width:100%;
+                                padding-right:0;
+                            }
+                            .date {
+                                position:relative;
+                                @include font-large-2;
+                                color:$fontColor;
+                                font-weight:700;
+                                small {
+                                    display:block;
+                                    margin-bottom:5px;
+                                    @include font-small;
+                                    font-weight:500;
+                                    @include mobile {
+                                        margin-bottom:2px;
+                                    }
+                                }
+                                &::before {
+                                    content:' ';
+                                    position:absolute;
+                                    top:43px;
+                                    left:-48px;
+                                    width:8px;
+                                    height:8px;
+                                    border-radius:50%;
+                                    background:$fontColor;
+                                    @include mobile {
+                                        top:32px;
+                                        left:-36px;
+                                    }
+                                }
+                            }
+                            .infos {
+                                margin-top:20px;
+                                @include mobile {
+                                    margin-top:12px;
+                                }
+                                ul {
+                                    max-width:200px;
+                                    font-size:0;
+                                    li {
+                                        display:inline-block;
+                                        @include font-small;
+                                        @if $state == on {
+                                            $fontColor:#767676;
+                                        }
+                                        color:$fontColor;
+                                        vertical-align:top;
+                                        &::after {
+                                            content:' ';
+                                            display:inline-block;
+                                            width:1px;
+                                            height:10px;
+                                            margin:7px 8px 0;
+                                            background:#ddd;
+                                            vertical-align:top;
+                                        }
+                                        &:last-child::after {
+                                            display:none;
+                                        }
+                                    }
+                                }
+                            }
+                            .end-alert {
+                                margin-top:18px;
+                                color:#F04E3E;
+                                @include font-small;
+                                font-weight:500;
+                                &::before {
+                                    content:' ';
+                                    display:inline-block;
+                                    width:20px;
+                                    height:20px;
+                                    margin-top:2px;
+                                    margin-right:4px;
+                                    background:url('/lg5-common/images/icons/icon-error.svg') center no-repeat;
+                                    vertical-align:top;
+                                }
+                                @include mobile {
+                                    margin-top:24px;
+                                    &::before {
+                                        margin-top:1px;
+                                        background-size:16px 16px;
+                                    }
+                                }
+                            }
+                        }
+                        .svc-lists {
+                            position:relative;
+                            float:right;
+                            width:69.4%;
+                            padding:32px 48px;
+                            padding-right:191px;
+                            border-radius:8px;
+                            box-shadow:2px 4px 16px 0 rgba(#000, .14);
+                            @include mobile {
+                                float:none;
+                                width:100%;
+                                margin-top:24px;
+                                padding:20px;
+                                @include clearfix;
+                            }
+                            p {
+                                color:#767676;
+                                @include font-small;
+                                font-weight:500;
+                            }
+                            .svc-details {
+                                max-height:138px;
+                                margin-top:16px;
+                                overflow:hidden;
+                                @include mobile {
+                                    max-height:118px;
+                                    margin-top:24px;
+                                }
+                                li {
+                                    margin-top:2px;
+                                    color:#222;
+                                    @include font-medium;
+                                    &:first-child {
+                                        margin-top:0;
+                                    }
+                                }
+                                &.open {
+                                    max-height:240px;
+                                    overflow-y:auto;
+                                    @include mobile {
+                                        max-height:200px;
+                                    }
+                                }
+                            }
+                            .more-view-wrap {
+                                position:absolute;
+                                top:109px;
+                                right:48px;
+                                @include mobile {
+                                    position:relative;
+                                    top:auto;
+                                    right:auto;
+                                    float:right;
+                                    margin-top:20px;
+                                    @if $state == on {
+                                        padding-top:6px;
+                                    }
+                                }
+                                .more-view {
+                                    display:inline-block;
+                                    position:relative;
+                                    width:auto;
+                                    padding-right:24px;
+                                    color:#767676;
+                                    @include font-small;
+                                    cursor:pointer;
+                                    vertical-align:top;
+                                    @include mobile {
+                                        font-size:14px;
+                                        line-height:22px;
+                                    }
+                                    &::after {
+                                        content:' ';
+                                        position:absolute;
+                                        top:50%;
+                                        right:0;
+                                        width:20px;
+                                        height:20px;
+                                        margin-top:-10px;
+                                        background:url('/lg5-common/images/icons/btn-more-20-gray.svg') no-repeat;
+                                        vertical-align:top;
+                                    }
+                                    &.open {
+                                        color:#EC455A;
+                                        &::after {
+                                            background:url('/lg5-common/images/icons/btn-minus-20-pink.svg') no-repeat;
+                                        }
+                                    }
+                                }
+                            }
+                            .btn.border {
+                                position:absolute;
+                                top:32px;
+                                right:48px;
+                                @include mobile {
+                                    position:relative;
+                                    top:auto;
+                                    right:auto;
+                                    float:left;
+                                    margin-top:20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .my-visit-qna {
-    margin-top: 56px;
+    margin-top: 80px;
     @include mobile {
-        margin-top: 40px;
+        margin-top: 62px;
     }
     ul {
         li {
-            margin-top: 32px;
-            @include mobile {
-                margin-top: 40px;
-            }
+            margin-top: 24px;
+            text-align:center;
             &:first-child {
                 margin-top: 0;
             }
             .tit {
-                padding: 14px 24px;
+                padding: 16px 24px;
                 background: #f4f4f4;
-                border-top: 1px solid #ddd;
-                font-size: 14px;
-                line-height: 20px;
-                color: #616161;
-                @include mobile {
-                    padding: 12px 20px;
-                }
+                border-top: 2px solid #222;
+                @include font-medium;
+                font-weight:500;
+                color: #222;
             }
             .cont {
                 padding: 24px;
-                border-bottom: 1px solid #ddd;
-                font-size: 16px;
-                line-height: 24px;
-                color: #222;
+                @include font-medium;
+                color: #767676;
                 @include mobile {
-                    padding: 20px;
+                    padding:21px;
                 }
             }
         }

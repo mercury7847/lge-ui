@@ -35,7 +35,11 @@
 
 .support {
     .service-menu-wrap {
-        padding:120px 0;
+        .inner {
+            max-width:1380px + 40px;
+            margin:0 auto;
+            padding:120px 40px;
+        }
         .title {
             margin-bottom:48px;
             font-size:32px;
@@ -54,9 +58,6 @@
                 vertical-align:top;
                 a {
                     display:block;
-                    padding:32px 0;
-                    border-radius:4px;
-                    background:#fff;
                 }
                 .icon {
                     width:80px;
@@ -77,7 +78,7 @@
         }
         @include tablet {
             .service-list {
-                margin:-24x -12px 0;
+                margin:-24px -12px 0;
                 > li {
                     padding:24px 12px 0;
                     width:calc(100% / 3);
@@ -85,7 +86,10 @@
             }
         }
         @include mobile {
-            padding:32px 16px;
+            border-top:12px solid #f4f4f4;
+            .inner {
+                padding:32px 16px 60px;
+            }
             .title {
                 margin-bottom:24px;
                 font-size:24px;
@@ -185,6 +189,7 @@
     }
 
     .service-history {
+        margin-bottom:80px;
         mark {
             background-color: transparent;
         }
@@ -262,6 +267,7 @@
         @include mobile {
             font-size: 14px;
             display: block;
+            margin-bottom:60px;
             .item {
                 padding: 20px;
                 margin-top: 12px;
@@ -329,18 +335,9 @@
     color: #ec455a !important;
 }
 
-// content title
-.h2_tit{
-    @include font-small;
-}
-
 // board add file list
-.board-view-sns.type2{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
 .addfile-wrap{
+    line-height:32px;
     .addfile-button{
         @include font-small;
         background:url("/lg5-common/images/icons/icon-download-32.svg") no-repeat 100% center;
@@ -363,9 +360,53 @@
     .addfilebox-list li:hover{
         color:#222;
     }
+    &.open {
+        .addfilebox-list{
+            display:block;
+        }
+    }
 }
-.addfile-wrap.open{
-    .addfilebox-list{
-        display:block;
+
+//form desc
+.popup-wrap .pop-conts.mt8{
+    padding-top:0;
+    margin-top:8px;
+}
+.form-desc{
+    .req{
+        @include font-small;
+        color:#767676;
+    }
+    .req::before{
+        content:'*';
+        color: #ec455a;
+    }
+}
+
+//section title
+.section-title{
+    .tit{
+        @include font-large;
+        margin-top:48px;
+        margin-bottom:16px;
+    }
+}
+.contents-inner-title{
+    border-bottom:2px solid #222;
+    padding-bottom:16px;
+    .tit{
+        @include font-large-1;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .page-visual .heading-title{
+        word-break:keep-all;
+    }
+
+    .section-title{
+        .tit{
+            margin-top:20px;
+        }
     }
 }

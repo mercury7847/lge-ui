@@ -123,12 +123,14 @@ $(function () {
                 '               <div class="original">'+
                 '                   <em class="blind">판매가격</em>'+
                 '                   <span class="price">{{rPrice}}<em>원</em></span>'+
-                '               </div>'+        
-                '               '       
+                '               </div>'+ 
+                '               {{/if}}'+
+                '               {{#if rPromoPrice}}'+
                 '               <div class="total">'+
                 '                   <em class="blind">총 판매가격</em>'+
                 '                   <span class="price">{{rPromoPrice}}<em>원</em></span>'+
                 '               </div>'+
+                '               {{/if}}'+
                 '           </div>'+            
                 '           <div class="btn-area-wrap">'+
                 '               <div class="wishlist">'+

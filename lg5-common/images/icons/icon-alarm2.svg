@@ -1,3 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="26" height="34">
-    <path fill="#FBDADE" fill-rule="evenodd" d="M13 0C5.82 0 0 5.789 0 12.933c0 4.762 4.333 11.784 13 21.066 8.667-9.282 13-16.304 13-21.066C26 5.789 20.18 0 13 0"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="34px" viewBox="0 0 26 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-alarm2</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon_alarm1">
+            <path d="M13,0.5 C9.54792624,0.5 6.42254583,1.89188854 4.16025876,4.14261945 C1.89890084,6.39242597 0.5,9.50044334 0.5,12.9335938 C0.5,17.56103 4.7150722,24.3286002 12.9996254,33.2655473 C21.2844057,24.3294384 25.5,17.5613166 25.5,12.9335938 C25.5,9.50044334 24.1010992,6.39242597 21.8397412,4.14261945 C19.5774542,1.89188854 16.4520738,0.5 13,0.5 Z" id="Oval" stroke="#DDDDDD" fill="#F4F4F4"></path>
+            <circle id="Oval" fill="#AAAAAA" cx="11.5" cy="9.5" r="1.5"></circle>
+            <path d="M13,13 C13,14.6568542 14.1192881,16 15.5,16 C16.8807119,16 18,14.6568542 18,13" id="Path" stroke="#AAAAAA" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle id="Oval" fill="#AAAAAA" cx="19.5" cy="9.5" r="1.5"></circle>
+        </g>
+    </g>
 </svg>

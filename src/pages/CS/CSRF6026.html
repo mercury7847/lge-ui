@@ -11,17 +11,16 @@
         @@include('./common/header.html')
 
         <div class="container">
-            @@include('./common/support/page-visual.html', {
-                'title': '문의/예약 결과 조회',
-                'desc': '예약하신 모든 상담/서비스 내역을 조회하실 수 있습니다.<br>에어컨 이외 제품의 설치/철거 서비스 신청 확인은 <a href="#" class="btn-text">㈜판토스 홈페이지</a>를 통해 확인해 주세요.'
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '문의/예약 결과 조회'
             })
 
             <div class="contents support reservation">
-                <div class="contents-inner">
+                <div class="cont-wrap">
 
                     <div class="section">
-                        <div class="section-title">
-                            <h3>서비스 이용 내역 <strong class="color-3">8</strong>건</h3>
+                        <div class="tit-wrap">
+                            <h3 class="tit">서비스 이용 내역 <em class="point">8</em>건</h3>
                         </div>
                         <div class="service-history">
                             <div class="item">
@@ -102,19 +101,17 @@
                                 </dl>
                             </div>
                         </div>
-                    </div>
-                    <div class="section">
+
                         <div class="list-wrap icon-type">
                             <ul class="list">
                                 <li class="icon-mail">
                                     <a href="#" class="item">
-                                        <div class="flag-wrap">
-                                            <span class="flag">이메일 문의</span>
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag green">이메일 문의</span>
                                             <span class="flag">접수</span>
                                         </div>
                                         <strong class="tit">고장증상1 > 세부증상2</strong>
-                                        <p class="desc">HA230948WW</p>
-                                        <ul class="infos">
+                                        <ul class="options">
                                             <li>대표 카테고리1 > 카테고리2 : 펫네임 모델명</li>
                                             <li>접수번호 JA230948WW  </li>
                                             <li>접수일 2020.07.27</li>
@@ -123,58 +120,68 @@
                                 </li>
                                 <li class="icon-phone">
                                     <a href="#" class="item">
-                                        <div class="flag-wrap">
-                                            <span class="flag">전화상담</span>
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag green">전화상담</span>
                                             <span class="flag">처리대기</span>
                                         </div>
                                         <strong class="tit">고장증상1 > 세부증상2</strong>
-                                        <p class="desc">HA230948WW</p>
-                                        <ul class="infos">
+                                        <ul class="options">
                                             <li>대표 카테고리1 > 카테고리2 : 펫네임 모델명</li>
                                             <li>접수번호 JA230948WW  </li>
                                             <li>접수일 2020.07.27</li>
                                         </ul>
                                     </a>
                                 </li>
-                                <li class="icon-mail">
+                                <li class="icon-chat">
                                     <a href="#" class="item">
-                                        <div class="flag-wrap">
-                                            <span class="flag">이메일 문의</span>
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag green">채팅 상담</span>
                                             <span class="flag">접수</span>
                                         </div>
                                         <strong class="tit">고장증상1 > 세부증상2</strong>
-                                        <p class="desc">HA230948WW</p>
-                                        <ul class="infos">
+                                        <ul class="options">
                                             <li>대표 카테고리1 > 카테고리2 : 펫네임 모델명</li>
                                             <li>접수번호 JA230948WW  </li>
                                             <li>접수일 2020.07.27</li>
                                         </ul>
                                     </a>
                                 </li>
-                                <li class="icon-phone">
+                                <li class="icon-trip">
                                     <a href="#" class="item">
-                                        <div class="flag-wrap">
-                                            <span class="flag">전화상담</span>
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag green">출장 서비스 예약</span>
                                             <span class="flag">처리대기</span>
                                         </div>
                                         <strong class="tit">고장증상1 > 세부증상2</strong>
-                                        <p class="desc">HA230948WW</p>
-                                        <ul class="infos">
+                                        <ul class="options">
                                             <li>대표 카테고리1 > 카테고리2 : 펫네임 모델명</li>
                                             <li>접수번호 JA230948WW  </li>
                                             <li>접수일 2020.07.27</li>
                                         </ul>
                                     </a>
                                 </li>
-                                <li class="icon-phone">
+                                <li class="icon-center">
                                     <a href="#" class="item">
-                                        <div class="flag-wrap">
-                                            <span class="flag">전화상담</span>
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag green">센터방문 예약</span>
                                             <span class="flag">처리대기</span>
                                         </div>
                                         <strong class="tit">고장증상1 > 세부증상2</strong>
-                                        <p class="desc">HA230948WW</p>
-                                        <ul class="infos">
+                                        <ul class="options">
+                                            <li>대표 카테고리1 > 카테고리2 : 펫네임 모델명</li>
+                                            <li>접수번호 JA230948WW  </li>
+                                            <li>접수일 2020.07.27</li>
+                                        </ul>
+                                    </a>
+                                </li>
+                                <li class="icon-store">
+                                    <a href="#" class="item">
+                                        <div class="flag-wrap bar-type">
+                                            <span class="flag green">매장방문 예약</span>
+                                            <span class="flag">처리대기</span>
+                                        </div>
+                                        <strong class="tit">고장증상1 > 세부증상2</strong>
+                                        <ul class="options">
                                             <li>대표 카테고리1 > 카테고리2 : 펫네임 모델명</li>
                                             <li>접수번호 JA230948WW  </li>
                                             <li>접수일 2020.07.27</li>
@@ -193,9 +200,8 @@
                     </div>
                     <div class="btn-group center">
                         <a href="#" class="btn gray"><span>이전</span></a>
-                        <a href="#" class="btn pink"><span>고객지원 메인</span></a>
+                        <a href="#" class="btn"><span>고객지원 메인</span></a>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -204,7 +210,6 @@
     </div>  
     
     <!-- support script -->
-    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/product-support"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <div class="contents support psp">
+                <div class="product-header">
+                    <div class="product-header-inner">
+                        <div class="product-header-infos">
+                            <div class="visual">
+                                <img src="/lg5-common/images/dummy/@img-product6.jpg" class="img" alt="LG XPION A50PH">
+                            </div>
+                            <div class="conts">
+                                <!-- 로그인상태, 등록된 제품인 경우 노출 -->
+                                <div class="flag-wrap">
+                                    <span class="flag">보유제품</span>
+                                </div>
+                                <!-- // 로그인상태, 등록된 제품인 경우 노출 -->
+                                <h2 class="tit">LG XPION A50PH A50PH-XPIO</h2>
+                                <p class="desc">IT/모니터 > 데스크톱/일체형</p>
+                                <ul class="btns">
+                                    <li>
+                                        <a href="#" class="btn-link"><span>이메일 문의</span></a>
+                                    </li>
+                                    <li>
+                                        <!-- 출장 서비스 가능한 제품인 경우 노출 -->
+                                        <a href="#" class="btn-link"><span>출장 서비스 예약</span></a>
+        
+                                        <!-- 출장 서비스가 불가한 경우 '매장 방문 신청' 노출 -->
+                                        <!-- <a href="#" class="btn-link"><span>매장 방문 신청</span></a> -->
+                                    </li>
+                                    <li>
+                                        <!-- 로그인상태, 등록된 제품인 경우 노출 -->
+                                        <a href="#" class="btn-link"><span>보유제품 관리</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- PDP : 매칭되는 PDP 있을 경우 노출  -->
+                        <div class="product-header-btns">
+                            <a href="#" class="btn border"><span>제품 정보</span></a>
+                        </div>
+                        <!-- // PDP : 매칭되는 PDP 있을 경우 노출  -->
+                    </div>
+                </div>
+
+                <div class="guide-wrap">
+                    <div class="guide-bar">
+                        <p class="login-txt">로그인을 하시면 LG전자에서 제공하는 다양한 서비스를 이용할 수 있습니다.</p>
+                        <a href="#" class="btn border size"><span>로그인</span></a>
+                    </div>
+                </div>
+
+                <div class="anchors-tabs-wrap ui_sticky" data-used-anchor="true">
+                    <div class="anchors-tabs">
+                        <ul>
+                            <!-- 다운로드 (default) -->
+                            <li class="on">
+                                <a href="#content1" id="anchor1">제품사용설명서 (6)</a>
+                            </li>
+                            <li>
+                                <a href="#content2" id="anchor2">드라이버/SW (91)</a>
+                            </li>
+                            <li>
+                                <a href="#content3" id="anchor3">제품 문제 해결 (5)</a>
+                            </li>
+                            <li>
+                                <a href="#serviceMenu" id="anchor4">소모품 (6)</a>
+                            </li>
+                            <li>
+                                <a href="#serviceMenu" id="anchor5">제품 서비스 (1)</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cont-wrap">
+                    <!-- <form action="" id="submitForm">
+                        <input type="hidden" name="superCategory" id="superCategory" value="">
+                        <input type="hidden" name="category" id="category" value="">
+                        <input type="hidden" name="model" id="model" value="">
+                    </form> -->
+
+                    <div class="section" id="content1">
+                        <div class="tit-wrap">
+                            <h3 class="tit">제품사용 설명서 <em class="count">3</em>건
+                                @@include('./common/modules/tooltip.html', {
+                                    "type" : "include",
+                                    "page" : "tooltip-CSRF6008"
+                                })
+                            </h3>
+                        </div>
+
+                        <div class="list-wrap">
+                            <ul class="manual-list">
+                                <li>
+                                    <p class="tit">제품 사용설명서</p>
+                                    <p class="desc">Owner’s Manual (Simple Book) – 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>
+                                    <div class="info-wrap">
+                                        <ul class="options">
+                                            <li>2020.11.03</li>
+                                            <li>한국어</li>
+                                            <li>펫네임</li>
+                                            <li>OS</li>
+                                        </ul>
+                                        <div class="btns-area">
+                                            <a href="#" class="btn border size"><span>PDF</span></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="tit">제품 사용설명서</p>
+                                    <p class="desc">Owner’s Manual (Simple Book) – 제품 사용 방법, 설치 등에 대한 사용설명서입니다.</p>
+                                    <div class="info-wrap">
+                                        <ul class="options">
+                                            <li>2020.11.03</li>
+                                            <li>English</li>
+                                        </ul>
+                                        <div class="btns-area">
+                                            <a href="#" class="btn border size"><span>ZIP</span></a>
+                                            <a href="#" class="btn border size"><span>HTML</span></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="section driver-section" id="content2">
+                        <div class="tit-wrap">
+                            <h3 class="tit">드라이버/SW <em class="count">130</em>건</h3>
+                        </div>
+
+                        <!-- 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
+                        <div class="banner-wrap">
+                            <div class="banner">    
+                                <p class="tit">드라이버/소프트웨어는 LG Update Center[통합 드라이버 설치 프로그램]을 통해 편리하게 설치해 보세요.</p>
+                                <a href="https://www.lgservice.co.kr/simple/selectSimpleSearchDetail.do?gubun=FAQ&type=keyword&seq=27830&itemId=9438" class="btn-link">LG UPdata Center 가기</a>
+                            </div>
+                        </div>
+                        <!-- // 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
+
+                        <div class="form-wrap ">
+                            <div class="forms">
+                                <div class="tit">
+                                    <label for="os">운영체제(OS) 선택</label>
+                                </div>
+                                <div class="conts">
+                                    <div class="select-wrap">
+                                        <select name="os" id="os" class="ui_selectbox">
+                                            <option value="">전체</option>
+                                            <option value="">전체</option>
+                                            <option value="">전체</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="forms">
+                                <div class="tit">
+                                    <label for="driver">드라이버 분류</label>
+                                </div>
+                                <div class="conts">
+                                    <div class="select-wrap">
+                                        <select name="driver" id="driver" class="ui_selectbox">
+                                            <option value="">전체</option>
+                                            <option value="">전체</option>
+                                            <option value="">전체</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tabs-wrap border-type ui_tab left">
+                            <ul class="tabs">
+                                <li class="on"><a href="#tab1">통합 드라이버 설치프로그램(110)<em class="blind">선택됨</em></a></li>
+                                <li><a href="#">칩셋/패치(6)</a></li>
+                                <li><a href="#">비디오(6)</a></li>
+                                <li><a href="#">사운드(3)</a></li>
+                                <li><a href="#">랜(4)</a></li>
+                                <li><a href="#">기타(0)</a></li>
+                            </ul>
+                        </div>
+                        <div class="list-wrap ui_accordion" data-toggle-selector=">.head .ui_accord_toggle">
+                            <ul class="file-list">
+                                <li>
+                                    <div class="head">
+                                        <div class="file-box">
+                                            <p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                            <ul class="options">
+                                                <li>ver 7.7PHV1  데스크톱/일체형  </li>
+                                                <li>통합 드라이버 설치 프로그램</li>
+                                                <li>2020.11.03</li>
+                                            </ul>
+                                            <div class="btn-area">
+                                                <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                                <a href="#" class="accord-btn ui_accord_toggle" data-open-text="이전 버전 보기" data-close-text="이전 버전 닫기"><span class="ui_accord_text">이전 버전 보기</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accord-cont ui_accord_content">
+                                        <ul class="file-list">
+                                            <li>
+                                                <div class="file-box">
+                                                    <p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                                    <ul class="options">
+                                                        <li>ver 7.7PHV1  데스크톱/일체형  </li>
+                                                        <li>통합 드라이버 설치 프로그램</li>
+                                                        <li>2020.11.03</li>
+                                                    </ul>
+                                                    <div class="btn-area">
+                                                        <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="file-box">
+                                                    <p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                                    <ul class="options">
+                                                        <li>ver 7.7PHV1  데스크톱/일체형  </li>
+                                                        <li>통합 드라이버 설치 프로그램</li>
+                                                        <li>2020.11.03</li>
+                                                    </ul>
+                                                    <div class="btn-area">
+                                                        <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="head">
+                                        <div class="file-box">
+                                            <p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</button></p>
+                                            <ul class="options">
+                                                <li>ver 7.7PHV1  데스크톱/일체형  </li>
+                                                <li>통합 드라이버 설치 프로그램</li>
+                                                <li>2020.11.03</li>
+                                            </ul>
+                                            <div class="btn-area">
+                                                <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        @@include('./common/support/pagination.html', {
+                            count: 5
+                        })
+                        <div class="no-data">
+                            <p>다운로드/소프트웨어 자료가 없습니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="section" id="content3">
+                        <form action="" id="solutionsForm">
+                            <input type="hidden" name="keyword" id="keyword" value="">
+                            <input type="hidden" name="topic" id="topic" value="LCL10005001">
+                            <input type="hidden" name="subTopic" id="subTopic" value="">
+                            <input type="hidden" name="orderBy" id="orderBy" value="most">
+                        </form>
+                        
+                        <div class="solutions-wrap">
+                            <div class="filter-box">
+                                <div class="tit-wrap">
+                                    <h4 class="tit">증상 선택</h4>
+                                </div>
+                                <ul class="filter-list" id="filterContent">
+                                    <li class="on">
+                                        <button type="button" class="filter-link">All <span class="blind">선택됨</span></button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="filter-link">기능</button>
+                                        <!-- <div class="sub-depth">
+                                            <div class="tit-wrap">
+                                                <button type="button" class="btn-back"><span class="blind">이전 보기</span></button>
+                                                <strong class="tit">기능</strong>  
+                                            </div>
+                                            <ul class="filter-list">
+                                                <li>
+                                                    <button type="button" class="filter-link">ALL</button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="filter-link">퀵 헬프 방법</button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="filter-link">앱 설치</button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="filter-link">타임머신</button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="filter-link">신호없음</button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="filter-link">인터넷 연결</button>
+                                                </li>
+                                            </ul>
+                                        </div> -->
+                                    </li>
+                                    <li>
+                                        <button type="button" class="filter-link ui_filter_link">설치/연결</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="filter-link ui_filter_link">소음/냄새/열방생</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="filter-link ui_filter_link">스마트 앱</button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="result-box">
+                                <div class="search-wrap">
+                                    <div class="keyword-search">
+                                        <div class="input-wrap">
+                                            <input type="text" name="keyword" placeholder="키워드 검색">
+                                            <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                        </div>
+                                        <span class="chk-wrap">
+                                            <input type="checkbox" id="chk1-1" name="chk1" checked>
+                                            <label for="chk1-1">결과 내 검색</label>
+                                        </span>
+                                    </div> 
+                                </div>
+
+                                <div class="mobile-filter-box">
+                                    <div class="form-wrap">
+                                        <div class="forms">
+                                            <div class="tit">
+                                                <label for="select-symptom">증상</label>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="select-wrap">
+                                                    <select class="ui_selectbox" name="symptom" id="select-symptom">
+                                                        <option value="">증상</option>
+                                                        <option value="">증상</option>
+                                                        <option value="">증상</option>
+                                                    </select>
+                                                    <div class="select-wrap">
+                                                        <select class="ui_selectbox" name="symptom2" id="select-symptom2" title="세부증상 선택" disabled>
+                                                            <option class="placeholder">세부증상 선택</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tit-wrap">
+                                    <h4 class="tit">“<span class="point">All</span>” 검색 결과</h4>
+                                </div>
+                                <div class="sorting-wrap">
+                                    <div class="total">전체 <em class="count">122</em>건</div>
+                                    <div class="sort-box">
+                                        <div class="sort-select-wrap">
+                                            <select class="ui_selectbox" name="" id="selectOrder" title="정렬 기준 선택">
+                                                <option value="조회순" selected>조회순</option>
+                                                <option value="등록순">등록순</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-wrap">
+                                    <ul class="list" id="solutionsContent">
+                                        <li class="video-type">
+                                            <a href="#" class="item">
+                                                <p class="tit">노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀</p>
+                                                <p class="desc">증상 > 세부 증상</p>
+                                                <ul class="options">
+                                                    <li>2020.07.20</li>
+                                                    <li>조회 5,692</li>
+                                                </ul>
+                                                <span class="icon-movie"><span class="blind">동영상 가이드 컨텐츠</span></span>
+                                            </a>
+                                        </li>
+                                        @@for (var i = 0; i < 9; i++) {
+                                        <li>
+                                            <a href="#" class="item">
+                                                <p class="tit">노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀</p>
+                                                <p class="desc">증상 > 세부 증상</p>
+                                                <ul class="options">
+                                                    <li>2020.07.20</li>
+                                                    <li>조회 5,692</li>
+                                                </ul>
+                                            </a>
+                                        </li>
+                                        }
+                                    </ul>
+                                </div>
+                                @@include('./common/support/pagination.html', {
+                                    count: 5
+                                })
+                            </div>
+                        </div>
+
+                        <div class="survey-banner-wrap">
+                            <div class="banner">    
+                                <p class="tit">고객님이 선택하신 [<strong class="point">OLED48CXKNB</strong>] 콘텐츠에 대한 만족도 평가 및 의견을 남겨주시면 추첨을 통해 경품을 드립니다.</p>
+                                <button type="button" class="btn dark-gray size" data-href="#surveyPopup" data-control="modal"><span>평가하기</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                @@include('./common/support/recommand-product.html')
+                @@include('./common/support/service-menu.html')
+                @@include('./common/support/center-find.html')
+
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>    
+    
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/productSupport/solutions.min.js"></script>
+    <script src="/lg5-common/js/support/productSupportPage.min.js"></script>
+</body>
+</html> 

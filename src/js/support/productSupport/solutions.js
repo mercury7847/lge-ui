@@ -12,7 +12,7 @@
 
     var subFilterTemplate = 
         '<div class="sub-depth">' +
-        '<div class="filter-head">' +
+        '<div class="tit-wrap">' +
         '<button type="button" class="btn-back"><span class="blind">뒤로 가기</span></button>' +
         '<strong class="tit">{{title}}</strong>' +
         '</div>' +
@@ -36,13 +36,11 @@
         '<li>' +
         '{{# } #}}' +
         '<a href="#" class="item">' +
-        '<strong class="tit">{{title}}</strong>' +
+        '<p class="tit">{{title}}</p>' +
         '<p class="desc">{{topic}}</p>' +
-        '<ul class="infos">' +
+        '<ul class="options">' +
         '<li>{{date}}</li>' +
-        '<li>' +
-        '<span class="info-view">{{view}}</span>' +
-        '</li>' +
+        '<li>조회 {{view}}</li>' +
         '</ul>' +
         '{{# if (typeof video != "undefined" && video === true) { #}}' +
         '<span class="icon-movie"><span class="blind">동영상 가이드 컨텐츠</span></span>' +

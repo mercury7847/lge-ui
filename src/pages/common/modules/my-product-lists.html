@@ -1,0 +1,81 @@
+<li class="lists">
+    <div class="inner">
+        @@if ( context.saleEnd ) {
+        <div class="thumb saleend" aria-hidden="true">
+        }
+        @@if ( !context.saleEnd ) {
+        <div class="thumb" aria-hidden="true">        
+        }
+            <img src="/lg5-common/images/dummy/@@thumb.jpg" alt="">
+        </div>
+        <div class="info-wrap">
+            <p class="name"><span class="blind">모델명</span>@@name</p>
+            <p class="e-name"><span class="blind">영문모델명</span>@@eName</p>
+            <div class="btns">
+                <button type="button" class="btn size dark-gray"><span>사용설명서</span></button>
+                @@if ( context.twoBtn ) {
+                <button type="button" class="btn size dark-gray"><span>다운로드/SW</span></button>
+                }
+            </div>
+            <ul class="info-lists period">
+                <li>
+                    <dl>
+                        <dt>구매일자</dt>
+                        <dd>2019.01</dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>등록일자</dt>
+                        <dd>2021.04.15</dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>사용기간</dt>
+                        <dd>14개월</dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>케어십 서비스</dt>
+                        @@if ( context.careship === true ) {
+                        <dd><em class="can">@@csMsg</em></dd>
+                        }
+                        @@if ( context.careship === false ) {
+                        <dd><em>미대상</em></dd>
+                        }
+                    </dl>
+                </li>
+                @@if ( context.careship === "true" || context.csMsg === "이용중" ) {
+                <li>
+                    <dl>
+                        <dt>다음 케어서비스 일자</dt>
+                        <dd>2021.04.15</dd>
+                    </dl>
+                </li>
+                }
+            </ul>
+            <div class="btns link-type">
+                @@for ( var i=0; i < btns.length; i++ ) {
+                <a href="#n" class="btn-link">`+btns[i]+`</a>
+                }
+            </div>
+            @@if ( context.saleEnd ) {
+            <p class="product-on"><span class="blind">보유중인 제품이</span>단종되었습니다.</p>
+            }
+        </div>
+        @@if ( context.rightBtn ) {
+        <div class="btn-group">
+            @@if ( context.notice ) {
+            <div class="notice">
+                <p>@@notice</p>
+                <button type="button" class="btn-off" aria-hidden="true"><span class="blind">닫기</span></button>
+            </div>
+            }
+            <a href="#n" class="btn border"><span>@@rightBtn</span></a>
+        </div>
+        }
+        <button type="button" class="btn-delete"><span class="blind">보유제품 삭제</span></button>
+    </div>
+</li>

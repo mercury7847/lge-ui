@@ -36,31 +36,29 @@ var CareCartInfo = (function() {
                 self.$loginInfo.show();
             }
             self.updateItemInfo(data);
-            self.updatePaymentInfo(data);
-            self.updateAgreement(data);
+            self.updatePaymentInfo(data.paymentInfo);
+            self.updateAgreement(data.agreement);
         },
 
         setEmptyData: function() {
             var self = this;
             var resetPaymentData = {
-                "paymentInfo": {
-                    "total":{
-                        "count": "0",
-                        "price": "0"
+                "total":{
+                    "count": "0",
+                    "price": "0"
+                },
+                "list":[
+                    {
+                        "text": "제품 수",
+                        "price": "0개",
+                        "appendClass": ""
                     },
-                    "list":[
-                        {
-                            "text": "제품 수",
-                            "price": "0개",
-                            "appendClass": "num"
-                        },
-                        {
-                            "text": "이용요금",
-                            "price": "월 0원",
-                            "appendClass": ""
-                        }
-                    ]
-                }
+                    {
+                        "text": "이용요금",
+                        "price": "월 0원",
+                        "appendClass": ""
+                    }
+                ]
             }
             self.updatePaymentInfo(resetPaymentData);
             self.updateItemInfo(null);
@@ -103,7 +101,7 @@ var CareCartInfo = (function() {
     
         updatePaymentInfo: function(data) {
             var self = this;
-            var paymentInfo = data.paymentInfo;
+            var paymentInfo = data ? data : {};
 
             var priceData = paymentInfo ? (paymentInfo.list instanceof Array ? paymentInfo.list : []) : [];
 
@@ -135,7 +133,7 @@ var CareCartInfo = (function() {
 
         updateAgreement: function(data) {
             var self = this;
-            var agreementData = data ? data.agreement : null;
+            var agreementData = data ? data : null;
             if(agreementData && agreementData.hasCareship) {
                 var hasCareship = agreementData.hasCareship;
                 self.$agreement.attr('data-has-careship',hasCareship);
@@ -173,6 +171,11 @@ var CareCartInfo = (function() {
 
             //청약하기 버튼
             self.$subscriptionButton = self.$agreement.find('div.btn-area button');
+            
+            if(!vcui.detect.isMobile){
+                self.$cartContent.data('infoHidden', true);
+                self.$itemInfo.hide();
+            }
         },
         
         _bindEvents: function() {

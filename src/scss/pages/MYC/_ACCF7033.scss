@@ -1,25 +1,268 @@
-.smart-guide-wrap {
-    padding:64px 40px 120px;
-    background:#ededed;
-    @include mobile {
-        padding:40px 20px;
-    }
-    > .tit {
-        color:#222;
-        font-size:20px;
-        line-height:30px;
-        font-weight:700;
-        text-align:center;
-        @include mobile {
-            font-size:16px;
-            line-height:24px;
+.my-product-lists {
+    ul {
+        li.lists {
+            margin-top:24px;
+            @include mobile {
+                margin-top:12px;
+            }
+            &:first-child {
+                margin-top:0;
+            }
+            .inner {
+                position:relative;
+                padding:32px;
+                padding-right:220px;
+                border-radius:8px;
+                box-shadow:2px 4px 16px 0 rgba(#000, .14);
+                @include clearfix;
+                @include mobile {
+                    padding:12px 24px 32px;
+                }
+                // thumbnail
+                .thumb {
+                    float:left;
+                    width:180px;
+                    img {
+                        width:100%;
+                        height:auto;
+                        vertical-align:top;
+                    }
+                    &.saleend {
+                        opacity:0.3;
+                    }
+                    @include mobile {
+                        float:none;
+                        width:100%;
+                        max-width:180px;
+                        margin:0 auto;
+                    }
+                }
+                // info
+                .info-wrap {
+                    float:left;
+                    width:calc(100% - 180px - 24px);
+                    margin-left:24px;
+                    @include mobile {
+                        float:none;
+                        width:100%;
+                        margin-top:16px;
+                        margin-left:0;
+                    }
+                    .name {
+                        color:#222;
+                        @include font-large;
+                        font-weight:700;
+                        @include mobile {
+                            font-size:18px;
+                            line-height:26px;
+                        }
+                    }
+                    .e-name {
+                        color:#767676;
+                        @include font-small;
+                        font-weight:500;
+                    }
+                    .btns {
+                        margin-top:8px;
+                        font-size:0;
+                        @include mobile {
+                            margin-top:12px;
+                        }
+                        .btn {
+                            margin-right:8px;
+                            @include mobile {
+                                margin-right:6px;
+                            }
+                            &:last-child {
+                                margin-right:0;
+                            }
+                        }
+                        &.link-type {
+                            @include mobile {
+                                margin-top:5px;
+                            }
+                            &:last-child {
+                                padding-bottom:13px;
+                                @include mobile {
+                                    padding-bottom:0;
+                                }
+                            }
+                            .btn-link {
+                                margin-right:20px;
+                                @include mobile {
+                                    margin-top:9px;
+                                    margin-right:16px;
+                                }
+                                &:last-child {
+                                    margin-right:0;
+                                }
+                            }
+                        }
+                    }
+                    .info-lists {
+                        max-width:450px;
+                        font-size:0;
+                        margin-top:20px;
+                        @include mobile {
+                            max-width:auto;
+                            margin-top:10px;
+                        }
+                        li {
+                            display:inline-block;
+                            vertical-align:top;
+                            &::after {
+                                content:' ';
+                                display:inline-block;
+                                width:1px;
+                                height:10px;
+                                margin:7px 8px 0;
+                                background:#ddd;
+                                vertical-align:top;
+                            }
+                            &:last-child::after {
+                                display:none;
+                            }
+                            dl {
+                                display:inline-block;
+                                font-size:0;
+                                vertical-align:top;
+                                dt,
+                                dd {
+                                    display:inline-block;
+                                    color:#767676;
+                                    @include font-small;
+                                    font-weight:500;
+                                    vertical-align:top;
+                                }
+                                dt::after {
+                                    content:':';
+                                    display:inline-block;
+                                    margin:0 4px;
+                                    font-size:inherit;
+                                    line-height:inherit;
+                                    vertical-align:top;
+                                }
+                                dd em.can {
+                                    color:#18847E;
+                                }
+                            }
+                        }
+                    }
+                    .product-on {
+                        margin-top:12px;
+                        color:#F04E3E;
+                        @include font-small;
+                        font-weight:500;
+                        &::before {
+                            content:' ';
+                            display:inline-block;
+                            width:20px;
+                            height:20px;
+                            margin:2px 4px 0 0;
+                            background:url('/lg5-common/images/icons/icon-error.svg') center no-repeat;
+                            vertical-align:top;
+                        }
+                        @include mobile {
+                            margin-top:24px;
+                            font-size:14px;
+                            line-height:22px;
+                            &::before {
+                                margin-top:1px;
+                                background-size:16px 16px;
+                            }
+                        }
+                    }
+                }
+                // button
+                .btn-group {
+                    position:absolute;
+                    right:32px;
+                    bottom:32px;
+                    @include mobile {
+                        position:relative;
+                        right:auto;
+                        bottom:auto;
+                        margin-top:20px;
+                    }
+                    .btn {
+                        margin-left:0;
+                    }
+                    .notice {
+                        position:absolute;
+                        top:-44px;
+                        right:0;
+                        width:auto;
+                        padding:3px 10px;
+                        border-radius:8px;
+                        border:1px solid #EC455A;
+                        background:#fdecee;
+                        white-space:nowrap;
+                        p {
+                            display:inline-block;
+                            vertical-align:middle;
+                            color:#EC455A;
+                            @include font-small;
+                            font-weight:500;
+                        }
+                        .btn-off {
+                            display:inline-block;
+                            width:20px;
+                            height:20px;
+                            margin-left:4px;
+                            background:url('/lg5-common/images/icons/icon-delete-20-pink.svg') center no-repeat;
+                            vertical-align:middle;
+                        }
+                        &::after {
+                            content:' ';
+                            position:absolute;
+                            right:78px;
+                            top:30px;
+                            width:14px;
+                            height:9px;
+                            background:url('/lg5-common/images/MYC/bg-ons.svg') center no-repeat;
+                        }
+                        @include mobile {
+                            top:70px;
+                            left:50%;
+                            right:auto;
+                            transform:translateX(-50%);
+                            padding:5px 15px;
+                            p {
+                                font-size:14px;
+                                line-height:22px;
+                            }
+                            &::after {
+                                top:-9px;
+                                left:50%;
+                                right:auto;
+                                margin-left:-7px;
+                                transform:rotate(180deg);
+                            }
+                        }
+                    }
+                }
+                // delete
+                > .btn-delete {
+                    position:absolute;
+                    top:32px;
+                    right:32px;
+                    width:24px;
+                    height:24px;
+                    background:url('/lg5-common/images/icons/btn-close-24.svg') center no-repeat;
+                    @include mobile {
+                        top:16px;
+                        right:16px;
+                    }
+                }
+            }
         }
-    }
-    .slide-wrap {
-        margin-top:40px;
     }
 }
 
-.list-sorting {
-    padding-top:0;
+.tbd-box {
+    padding:36px;
+    background:#f4f4f4;
+    text-align:center;
+    font-size:30px;
+    color:#767676;
 }
