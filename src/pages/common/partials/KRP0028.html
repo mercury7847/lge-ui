@@ -9,7 +9,7 @@
         <!-- tabs -->
         <div class="tabs-wrap border-type ui_tab">
             <ul class="tabs">
-                <li class="on"><a href="#ALL">전체<em class="blind">선택됨</em></a></li>
+                <li class="on"><a href="#">전체<em class="blind">선택됨</em></a></li>
                 <li><a href="#AV">TV/AV</a></li>
                 <li><a href="#IT">IT</a></li>
                 <li><a href="#KITCHEN">주방가전</a></li>
@@ -31,17 +31,17 @@
                 <div class="sort-area left">
                     <div class="sort-list">
                         <div class="sort-select-wrap">
-                            <select class="ui_selectbox" id="select2" title="이벤트 상태 선택">
-                                <option value="event_state_val_1">진행중인 이벤트</option>
-                                <option value="event_state_val_2">종료된 이벤트</option>
-                                <option value="event_state_val_3">당첨자 발표</option>
+                            <select class="ui_selectbox" id="eventStatus" title="이벤트 상태 선택">
+                                <option value="progress">진행중인 이벤트</option>
+                                <option value="end">종료된 이벤트</option>
+                                <option value="win">당첨자 발표</option>
                             </select>
                         </div>
                         <div class="sort-select-wrap">
-                            <select class="ui_selectbox" id="select3" title="이벤트 구분 선택">
-                                <option value="event_section_val_1">전체</option>
-                                <option value="event_section_val_2">온라인</option>
-                                <option value="event_section_val_3">매장</option>
+                            <select class="ui_selectbox" id="eventGubun" title="이벤트 구분 선택">
+                                <option value="">전체</option>
+                                <option value="online">온라인</option>
+                                <option value="offline">매장</option>
                             </select>
                         </div>
                     </div>
@@ -49,9 +49,9 @@
                 <div class="sort-area">
                     <div class="sort-list">
                         <div class="sort-select-wrap">
-                            <select class="ui_selectbox" id="select1" title="정렬 옵션 선택">
-                                <option value="order_1">최신순</option>
-                                <option value="order_2">마감순</option>
+                            <select class="ui_selectbox" id="eventSort" title="정렬 옵션 선택">
+                                <option value="newest">최신순</option>
+                                <option value="oldest">마감순</option>
                             </select>
                         </div>
                     </div>
