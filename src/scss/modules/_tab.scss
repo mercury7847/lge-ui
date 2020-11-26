@@ -47,6 +47,12 @@
             }
         }
     }
+    &.ui_smooth_scroll {
+        .tabs {
+            max-width:initial;
+            overflow-x:initial;
+        }
+    }
     @include mobile {
         text-align:left;
         .tabs {
