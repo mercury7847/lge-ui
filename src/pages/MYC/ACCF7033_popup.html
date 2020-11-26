@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>계약서 발급 신청</span></button><br><br>
+        <button type="button" data-href="#popup2" data-control="modal" class="btn pink"><span>제휴카드 발급 신청</span></button><br><br>
+        <button type="button" data-href="#popup3" data-control="modal" class="btn pink"><span>자동결제 이용 약관 동의</span></button><br><br>
+    </div>
+
+    <!-- 제휴카드 발급 신청 -->
+    @@include('./common/popup/ACCF7025_pop2.html', {
+        popupID: 'popup1'
+    })
+    <!-- 제휴카드 발급 신청-->
+
+    <!-- 제휴카드 발급 신청 -->
+    @@include('./common/popup/ACCF7025_pop1.html', {
+        popupID: 'popup2'
+    })
+    <!-- 제휴카드 발급 신청-->
+
+    <!-- 자동결제 이용 약관 동의 -->
+    @@include('./common/popup/RMSF9001_pop8.html', {
+        popupID: 'popup3'
+    })
+    <!-- 자동결제 이용 약관 동의 -->
+</body>
+</html>
