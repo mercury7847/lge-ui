@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g>
+                                    <path d="M0 0H20V20H0z" transform="translate(-598 -4847) translate(0 4584) translate(387 150) translate(97 110) translate(114 3)"/>
+                                    <g stroke="#767676" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                        <path d="M9 2L4 8 -1 2" transform="translate(-598 -4847) translate(0 4584) translate(387 150) translate(97 110) translate(114 3) translate(6 4) rotate(-90 4 5)"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
