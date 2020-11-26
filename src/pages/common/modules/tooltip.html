@@ -1,5 +1,5 @@
 <div class="tooltip-wrap"><!-- 활성화시 active -->
-    <span class="tooltip-icon ui_tooltip-target">자세히 보기</span>
+    <span class="tooltip-icon ui_tooltip-target" @@if(context.fixed){data-fixed="@@fixed"}>자세히 보기</span>
     <span class="tooltip-box">
         @@if ( type == "text" ) {
         <p>@@text</p>
