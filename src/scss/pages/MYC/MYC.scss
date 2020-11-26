@@ -83,6 +83,7 @@
             }
             // title
             > .tit-wrap {
+                position:relative;
                 @include clearfix;
                 height:50px;
                 margin-bottom:0;
