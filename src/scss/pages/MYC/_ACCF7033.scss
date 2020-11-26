@@ -104,7 +104,7 @@
                         font-size:0;
                         margin-top:20px;
                         @include mobile {
-                            max-width:auto;
+                            max-width:initial;
                             margin-top:10px;
                         }
                         li {

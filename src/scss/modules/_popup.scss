@@ -109,6 +109,12 @@
     overflow:hidden;
     border-radius:8px;
     background:#fff;
+    &.wide {
+        max-width:1146px;
+        @include mobile {
+            max-width:100%;
+        }
+    }
     &.full {
         max-width:912px;
         @include mobile {
