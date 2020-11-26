@@ -33,6 +33,11 @@
     .cont-wrap {
         position: relative;
         padding: 0 40px 120px;
+        @media screen and (min-width: 1024px){
+            &.w-filter {
+                padding: 0 40px 120px 280px;
+            }
+        }
         @include mobile {
             padding: 0 20px 60px;
             border-top: 0;
@@ -336,11 +341,12 @@
 
 .search-result-wrap {
     @include clearfix;
-    max-width: 1284px;
-    margin: 0 auto;
+     //max-width: 1284px;
+     max-width: 1146px;
+     margin: 0 auto;
 
     .result-area {
-        float: left;
+        //float: left;
         width: 100%;
         //max-width: 1284px;
         //margin: 0 auto;
