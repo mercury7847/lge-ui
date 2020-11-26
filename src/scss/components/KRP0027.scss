@@ -3,25 +3,34 @@
 @import "../components-app";
 
 .KRP0027 {
-	background-color:#f4f4f4;
+	background-color:#fff;
 	@include mobile {
 		background-color:#fff;
 	}
 	.component-inner {
+		position:relative;
 		max-width:1126px;
-		padding:60px 30px;
+		padding:60px 40px;
 		@include mobile {
 			padding:40px 0 56px;
 		}
 
+		.tit-wrap {
+			position:relative;
+		}
+
 		.title {
-			margin-bottom:24px;
+			display:inline-block;
+			width:50%;
 			font-weight:700;
-			font-size:16px;
-			line-height:24px;
-			color:#111;
+			font-size:20px;
+			line-height:30px;
+			color:#222;
 			@include mobile {
-				padding:0 20px;
+				width:100%;
+				padding:0 16px;
+				font-size:18px;
+				line-height:24px;
 			}
 			* {
 				font-weight:inherit;
@@ -29,65 +38,63 @@
 				line-height:inherit;
 			}
 		}
-
-		// .tabs-wrap {}
-
-		.tabs-cont {
-			display:none;
-			margin-top:12px;
-			padding:56px;
-			border-radius:4px;
-			background-color:#fff;
+		
+		.tabs-wrap {
+			position:absolute;
+			top:0;
+			right:0;
 			@include mobile {
-				margin-top:20px;
-				padding:0 20px;
-				background-color:transparent;
-			}
-			.flex-list-wrap {
-				overflow:hidden;
-				.flex-list-inner {
-					display:flex;
-					flex-wrap:wrap;
-					align-content:flex-start;
-					margin:-16px -40px;
-					@include mobile {
-						margin:0;
+				position:static;
+				margin-top:18px;
+				.tabs > li {
+					margin-left:16px;
+					&:first-child {
+						margin-left:0;
 					}
-					& > li {
-						width:50%;
-						// flex-basis:50%;
-						padding:16px 40px;
-						@include mobile {
-							width:100%;
-							// flex-basis:100%;
-							margin-top:32px;
-							padding:0;
-							&:first-child {
-								margin-top:0;
-							}
-						}
-						.list-tit {
-							display:block;
-							margin-bottom:2px;
-							font-weight:400;
-							font-size:14px;
-							line-height:20px;
-							color:#616161;
-							@include mobile {
-								color:#979797;
-							}
-						}
-						.list-txt {
-							display:block;
-							font-weight:400;
-							font-size:16px;
-							line-height:24px;
-							color:#111;
-						}
+					> a {
+						padding-bottom:4px;
+						font-size:16px;
+						line-height:24px;
 					}
 				}
 			}
 		}
 
+		.tabs-cont {
+			display:none;
+			clear:both;
+			margin-top:12px;
+			padding:32px 24px;
+			border-top:2px solid #222;
+			@include mobile {
+				margin:16px;
+				padding:16px 12px;
+				background-color:transparent;
+			}
+			.num-list {
+				li {
+					position:relative;
+					margin-top:2px;
+					padding-left:34px;
+					color:#767676;
+					font-size:16px;
+					line-height:26px;
+					&:first-child {
+						margin-top:0;
+					}
+					.num {
+						position:absolute;
+						top:0; left:0;
+					}
+					@include mobile {
+						margin-top:2px;
+						padding:0 56px 0 28px;
+						&:first-child {
+							margin-top:0;
+						}
+					}
+				}
+			}
+		}
 	}
 }
