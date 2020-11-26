@@ -1,3 +1,35 @@
+.more-view-btn {
+    display:inline-block;
+    position:relative;
+    width:auto;
+    padding-right:24px;
+    color:#767676;
+    @include font-small;
+    cursor:pointer;
+    vertical-align:top;
+    @include mobile {
+        font-size:14px;
+        line-height:22px;
+    }
+    &::after {
+        content:' ';
+        position:absolute;
+        top:50%;
+        right:0;
+        width:20px;
+        height:20px;
+        margin-top:-10px;
+        background:url('/lg5-common/images/icons/btn-more-20-gray.svg') no-repeat;
+        vertical-align:top;
+    }
+    &.open {
+        color:#EC455A;
+        &::after {
+            background:url('/lg5-common/images/icons/btn-minus-20-pink.svg') no-repeat;
+        }
+    }
+}
+
 .service-info-txt {
     margin:64px 0;
     text-align:center;
@@ -308,37 +340,6 @@
                                     margin-top:20px;
                                     @if $state == on {
                                         padding-top:6px;
-                                    }
-                                }
-                                .more-view {
-                                    display:inline-block;
-                                    position:relative;
-                                    width:auto;
-                                    padding-right:24px;
-                                    color:#767676;
-                                    @include font-small;
-                                    cursor:pointer;
-                                    vertical-align:top;
-                                    @include mobile {
-                                        font-size:14px;
-                                        line-height:22px;
-                                    }
-                                    &::after {
-                                        content:' ';
-                                        position:absolute;
-                                        top:50%;
-                                        right:0;
-                                        width:20px;
-                                        height:20px;
-                                        margin-top:-10px;
-                                        background:url('/lg5-common/images/icons/btn-more-20-gray.svg') no-repeat;
-                                        vertical-align:top;
-                                    }
-                                    &.open {
-                                        color:#EC455A;
-                                        &::after {
-                                            background:url('/lg5-common/images/icons/btn-minus-20-pink.svg') no-repeat;
-                                        }
                                     }
                                 }
                             }

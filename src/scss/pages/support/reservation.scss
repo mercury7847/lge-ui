@@ -377,6 +377,10 @@
             float:left;
             padding:0 7px;
         }
+        .slide-box{
+            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+            border-radius:8px;
+        }
         .engineer-box {
             input {
                 position:absolute;
@@ -391,7 +395,6 @@
                     display:block;
                     padding:24px 24px 35px;
                     text-align:center;
-                    border:1px solid #ddd;
                     border-radius:8px;
                     cursor:pointer;
                     -webkit-user-select:none;
@@ -422,6 +425,35 @@
                 }
                 &:checked + label {
                     box-shadow: 2px 3.5px 8px 0 rgba(0, 0, 0, 0.12);
+                }
+            }
+        }
+    }
+    .slide-wrap{
+        .slide-controls{
+            margin-top:-56px;
+        }
+        .slide-content.engineer-carousel{
+            .slide-track{
+                padding:10px 0 20px;
+    
+                .slide-box{
+                    border-radius:8px;
+                }
+            }
+
+            .engineer-box{
+                input{
+                    & + label{
+                        .tit{
+                            @include font-large-1;
+                            font-weight:600;
+                        }
+                        .desc{
+                            @include font-medium;
+                            color:#767676;
+                        }
+                    }
                 }
             }
         }

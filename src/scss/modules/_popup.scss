@@ -252,7 +252,7 @@
         .tabs-wrap {
             &:first-child {
                 @include mobile {
-                    margin:0 -20px 0;
+                    margin:0 -16px;
                 }
             }
         }
