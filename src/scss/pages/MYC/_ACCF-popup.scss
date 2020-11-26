@@ -137,3 +137,97 @@
         }
     }
 }
+
+// 사용설명서
+.user-guide-lists {
+    > ul {
+        margin:-16px 0 0 -16px;
+        @include clearfix;
+        @include mobile {
+            margin:0;
+        }
+        .lists {
+            float:left;
+            width:calc((100% - 32px) / 2);
+            margin:16px 0 0 16px;
+            @include mobile {
+                float:none;
+                width:100%;
+                margin:0;
+                margin-top:12px;
+                &:first-child {
+                    margin-top:0;
+                }
+            }
+            .ui_flexible_box {
+                border-radius:8px;
+                box-shadow:2px 4px 16px 0 rgba(#000, .14);
+            }
+            .inner {
+                padding:24px 32px;
+                .guide-tit {
+                    color:#222;
+                    @include font-medium;
+                    font-weight:700;
+                }
+                .guide-desc {
+                    height:48px;
+                    @include textEllipsisClamp(2);
+                    color:#767676;
+                    @include font-small;
+                    font-weight:500;
+                    @include mobile {
+                        height:42px;
+                    }
+                }
+                .bottom-tbl {
+                    display:table;
+                    width:100%;
+                    margin-top:24px;
+                    .cell {
+                        display:table-cell;
+                        font-size:0;
+                        vertical-align:middle;
+                        &:last-child {
+                            text-align:right;
+                        }
+                        .info-list {
+                            font-size:0;
+                            @include mobile {
+                                margin-top:4px;
+                            }
+                            li {
+                                display:inline-block;
+                                color:#767676;
+                                @include font-small;
+                                font-weight:500;
+                                vertical-align:top;
+                                @include mobile {
+                                    display:inline;
+                                }
+                                &::after {
+                                    content:' ';
+                                    display:inline-block;
+                                    width:1px;
+                                    height:10px;
+                                    margin:7px 8px 0;
+                                    background:#ddd;
+                                    vertical-align:top;
+                                    @include mobile {
+                                        margin:5px 6px 0;
+                                    }
+                                }
+                                &:last-child::after {
+                                    display:none;
+                                }
+                            }
+                        }
+                        .btn {
+                            margin-left:8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

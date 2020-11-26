@@ -240,6 +240,11 @@
                 background: url('/lg5-common/images/icons/icon-arrow-accor.svg') no-repeat 0 0;
             }
         }
+        .accord-btn.type-none{
+            &::after{
+                content:none;
+            }
+        }
         .title {
             font-weight: 700;
             font-size: $font-large-4;
@@ -283,6 +288,9 @@
                 font-size: $font-large;
                 line-height: 27px;
             }
+        }
+        .head.type2{
+            border-bottom:2px solid #222;
         }
         .accord-cont {
             padding: 16px 0 44px;

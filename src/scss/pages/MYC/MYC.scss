@@ -83,6 +83,7 @@
             }
             // title
             > .tit-wrap {
+                position:relative;
                 @include clearfix;
                 height:50px;
                 margin-bottom:0;
@@ -260,6 +261,12 @@
                 }
                 .btn-group {
                     margin-top:32px;
+                }
+                .btn-moreview {
+                    margin-top:32px;
+                    @include mobile {
+                        margin-top:24px;
+                    }
                 }
             }
         }
