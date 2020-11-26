@@ -1,0 +1,139 @@
+// 다운로드/SW
+.sw-contents-wrap {
+    margin-top:48px;
+    @include mobile {
+        margin-top:40px;
+    }
+    .sw-download-lists {
+        margin-top:24px;
+        .lists {
+            margin-top:12px;
+            padding:24px 32px;
+            border-radius:8px;
+            border:1px solid #ddd;
+            @include mobile {
+                padding:20px;
+            }
+            &:first-child {
+                margin-top:0;
+            }
+            .inner {
+                display:table;
+                width:100%;
+                table-layout:fixed;
+                @include mobile {
+                    display:block;
+                }
+                .info-cell,
+                .btn-cell {
+                    display:table-cell;
+                    vertical-align:middle;
+                    @include mobile {
+                        display:block;
+                    }
+                }
+                .info-cell {
+                    .file-name {
+                        color:#222;
+                        @include font-medium;
+                        font-weight:700;
+                    }
+                    .info-list {
+                        margin-top:8px;
+                        font-size:0;
+                        @include mobile {
+                            margin-top:4px;
+                        }
+                        li {
+                            display:inline-block;
+                            color:#767676;
+                            @include font-small;
+                            font-weight:500;
+                            vertical-align:top;
+                            @include mobile {
+                                display:inline;
+                            }
+                            &::after {
+                                content:' ';
+                                display:inline-block;
+                                width:1px;
+                                height:10px;
+                                margin:7px 8px 0;
+                                background:#ddd;
+                                vertical-align:top;
+                                @include mobile {
+                                    margin:5px 6px 0;
+                                }
+                            }
+                            &:last-child::after {
+                                display:none;
+                            }
+                        }
+                    }
+                }
+                .btn-cell {
+                    width:340px;
+                    font-size:0;
+                    @include mobile {
+                        width:100%;
+                        margin-top:20px;
+                    }
+                    .col {
+                        display:inline-block;
+                        width:138px;
+                        text-align:right;
+                        vertical-align:middle;
+                        .btn {
+                            white-space:nowrap;
+                        }
+                        &:first-child {
+                            width:340px - 138px;
+                        }
+                        @include mobile {
+                            width:50%;
+                            &:first-child {
+                                width:50%;
+                                text-align:left;
+                            }
+                        }
+                    }
+                }
+            }
+            .prev-ver-list {
+                display:none;
+                margin-top:24px;
+                padding:0 24px;
+                border-radius:8px;
+                background:#f4f4f4;
+                @include mobile {
+                    padding:0 16px;
+                }
+                .inner {
+                    padding:20px 0;
+                    border-top:1px solid #ddd;
+                    @include mobile {
+                        padding:16px 0;
+                    }
+                    &:first-child {
+                        border-top:none;
+                    }
+                    .btn-cell {
+                        width:340px - 24px;
+                        .col {
+                            width:100%;
+                        }
+                        @include mobile {
+                            width:100%;
+                            .col {
+                                text-align:center;
+                            }
+                        }
+                    }
+                }
+                &.open {
+                    display:block;
+                }
+            }
+        }
+    }
+}
