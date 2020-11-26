@@ -10,7 +10,8 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
             type : 'click', //click, over
             closeButtonClass : 'btn-close',
             offsetParentClass : 'tooltip-wrap',
-            singleton : false
+            singleton : false,
+            fixed : null
         },
 
         initialize: function initialize(el, options) {
@@ -41,6 +42,10 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             self.$tooltip = self.$el.siblings(self.options.tooltip);
             self.tooltipStyle = self.$tooltip.attr('style');
+            var fixed = self.$el.attr('data-fixed');
+            if(fixed) {
+                self.options.fixed = fixed;
+            }
         },
 
         _bindEvents: function() {
@@ -77,11 +82,21 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
 
         _positionCheck: function() {
             var self = this;
+            var isParentIsTooltipWarap = self.$tooltip.offsetParent().hasClass(self.options.offsetParentClass);
+
+            if(self.options.fixed) {
+                if (isParentIsTooltipWarap) {
+                    self.$tooltip.addClass(self.options.fixed);
+                } else {
+                    self.$tooltip.removeClass(self.options.fixed);
+                }
+                return;    
+            }
+
             if(self.isShow) {
                 self._resetStyle();
                 var windowWidth = $(window).width();
                 var offset = self.$tooltip.offset();
-                var isParentIsTooltipWarap = self.$tooltip.offsetParent().hasClass(self.options.offsetParentClass);
                 if (isParentIsTooltipWarap) {
                     var width = self.$tooltip.outerWidth(true);
                     if((offset.left + width) > windowWidth) {

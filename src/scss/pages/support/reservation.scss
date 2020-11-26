@@ -622,11 +622,10 @@
         }
     }
 
-    /* support mobile */
+    /* support tablet */
     @media (max-width: 1024px){
         .contents-inner{
             border-top:0;
-            padding:0 5%;
         }
         .engineer-profile-box{
             padding:0 5%;
@@ -642,7 +641,9 @@
             }
         }
     }
-    @media (max-width: 767px){
+
+    /* support mobile */
+    @include mobile{
         .rdo-wrap{
             .select-list-wrap.type2{
                 padding-top:15px;
