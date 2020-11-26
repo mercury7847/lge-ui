@@ -224,7 +224,7 @@ var res = {
 					//"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"]
 				},
 				"공지사항" : {
-					"FAQ" : ["/html/CS/CSRF6043.html","","진행중"]
+					"FAQ" : ["/html/CS/CSRF6043.html","","검수요청"]
 				}
 			},
 			"장바구니(UTC)" : {
