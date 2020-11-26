@@ -22,11 +22,15 @@
                         height:auto;
                         vertical-align:top;
                     }
+                    &.saleend {
+                        opacity:0.3;
+                    }
                 }
                 // info
                 .info-wrap {
                     float:left;
                     width:calc(100% - 16.65% - 24px);
+                    margin-left:24px;
                     .name {
                         color:#222;
                         @include font-large;
@@ -47,6 +51,9 @@
                             }
                         }
                         &.link-type {
+                            &:last-child {
+                                padding-bottom:13px;
+                            }
                             .btn-link {
                                 margin-right:20px;
                                 &:last-child {
@@ -100,6 +107,11 @@
                                 }
                             }
                         }
+                        &.careship {
+                            li::after {
+                                background:#767676;
+                            }
+                        }
                     }
                     .product-on {
                         margin-top:12px;
@@ -122,8 +134,43 @@
                     position:absolute;
                     right:32px;
                     bottom:32px;
+                    .btn {
+                        margin-left:0;
+                    }
                     .notice {
-                        
+                        position:absolute;
+                        top:-44px;
+                        right:0;
+                        width:auto;
+                        padding:3px 10px 3px 15px;
+                        border-radius:8px;
+                        border:1px solid #EC455A;
+                        background:#fdecee;
+                        white-space:nowrap;
+                        p {
+                            display:inline-block;
+                            vertical-align:middle;
+                            color:#EC455A;
+                            @include font-small;
+                            font-weight:500;
+                        }
+                        .btn-off {
+                            display:inline-block;
+                            width:20px;
+                            height:20px;
+                            margin-left:4px;
+                            background:url('/lg5-common/images/icons/icon-delete-20-pink.svg') center no-repeat;
+                            vertical-align:middle;
+                        }
+                        &::after {
+                            content:' ';
+                            position:absolute;
+                            right:78px;
+                            top:30px;
+                            width:14px;
+                            height:9px;
+                            background:url('/lg5-common/images/MYC/bg-ons.svg') center no-repeat;
+                        }
                     }
                 }
                 // delete

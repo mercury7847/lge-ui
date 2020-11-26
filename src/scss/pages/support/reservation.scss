@@ -553,8 +553,8 @@
             justify-content: space-between;
             color:#fff;
             margin:0 auto;
-            padding:24px 0;
-            max-width:1380px;
+            padding:24px 40px;
+            max-width:1460px;
 
             &:after{
                 content:none;
@@ -600,6 +600,7 @@
             padding:0 5%;
             .engineer-profile{
                 flex-flow: column;
+                padding:24px 0;
                 .engineer-info{
                     margin-bottom:24px;
                 }

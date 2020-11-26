@@ -25,70 +25,84 @@
                                     <div class="tit-wrap type2">
                                         <h4 class="tit">보유 제품 목록</h4>
                                     </div>
+                                    <!-- 보유제품목록 -->
                                     <div class="my-product-lists">
                                         <ul>
-                                            <li class="lists">
-                                                <div class="inner">
-                                                    <div class="thumb" aria-hidden="true">
-                                                        <img src="/lg5-common/images/dummy/@img-product2.jpg" alt="">
-                                                    </div>
-                                                    <div class="info-wrap">
-                                                        <p class="name"><span class="blind">모델명</span>LG 올레드 AI TV</p>
-                                                        <p class="e-name"><span class="blind">영문모델명</span>OLED65WXKNA</p>
-                                                        <div class="btns">
-                                                            <button type="button" class="btn size dark-gray"><span>사용설명서</span></button>
-                                                            <button type="button" class="btn size dark-gray"><span>다운로드/SW</span></button>
-                                                        </div>
-                                                        <ul class="info-lists period">
-                                                            <li>
-                                                                <dl>
-                                                                    <dt>구매일자</dt>
-                                                                    <dd>2019.01</dd>
-                                                                </dl>
-                                                            </li>
-                                                            <li>
-                                                                <dl>
-                                                                    <dt>등록일자</dt>
-                                                                    <dd>2021.04.15</dd>
-                                                                </dl>
-                                                            </li>
-                                                            <li>
-                                                                <dl>
-                                                                    <dt>사용기간</dt>
-                                                                    <dd>14개월</dd>
-                                                                </dl>
-                                                            </li>
-                                                        </ul>
-                                                        <ul class="info-lists careship">
-                                                            <li>
-                                                                <dl>
-                                                                    <dt>케어십 서비스</dt>
-                                                                    <dd><em class="can">신청안함</em></dd>
-                                                                </dl>
-                                                            </li>
-                                                            <li>
-                                                                <dl>
-                                                                    <dt>다음 케어서비스 일자</dt>
-                                                                    <dd>2021.04.15</dd>
-                                                                </dl>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="btns link-type">
-                                                            <a href="#n" class="btn-link">소모품 조회</a>
-                                                            <a href="#n" class="btn-link">출장 서비스 신청</a>
-                                                            <a href="#n" class="btn-link">리뷰 작성</a>
-                                                        </div>
-                                                        <p class="product-on"><span class="blind">보유중인 제품이</span>단종되었습니다.</p>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <p class="notice">케어서비스로 제품을 관리해보세요!</p>
-                                                        <button type="button" class="btn border"><span>케어십 신청하기</span></button>
-                                                    </div>
-                                                    <button type="button" class="btn-delete"><span class="blind">보유제품 삭제</span></button>
-                                                </div>
-                                            </li>
+                                            @@loop('./common/modules/my-product-lists.html', [
+                                                {
+                                                    "thumb" : "@img-product2",
+                                                    "name" : "LG 올레드 AI TV",
+                                                    "eName" : "OLED65WXKNA",
+                                                    "twoBtn" : true,
+                                                    "careship" : true,
+                                                    "csMsg" : "신청안함",
+                                                    "btns" : [
+                                                        "소모품 조회", "출장 서비스 신청", "리뷰 작성"
+                                                    ],
+                                                    "rightBtn" : "케어십 신청하기",
+                                                    "notice" : "케어서비스로 제품을 관리해보세요!"
+                                                },
+                                                {
+                                                    "thumb" : "@img-product3",
+                                                    "name" : "LG 퓨리케어 냉온정수기",
+                                                    "eName" : "W5MBR",
+                                                    "twoBtn" : true,
+                                                    "careship" : true,
+                                                    "csMsg" : "이용중",
+                                                    "btns" : [
+                                                        "소모품 조회"
+                                                    ],
+                                                    "rightBtn" : "신제품 확인하기",
+                                                    "notice" : "새로운 정수기를 확인해보시겠어요?"
+                                                },
+                                                {
+                                                    "thumb" : "@img-product4",
+                                                    "name" : "LG 퓨리케어 360 공기청정기",
+                                                    "eName" : "AS300DNPRWM",
+                                                    "careship" : true,
+                                                    "csMsg" : "계약만료",
+                                                    "btns" : [
+                                                        "소모품 조회", "출장 서비스 신청"
+                                                    ],
+                                                    "rightBtn" : "케어십 신청하기",
+                                                    "notice" : "케어십 서비스가 계약만료되었어요!"
+                                                },
+                                                {
+                                                    "thumb" : "@img-product4",
+                                                    "name" : "LG 그램 17",
+                                                    "eName" : "15U560-G",
+                                                    "twoBtn" : true,
+                                                    "careship" : false,
+                                                    "btns" : [
+                                                        "소모품 조회", "출장 서비스 신청"
+                                                    ],
+                                                    "saleEnd" : true
+                                                },
+                                                {
+                                                    "thumb" : "@img-product2",
+                                                    "name" : "LG 올레드 AI TV",
+                                                    "eName" : "OLED65WXKNA",
+                                                    "twoBtn" : true,
+                                                    "careship" : true,
+                                                    "csMsg" : "신청안함",
+                                                    "btns" : [
+                                                        "소모품 조회", "출장 서비스 신청"
+                                                    ],
+                                                    "rightBtn" : "케어십 신청하기"
+                                                },
+                                                {
+                                                    "thumb" : "@img-product5",
+                                                    "name" : "LG WING",
+                                                    "eName" : "LM-F200N",
+                                                    "careship" : false,
+                                                    "btns" : [
+                                                        "소모품 조회", "출장 서비스 신청", "리뷰 작성"
+                                                    ]
+                                                }
+                                            ])
                                         </ul>
                                     </div>
+                                    <!-- // 보유제품목록 -->
                                 </div>
                             </div>
                         </div>
