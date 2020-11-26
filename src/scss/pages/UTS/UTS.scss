@@ -34,6 +34,26 @@
             padding:0;
         }
     }
+    .search-result-category {
+        max-width: (1146px + 80px);
+        margin: 0 auto;
+        padding: 64px 40px;
+        .btn-moreview {
+            margin-top: 20px;
+        }
+    }
+    .search-banner {
+        max-width: (1146px + 80px);
+        margin: 0 auto;
+        padding: 0 40px 45px;
+        img {
+            width: 100%;
+        }
+        @include mobile {
+            max-width: 100%;
+            padding: 0;
+        }
+    }
     .cont-wrap {
         position: relative;
         padding: 0 40px 120px;
@@ -451,10 +471,7 @@
             }
         }
     }
-    .result-category {
-        margin-bottom: -10px;
-        padding-top: 20px;
-    }
+
     .mobile-service-link {
         padding-top: 34px;
         font-size: 0;
