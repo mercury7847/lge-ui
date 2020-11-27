@@ -47,10 +47,16 @@
         }
         .search-similar {
             .similar-text {
+                color: $color-default;
                 @include font-large-2;
-            }
-            .search-result-text {
-                margin-bottom: 48px;
+                border-bottom: 1px solid $color-default;
+                .search-word {
+                    font-weight: 700;
+                    color: $color-primary;
+                }
+                &:after {
+                    display: none;
+                }
             }
         }
     }
