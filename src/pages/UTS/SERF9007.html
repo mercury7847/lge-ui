@@ -29,56 +29,69 @@
                         <li><a href="#n">고객지원(28)</a></li>
                     </ul>
                 </div>
-                <div class="cont-wrap">
+                <div class="cont-wrap w-filter"><!-- 필터 포함 시 : .w-filter 추가 -->
+                    @@include('./common/modules/list-filter.html')
                     <div class="search-result-wrap">
                         <div class="result-area">
-                            @@include('./common/modules/list-sorting.html', {
-                                "soldout" : false,
-                                "select" : [
-                                    { "option" : "정확도순" },
-                                    { "option" : "인기순" },
-                                    { "option" : "최신순" },
-                                    { "option" : "가격 높은순" },
-                                    { "option" : "가격 낮은순" }
-                                ]
-                            })
-                            <div class="result-list-wrap">
+                            <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->
+                            <div class="btn-filter">
+                                <a href="#n" id="filterModalLink" class="ico-filter"><span class="blind">옵션필터</span></a>
+                            </div>
+
+                            <div class="list-sorting">
+                                <div class="sort-area left">
+                                    <p class="list-count">총 59개</p>
+                                </div>
+                                <div class="sort-area">
+                                    <div class="sort-list">
+                                        <div class="sort-check-area">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="chk-pd" name="chk-soldout">
+                                                <label for="chk-pd">구매 가능한 제품</label>
+                                            </span>
+                                        </div>
+                                        <div class="sort-search-area">
+                                            <div class="search-inner">
+                                                <input type="text" class="inp-txt" placeholder="결과 내 검색" value="" title="검색어 입력">
+                                                <button type="button" class="btn-sch"><span class="blind">검색</span></button> 
+                                            </div>
+                                        </div>
+                                        <div class="sort-select-wrap">
+                                            <select class="ui_selectbox" id="select1" title="조회할 연차 선택">
+                                                <option value="">정확도순</option>
+                                                <option value="">인기순</option>
+                                                <option value="">최신순</option>
+                                                <option value="">가격 높은순</option>
+                                                <option value="">가격 낮은순</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="result-list-wrap result-care">
                                 <div class="list-wrap">
-                                    <ul class="product-items">
-                                        @@loop('./common/modules/product-item.html', [
+                                    <ul class="result-list">
+                                        @@loop('./common/modules/result-list.html', [
                                             {
-                                                "search" : true,
-                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "spec2" : true,
-                                                "price" : true
+                                                "itemClass" : "",
+                                                "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",            
+                                                "tit" : "브러쉬 Brush Assembly, Filter",
+                                                "sku"  : true,
+                                                "model" : "적용모델 : H-62HSGAKOR 외",
+                                                "priceInfo2" : true
                                             }, {
-                                                "search" : true,
-                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "spec2" : true,
-                                            }, {
-                                                "search" : true,
-                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "spec2" : true
-                                            }, {
-                                                "search" : true,
-                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "spec2" : true
-                                            }, {
-                                                "search" : true,
-                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "spec2" : true
-                                            }, {
-                                                "search" : true,
-                                                "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "spec2" : true
+                                                "itemClass" : "",
+                                                "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",            
+                                                "tit" : "브러쉬 Brush Assembly, Filter",
+                                                "sku"  : true,
+                                                "model" : "적용모델 : H-62HSGAKOR 외",
+                                                "priceInfo2" : true
                                             }
                                         ])
                                     </ul>
                                 </div>
-                                @@include('./common/modules/pagination.html', {
-                                    count: 5
-                                })
-                            </div>
+                            </div> <!-- // 케어용품, 소모품-->
                         </div>
                     </div>
 

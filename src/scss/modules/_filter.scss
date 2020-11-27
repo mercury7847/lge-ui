@@ -20,14 +20,20 @@
     float:left;
     width:215px;
     margin-right: 25px;
+
     @at-root .search .lay-filter {
         position: absolute;
         top: 0;
         left: 50%;
-        transform: translateX(-642px);
+        transform: translateX(-690px);
+        @media screen and (max-width: 1460px){
+            left: 40px;
+            transform: translateX(0);
+        }
         &.search-all {
             display: none;
         }
+
     }
 
     @media screen and (max-width: 1024px) {

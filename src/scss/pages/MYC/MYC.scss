@@ -124,11 +124,13 @@
                         .tooltip-wrap {
                             margin-top:3px;
                             margin-left:4px;
-                            @include mobile {
-                                .tooltip-box {
-                                    left:0;
-                                    right:0;
-                                }
+                        }
+                    }
+                    @include mobile {
+                        .tooltip-wrap {
+                            .tooltip-box {
+                                left:0;
+                                right:0;
                             }
                         }
                     }
