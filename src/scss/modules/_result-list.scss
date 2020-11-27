@@ -112,7 +112,7 @@
         }
         .result-tit {
             display: -webkit-box;
-            max-height: 52px;
+            max-height: 60px;
             margin-bottom: 8px;
             text-overflow: clip;
             //text-overflow:ellipsis;
@@ -272,6 +272,19 @@
                     font-weight: $font-weight-medium;
                 }
             }
+
+            &.rental {
+                .tit {
+                    display: none;
+                }
+            }
+            &.sales {
+                & + .rental {
+                    .tit {
+                        display: block;
+                    }
+                }
+            }
             @include mobile {
                 &.sales {
                     order: 2;
@@ -317,6 +330,12 @@
                 }
             }
         }
-    }    
+    }
+
+    &.story-list {
+        > li .item-type2 .result-tit {
+            @include textEllipsisClamp(1);
+        }
+    }
 }    
 

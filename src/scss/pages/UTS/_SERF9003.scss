@@ -50,17 +50,23 @@
                 //border-radius: 4px 0 0 4px;
                 img {
                     max-width: 100%;
-                    border-radius: 8px 8px 0 0;
+                    height: 100%;
+                    border-radius: 8px 0 0 8px;
                 }
                 @include mobile {
                     display: block;
                     height: auto;
+                    img {
+                        width: 100%;
+                        height: auto;
+                        border-radius: 8px 8px 0 0;
+                    }
                 }
             }
             .info {
                 display: table-cell;
                 position: relative;
-                width: 270px;
+                //width: 270px;
                 padding: 24px 24px 60px 20px;
                 @include mobile {
                     display: block;

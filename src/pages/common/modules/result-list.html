@@ -1,5 +1,10 @@
 <li>
+    @@if(context.itemLink) {
+    <a href="#n" class="item @@itemClass">
+    }
+    @@if(!context.itemLink) {
     <div class="item @@itemClass">
+    }
         @@if (context.badge) {
         <div class="badge">
             <div class="flag-wrap image-type left">
@@ -8,12 +13,22 @@
         </div>
         }
         <div class="result-thumb">
+            @@if(context.itemLink) {
+            <div>
+                <img src="@@img" alt="">
+                @@if (context.flagEnd) {
+                <span class="flag-end-wrap"><span class="flag">종료</span></span>
+                }
+            </div>
+            }
+            @@if(!context.itemLink) {
             <a href="#n">
                 <img src="@@img" alt="">
                 @@if (context.flagEnd) {
                     <span class="flag-end-wrap"><span class="flag">종료</span></span>
                 }
             </a>
+            }
         </div>
         <div class="result-info">
             <div class="info-text">
@@ -25,9 +40,16 @@
                 </div>
                 }
                 
+                @@if(context.itemLink) {
+                <div class="result-tit">
+                    <strong>@@tit</strong>
+                </div>
+                }
+                @@if(!context.itemLink) {
                 <div class="result-tit">
                     <a href="#">@@tit</a>
                 </div>
+                }
                 <div class="result-detail">
                     @@if (context.sku) {
                     <div class="sku">5203FI3754D</div>
@@ -92,7 +114,7 @@
                 }
                 @@if (context.priceRental) {
                 <div class="price-info rental">
-                    <p class="tit">렌탈 케어솔루션</p>
+                    <p class="tit">케어솔루션</p>
                     <span class="price"><em>월</em> 40,900<em>원</em></span>
                 </div>
                 }
@@ -107,5 +129,10 @@
             }
 
         </div>
+    @@if(!context.itemLink) {
     </div>
+    }
+    @@if(context.itemLink) {
+    </a>
+    }
 </li>
