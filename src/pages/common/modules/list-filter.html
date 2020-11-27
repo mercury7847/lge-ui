@@ -5,17 +5,12 @@
         </div>
         
         <div class="plp-filter-wrap">
-            @@if (!context.search) {
-                <div class="btn-reset">
-                    <button id="filterResetBtn" type="button"><span>초기화</span></button>
-                </div>
-            } 
+
+            
+ 
             
             @@if (context.search) {
                 <div class="filter-top">
-                    <div class="btn-reset">
-                        <button id="filterResetBtn" type="button"><span>초기화</span></button>
-                    </div>
                     <div class="filter-search-area">
                         <div class="search-inner">
                             <input type="text" class="inp-txt" placeholder="결과 내 검색" value="" title="검색어 입력">
@@ -243,7 +238,9 @@
 
                 </ul>
             </div>
-            
+            <div class="btn-reset">
+                <button id="filterResetBtn" type="button"><span>초기화</span></button>
+            </div>
 
             @@if (context.btmLink) {
                 <div class="service-link @@serviceLinkClass">
@@ -285,7 +282,7 @@
             </div>
 -->
             <div class="filter-btn-wrap">
-                <button type="button" class="btn ui_reset_btn" ><span>초기화</span></button>
+               <!-- 삭제 <button type="button" class="btn ui_reset_btn" ><span>초기화</span></button> -->
                 <button type="button" class="btn ui_confirm_btn"><span>확인</span></button>
             </div>
 
