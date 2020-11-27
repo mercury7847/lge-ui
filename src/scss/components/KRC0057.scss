@@ -3,104 +3,136 @@
 @import "../components-app";
 
 .KRC0057 {
-	.bg-text-wrap {
-		position:relative;
-		padding:80px 0;
-
-		// 1. 텍스트 영역
-		.text-area {
+	position:relative;
+	.visual-area {
+		position:absolute;
+		top:0;
+		right:0;
+		bottom:0;
+		left:0;
+		z-index:1;
+		@include pc {
+			.visual.pc {
+				position:absolute;
+				top:0;
+				right:0;
+				bottom:0;
+				left:0;
+				background-size:cover !important;
+			}
+			.visual.mob {
+				display:none;
+			}
+		}
+		@include mobile {
 			position:relative;
-			z-index:2;
-			max-width:1284px;
-			margin:0 auto;
-			.item-wrap {
-				display:flex;
-				margin-top:32px;
-				&:first-child { margin-top:0; }
-				&.flex-left {
-					justify-content:flex-start;
+			top:auto;
+			right:auto;
+			bottom:auto;
+			left:auto;
+			.visual.pc {
+				display:none;
+			}
+			.visual.mob {
+				display:block;
+				img {
+					width:100%;
+					height:auto;
+					vertical-align:top;
 				}
-				&.flex-right {
-					justify-content:flex-end;
+			}
+		}
+		.animation-area {
+			top:50%;
+			height:auto;
+			transform:translateY(-50%);
+		}
+	}
+	.text-overlay {
+		position:relative;
+		width:auto;
+		max-width:1460px;
+		margin:0 auto;
+		padding:80px 40px;
+		z-index:10;
+		@include mobile {
+			margin-top:12px;
+			padding:0;
+		}
+		.row {
+			margin-top:24px;
+			@include mobile {
+				margin-top:12px;
+			}
+			&:first-child {
+				margin-top:0;
+			}
+			.inner {
+				position:relative;
+				width:80%;
+				max-width:678px;
+				&.col-left {
+					margin-right:auto;
+				}
+				&.col-right {
+					margin-left:auto;
+				}
+				&.text-left {
+					text-align:left;
+				}
+				&.text-center {
+					text-align:center;
+				}
+				&.text-right {
+					text-align:right;
 				}
 				@include mobile {
 					display:block;
+					width:100%;
+					max-width:100%;
 				}
-				.item-inner {
-					max-width:630px;
-					min-height:354px;
-					padding:40px 109px 40px 40px;
-					background-color:#fff;
+				.img-bg {
+					position:relative;
+					z-index:20;
+					img {
+						width:100%;
+						height:auto;
+						vertical-align:top;
+					}
+				}
+				.text-wrap {
+					position:absolute;
+					top:0;
+					right:0;
+					bottom:0;
+					left:0;
+					padding:40px;
+					z-index:30;
 					@include mobile {
-						max-width:none;
-						min-height:268px;
-						padding:20px 10px;
+						padding:30px 16px;
 					}
-					.item-tit {
-						display:block;
-						font-weight:700;
-						font-size:18px;
-						line-height:26px;
-						color:#111;
-						& * {
-							font-weight:inherit;
-							font-size:inherit;
-							line-height:inherit;
-							color:inherit;
-						}
-					}
-					.item-stit {
-						display:block;
-						margin-top:4px;
-						font-weight:700;
-						font-size:16px;
-						line-height:26px;
-					}
-					.item-txt {
-						display:block;
-						margin-top:12px;
-						font-weight:400;
-						font-size:14px;
-						line-height:20px;
-						color:#616161;
-					}
-					.item-btns {
+					p {
 						margin-top:8px;
-						font-size:14px;
-						text-decoration:underline;
 					}
-					&.bg-gray {
-						background-color:#aaa;
-						* { color:#fff; }
+					.title * {
+						color:#222;
+						@include font-large-2;
+						font-weight:700;
+					}
+					.sub-title {
+						color:#222;
+						@include font-large;
+						font-weight:700;
+					}
+					.body-copy {
+						color:#767676;
+						@include font-medium;
+					}
+					.cta-box {
+						margin-top:16px;
 					}
 				}
 			}
 		}
-
-		// 2-1. BG 이미지 영역
-		.visual-area {
-			position:absolute;
-			top:0;
-			left:0;
-			z-index:0;
-			width:100%;
-			height:100%;
-			.bg {
-				display:block;
-				width:100%;
-				height:100%;
-				background: {
-					position:center center;
-					repeat:no-repeat;
-					size:cover;
-				}
-			}
-		}
-
-		// 2-2. BG 애니메이션 영역
-		.animation-area {
-			background-color:#222;
-		}
-
 	}
 }
