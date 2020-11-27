@@ -20,17 +20,18 @@
     float:left;
     width:215px;
     margin-right: 25px;
-
-    display: block !important;
+    margin-top: 36px;
 
     @at-root .search .lay-filter {
         position: absolute;
         top: 0;
         left: 50%;
         transform: translateX(-690px);
+        margin-top: 45px;
         @media screen and (max-width: 1460px){
             left: 40px;
             transform: translateX(0);
+            margin-top: 0;
         }
         &.search-all {
             display: none;
@@ -77,11 +78,13 @@
     }
     .fiter-head,
     .filter-head {
-        position:relative;
-        width:auto;
+        //position:relative;
+        position: fixed;
+        width:100%;
         //text-align:center;
         height:75px;
         padding: 0 16px;
+        background-color: #fff;
         //border-bottom:1px solid #ededed;
         z-index:20;
         &::after {
@@ -108,7 +111,7 @@
     .plp-filter-wrap {
         @media screen and (max-width: 1024px) {
             //padding:40px 20px 115px;
-            padding:0 16px 115px;
+            padding:75px 16px 115px;
         }
 
         .btn-reset {
@@ -134,12 +137,12 @@
             }
             @media screen and (max-width: 1024px) {
                 //display:none;
-                position: absolute;
+                position: fixed;
                 top: 24px;
                 right: 52px;
                 width: 32px;
                 height: 32px;
-                margin: 0;
+                margin: 0 !important;
                 z-index: 100;
                 button {
                     width: 32px;
@@ -496,7 +499,7 @@
         }
 
         .filter-close {
-            position:absolute;
+            position:fixed;
             top:28px;
             right:24px;
             width:24px;

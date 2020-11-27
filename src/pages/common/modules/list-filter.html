@@ -6,9 +6,7 @@
         
         <div class="plp-filter-wrap">
 
-            <div class="btn-reset">
-                <button id="filterResetBtn" type="button"><span>초기화</span></button>
-            </div>
+            
  
             
             @@if (context.search) {
@@ -240,7 +238,9 @@
 
                 </ul>
             </div>
-            
+            <div class="btn-reset">
+                <button id="filterResetBtn" type="button"><span>초기화</span></button>
+            </div>
 
             @@if (context.btmLink) {
                 <div class="service-link @@serviceLinkClass">
