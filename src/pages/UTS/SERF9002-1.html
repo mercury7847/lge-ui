@@ -16,7 +16,8 @@
                     "value" : "노크온 매직스페이스",
                     "related" : true,
                     "layer" : true,
-                    "similar" : true
+                    "similar" : true,
+                    "confirm" : true
                 })
                 <!-- // 검색 영역 -->
                 <!-- 검색 결과 영역 -->
@@ -55,15 +56,15 @@
                     <a href="#n">
                         <img data-pc-src="/lg5-common/images/UTS/@sample-banner.jpg" data-m-src="/lg5-common/images/UTS/@sample-banner-m.jpg" alt="">
                         <div class="text-area">
-                            <strong class="title">새출발을 위한 혼수 지원,<br>2020 올 뉴 웨딩 페스타</strong>
-                            <span class="sub-copy">2020 올 뉴 웨딩 페스타 행사 모델<br>동시 구매 시, 최대 250만원<br>상당 혜택!</span>
+                            <strong class="title">새출발을 위한 혼수 지원, 2020 올 뉴 웨딩 페스타</strong>
+                            <span class="sub-title">2020 올 뉴 웨딩 페스타 행사 모델 동시 구매 시, 최대 250만원 상당 혜택!</span>
                         </div>
                     </a>
                 </div>
                 <div class="cont-wrap"><!-- 필터 포함 시 : .w-filter 추가 -->
                     <!-- (@@)include('./common/modules/list-filter.html') -->
                     <div class="search-result-wrap all" id="all">
-                        <div class="result-list-wrap">
+                        <div class="result-list-wrap result-product">
                             <div class="list-head">
                                 <h2 class="title">제품/렌탈 케어솔루션</h2>
                                 <div class="btn-area">
@@ -71,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="list-wrap">
-                                <ul class="result-list product-list">
+                                <ul class="result-list">
                                     @@loop('./common/modules/result-list.html', [
                                         {
                                             "itemClass" : "",
@@ -107,7 +108,7 @@
                             </div>
                         </div> <!-- // 제품-->
 
-                        <div class="result-list-wrap">
+                        <div class="result-list-wrap result-event">
                             <div class="list-head">
                                 <h2 class="title">이벤트/기획전</h2>
                                 <div class="btn-area">
@@ -115,7 +116,7 @@
                                 </div>
                             </div>
                             <div class="list-wrap">
-                                <ul class="result-list event-list">
+                                <ul class="result-list">
                                     @@loop('./common/modules/result-list.html', [
                                         {
                                             "itemClass" : "item-type2",
@@ -135,7 +136,7 @@
                             </div>
                         </div> <!-- // 이벤트 기획전-->
 
-                        <div class="result-list-wrap">
+                        <div class="result-list-wrap result-story">
                             <div class="list-head">
                                 <h2 class="title">스토리</h2>
                                 <div class="btn-area">
@@ -143,7 +144,7 @@
                                 </div>
                             </div>
                             <div class="list-wrap">
-                                <ul class="result-list story-list">
+                                <ul class="result-list">
                                     @@loop('./common/modules/result-list.html', [
                                         {
                                             "itemClass" : "item-story",
@@ -159,7 +160,7 @@
                             </div>
                         </div> <!-- // 스토리-->
 
-                        <div class="result-list-wrap">
+                        <div class="result-list-wrap result-care">
                             <div class="list-head">
                                 <h2 class="title">케어용품/소모품</h2>
                                 <div class="btn-area">
@@ -167,7 +168,7 @@
                                 </div>
                             </div>
                             <div class="list-wrap">
-                                <ul class="result-list care-list">
+                                <ul class="result-list">
                                     @@loop('./common/modules/result-list.html', [
                                         {
                                             "itemClass" : "",

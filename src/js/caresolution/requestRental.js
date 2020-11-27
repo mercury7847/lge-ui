@@ -333,6 +333,9 @@
         }).on('click', '.paymentCardConfirm', function(e){
             e.preventDefault();
             setCardAbledConfirm();
+        }).on('click', '.paymentBankConfirm', function(e){
+            e.preventDefault();
+            setBankAbledConfirm();
         }).on('click', '.arsAgreeRequest', function(e){
             e.preventDefault();
             setArsAgreeConfirm();
@@ -617,7 +620,35 @@
 
     //납부카드확인...
     function setCardAbledConfirm(){
-        lgkorUI.requestAjaxData(CARD_ABLED_URL, {}, function(result){
+        var values = cardValidation.getValues();
+        var sendata = {
+            confirmType: "card",
+            cardCompany: values.paymentCard,
+            cardNumber: values.paymentCardNumber,
+            cardPeriod: values.paymentCardPeriod
+        }
+        console.log("setCardAbledConfirm(); >", sendata)
+        lgkorUI.requestAjaxData(CARD_ABLED_URL, sendata, function(result){
+            lgkorUI.alert(result.data.alert.desc, {
+                title: result.data.alert.title
+            });
+
+            var chk = result.data.success == "Y" ? true : false;
+            setInputData('cardAbled', result.data.success);            
+            step3Block.find('.arsAgreeRequest').prop('disabled', !chk);
+        });
+    }
+    //납부계좌확인...
+    function setBankAbledConfirm(){
+        var values = bankValidation.getValues();
+        var sendata = {
+            confirmType: "bank",
+            bankUser: bankValidation.getValues('bankUserName'),
+            bankName: values.paymentBank,
+            bankNumber: values.paymentBankNumber
+        }
+        console.log("setBankAbledConfirm(); >", sendata)
+        lgkorUI.requestAjaxData(CARD_ABLED_URL, sendata, function(result){
             lgkorUI.alert(result.data.alert.desc, {
                 title: result.data.alert.title
             });

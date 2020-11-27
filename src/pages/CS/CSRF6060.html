@@ -3,7 +3,7 @@
     @@include('./common/head.html', {
         "pageCSS": [
             "support/support",
-            "support/reservation"
+            "support/custom-voice"
         ]
     })
 <body>
@@ -12,12 +12,17 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '문의/예약 결과 조회'
+                'pageTitle': '나의 글 보기'
             })
-            <div class="contents support reservation">
+            <div class="contents support suggestions">
                 <div class="cont-wrap">
 
                     <div class="section">
+                        <div class="search-info">
+                            <h4 class="tit">서비스센터 홈페이지를 통해 칭찬 또는 개선사항을 등록 하셨나요?</h4>
+                            <p class="desc">서비스센터 홈페이지를 통해 등록하신 칭찬, 개선, 제안 건에 대한 내역 조회를 하실 수 있습니다.<br>(칭찬합니다, 개선해주세요 조회는 <span class="color-3">답변 메일 발송 일로부터 1개월간 확인</span>하실 수 있습니다.)</p>
+                        </div>
+
                         <div class="double-section">
                             <div class="sections input-info">
                                 <div class="item">
@@ -58,7 +63,7 @@
                                         </div>
                                     </form>
                                 </div>
-
+    
                                 <div class="item">
                                     <div class="tit-wrap">
                                         <h3 class="tit">휴대전화 인증으로 한번에!</h3>        
@@ -105,10 +110,7 @@
                             @@include('./common/modules/bullet-list.html', {
                                 "topBorder" : true,
                                 "bulletTxt" : [
-                                    "이메일 문의는 접수번호로만 조회 가능합니다. ",
-                                    "서비스 이용 내역의 조회 가능 기간은 최대 5년이며 비회원인 경우 1년간 조회 가능합니다. (단, 이메일 문의 조회는 답변메일 발송일로부터 1개월간 확인 가능합니다.)",
-                                    "휴대전화 인증번호가 수신되지 않는 경우 휴대폰에 1544-7777 번호가 스팸 등록되었는지 여부를 확인해주세요.",
-                                    "회원가입 전, 접수한 문의사항은 접수번호나 휴대전화 인증으로만 조회가능 합니다."
+                                    "인증번호가 수신되지 않은 경우 1544-7777이 스팸 처리 되지 않았는지 확인해주시기 바랍니다."
                                 ]
                             })
                         </div>
@@ -117,7 +119,8 @@
                 </div>
             </div>
         </div>
-             
+
+        @@include('./common/support/quick-menu.html')
         @@include('./common/footer.html')
     </div>
 
