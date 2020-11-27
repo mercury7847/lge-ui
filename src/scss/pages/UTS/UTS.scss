@@ -136,7 +136,25 @@
     padding: 48px 40px 46px;
     @include mobile {
         max-width: 100%;
-        padding: 102px 16px 50px;
+        //padding: 102px 16px 50px;
+        padding: 0 16px 50px;
+    }
+
+    @include mobile {
+        &.fixed-top {
+            .input-keyword {
+                position: relative;
+                @include mobile {
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    z-index: 3;
+                    padding: 30px 16px 16px;
+                    //background-color: $color-bg-wt;
+                }
+            }
+        }
     }
 }
 .input-keyword {
@@ -144,12 +162,12 @@
     //border-radius: 28px;
     //box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
     @include mobile {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 3;
-        padding: 30px 16px 16px;
+        //position: fixed;
+        //top: 0;
+        //right: 0;
+        //left: 0;
+        //z-index: 3;
+        padding: 30px 0 16px;
         background-color: $color-bg-wt;
     }
     .sch-input-wrap {
@@ -268,7 +286,7 @@
         position: relative;
         height: 24px;
         margin-top: 0;
-        padding-right: 52px;
+        padding-right: 32px;
         .keyword-list {
             li {
                 margin-right: 16px;
@@ -279,7 +297,7 @@
             display: block;
             position: absolute;
             top: -1px;
-            right: 16px;
+            right: 0;
             .btn-more {
                 display: block;
                 width: 24px;
@@ -1109,6 +1127,23 @@
             width: 40px;
             height: 40px;
         }
+        }
+    }
+}
+
+.flag-wrap {
+    .flag {
+        &:before {
+            display: none !important;
+        }
+        &:not(:last-child):after {
+            display: inline-block;
+            width: 1px;
+            height: 10px;
+            margin: 0 4px;
+            background-color: #adadad;
+            vertical-align: -1px;
+            content: '';
         }
     }
 }
