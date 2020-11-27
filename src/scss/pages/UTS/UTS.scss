@@ -139,18 +139,35 @@
         //padding: 102px 16px 50px;
         padding: 0 16px 50px;
     }
+
+    @include mobile {
+        &.fixed-top {
+            .input-keyword {
+                position: relative;
+                @include mobile {
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    z-index: 3;
+                    padding: 30px 16px 16px;
+                    //background-color: $color-bg-wt;
+                }
+            }
+        }
+    }
 }
 .input-keyword {
     position: relative;
     //border-radius: 28px;
     //box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
     @include mobile {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 3;
-        padding: 30px 16px 16px;
+        //position: fixed;
+        //top: 0;
+        //right: 0;
+        //left: 0;
+        //z-index: 3;
+        padding: 30px 0 16px;
         background-color: $color-bg-wt;
     }
     .sch-input-wrap {
