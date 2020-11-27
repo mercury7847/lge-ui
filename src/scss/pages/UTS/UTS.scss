@@ -1113,3 +1113,20 @@
     }
 }
 
+.flag-wrap {
+    .flag {
+        &:before {
+            display: none !important;
+        }
+        &:not(:last-child):after {
+            display: inline-block;
+            width: 1px;
+            height: 10px;
+            margin: 0 4px;
+            background-color: #adadad;
+            vertical-align: -1px;
+            content: '';
+        }
+    }
+}
+
