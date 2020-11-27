@@ -19,6 +19,7 @@
     //    opacity: .2;
     //}
     .search-tabs-wrap {
+        margin-bottom: 68px;
         padding-bottom: 24px;
         border-bottom: 8px solid $color-bg;
         .tabs-wrap {
@@ -39,7 +40,7 @@
     .search-result-category {
         max-width: (1146px + 80px);
         margin: 0 auto;
-        padding: 64px 40px;
+        padding: 0  40px 64px;
         .btn-moreview {
             margin-top: 20px;
         }
