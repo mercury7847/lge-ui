@@ -36,7 +36,14 @@
                 <!-- // tabs -->
 
                 <div class="cont-wrap w-filter"><!-- 필터 포함 시 : .w-filter 추가 -->
-                    @@include('./common/modules/list-filter.html')
+                    @@include('./common/modules/list-filter.html', {
+                        "search" : true,
+                        "serviceLinkClass" : "event",
+                        "btmLink" : [
+                            {"text" : "매장 방문 예약", "img" : "/lg5-common/images/icons/icon-img02-64.svg"},
+                            {"text" : "매장 찾기", "img" : "/lg5-common/images/icons/icon-img02-64.svg"}
+                        ]
+                   })
                     <div class="search-result-wrap result-event">
                         <div class="result-area">
 
@@ -112,6 +119,15 @@
                                 count: 5
                             })
                         </div>    
+                    </div>
+
+                    <div class="mobile-service-link event">
+                        <ul> 
+                            <li><a href="#n" class="btn-text"><span>매장 방문 예약</span><img src="/lg5-common/images/icons/icon-img02-64.svg" alt=""></a></li>
+                        
+                            <li><a href="#n" class="btn-text"><span>매장 찾기</span><img src="/lg5-common/images/icons/icon-img02-64.svg" alt=""></a></li>
+                            
+                        </ul>
                     </div>
                 </div>
             </div>
