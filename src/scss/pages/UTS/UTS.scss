@@ -40,17 +40,12 @@
         max-width: (1146px + 80px);
         margin: 0 auto;
         padding: 64px 40px;
-        .inner {
-            overflow: hidden;
-            max-height: 108px;
-        }
         .btn-moreview {
             margin-top: 20px;
         }
         @include mobile {
-            .inner {
-                max-height: 100px;
-            }
+            max-width: 100%;
+            padding: 40px 16px;
         }
     }
     .search-banner {
@@ -65,7 +60,7 @@
         }
         @include mobile {
             max-width: 100%;
-            padding: 0;
+            padding: 0 0 10px;
         }
     }
     .cont-wrap {
@@ -445,6 +440,7 @@
     }
 
     @include mobile {
+        margin: 32px 0 10px;
         .search-result-text {
             margin-bottom: 14px;
             font-size: 16px;

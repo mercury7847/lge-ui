@@ -1,93 +1,150 @@
-{
-    "status": true,
+{   
+    "status": "success",
     "message":null,
     "data": {
-        "manualList":[
-            {
-                "manualType": "[한글] 제품사용설명서",
-                "manualInfo": "Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.",
-                "date": "2020.02.27",
-                "fileType": "ZIP"
-            },
-            {
-                "manualType": "[한글] 제품사용설명서",
-                "manualInfo": "Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.",
-                "date": "2020.02.27",
-                "fileType": "ZIP"
+        "manual": {
+            "listData": [
+                {
+                    "type": "[한글] 제품사용설명서",
+                    "title": "Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.",
+                    "date": "2020.02.27",
+                    "language": "한국어",
+                    "petName": "G7",
+                    "os": "파이",
+                    "file": [
+                        {
+                            "type": "ZIP",
+                            "src": ""   
+                        },
+                        {
+                            "type": "HTML",
+                            "src": ""   
+                        }
+                    ]
+                },
+                {
+                    "type": "[한글] 제품사용설명서",
+                    "title": "Owner’s Manual (Simple Book) - 제품 사용 방법, 설치 등에 대한 사용설명서입니다.",
+                    "date": "2020.02.27",
+                    "language": "한국어",
+                    "petName": "G7",
+                    "os": "파이",
+                    "file": [
+                        {
+                            "type": "ZIP",
+                            "src": ""   
+                        },
+                        {
+                            "type": "HTML",
+                            "src": ""   
+                        }
+                    ]
+                }
+            ],
+            "listPage": {
+                "view": "Y",
+                "page": 1
             }
-            
-        ],
-        "driverList": [
-            {
-                "driverType": "랜",
-                "count": "1",
-                "list": [
-                    {
-                        "dirverName": "[프로그램/Win10_64bit] LG Update Center",
-                        "productName": "울트라 HD",
-                        "driverVersion": "버전 1.0.1902.1901",
-                        "date": "2020.02.27",
-                        "size": "8.9mb"
-                    }
-                ]
-            },
-            {
-                "driverType": "랜",
-                "count": "2",
-                "list": [
-                    {
-                        "dirverName": "[프로그램/Win10_64bit] LG Update Center",
-                        "productName": "울트라 HD",
-                        "driverVersion": "버전 1.0.1902.1901",
-                        "date": "2020.02.27",
-                        "size": "8.9mb"
+        },
+        "driver": {
+            "osOption": [
+                {
+                    "option": "전체",
+                    "value": "전체"
+                },
+                {
+                    "option": "Window XP",
+                    "value": "Window XP"
+                },
+                {
+                    "option": "Window 2000",
+                    "value": "Window 2000"
+                }
+            ],
+            "driverOption": [
+                {
+                    "option": "전체",
+                    "value": "전체"
+                },
+                {
+                    "option": "통합 드라이버 설치 프로그램",
+                    "value": "통합 드라이버 설치 프로그램"
+                },
+                {
+                    "option": "바이오스/펌웨어",
+                    "value": "바이오스/펌웨어"
+                }
+            ],
+            "driver": [
+                {
+                    "type": "통합 드라이버 설치프로그램",
+                    "count": "12"
+                },
+                {
+                    "type": "칩셋/패치",
+                    "count": "6"
+                },
+                {
+                    "type": "비디오",
+                    "count": "6"
+                },
+                {
+                    "type": "사운드",
+                    "count": "3"
+                },
+                {
+                    "type": "랜",
+                    "count": "4"
+                },
+                {
+                    "type": "기타",
+                    "count": "0"
+                }
+            ],
+            "listData": [
+                {
+                    "os": "[프로그램/Win7_32bit] XPION용",
+                    "title": "LG intelligent Update 프로그램",
+                    "version": "ver 7.7PHV1  ",
+                    "category": "데스크톱/일체형",
+                    "driver": "통합 드라이버 설치프로그램",
+                    "date": "2020.02.27",
+                    "file": {
+                        "size": "8.9mb",
+                        "src": ""
                     },
-                    {
-                        "dirverName": "[프로그램/Win10_64bit] LG Update Center",
-                        "productName": "울트라 HD",
-                        "driverVersion": "버전 1.0.1902.1901",
-                        "date": "2020.02.27",
-                        "size": "8.9mb"
-                    }
-                ]
+                    "prevVersion": [
+                        {
+                            "os": "[프로그램/Win7_32bit] XPION용",
+                            "title": "LG intelligent Update 프로그램",
+                            "version": "ver 7.7PHV1  ",
+                            "category": "데스크톱/일체형",
+                            "driver": "통합 드라이버 설치프로그램",
+                            "date": "2020.02.27",
+                            "file": {
+                                "size": "8.9mb",
+                                "src": ""
+                            }
+                        },
+                        {
+                            "os": "[프로그램/Win7_32bit] XPION용",
+                            "title": "LG intelligent Update 프로그램",
+                            "version": "ver 7.7PHV1  ",
+                            "category": "데스크톱/일체형",
+                            "driver": "통합 드라이버 설치프로그램",
+                            "date": "2020.02.27",
+                            "file": {
+                                "size": "8.9mb",
+                                "src": ""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "listPage": {
+                "page": 1,
+                "totalCount": 6
             }
-        ],
-        "osOption": [
-            {
-                "option": "전체",
-                "value": ""
-            },
-            {
-                "option": "Window XP",
-                "value": "OS01"
-            },
-            {
-                "option": "Window 2000",
-                "value": "OS02"
-            }
-        ],
-        "driverOption": [
-            {
-                "option": "전체",
-                "value": ""
-            },
-            {
-                "option": "통합 드라이버 설치 프로그램",
-                "value": "SW07"
-            },
-            {
-                "option": "바이오스/펌웨어",
-                "value": "SW10"
-            }
-        ],
-        "pageInfo":{
-            "view":"Y",
-            "page":1,
-            "loopStart":1,
-            "loopEnd":5,
-            "totalCount":59,
-            "rightPage":true,
-            "leftPage":false
         }
     }
 }

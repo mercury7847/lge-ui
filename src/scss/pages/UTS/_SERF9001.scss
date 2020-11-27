@@ -46,8 +46,17 @@
             padding: 0;
         }
         .search-similar {
-            .search-result-text {
-                margin-bottom: 48px;
+            .similar-text {
+                color: $color-default;
+                @include font-large-2;
+                border-bottom: 1px solid $color-default;
+                .search-word {
+                    font-weight: 700;
+                    color: $color-primary;
+                }
+                &:after {
+                    display: none;
+                }
             }
         }
     }
