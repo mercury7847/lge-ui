@@ -13,6 +13,7 @@ $(function () {
             var firstRender = false;
 
             var listAppendMode = "NEW";
+            var isScrollTransition = true;
 
             var ajaxUrl = $('.plp-list-wrap').data('prodList');
 
@@ -280,8 +281,6 @@ $(function () {
 
                 if(listAppendMode == "NEW") $('.plp-list-wrap .product-items').empty();
 
-                listAppendMode = "NEW";
-
                 _$(window).off('breakpointchange.filter');
                 $('#totalCount').text('총 '+totalCnt+'개');
 
@@ -325,8 +324,11 @@ $(function () {
                     html += vcui.template(productItemTmpl,obj);   
                 }
 
-                var lisbottom = $('.plp-list-wrap .product-items').offset().top + $('.plp-list-wrap .product-items').outerHeight(true);
-
+                var wraptop = $('.plp-list-wrap').offset().top;
+                var margintop = parseInt($('.plp-list-wrap').css('margin-top'));
+                var itemheight = $('.plp-list-wrap .product-items').outerHeight(true);
+                var cateheight = $('.cate-wrap').outerHeight(true);
+console.log("itemheight :", itemheight)
                 $('.plp-list-wrap .product-items').append(html);
 
                 $('.ui_plp_carousel').vcCarousel('destroy').vcCarousel({
@@ -345,8 +347,15 @@ $(function () {
 
                 setCompares();
 
-
-                $('html, body').delay(5000).animate({scrollTop:0}, 250);
+                if(isScrollTransition){
+                    var newscrolltop = wraptop + itemheight - cateheight;
+                    if(listAppendMode == "NEW"){
+                        newscrolltop -= margintop;
+                    }
+                    window.scrollTo({top:newscrolltop, behavior: 'smooth'});
+                }
+                listAppendMode = "NEW";
+                isScrollTransition = true;
             }
             
             // 페이징을 렌더링
@@ -530,6 +539,9 @@ $(function () {
 
                     storageFilters['subCategoryId'] = subCategoryId;
                     lgkorUI.setStorage(storageName, storageFilters);
+
+                    isScrollTransition = true;
+
                     setApplyFilter(storageFilters, noRequest);
                 });
 
@@ -550,6 +562,7 @@ $(function () {
                     e.preventDefault();
 
                     listAppendMode = "ADD";
+                    isScrollTransition = true;
 
                     currentPage = String(parseInt(currentPage)+1);
                     requestData(storageFilters);

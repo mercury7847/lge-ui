@@ -5,10 +5,7 @@
 .KRC0057 {
 	.bg-text-wrap {
 		position:relative;
-		padding:170px 0;
-		@include mobile {
-			padding:116px 10px;
-		}
+		padding:80px 0;
 
 		// 1. 텍스트 영역
 		.text-area {
