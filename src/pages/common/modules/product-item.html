@@ -23,8 +23,8 @@
         </div>
         <div class="product-contents">
             @@if (context.optionColor) {
-            <div class="product-option color">
-                <div class="ui_smooth_scroll">
+            <div class="product-option color ui_smooth_scrolltab"> <!-- 2020-11-26 -->
+                <div class="ui_smooth_tab"> <!-- 2020-11-26 -->
                     <ul class="option-list" role="radiogroup">
                         @@for (var i = 0; i < context.colorSet.length; i++) {
                         <li>
@@ -36,15 +36,15 @@
                         }
                     </ul>
                 </div>
-                <div class="scroll-controls">
+                <div class="scroll-controls ui_smooth_controls"> <!-- 2020-11-26 -->
                     <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
                     <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
                 </div>
             </div>
             }
             @@if (context.optionText) {
-            <div class="product-option text">
-                <div class="ui_smooth_scroll">
+            <div class="product-option text ui_smooth_scrolltab"> <!-- 2020-11-26 -->
+                <div class="ui_smooth_tab"> <!-- 2020-11-26 -->
                     <ul class="option-list" role="radiogroup">
                         @@for (var i = 0; i < context.textSet.length; i++) {
                         <li>
@@ -56,7 +56,7 @@
                         }
                     </ul>
                 </div>
-                <div class="scroll-controls">
+                <div class="scroll-controls ui_smooth_controls"> <!-- 2020-11-26 -->
                     <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
                     <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
                 </div>
