@@ -138,14 +138,19 @@
                 @include font-large-1;
             } 
         }
-        .sku, 
+        @include pc {
+            .sku {
+                margin-right: 12px;
+            }
+        }
+        .sku,
         .careflag {
             display: inline-block;
             @include font-small;
             vertical-align: top;
         }
         .careflag {
-            margin-left: 12px;
+            //margin-left: 12px;
             @include mobile {
                 margin-left: 0;
                 margin-top: 4px;
@@ -170,10 +175,11 @@
         
         .review-info {
             display: inline-block;
-            margin-left: 12px;
+            margin-right: 12px;
             font-size: 0;
             vertical-align: top;
             @include mobile {
+                margin-right: 0;
                 margin-left: 6px;
             }
             .star,
@@ -237,6 +243,7 @@
             }
         }
         .price-info {
+            white-space: nowrap;
             .tit {
                 margin-bottom: 4px;
                 @include font-x-small;
