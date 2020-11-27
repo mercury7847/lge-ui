@@ -30,8 +30,10 @@
             }
         }
         @include mobile {
-            max-width: 100%;
-            padding:0;
+            .tabs-wrap {
+                max-width: 100%;
+                padding:0;
+            }
         }
     }
     .search-result-category {
@@ -136,7 +138,7 @@
     padding: 48px 40px 46px;
     @include mobile {
         max-width: 100%;
-        padding: 102px 16px 40px;
+        padding: 102px 16px 50px;
     }
 }
 .input-keyword {
