@@ -130,8 +130,16 @@
                         }
                     }
                 }
-                &.open {
+            }
+            &.open {
+                .prev-ver-list {
                     display:block;
+                }
+                .more-view-btn {
+                    color:#EC455A;
+                    &::after {
+                        background:url('/lg5-common/images/icons/btn-minus-20-pink.svg') no-repeat;
+                    }
                 }
             }
         }
@@ -236,5 +244,8 @@
 &.pop-conts {
     .form-wrap {
         max-width:630px;
+        &.col-type {
+            max-width:100%;
+        }
     }
 }
