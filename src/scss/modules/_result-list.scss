@@ -112,7 +112,7 @@
         }
         .result-tit {
             display: -webkit-box;
-            max-height: 52px;
+            max-height: 60px;
             margin-bottom: 8px;
             text-overflow: clip;
             //text-overflow:ellipsis;
@@ -317,6 +317,12 @@
                 }
             }
         }
-    }    
+    }
+
+    &.story-list {
+        > li .item-type2 .result-tit {
+            @include textEllipsisClamp(1);
+        }
+    }
 }    
 
