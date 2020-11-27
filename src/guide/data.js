@@ -110,9 +110,9 @@ var res = {
 					"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
 					"검색결과 있음" : {
 						"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
-						"제품" : ["/html/UTS/SERF9003.html","","검수완료"],
-						"케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
-						"이벤트" : ["/html/UTS/SERF9005.html","","검수완료"],
+						"제품/케어솔루션" : ["/html/UTS/SERF9003.html","","검수완료"],
+						// "케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
+						"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수완료"],
 						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
 						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
 						"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
