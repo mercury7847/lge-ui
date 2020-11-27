@@ -84,11 +84,16 @@ vcui.define('ui/tooltipTarget', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var isParentIsTooltipWarap = self.$tooltip.offsetParent().hasClass(self.options.offsetParentClass);
 
-            if(self.options.fixed) {
+            var fixedClass = self.options.fixed;
+            if(fixedClass) {
                 if (isParentIsTooltipWarap) {
-                    self.$tooltip.addClass(self.options.fixed);
+                    if(!self.$tooltip.hasClass(fixedClass)) {
+                        self.$tooltip.addClass(self.options.fixed);
+                    }
                 } else {
-                    self.$tooltip.removeClass(self.options.fixed);
+                    if(self.$tooltip.hasClass(fixedClass)) {
+                        self.$tooltip.removeClass(self.options.fixed);
+                    }
                 }
                 return;    
             }
