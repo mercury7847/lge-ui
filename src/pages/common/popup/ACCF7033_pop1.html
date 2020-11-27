@@ -48,7 +48,8 @@
                         </div>
                         <div class="sw-download-lists">
                             <ul>
-                                <li class="lists">
+                                <!-- 이전버전이 있는 케이스 -->
+                                <li class="lists ui_dropdown">
                                     <div class="inner titles">
                                         <div class="info-cell">
                                             <p class="file-name">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</p>
@@ -63,11 +64,11 @@
                                                 <button type="button" class="btn size border"><span>다운로드 1118.4MB</span></button>
                                             </span>
                                             <span class="col">
-                                                <button type="button" class="more-view-btn open">이전 버전 닫기</button><!-- 열고 닫기 .open class toggle -->
+                                                <button type="button" class="more-view-btn ui_dropdown_toggle">이전 버전 <span>보기</span></button><!-- 이전버전 열렸을 때 '보기' -> '닫기' -->
                                             </span>
                                         </div>
                                     </div>
-                                    <ul class="prev-ver-list open"><!-- 열고 닫기 .open class toggle -->
+                                    <ul class="prev-ver-list ui_dropdown_list">
                                         <li class="inner">
                                             <div class="info-cell">
                                                 <p class="file-name">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</p>
@@ -100,58 +101,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="lists">
-                                    <div class="inner titles">
-                                        <div class="info-cell">
-                                            <p class="file-name">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</p>
-                                            <ul class="info-list">
-                                                <li><span class="blind">버전</span>ver 7.7PHV1 데스크톱/일체형</li>
-                                                <li><span class="blind">카테고리</span>통합 드라이버 설치 프로그램</li>
-                                                <li><span class="blind">등록일</span>2020.11.03</li>
-                                            </ul>
-                                        </div>
-                                        <div class="btn-cell">
-                                            <span class="col">
-                                                <button type="button" class="btn size border"><span>다운로드 1118.4MB</span></button>
-                                            </span>
-                                            <span class="col">
-                                                <button type="button" class="more-view-btn">이전 버전 보기</button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <ul class="prev-ver-list">
-                                        <li class="inner">
-                                            <div class="info-cell">
-                                                <p class="file-name">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</p>
-                                                <ul class="info-list">
-                                                    <li><span class="blind">버전</span>ver 7.7PHV1 데스크톱/일체형</li>
-                                                    <li><span class="blind">카테고리</span>통합 드라이버 설치 프로그램</li>
-                                                    <li><span class="blind">등록일</span>2020.11.03</li>
-                                                </ul>
-                                            </div>
-                                            <div class="btn-cell">
-                                                <span class="col">
-                                                    <button type="button" class="btn size border"><span>다운로드 1118.4MB</span></button>
-                                                </span>
-                                            </div>
-                                        </li>
-                                        <li class="inner">
-                                            <div class="info-cell">
-                                                <p class="file-name">[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램</p>
-                                                <ul class="info-list">
-                                                    <li><span class="blind">버전</span>ver 7.7PHV1 데스크톱/일체형</li>
-                                                    <li><span class="blind">카테고리</span>통합 드라이버 설치 프로그램</li>
-                                                    <li><span class="blind">등록일</span>2020.11.03</li>
-                                                </ul>
-                                            </div>
-                                            <div class="btn-cell">
-                                                <span class="col">
-                                                    <button type="button" class="btn size border"><span>다운로드 1118.4MB</span></button>
-                                                </span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <!-- // 이전버전이 있는 케이스 -->
+                                <!-- 이전버전이 없는 케이스 -->
                                 <li class="lists">
                                     <div class="inner titles">
                                         <div class="info-cell">
@@ -169,6 +120,7 @@
                                         </div>
                                     </div>
                                 </li>
+                                <!-- // 이전버전이 없는 케이스 -->
                                 <li class="lists">
                                     <div class="inner titles">
                                         <div class="info-cell">
