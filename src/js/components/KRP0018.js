@@ -53,7 +53,6 @@ $(window).ready(function(){
             if(!isCompare){
                 for(var i in storageCompare[lgkorUI.COMPARE_ID]){
                     var name = "compare-" + storageCompare[lgkorUI.COMPARE_ID][i]['id'];
-                    
                     var list = $('.sticy-compare .list-inner li').eq(i);                    
                     var listItem = vcui.template(itemTemplate, storageCompare[lgkorUI.COMPARE_ID][i]);
                     list.html(listItem);
