@@ -272,6 +272,19 @@
                     font-weight: $font-weight-medium;
                 }
             }
+
+            &.rental {
+                .tit {
+                    display: none;
+                }
+            }
+            &.sales {
+                & + .rental {
+                    .tit {
+                        display: block;
+                    }
+                }
+            }
             @include mobile {
                 &.sales {
                     order: 2;
