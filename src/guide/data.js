@@ -83,7 +83,7 @@ var res = {
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","검수완료"],
 			"KRP0005_Sticky chat_Static" : ["/html/components/floating.html","","검수완료"],
 			"KRP0008_Responsive UI" : ["/html/components/KRP0008.html","","진행중"],
-			"KRP0009_Product List Products List : No Filter" : ["/html/components/KRP0009.html","","진행중"],
+			"KRP0009_Product List Products List : No Filter" : ["/html/components/KRP0009.html","","검수완료"],
 			"KRP0010_Product Summary (no-img)" : ["/html/components/KRP0010.html","","진행중"],
 			"KRP0012_PDP Tab Anchor" : ["/html/components/KRP0012.html","","검수완료"],
 			// "KRP0013_PDP Bundle" : ["/html/components/KRP0013.html","","검수완료"],
@@ -98,7 +98,7 @@ var res = {
 			"KRP0024_Best review" : ["/html/components/KRP0024.html","","검수완료"],
 			"KRP0025_event_list_for_category_home" : ["/html/components/KRP0025.html","","검수완료"],
 			"KRP0027_Please note" : ["/html/components/KRP0027.html","","검수완료"],
-			"KRP0028_Event list" : ["/html/components/KRP0028.html","",""],
+			"KRP0028_Event list" : ["/html/components/KRP0028.html","","검수완료"],
 			"KRP0042_Consumables Search" : ["/html/components/KRP0042.html","","진행중"],
 			"KRP0043_Substitutes&related General Products" : ["/html/components/KRP0043.html","","진행중"],
 			"KRP0044_PDP Shipping Information" : ["/html/components/KRP0044.html","","진행중"],
@@ -224,7 +224,7 @@ var res = {
 					//"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"]
 				},
 				"공지사항" : {
-					"FAQ" : ["/html/CS/CSRF6043.html","","진행중"]
+					"FAQ" : ["/html/CS/CSRF6043.html","","검수요청"]
 				}
 			},
 			"장바구니(UTC)" : {

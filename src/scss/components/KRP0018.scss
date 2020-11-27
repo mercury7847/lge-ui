@@ -9,6 +9,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 2;
     width: 100%;
     padding-right: 30px;
     padding-left: 30px;
@@ -231,6 +232,7 @@
                       padding: 13px 5px;
                       background: none;
                       border: none;
+                      color: #ec455a;
                       &:before {
                         display: inline-block;  
                         content: '';
@@ -246,7 +248,9 @@
                       &:active {
                           color: #ec455a;
                       }
+                      &:disabled,
                       &.disabled {
+                        color: #ddd;
                         &:before {
                             background: url('/lg5-common/images/icon-reset-disabled.svg') no-repeat 50% 50%;
                         }

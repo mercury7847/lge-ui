@@ -399,9 +399,13 @@
     }
 }
 
-@media screen and (max-width: 767px){
+@include mobile{
     .page-visual .heading-title{
         word-break:keep-all;
+    }
+
+    .contents-inner.type2{
+        padding:0 5%;
     }
 
     .section-title{

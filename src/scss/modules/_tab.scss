@@ -1,6 +1,7 @@
 //tab
 // H2 base
 .tabs-wrap {
+    position:relative;
     display:block;
     text-align:center;
     &.left {
@@ -47,10 +48,32 @@
             }
         }
     }
+    &.ui_smooth_scroll {
+        .tabs {
+            max-width:initial;
+            overflow-x:initial;
+        }
+    }
+    .overflow-btn {
+        position:absolute;
+        top:0;
+        width:20px;
+        height:26px;
+        background:url('/lg5-common/images/icons/btn-arr-24x24-black.svg') center no-repeat;
+        background-size:20px;
+        font-size:0;
+        &.prev {
+            left:0;
+            transform:rotate(180deg);
+        }
+        &.next {
+            right:0;
+        }
+    }
     @include mobile {
         text-align:left;
         .tabs {
-            padding:0 20px;
+            padding:0 16px;
         }
     }
 

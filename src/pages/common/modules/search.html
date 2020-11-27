@@ -1,82 +1,103 @@
-<div class="input-keyword">
-    @@include('./common/modules/search-input.html', {
-        "value" : "@@value"
-    })
+<div class="input-keyword-wrap">
+    <!-- input focus 시 .focus-on 추가 -->
+    <div class="input-keyword">
+        @@include('./common/modules/search-input.html', {
+            "value" : "@@value"
+        })
 
-    @@if(context.layer) {
-    <!-- 검색어 입력창에 포커스시 나오는 레이어 -->
-    <div class="search-input-layer">
-        <div class="input-result-list">
-            <ul>
-                <li><a href="#"><span class="search-word">에어</span>컨</a></li>
-                <li><a href="#"><span class="search-word">에어</span>컨 설치</a></li>
-                <li><a href="#"><span class="search-word">에어</span>컨 고장 수리</a></li>
-                <li><a href="#"><span class="search-word">에어</span>케어</a></li>
-                <li><a href="#">노크존 <span class="search-word">에어</span>컨 가격</a></li>
-            </ul>
-        </div>
+        @@if(context.layer) {
+        <!-- 검색어 입력창에 포커스시 나오는 레이어 -->
+        <div class="search-input-layer">
+            <div class="auto-complete">
+                <div class="keyword-list">
+                    <ul>
+                        <li class="on"><a href="#"><span class="search-word">에어</span>컨</a></li>
+                        <li><a href="#"><span class="search-word">에어</span>컨 설치</a></li>
+                        <li><a href="#"><span class="search-word">에어</span>컨 고장 수리</a></li>
+                        <li><a href="#"><span class="search-word">에어</span>케어</a></li>
+                        <li><a href="#">노크존 <span class="search-word">에어</span>컨 가격</a></li>
+                    </ul>
+                </div>
+            </div>
 
-        <div class="search-keyword-area">
-            <div class="search-keyword">
-                <dl class="keyword-list recent-keyword">
-                    <dt class="title">최근 검색어</dt>
-                    <dd class="list">
+            <div class="search-keyword-area">
+                <div class="recent-keyword">
+                    <span class="title">최근 검색어</span>
+                    <div class="keyword-list">
                         <ul>
                             <li>
-                                <a href="#">올레드 TV</a>
-                                <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
+                                <span class="box">
+                                    <a href="#">올레드 TV</a>
+                                    <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
+                                </span>
                             </li>
                             <li>
-                                <a href="#">2020년형 LG 그램 노트북 프로</a>
-                                <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
+                                <span class="box">
+                                    <a href="#">2020년형 LG 그램 노트북 프로 2020년형 LG 그램 노트북 프로 2020년형 LG 그램 노트북 프로</a>
+                                    <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
+                                </span>
                             </li>
                             <li>
-                                <a href="#">공기 청정기 필터 나눔 이벤트</a>
-                                <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
+                                <span class="box">
+                                    <a href="#">공기 청정기 필터 나눔 이벤트</a>
+                                    <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
+                                </span>
                             </li>
                             <li>
-                                <a href="#">LED 마스크</a>
-                                <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
+                                <span class="box">
+                                    <a href="#">LED 마스크</a>
+                                    <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
+                                </span>
                             </li>
                             <li>
-                                <a href="#">15Z995-VR5DK</a>
-                                <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
+                                <span class="box">
+                                    <a href="#">15Z995-VR5DK</a>
+                                    <button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button>
+                                </span>
                             </li>
                         </ul>
-                    </dd>
-                </dl>
-                <dl class="keyword-list popular-keyword">
-                    <dt class="title">인기 검색어</dt>
-                    <dd class="list">
+                        <!-- 최근 검색어 없을 경우 -->
+                        <div class="no-data">최근 검색어가 없습니다</div>
+                    </div>
+                </div>
+                <div class="popular-keyword">
+                    <span class="title">인기 검색어</span>
+                    <div class="keyword-list">
                         <ul>
                             <li><a href="#">LG 그램 17</a></li>
-                            <li><a href="#">스팀 건조기 20년 6형</a></li>
+                            <li><a href="#">스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형 스팀 건조기 20년 6형</a></li>
                             <li><a href="#">LG 스타일러</a></li>
                         </ul>
-                    </dd>
-                </dl>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="not-result">
-            <p><span class="search-word">safads</span>와(과) 연관된 검색어가 없습니다.</p>
-        </div>
+            <div class="not-result">
+                <p>다른 검색어를 입력해주세요.</p>
+            </div>
 
-        <button type="button" class="btn-close"><span>닫기</span></button>
+            <button type="button" class="btn-close"><span>닫기</span></button>
+        </div>
+        }
     </div>
-    }
 
     @@if(context.related) {
-    <div class="related-keyword">
-        <span class="title">연관검색어</span>
-        <ul class="keyword-list">
-            <li><a href="#">OLED TV</a></li>
-            <li><a href="#">SUPER OLED TV</a></li>
-            <li><a href="#">LG DIOS 스페이스 냉장고</a></li>
-            <li><a href="#">노크온 매직스페이스</a></li>
-            <li><a href="#">OLED TV/AV</a></li>
-            <li><a href="#">홈라이프</a></li>
-        </ul>
+    <!-- .btn-more click 시 .open 추가 (mobile만 해당) -->
+    <div class="related-keyword open">
+        <div class="inner">
+            <span class="title">연관검색어</span>
+            <ul class="keyword-list">
+                <li><a href="#">OLED TV</a></li>
+                <li><a href="#">SUPER OLED TV</a></li>
+                <li><a href="#">LG DIOS 스페이스 냉장고</a></li>
+                <li><a href="#">노크온 매직스페이스</a></li>
+                <li><a href="#">OLED TV/AV</a></li>
+                <li><a href="#">홈라이프</a></li>
+            </ul>
+        </div>
+        <div class="mobile-more-btn">
+            <a href="#n" class="btn-more"><span class="blind">연관검색어 펼침</span></a>
+        </div>
     </div>
     }
     @@if(context.similar) {

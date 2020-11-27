@@ -225,7 +225,7 @@
             }
             .btn-area {
                 position: absolute;
-                bottom: 36px;
+                bottom: 24px;
                 left: 0;
                 right: 0;
                 width: 100%;
@@ -366,10 +366,12 @@
             }
             .list-inner {
                 padding: 0;
+                border-radius: 4px;
+                box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
                 > a {
                     display: table;
                     width: 100%;
-                    height: 280px;
+                    height: 225px;
                     @include mobile {
                         display: block;
                         height: auto;
@@ -378,7 +380,7 @@
                 .thumb {
                     display: table-cell;
                     vertical-align: middle;
-                    height: 280px;
+                    height: 225px;
                     border-radius: 4px 0 0 4px;
                     @include mobile {
                         display: block;
@@ -404,20 +406,22 @@
                     }
                     .tit {
                         width: 100%;
-                        height: 60px;
-                        line-height: 30px;
-                        margin-bottom: 8px;
+                        height: 56px;
+                        font-size: 16px;
+                        line-height: 28px;
+                        margin-bottom: 5px;
                         @include textClipClamp(2);
                         color: #222;
-                        em {
-                            color: #ec455a;
-                        }
                         @include mobile {
                             height: auto;
                             //height: 36px;
-                            margin-bottom: 16px;
-                            line-height: 18px;
+                            margin-bottom: 8px;
+                            line-height: 24px;
                         }
+                        em {
+                            color: #ec455a;
+                        }
+                        
                     } 
                 }
                 .btn-area {
