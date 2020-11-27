@@ -6,6 +6,11 @@
         
         <div class="plp-filter-wrap">
 
+            <div class="btn-reset">
+                <button id="filterResetBtn" type="button"><span>초기화</span></button>
+            </div>
+ 
+            
             @@if (context.search) {
                 <div class="filter-top">
                     <div class="filter-search-area">
@@ -235,12 +240,6 @@
 
                 </ul>
             </div>
-
-
-            <div class="btn-reset">
-                <button id="filterResetBtn" type="button"><span>초기화</span></button>
-            </div>
-
             
 
             @@if (context.btmLink) {
@@ -283,7 +282,7 @@
             </div>
 -->
             <div class="filter-btn-wrap">
-                <button type="button" class="btn ui_reset_btn" ><span>초기화</span></button>
+               <!-- 삭제 <button type="button" class="btn ui_reset_btn" ><span>초기화</span></button> -->
                 <button type="button" class="btn ui_confirm_btn"><span>확인</span></button>
             </div>
 

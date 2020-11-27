@@ -21,6 +21,8 @@
     width:215px;
     margin-right: 25px;
 
+    display: block !important;
+
     @at-root .search .lay-filter {
         position: absolute;
         top: 0;
@@ -131,7 +133,34 @@
                 }
             }
             @media screen and (max-width: 1024px) {
-                display:none;
+                //display:none;
+                position: absolute;
+                top: 24px;
+                right: 52px;
+                width: 32px;
+                height: 32px;
+                margin: 0;
+                z-index: 100;
+                button {
+                    width: 32px;
+                    height: 32px;
+                    span {
+                        display: inline-block;
+                        text-indent: -99999px;
+                        padding: 0;
+                        &:after {
+                            top: 50%;
+                            left: 50%;
+                            right: auto;
+                            transform: translate(-50%, -50%);
+                            width: 32px;
+                            height: 32px;
+                            margin-top: 0;
+                            background:url('/lg5-common/images/icons/icon-reset-40.svg') no-repeat;
+                            background-size: 32px 32px;
+                        }
+                    }
+                } 
             }
         }
         .list-acco-sorting{
@@ -439,7 +468,7 @@
             z-index:1;
             .btn {
                 display:inline-block;
-                width:50% !important;
+                //width:50% !important;
                 vertical-align:middle;
                 height:59px;
                 width:100%;
@@ -455,10 +484,11 @@
                     font-size:14px;
                     border-radius:0;
                 }
+                /*
                 &:first-child {
                     background:#ededed;
                     color:#EC455A;
-                }
+                }*/
             }
             @media screen and (min-width: 1025px) {
                 display:none;
@@ -467,7 +497,7 @@
 
         .filter-close {
             position:absolute;
-            top:24px;
+            top:28px;
             right:24px;
             width:24px;
             height:24px;
@@ -479,6 +509,17 @@
                 position:relative;
                 width:24px;
                 height:24px;
+                &:after {
+                    content: '';
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    width: 24px;
+                    height: 24px;
+                    background: url('/lg5-common/images/icons/btn-close-48-2.svg') no-repeat;
+                    background-size: 24px 24px;
+                }
+                /*
                 &:before {
                     content: '';
                     position:absolute;
@@ -500,7 +541,7 @@
                     border:solid #222;
                     border-width: 0 1.5px 0px 0;
                     transform: rotate(-45deg);
-                }
+                }*/
             }          
         }
     }
