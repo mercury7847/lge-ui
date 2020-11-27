@@ -1,24 +1,22 @@
 .search-not-result {
     clear: both;
     .no-data {
-        padding: 38px 0 80px;
-        
+        padding: 34px 0 80px;
         p {
-            font-weight: $font-weight-medium;
+            font-weight: 500;
             @include font-small;
-            color: #767676;
             &:before {
                 display: none;
             }
             span {
                 display: block;
                 margin-bottom: 16px;
-                @include font-large-2;
-                color: #222;
-                font-weight: $font-weight-bold;
+                font-weight: 700;
+                font-size: $font-large-2;
+                line-height: 26px;
+                color: $color-default;
                 em {
-                    font-weight: $font-weight-bold;
-                    color: #ec455a;
+                    color: $color-primary;
                 }
             }
         }
