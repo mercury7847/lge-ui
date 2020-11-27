@@ -12,6 +12,8 @@ $(function () {
             var savedFilterArr = firstFilterList || []; // CMS에서 넣어준 firstFilterList를 이용
             var firstRender = false;
 
+            var listAppendMode = "NEW";
+
             var ajaxUrl = $('.plp-list-wrap').data('prodList');
 
             //템플릿 설정 슬라이더, 체크박스, 칼라칩, 상품아이템      
@@ -20,10 +22,10 @@ $(function () {
             var productItemTmpl = 
                 '<li>'+
                 '   <div class="item plp-item">'+
-                '       {{#if badges}}'+
+                '       {{#if isPromotionBadge}}'+
                 '       <div class="badge">'+
                 '           <div class="flag-wrap image-type left">'+
-                '               {{#each badge in badges}}'+
+                '               {{#each badge in promotionBadge}}'+
                 '               <span class="big-flag">'+
                 '                   <img src="{{badge.image}}" alt="{{badge.context}}">'+
                 '               </span>'+
@@ -55,7 +57,7 @@ $(function () {
                 '               </div>'+
                 '           </div>'+
                 '       </div>'+
-                '       <div class="product-contents">'+      
+                '       <div class="product-contents">'+     
                 '           {{#if defaultSiblingModelFlag}}'+      
                 '           <div class="product-option {{siblingType}}">'+
                 '               <div class="ui_smooth_scroll">'+
@@ -64,7 +66,7 @@ $(function () {
                 '                       <li>'+
                 '                           <div role="radio" class="{{#if siblingType=="color"}}chk-wrap-colorchip {{item.siblingCode}}{{#else}}rdo-wrap{{/if}}" aria-describedby="{{modelId}}" title="{{item.siblingValue}}">'+
                 '                               <input type="radio" data-category-id={{categoryId}} id="product-{{item.modelName}}" name="nm_{{modelId}}" value="{{item.modelId}}" {{#if modelId==item.modelId}}checked{{/if}}>'+
-                '                               {{#if siblingType=="color"}}'
+                '                               {{#if siblingType=="color"}}'+
                 '                               <label for="product-{{item.modelName}}"><span class="blind">{{item.siblingValue}}</span></label>'+
                 '                               {{#else}}'+
                 '                               <label for="product-{{item.modelName}}">{{item.siblingValue}}</label>'+
@@ -79,6 +81,7 @@ $(function () {
                 '                   <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>'+
                 '               </div>'+
                 '           </div>'+
+                '           {{/if}}'+                
                 '           {{#if isBadge}}'+ 
                 '           <div class="flag-wrap bar-type">'+  
                 '               {{#if productTag1}}'+ 
@@ -104,7 +107,7 @@ $(function () {
                 '               <ul class="spec-info">'+
                 '                   {{#if isSpecInfo}}'+
                 '                       {{#each item in specInfos}}'+
-                '                           <li><span class="title">{{item.specName}} : </span>{{item.specInfo}}</li>'+
+                '                           <li>{{#if item.specName != ""}}<span class="title">{{item.specName}} : </span>{{/if}}{{item.specInfo}}</li>'+
                 '                       {{/each}}'+
                 '                   {{/if}}'+
                 '                   {{#if isCareShip}}'+
@@ -197,8 +200,7 @@ $(function () {
 
             // **필터에 상태를 설정후 데이터를 호출함 (슬라이더,체크박스를 저장된 값으로 설정).
             // setApplyFilter(obj, true) => 설정만 실행
-            function setApplyFilter(obj, noRequest){	
-
+            function setApplyFilter(obj, noRequest){
                 for(var key in obj){		
                     var $parent = $('[data-id="'+ key +'"]');
                     var values = obj[key].split(',');
@@ -276,8 +278,11 @@ $(function () {
             // 상품 아이템들을 렌더링
             function renderProdList(arr, totalCnt){
 
+                if(listAppendMode == "NEW") $('.plp-list-wrap .product-items').empty();
+
+                listAppendMode = "NEW";
+
                 _$(window).off('breakpointchange.filter');
-                $('.product-items-wrap .items-list').empty();
                 $('#totalCount').text('총 '+totalCnt+'개');
 
                 var images = '/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg'; //테스트용
@@ -303,6 +308,7 @@ $(function () {
                     var isSpecInfo = data.specInfos || false;
                     var isBenefit = data.benefitInfos || false;
                     var isCareShip = data.isCareShip || false;
+                    var isPromotionBadge = data.promotionBadge && data.promotionBadge.length > 0 ? true : false;
 
                     var obj = vcui.extend(arr[i],{
                         isBigPromotion : isBigPromotion, 
@@ -313,12 +319,15 @@ $(function () {
                         isBadge : isBadge, 
                         isSpecInfo : isSpecInfo, 
                         isBenefit : isBenefit, 
-                        isCareShip : isCareShip
+                        isCareShip : isCareShip,
+                        isPromotionBadge : isPromotionBadge
                     });   
                     html += vcui.template(productItemTmpl,obj);   
                 }
 
-                $('.product-items-wrap .items-list').html(html);
+                var lisbottom = $('.plp-list-wrap .product-items').offset().top + $('.plp-list-wrap .product-items').outerHeight(true);
+
+                $('.plp-list-wrap .product-items').append(html);
 
                 $('.ui_plp_carousel').vcCarousel('destroy').vcCarousel({
                     indicatorNoSeparator:/##no##/,
@@ -335,23 +344,33 @@ $(function () {
                 fnBreakPoint();
 
                 setCompares();
+
+
+                $('html, body').delay(5000).animate({scrollTop:0}, 250);
             }
             
             // 페이징을 렌더링
             function renderPagination(obj){
-                var listArr = [];
-                for(var i=obj.loopStart; i<=obj.loopEnd; i++){
-                    var nObj = {no:i, select:obj.page==i? true : false};
-                    listArr.push(nObj);
+                currentPage = obj['page'];
+                
+                if(currentPage == obj.pageCount){
+                    $('.read-more-area').hide();
+                } else{
+                    $('.read-more-area').show();
                 }
-                var html = vcui.template(paginationTmpl, 
-                    vcui.extend(obj,{ 
-                        prevNo:String(parseInt(obj.page)-1), 
-                        nextNo:String(parseInt(obj.loopEnd)+1), 
-                        list : listArr
-                    }));
-                $('.pagination').html(html);
-                if(obj && obj['page']) currentPage = obj['page'];
+                // var listArr = [];
+                // for(var i=obj.loopStart; i<=obj.loopEnd; i++){
+                //     var nObj = {no:i, select:obj.page==i? true : false};
+                //     listArr.push(nObj);
+                // }
+                // var html = vcui.template(paginationTmpl, 
+                //     vcui.extend(obj,{ 
+                //         prevNo:String(parseInt(obj.page)-1), 
+                //         nextNo:String(parseInt(obj.loopEnd)+1), 
+                //         list : listArr
+                //     }));
+                // $('.pagination').html(html);
+                // if(obj && obj['page']) currentPage = obj['page'];
             }
 
             //시작
@@ -374,14 +393,12 @@ $(function () {
                 if(!isCompare){
                     for(var i in storageCompare[lgkorUI.COMPARE_ID]){
                         var modelID = storageCompare[lgkorUI.COMPARE_ID][i]['id'];
-                        console.log("modelID :", modelID);
                         $('.product-list-area .list-wrap .product-items li .product-compare a[data-id=' + modelID + ']').addClass('on');
                     }
                 }
             }
 
             function setCompareState(atag){
-                console.log("setCompareState :", atag)
                 var id = $(atag).data('id');
                 if(!$(atag).hasClass('on')){
                     var compare = $(atag).closest('.product-compare');
@@ -399,7 +416,6 @@ $(function () {
                         productImg: productImg,
                         productAlt: productAlt
                     }
-                    console.log("compareObj :", compareObj)
 
                     var isAdd = lgkorUI.addCompareProd(compareObj);
                     if(isAdd) $(atag).addClass("on");
@@ -499,7 +515,7 @@ $(function () {
                         return;
                     }else{
                         $('input[name="categoryCheckbox"][value="'+ e.target.value +'"]').prop('checked', e.target.checked);
-                    }                
+                    }
 
                     var subCategoryArr = [];
                     $('input[name="categoryCheckbox"]:checked').each(function(idx, item){
@@ -518,17 +534,26 @@ $(function () {
                 });
 
                 // 페이징 링크 이벤트 처리
-                $('.pagination').on('click','a',function(e){
+                // $('.pagination').on('click','a',function(e){
+                //     e.preventDefault();
+                //     var $target = $(e.currentTarget);
+                //     if($target.hasClass('disabled')) return;
+                //     var page = $target.data('id');
+                //     if(page){
+                //         currentPage = String(page);
+                //         requestData(storageFilters);
+                //     }                    
+                // });
+
+                //더 보기 버튼...
+                $('.read-more-area button').on('click', function(e){
                     e.preventDefault();
-                    var $target = $(e.currentTarget);
-                    if($target.hasClass('disabled')) return;
-                    var page = $target.data('id');
-                    if(page){
-                        currentPage = String(page);
-                        requestData(storageFilters);
-                    }
-                    
-                })
+
+                    listAppendMode = "ADD";
+
+                    currentPage = String(parseInt(currentPage)+1);
+                    requestData(storageFilters);
+                });
 
                 // 상품아이템 Carousel 설정
                 $('.ui_plp_carousel').vcCarousel({
@@ -622,13 +647,7 @@ $(function () {
                 console.log("requestURL: " + ajaxUrl)
                 console.log('requestData: ', convertPostData(obj));
 
-                _$.ajax({
-                    type : "GET",
-                    url : ajaxUrl,
-                    dataType : "json",
-                    data : convertPostData(obj)
-
-                }).done(function(result) {
+                lgkorUI.requestAjaxData(ajaxUrl, convertPostData(obj), function(result){
 
                     var enableList = result.data && result.data[0].filterEnableList;
                     var filterList = result.data && result.data[0].filterList;
@@ -721,12 +740,8 @@ $(function () {
                     renderProdList(productList, totalCount);
                     renderPagination(pageInfo);
                     firstRender = true;
-                    lgkorUI.hideLoading();                   
-
-                }).fail(function(error) {
-                    console.error(error);
-                    lgkorUI.hideLoading();
-                })
+                    lgkorUI.hideLoading();    
+                });
             }
             
             init();

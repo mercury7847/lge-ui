@@ -200,8 +200,8 @@ var res = {
 					// "찜한 제품" : ["/html/MYC/ACCF7013.html","","진행중"]
 				},
 				"제품 관리" : {
-					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","진행중"],
-					"보유제품 리스트 화면 내 팝업" : ["/html/MYC/ACCF7033_popup.html","","진행중"],
+					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","검수요청"],
+					"보유제품 리스트 화면 내 팝업" : ["/html/MYC/ACCF7033_popup.html","","검수요청"],
 					// "제품/영수증 등록(제품 탭)" : ["/html/MYC/ACCF7036.html","","진행중"],
 					// "제품/영수증 등록(영수증 탭)" : ["/html/MYC/ACCF7037.html","","진행중"],
 					// "등록완료" : ["/html/MYC/ACCF7064.html","","진행중"]
