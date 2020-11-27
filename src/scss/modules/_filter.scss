@@ -179,8 +179,10 @@
                                 right:0;
                                 width:24px;
                                 height:24px;
-                                background:url('/lg5-common/images/icons/btn-dropdown-down-48.svg') no-repeat;
+                                background:url('/lg5-common/images/icons/btn-arr-24x24-black.svg') no-repeat;
                                 background-size: cover;
+                                transform: rotate(90deg);
+                                transition: all .3s;
                                 @media screen and (max-width: 1024px) {
                                     top:32px;
                                     right:0;
@@ -204,8 +206,7 @@
                         }
                     }
                     &.on .head a:before {
-                        background:url('/lg5-common/images/icons/btn-dropdown-up-48.svg') no-repeat;
-                        background-size: cover;
+                        transform: rotate(270deg);
                     }
                     .desc {
                         display:none;
