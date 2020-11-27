@@ -213,7 +213,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             self.windowTimer = null;
             self.currentSlide = self.options.initialSlide;
             self.originalSettings = self.options;
-
             if (typeof document.mozHidden !== 'undefined') {
                 self.hidden = 'mozHidden';
                 self.visibilityChange = 'mozvisibilitychange';
@@ -832,7 +831,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             return index;
         },
         cleanUpEvents: function cleanUpEvents() {
-
             var self = this,
                 opt = self.options;
 
@@ -914,7 +912,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             var self = this,
                 opt = self.options;
 
-            // console.log(event.target);
             if (self.shouldClick === false) {
                 event.stopImmediatePropagation();
                 event.stopPropagation();
@@ -922,7 +919,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             }
         },
         destroy: function destroy(refresh) {
-
             var self = this,
                 opt = self.options;
 
@@ -2774,7 +2770,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 self.$nextArrow.hide();
             }
 
-            if (opt.dots === true && self.slideCount > opt.slidesToShow) {
+            if (opt.dots === true && self.slideCount >= opt.slidesToShow) {
                 self.$dots.hide();
             }
 

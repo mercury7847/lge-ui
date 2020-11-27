@@ -13,7 +13,7 @@ $(function () {
             var firstRender = false;
 
             var listAppendMode = "NEW";
-            var isScrollTransition = true;
+            var isFirstScrolled = false;
 
             var ajaxUrl = $('.plp-list-wrap').data('prodList');
 
@@ -60,8 +60,8 @@ $(function () {
                 '       </div>'+
                 '       <div class="product-contents">'+     
                 '           {{#if defaultSiblingModelFlag}}'+      
-                '           <div class="product-option {{siblingType}}">'+
-                '               <div class="ui_smooth_scroll">'+
+                '           <div class="product-option {{siblingType}} ui_smooth_scrolltab">'+
+                '               <div class="ui_smooth_tab">'+
                 '                   <ul class="option-list" role="radiogroup">'+
                 '                       {{#each item in siblingModels}}'+
                 '                       <li>'+
@@ -77,7 +77,7 @@ $(function () {
                 '                       {{/each}}'+
                 '                   </ul>'+
                 '               </div>'+
-                '               <div class="scroll-controls">'+
+                '               <div class="scroll-controls ui_smooth_controls">'+
                 '                   <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>'+
                 '                   <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>'+
                 '               </div>'+
@@ -276,26 +276,19 @@ $(function () {
                 }   
             }
 
-            // 상품 아이템들을 렌더링
-            function renderProdList(arr, totalCnt){
-
-                if(listAppendMode == "NEW") $('.plp-list-wrap .product-items').empty();
+            function addProdList(arr, totalCnt){
+                var leng = $('.plp-list-wrap .product-items').children().length;
 
                 _$(window).off('breakpointchange.filter');
                 $('#totalCount').text('총 '+totalCnt+'개');
 
-                var images = '/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg'; //테스트용
-                //var images = '/lg5-common/images/dummy/@img-product.jpg';
-
-                var html = '';
-                
+                var html = '';                
                 for(var i=0; i<arr.length; i++){
                     var data = arr[i];
 
                     var siblingType = data.siblingType? data.siblingType.toLowerCase():'';
                     siblingType = siblingType=="color"? "color" : "text";
-                    var sliderImages = images.split(','); // 테스트용 
-                    // var sliderImages = data.modelRollingImgList.split(',');
+                    var sliderImages = data.modelRollingImgList.split(',');
 
                     if(data.rPrice) data.rPrice = vcui.number.addComma(data.rPrice);
                     if(data.rPromoPrice) data.rPromoPrice = vcui.number.addComma(data.rPromoPrice);
@@ -322,13 +315,7 @@ $(function () {
                         isPromotionBadge : isPromotionBadge
                     });   
                     html += vcui.template(productItemTmpl,obj);   
-                }
-
-                var wraptop = $('.plp-list-wrap').offset().top;
-                var margintop = parseInt($('.plp-list-wrap').css('margin-top'));
-                var itemheight = $('.plp-list-wrap .product-items').outerHeight(true);
-                var cateheight = $('.cate-wrap').outerHeight(true);
-console.log("itemheight :", itemheight)
+                }                
                 $('.plp-list-wrap .product-items').append(html);
 
                 $('.ui_plp_carousel').vcCarousel('destroy').vcCarousel({
@@ -339,6 +326,8 @@ console.log("itemheight :", itemheight)
                     easing:'easeInOutQuad'
                 });
 
+                $('.ui_smooth_scrolltab').vcSmoothScrollTab();
+
                 _$(window).on('breakpointchange.filter', function(e,data){
                     fnBreakPoint();
                 });
@@ -347,15 +336,41 @@ console.log("itemheight :", itemheight)
 
                 setCompares();
 
-                if(isScrollTransition){
-                    var newscrolltop = wraptop + itemheight - cateheight;
-                    if(listAppendMode == "NEW"){
-                        newscrolltop -= margintop;
-                    }
-                    window.scrollTo({top:newscrolltop, behavior: 'smooth'});
+                if(listAppendMode != "NEW"){
+                    prodListScrollMoved(leng, 420);
                 }
                 listAppendMode = "NEW";
-                isScrollTransition = true;
+            }
+
+            function prodListScrollMoved(idx, spd, callback){
+                if(isFirstScrolled){
+                    var targetop = $('.plp-list-wrap .product-items').children().eq(idx).offset().top;
+                    var margintop = parseInt($('.plp-list-wrap').css('margin-top'));
+                    var cateheight = $('.cate-wrap').outerHeight(true);
+                    var newscrolltop = targetop - cateheight - margintop;
+    
+                    _$('html, body').stop().animate({scrollTop:newscrolltop}, spd, function(){
+                        if(callback) callback();
+                    });
+                } else{
+                    isFirstScrolled = true;
+                    
+                    if(callback) callback();
+                }
+            }
+
+            // 상품 아이템들을 렌더링
+            function renderProdList(arr, totalCnt){
+                if(listAppendMode == "NEW"){
+                    prodListScrollMoved(0, 180, function(){
+                        $('.plp-list-wrap .product-items').empty();
+
+                        addProdList(arr, totalCnt);
+                    });                 
+                } else{
+                    isFirstScrolled = true;
+                    addProdList(arr, totalCnt);
+                }
             }
             
             // 페이징을 렌더링
@@ -497,6 +512,7 @@ console.log("itemheight :", itemheight)
                 // 정렬(인기순,최신순,...) , 커스텀 셀렉터박스와 연결, 이벤트 처리
                 $('input[name="sorting"]').on('change', function(e){
                     e.preventDefault();
+
                     var idx = $('input[name="sorting"]').index(this);
                     $('.ui_sorting_selectbox').vcSelectbox('selectedIndex', idx, false);
                     setApplyFilter(storageFilters);
@@ -510,6 +526,7 @@ console.log("itemheight :", itemheight)
 
                 $('.product-list-area .list-wrap .product-items').on('click', '> li .product-compare a', function(e){
                     e.preventDefault();
+
                     setCompareState(e.currentTarget);
                 });
 
@@ -540,8 +557,6 @@ console.log("itemheight :", itemheight)
                     storageFilters['subCategoryId'] = subCategoryId;
                     lgkorUI.setStorage(storageName, storageFilters);
 
-                    isScrollTransition = true;
-
                     setApplyFilter(storageFilters, noRequest);
                 });
 
@@ -562,7 +577,6 @@ console.log("itemheight :", itemheight)
                     e.preventDefault();
 
                     listAppendMode = "ADD";
-                    isScrollTransition = true;
 
                     currentPage = String(parseInt(currentPage)+1);
                     requestData(storageFilters);

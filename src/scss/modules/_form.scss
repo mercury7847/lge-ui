@@ -137,6 +137,13 @@
         &:first-child {
             margin-top:0;
         }
+        &.block-type {
+            .tit,
+            .conts {
+                display: block;
+                width: 100%;
+            }
+        }
 
         .input-wrap,
         .select-wrap,
