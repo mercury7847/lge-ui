@@ -11,7 +11,7 @@
             <!-- 통합검색 -->
             <div class="contents search">
                 <!-- 검색 영역 -->
-                @@include('./common/modules/search-input.html', {
+                @@include('./common/modules/search.html', {
                     "value" : "xlql",
                     "layer" : true
                 })
@@ -32,100 +32,36 @@
                                 <h2 class="title">이런 제품 어떠세요?</h2>
                             </div>
                             <div class="list-wrap">
-                                <ul class="product-items">
-                                    @@loop('./common/modules/product-item.html', [
+                                <ul class="result-list">
+                                    @@loop('./common/modules/result-list.html', [
                                         {
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "flags" : true,
+                                            "itemClass" : "",
+                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.png' alt='으뜸효율 10%'></span>",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "flags" : ["베스트", "신제품"],
+                                            "tit" : "LG DIOS <span class='point'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                            "sku"  : true,
                                             "review" : true,
                                             "isReview" : true,
-                                            "price" : true,
-                                            "originalPrice" : true,
-                                            "benefit" : true,
-                                            "wish" : true,
-                                            "wish" : {
-                                                "id" : "chk01",
-                                                "name" : "chk01",
-                                                "checked" : ""
-                                            },
-                                            "button" : true,
-                                            "buttonName" : "장바구니 담기"
-                                        },{
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "flags" : true,
-                                            "review" : true,
-                                            "price" : true,
-                                            "benefit" : true,
-                                            "wish" : true,
-                                            "wish" : {
-                                                "id" : "chk01",
-                                                "name" : "chk01",
-                                                "checked" : ""
-                                            },
-                                            "button" : true,
-                                            "buttonName" : "장바구니 담기"
-                                        },{
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "flags" : true,
-                                            "review" : true,
-                                            "price" : true,
-                                            "benefit" : true,
-                                            "wish" : true,
-                                            "wish" : {
-                                                "id" : "chk01",
-                                                "name" : "chk01",
-                                                "checked" : "checked"
-                                            },
-                                            "button" : true,
-                                            "buttonName" : "자세히보기"
-                                        },{
-                                            "badgeType" : "large",
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "flags" : true,
+                                            "hashtag" : ["#가전", "#여름가전"],
+                                            "careflag" : true,
+                                            "priceInfo" : true,
+                                            "priceSales" : true,
+                                            "priceRental" : true
+                                        }, {
+                                            "itemClass" : "",
+                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.png' alt='으뜸효율 10%'></span>",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "flags" : ["베스트", "신제품"],
+                                            "tit" : "LG DIOS <span class='point'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                            "sku"  : true,
                                             "review" : true,
                                             "isReview" : true,
-                                            "price" : true,
-                                            "benefit" : true,
-                                            "wish" : true,
-                                            "wish" : {
-                                                "id" : "chk01",
-                                                "name" : "chk01",
-                                                "checked" : ""
-                                            },
-                                            "button" : true,
-                                            "buttonName" : "자세히보기"
-                                        },{
-                                            "badgeType" : "thin",
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "flags" : true,
-                                            "review" : true,
-                                            "isReview" : true,
-                                            "price" : true,
-                                            "benefit" : true,
-                                            "wish" : true,
-                                            "wish" : {
-                                                "id" : "chk01",
-                                                "name" : "chk01",
-                                                "checked" : "checked"
-                                            },
-                                            "button" : true,
-                                            "buttonName" : "장바구니 담기"
-                                        },{
-                                            "badgeType" : "thin",
-                                            "img" : "/lg5-common/images/dummy/@img-product.jpg",
-                                            "flags" : true,
-                                            "review" : true,
-                                            "isReview" : true,
-                                            "price" : true,
-                                            "benefit" : true,
-                                            "wish" : true,
-                                            "wish" : {
-                                                "id" : "chk01",
-                                                "name" : "chk01",
-                                                "checked" : "checked"
-                                            },
-                                            "button" : true,
-                                            "buttonName" : "장바구니 담기"
+                                            "hashtag" : ["#가전", "#여름가전"],
+                                            "careflag" : true,
+                                            "priceInfo" : true,
+                                            "priceSales" : true,
+                                            "priceRental" : true
                                         }
                                     ])
                                 </ul>

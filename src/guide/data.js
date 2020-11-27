@@ -39,7 +39,7 @@ var res = {
 			//"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
 			//"KRC0009_Exciting Promotion Offers" : ["/html/components/KRC0009.html","","검수완료"],
 			//"KRC0010_Recommended Promotions" : ["/html/components/KRC0010.html","","검수완료"],
-			"KRC0011_PDP_FAQ_Static" : ["/html/components/KRC0011.html","","진행중"],
+			"KRC0011_PDP_FAQ_Static" : ["/html/components/KRC0011.html","","검수요청"],
 			"KRC0012_Image - Text(folding feature)_Static" : ["/html/components/KRC0012.html","","진행중"],
 			"KRC0013_Side Image - text" : ["/html/components/KRC0013.html","","검수완료"],
 			"KRC0014_Side Image(2 - Text)" : ["/html/components/KRC0014.html","","검수완료"],
@@ -82,12 +82,12 @@ var res = {
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","검수완료"],
 			"KRP0005_Sticky chat_Static" : ["/html/components/floating.html","","검수완료"],
-			"KRP0008_Responsive UI" : ["/html/components/KRP0008.html","","진행중"],
-			"KRP0009_Product List Products List : No Filter" : ["/html/components/KRP0009.html","","진행중"],
+			"KRP0008_Responsive UI" : ["/html/components/KRP0008.html","","검수요청"],
+			"KRP0009_Product List Products List : No Filter" : ["/html/components/KRP0009.html","","검수완료"],
 			"KRP0010_Product Summary (no-img)" : ["/html/components/KRP0010.html","","진행중"],
 			"KRP0012_PDP Tab Anchor" : ["/html/components/KRP0012.html","","검수완료"],
 			// "KRP0013_PDP Bundle" : ["/html/components/KRP0013.html","","검수완료"],
-			"KRP0014_PDP Specs" : ["/html/components/KRP0014.html","","진행중"],
+			"KRP0014_PDP Specs" : ["/html/components/KRP0014.html","","검수요청"],
 			"KRP0015_PDP Reviews" : ["/html/components/KRP0015.html","","검수완료"],
 			"KRP0016_PDP Support - B2C" : ["/html/components/KRP0016.html","","검수완료"],
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"],
@@ -98,7 +98,7 @@ var res = {
 			"KRP0024_Best review" : ["/html/components/KRP0024.html","","검수완료"],
 			"KRP0025_event_list_for_category_home" : ["/html/components/KRP0025.html","","검수완료"],
 			"KRP0027_Please note" : ["/html/components/KRP0027.html","","검수완료"],
-			"KRP0028_Event list" : ["/html/components/KRP0028.html","",""],
+			"KRP0028_Event list" : ["/html/components/KRP0028.html","","검수완료"],
 			"KRP0042_Consumables Search" : ["/html/components/KRP0042.html","","진행중"],
 			"KRP0043_Substitutes&related General Products" : ["/html/components/KRP0043.html","","진행중"],
 			"KRP0044_PDP Shipping Information" : ["/html/components/KRP0044.html","","진행중"],
@@ -107,15 +107,15 @@ var res = {
 		"Page" : {
 			"공통(UTS)" : {
 				"통합검색" : {
-					"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
+					"검색중" : ["/html/UTS/SERF9001.html","","검수요청"],
 					"검색결과 있음" : {
-						"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
-						"제품" : ["/html/UTS/SERF9003.html","","검수완료"],
-						"케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
-						"이벤트" : ["/html/UTS/SERF9005.html","","검수완료"],
-						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
-						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
-						"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
+						"전체" : ["/html/UTS/SERF9002.html","","검수요청"],
+						"제품/케어솔루션" : ["/html/UTS/SERF9003.html","","검수요청"],
+						// "케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
+						"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수요청"],
+						"스토리" : ["/html/UTS/SERF9006.html","","검수요청"],
+						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수요청"],
+						//"고객지원" : ["/html/UTS/SERF9008.html","","검수요청"],
 					},
 					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
 				},
@@ -201,8 +201,8 @@ var res = {
 					// "찜한 제품" : ["/html/MYC/ACCF7013.html","","진행중"]
 				},
 				"제품 관리" : {
-					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","진행중"],
-					"보유제품 리스트 화면 내 팝업" : ["/html/MYC/ACCF7033_popup.html","","진행중"],
+					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","검수요청"],
+					"보유제품 리스트 화면 내 팝업" : ["/html/MYC/ACCF7033_popup.html","","검수요청"],
 					// "제품/영수증 등록(제품 탭)" : ["/html/MYC/ACCF7036.html","","진행중"],
 					// "제품/영수증 등록(영수증 탭)" : ["/html/MYC/ACCF7037.html","","진행중"],
 					// "등록완료" : ["/html/MYC/ACCF7064.html","","진행중"]
@@ -225,7 +225,7 @@ var res = {
 					//"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"]
 				},
 				"공지사항" : {
-					"FAQ" : ["/html/CS/CSRF6043.html","","진행중"]
+					"FAQ" : ["/html/CS/CSRF6043.html","","검수요청"]
 				}
 			},
 			"장바구니(UTC)" : {

@@ -1,0 +1,111 @@
+<li>
+    <div class="item @@itemClass">
+        @@if (context.badge) {
+        <div class="badge">
+            <div class="flag-wrap image-type left">
+                @@badge
+            </div>
+        </div>
+        }
+        <div class="result-thumb">
+            <a href="#n">
+                <img src="@@img" alt="">
+                @@if (context.flagEnd) {
+                    <span class="flag-end-wrap"><span class="flag">종료</span></span>
+                }
+            </a>
+        </div>
+        <div class="result-info">
+            <div class="info-text">
+                @@if (context.flags) {
+                <div class="flag-wrap bar-type">
+                    @@for ( var i=0; i < flags.length; i++ ) {
+                    <span class="flag">`+flags[i]+`</span>
+                    }
+                </div>
+                }
+                
+                <div class="result-tit">
+                    <a href="#">@@tit</a>
+                </div>
+                <div class="result-detail">
+                    @@if (context.sku) {
+                    <div class="sku">5203FI3754D</div>
+                    }
+                    @@if (context.review) {
+                    <div class="review-info">
+                        <a href="#">
+                            @@if (context.isReview) {
+                            <div class="star is-review"><span class="blind">리뷰있음</span></div>
+                            <div class="average-rating"><span class="blind">평점</span>42</div>
+                            <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>
+                            }
+                            @@if (!context.isReview) {
+                            <div class="star"><span class="blind">리뷰없음</span></div>
+                            <div class="average-rating"><span class="blind">평점</span>0</div>
+                            <div class="review-count"><span class="blind">리뷰 수</span>(0)</div>
+                            }
+                        </a>
+                    </div>
+                    }
+                    @@if (context.desc) {
+                        <div class="desc">
+                            <span>@@desc</span>
+                        </div>
+                        }
+                    @@if (context.hashtag) {
+                    <div class="hashtag-wrap">
+                        @@for ( var i=0; i < hashtag.length; i++ ) {
+                        <span class="hashtag">`+hashtag[i]+`</span>
+                        }
+                    </div>
+                    }
+                    @@if (context.careflag) {
+                    <div class="careflag">
+                        <span>케어십 가능</span>
+                    </div>
+                    }
+                    
+                    @@if (context.model) {
+                    <div class="model">
+                        <span>@@model</span>
+                    </div>
+                    }
+                    @@if (context.date) {
+                    <div class="date">
+                        <span>@@date</span>
+                    </div>
+                    }
+                </div>    
+            </div>
+            @@if (context.priceInfo) {
+            <div class="info-price">
+                @@if (context.priceSales) {
+                <div class="price-info sales">
+                    <p class="tit">구매</p>
+                    <span class="price">5,200,000<em>원</em></span>
+                    <div class="original">
+                        <em class="blind">원가</em>
+                        <span class="price">5,600,000<em>원</em></span>
+                    </div>
+                </div>
+                }
+                @@if (context.priceRental) {
+                <div class="price-info rental">
+                    <p class="tit">렌탈 케어솔루션</p>
+                    <span class="price"><em>월</em> 40,900<em>원</em></span>
+                </div>
+                }
+            </div>
+            }
+            @@if (context.priceInfo2) {
+            <div class="info-price type2">
+                <div class="price-info">
+                    <span class="price">5,000<em>원</em></span>
+                </div>
+            </div>    
+            }
+
+        </div>
+    </div>
+</li>

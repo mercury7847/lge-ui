@@ -2,12 +2,10 @@
 
 @import "../components-app";
 
-.component-wrap {margin-top:50px;}
-
 .KRP0012 {
     width: 100%;
     margin: 0 auto;
-    padding:0 30px;
+    padding:0 40px;
     background:#fff;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
     @include mobile {
@@ -111,12 +109,9 @@
             font-size:0;
             text-align:center;
             background:#fff;
-            @include tablet {
-                width:470px;
-            }
-            @media screen and (max-width: 920px) {
-                width:400px;
-            }
+            // @include tablet {
+            //     width:470px;
+            // }
             @include mobile {
                 width:100%;
                 max-width:100%;
@@ -192,10 +187,8 @@
             .extra-menu {
                 &.btn {
                     min-width:107px;
-                    @include tablet {
-                        min-width:auto;
-                    }
                     @include mobile {
+                        min-width:auto;
                         padding:5px 16px;
                         border-radius:20px;
                         font-size:14px;
@@ -234,11 +227,34 @@
     }
     &.sticky {
         .contents-menu-list .tab-menu-belt.type-btn {
-            margin-right:155px;
+            margin-right:115px;
             text-align:right;
             @include mobile {
                 margin-right:0;
                 text-align:left;
+            }
+        }
+        @media screen and (min-width: 768px) and (max-width: 1284px) {
+            .product-simple-info {
+                position:static;
+                height:72px;
+                transform:none;
+                .product-name {
+                    line-height:72px;
+                }
+            }
+            .contents-menu-list .tab-menu-belt.type-btn {
+                float:none;
+                margin:0;
+                .tab-menu .linker {
+                    height:64px;
+                    line-height:64px;
+                }
+            }
+            .extra-area {
+                top:11px;
+                right:0;
+                transform:none;
             }
         }
     }

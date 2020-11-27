@@ -71,5 +71,37 @@
     <!-- support script -->
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
+    <script>
+        $(function(){
+            vcui.require(['ui/carousel'], function () {
+                $('.slide-wrap').vcCarousel({
+                    infinite: false,
+                    autoplay: false,
+                    slidesToScroll: 4,
+                    slidesToShow: 4,
+                    responsive: [
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToScroll: 1,
+                                slidesToShow: 1
+                            }
+                        },
+                        {
+                            breakpoint: 20000,
+                            settings: {
+                                slidesToScroll: 4,
+                                slidesToShow: 4
+                            }
+                        }
+                    ]
+                });
+
+                $('#choiceEngineerPopup').on('modalshow', function() {
+                    $('.slide-wrap').vcCarousel('resize');
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

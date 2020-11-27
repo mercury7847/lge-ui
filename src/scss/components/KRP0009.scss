@@ -191,12 +191,13 @@
 
     .plp-list-wrap {
         max-width:1380px + 80;
-        margin:0 auto;
+        margin:48px auto 0;
         padding: 0 40px;
         @include clearfix;
 
         @include mobile {
             max-width: 100%;
+            margin-top:34px;
             padding: 0 20px 50px;
 
         }
@@ -277,4 +278,3 @@
         }
     }
 }
-
