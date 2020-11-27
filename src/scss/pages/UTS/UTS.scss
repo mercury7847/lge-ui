@@ -49,6 +49,9 @@
         img {
             width: 100%;
         }
+        .text-area {
+            display: none;
+        }
         @include mobile {
             max-width: 100%;
             padding: 0;
@@ -124,13 +127,22 @@
     padding: 48px 40px 46px;
     @include mobile {
         max-width: 100%;
-        padding: 24px 16px 40px;
+        padding: 102px 16px 40px;
     }
 }
 .input-keyword {
     position: relative;
     //border-radius: 28px;
     //box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+    @include mobile {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 3;
+        padding: 30px 16px 16px;
+        background-color: $color-bg-wt;
+    }
     .sch-input-wrap {
         position: relative;
 
@@ -240,13 +252,40 @@
             }
         }
     }
+    .mobile-more-btn {
+        display: none;
+    }
     @include mobile {
-        margin: 14px -20px 0 0;
-        padding-left: 86px;
+        position: relative;
+        height: 24px;
+        margin-top: 0;
+        padding-right: 52px;
         .keyword-list {
-            white-space: nowrap;
             li {
-                margin-right: 12px;
+                margin-right: 16px;
+                padding-bottom: 8px;
+            }
+        }
+        .mobile-more-btn {
+            display: block;
+            position: absolute;
+            top: -1px;
+            right: 16px;
+            .btn-more {
+                display: block;
+                width: 24px;
+                height: 24px;
+                background: url('/lg5-common/images/icons/btn-arrow-down.svg') no-repeat 0 0;
+                    transition:transform .3s .1s ease-out;
+            }
+        }
+
+        &.open {
+            height: auto;
+            .mobile-more-btn {
+                .btn-more {
+                    transform: rotate(180deg);
+                }
             }
         }
     }

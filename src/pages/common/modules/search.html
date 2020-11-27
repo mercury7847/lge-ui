@@ -82,7 +82,8 @@
     </div>
 
     @@if(context.related) {
-    <div class="related-keyword">
+    <!-- .btn-more click 시 .open 추가 (mobile만 해당) -->
+    <div class="related-keyword open">
         <div class="inner">
             <span class="title">연관검색어</span>
             <ul class="keyword-list">
@@ -93,6 +94,9 @@
                 <li><a href="#">OLED TV/AV</a></li>
                 <li><a href="#">홈라이프</a></li>
             </ul>
+        </div>
+        <div class="mobile-more-btn">
+            <a href="#n" class="btn-more"><span class="blind">연관검색어 펼침</span></a>
         </div>
     </div>
     }
