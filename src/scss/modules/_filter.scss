@@ -23,8 +23,7 @@
 
     @at-root .search .lay-filter {
         position: absolute;
-        //top: 0;
-        top: 45px;
+        top: 0;
         left: 50%;
         transform: translateX(-690px);
         @media screen and (max-width: 1460px){
