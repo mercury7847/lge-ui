@@ -236,5 +236,8 @@
 &.pop-conts {
     .form-wrap {
         max-width:630px;
+        &.col-type {
+            max-width:100%;
+        }
     }
 }

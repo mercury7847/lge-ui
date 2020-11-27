@@ -735,6 +735,125 @@
                 }
             }
         }
+
+        // 모델명 확인 방법
+        &.academy-pop {
+            .noti-txt {
+                color:#222;
+                @include font-medium;
+                font-weight:700;
+                em {
+                    color: $color-primary;
+                }
+            }
+            
+            .example-list {
+                padding-top: 6px;
+                dl {
+                    padding-top:2px;
+                    font-size: 0;
+                    dt,dd {
+                        display: inline-block;
+                        color:#767676;
+                        @include font-small;
+                        font-weight:500;
+                    }
+                    dt {
+                        margin-right: 8px;
+                        color:#222;
+                    }
+                    @include mobile {
+                        display: flex;
+                        dd {
+                            flex: 1;
+                        }
+                    }
+                }
+                ul {
+                    @include clearfix;
+                    margin-top:48px;
+                    li {
+                        float:left;
+                        position:relative;
+                        width: 240px;
+                        //padding:0 0 0 56px;
+                        img {
+                            max-width: 100%;
+                            vertical-align: top;
+                        }
+                        @include mobile {
+                            float:inherit;
+                            width: auto;
+                            padding:48px 0 0 0;
+                        }
+                        &:first-child {
+                            margin-right:56px;
+                            @include mobile {
+                                margin-right:0;
+                                padding:0;
+                            }
+                            &:after {
+                                content:'';
+                                display:block;
+                                position:absolute;
+                                top:50%;
+                                right:-40px;
+                                width: 24px;
+                                height: 24px;
+                                margin-top: -12px;
+                                background: url('/lg5-common/images/icons/btn-arr-24x24-black.svg') no-repeat 50% 50%;
+                                background-size: 24px 24px;
+                                @include mobile {
+                                    top:auto;
+                                    bottom:-36px;
+                                    right:50%;
+                                    margin-top: 0;
+                                    background: url('/lg5-common/images/icons/btn-arrow-down.svg') no-repeat 50% 50%;
+                                    background-size: 24px 24px;
+                                }
+                            }
+                        }
+                        img {
+                            @include mobile {
+                                display:block;
+                                width:100%;
+                            }
+                        }
+                    }
+                }
+                &.type-A {
+                    padding-top: 64px;
+                    @include mobile {
+                        padding-top:60px;
+                    }
+                    p {
+                        @include font-medium;
+                    }
+                    ul {
+                        margin-top: 16px;
+                    }
+                }
+                .example-img {
+                    margin-top:16px;
+                    img {
+                        width:100%;
+                        height:auto;
+                        vertical-align:top;
+                    }
+                }
+            }
+            
+            .category-select {
+                margin-top: 24px;
+            }
+            
+            .nodata {
+                margin-top: 16px;
+                img {
+                    max-width: 100%;
+                }
+            }
+        }
     }
 
     // input-form

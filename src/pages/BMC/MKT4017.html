@@ -13,7 +13,7 @@
         <header class="pop-header">
             <h1 class="tit"><span>PC 모델명 및 시리얼번호 확인 방법</span></h1>
         </header>
-        <section class="pop-conts academy-pop no-footer">
+        <section class="pop-conts common-pop academy-pop no-footer"><!-- [11.27 수정] common-pop Class 추가 -->
             <p class="noti-txt">PC 모델명 및 시리얼번호는 소지하고 계신<br> PC/모니터의 <em>밑면 또는 측면 바코드 부근</em>에 기재되어 있습니다.</p>
             <div class="example-list">
                 <dl>
@@ -24,10 +24,11 @@
                     <dt>S/N (시리얼번호/일련번호)</dt>
                     <dd>예) 701ABCD123456</dd>
                 </dl>
-                <ul>
-                    <li><img src="/lg5-common/images/BMC/img_model01.jpg" alt="예시이미지"></li>
-                    <li><img src="/lg5-common/images/BMC/img_model02.jpg" alt="예시이미지"></li>
-                </ul>
+                <!-- [11.27 수정] 샘플이미지 영역 DOM 변경 -->
+                <div class="example-img" aria-hidden="true">
+                    <img src="/lg5-common/images/dummy/@img-example.jpg" alt="">
+                </div>
+                <!-- // [11.27 수정] 샘플이미지 영역 DOM 변경 -->
             </div>
         </section>
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
