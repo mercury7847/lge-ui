@@ -1,3 +1,79 @@
+(function() {
+    $(window).ready(function(){
+        if(!document.querySelector('.KRC0030')) return false;
+
+    	$('.KRC0030').buildCommonUI();
+        
+        var KRP0030 = {
+            init: function() {
+                var self = this;
+
+                self.setting();
+                self.bindEvents();
+            },
+
+            setting: function() {
+				var self = this;
+				self.isDragging = false;
+				self.$obj = $('.KRC0030');
+				self.$carousel = self.$obj.find('.ui_carousel_slider');
+
+				vcui.require(['ui/carousel'], function () {
+					self.$carousel.vcCarousel({
+						infinite: false,
+						responsive: [
+						{
+							breakpoint: 768,
+							settings: {
+								dots: true,
+								slidesToShow: 3,
+								slidesToScroll: 3,
+								swipeToSlide: false,
+							}
+						},
+						{
+							breakpoint: 999999,
+							settings: {
+								dots: false,
+								slidesToShow: 6,
+								slidesToScroll: 1,
+								swipeToSlide: true,
+							}
+						}]
+					});
+				});
+
+            },
+
+            bindEvents: function() {
+				var self = this;
+				
+				self.$carousel.on('mouseenter', '.slider-nav .icon', function() {
+					$(this).addClass('hover');
+				}).on('mouseleave', '.slider-nav .icon', function() {
+					$(this).removeClass('hover');
+				});
+
+				self.$carousel.on('click', '.slider-nav .icon a', function(e){
+					var $this = $(this).closest('.icon');
+					var thisIndex = $this.index();
+					$this.siblings().removeClass('active').attr('aria-selected', false); //PJTWAUS-1 :  20191223 modify
+					$this.addClass('active').attr('aria-selected', true); //PJTWAUS-1 : 20191223 modify
+					
+					$(this).parents('.KRC0030').attr('data-index',thisIndex);
+					$(this).parents('.KRC0030').find('.slider-for .group.active').removeClass('active');
+					$(this).parents('.KRC0030').find('.slider-for .group:nth-child(' + (thisIndex+1) + ')').addClass('active');
+				});
+
+			}
+			
+        };
+
+        KRP0030.init();
+    });
+})();
+
+/*
 $(document).ready(function() {
 	if(!document.querySelector('.KRC0030')) return false;
 
@@ -61,3 +137,4 @@ $(document).ready(function() {
 	ani.event();
 
 });
+*/
