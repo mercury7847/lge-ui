@@ -136,7 +136,8 @@
     padding: 48px 40px 46px;
     @include mobile {
         max-width: 100%;
-        padding: 102px 16px 50px;
+        //padding: 102px 16px 50px;
+        padding: 0 16px 50px;
     }
 }
 .input-keyword {
@@ -268,7 +269,7 @@
         position: relative;
         height: 24px;
         margin-top: 0;
-        padding-right: 52px;
+        padding-right: 32px;
         .keyword-list {
             li {
                 margin-right: 16px;
@@ -279,7 +280,7 @@
             display: block;
             position: absolute;
             top: -1px;
-            right: 16px;
+            right: 0;
             .btn-more {
                 display: block;
                 width: 24px;
