@@ -46,6 +46,11 @@
 			top:50%;
 			height:auto;
 			transform:translateY(-50%);
+			@include mobile {
+				position:relative;
+				top:auto;
+				transform:translateY(0);
+			}
 		}
 	}
 	.text-overlay {
