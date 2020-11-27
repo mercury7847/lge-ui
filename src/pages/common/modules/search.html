@@ -1,14 +1,24 @@
 <!-- 스크롤 시 .fixed-top 추가 (mobile만 해당) -->
 <div class="input-keyword-wrap">
     <!-- input focus 시 .focus-on 추가 -->
+        @@if(!context.confirm) {
     <div class="input-keyword">
+        }
+        @@if(context.confirm) {
+    <div class="input-keyword focus-on">
+        }
         @@include('./common/modules/search-input.html', {
             "value" : "@@value"
         })
 
         @@if(context.layer) {
         <!-- 검색어 입력창에 포커스시 나오는 레이어 -->
+            @@if(!context.confirm) {
         <div class="search-input-layer">
+            }
+            @@if(context.confirm) {
+        <div class="search-input-layer" style="display:block">
+            }
             <div class="auto-complete">
                 <div class="keyword-list">
                     <ul>

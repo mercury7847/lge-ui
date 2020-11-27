@@ -50,17 +50,70 @@
     }
     .search-banner {
         max-width: (1146px + 80px);
-        margin: 0 auto;
-        padding: 0 40px 17px;
+        height: 189px;
+        margin: 0 auto -34px;
+        padding: 0 40px;
+        a {
+            overflow: hidden;
+            display: block;
+            position: relative;
+            height: 100%;
+            border-radius: 8px;
+        }
         img {
-            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 189px;
+            border-radius: 8px;
         }
         .text-area {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            padding-left: 48px;
+            .title {
+                display: block;
+                margin-bottom: 8px;
+                @include font-large-1;
+            }
+            .sub-copy {
+                @include font-small;
+            }
+        }
+        br {
             display: none;
         }
         @include mobile {
             max-width: 100%;
-            padding: 0 0 10px;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            a {
+                overflow: hidden;
+                display: block;
+                position: relative;
+                height: 100%;
+                border-radius: 0;
+            }
+            img {
+                position: static;
+                transform: translateX(0);
+                width: 100%;
+                height: auto;
+                border-radius: 0;
+            }
+            .text-area {
+                top: 25px;
+                left: 16px;
+                transform: translateY(0);
+                padding-left: 0;
+            }
+            br {
+                display: block;
+            }
         }
     }
     .cont-wrap {
