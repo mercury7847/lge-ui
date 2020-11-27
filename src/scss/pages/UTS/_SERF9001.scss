@@ -46,6 +46,9 @@
             padding: 0;
         }
         .search-similar {
+            .similar-text {
+                @include font-large-2;
+            }
             .search-result-text {
                 margin-bottom: 48px;
             }
