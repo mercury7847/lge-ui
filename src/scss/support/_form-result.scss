@@ -5,7 +5,7 @@
     &-list {
         > li {
             @include clearfix;
-            margin-top: 16px;
+            margin-top: 20px;
             &:first-child {
                 margin-top: 0;
             }
@@ -30,6 +30,9 @@
                 vertical-align: middle;
             }
             .held-product {
+                margin-left: 24px;
+            }
+            @include pc {
                 margin-left: 24px;
             }
             @include mobile {
@@ -65,10 +68,15 @@
         &-list {
             .title {
                 width: 104px;
+                font-size: 14px;
             }
             .description {
                 width: calc(100% - 104px);
+                font-size: 14px;
                 font-weight: 500;
+            }
+            & > li {
+                margin-top: 14px;
             }
         }
         &-dl {
