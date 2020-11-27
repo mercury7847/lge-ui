@@ -87,7 +87,7 @@ var res = {
 			"KRP0010_Product Summary (no-img)" : ["/html/components/KRP0010.html","","진행중"],
 			"KRP0012_PDP Tab Anchor" : ["/html/components/KRP0012.html","","검수완료"],
 			// "KRP0013_PDP Bundle" : ["/html/components/KRP0013.html","","검수완료"],
-			"KRP0014_PDP Specs" : ["/html/components/KRP0014.html","","진행중"],
+			"KRP0014_PDP Specs" : ["/html/components/KRP0014.html","","검수요청"],
 			"KRP0015_PDP Reviews" : ["/html/components/KRP0015.html","","검수완료"],
 			"KRP0016_PDP Support - B2C" : ["/html/components/KRP0016.html","","검수완료"],
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"],
@@ -107,15 +107,15 @@ var res = {
 		"Page" : {
 			"공통(UTS)" : {
 				"통합검색" : {
-					"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
+					"검색중" : ["/html/UTS/SERF9001.html","","검수요청"],
 					"검색결과 있음" : {
-						"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
-						"제품/케어솔루션" : ["/html/UTS/SERF9003.html","","검수완료"],
+						"전체" : ["/html/UTS/SERF9002.html","","검수요청"],
+						"제품/케어솔루션" : ["/html/UTS/SERF9003.html","","검수요청"],
 						// "케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
-						"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수완료"],
-						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
-						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
-						"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
+						"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수요청"],
+						"스토리" : ["/html/UTS/SERF9006.html","","검수요청"],
+						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수요청"],
+						//"고객지원" : ["/html/UTS/SERF9008.html","","검수요청"],
 					},
 					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
 				},
