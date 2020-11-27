@@ -555,20 +555,14 @@
         justify-content: space-between;
         padding: 32px 0 23px;
         border-bottom: 1px solid #ddd;
-        .btn-reset {
-            display: block;
-            margin: 0;
-            button {
-                @include font-medium;
-            }  
-        }
+
         .filter-search-area {
             display: inline-block;
             position: relative;
-            max-width: 216px;
+            //max-width: 216px;
             flex: 1;
             vertical-align: middle;
-            margin-left: 24px;
+
             .search-inner {
                  width: 100%;
                  height: 34px;
