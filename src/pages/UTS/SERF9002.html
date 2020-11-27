@@ -63,7 +63,7 @@
                 <div class="cont-wrap"><!-- 필터 포함 시 : .w-filter 추가 -->
                     <!-- (@@)include('./common/modules/list-filter.html') -->
                     <div class="search-result-wrap all" id="all">
-                        <div class="result-list-wrap result-product">
+                        <div class="result-list-wrap">
                             <div class="list-head">
                                 <h2 class="title">제품/렌탈 케어솔루션</h2>
                                 <div class="btn-area">
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                             <div class="list-wrap">
-                                <ul class="result-list">
+                                <ul class="result-list product-list">
                                     @@loop('./common/modules/result-list.html', [
                                         {
                                             "itemClass" : "",
@@ -107,7 +107,7 @@
                             </div>
                         </div> <!-- // 제품-->
 
-                        <div class="result-list-wrap result-event">
+                        <div class="result-list-wrap">
                             <div class="list-head">
                                 <h2 class="title">이벤트/기획전</h2>
                                 <div class="btn-area">
@@ -115,7 +115,7 @@
                                 </div>
                             </div>
                             <div class="list-wrap">
-                                <ul class="result-list">
+                                <ul class="result-list event-list">
                                     @@loop('./common/modules/result-list.html', [
                                         {
                                             "itemClass" : "item-type2",
@@ -135,7 +135,7 @@
                             </div>
                         </div> <!-- // 이벤트 기획전-->
 
-                        <div class="result-list-wrap result-story">
+                        <div class="result-list-wrap">
                             <div class="list-head">
                                 <h2 class="title">스토리</h2>
                                 <div class="btn-area">
@@ -143,7 +143,7 @@
                                 </div>
                             </div>
                             <div class="list-wrap">
-                                <ul class="result-list">
+                                <ul class="result-list story-list">
                                     @@loop('./common/modules/result-list.html', [
                                         {
                                             "itemClass" : "item-story",
@@ -159,7 +159,7 @@
                             </div>
                         </div> <!-- // 스토리-->
 
-                        <div class="result-list-wrap result-care">
+                        <div class="result-list-wrap">
                             <div class="list-head">
                                 <h2 class="title">케어용품/소모품</h2>
                                 <div class="btn-area">
@@ -167,7 +167,7 @@
                                 </div>
                             </div>
                             <div class="list-wrap">
-                                <ul class="result-list">
+                                <ul class="result-list care-list">
                                     @@loop('./common/modules/result-list.html', [
                                         {
                                             "itemClass" : "",

@@ -122,12 +122,7 @@
             @include font-medium;
             color: $color-default;
             font-weight: $font-weight-bold;
-            @at-root .contents.search .cont-wrap .result-product & {
-                max-width: 280px;
-                @include mobile {
-                    max-width: 100%;
-                }
-            }
+            
             @include mobile {
                 max-height: 46px;
                 margin-bottom: 6px;
@@ -143,11 +138,6 @@
                 @include font-large-1;
             } 
         }
-        /*
-        .result-detail {
-            display: flex;
-            flex-direction: column;
-        }*/
         .sku, 
         .careflag {
             display: inline-block;
@@ -310,5 +300,15 @@
             }
         } 
     }*/
+    &.product-list {
+        .info-text {
+            .result-tit {
+                max-width: 280px;
+                @include mobile {
+                    max-width: 100%;
+                }
+            }
+        }
+    }    
 }    
 
