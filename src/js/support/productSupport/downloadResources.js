@@ -1,29 +1,76 @@
 (function() {
-    var modelListTemplate = 
+    var manualListTemplate = 
         '<li>' +
-            '<strong class="tit">{{modelName}}</strong>' +
-            '<p class="desc>{{categoryName}}</p>' +
-            '<ul class="infos>' +
-                '<li></li>' +
-                '<li></li>' +
-            '</ul>' +
-            '<div class="btns-wrap>' +
-                '<button type="button" class="btn bd-pink btn-small" data-model="{{modelName}}"><span>선택하기</span></button>' +
+            '<p class="tit">{{type}}</p>' +
+            '<p class="desc">{{title}}</p>' +
+            '<div class="info-wrap">' +
+                '<ul class="options">' +
+                    '<li>{{date}}</li>' +
+                    '<li>{{language}}</li>' +
+                    '{{# if (typeof petName != "undefined") { #}}' +
+                    '<li>{{petName}}</li>' +
+                    '{{# } #}}' +
+                    '{{# if (typeof os != "undefined") { #}}' +
+                    '<li>{{os}}</li>' +
+                    '{{# } #}}' +
+                ' </ul>' +
+                '<div class="btns-area">' +
+                    '{{# for (var i = 0; i < file.length; i++) #}}'
+                    '<a href="{{file[i].src}}" class="btn border size"><span>{{file[i].type}}</span></a>' +
+                    '{{# } #}}' +
+                '</div>' +
             '</div>' +
         '</li>';
+    var fileListTemplate = 
+        '<li>' +
+            '<div class="head">' +
+                '<div class="file-box">' +
+                    '<p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">{{os}} {{title}}</button></p>' +
+                    '<ul class="options">' +
+                        '<li>{{version}}  {{category}}</li>' +
+                        '<li>{{driver}}</li>' +
+                        '<li>{{date}}</li>' +
+                    '</ul>' +
+                    '<div class="btn-area">' +
+                        '<a href="{{file.src}}" class="btn border size"><span>다운로드 {{file.size}}</span></a>' +
+                        '{{# if (typeof prevVersion != "undefined") { #}}' +
+                        '<a href="#" class="accord-btn ui_accord_toggle" data-open-text="이전 버전 보기" data-close-text="이전 버전 닫기"><span class="ui_accord_text">이전 버전 보기</span></a>' +
+                        '{{# } #}}' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '{{# if (typeof prevVersion != "undefined" && prevVersion.length) { #}}' +
+            '<div class="accord-cont ui_accord_content">' +
+                '<ul class="file-list">' +
+                    '{{# for (var i = 0; i < prevVersion.length; i++) #}}'
+                    '<li>' +
+                        '<div class="file-box">' +
+                            '<p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">{{os}} {{title}}</button></p>' +
+                            '<ul class="options">' +
+                                '<li>{{version}}  {{category}}</li>' +
+                                '<li>{{driver}}</li>' +
+                                '<li>{{date}}</li>' +
+                            '</ul>' +
+                            '<div class="btn-area">' +
+                                '<a href="{{file.src}}" class="btn border size"><span>다운로드 {{file.size}}</span></a>' +
+                            '</div>' +
+                        '</div>' +
+                    '</li>' +
+                    '{{# } #}}' +
+                '</ul>' +
+            '</div>' +
+            '{{# } #}}' +
+        '</li>';
+
 
     $(window).ready(function() {
         var downloadResources = {
             initialize: function() {
                 var self = this;
 
-                self.$stepCategory = $('#stepCategory');
-                self.$stepModel = $('#stepModel');
-                self.$stepResult = $('#stepResult');
+                
 
                 self._setEventListener();
-                // self.searchModelList(); //삭제예정
-                // self.searchFileList(); //삭제예정
             },
             searchModelList: function(formData) {
                 var self = this;
@@ -58,6 +105,14 @@
                 });
             },
             searchFileList: function(formData) {
+                var ajaxUrl = 
+
+                lgkorUI.requestAjaxDataPost(ajaxUrl, formData, function(result){
+                    _self.updateList(result.data);
+                    _self.requestInfo();
+                    $(window).trigger("toastshow", "선택한 제품이 삭제되었습니다.");
+                });
+
                 $.ajax({
                     url: '/lg5-common/data-ajax/support/downloadList.json',
                     method: 'POST',
@@ -105,29 +160,8 @@
                     }
                 });
             },
-            _reset: function() {
-
-            },
             _setEventListener: function() {
                 var self = this;
-
-                $('.category-carousel').find('button').on('click', function() {
-                    var data = $(this).data();
-
-                    $('#superCategory').text(data.superCategory);
-                    $('#category').text(data.category);
-
-                    $('#stepModel').show();
-                    $('#stepCategory').hide();
-
-                    $('.pagination').pagination();
-                    self.searchModelList(data);
-                   
-                    var offsetTop = $('.contents').get(0).offsetTop;
-                        
-                    $(window).scrollTop(offsetTop);
-                    $('.product-nav-wrap').addClass('show');
-                });
 
                 $('#modelContent').on('click', 'button', function() {
                     var $el = $(this),
@@ -145,11 +179,6 @@
                     $('html, body').animate({
                         scrollTop: offsetTop
                     }, 500);
-                });
-
-                self.$stepModel.find('.pagination').on('click', 'a', function(e) {
-                    e.preventDefault();
-                    self.searchModelList();
                 });
 
                 $('#btnSearch').on('click', function() {
