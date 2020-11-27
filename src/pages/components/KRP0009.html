@@ -4,6 +4,8 @@
         componentID: "KRP0009",
         isJScompile: true
     })
+    <script src="/lg5-common/js/components/KRP0018.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0018.min.css">
 <body>
     <script>
         var firstFilterList = []; //data[0].filterList 의 내용을 넣어주세요.
@@ -533,6 +535,15 @@
                 </section>
                 <!-- //component KRC0009 -->
             </div>
+            <!-- component -->
+            @@include('./common/partials/KRP0018.html')
+            <!-- // component -->
+            @@include('./common/modules/toast-message.html', {
+                 "messageArr": [
+                     {"message" : "2개까지 비교가능합니다. "},
+                     {"message" : "비교하기 기능이 초기화되었습니다. "}
+                 ]
+             }) 
         </div>
 <!--        @@include('./common/footer.html')-->
     </div>
