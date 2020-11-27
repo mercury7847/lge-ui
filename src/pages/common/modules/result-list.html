@@ -48,6 +48,11 @@
                         </a>
                     </div>
                     }
+                    @@if (context.desc) {
+                        <div class="desc">
+                            <span>@@desc</span>
+                        </div>
+                        }
                     @@if (context.hashtag) {
                     <div class="hashtag-wrap">
                         @@for ( var i=0; i < hashtag.length; i++ ) {
@@ -60,11 +65,7 @@
                         <span>케어십 가능</span>
                     </div>
                     }
-                    @@if (context.desc) {
-                        <div class="desc">
-                            <span>@@desc</span>
-                        </div>
-                        }
+                    
                     @@if (context.model) {
                     <div class="model">
                         <span>@@model</span>

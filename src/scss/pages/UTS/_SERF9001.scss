@@ -42,12 +42,20 @@
 
     .input-keyword-wrap {
         position: relative;
-        .input-keyword {
-            padding: 0;
-        }
+        padding: 0;
         .search-similar {
-            .search-result-text {
-                margin-bottom: 48px;
+            .similar-text {
+                color: $color-default;
+                @include font-large-2;
+                @include text-underline(1px,$color-default);
+                .search-word {
+                    font-weight: 700;
+                    color: $color-primary;
+                }
+                &:after {
+                    width: auto;
+                    background-image: none;
+                }
             }
         }
     }
@@ -78,7 +86,6 @@
         }
 
         .input-keyword-wrap {
-            padding: 0;
             .input-keyword {
                 position: fixed;
                 top: 75px;
@@ -215,28 +222,6 @@
         @include mobile {
             display: none !important;
         }
-        //.keyword-list {
-        //    margin-top: -4px;
-        //    li {
-        //        margin-top: 4px;
-        //        padding: 4px 12px;
-        //        &:first-child {
-        //            margin-top: 0;
-        //        }
-        //        a {
-        //            @include font-medium;
-        //        }
-        //        &.on,
-        //        &:hover,
-        //        &:focus {
-        //            border-radius: 17px;
-        //            background-color: $color-bg;
-        //            a {
-        //                font-weight: 700;
-        //            }
-        //        }
-        //    }
-        //}
     }
 
 

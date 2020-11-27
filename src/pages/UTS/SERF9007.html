@@ -11,27 +11,36 @@
             <!-- 통합검색 -->
             <div class="contents search">
                 <!-- 검색 영역 -->
-                @@include('./common/modules/search-input.html', {
+                @@include('./common/modules/search.html', {
                     "value" : "노크온 매직스페이스",
                     "related" : true,
                     "layer" : true
                 })
                 <!-- // 검색 영역 -->
                 <!-- 검색 결과 영역 -->
-                <div class="tabs-wrap btn-type ui_tab left">
-                    <ul class="tabs">
-                        <li><a href="#n">전체(210)</a></li>
-                        <li><a href="#n">제품(59)<em class="blind">선택됨</em></a></li>
-                        <li><a href="#n">케어솔루션(2)</a></li>
-                        <li><a href="#n">이벤트(5)</a></li>
-                        <li><a href="#n">스토리(18)</a></li>
-                        <li class="on"><a href="#n">케어용품/소모품(32)</a></li>
-                        <li><a href="#n">고객지원(28)</a></li>
-                    </ul>
+                <div class="search-tabs-wrap">
+                    <div class="tabs-wrap ui_tab ui_smooth_scroll">
+                        <ul class="tabs">
+                            <li><a href="#n">전체(210)</a></li>
+                            <li><a href="#n">제품/케어솔루션(59)</a></li>
+                            <li><a href="#n">이벤트/기획전(5)</a></li>
+                            <li><a href="#n">스토리(18)</a></li>
+                            <li class="on"><a href="#n">케어용품/소모품(32)<em class="blind">선택됨</em></a></li>
+                            <li><a href="#n">센터/매장(2)</a></li>
+                            <li><a href="#n">고객지원(28)</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="cont-wrap w-filter"><!-- 필터 포함 시 : .w-filter 추가 -->
-                    @@include('./common/modules/list-filter.html')
-                    <div class="search-result-wrap">
+                    @@include('./common/modules/list-filter.html', {
+                        "search" : true,
+                        "serviceLinkClass" : "care",
+                        "btmLink" : [
+                            {"text" : "매장 방문 예약", "img" : "/lg5-common/images/icons/ic-main-calender-48.svg"},
+                            {"text" : "매장 찾기", "img" : "/lg5-common/images/icons/icon-img02-64.svg"}
+                        ]
+                   })
+                    <div class="search-result-wrap result-care">
                         <div class="result-area">
                             <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->
                             <div class="btn-filter">
@@ -69,8 +78,8 @@
                                 </div>
                             </div>
                             
-                            <div class="result-list-wrap result-care">
-                                <div class="list-wrap">
+                            <div class="result-list-wrap">
+                                <div class="list-wrap care-list">
                                     <ul class="result-list">
                                         @@loop('./common/modules/result-list.html', [
                                             {
@@ -93,6 +102,15 @@
                                 </div>
                             </div> <!-- // 케어용품, 소모품-->
                         </div>
+                    </div>
+
+                    <div class="mobile-service-link care">
+                        <ul> 
+                            <li><a href="#n" class="btn-text"><span>매장 방문 예약</span><img src="/lg5-common/images/icons/icon-img02-64.svg" alt=""></a></li>
+                        
+                            <li><a href="#n" class="btn-text"><span>매장 찾기</span><img src="/lg5-common/images/icons/icon-img02-64.svg" alt=""></a></li>
+                            
+                        </ul>
                     </div>
 
                 </div>

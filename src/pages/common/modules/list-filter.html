@@ -3,7 +3,20 @@
         <div class="filter-head">
             <h2 class="tit">상세 필터</h2>
         </div>
+        
         <div class="plp-filter-wrap">
+
+            @@if (context.search) {
+                <div class="filter-top">
+                    <div class="filter-search-area">
+                        <div class="search-inner">
+                            <input type="text" class="inp-txt" placeholder="결과 내 검색" value="" title="검색어 입력">
+                            <button type="button" class="btn-sch"><span class="blind">검색</span></button> 
+                        </div>
+                    </div>
+                </div>
+            }
+
             <div class="list-acco list-acco-sorting ui_order_accordion" data-accord-group="filter" data-single-open="false" data-open-index="0">
                 <ul>
                     <li>
@@ -39,9 +52,6 @@
                         </div>
                     </li>
                 </ul>
-            </div>
-            <div class="btn-reset">
-                <button id="filterResetBtn" type="button"><span>초기화</span></button>
             </div>
             <!-- 필터항목 -->
             <div class="list-acco ui_filter_accordion" data-accord-group="filter" data-single-open="false" data-open-index="[0,1]">
@@ -225,13 +235,19 @@
 
                 </ul>
             </div>
+
+
+            <div class="btn-reset">
+                <button id="filterResetBtn" type="button"><span>초기화</span></button>
+            </div>
+
             
 
             @@if (context.btmLink) {
                 <div class="service-link @@serviceLinkClass">
                     <ul>
                         @@for ( var i=0; i < context.btmLink.length; i++) {
-                            <li><a href="#n" class="btn-text">`+btmLink[i].text+`</a></li>
+                            <li><a href="#n" class="btn-text"><span>`+btmLink[i].text+`</span><img src="`+btmLink[i].img+`" alt=""></a></li>
                         }
                     </ul>
                 </div>
