@@ -1,13 +1,21 @@
 .search-not-result {
     clear: both;
     .no-data {
-        padding: 38px 0 100px;
+        padding: 38px 0 80px;
+        
         p {
             font-weight: $font-weight-medium;
-            @include font-large-1;
-            color: #222;
+            @include font-small;
+            color: #767676;
+            &:before {
+                display: none;
+            }
             span {
                 display: block;
+                margin-bottom: 16px;
+                @include font-large-2;
+                color: #222;
+                font-weight: $font-weight-bold;
                 em {
                     font-weight: $font-weight-bold;
                     color: #ec455a;
@@ -16,17 +24,17 @@
         }
 
         @include mobile {
-            padding: 0 0 56px;
+            padding: 0 16px 56px;
             p {
                 padding-top: 45px;
                 font-size: 14px;
-                line-height: 18px;
-                &:before {
+                line-height: 22px;
+                /*&:before {
                     width: 34px;
                     height: 34px;
                     margin-left: -17px;
                     background-size: 34px;
-                }
+                }*/
                 span {
                     margin-bottom: 14px;
                     font-size: 16px;
