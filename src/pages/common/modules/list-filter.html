@@ -5,12 +5,7 @@
         </div>
         
         <div class="plp-filter-wrap">
-            @@if (!context.search) {
-                <div class="btn-reset">
-                    <button id="filterResetBtn" type="button"><span>초기화</span></button>
-                </div>
-            } 
-            
+
             @@if (context.search) {
                 <div class="filter-top">
                     <div class="filter-search-area">
@@ -240,6 +235,12 @@
 
                 </ul>
             </div>
+
+
+            <div class="btn-reset">
+                <button id="filterResetBtn" type="button"><span>초기화</span></button>
+            </div>
+
             
 
             @@if (context.btmLink) {
