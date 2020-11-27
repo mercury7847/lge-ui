@@ -38,8 +38,17 @@
         max-width: (1146px + 80px);
         margin: 0 auto;
         padding: 64px 40px;
+        .inner {
+            overflow: hidden;
+            max-height: 108px;
+        }
         .btn-moreview {
             margin-top: 20px;
+        }
+        @include mobile {
+            .inner {
+                max-height: 100px;
+            }
         }
     }
     .search-banner {
