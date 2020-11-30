@@ -68,6 +68,14 @@
                 width:auto;
                 padding:0 16px;
             }
+            .filters {
+                margin:64px 0 48px;
+                @include mobile {
+                    margin:0 -16px 40px;
+                    padding:24px 16px 32px;
+                    border-bottom:12px solid #f4f4f4;
+                }
+            }
         }
     }
     .section-wrap {
@@ -270,11 +278,6 @@
                         margin-top:24px;
                     }
                 }
-            }
-
-            // term-filter
-            .term-filter.type2 {
-                margin:64px 0 48px;
             }
         }
     }

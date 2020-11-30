@@ -180,7 +180,6 @@
             }
             @include mobile {
                 height:46px;
-                border-radius:4px;
                 font-size:13px;
                 line-height:21px;
             }
@@ -710,9 +709,6 @@
         @include font-medium;
         vertical-align:top;
         resize:none;
-        @include mobile {
-            border-radius:4px;
-        }
 
         &::-webkit-input-placeholder,
         &:-moz-placeholder,
@@ -768,9 +764,6 @@
             display:table-cell;
             border-right:none;
             border-radius:8px 0 0 8px;
-            @include mobile {
-                border-radius:4px 0 0 4px;
-            }
         }
         .cell {
             display:table-cell;
@@ -779,9 +772,6 @@
             border-left:none;
             border-radius:0 8px 8px 0;
             vertical-align:middle;
-            @include mobile {
-                border-radius:0 4px 4px 0;
-            }
         }
         input:focus + .cell {
             border-color:#EC455A;
@@ -1373,6 +1363,10 @@ $input: (chk, rdo);
                         font-weight:500;
                         &::before, &::after {
                             display:none;
+                        }
+                        @include mobile {
+                            font-size:14px;
+                            line-height:22px;
                         }
                     }
                     &:checked+label {
