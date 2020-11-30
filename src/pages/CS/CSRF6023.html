@@ -11,106 +11,107 @@
         @@include('./common/header.html')
 
         <div class="container">
-            @@include('./common/support/page-visual.html', {
-                'title': '문의/예약 결과 조회',
-                'desc': '예약하신 모든 상담/서비스 내역을 조회하실 수 있습니다. 에어컨 이외 제품의 설치/철거 서비스 신청 확인은 <strong>㈜판토스 홈페이지</strong>를 통해 확인해 주세요.'
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '문의/예약 결과 조회'
             })
             <div class="contents support reservation">
-                <div class="contents-inner">
+                <div class="cont-wrap">
 
-                    <div class="double-section">
-                        <div class="sections">
-                            <div class="section">
-                                <div class="tit-wrap">
-                                    <h3 class="tit">접수번호로 빠르게!</h3>        
-                                </div>
-                                <form action="">
-                                    <div class="form-wrap">
-                                        <div class="forms">
-                                            <div class="field-item block">
+                    <div class="section">
+                        <div class="double-section">
+                            <div class="sections input-info">
+                                <div class="item">
+                                    <div class="tit-wrap">
+                                        <h3 class="tit">접수번호로 빠르게!</h3>        
+                                    </div>
+                                    <form action="">
+                                        <div class="form-wrap">
+                                            <div class="forms block-type">
+                                                <div class="field-item block">
+                                                    <div class="tit">
+                                                        <label for="regist-name" class="req">이름</label>
+                                                    </div>
+                                                    <div class="conts">
+                                                        <div class="box">
+                                                            <div class="input-wrap">
+                                                                <input type="text" name="regist-search" id="regist-name" placeholder="이름을 입력해주세요." data-msg-target=".err-msg" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="forms block-type">
                                                 <div class="tit">
-                                                    <label for="regist-name">이름</label>
+                                                    <label for="regist-number" class="req">접수 번호</label>
                                                 </div>
                                                 <div class="conts">
                                                     <div class="box">
                                                         <div class="input-wrap">
-                                                            <input type="text" name="regist-search" id="regist-name" placeholder="이름을 입력해주세요." data-msg-target=".err-msg" required>
+                                                            <input type="number" name="regist-search" id="regist-number" placeholder="접수 번호를 입력해주세요." data-msg-target=".err-msg" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="forms">
-                                            <div class="tit">
-                                                <label for="regist-number">접수 번호</label>
-                                            </div>
-                                            <div class="conts">
-                                                <div class="box">
-                                                    <div class="input-wrap">
-                                                        <input type="number" name="regist-search" id="regist-number" placeholder="접수 번호를 입력해주세요." data-msg-target=".err-msg" required>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="btn-group center">
+                                            <button type="submit" class="btn pink"><span>확인</span></button>
                                         </div>
-                                    </div>
-                                    <div class="btn-group center">
-                                        <button type="submit" class="btn pink"><span>확인</span></button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="section">
-                                <div class="tit-wrap">
-                                    <h3 class="tit">휴대전화 인증으로 한번에!</h3>        
+                                    </form>
                                 </div>
-                                <form action="">
-                                    <div class="form-wrap">
-                                        <div class="forms">
-                                            <div class="tit">
-                                                <label for="certi-phone-name">이름</label>
+
+                                <div class="item">
+                                    <div class="tit-wrap">
+                                        <h3 class="tit">휴대전화 인증으로 한번에!</h3>        
+                                    </div>
+                                    <form action="">
+                                        <div class="form-wrap">
+                                            <div class="forms block-type">
+                                                <div class="tit">
+                                                    <label for="certi-phone-name" class="req">이름</label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="box">
+                                                        <div class="input-wrap">
+                                                            <input type="text" name="certi-phone" id="certi-phone-name" placeholder="이름을 입력해주세요." data-msg-target=".err-msg" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="conts">
-                                                <div class="box">
+                                            <div class="forms block-type">
+                                                <div class="tit">
+                                                    <label for="certi-phone-number" class="req">휴대전화</label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="box">
+                                                        <div class="input-wrap">
+                                                            <input type="tel" name="certi-phone" id="certi-phone-number" placeholder="휴대전화 번호를 입력해주세요." maxlength="11"  data-msg-target=".err-msg" required>
+                                                        </div>
+                                                        <div class="cell">
+                                                            <button type="button" class="btn"><span>인증 번호 발송</span></button>
+                                                        </div>
+                                                    </div>
                                                     <div class="input-wrap">
-                                                        <input type="text" name="certi-phone" id="certi-phone-name" placeholder="이름을 입력해주세요." data-msg-target=".err-msg" required>
+                                                        <input type="number" name="certi-phone" id="certi-number" placeholder="인증번호를 입력해주세요."  data-msg-target=".err-msg" required>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="forms">
-                                            <div class="tit">
-                                                <label for="certi-phone-number" class="req">휴대전화</label>
-                                            </div>
-                                            <div class="conts">
-                                                <div class="box">
-                                                    <div class="input-wrap">
-                                                        <input type="tel" name="certi-phone" id="certi-phone-number" placeholder="휴대전화 번호를 입력해주세요." maxlength="11"  data-msg-target=".err-msg" required>
-                                                    </div>
-                                                    <div class="cell">
-                                                        <button type="button" class="btn"><span>인증 번호 발송</span></button>
-                                                    </div>
-                                                </div>
-                                                <div class="input-wrap">
-                                                    <input type="number" name="certi-phone" id="certi-number" placeholder="인증번호를 입력해주세요."  data-msg-target=".err-msg" required>
-                                                </div>
-                                            </div>
+                                        <div class="btn-group center">
+                                            <button type="submit" class="btn pink"><span>확인</span></button>
                                         </div>
-                                    </div>
-                                    <div class="btn-group center">
-                                        <button type="submit" class="btn pink"><span>조회</span></button>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
+                            @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
+                                "bulletTxt" : [
+                                    "이메일 문의는 접수번호로만 조회 가능합니다. ",
+                                    "서비스 이용 내역의 조회 가능 기간은 최대 5년이며 비회원인 경우 1년간 조회 가능합니다. (단, 이메일 문의 조회는 답변메일 발송일로부터 1개월간 확인 가능합니다.)",
+                                    "휴대전화 인증번호가 수신되지 않는 경우 휴대폰에 1544-7777 번호가 스팸 등록되었는지 여부를 확인해주세요.",
+                                    "회원가입 전, 접수한 문의사항은 접수번호나 휴대전화 인증으로만 조회가능 합니다."
+                                ]
+                            })
                         </div>
-                        @@include('./common/modules/bullet-list.html', {
-                            "topBorder" : true,
-                            "bulletTxt" : [
-                                "이메일 문의는 접수번호로만 조회 가능합니다. ",
-                                "서비스 이용 내역의 조회 가능 기간은 최대 5년이며 비회원인 경우 1년간 조회 가능합니다. (단, 이메일 문의 조회는 답변메일 발송일로부터 1개월간 확인 가능합니다.)",
-                                "휴대전화 인증번호가 수신되지 않는 경우 휴대폰에 1544-7777 번호가 스팸 등록되었는지 여부를 확인해주세요.",
-                                "회원가입 전, 접수한 문의사항은 접수번호나 휴대전화 인증으로만 조회가능 합니다."
-                            ]
-                        })
                     </div>
 
                 </div>

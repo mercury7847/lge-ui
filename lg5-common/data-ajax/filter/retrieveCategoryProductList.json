@@ -42,7 +42,7 @@
                 "reviewRatingStar": "0",
                 "reviewRatingStar2": "0.0",
                 "reviewRatingPercent": "0",
-                "modelRollingImgList": "/us/images/refrigerators/md07515952/350.jpg",
+                "modelRollingImgList": "/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg",
                 "smallModelRollingImgList": "/us/images/refrigerators/md07515952/260.jpg",
                 "sortBy": null,
                 "siblingGroupCode": "LRBNC1104S",
@@ -135,9 +135,9 @@
                 "discountedRate": null,
                 "rDiscountedPrice": null,
                 "rDiscountedPriceCent": null,
-                "rPrice": null,
+                "rPrice": "5200550",
                 "rPriceCent": null,
-                "rPromoPrice": null,
+                "rPromoPrice": "4420550",
                 "rPromoPriceCent": null,
                 "addToCartFlag": "N",
                 "findTheDealerFlag": "N",
@@ -154,7 +154,7 @@
                 "reviewRatingStar": "0",
                 "reviewRatingStar2": "0.0",
                 "reviewRatingPercent": "0",
-                "modelRollingImgList": "/us/images/refrigerators/md07516353/350.jpg",
+                "modelRollingImgList": "/lg5-common/images/dummy/@img-product.jpg",
                 "smallModelRollingImgList": "/us/images/refrigerators/md07516353/260.jpg",
                 "sortBy": null,
                 "siblingGroupCode": "LRONC0705V",
@@ -181,12 +181,26 @@
                 "inquiryToBuyUrl": null,
                 "retailerPricingFlag": "N",
                 "retailerPricingText": "See Retailer for Pricing",
-                "siblingModels": [{
-                    "modelName": "LRONC0705V",
-                    "siblingCode": "PlatinumSilver",
-                    "siblingValue": "Platinum Silver",
-                    "modelId": "MD07516353"
-                }],
+                "siblingModels": [
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "stainless-steel",
+                        "siblingValue": "stainless-steel",
+                        "modelId": "MD07516355"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "lavender",
+                        "siblingValue": "lavender",
+                        "modelId": "MD07516353"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "MC_K62_SkyBlue",
+                        "siblingValue": "MC_K62_SkyBlue",
+                        "modelId": "MD0756516353"
+                    }
+                ],
                 "promotionText": null,
                 "modelType": "G",
                 "bundlePlpDisplayFlag": "Y",
@@ -195,7 +209,39 @@
                 "salesModelCode": "LRONC0705V",
                 "salesSuffixCode": "APZCNA0",
                 "thinqTotalCount": 41,
-                "buName1": "HA"
+                "buName1": "HA",
+                "promotionBadge":[
+                    {
+                        "image": "/lg5-common/images/dummy/flag-60x66-1.png",
+                        "context": "으뜸효율 10%"
+                    },
+                    {
+                        "image": "/lg5-common/images/dummy/flag-60x66-2.png",
+                        "context": "코리아 세일 페스타"
+                    }
+                ],
+                "specInfos": [
+                    {
+                        "specName": "용량",
+                        "specInfo": "840L"
+                    },
+                    {
+                        "specName": "전체크기(WxHxD)",
+                        "specInfo": "912 x 1,790 x 927 mm"
+                    },
+                    {
+                        "specName": "형태",
+                        "specInfo": "노크온 매직스페이스"
+                    },
+                    {
+                        "specName": "패턴",
+                        "specInfo": "미드나잇"
+                    },
+                    {
+                        "specName": "",
+                        "specInfo": "케어십 가능"
+                    }
+                ]
             },
             {
                 "modelId": "MD07514557",
@@ -234,7 +280,7 @@
                 "reviewRatingStar": "0",
                 "reviewRatingStar2": "0.0",
                 "reviewRatingPercent": "0",
-                "modelRollingImgList": "/us/images/refrigerators/md07514557/350.jpg,/us/images/refrigerators/md07514557/thumbnail/3501.jpg,/us/images/refrigerators/md07514557/thumbnail/3502.jpg,/us/images/refrigerators/md07514557/thumbnail/3503.jpg,/us/images/refrigerators/md07514557/thumbnail/3504.jpg,/us/images/refrigerators/md07514557/thumbnail/3505.jpg",
+                "modelRollingImgList": "/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg",
                 "smallModelRollingImgList": "/us/images/refrigerators/md07514557/260.jpg,/us/images/refrigerators/md07514557/thumbnail/2601.jpg,/us/images/refrigerators/md07514557/thumbnail/2602.jpg,/us/images/refrigerators/md07514557/thumbnail/2603.jpg,/us/images/refrigerators/md07514557/thumbnail/2604.jpg,/us/images/refrigerators/md07514557/thumbnail/2605.jpg",
                 "sortBy": null,
                 "siblingGroupCode": "LRFCS25D3",
@@ -261,12 +307,80 @@
                 "inquiryToBuyUrl": null,
                 "retailerPricingFlag": "N",
                 "retailerPricingText": "See Retailer for Pricing",
-                "siblingModels": [{
-                    "modelName": "LRFCS25D3S",
-                    "siblingCode": "Print-Proof-Stainless-Steel",
-                    "siblingValue": "Print Proof Stainless Steel",
-                    "modelId": "MD07514557"
-                }],
+                "siblingModels": [
+                    {
+                        "modelName": "LRFCS25D3S",
+                        "siblingCode": "Print-Proof-Stainless-Steel",
+                        "siblingValue": "Print Proof Stainless Steel",
+                        "modelId": "MD07514557"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "stainless-steel",
+                        "siblingValue": "stainless-steel",
+                        "modelId": "MD07516355"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "lavender",
+                        "siblingValue": "lavender",
+                        "modelId": "MD07516353"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "MC_K62_SkyBlue",
+                        "siblingValue": "MC_K62_SkyBlue",
+                        "modelId": "MD0756516353"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "stainless-steel",
+                        "siblingValue": "stainless-steel",
+                        "modelId": "MD07516355"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "lavender",
+                        "siblingValue": "lavender",
+                        "modelId": "MD07516353"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "MC_K62_SkyBlue",
+                        "siblingValue": "MC_K62_SkyBlue",
+                        "modelId": "MD0756516353"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "stainless-steel",
+                        "siblingValue": "stainless-steel",
+                        "modelId": "MD07516355"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "stainless-steel",
+                        "siblingValue": "stainless-steel",
+                        "modelId": "MD07516355"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "lavender",
+                        "siblingValue": "lavender",
+                        "modelId": "MD07516353"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "MC_K62_SkyBlue",
+                        "siblingValue": "MC_K62_SkyBlue",
+                        "modelId": "MD0756516353"
+                    },
+                    {
+                        "modelName": "LRONC0705V",
+                        "siblingCode": "stainless-steel",
+                        "siblingValue": "stainless-steel",
+                        "modelId": "MD07516355"
+                    }
+                ],
                 "promotionText": "Refrigerator Deals",
                 "modelType": "G",
                 "bundlePlpDisplayFlag": "Y",
@@ -275,7 +389,35 @@
                 "salesModelCode": "LRFCS25D3S",
                 "salesSuffixCode": "ASTCNA0",
                 "thinqTotalCount": 41,
-                "buName1": "HA"
+                "buName1": "HA",
+                "promotionBadge":[
+                    {
+                        "image": "/lg5-common/images/dummy/flag-60x66-3.png",
+                        "context": "아카데미 페스티벌"
+                    }
+                ],
+                "specInfos": [
+                    {
+                        "specName": "용량",
+                        "specInfo": "840L"
+                    },
+                    {
+                        "specName": "전체크기(WxHxD)",
+                        "specInfo": "912 x 1,790 x 927 mm"
+                    },
+                    {
+                        "specName": "형태",
+                        "specInfo": "노크온 매직스페이스"
+                    },
+                    {
+                        "specName": "패턴",
+                        "specInfo": "미드나잇"
+                    },
+                    {
+                        "specName": "",
+                        "specInfo": "케어십 가능"
+                    }
+                ]
             }, 
             {
                 "modelId": "MD07515888",
@@ -314,7 +456,7 @@
                 "reviewRatingStar": "0",
                 "reviewRatingStar2": "0.0",
                 "reviewRatingPercent": "0",
-                "modelRollingImgList": "/us/images/refrigerators/md07515888/350.jpg",
+                "modelRollingImgList": "/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg",
                 "smallModelRollingImgList": "/us/images/refrigerators/md07515888/260.jpg",
                 "sortBy": null,
                 "siblingGroupCode": "LROFC0605V",
@@ -394,7 +536,7 @@
                 "reviewRatingStar": "2",
                 "reviewRatingStar2": "2.5",
                 "reviewRatingPercent": "50",
-                "modelRollingImgList": "/us/images/refrigerators/md07507331/350.jpg",
+                "modelRollingImgList": "/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg",
                 "smallModelRollingImgList": "/us/images/refrigerators/md07507331/260.jpg",
                 "sortBy": null,
                 "siblingGroupCode": null,
@@ -469,7 +611,7 @@
                 "reviewRatingStar": "0",
                 "reviewRatingStar2": "0.0",
                 "reviewRatingPercent": "0",
-                "modelRollingImgList": "/us/images/refrigerators/md07505844/350.jpg",
+                "modelRollingImgList": "/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg",
                 "smallModelRollingImgList": "/us/images/refrigerators/md07505844/260.jpg",
                 "sortBy": null,
                 "siblingGroupCode": "LRSPS2706V",
@@ -549,7 +691,7 @@
                 "reviewRatingStar": "0",
                 "reviewRatingStar2": "0.0",
                 "reviewRatingPercent": "0",
-                "modelRollingImgList": "/us/images/refrigerators/md07504477/350.jpg,/us/images/refrigerators/md07504477/thumbnail/350-1.jpg,/us/images/refrigerators/md07504477/thumbnail/350-2.jpg,/us/images/refrigerators/md07504477/thumbnail/350-3.jpg,/us/images/refrigerators/md07504477/thumbnail/350-4.jpg,/us/images/refrigerators/md07504477/thumbnail/350-5.jpg",
+                "modelRollingImgList": "/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg",
                 "smallModelRollingImgList": "/us/images/refrigerators/md07504477/260.jpg,/us/images/refrigerators/md07504477/thumbnail/260-1.jpg,/us/images/refrigerators/md07504477/thumbnail/260-2.jpg,/us/images/refrigerators/md07504477/thumbnail/260-3.jpg,/us/images/refrigerators/md07504477/thumbnail/260-4.jpg,/us/images/refrigerators/md07504477/thumbnail/260-5.jpg",
                 "sortBy": null,
                 "siblingGroupCode": null,
@@ -624,7 +766,7 @@
                 "reviewRatingStar": "0",
                 "reviewRatingStar2": "0.0",
                 "reviewRatingPercent": "0",
-                "modelRollingImgList": "/us/images/refrigerators/md07504492/350-Basic.jpg",
+                "modelRollingImgList": "/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg",
                 "smallModelRollingImgList": "/us/images/refrigerators/md07504492/260-Basic.jpg",
                 "sortBy": null,
                 "siblingGroupCode": null,
@@ -699,7 +841,7 @@
                 "reviewRatingStar": "0",
                 "reviewRatingStar2": "0.0",
                 "reviewRatingPercent": "0",
-                "modelRollingImgList": "/us/images/refrigerators/md07504218/LRMVC2306D-Basic-350.jpg",
+                "modelRollingImgList": "/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg",
                 "smallModelRollingImgList": "/us/images/refrigerators/md07504218/LRMVC2306D-Basic-260.jpg",
                 "sortBy": null,
                 "siblingGroupCode": "LRMVC2306",
@@ -784,7 +926,7 @@
                 "reviewRatingStar": "4",
                 "reviewRatingStar2": "3.5",
                 "reviewRatingPercent": "70",
-                "modelRollingImgList": "/us/images/refrigerators/md07504171/LRMVS3006S-Basic-350.jpg",
+                "modelRollingImgList": "/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg",
                 "smallModelRollingImgList": "/us/images/refrigerators/md07504171/LRMVS3006S-Basic-260.jpg",
                 "sortBy": null,
                 "siblingGroupCode": "lrmvs3006",
@@ -869,7 +1011,7 @@
                 "reviewRatingStar": "0",
                 "reviewRatingStar2": "0.0",
                 "reviewRatingPercent": "0",
-                "modelRollingImgList": "/us/images/refrigerators/md07502078/350.jpg",
+                "modelRollingImgList": "/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg",
                 "smallModelRollingImgList": "/us/images/refrigerators/md07502078/260.jpg",
                 "sortBy": null,
                 "siblingGroupCode": "URETC1408",
@@ -949,7 +1091,7 @@
                 "reviewRatingStar": "2",
                 "reviewRatingStar2": "2.0",
                 "reviewRatingPercent": "40",
-                "modelRollingImgList": "/us/images/refrigerators/md07501886/350.jpg",
+                "modelRollingImgList": "/lg5-common/images/dummy/@img-product.jpg,/lg5-common/images/dummy/@img-product2.jpg",
                 "smallModelRollingImgList": "/us/images/refrigerators/md07501886/260.jpg",
                 "sortBy": null,
                 "siblingGroupCode": "lmwc23626",

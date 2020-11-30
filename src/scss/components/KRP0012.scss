@@ -33,6 +33,7 @@
     }
 
     .product-simple-info {
+        display:none;
         position:absolute;
         left:0;
         top:50%;
@@ -101,8 +102,9 @@
             // padding:20px 20px;
         }
         .tab-menu-belt {
-            float:right;
-            width:800px;
+            display:table;
+            table-layout:fixed;
+            width:100%;
             margin:0 auto;
             // padding:16px 0;
             height:auto;
@@ -113,6 +115,7 @@
             //     width:470px;
             // }
             @include mobile {
+                display:block;
                 width:100%;
                 max-width:100%;
                 // margin-top:20px;
@@ -123,8 +126,8 @@
                 text-align:left;
             }
             .tab-menu {
-                display:inline-block;
-                width:160px;
+                display:table-cell;
+                max-width:160px;
                 vertical-align:middle;
                 // margin-left:8px;
                 font-size:0;
@@ -175,6 +178,7 @@
             }
         }
         .extra-area {
+            display:none;
             position:absolute;
             top:50%;
             right:0;
@@ -201,37 +205,35 @@
             }
         } 
     }
-    &.anchor {
-        .inner {
-            max-width:1380px;
-        }
-        .contents-menu-list .tab-menu-belt {
-            width:100%;
-            display:table;
-            table-layout:fixed;
+    &.fixed {
+        .product-simple-info {
+            display:block;
             @include mobile {
                 display:block;
             }
-            .tab-menu {
-                display:table-cell;
-                &.active .linker {
-                    color:#222;
-                    font-weight:bold;
+        }
+        .contents-menu-list
+            {
+            .tab-menu-belt {
+                float:right;
+                width:800px;
+                &.type-btn {
+                    margin-right:115px;
+                    text-align:right;
+                    @include mobile {
+                        margin-right:0;
+                        text-align:left;
+                    }
                 }
-                .linker {
-                    display:block;
-                    color:#ccc;
+                .tab-menu {
+                    width:160px;
+                    @include mobile {
+                        width:auto;
+                    }
                 }
             }
-        }
-    }
-    &.sticky {
-        .contents-menu-list .tab-menu-belt.type-btn {
-            margin-right:115px;
-            text-align:right;
-            @include mobile {
-                margin-right:0;
-                text-align:left;
+            .extra-area {
+                display:block;
             }
         }
         @media screen and (min-width: 768px) and (max-width: 1284px) {
@@ -243,12 +245,15 @@
                     line-height:72px;
                 }
             }
-            .contents-menu-list .tab-menu-belt.type-btn {
-                float:none;
-                margin:0;
-                .tab-menu .linker {
-                    height:64px;
-                    line-height:64px;
+            .contents-menu-list .tab-menu-belt {
+                display:block;
+                &.type-btn {
+                    float:none;
+                    margin:0;
+                    .tab-menu .linker {
+                        height:64px;
+                        line-height:64px;
+                    }
                 }
             }
             .extra-area {

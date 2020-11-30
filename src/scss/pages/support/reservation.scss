@@ -578,58 +578,69 @@
         }
     }
 
-    .engineer-profile-box{
+    .reservation-info-box{
+        margin:48px 0;
         background-color:#222;
+        color:#fff;
 
-        .engineer-profile{
+        .reservation-area{
+            display:flex;
+            align-items: center;
             justify-content: space-between;
-            color:#fff;
             margin:0 auto;
             padding:24px 40px;
             max-width:1460px;
 
-            &:after{
-                content:none;
-            }
-
-            .engineer-info{
+            .reservation-info{
                 display:flex;
-                align-items: center;
-            }
+                align-items:center;
 
-            .engineer-img{
-                width:120px;
-                height:120px;
-                border-radius:10px;
-                margin-right:88px;
-            }
+                .reservation-info-desc{
+                    @include font-medium;
+                    font-weight:normal;
+                    text-align:left;
+                    margin-left:0;
 
-            .engineer-desc{
-                @include font-medium;
-                font-weight:normal;
-                text-align:left;
-                margin-left:0;
-                .eng-name{
-                    @include font-large-1;
-                    display:block;
-                    margin-bottom:5px;
+                    .txt-block{
+                        display:block;
+                    }
                 }
             }
+        }
+        .reservation-num{
+            @include font-large; 
+        }
 
-            .engineer-reservation-num{
-                @include font-large; 
-            }
+        .email-img{
+            width:60px;
+            height:60px;
+            background:url(/lg5-common/images/icons/ic-usp-mailcounsel-80.svg) no-repeat center;
+            background-size:60px;
+            margin-right:57px;
+        }
+
+        .engineer-img{
+            width:120px;
+            height:120px;
+            border-radius:10px;
+            margin-right:88px;
+        }
+
+        .eng-name{
+            @include font-large-1;
+            margin-bottom:5px;
         }
     }
+    
 
     /* support tablet */
     @media (max-width: 1024px){
         .contents-inner{
             border-top:0;
         }
-        .engineer-profile-box{
+        .reservation-info-box{
             padding:0 5%;
-            .engineer-profile{
+            .reservation-area{
                 flex-flow: column;
                 padding:24px 0;
                 .engineer-info{
@@ -740,6 +751,32 @@
 
                 .select-engineer .btn{
                     width:auto;
+                }
+            }
+        }
+
+        .reservation-info-box{
+            margin-bottom:0;
+        }
+        .reservation-info-box.type-email{
+            .reservation-area{
+                flex-flow:column-reverse;
+                .email-img{
+                    display:none;
+                }
+
+                .reservation-info-desc{
+                    margin-top:16px;
+                    text-align:center;
+                    strong{font-weight:normal;}
+                }
+
+                .reservation-num{
+                    .num-tit{
+                        background:url(/lg5-common/images/icons/ic-usp-mailcounsel-80.svg) no-repeat left center;
+                        background-size:40px;
+                        padding:8px 0 8px 56px;
+                    }
                 }
             }
         }

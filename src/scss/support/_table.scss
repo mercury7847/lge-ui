@@ -2,12 +2,23 @@
 
 .tbl {
     width:100%;
-    border-top:1px solid #ddd;
+    border-top:2px solid #222;
     &.scroll-x {
         overflow-x: auto;
         @include mobile {
             width:auto;
             max-width:755px;
+        }
+        table {
+            table-layout: fixed;
+        }
+    }
+    .textEllipsis {
+        @include textEllipsis;
+    }
+    .textEllipsisClamp {
+        &2 {
+            @include textEllipsisClamp(2);
         }
     }
     &-list {
@@ -16,7 +27,7 @@
         border-collapse:collapse;
         border-spacing:0;
         th, td {
-            padding:16px 24px;
+            padding:12px 24px;
             font-weight:400;
             border-bottom:1px solid #ddd;
             border-left:1px solid #ddd;
@@ -25,14 +36,27 @@
             }
         }
         th {
-            color:#616161;
-            font-size:14px;
+            color:#222;
+            font-size:16px;
+            font-weight: 500;
             line-height:20px;
             background-color:#f4f4f4;
         }
         td {
-            color:#222;
+            color:#767676;
             line-height:24px;
+        }
+        &.type-A {
+            th,
+            td {
+                border-left: transparent;
+            }
+            th {
+                padding: 16px 24px;
+            }
+            td {
+                padding: 24px;
+            }
         }
         @include mobile {
             th, td {

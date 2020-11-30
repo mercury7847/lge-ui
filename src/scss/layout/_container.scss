@@ -134,20 +134,23 @@
             }
             .tit-wrap {
                 position:relative;
-                padding-bottom:20px;
                 margin-bottom:48px;
-                border-bottom:2px solid #222;
                 .tit {
                     color:#222;
                     font-size:20px;
                     font-weight:700;
                     line-height:30px;
+                    padding-bottom:16px;
+                    border-bottom:2px solid #222;
                     .point {
                         color:#ec455a;
                     }
                     .tooltip-wrap {
                         padding-top:5px;
-                    }   
+                    }
+                    &-text {
+                        margin-top: 12px;
+                    }
                 }
             }
             @include mobile {
@@ -197,6 +200,7 @@
     text-align:center;
     @include mobile {
         padding:40px 0;
+        width: calc(100vw - 40px);
     }
     &.mg-type {
         padding:0;

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTS/UTS"],
+    })
+    <!-- pageJS: ["search/search"] -->
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <!-- 통합검색 -->
+            <div class="contents search" data-url-timer="/lg5-common/data-ajax/search/searchTimer.json" data-url-search="/lg5-common/data-ajax/search/search_all.json" data-url-wish="#">
+                <!-- 검색 영역 -->
+                @@include('./common/modules/search.html', {
+                    "value" : "노크온 매직스페이스",
+                    "related" : true,
+                    "layer" : true,
+                    "similar" : true,
+                    "confirm" : true
+                })
+                <!-- // 검색 영역 -->
+                <!-- 검색 결과 영역 -->
+                <div class="search-tabs-wrap">
+                    <div class="tabs-wrap ui_tab ui_smooth_scroll">
+                        <ul class="tabs">
+                            <li class="on" data-label="전체"><a href="#all">전체(210)<em class="blind">선택됨</em></a></li>
+                            <li data-label="제품"><a href="#product" data-url-search="/lg5-common/data-ajax/search/search_product.json">제품/케어솔루션(59)</a></li>
+                            <li data-label="이벤트"><a href="#event" data-url-search="/lg5-common/data-ajax/search/search_event.json">이벤트/기획전(5)</a></li>
+                            <li data-label="스토리"><a href="#story" data-url-search="/lg5-common/data-ajax/search/search_story.json">스토리(18)</a></li>
+                            <li data-label="케어용품/소모품"><a href="#additional" data-url-search="/lg5-common/data-ajax/search/search_additional.json">케어용품/소모품(32)</a></li>
+                            <li data-label="센터/매장"><a href="#" data-url-search="/lg5-common/data-ajax/search/search_additional.json">센터/매장(2)</a></li>
+                            <li data-label="고객지원"><a href="#customer">고객지원(28)</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- pc - height:108px; / mobile - height:100px; -->
+                <div class="search-result-category">
+                    <div class="inner">
+                        <ul class="rounded-list">
+                            <li><a href="#" class="rounded"><span class="text">제품&gt;에어컨/에어케어</span></a></li>
+                            <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV</span></a></li>
+                            <li><a href="#" class="rounded"><span class="text">제품&gt;TV/AV&gt;OLED TV</span></a></li>
+                            <li><a href="#" class="rounded"><span class="text">고객지원&gt;경로&gt;출장서비스예약</span></a></li>
+                            <li><a href="#" class="rounded"><span class="text">제품&gt;TV/AV&gt;OLED TV</span></a></li>
+                            <li><a href="#" class="rounded"><span class="text">고객지원&gt;경로&gt;출장서비스예약</span></a></li>
+                            <li><a href="#" class="rounded"><span class="text">제품&gt;TV/AV&gt;OLED TV</span></a></li>
+                            <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV&gt;OLED TV</span></a></li>
+                            <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV&gt;OLED TV</span></a></li>
+                            <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV</span></a></li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn-moreview block"><span>더보기</span></a>
+                </div>
+                <div class="search-banner">
+                    <a href="#n">
+                        <img data-pc-src="/lg5-common/images/UTS/@sample-banner.jpg" data-m-src="/lg5-common/images/UTS/@sample-banner-m.jpg" alt="">
+                        <div class="text-area">
+                            <strong class="title">새출발을 위한 혼수 지원, 2020 올 뉴 웨딩 페스타</strong>
+                            <span class="sub-title">2020 올 뉴 웨딩 페스타 행사 모델 동시 구매 시, 최대 250만원 상당 혜택!</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="cont-wrap"><!-- 필터 포함 시 : .w-filter 추가 -->
+                    <!-- (@@)include('./common/modules/list-filter.html') -->
+                    <div class="search-result-wrap all" id="all">
+                        <div class="result-list-wrap result-product">
+                            <div class="list-head">
+                                <h2 class="title">제품/렌탈 케어솔루션</h2>
+                                <div class="btn-area">
+                                    <a href="#product" class="btn-link"><span>더보기</span></a>
+                                </div>
+                            </div>
+                            <div class="list-wrap">
+                                <ul class="result-list">
+                                    @@loop('./common/modules/result-list.html', [
+                                        {
+                                            "itemClass" : "",
+                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.png' alt='으뜸효율 10%'></span>",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "flags" : ["베스트", "신제품"],
+                                            "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                            "sku"  : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "hashtag" : ["#가전", "#여름가전"],
+                                            "careflag" : true,
+                                            "priceInfo" : true,
+                                            "priceSales" : true,
+                                            "priceRental" : true
+                                        }, {
+                                            "itemClass" : "",
+                                            "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.png' alt='으뜸효율 10%'></span>",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "flags" : ["베스트", "신제품"],
+                                            "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
+                                            "sku"  : true,
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "hashtag" : ["#가전", "#여름가전"],
+                                            "careflag" : true,
+                                            "priceInfo" : true,
+                                            "priceSales" : true,
+                                            "priceRental" : true
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                        </div> <!-- // 제품-->
+
+                        <div class="result-list-wrap result-event">
+                            <div class="list-head">
+                                <h2 class="title">이벤트/기획전</h2>
+                                <div class="btn-area">
+                                    <a href="#product" class="btn-link"><span>더보기</span></a>
+                                </div>
+                            </div>
+                            <div class="list-wrap">
+                                <ul class="result-list">
+                                    @@loop('./common/modules/result-list.html', [
+                                        {
+                                            "itemClass" : "item-type2",
+                                            "img" : "/lg5-common/images/dummy/@img-search.jpg",
+                                            "flagEnd" : true,
+                                            "flags" : ["매장", "구매혜택", "TV", "프로젝터"],
+                                            "tit" : "2020 NEW <span class='search-word'>올레드</span>와 함께하는 홈라이프",
+                                            "date" : "2020.08.01 ~ 2020.11.30"
+                                        } , {
+                                            "itemClass" : "item-type2",
+                                            "img" : "/lg5-common/images/dummy/@img-search.jpg",
+                                            "tit" : "2020 NEW 올레드와 함께하는 홈라이프",
+                                            "date" : "2020.08.01 ~ 2020.11.30"
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                        </div> <!-- // 이벤트 기획전-->
+
+                        <div class="result-list-wrap result-story">
+                            <div class="list-head">
+                                <h2 class="title">스토리</h2>
+                                <div class="btn-area">
+                                    <a href="#product" class="btn-link"><span>더보기</span></a>
+                                </div>
+                            </div>
+                            <div class="list-wrap">
+                                <ul class="result-list">
+                                    @@loop('./common/modules/result-list.html', [
+                                        {
+                                            "itemClass" : "item-story",
+                                            "img" : "/lg5-common/images/dummy/@img-search.jpg",
+                                            "flags" : ["비하인드 스토리"],
+                                            "tit" : "LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결",
+                                            "desc" : "코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. ",
+                                            "hashtag" : ["#가전", "#여름가전"],
+                                            "date" : "2020.08.01"
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                        </div> <!-- // 스토리-->
+
+                        <div class="result-list-wrap result-care">
+                            <div class="list-head">
+                                <h2 class="title">케어용품/소모품</h2>
+                                <div class="btn-area">
+                                    <a href="#product" class="btn-link"><span>더보기</span></a>
+                                </div>
+                            </div>
+                            <div class="list-wrap">
+                                <ul class="result-list">
+                                    @@loop('./common/modules/result-list.html', [
+                                        {
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "tit" : "브러쉬 Brush Assembly, Filter",
+                                            "sku"  : true,
+                                            "model" : "적용모델 : H-62HSGAKOR 외",
+                                            "priceInfo2" : true
+                                        }, {
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
+                                            "tit" : "브러쉬 Brush Assembly, Filter",
+                                            "sku"  : true,
+                                            "model" : "적용모델 : H-62HSGAKOR 외",
+                                            "priceInfo2" : true
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                        </div> <!-- // 케어용품, 소모품-->
+                    </div>
+
+                </div>
+                <!-- // 검색 결과 영역 -->
+                <div class="search-not-result">
+                    <div class="no-data">
+                        <p>
+                            <span><em>&ldquo;XLQL&rdquo;</em>에 대한 검색 결과가 없습니다</span>
+                            다시 한번 확인해주세요.
+                        </p>
+                    </div>
+                </div>
+                <!-- // 검색 결과 영역 -->
+            </div>
+            <!-- // 통합검색 -->
+        </div>
+
+<!--        include('./common/footer.html')-->
+    </div>
+</body>
+</html>
