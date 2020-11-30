@@ -457,25 +457,33 @@
 
 // 청약 계약 진행단계 안내
 .contract-steps {
+    margin-top:24px;
+    overflow:hidden;
     > ol {
         position:relative;
+        margin-bottom:-32px;
         font-size:0;
+        @include mobile {
+            margin-bottom:0;
+        }
         .steps {
             display:inline-block;
             position:relative;
-            width:234px;
+            width:20%;
+            min-width:210px;
+            margin-bottom:32px;
             padding-right:94px;
             vertical-align:top;
             @include mobile {
                 display:block;
                 width:100%;
                 min-height:48px;
+                margin-bottom:0;
                 padding-left:68px;
                 padding-right:0;
                 padding-bottom:40px;
             }
             &:last-child {
-                width:210px;
                 @include mobile {
                     width:100%;
                     padding-bottom:0;

@@ -169,6 +169,9 @@
                 &.type2 {
                     padding-top:16px;
                 }
+                &.type3 {
+                    padding-top:64px;
+                }
                 .inner-box {
                     margin-top:64px;
                     @include mobile {
@@ -183,6 +186,8 @@
                         @include font-large;
                         font-weight:700;
                         @include mobile {
+                            font-size:16px;
+                            line-height:24px;
                             margin-bottom:12px;
                         }
                     }
@@ -193,9 +198,15 @@
                             dl {
                                 dt {
                                     width:20.4%;
+                                    @include mobile {
+                                        width:31%;
+                                    }
                                 }
                                 dd {
                                     width:79.6%;
+                                    @include mobile {
+                                        width:69%;
+                                    }
                                 }
                             }
                         }
@@ -255,12 +266,6 @@
                         }
                     }
                 }
-                > .bullet-list {
-                    margin-left:20.4%;
-                    @include mobile {
-                        margin-left:0;
-                    }
-                }
                 .chk-wrap.margin {
                     margin-top:16px;
                     margin-left:20.4%;
@@ -278,6 +283,12 @@
                         margin-top:24px;
                     }
                 }
+            }
+        }
+        > .btn-group {
+            margin-top:80px;
+            @include mobile {
+                margin-top:40px;
             }
         }
     }
