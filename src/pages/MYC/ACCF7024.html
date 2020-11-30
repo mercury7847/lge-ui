@@ -9,11 +9,7 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "주문/배송 조회",
-                "pageArr" : [
-                    { "page" : "구매<em class='count'>2</em>", "on" : "" },
-                    { "page" : "케어솔루션 청약내역<em class='count'>1</em>", "on" : "on" },
-                ]
+                "pageTitle": "주문/배송 조회"
             })
             <!-- mypage -->
             <div class="contents mypage">
@@ -22,215 +18,257 @@
                         @@include('./common/modules/mypage-lnb.html', {
                             "sect1" : [
                                 { "on": "on", "page": "주문/배송 조회" },
+                                { "on": "", "page": "배송지 주소 관리" },
+                                { "on": "", "page": "사은품 신청" },
                                 { "on": "", "page": "쿠폰" }
                             ]
                         })
                         <div class="lnb-contents">
-                            <div class="section">
-                                <div class="cont-box">
+                            <!-- page tab -->
+                            <div class="tabs-wrap new-type">
+                                <ul class="tabs">
+                                    <li><a href="#n">구매 <span class="count">(8)</span></a></li>
+                                    <li class="on"><a href="#n">케어솔루션 청약 <span class="count">(3)</span><em class="blind">선택됨</em></a></li>
+                                </ul>
+                            </div>
+                            <!-- // page tab -->
+                            
+                            <!-- '케어솔루션 청약' contents -->
+                            <div class="section-wrap">
+                                <div class="filters">
                                     <!-- filter -->
                                     @@include('./common/modules/mem-filter.html', {
+                                        "tabType" : true,
                                         "wrapTit" : "조회기간",
-                                        "dualType" : true,
-                                        "btnRdo" : [
-                                            { "name" : "rdo1", "checked" : "checked" , "value" : "1주일" },
-                                            { "name" : "rdo1", "checked" : "" , "value" : "1개월" },
-                                            { "name" : "rdo1", "checked" : "" , "value" : "3개월" },
-                                            { "name" : "rdo1", "checked" : "" , "value" : "6개월" }
+                                        "btntypeRadio" : true,
+                                        "datepicker" : true,
+                                        "rdoArr" : [
+                                            { "id" : "period1", "label" : "1주일", "checked" : " " },
+                                            { "id" : "period2", "label" : "1개월", "checked" : " " },
+                                            { "id" : "period3", "label" : "3개월", "checked" : "checked" },
+                                            { "id" : "period4", "label" : "6개월", "checked" : " " },
                                         ]
                                     })
                                     <!-- // filter -->
+                                </div>
 
-                                    <!-- nodata -->
-                                    <div class="no-data mg-type">
-                                        <p>고객님의 신청내역이 없습니다.</p>
-                                    </div>
-                                    <!-- // nodata -->
-
-                                    <!-- list -->
-                                    <div class="info-tbl-wrap">
-                                        <!-- loop -->
-                                        @@include('./common/modules/info-tbl-wrap.html', {
-                                            "infos" : [
-                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>1</em>건"
-                                            ],
-                                            "btns" : "케어솔루션 청약내역 상세보기",
-                                            "size" : "size3",
-                                            "th" : [
-                                                "제품정보", "주문상태", "취소"
-                                            ], 
+                                <!-- data 있을 때 -->
+                                <!-- list -->
+                                <div class="info-tbl-wrap">
+                                    <!-- loop -->
+                                    @@include('./common/modules/info-tbl-wrap-infos.html', {
+                                        "infos" : [
+                                            { "dt" : "주문일", "dd" : "2020.08.29" },
+                                            { "dt" : "주문번호", "dd" : "20200912497207" },
+                                        ],
+                                        "total" : "총 1건", 
+                                        "th" : [
+                                            "제품정보(주문/배송 상세보기)", "진행상태"
+                                        ]
+                                    })
+                                    @@loop('./common/modules/info-tbl-wrap-loop.html', [
+                                        {
                                             "col1" : {
                                                 "blind" : "제품정보",
                                                 "productType" : {
+                                                    "flag" : "케어십",
                                                     "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                    "flag" : "렌탈 (케어솔루션)",
-                                                    "name" : "LG TROMM 건조기 스팀 ThinQ",
-                                                    "name2" : "RH9WGANR.AKOR",
+                                                    "name" : "LG 디오스 상냉장하냉동",
+                                                    "name2" : "OLED55BXPUA",
                                                     "more" : [
-                                                        "건조기",
                                                         "Silver"
                                                     ],
-                                                    "price" : true
+                                                    "price" : "1,760,000원"
                                                 }
                                             },
                                             "col2" : {
-                                                "blind" : "주문상태",
+                                                "blind" : "진행상태",
                                                 "stateType" : {
-                                                    "tit" : "청약신청 완료"
+                                                    "tit" : "청약신청 완료",
+                                                }
+                                            }
+                                        }
+                                    ])
+                                    @@include('./common/modules/info-tbl-wrap-bottom.html', {
+                                        "cancel" : true,
+                                        "btns" : "청약 상세보기"
+                                    })
+                                    <!-- // loop -->
+
+                                    <!-- loop -->
+                                    @@include('./common/modules/info-tbl-wrap-infos.html', {
+                                        "infos" : [
+                                            { "dt" : "주문일", "dd" : "2020.08.29" },
+                                            { "dt" : "주문번호", "dd" : "20200912497207" },
+                                        ],
+                                        "total" : "총 3건", 
+                                        "th" : [
+                                            "제품정보(주문/배송 상세보기)", "진행상태"
+                                        ]
+                                    })
+                                    @@loop('./common/modules/info-tbl-wrap-loop.html', [
+                                        {
+                                            "col1" : {
+                                                "blind" : "제품정보",
+                                                "productType" : {
+                                                    "flag" : "케어십",
+                                                    "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "name" : "LG 퓨리케어 상하좌우 냉온정수기",
+                                                    "name2" : "OLED55BXPUA",
+                                                    "more" : [
+                                                        "Silver"
+                                                    ],
                                                 }
                                             },
-                                            "cancel" : "on"
-                                        })
-                                        <!-- // loop -->
-
-                                        <!-- loop -->
-                                        @@include('./common/modules/info-tbl-wrap.html', {
-                                            "infos" : [
-                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>1</em>건"                                                
-                                            ],
-                                            "btns" : "케어솔루션 청약내역 상세보기",
-                                            "size" : "size3",
-                                            "th" : [
-                                                "제품정보", "주문상태", "취소"
-                                            ], 
+                                            "col2" : {
+                                                "blind" : "진행상태",
+                                                "stateType" : {
+                                                    "tit" : "배송준비중",
+                                                    "desc" : "설치희망일 2020.09.18",
+                                                    "btn" : "배송문의"
+                                                }
+                                            }
+                                        },
+                                        {
                                             "col1" : {
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                    "flag" : "케어십",
-                                                    "name" : "LG 퓨리케어 상하좌우 냉온정수기 모델명 2줄까지 가능",
-                                                    "name2" : "RH9WGANR.AKOR",
-                                                    "more" : [
-                                                        "정수기",
-                                                        "Silver"
-                                                    ]
-                                                }
-                                            },
-                                            "col2" : {
-                                                "blind" : "주문상태",
-                                                "stateType" : {
-                                                    "tit" : "배송준비중",
-                                                    "desc" : "09.01(화) 도착",
-                                                    "btn" : "배송문의"
-                                                }
-                                            },
-                                            "cancel" : "off"
-                                        })
-                                        <!-- // loop -->
-
-                                        <!-- loop -->
-                                        @@include('./common/modules/info-tbl-wrap.html', {
-                                            "infos" : [
-                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>1</em>건"
-                                            ],
-                                            "btns" : "케어솔루션 청약내역 상세보기",
-                                            "size" : "size3",
-                                            "th" : [
-                                                "제품정보", "주문상태", "취소"
-                                            ], 
-                                            "col1" : {
-                                                "blind" : "제품정보",
-                                                "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product3.jpg",
-                                                    "flag" : "케어십",
                                                     "name" : "LG TROMM 스타일러 블랙에디션",
-                                                    "name2" : "RH9WGANR.AKOR",
+                                                    "name2" : "OLED55BXPUA",
                                                     "more" : [
-                                                        "스타일러",
                                                         "Black"
                                                     ],
-                                                    "price" : true
+                                                    "price" : "1,767,030원"
                                                 }
                                             },
                                             "col2" : {
-                                                "blind" : "주문상태",
+                                                "blind" : "진행상태",
                                                 "stateType" : {
-                                                    "tit" : "계약생성 완료",
-                                                    "desc" : "09.01(화) 도착",
-                                                    "btn" : "사용후기"
+                                                    "tit" : "배송완료",
+                                                    "desc" : "설치희망일 2020.09.18",
+                                                    "btn" : "사용후기",
+                                                    "btn2" : "계약현황"
                                                 }
-                                            },
-                                            "cancel" : "off"
-                                        })
-                                        <!-- // loop -->
-
-                                        <!-- loop -->
-                                        @@include('./common/modules/info-tbl-wrap.html', {
-                                            "infos" : [
-                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>1</em>건"
-                                            ],
-                                            "btns" : "케어솔루션 청약내역 상세보기",
-                                            "size" : "size3",
-                                            "th" : [
-                                                "제품정보", "주문상태", "취소"
-                                            ], 
+                                            }
+                                        },
+                                        {
                                             "col1" : {
                                                 "blind" : "제품정보",
                                                 "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product3.jpg",
-                                                    "flag" : "케어십",
-                                                    "name" : "LG TROMM 스타일러 블랙에디션",
-                                                    "name2" : "RH9WGANR.AKOR",
+                                                    "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                    "name" : "LG 퓨리케어 공기청정기",
+                                                    "name2" : "OLED55BXPUA",
                                                     "more" : [
-                                                        "스타일러",
                                                         "Black"
-                                                    ]
+                                                    ],
+                                                    "price" : "1,000,000원"
                                                 }
                                             },
                                             "col2" : {
-                                                "blind" : "주문상태",
+                                                "blind" : "진행상태",
                                                 "stateType" : {
-                                                    "titRed" : "취소접수"
+                                                    "tit" : "배송중",
+                                                    "desc" : "설치희망일 2020.09.18",
+                                                    "btn" : "배송문의"
+                                                }
+                                            }
+                                        }
+                                    ])
+                                    @@include('./common/modules/info-tbl-wrap-bottom.html', {
+                                        "cancel" : true,
+                                        "btns" : "청약 상세보기"
+                                    })
+                                    <!-- // loop -->
+
+                                    <!-- loop -->
+                                    @@include('./common/modules/info-tbl-wrap-infos.html', {
+                                        "infos" : [
+                                            { "dt" : "주문일", "dd" : "2020.08.29" },
+                                            { "dt" : "주문번호", "dd" : "20200912497207" },
+                                        ],
+                                        "total" : "총 1건", 
+                                        "th" : [
+                                            "제품정보(주문/배송 상세보기)", "진행상태"
+                                        ]
+                                    })
+                                    @@loop('./common/modules/info-tbl-wrap-loop.html', [
+                                        {
+                                            "col1" : {
+                                                "blind" : "제품정보",
+                                                "productType" : {
+                                                    "flag" : "케어십",
+                                                    "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "name" : "LG 퓨리케어 상하좌우 냉온정수기",
+                                                    "name2" : "OLED55BXPUA",
+                                                    "more" : [
+                                                        "Silver"
+                                                    ],
                                                 }
                                             },
-                                            "cancel" : "off"
-                                        })
-                                        <!-- // loop -->
-                                    </div>
-                                    <!-- // list -->
-
-                                    @@include('./common/modules/pagination.html', {
-                                        count: 5
+                                            "col2" : {
+                                                "blind" : "진행상태",
+                                                "stateType" : {
+                                                    "tit" : "계약생성 완료",
+                                                    "desc" : "설치희망일 2020.09.18",
+                                                    "btn" : "사용후기",
+                                                    "btn2" : "계약현황"
+                                                }
+                                            }
+                                        }
+                                    ])
+                                    @@include('./common/modules/info-tbl-wrap-bottom.html', {
+                                        "cancel" : true,
+                                        "btns" : "청약 상세보기"
                                     })
-
-                                    @@include('./common/modules/bullet-list.html', {
-                                        "topBorder" : true,
-                                        "bulletTxt" : [
-                                            "진행상태에 따라 취소 신청이 가능합니다."
-                                        ]
-                                    })
+                                    <!-- // loop -->
                                 </div>
-                            </div>
+                                <!-- // list -->
+                                @@include('./common/modules/bullet-list.html', {
+                                    "bulletTxt" : [
+                                        "주문 진행 상태에 따라 취소/반품 신청이 가능합니다. 취소/반품 신청 버튼이 없을 경우 고객 센터(000-0000)에 문의 하세요."
+                                    ]
+                                })
+                                <button type="button" class="btn-moreview block"><span>더보기</span></button>
+                                <!-- // data 있을 때 -->
 
-                            <div class="section">
-                                <h3 class="sec-tit">청약 계약 진행단계 안내</h3>
-                                <div class="cont-box">
+                                <!-- data 없을 때 -->
+                                <div class="no-data">
+                                    <p>주문 내역이 없습니다.</p>
+                                </div>
+                                <!-- // data 없을 때 -->
+
+                                <!-- 청약 계약 진행단계 안내 -->
+                                <div class="sects">
+                                    <div class="tit-wrap type2">
+                                        <h6 class="tit">청약 계약 진행단계 안내</h6>
+                                    </div>
                                     @@include('./common/modules/contract-steps.html', {
                                         "steps" : [
-                                            { "dt" : "청약신청 완료", "dd" : "청약신청이 완료 되었습니다." },
-                                            { "dt" : "주문접수", "dd" : "주문이 접수되었습니다." },
-                                            { "dt" : "결제완료", "dd" : "결제가 완료되었습니다." },
-                                            { "dt" : "배송준비중", "dd" : "제품을 배송할 기사를 배정중입니다." },
-                                            { "dt" : "배송중", "dd" : "제품이 고객님께 배송중입니다." },
-                                            { "dt" : "배송완료", "dd" : "제품이 고객님께 전달 완료되었습니다." },
-                                            { "dt" : "계약생성 완료", "dd" : "계약생성이 완료되었습니다." }
+                                            { "dt" : "청약신청 완료", "dd" : "청약신청이 완료되었습니다." },
+                                            { "dt" : "주문접수", "dd" : "주문하신 제품 결제를 완료해주세요." },
+                                            { "dt" : "결제완료", "dd" : "기다려주시면 빠르게 주문정보를 확인할게요." },
+                                            { "dt" : "배송준비중", "dd" : "주문 제품을 준비중입니다." },
+                                            { "dt" : "배송중", "dd" : "제품이 곧 도착합니다.<br>배송 기사가 연락 드릴 거예요." },
+                                            { "dt" : "배송완료", "dd" : "받으신 제품의 리뷰를 남겨주세요." },
+                                            { "dt" : "계약생성 완료", "dd" : "계약 생성이 완료되었어요. 계약 현황을 확인해보세요." },
                                         ]
                                     })
-
                                     @@include('./common/modules/bullet-list.html', {
                                         "topBorder" : true,
-                                        "bulletTit" : "케어솔루션 안내",
+                                        "bulletTit" : "확인하세요.",
                                         "bulletTxt" : [
                                             "주문/배송 내역은 PC웹에서는 5년, 모바일웹에서는 1년까지 조회 가능합니다.",
-                                            "주문 취소 신청은 배송이 시작되기 전까지만 가능하며 단순 변심에 의한 반품은 제품 배송 완료 후 7일 이내에 온라인 접수가 가능합니다.<br>(단, 설치 제품의 경우 인수 완료 후에는 반품이 불가하니 이점 유의하시기 바랍니다.)",
-                                            "배송 완료 후 7일 이후의 건에 대해서는 고객 서비스 센터(000-0000)로 문의하세요. 제품 반품 시 반품 사유에 따라 배송비가 발생할 수 있습니다.",
+                                            "확인은 배송이 시작되기 전까지만 가능하며 단순 변심에 의한 반품은 제품 배송 완료 후 7일 이내에 온라인 접수가 가능합니다.<br>단, 설치 제품의 경우 인수 완료 후에는 반품이 불가하니 이점 유의하시기 바랍니다. 배송 완료 후 7일 이후의 건에 대해서는 고객 서비스 센터(000-0000)로 문의하세요.<br>제품 반품 시 반품 사유에 따라 배송비가 발생할 수 있습니다.",
                                             "다수의 제품을 분할 결제나 포인트로 결제하신 경우, 부분 취소 또는 부분 반품이 불가하니 주문 건 전체를 취소하신 후 다시 결제하여 주세요.",
                                             "멤버십 포인트는 구매 제품은 배송 완료 후, 케어솔루션(렌탈) 제품의 경우 배송 및 설치 완료 14일 이후 적립됩니다.",
-                                            "배송 상태는 ‘배송중’ 상태 부터 확인 가능합니다."
+                                            "배송 상태는 ‘배송중’ 상태 부터 확인 가능합니다. (소모품 구입에만 해당)",
                                         ]
                                     })
                                 </div>
+                                <!-- // 청약 계약 진행단계 안내 -->
                             </div>
+                            <!-- // '케어솔루션 청약' contents -->
                         </div>
                     </div>
                 </div>

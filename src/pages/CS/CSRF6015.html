@@ -12,15 +12,28 @@
 
         <div class="container">
             @@include('./common/support/page-visual.html', {
-                'title': '이메일 문의가 완료되었습니다.',
-                "desc": '현재 처리 대기중입니다.'
+                'title': '이메일 문의가 완료되었습니다.'
             })
             
             <div class="contents support reservation subscribe">
+                <div class="reservation-info-box type-email">
+                    <figure class="reservation-area">
+                        <div class="reservation-info">
+                            <div class="email-img"></div>
+                            <figcaption class="reservation-info-desc">
+                                <strong class="txt-block">전문 상담원이 답변 중입니다.</strong>
+                                <span>답변이 완료되면 접수하신 이메일로도 답변을 보내드립니다.</span>
+                            </figcaption>
+                        </div>
+                        <div class="reservation-num">
+                            <span class="num-tit">접수번호 S20006828124</span>
+                        </div>
+                    </figure>
+                </div>
                 <div class="cont-wrap">
                     <div class="section">
                         <div class="tit-wrap">
-                            <h3 class="title">이메일 문의 접수 내용</h3>
+                            <h2 class="tit">이메일 문의 접수 내용</h2>
                         </div>
                         <div class="">
                             <div class="">
@@ -55,7 +68,7 @@
                                         </li>
                                         <li>
                                             <div class="title"><strong>내용</strong></div>
-                                            <div class="description">안녕하세요.<br>벨벳 스마트폰의 컬러에 대해서 문의드립니다.<br>리미티드 컬러 에디션이 따로 출시 될까요?</div>
+                                            <div class="description">안녕하세요.<br>벨벳 스마트폰의 컬러에 대해서 문의드립니다. 리미티드 컬러 에디션이 따로 출시 될까요?</div>
                                         </li>
                                         <li>
                                             <div class="title"><strong>첨부 파일</strong></div>
@@ -76,8 +89,8 @@
                                             <div class="description">홍*동</div>
                                         </li>
                                         <li>
-                                            <div class="title"><strong>이메일 주소</strong></div>
-                                            <div class="description">test@naver.com</div>
+                                            <div class="title"><strong>이메일</strong></div>
+                                            <div class="description">lg*****@lge.co.kr</div>
                                         </li>
                                     </ul>
                                 </div>

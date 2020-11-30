@@ -5,12 +5,16 @@
     @@if(!context.itemLink) {
     <div class="item @@itemClass">
     }
+
+        
         @@if (context.badge) {
+        <!-- 뱃지 이미지 타입 삭제 
         <div class="badge">
             <div class="flag-wrap image-type left">
                 @@badge
             </div>
         </div>
+        -->
         }
         <div class="result-thumb">
             @@if(context.itemLink) {

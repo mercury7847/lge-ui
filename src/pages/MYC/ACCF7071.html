@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/alarm"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+				"pageTitle": "참여 이벤트",
+				"pageDesc" : "고객님이 참여하신 이벤트 목록을 확인해보세요."
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap no-bd">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "on", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문 알리미" }
+                            ]
+                        })
+                        <div class="lnb-contents">
+							<div class="parti-event-list">
+								<ul>
+									<!-- list -->
+									<li>
+										<div class="conts-wrap">
+											<div class="evt">
+												<a href="#n" class="evt-link" target="_blank" title="새 창">
+													<span class="thumb">
+														<img src="/lg5-common/images/dummy/@img-event01.jpg" alt="" aria-hidden="true">
+													</span>
+													<div class="event-info">
+														<div class="flag-wrap">
+															<span class="flag"><span class="blind">이벤트 구분</span>매장</span>
+															<span class="flag"><span class="blind">이벤트 유형</span>구매혜택</span>
+														</div>
+														<p class="tit"><span class="blind">이벤트 제목</span>2020 NEW 올레드와 함께하는 홈라이프</p>
+														<p class="date">당첨자 발표 예정일 : 매월 n일</p>
+													</div>
+												</a>
+											</div>
+										</div>
+									</li>
+									<!-- //list -->
+									<!-- list -->
+									<li>
+										<div class="conts-wrap">
+											<div class="evt">
+												<a href="#n" class="evt-link" target="_blank" title="새 창">
+													<span class="thumb">
+														<img src="/lg5-common/images/dummy/@img-event02.jpg" alt="" aria-hidden="true">
+													</span>
+													<div class="event-info">
+														<div class="flag-wrap">
+															<span class="flag"><span class="blind">이벤트 구분</span>온라인</span>
+															<span class="flag"><span class="blind">이벤트 유형</span>경품응모</span>
+														</div>
+														<p class="tit"><span class="blind">이벤트 제목</span>미리미리 페스티벌</p>
+													</div>
+												</a>
+											</div>
+										</div>
+									</li>
+									<!-- //list -->
+									<!-- list -->
+									<li>
+										<div class="conts-wrap">
+											<div class="evt">
+												<a href="#n" class="evt-link" target="_blank" title="새 창">
+													<span class="thumb">
+														<img src="/lg5-common/images/dummy/@img-event03.jpg" alt="" aria-hidden="true">
+														<span class="event-end">
+															<em>종료된 이벤트</em>
+														</span>
+													</span>
+													<div class="event-info">
+														<div class="flag-wrap">
+															<span class="flag"><span class="blind">이벤트 구분</span>온라인</span>
+															<span class="flag"><span class="blind">이벤트 유형</span>사은품</span>
+														</div>
+														<p class="tit"><span class="blind">이벤트 제목</span>LG 이동식 에어컨 창문 잠금장치 신청 이벤트</p>
+														<p class="date">당첨자 발표 예정일 : 매월 n일</p>
+													</div>
+												</a>
+												<a href="#n" class="btn-link"><span>당첨자 발표</span></a>
+											</div>
+										</div>
+									</li>
+									<!-- //list -->
+									<!-- list -->
+									<li>
+										<div class="conts-wrap">
+											<div class="evt">
+												<a href="#n" class="evt-link" target="_blank" title="새 창">
+													<span class="thumb">
+														<img src="/lg5-common/images/dummy/@img-event01.jpg" alt="" aria-hidden="true">
+													</span>
+													<div class="event-info">
+														<div class="flag-wrap">
+															<span class="flag"><span class="blind">이벤트 구분</span>매장</span>
+															<span class="flag"><span class="blind">이벤트 유형</span>구매혜택</span>
+														</div>
+														<p class="tit"><span class="blind">이벤트 제목</span>2020 NEW 올레드와 함께하는 홈라이프</p>
+														<p class="date">당첨자 발표 예정일 : 매월 n일</p>
+													</div>
+												</a>
+											</div>
+										</div>
+									</li>
+									<!-- //list -->
+									<!-- list -->
+									<li>
+										<div class="conts-wrap">
+											<div class="evt">
+												<a href="#n" class="evt-link" target="_blank" title="새 창">
+													<span class="thumb">
+														<img src="/lg5-common/images/dummy/@img-event02.jpg" alt="" aria-hidden="true">
+													</span>
+													<div class="event-info">
+														<div class="flag-wrap">
+															<span class="flag"><span class="blind">이벤트 구분</span>온라인</span>
+															<span class="flag"><span class="blind">이벤트 유형</span>경품응모</span>
+														</div>
+														<p class="tit"><span class="blind">이벤트 제목</span>미리미리 페스티벌</p>
+													</div>
+												</a>
+											</div>
+										</div>
+									</li>
+									<!-- //list -->
+									<!-- list -->
+									<li>
+										<div class="conts-wrap">
+											<div class="evt">
+												<a href="#n" class="evt-link" target="_blank" title="새 창">
+													<span class="thumb">
+														<img src="/lg5-common/images/dummy/@img-event03.jpg" alt="" aria-hidden="true">
+													</span>
+													<div class="event-info">
+														<div class="flag-wrap">
+															<span class="flag"><span class="blind">이벤트 구분</span>온라인</span>
+															<span class="flag"><span class="blind">이벤트 유형</span>사은품</span>
+														</div>
+														<p class="tit"><span class="blind">이벤트 제목</span>LG 이동식 에어컨 창문 잠금장치 신청 이벤트</p>
+														<p class="date">당첨자 발표 예정일 : 매월 n일</p>
+													</div>
+												</a>
+											</div>
+										</div>
+									</li>
+									<!-- //list -->
+								</ul>
+								<button type="button" class="btn-moreview block"><span>더보기</span></button>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>   
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop",
+        "msgOnly" : true,
+        "msg" : "받은 알림을 전체삭제<br>하시겠습니까?",
+        "twobtn" : true
+    })
+</body>
+</html>

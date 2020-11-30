@@ -180,7 +180,6 @@
             }
             @include mobile {
                 height:46px;
-                border-radius:4px;
                 font-size:13px;
                 line-height:21px;
             }
@@ -569,6 +568,9 @@
             &.bgGray {
                 margin-top: 0;
             }
+            &.top-border{
+                margin-top:48px;
+            }
         }
         .btm-more {
             display:block;
@@ -606,53 +608,6 @@
             @include mobile {
                 margin-top:16px;
                 text-align:left;
-            }
-        }
-    }
-
-    &.term-filter {
-        margin-bottom:40px;
-        @include mobile {
-            .forms {
-                .conts {
-                    .input-box-wrap {
-                        display:block;
-                        .input-box {
-                            display:block;
-                            white-space:initial;
-                        }
-                        .rdo-btn-wrap {
-                            margin-right:-3px;
-                            margin-bottom:8px;
-                            padding-right:0;
-                            .rdo-wrap {
-                                position:relative;
-                                margin-left:-1px;
-                                width:25%;
-                                input+label {
-                                    display:block;
-                                    position:relative;
-                                    border-radius:0;
-                                }
-                                &:first-child {
-                                    margin-left:0;
-                                    input + label {
-                                        border-radius:8px 0 0 8px;
-                                    }
-                                }
-                                &:last-child {
-                                    input+label {
-                                        border-radius:0 8px 8px 0;
-                                    }
-                                }
-                                input:checked+label {
-                                    border-color:#222;
-                                    z-index:10;
-                                }
-                            }
-                        }
-                    }
-                }
             }
         }
     }
@@ -757,9 +712,6 @@
         @include font-medium;
         vertical-align:top;
         resize:none;
-        @include mobile {
-            border-radius:4px;
-        }
 
         &::-webkit-input-placeholder,
         &:-moz-placeholder,
@@ -815,9 +767,6 @@
             display:table-cell;
             border-right:none;
             border-radius:8px 0 0 8px;
-            @include mobile {
-                border-radius:4px 0 0 4px;
-            }
         }
         .cell {
             display:table-cell;
@@ -826,9 +775,6 @@
             border-left:none;
             border-radius:0 8px 8px 0;
             vertical-align:middle;
-            @include mobile {
-                border-radius:0 4px 4px 0;
-            }
         }
         input:focus + .cell {
             border-color:#EC455A;
@@ -1409,23 +1355,26 @@ $input: (chk, rdo);
             @if ( $type == rdo ) {
                 input {
                     &+label {
-                        padding:15px 23px;
+                        min-width:68px;
+                        padding:11px 16px;
                         border:1px solid #ddd;
                         border-radius:8px;
                         background:#fff;
-                        color:#808080;
-                        font-size:16px;
-                        line-height:24px;
+                        color:#767676;
+                        @include font-small;
                         text-align:center;
+                        font-weight:500;
                         &::before, &::after {
                             display:none;
                         }
+                        @include mobile {
+                            font-size:14px;
+                            line-height:22px;
+                        }
                     }
                     &:checked+label {
-                        border-color:#616161;
-                        background:#f4f4f4;
-                        color:#616161;
-                        font-weight:500;
+                        border-color:#EC455A;
+                        color:#EC455A;
                     }
                     &:disabled+label { // 임시. 디자인 나오면 변경 반영해야함.
                         background:#f4f4f4;

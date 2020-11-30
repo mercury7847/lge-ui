@@ -303,6 +303,86 @@
     }
 }
 
+// 설치 전 주의사항 및 사용법 팝업
+.file-detail {
+    .tb-col {
+        th {
+            text-align:center;
+        }
+        .model-list {
+            position:relative;
+            overflow:hidden;
+            max-height:24px;
+            padding-right:22px;
+            transition: max-height .8s cubic-bezier(0, 1, 0, 1) -.1s;
+            &.on {
+                max-height:9999px;
+                transition-timing-function: cubic-bezier(0.5, 0, 1, 0);
+                transition-delay: 0s;
+            }
+            .list {
+                margin:0 -8px;
+                @include clearfix;
+            }
+            li {
+                float:left;
+                width:20%;
+                padding:0 8px;
+                &.on {
+                    color:$color-default;
+                    font-weight:$font-weight-bold;
+                }
+            }
+            .btn-more {
+                position:absolute;
+                top:2px;
+                right:2px;
+                width:20px;
+                height:20px;
+                background:url(/lg5-common/images/icons/btn-more-20.svg) no-repeat;
+            }
+        }
+        .file-wrap {
+            @include clearfix;
+            p {
+                float:left;
+                margin:4px 0 0;
+            }
+            button {
+                float:right;
+            }
+        }
+    }
+    #driverDatilContent {
+        p {
+            @include font-small;       
+        }
+    }
+    @include tablet {
+        .tb-col {
+            .model-list li {
+                width:calc(100% / 3);
+            }
+        }
+    }
+    @include mobile {
+        .tb-col {
+            .model-list li {
+                width:50%;
+            }
+            .file-wrap { 
+                p {
+                    float:none;
+                    margin:0 0 8px;
+                }
+                button {
+                    float:none;
+                }
+            }
+        }
+    }
+}
+
 .support {
     /* common */
     .recommand-wrap {
@@ -790,16 +870,27 @@
                 }
                 .btn-area {
                     position:absolute;
-                    left:calc(100% - 295px);
+                    left:calc(100% - 315px);
                     top:50%;
+                    width:315px;
                     transform:translateY(-50%);
                     @include clearfix;
-                    .btn {
-                        float:left;
+                    .box {
+                        display:inline-block;
+                        width:172px;
+                        text-align:right;
+                        vertical-align:middle;
+                        & + .box {
+                            width:143px;
+                        }
+                        &.btn_close {
+                            .accord-btn {
+                                color:#ec455a;
+                                background-image:url(/lg5-common/images/icons/btn-minus-20.svg);
+                            }
+                        }
                     }
                     .accord-btn {
-                        float:right;
-                        margin:4px 0 0 36px;
                         padding-right:22px;
                         color:#767676;
                         font-size:14px;
@@ -807,12 +898,6 @@
                         line-height:24px;
                         background:url(/lg5-common/images/icons/btn-more-20-gray.svg) no-repeat;
                         background-position:right center;
-                    }
-                    &.btn_close {
-                        .accord-btn {
-                            color:#ec455a;
-                            background-image:url(/lg5-common/images/icons/btn-minus-20.svg);
-                        }
                     }
                 }
             }
@@ -833,7 +918,9 @@
                             border:none;
                         }
                         .btn-area {
-                            left:calc(100% - 271px);
+                            .box {
+                                width:196px;
+                            }
                             .btn.border {
                                 background:#f4f4f4;
                             }
@@ -852,11 +939,17 @@
                     }
                     .btn-area {
                         position:static;
+                        width:100%;
                         margin-top:20px;
                         transform:translateY(0);
                         @include clearfix;
-                        .accord-btn {
-                            margin:6px 0 0 0;
+                        .box {
+                            float:left;
+                            width:auto;
+                            & + .box {
+                                float:right;
+                                margin:6px 0 0 0;
+                            }
                         }
                     }
                 }
@@ -873,9 +966,10 @@
                                 border:none;
                             }
                             .btn-area {
-                                text-align:center;
-                                .btn {
+                                .box {
                                     float:none;
+                                    width:100%;
+                                    text-align:center;
                                 }
                             }
                         }
@@ -1130,6 +1224,7 @@
         }
         /* // video detail */
     }
+
     /* 카드뉴스 & 가전제품 생활의 팁 */
     &.card {   
         @include mobile {
@@ -1147,12 +1242,14 @@
             }
         }
     }
+
     /* 다운로드 자료실 */
     &.download {
         .cont-wrap {
             max-width:1146px + 40px;
         }
     }
+
     /* 제품해결 */
     &.solutions {
         .banner-wrap {
@@ -1172,6 +1269,7 @@
         }
         
     }
+
     /* 제품 지원 페이지 */
     &.psp {
         border-top:8px solid #f4f4f4;
