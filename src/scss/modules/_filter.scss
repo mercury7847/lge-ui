@@ -679,7 +679,11 @@
                 }
                 .rdo-cell {
                     .rdo-wrap {
+                        width:calc((100% - 18px) / 4);
                         margin-left:6px;
+                        input + label {
+                            width:100%;
+                        }
                     }
                 }
             }
@@ -687,10 +691,16 @@
         .datepic-tbl {
             display:table;
             width:100%;
+            @include mobile {
+                display:block;
+            }
             .dp-cell {
                 display:table-cell;
                 font-size:0;
                 vertical-align:top;
+                @include mobile {
+                    display:block;
+                }
                 .bar {
                     display:inline-block;
                     width:24px;
@@ -716,6 +726,14 @@
             .btn-cell {
                 display:table-cell;
                 padding-left:8px;
+                @include mobile {
+                    display:block;
+                    margin-top:24px;
+                    padding-left:0;
+                    .btn {
+                        width:100%;
+                    }
+                }
             }
         }
     }
