@@ -11,6 +11,10 @@
         @@include('./common/header.html')
 
         <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '서비스 뉴스',
+                'pageDesc': '다양한 LG전자 서비스에 관한 소식을 빠르게 전해 드립니다.'
+            })
             <div class="contents support service-news">
                 <div class="cont-wrap">
 
@@ -20,13 +24,13 @@
                                 <div class="flag-wrap bar-type">
                                     <span class="flag"><span class="blind">제품 상태</span> NEW</span>
                                 </div>
-                                <h3 class="head-title">노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀</h3>
+                                <h2 class="head-title">노인복지시설에 재능 기부 펼친 LG전자서비스 경남팀</h2>
                                 <ul class="head-infos">
                                     <li>2020.07.20</li>
-                                    <li>>조회 4,129</li>
+                                    <li>조회 4,129</li>
                                 </ul>
                             </div>
-                            <div class="board-view-sns">
+                            <div class="board-view-sub">
                                 <div class="sns-wrap">
                                     <!-- 
                                         data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
@@ -46,7 +50,7 @@
                             </div>
                             <div class="board-view-body">
                                 <!-- admin editor 등록 시 id="viewContent" 추가 -->
-                                <div class="view-content" id="viewContent">
+                                <div class="view-content">
                                     <div class="video-content">
                                         <div class="video-box">
                                             <div class="column">
@@ -54,40 +58,36 @@
                                             </div>
                                             <div class="column">
                                                 <h3 class="video-box-title">영상자막</h3>
-                                                <div class="scrollview-wrap">
-                                                    <div class="scroll-y">
-                                                        <div class="ui_content">
-                                                            LG전자 소프트웨어 업데이트 방법을 알고 계신가요
-                                                            <br><br>
-                                                            (자막) 소프트웨어 업데이트 방법을 알고 계신가요[스마트폰]
-                                                            <br><br>
-                                                            (NA)<br>
-                                                            소프트웨어 업데이트 방법을 알고 계신가요<br>
-                                                            제품의 앱과 소프트웨어를 무선 인터넷을 통해 빠르고 편리하게 업데이트할 수 있습니다.<br>
-                                                            설정을 선택하세요.<br>
-                                                            일반을 선택하세요.<br>
-                                                            휴대폰 정보를 선택하세요.<br>
-                                                            업데이트 센터를 선택하세요.<br>
-                                                            앱 업데이트는 스마트폰에 설치된 앱을 확인할 수 있으며,<br>
-                                                            LG전자와 이동통신사에서 제공한 앱에 새 버전이 나올 경우<br>
-                                                            앱을 최신 버전으로 업데이트할 수 있습니다.<br>
-                                                            앱 업데이트를 선택하세요.<br>
-                                                            모두 업데이트를 선택하세요.<br>
-                                                            소프트웨어 업데이트는 최신 버전의 소프트웨어를 업데이트하면 최적의 상태에서 제품을 사용할 수 있습니다.<br>
-                                                            소프트웨어 업데이트를 선택하세요<br>
-                                                            업데이트 자동 확인은 소프트웨어 업데이트 일정 주기 간격으로<br>
-                                                            새 소프트웨어가 있는지 확인하고 새 버전이 있을 경우 자동으로 다운로드 하도록 설정할 수 있습니다.<br>
-                                                            업데이트 자동 설치는 스마트폰을 사용하지 않는 시간에 소프트웨어를 자동으로 업데이트하도록 설정할 수 있습니다.<br>
-                                                            업데이트 계속을 선택하세요 .<br>
-                                                            다운로드를 선택하세요.<br>
-                                                            지금 설치를 선택하세요.<br>
-                                                            Android(안드로이드) 시스템 업데이트 화면이 나타나며 1~2회 다시 시작한 후 업데이트가 완료됩니다.<br>
-                                                            감사합니다
-                                                            <br><br>
-                                                            (S.E)
-                                                            LG 시그널음악
-                                                        </div>
-                                                    </div>
+                                                <div class="subtitles-wrap">
+                                                    LG전자 소프트웨어 업데이트 방법을 알고 계신가요
+                                                    <br><br>
+                                                    (자막) 소프트웨어 업데이트 방법을 알고 계신가요[스마트폰]
+                                                    <br><br>
+                                                    (NA)<br>
+                                                    소프트웨어 업데이트 방법을 알고 계신가요<br>
+                                                    제품의 앱과 소프트웨어를 무선 인터넷을 통해 빠르고 편리하게 업데이트할 수 있습니다.<br>
+                                                    설정을 선택하세요.<br>
+                                                    일반을 선택하세요.<br>
+                                                    휴대폰 정보를 선택하세요.<br>
+                                                    업데이트 센터를 선택하세요.<br>
+                                                    앱 업데이트는 스마트폰에 설치된 앱을 확인할 수 있으며,<br>
+                                                    LG전자와 이동통신사에서 제공한 앱에 새 버전이 나올 경우<br>
+                                                    앱을 최신 버전으로 업데이트할 수 있습니다.<br>
+                                                    앱 업데이트를 선택하세요.<br>
+                                                    모두 업데이트를 선택하세요.<br>
+                                                    소프트웨어 업데이트는 최신 버전의 소프트웨어를 업데이트하면 최적의 상태에서 제품을 사용할 수 있습니다.<br>
+                                                    소프트웨어 업데이트를 선택하세요<br>
+                                                    업데이트 자동 확인은 소프트웨어 업데이트 일정 주기 간격으로<br>
+                                                    새 소프트웨어가 있는지 확인하고 새 버전이 있을 경우 자동으로 다운로드 하도록 설정할 수 있습니다.<br>
+                                                    업데이트 자동 설치는 스마트폰을 사용하지 않는 시간에 소프트웨어를 자동으로 업데이트하도록 설정할 수 있습니다.<br>
+                                                    업데이트 계속을 선택하세요 .<br>
+                                                    다운로드를 선택하세요.<br>
+                                                    지금 설치를 선택하세요.<br>
+                                                    Android(안드로이드) 시스템 업데이트 화면이 나타나며 1~2회 다시 시작한 후 업데이트가 완료됩니다.<br>
+                                                    감사합니다
+                                                    <br><br>
+                                                    (S.E)
+                                                    LG 시그널음악
                                                 </div>
                                             </div>
                                         </div>
@@ -96,15 +96,15 @@
                                             <li class="b-txt">2016년부터 노인복지시설에 전기.전자제품 점검 및 수리 봉사활동</li>
                                         </ul>
                                     </div>
-                                    <div class="text-content">
-                                        <p style="text-align: center;"><img src="/lg5-common/images/dummy/@img-store03.jpg" alt=""></p>
-                                        <br>
+                                    <div class="text-content" id="viewContent">
+                                        <p style="text-align:center;"><img src="/lg5-common/images/dummy/@img-store03.jpg" alt=""></p>
+                                        <br><br>
                                         <p>기업과 함께하는 WIN-WIN 자원봉사 협약기업인 LG전자한국서비스 경남팀(박세현)이 25일 의창구 동읍에 위치한 동진노인복지센터에서 전기·전자제품 점검 및 수리 봉사활동을 펼쳤다.</p>
                                         <br>
                                         <p>2016년부터 동진노인복지센터에서 재능기부를 펼쳐온 LG전자한국서비스 경남팀은 어르신들이 많이 생활하는 노인복지시설에 전기·전자제품의 관리는 더욱 중요한 부분으로 생각해 봉사활동을 진행하게 됐는데 시설에 필요한 청소기 등 물품 30만원 상당도 함께 전달했다.</p>
                                         <br>
                                         <p>출처 : 경남도민신문 10월 26일</p> 
-                                        <p><a href="http://www.gndomin.com/news/articleView.html?idxno=153741">http://www.gndomin.com/news/articleView.html?idxno=153741</a></p>
+                                        <p><a href="http://www.gndomin.com/news/articleView.html?idxno=153741" target="_blank">http://www.gndomin.com/news/articleView.html?idxno=153741</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -115,13 +115,13 @@
                                 <span class="navi-label">이전글</span>
                                 <span class="navi-desc">LG ThinQ 앱이라서 가능한 편리한 일상 - 앱 사용법 편</span>
                                 <span class="navi-date">2020.07.27</span>
-                                <span class="navi-views">687</span>
+                                <span class="navi-views"><span class="blind">조회수</span> 687</span>
                             </a>
                             <a href="#" class="navi">
                                 <span class="navi-label">다음글</span>
                                 <span class="navi-desc">LG ThinQ 앱이라서 가능한 편리한 일상 – 카드뉴스 타이틀 노출 영역 최대 1줄, 초과 시 …처리를 해야하는 부분입니다. LG ThinQ 앱이라서 가능한 편리한 일상 – 카드뉴스 타이틀 노출 영역 최대 1줄, 초과 시 …처리를 해야하는 부분입니다.</span>
                                 <span class="navi-date">2020.07.27</span>
-                                <span class="navi-views">687</span>
+                                <span class="navi-views"><span class="blind">조회수</span> 687</span>
                             </a>
                         </div>
                     </div>

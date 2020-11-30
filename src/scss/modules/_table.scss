@@ -93,6 +93,7 @@
                 color:#222;
                 font-weight:500;
                 @include font-medium;
+                @include textEllipsisClamp(2);
             }
             .flag-wrap {
                 margin-right:12px;
@@ -106,9 +107,6 @@
             .board-tit {
                 & > a {
                     display:flex;
-                }
-                p {
-                    @include textEllipsis;
                 }
             }
         }
@@ -137,9 +135,6 @@
                         margin-bottom:4px;
                         & > a {
                             display:block;
-                        }
-                        p {
-                            @include textEllipsisClamp(2);
                         }
                         .flag-wrap {
                             display:block;

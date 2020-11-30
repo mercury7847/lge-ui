@@ -38,24 +38,28 @@
 
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataPost(url, param, function(d) {
-            var data = d.data;
-            var content = 
-                '<p>평가해 주신 내용은 더 나은 콘텐츠를 제공해 드리기 위한 자료로 활용합니다.</p>' +
-                '<p><span class="star-rating-wrap">';
-                
-            for (var i = 0; i < 5; i++) {
-                if (i < data.score) {
-                    content += '<span class="star on"></span>';
-                } else {
-                    content += '<span class="star"></span>';
-                }
-            }
-            content += '</span></p><p>' + '평가결과 ' + data.score + ' / ' + data.count + '명 참여</p>';
+            var obj = $.extend(obj,{typeClass:'type2', title:'평가해 주셔서 감사합니다.'});
+            var desc = '더 나은 콘텐츠를 제공해 드리기 위한 자료로 활용합니다.';
 
-            $('#surveyPop .lay-conts').html(content);
-            $('#surveyPop').vcModal();
+            // var content =    
+            //     '<p>평가해 주신 내용은 더 나은 콘텐츠를 제공해 드리기 위한 자료로 활용합니다.</p>' +
+            //     '<p><span class="star-rating-wrap">';
+                
+            // for (var i = 0; i < 5; i++) {
+            //     if (i < data.score) {
+            //         content += '<span class="star on"></span>';
+            //     } else {
+            //         content += '<span class="star"></span>';
+            //     }
+            // }
+            // content += '</span></p><p>' + '평가결과 ' + data.score + ' / ' + data.count + '명 참여</p>';
+
+            // $('#surveyPop .lay-conts').html(content);
+            // $('#surveyPop').vcModal();
 
             lgkorUI.hideLoading();
+
+            lgkorUI.alert(desc, obj);
         });
     }
 
@@ -72,7 +76,7 @@
                 CS.UI.$sortTotal = $contents.find('#count');
                 CS.UI.$sortSelect = $contents.find('.ui_selectbox');
                 CS.UI.$listWrap = $contents.find('.card-list-wrap');
-                CS.UI.$surveyWrap = $contents.find('.board-survey');
+                CS.UI.$surveyWrap = $contents.find('.survey-content');
 
                 _self.params = {
                     'orderType': CS.UI.$sortSelect.vcSelectbox('value'),
@@ -89,7 +93,7 @@
                 var url = CS.UI.$resultWrap.data('ajax');
 
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxData(url, this.params, function(d) {
+                lgkorUI.requestAjaxDataPost(url, this.params, function(d) {
                     var html = '',
                         data = d.data.listData,
                         page = d.data.listPage;
@@ -143,7 +147,7 @@
                             'input': text
                         });
                     } else {
-                        CS.UI.$surveyWrap.addClass('error');
+                        CS.UI.$surveyWrap.find('.ui_star_rating').addClass('error');
                     }
                 });
             }

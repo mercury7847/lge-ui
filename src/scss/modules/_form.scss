@@ -1858,11 +1858,12 @@ $input: (chk, rdo);
         font-size:0;
         > a {
             display:inline-block;
-            width:24px;
-            height:24px;
+            width:20px;
+            height:20px;
             font-size:0;
-            vertical-align:top;
-            background:url('/lg5-common/images/icons/icon-star2-off.svg') no-repeat 100%;
+            vertical-align:middle;
+            background:url('/lg5-common/images/icons/icon-star2-off.svg') no-repeat;
+            background-size:100%;
             & + a {
                 margin-left:4px;
             }
@@ -1874,8 +1875,8 @@ $input: (chk, rdo);
             display:inline-block;
             margin-left:8px;
             font-size:16px;
-            line-height:24px;
-            vertical-align:top;
+            line-height:25px;
+            vertical-align:middle;
         }
     }
     .err-msg {
