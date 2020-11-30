@@ -57,7 +57,7 @@
 
                     <div class="section manual-section">
                         <div class="tit-wrap">
-                            <h2 class="tit">제품사용 설명서 <em class="count">3</em>건
+                            <h2 class="tit">제품사용 설명서 <em id="manualCount" class="point">3</em>건
                                 @@include('./common/modules/tooltip.html', {
                                     "type" : "include",
                                     "page" : "tooltip-CSRF6008"
@@ -106,7 +106,7 @@
 
                     <div class="section driver-section">
                         <div class="tit-wrap">
-                            <h2 class="tit">드라이버/SW <em class="count">130</em>건</h2>
+                            <h2 class="tit">드라이버/SW <em id="driverCount" class="point">130</em>건</h2>
                         </div>
 
                         <!-- 데스크톱/모니터 카테고리 제품 선택 시 노출 -->
@@ -129,6 +129,23 @@
                                             <option value="">전체</option>
                                             <option value="">전체</option>
                                             <option value="">전체</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="forms">
+                                <div class="tit">
+                                    <label for="driver">드라이버 분류</label>
+                                </div>
+                                <div class="conts">
+                                    <div class="select-wrap">
+                                        <select name="driver" id="driver" class="ui_selectbox">
+                                            <option value="">통합 드라이버 설치프로그램</option>
+                                            <option value="">칩셋/패치</option>
+                                            <option value="">비디오</option>
+                                            <option value="">사운드</option>
+                                            <option value="">랜</option>
+                                            <option value="">기타</option>
                                         </select>
                                     </div>
                                 </div>
@@ -157,8 +174,12 @@
                                                 <li>2020.11.03</li>
                                             </ul>
                                             <div class="btn-area">
-                                                <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
-                                                <a href="#" class="accord-btn ui_accord_toggle" data-open-text="이전 버전 보기" data-close-text="이전 버전 닫기"><span class="ui_accord_text">이전 버전 보기</span></a>
+                                                <div class="box">
+                                                    <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                                </div>
+                                                <div class="box">
+                                                    <a href="#" class="accord-btn ui_accord_toggle" data-open-text="이전 버전 보기" data-close-text="이전 버전 닫기"><span class="ui_accord_text">이전 버전 보기</span></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -173,7 +194,9 @@
                                                         <li>2020.11.03</li>
                                                     </ul>
                                                     <div class="btn-area">
-                                                        <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                                        <div class="box">
+                                                            <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </li>
@@ -186,7 +209,9 @@
                                                         <li>2020.11.03</li>
                                                     </ul>
                                                     <div class="btn-area">
-                                                        <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                                        <div class="box">
+                                                            <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </li>
@@ -203,7 +228,9 @@
                                                 <li>2020.11.03</li>
                                             </ul>
                                             <div class="btn-area">
-                                                <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                                <div class="box">
+                                                    <a href="#" class="btn border size"><span>다운로드 1118.4MB</span></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -2,11 +2,12 @@
     <div class="info-wrap">
         <ul class="infos">
             @@for ( var i=0; i < infos.length; i++ ) {
-            <li>`+infos[i]+`</li>
+            <li>`+infos[i].dt+`<em>`+infos[i].dd+`</em></li>
             }
         </ul>
+        <p class="totals">@@total</p>
     </div>
-    <div class="tbl-layout @@size">
+    <div class="tbl-layout">
         <!-- thead -->
         <div class="thead" aria-hidden="true">
             @@for ( var j=0; j < th.length; j++ ) {

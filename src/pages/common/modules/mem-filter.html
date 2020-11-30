@@ -1,69 +1,50 @@
-<div class="form-wrap term-filter" data-url="@@url">
-    <dl class="forms">
-        <dt class="tit">@@wrapTit</dt>
-        <dd class="conts">
-            @@if ( context.dualType ) {
-            <div class="input-box-wrap">
-                <div class="input-box rdo-btn-wrap">
-                    @@for ( var i=0; i < btnRdo.length; i++ ) {
-                    <span class="rdo-wrap btn-type">
-                        <input type="radio" id="`+btnRdo[i].name+`-`+[i]+`" name="`+btnRdo[i].name+`" `+btnRdo[i].checked+`>
-                        <label for="`+btnRdo[i].name+`-`+[i]+`">`+btnRdo[i].value+`</label>
-                    </span>
-                    }
-                </div>
-                <div class="input-box size2 btn-type">
-                    <span class="input-wrap datepicker">
-                        <span class="box">
-                            <input type="text" id="date-input-start" placeholder="날짜를 선택하세요" title="구매내역 조회기간 시작날짜 선택">
-                            <span class="cell pic-btn">
-                                <button type="button" id="uc-start" class="ui_calendar" data-input-target="#date-input-start"><span class="blind">달력보기</span></button>
-                            </span>
-                        </span>
-                    </span>
-                    <span class="input-wrap datepicker">
-                        <span class="box">
-                            <input type="text" id="date-input-end" placeholder="날짜를 선택하세요" title="구매내역 조회기간 종료날짜 선택">
-                            <span class="cell pic-btn">
-                                <button type="button" id="uc-end" class="ui_calendar" data-input-target="#date-input-end"><span class="blind">달력보기</span></button>
-                            </span>
-                        </span>
-                    </span>
-                    <button type="button" id="button-calendar-search" class="btn pink"><span>조회</span></button>
-                </div>
-            </div>
-            }
-            @@if ( !context.dualType ) {
-            <div class="input-box size2 btn-type">
-                <span class="input-wrap datepicker">
-                    <span class="box">
-                        <input type="text" id="date-input-start" placeholder="날짜를 선택하세요" title="구매내역 조회기간 시작날짜 선택">
-                        <span class="cell pic-btn">
-                            <button type="button" id="uc-start" class="ui_calendar" data-input-target="#date-input-start"><span class="blind">달력보기</span></button>
-                        </span>
-                    </span>
-                </span>
-                <span class="input-wrap datepicker">
-                    <span class="box">
-                        <input type="text" id="date-input-end" placeholder="날짜를 선택하세요" title="구매내역 조회기간 종료날짜 선택">
-                        <span class="cell pic-btn">
-                            <button type="button" id="uc-end" class="ui_calendar" data-input-target="#date-input-end"><span class="blind">달력보기</span></button>
-                        </span>
-                    </span>
-                </span>
-                <button type="button" id="button-calendar-search" class="btn pink"><span>조회</span></button>
-            </div>
-            @@if ( context.radio ) {
-            <div class="input-box">
-                @@for ( var i=0; i < radio.length; i++ ) {
-                <span class="rdo-wrap">
-                    <input type="radio" id="`+radio[i].id+`" name="`+radio[i].name+`" `+radio[i].checked+` value="`+radio[i].value+`">
-                    <label for="`+radio[i].id+`">`+radio[i].label+`</label>
+@@if ( context.tabType ) {
+<div class="term-filter type2" data-url="@@url">
+}
+@@if ( !context.tabType ) {
+<div class="term-filter" data-url="@@url">
+}
+    <div class="inner">
+        <p class="filter-tit">@@wrapTit</p>
+        <div class="filter-tbl form-wrap">
+            @@if ( context.btntypeRadio ) {
+            <div class="cell rdo-cell">
+                @@for ( var i = 0; i < rdoArr.length; i++ ) {
+                <span class="rdo-wrap btn-type">
+                    <input type="radio" id="`+rdoArr[i].id+`" name="periodSelect" `+rdoArr[i].checked+`>
+                    <label for="`+rdoArr[i].id+`">`+rdoArr[i].label+`</label>
                 </span>
                 }
             </div>
             }
+            @@if ( context.datepicker ) {
+            <div class="cell">
+                <div class="datepic-tbl forms">
+                    <div class="dp-cell">
+                        <div class="input-wrap datepicker">
+                            <div class="box">
+                                <input type="text" id="date-input1" placeholder="날짜 선택">
+                                <div class="cell">
+                                    <button type="button" class="ui_calendar" data-input-target="#date-input1" data-min-date=new Date()><span class="blind">달력보기</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="bar">~</span>
+                        <div class="input-wrap datepicker">
+                            <div class="box">
+                                <input type="text" id="date-input2" placeholder="날짜 선택">
+                                <div class="cell">
+                                    <button type="button" class="ui_calendar" data-input-target="#date-input2" data-min-date=new Date()><span class="blind">달력보기</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-cell">
+                        <button type="button" class="btn"><span>조회</span></button>
+                    </div>
+                </div>
+            </div>
             }
-        </dd>
-    </dl>
+        </div>
+    </div>
 </div>
