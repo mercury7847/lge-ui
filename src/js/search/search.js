@@ -307,9 +307,9 @@
                     //검색한 검색어
                     self.$searchResultText.html(replaceText + ' 검색 결과');
                     //원래입력된 기존 검색어 이동
-                    var inputText = data.inputText;
-                    if(inputText && inputText != searchedValue) {
-                        self.$similarText.text('“' + inputText + '” 검색 결과로 이동').attr('href','#'+inputText);
+                    var inputValue = data.inputValue;
+                    if(inputValue && inputValue != searchedValue) {
+                        self.$similarText.text('“' + inputValue + '” 검색 결과로 이동').attr('href','#'+inputValue);
                         self.$similarText.show();
                     } else {
                         self.$similarText.hide();
