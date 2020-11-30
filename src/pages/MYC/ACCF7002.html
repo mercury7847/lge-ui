@@ -9,11 +9,7 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "주문/배송 조회",
-                "pageArr" : [
-                    { "page" : "구매<em class='count'>2</em>", "on" : "on" },
-                    { "page" : "케어솔루션 청약내역<em class='count'>1</em>", "on" : "" },
-                ]
+                "pageTitle": "주문/배송 조회"
             })
             <!-- mypage -->
             <div class="contents mypage">
@@ -22,41 +18,50 @@
                         @@include('./common/modules/mypage-lnb.html', {
                             "sect1" : [
                                 { "on": "on", "page": "주문/배송 조회" },
+                                { "on": "", "page": "배송지 주소 관리" },
+                                { "on": "", "page": "사은품 신청" },
                                 { "on": "", "page": "쿠폰" }
                             ]
                         })
                         <div class="lnb-contents">
-                            <div class="section">
-                                <div class="cont-box">
+                            <!-- page tab -->
+                            <div class="tabs-wrap new-type">
+                                <ul class="tabs">
+                                    <li class="on"><a href="#n">구매 <span class="count">(8)</span><em class="blind">선택됨</em></a></li>
+                                    <li><a href="#n">케어솔루션 창약 <span class="count">(3)</span></a></li>
+                                </ul>
+                            </div>
+                            <!-- // page tab -->
+                            
+                            <!-- '구매' contents -->
+                            <div class="section-wrap">
+                                <div class="sects">
                                     <!-- filter -->
                                     @@include('./common/modules/mem-filter.html', {
+                                        "tabType" : true,
                                         "wrapTit" : "조회기간",
-                                        "dualType" : true,
-                                        "btnRdo" : [
-                                            { "name" : "rdo1", "checked" : "checked" , "value" : "1주일" },
-                                            { "name" : "rdo1", "checked" : "" , "value" : "1개월" },
-                                            { "name" : "rdo1", "checked" : "" , "value" : "3개월" },
-                                            { "name" : "rdo1", "checked" : "" , "value" : "6개월" }
+                                        "btntypeRadio" : true,
+                                        "datepicker" : true,
+                                        "rdoArr" : [
+                                            { "id" : "period1", "label" : "1주일", "checked" : " " },
+                                            { "id" : "period2", "label" : "1개월", "checked" : " " },
+                                            { "id" : "period3", "label" : "3개월", "checked" : "checked" },
+                                            { "id" : "period4", "label" : "6개월", "checked" : " " },
                                         ]
                                     })
                                     <!-- // filter -->
-
-                                    <!-- nodata -->
-                                    <div class="no-data mg-type">
-                                        <p>고객님의 구매내역이 없습니다.</p>
-                                    </div>
-                                    <!-- // nodata -->
 
                                     <!-- list -->
                                     <div class="info-tbl-wrap">
                                         <!-- loop -->
                                         @@include('./common/modules/info-tbl-wrap-infos.html', {
                                             "infos" : [
-                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>2</em>건"
+                                                { "dt" : "주문일", "dd" : "2020.08.29" },
+                                                { "dt" : "주문번호", "dd" : "20200912497207" },
                                             ],
-                                            "size" : "size3",
+                                            "total" : "총 2건", 
                                             "th" : [
-                                                "제품정보", "주문상태", "취소"
+                                                "제품정보(주문/배송 상세보기)", "진행상태"
                                             ]
                                         })
                                         @@loop('./common/modules/info-tbl-wrap-loop.html', [
@@ -65,74 +70,9 @@
                                                     "blind" : "제품정보",
                                                     "productType" : {
                                                         "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                        "name" : "LG TROMM 건조기 스팀 ThinQ",
-                                                        "name2" : "RH9WGANR.AKOR",
-                                                        "more" : [
-                                                            "주요스펙1",
-                                                            "주요스펙2"
-                                                        ],
-                                                        "price" : "1,760,000원"
-                                                    }
-                                                },
-                                                "col2" : {
-                                                    "blind" : "주문상태",
-                                                    "stateType" : {
-                                                        "tit" : "배송준비중",
-                                                        "desc" : "09.01(화) 배송희망일",
-                                                        "btn" : "배송문의"
-                                                    }
-                                                },
-                                                "cancel" : "on"
-                                            },
-                                            {
-                                                "col1" : {
-                                                    "blind" : "제품정보",
-                                                    "productType" : {
-                                                        "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                        "name" : "LG 디오스 상냉장하냉동 모델명 최대 2줄까지 노출",
+                                                        "name" : "LG 디오스 상냉장하냉동",
                                                         "name2" : "OLED55BXPUA",
                                                         "more" : [
-                                                            "그레이",
-                                                            "870L"
-                                                        ],
-                                                        "price" : "1,760,000원"
-                                                    }
-                                                },
-                                                "col2" : {
-                                                    "blind" : "주문상태",
-                                                    "stateType" : {
-                                                        "tit" : "배송완료",
-                                                        "desc" : "09.01(화) 도착",
-                                                        "btn" : "제품리뷰"
-                                                    }
-                                                },
-                                                "cancel" : "on"
-                                            }
-                                        ])
-                                        @@include('./common/modules/info-tbl-wrap-bottom.html', {
-                                            "btns" : "주문/배송 상세보기"
-                                        })
-                                        <!-- // loop -->
-
-                                        <!-- loop -->
-                                        @@include('./common/modules/info-tbl-wrap-infos.html', {
-                                            "infos" : [
-                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>2</em>건"
-                                            ],
-                                            "size" : "size3",
-                                            "th" : [
-                                                "제품정보", "주문상태", "취소"
-                                            ]
-                                        })
-                                        @@loop('./common/modules/info-tbl-wrap-loop.html', [
-                                            {
-                                                "col1" : {
-                                                    "blind" : "제품정보",
-                                                    "productType" : {
-                                                        "thumb" : "/lg5-common/images/dummy/@img-product3.jpg",
-                                                        "name" : "LG DIOS 식기세척기 트루스팀 (12인용)",
-                                                        "name2" : "RH9WGANR.AKOR",
-                                                        "more" : [
                                                             "주요스펙1",
                                                             "주요스펙2"
                                                         ],
@@ -140,102 +80,50 @@
                                                     }
                                                 },
                                                 "col2" : {
-                                                    "blind" : "주문상태",
+                                                    "blind" : "진행상태",
                                                     "stateType" : {
-                                                        "tit" : "주문접수",
-                                                        "desc" : "09.01(화) 배송희망일"
+                                                        "tit" : "결제완료",
+                                                        "desc" : "배송희망일 2020.09.18"
                                                     }
-                                                },
-                                                "cancel" : "on"
+                                                }
                                             },
                                             {
                                                 "col1" : {
                                                     "blind" : "제품정보",
                                                     "productType" : {
                                                         "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                        "name" : "양문형 냉장고 야채실 덮개 (소모품)",
-                                                        "name2" : "ACQ76008501",
+                                                        "name" : "LG 디오스 냉장고 일반형 정수 필터",
+                                                        "name2" : "OLED55BXPUA",
                                                         "price" : "50,000원"
                                                     }
                                                 },
                                                 "col2" : {
-                                                    "blind" : "주문상태",
+                                                    "blind" : "진행상태",
                                                     "stateType" : {
                                                         "tit" : "배송중",
-                                                        "desc" : "09.01(화) 배송희망일",
-                                                        "btn" : "배송문의",
-                                                        "btn2" : "배송조회",
+                                                        "desc" : "배송희망일 2020.09.18",
+                                                        "btn" : "배송조회",
+                                                        "btn2" : "배송문의"
                                                     }
-                                                },
-                                                "cancel" : "off"
+                                                }
                                             }
                                         ])
                                         @@include('./common/modules/info-tbl-wrap-bottom.html', {
-                                            "btns" : "주문/배송 상세보기"
-                                        })
-                                        <!-- // loop -->
-
-                                        <!-- loop -->
-                                        @@include('./common/modules/info-tbl-wrap-infos.html', {
-                                            "infos" : [
-                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>2</em>건"
-                                            ],
-                                            "size" : "size3",
-                                            "th" : [
-                                                "제품정보", "주문상태", "취소"
-                                            ]
-                                        })
-                                        @@loop('./common/modules/info-tbl-wrap-loop.html', [
-                                            {
-                                                "col1" : {
-                                                    "blind" : "제품정보",
-                                                    "productType" : {
-                                                        "thumb" : "/lg5-common/images/dummy/@img-product4.jpg",
-                                                        "name" : "LG DIOS 식기세척기 트루스팀 (12인용)",
-                                                        "name2" : "RH9WGANR.AKOR",
-                                                        "more" : [
-                                                            "주요스펙1",
-                                                            "주요스펙2"
-                                                        ],
-                                                        "price" : "1,760,000원"
-                                                    }
-                                                },
-                                                "col2" : {
-                                                    "blind" : "주문상태",
-                                                    "stateType" : {
-                                                        "tit" : "결제완료",
-                                                        "desc" : "09.01(화) 배송희망일"
-                                                    }
-                                                },
-                                                "cancel" : "on"
-                                            },
-                                            {
-                                                "col1" : {
-                                                    "blind" : "제품정보",
-                                                    "productType" : {
-                                                        "thumb" : "/lg5-common/images/dummy/@img-product3.jpg",
-                                                        "name" : "양문형 냉장고 야채실 덮개 (소모품)",
-                                                        "name2" : "ACQ76008501",
-                                                        "price" : "50,000원"
-                                                    }
-                                                },
-                                                "col2" : {
-                                                    "blind" : "주문상태",
-                                                    "stateType" : {
-                                                        "tit" : "배송완료",
-                                                        "desc" : "09.01(화) 도착",
-                                                        "btn1" : "제품리뷰",
-                                                    }
-                                                },
-                                                "cancel" : "off"
-                                            }
-                                        ])
-                                        @@include('./common/modules/info-tbl-wrap-bottom.html', {
-                                            "btns" : "주문/배송 상세보기"
+                                            "cancel" : true
                                         })
                                         <!-- // loop -->
                                     </div>
                                     <!-- // list -->
+                                </div>
+                            </div>
+                            <!-- // '구매' contents -->
+
+
+
+                            <div class="section">
+                                <div class="cont-box">
+
+                                    
 
                                     @@include('./common/modules/pagination.html', {
                                         count: 5

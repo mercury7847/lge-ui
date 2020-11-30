@@ -16,23 +16,45 @@
 
         // title
         .info-wrap {
-            margin-bottom:16px;
+            position:relative;
+            margin-bottom:12px;
+            font-size:0;
             .infos {
-                font-size:0;
+                display:inline-block;
+                vertical-align:top;
                 > li {
                     display:inline-block;
-                    margin-left:8px;
-                    color:#222;
-                    font-size:14px;
-                    line-height:20px;
+                    @include font-medium;
+                    color:#767676;
                     vertical-align:top;
-                    &:first-child {
-                        margin-left:0;
+                    em {
+                        margin-left:4px;
+                        color:#222;
                     }
-                    .m-blind {
-                        margin-right:4px;
+                    &::after {
+                        content:' ';
+                        display:inline-block;
+                        width:1px;
+                        height:10px;
+                        margin:8px 8px 0;
+                        background:#ddd;
+                        vertical-align:top;
+                    }
+                    &:last-child::after {
+                        display:none;
                     }
                 }
+            }
+            .totals {
+                display:inline-block;
+                margin-left:8px;
+                color:#222;
+                @include font-medium;
+            }
+            .btn-link {
+                position:absolute;
+                top:0;
+                right:0;
             }
             @include mobile {
                 margin-bottom:0;
@@ -72,17 +94,23 @@
                 margin:28px 0;
             }
             .thead {
-                border-top:1px solid #ddd;
-                padding:13px 0 14px;
+                display:table;
+                width:100%;
+                table-layout:fixed;
+                border-top:2px solid #222;
                 background:#f4f4f4;
-                font-size:0;
                 .th {
-                    display:inline-block;
-                    color:#616161;
-                    font-size:14px;
-                    line-height:20px;
+                    display:table-cell;
+                    padding:16px 0;
+                    border-left:1px solid #ddd;
+                    color:#222;
+                    @include font-medium;
+                    font-weight:500;
                     text-align:center;
                     vertical-align:top;
+                    &:first-child {
+                        border-left:none;
+                    }
                 }
                 @include mobile {
                     display:none;
@@ -94,82 +122,45 @@
                 .row {
                     display:table;
                     table-layout:fixed;
+                    width:100%;
                     border-top:1px solid #ddd;
                     &:first-child {
                         border-top:none;
                     }
                     .col {
                         display:table-cell;
-                        border-right:1px solid #ddd;
+                        border-left:1px solid #ddd;
                         vertical-align:middle;
-                        &.col1 {
-                            padding:32px;
-                        }
-                    }
-                }
-                @include mobile {
-                    padding:0 16px;
-                    border-bottom:none;
-                    .row {
-                        display:block;
-                        margin-top:28px;
-                        padding-top:28px;
                         &:first-child {
-                            margin-top:0;
-                            padding-top:0;
+                            border-left:none;
                         }
-                        @include clearfix;
-                        .col {
-                            display:block;
-                            padding:0;
-                            border-right:none;
-                            &.col1 {
-                                padding:0;
-                            }
+                        &.col1 {
+                            padding:32px 48px 32px 0;
+                        }
+                        &.col2 {
+                            padding:32px 12px;
                         }
                     }
                 }
             }
-            &.size3 {
-                .row {
-                    position:relative;
-                    width:100%;
-                    padding-right:164px;
-                    @include mobile {
-                        width:auto;
-                        padding-right:0;
-                    }
-                }
-                .col1 {
-                    width:calc(100% - 164px - 164px);
-                }
-                .col2 {
-                    width:164px;
-                }
-                .col3 {
-                    width:164px;
-                }
-                @include mobile {
-                    .row {
-                        .col1 {
-                            width:auto;
-                        }
-                        .col2 {
-                            width:auto;
-                            margin:20px 0 0 84px;
-                        }
-                    }
-                }
+            // col size 
+            .col2 {
+                width:27.9%;
+                max-width:320px;
             }
+        }
+
+        // 취소신청 버튼
+        > .btn-link {
+            position:absolute;
+            top:2px;
+            right:0;
         }
 
         // 상세보기 버튼
         .btns {
-            position:absolute;
-            top:0;
-            right:0;
-            .btn-link {
-                font-weight:400;
+            @include pc {
+                display:none;
             }
             @include mobile {
                 position:relative;
@@ -194,58 +185,44 @@
 
         // 제품
         .product-info {
-            position:relative;
-            min-height:120px;
-            padding-left:136px;
-            @include mobile {
-                margin-left:-16px;
-                padding-left:100px;
-                min-height:100%;
-            }
+            display:table;
+            width:100%;
             .thumb {
-                position:absolute;
-                top:0;
-                left:0;
-                width:120px;
-                height:120px;
-                border-radius:8px;
-                overflow:hidden;
-                @include mobile {
-                    width:100px;
-                    height:100px;
-                }
-                img {
-                    width:100%;
-                    height:auto;
-                    vertical-align:top;
+                display:table-cell;
+                width:164px;
+                padding-right:24px;
+                vertical-align:middle;
+                > a {
+                    display:block;
+                    width:140px;
+                    height:140px;
+                    overflow:hidden;
+                    img {
+                        width:100%;
+                        height:auto;
+                        vertical-align:top;
+                    }
                 }
             }
             .infos {
-                position:relative;
-                .flag-wrap {
-                    margin-bottom:8px;
-                    @include mobile {
-                        margin-bottom:4px;
-                    }
-                }
+                display:table-cell;
+                vertical-align:top;
                 .name {
                     color:#222;
-                    font-size:16px;
-                    line-height:24px;
+                    @include font-medium;
                     font-weight:700;
-                    @include textEllipsisClamp(2);
                     @include mobile {
                         font-size:14px;
                         line-height:18px;
                     }
                 }
                 .e-name {
-                    color:#616161;
-                    font-size:14px;
-                    line-height:20px;
+                    color:#767676;
+                    @include font-small;
+                    font-weight:500;
                 }
                 .more {
-                    padding-top:4px;
+                    margin-top:12px;
                     ul {
                         font-size:0;
                         @include mobile {
@@ -254,25 +231,19 @@
                         li {
                             display:inline-block;
                             position:relative;
-                            margin-right:8px;
-                            padding-right:9px;
-                            color:#616161;
-                            font-size:14px;
-                            line-height:20px;
+                            color:#767676;
+                            @include font-small;
                             vertical-align:top;
                             &::after {
                                 content:' ';
-                                position:absolute;
-                                top:50%;
-                                right:0;
+                                display:inline-block;
                                 width:1px;
-                                height:12px;
-                                margin-top:-6px;
-                                background:#616161;
+                                height:10px;
+                                margin:7px 8px 0;
+                                background:#ddd;
+                                vertical-align:top;
                             }
                             &:last-child {
-                                margin-right:0;
-                                padding-right:0;
                                 &::after {
                                     display:none;
                                 }
@@ -280,49 +251,11 @@
                         }
                     }
                 }
-                .top-wrap {
-                    min-height:88px;
-                    @include mobile {
-                        min-height:auto;
-                    }
-                }
-                .btm-wrap {
-                    display:table;
-                    width:100%;
-                    .more {
-                        display:table-cell;
-                    }
-                    .count {
-                        display:table-cell;
-                        color:#616161;
-                        font-size:14px;
-                        line-height:20px;
-                        vertical-align:bottom;
-                    }
-                    .price {
-                        display:table-cell;
-                        color:#222;
-                        font-size:16px;
-                        line-height:24px;
-                        font-weight:700;
-                        text-align:right;
-                        vertical-align:bottom;
-                    }
-                    @include mobile {
-                        display:block;
-                        .more {
-                            display:block;
-                        }
-                        .count {
-                            display:block;
-                            margin-top:2px;
-                        }
-                        .price {
-                            display:block;
-                            margin-top:12px;
-                            text-align:left;
-                        }
-                    }
+                .count {
+                    margin-top:24px;
+                    color:#767676;
+                    @include font-small;
+                    font-weight:500;
                 }
                 .cancel-box {
                     position:absolute;
@@ -351,6 +284,15 @@
                     }
                 }
             }
+            .price {
+                display:table-cell;
+                padding-left:12px;
+                text-align:right;
+                @include font-large;
+                font-weight:700;
+                vertical-align:middle;
+                white-space:nowrap;
+            }
 
             &.count-type {
                 .infos {
@@ -368,9 +310,9 @@
                 font-size:0;
             }
             .tit {
-                color:#616161;
-                font-size:14px;
-                line-height:20px;
+                color:#3B9792;
+                @include font-medium;
+                font-weight:700;
                 &.cancel {
                     color:#F04E3E;
                 }
@@ -381,20 +323,19 @@
                 }
             }
             .desc {
-                color:#51B1AC;
-                font-size:14px;
-                line-height:20px;
+                color:#767676;
+                @include font-medium;
+                font-weight:500;
+                word-break:keep-all;
                 @include mobile {
                     display:inline-block;
                     vertical-align:top;
                 }
             }
             .state-btns {
+                font-size:0;
                 .btn {
-                    margin-top:4px;
-                    &:first-child {
-                        margin-top:8px;
-                    }
+                    margin:8px 4px 0;
                 }
                 .btn.btn-cancel {
                     position:absolute;

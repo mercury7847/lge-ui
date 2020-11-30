@@ -1,21 +1,3 @@
-// // 검색결과 sorting filter
-// .result-sorting-box {
-//     margin-bottom:16px;
-//     padding-top:40px;
-//     @include clearfix;
-//     .total {
-//         float:left;
-//         color:#222;
-//         font-size:16px;
-//         line-height:24px;
-//         font-weight:700;
-//     }
-//     .sort-select-wrap {
-//         float:right;
-//     }
-// }
-
-
 .lay-filter {
     float:left;
     width:215px;
@@ -634,3 +616,72 @@
     }
 }
 
+// term-filter
+.term-filter {
+    padding:24px 48px;
+    border-radius:8px;
+    background:#f4f4f4;
+    .inner {
+        @include clearfix;
+        .filter-tit {
+            float:left;
+            width:14%;
+            color:#222;
+            @include font-medium;
+            line-height:48px;
+        }
+        .filter-tbl {
+            float:left;
+            display:table;
+            width:86%;
+            .cell {
+                display:table-cell;
+                vertical-align:top;
+            }
+            .rdo-cell {
+                width:10%;
+                padding-right:24px;
+                font-size:0;
+                white-space:nowrap;
+                .rdo-wrap {
+                    margin-left:8px;
+                    &:first-child {
+                        margin-left:0;
+                    }
+                }
+            }
+        }
+        .datepic-tbl {
+            display:table;
+            width:100%;
+            .dp-cell {
+                display:table-cell;
+                font-size:0;
+                vertical-align:top;
+                .bar {
+                    display:inline-block;
+                    width:24px;
+                    height:48px;
+                    color:#222;
+                    text-align:center;
+                    @include font-medium;
+                    line-height:48px;
+                }
+                .input-wrap.datepicker {
+                    width:calc((100% - 24px) / 2);
+                    margin-top:0;
+                    input, input:read-only {
+                        background:#fff;
+                        & + .cell {
+                            background:#fff !important;
+                        }
+                    }
+                }
+            }
+            .btn-cell {
+                display:table-cell;
+                padding-left:8px;
+            }
+        }
+    }
+}
