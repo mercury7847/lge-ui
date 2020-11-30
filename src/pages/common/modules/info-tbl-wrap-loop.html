@@ -1,5 +1,10 @@
             <!-- row -->
+            @@if ( context.canceled ) {
+            <div class="row canceled"> <!-- 취소완료된 주문건 .canceled -->
+            }
+            @@if ( !context.canceled ) {
             <div class="row">
+            }
                 @@if ( context.col1 ) {
                 <div class="col col1">
                     <span class="blind">@@col1.blind</span>
@@ -8,6 +13,11 @@
                             <a href="#n"><img src="@@col1.productType.thumb" alt="@@col1.productType.name"></a>
                         </div>
                         <div class="infos">
+                            @@if ( context.col1.productType.flag ) {
+                            <div class="flag-wrap">
+                                <span class="flag">@@col1.productType.flag</span>
+                            </div>
+                            }
                             <p class="name"><a href="#n"><span class="blind">제품명</span>@@col1.productType.name</a></p>
                             <p class="e-name"><span class="blind">영문제품번호</span>@@col1.productType.name2</p>
                             @@if ( context.col1.productType.more ) {
@@ -20,9 +30,13 @@
                                 </ul>
                             </div>
                             }
+                            @@if ( context.col1.productType.count ) {
                             <p class="count">수량 : 1</p>
+                            }
                         </div>
+                        @@if ( context.col1.productType.price ) {
                         <p class="price"><span class="blind">가격</span>@@col1.productType.price</p>
+                        }
                     </div>
                 </div>
                 }
@@ -39,6 +53,7 @@
                         @@if ( context.col2.stateType.desc ) {
                         <p class="desc">@@col2.stateType.desc</p>
                         }
+                        @@if ( context.col2.stateType.btn ) {
                         <div class="state-btns">
                             @@if ( context.col2.stateType.btn ) {
                             <a href="#n" class="btn size border"><span>@@col2.stateType.btn</span></a>
@@ -50,6 +65,7 @@
                             <a href="#n" class="btn size border"><span>@@col2.stateType.btn3</span></a>
                             }                            
                         </div>
+                        }
                     </div>
                     }
                 </div>

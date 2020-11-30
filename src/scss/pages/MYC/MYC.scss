@@ -71,8 +71,8 @@
             .filters {
                 margin:64px 0 48px;
                 @include mobile {
-                    margin:0 -16px 40px;
-                    padding:24px 16px 32px;
+                    margin:0 -16px 32px;
+                    padding:24px 16px 40px;
                     border-bottom:12px solid #f4f4f4;
                 }
             }
