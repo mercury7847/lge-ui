@@ -109,7 +109,6 @@
                 border-bottom:1px solid #ddd;
                 @include mobile {
                     padding:0 16px;
-                    padding-top:4px;
                     border-bottom:none;
                 }
                 .row {
@@ -119,7 +118,7 @@
                     border-top:1px solid #ddd;
                     @include mobile {
                         display:block;
-                        padding:24px 0 32px 96px;
+                        padding:28px 0 32px 96px;
                     }
                     &:first-child {
                         border-top:none;
@@ -242,6 +241,9 @@
                 @include mobile {
                     display:block;
                     width:auto;
+                }
+                .flag-wrap {
+                    margin-bottom:4px;
                 }
                 .name {
                     color:#222;

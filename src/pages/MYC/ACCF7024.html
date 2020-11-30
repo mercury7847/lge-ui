@@ -59,7 +59,7 @@
                                             { "dt" : "주문일", "dd" : "2020.08.29" },
                                             { "dt" : "주문번호", "dd" : "20200912497207" },
                                         ],
-                                        "total" : "총 2건", 
+                                        "total" : "총 1건", 
                                         "th" : [
                                             "제품정보(주문/배송 상세보기)", "진행상태"
                                         ]
@@ -69,12 +69,12 @@
                                             "col1" : {
                                                 "blind" : "제품정보",
                                                 "productType" : {
+                                                    "flag" : "케어십",
                                                     "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
                                                     "name" : "LG 디오스 상냉장하냉동",
                                                     "name2" : "OLED55BXPUA",
                                                     "more" : [
-                                                        "주요스펙1",
-                                                        "주요스펙2"
+                                                        "Silver"
                                                     ],
                                                     "price" : "1,760,000원"
                                                 }
@@ -82,34 +82,14 @@
                                             "col2" : {
                                                 "blind" : "진행상태",
                                                 "stateType" : {
-                                                    "tit" : "결제완료",
-                                                    "desc" : "배송희망일 2020.09.18"
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "col1" : {
-                                                "blind" : "제품정보",
-                                                "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                    "name" : "LG 디오스 냉장고 일반형 정수 필터",
-                                                    "name2" : "OLED55BXPUA",
-                                                    "price" : "50,000원"
-                                                }
-                                            },
-                                            "col2" : {
-                                                "blind" : "진행상태",
-                                                "stateType" : {
-                                                    "tit" : "배송중",
-                                                    "desc" : "배송희망일 2020.09.18",
-                                                    "btn" : "배송조회",
-                                                    "btn2" : "배송문의"
+                                                    "tit" : "청약신청 완료",
                                                 }
                                             }
                                         }
                                     ])
                                     @@include('./common/modules/info-tbl-wrap-bottom.html', {
-                                        "cancel" : true
+                                        "cancel" : true,
+                                        "btns" : "청약 상세보기"
                                     })
                                     <!-- // loop -->
 
@@ -119,7 +99,7 @@
                                             { "dt" : "주문일", "dd" : "2020.08.29" },
                                             { "dt" : "주문번호", "dd" : "20200912497207" },
                                         ],
-                                        "total" : "총 2건", 
+                                        "total" : "총 3건", 
                                         "th" : [
                                             "제품정보(주문/배송 상세보기)", "진행상태"
                                         ]
@@ -129,201 +109,20 @@
                                             "col1" : {
                                                 "blind" : "제품정보",
                                                 "productType" : {
+                                                    "flag" : "케어십",
                                                     "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                    "name" : "LG 디오스 식기세척기(12인용) 일반제품 설치형",
+                                                    "name" : "LG 퓨리케어 상하좌우 냉온정수기",
                                                     "name2" : "OLED55BXPUA",
                                                     "more" : [
-                                                        "주요스펙1",
-                                                        "주요스펙2"
+                                                        "Silver"
                                                     ],
-                                                    "price" : "1,760,000원"
-                                                }
-                                            },
-                                            "col2" : {
-                                                "blind" : "진행상태",
-                                                "stateType" : {
-                                                    "tit" : "배송중",
-                                                    "desc" : "배송희망일 2020.09.18",
-                                                    "btn" : "배송문의"
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "col1" : {
-                                                "blind" : "제품정보",
-                                                "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                    "name" : "LG 디오스 냉장고 일반형 정수 필터",
-                                                    "name2" : "OLED55BXPUA",
-                                                    "price" : "50,000원"
-                                                }
-                                            },
-                                            "col2" : {
-                                                "blind" : "진행상태",
-                                                "stateType" : {
-                                                    "tit" : "배송완료",
-                                                    "desc" : "배송희망일 2020.09.18",
-                                                    "btn" : "반품신청",
-                                                    "btn2" : "제품리뷰", 
-                                                    "btn3" : "배송조회"
-                                                }
-                                            }
-                                        }
-                                    ])
-                                    @@include('./common/modules/info-tbl-wrap-bottom.html', {
-                                    })
-                                    <!-- // loop -->
-
-                                    <!-- loop -->
-                                    @@include('./common/modules/info-tbl-wrap-infos.html', {
-                                        "infos" : [
-                                            { "dt" : "주문일", "dd" : "2020.08.29" },
-                                            { "dt" : "주문번호", "dd" : "20200912497207" },
-                                        ],
-                                        "total" : "총 2건", 
-                                        "th" : [
-                                            "제품정보(주문/배송 상세보기)", "진행상태"
-                                        ]
-                                    })
-                                    @@loop('./common/modules/info-tbl-wrap-loop.html', [
-                                        {
-                                            "col1" : {
-                                                "blind" : "제품정보",
-                                                "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                    "name" : "LG 디오스 식기세척기(12인용) 일반제품 설치형",
-                                                    "name2" : "OLED55BXPUA",
-                                                    "more" : [
-                                                        "주요스펙1",
-                                                        "주요스펙2"
-                                                    ],
-                                                    "price" : "1,760,000원"
-                                                }
-                                            },
-                                            "col2" : {
-                                                "blind" : "진행상태",
-                                                "stateType" : {
-                                                    "tit" : "결제완료",
-                                                    "desc" : "배송희망일 2020.09.18"
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "col1" : {
-                                                "blind" : "제품정보",
-                                                "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                    "name" : "LG 디오스 냉장고 일반형 정수 필터",
-                                                    "name2" : "OLED55BXPUA",
-                                                    "price" : "50,000원"
-                                                }
-                                            },
-                                            "col2" : {
-                                                "blind" : "진행상태",
-                                                "stateType" : {
-                                                    "tit" : "배송중",
-                                                    "desc" : "배송희망일 2020.09.18",
-                                                    "btn" : "배송문의"
-                                                }
-                                            }
-                                        }
-                                    ])
-                                    @@include('./common/modules/info-tbl-wrap-bottom.html', {
-                                        "cancel" : true
-                                    })
-                                    <!-- // loop -->
-
-                                    <!-- loop -->
-                                    @@include('./common/modules/info-tbl-wrap-infos.html', {
-                                        "infos" : [
-                                            { "dt" : "주문일", "dd" : "2020.08.29" },
-                                            { "dt" : "주문번호", "dd" : "20200912497207" },
-                                        ],
-                                        "total" : "총 2건", 
-                                        "th" : [
-                                            "제품정보(주문/배송 상세보기)", "진행상태"
-                                        ]
-                                    })
-                                    @@loop('./common/modules/info-tbl-wrap-loop.html', [
-                                        {
-                                            "col1" : {
-                                                "blind" : "제품정보",
-                                                "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                    "name" : "LG 디오스 식기세척기(12인용) 일반제품 설치형",
-                                                    "name2" : "OLED55BXPUA",
-                                                    "more" : [
-                                                        "주요스펙1",
-                                                        "주요스펙2"
-                                                    ],
-                                                    "price" : "1,760,000원"
-                                                }
-                                            },
-                                            "col2" : {
-                                                "blind" : "진행상태",
-                                                "stateType" : {
-                                                    "tit" : "배송중",
-                                                    "desc" : "배송희망일 2020.09.18",
-                                                    "btn" : "배송문의"
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "col1" : {
-                                                "blind" : "제품정보",
-                                                "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                    "name" : "LG 디오스 냉장고 일반형 정수 필터",
-                                                    "name2" : "OLED55BXPUA",
-                                                    "price" : "50,000원"
-                                                }
-                                            },
-                                            "col2" : {
-                                                "blind" : "진행상태",
-                                                "stateType" : {
-                                                    "tit" : "배송중",
-                                                    "desc" : "배송희망일 2020.09.18",
-                                                    "btn" : "배송조회",
-                                                    "btn2" : "배송문의"
-                                                }
-                                            }
-                                        }
-                                    ])
-                                    @@include('./common/modules/info-tbl-wrap-bottom.html', {
-                                    })
-                                    <!-- // loop -->
-
-                                    <!-- loop -->
-                                    @@include('./common/modules/info-tbl-wrap-infos.html', {
-                                        "infos" : [
-                                            { "dt" : "주문일", "dd" : "2020.08.29" },
-                                            { "dt" : "주문번호", "dd" : "20200912497207" },
-                                        ],
-                                        "total" : "총 2건", 
-                                        "th" : [
-                                            "제품정보(주문/배송 상세보기)", "진행상태"
-                                        ]
-                                    })
-                                    @@loop('./common/modules/info-tbl-wrap-loop.html', [
-                                        {
-                                            "col1" : {
-                                                "blind" : "제품정보",
-                                                "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                    "name" : "LG 디오스 식기세척기(12인용) 일반제품 설치형",
-                                                    "name2" : "OLED55BXPUA",
-                                                    "more" : [
-                                                        "주요스펙1",
-                                                        "주요스펙2"
-                                                    ],
-                                                    "price" : "1,760,000원"
                                                 }
                                             },
                                             "col2" : {
                                                 "blind" : "진행상태",
                                                 "stateType" : {
                                                     "tit" : "배송준비중",
-                                                    "desc" : "배송희망일 2020.09.18",
+                                                    "desc" : "설치희망일 2020.09.18",
                                                     "btn" : "배송문의"
                                                 }
                                             }
@@ -333,21 +132,50 @@
                                                 "blind" : "제품정보",
                                                 "productType" : {
                                                     "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                    "name" : "LG 디오스 냉장고 일반형 정수 필터",
+                                                    "name" : "LG TROMM 스타일러 블랙에디션",
                                                     "name2" : "OLED55BXPUA",
-                                                    "price" : "50,000원"
+                                                    "more" : [
+                                                        "Black"
+                                                    ],
+                                                    "price" : "1,767,030원"
                                                 }
                                             },
                                             "col2" : {
                                                 "blind" : "진행상태",
                                                 "stateType" : {
-                                                    "titRed" : "취소접수"
+                                                    "tit" : "배송완료",
+                                                    "desc" : "설치희망일 2020.09.18",
+                                                    "btn" : "사용후기",
+                                                    "btn2" : "계약현황"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "col1" : {
+                                                "blind" : "제품정보",
+                                                "productType" : {
+                                                    "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                    "name" : "LG 퓨리케어 공기청정기",
+                                                    "name2" : "OLED55BXPUA",
+                                                    "more" : [
+                                                        "Black"
+                                                    ],
+                                                    "price" : "1,000,000원"
+                                                }
+                                            },
+                                            "col2" : {
+                                                "blind" : "진행상태",
+                                                "stateType" : {
+                                                    "tit" : "배송중",
+                                                    "desc" : "설치희망일 2020.09.18",
+                                                    "btn" : "배송문의"
                                                 }
                                             }
                                         }
                                     ])
                                     @@include('./common/modules/info-tbl-wrap-bottom.html', {
-                                        "cancel" : true
+                                        "cancel" : true,
+                                        "btns" : "청약 상세보기"
                                     })
                                     <!-- // loop -->
 
@@ -357,7 +185,7 @@
                                             { "dt" : "주문일", "dd" : "2020.08.29" },
                                             { "dt" : "주문번호", "dd" : "20200912497207" },
                                         ],
-                                        "total" : "총 2건", 
+                                        "total" : "총 1건", 
                                         "th" : [
                                             "제품정보(주문/배송 상세보기)", "진행상태"
                                         ]
@@ -367,43 +195,29 @@
                                             "col1" : {
                                                 "blind" : "제품정보",
                                                 "productType" : {
+                                                    "flag" : "케어십",
                                                     "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                    "name" : "LG 디오스 식기세척기(12인용) 일반제품 설치형",
+                                                    "name" : "LG 퓨리케어 상하좌우 냉온정수기",
                                                     "name2" : "OLED55BXPUA",
                                                     "more" : [
-                                                        "주요스펙1",
-                                                        "주요스펙2"
+                                                        "Silver"
                                                     ],
-                                                    "price" : "1,760,000원"
                                                 }
                                             },
                                             "col2" : {
                                                 "blind" : "진행상태",
                                                 "stateType" : {
-                                                    "titRed" : "반품접수"
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "canceled" : true,
-                                            "col1" : {
-                                                "blind" : "제품정보",
-                                                "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
-                                                    "name" : "LG 디오스 냉장고 일반형 정수 필터",
-                                                    "name2" : "OLED55BXPUA",
-                                                    "price" : "50,000원"
-                                                }
-                                            },
-                                            "col2" : {
-                                                "blind" : "진행상태",
-                                                "stateType" : {
-                                                    "tit" : "취소완료",
+                                                    "tit" : "계약생성 완료",
+                                                    "desc" : "설치희망일 2020.09.18",
+                                                    "btn" : "사용후기",
+                                                    "btn2" : "계약현황"
                                                 }
                                             }
                                         }
                                     ])
                                     @@include('./common/modules/info-tbl-wrap-bottom.html', {
+                                        "cancel" : true,
+                                        "btns" : "청약 상세보기"
                                     })
                                     <!-- // loop -->
                                 </div>
@@ -421,13 +235,14 @@
                                         <h6 class="tit">주문/배송 진행단계 안내</h6>
                                     </div>
                                     @@include('./common/modules/contract-steps.html', {
-                                        "delivery" : true,
                                         "steps" : [
+                                            { "dt" : "청약신청 완료", "dd" : "청약신청이 완료되었습니다." },
                                             { "dt" : "주문접수", "dd" : "주문하신 제품 결제를 완료해주세요." },
                                             { "dt" : "결제완료", "dd" : "기다려주시면 빠르게 주문정보를 확인할게요." },
                                             { "dt" : "배송준비중", "dd" : "주문 제품을 준비중입니다." },
-                                            { "dt" : "배송중", "dd" : "제품이 곧 도착합니다.<br>배송 기사의 연락을 받아주세요." },
-                                            { "dt" : "배송완료", "dd" : "받으신 제품의 리뷰를 남겨주세요." }
+                                            { "dt" : "배송중", "dd" : "제품이 곧 도착합니다.<br>배송 기사가 연락 드릴 거예요." },
+                                            { "dt" : "배송완료", "dd" : "받으신 제품의 리뷰를 남겨주세요." },
+                                            { "dt" : "계약생성 완료", "dd" : "계약 생성이 완료되었어요. 계약 현황을 확인해보세요." },
                                         ]
                                     })
                                     @@include('./common/modules/bullet-list.html', {

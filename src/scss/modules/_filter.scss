@@ -679,7 +679,11 @@
                 }
                 .rdo-cell {
                     .rdo-wrap {
+                        width:calc((100% - 18px) / 4);
                         margin-left:6px;
+                        input + label {
+                            width:100%;
+                        }
                     }
                 }
             }
