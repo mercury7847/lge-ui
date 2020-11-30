@@ -16,6 +16,11 @@
     .textEllipsis {
         @include textEllipsis;
     }
+    .textEllipsisClamp {
+        &2 {
+            @include textEllipsisClamp(2);
+        }
+    }
     &-list {
         width:100%;
         min-width: 720px;
@@ -40,6 +45,18 @@
         td {
             color:#767676;
             line-height:24px;
+        }
+        &.type-A {
+            th,
+            td {
+                border-left: transparent;
+            }
+            th {
+                padding: 16px 24px;
+            }
+            td {
+                padding: 24px;
+            }
         }
         @include mobile {
             th, td {

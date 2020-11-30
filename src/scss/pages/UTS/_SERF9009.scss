@@ -1,8 +1,9 @@
 .search-not-result {
     clear: both;
     .no-data {
-        padding: 34px 0 80px;
+        padding: 34px 0 12px;
         p {
+            padding-top: 0;
             font-weight: 500;
             @include font-small;
             &:before {
@@ -11,12 +12,11 @@
             span {
                 display: block;
                 margin-bottom: 16px;
-                font-weight: 700;
                 font-size: $font-large-2;
                 line-height: 26px;
                 color: $color-default;
                 em {
-                    color: $color-primary;
+                    font-weight: 700;
                 }
             }
         }
