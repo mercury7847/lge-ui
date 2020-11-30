@@ -1,0 +1,17 @@
+<div class="component-wrap">
+	<!--
+		[component-wrap 옵션]
+		1. 여백
+		.zero-top : 상단여백 없음
+		.zero-btm : 하단여백 없음
+	-->
+	<section class="component KRP0034">
+		<div class="component-inner">
+			<div class="tag-list">
+				@@for (var i=0; i < context.hashtag.length; i++ ) {
+					<a href="#n" class="hashtag">`+hashtag[i]+`</a>
+				}
+			</div>
+		</div>
+	</section>
+</div> <!-- //.component-wrap-->
