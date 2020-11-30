@@ -1,14 +1,13 @@
 .info-tbl-wrap {
     .box {
         position:relative;
-        margin-top:32px;
+        margin-top:48px;
         @include mobile {
             position:relative;
-            margin-top:16px;
-            padding-bottom:20px;
+            margin-top:24px;
             overflow:hidden;
             border-radius:8px;
-            box-shadow:0 6px 30px 0 rgba(0, 0, 0, .12);
+            box-shadow:2px 4px 16px 0 rgba(0, 0, 0, .14);
         }
         &:first-child {
             margin-top:0;
@@ -58,41 +57,30 @@
             }
             @include mobile {
                 margin-bottom:0;
-                padding:18px 16px;
+                padding:16px;
                 border:1px solid #ddd;
                 border-radius:8px 8px 0 0;
                 background:#f4f4f4;
                 .infos {
-                    float:none;
-                    @include clearfix;
-                    text-align:right;
+                    vertical-align:bottom;
                     > li {
-                        color:#616161;
-                        .m-blind {
-                            position:absolute;
-                            z-index:-10;
-                            width:0 !important;
-                            height:0 !important;
-                            overflow:hidden !important;
-                            font-size:medium;
-                            line-height:normal;
-                            word-break:break-all;
-                        }
+                        display:block;
                         &:first-child {
-                            float:left;
-                            color:#222;
-                            font-weight:500;
+                            margin-top:0;
+                        }
+                        &::after {
+                            display:none;
                         }
                     }
+                }
+                .totals {
+                    vertical-align:bottom;
                 }
             }
         }
 
         // display table box
         .tbl-layout {
-            @include mobile {
-                margin:28px 0;
-            }
             .thead {
                 display:table;
                 width:100%;
@@ -119,11 +107,20 @@
             .tbody {
                 position:relative;
                 border-bottom:1px solid #ddd;
+                @include mobile {
+                    padding:0 16px;
+                    padding-top:4px;
+                    border-bottom:none;
+                }
                 .row {
                     display:table;
                     table-layout:fixed;
                     width:100%;
                     border-top:1px solid #ddd;
+                    @include mobile {
+                        display:block;
+                        padding:24px 0 32px 96px;
+                    }
                     &:first-child {
                         border-top:none;
                     }
@@ -140,6 +137,14 @@
                         &.col2 {
                             padding:32px 12px;
                         }
+                        @include mobile {
+                            display:block;
+                            border-left:none;
+                            &.col1,
+                            &.col2 {
+                                padding:0;
+                            }
+                        }
                     }
                 }
             }
@@ -147,6 +152,10 @@
             .col2 {
                 width:27.9%;
                 max-width:320px;
+                @include mobile {
+                    width:100%;
+                    max-width:100%;
+                }
             }
         }
 
@@ -155,6 +164,10 @@
             position:absolute;
             top:2px;
             right:0;
+            @include mobile {
+                top:16px;
+                right:16px;
+            }
         }
 
         // 상세보기 버튼
@@ -164,20 +177,22 @@
             }
             @include mobile {
                 position:relative;
-                top:auto;
-                right:auto;
-                margin-bottom:-20px;
                 border-top:1px solid #ddd;
                 .btn-link {
                     display:block;
                     padding:18px 0;
                     color:#616161;
                     font-size:14px;
-                    line-height:18px;
+                    line-height:22px;
                     font-weight:500;
                     text-align:center;
                     &::after {
-                        display:none;
+                        display:inline-block;
+                        position:relative;
+                        right:auto;
+                        top:auto;
+                        margin-top:1px;
+                        vertical-align:top;
                     }
                 }
             }
@@ -187,11 +202,24 @@
         .product-info {
             display:table;
             width:100%;
+            @include mobile {
+                display:block;
+                position:relative;
+            }
             .thumb {
                 display:table-cell;
                 width:164px;
                 padding-right:24px;
                 vertical-align:middle;
+                @include mobile {
+                    display:block;
+                    position:absolute;
+                    left:-96px;
+                    top:0;
+                    width:100px;
+                    margin-left:-16px;
+                    padding-right:0;
+                }
                 > a {
                     display:block;
                     width:140px;
@@ -202,18 +230,30 @@
                         height:auto;
                         vertical-align:top;
                     }
+                    @include mobile {
+                        width:100px;
+                        height:100px;
+                    }
                 }
             }
             .infos {
                 display:table-cell;
                 vertical-align:top;
+                @include mobile {
+                    display:block;
+                    width:auto;
+                }
                 .name {
                     color:#222;
                     @include font-medium;
                     font-weight:700;
                     @include mobile {
-                        font-size:14px;
-                        line-height:18px;
+                        font-size:15px;
+                        line-height:23px;
+                    }
+                    a {
+                        display:inline-block;
+                        vertical-align:top;
                     }
                 }
                 .e-name {
@@ -223,16 +263,17 @@
                 }
                 .more {
                     margin-top:12px;
+                    @include mobile {
+                        margin-top:4px;
+                    }
                     ul {
                         font-size:0;
-                        @include mobile {
-                            padding-top:8px;
-                        }
                         li {
                             display:inline-block;
                             position:relative;
                             color:#767676;
                             @include font-small;
+                            font-weight:500;
                             vertical-align:top;
                             &::after {
                                 content:' ';
@@ -242,6 +283,9 @@
                                 margin:7px 8px 0;
                                 background:#ddd;
                                 vertical-align:top;
+                                @include mobile {
+                                    margin:6px 6px 0;
+                                }
                             }
                             &:last-child {
                                 &::after {
@@ -256,6 +300,9 @@
                     color:#767676;
                     @include font-small;
                     font-weight:500;
+                    @include mobile {
+                        margin-top:2px;
+                    }
                 }
                 .cancel-box {
                     position:absolute;
@@ -292,6 +339,14 @@
                 font-weight:700;
                 vertical-align:middle;
                 white-space:nowrap;
+                @include mobile {
+                    display:block;
+                    margin-top:12px;
+                    padding-left:0;
+                    font-size:18px;
+                    line-height:27px;
+                    text-align:left;
+                }
             }
 
             &.count-type {
@@ -302,11 +357,39 @@
                 }
             }
         }
+
+        .row.canceled {
+            .product-info {
+                .thumb {
+                    > a img {
+                        opacity:.3;
+                    }
+                }
+                .infos {
+                    .name {
+                        color:#aaa;
+                    }
+                    .e-name {
+                        color:#aaa;
+                    }
+                    .more ul li {
+                        color:#aaa;
+                    }
+                    .count {
+                        color:#aaa;
+                    }
+                }
+                .price {
+                    color:#aaa;
+                }
+            }
+        }
     
         // 상태
         .state-box {
             text-align:center;
             @include mobile {
+                margin-top:24px;
                 font-size:0;
             }
             .tit {
@@ -337,44 +420,24 @@
                 .btn {
                     margin:8px 4px 0;
                 }
-                .btn.btn-cancel {
-                    position:absolute;
-                    top:50%;
-                    right:82px;
-                    margin-top:0;
-                    transform:translateY(-50%) translateX(50%);
-                }
                 @include mobile {
-                    margin-top:12px;
+                    margin-top:6px;
+                    margin-left:-3px;
                     .btn {
-                        width:calc((100% - 6px) / 2);
-                        margin-top:0;
-                        margin-left:6px;
-                        &:first-child {
-                            margin-top:0;
-                            margin-left:0;
-                        }
-                    }
-                    .btn.btn-cancel {
-                        position:relative;
-                        top:initial;
-                        right:initial;
-                        display:inline-block;
-                        margin-right:0;
-                        transform:initial;
-                        // &:disabled {
-                        //     display:none;
-                        // }
-                    }
-                    .btn:nth-child(2) ~ .btn {
-                        width:100%;
-                        margin-top:6px;
-                        margin-left:0;
+                        margin:6px 3px 0;
                     }
                 }
             }
             @include mobile {
                 text-align:left;
+            }
+        }
+
+        .row.canceled {
+            .state-box {
+                .tit {
+                    color:#aaa;
+                }
             }
         }
 
@@ -392,30 +455,46 @@
 
 // 청약 계약 진행단계 안내
 .contract-steps {
-    overflow:hidden;
     > ol {
-        margin-top:-24px;
+        position:relative;
         font-size:0;
-        @include mobile {
-            margin-top:0;
-        }
         .steps {
             display:inline-block;
             position:relative;
-            width:164px;
-            margin-top:24px;
-            margin-right:40px;
-            padding-right:24px;
+            width:234px;
+            padding-right:94px;
             vertical-align:top;
+            @include mobile {
+                display:block;
+                width:100%;
+                min-height:48px;
+                padding-left:68px;
+                padding-right:0;
+                padding-bottom:40px;
+            }
+            &:last-child {
+                width:210px;
+                @include mobile {
+                    width:100%;
+                    padding-bottom:0;
+                }
+            }
             &::before {
                 content:' ';
                 display:block;
                 width:80px;
                 height:80px;
                 border-radius:50%;
-                margin-bottom:12px;
+                margin-bottom:16px;
                 overflow:hidden;
                 background-size:100%;
+                @include mobile {
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    width:48px;
+                    height:48px;
+                }
             }
             @for $i from 1 through 7 {
                 &.cs#{$i}::before {
@@ -425,75 +504,36 @@
             &::after {
                 content:' ';
                 position:absolute;
-                top:99px;
-                right:9px;
-                width:0;
-                height:0;
-                border-top:5px solid transparent;
-                border-bottom:5px solid transparent;
-                border-left:6px solid #222;
-            }
-            &:last-child {
-                width:138px;
-                margin-right:0;
-                padding-right:0;
-                &::after {
-                    display:none;
+                top:38px;
+                left:80px;
+                right:0;
+                height:4px;
+                background:#f4f4f4;
+                @include mobile {
+                    top:40px;
+                    left:23px;
+                    width:3px;
+                    height:auto;
+                    bottom:0;
                 }
             }
-            @include mobile {
-                display:block;
-                width:100%;
-                min-height:40px;
-                margin-top:0;
-                margin-bottom:40px;
-                padding-right:0;
-                padding-left:80px;
-                &::before {
-                    position:absolute;
-                    top:0;
-                    left:20px;
-                    width:40px;
-                    height:40px;
-                    margin-bottom:0;
-                }
-                &::after {
-                    top:initial;
-                    bottom:-32px;
-                    left:50%;
-                    width:24px;
-                    height:24px;
-                    margin-left:-12px;
-                    border:none;
-                    background-image:url('/lg5-common/images/icons/icon-btn-arrow-bottom.svg');
-                    background-size:100%;
-                }
-                &:last-child {
-                    width:100%;
-                    margin-bottom:0;
-                }
+            &:last-child::after {
+                display:none;
             }
             dl {
                 dt {
                     color:#222;
-                    font-size:16px;
-                    line-height:24px;
+                    @include font-medium;
                     font-weight:500;
-                    @include mobile {
-                        font-size:14px;
-                        line-height:18px;
-                        font-weight:700;
-                    }
                 }
                 dd {
-                    margin-top:4px;
-                    color:#616161;
-                    font-size:14px;
-                    line-height:20px;
+                    margin-top:8px;
+                    color:#767676;
+                    @include font-small;
+                    font-weight:500;
+                    word-break:keep-all;
                     @include mobile {
-                        color:#222;
-                        margin-top:2px;
-                        line-height:18px;
+                        margin-top:4px;
                     }
                 }
             }

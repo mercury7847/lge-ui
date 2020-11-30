@@ -1,5 +1,10 @@
             <!-- row -->
+            @@if ( context.canceled ) {
+            <div class="row canceled"> <!-- 취소완료된 주문건 .canceled -->
+            }
+            @@if ( !context.canceled ) {
             <div class="row">
+            }
                 @@if ( context.col1 ) {
                 <div class="col col1">
                     <span class="blind">@@col1.blind</span>
@@ -39,6 +44,7 @@
                         @@if ( context.col2.stateType.desc ) {
                         <p class="desc">@@col2.stateType.desc</p>
                         }
+                        @@if ( context.col2.stateType.btn ) {
                         <div class="state-btns">
                             @@if ( context.col2.stateType.btn ) {
                             <a href="#n" class="btn size border"><span>@@col2.stateType.btn</span></a>
@@ -50,6 +56,7 @@
                             <a href="#n" class="btn size border"><span>@@col2.stateType.btn3</span></a>
                             }                            
                         </div>
+                        }
                     </div>
                     }
                 </div>
