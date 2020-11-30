@@ -2,6 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTS/UTS"],
+        pageJS: ["search/search"]
     })
     <!-- pageJS: ["search/search"] -->
 <body>
@@ -10,7 +11,7 @@
 
         <div class="container">
             <!-- 통합검색 -->
-            <div class="contents search" data-url-timer="/lg5-common/data-ajax/search/searchTimer.json" data-url-search="/lg5-common/data-ajax/search/search_all.json" data-url-wish="#">
+            <div class="contents search" data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json" data-search-url="/lg5-common/data-ajax/search/search_all.json" data-url-wish="#">
                 <!-- 검색 영역 -->
                 @@include('./common/modules/search.html', {
                     "value" : "노크온 매직스페이스",
