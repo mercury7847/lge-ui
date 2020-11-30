@@ -39,7 +39,7 @@ var res = {
 			//"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
 			//"KRC0009_Exciting Promotion Offers" : ["/html/components/KRC0009.html","","검수완료"],
 			//"KRC0010_Recommended Promotions" : ["/html/components/KRC0010.html","","검수완료"],
-			"KRC0011_PDP_FAQ_Static" : ["/html/components/KRC0011.html","","검수요청"],
+			"KRC0011_PDP_FAQ_Static" : ["/html/components/KRC0011.html","","검수완료"],
 			"KRC0012_Image - Text(folding feature)_Static" : ["/html/components/KRC0012.html","","진행중"],
 			"KRC0013_Side Image - text" : ["/html/components/KRC0013.html","","검수완료"],
 			"KRC0014_Side Image(2 - Text)" : ["/html/components/KRC0014.html","","검수완료"],
@@ -82,12 +82,12 @@ var res = {
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","검수완료"],
 			"KRP0005_Sticky chat_Static" : ["/html/components/floating.html","","검수완료"],
-			"KRP0008_Responsive UI" : ["/html/components/KRP0008.html","","검수요청"],
+			"KRP0008_Responsive UI" : ["/html/components/KRP0008.html","","검수완료"],
 			"KRP0009_Product List Products List : No Filter" : ["/html/components/KRP0009.html","","검수완료"],
 			"KRP0010_Product Summary (no-img)" : ["/html/components/KRP0010.html","","진행중"],
 			"KRP0012_PDP Tab Anchor" : ["/html/components/KRP0012.html","","검수완료"],
 			// "KRP0013_PDP Bundle" : ["/html/components/KRP0013.html","","검수완료"],
-			"KRP0014_PDP Specs" : ["/html/components/KRP0014.html","","검수요청"],
+			"KRP0014_PDP Specs" : ["/html/components/KRP0014.html","","검수완료"],
 			"KRP0015_PDP Reviews" : ["/html/components/KRP0015.html","","검수완료"],
 			"KRP0016_PDP Support - B2C" : ["/html/components/KRP0016.html","","검수완료"],
 			"KRP0017_Promotion List" : ["/html/components/KRP0017.html","","검수완료"],
@@ -107,15 +107,15 @@ var res = {
 		"Page" : {
 			"공통(UTS)" : {
 				"통합검색" : {
-					"검색중" : ["/html/UTS/SERF9001.html","","검수요청"],
+					"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
 					"검색결과 있음" : {
-						"검색창 레이어 확인용" : ["/html/UTS/SERF9002-1.html","","검수요청"],
-						"전체" : ["/html/UTS/SERF9002.html","","검수요청"],
-						"제품/케어솔루션" : ["/html/UTS/SERF9003.html","","검수요청"],
+						"검색창 레이어 확인용" : ["/html/UTS/SERF9002-1.html","","검수완료"],
+						"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
+						"제품/케어솔루션" : ["/html/UTS/SERF9003.html","","검수완료"],
 						// "케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
-						"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수요청"],
-						"스토리" : ["/html/UTS/SERF9006.html","","검수요청"],
-						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수요청"],
+						"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수완료"],
+						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
+						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
 						//"고객지원" : ["/html/UTS/SERF9008.html","","검수요청"],
 					},
 					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
@@ -181,42 +181,42 @@ var res = {
 			},
 			"마이페이지(MYC)" : {
 				"쇼핑 관리" : {
-					// "주문/배송내역 조회(리스트)" : ["/html/MYC/ACCF7002.html","","진행중"],
-					// "주문/배송내역 조회(상세)" : ["/html/MYC/ACCF7003.html","","진행중"],
-					// "신청내역(리스트-케어솔루션)" : ["/html/MYC/ACCF7024.html","","진행중"],
-					// "신청내역(상세-케어솔루션)" : ["/html/MYC/ACCF7065.html","","진행중"],
-					// "취소신청팝업, alert" : ["/html/MYC/ACCF7002_popup.html","","진행중"],
+					"주문/배송내역 조회(리스트)" : ["/html/MYC/ACCF7002.html","","진행중"],
+					"주문/배송내역 조회(상세)" : ["/html/MYC/ACCF7003.html","","진행중"],
+					"신청내역(리스트-케어솔루션)" : ["/html/MYC/ACCF7024.html","","진행중"],
+					"신청내역(상세-케어솔루션)" : ["/html/MYC/ACCF7065.html","","진행중"],
+					"취소신청팝업, alert" : ["/html/MYC/ACCF7002_popup.html","","진행중"],
 				},
 				"케어솔루션" : {
 					// "월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
-					"계약현황" : ["/html/MYC/ACCF7025.html","","검수요청"],
-					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","검수요청"],
-					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","검수요청"],
-					"납부내역" : ["/html/MYC/ACCF7027.html","","검수요청"],
-					"방문 알리미" : ["/html/MYC/ACCF7030.html","","검수요청"],
+					"계약현황" : ["/html/MYC/ACCF7025.html","","검수완료"],
+					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","검수완료"],
+					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","검수완료"],
+					"납부내역" : ["/html/MYC/ACCF7027.html","","검수완료"],
+					"방문 알리미" : ["/html/MYC/ACCF7030.html","","검수완료"],
 					// "방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]
 				},
 				"관심목록" : {
-					// "최근 본 제품" : ["/html/MYC/ACCF7011.html","","진행중"],
-					// "찜한 제품" : ["/html/MYC/ACCF7013.html","","진행중"]
+					"최근 본 제품" : ["/html/MYC/ACCF7011.html","","진행중"],
+					"찜한 제품" : ["/html/MYC/ACCF7013.html","","진행중"]
 				},
 				"제품 관리" : {
-					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","검수요청"],
-					"보유제품 리스트 화면 내 팝업" : ["/html/MYC/ACCF7033_popup.html","","검수요청"],
+					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","검수완료"],
+					"보유제품 리스트 화면 내 팝업" : ["/html/MYC/ACCF7033_popup.html","","검수완료"],
 					// "제품/영수증 등록(제품 탭)" : ["/html/MYC/ACCF7036.html","","진행중"],
 					// "제품/영수증 등록(영수증 탭)" : ["/html/MYC/ACCF7037.html","","진행중"],
 					// "등록완료" : ["/html/MYC/ACCF7064.html","","진행중"]
 				},
 				"활동 내역" : {
-					// "구독" : ["/html/MYC/ACCF7017.html","","진행중"],
-					// "쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
-					// "관심 스토리" : ["/html/MYC/ACCF7063.html","","진행중"]
+					"구독" : ["/html/MYC/ACCF7017.html","","진행중"],
+					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
+					"관심 스토리" : ["/html/MYC/ACCF7063.html","","진행중"]
 				},
 				"멤버십 관리" : {
-					// "멤버십 가입 정보" : ["/html/MYC/ACCF7039.html","","진행중"],
-					// "멤버십 포인트 조회" : ["/html/MYC/ACCF7052.html","","진행중"]
+					"멤버십 가입 정보" : ["/html/MYC/ACCF7039.html","","진행중"],
+					"멤버십 포인트 조회" : ["/html/MYC/ACCF7052.html","","진행중"]
 				},
-				// "알림" : ["/html/MYC/ACCF7062.html","","진행중"]
+				"알림" : ["/html/MYC/ACCF7062.html","","진행중"]
 			},
 			"고객지원(CS)" : {
 				"센터/매장찾기" : {
@@ -225,7 +225,7 @@ var res = {
 					//"매장상담 신청" : ["/html/CS/CSRF6042.html","","진행중"]
 				},
 				"공지사항" : {
-					"FAQ" : ["/html/CS/CSRF6043.html","","검수요청"]
+					"FAQ" : ["/html/CS/CSRF6043.html","","검수완료"]
 				}
 			},
 			"장바구니(UTC)" : {
