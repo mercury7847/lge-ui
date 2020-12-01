@@ -12,7 +12,7 @@
                     '</div>' +
                     '{{# } #}}' +
                     '<p class="tit">{{title}}</p>' +
-                    '<ul class="infos">' +
+                    '<ul class="options">' +
                         '<li>{{date}}</li>' +
                         '<li>조회 {{view}}</li>' +
                     '</ul>' +
@@ -25,7 +25,7 @@
             params: {},
             init: function() {
                 var _self = this,
-                    $contents = $('.contents.notice');
+                    $contents = $('.contents.service-news');
                 
                 _self.$searchWrap = $contents.find('.search-wrap');
                 _self.$pagination = $contents.find('.pagination');

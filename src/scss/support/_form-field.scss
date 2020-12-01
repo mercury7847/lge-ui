@@ -122,6 +122,9 @@
             background:center/20px 20px url(/lg5-common/images/icons/icon-search-20.svg) no-repeat;;
         }
     }
+    .err-msg {
+        display:none;
+    }
     @include mobile {
         .input-wrap {
             input[type=text] {
