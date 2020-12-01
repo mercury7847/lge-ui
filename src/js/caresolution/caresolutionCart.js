@@ -1,5 +1,5 @@
 (function() {
-    var cartItemTemplate = '<li class="order-item is-check {{#if !(available)}}disabled{{/if}}" data-item-id="{{itemID}}">' +
+    var cartItemTemplate = '<li class="order-item is-check {{#if !(available)}}disabled{{/if}}" data-item-id="{{itemID}}" data-item-seq="{{itemSeq}}">' +
         '<div class="item-image"><a href="{{itemUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="product-info">' +
             '<div class="flag-wrap bg-type">' +
@@ -19,8 +19,8 @@
             '{{#if subscriptionUrl}}<button type="button" class="btn pink border size" data-url={{subscriptionUrl}}><span>청약신청</span></button>{{#else}}<button type="button" class="btn pink border size" disabled><span>청약신청불가</span></button>{{/if}}' +
         '</div></div>' +
         '{{#if availableMessage}}<div class="disabled-message"><p class="err-msg">{{availableMessage}}</p></div>{{/if}}' +
-        '{{#if isLogin}}<span class="chk-wish-wrap"><input type="checkbox" id="chk-wish-{{itemID}}" name="chk-wish-{{itemID}}" {{#if (wish)}}checked{{/if}}><label for="chk-wish-{{itemID}}"><span class="blind">{{#if wish}}찜한상품{{#else}}찜하기{{/if}}</span></label></span>{{/if}}' +
-        '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}" name="chk-select-{{itemID}}" {{#if (available)}}checked{{/if}}><label for="chk-select-{{itemID}}"><span class="blind">선택안함</span></label></span>' +
+        '{{#if isLogin}}<span class="chk-wish-wrap"><input type="checkbox" id="chk-wish-{{itemID}}-{{itemSeq}}" name="chk-wish-{{itemID}}-{{itemSeq}}" {{#if (wish)}}checked{{/if}}><label for="chk-wish-{{itemID}}-{{itemSeq}}"><span class="blind">{{#if wish}}찜한상품{{#else}}찜하기{{/if}}</span></label></span>{{/if}}' +
+        '<span class="chk-wrap"><input type="checkbox" id="chk-select-{{itemID}}-{{itemSeq}}" name="chk-select-{{itemID}}-{{itemSeq}}" {{#if (available)}}checked{{/if}}><label for="chk-select-{{itemID}}-{{itemSeq}}"><span class="blind">선택안함</span></label></span>' +
         '<div class="item-delete"><button type="button" class="btn-delete"><span class="blind">제품 삭제</span></button></div>' +
         '</li>';
 
@@ -100,7 +100,14 @@
                     _self.requestInfo();
                 });
                 */
-               
+
+                $('.ui_tab').on("tabbeforechange", function(e, data){
+                    e.preventDefault();
+                    if(data.selectedIndex == 0) {
+                        location.href = $(this).siblings('div.row-wrap').first().attr('data-url');
+                    }
+                })
+
                 self.cartAllChecker.on('allCheckerChange', function(e, status){
                     _self.requestInfo();
                 });
@@ -122,12 +129,15 @@
                     var obj = {title:'', cancelBtnName:'취소', okBtnName:'삭제', ok: function (){
                         var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
                         var itemList = [];
+                        var itemSeqList = [];
                         cartItemCheck.each(function (index, item) {
                             var itemID = $(item).parents('li.order-item').attr('data-item-id');
+                            var itemSeq = $(item).parents('li.order-item').attr('data-item-seq');
                             itemList.push(itemID);
+                            itemSeqList.push(itemSeq);
                         });
                         if(itemList.length > 0) {
-                            _self.requestRemoveItem(itemList);
+                            _self.requestRemoveItem(itemList, itemSeqList);
                         }
                     }};
                     var desc = '선택된 제품을 삭제하시겠습니까?';
@@ -137,7 +147,8 @@
                 //리스트 아이템 삭제
                 self.$cartList.on('click', 'div.item-delete button.btn-delete', function(e) {
                     var itemID = $(this).parents('li.order-item').attr('data-item-id');
-                    _self.requestRemoveItem([itemID]);
+                    var itemSeq = $(this).parents('li.order-item').attr('data-item-seq');
+                    _self.requestRemoveItem([itemID],[itemSeq]);
                 });
 
                 //리스트 아이템 안내 팁
@@ -237,13 +248,17 @@
             requestInfo: function() {
                 var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
                 var itemList = [];
+                var itemSeqList = [];
                 cartItemCheck.each(function (index, item) {
                     var itemID = $(item).parents('li.order-item').attr('data-item-id');
+                    var itemSeq = $(item).parents('li.order-item').attr('data-item-seq');
                     itemList.push(itemID);
+                    itemSeqList.push(itemSeq);
                 });
                 if(itemList.length > 0) {
                     var ajaxUrl = self.$cartContent.attr('data-list-url');
-                    var postData = {'itemID': (itemList.length > 0) ? itemList.join() : null};
+                    var postData = {'itemID': (itemList.length > 0) ? itemList.join() : null,
+                                    'itemSeq': (itemSeqList.length > 0) ? itemSeqList.join() : null};
                     lgkorUI.requestAjaxData(ajaxUrl, postData, function(result){
                         careCartInfo.updateData(result.data);
                     });
@@ -263,10 +278,11 @@
             },
 
             //아이템 삭제 (리스트로 전달)
-            requestRemoveItem: function(items) {
+            requestRemoveItem: function(items, seqs) {
                 var _self = this;
                 var ajaxUrl = self.$cartContent.attr('data-remove-url');
-                var postData = {'itemID': (items instanceof Array ? items.join() : items) }
+                var postData = {'itemID': (items instanceof Array ? items.join() : items),
+                                'itemSeq': (seqs instanceof Array ? seqs.join() : seqs)};
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     _self.updateList(result.data);
                     _self.requestInfo();
