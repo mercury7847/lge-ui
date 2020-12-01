@@ -443,9 +443,15 @@
             .forms {
                 .tit {
                     width:29.2%;
+                    @include mobile {
+                        width:100%;
+                    }
                 }
                 .conts {
                     width:70.8%;
+                    @include mobile {
+                        width:100%;
+                    }
                 }
             }
             // 1149 팝업 내부 인풋일 때 half + full사이즈 혼합
@@ -454,15 +460,24 @@
                 .forms {
                     .tit {
                         width:17.52%;
+                        @include mobile {
+                            width:100%;
+                        }
                     }
                     .conts {
                         width:82.48%;
+                        @include mobile {
+                            width:100%;
+                        }
                     }
                 }
                 .select-wrap,
                 .input-wrap {
                     &.half {
                         width:calc((100% - 8px) / 2);
+                        @include mobile {
+                            width:100%;
+                        }
                     }
                 }
             }
