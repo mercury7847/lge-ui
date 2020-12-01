@@ -149,22 +149,6 @@
                         width: 100%;
                     }
                 }   
-                .view-content-title {
-                    color:#222;
-                    margin-bottom: 16px;
-                    display: inline-block;
-                    &::before {
-                        content: '';
-                        display: inline-block;
-                        width: 2px;
-                        height: 12px;
-                        background-color: #222;
-                        margin-right: 4px;
-                    }
-                }
-                .view-content-img {
-                    text-align: center;
-                }
             }
             #viewContent {
                 padding:0 24px;

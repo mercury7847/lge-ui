@@ -1240,7 +1240,7 @@
                     font-weight:$font-weight-bold;
                 }
             }
-            .view-content-title-1 {
+            .view-content-title {
                 margin-bottom: 16px;
                 color: #222;
                 @include font-large;
@@ -1288,7 +1288,7 @@
                     margin-bottom:32px;
                     padding:16px;
                 }
-                .view-content-title-1 {
+                .view-content-title {
                     margin-bottom:12px;
                 }
                 .view-content-text {
@@ -1319,7 +1319,7 @@
         .life-tips-view {
             max-width:1146px;
             margin:0 auto;
-            .view-content-title-1 {
+            .view-content-title {
                 color: #222;
                 font-size:20px;
                 font-weight: $font-weight-bold;
@@ -1333,7 +1333,7 @@
                 }
             }
             @include mobile {
-                .view-content-title-1 {
+                .view-content-title {
                     font-size:16px;
                     line-height:24px;
                 }
