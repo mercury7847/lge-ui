@@ -94,47 +94,61 @@
         padding: 0 16px;
     }
 }
+.keyword-search {
+    .input-wrap {
+        display:block;
+        position:relative;
+        input[type=text] {
+            padding:11px 80px 11px 24px;
+            border-radius:24px;
+            border:0 none;
+            box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+        }
+        .btn-delete {
+            position:absolute;
+            top:50%;
+            right:54px;
+            width:20px;
+            height:20px;
+            margin-top:-10px;
+            background:url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat 0 0;
+        }
+        .btn-search {
+            position:absolute;
+            top:0;
+            right:0;
+            width:54px;
+            height:48px;
+            background:center/20px 20px url(/lg5-common/images/icons/icon-search-20.svg) no-repeat;;
+        }
+    }
+    .err-msg {
+        display:none;
+    }
+    @include mobile {
+        .input-wrap {
+            input[type=text] {
+                padding:12px 95px 12px 24px;
+                border-radius:28px;
+            }
+            .btn-delete {
+                right: 68px;
+            }
+            .btn-search {
+                width:68px;
+                height:46px;
+            }
+        }
+    }
+}   
 
 .search-wrap {
     width:444px;
     margin:0 auto 64px;
-    .keyword-search {
-        .input-wrap {
-            display:block;
-            position:relative;
-            input[type=text] {
-                padding:11px 54px 11px 24px;
-                border-radius:24px;
-                border:0 none;
-                box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
-            }
-            .btn-search {
-                position:absolute;
-                top:0;
-                right:0;
-                width:54px;
-                height:48px;
-                background:center/20px 20px url(/lg5-common/images/icons/icon-search-20.svg) no-repeat;;
-            }
-        }
-    }   
-    
     @include mobile {
         width:100%;
         margin:0 0 65px;
         padding:0 16px;
-        .keyword-search {
-            .input-wrap {
-                input[type=text] {
-                    padding:12px 68px 12px 24px;
-                    border-radius:28px;
-                }
-                .btn-search {
-                    width:68px;
-                    height:46px;
-                }
-            }
-        }
     }
 }
 

@@ -15,6 +15,14 @@
             }
         }
     }
+    /* 서비스뉴스 */
+    &.service-news {
+        .result-wrap {
+            @include mobile {
+                padding:0 16px;
+            }
+        }
+    }
 }
 
 @import "../../support/pages/CSTF3500";
