@@ -851,11 +851,12 @@
         .total {
             display:block;
             margin-top:8px;
-            color:#767676;
-            font-size:14px;
-            line-height:24px;
+            color:#aaa;
+            @include font-small;
+            font-weight:500;
             text-align:right;
             em {
+                color:#222;
                 font-size:inherit;
                 line-height:inherit;
             }
