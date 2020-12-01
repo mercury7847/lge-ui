@@ -93,8 +93,20 @@
 }
 .section-wrap .sects .section-inner {
     &.type2 {
+        .filters {
+            margin:0;
+        }
         .my-contract-info {
             margin-bottom:0;
+        }
+        .term-filter .inner .filter-tbl {
+            display:block;
+            > .cell {
+                display:block;
+            }
+            .rdo-check {
+                margin-top:16px;
+            }
         }
     }
 }

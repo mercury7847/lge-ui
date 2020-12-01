@@ -340,3 +340,94 @@
         }
     }
 }
+
+//add file new
+.add-file-wrap{
+    display:flex;
+    justify-content: left;
+    align-items: center;
+
+    .upload-wrap{
+        margin-right:24px;
+
+        .upload-img-area{
+            position:relative;
+            width:93px;
+    
+            .uploadpreview{
+                width:93px;
+                height:93px;
+                display:block;
+                border:1px solid #ddd;
+                margin:0 auto 15px;
+                background-size:100% auto;
+                background-repeat:no-repeat;
+                background-position:center;
+                border-radius:8px;
+            }
+
+            .upload-btn-area{
+                position:absolute;
+                bottom:-8px;
+                right:-8px;
+
+                .btn-ipt-file{
+                    display:block;
+                    width:24px;
+                    height:24px;
+                    border-radius:50%;
+                    background:url(/lg5-common/images/icons/btn-imgadd-24.svg) no-repeat center;
+                    background-size:24px;
+                    text-align:center;
+
+                    &::after{
+                        content: '';
+                        color:#fff;
+                        font-size:20px;
+                    }
+                }
+
+                input[type="file"].ipt-file {
+                    color: transparent;
+                    width: 0;
+                    height: 0;
+                    margin: 0 auto;
+                    display: block;
+                }
+            }
+        }
+
+        .upload-file-name{
+            width:93px;
+            input[type=text].ipt-file-name{
+                width:100%;
+                text-align:center;
+                font-size:14px;
+                color:#aaa;
+            }
+        }
+
+        &.on{
+            .upload-btn-area{
+                .btn-ipt-file{
+                    background-image:url(/lg5-common/images/icons/btn-imgdelet-24.svg);
+                    &::after{
+                        content:'';
+                    }
+                }
+            }
+        }
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}

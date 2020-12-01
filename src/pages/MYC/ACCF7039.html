@@ -27,7 +27,7 @@
                             <!-- 상세 -->
                             <div class="section-wrap">
                                  <!-- 멤버십 내역 -->
-                                 <div class="sects user">
+                                 <div class="sects">
                                     <div class="tit-wrap">
                                         <h3 class="tit">멤버십 내역</h3>
                                     </div>
@@ -62,7 +62,7 @@
                                  </div>
                                  <!-- // 멤버십 내역 -->
                                  <!-- 멤버십 가입 정보 -->
-                                 <div class="sects user">
+                                 <div class="sects">
                                     <div class="tit-wrap">
                                         <h3 class="tit">멤버십 가입 정보</h3>
                                         <div class="flt-cont">
@@ -71,474 +71,86 @@
                                     </div>
                                     <div class="section-inner type2">
                                         <div class="my-contract-info">
-                                            <p class="tit">이케어 고객님의 계약정보는 <br class="mob">총 <em>3건</em>입니다.</p>
+                                            <p class="tit">&quot;고객님의 멤버십 카드번호는 <br class="mob"><em>1234-5678-9012-3456</em> 입니다.&quot;</p>
                                         </div>
                                     </div>
                                     <div class="section-inner">
                                         <div class="inner-box">
-                                            <p class="inner-tit">계약자 정보</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
-                                                    { "dt" : "이름", "dd" : "이*어" },
-                                                    { "dt" : "휴대폰", "dd" : "010****1234" },
-                                                    { "dt" : "일반전화", "dd" : "010****1234" },
-                                                    { "dt" : "이메일", "dd" : "lg*****@naver.com" },
-                                                    { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********" },
+                                                    { "dt" : "발급일", "dd" : "19년 5월 5일" },
+                                                    { "dt" : "이름", "dd" : "이*지" },
+                                                    { "dt" : "휴대폰", "dd" : "010****5678" },
+                                                    { "dt" : "가입매장", "dd" : "서초점" },
+                                                    { "dt" : "선호매장", "dd" : "서초점" },
+                                                    { "dt" : "자택주소", "dd" : "서울특별시 서초구 방배동 *******" },
                                                 ]
                                             })
                                         </div>
-                                        <div class="inner-box">
-                                            <p class="inner-tit">실사용자 정보</p>
-                                            @@include('./common/modules/dl-infolist.html', {
-                                                "list" : [
-                                                    { "dt" : "이름", "dd" : "이*어" },
-                                                    { "dt" : "휴대폰", "dd" : "010****1234" },
-                                                    { "dt" : "일반전화", "dd" : "010****1234" },
-                                                    { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********" },
-                                                ]
-                                            })
-                                        </div>
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "size2" : true,
-                                            "topBorder" : true,
-                                            "bulletTit" : "계약자 정보변경 유의사항",
-                                            "bulletTxt" : [
-                                                "계약자 정보는 계약 건당 변경되며, 원하실 경우 일괄변경도 가능합니다. 변경하신 정보는 회원정보와 연동되지 않습니다.",
-                                                "현금영수증은 계약자 휴대폰 번호 기준으로 발급됩니다.",
-                                                "주소는 변경이 불가하며, 변경을 원하실 경우 고객센터(1577-4090)으로 문의해주세요."
-                                            ]
-                                        })
                                     </div>
                                 </div>
                                 <!-- // 멤버십 가입 정보 -->
 
-                                <!-- 계약자/실사용자 정보 -->
-                                <div class="sects user viewer">
+                                <!-- 구매내역 -->
+                                <div class="sects">
                                     <div class="tit-wrap">
-                                        <h5 class="tit">계약자/실사용자 정보</h5>
-                                        <div class="flt-cont">
-                                            <button type="button" class="btn border size"><span>정보변경</span></button>
-                                        </div>
+                                        <h5 class="tit">구매내역</h5>
                                     </div>
-                                    <div class="section-inner">
+                                    <div class="section-inner type2">
                                         <div class="inner-box">
-                                            <p class="inner-tit">계약자 정보</p>
-                                            @@include('./common/modules/dl-infolist.html', {
-                                                "list" : [
-                                                    { "dt" : "이름", "dd" : "이*어" },
-                                                    { "dt" : "휴대폰", "dd" : "010****1234" },
-                                                    { "dt" : "일반전화", "dd" : "010****1234" },
-                                                    { "dt" : "이메일", "dd" : "lg*****@naver.com" },
-                                                    { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********" },
-                                                ]
-                                            })
+                                            <div class="filters">
+                                                <!-- filter -->
+                                                @@include('./common/modules/mem-filter.html', {
+                                                    "tabType" : true,
+                                                    "wrapTit" : "조회기간",
+                                                    "datepicker" : true,
+                                                    "rdoCheck" : true,
+                                                    "list" : [
+                                                        { "id" : "rdk-cehck1-1", "name" : "rdk-check1",  "label" : "전체",},
+                                                        { "id" : "rdk-cehck1-2", "name" : "rdk-check1",  "label" : "구매", "checked": "checked"},
+                                                        { "id" : "rdk-cehck1-3", "name" : "rdk-check1",  "label" : "취소"}
+                                                    ]
+                                                })
+                                                <!-- // filter -->
+                                            </div>
                                         </div>
-                                        <div class="inner-box">
-                                            <p class="inner-tit">실사용자 정보</p>
-                                            @@include('./common/modules/dl-infolist.html', {
-                                                "list" : [
-                                                    { "dt" : "이름", "dd" : "이*어" },
-                                                    { "dt" : "휴대폰", "dd" : "010****1234" },
-                                                    { "dt" : "일반전화", "dd" : "010****1234" },
-                                                    { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********" },
+                                        <div class="inner-box type2">
+                                            @@include('./common/modules/carousel.html', {
+                                                "carousel" : true,
+                                                "recommendSlideType" : true,
+                                                "carouselClass" : "carousel-3",
+                                                "carouselScriptClass" : "ui_carousel_4_slider",
+                                                "slideArr" : [
+                                                    {
+                                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄"
+                                                    },{
+                                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG DIOS 노크온 매직스페이스"
+                                                    },{
+                                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄"
+                                                    },{
+                                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG DIOS 노크온 매직스페이스 제품명 노출 영역 최대2줄"
+                                                    },{
+                                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG DIOS 노크온 매직스페이스"
+                                                    }
                                                 ]
                                             })
                                         </div>
                                         @@include('./common/modules/bullet-list.html', {
                                             "size2" : true,
                                             "topBorder" : true,
-                                            "bulletTit" : "계약자 정보변경 유의사항",
                                             "bulletTxt" : [
-                                                "계약자 정보는 계약 건당 변경되며, 원하실 경우 일괄변경도 가능합니다. 변경하신 정보는 회원정보와 연동되지 않습니다.",
-                                                "현금영수증은 계약자 휴대폰 번호 기준으로 발급됩니다.",
-                                                "주소는 변경이 불가하며, 변경을 원하실 경우 고객센터(1577-4090)으로 문의해주세요."
+                                                "홈플러스, 이마트에서 구매 후 영수증을 등록한 제품은 다음날 반영됩니다.",
+                                                "VIP 우수 고객의 경우 3년 무상 서비스혜택을 받으실 수 있습니다."
                                             ]
                                         })
                                     </div>
                                 </div>
-                                <!-- // 계약자/실사용자 정보 -->
-
-                                <!-- 계약자/실사용자 정보 : 정보변경 활성화 -->
-                                <div class="sects user modify">
-                                    <div class="tit-wrap">
-                                        <h5 class="tit">계약자/실사용자 정보</h5>
-                                        <div class="flt-cont">
-                                            <button type="button" class="btn border size" disabled><span>정보변경</span></button>
-                                        </div>
-                                    </div>
-                                    <div class="section-inner type2">
-                                        <div class="input-info">
-                                            <div class="form-infos">
-                                                <p class="req" aria-disabled="true">필수 입력 사항</p>
-                                            </div>
-                                            <div class="tit-wrap">
-                                                <h3 class="tit size">계약자 정보</h3>
-                                            </div>
-                                            <div class="form-wrap">
-                                                <dl class="forms">
-                                                    <dt class="tit"><label for="userName">이름</label></dt>
-                                                    <dd class="conts">
-                                                        <div class="input-wrap">
-                                                            <input type="text" id="userName" value="이케어" name="userName" readonly>
-                                                        </div>
-                                                    </dd>
-                                                </dl>
-                                                <dl class="forms">
-                                                    <dt class="tit"><label for="inp02">휴대폰</label></dt>
-                                                    <dd class="conts">
-                                                        <div class="input-wrap">
-                                                            <input type="number" id="inp02" value="01012341234" maxlength="11" rname="userPhone" readonly>
-                                                        </div>
-                                                    </dd>
-                                                </dl>
-                                                <dl class="forms">
-                                                    <dt class="tit"><label for="inp03" class="req">일반전화<span class="blind">필수입력</span></label></dt>
-                                                    <dd class="conts">
-                                                        <div class="input-wrap">
-                                                            <input type="number" id="inp03" value="01012341234" name="userTelephone" maxlength="12" data-required="true">
-                                                        </div>
-                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                                    </dd>
-                                                </dl>
-                                                <dl class="forms">
-                                                    <dt class="tit"><label for="inp04" class="req">이메일<span class="blind">필수입력</span></label></dt>
-                                                    <dd class="conts">
-                                                        <div class="input-wrap">
-                                                            <input type="text" id="inp04" value="lge1234@naver.com" name="userEmail" data-required="true">
-                                                        </div>
-                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                                    </dd>
-                                                </dl>
-                                                <dl class="forms">
-                                                    <dt class="tit"><label for="userAdress">주소</label></dt>
-                                                    <dd class="conts">
-                                                        <div class="input-wrap">
-                                                            <input type="text" id="userAdress" value="21655 서울특별시 엘지구 엘지로 A동 101호" name="userAdress" readonly>
-                                                        </div>
-                                                    </dd>
-                                                </dl>
-                                            </div>
-                                        </div>
-                                        <div class="input-info">
-                                            <div class="tit-wrap">
-                                                <h3 class="tit size">실사용자 정보</h3>
-                                            </div>
-                                            <div class="form-wrap">
-                                                <dl class="forms">
-                                                    <dt class="tit"><label for="inp01-1" class="req">이름<span class="blind">필수입력</span></label></dt>
-                                                    <dd class="conts">
-                                                        <div class="input-wrap">
-                                                            <input type="text" id="inp01-1" value="이케어" name="actualUserName" data-required="true">
-                                                        </div>
-                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                                    </dd>
-                                                </dl>
-                                                <dl class="forms">
-                                                    <dt class="tit"><label for="inp02-1" class="req">휴대폰<span class="blind">필수입력</span></label></dt>
-                                                    <dd class="conts">
-                                                        <div class="input-wrap">
-                                                            <input type="number" id="inp02-1" value="01012341234" name="actualUserPhone" data-required="true">
-                                                        </div>
-                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                                    </dd>
-                                                </dl>
-                                                <dl class="forms">
-                                                    <dt class="tit"><label for="inp03-1" class="req">일반전화<span class="blind">필수입력</span></label></dt>
-                                                    <dd class="conts">
-                                                        <div class="input-wrap">
-                                                            <input type="number" id="inp03-1" value="01012341234" name="actualUserTelephone" data-required="true">
-                                                        </div>
-                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                                    </dd>
-                                                </dl>
-                                                <dl class="forms">
-                                                    <dt class="tit"><label for="actualUserAdress">주소</label></dt>
-                                                    <dd class="conts">
-                                                        <div class="input-wrap">
-                                                            <input type="text" id="actualUserAdress" value="21655 서울특별시 엘지구 엘지로 A동 101호" name="actualUserAdress" readonly>
-                                                        </div>
-                                                    </dd>
-                                                </dl>
-                                            </div>
-                                        </div>
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "size2" : true,
-                                            "topBorder" : true,
-                                            "bulletTit" : "계약자 정보변경 유의사항",
-                                            "bulletTxt" : [
-                                                "계약자 정보는 계약 건당 변경되며, 원하실 경우 일괄변경도 가능합니다. 변경하신 정보는 회원정보와 연동되지 않습니다.",
-                                                "현금영수증은 계약자 휴대폰 번호 기준으로 발급됩니다.",
-                                                "주소는 변경이 불가하며, 변경을 원하실 경우 고객센터(1577-4090)으로 문의해주세요."
-                                            ]
-                                        })
-                                        <span class="chk-wrap margin">
-                                            <input type="checkbox" id="chk1-1" name="userInfoChanged">
-                                            <label for="chk1-1">계약자 정보 일괄변경(선택)</label>
-                                        </span>
-                                        <div class="btn-group center">
-                                            <button type="button" class="btn gray cancel-btn"><span>취소</span></button>
-                                            <button type="button" class="btn ok-btn"><span>저장</span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- // 계약자/실사용자 정보 : 정보변경 활성화 -->
-
-                                <!-- 계약 정보 -->
-                                <div class="sects">
-                                    <div class="tit-wrap">
-                                        <div class="flt-cont left">
-                                            <h5 class="tit">계약 정보</h5>
-                                            @@include('./common/modules/tooltip.html', {
-                                                "type" : "text",
-                                                "text" : "계약서 발급이 필요하신 분은 발급신청 버튼을 클릭해주세요."
-                                            })
-                                        </div>
-                                        <div class="flt-cont">
-                                            <button type="button" class="btn border size contract-btn"><span>계약서 발급신청</span></button>
-                                        </div>
-                                    </div>
-                                    <div class="section-inner">
-                                        @@include('./common/modules/dl-infolist.html', {
-                                            "list" : [
-                                                { "dt" : "제품군(모델명)", "dd" : "건조기(RH9WGANR)" },
-                                                { "dt" : "계약번호", "dd" : "<span>12345678</span><a href='#n' class='btn-link'>해지상담 신청</a>" },
-                                                { "dt" : "계약기간", "dd" : "1년(2020.09.01)" },
-                                                { "dt" : "설치일", "dd" : "2020.09.01" },
-                                                { "dt" : "설치장소", "dd" : "가정" },
-                                                { "dt" : "무상할인회차", "dd" : "3, 5, 6회차" },
-                                            ]
-                                        })
-                                    </div>
-                                </div>
-                                <!-- // 계약 정보 -->
-
-                                <!-- 납부 정보 -->
-                                <div class="sects payment viewer">
-                                    <div class="tit-wrap">
-                                        <h5 class="tit">납부 정보</h5>
-                                        <div class="flt-cont">
-                                            <button type="button" class="btn border size"><span>납부 정보변경</span></button>
-                                        </div>
-                                    </div>
-                                    <div class="section-inner">
-                                        @@include('./common/modules/dl-infolist.html', {
-                                            "list" : [
-                                                { "dt" : "월 납부 금액", "dd" : "<span>88,800원</span><a href='#n' class='btn-link'>납부내역 조회</a>" },
-                                                { "dt" : "정기 출금일", "dd" : "매월 10일" },
-                                                { "dt" : "납부방법", "dd" : "<span>신용카드</span><a href='#n' class='btn-link requestCard-btn'>제휴카드 신청</a>" },
-                                                { "dt" : "은행(카드)명", "dd" : "하나카드" },
-                                                { "dt" : "계좌(카드)번호", "dd" : "1111-11**-****-****" },
-                                            ]
-                                        })
-                                        @@include('./common/modules/bullet-list.html', {
-                                            "topBorder" : true,
-                                            "bulletTit" : "납부 정보변경 유의사항",
-                                            "bulletTxt" : [
-                                                "청구그룹(묶음 결제)일 경우 납부 정보 변경 및 제휴카드 신청은 고객센터(1577-4090)으로 문의 부탁드립니다."
-                                            ]
-                                        })
-                                    </div>
-                                </div>
-                                <!-- // 납부 정보 -->
-
-                                <!-- 납부 정보 : 정보변경 활성화 -->
-                                <div class="sects payment modify">
-                                    <div class="tit-wrap">
-                                        <h5 class="tit">납부 정보</h5>
-                                        <div class="flt-cont">
-                                            <button type="button" class="btn border size" disabled><span>납부 정보변경</span></button>
-                                        </div>
-                                    </div>
-                                    <div class="section-inner type2">
-                                        <div class="form-wrap size2">
-                                            <div class="form-infos">
-                                                <p class="req" aria-disabled="true">필수 입력 사항</p>
-                                            </div>
-                                            <dl class="forms type2">
-                                                <dt class="tit">
-                                                    <p class="label req">결제 수단<span class="blind">필수입력</span></p>
-                                                </dt>
-                                                <dd class="conts">
-                                                    <div class="tabs-wrap new-type ui_tab">
-                                                        <ul role="tablist" class="tabs">
-                                                            <li><a href="#card">신용카드<em class="blind">선택됨</em></a></li>
-                                                            <li class="on"><a href="#bank">계좌이체</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <!-- 신용카드 -->
-                                                    <div role="tabpanel" class="tab-panel by-card" id="card">
-                                                        <div class="form-wrap">
-                                                            <dl class="forms inner-type">
-                                                                <dt class="tit"><label for="slt-card1">카드사</label></dt>
-                                                                <dd class="conts">
-                                                                    <div class="select-wrap">
-                                                                        <select class="ui_selectbox" id="slt-card1" title="카드사 선택" name="paymentCard" data-required="true">
-                                                                            <option value="" class="placeholder">카드사 선택</option>
-                                                                            <option value="11">카드사1</option>
-                                                                            <option value="22" selected>카드사2</option>
-                                                                            <option value="33">카드사3</option>
-                                                                        </select>
-                                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                                                    </div>
-                                                                </dd>
-                                                            </dl>
-                                                            <dl class="forms inner-type">
-                                                                <dt class="tit"><label for="ipt-card1">카드번호</label></dt>
-                                                                <dd class="conts">
-                                                                    <div class="input-wrap">
-                                                                        <input type="text" id="ipt-card1" placeholder="(-)없이 입력하세요." value="1234567891234567" class="ui_card_number" name="paymentCardNumber" data-required="true">
-                                                                    </div>
-                                                                    <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                                                </dd>
-                                                            </dl>
-                                                            <dl class="forms inner-type">
-                                                                <dt class="tit"><label for="ipt-card2">유효기간</label></dt>
-                                                                <dd class="conts">
-                                                                    <div class="box">
-                                                                        <div class="input-wrap">
-                                                                            <input type="number" id="ipt-card2" value="0322" placeholder="유효기간을 입력해주세요" maxlength="4" data-min-length="4" data-max-length="4" name="paymentCardPeriod" data-required="true">
-                                                                        </div>
-                                                                        <div class="cell">
-                                                                            <button type="button" class="btn paymentCardConfirm"><span>납부 카드 확인</span></button>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                                                </dd>
-                                                            </dl>
-                                                        </div>
-                                                    </div>
-                                                    <!-- // 신용카드 -->
-                                                    <!-- 실시간 계좌이체 -->
-                                                    <div role="tabpanel" class="tab-panel by-bank" id="bank">
-                                                        <div class="form-wrap">
-                                                            <dl class="forms inner-type">
-                                                                <dt class="tit"><label for="ipt-bank1">예금주명</label></dt>
-                                                                <dd class="conts">
-                                                                    <div class="input-wrap">
-                                                                        <input type="text" id="ipt-bank1" placeholder="예금주명을 입력해주세요" value="이엘지" name="paymentUserName" disabled>
-                                                                    </div>
-                                                                </dd>
-                                                            </dl>
-                                                            <dl class="forms inner-type">
-                                                                <dt class="tit"><label for="slt-bank1">은행명</label></dt>
-                                                                <dd class="conts">
-                                                                    <div class="select-wrap">
-                                                                        <select class="ui_selectbox" id="slt-bank1" title="은행 선택" name="paymentBank" data-required="true">
-                                                                            <option value="" class="placeholder">선택해주세요.</option>
-                                                                            <option value="111">은행1</option>
-                                                                            <option value="222">은행2</option>
-                                                                            <option value="333" selected>은행3</option>
-                                                                        </select>
-                                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                                                    </div>
-                                                                </dd>
-                                                            </dl>
-                                                            <dl class="forms inner-type">
-                                                                <dt class="tit"><label for="ipt-bank2" class="req">계좌번호<span class="blind">필수입력</span></label></dt>
-                                                                <dd class="conts">
-                                                                    <div class="box">
-                                                                        <div class="input-wrap">
-                                                                            <input type="text" id="ipt-bank2" value="123456789123" placeholder="계좌번호를 “-”없이 숫자만 입력해주세요." name="paymentBankNumber" data-required="true"> 
-                                                                        </div>
-                                                                        <div class="cell">
-                                                                            <button type="button" class="btn paymentBankConfirm"><span>납부 계좌 확인</span></button>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                                                </dd>
-                                                            </dl>
-                                                        </div>
-                                                    </div>
-                                                    <!-- // 실시간 계좌이체 -->
-                                                    @@include('./common/modules/bullet-list.html', {
-                                                        "bgGray" : true,
-                                                        "bulletTxt" : [
-                                                            "결제정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능합니다.",
-                                                            "제휴카드를 신청한 경우, 발급시 자동으로 납부방법이 변경됩니다.",
-                                                            "월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다."
-                                                        ]
-                                                    })
-                                                </dd>
-                                            </dl>
-                                            <dl class="forms wide">
-                                                <dt class="tit">
-                                                    <p class="label req">ARS 출금 동의<span class="blind">필수</span></p>
-                                                </dt>
-                                                <dd class="conts">
-                                                    <div class="input-mix-wrap">
-                                                        <div class="mix-cont">
-                                                            <p class="desc">입력한 결제 수단의 효력이 발생하기 위해서 ARS 출금동의가 필요합니다.<br>ARS 출금동의 시 내용증명을 위해 음성 녹취가 진행됩니다.</p>
-                                                            <div class="btn-wrap">
-                                                                <button class="btn bg-type icon-ars arsAgreeRequest"><span>ARS 출금 동의 신청</span></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </dd>
-                                            </dl>
-                                            <dl class="forms wide">
-                                                <dt class="tit">
-                                                    <p class="label req">자동결제 이용 약관 동의<span class="blind">필수입력</span></p>
-                                                </dt>
-                                                <dd class="conts">
-                                                    <div class="input-mix-wrap">
-                                                        <div class="mix-input">
-                                                            <span class="chk-wrap">
-                                                                <input type="checkbox" id="chk03-1" name="selfClearingAgree">
-                                                                <label for="chk03-1">자동결제 신청 동의</label>
-                                                            </span>
-                                                            <div class="cell">
-                                                                <a href="#n" class="btn-link selfClearingAgree">이용약관 보기</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="mix-cont">
-                                                            <p class="desc">입력하신 위의 결제수단으로 정기결제 신청을 동의합니다.</p>
-                                                        </div>
-                                                    </div>
-                                                </dd>
-                                            </dl>
-                                            <dl class="forms wide">
-                                                <dt class="tit">
-                                                    <p class="label">보유 멤버십 포인트 사용</p>
-                                                </dt>
-                                                <dd class="conts">
-                                                    <div class="input-mix-wrap">
-                                                        <div class="mix-input">
-                                                            <span class="chk-wrap">
-                                                                <input type="checkbox" id="chk03-2" name="pointUseAgree">
-                                                                <label for="chk03-2">포인트 사용 동의</label>
-                                                            </span>
-                                                        </div>
-                                                        <div class="mix-cont">
-                                                            <p class="desc">멤버십 포인트는 보유 액수와 관계없이 매월 <em>최대 5,000P</em>까지 차감됩니다.</p>
-                                                        </div>
-                                                    </div>
-                                                </dd>
-                                            </dl>
-                                        </div>
-                                        <div class="btn-group center">
-                                            <button type="button" class="btn gray cancel-btn"><span>취소</span></button>
-                                            <button type="button" class="btn ok-btn"><span>저장</span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- // 납부 정보 : 정보변경 활성화 -->
-
-                                <!-- 케어솔루션 매니저 정보 -->
-                                <div class="sects">
-                                    <div class="tit-wrap">
-                                        <h5 class="tit">케어솔루션 매니저 정보</h5>
-                                    </div>
-                                    <div class="section-inner">
-                                        @@include('./common/modules/dl-infolist.html', {
-                                            "list" : [
-                                                { "dt" : "이름", "dd" : "김진희 매니저" },
-                                                { "dt" : "휴대폰", "dd" : "010-1234-1234" },
-                                                { "dt" : "방문주기", "dd" : "1회/6개월" },
-                                            ]
-                                        })
-                                    </div>
-                                </div>
-                                <!-- // 케어솔루션 매니저 정보 -->
+                                <!-- // 구매내역 -->
                             </div>
                             <!-- // 상세 -->
                         </div>
