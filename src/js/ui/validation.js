@@ -359,10 +359,20 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 self.triggerHandler('validerror', [self.validItemObj]);
             }
             self._swicthErrorMsg(self.validItemObj);
+
+            var arr = [];
+            for(var key in rObj) arr.push({key: key, errmsg: rObj[key]});
+            arr.sort(function(a, b){
+                var ipta = self.$el.find('[name='+a.key+']').parent().offset().top;
+                var iptb = self.$el.find('[name='+b.key+']').parent().offset().top;
+
+                return ipta - iptb;
+            });
             
             return {
                 success: isSuccess,
-                validItem: self.validItemObj
+                validItem: self.validItemObj,
+                validArray: arr
             };
         },
 
