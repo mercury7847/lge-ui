@@ -54,6 +54,8 @@
 
                 //연관검색어 리스트
                 self.$relatedKeywordList = self.$contentsSearch.find('div.related-keyword');
+                //모바일용 연관검색어 펼치기 버튼
+                self.$relatedKeywordMobileMoreButton = self.$relatedKeywordList.find('div.mobile-more-btn');
                 //검색어 검색 결과
                 self.$searchSimilar = self.$contentsSearch.find('div.search-similar');
                 //검색한 검색어
@@ -63,7 +65,8 @@
 
                 //검색 결과 - 카테고리
                 self.$searchResultCategory = self.$contentsSearch.find('div.search-result-category');
-
+                //카테고리 더보기 버튼
+                self.searchResultCategoryMore = self.$searchResultCategory.find('a.btn-moreview');
 
                 self.$autoComplete.hide();
                 self.$notResult.hide();
@@ -161,7 +164,35 @@
                     self.requestSearch(searchVal, true);
                 });
 
+                //연관검색어 펼치기
+                self.$relatedKeywordMobileMoreButton.on('click', 'a', function(e){
+                    e.preventDefault();
+                    if(self.$relatedKeywordList.hasClass('open')) {
+                        self.$relatedKeywordList.removeClass('open');
+                    } else {
+                        self.$relatedKeywordList.addClass('open');
+                    }
+                });
                 
+                //카테고리 더보기 클릭
+                self.searchResultCategoryMore.on('click', function(e){
+                    e.preventDefault();
+                    if(self.$searchResultCategory.hasClass('open')) {
+                        self.$searchResultCategory.removeClass('open');
+                        /*
+                        if(window.breakpoint.isMobile) {
+                            self.$searchResultCategory.find('div.inner').css('height','100px');
+                        } else {
+                            self.$searchResultCategory.find('div.inner').css('height','108px');
+                        }
+                        */
+                    } else {
+                        self.$searchResultCategory.addClass('open');
+                        /*
+                        self.$searchResultCategory.find('div.inner').css('height','auto');
+                        */
+                    }
+                });
                 /*
                 //자동완성 리스트 클릭
                 self.$autoComplete.on('click', 'div.keyword-list ul li a', function(e){
@@ -316,6 +347,8 @@
                     }
 
                     //연관 검색어 리스트 갱신
+                    self.$relatedKeywordList.addClass('open');
+
                     var arr = data.related instanceof Array ? data.related : [];
                     if(arr.length > 0) {
                         showResult = true;
@@ -329,6 +362,19 @@
                         self.$relatedKeywordList.hide();
                     }
 
+                    self.$relatedKeywordList.removeClass('open');
+                    /*
+                    if(window.breakpoint.isMobile) {
+                        var height = self.$relatedKeywordList.find('div.inner').height();
+                        if(height > 29) {
+                            self.$relatedKeywordList.removeClass('open');
+                            self.$relatedKeywordMobileMoreButton.show();
+                        } else {
+                            self.$relatedKeywordMobileMoreButton.hide();
+                        }
+                    }
+                    */
+
                     //카테고리 리스트 갱신
                     arr = data.category instanceof Array ? data.category : [];
                     if(arr.length > 0) {
@@ -341,6 +387,27 @@
                     } else {
                         self.$searchResultCategory.hide();
                     }
+
+                    self.$searchResultCategory.removeClass('open');
+                    /*
+                    self.$searchResultCategory.removeClass('open');
+                    self.$searchResultCategory.find('div.inner').css('overflow','hidden');
+                    if(window.breakpoint.isMobile) {
+                        self.$searchResultCategory.find('div.inner').css('height','100px');
+                    } else {
+                        self.$searchResultCategory.find('div.inner').css('height','108px');
+                    }
+                    */
+
+                    /*
+                    var checkHeight = window.breakpoint.isMobile ? 50 : 54;
+                    var height = self.$searchResultCategory.find('div.inner').height();
+                    if(height > checkHeight) {
+                        self.searchResultCategoryMore.show();
+                    } else {
+                        self.searchResultCategoryMore.hide();
+                    }
+                    */
                     
                     //최근검색어 저장
                     console.log(searchedValue);

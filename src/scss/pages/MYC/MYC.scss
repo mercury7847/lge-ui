@@ -245,6 +245,7 @@
                         }
                     }
                     &.col-type {
+                        max-width:100%;
                         @include clearfix;
                         .forms {
                             float:left;
