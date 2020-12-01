@@ -379,12 +379,10 @@
                     background:url(/lg5-common/images/icons/btn-imgadd-24.svg) no-repeat center;
                     background-size:24px;
                     text-align:center;
+                }
 
-                    &::after{
-                        content: '';
-                        color:#fff;
-                        font-size:20px;
-                    }
+                .btn-ipt-del{
+                    display:none;
                 }
 
                 input[type="file"].ipt-file {
@@ -403,31 +401,27 @@
                 width:100%;
                 text-align:center;
                 font-size:14px;
-                color:#aaa;
+                color:#222;
+                &::placeholder{
+                    color:#aaa;
+                }
             }
         }
 
         &.on{
             .upload-btn-area{
                 .btn-ipt-file{
-                    background-image:url(/lg5-common/images/icons/btn-imgdelet-24.svg);
-                    &::after{
-                        content:'';
-                    }
+                    display:none;
+                }
+                .btn-ipt-del{
+                    display:block;
+                    width:24px;
+                    height:24px;
+                    border-radius:50%;
+                    background:url(/lg5-common/images/icons/btn-imgdelet-24.svg) no-repeat center;
+                    background-size:24px;
                 }
             }
         }
-
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    }    
 }
