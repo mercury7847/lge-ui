@@ -332,6 +332,12 @@
             &.right {
                 text-align:right;
             }
+            .chk-wrap.bottom {
+                margin-top:16px;
+                @include mobile {
+                    margin-top:12px;
+                }
+            }
         }
         &.inner-type {
             .tit {
@@ -553,6 +559,32 @@
                 }
                 &:first-child::before {
                     display:none;
+                }
+            }
+        }
+        // 은행선택, 계좌입력, 계좌 확인
+        .bank-input-box {
+            margin-top:8px;
+            &:first-child {
+                margin-top:0;
+            }
+            @include clearfix;
+            .select-wrap {
+                float:left;
+                width:calc((100% - 8px) / 2);
+                @include mobile {
+                    float:none;
+                    width:100%;
+                }
+            }
+            .box {
+                float:right;
+                width:calc((100% - 8px) / 2);
+                margin:0;
+                @include mobile {
+                    float:none;
+                    width:100%;
+                    margin-top:6px;
                 }
             }
         }
@@ -1652,7 +1684,6 @@ $input: (chk, rdo);
             @include mobile {
                 padding:11px;
                 padding-right:35px;
-                border-radius:4px;
             }
             .ui-select-text {
                 display:inline-block;

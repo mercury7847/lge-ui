@@ -3,8 +3,8 @@
         <h1 class="tit"><span>취소신청</span></h1>
     </header>
     <section class="pop-conts common-pop mypage">
+        <!-- 주문정보 -->
         <div class="sect-wrap">
-            <!-- 주문정보 -->
             <div class="info-tbl-wrap">
                 <!-- loop -->
                 @@include('./common/modules/info-tbl-wrap-infos.html', {
@@ -66,9 +66,10 @@
                 @@include('./common/modules/info-tbl-wrap-bottom.html')
                 <!-- // loop -->
             </div>
-            <!-- // 주문정보 -->
         </div>
+        <!-- // 주문정보 -->
 
+        <!-- 취소 정보 -->
         <div class="sect-wrap">
             <div class="tit-wrap">
                 <h3 class="h2-tit">취소 정보</h3>
@@ -96,11 +97,68 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="btm_info">최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, 제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다.</div>
             </div>
         </div>
+        <!-- // 취소 정보 -->
+
+        <!-- 취소 사유 -->
+        <div class="sect-wrap">
+            <div class="form-wrap mix-type">
+                <dl class="forms">
+                    <dt class="tit"><label for="slt01" class="req">취소 사유<span class="blind">필수입력</span></label></dt>
+                    <dd class="conts">
+                        <div class="select-wrap half">
+                            <select class="ui_selectbox" id="slt01">
+                                <option value="" class="placeholder">취소 사유 선택</option>
+                            </select>
+                        </div>
+                        <span class="input-wrap count">
+                            <textarea class="ui_textcontrol" placeholder="취소 사유를 입력해 주세요." maxlength="200" data-limit="200" data-count-target="#txt-count1"></textarea>
+                            <span id="txt-count1" class="total"><em>0</em> / 200</span>
+                        </span>
+                    </dd>
+                </dl>
+                <dl class="forms">
+                    <dt class="tit">
+                        <label for="inp01" class="req">환불계좌 정보<span class="blind">필수입력</span></label>
+                    </dt>
+                    <dd class="conts">
+                        <span class="input-wrap half">
+                            <input type="text" value="이엘지" readonly>
+                        </span>
+                        <div class="bank-input-box">
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" title="은행 선택">
+                                    <option value="" class="placeholder">선택</option>
+                                </select>
+                            </div>
+                            <div class="box">
+                                <span class="input-wrap">
+                                    <input type="text" placeholder="계좌번호 입력">
+                                </span>
+                                <div class="cell">
+                                    <button type="button" class="btn"><span>환불 계좌 확인</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="chk-wrap bottom">
+                            <input type="checkbox" id="chk1-1" name="chk1" checked>
+                            <label for="chk1-1">환불을 위하여 성명, 은행명, 계좌번호를 수집하며, 5년간 처리에 동의합니다.</label>
+                        </span>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!-- // 취소 사유 -->
+
+        <dl class="bullet-list top-border">
+            <dt class="b-tit">확인하세요</dt>
+            <dd class="b-txt">가상계좌 입금 혹은 휴대폰 전월 주문내역을 취소할 경우 계좌로 환불해드립니다. (단, 고객님 본인 명의의 계좌만 가능)</dd>
+            <dd class="b-txt">Ex) 10월 20일 휴대폰 결제 후 거래를 취소하는 경우<br>→ 10월 31일까지 취소/반품처리 완료 (당월 내 취소 완료) : 휴대폰 승인 취소<br>→ 11월 1일이후 취소/반품처리 완료 (익월 이후 취소 완료) : 고객님(예금주) 명의 계좌로 환불</dd>
+            <dd class="b-txt">그 외 문의는 고객센터(000-0000) 또는 챗봇을 이용해주시기 바랍니다.</dd>
+        </dl> 
     </section>
-    <footer class="pop-footer">
+    <footer class="pop-footer center">
         <div class="btn-group">
             <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
             <button type="button" class="btn pink"><span>확인</span></button>
