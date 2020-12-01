@@ -14,12 +14,21 @@
         </div>
         }
         <div class="product-image" aria-hidden="true">
+            @@if(!context.single) {
             @@include('./common/partials/KRP0009-carousel.html', {
                 "slideArr" : [
                     {"visual" : "/lg5-common/images/dummy/@img-product.jpg"},
                     {"visual" : "/lg5-common/images/dummy/@img-product2.jpg"}
                 ]
             })
+            }
+            @@if(context.single) {
+            @@include('./common/partials/KRP0009-carousel.html', {
+                "slideArr" : [
+                    {"visual" : "/lg5-common/images/dummy/@img-product.jpg"}
+                ]
+            })
+            }
         </div>
         <div class="product-contents">
             @@if (context.optionColor) {
