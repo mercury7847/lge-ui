@@ -1203,22 +1203,22 @@
             width: 36px;
             height: 36px;
             background: #fff no-repeat center center;
-            cursor: default;
             &.minus {
                 border-radius: 6px 0 0 6px;
-                background-image: url('/lg5-common/images/icons/btn-minus-12-gray.svg');
+                background-image: url('/lg5-common/images/icons/btn-minus-12.svg');
             }
             &.plus {
                 border-radius: 0 6px 6px 0;
-                background-image: url('/lg5-common/images/icons/btn-plus-12-gray.svg');
+                background-image: url('/lg5-common/images/icons/btn-plus-12.svg');
             }
-            &.active {
-                cursor: pointer;
+            &.disabled,
+            &:disabled {
+                cursor: default;
                 &.minus {
-                    background-image: url('/lg5-common/images/icons/btn-minus-12.svg');
+                    background-image: url('/lg5-common/images/icons/btn-minus-12-gray.svg');
                 }
                 &.plus {
-                    background-image: url('/lg5-common/images/icons/btn-plus-12.svg');
+                    background-image: url('/lg5-common/images/icons/btn-plus-12-gray.svg');
                 }
             }
         }
