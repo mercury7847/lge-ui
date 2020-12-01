@@ -210,7 +210,7 @@
             limit: 100,
             checkCount: true,
             countTarget: '',
-            countText: '<em>{{len}}</em> / {{limit}}',
+            countText: '<em>{{len}}</em> / {{limit}}자',
 
             autoResize: false,
             allowPaste: true

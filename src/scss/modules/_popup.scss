@@ -437,18 +437,50 @@
 // 공통 팝업
 .popup-wrap {
     .common-pop {
-        .form-wrap.pop-wide {
+        // 팝업 기본
+        .form-wrap {
+            max-width:630px;
             .forms {
                 .tit {
-                    width:263px;
+                    width:29.2%;
                 }
                 .conts {
-                    width:calc(100% - 263px);
+                    width:70.8%;
                 }
-                @include mobile {
-                    .tit, 
+            }
+            // 1149 팝업 내부 인풋일 때 half + full사이즈 혼합
+            &.mix-type {
+                max-width:100%;
+                .forms {
+                    .tit {
+                        width:17.52%;
+                    }
                     .conts {
-                        width:100%;
+                        width:82.48%;
+                    }
+                }
+                .select-wrap,
+                .input-wrap {
+                    &.half {
+                        width:calc((100% - 8px) / 2);
+                    }
+                }
+            }
+            // 팝업 내 forms dt 영역이 넓은 케이스
+            &.pop-wide {
+                max-width:100%;
+                .forms {
+                    .tit {
+                        width:263px;
+                    }
+                    .conts {
+                        width:calc(100% - 263px);
+                    }
+                    @include mobile {
+                        .tit, 
+                        .conts {
+                            width:100%;
+                        }
                     }
                 }
             }
