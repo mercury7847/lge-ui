@@ -646,7 +646,7 @@
 
             var listwidth = self.$leftContainer.width();
             var mapwidth, mapheight, mapmargin;
-            if(self.windowWidth < 768){
+            if(window.breakpoint.isMobile){
                 mapmargin = 0;
                 mapwidth = self.windowWidth;
 

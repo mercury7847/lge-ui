@@ -1,0 +1,157 @@
+<article id="@@popupID" class="popup-wrap wide" style="display:block;">
+    <header class="pop-header">
+        <h1 class="tit"><span>취소신청</span></h1>
+    </header>
+    <section class="pop-conts common-pop mypage">
+        <!-- 주문정보 -->
+        <div class="sect-wrap">
+            <div class="info-tbl-wrap">
+                <!-- loop -->
+                @@include('./common/modules/info-tbl-wrap-infos.html', {
+                    "checkboxType" : true,
+                    "th" : [
+                        "제품정보(주문/배송 상세보기)", "진행상태"
+                    ]
+                })
+                @@loop('./common/modules/info-tbl-wrap-loop.html', [
+                    {
+                        "col1" : {
+                            "blind" : "제품정보",
+                            "productType" : {
+                                "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
+                                "name" : "LG 디오스 상냉장하냉동",
+                                "name2" : "OLED55BXPUA",
+                                "more" : [
+                                    "주요스펙1",
+                                    "주요스펙2"
+                                ],
+                                "count" : true,
+                                "oriPrice" : "3,000,000원",
+                                "price" : "1,760,000원"
+                            }
+                        },
+                        "col2" : {
+                            "blind" : "진행상태",
+                            "stateType" : {
+                                "tit" : "결제완료",
+                                "desc" : "배송희망일 2020.09.18"
+                            }
+                        },
+                        "checkboxType" : true,
+                        "chkId" : "chk-cancel01"
+                    },
+                    {
+                        "disabled" : true,
+                        "col1" : {
+                            "blind" : "제품정보",
+                            "productType" : {
+                                "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                "name" : "LG 디오스 냉장고 일반형 정수 필터",
+                                "name2" : "OLED55BXPUA",
+                                "count" : true,
+                                "price" : "50,000원"
+                            }
+                        },
+                        "col2" : {
+                            "blind" : "진행상태",
+                            "stateType" : {
+                                "tit" : "배송중",
+                                "desc" : "배송희망일 2020.09.18"
+                            }
+                        },
+                        "checkboxType" : true,
+                        "chkId" : "chk-cancel02"
+                    }
+                ])
+                @@include('./common/modules/info-tbl-wrap-bottom.html')
+                <!-- // loop -->
+            </div>
+        </div>
+        <!-- // 주문정보 -->
+
+        <!-- 취소 정보 -->
+        <div class="sect-wrap">
+            <div class="tit-wrap">
+                <h3 class="h2-tit">취소 정보</h3>
+            </div>
+            <div class="tb_row tb-row-bl">
+                <table>
+                    <caption>취소 정보를 제품금액, 할인 금액 합계, 취소 신청 금액 순으로 안내</caption>
+                    <colgroup>
+                        <col style="width:33.3%">
+                        <col style="width:33.3%">
+                        <col>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">제품 금액</th>
+                            <th scope="col">할인 금액 합계</th>
+                            <th scope="col">취소 신청 금액</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>5,300,000원</td>
+                            <td>-159,000원</td>
+                            <td><em class="bold black">5,141,000원</em></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- // 취소 정보 -->
+
+        <!-- 취소 사유 -->
+        <div class="sect-wrap">
+            <div class="form-wrap mix-type">
+                <dl class="forms">
+                    <dt class="tit"><label for="slt01" class="req">취소 사유<span class="blind">필수입력</span></label></dt>
+                    <dd class="conts">
+                        <div class="select-wrap half">
+                            <select class="ui_selectbox" id="slt01">
+                                <option value="" class="placeholder">취소 사유 선택</option>
+                            </select>
+                        </div>
+                        <span class="input-wrap count">
+                            <textarea class="ui_textcontrol" placeholder="취소 사유를 입력해 주세요." maxlength="200" data-limit="200" data-count-target="#txt-count1"></textarea>
+                            <span id="txt-count1" class="total"><em>0</em> / 200</span>
+                        </span>
+                    </dd>
+                </dl>
+                <dl class="forms">
+                    <dt class="tit">
+                        <label for="inp01" class="req">환불계좌 정보<span class="blind">필수입력</span></label>
+                    </dt>
+                    <dd class="conts">
+                        <span class="input-wrap half">
+                            <input type="text" value="이엘지" readonly>
+                        </span>
+                        <div class="bank-input-box">
+                            <div class="select-wrap">
+                                <select class="ui_selectbox" title="은행 선택">
+                                    <option value="" class="placeholder">선택</option>
+                                </select>
+                            </div>
+                            <div class="box">
+                                <span class="input-wrap">
+                                    <input type="text" placeholder="계좌번호 입력">
+                                </span>
+                                <div class="cell">
+                                    <button type="button" class="btn"><span>환불 계좌 확인</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!-- // 취소 사유 -->
+    </section>
+    <footer class="pop-footer">
+        <div class="btn-group">
+            <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+            <button type="button" class="btn pink"><span>확인</span></button>
+        </div>
+    </footer>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>

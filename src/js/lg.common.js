@@ -58,7 +58,8 @@
                             "ui/formatter",
                             "ui/scrollNavi",
                             "ui/smoothScroll",
-                            "ui/smoothScrollTab"
+                            "ui/smoothScrollTab",
+                            "ui/checkboxAllChecker"
         ], function () {    
             console.log("buildCommonUI!!!!");
             
@@ -78,7 +79,7 @@
             this.find('.ui_input_clearbutton').vcInputClearButton();
             this.find('.ui_star_rating').vcStarRating();
             this.find('.ui_tooltip-target').vcTooltipTarget();
-            this.find('.ui_card_number').vcFormatter({format: "card", maxlength:12});
+            this.find('.ui_card_number').vcFormatter({format: "card", maxlength:16});
 
             this.find('.ui_smooth_scroll').vcSmoothScroll();
             this.find('.ui_scroll_navi').vcScrollNavi();
@@ -88,6 +89,8 @@
             this.find('.toast-message').vcToast();
 
             this.find('.ui_sticky').vcSticky();
+
+            this.find('.ui_all_checkbox').vcCheckboxAllChecker();
 
             this.find('.ui_selectbox').vcSelectbox({
                 events:{

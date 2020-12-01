@@ -99,6 +99,8 @@ var res = {
 			"KRP0025_event_list_for_category_home" : ["/html/components/KRP0025.html","","검수완료"],
 			"KRP0027_Please note" : ["/html/components/KRP0027.html","","검수완료"],
 			"KRP0028_Event list" : ["/html/components/KRP0028.html","","검수완료"],
+			"KRP0034_Tag_List" : ["/html/components/KRP0034.html","","진행중"],
+			"KRP0035_Recommend_Story_by_Tag" : ["/html/components/KRP0035.html","","진행중"],
 			"KRP0042_Consumables Search" : ["/html/components/KRP0042.html","","진행중"],
 			"KRP0043_Substitutes&related General Products" : ["/html/components/KRP0043.html","","진행중"],
 			"KRP0044_PDP Shipping Information" : ["/html/components/KRP0044.html","","진행중"],
@@ -181,11 +183,11 @@ var res = {
 			},
 			"마이페이지(MYC)" : {
 				"쇼핑 관리" : {
-					"주문/배송내역 조회(리스트)" : ["/html/MYC/ACCF7002.html","","진행중"],
-					"주문/배송내역 조회(상세)" : ["/html/MYC/ACCF7003.html","","진행중"],
-					"신청내역(리스트-케어솔루션)" : ["/html/MYC/ACCF7024.html","","진행중"],
-					"신청내역(상세-케어솔루션)" : ["/html/MYC/ACCF7065.html","","진행중"],
-					"취소신청팝업, alert" : ["/html/MYC/ACCF7002_popup.html","","진행중"],
+					"주문/배송 조회(구매 리스트)" : ["/html/MYC/ACCF7002.html","","진행중"],
+					"주문/배송 상세보기" : ["/html/MYC/ACCF7003.html","","진행중"],
+					"주문/배송 조회(케어솔루션 청약 리스트)" : ["/html/MYC/ACCF7024.html","","진행중"],
+					"케어솔루션 청약 상세보기" : ["/html/MYC/ACCF7065.html","","진행중"],
+					"주문/배송(구매, 청약) 화면 내 팝업" : ["/html/MYC/ACCF7002_popup.html","","진행중"],
 				},
 				"케어솔루션" : {
 					// "월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
@@ -211,6 +213,9 @@ var res = {
 					"구독" : ["/html/MYC/ACCF7017.html","","진행중"],
 					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
 					"관심 스토리" : ["/html/MYC/ACCF7063.html","","진행중"]
+				},
+				"활동 관리" : {
+					"참여이벤트 리스트" : ["/html/MYC/ACCF7071.html","","진행중"]
 				},
 				"멤버십 관리" : {
 					"멤버십 가입 정보" : ["/html/MYC/ACCF7039.html","","진행중"],

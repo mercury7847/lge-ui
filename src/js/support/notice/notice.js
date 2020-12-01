@@ -30,12 +30,13 @@
                 _self.$sortTotal = $contents.find('#count');
                 _self.$sortSelect = $contents.find('.ui_selectbox');
                 _self.$listWrap = $contents.find('.tb_row');
-                _self.$noData = $contents.find('.no-data');
+                _self.$noData = $contents.find('.empty-row');
+                _self.$download = $contents.find('.addfile-wrap');
 
                 _self.params = {
                     'keyword': _self.$searchWrap.find('input[type="text"]').val(),
-                    'category': _self.$sortSelect.eq(0).vcSelectbox('value'),
-                    'orderType': _self.$sortSelect.eq(1).vcSelectbox('value'),
+                    'category': _self.$sortSelect.filter('#category').vcSelectbox('value'),
+                    'orderType': _self.$sortSelect.filter('#orderType').vcSelectbox('value'),
                     'page': 1
                 };
 
@@ -48,7 +49,7 @@
                     url = _self.$searchWrap.data('ajax');
 
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxData(url, _self.params, function(d) {
+                lgkorUI.requestAjaxDataPost(url, _self.params, function(d) {
                     var html = '',
                         data = d.data.listData,
                         page = d.data.listPage;
@@ -56,18 +57,15 @@
                     _self.$searchWrap.find('input[type="text"]').val(_self.params['keyword']);
                     _self.$sortTotal.html(page.totalCount);                    
                     _self.$pagination.pagination('update', page);
-                    _self.$listWrap.find('tbody').empty();
+                    _self.$listWrap.find('tbody').find('tr').not( _self.$noData).remove();
 
                     if (data.length) {
                         data.forEach(function(item) {
                             html += vcui.template(listTmpl, item);
                         });
-                        _self.$listWrap.find('tbody').html(html);
-                    
-                        _self.$listWrap.show();
+                        _self.$listWrap.find('tbody').prepend(html);
                         _self.$noData.hide();
                     } else {
-                        _self.$listWrap.hide();
                         _self.$noData.show();
                     }
 
@@ -88,8 +86,8 @@
 
                 _self.$sortSelect.on('change', function() {
                     _self.params = $.extend({}, _self.params, {
-                        'category': _self.$sortSelect.eq(0).vcSelectbox('value'),
-                        'orderType': _self.$sortSelect.eq(1).vcSelectbox('value'),
+                        'category': _self.$sortSelect.filter('#category').vcSelectbox('value'),
+                        'orderType': _self.$sortSelect.filter('#orderType').vcSelectbox('value'),
                         'page': 1
                     });
                     _self.searchList();
@@ -100,6 +98,12 @@
                         'page': e.page
                     });
                     _self.searchList();
+                });
+
+                _self.$download.find('.download', function(e) {
+                    e.preventDefault();
+
+                    
                 });
             }
         }

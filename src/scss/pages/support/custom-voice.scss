@@ -19,8 +19,9 @@
             }
         }
         .result-wrap {
-            max-width:1066px;
-            margin:0 auto;
+            @include mobile {
+                padding:0 16px;
+            }
         }
         .search-info {
             background-color: #f4f4f4;

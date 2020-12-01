@@ -1,4 +1,10 @@
+@@if ( context.checkboxType ) {
+<div class="box ui_all_checkbox">
+}
+@@if ( !context.checkboxType ) {
 <div class="box">
+}
+    @@if ( !context.checkboxType ) {
     <div class="info-wrap">
         <ul class="infos">
             @@for ( var i=0; i < infos.length; i++ ) {
@@ -7,6 +13,15 @@
         </ul>
         <p class="totals">@@total</p>
     </div>
+    }
+    @@if ( context.checkboxType ) {
+    <div class="info-wrap">
+        <span class="chk-wrap">
+            <input type="checkbox" id="chk-cancel-all" name="chk-cancel" class="ui_all_checker" checked>
+            <label for="chk-cancel-all">전체선택</label>
+        </span>
+    </div>
+    }
     <div class="tbl-layout">
         <!-- thead -->
         <div class="thead" aria-hidden="true">

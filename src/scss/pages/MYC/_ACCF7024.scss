@@ -112,9 +112,7 @@
                     border-bottom:none;
                 }
                 .row {
-                    display:table;
-                    table-layout:fixed;
-                    width:100%;
+                    position:relative;
                     border-top:1px solid #ddd;
                     @include mobile {
                         display:block;
@@ -122,6 +120,11 @@
                     }
                     &:first-child {
                         border-top:none;
+                    }
+                    .col-table {
+                        display:table;
+                        width:100%;
+                        table-layout:fixed;
                     }
                     .col {
                         display:table-cell;
@@ -144,6 +147,11 @@
                                 padding:0;
                             }
                         }
+                    }
+                    .cancel-select {
+                        position:absolute;
+                        top:34px;
+                        left:0;
                     }
                 }
             }
@@ -341,6 +349,13 @@
                 font-weight:700;
                 vertical-align:middle;
                 white-space:nowrap;
+                small {
+                    display:block;
+                    color:#767676;
+                    @include font-small;
+                    font-weight:400;
+                    text-decoration:line-through;
+                }
                 @include mobile {
                     display:block;
                     margin-top:12px;
@@ -360,7 +375,7 @@
             }
         }
 
-        .row.canceled {
+        .row.disabled {
             .product-info {
                 .thumb {
                     > a img {
@@ -383,6 +398,9 @@
                 }
                 .price {
                     color:#aaa;
+                    small {
+                        color:#aaa;
+                    }
                 }
             }
         }
@@ -435,9 +453,12 @@
             }
         }
 
-        .row.canceled {
+        .row.disabled {
             .state-box {
                 .tit {
+                    color:#aaa;
+                }
+                .desc {
                     color:#aaa;
                 }
             }
@@ -457,25 +478,33 @@
 
 // 청약 계약 진행단계 안내
 .contract-steps {
+    margin-top:24px;
+    overflow:hidden;
     > ol {
         position:relative;
+        margin-bottom:-32px;
         font-size:0;
+        @include mobile {
+            margin-bottom:0;
+        }
         .steps {
             display:inline-block;
             position:relative;
-            width:234px;
+            width:20%;
+            min-width:210px;
+            margin-bottom:32px;
             padding-right:94px;
             vertical-align:top;
             @include mobile {
                 display:block;
                 width:100%;
                 min-height:48px;
+                margin-bottom:0;
                 padding-left:68px;
                 padding-right:0;
                 padding-bottom:40px;
             }
             &:last-child {
-                width:210px;
                 @include mobile {
                     width:100%;
                     padding-bottom:0;

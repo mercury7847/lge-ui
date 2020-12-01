@@ -2,6 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTS/UTS"],
+        pageJS: ["search/search"]
     })
     <!-- pageJS: ["search/search"] -->
 <body>
@@ -10,7 +11,7 @@
 
         <div class="container">
             <!-- 통합검색 -->
-            <div class="contents search" data-url-timer="/lg5-common/data-ajax/search/searchTimer.json" data-url-search="/lg5-common/data-ajax/search/search_all.json" data-url-wish="#">
+            <div class="contents search" data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json" data-search-url="/lg5-common/data-ajax/search/search_all.json" data-url-wish="#">
                 <!-- 검색 영역 -->
                 @@include('./common/modules/search.html', {
                     "value" : "노크온 매직스페이스",
@@ -77,7 +78,7 @@
                                             "itemClass" : "",
                                             "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.png' alt='으뜸효율 10%'></span>",
                                             "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                            "flags" : ["베스트", "신제품"],
+                                            "flags" : ["미리미리 페스타", "으뜸효율 10%", "베스트", "신제품"],
                                             "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
                                             "sku"  : true,
                                             "review" : true,

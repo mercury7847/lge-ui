@@ -33,7 +33,7 @@
                             </div>
                             <!-- // page tab -->
                             
-                            <!-- '구매' contents -->
+                            <!-- '케어솔루션 청약' contents -->
                             <div class="section-wrap">
                                 <div class="filters">
                                     <!-- filter -->
@@ -51,6 +51,8 @@
                                     })
                                     <!-- // filter -->
                                 </div>
+
+                                <!-- data 있을 때 -->
                                 <!-- list -->
                                 <div class="info-tbl-wrap">
                                     <!-- loop -->
@@ -228,11 +230,18 @@
                                     ]
                                 })
                                 <button type="button" class="btn-moreview block"><span>더보기</span></button>
+                                <!-- // data 있을 때 -->
 
-                                <!-- 주문/배송 진행단계 안내 -->
+                                <!-- data 없을 때 -->
+                                <div class="no-data">
+                                    <p>주문 내역이 없습니다.</p>
+                                </div>
+                                <!-- // data 없을 때 -->
+
+                                <!-- 청약 계약 진행단계 안내 -->
                                 <div class="sects">
                                     <div class="tit-wrap type2">
-                                        <h6 class="tit">주문/배송 진행단계 안내</h6>
+                                        <h6 class="tit">청약 계약 진행단계 안내</h6>
                                     </div>
                                     @@include('./common/modules/contract-steps.html', {
                                         "steps" : [
@@ -257,9 +266,9 @@
                                         ]
                                     })
                                 </div>
-                                <!-- // 주문/배송 진행단계 안내 -->
+                                <!-- // 청약 계약 진행단계 안내 -->
                             </div>
-                            <!-- // '구매' contents -->
+                            <!-- // '케어솔루션 청약' contents -->
                         </div>
                     </div>
                 </div>

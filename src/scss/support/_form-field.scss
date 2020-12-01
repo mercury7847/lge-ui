@@ -94,17 +94,63 @@
         padding: 0 16px;
     }
 }
+.keyword-search {
+    .input-wrap {
+        display:block;
+        position:relative;
+        input[type=text] {
+            padding:11px 80px 11px 24px;
+            border-radius:24px;
+            border:0 none;
+            box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+        }
+        .btn-delete {
+            position:absolute;
+            top:50%;
+            right:54px;
+            width:20px;
+            height:20px;
+            margin-top:-10px;
+            background:url('/lg5-common/images/icons/icon-delete-20.svg') no-repeat 0 0;
+        }
+        .btn-search {
+            position:absolute;
+            top:0;
+            right:0;
+            width:54px;
+            height:48px;
+            background:center/20px 20px url(/lg5-common/images/icons/icon-search-20.svg) no-repeat;;
+        }
+    }
+    .err-msg {
+        display:none;
+    }
+    @include mobile {
+        .input-wrap {
+            input[type=text] {
+                padding:12px 95px 12px 24px;
+                border-radius:28px;
+            }
+            .btn-delete {
+                right: 68px;
+            }
+            .btn-search {
+                width:68px;
+                height:46px;
+            }
+        }
+    }
+}   
 
-/* input or textarea */
-
-/* select */
-
-/* check or radio */
-
-/* check or radio list */ 
-
-/* input box (email, address, search etc... */
-
+.search-wrap {
+    width:444px;
+    margin:0 auto 64px;
+    @include mobile {
+        width:100%;
+        margin:0 0 65px;
+        padding:0 16px;
+    }
+}
 
 
 
@@ -421,108 +467,4 @@
     }
 }
 
-/* 모델명 검색 영역 */
-.model-search {
-    .input-wrap {
-        position:relative;
-        input {
-            padding-left:64px;
-        }
-        button {
-            position:absolute;
-            top:16px;
-            left:24px;
-            width:24px;
-            height:24px;
-            background:url('/lg5-common/images/icons/icon-search2.svg') no-repeat;
-            background-size:100%;
-        }
-    }
-    .model-util {
-        margin-top:8px;
-        @include clearfix;
-        .btn-banner {
-            float:left;
-        }
-        .btn-text {
-            float:right;
-            // max-width: 60px;
-        }
-    }
-}
 
-.search-wrap {
-    &.typa-A {
-        position:relative;
-        margin:0 auto;
-        .select-wrap {
-            position:relative;
-            float:left;
-            width:188px;
-            z-index:10;
-            .ui-selectbox-wrap {
-                .ui-select-button {
-                    border-radius:8px 0 0 8px;
-                    border-right-color:transparent;
-                    background:#fff;
-                }
-                &.on {
-                    .ui-select-button {
-                        border-radius:8px 8px 0 0;
-                        border-right-color:#222;
-                    }
-                }
-                @include mobile {
-                    .ui-select-button {
-                        border-radius:8px;
-                        border-right-color:#ddd;
-                    }
-                }
-            }
-            @include mobile {
-                float:none;
-                width:100%;
-            }
-        }
-        .input-wrap {
-            display:block;
-            margin-left:188px;
-            width: calc(100% - 188px);
-            .box input {
-                padding-left:8px;
-                border-radius:0;
-                border-left-color:transparent;
-                &:focus {
-                    box-shadow:none;
-                }
-            }
-            @include mobile {
-                margin-top:8px;
-                margin-left:0;
-                .box input {
-                    border-radius:8px 0 0 8px;
-                    border-left-color:#ddd;
-                    padding-left:23px;
-                }
-            }
-            .cell {
-                background:#fff;
-            }
-        }
-        @include pc {
-            .bullet-list {
-                margin-bottom: 56px;
-            }
-        }
-        @include mobile {
-            padding:0 0 32px;
-            background:#fff;
-            &::before, &::after {
-                display:none;
-            }
-            .input-wrap {
-                width: 100%;
-            }
-        }
-    }
-}
