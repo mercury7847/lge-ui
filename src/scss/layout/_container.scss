@@ -195,13 +195,9 @@
     //     line-height:24px;
     // }
     margin:0;
-    padding:160px 0;
+    padding:140px 0;
     background-color: #fff;
     text-align:center;
-    @include mobile {
-        padding:40px 0;
-        width: calc(100vw - 40px);
-    }
     &.mg-type {
         padding:0;
         margin:140px 0;
@@ -226,5 +222,8 @@
     }
     &.full {
         padding:(140px - 56px) 0;
+    }
+    @include mobile {
+        padding: 40px 0;
     }
 }
