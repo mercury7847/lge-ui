@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+	@@include('./common/head.html', {
+		componentID: "KRP0035",
+		isJScompile: true,
+	})
+<body>
+	<div class="wrap">
+		<div class="container">
+
+			<div class="component-wrap">
+				<!--
+					[component-wrap 옵션]
+					1. 여백
+					.zero-top : 상단여백 없음
+					.zero-btm : 하단여백 없음
+				-->
+				<section class="component KRP0035">
+					<div class="component-inner">
+
+						<div class="slide-wrap carousel-type ui_carousel_slider">
+							<div class="indi-wrap">
+								<ul class="indi-conts ui_carousel_dots">
+									<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+								</ul>
+								<!-- [KR수정] play/pause btn DOM 추가 -->
+								<span class="ui_carousel_play play">
+									<button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
+								</span>
+								<!-- // [KR수정] play/pause btn DOM 추가 -->
+							</div>
+							<div class="slide-content ui_carousel_list">
+								<div class="slide-track ui_carousel_track">
+									<!-- slide item -->
+									<div class="slide-conts ui_carousel_slide">
+										<div class="recommend-story-tag-wrap">
+											<div class="inner">
+												<div class="recommend-visual">
+													<img src="/lg5-common/images/dummy/@img-recommend.jpg" alt="" aria-hidden="true">
+												</div>
+												<div class="recommend-info">
+													<div class="hashtag-list">
+														<span class="hashtag">#여름</span>
+														<span class="hashtag">#에어컨</span>
+													</div>
+													<h3 class="info-title"><a href="#n">올바른 에어컨 관리로 건강한 여름나기<br>
+															(feat. LG 휘센)</a></h3>
+													<p class="date">2020.09.07</p>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<!-- //slide item -->
+									<!-- slide item -->
+									<div class="slide-conts ui_carousel_slide">
+										<div class="recommend-story-tag-wrap">
+											<div class="inner">
+												<div class="recommend-visual">
+													<img src="/lg5-common/images/dummy/@img-recommend-2.jpg" alt="" aria-hidden="true">
+												</div>
+												<div class="recommend-info">
+													<div class="hashtag-list">
+														<span class="hashtag">#겨울</span>
+														<span class="hashtag">#옷관리</span>
+													</div>
+													<h3 class="info-title"><a href="#n">겨울철 보푸라기와 옷 먼지를 잡아주는<br> LG 통돌이 세탁기 사용팁 LG 통돌이 세탁기 사용팁</a></h3>
+													<p class="date">2020.09.07</p>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<!-- //slide item -->
+									<!-- slide item -->
+									<div class="slide-conts ui_carousel_slide">
+										<div class="recommend-story-tag-wrap">
+											<div class="inner">
+												<div class="recommend-visual">
+													<img src="/lg5-common/images/dummy/@img-recommend.jpg" alt="" aria-hidden="true">
+												</div>
+												<div class="recommend-info">
+													<div class="hashtag-list">
+														<span class="hashtag">#여름</span>
+														<span class="hashtag">#에어컨</span>
+													</div>
+													<h3 class="info-title"><a href="#n">올바른 에어컨 관리로 건강한 여름나기<br>
+															(feat. LG 휘센)</a></h3>
+													<p class="date">2020.09.07</p>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<!-- //slide item -->
+								</div>
+							</div>
+							<!-- [KR수정] slide arrow button DOM 추가 -->
+							<div class="slide-controls">
+								<button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+								<button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+							</div>
+							<!-- // [KR수정] slide arrow button DOM 추가 -->
+						</div>
+					</div>
+				</section>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

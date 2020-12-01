@@ -284,6 +284,9 @@
                     }
                 }
             }
+            &.modify{
+                display:none;
+            }
         }
         > .btn-group {
             margin-top:80px;

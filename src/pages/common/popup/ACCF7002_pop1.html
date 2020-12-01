@@ -1,98 +1,103 @@
-<article id="@@popupID" class="popup-wrap full">
+<article id="@@popupID" class="popup-wrap wide" style="display:block;">
     <header class="pop-header">
         <h1 class="tit"><span>취소신청</span></h1>
     </header>
-    <section class="pop-conts">
-        <div class="input-info">
-            <div class="tit-wrap">
-                <h2 class="h2-tit">취소신청 사유를 입력해주세요.</h2>
+    <section class="pop-conts common-pop mypage">
+        <div class="sect-wrap">
+            <!-- 주문정보 -->
+            <div class="info-tbl-wrap">
+                <!-- loop -->
+                @@include('./common/modules/info-tbl-wrap-infos.html', {
+                    "checkboxType" : true,
+                    "th" : [
+                        "제품정보(주문/배송 상세보기)", "진행상태"
+                    ]
+                })
+                @@loop('./common/modules/info-tbl-wrap-loop.html', [
+                    {
+                        "col1" : {
+                            "blind" : "제품정보",
+                            "productType" : {
+                                "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
+                                "name" : "LG 디오스 상냉장하냉동",
+                                "name2" : "OLED55BXPUA",
+                                "more" : [
+                                    "주요스펙1",
+                                    "주요스펙2"
+                                ],
+                                "count" : true,
+                                "oriPrice" : "3,000,000원",
+                                "price" : "1,760,000원"
+                            }
+                        },
+                        "col2" : {
+                            "blind" : "진행상태",
+                            "stateType" : {
+                                "tit" : "결제완료",
+                                "desc" : "배송희망일 2020.09.18"
+                            }
+                        },
+                        "checkboxType" : true,
+                        "chkId" : "chk-cancel01"
+                    },
+                    {
+                        "disabled" : true,
+                        "col1" : {
+                            "blind" : "제품정보",
+                            "productType" : {
+                                "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                "name" : "LG 디오스 냉장고 일반형 정수 필터",
+                                "name2" : "OLED55BXPUA",
+                                "count" : true,
+                                "price" : "50,000원"
+                            }
+                        },
+                        "col2" : {
+                            "blind" : "진행상태",
+                            "stateType" : {
+                                "tit" : "배송중",
+                                "desc" : "배송희망일 2020.09.18"
+                            }
+                        },
+                        "checkboxType" : true,
+                        "chkId" : "chk-cancel02"
+                    }
+                ])
+                @@include('./common/modules/info-tbl-wrap-bottom.html')
+                <!-- // loop -->
             </div>
-            <div class="form-wrap">
-                <dl class="forms">
-                    <dt class="tit">
-                        <label for="select1">취소 사유</label>
-                    </dt>
-                    <dd class="conts">
-                        <div class="input-box btn-type">
-                            <div class="select-wrap">
-                                <select class="ui_selectbox" id="select1">
-                                    <option value="" class="placeholder">취소 사유 선택</option>
-                                    <option value="">취소사유</option>
-                                    <option value="">취소사유</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="input-box">
-                            <span class="input-wrap block">
-                                <textarea placeholder="취소신청 사유를 입력해주세요."></textarea>
-                            </span>
-                        </div>
-                    </dd>
-                </dl>
-            </div>
+            <!-- // 주문정보 -->
         </div>
-        <div class="input-info">
+
+        <div class="sect-wrap">
             <div class="tit-wrap">
-                <h2 class="h2-tit">환불 받을 계좌를 확인해주세요.</h2>
+                <h3 class="h2-tit">취소 정보</h3>
             </div>
-            <div class="form-wrap">
-                <div class="double-form">
-                    <dl class="forms">
-                        <dt class="tit">
-                            <label for="ipt1">예금주</label>
-                        </dt>
-                        <dd class="conts">
-                            <span class="input-wrap block">
-                                <input type="text" id="buyerName" value="이엘지" readonly>
-                            </span>
-                        </dd>
-                    </dl>
-                </div>
-                <div class="double-form">
-                    <dl class="forms">
-                        <dt class="tit">
-                            <label for="select2">은행</label>
-                        </dt>
-                        <dd class="conts">
-                            <div class="select-wrap">
-                                <select class="ui_selectbox" id="select2">
-                                    <option value="" class="placeholder">은행 선택</option>
-                                    <option value="" selected>하나은행</option>
-                                    <option value="">국민은행</option>
-                                </select>
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="forms">
-                        <dt class="tit">
-                            <label for="ipt2">계좌번호</label>
-                        </dt>
-                        <dd class="conts">
-                            <span class="input-wrap block">
-                                <span class="box2">
-                                    <input type="text" id="ipt2" placeholder="계좌번호 입력" value="123456789">
-                                    <span class="cell">
-                                        <a href="#" class="btn bd-black"><span>계좌 확인</span></a>
-                                    </span>
-                                </span>
-                            </span>
-                        </dd>
-                    </dl>
-                </div>
-                <div class="forms">
-                    <span class="chk-wrap">
-                        <input type="checkbox" id="chk1-1" name="chk1" checked>
-                        <label for="chk1-1">환불을 위하여 성명, 은행명, 계좌번호를 수집하며, 5년간 처리에 동의합니다.</label>
-                    </span>
-                </div>
+            <div class="tb_row tb-row-bl">
+                <table>
+                    <caption>취소 정보를 제품금액, 할인 금액 합계, 취소 신청 금액 순으로 안내</caption>
+                    <colgroup>
+                        <col style="width:33.3%">
+                        <col style="width:33.3%">
+                        <col>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">제품 금액</th>
+                            <th scope="col">할인 금액 합계</th>
+                            <th scope="col">취소 신청 금액</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>5,300,000원</td>
+                            <td>-159,000원</td>
+                            <td><em class="bold black">5,141,000원</em></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btm_info">최적 혜택가격은 적용 제휴카드에 따라 다르게 계산되며, 제휴카드의 전월 실적에 따라 케어솔루션 월 요금이 청구할인 됩니다.</div>
             </div>
-            @@include('./common/modules/bullet-list.html', {
-                "topBorder" : true,
-                "bulletTxt" : [
-                    "가상계좌 입금 혹은 휴대폰 전월 주문내역을 취소할 경우 계좌로 환불해드립니다. (단, 고객님 본인 명의의 계좌만 가능)",
-                    "그 외 문의는 고객센터(0000-0000) 또는 챗봇을 이용해주시기 바랍니다."
-                ]
-            })
         </div>
     </section>
     <footer class="pop-footer">

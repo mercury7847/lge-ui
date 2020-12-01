@@ -456,20 +456,16 @@
         .sect-wrap {
             margin-top:48px;
             @include mobile {
-                margin-top:32px;
+                margin-top:40px;
             }
             &:first-child {
                 margin-top:0;
             }
             .tit-wrap {
-                margin-bottom:16px;
-                @include mobile {
-                    margin-bottom:18px;
-                }
+                margin-bottom:12px;
                 .h2-tit {
                     color:#222;
-                    font-size:16px;
-                    line-height:24px;
+                    @include font-small;
                     font-weight:700;
                 }
             }
