@@ -1123,18 +1123,23 @@
     /* 비디오 가이드 */
     &.video-guide {
         .tabs-wrap {
-            padding:32px 0 16px;
+            display: block;
             @media screen and (min-width: $tablet-l-width) {
                 display:none;
             }
+            @media screen and (max-width: $tablet-l-width) {
+                margin: 0 16px 4px;
+            }
         }
         .search-summary {
-            margin-bottom:12px;
+            margin-bottom:48px;
             .summary {
                 color:#111;
-                font-size:14px;
+                font-size:20px;
                 font-weight:700;
                 line-height:20px;
+                display: flex;
+                align-items: center;
                 &-keyword {
                     color:#ec455a;
                 }
@@ -1148,8 +1153,8 @@
                 }
             }
             @include mobile {
-                margin:0;
-                padding:32px 20px 12px;
+                margin-bottom:24px;
+                padding:0 16px;
                 background:#fff;
                 .summary {
                     line-height:18px;
@@ -1166,33 +1171,33 @@
                 @media screen and (min-width: $tablet-l-width) {
                     display:block !important;
                     float: left;
-                    @include calc('width', 50%, 12px);
-                    margin-left:24px;
+                    @include calc('width', 50%, 60px);
+                    margin-left:120px;
                     &:first-child {
                         margin-left:0;
                     }
                 }
             }
             .result-box {
-                padding:56px;
                 border-radius:4px;
                 background:#fff;
                 .result-tit {
                     display:none;
-                    padding-bottom:8px;
+                    padding-bottom:16px;
                     color:#222;
-                    font-size:16px;
+                    font-size:20px;
                     font-weight:700;
                     line-height:24px;
-                    border-bottom:1px solid #616161;
+                    border-bottom:2px solid #222;
                     @include pc {
                         display:block;
                     }
                 }
                 .result-total {
-                    margin-top:8px;
-                    color:#616161;
+                    margin-top:12px;
+                    color:#222;
                     font-size:14px;
+                    font-weight: 500;
                     line-height:20px;
                     text-align:right;
                     .count {
@@ -1202,7 +1207,7 @@
             }
             @include mobile {
                 .result-box {
-                    padding:0 20px 56px;
+                    padding:0 16px 56px;
                 }
             }
         }

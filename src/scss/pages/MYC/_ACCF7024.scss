@@ -79,8 +79,73 @@
             }
         }
 
+        &.title-type {
+            .box-title {
+                margin-bottom:12px;
+                font-size:0;
+                p {
+                    display:inline-block;
+                    color:#222;
+                    @include font-small;
+                    font-weight:700;
+                    vertical-align:top;
+                }
+                .tooltip-wrap {
+
+                }
+            }
+            @include mobile {
+                border-radius:0;
+                box-shadow:none;
+                overflow:initial;
+                .tbl-layout {
+                    border-radius:8px;
+                    box-shadow:2px 4px 16px 0 rgba(#000, .14);
+                }
+                > .btn-link {
+                    top:0;
+                    right:0;
+                }
+            }
+        }
+
+        &.chk-type {
+            .chk-wrap {
+                display:block;
+                margin-bottom:12px;
+                @include mobile {
+                    margin-bottom:16px;
+                }
+            }
+            .cancel-select {
+                position:absolute;
+                top:34px;
+                left:0;
+                @include mobile {
+                    top:28px;
+                }
+            }
+            @include mobile {
+                border-radius:0;
+                box-shadow:none;
+                overflow:initial;
+                .tbl-layout {
+                    border-radius:8px;
+                    box-shadow:2px 4px 16px 0 rgba(#000, .14);
+                    .tbody .row {
+                        padding-top:58px;
+                    }
+                }
+                > .btn-link {
+                    top:0;
+                    right:0;
+                }
+            }
+        }
+
         // display table box
         .tbl-layout {
+            position:relative;
             .thead {
                 display:table;
                 width:100%;
@@ -148,10 +213,131 @@
                             }
                         }
                     }
-                    .cancel-select {
+                }
+            }
+            .bill-btns {
+                position:absolute;
+                top:0;
+                right:0;
+                bottom:0;
+                width:calc(17.6% + 1px);
+                @include mobile {
+                    position:relative;
+                    top:auto;
+                    right:auto;
+                    bottom:auto;
+                    width:100%;
+                    padding:16px 0;
+                    border-top:1px solid #ddd;
+                    text-align:center;
+                }
+                &::before {
+                    content:' ';
+                    position:absolute;
+                    top:2px;
+                    left:0;
+                    bottom:0;
+                    width:1px;
+                    background:#ddd;
+                    @include mobile {
+                        display:none;
+                    }
+                }
+                .title {
+                    @include pc {
+                        padding:16px 0;
+                        border-top:2px solid #222;
+                        background:#f4f4f4;
+                        text-align:center;
+                        font-size:0;
+                        white-space:nowrap;
+                        p {
+                            display:inline-block;
+                            @include font-medium;
+                            font-weight:500;
+                            vertical-align:middle;
+                        }
+                        .tooltip-wrap {
+                            vertical-align:middle;
+                            margin-left:4px;
+                            padding-top:0;
+                        }
+                    }
+                    @include mobile {
+                        height:34px;
+                        padding:0 16px;
+                        text-align:right;
+                        > p {
+                            float:left;
+                            font-size:0;
+                        }
+                        .tooltip-wrap {
+                            margin-top:7px;
+                            .tooltip-box {
+                                left:0;
+                                right:0;
+                            }
+                        }
+                    }
+                }
+                .btn-area {
+                    @include pc {
+                        position:relative;
+                        width:100%;
+                        height:calc(100% - 60px);
+                        border-bottom:1px solid #ddd;
+                        vertical-align:top;
+                        text-align:center;
+                        z-index:10;
+                        .btn {
+                            position:absolute;
+                            top:50%;
+                            left:50%;
+                            margin-top:-16px;
+                            transform:translateX(-50%);
+                        }
+                        .desc {
+                            position:absolute;
+                            top:50%;
+                            left:16px;
+                            right:16px;
+                            color:#767676;
+                            word-break:keep-all;
+                            @include font-medium;
+                            transform:translateY(-50%);
+                            span {
+                                display:inline-block;
+                            }
+                        }
+                    }
+                    @include mobile {
                         position:absolute;
-                        top:34px;
-                        left:0;
+                        top:50%;
+                        left:50%;
+                        transform:translateX(-50%) translateY(-50%);
+                        .desc {
+                            color:#767676;
+                            @include font-medium;
+                            span {
+                                display:inline-block;
+                                margin:0 2px;
+                            }
+                        }
+                    }
+                }
+                &.type2 {
+                    @include mobile {
+                        .title {
+                            position:absolute;
+                            top:0;
+                            left:0;
+                        }
+                        .btn-area {
+                            position:relative;
+                            top:auto;
+                            left:auto;
+                            transform:translate(0);
+                        }
                     }
                 }
             }
@@ -162,6 +348,18 @@
                 @include mobile {
                     width:100%;
                     max-width:100%;
+                }
+            }
+
+            &.size3 {
+                .thead,
+                .tbody {
+                    margin-right:17.6%;
+                    width:82.4%;
+                    @include mobile {
+                        margin-right:0;
+                        width:100%;
+                    }
                 }
             }
         }

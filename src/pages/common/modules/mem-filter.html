@@ -45,6 +45,22 @@
                 </div>
             </div>
             }
+            @@if ( context.rdoCheck ) {
+            <div class="rdo-check">
+                <div class="select-list-wrap w-auto">
+                    <ul>
+                        @@for ( var i=0; i < list.length; i++ ) {
+                        <li>
+                            <span class="rdo-wrap">
+                                <input type="radio" id="`+list[i].id+`" name="`+list[i].name+`" `+list[i].checked+`>
+                                <label for="`+list[i].id+`">`+list[i].label+`</label>
+                            </span>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            }
         </div>
     </div>
 </div>
