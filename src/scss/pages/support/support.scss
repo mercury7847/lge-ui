@@ -381,7 +381,7 @@
                     text-align:center;
 
                     &::after{
-                        content: '+';
+                        content: '';
                         color:#fff;
                         font-size:20px;
                     }
@@ -412,7 +412,7 @@
                 .btn-ipt-file{
                     background-image:url(/lg5-common/images/icons/btn-imgdelet-24.svg);
                     &::after{
-                        content:'X';
+                        content:'';
                     }
                 }
             }
