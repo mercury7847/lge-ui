@@ -1193,52 +1193,43 @@
     .select-quantity {
         .inner {
             display: inline-block;
-            border: 1px solid #ddd;
+            border: 1px solid $color-border;
             border-radius: 6px;
             font-size: 0;
         }
         .minus,
         .plus {
             position: relative;
-            width: 32px;
-            height: 32px;
-            background-color: #fff;
-            &:before,
-            &:after {
-                position: absolute;
-                top: 50%;
-                @include calc(left,50%,5px);
-                width: 10px;
-                height: 1px;
-                content: '';
-            }
+            width: 36px;
+            height: 36px;
+            background: #fff no-repeat center center;
+            cursor: default;
             &.minus {
                 border-radius: 6px 0 0 6px;
-                &:before {
-                    background-color: #aaa;
-                }
-                &:after {
-                    display: none;
-                }
+                background-image: url('/lg5-common/images/icons/btn-minus-12-gray.svg');
             }
             &.plus {
                 border-radius: 0 6px 6px 0;
-                &:before,
-                &:after {
-                    background-color: #111;
+                background-image: url('/lg5-common/images/icons/btn-plus-12-gray.svg');
+            }
+            &.active {
+                cursor: pointer;
+                &.minus {
+                    background-image: url('/lg5-common/images/icons/btn-minus-12.svg');
                 }
-                &:after {
-                    transform: rotate(90deg);
+                &.plus {
+                    background-image: url('/lg5-common/images/icons/btn-plus-12.svg');
                 }
             }
         }
         .quantity {
-            width: 40px;
-            height: 32px;
-            border-right: 1px solid #ddd;
-            border-left: 1px solid #ddd;
-            background-color: #fff;
-            font-size: 13px;
+            width: 44px;
+            height: 36px;
+            border-right: 1px solid $color-border;
+            border-left: 1px solid $color-border;
+            background-color: $color-bg-wt;
+            font-weight: 700;
+            @include font-small;
             text-align: center;
             &::-webkit-outer-spin-button,
             &::-webkit-inner-spin-button {
