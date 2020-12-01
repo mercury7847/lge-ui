@@ -33,6 +33,8 @@
             '</a>' +
         '</li>';
 
+    var surveyValidation;
+
     function suveyContent(param) {
         var url = CS.UI.$surveyWrap.data('ajax');
 
@@ -58,7 +60,6 @@
             // $('#surveyPop').vcModal();
 
             lgkorUI.hideLoading();
-
             lgkorUI.alert(desc, obj);
         });
     }
@@ -68,7 +69,7 @@
             params: {},
             init: function() {
                 var _self = this,
-                    $contents = $('.contents.card');
+                    $contents = $('.contents.support');
                 
                 CS.UI.$resultWrap = $contents.find('.result-wrap');
                 CS.UI.$pagination = $contents.find('.pagination');
@@ -86,6 +87,19 @@
                 CS.UI.$pagination.pagination({
                     pageCount: 12
                 });
+
+                if (CS.UI.$surveyWrap.length) {
+                    vcui.require(['ui/validation'], function () {             
+                        surveyValidation = new vcui.ui.CsValidation('.survey-content', {
+                            register: {
+                                rating: {
+                                    required: true,
+                                    msgTarget: '.err-msg'
+                                }
+                            }
+                        });
+                    });
+                }
             
                 _self.bindEvent();
             },
@@ -102,7 +116,7 @@
                     CS.UI.$listWrap.find('ul').empty();
 
                     if (data.length) {
-                        if (!CS.UI.$listWrap.hasClass('title-type')) {
+                        if (!$('.product-tips').length) {
                             data.forEach(function(item) {
                                 html += vcui.template(cardListTmpl, item);
                             });
@@ -138,16 +152,16 @@
                 });
 
                 CS.UI.$surveyWrap.find('.btn-survey').on('click', function(e) {
-                    var score = CS.UI.$surveyWrap.find('.ui_star_rating').vcStarRating('value'),
-                        text = CS.UI.$surveyWrap.find('#input-content').val();
-                        
-                    if (score) {
+                    var result = surveyValidation.validate();
+
+                    if (result.success) {
+                        var score = CS.UI.$surveyWrap.find('#rating').vcStarRating('value'),
+                            text = CS.UI.$surveyWrap.find('#ratingContent').val();
+
                         suveyContent({
                             'score': score,
                             'input': text
                         });
-                    } else {
-                        CS.UI.$surveyWrap.find('.ui_star_rating').addClass('error');
                     }
                 });
             }
