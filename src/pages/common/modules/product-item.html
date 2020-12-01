@@ -14,7 +14,7 @@
         </div>
         }
         <div class="product-image" aria-hidden="true">
-            @@if(!context.single) {
+            @@if(!context.singleImage) {
             @@include('./common/partials/KRP0009-carousel.html', {
                 "slideArr" : [
                     {"visual" : "/lg5-common/images/dummy/@img-product.jpg"},
@@ -22,7 +22,7 @@
                 ]
             })
             }
-            @@if(context.single) {
+            @@if(context.singleImage) {
             @@include('./common/partials/KRP0009-carousel.html', {
                 "slideArr" : [
                     {"visual" : "/lg5-common/images/dummy/@img-product.jpg"}
