@@ -1,0 +1,668 @@
+{
+    "status":"success",
+    "message":null,
+    "param":{
+        "searchedValue":"매직스페이스",
+        "searchedInput":"메직"
+    },
+    "data":{
+        "related":[
+            "OLED TV",
+            "4K OLED TV",
+            "LG DIOS",
+            "매직스페이스",
+            "AV 홈라이프"
+        ],
+        "category":[
+            {
+                "text":"제품>에어컨/에어케어",
+                "url":"#s1"
+            },
+            {
+                "text":"제품>에어컨/에어케어>에어컨",
+                "url":"#s2"
+            },
+            {
+                "text":"제품>에어컨/에어케어>에어케어",
+                "url":"#s3"
+            }
+        ],
+        "all":{
+            "count":"195"
+        },
+        "product":{
+            "count":"123",
+            "data":[
+                {
+                    "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                    "image_alt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "price":"4421000",
+                    "sale":"15",
+                    "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                    "bigFlag_alt":"으뜸효율 10%",
+                    "bigFlag":"으뜸효율<br><em>10%</em>",
+                    "flag":[
+                        "NEW",
+                        "BEST"
+                    ],
+                    "hash":[
+                        {
+                            "tag":"가전",
+                            "class":"hashtag"
+                        },
+                        {
+                            "tag":"여름가전",
+                            "class":"hashtag"
+                        }
+                    ],
+                    "isReview":true,
+                    "rating":"40",
+                    "review":"34"
+                },
+                {
+                    "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                    "image_alt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "price":"4421000",
+                    "sale":"15",
+                    "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                    "bigFlag_alt":"으뜸효율 10%",
+                    "bigFlag":"으뜸효율<br><em>10%</em>",
+                    "flag":[
+                        "NEW",
+                        "BEST"
+                    ],
+                    "hash":[
+                        {
+                            "tag":"가전",
+                            "class":"hashtag"
+                        },
+                        {
+                            "tag":"여름가전",
+                            "class":"hashtag"
+                        }
+                    ],
+                    "isReview":false,
+                    "rating":"40",
+                    "review":"34"
+                },
+                {
+                    "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                    "image_alt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "price":"4421000",
+                    "sale":"15",
+                    "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                    "bigFlag_alt":"으뜸효율 10%",
+                    "bigFlag":"으뜸효율<br><em>10%</em>",
+                    "flag":[
+                        "NEW",
+                        "BEST"
+                    ],
+                    "hash":[
+                        {
+                            "tag":"가전",
+                            "class":"hashtag"
+                        },
+                        {
+                            "tag":"여름가전",
+                            "class":"hashtag"
+                        }
+                    ],
+                    "isReview":true,
+                    "rating":"40",
+                    "review":"34"
+                }
+            ]
+        },
+        "event":{
+            "count":"6",
+            "data":[
+                {
+                    "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-event01.jpg",
+                    "image_alt":"2020 NEW 올레드와 함께하는 홈라이프 홈라이프",
+                    "title":"2020 NEW 올레드와 함께하는 <em>홈라이프 홈라이프</em>",
+                    "thumbFlag":[
+                        "TV",
+                        "OLED"
+                    ],
+                    "flag":[
+                        "매장",
+                        "혜택"
+                    ],
+                    "startDate":"20200802",
+                    "endDate":"20200928"
+                },
+                {
+                    "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-event01.jpg",
+                    "image_alt":"2020 NEW 올레드와 함께하는 홈라이프 홈라이프",
+                    "title":"2020 NEW 올레드와 함께하는 홈라이프 홈라이프",
+                    "thumbFlag":[
+                        "TV",
+                        "프로젝터"
+                    ],
+                    "flag":[
+                        "매장",
+                        "혜택"
+                    ],
+                    "startDate":"20200802",
+                    "endDate":"20200928"
+                },
+                {
+                    "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-event01.jpg",
+                    "image_alt":"2020 NEW 올레드와 함께하는 홈라이프 홈라이프",
+                    "title":"2020 NEW 올레드와 함께하는 홈라이프 홈라이프",
+                    "thumbFlag":[
+                        "TV",
+                        "OLED"
+                    ],
+                    "flag":[
+                        "매장",
+                        "구매혜택"
+                    ],
+                    "startDate":"20200802",
+                    "endDate":"20200928"
+                }
+            ]
+        },
+        "story":{
+            "count":"16",
+            "data":[
+                {
+                    "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-stroy.png",
+                    "image_alt":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG ThinQ",
+                    "title":"행복을 찾아주는 파랑새, 인공지능 <em>플랫폼 ‘LG ThinQ’</em>",
+                    "flag":[
+                        "비하인드"
+                    ],
+                    "hash":[
+                        {
+                            "tag":"가을",
+                            "class":"pink"
+                        },
+                        {
+                            "tag":"가전",
+                            "class":null
+                        }
+                    ],
+                    "startDate":"20200802",
+                    "endDate":"20200928"
+                },
+                {
+                    "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-stroy.png",
+                    "image_alt":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG ThinQ",
+                    "title":"행복을 찾아주는 파랑새, 인공지능 <em>플랫폼 ‘LG ThinQ’</em>",
+                    "flag":[
+                        "비하인드스토리"
+                    ],
+                    "hash":[
+                        {
+                            "tag":"가을",
+                            "class":null
+                        },
+                        {
+                            "tag":"가전기구",
+                            "class":null
+                        }
+                    ],
+                    "startDate":"20200802",
+                    "endDate":"20200928"
+                },
+                {
+                    "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-stroy.png",
+                    "image_alt":"행복을 찾아주는 파랑새, 인공지능 플랫폼 LG ThinQ",
+                    "title":"행복을 찾아주는 파랑새, 인공지능 플랫폼 ‘LG ThinQ’",
+                    "flag":[
+                        "비하인드"
+                    ],
+                    "hash":[
+                        {
+                            "tag":"가을",
+                            "class":""
+                        },
+                        {
+                            "tag":"가전기구",
+                            "class":null
+                        }
+                    ],
+                    "startDate":"20200802",
+                    "endDate":"20200928"
+                }
+            ]
+        },
+        "additional":{
+            "count":"31",
+            "data":[
+                {   "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                    "image_alt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "price":"4422000",
+                    "sale":"15",
+                    "desc":"적용모델 : H-62HSGAKOR 외"
+                },
+                {   "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                    "image_alt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "price":null,
+                    "sale":null,
+                    "desc":"적용모델 : H-62HSGAKOR 외"
+                },
+                {   "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                    "image_alt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1",
+                    "price":"4422000",
+                    "sale":null,
+                    "desc":"적용모델 : H-62HSGAKOR 외"
+                }
+            ]
+        },
+        "customer":{
+            "count":"32",
+            "support":[
+                {   "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                    "image_alt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q1"
+                },
+                {   "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                    "image_alt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q2"
+                },
+                {   "url":"#",
+                    "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                    "image_alt":"LG DIOS 노크온 매직스페이스",
+                    "title":"LG DIOS 노크온 매직스페이스",
+                    "sku":"S833MC85Q3"
+                }
+            ],
+            "driver":[
+                {
+                    "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true",
+                    "title":"[프로그램/Win10_64bit ] XPION용 LG <em>intelligent Update </em>프로그램",
+                    "flag":[
+                        "드라이버/소프트지원"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "<em>데스크톱</em>/일체형"
+                        ]
+                    ],
+                    "desc":null
+                },
+                {
+                    "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true",
+                    "title":"[프로그램/Win10_64bit ] XPION용 LG <em>intelligent Update </em>프로그램",
+                    "flag":[
+                        "드라이버/소프트"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "일체형"
+                        ],
+                        [
+                            "기능",
+                            "제품"
+                        ]
+                    ],
+                    "desc":null
+                }
+            ],
+            "trouble":[
+                {
+                    "url":"#",
+                    "title":"Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
+                    "flag":[
+                        "드라이버/소프트지원"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "<em>데스크톱</em>/일체형"
+                        ]
+                    ],
+                    "desc":null
+                },
+                {
+                    "url":"#",
+                    "title":"Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
+                    "flag":[
+                        "드라이버/소프트"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "일체형"
+                        ],
+                        [
+                            "기능",
+                            "제품"
+                        ]
+                    ],
+                    "desc":null
+                }
+            ],
+            "manual":[
+                {
+                    "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true",
+                    "title":"HTML <em>사용설명서</em> (한국어)",
+                    "flag":[
+                        "사용설명"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "<em>데스크톱</em>/일체형"
+                        ]
+                    ],
+                    "desc":null
+                },
+                {
+                    "url":"https://www.lgservice.co.kr/fileDownload.do?cBbsCode=SW_PDS&cSeq=11933&check=true",
+                    "title":"HTML <em>사용설명서</em> (한국어)",
+                    "flag":[
+                        "사용설명서"
+                    ],
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "일체형"
+                        ],
+                        [
+                            "기능",
+                            "제품"
+                        ]
+                    ],
+                    "desc":null
+                }
+            ],
+            "faq":[
+                {
+                    "url":"#",
+                    "title":"LG 비하인드 스토리를 열람하고 싶으신 고객님들에게 제공해드리는 FAQ 가이드 “행복을 찾아주는 파랑새, 인공지능 플랫폼을 이용해보세요’  지금 이용 지금 이용 지금 이용 지금 이용 지금 이용",
+                    "flag":[
+                        "이용가이드"
+                    ],
+                    "category":null,
+                    "desc":"사이트 <em>이용</em>"
+                },
+                {
+                    "url":"#",
+                    "title":"LG 비하인드 스토리를 열람하고 싶으신 고객님들에게 제공해드리는 FAQ 가이드 “행복을 찾아주는 파랑새, 인공지능 플랫폼을 이용해보세요’  지금 이용 지금 이용 지금 이용 지금 이용 지금 이용",
+                    "flag":[
+                        "faq"
+                    ],
+                    "category":null,
+                    "desc":"사이트 <em>이용</em>"
+                }
+            ],
+            "video":[
+                {
+                    "url":"https://www.youtube.com/embed/6BnPTCtzHlo",
+                    "title":"LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "<em>데스크톱</em>/일체형"
+                        ]
+                    ],
+                    "desc":null
+                },
+                {
+                    "url":"https://www.youtube.com/embed/6BnPTCtzHlo",
+                    "title":"LG전자 노트북 15U780 하드디스크 설치하기 설치하기 설치하기 설치하기 설치하기",
+                    "category":[
+                        [
+                            "IT/모니터",
+                            "일체형"
+                        ],
+                        [
+                            "기능",
+                            "제품"
+                        ]
+                    ],
+                    "desc":null
+                }
+            ]
+        },
+        "suggested":[
+            {
+                "id":"S833MC85Q_ID1",
+                "url":"#",
+                "buttonUrl":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85QS",
+                "originalPrice":"5100000",
+                "price":"4321000",
+                "sale":"15",
+                "bigFlag_url":null,
+                "bigFlag_alt":null,
+                "bigFlag":null,
+                "badge":null,
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"3%할인",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"사은품",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"캐시백",
+                        "class":"text"
+                    }
+                ],
+                "isReview":true,
+                "rating":"40",
+                "review":"34",
+                "isWish":false
+            },
+            {
+                "id":"S833MC85Q_ID2",
+                "url":"#",
+                "buttonUrl":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85QS",
+                "originalPrice":null,
+                "price":"4321000",
+                "sale":"15",
+                "bigFlag_url":null,
+                "bigFlag_alt":null,
+                "bigFlag":null,
+                "badge":null,
+                "flag":[
+                    "NEW",
+                    "BEST",
+                    "케어샵"
+                ],
+                "hash":[
+                    {
+                        "tag":"3%할인",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"캐시백",
+                        "class":"text"
+                    }
+                ],
+                "isReview":false,
+                "rating":"40",
+                "review":"34",
+                "isWish":true
+            },
+            {
+                "id":"S833MC85Q_ID3",
+                "url":"#",
+                "buttonUrl":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85QS",
+                "originalPrice":"5100000",
+                "price":"4321000",
+                "sale":"15",
+                "bigFlag_url":null,
+                "bigFlag_alt":null,
+                "bigFlag":null,
+                "badge":null,
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"3%할인",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"사은품",
+                        "class":"text"
+                    }
+                ],
+                "isReview":true,
+                "rating":"40",
+                "review":"34",
+                "isWish":false
+            },
+            {
+                "id":"S833MC85Q_ID4",
+                "url":"#",
+                "buttonUrl":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85QS",
+                "originalPrice":"5100000",
+                "price":"4321000",
+                "sale":"15",
+                "bigFlag_url":"/lg5-common/images/dummy/@img-promotion-badge.png",
+                "bigFlag_alt":"으뜸효율 10%",
+                "bigFlag":null,
+                "badge":null,
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"3%할인",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"사은품",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"캐시백",
+                        "class":"text"
+                    }
+                ],
+                "isReview":false,
+                "rating":"40",
+                "review":"34",
+                "isWish":true
+            },
+            {
+                "id":"S833MC85Q_ID5",
+                "url":"#",
+                "buttonUrl":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85QS",
+                "originalPrice":null,
+                "price":"4321000",
+                "sale":"15",
+                "bigFlag_url":null,
+                "bigFlag_alt":null,
+                "bigFlag":"으뜸효율<br><em>10%</em>",
+                "badge":null,
+                "flag":[
+                    "NEW",
+                    "BEST",
+                    "케어샵"
+                ],
+                "hash":[
+                    {
+                        "tag":"3%할인",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"캐시백",
+                        "class":"text"
+                    }
+                ],
+                "isReview":false,
+                "rating":"40",
+                "review":"34",
+                "isWish":false
+            },
+            {
+                "id":"S833MC85Q_ID6",
+                "url":"#",
+                "buttonUrl":"#",
+                "image_url":"/lg5-common/images/dummy/@img-product.jpg",
+                "image_alt":"LG DIOS 노크온 매직스페이스",
+                "title":"LG DIOS 노크온 매직스페이스",
+                "sku":"S833MC85QS",
+                "originalPrice":"5100000",
+                "price":"4321000",
+                "sale":"15",
+                "bigFlag_url":null,
+                "bigFlag_alt":null,
+                "bigFlag":null,
+                "badge":"코리아세일페스티발",
+                "flag":[
+                    "NEW",
+                    "BEST"
+                ],
+                "hash":[
+                    {
+                        "tag":"3%할인",
+                        "class":"text"
+                    },
+                    {
+                        "tag":"사은품",
+                        "class":"text"
+                    }
+                ],
+                "isReview":false,
+                "rating":"40",
+                "review":"34",
+                "isWish":true
+            }
+        ]
+    }
+}

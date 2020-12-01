@@ -12,7 +12,8 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '서비스 뉴스'
+                'pageTitle': '서비스 뉴스',
+                'pageDesc': '다양한 LG전자 서비스에 관한 소식을 빠르게 전해 드립니다.'
             })
             <div class="contents support notice">
                 <div class="cont-wrap">
@@ -30,7 +31,7 @@
                             <div class="total">전체 <em id="count" class="count">122</em>건</div>
                             <div class="sort-box">
                                 <div class="sort-select-wrap">
-                                    <select name="orderType" class="ui_selectbox" title="정렬 기준 선택">
+                                    <select name="orderType" id="orderType" class="ui_selectbox" title="정렬 기준 선택">
                                         <option value="최신순" selected>최신순</option>
                                         <option value="조회순">조회순</option>
                                     </select>

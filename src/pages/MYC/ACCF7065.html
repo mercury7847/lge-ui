@@ -9,7 +9,7 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "케어솔루션 청약내역 상세"
+                "pageTitle": "청약 상세보기"
             })
             <!-- mypage -->
             <div class="contents mypage">
@@ -18,113 +18,115 @@
                         @@include('./common/modules/mypage-lnb.html', {
                             "sect1" : [
                                 { "on": "on", "page": "주문/배송 조회" },
+                                { "on": "", "page": "배송지 주소 관리" },
+                                { "on": "", "page": "사은품 신청" },
                                 { "on": "", "page": "쿠폰" }
                             ]
                         })
                         <div class="lnb-contents">
-                            <div class="section">
-                                <div class="cont-box">
-                                    <!-- list -->
+                            <div class="section-wrap">
+                                <div class="sects">
+                                    <!-- 계약정보 -->
                                     <div class="info-tbl-wrap">
-                                        @@include('./common/modules/info-tbl-wrap.html', {
+                                        <!-- loop -->
+                                        @@include('./common/modules/info-tbl-wrap-infos.html', {
                                             "infos" : [
-                                                "<span class='m-blind'>신청일</span>2020.09.12", "<span class='m-blind'>계약번호:</span>QR20080549712", "총 <em>1</em>건"
+                                                { "dt" : "주문일", "dd" : "2020.08.29" },
+                                                { "dt" : "주문번호", "dd" : "20200912497207" },
                                             ],
-                                            "size" : "size3",
+                                            "total" : "총 1건", 
                                             "th" : [
-                                                "제품정보", "주문상태", "취소"
-                                            ], 
-                                            "col1" : {
-                                                "blind" : "제품정보",
-                                                "productType" : {
-                                                    "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                    "flag" : "렌탈 (케어솔루션)",
-                                                    "name" : "LG TROMM 건조기 스팀 ThinQ",
-                                                    "name2" : "RH9WGANR.AKOR",
-                                                    "more" : [
-                                                        "<span class='blind'>제품종류</span>건조기",
-                                                        "<span class='blind'>제품옵션</span>Silver"
-                                                    ]
+                                                "제품정보(주문/배송 상세보기)", "진행상태"
+                                            ]
+                                        })
+                                        @@loop('./common/modules/info-tbl-wrap-loop.html', [
+                                            {
+                                                "col1" : {
+                                                    "blind" : "제품정보",
+                                                    "productType" : {
+                                                        "flag" : "케어솔루션",
+                                                        "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG 디오스 상냉장하냉동",
+                                                        "name2" : "OLED55BXPUA",
+                                                        "more" : [
+                                                            "Silver"
+                                                        ]
+                                                    }
+                                                },
+                                                "col2" : {
+                                                    "blind" : "진행상태",
+                                                    "stateType" : {
+                                                        "tit" : "청약신청 완료",
+                                                    }
                                                 }
-                                            },
-                                            "col2" : {
-                                                "blind" : "주문상태",
-                                                "stateType" : {
-                                                    "tit" : "청약신청 완료"
-                                                }
-                                            },
-                                            "cancel" : "on"
+                                            }
+                                        ])
+                                        @@include('./common/modules/info-tbl-wrap-bottom.html', {
+                                            "cancel" : true
+                                        })
+                                        <!-- // loop -->
+                                    </div>
+                                    <!-- // 계약정보 -->
+
+                                    <div class="section-inner type3">
+                                        <!-- 신청 정보 -->
+                                        <div class="inner-box">
+                                            <p class="inner-tit">신청 정보 (계약자)</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "성명", "dd" : "이*어" },
+                                                    { "dt" : "휴대폰", "dd" : "010-****-1234" },
+                                                    { "dt" : "이메일", "dd" : "lg****@naver.com" },
+                                                ]
+                                            })
+                                        </div>
+                                        <!-- // 신청 정보 -->
+
+                                        <!-- 배송 설치 정보 -->
+                                        <div class="inner-box">
+                                            <p class="inner-tit">배송 설치 정보 (실사용자)</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "인수자 성명", "dd" : "이*수" },
+                                                    { "dt" : "인수자 휴대폰", "dd" : "010-****-1234" },
+                                                    { "dt" : "일반전화번호", "dd" : "02-****-1234" },
+                                                    { "dt" : "설치 주소", "dd" : "21655 서울특별시 엘지구 엘지로 ****" },
+                                                    { "dt" : "배송 요청사항", "dd" : "배송 요청사항 노출" },
+                                                    { "dt" : "설치장소", "dd" : "설치장소 노출" },
+                                                    { "dt" : "설치희망 일시", "dd" : "2020.09.23 10:00 ~ 12:00" },
+                                                    { "dt" : "사전 방문 신청", "dd" : "미신청 혹은 신청" },
+                                                    { "dt" : "폐가전 수거", "dd" : "수거신청 혹은 해당없음" },
+                                                ]
+                                            })
+                                        </div>
+                                        <!-- // 배송 설치 정보 -->
+
+                                        <!-- 월 납부 정보 -->
+                                        <div class="inner-box">
+                                            <p class="inner-tit">월 납부 정보</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "제휴카드 신청", "dd" : "신청 / 하나카드 LG전자 렌탈 PLUS" },
+                                                    { "dt" : "월 납부 수단", "dd" : "신용카드" },
+                                                    { "dt" : "월 납부 금액", "dd" : "<span>선납 / 포인트 사용 / 1년차 월 88,888원</span><a href='#n' class='btn-link'>매월 납부금 할인 내역 알아보기</a>" },
+                                                ]
+                                            })
+                                        </div>
+                                        <!-- // 월 납부 정보 -->
+
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "topBorder" : true,
+                                            "bulletTxt" : [
+                                                "주문 진행 상태에 따라 취소 /반품 신청이 가능합니다. 취소/반품 신청 버튼이 없을 경우 고객 센터(000-0000) 에 문의 하세요.",
+                                                "배송지 변경은 고객센터(0000-0000)로 연락 부탁드립니다."
+                                            ]
                                         })
                                     </div>
-                                    <!-- // list -->
+                                </div>
+                                <div class="btn-group center">
+                                    <button type="button" class="btn"><span>주문/배송 목록가기</span></button>
                                 </div>
                             </div>
-
-                            <div class="section">
-                                <h3 class="sec-tit">신청 정보(계약자)</h3>
-                                <div class="cont-box">
-                                    @@include('./common/modules/dl-infolist.html', {
-                                        "list" : [
-                                            { "dt" : "성명", "dd" : "이*어" },
-                                            { "dt" : "휴대폰", "dd" : "010-****-1234" },
-                                            { "dt" : "이메일", "dd" : "lg****@naver.com" }
-                                        ]
-                                    })
-                                </div>
-                            </div>
-
-                            <div class="section">
-                                <h3 class="sec-tit">배송 설치 정보(실사용자)</h3>
-                                <div class="cont-box">
-                                    @@include('./common/modules/dl-infolist.html', {
-                                        "list" : [
-                                            { "dt" : "인수자 성명", "dd" : "이*수" },
-                                            { "dt" : "인수자 휴대폰", "dd" : "010-****-1234" },
-                                            { "dt" : "일반 전화번호", "dd" : "010-****-1234" },
-                                            { "dt" : "설치 주소", "dd" : "21655 서울특별시 엘지구 엘지로 ***" },
-                                            { "dt" : "배송 요청사항", "dd" : "배송 요청사항이 노출됩니다." },
-                                            { "dt" : "설치 장소", "dd" : "설치장소가 노출됩니다." },
-                                            { "dt" : "설치희망 일시", "dd" : "2020.09.23 10:00~12:00" },
-                                            { "dt" : "사전방문 신청", "dd" : "미신청 혹은 신청" },
-                                            { "dt" : "폐가전 수거", "dd" : "수거신청 혹은 해당없음" }
-                                        ]
-                                    })
-                                </div>
-                            </div>
-
-                            <!-- 납부 정보 : 신용카드 case -->
-                            <div class="section">
-                                <h3 class="sec-tit">납부 정보</h3>
-                                <div class="cont-box">
-                                    @@include('./common/modules/dl-infolist.html', {
-                                        "list" : [
-                                            { "dt" : "제휴카드신청", "dd" : "신청 - 하나카드 LG전자 렌탈 PLUS" },
-                                            { "dt" : "결제수단", "dd" : "신용카드" },
-                                            { "dt" : "카드사", "dd" : "하나카드" },
-                                            { "dt" : "카드번호", "dd" : "1234-11**-****-****" },
-                                            { "dt" : "월 납부 금액", "dd" : "<p>선납 신청 / 포인트 사용 동의 / 1년차 월 88,888원</p><a href='#popup' class='btn-moreinfo' data-control='modal'><span>매월 납부금 할인 내역 알아보기</span></a>" },
-                                        ]
-                                    })
-                                </div>
-                            </div>
-                            <!-- // 납부 정보 : 신용카드 case -->
-
-                            <!-- 납부 정보 : 계좌이체 case -->
-                            <div class="section">
-                                <h3 class="sec-tit">납부 정보</h3>
-                                <div class="cont-box">
-                                    @@include('./common/modules/dl-infolist.html', {
-                                        "list" : [
-                                            { "dt" : "결제수단", "dd" : "계좌이체" },
-                                            { "dt" : "예금주명", "dd" : "이*어" },
-                                            { "dt" : "은행명", "dd" : "하나은행" },
-                                            { "dt" : "계좌번호", "dd" : "111111*********" },
-                                            { "dt" : "월 납부 금액", "dd" : "<p>선납 / 1년차 월 88,888원</p><a href='#popup' class='btn-moreinfo' data-control='modal'><span>매월 납부금 할인 내역 알아보기</span></a>" }
-                                        ]
-                                    })
-                                </div>
-                            </div>
-                            <!-- // 납부 정보 : 계좌이체 case -->
                         </div>
                     </div>
                 </div>

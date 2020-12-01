@@ -2,6 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTS/UTS"],
+        pageJS: ["search/search"]
     })
     <!-- pageJS: ["search/search"] -->
 <body>
@@ -10,7 +11,7 @@
 
         <div class="container">
             <!-- 통합검색 -->
-            <div class="contents search" data-url-timer="/lg5-common/data-ajax/search/searchTimer.json" data-url-search="/lg5-common/data-ajax/search/search_all.json" data-url-wish="#">
+            <div class="contents search" data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json" data-search-url="/lg5-common/data-ajax/search/search_all.json" data-url-wish="#">
                 <!-- 검색 영역 -->
                 @@include('./common/modules/search.html', {
                     "value" : "노크온 매직스페이스",
@@ -65,7 +66,7 @@
                     <div class="search-result-wrap all" id="all">
                         <div class="result-list-wrap">
                             <div class="list-head">
-                                <h2 class="title">제품/렌탈 케어솔루션</h2>
+                                <h2 class="title">제품/케어솔루션</h2>
                                 <div class="btn-area">
                                     <a href="#product" class="btn-link"><span>더보기</span></a>
                                 </div>
@@ -77,7 +78,7 @@
                                             "itemClass" : "",
                                             "badge" : "<span class='big-flag'><img src='/lg5-common/images/dummy/flag-60x66-1.png' alt='으뜸효율 10%'></span>",
                                             "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                            "flags" : ["베스트", "신제품"],
+                                            "flags" : ["미리미리 페스타", "으뜸효율 10%", "베스트", "신제품"],
                                             "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
                                             "sku"  : true,
                                             "review" : true,
@@ -118,6 +119,7 @@
                                 <ul class="result-list event-list">
                                     @@loop('./common/modules/result-list.html', [
                                         {
+                                            "itemLink" : true,
                                             "itemClass" : "item-type2",
                                             "img" : "/lg5-common/images/dummy/@img-search.jpg",
                                             "flagEnd" : true,
@@ -125,6 +127,7 @@
                                             "tit" : "2020 NEW <span class='search-word'>올레드</span>와 함께하는 홈라이프",
                                             "date" : "2020.08.01 ~ 2020.11.30"
                                         } , {
+                                            "itemLink" : true,
                                             "itemClass" : "item-type2",
                                             "img" : "/lg5-common/images/dummy/@img-search.jpg",
                                             "tit" : "2020 NEW 올레드와 함께하는 홈라이프",
@@ -146,6 +149,7 @@
                                 <ul class="result-list story-list">
                                     @@loop('./common/modules/result-list.html', [
                                         {
+                                            "itemLink" : true,
                                             "itemClass" : "item-story",
                                             "img" : "/lg5-common/images/dummy/@img-search.jpg",
                                             "flags" : ["비하인드 스토리"],
@@ -170,6 +174,7 @@
                                 <ul class="result-list care-list">
                                     @@loop('./common/modules/result-list.html', [
                                         {
+                                            "itemLink" : true,
                                             "itemClass" : "",
                                             "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
                                             "tit" : "브러쉬 Brush Assembly, Filter",
@@ -177,6 +182,7 @@
                                             "model" : "적용모델 : H-62HSGAKOR 외",
                                             "priceInfo2" : true
                                         }, {
+                                            "itemLink" : true,
                                             "itemClass" : "",
                                             "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
                                             "tit" : "브러쉬 Brush Assembly, Filter",

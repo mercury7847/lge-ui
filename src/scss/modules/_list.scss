@@ -267,7 +267,7 @@
 .dl-infolist-wrap {
     .lists {
         li {
-            margin-top:16px;
+            margin-top:20px;
             @include mobile {
                 margin-top:14px;
             }
@@ -295,6 +295,9 @@
                     color:#222;
                     @include font-medium;
                     vertical-align:top;
+                    em {
+                        font-weight:700;
+                    }
                     .btn-link {
                         margin-top:1px;
                         margin-left:24px;

@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRP0035 {
+	.component-inner {
+		padding: 0 80px;
+		@include mobile {
+			padding: 0 20px;
+		}
+	}
+	.slide-wrap {
+		max-width: 1170px;
+		margin: 0 auto;
+		padding-bottom: 34px;
+		@include mobile {
+			margin: 0 -20px;
+			padding: 0 15px 38px;
+		}
+		.slide-conts {
+			max-width: 585px;
+			padding: 8px 12px 16px;
+			@include mobile {
+				padding: 4px 6px 8px;
+			}
+		}
+		.slide-controls {
+			.btn-arrow.prev {
+				left: -72px;
+			}
+			.btn-arrow.next {
+				right: -72px;
+			}
+		}
+		
+	}
+	.indi-wrap {
+		display: none;
+	}
+	@include mobile {
+		.indi-wrap {
+			display: block;
+		}
+	}
+	
+	
+	.recommend-story-tag-wrap {
+		border-radius: 12px;
+		box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+		.inner {
+			display: flex;
+			align-items: flex-end;
+
+		}
+		.recommend-visual {
+			max-width: 100%;
+			border-radius: 8px;
+			img {
+				max-width: 100%;
+				border-radius: 12px;
+			}
+		}
+		.recommend-info {
+			margin-left: -100%;
+			padding: 32px;
+			color: #fff;
+			.hashtag-list {
+				margin-bottom: 4px;
+				.hashtag {
+					display: inline-block;
+					position: relative;
+					padding: 6px 12px;
+					@include font-x-small;
+					font-weight: $font-weight-medium;
+					@include mobile {
+						font-size: 14px;
+						line-height: 14px;
+					}
+					&:before {
+						display: inline-block;
+						position: absolute;
+						content: '';
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						border-radius: 4px;
+						border: 1px solid $color-border;
+						opacity: 0.4;
+					}
+					
+				}
+			}
+			.info-title {
+				display: -webkit-box;
+				max-height: 68px;
+				margin-bottom: 12px;
+				text-overflow:ellipsis;
+				-webkit-line-clamp: 2;
+            	-webkit-box-orient: vertical;
+				@include font-large-2;
+				font-weight: $font-weight-bold;
+				overflow:hidden;
+				@include mobile {
+					margin-bottom: 8px;
+				}
+			}
+			.date {
+				@include font-medium;
+				font-weight: $font-weight-medium;
+			}
+		}
+		
+
+	}
+}

@@ -50,7 +50,7 @@
                     url = _self.$searchWrap.data('ajax');
 
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxData(url, _self.params, function(d) {
+                lgkorUI.requestAjaxDataPost(url, _self.params, function(d) {
                     var html = '',
                         data = d.data.listData,
                         page = d.data.listPage;

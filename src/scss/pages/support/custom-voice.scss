@@ -9,14 +9,19 @@
             max-width:848px;
             margin:0 auto;
             padding-bottom:64px;
+            &.search-layer {
+                max-width:444px;
+                padding-bottom: 48px;
+            }
             @include mobile {
                 padding:0 20px 32px;
                 background:#fff;
             }
         }
         .result-wrap {
-            max-width:1066px;
-            margin:0 auto;
+            @include mobile {
+                padding:0 16px;
+            }
         }
         .search-info {
             background-color: #f4f4f4;

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/product-support"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '가전제품 생활의 팁',
+                'pageDesc': 'LG전자 가전 제품 관련한 유용한 생활의 TIP을 알려드립니다.'
+            })
+            <div class="contents support card">
+                <div class="cont-wrap">
+
+                    <div class="board-view-wrap">
+                        <div class="board-view">
+                            <div class="board-view-head">
+                                <h2 class="head-title">드럼 / 일반형 세탁기의 올바른 세탁 방법</h2>
+                                <ul class="head-infos"> 
+                                    <li>2020.07.20</li>
+                                    <li>조회 4,129</li>
+                                </ul>
+                            </div>
+                            <div class="board-view-body">
+                                <div class="view-content">
+                                    <div class="life-tips-view">
+                                        <div class="view-content-img">
+                                            <img src="/lg5-common/images/dummy/@img-board-view.jpg" alt="">
+                                        </div>
+                                        <p class="view-content-title">드럼 / 일반형 세탁기의 올바른 세탁 방법</p>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "수건은 따로 모아서 세탁하세요.",
+                                                "흰 옷은 색깔 옷과 분리하여 세탁하세요.",
+                                                "세제는 적당량을 세제통에 넣어주세요.",
+                                                "흰 옷은 색깔 옷과 분리하여 세탁하세요.",
+                                                "물세탁이 가능한 의료인지 확인하세요.",
+                                                "의류에 달린 금속은 제거하고 지퍼나 후크는 잠근 후 뒤집어서 세탁하세요.",
+                                                "베개/쿠션/방석 등은 내용물을 제거하고 커버만 세탁하세요.",
+                                                "부피가 크고, 가벼운 (털잠바, 솜옷, 솜이불 등) 세탁물은 망에 넣은 후 완전히 물에 잠기게 한 후에 세탁해주세요."
+                                            ]
+                                        })
+                                    </div>
+                                </div>
+                                <div class="survey-content" data-ajax="/lg5-common/data-ajax/support/survey.json">
+                                    <div class="title-wrap">
+                                        <h3 class="tit">생활의 TIP을 평가해주세요.</h3>
+                                        <p class="desc">평가해주신 내용은 더 나은 컨텐츠를 제공해 드리기 위한 자료로 활용합니다.</p>
+                                    </div>
+                                    <div class="star-rating-wrap">
+                                        <select class="ui_star_rating" name="rating" id="select-rating" title="콘텐츠 별점 선택" required>
+                                            <option value="">0점</option> 
+                                            <option value="1">1점 (매우 불만족)</option>
+                                            <option value="2">2점 (불만족)</option>
+                                            <option value="3">3점 (보통)</option>
+                                            <option value="4">4점 (만족)</option>
+                                            <option value="5">5점 (매우 만족)</option>
+                                        </select>
+                                        <p class="err-msg">평가 점수를 선택해주세요.</p>
+                                    </div>
+                                    <div class="input-wrap count block">
+                                        <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="작성하실 내용을 1,000자 이내로 입력해주세요." maxlength="1000" data-limit="1000" data-count-target="#txt-count1"></textarea>
+                                        <span id="txt-count1" class="total"><em>0</em> / 1000</span>
+                                    </div>
+                                    <div class="btn-wrap">
+                                        <button type="button" class="btn border btn-survey"><span>평가하기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="board-navi">
+                            <a href="#" class="navi">
+                                <span class="navi-label">이전글</span>
+                                <span class="navi-desc">LG ThinQ 앱이라서 가능한 편리한 일상 - 앱 사용법 편</span>
+                                <span class="navi-date">2020.07.27</span>
+                                <span class="navi-views"><span class="blind">조회수</span> 687</span>
+                            </a>
+                            <a href="#" class="navi">
+                                <span class="navi-label">다음글</span>
+                                <span class="navi-desc">LG ThinQ 앱이라서 가능한 편리한 일상 – 카드뉴스 타이틀 노출 영역 최대 1줄, 초과 시 …처리를 해야하는 부분입니다. LG ThinQ 앱이라서 가능한 편리한 일상 – 카드뉴스 타이틀 노출 영역 최대 1줄, 초과 시 …처리를 해야하는 부분입니다.</span>
+                                <span class="navi-date">2020.07.27</span>
+                                <span class="navi-views"><span class="blind">조회수</span> 687</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="btn-group center">
+                        <a href="/html/support/CSRF6012.html" class="btn"><span>목록</span></a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>    
+
+    <!-- 평가 확인 팝업 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "surveyPop",
+        "alertTit" : "생활의 TIP을 평가해주세요.",
+        "alertCont" : [
+        ]
+    })
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/productSupport/card.min.js"></script>
+</body>
+</html> 

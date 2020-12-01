@@ -6,7 +6,7 @@
     @include clearfix;
     .total {
         float:left;
-        font-size:16px;
+        font-size:14px;
         font-weight:700;
         line-height:24px;
     }
@@ -171,16 +171,13 @@
         @include clearfix;
         & > li {
             position:relative;
-            float:left;
-            margin-right:8px;
-            padding-right:9px;
+            display:inline;
             &:after {
                 content:'';
-                position:absolute;
-                top:7px;
-                right:0;
+                display:inline-block;
                 width:1px;
                 height:10px;
+                margin:7px 8px 0;
                 background:#ddd;
             }
             &:last-child {
@@ -195,10 +192,8 @@
     @include mobile {
         .options {
             & > li {
-                margin-right:6px;
-                padding-right:7px;
                 &:after {
-                    top:6px;
+                    margin:6px 6px 0;
                 }
             }
         }
