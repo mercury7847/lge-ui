@@ -10,7 +10,7 @@
  * validation.getValues(true); 성공한 값만 반환
  * 
  */
-vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
+vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, core) {
     "use strict";
 
     /**
@@ -217,6 +217,13 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                     }
                 }
             });
+
+            self.$el.find('select').each(function(idx, item){
+                var name = $(item).attr('name');
+                if(name){
+                    result[name] = $(item).find('option:selected').val();
+                }
+            });
             return result;
         },
 
@@ -276,7 +283,12 @@ vcui.define('ui/validation', ['jquery', 'vcui'], function ($, core) {
                 if($target.is(':radio') || $target.is(':checkbox')){
                     $target.filter('[value='+ obj[key] +']').prop('checked', true);
                 }else{
-                    $target.val(obj[key]);
+                    if($target.is('select')){
+                        $target.find('option[value=' + obj[key] + ']').prop("selected", true);
+                        $($target).vcSelectbox('update');
+                    } else{
+                        $target.val(obj[key]);
+                    }
                 }
                 
             }

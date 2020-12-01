@@ -8,7 +8,7 @@
         padding:10px 40px 48px;
         text-align:center;
         @include mobile {
-            padding:32px 16px 24px;
+            padding:32px 16px;
         }
         .title {
             @include font-large-3;
