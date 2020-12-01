@@ -74,7 +74,7 @@
             }
         }
         &-body {
-            padding:48px 0;
+            padding-bottom:80px;
             .view-content {
                 /* video detail */
                 .video-content {
@@ -120,6 +120,16 @@
                                 line-height:26px;
                             }
                         }
+                        .scrollview-wrap {
+                            border-color: transparent;
+                            padding: 0;
+                            line-height: 1.63;
+                        }
+                        @include pc {
+                            .scrollview-wrap {
+                                height: 302px;
+                            }
+                        }
                         @include mobile {
                             height:auto;
                             .column {
@@ -143,8 +153,11 @@
                     }
                 }
                 .text-content {
-                    width: 954px;
+                    max-width: 954px;
                     margin: 0 auto;
+                    &.type-A {
+                        max-width: 1146px;
+                    }
                     @include mobile {
                         width: 100%;
                     }

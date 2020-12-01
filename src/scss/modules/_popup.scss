@@ -515,6 +515,12 @@
                     @include font-small;
                     font-weight:700;
                 }
+                &.type2 {
+                    margin-bottom:24px;
+                    .h2-tit {
+                        @include font-large;
+                    }
+                }
             }
         }
         // 배송지 관리
@@ -644,23 +650,16 @@
             padding:32px;
             border-radius:8px;
             background:#f4f4f4;
-            @include mobile {
-                padding:24px 20px;
-                border-radius:4px;
-            }
             dl {
                 display:table;
                 width:100%;
-                margin-top:16px;
-                @include mobile {
-                    margin-top:8px;
-                }
+                margin-top:12px;
                 &:first-child {
                     margin-top:0;
                 }
                 dt, dd {
                     display:table-cell;
-                    @include font-small;
+                    @include font-medium;
                     vertical-align:middle;
                 }
                 dt {
@@ -669,6 +668,7 @@
                 }
                 dd {
                     text-align:right;
+                    font-weight:500;
                     &.minus {
                         color:#F04E3E;
                     }
