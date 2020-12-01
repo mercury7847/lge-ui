@@ -53,10 +53,6 @@
     }
     .notice-list-wrap {
         position:relative;
-        // margin-top:16px;
-        @include mobile {
-            margin-top:8px;
-        }
         .notice-lists {
             position:relative;
             padding-top:56px;
