@@ -12,7 +12,7 @@
                     '</div>' +
                     '{{# } #}}' +
                     '<p class="tit">{{title}}</p>' +
-                    '<ul class="infos">' +
+                    '<ul class="options">' +
                         '<li>{{date}}</li>' +
                         '<li>조회 {{view}}</li>' +
                     '</ul>' +
@@ -25,7 +25,7 @@
             params: {},
             init: function() {
                 var _self = this,
-                    $contents = $('.contents.notice');
+                    $contents = $('.contents.service-news');
                 
                 _self.$searchWrap = $contents.find('.search-wrap');
                 _self.$pagination = $contents.find('.pagination');
@@ -36,7 +36,7 @@
                 _self.$noData = $contents.find('.no-data');
 
                 _self.params = {
-                    'keyword': _self.$searchWrap.find('input[type="text"]').val(),
+                    'keyword': _self.$searchWrap.find('#keyword').val(),
                     'orderType': _self.$sortSelect.eq(0).vcSelectbox('value'),
                     'page': 1
                 };
@@ -55,7 +55,7 @@
                         data = d.data.listData,
                         page = d.data.listPage;
 
-                    _self.$searchWrap.find('input[type="text"]').val(_self.params['keyword']);
+                    _self.$searchWrap.find('#keyword').val(_self.params['keyword']);
                     _self.$sortTotal.html(page.totalCount);                    
                     _self.$pagination.pagination('update', page);
                     _self.$listWrap.find('ul').empty();
@@ -81,7 +81,7 @@
                 
                 _self.$searchWrap.find('.btn-search').on('click', function() {
                     _self.params = $.extend({}, _self.params, {
-                        'keyword': _self.$searchWrap.find('input[type="text"]').val(),
+                        'keyword': _self.$searchWrap.find('#keyword').val(),
                         'page': 1
                     });
                     

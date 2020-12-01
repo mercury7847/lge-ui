@@ -1224,11 +1224,8 @@
         }
         /* // video detail */
     }
-
-
-
-    /* 카드뉴스 & 가전제품 생활의 팁 */
-    &.card {   
+    /* 카드뉴스 */
+    &.card-news {   
         .card-news-view {
             .sub-tit {
                 margin-bottom:48px;
@@ -1316,7 +1313,22 @@
                 }
             }
         }
-        .life-tips-view {
+        @include mobile {
+            .result-wrap {
+                padding:0 16px;
+            }
+        }
+    }
+    /* 가전제품 생활의 팁 */
+    &.product-tips {
+        .card-list-wrap {
+            .card-list {
+                .item-image {
+                    padding-top:75%;
+                }
+            }
+        }
+        .product-tips-view {
             max-width:1146px;
             margin:0 auto;
             .view-content-title {
@@ -1355,7 +1367,6 @@
             max-width:1146px + 40px;
         }
     }
-
     /* 제품해결 */
     &.solutions {
         .banner-wrap {
@@ -1375,7 +1386,6 @@
         }
         
     }
-
     /* 제품 지원 페이지 */
     &.psp {
         border-top:8px solid #f4f4f4;

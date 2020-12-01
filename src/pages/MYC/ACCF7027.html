@@ -64,50 +64,54 @@
                                     <!-- // sorting -->
 
                                     <!-- table -->
-                                    <div class="tb_row tb-row-bl scroll">
-                                        <table>
-                                            <caption>연차별 납부내역을 회차, 납부일, 청구금액, 할인금액, 납부금액순으로 안내</caption>
-                                            <colgroup>
-                                                <col style="width:12%">
-                                                <col>
-                                                <col>
-                                                <col>
-                                                <col>
-                                            </colgroup>
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">회차</th>
-                                                    <th scope="col">납부일</th>
-                                                    <th scope="col">청구금액</th>
-                                                    <th scope="col">할인금액</th>
-                                                    <th scope="col">납부금액</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>2020.09.10</td>
-                                                    <td>88,800원</td>
-                                                    <td>0원</td>
-                                                    <td>88,800원</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>2020.09.10</td>
-                                                    <td>88,800원</td>
-                                                    <td>0원</td>
-                                                    <td>88,800원</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>2020.09.10</td>
-                                                    <td>88,800원</td>
-                                                    <td>0원</td>
-                                                    <td>88,800원</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                    <!-- [12.01 수정] .tb-scroll 으로 DOM 감싸기 -->
+                                    <div class="tb-scroll">
+                                        <div class="tb_row tb-row-bl">
+                                            <table>
+                                                <caption>연차별 납부내역을 회차, 납부일, 청구금액, 할인금액, 납부금액순으로 안내</caption>
+                                                <colgroup>
+                                                    <col style="width:12%">
+                                                    <col>
+                                                    <col>
+                                                    <col>
+                                                    <col>
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">회차</th>
+                                                        <th scope="col">납부일</th>
+                                                        <th scope="col">청구금액</th>
+                                                        <th scope="col">할인금액</th>
+                                                        <th scope="col">납부금액</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>2020.09.10</td>
+                                                        <td>88,800원</td>
+                                                        <td>0원</td>
+                                                        <td>88,800원</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>2020.09.10</td>
+                                                        <td>88,800원</td>
+                                                        <td>0원</td>
+                                                        <td>88,800원</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>2020.09.10</td>
+                                                        <td>88,800원</td>
+                                                        <td>0원</td>
+                                                        <td>88,800원</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
+                                    <!-- // [12.01 수정] .tb-scroll 으로 DOM 감싸기 -->
                                     <!-- // table -->
 
                                     @@include('./common/modules/bullet-list.html', {
