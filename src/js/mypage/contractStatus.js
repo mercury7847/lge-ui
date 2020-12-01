@@ -24,6 +24,8 @@
 
     var cardValidation, bankValidation;
 
+    var cardIssueValidation;
+
     function init(){
         console.log("contractStatus start!!");
 
@@ -114,6 +116,8 @@
         bankInfo = bankValidation.getAllValues();
 
         paymentModeIndex = $('.mypage .section-wrap .sects.payment.modify .ui_tab ul li[class=on]').index();
+
+        cardIssueValidation = new vcui.ui.Validation($('#popup-cardIssue'));
     }
 
     function bindEvents(){
@@ -166,6 +170,12 @@
 
         $('.mypage .requestCard-btn').on('click', function(e){
             $('#popup-cardIssue').vcModal();
+        });
+
+        $('#popup-cardIssue').on('click', '.requestIssue-btn', function(e){
+            e.preventDefault();
+
+            requestCardIssue();
         });
 
         $('#popup-selfClearing').on('click', '.btn-group button.btn', function(e){
@@ -362,6 +372,17 @@
 
         return{
             result: true
+        }
+    }
+
+    function requestCardIssue(){
+        var result = cardIssueValidation.validate();
+        if(!result.success){
+            lgkorUI.alert("", {
+                title: result.validArray[0].errmsg
+            });
+
+            return;
         }
     }
 
