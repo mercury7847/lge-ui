@@ -15,6 +15,8 @@
                             1. 여백
                             .zero-top : 상단여백 없음
                             .zero-btm : 하단여백 없음
+
+                            
                         -->
                         <!-- tab -->
                         <div class="story-tabs-wrap">
@@ -36,45 +38,9 @@
                         @@include('./common/partials/KRP0036-carousel.html')
                         <!-- //component KRP0036-carousel -->
 
-                        <div class="story-list-wrap">
-                            @@include('./common/modules/list-sorting.html', {
-                                "select" : [
-                                    {"option" : "인기순"},
-                                    {"option" : "최신순"}
-                                ]
-                            })
-                            <div class="story-list">
-
-                                <ul class="story-box">
-                                @@loop('./common/partials/KRP0036-list.html', [
-                                    {
-                                    "flags" : ["뉴스구분값"],
-                                    "hashtag" : ["#건강관리", "#가을"],
-                                    "date" : true
-                                    }, 
-                                    {
-                                    "flags" : ["뉴스구분값"],
-                                    "hashtag" : ["#건강관리", "#가을"],
-                                    "date" : true
-                                    },
-                                    {
-                                    "flags" : ["뉴스구분값"],
-                                    "hashtag" : ["#건강관리", "#가을"],
-                                    "date" : true
-                                    }, 
-                                    {
-                                    "flags" : ["뉴스구분값"],
-                                    "hashtag" : ["#건강관리", "#가을"],
-                                    "date" : true
-                                    }
-                                ])
-                                </ul>
-                                @@include('./common/support/pagination.html', {
-                                    count: 5
-                                })
-                            </div>
-                            
-                        </div>
+                        <!-- component KRP0036-list -->
+                        @@include('./common/partials/KRP0036-list.html')
+                        <!-- // component KRP0036-list -->
                     </div>
                 </section>
             </div>
