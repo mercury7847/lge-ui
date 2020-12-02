@@ -156,6 +156,25 @@
                 margin-top:0;
             }
         }
+
+        .contact-box {
+            display: flex;
+            align-items: center;
+            .input-wrap {
+                width:calc((100% - 40px) / 3);
+                margin-top: 0;
+            }
+            .at {
+                float: left;
+                text-align: center;
+                width: 20px;
+                padding: 0 4px;
+                color: #616161;
+                font-size: 16px;
+                line-height: 56px;
+            }
+        }
+
         .btn {
             min-width:initial;
             height:48px;
@@ -633,15 +652,16 @@
             }
         }
 
-        & +.chk-wrap {
-            display:block;
-            margin-top:24px;
-            text-align:right;
-            @include mobile {
-                margin-top:16px;
-                text-align:left;
-            }
-        }
+        // left 정렬로 변경. 화면마다 dt.tit 영역 넓이가 다르므로 화면별 정의, 혹은 conts 안에 checkbox 넣어서 진행
+        // & +.chk-wrap {
+        //     display:block;
+        //     margin-top:16px;
+        //     text-align:right;
+        //     @include mobile {
+        //         margin-top:12px;
+        //         text-align:left;
+        //     }
+        // }
     }
 }
 .agree-cont-wrap {
