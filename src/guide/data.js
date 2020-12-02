@@ -39,7 +39,7 @@ var res = {
 			//"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
 			//"KRC0009_Exciting Promotion Offers" : ["/html/components/KRC0009.html","","검수완료"],
 			//"KRC0010_Recommended Promotions" : ["/html/components/KRC0010.html","","검수완료"],
-			"KRC0011_PDP_FAQ_Static" : ["/html/components/KRC0011.html","","검수완료"],
+			// "KRC0011_PDP_FAQ_Static" : ["/html/components/KRC0011.html","","검수완료"],
 			"KRC0012_Image - Text(folding feature)_Static" : ["/html/components/KRC0012.html","","진행중"],
 			"KRC0013_Side Image - text" : ["/html/components/KRC0013.html","","검수완료"],
 			"KRC0014_Side Image(2 - Text)" : ["/html/components/KRC0014.html","","검수완료"],
