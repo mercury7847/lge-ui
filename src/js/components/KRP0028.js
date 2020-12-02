@@ -69,7 +69,7 @@
                     postData[$item.attr('id')] = $item.vcSelectbox('value');
                 });
 
-                lgkorUI.requestAjaxData(ajaxUrl, postData, function(result){
+                lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     _self.updateList(result.data);
                 });
             },

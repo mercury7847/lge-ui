@@ -1123,18 +1123,23 @@
     /* 비디오 가이드 */
     &.video-guide {
         .tabs-wrap {
-            padding:32px 0 16px;
+            display: block;
             @media screen and (min-width: $tablet-l-width) {
                 display:none;
             }
+            @media screen and (max-width: $tablet-l-width) {
+                margin: 0 16px 4px;
+            }
         }
         .search-summary {
-            margin-bottom:12px;
+            margin-bottom:48px;
             .summary {
                 color:#111;
-                font-size:14px;
+                font-size:20px;
                 font-weight:700;
                 line-height:20px;
+                display: flex;
+                align-items: center;
                 &-keyword {
                     color:#ec455a;
                 }
@@ -1148,8 +1153,8 @@
                 }
             }
             @include mobile {
-                margin:0;
-                padding:32px 20px 12px;
+                margin-bottom:24px;
+                padding:0 16px;
                 background:#fff;
                 .summary {
                     line-height:18px;
@@ -1166,33 +1171,33 @@
                 @media screen and (min-width: $tablet-l-width) {
                     display:block !important;
                     float: left;
-                    @include calc('width', 50%, 12px);
-                    margin-left:24px;
+                    @include calc('width', 50%, 60px);
+                    margin-left:120px;
                     &:first-child {
                         margin-left:0;
                     }
                 }
             }
             .result-box {
-                padding:56px;
                 border-radius:4px;
                 background:#fff;
                 .result-tit {
                     display:none;
-                    padding-bottom:8px;
+                    padding-bottom:16px;
                     color:#222;
-                    font-size:16px;
+                    font-size:20px;
                     font-weight:700;
                     line-height:24px;
-                    border-bottom:1px solid #616161;
+                    border-bottom:2px solid #222;
                     @include pc {
                         display:block;
                     }
                 }
                 .result-total {
-                    margin-top:8px;
-                    color:#616161;
+                    margin-top:12px;
+                    color:#222;
                     font-size:14px;
+                    font-weight: 500;
                     line-height:20px;
                     text-align:right;
                     .count {
@@ -1202,13 +1207,13 @@
             }
             @include mobile {
                 .result-box {
-                    padding:0 20px 56px;
+                    padding:0 16px 56px;
                 }
             }
         }
 
         .view-content {
-            margin-top:40px;
+            // margin-top:40px;
             p, strong {
                 color:#222;
                 font-size:16px;
@@ -1224,21 +1229,139 @@
         }
         /* // video detail */
     }
-
-    /* 카드뉴스 & 가전제품 생활의 팁 */
-    &.card {   
+    /* 카드뉴스 */
+    &.card-news {   
+        .card-news-view {
+            .sub-tit {
+                margin-bottom:48px;
+                padding:24px 40px;
+                @include font-medium;
+                border-radius:8px;
+                background:#f4f4f4;
+                strong {
+                    font-weight:$font-weight-bold;
+                }
+            }
+            .view-content-title {
+                margin-bottom: 16px;
+                color: #222;
+                @include font-large;
+                font-weight: $font-weight-bold;
+            }
+            .view-content-text {
+                font-size:16px;
+                line-height:26px;
+            }
+            .view-content-img {
+                overflow:hidden;
+                margin-bottom: 106px;
+                border-radius:8px;
+                img {
+                    width:100%;
+                }
+            }
+            .btn-wrap {
+                margin-top:32px;
+            }
+            .slide-wrap {
+                max-width: 880px;
+                margin: 0 auto;
+                padding:0 80px;
+                .slide-controls {
+                    .btn-arrow {
+                        &.next,
+                        &.prev {
+                            transform: none;
+                        }
+                    }
+                }
+                .indi-wrap {
+                    position:absolute;
+                    margin:0;
+                    top:752px;
+                    bottom:auto;
+                    @media screen and (max-width:960px) {
+                        top:calc(101.3vw - 240px);
+                    }
+                }
+            }
+            @include mobile {
+                .sub-tit {
+                    margin-bottom:32px;
+                    padding:16px;
+                }
+                .view-content-title {
+                    margin-bottom:12px;
+                }
+                .view-content-text {
+                    font-size:13px;
+                    line-height:21px;
+                }
+                .view-content-img {
+                    margin-bottom:70px;
+                }
+                .btn-wrap {
+                    margin-top:24px;
+                }
+                .slide-wrap {
+                    max-width:none;
+                    padding:0;
+                    .slide-content {
+                        overflow:hidden !important;
+                        .slide-conts {
+                            margin:0;
+                        }
+                    }
+                    .indi-wrap {
+                        top:calc(100.5vw - 32px);
+                    }
+                }
+            }
+        }
         @include mobile {
             .result-wrap {
                 padding:0 16px;
             }
-            .board-view {
-                padding-top: 52px;
-                overflow: hidden;
-                .sns-list {
-                    position: absolute;
-                    top: 20px;
-                    right: 20px;
+        }
+    }
+    /* 가전제품 생활의 팁 */
+    &.product-tips {
+        .card-list-wrap {
+            .card-list {
+                .item-image {
+                    padding-top:75%;
                 }
+            }
+        }
+        .product-tips-view {
+            max-width:1146px;
+            margin:0 auto;
+            .view-content-title {
+                color: #222;
+                font-size:20px;
+                font-weight: $font-weight-bold;
+                line-height:28px;
+            }
+            .view-content-img { 
+                margin-bottom:48px;
+                text-align:center;
+                img {
+                    max-width:100%;
+                }
+            }
+            @include mobile {
+                .view-content-title {
+                    font-size:16px;
+                    line-height:24px;
+                }
+                .view-content-img { 
+                    margin-bottom:32px;
+                }
+            }
+        }
+        @include mobile {
+            .result-wrap {
+                padding:0 16px;
             }
         }
     }
@@ -1249,7 +1372,6 @@
             max-width:1146px + 40px;
         }
     }
-
     /* 제품해결 */
     &.solutions {
         .banner-wrap {
@@ -1269,7 +1391,6 @@
         }
         
     }
-
     /* 제품 지원 페이지 */
     &.psp {
         border-top:8px solid #f4f4f4;

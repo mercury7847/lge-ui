@@ -3,8 +3,7 @@
     @@include('./common/head.html', {
         "pageCSS": [
             "support/support",
-            "support/custom-voice",
-            "UTS/UTS"
+            "support/custom-voice"
         ]
     })
 <body>
@@ -13,9 +12,10 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '칭찬 글 보기'
+                'pageTitle': '칭찬 글 보기',
+                'pageDesc': '고객님의 격려에 감사드리며, 감동 서비스로 보답하겠습니다.'
             })
-            <div class="contents support suggestions">
+            <div class="contents support feedback">
                 <div class="cont-wrap">
                     
                     <div class="board-view-wrap">
@@ -25,31 +25,30 @@
                                     <span class="flag">NEW</span>
                                 </div>
                                 <h3 class="head-title">오늘 오신 엔지니어 기사님 너무 친절하셔서 감사합니다. 너무 친절하셔서 눈물이 앞을 가릴 정도였어요. 마구마구 칭찬합니다.</h3>
-                                <ul class="head-infos summary">
+                                <ul class="head-infos">
                                     <li>2020.07.20</li>
-                                    <li>
-                                        <span class="view">조회 4,129</span>
-                                    </li>
+                                    <li>조회 4,129</li>
                                 </ul>
                             </div>
-                            <div class="board-view-sns sns-wrap">
-                                <!-- 
-                                    data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
-                                    data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
-                                    data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
-                                    data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
-                             
-                                    각 sns 버튼에 적용.
-                                -->
-                                <ul class="sns-list">
-                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook"><span class="blind">페이스북으로 페이지 공유하기</span></a></li>
-                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter"><span class="blind">트위터로 페이지 공유하기</span></a></li>
-                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk"><span class="blind">카카오톡으로 페이지 공유하기</span></a></li>
-                                    <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn url" data-link-name="copy_url"><span class="blind">URL 복사하기</span></a></li>
-                                </ul>
+                            <div class="board-view-sub">
+                                <div class="sns-wrap">
+                                    <!-- 
+                                        data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
+                                        data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
+                                        data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
+                                        data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
+                                
+                                        각 sns 버튼에 적용.
+                                    -->
+                                    <ul class="sns-list">
+                                        <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook"><span class="blind">페이스북으로 페이지 공유하기</span></a></li>
+                                        <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter"><span class="blind">트위터로 페이지 공유하기</span></a></li>
+                                        <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk"><span class="blind">카카오톡으로 페이지 공유하기</span></a></li>
+                                        <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn url" data-link-name="copy_url"><span class="blind">URL 복사하기</span></a></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="board-view-body">
-                                <!-- admin editor 등록 시 id="viewContent" 추가 -->
                                 <div class="view-content" id="viewContent">
                                     <p style="font-size: 16px;">안녕하세요.<br><br>저는 원래 G2를 쓰던 유저인데, 2013년도에 구매할당시부터 화면 터치가 안되는 불량문제때문에 처음으로 LG서비스센터에 방문하게 되었습니다.<br>그때 처음 봤었던 분이 서엘지 엔지니어 기사님이 셨는데, 그 뒤로 또 g2를 사용하다가 제가 실수로 물에 빠뜨려서 또 방문하게 었을 때는 사전예약을 해서 전에 너무 친절 하셨던 기억이 있어서 다시 또뵙게 되었었습니다. 그때도 너무나 친절하게 잘 수리를 해주셨고, 4월23일에 방문했는데, 9시반 에는 다른 분이 서엘지 지니어님 먼저 예약하셨는지 9시 밖에 없어서저는 늦잠이 많지만.. 주말이지만.. 9시 예약해서 방문했고, 고객 입장이 되어서 교품 받는게 낫다고 말씀해주셔서 감동이었습니다.<br><br>정성껏 써주신 교품증 덕분에 좋은 새 기기로 변경 잘 되었습니다!!<br>다음에 또 폰 고장이 나면 안되겠지만 만약 또 폰에 문제가 생긴다면 또 뵈러 가겠습니다^^ 감사합니다!!</p>
                                 </div>
@@ -60,20 +59,16 @@
                             <a href="#" class="navi">
                                 <span class="navi-label">이전글</span>
                                 <span class="navi-desc">이런 분들은 승진시켜주세요~</span>
-                                <span class="navi-date">2020.07.27</span>
-                                <span class="navi-views">687</span>
                             </a>
                             <a href="#" class="navi">
                                 <span class="navi-label">다음글</span>
                                 <span class="navi-desc">냉장고가 고장 나서 힘들었는데 친절한 기사님이 오셔서 너무 좋았어요</span>
-                                <span class="navi-date">2020.07.27</span>
-                                <span class="navi-views">687</span>
                             </a>
                         </div>
                     </div>
 
                     <div class="btn-group center">
-                        <a href="/html/support/CSTF7000.html" class="btn pink"><span>목록</span></a>
+                        <a href="/html/CS/CSRF6063.html" class="btn"><span>목록</span></a>
                     </div>
 
                 </div>
@@ -83,15 +78,7 @@
         @@include('./common/footer.html')
     </div>
 
-    <!-- 검색어 오류 팝업 -->
-    @@include('./common/modules/alert-modal.html', {
-        "popId" : "laypop",
-        "msgOnly" : true,
-        "msg" : "검색어를 입력해주세요."
-    })
-
     <!-- support script -->
-    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
 </body>
 </html> 

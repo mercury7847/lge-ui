@@ -57,6 +57,7 @@
 // visual slide COMMON
 .slide-wrap {
     position:relative;
+    overflow: hidden;
     .indi-wrap {
         position:absolute;
         left:0;
@@ -658,40 +659,6 @@
                 top:24px;
                 right:24px;
                 z-index:20;
-            }
-        }
-    }
-
-    //card news : CSTF2510
-    &.cardNews-type {
-        max-width: 720px;
-        margin: 0 auto;
-
-        .view-content-img {
-            margin-bottom: 106px;
-        }
-        .indi-wrap {
-            position: absolute;
-            margin: 0;
-            bottom: 240px;
-        }
-        .slide-controls {
-            .btn-arrow {
-                &.next,
-                &.prev {
-                    transform: none;
-                }
-                &.next {
-                    right: -80px;
-                }
-                &.prev {
-                    left: -80px;
-                }
-            }
-        }
-        .slide-content {
-            @include mobile {
-                overflow:hidden !important;
             }
         }
     }

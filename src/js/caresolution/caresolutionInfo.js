@@ -1,10 +1,10 @@
 var CareCartInfo = (function() {
-    var subscriptionItemTemplate = '<li data-item-id="{{itemID}}"><span class="item-subtit">{{type}}</span>' +
+    var subscriptionItemTemplate = '<li data-item-id="{{itemID}}" data-item-seq="{{itemSeq}}"><span class="item-subtit">{{type}}</span>' +
         '<strong class="item-tit">{{title}}</strong>' +
         '<div class="item-spec"><span>{{sku}}</span>' +
         '<span>월 {{salePrice}}원</span></div></li>'
     
-    var subscriptionDisableItemTemplate = '<li class="item-disabled" data-item-id="{{itemID}}"><span class="item-subtit">{{type}}</span>' +
+    var subscriptionDisableItemTemplate = '<li class="item-disabled" data-item-id="{{itemID}}" data-item-seq="{{itemSeq}}"><span class="item-subtit">{{type}}</span>' +
         '<strong class="item-tit">{{title}}</strong>' +
         '<div class="item-spec"><span>{{sku}}</span>' +
         '<span>월 {{salePrice}}원</span></div>' +
@@ -304,7 +304,13 @@ var CareCartInfo = (function() {
         _clickApplyButton: function(dm) {
             var self = this;
             var ajaxUrl = $(dm).attr('data-check-url');
-            lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
+
+            var $items = self.$itemInfo.find('li').not('.item-disabled');
+            var submit = []
+            $items.each(function(idx, item){
+                submit.push({"itemID":$(item).attr('data-item-id'),"itemSeq":$(item).attr('data-item-seq')});
+            });
+            lgkorUI.requestAjaxData(ajaxUrl, {"submitData":JSON.stringify(submit)}, function(result){
                 var alert = result.data.alert;
                 if(alert) {
                     self.openCartAlert(alert);
@@ -339,7 +345,13 @@ var CareCartInfo = (function() {
         _subscriptionItem: function() {
             var self = this;
             var ajaxUrl = self.$subscriptionButton.attr('data-check-url');
-            lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
+
+            var $items = self.$itemInfo.find('li').not('.item-disabled');
+            var submit = []
+            $items.each(function(idx, item){
+                submit.push({"itemID":$(item).attr('data-item-id'),"itemSeq":$(item).attr('data-item-seq')});
+            });
+            lgkorUI.requestAjaxData(ajaxUrl, {"submitData":JSON.stringify(submit)}, function(result){
                 var alert = result.data.alert;
                 if(alert) {
                     /*

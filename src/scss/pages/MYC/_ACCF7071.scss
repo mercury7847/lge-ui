@@ -1,0 +1,171 @@
+.parti-event-list {
+	ul {
+		margin:-32px 0 0 -12px;
+		font-size:0;
+		@include mobile {
+			margin:0;
+		}
+		li {
+			display:inline-block;
+			width:33.33%;
+			margin-top:32px;
+			vertical-align:top;
+			@include mobile {
+				width:100%;
+				margin-top:12px;
+				&:first-child {
+					margin-top:0;
+				}
+			}
+			.conts-wrap {
+				margin:0 12px;
+				@include mobile {
+					margin:0;
+					box-shadow:1px 2px 8px rgba(0,0,0,0.14);
+				}
+				.evt {
+					position:relative;
+					background:#fff;
+					overflow:hidden;
+					@include mobile {
+						border-radius:8px;
+					}
+					.evt-link {
+						display:block;
+					}
+					.thumb {
+						display:block;
+						position:relative;
+						border-radius:4px;
+						overflow:hidden;
+						@include mobile {
+							border-radius:0;
+						}
+						img {
+							width:100%;
+							height:auto;
+							vertical-align:top;
+						}
+						> .flag-wrap {
+							position:absolute;
+							top:24px;
+							left:24px;
+							@include mobile {
+								top:20px;
+								left:20px;
+							}
+						}
+						.event-end {
+                            position:absolute;
+                            top:0;
+                            right:0;
+                            bottom:0;
+                            left:0;
+                            background:rgba(#000, .5);
+                            z-index:10;
+                            em {
+                                position:absolute;
+                                top:50%;
+                                left:0;
+                                right:0;
+                                transform:translateY(-50%);
+                                color:#fff;
+                                @include font-large-3;
+                                text-align:center;
+                                font-weight:700;
+                            }
+                        }
+					}
+					.event-info {
+						padding-top:12px;
+						padding-bottom:0;
+						@include mobile {
+							padding:12px 16px 24px;
+						}
+						.flag-wrap {
+							margin-bottom:8px;
+							.flag {
+								margin:0;
+								& + .flag:before {
+									content:' ';
+									display:inline-block;
+									width:1px;
+									height:10px;
+									margin:0 4px;
+									background-color:#ddd;
+									line-height:24px;
+									vertical-align:middle;
+									@include mobile {
+										margin:0 6px;
+									}
+								}
+							}
+						}
+						.tit {
+							max-height: 52px;
+							color: #222;
+							font-size: 16px;
+							line-height: 26px;
+							font-weight: 700;
+							overflow: hidden;
+							text-overflow: clip;
+							display: -webkit-box;
+							-webkit-line-clamp: 2;
+							-webkit-box-orient: vertical;
+							@include mobile {
+								height:44px;
+								font-size:14px;
+								line-height:22px;
+							}
+						}
+						.date {
+							// height:24px;
+							margin-top:6px;
+							padding-right:100px;
+							color:#767676;
+							font-size:14px;
+							line-height:24px;
+							// overflow:hidden;
+							// text-overflow:ellipsis;
+							// white-space:nowrap;
+							@include mobile {
+								height:16px;
+								font-size:12px;
+								line-height:16px;
+							}
+						}
+					}
+					.end-flag {
+						position:absolute;
+						top:0;
+						right:0;
+						width:60px;
+						height:60px;
+						padding:10px 0 10px 5px;
+						border-radius:0 4px 0 4px;
+						background-image:linear-gradient(#F04E3E, #EC455A);
+						color:#fff;
+						font-size:12px;
+						letter-spacing:5px;
+						line-height:20px;
+						text-align:center;
+						z-index:10;
+						@include mobile {
+							width:48px;
+							height:48px;
+							padding:8px 0 8px 4px;
+							font-size:10px;
+							line-height:16px;
+							letter-spacing:4px;
+						}
+					}
+					.btn-link {
+						position:absolute;
+						bottom:0;
+						right:0;
+					}
+				}
+			}
+		}
+	}
+}

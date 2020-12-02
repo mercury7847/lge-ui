@@ -8,7 +8,7 @@
         padding:10px 40px 48px;
         text-align:center;
         @include mobile {
-            padding:32px 16px 24px;
+            padding:32px 16px;
         }
         .title {
             @include font-large-3;
@@ -135,11 +135,13 @@
             .tit-wrap {
                 position:relative;
                 margin-bottom:48px;
+                &.agree{
+                    margin-bottom:17px;
+                }
                 .tit {
                     color:#222;
                     font-size:20px;
                     font-weight:700;
-                    line-height:30px;
                     padding-bottom:16px;
                     border-bottom:2px solid #222;
                     .point {
@@ -153,9 +155,18 @@
                     }
                 }
             }
+            .agree-cont-wrap{
+                .tit-wrap{
+                    margin-bottom:0;
+                    .tit{
+                        @include font-medium;
+                        border-bottom:0;
+                        padding-bottom:0;
+                    }
+                }
+            }
             @include mobile {
-                padding:40px 16px 56px;
-                border-top:12px solid #f4f4f4;
+                padding:40px 16px 0;
                 &:first-child {
                     border-top:none;
                     &:before {
@@ -166,11 +177,10 @@
                     margin-bottom:32px;
                 }
                 .tit-wrap {
-                    padding-bottom:16px;
                     margin-bottom:20px;
                     .tit {
                         font-size:18px;
-                        line-height:26px;
+                        padding-bottom: 12px;
                     }
                 }
             }
@@ -195,13 +205,9 @@
     //     line-height:24px;
     // }
     margin:0;
-    padding:160px 0;
+    padding:140px 0;
     background-color: #fff;
     text-align:center;
-    @include mobile {
-        padding:40px 0;
-        width: calc(100vw - 40px);
-    }
     &.mg-type {
         padding:0;
         margin:140px 0;
@@ -226,5 +232,8 @@
     }
     &.full {
         padding:(140px - 56px) 0;
+    }
+    @include mobile {
+        padding: 40px 0;
     }
 }

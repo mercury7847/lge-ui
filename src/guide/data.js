@@ -39,7 +39,7 @@ var res = {
 			//"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
 			//"KRC0009_Exciting Promotion Offers" : ["/html/components/KRC0009.html","","검수완료"],
 			//"KRC0010_Recommended Promotions" : ["/html/components/KRC0010.html","","검수완료"],
-			"KRC0011_PDP_FAQ_Static" : ["/html/components/KRC0011.html","","검수완료"],
+			// "KRC0011_PDP_FAQ_Static" : ["/html/components/KRC0011.html","","검수완료"],
 			"KRC0012_Image - Text(folding feature)_Static" : ["/html/components/KRC0012.html","","진행중"],
 			"KRC0013_Side Image - text" : ["/html/components/KRC0013.html","","검수완료"],
 			"KRC0014_Side Image(2 - Text)" : ["/html/components/KRC0014.html","","검수완료"],
@@ -99,7 +99,11 @@ var res = {
 			"KRP0025_event_list_for_category_home" : ["/html/components/KRP0025.html","","검수완료"],
 			"KRP0027_Please note" : ["/html/components/KRP0027.html","","검수완료"],
 			"KRP0028_Event list" : ["/html/components/KRP0028.html","","검수완료"],
+			"KRP0034_Tag_List" : ["/html/components/KRP0034.html","","진행중"],
+			"KRP0035_Recommend_Story_by_Tag" : ["/html/components/KRP0035.html","","진행중"],
+			"KRP0036_Story_List" : ["/html/components/KRP0036.html","","진행중"],
 			"KRP0042_Consumables Search" : ["/html/components/KRP0042.html","","진행중"],
+			"KRP0041_Social_Review" : ["/html/components/KRP0041.html","","진행중"],
 			"KRP0043_Substitutes&related General Products" : ["/html/components/KRP0043.html","","진행중"],
 			"KRP0044_PDP Shipping Information" : ["/html/components/KRP0044.html","","진행중"],
 			"KRP0045_PDP Return Replacement" : ["/html/components/KRP0045.html","","진행중"],
@@ -182,14 +186,19 @@ var res = {
 			},
 			"마이페이지(MYC)" : {
 				"쇼핑 관리" : {
-					"주문/배송내역 조회(리스트)" : ["/html/MYC/ACCF7002.html","","진행중"],
-					"주문/배송내역 조회(상세)" : ["/html/MYC/ACCF7003.html","","진행중"],
-					"신청내역(리스트-케어솔루션)" : ["/html/MYC/ACCF7024.html","","진행중"],
-					"신청내역(상세-케어솔루션)" : ["/html/MYC/ACCF7065.html","","진행중"],
-					"취소신청팝업, alert" : ["/html/MYC/ACCF7002_popup.html","","진행중"],
+					"주문/배송 조회(구매 리스트)" : ["/html/MYC/ACCF7002.html","","진행중"],
+					"주문/배송 상세보기" : ["/html/MYC/ACCF7003.html","","진행중"],
+					"주문/배송 조회(케어솔루션 청약 리스트)" : ["/html/MYC/ACCF7024.html","","진행중"],
+					"케어솔루션 청약 상세보기" : ["/html/MYC/ACCF7065.html","","진행중"],
+					"주문/배송(구매, 청약) 화면 내 팝업" : ["/html/MYC/ACCF7002_popup.html","","진행중"],
+					"거래영수증 팝업" : ["/html/MYC/ACCF7105.html","_blank:width=912,height=760,scrollbars=no",""],
+					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=no",""],
+					"현금영수증 팝업" : ["/html/MYC/ACCF7107.html","_blank:width=912,height=760,scrollbars=no",""],
+					"배송지 주소 관리" : ["/html/MYC/ACCF7009.html","","진행중"],
+					"배송지 주소 관리 팝업" : ["/html/MYC/ACCF7009_popup.html","","진행중"],
+					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
 				},
 				"케어솔루션" : {
-					// "월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
 					"계약현황" : ["/html/MYC/ACCF7025.html","","검수완료"],
 					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","검수완료"],
 					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","검수완료"],
@@ -204,14 +213,15 @@ var res = {
 				"제품 관리" : {
 					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","검수완료"],
 					"보유제품 리스트 화면 내 팝업" : ["/html/MYC/ACCF7033_popup.html","","검수완료"],
-					// "제품/영수증 등록(제품 탭)" : ["/html/MYC/ACCF7036.html","","진행중"],
-					// "제품/영수증 등록(영수증 탭)" : ["/html/MYC/ACCF7037.html","","진행중"],
+					"영수증 등록" : ["/html/MYC/ACCF7037.html","","진행중"],
 					// "등록완료" : ["/html/MYC/ACCF7064.html","","진행중"]
 				},
 				"활동 내역" : {
 					"구독" : ["/html/MYC/ACCF7017.html","","진행중"],
-					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
 					"관심 스토리" : ["/html/MYC/ACCF7063.html","","진행중"]
+				},
+				"활동 관리" : {
+					"참여이벤트 리스트" : ["/html/MYC/ACCF7071.html","","진행중"]
 				},
 				"멤버십 관리" : {
 					"멤버십 가입 정보" : ["/html/MYC/ACCF7039.html","","진행중"],

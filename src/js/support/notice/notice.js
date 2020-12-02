@@ -21,85 +21,87 @@
         var notice = {            
             params: {},
             init: function() {
-                var _self = this,
+                var self = this,
                     $contents = $('.contents.notice');
                 
-                _self.$searchWrap = $contents.find('.search-wrap');
-                _self.$pagination = $contents.find('.pagination');
-                _self.$sortsWrap = $contents.find('.sorting-wrap');
-                _self.$sortTotal = $contents.find('#count');
-                _self.$sortSelect = $contents.find('.ui_selectbox');
-                _self.$listWrap = $contents.find('.tb_row');
-                _self.$noData = $contents.find('.no-data');
+                self.$searchWrap = $contents.find('.search-wrap');
+                self.$pagination = $contents.find('.pagination');
+                self.$sortsWrap = $contents.find('.sorting-wrap');
+                self.$sortTotal = $contents.find('#count');
+                self.$sortSelect = $contents.find('.ui_selectbox');
+                self.$listWrap = $contents.find('.tb_row');
+                self.$noData = $contents.find('.empty-row');
+                self.$download = $contents.find('.addfile-wrap');
 
-                _self.params = {
-                    'keyword': _self.$searchWrap.find('input[type="text"]').val(),
-                    'category': _self.$sortSelect.eq(0).vcSelectbox('value'),
-                    'orderType': _self.$sortSelect.eq(1).vcSelectbox('value'),
+                self.params = {
+                    'keyword': self.$searchWrap.find('input[type="text"]').val(),
+                    'category': self.$sortSelect.filter('#category').vcSelectbox('value'),
+                    'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
                     'page': 1
                 };
 
-                _self.$pagination.pagination();
+                self.$pagination.pagination();
             
-                _self.bindEvent();
+                self.bindEvent();
             },
             searchList: function() {
-                var _self = this,
-                    url = _self.$searchWrap.data('ajax');
+                var self = this,
+                    url = self.$searchWrap.data('ajax');
 
                 lgkorUI.showLoading();
-                lgkorUI.requestAjaxData(url, _self.params, function(d) {
+                lgkorUI.requestAjaxDataPost(url, self.params, function(d) {
                     var html = '',
                         data = d.data.listData,
                         page = d.data.listPage;
 
-                    _self.$searchWrap.find('input[type="text"]').val(_self.params['keyword']);
-                    _self.$sortTotal.html(page.totalCount);                    
-                    _self.$pagination.pagination('update', page);
-                    _self.$listWrap.find('tbody').empty();
+                    self.$searchWrap.find('input[type="text"]').val(self.params['keyword']);
+                    self.$sortTotal.html(page.totalCount);                    
+                    self.$pagination.pagination('update', page);
+                    self.$listWrap.find('tbody').find('tr').not( self.$noData).remove();
 
                     if (data.length) {
                         data.forEach(function(item) {
                             html += vcui.template(listTmpl, item);
                         });
-                        _self.$listWrap.find('tbody').html(html);
-                    
-                        _self.$listWrap.show();
-                        _self.$noData.hide();
+                        self.$listWrap.find('tbody').prepend(html);
+                        self.$noData.hide();
                     } else {
-                        _self.$listWrap.hide();
-                        _self.$noData.show();
+                        self.$noData.show();
                     }
 
                     lgkorUI.hideLoading();
                 });
             },
             bindEvent: function() {
-                var _self = this;
+                var self = this;
                 
-                _self.$searchWrap.find('.btn-search').on('click', function() {
-                    _self.params = $.extend({}, _self.params, {
-                        'keyword': _self.$searchWrap.find('input[type="text"]').val(),
+                self.$searchWrap.find('.btn-search').on('click', function() {
+                    self.params = $.extend({}, self.params, {
+                        'keyword': self.$searchWrap.find('input[type="text"]').val(),
                         'page': 1
                     });
                     
-                    _self.searchList();
+                    self.searchList();
                 });
 
-                _self.$sortSelect.on('change', function() {
-                    _self.params = $.extend({}, _self.params, {
-                        'category': _self.$sortSelect.eq(0).vcSelectbox('value'),
-                        'orderType': _self.$sortSelect.eq(1).vcSelectbox('value'),
+                self.$sortSelect.on('change', function() {
+                    self.params = $.extend({}, self.params, {
+                        'category': self.$sortSelect.filter('#category').vcSelectbox('value'),
+                        'orderType': self.$sortSelect.filter('#orderType').vcSelectbox('value'),
                         'page': 1
                     });
-                    _self.searchList();
+                    self.searchList();
                 });
 
-                _self.$pagination.on('pageClick', function(e) {
-                    _self.params = $.extend({}, _self.params, {
+                self.$pagination.on('pageClick', function(e) {
+                    self.params = $.extend({}, self.params, {
                         'page': e.page
                     });
-                    _self.searchList();
+                    self.searchList();
+                });
+
+                self.$download.find('.download', function(e) {
+                    
                 });
             }
         }

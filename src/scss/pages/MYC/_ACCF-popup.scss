@@ -240,12 +240,122 @@
     }
 }
 
-// 내 보유 제품 등록
+// 거래영수증
+.h2-tbl-tit {
+    margin-bottom:12px;
+    color:#222;
+    @include font-small;
+}
+.lg-comp-infos {
+    margin-top:48px;
+    @include mobile {
+        margin-top:40px;
+    }
+    .logos {
+        img {
+            width:87px;
+            height:auto;
+            vertical-align:top;
+        }
+    }
+    ul {
+        margin-top:16px;
+        li {
+            margin-top:2px;
+            color:#767676;
+            @include font-small;
+            font-weight:500;
+            &:first-child {
+                margin-top:0;
+            }
+        }
+    }
+}
+
+// 신용카드 매출전표
+.window-pops {
+    .sects .section-inner .dl-infolist-wrap .lists li dl {
+        dt {
+            width:43%;
+            @include mobile {
+                width:35%;
+            }
+        }
+        dd {
+            width:57%;
+            @include mobile {
+                width:65%;
+            }
+        }
+    }
+
+    .fee-info-wrap {
+        padding:32px;
+        border-radius:8px;
+        background:#f4f4f4;
+        @include mobile {
+            padding:24px 20px;
+        }
+        dl {
+            display:table;
+            width:100%;
+            margin-top:12px;
+            @include mobile {
+                margin-top:8px;
+            }
+            &:first-child {
+                margin-top:0;
+            }
+            dt, dd {
+                display:table-cell;
+                @include font-medium;
+                vertical-align:middle;
+            }
+            dt {
+                padding-right:24px;
+                color:#767676;
+                text-align:left;
+                word-break:keep-all;
+            }
+            dd {
+                min-width:97px;
+                text-align:right;
+                font-weight:500;
+                &.minus {
+                    color:#F04E3E;
+                }
+            }
+            &.total {
+                margin-top:16px;
+                padding-top:16px;
+                border-top:1px solid #ddd;
+                dt, dd {
+                    vertical-align:bottom;
+                }
+                @include mobile {
+                    padding-top:12px;
+                }
+                dt {
+                    color:#222;
+                    font-weight:500;
+                }
+                dd {
+                    @include font-large-2;
+                    font-weight:700;
+                    @include mobile {
+                        font-size:24px;
+                        line-height:32px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 &.pop-conts {
-    .form-wrap {
-        max-width:630px;
-        &.col-type {
-            max-width:100%;
+    @include mobile {
+        .tabs-wrap {
+            margin:0 -16px;
         }
     }
 }

@@ -279,6 +279,9 @@
 				}
 				.banner-btn {
 					margin-top:40px;
+					.video-link {
+						margin-top:20px;
+					}
 					@include mobile {
 						margin-top:28px;
 						padding: 0 16px;

@@ -10,144 +10,157 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                "pageTitle": "나의 멤버십",
-                "pageArr" : [
-                    { "page" : "나의 멤버십 정보", "on" : "on" },
-                    { "page" : "포인트 조회", "on": "" }
-                ]
+                "pageTitle": "멤버십 가입 정보"
             })
-            <!-- membership -->
+            <!-- mypage -->
             <div class="contents mypage">
                 <div class="cont-wrap">
-                    <div class="section">
-                        <h3 class="sec-tit">멤버십 내역</h3>
-                        <div class="cont-box no-pd">
-                            <ul class="mymem-lists">
-                                <li>
-                                    <dl>
-                                        <dt><p>현재 보유 포인트</p></dt>
-                                        <dd id="membership_point">1,000 P</dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl>
-                                        <dt>
-                                            <p>VIP 멤버십 등급</p>
-                                            @@include('./common/modules/tooltip.html', {
-                                                "type" : "text",
-                                                "text" : "1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다."
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "on", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문 알리미" }
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <!-- 상세 -->
+                            <div class="section-wrap">
+                                 <!-- 멤버십 내역 -->
+                                 <div class="sects">
+                                    <div class="tit-wrap">
+                                        <h3 class="tit">멤버십 내역</h3>
+                                    </div>
+                                    <div class="section-inner type2">
+                                        <ul class="mymem-lists">
+                                            <li>
+                                                <dl>
+                                                    <dt><p>현재 보유 포인트</p></dt>
+                                                    <dd id="membership_point">1,000P</dd>
+                                                </dl>
+                                            </li>
+                                            <li>
+                                                <dl>
+                                                    <dt>
+                                                        <p>VIP 멤버십 등급</p>
+                                                        @@include('./common/modules/tooltip.html', {
+                                                            "type" : "text",
+                                                            "text" : "1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다."
+                                                        })
+                                                    </dt>
+                                                    <dd id="membership_level">일반</dd>
+                                                </dl>
+                                            </li>
+                                            <li>
+                                                <dl>
+                                                    <dt><p>1년 구매금액 집계</p></dt>
+                                                    <dd id="membership_purchase_year">1,700,000원</dd>
+                                                </dl>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                 </div>
+                                 <!-- // 멤버십 내역 -->
+                                 <!-- 멤버십 가입 정보 -->
+                                 <div class="sects">
+                                    <div class="tit-wrap">
+                                        <h3 class="tit">멤버십 가입 정보</h3>
+                                        <div class="flt-cont">
+                                            <button type="button" class="btn border size"><span>수정하기</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="section-inner type2">
+                                        <div class="my-contract-info">
+                                            <p class="tit">&quot;고객님의 멤버십 카드번호는 <br class="mob"><em>1234-5678-9012-3456</em> 입니다.&quot;</p>
+                                        </div>
+                                    </div>
+                                    <div class="section-inner">
+                                        <div class="inner-box">
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "발급일", "dd" : "19년 5월 5일" },
+                                                    { "dt" : "이름", "dd" : "이*지" },
+                                                    { "dt" : "휴대폰", "dd" : "010****5678" },
+                                                    { "dt" : "가입매장", "dd" : "서초점" },
+                                                    { "dt" : "선호매장", "dd" : "서초점" },
+                                                    { "dt" : "자택주소", "dd" : "서울특별시 서초구 방배동 *******" },
+                                                ]
                                             })
-                                        </dt>
-                                        <dd id="membership_level">일반</dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl>
-                                        <dt><p>1년 구매금액 집계</p></dt>
-                                        <dd id="membership_purchase_year">1,700,000원</dd>
-                                    </dl>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- // 멤버십 가입 정보 -->
 
-                    <div class="section">
-                        <h3 class="sec-tit">멤버십 가입 정보</h3>
-                        <div class="cont-box">
-                            <!-- class명 수정, DOM 위치 변경 -->
-                            @@include('./common/modules/dl-infolist.html', {
-                                "idType" : true,
-                                "list" : [
-                                    { "id" : "membership_info_name", "dt" : "이름", "dd" : "이엘지" },
-                                    { "id" : "membership_info_tel", "dt" : "전화번호", "dd" : "010-1234-5678" },
-                                    { "id" : "membership_info_card", "dt" : "카드번호", "dd" : "1234-5678-1234-5678" },
-                                    { "id" : "membership_info_regist_date", "dt" : "가입일", "dd" : "2017.10.25" },
-                                    { "id" : "membership_info_regist_store", "dt" : "가입매장", "dd" : "서초점" },
-                                    { "id" : "membership_info_favor_date", "dt" : "선호매장", "dd" : "서초점" },
-                                    { "id" : "membership_info_address", "dt" : "자택주소", "dd" : "서울특별시 서초구 방배동 방배로 18길 67" }
-                                ]
-                            })
-                            <a href="#n" class="btn-text pink pst">수정하기</a>
-                            <!-- // class명 수정, DOM 위치 변경 -->
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <h3 class="sec-tit">나의 구매내역</h3>
-                        <div class="cont-box">
-                            <!-- filter -->
-                            @@include('./common/modules/mem-filter.html', {
-                                "url" : "/lg5-common/data-ajax/mypage/membership/my_purchase_history.json",
-                                "wrapTit" : "조회기간",
-                                "radio" : [
-                                    { "id" : "rdo1-1", "name" : "rdo1", "label" : "전체", "value" : "all", "checked" : "checked" },
-                                    { "id" : "rdo1-2", "name" : "rdo1", "label" : "구매", "value" : "buy", "checked" : "" },
-                                    { "id" : "rdo1-3", "name" : "rdo1", "label" : "취소", "value" : "cancel", "checked" : "" }
-                                ]
-                            })
-                            <!-- // filter -->
- 
-                            <!-- 결과값 있을 때 -->
-                            <div class="product-list-wrap">
-                                <ul class="product-lists ui_flexible_height">
-                                    @@loop('./common/modules/product-list-loop.html', [
-                                        {
-                                            "liNum" : "prod01",
-                                            "img" : "/lg5-common/images/membership/img-prod01.jpg",
-                                            "name" : "LG TROMM ThinQ",
-                                            "proNum" : "A9579I",
-                                            "info" : [
-                                                "구매수량 : 1",
-                                                "<span class='blind'>구매처</span>LG BEST SHOP 서초점",
-                                                "2019. 07. 30 구매"
+                                <!-- 구매내역 -->
+                                <div class="sects rdo-type2">
+                                    <div class="tit-wrap">
+                                        <h5 class="tit">구매내역</h5>
+                                    </div>
+                                    <div class="section-inner">
+                                        <div class="inner-box">
+                                            <div class="filters">
+                                                <!-- filter -->
+                                                @@include('./common/modules/mem-filter.html', {
+                                                    "tabType" : true,
+                                                    "wrapTit" : "조회기간",
+                                                    "datepicker" : true,
+                                                    "rdoCheck" : true,
+                                                    "list" : [
+                                                        { "id" : "rdk-cehck1-1", "name" : "rdk-check1",  "label" : "전체"},
+                                                        { "id" : "rdk-cehck1-2", "name" : "rdk-check1",  "label" : "구매", "checked": "checked"},
+                                                        { "id" : "rdk-cehck1-3", "name" : "rdk-check1",  "label" : "취소"}
+                                                    ]
+                                                })
+                                                <!-- // filter -->
+                                            </div>
+                                        </div>
+                                        <div class="inner-box type2 member-lists">
+                                            @@include('./common/modules/carousel.html', {
+                                                "carousel" : true,
+                                                "memberSlideType" : true,
+                                                "carouselClass" : "carousel-3",
+                                                "carouselScriptClass" : "ui_carousel_4_slider",
+                                                "slideArr" : [
+                                                    {
+                                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG TROMM ThinQ 두줄케이스 추가"
+                                                    },{
+                                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG SIGNATURE 트윈워시"
+                                                    },{
+                                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG 올레드 AI ThinQ TV"
+                                                    },{
+                                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG 올레드 AI ThinQ TV"
+                                                    },{
+                                                        "img" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG DIOS 노크온 매직스페이스"
+                                                    }
+                                                ]
+                                            })
+                                        </div>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "size2" : true,
+                                            "topBorder" : true,
+                                            "bulletTxt" : [
+                                                "홈플러스, 이마트에서 구매 후 영수증을 등록한 제품은 다음날 반영됩니다.",
+                                                "VIP 우수 고객의 경우 3년 무상 서비스혜택을 받으실 수 있습니다."
                                             ]
-                                        }, {
-                                            "liNum" : "prod02",
-                                            "img" : "/lg5-common/images/membership/img-prod02.jpg",
-                                            "name" : "LG SIGNATURE 트윈워시",
-                                            "proNum" : "F12WHTS",
-                                            "info" : [
-                                                "구매수량 : 1",
-                                                "<span class='blind'>구매처</span>LG BEST SHOP 서초점",
-                                                "2019. 07. 29 구매"
-                                            ]
-                                        }, {
-                                            "liNum" : "prod03",
-                                            "img" : "/lg5-common/images/membership/img-prod03.jpg",
-                                            "name" : "LG 올레드 AI ThinQ TV",
-                                            "proNum" : "A9579I",
-                                            "info" : [
-                                                "구매수량 : 1",
-                                                "<span class='blind'>구매처</span>LG BEST SHOP 서초점",
-                                                "2019. 07. 29 구매"
-                                            ]
-                                        }
-                                    ])
-                                </ul>
+                                        })
+                                    </div>
+                                </div>
+                                <!-- // 구매내역 -->
                             </div>
-                            <!-- // 결과값 있을 때 -->
-
-                            <!-- 결과값 없을 때 -->
-                            <div class="no-data mg-type">
-                                <p>조회기간 내 결과가 없습니다.</p>
-                            </div>
-                            <!-- // 결과값 없을 때 -->
-
-                            @@include('./common/modules/bullet-list.html', {
-                                "bulletTxt" : [
-                                    "홈플러스, 이마트에서 구매 후 영수증을 등록한 제품은 다음날 반영됩니다.",
-                                    "VIP 우수 고객의 경우 3년 무상 서비스혜택을 받으실 수 있습니다."
-                                ]
-                            })
-                            <!-- // result -->
+                            <!-- // 상세 -->
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- // membership -->
+            <!-- // mypage -->
         </div>
         
         @@include('./common/footer.html')
-    </div>     
+    </div>
 </body>
 </html>

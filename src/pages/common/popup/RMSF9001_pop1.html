@@ -1,11 +1,16 @@
 <article id="@@popupID" class="popup-wrap" data-insert-url="/lg5-common/data-ajax/address/addressPost.json" data-update-url="/lg5-common/data-ajax/address/addressPost.json">
     <header class="pop-header">
-        <h1 class="tit"><span>주소 입력</span></h1>
+        <h1 class="tit"><span>@@title</span></h1>
     </header>
     <section class="pop-conts common-pop">
         <div class="form-wrap" id="address-regist-form">
+            <!-- [12.01 수정] DOM 추가 -->
+            <div class="form-infos">
+                <p class="req" aria-disabled="true">필수 입력 사항</p>
+            </div>
+            <!-- // [12.01 수정] DOM 추가 -->
             <dl class="forms">
-                <dt class="tit"><label for="ipt1">주소 별칭</label></dt>
+                <dt class="tit"><label for="ipt1" class="req">주소 별칭<span class="blind">필수입력</span></label></dt><!-- [12.01 수정] 필수입력으로 변경, DOM, class 수정 -->
                 <dd class="conts">
                     <span class="input-wrap block">
                         <input type="text" id="ipt1" name="addressName" placeholder="주소별칭을 입력해주세요." data-required="true">
@@ -22,7 +27,7 @@
             </dl>
 
             <dl class="forms">
-                <dt class="tit"><label for="ipt3" class="req">배송지 주소<span class="blind">필수입력</span></label></dt>
+                <dt class="tit"><label for="ipt3" class="req">주소<span class="blind">필수입력</span></label></dt><!-- [12.01 수정] 텍스트 변경 -->
                 <dd class="conts">
                     <div class="box">
                         <div class="input-wrap">
@@ -49,23 +54,24 @@
                 </dd>
             </dl>
             <dl class="forms">
-                <dt class="tit"><label for="ipt5">일반 전화번호</label></dt>
+                <dt class="tit"><label for="ipt5">연락처</label></dt><!-- [12.01 수정] 텍스트 변경 -->
                 <dd class="conts">
                     <span class="input-wrap block">
                         <input type="text" id="ipt5" name="phone" placeholder="(-)없이 입력해주세요." data-required="true">
                     </span>
+                    <!-- [12.01 수정] '기본배송지로 설정' DOM 위치 변경 -->
+                    <span class="chk-wrap bottom">
+                        <input type="checkbox" id="chk-defaultAddress" name="defaultAddress">
+                        <label for="chk-defaultAddress">기본배송지로 설정</label>
+                    </span>
+                    <!-- // [12.01 수정] '기본배송지로 설정' DOM 위치 변경 -->
                 </dd>
             </dl>
-
-            <span class="chk-wrap">
-                <input type="checkbox" id="chk-defaultAddress" name="defaultAddress">
-                <label for="chk-defaultAddress">기본배송지로 설정</label>
-            </span>
         </div>
     </section>
     <footer class="pop-footer center">
         <div class="btn-group">
-            <button type="button" class="btn pink"><span>확인</span></button>
+            <button type="button" class="btn pink"><span>@@btn</span></button>
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>

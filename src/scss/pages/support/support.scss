@@ -105,83 +105,6 @@
         }
     }
 
-    /* video detail */
-    .video-content {
-        padding: 64px 120px 64px 114px;
-        border-radius: 8px;
-        background-color: #f4f4f4;
-        margin-bottom: 40px;
-        @include mobile {
-            padding: 32px 16px;
-            margin: 0 -20px 20px -20px;
-        }
-    }
-    .video-box {
-        @include clearfix;
-        &-title {
-            margin-bottom: 24px;
-            font-size: 24px;
-            font-weight: bold;
-            line-height: 1.42;
-            color: #222;
-            @include mobile {
-                font-size: 14px;
-                margin-bottom: 12px;
-            }
-        }
-        .column {
-            float:left;
-            width:calc(50% - 12px);
-            height:100%;
-            margin-left:24px;
-            &:first-child {
-                margin-left:0;
-            }
-            iframe {
-                width:100%;
-                height:360px,
-            }
-            .scrollview-wrap {
-                height: calc(360px - 58px);
-                border: none;
-                padding: 0;
-            }
-            .ui_scrollview {
-                height:100%;
-                .ui_content {
-                    color:#616161;
-                    font-size:14px;
-                    line-height:20px;
-                }
-            }
-        }
-        @include mobile {
-            height:auto;
-            .column {
-                float:none;
-                width:100%;
-                height:auto;
-                margin:0;
-                & + .column {
-                    margin-top:8px;
-                }
-                iframe {
-                    height: 220px;
-                }
-                .scrollview-wrap {
-                    height: 165px;
-                }
-            }
-        }
-    }
-    .text-content {
-        width: 954px;
-        margin: 0 auto;
-        @include mobile {
-            width: 100%;
-        }
-    }
-
     .scroll-y {
         height: 100%;
         overflow-y: auto;
@@ -351,13 +274,17 @@
         box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
         background-color: #ffffff;
         text-align:left;
-    }
-    .addfilebox-list li{
-        padding:17px 24px;
-        color:#808080;
-    }
-    .addfilebox-list li:hover{
-        color:#222;
+        li {
+            padding:17px 24px;
+            a {
+                color:#808080;
+                @include font-medium;
+                font-weight:$font-weight-medium;
+            }
+            &:hover a {
+                color:#222;
+            }
+        }
     }
     &.open {
         .addfilebox-list{
@@ -412,4 +339,96 @@
             margin-top:20px;
         }
     }
+}
+
+.inquiry-list{
+    .file-list a{
+        text-decoration: none;
+    }
+}
+
+//add file new
+.add-file-wrap{
+    display:flex;
+    justify-content: left;
+    align-items: center;
+
+    .upload-wrap{
+        margin-right:24px;
+
+        .upload-img-area{
+            position:relative;
+            width:93px;
+    
+            .uploadpreview{
+                width:93px;
+                height:93px;
+                display:block;
+                border:1px solid #ddd;
+                margin:0 auto 15px;
+                background-size:100% auto;
+                background-repeat:no-repeat;
+                background-position:center;
+                border-radius:8px;
+            }
+
+            .upload-btn-area{
+                position:absolute;
+                bottom:-8px;
+                right:-8px;
+
+                .btn-ipt-file{
+                    display:block;
+                    width:24px;
+                    height:24px;
+                    border-radius:50%;
+                    background:url(/lg5-common/images/icons/btn-imgadd-24.svg) no-repeat center;
+                    background-size:24px;
+                    text-align:center;
+                }
+
+                .btn-ipt-del{
+                    display:none;
+                }
+
+                input[type="file"].ipt-file {
+                    color: transparent;
+                    width: 0;
+                    height: 0;
+                    margin: 0 auto;
+                    display: block;
+                }
+            }
+        }
+
+        .upload-file-name{
+            width:93px;
+            input[type=text].ipt-file-name{
+                width:100%;
+                text-align:center;
+                font-size:14px;
+                color:#222;
+                background:transparent;
+                &::placeholder{
+                    color:#aaa;
+                }
+            }
+        }
+
+        &.on{
+            .upload-btn-area{
+                .btn-ipt-file{
+                    display:none;
+                }
+                .btn-ipt-del{
+                    display:block;
+                    width:24px;
+                    height:24px;
+                    border-radius:50%;
+                    background:url(/lg5-common/images/icons/btn-imgdelet-24.svg) no-repeat center;
+                    background-size:24px;
+                }
+            }
+        }
+    }    
 }
