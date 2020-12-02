@@ -6,6 +6,94 @@
     var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
     var similarTextTemplate = '<a href="#{{text}}" class="similar-text"><span class="search-word">“{{text}}”</span> 찾으시나요?</a>'
 
+    var productItemTemplate = '<li><div class="item">' +
+        '<div class="result-thumb"><a href="{{url}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
+        '<div class="result-info">' +
+            '<div class="info-text">' +
+                '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
+                '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
+                '<div class="result-detail">' +
+                    '<div class="sku">{{sku}}</div>' +
+                    '<div class="review-info">' +
+                        '<a href="{{url}}">' +
+                            '{{#if hasReview}}<div class="star is-review"><span class="blind">리뷰있음</span></div>{{#else}}<div class="star"><span class="blind">리뷰없음</span></div>{{/if}}' +
+                            '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
+                            '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
+                        '</a>' +
+                    '</div>' +
+                    '<div class="hashtag-wrap">' +
+                        '{{#each item in hash}}<span class="hashtag">#{{item}}</span>{{/each}}' +
+                    '</div>' + 
+                    '{{#if hasCare}}<div class="careflag"><span>케어십 가능</span></div>{{/if}}' +
+                '</div>' +
+            '</div>' +
+            '<div class="info-price">' +
+                '<div class="price-info sales">' +
+                    '<p class="tit">구매</p>' +
+                    '{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                    '<div class="original">' +
+                        '<em class="blind">원가</em>' +
+                        '{{#if originalPrice}}<span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
+                    '</div>' +
+                '</div>' +
+                '<div class="price-info rental">' +
+                    '<p class="tit">케어솔루션</p>' +
+                    '{{#if carePrice}}<span class="price"><em>월</em> {{carePrice}}<em>원</em></span>{{/if}}' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</div></li>';
+    var eventItemTemplate = '<li><a href="{{url}}" class="item item-type2">' +
+        '<div class="result-thumb">' +
+            '<div>' +
+                '<img src="{{imageUrl}}" alt="{{imageAlt}}">' +
+                '{{#if isEnd}}<span class="flag-end-wrap"><span class="flag">종료</span></span>{{/if}}' +
+            '</div>' +
+        '</div>' +
+        '<div class="result-info">' +
+            '<div class="info-text">' +
+                '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
+                '<div class="result-tit"><strong>{{#raw title}}</strong></div>' +
+                '<div class="result-detail">' +
+                    '<div class="date">' +
+                        '<span>{{startDate}} ~ {{endDate}}</span>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</a></li>'
+    var storyItemTemplate = '<li><a href="{{url}}" class="item item-story">' +
+        '<div class="result-thumb"><div><img src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
+        '<div class="result-info">' +
+            '<div class="info-text">' +
+                '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
+                '<div class="result-tit"><strong>{{title}}</strong></div>' +
+                '<div class="result-detail">' +
+                    '<div class="desc"><span>{{desc}}</span></div>' +
+                    '<div class="hashtag-wrap">' +
+                        '{{#each item in hash}}<span class="hashtag">#{{item}}</span>{{/each}}' +
+                    '</div>' + 
+                    '<div class="date"><span>{{date}}</span></div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</a></li>'
+    var additionalItemTemplate = '<li><a href="{{url}}" class="item">' +
+        '<div class="result-thumb"><div><img src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
+        '<div class="result-info">' +
+            '<div class="info-text">' +
+                '<div class="result-tit"><strong>{{title}}</strong></div>' +
+                '<div class="result-detail">' +
+                    '<div class="sku">{{sku}}</div>' +
+                   '<div class="model"><span>{{desc}}</span></div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="info-price type2">' +
+                '<div class="price-info">{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}</div>' +
+            '</div>' +
+        '</div>' +
+    '</a></li>'
+
     $(window).ready(function() {
         var intergratedSearch = {
             init: function() {
@@ -66,7 +154,12 @@
                 //검색 결과 - 카테고리
                 self.$searchResultCategory = self.$contentsSearch.find('div.search-result-category');
                 //카테고리 더보기 버튼
-                self.searchResultCategoryMore = self.$searchResultCategory.find('a.btn-moreview');
+                self.$searchResultCategoryMore = self.$searchResultCategory.find('a.btn-moreview');
+
+                //cont-wrap
+                self.$contWrap = self.$contentsSearch.find('div.cont-wrap');
+                //search-not-result
+                self.$searchNotResult = self.$contentsSearch.find('div.search-not-result');
 
                 self.$autoComplete.hide();
                 self.$notResult.hide();
@@ -98,7 +191,7 @@
                 self.$buttonSearch.on('click', function(e){
                     clearTimeout(self.searchTimer);
                     var searchVal = self.$inputSearch.val();
-                    self.requestSearch(searchVal, false);
+                    self.requestSearchAll(searchVal, false);
                 });
 
                 //검색 타이머
@@ -161,7 +254,7 @@
                     clearTimeout(self.searchTimer);
                     var searchVal = $(this).attr('href').replace("#", "");
                     self.$inputSearch.val(searchVal);
-                    self.requestSearch(searchVal, true);
+                    self.requestSearchAll(searchVal, true);
                 });
 
                 //연관검색어 펼치기
@@ -175,10 +268,11 @@
                 });
                 
                 //카테고리 더보기 클릭
-                self.searchResultCategoryMore.on('click', function(e){
+                self.$searchResultCategoryMore.on('click', function(e){
                     e.preventDefault();
-                    if(self.$searchResultCategory.hasClass('open')) {
-                        self.$searchResultCategory.removeClass('open');
+                    if(self.$searchResultCategory.hasClass('on')) {
+                        self.$searchResultCategory.removeClass('on');
+                        self.$searchResultCategoryMore.find('span').text('더보기');
                         /*
                         if(window.breakpoint.isMobile) {
                             self.$searchResultCategory.find('div.inner').css('height','100px');
@@ -187,74 +281,13 @@
                         }
                         */
                     } else {
-                        self.$searchResultCategory.addClass('open');
+                        self.$searchResultCategory.addClass('on');
+                        self.$searchResultCategoryMore.find('span').text('접기');
                         /*
                         self.$searchResultCategory.find('div.inner').css('height','auto');
                         */
                     }
                 });
-                /*
-                //자동완성 리스트 클릭
-                self.$autoComplete.on('click', 'div.keyword-list ul li a', function(e){
-                    e.preventDefault();
-                    self.searchItem($(this));
-                });
-
-                //연관검색어 클릭
-                self.$searchSimilar.on('click', 'a', function(e){
-                    e.preventDefault();
-                    self.searchItem($(this));
-                });
-
-                //인기검색어 클릭
-                self.$popularKeywordList.on('click', 'div.keyword-list ul li a', function(e){
-                    e.preventDefault();
-                    self.searchItem($(this));
-                });
-
-                //추천태그 클릭
-                self.$suggestedTagsList.on('click', 'div.keyword-list ul li a', function(e){
-                    e.preventDefault();
-                    self.searchItem($(this));
-                });
-
-                //최근검색어 클릭
-                self.$recentKeywordList.on('click', 'div.keyword-list ul li span a', function(e){
-                    e.preventDefault();
-                    self.searchItem($(this));
-                });
-
-                //최근검색어 삭제 클릭
-                self.$recentKeywordList.on('click', 'div.keyword-list ul li span button', function(e){
-                    var text = $(this).siblings('a').first().attr('href').replace("#", "");
-                    self.removeRecentSearcheText(text);
-                });
-                */
-
-                //검색타이머 마우스 오버
-                /*
-                var searchItemTarget = 'ul li a';
-                self.$inputSearchList.on('mouseover', searchItemTarget, function(e){
-                    e.preventDefault();
-                    clearTimeout(serchMouseOverTimer);
-                    var searchVal = $(this).attr('href').replace("#", "");
-                    serchMouseOverTimer = setTimeout(function() {
-                        self.requestSearch(searchVal);
-                    }, searchDelay);
-                }).on('mouseout', searchItemTarget, function(e){
-                    e.preventDefault();
-                    clearTimeout(serchMouseOverTimer);
-                }).on('click', searchItemTarget, function(e){
-                    e.preventDefault();
-                    clearTimeout(serchMouseOverTimer);
-                    self.hideAnimation(self.$inputSearchList);
-                    var searchVal = $(this).attr('href').replace("#", "");
-                    if(searchedValue != searchVal) {
-                        //새로운 값 선택
-                        self.requestSearch(searchVal);
-                    }
-                });
-                */
             },
 
             //검색어창에 입력후 검색
@@ -324,7 +357,7 @@
             },
 
             //검색버튼 검색
-            requestSearch:function(value, force) {
+            requestSearchAll:function(value, force) {
                 var self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-search-url');
                 lgkorUI.requestAjaxData(ajaxUrl, {"search":value, "force":force}, function(result) {
@@ -347,8 +380,8 @@
                     }
 
                     //연관 검색어 리스트 갱신
-                    self.$relatedKeywordList.addClass('open');
-
+                    //self.$relatedKeywordList.addClass('open');
+                    
                     var arr = data.related instanceof Array ? data.related : [];
                     if(arr.length > 0) {
                         showResult = true;
@@ -388,7 +421,8 @@
                         self.$searchResultCategory.hide();
                     }
 
-                    self.$searchResultCategory.removeClass('open');
+                    self.$searchResultCategory.removeClass('on');
+                    self.$searchResultCategoryMore.find('span').text('더보기');
                     /*
                     self.$searchResultCategory.removeClass('open');
                     self.$searchResultCategory.find('div.inner').css('overflow','hidden');
@@ -403,12 +437,105 @@
                     var checkHeight = window.breakpoint.isMobile ? 50 : 54;
                     var height = self.$searchResultCategory.find('div.inner').height();
                     if(height > checkHeight) {
-                        self.searchResultCategoryMore.show();
+                        self.$searchResultCategoryMore.show();
                     } else {
-                        self.searchResultCategoryMore.hide();
+                        self.$searchResultCategoryMore.hide();
                     }
                     */
-                    
+
+                    //nodata Test
+                    data.product = null;
+                    data.event = null;
+                    data.story = null;
+                    data.additional = null;
+
+                    var noData = true;
+
+                    self.$contWrap.removeClass('w-filter');
+                    var $searchResult = self.$contWrap.find('div.search-result-wrap.all');
+
+                    //제품/케어솔루션
+                    var $resultListWrap = $searchResult.find('div.result-list-wrap:nth-child(1)');
+                    arr = self.checkArrayData(data.product);
+                    var count = self.checkCountData(data.product);
+                    if(arr.length > 0) {
+                        var $list_ul = $resultListWrap.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            item.price = item.price ? vcui.number.addComma(item.price) : null;
+                            item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                            item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
+                            item.title = item.title.replaceAll(searchedValue,replaceText);
+                            $list_ul.append(vcui.template(productItemTemplate, item));
+                        });
+                        $resultListWrap.show();
+                        noData = false;
+                    } else {
+                        $resultListWrap.hide();
+                    }
+
+                    //이벤트/기획전
+                    $resultListWrap = $searchResult.find('div.result-list-wrap:nth-child(2)');
+                    arr = self.checkArrayData(data.event);
+                    count = self.checkCountData(data.event);
+                    if(arr.length > 0) {
+                        var $list_ul = $resultListWrap.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            item.title = item.title.replaceAll(searchedValue,replaceText);
+                            item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
+                            item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
+                            $list_ul.append(vcui.template(eventItemTemplate, item));
+                        });
+                        $resultListWrap.show();
+                        noData = false;
+                    } else {
+                        $resultListWrap.hide();
+                    }
+
+                    //스토리
+                    $resultListWrap = $searchResult.find('div.result-list-wrap:nth-child(3)');
+                    arr = self.checkArrayData(data.story);
+                    count = self.checkCountData(data.story);
+                    if(arr.length > 0) {
+                        var $list_ul = $resultListWrap.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                            $list_ul.append(vcui.template(storyItemTemplate, item));
+                        });
+                        $resultListWrap.show();
+                        noData = false;
+                    } else {
+                        $resultListWrap.hide();
+                    }
+
+                    //케어용품/소모품
+                    $resultListWrap = $searchResult.find('div.result-list-wrap:nth-child(4)');
+                    arr = self.checkArrayData(data.additional);
+                    count = self.checkCountData(data.additional);
+                    if(arr.length > 0) {
+                        var $list_ul = $resultListWrap.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+                            item.price = item.price ? vcui.number.addComma(item.price) : null;
+                            $list_ul.append(vcui.template(additionalItemTemplate, item));
+                        });
+                        $resultListWrap.show();
+                        noData = false;
+                    } else {
+                        $resultListWrap.hide();
+                    }
+
+                    if(noData) {
+                        self.$contWrap.hide();
+                        self.$searchNotResult.find('em').text('“' + searchedValue + '”');
+                        self.$searchNotResult.show();
+                    } else {
+                        self.$contWrap.show();
+                        self.$searchNotResult.hide();
+                    }
+
                     //최근검색어 저장
                     console.log(searchedValue);
                     self.addRecentSearcheText(searchedValue);

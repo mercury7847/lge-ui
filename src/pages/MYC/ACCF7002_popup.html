@@ -8,11 +8,8 @@
         <button type="button" data-href="#popup1" data-control="modal" class="btn"><span>취소신청 팝업</span></button><br><br>
         <button type="button" data-href="#popup2" data-control="modal" class="btn"><span>반품신청 팝업</span></button><br><br>
         <button type="button" data-href="#popup3" data-control="modal" class="btn"><span>영수증 발급 내역 팝업</span></button><br><br>
-        <button type="button" data-href="#popup4" data-control="modal" class="btn"><span>거래 영수증 팝업</span></button><br><br>
-        <button type="button" data-href="#popup5" data-control="modal" class="btn"><span>신용카드 매출전표 팝업</span></button><br><br>
-        <button type="button" data-href="#popup6" data-control="modal" class="btn"><span>현금영수증 팝업</span></button><br><br><br>
-        <button type="button" data-href="#popup7" data-control="modal" class="btn"><span>매월 납부금 할인 내역 팝업</span></button><br><br>
-        <button type="button" data-href="#popup8" data-control="modal" class="btn"><span>케어십 할인 내역 팝업</span></button>
+        <button type="button" data-href="#popup4" data-control="modal" class="btn"><span>매월 납부금 할인 내역 팝업</span></button><br><br>
+        <button type="button" data-href="#popup5" data-control="modal" class="btn"><span>케어십 할인 내역 팝업</span></button>
     </div>
 
 
@@ -21,5 +18,24 @@
         popupID: 'popup1'
     })
     <!-- // 취소신청 -->
+
+    <!-- 취소신청-->
+    @@include('./common/popup/ACCF7002_pop2.html', {
+        popupID: 'popup2'
+    })
+    <!-- // 취소신청 -->
+
+    <!-- 영수증 발급 내역 -->
+    @@include('./common/popup/ACCF7002_pop3.html', {
+        popupID: 'popup3'
+    })
+    <!-- // 영수증 발급 내역 -->
+
+    <!-- 매월 납부금 할인 내역 -->
+    @@include('./common/popup/ACCF7002_pop4.html', {
+        popupID: 'popup4',
+        title : "매월 납부금 할인 내역"
+    })
+    <!-- // 매월 납부금 할인 내역 -->
 </body>
 </html>
