@@ -185,6 +185,13 @@
                 &.type3 {
                     padding-top:64px;
                 }
+                // 탭 밑에 붙을 때 type4
+                &.type4 {
+                    padding-top:24px;
+                    @include mobile {
+                        padding-top:16px;
+                    }
+                }
                 .inner-box {
                     margin-top:64px;
                     &.type2 {
