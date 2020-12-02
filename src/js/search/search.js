@@ -1,10 +1,9 @@
 (function() {
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
     var recentItemTemplate = '<li><span class="box"><a href="#{{text}}">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>';
-
     var relatedItemTemplate = '<li><a href="#{{text}}">{{text}}</a></li>';
     var categoryItemTemplate = '<li><a href="{{url}}" class="rounded"><span class="text">{{#raw text}}</span></a></li>';
-    var similarTextTemplate = '<a href="#{{text}}" class="similar-text"><span class="search-word">“{{text}}”</span> 찾으시나요?</a>'
+    //var similarTextTemplate = '<a href="#{{text}}" class="similar-text"><span class="search-word">“{{text}}”</span> 찾으시나요?</a>'
 
     var productItemTemplate = '<li><div class="item">' +
         '<div class="result-thumb"><a href="{{url}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
@@ -61,7 +60,7 @@
                 '</div>' +
             '</div>' +
         '</div>' +
-    '</a></li>'
+    '</a></li>';
     var storyItemTemplate = '<li><a href="{{url}}" class="item item-story">' +
         '<div class="result-thumb"><div><img src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
         '<div class="result-info">' +
@@ -77,7 +76,7 @@
                 '</div>' +
             '</div>' +
         '</div>' +
-    '</a></li>'
+    '</a></li>';
     var additionalItemTemplate = '<li><a href="{{url}}" class="item">' +
         '<div class="result-thumb"><div><img src="{{imageUrl}}" alt="{{imageAlt}}"></div></div>' +
         '<div class="result-info">' +
@@ -92,7 +91,71 @@
                 '<div class="price-info">{{#if price}}<span class="price">{{price}}<em>원</em></span>{{/if}}</div>' +
             '</div>' +
         '</div>' +
-    '</a></li>'
+    '</a></li>';
+
+    //필터 템플릿
+    var filterSliderTemplate = '<li data-id="{{filterId}}">' +
+        '<div class="head">' +
+            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+                '<div class="tit">{{title}}</div>' +
+                '<span class="blind ui_accord_text">내용 더 보기</span>' +
+            '</a>' +
+        '</div>' +
+        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
+            '<div class="cont"><div class="range-wrap">' +
+                '<div data-filter-id="{{filterId}}" class="ui_filter_slider ui_price_slider" data-input="," data-range="{{min}},{{max}}" data-min-label="minLabel" data-max-label="maxLabel"></div>' +
+                '<p class="min range-num">Min</p><p class="max range-num">Max</p>' +
+            '</div></div>' +
+        '</div>' +
+    '</li>';
+    var filterRadioTemplate = '<li data-id="{{filterId}}">' +
+        '<div class="head">' +
+            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+                '<div class="tit">{{title}}</div>' +
+                '<span class="blind ui_accord_text">내용 더 보기</span>' +
+            '</a>' +
+        '</div>' +
+        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
+            '<div class="cont">' +
+                '{{#each (item, idx) in filterItem}}<div class="rdo-wrap">' +
+                    '<input type="radio" name="{{filterId}}" value="{{item.value}}" id="rdo-{{filterId}}-{{idx}}" {{#if idx==1}}checked{{/if}}>' +
+                    '<label for="rdo-{{filterId}}-{{idx}}">{{item.label}}</label>' +
+                '</div>{{/each}}' +
+            '</div>' +
+        '</div>' +
+    '</li>';
+    var filterColorTemplate = '<li data-id="{{filterId}}">' +
+        '<div class="head">' +
+            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+                '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
+                '<span class="blind ui_accord_text">내용 더 보기</span>' +
+            '</a>' +
+        '</div>' +
+        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
+            '<div class="cont">' +
+                '{{#each (item, idx) in filterItem}}<div class="chk-wrap-colorchip {{color}}">' +
+                    '<input type="checkbox" name="{{filterId}}" value="{{item.value}}" id="color-{{filterId}}-{{idx}}">' +
+                    '<label for="color-{{filterId}}-{{idx}}">{{item.label}}</label>' +
+                '</div>{{/each}}' +
+            '</div>' +
+        '</div>' +
+    '</li>';
+    var filterCheckboxTemplate = '<li data-id="{{filterId}}">' +
+        '<div class="head">' +
+            '<a href="#{{filterId}}-{{index}}" class="link-acco ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
+                '<div class="tit">{{title}}<span class="sel_num"><span class="blind">총 선택 갯수 </span>(0)</span></div>' +
+                '<span class="blind ui_accord_text">내용 더 보기</span>' +
+            '</a>' +
+        '</div>' +
+        '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
+        '<div class="cont">' +
+                '{{#each (item, idx) in filterItem}}<div class="chk-wrap">' +
+                    '<input type="checkbox" name="{{filterId}}" value="{{item.value}}" id="chk-{{filterId}}-{{idx}}">' +
+                    '<label for="chk-{{filterId}}-{{idx}}">{{item.label}}</label>' +
+                '</div>{{/each}}' +
+            '</div>' +
+        '</div>' +
+    '</li>';
 
     $(window).ready(function() {
         var intergratedSearch = {
@@ -202,6 +265,7 @@
                 $('.ui_tab').on("tabbeforechange", function(e, data){
                     var index = data.selectedIndex;
                     var ajaxUrl = self.getTabItem(index).attr('data-search-url');
+                    $('.lay-filter').removeClass('open');
                     switch(index) {
                         case 0:
                             //전체
@@ -346,6 +410,7 @@
                 var self = this;
                 self.$contWrap.addClass('w-filter');
                 self.$filter.css('display', '');
+                $('.ui_filter_slider').vcRangeSlider('update',true);
             },
 
             //필터 감추기
@@ -663,10 +728,21 @@
             },
 
 
-
+// 슬라이더 값을 스토리지에 저장함.
+setSliderData:function(id, data) {
+    var _self = this;
+    var inputStr = ''
+    for(var key in data) inputStr += data[key]+',';
+    inputStr = inputStr.replace(/,$/,'');
+    console.log(inputStr);
+    //storageFilters[id] = inputStr;
+    //lgkorUI.setStorage(storageName, storageFilters);
+    //_self.setApplyFilter(storageFilters);
+},
             ///필터 관련 메쏘드
             filterBindEvents: function() {
                 var _self = this;
+                //var self = this;
                 
                 // 필터안 슬라이더 이벤트 처리 (가격, 사이즈,..)
                 $('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged',function (e, data) {
@@ -711,6 +787,7 @@
                 $('div.btn-filter a').on('click', function(e){
                     e.preventDefault();
                     $('.lay-filter').addClass('open');
+                    $('.ui_filter_slider').vcRangeSlider('update',true);
                 });
 
                 // 모바일 필터박스 닫기
