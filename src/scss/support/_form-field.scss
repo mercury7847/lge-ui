@@ -312,23 +312,6 @@
     }
 }
 
-.contact-box {
-    @include clearfix;
-    .input-wrap {
-        float: left;
-        width:calc((100% - 40px) / 3);
-    }
-    .at {
-        float: left;
-        text-align: center;
-        width: 20px;
-        padding: 0 4px;
-        color: #616161;
-        font-size: 16px;
-        line-height: 56px;
-    }
-}
-
 .agree-wrap {
     .agree-check {
         margin-bottom:16px;
