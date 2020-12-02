@@ -12,12 +12,14 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '경영진에게 제안'
+                'pageTitle': '경영진에게 제안',
+                'pageDesc': '경영진에게 제안하고 싶은 의견을 전달 할 수 있습니다.'
             })
             <div class="contents support suggestions">
                 <div class="cont-wrap">
 
                     <form action="/html/support/CSTF6410.html" data-ajax="/lg5-common/data-ajax/support/save.json" id="submitForm" autocomplete="off">
+                        <!--
                         <div class="process-wrap">
                             <ol class="process-list">
                                 <li>
@@ -56,6 +58,7 @@
                                 </div>
                             </div>
                         </div>
+                        -->
 
                         <div class="section">
                             <div class="tit-wrap">
@@ -178,43 +181,44 @@
                                     </div>
                                     <div class="conts">
                                         <div class="add-file-wrap">
-
                                             <div class="upload-wrap">
                                                 <div class="upload-img-area">
                                                     <div class="uploadpreview img01"></div>
                                                     <div class="upload-btn-area">
                                                         <label for="img01" class="btn-ipt-file"></label>
-                                                        <input id="img01" type="file" accept="image/*" class="ipt-file" onchange="javascript:document.getElementById('fileName01').value = this.value">
-                                                        <div class="btn-ipt-del"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="upload-file-name"><input type="text" class="ipt-file-name" id="fileName01" name="fileName01" placeholder="파일선택" readonly></div>
-                                              </div>
-                                              
-                                              <div class="upload-wrap">
-                                                <div class="upload-img-area">
-                                                    <div class="uploadpreview img02"></div>
-                                                    <div class="upload-btn-area">
-                                                        <label for="img02" class="btn-ipt-file"></label>
-                                                        <input id="img02" type="file" accept="image/*" class="ipt-file" onchange="javascript:document.getElementById('fileName02').value = this.value">
+                                                        <input id="img01" type="file" accept="image/*" name="uploadBtn" class="ipt-file uploadBtn">
                                                         <div class="btn-ipt-del"></div>
                                                     </div>
                                                 </div>
                                                 <div class="upload-file-name">
-                                                    <input type="text" class="ipt-file-name" id="fileName02" name="fileName02" placeholder="파일선택" readonly>
+                                                    <input type="text" class="ipt-file-name fileName" id="fileName01" placeholder="파일선택" disabled="disabled">
                                                 </div>
-                                              </div>
-                                              
-                                              <div class="upload-wrap">
+                                            </div>
+                                            <div class="upload-wrap">
+                                                <div class="upload-img-area">
+                                                    <div class="uploadpreview img02"></div>
+                                                    <div class="upload-btn-area">
+                                                        <label for="img02" class="btn-ipt-file"></label>
+                                                        <input id="img02" type="file" accept="image/*" name="uploadBtn" class="ipt-file uploadBtn">
+                                                        <div class="btn-ipt-del"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="upload-file-name">
+                                                    <input type="text" class="ipt-file-name fileName" id="fileName02" placeholder="파일선택" disabled="disabled">
+                                                </div>
+                                            </div>
+                                            <div class="upload-wrap">
                                                 <div class="upload-img-area">
                                                     <div class="uploadpreview img03"></div>
                                                     <div class="upload-btn-area">
                                                         <label for="img03" class="btn-ipt-file"></label>
-                                                        <input id="img03" type="file" accept="image/*" class="ipt-file" onchange="javascript:document.getElementById('fileName03').value = this.value">
+                                                        <input id="img03" type="file" accept="image/*" name="uploadBtn" class="ipt-file uploadBtn">
                                                         <div class="btn-ipt-del"></div>
                                                     </div>
                                                 </div>
-                                                <div class="upload-file-name"><input type="text" class="ipt-file-name" id="fileName03" name="fileName03" placeholder="파일선택" readonly></div>
+                                                <div class="upload-file-name">
+                                                    <input type="text" class="ipt-file-name fileName" id="fileName03" placeholder="파일선택" disabled="disabled">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -253,5 +257,6 @@
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
     <script src="/lg5-common/js/support/customVoice/customVoice.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/addfile.min.js"></script>
 </body>
 </html> 
