@@ -3,184 +3,6 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
-// PSP Header
-.product-header {
-    & + div:not(.guide-wrap) {
-        border-top: 1px solid #ddd;
-    }
-    &-inner {
-        display:table;
-        position:relative;
-        width:100%;
-        max-width:1146px + 40px;
-        margin:0 auto;
-        padding:40px 40px 24px;
-        font-size:0;
-    }
-    &-infos {
-        display:table-cell;
-        font-size:0;
-        vertical-align:middle;
-        .visual {
-            display:inline-block;
-            width:210px;
-            height:210px;
-            vertical-align:middle;
-            .img {
-                width:100%;
-            }
-        }
-        .conts {
-            display:inline-block;
-            width:calc(100% - 210px);
-            @include vw(padding-left, 80px);
-            vertical-align:middle;
-            .tit {
-                @include font-large-3;
-                font-weight:700;
-            }
-            .desc {
-                margin-top:2px;
-                @include font-medium;
-            }
-            .btns {
-                margin-top:32px;
-                font-size:0;
-                li {
-                    display:inline-block;
-                    margin-right:32px;
-                    vertical-align:middle;
-                    &:last-child {
-                        margin-right:0;
-                    }
-                }
-            }
-        }
-    }
-    &-btns {
-        display:table-cell;
-        text-align:right;
-        vertical-align:middle;
-        .btn {
-            white-space:nowrap;
-        }
-    }
-    @include mobile {
-        &-inner {
-            display:block;
-            padding:24px 16px 60px;
-        }
-        &-infos {
-            display:block;
-            position:relative;
-            padding-bottom:228px;
-            .visual {
-                display:block;
-                position:absolute;
-                width:100%;
-                left:0;
-                bottom:0;
-                text-align:center;
-                .img {
-                    width:216px;
-                    height:216px;
-                }
-            }
-            .conts {
-                display:block;
-                width:100%;
-                padding:0;
-                .btns {
-                    text-align:center;
-                    li {
-                        display:block;
-                        margin:20px 0 0;
-                    }
-                }
-            }
-        }
-        &-btns {
-            display:block;
-            margin-top:24px;
-            .btn {
-                width:100%;
-            }
-        }
-    }
-}
-
-// PSP floating tab
-.anchors-tabs-wrap {
-    min-height:86px;
-    background:#fff;
-    .anchors-tabs {
-        min-height:86px;
-        max-width:1146px + 40px;
-        margin:0 auto;
-        ul {
-            padding:24px 40px;
-            overflow-x:auto;
-            white-space:nowrap;
-            -webkit-overflow-scrolling:touch;
-            font-size:0;
-            > li {
-                display:inline-block;
-                vertical-align:top;
-                & + li {
-                    margin-left:8px;
-                }
-                a {
-                    display:block;
-                    padding:4px 12px;
-                    color:#aaa;
-                    font-size:22px;
-                    font-weight:700;
-                    line-height:30px;
-                    border-radius:19px;
-                }
-                &.on {
-                    a {
-                        color:#222;
-                        background:#f4f4f4;
-                    }
-                }
-            }
-        }
-    }
-    &.floating {
-        .anchors-tabs {
-            position:fixed;
-            left:0;
-            top:0;
-            width:100%;
-            z-index:2;
-        }
-    }
-    &.fixed {
-        border-bottom:1px solid #ddd;
-    }
-    @include mobile {
-        min-height:50px;
-        .anchors-tabs {
-            min-height:50px;
-            ul {
-                padding:10px 16px;
-                > li {
-                    & + li {
-                        margin-left:6px;
-                    }
-                    a {
-                        padding:2px 8px;
-                        font-size:18px;
-                        line-height:26px;
-                        border-radius:15px;
-                    }
-                }
-            }
-        }
-    }
-}
-
 // 상단 가이드바
 .guide-wrap {
     height:84px;
@@ -797,187 +619,6 @@
             }
         }
     }
-    .manual-list {
-        margin:-16px -8px 0;
-        @include clearfix;
-        & > li {
-            float:left;
-            width:calc(50% - 16px);
-            margin:16px 8px 0;
-            padding:24px 32px;
-            border-radius:8px;
-            box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
-            .desc {
-                @include textEllipsisClamp(2);
-            }
-            @include pc {
-                .desc {
-                    height:48px;
-                }
-            }
-        }
-        .info-wrap {
-            display:flex;
-            margin-top:24px;
-            align-items:center;
-            justify-content:space-between;
-        }
-        .btns-area {
-            @include clearfix;
-            .btn {
-                float:left;
-                & + .btn {
-                    margin-left:8px;
-                }
-            }
-        }
-        @media screen and (min-width: 768px) and (max-width: 900px) {
-            .info-wrap {
-                display:block;
-                .btns-area {
-                    margin-top:8px;
-                }
-            }
-        }
-        @include mobile {
-            margin:0;
-            & > li {
-                float:none;
-                width:100%;
-                margin:12px 0 0;
-                padding:20px;
-                border-radius:4px;
-                box-shadow:1px 2px 8px 0 rgba(0, 0, 0, 0.14);
-            }
-            .info-wrap {
-                margin-top:20px;
-            }
-        }
-    }
-    .file-list {
-        & > li {
-            padding:24px 32px;
-            border:1px solid #ddd;
-            border-radius:8px;
-            & + li {
-                margin-top:12px;
-            }
-            .file-box {
-                position:relative;
-                padding-right:315px;
-                .options {
-                    margin-top:8px;
-                }
-                .btn-area {
-                    position:absolute;
-                    left:calc(100% - 315px);
-                    top:50%;
-                    width:315px;
-                    transform:translateY(-50%);
-                    @include clearfix;
-                    .box {
-                        display:inline-block;
-                        width:172px;
-                        text-align:right;
-                        vertical-align:middle;
-                        & + .box {
-                            width:143px;
-                        }
-                        &.btn_close {
-                            .accord-btn {
-                                color:#ec455a;
-                                background-image:url(/lg5-common/images/icons/btn-minus-20.svg);
-                            }
-                        }
-                    }
-                    .accord-btn {
-                        padding-right:22px;
-                        color:#767676;
-                        font-size:14px;
-                        font-weight:500;
-                        line-height:24px;
-                        background:url(/lg5-common/images/icons/btn-more-20-gray.svg) no-repeat;
-                        background-position:right center;
-                    }
-                }
-            }
-            .accord-cont {
-                display:none;
-                .file-list {
-                    margin-top:24px;
-                    padding:20px 24px;
-                    border-radius:8px;
-                    background:#f4f4f4;
-                    & > li {
-                        margin:20px 0 0 0;
-                        padding:20px 0 0 0;
-                        border-width:1px 0 0 0;
-                        &:first-child {
-                            margin:0;
-                            padding:0;
-                            border:none;
-                        }
-                        .btn-area {
-                            .box {
-                                width:196px;
-                            }
-                            .btn.border {
-                                background:#f4f4f4;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        @include mobile {
-            & > li {
-                padding:20px;
-                .file-box {
-                    padding-right:0;
-                    .options {
-                        margin-top:4px;
-                    }
-                    .btn-area {
-                        position:static;
-                        width:100%;
-                        margin-top:20px;
-                        transform:translateY(0);
-                        @include clearfix;
-                        .box {
-                            float:left;
-                            width:auto;
-                            & + .box {
-                                float:right;
-                                margin:6px 0 0 0;
-                            }
-                        }
-                    }
-                }
-                .accord-cont {
-                    .file-list {
-                        margin-top:20px;
-                        padding:16px;
-                        & > li {
-                            margin:16px 0 0 0;
-                            padding:16px 0 0 0;
-                            &:first-child {
-                                margin:0;
-                                padding:0;
-                                border:none;
-                            }
-                            .btn-area {
-                                .box {
-                                    float:none;
-                                    width:100%;
-                                    text-align:center;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
     .banner-wrap {
         margin-bottom:64px;
         .banner {
@@ -1060,7 +701,6 @@
             }
         }
     }
-
     .driver-section {
         .form-wrap {
             margin-bottom:48px;
@@ -1115,6 +755,289 @@
             }
             .tabs-wrap {
                 margin-bottom:20px;
+            }
+        }
+    }
+
+    .manual-list-wrap {
+        .manual-list {
+            margin:-16px -8px 0;
+            @include clearfix;
+            & > li {
+                float:left;
+                width:calc(50% - 16px);
+                margin:16px 8px 0;
+                padding:24px 32px;
+                border-radius:8px;
+                box-shadow:2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+                .desc {
+                    @include textEllipsisClamp(2);
+                }
+                @include pc {
+                    .desc {
+                        height:48px;
+                    }
+                }
+            }
+            .tit {
+                display:block;
+                @include font-medium;
+                font-weight:700;
+                a, button {
+                    font-size:inherit;
+                    font-weight:inherit;
+                    line-height:inherit;
+                    vertical-align:top;
+                    text-align:left;
+                }
+            }
+            .desc {
+                color:#767676;
+                @include font-small;
+            }
+            .options {
+                color:#767676;
+                @include font-small;
+                @include clearfix;
+                & > li {
+                    position:relative;
+                    display:inline;
+                    &:after {
+                        content:'';
+                        display:inline-block;
+                        width:1px;
+                        height:10px;
+                        margin:7px 8px 0;
+                        background:#ddd;
+                    }
+                    &:last-child {
+                        margin:0;
+                        padding:0;
+                        &:after {
+                            content:none;
+                        }
+                    }
+                }
+            }
+            .info-wrap {
+                display:flex;
+                margin-top:24px;
+                align-items:center;
+                justify-content:space-between;
+            }
+            .btns-area {
+                @include clearfix;
+                .btn {
+                    float:left;
+                    & + .btn {
+                        margin-left:8px;
+                    }
+                }
+            }
+            @media screen and (min-width: 768px) and (max-width: 900px) {
+                .info-wrap {
+                    display:block;
+                    .btns-area {
+                        margin-top:8px;
+                    }
+                }
+            }
+        }
+        @include mobile {
+            .manual-list {
+                margin:0;
+                & > li {
+                    float:none;
+                    width:100%;
+                    margin:12px 0 0;
+                    padding:20px;
+                    border-radius:4px;
+                    box-shadow:1px 2px 8px 0 rgba(0, 0, 0, 0.14);
+                }
+                .options {
+                    & > li {
+                        &:after {
+                            margin:6px 6px 0;
+                        }
+                    }
+                }
+                .info-wrap {
+                    margin-top:20px;
+                }
+            }
+        }
+    }
+    .file-list-wrap {
+        .file-list {
+            & > li {
+                padding:24px 32px;
+                border:1px solid #ddd;
+                border-radius:8px;
+                & + li {
+                    margin-top:12px;
+                }
+                .file-box {
+                    position:relative;
+                    padding-right:315px;
+                    .options {
+                        margin-top:8px;
+                    }
+                    .btn-area {
+                        position:absolute;
+                        left:calc(100% - 315px);
+                        top:50%;
+                        width:315px;
+                        transform:translateY(-50%);
+                        font-size:0;
+                        @include clearfix;
+                        .box {
+                            display:inline-block;
+                            width:172px;
+                            text-align:right;
+                            vertical-align:middle;
+                            & + .box {
+                                width:143px;
+                            }
+                            &.btn_close {
+                                .accord-btn {
+                                    color:#ec455a;
+                                    background-image:url(/lg5-common/images/icons/btn-minus-20.svg);
+                                }
+                            }
+                        }
+                        .accord-btn {
+                            padding-right:22px;
+                            color:#767676;
+                            font-size:14px;
+                            font-weight:500;
+                            line-height:24px;
+                            background:url(/lg5-common/images/icons/btn-more-20-gray.svg) no-repeat;
+                            background-position:right center;
+                        }
+                    }
+                }
+                .accord-cont {
+                    display:none;
+                    .file-list {
+                        margin-top:24px;
+                        padding:20px 24px;
+                        border-radius:8px;
+                        background:#f4f4f4;
+                        & > li {
+                            margin:20px 0 0 0;
+                            padding:20px 0 0 0;
+                            border-width:1px 0 0 0;
+                            &:first-child {
+                                margin:0;
+                                padding:0;
+                                border:none;
+                            }
+                            .btn-area {
+                                .box {
+                                    width:196px;
+                                }
+                                .btn.border {
+                                    background:#f4f4f4;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .tit {
+                display:block;
+                @include font-medium;
+                font-weight:700;
+                a, button {
+                    font-size:inherit;
+                    font-weight:inherit;
+                    line-height:inherit;
+                    vertical-align:top;
+                    text-align:left;
+                }
+            }
+            .desc {
+                color:#767676;
+                @include font-small;
+            }
+            .options {
+                color:#767676;
+                @include font-small;
+                @include clearfix;
+                & > li {
+                    position:relative;
+                    display:inline;
+                    &:after {
+                        content:'';
+                        display:inline-block;
+                        width:1px;
+                        height:10px;
+                        margin:7px 8px 0;
+                        background:#ddd;
+                    }
+                    &:last-child {
+                        margin:0;
+                        padding:0;
+                        &:after {
+                            content:none;
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                & > li {
+                    padding:20px;
+                    .file-box {
+                        padding-right:0;
+                        .options {
+                            margin-top:4px;
+                        }
+                        .btn-area {
+                            position:static;
+                            width:100%;
+                            margin-top:20px;
+                            transform:translateY(0);
+                            @include clearfix;
+                            .box {
+                                float:left;
+                                width:auto;
+                                & + .box {
+                                    float:right;
+                                    margin:6px 0 0 0;
+                                }
+                            }
+                        }
+                    }
+                    .accord-cont {
+                        .file-list {
+                            margin-top:20px;
+                            padding:16px;
+                            & > li {
+                                margin:16px 0 0 0;
+                                padding:16px 0 0 0;
+                                &:first-child {
+                                    margin:0;
+                                    padding:0;
+                                    border:none;
+                                }
+                                .btn-area {
+                                    .box {
+                                        float:none;
+                                        width:100%;
+                                        text-align:center;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .options {
+                    & > li {
+                        &:after {
+                            margin:6px 6px 0;
+                        }
+                    }
+                }
             }
         }
     }
@@ -1393,7 +1316,176 @@
     }
     /* 제품 지원 페이지 */
     &.psp {
-        border-top:8px solid #f4f4f4;
+        // PSP Header
+        .product-header {
+            & + div:not(.guide-wrap) {
+                border-top: 1px solid #ddd;
+            }
+            &-inner {
+                display:table;
+                position:relative;
+                width:100%;
+                max-width:1146px + 40px;
+                margin:0 auto;
+                padding:40px 40px 24px;
+                font-size:0;
+            }
+            &-infos {
+                display:table-cell;
+                font-size:0;
+                vertical-align:middle;
+                .visual {
+                    display:inline-block;
+                    width:210px;
+                    height:210px;
+                    vertical-align:middle;
+                    .img {
+                        width:100%;
+                    }
+                }
+                .conts {
+                    display:inline-block;
+                    width:calc(100% - 210px);
+                    @include vw(padding-left, 80px);
+                    vertical-align:middle;
+                    .tit {
+                        @include font-large-3;
+                        font-weight:700;
+                    }
+                    .desc {
+                        margin-top:2px;
+                        @include font-medium;
+                    }
+                    .btns {
+                        margin-top:32px;
+                        font-size:0;
+                        li {
+                            display:inline-block;
+                            margin-right:32px;
+                            vertical-align:middle;
+                            &:last-child {
+                                margin-right:0;
+                            }
+                        }
+                    }
+                }
+            }
+            &-btns {
+                display:table-cell;
+                text-align:right;
+                vertical-align:middle;
+                .btn {
+                    white-space:nowrap;
+                }
+            }
+            @include mobile {
+                &-inner {
+                    display:block;
+                    padding:24px 16px 60px;
+                }
+                &-infos {
+                    display:block;
+                    position:relative;
+                    padding-bottom:228px;
+                    .visual {
+                        display:block;
+                        position:absolute;
+                        width:100%;
+                        left:0;
+                        bottom:0;
+                        text-align:center;
+                        .img {
+                            width:216px;
+                            height:216px;
+                        }
+                    }
+                    .conts {
+                        display:block;
+                        width:100%;
+                        padding:0;
+                        .btns {
+                            text-align:center;
+                            li {
+                                display:block;
+                                margin:20px 0 0;
+                            }
+                        }
+                    }
+                }
+                &-btns {
+                    display:block;
+                    margin-top:24px;
+                    .btn {
+                        width:100%;
+                    }
+                }
+            }
+        }
+
+        // PSP floating tab
+        .anchors-tabs-wrap {
+            border-bottom:8px solid #f4f4f4;
+            .anchors-tabs {
+                min-height:86px;
+                background:#fff;
+                ul {
+                    max-width:1146px + 40px;
+                    min-height:86px;
+                    margin:0 auto;
+                    padding:24px 40px;
+                    overflow-x:auto;
+                    white-space:nowrap;
+                    -webkit-overflow-scrolling:touch;
+                    font-size:0;
+                    > li {
+                        display:inline-block;
+                        vertical-align:top;
+                        & + li {
+                            margin-left:8px;
+                        }
+                        a {
+                            display:block;
+                            padding:4px 12px;
+                            color:#aaa;
+                            font-size:22px;
+                            font-weight:700;
+                            line-height:30px;
+                            border-radius:19px;
+                        }
+                        &.on {
+                            a {
+                                color:#222;
+                                background:#f4f4f4;
+                            }
+                        }
+                    }
+                }
+                &.fixed {
+                    border-bottom:1px solid #ddd;
+                }
+            }
+            
+            @include mobile {
+                .anchors-tabs {
+                    min-height:50px;
+                    ul {
+                        min-height:50px;
+                        padding:10px 16px;
+                        > li {
+                            & + li {
+                                margin-left:6px;
+                            }
+                            a {
+                                padding:2px 8px;
+                                font-size:18px;
+                                line-height:26px;
+                                border-radius:15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         .cont-wrap {
             max-width:1146px + 40px;
             padding:48px 40px 80px;
