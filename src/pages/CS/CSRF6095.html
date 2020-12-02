@@ -3,7 +3,8 @@
 @@include('./common/head.html', {
     "pageCSS": [
         "support/support",
-        "support/reservation"
+        "support/reservation",
+        "support/custom-voice"
     ]
 })
 <body>
@@ -239,13 +240,13 @@
                             <div class="form-wrap">
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-content" class="tit">전달사항</label>
+                                        <label for="input-desc" class="tit">전달사항</label>
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap count">
-                                            <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="100" data-limit="100" data-count-target="#txt-count1"></textarea>
+                                            <textarea class="ui_textcontrol" name="desc" id="input-desc" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="100" data-limit="100" data-count-target="#txt-count1" data-msg-target=".err-msg" data-error-msg="전달사항을 입력해주세요." data-required="true"></textarea>
                                             <span id="txt-count1" class="cell total"><em>0</em> / 100자</span>
-                                            <p class="err-msg">전달사항을 입력해주세요.</p>
+                                            <p class="err-msg"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -355,20 +356,20 @@
                             </div>
                             <div class="form-wrap">
                                 <div class="forms">
-                                    <div class="tit"><label for="inp02-2" class="req">이름<span class="blind">필수입력</span></label></div>
+                                    <div class="tit"><label for="input-name" class="req">이름<span class="blind">필수입력</span></label></div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" id="inp02-2" placeholder="이름 입력" value="" data-error-msg="한글,영문만 입력 가능합니다.">
-                                            <div class="btn-more"><p class="err-msg"></p></div>
+                                            <input type="text" name="name" id="input-name" placeholder="이름 입력" data-required="true" data-msg-target=".err-msg" required>
+                                            <p class="err-msg"></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="forms">
-                                    <div class="tit"><label for="inp02-2" class="req">휴대폰번호<span class="blind">필수입력</span></label></div>
+                                    <div class="tit"><label for="input-phoneNo" class="req">휴대폰번호<span class="blind">필수입력</span></label></div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" id="inp02-2" placeholder="‘-’ 없이 번호를 입력" value="" data-error-msg="정확한 휴대전화 번호를 입력해주세요.">
-                                            <div class="btn-more"><p class="err-msg"></p></div>
+                                            <input type="text" name="phoneNo" id="input-phoneNo" placeholder="휴대 전화 입력" maxlength="11" data-required="true" data-msg-target=".err-msg" required>
+                                            <p class="err-msg"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -465,5 +466,6 @@
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
     <script src="/lg5-common/js/support/reservation/reservation.min.js"></script>
+    <script src="/lg5-common/js/support/customVoice/customVoice.min.js"></script>
 </body>
 </html> 

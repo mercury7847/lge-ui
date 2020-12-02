@@ -92,11 +92,11 @@
                                 <!-- // 멤버십 가입 정보 -->
 
                                 <!-- 구매내역 -->
-                                <div class="sects">
+                                <div class="sects rdo-type2">
                                     <div class="tit-wrap">
                                         <h5 class="tit">구매내역</h5>
                                     </div>
-                                    <div class="section-inner type2">
+                                    <div class="section-inner">
                                         <div class="inner-box">
                                             <div class="filters">
                                                 <!-- filter -->
@@ -106,7 +106,7 @@
                                                     "datepicker" : true,
                                                     "rdoCheck" : true,
                                                     "list" : [
-                                                        { "id" : "rdk-cehck1-1", "name" : "rdk-check1",  "label" : "전체",},
+                                                        { "id" : "rdk-cehck1-1", "name" : "rdk-check1",  "label" : "전체"},
                                                         { "id" : "rdk-cehck1-2", "name" : "rdk-check1",  "label" : "구매", "checked": "checked"},
                                                         { "id" : "rdk-cehck1-3", "name" : "rdk-check1",  "label" : "취소"}
                                                     ]
@@ -159,24 +159,6 @@
             </div>
             <!-- // mypage -->
         </div>
-
-            <!-- 계약서 발급 신청 -->
-            @@include('./common/popup/ACCF7025_pop2.html', {
-                popupID: 'popup-contractIssue'
-            })
-            <!-- 계약서 발급 신청-->
-            
-            <!-- 제휴카드 발급 신청 -->
-            @@include('./common/popup/ACCF7025_pop1.html', {
-                popupID: 'popup-cardIssue'
-            })
-            <!-- 제휴카드 발급 신청-->
-
-            <!-- 자동결제 이용 약관 동의 -->
-            @@include('./common/popup/RMSF9001_pop8.html', {
-                popupID: 'popup-selfClearing'
-            })
-            <!-- 자동결제 이용 약관 동의 -->
         
         @@include('./common/footer.html')
     </div>

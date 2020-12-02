@@ -153,6 +153,13 @@
 			top: 0;
 		}
 	}
+
+	&.align-left * {
+		text-align:left !important;
+	}
+	&.align-right * {
+		text-align:right !important;
+	}
     
     .slider-for {
 		position: relative;
@@ -225,11 +232,19 @@
 
 	.text-area {
 		position: absolute;
-		top: 40px;
+		top:40px;
 		left: 50%;
 		transform: translateX(-50%);
 		z-index: 2;
 		width: 100%;
+		padding:0 60px;
+		&.align-top {
+			top:40px;
+		}
+		&.align-bottom {
+			top:auto;
+			bottom:64px;
+		}
 		@include mobile {
 			position: static;
 			transform: translateX(0);
