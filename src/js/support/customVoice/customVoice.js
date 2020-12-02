@@ -49,6 +49,10 @@
                         content: {
                             required: true,
                             errorMsg: '내용을 입력해주세요.'
+                        },
+                        desc: {
+                            required: true,
+                            errorMsg: '전달사항을 입력해주세요.'
                         }
                     }
     

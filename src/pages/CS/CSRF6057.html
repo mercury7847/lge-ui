@@ -11,8 +11,9 @@
         @@include('./common/header.html')
 
         <div class="container">
-            @@include('./common/support/page-visual.html', {
-                'title': '개선해 주세요'
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '개선해 주세요',
+                'pageDesc': '미흡한 내용을 개선할 수 있도록 의견을 전달 할 수 있습니다.'
             })
             <div class="contents support suggestions">
                 <div class="cont-wrap">
@@ -87,7 +88,7 @@
                             </li>
                             <li>
                                 <div class="title"><strong>제품</strong></div>
-                                <div class="description">세탁기/스타일러 > 데스크톱/일체형, ABCD-123456</div>
+                                <div class="description">세탁기/스타일러 &gt; 데스크톱/일체형, ABCD-123456</div>
                             </li>
                             <li>
                                 <div class="title"><strong>모델명</strong></div>
