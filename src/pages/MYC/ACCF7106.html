@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <article id="popup" class="win-popup-wrap">
+        <header class="pop-header">
+            <h1 class="tit"><span>신용카드 매출전표</span></h1>
+        </header>
+        <section class="pop-conts mypage">
+            <!-- 결제카드 탭 -->
+            <div class="tabs-wrap border-type ui_tab ui_smooth_scroll left">
+                <ul class="tabs">
+                    <li class="on"><a href="#n">결제카드 1<em class="blind">선택됨</em></a></li>
+                    <li><a href="#n">결제카드 2</a></li>
+                </ul>
+            </div>
+            <!-- // 결제카드 탭 -->
+
+            <!-- 매출전표 -->
+            <div class="section-wrap window-pops">
+                <div class="sects">
+                    <div class="section-inner">
+                        <div class="inner-box">
+                            <p class="inner-tit">주문 정보</p>
+                            @@include('./common/modules/dl-infolist.html', {
+                                "list" : [
+                                    { "dt" : "주문번호 / ORDER NO.", "dd" : "7202004162872204" },
+                                    { "dt" : "카드종류 / CARD TYPE", "dd" : "국민카드" },
+                                    { "dt" : "카드번호 / CARD NO.", "dd" : "************4072" },
+                                    { "dt" : "유효기간 / EXPIRY", "dd" : "****" },
+                                    { "dt" : "구매자명 / CUST NAME", "dd" : "이*어" },
+                                    { "dt" : "거래일시 / TRANS DATE&TIME", "dd" : "2020/02/16 15:49:35" },
+                                    { "dt" : "거래취소일 / CANCLE DATE&TIME", "dd" : "" },
+                                    { "dt" : "할부 / INSTALLMENT", "dd" : "일시불" },
+                                    { "dt" : "거래상태 / TRAMS STATUS", "dd" : "승인완료" },
+                                    { "dt" : "승인번호 / APPROVAL NO.", "dd" : "4167535486351328" },
+                                    { "dt" : "상품정보", "dd" : "LG 퓨리케어 냉온정수기" },
+                                ]
+                            })
+                        </div>
+
+                        <div class="inner-box">
+                            <p class="inner-tit">결제 금액 정보</p>
+                            @@include('./common/modules/dl-infolist.html', {
+                                "list" : [
+                                    { "dt" : "과세 금액 / Taxable", "dd" : "&#92;2,773" },
+                                    { "dt" : "부가세 / VAT", "dd" : "&#92;277" },
+                                    { "dt" : "합계 / TOTAL", "dd" : "&#92;3,050" },
+                                    { "dt" : "결제금액", "dd" : "&#92;3,050" },
+                                ]
+                            })
+                        </div>
+
+                        <div class="inner-box">
+                            <p class="inner-tit">판매자 정보</p>
+                            @@include('./common/modules/dl-infolist.html', {
+                                "list" : [
+                                    { "dt" : "상점명 / SUBMERCHANT NAME", "dd" : "(주)엘지전자" },
+                                    { "dt" : "사업자등록번호 / BUSINESS NO.", "dd" : "*******-*******" },
+                                    { "dt" : "대표자 / MASTER", "dd" : "이엘지" },
+                                    { "dt" : "판매자 연락처 / HELP DESK", "dd" : "Tel. 070-****-****" },
+                                    { "dt" : "판매자 주소 / ADDRESS", "dd" : "서울특별시 영등포구 여의대로 128 LG트윈타워" },
+                                ]
+                            })
+                        </div>
+
+                        <div class="inner-box">
+                            <p class="inner-tit">가맹점 정보</p>
+                            @@include('./common/modules/dl-infolist.html', {
+                                "list" : [
+                                    { "dt" : "가맹점명 / MERCHANT NAME", "dd" : "(주)LG CNS" },
+                                    { "dt" : "가맹점번호 / MERCHANT NO.", "dd" : "116-81-19477" },
+                                    { "dt" : "대표자명 / MASTER", "dd" : "김명섭" },
+                                    { "dt" : "승인 관련 문의 / HELP DESK", "dd" : "02-3773-1114" },
+                                    { "dt" : "가맹점 주소 / ADDRESS", "dd" : "서울특별시 강서구 마곡중앙8로 71" },
+                                ]
+                            })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // 매출전표 -->
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>닫기</span></button>
+            </div>
+        </footer>
+        <button type="button" class="win-btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+</body>
+</html>

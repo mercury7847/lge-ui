@@ -8,11 +8,8 @@
         <button type="button" data-href="#popup1" data-control="modal" class="btn"><span>취소신청 팝업</span></button><br><br>
         <button type="button" data-href="#popup2" data-control="modal" class="btn"><span>반품신청 팝업</span></button><br><br>
         <button type="button" data-href="#popup3" data-control="modal" class="btn"><span>영수증 발급 내역 팝업</span></button><br><br>
-        <button type="button" data-href="#popup4" data-control="modal" class="btn"><span>거래 영수증 팝업</span></button><br><br>
-        <button type="button" data-href="#popup5" data-control="modal" class="btn"><span>신용카드 매출전표 팝업</span></button><br><br>
-        <button type="button" data-href="#popup6" data-control="modal" class="btn"><span>현금영수증 팝업</span></button><br><br><br>
-        <button type="button" data-href="#popup7" data-control="modal" class="btn"><span>매월 납부금 할인 내역 팝업</span></button><br><br>
-        <button type="button" data-href="#popup8" data-control="modal" class="btn"><span>케어십 할인 내역 팝업</span></button>
+        <button type="button" data-href="#popup4" data-control="modal" class="btn"><span>매월 납부금 할인 내역 팝업</span></button><br><br>
+        <button type="button" data-href="#popup5" data-control="modal" class="btn"><span>케어십 할인 내역 팝업</span></button>
     </div>
 
 
@@ -21,5 +18,68 @@
         popupID: 'popup1'
     })
     <!-- // 취소신청 -->
+
+    <!-- 취소신청-->
+    @@include('./common/popup/ACCF7002_pop2.html', {
+        popupID: 'popup2'
+    })
+    <!-- // 취소신청 -->
+
+    <!-- 영수증 발급 내역 -->
+    @@include('./common/popup/ACCF7002_pop3.html', {
+        popupID: 'popup3'
+    })
+    <!-- // 영수증 발급 내역 -->
+
+    <!-- 매월 납부금 할인 내역 -->
+    @@include('./common/popup/ACCF7002_pop4.html', {
+        popupID: 'popup4',
+        title : "매월 납부금 할인 내역",
+        h2Tit : "의무 사용기간 3년/계약기간 5년",
+        fee1 : "36,900원",
+        fee2 : "-23,000원",
+        fee3 : "13,900원",
+        tableArr : [
+            { "td1" : "1년차 (1~12회차)", "td2" : "36,900원", "td3" : "3, 6, 9, 12 무상할인"},
+            { "td1" : "2년차 (13~24회차)", "td2" : "36,900원", "td3" : "15, 18 무상할인"},
+            { "td1" : "3년차 (25~36회차)", "td2" : "36,900원", "td3" : ""},
+            { "td1" : "4년차 (37~48회차)", "td2" : "13,900원", "td3" : ""},
+            { "td1" : "5년차 (49~60회차)", "td2" : "13,900원", "td3" : ""},
+        ],
+        feeDt : "무상할인 적용회차 (6회)",
+        freeMonth : "3, 6, 9, 12, 15, 18",
+        bTit : "케어솔루션 안내",
+        bTxt : [
+            "렌탈(케어솔루션) 총요금은 대표요금제 기준이며, 요금제에 따라 총 비용이 다를 수 있습니다.",
+            "5년 동안 무상 A/S(계약 기간 내)",
+            "초기구입비용 0원 (60개월 분할 납부)"
+        ]
+    })
+    <!-- // 매월 납부금 할인 내역 -->
+
+    <!-- 케어십 할인 내역 -->
+    @@include('./common/popup/ACCF7002_pop4.html', {
+        popupID: 'popup5',
+        title : "케어십 할인 내역",
+        h2Tit : "의무 사용기간 1년",
+        fee1 : "19,900원",
+        fee2 : "-13,000원",
+        fee3 : "6,600원",
+        tableArr : [
+            { "td1" : "1년차 (1~12회차)", "td2" : "19,900원", "td3" : "6, 12 무상할인"},
+            { "td1" : "2년차 (13~24회차)", "td2" : "19,900원", "td3" : ""},
+            { "td1" : "3년차 (25~36회차)", "td2" : "13,900원", "td3" : ""},
+            { "td1" : "4년차 (37~48회차)", "td2" : "13,900원", "td3" : ""},
+            { "td1" : "5년차 (49~60회차)", "td2" : "13,900원", "td3" : ""},
+        ],
+        feeDt : "무상할인 적용회차 (2회)",
+        freeMonth : "6, 12",
+        bTit : "케어십 안내",
+        bTxt : [
+            "케어십 요금은 대표요금제 기준이며, 요금제에 따라 제공되는 혜택이 다를 수 있습니다.",
+            "해지의사가 없을시, 1년 단위로 자동 연장됩니다."
+        ]
+    })
+    <!-- // 케어십 할인 내역 -->
 </body>
 </html>

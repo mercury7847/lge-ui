@@ -108,6 +108,34 @@
             <!-- // slide -->
             }
             }
+
+            @@if ( context.memberSlideType === true ) {
+                @@for ( var i=0; i < context.slideArr.length; i++ ) {
+                <!--  slide -->
+                <div class="slide-conts ui_carousel_slide">
+                    <div class="slide-box">
+                        <div class="product-image" aria-hidden="true">
+                            <span class="img"><img src="`+slideArr[i].img+`" alt=""></span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">
+                                <strong>`+slideArr[i].name+`</strong>
+                                <span class="model-num">WU900AS</span>
+                            </div>
+                            <div class="info-area">
+                                <ul>
+                                    <li>구매수량 : 1</li>
+                                    <li>LG BEST SHOP 서초점</li>
+                                    <li>2019. 07. 29 구매</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // slide -->
+                }
+            }
+
             @@if ( context.carouselScriptClass === "ui_carousel_1_slider" ) {
             @@for ( var i=0; i < context.slideArr.length; i++ ) {
             <!--  slide -->

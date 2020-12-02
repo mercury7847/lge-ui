@@ -15,7 +15,7 @@
                 var self = this;
 
                 self.setting();
-                self.updateRecentSearcheList();
+                self.updateRecentSearchList();
                 self.bindEvents();
             },
 
@@ -300,7 +300,7 @@
                     searchedList.splice(findIndex, 1);
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
-                self.updateRecentSearcheList();
+                self.updateRecentSearchList();
             },
 
             //최근 검색어 추가
@@ -319,11 +319,11 @@
                     }
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
-                self.updateRecentSearcheList();
+                self.updateRecentSearchList();
             },
 
             //최근 검색어 리스트 갱신
-            updateRecentSearcheList:function() {
+            updateRecentSearchList:function() {
                 var self = this;
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 var arr = searchedList instanceof Array ? searchedList : [];

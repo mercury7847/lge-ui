@@ -1,28 +1,36 @@
 @@if ( context.checkboxType ) {
-<div class="box ui_all_checkbox">
+<div class="box ui_all_checkbox chk-type">
 }
-@@if ( !context.checkboxType ) {
+@@if ( context.onlyTitle ) {
+<div class="box title-type">
+}
+@@if ( !context.checkboxType && !context.onlyTitle ) {
 <div class="box">
 }
-    @@if ( !context.checkboxType ) {
+    @@if ( !context.checkboxType && !context.onlyTitle ) {
     <div class="info-wrap">
         <ul class="infos">
             @@for ( var i=0; i < infos.length; i++ ) {
             <li>`+infos[i].dt+`<em>`+infos[i].dd+`</em></li>
             }
         </ul>
+        @@if ( context.total ) {
         <p class="totals">@@total</p>
+        }
+    </div>
+    }
+    @@if ( context.onlyTitle ) {
+    <div class="box-title">
+        <p>@@onlyTitle</p>
     </div>
     }
     @@if ( context.checkboxType ) {
-    <div class="info-wrap">
-        <span class="chk-wrap">
-            <input type="checkbox" id="chk-cancel-all" name="chk-cancel" class="ui_all_checker" checked>
-            <label for="chk-cancel-all">전체선택</label>
-        </span>
-    </div>
+    <span class="chk-wrap">
+        <input type="checkbox" id="chk-cancel-all" name="chk-cancel" class="ui_all_checker" checked>
+        <label for="chk-cancel-all">전체선택</label>
+    </span>
     }
-    <div class="tbl-layout">
+    <div class="tbl-layout @@if(context.sizeType){size3}">
         <!-- thead -->
         <div class="thead" aria-hidden="true">
             @@for ( var j=0; j < th.length; j++ ) {

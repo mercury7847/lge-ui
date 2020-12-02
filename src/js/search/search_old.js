@@ -238,7 +238,7 @@
                 $list_count.hide();
 
                 var _self = this;
-                _self.updateRecentSearcheList();
+                _self.updateRecentSearchList();
 
                 vcui.require(['ui/pagination', "ui/youtubeBox"], function () {
                     _self.bindEvents();
@@ -467,7 +467,7 @@
                     searchedList.splice(findIndex, 1);
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
-                _self.updateRecentSearcheList();
+                _self.updateRecentSearchList();
             },
 
             addRecentSearcheText:function(text) {
@@ -485,10 +485,10 @@
                     }
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
-                _self.updateRecentSearcheList();
+                _self.updateRecentSearchList();
             },
 
-            updateRecentSearcheList:function() {
+            updateRecentSearchList:function() {
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 var arr = searchedList instanceof Array ? searchedList : [];
                 if(arr.length > 0) {

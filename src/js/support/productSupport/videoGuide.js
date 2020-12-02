@@ -6,8 +6,10 @@
                     '<img src="//img.youtube.com/vi/{{videoId}}/default.jpg" alt="">' +
                 '</div>' +
                 '<div class="video-cont">' +
-                    '<p class="category">{{category}}</p>' +
-                    '<p class="topic">{{topic}}</p>' +
+                    '<div class="flag-wrap bar-type">' +
+                        '<span class="flag">{{category}}</span>' +
+                        '<span class="flag gray">{{topic}}</span>' +
+                    '</div>' +
                     '<h4 class="tit">{{title}}</h4>' +
                 '</div>' +
             '</a>' +

@@ -40,12 +40,29 @@
         max-width: (1146px + 80px);
         margin: 0 auto;
         padding: 64px 40px;
+        .inner {
+            overflow: hidden;
+            height: 108px;
+        }
         .btn-moreview {
             margin-top: 20px;
+        }
+        &.on {
+            .inner {
+                height: auto;
+            }
+            .btn-moreview {
+                &:before {
+                    background-image: url('/lg5-common/images/icons/btn-minus.svg');
+                }
+            }
         }
         @include mobile {
             max-width: 100%;
             padding: 40px 16px;
+            .inner {
+                height: 100px;
+            }
         }
     }
     .search-banner {
