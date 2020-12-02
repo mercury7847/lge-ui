@@ -153,13 +153,6 @@
 			top: 0;
 		}
 	}
-
-	&.align-left * {
-		text-align:left !important;
-	}
-	&.align-right * {
-		text-align:right !important;
-	}
     
     .slider-for {
 		position: relative;
@@ -244,6 +237,12 @@
 		&.align-bottom {
 			top:auto;
 			bottom:64px;
+		}
+		&.align-left * {
+			text-align:left !important;
+		}
+		&.align-right * {
+			text-align:right !important;
 		}
 		@include mobile {
 			position: static;
