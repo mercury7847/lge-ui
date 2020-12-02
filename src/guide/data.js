@@ -193,6 +193,8 @@ var res = {
 					"거래영수증 팝업" : ["/html/MYC/ACCF7105.html","_blank:width=912,height=760,scrollbars=no",""],
 					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=no",""],
 					"현금영수증 팝업" : ["/html/MYC/ACCF7107.html","_blank:width=912,height=760,scrollbars=no",""],
+					"배송지 주소 관리" : ["/html/MYC/ACCF7009.html","","진행중"],
+					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
 				},
 				"케어솔루션" : {
 					"계약현황" : ["/html/MYC/ACCF7025.html","","검수완료"],
@@ -215,7 +217,6 @@ var res = {
 				},
 				"활동 내역" : {
 					"구독" : ["/html/MYC/ACCF7017.html","","진행중"],
-					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
 					"관심 스토리" : ["/html/MYC/ACCF7063.html","","진행중"]
 				},
 				"활동 관리" : {
