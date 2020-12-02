@@ -165,6 +165,8 @@
                 self.$filter = self.$contWrap.find('div.lay-filter');
                 //mobile화면 하단 service link
                 self.$mobileServiceLink = self.$contWrap.find('div.mobile-service-link');
+                //추천상품 recommend-list-box
+                self.$recommendListBox = self.$contWrap.find('div.recommend-list-box');
                 //search-not-result
                 self.$searchNotResult = self.$contentsSearch.find('div.search-not-result');
 
@@ -200,24 +202,27 @@
                     switch(data.selectedIndex) {
                         case 0:
                             //전체
-                            self.closeFilter();
+                            self.hideFilter();
                             self.$searchResultCategory.show();
                             self.$searchBanner.show();
                             self.$mobileServiceLink.hide();
+                            self.$recommendListBox.hide();
                             break;
                         case 1:
-                            //제품/케어솔루션
-                            self.openFilter();
+                            //제품/케어솔루션 setFilter 위치 옮길것
+                            self.setFilter();
                             self.$searchResultCategory.hide();
                             self.$searchBanner.hide();
                             self.$mobileServiceLink.css('display', '');
+                            self.$recommendListBox.show();
                             break;
                         case 2:
                             //이벤트/기획전
-                            self.openFilter();
+                            self.setFilter();
                             self.$searchResultCategory.hide();
                             self.$searchBanner.hide();
                             self.$mobileServiceLink.hide();
+                            self.$recommendListBox.hide();
                             break;
                         default:
                             break;
@@ -339,15 +344,15 @@
                 self.$buttonSearch.trigger('click');
             },
 
-            //필터 오픈
-            openFilter:function(data) {
+            //필터 세팅
+            setFilter:function(data) {
                 var self = this;
                 self.$contWrap.addClass('w-filter');
                 self.$filter.css('display', '');
             },
 
-            //필터 닫기
-            closeFilter:function() {
+            //필터 감추기
+            hideFilter:function() {
                 var self = this;
                 self.$contWrap.removeClass('w-filter');
                 self.$filter.hide();
