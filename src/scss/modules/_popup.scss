@@ -517,8 +517,15 @@
                 }
                 &.type2 {
                     margin-bottom:24px;
+                    @include mobile {
+                        margin-bottom:8px;
+                    }
                     .h2-tit {
                         @include font-large;
+                        @include mobile {
+                            font-size:18px;
+                            line-height:26px;
+                        }
                     }
                 }
             }
@@ -650,10 +657,16 @@
             padding:32px;
             border-radius:8px;
             background:#f4f4f4;
+            @include mobile {
+                padding:24px 20px;
+            }
             dl {
                 display:table;
                 width:100%;
                 margin-top:12px;
+                @include mobile {
+                    margin-top:8px;
+                }
                 &:first-child {
                     margin-top:0;
                 }
@@ -663,10 +676,13 @@
                     vertical-align:middle;
                 }
                 dt {
+                    padding-right:24px;
                     color:#767676;
                     text-align:left;
+                    word-break:keep-all;
                 }
                 dd {
+                    min-width:97px;
                     text-align:right;
                     font-weight:500;
                     &.minus {
@@ -677,6 +693,9 @@
                     margin-top:16px;
                     padding-top:16px;
                     border-top:1px solid #ddd;
+                    dt, dd {
+                        vertical-align:bottom;
+                    }
                     @include mobile {
                         padding-top:12px;
                     }
@@ -687,12 +706,38 @@
                     dd {
                         @include font-large-2;
                         font-weight:700;
+                        @include mobile {
+                            font-size:24px;
+                            line-height:32px;
+                        }
                     }
                 }
             }
         }
-        .btm_info .btn {
-            margin-top:16px;
+        .fee-txt {
+            dt {
+                color:#222;
+                @include font-medium;
+                font-weight:700;
+            }
+            dd {
+                margin-top:8px;
+                color:#222;
+                @include font-medium;
+                em {
+                    color:#EC455A;
+                }
+                small {
+                    display:block;
+                    margin-top:4px;
+                    color:#767676;
+                    @include font-small;
+                    font-weight:500;
+                }
+                .btn {
+                    margin-top:24px;
+                }
+            }
         }
         .form-wrap.mt-type {
             margin-top:40px;
