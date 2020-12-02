@@ -135,6 +135,9 @@
             .tit-wrap {
                 position:relative;
                 margin-bottom:48px;
+                &.agree{
+                    margin-bottom:17px;
+                }
                 .tit {
                     color:#222;
                     font-size:20px;
@@ -149,6 +152,16 @@
                     }
                     &-text {
                         margin-top: 12px;
+                    }
+                }
+            }
+            .agree-cont-wrap{
+                .tit-wrap{
+                    margin-bottom:0;
+                    .tit{
+                        @include font-medium;
+                        border-bottom:0;
+                        padding-bottom:0;
                     }
                 }
             }

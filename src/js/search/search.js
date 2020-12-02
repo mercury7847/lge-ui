@@ -100,7 +100,7 @@
                 var self = this;
 
                 self.setting();
-                self.updateRecentSearcheList();
+                self.updateRecentSearchList();
                 self.bindEvents();
             },
 
@@ -151,6 +151,9 @@
                 //원래입력된 기존 검색어 이동
                 self.$similarText = self.$searchSimilar.find('a.similar-text');
 
+                //배너
+                self.$searchBanner = self.$contentsSearch.find('div.search-banner');
+
                 //검색 결과 - 카테고리
                 self.$searchResultCategory = self.$contentsSearch.find('div.search-result-category');
                 //카테고리 더보기 버튼
@@ -158,6 +161,12 @@
 
                 //cont-wrap
                 self.$contWrap = self.$contentsSearch.find('div.cont-wrap');
+                //filter
+                self.$filter = self.$contWrap.find('div.lay-filter');
+                //mobile화면 하단 service link
+                self.$mobileServiceLink = self.$contWrap.find('div.mobile-service-link');
+                //추천상품 recommend-list-box
+                self.$recommendListBox = self.$contWrap.find('div.recommend-list-box');
                 //search-not-result
                 self.$searchNotResult = self.$contentsSearch.find('div.search-not-result');
 
@@ -186,6 +195,45 @@
 
             bindEvents: function() {
                 var self = this;
+
+                $('.ui_tab').on("tabbeforechange", function(e, data){
+                    //e.preventDefault();
+                    console.log(data);
+                    switch(data.selectedIndex) {
+                        case 0:
+                            //전체
+                            self.hideFilter();
+                            self.$searchResultCategory.show();
+                            self.$searchBanner.show();
+                            self.$mobileServiceLink.hide();
+                            self.$recommendListBox.hide();
+                            break;
+                        case 1:
+                            //제품/케어솔루션 setFilter 위치 옮길것
+                            self.setFilter();
+                            self.$searchResultCategory.hide();
+                            self.$searchBanner.hide();
+                            self.$mobileServiceLink.css('display', '');
+                            self.$recommendListBox.show();
+                            break;
+                        case 2:
+                            //이벤트/기획전
+                            self.setFilter();
+                            self.$searchResultCategory.hide();
+                            self.$searchBanner.hide();
+                            self.$mobileServiceLink.hide();
+                            self.$recommendListBox.hide();
+                            break;
+                        default:
+                            break;
+                    }
+                    
+                    /*
+                    if(data.selectedIndex == 0) {
+                        location.href = $(this).siblings('div.row-wrap').first().attr('data-url');
+                    }
+                    */
+                })
 
                 //검색버튼
                 self.$buttonSearch.on('click', function(e){
@@ -273,20 +321,18 @@
                     if(self.$searchResultCategory.hasClass('on')) {
                         self.$searchResultCategory.removeClass('on');
                         self.$searchResultCategoryMore.find('span').text('더보기');
-                        /*
-                        if(window.breakpoint.isMobile) {
-                            self.$searchResultCategory.find('div.inner').css('height','100px');
-                        } else {
-                            self.$searchResultCategory.find('div.inner').css('height','108px');
-                        }
-                        */
                     } else {
                         self.$searchResultCategory.addClass('on');
                         self.$searchResultCategoryMore.find('span').text('접기');
-                        /*
-                        self.$searchResultCategory.find('div.inner').css('height','auto');
-                        */
                     }
+                });
+
+                //전체검색 항목별 더보기 클릭
+                var $searchResult = self.$contWrap.find('div.search-result-wrap.all');
+                $searchResult.find('div.result-list-wrap').on('click', 'a.btn-link',function(e){
+                    e.preventDefault();
+                    var index = $(this).attr('href').replace("#", "");
+                    self.getTabItem(index).trigger('click');
                 });
             },
 
@@ -296,6 +342,20 @@
                 var searchVal = $item.attr('href').replace("#", "");
                 self.$inputSearch.val(searchVal);
                 self.$buttonSearch.trigger('click');
+            },
+
+            //필터 세팅
+            setFilter:function(data) {
+                var self = this;
+                self.$contWrap.addClass('w-filter');
+                self.$filter.css('display', '');
+            },
+
+            //필터 감추기
+            hideFilter:function() {
+                var self = this;
+                self.$contWrap.removeClass('w-filter');
+                self.$filter.hide();
             },
 
             openSearchInputLayer: function(open) {
@@ -316,6 +376,11 @@
 
             checkArrayData:function(item) {
                 return item ? (item.data instanceof Array ? item.data : []) : [];
+            },
+
+            getTabItem:function(index) {
+                var idx = parseInt(index) + 1;
+                return $('.ui_tab ul li:nth-child('+idx+') a');
             },
 
             //검색어 입력중 검색
@@ -444,10 +509,12 @@
                     */
 
                     //nodata Test
+                    /*
                     data.product = null;
                     data.event = null;
                     data.story = null;
                     data.additional = null;
+                    */
 
                     var noData = true;
 
@@ -555,7 +622,7 @@
                     searchedList.splice(findIndex, 1);
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
-                self.updateRecentSearcheList();
+                self.updateRecentSearchList();
             },
 
             //최근 검색어 추가
@@ -574,11 +641,11 @@
                     }
                     localStorage.searchedList = JSON.stringify(searchedList);
                 }
-                self.updateRecentSearcheList();
+                self.updateRecentSearchList();
             },
 
             //최근 검색어 리스트 갱신
-            updateRecentSearcheList:function() {
+            updateRecentSearchList:function() {
                 var self = this;
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 var arr = searchedList instanceof Array ? searchedList : [];

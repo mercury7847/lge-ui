@@ -12,7 +12,7 @@
         margin:0;
         border-collapse:inherit;
         border-spacing:0;
-        padding:20px;
+        padding:34px 20px;
         background:#f4f4f4;
         border-radius:4px;
     }
@@ -110,6 +110,7 @@
             padding:24px 40px;
             .inner .filter-tbl {
                 display:block;
+                position:relative;
                 > .cell {
                     display:block;
                     .btn-cell {
@@ -125,7 +126,28 @@
             }
         }
         @include mobile {
-
+            .filters {
+                padding:0;
+            }
+            .term-filter {
+                padding:24px 16px 32px;
+                .inner .filter-tbl {
+                    > .cell {
+                        .btn-cell {
+                            width:100%;
+                            margin-top:60px;
+                            .btn {
+                                min-width:68px;
+                            }
+                        }
+                    }
+                    .rdo-check {
+                        position:absolute;
+                        left:0;
+                        bottom:70px;
+                    }
+                }
+            }
         }
     }
 }
