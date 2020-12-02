@@ -110,10 +110,7 @@
                         });
                         self.$faqList.show();
                         self.$nodata.hide();
-
-                        //전체 검색수
-                        $('#totalCount').text('총 '+ vcui.number.addComma(data.listCount) +'개').show();
-
+                        $('#totalCount').show();
                     } else {
                         self.$faqList.hide();
                         self.$pagination.hide();
