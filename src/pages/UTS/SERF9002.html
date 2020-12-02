@@ -11,7 +11,7 @@
 
         <div class="container">
             <!-- 통합검색 -->
-            <div class="contents search" data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json" data-search-url="/lg5-common/data-ajax/search/search_all.json" data-url-wish="#">
+            <div class="contents search" data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json">
                 <!-- 검색 영역 -->
                 @@include('./common/modules/search.html', {
                     "value" : "노크온 매직스페이스",
@@ -24,12 +24,12 @@
                 <div class="search-tabs-wrap">
                     <div class="tabs-wrap ui_tab ui_smooth_scroll">
                         <ul class="tabs">
-                            <li class="on" data-label="전체"><a href="#all">전체(210)<em class="blind">선택됨</em></a></li>
-                            <li data-label="제품"><a href="#product" data-url-search="/lg5-common/data-ajax/search/search_product.json">제품/케어솔루션(59)</a></li>
-                            <li data-label="이벤트"><a href="#event" data-url-search="/lg5-common/data-ajax/search/search_event.json">이벤트/기획전(5)</a></li>
-                            <li data-label="스토리"><a href="#story" data-url-search="/lg5-common/data-ajax/search/search_story.json">스토리(18)</a></li>
-                            <li data-label="케어용품/소모품"><a href="#additional" data-url-search="/lg5-common/data-ajax/search/search_additional.json">케어용품/소모품(32)</a></li>
-                            <li data-label="센터/매장"><a href="#shop" data-url-search="/lg5-common/data-ajax/search/search_additional.json">센터/매장(2)</a></li>
+                            <li class="on" data-label="전체"><a href="#all" data-search-url="/lg5-common/data-ajax/search/search_all.json">전체(210)<em class="blind">선택됨</em></a></li>
+                            <li data-label="제품"><a href="#product" data-search-url="/lg5-common/data-ajax/search/search_product.json">제품/케어솔루션(59)</a></li>
+                            <li data-label="이벤트"><a href="#event" data-search-url="/lg5-common/data-ajax/search/search_event.json">이벤트/기획전(5)</a></li>
+                            <li data-label="스토리"><a href="#story" data-search-url="/lg5-common/data-ajax/search/search_story.json">스토리(18)</a></li>
+                            <li data-label="케어용품/소모품"><a href="#additional" data-search-url="/lg5-common/data-ajax/search/search_additional.json">케어용품/소모품(32)</a></li>
+                            <li data-label="센터/매장"><a href="#shop" data-search-url="/lg5-common/data-ajax/search/search_shop.json">센터/매장(2)</a></li>
                             <li data-label="고객지원"><a href="#customer">고객지원(28)</a></li>
                         </ul>
                     </div>
@@ -322,7 +322,7 @@
                     </div>
 
                     <!-- 찾으시는 제품이 없으신가요? -->
-                    <div class="recommend-list-box">
+                    <div class="recommend-list-box" style="display:none;">
                         <h3 class="title">찾으시는 제품이 없으신가요?</h3>
                         <ul class="box-list-inner">
                             <li class="lists">
@@ -358,7 +358,7 @@
 
                 </div>
                 <!-- // 검색 결과 영역 -->
-                <div class="search-not-result">
+                <div class="search-not-result" style="display:none;">
                     <div class="no-data">
                         <p>
                             <span><em>&ldquo;XLQL&rdquo;</em>에 대한 검색 결과가 없습니다</span>

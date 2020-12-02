@@ -310,7 +310,7 @@ var CareCartInfo = (function() {
             $items.each(function(idx, item){
                 submit.push({"itemID":$(item).attr('data-item-id'),"itemSeq":$(item).attr('data-item-seq')});
             });
-            lgkorUI.requestAjaxData(ajaxUrl, {"submit":submit}, function(result){
+            lgkorUI.requestAjaxData(ajaxUrl, {"submitData":JSON.stringify(submit)}, function(result){
                 var alert = result.data.alert;
                 if(alert) {
                     self.openCartAlert(alert);
@@ -351,7 +351,7 @@ var CareCartInfo = (function() {
             $items.each(function(idx, item){
                 submit.push({"itemID":$(item).attr('data-item-id'),"itemSeq":$(item).attr('data-item-seq')});
             });
-            lgkorUI.requestAjaxData(ajaxUrl, {"submit":submit}, function(result){
+            lgkorUI.requestAjaxData(ajaxUrl, {"submitData":JSON.stringify(submit)}, function(result){
                 var alert = result.data.alert;
                 if(alert) {
                     /*

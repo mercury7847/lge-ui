@@ -185,6 +185,13 @@
                 &.type3 {
                     padding-top:64px;
                 }
+                // 탭 밑에 붙을 때 type4
+                &.type4 {
+                    padding-top:24px;
+                    @include mobile {
+                        padding-top:16px;
+                    }
+                }
                 .inner-box {
                     margin-top:64px;
                     &.type2 {
@@ -318,6 +325,9 @@
 
     // 보유제품 리스트
     @import "ACCF7033";
+
+    // 배송지 주소 관리
+    @import "ACCF7009";
 
     // 쿠폰
     @import "ACCF7018";

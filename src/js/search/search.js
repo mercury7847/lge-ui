@@ -102,6 +102,9 @@
                 self.setting();
                 self.updateRecentSearchList();
                 self.bindEvents();
+                vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
+                    self.filterBindEvents();
+                });
             },
 
             setting: function() {
@@ -165,6 +168,8 @@
                 self.$filter = self.$contWrap.find('div.lay-filter');
                 //mobile화면 하단 service link
                 self.$mobileServiceLink = self.$contWrap.find('div.mobile-service-link');
+                //추천상품 recommend-list-box
+                self.$recommendListBox = self.$contWrap.find('div.recommend-list-box');
                 //search-not-result
                 self.$searchNotResult = self.$contentsSearch.find('div.search-not-result');
 
@@ -195,39 +200,36 @@
                 var self = this;
 
                 $('.ui_tab').on("tabbeforechange", function(e, data){
-                    //e.preventDefault();
-                    console.log(data);
-                    switch(data.selectedIndex) {
+                    var index = data.selectedIndex;
+                    var ajaxUrl = self.getTabItem(index).attr('data-search-url');
+                    switch(index) {
                         case 0:
                             //전체
-                            self.closeFilter();
+                            self.hideFilter();
                             self.$searchResultCategory.show();
                             self.$searchBanner.show();
                             self.$mobileServiceLink.hide();
+                            self.$recommendListBox.hide();
                             break;
                         case 1:
-                            //제품/케어솔루션
-                            self.openFilter();
+                            //제품/케어솔루션 setFilter 위치 옮길것
+                            self.setFilter();
                             self.$searchResultCategory.hide();
                             self.$searchBanner.hide();
                             self.$mobileServiceLink.css('display', '');
+                            self.$recommendListBox.show();
                             break;
                         case 2:
                             //이벤트/기획전
-                            self.openFilter();
+                            self.setFilter();
                             self.$searchResultCategory.hide();
                             self.$searchBanner.hide();
                             self.$mobileServiceLink.hide();
+                            self.$recommendListBox.hide();
                             break;
                         default:
                             break;
                     }
-                    
-                    /*
-                    if(data.selectedIndex == 0) {
-                        location.href = $(this).siblings('div.row-wrap').first().attr('data-url');
-                    }
-                    */
                 })
 
                 //검색버튼
@@ -339,15 +341,15 @@
                 self.$buttonSearch.trigger('click');
             },
 
-            //필터 오픈
-            openFilter:function(data) {
+            //필터 세팅
+            setFilter:function(data) {
                 var self = this;
                 self.$contWrap.addClass('w-filter');
                 self.$filter.css('display', '');
             },
 
-            //필터 닫기
-            closeFilter:function() {
+            //필터 감추기
+            hideFilter:function() {
                 var self = this;
                 self.$contWrap.removeClass('w-filter');
                 self.$filter.hide();
@@ -419,7 +421,7 @@
             //검색버튼 검색
             requestSearchAll:function(value, force) {
                 var self = this;
-                var ajaxUrl = self.$contentsSearch.attr('data-search-url');
+                var ajaxUrl = self.getTabItem(0).attr('data-search-url');
                 lgkorUI.requestAjaxData(ajaxUrl, {"search":value, "force":force}, function(result) {
                     self.openSearchInputLayer(false);
 
@@ -601,6 +603,8 @@
                     //최근검색어 저장
                     console.log(searchedValue);
                     self.addRecentSearcheText(searchedValue);
+
+                    self.getTabItem(0).trigger('click');
                 });
             },
 
@@ -656,7 +660,110 @@
                     //self.$recentKeywordList.hide();
                     self.$recentKeywordList.find('div.no-data').show();
                 }
-            }
+            },
+
+
+
+            ///필터 관련 메쏘드
+            filterBindEvents: function() {
+                var _self = this;
+                
+                // 필터안 슬라이더 이벤트 처리 (가격, 사이즈,..)
+                $('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged',function (e, data) {
+                    $(e.currentTarget).siblings('.min').text(vcui.number.addComma(data.minValue));
+                    $(e.currentTarget).siblings('.max').text(vcui.number.addComma(data.maxValue));
+                    if(e.type=='rangesliderchanged'){
+                        var filterId = $(e.currentTarget).data('filterId');
+                        _self.setSliderData(filterId, data);
+                    }
+                }).vcRangeSlider({mode:true});
+
+                // 아코디언 설정
+                $('.ui_order_accordion').vcAccordion();
+                $('.ui_filter_accordion').vcAccordion();
+
+                // 필터 아코디언 오픈시 슬라이더 업데이트
+                $('.ui_filter_accordion').on('accordionexpand', function(e,data){
+                    if(data.content.find('.ui_filter_slider').length > 0) {
+                        data.content.find('.ui_filter_slider').vcRangeSlider('update', true);
+                    }   
+                });
+
+                // 필터안 체크박스 이벤트 처리
+                $('.ui_filter_accordion').on('change', 'input', function(e){
+                    var name = e.target.name;
+                    var valueStr = "";
+                    $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
+                        valueStr = valueStr + item.value+','
+                    });
+                    valueStr = valueStr.replace(/,$/,'');                    
+                    if(valueStr==''){
+                        delete storageFilters[name];
+                        //lgkorUI.removeStorage(storageName, name);
+                    }else{
+                        storageFilters[name] = valueStr;
+                        //lgkorUI.setStorage(storageName, storageFilters);
+                    }
+                    _self.setApplyFilter(storageFilters);
+                });
+
+                // 모바일 필터박스 열기
+                $('div.btn-filter a').on('click', function(e){
+                    e.preventDefault();
+                    $('.lay-filter').addClass('open');
+                });
+
+                // 모바일 필터박스 닫기
+                $('.plp-filter-wrap').on('click', '.filter-close button',function(e){
+                    e.preventDefault();
+                    $('.lay-filter').removeClass('open');
+                });
+
+                // 모바일 필터박스 확인
+                $('.lay-filter').find('div.filter-btn-wrap button.ui_confirm_btn').on('click', function(e){
+                    e.preventDefault();
+                    $('.lay-filter').removeClass('open');
+                    _self.requestSearchProduct(searchedValue);
+                });
+
+                // 초기화버튼 이벤트 처리
+                $('.lay-filter').find('div.plp-filter-wrap div.btn-reset button').on('click', function(){
+                    _self.reset();
+                    $('.lay-filter').removeClass('open');
+                });
+
+                $('.ui_reset_btn').on('click', function(){
+                    _self.reset();
+                    $('.lay-filter').removeClass('open');
+                });
+
+                //품절상품 확인
+                $('div.check-soldout span.chk-wrap').on('change', 'input[type="checkbox"]', function(e){
+                    e.preventDefault();
+                    _self.requestSearchProduct(searchedValue);
+                });
+
+                // 필터의 정렬 선택시 리스트의 정렬값도 선택하게 함
+                //$('input[name="sorting"]').on('change', function(e){
+                $('.lay-filter').find('div.list-acco-sorting ul li div.ui_accord_content div.cont').on('change', 'input[name="sorting"]',function(e){
+                    e.preventDefault();
+                    var idx = $('input[name="sorting"]').index(this);
+                    var $target = $('#'+selectedTab).find('div.list-sorting').find('.ui_selectbox');
+                    $target.vcSelectbox('selectedIndex', idx, false);
+                    _self.setApplyFilter(storageFilters);
+                });
+
+                //리스트 정렬 선택시 필터의 정렬 값도 선택하게함
+                $('div.list-sorting').find('.ui_selectbox').on('change', function(e,data){
+                    var value = e.target.value;
+                    $('input[name="sorting"][value="'+ value +'"]').prop('checked', true);
+                    if(selectedTab == 'customer') {
+                        _self.requestCustomerSearch(searchedValue);
+                    } else {
+                        _self.requestSearchProduct(searchedValue);
+                    }
+                });
+            },
         }
 
         intergratedSearch.init();
