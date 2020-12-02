@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "영수증 등록"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "on", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문 알리미" }
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <!-- 상세 -->
+                            <div class="section-wrap">
+                                <!-- 조회기간 -->
+                                <div class="sects rdo-type2">
+                                    <div class="filters">
+                                        <!-- filter -->
+                                        @@include('./common/modules/mem-filter.html', {
+                                            "tabType" : true,
+                                            "wrapTit" : "조회기간",
+                                            "datepicker" : true,
+                                            "rdoCheck" : true,
+                                            "list" : [
+                                                { "id" : "rdk-cehck1-1", "name" : "rdk-check1",  "label" : "전체", "checked": "checked"},
+                                                { "id" : "rdk-cehck1-2", "name" : "rdk-check1",  "label" : "적립"},
+                                                { "id" : "rdk-cehck1-3", "name" : "rdk-check1",  "label" : "사용"}
+                                            ]
+                                        })
+                                        <!-- // filter -->
+                                    </div>
+                                </div>
+                                <!-- // 조회기간 -->
+                            </div>
+                            <!-- // 상세 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>
