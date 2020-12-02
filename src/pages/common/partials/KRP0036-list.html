@@ -1,0 +1,36 @@
+
+	
+	
+		
+
+		<li class="items">
+			<div class="item-inner">
+				<div class="thumb">
+					<img src='/lg5-common/images/KRP0036/@img-list.jpg' alt="">
+					<p class="hidden pc">graphic description : </p>
+					<p class="hidden mobile">graphic description : </p>
+				</div>
+				<div class="item-info">
+					@@if (context.flags) {
+					<div class="flag-wrap bar-type">
+						@@for ( var i=0; i < flags.length; i++ ) {
+						<span class="flag">`+flags[i]+`</span>
+						}
+					</div>
+					}
+					<p class="tit">LG 디오스 식기세척기, 관절과 근육의 피로나 통증 LG 디오스 LG 디오스 LG 디오스 LG 디오스</p>
+					<p class="desc">공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과 공간과 하고 공간과 하고 공간과 시간의 제약에서 벗어난 공간과</p>
+					@@if (context.hashtag) {
+					<div class="hashtag-wrap">
+						@@for ( var i=0; i < hashtag.length; i++ ) {
+							<span class="hashtag">`+hashtag[i]+`</span>
+							}
+					</div>
+					}
+					@@if (context.date) {
+					<p class="date">2020.08.01</p>
+					}
+				</div>
+			</div>
+		</li>
+
