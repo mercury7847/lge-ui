@@ -1,13 +1,10 @@
 .point-use-list {
-    margin:32px 0 0;
-    padding:24px 0;
-    border-top:1px solid #616161;
-    border-bottom:1px solid #616161;
+    margin-top:24px;
     font-size:16px;
-    line-height:24px;
-    font-weight:500;
+    line-height:26px;
     @include mobile {
-        line-height:19px;
+        font-size:14px;
+        line-height:22px;
         border-bottom-color:#ddd;
     }
     .lists {
@@ -15,28 +12,37 @@
             display:table;
             table-layout:fixed;
             width:100%;
-            margin-top:4px;
-            padding:0 16px;
+            margin-top:8px;
             @include mobile {
                 margin-top:16px;
             }
             &:first-child {
                 margin-top:0;
             }
-            p {
+            > p {
                 display:table-cell;
+                padding-right:24px;
                 vertical-align:middle;
                 &.date {
-                    width:122px;
+                    width:21%;
+                    color:#767676;
+                    @include mobile {
+                        color:#222;
+                    }
                 }
                 &.desc {
                     width:auto;
                     text-align:left;
+                    @include mobile {
+                        margin-top:0;
+                    }
                 }
                 &.point {
-                    min-width:112px;
+                    width:20%;
+                    padding:0;
                     text-align:right;
                     @include mobile {
+                        margin-top:4px;
                         span {
                             float:left;
                             width:50%;
@@ -49,7 +55,7 @@
                         display:none;
                         @include mobile {
                             display:block;
-                            color:#616161;
+                            color:#767676;
                             text-align:left;
                         }
                     }
@@ -68,9 +74,9 @@
     }
     dl.total {
         @include clearfix;
-        padding:20px 16px 0;
+        padding-top:24px;
         @include mobile {
-            padding-top:32px;
+            padding-top:20px;
         }
         dt, dd {
             float:left;

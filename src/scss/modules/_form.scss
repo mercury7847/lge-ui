@@ -1689,7 +1689,7 @@ $input: (chk, rdo);
             display:block;
             position:relative;
             padding:10px 15px;
-            padding-right:39px;
+            padding-right:47px;
             border:1px solid #ddd;
             border-radius:8px;
             background:#fff;
@@ -1714,13 +1714,11 @@ $input: (chk, rdo);
             .ico {
                 position:absolute;
                 top:50%;
-                right:22px;
-                width:0;
-                height:0;
-                margin-top:-3px;
-                border-top:6px solid #222;
-                border-left:5px solid transparent;
-                border-right:5px solid transparent;
+                right:16px;
+                width:24px;
+                height:24px;
+                margin-top:-12px;
+                background: url('/lg5-common/images/icons/icon-triangle-24.svg') no-repeat 0 0;
                 transition:all 0.3s;
                 @include mobile {
                     right:19px;

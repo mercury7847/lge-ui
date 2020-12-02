@@ -11,13 +11,15 @@
         @@include('./common/header.html')
 
         <div class="container">
-            @@include('./common/support/page-visual.html', {
-                'title': '칭찬합니다'
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '칭찬합니다',
+                'pageDesc': '칭찬이나 고마운 마음을 전하실 수 있습니다.'
             })
             <div class="contents support suggestions">
                 <div class="cont-wrap">
 
                     <form action="/html/support/CSTF6010.html" data-ajax="/lg5-common/data-ajax/support/save.json" method="post" id="submitForm" autocomplete="off">
+                        <!--
                         <div class="process-wrap">
                             <ol class="process-list">
                                 <li>
@@ -58,6 +60,7 @@
                                 <p class="err-msg agree-err-msg"></p>
                             </div>
                         </div>
+                        -->
 
                         <div class="section">
                             <div class="tit-wrap">
@@ -228,7 +231,8 @@
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" class="ui_textcontrol" name="title" id="input-title" placeholder="제목을 입력해주세요." maxlength="100" data-limit="100" data-count-target="#txt-count" data-required="true" data-msg-target=".err-msg" required="" ui-modules="TextControl">
+                                            <input type="text" class="ui_textcontrol" name="title" id="input-title" placeholder="제목을 입력해주세요." maxlength="100" data-limit="100" data-count-target="#txt-count1" data-required="true" data-msg-target=".err-msg" required>
+                                            <span id="txt-count1" class="cell total"><em>0</em> / 100</span>
                                             <p class="err-msg"></p>
                                         </div>
                                     </div>
