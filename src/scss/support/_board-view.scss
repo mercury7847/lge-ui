@@ -83,8 +83,8 @@
                     background-color: #f4f4f4;
                     margin-bottom: 40px;
                     @include mobile {
-                        padding: 32px 16px;
-                        margin: 0 -16px 20px;
+                        padding: 32px 16px 60px;
+                        margin: 0 -16px 40px;
                     }
                     .video-box {
                         @include clearfix;
