@@ -73,9 +73,64 @@
             line-height:22px;
         }
     }
+    // 중간사이즈 버튼
+    &.size-m {
+        min-width:64px;
+        padding: 6px 16px;
+        border-radius:16px;
+        @include font-small;
+        @include mobile {
+            font-size:14px;
+            line-height:22px;
+        }
+        
+    }
     &.block {
         display: block;
         width: 100%;
+    }
+    &.border {
+        position: relative;
+        &.arrow {
+            padding-right: 40px;
+            &:after {
+                content: '';
+                position:absolute;
+                right:16px;
+                top:50%;
+                width:20px;
+                height:20px;
+                margin-top: -8px;
+                //transform: translateY(-50%);
+                background:url("/lg5-common/images/icons/btn-arrow-right-40.svg") center no-repeat;
+                background-size: 20px 20px;
+            }
+            &:hover {
+                background:#fff;
+                border-color:#222;
+                color:#222;
+            }
+        }
+        &.plus {
+            padding-right: 44px;
+            &:after {
+                content: '';
+                position:absolute;
+                right:16px;
+                top:50%;
+                width:20px;
+                height:20px;
+                //margin-top: -8px;
+                transform: translateY(-50%);
+                background:url("/lg5-common/images/icons/icon-plus-40.svg") center no-repeat;
+                background-size: 20px 20px;
+            }
+            &:hover {
+                background:#fff;
+                border-color:#222;
+                color:#222;
+            }
+        }
     }
 }
 
