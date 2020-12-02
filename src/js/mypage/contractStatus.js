@@ -4,6 +4,7 @@
     var METHOD_CARD = "CARD";
     var METHOD_BANK = "BANK";
 
+    var CONTRACT_INFO;
     var INFO_MODIFY_CONFIRM;
     var INFO_MODIFY_SAVE;
     var PAYMENT_METHOD_CONFIRM;
@@ -26,15 +27,18 @@
 
     var cardIssueValidation;
 
+    var txtMasking;
+
     function init(){
         console.log("contractStatus start!!");
 
+        CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
         INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
         INFO_MODIFY_SAVE = $('.contents.mypage').data('modifySaveUrl');
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
         ARS_AGREE_URL = $('.contents.mypage').data('arsAgreeUrl');
     
-        vcui.require(['ui/modal', 'ui/validation', 'ui/formatter', 'ui/tab'], function () {             
+        vcui.require(['ui/modal', 'ui/validation', 'ui/formatter', 'ui/tab', 'helper/textMasking'], function () {             
             setting();
             bindEvents();
         });
@@ -118,6 +122,8 @@
         paymentModeIndex = $('.mypage .section-wrap .sects.payment.modify .ui_tab ul li[class=on]').index();
 
         cardIssueValidation = new vcui.ui.Validation($('#popup-cardIssue'));
+
+        txtMasking = new vcui.helper.TextMasking();
     }
 
     function bindEvents(){
@@ -164,12 +170,20 @@
             savePaymentInfoOk();
         });
 
-        $('.mypage .contract-btn').on('click', function(e){
+        $('.mypage').on('click', '.contract-btn', function(e){
+            e.preventDefault();
             $('#popup-contractIssue').vcModal();
-        });
-
-        $('.mypage .requestCard-btn').on('click', function(e){
+        }).on('click', '.requestCard-btn', function(e){
+            e.preventDefault();
             $('#popup-cardIssue').vcModal();
+        }).on('click', '.paymenyList-btn', function(e){
+            e.preventDefault();
+
+            console.log("납부내역 조회");
+        }).on('click', '.cancelConsult-btn', function(e){
+            e.preventDefault();
+
+            console.log("해지상담 신청");
         });
 
         $('#popup-cardIssue').on('click', '.requestIssue-btn', function(e){
@@ -185,6 +199,11 @@
             paymentModifyBlock.find('input[name=selfClearingAgree]').prop('checked', chk);
 
             if(chk) $('#popup-selfClearing').vcModal('close');
+        });
+
+        $('select[name=contractInfo]').on('change', function(e, data){
+            var info = $(this).find('option').eq(data.selectedIndex).val().split("|");
+            changeContractInfo(info);
         });
     }
 
@@ -384,6 +403,104 @@
 
             return;
         }
+    }
+
+    function changeFieldValue(gname, data){
+        for(var key in data){
+            $("."+gname).find('ul li[class=' + key + '] dd').empty().html(data[key]);
+        }
+    }
+
+    function setContractInfo(data){
+        var info;
+
+        info = getMaskingData(data.userInfo.user);
+        changeFieldValue('user-info', info);
+
+        info = getMaskingData(data.userInfo.actualUser);
+        changeFieldValue('actual-info', info);
+
+        data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span><a href='#n' class='btn-link cancelConsult-btn'>해지상담 신청</a>";
+        changeFieldValue('contract-info', data.contractInfo);
+
+        info = {
+            monthlyPrice: "<span>" + data.paymentInfo.monthlyPrice + "</span><a href='#n' class='btn-link paymenyList-btn'>납부내역 조회</a>",
+            withdrawDate: data.paymentInfo.withdrawDate
+        }
+        if(data.paymentInfo.paymentMethod == METHOD_CARD){
+            paymentModeIndex = 0;
+
+            info.paymentMethod = "신용카드"
+            info.methodName =  "<span>" + data.paymentInfo.cardInfo.cardComName + "</span><a href='#n' class='btn-link requestCard-btn'>제휴카드 신청</a>";
+            info.methodNumber = txtMasking.card(data.paymentInfo.cardInfo.cardNumber);
+        } else{
+            paymentModeIndex = 1;
+
+            info.paymentMethod = "계좌이체"
+            info.methodName =  data.paymentInfo.bankInfo.bankName;
+            info.methodNumber = txtMasking.substr(data.paymentInfo.bankInfo.bankNumber, 4);
+        }
+        changeFieldValue('payment-info', info);
+
+        changeFieldValue('manager-info', data.managerInfo);
+              
+        userInfo = {
+            userName: data.userInfo.user.name,
+            userPhone: data.userInfo.user.phoneNumber,
+            userTelephone: data.userInfo.user.telephoneNumber,
+            userEmail: data.userInfo.user.email,
+            userAdress: data.userInfo.user.adress,
+            actualUserName: data.userInfo.actualUser.name,
+            actualUserPhone: data.userInfo.actualUser.phoneNumber,
+            actualUserTelephone: data.userInfo.actualUser.telephoneNumber,
+            actualUserAdress: data.userInfo.actualUser.adress
+        }
+        userInfoValidation.setValues(userInfo);
+
+        cardInfo = {
+            paymentCard: data.paymentInfo.cardInfo.cardComValue,
+            paymentCardNumber: data.paymentInfo.cardInfo.cardNumber,
+            paymentCardPeriod: data.paymentInfo.cardInfo.cardPeriod
+        }
+        cardValidation.setValues(cardInfo);
+
+        bankInfo = {
+            paymentBank: data.paymentInfo.bankInfo.bankValue,
+            paymentBankNumber: data.paymentInfo.bankInfo.bankNumber,
+            paymentUserName: data.paymentInfo.bankInfo.bankUser
+        }
+        bankValidation.setValues(cardInfo);
+
+        $('.mypage .section-wrap .sects.payment.modify .ui_tab').vcTab('select', paymentModeIndex);
+    }
+
+    function getMaskingData(data){
+        var newdata = {};
+        for(var key in data){
+            if(key == "name") newdata[key] = txtMasking.name(data[key]);
+            else if(key == "email") newdata[key] = txtMasking.email(data[key]);
+            else if(key == "adress") newdata[key] = txtMasking.substr(data[key], 20);
+            else newdata[key] = txtMasking.phone(data[key]);
+        }
+
+        return newdata;
+    }
+
+    function changeContractInfo(info){
+        lgkorUI.showLoading();
+
+        saveUserInfoCancel();
+        savePaymentInfoCancel();
+
+        var sendata = {
+            modelID: info[0],
+            contractID: info[1]
+        }
+        lgkorUI.requestAjaxData(CONTRACT_INFO, sendata, function(result){
+            setContractInfo(result.data);
+
+            lgkorUI.hideLoading();
+        });
     }
 
     function setHiddenData(iptname, value){

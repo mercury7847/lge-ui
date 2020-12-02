@@ -214,6 +214,45 @@
             </div>
         </div>
         }
+        <!-- 기획전 상품리스트 -->
+        @@if (context.eventItem) {
+        <div class="product-bottom">
+            @@if (context.eventItem.benefit) {
+            <div class="flag-wrap bar-type">
+                @@for ( var i=0; i < eventItem.benefit.length; i++ ) {
+                <span class="flag">`+eventItem.benefit[i]+`</span>
+                }
+            </div>
+            }
+            @@if (context.eventItem.price) {
+            <div class="price-area">
+                @@if (context.eventItem.originalPrice) {
+                <div class="original">
+                    <em class="blind">판매가격</em>
+                    <span class="price">5,200,000<em>원</em></span>
+                </div>
+                }
+                <div class="total">
+                    <em class="blind">총 판매가격</em>
+                    <span class="price">4,420,000<em>원</em></span>
+                </div>
+                @@if (context.eventItem.discount) {
+                    <em class="blind">할인율</em>
+                    <span class="discount">10%</span>
+                }
+            </div>
+            }
+            <div class="btn-area-wrap">
+                <div class="cart">
+                    <!-- 비활성화 시 .disabled 추가 -->
+                    <a href="#n" class="btn-cart"><span class="blind">장바구니 담기</span></a>
+                </div>
+                <div class="btn-area">
+                    <a href="#n" class="btn border">@@eventItem.button</a>
+                </div>
+            </div>
+        </div>
+        }
         @@if (context.compare) {
         <div class="product-compare">
             @@compare
