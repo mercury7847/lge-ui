@@ -13,60 +13,66 @@
             <!-- 매출전표 -->
             <div class="section-wrap window-pops">
                 <div class="sects">
+                    <div class="tit-wrap">
+                        <h2 class="tit">현금영수증 [소득공제용]</h2>
+                        <div class="flt-cont">
+                            <div class="sort-select-wrap">
+                                <select class="ui_selectbox" id="select1" title="현금영수증 기준 선택">
+                                    <option value="">승인</option>
+                                </select>
+                            </div> 
+                        </div>
+                    </div>
                     <div class="section-inner">
                         <div class="inner-box">
-                            <p class="inner-tit">주문 정보</p>
+                            <p class="inner-tit">결제 정보</p>
                             @@include('./common/modules/dl-infolist.html', {
                                 "list" : [
-                                    { "dt" : "주문번호 / ORDER NO.", "dd" : "7202004162872204" },
-                                    { "dt" : "카드종류 / CARD TYPE", "dd" : "국민카드" },
-                                    { "dt" : "카드번호 / CARD NO.", "dd" : "************4072" },
-                                    { "dt" : "유효기간 / EXPIRY", "dd" : "****" },
-                                    { "dt" : "구매자명 / CUST NAME", "dd" : "이*어" },
-                                    { "dt" : "거래일시 / TRANS DATE&TIME", "dd" : "2020/02/16 15:49:35" },
-                                    { "dt" : "거래취소일 / CANCLE DATE&TIME", "dd" : "" },
-                                    { "dt" : "할부 / INSTALLMENT", "dd" : "일시불" },
-                                    { "dt" : "거래상태 / TRAMS STATUS", "dd" : "승인완료" },
-                                    { "dt" : "승인번호 / APPROVAL NO.", "dd" : "4167535486351328" },
-                                    { "dt" : "상품정보", "dd" : "LG 퓨리케어 냉온정수기" },
+                                    { "dt" : "결제 수단", "dd" : "가상계좌" },
+                                    { "dt" : "현금영수증번호", "dd" : "010-****-0516" },
+                                    { "dt" : "주문자", "dd" : "홍*동" },
+                                    { "dt" : "상품명", "dd" : "[테스트상품]" },
+                                    { "dt" : "거래일", "dd" : "2020.11.17" },
+                                    { "dt" : "승인번호", "dd" : "G465484321" },
                                 ]
                             })
                         </div>
 
                         <div class="inner-box">
-                            <p class="inner-tit">결제 금액 정보</p>
+                            <p class="inner-tit">현금영수증 가맹점 정보</p>
                             @@include('./common/modules/dl-infolist.html', {
                                 "list" : [
-                                    { "dt" : "과세 금액 / Taxable", "dd" : "&#92;2,773" },
-                                    { "dt" : "부가세 / VAT", "dd" : "&#92;277" },
-                                    { "dt" : "합계 / TOTAL", "dd" : "&#92;3,050" },
-                                    { "dt" : "결제금액", "dd" : "&#92;3,050" },
+                                    { "dt" : "상호", "dd" : "LG전자(주)" },
+                                    { "dt" : "대표자", "dd" : "조성진, 정도현" },
+                                    { "dt" : "사업자등록번호", "dd" : "107-86-14075" },
+                                    { "dt" : "전화번호", "dd" : "080-852-5550" },
                                 ]
                             })
                         </div>
 
                         <div class="inner-box">
-                            <p class="inner-tit">판매자 정보</p>
-                            @@include('./common/modules/dl-infolist.html', {
-                                "list" : [
-                                    { "dt" : "상점명 / SUBMERCHANT NAME", "dd" : "(주)엘지전자" },
-                                    { "dt" : "사업자등록번호 / BUSINESS NO.", "dd" : "*******-*******" },
-                                    { "dt" : "대표자 / MASTER", "dd" : "이엘지" },
-                                    { "dt" : "판매자 연락처 / HELP DESK", "dd" : "Tel. 070-****-****" },
-                                    { "dt" : "판매자 주소 / ADDRESS", "dd" : "서울특별시 영등포구 여의대로 128 LG트윈타워" },
-                                ]
-                            })
-                        </div>
-
-                        <div class="inner-box">
-                            <p class="inner-tit">가맹점 정보</p>
-                            @@include('./common/modules/dl-infolist.html', {
-                                "list" : [
-                                    { "dt" : "가맹점명 / MERCHANT NAME", "dd" : "(주)LG CNS" },
-                                    { "dt" : "가맹점번호 / MERCHANT NO.", "dd" : "116-81-19477" },
-                                    { "dt" : "대표자명 / MASTER", "dd" : "김명섭" },
-                                    { "dt" : "승인 관련 문의 / HELP DESK", "dd" : "02-3773-1114" },
-                                    { "dt" : "가맹점 주소 / ADDRESS", "dd" : "서울특별시 강서구 마곡중앙8로 71" },
+                            <div class="fee-info-wrap">
+                                <dl>
+                                    <dt>금액</dt>
+                                    <dd>909원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>부가세</dt>
+                                    <dd>91원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>봉사료</dt>
+                                    <dd>0원</dd>
+                                </dl>
+                                <dl class="total">
+                                    <dt>합계</dt>
+                                    <dd>1,000원</dd>
+                                </dl>
+                            </div>
+                            @@include('./common/modules/bullet-list.html', {
+                                "bulletTxt" : [
+                                    "본 영수증은 조세특례제한법 제 126조의 3 및 동법시행령 제 121조의 3 규정에 의거, 연말정산 시 소득공제 혜택 부여의 목적으로 발행됩니다.",
+                                    "현금거래 완료건에 대한 국세청의 검증 소유기간은 2일이며 결제하신 다음날 검증이 완료된 현금영수증을 발급받을 수 있습니다."
                                 ]
                             })
                         </div>
@@ -77,7 +83,8 @@
         </section>
         <footer class="pop-footer center">
             <div class="btn-group">
-                <button type="button" class="btn pink"><span>닫기</span></button>
+                <button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
+                <button type="button" class="btn pink"><span>인쇄</span></button>
             </div>
         </footer>
         <button type="button" class="win-btn-close ui_modal_close"><span class="blind">닫기</span></button>

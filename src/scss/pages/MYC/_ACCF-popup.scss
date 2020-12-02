@@ -288,6 +288,68 @@
             }
         }
     }
+
+    .fee-info-wrap {
+        padding:32px;
+        border-radius:8px;
+        background:#f4f4f4;
+        @include mobile {
+            padding:24px 20px;
+        }
+        dl {
+            display:table;
+            width:100%;
+            margin-top:12px;
+            @include mobile {
+                margin-top:8px;
+            }
+            &:first-child {
+                margin-top:0;
+            }
+            dt, dd {
+                display:table-cell;
+                @include font-medium;
+                vertical-align:middle;
+            }
+            dt {
+                padding-right:24px;
+                color:#767676;
+                text-align:left;
+                word-break:keep-all;
+            }
+            dd {
+                min-width:97px;
+                text-align:right;
+                font-weight:500;
+                &.minus {
+                    color:#F04E3E;
+                }
+            }
+            &.total {
+                margin-top:16px;
+                padding-top:16px;
+                border-top:1px solid #ddd;
+                dt, dd {
+                    vertical-align:bottom;
+                }
+                @include mobile {
+                    padding-top:12px;
+                }
+                dt {
+                    color:#222;
+                    font-weight:500;
+                }
+                dd {
+                    @include font-large-2;
+                    font-weight:700;
+                    @include mobile {
+                        font-size:24px;
+                        line-height:32px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 &.pop-conts {
