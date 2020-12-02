@@ -194,6 +194,7 @@ var res = {
 					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=no",""],
 					"현금영수증 팝업" : ["/html/MYC/ACCF7107.html","_blank:width=912,height=760,scrollbars=no",""],
 					"배송지 주소 관리" : ["/html/MYC/ACCF7009.html","","진행중"],
+					"배송지 주소 관리 팝업" : ["/html/MYC/ACCF7009_popup.html","","진행중"],
 					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
 				},
 				"케어솔루션" : {
