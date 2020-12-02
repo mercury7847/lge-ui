@@ -359,3 +359,35 @@
         }
     }
 }
+
+// 쿠폰 상세보기
+.coupon-info-moreview {
+    padding:24px;
+    border-radius:8px;
+    background:#f4f4f4;
+    .title {
+        padding-bottom:8px;
+        border-bottom:1px solid #ddd;
+        color:#222;
+        @include font-small;
+    }
+    .desc {
+        margin-top:20px;
+        color:#222;
+        @include font-medium;
+        em {
+            margin-right:4px;
+            @include font-large-3;
+            font-weight:700;
+        }
+    }
+    .info {
+        margin-top:12px;
+        color:#767676;
+        font-weight:500;
+        @include font-small;
+        & + .info {
+            margin-top:0;
+        }
+    }
+}

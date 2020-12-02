@@ -3,7 +3,8 @@
 @@include('./common/head.html', {
     "pageCSS": [
         "support/support",
-        "support/reservation"
+        "support/reservation",
+        "support/custom-voice"
     ]
 })
 <body>
@@ -25,7 +26,7 @@
                     <form action="/html/support/CSTF4010.html" id="submitForm" autocomplete="off">
 
                         <div class="section">
-                            <div class="tit-wrap-agree">
+                            <div class="tit-wrap">
                                 <h2 class="tit">약관 동의 후에 제품 선택</h2>
                             </div>
                             <div class="agree-cont-wrap">
@@ -48,7 +49,7 @@
                                 </div>
                                 <div class="agree-input">
                                     <span class="chk-wrap">
-                                        <input type="checkbox" id="chk1-1" name="agreechker-privacy" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다.">
+                                        <input type="checkbox" id="chk1-1" name="agreechker-privacy" data-required="false" data-msg-target=".err-msg" data-error-msg="개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다." required>
                                         <label for="chk1-1">동의합니다. (동의해야만 신청이 가능합니다.)</label>
                                         <p class="err-msg"></p>
                                     </span>
@@ -69,7 +70,7 @@
                                 <div class="agree-input">
                                     <span class="chk-wrap">
                                         <input type="checkbox" id="chk1-2" name="agreechker-privacy">
-                                        <label for="chk1-2">동의합니다. (동의해야만 신청이 가능합니다.)</label>
+                                        <label for="chk1-2">동의합니다.</label>
                                     </span>
                                 </div>
                             </div>
@@ -107,5 +108,6 @@
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
     <script src="/lg5-common/js/support/reservation/reservation.min.js"></script>
+    <script src="/lg5-common/js/support/customVoice/customVoice.min.js"></script>
 </body>
 </html> 

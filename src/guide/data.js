@@ -102,6 +102,8 @@ var res = {
 			"KRP0034_Tag_List" : ["/html/components/KRP0034.html","","진행중"],
 			"KRP0035_Recommend_Story_by_Tag" : ["/html/components/KRP0035.html","","진행중"],
 			"KRP0036_Story_List" : ["/html/components/KRP0036.html","","진행중"],
+			"KRP0037_Story_Video_Campaing_List" : ["/html/components/KRP0037.html","","진행중"],
+			"KRP0038_Awards_Breakdown" : ["/html/components/KRP0038.html","","진행중"],
 			"KRP0042_Consumables Search" : ["/html/components/KRP0042.html","","진행중"],
 			"KRP0041_Social_Review" : ["/html/components/KRP0041.html","","진행중"],
 			"KRP0043_Substitutes&related General Products" : ["/html/components/KRP0043.html","","진행중"],
@@ -196,6 +198,7 @@ var res = {
 					"배송지 주소 관리" : ["/html/MYC/ACCF7009.html","","진행중"],
 					"배송지 주소 관리 팝업" : ["/html/MYC/ACCF7009_popup.html","","진행중"],
 					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
+					"쿠폰 상세보기 팝업" : ["/html/MYC/ACCF7018_popup.html","","진행중"],
 				},
 				"케어솔루션" : {
 					"계약현황" : ["/html/MYC/ACCF7025.html","","검수완료"],
