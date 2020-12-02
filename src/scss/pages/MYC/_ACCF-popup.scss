@@ -291,7 +291,9 @@
 }
 
 &.pop-conts {
-    .tabs-wrap {
-        margin:0 -16px;
+    @include mobile {
+        .tabs-wrap {
+            margin:0 -16px;
+        }
     }
 }
