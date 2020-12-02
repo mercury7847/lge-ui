@@ -190,9 +190,11 @@ var res = {
 					"주문/배송 조회(케어솔루션 청약 리스트)" : ["/html/MYC/ACCF7024.html","","진행중"],
 					"케어솔루션 청약 상세보기" : ["/html/MYC/ACCF7065.html","","진행중"],
 					"주문/배송(구매, 청약) 화면 내 팝업" : ["/html/MYC/ACCF7002_popup.html","","진행중"],
+					"거래영수증 팝업" : ["/html/MYC/ACCF7105.html","_blank:width=912,height=760,scrollbars=no",""],
+					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=no",""],
+					"현금영수증 팝업" : ["/html/MYC/ACCF7107.html","_blank:width=912,height=760,scrollbars=no",""],
 				},
 				"케어솔루션" : {
-					// "월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
 					"계약현황" : ["/html/MYC/ACCF7025.html","","검수완료"],
 					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","검수완료"],
 					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","검수완료"],

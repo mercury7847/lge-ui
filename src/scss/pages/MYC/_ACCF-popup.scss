@@ -239,3 +239,59 @@
         }
     }
 }
+
+// 거래영수증
+.h2-tbl-tit {
+    margin-bottom:12px;
+    color:#222;
+    @include font-small;
+}
+.lg-comp-infos {
+    margin-top:48px;
+    @include mobile {
+        margin-top:40px;
+    }
+    .logos {
+        img {
+            width:87px;
+            height:auto;
+            vertical-align:top;
+        }
+    }
+    ul {
+        margin-top:16px;
+        li {
+            margin-top:2px;
+            color:#767676;
+            @include font-small;
+            font-weight:500;
+            &:first-child {
+                margin-top:0;
+            }
+        }
+    }
+}
+
+// 신용카드 매출전표
+.window-pops {
+    .sects .section-inner .dl-infolist-wrap .lists li dl {
+        dt {
+            width:43%;
+            @include mobile {
+                width:35%;
+            }
+        }
+        dd {
+            width:57%;
+            @include mobile {
+                width:65%;
+            }
+        }
+    }
+}
+
+&.pop-conts {
+    .tabs-wrap {
+        margin:0 -16px;
+    }
+}
