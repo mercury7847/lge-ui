@@ -80,12 +80,18 @@
                 var _self = this;
                 
                 _self.$searchWrap.find('.btn-search').on('click', function() {
-                    _self.params = $.extend({}, _self.params, {
-                        'keyword': _self.$searchWrap.find('#keyword').val(),
-                        'page': 1
-                    });
-                    
-                    _self.searchList();
+                    var val = _self.$searchWrap.find('#keyword').val();
+
+                    if (val.length > 1) {
+                        _self.params = $.extend({}, _self.params, {
+                            'keyword': _self.$searchWrap.find('#keyword').val(),
+                            'page': 1
+                        });
+                        
+                        _self.searchList();
+                    } else {
+                        
+                    }
                 });
 
                 _self.$sortSelect.on('change', function() {
