@@ -77,7 +77,6 @@
         }
     }
 
-    // 삭제예정
     &.btn-type {
         .tabs {
             display:inline-block;
@@ -94,14 +93,12 @@
                     padding:6px 12px;
                     border-radius:18px;
                     background-color:transparent;
-                    font-size:16px;
-                    font-weight:500;
-                    line-height:24px;
+                    font-size:22px;
+                    font-weight:700;
+                    line-height:30px;
                 }
                 &.on > a {
                     color:#222;
-                    line-height:23px;
-                    font-weight:700;
                     background-color:#f4f4f4;
                 }
             }
@@ -109,8 +106,10 @@
                 >li {
                     margin-left:0;
                     > a {
-                        padding:8px 18px;
+                        padding:5px 14px;
                         border-radius:20px;
+                        font-size:18px;
+                        line-height:26px;
                     }
                 }
             }

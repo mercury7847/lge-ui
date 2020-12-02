@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    componentID: "KRP0036",
+    isJScompile: true
+})
+<body>
+    <div class="wrap">
+        <div class="container">
+            <div class="component-wrap zero-top zero-btm">
+                <section class="component KRP0036">
+                    <div class="component-inner">
+                        <!--
+                            [component-wrap 옵션]
+                            1. 여백
+                            .zero-top : 상단여백 없음
+                            .zero-btm : 하단여백 없음
+                        -->
+                        <!-- tab -->
+                        <div class="story-tabs-wrap">
+                            <div class="tabs-wrap btn-type ui_tab ui_smooth_scroll">
+                                <ul class="tabs">
+                                    <li class="on"><a href="#n">전체<em class="blind">선택됨</em></a></li>
+                                    <li><a href="#n">TV/AV</a></li>
+                                    <li><a href="#n">IT</a></li>
+                                    <li><a href="#n">주방가전</a></li>
+                                    <li><a href="#n">생활가전</a></li>
+                                    <li><a href="#n">에어컨/에어케어</a></li>
+                                    <li><a href="#n">모바일</a></li>
+                                    <li><a href="#n">케어솔루션</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- // tab -->
+                        <!-- component KRP0036-carousel -->
+                        @@include('./common/partials/KRP0036-carousel.html')
+                        <!-- //component KRP0036-carousel -->
+
+                        <div class="story-list-wrap">
+                            @@include('./common/modules/list-sorting.html', {
+                                "select" : [
+                                    {"option" : "인기순"},
+                                    {"option" : "최신순"}
+                                ]
+                            })
+                            <div class="story-list">
+
+                                <ul class="story-box">
+                                @@loop('./common/partials/KRP0036-list.html', [
+                                    {
+                                    "flags" : ["뉴스구분값"],
+                                    "hashtag" : ["#건강관리", "#가을"],
+                                    "date" : true
+                                    }, 
+                                    {
+                                    "flags" : ["뉴스구분값"],
+                                    "hashtag" : ["#건강관리", "#가을"],
+                                    "date" : true
+                                    },
+                                    {
+                                    "flags" : ["뉴스구분값"],
+                                    "hashtag" : ["#건강관리", "#가을"],
+                                    "date" : true
+                                    }, 
+                                    {
+                                    "flags" : ["뉴스구분값"],
+                                    "hashtag" : ["#건강관리", "#가을"],
+                                    "date" : true
+                                    }
+                                ])
+                                </ul>
+                                @@include('./common/support/pagination.html', {
+                                    count: 5
+                                })
+                            </div>
+                            
+                        </div>
+                    </div>
+                </section>
+            </div>
+		</div>
+    </div>
+</body>
+</html>

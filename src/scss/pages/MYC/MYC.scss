@@ -71,9 +71,13 @@
             .filters {
                 margin:64px 0 48px;
                 @include mobile {
-                    margin:0 -16px 32px;
-                    padding:24px 16px 40px;
-                    border-bottom:12px solid #f4f4f4;
+                    margin:24px 0 40px;
+                }
+            }
+            > .btn-group {
+                margin-top:80px;
+                @include mobile {
+                    margin-top:40px;
                 }
             }
         }
@@ -82,12 +86,21 @@
         .sects {
             margin-top:80px;
             @include mobile {
-                margin-top:60px;
-                padding:0;
-                border-top:none;
+                margin:0 -16px;
+                padding:32px 16px 60px;
+                border-top:12px solid #f4f4f4;
             }
             &:first-child {
                 margin-top:0;
+                @include mobile {
+                    padding-top:0;
+                    border-top:none;
+                }
+            }
+            &:last-child {
+                @include mobile {
+                    padding-bottom:0;
+                }
             }
             // title
             > .tit-wrap {
@@ -290,12 +303,6 @@
             }
             &.modify{
                 display:none;
-            }
-        }
-        > .btn-group {
-            margin-top:80px;
-            @include mobile {
-                margin-top:40px;
             }
         }
     }
