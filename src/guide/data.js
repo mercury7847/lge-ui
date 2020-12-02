@@ -196,6 +196,7 @@ var res = {
 					"배송지 주소 관리" : ["/html/MYC/ACCF7009.html","","진행중"],
 					"배송지 주소 관리 팝업" : ["/html/MYC/ACCF7009_popup.html","","진행중"],
 					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
+					"쿠폰 상세보기 팝업" : ["/html/MYC/ACCF7018_popup.html","","진행중"],
 				},
 				"케어솔루션" : {
 					"계약현황" : ["/html/MYC/ACCF7025.html","","검수완료"],

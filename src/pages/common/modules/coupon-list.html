@@ -1,0 +1,29 @@
+<!-- loop -->
+<li class="lists">
+    @@if ( context.type1 ) {
+    <a href="#n" class="coupon-box first" title="쿠폰 자세히 보기"><!-- 첫 구매 쿠폰 .first -->
+    }
+    @@if ( context.type2 ) {
+    <a href="#n" class="coupon-box basic" title="쿠폰 자세히 보기"><!-- default .basic -->
+    }
+    @@if ( context.type3 ) {
+    <a href="#n" class="coupon-box disabled" title="쿠폰 자세히 보기"><!-- 사용불가/종료 .disabled -->
+    }
+        <div class="coupon-cont">
+            <div class="top">
+                <p class="name">@@name</p>
+                <p class="discount"><em>10%</em> 할인</p>
+            </div>
+            <p class="desc">[@@desc]</p>
+            <div class="bottom">
+                <p>유효기간 : @@period</p>
+                <p class="more">@@more</p>
+            </div>
+            @@if ( context.type3 ) {
+            <div class="end-flags">@@end</div>
+            }
+        </div>
+        <span class="coupon-bg" aria-hidden="true"><em>LGE COUPON</em></span>
+    </a>
+</li>
+<!-- loop -->
