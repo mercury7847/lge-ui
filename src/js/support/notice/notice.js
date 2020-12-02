@@ -101,8 +101,6 @@
                 });
 
                 self.$download.find('.download', function(e) {
-                    e.preventDefault();
-
                     
                 });
             }
