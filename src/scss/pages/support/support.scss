@@ -341,6 +341,12 @@
     }
 }
 
+.inquiry-list{
+    .file-list a{
+        text-decoration: none;
+    }
+}
+
 //add file new
 .add-file-wrap{
     display:flex;
