@@ -15,6 +15,7 @@
             })
             <!-- mypage -->
             <div class="contents mypage"
+                data-contract-info-url="/lg5-common/data-ajax/mypage/contractInfo.json"
                 data-modify-confirm-url="/lg5-common/data-ajax/mypage/infoModifyConfirm.json"
                 data-modify-save-url="/lg5-common/data-ajax/mypage/infoModifySave.json"
                 data-payment-method-url="/lg5-common/data-ajax/mypage/paymentMethodAbled.json"
@@ -39,11 +40,13 @@
                                 <p class="tit">이케어 고객님의 계약정보는 <br class="mob">총 <em>3건</em>입니다.</p>
                                 <div class="form-wrap">
                                     <dl class="forms">
-                                        <dt class="tit"><label for="slt1">계약정보 선택</label></dt>
+                                        <dt class="tit"><label for="contractInfo">계약정보 선택</label></dt>
                                         <dd class="conts">
                                             <div class="select-wrap">
-                                                <select class="ui_selectbox" id="slt1">
-                                                    <option value="">건조기 (RH9WGANR) 계약번호 (12345678)</option>
+                                                <select class="ui_selectbox" id="contractInfo" name="contractInfo">
+                                                    <option value="RH9WGANR|12345678">건조기 (RH9WGANR) 계약번호 (12345678)</option>
+                                                    <option value="RG8WGGFC|34563245">세탁기 (RG8WGGFC) 계약번호 (34563245)</option>
+                                                    <option value="RA3WQWER|67673323">에어컨 (RA3WQWER) 계약번호 (67673323)</option>
                                                 </select>
                                             </div>
                                         </dd>
@@ -63,26 +66,28 @@
                                         </div>
                                     </div>
                                     <div class="section-inner">
-                                        <div class="inner-box">
+                                        <div class="inner-box user-info">
                                             <p class="inner-tit">계약자 정보</p>
                                             @@include('./common/modules/dl-infolist.html', {
+                                                "addClass": true,
                                                 "list" : [
-                                                    { "dt" : "이름", "dd" : "이*어" },
-                                                    { "dt" : "휴대폰", "dd" : "010****1234" },
-                                                    { "dt" : "일반전화", "dd" : "010****1234" },
-                                                    { "dt" : "이메일", "dd" : "lg*****@naver.com" },
-                                                    { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********" },
+                                                    { "dt" : "이름", "dd" : "이*어", "fieldName": "name" },
+                                                    { "dt" : "휴대폰", "dd" : "010****1234", "fieldName": "phoneNumber" },
+                                                    { "dt" : "일반전화", "dd" : "010****1234", "fieldName": "telephoneNumber" },
+                                                    { "dt" : "이메일", "dd" : "lg*****@naver.com", "fieldName": "email" },
+                                                    { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********", "fieldName": "adress" },
                                                 ]
                                             })
                                         </div>
-                                        <div class="inner-box">
+                                        <div class="inner-box actual-info">
                                             <p class="inner-tit">실사용자 정보</p>
                                             @@include('./common/modules/dl-infolist.html', {
+                                                "addClass": true,
                                                 "list" : [
-                                                    { "dt" : "이름", "dd" : "이*어" },
-                                                    { "dt" : "휴대폰", "dd" : "010****1234" },
-                                                    { "dt" : "일반전화", "dd" : "010****1234" },
-                                                    { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********" },
+                                                    { "dt" : "이름", "dd" : "이*어", "fieldName": "" },
+                                                    { "dt" : "휴대폰", "dd" : "010****1234", "fieldName": "phoneNumber" },
+                                                    { "dt" : "일반전화", "dd" : "010****1234", "fieldName": "telephoneNumber" },
+                                                    { "dt" : "주소", "dd" : "21655 서울특별시 엘지구 엘지로 ********", "fieldName": "adress" },
                                                 ]
                                             })
                                         </div>
@@ -239,15 +244,16 @@
                                             <button type="button" class="btn border size contract-btn"><span>계약서 발급신청</span></button>
                                         </div>
                                     </div>
-                                    <div class="section-inner">
+                                    <div class="section-inner contract-info">
                                         @@include('./common/modules/dl-infolist.html', {
+                                            "addClass": true,
                                             "list" : [
-                                                { "dt" : "제품군(모델명)", "dd" : "건조기(RH9WGANR)" },
-                                                { "dt" : "계약번호", "dd" : "<span>12345678</span><a href='#n' class='btn-link'>해지상담 신청</a>" },
-                                                { "dt" : "계약기간", "dd" : "1년(2020.09.01)" },
-                                                { "dt" : "설치일", "dd" : "2020.09.01" },
-                                                { "dt" : "설치장소", "dd" : "가정" },
-                                                { "dt" : "무상할인회차", "dd" : "3, 5, 6회차" },
+                                                { "dt" : "제품군(모델명)", "dd" : "건조기(RH9WGANR)", "fieldName": "modelName" },
+                                                { "dt" : "계약번호", "dd" : "<span>12345678</span><a href='#n' class='btn-link cancelConsult-btn'>해지상담 신청</a>", "fieldName": "contractID" },
+                                                { "dt" : "계약기간", "dd" : "1년(2020.09.01)", "fieldName": "period" },
+                                                { "dt" : "설치일", "dd" : "2020.09.01", "fieldName": "installDate" },
+                                                { "dt" : "설치장소", "dd" : "가정", "fieldName": "installPlace" },
+                                                { "dt" : "무상할인회차", "dd" : "3, 5, 6회차", "fieldName": "saleTurn" },
                                             ]
                                         })
                                     </div>
@@ -262,14 +268,15 @@
                                             <button type="button" class="btn border size"><span>납부 정보변경</span></button>
                                         </div>
                                     </div>
-                                    <div class="section-inner">
+                                    <div class="section-inner payment-info">
                                         @@include('./common/modules/dl-infolist.html', {
+                                            "addClass": true,
                                             "list" : [
-                                                { "dt" : "월 납부 금액", "dd" : "<span>88,800원</span><a href='#n' class='btn-link'>납부내역 조회</a>" },
-                                                { "dt" : "정기 출금일", "dd" : "매월 10일" },
-                                                { "dt" : "납부방법", "dd" : "<span>신용카드</span><a href='#n' class='btn-link requestCard-btn'>제휴카드 신청</a>" },
-                                                { "dt" : "은행(카드)명", "dd" : "하나카드" },
-                                                { "dt" : "계좌(카드)번호", "dd" : "1111-11**-****-****" },
+                                                { "dt" : "월 납부 금액", "dd" : "<span>88,800원</span><a href='#n' class='btn-link paymenyList-btn'>납부내역 조회</a>", "fieldName": "monthlyPrice" },
+                                                { "dt" : "정기 출금일", "dd" : "매월 10일", "fieldName": "withdrawDate" },
+                                                { "dt" : "납부방법", "dd" : "<span>신용카드</span><a href='#n' class='btn-link requestCard-btn'>제휴카드 신청</a>", "fieldName": "paymentMethod" },
+                                                { "dt" : "은행(카드)명", "dd" : "하나카드", "fieldName": "methodName" },
+                                                { "dt" : "계좌(카드)번호", "dd" : "1111-****-****-1111", "fieldName": "methodNumber" },
                                             ]
                                         })
                                         @@include('./common/modules/bullet-list.html', {
@@ -303,8 +310,8 @@
                                                 <dd class="conts">
                                                     <div class="tabs-wrap new-type ui_tab">
                                                         <ul role="tablist" class="tabs">
-                                                            <li><a href="#card">신용카드<em class="blind">선택됨</em></a></li>
-                                                            <li class="on"><a href="#bank">계좌이체</a></li>
+                                                            <li class="on"><a href="#card">신용카드<em class="blind">선택됨</em></a></li>
+                                                            <li><a href="#bank">계좌이체</a></li>
                                                         </ul>
                                                     </div>
                                                     <!-- 신용카드 -->
@@ -470,12 +477,13 @@
                                     <div class="tit-wrap">
                                         <h5 class="tit">케어솔루션 매니저 정보</h5>
                                     </div>
-                                    <div class="section-inner">
+                                    <div class="section-inner manager-info">
                                         @@include('./common/modules/dl-infolist.html', {
+                                            "addClass": true,
                                             "list" : [
-                                                { "dt" : "이름", "dd" : "김진희 매니저" },
-                                                { "dt" : "휴대폰", "dd" : "010-1234-1234" },
-                                                { "dt" : "방문주기", "dd" : "1회/6개월" },
+                                                { "dt" : "이름", "dd" : "김진희 매니저", "fieldName": "name" },
+                                                { "dt" : "휴대폰", "dd" : "01012341234", "fieldName": "phoneNumber" },
+                                                { "dt" : "방문주기", "dd" : "1회/6개월", "fieldName": "visitCycle" },
                                             ]
                                         })
                                     </div>
