@@ -39,7 +39,7 @@ var res = {
 			//"KRC0008_Popular Promotions" : ["/html/components/KRC0008.html","","검수완료"],
 			//"KRC0009_Exciting Promotion Offers" : ["/html/components/KRC0009.html","","검수완료"],
 			//"KRC0010_Recommended Promotions" : ["/html/components/KRC0010.html","","검수완료"],
-			"KRC0011_PDP_FAQ_Static" : ["/html/components/KRC0011.html","","검수완료"],
+			// "KRC0011_PDP_FAQ_Static" : ["/html/components/KRC0011.html","","검수완료"],
 			"KRC0012_Image - Text(folding feature)_Static" : ["/html/components/KRC0012.html","","진행중"],
 			"KRC0013_Side Image - text" : ["/html/components/KRC0013.html","","검수완료"],
 			"KRC0014_Side Image(2 - Text)" : ["/html/components/KRC0014.html","","검수완료"],
@@ -190,9 +190,13 @@ var res = {
 					"주문/배송 조회(케어솔루션 청약 리스트)" : ["/html/MYC/ACCF7024.html","","진행중"],
 					"케어솔루션 청약 상세보기" : ["/html/MYC/ACCF7065.html","","진행중"],
 					"주문/배송(구매, 청약) 화면 내 팝업" : ["/html/MYC/ACCF7002_popup.html","","진행중"],
+					"거래영수증 팝업" : ["/html/MYC/ACCF7105.html","_blank:width=912,height=760,scrollbars=no",""],
+					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=no",""],
+					"현금영수증 팝업" : ["/html/MYC/ACCF7107.html","_blank:width=912,height=760,scrollbars=no",""],
+					"배송지 주소 관리" : ["/html/MYC/ACCF7009.html","","진행중"],
+					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
 				},
 				"케어솔루션" : {
-					// "월 납부금액 안내 팝업" : ["/html/MYC/ACCF7065_popup.html","","진행중"],
 					"계약현황" : ["/html/MYC/ACCF7025.html","","검수완료"],
 					"계약현황 화면 내 팝업" : ["/html/MYC/ACCF7025_popup.html","","검수완료"],
 					"계약현황-해지 상담 신청" : ["/html/MYC/ACCF7055.html","","검수완료"],
@@ -213,7 +217,6 @@ var res = {
 				},
 				"활동 내역" : {
 					"구독" : ["/html/MYC/ACCF7017.html","","진행중"],
-					"쿠폰" : ["/html/MYC/ACCF7018.html","","진행중"],
 					"관심 스토리" : ["/html/MYC/ACCF7063.html","","진행중"]
 				},
 				"활동 관리" : {
