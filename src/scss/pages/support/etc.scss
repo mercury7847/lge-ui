@@ -8,21 +8,23 @@
         text-align: center;
         margin-bottom: 40px;
     }
-    .contents-inner {
+    .cont-wrap {
         min-height: 100vh;
-        max-width: 848px;
+        max-width: 912px;
         margin: 0 auto;
         padding: 80px 0 100px;
     }
-    .icon-download {
-        width: 14px;
-        height: 14px;
-        &-btn {
-            font-size: 14px;
-            color: #222;
-            display: inline-block;
-            margin-top: 17px;
+    .icon-download-btn {
+        font-size: 14px;
+        color: #222;
+        display: inline-block;
+        margin-top: 16px;
+        @include mobile {
+            margin-top: 18px;
         }
+    }
+    .icon-download2 {
+        margin-left: 4px;
     }
     .file-box {
         .file-input {
@@ -36,11 +38,16 @@
     .profile-regist {
         position: relative;
         margin: 48px auto 0;
+        .section-content {
+            display: flex;
+        }
         &-box {
-            width: calc(50% - 12px);
-            height: 310px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
+            width: 327px;
+            height: 288px;
+            padding: 34px 69px 34px 70px;
+            border-radius: 8px;
+            box-shadow: 2px 3.5px 16px 0 rgba(0, 0, 0, 0.14);
+            background-color: #ffffff;
             position: relative;
         }
         &-wrap {
@@ -69,22 +76,29 @@
             margin-top: 40px;
         }
         &-filed {
-            position: absolute;
-            top: 56px;
-            right: 56px;
-            width: calc(50% - 68px);
+            flex: 1;
+            margin-left: 48px;
         }
         @include mobile {
             .section-content {
-                padding: 40px 20px 58px;
+                display: block;
             }
             &-filed {
                 position: static;
             }
             &-box,
             &-filed {
+                margin-top: 26px;
+            }
+            &-box {
+                width: 328px;
+                height: 276px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            &-filed {
                 width: 100%;
-                margin-top: 40px;
+                margin-left: 0;
             }
         }
     }
@@ -120,6 +134,10 @@
                 max-height: 100%;
             }
         }
+        .appgate-figure-title {
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
         figcaption {
             text-align: left;
             padding-right: 40px;
@@ -144,15 +162,20 @@
         margin-left: 11px;
         img {
             border-radius: 1.1111vw;
+            width:100%;
         }
         &:first-child {
             margin-left: 0;
         }
         figcaption {
-            font-size: 14px;
+            font-size: 12px;
             text-align: center;
-            margin-top: 12px;
+            margin-top: 6px;
         }
+    }
+    &-title {
+        font-size: 12px;
+        margin-bottom: 6px;
     }
 }
 
@@ -179,6 +202,7 @@
         width: 76px;
         height: 76px;
         text-align: center;
+        line-height: 1.62;
     }
 }
 
@@ -255,6 +279,13 @@
         @include mobile {
         }
     }
+    .swipe-content {
+        padding-bottom: 40px;
+    }
+}
+
+.banner-figure {
+    margin-top: 40px;
 }
 
 @include mobile {

@@ -233,7 +233,7 @@
         padding:48px 48px 0;
         overflow-y:auto;
         &.no-footer {
-            max-height:576px;
+            max-height:576px + 130px;
             padding-bottom:48px;
             text-align:left;
             @include mobile {
@@ -983,6 +983,22 @@
                 transform:translateY(-50%);
             }
         }
+    }
+
+    // popup list
+    .com-pop-tit {
+        margin-bottom: 12px;
+        @include font-large;
+        font-weight: 700;
+    }
+    .com-pop-list {
+        li {
+            margin-bottom: 4px;
+            @include font-medium;
+            a {
+                text-decoration: underline;
+            }
+        }  
     }
 }
 
