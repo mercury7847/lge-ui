@@ -33,19 +33,19 @@
 
     .page_num {
         display: inline-block;
-        margin: 0 18px;
+        margin: 0 16px;
         font-size: 0;
-        vertical-align: top;;
+        vertical-align: middle;
         a,
         button,
         strong,
         span {
             display: inline-block;
             width: 20px;
-            font-size: 14px;
-            line-height: 24px;
-            color: #222;
-            vertical-align: top;
+            margin:0 2px;
+            @include font-small;
+            color: #aaa;
+            vertical-align: middle;
             cursor: pointer;
 
         }
