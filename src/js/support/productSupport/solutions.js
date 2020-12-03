@@ -58,35 +58,17 @@
     $(window).ready(function() {
         var solutions = {
             form: document.getElementById('submitForm'),
-            init: function() {
-                vcui.require(['ui/carousel'], function () {
-                    $('.recommand-wrap .slide-wrap').vcCarousel({
-                        slidesToShow: 3,
-                        arrows: true,
-                        responsive: [{
-                            breakpoint:1024,
-                            settings: {
-                                slidesToShow: 2
-                            }
-                        },{
-                            breakpoint:767,
-                            settings: {
-                                slidesToShow: 1
-                            }
-                        }]
-                    });
-                });
-
+            initialize: function() {
                 this.$form = $(this.form);
 
                 $('.ui_anchor_sticky').vcSticky({
                     usedAnchor: "true"
                 });
 
-                this.setEventListener();
-                this.filterList(); //삭제 예정
-                this.solutionsList(); //삭제 예정
-                $('.pagination').pagination();
+                this.bindEvent();
+                // this.filterList(); //삭제 예정
+                // this.solutionsList(); //삭제 예정
+                // $('.pagination').pagination();
             },
             filterSelect: function(code) {
                 var self = this;
@@ -239,7 +221,7 @@
                 });
             },
 
-            setEventListener: function() {
+            bindEvent: function() {
                 var self = this;
 
                 $('#selectCount').on('change', function() {
@@ -283,6 +265,6 @@
             }
         }
         
-        solutions.init();
+        solutions.initialize();
     });
 })();
