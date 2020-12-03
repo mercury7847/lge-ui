@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/etc"
+        ],
+        "pageJS": [
+            "support-common"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '접수 제품 및 설치 환경 사진 등록'
+            })
+            
+            <div class="contents support KR50CS109">
+                <div class="cont-wrap">
+                    <div class="section">
+                        <div class="tit-wrap">
+                            <h2 class="tit">사진등록예시</h2>
+                        </div>
+                        <div class="field-wrap">
+                            <div class="row">
+                                <div class="field-item block">
+                                    <div class="figure-list-title">예시를 참조하여 사진을 등록해주세요.</div>
+                                    <div class="figure-list">
+                                        <figure>
+                                            <img src="/lg5-common/images/dummy-img-2.jpg" alt="예시 이미지">
+                                            <figcaption>TV화면</figcaption>
+                                        </figure>
+                                        <figure>
+                                            <img src="/lg5-common/images/dummy-img-2.jpg" alt="예시 이미지">
+                                            <figcaption>에어컨 실외기 위치</figcaption>
+                                        </figure>
+                                        <figure>
+                                            <img src="/lg5-common/images/dummy-img-2.jpg" alt="예시 이미지">
+                                            <figcaption>세탁기/건조기 2단</figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <form action="">
+                            <div class="tit-wrap">
+                                <h2 class="tit">사진 등록</h2>
+                            </div>
+                            <div class="form-wrap">
+                                <div class="forms">
+                                    <div class="tit">
+                                        <label for="file-upload-1_1">접수 제품 및 증상 사진</label>
+                                        <div class="tooltip-wrap">
+                                            <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget,TooltipTarget">자세히 보기</span>
+                                            <div class="tooltip-box">
+                                                <p>첨부파일은 특수기호(? ! , . & ^ ~)를 제외해주세요</p>
+                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="conts">
+                                        <div class="add-file-wrap">
+                                            <div class="upload-wrap">
+                                                <div class="upload-img-area">
+                                                    <div class="uploadpreview img01"></div>
+                                                    <div class="upload-btn-area">
+                                                        <label for="file-upload-1_1" class="btn-ipt-file"></label>
+                                                        <input id="file-upload-1_1" type="file" accept="image/*" name="uploadBtn" class="ipt-file uploadBtn">
+                                                        <div class="btn-ipt-del"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="upload-file-name">
+                                                    <input type="text" class="ipt-file-name fileName" id="fileName01_1" placeholder="파일선택" disabled="disabled">
+                                                </div>
+                                            </div>
+                                            <div class="upload-wrap">
+                                                <div class="upload-img-area">
+                                                    <div class="uploadpreview img02"></div>
+                                                    <div class="upload-btn-area">
+                                                        <label for="file-upload-1_2" class="btn-ipt-file"></label>
+                                                        <input id="file-upload-1_2" type="file" accept="image/*" name="uploadBtn" class="ipt-file uploadBtn">
+                                                        <div class="btn-ipt-del"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="upload-file-name">
+                                                    <input type="text" class="ipt-file-name fileName" id="fileName01_2" placeholder="파일선택" disabled="disabled">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="forms">
+                                    <div class="tit">
+                                        <label for="file-upload-2_1">설치 환경사진</label>
+                                        <div class="tooltip-wrap">
+                                            <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget,TooltipTarget">자세히 보기</span>
+                                            <div class="tooltip-box">
+                                                <p>첨부파일은 특수기호(? ! , . & ^ ~)를 제외해주세요</p>
+                                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="conts">
+                                        <div class="add-file-wrap">
+                                            <div class="upload-wrap">
+                                                <div class="upload-img-area">
+                                                    <div class="uploadpreview img01"></div>
+                                                    <div class="upload-btn-area">
+                                                        <label for="file-upload-2_1" class="btn-ipt-file"></label>
+                                                        <input id="file-upload-2_1" type="file" accept="image/*" name="uploadBtn" class="ipt-file uploadBtn">
+                                                        <div class="btn-ipt-del"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="upload-file-name">
+                                                    <input type="text" class="ipt-file-name fileName" id="fileName02_1" placeholder="파일선택" disabled="disabled">
+                                                </div>
+                                            </div>
+                                            <div class="upload-wrap">
+                                                <div class="upload-img-area">
+                                                    <div class="uploadpreview img02"></div>
+                                                    <div class="upload-btn-area">
+                                                        <label for="file-upload-2_2" class="btn-ipt-file"></label>
+                                                        <input id="file-upload-2_2" type="file" accept="image/*" name="uploadBtn" class="ipt-file uploadBtn">
+                                                        <div class="btn-ipt-del"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="upload-file-name">
+                                                    <input type="text" class="ipt-file-name fileName" id="fileName02_2" placeholder="파일선택" disabled="disabled">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-group center">
+                                <button type="submit" class="btn pink">등록 하기</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+</body>
+</html> 

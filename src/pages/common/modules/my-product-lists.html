@@ -1,4 +1,10 @@
-<li class="lists">
+
+@@if ( context.modelID ) {
+    <li class="lists" data-model-id="@@modelID">
+}
+@@if ( !context.modelID ) {
+<li class="lists" data-model-id="ADK8238CSDFOG">
+}
     <div class="inner">
         @@if ( context.saleEnd ) {
         <div class="thumb saleend" aria-hidden="true">
@@ -12,9 +18,9 @@
             <p class="name"><span class="blind">모델명</span>@@name</p>
             <p class="e-name"><span class="blind">영문모델명</span>@@eName</p>
             <div class="btns">
-                <button type="button" class="btn size dark-gray"><span>사용설명서</span></button>
+                <button type="button" class="btn size dark-gray manual-btn"><span>사용설명서</span></button>
                 @@if ( context.twoBtn ) {
-                <button type="button" class="btn size dark-gray"><span>다운로드/SW</span></button>
+                <button type="button" class="btn size dark-gray download-btn"><span>다운로드/SW</span></button>
                 }
             </div>
             <ul class="info-lists period">
@@ -73,7 +79,7 @@
                 <button type="button" class="btn-off" aria-hidden="true"><span class="blind">닫기</span></button>
             </div>
             }
-            <a href="#n" class="btn border"><span>@@rightBtn</span></a>
+            <a href="#n" class="btn border @@rightBtnClass"><span>@@rightBtn</span></a>
         </div>
         }
         <button type="button" class="btn-delete"><span class="blind">보유제품 삭제</span></button>
