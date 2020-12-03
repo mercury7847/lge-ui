@@ -233,7 +233,7 @@
         padding:48px 48px 0;
         overflow-y:auto;
         &.no-footer {
-            max-height:576px;
+            max-height:576px + 130px;
             padding-bottom:48px;
             text-align:left;
             @include mobile {

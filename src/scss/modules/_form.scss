@@ -1347,6 +1347,9 @@ $input: (chk, rdo);
                     &::before {
                         background:url("/lg5-common/images/bg-input-disabled.svg") center no-repeat;
                     }
+                    &::after {
+                        background:url("/lg5-common/images/bg-chk-default.svg") center no-repeat;
+                    }
                 } @else if ( $type == rdo ) {
                     &::before {
                         background:url("/lg5-common/images/bg-input-disabled.svg") center no-repeat;
