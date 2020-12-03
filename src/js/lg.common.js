@@ -723,7 +723,7 @@
                     alert(result.message ? result.message : '오류발생');
                     return;
                 }
-                if(callback) callback(result);
+                if(callback && typeof callback === 'function') callback(result);
             }).fail(function(err){
                 alert(err.message);
             });

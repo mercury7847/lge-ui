@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     @@include('./common/head.html', {
-        pageCSS: ["MYC/MYC"]
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/myProdRegisted"]
     })
 <body>
     <div class="wrap">
@@ -13,7 +14,9 @@
                 "pageDesc" : "보유 제품 등록을 통해 제품을 좀더 체계적으로 관리하실 수 있습니다."
             })
             <!-- mypage -->
-            <div class="contents mypage">
+            <div class="contents mypage"
+                data-delete-prod="/lg5-common/data-ajax/mypage/deleteRegistedProdList.json"
+            >
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
@@ -36,6 +39,7 @@
                                         <ul>
                                             @@loop('./common/modules/my-product-lists.html', [
                                                 {
+                                                    "modelID": "ADX123525234DD",
                                                     "thumb" : "@img-product2",
                                                     "name" : "LG 올레드 AI TV",
                                                     "eName" : "OLED65WXKNA",
@@ -46,9 +50,11 @@
                                                         "소모품 조회", "출장 서비스 신청", "리뷰 작성"
                                                     ],
                                                     "rightBtn" : "케어십 신청하기",
+                                                    "rightBtnClass": "requestCareship-btn",
                                                     "notice" : "케어서비스로 제품을 관리해보세요!"
                                                 },
                                                 {
+                                                    "modelID": "ADX1259875234DD",
                                                     "thumb" : "@img-product3",
                                                     "name" : "LG 퓨리케어 냉온정수기",
                                                     "eName" : "W5MBR",
@@ -59,9 +65,11 @@
                                                         "소모품 조회"
                                                     ],
                                                     "rightBtn" : "신제품 확인하기",
+                                                    "rightBtnClass": "newProdCheck-btn",
                                                     "notice" : "새로운 정수기를 확인해보시겠어요?"
                                                 },
                                                 {
+                                                    "modelID": "ADX123546834DD",
                                                     "thumb" : "@img-product4",
                                                     "name" : "LG 퓨리케어 360 공기청정기",
                                                     "eName" : "AS300DNPRWM",
@@ -71,9 +79,11 @@
                                                         "소모품 조회", "출장 서비스 신청"
                                                     ],
                                                     "rightBtn" : "케어십 신청하기",
+                                                    "rightBtnClass": "requestCareship-btn",
                                                     "notice" : "케어십 서비스가 계약만료되었어요!"
                                                 },
                                                 {
+                                                    "modelID": "AFC2345566",
                                                     "thumb" : "@img-product4",
                                                     "name" : "LG 그램 17",
                                                     "eName" : "15U560-G",
@@ -85,6 +95,7 @@
                                                     "saleEnd" : true
                                                 },
                                                 {
+                                                    "modelID": "AXCE2345234534",
                                                     "thumb" : "@img-product2",
                                                     "name" : "LG 올레드 AI TV",
                                                     "eName" : "OLED65WXKNA",
@@ -94,9 +105,11 @@
                                                     "btns" : [
                                                         "소모품 조회", "출장 서비스 신청"
                                                     ],
-                                                    "rightBtn" : "케어십 신청하기"
+                                                    "rightBtn" : "케어십 신청하기",
+                                                    "rightBtnClass": "requestCareship-btn"
                                                 },
                                                 {
+                                                    "modelID": "AQW12345235",
                                                     "thumb" : "@img-product5",
                                                     "name" : "LG WING",
                                                     "eName" : "LM-F200N",
@@ -132,11 +145,17 @@
         
         @@include('./common/footer.html')
     </div>  
-    @@include('./common/modules/alert-modal.html', {
-        "msgOnly" : true,
-        "popId" : "laypop",
-        "msg" : "해당 제품을<br>삭제하시겠습니까?",
-        "twobtn" : true
+    
+    <!-- 사용설명서 -->
+    @@include('./common/popup/ACCF7033_pop2.html', {
+        popupID: 'popup-manual'
     })
+    <!-- // 사용설명서-->
+    
+    <!-- 다운로드/SW -->
+    @@include('./common/popup/ACCF7033_pop1.html', {
+        popupID: 'popup-download'
+    })
+    <!-- // 다운로드/SW-->
 </body>
 </html>

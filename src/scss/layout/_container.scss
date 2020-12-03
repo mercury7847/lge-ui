@@ -43,6 +43,50 @@
             padding:48px 0 24px;
             background:#f4f4f4;
         }
+        // 추가
+        &.border {
+            border-bottom: 8px solid $color-bg;
+            @include mobile {
+                border-bottom: 0;
+            }
+        }
+        &.wide {
+            max-width: 100%;
+            margin-bottom: 48px;
+            padding: 10px 0 24px;
+            @include mobile {
+                margin-bottom: 32px;
+                padding: 0;
+            }
+            h2 {
+                max-width: 1380px;
+                margin: 0 auto;
+                padding: 0 40px;
+                @include mobile {
+                    padding: 0 16px;
+                }
+            }
+            .tabs-wrap {
+                padding-left: 40px;
+                padding-right: 40px;
+                @include mobile {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+            .tabs-wrap.btn-type {
+                padding-top: 37px;
+                @include mobile {
+                    padding-top: 32px;
+                }
+            }
+            .tabs-wrap + .tabs-wrap {
+                margin-top: 24px;
+                @include mobile {
+                    margin-top: 8px;
+                }
+            }
+        }
     }
 
     // sub page common layout : title + white box layout
@@ -152,6 +196,11 @@
                     }
                     &-text {
                         margin-top: 12px;
+                    }
+                    &-h1 {
+                        font-size: 28px;
+                        padding-bottom: 24px;
+                        border-bottom:2px solid #222;
                     }
                 }
             }
