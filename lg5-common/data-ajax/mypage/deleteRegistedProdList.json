@@ -1,0 +1,12 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "alert":{
+            "title": "",
+            "desc": ""
+        }
+    }
+}
