@@ -186,6 +186,13 @@
                 }
             }
         }
+        &.bg {
+            max-width: 100% !important;
+            background-color: $color-bg;
+            .tabs {
+                padding: 16px;
+            }
+        }
     }
 
 

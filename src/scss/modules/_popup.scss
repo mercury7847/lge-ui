@@ -984,6 +984,22 @@
             }
         }
     }
+
+    // popup list
+    .com-pop-tit {
+        margin-bottom: 12px;
+        @include font-large;
+        font-weight: 700;
+    }
+    .com-pop-list {
+        li {
+            margin-bottom: 4px;
+            @include font-medium;
+            a {
+                text-decoration: underline;
+            }
+        }  
+    }
 }
 
 // window popup
