@@ -736,9 +736,11 @@
             }
             .btn-cell {
                 display:table-cell;
+                width:1%;
                 padding-left:8px;
                 @include mobile {
                     display:block;
+                    width:100%;
                     margin-top:24px;
                     padding-left:0;
                     .btn {

@@ -1,32 +1,36 @@
-<div class="bdcard-lists">
-    <ul class="ui_flexible_height">
-        @@for ( var i=0; i < list.length; i++ ) {
-        <li class="lists">
-            <div class="ui_flexible_box">
-                <div class="card ui_flexible_cont">
-                    <a href="#n" class="thumb"><img src="`+list[i].img+`" alt="`+list[i].name+`"></a>
-                    <dl class="prod-info">
-                        <dt><a href="#n" class="name">`+list[i].name+`</a></dt>
-                        <dd class="detail">
-                            `+list[i].option+`
-                        </dd>
-                        <dd class="price">
-                            `+list[i].price+`
-                        </dd>
-                    </dl>
-                    <div class="bottom-btns">
-                        @@if ( context.wish ) {
-                        <span class="chk-wish-wrap">
-                            <input type="checkbox" id="wish-chk`+[i]+`" name="wish-chk`+[i]+`" `+list[i].checked+`>
-                            <label for="wish-chk`+[i]+`"><span class="blind">찜하기</span></label>
-                        </span>
-                        }
-                        <button class="btn bd-pink btn-small" data-href="#laypop" data-control="modal"><span>장바구니</span></button>
-                    </div>
-                    <button class="btn-del" data-href="#laypop3" data-control="modal"><span class="blind">삭제하기</span></button>
+<li class="box">
+    <div class="col-table">
+        <div class="col">
+            <div class="product-info">
+                <div class="thumb">
+                    <a href="#n"><img src="@@thumb" alt="@@name"></a>
                 </div>
+                <div class="infos">
+                    <p class="name"><a href="#n"><span class="blind">제품명</span>@@name</a></p>
+                    <p class="e-name"><span class="blind">영문제품번호</span>@@name2</p>
+                    @@if ( context.more ) {
+                    <div class="more">
+                        <span class="blind">제품스펙</span>
+                        <ul>
+                            <li>주요스펙1</li>
+                            <li>주요스펙2</li>
+                        </ul>
+                    </div>
+                    }
+                </div>
+                @@if ( context.price ) {
+                <p class="price">
+                    @@if ( context.oriPrice ) {
+                    <small><span class="blind">할인전 가격</span>@@oriPrice</small>
+                    }
+                    <span class="blind">구매가격</span>@@price
+                </p>
+                }
             </div>
-        </li>
-        }
-    </ul>
-</div>
+        </div>
+        <div class="col btn-col">
+            <button type="button" class="btn size border"><span>장바구니</span></button>
+        </div>
+    </div>
+    <button type="button" class="btn-delete"><span class="blind">삭제</span></button>
+</li>
