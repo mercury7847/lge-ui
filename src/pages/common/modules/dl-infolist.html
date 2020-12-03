@@ -10,9 +10,19 @@
         </li>
         }
     }
-    @@if ( !context.idType ) {
+    @@if ( !context.idType && !context.addClass) {
         @@for ( var i=0; i < list.length; i++ ) {
         <li>
+            <dl>
+                <dt>`+list[i].dt+`</dt>
+                <dd>`+list[i].dd+`</dd>
+            </dl>
+        </li>
+        }
+    }
+    @@if ( !context.idType && context.addClass) {
+        @@for ( var i=0; i < list.length; i++ ) {
+        <li class="`+list[i].fieldName+`">
             <dl>
                 <dt>`+list[i].dt+`</dt>
                 <dd>`+list[i].dd+`</dd>
