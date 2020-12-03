@@ -32,7 +32,7 @@
     function init(){
         console.log("contractStatus start!!");
 
-        CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
+        //CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
         INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
         INFO_MODIFY_SAVE = $('.contents.mypage').data('modifySaveUrl');
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
@@ -201,10 +201,10 @@
             if(chk) $('#popup-selfClearing').vcModal('close');
         });
 
-        $('select[name=contractInfo]').on('change', function(e, data){
-            var info = $(this).find('option').eq(data.selectedIndex).val().split("|");
-            changeContractInfo(info);
-        });
+        // $('select[name=contractInfo]').on('change', function(e, data){
+        //     var info = $(this).find('option').eq(data.selectedIndex).val().split("|");
+        //     changeContractInfo(info);
+        // });
     }
 
     //접보변경 확인...

@@ -288,17 +288,17 @@ gulp.task("watch", ["browser-sync"], () => {
 
     // Watch js files
     gulp.watch(src + "/js/*.js", ["jsCompile"]).on('change', browserSync.reload);
-    gulp.watch(src + "/js/common/*", ["jsCompile:common"]).on('change', browserSync.reload);
-    gulp.watch(src + "/js/components/*", ["jsCompile:components"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/common/**", ["jsCompile:common"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/components/**", ["jsCompile:components"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/support/**/*", ["jsCompile:support"]).on('change', browserSync.reload);
-    gulp.watch(src + "/js/helper/*", ["jsCompile:helper"]).on('change', browserSync.reload);
-    gulp.watch(src + "/js/libs/*", ["jsCompile:libs"]).on('change', browserSync.reload);
-    gulp.watch(src + "/js/ui/*", ["jsCompile:ui"]).on('change', browserSync.reload);
-    gulp.watch(src + "/js/mypage/**/*", ["jsCompile:mypage"]).on('change', browserSync.reload);
-    gulp.watch(src + "/js/cart/**/*", ["jsCompile:cart"]).on('change', browserSync.reload);
-    gulp.watch(src + "/js/customer/**/*", ["jsCompile:customer"]).on('change', browserSync.reload);
-    gulp.watch(src + "/js/search/**/*", ["jsCompile:search"]).on('change', browserSync.reload);
-    gulp.watch(src + "/js/caresolution/*", ["jsCompile:caresolution"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/helper/**", ["jsCompile:helper"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/libs/**", ["jsCompile:libs"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/ui/**", ["jsCompile:ui"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/mypage/**", ["jsCompile:mypage"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/cart/**", ["jsCompile:cart"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/customer/**", ["jsCompile:customer"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/search/**", ["jsCompile:search"]).on('change', browserSync.reload);
+    gulp.watch(src + "/js/caresolution/**", ["jsCompile:caresolution"]).on('change', browserSync.reload);
     
     //static
     gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);
