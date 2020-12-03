@@ -1320,34 +1320,33 @@
                 padding:40px 40px 24px;
                 font-size:0;
             }
-            &-infos {
+            .visual {
                 display:table-cell;
-                font-size:0;
+                width:210px;
+                height:210px;
                 vertical-align:middle;
-                .visual {
-                    display:inline-block;
-                    width:210px;
-                    height:210px;
-                    vertical-align:middle;
-                    .img {
-                        width:100%;
-                    }
+                .img {
+                    width:100%;
                 }
-                .conts {
-                    display:inline-block;
-                    width:calc(100% - 210px);
-                    @include vw(padding-left, 80px);
-                    vertical-align:middle;
-                    .tit {
-                        @include font-large-3;
-                        font-weight:700;
+            }
+            .conts {
+                display:table-cell;
+                @include vw(padding-left, 80px);
+                vertical-align:middle;
+                .tit {
+                    @include font-large-3;
+                    font-weight:700;
+                }
+                .desc {
+                    margin-top:2px;
+                    @include font-medium;
+                }
+                .link-wrap {
+                    margin-top:32px;
+                    .btn-open {
+                        display:none;
                     }
-                    .desc {
-                        margin-top:2px;
-                        @include font-medium;
-                    }
-                    .btns {
-                        margin-top:32px;
+                    .link-list {
                         font-size:0;
                         li {
                             display:inline-block;
@@ -1360,50 +1359,73 @@
                     }
                 }
             }
-            &-btns {
+            .btn-wrap {
                 display:table-cell;
+                width:1%;
                 text-align:right;
                 vertical-align:middle;
                 .btn {
-                    white-space:nowrap;
+                    width:112px;
+                    padding:11px 22px;
                 }
             }
             @include mobile {
                 &-inner {
-                    display:block;
+                    display:flex;
+                    flex-direction:column;
                     padding:24px 16px 60px;
                 }
-                &-infos {
+                .visual {
+                    display:block;
+                    width:100%;
+                    margin-top:12px;
+                    text-align:center;
+                    .img {
+                        width:216px;
+                        height:216px;
+                    }
+                }
+                .conts {
                     display:block;
                     position:relative;
-                    padding-bottom:228px;
-                    .visual {
-                        display:block;
-                        position:absolute;
-                        width:100%;
-                        left:0;
-                        bottom:0;
-                        text-align:center;
-                        .img {
-                            width:216px;
-                            height:216px;
-                        }
+                    width:100%;
+                    padding:0;
+                    order:-1;
+                    .flag-wrap ~ .link-wrap .btn-open {
+                        top:22px;
                     }
-                    .conts {
-                        display:block;
-                        width:100%;
-                        padding:0;
-                        .btns {
-                            text-align:center;
+                    .tit {
+                        padding-right:40px;
+                    }
+                    .link-wrap {
+                        text-align:center;
+                        margin:0;
+                        .btn-open {
+                            display:block;
+                            position:absolute;
+                            right:0;
+                            top:0;
+                            width:32px;
+                            height:32px;
+                            background:url(/lg5-common/images/icons/icon-arrow-accor.svg) no-repeat;
+                        }
+                        .link-list {
+                            display:none;
                             li {
                                 display:block;
                                 margin:20px 0 0;
                             }
                         }
+                        &.open {
+                            .link-list {
+                                display:block;
+                            }
+                        }
                     }
                 }
-                &-btns {
+                .btn-wrap {
                     display:block;
+                    width:100%;
                     margin-top:24px;
                     .btn {
                         width:100%;
