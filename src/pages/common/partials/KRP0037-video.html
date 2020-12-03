@@ -1,0 +1,41 @@
+	@@if ( context.videoType == "youtube") {
+			<div class="visual-area">
+				<div class="visual-box">
+					<!-- youtube 타입 -->
+					<div class="video-container video-box youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
+						<div class="thumnail">
+							<img data-pc-src="/lg5-common/images/dummy/@img-1029x578.png" data-m-src="/lg5-common/images/dummy/@img-656x369.png" alt="">
+							<p class="hidden pc">graphic description : </p>
+							<p class="hidden mobile">graphic description : </p>
+							<a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-link-area="" data-link-name="{video id}" aria-describedby="title01">plays audio description video</a>
+						</div>
+						<button type="button" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" title="opens in a new layer popup, plays video" aria-describedby="title01">영상 보기</button>
+						<!-- iframe loca -->
+					</div>
+				</div>
+			</div>	
+		}
+		@@if ( context.videoType == "animation") {		
+			<!-- 1. animation 타입인 경우 animation-box 클래스 추가 -->
+			<div class="visual-area animation-box">
+				<a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
+				<img data-pc-src="/lg5-common/images/dummy/@img-1029x578.png" data-m-src="/lg5-common/images/dummy/@img-656x369.png" alt="">
+				<p class="hidden pc">graphic description : </p>
+				<p class="hidden mobile">graphic description : </p>
+				<div class="animation-area">
+					<video autoplay muted loop>
+						<source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+						<!-- WEBM 동영상을 제공하는 경우
+						<source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+						-->
+					</video>
+					<div class="controller-wrap wa-btn">
+						<button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+					</div>
+				</div>
+				<!-- caption -->
+				<div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+				<!-- // caption -->
+			</div>
+			<!-- // 1. animation 타입인 경우 -->
+		}
