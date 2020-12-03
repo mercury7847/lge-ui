@@ -318,3 +318,76 @@
         }
     }
 }
+
+// 태그 구독 태그리스트
+.tag-subscribe-wrap {
+    // 마이페이지 내 버튼 대응. 스토리에서 <div class="top"> 삭제.
+    .top {
+        margin-bottom:12px;
+        text-align:right;
+    }
+    // 공통 시작
+    .tag-lists {
+        .sect {
+            margin-top:48px;
+            @include mobile {
+                margin-top:40px;
+            }
+            &:first-child {
+                margin-top:0;
+            }
+            .tag-title {
+                margin-bottom:12px;
+                color:#222;
+                @include font-large;
+                font-weight:700;
+            }
+            .tag-group {
+                > ul {
+                    margin:-12px 0 0 -8px;
+                    font-size:0;
+                    .tags {
+                        display:inline-block;
+                        margin:12px 0 0 8px;
+                        vertical-align:top;
+                        .chk-btn {
+                            position:relative;
+                            input {
+                                position:absolute;
+                                overflow:hidden;
+                                width:1px;
+                                height:1px;
+                                margin:-1px;
+                                padding:0;
+                                border:none;
+                                clip:rect(0, 0, 0, 0);
+                                & + label {
+                                    position:relative;
+                                    display:inline-block;
+                                    width:auto;
+                                    min-width:64px;
+                                    padding:7px 15px;
+                                    border:1px solid #ddd;
+                                    border-radius:8px;
+                                    color:#aaa;
+                                    @include font-medium;
+                                    font-weight:500;
+                                    text-align:center;
+                                    white-space:nowrap;
+                                    cursor:pointer;
+                                    @include mobile {
+                                        min-width:74px;
+                                    }
+                                }
+                                &:checked + label {
+                                    border-color:#E51346;
+                                    color:#E51346;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
