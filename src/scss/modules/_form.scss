@@ -697,6 +697,10 @@
         @include font-small;
         font-weight:normal;
         margin-left:24px;
+        @include mobile{
+            display:block;
+            margin-left:0;
+        }
     }
 }
 .agree-all-chk {
@@ -1346,6 +1350,9 @@ $input: (chk, rdo);
                 @if ( $type == chk ) {
                     &::before {
                         background:url("/lg5-common/images/bg-input-disabled.svg") center no-repeat;
+                    }
+                    &::after {
+                        background:url("/lg5-common/images/bg-chk-default.svg") center no-repeat;
                     }
                 } @else if ( $type == rdo ) {
                     &::before {

@@ -69,7 +69,7 @@
                 padding:0 16px;
             }
             .filters {
-                margin:64px 0 48px;
+                margin:24px 0 48px;
                 @include mobile {
                     margin:24px 0 40px;
                 }
@@ -337,6 +337,9 @@
 
     // 최근 본 상품/찜한 목록
     @import "ACCF7011";
+
+    // 문의/예약 결과 조회
+    @import "ACCF7020";
 
     // 케어솔루션
     @import "ACCF7024";
