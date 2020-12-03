@@ -112,6 +112,7 @@
                     }
                 }
                 .desc {
+                    max-height:48px;
                     margin-top:12px;
                     color:#222;
                     @if $type == disabled {
@@ -120,6 +121,7 @@
                     @include font-small;
                     @include textEllipsisClamp(2);
                     @include mobile {
+                        max-height:42px;
                         font-weight:500;
                     }
                 }
@@ -135,7 +137,11 @@
                             color:#aaa;
                         }
                         &.more {
+                            max-height:48px;
                             @include textEllipsisClamp(2);
+                            @include mobile {
+                                max-height:42px;
+                            }
                         }
                     }
                     @include mobile {
