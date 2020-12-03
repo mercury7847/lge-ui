@@ -13,7 +13,12 @@
 
         <div class="container">
             @@include('./common/modules/page-header.html', {
-                'pageTitle': '원격 상담 예약'
+                'pageTitle': '원격 상담 예약',
+                'pageDesc': '고객님의 제품에 직접 접속하여 고장 증상에 대해 빠르게 해결해 드립니다.',
+                'pageBtn' : [
+                    { 'btn' : '요금 및 보증 기간 안내 ' },
+                    { 'btn' : '유상 서비스 적용 안내' }
+                ]
             })
             <div class="contents support reservation">
                <!-- @@include('./common/support/login-guide.html', {
@@ -31,7 +36,6 @@
                             <div class="rdo-wrap">
                                 <div class="rdo-wrap-info">
                                     <h3 class="tit req">고장증상<span class="blind">필수입력</span></h3>
-                                    <div class="btn-more"><p class="err-msg"></p></div>
                                 </div>
                                 <div class="rdo-wrap-list">
                                     <span class="rdo-wrap btn-type2">
@@ -107,7 +111,6 @@
                             <div class="rdo-wrap">
                                 <div class="rdo-wrap-info">
                                     <h3 class="tit req">세부증상 선택<span class="blind">필수입력</span></h3>
-                                    <div class="btn-more"><p class="err-msg"></p></div>
                                 </div>
                                 <div class="select-list-wrap w-auto type2">
                                     <ul>

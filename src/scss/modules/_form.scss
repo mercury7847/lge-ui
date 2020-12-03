@@ -697,6 +697,10 @@
         @include font-small;
         font-weight:normal;
         margin-left:24px;
+        @include mobile{
+            display:block;
+            margin-left:0;
+        }
     }
 }
 .agree-all-chk {
