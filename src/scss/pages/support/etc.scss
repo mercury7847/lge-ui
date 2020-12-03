@@ -10,13 +10,14 @@
     }
     .cont-wrap {
         min-height: 100vh;
-        max-width: 848px;
+        max-width: 912px;
         margin: 0 auto;
         padding: 80px 0 100px;
     }
     .icon-download {
         width: 14px;
         height: 14px;
+        margin-left: 4px;
         &-btn {
             font-size: 14px;
             color: #222;
