@@ -1085,7 +1085,7 @@
         width:calc(50% - 4px);
         .file-label {
             display:block;
-            padding:15px 90px 15px 24px;
+            padding:11px 90px 11px 24px;
             border:1px solid #ddd;
             border-radius:8px;
             font-size:16px;
@@ -1093,23 +1093,11 @@
             color:#adadad;
         }
         label {
-            position:absolute;
-            top:15px;
-            right:15px;
             padding-right:28px;
             font-size:16px;
             color:#ec455a;
             line-height:1.5;
             cursor:pointer;
-            &:after {
-                content:'';
-                position:absolute;
-                right:0;
-                top:0;
-                width:24px;
-                height:24px;
-                background:center/100% url('/lg5-common/images/icons/icon-upload.svg') no-repeat;
-            }
             // &::after {
             //     content:'(전체 10mb, 최대 3개까지 등록 가능)';
             //     display:inline-block;
