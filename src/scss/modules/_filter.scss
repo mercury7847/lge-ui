@@ -723,6 +723,15 @@
                             background:#fff !important;
                         }
                     }
+                    .ui-calendar-container {
+                        min-width:296px;
+                    }
+                    &.right {
+                        .ui-calendar-container {
+                            left:auto;
+                            right:0;
+                        }
+                    }
                 }
             }
             .btn-cell {
