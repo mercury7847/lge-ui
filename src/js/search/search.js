@@ -117,8 +117,8 @@
         '</div>' +
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
             '<div class="cont">' +
-                '{{#each (item, idx) in filterItem}}<div class="rdo-wrap">' +
-                    '<input type="radio" name="{{filterId}}" value="{{item.value}}" id="rdo-{{filterId}}-{{idx}}" {{#if idx==1}}checked{{/if}}>' +
+                '{{#each (item, idx) in filterValues}}<div class="rdo-wrap">' +
+                    '<input type="radio" name="{{filterId}}" value="{{item.title}}" id="rdo-{{filterId}}-{{idx}}" {{#if idx==1}}checked{{/if}}>' +
                     '<label for="rdo-{{filterId}}-{{idx}}">{{item.label}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
@@ -133,8 +133,8 @@
         '</div>' +
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
             '<div class="cont">' +
-                '{{#each (item, idx) in filterItem}}<div class="chk-wrap-colorchip {{color}}">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.value}}" id="color-{{filterId}}-{{idx}}">' +
+                '{{#each (item, idx) in filterValues}}<div class="chk-wrap-colorchip {{color}}">' +
+                    '<input type="checkbox" name="{{filterId}}" value="{{item.title}}" id="color-{{filterId}}-{{idx}}">' +
                     '<label for="color-{{filterId}}-{{idx}}">{{item.label}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
@@ -149,8 +149,8 @@
         '</div>' +
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
         '<div class="cont">' +
-                '{{#each (item, idx) in filterItem}}<div class="chk-wrap">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.value}}" id="chk-{{filterId}}-{{idx}}">' +
+                '{{#each (item, idx) in filterValues}}<div class="chk-wrap">' +
+                    '<input type="checkbox" name="{{filterId}}" value="{{item.title}}" id="chk-{{filterId}}-{{idx}}">' +
                     '<label for="chk-{{filterId}}-{{idx}}">{{item.label}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
@@ -727,18 +727,6 @@
                 }
             },
 
-
-// 슬라이더 값을 스토리지에 저장함.
-setSliderData:function(id, data) {
-    var _self = this;
-    var inputStr = ''
-    for(var key in data) inputStr += data[key]+',';
-    inputStr = inputStr.replace(/,$/,'');
-    console.log(inputStr);
-    //storageFilters[id] = inputStr;
-    //lgkorUI.setStorage(storageName, storageFilters);
-    //_self.setApplyFilter(storageFilters);
-},
             ///필터 관련 메쏘드
             filterBindEvents: function() {
                 var _self = this;
@@ -746,13 +734,13 @@ setSliderData:function(id, data) {
                 
                 // 필터안 슬라이더 이벤트 처리 (가격, 사이즈,..)
                 $('.ui_filter_slider').on('rangesliderinit rangesliderchange rangesliderchanged',function (e, data) {
-                    $(e.currentTarget).siblings('.min').text(vcui.number.addComma(data.minValue));
-                    $(e.currentTarget).siblings('.max').text(vcui.number.addComma(data.maxValue));
+                    $(e.currentTarget).siblings('.min').text(vcui.number.addComma(data.minValue.title));
+                    $(e.currentTarget).siblings('.max').text(vcui.number.addComma(data.maxValue.title));
                     if(e.type=='rangesliderchanged'){
-                        var filterId = $(e.currentTarget).data('filterId');
-                        _self.setSliderData(filterId, data);
+                        //var filterId = $(e.currentTarget).data('filterId');
+                        console.log(data.minValue.id,data.maxValue.id);
                     }
-                }).vcRangeSlider({mode:true});
+                }).vcRangeSlider();
 
                 // 아코디언 설정
                 $('.ui_order_accordion').vcAccordion();
@@ -770,7 +758,7 @@ setSliderData:function(id, data) {
                     var name = e.target.name;
                     var valueStr = "";
                     $('.ui_filter_accordion').find('input[name="'+ name +'"]:checked').each(function(idx, item){
-                        valueStr = valueStr + item.value+','
+                        valueStr = valueStr + item.title+','
                     });
                     valueStr = valueStr.replace(/,$/,'');                    
                     if(valueStr==''){
