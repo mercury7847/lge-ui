@@ -66,19 +66,68 @@
         {
             "filterType":"slider",
             "filterId":"fid00001",
-            "title":""
+            "title":"판매가",
+            "filterValues":[
+                {"value":"","title":"50,000","id":"pd0001"},
+                {"value":"","title":"150,000","id":"pd0002"},
+                {"value":"","title":"400,000","id":"pd0003"},
+                {"value":"","title":"1,000,000","id":"pd0004"},
+                {"value":"","title":"2,000,000","id":"pd0005"}
+            ]
+        },
+        {
+            "filterType":"slider",
+            "filterId":"fid00002",
+            "title":"화면크기",
+            "filterValues":[
+                {"value":"","title":"48인치","id":"rd0001"},
+                {"value":"","title":"52인치","id":"rd0002"},
+                {"value":"","title":"80인치","id":"rd0003"},
+                {"value":"","title":"120인치","id":"rd0004"}
+            ]
         },
         {
             "filterType":"radio",
-            "filterId":"fid00002"
+            "filterId":"fid00003",
+            "title":"서비스",
+            "filterValues":[
+                {"value":"sd0001","title":"전체"},
+                {"value":"sd0002","title":"일반제품"},
+                {"value":"sd0003","title":"케어십 가능 제품"},
+                {"value":"sd0004","title":"기타"}
+            ]
         },
         {
             "filterType":"color",
-            "filterId":"fid00003"
+            "filterId":"fid00004",
+            "title":"색상",
+            "filterValues":[
+                {"value":"cd0001","title":"맷 블랙", "color":"HA_REF_Matte_Black_Stainless_Steel"},
+                {"value":"cd0002","title":"블랙 스틸", "color":"Black-Stainless-Steel"},
+                {"value":"cd0003","title":"스테인레스 스틸", "color":"stainless-steel"},
+                {"value":"cd0004","title":"화이트", "color":"smooth-white"}
+            ]
         },
         {
             "filterType":"checkbox",
-            "filterId":"fid00004"
+            "filterId":"fid00005",
+            "title":"용량",
+            "filterValues":[
+                {"value":"yd0001","title":"용량 11"},
+                {"value":"yd0002","title":"용량 22"},
+                {"value":"yd0003","title":"용량 33"},
+                {"value":"yd0004","title":"용량 44"}
+            ]
+        },
+        {
+            "filterType":"checkbox",
+            "filterId":"fid00006",
+            "title":"태그",
+            "filterValues":[
+                {"value":"td0001","title":"태그1"},
+                {"value":"td0002","title":"태그2"},
+                {"value":"td0003","title":"태그3"}
+            ]
         }
     ]
 }

@@ -103,7 +103,7 @@
         '</div>' +
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
             '<div class="cont"><div class="range-wrap">' +
-                '<div data-filter-id="{{filterId}}" class="ui_filter_slider ui_price_slider" data-input="," data-range="{{min}},{{max}}" data-min-label="minLabel" data-max-label="maxLabel"></div>' +
+                '<div data-filter-id="{{filterId}}" class="ui_filter_slider ui_price_slider" data-range="{{min}},{{max}}" data-values="{{filterValues}}"></div>' +
                 '<p class="min range-num">Min</p><p class="max range-num">Max</p>' +
             '</div></div>' +
         '</div>' +
@@ -118,8 +118,8 @@
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
             '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="rdo-wrap">' +
-                    '<input type="radio" name="{{filterId}}" value="{{item.title}}" id="rdo-{{filterId}}-{{idx}}" {{#if idx==1}}checked{{/if}}>' +
-                    '<label for="rdo-{{filterId}}-{{idx}}">{{item.label}}</label>' +
+                    '<input type="radio" name="{{filterId}}" value="{{item.value}}" id="rdo-{{filterId}}-{{idx}}" {{#if idx==0}}checked{{/if}}>' +
+                    '<label for="rdo-{{filterId}}-{{idx}}">{{item.title}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
         '</div>' +
@@ -133,9 +133,9 @@
         '</div>' +
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
             '<div class="cont">' +
-                '{{#each (item, idx) in filterValues}}<div class="chk-wrap-colorchip {{color}}">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.title}}" id="color-{{filterId}}-{{idx}}">' +
-                    '<label for="color-{{filterId}}-{{idx}}">{{item.label}}</label>' +
+                '{{#each (item, idx) in filterValues}}<div class="chk-wrap-colorchip {{item.color}}">' +
+                    '<input type="checkbox" name="{{filterId}}" value="{{item.value}}" id="color-{{filterId}}-{{idx}}">' +
+                    '<label for="color-{{filterId}}-{{idx}}">{{item.title}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
         '</div>' +
@@ -150,8 +150,8 @@
         '<div class="desc ui_accord_content" id="{{filterId}}-{{index}}">' +
         '<div class="cont">' +
                 '{{#each (item, idx) in filterValues}}<div class="chk-wrap">' +
-                    '<input type="checkbox" name="{{filterId}}" value="{{item.title}}" id="chk-{{filterId}}-{{idx}}">' +
-                    '<label for="chk-{{filterId}}-{{idx}}">{{item.label}}</label>' +
+                    '<input type="checkbox" name="{{filterId}}" value="{{item.value}}" id="chk-{{filterId}}-{{idx}}">' +
+                    '<label for="chk-{{filterId}}-{{idx}}">{{item.title}}</label>' +
                 '</div>{{/each}}' +
             '</div>' +
         '</div>' +
