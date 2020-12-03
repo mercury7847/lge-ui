@@ -79,6 +79,10 @@
 
                 this.$form = $(this.form);
 
+                $('.ui_anchor_sticky').vcSticky({
+                    usedAnchor: "true"
+                });
+
                 this.setEventListener();
                 this.filterList(); //삭제 예정
                 this.solutionsList(); //삭제 예정

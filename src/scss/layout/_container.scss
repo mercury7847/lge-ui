@@ -76,6 +76,12 @@
                 }
             }
             .tabs-wrap.btn-type {
+                padding-top: 0;
+                @include mobile {
+                    padding-top: 0;
+                }
+            }
+            h2 + .tabs-wrap.btn-type {
                 padding-top: 37px;
                 @include mobile {
                     padding-top: 32px;

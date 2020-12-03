@@ -25,7 +25,7 @@
         '<li>' +
             '<div class="head">' +
                 '<div class="file-box">' +
-                    '<p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">{{os}} {{title}}</button></p>' +
+                    '<p class="tit"><button type="button" class="" data-href="{{detailUrl}}">{{os}} {{title}}</button></p>' +
                     '<ul class="options">' +
                         '<li>{{version}}  {{category}}</li>' +
                         '<li>{{driver}}</li>' +
@@ -45,11 +45,11 @@
             '</div>' +
             '{{# if (typeof prevVersion != "undefined" && prevVersion.length) { #}}' +
             '<div class="accord-cont ui_accord_content">' +
-                '<ul class="file-list">' +
+                '<ul class="driver-list">' +
                     '{{# for (var i = 0; i < prevVersion.length; i++) { #}}' +
                     '<li>' +
                         '<div class="file-box">' +
-                            '<p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">{{os}} {{title}}</button></p>' +
+                            '<p class="tit"><button type="button" class="" data-href="{{detailUrl}}">{{os}} {{title}}</button></p>' +
                             '<ul class="options">' +
                                 '<li>{{version}}  {{category}}</li>' +
                                 '<li>{{driver}}</li>' +
@@ -76,9 +76,12 @@
 
                 _self.manualSec = $('.manual-section');
                 _self.driverSec = $('.driver-section');
+                
+                _self.driverSec.find('.ui_list_accordion').vcAccordion({
+                    toggleSelector: '>.head .ui_accord_toggle'
+                });
 
                 _self.bindEvent();
-                _self.searchList();
             },
             setManualList: function(list) {
                 var _self = this;
@@ -94,13 +97,13 @@
                     _self.manualSec.find('.no-data').hide();
 
                     if (list.listPage.view == 'Y') {
-                        _self.manualSec.find('.btn-wrap').show();
+                        _self.manualSec.find('.btn-moreview').show();
                     } else {
-                        _self.manualSec.find('.btn-wrap').hide();
+                        _self.manualSec.find('.btn-moreview').hide();
                     }
                 } else {
-                    _self.driverSec.find('.manual-list').html('').hide();
-                    _self.driverSec.find('.no-data').show();
+                    _self.manualSec.find('.manual-list').html('').hide();
+                    _self.manualSec.find('.no-data').show();
                 }
             },
             setDriverList: function(list) {
@@ -112,12 +115,12 @@
                     listArr.forEach(function(item) {
                         html += vcui.template(driverListTemplate, item);
                     });
-                    _self.driverSec.find('.file-list').html(html).show();
+                    _self.driverSec.find('.driver-list').html(html).show();
                     _self.driverSec.find('.pagination').show();
                     _self.driverSec.find('.pagination').pagination('update', list.listPage);
                     _self.driverSec.find('.no-data').hide();
                 } else {
-                    _self.driverSec.find('.file-list').html('').hide();
+                    _self.driverSec.find('.driver-list').html('').hide();
                     _self.driverSec.find('.pagination').hide();
                     _self.driverSec.find('.no-data').show();
                 }
@@ -163,7 +166,7 @@
                 this.driverSec.find('.tabs-wrap ul').html(html);
                 this.driverSec.find('.tabs-wrap').vcTab('update').vcTab('select', 0);
             },
-            searchList: function(formData) {
+            searchAllList: function(formData) {
                 var _self = this;
                 var ajaxUrl = '/lg5-common/data-ajax/support/downloadList.json';
 
@@ -182,7 +185,7 @@
             },
             searchManualList: function(formData) {
                 var _self = this;
-                var ajaxUrl = '/lg5-common/data-ajax/support/downloadList.json';
+                var ajaxUrl = _self.manualSec.data('ajax');
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, formData, function(result){
@@ -195,7 +198,7 @@
             },
             searchDriverList: function(formData) {
                 var _self = this;
-                var ajaxUrl = '/lg5-common/data-ajax/support/downloadList.json';
+                var ajaxUrl = _self.driverSec.data('ajax');;
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, formData, function(result){
@@ -209,10 +212,28 @@
             bindEvent: function() {
                 var _self = this;
 
-                _self.manualSec.find('.btn-more').on('click', function() {
+                _self.manualSec.find('.btn-moreview').on('click', function() {
                     var param = {};
 
                     _self.searchManualList(param);
+                });
+
+                _self.manualSec.find('.btn-download').on('click', function(e) {
+                    e.preventDefault();
+
+                    var fileUrl = $(this).attr('href'),
+                        infoArr = fileUrl.split('?'),
+                        url = fileInfo[0],
+                        param = fileInfo[1];
+
+
+                    lgkorUI.requestAjaxData(url, param, function(result) {
+                        var data = result.data;
+
+                        if (data.resultFlag) {
+                            location.href = fileUrl + '&check=true';
+                        }
+                    });  
                 });
 
                 _self.driverSec.find('#os').on('change', function() {
@@ -238,6 +259,15 @@
 
                     _self.searchDriverList(param);
                 });
+
+                _self.driverSec.find('.driver-list-wrap').on('click', '.btn-info', function() {
+                    var ajaxUrl = $(this).data('href');
+
+                    lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
+                        $('#fileDetailPopup').html(result).vcModal();
+                    }, null, "html");
+                });
+
                 _self.driverSec.find('.pagination').on('pageClick', function(e) {
                     var param = {};
 
