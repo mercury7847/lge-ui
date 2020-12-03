@@ -90,9 +90,6 @@
                     font-weight:700;
                     vertical-align:top;
                 }
-                .tooltip-wrap {
-
-                }
             }
             @include mobile {
                 border-radius:0;
@@ -139,6 +136,29 @@
                 > .btn-link {
                     top:0;
                     right:0;
+                }
+            }
+        }
+
+        &.no-title-type {
+            @include mobile {
+                border-radius:0;
+                box-shadow:none;
+                overflow:initial;
+                .tbl-layout .tbody {
+                    padding:0;
+                    .row {
+                        margin-top:12px;
+                        padding-left:112px;
+                        padding-right:16px;
+                        border-radius:8px;
+                        border-top:none;
+                        box-shadow:2px 4px 16px 0 rgba(#000, .14);
+                        overflow:hidden;
+                        &:first-child {
+                            margin-top:0;
+                        }
+                    }
                 }
             }
         }
@@ -201,14 +221,18 @@
                         &.col1 {
                             padding:32px 48px 32px 0;
                         }
-                        &.col2 {
+                        &.col2,
+                        &.col3,
+                        &.col4 {
                             padding:32px 12px;
                         }
                         @include mobile {
                             display:block;
                             border-left:none;
                             &.col1,
-                            &.col2 {
+                            &.col2,
+                            &.col3,
+                            &.col4 {
                                 padding:0;
                             }
                         }
@@ -358,6 +382,17 @@
                     width:82.4%;
                     @include mobile {
                         margin-right:0;
+                        width:100%;
+                    }
+                }
+            }
+
+            &.size4 {
+                .col2,
+                .col3,
+                .col4 {
+                    width:18.3%;
+                    @include mobile {
                         width:100%;
                     }
                 }
@@ -572,7 +607,6 @@
                 }
             }
         }
-
         .row.disabled {
             .product-info {
                 .thumb {
@@ -650,7 +684,6 @@
                 text-align:left;
             }
         }
-
         .row.disabled {
             .state-box {
                 .tit {
@@ -668,6 +701,34 @@
             line-height:20px;
             &.red {
                 color:#F04E3E;
+            }
+        }
+
+        // 재입고 알림
+        .application-date {
+            color:#767676;
+            @include font-medium;
+            font-weight:500;
+            text-align:center;
+            &.small {
+                @include font-small;
+                @include mobile {
+                    font-size:14px;
+                    line-height:22px;
+                }
+            }
+            @include pc {
+                .m-only {
+                    position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;font-size:medium;line-height:normal;word-break:break-all
+                }
+            }
+            @include mobile {
+                text-align:left;
+                @at-root .col2 {
+                    .application-date {
+                        margin-top:24px;
+                    }
+                }
             }
         }
     }

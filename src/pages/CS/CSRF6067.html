@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/etc"
+    ]
+})
+<body>
+    <div class="wrap">
+        <div class="container">
+            <div class="contents support profile-upload">
+                
+                <div class="cont-wrap">
+                    <div class="section">
+                        <form>
+                            <div class="tit-wrap">
+                                <h2 class="tit">엔지니어 사진 등록</h2>
+                            </div>
+                            <div class="profile-regist">
+                                <div class="section-content">
+                                    <div class="profile-regist-box">
+                                        <div class="profile-regist-wrap">
+                                            <div class="profile-regist-img">
+                                                <img src="/lg5-common/images/no-profile-image.png" alt="프로필 이미지">
+                                            </div>
+                                            <p class="profile-regist-text">등록된 사진이 없습니다.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-wrap profile-regist-filed">
+                                        <div class="forms">
+                                            <div class="tit">
+                                                <label for="business-number">사번</label>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="input-wrap">
+                                                    <input type="text" id="business-number" name="business-number" required="" value="AKQ037" readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="forms">
+                                            <div class="tit">
+                                                <label for="business-group">소속</label>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="input-wrap">
+                                                    <input type="text" id="business-group" name="business-group" required="" value="소속" readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="forms">
+                                            <div class="tit">
+                                                <label for="name">이름</label>
+                                            </div>
+                                            <div class="conts">
+                                                <div class="input-wrap">
+                                                    <input type="text" id="name" name="name" required="" value="홍길동" readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="forms">
+                                            <div class="tit">
+                                                <label for="name">첨부파일</label>
+                                                <div class="tooltip-wrap">
+                                                    <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
+                                                    <span class="tooltip-box">
+                                                        <p>파일명은 필히 대문자 사번, 확장자는 소문자 jpg으로 변경하시기 바랍니다. (파일명 예시: AKQ037.jpg)</p>
+                                                        <p>사진 사이즈 : 180px X 180px ( 가로 세로 동일 사이즈로 등록 : 정사각형 비율), 크기 : 50KB 이하</p>
+                                                        <p>보조프로그램 > 그림판 에서 '크기 조정' 기능을 통해 이미지 용량을 축소할 수 있습니다.</p>
+                                                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <dd class="conts">
+                                                <div class="file-box">
+                                                    <div class="box file-input">
+                                                        <div class="input-wrap">
+                                                            <span class="file-label">사진 업로드</span>
+                                                        </div>
+                                                        <div class="cell">
+                                                            <label for="file-upload" class="btn">파일선택</label>
+                                                        </div>
+                                                        <input class="ui_fileinput profile-regist-file-upload" type="file" id="file-upload" accept="image/*" ui-modules="FileInput">
+                                                    </div>
+                                                </div>
+                                            </dd>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @@include('./common/modules/bullet-list.html', {
+                                    "topBorder" : true,
+                                    "bulletTxt" : [
+                                        "해당 페이지는 Internet Explorer 11에 최적화되어 있습니다. 이보다 낮은 버전은 업데이트 후 사용을 권장합니다.",
+                                        "Internet Explore 11 임에도 불구하고, 사용에 문제가 있다면 '호환성 보기 설정 해제'가이드를 참고해 주시기 바랍니다."
+                                    ]
+                                })
+                                <p><a href="#" class="icon-download-btn">가이드 다운로드 <span class="icon-download"><em class="blind">새 창에서 열기</em></span></a></p>
+                            </div>
+
+                            <div class="btn-group center">
+                                <button type="submit" class="btn pink">등록</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>    
+    
+    <!-- support script -->
+    <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/profileUpload.min.js"></script>
+</body>
+</html> 
