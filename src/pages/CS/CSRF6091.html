@@ -3,7 +3,8 @@
 @@include('./common/head.html', {
     "pageCSS": [
         "support/support",
-        "support/reservation"
+        "support/reservation",
+        "support/custom-voice"
     ]
 })
 <body>
@@ -82,11 +83,11 @@
                             <div class="form-wrap">
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="inp02-2" class="req">제목<span class="blind">필수입력</span></label>
+                                        <label for="input-title" class="req">제목<span class="blind">필수입력</span></label>
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap count">
-                                            <input type="text" id="inp02-2" class="ui_textcontrol" placeholder="제목 입력" value="" data-error-msg="한글,영문만 입력 가능합니다." maxlength="40" data-limit="40" data-count-target="#txt-count1">
+                                            <input type="text" name="title" id="input-title" placeholder="제목 입력" data-required="true" data-msg-target=".err-msg" required>
                                             <div class="btn-more"><p class="err-msg"></p></div>
                                             <span id="txt-count1" class="cell total"><em>0</em>/40자</span>
                                         </div>
@@ -94,7 +95,7 @@
                                 </div>
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="inp02-2" class="req">내용<span class="blind">필수입력</span></label>
+                                        <label for="input-desc" class="req">내용<span class="blind">필수입력</span></label>
                                         <div class="tooltip-wrap"><!-- 활성화시 active -->
                                             <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
                                             <span class="tooltip-box">
@@ -107,8 +108,8 @@
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap count">
-                                            <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2"></textarea>
-                                            <span id="txt-count2" class="cell total"><em>0</em>/1,000자</span>
+                                            <textarea class="ui_textcontrol" name="desc" id="input-desc" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-msg-target=".err-msg" data-error-msg="전달사항을 입력해주세요." data-required="true"></textarea>
+                                            <span id="txt-count2" class="cell total"><em>0</em> / 1000자</span>
                                             <p class="err-msg"></p>
                                         </div>
                                     </div>
@@ -169,7 +170,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="btn-more"><p class="err-msg"></p></div>
                                     </div>
                                 </div>
                             </div>
@@ -180,20 +180,20 @@
                             </div>
                             <div class="form-wrap">
                                 <div class="forms">
-                                    <div class="tit"><label for="inp02-2" class="req">이름<span class="blind">필수입력</span></label></div>
+                                    <div class="tit"><label for="input-name" class="req">이름<span class="blind">필수입력</span></label></div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" id="inp02-2" placeholder="이름 입력" value="" data-error-msg="한글,영문만 입력 가능합니다.">
-                                            <div class="btn-more"><p class="err-msg"></p></div>
+                                            <input type="text" name="name" id="input-name" placeholder="이름 입력" data-required="true" data-msg-target=".err-msg" required>
+                                            <p class="err-msg"></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="forms">
-                                    <div class="tit"><label for="inp02-2" class="req">이메일<span class="blind">필수입력</span></label></div>
+                                    <div class="tit"><label for="input-email" class="req">이메일<span class="blind">필수입력</span></label></div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" id="inp02-2" placeholder="이메일 입력" value="" data-error-msg="이메일을 입력해 주세요">
-                                            <div class="btn-more"><p class="err-msg"></p></div>
+                                            <input type="text" name="email" id="input-email" placeholder="이메일 입력" value="" data-required="true" data-msg-target=".err-msg" required>
+                                            <p class="err-msg"></p>
                                         </div>
                                         <ul class="bullet-list top-border">
                                             <li class="b-txt">이메일 문의는 평일 근무시간 상담사가 문의 내용을 확인 후 답변하는 관계로 토요일/일요일/공휴일 및 연휴에 문의하신 건의 답변은 지연될 수 있습니다.</li>
@@ -241,6 +241,7 @@
     <script src="/lg5-common/js/libs/jquery.mCustomScrollbar.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
     <script src="/lg5-common/js/support/reservation/reservation.min.js"></script>
+    <script src="/lg5-common/js/support/customVoice/customVoice.min.js"></script>
     <script src="/lg5-common/js/support/reservation/addfile.min.js"></script>
 </body>
 </html> 

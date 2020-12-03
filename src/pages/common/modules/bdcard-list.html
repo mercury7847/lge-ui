@@ -1,4 +1,9 @@
+@@if ( context.disabled ) {
+<li class="box disabled">
+}
+@@if ( !context.disabled ) {
 <li class="box">
+}
     <div class="col-table">
         <div class="col">
             <div class="product-info">
@@ -17,6 +22,9 @@
                         </ul>
                     </div>
                     }
+                    @@if ( context.soldout ) {
+                    <p class="soldout-msg pc-view" aria-hidden="true">@@soldout</p>
+                    }
                 </div>
                 @@if ( context.price ) {
                 <p class="price">
@@ -26,11 +34,25 @@
                     <span class="blind">구매가격</span>@@price
                 </p>
                 }
+                @@if ( context.soldout ) {
+                <p class="soldout-msg m-view" aria-hidden="true">@@soldout</p>
+                }
             </div>
         </div>
+        @@if ( !context.disabled ) {
         <div class="col btn-col">
             <button type="button" class="btn size border"><span>장바구니</span></button>
         </div>
+        }
     </div>
+    @@if ( context.soldout ) {
+    <span class="blind">@@soldout</span><!-- 접근성 텍스트(품절/단종일 때만) -->
+    }
+    @@if ( context.likeBtn ) {
+    <span class="chk-wish-wrap">
+        <input type="checkbox" id="@@likeBtn" name="@@likeBtn" @@if(context.likeChecked){checked}>
+        <label for="@@likeBtn"><span class="blind">찜하기</span></label>
+    </span>
+    }
     <button type="button" class="btn-delete"><span class="blind">삭제</span></button>
 </li>

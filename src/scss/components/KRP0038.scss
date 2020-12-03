@@ -4,11 +4,12 @@
 
 
 .KRP0038 {
-
+    /*
     .component-inner { 
         max-width: 100%;
         padding: 0;
     }
+    
     .page-header {
         margin-bottom: 48px;
         &.border {
@@ -18,7 +19,7 @@
         .tabs-wrap.btn-type {
             padding-top: 53px;
         }
-    }
+    }*/
 
     .award-breakdown-wrap {
         max-width: calc(1146px + 80px);
@@ -79,7 +80,7 @@
                         float: left;
                         width: calc(100% - 100px);
                         padding-left: 12px;
-                        padding-top: 30px;
+                        margin-top: 30px;
                     }
                 }
                 .flag-wrap {
@@ -133,8 +134,17 @@
                         border: 1px solid #222;  
                         .btn-text {
                             flex: 1;
+                            display: -webkit-box;
+                            max-height: 48px;
+                            text-overflow:ellipsis;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                            overflow:hidden;
                             @include font-small;
                             text-decoration: none;
+                            @include mobile {
+                                max-height: 42px;
+                            }
                         }
                         .btn-more {
                             position: relative;
