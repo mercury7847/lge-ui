@@ -14,7 +14,7 @@
             '</a>' +
         '</td>' +
         '<td>{{date}}</td>' +
-        '<td>조회 {{view}}</td>' +
+        '<td>{{view}}</td>' +
     '</tr>';
 
     $(window).ready(function() {

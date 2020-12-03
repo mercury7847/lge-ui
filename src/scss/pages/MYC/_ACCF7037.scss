@@ -1,8 +1,49 @@
 .form-wrap {
 	.select-half {
 		.select-wrap {
-			width:calc(50%);
-			margin-right:8px;
+			width:calc((100% - 8px) / 2);
+			margin-left:8px;
+			&:first-child {
+				margin-left:0;
+			}
+		}
+	}
+	.tooltip-wrap {
+		.barcode-wrap {
+			p {
+				margin-top:8px;
+				font-size:14px;
+				line-height:24px;
+			}
+			.img-barcode {
+				padding:12px 0;
+				text-align:center;
+				img {
+					height:56px;
+				}
+			}
+			@include mobile {
+				p {
+					margin-top:20px;
+					font-size:13px;
+					line-height:21px;
+				}
+				.img-barcode {
+					padding:8px 0;
+					img {
+						height:40px;
+					}
+				}
+			}
+		}
+	}
+	@include mobile {
+		.select-half {
+			margin-top:6px;
+			.select-wrap {
+				width:100%;
+				margin-left:0;
+			}
 		}
 	}
 }
