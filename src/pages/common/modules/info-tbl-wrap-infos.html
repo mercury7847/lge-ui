@@ -4,10 +4,13 @@
 @@if ( context.onlyTitle ) {
 <div class="box title-type">
 }
-@@if ( !context.checkboxType && !context.onlyTitle ) {
+@@if ( context.noTitle ) {
+<div class="box no-title-type">
+}
+@@if ( !context.checkboxType && !context.onlyTitle && !context.noTitle ) {
 <div class="box">
 }
-    @@if ( !context.checkboxType && !context.onlyTitle ) {
+    @@if ( !context.checkboxType && !context.onlyTitle && !context.noTitle ) {
     <div class="info-wrap">
         <ul class="infos">
             @@for ( var i=0; i < infos.length; i++ ) {
@@ -30,7 +33,7 @@
         <label for="chk-cancel-all">전체선택</label>
     </span>
     }
-    <div class="tbl-layout @@if(context.sizeType){size3}">
+    <div class="tbl-layout @@if(context.sizeType){size3}@@if(context.sizeType2){size4}">
         <!-- thead -->
         <div class="thead" aria-hidden="true">
             @@for ( var j=0; j < th.length; j++ ) {

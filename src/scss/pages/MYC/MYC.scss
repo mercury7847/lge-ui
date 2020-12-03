@@ -73,6 +73,9 @@
                 @include mobile {
                     margin:24px 0 40px;
                 }
+                &.type2 {
+                    margin-top:0;
+                }
             }
             > .btn-group {
                 margin-top:80px;

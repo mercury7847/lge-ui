@@ -34,6 +34,9 @@
                                 @@if ( context.col1.productType.count ) {
                                 <p class="count">수량 : 1</p>
                                 }
+                                @@if ( context.col1.productType.wishCount ) {
+                                <p class="count">구매 희망 수량 : 2</p>                                
+                                }
                             </div>
                             @@if ( context.col1.productType.price ) {
                             <p class="price">
@@ -74,6 +77,19 @@
                             }
                         </div>
                         }
+                        @@if ( context.col2.wishType ) {
+                        <p class="application-date"><span class="m-only">신청일 : </span>2020.11.05</p>
+                        }
+                    </div>
+                    }
+                    @@if ( context.col3 ) {
+                    <div class="col col3">
+                        <p class="application-date small"><span class="m-only">알림 발송 번호 : </span>010****1234</p>
+                    </div>
+                    }
+                    @@if ( context.col4 ) {
+                    <div class="col col4">
+                        <p class="application-date small"><span class="m-only">SMS 발송일 : </span>2020.11.16</p>
                     </div>
                     }
                 </div>
