@@ -486,139 +486,6 @@
             }
         }
     }
-    .solutions-wrap {
-        @include clearfix;
-        .result-box {
-            float:right;
-            width:calc(100% - 234px);
-            .tit-wrap {
-                margin-bottom:48px;
-            }
-            @include mobile {
-                float:none;
-                width:100%;
-                .tit-wrap {
-                    margin-bottom:20px;
-                }
-            }
-        }
-        .filter-box {
-            position:relative;
-            float:left;
-            width:210px;
-            margin-top:96px;
-            .tit-wrap {
-                font-size:0;
-                .btn-back {
-                    display:inline-block;
-                    width:24px;
-                    height:24px;
-                    margin:3px 4px 0 0;
-                    font-weight:700;
-                    vertical-align:top;
-                    background:100% url('/lg5-common/images/icons/icon-btn-arrow-left.svg') no-repeat;
-                }
-            }
-            .filter-list {
-                &.open {
-                    overflow:hidden;
-                    height:0;
-                }
-                li {
-                    margin-top:12px;
-                    &:first-child {
-                        margin-top:0;
-                    }
-                    .filter-link {
-                        display:inline-block;
-                        @include font-medium;
-                        vertical-align:top;
-                    }
-                    .sub-depth {
-                        position:absolute;
-                        width:100%;
-                        left:0%;
-                        top:0;
-                        background:#fff;
-                    }
-                    &.on {
-                        & > .filter-link {
-                            color:#ec455a;
-                        }
-                    }
-                }
-            }
-            @include mobile {
-                display:none;
-            }
-        }
-        .mobile-filter-box {
-            display:block;
-            margin-bottom:40px;
-            @include pc {
-                display:none;
-            }
-        }
-        .search-wrap { 
-            margin:0 0 48px;
-            .keyword-search {
-                position:relative;
-                max-width:582px;
-                width:100%;
-                margin:0 auto;
-                padding-right:138px;
-                .input-wrap {
-                    position:relative;
-                    width:100%;
-                    vertical-align:middle;
-                    input[type=text] {
-                        padding:11px 54px 11px 24px;
-                        border-radius:24px;
-                        border:0 none;
-                        box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
-                    }
-                    .btn-search {
-                        position:absolute;
-                        top:0;
-                        right:0;
-                        width:54px;
-                        height:48px;
-                        background:center/20px 20px url(/lg5-common/images/icons/icon-search-20.svg) no-repeat;;
-                    }
-                }
-                .chk-wrap {
-                    position:absolute;
-                    right:0;
-                    top:50%;
-                    transform:translateY(-50%);
-                }
-            }   
-            @include mobile {
-                margin:0 0 40px;
-                .keyword-search {
-                    max-width:none;
-                    padding:0;
-                    .input-wrap {
-                        display:block;
-                        width:100%;
-                        input[type=text] {
-                            padding:12px 68px 12px 24px;
-                            border-radius:28px;
-                        }
-                        .btn-search {
-                            width:68px;
-                            height:46px;
-                        }
-                    }
-                    .chk-wrap {
-                        position:static;
-                        margin:12px 0 0 0;
-                        transform:translateY(0);
-                    }
-                }
-            }
-        }
-    }
     .banner-wrap {
         margin-bottom:64px;
         .banner {
@@ -759,6 +626,127 @@
         }
     }
 
+    // 제품 문제 해결 필터 & 리스트
+    .solutions-wrap {
+        @include clearfix;
+        .result-box {
+            float:right;
+            width:calc(100% - 234px);
+            .tit-wrap {
+                margin-bottom:48px;
+            }
+            @include mobile {
+                float:none;
+                width:100%;
+                .tit-wrap {
+                    margin-bottom:20px;
+                }
+            }
+        }
+        .filter-box {
+            position:relative;
+            float:left;
+            width:210px;
+            margin-top:96px;
+            .tit-wrap {
+                font-size:0;
+                .btn-back {
+                    display:inline-block;
+                    width:24px;
+                    height:24px;
+                    margin:3px 4px 0 0;
+                    font-weight:700;
+                    vertical-align:top;
+                    background:100% url('/lg5-common/images/icons/icon-btn-arrow-left.svg') no-repeat;
+                }
+            }
+            .filter-list {
+                &.open {
+                    overflow:hidden;
+                    height:0;
+                }
+                li {
+                    margin-top:12px;
+                    &:first-child {
+                        margin-top:0;
+                    }
+                    .filter-link {
+                        display:inline-block;
+                        @include font-medium;
+                        vertical-align:top;
+                    }
+                    .sub-depth {
+                        position:absolute;
+                        width:100%;
+                        left:0%;
+                        top:0;
+                        background:#fff;
+                    }
+                    &.on {
+                        & > .filter-link {
+                            color:#ec455a;
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                display:none;
+            }
+        }
+        .mobile-filter-box {
+            display:block;
+            margin-bottom:40px;
+            @include pc {
+                display:none;
+            }
+        }
+        .search-wrap { 
+            width:100%;
+            margin:0 0 48px;
+            .keyword-search {
+                position:relative;
+                max-width:582px;
+                width:100%;
+                margin:0 auto;
+                padding-right:138px;
+                .input-wrap {
+                    vertical-align:middle;
+                }
+                .chk-wrap {
+                    position:absolute;
+                    right:0;
+                    top:50%;
+                    transform:translateY(-50%);
+                }
+            }   
+            @include mobile {
+                margin:0 0 40px;
+                padding:0;
+                .keyword-search {
+                    max-width:none;
+                    padding:0;
+                    .input-wrap {
+                        display:block;
+                        width:100%;
+                        input[type=text] {
+                            padding:12px 68px 12px 24px;
+                            border-radius:28px;
+                        }
+                        .btn-search {
+                            width:68px;
+                            height:46px;
+                        }
+                    }
+                    .chk-wrap {
+                        position:static;
+                        margin:12px 0 0 0;
+                        transform:translateY(0);
+                    }
+                }
+            }
+        }
+    }
+    // 제품사용설명서 리스트
     .manual-list-wrap {
         .manual-list {
             margin:-16px -8px 0;
@@ -867,8 +855,9 @@
             }
         }
     }
-    .file-list-wrap {
-        .file-list {
+    // 드라이버/SW 리스트
+    .driver-list-wrap {
+        .driver-list {
             & > li {
                 padding:24px 32px;
                 border:1px solid #ddd;
@@ -918,7 +907,7 @@
                 }
                 .accord-cont {
                     display:none;
-                    .file-list {
+                    .driver-list {
                         margin-top:24px;
                         padding:20px 24px;
                         border-radius:8px;
@@ -1009,7 +998,7 @@
                         }
                     }
                     .accord-cont {
-                        .file-list {
+                        .driver-list {
                             margin-top:20px;
                             padding:16px;
                             & > li {
@@ -1299,10 +1288,6 @@
                 }   
             }
         }
-        .tooltip-wrap .tooltip-box .bullet-list {
-            margin-top:0;
-        }
-        
     }
     /* 제품 지원 페이지 */
     &.psp {
@@ -1433,7 +1418,6 @@
                 }
             }
         }
-
         // PSP floating tab
         .anchors-tabs-wrap {
             border-bottom:8px solid #f4f4f4;
