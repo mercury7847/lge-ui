@@ -214,6 +214,9 @@
                     }
                 }
             }
+            &.bg-gray {
+                background-color: #f4f4f4;
+            }
             @include mobile {
                 padding:40px 16px 0;
                 &:first-child {
