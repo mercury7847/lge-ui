@@ -598,14 +598,6 @@
                     text-align:left;
                 }
             }
-
-            &.count-type {
-                .infos {
-                    .tit-wrap {
-                        min-height:92px;
-                    }
-                }
-            }
         }
         .row.disabled {
             .product-info {
@@ -733,6 +725,33 @@
         }
     }
 
+    // 찜한 제품, 최근 본 제품
+    &.type2 {
+        border-top:2px solid #222;
+        .box {
+            position:relative;
+            margin:0;
+            border-top:1px solid #ddd;
+            &:first-child {
+                border-top:none;
+            }
+            .col-table {
+                display:table;
+                width:100%;
+                .col {
+                    display:table-cell;
+                    vertical-align:middle;
+                    &.btn-col {
+                        width:auto;
+                        min-width:180px;
+                        padding:0 24px;
+                        text-align:right;
+                        white-space:nowrap;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // 청약 계약 진행단계 안내
