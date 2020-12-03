@@ -190,6 +190,14 @@
             top:1px;
         }
     }
+
+    &.white{
+        color:#fff;
+        &:after{
+            background:url('/lg5-common/images/icons/btn-arrow-right-white-20.svg') center;
+            background-size:15px;
+        }
+    }
 }
 
 .btn-moreinfo {
