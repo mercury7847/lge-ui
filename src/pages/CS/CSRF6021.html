@@ -14,7 +14,11 @@
         <div class="container">
             @@include('./common/modules/page-header.html', {
                 'pageTitle': '영상 상담 예약',
-                'pageDesc': '영상으로 고장 증상을 정확하게 판별하여 빠르게 해결해 드립니다.'
+                'pageDesc': '영상으로 고장 증상을 정확하게 판별하여 빠르게 해결해 드립니다.',
+                'pageBtn' : [
+                    { 'btn' : '요금 및 보증 기간 안내 ' },
+                    { 'btn' : '유상 서비스 적용 안내' }
+                ]
             })
 
             <div class="contents support reservation">
@@ -29,12 +33,11 @@
 
                         <div class="section">
                             <div class="tit-wrap">
-                                <h2 class="tit">고장증상22 선택</h2>
+                                <h2 class="tit">고장증상 선택</h2>
                             </div>
                             <div class="rdo-wrap">
                                 <div class="rdo-wrap-info">
                                     <h3 class="tit req">고장증상<span class="blind">필수입력</span></h3>
-                                    <div class="btn-more"><p class="err-msg"></p></div>
                                 </div>
                                 <div class="rdo-wrap-list">
                                     <span class="rdo-wrap btn-type2">
@@ -110,7 +113,6 @@
                             <div class="rdo-wrap">
                                 <div class="rdo-wrap-info">
                                     <h3 class="tit req">세부증상 선택<span class="blind">필수입력</span></h3>
-                                    <div class="btn-more"><p class="err-msg"></p></div>
                                 </div>
                                 <div class="select-list-wrap w-auto type2">
                                     <ul>
