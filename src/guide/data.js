@@ -210,8 +210,11 @@ var res = {
 					// "방문일정 변경요청 팝업" : ["/html/MYC/ACCF7030_popup.html","","진행중"]
 				},
 				"관심목록" : {
+					"찜한 제품" : ["/html/MYC/ACCF7013.html","","진행중"],
 					"최근 본 제품" : ["/html/MYC/ACCF7011.html","","진행중"],
-					"찜한 제품" : ["/html/MYC/ACCF7013.html","","진행중"]
+					"구독" : ["/html/MYC/ACCF7017.html","","진행중"],
+					// "단골매장" : ["/html/MYC/ACCF7011.html","","진행중"],
+					"재입고 알림" : ["/html/MYC/ACCF7072.html","","진행중"],
 				},
 				"제품 관리" : {
 					"보유제품 리스트" : ["/html/MYC/ACCF7033.html","","검수완료"],
@@ -220,7 +223,6 @@ var res = {
 					// "등록완료" : ["/html/MYC/ACCF7064.html","","진행중"]
 				},
 				"활동 내역" : {
-					"구독" : ["/html/MYC/ACCF7017.html","","진행중"],
 					"관심 스토리" : ["/html/MYC/ACCF7063.html","","진행중"]
 				},
 				"활동 관리" : {
