@@ -19,7 +19,6 @@
                             "sect1" : [
                                 { "on": "on", "page": "주문/배송 조회" },
                                 { "on": "", "page": "배송지 주소 관리" },
-                                { "on": "", "page": "사은품 신청" },
                                 { "on": "", "page": "쿠폰" }
                             ]
                         })
@@ -100,6 +99,17 @@
                                             })
                                         </div>
                                         <!-- // 배송 설치 정보 -->
+
+                                        <!-- 결제 정보 -->
+                                        <div class="inner-box">
+                                            <p class="inner-tit">결제 정보</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "결제수단", "dd" : "<span>신용카드</span><a href='#n' class='btn-link'>영수증 발급 내역</a>" },
+                                                ]
+                                            })
+                                        </div>
+                                        <!-- // 결제 정보 -->
 
                                         <!-- 월 납부 정보 -->
                                         <div class="inner-box">

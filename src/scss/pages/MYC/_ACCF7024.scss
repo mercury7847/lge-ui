@@ -445,6 +445,7 @@
             @include mobile {
                 display:block;
                 position:relative;
+                min-height:100px;
             }
             .thumb {
                 display:table-cell;
@@ -547,32 +548,6 @@
                         margin-top:2px;
                     }
                 }
-                .cancel-box {
-                    position:absolute;
-                    right:0;
-                    top:50%;
-                    width:164px;
-                    transform:translateY(-50%);
-                    text-align:center;
-                    @include mobile {
-                        float:left;
-                        position:relative;
-                        right:auto;
-                        top:auto;
-                        width:auto;
-                        margin-top:12px;
-                        transform:translateY(0);
-                        text-align:left;
-                    }
-                }
-                .buttons {
-                    margin-top:21px;
-                    text-align:right;
-                    @include mobile {
-                        float:right;
-                        margin-top:12px;
-                    }
-                }
             }
             .price {
                 display:table-cell;
@@ -596,14 +571,6 @@
                     font-size:18px;
                     line-height:27px;
                     text-align:left;
-                }
-            }
-
-            &.count-type {
-                .infos {
-                    .tit-wrap {
-                        min-height:92px;
-                    }
                 }
             }
         }
@@ -731,8 +698,132 @@
                 }
             }
         }
+
+        .soldout-msg {
+            margin-top:24px;
+            color:#F04E3E;
+            @include font-small;
+            font-weight:500;
+            &::before {
+                content:' ';
+                display:inline-block;
+                width:20px;
+                height:20px;
+                margin:2px 4px 0 0;
+                background:url('/lg5-common/images/icons/icon-error.svg') center no-repeat;
+                vertical-align:top;
+            }
+            @include pc {
+                &.pc-view {
+                    display:block;
+                }
+                &.m-view {
+                    display:none;
+                }
+            }
+            @include mobile {
+                &.pc-view {
+                    display:none;
+                }
+                &.m-view {
+                    display:block;
+                }
+            }
+        }
     }
 
+    // 찜한 제품, 최근 본 제품
+    &.type2 {
+        border-top:2px solid #222;
+        .box {
+            position:relative;
+            margin:0;
+            border-top:1px solid #ddd;
+            &:first-child {
+                border-top:none;
+            }
+            @include mobile {
+                padding:32px 0;
+                border-radius:0;
+                box-shadow:none;
+                overflow:initial;
+            }
+            .col-table {
+                display:table;
+                width:100%;
+                @include mobile {
+                    display:block;
+                    padding-top:30px;
+                    padding-left:112px;
+                }
+                .col {
+                    display:table-cell;
+                    padding:32px 24px;
+                    padding-left:0;
+                    vertical-align:middle;
+                    @include mobile {
+                        display:block;
+                        padding:0;
+                    }
+                    &.btn-col {
+                        width:15.8%;
+                        text-align:right;
+                        white-space:nowrap;
+                        @include mobile {
+                            width:100%;
+                            margin-top:12px;
+                            text-align:left;
+                        }
+                    }
+                }
+            }
+            .btn-delete {
+                position:absolute;
+                top:32px;
+                right:0;
+                width:24px;
+                height:24px;
+                background:url("/lg5-common/images/icons/btn-close-24.svg") no-repeat;
+            }
+            .chk-wish-wrap {
+                position:absolute;
+                top:32px;
+                right:36px;
+            }
+            &.disabled {
+                .col-table {
+                    padding-right:15.8%;
+                }
+                .product-info {
+                    .thumb {
+                        > a img {
+                            opacity:.3;
+                        }
+                    }
+                    .infos {
+                        .name {
+                            color:#aaa;
+                        }
+                        .e-name {
+                            color:#aaa;
+                        }
+                        .more ul li {
+                            color:#aaa;
+                        }
+                        .count {
+                            color:#aaa;
+                        }
+                    }
+                    .price {
+                        color:#aaa;
+                        small {
+                            color:#aaa;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 // 청약 계약 진행단계 안내
