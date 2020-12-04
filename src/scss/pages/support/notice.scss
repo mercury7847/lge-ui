@@ -27,6 +27,16 @@
                 color:#222;
             }
         }
+        .icon-flag {
+            display:inline-block;
+            width:24px;
+            height:24px;
+            vertical-align:middle;
+            background:url(/lg5-common/images/icons/icon-fixing.svg) no-repeat;
+            & + .flag {
+                margin-left:12px;
+            }
+        }
     }
 }
 
