@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        componentID: "KRC0065",
+        isJScompile: true
+    })
+<body style="background-color:#f4f4f4;">
+    <div class="wrap">
+        <div class="container">
+            
+            <div style="width:100%;height:200px;"></div>
+            <!-- 품절제품-->
+            @@include('./common/partials/KRC0065.html', {
+                "component-class.margin" : "zero-top zero-btm",
+                "product" : {
+                    "name" : "LG TROMM 스타일러LG TROMM 스타일러LG TROMM 스타일러"
+                },
+                "tabMenu" : {
+                    careSolution : true
+                },
+                "extraMenu" : {
+                    "style1" : "pink",
+                    "style2" : "disabled",
+                    "text" : "품절",
+                    "link-url" : "#"
+                },
+                "type": "sticky",
+                "type-btn": "type-btn"
+            })
+            <!-- //품절제품 -->
+            <div style="width:100%;height:2000px;"></div> <!-- 스크롤테스트를 위한 임시 돔. 개발시 삭제-->
+        </div>
+    </div>
+</body>
+</html>
