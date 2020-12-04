@@ -186,13 +186,7 @@
                 }
             }
         }
-        &.bg {
-            max-width: 100% !important;
-            background-color: $color-bg;
-            .tabs {
-                padding: 16px;
-            }
-        }
+        
     }
 
 
@@ -242,6 +236,39 @@
                         line-height:48px;
                     }
                 }
+            }
+        }
+    }
+}
+
+.tabs-bg {
+    max-width: 100%;
+    margin-top: 24px;
+    background-color: $color-bg;
+    @include mobile {
+        margin-top: 8px;
+        padding-top: 16px;
+    }
+    .tabs-wrap {
+        position: relative; 
+    }
+    .tabs {
+        padding: 16px;
+    }
+    .btn-area {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        @include mobile {
+            position: static;
+            transform: translateY(0);
+            margin-top: 40px;
+        }
+        .btn {
+            background-color: transparent;
+            @include mobile {
+                background-color: #fff;
             }
         }
     }

@@ -78,6 +78,10 @@ var res = {
 			"KRC0056_BG Image 3 Text" : ["/html/components/KRC0056.html","","검수완료"],
 			"KRC0057_BG Image 2Image - Textoverlay" : ["/html/components/KRC0057.html","","검수완료"],
 			"KRC0058_Side Slide Image - Text" : ["/html/components/KRC0058.html","","진행중"],
+			"KRC0062_Feacture icon(no action)" : ["/html/components/KRC0062.html","","진행중"],
+			"KRC0063_Switching Hero Image" : ["/html/components/KRC0063.html","","진행중"],
+			"KRC0064_Widthways Swiching images" : ["/html/components/KRC0064.html","","진행중"],
+			"KRC0065_Tab Anchor_USP" : ["/html/components/KRC0065.html","","진행중"],
 			"KRP0001_GNB - B2C" : ["/html/components/KRP0001.html","","검수완료"],
 			"KRP0003_Footer" : ["/html/components/KRP0003.html","","검수완료"],
 			"KRP0004_Scroll to the top_Static" : ["/html/components/floating.html","","검수완료"],
@@ -136,10 +140,10 @@ var res = {
 			},
 			"스토리(STC)" : {
 				"LG 페이" : {
-					// "LG 페이" : ["/html/STC/MKT5003.html","","진행중"],
-					// "LG 페이_영상 보기 팝업" : ["/html/STC/MKT5003_popup.html","","진행중"],
-					// "LG 페이제휴카드 안내" : ["/html/STC/MKT5004.html","","진행중"],
-					// "LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","진행중"]
+					"LG 페이" : ["/html/STC/MKT5003.html","","진행중"],
+					"LG 페이_영상 보기 팝업" : ["/html/STC/MKT5003_popup.html","","진행중"],
+					"LG 페이제휴카드 안내" : ["/html/STC/MKT5004.html","","진행중"],
+					"LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","진행중"]
 				},
 				"모바일 서비스" : {
 					// "모바일스위치(MKT5006,MKT5007,MKT5008)" : ["/html/STC/MKT5006.html","","진행중"]

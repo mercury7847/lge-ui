@@ -25,7 +25,7 @@
         '<li>' +
             '<div class="head">' +
                 '<div class="file-box">' +
-                    '<p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">{{os}} {{title}}</button></p>' +
+                    '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}">{{os}} {{title}}</button></p>' +
                     '<ul class="options">' +
                         '<li>{{version}}  {{category}}</li>' +
                         '<li>{{driver}}</li>' +
@@ -45,11 +45,11 @@
             '</div>' +
             '{{# if (typeof prevVersion != "undefined" && prevVersion.length) { #}}' +
             '<div class="accord-cont ui_accord_content">' +
-                '<ul class="file-list">' +
+                '<ul class="driver-list">' +
                     '{{# for (var i = 0; i < prevVersion.length; i++) { #}}' +
                     '<li>' +
                         '<div class="file-box">' +
-                            '<p class="tit"><button type="button" class="" data-href="#fileDetailPopup" data-control="modal">{{os}} {{title}}</button></p>' +
+                            '<p class="tit"><button type="button" class="btn-info" data-href="{{detailUrl}}">{{os}} {{title}}</button></p>' +
                             '<ul class="options">' +
                                 '<li>{{version}}  {{category}}</li>' +
                                 '<li>{{driver}}</li>' +
@@ -72,16 +72,20 @@
     $(window).ready(function() {
         var download = {
             initialize: function() {
-                var _self = this;
+                var self = this;
 
-                _self.manualSec = $('.manual-section');
-                _self.driverSec = $('.driver-section');
+                self.manualSec = $('.manual-section');
+                self.driverSec = $('.driver-section');
+                
+                self.driverSec.find('.ui_list_accordion').vcAccordion({
+                    toggleSelector: '>.head .ui_accord_toggle'
+                });
+                self.driverSec.find('.pagination').pagination();
 
-                _self.bindEvent();
-                _self.searchList();
+                self.bindEvent();
             },
             setManualList: function(list) {
-                var _self = this;
+                var self = this;
                 var listArr = list.listData instanceof Array ? list.listData : [];
                 var html = "";
 
@@ -90,21 +94,21 @@
                         html += vcui.template(manualListTemplate, item);
                     });
                     
-                    _self.manualSec.find('.manual-list').append(html).show();
-                    _self.manualSec.find('.no-data').hide();
+                    self.manualSec.find('.manual-list').append(html).show();
+                    self.manualSec.find('.no-data').hide();
 
                     if (list.listPage.view == 'Y') {
-                        _self.manualSec.find('.btn-wrap').show();
+                        self.manualSec.find('.btn-moreview').show();
                     } else {
-                        _self.manualSec.find('.btn-wrap').hide();
+                        self.manualSec.find('.btn-moreview').hide();
                     }
                 } else {
-                    _self.driverSec.find('.manual-list').html('').hide();
-                    _self.driverSec.find('.no-data').show();
+                    self.manualSec.find('.manual-list').html('').hide();
+                    self.manualSec.find('.no-data').show();
                 }
             },
             setDriverList: function(list) {
-                var _self = this;
+                var self = this;
                 var listArr = list.listData instanceof Array ? list.listData : [];
                 var html = "";
             
@@ -112,14 +116,14 @@
                     listArr.forEach(function(item) {
                         html += vcui.template(driverListTemplate, item);
                     });
-                    _self.driverSec.find('.file-list').html(html).show();
-                    _self.driverSec.find('.pagination').show();
-                    _self.driverSec.find('.pagination').pagination('update', list.listPage);
-                    _self.driverSec.find('.no-data').hide();
+                    self.driverSec.find('.driver-list').html(html).show();
+                    self.driverSec.find('.pagination').show();
+                    self.driverSec.find('.pagination').pagination('update', list.listPage);
+                    self.driverSec.find('.no-data').hide();
                 } else {
-                    _self.driverSec.find('.file-list').html('').hide();
-                    _self.driverSec.find('.pagination').hide();
-                    _self.driverSec.find('.no-data').show();
+                    self.driverSec.find('.driver-list').html('').hide();
+                    self.driverSec.find('.pagination').hide();
+                    self.driverSec.find('.no-data').show();
                 }
             },
             setOsOption: function(list) {
@@ -163,95 +167,119 @@
                 this.driverSec.find('.tabs-wrap ul').html(html);
                 this.driverSec.find('.tabs-wrap').vcTab('update').vcTab('select', 0);
             },
-            searchList: function(formData) {
-                var _self = this;
+            searchAllList: function(formData) {
+                var self = this;
                 var ajaxUrl = '/lg5-common/data-ajax/support/downloadList.json';
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, formData, function(result){
                     var data = result.data;
     
-                    _self.setManualList(data.manual);
-                    _self.setDriverList(data.driver);
-                    _self.setOsOption(data.driver.osOption);
-                    _self.setDriverOption(data.driver.driverOption);
-                    _self.setDriverType(data.driver.driver);
+                    self.setManualList(data.manual);
+                    self.setDriverList(data.driver);
+                    self.setOsOption(data.driver.osOption);
+                    self.setDriverOption(data.driver.driverOption);
+                    self.setDriverType(data.driver.driver);
 
                     lgkorUI.hideLoading();
                 });
             },
             searchManualList: function(formData) {
-                var _self = this;
-                var ajaxUrl = '/lg5-common/data-ajax/support/downloadList.json';
+                var self = this;
+                var ajaxUrl = self.manualSec.data('ajax');
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, formData, function(result){
                     var data = result.data;
     
-                    _self.setManualList(data.manual);
+                    self.setManualList(data.manual);
 
                     lgkorUI.hideLoading();
                 });
             },
             searchDriverList: function(formData) {
-                var _self = this;
-                var ajaxUrl = '/lg5-common/data-ajax/support/downloadList.json';
+                var self = this;
+                var ajaxUrl = self.driverSec.data('ajax');;
 
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxDataPost(ajaxUrl, formData, function(result){
                     var data = result.data;
     
-                    _self.setDriverList(data.driver);
+                    self.setDriverList(data.driver);
 
                     lgkorUI.hideLoading();
                 });
             },
             bindEvent: function() {
-                var _self = this;
+                var self = this;
 
-                _self.manualSec.find('.btn-more').on('click', function() {
+                self.manualSec.find('.btn-moreview').on('click', function() {
                     var param = {};
 
-                    _self.searchManualList(param);
+                    self.searchManualList(param);
+                });
+                self.manualSec.find('.btn-download').on('click', function(e) {
+                    e.preventDefault();
+
+                    var fileUrl = $(this).attr('href'),
+                        infoArr = fileUrl.split('?'),
+                        url = infoArr[0],
+                        param = infoArr[1];
+
+                    lgkorUI.requestAjaxData(url, param, function(result) {
+                        var data = result.data;
+
+                        if (data.resultFlag) {
+                            location.href = fileUrl + '&check=true';
+                        }
+                    });  
                 });
 
-                _self.driverSec.find('#os').on('change', function() {
+                self.driverSec.find('#os').on('change', function() {
                     var param = {};
 
-                    _self.searchDriverList(param);
+                    self.searchDriverList(param);
                 });
-                _self.driverSec.find('#driver').on('change', function() {
+                self.driverSec.find('#driver').on('change', function() {
                     var param = {};
                     var val = $(this).val();
 
-                    _self.searchDriverList(param);
+                    self.searchDriverList(param);
 
                     if (val) {
-                        _self.driverSec.find('.tabs-wrap').hide();
+                        self.driverSec.find('.tabs-wrap').hide();
                     } else {
-                        _self.driverSec.find('.tabs-wrap').show();
-                        _self.driverSec.find('.tabs-wrap').vcTab('select', 0);
+                        self.driverSec.find('.tabs-wrap').show();
+                        self.driverSec.find('.tabs-wrap').vcTab('select', 0);
                     }
                 });
-                _self.driverSec.find('.tabs-wrap').on('tabchange', function() {
+                self.driverSec.find('.tabs-wrap').on('tabchange', function() {
                     var param = {};
 
-                    _self.searchDriverList(param);
+                    self.searchDriverList(param);
                 });
-                _self.driverSec.find('.pagination').on('pageClick', function(e) {
+
+                self.driverSec.find('.driver-list-wrap').on('click', '.btn-info', function() {
+                    var ajaxUrl = $(this).data('href');
+
+                    lgkorUI.requestAjaxData(ajaxUrl, null, function(result){
+                        $('#fileDetailPopup').html(result).vcModal();
+                        $('#fileDetailPopup').on('click', '.btn-more', function() {
+                            var $list = $(this).parent();
+        
+                            if ($list.hasClass('on')) {
+                                $list.removeClass('on');
+                            } else {
+                                $list.addClass('on');
+                            }
+                        });
+                    }, null, "html");
+                });
+
+                self.driverSec.find('.pagination').on('pageClick', function(e) {
                     var param = {};
 
-                    _self.searchDriverList(param);
-                });
-
-                $(document).on('click', '.btn-more', function() {
-                    var $list = $(this).parent();
-
-                    if ($list.hasClass('on')) {
-                        $list.removeClass('on');
-                    } else {
-                        $list.addClass('on');
-                    }
+                    self.searchDriverList(param);
                 });
             }
         }

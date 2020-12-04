@@ -700,6 +700,7 @@
                 display:table-cell;
                 font-size:0;
                 vertical-align:top;
+                white-space:nowrap;
                 @include mobile {
                     display:block;
                 }

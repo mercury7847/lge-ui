@@ -134,6 +134,10 @@
                 max-height: 100%;
             }
         }
+        .appgate-figure-title {
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
         figcaption {
             text-align: left;
             padding-right: 40px;
@@ -158,6 +162,7 @@
         margin-left: 11px;
         img {
             border-radius: 1.1111vw;
+            width:100%;
         }
         &:first-child {
             margin-left: 0;
@@ -197,6 +202,7 @@
         width: 76px;
         height: 76px;
         text-align: center;
+        line-height: 1.62;
     }
 }
 
@@ -273,6 +279,13 @@
         @include mobile {
         }
     }
+    .swipe-content {
+        padding-bottom: 40px;
+    }
+}
+
+.banner-figure {
+    margin-top: 40px;
 }
 
 @include mobile {
