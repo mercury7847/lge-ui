@@ -240,7 +240,7 @@
             </div>
 
             <!-- 일반 + 함께구매 (추가구성품) -->
-            <div class="additional-purchase">
+            <div class="box additional-purchase">
                 <div class="select-wrap ui_dropdown">
                     <!-- focus 시 toggle text "제품을 선택해주세요" 텍스트 변경 -->
                     <a href="#" class="select-button ui_dropdown_toggle">액세서리/소모품</a>
@@ -363,7 +363,7 @@
             <!-- // 일반 + 함께구매 (추가구성품) -->
 
             <!-- 구성품을 포함하는 제품 -->
-            <div class="include-components">
+            <div class="box include-components">
                 <dl>
                     <dt class="text">구성품</dt>
                     <dd class="content">
@@ -378,12 +378,12 @@
             <!-- // 구성품을 포함하는 제품 -->
 
             <!-- 구매불가 -->
-            <div class="non-purchase">
+            <div class="box non-purchase">
                 <span class="text">해당제품은 온라인에서 판매하지 않습니다.</span>
             </div>
             <!-- // 구매불가 -->
             <!-- 구매불가 - 단종 -->
-            <div class="non-purchase">
+            <div class="box non-purchase">
                 <span class="text">해당제품은 판매가 종료되었습니다.</span>
             </div>
             <!-- // 구매불가 - 단종 -->
@@ -418,7 +418,7 @@
             </div>
             <!-- // 케어십 서비스 -->
 
-            <div class="payment-amount">
+            <div class="box payment-amount">
                 <ul>
                     <li>
                         <dl class="price-info quantity">
@@ -450,8 +450,13 @@
                 <!-- 일반 -->
                 <div class="purchase-button default">
                     <div class="btn-group">
-                        <!-- 찜하기 버튼 toggle text - 찜하기 / 찜한 제품 -->
-                        <a href="#n" class="btn like" role="button"><span class="blind">찜한 제품</span></a>
+                        <div class="btn like">
+                            <span class="chk-wish-wrap">
+                                <input type="checkbox" id="wish-chk1" name="wish-chk1" checked>
+                                <!-- 찜하기 버튼 toggle text - 찜하기 / 찜한 제품 -->
+                                <label for="wish-chk1"><span class="blind">찜한 제품</span></label>
+                            </span>
+                        </div>
                         <a href="#n" class="btn cart" role="button"><span class="blind">장바구니 담기</span></a>
                         <a href="#n" class="btn" role="button"><span>바로구매</span></a>
                     </div>
@@ -460,8 +465,13 @@
                 <!-- 사전예약 -->
                 <div class="purchase-button pre-order">
                     <div class="btn-group">
-                        <!-- 찜하기 버튼 toggle text - 찜하기 / 찜한 제품 -->
-                        <a href="#n" class="btn like" role="button"><span class="blind">찜한 제품</span></a>
+                        <div class="btn like">
+                            <span class="chk-wish-wrap">
+                                <input type="checkbox" id="wish-chk2" name="wish-chk2">
+                                <!-- 찜하기 버튼 toggle text - 찜하기 / 찜한 제품 -->
+                                <label for="wish-chk2"><span class="blind">찜하기</span></label>
+                            </span>
+                        </div>
                         <a href="#n" class="btn" role="button"><span>사전예약</span></a>
                     </div>
                 </div>
@@ -469,8 +479,13 @@
                 <!-- 렌탈 Only -->
                 <div class="purchase-button rental">
                     <div class="btn-group">
-                        <!-- 찜하기 버튼 toggle text - 찜하기 / 찜한 제품 -->
-                        <a href="#n" class="btn like" role="button"><span class="blind">찜한 제품</span></a>
+                        <div class="btn like">
+                            <span class="chk-wish-wrap">
+                                <input type="checkbox" id="wish-chk3" name="wish-chk3">
+                                <!-- 찜하기 버튼 toggle text - 찜하기 / 찜한 제품 -->
+                                <label for="wish-chk3"><span class="blind">찜하기</span></label>
+                            </span>
+                        </div>
                         <a href="#n" class="btn cart" role="button"><span class="blind">장바구니 담기</span></a>
                         <a href="#n" class="btn" role="button"><span>렌탈 신청</span></a>
                     </div>
@@ -738,8 +753,13 @@
                     <!-- 일반 -->
                     <div class="purchase-button default">
                         <div class="btn-group">
-                            <!-- 찜하기 버튼 toggle text - 찜하기 / 찜한 제품 -->
-                            <a href="#n" class="btn like" role="button"><span class="blind">찜한 제품</span></a>
+                            <div class="btn like">
+                                <span class="chk-wish-wrap">
+                                    <input type="checkbox" id="wish-chk4" name="wish-chk4" checked>
+                                    <!-- 찜하기 버튼 toggle text - 찜하기 / 찜한 제품 -->
+                                    <label for="wish-chk4"><span class="blind">찜한 제품</span></label>
+                                </span>
+                            </div>
                             <a href="#n" class="btn cart" role="button"><span class="blind">장바구니 담기</span></a>
                             <a href="#n" class="btn" role="button"><span>바로구매</span></a>
                         </div>
@@ -910,8 +930,13 @@
                     <!-- 렌탈 Only -->
                     <div class="purchase-button default">
                         <div class="btn-group">
-                            <!-- 찜하기 버튼 toggle text - 찜하기 / 찜한 제품 -->
-                            <a href="#n" class="btn like" role="button"><span class="blind">찜한 제품</span></a>
+                            <div class="btn like">
+                                <span class="chk-wish-wrap">
+                                    <input type="checkbox" id="wish-chk5" name="wish-chk5">
+                                    <!-- 찜하기 버튼 toggle text - 찜하기 / 찜한 제품 -->
+                                    <label for="wish-chk5"><span class="blind">찜하기</span></label>
+                                </span>
+                            </div>
                             <a href="#n" class="btn cart" role="button"><span class="blind">장바구니 담기</span></a>
                             <a href="#n" class="btn" role="button"><span>렌탈 신청</span></a>
                         </div>

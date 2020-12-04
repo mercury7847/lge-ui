@@ -30,29 +30,24 @@
         }
     }
 
-    .pdp-visual-area {
+    .pdp-visual-wrap {
 		float:left;
 		width:calc(100% - 585px);
-        //margin-top:33px;
-        //padding-left:30px;
-        /*
-		@include screen(custom, max, $max-lg) {
-			width:calc(100% - 351px);
-        }*/
+
         @media screen and (max-width: 1024px) {
             width:calc(100% - 432px);
         }
 		@include mobile {
             float:none;
-            width:100%;
+            width:auto;
             //margin-top:25px;
+            margin: 0 -16px;
             padding-left:0;
 		}
     }
+
     .pdp-visual-area {
         position: relative;
-
-
         .badge {
             //display: flex;
             position: absolute;
@@ -91,13 +86,6 @@
         
 		.default {
 			position:relative;
-			//float:right;
-            //width:calc(100% - 128px);
-            /*
-			@include screen(custom, max, $max-md) {
-				float:left;width:100%;
-			}*/
-			//@include screen(custom, max, $max-sm) {margin:0 -24px;}
 			text-align:center;
 			a {
 				text-align:center;
@@ -108,34 +96,7 @@
             }
             
         }
-        .pdp-more-info {
-            width: 100%;
-            margin-top: 36px;
-            padding: 21px 16px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            .inner {
-                position: relative;
-                @include clearfix;
-                .text-info {
-                    position: relative;
-                    float: left;
-                    padding-left: 52px;
-                    @include font-medium;
-                    .img-area {
-                        position: absolute;
-                        top: 50%;
-                        left: 0;
-                        transform: translate(0, -50%);
-                    }
-                }
-                .btn-link {
-                    float: right;
-                    @include font-small;
-                    color: $color-gray-1;
-                }
-            }
-        }
+
 		.pdp-thumbnail-nav {
             position: relative;
             margin-top: 16px;
@@ -293,8 +254,8 @@
     // mobile visual
     .pdp-visual-area.visible-sm {
         overflow: hidden;
-        margin-bottom: 28px;
-        padding-bottom: 34px;
+        //margin-bottom: 28px;
+        //padding-bottom: 34px;
         .pdp-visual-list {
             position: relative;
             @include clearfix;
@@ -309,10 +270,105 @@
             }
         }
         .indi-wrap {
-            bottom: -22px;
+            display: none;
+        }
+        .slide-wrap {
+            .slide-controls {
+                display: block;
+                .btn-arrow {
+                    width: 36px;
+                    height: 36px;
+                    &:before {
+                        width: 36px;
+                        height: 36px;
+                        background-size: 100%;
+                    }
+                }
+                button {
+                    &.prev {
+                        left: 6px;
+                    }
+                    &.next {
+                        right: 6px;
+                    }
+                }
+            }
+            .slide-number {
+                position: absolute;
+                bottom: 36px;
+                right: 0;
+                left: 0;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 20px;
+                color: $color-gray-1;
+                text-align: center;
+                .current {
+                    font-weight: 700;
+                    color: $color-default;
+                    &:after {
+                        display: inline-block;
+                        width: 1px;
+                        height: 10px;
+                        margin: 0 6px;
+                        background-color: $color-gray-1;
+                        vertical-align: -1px;
+                        content: '';
+                    }
+                }
+            }
         }
     }
- 
+
+    .pdp-more-info {
+        width: 100%;
+        margin-top: 36px;
+        padding: 21px 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        .inner {
+            position: relative;
+            @include clearfix;
+            .text-info {
+                position: relative;
+                float: left;
+                padding-left: 52px;
+                @include font-medium;
+                .img-area {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translate(0, -50%);
+                }
+            }
+            .btn-link {
+                float: right;
+                @include font-small;
+                color: $color-gray-1;
+            }
+        }
+
+        @include mobile {
+            margin-top: 0;
+            padding: 16px;
+            border: 0;
+            border-top: 12px solid $color-bg;
+            border-bottom: 12px solid $color-bg;
+            border-radius: 0;
+            .inner {
+                padding-left: 52px;
+                .text-info {
+                    position: static;
+                    float: none;
+                    padding-left: 0;
+                }
+                .btn-link {
+                    float: none;
+                    text-align: left;
+                }
+            }
+        }
+    }
 
     .hidden-sm {
         @include mobile {
@@ -336,53 +392,8 @@
         @include mobile {
             float: none;
             width: 100%;
+            padding-top: 32px;
         }
-        //.info-top {
-        //    position: absolute;
-        //    top: 50px;
-        //    right: 0;
-        //    font-size: 0;
-        //    @include mobile {
-        //        top: 40px;
-        //    }
-        //    .product-wish {
-        //        display: inline-block;
-        //        width: 24px;
-        //        height: 24px;
-        //        input {
-        //            & + label {
-        //                &:before {
-        //                    border: 0;
-        //                    border-radius: 0;
-        //                    background: url("/lg5-common/images/icons/icon-heart-off.svg") no-repeat 0 0;
-        //                    background-size: 24px 24px;
-        //                }
-        //                &:after {
-        //                    display: none;
-        //                }
-        //            }
-        //            &:checked + label {
-        //                &:before {
-        //                    background-image: url("/lg5-common/images/icons/icon-heart-on.svg");
-        //                }
-        //                &:after {
-        //                    border-color:#fff;
-        //                }
-        //            }
-        //        }
-        //    }
-        //    .product-share {
-        //        display: inline-block;
-        //        margin-left: 8px;
-        //        vertical-align: top;
-        //        .share {
-        //            display: block;
-        //            width: 24px;
-        //            height: 24px;
-        //            background: url("/lg5-common/images/icons/icon-share.svg") no-repeat 0 0;
-        //        }
-        //    }
-        //}
         .product-detail-info {
             //position: relative;
             font-size: 0;
@@ -391,6 +402,9 @@
                 padding: 24px;
                 border-radius: 8px;
                 background-color: $color-bg;
+                @include mobile {
+                    padding: 24px 12px;
+                }
             }
 
             .product-name {
@@ -488,6 +502,15 @@
                         width: 116px;
                         padding-top: 8px;
                         @include font-small;
+                    }
+                }
+                @include mobile {
+                    padding: 48px 12px 32px;
+                    > [class*="sibling-"] {
+                        justify-content: left;
+                        .text {
+                            width: 74px;
+                        }
                     }
                 }
                 .select-option {
@@ -642,6 +665,11 @@
                     .text {
                         padding-top: 6px;
                     }
+                    @include mobile {
+                        .text {
+                            padding-top: 8px;
+                        }
+                    }
                 }
                 &.total-payment {
                     //margin-top: 16px;
@@ -653,12 +681,24 @@
                         font-size: 26px;
                         line-height: 36px;
                     }
+                    @include mobile {
+                        .text {
+                            padding-top: 3px;
+                        }
+                        .price {
+                            font-size: 18px;
+                            line-height: 27px;
+                        }
+                    }
                 }
             }
 
             .info-accordion-wrap {
                 .lists {
                     padding: 0 24px;
+                    @include mobile {
+                        padding: 0 12px;
+                    }
                     &:not(:first-child) {
                         margin-top: 16px;
                     }
@@ -714,6 +754,9 @@
                         padding: 24px;
                         border-radius: 8px;
                         background-color: $color-bg;
+                        @include mobile {
+                            padding: 24px 12px;
+                        }
                         .btn-toggle {
                             transform: translateY(-50%) rotate(-180deg);
                         }
@@ -839,7 +882,7 @@
             }
             .select-text {
                 position: absolute;
-                top: 24px;
+                top: 50%;
                 left: 16px;
                 z-index: 3;
                 transform: translateY(-50%);
@@ -851,6 +894,9 @@
                 .ui-selectbox-wrap {
                     .ui-select-button {
                         text-align: right;
+                        @include mobile {
+                            padding: 10px 48px 10px 15px;
+                        }
                     }
                     .ui-selectbox-list {
                         z-index: 4;
@@ -858,12 +904,15 @@
                             padding-right: 48px;
                             text-align: right;
                         }
+                        @include mobile {
+                            top: 44px;
+                        }
                     }
                 }
                 .select-button {
                     display: block;
                     position: relative;
-                    padding: 10px 47px 10px 15px;
+                    padding: 10px 48px 10px 15px;
                     border: 1px solid $color-border;
                     border-radius: 8px;
                     background: $color-bg-wt;
@@ -1096,9 +1145,6 @@
 
         .additional-purchase {
             margin-top: 16px;
-            padding: 24px;
-            border-radius: 8px;
-            background-color: $color-bg;
             .select-wrap {
                 position: relative;
                 display: block;
@@ -1318,9 +1364,6 @@
         .include-components {
             @include clearfix;
             margin-top: 16px;
-            padding: 24px;
-            border-radius: 8px;
-            background-color: $color-bg;
             @include font-small;
             .text {
                 float: left;
@@ -1333,9 +1376,9 @@
 
         .non-purchase {
             margin-top: 16px;
-            padding: 24px;
-            border-radius: 8px;
-            background-color: $color-bg;
+            //padding: 24px;
+            //border-radius: 8px;
+            //background-color: $color-bg;
             text-align: center;
             .text {
                 @include font-small;
@@ -1368,13 +1411,6 @@
 
         .payment-amount {
             margin-top: 16px;
-            padding: 24px;
-            border-radius: 8px;
-            background-color: $color-bg;
-            @include mobile {
-                padding: 19px 20px;
-                border-radius: 4px;
-            }
             ul > li {
                 &:not(:first-child) {
                     .price-info {
@@ -1458,10 +1494,6 @@
         }
 
         .purchase-button {
-            margin-top: 36px;
-            @include mobile {
-                margin-top: 32px;
-            }
             .btn-group {
                 display: table;
                 width: 100%;
@@ -1486,29 +1518,43 @@
                     border: 0;
                     background-color: transparent;
                     line-height: 0;
-                    &:before {
-                        display: inline-block;
-                        width: 52px;
-                        height: 52px;
-                        background: no-repeat center center;
-                        content: '';
-                    }
-                    @include mobile {
-                        min-width: 52px;
-                        &:before {
-                            width: 50px;
-                            height: 50px;
-                        }
-                    }
                 }
                 &.like {
-                    &:before {
-                        background-image: url('/lg5-common/images/icons/btn-like-off-52.svg');
+                    .chk-wish-wrap {
+                        input {
+                            & + label {
+                                width: 52px;
+                                height: 52px;
+                                &:before {
+                                    width: 52px;
+                                    height: 52px;
+                                    background-image: url('/lg5-common/images/icons/btn-like-off-52.svg');
+                                    background-size: 100%;
+                                }
+                            }
+                            &:checked + label {
+                                &:before {
+                                    background-image: url('/lg5-common/images/icons/btn-like-on-52.svg');
+                                }
+                            }
+                        }
                     }
                 }
                 &.cart {
                     &:before {
-                        background-image: url('/lg5-common/images/icons/btn-cart-off-52.svg');
+                        display: inline-block;
+                        width: 52px;
+                        height: 52px;
+                        background: url('/lg5-common/images/icons/btn-cart-off-52.svg') no-repeat center center;
+                        content: '';
+                    }
+                    &:before {
+                    }
+                    &:hover,
+                    &:focus {
+                        &:before {
+                            background-image: url('/lg5-common/images/icons/btn-cart-on-52.svg');
+                        }
                     }
                 }
             }
@@ -1553,6 +1599,10 @@
         padding: 24px;
         border-radius: 8px;
         background-color: $color-bg;
+        @include mobile {
+            margin-top: 48px;
+            padding: 24px 12px;
+        }
         .bullet-list {
             margin-top: 0;
         }
@@ -1679,6 +1729,15 @@
                 font-size: 26px;
                 line-height: 36px;
                 color: $color-primary;
+            }
+            @include mobile {
+                .text {
+                    padding-top: 6px;
+                }
+                .price {
+                    font-size: 18px;
+                    line-height: 27px;
+                }
             }
         }
     }
