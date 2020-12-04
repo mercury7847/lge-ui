@@ -2,15 +2,74 @@
     <header class="pop-header">
         <h1 class="tit"><span>나의 글 보기</span></h1>
     </header>
-    <section class="pop-conts common-pop">
+    <section class="pop-conts common-pop mypage">
 		<div class="custom-step-area">
 			<p class="tit">서비스센터 홈페이지를 통해 등록하신 칭찬, 개선 건에 대한<br>내역 조회를 하실 수 있습니다.</p>
+			<div class="step-box">
+				<div class="step-inner">
+					<div class="bar bar3"></div>
+					<!--
+						현재 단계에 따라 클래스 변경
+						접수 : bar
+						처리중 : bar bar1
+						답변중 : bar bar2
+						답변완료 : bar3
+					-->
+				</div>
+				<ul class="step-txt">
+					<li class="comp">접수</li> <!-- 해당 영역 위치 시 comp 클래스 추가 -->
+					<li class="comp">처리중</li>
+					<li class="comp">답변중</li>
+					<li class="comp"><span class="blind">현재 단계</span>답변완료</li>
+				</ul>
+			</div>
+			<div class="info-box">
+				<span class="ico">
+					<img src="/lg5-common/images/icons/icon-regi-num-60x60.svg" alt="">
+				</span>
+				<div class="cont">
+					<p>접수번호 : S20006828124</p>
+				</div>
+			</div>
+			<div class="section-wrap">
+				<div class="sects">
+					<div class="section-inner">
+						<!-- 작성 내용 -->
+						<div class="inner-box">
+							<p class="inner-tit">작성 내용</p>
+							@@include('./common/modules/dl-infolist.html', {
+								"list" : [
+									{ "dt" : "구분", "dd" : "칭찬 합니다" },
+									{ "dt" : "접수일시", "dd" : "2020.07.01 17:30" },
+									{ "dt" : "진행상태", "dd" : "<em>답변완료</em>" },
+									{ "dt" : "제품", "dd" : "1depth &gt; 2depth" },
+									{ "dt" : "모델명", "dd" : "OLED48CXKNB" },
+									{ "dt" : "제목", "dd" : "칭찬 합니다" },
+									{ "dt" : "내용", "dd" : "안녕하세요. 칭찬합니다." }
+								]
+							})
+						</div>
+						<!-- //작성 내용 -->
+						<!-- 답변 -->
+						<div class="inner-box">
+							<p class="inner-tit">답변</p>
+							@@include('./common/modules/dl-infolist.html', {
+								"list" : [
+									{ "dt" : "제목", "dd" : "감사합니다." },
+									{ "dt" : "내용", "dd" : "답변 내용대로 텍스트 노출합니다. 텍스트 전체 노출합니다." },
+									{ "dt" : "답변일시", "dd" : "2020년 09월 02일 00시 00분" }
+								]
+							})
+						</div>
+						<!-- //답변 -->
+					</div>
+				</div>
+			</div>
 		</div>
     </section>
     <footer class="pop-footer center">
         <div class="btn-group">
-            <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
-            <button type="button" class="btn pink requestIssue-btn"><span>발급신청</span></button>
+            <button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>

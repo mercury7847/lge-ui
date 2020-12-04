@@ -44,6 +44,12 @@
             margin: 0 -16px;
             padding-left:0;
 		}
+        &.fixed {
+            position: fixed;
+            left: 50%;
+            margin-left: -690px;
+            padding-right: 585px;
+        }
     }
 
     .pdp-visual-area {
@@ -57,8 +63,8 @@
             left: 0;
             z-index: 1;
             @include mobile {
-                top: 18px;
-                left: 18px;
+                top: 0;
+                left: 19px;
             }
 
             @include pc {
@@ -318,6 +324,22 @@
                 }
             }
         }
+        .image-viewer {
+            position: absolute;
+            top: 14px;
+            right: 13px;
+            font-size: 0;
+            .viewer-video,
+            .viewer-360 {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+        }
     }
 
     .pdp-more-info {
@@ -432,26 +454,23 @@
             .review-info {
                 display: inline-block;
                 @include font-medium;
-                //font-size: 0;
-                //vertical-align: top;
-                //.star,
-                //.average-rating,
-                //.review-count {
-                //    display: inline-block;
-                //    font-size: 16px;
-                //    line-height: 24px;
-                //    vertical-align: middle;
-                //}
-                //.star {
-                //    width: 16px;
-                //    height: 16px;
-                //    margin-right: 5px;
-                //    background: url("/lg5-common/images/icons/icon-star-off.svg") no-repeat 0 0;
-                //    background-size: 16px 16px;
-                //    &.is-review {
-                //        background-image: url("/lg5-common/images/icons/icon-star-on.svg");
-                //    }
-                //}
+                font-size: 0;
+                vertical-align: top;
+                .star,
+                .average-rating,
+                .review-count {
+                    display: inline-block;
+                    font-size: 16px;
+                    line-height: 26px;
+                    vertical-align: middle;
+                }
+                .star {
+                    width: 91px;
+                    height: 26px;
+                    margin-right: 5px;
+                    background: url("/lg5-common/images/KRP0010/icon-review.svg") no-repeat 0 center;
+                    vertical-align: bottom;
+                }
             }
             @include mobile {
                 .product-name {
@@ -591,6 +610,12 @@
                 .text {
                     float: left;
                     @include font-small;
+                    .btn-link {
+                        color: $color-default;
+                        &:after {
+                            background-image: url('/lg5-common/images/icons/btn-arr-20x20-black.svg');
+                        }
+                    }
                 }
                 .content {
                     float: right;
@@ -761,6 +786,7 @@
                             transform: translateY(-50%) rotate(-180deg);
                         }
                         .article-box {
+                            display: none;
                             margin-top: 24px;
                             background-color: $color-bg-wt;
                             ul {
@@ -817,13 +843,14 @@
                 }
                 .btn-area {
                     margin-top: 16px;
-                    padding-right: 6px;
+                    padding-right: 30px;
                     text-align: right;
                 }
             }
         }
 
         .option-tabs {
+            margin-top: 48px;
             .tabs-wrap.new-type .tabs {
                 width: 100%;
                 li {
@@ -1665,6 +1692,7 @@
         .text {
             float: left;
             @include font-small;
+
         }
         .content {
             float: right;
@@ -1785,7 +1813,7 @@
                         vertical-align: middle;
                     }
                 }
-                &.active {
+                &.login {
                     .btn-box {
                         display: none;
                     }
@@ -1826,6 +1854,9 @@
                     padding: 24px;
                     border-radius: 8px;
                     background-color: $color-bg;
+                    .bullet-list {
+                        margin-top: 0;
+                    }
                 }
             }
             .lists {
