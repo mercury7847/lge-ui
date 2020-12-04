@@ -4,7 +4,7 @@
     <div class="product-detail-info">
         @@include('./common/modules/flags.html', {
             barType: true,
-            flags: ["NEW","BEST","캐시백"]
+            flags: ["베스트","신제품","캐시백"]
         })
         <div class="product-name">
             <h2 class="name">LG 올레드 갤러리 TV</h2>
@@ -16,25 +16,17 @@
                     "type" : "include",
                     "page" : "tooltip-share"
                 })
-                <div class="tooltip-wrap"><!-- 활성화시 active -->
-                    <a href="#n" class="btn-share ui_tooltip-target" data-fixed="fixed-right"><span class="blind">제품 공유하기</span></a>
-                    <div class="tooltip-box">
-                        <span>공유</span>
-                        <ul class="share-list">
-                            <li><a href="#n" class="share-facebook"><span class="blind">페이스북 공유하기</span></a></li>
-                            <li><a href="#n" class="share-twitter"><span class="blind">트위터 공유하기</span></a></li>
-                            <li><a href="#n" class="share-kakaotalk"><span class="blind">카카오톡 공유하기</span></a></li>
-                            <li><a href="#n" class="share-url"><span class="blind">URL 공유하기</span></a></li>
-                        </ul>
-                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
-                    </div>
-                </div>
             </div>
             <!-- // 공유하기 -->
         </div>
         <div class="sku">OLED77GXKNA</div>
         <!-- 리뷰 별점 영역 -->
         <div class="review-info">
+            <a href="#">
+                <div class="star"><span class="blind">리뷰있음</span></div>
+                <div class="average-rating"><span class="blind">평점</span>4.0</div>
+                <div class="review-count"><span class="blind">리뷰 수</span>(452개)</div>
+            </a>
         </div>
         <!-- // 리뷰 별점 영역 -->
         <div class="product-detail-option">
@@ -139,7 +131,7 @@
                     <li class="lists member">
                         <div class="head">
                             <dl class="price-info total">
-                                <dt class="text">최대할인적용가</dt>
+                                <dt class="text">할인적용가</dt>
                                 <dd class="content">
                                     <small class="original"><em class="blind">판매가</em>1,990,000원</small>
                                     <strong class="price">1,853,000원</strong>
@@ -151,14 +143,14 @@
                             <ul>
                                 <li>
                                     <dl class="price-info discount">
-                                        <dt class="text">회원 할인</dt>
-                                        <dd class="content"><span class="price">-59,700원</span></dd>
+                                        <dt class="text">회원할인</dt>
+                                        <dd class="content"><span class="price">59,700원</span></dd>
                                     </dl>
                                 </li>
                                 <li>
                                     <dl class="price-info discount">
-                                        <dt class="text">즉시 할인</dt>
-                                        <dd class="content"><span class="price">-77,210원</span></dd>
+                                        <dt class="text">즉시할인</dt>
+                                        <dd class="content"><span class="price">77,210원</span></dd>
                                     </dl>
                                 </li>
                                 <li>
@@ -186,7 +178,7 @@
                             <ul>
                                 <li>
                                     <dl class="price-info">
-                                        <dt class="text">멤버십 포인트</dt>
+                                        <dt class="text">멤버십포인트</dt>
                                         <dd class="content"><span class="price">300,000P</span></dd>
                                     </dl>
                                 </li>
@@ -200,7 +192,7 @@
                                     <dl class="price-info card-benefit">
                                         <dt class="text">카드혜택</dt>
                                         <dd class="content">
-                                            <span class="price">최대 6개월 무이자<em class="block">7% 청구할인</em></span>
+                                            <span class="price">국민카드 – 무이자 6개월<em class="block">7% 청구할인</em></span>
                                         </dd>
                                     </dl>
                                 </li>
@@ -672,13 +664,13 @@
                             <div class="select-wrap ui_dropdown">
                                 <div class="select-button">
                                     <div class="select-text">
-                                        <span>제휴카드할인</span>
+                                        <span>제휴카드</span>
                                         @@include('./common/modules/tooltip.html', {
                                             "type" : "include",
                                             "page" : "tooltip-KRP0010-02"
                                         })
                                     </div>
-                                    <a href="#" class="ui_dropdown_toggle">최대 23,000원 할인</a>
+                                    <a href="#" class="ui_dropdown_toggle">이용시 최대 23,000원 할인</a>
                                 </div>
                                 <div class="selectbox-list ui_dropdown_list">
                                     <ul class="select-list">
@@ -700,11 +692,10 @@
                         </div>
                         <dl class="select-info price-info total">
                             <dt class="text">
-                                <span>이용 요금</span>
-                                <a href="#n" class="btn-modal"><span class="blind">이용 요금 팝업 열림</span></a>
+                                <a href="#n" class="btn-link" role="button">이용 요금 <span class="blind">이용 요금 팝업 열림</span></a>
                             </dt>
                             <dd class="content">
-                                <span class="price">19,900원<em class="desc">무상할인(2개월)</em></span>
+                                <span class="price">월 19,900원<em class="desc">무상할인(2개월)</em></span>
                             </dd>
                         </dl>
                     </div>
@@ -734,7 +725,7 @@
                                 <dt class="text">케어십 월 요금 합계</dt>
                                 <dd class="content">
                                     <div class="payment">
-                                        <span class="price">15,900원</span>
+                                        <span class="price">월 15,900원</span>
                                     </div>
                                 </dd>
                             </dl>
@@ -832,13 +823,13 @@
                         <div class="select-wrap ui_dropdown">
                             <div class="select-button">
                                 <div class="select-text">
-                                    <span>제휴카드할인</span>
+                                    <span>제휴카드</span>
                                     @@include('./common/modules/tooltip.html', {
                                         "type" : "include",
                                         "page" : "tooltip-KRP0010-02"
                                     })
                                 </div>
-                                <a href="#" class="ui_dropdown_toggle">최대 23,000원 할인</a>
+                                <a href="#" class="ui_dropdown_toggle">이용시 최대 23,000원 할인</a>
                             </div>
                             <div class="selectbox-list ui_dropdown_list">
                                 <ul class="select-list">
@@ -860,8 +851,7 @@
                     </div>
                     <dl class="select-info price-info total">
                         <dt class="text">
-                            <span>이용 요금</span>
-                            <a href="#n" class="btn-modal"><span class="blind">이용 요금 팝업 열림</span></a>
+                            <a href="#n" class="btn-link" role="button">이용 요금 <span class="blind">이용 요금 팝업 열림</span></a>
                         </dt>
                         <dd class="content">
                             <span class="price">

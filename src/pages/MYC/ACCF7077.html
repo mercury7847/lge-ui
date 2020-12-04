@@ -5,13 +5,27 @@
     })
 <body>
     <div class="wrap">
-        <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 예약 일반</span></button>
+		<button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 예약 일반</span></button><br><br>
+		<button type="button" data-href="#popup2" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 서비스예약취소</span></button><br><br>
+		<button type="button" data-href="#popup3" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 예약일시변경</span></button>
     </div>
 
-    <!-- 나의 글 보기 -->
+    <!-- 예약 일반 -->
     @@include('./common/popup/ACCF7077_pop1.html', {
         popupID: 'popup1'
     })
-    <!-- //나의 글 보기 -->
+	<!-- //예약 일반 -->
+	
+	<!-- 서비스예약취소 -->
+    @@include('./common/popup/ACCF7077_pop2.html', {
+        popupID: 'popup2'
+    })
+	<!-- //서비스예약취소 -->
+	
+	<!-- 예약일시변경 -->
+    @@include('./common/popup/ACCF7077_pop3.html', {
+        popupID: 'popup3'
+    })
+    <!-- //예약일시변경 -->
 </body>
 </html>

@@ -1,67 +1,76 @@
 <article id="@@popupID" class="popup-wrap full">
     <header class="pop-header">
-        <h1 class="tit"><span>나의 글 보기</span></h1>
+        <h1 class="tit"><span>출장 서비스 예약</span></h1>
     </header>
     <section class="pop-conts common-pop mypage">
 		<div class="custom-step-area">
-			<p class="tit">서비스센터 홈페이지를 통해 등록하신 칭찬, 개선 건에 대한<br>내역 조회를 하실 수 있습니다.</p>
+			<p class="tit">2020.08.17 11:20에 전문 엔지니어가 방문하여 고장 증상을 해결해드릴 예정입니다.</p>
 			<div class="step-box">
 				<div class="step-inner">
-					<div class="bar bar3"></div>
+					<div class="bar bar1"></div>
 					<!--
 						현재 단계에 따라 클래스 변경
 						접수 : bar
-						처리중 : bar bar1
-						답변중 : bar bar2
-						답변완료 : bar3
+						방문예정 : bar bar1
+						처리중 : bar bar2
+						완료 : bar3
 					-->
 				</div>
 				<ul class="step-txt">
-					<li>접수</li>
+					<li class="comp">접수</li> <!-- 해당 영역 위치 시 comp 클래스 추가 -->
+					<li class="comp"><span class="blind">현재 단계</span>방문예정</li>
 					<li>처리중</li>
-					<li><span class="blind">현재 단계</span>답변중</li>
-					<li>답변완료</li>
+					<li>완료</li>
 				</ul>
 			</div>
-			<div class="info-box">
+			<div class="info-box engineer">
 				<span class="ico">
-					<img src="/lg5-common/images/icons/icon-regi-num-60x60.svg" alt="">
+					<img src="/lg5-common/images/myc/@img-cs-engineer.jpg" alt="">
 				</span>
 				<div class="cont">
-					<p>접수번호 : S20006828124</p>
+					<p>엔지니어 : 홍길동 / 동대문 서비스센터</p>
+					<p>접수번호 :  HA230948WW</p>
 				</div>
 			</div>
 			<div class="section-wrap">
 				<div class="sects">
 					<div class="section-inner">
-						<!-- 작성 내용 -->
+						<!-- 예약/결과 정보 -->
 						<div class="inner-box">
-							<p class="inner-tit">작성 내용</p>
+							<div class="tit-wrap">
+								<p class="inner-tit">예약/결과 정보</p>
+								<div class="flt-cont">
+									<button type="button" class="btn border size"><span>예약일시변경</span></button>
+									<button type="button" class="btn border size"><span>예약취소</span></button>
+								</div>
+							</div>
 							@@include('./common/modules/dl-infolist.html', {
 								"list" : [
-									{ "dt" : "구분", "dd" : "칭찬 합니다" },
-									{ "dt" : "접수일시", "dd" : "2020.07.01 17:30" },
+									{ "dt" : "접수 일시", "dd" : "2020년 10월 01일 10시 01분" },
 									{ "dt" : "진행상태", "dd" : "<em>답변완료</em>" },
-									{ "dt" : "제품", "dd" : "1depth &gt; 2depth" },
-									{ "dt" : "모델명", "dd" : "OLED48CXKNB" },
-									{ "dt" : "제목", "dd" : "칭찬 합니다" },
-									{ "dt" : "내용", "dd" : "안녕하세요. 칭찬합니다." }
+									{ "dt" : "취소 일시", "dd" : "2020년 10월 01일 10시 01분" },
+									{ "dt" : "서비스 예정 일시", "dd" : "2020년 10월 01일 10시 01분" },
+									{ "dt" : "제품", "dd" : "세탁기/스타일러 &gt; 데스크톱/일체형 (모델명 : ABCD-123456)" },
+									{ "dt" : "증상", "dd" : "버튼/리모컨 &gt; 버튼 잠금 설정" },
+									{ "dt" : "방문 센터", "dd" : "동대문서비스센터" },
+									{ "dt" : "서비스 비용", "dd" : "1,252,000원<br>※ 서비스 비용 외 별도 금액을 지불한 경우 엔지니어를 통해 받으신 영수증과는 상이할 수 있습니다." },
+									{ "dt" : "전달 사항", "dd" : "전달사항 표기" }
+								]
+							})
+							@@include('./common/modules/bullet-list.html', {
+								"size2" : true,
+								"topBorder" : true,
+								"bulletTxt" : [
+									"온라인 접수 취소는 예약 시간 1시간 전까지 가능하며, 접수 내용을 수정하실 경우에는 기접수건을 취소 후 신규로 다시 접수해 주시기 바랍니다.",
+									"[예약 일시 변경]버튼을 클릭하면 서비스 받으실 날짜, 시간 변경이 가능합니다. 예약 일시 변경은 예약 시간 1시간 전까지 가능하며, 기존 접수건 취소 후 신규로 접수됩니다."
 								]
 							})
 						</div>
-						<!-- //작성 내용 -->
-						<!-- 답변 -->
-						<div class="inner-box">
-							<p class="inner-tit">답변</p>
-							@@include('./common/modules/dl-infolist.html', {
-								"list" : [
-									{ "dt" : "제목", "dd" : "감사합니다." },
-									{ "dt" : "내용", "dd" : "답변 내용대로 텍스트 노출합니다. 텍스트 전체 노출합니다." },
-									{ "dt" : "답변일시", "dd" : "2020년 09월 02일 00시 00분" }
-								]
-							})
+						<!-- //예약/결과 정보 -->
+						<div class="gray-box solv">
+							<p class="txt">제품 문제해결 방법을 확인해보세요!<span>선택하신 증상은 제품 문제해결 방법을 통해서 해결이 가능합니다.</span></p>
+							<a href="#">제품 문제해결 방법 확인하기</a>
 						</div>
-						<!-- //답변 -->
 					</div>
 				</div>
 			</div>
@@ -69,7 +78,8 @@
     </section>
     <footer class="pop-footer center">
         <div class="btn-group">
-            <button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
+			<button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
+			<button type="button" class="btn pink"><span>원문보기</span></button>
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
