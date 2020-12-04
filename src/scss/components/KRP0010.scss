@@ -823,6 +823,7 @@
                 }
                 &.care-solution-payment-info {
                     margin-top: 32px;
+                    margin-bottom: 0;
                     .lists {
                         padding: 16px 24px;
                         border-radius: 8px 8px 0 0;
@@ -1020,7 +1021,7 @@
         }
 
         .care-sibling-option {
-            padding: 0 24px 32px;
+            padding: 0 24px;
             .info-accordion-wrap {
                 margin: 0 -24px 24px;
             }
