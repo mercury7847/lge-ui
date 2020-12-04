@@ -8,6 +8,29 @@
         })
         <div class="product-name">
             <h2 class="name">LG 올레드 갤러리 TV</h2>
+            <!-- 공유하기 -->
+            <div class="product-share">
+                @@include('./common/modules/tooltip.html', {
+                    "share" : true,
+                    "fixed" : "fixed-right",
+                    "type" : "include",
+                    "page" : "tooltip-share"
+                })
+                <div class="tooltip-wrap"><!-- 활성화시 active -->
+                    <a href="#n" class="btn-share ui_tooltip-target" data-fixed="fixed-right"><span class="blind">제품 공유하기</span></a>
+                    <div class="tooltip-box">
+                        <span>공유</span>
+                        <ul class="share-list">
+                            <li><a href="#n" class="share-facebook"><span class="blind">페이스북 공유하기</span></a></li>
+                            <li><a href="#n" class="share-twitter"><span class="blind">트위터 공유하기</span></a></li>
+                            <li><a href="#n" class="share-kakaotalk"><span class="blind">카카오톡 공유하기</span></a></li>
+                            <li><a href="#n" class="share-url"><span class="blind">URL 공유하기</span></a></li>
+                        </ul>
+                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                    </div>
+                </div>
+            </div>
+            <!-- // 공유하기 -->
         </div>
         <div class="sku">OLED77GXKNA</div>
         <!-- 리뷰 별점 영역 -->
@@ -29,6 +52,9 @@
                                 <input type="radio" id="rdo1-2" name="rdo1">
                                 <label for="rdo1-2"><span class="blind">블랙</span></label>
                             </div>
+                        </div>
+                        <div class="color-text">
+                            <span>그레이</span>
                         </div>
                     </div>
                 </div>
@@ -108,7 +134,7 @@
             </div>
             <!-- // Sibling 정보 선택 -->
             <!-- 일반제품 -->
-            <div class="price-wrap ui_accordion" data-single-open="false" data-open-index="[0,1,2]">
+            <div class="info-accordion-wrap ui_accordion" data-single-open="false" data-open-index="[0,1,2]">
                 <ul>
                     <li class="lists member">
                         <div class="head">
@@ -368,7 +394,7 @@
                     <span>케어십 서비스</span>
                     @@include('./common/modules/tooltip.html', {
                     "type" : "include",
-                    "page" : "tooltip-careship"
+                    "page" : "tooltip-KRP0010-01"
                     })
                 </div>
                 <div class="select-option radio service">
@@ -452,182 +478,6 @@
                 <!-- // 렌탈 Only -->
             </div>
 
-
-
-
-
-
-
-
-            <div class="sibling-info">
-                <div class="sibling-service">
-                    <div class="text">
-                        <span>케어십 서비스</span>
-                        @@include('./common/modules/tooltip.html', {
-                            "type" : "include",
-                            "page" : "tooltip-careship"
-                        })
-                    </div>
-                    <div class="select-option radio service">
-                        <div class="option-list" role="radiogroup">
-                            <div role="radio" class="rdo-wrap">
-                                <input type="radio" id="rdo3" name="rdo2" checked>
-                                <label for="rdo3">신청</label>
-                            </div>
-                            <div role="radio" class="rdo-wrap">
-                                <input type="radio" id="rdo4" name="rdo2">
-                                <label for="rdo4">미신청</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="service-desc">정수기, 정수기형 냉장고 제품은 정수 수질과 관련된 제품으로 케어십신청이 필수 선택입니다.</div>
-                </div>
-                <!-- 구성품을 포함하는 경우 -->
-                <div class="is-kit">
-                    <div class="text">구성품</div>
-                    <ul class="kit-list">
-                        <li>FQ23LADRBN(스탠드 실외기)</li>
-                        <li>FQ30ADAU(실외기)</li>
-                        <li>SQ07LAJWAJ(조합 벽걸이)</li>
-                    </ul>
-                </div>
-            </div>
-
-
-            <!-- 일반제품 + 렌탈 -->
-            <div class="option-contents" id="tab1">
-                <div class="price-info">
-                    <div class="price-area">
-                        <div class="product-price">
-                            <div class="discount-rate">
-                                <em class="blind">할인율</em>
-                                <span class="price">7<em>%</em></span>
-                            </div>
-                            <div class="purchase-price">
-                                <em class="blind">판매가격</em>
-                                <span class="price">1,990,000<em>원</em></span>
-                            </div>
-                        </div>
-                        <div class="reduced-price">
-                            <em class="blind">최대 혜택가격</em>
-                            <span class="price">1,853,090<em>원</em></span>
-                        </div>
-                    </div>
-                    <div class="product-benefit">
-                        <div class="title">할인혜택</div>
-                        <ul>
-                            <li>회원 할인 <em>3%</em> -59,700원</li>
-                            <li>즉시 할인 <em>4%</em> -77,210원</li>
-                        </ul>
-                    </div>
-                    <div class="product-benefit">
-                        <div class="title">
-                            <span>추가혜택</span>
-                            <a href="/lg5-common/data-ajax/pdp/benefitInfo.html" class="btn-modal"><span class="blind">추가혜택 팝업 열림</span></a>
-                        </div>
-                        <ul>
-                            <li>포인트 64,000p</li>
-                            <li>캐시백 500,000원</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="option-contents rental" id="tab2">
-                <div class="monthly-payment">
-                    <div class="inner">
-                        <div class="text">
-                            <span>월 납부금액</span>
-                            <a href="#" class="btn-modal"><span class="blind">월 납부금액 팝업 열림</span></a>
-                        </div>
-                        <div class="payment-info">
-                            <div class="price">13,900원<span>무상할인(2개월)</span></div>
-                            <ul class="info-list">
-                                <li>1-3년 36,900원</li>
-                                <li>4-5년 13,900원</li>
-                            </ul>
-                        </div>
-                        <a href="#" class="btn bd-pink btn-small">결합하여 더 많은 할인 받기</a>
-                    </div>
-                </div>
-                <div class="sibling-info">
-                    <div class="sibling-color">
-                        <div class="text">색상 : 그레이</div>
-                        <div class="select-option radio color">
-                            <div class="option-list" role="radiogroup">
-                                <div role="radio" class="chk-wrap-colorchip gray" title="그레이">
-                                    <input type="radio" id="rdo9" name="rdo5" checked>
-                                    <label for="rdo9"><span class="blind">그레이</span></label>
-                                </div>
-                                <div role="radio" class="chk-wrap-colorchip black" title="블랙">
-                                    <input type="radio" id="rdo10" name="rdo5" checked>
-                                    <label for="rdo10"><span class="blind">블랙</span></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sibling-select">
-                        <div class="text">화면크기 : 193cm</div>
-                        <div class="select-option select size">
-                            <div class="select-wrap">
-                                <select class="ui_selectbox" id="select3" title="사이즈 선택">
-                                    <option value="">193cm</option>
-                                    <option value="">193cm</option>
-                                    <option value="">163cm</option>
-                                    <option value="">138cm</option>
-                                    <option value="">100cm</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sibling-text">
-                        <div class="text">할인등록비</div>
-                        <div class="price">200,000원</div>
-                    </div>
-                    <div class="sibling-select">
-                        <div class="text">가입비(선납) : 100,000원</div>
-                        <div class="select-option select membership">
-                            <div class="select-wrap">
-                                <select class="ui_selectbox" id="select4" title="가입비 선택">
-                                    <option value="">100,000원</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sibling-text">
-                        <div class="text">의무사용기간</div>
-                        <div class="select-option radio use-period">
-                            <div class="option-list" role="radiogroup">
-                                <div class="rdo-wrap">
-                                    <input type="radio" id="rdo11" name="rdo6" checked>
-                                    <label for="rdo11">5년</label>
-                                </div>
-                                <div class="rdo-wrap">
-                                    <input type="radio" id="rdo12" name="rdo6">
-                                    <label for="rdo12">4년</label>
-                                </div>
-                                <div class="rdo-wrap">
-                                    <input type="radio" id="rdo13" name="rdo6">
-                                    <label for="rdo13">1~3년</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sibling-select">
-                        <div class="text">제휴카드</div>
-                        <div class="select-option select card">
-                            <div class="select-wrap">
-                                <select class="ui_selectbox" id="select5" title="제휴카드 선택">
-                                    <option value="">최대 23,000원 할인</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
             <!-- 일반제품 + 케어십 -->
             <div class="option-tabs">
                 <div class="tabs-wrap new-type ui_tab">
@@ -644,12 +494,12 @@
                     <div class="select-option radio color">
                         <div class="option-list" role="radiogroup">
                             <div role="radio" class="chk-wrap-colorchip gray" title="그레이">
-                                <input type="radio" id="rdo1-1" name="rdo1" checked>
-                                <label for="rdo1-1"><span class="blind">그레이</span></label>
+                                <input type="radio" id="rdo8-1" name="rdo8" checked>
+                                <label for="rdo8-1"><span class="blind">그레이</span></label>
                             </div>
                             <div role="radio" class="chk-wrap-colorchip black" title="블랙">
-                                <input type="radio" id="rdo1-2" name="rdo1">
-                                <label for="rdo1-2"><span class="blind">블랙</span></label>
+                                <input type="radio" id="rdo8-2" name="rdo8">
+                                <label for="rdo8-2"><span class="blind">블랙</span></label>
                             </div>
                         </div>
                     </div>
@@ -680,7 +530,7 @@
             </div>
             <!-- // Sibling 정보 선택 -->
             <div class="option-contents" id="tab1">
-                <div class="price-wrap ui_accordion" data-single-open="false">
+                <div class="info-accordion-wrap ui_accordion" data-single-open="false">
                     <ul>
                         <li class="lists member">
                             <div class="head">
@@ -759,60 +609,62 @@
                     </ul>
                 </div>
                 <!-- 케어십 서비스 -->
-                <div class="careship-service box">
-                    <dl class="select-info">
-                        <dt class="text">
-                            <span>케어십 서비스</span>
-                            @@include('./common/modules/tooltip.html', {
-                                "type" : "include",
-                                "page" : "tooltip-careship"
-                            })
-                        </dt>
-                        <dd class="content">
-                            <div class="select-option radio service">
-                                <div class="select-list-wrap w-auto">
-                                    <ul role="radiogroup">
-                                        <li>
-                                            <div role="radio" class="rdo-wrap">
-                                                <input type="radio" id="rdo7-1" name="rdo7" checked>
-                                                <label for="rdo7-1">신청</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div role="radio" class="rdo-wrap">
-                                                <input type="radio" id="rdo7-2" name="rdo7">
-                                                <label for="rdo7-2">미신청</label>
-                                            </div>
-                                        </li>
-                                    </ul>
+                <div class="careship-service">
+                    <div class="box">
+                        <dl class="select-info radio-box first">
+                            <dt class="text">
+                                <span>케어십 서비스</span>
+                                @@include('./common/modules/tooltip.html', {
+                                    "type" : "include",
+                                    "page" : "tooltip-KRP0010-01"
+                                })
+                            </dt>
+                            <dd class="content">
+                                <div class="select-option radio service">
+                                    <div class="select-list-wrap w-auto">
+                                        <ul role="radiogroup">
+                                            <li>
+                                                <div role="radio" class="rdo-wrap">
+                                                    <input type="radio" id="rdo7-1" name="rdo7" checked>
+                                                    <label for="rdo7-1">신청</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div role="radio" class="rdo-wrap">
+                                                    <input type="radio" id="rdo7-2" name="rdo7">
+                                                    <label for="rdo7-2">미신청</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="select-info select-box">
-                        <dt class="select-text">방문주기</dt>
-                        <dd>
-                            <div class="select-wrap">
-                                <select class="ui_selectbox" id="select1" title="방문주기 선택">
-                                    <option value="">1회 / 1개월</option>
-                                    <option value="">1회 / 2개월</option>
-                                    <option value="">1회 / 3개월</option>
-                                    <option value="">1회 / 6개월</option>
-                                </select>
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="select-info select-box">
-                        <dt class="select-text">
-                            <span>제휴카드할인</span>
-                            @@include('./common/modules/tooltip.html', {
-                                "type" : "include",
-                                "page" : "tooltip-careship"
-                            })
-                        </dt>
-                        <dd>
+                            </dd>
+                        </dl>
+                        <dl class="select-info select-box">
+                            <dt class="select-text">방문주기</dt>
+                            <dd>
+                                <div class="select-wrap">
+                                    <select class="ui_selectbox" id="select1" title="방문주기 선택">
+                                        <option value="">1회 / 1개월</option>
+                                        <option value="">1회 / 2개월</option>
+                                        <option value="">1회 / 3개월</option>
+                                        <option value="">1회 / 6개월</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </dl>
+                        <div class="select-info select-box dropdown-box">
                             <div class="select-wrap ui_dropdown">
-                                <a href="#" class="select-button ui_dropdown_toggle">최대 23,000원 할인</a>
+                                <div class="select-button">
+                                    <div class="select-text">
+                                        <span>제휴카드할인</span>
+                                        @@include('./common/modules/tooltip.html', {
+                                            "type" : "include",
+                                            "page" : "tooltip-KRP0010-02"
+                                        })
+                                    </div>
+                                    <a href="#" class="ui_dropdown_toggle">최대 23,000원 할인</a>
+                                </div>
                                 <div class="selectbox-list ui_dropdown_list">
                                     <ul class="select-list">
                                         <li><span class="divide">----------------------------------- 간편 신청 가능 카드</span></li>
@@ -830,30 +682,245 @@
                                     </ul>
                                 </div>
                             </div>
-                        </dd>
-                    </dl>
+                        </div>
+                        <dl class="select-info price-info total">
+                            <dt class="text">
+                                <span>이용 요금</span>
+                                <a href="#n" class="btn-modal"><span class="blind">이용 요금 팝업 열림</span></a>
+                            </dt>
+                            <dd class="content">
+                                <span class="price">19,900원<em class="desc">무상할인(2개월)</em></span>
+                            </dd>
+                        </dl>
+                    </div>
                 </div>
                 <!-- // 케어십 서비스 -->
-            </div>
-            <div class="option-contents" id="tab2"></div>
-            <!-- // 일반제품 + 케어십 -->
-        </div>
-        <!-- 공유하기 -->
-        <div class="product-share">
-            <div class="tooltip-wrap"><!-- 활성화시 active -->
-                <a href="#" class="btn-share ui_tooltip-target" data-fixed="fixed-right"><span class="blind">제품 공유하기</span></a>
-                <div class="tooltip-box">
-                    <ul class="share-list">
-                        <li><a href="#n" class="share-facebook"><span class="blind">페이스북 공유하기</span></a></li>
-                        <li><a href="#n" class="share-twitter"><span class="blind">트위터 공유하기</span></a></li>
-                        <li><a href="#n" class="share-kakaotalk"><span class="blind">카카오톡 공유하기</span></a></li>
-                        <li><a href="#n" class="share-url"><span class="blind">URL 공유하기</span></a></li>
+
+                <div class="payment-amount">
+                    <ul>
+                        <li>
+                            <dl class="price-info quantity">
+                                <dt class="text">수량</dt>
+                                <dd class="content">
+                                    <div class="quantity-wrap">
+                                        <div class="select-quantity">
+                                            <div class="inner">
+                                                <button type="button" class="minus"><span class="blind">빼기</span></button>
+                                                <input type="number" class="quantity" title="수량 입력" value="2">
+                                                <button type="button" class="plus"><span class="blind">더하기</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl class="price-info">
+                                <dt class="text">케어십 월 요금 합계</dt>
+                                <dd class="content">
+                                    <div class="payment">
+                                        <span class="price">15,900원</span>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl class="price-info total-payment">
+                                <dt class="text">합계</dt>
+                                <dd class="content">
+                                    <div class="payment">
+                                        <span class="price">1,853,090원</span>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </li>
                     </ul>
-                    <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                    <!-- 일반 -->
+                    <div class="purchase-button default">
+                        <div class="btn-group">
+                            <!-- 찜하기 버튼 toggle text - 찜하기 / 찜한 제품 -->
+                            <a href="#n" class="btn like" role="button"><span class="blind">찜한 제품</span></a>
+                            <a href="#n" class="btn cart" role="button"><span class="blind">장바구니 담기</span></a>
+                            <a href="#n" class="btn" role="button"><span>바로구매</span></a>
+                        </div>
+                    </div>
+                    <!-- // 일반 -->
                 </div>
             </div>
+            <div class="option-contents" id="tab2">
+                <div class="care-sibling-option">
+                    <div class="info-accordion-wrap ui_accordion" data-single-open="false" data-open-index="[0]">
+                        <ul>
+                            <li class="lists">
+                                <div class="head">
+                                    <div class="accord-text"><span>상세조건을 선택해보세요</span></div>
+                                    <a href="#n" class="btn-toggle ui_accord_toggle"><span class="blind">내용 더보기</span></a>
+                                </div>
+                                <div class="border ui_accord_content">
+                                    <dl class="select-info text-box">
+                                        <dt class="text">계약기간</dt>
+                                        <dd class="content">5년</dd>
+                                    </dl>
+                                    <dl class="select-info select-box">
+                                        <dt class="select-text">가입비(선납)</dt>
+                                        <dd class="content">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="select2" title="가입비(선납) 선택">
+                                                    <option value="">0원</option>
+                                                    <option value="">100,000원</option>
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="select-info select-box">
+                                        <dt class="select-text">의무사용기간</dt>
+                                        <dd class="content">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="select3" title="의무사용기간 선택">
+                                                    <option value="">3년</option>
+                                                    <option value="">5년</option>
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="select-info select-box">
+                                        <dt class="select-text">방문주기</dt>
+                                        <dd class="content">
+                                            <div class="select-wrap">
+                                                <select class="ui_selectbox" id="select4" title="방문주기 선택">
+                                                    <option value="">1회 / 1개월</option>
+                                                    <option value="">1회 / 2개월</option>
+                                                    <option value="">1회 / 3개월</option>
+                                                    <option value="">1회 / 6개월</option>
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="article-box">
+                                    <ul>
+                                        <li>계약기간 <span class="value">5년</span></li>
+                                        <li>가입비(선납) <span class="value">0원</span></li>
+                                        <li>의무사용기간 <span class="value">3년</span></li>
+                                        <li>방문주기 <span class="value">1회/6개월</span></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="select-info select-box dropdown-box">
+                        <div class="select-wrap ui_dropdown">
+                            <div class="select-button">
+                                <div class="select-text">
+                                    <span>제휴카드할인</span>
+                                    @@include('./common/modules/tooltip.html', {
+                                        "type" : "include",
+                                        "page" : "tooltip-KRP0010-02"
+                                    })
+                                </div>
+                                <a href="#" class="ui_dropdown_toggle">최대 23,000원 할인</a>
+                            </div>
+                            <div class="selectbox-list ui_dropdown_list">
+                                <ul class="select-list">
+                                    <li><span class="divide">----------------------------------- 간편 신청 가능 카드</span></li>
+                                    <li><a href="#n">[신한] LG전자 렌탈애(愛)</a></li>
+                                    <li><a href="#n">[롯데] LG전자 베스트렌탈</a></li>
+                                    <li><a href="#n">[하나] LG전자 렌탈플러스</a></li>
+                                    <li><span class="divide">----------------------------------- 개별 신청 필요 카드</span></li>
+                                    <li><a href="#n">[우리] LG전자 베스트렌탈</a></li>
+                                    <li><a href="#n">[광주] 베스트케어</a></li>
+                                    <li><a href="#n">[현대] 현대카드 M Edition3</a></li>
+                                    <li><a href="#n">[하나] LG전자 렌탈플러스</a></li>
+                                    <li><a href="#n">[NH] 올원 LG전자 BEST</a></li>
+                                    <li><a href="#n">[KB국민] LG전자 KB국민</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <dl class="select-info price-info total">
+                        <dt class="text">
+                            <span>이용 요금</span>
+                            <a href="#n" class="btn-modal"><span class="blind">이용 요금 팝업 열림</span></a>
+                        </dt>
+                        <dd class="content">
+                            <span class="price">
+                                <span class="sub-text">(1년차 월 요금 기준)</span>19,900원
+                                <em class="desc">무상할인(2개월)</em>
+                            </span>
+                        </dd>
+                    </dl>
+                    <div class="info-accordion-wrap care-solution-payment-info ui_accordion" data-single-open="false" data-open-index="[0]">
+                        <ul>
+                            <li class="lists">
+                                <div class="head">
+                                    <div class="accord-text"><span>꼭 확인하세요</span></div>
+                                    <a href="#n" class="btn-toggle ui_accord_toggle"><span class="blind">내용 더보기</span></a>
+                                </div>
+                                <div class="ui_accord_content">
+                                    <div class="info-box">
+                                        <p class="text">케어솔루션 총요금 : 1,974,000원 (3개월 방문 기준)</p>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "대표요금제 기준이며 요금제에 따라 케어솔루션 총비용이 다를 수 있음",
+                                                "5년동안 무상 A/S (계약기간 내)",
+                                                "초기 구입비용 0원 (60개월 분할납부)"
+                                            ]
+                                        })
+                                        <p class="text">일시불요금 : 2,1316,000원(5년 케어십 비용 포함)</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="care-planner-link">
+                            <span class="text">렌탈 케어플래너</span>
+                            <a href="#n" class="btn-link"><span>결합하여 더 많은 할인 받기</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="payment-amount">
+                    <ul>
+                        <li>
+                            <dl class="price-info quantity">
+                                <dt class="text">수량</dt>
+                                <dd class="content">
+                                    <div class="quantity-wrap">
+                                        <div class="select-quantity">
+                                            <div class="inner">
+                                                <button type="button" class="minus"><span class="blind">빼기</span></button>
+                                                <input type="number" class="quantity" title="수량 입력" value="2">
+                                                <button type="button" class="plus"><span class="blind">더하기</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl class="price-info total-payment">
+                                <dt class="text">이용요금 합계</dt>
+                                <dd class="content">
+                                    <div class="payment">
+                                        <span class="price">월 50,800원</span>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </li>
+                    </ul>
+                    <!-- 렌탈 Only -->
+                    <div class="purchase-button default">
+                        <div class="btn-group">
+                            <!-- 찜하기 버튼 toggle text - 찜하기 / 찜한 제품 -->
+                            <a href="#n" class="btn like" role="button"><span class="blind">찜한 제품</span></a>
+                            <a href="#n" class="btn cart" role="button"><span class="blind">장바구니 담기</span></a>
+                            <a href="#n" class="btn" role="button"><span>렌탈 신청</span></a>
+                        </div>
+                    </div>
+                    <!-- // 렌탈 Only -->
+                </div>
+            </div>
+            <!-- // 일반제품 + 케어십 -->
         </div>
-        <!-- // 공유하기 -->
         <!-- 비교하기 + 하단 아웃 링크 -->
         <div class="info-bottom">
             <div class="link-area">
@@ -870,63 +937,5 @@
             </div>
         </div>
         <!-- // 비교하기 + 하단 아웃 링크 -->
-
-
-
-
-
-
-
-        <!-- 케어십 서비스 신청 시 나오는 영역 -->
-        <div class="careship-total-payment">
-            <span class="text">케어십 서비스 월 이용료</span>
-            <span class="price">9,000원</span>
-        </div>
-        <!-- 일반제품 버튼 영역 -->
-        <div class="purchase-button default">
-            <div class="btn-group">
-                <a href="#n" class="btn cart" role="button"><span class="blind">장바구니 담기</span></a>
-                <a href="#n" class="btn pink" role="button"><span>바로구매</span></a>
-            </div>
-            <div id="purchase-button-default-modal" style="display:none;"></div>
-        </div>
-        <!-- 일반제품 - 사전예약 버튼 영역 -->
-        <div class="purchase-button pre-order">
-            <a href="#n" class="btn black" role="button"><span>사전예약하기</span></a>
-            <div id="purchase-button-preorder-modal" style="display:none;"></div>
-        </div>
-        <!-- 일반제품 - 전시제품(구매불가) 버튼 영역 -->
-        <div class="purchase-button display-product">
-            <div class="btn-group">
-                <a href="#n" id="display-exhibition" class="btn bd-black" role="button"><span>전시매장 찾기</span></a>
-                <a href="#n" id="display-visit" class="btn bd-black" role="button"><span>매장방문예약</span></a>
-            </div>
-        </div>
-        <!-- 일반제품 + 렌탈 버튼 영역 -->
-        <div class="purchase-button rental">
-            <div class="btn-group">
-                <a href="#n" class="btn cart" role="button"><span class="blind">장바구니 담기</span></a>
-                <a href="#n" class="btn pink" role="button"><span>렌탈신청</span></a>
-            </div>
-            <div id="purchase-button-rental-modal" style="display:none;"></div>
-        </div>
-        <!-- 렌탈 전용 제품 정보 영역 -->
-        <div class="rental-only-info">
-            <span>렌탈 전용 제품입니다.</span>
-        </div>
     </div>
 </div>
-
-<!-- Modal -->
-<!-- 추가혜택 안내
-include('./common/partials/modal/KRP0010-benefit-info.html')
--->
-<!-- 케어십 제품 구매 안내
-include('./common/partials/modal/KRP0010-careship-info.html')
--->
-<!-- 사전 예약 제품 안내
-include('./common/partials/modal/KRP0010-pre-order-info.html')
--->
-<!-- 매월 납부금 할인 내역 안내
-include('./common/partials/modal/KRP0010-monthly-payment-info.html')
--->
