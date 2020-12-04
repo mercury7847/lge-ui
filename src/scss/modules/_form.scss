@@ -1273,6 +1273,7 @@ $input: (chk, rdo);
                 display:inline-block;
                 padding-left:30px;
                 color:#222;
+                word-break:  break-all;
                 @include font-medium;
                 vertical-align:top;
                 cursor:pointer;
@@ -1512,19 +1513,23 @@ $input: (chk, rdo);
     > ul {
         font-size:0;
         margin-top:-32px;
-        margin-left:-32px;
+        margin-left:-26px;
         @include mobile {
             margin-top:-16px;
             margin-left:-12px;
+            display: flex;
+            flex-wrap: wrap;
         }
         li {
             display:inline-block;
-            width:25%;
-            margin-top:32px;
-            padding-left:32px;
+            margin-top:28px;
+            padding-left:26px;
             vertical-align:top;
+            @include pc {
+                width:25%;
+            }
             @include mobile {
-                width:50%;
+                // width:50%;
                 margin-top:16px;
                 padding-left:12px;
             }
@@ -1532,15 +1537,19 @@ $input: (chk, rdo);
     }
     &.w-auto {
         > ul li {
-            width:auto;
+            width:20%;
+        }
+        @include mobile {
+            > ul li {
+                width: auto;
+            }
         }
     }
 }
 
 .select-list-wrap.type2{
-    padding-top:32px;
     li{
-        margin:0 0 16px 0;
+        margin-bottom:16px;
     }
 }
 
@@ -2065,7 +2074,7 @@ $input: (chk, rdo);
 
 //rdo-wrap-list
 .rdo-wrap-info{
-    margin:32px 0 24px;
+    margin-bottom: 24px;
     .tit{
         display:block;
         font-weight:bold;
@@ -2089,13 +2098,11 @@ $input: (chk, rdo);
     flex-flow:wrap;
     .rdo-wrap.btn-type2 input+label,
     .rdo-wrap-list button{
-        min-width:181px;
-        width:16.66%;
-        padding:15px 13px;
+        width: 100%;
+        padding:26px 44px;
         box-sizing:border-box;
         box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
         border:0;
-        margin:0 12px 12px 0;
         font-weight:500;
     }
     .rdo-wrap.btn-type2 input + label:after{
@@ -2103,5 +2110,45 @@ $input: (chk, rdo);
     }
     .rdo-wrap.btn-type2 input:checked + label:after{
         border:2px solid #ec455a;
+    }
+    @include pc {
+        .rdo-wrap {
+            width: calc(20% - 19.2px);
+            margin-left: 24px;
+            &:nth-child(5n+1) {
+                margin-left: 0;
+            }
+            &:nth-child(n+6) {
+                margin-top: 24px;
+            }
+        }  
+    }
+    @include mobile {
+        .rdo-wrap.btn-type2 input+label,
+        .rdo-wrap-list button{
+            padding: 16px 12px;
+            box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.14);
+        }
+        .rdo-wrap {
+            margin-top: 8px;
+            &:first-child,
+            &:nth-child(2) {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+.submitForm {
+    > [class*="-wrap"] {
+        margin-bottom: 64px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    @include mobile {
+        > [class*="-wrap"] {
+            margin-bottom: 40px;
+        }
     }
 }
