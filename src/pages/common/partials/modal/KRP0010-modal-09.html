@@ -1,0 +1,32 @@
+<!-- 케어십 안내 레이어팝업 -->
+<article id="@@popupID" class="popup-wrap small">
+    <header class="pop-header">
+        <h1 class="tit"><span>케어십 안내</span></h1>
+    </header>
+    <section class="pop-conts">
+        <div class="layer-careship">
+            <div class="process-info">
+                <div class="info-box">
+                    <p>선택하신 제품 중 케어십은 다음과 같은<br>절차로 주문이 진행됩니다.</p>
+                    <ul class="process-list">
+                        <li><span><em class="num">01</em>청약신청</span></li>
+                        <li><span><em class="num">02</em>제품주문</span></li>
+                        <li><span><em class="num">03</em>매니저방문</span></li>
+                    </ul>
+                </div>
+                @@include('./common/modules/bullet-list.html', {
+                    "bulletTxt" : [
+                        "케어십은 친절한 케어매니저가 주기적으로 방문하여 관리해드립니다."
+                    ]
+                })
+            </div>
+        </div>
+    </section>
+    <footer class="pop-footer center">
+        <div class="btn-group">
+            <button type="button" class="btn ui_modal_close"><span>확인</span></button>
+        </div>
+    </footer>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
+<!-- 케어십 안내 레이어팝업 -->
