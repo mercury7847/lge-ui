@@ -325,6 +325,7 @@
             }
         }
         .image-viewer {
+            display: none;
             position: absolute;
             top: 14px;
             right: 13px;
@@ -822,6 +823,7 @@
                 }
                 &.care-solution-payment-info {
                     margin-top: 32px;
+                    margin-bottom: 0;
                     .lists {
                         padding: 16px 24px;
                         border-radius: 8px 8px 0 0;
@@ -985,9 +987,22 @@
                         }
                     }
                     .divide {
-                        display: block;
                         padding: 10px 48px 10px 16px;
-                        color: $color-gray-1;
+                        .inner {
+                            position: relative;
+                            overflow: hidden;
+                            display: block;
+                        height: 42px;
+                        }
+                        em {
+                            position: absolute;
+                            top: 50%;
+                            right: 0;
+                            transform: translateY(-50%);
+                            @include font-medium;
+                            color: $color-gray-1;
+                            white-space: nowrap;
+                        }
                     }
                 }
                 &.open {
@@ -1019,7 +1034,7 @@
         }
 
         .care-sibling-option {
-            padding: 0 24px 32px;
+            padding: 0 24px;
             .info-accordion-wrap {
                 margin: 0 -24px 24px;
             }
@@ -2184,7 +2199,7 @@
                                 margin: 0;
                                 background: url(/lg5-common/images/btn-AD-on.svg);
                                 background-size: 36px 36px;
-                                border-radius: inherit; 
+                                border-radius: inherit;
                             }
                         }
                         button.see-video {
@@ -2203,7 +2218,7 @@
                             text-indent: -9999px;
                             overflow: hidden;
                             border: none;
-                        } 
+                        }
                     }
                 }
                 @include mobile {
@@ -2248,7 +2263,7 @@
                         flex-direction: row;
                         padding: 0 15px;
                         //justify-content: center;
-                    }                           
+                    }
                     li {
                         width: 64px;
                         height: 64px;
@@ -2313,13 +2328,13 @@
                         background: url(/lg5-common/images/KRP0010/zoomin.svg) center no-repeat;
                     }
                     &.zoom-minus {
-                        background: url(/lg5-common/images/KRP0010/zoomout.svg) center no-repeat; 
+                        background: url(/lg5-common/images/KRP0010/zoomout.svg) center no-repeat;
                         @include mobile {
                             margin-left: 16px;
                         }
                     }
                 }
-            } 
+            }
 
         }
     }
@@ -2334,7 +2349,7 @@
     }
 }
 .awards-list {
-    margin-top: 24px; 
+    margin-top: 24px;
     height: auto;
     background: #fff;
     z-index: 1000;
@@ -2361,6 +2376,6 @@
                 width: 56px;
             }
         }
-    }       
+    }
 }
 

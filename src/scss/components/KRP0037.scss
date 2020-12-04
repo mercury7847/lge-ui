@@ -339,6 +339,21 @@
             }
 
         }
+        &.align-left {}
+        &.align-right {
+            .btn-area,
+            .tit-area,
+            .desc .inner {
+                text-align: right;
+            }
+        }
+        &.align-center {
+            .btn-area,
+            .tit-area,
+            .desc .inner {
+                text-align: center;
+            }
+        }
     }
   }
 }

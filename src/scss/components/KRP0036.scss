@@ -282,6 +282,21 @@
                                 line-height: 21px;
                             }
                         }
+                        &.align-left {}
+                        &.align-right {
+                            .flag-wrap,
+                            .tit,
+                            .desc {
+                                text-align: right;
+                            }
+                        }
+                        &.align-center {
+                            .flag-wrap,
+                            .tit,
+                            .desc {
+                                text-align: center;
+                            }
+                        }
                     }
                 }
             }
