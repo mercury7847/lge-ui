@@ -179,6 +179,9 @@
         p {
             @include font-small;       
         }
+        img {
+            max-width:100%;
+        }
     }
     @include tablet {
         .tb-col {
@@ -1134,7 +1137,7 @@
     /* 카드뉴스 */
     &.card-news {   
         .card-news-view {
-            .sub-tit {
+            .card-news-tit {
                 margin-bottom:48px;
                 padding:24px 40px;
                 @include font-medium;
@@ -1166,6 +1169,7 @@
                 margin-top:32px;
             }
             .slide-wrap {
+                overflow:visible;
                 max-width: 880px;
                 margin: 0 auto;
                 padding:0 80px;
