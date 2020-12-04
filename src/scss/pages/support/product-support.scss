@@ -179,6 +179,9 @@
         p {
             @include font-small;       
         }
+        img {
+            max-width:100%;
+        }
     }
     @include tablet {
         .tb-col {
