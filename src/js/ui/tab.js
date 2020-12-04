@@ -218,7 +218,6 @@ vcui.define('ui/tab', ['jquery', 'vcui', 'ui/smoothScroll'], function ($, core) 
                 }
             }
 
-            console.log(index);
             self.selectedIndex = index;
 
             var $a, $hide;

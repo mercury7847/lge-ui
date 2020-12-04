@@ -2,8 +2,8 @@
     "status":"success",
     "message":null,
     "param":{
-        "searchedValue":"매직스페이스",
-        "searchInResult":"결과내 검색어",
+        "search":"매직스페이스",
+        "searchIn":"결과내 검색어22",
         "pagination":{
             "page":"12",
             "visibleCount":"7",
@@ -60,74 +60,74 @@
                 "rating":"39",
                 "review":"33"
             }
+        ],
+        "filterList": [
+            {
+                "filterType":"slider",
+                "filterId":"fid00001",
+                "title":"판매가",
+                "filterValues":[
+                    {"value":"0","title":"50,000","filterValue":"pd0001"},
+                    {"value":"1","title":"150,000","filterValue":"pd0002"},
+                    {"value":"2","title":"400,000","filterValue":"pd0003"},
+                    {"value":"3","title":"1,000,000","filterValue":"pd0004"},
+                    {"value":"4","title":"2,000,000","filterValue":"pd0005"}
+                ]
+            },
+            {
+                "filterType":"slider",
+                "filterId":"fid00002",
+                "title":"화면크기",
+                "filterValues":[
+                    {"value":"0","title":"48인치","filterValue":"rd0001"},
+                    {"value":"1","title":"52인치","filterValue":"rd0002"},
+                    {"value":"2","title":"80인치","filterValue":"rd0003"},
+                    {"value":"3","title":"120인치","filterValue":"rd0004"}
+                ]
+            },
+            {
+                "filterType":"radio",
+                "filterId":"fid00003",
+                "title":"서비스",
+                "filterValues":[
+                    {"value":"sd0001","title":"전체"},
+                    {"value":"sd0002","title":"일반제품"},
+                    {"value":"sd0003","title":"케어십 가능 제품"},
+                    {"value":"sd0004","title":"기타"}
+                ]
+            },
+            {
+                "filterType":"color",
+                "filterId":"fid00004",
+                "title":"색상",
+                "filterValues":[
+                    {"value":"cd0001","title":"맷 블랙", "color":"HA_REF_Matte_Black_Stainless_Steel"},
+                    {"value":"cd0002","title":"블랙 스틸", "color":"Black-Stainless-Steel"},
+                    {"value":"cd0003","title":"스테인레스 스틸", "color":"stainless-steel"},
+                    {"value":"cd0004","title":"화이트", "color":"smooth-white"}
+                ]
+            },
+            {
+                "filterType":"checkbox",
+                "filterId":"fid00005",
+                "title":"용량",
+                "filterValues":[
+                    {"value":"yd0001","title":"용량 11"},
+                    {"value":"yd0002","title":"용량 22"},
+                    {"value":"yd0003","title":"용량 33"},
+                    {"value":"yd0004","title":"용량 44"}
+                ]
+            },
+            {
+                "filterType":"checkbox",
+                "filterId":"fid00006",
+                "title":"태그",
+                "filterValues":[
+                    {"value":"td0001","title":"태그1"},
+                    {"value":"td0002","title":"태그2"},
+                    {"value":"td0003","title":"태그3"}
+                ]
+            }
         ]
-    },
-    "filterList": [
-        {
-            "filterType":"slider",
-            "filterId":"fid00001",
-            "title":"판매가",
-            "filterValues":[
-                {"value":"","title":"50,000","id":"pd0001"},
-                {"value":"","title":"150,000","id":"pd0002"},
-                {"value":"","title":"400,000","id":"pd0003"},
-                {"value":"","title":"1,000,000","id":"pd0004"},
-                {"value":"","title":"2,000,000","id":"pd0005"}
-            ]
-        },
-        {
-            "filterType":"slider",
-            "filterId":"fid00002",
-            "title":"화면크기",
-            "filterValues":[
-                {"value":"","title":"48인치","id":"rd0001"},
-                {"value":"","title":"52인치","id":"rd0002"},
-                {"value":"","title":"80인치","id":"rd0003"},
-                {"value":"","title":"120인치","id":"rd0004"}
-            ]
-        },
-        {
-            "filterType":"radio",
-            "filterId":"fid00003",
-            "title":"서비스",
-            "filterValues":[
-                {"value":"sd0001","title":"전체"},
-                {"value":"sd0002","title":"일반제품"},
-                {"value":"sd0003","title":"케어십 가능 제품"},
-                {"value":"sd0004","title":"기타"}
-            ]
-        },
-        {
-            "filterType":"color",
-            "filterId":"fid00004",
-            "title":"색상",
-            "filterValues":[
-                {"value":"cd0001","title":"맷 블랙", "color":"HA_REF_Matte_Black_Stainless_Steel"},
-                {"value":"cd0002","title":"블랙 스틸", "color":"Black-Stainless-Steel"},
-                {"value":"cd0003","title":"스테인레스 스틸", "color":"stainless-steel"},
-                {"value":"cd0004","title":"화이트", "color":"smooth-white"}
-            ]
-        },
-        {
-            "filterType":"checkbox",
-            "filterId":"fid00005",
-            "title":"용량",
-            "filterValues":[
-                {"value":"yd0001","title":"용량 11"},
-                {"value":"yd0002","title":"용량 22"},
-                {"value":"yd0003","title":"용량 33"},
-                {"value":"yd0004","title":"용량 44"}
-            ]
-        },
-        {
-            "filterType":"checkbox",
-            "filterId":"fid00006",
-            "title":"태그",
-            "filterValues":[
-                {"value":"td0001","title":"태그1"},
-                {"value":"td0002","title":"태그2"},
-                {"value":"td0003","title":"태그3"}
-            ]
-        }
-    ]
+    }
 }
