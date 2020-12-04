@@ -945,16 +945,18 @@
                     background: $color-bg-wt;
                     @include font-medium;
                     text-align: right;
-                    &:after {
-                        position: absolute;
-                        top: 50%;
-                        right: 16px;
-                        width: 24px;
-                        height: 24px;
-                        margin-top: -12px;
-                        background: url('/lg5-common/images/icons/icon-triangle-24.svg') no-repeat 0 0;
-                        transition: all 0.3s;
-                        content: '';
+                    .ui_dropdown_toggle {
+                        &:after {
+                            position: absolute;
+                            top: 50%;
+                            right: 16px;
+                            width: 24px;
+                            height: 24px;
+                            margin-top: -12px;
+                            background: url('/lg5-common/images/icons/icon-triangle-24.svg') no-repeat 0 0;
+                            transition: all 0.3s;
+                            content: '';
+                        }
                     }
                 }
                 .selectbox-list {
@@ -996,8 +998,10 @@
                         left: 1px;
                         z-index: 2;
                         border: 0;
-                        &:after {
-                            transform:rotate(180deg);
+                        .ui_dropdown_toggle {
+                            &:after {
+                                transform:rotate(180deg);
+                            }
                         }
                         .select-text {
                             background-image: none;
@@ -1527,13 +1531,13 @@
                 .btn {
                     display: table-cell;
                     width: 100%;
-                    @include mobile {
-                        margin-left: 4px;
-                        border-radius: 4px;
-                        &:first-child {
-                            margin-left: 0;
-                        }
-                    }
+                    //@include mobile {
+                    //    margin-left: 4px;
+                    //    border-radius: 4px;
+                    //    &:first-child {
+                    //        margin-left: 0;
+                    //    }
+                    //}
                 }
             }
             .btn {
