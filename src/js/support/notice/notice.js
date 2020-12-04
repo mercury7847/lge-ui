@@ -4,10 +4,8 @@
         '<td class="board-tit">' +
             '<a href="{{url}}">' +
                 '{{# if (typeof flag != "undefined") { #}}' +
-                '<div class="flag-wrap bar-type">' +
-                    '{{# for (var i=0; i<flag.length; i++) { #}}' +
-                    '<span class="flag"><span class="blind">제품 상태</span>{{flag[i]}}</span>' +
-                    '{{# } #}}' +
+                '<div class="flag-wrap">' +
+                    '<span class="flag"><span class="blind">제품 상태</span>{{flag}}</span>' +
                 '</div>' +
                 '{{# } #}}' +
                 '<p>{{title}}</p>' +
