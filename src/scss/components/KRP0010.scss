@@ -1737,7 +1737,8 @@
             }
         }
         &.point {
-            margin-top: 24px;
+            //margin: 24px 0;
+            margin: 16px 0;
             .text {
                 padding-top: 4px;
             }
@@ -1786,7 +1787,6 @@
             .cash-back {
                 .head {
                     @include clearfix;
-                    @include font-small;
                 }
                 .content {
                     float: right;
@@ -1822,15 +1822,15 @@
                     }
                 }
             }
-            .card-benefit {
-                margin: 24px -24px 0;
-                padding: 24px;
-                border-radius: 8px;
-                background-color: $color-bg;
-                .bullet-list {
-                    margin-top: 0;
-                }
-            }
+            //.card-benefit {
+            //    margin: 24px -24px 0;
+            //    padding: 24px;
+            //    border-radius: 8px;
+            //    background-color: $color-bg;
+            //    .bullet-list {
+            //        margin-top: 0;
+            //    }
+            //}
         }
         .info-text {
             margin-top: 24px;
@@ -1840,6 +1840,9 @@
             text-indent: -17px;
         }
         .ui_accordion {
+            .head {
+                @include font-small;
+            }
             .btn-toggle {
                 display: inline-block;
                 //transition: all .3s ease;
