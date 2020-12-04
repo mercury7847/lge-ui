@@ -42,12 +42,18 @@
             .inner {
                 @if $stageClass == stage-full {
                     max-width:1920px;
+                    height:1310px;
                 }
                 @else if $stageClass == stage-wide {
                     max-width:1600px;
+                    height:1090px;
                 }
                 @else if $stageClass == stage-medium {
                     max-width:1380px;
+                    height:942px;
+                }
+                @include mobile {
+                    height:auto;
                 }
             }
         }
@@ -55,18 +61,24 @@
     .inner {
         position:relative;
         margin:0 auto;
+        z-index:0;
     }
 
     // text area
     .text-area {
+        position:relative;
         max-width:1380px + 80px;
         padding:0 40px;
         margin:0 auto;
+        z-index:20;
         @include mobile {
             margin-bottom:24px;
             padding:0 16px;
         }
         .text-inner {
+            display:inline-block;
+            max-width:561px;
+            text-align:left;
             .title * {
                 font-size:48px;
                 line-height:64px;
@@ -77,6 +89,7 @@
                 }
             }
             .body-copy {
+                max-width:561px;
                 margin-top:24px;
                 font-size:20px;
                 line-height:34px;
@@ -89,15 +102,22 @@
         }
     }
 
-    .position-wrap {
-        position:relative;
-    }
-
     // visual area
     @each $stageClass in $stage {
         &.#{$stageClass} {
             .visual-area {
-                position:relative;
+                position:absolute;
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+                @include mobile {
+                    position:relative;
+                    top:auto;
+                    left:auto;
+                    right:auto;
+                    bottom:auto;
+                }
                 .images {
                     @include pc {
                         .m-img {
@@ -109,13 +129,13 @@
                             width:100%;
                             @if $stageClass == stage-full {
                                 max-width:100%;
-                                height:1174px;
+                                height:1310px;
                             }
                             @else if $stageClass == stage-wide {
-                                height:977px;
+                                height:1090px;
                             }
                             @else if $stageClass == stage-medium {
-                                height:842px;
+                                height:942px;
                             }
                             background-size:cover !important;
                         }
@@ -137,34 +157,40 @@
 
     // thumbnail text area
     .thumbnail-text-area {
-        position:absolute;
-        right:0;
-        left:0;
         &.vertical-top {
-            top:80px;
+            position:relative;
+            margin-top:80px;
             @include mobile {
-                top:auto;
+                margin-top:32px;
             }
         }
         &.vertical-middle {
+            position:absolute;
             top:50%;
+            left:0;
+            right:0;
             transform:translateY(-50%);
             @include mobile {
+                position:relative;
                 top:auto;
+                left:auto;
+                right:auto;
                 transform:translateY(0);
+                margin-top:32px;
             }
         }
         &.vertical-bottom {
-            bottom:80px;
+            position:absolute;
+            left:0;
+            right:0;
+            bottom:0;
             @include mobile {
+                position:relative;
+                left:auto;
+                right:auto;
                 bottom:auto;
+                margin-top:32px;
             }
-        }
-        @include mobile {
-            position:relative;
-            left:auto;
-            right:auto;
-            margin-top:32px;
         }
         .text-inner {
             max-width:1380px + 80px;

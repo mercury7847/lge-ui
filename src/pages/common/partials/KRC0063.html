@@ -12,7 +12,7 @@
         .stage-wide : WIDE size 옵션(1600px)
         .stage-medium : MEDIUM size 옵션(1380px)
 
-        [.text-inner, .text-inner 각각 옵션]
+        [.text-inner, .text-area 각각 옵션]
 		1. 정렬
 		.align-left : 왼쪽 정렬
 		.align-right : 오른쪽 정렬
@@ -40,59 +40,56 @@
 		.font-underline : 언더라인
 	-->
 	<section class="component KRC0063 @@stageType">
-		<div class="inner">
+		<div class="inner"> 
             <!-- text area -->
-            <div class="text-area">
-                <div class="text-inner @@alignType1 @@fontColor1">
+            <div class="text-area @@alignType1 @@fontColor1">
+                <div class="text-inner">
                     <div class="title">
-                        <h2>헤드라인 텍스트 글자 수 최대 40자까지 사용 가능 최대 2줄 노출</h2>
+                        <h2>헤드라인 텍스트 글자 수 최대 40자까지 사용 가능</h2>
                     </div>
-                    <p class="body-copy @@fontStyle1">공백 포함 400자까지 글자수를 제한합니다. 공백 포함 400자까지 글자수를 제한합니다. 최대 2줄 노출</p>
+                    <p class="body-copy @@fontStyle1">공백 포함 400자까지 글자수를 제한합니다. 공백 포함 400자까지 글자수를 제한합니다.</p>
                 </div>
             </div>
             <!-- // text area -->
             
-            <div class="position-wrap">
-                <!-- visual -->
-                <div class="visual-area ui_carousel_slider">
-                    <div class="slide-content ui_carousel_list">
-                        <ul class="slide-track ui_carousel_track">
-                            @@for ( var j=0; j < images; j++ ) {
-                            <li class="slide-conts ui_carousel_slide">
-                                <div class="images">
-                                    <span class="pc-img" style="background:url('/lg5-common/images/KRC0063/@bg`+[j+1]+`.jpg') center no-repeat"></span>
-                                    <img src="/lg5-common/images/KRC0063/@bg-m`+[j+1]+`.jpg" alt="" class="m-img">
-                                    <p class="hidden">graphic description : </p>
-                                </div>
-                            </li> 
-                            }
-                        </ul>
-                    </div>
+            <!-- visual -->
+            <div class="visual-area ui_carousel_slider">
+                <div class="slide-content ui_carousel_list">
+                    <ul class="slide-track ui_carousel_track">
+                        @@for ( var j=0; j < images; j++ ) {
+                        <li class="slide-conts ui_carousel_slide">
+                            <div class="images">
+                                <span class="pc-img" style="background:url('/lg5-common/images/KRC0063/@bg`+[j+1]+`.jpg') center no-repeat"></span>
+                                <img src="/lg5-common/images/KRC0063/@bg-m`+[j+1]+`.jpg" alt="" class="m-img">
+                                <p class="hidden">graphic description : </p>
+                            </div>
+                        </li> 
+                        }
+                    </ul>
                 </div>
-                <!-- // visual -->
-
-                <!-- thumbnail text area -->
-                <div class="thumbnail-text-area @@verticalType">
-                    <div class="text-inner @@alignType2 @@fontColor2">
-                        <ul class="text-list">
-                            @@for ( var i=0; i < lists; i++ ) {
-                            <li class="list">
-                                <div class="icon">
-                                    <img src="/lg5-common/images/KRC0063/icon-08-120.svg" alt="">
-                                    <p class="hidden">graphic description : </p>
-                                </div>
-                                <div class="text-box">
-                                    <p class="title">타이틀 텍스트 공백포함 최대 40자까지 입력 권장합니다. 최대 두줄 노출</p>
-                                    <p class="body-copy @@fontStyle2">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
-                                </div>
-                            </li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-                <!-- // thumbnail text area -->
             </div>
-
+            <!-- // visual -->    
+            
+            <!-- thumbnail text area -->
+            <div class="thumbnail-text-area @@verticalType">
+                <div class="text-inner @@alignType2 @@fontColor2">
+                    <ul class="text-list">
+                        @@for ( var i=0; i < lists; i++ ) {
+                        <li class="list">
+                            <div class="icon">
+                                <img src="/lg5-common/images/KRC0063/icon-08-120.svg" alt="">
+                                <p class="hidden">graphic description : </p>
+                            </div>
+                            <div class="text-box">
+                                <p class="title">타이틀 텍스트 공백포함 최대 40자까지 입력 권장합니다. 최대 두줄 노출</p>
+                                <p class="body-copy @@fontStyle2">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다.</p>
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <!-- // thumbnail text area -->
         </div>
 	</section>
 </div>
