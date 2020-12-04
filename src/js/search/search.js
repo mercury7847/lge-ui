@@ -158,6 +158,9 @@
     '</li>';
 
     $(window).ready(function() {
+        var tabIndexAll = 0;
+        var tabIndexProduction = 1;
+
         var intergratedSearch = {
             init: function() {
                 var self = this;
@@ -184,6 +187,9 @@
 
                 //통합검색 레이어
                 self.$contentsSearch = $('div.contents.search');
+                //탭
+                self.$tab = self.$contentsSearch.find('.ui_tab');
+                self.tabInstance = self.$tab.vcTab('instance');
                 //input-keyword
                 self.$inputKeyword = self.$contentsSearch.find('div.input-keyword');
                 //검색어 입력input
@@ -262,12 +268,13 @@
             bindEvents: function() {
                 var self = this;
 
-                $('.ui_tab').on("tabbeforechange", function(e, data){
+                self.$tab.on("tabbeforechange", function(e, data){
                     var index = data.selectedIndex;
-                    var ajaxUrl = self.getTabItem(index).attr('data-search-url');
+                    //var ajaxUrl = self.getTabItem(index).attr('data-search-url');
+                    //var searchValue = self.$inputKeyword.attr('data-searchValue');
                     $('.lay-filter').removeClass('open');
                     switch(index) {
-                        case 0:
+                        case tabIndexAll:
                             //전체
                             self.hideFilter();
                             self.$searchResultCategory.show();
@@ -275,13 +282,14 @@
                             self.$mobileServiceLink.hide();
                             self.$recommendListBox.hide();
                             break;
-                        case 1:
+                        case tabIndexProduction:
                             //제품/케어솔루션 setFilter 위치 옮길것
                             self.setFilter();
                             self.$searchResultCategory.hide();
                             self.$searchBanner.hide();
                             self.$mobileServiceLink.css('display', '');
                             self.$recommendListBox.show();
+                            //self.requestSearch(searchValue, ajaxUrl, null);
                             break;
                         case 2:
                             //이벤트/기획전
@@ -294,7 +302,27 @@
                         default:
                             break;
                     }
-                })
+                });
+
+                self.$tab.on("tabchange", function(e, data){
+                    var index = data.selectedIndex;
+                    var ajaxUrl = self.getTabItem(index).attr('data-search-url');
+                    var searchValue = self.$inputKeyword.attr('data-searchValue');
+                    switch(index) {
+                        case tabIndexAll:
+                            //전체
+                            break;
+                        case tabIndexProduction:
+                            //제품/케어솔루션 setFilter 위치 옮길것
+                            self.requestSearch(searchValue, ajaxUrl, null);
+                            break;
+                        case 2:
+                            //이벤트/기획전
+                            break;
+                        default:
+                            break;
+                    }
+                });
 
                 //검색버튼
                 self.$buttonSearch.on('click', function(e){
@@ -441,8 +469,9 @@
             },
 
             getTabItem:function(index) {
+                var self = this;
                 var idx = parseInt(index) + 1;
-                return $('.ui_tab ul li:nth-child('+idx+') a');
+                return self.$tab.find('ul li:nth-child('+idx+') a');
             },
 
             //검색어 입력중 검색
@@ -483,6 +512,26 @@
                 });
             },
 
+            //카테고리 선택 검색
+            requestSearch:function(value, ajaxUrl, queryData) {
+                var self = this;
+                var postData = queryData ? queryData : {};
+                postData.search = value;
+                var tabIndex = self.tabInstance.vcTab('getSelectIdx');
+                console.log(tabIndex, ajaxUrl, postData);
+
+                lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
+                    var data = result.data;
+
+                    //var replaceText = '<span class="search-word">' + searchedValue + '</span>';
+
+                    //필터세팅
+
+                    //리스트 세팅
+
+                });
+            },
+
             //검색버튼 검색
             requestSearchAll:function(value, force) {
                 var self = this;
@@ -497,6 +546,7 @@
 
                     //검색한 검색어
                     self.$searchResultText.html(replaceText + ' 검색 결과');
+
                     //원래입력된 기존 검색어 이동
                     var inputValue = data.inputValue;
                     if(inputValue && inputValue != searchedValue) {
@@ -507,8 +557,6 @@
                     }
 
                     //연관 검색어 리스트 갱신
-                    //self.$relatedKeywordList.addClass('open');
-                    
                     var arr = data.related instanceof Array ? data.related : [];
                     if(arr.length > 0) {
                         showResult = true;
@@ -523,17 +571,6 @@
                     }
 
                     self.$relatedKeywordList.removeClass('open');
-                    /*
-                    if(window.breakpoint.isMobile) {
-                        var height = self.$relatedKeywordList.find('div.inner').height();
-                        if(height > 29) {
-                            self.$relatedKeywordList.removeClass('open');
-                            self.$relatedKeywordMobileMoreButton.show();
-                        } else {
-                            self.$relatedKeywordMobileMoreButton.hide();
-                        }
-                    }
-                    */
 
                     //카테고리 리스트 갱신
                     arr = data.category instanceof Array ? data.category : [];
@@ -550,25 +587,6 @@
 
                     self.$searchResultCategory.removeClass('on');
                     self.$searchResultCategoryMore.find('span').text('더보기');
-                    /*
-                    self.$searchResultCategory.removeClass('open');
-                    self.$searchResultCategory.find('div.inner').css('overflow','hidden');
-                    if(window.breakpoint.isMobile) {
-                        self.$searchResultCategory.find('div.inner').css('height','100px');
-                    } else {
-                        self.$searchResultCategory.find('div.inner').css('height','108px');
-                    }
-                    */
-
-                    /*
-                    var checkHeight = window.breakpoint.isMobile ? 50 : 54;
-                    var height = self.$searchResultCategory.find('div.inner').height();
-                    if(height > checkHeight) {
-                        self.$searchResultCategoryMore.show();
-                    } else {
-                        self.$searchResultCategoryMore.hide();
-                    }
-                    */
 
                     //nodata Test
                     /*
@@ -667,7 +685,10 @@
 
                     //최근검색어 저장
                     console.log(searchedValue);
-                    self.addRecentSearcheText(searchedValue);
+                    self.$inputKeyword.attr('data-searchValue',searchedValue);
+                    if(!noData) {
+                        self.addRecentSearcheText(searchedValue);
+                    }
 
                     self.getTabItem(0).trigger('click');
                 });
@@ -802,10 +823,11 @@
                     $('.lay-filter').removeClass('open');
                 });
 
+                var $listSorting = $('div.list-sorting');
                 //품절상품 확인
-                $('div.check-soldout span.chk-wrap').on('change', 'input[type="checkbox"]', function(e){
-                    e.preventDefault();
-                    _self.requestSearchProduct(searchedValue);
+                $listSorting.on('change', 'input[type="checkbox"]', function(e){
+                    //e.preventDefault();
+                    //_self.requestSearchProduct(searchedValue);
                 });
 
                 // 필터의 정렬 선택시 리스트의 정렬값도 선택하게 함
