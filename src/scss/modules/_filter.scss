@@ -539,6 +539,9 @@
     top: 0;
     left: 20px;
     z-index: 100;
+    @include mobile {
+        top: 12px;
+    }
     .ico-filter {
         display: inline-block;
         width: 32px;
@@ -567,6 +570,11 @@
             content: '';
         }
     }
+}
+
+.cate-m {
+    min-height: 70px;
+    border-bottom: 12px solid #f4f4f4;
 }
 
 .lay-filter .plp-filter-wrap .filter-top {

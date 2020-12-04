@@ -10,11 +10,12 @@
         height:102px;
         padding:24px 0 0;
         background:#fff;
-        border-bottom: 8px solid #f4f4f4;
+        //border-bottom: 8px solid #f4f4f4;
         @include mobile {
-            height:90px;
-            padding:16px 0;
-            border-bottom: 12px solid #f4f4f4;
+            height: auto;
+            padding-top:0;
+            padding-bottom: 12px;
+            //border-bottom: 12px solid #f4f4f4;
         }
         .cate-list {
             position: relative;          
@@ -126,7 +127,7 @@
             .mobile-more-btn {
                 display: none;
                 position: absolute;
-                top: 0;
+                top: 8px;
                 right: 16px;
                 height: 100%;
                 background-color: #fff;
