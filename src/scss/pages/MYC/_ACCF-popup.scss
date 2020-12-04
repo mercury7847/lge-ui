@@ -394,6 +394,24 @@
 
 //나의 글 보기
 .custom-step-area {
+    .pc-only {
+        @include mobile {
+            display:none;
+        }
+    }
+    .mob-only {
+        display:none;
+        @include mobile {
+            display:block;
+            .step-box.step4 .bar.bar1 {
+                width:35%;
+            }
+            .step-box.step4 .bar.bar2 {
+                width:66%;
+            }
+        }
+    }
+
     .section-inner {
         padding-top:40px !important;
     }
@@ -420,16 +438,7 @@
                 left:0;
                 border-radius:18px;
                 background-color:#ec455a;
-                &.bar1 {
-                    width:34%;
-                }
-                &.bar2 {
-                    width:64%;
-                }
-                &.bar3 {
-                    width:100%;
-                }
-            }        
+            }
         }
         .step-txt {
             position:relative;
@@ -446,18 +455,89 @@
                 &.comp {
                     color:#ec455a;
                 }
-                &:nth-child(1) {
-                    left:0;
+            }
+        }
+        &.step4 {
+            .bar {
+                &.bar1 {
+                    width:34%;
                 }
-                &:nth-child(2) {
-                    left:31%;
+                &.bar2 {
+                    width:64%;
                 }
-                &:nth-child(3) {
-                    left:61%;
+                &.bar3 {
+                    width:100%;
                 }
-                &:nth-child(4) {
-                    left:auto;
-                    right:0;
+            }
+            .step-txt {
+                li {
+                    &:nth-child(1) {
+                        left:0;
+                    }
+                    &:nth-child(2) {
+                        left:31%;
+                    }
+                    &:nth-child(3) {
+                        left:61%;
+                    }
+                    &:nth-child(4) {
+                        left:auto;
+                        right:0;
+                    }
+                }
+            }
+        }
+        &.step8 {
+            .bar {
+                &.bar1 {
+                    width:14%;
+                }
+                &.bar2 {
+                    width:28%;
+                }
+                &.bar3 {
+                    width:44%;
+                }
+                &.bar4 {
+                    width:58%;
+                }
+                &.bar5 {
+                    width:72%;
+                }
+                &.bar6 {
+                    width:85%;
+                }
+                &.bar7 {
+                    width:100%;
+                }
+            }
+            .step-txt {
+                li {
+                    &:nth-child(1) {
+                        left:0;
+                    }
+                    &:nth-child(2) {
+                        left:10%;
+                    }
+                    &:nth-child(3) {
+                        left:24%;
+                    }
+                    &:nth-child(4) {
+                        left:41%;
+                    }
+                    &:nth-child(5) {
+                        left:54%;
+                    }
+                    &:nth-child(6) {
+                        left:69%;
+                    }
+                    &:nth-child(7) {
+                        left:82%;
+                    }
+                    &:nth-child(8) {
+                        left:auto;
+                        right:0;
+                    }
                 }
             }
         }

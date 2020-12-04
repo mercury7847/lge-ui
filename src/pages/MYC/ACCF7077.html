@@ -7,7 +7,11 @@
     <div class="wrap">
 		<button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 예약 일반</span></button><br><br>
 		<button type="button" data-href="#popup2" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 서비스예약취소</span></button><br><br>
-		<button type="button" data-href="#popup3" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 예약일시변경</span></button>
+		<button type="button" data-href="#popup3" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 예약일시변경</span></button><br><br>
+		<button type="button" data-href="#popup4" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 예약 의류건조기</span></button><br><br>
+		<button type="button" data-href="#popup5" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 예약 의류건조기 - 서비스예약취소</span></button><br><br>
+		<button type="button" data-href="#popup6" data-control="modal" class="btn pink"><span>출장 서비스 예약 - 예약 의류건조기 - 예약일시변경</span></button><br><br>
+		<button type="button" data-href="#popup7" data-control="modal" class="btn pink"><span>이메일 문의</span></button>
     </div>
 
     <!-- 예약 일반 -->
@@ -26,6 +30,30 @@
     @@include('./common/popup/ACCF7077_pop3.html', {
         popupID: 'popup3'
     })
-    <!-- //예약일시변경 -->
+	<!-- //예약일시변경 -->
+	
+	<!-- 예약의류건조기 -->
+    @@include('./common/popup/ACCF7077_pop4.html', {
+        popupID: 'popup4'
+    })
+	<!-- //예약의류건조기 -->
+	
+	<!-- 예약의류건조기 서비스예약취소 -->
+    @@include('./common/popup/ACCF7077_pop5.html', {
+        popupID: 'popup5'
+    })
+	<!-- //예약의류건조기 서비스예약취소 -->
+	
+	<!-- 예약의류건조기 예약일시변경 -->
+    @@include('./common/popup/ACCF7077_pop6.html', {
+        popupID: 'popup6'
+    })
+	<!-- //예약의류건조기 예약일시변경 -->
+	
+	<!-- 이메일 문의 -->
+    @@include('./common/popup/ACCF7077_pop7.html', {
+        popupID: 'popup7'
+    })
+    <!-- //이메일 문의 -->
 </body>
 </html>
