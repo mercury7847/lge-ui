@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        componentID: "KRP0010",
+        isJScompile: true
+    })
+<body>
+
+    <div class="wrap">
+        <button type="button" data-href="#pop-pdp-visual" data-control="modal" class="btn pink"><span>이미지 View Layer</span></button><br><br>
+        <button type="button" data-href="#modal-02" data-control="modal" class="btn pink"><span>수상내역</span></button><br><br>
+        <button type="button" data-href="#modal-03" data-control="modal" class="btn pink"><span>추가혜택</span></button><br><br>
+        <button type="button" data-href="#modal-04" data-control="modal" class="btn pink"><span>구매혜택</span></button><br><br>
+        <button type="button" data-href="#modal-05" data-control="modal" class="btn pink"><span>사전 예약 제품 안내</span></button><br><br>
+        <button type="button" data-href="#modal-06" data-control="modal" class="btn pink"><span>케어솔루션 이용요금 안내</span></button><br><br>
+        <button type="button" data-href="#modal-07" data-control="modal" class="btn pink"><span>케어십 할인 혜택</span></button><br><br>
+        <button type="button" data-href="#modal-08" data-control="modal" class="btn pink"><span>제품 구매 안내 - 케어십 바로구매 선택 시</span></button><br><br>
+        <button type="button" data-href="#modal-09" data-control="modal" class="btn pink"><span>케어십 안내 - 케어십 바로구매 선택 시</span></button>
+    </div>
+
+    <!-- 이미지 View Layer -->
+    @@include('./common/partials/modal/KRP0010-modal-01.html')
+
+    <!-- 수상내역 -->
+    @@include('./common/partials/modal/KRP0010-modal-02.html', {
+        popupID: 'modal-02'
+    })
+
+    <!-- 추가혜택 -->
+    @@include('./common/partials/modal/KRP0010-modal-03.html', {
+        popupID: 'modal-03'
+    })
+
+    <!-- 구매혜택 -->
+    @@include('./common/partials/modal/KRP0010-modal-04.html', {
+        popupID: 'modal-04'
+    })
+
+    <!-- 사전 예약 제품 안내 -->
+    @@include('./common/partials/modal/KRP0010-modal-05.html', {
+        popupID: 'modal-05'
+    })
+
+    <!-- 케어솔루션 이용요금 안내 -->
+    @@include('./common/partials/modal/KRP0010-modal-06.html', {
+        popupID: 'modal-06'
+    })
+
+    <!-- 케어십 할인 혜택 -->
+    @@include('./common/partials/modal/KRP0010-modal-07.html', {
+        popupID: 'modal-07'
+    })
+
+    <!-- 제품 구매 안내 - 케어십 바로구매 선택 시 -->
+    @@include('./common/partials/modal/KRP0010-modal-08.html', {
+        popupID: 'modal-08'
+    })
+
+    <!-- 케어십 안내 - 케어십 바로구매 선택 시 -->
+    @@include('./common/partials/modal/KRP0010-modal-09.html', {
+        popupID: 'modal-09'
+    })
+
+
+</body>
+</html>

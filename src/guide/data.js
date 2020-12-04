@@ -89,6 +89,7 @@ var res = {
 			"KRP0008_Responsive UI" : ["/html/components/KRP0008.html","","검수완료"],
 			"KRP0009_Product List Products List : No Filter" : ["/html/components/KRP0009.html","","검수완료"],
 			"KRP0010_Product Summary (no-img)" : ["/html/components/KRP0010.html","","진행중"],
+			"KRP0010_Product Summary (no-img) - Modal" : ["/html/components/KRP0010-modal.html","","진행중"],
 			"KRP0012_PDP Tab Anchor" : ["/html/components/KRP0012.html","","검수완료"],
 			// "KRP0013_PDP Bundle" : ["/html/components/KRP0013.html","","검수완료"],
 			"KRP0014_PDP Specs" : ["/html/components/KRP0014.html","","검수완료"],
@@ -148,6 +149,15 @@ var res = {
 				"모바일 서비스" : {
 					// "모바일스위치(MKT5006,MKT5007,MKT5008)" : ["/html/STC/MKT5006.html","","진행중"]
 				}
+			},
+			"스토리(STR)" : {
+				"매거진" : {
+					"비하인드스토리" : ["/html/STR/OBS5006.html","","진행중"]
+				},	
+				"활용가이드" : {
+					"체험리뷰" : ["/html/STR/OBS5008.html","","진행중"],
+					"제품관리팁" : ["/html/STR/OBS5010.html","","진행중"]
+				},
 			},
 			"케어솔루션(SLC)" : {
 				"케어솔루션 제품안내" : {

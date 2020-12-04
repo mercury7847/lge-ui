@@ -16,7 +16,7 @@
 					.zero-btm : 하단여백 없음
 				-->
 				<section class="component KRP0037">
-					<div class="page-header wide">
+					<div class="page-header wide border">
 						<h2 class="title">광고/캠페인 영상</h2>
 						<div class="tabs-wrap btn-type ui_tab ui_smooth_scroll">
 							<ul class="tabs">
@@ -49,9 +49,11 @@
 
 						<div class="story-video-wrap">
 							<div class="video-wrap">
-								@@include('./common/partials/KRP0037-video.html', {
-									"videoType" : "youtube"
-								})
+								<div class="video-inner fixed"><!-- mobile 스크롤 시 고정 class : fixed 추가 -->
+									@@include('./common/partials/KRP0037-video.html', {
+										"videoType" : "youtube"
+									})
+								</div>
 								<div class="video-info">
 									<div class="btn-area">
 										<div class="btn-wrap">
@@ -62,9 +64,16 @@
 										</div>
 									</div>
 									<div class="tit-area">
-										<p class="tit">LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정 편)</p>
+										<p class="tit">LG 휘센 씽큐 에어컨 TV CF (아이스쿨파워/공기청정기 편)</p>
 										<p class="date">2020.09.07 </p>
-										<a href="#n" class="btn-share"><span class="hidden">SNS share</span></a>
+										<div class="share-area">
+											@@include('./common/modules/tooltip.html', {
+												"share" : true,
+												"fixed" : "fixed-right",
+												"type" : "include",
+												"page" : "tooltip-share"
+											})
+										</div>
 									</div>
 									<div class="desc"><!-- 자막 더보기 class : open 추가 -->
 										<div class="inner">

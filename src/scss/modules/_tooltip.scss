@@ -139,6 +139,13 @@
             }
         }
     }
+
+    [data-fixed="fixed-right"] {
+        & + .tooltip-box {
+            left: auto;
+            right: 0;
+        }
+    }
 }
 
 // 요소 + tooltip-wrap 일 때 감싸주는 DOM.

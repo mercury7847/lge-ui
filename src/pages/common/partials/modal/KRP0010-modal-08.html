@@ -1,21 +1,22 @@
-<!-- 사전 예약 제품 안내 레이어팝업 -->
-<article id="popup" class="popup-wrap">
+<!-- 제품 구매 안내 레이어팝업 -->
+<article id="@@popupID" class="popup-wrap small">
     <header class="pop-header">
-        <h1 class="tit"><span>사전 예약 제품 안내</span></h1>
+        <h1 class="tit"><span>제품 구매 안내</span></h1>
     </header>
     <section class="pop-conts">
-        <div class="layer-pre-order">
+        <div class="layer-careship">
             <div class="process-info">
                 <div class="info-box">
-                    <p>선택하신 제품은 사전 예약 제품입니다.</p>
+                    <p>선택하신 제품은 케어십이 필요한 제품입니다.</p>
                     <ul class="process-list">
-                        <li><span>사전예약 선결제</span></li>
-                        <li><span>입고 및 배송 시작 안내</span></li>
+                        <li><span>케어십 신청</span></li>
+                        <li><span>제품주문</span></li>
+                        <li><span>완료</span></li>
                     </ul>
                 </div>
                 @@include('./common/modules/bullet-list.html', {
                     "bulletTxt" : [
-                        "사전예약 제품은 선결제 후 제품이 입고되는 시점에 배송일정이 결정됩니다."
+                        "케어십은 친절한 케어매니저가 주기적으로 방문하여 관리해드립니다."
                     ]
                 })
             </div>
@@ -26,4 +27,4 @@
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
 </article>
-<!-- 사전 예약 제품 안내 레이어팝업 -->
+<!-- 제품 구매 안내 레이어팝업 -->
