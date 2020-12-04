@@ -147,7 +147,10 @@ var res = {
 					"LG 페이사용가능 단말기" : ["/html/STC/MKT5005.html","","진행중"]
 				},
 				"모바일 서비스" : {
-					// "모바일스위치(MKT5006,MKT5007,MKT5008)" : ["/html/STC/MKT5006.html","","진행중"]
+					 "모바일스위치란?" : ["/html/STC/MKT5006.html","","진행중"],
+					 "타사 안드로이드 LG스마트 폰으로" : ["/html/STC/MKT5007.html","","진행중"],
+					 "LG스마트폰 LG스마트폰으로" : ["/html/STC/MKT5008.html","","진행중"],
+					 "IOS LG스마트폰으로" : ["/html/STC/MKT5009.html","","진행중"]
 				}
 			},
 			"스토리(STR)" : {
