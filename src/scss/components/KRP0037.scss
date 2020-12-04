@@ -27,6 +27,19 @@
             padding: 0 16px;
             border-bottom: 12px solid #f4f4f4;
        }
+       .video-inner {
+           @include mobile {
+               &.fixed {
+                   position: fixed;
+                   top: 0;
+                   left: 0;
+                   padding: 16px;
+                   background: #fff;
+                   box-shadow: 0px 4px 12px 0 rgba(0, 0, 0, 0.15);
+                   z-index: 101;
+               }
+           }
+       }
     }
     .video-list-wrap {
         width: 351px;
@@ -251,18 +264,10 @@
                     padding-right: 50px;
                 }
             }
-            .btn-share {
-                display: inline-block;
+            .share-area {
                 position: absolute;
                 top: 0;
                 right: 0;
-                width: 32px;
-                height: 32px;
-                background: url(/lg5-common/images/icons/icon-share-32.svg) 0 0 no-repeat;
-                @include mobile {
-                    top: auto;
-                    bottom: 21px;
-                }
             }
         }
         .desc {
@@ -333,6 +338,21 @@
                 }
             }
 
+        }
+        &.align-left {}
+        &.align-right {
+            .btn-area,
+            .tit-area,
+            .desc .inner {
+                text-align: right;
+            }
+        }
+        &.align-center {
+            .btn-area,
+            .tit-area,
+            .desc .inner {
+                text-align: center;
+            }
         }
     }
   }

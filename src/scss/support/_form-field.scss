@@ -438,7 +438,6 @@
 }
 
 .choice-input {
-    margin-bottom: 16px;
     .rdo-wrap {
         &.box-type {
             max-width: 220px;
@@ -447,6 +446,7 @@
             input {
                 +label {
                     padding: 21px 16px 21px 48px;
+                    word-break:  break-all;
                     &::before {
                         top: 50%;
                         transform: translateY(-50%);

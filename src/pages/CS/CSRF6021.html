@@ -31,15 +31,15 @@
 
                     <form action="/html/support/CSTF4010.html" id="submitForm" autocomplete="off">
 
-                        <div class="section">
+                        <div class="section submitForm">
                             <div class="tit-wrap">
                                 <h2 class="tit">고장증상 선택</h2>
                             </div>
-                            <div class="rdo-wrap">
+                            <div class="form-wrap">
                                 <div class="rdo-wrap-info">
                                     <h3 class="tit req">고장증상<span class="blind">필수입력</span></h3>
                                 </div>
-                                <div class="rdo-wrap-list">
+                                <div class="choice-input rdo-wrap-list">
                                     <span class="rdo-wrap btn-type2">
                                         <input type="radio" id="errsign-1" name="errsign" data-error-name="errsign" data-error-msg="정확한 제품증상을 선택해주세요.">
                                         <label for="errsign-1">부품/소모품</label>
@@ -82,35 +82,27 @@
                                     </span>
                                     <span class="rdo-wrap btn-type2">
                                         <input type="radio" id="errsign-11" name="errsign" checked>
-                                        <label for="errsign-11">스마트기능/스마트진단</label>
+                                        <label for="errsign-11">기능 관련</label>
                                     </span>
                                     <span class="rdo-wrap btn-type2">
                                         <input type="radio" id="errsign-12" name="errsign">
-                                        <label for="errsign-12">에러/표시창</label>
+                                        <label for="errsign-12">전원관련</label>
                                     </span>
                                     <span class="rdo-wrap btn-type2">
                                         <input type="radio" id="errsign-13" name="errsign">
-                                        <label for="errsign-13">이물/냄새</label>
+                                        <label for="errsign-13">헹굼/탈수</label>
                                     </span>
                                     <span class="rdo-wrap btn-type2">
                                         <input type="radio" id="errsign-14" name="errsign">
-                                        <label for="errsign-14">전원관련</label>
+                                        <label for="errsign-14">기능관련</label>
                                     </span>
                                     <span class="rdo-wrap btn-type2">
                                         <input type="radio" id="errsign-15" name="errsign">
-                                        <label for="errsign-15">헹굼/탈수</label>
-                                    </span>
-                                    <span class="rdo-wrap btn-type2">
-                                        <input type="radio" id="errsign-16" name="errsign">
-                                        <label for="errsign-16">기능 관련</label>
-                                    </span>
-                                    <span class="rdo-wrap btn-type2">
-                                        <input type="radio" id="errsign-17" name="errsign">
-                                        <label for="errsign-17">동결관련</label>
+                                        <label for="errsign-15">동결관련</label>
                                     </span>
                                 </div>
                             </div>
-                            <div class="rdo-wrap">
+                            <div class="form-wrap">
                                 <div class="rdo-wrap-info">
                                     <h3 class="tit req">세부증상 선택<span class="blind">필수입력</span></h3>
                                 </div>
@@ -143,7 +135,7 @@
                                         <li>
                                             <span class="rdo-wrap">
                                                 <input type="radio" id="dtsign-5" name="dtsign">
-                                                <label for="dtsign-5">최대 52글자</label>
+                                                <label for="dtsign-5">전기요금 문의</label>
                                             </span>
                                         </li>
                                         <li>
@@ -185,6 +177,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="section">
                             <div class="tit-wrap">
                                 <h2 class="tit">예약자 정보 입력</h2>
@@ -213,6 +206,7 @@
                                 </ul>
                             </div>
                         </div>
+
                         <div class="section">
                             <div class="tit-wrap">
                                 <h2 class="tit">희망일자 선택</h2>
@@ -221,7 +215,7 @@
                                 <li class="b-txt">담당 전문 상담사가 먼저 상담 중인 고객의 응대가 끝나지 않을 경우, 선택하신 예약 시간보다 전화가 다소 늦어질 수 있습니다.</li>
                             </ul>
                         </div>
-                        <div class="btn-group center">
+                        <div class="btn-group center"> 
                             <a href="#" class="btn gray"><span>취소</span></a>
                             <button type="button" class="btn pink" id="completeBtn">예약</button>
                             <!-- <button type="button" class="btn pink" id="completeBtn" data-href="#completePop" data-control="modal">인증/예약</button> -->

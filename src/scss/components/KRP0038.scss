@@ -79,8 +79,10 @@
                     @include mobile {
                         float: left;
                         width: calc(100% - 100px);
+                        height: auto;
                         padding-left: 12px;
                         margin-top: 30px;
+                        
                     }
                 }
                 .flag-wrap {

@@ -1,0 +1,74 @@
+<article id="@@popupID" class="popup-wrap full">
+    <header class="pop-header">
+        <h1 class="tit"><span>나의 글 보기</span></h1>
+    </header>
+    <section class="pop-conts common-pop mypage">
+		<div class="custom-step-area">
+			<p class="tit">서비스센터 홈페이지를 통해 등록하신 칭찬, 개선 건에 대한<br>내역 조회를 하실 수 있습니다.</p>
+			<div class="step-box step4">
+				<div class="step-inner">
+					<div class="bar bar2"></div>
+					<!--
+						현재 단계에 따라 클래스 변경
+						접수 : bar
+						처리중 : bar bar1
+						답변중 : bar bar2
+						답변완료 : bar3
+					-->
+				</div>
+				<ul class="step-txt">
+					<li class="comp">접수</li> <!-- 해당 영역 위치 시 comp 클래스 추가 -->
+					<li class="comp">처리중</li>
+					<li class="comp"><span class="blind">현재 단계</span>답변중</li>
+					<li>답변완료</li>
+				</ul>
+			</div>
+			<div class="info-box">
+				<span class="ico">
+					<img src="/lg5-common/images/icons/icon-regi-num-60x60.svg" alt="">
+				</span>
+				<div class="cont">
+					<p>접수번호 : S20006828124</p>
+				</div>
+			</div>
+			<div class="section-wrap">
+				<div class="sects">
+					<div class="section-inner">
+						<!-- 질문 -->
+						<div class="inner-box">
+							<p class="inner-tit">질문</p>
+							@@include('./common/modules/dl-infolist.html', {
+								"list" : [
+									{ "dt" : "접수일시", "dd" : "2020년 10월 01일 10시 01분" },
+									{ "dt" : "진행상태", "dd" : "<em>답변완료</em>" },
+									{ "dt" : "선택 항목", "dd" : "1depth &gt; 2depth" },
+									{ "dt" : "문의 유형", "dd" : "제품 구입" },
+									{ "dt" : "제목", "dd" : "배송지 언제까지 변경 가능한가요?" },
+									{ "dt" : "내용", "dd" : "배송 시작 전에만 배송지 변경하면 되나요?<br>배송 시작 전에만 배송지 변경하면 되나요?" }
+								]
+							})
+						</div>
+						<!-- //질문 -->
+						<!-- 답변 -->
+						<div class="inner-box">
+							<p class="inner-tit">답변</p>
+							@@include('./common/modules/dl-infolist.html', {
+								"list" : [
+									{ "dt" : "제목", "dd" : "안녕하세요, 고객님. LG전자입니다.<br>제품 주문 시 배송지가 결정되어야 하며,<br>배송지가 정해지면 관할 물류가 지정이 되고,<br>이후 수정은 지역에 따라 조정이 어렵습니다.<br>다른 문의 사항이 있으시면 언제든지 연락 부탁드립니다.<br>감사합니다." },
+									{ "dt" : "등록일", "dd" : "2020년 10월 02일" }
+								]
+							})
+						</div>
+						<!-- //답변 -->
+					</div>
+				</div>
+			</div>
+		</div>
+    </section>
+    <footer class="pop-footer center">
+        <div class="btn-group">
+            <button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
+        </div>
+    </footer>
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>
