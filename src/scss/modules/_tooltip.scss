@@ -84,6 +84,61 @@
             
         }
     }
+
+    &.share {
+        height: 32px;
+        .tooltip-icon {
+            width: 32px;
+            height: 32px;
+            background: url('/lg5-common/images/icons/icon-share-32.svg') no-repeat 0 0;
+            line-height: 32px;
+        }
+        .tooltip-box {
+            top: 34px;
+            min-width: 224px;
+            padding: 15px 16px;
+            border: solid 1px #111111;
+            border-radius: 14px;
+            box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.16);
+            line-height: 0;
+        }
+
+        .title {
+            display: block;
+            padding-bottom: 16px;
+            border-bottom: 1px solid $color-default;
+            font-weight: 700;
+            @include font-small;
+        }
+        .share-list {
+            padding-top: 24px;
+            > li {
+                display: inline-block;
+                &:not(:first-child) {
+                    margin-left: 16px;
+                }
+            }
+            [class*="share-"] {
+                display: block;
+                width: 32px;
+                height: 32px;
+                background: no-repeat 0 0;
+                background-size: 32px 32px;
+                &[class*="facebook"] {
+                    background-image: url('/lg5-common/images/icons/icon-facebook.svg');
+                }
+                &[class*="twitter"] {
+                    background-image: url('/lg5-common/images/icons/icon-twitter.svg');
+                }
+                &[class*="kakaotalk"] {
+                    background-image: url('/lg5-common/images/icons/icon-kakao.svg');
+                }
+                &[class*="url"] {
+                    background-image: url('/lg5-common/images/icons/icon-url.svg');
+                }
+            }
+        }
+    }
 }
 
 // 요소 + tooltip-wrap 일 때 감싸주는 DOM.

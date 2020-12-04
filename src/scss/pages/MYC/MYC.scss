@@ -187,6 +187,9 @@
                 }
                 &.type3 {
                     padding-top:64px;
+                    @include mobile {
+                        padding-top:40px;
+                    }
                 }
                 // 탭 밑에 붙을 때 type4
                 &.type4 {
