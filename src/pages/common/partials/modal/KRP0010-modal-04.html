@@ -36,7 +36,6 @@
             <div class="additional">
                 <h2 class="title"><span>추가할인</span></h2>
                 <div class="membership">
-                    <!-- 로그인 후 .ui_accord_content 펼침 상태로 변경 -->
                     <div class="ui_accordion">
                         <ul>
                             <li class="lists cash-back">
@@ -74,17 +73,28 @@
                             </div>
                         </dd>
                     </dl>
-                    <div class="card-benefit">
-                        @@include('./common/modules/bullet-list.html', {
-                            "bulletTit" : "카드 혜택",
-                            "bulletTxt" : [
-                                "국민카드 : 무이자 6개월 / 7% 청구할인",
-                                "신한카드 : 7% 청구할인",
-                                "현대카드 : 무이자 6개월",
-                                "삼성카드 : 5% 청구할인",
-                                "하나카드 : 무이자3개월 / 5% 청구할인"
-                            ]
-                        })
+                    <div class="ui_accordion">
+                        <ul>
+                            <li class="lists">
+                                <div class="head">
+                                    <span class="text">카드 혜택</span>
+                                    <a href="#n" class="btn-toggle ui_accord_toggle"><span class="blind">내용 더보기</span></a>
+                                </div>
+                                <div class="ui_accord_content">
+                                    <div class="info-box">
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "bulletTxt" : [
+                                                "국민카드 : 무이자 6개월 / 7% 청구할인",
+                                                "신한카드 : 7% 청구할인",
+                                                "현대카드 : 무이자 6개월",
+                                                "삼성카드 : 5% 청구할인",
+                                                "하나카드 : 무이자3개월 / 5% 청구할인"
+                                            ]
+                                        })
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <dl class="price-info">
