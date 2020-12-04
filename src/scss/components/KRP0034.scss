@@ -2,7 +2,15 @@
 
 @import "../components-app";
 
-.KRP0034 {
+.component.KRP0034 {
+	
+	 .component-inner {
+		max-width: calc(1146px + 80px);
+		padding: 0 40px;
+		@include mobile {
+			padding: 0 16px;
+		}
+	}
 	.tag-list {
 		max-width: 1460px;
 		margin: -12px auto 0;

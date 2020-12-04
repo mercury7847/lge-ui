@@ -1,7 +1,7 @@
-<!-- 추가혜택 레이어팝업 -->
-<article id="popup" class="popup-wrap">
+<!-- 추가혜택 -->
+<article id="popup" class="popup-wrap small">
     <header class="pop-header">
-        <h1 class="tit"><span>추가혜택</span></h1>
+        <h1 class="tit"><span>구매혜택</span></h1>
     </header>
     <section class="pop-conts">
         <div class="layer-benefit">
@@ -9,8 +9,8 @@
                 @@include('./common/modules/bullet-list.html', {
                     "bulletTit" : "포인트 적립 혜택",
                     "bulletTxt" : [
-                        "LG멤버십 포인트<br><span class='point'>62,110 포인트</span> = (기본 0.3% : 52,110) + (금액대별 포인트 10,000 )",
-                        "적립 예정 포인트는 회원의 구매 조건에 따라 실제 적립 포인트와 상이할 수 있습니다."
+                        "LG멤버십 포인트<br><span class='primary'>62,110 포인트</span>",
+                        "LG멤버십 적립 예정 포인트는 회원의 구매 조건에 따라 실제 적립 포인트와 상이할 수 있습니다."
                     ]
                 })
             </div>
@@ -18,6 +18,7 @@
                 @@include('./common/modules/bullet-list.html', {
                     "bulletTit" : "캐시백",
                     "bulletTxt" : [
+                        "500,000만원 캐시백(카드 결제계좌로 적립)",
                         "지급 조건 : 9월 1일 ~ 9월 30일 결제완료시",
                         "대상카드 : 신한카드",
                         "지급시점 : 배송일 기준 익월말 적립"
@@ -28,16 +29,19 @@
                 @@include('./common/modules/bullet-list.html', {
                     "bulletTit" : "카드 혜택",
                     "bulletTxt" : [
-                        "<span class='kb-card'>국민카드 - 최대 <em>6개월</em> 무이자</span>",
-                        "<span class='kb-card'>국민카드 - <em>7%</em> 청구할인</span>"
+                        "국민카드 : 최대 6개월 무이자/ 7%청구할인/ 5만원이상 구매 시",
+                        "신한카드 : 7% 청구할인",
+                        "현대카드 : 5개월 무이자",
+                        "삼성카드 : 5% 청구할인",
+                        "하나카드 : 3개월 무이자 / 5% 청구할인"
                     ]
                 })
             </div>
         </div>
     </section>
     <footer class="pop-footer">
-        <button type="button" class="btn bd-pink ui_modal_close"><span>더 많은 혜택 보기</span></button>
+        <button type="button" class="btn ui_modal_close"><span>더 많은 혜택 보기</span></button>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
 </article>
-<!-- 추가혜택 레이어팝업 -->
+<!-- // 추가혜택 -->

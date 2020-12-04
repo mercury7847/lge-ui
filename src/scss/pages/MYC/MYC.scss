@@ -187,6 +187,9 @@
                 }
                 &.type3 {
                     padding-top:64px;
+                    @include mobile {
+                        padding-top:40px;
+                    }
                 }
                 // 탭 밑에 붙을 때 type4
                 &.type4 {
@@ -358,6 +361,9 @@
 
     // 참여 이벤트
     @import "ACCF7071";
+
+    // 나의 글 보기 팝업
+    @import "ACCF7076";
 
     // popup
     @import "ACCF-popup";

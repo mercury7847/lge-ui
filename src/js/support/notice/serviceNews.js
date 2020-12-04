@@ -6,9 +6,14 @@
                     '<img src="{{img.src}}" alt="{{img.alt}}" aria-hidden="true">' +
                 '</div>' +
                 '<div class="item-conts">' +
-                    '{{# if (typeof flag != "undefined") { #}}' +
+                    '{{# if (typeof flag != "undefined" || (typeof fixing != "undefined" && fixing == "Y")) { #}}' +
                     '<div class="flag-wrap">' +
+                        '{{# if (typeof fixing != "undefined" && fixing == "Y") { #}}' +
+                        '<span class="icon-flag"><span class="blind">최상위 노출</span></span>' +
+                        '{{# } #}}' +
+                        '{{# if (typeof flag != "undefined") { #}}' +
                         '<span class="flag">{{flag}}</span>' +
+                        '{{# } #}}' +
                     '</div>' +
                     '{{# } #}}' +
                     '<p class="tit">{{title}}</p>' +

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/etc"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageDesc': '제품에 대한 문제를 빠르게 진단하고 해결할 수 있도록 도와드리겠습니다.'
+            })
+            
+            <div class="contents support qr-code">
+                <div class="cont-wrap">
+                    
+                    <section class="section bg-gray">
+                        <div class="section-title">
+                            <h3 class="tit">고객님의 사용 제품 입니다.</h3>
+                        </div>
+                        <div class="section-content">
+                            <div class="appgate-figure-box">
+                                <figure class="appgate-figure type-A">
+                                    <div class="appgate-figure-img"><img src="/lg5-common/images/dummy/@img-product8.png" alt="제품 이미지" style="opacity: 1;"></div>
+                                    <figcaption>
+                                        <div class="appgate-figure-title">TV>올레드</div>
+                                        모델명 <strong class="color-3">55LN5400.AKR</strong>
+                                    </figcaption>
+                                </figure>
+                            </div>
+
+                            <ul class="swipe-content">
+                                <li class="swipe-item"><a href="CSRF6008.html" class="swipe-link" target="_blank" title="새 창에서 열림">제품사용 설명서</a></li>
+                                <li class="swipe-item"><a href="" class="swipe-link" target="_blank" title="새 창에서 열림">소모품 구매</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                    <section class="section">
+                        <div class="tit-wrap">
+                            <h2 class="tit">검색을 통해 문제 해결 도움을 받으세요.</h2>
+                        </div>
+                        <div class="form-wrap">
+                            <div class="forms">
+                                <div class="conts">
+                                    <div class="select-wrap"> 
+                                        <select class="ui_selectbox" id="select1" title="증상 선택">
+                                            <option value="" class="placeholder">증상을 선택</option>
+                                            <option value="">옵션 1</option>
+                                            <option value="">옵션 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-wrap"> 
+                                        <select class="ui_selectbox" id="select2" title="상세 증상 선택" disabled>
+                                            <option value="" class="placeholder">상세 증상을 선택</option>
+                                            <option value="">옵션 1</option>
+                                            <option value="">옵션 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="keyword-search input-wrap type-A">
+                                        <div class="input-wrap">
+                                            <input type="text" name="keyword" id="keyword" class="ui_input_clearbutton" placeholder="검색어 입력" title="검색어 입력" data-clear-button="button.btn-delete" ui-modules="InputClearButton">
+                                            <button type="button" class="btn-delete" style="display: none;"><span class="blind">검색어 삭제</span></button>
+                                            <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                                        </div>
+                                        <p class="err-msg">검색어를 입력해주세요.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="dummy" style="display: flex;align-items: center;justify-content: center;height:150px;margin-top: 60px;border-top: 12px solid #f4f4f4;">문제를 해결하지 못하셨다면 다른 서비스를 이용해보세요.</div>
+                    <div class="dummy" style="display: flex;align-items: center;justify-content: center;height:150px;border-top: 12px solid #f4f4f4;">고객 서비스에 대한 조회 및 변경사항을 확인하실 수 있어요.</div>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>      
+</body>
+</html> 
