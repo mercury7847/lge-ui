@@ -835,6 +835,7 @@
                 // 초기화버튼 이벤트 처리
                 self.$layFilter.on('click', 'div.btn-reset button', function(e){
                     self.resetFilter();
+                    self.requestSearch(self.getDataFromFilter(), true);
                 });
 
                 var $listSorting = $('div.list-sorting');
@@ -1006,6 +1007,8 @@
                     var values = JSON.parse($el.attr('data-values'));
                     var min = 0;
                     var max = values.length - 1;
+                    $el.attr('data-min',min);
+                    $el.attr('data-max',max);
                     $el.vcRangeSlider('reset',min+','+max);
                 });
 
