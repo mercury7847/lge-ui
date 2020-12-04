@@ -35,210 +35,105 @@
         }
     }
 
-    // stage option
-    $stage : (stage-full, stage-wide, stage-medium);
-    @each $stageClass in $stage {
-        &.#{$stageClass} {
-            .inner {
-                @if $stageClass == stage-full {
-                    max-width:1920px;
-                }
-                @else if $stageClass == stage-wide {
-                    max-width:1600px;
-                }
-                @else if $stageClass == stage-medium {
-                    max-width:1380px;
-                }
-            }
-        }
-    }
     .inner {
-        position:relative;
-        margin:0 auto;
-    }
-
-    // text area
-    .text-area {
         max-width:1380px + 80px;
-        padding:0 40px;
         margin:0 auto;
+        padding:0 40px;
         @include mobile {
-            margin-bottom:24px;
             padding:0 16px;
         }
-        .text-inner {
-            .title * {
-                font-size:48px;
-                line-height:64px;
-                font-weight:700;
-                @include mobile {
-                    font-size:24px;
-                    line-height:33px;
-                }
-            }
-            .body-copy {
-                margin-top:24px;
-                font-size:20px;
-                line-height:34px;
-                @include mobile {
-                    margin-top:12px;
-                    font-size:16px;
-                    line-height:24px;
-                }
-            }
-        }
-    }
-
-    .position-wrap {
-        position:relative;
-    }
-
-    // visual area
-    @each $stageClass in $stage {
-        &.#{$stageClass} {
-            .visual-area {
-                position:relative;
-                .images {
-                    @include pc {
-                        .m-img {
-                            display:none;
-                        }
-                        .pc-img {
-                            display:block;
-                            margin:0 auto;
-                            width:100%;
-                            @if $stageClass == stage-full {
-                                max-width:100%;
-                                height:1174px;
-                            }
-                            @else if $stageClass == stage-wide {
-                                height:977px;
-                            }
-                            @else if $stageClass == stage-medium {
-                                height:842px;
-                            }
-                            background-size:cover !important;
-                        }
-                    }
-                    @include mobile {
-                        .m-img {
-                            display:block;
-                            width:100%;
-                            height:auto;
-                        }
-                        .pc-img {
-                            display:none;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // thumbnail text area
-    .thumbnail-text-area {
-        position:absolute;
-        right:0;
-        left:0;
-        &.vertical-top {
-            top:80px;
+        .tbl-layout {
+            display:table;
+            width:100%;
+            table-layout:fixed;
             @include mobile {
-                top:auto;
-            }
-        }
-        &.vertical-middle {
-            top:50%;
-            transform:translateY(-50%);
-            @include mobile {
-                top:auto;
-                transform:translateY(0);
-            }
-        }
-        &.vertical-bottom {
-            bottom:80px;
-            @include mobile {
-                bottom:auto;
-            }
-        }
-        @include mobile {
-            position:relative;
-            left:auto;
-            right:auto;
-            margin-top:32px;
-        }
-        .text-inner {
-            max-width:1380px + 80px;
-            margin:0 auto;
-            padding:0 40px;
-            @include mobile {
+                display:block;
                 padding:0 16px;
             }
-            .text-list {
-                display:inline-block;
-                width:100%;
-                max-width:561px;
-                vertical-align:top;
-                @include mobile {
-                    max-width:100%;
+            &.vertical-top {
+                .visual-cell,
+                .text-area {
+                    vertical-align:top;
                 }
-                .list {
-                    position:relative;
-                    min-height:120px;
-                    margin-top:56px;
-                    padding-left:136px;
-                    text-align:left;
+            }
+            &.vertical-middle {
+                .visual-cell,
+                .text-area {
+                    vertical-align:middle;
+                }
+            }
+            &.vertical-bottom {
+                .visual-cell,
+                .text-area {
+                    vertical-align:bottom;
+                }
+            }
+        }
+        .visual-cell {
+            display:table-cell;
+            width:66%;
+            @include mobile {
+                display:block;
+                width:100%;
+            }
+            img {
+                width:100%;
+                height:auto;
+                vertical-align:top;
+            }
+        }
+        .text-area {
+            display:table-cell;
+            width:34%;
+            padding-left:24px;
+            @include mobile {
+                display:block;
+                width:100%;
+                margin-top:24px;
+                padding:0;
+            }
+            .text-inner {
+                margin-top:56px;
+                @include mobile {
+                    margin-top:28px;
+                }
+                &:first-child {
+                    margin-top:0;
+                }
+                .title * {
+                    max-height:128px;
+                    font-size:48px;
+                    line-height:64px;
+                    font-weight:700;
+                    @include textEllipsisClamp(2);
                     @include mobile {
-                        min-height:75px;
-                        margin-top:28px;
-                        padding-left:83px;
+                        max-height:66px;
+                        font-size:24px;
+                        line-height:33px;
                     }
-                    &:first-child {
-                        margin-top:0;
+                }
+                .body-copy {
+                    margin-top:24px;
+                    font-size:20px;
+                    line-height:30px;
+                    @include mobile {
+                        margin-top:16px;
+                        font-size:16px;
+                        line-height:24px;
                     }
-                    .icon {
-                        position:absolute;
-                        top:0;
-                        left:0;
-                        width:120px;
-                        height:120px;
-                        overflow:hidden;
-                        @include mobile {
-                            width:75px;
-                            height:75px;
-                        }
-                        img {
-                            width:100%;
-                            height:auto;
-                            vertical-align:top;
-                        }
+                }
+                .images {
+                    margin-top:16px;
+                    @include mobile {
+                        margin-top:20px;
                     }
-                    .text-box {
-                        .title {
-                            max-height:60px;
-                            font-size:24px;
-                            line-height:30px;
-                            font-weight:700;
-                            @include textEllipsisClamp(2);
-                            @include mobile {
-                                max-height:52px;
-                                font-size:18px;
-                                line-height:26px;
-                            }
-                        }
-                        .body-copy {
-                            margin-top:12px;
-                            font-size:20px;
-                            line-height:30px;
-                            @include mobile {
-                                margin-top:8px;
-                                font-size:14px;
-                                line-height:22px;
-                            }
-                        }
+                    img {
+                        max-width:100%;
+                        height:auto;
+                        vertical-align:top;
                     }
                 }
             }
         }
-
     }
 }
