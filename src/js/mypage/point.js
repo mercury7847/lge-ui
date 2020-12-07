@@ -1,72 +1,111 @@
 (function() {
+    var PONT_INQUIRY_URL;
+    
     var listItemTemplate =
-                '<li><p class="date">{{date}}</p>'+
-                '<p class="desc">{{shop}}</p>'+
-                '<p class="point"><span class="mo_txt">{{description}}</span>'+
-                '<span class="num">{{increase}}{{point}}P<em class="pc_txt"> {{purpose}}</em></span>'+
-                '</p></li>';
+                '<li>'+
+                '   <p class="date">{{date}}</p>'+
+                '   <p class="desc">{{place}}</p>'+
+                '   <p class="point">'+
+                '       <span class="mo_txt">포인트{{type}}</span>'+
+                '       <span class="num">'+
+                '           {{point}}'+
+                '           <em class="pc_txt"> {{type}}</em>'
+                '       </span>'+
+                '   </p>'+
+                '</li>';
 
-    function searchPointHistory(param) {
-        var ajaxUrl = self.$dateFilter.data('url');
+    function init(){
+        console.log("Point Start!!!");
 
-        lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
-            var param = result.param;
-            var data = result.data;
+        setting();
+        bindEvents();
+    }
 
-            self.$dateFilterStartDate.vcCalendar('setDate', new Date(vcui.date.format(param.startDate,'yyyy.MM.dd')));
-            self.$dateFilterEndDate.vcCalendar('setDate', new Date(vcui.date.format(param.endDate,'yyyy.MM.dd')));
+    function setting(){
+        PONT_INQUIRY_URL = $('.contents.mypage').data('pointInquiry');
+    }
 
-            self.$dateFilter.find('input[name="rdo1"][value="'+param.pointUseType+'"]').prop('checked', true);
+    function bindEvents(){
+        $('.contents.mypage').on('click', '.calendarInquiry-btn', function(e){
+            e.preventDefault();
 
-            var contentHtml = "";
-            var arr = data.pointHistory instanceof Array ? data.pointHistory : [];
-            if(arr.length > 0) {
-                self.$dateFilter.siblings('div.no-data').hide();
-                arr.forEach(function(item, index) {
-                    contentHtml += vcui.template(listItemTemplate, {
-                        ...item,
-                        "point": vcui.number.addComma(item.point),
-                        "date": vcui.date.format(item.date,'yyyy. MM. dd')
-                    });
-                });
-            } else {
-                self.$dateFilter.siblings('div.no-data').show();
-            }
-            self.$dateFilter.siblings('div.point-use-list').find('.lists').html(contentHtml);
-            $('#my_totalpoint').text(vcui.number.addComma(data.totalPoint)+"P");
+            memberPointInquiry();
         });
     }
 
-    $(window).ready(function() {
-        var myPoint = {
-            init: function() {
-                self.$dateFilter = $('.cont-box .form-wrap');
-                self.$dateFilterStartDate = self.$dateFilter.find('#uc-start');
-                self.$dateFilterEndDate = self.$dateFilter.find('#uc-end');
+    function memberPointInquiry(){
+        var startDate = $('.contents.mypage .startDate').vcCalendar('getyyyyMMdd');
+        var endDate = $('.contents.mypage .endDate').vcCalendar('getyyyyMMdd');
+        
+        if(!getDateValidation(startDate, endDate)){
+            lgkorUI.alert("", {
+                title: "조회기간을 확인해 주세요."
+            });
 
+            return;
+        }
 
-                self.$dateFilter.find('#date-input-start').on('calendarinsertdate', function (e, data) {
-                    //시작일을 선택시 종료일의 시작날짜를 변경한다.
-                    self.$dateFilterEndDate.vcCalendar('setMinDate', data.date);
-                });
+        var inquiryType = $('.contents.mypage input[name=pointInquiry]:checked').val();
 
-                self.$dateFilter.find('#button-calendar-search').on('click',function (e) {
-                    var startDate = self.$dateFilterStartDate.vcCalendar('getyyyyMMdd');
-                    var endDate = self.$dateFilterEndDate.vcCalendar('getyyyyMMdd');
-                    if(startDate && endDate) {
-                        var param = {
-                            startDate,
-                            endDate,
-                            'pointUseType' : self.$dateFilter.find('input[name="rdo1"]:checked').val()
-                        }
-                        searchPointHistory(param);
-                    }
-                });
+        lgkorUI.showLoading();
 
-                //searchPointHistory();
+        var sendata = {
+            startDate: startDate,
+            endDate: endDate,
+            inquiryType: inquiryType
+        }
+        lgkorUI.requestAjaxData(PONT_INQUIRY_URL, sendata, function(result){
+            if(result.data.success == "Y"){
+                var leng = result.data.pointList.length;
+                if(leng){
+                    setPointList(result.data.totalPoint, result.data.pointList);
+                } else{
+                    setNoData();
+                }
             }
-        };
 
-        myPoint.init();                
+            lgkorUI.hideLoading();
+        });
+    }
+
+    function getDateValidation(startdate, endate){
+        if(startdate == null || endate == null) return false;
+
+        var startime = new Date(vcui.date.format(startdate,'yyyy-MM-dd'));
+        var endtime = new Date(vcui.date.format(endate,'yyyy-MM-dd'));
+        if(startime.getTime() > endtime.getTime()) return false;
+
+        return true;
+    }
+
+    function setPointList(total, list){
+        $('.no-data').remove();
+
+        $('.point-use-list .total dd').text(total);
+
+        $('.point-use-list ul').empty();
+
+        var newlist = vcui.array.map(list, function(item, idx){            
+            return {
+                date: item.date,
+                place: item.place,
+                point: item.point,
+                type: item.point.substr(0, 1) == "+" ? "적립" : "사용"
+            }
+        });
+        
+        var html = "";
+        for(var idx in newlist){
+            html += vcui.template(listItemTemplate, newlist[idx]);
+        }
+        $('.point-use-list ul').append(html);
+    }
+
+    function setNoData(){
+        $('.point-use-list').hide().after('<div class="no-data"><p>조회 결과가 없습니다.</p></div>');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        init();
     });
 })();
