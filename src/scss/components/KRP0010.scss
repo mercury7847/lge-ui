@@ -44,11 +44,17 @@
             margin: 0 -16px;
             padding-left:0;
 		}
-        &.fixed {
-            position: fixed;
-            left: 50%;
-            margin-left: -690px;
-            padding-right: 585px;
+        @include pc {
+            &.fixed {
+                position: fixed;
+                top: 0;
+                left: 40px;
+                @media screen and (min-width: 1460px) {
+                    left: 50%;
+                    margin-left: -690px;
+                    width: calc(1380px - 585px);
+                }
+            }
         }
     }
 
