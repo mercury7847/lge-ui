@@ -53,7 +53,8 @@
 }
 
 .header-top {
-    padding: 16px 0 20px;
+    background-color: #0c5f7f;
+    padding: 20px 0;
     @include clearfix;
 
     @include mobile {
@@ -330,15 +331,17 @@
 
 .utility {
     float: right;
-    padding-right: 158px;
+    padding-right: 184px;
     .shortcut {
-        display: inline-block;
-        vertical-align: middle;
+        font-size: 0;
         > li {
-            float: left;
-            width: 30px;
-            height: 30px;
-            margin-right: 3px;
+            position: relative;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            &:not(:first-child) {
+                margin-left: 20px;
+            }
             a {
                 display: block;
                 height: 100%;
@@ -347,7 +350,6 @@
                 background: url("/lg5-common/images/icons/icon-search.svg") no-repeat center center;
             }
             &.mypage {
-                position: relative;
                 background: url("/lg5-common/images/icons/icon-person.svg") no-repeat center center;
                 .mypage-layer {
                     display: none;
@@ -411,24 +413,26 @@
                 }
             }
             &.cart {
-                position: relative;
                 background: url("/lg5-common/images/icons/icon-cart.svg") no-repeat center center;
-                .cart-count {
-                    position: absolute;
-                    left: 14px;
-                    bottom: 2px;
-                    display: block;
-                    min-width: 13px;
-                    height: 13px;
-                    padding: 0 3px;
-                    border-radius: 6px;
-                    background-color: #ec455a;
-                    font-weight: 500;
-                    font-size: 10px;
-                    line-height: 12px;
-                    color: #fff;
-                    text-align: center;
-                }
+            }
+            &.notice {
+                background: url("/lg5-common/images/icons/icon-notice-20.svg") no-repeat center center;
+            }
+            .count {
+                position: absolute;
+                top: -8px;
+                left: 10px;
+                display: block;
+                min-width: 16px;
+                height: 16px;
+                padding: 2px 4px;
+                border-radius: 8px;
+                background-color: $color-primary;
+                font-weight: 700;
+                font-size: 11px;
+                line-height: 11px;
+                color: $color-white;
+                text-align: center;
             }
         }
     }
@@ -455,9 +459,9 @@
 .nav-site {
     @include pc {
         position: absolute;
-        top: 22px;
-        right: 50%;
-        margin-right: -752px;
+        top: 19px;
+        right: 40px;
+        margin-right: 0;
         font-size: 0;
         &:before {
             display: inline-block;
@@ -468,45 +472,22 @@
             content: '';
         }
     }
-    @media screen and (max-width: 1600px) {
-        right: 48px;
-        margin-right: 0;
+    @media screen and (min-width: 1680px) {
+        right: 50%;
+        margin-right: -840px;
     }
 
     .out-link {
         display: inline-block;
         li {
             display: inline-block;
-            margin-left: 17px;
+            margin-left: 24px;
             a {
                 position: relative;
                 padding-right: 16px;
                 font-weight: 500;
-                font-size: 14px;
-                line-height: 20px;
-                color: #222;
-                &:before,
-                &:after {
-                    position: absolute;
-                    top: 50%;
-                    content: '';
-                }
-                &:before {
-                    right: 10px;
-                    width: 2px;
-                    height: 8px;
-                    border-radius: 1px;
-                    background-color: #111;
-                    transform: rotate(45deg) translateY(-50%);
-                }
-                &:after {
-                    right: 4px;
-                    width: 7px;
-                    height: 7px;
-                    border: solid #111;
-                    border-width: 2px 2px 0 0;
-                    transform: translateY(-50%);
-                }
+                @include font-small;
+                background: url('/lg5-common/images/icons/btn-outlink-16.svg') no-repeat right center;
             }
         }
     }
