@@ -128,6 +128,12 @@
                 }
             }
         }
+        .empty-row {
+            display:none;
+            &:only-child {
+                display:table-row;
+            }
+        }
         @include pc {
             .board-tit {
                 & > a {
