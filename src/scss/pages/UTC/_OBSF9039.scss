@@ -1,0 +1,102 @@
+.non-members {
+    .cont-wrap {
+        max-width:1146px + 80px;
+    }
+    .welcome-joinus {
+        display:table;
+        width:100%;
+        margin-bottom:48px;
+        padding:24px 40px;
+        border-radius:8px;
+        background:#f4f4f4;
+        @include mobile {
+            margin-bottom:40px;
+            padding:20px 16px;
+        }
+        .cell {
+            display:table-cell;
+            vertical-align:middle;
+            &.text {
+                @include font-medium;
+                font-weight:700;
+            }
+            &.btns {
+                padding-left:24px;
+                text-align:right;
+                @include mobile {
+                    padding-left:16px;
+                }
+            }
+        }
+    }
+    .gy-info-box {
+        padding:40px;
+        border-radius:8px;
+        background:#f4f4f4;
+        .gy-tit {
+            margin-top:24px;
+            color:#222;
+            @include font-small;
+            font-weight:700;
+            &:first-child {
+                margin-top:0;
+            }
+        }
+        .bullet-list {
+            margin-top:8px;
+        }
+    }
+    .customer-center-info {
+        display:table;
+        width:100%;
+        table-layout:fixed;
+        margin-top:24px;
+        padding:24px 32px;
+        border-radius:8px;
+        background:#f4f4f4;
+        .hello {
+            padding-right:24px;
+            &::before {
+                content:' ';
+                display:inline-block;
+                width:48px;
+                height:48px;
+                margin-right:20px;
+                background:url("/lg5-common/images/icons/icon-call-svc-48.svg") center no-repeat;
+                vertical-align:middle;
+            }
+            display:table-cell;
+            @include font-small;
+            font-weight:500;
+            vertical-align:middle;
+        }
+        .call-info {
+            display:table-cell;
+            border-left:1px solid #ddd;
+            vertical-align:middle;
+            ul {
+                font-size:0;
+                li {
+                    display:inline-block;
+                    margin-left:32px;
+                    vertical-align:middle;
+                    color:#767676;
+                    font-size:12px;
+                    line-height:22px;
+                    em {
+                        display:inline-block;
+                        margin-left:12px;
+                        color:#222;
+                        font-size:18px;
+                        line-height:28px;
+                        font-weight:700;
+                        vertical-align:middle;
+                    }
+                }
+            }
+        }
+    }
+    .membership-benefit {
+        margin-top:40px;
+    }
+}

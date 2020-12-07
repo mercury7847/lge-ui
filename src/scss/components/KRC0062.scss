@@ -71,15 +71,53 @@
                 display:none;
             }
         }
+        &.animation-box {
+            .animation-area {
+                position:relative;
+                top:auto;
+                left:auto;
+                .controller-wrap {
+                    bottom:20px;
+                    right:50%;
+                    margin-right:-20px;
+                }
+            }
+        }
+        &.youtube-box {
+            img {
+                width:100%;
+                height:auto;
+                vertical-align:top;
+            }
+        }
     }
     
     // text
     .text-area {
         position:absolute;
-        top:80px;
         left:0;
         right:0;
         z-index:10;
+        &.vertical-top {
+            top:80px;
+            @include mobile {
+                top:auto;
+            }
+        }
+        &.vertical-middle {
+            top:50%;
+            transform:translateY(-50%);
+            @include mobile {
+                top:auto;
+                transform:translateY(0);
+            }
+        }
+        &.vertical-bottom {
+            bottom:80px;
+            @include mobile {
+                bottom:auto;
+            }
+        }
         .text-inner {
             max-width:1380px + 80px;
             margin:0 auto;
@@ -105,9 +143,11 @@
         @include mobile {
             position:relative;
             top:auto;
+            bottom:auto;
             left:auto;
             right:auto;
             margin-bottom:24px;
+            transform:translateY(0);
             .text-inner {
                 padding:0 16px;
                 .title * {
@@ -128,15 +168,36 @@
     // icon 
     .icon-text-area {
         position:absolute;
-        bottom:80px;
         left:0;
         right:0;
         z-index:10;
+        &.vertical-top {
+            top:80px;
+            @include mobile {
+                top:auto;
+            }
+        }
+        &.vertical-middle {
+            top:50%;
+            transform:translateY(-50%);
+            @include mobile {
+                top:auto;
+                transform:translateY(0);
+            }
+        }
+        &.vertical-bottom {
+            bottom:80px;
+            @include mobile {
+                bottom:auto;
+            }
+        }
         @include mobile {
             position:relative;
+            top:auto;
             bottom:auto;
             left:auto;
             right:auto;
+            transform:translateY(0);
         }
         .icons {
             max-width:1380px + 80px + 24px;
@@ -188,20 +249,6 @@
                         @include mobile {
                             max-width:100%;
                         }
-                        &.on {
-                            opacity:0;
-                            @include mobile {
-                                opacity:1;
-                            }
-                        }
-                    }
-                }
-                &:hover .icon {
-                    img.on {
-                        opacity:1;
-                    }
-                    img.off {
-                        opacity:0;
                     }
                 }
             }

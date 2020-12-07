@@ -1,10 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
     <g fill="none" fill-rule="evenodd">
         <g>
             <g>
                 <g>
-                    <path d="M0 0H48V48H0z" transform="translate(-552 -24) translate(472 24) translate(80)"/>
-                    <path fill="#515151" fill-rule="nonzero" d="M36 12h-4c0-4.42-3.58-8-8-8s-8 3.58-8 8h-4c-2.2 0-4 1.8-4 4v24c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4V16c0-2.2-1.8-4-4-4zM24 8c2.2 0 4 1.8 4 4h-8c0-2.2 1.8-4 4-4zm12 32H12V16h4v4c0 1.1.9 2 2 2s2-.9 2-2v-4h8v4c0 1.1.9 2 2 2s2-.9 2-2v-4h4v24z" transform="translate(-552 -24) translate(472 24) translate(80)"/>
+                    <g>
+                        <g>
+                            <g transform="translate(-1596 -22) translate(1508 14) translate(88) translate(0 8)">
+                                <path d="M0 0L20 0 20 20 0 20z"/>
+                                <path stroke="#212121" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.74 5.728c.552 0 1 .448 1 1 0 .077-.009.153-.026.227l-1.148 4.925c-.29 1.242-1.397 2.12-2.671 2.12H9.393c-1.276 0-2.383-.88-2.671-2.123L4.429 2H1"/>
+                                <circle cx="8.5" cy="17.5" r="1.5" fill="#222"/>
+                                <circle cx="16.5" cy="17.5" r="1.5" fill="#222"/>
+                            </g>
+                        </g>
+                    </g>
                 </g>
             </g>
         </g>
