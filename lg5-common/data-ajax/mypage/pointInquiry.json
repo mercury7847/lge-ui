@@ -1,0 +1,31 @@
+{
+    "ssoCheckUrl": null,
+    "status": "success",
+    "message": null,
+    "data": {
+        "success": "Y",
+        "totalPoint": "1,000P",
+        "pointList":[
+            {
+                "date": "2020.09.12",
+                "place": "LG BEST SHOP 강남점",
+                "point": "+4,000P"
+            },
+            {
+                "date": "2020.09.12",
+                "place": "LG BEST SHOP 서초점",
+                "point": "-4,000P"
+            },
+            {
+                "date": "2020.09.22",
+                "place": "LG BEST SHOP 강남점",
+                "point": "+4,000P"
+            },
+            {
+                "date": "2020.09.25",
+                "place": "LG BEST SHOP 강남점",
+                "point": "+4,000P"
+            }
+        ]
+    }
+}
