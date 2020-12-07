@@ -36,35 +36,15 @@
                                     "datepicker" : true,
                                     "rdoCheck" : true,
                                     "list" : [
-                                        { "id" : "rdk-cehck1-1", "name" : "rdk-check1",  "label" : "전체", "checked": "checked"},
-                                        { "id" : "rdk-cehck1-2", "name" : "rdk-check1",  "label" : "적립"},
-                                        { "id" : "rdk-cehck1-3", "name" : "rdk-check1",  "label" : "사용"}
+                                        { "id" : "rdk-cehck1-1", "name" : "pointInquiry",  "label" : "전체", "value": "all", "checked": "checked"},
+                                        { "id" : "rdk-cehck1-2", "name" : "pointInquiry",  "label" : "적립", "value": "save"},
+                                        { "id" : "rdk-cehck1-3", "name" : "pointInquiry",  "label" : "사용", "value": "use"}
                                     ]
                                 })
                                 <!-- // filter -->
                             </div>
                             <!-- // 조회기간 -->
                             <div class="section-wrap">
-                                <!-- 조회기간 -->
-                                <div class="sects rdo-type2">
-                                    <div class="filters">
-                                        <!-- filter -->
-                                        @@include('./common/modules/mem-filter.html', {
-                                            "tabType" : true,
-                                            "wrapTit" : "조회기간",
-                                            "datepicker" : true,
-                                            "rdoCheck" : true,
-                                            "list" : [
-                                                { "id" : "rdk-cehck1-1", "name" : "pointInquiry",  "label" : "전체", "value": "all", "checked": "checked"},
-                                                { "id" : "rdk-cehck1-2", "name" : "pointInquiry",  "label" : "적립", "value": "save"},
-                                                { "id" : "rdk-cehck1-3", "name" : "pointInquiry",  "label" : "사용", "value": "use"}
-                                            ]
-                                        })
-                                        <!-- // filter -->
-                                    </div>
-                                </div>
-                                <!-- // 조회기간 -->
-
                                 <!-- 포인트 조회 내역 -->
                                 <div class="sects point-inquiry-area">
                                     <div class="tit-wrap">
