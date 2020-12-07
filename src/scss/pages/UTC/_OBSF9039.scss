@@ -97,6 +97,16 @@
         }
     }
     .membership-benefit {
-        margin-top:40px;
+        display:table;
+        width:calc(100% + 24px);
+        margin:40px -12px 0;
+        table-layout:fixed;
+        .box {
+            display:table-cell;
+            padding:0 12px;
+            dl {
+                box-shadow:2px 4px 16px 0 rgba(#000, .14);
+            }
+        }
     }
 }
