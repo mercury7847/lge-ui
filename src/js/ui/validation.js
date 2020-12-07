@@ -212,6 +212,8 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 if(name) {
                     if(item.is(':checkbox')) {
                         result[name] = item.is(":checked");
+                    } else if (item.is(':file')) {
+                        result[name] = item[0].files[0];
                     } else {
                         result[name] = item.val();
                     }
@@ -413,7 +415,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             var $target = self.$el.find('[name='+ key +']');
             var event  = '';
 
-            if($target.is('select') || $target.is(':radio') || $target.is(':checkbox')){
+            if($target.is('select') || $target.is(':radio') || $target.is(':checkbox') || $target.is(':file')){
                 event = 'change';
             }else{
                 event = 'blur';
@@ -458,6 +460,73 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
     var CsValidation = core.ui('CsValidation', Validation, /** @lends vcui.ui.CsValidation# */{
         bindjQuery: 'csValidation',
+        initialize: function initialize(el, options) {
+            var self = this;
+            if (self.supr(el, options) === false) {
+                return;
+            }
+            self.validItemObj = {};
+            self.nameArr = [];
+
+            var register = self.options.register || {};
+            var newObj = {};
+
+            self.$el.find('[name]').each(function(index,item){
+                var required = $(item).data('required'); 
+                var msgTarget = $(item).data('msgTarget'); 
+                var errorMsg = $(item).data('errorMsg') || self.options.defaultErrorMsg; 
+                
+                register[item.name] = $.extend(register[item.name], $(item).data());
+
+                if(required && /true/i.test(required)){
+                    
+                    var value = $(item).data('value');
+                    var pattern = $(item).data('pattern');
+                    var minLength = $(item).data('minLength');
+                    var maxLength = $(item).data('maxLength');
+                    var validate = $(item).data('validate');
+
+                    if(validate && core.isFunction(window[validate])){
+                        validate = window[validate];
+                    }else{
+                        validate = null;
+                    }
+
+                    newObj[item.name] = {
+                        required : true,
+                        errorMsg : errorMsg
+                    }
+
+                    if(value) newObj[item.name]['value'] = value;
+                    if(pattern) newObj[item.name]['pattern'] = new RegExp(pattern);
+                    if(minLength) newObj[item.name]['minLength'] = minLength;
+                    if(maxLength) newObj[item.name]['maxLength'] = maxLength;
+                    if(validate) newObj[item.name]['validate'] = validate;
+                    if(msgTarget) newObj[item.name]['msgTarget'] = msgTarget;
+                    newObj[item.name] = $.extend(newObj[item.name], register[item.name] || {}); 
+                }else{
+
+                    if(msgTarget) {
+                        if(newObj[item.name]){                   
+                            newObj[item.name]['msgTarget'] = msgTarget;
+                        }else{
+                            newObj[item.name] = {
+                                msgTarget : msgTarget
+                            };
+                        }
+                        newObj[item.name] = $.extend(newObj[item.name], register[item.name] || {});
+                    }
+                }
+
+                self.nameArr.push(item.name);
+            });
+            self.register = newObj;
+
+            self.nameArr = vcui.array.unique(self.nameArr);
+            self._build();
+            self._bindEvent();
+            
+        },
         _build: function _build() {
             var self = this;
             var nObj = {};
@@ -465,23 +534,15 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             var $msgTarget;
             var msg;
 
-            for(var key in self.register){
+            for (var key in self.register) {
                 var obj = self.register[key];
                 if(obj.value) nObj[key] = obj.value;
                 if(obj.msgTarget) msg = obj.msgTarget;
                 $target = self.$el.find('[name='+ key +']');
 
-                if(msg) {
-                    if($target.siblings(msg).length > 0){
-                        $msgTarget = $target.siblings(msg);
-                    }else if ($target.parent().siblings(msg).length > 0) {
-                        $msgTarget = $target.parent().siblings(msg);
-                    }else {
-                        $msgTarget = $(msg); 
-                    }
-
+                if (msg) {
+                    $msgTarget = self._getMsgBlock($target, msg),
                     $msgTarget.hide();
-                    self.register[key]['msgObj'] = $msgTarget;
                 };
             }
 
@@ -489,21 +550,26 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
         },
         _swicthErrorMsg : function _swicthErrorMsg(obj){
             var self = this;
-            var $target, $msg;
-
+            var $target, msg;
+            console.log(self.register);
             for(var key in self.register){
                 var nobj = self.register[key];
                 if(nobj.required){
                     $target = self.$el.find('[name='+ key +']');
-                    $msg = nobj['msgObj'];
-                    if($msg.length > 0) {
+                    msg = nobj['msgTarget'];
+                    if(msg) {
+                        var msgBlock = self._getMsgBlock($target, msg),
+                            msgField = self._getMsgField(msgBlock);
+                        
                         if (vcui.hasOwn(obj, key)) {
-                            $msg.text(obj[key]);
-                            $msg.show().attr('id', key + 'Error');
+                            msgField.text(obj[key]).attr('id', key + 'Error');;
+                            msgBlock.show();
+                            
                             $target.attr('aria-describedby', key + 'Error');
                         } else {
-                            $msg.text('');
-                            $msg.hide().removeAttr('id');
+                            msgField.text('').removeAttr('id');
+                            msgBlock.hide()
+                            
                             $target.removeAttr('aria-describedby');
                         }
                     }
