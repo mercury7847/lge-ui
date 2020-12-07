@@ -530,7 +530,7 @@
         justify-content: space-between;
         align-items: center;
         background-image:none;
-        margin-bottom: 64px;
+        margin-bottom: 32px; //64px;
         .btn-txt{
             color:#767676;
             @include font-small;
@@ -670,6 +670,7 @@
         }
         .rdo-wrap-list{
             justify-content: space-between;
+            margin-bottom:32px;
         }
         .rdo-wrap-list .rdo-wrap.btn-type2,
         .thumnail-check.type2 .item{
@@ -684,7 +685,7 @@
             justify-content: unset;
             flex-flow:column;
             align-items:baseline;
-            margin-bottom: 40px;
+            //margin-bottom: 40px;
 
             .solve-btn-txt-area{
                 margin-top:25px;
