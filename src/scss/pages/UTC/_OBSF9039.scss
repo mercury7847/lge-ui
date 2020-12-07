@@ -46,4 +46,57 @@
             margin-top:8px;
         }
     }
+    .customer-center-info {
+        display:table;
+        width:100%;
+        table-layout:fixed;
+        margin-top:24px;
+        padding:24px 32px;
+        border-radius:8px;
+        background:#f4f4f4;
+        .hello {
+            padding-right:24px;
+            &::before {
+                content:' ';
+                display:inline-block;
+                width:48px;
+                height:48px;
+                margin-right:20px;
+                background:url("/lg5-common/images/icons/icon-call-svc-48.svg") center no-repeat;
+                vertical-align:middle;
+            }
+            display:table-cell;
+            @include font-small;
+            font-weight:500;
+            vertical-align:middle;
+        }
+        .call-info {
+            display:table-cell;
+            border-left:1px solid #ddd;
+            vertical-align:middle;
+            ul {
+                font-size:0;
+                li {
+                    display:inline-block;
+                    margin-left:32px;
+                    vertical-align:middle;
+                    color:#767676;
+                    font-size:12px;
+                    line-height:22px;
+                    em {
+                        display:inline-block;
+                        margin-left:12px;
+                        color:#222;
+                        font-size:18px;
+                        line-height:28px;
+                        font-weight:700;
+                        vertical-align:middle;
+                    }
+                }
+            }
+        }
+    }
+    .membership-benefit {
+        margin-top:40px;
+    }
 }
