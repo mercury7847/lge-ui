@@ -1089,24 +1089,69 @@
 
 
 // 소식지 신청
+.align-center {
+    text-align:center;
+}
 .pop-conts.term-pop {
+    padding-top:12px;
     .desc {
-        color:#616161;
-        font-size:14px;
-        line-height:20px;
+        font-size:16px;
+        line-height:26px;
     }
     .input-info {
-        padding:56px 0 0 0;
+        margin-top:48px;
+        @include mobile {
+            margin-top:24px;
+        }
+        & + .input-info {
+            margin-top:64px;
+            @include mobile {
+                margin-top:60px;
+            }
+        }
         &:before {
             display:none;
         }
+        .tit-wrap {
+            .h2-tit {
+                font-size:20px;
+                line-height:30px;
+            }
+        }
+        .form-wrap {
+            .forms {
+                &:first-child {
+                    margin-top:24px;
+                }
+                @include mobile {
+                    &:first-child {
+                        margin-top:20px;
+                    }
+                }
+            }
+        }
         dd.conts {
             font-size:0;
+            .input-wrap {
+                max-width:calc(100% - 142px);
+                @include mobile {
+                    max-width:100%;
+                }
+            }
             .select-list-wrap {
                 padding-top:8px;
+                > ul {
+                    > li {
+                        width:14%;
+                        @include mobile {
+                            width:auto;
+                            margin-top:12px;
+                        }
+                    }
+                }
             }
             .select-wrap {
-                max-width:calc((100% - 8px) /2);
+                max-width:calc((100% - 150px) /2);
                 margin:0 0 0 8px;
                 @include mobile {
                     max-width:100%;
@@ -1117,9 +1162,39 @@
                 }
             }
         }
+        .inner {
+            & + .inner {
+                margin-top:48px;
+                @include mobile {
+                    margin-top:41px;
+                }
+            }
+            margin-top:24px;
+            @include mobile {
+                margin-top:20px;
+            }
+            .h3-tit {
+                margin-bottom:12px;
+                font-size:14px;
+                font-weight:700;
+                line-height:24px;
+                @include mobile {
+                    font-size:13px;
+                    line-height:21px;
+                }
+            }
+        }
+        .agree-cont-wrap {
+            .agree-input {
+                margin-top:16px;
+            }
+        }
     }
     .tb_row {
         margin-top:24px;
+        @include mobile {
+            margin-top:12px;
+        }
     }
     .tit-wrap {
         + .desc {
