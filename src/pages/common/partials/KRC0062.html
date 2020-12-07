@@ -11,6 +11,12 @@
         .stage-wide : WIDE size 옵션(1600px)
         .stage-medium : MEDIUM size 옵션(1380px)
 
+        [.text-area, icon-text-area 각각 옵션 - 옵션 설정에 따라 겹쳐보일 수 있음.]
+        1. vertical 정렬
+        .vertical-top : Top
+        .vertical-middle : Middle
+        .vertical-bottom: Bottom
+
         [.text-inner, .icon-text-area 각각 옵션]
 		1. 정렬
 		.align-left : 왼쪽 정렬
@@ -35,7 +41,7 @@
 	<section class="component KRC0062 @@stageType">
 		<div class="inner">
             <!-- text area -->
-            <div class="text-area">
+            <div class="text-area @@verticalClass">
                 <div class="text-inner @@alignType1 @@fontColor1">
                     <div class="title">
                         <h2>헤드라인 텍스트 글자 수 최대 80자까지 사용 가능</h2>
@@ -46,6 +52,8 @@
             <!-- // text area -->
 
             <!-- visual -->
+            @@if ( context.visualType == "image" ) {
+            <!-- visual : image -->
             <div class="visual-area">
                 @@if ( context.darkImg ) {
                 <span class="pc-img" style="background:url('/lg5-common/images/KRC0062/@@bg-dark.jpg') center no-repeat;"></span>
@@ -57,16 +65,51 @@
                 }
                 <p class="hidden">graphic description : </p>
             </div>
+            <!-- // visual : image -->
+            }
+
+            @@if ( context.visualType == "animation" ) {
+            <!-- visual : animation -->
+            <div class="visual-area animation-box">
+                <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
+                <p class="hidden">graphic description : </p>
+                <div class="animation-area">
+                    <video autoplay muted loop>
+                        <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                        <!-- WEBM 동영상을 제공하는 경우
+                        <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                        -->
+                    </video>
+                    <div class="controller-wrap wa-btn">
+                        <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                    </div>
+                </div>
+            </div>
+            <!-- // visual : animation -->
+            }
+
+            @@if ( context.visualType == "youtube" ) {
+            <!-- visual : youtube -->
+            <div class="visual-area video youtube-box">
+                <!-- 1-1 video play button -->
+                <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-player="default" data-target="modal" data-link-area="image_layered_text-video_play_ad" data-link-name="{video title}" aria-describedby="title01">plays audio description video</a>
+                <a href="#none" data-src="https://www.youtube.com/embed/PetoQo1eUww" class="see-video" data-type="youtube" data-target="modal" data-link-area="side_image_text-video_play" data-link-name="{video title / video id}" aria-describedby="title01">
+                    <img data-pc-src="/lg5-common/images/KRC0062/@@bg.jpg" data-m-src="/lg5-common/images/KRC0062/@@bg-m.jpg" class="lazyload" alt="" aria-hidden="true"/><!-- [KR수정] img 수정 -->
+                    <p class="hidden pc">graphic description : </p>
+                </a>
+                <!-- // 1-1 video play button -->
+            </div>
+            <!-- // visual : youtube -->
+            }
             <!-- // visual -->
 
             <!-- icon -->
-            <div class="icon-text-area @@alignType2 @@fontColor2">
+            <div class="icon-text-area @@alignType2 @@fontColor2 @@iconVertical">
                 <ul class="icons">
                     @@for ( var i=0; i < lists; i++ ) {
                     <li class="list">
                         <div class="icon">
-                            <img src="/lg5-common/images/KRC0062/icon-off.svg" alt="" class="off"><!-- 기본 off 아이콘 -->
-                            <img src="/lg5-common/images/KRC0062/icon-on.svg" alt="" class="on"><!-- hover시 on 아이콘 -->
+                            <img src="/lg5-common/images/KRC0062/icon-on.svg" alt="" class="on">
                             <p class="hidden">graphic description : </p>
                         </div>
                         <p class="text">아이콘 타이틀 20자까지 입력. 노출 최대 2줄</p>                    

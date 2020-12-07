@@ -267,6 +267,7 @@
     }
     .addfilebox-list{
         display:none;
+        z-index:100;
         position:absolute;
         margin: 12px 0 0 0;
         padding: 4px 0 10px;
@@ -362,11 +363,10 @@
     align-items: center;
 
     .upload-item{
+        width:93px;
         margin-right:24px;
-
         .upload-img-area{
             position:relative;
-            width:93px;
             .upload-preview{
                 display:block;
                 width:93px;
@@ -407,6 +407,7 @@
         .upload-file-name{
             .file-name {
                 display:block;
+                width:100%;
                 text-align:center;
                 font-size:14px;
                 color:#222;

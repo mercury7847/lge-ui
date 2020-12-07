@@ -22,6 +22,10 @@
         .vertical-middle : vertical Middle
         .vertical-bottom : vertical Bottom
 
+        2. visual order (DOM 순서 변경도 필요)
+        .visual-left : visual image Left
+        .visual-right : visual image Right
+
 		[.body-copy 옵션]
 		1. 폰트 종류 : 
 		.font-regular : 레귤러
@@ -35,7 +39,8 @@
 	-->
 	<section class="component KRC0064">
 		<div class="inner">
-            <div class="tbl-layout @@verticalType">
+            <div class="tbl-layout @@verticalType @@if(context.visualFirst){visual-left}@@if(context.visualLast){visual-right}">
+                @@if ( context.visualFirst ) {
                 <!-- visual -->
                 <div class="visual-cell">
                     <div class="visual-area ui_carousel_slider">
@@ -52,6 +57,7 @@
                     </div>
                 </div>
                 <!-- // visual -->
+                }
 
                 <!-- text area -->
                 <div class="text-area @@alignType1 @@fontColor1">
@@ -69,6 +75,25 @@
                     }
                 </div>
                 <!-- // text area -->
+
+                @@if ( context.visualLast ) {
+                <!-- visual -->
+                <div class="visual-cell">
+                    <div class="visual-area ui_carousel_slider">
+                        <div class="slide-content ui_carousel_list">
+                            <ul class="slide-track ui_carousel_track">
+                                @@for ( var i=0; i < images; i++ ) {
+                                <li class="slide-conts ui_carousel_slide">
+                                    <img src="/lg5-common/images/KRC0064/@img`+[i+1]+`.jpg" data-pc-src="/lg5-common/images/KRC0064/@img`+[i+1]+`.jpg" data-m-src="/lg5-common/images/KRC0064/@img-m`+[i+1]+`.jpg" alt="">
+                                    <p class="hidden">graphic description : </p>
+                                </li>
+                                }
+                            </ul> 
+                        </div>
+                    </div>
+                </div>
+                <!-- // visual -->
+                }
             </div>
         </div>
 	</section>

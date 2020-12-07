@@ -54,7 +54,7 @@ var res = {
 			"KRC0023_Large Image - Horizontal Pickers" : ["/html/components/KRC0023.html","","검수완료"],
 			"KRC0024_Hero Image" : ["/html/components/KRC0024.html","","검수완료"],
 			"KRC0025_Scroll Image" : ["/html/components/KRC0025.html","","검수완료"],
-			"KRC0026_Interactive Gallery Image" : ["/html/components/KRC0026.html","","검수완료"],
+			//"KRC0026_Interactive Gallery Image" : ["/html/components/KRC0026.html","","검수완료"],
 			"KRC0028_Block Image(3 to 5 - Text Overlay)_Static" : ["/html/components/KRC0028.html","","검수완료"],
 			"KRC0029_Block Image(2 - Text Overlay)" : ["/html/components/KRC0029.html","","검수완료"],
 			"KRC0030_Feature Icon Tab" : ["/html/components/KRC0030.html","","검수완료"],
@@ -62,7 +62,7 @@ var res = {
 			"KRC0032_Section Title" : ["/html/components/KRC0032.html","","검수완료"],
 			//"KRC0035_Promotion/Campaign - Hero_Static" : ["/html/components/KRC0035.html","","검수완료"],
 			"KRC0036_Block Image (2 to 4)_Static" : ["/html/components/KRC0036.html","","검수완료"],
-			"KRC0037_Carousel BG Image " : ["/html/components/KRC0037.html","","검수완료"],
+			// "KRC0037_Carousel BG Image " : ["/html/components/KRC0037.html","","검수완료"],
 			"KRC0038_Text" : ["/html/components/KRC0038.html","","검수완료"],
 			"KRC0039_Side Text - CTA_Static" : ["/html/components/KRC0039.html","","검수완료"],
 			"KRC0040_Image (1 to 3 - CTA Overlay)_Static" : ["/html/components/KRC0040.html","","검수완료"],
@@ -271,10 +271,18 @@ var res = {
 				"케어솔루션 팝업" : ["/html/UTC/OBSF9003_popup.html","","검수완료"],
 			},
 			"주문결제(UTC)" : {
-				"신청자정보 입력" : ["/html/UTC/RMSF9001.html","","검수완료"],
-				"신청 완료" : ["/html/UTC/RMSF9011.html","","검수완료"],
-				"주문결제 팝업" : ["/html/UTC/RMSF9001_popup.html","","검수완료"],
-				//"케어솔루션 주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
+				"케어솔루션" : {
+					"신청자정보 입력" : ["/html/UTC/RMSF9001.html","","검수완료"],
+					"신청 완료" : ["/html/UTC/RMSF9011.html","","검수완료"],
+					"주문결제 팝업" : ["/html/UTC/RMSF9001_popup.html","","검수완료"],
+					//"케어솔루션 주문결제 alert" : ["/html/UTC/RMSF9001_alert.html","","진행중"]
+				},
+				"비회원" : {
+					"비회원 주문번호 로그인" : ["/html/UTC/OBSF9038.html","",""],
+					"비회원 주문배송조회 상세" : ["/html/UTC/OBSF9039.html","",""],
+					"비회원 주문/결제 팝업" : ["/html/UTC/OBSF9039_popup.html","",""],
+					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=no",""],
+				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
 			// "페이지2" : ["./html/gr/M.GR-6L.html","","검수요청"],

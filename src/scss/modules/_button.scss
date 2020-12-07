@@ -40,6 +40,12 @@
             background: #767676;
         }
     }
+    &.mix { // 그라데이션 타입
+        border:none;
+        padding:12px 32px;
+        background-image:linear-gradient(135deg, #9C86E7, #FF537C);
+        color:#fff;
+    }
     &.border {
         border-color:#222;
         background:#fff;
@@ -73,6 +79,9 @@
             padding:5px 15px;
             font-size:14px;
             line-height:22px;
+        }
+        &.mix {
+            padding:4px 12px;
         }
     }
     // 중간사이즈 버튼

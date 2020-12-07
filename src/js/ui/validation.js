@@ -212,6 +212,8 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 if(name) {
                     if(item.is(':checkbox')) {
                         result[name] = item.is(":checked");
+                    } else if (item.is(':file')) {
+                        result[name] = item[0].files[0];
                     } else {
                         result[name] = item.val();
                     }
@@ -413,7 +415,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             var $target = self.$el.find('[name='+ key +']');
             var event  = '';
 
-            if($target.is('select') || $target.is(':radio') || $target.is(':checkbox')){
+            if($target.is('select') || $target.is(':radio') || $target.is(':checkbox') || $target.is(':file')){
                 event = 'change';
             }else{
                 event = 'blur';
@@ -465,23 +467,15 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
             var $msgTarget;
             var msg;
 
-            for(var key in self.register){
+            for (var key in self.register) {
                 var obj = self.register[key];
                 if(obj.value) nObj[key] = obj.value;
                 if(obj.msgTarget) msg = obj.msgTarget;
                 $target = self.$el.find('[name='+ key +']');
 
-                if(msg) {
-                    if($target.siblings(msg).length > 0){
-                        $msgTarget = $target.siblings(msg);
-                    }else if ($target.parent().siblings(msg).length > 0) {
-                        $msgTarget = $target.parent().siblings(msg);
-                    }else {
-                        $msgTarget = $(msg); 
-                    }
-
+                if (msg) {
+                    $msgTarget = self._getMsgBlock($target, msg),
                     $msgTarget.hide();
-                    self.register[key]['msgObj'] = $msgTarget;
                 };
             }
 
@@ -489,21 +483,26 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
         },
         _swicthErrorMsg : function _swicthErrorMsg(obj){
             var self = this;
-            var $target, $msg;
-
+            var $target, msg;
+            
             for(var key in self.register){
                 var nobj = self.register[key];
                 if(nobj.required){
                     $target = self.$el.find('[name='+ key +']');
-                    $msg = nobj['msgObj'];
-                    if($msg.length > 0) {
+                    msg = nobj['msgTarget'];
+                    if(msg) {
+                        var msgBlock = self._getMsgBlock($target, msg),
+                            msgField = self._getMsgField(msgBlock);
+                        
                         if (vcui.hasOwn(obj, key)) {
-                            $msg.text(obj[key]);
-                            $msg.show().attr('id', key + 'Error');
+                            msgField.text(obj[key]).attr('id', key + 'Error');;
+                            msgBlock.show();
+                            
                             $target.attr('aria-describedby', key + 'Error');
                         } else {
-                            $msg.text('');
-                            $msg.hide().removeAttr('id');
+                            msgField.text('').removeAttr('id');
+                            msgBlock.hide()
+                            
                             $target.removeAttr('aria-describedby');
                         }
                     }

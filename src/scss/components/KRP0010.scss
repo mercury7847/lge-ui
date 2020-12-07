@@ -44,11 +44,17 @@
             margin: 0 -16px;
             padding-left:0;
 		}
-        &.fixed {
-            position: fixed;
-            left: 50%;
-            margin-left: -690px;
-            padding-right: 585px;
+        @include pc {
+            &.fixed {
+                position: fixed;
+                top: 0;
+                left: 40px;
+                @media screen and (min-width: 1460px) {
+                    left: 50%;
+                    margin-left: -690px;
+                    width: calc(1380px - 585px);
+                }
+            }
         }
     }
 
@@ -117,7 +123,8 @@
                         display: inline-block;
                         width: 80px;
                         height: 80px;
-                        margin: 0 5px;
+                        margin: 0 5px 5px;
+                        vertical-align: top;
                         a {
                             display: block;
                             position: relative;
@@ -137,6 +144,12 @@
                             a {
                                 border-color: #000;
                             }
+                        }
+                        &.video {
+                            background: url('/lg5-common/images/KRP0010/icon-movie.png') no-repeat 0 0;
+                        }
+                        &.view {
+                            background: url('/lg5-common/images/KRP0010/icon-360.png') no-repeat 0 0;
                         }
                         &.more {
                             .count {
@@ -345,7 +358,7 @@
 
     .pdp-more-info {
         width: 100%;
-        margin-top: 36px;
+        margin-top: 31px;
         padding: 21px 16px;
         border: 1px solid #ddd;
         border-radius: 8px;
@@ -1659,10 +1672,6 @@
                 &:nth-child(2) {
                     margin-left: 8px;
                 }
-                &.size-m {
-                    padding: 5px 16px;
-                    border-radius: 18px;
-                }
             }
         }
     }
@@ -1958,9 +1967,6 @@
     }
     .btn-area {
         margin-top: 24px;
-        .size-m {
-            border-radius: 19px;
-        }
     }
     .btm_info {
         dl {
@@ -2138,7 +2144,7 @@
             align-items: center;
             justify-content: center;
             @include mobile {
-                display: flex;
+                //display: flex;
                 min-height: auto;
                 padding: 0 0 60px 0;
                 .pop-visual-wrap {
@@ -2162,6 +2168,8 @@
                     margin: 0;
                 }
                 .item {
+                    //display: none;
+                    background: #0c5f7f;
                     display: table;
                     width: 100%;
                     height: 100%;
@@ -2220,12 +2228,18 @@
                             border: none;
                         }
                     }
+                    @include mobile {
+                        display: none;
+                        &.active {
+                            display: block;
+                        }
+                    }
                 }
                 @include mobile {
                     order: 1;
                     width: 100%;
                     min-height: 360px;
-                    padding: 48px 0 0 0;
+                    padding: 40px 16px 0;
                     &:after {
                         display: block;
                         content: '';
@@ -2243,21 +2257,59 @@
                     height: auto;
                 }
             }
+            .item-number {
+                @include pc {
+                    display: none;
+                }
+                @include mobile {
+                    order: 2;
+                    position: absolute;
+                    bottom: 36px;
+                    right: 0;
+                    left: 0;
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 20px;
+                    color: $color-gray-1;
+                    text-align: center;
+                    .current {
+                        font-weight: 700;
+                        color: $color-default;
+                        &:after {
+                            display: inline-block;
+                            width: 1px;
+                            height: 10px;
+                            margin: 0 6px;
+                            background-color: $color-gray-1;
+                            vertical-align: -1px;
+                            content: '';
+                        }
+                    }
+                }
+            }
             .pop-pdp-thumbnail-nav {
+                position: relative;
                 //position: absolute;
                 //top: 113px;
                 //left: 48px;
-                margin-top: 31px;
+                overflow: hidden;
+                max-width: 912px;
+                margin: 31px auto 0;
+                padding: 0 56px;
                 @include mobile {
                     order: 3;
-                    position: static;
-                    padding: 0;
+                    //position: static;
+                    max-width: 100%;
+                    margin-top: 20px;
+                    padding: 0 60px;
                 }
                 .pop-thumbnail-list {
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    justify-content: center;
+                    font-size: 0;
+                    white-space: nowrap;
+                    //display: flex;
+                    //flex-direction: row;
+                    //flex-wrap: wrap;
+                    //justify-content: center;
                     @include mobile {
                         height: auto;
                         flex-direction: row;
@@ -2265,19 +2317,20 @@
                         //justify-content: center;
                     }
                     li {
+                        display: inline-block;
                         width: 64px;
                         height: 64px;
                         margin-right: 8px;
-                        margin-bottom: 8px;
                         border: 1px solid #e4e4e4;
                         border-radius: 10px;
+                        vertical-align: top;
                         &.active {
                             border-color: #000;
                         }
                         @include mobile {
                             //width: 20%;
-                            width: calc(20% - 10px);
-                            height: 100%;
+                            //width: calc(20% - 10px);
+                            //height: 100%;
                             margin: 0 5px 5px 5px;
                             a {
                                 display: inline-block;
@@ -2288,6 +2341,46 @@
                         img {
                             width: 100%;
                             border-radius: 8px;
+                        }
+                        &.video {
+                            background: url('/lg5-common/images/KRP0010/icon-movie.png') no-repeat 0 0;
+                            background-size: 64px 64px;
+                        }
+                        &.view {
+                            background: url('/lg5-common/images/KRP0010/icon-360.png') no-repeat 0 0;
+                            background-size: 64px 64px;
+                        }
+                    }
+                }
+                .scroll-controls {
+                    .btn-arrow {
+                        position: absolute;
+                        top: 0;
+                        height: 64px;
+                        box-shadow: none;
+                        background-color: $color-bg-wt;
+                        &.prev {
+                            left: 0;
+                        }
+                        &.next {
+                            right: 0;
+                        }
+                        @include mobile {
+                            @include calc(top,50%,16px);
+                            width: 32px;
+                            height: 32px;
+                            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
+                            &:before {
+                                width: 32px;
+                                height: 32px;
+                                background-size: 100%;
+                            }
+                            &.prev {
+                                left: 16px;
+                            }
+                            &.next {
+                                right: 16px;
+                            }
                         }
                     }
                 }
@@ -2302,12 +2395,17 @@
                 z-index: 10;
                 @include mobile {
                     order: 2;
-                    position: static;
+                    //position: static;
                     //display: flex;
-                    width: 100%;
-                    margin: 18px 0 40px 0;
-                    padding: 0;
-                    text-align: center;
+                    top: auto;
+                    right: 20px;
+                    bottom: 166px;
+                    margin-top: 0;
+                    width: 24px;
+                    //width: 100%;
+                    //margin: 0;
+                    //padding: 0;
+                    //text-align: center;
                     //justify-content: center;
                     //align-items: center;
                 }
@@ -2319,19 +2417,21 @@
                     text-indent: -9999em;
                     border: none;
                     @include mobile {
-                        display: inline-block;
+                        margin-bottom: 16px;
+                    //    display: inline-block;
                         width: 24px;
                         height: 24px;
-                        margin: 0;
+                    //    margin: 0;
                     }
                     &.zoom-plus {
                         background: url(/lg5-common/images/KRP0010/zoomin.svg) center no-repeat;
                     }
                     &.zoom-minus {
+                        margin-bottom: 0;
                         background: url(/lg5-common/images/KRP0010/zoomout.svg) center no-repeat;
-                        @include mobile {
-                            margin-left: 16px;
-                        }
+                        //@include mobile {
+                        //    margin-left: 16px;
+                        //}
                     }
                 }
             }
