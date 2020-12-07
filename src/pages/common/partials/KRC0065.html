@@ -8,80 +8,37 @@
 		.zero-btm : 하단여백 없음
 	-->
 	<div class="component KRC0065">
-		<div class="pdp-tab">
-			<!-- <div class="back-layer"></div> --> <!-- [KR수정] 구조 삭제 -->
-			<!-- 2. sticky bar -->
-			<div class="inner">
-                @@if (context.product) {
-                    <div class="product-simple-info">
-                        @@if (context.product.name) {
-                        <div class="product-name">@@product.name</div>
-                        }
-                        @@if (context.product.price) {
-                        <div class="product-selling-price">
-                            <div class="price">
-                                @@product.price
-                            </div>
-                            <!-- <div class="retailer"></div> --> <!-- [KR수정] 구조 삭제 -->
-                        </div>
-                    }
-                    </div>
-                }
-				<!-- 1. tab -->
-				<div class="contents-menu-list" role="navigation" aria-label="Page">
-					<!-- 접근성 버튼 이동 -->
-					<ul class="tab-menu-belt @@type-btn" aria-label="If you select menu, the focus move to area providing the selected information in this web page.">
-                        <li class="tab-menu active"><a href="#overview" class="linker" aria-selected="true" data-link-area="pdp_tab_anchor-tab" data-link-name="overview">제품상세</a></li>
-                        <li class="tab-menu"><a href="#pdp_spec" class="linker" aria-selected="false" data-link-area="pdp_tab_anchor-tab" data-link-name="specs">스펙</a></li>
-						<li class="tab-menu"><a href="#pdp_review" class="linker" aria-selected="false" data-link-area="pdp_tab_anchor-tab" data-link-name="review">리뷰(36)</a></li>
-                        <li class="tab-menu"><a href="#pdp_support" class="linker" aria-selected="false" data-link-area="pdp_tab_anchor-tab" data-link-name="support">고객지원</a></li>
-                    </ul>
-                    @@if (context.extraMenu) {
-                    <div class="extra-area">
-                        <!--  구매하기 버튼인 경우
-                            data-model-id="MD000000" 추가
-                        -->
-                        <a href="@@extraMenu.link-url" class="extra-menu btn @@extraMenu.style1 @@extraMenu.style2" data-link-area="pdp_tab_anchor-tab" data-link-name="{button name}">@@extraMenu.text</a>
-                    </div>
-                    <!-- 접근성 버튼 이동 -->
-                    }
-                </div>
-				<!-- // 1. tab -->
-			</div>
-            <!-- // 2. sticky bar -->
-            
-            <!-- sticky animation bar -->
-            <div class="inner">
-                <div class="product-info-more"><!-- .on-txt 클릭 시 .open -->
-                    <!-- 모바일 디자인 대응 : active text -->
-                    <p class="on-txt" aria-hidden="true">국내 최고화력 3,300W로 더 빠르게</p>
-                    <!-- // 모바일 디자인 대응 : active text  -->
-                    <ul class="more-infos">
-                        <li class="info-tab active"><!-- 해당 탭 포커스시 .active -->
-                            <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">국내 최고화력 3,300W로 더 빠르게<span class="bar" style="width:100%;" aria-hidden="true"></span></a>
-                        </li>
-                        <li class="info-tab">
-                            <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">미라듀어 글라스로 견고하게<span class="bar" aria-hidden="true"></span></a>
-                        </li>
-                        <li class="info-tab">
-                            <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">17종 안전장치 시스템으로 안전하게<span class="bar" aria-hidden="true"></span></a>
-                        </li>
-                        <li class="info-tab">
-                            <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">스마트폰 원격제어로 더 안전하게<span class="bar" aria-hidden="true"></span></a>
-                        </li>
-                        <li class="info-tab">
-                            <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">스마트폰 원격제어로 더 안전하게<span class="bar" aria-hidden="true"></span></a>
-                        </li>
-                        <li class="info-tab">
-                            <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">스마트폰 원격제어로 더 안전하게<span class="bar" aria-hidden="true"></span></a>
-                        </li>
-                        <li class="info-tab">
-                            <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">스마트폰 원격제어로 더 안전하게<span class="bar" aria-hidden="true"></span></a>
-                        </li>
-                    </ul>
-                </div>
+		<!-- sticky animation bar -->
+        <div class="inner">
+            <div class="product-info-more"><!-- .on-txt 클릭 시 .open -->
+                <!-- 모바일 디자인 대응 : active text -->
+                <p class="on-txt" aria-hidden="true">국내 최고화력 3,300W로 더 빠르게</p>
+                <!-- // 모바일 디자인 대응 : active text  -->
+                <ul class="more-infos">
+                    <li class="info-tab active"><!-- 해당 탭 포커스시 .active -->
+                        <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">국내 최고화력 3,300W로 더 빠르게<span class="bar" style="width:100%;" aria-hidden="true"></span></a>
+                    </li>
+                    <li class="info-tab">
+                        <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">미라듀어 글라스로 견고하게<span class="bar" aria-hidden="true"></span></a>
+                    </li>
+                    <li class="info-tab">
+                        <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">17종 안전장치 시스템으로 안전하게<span class="bar" aria-hidden="true"></span></a>
+                    </li>
+                    <li class="info-tab">
+                        <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">스마트폰 원격제어로 더 안전하게<span class="bar" aria-hidden="true"></span></a>
+                    </li>
+                    <li class="info-tab">
+                        <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">스마트폰 원격제어로 더 안전하게<span class="bar" aria-hidden="true"></span></a>
+                    </li>
+                    <li class="info-tab">
+                        <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">스마트폰 원격제어로 더 안전하게<span class="bar" aria-hidden="true"></span></a>
+                    </li>
+                    <li class="info-tab">
+                        <a href="#n" class="info-linker" aria-selected="false" data-link-area="" data-link-name="">스마트폰 원격제어로 더 안전하게<span class="bar" aria-hidden="true"></span></a>
+                    </li>
+                </ul>
             </div>
-            <!-- // sticky animation bar -->
-		</div>
+        </div>
+        <!-- // sticky animation bar -->
 	</div>
 </div>
