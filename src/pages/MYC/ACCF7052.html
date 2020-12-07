@@ -27,6 +27,23 @@
                         })
                         <div class="lnb-contents">
                             <!-- 상세 -->
+                            <!-- 조회기간 -->
+                            <div class="filters rdo-type2 type2">
+                                <!-- filter -->
+                                @@include('./common/modules/mem-filter.html', {
+                                    "tabType" : true,
+                                    "wrapTit" : "조회기간",
+                                    "datepicker" : true,
+                                    "rdoCheck" : true,
+                                    "list" : [
+                                        { "id" : "rdk-cehck1-1", "name" : "rdk-check1",  "label" : "전체", "checked": "checked"},
+                                        { "id" : "rdk-cehck1-2", "name" : "rdk-check1",  "label" : "적립"},
+                                        { "id" : "rdk-cehck1-3", "name" : "rdk-check1",  "label" : "사용"}
+                                    ]
+                                })
+                                <!-- // filter -->
+                            </div>
+                            <!-- // 조회기간 -->
                             <div class="section-wrap">
                                 <!-- 조회기간 -->
                                 <div class="sects rdo-type2">

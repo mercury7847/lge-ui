@@ -5,21 +5,20 @@
         "listData": [
             {
                 "url": "/html/CS/CSRF6053.html",
-                "flag": ["NEW", "BEST"],
+                "flag": "NEW",
                 "title": "LG전자 소형 폐전자제품 무상 처리서비스",
                 "date": "2019.06.15",
                 "view": "3,100"
             },
             {
                 "url": "/html/CS/CSRF6053.html",
-                "flag": ["NEW"],
+                "flag": "NEW",
                 "title": "LG전자 소형 폐전자제품 무상 처리서비스",
                 "date": "2019.06.15",
                 "view": "3,100"
             },
             {
                 "url": "/html/CS/CSRF6053.html",
-                "flag": ["BEST"],
                 "title": "LG전자 소형 폐전자제품 무상 처리서비스",
                 "date": "2019.06.15",
                 "view": "3,100"

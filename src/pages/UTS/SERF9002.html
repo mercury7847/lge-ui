@@ -222,23 +222,23 @@
                                     <div class="sort-list">
                                         <div class="sort-check-area">
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="chk-pd" name="chk-soldout">
+                                                <input type="checkbox" id="chk-pd" name="soldout">
                                                 <label for="chk-pd">구매 가능한 제품</label>
                                             </span>
                                         </div>
                                         <div class="sort-search-area">
                                             <div class="search-inner">
-                                                <input type="text" class="inp-txt" placeholder="결과 내 검색" value="" title="검색어 입력">
+                                                <input type="text" class="inp-txt" id="searchInResult-production" name="searchIn" placeholder="결과 내 검색" value="" title="검색어 입력">
                                                 <button type="button" class="btn-sch"><span class="blind">검색</span></button> 
                                             </div>
                                         </div>
                                         <div class="sort-select-wrap">
-                                            <select class="ui_selectbox" id="select1" title="조회할 연차 선택">
-                                                <option value="">정확도순</option>
-                                                <option value="">인기순</option>
-                                                <option value="">최신순</option>
-                                                <option value="">가격 높은순</option>
-                                                <option value="">가격 낮은순</option>
+                                            <select class="ui_selectbox" id="order-production" name="order" title="조회할 연차 선택">
+                                                <option value="accuracy">정확도순</option>
+                                                <option value="popularity">인기순</option>
+                                                <option value="latest">최신순</option>
+                                                <option value="pricehigh">가격 높은순</option>
+                                                <option value="pricelow">가격 낮은순</option>
                                             </select>
                                         </div>
                                     </div>

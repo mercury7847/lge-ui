@@ -317,6 +317,14 @@
         margin-bottom:16px;
     }
 }
+.app-gate,
+.qr-code {
+    .section-title{
+        .tit{
+            font-size: 18px;
+        }
+    }   
+}
 .contents-inner-title{
     border-bottom:2px solid #222;
     padding-bottom:16px;
@@ -353,23 +361,22 @@
     justify-content: left;
     align-items: center;
 
-    .upload-wrap{
+    .upload-item{
         margin-right:24px;
 
         .upload-img-area{
             position:relative;
             width:93px;
-    
-            .uploadpreview{
+            .upload-preview{
+                display:block;
                 width:93px;
                 height:93px;
-                display:block;
-                border:1px solid #ddd;
                 margin:0 auto 15px;
+                border:1px solid #ddd;
+                border-radius:8px;
                 background-size:100% auto;
                 background-repeat:no-repeat;
                 background-position:center;
-                border-radius:8px;
             }
 
             .upload-btn-area{
@@ -377,7 +384,7 @@
                 bottom:-8px;
                 right:-8px;
 
-                .btn-ipt-file{
+                .btn-upload {
                     display:block;
                     width:24px;
                     height:24px;
@@ -387,24 +394,19 @@
                     text-align:center;
                 }
 
-                .btn-ipt-del{
+                .btn-del {
                     display:none;
                 }
 
-                input[type="file"].ipt-file {
-                    color: transparent;
-                    width: 0;
-                    height: 0;
-                    margin: 0 auto;
-                    display: block;
+                input[type="file"] {
+                    @include blind;
                 }
             }
         }
 
         .upload-file-name{
-            width:93px;
-            input[type=text].ipt-file-name{
-                width:100%;
+            .file-name {
+                display:block;
                 text-align:center;
                 font-size:14px;
                 color:#222;
@@ -417,10 +419,10 @@
 
         &.on{
             .upload-btn-area{
-                .btn-ipt-file{
+                .btn-upload {
                     display:none;
                 }
-                .btn-ipt-del{
+                .btn-del {
                     display:block;
                     width:24px;
                     height:24px;

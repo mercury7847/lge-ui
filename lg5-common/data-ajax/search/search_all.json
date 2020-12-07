@@ -2,12 +2,12 @@
     "status":"success",
     "message":null,
     "param":{
-        "searchedValue":"aowlrtmvpdl스"
+        "search":"aowlrtmvpdl스"
     },
     "data":{
         "count": "243",
         "inputValue": "aowlrtmvpdl스",
-        "searchedValue": "매직스페이스",
+        "search": "매직스페이스",
         "related":[
             "OLED TV",
             "4K OLED TV",

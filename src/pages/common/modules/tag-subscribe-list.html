@@ -1,0 +1,15 @@
+<li class="sect">
+    <p class="tag-title"><span class="blind">태그 그룹명</span>@@title</p>
+    <div class="tag-group">
+        <ul>
+            @@for ( var i=0; i < tags.length; i++ ) {
+            <li class="tags">
+                <span class="chk-btn">
+                    <input type="checkbox" id="`+tags[i].id+`-`+[i]+`" name="tags" `+tags[i].checked+`>
+                    <label for="`+tags[i].id+`-`+[i]+`">#`+tags[i].label+`</label>
+                </span>
+            </li>
+            }
+        </ul>
+    </div>
+</li>

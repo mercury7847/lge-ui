@@ -1,0 +1,122 @@
+<!-- components/partials/KRP0010-pdp-modal.html -->
+
+<!-- img view layer -->
+<article id="pop-pdp-visual" class="popup-wrap pop-pdp-visual">
+    <header class="pop-header">
+        <h1 class="tit"><span>LG 올레드 갤러리 TV</span></h1>
+    </header>
+    <section class="pop-conts">
+        <div class="pop-visual-wrap">
+            
+            <!-- zoom -->
+            <div class="zoom-btn-area">
+                <a href="#" class="zoom-btn zoom-plus" role="button"><span>확대</span></a>
+                <a href="#" class="zoom-btn zoom-minus" role="button"><span>축소</span></a>
+            </div>
+
+            <!-- default visual
+            <div class="pop-pdp-visual-image">
+                <img src="/lg5-common/images/KRP0010/@sample-img.jpg" data-src="/lg5-common/images/KRP0010/@sample-tv.jpg" class="lazyload" alt="">
+            </div>
+            --->
+            <div class="default" id="modal_detail_target">
+                <!-- 1. youtube type -->
+                <div class="item video">
+                    <div class="item-box visual-box">
+                        <!-- 1. box 컨텐츠가 video일 때 (youtube) -->
+                        <div class="video-container video-box youtube-box"><!-- [KR수정] .youtube-box class 추가 -->
+                            <div class="thumnail">
+                                <img data-pc-src="/lg5-common/images/KRC0043/@thumb01.jpg" data-m-src="/lg5-common/images/KRC0043/@thumb01.jpg" alt="">
+                                <a href="#none" data-src="https://www.youtube.com/embed/6BnPTCtzHlo" class="see-video acc-video-content" title="Opens in a new layer popup" role="button" data-video-content="acc-video" data-type="youtube" data-link-area="" data-link-name="{video id}" aria-describedby="title01">plays audio description video</a>
+                            </div>
+                            <div class="video-asset video-box-closeset">
+                                <iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/PetoQo1eUww?autoplay=1"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2. animation type -->
+                <div class="item animation">
+                    <div class="item-box visual-box" aria-describedby="title02">
+                        <!-- animation 타입인 경우 animation-box 클래스 추가 -->
+                        <div class="visual-area animation-box">
+                            <a href="#none" role="button" data-src="/lg5-common/videos/Highlight_backround.mp4" aria-label="Plays audio Description Video" class="play-animaion-btn acc-btn" data-ani-text="Play the video" data-acc-ani-text="Plays audio Description Video" aria-describedby="title01">Plays audio Description Video</a>
+                            <img data-src="/lg5-common/images/dummy/@sample-960x540.png" alt="" class="lazyload" />
+                            <p class="hidden">graphic description : </p><!-- [KR수정] Image Accessibility Description 추가 -->
+                            <div class="animation-area">
+                                <video autoplay loop>
+                                    <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
+                                    <!-- WEBM 동영상을 제공하는 경우
+                                    <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
+                                    -->
+                                </video>
+                                <div class="controller-wrap wa-btn">
+                                    <button class="active pause" aria-label="Pause Video" name="pause" data-play-text="Play Video" data-pause-text="Pause Video" data-link-area="side_image_text-animation_play" data-link-name="" aria-describedby="title01">Pause Video</button>
+                                </div>
+                            </div>
+                            <div class="caption">영상이나 이미지에 대한 간략한 타이틀이 들어갑니다</div>
+                        </div>
+                        <!-- // animation 타입인 경우 -->
+                    </div>
+                </div>
+                <!-- 3. image type -->
+                <div class="item image">
+                    <div class="item-box zoom-area">
+                        <img data-pc-src="/lg5-common/images/KRP0010/@sample-img.jpg" data-m-src="/lg5-common/images/KRP0010/@sample-img.jpg" class="" alt="">
+                    </div>
+                </div>
+            </div>  
+
+            <!-- nav -->
+            <div class="pop-pdp-thumbnail-nav">
+                <ul class="pop-thumbnail-list">
+                    <li class="pop-thumbnail">
+                        <a href="#0" data-link-area="product_summary-360_view" data-link-name="65UK6300PUE">
+                            <img data-src="/lg5-common/images/KRP0010/icon-360.png" src="/lg5-common/images/KRP0010/icon-360.png" class="lazyloaded" alt="LG Vacuum Cleaners A902RM 360view" data-loaded="true">
+                            <p class="hidden pc">graphic description : </p>
+                            <p class="hidden mobile">graphic description : </p>
+                        </a>
+                    </li>
+                    <li class="pop-thumbnail">
+                        <a href="#1" data-link-area="product_summary-video" data-link-name="65UK6300PUE">
+                            <img data-src="/lg5-common/images/KRP0010/icon-movie.png" src="/lg5-common/images/KRP0010/icon-movie.png" class="lazyloaded" alt="LG Vacuum Cleaners A902RM Video" data-loaded="true">
+                            <p class="hidden pc">graphic description : </p>
+                            <p class="hidden mobile">graphic description : </p>
+                        </a>
+                    </li>
+                    <li class="pop-thumbnail active">
+                        <a href="#2">
+                            <img data-src="http://www.lg.com/us/images/cell-phones/md05995196/md05995197/gallery/small03.jpg" class="lazyload" alt="LG Vacuum Cleaners A902RM 3" src="http://www.lg.com/us/images/cell-phones/md05995196/md05995197/gallery/small03.jpg" >
+                            <p class="hidden pc">graphic description : </p>
+                            <p class="hidden mobile">graphic description : </p>
+                        </a>
+                    </li>
+                    <li class="pop-thumbnail">
+                        <a href="#3">
+                            <img data-src="http://www.lg.com/us/images/cell-phones/md05995196/md05995197/gallery/small03.jpg" class="lazyload" alt="LG Vacuum Cleaners A902RM 3" src="http://www.lg.com/us/images/cell-phones/md05995196/md05995197/gallery/small03.jpg" >
+                            <p class="hidden pc">graphic description : </p>
+                            <p class="hidden mobile">graphic description : </p>
+                        </a>
+                    </li>
+                    <li class="pop-thumbnail">
+                        <a href="#4">
+                            <img data-src="http://www.lg.com/us/images/cell-phones/md05995196/md05995197/gallery/small03.jpg" class="lazyload" alt="LG Vacuum Cleaners A902RM 3" src="http://www.lg.com/us/images/cell-phones/md05995196/md05995197/gallery/small03.jpg" >
+                            <p class="hidden pc">graphic description : </p>
+                            <p class="hidden mobile">graphic description : </p>
+                        </a>
+                    </li>
+                    <li class="pop-thumbnail">
+                        <a href="#5">
+                            <img data-src="http://www.lg.com/us/images/cell-phones/md05995196/md05995197/gallery/small03.jpg" class="lazyload" alt="LG Vacuum Cleaners A902RM 3" src="http://www.lg.com/us/images/cell-phones/md05995196/md05995197/gallery/small03.jpg" >
+                            <p class="hidden pc">graphic description : </p>
+                            <p class="hidden mobile">graphic description : </p>
+                        </a>
+                    </li>
+                </ul>            
+            </div>
+
+        </div>
+    </section>
+
+    <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+</article>

@@ -24,7 +24,10 @@
             }
         }
         .btn-desc {
+            margin-top:21px;
             font-size:0;
+            display: flex;
+            justify-content: center;
             .btn {
                 margin:0 4px;
             }
@@ -49,11 +52,17 @@
             @include mobile {
                 border-bottom: 0;
             }
+            .tabs-wrap.btn-type {
+                padding-bottom: 24px;
+                @include mobile {
+                    padding-bottom: 12px;
+                }
+            }
         }
         &.wide {
             max-width: 100%;
             margin-bottom: 48px;
-            padding: 10px 0 24px;
+            padding: 10px 0 0;
             @include mobile {
                 margin-bottom: 32px;
                 padding: 0;
@@ -66,26 +75,7 @@
                     padding: 0 16px;
                 }
             }
-            .tabs-wrap {
-                padding-left: 40px;
-                padding-right: 40px;
-                @include mobile {
-                    padding-left: 0;
-                    padding-right: 0;
-                }
-            }
-            .tabs-wrap.btn-type {
-                padding-top: 37px;
-                @include mobile {
-                    padding-top: 32px;
-                }
-            }
-            .tabs-wrap + .tabs-wrap {
-                margin-top: 24px;
-                @include mobile {
-                    margin-top: 8px;
-                }
-            }
+
         }
     }
 
@@ -197,11 +187,6 @@
                     &-text {
                         margin-top: 12px;
                     }
-                    &-h1 {
-                        font-size: 28px;
-                        padding-bottom: 24px;
-                        border-bottom:2px solid #222;
-                    }
                 }
             }
             .agree-cont-wrap{
@@ -213,6 +198,9 @@
                         padding-bottom:0;
                     }
                 }
+            }
+            &.bg-gray {
+                background-color: #f4f4f4;
             }
             @include mobile {
                 padding:40px 16px 0;

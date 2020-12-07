@@ -186,13 +186,7 @@
                 }
             }
         }
-        &.bg {
-            max-width: 100% !important;
-            background-color: $color-bg;
-            .tabs {
-                padding: 16px;
-            }
-        }
+        
     }
 
 
@@ -246,6 +240,39 @@
         }
     }
 }
+
+.tabs-bg {
+    max-width: 100%;
+    background-color: $color-bg;
+    .tabs-wrap {
+        position: relative; 
+        .tabs {
+            padding: 16px;
+            @include mobile {
+                padding: 16px;
+            }
+        }
+    }
+    
+    .btn-area {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        @include mobile {
+            position: static;
+            transform: translateY(0);
+            margin-top: 40px;
+        }
+        .btn {
+            background-color: transparent;
+            @include mobile {
+                background-color: #fff;
+            }
+        }
+    }
+}
+
 
 .contents {
     > .tabs-wrap {

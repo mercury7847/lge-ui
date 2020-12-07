@@ -30,9 +30,9 @@
                 }
             ]
         },
-        "selectedItem":[
-            "item00001",
-            "item00002"
+        "selectedSeq":[
+            "seq00001",
+            "seq00002"
         ],
         "itemList":[
             {

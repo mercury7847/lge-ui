@@ -6,13 +6,12 @@
 .my-sort {
 	margin-top:16px;
 	ul {
+		margin-top:-12px;
 		font-size:0;
 		li {
 			display:inline-block;
 			width:181px;
-			& + li {
-				margin-left:12px;
-			}
+			margin:12px 12px 0 0;
 			a {
 				display:block;
 				height:58px;
@@ -35,12 +34,20 @@
 	}
 	@include mobile {
 		ul {
-			margin:0 -8px;
+			margin-top:-8px;
+			&:after {
+				content:' ';
+				display:block;
+				clear:both;
+			}
 			li {
-				width:50%;
-				margin:0 4px;
-				& + li {
-					margin-left:0;
+				width:49%;
+				margin:8px 0 0;
+				&:nth-child(odd) {
+					float:left;
+				}
+				&:nth-child(2n) {
+					float:right;
 				}
 			}
 		}
@@ -58,9 +65,19 @@
 			color:#ec455a;
 		}
 	}
+	@include mobile {
+		.list-count {
+			font-size:16px;
+			line-height:24px;
+		}
+	}
+	& + .my-lists {
+		border-top:none;
+	}
 }
 
 .my-lists {
+	border-top:2px solid #222;
 	> ul {
 		> li {
 			padding:24px 0;
@@ -99,6 +116,30 @@
 							vertical-align:middle;
 							@include mobile {
 								margin:0 6px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	@include mobile {
+		> ul {
+			> li {
+				.title {
+					a {
+						font-size:14px;
+						line-height:22px;
+					}
+				}
+				.info {
+					ul {
+						li {
+							display:block;
+							font-size:13px;
+							line-height:21px;
+							& + li:before {
+								display:none;
 							}
 						}
 					}

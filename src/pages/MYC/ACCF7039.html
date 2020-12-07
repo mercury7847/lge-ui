@@ -7,7 +7,6 @@
 <body>
     <div class="wrap">
         @@include('./common/header.html')
-
         <div class="container">
             @@include('./common/modules/page-header.html', {
                 "pageTitle": "멤버십 가입 정보"
@@ -42,13 +41,13 @@
                                             <li>
                                                 <dl>
                                                     <dt>
-                                                        <p>VIP 멤버십 등급</p>
+                                                        <p>멤버십 등급</p>
                                                         @@include('./common/modules/tooltip.html', {
                                                             "type" : "text",
                                                             "text" : "1년간 500만원 이상 구매 시 '우수' 고객으로 상향됩니다."
                                                         })
                                                     </dt>
-                                                    <dd id="membership_level">일반</dd>
+                                                    <dd id="membership_level">스탠다드</dd>
                                                 </dl>
                                             </li>
                                             <li>
@@ -71,10 +70,10 @@
                                     </div>
                                     <div class="section-inner type2">
                                         <div class="my-contract-info">
-                                            <p class="tit">&quot;고객님의 멤버십 카드번호는 <br class="mob"><em>1234-5678-9012-3456</em> 입니다.&quot;</p>
+                                            <p class="tit">&quot;고객님의 멤버십 카드번호는 <br class="mob"><em>1234-5678-****-****</em> 입니다.&quot;</p>
                                         </div>
                                     </div>
-                                    <div class="section-inner">
+                                    <div class="section-inner type0">
                                         <div class="inner-box">
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
@@ -92,13 +91,13 @@
                                 <!-- // 멤버십 가입 정보 -->
 
                                 <!-- 구매내역 -->
-                                <div class="sects rdo-type2">
+                                <div class="sects">
                                     <div class="tit-wrap">
                                         <h5 class="tit">구매내역</h5>
                                     </div>
                                     <div class="section-inner">
                                         <div class="inner-box">
-                                            <div class="filters">
+                                            <div class="filters rdo-type2">
                                                 <!-- filter -->
                                                 @@include('./common/modules/mem-filter.html', {
                                                     "tabType" : true,
@@ -145,7 +144,7 @@
                                             "topBorder" : true,
                                             "bulletTxt" : [
                                                 "홈플러스, 이마트에서 구매 후 영수증을 등록한 제품은 다음날 반영됩니다.",
-                                                "VIP 우수 고객의 경우 3년 무상 서비스혜택을 받으실 수 있습니다."
+                                                "골드등급 이상 고객의 경우 3년 무상 서비스혜택을 받으실 수 있습니다."
                                             ]
                                         })
                                     </div>

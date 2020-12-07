@@ -4,15 +4,18 @@
 
 .KRP0035 {
 	.component-inner {
-		padding: 0 80px;
+		padding: 0;
 		@include mobile {
 			padding: 0 20px;
 		}
 	}
 	.slide-wrap {
-		max-width: 1170px;
+		//max-width: 1170px;
+		max-width: calc(1170px + 160px);
 		margin: 0 auto;
-		padding-bottom: 34px;
+		padding: 0 80px;
+		//padding-bottom: 34px;
+
 		@include mobile {
 			margin: 0 -20px;
 			padding: 0 15px 38px;
@@ -24,12 +27,13 @@
 				padding: 4px 6px 8px;
 			}
 		}
+
 		.slide-controls {
 			.btn-arrow.prev {
-				left: -72px;
+				left: 10px;
 			}
 			.btn-arrow.next {
-				right: -72px;
+				right: 10px;
 			}
 		}
 		

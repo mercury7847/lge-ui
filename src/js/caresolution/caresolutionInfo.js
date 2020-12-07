@@ -67,12 +67,12 @@ var CareCartInfo = (function() {
 
         updateItemInfo: function(data) {
             var self = this;
-            var selectedItem = data ? (data.selectedItem instanceof Array ? data.selectedItem : []) : [];
+            var selectedSeq= data ? (data.selectedSeq instanceof Array ? data.selectedSeq : []) : [];
             var itemList =  data ? (data.itemList instanceof Array ? data.itemList : []) : [];
             var infoData = [];
-            selectedItem.forEach(function(item) {
+            selectedSeq.forEach(function(item) {
                 var find = itemList.filter(function(el){
-                    return el.itemID == item;
+                    return el.itemSeq == item;
                 });
                 if(find.length > 0) {
                     infoData.push(find[0]);
@@ -275,10 +275,13 @@ var CareCartInfo = (function() {
                     okBtnName: alert.okBtnName,
                     ok: alert.okUrl ? function (){
                         location.href = alert.okUrl;
+                    } : function (){},
+                    cancel: alert.cancelUrl ? function (){
+                        location.href = alert.cancelUrl;
                     } : function (){}
                 };
 
-                var desc = alert.desc ? alert.desc : alert.title;
+                var desc = alert.desc ? alert.desc : null;
                 if(alert.title && alert.desc) {
                     obj.typeClass = 'type2'
                 }

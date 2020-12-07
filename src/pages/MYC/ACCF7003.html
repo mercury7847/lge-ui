@@ -19,14 +19,13 @@
                             "sect1" : [
                                 { "on": "on", "page": "주문/배송 조회" },
                                 { "on": "", "page": "배송지 주소 관리" },
-                                { "on": "", "page": "사은품 신청" },
                                 { "on": "", "page": "쿠폰" }
                             ]
                         })
                         <div class="lnb-contents">
                             <div class="section-wrap">
                                 <div class="sects">
-                                    <!-- 주문정보 -->
+                                    <!-- 주문정보 : '취소신청' 버튼 노출 케이스 -->
                                     <div class="info-tbl-wrap">
                                         <!-- loop -->
                                         @@include('./common/modules/info-tbl-wrap-infos.html', {
@@ -90,7 +89,74 @@
                                         })
                                         <!-- // loop -->
                                     </div>
-                                    <!-- // 주문정보 -->
+                                    <!-- // 주문정보 : '취소신청' 버튼 노출 케이스 -->
+
+                                    <!-- 주문정보 : '반품신청' 버튼 노출 케이스 -->
+                                    <div class="info-tbl-wrap">
+                                        <!-- loop -->
+                                        @@include('./common/modules/info-tbl-wrap-infos.html', {
+                                            "infos" : [
+                                                { "dt" : "주문일", "dd" : "2020.08.29" },
+                                                { "dt" : "주문번호", "dd" : "20200912497207" },
+                                            ],
+                                            "total" : "총 2건", 
+                                            "th" : [
+                                                "제품정보(주문/배송 상세보기)", "진행상태"
+                                            ]
+                                        })
+                                        @@loop('./common/modules/info-tbl-wrap-loop.html', [
+                                            {
+                                                "col1" : {
+                                                    "blind" : "제품정보",
+                                                    "productType" : {
+                                                        "thumb" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                        "name" : "LG 디오스 상냉장하냉동",
+                                                        "name2" : "OLED55BXPUA",
+                                                        "more" : [
+                                                            "주요스펙1",
+                                                            "주요스펙2"
+                                                        ],
+                                                        "count" : true,
+                                                        "price" : "1,760,000원"
+                                                    }
+                                                },
+                                                "col2" : {
+                                                    "blind" : "진행상태",
+                                                    "stateType" : {
+                                                        "tit" : "결제완료",
+                                                        "desc" : "배송희망일 2020.09.18"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "col1" : {
+                                                    "blind" : "제품정보",
+                                                    "productType" : {
+                                                        "thumb" : "/lg5-common/images/dummy/@img-product2.jpg",
+                                                        "name" : "LG 디오스 냉장고 일반형 정수 필터",
+                                                        "name2" : "OLED55BXPUA",
+                                                        "count" : true,
+                                                        "price" : "50,000원"
+                                                    }
+                                                },
+                                                "col2" : {
+                                                    "blind" : "진행상태",
+                                                    "stateType" : {
+                                                        "tit" : "배송중",
+                                                        "desc" : "배송희망일 2020.09.18",
+                                                        "btn" : "배송조회",
+                                                        "btn2" : "제품리뷰",
+                                                        "btn3" : "반품신청"
+                                                    }
+                                                }
+                                            }
+                                        ])
+                                        @@include('./common/modules/info-tbl-wrap-bottom.html', {
+                                            "return" : true
+                                        })
+                                        <!-- // loop -->
+                                    </div>
+                                    <!-- // 주문정보 : '반품신청' 버튼 노출 케이스 -->
 
                                     <div class="section-inner type3">
                                         <!-- 배송 정보 -->
@@ -98,7 +164,7 @@
                                             <p class="inner-tit">배송 정보</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
-                                                    { "dt" : "성명", "dd" : "이엘지" },
+                                                    { "dt" : "성명", "dd" : "이*지" },
                                                     { "dt" : "배송주소", "dd" : "21655 서울특별시 엘지구 엘지로 ****" },
                                                     { "dt" : "휴대폰", "dd" : "010****1234" },
                                                     { "dt" : "연락처", "dd" : "010****1234" },
@@ -155,21 +221,6 @@
                                         </div>
                                         <!-- // 결제 정보 : 가상계좌 입금완료 -->
 
-                                        <!-- 결제 정보 : 휴대폰 결제 -->
-                                        <div class="inner-box">
-                                            <p class="inner-tit">결제 정보</p>
-                                            @@include('./common/modules/dl-infolist.html', {
-                                                "list" : [
-                                                    { "dt" : "결제 수단", "dd" : "<span>휴대폰 결제 SKT / 010****1234</span><a href='#n' class='btn-link'>영수증 발급 내역</a>" },
-                                                    { "dt" : "주문 금액", "dd" : "2,834,060원" },
-                                                    { "dt" : "할인 금액", "dd" : "-283,405원" },
-                                                    { "dt" : "멤버십포인트", "dd" : "0원" },
-                                                    { "dt" : "총 결제 금액", "dd" : "<em>2,550,654원</em>" },
-                                                ]
-                                            })
-                                        </div>
-                                        <!-- // 결제 정보 : 휴대폰 결제 -->
-
                                         <!-- 결제 정보 : 분할 결제 -->
                                         <div class="inner-box">
                                             <p class="inner-tit">결제 정보</p>
@@ -190,7 +241,7 @@
                                             <p class="inner-tit">결제 정보</p>
                                             @@include('./common/modules/dl-infolist.html', {
                                                 "list" : [
-                                                    { "dt" : "결제 수단", "dd" : "<span>LG Pay / 하나카드 일시불</span><a href='#n' class='btn-link'>영수증 발급 내역</a>" },
+                                                    { "dt" : "결제 수단", "dd" : "<span>LG 페이 / 하나카드 일시불</span><a href='#n' class='btn-link'>영수증 발급 내역</a>" },
                                                     { "dt" : "주문 금액", "dd" : "2,834,060원" },
                                                     { "dt" : "할인 금액", "dd" : "-283,405원" },
                                                     { "dt" : "멤버십포인트", "dd" : "0원" },
