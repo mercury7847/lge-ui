@@ -42,8 +42,8 @@
 }
 
 .header-wrap {
-    max-width: 1600px; //메뉴 width: 1504px;
-    padding: 0 48px;
+    max-width: (1680px + 80px);
+    padding: 0 40px;
     margin: 0 auto;
 
     @include mobile {
@@ -311,9 +311,9 @@
     float: left;
     a {
         display: block;
-        width: 97px;
-        height: 32px;
-        background-image: url("/lg5-common/images/logo.svg");
+        width: 90px;
+        height: 24px;
+        background-image: url("/lg5-common/images/header/logo.svg");
         background-size: 100% 100%;
     }
 
@@ -344,15 +344,11 @@
                 height: 100%;
             }
             &.search {
-                @include icon-search;
+                background: url("/lg5-common/images/icons/icon-search.svg") no-repeat center center;
             }
             &.mypage {
                 position: relative;
-                @include icon-person;
-                &:focus,
-                .on {
-                    @include icon-person-on;
-                }
+                background: url("/lg5-common/images/icons/icon-person.svg") no-repeat center center;
                 .mypage-layer {
                     display: none;
                     position: absolute;
@@ -416,7 +412,7 @@
             }
             &.cart {
                 position: relative;
-                @include icon-cart;
+                background: url("/lg5-common/images/icons/icon-cart.svg") no-repeat center center;
                 .cart-count {
                     position: absolute;
                     left: 14px;
