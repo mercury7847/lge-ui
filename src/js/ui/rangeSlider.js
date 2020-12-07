@@ -494,8 +494,9 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
             var sMin;
             var sMax;
 
-
             if(self.valuesArr.length > 0){
+                if(!minX) minX = 0;
+                if(!maxX) maxX = self.valuesArr.length - 1;
                 sMin = self._getSnapDistance(minX);
                 sMax = self._getSnapDistance(maxX);
 
@@ -703,6 +704,24 @@ vcui.define('ui/rangeSlider', ['jquery', 'vcui'], function ($, core) {
         getValue: function getValue() {          
             return this.nowValue;
         },
+
+        getObjectValue: function getObjectValue() {
+            var self = this;
+            var optionValues = self.options.values;
+            if(optionValues) {
+                var findMin = optionValues.filter(function(item){
+                    return parseInt(item.value) == self.nowValue.minValue;
+                });
+                var findMax = optionValues.filter(function(item){
+                    return parseInt(item.value) == self.nowValue.maxValue;
+                });
+                if(findMin.length > 0 && findMax.length > 0) {
+                    return {minValue:findMin[0],maxValue:findMax[0]}
+                }
+            }
+            return self.nowValue;
+        },
+
         reset: function reset(obj){
             var self = this;
             var nObj;
