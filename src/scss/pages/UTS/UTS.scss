@@ -677,6 +677,7 @@
 
 // 개인정보취급방침, 이벤트개인정보처리방침, 이용약관
 .contents.term-wrap {
+    border-top:8px solid #f4f4f4;
     .cont-wrap {
         border:none;
     }
@@ -698,11 +699,14 @@
             }
         }
         .inner-con {
-            padding:56px 56px;
+            padding-bottom:40px;
             background:#fff;
             border-radius:4px;
             font-size:16px;
             line-height:24px;
+            &:first-child {
+                padding-top:40px;
+            }
             @include mobile {
                 padding:0;
                 font-size:14px;
@@ -710,9 +714,9 @@
                 border-radius:inherit;
             }
             .h2-tit {
-                margin-bottom:32px;
-                font-size:20px;
-                line-height:30px;
+                margin-bottom:40px;
+                font-size:28px;
+                line-height:38px;
                 font-weight:700;
                 text-align:center;
                 @include mobile {
@@ -720,8 +724,13 @@
                 }
             }
             .select-dl {
-                margin-bottom:32px;
+                display:table;
+                width:100%;
+                padding:32px 77px;
+                background-color:#f4f4f4;
                 dt {
+                    display:table-cell;
+                    width:117px;
                     color:#616161;
                     font-size:14px;
                     line-height:20px;
@@ -730,6 +739,7 @@
                     }
                 }
                 dd {
+                    display:table-cell;
                     margin-top:8px;
                     @include mobile {
                         margin-top:12px;
@@ -739,18 +749,30 @@
                     }
                 }
             }
+
+            .tit {
+                margin-top:64px;
+                font-size:20px;
+                font-weight:700;
+                line-height:30px;
+            }
+            .tit + .txt {
+                margin-top:24px;
+                line-height:26px;
+            }
     
             .private-list {
                 @include clearfix;
                 margin:32px 0 0 0;
+                padding:40px;
+                background-color:#f4f4f4;
                 @include mobile {
                     display:block;
                     margin-top:40px;
                 }
                 .list-item {
                     float:left;
-                    width:37%;
-                    padding-left:80px;
+                    width:50%;
                     @include tablet {
                         padding-left:40px;
                     }
@@ -762,31 +784,21 @@
                             padding-top:0;
                         }
                     }
-                    &:first-child {
-                        width:22%;
-                        padding:0;
-                        @include mobile {
-                            width:100%;
-                        }
-                    }
-                    &:nth-child(2) {
-                        width:41%;
-                        @include mobile {
-                            width:100%;
-                        }
-                    }
-                    li {
+                    li {                        
                         margin-top:16px;
+                        padding-right:24px;
                         &:first-child {
                             margin-top:0;
                         }
                         > a {
                             display:block;
-                            color:#EC455A;
-                            font-size:14px;
-                            line-height:20px;
+                            color:#767676;
+                            font-size:16px;
+                            line-height:26px;
                             font-weight:500;
                             &:hover {
+                                color:#222;
+                                font-weight:700;
                                 text-decoration:underline;
                             }
                         }
@@ -877,9 +889,9 @@
         }
     
         .h3-tit {
-            padding:48px 0 16px;
-            font-size:16px;
-            line-height:24px;
+            padding:40px 0 12px;
+            font-size:18px;
+            line-height:28px;
             font-weight:700;
             @include mobile {
                 padding:0 0 32px;
@@ -946,8 +958,16 @@
             @include mobile {
                 margin-top:40px;
             }
+            & + dl.con-dl {
+                margin-top:64px;
+            }
+            dt {
+                font-size:14px;
+                font-weight:700;
+                line-height:24px;
+            }
             dd {
-                margin-top:8px;
+                margin-top:14px;
                 ol, ul {
                     margin-top:0;
                 }
@@ -962,22 +982,33 @@
     
         .tb_row {
             .btn-text {
+                position:relative;
+                padding-right:22px;
                 font-size:14px;
-                line-height:20px;
+                line-height:24px;
                 font-weight:500;
                 vertical-align:baseline;
+                &:after {
+                    content:' ';
+                    position:absolute;
+                    top:3px;
+                    right:0;
+                    width:20px;
+                    height:20px;
+                    background:url('/lg5-common/images/icons/btn-arr-20x20-gray.svg') no-repeat 0 0;
+                }
             }
         }
     
         .total-tit {
-            margin:48px 0 16px;
+            margin:24px 0 16px;
             @include mobile {
                 margin:40px 0 12px;
                 padding:0 20px;
             }
             .num {
                 display:inline-block;
-                font-size:16px;
+                font-size:14px;
                 line-height:24px;
                 font-weight:700;
                 vertical-align:middle;
