@@ -13,6 +13,11 @@
     @import "MKT5003";
 }
 
+// 듀얼 스크린
+.contents.dual-wrap {
+    @import "MKT5001";
+}
+
 .card-wrap {
     .info-txt {
         margin-bottom: 48px;
