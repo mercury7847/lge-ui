@@ -1,12 +1,10 @@
 // 제품리스트(gray-box list, script)
 .product-list-wrap {
-    overflow:hidden;
-
     .product-lists {
         margin:-24px -12px 0;
         font-size:0;
         @include mobile {
-            margin:-12px -6px 0;
+            margin:0;
         }
         li.lists {
             display:inline-block;
@@ -14,60 +12,49 @@
             margin-top:24px;
             vertical-align:top;
             @include mobile {
-                width:50%;
-                margin-top:12px;
+                display:block;
+                width:100%;
+                &:first-child {
+                    margin-top:0;
+                }
             }
             div {
                 margin:0 12px;
-                border-radius:4px;
-                background:#f4f4f4;
-                overflow:hidden;
+                border-radius:8px;
+                box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
                 @include mobile {
-                    margin:0 6px;
+                    margin:0;
                 }
             }
             dl {
                 position:relative;
-                padding:32px 0 28px;
-                // border-radius:4px;
-                // background:#f4f4f4;
-                text-align:left;
+                padding:32px 38px;
+                text-align:center;
                 @include mobile {
-                    // margin:0 6px;
-                    padding:0 0 20px;
-                    text-align:center;
+                    padding:24px 32px;
                 }
                 dt {
                     position:relative;
-                    color:$color-default;
+                    color:#222;
                     .img {
                         display:block;
                         margin-bottom:16px;
                         text-align:center;
                         img {
                             width:100%;
+                            max-width:180px;
                             height:auto;
                             vertical-align:top;
                         }
                     }
                     p {
-                        padding:0 40px;
-                        @include mobile {
-                            padding:0 12px;
-                        }
                         &.name {
-                            display:-webkit-box;
-                            -webkit-line-clamp:2;
-                            -webkit-box-orient:vertical;
-                            max-height:48px;
-                            overflow:hidden;
-                            font-size:16px;
-                            line-height:24px;
+                            max-height:56px;
+                            @include textEllipsisClamp(2);
+                            @include font-large;
                             font-weight:700;
-                            text-overflow:ellipsis;
                             @include mobile {
-                                font-size:14px;
-                                line-height:18px;
+                                max-height:46px;
                             }
                         }
                         &.num {
@@ -88,22 +75,13 @@
                 }
                 dd {
                     margin-top:4px;
-                    padding:0 40px;
-                    @include mobile {
-                        padding:0 12px;
-                    }
                     .infos {
                         li {
-                            color:$color-default;
-                            font-size:14px;
-                            line-height:20px;
+                            color:#767676;
+                            @include font-medium;
                             small {
                                 display:block;
                                 color:#616161;
-                            }
-                            @include mobile {
-                                font-size:12px;
-                                line-height:16px;
                             }
                         }
                     }
@@ -139,68 +117,6 @@
             li.lists {
                 dl {
                     text-align:center;
-                }
-            }
-        }
-    }
-
-    &.shadow-box-list {
-        overflow: visible;
-        .product-lists {
-            //margin-top: 0;
-            li.lists {
-                @include mobile {
-                    width: 100%;
-                    margin-top: 16px;
-                }
-                div {
-                    background:#fff;
-                    box-shadow: 0 3px 14px 0 rgba(0, 0, 0, 0.06);
-                }
-                dl {
-                    padding:0 0 32px;
-                     dt {
-                         .img {
-                             max-width: 226px;
-                             margin: 0 auto 26px;
-                         }
-                         p {
-                             padding:0 28px;
-                             &.name {
-                                 font-size: 20px;
-                                 line-height: 32px;
-                             }
-                         }
-                     }
-                    dd {
-                        padding:0 28px;
-                        .infos {
-                            li {
-                                color: #616161;
-                            }
-                        }
-                    }
-                    @include mobile {
-                        padding-bottom: 26px;
-                        text-align: left;
-                        dt {
-                            .img {
-                                max-width: 172px;
-                                margin: 0 auto 18px;
-                            }
-                            p {
-                                padding:0 20px;
-                                &.name {
-                                    font-size: 16px;
-                                    line-height: 23px;
-                                }
-                            }
-                        }
-                        dd {
-                            margin-top: 8px;
-                            padding:0 20px;
-                        }
-                    }
                 }
             }
         }
