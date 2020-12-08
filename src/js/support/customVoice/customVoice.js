@@ -21,34 +21,31 @@
                             required: true,
                             errorMsg: '개인정보 수집 및 이용에 동의 하셔야 이용 가능합니다'
                         },
-                        name: {
+                        inputName: {
                             required: true,
-                            errorMsg: '이름을 입력해주세요',
-                            nameMsg: '이름은 한글 또는 영문으로만 입력해주세요'
+                            msgTarget: '.err-block'
                         },
-                        phoneNo: {
+                        inputPhoneNo: {
                             required: true,
                             pattern: /^(010|011|17|018|019)\d{3,4}\d{4}$/,
-                            errorMsg: '휴대전화를 정확히 입력해주세요',
-                            phoneNoMsg: '휴대전화를 정확히 입력해주세요'
+                            msgTarget: '.err-block'
                         },
-                        email:{
+                        inputEmail:{
                             required: true,
                             pattern : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                            errorMsg: '이메일 주소를 입력해주세요',
-                            emailMsg:'올바른 이메일 형식이 아닙니다. '
+                            msgTarget: '.err-block'
                         },
                         replay: {
                             required: true,
                             errorMsg: '회신 여부를 선택해주세요.'
                         },
-                        title: {
+                        inputTitle: {
                             required: true,
-                            errorMsg: '제목을 입력해주세요.'
+                            msgTarget: '.err-block'
                         },
-                        content: {
+                        inputContent: {
                             required: true,
-                            errorMsg: '내용을 입력해주세요.'
+                            msgTarget: '.err-block'
                         },
                         desc: {
                             required: true,
