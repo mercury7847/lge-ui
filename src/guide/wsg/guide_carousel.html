@@ -21,129 +21,15 @@
 <!-- //주의사항 -->
 
 <!-- 가이드 내용 -->
-<h2 class="h2_guide">1. Main visual type slider</h2>
+<h2 class="h2_guide">1. 서브메인성 visual slider Type1</h2>
 <div class="guide_wrap">
-    <div class="hero-banner slide-wrap ui_wide_slider">
-        <div class="custom-indi-wrap">
-            <div class="custom-indis">
-                <ul class="indis ui_wideslider_dots">
-                    <li>
-                        <button type="button" class="btn-indi">
-                            <p>No.1의 혁신1</p>
-                            <div class="bar"></div>
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" class="btn-indi">
-                            <p>No.1의 혁신2</p>
-                            <div class="bar"></div>
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" class="btn-indi">
-                            <p>No.1의 혁신3</p>
-                            <div class="bar"></div>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <button type="button" class="indi-control ui_carousel_play play">
-                <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
-            </button>
-        </div>
-        <div class="slide-content ui_carousel_list">
-            <div class="slide-track ui_carousel_track">
-                <!-- slide -->
-                <div class="slide-conts ui_carousel_slide">
-                    <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
-                    <div class="slide-info-area">
-                        <div class="boxs">
-                            <p class="desc" id="tit01"> 
-                                <small>나의 첫번째 5G 폰0</small>
-                                LG Q92 5G 구매혜택
-                            </p>
-                            <p class="date">2020.08.01~2020.09.31</p>
-                            <a href="#n" class="btn bd-black" aria-labelledby="tit01">자세히 보기</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- // slide -->
-                <!-- slide -->
-                <div class="slide-conts ui_carousel_slide">
-                    <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
-                    <div class="slide-info-area">
-                        <div class="boxs">
-                            <p class="desc" id="tit01"> 
-                                <small>나의 첫번째 5G 폰1</small>
-                                LG Q92 5G 구매혜택
-                            </p>
-                            <p class="date">2020.08.01~2020.09.31</p>
-                            <a href="#n" class="btn bd-black" aria-labelledby="tit01">자세히 보기</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- // slide -->
-                <!-- slide -->
-                <div class="slide-conts ui_carousel_slide">
-                    <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
-                    <div class="slide-info-area">
-                        <div class="boxs">
-                            <p class="desc" id="tit01"> 
-                                <small>나의 첫번째 5G 폰2</small>
-                                LG Q92 5G 구매혜택
-                            </p>
-                            <p class="date">2020.08.01~2020.09.31</p>
-                            <a href="#n" class="btn bd-black" aria-labelledby="tit01">자세히 보기</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- // slide -->
-            </div>
-        </div>
-    </div>
+    @@include('../../pages/common/modules/main_carousel.html', {
+        
+    })
 </div>
 
 <div class="d_desc code">
-<xmp class="prettyprint linenums javascript"><!-- DOM -->
-<div class="hero-banner slide-wrap ui_wide_slider">
-    <div class="custom-indi-wrap">
-        <div class="custom-indis">
-            <ul class="indis ui_wideslider_dots">
-                <!-- indicator(slide 수와 동일하게) -->
-                <li>
-                    <button type="button" class="btn-indi">
-                        <p>No.1의 혁신</p>
-                        <div class="bar"></div>
-                    </button>
-                </li>
-                <!-- // indicator(slide 수와 동일하게) -->
-            </ul>
-        </div>
-        <button type="button" class="indi-control ui_carousel_play play">
-            <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
-        </button>
-    </div>
-    <div class="slide-content ui_carousel_list">
-        <div class="slide-track ui_carousel_track">
-            <!-- slide -->
-            <div class="slide-conts ui_carousel_slide">
-                <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/membership/img-visual01.jpg');" data-pc-src="/lg5-common/images/membership/img-visual01.jpg" data-m-src="/lg5-common/images/membership/img-visual01-m.jpg" aria-hidden="hidden"></span>
-                <div class="slide-info-area">
-                    <div class="boxs">
-                        <p class="desc" id="tit01"> 
-                            <small>나의 첫번째 5G 폰0</small>
-                            LG Q92 5G 구매혜택
-                        </p>
-                        <p class="date">2020.08.01~2020.09.31</p>
-                        <a href="#n" class="btn bd-black" aria-labelledby="tit01">자세히 보기</a>
-                    </div>
-                </div>
-            </div>
-            <!-- // slide -->
-        </div>
-    </div>
-</div>
-<!-- // DOM -->
+<xmp class="prettyprint linenums javascript">
 
 <!-- page 내 작업 방식 -->
 <!-- (@@)include ()삭제 후 사용 -->
