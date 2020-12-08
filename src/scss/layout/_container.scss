@@ -412,6 +412,13 @@
             display:none;
         }
     }
+    & + .btn-group {
+        margin-top:80px;
+        @include mobile {
+            margin-top:32px;
+            padding:0 16px;
+        }
+    }
 }
 
 // no-data

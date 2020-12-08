@@ -8,6 +8,12 @@
         margin-bottom:64px;
         padding:24px 0;
         border-bottom:8px solid #f4f4f4;
+        @include mobile {
+            margin-bottom:32px;
+            .tabs-wrap {
+                text-align:center;
+            }
+        }
     }
 
     // MAIN
