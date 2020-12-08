@@ -11,7 +11,7 @@
         }
     },
     "data":{
-        "count":"123",
+        "count":"23",
         "data":[
             {
                 "url":"#",
@@ -90,7 +90,7 @@
                 "filterId":"fid00003",
                 "title":"서비스",
                 "filterValues":[
-                    {"value":"sd0001","title":"전체"},
+                    {"value":"","title":"전체"},
                     {"value":"sd0002","title":"일반제품"},
                     {"value":"sd0003","title":"케어십 가능 제품"},
                     {"value":"sd0004","title":"기타"}

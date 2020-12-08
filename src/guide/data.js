@@ -168,7 +168,8 @@ var res = {
 					"WHY케어솔루션" : ["/html/SLC/RMSF2002.html","","검수완료"],
 					"케어플래너_렌탈케어솔루션" : ["/html/SLC/RMSF2003.html","","검수완료"],
 					"케어플래너_케어십" : ["/html/SLC/RMSF2003_01.html","","검수완료"],
-					"케어플래너_상세견적확인" : ["/html/SLC/RMSF2020.html","","검수완료"]
+					"케어플래너_상세견적확인" : ["/html/SLC/RMSF2020.html","","검수완료"],
+					"고객혜택" : ["/html/SLC/RMSF2015.html","","진행중"]
 				},
 				"홈" : ["/html/SLC/RMSF2001.html","",""]
 			},
@@ -281,6 +282,7 @@ var res = {
 					"비회원 주문번호 로그인" : ["/html/UTC/OBSF9038.html","",""],
 					"비회원 주문배송조회 상세" : ["/html/UTC/OBSF9039.html","",""],
 					"비회원 주문/결제 팝업" : ["/html/UTC/OBSF9039_popup.html","",""],
+					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=no",""],
 				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],

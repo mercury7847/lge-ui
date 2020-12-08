@@ -12,7 +12,7 @@
             <div class="contents support profile-upload">
                 <div class="cont-wrap">
 
-                    <div class="profile-upload-wrap" data-ajax="/lg5-common/data-ajax/support/">
+                    <form class="profile-upload-form" data-ajax="/lg5-common/data-ajax/support/profileUpload.json">
                         <div class="tit-wrap">
                             <h1 class="tit">엔지니어 사진 등록</h1>
                         </div>
@@ -24,7 +24,10 @@
                                 </div>
                                 <div class="conts">
                                     <div class="input-wrap">
-                                        <input type="text" name="businessNumber" id="businessNumber" value="AKQ037" readonly required>
+                                        <input type="text" name="businessNumber" id="businessNumber" value="AKQ037" data-error-msg="사번을 입력해주세요." data-msg-target=".err-block" data-required="true" readonly required>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +38,10 @@
                                 </div>
                                 <div class="conts">
                                     <div class="input-wrap">
-                                        <input type="text" name="businessGroup" id="businessGroup" value="소속" readonly required> 
+                                        <input type="text" name="businessGroup" id="businessGroup" value="소속" data-error-msg="소속을 입력해주세요." data-msg-target=".err-block" data-required="true" readonly required> 
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +52,10 @@
                                 </div>
                                 <div class="conts">
                                     <div class="input-wrap">
-                                        <input type="text" name="name" id="name" value="홍길동" readonly required>
+                                        <input type="text" name="name" id="name" value="홍길동" data-error-msg="이름을 입력해주세요." data-msg-target=".err-block" data-required="true" readonly required>
+                                        <div class="btm-more err-block">
+                                            <p class="err-msg"></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -56,20 +65,23 @@
                                     <label for="name">첨부파일</label>
                                 </div>
                                 <div class="conts">
-                                    <div class="add-file-wrap ui_imageinput">
-                                        <div class="upload-item">
-                                            <div class="upload-img-area">
-                                                <div class="upload-preview"></div>
-                                                <div class="upload-btn-area">
+                                    <div class="file-wrap ui_imageinput">
+                                        <div class="file-item">
+                                            <div class="file-image">
+                                                <div class="file-preview"></div>
+                                                <div class="file-btns">
                                                     <label for="imageFile" class="btn-upload"><span class="blind">업로드</span></label>
-                                                    <input type="file" name="imageFile" id="imageFile" class="ipt-file uploadBtn" accept="image/*">
+                                                    <input type="file" name="imageFile" id="imageFile" data-error-msg="첨부파일을 업로드해주세요." data-msg-target=".img-err-block" data-required="true" accept="image/*" required>
                                                     <button type="button" class="btn-del"><span class="blind">삭제</span></button>
                                                 </div>
                                             </div>
-                                            <div class="upload-file-name">
-                                                <input type="text" class="file-name" placeholder="파일선택" disabled="disabled">
+                                            <div class="file-name">
+                                                <input type="text" class="name" placeholder="파일선택" disabled="disabled">
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="btm-more img-err-block">
+                                        <p class="err-msg"></p>
                                     </div>
                                 </div>
                             </div>
@@ -87,13 +99,14 @@
                         })
                         <div>
                             <a href="#" class="btn-download"><span>가이드 다운로드</span></a>
+                        
                         </div>
-                    </div>
-                    <div class="btn-group center">
-                        <button type="button" class="btn btn-confirm" data-id="#confirmPop" data-control="modal">등록</button>
-                    </div>
-                </div>
+                        <div class="btn-group center">
+                            <button type="button" class="btn btn-confirm" data-id="#confirmPop" data-control="modal">등록</button>
+                        </div>
+                    </form>
 
+                </div>
             </div>
         </div>
     </div>    

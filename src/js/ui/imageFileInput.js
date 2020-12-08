@@ -82,21 +82,23 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
             });
         },
         _setPreview: function _setPreview($input, file) {
-            var $fileBox = $input.closest('.upload-item'),
+            var $fileBox = $input.closest('.file-item'),
                 reader = new FileReader();
             
             reader.readAsDataURL(file);
             reader.onload = function(e){
                 $fileBox.addClass('on');
-                $fileBox.find('.upload-preview').css('background-image', 'url(' + e.target.result + ')' );
-                $fileBox.find('.file-name').val(file.name);
+                $fileBox.find('.file-preview').css('background-image', 'url(' + e.target.result + ')' );
+                $fileBox.find('.name').val(file.name);
             }
         },
         _bindEvents: function _bindEvents() {
             var self = this;
 
             self.$el.find('input[type="file"]').change(function(e) {
-                if (e.currentTarget.files.length > 0) {
+                var $this = $(e.currentTarget);
+                
+                if ($this[0].files.length > 0) {
                     var file = e.currentTarget.files[0],
                         result = self._checkFile(file); 
 
@@ -105,19 +107,23 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                         selectFiles.push(file);
                         
                         self._setPreview($(this), file);
+
+                        $this.siblings('.btn-del').off('click').on('click', function() {
+                            var $box = $(this).closest('.file-item');
+            
+                            $this.val('');
+                            $box.removeClass('on');
+                            $box.find('.file-preview').css('background-image', '');
+                            $box.find('.name').val('');
+                        
+                            var index = $(this).closest('.image-file-wrap').find('.btn-del').index($(this));
+                            totalSize -= selectFiles[index].size;
+                            selectFiles.splice(index,1);
+                        });         
                     } else {
                         self._callAlert(result.message);
                     }
                 }
-            });
-            
-            self.$el.find('.btn-del').on('click', function() {
-                var $box = $(this).closest('.upload-item');
-
-                $box.removeClass('on');
-                $box.find('.upload-preview').css('background-image', '');
-                $box.find('.input[type="file"]').val('');
-                $box.find('.file-name').val('');
             });
         },
     });

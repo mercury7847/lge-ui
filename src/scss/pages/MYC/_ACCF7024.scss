@@ -201,7 +201,7 @@
                     border-top:1px solid #ddd;
                     @include mobile {
                         display:block;
-                        padding:28px 0 32px 96px;
+                        padding:24px 0 32px 96px;
                     }
                     &:first-child {
                         border-top:none;
@@ -728,6 +728,13 @@
                 &.m-view {
                     display:block;
                 }
+            }
+        }
+
+        .no-data {
+            border-top:2px solid #222;
+            @include mobile {
+                border-top:none;
             }
         }
     }

@@ -267,6 +267,7 @@
     }
     .addfilebox-list{
         display:none;
+        z-index:100;
         position:absolute;
         margin: 12px 0 0 0;
         padding: 4px 0 10px;
@@ -356,81 +357,72 @@
 }
 
 //add file new
-.add-file-wrap{
-    display:flex;
-    justify-content: left;
-    align-items: center;
-
-    .upload-item{
-        margin-right:24px;
-
-        .upload-img-area{
+.image-file-wrap {
+    @include clearfix;
+    .file-item {
+        float:left;
+        width:93px;
+        .file-image {
             position:relative;
-            width:93px;
-            .upload-preview{
-                display:block;
+            margin-bottom:10px;
+            .file-preview {
                 width:93px;
                 height:93px;
-                margin:0 auto 15px;
                 border:1px solid #ddd;
                 border-radius:8px;
                 background-size:100% auto;
                 background-repeat:no-repeat;
                 background-position:center;
             }
-
-            .upload-btn-area{
+            .file-btns {
                 position:absolute;
                 bottom:-8px;
                 right:-8px;
-
                 .btn-upload {
                     display:block;
                     width:24px;
                     height:24px;
                     border-radius:50%;
-                    background:url(/lg5-common/images/icons/btn-imgadd-24.svg) no-repeat center;
-                    background-size:24px;
-                    text-align:center;
+                    background:url(/lg5-common/images/icons/btn-imgadd-24.svg) no-repeat;
                 }
-
                 .btn-del {
                     display:none;
+                    width:24px;
+                    height:24px;
+                    border-radius:50%;
+                    background:url(/lg5-common/images/icons/btn-imgdelet-24.svg) no-repeat;
                 }
-
                 input[type="file"] {
                     @include blind;
                 }
             }
         }
-
-        .upload-file-name{
-            .file-name {
+        .file-name{
+            .name {
                 display:block;
+                width:100%;
                 text-align:center;
-                font-size:14px;
                 color:#222;
+                font-size:14px;
+                line-height:24px;
                 background:transparent;
                 &::placeholder{
                     color:#aaa;
                 }
             }
         }
-
         &.on{
-            .upload-btn-area{
+            .file-btns {
                 .btn-upload {
                     display:none;
                 }
                 .btn-del {
                     display:block;
-                    width:24px;
-                    height:24px;
-                    border-radius:50%;
-                    background:url(/lg5-common/images/icons/btn-imgdelet-24.svg) no-repeat center;
-                    background-size:24px;
                 }
             }
+        }
+        & + .file-item {
+            margin-left:24px;
         }
     }    
 }
