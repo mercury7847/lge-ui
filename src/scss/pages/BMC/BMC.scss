@@ -4,6 +4,12 @@
 @import "../../utilities/mixins";
 
 .contents.membership {
+    .page-tabs {
+        margin-bottom:64px;
+        padding:24px 0;
+        border-bottom:8px solid #f4f4f4;
+    }
+
     // MAIN
     @import "ACC4001";
 
