@@ -45,7 +45,8 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
 
                 var required = $(item).data('required'); 
                 var msgTarget = $(item).data('msgTarget'); 
-                var errorMsg = $(item).data('errorMsg') || self.options.defaultErrorMsg; 
+                var errorMsg = $(item).data('errorMsg') || self.options.defaultErrorMsg;
+                var patternMsg = $(item).data(item.name+'Msg') || '';
                 
                 if(required && /true/i.test(required)){
                     
@@ -72,6 +73,7 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                     if(maxLength) newObj[item.name]['maxLength'] = maxLength;
                     if(validate) newObj[item.name]['validate'] = validate;
                     if(msgTarget) newObj[item.name]['msgTarget'] = msgTarget;
+                    if(patternMsg) newObj[item.name][item.name+'Msg'] = patternMsg;
                     newObj[item.name] = $.extend(newObj[item.name], register[item.name] || {}); 
                 }else{
 
@@ -489,25 +491,57 @@ vcui.define('ui/validation', ['jquery', 'vcui', 'ui/selectbox'], function ($, co
                 var nobj = self.register[key];
                 if(nobj.required){
                     $target = self.$el.find('[name='+ key +']');
-                    msg = nobj['msgTarget'];
-                    if(msg) {
-                        var msgBlock = self._getMsgBlock($target, msg),
-                            msgField = self._getMsgField(msgBlock);
-                        
-                        if (vcui.hasOwn(obj, key)) {
-                            msgField.text(obj[key]).attr('id', key + 'Error');;
-                            msgBlock.show();
+                    if (!$target.prop('disabled')) {
+                        msg = nobj['msgTarget'];
+                        if(msg) {
+                            var msgBlock = self._getMsgBlock($target, msg),
+                                msgField = self._getMsgField(msgBlock);
                             
-                            $target.attr('aria-describedby', key + 'Error');
-                        } else {
-                            msgField.text('').removeAttr('id');
-                            msgBlock.hide()
-                            
-                            $target.removeAttr('aria-describedby');
+                            if (vcui.hasOwn(obj, key)) {
+                                msgField.text(obj[key]).attr('id', key + 'Error');;
+                                msgBlock.show();
+                                
+                                $target.attr('aria-describedby', key + 'Error');
+                            } else {
+                                msgField.text('').removeAttr('id');
+                                msgBlock.hide()
+                                
+                                $target.removeAttr('aria-describedby');
+                            }
                         }
                     }
                 }
             }
+        },
+        _setCheckValidate : function _setCheckValidate(flag){
+            var self = this;
+            var rObj = {};
+            var $target, val, key, obj;
+
+            for(var i=0;i<self.nameArr.length; i++){
+                key = self.nameArr[i];
+                obj = self.register[key];
+                if(obj && obj.required){
+                    $target = self.$el.find('[name='+ key +']');
+                    if (!$target.prop('disabled')) {
+                        if($target.is(':checkbox') || $target.is(':radio')){
+                            var nArr = [];
+                            $target.filter(':checked').each(function(idx, item){
+                                nArr.push($(item).val())
+                            });
+                            val = $target.is(':radio')? nArr[0] : nArr;
+                            if(val=='on') val = '';
+
+                        }else{
+                            val = $target.val();
+                        }
+                        rObj = self._checkValidate(key, obj, val, rObj, flag);
+                    }
+                }
+            }
+
+            return rObj;
+
         },
         _checkValidate : function _checkValidate(key, obj, val, newObj, flag) {
             var self = this;
