@@ -80,13 +80,16 @@
             > .btn-group {
                 margin-top:80px;
                 @include mobile {
-                    margin-top:40px;
+                    margin-top:32px;
                 }
             }
         }
     }
     .section-wrap {
         .sects {
+            @include mobile {
+                margin:0 -16px;
+            }
             // contents
             .section-inner {
                 .dl-infolist-wrap {
