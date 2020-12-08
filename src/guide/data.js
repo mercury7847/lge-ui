@@ -168,7 +168,8 @@ var res = {
 					"WHY케어솔루션" : ["/html/SLC/RMSF2002.html","","검수완료"],
 					"케어플래너_렌탈케어솔루션" : ["/html/SLC/RMSF2003.html","","검수완료"],
 					"케어플래너_케어십" : ["/html/SLC/RMSF2003_01.html","","검수완료"],
-					"케어플래너_상세견적확인" : ["/html/SLC/RMSF2020.html","","검수완료"]
+					"케어플래너_상세견적확인" : ["/html/SLC/RMSF2020.html","","검수완료"],
+					"고객혜택" : ["/html/SLC/RMSF2015.html","","진행중"]
 				},
 				"홈" : ["/html/SLC/RMSF2001.html","",""]
 			},
