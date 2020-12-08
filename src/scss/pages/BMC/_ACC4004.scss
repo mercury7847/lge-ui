@@ -119,3 +119,104 @@
         }
     }
 }
+
+
+
+.btn-tabs-wrap {
+    .tabs {
+        margin:0 -12px;
+        font-size:0;
+        li {
+            display:inline-block;
+            width:calc(100% / 3);
+            max-width:220px;
+            padding:0 12px;
+            vertical-align:top;
+            a {
+                display:block;
+                padding:23px 0;
+                border:1px solid #ddd;
+                border-radius:4px;
+                color:#a1a1a1;
+                font-size:14px;
+                line-height:20px;
+                font-weight:700;
+                text-align:center;
+                &::before {
+                    content:' ';
+                    display:block;
+                    width:48px;
+                    height:48px;
+                    margin:0 auto;
+                }
+                @each $name in internet, phone, shop {
+                    &.#{$name}::before {
+                        background:url('/lg5-common/images/membership/icon-#{$name}.svg') center no-repeat;
+                        background-size:100%;
+                    }
+                }
+            }
+            &.on {
+                a {
+                    border-color:#EC455A;
+                    color:#EC455A;
+                    @each $name in internet, phone, shop {
+                        &.#{$name}::before {
+                            background:url('/lg5-common/images/membership/icon-#{$name}-on.svg') center no-repeat;
+                            background-size:100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.tabs-contents {
+    padding-top:60px;
+}
+.link-list {
+    margin-top:32px;
+    font-size:0;
+    li {
+        display:inline-block;
+        margin-left:16px;
+        vertical-align:top;
+        &:first-child {
+            margin-left:0;
+        }
+        a {
+            display:block;
+            color:#EC455A;
+            font-size:14px;
+            line-height:20px;
+        }
+    }
+}
+.qr-list {
+    margin-top:32px;
+    font-size:0;
+    li {
+        display:inline-block;
+        margin-left:36px;
+        vertical-align:top;
+        &:first-child {
+            margin-left:0;
+        }
+        .img {
+            display:block;
+            width:88px;
+            border:1px solid #ddd;
+            img {
+                width:100%;
+                height:auto;
+                vertical-align:top;
+            }
+        }
+        p {
+            margin-top:8px;
+            color:#111;
+            font-size:16px;
+            line-height:24px;
+        }
+    }
+}
