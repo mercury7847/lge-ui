@@ -116,7 +116,7 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
                             $box.find('.file-preview').css('background-image', '');
                             $box.find('.name').val('');
                         
-                            var index = $(this).closest('.file-wrap').find('.btn-del').index($(this));
+                            var index = $(this).closest('.image-file-wrap').find('.btn-del').index($(this));
                             totalSize -= selectFiles[index].size;
                             selectFiles.splice(index,1);
                         });         

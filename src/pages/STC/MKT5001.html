@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["STC/STC"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <div class="contents dual-wrap">
+                <div class="cont-wrap">
+                    <div class="visual-wrap">
+                        <img data-pc-src="/lg5-common/images/STC/img-visual-dual01.jpg" data-m-src="/lg5-common/images/STC/img-visual01-m.jpg" aria-hidden="hidden" class="lazyload" alt="" src="/lg5-common/images/STC/img-visual01.jpg">
+                        <div class="tit-wrap">
+                            <p class="tit">LG 듀얼 스크린</p>
+                            <span class="txt">놀라운 5G, 듀얼로 제대로 즐기자!</span>
+                        </div>
+                    </div>
+
+                    <div class="page-header wide border">
+                        <div class="tabs-wrap btn-type">
+                            <ul class="tabs">
+                                <li class="on"><a href="#mobileSwitch">간단요약<em class="blind">선택됨</em></a></li>
+								<li><a href="#dataMove">디스플레이&amp;디자인</a></li>
+								<li><a href="#dataMove">퍼포먼스&프로페셔널</a></li>
+								<li><a href="#dataMove">디스플레이&디자인</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="dual-con-wrap" id="mobileSwitch">
+                        <ul class="list-info">
+                            <li class="items">
+                                <span class="num">01</span>
+                                <dl class="info-txt">
+                                    <dt>쉽고 빠르게 데이터 이동하기</dt>
+                                    <dd>이전에 사용 중이던 제품 속 주소록, 메시지, 사진, 동영상 등의 <br>데이터를 쉽고 빠르게 새 제품으로 옮길 수 있습니다</dd>
+                                </dl>
+                                <div class="img-wrap">
+                                    <img src="/lg5-common/images/STC/img-swich01.jpg" aria-hidden="hidden" alt="">
+                                </div>
+                            </li>
+                            <li class="items">
+                                <span class="num">02</span>
+                                <dl class="info-txt">
+                                    <dt>이동 가능한 데이터 종류</dt>
+                                    <dd>
+                                        주소록, 메시지, 통화기록, 캘린더, 음성녹음, 사진, 동영상, 음악, 문서, 메모, 다운로드앱,<br> 공인인증서, 기타 설정 항목 등을 새로운 LG 스마트폰으로 옮길 수 있습니다
+                                    </dd>
+                                </dl>
+                                <div class="img-wrap">
+                                    <img src="/lg5-common/images/STC/img-swich02.jpg" aria-hidden="hidden" alt="">
+                                </div>
+                                @@include('./common/modules/bullet-list.html', {
+                                    "bulletTxt" : [
+                                        "LG전자 제품 간, 또는 LG전자 제품과 타사 제품 간의 이동 가능한 데이터 종류는 제조사, SW 버전, OS 종류 및 앱이나 콘텐츠 특성에 따라 제한되거나 달라질 수 있습니다.",
+                                        "각 제품의 SW 버전이나 앱 업데이트, OS 업그레이드, 제조사의 정책 등에 따라 본 설명서의 내용과 그림은 일부 달라질 수 있습니다."
+                                    ]
+                                })
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>
