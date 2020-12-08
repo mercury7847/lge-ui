@@ -160,15 +160,19 @@
     $(window).ready(function() {
         var tabIndexAll = 0;
         var tabIndexProduction = 1;
+        var tabIndexEvent = 2;
+        var tabIndexStory = 3;
+        var tabIndexAdditional = 4;
+        var tabIndexShop = 5;
+        var tabIndexCustomer = 6;
 
         var intergratedSearch = {
             init: function() {
                 var self = this;
-
-                self.setting();
-                self.updateRecentSearchList();
-                self.bindEvents();
-                vcui.require(['ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
+                vcui.require(['ui/tab', 'ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
+                    self.setting();
+                    self.updateRecentSearchList();
+                    self.bindEvents();
                     self.filterSetting();
                     self.filterBindEvents();
                 });
@@ -189,7 +193,7 @@
                 //통합검색 레이어
                 self.$contentsSearch = $('div.contents.search');
                 //탭
-                self.$tab = self.$contentsSearch.find('.ui_tab');
+                self.$tab = self.$contentsSearch.find('.ui_tab').vcTab();
                 self.tabInstance = self.$tab.vcTab('instance');
                 //input-keyword
                 self.$inputKeyword = self.$contentsSearch.find('div.input-keyword');
@@ -246,6 +250,9 @@
                 //필터
                 self.$layFilter = self.$contentsSearch.find('div.lay-filter');
 
+                //페이지
+                self.$contWrap.find('div.pagination').vcPagination();
+                
                 self.$autoComplete.hide();
                 self.$notResult.hide();
 /*
@@ -287,20 +294,38 @@
                             self.$recommendListBox.hide();
                             break;
                         case tabIndexProduction:
-                            //제품/케어솔루션 setFilter 위치 옮길것
-                            self.setFilter();
+                            //제품/케어솔루션
                             self.$searchResultCategory.hide();
                             self.$searchBanner.hide();
                             self.$mobileServiceLink.css('display', '');
                             self.$recommendListBox.show();
                             break;
-                        case 2:
+                        case tabIndexEvent:
                             //이벤트/기획전
-                            self.setFilter();
                             self.$searchResultCategory.hide();
                             self.$searchBanner.hide();
-                            self.$mobileServiceLink.hide();
+                            self.$mobileServiceLink.css('display', '');
                             self.$recommendListBox.hide();
+                            break;
+                        case tabIndexStory:
+                            //스토리
+                            self.$searchResultCategory.hide();
+                            self.$searchBanner.hide();
+                            self.$mobileServiceLink.css('display', '');
+                            self.$recommendListBox.hide();
+                            break;
+                        case tabIndexAdditional:
+                            //케어용품/소모품
+                            self.$searchResultCategory.hide();
+                            self.$searchBanner.hide();
+                            self.$mobileServiceLink.css('display', '');
+                            self.$recommendListBox.hide();
+                            break;
+                        case tabIndexShop:
+                            //센터/매장
+                            break;
+                        case tabIndexCustomer:
+                            //고객지원
                             break;
                         default:
                             break;
@@ -309,19 +334,9 @@
 
                 self.$tab.on("tabchange", function(e, data){
                     var index = data.selectedIndex;
-                    switch(index) {
-                        case tabIndexAll:
-                            //전체
-                            break;
-                        case tabIndexProduction:
-                            //제품/케어솔루션 setFilter 위치 옮길것
-                            self.requestSearch(null,false);
-                            break;
-                        case 2:
-                            //이벤트/기획전
-                            break;
-                        default:
-                            break;
+                    if(index != tabIndexAll) {
+                        self.resetFilter();
+                        self.requestSearch(null,false);
                     }
                 });
 
@@ -425,6 +440,15 @@
                     var index = $(this).attr('href').replace("#", "");
                     self.getTabItem(index).trigger('click');
                 });
+
+                //페이지
+                self.$contWrap.find('.pagination').on('page_click', function(e, data) {
+                    console.log(data);
+                    //기존에 입력된 데이타와 변경된 페이지로 검색
+                    var postData = self.getDataFromFilter();
+                    postData.page = data;
+                    self.requestSearch(postData, true);
+                });
             },
 
             //검색어창에 입력후 검색
@@ -481,6 +505,17 @@
                 return self.$contWrap.find('div.search-result-wrap:eq(' + index +')');
             },
 
+            setTabCount:function(index, count) {
+                var self = this;
+                var $tab_li = self.getTabItem(index).parent();
+                if(count > 0) {
+                    $tab_li.find('span').text("("+vcui.number.addComma(count)+")");
+                    $tab_li.show();
+                } else {
+                    $tab_li.hide();
+                }
+            },
+
             //검색어 입력중 검색
             requestSearchAutoComplete:function(value) {
                 var self = this;
@@ -524,7 +559,7 @@
                 var self = this;
                 
                 var isSearchInResult = searchInResult;
-                var tabIndex = self.tabInstance.vcTab('getSelectIdx');
+                var tabIndex = self.tabInstance.getSelectIdx();
                 var ajaxUrl = self.getTabItem(tabIndex).attr('data-search-url');
                 var postData = queryData ? queryData : {};
                 var searchValue = self.$inputKeyword.attr('data-searchValue');
@@ -540,16 +575,60 @@
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
                     self.$inputSearch.val(searchedValue);
-                    self.getSearchResultWrap(tabIndex).find('div.search-inner input').attr('data-searchvalue', param.searchIn).val(param.searchIn);
+                    var $searchResultWrap = self.getSearchResultWrap(tabIndex);
+                    $searchResultWrap.find('div.search-inner input').attr('data-searchvalue', param.searchIn).val(param.searchIn);
                     self.$layFilter.find('div.search-inner input').val(param.searchIn);
 
                     //필터세팅
                     if(!isSearchInResult) {
+                        self.setFilter();
                         self.updateFilter(data.filterList);
                     }
 
                     //리스트 세팅
+                    var count = self.checkCountData(data);
+                    $searchResultWrap.find('p.list-count').text('총 '+vcui.number.addComma(count)+'개');
 
+                    var arr = self.checkArrayData(data);
+                    var $resultListWrap = $searchResultWrap.find('div.result-list-wrap');
+                    var $list_ul = $resultListWrap.find('ul');
+                    $list_ul.empty();
+                    switch(tabIndex) {
+                        case tabIndexProduction:
+                            arr.forEach(function(item, index) {
+                                item.price = item.price ? vcui.number.addComma(item.price) : null;
+                                item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                                item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
+                                item.title = item.title.replaceAll(searchedValue,replaceText);
+                                $list_ul.append(vcui.template(productItemTemplate, item));
+                            });
+                            break;
+                        case tabIndexEvent:
+                            arr.forEach(function(item, index) {
+                                item.title = item.title.replaceAll(searchedValue,replaceText);
+                                item.startDate = vcui.date.format(item.startDate,'yyyy.MM.dd');
+                                item.endDate = vcui.date.format(item.endDate,'yyyy.MM.dd');
+                                $list_ul.append(vcui.template(eventItemTemplate, item));
+                            });
+                            break;
+                        case tabIndexStory:
+                            arr.forEach(function(item, index) {
+                                item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                                $list_ul.append(vcui.template(storyItemTemplate, item));
+                            });
+                            break;
+                        case tabIndexAdditional:
+                            arr.forEach(function(item, index) {
+                                item.price = item.price ? vcui.number.addComma(item.price) : null;
+                                $list_ul.append(vcui.template(additionalItemTemplate, item));
+                            });
+                            break;
+                        default:
+                            break;
+                    }
+
+                    //페이지
+                    $searchResultWrap.find('div.pagination').vcPagination('setPageInfo', param.pagination);
                 });
             },
 
@@ -608,9 +687,10 @@
 
                     self.$searchResultCategory.removeClass('on');
                     self.$searchResultCategoryMore.find('span').text('더보기');
-
+     
                     //nodata Test
                     /*
+                    data.count = null;
                     data.product = null;
                     data.event = null;
                     data.story = null;
@@ -618,6 +698,11 @@
                     */
 
                     var noData = true;
+                    var count = self.checkCountData(data);
+                    self.setTabCount(tabIndexAll, data.count);
+                    if(count > 0) {
+                        noData = false;
+                    }
 
                     self.$contWrap.removeClass('w-filter');
                     var $searchResult = self.$contWrap.find('div.search-result-wrap.all');
@@ -625,7 +710,8 @@
                     //제품/케어솔루션
                     var $resultListWrap = $searchResult.find('div.result-list-wrap:eq(0)');
                     arr = self.checkArrayData(data.product);
-                    var count = self.checkCountData(data.product);
+                    count = self.checkCountData(data.product);
+                    self.setTabCount(tabIndexProduction, count);
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
@@ -646,6 +732,7 @@
                     $resultListWrap = $searchResult.find('div.result-list-wrap:eq(1)');
                     arr = self.checkArrayData(data.event);
                     count = self.checkCountData(data.event);
+                    self.setTabCount(tabIndexEvent, count);
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
@@ -665,6 +752,7 @@
                     $resultListWrap = $searchResult.find('div.result-list-wrap:eq(2)');
                     arr = self.checkArrayData(data.story);
                     count = self.checkCountData(data.story);
+                    self.setTabCount(tabIndexStory, count);
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
@@ -682,6 +770,7 @@
                     $resultListWrap = $searchResult.find('div.result-list-wrap:eq(3)');
                     arr = self.checkArrayData(data.additional);
                     count = self.checkCountData(data.additional);
+                    self.setTabCount(tabIndexAdditional, count);
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
@@ -696,22 +785,23 @@
                     }
 
                     if(noData) {
+                        self.$tab.hide();
                         self.$contWrap.hide();
                         self.$searchNotResult.find('em').text('“' + searchedValue + '”');
                         self.$searchNotResult.show();
                     } else {
+                        self.$tab.show();
                         self.$contWrap.show();
                         self.$searchNotResult.hide();
                     }
 
                     //최근검색어 저장
-                    console.log(searchedValue);
                     self.$inputKeyword.attr('data-searchValue',searchedValue);
                     if(!noData) {
                         self.addRecentSearcheText(searchedValue);
                     }
 
-                    self.getTabItem(0).trigger('click');
+                    self.getTabItem(tabIndexAll).trigger('click');
                 });
             },
 
@@ -810,6 +900,9 @@
 
                 // 필터안 체크박스 이벤트 처리
                 self.$layFilter.on('change', '.ui_filter_accordion input', function(e){
+                    $parent = $(this).parents('li');
+                    var length = $parent.find('input:checked').length;
+                    $parent.find('span.sel_num').text('('+length+')');
                     self.requestSearch(self.getDataFromFilter(), true);
                 });
 
@@ -856,7 +949,7 @@
                 // 필터의 정렬 선택시 리스트의 정렬값도 선택하게 함
                 self.$layFilter.find('.ui_order_accordion div.ui_accord_content').on('change', 'input[name="sorting"]',function(e){
                     var idx = $('input[name="sorting"]').index(this);
-                    var tabIndex = self.tabInstance.vcTab('getSelectIdx');
+                    var tabIndex = self.tabInstance.getSelectIdx();
                     var $target = self.getSearchResultWrap(tabIndex).find('div.list-sorting .ui_selectbox');
                     $target.vcSelectbox('selectedIndex', idx, false);
                     self.requestSearch(self.getDataFromFilter(), true);
@@ -874,7 +967,7 @@
                 self.$layFilter.find('div.search-inner button').on('click',function(e){
                     var $input = $(this).siblings('input');
                     var searchIn = $input.val();
-                    var tabIndex = self.tabInstance.vcTab('getSelectIdx');
+                    var tabIndex = self.tabInstance.getSelectIdx();
                     var $target = self.getSearchResultWrap(tabIndex).find('div.search-inner input');                    
                     $target.attr('data-searchvalue', searchIn);
                     self.requestSearch(self.getDataFromFilter(), true);
@@ -885,8 +978,10 @@
 
             getDataFromFilter: function() {
                 var self = this;
-                var tabIndex = self.tabInstance.vcTab('getSelectIdx');
-                var $listSorting = self.getSearchResultWrap(tabIndex).find('div.list-sorting');
+                var tabIndex = self.tabInstance.getSelectIdx();
+                var $searchResultWrap = self.getSearchResultWrap(tabIndex);
+                var $listSorting = $searchResultWrap.find('div.list-sorting');
+                var $btnFilter = $searchResultWrap.find('div.btn-filter');
                 
                 var data = {};
                 $listSorting.find('input').each(function(idx, el){
@@ -912,25 +1007,40 @@
                 if(tabIndex != 0) {
                     //전체검색이 아닐 경우 선택된 필터 데이타 반영
                     var filterData = {};
+                    var selectedFilter = false;
                     self.$layFilter.find('.ui_filter_slider').each(function(idx, el){
                         var $el = $(el);
                         var values = JSON.parse($el.attr('data-values'));
                         var min = $el.attr('data-min');
                         var max = $el.attr('data-max');
                         var tempArray = values.slice(min,parseInt(max)+1).map(function(a) {return a.filterValue;});
-                        filterData[$el.attr('name')] = tempArray;
+                        if(tempArray.length != values.length) {
+                            selectedFilter = true;
+                            filterData[$el.attr('name')] = tempArray;
+                        }
                     });
 
                     self.$layFilter.find('.ui_filter_accordion input').each(function(idx, el){
                         if(el.checked) {
-                            var tempArray = filterData[el.name];
-                            if(!tempArray) {
-                                tempArray = [];
+                            if(!(el.value == null || el.value.trim().length == 0)) {
+                                var tempArray = filterData[el.name];
+                                if(!tempArray) {
+                                    tempArray = [];
+                                }
+                                tempArray.push(el.value);
+                                filterData[el.name] = tempArray;
+                                selectedFilter = true;
                             }
-                            tempArray.push(el.value);
-                            filterData[el.name] = tempArray;
                         }
                     });
+                    
+                    if(selectedFilter) {
+                        $btnFilter.addClass('applied');
+                        $btnFilter.find('a span').text('옵션 적용됨');
+                    } else {
+                        $btnFilter.removeClass('applied');
+                        $btnFilter.find('a span').text('옵션필터');
+                    }
 
                     data["filterData"] = filterData;
                 }
@@ -985,7 +1095,7 @@
 
             resetFilter: function() {
                 var self = this;
-                var tabIndex = self.tabInstance.vcTab('getSelectIdx');
+                var tabIndex = self.tabInstance.getSelectIdx();
 
                 //필터 정렬박스
                 self.$layFilter.find('input[name="sorting"]:eq(0)').prop('checked', true);

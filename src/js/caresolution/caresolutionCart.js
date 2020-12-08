@@ -126,6 +126,20 @@
 
                 //선택 삭제
                 self.$cartSelectRemove.on('click', function(e) {
+                    var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
+                    var itemList = [];
+                    var itemSeqList = [];
+                    cartItemCheck.each(function (index, item) {
+                        var itemID = $(item).parents('li.order-item').attr('data-item-id');
+                        var itemSeq = $(item).parents('li.order-item').attr('data-item-seq');
+                        itemList.push(itemID);
+                        itemSeqList.push(itemSeq);
+                    });
+                    if(itemList.length > 0) {
+                        _self.requestRemoveItem(itemList, itemSeqList);
+                    }
+
+                    /*
                     var obj = {title:'', cancelBtnName:'취소', okBtnName:'삭제', ok: function (){
                         var cartItemCheck = self.$cartList.find(self.cartItemCheckQuery+':checked');
                         var itemList = [];
@@ -142,6 +156,7 @@
                     }};
                     var desc = '선택된 제품을 삭제하시겠습니까?';
                     lgkorUI.confirm(desc, obj);
+                    */
                 });
 
                 //리스트 아이템 삭제

@@ -1,0 +1,7 @@
+{   
+    "status": "success",
+    "message": "파일 등록에 성공 하였습니다.",
+    "data": {
+        "result": true
+    }
+}

@@ -282,6 +282,7 @@ var res = {
 					"비회원 주문번호 로그인" : ["/html/UTC/OBSF9038.html","",""],
 					"비회원 주문배송조회 상세" : ["/html/UTC/OBSF9039.html","",""],
 					"비회원 주문/결제 팝업" : ["/html/UTC/OBSF9039_popup.html","",""],
+					"신용카드 매출전표 팝업" : ["/html/MYC/ACCF7106.html","_blank:width=912,height=760,scrollbars=no",""],
 				}
 			}
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
