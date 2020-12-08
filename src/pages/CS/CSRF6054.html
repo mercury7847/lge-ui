@@ -68,7 +68,7 @@
                             </div>
                             <div class="form-wrap">
                                 <!-- 비회원 -->
-                                <div class="forms">
+                                <!-- <div class="forms">
                                     <div class="tit">
                                         <label for="inputName" class="req">이름<span class="blind">필수항목</span></label>
                                     </div>
@@ -148,7 +148,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- // 비회원 -->
 
                                 <!-- 회원 -->
@@ -159,7 +159,6 @@
                                     <div class="conts">
                                         <div class="input-wrap">
                                             <input type="text" name="inputName" id="inputName" placeholder="이름을 입력해주세요."  data-msg-target=".err-block" data-error-msg="이름을 입력해주세요" data-MembersName-error-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" readonly required value="홍길동">
-
                                             <div class="btm-more err-block">
                                                 <p class="err-msg"></p>
                                             </div>
@@ -180,7 +179,7 @@
                                                 </div>
                                             </div>
                                             <div class="cell">
-                                                <button type="button" class="btn"><span>휴대전화 인증</span></button>
+                                                <button type="button" class="btn" data-href="#certificationPopup" data-control="modal"><span>휴대전화 인증</span></button>
                                             </div>
                                         </div>
                                     </div>
@@ -284,8 +283,8 @@
                         </div>
 
                         <div class="btn-group center">
-                            <a href="/html/support/CSTF1000.html" class="btn gray"><span>취소</span></a>
-                            <button type="button" class="btn pink btn-confirm"><span>확인</span></button>
+                            <button type="button" class="btn gray btn-cancel" data-id="#cancelPop" data-control="modal"><span>취소</span></button>
+                            <button type="button" class="btn pink btn-confirm" data-id="#confirmPop" data-control="modal"><span>확인</span></button>
                         </div>
                     </form>
 
