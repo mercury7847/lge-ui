@@ -24,27 +24,44 @@
 <h2 class="h2_guide">1. 서브메인성 visual slider Type1</h2>
 <div class="guide_wrap">
     @@include('../../pages/common/modules/main_carousel.html', {
-        
+        "slides" : [
+            {
+                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                "eyebrow" : "LG전자 멤버십 앱",
+                "title" : "신규 설치 고객<br>경품 추천 이벤트",
+                "btn" : "자세히 보기"
+            },
+            {
+                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                "eyebrow" : "LG전자 멤버십 앱",
+                "title" : "신규 설치 고객<br>경품 추천 이벤트2",
+                "btn" : "자세히 보기"
+            },
+            {
+                "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+                "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+                "eyebrow" : "LG전자 멤버십 앱",
+                "title" : "신규 설치 고객<br>경품 추천 이벤트3",
+                "btn" : "자세히 보기"
+            }
+        ]
     })
 </div>
 
 <div class="d_desc code">
-<xmp class="prettyprint linenums javascript">
-
-<!-- page 내 작업 방식 -->
+<xmp class="prettyprint linenums javascript"><!-- page 내 작업 방식 -->
 <!-- (@@)include ()삭제 후 사용 -->
-(@@)include('./common/modules/carousel.html', {
-    "mainSlideType" : true, <!-- main visual type일 때 true, 아닐경우 삭제 -->
-    "indiArr" : [
-                    "LG Q92 5G 구매혜택1" <!-- slide 수와 동일하게 생성 -->
-                ],
-    "slideArr" : [
+(@@)include('../../pages/common/modules/main_carousel.html', {
+    "slides" : [
         {
-            "pcBg" : "/lg5-common/images/membership/img-visual01.jpg",
-            "mobBg" : "/lg5-common/images/membership/img-visual01-m.jpg",
-            "tit" : "LG전자 멤버십 앱<strong>신규 설치 고객<br>경품 추천 이벤트1</strong>",
-            "titNum" : "tit01"
-        } <!-- slide page repeat -->
+            "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
+            "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
+            "eyebrow" : "LG전자 멤버십 앱",
+            "title" : "신규 설치 고객<br>경품 추천 이벤트",
+            "btn" : "자세히 보기"
+        }
     ]
 })
 <!-- // page 내 작업 방식 -->
