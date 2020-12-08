@@ -87,6 +87,9 @@
     }
     .section-wrap {
         .sects {
+            @include mobile {
+                margin:0 -16px;
+            }
             // contents
             .section-inner {
                 .dl-infolist-wrap {
