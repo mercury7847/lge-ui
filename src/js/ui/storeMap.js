@@ -68,8 +68,8 @@ vcui.define('ui/storeMap', ['jquery', 'vcui', 'helper/naverMapApi'], function ($
                     '           </dl>'+
                     '       </div>'+
                     '       <div class="btn-group">'+
-                    '           <a href="#n" class="btn">매장 상담 신청</a>'+
-                    '           <a href="#{{agNum}}" class="btn detail-view">상세 정보</a>'+
+                    '           <a href="#n" class="btn border size">매장 상담 신청</a>'+
+                    '           <a href="#{{agNum}}" class="btn border size detail-view">상세 정보</a>'+
                     '       </div>'+
                     '   </div>'+
                     '</div>'
