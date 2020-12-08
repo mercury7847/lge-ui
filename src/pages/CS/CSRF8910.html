@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/etc"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '엔지니어 정보 확인',
+                'pageDesc': '방문 엔지니어를 확인 하실 수 있습니다.'
+            })
+            <div class="contents support engineer-info">
+                <div class="cont-wrap">
+
+                    <div class="section">
+                        <div class="tit-wrap">
+                            <h2 class="tit">방문 엔지니어 정보</h2>
+                        </div>
+                        <div class="engineer-info-box">
+                            <div class="image">
+                                <img src="/lg5-common/images/dummy/@img_manager2.jpg" alt="방문 엔지니어 사진">
+                            </div>
+                            <p class="name">홍길동</p>
+                            <p class="center">대치서비스센터</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+</body>
+</html> 
