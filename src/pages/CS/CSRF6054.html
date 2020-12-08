@@ -70,25 +70,29 @@
                                 <!-- 비회원 -->
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-name" class="req">이름<span class="blind">필수항목</span></label>
+                                        <label for="inputName" class="req">이름<span class="blind">필수항목</span></label>
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" name="name" id="input-name" placeholder="휴대전화 인증 진행" readonly required  data-required="true" data-msg-target=".err-msg">
-                                            <p class="err-msg"></p>
+                                            <input type="text" name="inputName" id="inputName" placeholder="휴대전화 인증 진행"  data-msg-target=".err-block" data-error-msg="이름을 입력해주세요" data-inputName-error-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" readonly required>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-phoneNo" class="req">휴대 전화<span class="blind">필수항목</span></label>
+                                        <label for="inputPhoneNo" class="req">휴대 전화<span class="blind">필수항목</span></label>
                                     </div>
                                     <div class="conts">
                                         <div class="box">
                                             <div class="input-wrap">
-                                                <input type="text" name="phoneNo" id="input-phoneNo" placeholder="휴대전화 인증 진행" readonly required data-required="true" data-msg-target=".err-msg">
-                                                <p class="err-msg"></p>
+                                                <input type="text" name="inputPhoneNo" id="inputPhoneNo" placeholder="휴대전화 인증 진행"  data-msg-target=".err-block" data-error-msg="휴대전화를 정확히 입력해주세요" data-inputPhoneNo-error-msg="휴대전화를 정확히 입력해주세요" data-required="true" readonly required>
+                                                <div class="btm-more err-block">
+                                                    <p class="err-msg"></p>
+                                                </div>
                                             </div>
                                             <div class="cell">
                                                 <button type="button" class="btn"><span>휴대전화 인증</span></button>
@@ -99,7 +103,7 @@
                                 
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-email" class="req">이메일 주소<span class="blind">필수항목</span></label>
+                                        <label for="inputEmail" class="req">이메일 주소<span class="blind">필수항목</span></label>
                                         <div class="tooltip-wrap">
                                             <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
                                             <div class="tooltip-box">
@@ -110,15 +114,17 @@
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" name="email" id="input-email" placeholder="이메일 주소를 입력해주세요." required  data-required="true" data-msg-target=".err-msg" required="" aria-describedby="emailError">
-                                            <p class="err-msg"></p>
+                                            <input type="text" name="inputEmail" id="inputEmail" placeholder="이메일 주소를 입력해주세요." data-msg-target=".err-block" data-error-msg="이메일 주소를 입력해주세요." data-Email-error-msg="올바른 이메일 형식이 아닙니다." data-required="true" required aria-describedby="emailError">
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-contact01">연락가능 전화번호</label>
+                                        <label for="contact01">연락가능 전화번호</label>
                                         <div class="tooltip-wrap">
                                             <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
                                             <div class="tooltip-box">
@@ -130,15 +136,15 @@
                                     <div class="conts">
                                         <div class="contact-box">
                                             <div class="input-wrap">
-                                                <input type="text" name="contact01" id="input-contact01">
+                                                <input type="text" name="contact01" id="contact01">
                                             </div>
                                             <span class="at">-</span>
                                             <div class="input-wrap">
-                                                <input type="text" name="contact02" id="input-contact02">
+                                                <input type="text" name="contact02" id="contact02">
                                             </div>
                                             <span class="at">-</span>
                                             <div class="input-wrap">
-                                                <input type="text" name="contact03" id="input-contact03">
+                                                <input type="text" name="contact03" id="contact03">
                                             </div>
                                         </div>
                                     </div>
@@ -148,31 +154,41 @@
                                 <!-- 회원 -->
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-name" class="req">이름<span class="blind">필수항목</span></label>
+                                        <label for="inputName" class="req">이름<span class="blind">필수항목</span></label>
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" name="name" id="input-name" placeholder="이름을 입력해주세요." readonly required  data-required="true" data-msg-target=".err-msg" value="홍길동">
-                                            <p class="err-msg"></p>
+                                            <input type="text" name="inputName" id="inputName" placeholder="이름을 입력해주세요."  data-msg-target=".err-block" data-error-msg="이름을 입력해주세요" data-MembersName-error-msg="이름은 한글 또는 영문으로만 입력해주세요" data-required="true" readonly required value="홍길동">
+
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-phoneNo" class="req">휴대 전화<span class="blind">필수항목</span></label>
+                                        <label for="inputPhoneNo" class="req">휴대 전화<span class="blind">필수항목</span></label>
                                     </div>
                                     <div class="conts">
-                                        <div class="input-wrap">
-                                            <input type="text" name="phoneNo" id="input-phoneNo" placeholder="휴대 전화를 입력해주세요." readonly required data-required="true" data-msg-target=".err-msg" value="01012345678">
-                                            <p class="err-msg"></p>
+                                        <div class="box">
+                                            <div class="input-wrap">
+                                                <input type="text" name="inputPhoneNo" id="inputPhoneNo" placeholder="휴대전화 인증 진행"  data-msg-target=".err-block" data-error-msg="휴대전화를 정확히 입력해주세요" data-inputPhoneNo-error-msg="휴대전화를 정확히 입력해주세요" data-required="true" readonly required value="01012345678">
+                                                <div class="btm-more err-block">
+                                                    <p class="err-msg"></p>
+                                                </div>
+                                            </div>
+                                            <div class="cell">
+                                                <button type="button" class="btn"><span>휴대전화 인증</span></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-email" class="req">이메일 주소<span class="blind">필수항목</span></label>
+                                        <label for="inputEmail" class="req">이메일 주소<span class="blind">필수항목</span></label>
                                         <div class="tooltip-wrap">
                                             <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
                                             <div class="tooltip-box">
@@ -183,15 +199,17 @@
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap">
-                                            <input type="text" name="email" id="input-email" placeholder="이메일 주소를 입력해주세요." required  data-required="true" data-msg-target=".err-msg" required="" aria-describedby="emailError">
-                                            <p class="err-msg"></p>
+                                            <input type="text" name="inputEmail" id="inputEmail" placeholder="이메일 주소를 입력해주세요." data-msg-target=".err-block" data-error-msg="이메일 주소를 입력해주세요." data-Email-error-msg="올바른 이메일 형식이 아닙니다." data-required="true" required aria-describedby="emailError">
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-contact01">연락가능 전화번호</label>
+                                        <label for="contact01">연락가능 전화번호</label>
                                         <div class="tooltip-wrap">
                                             <span class="tooltip-icon ui_tooltip-target" ui-modules="TooltipTarget">자세히 보기</span>
                                             <div class="tooltip-box">
@@ -203,15 +221,15 @@
                                     <div class="conts">
                                         <div class="contact-box">
                                             <div class="input-wrap">
-                                                <input type="text" name="contact01" id="input-contact01">
+                                                <input type="text" name="contact01" id="contact01">
                                             </div>
                                             <span class="at">-</span>
                                             <div class="input-wrap">
-                                                <input type="text" name="contact02" id="input-contact02">
+                                                <input type="text" name="contact02" id="contact02">
                                             </div>
                                             <span class="at">-</span>
                                             <div class="input-wrap">
-                                                <input type="text" name="contact03" id="input-contact03">
+                                                <input type="text" name="contact03" id="contact03">
                                             </div>
                                         </div>
                                     </div>
@@ -227,26 +245,32 @@
                             <div class="form-wrap">
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-title" class="req">제목<span class="blind">필수항목</span></label>
+                                        <label for="inputTitle" class="req">제목<span class="blind">필수항목</span></label>
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap count">
-                                            <input type="text" class="ui_textcontrol" name="title" id="input-title" placeholder="제목을 입력해주세요." maxlength="100" data-limit="100" data-count-target="#txt-count1" data-required="true" data-msg-target=".err-msg" required>
+                                            <input type="text" class="ui_textcontrol" name="inputTitle" id="inputTitle" placeholder="제목을 입력해주세요." maxlength="100" data-limit="100" data-count-target="#txt-count1" data-msg-target=".err-block" data-error-msg="제목을 입력해주세요" data-required="true" required>
                                             <span id="txt-count1" class="cell total"><em>0</em> / 100</span>
-                                            <p class="err-msg"></p>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="forms">
                                     <div class="tit">
-                                        <label for="input-content" class="req">내용<span class="blind">필수항목</span></label>
+                                        <label for="inputContent" class="req">내용<span class="blind">필수항목</span></label>
                                     </div>
                                     <div class="conts">
                                         <div class="input-wrap count">
-                                            <textarea class="ui_textcontrol" name="content" id="input-content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-required="true" data-msg-target=".err-msg" required></textarea>
+                                            <textarea class="ui_textcontrol" name="inputContent" id="inputContent" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="1000" data-limit="1000" data-count-target="#txt-count2" data-msg-target=".err-block" data-error-msg="내용을 입력해주세요" data-required="true" required></textarea>
                                             <span id="txt-count2" class="cell total"><em>0</em> / 1000</span>
-                                            <p class="err-msg"></p>
+                                            <div class="btm-more err-block">
+                                                <p class="err-msg"></p>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
