@@ -357,15 +357,15 @@
 }
 
 //add file new
-.add-file-wrap{
+.file-wrap {
     @include clearfix;
-    .upload-item{
+    .file-item {
         float:left;
         width:93px;
-        .upload-img-area{
+        .file-image {
             position:relative;
             margin-bottom:10px;
-            .upload-preview{
+            .file-preview {
                 width:93px;
                 height:93px;
                 border:1px solid #ddd;
@@ -374,7 +374,7 @@
                 background-repeat:no-repeat;
                 background-position:center;
             }
-            .upload-btn-area{
+            .file-btns {
                 position:absolute;
                 bottom:-8px;
                 right:-8px;
@@ -397,8 +397,8 @@
                 }
             }
         }
-        .upload-file-name{
-            .file-name {
+        .file-name{
+            .name {
                 display:block;
                 width:100%;
                 text-align:center;
@@ -412,7 +412,7 @@
             }
         }
         &.on{
-            .upload-btn-area{
+            .file-btns {
                 .btn-upload {
                     display:none;
                 }
@@ -421,7 +421,7 @@
                 }
             }
         }
-        & + .upload-item {
+        & + .file-item {
             margin-left:24px;
         }
     }    
