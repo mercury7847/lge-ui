@@ -45,7 +45,7 @@
                         },
                         inputContent: {
                             required: true,
-                            errorMsg: '내용을 입력해주세요.'
+                            msgTarget: '.err-block'
                         },
                         desc: {
                             required: true,
