@@ -131,12 +131,13 @@
                             width: 100%;
                             height: 100%;
                             border:1px solid #e4e4e4;
-                            border-radius: 10px;
+                            border-radius: 8px;
                             img {
+                                width: 100%;
                                 max-width: 100%;
                                 height: auto;
                                 vertical-align: top;
-                                border-radius: 6px;
+                                border-radius: 8px;
                             }
                         }
                         &:hover,
@@ -146,10 +147,31 @@
                             }
                         }
                         &.video {
-                            background: url('/lg5-common/images/KRP0010/icon-movie.png') no-repeat 0 0;
+                            a {
+                                position: relative;
+                                &:after {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%,-50%);
+                                    width: 16px;
+                                    height: 16px;
+                                    background: url('/lg5-common/images/icons/btn-play-16-white.svg') no-repeat 0 0;
+                                    content: '';
+                                }
+                            }
+                        }
+                        &.youtube {
+                            a {
+                                background: url('/lg5-common/images/icons/icon-youtube-62.svg') no-repeat 0 0;
+                                background-size: 78px 78px;
+                            }
                         }
                         &.view {
-                            background: url('/lg5-common/images/KRP0010/icon-360.png') no-repeat 0 0;
+                            a {
+                                background: url('/lg5-common/images/icons/icon-360-62.svg') no-repeat 0 0;
+                                background-size: 78px 78px;
+                            }
                         }
                         &.more {
                             .count {
@@ -2326,28 +2348,52 @@
                         &.active {
                             border-color: #000;
                         }
+                        a {
+                            display: inline-block;
+                            width: 100%;
+                            height: 100%;
+                        }
                         @include mobile {
                             //width: 20%;
                             //width: calc(20% - 10px);
                             //height: 100%;
                             margin: 0 5px 5px 5px;
-                            a {
-                                display: inline-block;
-                                width: 100%;
-                                height: 100%;
-                            }
+                            //a {
+                            //    display: inline-block;
+                            //    width: 100%;
+                            //    height: 100%;
+                            //}
                         }
                         img {
                             width: 100%;
                             border-radius: 8px;
                         }
                         &.video {
-                            background: url('/lg5-common/images/KRP0010/icon-movie.png') no-repeat 0 0;
-                            background-size: 64px 64px;
+                            a {
+                                position: relative;
+                                &:after {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%,-50%);
+                                    width: 16px;
+                                    height: 16px;
+                                    background: url('/lg5-common/images/icons/btn-play-16-white.svg') no-repeat 0 0;
+                                    content: '';
+                                }
+                            }
+                        }
+                        &.youtube {
+                            a {
+                                background: url('/lg5-common/images/icons/icon-youtube-62.svg') no-repeat 0 0;
+                                background-size: 64px 64px;
+                            }
                         }
                         &.view {
-                            background: url('/lg5-common/images/KRP0010/icon-360.png') no-repeat 0 0;
-                            background-size: 64px 64px;
+                            a {
+                                background: url('/lg5-common/images/icons/icon-360-62.svg') no-repeat 0 0;
+                                background-size: 64px 64px;
+                            }
                         }
                     }
                 }
